@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import java.util.Locale
 
 fun getNameAndLocationLabel(
     element: Element,
@@ -25,11 +26,18 @@ fun getNameAndLocationLabel(
     val name = getNameLabel(element.tags)
         ?.withNonBreakingSpaces()
         ?.inBold()
+    val taxon = getTreeTaxon(element.tags, Locale.getDefault().language)
 
-    val nameAndFeatureName = if (name != null && feature != null) {
-        resources.getString(R.string.label_name_feature, name, feature)
+    val featureEx = if (taxon != null && feature != null) {
+        resources.getString(R.string.label_feature_taxon, feature, taxon)
     } else {
-        name ?: feature
+        feature
+    }
+
+    val nameAndFeatureName = if (name != null && featureEx != null) {
+        resources.getString(R.string.label_name_feature, name, featureEx)
+    } else {
+        name ?: featureEx
     }
 
     // only show house number if there is no name
@@ -85,6 +93,16 @@ fun FeatureDictionary.getFeatureName(
     .find()
     .firstOrNull()
     ?.name
+
+/** Returns the taxon of a tree or null if unknown */
+fun getTreeTaxon(tags: Map<String, String>, languageTag: String): String? {
+    if (tags["natural"] != "tree") return null
+
+    val names = sequenceOf("taxon", "species", "taxon:species", "genus", "taxon:genus")
+
+    return names.firstNotNullOfOrNull { tags["$it:$languageTag"] }
+        ?: names.firstNotNullOfOrNull { tags[it] }
+}
 
 /** Returns a text that identifies the feature by name, ref, brand or whatever, e.g. "The Leaky Cauldron" */
 fun getNameLabel(tags: Map<String, String>): String? {

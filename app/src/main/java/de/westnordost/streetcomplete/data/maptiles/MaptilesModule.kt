@@ -5,5 +5,5 @@ import org.koin.dsl.module
 val maptilesModule = module {
     factory { MapTilesDownloader(get(), get()) }
 
-    single { MapTilesDownloadCacheConfig(get()) }
+    single { MapTilesDownloadCacheConfig(get(), get()) }
 }

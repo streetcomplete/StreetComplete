@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -28,6 +27,7 @@ import de.westnordost.streetcomplete.util.ktx.intersects
 import de.westnordost.streetcomplete.util.ktx.isInAny
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -166,9 +166,9 @@ class OsmQuestController internal constructor(
                     val questTime = nowAsEpochMilliseconds()
                     var questCount = 0
                     val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags) {
-                            onlyElementsWithTags
+                        onlyElementsWithTags
                     } else {
-                            mapDataWithGeometry
+                        mapDataWithGeometry
                     }
                     for (element in questType.getApplicableElements(mapDataToUse)) {
                         val geometry = mapDataWithGeometry.getGeometry(element.type, element.id)

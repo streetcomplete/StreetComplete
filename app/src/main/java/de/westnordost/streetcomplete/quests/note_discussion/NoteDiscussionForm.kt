@@ -103,7 +103,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
     }
 
     override fun onClickOk() {
-        require(noteText != null ) { "NoteQuest has been answered with an empty comment!" }
+        require(noteText != null) { "NoteQuest has been answered with an empty comment!" }
         val imagePaths = attachPhotoFragment?.imagePaths.orEmpty()
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {

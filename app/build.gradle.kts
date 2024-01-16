@@ -34,8 +34,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 33
-        versionCode = 5500
-        versionName = "55.0"
+        versionCode = 5601
+        versionName = "56.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -45,6 +45,7 @@ android {
             isShrinkResources = false
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            testProguardFile("test-proguard-rules.pro")
         }
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
@@ -109,7 +110,7 @@ configurations {
 dependencies {
     val mockitoVersion = "3.12.4"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
     // tests
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
@@ -132,18 +133,18 @@ dependencies {
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.6.0")
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("androidx.annotation:annotation:1.7.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.6")
+    implementation("androidx.exifinterface:exifinterface:1.3.7")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
@@ -158,13 +159,11 @@ dependencies {
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:5.2")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:2.3")
-    implementation("de.westnordost:osmapi-changesets:2.3")
-    implementation("de.westnordost:osmapi-notes:2.0")
-    implementation("de.westnordost:osmapi-traces:2.0")
-    implementation("de.westnordost:osmapi-user:2.0")
-    implementation("com.squareup.okhttp3:okhttp:3.14.9")
-    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
+    implementation("de.westnordost:osmapi-map:3.0")
+    implementation("de.westnordost:osmapi-changesets:3.0")
+    implementation("de.westnordost:osmapi-notes:3.0")
+    implementation("de.westnordost:osmapi-traces:3.0")
+    implementation("de.westnordost:osmapi-user:3.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
@@ -185,7 +184,7 @@ dependencies {
     implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.27.1")
+    implementation("ch.poole:OpeningHoursParser:0.28.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -201,9 +200,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20230925"
+val nsiVersion = "v6.0.20231218"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.4.1"
+val presetsVersion = "v6.5.0"
 
 val poEditorProjectId = "97843"
 

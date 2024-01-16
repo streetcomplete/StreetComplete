@@ -73,6 +73,13 @@
             android:widgetLayout="@layout/widget_image_open_in_browser"
             />
 
+        <de.westnordost.streetcomplete.screens.ActivatablePreference
+            android:fragment="de.westnordost.streetcomplete.screens.about.LogsFragment"
+            android:key="logs"
+            android:title="@string/about_title_show_logs"
+            android:summary="@string/about_summary_logs"
+            android:widgetLayout="@layout/widget_image_next"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

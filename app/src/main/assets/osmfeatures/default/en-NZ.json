@@ -2,6 +2,11 @@
     "en-NZ": {
         "presets": {
             "fields": {
+                "barrier": {
+                    "options": {
+                        "kerb": "Kerb"
+                    }
+                },
                 "bath/type": {
                     "label": "Speciality"
                 },
@@ -52,7 +57,8 @@
                     "label": "Building Height (Metres)"
                 },
                 "kerb": {
-                    "label": "Kerb"
+                    "label": "Kerb",
+                    "terms": "curb"
                 },
                 "length": {
                     "label": "Length (Metres)"
@@ -176,6 +182,10 @@
                 "amenity/recycling_centre": {
                     "name": "Recycling Centre"
                 },
+                "amenity/restaurant/barbecue": {
+                    "name": "Barbeque Restaurant",
+                    "terms": "barbecue restaurant,bar,bbq,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table"
+                },
                 "amenity/sanitary_dump_station": {
                     "name": "Caravan Toilet Disposal"
                 },
@@ -214,7 +224,24 @@
                     "terms": "weigh station,truck scale"
                 },
                 "barrier/kerb": {
-                    "name": "Kerb"
+                    "name": "Kerb",
+                    "terms": "curb"
+                },
+                "barrier/kerb/flush": {
+                    "name": "Flush Kerb",
+                    "terms": "flush curb,even curb,level curb,tactile curb,even kerb,level kerb,tactile kerb"
+                },
+                "barrier/kerb/lowered": {
+                    "name": "Lowered Kerb",
+                    "terms": "lowered curb,curb cut,kerb cut,kerb ramp,curb ramp,dropped kerb,pram ramp"
+                },
+                "barrier/kerb/raised": {
+                    "name": "Raised Kerb",
+                    "terms": "raised curb"
+                },
+                "barrier/kerb/rolled": {
+                    "name": "Rolled Kerb",
+                    "terms": "rolled curb"
                 },
                 "building/pavilion": {
                     "name": "Sports Pavilion",
@@ -232,8 +259,27 @@
                 "healthcare/blood_donation": {
                     "name": "Blood Donation Centre"
                 },
+                "highway/cycleway/bicycle_foot": {
+                    "name": "Shared Path",
+                    "terms": "cycle & foot path,bicycle and foot path,bike and pedestrian path,green way,greenway,mixed-use trail,multi-use trail,segregated trail,shared path,shared use path,rail trail"
+                },
+                "highway/cycleway/crossing/bicycle_foot": {
+                    "name": "Shared Path Crossing",
+                    "terms": "cycle & foot crossing,bicycle and foot crosswalk,bike and pedestrian crossing,cycleway,cycling,cyclist"
+                },
+                "highway/footway": {
+                    "name": "Walkway",
+                    "terms": "foot path,footpath,path,track,hike,hiking,promenade,trackway,trail,walk"
+                },
+                "highway/footway/access_aisle": {
+                    "name": "Accessible Carpark Aisle",
+                    "terms": "access aisle,accessible van loading zone,disabled parking access zone,parking access zone,parking lot aisle,striped zone,tow zone,tow-away zone,towaway zone,wheelchair aisle"
+                },
                 "highway/footway/conveying": {
                     "name": "Travelator"
+                },
+                "highway/footway/sidewalk": {
+                    "terms": "foot path,footpath,pavement,sidepath,sidewalk"
                 },
                 "highway/give_way": {
                     "name": "Give Way Sign",

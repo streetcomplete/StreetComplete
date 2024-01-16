@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.PointF
@@ -113,6 +112,7 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
@@ -176,7 +176,7 @@ class MainFragment :
     private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
     private val soundFx: SoundFx by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -1156,7 +1156,7 @@ class MainFragment :
     }
 
     private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) == Prefs.Autosync.ON
+        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") == Prefs.Autosync.ON
 
     private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
         val targetPos = target.getLocationInWindow().toPointF()

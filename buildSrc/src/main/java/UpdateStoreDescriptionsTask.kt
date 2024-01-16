@@ -2,7 +2,6 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.util.Locale
 
 /** Update the metadata that contain the store descriptions for the app (for F-Droid) */
 open class UpdateStoreDescriptionsTask : DefaultTask() {
@@ -19,7 +18,7 @@ open class UpdateStoreDescriptionsTask : DefaultTask() {
         val languageCodes = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
 
         for (languageCode in languageCodes) {
-            if (languageCode.toLowerCase(Locale.US) == "en-us") continue
+            if (languageCode.lowercase() == "en-us") continue
             println(languageCode)
             val translations = fetchLocalizationJson(apiToken, projectId, languageCode)
 

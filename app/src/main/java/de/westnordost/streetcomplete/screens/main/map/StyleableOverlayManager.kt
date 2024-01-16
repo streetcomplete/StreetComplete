@@ -47,17 +47,17 @@ class StyleableOverlayManager(
     private var updateJob: Job? = null
 
     private var overlay: Overlay? = null
-    set(value) {
-        if (field == value) return
-        val wasNull = field == null
-        val isNullNow = value == null
-        field = value
-        when {
-            isNullNow -> hide()
-            wasNull ->   show()
-            else ->      switchOverlay()
+        set(value) {
+            if (field == value) return
+            val wasNull = field == null
+            val isNullNow = value == null
+            field = value
+            when {
+                isNullNow -> hide()
+                wasNull ->   show()
+                else ->      switchOverlay()
+            }
         }
-    }
 
     private val overlayListener = object : SelectedOverlaySource.Listener {
         override fun onSelectedOverlayChanged() {

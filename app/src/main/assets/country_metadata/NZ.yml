@@ -19,4 +19,4 @@ orchardProduces: [grape, kiwi, apple, avocado, cherry, blueberry, peach, orange,
 popularReligions: [christian, hindu, buddhist]
 popularSports: [tennis, bowls, golf, netball, basketball, soccer, rugby, cricket]
 postboxesHaveCollectionTimes: true
-postboxesHaveRoyalCypher: true
+postboxesHaveRoyalCypher: false

@@ -35,8 +35,11 @@ fun Element.isArea(): Boolean = when (this) {
     else -> false
 }
 
+/** An element is only splittable if it is a way that is either not closed or neither an area
+ *  nor a roundabout */
 fun Element.isSplittable(): Boolean = when (this) {
-    is Way -> !isClosed || !IS_AREA_EXPRESSION.matches(this)
+    // see #5372 for as to why junction=roundabout is not splittable
+    is Way -> !isClosed || (!IS_AREA_EXPRESSION.matches(this) && tags["junction"] != "roundabout")
     else -> false
 }
 

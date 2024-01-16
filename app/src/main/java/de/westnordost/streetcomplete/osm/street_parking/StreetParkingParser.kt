@@ -83,7 +83,7 @@ private fun createParkingForSideOldSchema(tags: Map<String, String>, side: Strin
             } ?: return if (parkingValue == "marked") IncompleteStreetParking else UnknownStreetParking
 
             val parkingPositionValue = tags["parking:lane:$side:$parkingValue"]
-            // parking position is mandatory to be regarded as complete
+                // parking position is mandatory to be regarded as complete
                 ?: return IncompleteStreetParking
 
             val parkingPosition = when (parkingPositionValue) {

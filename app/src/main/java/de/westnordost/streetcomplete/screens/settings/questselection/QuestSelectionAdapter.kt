@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -38,7 +37,7 @@ import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
-import de.westnordost.streetcomplete.util.ktx.getDouble
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -57,11 +56,11 @@ class QuestSelectionAdapter(
     private val questTypeRegistry: QuestTypeRegistry,
     private val onListSizeChanged: (Int) -> Unit,
     countryBoundaries: FutureTask<CountryBoundaries>,
-    prefs: SharedPreferences
+    prefs: Preferences
 ) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
 
     private val currentCountryCodes = countryBoundaries.get()
-        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE), prefs.getDouble(Prefs.MAP_LATITUDE))
+        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0), prefs.getDouble(Prefs.MAP_LATITUDE, 0.0))
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
     private val englishResources by lazy {

@@ -535,10 +535,6 @@
                     "label": "Marca",
                     "terms": "marca"
                 },
-                "brewery": {
-                    "label": "Cervesa de barril / tirada",
-                    "terms": "cervesa de barril,cervesa tirada"
-                },
                 "bridge": {
                     "label": "Tipus",
                     "placeholder": "Predeterminat"
@@ -1060,7 +1056,6 @@
                         "lebanese": "Libanesa",
                         "malaysian": "Malàisia",
                         "mexican": "Mexicana",
-                        "pankcake": "Crep americana",
                         "pasta": "Pasta",
                         "peruvian": "Peruà",
                         "pizza": "Pizza",
@@ -1911,15 +1906,7 @@
                     "label": "Cistella de basquetbol",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Doma clàssica",
-                    "options": {
-                        "equestrian": "Sí",
-                        "undefined": "No"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Equitació",
                     "options": {
                         "horse_riding": "Sí",
                         "undefined": "No"
@@ -1937,13 +1924,6 @@
                     },
                     "placeholder": "Difícil, perillós...",
                     "terms": "dificultat per a muntar a cavall,difucultat de l'equitació"
-                },
-                "horse_stables": {
-                    "label": "Hípica",
-                    "options": {
-                        "stables": "Sí",
-                        "undefined": "No"
-                    }
                 },
                 "hot_water": {
                     "label": "Aigua calenta"
@@ -3029,20 +3009,6 @@
                 "route_master": {
                     "label": "Tipus"
                 },
-                "royal_cypher": {
-                    "label": " Insígnia reial",
-                    "options": {
-                        "CIIIR": "CIIIR (Carles III)",
-                        "EIIR": "EIIR (Elisabet II)",
-                        "EVIIIR": "EVIIIR (Eduard VIII)",
-                        "EVIIR": "EVIIR (Eduard VII)",
-                        "GR": "GR (Jordi V)",
-                        "GVIR": "GVIR (Jordi VI)",
-                        "VR": "VR (Victòria)",
-                        "no": "No",
-                        "scottish_crown": "Corona escocesa"
-                    }
-                },
                 "ruins": {
                     "label": "Tipus"
                 },
@@ -4096,7 +4062,8 @@
                     "terms": "lloguer de cotxes,servei de lloguer de turismes"
                 },
                 "amenity/car_sharing": {
-                    "name": "Estació de cotxes compartits"
+                    "name": "Estació de cotxes compartits",
+                    "terms": "punt de càrrega,estació de càrrega,càrrega,cotxe elèctric,vehicle elèctric,elèctric,cotxe,vehicle,zero emissions"
                 },
                 "amenity/car_wash": {
                     "name": "Rentat de cotxes",
@@ -4720,6 +4687,9 @@
                 },
                 "amenity/theatre/type/amphi": {
                     "name": "Amfiteatre"
+                },
+                "amenity/ticket_validator": {
+                    "name": "Validador de bitllets"
                 },
                 "amenity/toilets": {
                     "name": "lavabo",
@@ -5457,6 +5427,9 @@
                 "emergency/siren": {
                     "name": "Sirena"
                 },
+                "emergency/water_reservoir_covered": {
+                    "name": "Dipòsit d'aigua d'emergència (subterrani)"
+                },
                 "emergency/water_tank": {
                     "name": "Dipòsit d'aigua d'emergència",
                     "terms": "tanc d'aigua,cisterna,dipòsit"
@@ -5950,7 +5923,8 @@
                     "name": "Port"
                 },
                 "landuse/industrial": {
-                    "name": "Zona Industrial"
+                    "name": "Zona Industrial",
+                    "terms": "polígon,polígon industrial,industrial,fàbrica,empresa,comerç,manufactura,dipòsit"
                 },
                 "landuse/industrial/scrap_yard": {
                     "name": "Desballestador de vehicles"
@@ -7487,6 +7461,9 @@
                 },
                 "shop/dairy": {
                     "name": "Botiga de productes làctics"
+                },
+                "shop/deli": {
+                    "name": "Delicadeses"
                 },
                 "shop/department_store": {
                     "name": "Grans magatzems"

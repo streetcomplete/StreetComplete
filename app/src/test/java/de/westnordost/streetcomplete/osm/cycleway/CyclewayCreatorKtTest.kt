@@ -623,11 +623,12 @@ class CyclewayCreatorKtTest {
                 "cycleway:both" to "track",
                 "cycleway:right:oneway" to "no",
             ),
-            cycleway(NONE, null),
+            cycleway(NONE to FORWARD, TRACK to BOTH),
             arrayOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryDelete("cycleway:both", "track"),
+                StringMapEntryModify("cycleway:right:oneway", "no", "no"),
                 StringMapEntryModify("oneway:bicycle", "no", "no"),
             )
         )
@@ -639,10 +640,11 @@ class CyclewayCreatorKtTest {
                 "cycleway:left" to "no",
                 "cycleway:right" to "track",
             ),
-            cycleway(NONE, null),
+            cycleway(NONE, TRACK),
             arrayOf(
                 StringMapEntryModify("cycleway:left", "no", "no"),
                 StringMapEntryDelete("oneway:bicycle", "no"),
+                StringMapEntryModify("cycleway:right", "track", "track"),
             )
         )
     }
@@ -713,7 +715,8 @@ class CyclewayCreatorKtTest {
             arrayOf(
                 StringMapEntryDelete("cycleway", "opposite"),
                 StringMapEntryAdd("cycleway:right", "no"),
-                StringMapEntryAdd("cycleway:left", "track")
+                StringMapEntryAdd("cycleway:left", "track"),
+                StringMapEntryAdd("oneway:bicycle", "no")
             )
         )
         verifyAnswer(
@@ -736,18 +739,16 @@ class CyclewayCreatorKtTest {
             mapOf(
                 "oneway" to "yes",
                 "cycleway" to "opposite_lane",
-                "cycleway:lane" to "advisory",
-                "cycleway:oneway" to "yes"
+                "cycleway:lane" to "advisory"
             ),
             cycleway(null, NONE),
             arrayOf(
                 StringMapEntryDelete("cycleway", "opposite_lane"),
                 StringMapEntryDelete("cycleway:lane", "advisory"),
-                StringMapEntryDelete("cycleway:oneway", "yes"),
                 StringMapEntryAdd("cycleway:left", "lane"),
                 StringMapEntryAdd("cycleway:left:lane", "advisory"),
-                StringMapEntryAdd("cycleway:left:oneway", "yes"),
-                StringMapEntryAdd("cycleway:right", "no")
+                StringMapEntryAdd("cycleway:right", "no"),
+                StringMapEntryAdd("oneway:bicycle", "no")
             )
         )
     }

@@ -6,7 +6,6 @@ import android.content.pm.PackageManager.FEATURE_CAMERA_ANY
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Environment
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
@@ -22,6 +21,7 @@ import de.westnordost.streetcomplete.databinding.FragmentAttachPhotoBinding
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import java.io.File

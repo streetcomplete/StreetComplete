@@ -18,10 +18,10 @@ import kotlin.math.sqrt
 class ArrowDrawable(private val resources: Resources) : Drawable() {
 
     var startPoint: PointF? = null
-    set(value) {
-        field = value
-        invalidateSelf()
-    }
+        set(value) {
+            field = value
+            invalidateSelf()
+        }
     var endPoint: PointF? = null
         set(value) {
             field = value

@@ -126,7 +126,7 @@ Toutefois, avant de télécharger vos modifications, l’application vérifie, �
     <string name="quest_oneway_title">"S’agit-il d’une voie à sens unique ?"</string>
     <string name="quest_address_title">"Quel est le numéro de maison de ce bâtiment ?"</string>
     <string name="store_listing_short_description">"Application d’arpentage OpenStreetMap"</string>
-    <string name="store_listing_full_description">"Aidez à améliorer l’OpenStreetMap avec StreetComplete !
+    <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete !
 
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L’information liée à chaque marqueur peut être complétée en répondant à une question simple.
 
@@ -415,12 +415,12 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_bungalow">"Bâtiment de bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Mobile-home"</string>
     <string name="quest_buildingType_commercial">"Bâtiment commercial"</string>
-    <string name="quest_buildingType_commercial_generic_description">"Bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale"</string>
+    <string name="quest_buildingType_commercial_generic_description">"bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale"</string>
     <string name="quest_buildingType_industrial">"Industriel"</string>
     <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garagiste…"</string>
     <string name="quest_buildingType_office">"Bureaux"</string>
     <string name="quest_buildingType_retail">"Magasin·s"</string>
-    <string name="quest_buildingType_warehouse">"Bâtiment de l’entrepôt"</string>
+    <string name="quest_buildingType_warehouse">"Entrepôt"</string>
     <string name="quest_buildingType_kiosk">"Bâtiment du kiosque"</string>
     <string name="quest_buildingType_storage_tank">"Réservoir de stockage"</string>
     <string name="quest_buildingType_religious">"Bâtiment religieux"</string>
@@ -1092,7 +1092,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_smoking_separated">"Seulement dans des zones séparées"</string>
     <string name="quest_smoking_yes">"Oui, partout"</string>
     <string name="quest_seating_name_title">"Quel type d’accueil propose ce restaurant ?"</string>
-    <string name="quest_seating_takeaway">"Pas d'accueil (seulement à emporter)"</string>
+    <string name="quest_seating_takeaway">"Pas d’accueil (seulement à emporter)"</string>
     <string name="quest_seating_indoor_only">"En intérieur seulement"</string>
     <string name="quest_seating_outdoor_only">"En terrasse seulement"</string>
     <string name="quest_seating_indoor_and_outdoor">"En intérieur et en terrasse"</string>
@@ -1340,8 +1340,8 @@ Les données manquantes sont toujours affichées en rouge."</string>
 
 De plus, certaines surcouches vous permettent d’ajouter de nouvelles données à la position d’un réticule affiché, comme la surcouche des adresses."</string>
     <string name="quest_crossing_kerb_height_title">"Quelle est la hauteur des bordures à ce croisement ?"</string>
-    <string name="quest_maxheight_sign_title">"Quelle limite de poids est indiquée ici ?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Quelle limite de poids est indiquée en dessous de ce pont ?"</string>
+    <string name="quest_maxheight_sign_title">"Quelle limite de hauteur est indiquée ici ?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Quelle limite de hauteur est indiquée en dessous de ce pont ?"</string>
     <string name="quest_leave_new_note_as_answer">"Dans ce cas, vous devez laisser une note dans laquelle vous expliquez la situation."</string>
     <string name="quest_drinking_water_type_title2">"L’eau potable est-elle disponible ici ? Si oui, quelle est sa source ?"</string>
     <string name="quest_is_amenity_inside_title">"Est-ce à l’intérieur d’un bâtiment ?"</string>
@@ -1352,4 +1352,21 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="inside">"à l’intérieur"</string>
     <string name="outside">"à l’extérieur"</string>
     <string name="quest_recycling_type_food_waste">"Déchets alimentaires"</string>
+    <string name="quest_defibrillator_location">"Où se trouve ce défibrillateur ?"</string>
+    <string name="quest_defibrillator_location_description">"Veuillez fournir une description concise de son emplacement (ex. « dans la salle des porteurs »)."</string>
+    <string name="quest_sanitary_dump_station_title">"Y a-t-il une station de vidange ?"</string>
+    <string name="quest_sanitary_dump_station_description">"Installation permettant de déverser des déchets organiques provenant du réservoir des toilettes d’un camping-car, d’une camionnette, etc. Généralement indiqué par un panneau comme celui-ci :"</string>
+    <string name="quest_generalFee_title">"Doit-on payer pour l’utiliser ?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"C’est un foyer pour le feu"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Les foyers n’ont pas de surface de cuisson (ex. grille/plaque), contrairement aux grills."</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"à utiliser dans un rapport d’erreur"</string>
+    <string name="action_filter">"Filtre"</string>
+    <string name="action_share">"Partager les logs"</string>
+    <string name="about_title_show_logs">"Afficher les logs"</string>
+    <string name="label_log_level">"Niveau de log"</string>
+    <string name="label_log_newer_than">"De"</string>
+    <string name="label_log_older_than">"À"</string>
+    <string name="label_log_message_contains">"Le message contient"</string>
+    <string name="title_logs_filters">"Filtrer les messages"</string>
 </resources>

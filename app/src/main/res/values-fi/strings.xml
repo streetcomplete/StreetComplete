@@ -734,7 +734,7 @@ taso"</string>
     <string name="resurvey_intervals_default">"Oletus"</string>
     <string name="resurvey_intervals_more_often">"Kysy useammin"</string>
     <string name="about_title_translate">"Auta sovelluksen suomentamisessa"</string>
-    <string name="about_description_translate">"%1$s on %2$d%-prosenttisesti käännetty"</string>
+    <string name="about_description_translate">"%1$s on %2$d-prosenttisesti käännetty"</string>
     <string name="quest_oneway2_title">"Onko tämä yksisuuntainen tie? Mihin suuntaan?"</string>
     <string name="quest_oneway2_dir">"Yksisuuntainen tähän suuntaan"</string>
     <string name="quest_oneway2_no_oneway">"Ei yksisuuntainen"</string>
@@ -1337,4 +1337,9 @@ Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintii
     <string name="quest_bbq_fuel_wood">"Puulla"</string>
     <string name="quest_bbq_fuel_electric">"Sähköllä"</string>
     <string name="quest_bbq_fuel_charcoal">"Hiilellä"</string>
+    <string name="inside">"sisällä"</string>
+    <string name="outside">"ulkona"</string>
+    <string name="quest_recycling_type_food_waste">"Biojäte"</string>
+    <string name="quest_defibrillator_location">"Missä tämä defibrillaattori sijaitsee?"</string>
+    <string name="quest_defibrillator_location_description">"Anna ytimekäs kuvaus sijainnista (esim. “vahtimestarin tilassa”)."</string>
 </resources>

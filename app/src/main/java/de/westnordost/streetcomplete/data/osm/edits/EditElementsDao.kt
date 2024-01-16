@@ -35,6 +35,6 @@ class EditElementsDao(private val db: Database) {
 
     fun deleteAll(ids: List<Long>): Int {
         if (ids.isEmpty()) return 0
-        return db.delete(NAME, "$EDIT_ID in (${ids.joinToString(",")})" )
+        return db.delete(NAME, "$EDIT_ID in (${ids.joinToString(",")})")
     }
 }

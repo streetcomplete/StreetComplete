@@ -408,9 +408,6 @@
                     "label": "العلامة التجارية",
                     "terms": "العلامة التجارية,الماركة,البراند"
                 },
-                "brewery": {
-                    "label": "بيرة برميل"
-                },
                 "bridge": {
                     "label": "النوع",
                     "placeholder": "الافتراضي"
@@ -757,7 +754,6 @@
                         "lebanese": "لبناني",
                         "malaysian": "ماليزي",
                         "mexican": "مكسيكي",
-                        "pankcake": "بان كيك (فطيرة مسطحة)",
                         "pasta": "باستا",
                         "pizza": "بيتزا",
                         "polish": "بولندي",
@@ -1361,15 +1357,7 @@
                     "label": "عدد أطواق كرة السلة",
                     "placeholder": "1، 2، 4..."
                 },
-                "horse_dressage": {
-                    "label": "ترويض الخيول",
-                    "options": {
-                        "equestrian": "نعم",
-                        "undefined": "لا"
-                    }
-                },
                 "horse_riding": {
-                    "label": "ركوب الخيل",
                     "options": {
                         "horse_riding": "نعم",
                         "undefined": "لا"
@@ -1386,13 +1374,6 @@
                     },
                     "placeholder": "صعب، خطير...",
                     "terms": "صعوبة ركوب الخيل"
-                },
-                "horse_stables": {
-                    "label": "ركوب مستقر",
-                    "options": {
-                        "stables": "نعم",
-                        "undefined": "لا"
-                    }
                 },
                 "hot_water": {
                     "label": "المياة الساخنة"

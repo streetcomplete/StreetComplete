@@ -477,10 +477,6 @@
                     "label": "Márka",
                     "terms": "márka,márkanév,brand"
                 },
-                "brewery": {
-                    "label": "Csapolt sörök",
-                    "terms": "sör,sörcsap,csapolt sör"
-                },
                 "bridge": {
                     "label": "Típus",
                     "placeholder": "Alapértelmezett"
@@ -918,7 +914,6 @@
                         "lebanese": "libanoni",
                         "malaysian": "malajziai",
                         "mexican": "mexikói",
-                        "pankcake": "palacsinta",
                         "pasta": "pasta (olasz tészta)",
                         "pizza": "pizza",
                         "polish": "lengyel",
@@ -1488,6 +1483,17 @@
                     "label": "Hashtagek",
                     "placeholder": "#példa"
                 },
+                "hazard_boundary": {
+                    "label": "Veszély",
+                    "options": {
+                        "avalanche": "Lavina",
+                        "electricity": "Áramütés",
+                        "hole": "Gödör",
+                        "minefield": "Taposóaknák",
+                        "nuclear": "Radioaktivitás",
+                        "quicksand": "Futóhomok"
+                    }
+                },
                 "healthcare": {
                     "label": "Típus"
                 },
@@ -1613,15 +1619,7 @@
                     "label": "Kosárlabdapalánkok",
                     "placeholder": "1, 2, 4…"
                 },
-                "horse_dressage": {
-                    "label": "Díjlovaglás",
-                    "options": {
-                        "equestrian": "Van",
-                        "undefined": "Nincs"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Lovaglás",
                     "options": {
                         "horse_riding": "Van",
                         "undefined": "Nincs"
@@ -1638,13 +1636,6 @@
                         "impossible": "Átjárhatatlan: Lovak számára nem járható út vagy híd. Túl keskeny, nincs elegendő támasz, akadályok vannak, például létrák. Életveszélyes."
                     },
                     "placeholder": "Nehéz, veszélyes…"
-                },
-                "horse_stables": {
-                    "label": "Lovaglóistálló",
-                    "options": {
-                        "stables": "Van",
-                        "undefined": "Nincs"
-                    }
                 },
                 "hot_water": {
                     "label": "Forró víz"
@@ -1823,12 +1814,15 @@
                 "lifeguard": {
                     "label": "Életmentő, úszómester"
                 },
+                "lift_gate/type": {
+                    "label": "Típus"
+                },
                 "line_attachment": {
                     "label": "Vezeték rögzítése"
                 },
                 "line_management": {
-                    "label": "vezetékelrendezés",
-                    "terms": "vezetékelrendezés,leágazás,lezárás,vezeték topológia"
+                    "label": "Vezetékelrendezés",
+                    "terms": "vezetékelrendezés,leágazás,lezárás,vezeték topológia,elágazás,felhasítás,beforgatás"
                 },
                 "lit": {
                     "label": "Kivilágított",
@@ -1876,7 +1870,12 @@
                     "terms": "mapillary image id"
                 },
                 "marker": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "stone": {
+                            "title": "Kő"
+                        }
+                    }
                 },
                 "material": {
                     "label": "Anyag",
@@ -1887,6 +1886,7 @@
                         "brick": "Tégla",
                         "bronze": "Bronz",
                         "concrete": "Beton",
+                        "dry_stone": "Szárazon rakott kő",
                         "glass": "Üveg",
                         "granite": "Gránit",
                         "iron": "Vas",
@@ -1896,7 +1896,12 @@
                         "plastic": "Műanyag",
                         "reinforced_conrete": "Vasbeton",
                         "rock": "Szikla",
-                        "sand": "Homok"
+                        "sand": "Homok",
+                        "sandstone": "Homokkő",
+                        "soil": "Talaj, föld",
+                        "steel": "Acél",
+                        "stone": "Kő",
+                        "wood": "Fa"
                     },
                     "terms": "anyag,építőanyag,alapanyag,összetevő,alkotóelem,matéria"
                 },
@@ -2115,10 +2120,10 @@
                     "placeholder": "3, 4, 5…"
                 },
                 "parcel_dropoff": {
-                    "label": "Csomagátadás"
+                    "label": "Csomagfeladás"
                 },
                 "parcel_pickup": {
-                    "label": "Csomagfelvétel",
+                    "label": "Csomagátvétel",
                     "options": {
                         "no": "nincs",
                         "undefined": "feltehetően van",
@@ -3477,7 +3482,7 @@
                 },
                 "aeroway/aerodrome": {
                     "name": "Repülőtér",
-                    "terms": "reptér,légikikötő"
+                    "terms": "repülőtér,reptér,légikikötő"
                 },
                 "aeroway/apron": {
                     "name": "Forgalmi előtér",
@@ -3493,7 +3498,7 @@
                 },
                 "aeroway/helipad": {
                     "name": "Helikopter-leszállóhely",
-                    "terms": "heliport,helikopter leszálló,helpad"
+                    "terms": "heliport,helikopter leszálló,helipad"
                 },
                 "aeroway/holding_position": {
                     "name": "Légi jármű várakozási pozíciója"
@@ -3554,7 +3559,7 @@
                 },
                 "amenity/bank": {
                     "name": "Bank",
-                    "terms": "takarékszövetkezet,pénzintézet,takarék"
+                    "terms": "bank,csekk,befektetés,széf,megtakarítás,részvény,takarékszövetkezet,pénzintézet,takarék"
                 },
                 "amenity/bar": {
                     "name": "Bár",
@@ -3830,8 +3835,9 @@
                     "terms": "jótékonyság,polc,könyvtár"
                 },
                 "amenity/grave_yard": {
-                    "name": "Templom körüli temető",
-                    "terms": "temető,templomkert,sírkert"
+                    "name": "Sírkert",
+                    "terms": "temető,templomkert,sírkert",
+                    "aliases": "Templom körüli temető"
                 },
                 "amenity/grit_bin": {
                     "name": "Útszóróanyagos láda",
@@ -3839,7 +3845,7 @@
                 },
                 "amenity/hospital": {
                     "name": "Kórház területe",
-                    "terms": "klinika,orvos,szakorvos,műtét"
+                    "terms": "klinika,orvos,egészség,szanatórium,kórház,szakorvos,műtét"
                 },
                 "amenity/hunting_stand": {
                     "name": "Magasles",
@@ -3929,7 +3935,7 @@
                     "name": "Ápolóotthon"
                 },
                 "amenity/parcel_locker": {
-                    "name": "Csomagfeladó automata",
+                    "name": "Csomagautomata",
                     "terms": "automata postaláda,csomagfelvevő automata,postaautomata"
                 },
                 "amenity/parking": {
@@ -3982,7 +3988,7 @@
                 },
                 "amenity/place_of_worship": {
                     "name": "Istentiszteleti hely",
-                    "terms": "templom,kápolna,vallás,felszentelt,ima,imádság,áhítat"
+                    "terms": "templom,székesegyház,egyház,kápolna,felszentelt,ima,imádság,istentiszteleti hely"
                 },
                 "amenity/place_of_worship/buddhist": {
                     "name": "Buddhista szentély",
@@ -4007,7 +4013,7 @@
                 },
                 "amenity/place_of_worship/jewish": {
                     "name": "Zsinagóga",
-                    "terms": "zsidó,imahely"
+                    "terms": "zsidó,imahely,zsinagóga"
                 },
                 "amenity/place_of_worship/muslim": {
                     "name": "Mecset",
@@ -4031,7 +4037,7 @@
                 },
                 "amenity/police": {
                     "name": "Rendőrség",
-                    "terms": "rendőr,csendőr,kapitányság,fogda,zsandár"
+                    "terms": "rendőr,csendőr,kapitányság,fogda,nyomozó,bűnüldözés"
                 },
                 "amenity/polling_station": {
                     "name": "Állandó szavazóhely",
@@ -4195,7 +4201,7 @@
                 },
                 "amenity/school": {
                     "name": "Iskola területe",
-                    "terms": "suli,tanítás,oktatás,nevelés,közoktatás,köznevelés"
+                    "terms": "iskola,tanítás,oktatás,nevelés,közoktatás,köznevelés,akadémia,általános iskola,középiskola,gimnázium'"
                 },
                 "amenity/shelter": {
                     "name": "Esőbeálló",
@@ -4559,8 +4565,8 @@
                     "terms": "fal,középkor"
                 },
                 "barrier/cycle_barrier": {
-                    "name": "Kerékpáros-akadály",
-                    "terms": "bicikliakadály"
+                    "name": "Kerékpáros akadály",
+                    "terms": "bicikliakadály,kerékpáros akadály"
                 },
                 "barrier/ditch": {
                     "name": "Árok (akadály)",
@@ -5490,7 +5496,7 @@
                 },
                 "highway/milestone": {
                     "name": "Kilométerkő",
-                    "terms": "kilométertábla"
+                    "terms": "kilométertábla,kilométerkő"
                 },
                 "highway/mini_roundabout": {
                     "name": "Kis körforgalom",
@@ -6740,7 +6746,7 @@
                 },
                 "natural/water/lake": {
                     "name": "Tó",
-                    "terms": "tó,tavacska,pocsolya,állóvíz"
+                    "terms": "tó,tavacska,állóvíz"
                 },
                 "natural/water/moat": {
                     "name": "Várárok"
@@ -6751,7 +6757,7 @@
                 },
                 "natural/water/pond": {
                     "name": "Kis tó",
-                    "terms": "tavacska,pocsolya"
+                    "terms": "tavacska,malomtó,medence,kis tó"
                 },
                 "natural/water/reservoir": {
                     "name": "Víztározó"
@@ -8388,7 +8394,7 @@
                     "terms": "szűkület"
                 },
                 "traffic_calming/cushion": {
-                    "name": "Fekvőrendőr",
+                    "name": "Forgalomlassító párna",
                     "terms": "bucka,sebességlassító,bukkanó,forgalomlassító,borda"
                 },
                 "traffic_calming/dip": {

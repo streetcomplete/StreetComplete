@@ -42,7 +42,7 @@ class ShopsOverlay(private val getFeature: (tags: Map<String, String>) -> Featur
             .map { element ->
                 val feature = getFeature(element.tags)
 
-                val icon = "ic_preset_" + (feature?.icon ?: "maki-shop" ).replace('-', '_')
+                val icon = "ic_preset_" + (feature?.icon ?: "maki-shop").replace('-', '_')
                 val label = getNameLabel(element.tags)
 
                 val style = if (element is Node) {

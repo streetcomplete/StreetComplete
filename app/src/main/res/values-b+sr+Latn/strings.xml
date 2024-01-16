@@ -1339,4 +1339,24 @@ Pored toga, neki slojevi na karti vam pružaju mogućnost dodavanja novih podata
     <string name="quest_crossing_kerb_height_title">"Koliko je visok ivičnjak na ovom prelazu?"</string>
     <string name="quest_maxheight_sign_title">"Koja maksimalna visina je ovde navedena?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Koja maksimalna visina je navedena ispod mosta?"</string>
+    <string name="quest_drinking_water_type_title2">"Da li ovde ima vode za piće? Ako ima, kakvog tipa je izvor?"</string>
+    <string name="quest_is_amenity_inside_title">"Da li je unutar izgrađenog objekta?"</string>
+    <string name="quest_bbq_fuel_title">"Kako se koristi ovaj roštilj?"</string>
+    <string name="quest_bbq_fuel_wood">"Na drva"</string>
+    <string name="quest_bbq_fuel_electric">"Na struju"</string>
+    <string name="quest_bbq_fuel_charcoal">"Na ćumur"</string>
+    <string name="inside">"unutar"</string>
+    <string name="outside">"spolja"</string>
+    <string name="quest_recycling_type_food_waste">"Na bio otpad"</string>
+    <string name="quest_defibrillator_location">"Gde se nalazi ovaj defibrilator?"</string>
+    <string name="quest_generalFee_title">"Da li je potrebno platiti za upotrebu?"</string>
+    <string name="about_title_logs">"Evidencija (%1$d)"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Podelite evidenciju"</string>
+    <string name="about_title_show_logs">"Prikaz evidencije"</string>
+    <string name="label_log_level">"Nivo evidencije"</string>
+    <string name="label_log_newer_than">"od"</string>
+    <string name="label_log_older_than">"do"</string>
+    <string name="label_log_message_contains">"Da poruka sadrži"</string>
+    <string name="title_logs_filters">"Filtriranje poruka"</string>
 </resources>

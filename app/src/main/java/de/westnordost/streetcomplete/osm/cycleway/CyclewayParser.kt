@@ -135,7 +135,7 @@ private fun createCyclewayForSide(
         "none", // no
         "sidepath", "use_sidepath", // separate?
         "buffered_lane", "buffered", "soft_lane", "doorzone", // lane + subtags?
-         // 0.1% - troll tags
+        // 0.1% - troll tags
         "proposed", "construction",
             -> INVALID
         null -> null
