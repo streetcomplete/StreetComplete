@@ -88,13 +88,8 @@ private val OPERATORS = linkedSetOf(
 
 private const val OPERATOR_CHARS = "!=~><(),"
 
-private val ELEMENT_TYPE_FILTERS_BY_NAME = ElementsTypeFilter.entries.associateBy {
-    when (it) {
-        ElementsTypeFilter.NODES -> "nodes"
-        ElementsTypeFilter.WAYS -> "ways"
-        ElementsTypeFilter.RELATIONS -> "relations"
-    }
-}
+private val ELEMENT_TYPE_FILTERS_BY_NAME =
+    ElementsTypeFilter.entries.associateBy { it.name.lowercase() }
 
 private fun StringWithCursor.parseElementsDeclaration(): Set<ElementsTypeFilter> {
     val result = LinkedHashSet<ElementsTypeFilter>()
