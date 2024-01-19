@@ -23,7 +23,7 @@ android {
         }
     }
 
-    compileSdk = 33
+    compileSdk = 34
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -33,7 +33,7 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 5601
         versionName = "56.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -129,8 +129,8 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.7.1")
@@ -151,7 +151,7 @@ dependencies {
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.8.1")
+    implementation("androidx.work:work-runtime:2.9.0")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
