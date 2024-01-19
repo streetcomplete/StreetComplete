@@ -12,7 +12,6 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLConnection
 
-
 @Serializable
 private data class PhotoUploadResponse(
     @SerialName("future_url")
