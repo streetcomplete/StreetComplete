@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.ktx.createBitmapWithWhiteBorder
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import java.lang.Integer.max
 import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlin.math.ceil
 import kotlin.math.max

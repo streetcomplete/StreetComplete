@@ -12,9 +12,11 @@ import de.westnordost.streetcomplete.databinding.FragmentOverlayImageSelectBindi
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.util.padWith
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
+import org.koin.android.ext.android.inject
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
 abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
@@ -22,6 +24,8 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
     final override val contentLayoutResId = R.layout.fragment_overlay_image_select
     private val binding by contentViewBinding(FragmentOverlayImageSelectBinding::bind)
+
+    private val prefs: Preferences by inject()
 
     protected open val itemsPerRow = 3
 
@@ -46,7 +50,7 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
         favs = LastPickedValuesStore(
-            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            prefs,
             key = javaClass.simpleName,
             serialize = { it.value.toString() },
             deserialize = { itemsByString[it] }
