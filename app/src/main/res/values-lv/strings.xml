@@ -139,7 +139,7 @@ Informācija, ko jūs ievadiet, tiek pievienota OpenStreetMap jūsu lietotājvā
     <string name="crash_title">"Ak nē, StreetComplete iepriekšējā reizē pieredzēja neparadzētu kļūdu!"</string>
     <string name="crash_compose_email">"Sastādīt e-pastu"</string>
     <string name="no_email_client">"Jums nav instalēts neviens e-pasta klients."</string>
-    <string name="pref_title_keep_screen_on">"Turiet ekrānu ieslēgtu"</string>
+    <string name="pref_title_keep_screen_on">"Paturēt ekrānu ieslēgtu"</string>
     <string name="download_server_error">"Gadījās kļūda pārlūkojot uzdevumus. Mēģiniet vēlreiz vēlāk."</string>
     <string name="upload_server_error">"Augšupielādējot atbildes gadījās kļūda. Mēģiniet vēlreiz vēlāk."</string>
     <string name="quest_generic_hasFeature_yes">"Jā"</string>

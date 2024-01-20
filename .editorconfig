@@ -16,7 +16,41 @@ indent_style = tab
 [*.{kt,kts}]
 indent_style = space
 indent_size = 4
-disabled_rules = annotation,argument-list-wrapping,chain-wrapping,filename,indent,no-empty-first-line-in-method-block,no-multi-spaces,package-name,paren-spacing,spacing-between-declarations-with-annotations,spacing-between-declarations-with-comments,trailing-comma,wrapping,no-wildcard-imports
+
+# disable Ktlint rules that are too strict for this project
+ktlint_standard_annotation = disabled
+ktlint_standard_argument-list-wrapping = disabled
+ktlint_standard_blank-line-before-declaration = disabled
+ktlint_standard_block-comment-initial-star-alignment = disabled
+ktlint_standard_chain-wrapping = disabled
+ktlint_standard_comment-wrapping = disabled
+ktlint_standard_filename = disabled
+ktlint_standard_function-naming = disabled
+ktlint_standard_function-signature = disabled
+ktlint_standard_if-else-wrapping = disabled
+ktlint_standard_indent = disabled
+ktlint_standard_max-line-length = disabled
+ktlint_standard_multiline-expression-wrapping = disabled
+ktlint_standard_no-blank-line-in-list = disabled
+ktlint_standard_no-consecutive-comments = disabled
+ktlint_standard_no-empty-first-line-in-class-body = disabled
+ktlint_standard_no-multi-spaces = disabled
+ktlint_standard_no-single-line-block-comment = disabled
+ktlint_standard_no-wildcard-imports = disabled
+ktlint_standard_package-name = disabled
+ktlint_standard_parameter-list-wrapping = disabled
+ktlint_standard_paren-spacing = disabled
+ktlint_standard_property-naming = disabled
+ktlint_standard_property-wrapping = disabled
+ktlint_standard_spacing-between-declarations-with-annotations = disabled
+ktlint_standard_spacing-between-declarations-with-comments = disabled
+ktlint_standard_statement-wrapping = disabled
+ktlint_standard_string-template-indent = disabled
+ktlint_standard_trailing-comma-on-call-site = disabled
+ktlint_standard_trailing-comma-on-declaration-site = disabled
+ktlint_standard_value-argument-comment = disabled
+ktlint_standard_value-parameter-comment = disabled
+ktlint_standard_wrapping = disabled
 
 [gradlew]
 indent_style = space

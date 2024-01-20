@@ -47,17 +47,17 @@ class StyleableOverlayManager(
     private var updateJob: Job? = null
 
     private var overlay: Overlay? = null
-    set(value) {
-        if (field == value) return
-        val wasNull = field == null
-        val isNullNow = value == null
-        field = value
-        when {
-            isNullNow -> hide()
-            wasNull ->   show()
-            else ->      switchOverlay()
+        set(value) {
+            if (field == value) return
+            val wasNull = field == null
+            val isNullNow = value == null
+            field = value
+            when {
+                isNullNow -> hide()
+                wasNull ->   show()
+                else ->      switchOverlay()
+            }
         }
-    }
 
     private val overlayListener = object : SelectedOverlaySource.Listener {
         override fun onSelectedOverlayChanged() {
@@ -137,8 +137,11 @@ class StyleableOverlayManager(
         updateJob = viewLifecycleScope.launch {
             val mapData = withContext(Dispatchers.IO) {
                 synchronized(mapDataSource) {
-                    if (!coroutineContext.isActive) null
-                    else mapDataSource.getMapDataWithGeometry(bbox)
+                    if (!coroutineContext.isActive) {
+                        null
+                    } else {
+                        mapDataSource.getMapDataWithGeometry(bbox)
+                    }
                 }
             } ?: return@launch
             setStyledElements(mapData)

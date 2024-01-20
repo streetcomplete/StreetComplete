@@ -42,7 +42,6 @@ class StreetParkingParserKtTest {
     //region new schema
 
     @Test fun parking() {
-
         val orientations = listOf(
             "parallel" to PARALLEL,
             "diagonal" to DIAGONAL,
@@ -58,9 +57,7 @@ class StreetParkingParserKtTest {
         )
 
         for ((orientationStr, orientationValue) in orientations) {
-
             for ((positionStr, positionValue) in positions) {
-
                 val parking = StreetParkingPositionAndOrientation(orientationValue, positionValue)
 
                 assertEquals(
@@ -119,7 +116,6 @@ class StreetParkingParserKtTest {
     }
 
     @Test fun `special values for parking`() {
-
         val values = listOf(
             "no" to NoStreetParking,
             "separate" to StreetParkingSeparate,
@@ -159,7 +155,6 @@ class StreetParkingParserKtTest {
     }
 
     @Test fun `staggered parking`() {
-
         val values = listOf(
             "lane" to STAGGERED_ON_STREET,
             "half_on_kerb" to STAGGERED_HALF_ON_STREET,
@@ -208,7 +203,6 @@ class StreetParkingParserKtTest {
     }
 
     @Test fun `painted area only parking`() {
-
         val parking = StreetParkingPositionAndOrientation(PARALLEL, PAINTED_AREA_ONLY)
 
         assertEquals(
@@ -302,7 +296,6 @@ class StreetParkingParserKtTest {
     //region old schema
 
     @Test fun `parking with old schema`() {
-
         val orientations = listOf(
             "parallel" to PARALLEL,
             "diagonal" to DIAGONAL,
@@ -320,9 +313,7 @@ class StreetParkingParserKtTest {
         )
 
         for ((orientationStr, orientationValue) in orientations) {
-
             for ((positionStr, positionValue) in positions) {
-
                 val parking = StreetParkingPositionAndOrientation(orientationValue, positionValue)
 
                 assertEquals(
@@ -410,7 +401,6 @@ class StreetParkingParserKtTest {
     }
 
     @Test fun `special values for parking with old schema`() {
-
         val values = listOf(
             "no" to NoStreetParking,
             "separate" to StreetParkingSeparate,

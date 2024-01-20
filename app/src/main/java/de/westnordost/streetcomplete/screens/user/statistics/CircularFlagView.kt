@@ -49,7 +49,9 @@ class CircularFlagView @JvmOverloads constructor(
 
         val size = if ((widthMode == MeasureSpec.EXACTLY) xor (heightMode == MeasureSpec.EXACTLY)) {
             if (widthMode == MeasureSpec.EXACTLY) width else height
-        } else min(width, height)
+        } else {
+            min(width, height)
+        }
         setMeasuredDimension(size, size)
         boundsOffset = null
     }

@@ -671,15 +671,7 @@
                     "label": "חישוקים",
                     "placeholder": "1, 2, 4…"
                 },
-                "horse_dressage": {
-                    "label": "רכיבה אומנותית",
-                    "options": {
-                        "equestrian": "כן",
-                        "undefined": "לא"
-                    }
-                },
                 "horse_riding": {
-                    "label": "רכיבה על סוסים",
                     "options": {
                         "horse_riding": "כן",
                         "undefined": "לא"
@@ -696,13 +688,6 @@
                         "impossible": "בלתי אפשרי: דרך או גשר שלא ניתן לעבור על גבי סוסים. צרה מדי, אין מספיק תמיכה, מכשולים כגון סולמות. סכנת חיים."
                     },
                     "placeholder": "קשה, מסוכן…"
-                },
-                "horse_stables": {
-                    "label": "אורוות רכיבה",
-                    "options": {
-                        "stables": "כן",
-                        "undefined": "לא"
-                    }
                 },
                 "hot_water": {
                     "label": "מים חמים"
@@ -840,10 +825,10 @@
                     "label": "אורך (מטרים)"
                 },
                 "level": {
-                    "label": "רמה"
+                    "label": "קומה"
                 },
                 "level_semi": {
-                    "label": "רמות"
+                    "label": "קומות"
                 },
                 "liaison": {
                     "label": "סוג"

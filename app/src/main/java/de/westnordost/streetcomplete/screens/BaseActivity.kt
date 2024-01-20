@@ -8,18 +8,22 @@ import androidx.core.app.ActivityCompat
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.ktx.addedToFront
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import de.westnordost.streetcomplete.util.setLocales
+import org.koin.android.ext.android.inject
 import java.util.Locale
 
 open class BaseActivity : AppCompatActivity {
     constructor() : super()
     constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
+    private val prefs: Preferences by inject()
+
     private var locale: Locale? = null
 
     override fun attachBaseContext(base: Context) {
-        val locale = getSelectedLocale(base)
+        val locale = getSelectedLocale(prefs)
         this.locale = locale
 
         var newBase = base
@@ -36,7 +40,7 @@ open class BaseActivity : AppCompatActivity {
     override fun onRestart() {
         super.onRestart()
         // force restart if the locale changed while the activity was in background
-        if (locale != getSelectedLocale(this)) {
+        if (locale != getSelectedLocale(prefs)) {
             ActivityCompat.recreate(this)
         }
     }

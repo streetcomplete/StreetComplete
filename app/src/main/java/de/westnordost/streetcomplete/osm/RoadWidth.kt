@@ -137,12 +137,16 @@ private fun estimateCyclewaysWidth(tags: Map<String, String>, isLane: Boolean): 
     val leftWidth = if (sides.left?.cycleway?.isLane == isLane) {
         (tags["cycleway:both:width"] ?: tags["cycleway:left:width"])?.toFloatOrNull()
             ?: sides.left.estimatedWidth
-    } else 0f
+    } else {
+        0f
+    }
 
     val rightWidth = if (sides.right?.cycleway?.isLane == isLane) {
         (tags["cycleway:both:width"] ?: tags["cycleway:right:width"])?.toFloatOrNull()
             ?: sides.right.estimatedWidth
-    } else 0f
+    } else {
+        0f
+    }
 
     return leftWidth + rightWidth
 }

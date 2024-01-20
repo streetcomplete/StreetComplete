@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import android.util.Log
 import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.saveToFile
+import de.westnordost.streetcomplete.util.logs.Log
 import java.io.File
 import java.io.IOException
 import java.net.URL

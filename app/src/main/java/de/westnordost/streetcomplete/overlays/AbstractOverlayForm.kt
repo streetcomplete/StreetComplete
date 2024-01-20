@@ -124,7 +124,7 @@ abstract class AbstractOverlayForm :
         private set
     private var _geometry: ElementGeometry? = null
     protected val geometry: ElementGeometry
-    get() = _geometry ?: ElementPointGeometry(getDefaultMarkerPosition()!!)
+        get() = _geometry ?: ElementPointGeometry(getDefaultMarkerPosition()!!)
 
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
@@ -402,7 +402,12 @@ abstract class AbstractOverlayForm :
 
     protected fun composeNote(element: Element) {
         val overlayTitle = englishResources.getString(overlay.title)
-        val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
+        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
+            "In context of overlay \"$overlayTitle\""
+        } else {
+            "In context of overlay \"$overlayTitle\" – $hintLabel"
+        }
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }
 

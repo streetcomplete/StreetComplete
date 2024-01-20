@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
 
 class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>() {
-    data class Params(val lengthUnit: LengthUnit, val measureVertical: Boolean, )
+    data class Params(val lengthUnit: LengthUnit, val measureVertical: Boolean)
 
     override fun createIntent(context: Context, input: Params): Intent {
         val unit = when (input.lengthUnit) {

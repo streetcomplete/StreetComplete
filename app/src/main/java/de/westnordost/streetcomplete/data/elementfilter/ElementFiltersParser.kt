@@ -180,8 +180,11 @@ private fun StringWithCursor.parseBracketsAndSpaces(bracket: Char, expr: Boolean
         expectAnyNumberOfSpaces()
         if (nextIsAndAdvance(bracket)) {
             try {
-                if (bracket == '(')      expr.addOpenBracket()
-                else if (bracket == ')') expr.addCloseBracket()
+                if (bracket == '(') {
+                    expr.addOpenBracket()
+                } else if (bracket == ')') {
+                    expr.addCloseBracket()
+                }
             } catch (e: IllegalStateException) {
                 throw ParseException(e.message, cursorPos)
             }

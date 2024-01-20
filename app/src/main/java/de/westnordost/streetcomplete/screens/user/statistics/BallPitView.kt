@@ -186,7 +186,7 @@ class BallPitView @JvmOverloads constructor(
                 return true
             }
 
-            override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+            override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
                 val a = view.rotation / 180.0 * PI
                 val vx = (cos(a) * velocityX - sin(a) * velocityY).toFloat()
                 val vy = (cos(a) * velocityY + sin(a) * velocityX).toFloat()

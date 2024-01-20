@@ -71,4 +71,10 @@ class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
         assertFalse(dao.contains(keys[0]))
         assertFalse(dao.contains(keys[1]))
     }
+
+    @Test fun countAll() {
+        assertEquals(0, dao.countAll())
+        dao.add(OsmQuestKey(ElementType.NODE, 123L, "bla"))
+        assertEquals(1, dao.countAll())
+    }
 }

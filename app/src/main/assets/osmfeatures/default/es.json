@@ -537,8 +537,8 @@
                     "terms": "marca,firma"
                 },
                 "brewery": {
-                    "label": "Cerveza de barril / tirada",
-                    "terms": "cerveza de barril,cerveza tirada"
+                    "label": "Marcas de cerveza vendidas",
+                    "terms": "marca de cerveza,dispensador de cerveza,cerveza embotellada,cerveza de barril,de grifo,cerveza de grifo,cerveza tirada"
                 },
                 "bridge": {
                     "label": "Tipo",
@@ -599,6 +599,7 @@
                         "public": "Edificio público",
                         "residential": "Edificio residencial",
                         "retail": "Edificio de tiendas comerciales",
+                        "riding_hall": "Pista de equitación",
                         "roof": "Techo",
                         "ruins": "Edificio en ruinas",
                         "school": "Edificio escolar",
@@ -1062,7 +1063,7 @@
                         "lebanese": "Libanesa",
                         "malaysian": "Malaya",
                         "mexican": "Mexicana",
-                        "pankcake": "Panqueque / Crep",
+                        "pancake": "Panqueque",
                         "pasta": "Pasta",
                         "peruvian": "Peruana",
                         "pizza": "Pizza",
@@ -1277,7 +1278,7 @@
                     "terms": "dirección,rumbo"
                 },
                 "dispensing": {
-                    "label": "Prepara recetas"
+                    "label": "Dispensa medicamentos recetados"
                 },
                 "display": {
                     "label": "Visualización",
@@ -1309,6 +1310,14 @@
                         "tidal": "Dique de mareas"
                     }
                 },
+                "dock/height": {
+                    "label": "Altura del muelle (Metros)",
+                    "terms": "altura del muelle,elevación del muelle,nivel del muelle"
+                },
+                "dock/width": {
+                    "label": "Ancho del muelle (Metros)",
+                    "terms": "ancho del muelle,anchura del muelle,extensión del muelle"
+                },
                 "dog": {
                     "label": "Perros",
                     "options": {
@@ -1320,6 +1329,14 @@
                 },
                 "door": {
                     "label": "Puerta"
+                },
+                "door/height": {
+                    "label": "Altura de la puerta (Metros)",
+                    "terms": "altura de la puerta,elevación de la puerta,nivel de la puerta"
+                },
+                "door/width": {
+                    "label": "Ancho de la puerta (Metros)",
+                    "terms": "ancho de la puerta,anchura de la puerta,extensión de la puerta"
                 },
                 "door_type": {
                     "label": "Tipo"
@@ -1923,15 +1940,8 @@
                     "label": "Aros",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Doma de equinos",
-                    "options": {
-                        "equestrian": "Sí",
-                        "undefined": "No"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Equitación",
+                    "label": "Centro de equitación",
                     "options": {
                         "horse_riding": "Sí",
                         "undefined": "No"
@@ -1949,13 +1959,6 @@
                     },
                     "placeholder": "Difícil, Peligroso...",
                     "terms": "dificultad para montar a caballo,caballo,montar"
-                },
-                "horse_stables": {
-                    "label": "Establo para equitación",
-                    "options": {
-                        "stables": "Sí",
-                        "undefined": "No"
-                    }
                 },
                 "hot_water": {
                     "label": "Agua caliente"
@@ -2326,6 +2329,10 @@
                         "stone": "Piedra",
                         "war_memorial": "Monumento al soldado caído"
                     }
+                },
+                "memorial/addr": {
+                    "label": "Dirección del edificio más cercano",
+                    "terms": "ubicación del edificio más próximo,domicilio del inmueble más próximo,dirección del inmueble más próximo,más cercano,más inmediato,más vecino,más contiguo"
                 },
                 "message": {
                     "label": "Mensaje",
@@ -3145,7 +3152,7 @@
                 "route_master": {
                     "label": "Tipo"
                 },
-                "royal_cypher": {
+                "royal_cypher-GB": {
                     "label": "Monograma real",
                     "options": {
                         "CIIIR": "CIIIR (Carlos III)",
@@ -3825,6 +3832,13 @@
                 "telecom/medium": {
                     "label": "Medio"
                 },
+                "telescope/type": {
+                    "label": "Tipo",
+                    "options": {
+                        "optical": "Telescopio óptico",
+                        "radio": "Telescopio de radio"
+                    }
+                },
                 "tents": {
                     "label": "Carpas"
                 },
@@ -4465,6 +4479,10 @@
                     "name": "Cajero automático",
                     "terms": "cajero automático,retiro,dinero,efectivo,banco"
                 },
+                "amenity/baking_oven": {
+                    "name": "Horno de panadería",
+                    "terms": "horno de panadería,horno de repostería,horno para hornear"
+                },
                 "amenity/bank": {
                     "name": "Banco",
                     "terms": "banco,bancario,cooperativa de ahorro y crédito,cooperativa de crédito,financiera,entidad bancaria"
@@ -4867,6 +4885,10 @@
                 "amenity/fuel": {
                     "name": "Estación de servicio / Gasolinera",
                     "terms": "gasolinera,surtidor,estación de servicio,combustible"
+                },
+                "amenity/funeral_hall": {
+                    "name": "Sala de servicio funerario",
+                    "terms": "sala de servicio funerario,servicio funerario,sala de velatorio,velatorio,sala de funeral,funeral"
                 },
                 "amenity/gambling": {
                     "name": "Salón de juegos de azar",
@@ -5868,6 +5890,10 @@
                     "name": "Edificio de apartamentos",
                     "terms": "apartamentos,departamentos,piso,residencia,vivienda"
                 },
+                "building/bakehouse": {
+                    "name": "Panadería",
+                    "terms": "panadería,pastelería"
+                },
                 "building/barn": {
                     "name": "Granero",
                     "terms": "granero,hórreo,silo,depósito de cereal,troj"
@@ -6030,6 +6056,10 @@
                 "building/retail": {
                     "name": "Edificio de tiendas comerciales",
                     "terms": "venta al por menor,venta al detalle,edificio de tiendas comerciales,tiendas comerciales"
+                },
+                "building/riding_hall": {
+                    "name": "Pista de equitación cubierta",
+                    "terms": "ecuestre,equitación,pista cubierta,equitación cubierta"
                 },
                 "building/roof": {
                     "name": "Techo",
@@ -6902,7 +6932,7 @@
                 },
                 "highway/speed_camera": {
                     "name": "Radar de tráfico / Cámara de velocidad",
-                    "terms": "cámara de velocidad,camara de velocidad,radar de velocidad,radares de tráfico,cámara,camara,radar,tráfico,trafico,trampa,cámara de policía de tráfico,cámara de luz roja,fotomulta,radar de foto,cámara de carril de autobús,límite velocidad,control velocidad,fotorradar"
+                    "terms": "cámara de velocidad,camara de velocidad,radar de velocidad,radares de tráfico,cámara,camara,radar,tráfico,trafico,trampa,cámara de policía de tráfico,cámara de luz roja,fotomulta,radar de foto,cámara de carril de autobús,límite velocidad,control velocidad,fotorradar,radar vigila,vigila"
                 },
                 "highway/speed_display": {
                     "name": "Señal de velocidad por radar",
@@ -7023,6 +7053,10 @@
                 "historic/memorial/plaque": {
                     "name": "Placa conmemorativa",
                     "terms": "dedicatoria,epitafio,marcador histórico,recuerdo,memoria"
+                },
+                "historic/memorial/stolperstein-EU": {
+                    "name": "Placa conmemorativa Stolperstein",
+                    "terms": "placa conmemorativa stolperstein,lápida memorial stolperstein,monumento recordatorio stolperstein,homenaje póstumo stolperstein,memoria histórica stolperstein"
                 },
                 "historic/monument": {
                     "name": "Monumento grande",
@@ -7599,7 +7633,7 @@
                     "terms": "netball,baloncesto"
                 },
                 "leisure/pitch/padel": {
-                    "name": "Cancha de paddle / Pista de pádle",
+                    "name": "Cancha de paddle / Pista de pádel",
                     "terms": "tenis,pádel,padel,paddle,cancha,campo,pista"
                 },
                 "leisure/pitch/paintball": {
@@ -7689,6 +7723,10 @@
                 "leisure/sports_centre/climbing": {
                     "name": "Gimnasio de escalada",
                     "terms": "rappel,muro de escalada artificial,instalación de escalada en roca,muro interior de roca,gimnasio de roca,cuerdas,escalada"
+                },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Parque de aventuras",
+                    "terms": "circuito de obstáculos,escalada con cuerda,circuito de cuerdas,tirolina,tirolesa"
                 },
                 "leisure/sports_centre/horse_racing": {
                     "name": "Hipódromo",
@@ -7998,6 +8036,10 @@
                     "name": "Depósito de agua cubierto",
                     "terms": "depósito subterráneo,tanque de agua,reservorio subterráneo,embalse,depósito de agua,cubierto"
                 },
+                "man_made/satellite_dish": {
+                    "name": "Antena parabólica",
+                    "terms": "antena parabólica,antena satelital,plato satelital"
+                },
                 "man_made/silo": {
                     "name": "Silo",
                     "terms": "silo,contenedor,grano,maíz,trigo,granero"
@@ -8049,6 +8091,18 @@
                 "man_made/tailings_pond": {
                     "name": "Estanque de relaves",
                     "terms": "estanque,relaves,minería,separación,lodo"
+                },
+                "man_made/telescope": {
+                    "name": "Telescopio",
+                    "terms": "telescopio,catalejo,luneta"
+                },
+                "man_made/telescope/optical": {
+                    "name": "Telescopio óptico",
+                    "terms": "telescopio óptico,telescopio refractor,telescopio reflector"
+                },
+                "man_made/telescope/radio": {
+                    "name": "Telescopio de radio",
+                    "terms": "telescopio de radio,radiotelescopio,antena de radioastronomía"
                 },
                 "man_made/torii": {
                     "name": "Torii",
@@ -8993,6 +9047,10 @@
                     "name": "Interruptor de alimentación",
                     "terms": "interruptor de encendido,botón de alimentación,interruptor de red,botón de encendido,interruptor de corriente,encendido,alimentación,alimentacion,red,corriente"
                 },
+                "power/switchgear": {
+                    "name": "Aparellaje eléctrico",
+                    "terms": "switchgear,aparellaje eléctrico,equipo de conmutación,aparato de maniobra,interruptor"
+                },
                 "power/tower": {
                     "name": "Torre de alta tensión",
                     "terms": "torre de alto voltaje,torres de alta tensión,torre de electricidad"
@@ -9441,7 +9499,7 @@
                     "terms": "automóvil,automotriz,auto,coche,carro,vehículo,concesionaria"
                 },
                 "shop/car_parts": {
-                    "name": "Tienda de componentes de automóvil",
+                    "name": "Tienda de repuestos de automóvil",
                     "terms": "coche,carro,auto,automóvil,vehículo,repuestos,piezas,partes,tienda de partes,autopartes"
                 },
                 "shop/car_repair": {

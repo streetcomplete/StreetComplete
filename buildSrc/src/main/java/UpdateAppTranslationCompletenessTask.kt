@@ -28,7 +28,7 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
             if (exportLanguages != null && !exportLanguages.any { it == locale } && locale != Locale.US) {
                 if (completedPercentage >= mustIncludeLanguagePercentage) {
                     throw Exception(
-                        "App has been translated ${completedPercentage}% to " +
+                        "App has been translated $completedPercentage% to " +
                         "${locale.displayLanguage} (${locale.language}) " +
                         " but the language is not included in the app."
                     )

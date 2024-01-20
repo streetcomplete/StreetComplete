@@ -536,10 +536,6 @@
                     "label": "Marque",
                     "terms": "marque"
                 },
-                "brewery": {
-                    "label": "Bières à la pression",
-                    "terms": "bière pression,à la pression,pression"
-                },
                 "bridge": {
                     "label": "Type",
                     "placeholder": "Défaut"
@@ -599,6 +595,7 @@
                         "public": "Établissement public",
                         "residential": "Bâtiment résidentiel",
                         "retail": "Bâtiment commercial",
+                        "riding_hall": "Terrain d'équitation",
                         "roof": "Toit",
                         "ruins": "Bâtiment en ruine",
                         "school": "Bâtiment scolaire - élémentaire ou secondaire",
@@ -1062,7 +1059,7 @@
                         "lebanese": "Libanaise",
                         "malaysian": "Malais",
                         "mexican": "Mexicaine",
-                        "pankcake": "Pancakes",
+                        "pancake": "Pancakes",
                         "pasta": "Pâtes",
                         "peruvian": "Péruvienne",
                         "pizza": "Pizza",
@@ -1320,6 +1317,14 @@
                 },
                 "door": {
                     "label": "Porte"
+                },
+                "door/height": {
+                    "label": "Hauteur de la porte (mètres)",
+                    "terms": "hauteur de la porte"
+                },
+                "door/width": {
+                    "label": "Largeur de la porte (mètres)",
+                    "terms": "largeur de la porte"
                 },
                 "door_type": {
                     "label": "Type"
@@ -1923,15 +1928,8 @@
                     "label": "Nombre d'arceaux",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Dressage",
-                    "options": {
-                        "equestrian": "Oui",
-                        "undefined": "Non"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Équitation",
+                    "label": "Centre équestre",
                     "options": {
                         "horse_riding": "Oui",
                         "undefined": "Non"
@@ -1949,13 +1947,6 @@
                     },
                     "placeholder": "Difficile, Dangereux...",
                     "terms": "équitation,équestre,cheval,difficulté"
-                },
-                "horse_stables": {
-                    "label": "Étable pour cavaliers",
-                    "options": {
-                        "stables": "Oui",
-                        "undefined": "Non"
-                    }
                 },
                 "hot_water": {
                     "label": "Eau chaude"
@@ -2211,6 +2202,14 @@
                 "marker": {
                     "label": "Type",
                     "options": {
+                        "aerial": {
+                            "description": "Conçu pour être visible depuis le ciel.",
+                            "title": "Aérien"
+                        },
+                        "ground": {
+                            "description": "Marqueur plat posé au sol.",
+                            "title": "Sol"
+                        },
                         "pedestal": {
                             "title": "Piédestal"
                         },
@@ -2218,6 +2217,7 @@
                             "title": "Plaque"
                         },
                         "stone": {
+                            "description": "Marques peintes ou gravées sur une pierre.",
                             "title": "Pierre"
                         }
                     }
@@ -2312,6 +2312,10 @@
                         "stone": "Pierre",
                         "war_memorial": "Mémorial de guerre"
                     }
+                },
+                "memorial/addr": {
+                    "label": "Adresse la plus proche",
+                    "terms": "adresse la plus proche"
                 },
                 "message": {
                     "label": "Message",
@@ -3131,13 +3135,13 @@
                 "route_master": {
                     "label": "Type"
                 },
-                "royal_cypher": {
+                "royal_cypher-GB": {
                     "label": "Monogramme royal",
                     "options": {
                         "CIIIR": "CIIIR (Charles III)",
                         "EIIR": "EIIR (Elizabeth II)",
-                        "EVIIIR": "EVIIIR (Edward VIII)",
-                        "EVIIR": "EVIIR (Edward VII)",
+                        "EVIIIR": "EVIIIR (Édouard VIII)",
+                        "EVIIR": "EVIIR (Édouard VII)",
                         "GR": "GR (George V)",
                         "GVIR": "GVIR (George VI)",
                         "VR": "VR (Victoria)",
@@ -3810,6 +3814,13 @@
                 "telecom/medium": {
                     "label": "Moyenne"
                 },
+                "telescope/type": {
+                    "label": "Type",
+                    "options": {
+                        "optical": "Télescope optique",
+                        "radio": "Radiotélescope"
+                    }
+                },
                 "tents": {
                     "label": "Tentes"
                 },
@@ -4448,6 +4459,10 @@
                 "amenity/atm": {
                     "name": "Distributeur de billets",
                     "terms": "distributeur de billets,distributeur automatique,distributeur automatique de billets,guichet automatique,dab,gab,billets de banque,retrait d'argent,retrait de liquide,guichet de retrait,retrait automatique,atm,amenity atm,mister cash,bancontact"
+                },
+                "amenity/baking_oven": {
+                    "name": "Four à bois",
+                    "terms": "four à bois"
                 },
                 "amenity/bank": {
                     "name": "Banque",
@@ -5843,6 +5858,10 @@
                     "name": "Immeuble",
                     "terms": "immeuble,appartements"
                 },
+                "building/bakehouse": {
+                    "name": "Four à pain",
+                    "terms": "four à pain"
+                },
                 "building/barn": {
                     "name": "Grange",
                     "terms": "grange,hangar agricole,bâtiment agricole,stockage,grenier,abri,remise,étable,ferme,barn"
@@ -6006,6 +6025,10 @@
                 "building/retail": {
                     "name": "Bâtiment commercial",
                     "terms": "bâtiment commercial"
+                },
+                "building/riding_hall": {
+                    "name": "Terrain d'équitation en intérieur",
+                    "terms": "terrain d'équitation en intérieur,terrain d'équitation,intérieur"
                 },
                 "building/roof": {
                     "name": "Toit",
@@ -7000,6 +7023,10 @@
                     "name": "Plaque commémorative",
                     "terms": "épitaphe,marque historique,historique,souvenir,mémoire,plaque historique"
                 },
+                "historic/memorial/stolperstein-EU": {
+                    "name": "Plaque mémorielle Stolpersteine",
+                    "terms": "plaque mémorielle stolpersteine,stolpersteine"
+                },
                 "historic/monument": {
                     "name": "Grand monument commémoratif",
                     "terms": "grand mémorial"
@@ -7665,6 +7692,10 @@
                     "name": "Salle d'escalade",
                     "terms": "escalade,salle,mur,prises,block,bloque"
                 },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Parc d'aventures",
+                    "terms": "parc d'aventures"
+                },
                 "leisure/sports_centre/horse_racing": {
                     "name": "Course hippique",
                     "terms": "course équestre,galop,pari,pari sportif,course de cheval,course,équitation,cheval"
@@ -7973,6 +8004,10 @@
                     "name": "Réservoir couvert",
                     "terms": "réservoir,bassin,couvert,enterré,souterrain"
                 },
+                "man_made/satellite_dish": {
+                    "name": "Antenne satellite",
+                    "terms": "antenne satellite"
+                },
                 "man_made/silo": {
                     "name": "Silo",
                     "terms": "réservoir,emplacement de stockage"
@@ -8024,6 +8059,18 @@
                 "man_made/tailings_pond": {
                     "name": "Bassin de résidus miniers",
                     "terms": "bassin,étang,résidus,déchets,mine,minier,sédimentation"
+                },
+                "man_made/telescope": {
+                    "name": "Télescope",
+                    "terms": "télescope"
+                },
+                "man_made/telescope/optical": {
+                    "name": "Télescope optique",
+                    "terms": "télescope optique"
+                },
+                "man_made/telescope/radio": {
+                    "name": "Radiotélescope",
+                    "terms": "radiotélescope"
                 },
                 "man_made/torii": {
                     "name": "Torii",
@@ -8968,6 +9015,10 @@
                 "power/switch": {
                     "name": "Appareil de connexion électrique",
                     "terms": "appareil de connexion électrique"
+                },
+                "power/switchgear": {
+                    "name": "Appareillage électrique",
+                    "terms": "appareillage électrique,appareillage,électrique,appareils de commutation électrique,équipements électriques,appareils,équipements"
                 },
                 "power/tower": {
                     "name": "Pylône électrique",

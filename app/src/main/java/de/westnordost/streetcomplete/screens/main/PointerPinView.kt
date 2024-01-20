@@ -111,13 +111,11 @@ class PointerPinView @JvmOverloads constructor(
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
-        val c = canvas ?: return
-
+    override fun onDraw(canvas: Canvas) {
         val size = min(width, height)
         val r = pinRotation
 
-        c.withRotation(r, width / 2f, height / 2f) {
+        canvas.withRotation(r, width / 2f, height / 2f) {
             pointerPinBitmap?.let { canvas.drawBitmap(it, 0f, 0f, antiAliasPaint) }
         }
 
@@ -134,7 +132,7 @@ class PointerPinView @JvmOverloads constructor(
                 width / 2 + iconSize / 2 + x,
                 height / 2 + iconSize / 2 + y
             )
-            icon.draw(c)
+            icon.draw(canvas)
         }
     }
 

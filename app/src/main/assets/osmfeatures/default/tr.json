@@ -525,9 +525,6 @@
                 "brand": {
                     "label": "Marka"
                 },
-                "brewery": {
-                    "label": "Fıçı Bira"
-                },
                 "bridge": {
                     "label": "Tür",
                     "placeholder": "Varsayılan"
@@ -1034,7 +1031,6 @@
                         "lebanese": "Lübnanlı",
                         "malaysian": "Malezyalı",
                         "mexican": "Meksikalı",
-                        "pankcake": "Pancake",
                         "pasta": "Pasta",
                         "peruvian": "Peruvian",
                         "pizza": "Pizza",
@@ -1806,15 +1802,7 @@
                     "label": "Engel",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "At binişi eğitim alanı",
-                    "options": {
-                        "equestrian": "Evet",
-                        "undefined": "Hayır"
-                    }
-                },
                 "horse_riding": {
-                    "label": "At Binicilik Spor",
                     "options": {
                         "horse_riding": "Evet",
                         "undefined": "Hayır"
@@ -1831,13 +1819,6 @@
                         "impossible": "Impassable: Way or bridge not passable for horses. Too narrow, insufficient support, obstacles like ladders. Danger of life."
                     },
                     "placeholder": "Zor, Tehlikeli..."
-                },
-                "horse_stables": {
-                    "label": "Sabit Biniş",
-                    "options": {
-                        "stables": "Evet",
-                        "undefined": "Hayır"
-                    }
                 },
                 "hot_water": {
                     "label": "Sıcak Su"
@@ -2900,20 +2881,6 @@
                 },
                 "route_master": {
                     "label": "Tür"
-                },
-                "royal_cypher": {
-                    "label": "Royal Cypher",
-                    "options": {
-                        "CIIIR": "CIIIR (Charles III)",
-                        "EIIR": "EIIR (Elizabeth II)",
-                        "EVIIIR": "EVIIIR (Edward VIII)",
-                        "EVIIR": "EVIIR (Edward VII)",
-                        "GR": "GR (George V)",
-                        "GVIR": "GVIR (George VI)",
-                        "VR": "VR (Victoria)",
-                        "no": "No",
-                        "scottish_crown": "Scottish Crown"
-                    }
                 },
                 "ruins": {
                     "label": "Tür"

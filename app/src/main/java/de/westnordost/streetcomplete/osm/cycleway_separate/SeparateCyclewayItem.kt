@@ -24,9 +24,17 @@ private fun SeparateCycleway.getIconResId(isLeftHandTraffic: Boolean): Int = whe
     ALLOWED_ON_FOOTWAY -> R.drawable.ic_separate_cycleway_allowed
     NON_DESIGNATED ->     R.drawable.ic_separate_cycleway_no
     NON_SEGREGATED ->     R.drawable.ic_separate_cycleway_not_segregated
-    SEGREGATED -> if (isLeftHandTraffic) R.drawable.ic_separate_cycleway_segregated_l
-                  else                   R.drawable.ic_separate_cycleway_segregated
+    SEGREGATED ->
+        if (isLeftHandTraffic) {
+            R.drawable.ic_separate_cycleway_segregated_l
+        } else {
+            R.drawable.ic_separate_cycleway_segregated
+        }
     EXCLUSIVE ->          R.drawable.ic_separate_cycleway_exclusive
-    EXCLUSIVE_WITH_SIDEWALK ->  if (isLeftHandTraffic) R.drawable.ic_separate_cycleway_with_sidewalk_l
-                                else                   R.drawable.ic_separate_cycleway_with_sidewalk
+    EXCLUSIVE_WITH_SIDEWALK ->
+        if (isLeftHandTraffic) {
+            R.drawable.ic_separate_cycleway_with_sidewalk_l
+        } else {
+            R.drawable.ic_separate_cycleway_with_sidewalk
+        }
 }

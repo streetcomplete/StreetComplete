@@ -31,11 +31,11 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     val expandedTags = expandRelevantSidesTags(tags)
 
     /* For oneways, the naked "cycleway"-keys should be interpreted differently:
-    *  E.g. a cycleway=lane in a oneway=yes probably means that only in the flow direction, there
-    *  is a lane. E.g. cycleway=opposite_lane means that there is a lane in opposite traffic flow
-    *  direction.
-    *  Whether there is anything each in the other direction, is not defined, so we have to treat
-    *  it that way. */
+     * E.g. a cycleway=lane in a oneway=yes probably means that only in the flow direction, there
+     * is a lane. E.g. cycleway=opposite_lane means that there is a lane in opposite traffic flow
+     * direction.
+     * Whether there is anything each in the other direction, is not defined, so we have to treat
+     * it that way. */
     val nakedCycleway = createCyclewayForSide(expandedTags, null)
     if (isOneway && nakedCycleway != null && nakedCycleway != NONE) {
         if (isOpposite == isReverseSideRight) {
@@ -135,7 +135,7 @@ private fun createCyclewayForSide(
         "none", // no
         "sidepath", "use_sidepath", // separate?
         "buffered_lane", "buffered", "soft_lane", "doorzone", // lane + subtags?
-         // 0.1% - troll tags
+        // 0.1% - troll tags
         "proposed", "construction",
             -> INVALID
         null -> null

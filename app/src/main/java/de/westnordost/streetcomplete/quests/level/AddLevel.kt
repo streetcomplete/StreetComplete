@@ -31,7 +31,7 @@ class AddLevel : OsmElementQuestType<String> {
     """.toElementFilterExpression() }
 
     /* only nodes because ways/relations are not likely to be floating around freely in a mall
-    *  outline */
+     * outline */
     private val filter by lazy { """
         nodes with
          (${isShopExpressionFragment()})
@@ -43,8 +43,8 @@ class AddLevel : OsmElementQuestType<String> {
     override val wikiLink = "Key:level"
     override val icon = R.drawable.ic_quest_level
     /* disabled because in a mall with multiple levels, if there are nodes with no level defined,
-    *  it really makes no sense to tag something as vacant if the level is not known. Instead, if
-    *  the user cannot find the place on any level in the mall, delete the element completely. */
+     * it really makes no sense to tag something as vacant if the level is not known. Instead, if
+     * the user cannot find the place on any level in the mall, delete the element completely. */
     override val isReplaceShopEnabled = false
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)

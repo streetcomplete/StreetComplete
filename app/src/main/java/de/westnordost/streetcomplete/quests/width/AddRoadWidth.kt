@@ -46,6 +46,7 @@ class AddRoadWidth(
         and (!width or source:width ~ ".*estimat.*")
         and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
         and (access !~ private|no or (foot and foot !~ private|no))
+        and foot != no
         and placement != transition
     """.toElementFilterExpression() }
 

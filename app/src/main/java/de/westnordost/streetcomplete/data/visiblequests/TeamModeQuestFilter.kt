@@ -1,19 +1,18 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import android.content.SharedPreferences
-import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSource
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.prefs.Preferences
 
 /** Controller for filtering all quests that are hidden because they are shown to other users in
  *  team mode. Takes care of persisting team mode settings and notifying listeners about changes */
 class TeamModeQuestFilter internal constructor(
     private val createdElementsSource: CreatedElementsSource,
-    private val prefs: SharedPreferences
+    private val prefs: Preferences
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  shared preferences */
@@ -41,15 +40,13 @@ class TeamModeQuestFilter internal constructor(
     }
 
     fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
-        prefs.edit {
-            putInt(Prefs.TEAM_MODE_TEAM_SIZE, teamSize)
-            putInt(Prefs.TEAM_MODE_INDEX_IN_TEAM, indexInTeam)
-        }
+        prefs.putInt(Prefs.TEAM_MODE_TEAM_SIZE, teamSize)
+        prefs.putInt(Prefs.TEAM_MODE_INDEX_IN_TEAM, indexInTeam)
         listeners.forEach { it.onTeamModeChanged(true) }
     }
 
     fun disableTeamMode() {
-        prefs.edit { putInt(Prefs.TEAM_MODE_TEAM_SIZE, -1) }
+        prefs.putInt(Prefs.TEAM_MODE_TEAM_SIZE, -1)
         listeners.forEach { it.onTeamModeChanged(false) }
     }
 

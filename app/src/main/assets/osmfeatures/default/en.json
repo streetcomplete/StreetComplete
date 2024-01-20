@@ -815,7 +815,7 @@
                 "ruins": {
                     "label": "Type"
                 },
-                "royal_cypher": {
+                "royal_cypher-GB": {
                     "label": "Royal Cypher",
                     "options": {
                         "VR": "VR (Victoria)",
@@ -1681,13 +1681,6 @@
                 "hot_water": {
                     "label": "Hot Water"
                 },
-                "horse_stables": {
-                    "label": "Riding Stable",
-                    "options": {
-                        "undefined": "No",
-                        "stables": "Yes"
-                    }
-                },
                 "horse_scale": {
                     "label": "Horseback Riding Difficulty",
                     "placeholder": "Difficult, Dangerous...",
@@ -1701,17 +1694,10 @@
                     }
                 },
                 "horse_riding": {
-                    "label": "Horseback Riding",
+                    "label": "Horseback Riding Center",
                     "options": {
                         "undefined": "No",
                         "horse_riding": "Yes"
-                    }
-                },
-                "horse_dressage": {
-                    "label": "Dressage Riding",
-                    "options": {
-                        "undefined": "No",
-                        "equestrian": "Yes"
                     }
                 },
                 "hoops": {
@@ -2314,7 +2300,7 @@
                         "bubble_tea": "Bubble Tea",
                         "hot_dog": "Hot Dog",
                         "cake": "Cake",
-                        "pankcake": "Pancake",
+                        "pancake": "Pancake",
                         "pasta": "Pasta",
                         "salad": "Salad",
                         "chocolate": "Chocolate",
@@ -2654,6 +2640,7 @@
                         "public": "Public Building",
                         "residential": "Residential Building",
                         "retail": "Retail Building",
+                        "riding_hall": "Horseback Riding Arena",
                         "roof": "Roof",
                         "ruins": "Building Ruins",
                         "school": "School Building",
@@ -2681,8 +2668,8 @@
                     "placeholder": "Default"
                 },
                 "brewery": {
-                    "label": "Draft Beers",
-                    "terms": "on tap"
+                    "label": "Sold Beer brands",
+                    "terms": "beer brand,beer dispensing,bottled beer,draft beer,on tap,tap beer"
                 },
                 "brand": {
                     "label": "Brand"
@@ -3233,6 +3220,13 @@
                         "bucket": "Bucket"
                     }
                 },
+                "telescope/type": {
+                    "label": "Type",
+                    "options": {
+                        "optical": "Optical Telescope",
+                        "radio": "Radio Telescope"
+                    }
+                },
                 "telecom/medium": {
                     "label": "Medium"
                 },
@@ -3676,6 +3670,10 @@
                         "4": "◆◆ Extremely Difficult (double black diamond)"
                     }
                 },
+                "memorial/addr_subtags": {},
+                "memorial/addr": {
+                    "label": "Nearest Building Address"
+                },
                 "maxspeed/hgv": {
                     "label": "Truck Speed Limit",
                     "placeholder": "40, 50, 60..."
@@ -3945,6 +3943,18 @@
                 },
                 "fire_hydrant/diameter": {
                     "label": "Diameter (mm, in, or letters)"
+                },
+                "door/width": {
+                    "label": "Door Width (Meters)"
+                },
+                "door/height": {
+                    "label": "Door Height (Meters)"
+                },
+                "dock/width": {
+                    "label": "Dock Width (Meters)"
+                },
+                "dock/height": {
+                    "label": "Dock Height (Meters)"
                 },
                 "disused/shop": {
                     "label": "Type"
@@ -5774,6 +5784,9 @@
                     "name": "High-Voltage Tower",
                     "terms": "power,power tower"
                 },
+                "power/switchgear": {
+                    "name": "Switchgear"
+                },
                 "power/switch": {
                     "name": "Power Switch"
                 },
@@ -6609,6 +6622,9 @@
                     "name": "Torii",
                     "terms": "japanese gate,shinto shrine"
                 },
+                "man_made/telescope": {
+                    "name": "Telescope"
+                },
                 "man_made/tailings_pond": {
                     "name": "Tailings Pond",
                     "aliases": "Tailing Pond\nSettling Pond\nSettling Pit",
@@ -6633,6 +6649,10 @@
                 "man_made/silo": {
                     "name": "Silo",
                     "terms": "grain,corn,wheat"
+                },
+                "man_made/satellite_dish": {
+                    "name": "Satellite Dish",
+                    "terms": "fixed satellite dish,motorized satellite dish,parabolic dish,satellite communication,tracking satellite dish"
                 },
                 "man_made/reservoir_covered": {
                     "name": "Covered Reservoir",
@@ -6821,6 +6841,14 @@
                     "name": "Bell Tower",
                     "terms": "belfry,bell gable,campanile,church tower,klockstapel"
                 },
+                "man_made/telescope/radio": {
+                    "name": "Radio Telescope",
+                    "terms": "ground station,radio dish,radio antenna"
+                },
+                "man_made/telescope/optical": {
+                    "name": "Optical Telescope",
+                    "terms": "refracting telescope,reflecting telescope"
+                },
                 "man_made/surveillance/camera": {
                     "name": "Surveillance Camera",
                     "terms": "anpr,alpr,camera,car plate recognition,cctv,guard,license plate recognition,monitoring,number plate recognition,security,video,webcam"
@@ -7000,7 +7028,7 @@
                 },
                 "leisure/horse_riding": {
                     "name": "Horseback Riding Center",
-                    "terms": "equestrian facility,equestrian,horse farm,horse park,horse ranch,horse riding center,horse riding facility,horse riding,riding facility,riding stables,stables"
+                    "terms": "equestrian center,equestrian facility,horse farm,horse park,horse ranch,horse riding center,horse riding facility,horse riding,riding facility,riding stables,stables"
                 },
                 "leisure/hackerspace": {
                     "name": "Hackerspace",
@@ -7138,6 +7166,10 @@
                     "aliases": "Horse Racecourse\nHippodrome",
                     "terms": "equestrian race course,gallop,horse race betting,horse race,horse racing,horseracing,race course,racecourse"
                 },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Adventure Park",
+                    "terms": "obstacle course,rope climbing,ropes course,zip line"
+                },
                 "leisure/sports_centre/climbing": {
                     "name": "Climbing Gym",
                     "terms": "abseiling,artificial climbing wall,belaying,bouldering,rock climbing facility,indoor rock wall,rappeling,rock gym,ropes"
@@ -7237,7 +7269,7 @@
                 "leisure/pitch/equestrian": {
                     "name": "Horseback Riding / Rodeo Arena",
                     "aliases": "Horseback Riding Ring",
-                    "terms": "arena,dressage arena,dressage ring,dressage,equestrian,horse riding ring,horse riding,horse,horseback riding arena,horseback riding,horseback,jumping arena,jumping ring,longeing,pen,polo,riding ring,riding,ring,rodeo,round pen"
+                    "terms": "arena,dressage arena,dressage ring,dressage,equestrian arena,horse riding ring,horse riding,horse,horseback riding arena,horseback riding,horseback,jumping arena,jumping ring,longeing,pen,polo,riding ring,riding,ring,rodeo,round pen"
                 },
                 "leisure/pitch/cricket": {
                     "name": "Cricket Field",
@@ -7660,6 +7692,9 @@
                 "historic/archaeological_site": {
                     "name": "Archaeological Site"
                 },
+                "historic/memorial/stolperstein-EU": {
+                    "name": "Memorial Plaque Stolperstein"
+                },
                 "historic/memorial/plaque": {
                     "name": "Commemorative Plaque",
                     "terms": "dedicatory,epitaph,historical marker,remember,remembrance,memory"
@@ -7889,6 +7924,7 @@
                     "name": "Bridle Path",
                     "terms": "bridleway,equestrian,horse,trail"
                 },
+                "highway/traffic_sign": {},
                 "highway/bus_stop": {
                     "name": "Bus Stop"
                 },
@@ -8533,6 +8569,11 @@
                 "building/roof": {
                     "name": "Roof"
                 },
+                "building/riding_hall": {
+                    "name": "Indoor Horseback Riding Arena",
+                    "aliases": "Horse Riding Hall\nHorseback Riding Hall\nIndoor Horse Arena\nIndoor Horse Riding Arena\nIndoor Horse Riding Ring\nIndoor Horseback Riding Ring\nIndoor Riding Arena\nIndoor Riding Ring",
+                    "terms": "equestrian arena,equestrian indoor arena,horse riding,indoor arena,indoor ring,indoor riding,longeing hall"
+                },
                 "building/retail": {
                     "name": "Retail Building",
                     "terms": "shop building,store building"
@@ -8658,6 +8699,9 @@
                 },
                 "building/barn": {
                     "name": "Barn"
+                },
+                "building/bakehouse": {
+                    "name": "Bakehouse"
                 },
                 "building/apartments": {
                     "name": "Apartment Building"
@@ -9264,6 +9308,10 @@
                     "name": "Gambling Hall",
                     "terms": "betting,bingo,blackjack,casino,craps,gamble,gambling,keno,lottery,pachinko,poker,roulette,slot machines,slots"
                 },
+                "amenity/funeral_hall": {
+                    "name": "Funeral Service Hall",
+                    "terms": "funeral ceremony,funeral hall"
+                },
                 "amenity/fuel": {
                     "name": "Gas Station",
                     "terms": "petrol,fuel,gasoline,propane,diesel,lng,cng,biodiesel"
@@ -9438,6 +9486,10 @@
                     "name": "Bank",
                     "aliases": "Credit Union",
                     "terms": "check,deposit,fund,investment,repository,reserve,safe,savings,stock,treasury,trust,vault"
+                },
+                "amenity/baking_oven": {
+                    "name": "Baking Oven",
+                    "terms": "bakehouse,beehive oven,bread,clay oven,horno,masonry oven,tabun oven,pizza oven"
                 },
                 "amenity/atm": {
                     "name": "ATM",
@@ -9783,7 +9835,6 @@
                     "terms": "irish bar"
                 },
                 "amenity/post_box/post_box-US": {},
-                "amenity/post_box/post_box-GB": {},
                 "amenity/place_of_worship/taoist": {
                     "name": "Taoist Temple",
                     "terms": "daoist,monastery,temple"

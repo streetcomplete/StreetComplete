@@ -763,7 +763,7 @@ nivoji"</string>
     <string name="achievement_citizen_title">"Prebivalec"</string>
     <string name="achievement_citizen_solved_X">"Rešil si %d nalog, ki so uporabne za vsakdanje življenje v mestu!"</string>
     <string name="achievement_outdoors_title">"Zunanjost"</string>
-    <string name="achievement_outdoors_solved_X">"Rešil si %d nslog, ki so uporabne za ljubitelje preživljanja prostega časa zunaj!"</string>
+    <string name="achievement_outdoors_solved_X">"Rešil si %d nalog, ki so uporabne za ljubitelje preživljanja prostega časa zunaj!"</string>
     <string name="quest_pedestrian_crossing_island">"Ali ima ta prehod za pešce otok?"</string>
     <string name="quest_generic_answer_noSign">"Tukaj ni znaka"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Ali je klančina za invalidski voziček na zemljevidu prikazana kot ločena pot?"</string>
@@ -1342,4 +1342,16 @@ Poleg tega ti nekatere prekrivne plasti omogočajo dodajanje novih podatkov na p
     <string name="quest_crossing_kerb_height_title">"Kakšna je višina robnikov pri tem prehodu?"</string>
     <string name="quest_maxheight_sign_title">"Kakšna je tukaj označena omejitev višine?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Kakšna je pod mostom označena omejitev višine?"</string>
+    <string name="quest_leave_new_note_as_answer">"V tem primeru morate pustiti opombo z opisom situacije."</string>
+    <string name="quest_drinking_water_type_title2">"Je tu na voljo pitna voda? Če je, kakšen je njen vir?"</string>
+    <string name="quest_is_amenity_inside_title">"Je v notranjosti stavbe?"</string>
+    <string name="quest_bbq_fuel_title">"Kaj poganja ta žar?"</string>
+    <string name="quest_bbq_fuel_wood">"Les"</string>
+    <string name="quest_bbq_fuel_electric">"Elektrika"</string>
+    <string name="quest_bbq_fuel_charcoal">"Oglje"</string>
+    <string name="inside">"Notri"</string>
+    <string name="outside">"Zunaj"</string>
+    <string name="quest_recycling_type_food_waste">"Odpadna hrana"</string>
+    <string name="quest_defibrillator_location">"Kje se nahaja ta defibrilator?"</string>
+    <string name="quest_defibrillator_location_description">"Na kratko opišite lego (npr. \"na recepciji\")."</string>
 </resources>

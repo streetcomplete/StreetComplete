@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -21,6 +20,7 @@ import de.westnordost.streetcomplete.databinding.FragmentQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,7 +36,7 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val questTypeOrderController: QuestTypeOrderController by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private val binding by viewBinding(FragmentQuestSelectionBinding::bind)
 

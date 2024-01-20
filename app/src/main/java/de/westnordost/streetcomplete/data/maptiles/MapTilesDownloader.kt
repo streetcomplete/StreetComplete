@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.maptiles
 
-import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -49,8 +49,11 @@ class MapTilesDownloader(
                     when (result) {
                         is DownloadFailure -> ++failureCount
                         is DownloadSuccess -> {
-                            if (result.alreadyCached) cachedSize += result.size
-                            else downloadedSize += result.size
+                            if (result.alreadyCached) {
+                                cachedSize += result.size
+                            } else {
+                                downloadedSize += result.size
+                            }
                         }
                     }
                 }
@@ -82,8 +85,8 @@ class MapTilesDownloader(
         val call = okHttpClient.newCall(builder.build())
 
         /* since we use coroutines and this is in the background anyway, why not use call.execute()?
-        *  Because we want to let the OkHttp dispatcher control how many HTTP requests are made in
-        *  parallel */
+         * Because we want to let the OkHttp dispatcher control how many HTTP requests are made in
+         * parallel */
         val callback = object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 Log.w(TAG, "Error retrieving tile $zoom/$x/$y: ${e.message}")

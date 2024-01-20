@@ -342,9 +342,6 @@
                     "label": "Marca",
                     "terms": "marca,distintivo,sinal,comercial"
                 },
-                "brewery": {
-                    "label": "Cervexa de bocoi / tirada"
-                },
                 "bridge": {
                     "label": "Tipo",
                     "placeholder": "Por defecto"
@@ -911,15 +908,7 @@
                     "label": "Canastras",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Doma clásica",
-                    "options": {
-                        "equestrian": "Si",
-                        "undefined": "Non"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Centro de equitación",
                     "options": {
                         "horse_riding": "Si",
                         "undefined": "Non"
@@ -935,13 +924,6 @@
                         "difficult": "Difícil: Camiño estreito e exposto. Pode ter obstáculos para pasar e corredoiras estreitas."
                     },
                     "placeholder": "Difícil, perigoso..."
-                },
-                "horse_stables": {
-                    "label": "Cortello para montar a cabalo",
-                    "options": {
-                        "stables": "Si",
-                        "undefined": "Non"
-                    }
                 },
                 "hot_water": {
                     "label": "Auga quente"

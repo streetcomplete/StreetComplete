@@ -47,8 +47,11 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
     override val achievements = listOf(CAR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags["area"] == "yes") R.string.quest_streetSurface_square_title
-        else                       R.string.quest_streetSurface_title
+        if (tags["area"] == "yes") {
+            R.string.quest_streetSurface_square_title
+        } else {
+            R.string.quest_streetSurface_title
+        }
 
     override fun createForm() = AddRoadSurfaceForm()
 

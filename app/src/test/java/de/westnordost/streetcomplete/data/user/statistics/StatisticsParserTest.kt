@@ -12,7 +12,6 @@ class StatisticsParserTest {
     private val questC = "TestQuestTypeC"
 
     @Test fun `parse all`() {
-
         assertEquals(Statistics(
             types = listOf(
                 EditTypeStatistics(questA, 11),
@@ -47,25 +46,25 @@ class StatisticsParserTest {
             "questTypes": {
                 "TestQuestTypeA": "11",
                 "TestQuestTypeB": "4",
-                "TestQuestTypeCAlias": "45",
+                "TestQuestTypeCAlias": "45"
             },
             "countries": {
                 "DE": "8",
-                "US": "7",
+                "US": "7"
             },
             "countryRanks": {
-                "US": "123",
+                "US": "123"
             },
             "rank": "2345",
             "currentWeekRank": "3",
             "currentWeekQuestTypes": {
                 "TestQuestTypeA": "9",
                 "TestQuestTypeB": "99",
-                "TestQuestTypeCAlias": "999",
+                "TestQuestTypeCAlias": "999"
             },
             "currentWeekCountries": {
                 "IT": 4,
-                "AT": 5,
+                "AT": 5
             },
             "currentWeekCountryRanks": {
                 "AT": 666
@@ -74,7 +73,7 @@ class StatisticsParserTest {
             "activeDatesRange": "45",
             "activeDates": ["2011-08-07", "2012-12-09"],
             "lastUpdate": "2007-12-03T10:15:30+01:00",
-            "isAnalyzing": "false"
+            "isAnalyzing": false
         }
         """))
     }

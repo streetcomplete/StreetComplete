@@ -219,8 +219,11 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
         }
 
     private fun createConvertToStepsAnswer(): AnswerItem? =
-        if (element!!.couldBeSteps()) AnswerItem(R.string.quest_generic_answer_is_actually_steps) { changeToSteps() }
-        else null
+        if (element!!.couldBeSteps()) {
+            AnswerItem(R.string.quest_generic_answer_is_actually_steps) { changeToSteps() }
+        } else {
+            null
+        }
 
     private fun changeToSteps() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)

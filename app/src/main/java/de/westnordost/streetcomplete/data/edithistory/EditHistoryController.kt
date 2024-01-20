@@ -5,13 +5,15 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
@@ -19,8 +21,8 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 class EditHistoryController(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
-    private val noteQuestController: OsmNoteQuestController,
-    private val osmQuestController: OsmQuestController
+    private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController,
+    private val osmQuestsHiddenController: OsmQuestsHiddenController
 ) : EditHistorySource {
     private val listeners = Listeners<EditHistorySource.Listener>()
 
@@ -42,12 +44,12 @@ class EditHistoryController(
         override fun onDeletedEdits(edits: List<NoteEdit>) { onDeleted(edits) }
     }
 
-    private val osmNoteQuestHiddenListener = object : OsmNoteQuestController.HideOsmNoteQuestListener {
+    private val osmNoteQuestHiddenListener = object : OsmNoteQuestsHiddenSource.Listener {
         override fun onHid(edit: OsmNoteQuestHidden) { onAdded(edit) }
         override fun onUnhid(edit: OsmNoteQuestHidden) { onDeleted(listOf(edit)) }
         override fun onUnhidAll() { onInvalidated() }
     }
-    private val osmQuestHiddenListener = object : OsmQuestController.HideOsmQuestListener {
+    private val osmQuestHiddenListener = object : OsmQuestsHiddenSource.Listener {
         override fun onHid(edit: OsmQuestHidden) { onAdded(edit) }
         override fun onUnhid(edit: OsmQuestHidden) { onDeleted(listOf(edit)) }
         override fun onUnhidAll() { onInvalidated() }
@@ -56,8 +58,8 @@ class EditHistoryController(
     init {
         elementEditsController.addListener(osmElementEditsListener)
         noteEditsController.addListener(osmNoteEditsListener)
-        noteQuestController.addHideQuestsListener(osmNoteQuestHiddenListener)
-        osmQuestController.addHideQuestsListener(osmQuestHiddenListener)
+        osmNoteQuestsHiddenController.addListener(osmNoteQuestHiddenListener)
+        osmQuestsHiddenController.addListener(osmQuestHiddenListener)
     }
 
     fun undo(edit: Edit): Boolean {
@@ -65,8 +67,8 @@ class EditHistoryController(
         return when (edit) {
             is ElementEdit -> elementEditsController.undo(edit)
             is NoteEdit -> noteEditsController.undo(edit)
-            is OsmNoteQuestHidden -> noteQuestController.unhide(edit.note.id)
-            is OsmQuestHidden -> osmQuestController.unhide(edit.questKey)
+            is OsmNoteQuestHidden -> osmNoteQuestsHiddenController.unhide(edit.note.id)
+            is OsmQuestHidden -> osmQuestsHiddenController.unhide(edit.questKey)
             else -> throw IllegalArgumentException()
         }
     }
@@ -78,8 +80,8 @@ class EditHistoryController(
     override fun get(key: EditKey): Edit? = when (key) {
         is ElementEditKey -> elementEditsController.get(key.id)
         is NoteEditKey -> noteEditsController.get(key.id)
-        is OsmNoteQuestHiddenKey -> noteQuestController.getHidden(key.osmNoteQuestKey.noteId)
-        is OsmQuestHiddenKey -> osmQuestController.getHidden(key.osmQuestKey)
+        is OsmNoteQuestHiddenKey -> osmNoteQuestsHiddenController.getHidden(key.osmNoteQuestKey.noteId)
+        is OsmQuestHiddenKey -> osmQuestsHiddenController.getHidden(key.osmQuestKey)
     }
 
     override fun getMostRecentUndoable(): Edit? =
@@ -93,8 +95,8 @@ class EditHistoryController(
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }
         result += noteEditsController.getAll()
-        result += noteQuestController.getAllHiddenNewerThan(maxAge)
-        result += osmQuestController.getAllHiddenNewerThan(maxAge)
+        result += osmNoteQuestsHiddenController.getAllHiddenNewerThan(maxAge)
+        result += osmQuestsHiddenController.getAllHiddenNewerThan(maxAge)
 
         result.sortByDescending { it.createdTimestamp }
         return result

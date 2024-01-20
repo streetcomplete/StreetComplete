@@ -101,7 +101,7 @@
                     "types": {
                         "access": "ทั้งหมด",
                         "bicycle": "จักรยาน",
-                        "foot": "เดินเท้า",
+                        "foot": "เดินเท้าได้",
                         "horse": "สัตว์พาหนะ",
                         "motor_vehicle": "ยานยนต์"
                     }
@@ -535,10 +535,6 @@
                 "brand": {
                     "label": "แบรนด์",
                     "terms": "ยี่ห้อ"
-                },
-                "brewery": {
-                    "label": "เบียร์สด",
-                    "terms": "ดราฟเบียร์"
                 },
                 "bridge": {
                     "label": "ชนิด",
@@ -1062,7 +1058,6 @@
                         "lebanese": "อาหารเลบานีส",
                         "malaysian": "อาหารมาเลย์เซียน",
                         "mexican": "อาหารแม็กซิกัน",
-                        "pankcake": "แพนเค้ก",
                         "pasta": "พาสต้า",
                         "peruvian": "อาหารเปรู",
                         "pizza": "พิซซ่า",
@@ -1923,15 +1918,7 @@
                     "label": "จำนวนห่วง",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "ศิลปะการบังคับม้า",
-                    "options": {
-                        "equestrian": "ใช่",
-                        "undefined": "ไม่"
-                    }
-                },
                 "horse_riding": {
-                    "label": "การขี่ม้า",
                     "options": {
                         "horse_riding": "ใช่",
                         "undefined": "ไม่"
@@ -1949,13 +1936,6 @@
                     },
                     "placeholder": "ยาก, อันตราย, …",
                     "terms": "ความยากของการขี่ม้า"
-                },
-                "horse_stables": {
-                    "label": "คอกม้า",
-                    "options": {
-                        "stables": "ใช่",
-                        "undefined": "ไม่"
-                    }
                 },
                 "hot_water": {
                     "label": "น้ำร้อน"
@@ -2209,7 +2189,25 @@
                     "terms": "mapillary image id"
                 },
                 "marker": {
-                    "label": "ประเภท"
+                    "label": "ประเภท",
+                    "options": {
+                        "aerial": {
+                            "description": "ออกแบบมาให้สามารถมองเห็นได้จากภาพถ่ายดาวเทียม",
+                            "title": "ภาพถ่ายดาวเทียม"
+                        },
+                        "ground": {
+                            "title": "พื้นดิน"
+                        },
+                        "pedestal": {
+                            "title": "ทางเท้า"
+                        },
+                        "post": {
+                            "title": "หมุด"
+                        },
+                        "stone": {
+                            "title": "ก้อนหิน"
+                        }
+                    }
                 },
                 "material": {
                     "label": "วัสดุ",
@@ -2311,7 +2309,14 @@
                     "terms": "ไมโครบิวเวอรี่"
                 },
                 "military_service": {
-                    "label": "ประเภทบริการทางทหาร"
+                    "label": "ประเภทบริการทางทหาร",
+                    "options": {
+                        "air_force": "ทหารอากาศ",
+                        "army": "ทหารบก",
+                        "coast_guard": "ยามชายฝั่ง",
+                        "marines": "ทหารเรือ",
+                        "navy": "นาวิกโยธิน"
+                    }
                 },
                 "mimics": {
                     "label": "เสาสัญญาณพรางตัว",
@@ -3105,20 +3110,6 @@
                 "route_master": {
                     "label": "ประเภท"
                 },
-                "royal_cypher": {
-                    "label": "พระปรมาภิไธย",
-                    "options": {
-                        "CIIIR": "CIIIR (พระเจ้าชาร์ลส์ที่ 3)",
-                        "EIIR": "EIIR (พระราชินีนาถเอลิซาเบธที่ 2)",
-                        "EVIIIR": "EVIIIR (พระเจ้าเอ็ดเวิร์ดที่ 8)",
-                        "EVIIR": "EVIIR (พระเจ้าเอ็ดเวิร์ดที่ 7)",
-                        "GR": "GR (พระเจ้าจอร์จที่ 5)",
-                        "GVIR": "GVIR (พระเจ้าจอร์จที่ 6)",
-                        "VR": "VR (พระราชินีนาถวิกตอเรีย)",
-                        "no": "ไม่มี",
-                        "scottish_crown": "มงกุฎสกอตแลนด์"
-                    }
-                },
                 "ruins": {
                     "label": "ประเภท"
                 },
@@ -3324,15 +3315,54 @@
                 "shop": {
                     "label": "ประเภท\nชนิด"
                 },
+                "siren/purpose": {
+                    "label": "วัตถุประสงค์"
+                },
+                "siren/type": {
+                    "label": "ชนิด",
+                    "options": {
+                        "other": "อื่นๆ"
+                    }
+                },
+                "smoking": {
+                    "label": "พื้นที่สูบบุหรี่",
+                    "options": {
+                        "dedicated": "สำหรับการสูบบุหรี่โดยเฉพาะ (เช่น ห้องสูบบุหรี่)",
+                        "isolated": "พื้นที่สูบบุหรี่แยกต่างหาก",
+                        "no": "ไม่สามารถสูบบุหรี่ภายในพื้นที่ได้",
+                        "outside": "สูบบุหรี่ได้ภายนอกพื้นที่",
+                        "separated": "พื้นที่สูบบุหรี่ที่จัดไว้ภายใน",
+                        "yes": "สามารถสูบบุหรี่ได้ภายใน"
+                    },
+                    "placeholder": "ไม่ได้, แยกต่างหาก, ได้..."
+                },
+                "sms": {
+                    "label": "SMS"
+                },
                 "source": {
-                    "label": "แหล่งที่มา"
+                    "label": "แหล่งที่มา",
+                    "options": {
+                        "aerial imagery": "ภาพถ่ายทางอากาศ",
+                        "gps": "GPS",
+                        "local knowledge": "ความรู้ท้องถิ่น",
+                        "osm notes": "หมายเหตุ OpenStreetMap",
+                        "streetlevel imagery": "ภาพถ่ายระดับถนน",
+                        "survey": "การสำรวจ"
+                    }
                 },
                 "sport": {
                     "label": "กีฬา"
                 },
+                "start_date": {
+                    "placeholder": "ปปปป-ดด-วว"
+                },
+                "static_caravans": {
+                    "label": "บ้านเคลื่อนที่"
+                },
                 "structure": {
                     "options": {
-                        "bridge": "สะพาน"
+                        "bridge": "สะพาน",
+                        "tunnel": "อุโมงค์"
                     }
                 },
                 "surface": {
@@ -3347,9 +3377,17 @@
                 "tourism": {
                     "label": "ประเภท"
                 },
+                "trees": {
+                    "label": "ต้นไม้"
+                },
                 "usage_rail": {
                     "options": {
                         "tourism": "การท่องเที่ยว"
+                    }
+                },
+                "utility": {
+                    "options": {
+                        "street_lighting": "ไฟถนน"
                     }
                 },
                 "vehicles": {
@@ -3913,7 +3951,7 @@
                     "name": "ป้ายรอแท็กซี่"
                 },
                 "amenity/telephone": {
-                    "name": "โทรศัพท์"
+                    "name": "เบอร์โทรศัพท์"
                 },
                 "amenity/theatre": {
                     "name": "โรงภาพยนตร์",
@@ -4523,6 +4561,24 @@
                 "disused/shop": {
                     "name": "ร้านที่ปิดกิจการไปแล้ว"
                 },
+                "emergency/fire_extinguisher": {
+                    "name": "เครื่องดับเพลิง"
+                },
+                "emergency/fire_hose": {
+                    "name": "สายดับเพลิง"
+                },
+                "emergency/fire_hydrant": {
+                    "name": "หัวรับน้ำดับเพลิง"
+                },
+                "emergency/first_aid_kit": {
+                    "name": "ชุดปฐมพยาบาล"
+                },
+                "emergency/landing_site": {
+                    "name": "จุดลงจอดฉุกเฉิน"
+                },
+                "emergency/phone": {
+                    "name": "โทรศัพท์ฉุกเฉิน"
+                },
                 "emergency/water_reservoir": {
                     "name": "อ่างเก็บน้ำฉุกเฉิน"
                 },
@@ -4557,6 +4613,9 @@
                 "highway/crossing/traffic_signals": {
                     "name": "ทางข้ามมีไฟจราจร"
                 },
+                "highway/crossing/uncontrolled": {
+                    "name": "ทางข้ามมีเครื่องหมายจราจร"
+                },
                 "highway/crossing/unmarked": {
                     "name": "ทางข้ามไม่มีเครื่องหมายจราจร"
                 },
@@ -4580,6 +4639,9 @@
                 },
                 "highway/elevator": {
                     "name": "ลิฟท์"
+                },
+                "highway/elevator_line": {
+                    "name": "ลิฟต์เอียง"
                 },
                 "highway/footway": {
                     "name": "ทางเดิน"
@@ -4721,6 +4783,9 @@
                 },
                 "landuse/commercial": {
                     "name": "พื้นที่เชิงพาณิชย์"
+                },
+                "landuse/grass": {
+                    "name": "หญ้า"
                 },
                 "landuse/greenhouse_horticulture": {
                     "name": "พืชสวนเรือนกระจก"
@@ -5015,6 +5080,9 @@
                 "man_made/watermill": {
                     "name": "โรงสีพลังน้ำ"
                 },
+                "natural/tree": {
+                    "name": "ต้นไม้"
+                },
                 "natural/water": {
                     "name": "น้ำ"
                 },
@@ -5239,10 +5307,10 @@
                     "name": "เสาไฟฟ้าแรงสูง"
                 },
                 "public_transport/platform": {
-                    "name": "ชานชลา"
+                    "name": "ชานชาลา"
                 },
                 "public_transport/platform/bus": {
-                    "name": "ชานชลารถโดยสาร"
+                    "name": "ชานชาลารถโดยสาร"
                 },
                 "public_transport/platform/bus_point": {
                     "name": "ป้ายหยุดรถโดยสาร"
@@ -5251,24 +5319,24 @@
                     "name": "ชานชลารถประจำทางและรถราง"
                 },
                 "public_transport/platform/ferry": {
-                    "name": "ชานชลาเรือโดยสาร"
+                    "name": "ชานชาลาเรือโดยสาร"
                 },
                 "public_transport/platform/ferry_point": {
-                    "name": "ที่หยุด/ชานชลาเรือโดยสาร"
+                    "name": "ที่หยุด/ชานชาลาเรือโดยสาร"
                 },
                 "public_transport/platform/subway": {
-                    "name": "ชานชลารถไฟรางหนัก",
-                    "aliases": "ชานชลารถไฟฟ้า\nชานชลารถไฟใต้ดิน"
+                    "name": "ชานชาลารถไฟรางหนัก",
+                    "aliases": "ชานชาลารถไฟฟ้า\nชานชาลารถไฟใต้ดิน"
                 },
                 "public_transport/platform/subway_point": {
-                    "name": "ที่หยุด/ชานชลารถไฟรางหนัก",
-                    "aliases": "ที่หยุด/ชานชลารถไฟฟ้า\nที่หยุด/ชานชลารถไฟใต้ดิน"
+                    "name": "ที่หยุด/ชานชาลารถไฟรางหนัก",
+                    "aliases": "ที่หยุด/ชานชาลารถไฟฟ้า\nที่หยุด/ชานชาลารถไฟใต้ดิน"
                 },
                 "public_transport/platform/train": {
-                    "name": "ชานชลารถไฟ"
+                    "name": "ชานชาลารถไฟ"
                 },
                 "public_transport/platform/train_point": {
-                    "name": "ที่หยุด/ชานชลารถไฟ"
+                    "name": "ที่หยุด/ชานชาลารถไฟ"
                 },
                 "public_transport/station_bus": {
                     "name": "สถานี/อู่รถประจำทาง"

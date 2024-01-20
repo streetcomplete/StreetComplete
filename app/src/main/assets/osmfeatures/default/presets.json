@@ -2373,9 +2373,7 @@
         "icon": "maki-horse-riding",
         "fields": [
             "name",
-            "horse_stables",
-            "horse_riding",
-            "horse_dressage"
+            "horse_riding"
         ],
         "moreFields": [
             "{@templates/contact}",
@@ -7048,6 +7046,19 @@
         },
         "matchScore": 1.05
     },
+    "power/switchgear": {
+        "icon": "temaki-power_switch",
+        "fields": [
+            "voltage",
+            "location"
+        ],
+        "geometry": [
+            "area"
+        ],
+        "tags": {
+            "power": "switchgear"
+        }
+    },
     "power/switch": {
         "icon": "temaki-power_switch",
         "fields": [
@@ -10547,6 +10558,25 @@
             "man_made": "torii"
         }
     },
+    "man_made/telescope": {
+        "icon": "fas-satellite-dish",
+        "fields": [
+            "name",
+            "telescope/type",
+            "operator",
+            "ref"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "man_made": "telescope"
+        },
+        "reference": {
+            "key": "man_made"
+        }
+    },
     "man_made/tailings_pond": {
         "icon": "maki-water",
         "fields": [
@@ -10658,6 +10688,20 @@
         ],
         "tags": {
             "man_made": "silo"
+        }
+    },
+    "man_made/satellite_dish": {
+        "icon": "fas-satellite-dish",
+        "fields": [
+            "operator",
+            "ref"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "man_made": "satellite_dish"
         }
     },
     "man_made/reservoir_covered": {
@@ -11544,6 +11588,38 @@
         "reference": {
             "key": "tower:type",
             "value": "bell_tower"
+        }
+    },
+    "man_made/telescope/radio": {
+        "icon": "roentgen-telescope-radio",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "man_made": "telescope",
+            "telescope:type": "radio"
+        },
+        "reference": {
+            "key": "man_made"
+        }
+    },
+    "man_made/telescope/optical": {
+        "icon": "temaki-telescope",
+        "fields": [
+            "operator",
+            "ref"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "man_made": "telescope",
+            "telescope:type": "optical"
+        },
+        "reference": {
+            "key": "man_made"
         }
     },
     "man_made/surveillance/camera": {
@@ -12531,6 +12607,7 @@
         ],
         "moreFields": [
             "{@templates/contact}",
+            "contact/facebook",
             "gnis/feature_id-US",
             "opening_hours",
             "payment_multi"
@@ -13232,6 +13309,24 @@
         "reference": {
             "key": "sport",
             "value": "horse_racing"
+        }
+    },
+    "leisure/sports_centre/climbing_adventure": {
+        "icon": "temaki-abseiling",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "fields": [
+            "{leisure/sports_centre}"
+        ],
+        "tags": {
+            "leisure": "sports_centre",
+            "sport": "climbing_adventure"
+        },
+        "reference": {
+            "key": "sport",
+            "value": "climbing_adventure"
         }
     },
     "leisure/sports_centre/climbing": {
@@ -15643,6 +15738,35 @@
             "historic": "archaeological_site"
         }
     },
+    "historic/memorial/stolperstein-EU": {
+        "icon": "temaki-plaque",
+        "fields": [
+            "name",
+            "inscription",
+            "wikidata"
+        ],
+        "moreFields": [
+            "memorial/addr",
+            "memorial/addr_subtags",
+            "subject/wikidata",
+            "image",
+            "wikimedia_commons",
+            "website"
+        ],
+        "geometry": [
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "historic": "memorial",
+            "memorial": "stolperstein"
+        },
+        "locationSet": {
+            "include": [
+                "Q46"
+            ]
+        }
+    },
     "historic/memorial/plaque": {
         "icon": "temaki-plaque",
         "fields": [
@@ -17043,6 +17167,21 @@
             "highway": "bridleway"
         }
     },
+    "highway/traffic_sign": {
+        "icon": "fas-directions",
+        "fields": [
+            "{traffic_sign}"
+        ],
+        "geometry": [
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "highway": "traffic_sign"
+        },
+        "searchable": false,
+        "name": "{traffic_sign}"
+    },
     "highway/bus_stop": {
         "icon": "temaki-bus",
         "fields": [
@@ -17605,7 +17744,9 @@
                 "fr",
                 "lt",
                 "pl",
-                "de"
+                "de",
+                "il",
+                "ps"
             ]
         },
         "icon": "temaki-pedestrian_and_cyclist",
@@ -17759,7 +17900,9 @@
             "exclude": [
                 "fr",
                 "lt",
-                "pl"
+                "pl",
+                "il",
+                "ps"
             ]
         },
         "icon": "temaki-ped_cyclist_crosswalk",
@@ -19894,6 +20037,16 @@
         },
         "matchScore": 0.5
     },
+    "building/riding_hall": {
+        "icon": "maki-horse-riding",
+        "geometry": [
+            "area"
+        ],
+        "tags": {
+            "building": "riding_hall"
+        },
+        "matchScore": 0.5
+    },
     "building/retail": {
         "icon": "maki-commercial",
         "fields": [
@@ -20350,6 +20503,16 @@
         ],
         "tags": {
             "building": "barn"
+        },
+        "matchScore": 0.5
+    },
+    "building/bakehouse": {
+        "icon": "temaki-bread",
+        "geometry": [
+            "area"
+        ],
+        "tags": {
+            "building": "bakehouse"
         },
         "matchScore": 0.5
     },
@@ -21391,6 +21554,7 @@
         ],
         "geometry": [
             "point",
+            "line",
             "area"
         ],
         "tags": {
@@ -22628,7 +22792,9 @@
         "fields": [
             "operator",
             "collection_times",
-            "ref"
+            "ref",
+            "post_box/type-GB",
+            "royal_cypher-GB"
         ],
         "moreFields": [
             "access_simple",
@@ -22655,7 +22821,6 @@
         },
         "locationSet": {
             "exclude": [
-                "gb",
                 "us"
             ]
         }
@@ -23186,15 +23351,20 @@
             "ref",
             "operator",
             "access_simple",
-            "door",
-            "width",
-            "height"
+            "door"
         ],
         "moreFields": [
             "address",
+            "dock/height",
+            "dock/width",
+            "door/height",
+            "door/width",
             "colour",
             "level",
             "lit",
+            "maxheight",
+            "maxlength",
+            "maxwidth",
             "wheelchair"
         ],
         "geometry": [
@@ -23594,6 +23764,25 @@
         ],
         "tags": {
             "amenity": "gambling"
+        }
+    },
+    "amenity/funeral_hall": {
+        "icon": "maki-cemetery",
+        "fields": [
+            "name",
+            "operator",
+            "address"
+        ],
+        "moreFields": [
+            "religion",
+            "denomination"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "funeral_hall"
         }
     },
     "amenity/fuel": {
@@ -24713,6 +24902,23 @@
         "tags": {
             "amenity": "bank"
         }
+    },
+    "amenity/baking_oven": {
+        "icon": "temaki-bread",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "baking_oven"
+        },
+        "fields": [
+            "covered",
+            "access_simple"
+        ],
+        "moreFields": [
+            "lit"
+        ]
     },
     "amenity/atm": {
         "icon": "temaki-atm2",
@@ -26251,31 +26457,6 @@
         },
         "name": "{amenity/post_box}"
     },
-    "amenity/post_box/post_box-GB": {
-        "icon": "temaki-post_box",
-        "locationSet": {
-            "include": [
-                "gb"
-            ]
-        },
-        "fields": [
-            "{amenity/post_box}",
-            "post_box/type-GB",
-            "royal_cypher"
-        ],
-        "moreFields": [
-            "{amenity/post_box}",
-            "drive_through"
-        ],
-        "geometry": [
-            "point",
-            "vertex"
-        ],
-        "tags": {
-            "amenity": "post_box"
-        },
-        "name": "{amenity/post_box}"
-    },
     "amenity/place_of_worship/taoist": {
         "icon": "temaki-taoism",
         "fields": [
@@ -26627,7 +26808,7 @@
         }
     },
     "amenity/fast_food/wings": {
-        "icon": "maki-fast_food",
+        "icon": "maki-fast-food",
         "geometry": [
             "point",
             "area"
@@ -26807,7 +26988,7 @@
         }
     },
     "amenity/fast_food/bagel": {
-        "icon": "maki-fast_food",
+        "icon": "maki-fast-food",
         "geometry": [
             "point",
             "area"

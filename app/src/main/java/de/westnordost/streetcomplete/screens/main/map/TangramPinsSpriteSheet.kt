@@ -1,17 +1,15 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import androidx.core.content.edit
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.util.ktx.getDouble
 import de.westnordost.streetcomplete.util.ktx.isApril1st
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
@@ -21,14 +19,14 @@ class TangramPinsSpriteSheet(
     private val context: Context,
     private val questTypeRegistry: QuestTypeRegistry,
     private val overlayRegistry: OverlayRegistry,
-    private val prefs: SharedPreferences
+    private val prefs: Preferences
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
 
         val spriteSheet = when {
             !isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown() -> createSpritesheet()
-            else -> prefs.getString(Prefs.PIN_SPRITES, "")!!
+            else -> prefs.getStringOrNull(Prefs.PIN_SPRITES) ?: ""
         }
 
         createSceneUpdates(spriteSheet)
@@ -80,16 +78,14 @@ class TangramPinsSpriteSheet(
 
         val questSprites = "{${spriteSheetEntries.joinToString(",")}}"
 
-        prefs.edit {
-            putInt(Prefs.PIN_SPRITES_VERSION, if (shouldBeUpsideDown()) -1 else BuildConfig.VERSION_CODE)
-            putString(Prefs.PIN_SPRITES, questSprites)
-        }
+        prefs.putInt(Prefs.PIN_SPRITES_VERSION, if (shouldBeUpsideDown()) -1 else BuildConfig.VERSION_CODE)
+        prefs.putString(Prefs.PIN_SPRITES, questSprites)
 
         return questSprites
     }
 
     private fun shouldBeUpsideDown(): Boolean {
-        val isBelowEquator = prefs.getDouble(Prefs.MAP_LATITUDE) < 0.0
+        val isBelowEquator = prefs.getDouble(Prefs.MAP_LATITUDE, 0.0) < 0.0
         return isBelowEquator && isApril1st()
     }
 

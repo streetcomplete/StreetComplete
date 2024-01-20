@@ -1,3 +1,38 @@
+v56.0: |
+  <h3>New Authorization</h3>
+  <p>Sorry, you'll need to log in again. Authorization via OAuth 1.0a is being deprecated on OSM, so we have switched to OAuth 2.0 (#5383, #5322).
+  <br>Sponsored by <a href="https://www.suse.com/esg/">SUSE Open Source Community Citizens (OSCC)</a>.</p>
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>You can now view, filter and copy logs from within the app. (This helps finding the cause of issues.) (#5335), by @neonowy</li>
+  <li>Other small improvements (#5360), by @riQQ</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+  <li><i>Is there a sanitary dump station?</i> asked for caravan sites (#5363), by @qugebert, (#5407) thanks @sun-geo</li>
+  </ul>
+  <h3>Quest Enhancements and Fixes</h3>
+  <ul>
+  <li>Other small improvements (#5332, #5371, #5399, #5395), thanks @catdogmat, @mnalis</li>
+  </ul>
+
+v55.1: |
+  <h3>Quest Enhancements and Fixes</h3>
+  <ul>
+  <li>Charging station operator: Do not ask if the operator is not signed</li>
+  <li>Indoor amenities: Don't consider roofs as indoor (#5337), by @qugebert</li>
+  <li>Crossing kerbs: Do not ask if the kerbs on both sides are already specified (#5374), by @FloEdelmann</li>
+  <li>Fix bike paths overlay: When leaving the contra-flow side of a oneway unspecified, also leave the oneway-for-cyclists status untouched (#5367)</li>
+  <li>Fix display of max height, max speed and max weight signs in US, Canada and Australia (#5384)</li>
+  <li>Speed limits: For trunk roads without speed limit signs, ask whether it is inside an urban area (#5378)</li>
+  <li>Other small improvements (#5336, #5387), thanks @arrival-spring</li>
+  </ul>
+  <h3>General Enhancements and Fixes</h3>
+  <ul>
+  <li>Do not offer splitting whole roundabouts, leave a note in that case. See ticket for details (#5372)</li>
+  <li>Various small enhancements, wording improvements and fixes (#5353, #5346, ...), thanks @neonowy, @riQQ, ...</li>
+  </ul>
+
 v55.0: |
   <h3>New Quests</h3>
   <ul>
@@ -88,7 +123,7 @@ v53.3: |
      haven't been maintained for over half a year.</p>
   <p>As a native speaker of any of these languages, you can
      <a href="https://poeditor.com/join/project/IE4GC127Ki">help translate the app</a> in
-     order to retain this translation in the app. </p>
+     order to retain this translation in the app.</p>
   <p>
      To avoid an awkward mix of properly localized and English texts all over the app that wouldn't
      be usable by people who do not understand both languages, languages whose translation
@@ -112,9 +147,9 @@ v53.1: |
   </ul>
 
 v53.0: |
-  <h3>Quest & Overlay Enhancements</h3>
+  <h3>Quest &amp; Overlay Enhancements</h3>
   <ul>
-  <li>Parking overlay: You can now add and modify curb extensions etc. (#4976)<br>
+  <li>Parking overlay: You can now add and modify curb extensions etc. (#4976)</li>
   <li>Address overlay: You can now add addresses as entrances directly to building outlines (#4976, #4995)</li>
   <li>Also ask whether barbecue spots are covered (#4905), thanks @roptat</li>
   <li>Crossing: Different wording and use <code>crossing=informal</code> for points at which there are no crossings but people can still cross (#4944)</li>
@@ -130,7 +165,7 @@ v53.0: |
   <li>In the various bi-lingual republics and autonomous regions of Russia, allow inputting names in the respective languages</li>
   <li>It is now visible on the map which areas have been downloaded already (#4970, #4986)</li>
   <li>Animate current selection for better visibility (#4417)</li>
-  <li>Two pane layout for settings & about screen for tablets (#4954), by @tapetis</li>
+  <li>Two pane layout for settings &amp; about screen for tablets (#4954), by @tapetis</li>
   <li>Other small fixes and enhancements (#4842, #4970, #4984, #4985, #4991, #4992, #4939, #4989, #4988, #4980), thanks @tapetis, @Helium314, @matkoniecz</li>
   </ul>
 
@@ -141,7 +176,7 @@ v52.1: |
      incompatible changes were made to the data model. So, be sure to upload them before. The release
      is scheduled for Wednesday, May 10th. The public beta for May 3rd.
   </p>
-  <h3>Enhancements & Fixes</h3>
+  <h3>Enhancements &amp; Fixes</h3>
   <ul>
   <li>Surface overlay: Make paving stones and asphalt distinguishable by color (#4946, #4888)</li>
   <li>Another overlay can now be selected from the dialog with one tap only (#4949), by @tapetis</li>
@@ -150,7 +185,7 @@ v52.1: |
   <li>Do not treat <code>surface=ground</code> + <code>tracktype=grade2</code> as sure mistake (#4863), by @matkoniecz</li>
   <li>Recognize zone 30 (etc.) streets tagged with a more uncommon tag combination, too (#4960)</li>
   <li>Specify type of entrance, entrance ref: Also ask for buildings with an inner courtyard (#4971, #4968), by @Helium314</li>
-  <li>Surface & lit overlay: Can now change footways to steps in overlays (#4973, #4938), by @arrival-spring</li>
+  <li>Surface &amp; lit overlay: Can now change footways to steps in overlays (#4973, #4938), by @arrival-spring</li>
   <li>Other small fixes and enhancements (#4928, #4929, #4936, #4924, #4945, #4972, #4981...), thanks @BenWiederhake, @matkoniecz, @Helium314</li>
   </ul>
 
@@ -163,7 +198,7 @@ v52.0: |
   <ul>
   <li><i>Is this still here?</i>, asked for shops every 2 years (#4232, #4843), by @matkoniecz</li>
   </ul>
-  <h3>Enhancements & Fixes</h3>
+  <h3>Enhancements &amp; Fixes</h3>
   <ul>
   <li>Increase the speed by which the map is updated after an edit by ~30% (#4897, #4906), by @Helium314</li>
   <li>You can now duplicate quest presets (#4609, #4820), by @michalgwo</li>
@@ -171,7 +206,7 @@ v52.0: |
   <li>Addresses: Fix block number input in Japan, by @Helium314</li>
   <li>Other small fixes (#4901, #2780, #4880, #4890...), thanks @Helium314</li>
   </ul>
-  <h3>Quest & Overlay Enhancements</h3>
+  <h3>Quest &amp; Overlay Enhancements</h3>
   <ul>
   <li>Addresses: Allow to specify block numbers (#4718, #4850), by @Helium314</li>
   <li>Address overlay: Addresses can now not be added to buildings in Italy (#4801)</li>
@@ -229,7 +264,7 @@ v51.0: |
 
 v50.2: |
   <ul>
-  <li>Add new language: Swahili by SUZA Youth Mappers - Asha Omar, Haitham Alawi & Hajra Salim</li>
+  <li>Add new language: Swahili by SUZA Youth Mappers - Asha Omar, Haitham Alawi &amp; Hajra Salim</li>
   <li>Fix existence of cycleway was asked in 30 zones (#4706)</li>
   <li>Fix display of multi-polygons (#4689)</li>
   <li>Fix "Explicitly shared use pavement, both directions" did not show (#4711)</li>
@@ -257,7 +292,6 @@ v50.0: |
   <h3>🚚 Move node (#3502, #4579), by @Helium314</h3>
   <p>"It’s at slightly different position…" is a new generic answer available for every POI-based
       quest and overlay. It lets you correct the position of the POI.</p>
-  </ul>
   <h3>Enhanced Overlays</h3>
   <ul>
   <li>Sidewalks: Missing sidewalk information on unpaved roads and on roads with a very low speed limit are not shown in red</li>
@@ -292,7 +326,7 @@ v49.1: |
   <li>Shop overlay: Don't show confirmation dialog when just adding a place (#4605)</li>
   <li>Sidewalk overlay: Don't color missing sidewalks on motorways etc. as red (#4606)</li>
   <li>Shop overlay, Bus stop names, place names...: Show name in several lines if it doesn't fit into one line (#4613)</li>
-  <li>Shoulders: Completely disable this quest because the definition in OSM right now is too fuzzy to be useful & easy to answer. See <a href="https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185">forum discussion</a>. (#4617)</li>
+  <li>Shoulders: Completely disable this quest because the definition in OSM right now is too fuzzy to be useful &amp; easy to answer. See <a href="https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185">forum discussion</a>. (#4617)</li>
   <li>Other small enhancements and fixes (#4610)</li>
   </ul>
 
@@ -360,7 +394,7 @@ v48.0: |
   <li>Redid UI for selecting the type of shop - better search, with icons from iD! (#3774)</li>
   <li>Redid UI for the housenumber and address quests to be consistent with the overlay</li>
   <li>Add links to documentation for tags changed as shown in undo dialog (#3442, #4419), by @matkoniecz</li>
-  <li>The obstrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
+  <li>The obtrusive downloading-view is gone, downloading and uploading is now shown in the upper left corner</li>
   <li>Resurvey quests no longer vanish after splitting the way - only works if auto-sync is off (#3567, #4523), by @Helium314</li>
   <li>Fix which tags the parking overlay removes when changing the answer (#4501, #4552), thanks @tapetis</li>
   <li>Other small enhancements and fixes (#4453, #4496, #4506, #4494, #4499, #4544, #4540...), thanks @Helium314, @tapetis, @mnalis</li>
@@ -494,7 +528,7 @@ v45.0: |
   <li>Consider that cycle lanes on the right side of the road do not always go in forward direction (and respectively for countries with left-hand traffic)</li>
   <li>Do not require OpenStreetMap read/write GPS track permission for login (the record GPS track feature can then simply not be used) (#4122)</li>
   <li>Improve GPS accuracy for some devices (#4139), by @Helium314</li>
-  <li>In dark mode, remove obstrusive glow from railways and motorways, by @Helium314</li>
+  <li>In dark mode, remove obtrusive glow from railways and motorways, by @Helium314</li>
   <li>Ask about bus stop reference numbers in Ireland (#4161)</li>
   <li>Stop asking about toilet fees in US and Canada (#4174), by @matkoniecz</li>
   <li>Other small enhancements and performance improvements (#3919, #4120, #4138, #4181, #4184, #4180, #4183, #4164...), thanks @Helium314</li>
@@ -594,13 +628,13 @@ v42.0: |
   <li>Cycleway: Warn before removing that cyclists may use a oneway road in both directions (#3795)</li>
   <li>Halal: Don't ask for vegan only places (#3883), by @peternewman</li>
   <li>Fire hydrant position: Allow deletion of hydrant if it doesn't exist (#3871)</li>
-  <li>Housenumbers: More convenient input for housename & housenumber, plus fixed various small issues (#3904, #3907)</li>
+  <li>Housenumbers: More convenient input for housename &amp; housenumber, plus fixed various small issues (#3904, #3907)</li>
   </ul>
   <h3>Enhancements and Fixes</h3>
   <ul>
   <li>Fix crash issues on Android 5 (#3889, #3914), thanks @FloEdelmann</li>
   <li>Fix shop type suggestions were not available in Norwegian (Bokmål) and Serbian (#3890, #3896, #3897), thanks @matkoniecz</li>
-  <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cryllic (#3897)</li>
+  <li>Added support for region or script-specific shop type suggestions, e.g. English in New Zealand or Serbian in Latin or Cyrillic (#3897)</li>
   <li>Fix rare crashes (#3888), thanks @tapetis</li>
   <li>Other minor enhancements and fixes (#3852, #3893, #3895, #3867...), thanks @matkoniecz, @mnalis, @Cj-Malone</li>
   </ul>
@@ -653,7 +687,7 @@ v40.1: |
 
 v40.0: |
   <h3>Important: Update manually after Feb 21!</h3>
-  <p>Google Play / F-Droid will not update to the next major version v41 automatically because the app will ask for an additional permission. In v41, you'll be able to measure widths and heights with the camera! </p>
+  <p>Google Play / F-Droid will not update to the next major version v41 automatically because the app will ask for an additional permission. In v41, you'll be able to measure widths and heights with the camera!</p>
   <h3>New Quests</h3>
   <ul>
   <li><i>How does this road cross the barrier here?</i> (#3372, #3515), by @matkoniecz</li>
@@ -753,7 +787,7 @@ v38.0: |
   <li>Fix some crash issues (#3517, #3522)</li>
   </ul>
 
-v37.2:
+v37.2: |
   <p>Fix a common crash issue when opening certain quests (#3504, #3506, #3510, #3511)</p>
 
 v37.1: |
@@ -934,7 +968,7 @@ v34.0: |
 v33.2: |
   <h3>Fixes</h3>
   <ul>
-  <li>Fix that the app wouldn't start on Android 4.x (#3069) which was broken since v32.0. <br/>
+  <li>Fix that the app wouldn't start on Android 4.x (#3069) which was broken since v32.0.<br/>
       Android 4.x support will be dropped in an upcoming version.
   </li>
   <li>Ask about tactile paving on kerbs also when the type of kerb is already set (#3104) by @jyasskin</li>
@@ -1011,7 +1045,7 @@ v32.1: |
   <ul>
   <li>You can now click links in notes (#2905, #2918), by @FloEdelmann</li>
   <li>Added woodchips as surface option for paths (#2889, #2920), by @FloEdelmann</li>
-  <li>Ask <i>"What is the royal cypher on this postbox"</i> for more territories that have those (#2922), by @TurnrDev </li>
+  <li>Ask <i>"What is the royal cypher on this postbox"</i> for more territories that have those (#2922), by @TurnrDev</li>
   </ul>
 
 v32.0: |
@@ -1117,7 +1151,7 @@ v31.2: |
   <li>Ask periodically if various traffic calmings still exist (#2672)</li>
   <li>Don't ask for the crossing barrier for disused railways (#2695)</li>
   <li>Also ask for opening hours of shops with no signed name (#2716, #2718), by @Helium314</li>
-  <li>Vacant shops are now tagged as disused:shop=* (#2707, #2724), by @matkoniecz</li>
+  <li>Vacant shops are now tagged as <code>disused:shop=*</code> (#2707, #2724), by @matkoniecz</li>
   <li>Don't ask for the kerb height and type if tagging is suspect (#2654), by @matkoniecz</li>
   <li>Other small enhancements and fixes: #2723, #2677 by @Eginhard, #2699 and #2680 by @matkoniecz</li>
   </ul>
@@ -1160,7 +1194,7 @@ v31.0: |
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Building type: Add fire station as selection (#2476, #2579)</li>
-  <li>Recycling containers: Add beverage cartons as choice (#2502,  #2580)</li>
+  <li>Recycling containers: Add beverage cartons as choice (#2502, #2580)</li>
   <li>Check existence: Also ask for public bookcases</li>
   <li>Roof shape: Don't ask for high buildings (#2609)</li>
   <li>Orchard produces: for the Canaries, sort choices by prevalence (#2596), by @erik55</li>
@@ -1196,17 +1230,17 @@ v30.0: |
   <li>More opening hours in non-standard syntax are understood and displayed on resurvey, thanks @simonpoole</li>
   <li>Check existence: Display brand name if object has no name (#2512)</li>
   <li>Sidewalks: Ask for residential roads even if they are not lit (#2519, #2531), by @riQQ</li>
-  <li>Reycling materials: Do not ask for private containers (#2515)</li>
+  <li>Recycling materials: Do not ask for private containers (#2515)</li>
   <li>Road name: Do not ask if name:left or name:right is defined already (#2526)</li>
   <li>A few clarifications in wording (#2467, #2431, #2539)</li>
   </ul>
-  <h3>Fixes & More</h3>
+  <h3>Fixes &amp; More</h3>
   <ul>
   <li>Added Bulgarian translation by Plamen and Kalin</li>
   <li>Update geometry of displayed elements after another download (#2503)</li>
   <li>Some code modernizations (#2495, #2501, #2504, #2511) by @FloEdelmann</li>
   <li>Do not ask for kerb properties for kerbs on pedestrian areas (#2552)</li>
-  <li>Fixed misplaced quest pin and selection ring (#2548, #1810), thanks @matteblair </li>
+  <li>Fixed misplaced quest pin and selection ring (#2548, #1810), thanks @matteblair</li>
   </ul>
 
 v29.1: |
@@ -1240,8 +1274,8 @@ v29.0: |
   that location and tap "search for quests here" in the menu.</p>
   <h3>New Quests</h3>
   <ul>
-  <li><i>What surface does this sport field have?</i> (#1170, #2377), by @matkoniecz </li>
-  <li><i>Does ... offer kosher products?</i> (#639, #2244), disabled by default, by @matkoniecz </li>
+  <li><i>What surface does this sport field have?</i> (#1170, #2377), by @matkoniecz</li>
+  <li><i>Does ... offer kosher products?</i> (#639, #2244), disabled by default, by @matkoniecz</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
@@ -1330,6 +1364,7 @@ v27.1: |
       marked lanes (#2328)</li>
   <li>Show tactile paving quests in Italy (#2320)</li>
   <li>Update translations</li>
+  </ul>
 
 v27.0: |
   <h3>New Quests</h3>
@@ -1375,9 +1410,9 @@ v26.0: |
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li>Road surfaces: Improve interface, ask for reason when a generic surface is selected (#2078, #2237), by @matkoniecz </li>
-  <li>Building types: Add answer options for silos (#2180), historic, abandoned buildings and ruins (#2177, #2214, #2233), by @RiffLord </li>
-  <li>Cycleway and sidewalk: Shown for more roads (#2230) </li>
+  <li>Road surfaces: Improve interface, ask for reason when a generic surface is selected (#2078, #2237), by @matkoniecz</li>
+  <li>Building types: Add answer options for silos (#2180), historic, abandoned buildings and ruins (#2177, #2214, #2233), by @RiffLord</li>
+  <li>Cycleway and sidewalk: Shown for more roads (#2230)</li>
   <li>Improve a few wordings (#2202, #2204)</li>
   </ul>
   <h3>Other Enhancements and Fixes</h3>
@@ -1393,7 +1428,7 @@ v25.1: |
   <ul>
   <li><i>What is the reference number of this bus stop?</i> (#2126)</li>
   <li><i>Do these steps have a ramp? What kind?</i> (#2036, #2168)</li>
-  <li><i>Does this pedestrian crossing have an island?</i> (#1961,  #2030), by @kmpoppe</li>
+  <li><i>Does this pedestrian crossing have an island?</i> (#1961, #2030), by @kmpoppe</li>
   <li><i>What's the name of the bank for this ATM?</i> (#203)</li>
   <li><i>Who is the operator of this charging station?</i> (#911)</li>
   <li><i>Who accepts donations for this clothing bin?</i> (#570)</li>
@@ -1408,7 +1443,7 @@ v25.1: |
   </ul>
   <h3>Other Enhancements and Fixes</h3>
   <ul>
-  <li>new achievement graphics by Judith Gastell (<a href='https://www.artstation.com/melusine'>melusine</a>)</li>
+  <li>new achievement graphics by Judith Gastell (<a href="https://www.artstation.com/melusine">melusine</a>)</li>
   <li>Map style update: Amongst other things, all housenumbers are now displayed again on the map, private roads are displayed as such and 3D buildings can be displayed more detailed</li>
   <li>Fix tagging tactile paving on crosswalks on a resurvey (#2176, #2172), by @peternewman, @dbdean</li>
   <li>Other small fixes and enhancements (#2186, #2190, #2182, #2184, #2181, #2179, ...)</li>
@@ -1479,7 +1514,7 @@ v23.0: |
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Motorcycle and bicycle parking: Do not accept an input of "0" (#516)</li>
-  <li>Also ask for the opening hours of defilbrilators (#1756, #2066), by @matkoniecz</li>
+  <li>Also ask for the opening hours of defibrillators (#1756, #2066), by @matkoniecz</li>
   <li>Better picture of paving stones in surface quest (#2088), by @matkoniecz</li>
   <li>Accepts cash quest: Ask for more places (#2019), by @kmpoppe</li>
   <li>For opening hours, wheelchair access and accepts cash quest, always display the type of place alongside its name (#2012), by @Helium314</li>
@@ -1570,7 +1605,7 @@ v21.0: |
   <h3>🗺️ New Map Provider</h3>
   <p>Big thanks to <a href="https://www.jawg.io">JawgMaps</a>, a provider of online
    custom maps, geocoding and routing based on OpenStreetMap data. They are providing their vector
-   map tiles service to StreetComplete for free! <br/>
+   map tiles service to StreetComplete for free!<br/>
    Their maps are also quite excellent:
    You can look forward to <strong>daily map updates</strong> and <strong>map loading
    times cut in half</strong>, as their map data is very lightweight.</p>
@@ -1602,13 +1637,13 @@ v20.1: |
   <ul>
     <li>Workaround drawing problem with the location pin in Android 6 (#1879), thanks @matkoniecz</li>
     <li>Fix crashy country bubble in statistics screen (#1886)</li>
-    <li>Road name and bus name: Trim whitespaces at start and end of user input (#1861)</li>
+    <li>Road name and bus name: Trim whitespace at start and end of user input (#1861)</li>
     <li>Crossing type: Don't ask for crossings that are not for pedestrians (#1868), by @matkoniecz</li>
     <li>Tactile paving on crossing: Don't ask for crossings that are not for pedestrians (#1875)</li>
     <li>House numbers: Don't ask the housenumber of buildings which are in a relation that already has a housenumber (#1860)</li>
     <li>Show tutorial again if user exits the app before finishing it (#1867)</li>
     <li>Max weight: Correct German translation (#1884)</li>
-    <li>Address street: Do not show immediately after answering the housenumber quest but only after next download (#1856). Selecting the street by tapping on it would not work otherwise. </li>
+    <li>Address street: Do not show immediately after answering the housenumber quest but only after next download (#1856). Selecting the street by tapping on it would not work otherwise.</li>
   </ul>
 
 v20.0: |
@@ -1668,7 +1703,7 @@ v19.2: |
 
 v19.1: |
   <ul>
-    <li>add some achievement graphics by Sanja Dimitrijevic (<a href='https://www.artstation.com/modesty031'>modesty031</a>)</li>
+    <li>add some achievement graphics by Sanja Dimitrijevic (<a href="https://www.artstation.com/modesty031">modesty031</a>)</li>
     <li>selected quest is displayed always on top (#1801, #1805, #1810)</li>
     <li>More minor fixes and improvements (#1799, #1802, #1803, #1808, #1806, #1812), updated translations</li>
   </ul>
@@ -1832,9 +1867,9 @@ v15.0: |
   <p>Norwegian Bokmål by Mats Randgaard and Simen Heggestøyl</p>
   <h3>New Quests</h3>
   <ul>
-  <li><strong>Does it cost a fee to enter ...?</strong> (#873,  #1600) by @matkoniecz</li>
+  <li><strong>Does it cost a fee to enter ...?</strong> (#873, #1600) by @matkoniecz</li>
   <li><strong>Is this laundry a self service laundry?</strong> (#1385, #1608) by @matkoniecz</li>
-  <li><strong>Do these steps have a handrail?</strong> (#1390, #1616)  by @xuiqzy</li>
+  <li><strong>Do these steps have a handrail?</strong> (#1390, #1616) by @xuiqzy</li>
   <li><strong>What is the weight limit here?</strong> (#1622, #1467, #361) thanks @matkoniecz</li>
   </ul>
   <h3>Enhanced Quests</h3>
@@ -1865,7 +1900,7 @@ v15.0: |
   <li>Migrate parts of the code from Java to Kotlin, lots of refactoring (-3000 lines of code!)</li>
   <li>Distribution on Google Play is now about less than half the size (app bundles)</li>
   </ul>
-  <p>A portion of this update is credit to Mateusz Konieczny, powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849" >NGI Zero Discovery grant</a>.</p>
+  <p>A portion of this update is credit to Mateusz Konieczny, powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">NGI Zero Discovery grant</a>.</p>
 
 v14.1: |
   <h3>Fixes</h3>
@@ -1947,7 +1982,7 @@ v13.0: |
   <li>Show quests that come into view also when rotating or tilting (#1496)</li>
   <li>Auto download was not triggered when there were too many quests that were deactivated in the settings around (#1497)</li>
   </ul>
-  <p>This update is almost entirely credit to Mateusz Konieczny, powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849" >NGI Zero Discovery grant</a>.</p>
+  <p>This update is almost entirely credit to Mateusz Konieczny, powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">NGI Zero Discovery grant</a>.</p>
 
 v12.2: |
   <h3>Enhancements</h3>
@@ -1969,7 +2004,7 @@ v12.2: |
   <li>switch off following GPS-position on open geo intent (#1426)</li>
   <li><strong>sidewalk</strong>: warn user before closing a half-completed answer (#1451)</li>
   </ul>
-  <p>A portion of the work done for this update is powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849" >NGI Zero Discovery grant</a> given to Mateusz Konieczny.</p>
+  <p>A portion of the work done for this update is powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">NGI Zero Discovery grant</a> given to Mateusz Konieczny.</p>
 
 v12.1: |
   <h3>Fixes</h3>
@@ -2040,7 +2075,7 @@ v10.1: |
   <h3>Enhancements</h3>
   <ul>
   <li>Sidewalk quest: Only ask for lit roads</li>
-  <li>Pedestrian prohibited quest: greatly reduce the number of streets for which this information is asked and clarify wording (#1336 and <a href="https://lists.openstreetmap.org/pipermail/tagging/2019-February/042852.html" >mailing list discussion</a>)</li>
+  <li>Pedestrian prohibited quest: greatly reduce the number of streets for which this information is asked and clarify wording (#1336 and <a href="https://lists.openstreetmap.org/pipermail/tagging/2019-February/042852.html">mailing list discussion</a>)</li>
   <li>update translations</li>
   </ul>
 
@@ -2066,7 +2101,7 @@ v10.0: |
   <h3>Fixes</h3>
   <ul>
   <li>fix missing pictures in building type and surface selection quests in Android 4.4 and below (#1317)</li>
-  <li>fix sometimes quests were still being generated even though there was a note for that element  (#1089)</li>
+  <li>fix sometimes quests were still being generated even though there was a note for that element (#1089)</li>
   <li>exclude roads from the oneway quest where its direction can not be determined reliably (#1320)</li>
   </ul>
   <h3>Technical</h3>
@@ -2081,7 +2116,7 @@ v9.0: |
   <h3>New Quests</h3>
   <ul>
   <li><strong>Track type</strong>: What is the surface firmness of this track? (#959) by @ENT8R</li>
-  <li><strong>Underground building</strong>:  Is this building completely underground? (#912)</li>
+  <li><strong>Underground building</strong>: Is this building completely underground? (#912)</li>
   <li><strong>Traffic signals sounds</strong>: Are there sound signals for the blind here? (#1268, #574) by @matkoniecz</li>
   <li><strong>Traffic signals button</strong>: Do these traffic lights have a button to request green light? (#1269, #574) by @matkoniecz</li>
   <li><strong>Motorcycle parking capacity</strong>: How many motorcycles can be parked here? (#1181)</li>
@@ -2111,7 +2146,7 @@ v9.0: |
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>Opening hours quest: use "," instead of ";" to separate opening hours rules whose time extend to another day  (#1292)</li>
+  <li>Opening hours quest: use "," instead of ";" to separate opening hours rules whose time extend to another day (#1292)</li>
   </ul>
 
 v8.4: |
@@ -2128,7 +2163,7 @@ v8.4: |
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>do not trigger automatic upload if not authorized yet (fixes  #1253)</li>
+  <li>do not trigger automatic upload if not authorized yet (fixes #1253)</li>
   <li>avoid outputting lat/long coordinates in scientific notation because Overpass-API cannot parse this</li>
   <li>fix max height quest did not show for height restrictors and parking entrances (fixes #1245)</li>
   </ul>
@@ -2193,7 +2228,7 @@ v8.0: |
   <li>when leaving a note, it is done in the bottom sheet instead of in a dialog now so that you can still see the quest geometry</li>
   <li>solve performance problems when downloading quests (especially housenumbers and building types)</li>
   <li>only play sound effects when system setting for that is enabled (fixes #1187) and in "media" instead of "notification" stream (#1167)</li>
-  <li>In notes, shortcut the link to the element to https://osm.org/way/... for better readability of notes left by SC users (#1178)</li>
+  <li>In notes, shortcut the link to the element to <code>https://osm.org/way/...</code> for better readability of notes left by SC users (#1178)</li>
   <li>tapping on the quest title now toggles expanding the quest to full size and back</li>
   <li>it is now again possible to attach photos to notes</li>
   <li>add "deselect all" button in the quest selection screen (#1203)</li>
@@ -2215,18 +2250,18 @@ v7.1: |
   <p>Prepare for map server maintenance. After that, the shown map will be current and loads faster.</p>
 
 v7.0: |
-  <h3>Un-Features:</h3>
+  <h3>Un-Features</h3>
   <ul>
   <li>disabled support to put photos into notes, because framapic.org service has discontinued until further notice. (see #1161)</li>
   <li>expect hiccups and/or old maps being displayed in the coming week as the tileserver goes into maintenance and tiles from nextzen are displayed instead</li>
   </ul>
-  <h3>New Quests:</h3>
+  <h3>New Quests</h3>
   <ul>
   <li>Playground access: <em>Is this playground publicly accessible?</em> (#1134) by @matkoniecz</li>
   <li>Max height: <em>What is the height limit of this tunnel/parking entrance/height restrictor?</em> (#960, #399, #421, #447) by @ENT8R</li>
   <li>Cycleway segregation: <em>"How are the footway and cycleway laid out here?"</em> (#527, #1135) by @matkoniecz</li>
   </ul>
-  <h3>Enhanced Quests:</h3>
+  <h3>Enhanced Quests</h3>
   <ul>
   <li>Building type: Added toilets and sport centres to selectable building types (#1124, #1125)</li>
   <li>Max speed:
@@ -2247,7 +2282,7 @@ v7.0: |
   <li>Opening hours: Allow marking a shop as having no signed opening hours (#1118) by @matkoniecz</li>
   <li>Any quest with selection of images: The last choices are remembered and displayed as first items (#1072, #73, #826)</li>
   </ul>
-  <h3>Small Enhancements and Fixes:</h3>
+  <h3>Small Enhancements and Fixes</h3>
   <ul>
   <li>Orchard quest used to tag <code>produce=tomatoe</code>. Corrected to <code>produce=tomato</code> (#1171)</li>
   <li>Increase number of quests that are downloaded in one go (#1091)</li>
@@ -2271,13 +2306,13 @@ v6.1: |
   </ul>
 
 v6.0: |
-  <h3>New Quests:</h3>
+  <h3>New Quests</h3>
   <ul>
   <li>Add building type: <em>"What was this building constructed as?"</em> (#25, #774, #1092) thanks @ENT8R</li>
   <li>Add path surface: <em>"What surface does this path have here?"</em> (#133)</li>
   <li>Add one-way road: <em>"Is this a one-way street?"</em> (#370)</li>
   </ul>
-  <h3>Enhanced Quests:</h3>
+  <h3>Enhanced Quests</h3>
   <ul>
   <li>House numbers: Can now answer that the building has no house number (#351)</li>
   <li>Parking type, fee and access: Include relations in search for parking areas (#1033)</li>
@@ -2286,7 +2321,7 @@ v6.0: |
   <li>Wheelchair access: Added internet cafes, theatres and casinos (#1086) by @matkoniecz</li>
   <li>Bicycle parking: Clearer wording (#1038)</li>
   </ul>
-  <h3>Small Enhancements and Fixes:</h3>
+  <h3>Small Enhancements and Fixes</h3>
   <ul>
   <li>split up English into US-English and UK-English</li>
   <li>Update privacy statement</li>
@@ -2321,19 +2356,19 @@ v5.0: |
   <li>Always mention StreetComplete in created notes (#1012)</li>
   <li>add icons for bus stop shelter and bicycle parking capacity quest (#997, #999, #1004) thanks @rugk</li>
   </ul>
-  <h3>Fixes:</h3>
+  <h3>Fixes</h3>
   <ul>
   <li>Fix crash on rotating the phone while parking fee quest was open</li>
   <li>Fix duplicate opening of quests (i.e. on rotate, or when a new quest is unlocked) (#973)</li>
   </ul>
-  <h3>New Quests:</h3>
+  <h3>New Quests</h3>
   <ul>
   <li>Bicycle parking type: <em>"What is the type of this bicycle parking?"</em> (#923) by @matkoniecz</li>
   <li>Bus stop names: <em>"What is the name of this bus stop?</em>" (#986 / #551) by @PanierAvide</li>
   <li>Postbox collection times: <em>"What are the collection times of this postbox?"</em> (#85)</li>
   <li>Construction Site complete: <em>"Is this road completed?"</em> and <em>"Is this building completed?"</em> (#920) by @matkoniecz</li>
   </ul>
-  <h3>Enhanced Quests:</h3>
+  <h3>Enhanced Quests</h3>
   <ul>
   <li>
   <p>Housenumbers: Add clarification that it is OK to tag ranges and comma-separated housenumbers (#939, #1015) by @ENT8R</p>
@@ -2362,42 +2397,42 @@ v4.1: |
   <li>update translations</li>
   </ul>
   <h3>Enhanced Quests</h3>
-  <h4>Housenumber quest:</h4>
+  <h4>Housenumber quest</h4>
   <ul>
   <li>do not show for underground buildings (#907)</li>
   <li>substantially increase performance for download</li>
   <li>fix bug where buildings with housenumbers on entrances were sometimes not excluded (#885)</li>
   </ul>
-  <h4>Bicycle parking quest:</h4>
+  <h4>Bicycle parking quest</h4>
   <ul>
   <li>do not show for private bicycle parkings (#895) by @ENT8R</li>
   </ul>
-  <h4>Roof Shape quest:</h4>
+  <h4>Roof Shape quest</h4>
   <ul>
   <li>do not show for buildings with alternative roof shape tagging scheme given (#896)</li>
   </ul>
-  <h4>Cycleway quest:</h4>
+  <h4>Cycleway quest</h4>
   <ul>
   <li>do not show for private roads</li>
   </ul>
-  <h4>Opening hours quest:</h4>
+  <h4>Opening hours quest</h4>
   <ul>
   <li>expect Swedish opening hours to be different on Saturdays (#919) by @andreasn</li>
   </ul>
 
 v4.0: |
-  <h3>Highlights:</h3>
+  <h3>Highlights</h3>
   <ul>
   <li>Add a note anywhere, like on openstreetmap.org but you can also attach a photo (#732) by @ENT8R</li>
   <li>New simple map style that shows only what is important for surveyors (#183)</li>
   </ul>
-  <h3>More Features:</h3>
+  <h3>More Features</h3>
   <ul>
   <li>Added unsynced changes counter, click to upload changes manually (#75)</li>
   <li>Immediately open next quest for same element after answering (#164)</li>
   <li>Unglue map while quest details or note input form is shown (#795)</li>
   </ul>
-  <h3>New Quests:</h3>
+  <h3>New Quests</h3>
   <ul>
   <li>Internet connection: <em>"What kind of internet connection does ... offer?"</em> (#784) by @ENT8R</li>
   <li>Religion of place of worship: <em>"What religion is practised at ...?"</em> (#777)</li>
@@ -2408,56 +2443,55 @@ v4.0: |
   <li>Bridge structure: <em>"What is the structure of this bridge?"</em> (#709) thanks @Southernswampfrog</li>
   <li>Wheelchair toilet access: <em>"Are these toilets wheelchair accessible?"</em></li>
   </ul>
-  <h3>Languages:</h3>
+  <h3>Languages</h3>
   <ul>
   <li>Remove Malayalam (not updated anymore) and add Norwegian Nynorsk</li>
   </ul>
   <h3>Enhanced Quests</h3>
-  <h4>Cycleway Quest:</h4>
+  <h4>Cycleway Quest</h4>
   <ul>
   <li>Clearer wording of question (#768)</li>
   <li>Do not ask for a cycleway when a separately mapped sidewalk exists (#718)</li>
-  <li><a href="https://ent8r.github.io/blacklistr/?java=cycleway/AddCycleway.java" >Show only in a limited set of countries</a> (#749)</li>
+  <li><a href="https://ent8r.github.io/blacklistr/?java=cycleway/AddCycleway.java">Show only in a limited set of countries</a> (#749)</li>
   </ul>
-  <h4>Tactile Pavings Quests:</h4>
+  <h4>Tactile Pavings Quests</h4>
   <ul>
   <li>Clearer description (#762)</li>
-  <li><a href="https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java" >Show only in a limited set of countries</a> (#750)</li>
+  <li><a href="https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java">Show only in a limited set of countries</a> (#750)</li>
   </ul>
-  <h4>Max Speed quest:</h4>
+  <h4>Max Speed quest</h4>
   <ul>
   <li>Clearer English wording when asking if the road is in or out of town (#757)</li>
   <li>Still disabled for the US (#813)</li>
   </ul>
-  <h4>Street surface quest:</h4>
+  <h4>Street surface quest</h4>
   <ul>
   <li>Improve street surface quest UI (#76)</li>
   <li>Clearer wording for pedestrian streets (#862) by @ENT8R</li>
   <li>Add "metal" as answer option (#568)</li>
   <li>tag either sett or unhewn_cobblestone, not cobblestone</li>
   </ul>
-  <h4>Road name quest:</h4>
+  <h4>Road name quest</h4>
   <ul>
   <li>Clearer UI flow when answering the road has no name (#756)</li>
   <li>Clearer OSM changeset comment message (#158)</li>
   <li>Clearer wording for pedestrian streets (#862)</li>
   </ul>
-  <h4>Bus stop shelter quest:</h4>
+  <h4>Bus stop shelter quest</h4>
   <ul>
   <li>Only show for actual bus and tram stops, clearer wording (#806)</li>
   </ul>
-  <h4>Vegetarian quest:</h4>
+  <h4>Vegetarian quest</h4>
   <ul>
   <li>Clearer English wording (#883)</li>
   </ul>
-  <h4>Parking fee quest:</h4>
+  <h4>Parking fee quest</h4>
   <ul>
   <li>Able to select the times where the fee applies / does not apply (#848)</li>
   </ul>
 
 v3.7: |
-  <p>fix critical bug that led to the undo feature not working properly
-  (#849)</p>
+  <p>fix critical bug that led to the undo feature not working properly (#849)</p>
 
 v3.6: |
   <ul>
@@ -2540,21 +2574,21 @@ v3.1: |
   </ul>
 
 v3.0: |
-  <h3>New Features:</h3>
+  <h3>New Features</h3>
   <ul>
   <li>you can now disable and reorder the priority of quest types in the settings</li>
   <li>you can now undo hiding of a quests</li>
   <li>you can now attach photos to a note and note comments</li>
   <li>a little nicer settings and about screen</li>
   </ul>
-  <h3>New Quests:</h3>
+  <h3>New Quests</h3>
   <ul>
   <li>cycleways</li>
   <li>vegetarian restaurants</li>
   <li>vegan restaurants</li>
   <li>type of car wash</li>
   </ul>
-  <h3>Enhanced Quests:</h3>
+  <h3>Enhanced Quests</h3>
   <ul>
   <li>house number quest is now disabled for Netherlands, Norway, Denmark and Czech Republic</li>
   <li>house number quest now supports Slovakian addressing system (conscription and orientation numbers)</li>
@@ -2588,15 +2622,15 @@ v2.0: |
   <li>compass mode, free map rotate and tilt</li>
   <li>better UI layout in landscape mode</li>
   </ul>
-  <h3>New Quests:</h3>
+  <h3>New Quests</h3>
   <ul>
   <li>toilet availability</li>
-  <li>powerpoles material type</li>
+  <li>power poles material type</li>
   <li>orchard produce</li>
   <li>parking type</li>
   <li>crossing type</li>
   </ul>
-  <h3>Enhanced Quests:</h3>
+  <h3>Enhanced Quests</h3>
   <ul>
   <li>can specify house names</li>
   <li>can specify advisory speed limits</li>
@@ -2613,7 +2647,7 @@ v1.4: |
   <li>StreetComplete version now mentioned in created note</li>
   <li>do not show quests for private roads</li>
   <li>fixed 4 crash bugs for edge cases</li>
-  <li>updated translatations</li>
+  <li>updated translations</li>
   </ul>
 
 v1.3: |
@@ -2727,10 +2761,10 @@ v0.5: |
   </ul>
 
 v0.4: |
-  <p>fixed a crashbug, some small usability stuff</p>
+  <p>fixed a crash bug, some small usability stuff</p>
 
 v0.3: |
   <p>Last beta probably. Released on Google Play (Beta) also.</p>
 
 v0.2: |
-  <p>internal forum betatest version no.2</p>
+  <p>internal forum beta test version no.2</p>

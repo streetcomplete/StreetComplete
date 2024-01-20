@@ -21,7 +21,7 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
           highway = crossing
           and foot != no
           and crossing
-          and !kerb:left and !kerb:right
+          and (!kerb:left or !kerb:right)
           and (
             !kerb
             or kerb ~ yes|unknown

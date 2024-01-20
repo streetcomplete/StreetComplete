@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.util
 
-import android.content.SharedPreferences
-import androidx.core.content.edit
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.util.prefs.Preferences
 
 class LastPickedValuesStore<T : Any>(
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
     private val key: String,
     private val serialize: (T) -> String,
     private val deserialize: (String) -> T?, // null = unwanted value, see mostCommonWithin
@@ -13,9 +12,7 @@ class LastPickedValuesStore<T : Any>(
 ) {
     fun add(newValues: Iterable<T>) {
         val lastValues = newValues.asSequence().map(serialize) + getRaw()
-        prefs.edit {
-            putString(getKey(), lastValues.take(maxEntries).joinToString(","))
-        }
+        prefs.putString(getKey(), lastValues.take(maxEntries).joinToString(","))
     }
 
     fun add(value: T) = add(listOf(value))
@@ -23,7 +20,7 @@ class LastPickedValuesStore<T : Any>(
     fun get(): Sequence<T?> = getRaw().map(deserialize)
 
     private fun getRaw(): Sequence<String> =
-        prefs.getString(getKey(), null)?.splitToSequence(",") ?: sequenceOf()
+        prefs.getStringOrNull(getKey())?.splitToSequence(",") ?: sequenceOf()
 
     private fun getKey() = Prefs.LAST_PICKED_PREFIX + key
 }

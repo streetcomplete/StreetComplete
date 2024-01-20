@@ -588,19 +588,9 @@
                     "label": "Obroči",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Da"
-                    }
-                },
                 "horse_riding": {
                     "options": {
                         "horse_riding": "Da"
-                    }
-                },
-                "horse_stables": {
-                    "options": {
-                        "stables": "Da"
                     }
                 },
                 "incline": {

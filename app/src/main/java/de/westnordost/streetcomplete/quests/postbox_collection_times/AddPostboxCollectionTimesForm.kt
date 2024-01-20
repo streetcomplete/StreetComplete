@@ -25,13 +25,16 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
     private val binding by contentViewBinding(QuestCollectionTimesBinding::bind)
 
     override val buttonPanelAnswers get() =
-        if (isDisplayingPreviousCollectionTimes) listOf(
-            AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
-            AnswerItem(R.string.quest_generic_hasFeature_yes) {
-                applyAnswer(CollectionTimes(element.tags["collection_times"]!!.toOpeningHoursRules()!!))
-            }
-        )
-        else emptyList()
+        if (isDisplayingPreviousCollectionTimes) {
+            listOf(
+                AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
+                AnswerItem(R.string.quest_generic_hasFeature_yes) {
+                    applyAnswer(CollectionTimes(element.tags["collection_times"]!!.toOpeningHoursRules()!!))
+                }
+            )
+        } else {
+            emptyList()
+        }
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_collectionTimes_answer_no_times_specified) { confirmNoTimes() }

@@ -57,9 +57,13 @@ class CyclewayOverlay(
         """).map { it to getSeparateCyclewayStyle(it) }
 
     override fun createForm(element: Element?) =
-        if (element == null) null
-        else if (element.tags["highway"] in ALL_ROADS) StreetCyclewayOverlayForm()
-        else SeparateCyclewayForm()
+        if (element == null) {
+            null
+        } else if (element.tags["highway"] in ALL_ROADS) {
+            StreetCyclewayOverlayForm()
+        } else {
+            SeparateCyclewayForm()
+        }
 }
 
 private fun getSeparateCyclewayStyle(element: Element) =
@@ -123,12 +127,18 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
         StrokeStyle(Color.BLUE)
 
     EXCLUSIVE_LANE, UNSPECIFIED_LANE ->
-        if (isAmbiguous(countryInfo)) StrokeStyle(Color.DATA_REQUESTED)
-        else                          StrokeStyle(Color.GOLD)
+        if (isAmbiguous(countryInfo)) {
+            StrokeStyle(Color.DATA_REQUESTED)
+        } else {
+            StrokeStyle(Color.GOLD)
+        }
 
     ADVISORY_LANE, SUGGESTION_LANE, UNSPECIFIED_SHARED_LANE ->
-        if (isAmbiguous(countryInfo)) StrokeStyle(Color.DATA_REQUESTED)
-        else                          StrokeStyle(Color.ORANGE)
+        if (isAmbiguous(countryInfo)) {
+            StrokeStyle(Color.DATA_REQUESTED)
+        } else {
+            StrokeStyle(Color.ORANGE)
+        }
 
     PICTOGRAMS ->
         StrokeStyle(Color.ORANGE, dashed = true)

@@ -48,7 +48,7 @@ class OsmQuestControllerTest {
 
     private lateinit var ctrl: OsmQuestController
     private lateinit var listener: OsmQuestSource.Listener
-    private lateinit var hideListener: OsmQuestController.HideOsmQuestListener
+    private lateinit var hideListener: OsmQuestsHiddenSource.Listener
 
     private lateinit var mapDataListener: MapDataWithEditsSource.Listener
     private lateinit var notesListener: NotesWithEditsSource.Listener
@@ -86,7 +86,7 @@ class OsmQuestControllerTest {
         hideListener = mock()
         ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, futureTask)
         ctrl.addListener(listener)
-        ctrl.addHideQuestsListener(hideListener)
+        ctrl.addListener(hideListener)
     }
 
     @Test fun get() {
@@ -169,6 +169,11 @@ class OsmQuestControllerTest {
         )
     }
 
+    @Test fun countAll() {
+        on(hiddenDB.countAll()).thenReturn(123L)
+        assertEquals(123L, ctrl.countAll())
+    }
+
     @Test fun hide() {
         val quest = osmQuest(questType = ApplicableQuestType)
 
@@ -215,7 +220,6 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on notes listener update`() {
-
         val notes = listOf(note(1))
 
         notesListener.onUpdated(added = notes, updated = emptyList(), deleted = emptyList())
@@ -257,7 +261,6 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on map data listener update for updated elements`() {
-
         val geom = pGeom(0.0, 0.0)
 
         val elements = listOf(
@@ -300,7 +303,6 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on map data listener replace for bbox`() {
-
         val elements = listOf(
             node(1),
             // missing geometry

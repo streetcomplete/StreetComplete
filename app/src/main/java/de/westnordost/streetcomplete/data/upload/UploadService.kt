@@ -6,11 +6,11 @@ import android.content.Intent
 import android.os.Binder
 import android.os.Build
 import android.os.IBinder
-import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_ID_SYNC
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.sync.CoroutineIntentService
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
+import de.westnordost.streetcomplete.util.logs.Log
 import org.koin.android.ext.android.inject
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
@@ -75,8 +75,11 @@ class UploadService : CoroutineIntentService(TAG) {
     }
 
     private fun updateShowNotification() {
-        if (!showNotification || !isUploading) stopForeground(true)
-        else startForeground(NOTIFICATIONS_ID_SYNC, createSyncNotification(this))
+        if (!showNotification || !isUploading) {
+            stopForeground(true)
+        } else {
+            startForeground(NOTIFICATIONS_ID_SYNC, createSyncNotification(this))
+        }
     }
 
     /** Public interface to classes that are bound to this service  */

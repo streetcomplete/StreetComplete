@@ -9,8 +9,8 @@ import kotlin.test.assertEquals
 
 class SidewalkParserKtTest {
     /* These are a lot of tests because there are many possible permutations and this test does not
-    *  make (many) assumptions that the code is written in a way that if it is solved for one type,
-    *  it is solved for all */
+     * make (many) assumptions that the code is written in a way that if it is solved for one type,
+     * it is solved for all */
 
     /* ------------------------------------------ invalid --------------------------------------- */
 

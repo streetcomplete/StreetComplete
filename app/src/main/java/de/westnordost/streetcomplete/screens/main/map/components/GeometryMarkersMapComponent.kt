@@ -89,7 +89,6 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
         // polygon / polylines marker(s)
         if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-
             if (geometry is ElementPolygonsGeometry) {
                 for (polygon in geometry.toTangramGeometry()) {
                     val marker = ctrl.addMarker()

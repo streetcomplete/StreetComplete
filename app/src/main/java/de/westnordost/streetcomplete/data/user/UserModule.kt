@@ -1,34 +1,45 @@
 package de.westnordost.streetcomplete.data.user
 
-import oauth.signpost.OAuthConsumer
-import oauth.signpost.OAuthProvider
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer
-import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider
 
-private const val BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/"
-private const val CONSUMER_KEY = "NV4cEoqQ94Kuoowh8qGJvUJLnbts40WiNykyeC1T"
-private const val CONSUMER_SECRET = "r68v1Bd7RewTixAp0dMdCwn3w5iQvmpk4HlJcH2y"
-private const val CALLBACK_SCHEME = "streetcomplete"
-private const val CALLBACK_HOST = "oauth"
+const val OAUTH2_TOKEN_URL = "https://www.openstreetmap.org/oauth2/token"
+const val OAUTH2_AUTHORIZATION_URL = "https://www.openstreetmap.org/oauth2/authorize"
+
+const val OAUTH2_CLIENT_ID = "Yyk4PmTopczrr3BWZYvLK_M-KBloCQwXgPGEzqUYTc8"
+
+const val OAUTH2_CALLBACK_SCHEME = "streetcomplete"
+const val OAUTH2_CALLBACK_HOST = "oauth"
+
+val OAUTH2_REDIRECT_URI = "$OAUTH2_CALLBACK_SCHEME://$OAUTH2_CALLBACK_HOST"
+
+val OAUTH2_REQUESTED_SCOPES = listOf(
+    "read_prefs",
+    "write_api",
+    "write_notes",
+    "write_gpx",
+)
+
+val OAUTH2_REQUIRED_SCOPES = listOf(
+    "read_prefs",
+    "write_api",
+    "write_notes",
+    /* the gps traces permissions is only required for "attaching" gpx track recordings
+       to notes. People that feel uneasy to give these permission should still be able to
+       use this app.
+       If those then still use the "attach gpx track recordings" feature and try to upload,
+       they will be prompted to re-authenticate (currently) without further explanation
+       because the OSM API returned a HTTP 403 (forbidden) error.
+     */
+    // "write_gpx",
+)
 
 val userModule = module {
-    factory(named("OAuthCallbackScheme")) { CALLBACK_SCHEME }
-    factory(named("OAuthCallbackHost")) { CALLBACK_HOST }
-    factory<OAuthConsumer> { OkHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET) }
-    factory<OAuthProvider> { OkHttpOAuthProvider(
-        BASE_OAUTH_URL + "request_token",
-        BASE_OAUTH_URL + "access_token",
-        BASE_OAUTH_URL + "authorize"
-    ) }
-    factory { OAuthStore(get()) }
 
     single<UserDataSource> { get<UserDataController>() }
     single { UserDataController(get(), get()) }
 
     single<UserLoginStatusSource> { get<UserLoginStatusController>() }
-    single { UserLoginStatusController(get(), get(), get()) }
+    single { UserLoginStatusController(get(), get()) }
 
     single { UserUpdater(get(), get(), get(), get(), get()) }
 }

@@ -1,4 +1,4 @@
-Aidez à améliorer l’OpenStreetMap avec StreetComplete !
+Aidez à améliorer OpenStreetMap avec StreetComplete !
 
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L’information liée à chaque marqueur peut être complétée en répondant à une question simple.
 

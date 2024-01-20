@@ -4,15 +4,15 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.padWith
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
-import kotlin.collections.ArrayList
+import org.koin.android.ext.android.inject
 
 /**
  * Abstract class for quests with a list of images and one or several to select.
@@ -27,6 +27,8 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
+
+    private val prefs: Preferences by inject()
 
     override val defaultExpanded = false
 
@@ -56,7 +58,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
         favs = LastPickedValuesStore(
-            PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext),
+            prefs,
             key = javaClass.simpleName,
             serialize = { it.value.toString() },
             deserialize = { itemsByString[it] }

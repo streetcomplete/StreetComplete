@@ -266,10 +266,6 @@
                 "brand": {
                     "label": "Brand"
                 },
-                "brewery": {
-                    "label": "Draught Beers",
-                    "terms": "on tap"
-                },
                 "bridge": {
                     "label": "Type",
                     "placeholder": "Default"
@@ -637,15 +633,7 @@
                     "label": "Hoops",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Dressage Riding",
-                    "options": {
-                        "equestrian": "Yes",
-                        "undefined": "No"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Horseback Riding",
                     "options": {
                         "horse_riding": "Yes",
                         "undefined": "No"
@@ -661,13 +649,6 @@
                         "difficult": "Difficult: Way narrow and exposed. May contain obstacles to step over and narrow passages."
                     },
                     "placeholder": "Difficult, Dangerous..."
-                },
-                "horse_stables": {
-                    "label": "Riding Stable",
-                    "options": {
-                        "stables": "Yes",
-                        "undefined": "No"
-                    }
                 },
                 "incline": {
                     "label": "Incline"
@@ -2086,6 +2067,10 @@
                 },
                 "building/retail": {
                     "name": "Retail Building"
+                },
+                "building/riding_hall": {
+                    "name": "Indoor Horse Riding Arena",
+                    "aliases": "Indoor Riding Arena\nHorse Riding Hall"
                 },
                 "building/roof": {
                     "name": "Roof"

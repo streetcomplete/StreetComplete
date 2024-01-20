@@ -10,7 +10,6 @@ import java.io.StringWriter
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 /** Counts the occurrence of values for a given key for a certain tag combination by country and
  *  writes the result in a YML file.
@@ -18,7 +17,7 @@ import java.nio.charset.StandardCharsets
  *  So, much like for example taginfo's values page but sorted by country code plus only counting
  *  elements sufficing a certain tag combination.
  *  ( https://taginfo.openstreetmap.org/keys/operator#values ) */
-open class SophoxCountValueByCountryTask : DefaultTask() {
+open class QLeverCountValueByCountryTask : DefaultTask() {
 
     @get:Input lateinit var targetFile: String
     @get:Input lateinit var osmTag: String
@@ -26,22 +25,29 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
     @get:Input var minCount: Int = 1
     @get:Input var minPercent: Double = 0.0
 
-    private val pointRegex = Regex("Point\\(([-+\\d.]*) ([-+\\d.]*)\\)")
+    private val firstPointRegex = Regex("[A-Za-z(]*([-+\\d.]*) ([-+\\d.]*)")
     private val boundaries = CountryBoundaries.load(FileInputStream("${project.projectDir}/app/src/main/assets/boundaries.ser"))
 
     @TaskAction fun run() {
         val query = """
-        SELECT ?value ?loc
-        WHERE { ?osm $sparqlQueryPart osmt:$osmTag ?value; osmm:loc ?loc. }
-        """.trimIndent()
+            PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+            PREFIX osmkey: <https://www.openstreetmap.org/wiki/Key:>
+            SELECT ?value ?geometry WHERE {
+            ?osm $sparqlQueryPart
+            osmkey:$osmTag ?value;
+            geo:hasGeometry ?geometry.
+            }
+            """.trimIndent()
 
         // country code -> ( value -> count )
         val result: MutableMap<String, MutableMap<String, Int>> = mutableMapOf()
 
-        val rows = querySophoxCsv(query).mapNotNull { parseCsvRow(it) }
+        val rows = queryQLeverTsv(query).mapNotNull { parseTsvRow(it) }
+
         for (row in rows) {
             row.countryCode?.let {
-                result.getOrPut(it, { mutableMapOf() }).compute(row.value) { _, u -> (u ?: 0) + 1 }
+                result.getOrPut(it, { mutableMapOf() })
+                    .compute(row.value) { _, u -> (u ?: 0) + 1 }
             }
         }
 
@@ -84,25 +90,25 @@ open class SophoxCountValueByCountryTask : DefaultTask() {
         return str.toString().removeSuffix("\n").removeSuffix("\r")
     }
 
-    private fun querySophoxCsv(query: String): List<String> {
-        val url = URL("https://sophox.org/sparql?query=" + URLEncoder.encode(query, "UTF-8"))
+    private fun queryQLeverTsv(query: String): List<String> {
+        val url = URL("https://qlever.cs.uni-freiburg.de/api/osm-planet?query=${URLEncoder.encode(query, "UTF-8")}&action=tsv_export")
         val connection = url.openConnection() as HttpURLConnection
         try {
-            connection.setRequestProperty("Accept", "text/csv")
             connection.setRequestProperty("User-Agent", "StreetComplete")
-            connection.setRequestProperty("charset", StandardCharsets.UTF_8.name())
-            connection.doOutput = true
             return connection.inputStream.bufferedReader().readLines()
         } finally {
             connection.disconnect()
         }
     }
 
-    private fun parseCsvRow(row: String): Row? {
-        val elements = row.split(',')
-        val value = elements[0]
-        if (elements.size < 2) return null
-        val matchResult = pointRegex.matchEntire(elements[1]) ?: return null
+    private fun parseTsvRow(row: String): Row? {
+        val t = row.lastIndexOf('\t')
+        if (t == -1) return null
+        if (row.length < 3) return null
+        val value = row.substring(1, t - 1) // value without "..."
+        if (t + 1 >= row.length) return null
+        val geometry = row.substring(t + 1 + 1) // geometry without starting "
+        val matchResult = firstPointRegex.matchAt(geometry, 0) ?: return null
         val lon = matchResult.groupValues[1].toDoubleOrNull() ?: return null
         val lat = matchResult.groupValues[2].toDoubleOrNull() ?: return null
         return Row(value, lon, lat)
