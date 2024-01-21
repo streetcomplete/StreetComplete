@@ -57,7 +57,7 @@ class LengthInputViewController(
         }
 
     /** set/get which units can be selected from the dropdown */
-    var selectableUnits: List<LengthUnit> = LengthUnit.values().toList()
+    var selectableUnits: List<LengthUnit> = LengthUnit.entries
         set(value) {
             field = value
             unitSelect.isEnabled = value.size > 1

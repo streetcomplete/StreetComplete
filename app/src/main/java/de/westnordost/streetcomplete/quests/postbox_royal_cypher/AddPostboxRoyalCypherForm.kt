@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddPostboxRoyalCypherForm : AImageListQuestForm<PostboxRoyalCypher, PostboxRoyalCypher>() {
 
-    override val items = PostboxRoyalCypher.values().mapNotNull { it.asItem() }
+    override val items = PostboxRoyalCypher.entries.mapNotNull { it.asItem() }
     override val itemsPerRow = 3
 
     override val otherAnswers = listOf(

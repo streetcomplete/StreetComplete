@@ -14,7 +14,7 @@ fun createSurfaceAndNote(tags: Map<String, String>, prefix: String? = null): Sur
 fun createSurface(surface: String?): Surface? {
     if (surface == null) return null
     if (surface in INVALID_SURFACES) return null
-    val foundSurface = Surface.values().find { it.osmValue == surface }
+    val foundSurface = Surface.entries.find { it.osmValue == surface }
 
     return foundSurface
         ?: if (";" in surface || "<" in surface) null else Surface.UNKNOWN

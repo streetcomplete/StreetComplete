@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.logs.LogsTable.NAME
 /** Stores the app logs */
 class LogsDao(private val db: Database) {
     fun getAll(
-        levels: Set<LogLevel> = LogLevel.values().toSet(),
+        levels: Set<LogLevel> = LogLevel.entries.toSet(),
         messageContains: String? = null,
         newerThan: Long? = null,
         olderThan: Long? = null,

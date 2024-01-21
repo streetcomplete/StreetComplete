@@ -121,7 +121,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     }
 
     private fun getParkingItems(context: Context): List<DisplayItem<ParkingSelection>> =
-        ParkingSelection.values().map { it.asItem(context, isLeftHandTraffic) }
+        ParkingSelection.entries.map { it.asItem(context, isLeftHandTraffic) }
 
     private fun getParkingPositionItems(context: Context, orientation: ParkingOrientation) =
         DISPLAYED_PARKING_POSITIONS

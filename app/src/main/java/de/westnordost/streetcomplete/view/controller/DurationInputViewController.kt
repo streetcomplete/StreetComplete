@@ -19,7 +19,7 @@ class DurationInputViewController(
 
     var durationUnit: DurationUnit
         set(value) { unitSelect.setSelection(value.ordinal) }
-        get() = DurationUnit.values()[unitSelect.selectedItemPosition]
+        get() = DurationUnit.entries[unitSelect.selectedItemPosition]
 
     var durationValue: Double
         set(value) { input.setText(value.toString()) }
@@ -29,7 +29,7 @@ class DurationInputViewController(
         unitSelect.adapter = ArrayAdapter(
             unitSelect.context,
             R.layout.spinner_item_centered,
-            DurationUnit.values().map { it.toLocalizedString(unitSelect.context.resources) }
+            DurationUnit.entries.map { it.toLocalizedString(unitSelect.context.resources) }
         )
         if (unitSelect.selectedItemPosition < 0) unitSelect.setSelection(1)
         unitSelect.onItemSelectedListener = OnAdapterItemSelectedListener {

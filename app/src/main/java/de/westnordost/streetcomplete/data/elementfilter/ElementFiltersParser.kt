@@ -108,7 +108,7 @@ private fun StringWithCursor.parseElementsDeclaration(): Set<ElementsTypeFilter>
 
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
     expectAnyNumberOfSpaces()
-    for (t in ElementsTypeFilter.values()) {
+    for (t in ElementsTypeFilter.entries) {
         val name = when (t) {
             ElementsTypeFilter.NODES -> "nodes"
             ElementsTypeFilter.WAYS -> "ways"

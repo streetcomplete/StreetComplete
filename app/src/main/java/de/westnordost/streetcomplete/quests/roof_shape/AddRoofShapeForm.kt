@@ -12,7 +12,7 @@ class AddRoofShapeForm : AImageListQuestForm<RoofShape, RoofShape>() {
         AnswerItem(R.string.quest_roofShape_answer_many) { applyAnswer(MANY) }
     )
 
-    override val items = RoofShape.values().mapNotNull { it.asItem() }
+    override val items = RoofShape.entries.mapNotNull { it.asItem() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

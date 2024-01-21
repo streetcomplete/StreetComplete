@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddOrchardProduceForm : AImageListQuestForm<OrchardProduce, List<OrchardProduce>>() {
 
-    private val producesMap = OrchardProduce.values()
+    private val producesMap = OrchardProduce.entries
         .map { it.asItem() }
         .associateBy { it.value!!.osmValue }
 

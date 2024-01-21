@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddPoliceTypeForm : AImageListQuestForm<PoliceType, PoliceType>() {
 
-    override val items = PoliceType.values().map { it.asItem() }
+    override val items = PoliceType.entries.map { it.asItem() }
     override val itemsPerRow = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {

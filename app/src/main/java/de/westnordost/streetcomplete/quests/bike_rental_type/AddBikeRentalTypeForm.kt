@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddBikeRentalTypeForm : AImageListQuestForm<BikeRentalTypeAnswer, BikeRentalTypeAnswer>() {
 
-    override val items = BikeRentalType.values().map { it.asItem() } + BikeShopWithRental.asItem()
+    override val items = BikeRentalType.entries.map { it.asItem() } + BikeShopWithRental.asItem()
     override val itemsPerRow = 2
     override val moveFavoritesToFront = false
 
