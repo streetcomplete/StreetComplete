@@ -9,15 +9,8 @@ fun BuildingType.applyTo(tags: Tags) {
         tags["man_made"] = osmValue
     } else if (osmKey != "building") {
         tags[osmKey] = osmValue
-        if (this == ABANDONED) {
-            tags.remove("disused")
-        }
-        if (this == RUINS && tags["disused"] == "no") {
-            tags.remove("disused")
-        }
-        if (this == RUINS && tags["abandoned"] == "no") {
-            tags.remove("abandoned")
-        }
+        if (this == ABANDONED || this == RUINS) tags.remove("disused")
+        if (this == RUINS) tags.remove("abandoned")
     } else {
         tags["building"] = osmValue
     }

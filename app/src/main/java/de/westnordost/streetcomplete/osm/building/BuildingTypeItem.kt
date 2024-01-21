@@ -14,6 +14,7 @@ fun BuildingType.asItem(): GroupableDisplayItem<BuildingType>? {
 }
 
 private val BuildingType.titleResId: Int? get() = when (this) {
+    UNSPECIFIED ->     null
     HOUSE ->           R.string.quest_buildingType_house
     APARTMENTS ->      R.string.quest_buildingType_apartments
     DETACHED ->        R.string.quest_buildingType_detached
@@ -76,7 +77,7 @@ private val BuildingType.titleResId: Int? get() = when (this) {
     CIVIC ->           R.string.quest_buildingType_civic
     RELIGIOUS ->       R.string.quest_buildingType_religious
     GUARDHOUSE ->      R.string.quest_buildingType_guardhouse
-    CONSTRUCTION ->    null
+    CONSTRUCTION ->    R.string.quest_buildingType_under_construction
 }
 
 private val BuildingType.descriptionResId: Int? get() = when (this) {
@@ -105,6 +106,7 @@ private val BuildingType.descriptionResId: Int? get() = when (this) {
 }
 
 val BuildingType.iconResId: Int? get() = when (this) {
+    UNSPECIFIED ->     null
     HOUSE ->           R.drawable.ic_building_house
     APARTMENTS ->      R.drawable.ic_building_apartments
     DETACHED ->        R.drawable.ic_building_detached
@@ -167,10 +169,11 @@ val BuildingType.iconResId: Int? get() = when (this) {
     CIVIC ->           R.drawable.ic_building_civic
     RELIGIOUS ->       R.drawable.ic_building_temple
     GUARDHOUSE ->      R.drawable.ic_building_guardhouse
-    CONSTRUCTION ->    null
+    CONSTRUCTION ->    R.drawable.ic_building_construction
 }
 
 val BuildingType.iconResName: String? get() = when (this) {
+    UNSPECIFIED ->     null
     HOUSE ->           "ic_building_house"
     APARTMENTS ->      "ic_building_apartments"
     DETACHED ->        "ic_building_detached"
@@ -233,5 +236,5 @@ val BuildingType.iconResName: String? get() = when (this) {
     CIVIC ->           "ic_building_civic"
     RELIGIOUS ->       "ic_building_temple"
     GUARDHOUSE ->      "ic_building_guardhouse"
-    CONSTRUCTION ->    null
+    CONSTRUCTION ->    "ic_building_construction"
 }

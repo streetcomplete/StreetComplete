@@ -13,9 +13,10 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
     // in the case of man_made, historic, military, aeroway and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
     // or question would be confusing as there is no matching reply in available answers
-    // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891, #3233
+    // same goes (more or less) for tourism, amenity, leisure, .... See #1854, #1891, #3233
+    // TODO treat deprecated values as not-set?
     override val elementFilter = """
-        ways, relations with (building = yes or building = unclassified)
+        ways, relations with (building ~ yes|unclassified|undefined|unknown|other)
          and !man_made
          and !historic
          and !military
