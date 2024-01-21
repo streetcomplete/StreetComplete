@@ -13,7 +13,7 @@ class AddSportForm : AImageListQuestForm<Sport, List<Sport>>() {
         AnswerItem(R.string.quest_sport_answer_multi) { applyMultiAnswer() }
     )
 
-    override val items get() = Sport.values()
+    override val items get() = Sport.entries
         .mapNotNull { it.asItem() }
         .sortedBy { sportPosition(it.value!!.osmValue) }
 

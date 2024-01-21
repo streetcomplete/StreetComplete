@@ -34,7 +34,7 @@ class LaneNarrowingTrafficCalmingForm :
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
-    override val items get() = LaneNarrowingTrafficCalming.values().map { it.asItem() }
+    override val items get() = LaneNarrowingTrafficCalming.entries.map { it.asItem() }
 
     private var originalLaneNarrowingTrafficCalming: LaneNarrowingTrafficCalming? = null
 

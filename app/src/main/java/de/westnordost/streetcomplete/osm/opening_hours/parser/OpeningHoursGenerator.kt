@@ -189,13 +189,13 @@ private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
     // if the range is very short (e.g. Mo-Tu), rather save it as Mo,Tu
     return if (size == 2) {
         listOf(
-            WeekDayRange().also { it.startDay = WeekDay.values()[start] },
-            WeekDayRange().also { it.startDay = WeekDay.values()[end] }
+            WeekDayRange().also { it.startDay = WeekDay.entries[start] },
+            WeekDayRange().also { it.startDay = WeekDay.entries[end] }
         )
     } else {
         listOf(WeekDayRange().also {
-            it.startDay = WeekDay.values()[start]
-            it.endDay = if (start != end) WeekDay.values()[end] else null
+            it.startDay = WeekDay.entries[start]
+            it.endDay = if (start != end) WeekDay.entries[end] else null
         })
     }
 }
@@ -205,8 +205,8 @@ private fun Months.toDateRanges(): List<DateRange> {
 }
 
 private fun CircularSection.toDateRange() = DateRange().also {
-    it.startDate = createMonthDate(Month.values()[start])
-    it.endDate = if (start != end) createMonthDate(Month.values()[end]) else null
+    it.startDate = createMonthDate(Month.entries[start])
+    it.endDate = if (start != end) createMonthDate(Month.entries[end]) else null
 }
 
 private fun createMonthDate(month: Month) = DateWithOffset().also { it.month = month }

@@ -86,7 +86,7 @@ class LogsFiltersDialog(
     }
 
     private fun createLogLevelsChips() {
-        LogLevel.values().forEach { level ->
+        LogLevel.entries.forEach { level ->
             val chip = createLogLevelChip(context, level)
 
             chip.isChecked = filters.levels.contains(level)

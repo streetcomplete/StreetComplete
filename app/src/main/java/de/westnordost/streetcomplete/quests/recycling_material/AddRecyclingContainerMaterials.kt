@@ -128,7 +128,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 private val recyclingOlderThan2Years =
     TagOlderThan("recycling", RelativeDate(-(365 * 2).toFloat()))
 
-private val allKnownMaterials = RecyclingMaterial.values().map { "recycling:" + it.value }
+private val allKnownMaterials = RecyclingMaterial.entries.map { "recycling:" + it.value }
 
 private fun Element.hasAnyRecyclingMaterials(): Boolean =
     tags.any { it.key.startsWith("recycling:") && it.value == "yes" }
