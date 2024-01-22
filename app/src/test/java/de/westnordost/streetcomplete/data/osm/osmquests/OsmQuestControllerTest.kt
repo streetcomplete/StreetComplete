@@ -31,7 +31,6 @@ import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import org.mockito.Mockito.verify
-import java.util.concurrent.FutureTask
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -79,12 +78,9 @@ class OsmQuestControllerTest {
             Unit
         }
 
-        val futureTask = FutureTask { countryBoundaries }
-        futureTask.run()
-
         listener = mock()
         hideListener = mock()
-        ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, futureTask)
+        ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, lazyOf(countryBoundaries))
         ctrl.addListener(listener)
         ctrl.addListener(hideListener)
     }

@@ -26,14 +26,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 import kotlin.math.ceil
 import kotlin.math.floor
 
 class AddLevelForm : AbstractOsmQuestForm<String>() {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
     override val contentLayoutResId = R.layout.quest_level
     private val binding by contentViewBinding(QuestLevelBinding::bind)
@@ -104,7 +102,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         val levels = listOf(SingleLevel(level))
         for ((element, geometry) in shopElementsAndGeometry) {
             if (!createLevelsOrNull(element.tags).levelsIntersect(levels)) continue
-            val icon = getPinIcon(featureDictionaryFuture.get(), element.tags)
+            val icon = getPinIcon(featureDictionary, element.tags)
             val title = getTitle(element.tags)
             showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(geometry, icon, title)
         }
