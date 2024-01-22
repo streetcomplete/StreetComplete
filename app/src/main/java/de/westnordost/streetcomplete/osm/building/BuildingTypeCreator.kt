@@ -18,5 +18,6 @@ fun BuildingType.applyTo(tags: Tags) {
     }
 }
 
+// TODO do not change if stays the same
 // TODO handle when non-building value is added/removed (e.g. historic=yes)
 // TODO + tests

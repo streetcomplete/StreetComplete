@@ -30,14 +30,18 @@ class BuildingsOverlay : Overlay {
               building and building !~ no|entrance
               or man_made ~ communications_tower|tower|lighthouse|chimney|silo|storage_tank|water_tower|gasometer|cooling_tower
         """)
-        .map {
-            val building = createBuildingType(it.tags)
-            it to PolygonStyle(color = building.color, icon = building?.iconResName)
+        .map { element ->
+            val building = createBuildingType(element.tags)
+
+            val color = building?.color
+                ?: if (isBuildingTypeMissing(element.tags)) Color.DATA_REQUESTED else Color.INVISIBLE
+
+            element to PolygonStyle(color = color, icon = building?.iconResName)
         }
 
     override fun createForm(element: Element?) = BuildingsOverlayForm()
 
-    private val BuildingType?.color get() = when(this) {
+    private val BuildingType.color get() = when(this) {
         // ~detached homes
         DETACHED, SEMI_DETACHED, HOUSEBOAT, BUNGALOW, STATIC_CARAVAN, HUT, FARM, -> // 10%
             Color.BLUE
@@ -74,8 +78,8 @@ class BuildingsOverlay : Overlay {
         HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB,
         UNSUPPORTED ->
             Color.BLACK
-
-        null -> Color.INVISIBLE
-        // TODO Color.RED if not set && not something like military=yes / emergency=yes etc.?
     }
+
+    private fun isBuildingTypeMissing(tags: Map<String, String>): Boolean =
+        !BuildingType.otherKeysPotentiallyDescribingBuildingType.any { it in tags }
 }

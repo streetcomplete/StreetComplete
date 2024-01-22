@@ -10,33 +10,15 @@ import de.westnordost.streetcomplete.osm.building.applyTo
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
-    // in the case of man_made, historic, military, aeroway and power, these tags already contain
-    // information about the purpose of the building, so no need to force asking it
-    // or question would be confusing as there is no matching reply in available answers
-    // same goes (more or less) for tourism, amenity, leisure, .... See #1854, #1891, #3233
+
     override val elementFilter = """
-        ways, relations with (building ~ yes|${BuildingType.deprecatedValues.joinToString("|")})
-         and !man_made
-         and !historic
-         and !military
-         and !power
-         and !tourism
-         and !attraction
-         and !amenity
-         and !leisure
-         and !aeroway
-         and !railway
-         and !craft
-         and !healthcare
-         and !office
-         and !shop
-         and !description
-         and !emergency
-         and location != underground
-         and abandoned != yes
-         and abandoned != building
-         and abandoned:building != yes
-         and ruins != yes and ruined != yes
+        ways, relations with
+        building ~ yes|${BuildingType.deprecatedValues.joinToString("|")}
+        and ${BuildingType.otherKeysPotentiallyDescribingBuildingType.joinToString(" and ") { "!$it" }}
+        and location != underground
+        and disused != yes
+        and abandoned != yes
+        and ruins != yes
     """
     override val changesetComment = "Specify building types"
     override val wikiLink = "Key:building"

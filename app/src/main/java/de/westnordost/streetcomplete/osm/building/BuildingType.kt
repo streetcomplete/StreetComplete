@@ -191,7 +191,26 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
             "other",
             "fixme", // -> yes
         )
+
+        /** other OSM keys that may describe the purpose of a building */
+        val otherKeysPotentiallyDescribingBuildingType = listOf(
+            // See #1854, #1891, #3233
+            "man_made",
+            "historic",
+            "military",
+            "power",
+            "tourism",
+            "attraction",
+            "amenity",
+            "leisure",
+            "aeroway",
+            "railway",
+            "craft",
+            "healthcare",
+            "office",
+            "shop",
+            "description",
+            "emergency",
+        )
     }
 }
-
-// TODO candidates to include: more based on other tags (military, emergency, ....?)
