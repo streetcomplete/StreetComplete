@@ -35,5 +35,3 @@ private fun createBuildingTypeFromHouseType(houseType: String?): BuildingType = 
 
     else ->             BuildingType.HOUSE
 }
-
-// TODO TESTS
