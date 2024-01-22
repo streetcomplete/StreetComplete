@@ -10,6 +10,14 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 fun BuildingType.applyTo(tags: Tags) {
     require(osmKey != null && osmValue != null)
 
+    // do not change anything if it is considered an alias! (This could destroy information, e.g.
+    // building=livestock would be changed to building=farm_auxiliary)
+    val alias = BuildingType.aliases.entries.find { tags[it.key.first] == it.key.second }?.value
+    if (alias == this) {
+        tags.updateCheckDate()
+        return
+    }
+
     // clear the *=yes tags, after that, re-add if this was selected
     listOf("disused", "abandoned", "ruins", "historic").forEach {
         tags.remove(it)

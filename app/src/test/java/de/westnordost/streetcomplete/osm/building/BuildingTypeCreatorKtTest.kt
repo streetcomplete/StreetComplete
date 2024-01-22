@@ -90,6 +90,18 @@ class BuildingTypeCreatorKtTest {
             HISTORIC.appliedTo(mapOf("building" to "hut", "historic" to "yes"))
         )
     }
+
+    @Test fun `don't overwrite aliases`() {
+        assertEquals(
+            mapOf("building" to "livestock", "check_date" to nowAsCheckDateString()),
+            FARM_AUXILIARY.appliedTo(mapOf("building" to "livestock"))
+        )
+
+        assertEquals(
+            mapOf("building" to "residential"),
+            RESIDENTIAL.appliedTo(mapOf("building" to "livestock"))
+        )
+    }
 }
 
 private fun BuildingType.appliedTo(tags: Map<String, String>): Map<String, String> {
