@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 
 fun BuildingType.applyTo(tags: Tags) {
+    if (osmKey == null || osmValue == null) return
+
     if (osmKey == "man_made") {
         tags.remove("building")
         tags["man_made"] = osmValue
@@ -15,3 +17,6 @@ fun BuildingType.applyTo(tags: Tags) {
         tags["building"] = osmValue
     }
 }
+
+// TODO handle when non-building value is added/removed (e.g. historic=yes)
+// TODO + tests

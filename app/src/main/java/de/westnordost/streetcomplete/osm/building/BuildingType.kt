@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm.building
 
-enum class BuildingType(val osmKey: String, val osmValue: String) {
-    UNSPECIFIED     ("building", "yes"),
+enum class BuildingType(val osmKey: String?, val osmValue: String?) {
+    UNSUPPORTED     (null, null),
 
     HOUSE           ("building", "house"),
     APARTMENTS      ("building", "apartments"),
@@ -55,6 +55,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     SILO            ("man_made", "silo"),
     GREENHOUSE      ("building", "greenhouse"),
 
+    OUTBUILDING     ("building", "outbuilding"),
     SHED            ("building", "shed"),
     ALLOTMENT_HOUSE ("building", "allotment_house"),
     ROOF            ("building", "roof"),
@@ -64,6 +65,9 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     HANGAR          ("building", "hangar"),
     BUNKER          ("building", "bunker"),
     BOATHOUSE       ("building", "boathouse"),
+    CONTAINER       ("building", "container"),
+    TENT            ("building", "tent"),
+    TOMB            ("building", "tomb"),
 
     HISTORIC        ("historic", "yes"),
     ABANDONED       ("abandoned", "yes"),
@@ -77,11 +81,6 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
     CONSTRUCTION    ("building", "construction");
 
     companion object {
-        // TODO should be getByTags or similar
-        fun getByTag(key: String, value: String): BuildingType? {
-            return values().find { it.osmKey == key && it.osmValue == value }
-        }
-
         val topSelectableValues = listOf(DETACHED, APARTMENTS, HOUSE, GARAGE, SHED, HUT)
 
         /** a map of tag to [BuildingType] of building features that should be treated as aliases
@@ -96,7 +95,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
             ("building" to "chalet") to BUNGALOW, // not documented
             ("building" to "summer_cottage") to BUNGALOW, // not documented
             ("building" to "cottage") to BUNGALOW, // not documented
-            ("building" to "ger") to RESIDENTIAL, // a Mongolian tent
+            ("building" to "ger") to TENT, // a Mongolian tent
             ("building" to "stilt_house") to HOUSE,
             ("building" to "terrace_house") to HOUSE,  // not documented, auto-changing to house would be a loss of information
             ("building" to "trullo") to HUT,
@@ -123,6 +122,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
             ("building" to "government_office") to GOVERNMENT, // not documented
             ("building" to "education") to CIVIC, // not documented (but I like this tag!!)
             ("building" to "townhall") to CIVIC,
+
             ("building" to "administrative") to GOVERNMENT, // not documented; =government is also for provincial administration
 
             // Agricultural
@@ -134,6 +134,7 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
             ("building" to "poultry_house") to FARM_AUXILIARY, // not documented
             ("building" to "chicken_coop") to FARM_AUXILIARY, // not documented
             ("building" to "granary") to SILO, // not documented
+
             ("building" to "slurry_tank") to STORAGE_TANK,
             ("building" to "digester") to STORAGE_TANK,
             ("building" to "agricultural") to FARM_AUXILIARY, // not documented
@@ -146,12 +147,13 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
             // Other
             ("building" to "castle") to HISTORIC,
             ("building" to "canopy") to ROOF, // not documented
+            ("man_made" to "canopy") to ROOF, // not documented
             ("building" to "gazebo") to ROOF, // not documented
         )
 
-        /** a list of building values that should be treated as deprecated aliases of known building
+        /** a set of building values that should be treated as deprecated aliases of known building
          *  types */
-        val deprecatedValues = listOf(
+        val deprecatedValues = setOf(
             "semi",
             "semidetached",
             "semi_detached",
@@ -167,11 +169,11 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
 
             "flats", // -> apartments
 
-            "annexe", // -> outbuilding
-
             "shop", // -> retail
 
+            "storage_tank", // -> man_made=storage_tank
             "tank", // -> man_made=storage_tank
+            "silo", // -> man_made=silo
 
             "glasshouse", // ambiguous: could be greenhouse or conservatory
 
@@ -186,15 +188,10 @@ enum class BuildingType(val osmKey: String, val osmValue: String) {
             "unclassified",
             "undefined",
             "unknown",
-            "other", // -> yes
+            "other",
+            "fixme", // -> yes
         )
     }
 }
 
-// TODO candidates to include:
-// outbuilding
-// tent (+ includes ger)
-// container
-// tomb
-// conservatory
-// more based on other tags (military, emergency, ....?)
+// TODO candidates to include: more based on other tags (military, emergency, ....?)

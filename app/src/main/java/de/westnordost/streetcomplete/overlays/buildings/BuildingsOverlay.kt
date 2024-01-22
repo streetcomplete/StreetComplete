@@ -24,11 +24,10 @@ class BuildingsOverlay : Overlay {
     override val achievements = listOf(BUILDING)
     override val hidesQuestTypes = setOf(AddBuildingType::class.simpleName!!)
 
-    // TODO building = no, building=entrance
     override fun getStyledElements(mapData: MapDataWithGeometry) = mapData.filter(
         """
             ways, relations with
-              building
+              building and building !~ no|entrance
               or man_made ~ communications_tower|tower|lighthouse|chimney|silo|storage_tank|water_tower|gasometer|cooling_tower
         """)
         .map {
@@ -51,13 +50,14 @@ class BuildingsOverlay : Overlay {
         RESIDENTIAL, -> // 12%
             Color.CYAN
 
-        // parking, sheds, ...
-        CARPORT, GARAGE, GARAGES, SHED, BOATHOUSE, SERVICE, ALLOTMENT_HOUSE -> // 11%
+        // parking, sheds, outbuildings in general...
+        OUTBUILDING, CARPORT, GARAGE, GARAGES, SHED, BOATHOUSE, SERVICE, ALLOTMENT_HOUSE,
+        TENT, CONTAINER, GUARDHOUSE, -> // 11%
             Color.LIME
 
         // commercial, industrial, farm buildings
         COMMERCIAL, KIOSK, RETAIL, OFFICE, BRIDGE, HOTEL, PARKING,
-        INDUSTRIAL, WAREHOUSE, GUARDHOUSE, HANGAR, STORAGE_TANK,
+        INDUSTRIAL, WAREHOUSE, HANGAR, STORAGE_TANK,
         FARM_AUXILIARY, SILO, GREENHOUSE,
         ROOF -> // 5%
             Color.GOLD
@@ -71,9 +71,11 @@ class BuildingsOverlay : Overlay {
             Color.ORANGE
 
         // other/special
-        HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER ->
+        HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB,
+        UNSUPPORTED ->
             Color.BLACK
 
         null -> Color.INVISIBLE
+        // TODO Color.RED if not set && not something like military=yes / emergency=yes etc.?
     }
 }

@@ -27,7 +27,7 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
     private val prefs: Preferences by inject()
 
-    protected open val itemsPerRow = 3
+    protected open val itemsPerRow = 1
 
     /** all items to display. May not be accessed before onCreate */
     protected abstract val allItems: List<GroupableDisplayItem<I>>
@@ -66,8 +66,7 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.selectButton.root.setOnClickListener {
-            val items = getInitialItems() + allItems
-            GroupedImageListPickerDialog(requireContext(), items, groupCellLayoutId, cellLayoutId, itemsPerRow) { item ->
+            GroupedImageListPickerDialog(requireContext(), allItems, groupCellLayoutId, cellLayoutId, itemsPerRow) { item ->
                 if (item != selectedItem) {
                     selectedItem = item
                     checkIsFormComplete()
@@ -114,3 +113,5 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
         private const val SELECTED = "selected"
     }
 }
+
+// TODO should show the "top items" as fav buttons at the bottom

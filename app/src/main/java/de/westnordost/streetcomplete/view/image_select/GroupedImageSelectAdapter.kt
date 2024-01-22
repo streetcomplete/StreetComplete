@@ -69,9 +69,16 @@ class GroupedImageSelectAdapter<T> :
         val previousItem = selectedItem
         val previousGroup = selectedItemGroup
 
-        val foundGroupIndex = getGroupIndex(index)
-        selectedItemGroup = if (foundGroupIndex == -1) null else _items[foundGroupIndex]
-        selectedItem = _items[index]
+        val hasSelectedSameItem = previousItem == _items[index]
+
+        if (hasSelectedSameItem) {
+            selectedItem = null
+            selectedItemGroup = null
+        } else {
+            selectedItem = _items[index]
+            val foundGroupIndex = getGroupIndex(index)
+            selectedItemGroup = if (foundGroupIndex == -1) null else _items[foundGroupIndex]
+        }
 
         if (previousItem != null) {
             val previousItemIndex = indexOfItemGivenGroupMembership(previousItem, previousGroup)

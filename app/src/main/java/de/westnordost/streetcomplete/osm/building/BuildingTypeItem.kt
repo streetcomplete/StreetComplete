@@ -7,14 +7,11 @@ import de.westnordost.streetcomplete.view.image_select.Item
 
 fun List<BuildingType>.toItems() = mapNotNull { it.asItem() }
 
-fun BuildingType.asItem(): GroupableDisplayItem<BuildingType>? {
-    val iconResId = iconResId ?: return null
-    val titleResId = titleResId ?: return null
-    return Item(this, iconResId, titleResId, descriptionResId)
-}
+fun BuildingType.asItem(): GroupableDisplayItem<BuildingType> =
+    Item(this, iconResId, titleResId, descriptionResId)
 
-private val BuildingType.titleResId: Int? get() = when (this) {
-    UNSPECIFIED ->     null
+private val BuildingType.titleResId: Int get() = when (this) {
+    UNSUPPORTED ->     R.string.quest_buildingType_other
     HOUSE ->           R.string.quest_buildingType_house
     APARTMENTS ->      R.string.quest_buildingType_apartments
     DETACHED ->        R.string.quest_buildingType_detached
@@ -69,6 +66,10 @@ private val BuildingType.titleResId: Int? get() = when (this) {
     HANGAR ->          R.string.quest_buildingType_hangar
     BUNKER ->          R.string.quest_buildingType_bunker
     BOATHOUSE ->       R.string.quest_buildingType_boathouse
+    CONTAINER ->       R.string.quest_buildingType_container
+    OUTBUILDING ->     R.string.quest_buildingType_outbuilding
+    TENT ->            R.string.quest_buildingType_tent
+    TOMB ->            R.string.quest_buildingType_tomb
     HISTORIC ->        R.string.quest_buildingType_historic
     ABANDONED ->       R.string.quest_buildingType_abandoned
     RUINS ->           R.string.quest_buildingType_ruins
@@ -81,12 +82,14 @@ private val BuildingType.titleResId: Int? get() = when (this) {
 }
 
 private val BuildingType.descriptionResId: Int? get() = when (this) {
+    UNSUPPORTED ->     R.string.quest_buildingType_other_description
     HOUSE ->           R.string.quest_buildingType_house_description2
     APARTMENTS ->      R.string.quest_buildingType_apartments_description
     DETACHED ->        R.string.quest_buildingType_detached_description
     SEMI_DETACHED ->   R.string.quest_buildingType_semi_detached_description2
     TERRACE ->         R.string.quest_buildingType_terrace_description
     BUNGALOW ->        R.string.quest_buildingType_bungalow_description2
+    OUTBUILDING ->     R.string.quest_buildingType_outbuilding_description
     HUT ->             R.string.quest_buildingType_hut_description
     INDUSTRIAL ->      R.string.quest_buildingType_industrial_description
     RETAIL ->          R.string.quest_buildingType_retail_description
@@ -105,8 +108,8 @@ private val BuildingType.descriptionResId: Int? get() = when (this) {
     else ->            null
 }
 
-val BuildingType.iconResId: Int? get() = when (this) {
-    UNSPECIFIED ->     null
+val BuildingType.iconResId: Int get() = when (this) {
+    UNSUPPORTED ->     R.drawable.ic_building_other
     HOUSE ->           R.drawable.ic_building_house
     APARTMENTS ->      R.drawable.ic_building_apartments
     DETACHED ->        R.drawable.ic_building_detached
@@ -161,6 +164,10 @@ val BuildingType.iconResId: Int? get() = when (this) {
     HANGAR ->          R.drawable.ic_building_hangar
     BUNKER ->          R.drawable.ic_building_bunker
     BOATHOUSE ->       R.drawable.ic_building_boathouse
+    OUTBUILDING ->     R.drawable.ic_building_shed
+    CONTAINER ->       R.drawable.ic_building_container
+    TENT ->            R.drawable.ic_building_tent
+    TOMB ->            R.drawable.ic_building_tomb
     HISTORIC ->        R.drawable.ic_building_historic
     ABANDONED ->       R.drawable.ic_building_abandoned
     RUINS ->           R.drawable.ic_building_ruins
@@ -172,8 +179,9 @@ val BuildingType.iconResId: Int? get() = when (this) {
     CONSTRUCTION ->    R.drawable.ic_building_construction
 }
 
-val BuildingType.iconResName: String? get() = when (this) {
-    UNSPECIFIED ->     null
+// unfortunately, we need a string but we do not have access to resources at the point we need it
+val BuildingType.iconResName: String get() = when (this) {
+    UNSUPPORTED ->     "ic_building_other"
     HOUSE ->           "ic_building_house"
     APARTMENTS ->      "ic_building_apartments"
     DETACHED ->        "ic_building_detached"
@@ -228,6 +236,10 @@ val BuildingType.iconResName: String? get() = when (this) {
     HANGAR ->          "ic_building_hangar"
     BUNKER ->          "ic_building_bunker"
     BOATHOUSE ->       "ic_building_boathouse"
+    OUTBUILDING ->     "ic_building_shed"
+    CONTAINER ->       "ic_building_container"
+    TENT ->            "ic_building_tent"
+    TOMB ->            "ic_building_tomb"
     HISTORIC ->        "ic_building_historic"
     ABANDONED ->       "ic_building_abandoned"
     RUINS ->           "ic_building_ruins"

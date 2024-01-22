@@ -14,8 +14,10 @@ import de.westnordost.streetcomplete.overlays.AGroupedImageSelectOverlayForm
 
 class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
 
-    override val allItems = BuildingTypeCategory.values().toItems()
+    override val allItems = BuildingTypeCategory.entries.toItems()
     override val topItems = BuildingType.topSelectableValues.toItems()
+
+    override val itemsPerRow = 1
 
     private var originalBuilding: BuildingType? = null
 

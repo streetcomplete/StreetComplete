@@ -66,5 +66,3 @@ class GroupedImageListPickerDialog<T>(
         getButton(BUTTON_POSITIVE)?.isEnabled = adapter.selectedItem?.value != null
     }
 }
-
-// TODO: auto-scroll to expanded list works?

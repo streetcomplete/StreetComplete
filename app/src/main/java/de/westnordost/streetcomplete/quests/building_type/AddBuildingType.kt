@@ -14,9 +14,8 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
     // information about the purpose of the building, so no need to force asking it
     // or question would be confusing as there is no matching reply in available answers
     // same goes (more or less) for tourism, amenity, leisure, .... See #1854, #1891, #3233
-    // TODO treat deprecated values as not-set?
     override val elementFilter = """
-        ways, relations with (building ~ yes|unclassified|undefined|unknown|other)
+        ways, relations with (building ~ yes|${BuildingType.deprecatedValues.joinToString("|")})
          and !man_made
          and !historic
          and !military
@@ -43,6 +42,7 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
     override val achievements = listOf(BUILDING)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_overlay
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
 
