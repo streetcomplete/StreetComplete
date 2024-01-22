@@ -3,6 +3,10 @@ package de.westnordost.streetcomplete.osm.building
 enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     UNSUPPORTED     (null, null),
 
+    HISTORIC        ("historic", "yes"),
+    ABANDONED       ("abandoned", "yes"),
+    RUINS           ("ruins", "yes"),
+
     HOUSE           ("building", "house"),
     APARTMENTS      ("building", "apartments"),
     DETACHED        ("building", "detached"),
@@ -68,10 +72,6 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     CONTAINER       ("building", "container"),
     TENT            ("building", "tent"),
     TOMB            ("building", "tomb"),
-
-    HISTORIC        ("historic", "yes"),
-    ABANDONED       ("abandoned", "yes"),
-    RUINS           ("ruins", "yes"),
 
     RESIDENTIAL     ("building", "residential"),
     COMMERCIAL      ("building", "commercial"),

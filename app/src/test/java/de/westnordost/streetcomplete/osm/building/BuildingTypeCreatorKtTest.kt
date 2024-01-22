@@ -1,76 +1,101 @@
 package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
-import org.assertj.core.api.Assertions
+import de.westnordost.streetcomplete.osm.building.BuildingType.*
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import kotlin.test.Test
+import kotlin.test.assertFails
+import kotlin.test.assertEquals
 
 class BuildingTypeCreatorKtTest {
 
-    @Test
-    fun `set building as residential`() {
-        verifyAnswer(
-            mapOf(
-                "building" to "yes",
-            ),
-            BuildingType.RESIDENTIAL,
-            arrayOf(
-                StringMapEntryModify("building", "yes", "residential"),
-            )
+    @Test fun `set building as unsupported not possible`() {
+        assertFails { UNSUPPORTED.appliedTo(mapOf()) }
+    }
+
+    @Test fun `set building`() {
+        assertEquals(
+            mapOf("building" to "residential"),
+            RESIDENTIAL.appliedTo(mapOf())
+        )
+
+        assertEquals(
+            mapOf("building" to "residential"),
+            RESIDENTIAL.appliedTo(mapOf("building" to "yes"))
+        )
+
+        assertEquals(
+            mapOf("building" to "residential"),
+            RESIDENTIAL.appliedTo(mapOf("man_made" to "storage_tank"))
         )
     }
 
-    @Test
-    fun `set building as abandoned`() {
-        verifyAnswer(
-            mapOf(
-                "building" to "yes",
-            ),
-            BuildingType.ABANDONED,
-            arrayOf(
-                StringMapEntryAdd("abandoned", "yes"),
-            )
+    @Test fun `set man-made`() {
+        assertEquals(
+            mapOf("man_made" to "storage_tank"),
+            STORAGE_TANK.appliedTo(mapOf())
+        )
+
+        assertEquals(
+            mapOf("man_made" to "storage_tank"),
+            STORAGE_TANK.appliedTo(mapOf("man_made" to "silo"))
+        )
+
+        assertEquals(
+            mapOf("man_made" to "storage_tank"),
+            STORAGE_TANK.appliedTo(mapOf("building" to "roof"))
         )
     }
 
-    @Test
-    fun `set building as abandoned and prevent double tagging`() {
-        // https://github.com/streetcomplete/StreetComplete/issues/3386
-        verifyAnswer(
-            mapOf(
-                "building" to "yes",
+
+    @Test fun `remove ruins etc`() {
+        assertEquals(
+            mapOf("building" to "roof"),
+            ROOF.appliedTo(mapOf(
+                "building" to "residential",
+                "ruins" to "yes",
+                "abandoned" to "yes",
                 "disused" to "yes",
-            ),
-            BuildingType.ABANDONED,
-            arrayOf(
-                StringMapEntryAdd("abandoned", "yes"),
-                StringMapEntryDelete("disused", "yes"),
-            )
+                "historic" to "yes",
+            ))
+        )
+
+        assertEquals(
+            mapOf("building" to "residential", "historic" to "yes"),
+            HISTORIC.appliedTo(mapOf(
+                "building" to "residential",
+                "ruins" to "yes",
+                "abandoned" to "yes",
+                "disused" to "yes",
+            ))
+        )
+
+        assertEquals(
+            mapOf("building" to "residential"),
+            RESIDENTIAL.appliedTo(mapOf("building" to "residential", "ruins" to "yes"))
         )
     }
 
-    @Test
-    fun `set building as abandoned where it was marked as used`() {
-        verifyAnswer(
-            mapOf(
-                "building" to "yes",
-                "disused" to "no",
-            ),
-            BuildingType.ABANDONED,
-            arrayOf(
-                StringMapEntryAdd("abandoned", "yes"),
-                StringMapEntryDelete("disused", "no"),
-            )
+    @Test fun `update check date`() {
+        assertEquals(
+            mapOf("building" to "residential", "check_date" to nowAsCheckDateString()),
+            RESIDENTIAL.appliedTo(mapOf("building" to "residential"))
+        )
+        assertEquals(
+            mapOf("man_made" to "silo", "check_date" to nowAsCheckDateString()),
+            SILO.appliedTo(mapOf("man_made" to "silo"))
+        )
+        assertEquals(
+            mapOf("building" to "hut", "historic" to "yes", "check_date" to nowAsCheckDateString()),
+            HISTORIC.appliedTo(mapOf("building" to "hut", "historic" to "yes"))
         )
     }
 }
 
-private fun verifyAnswer(tags: Map<String, String>, answer: BuildingType, expectedChanges: Array<StringMapEntryChange>) {
+private fun BuildingType.appliedTo(tags: Map<String, String>): Map<String, String> {
     val cb = StringMapChangesBuilder(tags)
-    answer.applyTo(cb)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    applyTo(cb)
+    val mutableMap = tags.toMutableMap()
+    cb.create().applyTo(mutableMap)
+    return mutableMap
 }

@@ -2,22 +2,28 @@ package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
+import de.westnordost.streetcomplete.osm.hasCheckDateForKey
+import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 fun BuildingType.applyTo(tags: Tags) {
-    if (osmKey == null || osmValue == null) return
+    require(osmKey != null && osmValue != null)
 
-    if (osmKey == "man_made") {
-        tags.remove("building")
-        tags["man_made"] = osmValue
-    } else if (osmKey != "building") {
-        tags[osmKey] = osmValue
-        if (this == ABANDONED || this == RUINS) tags.remove("disused")
-        if (this == RUINS) tags.remove("abandoned")
-    } else {
-        tags["building"] = osmValue
+    // clear the *=yes tags, after that, re-add if this was selected
+    listOf("disused", "abandoned", "ruins", "historic").forEach {
+        tags.remove(it)
+    }
+
+    // switch between man-made and building
+    if (osmKey == "man_made") tags.remove("building")
+    if (osmKey == "building") tags.remove("man_made")
+
+    tags[osmKey] = osmValue
+
+    // we set the check date and not check_date:building because this is about the primary feature,
+    // not a property of a feature.
+    if (!tags.hasChanges) {
+        tags.updateCheckDate()
     }
 }
-
-// TODO do not change if stays the same
-// TODO handle when non-building value is added/removed (e.g. historic=yes)
-// TODO + tests
