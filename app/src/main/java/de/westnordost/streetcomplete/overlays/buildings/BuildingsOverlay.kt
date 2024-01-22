@@ -75,7 +75,7 @@ class BuildingsOverlay : Overlay {
             Color.ORANGE
 
         // other/special
-        HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB,
+        HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
         UNSUPPORTED ->
             Color.GRAY
     }
