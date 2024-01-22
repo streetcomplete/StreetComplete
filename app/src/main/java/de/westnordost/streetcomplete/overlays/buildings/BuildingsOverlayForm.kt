@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.building.asItem
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.toItems
 import de.westnordost.streetcomplete.overlays.AGroupedImageSelectOverlayForm
-import de.westnordost.streetcomplete.util.getHouseNumberLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 
 class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
 
@@ -28,7 +28,7 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
         originalBuilding = createBuildingType(element!!.tags)
         selectedItem = originalBuilding?.asItem()
 
-        setTitleHintLabel(getHouseNumberLabel(element!!.tags, resources))
+        setTitleHintLabel(getNameAndLocationLabel(element!!, resources, null, true))
     }
 
     override fun hasChanges(): Boolean =
