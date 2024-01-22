@@ -70,7 +70,7 @@ fun SurfaceAndNote?.getColor(element: Element): String =
         // not set but indoor, private or just a "virtual" link -> do not highlight as missing
         if (isIndoor(element.tags) || isPrivateOnFoot(element) || isLink(element.tags)) {
             Color.INVISIBLE
-        } else if (isComplexSurfaceLanes(element.tags))) {
+        } else if (isComplexSurfaceLanes(element.tags)) {
             Color.BLACK // same as other complex surfaces, e.g. surface=unpaved with surface:note=*
         } else {
             Color.DATA_REQUESTED
