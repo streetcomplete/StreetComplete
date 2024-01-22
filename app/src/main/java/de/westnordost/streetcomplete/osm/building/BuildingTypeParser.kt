@@ -4,6 +4,8 @@ fun createBuildingType(tags: Map<String, String>): BuildingType? {
     val building = BuildingType.entries.find { it.osmKey != null && tags[it.osmKey] == it.osmValue }
         ?: BuildingType.aliases.entries.find { tags[it.key.first] == it.key.second }?.value
 
+    if (building == BuildingType.HOUSE) return createBuildingTypeFromHouseType(tags["house"])
+
     if (building != null) return building
 
     val buildingValue = tags["building"]
@@ -24,6 +26,14 @@ fun createBuildingType(tags: Map<String, String>): BuildingType? {
     return BuildingType.UNSUPPORTED
 }
 
-// TODO TESTS
+private fun createBuildingTypeFromHouseType(houseType: String?): BuildingType = when(houseType) {
+    null ->             BuildingType.HOUSE
+    "detached" ->       BuildingType.DETACHED
+    "terrace" ->        BuildingType.TERRACE
+    "semi-detached" ->  BuildingType.SEMI_DETACHED
+    "bungalow" ->       BuildingType.BUNGALOW
 
-// TODO understand building=house + house=X and variants
+    else ->             BuildingType.HOUSE
+}
+
+// TODO TESTS
