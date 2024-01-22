@@ -37,3 +37,5 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }
+
+// TODO what about building:use?
