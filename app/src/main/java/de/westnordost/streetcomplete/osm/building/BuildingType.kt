@@ -72,6 +72,7 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     CONTAINER       ("building", "container"),
     TENT            ("building", "tent"),
     TOMB            ("building", "tomb"),
+    TOWER           ("man_made", "tower"),
 
     RESIDENTIAL     ("building", "residential"),
     COMMERCIAL      ("building", "commercial"),
@@ -122,7 +123,6 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
             ("building" to "government_office") to GOVERNMENT, // not documented
             ("building" to "education") to CIVIC, // not documented (but I like this tag!!)
             ("building" to "townhall") to CIVIC,
-
             ("building" to "administrative") to GOVERNMENT, // not documented; =government is also for provincial administration
 
             // Agricultural
@@ -137,12 +137,18 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
 
             ("building" to "slurry_tank") to STORAGE_TANK,
             ("building" to "digester") to STORAGE_TANK,
+            ("building" to "gasometer") to STORAGE_TANK,
             ("building" to "agricultural") to FARM_AUXILIARY, // not documented
 
             // Technical
             ("building" to "tech_cab") to SERVICE,
             ("building" to "transformer_tower") to SERVICE,
             ("building" to "power_substation") to SERVICE,
+            ("building" to "tower") to TOWER, // not really a synonym though
+            ("building" to "communications_tower") to TOWER,
+            ("building" to "lighthouse") to TOWER,
+            ("building" to "water_tower") to TOWER,
+            ("building" to "cooling_tower") to TOWER,
 
             // Other
             ("building" to "castle") to HISTORIC,

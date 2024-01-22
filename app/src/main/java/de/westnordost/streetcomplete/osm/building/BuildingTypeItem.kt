@@ -64,6 +64,7 @@ private val BuildingType.titleResId: Int get() = when (this) {
     TOILETS ->         R.string.quest_buildingType_toilets
     SERVICE ->         R.string.quest_buildingType_service
     HANGAR ->          R.string.quest_buildingType_hangar
+    TOWER ->           R.string.quest_buildingType_tower
     BUNKER ->          R.string.quest_buildingType_bunker
     BOATHOUSE ->       R.string.quest_buildingType_boathouse
     CONTAINER ->       R.string.quest_buildingType_container
@@ -99,6 +100,7 @@ private val BuildingType.descriptionResId: Int? get() = when (this) {
     FARM_AUXILIARY ->  R.string.quest_buildingType_farm_auxiliary_description
     SERVICE ->         R.string.quest_buildingType_service_description
     HANGAR ->          R.string.quest_buildingType_hangar_description
+    TOWER ->           R.string.quest_buildingType_tower_description
     HISTORIC ->        R.string.quest_buildingType_historic_description
     ABANDONED ->       R.string.quest_buildingType_abandoned_description
     RUINS ->           R.string.quest_buildingType_ruins_description
@@ -162,6 +164,7 @@ val BuildingType.iconResId: Int get() = when (this) {
     TOILETS ->         R.drawable.ic_building_toilets
     SERVICE ->         R.drawable.ic_building_service
     HANGAR ->          R.drawable.ic_building_hangar
+    TOWER ->           R.drawable.ic_building_tower
     BUNKER ->          R.drawable.ic_building_bunker
     BOATHOUSE ->       R.drawable.ic_building_boathouse
     OUTBUILDING ->     R.drawable.ic_building_shed
@@ -234,6 +237,7 @@ val BuildingType.iconResName: String get() = when (this) {
     TOILETS ->         "ic_building_toilets"
     SERVICE ->         "ic_building_service"
     HANGAR ->          "ic_building_hangar"
+    TOWER ->           "ic_building_tower"
     BUNKER ->          "ic_building_bunker"
     BOATHOUSE ->       "ic_building_boathouse"
     OUTBUILDING ->     "ic_building_shed"
