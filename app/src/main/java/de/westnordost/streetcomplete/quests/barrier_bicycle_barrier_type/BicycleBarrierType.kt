@@ -10,4 +10,4 @@ enum class BicycleBarrierType(val osmValue: String) : BicycleBarrierTypeAnswer {
     TILTED("tilted"),
 }
 
-object BarrierTypeIsNotBicycleBarrier : BicycleBarrierTypeAnswer
+data object BarrierTypeIsNotBicycleBarrier : BicycleBarrierTypeAnswer

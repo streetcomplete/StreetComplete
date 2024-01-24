@@ -8,4 +8,4 @@ enum class BikeRentalType(val osmValue: String) : BikeRentalTypeAnswer {
     HUMAN("shop"),
 }
 
-object BikeShopWithRental : BikeRentalTypeAnswer
+data object BikeShopWithRental : BikeRentalTypeAnswer
