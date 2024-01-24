@@ -23,7 +23,6 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         and (!indoor or indoor = no)
         and (
           !surface
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -8 years
           or (
             surface ~ paved|unpaved|${INVALID_SURFACES.joinToString("|")}

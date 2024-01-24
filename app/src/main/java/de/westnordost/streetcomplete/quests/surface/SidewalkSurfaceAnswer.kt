@@ -5,4 +5,4 @@ import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSu
 sealed interface SidewalkSurfaceAnswer
 
 data class SidewalkSurface(val value: LeftAndRightSidewalkSurface) : SidewalkSurfaceAnswer
-object SidewalkIsDifferent : SidewalkSurfaceAnswer
+data object SidewalkIsDifferent : SidewalkSurfaceAnswer

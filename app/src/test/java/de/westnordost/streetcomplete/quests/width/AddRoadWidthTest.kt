@@ -4,10 +4,12 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.LengthInMeters
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -76,65 +78,85 @@ class AddRoadWidthTest {
     }
 
     @Test fun `apply to street`() {
-        quest.verifyAnswer(
-            WidthAnswer(LengthInMeters(3.0), false),
-            StringMapEntryAdd("width", "3")
+        assertEquals(
+            setOf(StringMapEntryAdd("width", "3")),
+            quest.answerApplied(WidthAnswer(LengthInMeters(3.0), false))
         )
     }
 
     @Test fun `apply to street when measured with AR`() {
-        quest.verifyAnswer(
-            WidthAnswer(LengthInMeters(3.0), true),
-            StringMapEntryAdd("width", "3"),
-            StringMapEntryAdd("source:width", "ARCore")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("width", "3"),
+                StringMapEntryAdd("source:width", "ARCore")
+            ),
+            quest.answerApplied(WidthAnswer(LengthInMeters(3.0), true))
         )
     }
 
     @Test fun `apply to street when not measured with AR but previously was`() {
-        quest.verifyAnswer(
-            mapOf("width" to "2", "source:width" to "estimate"),
-            WidthAnswer(LengthInMeters(3.0), false),
-            StringMapEntryModify("width", "2", "3"),
-            StringMapEntryDelete("source:width", "estimate")
+        assertEquals(
+            setOf(
+                StringMapEntryModify("width", "2", "3"),
+                StringMapEntryDelete("source:width", "estimate")
+            ),
+            quest.answerAppliedTo(
+                WidthAnswer(LengthInMeters(3.0), false),
+                mapOf("width" to "2", "source:width" to "estimate")
+            )
         )
     }
 
     @Test fun `modifies width-carriageway if set`() {
-        quest.verifyAnswer(
-            mapOf("width:carriageway" to "2"),
-            WidthAnswer(LengthInMeters(3.0), false),
-            StringMapEntryAdd("width", "3"),
-            StringMapEntryModify("width:carriageway", "2", "3"),
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("width", "3"),
+                StringMapEntryModify("width:carriageway", "2", "3"),
+            ),
+            quest.answerAppliedTo(
+                WidthAnswer(LengthInMeters(3.0), false),
+                mapOf("width:carriageway" to "2")
+            )
         )
     }
 
     @Test fun `apply to choker`() {
-        quest.verifyAnswer(
-            mapOf("traffic_calming" to "choker"),
-            WidthAnswer(LengthInMeters(3.0), false),
-            StringMapEntryAdd("maxwidth", "3")
+        assertEquals(
+            setOf(StringMapEntryAdd("maxwidth", "3")),
+            quest.answerAppliedTo(
+                WidthAnswer(LengthInMeters(3.0), false),
+                mapOf("traffic_calming" to "choker")
+            )
         )
     }
 
     @Test fun `apply to choker when measured with AR`() {
-        quest.verifyAnswer(
-            mapOf("traffic_calming" to "choker"),
-            WidthAnswer(LengthInMeters(3.0), true),
-            StringMapEntryAdd("maxwidth", "3"),
-            StringMapEntryAdd("source:maxwidth", "ARCore")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxwidth", "3"),
+                StringMapEntryAdd("source:maxwidth", "ARCore")
+            ),
+            quest.answerAppliedTo(
+                WidthAnswer(LengthInMeters(3.0), true),
+                mapOf("traffic_calming" to "choker")
+            )
         )
     }
 
     @Test fun `apply to choker when not measured with AR but previously was`() {
-        quest.verifyAnswer(
-            mapOf(
-                "traffic_calming" to "choker",
-                "maxwidth" to "2",
-                "source:maxwidth" to "estimate"
+        assertEquals(
+            setOf(
+                StringMapEntryModify("maxwidth", "2", "3"),
+                StringMapEntryDelete("source:maxwidth", "estimate")
             ),
-            WidthAnswer(LengthInMeters(3.0), false),
-            StringMapEntryModify("maxwidth", "2", "3"),
-            StringMapEntryDelete("source:maxwidth", "estimate")
+            quest.answerAppliedTo(
+                WidthAnswer(LengthInMeters(3.0), false),
+                mapOf(
+                    "traffic_calming" to "choker",
+                    "maxwidth" to "2",
+                    "source:maxwidth" to "estimate"
+                )
+            )
         )
     }
 }

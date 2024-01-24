@@ -57,13 +57,9 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
             YES -> tags["foot"] = "no"
             NO -> tags["foot"] = "yes"
             HAS_SEPARATE_SIDEWALK -> {
-                tags["sidewalk"] = "separate"
+                tags["sidewalk:both"] = "separate"
                 // wrong tagging may exist, it should be removed to prevent quest from reappearing
-                // technically it may remove sidewalk:both=separate and replace it with less accurate
-                // sidewalk=separate but it will happen only with contradicting wrong data such as
-                // sidewalk:left=no or sidewalk:right=none or sidewalk=no
-                // And in such case all sidewalk tagging is suspect anyway
-                tags.remove("sidewalk:both")
+                tags.remove("sidewalk")
                 tags.remove("sidewalk:left")
                 tags.remove("sidewalk:right")
             }
