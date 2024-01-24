@@ -9,8 +9,8 @@ sealed interface SmoothnessAnswer
 
 data class SmoothnessValueAnswer(val value: Smoothness) : SmoothnessAnswer
 
-object IsActuallyStepsAnswer : SmoothnessAnswer
-object WrongSurfaceAnswer : SmoothnessAnswer
+data object IsActuallyStepsAnswer : SmoothnessAnswer
+data object WrongSurfaceAnswer : SmoothnessAnswer
 
 fun SmoothnessAnswer.applyTo(tags: Tags) {
     tags.remove("smoothness:date")

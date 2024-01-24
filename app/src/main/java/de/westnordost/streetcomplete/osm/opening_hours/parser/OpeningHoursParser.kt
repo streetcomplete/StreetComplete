@@ -293,7 +293,7 @@ private fun Holiday.intersectsWith(other: Holiday): Boolean {
 private fun WeekDayRange.expandedToNextDay(): WeekDayRange = WeekDayRange().also {
     it.startDay = startDay
     val end = if (endDay == null) startDay else endDay
-    val values = WeekDay.values()
+    val values = WeekDay.entries.toTypedArray()
     it.endDay = values[(end.ordinal + 1) % values.size]
 }
 

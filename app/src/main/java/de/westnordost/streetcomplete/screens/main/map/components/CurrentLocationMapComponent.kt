@@ -85,8 +85,7 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
                 size: [${dotSize.x}px, ${dotSize.y}px],
                 order: 2000,
                 flat: true,
-                collide: false,
-                interactive: true
+                collide: false
             }
             """.trimIndent())
             it.setDrawable(dotImg)

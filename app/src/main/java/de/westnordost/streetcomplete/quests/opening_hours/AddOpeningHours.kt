@@ -178,10 +178,8 @@ class AddOpeningHours(
             if (tags["opening_hours:signed"] == "no") {
                 tags.remove("opening_hours:signed")
             }
-            if ("opening_hours:covid19" in tags) {
-                tags.remove("opening_hours:covid19")
-            }
         }
+        tags.remove("opening_hours:covid19")
     }
 
     private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)

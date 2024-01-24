@@ -8,277 +8,262 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import org.assertj.core.api.Assertions
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 class CyclewayCreatorKtTest {
 
     @Test fun `apply nothing`() {
-        verifyAnswer(
-            mapOf(
+        assertEquals(
+            setOf(),
+            LeftAndRightCycleway(null, null).appliedTo(mapOf(
                 "cycleway:left" to "track",
                 "cycleway" to "no",
                 "cycleway:right" to "track"
-            ),
-            LeftAndRightCycleway(null, null),
-            arrayOf()
+            ))
         )
     }
 
     @Test fun `apply cycleway lane answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
                 StringMapEntryAdd("cycleway:both:lane", "exclusive")
-            )
+            ),
+            cycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply advisory lane answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(ADVISORY_LANE, ADVISORY_LANE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
                 StringMapEntryAdd("cycleway:both:lane", "advisory")
-            )
+            ),
+            cycleway(ADVISORY_LANE, ADVISORY_LANE).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply cycleway track answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "track")
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply unspecified cycle lane answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "lane")
-            )
+            ),
+            cycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply unspecified cycle lane answer does not remove previous specific lane answer`() {
-        verifyAnswer(
-            mapOf("cycleway:both:lane" to "exclusive"),
-            cycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
                 StringMapEntryModify("cycleway:both:lane", "exclusive", "exclusive"),
-            )
+            ),
+            cycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE).appliedTo(mapOf(
+                "cycleway:both:lane" to "exclusive"
+            ))
         )
     }
 
     @Test fun `apply bus lane answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(BUSWAY, BUSWAY),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "share_busway")
-            )
+            ),
+            cycleway(BUSWAY, BUSWAY).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply pictogram lane answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(PICTOGRAMS, PICTOGRAMS),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "shared_lane"),
                 StringMapEntryAdd("cycleway:both:lane", "pictogram")
-            )
+            ),
+            cycleway(PICTOGRAMS, PICTOGRAMS).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply suggestion lane answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "shared_lane"),
                 StringMapEntryAdd("cycleway:both:lane", "advisory")
-            )
+            ),
+            cycleway(SUGGESTION_LANE, SUGGESTION_LANE).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply no cycleway answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(NONE, NONE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "no")
-            )
+            ),
+            cycleway(NONE, NONE).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply cycleway on sidewalk answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:both:segregated", "no"),
                 StringMapEntryAdd("sidewalk", "both"),
-            )
+            ),
+            cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply cycleway on sidewalk answer on one side only`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(null, SIDEWALK_EXPLICIT),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryAdd("cycleway:right:segregated", "no"),
                 StringMapEntryAdd("sidewalk:right", "yes"),
-            )
+            ),
+            cycleway(null, SIDEWALK_EXPLICIT).appliedTo(mapOf())
         )
-        verifyAnswer(
-            mapOf("sidewalk" to "right"),
-            cycleway(SIDEWALK_EXPLICIT, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:segregated", "no"),
                 StringMapEntryModify("sidewalk", "right", "both"),
-            )
+            ),
+            cycleway(SIDEWALK_EXPLICIT, null).appliedTo(mapOf("sidewalk" to "right"))
         )
     }
 
     @Test fun `apply separate cycleway answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(SEPARATE, SEPARATE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "separate")
-            )
+            ),
+            cycleway(SEPARATE, SEPARATE).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply dual cycle track answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(TRACK to BOTH, TRACK to BOTH),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:both:oneway", "no")
-            )
+            ),
+            cycleway(TRACK to BOTH, TRACK to BOTH).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply dual cycle track answer in oneway`() {
-        verifyAnswer(
-            mapOf("oneway" to "yes"),
-            cycleway(TRACK to BOTH, TRACK to BOTH),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("oneway:bicycle", "no"),
-            )
+            ),
+            cycleway(TRACK to BOTH, TRACK to BOTH).appliedTo(mapOf("oneway" to "yes"))
         )
     }
 
     @Test fun `apply dual cycle lane answer`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(EXCLUSIVE_LANE to BOTH, EXCLUSIVE_LANE to BOTH),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
                 StringMapEntryAdd("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("cycleway:both:lane", "exclusive")
-            )
+            ),
+            cycleway(EXCLUSIVE_LANE to BOTH, EXCLUSIVE_LANE to BOTH).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply dual cycle lane answer in oneway`() {
-        verifyAnswer(
-            mapOf("oneway" to "yes"),
-            cycleway(EXCLUSIVE_LANE to BOTH, EXCLUSIVE_LANE to BOTH),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
                 StringMapEntryAdd("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("cycleway:both:lane", "exclusive"),
                 StringMapEntryAdd("oneway:bicycle", "no"),
-            )
+            ),
+            cycleway(EXCLUSIVE_LANE to BOTH, EXCLUSIVE_LANE to BOTH).appliedTo(mapOf(
+                "oneway" to "yes"
+            ))
         )
     }
 
     @Test fun `apply answer where left and right side are different`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(TRACK, NONE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:right", "no")
-            )
+            ),
+            cycleway(TRACK, NONE).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply answer where there exists a cycleway in opposite direction of oneway`() {
-        verifyAnswer(
-            mapOf("oneway" to "yes"),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("oneway:bicycle", "no")
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf("oneway" to "yes"))
+        )
+
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:both", "track"),
+                StringMapEntryAdd("cycleway:right:oneway", "-1"),
+                StringMapEntryAdd("oneway:bicycle", "no")
+            ),
+            cycleway(TRACK, TRACK, true).appliedTo(mapOf("oneway" to "yes"), true)
         )
     }
 
     @Test fun `apply answer where there exists a cycleway in opposite direction of backward oneway`() {
-        verifyAnswer(
-            mapOf("oneway" to "-1"),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:right:oneway", "yes"),
                 StringMapEntryAdd("oneway:bicycle", "no")
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf("oneway" to "-1"))
+        )
+
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:both", "track"),
+                StringMapEntryAdd("cycleway:left:oneway", "yes"),
+                StringMapEntryAdd("oneway:bicycle", "no")
+            ),
+            cycleway(TRACK, TRACK, true).appliedTo(mapOf("oneway" to "-1"), true)
         )
     }
 
     @Test fun `apply cycleway track answer updates segregated key`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both:segregated" to "no",
-                "cycleway:both" to "no"
-            ),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both:segregated", "no", "yes"),
                 StringMapEntryModify("cycleway:both", "no", "track")
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf(
+                "cycleway:both:segregated" to "no",
+                "cycleway:both" to "no"
+            ))
         )
     }
 
     @Test fun `apply answer for both deletes any previous answers given for left, right, general`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:left" to "lane",
-                "cycleway:left:lane" to "advisory",
-                "cycleway:left:segregated" to "maybe",
-                "cycleway:left:oneway" to "yes",
-                "cycleway:right" to "shared_lane",
-                "cycleway:right:lane" to "pictogram",
-                "cycleway:right:segregated" to "definitely",
-                "cycleway:right:oneway" to "yes",
-                "cycleway" to "shared_lane",
-                "cycleway:lane" to "pictogram",
-                "cycleway:segregated" to "definitely",
-                "cycleway:oneway" to "yes"
-            ),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryDelete("cycleway:left", "lane"),
                 StringMapEntryDelete("cycleway:left:lane", "advisory"),
@@ -293,22 +278,27 @@ class CyclewayCreatorKtTest {
                 StringMapEntryModify("cycleway:left:oneway", "yes", "-1"),
                 StringMapEntryModify("cycleway:right:oneway", "yes", "yes"),
                 StringMapEntryAdd("cycleway:both:segregated", "yes"),
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf(
+                "cycleway:left" to "lane",
+                "cycleway:left:lane" to "advisory",
+                "cycleway:left:segregated" to "maybe",
+                "cycleway:left:oneway" to "yes",
+                "cycleway:right" to "shared_lane",
+                "cycleway:right:lane" to "pictogram",
+                "cycleway:right:segregated" to "definitely",
+                "cycleway:right:oneway" to "yes",
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "pictogram",
+                "cycleway:segregated" to "definitely",
+                "cycleway:oneway" to "yes"
+            ))
         )
     }
 
     @Test fun `apply answer for left, right deletes any previous answers given for both, general`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both" to "shared_lane",
-                "cycleway:both:lane" to "pictogram",
-                "cycleway" to "shared_lane",
-                "cycleway:lane" to "pictogram",
-                "cycleway:segregated" to "yes",
-                "cycleway:oneway" to "yes",
-            ),
-            cycleway(TRACK, NONE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:right", "no"),
                 StringMapEntryDelete("cycleway:both", "shared_lane"),
@@ -319,475 +309,460 @@ class CyclewayCreatorKtTest {
                 StringMapEntryDelete("cycleway:segregated", "yes"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("cycleway:left:segregated", "yes"),
-            )
+            ),
+            cycleway(TRACK, NONE).appliedTo(mapOf(
+                "cycleway:both" to "shared_lane",
+                "cycleway:both:lane" to "pictogram",
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "pictogram",
+                "cycleway:segregated" to "yes",
+                "cycleway:oneway" to "yes",
+            ))
         )
     }
 
     @Test fun `deletes lane subkey when new answer is not a lane`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "exclusive"
-            ),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "lane", "track"),
                 StringMapEntryDelete("cycleway:both:lane", "exclusive")
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf(
+                "cycleway:both" to "lane",
+                "cycleway:both:lane" to "exclusive"
+            ))
         )
     }
 
     @Test fun `deletes shared lane subkey when new answer is not a lane`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both" to "shared_lane",
-                "cycleway:both:lane" to "pictogram"
-            ),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "shared_lane", "track"),
                 StringMapEntryDelete("cycleway:both:lane", "pictogram")
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf(
+                "cycleway:both" to "shared_lane",
+                "cycleway:both:lane" to "pictogram"
+            ))
         )
     }
 
     @Test fun `modifies oneway tag tag when new answer is not a dual lane`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both" to "lane",
-                "cycleway:both:lane" to "exclusive",
-                "cycleway:both:oneway" to "no"
-            ),
-            cycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "lane", "lane"),
                 StringMapEntryModify("cycleway:both:lane", "exclusive", "exclusive"),
                 StringMapEntryDelete("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("cycleway:right:oneway", "yes"),
-            )
+            ),
+            cycleway(EXCLUSIVE_LANE, EXCLUSIVE_LANE).appliedTo(mapOf(
+                "cycleway:both" to "lane",
+                "cycleway:both:lane" to "exclusive",
+                "cycleway:both:oneway" to "no"
+            ))
         )
     }
 
     @Test fun `modifies lane subkey when new answer is different lane`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both" to "shared_lane",
-                "cycleway:both:lane" to "pictogram"
-            ),
-            cycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "shared_lane", "shared_lane"),
                 StringMapEntryModify("cycleway:both:lane", "pictogram", "advisory")
-            )
+            ),
+            cycleway(SUGGESTION_LANE, SUGGESTION_LANE).appliedTo(mapOf(
+                "cycleway:both" to "shared_lane",
+                "cycleway:both:lane" to "pictogram"
+            ))
         )
     }
 
     @Test fun `modifies oneway tag when new answer is not a dual track`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both" to "track",
-                "cycleway:both:oneway" to "no"
-            ),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "track", "track"),
                 StringMapEntryDelete("cycleway:both:oneway", "no"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("cycleway:right:oneway", "yes"),
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf(
+                "cycleway:both" to "track",
+                "cycleway:both:oneway" to "no"
+            ))
+        )
+        assertEquals(
+            setOf(
+                StringMapEntryModify("cycleway:both", "track", "track"),
+                StringMapEntryDelete("cycleway:both:oneway", "no"),
+                StringMapEntryAdd("cycleway:left:oneway", "yes"),
+                StringMapEntryAdd("cycleway:right:oneway", "-1"),
+            ),
+            cycleway(TRACK, TRACK, true).appliedTo(mapOf(
+                "cycleway:both" to "track",
+                "cycleway:both:oneway" to "no"
+            ), true)
         )
     }
 
     @Test fun `modify segregated tag if new answer is now segregated`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both" to "track",
-                "cycleway:both:segregated" to "no"
-            ),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "track", "track"),
                 StringMapEntryModify("cycleway:both:segregated", "no", "yes")
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf(
+                "cycleway:both" to "track",
+                "cycleway:both:segregated" to "no"
+            ))
         )
     }
 
     @Test fun `modify segregated tag if new answer is now not segregated`() {
-        verifyAnswer(
-            mapOf(
-                "sidewalk" to "both",
-                "cycleway:both" to "track",
-                "cycleway:both:segregated" to "yes"
-            ),
-            cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("sidewalk", "both", "both"),
                 StringMapEntryModify("cycleway:both", "track", "track"),
                 StringMapEntryModify("cycleway:both:segregated", "yes", "no")
-            )
+            ),
+            cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT).appliedTo(mapOf(
+                "sidewalk" to "both",
+                "cycleway:both" to "track",
+                "cycleway:both:segregated" to "yes"
+            ))
         )
     }
 
     @Test fun `delete segregated tag if new answer is not a track or on sidewalk`() {
-        verifyAnswer(
-            mapOf(
-                "cycleway:both" to "track",
-                "cycleway:both:segregated" to "no"
-            ),
-            cycleway(BUSWAY, BUSWAY),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "track", "share_busway"),
                 StringMapEntryDelete("cycleway:both:segregated", "no")
-            )
+            ),
+            cycleway(BUSWAY, BUSWAY).appliedTo(mapOf(
+                "cycleway:both" to "track",
+                "cycleway:both:segregated" to "no"
+            ))
         )
     }
 
     @Test fun `sets check date if nothing changed`() {
-        verifyAnswer(
-            mapOf("cycleway:both" to "track"),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "track", "track"),
                 StringMapEntryAdd("check_date:cycleway", nowAsCheckDateString())
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf("cycleway:both" to "track"))
         )
     }
 
     @Test fun `updates check date if nothing changed`() {
-        verifyAnswer(
-            mapOf("cycleway:both" to "track", "check_date:cycleway" to "2000-11-11"),
-            cycleway(TRACK, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryModify("cycleway:both", "track", "track"),
                 StringMapEntryModify("check_date:cycleway", "2000-11-11", nowAsCheckDateString())
-            )
+            ),
+            cycleway(TRACK, TRACK).appliedTo(mapOf(
+                "cycleway:both" to "track",
+                "check_date:cycleway" to "2000-11-11"
+            ))
         )
     }
 
     @Test fun `remove oneway bicycle no tag if road is also a oneway for bicycles now`() {
-        verifyAnswer(
-            mapOf(
+        assertEquals(
+            setOf(
+                StringMapEntryModify("cycleway:both", "no", "no"),
+                StringMapEntryDelete("oneway:bicycle", "no")
+            ),
+            cycleway(NONE, NONE).appliedTo(mapOf(
                 "cycleway:both" to "no",
                 "oneway" to "yes",
                 "oneway:bicycle" to "no"
-            ),
-            cycleway(NONE, NONE),
-            arrayOf(
-                StringMapEntryModify("cycleway:both", "no", "no"),
-                StringMapEntryDelete("oneway:bicycle", "no")
-            )
+            ))
         )
     }
 
     @Test fun `apply value only for one side`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(TRACK, null),
-            arrayOf(
-                StringMapEntryAdd("cycleway:left", "track")
-            )
+        assertEquals(
+            setOf(StringMapEntryAdd("cycleway:left", "track")),
+            cycleway(TRACK, null).appliedTo(mapOf())
         )
-        verifyAnswer(
-            mapOf(),
-            cycleway(null, TRACK),
-            arrayOf(
-                StringMapEntryAdd("cycleway:right", "track")
-            )
+        assertEquals(
+            setOf(StringMapEntryAdd("cycleway:right", "track")),
+            cycleway(null, TRACK).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply for one side does not touch the other side`() {
-        verifyAnswer(
-            mapOf("cycleway:right" to "no"),
-            cycleway(TRACK, null),
-            arrayOf(
-                StringMapEntryAdd("cycleway:left", "track")
-            )
+        assertEquals(
+            setOf(StringMapEntryAdd("cycleway:left", "track")),
+            cycleway(TRACK, null).appliedTo(mapOf("cycleway:right" to "no"))
         )
-        verifyAnswer(
-            mapOf("cycleway:left" to "no"),
-            cycleway(null, TRACK),
-            arrayOf(
-                StringMapEntryAdd("cycleway:right", "track")
-            )
+        assertEquals(
+            setOf(StringMapEntryAdd("cycleway:right", "track")),
+            cycleway(null, TRACK).appliedTo(mapOf("cycleway:left" to "no"))
         )
     }
 
     @Test fun `apply for one side does not touch the other side even if it is invalid`() {
-        verifyAnswer(
-            mapOf("cycleway:right" to "invalid"),
-            cycleway(TRACK, null),
-            arrayOf(
-                StringMapEntryAdd("cycleway:left", "track")
-            )
+        assertEquals(
+            setOf(StringMapEntryAdd("cycleway:left", "track")),
+            cycleway(TRACK, null).appliedTo(mapOf("cycleway:right" to "invalid"))
         )
-        verifyAnswer(
-            mapOf("cycleway:left" to "invalid"),
-            cycleway(null, TRACK),
-            arrayOf(
-                StringMapEntryAdd("cycleway:right", "track")
-            )
+        assertEquals(
+            setOf(StringMapEntryAdd("cycleway:right", "track")),
+            cycleway(null, TRACK).appliedTo(mapOf("cycleway:left" to "invalid"))
         )
     }
 
     @Test fun `apply for one side does not change values for the other side even if it was defined for both sides before and invalid`() {
-        verifyAnswer(
-            mapOf("cycleway:both" to "invalid"),
-            cycleway(TRACK, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:right", "invalid"),
                 StringMapEntryDelete("cycleway:both", "invalid"),
-            )
+            ),
+            cycleway(TRACK, null).appliedTo(mapOf("cycleway:both" to "invalid"))
         )
-        verifyAnswer(
-            mapOf("cycleway:both" to "invalid"),
-            cycleway(null, TRACK),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "invalid"),
                 StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryDelete("cycleway:both", "invalid"),
-            )
+            ),
+            cycleway(null, TRACK).appliedTo(mapOf("cycleway:both" to "invalid"))
         )
     }
 
     @Test fun `apply conflates values`() {
-        verifyAnswer(
-            mapOf("cycleway:left" to "no", "cycleway:right" to "no"),
-            cycleway(NONE, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "no"),
                 StringMapEntryDelete("cycleway:left", "no"),
                 StringMapEntryDelete("cycleway:right", "no"),
-            )
+            ),
+            cycleway(NONE, null).appliedTo(mapOf(
+                "cycleway:left" to "no",
+                "cycleway:right" to "no"
+            ))
         )
     }
 
     @Test fun `apply updates oneway not for cyclists`() {
         // contra-flow side set to explicitly not oneway -> not oneway for cyclists
-        verifyAnswer(
-            mapOf(
-                "oneway:bicycle" to "no",
-                "oneway" to "yes"
-            ),
-            cycleway(NONE_NO_ONEWAY, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryModify("oneway:bicycle", "no", "no"),
-            )
-        )
-        // track on right side is dual-way -> not oneway for cyclists
-        verifyAnswer(
-            mapOf(
+            ),
+            cycleway(NONE_NO_ONEWAY, null).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
                 "oneway" to "yes"
-            ),
-            cycleway(null, TRACK to BOTH),
-            arrayOf(
+            ))
+        )
+        // track on right side is dual-way -> not oneway for cyclists
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryAdd("cycleway:right:oneway", "no"),
                 StringMapEntryModify("oneway:bicycle", "no", "no"),
-            )
-        )
-        // not a oneway at all
-        verifyAnswer(
-            mapOf(
-                "oneway:bicycle" to "no",
-                "oneway" to "no"
             ),
-            cycleway(NONE, null),
-            arrayOf(
-                StringMapEntryAdd("cycleway:left", "no"),
-                StringMapEntryDelete("oneway:bicycle", "no"),
-            )
-        )
-        // contra-flow side is explicitly oneway and flow-side is not dual-way
-        verifyAnswer(
-            mapOf(
+            cycleway(null, TRACK to BOTH).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
                 "oneway" to "yes"
+            ))
+        )
+        // not a oneway at all
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:left", "no"),
+                StringMapEntryDelete("oneway:bicycle", "no"),
             ),
-            cycleway(NONE, NONE),
-            arrayOf(
+            cycleway(NONE, null).appliedTo(mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "no"
+            ))
+        )
+        // contra-flow side is explicitly oneway and flow-side is not dual-way
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:both", "no"),
                 StringMapEntryDelete("oneway:bicycle", "no"),
-            )
+            ),
+            cycleway(NONE, NONE).appliedTo(mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "yes"
+            ))
         )
         // no oneway for cyclists is deleted on left side but dual track on right side still there
         // -> still not oneway for cyclists
-        verifyAnswer(
-            mapOf(
-                "oneway:bicycle" to "no",
-                "oneway" to "yes",
-                "cycleway:both" to "track",
-                "cycleway:right:oneway" to "no",
-            ),
-            cycleway(NONE to FORWARD, TRACK to BOTH),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryAdd("cycleway:right", "track"),
                 StringMapEntryDelete("cycleway:both", "track"),
                 StringMapEntryModify("cycleway:right:oneway", "no", "no"),
                 StringMapEntryModify("oneway:bicycle", "no", "no"),
-            )
+            ),
+            cycleway(NONE to FORWARD, TRACK to BOTH).appliedTo(mapOf(
+                "oneway:bicycle" to "no",
+                "oneway" to "yes",
+                "cycleway:both" to "track",
+                "cycleway:right:oneway" to "no",
+            ))
         )
         // no oneway for cyclists is deleted on left side -> oneway for cyclists now
-        verifyAnswer(
-            mapOf(
+        assertEquals(
+            setOf(
+                StringMapEntryModify("cycleway:left", "no", "no"),
+                StringMapEntryDelete("oneway:bicycle", "no"),
+                StringMapEntryModify("cycleway:right", "track", "track"),
+            ),
+            cycleway(NONE, TRACK).appliedTo(mapOf(
                 "oneway:bicycle" to "no",
                 "oneway" to "yes",
                 "cycleway:left" to "no",
                 "cycleway:right" to "track",
-            ),
-            cycleway(NONE, TRACK),
-            arrayOf(
-                StringMapEntryModify("cycleway:left", "no", "no"),
-                StringMapEntryDelete("oneway:bicycle", "no"),
-                StringMapEntryModify("cycleway:right", "track", "track"),
-            )
+            ))
         )
     }
 
     @Test fun `apply no cycleway deletes cycleway direction`() {
-        verifyAnswer(
-            mapOf("cycleway:left:oneway" to "-1"),
-            cycleway(NONE, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryDelete("cycleway:left:oneway", "-1"),
-            )
+            ),
+            cycleway(NONE, null).appliedTo(mapOf(
+                "cycleway:left:oneway" to "-1"
+            ))
         )
-        verifyAnswer(
-            mapOf("cycleway:left:oneway" to "-1", "oneway" to "yes"),
-            cycleway(NONE_NO_ONEWAY, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "no"),
                 StringMapEntryDelete("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("oneway:bicycle", "no"),
-            )
+            ),
+            cycleway(NONE_NO_ONEWAY, null).appliedTo(mapOf(
+                "cycleway:left:oneway" to "-1",
+                "oneway" to "yes"
+            ))
         )
-        verifyAnswer(
-            mapOf("cycleway:left:oneway" to "-1"),
-            cycleway(SEPARATE, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "separate"),
                 StringMapEntryDelete("cycleway:left:oneway", "-1"),
-            )
+            ),
+            cycleway(SEPARATE, null).appliedTo(mapOf(
+                "cycleway:left:oneway" to "-1"
+            )),
         )
     }
 
     @Test fun `apply cycleway with non-standard direction adds cycleway direction`() {
-        verifyAnswer(
-            mapOf(),
-            cycleway(TRACK to FORWARD, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:oneway", "yes"),
-            )
+            ),
+            cycleway(TRACK to FORWARD, null).appliedTo(mapOf())
         )
     }
 
     @Test fun `apply cycleway in contraflow of oneway adds cycleway direction`() {
-        verifyAnswer(
-            mapOf("oneway" to "yes"),
-            cycleway(TRACK, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:oneway", "-1"),
                 StringMapEntryAdd("oneway:bicycle", "no"),
-            )
+            ),
+            cycleway(TRACK, null).appliedTo(mapOf("oneway" to "yes"))
         )
     }
 
     @Test fun `apply answer for one side in oneway when bare tag was set before`() {
-        verifyAnswer(
-            mapOf("oneway" to "yes", "cycleway" to "track"),
-            cycleway(null, NONE),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryDelete("cycleway", "track"),
                 StringMapEntryAdd("cycleway:right", "no")
-            )
+            ),
+            cycleway(null, NONE).appliedTo(mapOf("oneway" to "yes", "cycleway" to "track"))
         )
-        verifyAnswer(
-            mapOf("oneway" to "-1", "cycleway" to "opposite"),
-            cycleway(TRACK, null),
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryDelete("cycleway", "opposite"),
                 StringMapEntryAdd("cycleway:right", "no"),
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("oneway:bicycle", "no")
-            )
-        )
-        verifyAnswer(
-            mapOf(
-                "oneway" to "yes",
-                "cycleway" to "opposite_track",
-                "cycleway:segregated" to "yes"
             ),
-            cycleway(null, NONE),
-            arrayOf(
+            cycleway(TRACK, null).appliedTo(mapOf(
+                "oneway" to "-1",
+                "cycleway" to "opposite"
+            ))
+        )
+        assertEquals(
+            setOf(
                 StringMapEntryDelete("cycleway", "opposite_track"),
                 StringMapEntryDelete("cycleway:segregated", "yes"),
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:segregated", "yes"),
                 StringMapEntryAdd("cycleway:right", "no"),
                 StringMapEntryAdd("oneway:bicycle", "no")
-            )
-        )
-        verifyAnswer(
-            mapOf(
-                "oneway" to "yes",
-                "cycleway" to "opposite_lane",
-                "cycleway:lane" to "advisory"
             ),
-            cycleway(null, NONE),
-            arrayOf(
+            cycleway(null, NONE).appliedTo(mapOf(
+                "oneway" to "yes",
+                "cycleway" to "opposite_track",
+                "cycleway:segregated" to "yes"
+            ))
+        )
+        assertEquals(
+            setOf(
                 StringMapEntryDelete("cycleway", "opposite_lane"),
                 StringMapEntryDelete("cycleway:lane", "advisory"),
                 StringMapEntryAdd("cycleway:left", "lane"),
                 StringMapEntryAdd("cycleway:left:lane", "advisory"),
                 StringMapEntryAdd("cycleway:right", "no"),
                 StringMapEntryAdd("oneway:bicycle", "no")
-            )
+            ),
+            cycleway(null, NONE).appliedTo(mapOf(
+                "oneway" to "yes",
+                "cycleway" to "opposite_lane",
+                "cycleway:lane" to "advisory"
+            ))
         )
     }
 
     @Test fun `expanding bare tags does not overwrite non-bare tags`() {
-        verifyAnswer(
-            mapOf(
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("cycleway", "track"),
+                StringMapEntryAdd("cycleway:left", "no")
+            ),
+            cycleway(NONE, null).appliedTo(mapOf(
                 "oneway" to "yes",
                 "cycleway" to "track",
                 "cycleway:right" to "blubber",
-            ),
-            cycleway(NONE, null),
-            arrayOf(
-                StringMapEntryDelete("cycleway", "track"),
-                StringMapEntryAdd("cycleway:left", "no")
-            )
+            ))
         )
     }
 
-    @Test
-    fun `applying invalid left throws exception`() {
+    @Test fun `applying invalid left throws exception`() {
         assertFailsWith<IllegalArgumentException> {
             cycleway(INVALID, null).applyTo(StringMapChangesBuilder(mapOf()), false)
         }
     }
 
-    @Test
-    fun `applying invalid right throws exception`() {
+    @Test fun `applying invalid right throws exception`() {
         assertFailsWith<IllegalArgumentException> {
             cycleway(null, INVALID).applyTo(StringMapChangesBuilder(mapOf()), false)
         }
     }
 }
 
-private fun verifyAnswer(tags: Map<String, String>, answer: LeftAndRightCycleway, expectedChanges: Array<StringMapEntryChange>) {
+private fun LeftAndRightCycleway.appliedTo(tags: Map<String, String>, isLeftHandTraffic: Boolean = false): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
-    answer.applyTo(cb, false)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    applyTo(cb, isLeftHandTraffic)
+    return cb.create().changes
 }
 
 private fun cycleway(left: Pair<Cycleway, Direction>?, right: Pair<Cycleway, Direction>?) =

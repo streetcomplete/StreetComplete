@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddDrinkingWaterTypeForm : AImageListQuestForm<DrinkingWaterType, DrinkingWaterType>() {
 
-    override val items = DrinkingWaterType.values().map { it.asItem() }
+    override val items = DrinkingWaterType.entries.map { it.asItem() }
 
     override val itemsPerRow = 3
 

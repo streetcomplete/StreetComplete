@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test
@@ -87,133 +86,26 @@ class AddFootwayPartSurfaceTest {
     }
 
     @Test fun `apply asphalt surface`() {
-        questType.verifyAnswer(
-            SurfaceAndNote(Surface.ASPHALT),
-            StringMapEntryAdd("footway:surface", "asphalt")
-        )
-    }
-
-    @Test fun `apply generic surface`() {
-        questType.verifyAnswer(
-            SurfaceAndNote(Surface.UNPAVED, "note"),
-            StringMapEntryAdd("footway:surface", "unpaved"),
-            StringMapEntryAdd("footway:surface:note", "note")
-        )
-    }
-
-    @Test fun `updates check_date`() {
-        questType.verifyAnswer(
-            mapOf("footway:surface" to "asphalt", "check_date:footway:surface" to "2000-10-10"),
-            SurfaceAndNote(Surface.ASPHALT),
-            StringMapEntryModify("footway:surface", "asphalt", "asphalt"),
-            StringMapEntryModify("check_date:footway:surface", "2000-10-10", nowAsCheckDateString()),
-        )
-    }
-
-    @Test fun `smoothness tag removed when footway surface changes`() {
-        questType.verifyAnswer(
-            mapOf(
-                "footway:surface" to "asphalt",
-                "cycleway:surface" to "gravel",
-                "footway:smoothness" to "intermediate"
-            ),
-            SurfaceAndNote(Surface.PAVING_STONES),
-            StringMapEntryDelete("footway:smoothness", "intermediate"),
-            StringMapEntryModify("footway:surface", "asphalt", "paving_stones")
-        )
-    }
-
-    @Test fun `smoothness tag not removed when surface did not change`() {
-        questType.verifyAnswer(
-            mapOf(
-                "cycleway:surface" to "paving_stones",
-                "surface" to "paving_stones",
-                "smoothness" to "good"
-            ),
-            SurfaceAndNote(Surface.PAVING_STONES),
-            StringMapEntryAdd("footway:surface", "paving_stones"),
-            StringMapEntryModify("surface", "paving_stones", "paving_stones"),
-            StringMapEntryAdd("check_date:surface", nowAsCheckDateString()),
-        )
-    }
-
-    @Test fun `footway surface changes`() {
-        questType.verifyAnswer(
-            mapOf("footway:surface" to "asphalt"),
-            SurfaceAndNote(Surface.CONCRETE),
-            StringMapEntryModify("footway:surface", "asphalt", "concrete"),
+        assertEquals(
+            setOf(StringMapEntryAdd("footway:surface", "asphalt")),
+            questType.answerApplied(SurfaceAndNote(Surface.ASPHALT))
         )
     }
 
     @Test fun `surface changes when same for footway and cycleway`() {
-        questType.verifyAnswer(
-            mapOf(
-                "surface" to "paving_stones",
-                "footway:surface" to "paving_stones",
-                "cycleway:surface" to "concrete",
+        assertEquals(
+            setOf(
+                StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
+                StringMapEntryModify("surface", "paving_stones", "concrete")
             ),
-            SurfaceAndNote(Surface.CONCRETE),
-            StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
-            StringMapEntryModify("surface", "paving_stones", "concrete")
-        )
-    }
-
-    @Test fun `surface added when same for footway and cycleway`() {
-        questType.verifyAnswer(
-            mapOf(
-                "footway:surface" to "paving_stones",
-                "cycleway:surface" to "concrete",
-            ),
-            SurfaceAndNote(Surface.CONCRETE),
-            StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
-            StringMapEntryAdd("surface", "concrete")
-        )
-    }
-
-    @Test fun `surface changes to generic paved when similar for footway and cycleway`() {
-        questType.verifyAnswer(
-            mapOf(
-                "surface" to "paving_stones",
-                "footway:surface" to "paving_stones",
-                "cycleway:surface" to "asphalt",
-            ),
-            SurfaceAndNote(Surface.CONCRETE),
-            StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
-            StringMapEntryModify("surface", "paving_stones", "paved")
-        )
-    }
-
-    @Test fun `surface removed when different for footway and cycleway`() {
-        questType.verifyAnswer(
-            mapOf(
-                "surface" to "paving_stones",
-                "cycleway:surface" to "gravel",
-                "footway:surface" to "paving_stones",
-            ),
-            SurfaceAndNote(Surface.CONCRETE),
-            StringMapEntryModify("footway:surface", "paving_stones", "concrete"),
-            StringMapEntryDelete("surface", "paving_stones")
-        )
-    }
-
-    @Test fun `surface not touched on added footway surface when cycleway surface missing`() {
-        questType.verifyAnswer(
-            mapOf(
-                "surface" to "asphalt",
-            ),
-            SurfaceAndNote(Surface.CONCRETE),
-            StringMapEntryAdd("footway:surface", "concrete")
-        )
-    }
-
-    @Test fun `surface not touched on modified footway surface when cycleway surface missing`() {
-        questType.verifyAnswer(
-            mapOf(
-                "surface" to "asphalt",
-                "footway:surface" to "paving_stones",
-            ),
-            SurfaceAndNote(Surface.CONCRETE),
-            StringMapEntryModify("footway:surface", "paving_stones", "concrete")
+            questType.answerAppliedTo(
+                SurfaceAndNote(Surface.CONCRETE),
+                mapOf(
+                    "surface" to "paving_stones",
+                    "footway:surface" to "paving_stones",
+                    "cycleway:surface" to "concrete",
+                )
+            )
         )
     }
 

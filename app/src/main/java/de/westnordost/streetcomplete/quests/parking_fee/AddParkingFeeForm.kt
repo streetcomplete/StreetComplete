@@ -109,19 +109,19 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
                 applyAnswer(FeeAndMaxStay(fee))
             }
             MAX_STAY -> {
-                val duration = MaxstayDuration(
+                val duration = MaxStayDuration(
                     maxstayDurationInput!!.durationValue,
                     when (maxstayDurationInput!!.durationUnit) {
-                        DurationUnit.MINUTES -> Maxstay.Unit.MINUTES
-                        DurationUnit.HOURS -> Maxstay.Unit.HOURS
-                        DurationUnit.DAYS -> Maxstay.Unit.DAYS
+                        DurationUnit.MINUTES -> MaxStay.Unit.MINUTES
+                        DurationUnit.HOURS -> MaxStay.Unit.HOURS
+                        DurationUnit.DAYS -> MaxStay.Unit.DAYS
                     }
                 )
                 val hours = maxstayAtHoursSelect!!.times.toOpeningHoursRules()
                 val maxstay = when (maxstayAtHoursSelect!!.timeRestriction) {
                     AT_ANY_TIME -> duration
-                    ONLY_AT_HOURS -> MaxstayAtHours(duration, hours)
-                    EXCEPT_AT_HOURS -> MaxstayExceptAtHours(duration, hours)
+                    ONLY_AT_HOURS -> MaxStayAtHours(duration, hours)
+                    EXCEPT_AT_HOURS -> MaxStayExceptAtHours(duration, hours)
                 }
                 applyAnswer(FeeAndMaxStay(HasNoFee, maxstay))
             }

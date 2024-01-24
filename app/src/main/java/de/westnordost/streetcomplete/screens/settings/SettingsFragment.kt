@@ -264,7 +264,6 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
     private fun countHiddenQuests(): Long =
         osmQuestsHiddenController.countAll() + osmNoteQuestsHiddenController.countAll()
 
-
     private fun setQuestPreferenceSummary() {
         val enabledCount = questTypeRegistry.count { visibleQuestTypeSource.isVisible(it) }
         val totalCount = questTypeRegistry.size

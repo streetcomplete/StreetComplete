@@ -8,7 +8,7 @@ class AddInformationForm : AImageListQuestForm<TourismInformation, TourismInform
 
     override val itemsPerRow = 2
 
-    override val items = TourismInformation.values().map { it.asItem() }
+    override val items = TourismInformation.entries.map { it.asItem() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

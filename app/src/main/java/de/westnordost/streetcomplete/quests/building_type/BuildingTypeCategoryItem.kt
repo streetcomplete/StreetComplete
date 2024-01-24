@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingTypeCategory.R
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
-fun Array<BuildingTypeCategory>.toItems() = map { it.asItem() }
+fun Iterable<BuildingTypeCategory>.toItems() = map { it.asItem() }
 
 fun BuildingTypeCategory.asItem(): GroupableDisplayItem<BuildingType> =
     Item(type, iconResId, titleResId, descriptionResId, subTypes.toItems())

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable.Column
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable.Columns.QUEST_PRESET_NAME
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable.NAME
 
+/** Stores the ids and names of quest presets */
 class QuestPresetsDao(private val db: Database) {
 
     fun add(name: String): Long =
