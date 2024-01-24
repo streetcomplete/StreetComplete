@@ -2669,7 +2669,7 @@ private fun cycleway(left: Cycleway?, right: Cycleway?, isLeftHandTraffic: Boole
     )
 
 private fun parse(vararg pairs: Pair<String, String>) =
-    createCyclewaySides(mapOf(*pairs), false)
+    parseCyclewaySides(mapOf(*pairs), false)
 
 private fun parseForLeftHandTraffic(vararg pairs: Pair<String, String>) =
-    createCyclewaySides(mapOf(*pairs), true)
+    parseCyclewaySides(mapOf(*pairs), true)

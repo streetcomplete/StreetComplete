@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.applyTo
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.asItem
-import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.createNarrowingTrafficCalming
+import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
@@ -77,7 +77,7 @@ class LaneNarrowingTrafficCalmingForm :
         setMarkerIcon(R.drawable.ic_quest_choker)
         setMarkerVisibility(false)
 
-        originalLaneNarrowingTrafficCalming = element?.tags?.let { createNarrowingTrafficCalming(it) }
+        originalLaneNarrowingTrafficCalming = element?.tags?.let { parseNarrowingTrafficCalming(it) }
         selectedItem = originalLaneNarrowingTrafficCalming?.asItem()
     }
 

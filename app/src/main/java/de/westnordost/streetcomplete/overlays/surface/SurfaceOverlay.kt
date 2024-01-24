@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.osm.surface.createSurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.parseSurfaceAndNote
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
@@ -48,8 +48,8 @@ private fun getStyle(element: Element): Style {
     val isPath = element.tags["highway"] in ALL_PATHS
 
     val color = if (isPath && isSegregated) {
-        val footwayColor = createSurfaceAndNote(element.tags, "footway").getColor(element)
-        val cyclewayColor = createSurfaceAndNote(element.tags, "cycleway").getColor(element)
+        val footwayColor = parseSurfaceAndNote(element.tags, "footway").getColor(element)
+        val cyclewayColor = parseSurfaceAndNote(element.tags, "cycleway").getColor(element)
         // take worst case for showing
         listOf(footwayColor, cyclewayColor).minBy { color ->
             when (color) {
@@ -60,7 +60,7 @@ private fun getStyle(element: Element): Style {
             }
         }
     } else {
-        createSurfaceAndNote(element.tags).getColor(element)
+        parseSurfaceAndNote(element.tags).getColor(element)
     }
     return if (isArea) PolygonStyle(color) else PolylineStyle(StrokeStyle(color))
 }

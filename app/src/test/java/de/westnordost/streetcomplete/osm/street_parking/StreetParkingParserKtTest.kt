@@ -10,7 +10,7 @@ class StreetParkingParserKtTest {
     @Test fun `new parking schema is preferred over old parking schema`() {
         assertEquals(
             LeftAndRightStreetParking(NoStreetParking, NoStreetParking),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:lane:both" to "parallel",
                 "parking:both" to "no"
             ))
@@ -18,7 +18,7 @@ class StreetParkingParserKtTest {
 
         assertEquals(
             LeftAndRightStreetParking(NoStreetParking, null),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:lane:both" to "parallel",
                 "parking:left" to "no"
             ))
@@ -26,7 +26,7 @@ class StreetParkingParserKtTest {
 
         assertEquals(
             LeftAndRightStreetParking(null, NoStreetParking),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:lane:both" to "parallel",
                 "parking:right" to "no"
             ))
@@ -36,7 +36,7 @@ class StreetParkingParserKtTest {
     @Test fun `all unknown`() {
         assertEquals(
             null,
-            createStreetParkingSides(mapOf()))
+            parseStreetParkingSides(mapOf()))
     }
 
     //region new schema
@@ -62,7 +62,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, null),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:left" to positionStr,
                         "parking:left:orientation" to orientationStr
                     ))
@@ -70,7 +70,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(null, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:right" to positionStr,
                         "parking:right:orientation" to orientationStr
                     ))
@@ -78,7 +78,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:both" to positionStr,
                         "parking:both:orientation" to orientationStr
                     ))
@@ -86,7 +86,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:both" to positionStr,
                         "parking:left:orientation" to orientationStr,
                         "parking:right:orientation" to orientationStr,
@@ -95,7 +95,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:left" to positionStr,
                         "parking:right" to positionStr,
                         "parking:both:orientation" to orientationStr,
@@ -106,7 +106,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     null,
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking" to positionStr,
                         "parking:orientation" to orientationStr
                     ))
@@ -126,22 +126,22 @@ class StreetParkingParserKtTest {
         for ((str, value) in values) {
             assertEquals(
                 LeftAndRightStreetParking(value, null),
-                createStreetParkingSides(mapOf("parking:left" to str))
+                parseStreetParkingSides(mapOf("parking:left" to str))
             )
 
             assertEquals(
                 LeftAndRightStreetParking(null, value),
-                createStreetParkingSides(mapOf("parking:right" to str))
+                parseStreetParkingSides(mapOf("parking:right" to str))
             )
 
             assertEquals(
                 LeftAndRightStreetParking(value, value),
-                createStreetParkingSides(mapOf("parking:both" to str))
+                parseStreetParkingSides(mapOf("parking:both" to str))
             )
 
             assertEquals(
                 LeftAndRightStreetParking(value, value),
-                createStreetParkingSides(mapOf(
+                parseStreetParkingSides(mapOf(
                     "parking:left" to str,
                     "parking:right" to str,
                 ))
@@ -149,7 +149,7 @@ class StreetParkingParserKtTest {
 
             assertEquals(
                 null,
-                createStreetParkingSides(mapOf("parking" to str))
+                parseStreetParkingSides(mapOf("parking" to str))
             )
         }
     }
@@ -165,7 +165,7 @@ class StreetParkingParserKtTest {
 
             assertEquals(
                 LeftAndRightStreetParking(parking, null),
-                createStreetParkingSides(mapOf(
+                parseStreetParkingSides(mapOf(
                     "parking:left" to str,
                     "parking:left:orientation" to "parallel",
                     "parking:left:staggered" to "yes"
@@ -174,7 +174,7 @@ class StreetParkingParserKtTest {
 
             assertEquals(
                 LeftAndRightStreetParking(null, parking),
-                createStreetParkingSides(mapOf(
+                parseStreetParkingSides(mapOf(
                     "parking:right" to str,
                     "parking:right:orientation" to "parallel",
                     "parking:right:staggered" to "yes"
@@ -183,7 +183,7 @@ class StreetParkingParserKtTest {
 
             assertEquals(
                 LeftAndRightStreetParking(parking, parking),
-                createStreetParkingSides(mapOf(
+                parseStreetParkingSides(mapOf(
                     "parking:both" to str,
                     "parking:both:orientation" to "parallel",
                     "parking:both:staggered" to "yes"
@@ -192,7 +192,7 @@ class StreetParkingParserKtTest {
 
             assertEquals(
                 LeftAndRightStreetParking(parking, parking),
-                createStreetParkingSides(mapOf(
+                parseStreetParkingSides(mapOf(
                     "parking:left" to str,
                     "parking:right" to str,
                     "parking:both:orientation" to "parallel",
@@ -207,7 +207,7 @@ class StreetParkingParserKtTest {
 
         assertEquals(
             LeftAndRightStreetParking(parking, null),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:left" to "lane",
                 "parking:left:orientation" to "parallel",
                 "parking:left:staggered" to "yes",
@@ -217,7 +217,7 @@ class StreetParkingParserKtTest {
 
         assertEquals(
             LeftAndRightStreetParking(null, parking),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:right" to "lane",
                 "parking:right:orientation" to "parallel",
                 "parking:right:staggered" to "yes",
@@ -227,7 +227,7 @@ class StreetParkingParserKtTest {
 
         assertEquals(
             LeftAndRightStreetParking(parking, parking),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:both" to "lane",
                 "parking:both:orientation" to "parallel",
                 "parking:both:staggered" to "yes",
@@ -237,7 +237,7 @@ class StreetParkingParserKtTest {
 
         assertEquals(
             LeftAndRightStreetParking(parking, parking),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:left" to "lane",
                 "parking:right" to "lane",
                 "parking:both:orientation" to "parallel",
@@ -250,42 +250,42 @@ class StreetParkingParserKtTest {
     @Test fun `unknown orientation leads to unknown`() {
         assertEquals(
             LeftAndRightStreetParking(UnknownStreetParking, null),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:left" to "lane",
                 "parking:left:orientation" to "something"
             ))
         )
         assertEquals(
             LeftAndRightStreetParking(UnknownStreetParking, null),
-            createStreetParkingSides(mapOf("parking:left:orientation" to "something"))
+            parseStreetParkingSides(mapOf("parking:left:orientation" to "something"))
         )
     }
 
     @Test fun `unknown position leads to unknown`() {
         assertEquals(
             LeftAndRightStreetParking(UnknownStreetParking, null),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:left" to "something",
                 "parking:left:orientation" to "parallel"
             ))
         )
         assertEquals(
             LeftAndRightStreetParking(UnknownStreetParking, null),
-            createStreetParkingSides(mapOf("parking:left" to "something"))
+            parseStreetParkingSides(mapOf("parking:left" to "something"))
         )
     }
 
     @Test fun `either position or orientation is unknown leads to incomplete`() {
         assertEquals(
             LeftAndRightStreetParking(IncompleteStreetParking, null),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:left:orientation" to "parallel"
             ))
         )
 
         assertEquals(
             LeftAndRightStreetParking(IncompleteStreetParking, null),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:left" to "lane"
             ))
         )
@@ -318,7 +318,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, null),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:lane:left" to orientationStr,
                         "parking:lane:left:$orientationStr" to positionStr
                     ))
@@ -326,7 +326,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(null, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:lane:right" to orientationStr,
                         "parking:lane:right:$orientationStr" to positionStr
                     ))
@@ -334,7 +334,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:lane:both" to orientationStr,
                         "parking:lane:both:$orientationStr" to positionStr
                     ))
@@ -342,7 +342,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:lane:both" to orientationStr,
                         "parking:lane:left:$orientationStr" to positionStr,
                         "parking:lane:right:$orientationStr" to positionStr,
@@ -351,7 +351,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:lane:left" to orientationStr,
                         "parking:lane:right" to orientationStr,
                         "parking:lane:both:$orientationStr" to positionStr
@@ -362,7 +362,7 @@ class StreetParkingParserKtTest {
 
                 assertEquals(
                     LeftAndRightStreetParking(parking, parking),
-                    createStreetParkingSides(mapOf(
+                    parseStreetParkingSides(mapOf(
                         "parking:lane" to orientationStr,
                         "parking:lane:$orientationStr" to positionStr
                     ))
@@ -377,7 +377,7 @@ class StreetParkingParserKtTest {
                 StreetParkingPositionAndOrientation(PERPENDICULAR, STREET_SIDE),
                 StreetParkingPositionAndOrientation(PERPENDICULAR, HALF_ON_STREET)
             ),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:lane:both" to "perpendicular",
                 "parking:lane:left:perpendicular" to "street_side",
                 "parking:lane:right:perpendicular" to "half_on_kerb",
@@ -391,7 +391,7 @@ class StreetParkingParserKtTest {
                 StreetParkingPositionAndOrientation(PERPENDICULAR, STREET_SIDE),
                 StreetParkingPositionAndOrientation(PARALLEL, HALF_ON_STREET)
             ),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:lane:left" to "perpendicular",
                 "parking:lane:right" to "parallel",
                 "parking:lane:left:perpendicular" to "street_side",
@@ -411,22 +411,22 @@ class StreetParkingParserKtTest {
         for ((str, value) in values) {
             assertEquals(
                 LeftAndRightStreetParking(value, null),
-                createStreetParkingSides(mapOf("parking:lane:left" to str))
+                parseStreetParkingSides(mapOf("parking:lane:left" to str))
             )
 
             assertEquals(
                 LeftAndRightStreetParking(null, value),
-                createStreetParkingSides(mapOf("parking:lane:right" to str))
+                parseStreetParkingSides(mapOf("parking:lane:right" to str))
             )
 
             assertEquals(
                 LeftAndRightStreetParking(value, value),
-                createStreetParkingSides(mapOf("parking:lane:both" to str))
+                parseStreetParkingSides(mapOf("parking:lane:both" to str))
             )
 
             assertEquals(
                 LeftAndRightStreetParking(value, value),
-                createStreetParkingSides(mapOf(
+                parseStreetParkingSides(mapOf(
                     "parking:lane:left" to str,
                     "parking:lane:right" to str,
                 ))
@@ -434,7 +434,7 @@ class StreetParkingParserKtTest {
 
             assertEquals(
                 LeftAndRightStreetParking(value, value),
-                createStreetParkingSides(mapOf("parking:lane" to str))
+                parseStreetParkingSides(mapOf("parking:lane" to str))
             )
         }
     }
@@ -442,14 +442,14 @@ class StreetParkingParserKtTest {
     @Test fun `unknown orientation leads to unknown with old schema`() {
         assertEquals(
             LeftAndRightStreetParking(UnknownStreetParking, null),
-            createStreetParkingSides(mapOf("parking:lane:left" to "something"))
+            parseStreetParkingSides(mapOf("parking:lane:left" to "something"))
         )
     }
 
     @Test fun `unknown position leads to unknown with old schema`() {
         assertEquals(
             LeftAndRightStreetParking(UnknownStreetParking, null),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:lane:left" to "parallel",
                 "parking:lane:left:parallel" to "something"
             ))
@@ -459,7 +459,7 @@ class StreetParkingParserKtTest {
     @Test fun `marked is interpreted as incomplete with old schema`() {
         assertEquals(
             LeftAndRightStreetParking(IncompleteStreetParking, null),
-            createStreetParkingSides(mapOf(
+            parseStreetParkingSides(mapOf(
                 "parking:lane:left" to "marked",
                 "parking:lane:left:marked" to "on_kerb"
             )))
@@ -468,7 +468,7 @@ class StreetParkingParserKtTest {
     @Test fun `orientation without position is interpreted as incomplete with old schema`() {
         assertEquals(
             LeftAndRightStreetParking(IncompleteStreetParking, null),
-            createStreetParkingSides(mapOf("parking:lane:left" to "diagonal")))
+            parseStreetParkingSides(mapOf("parking:lane:left" to "diagonal")))
     }
 
     //endregion
