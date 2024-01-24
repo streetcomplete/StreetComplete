@@ -10,8 +10,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.address.ConscriptionNumber
 import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
+import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.quests.createMapData
-import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
@@ -141,56 +142,61 @@ class AddHousenumberTest {
     }
 
     @Test fun `apply house number answer`() {
-        questType.verifyAnswer(
-            AddressNumberOrName(HouseNumber("99b"), null),
-            StringMapEntryAdd("addr:housenumber", "99b")
+        assertEquals(
+            setOf(StringMapEntryAdd("addr:housenumber", "99b")),
+            questType.answerApplied(AddressNumberOrName(HouseNumber("99b"), null))
         )
     }
 
     @Test fun `apply house name answer`() {
-        questType.verifyAnswer(
-            AddressNumberOrName(null, "La Escalera"),
-            StringMapEntryAdd("addr:housename", "La Escalera")
+        assertEquals(
+            setOf(StringMapEntryAdd("addr:housename", "La Escalera")),
+            questType.answerApplied(AddressNumberOrName(null, "La Escalera"))
         )
     }
 
     @Test fun `apply conscription number answer`() {
-        questType.verifyAnswer(
-            AddressNumberOrName(ConscriptionNumber("I.123"), null),
-            StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
-            StringMapEntryAdd("addr:housenumber", "I.123")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
+                StringMapEntryAdd("addr:housenumber", "I.123")
+            ),
+            questType.answerApplied(AddressNumberOrName(ConscriptionNumber("I.123"), null))
         )
     }
 
     @Test fun `apply conscription and street number answer`() {
-        questType.verifyAnswer(
-            AddressNumberOrName(ConscriptionNumber("I.123", "12b"), null),
-            StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
-            StringMapEntryAdd("addr:streetnumber", "12b"),
-            StringMapEntryAdd("addr:housenumber", "12b")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("addr:conscriptionnumber", "I.123"),
+                StringMapEntryAdd("addr:streetnumber", "12b"),
+                StringMapEntryAdd("addr:housenumber", "12b")
+            ),
+            questType.answerApplied(AddressNumberOrName(ConscriptionNumber("I.123", "12b"), null))
         )
     }
 
     @Test fun `apply block and house number answer`() {
-        questType.verifyAnswer(
-            AddressNumberOrName(HouseAndBlockNumber("12A", "123"), null),
-            StringMapEntryAdd("addr:block_number", "123"),
-            StringMapEntryAdd("addr:housenumber", "12A")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("addr:block_number", "123"),
+                StringMapEntryAdd("addr:housenumber", "12A")
+            ),
+            questType.answerApplied(AddressNumberOrName(HouseAndBlockNumber("12A", "123"), null))
         )
     }
 
     @Test fun `apply no house number answer`() {
-        questType.verifyAnswer(
-            AddressNumberOrName(null, null),
-            StringMapEntryAdd("nohousenumber", "yes")
+        assertEquals(
+            setOf(StringMapEntryAdd("nohousenumber", "yes")),
+            questType.answerApplied(AddressNumberOrName(null, null))
         )
     }
 
     @Test fun `apply wrong building type answer`() {
-        questType.verifyAnswer(
-            mapOf("building" to "residential"),
-            WrongBuildingType,
-            StringMapEntryModify("building", "residential", "yes")
+        assertEquals(
+            setOf(StringMapEntryModify("building", "residential", "yes")),
+            questType.answerAppliedTo(WrongBuildingType, mapOf("building" to "residential"))
         )
     }
 }

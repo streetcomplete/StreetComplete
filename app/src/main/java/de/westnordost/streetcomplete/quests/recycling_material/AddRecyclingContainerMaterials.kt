@@ -70,41 +70,26 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
 
         // if the user chose deliberately not "all plastic", also tag it explicitly
-        if (materials.any { it in RecyclingMaterial.plastics }) {
-            for (plastic in RecyclingMaterial.plastics) {
+        val selectedPlastics = materials.filter { it in RecyclingMaterial.allPlastics }
+        if (selectedPlastics.isNotEmpty()) {
+            for (plastic in RecyclingMaterial.allPlastics) {
                 tags.remove("recycling:${plastic.value}")
             }
-            when {
-                PLASTIC_PACKAGING in materials -> {
-                    tags["recycling:plastic"] = "no"
-                }
-                BEVERAGE_CARTONS in materials && PLASTIC_BOTTLES in materials -> {
-                    tags["recycling:plastic_packaging"] = "no"
-                    tags["recycling:plastic"] = "no"
-                }
-                BEVERAGE_CARTONS in materials -> {
-                    tags["recycling:plastic_bottles"] = "no"
-                    tags["recycling:plastic_packaging"] = "no"
-                    tags["recycling:plastic"] = "no"
-                }
-                PLASTIC_BOTTLES in materials -> {
-                    tags["recycling:beverage_cartons"] = "no"
-                    tags["recycling:plastic_packaging"] = "no"
-                    tags["recycling:plastic"] = "no"
-                }
-                PET in materials -> {
-                    tags["recycling:plastic_bottles"] = "no"
-                    tags["recycling:beverage_cartons"] = "no"
-                    tags["recycling:plastic_packaging"] = "no"
-                    tags["recycling:plastic"] = "no"
-                }
+
+            val selectedAndIndirectlySelectedPlastics =
+                selectedPlastics + selectedPlastics.flatMapTo(HashSet()) { it.subValues }
+
+            val notSelectedPlastics =
+                RecyclingMaterial.allPlastics - selectedAndIndirectlySelectedPlastics.toSet()
+
+            for (notSelectedPlastic in notSelectedPlastics) {
+                tags["recycling:${notSelectedPlastic.value}"] = "no"
             }
         }
 
         // set selected recycling:* taggings to "yes"
-        val selectedMaterials = materials.map { "recycling:${it.value}" }
-        for (material in selectedMaterials) {
-            tags[material] = "yes"
+        for (material in materials) {
+            tags["recycling:${material.value}"] = "yes"
         }
 
         // only set the check date if nothing was changed

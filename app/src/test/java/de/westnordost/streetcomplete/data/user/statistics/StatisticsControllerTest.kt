@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.datetime.LocalDate
 import org.mockito.ArgumentMatchers.anyDouble
 import org.mockito.Mockito.verify
-import java.util.concurrent.FutureTask
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -45,9 +44,6 @@ class StatisticsControllerTest {
         listener = mock()
         loginStatusSource = mock()
 
-        val ft = FutureTask({}, countryBoundaries)
-        ft.run()
-
         on(loginStatusSource.addListener(any())).then { invocation ->
             loginStatusListener = invocation.getArgument(0)
             Unit
@@ -57,7 +53,7 @@ class StatisticsControllerTest {
             editTypeStatisticsDao, countryStatisticsDao,
             currentWeekEditTypeStatisticsDao, currentWeekCountryStatisticsDao,
             activeDatesDao,
-            ft, prefs, loginStatusSource
+            lazyOf(countryBoundaries), prefs, loginStatusSource
         )
         statisticsController.addListener(listener)
     }

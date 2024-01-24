@@ -39,7 +39,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import java.util.concurrent.FutureTask
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
@@ -49,7 +48,7 @@ class OsmQuestController internal constructor(
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>
+    private val countryBoundaries: Lazy<CountryBoundaries>
 ) : OsmQuestSource, OsmQuestsHiddenController, OsmQuestsHiddenSource {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -142,7 +141,7 @@ class OsmQuestController internal constructor(
     ): Collection<OsmQuest> {
         val time = nowAsEpochMilliseconds()
 
-        val countryBoundaries = countryBoundariesFuture.get()
+        val countryBoundaries = countryBoundaries.value
 
         // Remove elements without tags, to be used for quests that are never applicable without
         // tags. These quests are usually OsmFilterQuestType, where questType.filter.mayEvaluateToTrueWithNoTags
@@ -252,7 +251,7 @@ class OsmQuestController internal constructor(
 
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
-        if (!countryBoundariesFuture.get().isInAny(pos, countries)) return false
+        if (!countryBoundaries.value.isInAny(pos, countries)) return false
 
         return true
     }

@@ -46,7 +46,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Collections
 import java.util.Locale
-import java.util.concurrent.FutureTask
 
 /** Adapter for the list in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionAdapter(
@@ -55,11 +54,11 @@ class QuestSelectionAdapter(
     private val questTypeOrderController: QuestTypeOrderController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val onListSizeChanged: (Int) -> Unit,
-    countryBoundaries: FutureTask<CountryBoundaries>,
+    countryBoundaries: Lazy<CountryBoundaries>,
     prefs: Preferences
 ) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
 
-    private val currentCountryCodes = countryBoundaries.get()
+    private val currentCountryCodes = countryBoundaries.value
         .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0), prefs.getDouble(Prefs.MAP_LATITUDE, 0.0))
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 

@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 
-/** Deletes old unused data in the background */
+/** Deletes old unused persisted data in the background */
 class Cleaner(
     private val noteController: NoteController,
     private val mapDataController: MapDataController,

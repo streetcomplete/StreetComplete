@@ -26,7 +26,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 /** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_selection), HasTitle {
@@ -35,7 +34,7 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
     private val questPresetsSource: QuestPresetsSource by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val questTypeOrderController: QuestTypeOrderController by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val prefs: Preferences by inject()
 
     private val binding by viewBinding(FragmentQuestSelectionBinding::bind)

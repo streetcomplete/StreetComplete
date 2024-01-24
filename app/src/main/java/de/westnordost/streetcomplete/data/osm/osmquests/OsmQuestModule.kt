@@ -11,5 +11,5 @@ val osmQuestModule = module {
     single<OsmQuestsHiddenSource> { get<OsmQuestController>() }
     single<OsmQuestsHiddenController> { get<OsmQuestController>() }
 
-    single { OsmQuestController(get(), get(), get(), get(), get(), get(named("CountryBoundariesFuture"))) }
+    single { OsmQuestController(get(), get(), get(), get(), get(), get(named("CountryBoundariesLazy"))) }
 }

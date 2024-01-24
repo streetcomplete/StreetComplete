@@ -18,28 +18,29 @@ class LogsDao(private val db: Database) {
         olderThan: Long? = null,
     ): List<LogMessage> {
         val levelsString = levels.joinToString(",") { "'${it.name}'" }
-        var where = "$LEVEL IN ($levelsString)"
-        var args = arrayOf<Any>()
+        val where = mutableListOf("$LEVEL IN ($levelsString)")
+        val args = mutableListOf<Any>()
 
         if (messageContains != null) {
-            where += " AND $MESSAGE LIKE ?"
+            where += "AND ($MESSAGE LIKE ? OR $TAG LIKE ?)"
+            args += "%$messageContains%"
             args += "%$messageContains%"
         }
 
         if (newerThan != null) {
-            where += " AND $TIMESTAMP > ?"
+            where += "AND $TIMESTAMP > ?"
             args += newerThan
         }
 
         if (olderThan != null) {
-            where += " AND $TIMESTAMP < ?"
+            where += "AND $TIMESTAMP < ?"
             args += olderThan
         }
 
         return db.query(
             NAME,
-            where = where,
-            args = args,
+            where = where.joinToString(" "),
+            args = args.toTypedArray(),
             orderBy = "$TIMESTAMP ASC"
         ) { it.toLogMessage() }
     }

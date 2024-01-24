@@ -21,6 +21,17 @@ enum class RecyclingMaterial(val value: String) {
     COOKING_OIL("cooking_oil"),
     ENGINE_OIL("engine_oil");
 
+    val subValues get() = when (this) {
+        PLASTIC ->
+            listOf(PLASTIC_PACKAGING, PLASTIC_BOTTLES, BEVERAGE_CARTONS, PET)
+        PLASTIC_PACKAGING ->
+            listOf(PLASTIC_BOTTLES, BEVERAGE_CARTONS, PET)
+        PLASTIC_BOTTLES ->
+            listOf(PET)
+        else ->
+            listOf()
+    }
+
     companion object {
         val selectableValues = listOf(
             GLASS_BOTTLES, PAPER, PLASTIC, CANS, SCRAP_METAL, CLOTHES, SHOES,
@@ -42,6 +53,6 @@ enum class RecyclingMaterial(val value: String) {
             listOf(GLASS)
         )
 
-        val plastics = setOf(PLASTIC, PLASTIC_PACKAGING, PLASTIC_BOTTLES, BEVERAGE_CARTONS, PET)
+        val allPlastics = setOf(PLASTIC, PLASTIC_PACKAGING, PLASTIC_BOTTLES, BEVERAGE_CARTONS, PET)
     }
 }
