@@ -17,6 +17,10 @@ class AddRoadSurfaceTest {
         assertIsNotApplicable("highway" to "residential", "surface" to "asphalt")
     }
 
+    @Test fun `not applicable to tagged surface:lanes`() {
+        assertIsNotApplicable("highway" to "residential", "surface:lanes" to "concrete|asphalt|asphalt")
+    }
+
     @Test fun `applicable to untagged surface`() {
         assertIsApplicable("highway" to "residential")
     }
