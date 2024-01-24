@@ -204,10 +204,10 @@ private fun Edit.formatDate() = DateFormat.getDateInstance(DateFormat.SHORT).for
 
 private val Edit.isToday: Boolean get() = DateUtils.isToday(this.createdTimestamp)
 
-private sealed class EditHistoryItem
+private sealed interface EditHistoryItem
 
-private data class EditItem(val edit: Edit) : EditHistoryItem()
-private object IsSyncedItem : EditHistoryItem()
+private data class EditItem(val edit: Edit) : EditHistoryItem
+private data object IsSyncedItem : EditHistoryItem
 
 private const val EDIT = 0
 private const val SYNCED = 1

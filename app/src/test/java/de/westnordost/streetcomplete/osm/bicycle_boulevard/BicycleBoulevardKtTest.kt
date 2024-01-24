@@ -12,11 +12,11 @@ import kotlin.test.Test
 class BicycleBoulevardKtTest {
 
     @Test fun create() {
-        assertEquals(NO, createBicycleBoulevard(mapOf()))
-        assertEquals(NO, createBicycleBoulevard(mapOf("bicycle_road" to "no")))
-        assertEquals(YES, createBicycleBoulevard(mapOf("bicycle_road" to "yes")))
-        assertEquals(NO, createBicycleBoulevard(mapOf("cyclestreet" to "no")))
-        assertEquals(YES, createBicycleBoulevard(mapOf("cyclestreet" to "yes")))
+        assertEquals(NO, parseBicycleBoulevard(mapOf()))
+        assertEquals(NO, parseBicycleBoulevard(mapOf("bicycle_road" to "no")))
+        assertEquals(YES, parseBicycleBoulevard(mapOf("bicycle_road" to "yes")))
+        assertEquals(NO, parseBicycleBoulevard(mapOf("cyclestreet" to "no")))
+        assertEquals(YES, parseBicycleBoulevard(mapOf("cyclestreet" to "yes")))
     }
 
     @Test fun `apply yes when it was not tagged before`() {

@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 
 internal class LocalizedNamesKtTest {
 
-    @Test fun createLocalizedNames() {
+    @Test fun parseLocalizedNames() {
         assertEquals(
             listOf(
                 LocalizedName("", "näm"), // name at first position
@@ -18,7 +18,7 @@ internal class LocalizedNamesKtTest {
                 LocalizedName("th-Latn", "ziämäs näm in Lätin"),
                 LocalizedName("guj", "güjäräti näm")
             ),
-            createLocalizedNames(mapOf(
+            parseLocalizedNames(mapOf(
                 "int_name" to "ünt_näm",
                 "alt_name" to "ält_näm",
                 "name:de" to "zörmän näm",

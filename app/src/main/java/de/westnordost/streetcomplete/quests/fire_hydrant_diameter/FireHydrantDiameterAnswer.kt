@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDia
 
 sealed interface FireHydrantDiameterAnswer
 
-object NoFireHydrantDiameterSign : FireHydrantDiameterAnswer
+data object NoFireHydrantDiameterSign : FireHydrantDiameterAnswer
 data class FireHydrantDiameter(val value: Int, val unit: FireHydrantDiameterMeasurementUnit) : FireHydrantDiameterAnswer {
     fun toOsmValue() = value.toString() + when (unit) {
         MILLIMETER -> ""

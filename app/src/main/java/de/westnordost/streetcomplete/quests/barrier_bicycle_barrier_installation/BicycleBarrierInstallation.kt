@@ -8,4 +8,4 @@ enum class BicycleBarrierInstallation(val osmValue: String) : BicycleBarrierInst
     REMOVABLE("removable"),
 }
 
-object BarrierTypeIsNotBicycleBarrier : BicycleBarrierInstallationAnswer
+data object BarrierTypeIsNotBicycleBarrier : BicycleBarrierInstallationAnswer

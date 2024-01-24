@@ -8,4 +8,4 @@ enum class DietAvailability(val osmValue: String) : DietAvailabilityAnswer {
     DIET_ONLY("only"),
 }
 
-object NoFood : DietAvailabilityAnswer
+data object NoFood : DietAvailabilityAnswer
