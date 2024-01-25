@@ -28,7 +28,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
           and !surface:lanes
           and !surface:lanes:forward
           and !surface:lanes:backward
-          and !surface:lanes:both_lanes
+          and !surface:lanes:both_ways
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -12 years
           or (
