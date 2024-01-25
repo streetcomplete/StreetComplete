@@ -65,7 +65,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
-import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
+import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
@@ -1091,7 +1091,7 @@ class MainFragment :
             return data
         }
 
-        val levels = createLevelsOrNull(element.tags)
+        val levels = parseLevelsOrNull(element.tags)
 
         viewLifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
@@ -1101,7 +1101,7 @@ class MainFragment :
                 // don't highlight "this" element
                 if (element == e) continue
                 // include only elements with the same (=intersecting) level, if any
-                val eLevels = createLevelsOrNull(e.tags)
+                val eLevels = parseLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) continue
                 // include only elements with the same layer, if any
                 if (element.tags["layer"] != e.tags["layer"]) continue

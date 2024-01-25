@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.osm.cycleway_separate
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
-import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 
 /** Returns the situation for a separately mapped cycleway */
-fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
+fun parseSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
     /* bridleways (with cycleways) are not supported, because the complexity explodes when a path
        can not only have have states ranging between two tags with values "no, yes, designated,
        segregated from each other, with sidewalk" but three, with any mixture between these
@@ -40,7 +40,7 @@ fun createSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
 
     if (bicycle != "designated") return NON_DESIGNATED
 
-    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
+    val hasSidewalk = parseSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     if (hasSidewalk) return EXCLUSIVE_WITH_SIDEWALK
 
     if (foot == "no" || foot == "use_sidepath" || foot == null) return EXCLUSIVE

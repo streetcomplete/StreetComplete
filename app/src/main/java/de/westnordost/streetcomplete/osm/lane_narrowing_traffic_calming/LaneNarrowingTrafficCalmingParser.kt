@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.LaneNarrowingTrafficCalming.*
 
 /** Parses only the part of traffic_calming that relates to the narrowing of the road */
-fun createNarrowingTrafficCalming(tags: Map<String, String>): LaneNarrowingTrafficCalming? {
+fun parseNarrowingTrafficCalming(tags: Map<String, String>): LaneNarrowingTrafficCalming? {
     val values = tags["traffic_calming"]
         ?.let { expandTrafficCalmingValue(it) }.orEmpty()
         .toMutableList()

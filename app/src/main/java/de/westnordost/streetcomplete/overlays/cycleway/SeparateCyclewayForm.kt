@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.cycleway_separate.applyTo
 import de.westnordost.streetcomplete.osm.cycleway_separate.asItem
-import de.westnordost.streetcomplete.osm.cycleway_separate.createSeparateCycleway
+import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
@@ -28,7 +28,7 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val cycleway = createSeparateCycleway(element!!.tags)
+        val cycleway = parseSeparateCycleway(element!!.tags)
 
         /* Not displaying bicycle=yes and bicycle=no on footways and treating it the same because
            whether riding a bike on a footway is allowed by default (without requiring signs) or

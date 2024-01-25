@@ -18,7 +18,7 @@ enum class LitStatus {
 }
 
 /** Returns the lit status as an enum */
-fun createLitStatus(tags: Map<String, String>): LitStatus? = when (tags["lit"]) {
+fun parseLitStatus(tags: Map<String, String>): LitStatus? = when (tags["lit"]) {
     "yes" -> YES
     "no" -> NO
     "automatic" -> AUTOMATIC
@@ -34,7 +34,7 @@ fun createLitStatus(tags: Map<String, String>): LitStatus? = when (tags["lit"]) 
 fun LitStatus.applyTo(tags: Tags) {
     val litValue = when (this) {
         YES -> {
-            if (createLitStatus(tags) == UNSUPPORTED) {
+            if (parseLitStatus(tags) == UNSUPPORTED) {
                 tags.updateCheckDateForKey("lit")
                 return
             } else {

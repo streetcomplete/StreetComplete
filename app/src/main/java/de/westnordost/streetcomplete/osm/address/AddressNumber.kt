@@ -53,7 +53,7 @@ fun AddressNumber.applyTo(tags: Tags) {
     }
 }
 
-fun createAddressNumber(tags: Map<String, String>): AddressNumber? {
+fun parseAddressNumber(tags: Map<String, String>): AddressNumber? {
     val conscriptionNumber = tags["addr:conscriptionnumber"]
     if (conscriptionNumber != null) {
         val streetNumber = tags["addr:streetnumber"]

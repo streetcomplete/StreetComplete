@@ -365,4 +365,4 @@ private fun sidewalk(left: Sidewalk?, right: Sidewalk?) =
     LeftAndRightSidewalk(left, right)
 
 private fun parse(vararg tags: Pair<String, String>) =
-    createSidewalkSides(mapOf(*tags))
+    parseSidewalkSides(mapOf(*tags))

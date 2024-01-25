@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.asItem
 import de.westnordost.streetcomplete.osm.sidewalk.asStreetSideItem
-import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
@@ -24,7 +24,7 @@ class SidewalkOverlayForm : AStreetSideSelectOverlayForm<Sidewalk>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        originalSidewalk = createSidewalkSides(element!!.tags)?.validOrNullValues()
+        originalSidewalk = parseSidewalkSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {
             initStateFromTags()
         }

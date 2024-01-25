@@ -83,4 +83,4 @@ class LaneNarrowingTrafficCalmingParserKtTest {
 }
 
 private fun parse(vararg tags: Pair<String, String>): LaneNarrowingTrafficCalming? =
-    createNarrowingTrafficCalming(mapOf(*tags))
+    parseNarrowingTrafficCalming(mapOf(*tags))
