@@ -43,5 +43,5 @@ fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: 
     }
 
     // always clean up old source tags - source should be in changeset tags
-    tags.remove("source:$key")
+    tags.remove("source:surface")
 }

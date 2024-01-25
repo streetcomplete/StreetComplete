@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.lit.LitStatus
-import de.westnordost.streetcomplete.osm.lit.createLitStatus
+import de.westnordost.streetcomplete.osm.lit.parseLitStatus
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
@@ -36,7 +36,7 @@ class WayLitOverlay : Overlay {
 }
 
 private fun getStyle(element: Element): Style {
-    val lit = createLitStatus(element.tags)
+    val lit = parseLitStatus(element.tags)
     // not set but indoor or private -> do not highlight as missing
     val isNotSetButThatsOkay = lit == null && (isIndoor(element.tags) || isPrivateOnFoot(element))
     val color = if (isNotSetButThatsOkay) Color.INVISIBLE else lit.color

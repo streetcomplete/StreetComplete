@@ -19,8 +19,8 @@ import de.westnordost.streetcomplete.osm.cycleway.Cycleway.UNSPECIFIED_SHARED_LA
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.any
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
-import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.isImplicitMaxSpeedButNotSlowZone
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 
@@ -73,7 +73,7 @@ class AddCycleway(
     )
 
     override fun getTitle(tags: Map<String, String>) = when {
-        createCyclewaySides(tags, false) != null -> R.string.quest_cycleway_resurvey_title
+        parseCyclewaySides(tags, false) != null -> R.string.quest_cycleway_resurvey_title
         else -> R.string.quest_cycleway_title2
     }
 
@@ -154,7 +154,7 @@ private val untaggedRoadsFilter by lazy { """
 private val olderThan4Years = TagOlderThan("cycleway", RelativeDate(-(365 * 4).toFloat()))
 
 private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo: CountryInfo?): Boolean? {
-    val sides = createCyclewaySides(tags, false)
+    val sides = parseCyclewaySides(tags, false)
     // has no cycleway tagging
     if (sides == null) return false
     // any cycleway tagging is not known: don't mess with that

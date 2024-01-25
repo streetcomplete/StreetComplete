@@ -13,7 +13,7 @@ class LogsController(private val logsDao: LogsDao) {
     private val listeners = Listeners<Listener>()
 
     fun getLogs(
-        levels: Set<LogLevel> = LogLevel.values().toSet(),
+        levels: Set<LogLevel> = LogLevel.entries.toSet(),
         messageContains: String? = null,
         newerThan: Long? = null,
         olderThan: Long? = null,

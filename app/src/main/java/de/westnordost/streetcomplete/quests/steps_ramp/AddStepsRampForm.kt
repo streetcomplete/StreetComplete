@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 
 class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
 
-    override val items = StepsRamp.values().map { it.asItem() }
+    override val items = StepsRamp.entries.map { it.asItem() }
     override val itemsPerRow = 2
     override val maxSelectableItems = -1
     override val moveFavoritesToFront = false

@@ -177,7 +177,6 @@ import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import java.util.concurrent.FutureTask
 
 val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
@@ -190,12 +189,11 @@ val questsModule = module {
             get(),
             { location ->
                 val countryInfos = get<CountryInfos>()
-                val countryBoundaries = get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get()
+                val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
                 countryInfos.getByLocation(countryBoundaries, location.longitude, location.latitude)
             },
             { tags ->
-                get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
-                    .get().getFeature(tags)
+                get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(tags)
             }
         )
     }

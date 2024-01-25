@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.osm.Tags
 
 sealed interface BicycleInclineAnswer
 class RegularBicycleInclineAnswer(val value: Incline) : BicycleInclineAnswer
-object UpdAndDownHopsAnswer : BicycleInclineAnswer
+data object UpdAndDownHopsAnswer : BicycleInclineAnswer
 
 fun BicycleInclineAnswer.applyTo(tags: Tags) {
     when (this) {

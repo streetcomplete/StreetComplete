@@ -39,7 +39,7 @@ class ElementFilterExpressionTest {
     }
 
     @Test fun `matches nwr`() {
-        val expr = ElementFilterExpression(setOf(*ElementsTypeFilter.values()), null)
+        val expr = ElementFilterExpression(ElementsTypeFilter.entries.toSet(), null)
 
         assertTrue(expr.matches(node))
         assertTrue(expr.matches(way))

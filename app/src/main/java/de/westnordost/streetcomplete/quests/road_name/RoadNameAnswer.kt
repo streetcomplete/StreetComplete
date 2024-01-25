@@ -11,7 +11,7 @@ data class RoadName(
     val wayGeometry: List<LatLon>
 ) : RoadNameAnswer
 
-object NoRoadName : RoadNameAnswer
-object RoadIsServiceRoad : RoadNameAnswer
-object RoadIsTrack : RoadNameAnswer
-object RoadIsLinkRoad : RoadNameAnswer
+data object NoRoadName : RoadNameAnswer
+data object RoadIsServiceRoad : RoadNameAnswer
+data object RoadIsTrack : RoadNameAnswer
+data object RoadIsLinkRoad : RoadNameAnswer

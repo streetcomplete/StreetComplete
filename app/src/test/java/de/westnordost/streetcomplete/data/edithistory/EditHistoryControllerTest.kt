@@ -3,10 +3,12 @@ package de.westnordost.streetcomplete.data.edithistory
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.any
@@ -27,21 +29,21 @@ class EditHistoryControllerTest {
 
     private lateinit var elementEditsController: ElementEditsController
     private lateinit var noteEditsController: NoteEditsController
-    private lateinit var osmQuestController: OsmQuestController
-    private lateinit var osmNoteQuestController: OsmNoteQuestController
+    private lateinit var osmQuestsHiddenController: OsmQuestsHiddenController
+    private lateinit var osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController
     private lateinit var listener: EditHistorySource.Listener
     private lateinit var ctrl: EditHistoryController
 
     private lateinit var elementEditsListener: ElementEditsSource.Listener
     private lateinit var noteEditsListener: NoteEditsSource.Listener
-    private lateinit var hideNoteQuestsListener: OsmNoteQuestController.HideOsmNoteQuestListener
-    private lateinit var hideQuestsListener: OsmQuestController.HideOsmQuestListener
+    private lateinit var hideNoteQuestsListener: OsmNoteQuestsHiddenSource.Listener
+    private lateinit var hideQuestsListener: OsmQuestsHiddenSource.Listener
 
     @BeforeTest fun setUp() {
         elementEditsController = mock()
         noteEditsController = mock()
-        osmQuestController = mock()
-        osmNoteQuestController = mock()
+        osmQuestsHiddenController = mock()
+        osmNoteQuestsHiddenController = mock()
         listener = mock()
 
         elementEditsListener = mock()
@@ -57,16 +59,16 @@ class EditHistoryControllerTest {
             noteEditsListener = invocation.getArgument(0)
             Unit
         }
-        on(osmNoteQuestController.addHideQuestsListener(any())).then { invocation ->
+        on(osmNoteQuestsHiddenController.addListener(any())).then { invocation ->
             hideNoteQuestsListener = invocation.getArgument(0)
             Unit
         }
-        on(osmQuestController.addHideQuestsListener(any())).then { invocation ->
+        on(osmQuestsHiddenController.addListener(any())).then { invocation ->
             hideQuestsListener = invocation.getArgument(0)
             Unit
         }
 
-        ctrl = EditHistoryController(elementEditsController, noteEditsController, osmNoteQuestController, osmQuestController)
+        ctrl = EditHistoryController(elementEditsController, noteEditsController, osmNoteQuestsHiddenController, osmQuestsHiddenController)
         ctrl.addListener(listener)
     }
 
@@ -80,8 +82,8 @@ class EditHistoryControllerTest {
 
         on(elementEditsController.getAll()).thenReturn(listOf(edit1, edit3))
         on(noteEditsController.getAll()).thenReturn(listOf(edit2, edit4))
-        on(osmQuestController.getAllHiddenNewerThan(anyLong())).thenReturn(listOf(edit5))
-        on(osmNoteQuestController.getAllHiddenNewerThan(anyLong())).thenReturn(listOf(edit6))
+        on(osmQuestsHiddenController.getAllHiddenNewerThan(anyLong())).thenReturn(listOf(edit5))
+        on(osmNoteQuestsHiddenController.getAllHiddenNewerThan(anyLong())).thenReturn(listOf(edit6))
 
         assertEquals(
             listOf(edit6, edit5, edit4, edit3, edit2, edit1),
@@ -104,13 +106,13 @@ class EditHistoryControllerTest {
     @Test fun `undo hid quest`() {
         val e = questHidden(ElementType.NODE, 1L, TestQuestTypeA())
         ctrl.undo(e)
-        verify(osmQuestController).unhide(OsmQuestKey(ElementType.NODE, 1L, "TestQuestTypeA"))
+        verify(osmQuestsHiddenController).unhide(OsmQuestKey(ElementType.NODE, 1L, "TestQuestTypeA"))
     }
 
     @Test fun `undo hid note quest`() {
         val e = noteQuestHidden()
         ctrl.undo(e)
-        verify(osmNoteQuestController).unhide(e.note.id)
+        verify(osmNoteQuestsHiddenController).unhide(e.note.id)
     }
 
     @Test fun `relays added element edit`() {

@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
-import de.westnordost.streetcomplete.osm.cycleway_separate.createSeparateCycleway
+import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
-import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
@@ -52,7 +52,7 @@ class SidewalkOverlay : Overlay {
         // allow editing of all roads and all exclusive cycleways
         return if (
             element.tags["highway"] in ALL_ROADS ||
-            createSeparateCycleway(element.tags) in listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
+            parseSeparateCycleway(element.tags) in listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
         ) {
             SidewalkOverlayForm()
         } else {
@@ -69,7 +69,7 @@ private fun getFootwayStyle(element: Element): PolylineStyle {
     }
 
     return when {
-        createSidewalkSides(element.tags)?.any { it == Sidewalk.YES } == true ->
+        parseSidewalkSides(element.tags)?.any { it == Sidewalk.YES } == true ->
             getSidewalkStyle(element)
         foot in listOf("yes", "designated") ->
             PolylineStyle(StrokeStyle(Color.SKY))
@@ -79,7 +79,7 @@ private fun getFootwayStyle(element: Element): PolylineStyle {
 }
 
 private fun getSidewalkStyle(element: Element): PolylineStyle {
-    val sidewalkSides = createSidewalkSides(element.tags)
+    val sidewalkSides = parseSidewalkSides(element.tags)
     // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
     if (sidewalkSides == null) {
         if (sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element)) {

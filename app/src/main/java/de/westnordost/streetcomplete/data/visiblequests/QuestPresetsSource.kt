@@ -11,8 +11,11 @@ interface QuestPresetsSource {
     val selectedId: Long
     val selectedQuestPresetName: String?
 
+    /** get the name of the preset with the given [presetId] or null if it does not exist */
     fun getName(presetId: Long): String?
+    /** get all quest presets */
     fun getAll(): List<QuestPreset>
+    /** find a quest preset by name, returns null if none by that name exists */
     fun getByName(name: String): QuestPreset?
 
     fun addListener(listener: Listener)

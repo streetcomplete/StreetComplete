@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.osm.level
 
 /** get for which level(s) the element with the given tags is defined, if any.
  *  repeat_on is interpreted the same way as level */
-fun createLevelsOrNull(tags: Map<String, String>): List<Level>? {
+fun parseLevelsOrNull(tags: Map<String, String>): List<Level>? {
     val levels = tags["level"]?.toLevelsOrNull()
     val repeatOns = tags["repeat_on"]?.toLevelsOrNull()
     return if (levels == null) {
@@ -14,10 +14,10 @@ fun createLevelsOrNull(tags: Map<String, String>): List<Level>? {
 
 /** get levels that would appear on level filter buttons like in JOSM for the elements with the
  *  given tags */
-fun createSelectableLevels(tagsList: Iterable<Map<String, String>>): List<Double> {
+fun parseSelectableLevels(tagsList: Iterable<Map<String, String>>): List<Double> {
     val allLevels = mutableSetOf<Double>()
     for (tags in tagsList) {
-        val levels = createLevelsOrNull(tags) ?: continue
+        val levels = parseLevelsOrNull(tags) ?: continue
         for (level in levels) {
             when (level) {
                 is LevelRange -> allLevels.addAll(level.getSelectableLevels())

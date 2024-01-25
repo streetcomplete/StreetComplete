@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.sidewalk.KNOWN_SIDEWALK_KEYS
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
-import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun SeparateCycleway.applyTo(tags: Tags) {
@@ -71,7 +71,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
     }
 
     // tag or remove sidewalk
-    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
+    val hasSidewalk = parseSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     when (this) {
         EXCLUSIVE_WITH_SIDEWALK -> {
             if (!hasSidewalk) {

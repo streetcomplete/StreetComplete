@@ -15,9 +15,9 @@ import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
-import de.westnordost.streetcomplete.osm.surface.createSurface
-import de.westnordost.streetcomplete.osm.surface.createSurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.isComplete
+import de.westnordost.streetcomplete.osm.surface.parseSurface
+import de.westnordost.streetcomplete.osm.surface.parseSurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -64,9 +64,9 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        originalSurface = createSurfaceAndNote(element!!.tags)
-        originalCyclewaySurface = createSurfaceAndNote(element!!.tags, "cycleway")
-        originalFootwaySurface = createSurfaceAndNote(element!!.tags, "footway")
+        originalSurface = parseSurfaceAndNote(element!!.tags)
+        originalCyclewaySurface = parseSurfaceAndNote(element!!.tags, "cycleway")
+        originalFootwaySurface = parseSurfaceAndNote(element!!.tags, "footway")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -128,15 +128,15 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
     private fun onLoadInstanceState(inState: Bundle) {
         surfaceCtrl.value = SurfaceAndNote(
-            createSurface(inState.getString(SURFACE)),
+            parseSurface(inState.getString(SURFACE)),
             inState.getString(NOTE)
         )
         cyclewaySurfaceCtrl.value = SurfaceAndNote(
-            createSurface(inState.getString(CYCLEWAY_SURFACE)),
+            parseSurface(inState.getString(CYCLEWAY_SURFACE)),
             inState.getString(CYCLEWAY_NOTE)
         )
         footwaySurfaceCtrl.value = SurfaceAndNote(
-            createSurface(inState.getString(FOOTWAY_SURFACE)),
+            parseSurface(inState.getString(FOOTWAY_SURFACE)),
             inState.getString(FOOTWAY_NOTE)
         )
     }

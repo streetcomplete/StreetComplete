@@ -45,7 +45,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 /** Fragment that lets the user move an OSM node */
 class MoveNodeFragment :
@@ -56,7 +55,7 @@ class MoveNodeFragment :
     private val elementEditsController: ElementEditsController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val countryInfos: CountryInfos by inject()
 
     override val elementKey: ElementKey by lazy { node.key }
@@ -85,7 +84,7 @@ class MoveNodeFragment :
             ?: overlayRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!)!!
 
         val isFeetAndInch = countryInfos.getByLocation(
-            countryBoundaries.get(),
+            countryBoundaries.value,
             node.position.longitude,
             node.position.latitude
         ).lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH

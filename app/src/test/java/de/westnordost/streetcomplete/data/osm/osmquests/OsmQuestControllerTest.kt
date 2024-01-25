@@ -31,7 +31,6 @@ import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import org.mockito.Mockito.verify
-import java.util.concurrent.FutureTask
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -48,7 +47,7 @@ class OsmQuestControllerTest {
 
     private lateinit var ctrl: OsmQuestController
     private lateinit var listener: OsmQuestSource.Listener
-    private lateinit var hideListener: OsmQuestController.HideOsmQuestListener
+    private lateinit var hideListener: OsmQuestsHiddenSource.Listener
 
     private lateinit var mapDataListener: MapDataWithEditsSource.Listener
     private lateinit var notesListener: NotesWithEditsSource.Listener
@@ -79,14 +78,11 @@ class OsmQuestControllerTest {
             Unit
         }
 
-        val futureTask = FutureTask { countryBoundaries }
-        futureTask.run()
-
         listener = mock()
         hideListener = mock()
-        ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, futureTask)
+        ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, lazyOf(countryBoundaries))
         ctrl.addListener(listener)
-        ctrl.addHideQuestsListener(hideListener)
+        ctrl.addListener(hideListener)
     }
 
     @Test fun get() {
@@ -167,6 +163,11 @@ class OsmQuestControllerTest {
             ),
             ctrl.getAllHiddenNewerThan(123L)
         )
+    }
+
+    @Test fun countAll() {
+        on(hiddenDB.countAll()).thenReturn(123L)
+        assertEquals(123L, ctrl.countAll())
     }
 
     @Test fun hide() {

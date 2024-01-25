@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.util.Listeners
 
+/** Controls the ids and names of quest presets */
 class QuestPresetsController(
     private val questPresetsDao: QuestPresetsDao,
     private val selectedQuestPresetStore: SelectedQuestPresetStore

@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 sealed interface Fee
 
-object HasFee : Fee
-object HasNoFee : Fee
+data object HasFee : Fee
+data object HasNoFee : Fee
 data class HasFeeAtHours(val hours: OpeningHoursRuleList) : Fee
 data class HasFeeExceptAtHours(val hours: OpeningHoursRuleList) : Fee
 
