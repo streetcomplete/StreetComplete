@@ -21,7 +21,6 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
@@ -29,10 +28,15 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -49,11 +53,9 @@ import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
-import de.westnordost.streetcomplete.util.ktx.minusInSystemTimeZone
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
-import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.prefs.Preferences
@@ -61,9 +63,6 @@ import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.datetime.DateTimeUnit
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
@@ -74,8 +73,8 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
     private val downloadedTilesController: DownloadedTilesController by inject()
     private val noteController: NoteController by inject()
     private val mapDataController: MapDataController by inject()
-    private val osmQuestController: OsmQuestController by inject()
-    private val osmNoteQuestController: OsmNoteQuestController by inject()
+    private val osmQuestsHiddenController: OsmQuestsHiddenController by inject()
+    private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestTypeSource: VisibleQuestTypeSource by inject()
@@ -85,31 +84,27 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
     override val title: String get() = getString(R.string.action_settings)
 
     private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
-            setQuestPreferenceSummary()
-        }
-
-        override fun onQuestTypeVisibilitiesChanged() {
-            setQuestPreferenceSummary()
-        }
+        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) { setQuestPreferenceSummary() }
+        override fun onQuestTypeVisibilitiesChanged() { setQuestPreferenceSummary() }
     }
 
     private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() {
-            setQuestPresetsPreferenceSummary()
-        }
+        override fun onSelectedQuestPresetChanged() { setQuestPresetsPreferenceSummary() }
+        override fun onAddedQuestPreset(preset: QuestPreset) { setQuestPresetsPreferenceSummary() }
+        override fun onRenamedQuestPreset(preset: QuestPreset) { setQuestPresetsPreferenceSummary() }
+        override fun onDeletedQuestPreset(presetId: Long) { setQuestPresetsPreferenceSummary() }
+    }
 
-        override fun onAddedQuestPreset(preset: QuestPreset) {
-            setQuestPresetsPreferenceSummary()
-        }
+    private val osmQuestsHiddenListener = object : OsmQuestsHiddenSource.Listener {
+        override fun onHid(edit: OsmQuestHidden) { setHiddenQuestsSummary() }
+        override fun onUnhid(edit: OsmQuestHidden) { setHiddenQuestsSummary() }
+        override fun onUnhidAll() { setHiddenQuestsSummary() }
+    }
 
-        override fun onRenamedQuestPreset(preset: QuestPreset) {
-            setQuestPresetsPreferenceSummary()
-        }
-
-        override fun onDeletedQuestPreset(presetId: Long) {
-            setQuestPresetsPreferenceSummary()
-        }
+    private val osmNoteQuestsHiddenListener = object : OsmNoteQuestsHiddenSource.Listener {
+        override fun onHid(edit: OsmNoteQuestHidden) { setHiddenQuestsSummary() }
+        override fun onUnhid(edit: OsmNoteQuestHidden) { setHiddenQuestsSummary() }
+        override fun onUnhidAll() { setHiddenQuestsSummary() }
     }
 
     private val onAutosyncChanged =  {
@@ -182,10 +177,9 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.restore_dialog_message)
                 .setMessage(R.string.restore_dialog_hint)
-                .setPositiveButton(R.string.restore_confirmation) { _, _ -> lifecycleScope.launch {
-                    val hidden = unhideQuests()
-                    context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
-                } }
+                .setPositiveButton(R.string.restore_confirmation) { _, _ ->
+                    onHiddenQuestRestore()
+                }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
 
@@ -285,6 +279,16 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
         buildLanguageSelector()
     }
 
+    private fun onHiddenQuestRestore() {
+        lifecycleScope.launch {
+            val hidden = unhideQuests()
+            context?.toast(
+                getString(R.string.restore_hidden_success, hidden),
+                Toast.LENGTH_LONG
+            )
+        }
+    }
+
     private fun buildLanguageSelector() {
         val entryValues = resources.getYamlObject<MutableList<String>>(R.raw.languages)
         val entries = entryValues.map {
@@ -312,11 +316,14 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
     override fun onStart() {
         super.onStart()
 
+        setHiddenQuestsSummary()
         setQuestPreferenceSummary()
         setQuestPresetsPreferenceSummary()
 
         visibleQuestTypeSource.addListener(visibleQuestTypeListener)
         questPresetsSource.addListener(questPresetsListener)
+        osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
+        osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
     }
 
     override fun onStop() {
@@ -324,6 +331,8 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
         visibleQuestTypeSource.removeListener(visibleQuestTypeListener)
         questPresetsSource.removeListener(questPresetsListener)
+        osmNoteQuestsHiddenController.removeListener(osmNoteQuestsHiddenListener)
+        osmQuestsHiddenController.removeListener(osmQuestsHiddenListener)
     }
 
     override fun onResume() {
@@ -376,8 +385,11 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
         context?.externalCacheDirs?.forEach { it.purge() }
     }
     private suspend fun unhideQuests() = withContext(Dispatchers.IO) {
-        osmQuestController.unhideAll() + osmNoteQuestController.unhideAll() + externalSourceQuestController.unhideAll()
+        osmQuestsHiddenController.unhideAll() + osmNoteQuestsHiddenController.unhideAll() + externalSourceQuestController.unhideAll()
     }
+
+    private fun countHiddenQuests(): Long =
+        osmQuestsHiddenController.countAll() + osmNoteQuestsHiddenController.countAll()
 
     private fun setQuestPreferenceSummary() {
         val enabledCount = questTypeRegistry.count { visibleQuestTypeSource.isVisible(it) }
@@ -393,6 +405,15 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
         val summary = getString(R.string.pref_subtitle_quests_preset_name, presetName)
         viewLifecycleScope.launch {
             findPreference<Preference>("quest_presets")?.summary = summary
+        }
+    }
+
+    private fun setHiddenQuestsSummary() {
+        viewLifecycleScope.launch {
+            val amountOfHiddenQuests = withContext(Dispatchers.IO) { countHiddenQuests() }
+            val pref = findPreference<Preference>("quests.restore.hidden")
+            pref?.summary = requireContext().getString(R.string.pref_title_quests_restore_hidden_summary, amountOfHiddenQuests)
+            pref?.isEnabled = amountOfHiddenQuests > 0
         }
     }
 

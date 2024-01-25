@@ -14,12 +14,8 @@ import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
-import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.util.math.enlargedBy
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 import org.mockito.Mockito.anyBoolean
 import org.mockito.Mockito.verify
 import java.lang.Thread.sleep

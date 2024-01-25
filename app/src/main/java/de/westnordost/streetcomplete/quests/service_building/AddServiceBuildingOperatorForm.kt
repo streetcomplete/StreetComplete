@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.service_building
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.quests.ANameWithSuggestionsForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.mostCommonWithin

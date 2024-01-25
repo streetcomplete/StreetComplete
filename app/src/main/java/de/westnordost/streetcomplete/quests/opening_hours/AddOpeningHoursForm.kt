@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekday
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 

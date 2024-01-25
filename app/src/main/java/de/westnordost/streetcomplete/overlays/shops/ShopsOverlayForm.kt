@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.osm.IS_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.createLocalizedNames
+import de.westnordost.streetcomplete.osm.parseLocalizedNames
 import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -114,7 +114,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
             ).show()
         }
 
-        originalNames = createLocalizedNames(element?.tags.orEmpty()).orEmpty()
+        originalNames = parseLocalizedNames(element?.tags.orEmpty()).orEmpty()
 
         val persistedNames = savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let { Json.decodeFromString<List<LocalizedName>>(it) }
 

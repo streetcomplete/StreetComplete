@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard.*
 
 enum class BicycleBoulevard { YES, NO }
 
-fun createBicycleBoulevard(tags: Map<String, String>): BicycleBoulevard =
+fun parseBicycleBoulevard(tags: Map<String, String>): BicycleBoulevard =
     // "no" value is extremely uncommon, hence the lack of this tag can be interpreted as "no"
     if (tags["bicycle_road"] == "yes" || tags["cyclestreet"] == "yes") YES else NO
 

@@ -20,10 +20,10 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item2
 
-fun Array<Smoothness>.toItems(context: Context, surface: String) =
+fun Iterable<Smoothness>.toItems(context: Context, surface: String) =
     mapNotNull { it.asItem(context, surface) }
 
-fun Array<Smoothness>.toGenericItems(context: Context) =
+fun Iterable<Smoothness>.toGenericItems(context: Context) =
     mapNotNull { it.asGenericItem(context) }
 
 fun Smoothness.asGenericItem(context: Context): DisplayItem<Smoothness>? =

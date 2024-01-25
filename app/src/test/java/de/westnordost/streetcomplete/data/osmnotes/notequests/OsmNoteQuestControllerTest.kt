@@ -31,7 +31,7 @@ class OsmNoteQuestControllerTest {
 
     private lateinit var ctrl: OsmNoteQuestController
     private lateinit var listener: OsmNoteQuestSource.Listener
-    private lateinit var hideListener: OsmNoteQuestController.HideOsmNoteQuestListener
+    private lateinit var hideListener: OsmNoteQuestsHiddenSource.Listener
 
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
     private lateinit var userLoginListener: UserLoginStatusSource.Listener
@@ -58,7 +58,7 @@ class OsmNoteQuestControllerTest {
 
         ctrl = OsmNoteQuestController(noteSource, hiddenDB, userDataSource, userLoginStatusSource, notesPreferences)
         ctrl.addListener(listener)
-        ctrl.addHideQuestsListener(hideListener)
+        ctrl.addListener(hideListener)
     }
 
     @Test fun hide() {
@@ -135,6 +135,11 @@ class OsmNoteQuestControllerTest {
             ),
             ctrl.getAllHiddenNewerThan(123L)
         )
+    }
+
+    @Test fun countAll() {
+        on(hiddenDB.countAll()).thenReturn(123L)
+        assertEquals(123L, ctrl.countAll())
     }
 
     @Test fun `get hidden returns null`() {

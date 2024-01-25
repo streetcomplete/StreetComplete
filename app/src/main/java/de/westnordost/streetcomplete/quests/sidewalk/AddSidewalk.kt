@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.LeftAndRightSidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
-import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
@@ -111,7 +111,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
 }
 
 private fun Element.hasInvalidOrIncompleteSidewalkTags(): Boolean {
-    val sides = createSidewalkSides(tags) ?: return false
+    val sides = parseSidewalkSides(tags) ?: return false
     if (sides.any { it == INVALID || it == null }) return true
     return false
 }

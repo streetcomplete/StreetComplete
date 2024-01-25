@@ -35,7 +35,6 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.qualifier.named
 import java.util.Locale
-import java.util.concurrent.FutureTask
 
 /** Search and select a preset */
 class SearchFeaturesDialog(
@@ -55,7 +54,7 @@ class SearchFeaturesDialog(
     private val locales = getLocalesForFeatureDictionary(context.resources.configuration)
     private val adapter = FeaturesAdapter()
     private val countryInfos: CountryInfos by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val prefs: SharedPreferences by inject()
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
@@ -113,7 +112,7 @@ class SearchFeaturesDialog(
             // even if there are many languages, UI stuff will likely be slower than the multiple searches
             val otherLocales = locales.toList().allExceptFirstAndLast() + // first is default, last is null
                 (pos?.let { p ->
-                    val c = countryInfos.getByLocation(countryBoundaries.get(), p.longitude, p.latitude)
+                    val c = countryInfos.getByLocation(countryBoundaries.value, p.longitude, p.latitude)
                     c.officialLanguages.map { Locale(it, c.countryCode) }
                 } ?: emptyList())
             (featureDictionary // get default results

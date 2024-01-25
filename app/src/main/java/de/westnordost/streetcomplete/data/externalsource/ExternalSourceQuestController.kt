@@ -17,10 +17,9 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
-import java.util.concurrent.FutureTask
 
 class ExternalSourceQuestController(
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val countryBoundaries: Lazy<CountryBoundaries>,
     private val questTypeRegistry: QuestTypeRegistry,
     private val externalSourceDao: ExternalSourceDao,
     elementEditsController: ElementEditsController,
@@ -68,7 +67,7 @@ class ExternalSourceQuestController(
     /** calls [download] for each [ExternalSourceQuestType] enabled in this country, thus may take long */
     suspend fun download(bbox: BoundingBox) {
         withContext(Dispatchers.IO) {
-            val countryBoundaries = countryBoundariesFuture.get()
+            val countryBoundaries = countryBoundaries.value
             val updates = questTypes.mapNotNull { type ->
                 if (!type.downloadEnabled) return@mapNotNull null
                 if (!countryBoundaries.intersects(bbox, type.enabledInCountries)) return@mapNotNull null

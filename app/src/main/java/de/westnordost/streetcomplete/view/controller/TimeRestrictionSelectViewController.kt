@@ -42,7 +42,7 @@ class TimeRestrictionSelectViewController(
         get() = timesAdapter.locale
 
     /** which time restrictions are selectable for the user */
-    var selectableTimeRestrictions: List<TimeRestriction> = TimeRestriction.values().toList()
+    var selectableTimeRestrictions: List<TimeRestriction> = TimeRestriction.entries
         set(value) {
             field = value
             timeRestrictionAdapter.clear()
@@ -66,7 +66,7 @@ class TimeRestrictionSelectViewController(
     private val timeRestrictionAdapter = ArrayAdapter(
         timeRestrictionsSelect.context,
         timeRestrictionsSelectItemResId,
-        TimeRestriction.values().map { it.toLocalizedString(timeRestrictionsSelect.context.resources) }.toMutableList()
+        TimeRestriction.entries.map { it.toLocalizedString(timeRestrictionsSelect.context.resources) }.toMutableList()
     )
 
     init {

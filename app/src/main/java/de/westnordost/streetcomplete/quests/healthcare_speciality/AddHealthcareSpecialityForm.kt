@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.RadioButton
 import androidx.core.os.bundleOf
 import androidx.fragment.app.commit
-import androidx.preference.PreferenceManager
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding

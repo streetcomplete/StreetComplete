@@ -16,8 +16,6 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDia
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.mostCommonWithin
-import de.westnordost.streetcomplete.util.prefs.Preferences
-import org.koin.android.ext.android.inject
 
 class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
 

@@ -2,98 +2,123 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddMaxSpeedTest {
 
     private val questType = AddMaxSpeed()
 
     @Test fun `apply no sign answer`() {
-        questType.verifyAnswer(
-            ImplicitMaxSpeed("XX", "flubberway", null) to null,
-            StringMapEntryAdd("maxspeed:type", "XX:flubberway")
+        assertEquals(
+            setOf(StringMapEntryAdd("maxspeed:type", "XX:flubberway")),
+            questType.answerApplied(ImplicitMaxSpeed("XX", "flubberway", null) to null)
         )
     }
 
     @Test fun `apply sign answer`() {
-        questType.verifyAnswer(
-            MaxSpeedSign(Kmh(123)) to null,
-            StringMapEntryAdd("maxspeed", "123"),
-            StringMapEntryAdd("maxspeed:type", "sign")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed", "123"),
+                StringMapEntryAdd("maxspeed:type", "sign")
+            ),
+            questType.answerApplied(MaxSpeedSign(Kmh(123)) to null)
         )
     }
 
     @Test fun `apply mph sign answer`() {
-        questType.verifyAnswer(
-            MaxSpeedSign(Mph(123)) to null,
-            StringMapEntryAdd("maxspeed", "123 mph"),
-            StringMapEntryAdd("maxspeed:type", "sign")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed", "123 mph"),
+                StringMapEntryAdd("maxspeed:type", "sign")
+            ),
+            questType.answerApplied(MaxSpeedSign(Mph(123)) to null)
         )
     }
 
     @Test fun `apply advisory sign answer`() {
-        questType.verifyAnswer(
-            AdvisorySpeedSign(Kmh(123)) to null,
-            StringMapEntryAdd("maxspeed:advisory", "123"),
-            StringMapEntryAdd("maxspeed:type:advisory", "sign")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed:advisory", "123"),
+                StringMapEntryAdd("maxspeed:type:advisory", "sign")
+            ),
+            questType.answerApplied(AdvisorySpeedSign(Kmh(123)) to null)
         )
     }
 
     @Test fun `apply zone sign answer`() {
-        questType.verifyAnswer(
-            MaxSpeedZone(Kmh(123), "AA", "zoneXYZ") to null,
-            StringMapEntryAdd("maxspeed", "123"),
-            StringMapEntryAdd("maxspeed:type", "AA:zoneXYZ")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed", "123"),
+                StringMapEntryAdd("maxspeed:type", "AA:zoneXYZ")
+            ),
+            questType.answerApplied(MaxSpeedZone(Kmh(123), "AA", "zoneXYZ") to null)
         )
     }
 
     @Test fun `apply living street answer`() {
-        questType.verifyAnswer(
-            mapOf("highway" to "residential"),
-            IsLivingStreet to null,
-            StringMapEntryModify("highway", "residential", "living_street")
+        assertEquals(
+            setOf(StringMapEntryModify("highway", "residential", "living_street")),
+            questType.answerAppliedTo(IsLivingStreet to null, mapOf("highway" to "residential"))
         )
     }
 
     @Test fun `apply nsl restricted answer lit mapped`() {
-        questType.verifyAnswer(
-            mapOf("lit" to "yes"),
-            ImplicitMaxSpeed("GB", "nsl_restricted", true) to null,
-            StringMapEntryAdd("maxspeed:type", "GB:nsl_restricted"),
-            StringMapEntryModify("lit", "yes", "yes")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed:type", "GB:nsl_restricted"),
+                StringMapEntryModify("lit", "yes", "yes")
+            ),
+            questType.answerAppliedTo(
+                ImplicitMaxSpeed("GB", "nsl_restricted", true) to null,
+                mapOf("lit" to "yes")
+            )
         )
     }
 
     @Test fun `apply nsl restricted answer lit not mapped`() {
-        questType.verifyAnswer(
-            ImplicitMaxSpeed("GB", "nsl_restricted", true) to null,
-            StringMapEntryAdd("maxspeed:type", "GB:nsl_restricted"),
-            StringMapEntryAdd("lit", "yes")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed:type", "GB:nsl_restricted"),
+                StringMapEntryAdd("lit", "yes")
+            ),
+            questType.answerApplied(
+                ImplicitMaxSpeed("GB", "nsl_restricted", true) to null,
+            )
         )
     }
 
     @Test fun `apply nsl single answer lit mapped`() {
-        questType.verifyAnswer(
-            mapOf("lit" to "no"),
-            ImplicitMaxSpeed("GB", "nsl_single", false) to null,
-            StringMapEntryAdd("maxspeed:type", "GB:nsl_single"),
-            StringMapEntryModify("lit", "no", "no")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed:type", "GB:nsl_single"),
+                StringMapEntryModify("lit", "no", "no")
+            ),
+            questType.answerAppliedTo(
+                ImplicitMaxSpeed("GB", "nsl_single", false) to null,
+                mapOf("lit" to "no")
+            )
         )
     }
 
     @Test fun `apply nsl single answer lit not mapped`() {
-        questType.verifyAnswer(
-            ImplicitMaxSpeed("GB", "nsl_single", false) to null,
-            StringMapEntryAdd("maxspeed:type", "GB:nsl_single"),
-            StringMapEntryAdd("lit", "no")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed:type", "GB:nsl_single"),
+                StringMapEntryAdd("lit", "no")
+            ),
+            questType.answerApplied(ImplicitMaxSpeed("GB", "nsl_single", false) to null)
         )
     }
 
     @Test fun `apply nsl dual answer`() {
-        questType.verifyAnswer(
-            ImplicitMaxSpeed("GB", "nsl_dual", null) to null,
-            StringMapEntryAdd("maxspeed:type", "GB:nsl_dual")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("maxspeed:type", "GB:nsl_dual")
+            ),
+            questType.answerApplied(ImplicitMaxSpeed("GB", "nsl_dual", null) to null)
         )
     }
 }

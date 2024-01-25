@@ -3,15 +3,14 @@ package de.westnordost.streetcomplete.quests.shelter_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.IAnswerItem
-import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.PUBLIC_TRANSPORT
-import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.PICNIC_SHELTER
+import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.BASIC_HUT
+import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.FIELD_SHELTER
 import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.GAZEBO
 import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.LEAN_TO
-import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.BASIC_HUT
-import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.SUN_SHELTER
-import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.FIELD_SHELTER
+import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.PICNIC_SHELTER
+import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.PUBLIC_TRANSPORT
 import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.ROCK_SHELTER
+import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.SUN_SHELTER
 import de.westnordost.streetcomplete.quests.shelter_type.ShelterType.WEATHER_SHELTER
 import de.westnordost.streetcomplete.view.image_select.Item
 

@@ -146,7 +146,7 @@ class DisplaySettingsFragment :
         }
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         if (key == Prefs.QUEST_GEOMETRIES)
             visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
     }

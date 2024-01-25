@@ -4,16 +4,16 @@ import de.westnordost.streetcomplete.osm.expandSidesTags
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 
-fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParking? {
+fun parseStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParking? {
     // expand tags first so we do not need to deal with :both and naked tags
     val expandedTags = expandRelevantSidesTags(tags)
     // first try to parse new schema
-    var left = createParkingForSide(expandedTags, "left")
-    var right = createParkingForSide(expandedTags, "right")
+    var left = parseParkingForSide(expandedTags, "left")
+    var right = parseParkingForSide(expandedTags, "right")
     if (left == null && right == null) {
         // otherwise parse the old schema
-        left = createParkingForSideOldSchema(expandedTags, "left")
-        right = createParkingForSideOldSchema(expandedTags, "right")
+        left = parseParkingForSideOldSchema(expandedTags, "left")
+        right = parseParkingForSideOldSchema(expandedTags, "right")
     }
 
     if (left == null && right == null) return null
@@ -23,7 +23,7 @@ fun createStreetParkingSides(tags: Map<String, String>): LeftAndRightStreetParki
 
 /** Parsing new schema:
  *  https://wiki.openstreetmap.org/wiki/Street_parking */
-private fun createParkingForSide(tags: Map<String, String>, side: String): StreetParking? {
+private fun parseParkingForSide(tags: Map<String, String>, side: String): StreetParking? {
     val isStaggered = tags["parking:$side:staggered"] == "yes"
     val markings = tags["parking:$side:markings"]
     val hasMarkings = markings != "no" && markings != null
@@ -63,7 +63,7 @@ private fun createParkingForSide(tags: Map<String, String>, side: String): Stree
 
 /** Parsing old parking schema:
  *  https://wiki.openstreetmap.org/wiki/Key:parking:lane */
-private fun createParkingForSideOldSchema(tags: Map<String, String>, side: String): StreetParking? {
+private fun parseParkingForSideOldSchema(tags: Map<String, String>, side: String): StreetParking? {
     val parkingValue = tags["parking:lane:$side"] ?: return null
 
     when (parkingValue) {

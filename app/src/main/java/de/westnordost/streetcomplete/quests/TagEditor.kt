@@ -70,14 +70,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.Date
 import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.FutureTask
 import kotlin.math.min
 
 // todo: ideas for improvements
@@ -97,7 +95,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     private val osmQuestController: OsmQuestController by inject()
     protected val prefs: SharedPreferences by inject()
     protected val elementEditsController: ElementEditsController by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     protected val mapDataSource: MapDataWithEditsSource by inject()
     private val externalSourceQuestController: ExternalSourceQuestController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
@@ -192,7 +190,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         binding.editTags.layoutManager = LinearLayoutManager(requireContext())
         val geometryType = if (element is Node && (this is InsertNodeTagEditor || mapDataSource.getWaysForNode(element.id).isNotEmpty())) GeometryType.VERTEX
             else element.geometryType
-        binding.editTags.adapter = EditTagsAdapter(tagList, newTags, geometryType, featureDictionaryFuture.get(), requireContext(), prefs) {
+        binding.editTags.adapter = EditTagsAdapter(tagList, newTags, geometryType, featureDictionary.value, requireContext(), prefs) {
             viewLifecycleScope.launch(Dispatchers.IO) { updateQuests(750) }
             showOk()
         }.apply { setHasStableIds(true) }
@@ -237,7 +235,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         }
 
         if (element.id == 0L) {
-            val previousTagsForFeature: Map<String, String>? = try { featureDictionaryFuture.get()
+            val previousTagsForFeature: Map<String, String>? = try { featureDictionary.value
                 .byTags(newTags)
                 .isSuggestion(false)
                 .forLocale(*getLocalesForFeatureDictionary(resources.configuration))

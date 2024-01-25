@@ -5,7 +5,6 @@ import android.os.Build
 import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 
 // using setView fills the entire AlertDialog, while setMessage or set*Items add some padding

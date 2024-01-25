@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
 import android.content.Context
-import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry

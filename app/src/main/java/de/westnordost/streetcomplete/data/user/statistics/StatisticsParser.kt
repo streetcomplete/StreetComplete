@@ -5,7 +5,6 @@ import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json.Default.decodeFromString
 
-
 @Serializable
 private data class StatisticsDTO(
     val questTypes: Map<String, Int>,

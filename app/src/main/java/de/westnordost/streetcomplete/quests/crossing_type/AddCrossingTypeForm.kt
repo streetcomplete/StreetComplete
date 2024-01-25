@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.RAISED
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS_ZEBRA
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.ZEBRA
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 
 class AddCrossingTypeForm : AImageListQuestForm<CrossingType, CrossingType>() {
 
-    val crossingItems = CrossingType.values().filterNot { it == RAISED }.map { it.asItem() }
+    val crossingItems = CrossingType.entries.filterNot { it == RAISED }.map { it.asItem() }
 
-    val raisedItem = RAISED.asItem()
+    private val raisedItem = RAISED.asItem()
 
     override val items = crossingItems + raisedItem
 

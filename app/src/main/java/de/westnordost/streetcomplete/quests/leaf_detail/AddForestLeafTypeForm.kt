@@ -7,9 +7,9 @@ class AddForestLeafTypeForm : AImageListQuestForm<ForestLeafType, ForestLeafType
 
     override val items by lazy {
         val types = if (element is Node)
-            arrayOf(ForestLeafType.NEEDLELEAVED, ForestLeafType.BROADLEAVED)
+            listOf(ForestLeafType.NEEDLELEAVED, ForestLeafType.BROADLEAVED)
         else
-            ForestLeafType.values()
+            ForestLeafType.entries
         types.map { it.asItem() }
     }
     override val itemsPerRow = 3

@@ -12,11 +12,9 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.osm.LocalizedName
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import org.koin.android.ext.android.inject
 import java.util.Queue
 
 abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {

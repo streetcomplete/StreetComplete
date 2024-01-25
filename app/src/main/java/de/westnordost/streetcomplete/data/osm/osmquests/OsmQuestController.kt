@@ -46,7 +46,6 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import java.util.concurrent.FutureTask
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
@@ -56,19 +55,14 @@ class OsmQuestController internal constructor(
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
+    private val countryBoundaries: Lazy<CountryBoundaries>,
     private val prefs: SharedPreferences,
-) : OsmQuestSource, HideOsmQuestController {
+) : OsmQuestSource, OsmQuestsHiddenController, OsmQuestsHiddenSource {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
 
-    interface HideOsmQuestListener {
-        fun onHid(edit: OsmQuestHidden)
-        fun onUnhid(edit: OsmQuestHidden)
-        fun onUnhidAll()
-    }
-    private val hideListeners = Listeners<HideOsmQuestListener>()
+    private val hideListeners = Listeners<OsmQuestsHiddenSource.Listener>()
 
     private val listeners = Listeners<OsmQuestSource.Listener>()
 
@@ -178,7 +172,7 @@ class OsmQuestController internal constructor(
     ): Collection<OsmQuest> {
         val time = nowAsEpochMilliseconds()
 
-        val countryBoundaries = countryBoundariesFuture.get()
+        val countryBoundaries = countryBoundaries.value
 
         // Remove elements without tags, to be used for quests that are never applicable without
         // tags. These quests are usually OsmFilterQuestType, where questType.filter.mayEvaluateToTrueWithNoTags
@@ -302,7 +296,7 @@ class OsmQuestController internal constructor(
 
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
-        if (!countryBoundariesFuture.get().isInAny(pos, countries)) return false
+        if (!countryBoundaries.value.isInAny(pos, countries)) return false
 
         return true
     }
@@ -353,7 +347,7 @@ class OsmQuestController internal constructor(
         return OsmQuest(questType, entry.elementType, entry.elementId, geometry)
     }
 
-    /* ----------------------------------- Hiding / Unhiding  ----------------------------------- */
+    /* -------------------------- OsmQuestsHiddenControllerController  -------------------------- */
 
     private fun getBlacklistedPositions(bbox: BoundingBox): Set<LatLon> =
         notesSource
@@ -364,7 +358,6 @@ class OsmQuestController internal constructor(
     private fun isBlacklistedPosition(pos: LatLon): Boolean =
         pos.truncateTo5Decimals() in getBlacklistedPositions(BoundingBox(pos, pos))
 
-    /** Mark the quest as hidden by user interaction */
     override fun hide(key: OsmQuestKey) {
         if (synchronized(hiddenCache) { hiddenCache.add(key) })
             synchronized(this) { hiddenDB.add(key) } // we may already have it hidden, as nearby quests may allow answering hidden quests
@@ -378,7 +371,7 @@ class OsmQuestController internal constructor(
         onUpdated(deletedKeys = listOf(key)) // remove is from visible quests, but don't actually hide
     }
 
-    fun unhide(key: OsmQuestKey): Boolean {
+    override fun unhide(key: OsmQuestKey): Boolean {
         val hidden = getHidden(key)
         if (!synchronized(hiddenCache) { hiddenCache.remove(key) }) return false
         synchronized(this) {
@@ -390,8 +383,7 @@ class OsmQuestController internal constructor(
         return true
     }
 
-    /** Un-hides all previously hidden quests by user interaction */
-    fun unhideAll(): Int {
+    override fun unhideAll(): Int {
         synchronized(hiddenCache) { hiddenCache.clear() }
         val unhidCount = synchronized(this) { hiddenDB.deleteAll() }
         onUnhidAll()
@@ -399,13 +391,13 @@ class OsmQuestController internal constructor(
         return unhidCount
     }
 
-    fun getHidden(key: OsmQuestKey): OsmQuestHidden? {
+    override fun getHidden(key: OsmQuestKey): OsmQuestHidden? {
         val timestamp = hiddenDB.getTimestamp(key) ?: return null
         val pos = mapDataSource.getGeometry(key.elementType, key.elementId)?.center
         return createOsmQuestHidden(key, pos, timestamp)
     }
 
-    fun getAllHiddenNewerThan(timestamp: Long): List<OsmQuestHidden> {
+    override fun getAllHiddenNewerThan(timestamp: Long): List<OsmQuestHidden> {
         val questKeysWithTimestamp = hiddenDB.getNewerThan(timestamp)
 
         val elementKeys = questKeysWithTimestamp.mapTo(HashSet()) {
@@ -419,6 +411,8 @@ class OsmQuestController internal constructor(
             createOsmQuestHidden(key, pos, timestamp)
         }
     }
+
+    override fun countAll(): Long = hiddenDB.countAll()
 
     private fun createOsmQuestHidden(key: OsmQuestKey, position: LatLon?, timestamp: Long): OsmQuestHidden? {
         if (position == null) return null
@@ -460,10 +454,10 @@ class OsmQuestController internal constructor(
 
     /* ------------------------------------- Hide Listeners ------------------------------------- */
 
-    fun addHideQuestsListener(listener: HideOsmQuestListener) {
+    override fun addListener(listener: OsmQuestsHiddenSource.Listener) {
         hideListeners.add(listener)
     }
-    fun removeHideQuestsListener(listener: HideOsmQuestListener) {
+    override fun removeListener(listener: OsmQuestsHiddenSource.Listener) {
         hideListeners.remove(listener)
     }
 

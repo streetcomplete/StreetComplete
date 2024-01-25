@@ -30,7 +30,6 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
@@ -96,7 +95,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
 import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
+import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
@@ -164,7 +163,6 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -220,12 +218,12 @@ class MainFragment :
     private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val selectedOverlaySource: SelectedOverlayController by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
     private val prefs: Preferences by inject()
     private val questPresetsController: QuestPresetsController by inject()
     private val levelFilter: LevelFilter by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val osmQuestController: OsmQuestController by inject()
@@ -513,8 +511,8 @@ class MainFragment :
         }
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        if (key.startsWith("custom_overlay") && key != Prefs.CUSTOM_OVERLAY_SELECTED_INDEX)
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
+        if (key != null && key.startsWith("custom_overlay") && key != Prefs.CUSTOM_OVERLAY_SELECTED_INDEX)
             reloadOverlaySelector()
     }
 
@@ -724,9 +722,9 @@ class MainFragment :
         if (ways.isNotEmpty() || relations.isNotEmpty()) {
             val multipolygons = relations.filter { it.tags["type"] == "multipolygon" }
             val message = if (ways.isNotEmpty() || multipolygons.isNotEmpty())
-                getString(R.string.move_node_with_geometry, (ways + multipolygons).map { featureDictionaryFuture.get().byTags(it.tags).find().firstOrNull()?.name ?: it.tags }.toString())
+                getString(R.string.move_node_with_geometry, (ways + multipolygons).map { featureDictionary.value.byTags(it.tags).find().firstOrNull()?.name ?: it.tags }.toString())
             else
-                getString(R.string.move_node_of_other_relation, relations.map { featureDictionaryFuture.get().byTags(it.tags).find().firstOrNull()?.name ?: it.tags }.toString())
+                getString(R.string.move_node_of_other_relation, relations.map { featureDictionary.value.byTags(it.tags).find().firstOrNull()?.name ?: it.tags }.toString())
             AlertDialog.Builder(requireContext())
                 .setTitle(R.string.general_warning)
                 .setMessage(message)
@@ -1141,14 +1139,14 @@ class MainFragment :
     }
 
     private fun selectPoiType(pos: LatLon) {
-        val country = countryBoundaries.get().getIds(pos.longitude, pos.latitude).firstOrNull()
-        val defaultFeatureIds: List<String>? = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!
+        val country = countryBoundaries.value.getIds(pos.longitude, pos.latitude).firstOrNull()
+        val defaultFeatureIds: List<String>? = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")
             .split("§").filter { it.isNotBlank() }
             .ifEmpty { null } // null will show defaults, while empty list will not
 
         SearchFeaturesDialog(
             requireContext(),
-            featureDictionaryFuture.get(),
+            featureDictionary.value,
             GeometryType.POINT,
             country,
             null, // pre-filled search text
@@ -1178,7 +1176,7 @@ class MainFragment :
                 if (!levelFilter.levelAllowed(e)) continue
 
                 val geometry = data.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
+                val icon = getPinIcon(featureDictionary.value, e.tags)
                 val title = getTitle(e.tags)
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }
@@ -1502,19 +1500,19 @@ class MainFragment :
                 else -> emptySequence()
             }
         if (elements == emptySequence<Element>()) return emptyList()
-        val levels = element?.let { createLevelsOrNull(it.tags) }
+        val levels = element?.let { parseLevelsOrNull(it.tags) }
         val localLanguages = ConfigurationCompat.getLocales(resources.configuration).toList().map { it.language }
         for (e in elements) {
             // don't highlight "this" element
             if (element == e) continue
             // include only elements with the same (=intersecting) level, if any
-            val eLevels = createLevelsOrNull(e.tags)
+            val eLevels = parseLevelsOrNull(e.tags)
             if (!levels.levelsIntersect(eLevels)) continue
             // include only elements with the same layer, if any (except for bridges)
             if (element?.tags?.get("layer") != e.tags["layer"] && e.tags["bridge"] == null) continue
 
             val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
-            val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
+            val icon = getPinIcon(featureDictionary.value, e.tags)
             val title = getTitle(e.tags, localLanguages)
             markers.add(Marker(geometry, icon, title))
         }

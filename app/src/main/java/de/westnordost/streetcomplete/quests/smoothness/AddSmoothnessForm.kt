@@ -35,9 +35,9 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
     private val surfaceTag get() = element.tags["surface"]
 
     override val items get() = if (surfaceTag in SURFACES_FOR_SMOOTHNESS)
-        Smoothness.values().toItems(requireContext(), surfaceTag!!)
+        Smoothness.entries.toItems(requireContext(), surfaceTag!!)
     else
-        Smoothness.values().toGenericItems(requireContext())
+        Smoothness.entries.toGenericItems(requireContext())
 
     override val itemsPerRow = 1
 
@@ -78,7 +78,7 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
     }
 
     private fun surfaceWrong() {
-        val surfaceType = Surface.values().find { it.osmValue == surfaceTag }!!
+        val surfaceType = Surface.entries.find { it.osmValue == surfaceTag }!!
         showWrongSurfaceDialog(surfaceType)
     }
 

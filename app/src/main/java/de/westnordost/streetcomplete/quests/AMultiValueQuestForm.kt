@@ -8,10 +8,8 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.core.view.doOnLayout
 import androidx.core.widget.doAfterTextChanged
-import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestMultiValueBinding
-import de.westnordost.streetcomplete.quests.healthcare_speciality.AddHealthcareSpecialityForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope

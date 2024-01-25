@@ -34,7 +34,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQuestDetails {
     // overridable by child classes
@@ -43,7 +42,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
     private val elementEditsController: ElementEditsController by inject()
     private val otherQuestController: ExternalSourceQuestController by inject()
     protected val mapDataSource: MapDataWithEditsSource by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val recentLocationStore: RecentLocationStore by inject()
 
     protected var element: Element? = null
@@ -69,7 +68,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
         otherQuestController.getVisible(questKey as ExternalSourceQuestKey)?.elementKey?.let { key ->
             element = mapDataSource.get(key.type, key.id)
         }
-        element?.let { setTitleHintLabel(getNameAndLocationLabel(it, resources, featureDictionaryFuture.get())) }
+        element?.let { setTitleHintLabel(getNameAndLocationLabel(it, resources, featureDictionary.value)) }
     }
 
     override fun onStart() {

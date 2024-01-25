@@ -5,7 +5,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 android {
@@ -23,7 +23,7 @@ android {
         }
     }
 
-    compileSdk = 33
+    compileSdk = 34
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -33,7 +33,7 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 5601
         versionName = "56.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -121,7 +121,6 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation("org.assertj:assertj-core:3.23.1")
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
@@ -129,8 +128,8 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.7.1")
@@ -144,15 +143,14 @@ dependencies {
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // Date/time
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.8.1")
+    implementation("androidx.work:work-runtime:2.9.0")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -177,14 +175,14 @@ dependencies {
     implementation("com.google.zxing:core:3.5.2")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-    implementation("com.charleskorn.kaml:kaml:0.55.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+    implementation("com.charleskorn.kaml:kaml:0.57.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.28.0")
+    implementation("ch.poole:OpeningHoursParser:0.28.1")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")

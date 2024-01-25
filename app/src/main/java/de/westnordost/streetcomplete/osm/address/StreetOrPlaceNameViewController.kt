@@ -61,14 +61,14 @@ class StreetOrPlaceNameViewController(
         }
 
     private var spinnerSelection: StreetOrPlace
-        set(value) { select.setSelection(StreetOrPlace.values().indexOf(value)) }
-        get() = StreetOrPlace.values()[select.selectedItemPosition]
+        set(value) { select.setSelection(entries.indexOf(value)) }
+        get() = StreetOrPlace.entries[select.selectedItemPosition]
 
     init {
         select.adapter = ArrayAdapter(
             select.context,
             R.layout.spinner_item,
-            StreetOrPlace.values().map { it.toLocalizedString(select.context.resources) }
+            StreetOrPlace.entries.map { it.toLocalizedString(select.context.resources) }
         )
         spinnerSelection = if (startWithPlace) PLACE else STREET
 

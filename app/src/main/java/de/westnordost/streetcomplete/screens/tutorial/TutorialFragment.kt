@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AlertDialog
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle

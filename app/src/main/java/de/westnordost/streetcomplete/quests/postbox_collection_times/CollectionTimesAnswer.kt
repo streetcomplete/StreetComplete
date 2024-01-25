@@ -5,4 +5,4 @@ import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleLi
 sealed interface CollectionTimesAnswer
 
 data class CollectionTimes(val times: OpeningHoursRuleList) : CollectionTimesAnswer
-object NoCollectionTimesSign : CollectionTimesAnswer
+data object NoCollectionTimesSign : CollectionTimesAnswer

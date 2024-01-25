@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks
 import androidx.preference.PreferenceHeaderFragmentCompat
-import de.westnordost.streetcomplete.R
 
 /** A two pane preferences fragment that dispatches updates of its pane state to its children. */
 abstract class TwoPaneHeaderFragment : PreferenceHeaderFragmentCompat() {

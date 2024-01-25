@@ -4,7 +4,6 @@ import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.osmfeatures.Feature
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
@@ -14,12 +13,8 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.SearchAdapter
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
-import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
     override val contentLayoutResId = R.layout.quest_localizedname
     private val binding by contentViewBinding(QuestLocalizednameBinding::bind)
@@ -39,7 +34,7 @@ class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
         return AnswerItem(R.string.quest_name_brand) {
             val locales = getLocalesForFeatureDictionary(ctx.resources.configuration)
             val searchAdapter = SearchAdapter(ctx, { search ->
-                featureDictionaryFuture.get()
+                featureDictionary
                     .byTerm(search)
                     .forGeometry(GeometryType.POINT)
                     .inCountry(countryOrSubdivisionCode)

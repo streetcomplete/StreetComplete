@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.map
 import android.os.Bundle
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
-import de.westnordost.streetcomplete.quests.map.MapType
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 
 class AddMapTypeForm : AImageListQuestForm<MapType, MapType>() {

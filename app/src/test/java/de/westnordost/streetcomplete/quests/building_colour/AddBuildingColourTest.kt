@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.building_colour
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -190,17 +191,17 @@ class AddBuildingColourTest {
 
     @Test
     fun `apply hex answer`() {
-        questType.verifyAnswer(
-            BuildingColour.BEIGEISH,
-            StringMapEntryAdd("building:colour", BuildingColour.BEIGEISH.osmValue)
+        assertEquals(
+            questType.answerApplied(BuildingColour.BEIGEISH),
+            setOf(StringMapEntryAdd("building:colour", BuildingColour.BEIGEISH.osmValue))
         )
     }
 
     @Test
     fun `apply named answer`() {
-        questType.verifyAnswer(
-            BuildingColour.LIME,
-            StringMapEntryAdd("building:colour", BuildingColour.LIME.osmValue)
+        assertEquals(
+            questType.answerApplied(BuildingColour.LIME),
+            setOf(StringMapEntryAdd("building:colour", BuildingColour.LIME.osmValue))
         )
     }
 }

@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
+import kotlin.test.assertEquals
 import kotlin.test.Test
 
 class AddPostboxRefTest {
@@ -9,16 +10,16 @@ class AddPostboxRefTest {
     private val questType = AddPostboxRef()
 
     @Test fun `apply no ref answer`() {
-        questType.verifyAnswer(
-            NoVisiblePostboxRef,
-            StringMapEntryAdd("ref:signed", "no")
+        assertEquals(
+            setOf(StringMapEntryAdd("ref:signed", "no")),
+            questType.answerApplied(NoVisiblePostboxRef)
         )
     }
 
     @Test fun `apply ref answer`() {
-        questType.verifyAnswer(
-            PostboxRef("12d"),
-            StringMapEntryAdd("ref", "12d")
+        assertEquals(
+            setOf(StringMapEntryAdd("ref", "12d")),
+            questType.answerApplied(PostboxRef("12d"))
         )
     }
 }

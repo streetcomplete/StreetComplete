@@ -64,8 +64,8 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
+import org.koin.core.component.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 /** Fragment that lets the user split an OSM way */
 class InsertNodeFragment :
@@ -75,8 +75,8 @@ class InsertNodeFragment :
     private val binding get() = _binding!!
 
     private val mapDataSource: MapDataWithEditsSource by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val prefs: SharedPreferences by inject()
     private val levelFilter: LevelFilter by inject()
 
@@ -171,8 +171,8 @@ class InsertNodeFragment :
 
     private fun onClickOk() {
         val pow = positionOnWay ?: return
-        val fd = featureDictionaryFuture.get()
-        val country = countryBoundaries.get().getIds(pow.position.longitude, pow.position.latitude).firstOrNull()
+        val fd = featureDictionary.value
+        val country = countryBoundaries.value.getIds(pow.position.longitude, pow.position.latitude).firstOrNull()
         val defaultFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")!!
             .split("§").filter { it.isNotBlank() }
             .ifEmpty { listOf("amenity/post_box", "barrier/gate", "highway/crossing/unmarked", "highway/crossing/uncontrolled", "highway/traffic_signals", "barrier/bollard", "traffic_calming/table") }
@@ -212,7 +212,7 @@ class InsertNodeFragment :
                 val geo = mapData.getGeometry(it.type, it.id) ?: return@forEach
                 showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
                     geo,
-                    getPinIcon(featureDictionaryFuture.get(), it.tags),
+                    getPinIcon(featureDictionary.value, it.tags),
                     getTitle(it.tags)
                 )
             }
@@ -296,7 +296,7 @@ class InsertNodeFragment :
                     if (node.tags.isNotEmpty())
                         showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
                             ElementPointGeometry(node.position),
-                            getPinIcon(featureDictionaryFuture.get(), node.tags),
+                            getPinIcon(featureDictionary.value, node.tags),
                             getTitle(node.tags)
                         )
                 }
@@ -355,7 +355,7 @@ class InsertNodeFragment :
     }
 
     private fun getElementText(element: Element): CharSequence {
-        val title = getNameAndLocationLabel(element, resources, featureDictionaryFuture.get(), false)
+        val title = getNameAndLocationLabel(element, resources, featureDictionary.value, false)
         return title ?: "${element.type} ${element.id}"
     }
 

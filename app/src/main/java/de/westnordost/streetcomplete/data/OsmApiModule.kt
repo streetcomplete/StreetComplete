@@ -23,7 +23,7 @@ val osmApiModule = module {
     factory<MapDataApi> { MapDataApiImpl(get()) }
     factory<NotesApi> { NotesApiImpl(get()) }
     factory<TracksApi> { TracksApiImpl(get()) }
-    factory { Preloader(get(named("CountryBoundariesFuture")), get(named("FeatureDictionaryFuture"))) }
+    factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
     factory { UserApi(get()) }
 
     single { OsmConnection(

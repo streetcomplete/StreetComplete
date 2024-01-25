@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddBollardTypeForm : AImageListQuestForm<BollardType, BollardTypeAnswer>() {
 
-    override val items = BollardType.values().map { it.asItem() }
+    override val items = BollardType.entries.map { it.asItem() }
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<BollardType>) {

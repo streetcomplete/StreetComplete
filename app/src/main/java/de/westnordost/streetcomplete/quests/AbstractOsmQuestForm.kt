@@ -37,6 +37,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -75,7 +76,6 @@ import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.time.format.DateTimeFormatter
 import java.util.Locale
-import java.util.concurrent.FutureTask
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDetails {
@@ -83,17 +83,18 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     // dependencies
     private val elementEditsController: ElementEditsController by inject()
     private val noteEditsController: NoteEditsController by inject()
-    private val osmQuestController: OsmQuestController by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val osmQuestsHiddenController: OsmQuestsHiddenController by inject()
+    private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val recentLocationStore: RecentLocationStore by inject()
     private val customQuestList: CustomQuestList by inject()
+    private val osmQuestController: OsmQuestController by inject()
 
-    protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
+    protected val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
 
     // only used for testing / only used for ShowQuestFormsActivity! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
-    var hideOsmQuestController: HideOsmQuestController = osmQuestController
+    var hideOsmQuestController: HideOsmQuestController = osmQuestsHiddenController
 
     // passed in parameters
     private val osmElementQuestType: OsmElementQuestType<T> get() = questType as OsmElementQuestType<T>

@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.Listeners
 
+/** Controls which quest types have been reordered after which other quest types by the user */
 class QuestTypeOrderController(
     private val questTypeOrderDao: QuestTypeOrderDao,
     private val questPresetsSource: QuestPresetsSource,

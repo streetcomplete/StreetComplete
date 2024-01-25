@@ -117,4 +117,4 @@ class MapTilesDownloader(
 
 private sealed class DownloadResult
 private data class DownloadSuccess(val alreadyCached: Boolean, val size: Int) : DownloadResult()
-private object DownloadFailure : DownloadResult()
+private data object DownloadFailure : DownloadResult()

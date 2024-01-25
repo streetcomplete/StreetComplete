@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
 import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle

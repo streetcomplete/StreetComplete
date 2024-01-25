@@ -66,7 +66,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
             .setCategory(NotificationCompat.CATEGORY_ALARM)
             .build()
 
-    private fun intent(position: LatLon): PendingIntent {
+    private fun intent(position: LatLon): PendingIntent? {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         intent.action = Intent.ACTION_VIEW

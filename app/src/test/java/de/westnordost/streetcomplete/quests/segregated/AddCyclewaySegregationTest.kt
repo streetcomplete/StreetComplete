@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.segregated
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -10,17 +10,7 @@ import kotlin.test.assertEquals
 class AddCyclewaySegregationTest {
     private val questType = AddCyclewaySegregation()
 
-    @Test
-    fun `sets expected tags on yes answer`() {
-        questType.verifyAnswer(
-            mapOf(),
-            CyclewaySegregation.YES,
-            StringMapEntryAdd("segregated", "yes"),
-        )
-    }
-
-    @Test
-    fun `not applicable to greengrocer shops`() {
+    @Test fun `not applicable to greengrocer shops`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 way(1, tags = mapOf("shop" to "greengrocer", "name" to "Foobar")),
@@ -29,8 +19,7 @@ class AddCyclewaySegregationTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test
-    fun `not applicable to unpaved ways`() {
+    @Test fun `not applicable to unpaved ways`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 way(1, tags = mapOf(
@@ -45,8 +34,7 @@ class AddCyclewaySegregationTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test
-    fun `applicable to matching paved ways`() {
+    @Test fun `applicable to matching paved ways`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 way(1, tags = mapOf(
@@ -61,8 +49,7 @@ class AddCyclewaySegregationTest {
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test
-    fun `applicable to ways which suggest split cycling and walking`() {
+    @Test fun `applicable to ways which suggest split cycling and walking`() {
         // ask about segregation if segregated=* is not tagged
         // and way has footway:surface or cycleway:surface
         // this allows to finish tagging where it is segregated (as it usual is)
@@ -80,8 +67,7 @@ class AddCyclewaySegregationTest {
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test
-    fun `not applicable to ways which ban cycling or walking`() {
+    @Test fun `not applicable to ways which ban cycling or walking`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 way(1, tags = mapOf(
@@ -94,5 +80,20 @@ class AddCyclewaySegregationTest {
             ),
         )
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `sets expected tags on answer`() {
+        assertEquals(
+            setOf(StringMapEntryAdd("segregated", "yes")),
+            questType.answerApplied(CyclewaySegregation.YES)
+        )
+        assertEquals(
+            setOf(StringMapEntryAdd("segregated", "no")),
+            questType.answerApplied(CyclewaySegregation.NO)
+        )
+        assertEquals(
+            setOf(StringMapEntryAdd("sidewalk", "yes")),
+            questType.answerApplied(CyclewaySegregation.SIDEWALK)
+        )
     }
 }

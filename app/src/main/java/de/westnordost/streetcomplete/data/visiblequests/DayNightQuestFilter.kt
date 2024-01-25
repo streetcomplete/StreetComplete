@@ -2,10 +2,11 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.quest.DayNightCycle.*
+import de.westnordost.streetcomplete.data.quest.DayNightCycle.DAY_AND_NIGHT
+import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_DAY
+import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_NIGHT
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.util.isDay
-import org.koin.java.KoinJavaComponent.inject
 
 class DayNightQuestFilter internal constructor(
     private val prefs: SharedPreferences

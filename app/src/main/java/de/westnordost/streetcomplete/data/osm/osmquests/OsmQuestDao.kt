@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.LA
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable.NAME
-import de.westnordost.streetcomplete.data.queryIn
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 
 /** Persists OsmQuest objects, or more specifically, OsmQuestEntry objects */

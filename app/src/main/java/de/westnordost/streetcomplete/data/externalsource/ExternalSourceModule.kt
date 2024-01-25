@@ -4,7 +4,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val externalSourceModule = module {
-    single { ExternalSourceQuestController(get(named("CountryBoundariesFuture")), get(), get(), get()) }
+    single { ExternalSourceQuestController(get(named("CountryBoundariesLazy")), get(), get(), get()) }
     single { ExternalSourceDao(get()) }
 }
 

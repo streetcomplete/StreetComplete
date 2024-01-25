@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.roof_colour
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -136,17 +137,17 @@ class AddRoofColourTest {
 
     @Test
     fun `apply hex answer`() {
-        questType.verifyAnswer(
-            RoofColour.DESERT_SAND,
-            StringMapEntryAdd("roof:colour", "#bbad8e")
+        assertEquals(
+            questType.answerApplied(RoofColour.DESERT_SAND),
+            setOf(StringMapEntryAdd("roof:colour", "#bbad8e"))
         )
     }
 
     @Test
     fun `apply named answer`() {
-        questType.verifyAnswer(
-            RoofColour.LIME,
-            StringMapEntryAdd("roof:colour", "lime")
+        assertEquals(
+            questType.answerApplied(RoofColour.LIME),
+            setOf(StringMapEntryAdd("roof:colour", "lime"))
         )
     }
 }

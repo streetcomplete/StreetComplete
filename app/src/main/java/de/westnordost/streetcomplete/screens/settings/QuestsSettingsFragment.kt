@@ -158,7 +158,7 @@ class QuestsSettingsFragment :
         findPreference<Preference>(Prefs.DYNAMIC_QUEST_CREATION)?.isEnabled = prefs.getBoolean(Prefs.EXPERT_MODE, false)
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         when (key) {
             Prefs.DYNAMIC_QUEST_CREATION, Prefs.HIDE_OVERLAY_QUESTS -> {
                 lifecycleScope.launch(Dispatchers.IO) { visibleQuestTypeController.onQuestTypeVisibilitiesChanged() }
