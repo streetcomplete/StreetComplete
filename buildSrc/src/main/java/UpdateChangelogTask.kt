@@ -1,7 +1,7 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
-import org.intellij.markdown.flavours.commonmark.CommonMarkFlavourDescriptor
+import org.intellij.markdown.flavours.gfm.GFMFlavourDescriptor
 import org.intellij.markdown.html.HtmlGenerator
 import org.intellij.markdown.parser.MarkdownParser
 import java.io.File
@@ -12,7 +12,7 @@ open class UpdateChangelogTask : DefaultTask() {
     @get:Input lateinit var sourceFile: String
     @get:Input lateinit var targetFile: String
 
-    private val markdownFlavour = CommonMarkFlavourDescriptor()
+    private val markdownFlavour = GFMFlavourDescriptor()
 
     @TaskAction fun run() {
         val sourceFile = File(sourceFile)
