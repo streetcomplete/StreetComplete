@@ -25,10 +25,6 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
         )
         and (
           !surface
-          and !surface:lanes
-          and !surface:lanes:forward
-          and !surface:lanes:backward
-          and !surface:lanes:both_ways
           or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -12 years
           or (
@@ -38,6 +34,10 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
           )
           ${INVALID_SURFACES_FOR_TRACKTYPES.map{tracktypeConflictClause(it)}.joinToString("\n")}
         )
+        and !surface:lanes
+        and !surface:lanes:forward
+        and !surface:lanes:backward
+        and !surface:lanes:both_ways
         and (access !~ private|no or (foot and foot !~ private|no))
     """
 
