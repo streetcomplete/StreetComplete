@@ -4,11 +4,15 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.core.view.isGone
-import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.databinding.CellLastPickedButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentOverlayImageSelectBinding
+import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedButtonBinding
+import de.westnordost.streetcomplete.quests.building_levels.BuildingLevelsAnswer
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.util.padWith
@@ -16,6 +20,7 @@ import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
+import de.westnordost.streetcomplete.view.setImage
 import org.koin.android.ext.android.inject
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
@@ -25,16 +30,12 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
     final override val contentLayoutResId = R.layout.fragment_overlay_image_select
     private val binding by contentViewBinding(FragmentOverlayImageSelectBinding::bind)
 
-    private val prefs: Preferences by inject()
-
     protected open val itemsPerRow = 1
 
     /** all items to display. May not be accessed before onCreate */
     protected abstract val allItems: List<GroupableDisplayItem<I>>
-    /** items to display that are shown on the top. May not be accessed before onCreate */
-    protected abstract val topItems: List<GroupableDisplayItem<I>>
-
-    private lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>
+    /** items to display that are shown as last picked answers. May not be accessed before onCreate */
+    protected open val lastPickedItems: List<GroupableDisplayItem<I>> = emptyList()
 
     protected open val cellLayoutId: Int = R.layout.cell_labeled_icon_select_with_description
     protected open val groupCellLayoutId: Int = R.layout.cell_labeled_icon_select_with_description_group
@@ -46,16 +47,6 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
             field = value
             updateSelectedCell()
         }
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.value.toString() },
-            deserialize = { itemsByString[it] }
-        )
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,11 +70,11 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
         LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButton.selectedCellView, true)
         binding.selectButton.selectedCellView.children.first().background = null
 
+        binding.lastPickedButtons.isGone = lastPickedItems.isEmpty()
+        binding.lastPickedButtons.adapter = LastPickedAdapter(lastPickedItems, ::onLastPickedButtonClicked)
+
         updateSelectedCell()
     }
-
-    private fun getInitialItems(): List<GroupableDisplayItem<I>> =
-        favs.get().mostCommonWithin(6, historyCount = 50, first = 1).padWith(topItems).toList()
 
     private fun updateSelectedCell() {
         val item = selectedItem
@@ -109,9 +100,47 @@ abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
     override fun isFormComplete() = selectedItem?.value != null
 
+    /* --------------------------------------- fav items ---------------------------------------- */
+
+    private fun onLastPickedButtonClicked(position: Int) {
+        val item = lastPickedItems[position]
+        selectedItem = item
+        checkIsFormComplete()
+    }
+
     companion object {
         private const val SELECTED = "selected"
     }
 }
 
-// TODO should show the "top items" as fav buttons at the bottom
+private class LastPickedAdapter<I>(
+    private val items: List<GroupableDisplayItem<I>>,
+    private val onItemClicked: (position: Int) -> Unit
+) : RecyclerView.Adapter<LastPickedAdapter<I>.ViewHolder>() {
+
+    inner class ViewHolder(
+        private val binding: CellLastPickedButtonBinding,
+        private val onItemClicked: (position: Int) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener { onItemClicked(bindingAdapterPosition) }
+        }
+
+        fun onBind(item: GroupableDisplayItem<I>) {
+            binding.root.setImage(item.image)
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = CellLastPickedButtonBinding.inflate(inflater, parent, false)
+        return ViewHolder(binding, onItemClicked)
+    }
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.onBind(items[position])
+    }
+
+    override fun getItemCount() = items.size
+}
