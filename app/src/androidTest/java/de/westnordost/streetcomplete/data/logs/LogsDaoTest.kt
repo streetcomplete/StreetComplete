@@ -78,4 +78,3 @@ private fun createMessage(
     null,
     timestamp
 )
-

@@ -10,7 +10,6 @@ class AddBusStopNameTest {
 
     private val questType = AddBusStopName()
 
-
     @Test fun `apply no name answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("name:signed", "no")),

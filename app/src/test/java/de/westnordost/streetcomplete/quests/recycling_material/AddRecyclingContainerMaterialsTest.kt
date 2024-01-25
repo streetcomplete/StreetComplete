@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.CLOTHES
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PAPER
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PET
@@ -13,7 +14,6 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.SHOES
-import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test
@@ -79,7 +79,6 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 
-
     @Test fun `apply answer with plastic`() {
         assertEquals(
             setOf(
@@ -123,7 +122,6 @@ class AddRecyclingContainerMaterialsTest {
             questType.answerApplied(RecyclingMaterials(listOf(PET)))
         )
     }
-
 
     @Test fun `apply answer with plastic bottles and previous plastic answer`() {
         assertEquals(
@@ -190,7 +188,6 @@ class AddRecyclingContainerMaterialsTest {
             )
         )
     }
-
 
     @Test fun `apply answer with plastic and previous plastic bottles answer`() {
         assertEquals(
@@ -358,4 +355,3 @@ class AddRecyclingContainerMaterialsTest {
         )
     }
 }
-

@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.quests.sport.Sport.SOCCER
 import de.westnordost.streetcomplete.quests.sport.Sport.TENNIS
-import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddSportTest {
 

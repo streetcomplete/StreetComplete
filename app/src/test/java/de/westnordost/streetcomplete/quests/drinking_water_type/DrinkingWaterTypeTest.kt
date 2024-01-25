@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.osm.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class DrinkingWaterTypeTest {
     @Test fun `set drinking water as spring`() {

@@ -163,11 +163,11 @@ class StringWithCursorTest {
 
     @Test fun advanceWhile() {
         val x = StringWithCursor("hello you   !")
-        assertEquals(0, x.advanceWhile { it == ' '})
+        assertEquals(0, x.advanceWhile { it == ' ' })
         x.advanceBy(5)
-        assertEquals(1, x.advanceWhile { it == ' '})
+        assertEquals(1, x.advanceWhile { it == ' ' })
         x.advanceBy(3)
-        assertEquals(3, x.advanceWhile { it == ' '})
+        assertEquals(3, x.advanceWhile { it == ' ' })
     }
 
     @Test fun retreatWhile() {
