@@ -4,8 +4,8 @@ import ch.poole.openinghoursparser.Rule
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.quests.answerApplied
-import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddPostboxCollectionTimesTest {
 

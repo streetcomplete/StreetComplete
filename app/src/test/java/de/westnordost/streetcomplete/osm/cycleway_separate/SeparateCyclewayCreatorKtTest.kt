@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class SeparateCyclewayCreatorKtTest {
     @Test fun `apply none`() {

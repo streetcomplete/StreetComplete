@@ -51,7 +51,7 @@ class StringWithCursor(private val string: String) {
     /** @return the position relative to the cursor position at which the given [block] returns true
      *  If not found, the position past the end of the string is returned */
     fun findNext(offs: Int = 0, block: (Char) -> Boolean): Int {
-        for (i in cursorPos + offs ..< string.length) {
+        for (i in cursorPos + offs..<string.length) {
             if (block(string[i])) {
                 return toDelta(i)
             }
