@@ -8,13 +8,12 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
-import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class FeeTest {
     private val oh = OpeningHoursRuleList(listOf(Rule().apply { isTwentyfourseven = true }))
     private val ohStr = "24/7"
-
 
     @Test fun `apply HasNoFee`() {
         assertEquals(

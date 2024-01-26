@@ -18,9 +18,9 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.asItem
+import de.westnordost.streetcomplete.osm.surface.isComplete
 import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.osm.surface.parseSurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.isComplete
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem

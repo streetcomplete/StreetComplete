@@ -3,28 +3,29 @@ package de.westnordost.streetcomplete.screens.about
 import android.content.Context
 import android.content.DialogInterface
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.webkit.WebView
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.DividerItemDecoration
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogWhatsNewBinding
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
-import de.westnordost.streetcomplete.databinding.RowChangelogBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
-import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
+import de.westnordost.streetcomplete.util.ktx.getRawTextFile
+import de.westnordost.streetcomplete.util.ktx.indicesOf
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
-import de.westnordost.streetcomplete.view.ListAdapter
-import de.westnordost.streetcomplete.view.setHtml
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.roundToInt
 
 /** Shows the full changelog */
 class ChangelogFragment : TwoPaneDetailFragment(R.layout.fragment_changelog), HasTitle {
@@ -36,11 +37,9 @@ class ChangelogFragment : TwoPaneDetailFragment(R.layout.fragment_changelog), Ha
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-
         viewLifecycleScope.launch {
             val changelog = readChangelog(resources)
-            binding.changelogList.adapter = ChangelogAdapter(changelog)
+            binding.webView.setHtmlFromString(changelog)
         }
     }
 }
@@ -52,7 +51,6 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
 
     init {
         val binding = DialogWhatsNewBinding.inflate(LayoutInflater.from(context))
-        binding.changelogList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         setTitle(R.string.title_whats_new)
         setView(binding.root)
@@ -60,12 +58,14 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
 
         scope.launch {
             val fullChangelog = readChangelog(context.resources)
-            var currentVersionIndex = fullChangelog.indexOfFirst { it.title == sinceVersion }
-            // if version not found, just show the last one
-            if (currentVersionIndex == -1) currentVersionIndex = 1
-            val changelog = fullChangelog.subList(0, currentVersionIndex)
+            var sinceVersionIndex = fullChangelog.indexOf("<h2>$sinceVersion</h2>")
+            if (sinceVersionIndex == -1) {
+                // if version not found, just show the last one
+                sinceVersionIndex = fullChangelog.indicesOf("<h2>").elementAt(1)
+            }
+            val changelog = fullChangelog.substring(0, sinceVersionIndex)
 
-            binding.changelogList.adapter = ChangelogAdapter(changelog)
+            binding.webView.setHtmlFromString(changelog)
         }
     }
 
@@ -75,33 +75,63 @@ class WhatsNewDialog(context: Context, sinceVersion: String) : AlertDialog(conte
     }
 }
 
-class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelog) {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(RowChangelogBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-
-    inner class ViewHolder(val binding: RowChangelogBinding) : ListAdapter.ViewHolder<Release>(binding) {
-        override fun onBind(with: Release) {
-            binding.titleLabel.text = with.title
-            binding.descriptionLabel.setHtml(with.description)
-        }
-    }
+private suspend fun readChangelog(resources: Resources): String = withContext(Dispatchers.IO) {
+    resources.getRawTextFile(R.raw.changelog)
 }
 
-data class Release(val title: String, val description: String)
+private fun Resources.getHexColor(@ColorRes resId: Int) =
+    String.format("#%06X", 0xffffff and getColor(resId))
 
-private suspend fun readChangelog(resources: Resources): List<Release> = withContext(Dispatchers.IO) {
-    resources.getYamlStringMap(R.raw.changelog).map { Release(it.key, addedLinks(it.value)) }
-}
+private fun Resources.getDimensionInSp(@DimenRes resId: Int) =
+    (getDimension(resId) / displayMetrics.scaledDensity).roundToInt()
 
-private fun addedLinks(description: String): String {
-    return description
-        .replace(Regex("(?<=[\\s(]|^)#(\\d+)")) { matchResult ->
-            val issue = matchResult.groupValues[1]
-            "<a href=\"https://github.com/streetcomplete/StreetComplete/issues/$issue\">#$issue</a>"
-        }
-        .replace(Regex("(?<=[\\s(]|^)@([a-zA-Z\\d-]+)")) { matchResult ->
-            val contributor = matchResult.groupValues[1]
-            "<a href=\"https://github.com/$contributor\">$contributor</a>"
-        }
+private fun Resources.getDimensionInDp(@DimenRes resId: Int) =
+    (getDimension(resId) / displayMetrics.density).roundToInt()
+
+private fun WebView.setHtmlFromString(body: String) {
+    val textColor = resources.getHexColor(R.color.text)
+    val linkColor = resources.getHexColor(R.color.accent)
+    val dividerColor = resources.getHexColor(R.color.divider)
+
+    val textSize = resources.getDimensionInSp(androidx.appcompat.R.dimen.abc_text_size_body_1_material)
+    val h2Size = resources.getDimensionInSp(androidx.appcompat.R.dimen.abc_text_size_headline_material)
+    val h3Size = resources.getDimensionInSp(androidx.appcompat.R.dimen.abc_text_size_medium_material)
+    val h4Size = resources.getDimensionInSp(androidx.appcompat.R.dimen.abc_text_size_subhead_material)
+
+    val verticalMargin = resources.getDimensionInDp(R.dimen.activity_vertical_margin)
+    val horizontalMargin = resources.getDimensionInDp(R.dimen.activity_horizontal_margin)
+
+    val html = """
+        <html>
+            <head>
+                <meta name="color-scheme" content="dark light">
+                <style>
+                    body {
+                        margin: ${verticalMargin}px ${horizontalMargin}px;
+                        color: $textColor;
+                        font-size: ${textSize}px;
+                    }
+
+                    :link { color: $linkColor; }
+
+                    h2, h3, h4 { font-family: sans-serif-condensed; }
+
+                    h2 { font-size: ${h2Size}px; }
+                    h3 { font-size: ${h3Size}px; }
+                    h4 { font-size: ${h4Size}px; }
+
+                    h2:not(:first-child) {
+                        border-top: 1px solid $dividerColor;
+                        padding-top: 1rem;
+                    }
+
+                    @media (prefers-color-scheme: dark) {}
+                </style>
+            </head>
+            <body>$body</body>
+        </html>
+    """.trimIndent()
+
+    loadDataWithBaseURL(null, html, "text/html", "utf-8", null)
+    setBackgroundColor(Color.TRANSPARENT)
 }

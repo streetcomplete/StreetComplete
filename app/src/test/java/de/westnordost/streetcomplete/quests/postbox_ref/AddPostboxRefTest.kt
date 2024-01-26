@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.answerApplied
-import kotlin.test.assertEquals
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddPostboxRefTest {
 

@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
 import android.database.sqlite.SQLiteDatabase.CONFLICT_NONE
 import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteDatabase.CONFLICT_ROLLBACK
-import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteStatement
 import androidx.core.database.getBlobOrNull
 import androidx.core.database.getDoubleOrNull
