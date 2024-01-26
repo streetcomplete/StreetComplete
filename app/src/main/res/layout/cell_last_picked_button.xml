@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/icon"
     android:layout_width="56dp"
-    android:layout_height="48dp"
-    tools:src="@drawable/ic_lit_yes"
+    android:layout_height="52dp"
+    tools:src="@drawable/ic_building_detached"
     style="@style/Widget.AppCompat.Button.Small"
     tools:ignore="RtlHardcoded" />

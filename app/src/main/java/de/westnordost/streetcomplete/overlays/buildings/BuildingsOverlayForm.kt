@@ -29,7 +29,7 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
 
     override val itemsPerRow = 1
 
-    private val maxLastPickedBuildings = 4
+    private val maxLastPickedBuildings = 6
 
     override val lastPickedItems by lazy {
         favs.get()
@@ -45,7 +45,7 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
         favs = LastPickedValuesStore(
             prefs,
             key = javaClass.simpleName,
-            serialize = { it.value.toString() },
+            serialize = { it.value!!.name },
             deserialize = { BuildingType.valueOf(it).asItem() }
         )
     }
@@ -63,6 +63,7 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
         selectedItem?.value != originalBuilding
 
     override fun onClickOk() {
+        favs.add(selectedItem!!)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         selectedItem!!.value!!.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))

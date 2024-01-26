@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.AppCompat.Button.Small"
     android:layout_width="wrap_content"
-    android:layout_height="48dp"
+    android:layout_height="52dp"
     android:orientation="horizontal">
 
     <TextView

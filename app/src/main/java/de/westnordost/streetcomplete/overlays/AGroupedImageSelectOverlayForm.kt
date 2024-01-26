@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.overlays
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,25 +9,18 @@ import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.CellLastPickedButtonBinding
-import de.westnordost.streetcomplete.databinding.FragmentOverlayImageSelectBinding
-import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedButtonBinding
-import de.westnordost.streetcomplete.quests.building_levels.BuildingLevelsAnswer
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.mostCommonWithin
-import de.westnordost.streetcomplete.util.padWith
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import de.westnordost.streetcomplete.databinding.FragmentGroupedOverlayImageSelectBinding
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 import de.westnordost.streetcomplete.view.setImage
-import org.koin.android.ext.android.inject
 
 /** Abstract base class for any overlay form in which the user selects a grouped item */
 abstract class AGroupedImageSelectOverlayForm<I> : AbstractOverlayForm() {
     // mostly copy-pasta from AImageSelectOverlayForm / AGroupedImageListQuestForm :-(
 
-    final override val contentLayoutResId = R.layout.fragment_overlay_image_select
-    private val binding by contentViewBinding(FragmentOverlayImageSelectBinding::bind)
+    final override val contentLayoutResId = R.layout.fragment_grouped_overlay_image_select
+    private val binding by contentViewBinding(FragmentGroupedOverlayImageSelectBinding::bind)
 
     protected open val itemsPerRow = 1
 
