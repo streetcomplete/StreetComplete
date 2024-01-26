@@ -1,5 +1,27 @@
 # Changelog
 
+## v56.1
+
+Some work towards an [iOS port](https://github.com/streetcomplete/StreetComplete/issues/5421) of 
+StreetComplete has begun - starting with making the code more platform independent for now.
+(Monitor the linked tickets for updates, because non user-facing changes are usually not
+mentioned in the changelogs)
+
+Thanks to @FloEdelmann, @neonowy, @starsep, @YoshiRulz, @riQQ and others [for their contributions](https://github.com/orgs/streetcomplete/projects/1/views/1)
+so far! 
+
+### Quest Enhancements and Fixes
+- ATM, charging station and clothing container operators: Provide better suggestions 
+- Bike parking capacity: Don't ask for informal bike parkings (#5428), by @bxl-forever
+- Road width: Don't ask for roads that may not be accessed by pedestrians (#5437)
+- Other small enhancements (#5438, #5440, ...), thanks @Helium314, @matkoniecz
+
+### General Enhancements and Fixes
+- In settings, show how many quests have been hidden by you (#5359), by @jmizv
+- Show both ref number and name in the quest title hint for roads (#5427) @arrival-spring
+- Fix filtering logs by tag name did not work
+- Other small enhancements (#5435, ...), thanks @matkoniecz
+
 ## v56.0
 
 ### New Authorization
