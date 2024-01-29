@@ -12,7 +12,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewOutlineProvider
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
+import de.westnordost.streetcomplete.util.ktx.getJsonObject
 import kotlin.math.min
 
 /** Show a flag of a country in a circle */
@@ -152,7 +152,7 @@ class CircularFlagView @JvmOverloads constructor(
         }
 
         private fun readFlagAlignments(resources: Resources): Map<String, FlagAlignment> =
-            resources.getYamlStringMap(R.raw.flag_alignments).map {
+            resources.getJsonObject<Map<String, String>>(R.raw.flag_alignments).map {
                 it.key to FlagAlignment.valueOf(it.value.replace("-", "_").uppercase())
             }.toMap()
     }
