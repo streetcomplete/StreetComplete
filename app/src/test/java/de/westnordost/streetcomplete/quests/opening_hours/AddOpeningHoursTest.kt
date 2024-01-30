@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import ch.poole.openinghoursparser.Rule
-import ch.poole.openinghoursparser.TimeSpan
-import ch.poole.openinghoursparser.WeekDay
-import ch.poole.openinghoursparser.WeekDayRange
+import de.westnordost.osm_opening_hours.model.ClockTime
+import de.westnordost.osm_opening_hours.model.OpeningHours
+import de.westnordost.osm_opening_hours.model.Range
+import de.westnordost.osm_opening_hours.model.Rule
+import de.westnordost.osm_opening_hours.model.TimeSpan
+import de.westnordost.osm_opening_hours.model.Weekday
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
@@ -157,11 +158,11 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(StringMapEntryAdd("opening_hours", "Mo 10:00-12:00")),
             questType.answerApplied(
-                RegularOpeningHours(OpeningHoursRuleList(listOf(
-                    Rule().apply {
-                        days = listOf(WeekDayRange().also { it.startDay = WeekDay.MO })
-                        times = listOf(TimeSpan().also { it.start = 60 * 10; it.end = 60 * 12 })
-                    }
+                RegularOpeningHours(OpeningHours(listOf(
+                    Rule(Range(
+                        weekdays = listOf(Weekday.Monday),
+                        times = listOf(TimeSpan(ClockTime(10), ClockTime(12)))
+                    ))
                 )))
             )
         )
@@ -171,11 +172,11 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")),
             questType.answerAppliedTo(
-                RegularOpeningHours(OpeningHoursRuleList(listOf(
-                    Rule().apply {
-                        days = listOf(WeekDayRange().also { it.startDay = WeekDay.MO })
-                        times = listOf(TimeSpan().also { it.start = 60 * 10; it.end = 60 * 12 })
-                    }
+                RegularOpeningHours(OpeningHours(listOf(
+                    Rule(Range(
+                        weekdays = listOf(Weekday.Monday),
+                        times = listOf(TimeSpan(ClockTime(10), ClockTime(12)))
+                    ))
                 ))),
                 mapOf("opening_hours" to "hohoho")
             )
@@ -189,11 +190,11 @@ class AddOpeningHoursTest {
                 StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
-                RegularOpeningHours(OpeningHoursRuleList(listOf(
-                    Rule().apply {
-                        days = listOf(WeekDayRange().also { it.startDay = WeekDay.MO })
-                        times = listOf(TimeSpan().also { it.start = 60 * 10; it.end = 60 * 12 })
-                    }
+                RegularOpeningHours(OpeningHours(listOf(
+                    Rule(Range(
+                        weekdays = listOf(Weekday.Monday),
+                        times = listOf(TimeSpan(ClockTime(10), ClockTime(12)))
+                    ))
                 ))),
                 mapOf("opening_hours" to "Mo 10:00-12:00")
             )
@@ -251,6 +252,17 @@ class AddOpeningHoursTest {
                 "shop" to "supermarket",
                 "name" to "Supi",
                 "opening_hours" to "maybe open maybe closed who knows"
+            ),
+            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+        )))
+    }
+
+    @Test fun `isApplicableTo returns true if the opening hours collide with themselves`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours" to "Mo-Fr 18:00-20:00; We 08:00-12:00"
             ),
             timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
         )))

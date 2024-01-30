@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
-import ch.poole.openinghoursparser.Rule
+import de.westnordost.osm_opening_hours.model.OpeningHours
+import de.westnordost.osm_opening_hours.model.Rule
+import de.westnordost.osm_opening_hours.model.TwentyFourSeven
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.quests.answerApplied
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -21,9 +22,7 @@ class AddPostboxCollectionTimesTest {
     @Test fun `apply times answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("collection_times", "24/7")),
-            questType.answerApplied(CollectionTimes(OpeningHoursRuleList(
-                listOf(Rule().apply { isTwentyfourseven = true })
-            )))
+            questType.answerApplied(CollectionTimes(OpeningHours(listOf(Rule(TwentyFourSeven)))))
         )
     }
 }

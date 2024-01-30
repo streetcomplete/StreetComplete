@@ -8,14 +8,14 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.osm_opening_hours.parser.toOpeningHours
+import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestCollectionTimesBinding
 import de.westnordost.streetcomplete.osm.opening_hours.parser.toCollectionTimesRows
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -29,7 +29,9 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
             listOf(
                 AnswerItem(R.string.quest_generic_hasFeature_no) { setAsResurvey(false) },
                 AnswerItem(R.string.quest_generic_hasFeature_yes) {
-                    applyAnswer(CollectionTimes(element.tags["collection_times"]!!.toOpeningHoursRules()!!))
+                    applyAnswer(CollectionTimes(
+                        element.tags["collection_times"]!!.toOpeningHours(lenient = true)
+                    ))
                 }
             )
         } else {
@@ -93,7 +95,7 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
 
     private fun initStateFromTags() {
         val ct = element.tags["collection_times"]
-        val rows = ct?.toOpeningHoursRules()?.toCollectionTimesRows()
+        val rows = ct?.toOpeningHoursOrNull(lenient = true)?.toCollectionTimesRows()
         if (rows != null) {
             collectionTimesAdapter.collectionTimesRows = rows.toMutableList()
             setAsResurvey(true)

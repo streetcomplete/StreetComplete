@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.parking_fee
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
 import de.westnordost.streetcomplete.databinding.QuestMaxstayBinding
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm.Mode.FEE_AT_HOURS
@@ -100,7 +100,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
     override fun onClickOk() {
         when (mode) {
             FEE_AT_HOURS -> {
-                val hours = feeAtHoursSelect!!.times.toOpeningHoursRules()
+                val hours = feeAtHoursSelect!!.times.toOpeningHours()
                 val fee = when (feeAtHoursSelect!!.timeRestriction) {
                     AT_ANY_TIME -> HasFee
                     ONLY_AT_HOURS -> HasFeeAtHours(hours)
@@ -117,7 +117,7 @@ class AddParkingFeeForm : AbstractOsmQuestForm<FeeAndMaxStay>() {
                         DurationUnit.DAYS -> MaxStay.Unit.DAYS
                     }
                 )
-                val hours = maxstayAtHoursSelect!!.times.toOpeningHoursRules()
+                val hours = maxstayAtHoursSelect!!.times.toOpeningHours()
                 val maxstay = when (maxstayAtHoursSelect!!.timeRestriction) {
                     AT_ANY_TIME -> duration
                     ONLY_AT_HOURS -> MaxStayAtHours(duration, hours)
