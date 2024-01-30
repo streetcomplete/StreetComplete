@@ -182,7 +182,7 @@ dependencies {
     implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.28.1")
+    implementation("de.westnordost:osm-opening-hours:0.1.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
