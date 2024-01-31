@@ -59,6 +59,8 @@ object ApplicationConstants {
     const val NOTIFICATIONS_CHANNEL_SYNC = "downloading"
     const val NOTIFICATIONS_ID_SYNC = 1
 
+    const val STREETMEASURE = "de.westnordost.streetmeasure"
+
     val IGNORED_RELATION_TYPES = setOf(
         // could be useful, but sometimes/often very very large
         "route", "route_master", "superroute", "network", "disused:route",
