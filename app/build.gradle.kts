@@ -145,6 +145,7 @@ dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
