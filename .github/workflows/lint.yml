@@ -13,7 +13,7 @@ jobs:
       lintResultFilename: ktlint-result.txt
     steps:
       - name: Checkout the source code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Run Kotlin linter
         id: ktlint-check
         uses: musichin/ktlint-check@v3.0.0
