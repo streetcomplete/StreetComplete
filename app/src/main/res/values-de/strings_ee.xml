@@ -38,11 +38,11 @@
     <string name="quest_settings_resurvey_all_opening_hours_title">Alle Öffnungszeiten neu ermitteln</string>
     <string name="quest_settings_osmose_level_low">Niedrig</string>
     <string name="custom_overlay_color_message">Wähle Schlüssel aus, um Farben abzurufen. Akzeptiert reguläre Ausdrücke und verwendet übereinstimmende Tags, um eine Farbe zu erhalten. Die Farbe wird aus dem Schlüssel und Wert aller übereinstimmenden Schlüssel abgeleitet. Falls ein übereinstimmender Schlüssel :left/:right/:both enthält, wird er verwendet, um die jeweiligen Seiten eines Weges einzufärben, jedoch nicht die Mittellinie. Wenn keine Übereinstimmung vorhanden ist, ist die Farbe immer rot, was auf fehlende Daten hinweist. Kenntnisse über reguläre Ausdrücke sind für diese Funktion sehr hilfreich.
-\nWenn der Ausdruck kein regulärer Ausdruck ist, füge ein \'!\' hinzu, um mit dem Wert zu beginnen, auf den sich die Bearbeitung von Tags konzentriert.
+\nWenn der Ausdruck kein regulärer Ausdruck ist, füge ein Präfix „!“ hinzu, um mit dem Wert zu beginnen, auf den sich die Bearbeitung von Tags konzentriert.
 \n
-\nBeispiel:
-\n\"surface\" zeigt surface=asphalt in derselben Farbe und surface=concrete in einer anderen Farbe an.
-\n\".*surface\" ist ähnlich, zeigt aber auch sidewalk:(left/right/both):surface=asphalt in einer Farbe und cycleway:(left/right/both):surface=asphalt in einer anderen Farbe an</string>
+\nBeispiele:
+\n„surface“ zeigt surface=asphalt in derselben Farbe und surface=concrete in einer anderen Farbe an
+\n„.*surface“ ist ähnlich, zeigt aber auch sidewalk:(left/right/both):surface=asphalt in einer Farbe und cycleway:(left/right/both):surface=asphalt in einer anderen Farbe an</string>
     <string name="move_node_message_external_source_addition">Beachte, dass sich die Position dieser Suche nicht mit dem Knoten bewegen darf.</string>
     <string name="pref_update_local_statistics">Statistiken beim Hochladen aktualisieren</string>
     <string name="quest_contact_website">Wie lautet die Website dieses Ortes\?</string>
@@ -58,9 +58,9 @@
     <string name="restriction_overlay_signed_switch">Es gibt ein Schild oder eine Straßenmarkierung</string>
     <string name="move_node_with_geometry">Das Verschieben dieses Knotens verändert die Geometrie der folgenden Wege oder Multipolygonbeziehungen: %s.
 \nBeachte, dass alle Änderungen nicht sofort auf der Hintergrundkarte sichtbar sind.</string>
-    <string name="quest_settings_per_preset_rescan">Damit alle geänderten Questeinstellungen korrekt übernommen werden können, ist ein erneutes Scannen nach Questen erforderlich.</string>
+    <string name="quest_settings_per_preset_rescan">Damit alle geänderten Questeinstellungen korrekt übernommen werden können, ist ein erneutes Scannen nach Quests erforderlich.</string>
     <string name="quest_seating_street">In einem Straßenbereich</string>
-    <string name="quest_custom_quest_message">Verwende es, um spezifische vordefinierte Elemente oder Standorte zu überprüfen. Du kannst auch Tags spezifizieren und einen Knoten damit hinzufügen. Um es zu verwenden, lade eine Datei im Hauptmenü der Einstellungen, die entweder Typ, ID, Nachricht (z.B. NODE,1234,Position überprüfen) oder Breitengrad, Längengrad, Nachricht enthält. Für das Hinzufügen von Knoten gib die Tags in der Nachricht nach \'addNode\' an, z.B. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
+    <string name="quest_custom_quest_message">Verwende es, um spezifische vordefinierte Elemente oder Standorte zu überprüfen. Du kannst auch Tags spezifizieren und einen Knoten damit hinzufügen. Um es zu verwenden, lade eine Datei im Hauptmenü der Einstellungen, die entweder Typ, ID, Nachricht (z. B. NODE,1234,Position überprüfen) oder Breitengrad, Längengrad, Nachricht enthält. Für das Hinzufügen von Knoten gib die Tags in der Nachricht nach „addNode“ an, z. B. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_artwork_mural">Wandgemälde</string>
     <string name="pref_recent_answers_first_min_lines_message">Verschiebe aktuelle Antworten nach vorne, wenn das Antwortformular der Aufgabe mehr als so viele Zeilen mit Bildern enthält</string>
     <string name="delete_confirmation_both">Beides</string>
@@ -91,7 +91,7 @@
     <string name="import_presets_overlays_add">Hinzufügen</string>
     <string name="quest_railwayPlatformRef_message">Welches Tag soll für Tracks verwendet werden, die von dieser Plattform aus zugänglich sind\? Laut OSM-Wiki könnte local_ref vorzuziehen sein, aber die tatsächliche Verwendung ist meist ref.</string>
     <string name="pref_trees_title">Baumabfrage-Datei laden</string>
-    <string name="delete_confirmation_data">OSM- und Quest-Daten</string>
+    <string name="delete_confirmation_data">OSM- und Questdaten</string>
     <string name="pref_save_gpx">GPX-Notizen und angehängte Fotos und Tracks aufrufen</string>
     <string name="quest_artwork_relief">Relief</string>
     <string name="move_node_of_other_relation">Dieser Knoten ist Teil der folgenden Relationen, die keine Multipolygone sind: %s</string>
@@ -108,12 +108,12 @@
     <string name="default_disabled_msg_poi_other">Diese „Suche“ zeigt verschiedene POIs wie Hydranten, Aussichtspunkte oder Toiletten als gelbe Punkte an. Ein Klick auf den Punkt zeigt Details und weitere Antworten an.</string>
     <string name="day_night_priority">Priorität von Quests erhöhen, die für die aktuelle Tageszeit geeignet sind</string>
     <string name="quest_destination_add_more">Weiteres Ziel hinzufügen</string>
-    <string name="quest_settings_fixme_title">Zu ignorierende Fixme-Werte auswählen</string>
+    <string name="quest_settings_fixme_title">Zu ignorierende FixMe-Werte auswählen</string>
     <string name="delete_confirmation_tiles">Kartenkacheln</string>
     <string name="restriction_overlay_only_for">Nur für: %s</string>
     <string name="pref_hide_keyboard_summary">Blendet die Tastatur aus, wenn sie geöffnet ist, bevor die Notiz tatsächlich erstellt wird (um eine erneute Ansicht der Position zu ermöglichen)</string>
-    <string name="quest_disabled_msg_railway_platform_ref">Beachte, dass es im Wiki nicht ganz klar ist, welches Tag am besten zu verwenden ist und daher dem Benutzer überlassen bleibt. Wähle zwischen \"ref\" (Standard) und \"local_ref\" in den Sucheinstellungen.
-\nWenn es zwei Gleise entlang einer Plattform gibt, verwende durch Semikolon getrennte Werte, z.B. 2;3</string>
+    <string name="quest_disabled_msg_railway_platform_ref">Beachte, dass im Wiki nicht ganz klar ist, welches Tag am besten zu verwenden ist und es daher dem Benutzer überlassen bleibt. Wähle zwischen „ref“ (Standard) und „local_ref“ in den Sucheinstellungen.
+\nWenn es zwei Gleise entlang einer Plattform gibt, verwende durch Semikolon getrennte Werte, z. B. 2;3</string>
     <string name="quest_monitor_channel_name_found">Aufgabe in der Nähe gefunden</string>
     <string name="quest_settings_resurvey_all_opening_hours_message">Erfasse alle Öffnungszeiten neu, einschließlich der Werte, die SCEE nicht versteht? Möglicherweise musst du den Tag-Editor verwenden, um die richtigen Werte einzugeben.</string>
     <string name="quest_service_building_type_reservoir">Wasserreservoir</string>
@@ -225,7 +225,7 @@
     <string name="pref_disable_navigation_mode_summary">Deaktiviert den Modus zum Kippen und automatischen Drehen der Karte</string>
     <string name="quest_poi_seating_title">POI: Sitzgelegenheiten</string>
     <string name="quest_seating_veranda">Auf einer Veranda</string>
-    <string name="pref_quest_settings_preset_summary">Wenn diese Option aktiviert ist, gelten die Quest-Einstellungen nur für die aktuelle Quest-Voreinstellung</string>
+    <string name="pref_quest_settings_preset_summary">Wenn diese Option aktiviert ist, gelten die Questeinstellungen nur für die aktuelle Questvoreinstellung</string>
     <string name="pref_overlay_quick_selector_title">Overlay-Schnellauswahl anzeigen</string>
     <string name="pref_gpx_track_enable">GPX-Track anzeigen</string>
     <string name="pref_gpx_track_title">GPX-Track aus Datei anzeigen</string>
@@ -283,7 +283,7 @@
     <string name="tree_custom_quest_import_export_message">Aktuell verwendete Datei abrufen oder eine neue Datei bereitstellen? Einzelheiten findest du in der entsprechenden Nachricht zur Aktivierung der Suche.</string>
     <string name="quest_osmose_hide_type">Ignoriere Probleme mit demselben…</string>
     <string name="default_disabled_msg_poi_fixme">Diese „Suche“ zeigt FixMes als rote Punkte an (mit den Standardausnahmen „ja“ und „weiter“). Ein Klick auf den Punkt zeigt Details und andere Antworten an.</string>
-    <string name="quest_monitor_channel_name">Quest-Monitor in der Nähe</string>
+    <string name="quest_monitor_channel_name">Questmonitor in der Nähe</string>
     <string name="show_nearby_quests_all_types">Alle Aufgabentypen anzeigen</string>
     <string name="quest_artwork_land_art">Kunst am Boden</string>
     <string name="access_weight_limit">Gewicht</string>
@@ -295,7 +295,7 @@
     <string name="custom_overlay_filter_message">Ein Klick auf den unten stehenden Link öffnet Informationen zur Syntax der Elementauswahl in einem Browser. Beachte, dass bei der Auswahl von Elementen nach Alter die Einstellung des Wiedererhebungsintervalls das Ergebnis beeinflussen kann.
 \nDie Kontrollkästchen ersetzen den Teil „Knoten, Wege mit“.</string>
     <string name="quest_construction">Es ist im Bau bis…</string>
-    <string name="quest_construction_value">Setze \"construction=...\", oder lasse es leer, wenn du es nicht weißt</string>
+    <string name="quest_construction_value">Setze „construction=…“, oder lasse es leer, wenn du es nicht weißt</string>
     <string name="pref_quest_geometries_title">Geometrien der Aufgaben anzeigen</string>
     <string name="level_filter_title">Zu prüfende Schlüssel auswählen</string>
     <string name="quest_poi_business_title">POI: Unternehmen</string>
@@ -365,7 +365,7 @@
     <string name="quest_crossing_type_zebra">Zebrastreifen</string>
     <string name="quest_buildingPartColour_title">Welche Farbe hat dieses Gebäudeteil\?</string>
     <string name="pref_way_direction_summary">Zeigt Pfeile auf markierten Zeilen an, wenn eine Aufgabe geöffnet wird. Nützlich z.B. beim Hinzufügen von Einbahnstraßen.</string>
-    <string name="quest_settings_dot_labels_message">Legt fest, welche Tags in der angegebenen Reihenfolge für die Beschriftung verwendet werden sollen. Ein leerer String zeigt keine Beschriftungen an, \"label\" zeigt die Standardbeschriftung von StreetComplete mit name, brand, ref, local_ref und operator an.</string>
+    <string name="quest_settings_dot_labels_message">Legt fest, welche Tags in der angegebenen Reihenfolge für die Beschriftung verwendet werden sollen. Ein leerer String zeigt keine Beschriftungen an, „label“ zeigt die Standardbeschriftung von StreetComplete mit name, brand, ref, local_ref und operator an.</string>
     <string name="quest_generic_answer_show_edit_tags">Tags anzeigen/bearbeiten</string>
     <string name="quest_poi_camera_title">POI: Kamera</string>
     <string name="pref_gpx_track_provide">GPX-Datei auswählen</string>
@@ -489,7 +489,7 @@
     <string name="quest_brewery_is_not_available">Hier wird kein Bier verkauft</string>
     <string name="quest_brewery_is_various">Hier werden viele Biermarken angeboten</string>
     <string name="quest_viaFerrataScale_zero">Grad 0 - keine</string>
-    <string name="quest_viaFerrataScale_zero_description">Niedriger Schwierigkeitsgrad; das Gelände variiert von flach bis steil; einige ausgesetzte Abschnitte. Gesichert mit Seilen, Ketten oder kurzen Leitern. Erfordert Trittsicherheit; geeignet für Unsportliche. Klettersteigset für die meisten optional.</string>
+    <string name="quest_viaFerrataScale_zero_description">Niedriger Schwierigkeitsgrad; das Gelände variiert von flach bis steil; einige exponierte Abschnitte. Gesichert mit Seilen, Ketten oder kurzen Leitern. Erfordert Trittsicherheit; geeignet für Unsportliche. Klettersteigset für die meisten optional.</string>
     <string name="quest_brewery_add_more">Weitere Brauerei ergänzen</string>
     <string name="quest_viaFerrataScale_three">Grad 3/K3/C - moderat</string>
     <string name="quest_viaFerrataScale_five_description">Lang, anhaltend anspruchsvoll und sehr anstrengend. Exponiertes Gelände kann nur mit Seilen gesichert sein, die nur an Stellen angebracht sind, die sonst nicht passierbar wären. Für erfahrene Kletterer.</string>
@@ -506,7 +506,7 @@
     <string name="quest_trail_visibility_intermediate">Mittelmäßig</string>
     <string name="quest_trail_visibility_no_description">Weitgehend weglos, keine Markierungen. Ausgezeichnete Orientierungsfähigkeiten erforderlich.</string>
     <string name="quest_trail_visibility_no">Keine Sichtbarkeit</string>
-    <string name="quest_trail_visibility_bad_description">Weg teilweise unsichtbar, Route teilweise weglos, keine Markierungen. Grundlegende Orientierungskenntnisse erforderlich.</string>
+    <string name="quest_trail_visibility_bad_description">Weg teilweise unsichtbar, Route teilweise weglos, keine Markierungen. Grundlegende Orientierungsfähigkeiten erforderlich.</string>
     <string name="quest_trail_visibility_bad">Schlecht</string>
     <string name="quest_trail_visibility_horrible">Schrecklich</string>
     <string name="quest_trail_visibility_horrible_description">Oft weglos, keine Markierungen. Fortgeschrittene Orientierungsfähigkeiten erforderlich.</string>
@@ -552,7 +552,7 @@
     <string name="quest_guidepost_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, weil das, was angegeben wird, je nach Region und Betreiber stark variiert. Möglicherweise musst du die Elementauswahl für dein Gebiet verfeinern (z. B. Karten hinzufügen oder entfernen, nur Elemente mit hiking=yes auswählen usw.)</string>
     <string name="quest_guidepost_sports_nordic_walking">Nordic Walking</string>
     <string name="quest_guidepost_sports_bicycle">Radfahren</string>
-    <string name="quest_guidepostName_hint">Gekennzeichneter (Orts-)Name dieser Karte oder dieses Wegweisers. Bitte gebe hier keine Referenznummer an.</string>
+    <string name="quest_guidepostName_hint">Gekennzeichneter (Orts-)Name dieser Karte oder dieses Wegweisers. Gib hier keine Referenznummer ein.</string>
     <string name="quest_guidepost_sports_mtb">MTB</string>
     <string name="quest_guidepost_sports_inline_skating">Inlineskaten</string>
     <string name="quest_guidepost_sports_climbing">Klettern</string>

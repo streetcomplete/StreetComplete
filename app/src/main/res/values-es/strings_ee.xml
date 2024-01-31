@@ -25,7 +25,7 @@
     <string name="pref_save_gpx">Obtenga notas GPX y fotos y pistas adjuntas</string>
     <string name="pref_save_photos_summary">Almacenar versiones de tamaño completo de fotos tomadas mientras creaba notas, sin borrar los datos EXIF</string>
     <string name="pref_get_photos_title">Obtener fotos de tamaño completo</string>
-    <string name="pref_show_gpx_button_summary">Al contrario de las notas de OSM, agregar un GPX no ocultará ninguna tarea en la ubicación afectada</string>
+    <string name="pref_show_gpx_button_summary">Al contrario que las notas de OSM, añadir una nota a GPX no ocultará ninguna búsqueda en la ubicación afectada</string>
     <string name="pref_create_custom_quest_summary">…como alternativa a dejar una nota. Esto se puede usar como una nota almacenada localmente visible en el mapa. Tenga en cuenta que deberá habilitar tareas personalizadas.</string>
     <string name="pref_screen_display">Pantalla</string>
     <string name="pref_3d_buildings_title">Mostrar edificios 3D</string>
@@ -538,4 +538,24 @@
     <string name="quest_mapSize_title">¿Qué área abarca este mapa\?</string>
     <string name="quest_piste_ref_connection">Es una pista de conexión</string>
     <string name="quest_piste_lit_title">¿Esta pista está iluminada?</string>
+    <string name="quest_guidepost_sports_note">Si hay algo que no está cubierto por las características enumeradas, por favor deje una nota en su lugar.</string>
+    <string name="quest_guidepost_sports_winter_hiking">Senderismo invernal</string>
+    <string name="quest_guidepost_sports_horse">Equitación</string>
+    <string name="quest_guidepost_sports_title">¿Para qué deporte está pensada esta guía?</string>
+    <string name="quest_guidepost_sports_hiking">Senderismo</string>
+    <string name="quest_guidepostRef_hint">Número de referencia de este mapa o poste guía, no el número de referencia de las rutas señalizadas.</string>
+    <string name="quest_guidepost_sports_ski">Esquí</string>
+    <string name="quest_guidepost_sports_answer_simple">Es sólo una simple guía</string>
+    <string name="quest_guidepost_sports_answer_simple_description">Se trata de una simple orientación sin deportes específicos.</string>
+    <string name="quest_guidepostEle_hint">No utilice la altitud del GPS, ya que suele ser demasiado imprecisa y no se proporciona en el sistema de referencia de altura correcto.</string>
+    <string name="quest_guidepostEle_title">¿Cuál es la elevación aquí?</string>
+    <string name="quest_guidepost_disabled_msg">Esta búsqueda está desactivada por defecto porque lo que se firma varía mucho según la región y el operador. Es posible que tenga que refinar la selección de elementos para su zona (por ejemplo, añadir o eliminar mapas, seleccionar sólo elementos con hiking=yes, etc.)</string>
+    <string name="quest_guidepost_sports_nordic_walking">Marcha nórdica</string>
+    <string name="quest_guidepost_sports_bicycle">Ciclismo</string>
+    <string name="quest_guidepostName_hint">Firma (ubicación) nombre de este mapa o poste guía. No introduzca aquí un número de referencia.</string>
+    <string name="quest_guidepost_sports_mtb">MTB</string>
+    <string name="quest_guidepost_sports_inline_skating">Patinaje en línea</string>
+    <string name="quest_guidepost_sports_climbing">Escalada</string>
+    <string name="quest_guidepost_sports_running">Correr</string>
+    <string name="quest_guidepostName_title">¿Cómo se llama aquí?</string>
 </resources>

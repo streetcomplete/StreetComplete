@@ -1,0 +1,5 @@
+- move building demolished answer into a "does not exits" other answer
+- fix typo (by Logan-Suddaby)
+- crash fixes
+- updated translations (thanks to gallegonovato, mcliquid, SomeTr, Mr-Update)
+- no SCEE-specific in-app changelog, may come back later
