@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="16dp"
-            android:src="@drawable/pin"
+            app:srcCompat="@drawable/pin"
             tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
         <ImageView
@@ -24,7 +24,7 @@
             android:layout_height="42dp"
             android:layout_marginTop="7dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_quest_create_note" />
+            app:srcCompat="@drawable/ic_quest_create_note" />
 
     </RelativeLayout>
 
@@ -102,7 +102,7 @@
                         android:id="@+id/moreButton"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_more_24dp"
+                        app:srcCompat="@drawable/ic_more_24dp"
                         android:padding="12dp"
                         android:background="?android:attr/selectableItemBackgroundBorderless"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -131,7 +131,7 @@
 
                         <ImageView
                             android:id="@+id/okButton"
-                            android:src="@drawable/ic_check_48dp"
+                            app:srcCompat="@drawable/ic_check_48dp"
                             android:scaleType="centerInside"
                             style="@style/RoundAccentButton"
                             android:layout_width="@dimen/ok_button_size"

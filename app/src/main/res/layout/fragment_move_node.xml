@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="16dp"
-                android:src="@drawable/pin"
+                app:srcCompat="@drawable/pin"
                 tools:ignore="RtlSymmetry"/>
 
             <ImageView
@@ -36,7 +36,7 @@
                 android:layout_height="42dp"
                 android:layout_marginTop="7dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ic_quest_create_note" />
+                app:srcCompat="@drawable/ic_quest_create_note" />
 
         </RelativeLayout>
 
@@ -123,7 +123,7 @@
 
         <ImageView
             android:id="@+id/okButton"
-            android:src="@drawable/ic_check_48dp"
+            app:srcCompat="@drawable/ic_check_48dp"
             android:layout_width="@dimen/ok_button_size"
             android:layout_height="@dimen/ok_button_size"
             android:layout_alignParentEnd="true"

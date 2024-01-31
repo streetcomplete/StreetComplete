@@ -53,7 +53,7 @@
         android:id="@+id/addPresetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_24dp"
+        app:srcCompat="@drawable/ic_add_24dp"
         android:contentDescription="@string/quest_presets_preset_add"
         android:layout_margin="16dp"
         android:layout_alignParentBottom="true"
