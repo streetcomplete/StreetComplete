@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/compassView"
     android:layout_width="32dp"
@@ -8,7 +9,7 @@
     android:textColor="#000"
     android:padding="4dp"
     android:layout_margin="8dp"
-    android:src="@drawable/ic_compass_needle_48dp"
+    app:srcCompat="@drawable/ic_compass_needle_48dp"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
     tools:ignore="RtlHardcoded" />
