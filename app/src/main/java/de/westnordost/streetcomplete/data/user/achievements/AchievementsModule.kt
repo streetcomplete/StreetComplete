@@ -273,6 +273,14 @@ private val links = listOf(
         R.string.link_wheelmap_description
     ),
     Link(
+        "veggiekarte",
+        "https://www.veggiekarte.de",
+        "veggiekarte.de",
+        LinkCategory.MAPS,
+        R.drawable.ic_link_veggiekarte,
+        R.string.link_openvegemap_description
+    ),
+    Link(
         "osm_buildings",
         "https://osmbuildings.org",
         "OSM Buildings",
@@ -587,7 +595,7 @@ private val achievements = listOf(
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
-
+            1 to links("veggiekarte")
         )
     ),
 

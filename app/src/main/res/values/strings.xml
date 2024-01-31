@@ -435,6 +435,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_indoorequal_description">Discover indoor maps of malls, railway stations etc.</string>
     <string name="link_wheelmap_description">A map for finding wheelchair-accessible places</string>
     <string name="link_osm_buildings_description">A map that shows buildings in 3D</string>
+    <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
     <string name="link_touch_mapper_description">Create tactile maps easily for any address</string>
     <string name="link_mapy_tactile_description">Tactile maps for the visually impaired in various scales</string>
     <string name="link_josm_description">Fully-featured OSM editor for the desktop. This is the power tool for regular contributors.</string>
