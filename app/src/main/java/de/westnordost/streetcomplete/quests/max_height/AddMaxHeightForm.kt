@@ -17,6 +17,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
 
     override val contentLayoutResId get() = when (countryInfo.countryCode) {
         "AU", "NZ", "US", "CA" -> R.layout.quest_maxheight_mutcd
+        "FI", "IS", "SE" -> R.layout.quest_maxheight_fi
         else -> R.layout.quest_maxheight
     }
 

@@ -1,7 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Otto, Suomen Automatia Oy, Nosto, Otto., Automatia Pankkiautomaatit Oy, Osuuspankki, TalletusOtto, OttoPlus, Nordea, Nokas CMS Oy, Automatia, bittiraha.fi, OP, atm, Aktia, Ottopiste, Otto-automaatti]
-chargingStationOperators: [Virta, Fortum Charge & Drive, Fortum, KSSe, Tesla Motors Inc., K-Lataus, Plugit, Lidl, Fortum Charge&Drive, PlugIt, Motonet, Helen, k-lataus, Virtapiste, Tesla, Helsingin Energia, Charge&Drive]
-clothesContainerOperators: [UFF, Rinki, HSY, Rosk'n roll, Rinki Oy, Fida, Suomen Pakkauskierrätys RINKI Oy, Auringonnousu]
+atmOperators: [Otto, Nosto, Suomen Automatia Oy, Otto., Automatia Pankkiautomaatit Oy, OttoPlus, TalletusOtto, Osuuspankki, Nordea, Loomis Automatia Oy, bittiraha.fi, OTTO, OP, Nokas CMS Oy, atm, Otto-pankkiautomaatti, Otto-automaatti, Nokas, Automatia, Aktia]
+chargingStationOperators: [Virta, VIRTA, 'Tesla, Inc.', Fortum Charge & Drive, Recharge, Liikennevirta Oy, K-Lataus, Helen, Lidl, Fortum, ABC, Recharge Finland Oy, Ionity, Asikkalan kunta, Plugit, KSSe, eParking, S-ryhmä, Motonet, HOK-Elanto, Väre, Kotkan energia, K-lataus, Helen Oy, Fortum Charge&Drive, PlugIt, k-lataus, Virtapiste, Virta Global Charging Station, Tokmanni, Recharge Infra, Plugit Finland Oy, Lapland Hotels, Kymen Seudun Osuuskauppa, Helsingin Energia, Charge&Drive, Alva, ABC-lataus, ABC Lataus, ABB]
+clothesContainerOperators: [UFF, Rinki, HSY, Suomen Pakkauskierrätys RINKI Oy, Recci, Fida, Rinki-ekopiste, Rosk'n roll, Rinki Oy, Auringonnousu, YTV, Suomen pakkauskierrätys Rinki Oy, Suomen Keräyspaperi tuottajayhteisö, Rinkiin, Puhas Oy, Pelastusarmeija, Järvenpään kaupunki]
+defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

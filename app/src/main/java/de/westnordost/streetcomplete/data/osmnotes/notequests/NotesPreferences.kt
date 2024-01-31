@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.util.prefs.Preferences
 
-class NotesPreferences(private val prefs: SharedPreferences) {
+class NotesPreferences(private val prefs: Preferences) {
 
     interface Listener {
         fun onNotesPreferencesChanged()
@@ -11,14 +11,10 @@ class NotesPreferences(private val prefs: SharedPreferences) {
 
     var listener: Listener? = null
 
-    private val sharedPreferencesListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-        if (key == Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
+    init {
+        prefs.addListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) {
             listener?.onNotesPreferencesChanged()
         }
-    }
-
-    init {
-        prefs.registerOnSharedPreferenceChangeListener(sharedPreferencesListener)
     }
 
     val showOnlyNotesPhrasedAsQuestions: Boolean get() =

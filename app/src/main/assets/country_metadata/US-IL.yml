@@ -1,2 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, NRG Energy, Volta, iGo]
+atmOperators: [Chase, Bank of America, CEFCU, BMO, PNC Bank, Fifth Third Bank, Bitcoin Depot, U.S. Bank, Citibank, Circle K, Huntington Bank, Old National Bank, Busey Bank, Bitcoin of America, Bank of Springfield, Road Ranger, Regions Bank, Morton Community Bank, Triton, Old Second National Bank, Old Second Bank, INB, Hyde Park Bank, Banterra Bank, Athena Bitcoin Inc.]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, Volta, Electrify America, Tesla, NRG Energy, EVgo, Blink, iGo, Bradley University, Amazon]
+defaultSpeedLimitHasUrbanOrRural: true

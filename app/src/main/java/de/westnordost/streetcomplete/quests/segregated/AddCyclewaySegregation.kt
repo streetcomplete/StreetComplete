@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation.*
 
 class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
@@ -29,7 +28,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
         and surface ~ ${ANYTHING_PAVED.joinToString("|")}
         and area != yes
         and !sidewalk
-        and (!segregated or segregated older today -8 years)
+        and !segregated
         and ~path|footway|cycleway !~ link
     """
     override val changesetComment = "Specify whether combined foot- and cycleways are segregated"
@@ -43,8 +42,8 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
 
     override fun applyAnswerTo(answer: CyclewaySegregation, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            YES -> tags.updateWithCheckDate("segregated", "yes")
-            NO -> tags.updateWithCheckDate("segregated", "no")
+            YES -> tags["segregated"] = "yes"
+            NO -> tags["segregated"] = "no"
             SIDEWALK -> tags["sidewalk"] = "yes"
         }
     }

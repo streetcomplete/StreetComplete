@@ -44,9 +44,9 @@ fun Tags.updateWithCheckDate(key: String, value: String) {
     val previousValue = get(key)
     set(key, value)
     /* if the value is changed, set the check date only if it has been set before. Behavior
-    *  before v32.0 was to delete the check date. However, this destroys data that was
-    *  previously collected by another surveyor - we don't want to destroy other people's data
-    *  */
+     * before v32.0 was to delete the check date. However, this destroys data that was
+     * previously collected by another surveyor - we don't want to destroy other people's data
+     */
     if (previousValue == value || hasCheckDateForKey(key)) {
         updateCheckDateForKey(key)
     }

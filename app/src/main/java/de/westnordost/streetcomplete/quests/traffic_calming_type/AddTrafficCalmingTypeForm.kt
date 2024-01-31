@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddTrafficCalmingTypeForm : AImageListQuestForm<TrafficCalmingType, TrafficCalmingType>() {
 
-    override val items = TrafficCalmingType.values().map { it.asItem() }
+    override val items = TrafficCalmingType.entries.map { it.asItem() }
 
     override val itemsPerRow = 3
 

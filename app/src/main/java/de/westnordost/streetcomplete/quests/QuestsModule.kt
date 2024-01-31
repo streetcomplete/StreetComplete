@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
 import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
+import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -27,6 +28,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
@@ -65,7 +67,7 @@ import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_kerb_height.AddCrossingKerbHeight
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
-import de.westnordost.streetcomplete.quests.defibrillator.AddIsDefibrillatorIndoor
+import de.westnordost.streetcomplete.quests.defibrillator.AddDefibrillatorLocation
 import de.westnordost.streetcomplete.quests.diet_type.AddHalal
 import de.westnordost.streetcomplete.quests.diet_type.AddKosher
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
@@ -128,6 +130,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
+import de.westnordost.streetcomplete.quests.sanitary_dump_station.AddSanitaryDumpStation
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
@@ -174,7 +177,6 @@ import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import java.util.concurrent.FutureTask
 
 val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
@@ -187,12 +189,11 @@ val questsModule = module {
             get(),
             { location ->
                 val countryInfos = get<CountryInfos>()
-                val countryBoundaries = get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get()
+                val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
                 countryInfos.getByLocation(countryBoundaries, location.longitude, location.latitude)
             },
             { tags ->
-                get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
-                    .get().getFeature(tags)
+                get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(tags)
             }
         )
     }
@@ -365,6 +366,7 @@ fun questTypeRegistry(
     66 to AddFireHydrantDiameter(),
     67 to AddFireHydrantRef(),
 
+    160 to AddBbqFuel(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
@@ -443,13 +445,15 @@ fun questTypeRegistry(
 
     112 to AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
 
-    113 to AddIsDefibrillatorIndoor(), // need to go inside in case it is inside (or gone)
+    113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
+    161 to AddDefibrillatorLocation(), // need to go inside in case it is inside (or gone)
 
     // inside camping sites
     114 to AddCampType(),
     115 to AddCampDrinkingWater(),
     116 to AddCampShower(),
     117 to AddCampPower(),
+    162 to AddSanitaryDumpStation(),
 
     // toilets
     118 to AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
@@ -499,7 +503,7 @@ fun questTypeRegistry(
     148 to AddCyclewayWidth(arSupportChecker), // should be after cycleway segregation
 
     /* should best be after road surface because it excludes unpaved roads, also, need to search
-    *  for the sign which is one reason why it is disabled by default */
+     * for the sign which is one reason why it is disabled by default */
     149 to AddMaxSpeed(),
 
     // buildings

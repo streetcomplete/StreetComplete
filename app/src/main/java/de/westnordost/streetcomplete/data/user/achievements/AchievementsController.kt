@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.user.achievements
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Manages the data associated with achievements: Unlocked achievements, unlocked links and info
  *  about newly unlocked achievements (the user shall be notified about) */
@@ -17,7 +17,7 @@ class AchievementsController(
     allLinks: List<Link>
 ) : AchievementsSource {
 
-    private val listeners: MutableList<AchievementsSource.Listener> = CopyOnWriteArrayList()
+    private val listeners = Listeners<AchievementsSource.Listener>()
 
     private val achievementsById = allAchievements.associateBy { it.id }
     private val linksById = allLinks.associateBy { it.id }

@@ -119,6 +119,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="underground">underground</string>
     <string name="at_housename">house name %s</string>
     <string name="at_housenumber">house number %s</string>
+    <!-- as in: “Where is the ATM?” - “It is inside” -->
+    <string name="inside">inside</string>
+    <!-- as in: “Where is the ATM?” - “It is outside” -->
+    <string name="outside">outside</string>
     <!-- when the user left the answer form empty -->
     <string name="no_changes">"You did not give an answer"</string>
 
@@ -131,6 +135,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="quest_leave_new_note_description">"You can leave a public note for other mappers to resolve at this location, or hide this quest for yourself only"</string>
     <string name="quest_leave_new_note_yes">"Leave note"</string>
     <string name="quest_leave_new_note_no">"Hide"</string>
+    <string name="quest_leave_new_note_as_answer">In this case, you need to leave a note in which you explain the situation.</string>
+
 
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
     <!-- aka "not applicable", "not answerable" -->
@@ -156,7 +162,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="move_node_description">Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed.</string>
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
-    <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
+    <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
 
@@ -391,7 +397,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
 
-
     <!-- User statistics screen -->
 
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
@@ -543,6 +548,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoring notes not phrased as questions"</string>
 
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
+    <string name="pref_title_quests_restore_hidden_summary">Number of hidden quests: %d</string>
     <string name="restore_confirmation">Restore</string>
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>
@@ -916,6 +922,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camp_type_caravans_only">Only motor homes, travel trailers, …</string>
     <string name="quest_camp_type_tents_only">Only tents</string>
     <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
+    <string name="quest_sanitary_dump_station_title">Is there a sanitary dump station?</string>
+    <string name="quest_sanitary_dump_station_description">Facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:</string>
 
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
@@ -997,7 +1005,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_drinking_water_not_potable_signed">Not safe to drink (signed)</string>
     <string name="quest_drinking_water_not_potable_unsigned">Not safe to drink (unsigned)</string>
 
-    <string name="quest_drinking_water_type_title">How is drinking water provided here?</string>
+    <string name="quest_drinking_water_type_title2">Is drinking water available here? If so, what is its source?</string>
     <string name="quest_drinking_water_type_generic_water_fountain">Other water fountain</string>
     <string name="quest_drinking_water_type_jet_water_fountain">Water fountain emitting small jet of water</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">Refilling bottles only</string>
@@ -1032,6 +1040,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
+    <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
@@ -1051,7 +1060,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_internet_access_terminal">Computer with Internet access</string>
     <string name="quest_internet_access_no">No connection</string>
 
-    <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
+    <string name="quest_is_amenity_inside_title">Is this inside a building?</string>
+    <string name="quest_defibrillator_location">Where is this defibrillator located?</string>
+    <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
 
     <string name="quest_kerb_height_title">What’s the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>
@@ -1286,6 +1297,13 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_powerPolesMaterial_metal">Steel</string>
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
 
+    <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
+    <string name="quest_bbq_fuel_wood">Wood</string>
+    <string name="quest_bbq_fuel_electric">Electric</string>
+    <string name="quest_bbq_fuel_charcoal">Charcoal</string>
+    <string name="quest_bbq_fuel_not_a_bbq">It’s a fire enclosure</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills.</string>
+
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
 
@@ -1297,7 +1315,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_recycling_type_batteries">Batteries</string>
     <string name="quest_recycling_type_cans">Cans</string>
     <string name="quest_recycling_type_clothes">Clothes</string>
-    <string name="quest_recycling_type_green_waste">Garden waste</string>
+    <string name="quest_recycling_type_green_waste">Compostable waste</string>
+    <string name="quest_recycling_type_food_waste">Food waste</string>
     <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
     <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
     <string name="quest_recycling_type_paper">Paper</string>
@@ -1694,5 +1713,15 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
+    <string name="about_title_logs">Logs (%1$d)</string>
+    <string name="about_summary_logs">for use in error reports</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_share">Share logs</string>
+    <string name="about_title_show_logs">Show logs</string>
+    <string name="label_log_level">Log level</string>
+    <string name="label_log_newer_than">From</string>
+    <string name="label_log_older_than">To</string>
+    <string name="label_log_message_contains">Message contains</string>
+    <string name="title_logs_filters">Filter messages</string>
 
 </resources>

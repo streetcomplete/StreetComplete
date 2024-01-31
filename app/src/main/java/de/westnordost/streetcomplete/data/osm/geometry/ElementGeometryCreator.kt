@@ -78,20 +78,17 @@ class ElementGeometryCreator {
      *
      * @return an ElementPolygonsGeometry if the relation describes an area or an
      *         ElementPolylinesGeometry if it describes is a linear feature */
-    fun create(relation: Relation, wayGeometries: Map<Long, List<LatLon>>): ElementGeometry? {
-
-        return if (relation.isArea()) {
+    fun create(relation: Relation, wayGeometries: Map<Long, List<LatLon>>): ElementGeometry? =
+        if (relation.isArea()) {
             createMultipolygonGeometry(relation, wayGeometries)
         } else {
             createPolylinesGeometry(relation, wayGeometries)
         }
-    }
 
     private fun createMultipolygonGeometry(
         relation: Relation,
         wayGeometries: Map<Long, List<LatLon>>
     ): ElementPolygonsGeometry? {
-
         val outer = createNormalizedRingGeometry(relation, "outer", false, wayGeometries)
         val inner = createNormalizedRingGeometry(relation, "inner", true, wayGeometries)
         if (outer.isEmpty()) return null
@@ -109,7 +106,6 @@ class ElementGeometryCreator {
         relation: Relation,
         wayGeometries: Map<Long, List<LatLon>>
     ): ElementPolylinesGeometry? {
-
         val waysNodePositions = getRelationMemberWaysNodePositions(relation, wayGeometries)
         val joined = waysNodePositions.joined()
 
@@ -130,7 +126,6 @@ class ElementGeometryCreator {
         clockwise: Boolean,
         wayGeometries: Map<Long, List<LatLon>>
     ): ArrayList<ArrayList<LatLon>> {
-
         val waysNodePositions = getRelationMemberWaysNodePositions(relation, role, wayGeometries)
         val ringGeometry = waysNodePositions.joined().rings
         ringGeometry.setOrientation(clockwise)

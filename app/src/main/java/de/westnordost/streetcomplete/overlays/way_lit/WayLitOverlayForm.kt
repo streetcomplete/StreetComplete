@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus.UNSUPPORTED
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.osm.lit.applyTo
 import de.westnordost.streetcomplete.osm.lit.asItem
-import de.westnordost.streetcomplete.osm.lit.createLitStatus
+import de.westnordost.streetcomplete.osm.lit.parseLitStatus
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
@@ -34,7 +34,7 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val litStatus = createLitStatus(element!!.tags)
+        val litStatus = parseLitStatus(element!!.tags)
         originalLitStatus = if (litStatus != UNSUPPORTED) litStatus else null
         selectedItem = originalLitStatus?.asItem()
     }
@@ -49,8 +49,11 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? =
-        if (element!!.couldBeSteps()) AnswerItem(R.string.quest_generic_answer_is_actually_steps) { changeToSteps() }
-        else null
+        if (element!!.couldBeSteps()) {
+            AnswerItem(R.string.quest_generic_answer_is_actually_steps) { changeToSteps() }
+        } else {
+            null
+        }
 
     private fun changeToSteps() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)

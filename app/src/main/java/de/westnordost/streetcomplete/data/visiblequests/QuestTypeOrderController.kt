@@ -2,15 +2,16 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import java.util.concurrent.CopyOnWriteArrayList
+import de.westnordost.streetcomplete.util.Listeners
 
+/** Controls which quest types have been reordered after which other quest types by the user */
 class QuestTypeOrderController(
     private val questTypeOrderDao: QuestTypeOrderDao,
     private val questPresetsSource: QuestPresetsSource,
     private val questTypeRegistry: QuestTypeRegistry
 ) : QuestTypeOrderSource {
 
-    private val listeners = CopyOnWriteArrayList<QuestTypeOrderSource.Listener>()
+    private val listeners = Listeners<QuestTypeOrderSource.Listener>()
 
     private val selectedPresetId: Long get() = questPresetsSource.selectedId
 

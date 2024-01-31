@@ -74,8 +74,11 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
         val alreadyHidden = osmNoteQuestController.getVisible(noteId) == null
         setButtonPanelAnswers(listOf(
-            if (alreadyHidden) AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }
-            else               AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
+            if (alreadyHidden) {
+                AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }
+            } else {
+                AnswerItem(R.string.quest_noteDiscussion_no) { hideQuest() }
+            }
         ))
 
         binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
@@ -103,7 +106,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
     }
 
     override fun onClickOk() {
-        require(noteText != null ) { "NoteQuest has been answered with an empty comment!" }
+        require(noteText != null) { "NoteQuest has been answered with an empty comment!" }
         val imagePaths = attachPhotoFragment?.imagePaths.orEmpty()
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {

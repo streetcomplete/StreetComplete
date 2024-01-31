@@ -346,10 +346,6 @@
                     "label": "Marka",
                     "terms": "marka,trgovinska oznaka"
                 },
-                "brewery": {
-                    "label": "Točena piva",
-                    "terms": "točeno pivo"
-                },
                 "bridge": {
                     "label": "Vrsta"
                 },
@@ -779,12 +775,6 @@
                 "hoops": {
                     "label": "Obruči",
                     "placeholder": "1, 2, 4..."
-                },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Da",
-                        "undefined": "Ne"
-                    }
                 },
                 "horse_riding": {
                     "options": {
@@ -2051,9 +2041,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Automat za prodaju hrane"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Pumpni automat za gorivo"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Automat za prodaju sladoleda"
                 },
@@ -2065,9 +2052,6 @@
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "Automat za karte za javni prijevoz"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Automat za grickalice"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinar"
@@ -3924,9 +3908,6 @@
                 "traffic_calming/hump": {
                     "name": "Duži uspornik u širini ceste",
                     "terms": "ležeći policajac"
-                },
-                "traffic_calming/island": {
-                    "name": "Prometni otok"
                 },
                 "type/boundary": {
                     "name": "Granica",

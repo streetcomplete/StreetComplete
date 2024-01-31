@@ -6,7 +6,6 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.net.URL
-import java.util.Locale
 
 /** Download and split the brand presets from the name suggestion index by countries they are in:
  *  Instead of one big presets file, sort those brands that only exist in certain countries into own
@@ -77,7 +76,7 @@ open class UpdateNsiPresetsTask : DefaultTask() {
         }
 
         for ((country, jsonObject) in byCountryMap.entries) {
-            val name = "$targetDir/presets${ if (country != null) "-${country.toUpperCase(Locale.US)}" else "" }.json"
+            val name = "$targetDir/presets${ if (country != null) "-${country.uppercase()}" else "" }.json"
             File(name).writeText(jsonObject.toJsonString())
         }
     }
@@ -124,7 +123,7 @@ private fun expandM49Codes(codes: MutableList<String>) {
         val expandedCodes = M49Codes[cc]
         if (expandedCodes != null) {
             codes.removeAt(i)
-            codes.addAll(i, expandedCodes.map { it.toLowerCase(Locale.US) })
+            codes.addAll(i, expandedCodes.map { it.lowercase() })
         } else {
             ++i
         }

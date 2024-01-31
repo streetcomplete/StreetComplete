@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.user.achievements
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
+import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -55,7 +56,8 @@ private val typeAliases = listOf(
     "WayLitOverlay"                      to AddWayLit::class.simpleName!!,
     "SidewalkOverlay"                    to AddSidewalk::class.simpleName!!,
     "CyclewayOverlay"                    to AddCycleway::class.simpleName!!,
-    "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!
+    "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
+    "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!
 )
 
 private val links = listOf(
@@ -68,6 +70,22 @@ private val links = listOf(
         LinkCategory.INTRO,
         R.drawable.ic_link_wiki,
         R.string.link_wiki_description
+    ),
+    Link(
+        "forum",
+        "https://community.openstreetmap.org",
+        "OpenStreetMap Community Forum",
+        LinkCategory.INTRO,
+        R.drawable.ic_link_openstreetmap,
+        R.string.link_forum_description
+    ),
+    Link(
+        "calendar",
+        "https://osmcal.org",
+        "OpenStreetMap Calendar",
+        LinkCategory.INTRO,
+        R.drawable.ic_link_openstreetmap,
+        R.string.link_calendar_description
     ),
     Link(
         "welcomemat",
@@ -138,7 +156,8 @@ private val links = listOf(
     ),
 
     /* --------------------------------------- Editors ---------------------------------------*/
-    Link(
+
+    Link( // TODO: this is hardly used and not updated for 2 years, remove?
         "pic4review",
         "https://pic4review.pavie.info",
         "Pic4Review",
@@ -177,6 +196,22 @@ private val links = listOf(
         LinkCategory.EDITORS,
         R.drawable.ic_link_notesreview,
         R.string.link_notesreview_description
+    ),
+    Link(
+        "every-door",
+        "https://every-door.app/",
+        "Every Door",
+        LinkCategory.EDITORS,
+        R.drawable.ic_link_every_door,
+        R.string.link_every_door_description
+    ),
+    Link(
+        "mapcomplete",
+        "https://mapcomplete.org/",
+        "MapComplete",
+        LinkCategory.EDITORS,
+        R.drawable.ic_link_mapcomplete,
+        R.string.link_mapcomplete_description
     ),
 
     /* ---------------------------------------- Maps -----------------------------------------*/
@@ -236,14 +271,6 @@ private val links = listOf(
         LinkCategory.MAPS,
         R.drawable.ic_link_wheelmap,
         R.string.link_wheelmap_description
-    ),
-    Link(
-        "openvegemap",
-        "https://openvegemap.netlib.re",
-        "OpenVegeMap",
-        LinkCategory.MAPS,
-        R.drawable.ic_link_openvegemap,
-        R.string.link_openvegemap_description
     ),
     Link(
         "osm_buildings",
@@ -402,7 +429,7 @@ private val links = listOf(
         R.drawable.ic_link_osmlab,
         R.string.link_show_me_the_way_description
     ),
-    Link(
+    Link( // TODO map does not show since Nov 2023
         "osm-haiku",
         "https://satellitestud.io/osm-haiku/app",
         "OpenStreetMap Haiku",
@@ -441,6 +468,14 @@ private val links = listOf(
         LinkCategory.GOODIES,
         R.drawable.ic_link_opencampingmap,
         R.string.link_opencampingmap_description
+    ),
+    Link(
+        "prettymapp",
+        "https://prettymapp.streamlit.app/",
+        "Prettymapp",
+        LinkCategory.GOODIES,
+        R.drawable.ic_link_prettymapp,
+        R.string.link_opencampingmap_description
     )
 )
 
@@ -471,8 +506,8 @@ private val achievements = listOf(
             /* Achievements rewarded for general activity should first cover introduction to OSM
                and then most of all goodies and general (OSM) showcases */
             1 to links("wiki"), // most important link
-            2 to links("welcomemat"),
-
+            2 to links("forum"), // this is the go-to place when people have questions too
+            3 to links("welcomemat"),
             4 to links("show_me_the_way"),
 
             6 to links("myosmatic"),
@@ -499,7 +534,7 @@ private val achievements = listOf(
                because users should not get sidetracked too early - best first show community
                intro links */
             1 to links("weeklyosm"), // newspaper first
-            2 to links("pic4review"), // mentioning it early because it is very easy to use
+            2 to links("calendar"),
             3 to links("neis-one"), // who-is-around-me, leaderboards etc fits into "community intro"
             4 to links("ideditor"),
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
@@ -507,6 +542,9 @@ private val achievements = listOf(
             7 to links("vespucci", "josm"), // together because both are full-featured-editors for each their platform
             8 to links("ohsomehex"),
             9 to links("notesreview"),
+            10 to links("every-door"),
+            // space for some other cool statistics tool (see comment above)
+            12 to links("mapcomplete", "pic4review"),
         )
     ),
 
@@ -549,7 +587,7 @@ private val achievements = listOf(
         // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
         { lvl -> (lvl + 1) * 10 },
         mapOf(
-            1 to links("openvegemap")
+
         )
     ),
 
@@ -576,7 +614,8 @@ private val achievements = listOf(
         { lvl -> (lvl + 1) * 10 },
         mapOf(
             1 to links("osm_buildings"),
-            2 to links("figuregrounder")
+            2 to links("figuregrounder"),
+            3 to links("prettymapp")
         )
     ),
 

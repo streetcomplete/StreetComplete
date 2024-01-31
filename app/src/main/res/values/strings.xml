@@ -119,6 +119,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="underground">underground</string>
     <string name="at_housename">house name %s</string>
     <string name="at_housenumber">house number %s</string>
+    <!-- as in: “Where is the ATM?” - “It is inside” -->
+    <string name="inside">inside</string>
+    <!-- as in: “Where is the ATM?” - “It is outside” -->
+    <string name="outside">outside</string>
     <!-- when the user left the answer form empty -->
     <string name="no_changes">"You did not give an answer"</string>
 
@@ -158,7 +162,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="move_node_description">Drag the map to place the feature at the correct position. Use the zoom function and try to be as precise as possible. Please be aware that your displayed location may be less exact than displayed.</string>
 
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
-    <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
+    <string name="quest_source_dialog_note">Only information that was verified in-person should be entered.</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
 
 
@@ -233,6 +237,12 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="measure_info_html_description">"&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces a measurement error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;
 &lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
 &lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;"</string>
+
+    <string name="quest_disable_action">Disable</string>
+    <string name="quest_disable_title">Disable this quest type?</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure is not installed (yet)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement.</string>
+    <string name="quest_disable_message_tape_measure">You could use a tape measure instead, but that might be a little awkward, after all.</string>
 
     <!-- Notifications -->
 
@@ -393,7 +403,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
 
-
     <!-- User statistics screen -->
 
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
@@ -426,16 +435,19 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_indoorequal_description">Discover indoor maps of malls, railway stations etc.</string>
     <string name="link_wheelmap_description">A map for finding wheelchair-accessible places</string>
     <string name="link_osm_buildings_description">A map that shows buildings in 3D</string>
-    <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
     <string name="link_touch_mapper_description">Create tactile maps easily for any address</string>
     <string name="link_mapy_tactile_description">Tactile maps for the visually impaired in various scales</string>
     <string name="link_josm_description">Fully-featured OSM editor for the desktop. This is the power tool for regular contributors.</string>
     <string name="link_vespucci_description">Advanced OSM editor for Android</string>
     <string name="link_ideditor_description">Simple OSM editor for the browser. Optimized for the desktop or large tablets</string>
+    <string name="link_every_door_description">Powerful POI editor for Android and iOS</string>
+    <string name="link_mapcomplete_description">Collection of thematic OSM maps that each show and let you edit one kind of feature</string>
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
     <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
     <string name="link_wiki_description">The wiki is your starting point to everything related to OpenStreetMap</string>
+    <string name="link_forum_description">Need help? Want to read what’s going on? Come and mingle, it’s bustling with activity from communities all over the globe!</string>
+    <string name="link_calendar_description">Are OpenStreetMap events or community meetings near you? (If not, you could add your own!)</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner’s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
@@ -456,6 +468,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
     <string name="link_opencampingmap_description">A map of campsites</string>
+    <string name="link_prettymapp_description">Create pretty multi-colored map posters of neighbourhoods</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
@@ -545,6 +558,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoring notes not phrased as questions"</string>
 
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
+    <string name="pref_title_quests_restore_hidden_summary">Number of hidden quests: %d</string>
     <string name="restore_confirmation">Restore</string>
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>
@@ -918,6 +932,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camp_type_caravans_only">Only motor homes, travel trailers, …</string>
     <string name="quest_camp_type_tents_only">Only tents</string>
     <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
+    <string name="quest_sanitary_dump_station_title">Is there a sanitary dump station?</string>
+    <string name="quest_sanitary_dump_station_description">Facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:</string>
 
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
@@ -1034,6 +1050,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
+    <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
@@ -1053,7 +1070,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_internet_access_terminal">Computer with Internet access</string>
     <string name="quest_internet_access_no">No connection</string>
 
-    <string name="quest_is_defibrillator_inside_title">Is this defibrillator (AED) inside a building?</string>
+    <string name="quest_is_amenity_inside_title">Is this inside a building?</string>
+    <string name="quest_defibrillator_location">Where is this defibrillator located?</string>
+    <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
 
     <string name="quest_kerb_height_title">What’s the height of this curb?</string>
     <string name="quest_kerb_height_flush">Same level as road surface</string>
@@ -1288,6 +1307,13 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_powerPolesMaterial_metal">Steel</string>
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
 
+    <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
+    <string name="quest_bbq_fuel_wood">Wood</string>
+    <string name="quest_bbq_fuel_electric">Electric</string>
+    <string name="quest_bbq_fuel_charcoal">Charcoal</string>
+    <string name="quest_bbq_fuel_not_a_bbq">It’s a fire enclosure</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills.</string>
+
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
 
@@ -1299,7 +1325,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_recycling_type_batteries">Batteries</string>
     <string name="quest_recycling_type_cans">Cans</string>
     <string name="quest_recycling_type_clothes">Clothes</string>
-    <string name="quest_recycling_type_green_waste">Garden waste</string>
+    <string name="quest_recycling_type_green_waste">Compostable waste</string>
+    <string name="quest_recycling_type_food_waste">Food waste</string>
     <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
     <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
     <string name="quest_recycling_type_paper">Paper</string>
@@ -1696,5 +1723,15 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
+    <string name="about_title_logs">Logs (%1$d)</string>
+    <string name="about_summary_logs">for use in error reports</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_share">Share logs</string>
+    <string name="about_title_show_logs">Show logs</string>
+    <string name="label_log_level">Log level</string>
+    <string name="label_log_newer_than">From</string>
+    <string name="label_log_older_than">To</string>
+    <string name="label_log_message_contains">Message contains</string>
+    <string name="title_logs_filters">Filter messages</string>
 
 </resources>

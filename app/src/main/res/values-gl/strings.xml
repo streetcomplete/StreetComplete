@@ -732,7 +732,6 @@ logros"</string>
     <string name="resurvey_intervals_less_often">"Preguntar menos veces"</string>
     <string name="resurvey_intervals_default">"Predeterminado"</string>
     <string name="resurvey_intervals_more_often">"Preguntar máis veces"</string>
-    <string name="quest_is_defibrillator_inside_title">"Este desfibrilador (AED) está dentro dun edificio?"</string>
     <string name="about_title_translate">"Axuda a traducir esta app"</string>
     <string name="about_description_translate">"%1$s está traducido %2$d%%"</string>
     <string name="quest_oneway2_title">"Esta é unha rúa dun só sentido? En que dirección?"</string>

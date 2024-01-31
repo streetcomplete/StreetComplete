@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.applyTo
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.asItem
-import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.createNarrowingTrafficCalming
+import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
@@ -34,21 +34,21 @@ class LaneNarrowingTrafficCalmingForm :
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
-    override val items get() = LaneNarrowingTrafficCalming.values().map { it.asItem() }
+    override val items get() = LaneNarrowingTrafficCalming.entries.map { it.asItem() }
 
     private var originalLaneNarrowingTrafficCalming: LaneNarrowingTrafficCalming? = null
 
     private var positionOnWay: PositionOnWay? = null
-    set(value) {
-        field = value
-        if (value != null) {
-            setMarkerPosition(value.position)
-            setMarkerVisibility(true)
-        } else {
-            setMarkerVisibility(false)
-            setMarkerPosition(null)
+        set(value) {
+            field = value
+            if (value != null) {
+                setMarkerPosition(value.position)
+                setMarkerVisibility(true)
+            } else {
+                setMarkerVisibility(false)
+                setMarkerPosition(null)
+            }
         }
-    }
     private var roads: Collection<Pair<Way, List<LatLon>>>? = null
     private val allRoadsFilter = """
         ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
@@ -59,7 +59,9 @@ class LaneNarrowingTrafficCalmingForm :
             AnswerItem(R.string.lane_narrowing_traffic_calming_none) {
                 confirmRemoveLaneNarrowingTrafficCalming()
             }
-        } else null
+        } else {
+            null
+        }
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,7 +77,7 @@ class LaneNarrowingTrafficCalmingForm :
         setMarkerIcon(R.drawable.ic_quest_choker)
         setMarkerVisibility(false)
 
-        originalLaneNarrowingTrafficCalming = element?.tags?.let { createNarrowingTrafficCalming(it) }
+        originalLaneNarrowingTrafficCalming = element?.tags?.let { parseNarrowingTrafficCalming(it) }
         selectedItem = originalLaneNarrowingTrafficCalming?.asItem()
     }
 

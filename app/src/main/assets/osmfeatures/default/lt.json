@@ -635,21 +635,9 @@
                     "label": "Ratlankiai",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Taip",
-                        "undefined": "Ne"
-                    }
-                },
                 "horse_riding": {
                     "options": {
                         "horse_riding": "Taip",
-                        "undefined": "Ne"
-                    }
-                },
-                "horse_stables": {
-                    "options": {
-                        "stables": "Taip",
                         "undefined": "Ne"
                     }
                 },
@@ -3211,9 +3199,6 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Dideli greičio slopinimo kalneliai"
-                },
-                "traffic_calming/island": {
-                    "name": "Eismo salelė"
                 },
                 "type/boundary": {
                     "name": "Riba",

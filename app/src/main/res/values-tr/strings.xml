@@ -720,7 +720,6 @@ seviyeleri"</string>
     <string name="resurvey_intervals_less_often">"Daha az sor"</string>
     <string name="resurvey_intervals_default">"Varsayılan"</string>
     <string name="resurvey_intervals_more_often">"Daha sık sor"</string>
-    <string name="quest_is_defibrillator_inside_title">"Bu defibrilatör (AED) bir binanın içinde mi?"</string>
     <string name="about_title_translate">"Bu uygulamayı çevirmemize yardımcı olun"</string>
     <string name="about_description_translate">"%1$s, %2$d%% çevrildi"</string>
     <string name="quest_oneway2_title">"Bu tek yönlü bir yol mu? Hangi yönde?"</string>
@@ -823,6 +822,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="deleted_poi_action_description">"Sildin"</string>
     <string name="added_tag_action_title">"%s eklendi"</string>
     <string name="removed_tag_action_title">"%s kaldırıldı"</string>
+    <string name="pref_title_delete_cache">"Çerezleri Sil"</string>
     <string name="pref_title_delete_cache_summary">"Bazı verilerin güncel olmadığını düşünüyorsan"</string>
     <string name="delete_confirmation">"Sil"</string>
     <string name="pref_background_type_select">"Arka plan tipini seç"</string>

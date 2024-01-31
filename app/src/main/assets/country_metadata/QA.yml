@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
 advisorySpeedLimitSignStyle: white
-atmOperators: [Doha Bank, QNB, QIB, Commercial Bank of Qatar]
+atmOperators: [QNB, Doha Bank, بنك الدوحة, QIB, Commercial Bank of Qatar]
 centerLineStyle: yellow
 firstDayOfWorkweek: Su
 mobileCountryCode: 427

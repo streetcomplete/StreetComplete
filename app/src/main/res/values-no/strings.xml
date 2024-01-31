@@ -734,7 +734,6 @@ nivåer"</string>
     <string name="resurvey_intervals_less_often">"Spør sjeldnere"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Spør oftere"</string>
-    <string name="quest_is_defibrillator_inside_title">"Er det en hjertestarter (AED) i denne bygningen?"</string>
     <string name="about_title_translate">"Hjelp til å oversette denne appen"</string>
     <string name="about_description_translate">"%1$s er %2$d%% oversatt"</string>
     <string name="quest_oneway2_title">"Er dette en enveiskjøring? I hvilken retning?"</string>
@@ -1224,7 +1223,6 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="quest_address_street_hint2">"Trykk på gaten på kartet for å velge den"</string>
     <string name="quest_bicycle_incline_title">"Hvilken retning går oppover her?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Det er småkupert"</string>
-    <string name="quest_drinking_water_type_title">"Hvordan tilbys drikkevann her?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Annen type vannfontene"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vannfontene med en tynn vannstråle"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Kun påfyll av flasker"</string>
@@ -1333,4 +1331,44 @@ Vil du flytte den nå?"</string>
     <string name="overlay_addresses_no_entrance">"Dette er ikke en inngang…"</string>
     <string name="quest_cycleway_value_sidewalk2">"delt gang- og sykkelvei"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"delt gang- og sykkelvei, begge retninger"</string>
+    <string name="overlays_tutorial_title">"Kartlag"</string>
+    <string name="overlays_tutorial_intro">"Du fant en ny metode for å redigere kartet!"</string>
+    <string name="overlays_tutorial_display">"Hvert kartlag viser en type kartdata, for eksempel butikker eller veidekke.
+
+Kartdataene er uthevet med ulike farger for å gi deg god oversikt over hva som er registrert allerede.
+Manglende data vises alltid i rødt."</string>
+    <string name="overlays_tutorial_edit">"Trykk på uthevede kartdata for å vise eller redigere det. Du kan også dele veier eller legge inn merknader, akkurat som vanlige oppdrag.
+
+I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset vises, for eksempel adressekartlaget."</string>
+    <string name="quest_crossing_kerb_height_title">"Hvor høye er fortauskantene ved denne overgangen?"</string>
+    <string name="quest_maxheight_sign_title">"Hva er maksimal høyde her?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Hva er maksimal høyde under broen?"</string>
+    <string name="quest_leave_new_note_as_answer">"I så fall må du lage en merknad hvor du forklarer situasjonen."</string>
+    <string name="quest_drinking_water_type_title2">"Er drikkevann tilgjengelig her? I så fall, hva slags kilde?"</string>
+    <string name="quest_is_amenity_inside_title">"Er dette inni en bygning?"</string>
+    <string name="quest_bbq_fuel_title">"Hvordan varmes denne grillen?"</string>
+    <string name="quest_bbq_fuel_wood">"Treverk"</string>
+    <string name="quest_bbq_fuel_electric">"Strøm"</string>
+    <string name="quest_bbq_fuel_charcoal">"Trekull"</string>
+    <string name="inside">"inni"</string>
+    <string name="outside">"utenfor"</string>
+    <string name="quest_recycling_type_food_waste">"Matavfall"</string>
+    <string name="quest_defibrillator_location">"Hvor er defibrillatoren?"</string>
+    <string name="quest_defibrillator_location_description">"Vennligst gi en nøyaktig beskrivelse av posisjonen (f.eks. “i resepsjonen“)."</string>
+    <string name="quest_sanitary_dump_station_title">"Er det et toalettømmeanlegg her?"</string>
+    <string name="quest_sanitary_dump_station_description">"Anlegg for å tømme kloakk fra beholdere i campingbiler, trailere ol. Vanligvis skiltet slik:"</string>
+    <string name="quest_generalFee_title">"Må du betale for å bruke den?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Det er et åpent ildsted"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Et åpent ildsted har ingen overflate for matlagning (f.eks. rist/plate), i motsetning til griller."</string>
+    <string name="about_title_logs">"Logger (%1$d)"</string>
+    <string name="about_summary_logs">"for bruk i feilrapporter"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="action_share">"Del logger"</string>
+    <string name="about_title_show_logs">"Vis logger"</string>
+    <string name="label_log_level">"Loggnivå"</string>
+    <string name="label_log_newer_than">"Fra"</string>
+    <string name="label_log_older_than">"Til"</string>
+    <string name="label_log_message_contains">"Meldingen inneholder"</string>
+    <string name="title_logs_filters">"Filtrer meldingene"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Antall skjulte oppdrags: %d"</string>
 </resources>

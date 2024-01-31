@@ -45,10 +45,10 @@ class StreetParkingDrawable(
 
     /** Y-Offset in percent (0..<1) */
     var phase: Float = 0f
-    set(value) {
-        field = value
-        invalidateSelf()
-    }
+        set(value) {
+            field = value
+            invalidateSelf()
+        }
 
     override fun draw(canvas: Canvas) {
         if (!isVisible) return

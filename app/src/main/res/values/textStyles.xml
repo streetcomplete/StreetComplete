@@ -49,4 +49,30 @@
         <item name="android:textColor">@color/hint_text</item>
     </style>
 
+    <!-- ++++++++++++++++++++++++++++++++++++++++ Logs +++++++++++++++++++++++++++++++++++++++++ -->
+
+    <style name="TextAppearance.LogMessage" parent="TextAppearance.Body">
+        <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="TextAppearance.LogMessage.Verbose" parent="TextAppearance.LogMessage">
+        <item name="android:textColor">@color/log_verbose</item>
+    </style>
+
+    <style name="TextAppearance.LogMessage.Debug">
+        <item name="android:textColor">@color/log_debug</item>
+    </style>
+
+    <style name="TextAppearance.LogMessage.Info">
+        <item name="android:textColor">@color/log_info</item>
+    </style>
+
+    <style name="TextAppearance.LogMessage.Warning">
+        <item name="android:textColor">@color/log_warning</item>
+    </style>
+
+    <style name="TextAppearance.LogMessage.Error">
+        <item name="android:textColor">@color/log_error</item>
+    </style>
+
 </resources>

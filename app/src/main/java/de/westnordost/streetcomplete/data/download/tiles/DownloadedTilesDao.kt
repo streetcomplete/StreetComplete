@@ -52,7 +52,7 @@ class DownloadedTilesDao(private val db: Database) {
 
     /** @return whether the given tiles range has been completely downloaded */
     fun contains(tilesRect: TilesRect, ignoreOlderThan: Long): Boolean {
-         val tileCount = db.queryOne(NAME,
+        val tileCount = db.queryOne(NAME,
             columns = arrayOf("COUNT(*) as c"),
             where = "$X BETWEEN ? AND ? AND $Y BETWEEN ? AND ? AND $DATE > ?",
             args = arrayOf(

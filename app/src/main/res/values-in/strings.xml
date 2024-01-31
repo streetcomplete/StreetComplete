@@ -736,7 +736,6 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="resurvey_intervals_less_often">"Tanyakan lebih jarang"</string>
     <string name="resurvey_intervals_default">"Default"</string>
     <string name="resurvey_intervals_more_often">"Tanyakan lebih sering"</string>
-    <string name="quest_is_defibrillator_inside_title">"Apakah defibrillator (AED) ini ada di dalam gedung?"</string>
     <string name="about_title_translate">"Bantu menerjemahkan aplikasi ini"</string>
     <string name="about_description_translate">"%1$s telah diterjemahkan %2$d%%"</string>
     <string name="quest_oneway2_title">"Apakah jalan ini satu-arah? Ke arah mana?"</string>
@@ -1224,7 +1223,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_address_street_hint2">"Ketuk jalan di peta untuk memilihnya"</string>
     <string name="quest_bicycle_incline_title">"Ke mana arah yang mengarah ke atas?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Itu naik turun"</string>
-    <string name="quest_drinking_water_type_title">"Bagaimana air minum disediakan di sini?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Air mancur lainnya"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Air mancur mengeluarkan pancaran air kecil"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Hanya mengisi ulang botol"</string>

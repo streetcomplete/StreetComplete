@@ -1,5 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Popular, Banco Popular, First Bank, Oriental, Scotiabank, Oriental Bank]
 centerLineStyle: yellow
+chargingStationOperators: ['Tesla, Inc.']
+defaultSpeedLimitHasUrbanOrRural: true
 lengthUnits: [foot and inch, meter]
 noEntrySignStyle: no entre
 noParkingSignStyle: mutcd text spanish

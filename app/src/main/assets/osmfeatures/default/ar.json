@@ -408,9 +408,6 @@
                     "label": "العلامة التجارية",
                     "terms": "العلامة التجارية,الماركة,البراند"
                 },
-                "brewery": {
-                    "label": "بيرة برميل"
-                },
                 "bridge": {
                     "label": "النوع",
                     "placeholder": "الافتراضي"
@@ -757,7 +754,6 @@
                         "lebanese": "لبناني",
                         "malaysian": "ماليزي",
                         "mexican": "مكسيكي",
-                        "pankcake": "بان كيك (فطيرة مسطحة)",
                         "pasta": "باستا",
                         "pizza": "بيتزا",
                         "polish": "بولندي",
@@ -1361,15 +1357,7 @@
                     "label": "عدد أطواق كرة السلة",
                     "placeholder": "1، 2، 4..."
                 },
-                "horse_dressage": {
-                    "label": "ترويض الخيول",
-                    "options": {
-                        "equestrian": "نعم",
-                        "undefined": "لا"
-                    }
-                },
                 "horse_riding": {
-                    "label": "ركوب الخيل",
                     "options": {
                         "horse_riding": "نعم",
                         "undefined": "لا"
@@ -1386,13 +1374,6 @@
                     },
                     "placeholder": "صعب، خطير...",
                     "terms": "صعوبة ركوب الخيل"
-                },
-                "horse_stables": {
-                    "label": "ركوب مستقر",
-                    "options": {
-                        "stables": "نعم",
-                        "undefined": "لا"
-                    }
                 },
                 "hot_water": {
                     "label": "المياة الساخنة"
@@ -4116,10 +4097,6 @@
                     "name": "آلة بيع مواد غذائية",
                     "terms": "آلة بيع مواد غذائية"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "مضخة وقود",
-                    "terms": "مضخة وقود,مضخة غاز,مضخة بترول,مضخة جاز,مضخة سولار"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "آلة بيع آيس كريم",
                     "terms": "آلة بيع آيس كريم,آلة بيع مثلجات"
@@ -4147,10 +4124,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "آلة بيع طوابع بريدية",
                     "terms": "آلة بيع طوابع بريدية"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "آلة بيع الوجبات الخفيفة",
-                    "terms": "آلة بيع الوجبات الخفيفة"
                 },
                 "amenity/veterinary": {
                     "name": "عيادة بيطرية",
@@ -8448,10 +8421,6 @@
                 "traffic_calming/hump": {
                     "name": "مطب طويل لتخفيف السرعة",
                     "terms": "مطب لتخفيف السرعة"
-                },
-                "traffic_calming/island": {
-                    "name": "جزيرة فاصلة بين مسارين طريق",
-                    "terms": "جزيرة فاصلة بين مسارين طريق"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "مطبات تخفيف سرعة صغيرة",

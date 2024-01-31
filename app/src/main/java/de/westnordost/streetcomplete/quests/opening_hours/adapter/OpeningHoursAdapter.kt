@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.Months
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
@@ -175,7 +175,7 @@ class OpeningHoursAdapter(private val context: Context) :
         notifyItemInserted(insertIndex)
     }
 
-    fun createOpeningHours() = rows.toOpeningHoursRules()
+    fun createOpeningHours() = rows.toOpeningHours()
 
     fun changeToMonthsMode() {
         if (rows.isEmpty()) {
@@ -195,8 +195,11 @@ class OpeningHoursAdapter(private val context: Context) :
 
         fun update(row: OpeningMonthsRow, isEnabled: Boolean) {
             binding.monthsLabel.text =
-                if (row.months.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
-                else row.months.toLocalizedString(locale)
+                if (row.months.isSelectionEmpty()) {
+                    "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
+                } else {
+                    row.months.toLocalizedString(locale)
+                }
             binding.monthsLabel.setOnClickListener {
                 openSetMonthsRangeDialog(row.months) { months ->
                     row.months = months
@@ -242,9 +245,13 @@ class OpeningHoursAdapter(private val context: Context) :
 
         fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, isEnabled: Boolean) {
             binding.weekdaysLabel.text =
-                if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
-                else if (rowBefore != null && row.weekdays.isSelectionEmpty()) "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
-                else row.weekdays.toLocalizedString(context.resources, locale)
+                if (rowBefore != null && row.weekdays == rowBefore.weekdays) {
+                    ""
+                } else if (rowBefore != null && row.weekdays.isSelectionEmpty()) {
+                    "(" + context.resources.getString(R.string.quest_openingHours_unspecified_range) + ")"
+                } else {
+                    row.weekdays.toLocalizedString(context.resources, locale)
+                }
 
             binding.weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->

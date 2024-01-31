@@ -40,16 +40,16 @@
     <string name="quest_noteDiscussion_anonymous">"Anonyme"</string>
     <string name="confirmation_discard_title">"Abandonner la saisie ?"</string>
     <string name="confirmation_discard_positive">"Abandonner"</string>
-    <string name="action_download">"Rechercher des quêtes ici"</string>
+    <string name="action_download">"Télécharger les données ici"</string>
     <string name="action_upload">"Envoyer les réponses"</string>
     <string name="no_changes">"Vous n’avez pas donné de réponse"</string>
     <string name="close">"fermer"</string>
-    <string name="download_error">"Erreur pendant la recherche de quêtes"</string>
+    <string name="download_error">"Erreur pendant le téléchargement des données"</string>
     <string name="upload_error">"Erreur pendant le téléversement des réponses"</string>
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
-    <string name="confirmation_cancel_prev_download_title">"Annuler la recherche en cours et rechercher ici à la place ?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Annuler le téléchargement en cours et télécharger ici à la place ?"</string>
     <string name="turn_on_location_request">"La localisation est désactivée. Ouvrir les paramètres pour l’activer maintenant ?"</string>
-    <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes autour de vous."</string>
+    <string name="no_location_permission_warning">"L’autorisation de localisation est nécessaire pour afficher votre position sur la carte et télécharger des données à proximité."</string>
     <string name="about_title_authors">"Auteurs"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Page d’accueil du projet"</string>
@@ -62,7 +62,7 @@
     <string name="confirmation_authorize_now">"Vous devez autoriser la publication de vos réponses avec votre compte utilisateur OSM. Autoriser maintenant ?"</string>
     <string name="not_authorized">"Non autorisé"</string>
     <string name="version_banned_message">"Cette version de StreetComplete est trop vielle. Veuillez la mettre à jour !"</string>
-    <string name="no_gps_no_quests">"Pour rechercher automatiquement des quêtes autour de vous, activer la localisation"</string>
+    <string name="no_gps_no_quests">"Pour télécharger automatiquement des données à proximité de vous, activez la localisation"</string>
     <string name="later">"Plus tard"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Ce n’est qu’une section entre deux voies"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Autre chose (laisser une note)"</string>
@@ -126,7 +126,7 @@ Toutefois, avant de télécharger vos modifications, l’application vérifie, �
     <string name="quest_oneway_title">"S’agit-il d’une voie à sens unique ?"</string>
     <string name="quest_address_title">"Quel est le numéro de maison de ce bâtiment ?"</string>
     <string name="store_listing_short_description">"Application d’arpentage OpenStreetMap"</string>
-    <string name="store_listing_full_description">"Aidez à améliorer l’OpenStreetMap avec StreetComplete !
+    <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete !
 
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L’information liée à chaque marqueur peut être complétée en répondant à une question simple.
 
@@ -140,7 +140,7 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="crash_compose_email">"Rédiger un courriel"</string>
     <string name="no_email_client">"Vous n’avez pas de client de messagerie installé."</string>
     <string name="pref_title_keep_screen_on">"Conserver l’écran allumé"</string>
-    <string name="download_server_error">"Erreur de connexion lors de la recherche de quêtes. Réessayez plus tard."</string>
+    <string name="download_server_error">"Erreur de connexion lors du téléchargement des données. Réessayez plus tard."</string>
     <string name="upload_server_error">"Erreur de connexion lors de l’envoi des réponses. Réessayez plus tard."</string>
     <string name="quest_generic_hasFeature_yes">"Oui"</string>
     <string name="quest_generic_hasFeature_no">"Non"</string>
@@ -368,7 +368,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_religion_bahai">"Bahaïsme"</string>
     <string name="quest_religion_caodaist">"Caodaïsme"</string>
     <string name="quest_religion_chinese_folk">"Religion traditionnelle chinoise"</string>
-    <string name="quest_religion_for_wayside_shrine_title">"Quelle religion est représentée dans ce sanctuaire ?"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Quelle religion est associée à ce sanctuaire ?"</string>
     <string name="quest_parking_fee_title">"Le stationnement est-il payant ici ?"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Pavés non taillés"</string>
     <string name="quest_streetSurface_square_title">"Quel est le revêtement de cette place ?"</string>
@@ -412,25 +412,25 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_hotel">"Hôtel"</string>
     <string name="quest_buildingType_dormitory">"Résidence universitaire, foyer"</string>
     <string name="quest_buildingType_houseboat">"Maison flottante"</string>
-    <string name="quest_buildingType_bungalow">"Bungalow"</string>
+    <string name="quest_buildingType_bungalow">"Bâtiment de bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Mobile-home"</string>
     <string name="quest_buildingType_commercial">"Bâtiment commercial"</string>
-    <string name="quest_buildingType_commercial_generic_description">"Bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale"</string>
+    <string name="quest_buildingType_commercial_generic_description">"bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale"</string>
     <string name="quest_buildingType_industrial">"Industriel"</string>
     <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garagiste…"</string>
     <string name="quest_buildingType_office">"Bureaux"</string>
     <string name="quest_buildingType_retail">"Magasin·s"</string>
     <string name="quest_buildingType_warehouse">"Entrepôt"</string>
-    <string name="quest_buildingType_kiosk">"Kiosque"</string>
+    <string name="quest_buildingType_kiosk">"Bâtiment du kiosque"</string>
     <string name="quest_buildingType_storage_tank">"Réservoir de stockage"</string>
     <string name="quest_buildingType_religious">"Bâtiment religieux"</string>
-    <string name="quest_buildingType_church">"Église"</string>
-    <string name="quest_buildingType_chapel">"Chapelle"</string>
+    <string name="quest_buildingType_church">"Bâtiment de l’église"</string>
+    <string name="quest_buildingType_chapel">"Bâtiment de la chapelle"</string>
     <string name="quest_buildingType_cathedral">"Cathédrale"</string>
-    <string name="quest_buildingType_mosque">"Mosquée"</string>
-    <string name="quest_buildingType_temple">"Temple"</string>
-    <string name="quest_buildingType_pagoda">"Pagode"</string>
-    <string name="quest_buildingType_synagogue">"Synagogue"</string>
+    <string name="quest_buildingType_mosque">"Bâtiment de la mosquée"</string>
+    <string name="quest_buildingType_temple">"Bâtiment du temple"</string>
+    <string name="quest_buildingType_pagoda">"Bâtiment de la pagode"</string>
+    <string name="quest_buildingType_synagogue">"Bâtiment de la synagogue"</string>
     <string name="quest_buildingType_civic">"Bâtiment public"</string>
     <string name="quest_buildingType_civic_description">"abrite d’ordinaire un service public"</string>
     <string name="quest_buildingType_kindergarten">"École maternelle ou crèche"</string>
@@ -466,7 +466,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Pas de numéro…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Le bâtiment a été marqué comme :"</string>
-    <string name="quest_buildingType_shrine">"Sanctuaire"</string>
+    <string name="quest_buildingType_shrine">"Bâtiment du sanctuaire"</string>
     <string name="quest_maxspeed_title_short2">"Quelle est la limite de vitesse pour ce tronçon ?"</string>
     <string name="quest_maxspeed_answer_sign">"Un panneau"</string>
     <string name="quest_maxspeed_answer_zone2">"Est dans une zone de limitation de vitesse"</string>
@@ -533,7 +533,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_generic_answer_differs_along_the_way">"Cela varie en cours de route"</string>
     <string name="quest_split_way_description">"S’il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
 Découper maintenant ?"</string>
-    <string name="quest_split_way_tutorial">"Appuyez sur le chemin pour le découper au(x) point(s) où la réponse diffère. Essayez d’être aussi précis que possible, vous pouvez zoomer comme d’habitude."</string>
+    <string name="quest_split_way_tutorial">"Appuyez sur le chemin pour le découper au(x) point(s) où la réponse diffère. Utilisez la fonction zoom et essayez d’être aussi précis que possible."</string>
     <string name="quest_split_way_too_imprecise">"Veuillez zoomer"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Il y a eu plusieurs découpages. Vous pouvez toujours redécouper le chemin ultérieurement."</string>
     <string name="quest_footwayPartSurface_title">"Quel est le revêtement du chemin piéton ici ?"</string>
@@ -550,7 +550,7 @@ Découper maintenant ?"</string>
     <string name="quest_recycling_type_batteries">"Batteries"</string>
     <string name="quest_recycling_type_cans">"Boîtes de conserve, canettes,…"</string>
     <string name="quest_recycling_type_clothes">"Vêtements"</string>
-    <string name="quest_recycling_type_green_waste">"Déchets verts"</string>
+    <string name="quest_recycling_type_green_waste">"Déchets compostables"</string>
     <string name="quest_recycling_type_glass_bottles">"Bouteilles et bocaux en verre"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Bouteilles et bocaux"</string>
     <string name="quest_recycling_type_paper">"Papier"</string>
@@ -571,8 +571,8 @@ Découper maintenant ?"</string>
     <string name="about_title_donate">"Faites un don"</string>
     <string name="about_summary_donate">"Exprimez votre gratitude ! ❤️"</string>
     <string name="about_description_donate">"Merci de penser à soutenir cette application ! Pour voir l’état actuel des dons et pour faire un don, appuyez sur la plateforme correspondante :"</string>
-    <string name="confirmation_cancel_prev_download_confirmed">"Rechercher des quêtes plutôt ici"</string>
-    <string name="confirmation_cancel_prev_download_cancel">"Continuer la recherche actuelle"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Téléchargez plutôt ici"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continuer le téléchargement actuel"</string>
     <string name="quest_buildingType_garages_description">"Espaces séparés pour différents propriétaires ou locataires"</string>
     <string name="quest_tourism_information_title">"De quel type d’information touristique s’agit-il ?"</string>
     <string name="quest_tourism_information_office">"Office de tourisme"</string>
@@ -734,7 +734,6 @@ accomplis"</string>
     <string name="resurvey_intervals_less_often">"Demander moins souvent"</string>
     <string name="resurvey_intervals_default">"Défaut"</string>
     <string name="resurvey_intervals_more_often">"Demander plus souvent"</string>
-    <string name="quest_is_defibrillator_inside_title">"Ce défibrillateur (DAE) se trouve-t-il à l’intérieur d’un bâtiment ?"</string>
     <string name="about_title_translate">"Aidez à traduire cette application"</string>
     <string name="about_description_translate">"%1$s est traduit à %2$d%%"</string>
     <string name="quest_oneway2_title">"Est-ce une rue à sens unique ? Dans quel sens ?"</string>
@@ -1093,7 +1092,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_smoking_separated">"Seulement dans des zones séparées"</string>
     <string name="quest_smoking_yes">"Oui, partout"</string>
     <string name="quest_seating_name_title">"Quel type d’accueil propose ce restaurant ?"</string>
-    <string name="quest_seating_takeaway">"À emporter seulement"</string>
+    <string name="quest_seating_takeaway">"Pas d’accueil (seulement à emporter)"</string>
     <string name="quest_seating_indoor_only">"En intérieur seulement"</string>
     <string name="quest_seating_outdoor_only">"En terrasse seulement"</string>
     <string name="quest_seating_indoor_and_outdoor">"En intérieur et en terrasse"</string>
@@ -1135,7 +1134,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="link_backofyourhand_description">"Connaissez vous bien votre secteur ? Testez votre connaissance en localisant les rues."</string>
     <string name="link_notesreview_description">"Trouvez, filtrez et commentez facilement vos notes et celles des autres. Beaucoup de notes peuvent être résolues en reportant leurs informations sur la carte via iD ou JOSM"</string>
     <string name="quest_accepts_cards">"Est-ce que les cartes de crédit ou de débit sont acceptées ici ?"</string>
-    <string name="quest_accepts_cards_debit_and_credit">"Les deux"</string>
+    <string name="quest_accepts_cards_debit_and_credit">"Cartes de débit et de crédit"</string>
     <string name="quest_accepts_cards_credit_only">"Seulement les cartes de crédit"</string>
     <string name="quest_accepts_cards_dedit_only">"Seulement les cartes de débit"</string>
     <string name="quest_accepts_cards_unavailable">"Pas de cartes de crédit ni de débit"</string>
@@ -1170,7 +1169,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="ar_core_tracking_hint_tap_to_measure">"Appuyez sur l’écran pour commencer la mesure"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Y a-t’il une pompe à vélo ici (au moins quand c’est ouvert) ?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Y a t’il une pompe à vélos fonctionnelle ici ?"</string>
-    <string name="action_overlays">"Couches"</string>
+    <string name="action_overlays">"Surcouches"</string>
     <string name="split_way">"Couper le chemin"</string>
     <string name="quest_memorialType_title">"De quel type de mémorial s’agit-il ?"</string>
     <string name="quest_memorialType_statue">"Statue"</string>
@@ -1199,7 +1198,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_entrance_reference_reference_label">"Inscription à l’entrée :"</string>
     <string name="quest_entrance_reference_flat_range_label">"Rangée d’appartements :"</string>
     <string name="quest_entrance_reference_flat_range_to">"à"</string>
-    <string name="default_disabled_msg_overlay">"Cette quête est désactivée par défaut car il en existe une autre la recouvrant qui est plus facile à réaliser et plus efficace pour mettre à jour ces données."</string>
+    <string name="default_disabled_msg_overlay">"Cette quête est désactivée par défaut car il existe une surcouche qui est plus facile à réaliser et plus efficace pour mettre à jour ces données."</string>
     <string name="quest_camp_drinking_water_title">"L’eau potable est elle disponible librement aux campeurs ici ?"</string>
     <string name="quest_camp_shower_title">"Y a-t-il des douches ici ?"</string>
     <string name="quest_camp_power_supply_title">"Y a-t-il la possibilité pour les clients de recharger leur téléphone, ordinateur portable, etc. ici ?"</string>
@@ -1224,7 +1223,6 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_address_street_hint2">"Touchez la rue sur la carte pour la sélectionner"</string>
     <string name="quest_bicycle_incline_title">"Dans quelle direction cela monte t’il ?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Alternance de montées et descentes"</string>
-    <string name="quest_drinking_water_type_title">"De quelle façon est distribuée l’eau potable ici ?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Autre type de fontaine"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Fontaine avec un petit jet"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Remplissage de bouteilles uniquement"</string>
@@ -1238,7 +1236,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="name_label">"Nom :"</string>
     <string name="unknown_shop_title">"Type de lieu non non défini"</string>
     <string name="quest_address_answer_no_address">"Pas d’adresse ici"</string>
-    <string name="quest_bicycle_barrier_installation_title">"Peut-on ouvrir cette barrière à vélos ?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"Peut-on ouvrir cette barrière à vélos (avec ou sans clé) ?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixe"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Ouvrable"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Amovible"</string>
@@ -1297,7 +1295,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
 &lt;p&gt;Réglez les points de départ et de terminaison en pointant le téléphone vers le bas (de manière à voir la flèche blanche du dessus) pour remédier au problème pour les mesures horizontales.&lt;/p&gt;
 &lt;p&gt;Pour les mesures verticales, vous devez vérifier manuellement que le point de départ n’est pas en mouvement par rapport au sol, en regardant depuis des directions différentes.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Cette application utilise les &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Services Google Play pour RA&lt;/a&gt; (ARCore), qui sont fournis par Google et sont soumis aux &lt;a href=\"https://policies.google.com/privacy\"&gt;règles de confidentialité de Google&lt;/a&gt;."</string>
-    <string name="default_disabled_msg_seasonal">"Ce type de quêtes est désactivé par défaut car il peut nécessiter une re-vérification à un moment précis de l’année."</string>
+    <string name="default_disabled_msg_seasonal">"Ce type de quête est désactivé par défaut car il peut nécessiter une re-vérification de la situation à différentes périodes de l’année."</string>
     <string name="quest_gritBinSeasonal_title">"Est-ce là même hors hiver ?"</string>
     <string name="street_parking_staggered_on_street">"Sur la chaussée, en alternance"</string>
     <string name="street_parking_staggered_half_on_kerb">"Partiellement sur la chaussée, en alternance"</string>
@@ -1338,8 +1336,38 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
 
 Les données sont mises en évidence dans différentes couleurs pour vous donner un bon aperçu de ce qui a été enregistré jusqu’à présent.
 Les données manquantes sont toujours affichées en rouge."</string>
-    <string name="overlays_tutorial_edit">"Appuyez sur les données en surbrillance pour les modifier. Vous pouvez également diviser les chemins ou rapporter des notes, comme avec les quêtes.
+    <string name="overlays_tutorial_edit">"Appuyez sur les données en surbrillance pour les afficher ou les modifier. Vous pouvez également diviser les chemins ou rapporter des notes, comme avec les quêtes.
 
-De plus, certaines surcouches vous permettent d’ajouter de nouvelles données à la position d’un réticule affiché, comme la superposition des adresses."</string>
+De plus, certaines surcouches vous permettent d’ajouter de nouvelles données à la position d’un réticule affiché, comme la surcouche des adresses."</string>
     <string name="quest_crossing_kerb_height_title">"Quelle est la hauteur des bordures à ce croisement ?"</string>
+    <string name="quest_maxheight_sign_title">"Quelle limite de hauteur est indiquée ici ?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Quelle limite de hauteur est indiquée en dessous de ce pont ?"</string>
+    <string name="quest_leave_new_note_as_answer">"Dans ce cas, vous devez laisser une note dans laquelle vous expliquez la situation."</string>
+    <string name="quest_drinking_water_type_title2">"L’eau potable est-elle disponible ici ? Si oui, quelle est sa source ?"</string>
+    <string name="quest_is_amenity_inside_title">"Est-ce à l’intérieur d’un bâtiment ?"</string>
+    <string name="quest_bbq_fuel_title">"Quel est le moteur de ce gril ?"</string>
+    <string name="quest_bbq_fuel_wood">"Bois"</string>
+    <string name="quest_bbq_fuel_electric">"Électrique"</string>
+    <string name="quest_bbq_fuel_charcoal">"Fusain"</string>
+    <string name="inside">"à l’intérieur"</string>
+    <string name="outside">"à l’extérieur"</string>
+    <string name="quest_recycling_type_food_waste">"Déchets alimentaires"</string>
+    <string name="quest_defibrillator_location">"Où se trouve ce défibrillateur ?"</string>
+    <string name="quest_defibrillator_location_description">"Veuillez fournir une description concise de son emplacement (ex. « dans la salle des porteurs »)."</string>
+    <string name="quest_sanitary_dump_station_title">"Y a-t-il une station de vidange ?"</string>
+    <string name="quest_sanitary_dump_station_description">"Installation permettant de déverser des déchets organiques provenant du réservoir des toilettes d’un camping-car, d’une camionnette, etc. Généralement indiqué par un panneau comme celui-ci :"</string>
+    <string name="quest_generalFee_title">"Doit-on payer pour l’utiliser ?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"C’est un foyer pour le feu"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Les foyers n’ont pas de surface de cuisson (ex. grille/plaque), contrairement aux grills."</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"à utiliser dans un rapport d’erreur"</string>
+    <string name="action_filter">"Filtre"</string>
+    <string name="action_share">"Partager les logs"</string>
+    <string name="about_title_show_logs">"Afficher les logs"</string>
+    <string name="label_log_level">"Niveau de log"</string>
+    <string name="label_log_newer_than">"De"</string>
+    <string name="label_log_older_than">"À"</string>
+    <string name="label_log_message_contains">"Le message contient"</string>
+    <string name="title_logs_filters">"Filtrer les messages"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Nombre de quêtes cachées : %d"</string>
 </resources>

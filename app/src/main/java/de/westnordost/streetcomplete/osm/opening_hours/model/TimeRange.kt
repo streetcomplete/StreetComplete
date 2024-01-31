@@ -12,8 +12,11 @@ data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = fa
         isOpenEnded && other.start >= start ||
         other.isOpenEnded && start >= other.start ||
         loops && other.loops ||
-        if (loops || other.loops) other.end > start || other.start < end
-        else                      other.end > start && other.start < end
+        if (loops || other.loops) {
+            other.end > start || other.start < end
+        } else {
+            other.end > start && other.start < end
+        }
 
     val loops get() = end < start
 
@@ -33,7 +36,7 @@ data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = fa
         sb.append(timeOfDayToString(locale, start))
         if (start != end || !isOpenEnded) {
             sb.append(range)
-            var displayEnd = timeOfDayToString(locale, end)
+            var displayEnd = timeOfDayToString(locale, end % (24 * 60))
             if (displayEnd == "00:00") displayEnd = "24:00"
             sb.append(displayEnd)
         }

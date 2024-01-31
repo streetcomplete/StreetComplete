@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.view.controller
 
-import android.content.SharedPreferences
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.core.content.edit
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewStreetSideLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.normalizeDegrees
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -24,7 +23,7 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val puzzleView: StreetSideSelectPuzzle,
     private val compassView: View,
     private val lastAnswerButtonBinding: ViewStreetSideLastAnswerButtonBinding,
-    private val prefs: SharedPreferences,
+    private val prefs: Preferences,
     private val lastSelectionPreferencePrefix: String,
     private val serializeLastSelection: (item: I) -> String,
     private val deserializeLastSelection: (str: String) -> I,
@@ -42,63 +41,63 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val lastSelectionOneSide: I?
 
     var transformLastSelection: (item: I, isRight: Boolean) -> I = { item, _ -> item }
-    set(value) {
-        field = value
-        updateLastSelectionButton()
-    }
+        set(value) {
+            field = value
+            updateLastSelectionButton()
+        }
 
     /** Angle in degrees by which the street side select puzzle should be rotated from North */
     var offsetPuzzleRotation: Float = 0f
-    set(value) {
-        field = value
-        puzzleView.streetRotation = value + compassView.rotation
-    }
+        set(value) {
+            field = value
+            puzzleView.streetRotation = value + compassView.rotation
+        }
 
     /** image to display when no selection has been made */
     var defaultPuzzleImageLeft: Image = ResImage(R.drawable.ic_street_side_unknown)
-    set(value) {
-        field = value
-        if (left == null) puzzleView.setLeftSideImage(value)
-    }
+        set(value) {
+            field = value
+            if (left == null) puzzleView.setLeftSideImage(value)
+        }
 
     var defaultPuzzleImageRight: Image = ResImage(R.drawable.ic_street_side_unknown)
-    set(value) {
-        field = value
-        if (right == null) puzzleView.setRightSideImage(value)
-    }
+        set(value) {
+            field = value
+            if (right == null) puzzleView.setRightSideImage(value)
+        }
 
     /** selected item on the left side */
     var left: StreetSideDisplayItem<I>? = null
-    private set(value) {
-        field = value
-        updateLastSelectionButtonVisibility()
-    }
+        private set(value) {
+            field = value
+            updateLastSelectionButtonVisibility()
+        }
 
     /** selected item on the right side */
     var right: StreetSideDisplayItem<I>? = null
-    private set(value) {
-        field = value
-        updateLastSelectionButtonVisibility()
-    }
+        private set(value) {
+            field = value
+            updateLastSelectionButtonVisibility()
+        }
 
     enum class Sides { BOTH, LEFT, RIGHT }
     var showSides: Sides = Sides.BOTH
-    set(value) {
-        field = value
-        when (value) {
-            Sides.BOTH -> puzzleView.showBothSides()
-            Sides.LEFT -> puzzleView.showOnlyLeftSide()
-            Sides.RIGHT -> puzzleView.showOnlyRightSide()
+        set(value) {
+            field = value
+            when (value) {
+                Sides.BOTH -> puzzleView.showBothSides()
+                Sides.LEFT -> puzzleView.showOnlyLeftSide()
+                Sides.RIGHT -> puzzleView.showOnlyRightSide()
+            }
+            updateLastSelectionButton()
         }
-        updateLastSelectionButton()
-    }
 
     var isEnabled: Boolean = true
-    set(value) {
-        field = value
-        puzzleView.isEnabled = value
-        updateLastSelectionButtonVisibility()
-    }
+        set(value) {
+            field = value
+            puzzleView.isEnabled = value
+            updateLastSelectionButtonVisibility()
+        }
 
     val isComplete: Boolean get() = when (showSides) {
         Sides.BOTH -> left != null && right != null
@@ -107,14 +106,26 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getString("$lastSelectionPreferencePrefix.left", null)?.let { str ->
-            try { deserializeLastSelection(str) } catch (e: Exception) { null }
+        lastSelectionLeft = prefs.getStringOrNull("$lastSelectionPreferencePrefix.left")?.let { str ->
+            try {
+                deserializeLastSelection(str)
+            } catch (e: Exception) {
+                null
+            }
         }
-        lastSelectionRight = prefs.getString("$lastSelectionPreferencePrefix.right", null)?.let { str ->
-            try { deserializeLastSelection(str) } catch (e: Exception) { null }
+        lastSelectionRight = prefs.getStringOrNull("$lastSelectionPreferencePrefix.right")?.let { str ->
+            try {
+                deserializeLastSelection(str)
+            } catch (e: Exception) {
+                null
+            }
         }
-        lastSelectionOneSide = prefs.getString("$lastSelectionPreferencePrefix.oneSide", null)?.let { str ->
-            try { deserializeLastSelection(str) } catch (e: Exception) { null }
+        lastSelectionOneSide = prefs.getStringOrNull("$lastSelectionPreferencePrefix.oneSide")?.let { str ->
+            try {
+                deserializeLastSelection(str)
+            } catch (e: Exception) {
+                null
+            }
         }
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
@@ -187,13 +198,11 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         val l = if (isUpsideDown) right else left
         val r = if (isUpsideDown) left else right
 
-        prefs.edit {
-            if (showSides == Sides.BOTH) {
-                putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it.value) })
-                putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it.value) })
-            } else {
-                (l ?: r)?.let { putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value)) }
-            }
+        if (showSides == Sides.BOTH) {
+            prefs.putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it.value) })
+            prefs.putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it.value) })
+        } else {
+            (l ?: r)?.let { prefs.putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value)) }
         }
     }
 

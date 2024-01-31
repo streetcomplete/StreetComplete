@@ -8,8 +8,8 @@ import kotlin.test.assertNull
 
 class CyclewayParserKtTest {
     /* These are a lot of tests because there are many possible permutations and this test does not
-    *  make (much) assumptions that the code is written in a way that if it is solved for one type,
-    *  it is solved for all */
+     * make (much) assumptions that the code is written in a way that if it is solved for one type,
+     * it is solved for all */
 
     /* -------------------------------------- special cases ------------------------------------- */
 
@@ -2669,7 +2669,7 @@ private fun cycleway(left: Cycleway?, right: Cycleway?, isLeftHandTraffic: Boole
     )
 
 private fun parse(vararg pairs: Pair<String, String>) =
-    createCyclewaySides(mapOf(*pairs), false)
+    parseCyclewaySides(mapOf(*pairs), false)
 
 private fun parseForLeftHandTraffic(vararg pairs: Pair<String, String>) =
-    createCyclewaySides(mapOf(*pairs), true)
+    parseCyclewaySides(mapOf(*pairs), true)

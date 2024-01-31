@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.util.ktx
 
-import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -18,6 +17,9 @@ inline fun <reified T> Resources.getYamlObject(@RawRes id: Int): T =
 /** shortcut for [getYamlObject] with included type information */
 fun Resources.getYamlStringMap(@RawRes id: Int): Map<String, String> = this.getYamlObject(id)
 
+fun Resources.getRawTextFile(@RawRes id: Int) =
+    openRawResource(id).bufferedReader().use { it.readText() }
+
 fun Resources.getBitmapDrawable(@DrawableRes id: Int): BitmapDrawable =
     getDrawable(id).asBitmapDrawable(this)
 
@@ -28,6 +30,3 @@ fun Resources.getDrawable(image: Image): Drawable = when (image) {
     is ResImage -> getDrawable(image.resId)
     is DrawableImage -> image.drawable
 }
-
-fun Resources.updateConfiguration(block: Configuration.() -> Unit) =
-    updateConfiguration(Configuration(configuration).apply(block), displayMetrics)

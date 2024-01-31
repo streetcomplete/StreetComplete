@@ -515,6 +515,10 @@
                         "rising": "Wysuwany"
                     }
                 },
+                "books": {
+                    "label": "Rodzaj książek",
+                    "terms": "rodzaj książek"
+                },
                 "booth": {
                     "label": "Model budki",
                     "terms": "model budki,budka telefoniczna,budka"
@@ -537,8 +541,8 @@
                     "terms": "marka,sieć"
                 },
                 "brewery": {
-                    "label": "Piwo z beczki",
-                    "terms": "piwo z beczki,piwo lane"
+                    "label": "Marki piwa",
+                    "terms": "marki piwa,piwo lane,piwo z beczki,piwo z nalewaka"
                 },
                 "bridge": {
                     "label": "Rodzaj",
@@ -599,6 +603,7 @@
                         "public": "Użyteczności publicznej",
                         "residential": "Mieszkalny",
                         "retail": "Handlowy",
+                        "riding_hall": "Ujeżdżalnia",
                         "roof": "Zadaszenie",
                         "ruins": "Ruiny",
                         "school": "Szkolny",
@@ -852,6 +857,9 @@
                 "conveying_escalator": {
                     "label": "Schody ruchome"
                 },
+                "count": {
+                    "label": "Liczba obiektów"
+                },
                 "country": {
                     "label": "Kraj"
                 },
@@ -1062,7 +1070,7 @@
                         "lebanese": "Libańska",
                         "malaysian": "Malezyjska",
                         "mexican": "Meksykańska",
-                        "pankcake": "Naleśniki",
+                        "pancake": "Naleśniki (amerykańskie)",
                         "pasta": "Makarony",
                         "peruvian": "Peruwiańska",
                         "pizza": "Pizza",
@@ -1309,6 +1317,14 @@
                         "tidal": "Portowy"
                     }
                 },
+                "dock/height": {
+                    "label": "Wysokość rampy (metry)",
+                    "terms": "wysokość rampy"
+                },
+                "dock/width": {
+                    "label": "Szerokość rampy (metry)",
+                    "terms": "szerokość rampy"
+                },
                 "dog": {
                     "label": "Psy",
                     "options": {
@@ -1320,6 +1336,14 @@
                 },
                 "door": {
                     "label": "Drzwi"
+                },
+                "door/height": {
+                    "label": "Wysokość bramy (metry)",
+                    "terms": "wysokość bramy,wysokość wrót,wysokość drzwi"
+                },
+                "door/width": {
+                    "label": "Szerokość bramy (metry)",
+                    "terms": "szerokość bramy,szerokość wrót,szerokość drzwi"
                 },
                 "door_type": {
                     "label": "Rodzaj"
@@ -1437,6 +1461,10 @@
                 "fence_type": {
                     "label": "Rodzaj"
                 },
+                "fhrs/id-GB": {
+                    "label": "Identyfikator FHRS",
+                    "terms": "identyfikator fhrs"
+                },
                 "fire_hydrant/diameter": {
                     "label": "Średnica (mm, in, lub litery)",
                     "terms": "średnica"
@@ -1546,6 +1574,9 @@
                 "flood_prone": {
                     "label": "Zagrożona zalaniem",
                     "terms": "zagrożona zalaniem"
+                },
+                "footrest": {
+                    "label": "Oparcie dla stopy"
                 },
                 "ford": {
                     "label": "Rodzaj",
@@ -1696,6 +1727,9 @@
                 "handrail": {
                     "label": "Poręcz",
                     "terms": "poręcz"
+                },
+                "handrest": {
+                    "label": "Oparcie dla ręki"
                 },
                 "hashtags": {
                     "label": "Hashtagi",
@@ -1923,15 +1957,8 @@
                     "label": "Liczba koszy",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Ujeżdżenie",
-                    "options": {
-                        "equestrian": "Tak",
-                        "undefined": "Nie"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Jeździectwo",
+                    "label": "Ośrodek jeździecki",
                     "options": {
                         "horse_riding": "Tak",
                         "undefined": "Nie"
@@ -1949,13 +1976,6 @@
                     },
                     "placeholder": "Niski, Średni...",
                     "terms": "stopień trudności jazdy konnej"
-                },
-                "horse_stables": {
-                    "label": "Stajnia",
-                    "options": {
-                        "stables": "Tak",
-                        "undefined": "Nie"
-                    }
                 },
                 "hot_water": {
                     "label": "Ciepła woda"
@@ -2232,7 +2252,7 @@
                             "title": "Słupek (w ziemi)"
                         },
                         "stone": {
-                            "description": "Oznaczania wykute lub namalowane na kamieniu.",
+                            "description": "Oznaczenia wykute lub namalowane na kamieniu.",
                             "title": "Kamień"
                         }
                     }
@@ -2327,6 +2347,10 @@
                         "stone": "Kamień pamiątkowy",
                         "war_memorial": "Pomnik wojenny"
                     }
+                },
+                "memorial/addr": {
+                    "label": "Adres najbliższego budynku",
+                    "terms": "adres najbliższego budynku"
                 },
                 "message": {
                     "label": "Treść",
@@ -2582,6 +2606,11 @@
                     "label": "Godziny otwarcia",
                     "placeholder": "24/7, sunrise-sunset, Mo-Sa 08:00-20:00",
                     "terms": "godziny otwarcia"
+                },
+                "opening_hours/drive_through": {
+                    "label": "Godziny otwarcia drive-through",
+                    "placeholder": "Identyczne jak podstawowe godziny otwarcia",
+                    "terms": "godziny otwarcia drive-through"
                 },
                 "operator": {
                     "label": "Zarządca",
@@ -3002,6 +3031,10 @@
                     "label": "Numer SIRET",
                     "terms": "numer siret"
                 },
+                "ref/edubase-GB": {
+                    "label": "Oznaczenie Departamentu Edukacji",
+                    "terms": "oznaczenie departamentu edukacji,oznaczenie department of education,edubase,dfe urn"
+                },
                 "ref/isil": {
                     "label": "Kod ISIL"
                 },
@@ -3122,6 +3155,39 @@
                 "restrictions": {
                     "label": "Zakazy/nakazy skrętu"
                 },
+                "roller_coaster/track": {
+                    "label": "Rodzaj",
+                    "options": {
+                        "brake_run": {
+                            "description": "Odcinek zwalniający lub zatrzymujący kolejkę",
+                            "title": "Hamowanie"
+                        },
+                        "launch_straight": {
+                            "description": "Odcinek nadający kolejce prędkość za pomocą zewnętrznego napędu",
+                            "title": "Napędzanie"
+                        },
+                        "lift_hill": {
+                            "description": "Odcinek, którym kolejka wciągana jest na wzniesienie dla uzyskania energii potencjalnej",
+                            "title": "Wciąganie"
+                        },
+                        "maintenance": {
+                            "description": "Odcinek, na którym zaparkowane są zapasowe wagoniki lub przeprowadzane naprawy",
+                            "title": "Bocznica"
+                        },
+                        "moving": {
+                            "description": "Wszelkie ruchome odcinki torów np. zwrotnice",
+                            "title": "Ruchomy"
+                        },
+                        "station": {
+                            "description": "Odcinek, na którym pasażerowie mogą wsiadać i wysiadać z kolejki",
+                            "title": "Stacja"
+                        },
+                        "waiting": {
+                            "description": "Odcinek, na którym kolejka oczekuje na zwolnienie dalszego odcinka torów",
+                            "title": "Oczekiwanie"
+                        }
+                    }
+                },
                 "roof/colour": {
                     "label": "Kolor dachu",
                     "terms": "kolor dachu"
@@ -3146,13 +3212,13 @@
                 "route_master": {
                     "label": "Rodzaj"
                 },
-                "royal_cypher": {
+                "royal_cypher-GB": {
                     "label": "Monogram królewski",
                     "options": {
                         "CIIIR": "CIIIR (Karol III)",
                         "EIIR": "EIIR (Elżbieta II)",
                         "EVIIIR": "EVIIIR (Edward VIII)",
-                        "EVIIR": "EVIIIR (Edward VII)",
+                        "EVIIR": "EVIIR (Edward VII)",
                         "GR": "GR (Jerzy V)",
                         "GVIR": "GVIR (Jerzy VI)",
                         "VR": "VR (Wiktoria)",
@@ -3372,6 +3438,13 @@
                 "shower": {
                     "label": "Prysznice",
                     "terms": "prysznice"
+                },
+                "side": {
+                    "label": "Strona",
+                    "options": {
+                        "left": "Lewa",
+                        "right": "Prawa"
+                    }
                 },
                 "siren/purpose": {
                     "label": "Przeznaczenie"
@@ -3826,6 +3899,13 @@
                 "telecom/medium": {
                     "label": "Przewód"
                 },
+                "telescope/type": {
+                    "label": "Rodzaj",
+                    "options": {
+                        "optical": "Teleskop optyczny",
+                        "radio": "Radioteleskop"
+                    }
+                },
                 "tents": {
                     "label": "Namioty"
                 },
@@ -3929,7 +4009,7 @@
                         "dip": "Zagłębienie",
                         "double_dip": "Podwójne zagłębienie",
                         "hump": "Próg zwalniający (długi)",
-                        "island": "Wysepka",
+                        "island": "Wysepka uspokajająca ruch",
                         "mini_bumps": "Progi zwalniające punktowe",
                         "rumble_strip": "Linia wibracyjna",
                         "table": "Wyniesienie jezdni"
@@ -4320,7 +4400,7 @@
                 },
                 "advertising/column": {
                     "name": "Słup ogłoszeniowy",
-                    "terms": "słup ogłoszeniowy,słup z ogłoszeniami"
+                    "terms": "słup ogłoszeniowy,słup z ogłoszeniami,kolumna reklamowa"
                 },
                 "advertising/poster_box": {
                     "name": "Skrzynka plakatowa",
@@ -4467,6 +4547,10 @@
                 "amenity/atm": {
                     "name": "Bankomat",
                     "terms": "bankomat,wpłatomat,atm,wypłacanie pieniędzy,pieniądze"
+                },
+                "amenity/baking_oven": {
+                    "name": "Piec chlebowy",
+                    "terms": "piec chlebowy,piec do wypieku chleba"
                 },
                 "amenity/bank": {
                     "name": "Bank",
@@ -4875,6 +4959,10 @@
                 "amenity/fuel": {
                     "name": "Stacja paliw",
                     "terms": "stacja paliw,stacja benzynowa,stacja lpg"
+                },
+                "amenity/funeral_hall": {
+                    "name": "Dom przedpogrzebowy",
+                    "terms": "dom przedpogrzebowy,dom pogrzebowy"
                 },
                 "amenity/gambling": {
                     "name": "Salon pachinko/bingo",
@@ -5515,6 +5603,10 @@
                     "name": "Automat sprzedający jedzenie",
                     "terms": "automat sprzedający jedzenie,pożywienie,posiłki"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "Automat z przekąskami",
+                    "terms": "automat z przekąskami"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "Automat sprzedający paliwo",
                     "terms": "automat sprzedający paliwo,dystrybutor,paliwo,gaz,benzyna,diesel,lng,cng,biodiesel",
@@ -5551,8 +5643,8 @@
                     "terms": "automat sprzedający znaczki pocztowe"
                 },
                 "amenity/vending_machine/sweets": {
-                    "name": "Automat z przekąskami",
-                    "terms": "automat z przekąskami,przekąski,gumy do żucia,ciastka,ciasteczka,chipsy,czipsy"
+                    "name": "Automat ze słodyczami",
+                    "terms": "automat ze słodyczami,automat z cukierkami,automat z gumami do żucia"
                 },
                 "amenity/veterinary": {
                     "name": "Weterynarz",
@@ -5738,7 +5830,7 @@
                 },
                 "barrier/fence/railing": {
                     "name": "Barierka",
-                    "terms": "poręcz"
+                    "terms": "barierka,poręcz"
                 },
                 "barrier/full-height_turnstile": {
                     "name": "Bramka obrotowa (wysoka)",
@@ -5892,6 +5984,10 @@
                 "building/apartments": {
                     "name": "Budynek wielorodzinny",
                     "terms": "budynek wielorodzinny,dom wielorodzinny,blok,kamienica,apartamentowiec"
+                },
+                "building/bakehouse": {
+                    "name": "Piekarnia",
+                    "terms": "piekarnia,budynek piekarni"
                 },
                 "building/barn": {
                     "name": "Stodoła",
@@ -6056,6 +6152,10 @@
                 "building/retail": {
                     "name": "Budynek handlowy",
                     "terms": "budynek handlowy,budynek handlu detalicznego,pawilon handlowy,handel detaliczny,sklepy"
+                },
+                "building/riding_hall": {
+                    "name": "Ujeżdżalnia kryta",
+                    "terms": "ujeżdżalnia kryta,arena jeździecka kryta,maneż"
                 },
                 "building/roof": {
                     "name": "Zadaszenie (do 2 ścian)",
@@ -6752,6 +6852,10 @@
                     "name": "Łącznik dla motorowerów",
                     "terms": "łącznik dla motorowerów"
                 },
+                "highway/cyclist_waiting_aid": {
+                    "name": "Podpórka dla rowerzystów",
+                    "terms": "podpórka dla rowerzystów,podpórka rowerowa,spocznik dla rowerzystów,spocznik rowerowy"
+                },
                 "highway/elevator": {
                     "name": "Winda",
                     "terms": "winda,dźwig"
@@ -6805,7 +6909,7 @@
                 },
                 "highway/footway/sidewalk": {
                     "name": "Chodnik",
-                    "terms": "chodnik wzdłuż drogi,chodnik przy jezdni"
+                    "terms": "chodnik,chodnik wzdłuż drogi,chodnik przy jezdni"
                 },
                 "highway/footway/traffic_island": {
                     "name": "Chodnik na wyspie azylu",
@@ -7063,6 +7167,10 @@
                 "historic/memorial/plaque": {
                     "name": "Tablica pamiątkowa",
                     "terms": "tablica pamiątkowa,tabliczka pamiątkowa,dedykacja,pamięć"
+                },
+                "historic/memorial/stolperstein-EU": {
+                    "name": "Stolperstein",
+                    "terms": "stolperstein"
                 },
                 "historic/monument": {
                     "name": "Monument (duży pomnik)",
@@ -7740,6 +7848,10 @@
                     "terms": "centrum wspinaczkowe,boulderownia,bulderownia,ścianka wspinaczkowa,ściana wspinaczkowa,wspinaczka,wspinanie",
                     "aliases": "Boulderownia\nBulderownia"
                 },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Park linowy",
+                    "terms": "park linowy,wspinaczka,zjazd linowy,tyrolka"
+                },
                 "leisure/sports_centre/horse_racing": {
                     "name": "Tor wyścigów konnych (ośrodek sportowy)",
                     "terms": "tor wyścigów konnych,hipodrom",
@@ -7923,6 +8035,10 @@
                     "name": "Maszt flagowy",
                     "terms": "maszt flagowy,flaga"
                 },
+                "man_made/fuel_pump": {
+                    "name": "Dystrybutor paliwa",
+                    "terms": "dystrybutor paliwa"
+                },
                 "man_made/gantry": {
                     "name": "Bramownica",
                     "terms": "bramownica"
@@ -7938,6 +8054,10 @@
                 "man_made/groyne": {
                     "name": "Ostroga brzegowa",
                     "terms": "ostroga brzegowa,ostroga morska,tama poprzeczna,morze"
+                },
+                "man_made/insect_hotel": {
+                    "name": "Hotel dla owadów",
+                    "terms": "hotel dla owadów,domek dla owadów,sztuczna pomoc gniazdowa"
                 },
                 "man_made/lighthouse": {
                     "name": "Latarnia morska",
@@ -7997,7 +8117,8 @@
                 },
                 "man_made/milk_churn_stand": {
                     "name": "Ława na bańki z mlekiem",
-                    "terms": "ława na bańki z mlekiem,ława na mleko,stojak na bańki z mlekiem,stojak na mleko"
+                    "terms": "ława na bańki z mlekiem,ława na mleko,stojak na bańki z mlekiem,stojak na mleko",
+                    "aliases": "stojak na kany"
                 },
                 "man_made/mineshaft": {
                     "name": "Szyb",
@@ -8054,6 +8175,10 @@
                     "name": "Podziemny zbiornik wody",
                     "terms": "podziemny zbiornik wody,zakryty zbiornik wody,zbiornik wody"
                 },
+                "man_made/satellite_dish": {
+                    "name": "Antena satelitarna",
+                    "terms": "antena satelitarna"
+                },
                 "man_made/silo": {
                     "name": "Silos (wieżowy)",
                     "terms": "silos wieżowy,silos zbożowy,elewator,zboże,kukurydza,pszenica",
@@ -8109,6 +8234,18 @@
                     "name": "Osadnik",
                     "terms": "osadnik,odstojnik,kopania,szlam",
                     "aliases": "Odstojnik"
+                },
+                "man_made/telescope": {
+                    "name": "Teleskop",
+                    "terms": "teleskop"
+                },
+                "man_made/telescope/optical": {
+                    "name": "Teleskop optyczny",
+                    "terms": "teleskop optyczny"
+                },
+                "man_made/telescope/radio": {
+                    "name": "Radioteleskop",
+                    "terms": "radioteleskop"
                 },
                 "man_made/torii": {
                     "name": "Torii",
@@ -8589,7 +8726,7 @@
                 },
                 "office/forestry": {
                     "name": "Leśnictwo",
-                    "terms": "leśnictwo,podleśnictwo,biuro leśniczego,leśniczy,las"
+                    "terms": "leśnictwo,nadleśnictwo,biuro leśniczego,leśniczy,las"
                 },
                 "office/foundation": {
                     "name": "Fundacja",
@@ -9061,6 +9198,10 @@
                     "name": "Przełącznik wysokiego napięcia",
                     "terms": "przełącznik wysokiego napięcia,wyłącznik zasilania,energetyka,elektroenergetyka,prąd"
                 },
+                "power/switchgear": {
+                    "name": "Aparatura rozdzielcza",
+                    "terms": "aparatura rozdzielcza"
+                },
                 "power/tower": {
                     "name": "Słup wysokiego napięcia",
                     "terms": "słup wysokiego napięcia,wieża wysokiego napięcia,energetyka,elektroenergetyka,prąd"
@@ -9365,6 +9506,18 @@
                 "relation": {
                     "name": "Relacja",
                     "terms": "relacja"
+                },
+                "roller_coaster/station": {
+                    "name": "Stacja kolejki górskiej",
+                    "terms": "stacja kolejki górskiej,przystanek kolejki górskiej"
+                },
+                "roller_coaster/support": {
+                    "name": "Konstrukcja kolejki górskiej",
+                    "terms": "konstrukcja kolejki górskiej"
+                },
+                "roller_coaster/track": {
+                    "name": "Tor kolejki górskiej",
+                    "terms": "tor kolejki górskiej"
                 },
                 "route/ferry": {
                     "name": "Trasa promu",
@@ -10323,8 +10476,8 @@
                     "terms": "próg zwalniający"
                 },
                 "traffic_calming/island": {
-                    "name": "Wysepka drogowa",
-                    "terms": "wysepka drogowa"
+                    "name": "Wysepka uspokajająca ruch",
+                    "terms": "wysepka uspokajająca ruch,wysepka,wysepka drogowa,wyspa,spowalniająca,spowolnienie,zwalniająca,zwężenie"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Progi zwalniające punktowe",

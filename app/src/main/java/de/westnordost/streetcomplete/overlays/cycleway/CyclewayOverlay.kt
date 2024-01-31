@@ -11,13 +11,13 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard
-import de.westnordost.streetcomplete.osm.bicycle_boulevard.createBicycleBoulevard
+import de.westnordost.streetcomplete.osm.bicycle_boulevard.parseBicycleBoulevard
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
+import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
-import de.westnordost.streetcomplete.osm.cycleway_separate.createSeparateCycleway
+import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.overlays.Color
@@ -57,13 +57,17 @@ class CyclewayOverlay(
         """).map { it to getSeparateCyclewayStyle(it) }
 
     override fun createForm(element: Element?) =
-        if (element == null) null
-        else if (element.tags["highway"] in ALL_ROADS) StreetCyclewayOverlayForm()
-        else SeparateCyclewayForm()
+        if (element == null) {
+            null
+        } else if (element.tags["highway"] in ALL_ROADS) {
+            StreetCyclewayOverlayForm()
+        } else {
+            SeparateCyclewayForm()
+        }
 }
 
 private fun getSeparateCyclewayStyle(element: Element) =
-    PolylineStyle(StrokeStyle(createSeparateCycleway(element.tags).getColor()))
+    PolylineStyle(StrokeStyle(parseSeparateCycleway(element.tags).getColor()))
 
 private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.NOT_ALLOWED,
@@ -85,8 +89,8 @@ private fun SeparateCycleway?.getColor() = when (this) {
 }
 
 private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
-    val cycleways = createCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
-    val isBicycleBoulevard = createBicycleBoulevard(element.tags) == BicycleBoulevard.YES
+    val cycleways = parseCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
+    val isBicycleBoulevard = parseBicycleBoulevard(element.tags) == BicycleBoulevard.YES
 
     // not set but on road that usually has no cycleway or it is private -> do not highlight as missing
     val isNoCyclewayExpected =
@@ -123,12 +127,18 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
         StrokeStyle(Color.BLUE)
 
     EXCLUSIVE_LANE, UNSPECIFIED_LANE ->
-        if (isAmbiguous(countryInfo)) StrokeStyle(Color.DATA_REQUESTED)
-        else                          StrokeStyle(Color.GOLD)
+        if (isAmbiguous(countryInfo)) {
+            StrokeStyle(Color.DATA_REQUESTED)
+        } else {
+            StrokeStyle(Color.GOLD)
+        }
 
     ADVISORY_LANE, SUGGESTION_LANE, UNSPECIFIED_SHARED_LANE ->
-        if (isAmbiguous(countryInfo)) StrokeStyle(Color.DATA_REQUESTED)
-        else                          StrokeStyle(Color.ORANGE)
+        if (isAmbiguous(countryInfo)) {
+            StrokeStyle(Color.DATA_REQUESTED)
+        } else {
+            StrokeStyle(Color.ORANGE)
+        }
 
     PICTOGRAMS ->
         StrokeStyle(Color.ORANGE, dashed = true)

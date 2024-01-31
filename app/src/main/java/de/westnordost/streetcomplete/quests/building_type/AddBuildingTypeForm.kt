@@ -15,7 +15,7 @@ class AddBuildingTypeForm : AGroupedImageListQuestForm<BuildingType, BuildingTyp
 
     override val topItems = BuildingType.topSelectableValues.toItems()
 
-    override val allItems = BuildingTypeCategory.values().toItems()
+    override val allItems = BuildingTypeCategory.entries.toItems()
 
     override val itemsPerRow = 1
 

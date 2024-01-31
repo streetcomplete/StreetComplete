@@ -1,23 +1,7 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.BATTERIES
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.BEVERAGE_CARTONS
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.CANS
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.CLOTHES
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.COOKING_OIL
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.ENGINE_OIL
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.GLASS
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.GLASS_BOTTLES
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.GREEN_WASTE
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PAPER
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PET
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.SCRAP_METAL
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.SHOES
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.SMALL_ELECTRICAL_APPLIANCES
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun RecyclingMaterial.asItem(): Item<List<RecyclingMaterial>> =
@@ -41,7 +25,8 @@ private val RecyclingMaterial.iconResId: Int get() = when (this) {
     SHOES ->             R.drawable.ic_recycling_shoes
     SMALL_ELECTRICAL_APPLIANCES -> R.drawable.ic_recycling_small_electrical_appliances
     BATTERIES ->         R.drawable.ic_recycling_batteries
-    GREEN_WASTE ->       R.drawable.ic_recycling_garden_waste
+    GREEN_WASTE ->       R.drawable.ic_recycling_green_waste
+    FOOD_WASTE ->        R.drawable.ic_recycling_food_waste
     COOKING_OIL ->       R.drawable.ic_recycling_cooking_oil
     ENGINE_OIL ->        R.drawable.ic_recycling_engine_oil
 }
@@ -62,6 +47,7 @@ private val RecyclingMaterial.titleResId: Int get() = when (this) {
     SMALL_ELECTRICAL_APPLIANCES -> R.string.quest_recycling_type_electric_appliances
     BATTERIES ->         R.string.quest_recycling_type_batteries
     GREEN_WASTE ->       R.string.quest_recycling_type_green_waste
+    FOOD_WASTE ->        R.string.quest_recycling_type_food_waste
     COOKING_OIL ->       R.string.quest_recycling_type_cooking_oil
     ENGINE_OIL ->        R.string.quest_recycling_type_engine_oil
 }

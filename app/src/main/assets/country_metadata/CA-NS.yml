@@ -1,2 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [RBC, Scotiabank, Instacoin, CIBC, BMO]
+chargingStationOperators: [FLO, Town of Amherst, Flo, EVLink]
+defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]

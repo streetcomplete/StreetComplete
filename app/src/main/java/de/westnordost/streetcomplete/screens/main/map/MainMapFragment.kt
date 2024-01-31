@@ -149,7 +149,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
         viewLifecycleScope.launch {
-
             if (pinsMapComponent?.isVisible == true) {
                 when (pinMode) {
                     PinMode.QUESTS -> {

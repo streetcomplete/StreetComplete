@@ -707,7 +707,6 @@
     <string name="resurvey_intervals_less_often">"Ավելի քիչ հարցրեք"</string>
     <string name="resurvey_intervals_default">"Լռելյայն"</string>
     <string name="resurvey_intervals_more_often">"Ավելի հաճախ հարցրեք"</string>
-    <string name="quest_is_defibrillator_inside_title">"Արդյոք այս դեֆիբրիլյատորը (AED) շենքի ներսում է:"</string>
     <string name="about_title_translate">"Օգնեք թարգմանել այս ծրագիրը"</string>
     <string name="about_description_translate">"%1$s թարգմանել %2$d%%"</string>
     <string name="quest_oneway2_title">"Սա միակողմանի փողոց է: Որ ուղղությամբ:"</string>
@@ -1152,7 +1151,6 @@
     <string name="overlay_street_parking">"Կայանատեղիներ"</string>
     <string name="link_opencampingmap_description">"Ճամբարների քարտեզ"</string>
     <string name="quest_address_street_street_name_label">"Փողոցի անուն`"</string>
-    <string name="quest_drinking_water_type_title">"Ինչպե՞ս է ջուրը տրամադրվում։"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Այլ ցայտաղբյուր"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Միայն շշերի համար"</string>
     <string name="overlay_addresses">"Հասցեներ"</string>

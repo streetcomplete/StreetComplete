@@ -2,18 +2,29 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.ConnectionException
-import org.json.JSONException
-import org.json.JSONObject
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.Json
 import java.io.File
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLConnection
 
+@Serializable
+private data class PhotoUploadResponse(
+    @SerialName("future_url")
+    val futureUrl: String
+)
+
 /** Upload and activate a list of image paths to an instance of the
  * <a href="https://github.com/exploide/sc-photo-service">StreetComplete image hosting service</a>
  */
 class StreetCompleteImageUploader(private val baseUrl: String) {
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
 
     /** Upload list of images.
      *
@@ -43,10 +54,9 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
                 if (status == HttpURLConnection.HTTP_OK) {
                     val response = connection.inputStream.bufferedReader().use { it.readText() }
                     try {
-                        val jsonResponse = JSONObject(response)
-                        val url = jsonResponse.getString("future_url")
-                        imageLinks.add(url)
-                    } catch (e: JSONException) {
+                        val parsedResponse = json.decodeFromString<PhotoUploadResponse>(response)
+                        imageLinks.add(parsedResponse.futureUrl)
+                    } catch (e: SerializationException) {
                         throw ImageUploadServerException("Upload Failed: Unexpected response \"$response\"")
                     }
                 } else {

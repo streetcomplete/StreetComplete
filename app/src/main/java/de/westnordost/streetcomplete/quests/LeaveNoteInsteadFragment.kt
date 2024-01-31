@@ -87,7 +87,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     override fun onComposedNote(text: String, imagePaths: List<String>) {
         val fullText = mutableListOf<String>()
         leaveNoteContext?.let { fullText += it }
-        fullText += "for https://osm.org/${elementType.name.lowercase()}/$elementId"
+        fullText += "– https://osm.org/${elementType.name.lowercase()}/$elementId"
         fullText += "via ${ApplicationConstants.USER_AGENT}:\n\n$text"
 
         viewLifecycleScope.launch {

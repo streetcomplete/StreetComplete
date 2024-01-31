@@ -117,13 +117,22 @@
                     "label": "Artist"
                 },
                 "artwork_type": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "sculpture": "Skulptur"
+                    }
+                },
+                "athletics_pitch": {
+                    "label": "Hending"
                 },
                 "atm": {
                     "label": "MInibank"
                 },
                 "attraction": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "carousel": "Karusell"
+                    }
                 },
                 "automated": {
                     "label": "Automatisert"
@@ -136,11 +145,35 @@
                 "bar": {
                     "label": "Bar"
                 },
+                "barrier": {
+                    "options": {
+                        "entrance": "Inngang",
+                        "wall": "Vegg"
+                    }
+                },
+                "barrier_planter": {
+                    "options": {
+                        "planter": "Ja",
+                        "undefined": "Nei"
+                    }
+                },
+                "basin": {
+                    "label": "Type"
+                },
                 "bath/open_air": {
                     "label": "Utandørs"
                 },
+                "beauty": {
+                    "label": "Tenester"
+                },
                 "bench": {
                     "label": "Benk"
+                },
+                "bicycle_road": {
+                    "options": {
+                        "undefined": "Nei",
+                        "yes": "Ja"
+                    }
                 },
                 "bin": {
                     "label": "Søppeldunk"
@@ -152,14 +185,22 @@
                         "yes": "Ja"
                     }
                 },
-                "brewery": {
-                    "label": "Fatøl"
+                "board_type": {
+                    "options": {
+                        "astronomy": "Astronomi",
+                        "geology": "Geologi",
+                        "history": "Historie",
+                        "nature": "Natur"
+                    }
                 },
                 "bridge": {
                     "placeholder": "Standard"
                 },
                 "building": {
-                    "label": "Bygning"
+                    "label": "Bygning",
+                    "options": {
+                        "school": "Skulebugning"
+                    }
                 },
                 "cables": {
                     "label": "Kablar",
@@ -170,6 +211,11 @@
                 },
                 "colour": {
                     "label": "Farge"
+                },
+                "consulate": {
+                    "options": {
+                        "yes": "Konsulat"
+                    }
                 },
                 "contact/webcam": {
                     "label": "Nettkamera-URL",
@@ -193,8 +239,37 @@
                     "label": "Samankoplingar",
                     "placeholder": "1, 2, 3..."
                 },
+                "covered_no": {
+                    "options": {
+                        "yes": "Ja"
+                    }
+                },
+                "craft": {
+                    "options": {
+                        "tailor": "Skreddar",
+                        "watchmaker": "Klokkemakar",
+                        "winery": "Vinprodusent"
+                    }
+                },
                 "crop": {
-                    "label": "Avlingar"
+                    "label": "Avlingar",
+                    "options": {
+                        "coffee": "Kaffi",
+                        "tea": "Te",
+                        "vegetable": "Grønsaker",
+                        "wheat": "Kveite"
+                    }
+                },
+                "cuisine": {
+                    "options": {
+                        "chocolate": "Sjokolade",
+                        "fish": "Fisk",
+                        "french": "Fransk",
+                        "georgian": "Georgisk",
+                        "german": "Tysk",
+                        "greek": "Gresk",
+                        "juice": "Jus"
+                    }
                 },
                 "cutting": {
                     "placeholder": "Standard"
@@ -280,6 +355,11 @@
                 "emergency": {
                     "label": "Krisesituasjon"
                 },
+                "entrance": {
+                    "options": {
+                        "emergency": "Naudutgang"
+                    }
+                },
                 "except": {
                     "label": "Unntak"
                 },
@@ -348,14 +428,7 @@
                 "highspeed": {
                     "label": "Høgfart"
                 },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Ja",
-                        "undefined": "Nei"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Riding",
                     "options": {
                         "horse_riding": "Ja",
                         "undefined": "Nei"
@@ -363,12 +436,6 @@
                 },
                 "horse_scale": {
                     "placeholder": "Vanskeleg, farleg…"
-                },
-                "horse_stables": {
-                    "options": {
-                        "stables": "Ja",
-                        "undefined": "Nei"
-                    }
                 },
                 "incline_steps": {
                     "options": {
@@ -396,6 +463,9 @@
                 },
                 "kerb/height": {
                     "label": "Høgde"
+                },
+                "kitchen": {
+                    "label": "Kjøkken"
                 },
                 "lanes": {
                     "label": "Køyrefelt",
@@ -427,6 +497,12 @@
                 },
                 "maxspeed/advisory": {
                     "placeholder": "40, 50, 60..."
+                },
+                "mooring": {
+                    "options": {
+                        "guest": "Gjestar",
+                        "private": "Privat"
+                    }
                 },
                 "name": {
                     "label": "Namn"
@@ -665,8 +741,17 @@
                 "amenity/dentist": {
                     "name": "Tannlege"
                 },
+                "amenity/driving_school": {
+                    "name": "Køyreskule"
+                },
+                "amenity/language_school": {
+                    "name": "Språkskule"
+                },
                 "attraction/carousel": {
                     "name": "Karusell"
+                },
+                "leisure/dancing_school": {
+                    "name": "Danseskule"
                 },
                 "waterway/river": {
                     "name": "Elv"

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.download
 
-import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
@@ -9,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch

@@ -515,6 +515,10 @@
                         "rising": "Borne escamotable"
                     }
                 },
+                "books": {
+                    "label": "Type de livres",
+                    "terms": "type de livres"
+                },
                 "booth": {
                     "label": "Type de cabine téléphonique",
                     "terms": "type,sorte,aspect,cabine,téléphone,téléphonique"
@@ -535,10 +539,6 @@
                 "brand": {
                     "label": "Marque",
                     "terms": "marque"
-                },
-                "brewery": {
-                    "label": "Bières à la pression",
-                    "terms": "bière pression,à la pression,pression"
                 },
                 "bridge": {
                     "label": "Type",
@@ -599,6 +599,7 @@
                         "public": "Établissement public",
                         "residential": "Bâtiment résidentiel",
                         "retail": "Bâtiment commercial",
+                        "riding_hall": "Terrain d'équitation",
                         "roof": "Toit",
                         "ruins": "Bâtiment en ruine",
                         "school": "Bâtiment scolaire - élémentaire ou secondaire",
@@ -852,6 +853,9 @@
                 "conveying_escalator": {
                     "label": "Escalator"
                 },
+                "count": {
+                    "label": "Nombre d'éléments"
+                },
                 "country": {
                     "label": "Pays"
                 },
@@ -1062,7 +1066,7 @@
                         "lebanese": "Libanaise",
                         "malaysian": "Malais",
                         "mexican": "Mexicaine",
-                        "pankcake": "Pancakes",
+                        "pancake": "Pancakes",
                         "pasta": "Pâtes",
                         "peruvian": "Péruvienne",
                         "pizza": "Pizza",
@@ -1309,6 +1313,14 @@
                         "tidal": "Dock à marée"
                     }
                 },
+                "dock/height": {
+                    "label": "Hauteur du quai (mètres)",
+                    "terms": "hauteur du quai (mètres)"
+                },
+                "dock/width": {
+                    "label": "Largeur du quai (mètre)",
+                    "terms": "largeur du quai (mètre)"
+                },
                 "dog": {
                     "label": "Accès aux chiens",
                     "options": {
@@ -1320,6 +1332,14 @@
                 },
                 "door": {
                     "label": "Porte"
+                },
+                "door/height": {
+                    "label": "Hauteur de la porte (mètres)",
+                    "terms": "hauteur de la porte"
+                },
+                "door/width": {
+                    "label": "Largeur de la porte (mètres)",
+                    "terms": "largeur de la porte"
                 },
                 "door_type": {
                     "label": "Type"
@@ -1547,6 +1567,9 @@
                     "label": "Risque de crue",
                     "terms": "débordement,crue,montée des eaux"
                 },
+                "footrest": {
+                    "label": "Repose pieds"
+                },
                 "ford": {
                     "label": "Type",
                     "placeholder": "Défaut"
@@ -1696,6 +1719,9 @@
                 "handrail": {
                     "label": "Rampe, Main courante",
                     "terms": "rampe,main courante,rambarde"
+                },
+                "handrest": {
+                    "label": "Accoudoir"
                 },
                 "hashtags": {
                     "label": "Hashtags",
@@ -1923,15 +1949,8 @@
                     "label": "Nombre d'arceaux",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Dressage",
-                    "options": {
-                        "equestrian": "Oui",
-                        "undefined": "Non"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Équitation",
+                    "label": "Centre équestre",
                     "options": {
                         "horse_riding": "Oui",
                         "undefined": "Non"
@@ -1949,13 +1968,6 @@
                     },
                     "placeholder": "Difficile, Dangereux...",
                     "terms": "équitation,équestre,cheval,difficulté"
-                },
-                "horse_stables": {
-                    "label": "Étable pour cavaliers",
-                    "options": {
-                        "stables": "Oui",
-                        "undefined": "Non"
-                    }
                 },
                 "hot_water": {
                     "label": "Eau chaude"
@@ -2211,13 +2223,25 @@
                 "marker": {
                     "label": "Type",
                     "options": {
+                        "aerial": {
+                            "description": "Conçu pour être visible depuis le ciel.",
+                            "title": "Aérien"
+                        },
+                        "ground": {
+                            "description": "Marqueur plat posé au sol.",
+                            "title": "Sol"
+                        },
                         "pedestal": {
                             "title": "Piédestal"
                         },
                         "plate": {
                             "title": "Plaque"
                         },
+                        "post": {
+                            "title": "Poteau"
+                        },
                         "stone": {
+                            "description": "Marques peintes ou gravées sur une pierre.",
                             "title": "Pierre"
                         }
                     }
@@ -2312,6 +2336,10 @@
                         "stone": "Pierre",
                         "war_memorial": "Mémorial de guerre"
                     }
+                },
+                "memorial/addr": {
+                    "label": "Adresse la plus proche",
+                    "terms": "adresse la plus proche"
                 },
                 "message": {
                     "label": "Message",
@@ -2567,6 +2595,10 @@
                     "label": "Horaires d'ouverture",
                     "placeholder": "Inconnus",
                     "terms": "horaires,heures,horraires"
+                },
+                "opening_hours/drive_through": {
+                    "label": "Heures d'ouverture du drive",
+                    "terms": "heures d'ouverture du drive"
                 },
                 "operator": {
                     "label": "Exploitant",
@@ -3107,6 +3139,13 @@
                 "restrictions": {
                     "label": "Interdictions de tourner"
                 },
+                "roller_coaster/track": {
+                    "options": {
+                        "maintenance": {
+                            "title": "Entretien"
+                        }
+                    }
+                },
                 "roof/colour": {
                     "label": "Couleur du toit",
                     "terms": "couleur du toit"
@@ -3131,13 +3170,13 @@
                 "route_master": {
                     "label": "Type"
                 },
-                "royal_cypher": {
+                "royal_cypher-GB": {
                     "label": "Monogramme royal",
                     "options": {
                         "CIIIR": "CIIIR (Charles III)",
                         "EIIR": "EIIR (Elizabeth II)",
-                        "EVIIIR": "EVIIIR (Edward VIII)",
-                        "EVIIR": "EVIIR (Edward VII)",
+                        "EVIIIR": "EVIIIR (Édouard VIII)",
+                        "EVIIR": "EVIIR (Édouard VII)",
                         "GR": "GR (George V)",
                         "GVIR": "GVIR (George VI)",
                         "VR": "VR (Victoria)",
@@ -3810,6 +3849,13 @@
                 "telecom/medium": {
                     "label": "Moyenne"
                 },
+                "telescope/type": {
+                    "label": "Type",
+                    "options": {
+                        "optical": "Télescope optique",
+                        "radio": "Radiotélescope"
+                    }
+                },
                 "tents": {
                     "label": "Tentes"
                 },
@@ -3913,7 +3959,6 @@
                         "dip": "Creux",
                         "double_dip": "Double creux",
                         "hump": "Ralentisseur dos d’âne",
-                        "island": "Ilôt",
                         "mini_bumps": "Mini ralentisseurs",
                         "rumble_strip": "Bande rugueuse",
                         "table": "Dos d'âne trapézoïdal"
@@ -4448,6 +4493,10 @@
                 "amenity/atm": {
                     "name": "Distributeur de billets",
                     "terms": "distributeur de billets,distributeur automatique,distributeur automatique de billets,guichet automatique,dab,gab,billets de banque,retrait d'argent,retrait de liquide,guichet de retrait,retrait automatique,atm,amenity atm,mister cash,bancontact"
+                },
+                "amenity/baking_oven": {
+                    "name": "Four à bois",
+                    "terms": "four à bois"
                 },
                 "amenity/bank": {
                     "name": "Banque",
@@ -5477,9 +5526,13 @@
                     "name": "Distributeur d'aliments",
                     "terms": "distributeur d'aliments"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "Distributeur de friandises",
+                    "terms": "distributeur de friandises,distributeur de snacks"
+                },
                 "amenity/vending_machine/fuel": {
-                    "name": "Pompe à essence",
-                    "terms": "distributeur de carburant"
+                    "name": "Distributeur de carburant",
+                    "terms": "distributeur de carburant,distributeur d'essence"
                 },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Distributeur de glace",
@@ -5510,8 +5563,8 @@
                     "terms": "timbres,courrier,enveloppe,lettre"
                 },
                 "amenity/vending_machine/sweets": {
-                    "name": "Distributeur de snacks",
-                    "terms": "distributeur de snacks,distributeur à snacks,distributeur automatique de snacks,machine à snacks,vente automatique de snacks,vente de snacks,vente snacks,snacks,sucreries,bonbons,chips,cookie,chocolat,cracker,chewing-gum,vending machine sweets,sweets"
+                    "name": "Distributeur de bonbons",
+                    "terms": "distributeur de bonbons"
                 },
                 "amenity/veterinary": {
                     "name": "Vétérinaire",
@@ -5843,6 +5896,10 @@
                     "name": "Immeuble",
                     "terms": "immeuble,appartements"
                 },
+                "building/bakehouse": {
+                    "name": "Four à pain",
+                    "terms": "four à pain"
+                },
                 "building/barn": {
                     "name": "Grange",
                     "terms": "grange,hangar agricole,bâtiment agricole,stockage,grenier,abri,remise,étable,ferme,barn"
@@ -6006,6 +6063,10 @@
                 "building/retail": {
                     "name": "Bâtiment commercial",
                     "terms": "bâtiment commercial"
+                },
+                "building/riding_hall": {
+                    "name": "Terrain d'équitation en intérieur",
+                    "terms": "terrain d'équitation en intérieur,terrain d'équitation,intérieur"
                 },
                 "building/roof": {
                     "name": "Toit",
@@ -7000,6 +7061,10 @@
                     "name": "Plaque commémorative",
                     "terms": "épitaphe,marque historique,historique,souvenir,mémoire,plaque historique"
                 },
+                "historic/memorial/stolperstein-EU": {
+                    "name": "Plaque mémorielle Stolpersteine",
+                    "terms": "plaque mémorielle stolpersteine,stolpersteine"
+                },
                 "historic/monument": {
                     "name": "Grand monument commémoratif",
                     "terms": "grand mémorial"
@@ -7665,6 +7730,10 @@
                     "name": "Salle d'escalade",
                     "terms": "escalade,salle,mur,prises,block,bloque"
                 },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Parc d'aventures",
+                    "terms": "parc d'aventures"
+                },
                 "leisure/sports_centre/horse_racing": {
                     "name": "Course hippique",
                     "terms": "course équestre,galop,pari,pari sportif,course de cheval,course,équitation,cheval"
@@ -7845,6 +7914,10 @@
                     "name": "Mât de drapeau",
                     "terms": "mât de drapeau,hampe,drapeau"
                 },
+                "man_made/fuel_pump": {
+                    "name": "Pompe à essence",
+                    "terms": "distributeur de carburant,pompe à essence"
+                },
                 "man_made/gantry": {
                     "name": "Portique de signalisation",
                     "terms": "portique,support,structure,signalisation,routier,routière,autoroute"
@@ -7860,6 +7933,10 @@
                 "man_made/groyne": {
                     "name": "Épi maritime",
                     "terms": "épi maritime"
+                },
+                "man_made/insect_hotel": {
+                    "name": "Hôtel à insectes",
+                    "terms": "hôtel à insectes"
                 },
                 "man_made/lighthouse": {
                     "name": "Phare",
@@ -7973,6 +8050,10 @@
                     "name": "Réservoir couvert",
                     "terms": "réservoir,bassin,couvert,enterré,souterrain"
                 },
+                "man_made/satellite_dish": {
+                    "name": "Antenne satellite",
+                    "terms": "antenne satellite"
+                },
                 "man_made/silo": {
                     "name": "Silo",
                     "terms": "réservoir,emplacement de stockage"
@@ -8024,6 +8105,18 @@
                 "man_made/tailings_pond": {
                     "name": "Bassin de résidus miniers",
                     "terms": "bassin,étang,résidus,déchets,mine,minier,sédimentation"
+                },
+                "man_made/telescope": {
+                    "name": "Télescope",
+                    "terms": "télescope"
+                },
+                "man_made/telescope/optical": {
+                    "name": "Télescope optique",
+                    "terms": "télescope optique"
+                },
+                "man_made/telescope/radio": {
+                    "name": "Radiotélescope",
+                    "terms": "radiotélescope"
                 },
                 "man_made/torii": {
                     "name": "Torii",
@@ -8969,6 +9062,10 @@
                     "name": "Appareil de connexion électrique",
                     "terms": "appareil de connexion électrique"
                 },
+                "power/switchgear": {
+                    "name": "Appareillage électrique",
+                    "terms": "appareillage électrique,appareillage,électrique,appareils de commutation électrique,équipements électriques,appareils,équipements"
+                },
                 "power/tower": {
                     "name": "Pylône électrique",
                     "terms": "pylône haute-tension"
@@ -9272,6 +9369,10 @@
                 "relation": {
                     "name": "Relation",
                     "terms": "relation"
+                },
+                "roller_coaster/track": {
+                    "name": "Voie de montagnes russes",
+                    "terms": "voie de montagnes russes"
                 },
                 "route/ferry": {
                     "name": "Trajet de ferry",
@@ -10225,10 +10326,6 @@
                 "traffic_calming/hump": {
                     "name": "Ralentisseur dos d’âne",
                     "terms": "dos d'âne,gendarme couché"
-                },
-                "traffic_calming/island": {
-                    "name": "Îlot central",
-                    "terms": "îlot central"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Mini ralentisseurs",

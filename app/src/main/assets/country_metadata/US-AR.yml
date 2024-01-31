@@ -1,0 +1,4 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Regions Bank, Arvest Bank, Centennial Bank, Bitstop, Bank of America, Bank OZK, Simmons Bank, First Security Bank, U.S. Bank, First National Bank, Chambers Bank]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.']
+defaultSpeedLimitHasUrbanOrRural: true

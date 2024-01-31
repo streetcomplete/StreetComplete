@@ -598,7 +598,7 @@ Du kan börja lösa dem direkt och senare logga in för att publicera dina svar.
     <string name="tutorial_stay_safe">"När du är osäker kan du alltid svara \"Svårt att säga\" och lämna en anteckning.
 
 Slutligen, kom ihåg att ta det säkra före det osäkra: var medveten om din omgivning och gå inte in på privat mark."</string>
-    <string name="tutorial_happy_mapping">"Glad kartläggning!"</string>
+    <string name="tutorial_happy_mapping">"Trevlig kartläggning!"</string>
     <string name="achievements_empty">"Du har inga prestationer ännu"</string>
     <string name="links_empty">"Du har inga länkar ännu"</string>
     <string name="quests_empty">"Du har inte publicerat några uppdragssvar ännu"</string>
@@ -734,7 +734,6 @@ nivåer"</string>
     <string name="resurvey_intervals_less_often">"Fråga mindre ofta"</string>
     <string name="resurvey_intervals_default">"Standard"</string>
     <string name="resurvey_intervals_more_often">"Fråga oftare"</string>
-    <string name="quest_is_defibrillator_inside_title">"Finns det en defibrillator (hjärtstartare) i byggnaden?"</string>
     <string name="about_title_translate">"Hjälp till att översätta denna app"</string>
     <string name="about_description_translate">"%1$s är översatt till %2$d%%"</string>
     <string name="quest_oneway2_title">"Är detta en enkelriktad gata? I vilken riktning?"</string>
@@ -1224,7 +1223,6 @@ Tyvärr har Google Play Store beslutat att inga länkar till donationer får vis
     <string name="quest_address_street_hint2">"Tryck på gatan för att välja den"</string>
     <string name="quest_bicycle_incline_title">"Vilken riktning leder uppåt här?"</string>
     <string name="quest_bicycle_incline_up_and_down">"Korta backar både upp och ner"</string>
-    <string name="quest_drinking_water_type_title">"Hur kan man få tag på dricksvatten här?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Annan sorts dricksfontän"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vattenstråle"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Flaskpåfyllning"</string>
@@ -1345,4 +1343,32 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="quest_crossing_kerb_height_title">"Hur höga är kanterna i den här korsningen?"</string>
     <string name="quest_maxheight_sign_title">"Vilken maxhöjd är skyltad här?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Vilken maxhöjd är skyltad under bron?"</string>
+    <string name="quest_leave_new_note_as_answer">"I så fall behöver du lämna en anteckning som förklarar det hela."</string>
+    <string name="quest_drinking_water_type_title2">"Finns det drickvatten här? Vilken källa?"</string>
+    <string name="quest_is_amenity_inside_title">"Är det här inuti en byggnad?"</string>
+    <string name="quest_bbq_fuel_title">"Vilket bränsle använder denna grill?"</string>
+    <string name="quest_bbq_fuel_wood">"Ved"</string>
+    <string name="quest_bbq_fuel_electric">"Elektricitet"</string>
+    <string name="quest_bbq_fuel_charcoal">"Träkol"</string>
+    <string name="inside">"inomhus"</string>
+    <string name="outside">"utomhus"</string>
+    <string name="quest_recycling_type_food_waste">"Matavfall"</string>
+    <string name="quest_defibrillator_location">"Var finns denna defibrillator?"</string>
+    <string name="quest_defibrillator_location_description">"Ange en kort och tydlig beskrivning av var den finns (t.ex. \"på entréplan i trapphuset\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Finns det en sanitetsdumpningsstation?"</string>
+    <string name="quest_sanitary_dump_station_description">"Anläggning för att deponera mänskligt avfall från en toalettank i en husbil, långdistanslastbil, etc. Indikeras vanligtvis med en skylt som denna:"</string>
+    <string name="quest_generalFee_title">"Behöver man betala för att använda detta?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Det är en eldstad"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Eldstäder är öppna/har inget galler till skillnad från en grill."</string>
+    <string name="about_title_logs">"Loggar (%1$d)"</string>
+    <string name="about_summary_logs">"för användning i felrapporter"</string>
+    <string name="action_filter">"Filtrera"</string>
+    <string name="action_share">"Dela loggar"</string>
+    <string name="about_title_show_logs">"Visa loggar"</string>
+    <string name="label_log_level">"Loggnivå"</string>
+    <string name="label_log_newer_than">"Från"</string>
+    <string name="label_log_older_than">"Till"</string>
+    <string name="label_log_message_contains">"Meddelandet innehåller"</string>
+    <string name="title_logs_filters">"Filtrera meddelanden"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Antal gömda uppdrag: %d"</string>
 </resources>

@@ -588,19 +588,9 @@
                     "label": "Obroči",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "options": {
-                        "equestrian": "Da"
-                    }
-                },
                 "horse_riding": {
                     "options": {
                         "horse_riding": "Da"
-                    }
-                },
-                "horse_stables": {
-                    "options": {
-                        "stables": "Da"
                     }
                 },
                 "incline": {
@@ -1777,9 +1767,6 @@
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "Avtomat za prodajo vozovnic",
                     "terms": "avtomat,prodaja,vozovnice,karte,kartice,vstopnice,javni prevoz,avtobus,tramvaj"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Avtomat za prigrizke"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinar",
@@ -3500,9 +3487,6 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Hitrostna grbina"
-                },
-                "traffic_calming/island": {
-                    "name": "Prometni otok"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Cestne tresavke",

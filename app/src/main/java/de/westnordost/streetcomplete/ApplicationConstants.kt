@@ -10,7 +10,7 @@ object ApplicationConstants {
     const val MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0
     const val MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1
 
-    const val COPYRIGHT_YEARS = "2016-2023"
+    const val COPYRIGHT_YEARS = "2016-2024"
 
     const val DATABASE_NAME = "streetcomplete_v2.db"
     const val OLD_DATABASE_NAME = "streetcomplete.db"
@@ -26,6 +26,12 @@ object ApplicationConstants {
     /** the duration after which OSM data, notes, quest meta data etc. will be deleted from the
      *  database if not used anymore and have not been refreshed in the meantime  */
     const val DELETE_OLD_DATA_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
+
+    /** the duration after which logs will be deleted from the database */
+    const val DELETE_OLD_LOG_AFTER = 14L * 24 * 60 * 60 * 1000 // 14 days in ms
+
+    /** the duration after which logs won't be attached to the crash report */
+    const val DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER = 5L * 60 * 1000 // 5 minutes in ms
 
     const val NOTE_MIN_ZOOM = 15
 
@@ -52,6 +58,8 @@ object ApplicationConstants {
     // name is "downloading" for historic reasons, not sure if it has any side-effects if it is changed now
     const val NOTIFICATIONS_CHANNEL_SYNC = "downloading"
     const val NOTIFICATIONS_ID_SYNC = 1
+
+    const val STREETMEASURE = "de.westnordost.streetmeasure"
 
     val IGNORED_RELATION_TYPES = setOf(
         // could be useful, but sometimes/often very very large

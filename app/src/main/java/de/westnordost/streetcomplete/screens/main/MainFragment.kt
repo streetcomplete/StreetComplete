@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.PointF
@@ -32,6 +31,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -65,8 +65,8 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
-import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
+import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -103,6 +103,7 @@ import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
@@ -111,12 +112,14 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -170,8 +173,9 @@ class MainFragment :
     private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
+    private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -826,8 +830,11 @@ class MainFragment :
         }
 
         val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) f.onClickClose { composeNote(pos) }
-        else composeNote(pos)
+        if (f is IsCloseableBottomSheet) {
+            f.onClickClose { composeNote(pos) }
+        } else {
+            composeNote(pos)
+        }
     }
 
     private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {
@@ -1003,7 +1010,9 @@ class MainFragment :
         // open note if it is blocking element
         val center = geometry.center
         val note = withContext(Dispatchers.IO) {
-            notesSource.getAll(BoundingBox(center, center).enlargedBy(1.2)).firstOrNull()
+            notesSource
+                .getAll(BoundingBox(center, center).enlargedBy(1.2))
+                .firstOrNull { it.position.truncateTo5Decimals() == center.truncateTo5Decimals() }
         }
         if (note != null) {
             showQuestDetails(OsmNoteQuest(note.id, note.position))
@@ -1082,7 +1091,7 @@ class MainFragment :
             return data
         }
 
-        val levels = createLevelsOrNull(element.tags)
+        val levels = parseLevelsOrNull(element.tags)
 
         viewLifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
@@ -1092,13 +1101,13 @@ class MainFragment :
                 // don't highlight "this" element
                 if (element == e) continue
                 // include only elements with the same (=intersecting) level, if any
-                val eLevels = createLevelsOrNull(e.tags)
+                val eLevels = parseLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) continue
                 // include only elements with the same layer, if any
                 if (element.tags["layer"] != e.tags["layer"]) continue
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(e.tags)
+                val icon = getPinIcon(featureDictionary.value, e.tags)
                 val title = getTitle(e.tags)
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }
@@ -1149,7 +1158,7 @@ class MainFragment :
     }
 
     private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) == Prefs.Autosync.ON
+        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") == Prefs.Autosync.ON
 
     private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
         val targetPos = target.getLocationInWindow().toPointF()

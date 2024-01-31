@@ -26,7 +26,6 @@ import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.ktx.updateConfiguration
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
@@ -36,7 +35,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 /** abstract base class for the form that is shown to answer a quest. I.e., it is...
  *  - a bottom sheet that can be pulled up to fill the screen (see AbstractBottomSheetFragment)
@@ -49,7 +47,7 @@ abstract class AbstractQuestForm :
 
     // dependencies
     private val countryInfos: CountryInfos by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val questTypeRegistry: QuestTypeRegistry by inject()
 
     private var _binding: FragmentQuestAnswerBinding? = null
@@ -70,7 +68,7 @@ abstract class AbstractQuestForm :
         get() {
             if (field == null) {
                 field = countryInfos.getByLocation(
-                    countryBoundaries.get(),
+                    countryBoundaries.value,
                     geometry.center.longitude,
                     geometry.center.latitude,
                 )
@@ -82,7 +80,7 @@ abstract class AbstractQuestForm :
     /** either DE or US-NY (or null), depending on what countryBoundaries returns */
     protected val countryOrSubdivisionCode: String? get() {
         val latLon = geometry.center
-        return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
+        return countryBoundaries.value.getIds(latLon.longitude, latLon.latitude).firstOrNull()
     }
 
     // passed in parameters
@@ -106,17 +104,6 @@ abstract class AbstractQuestForm :
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
-
-        /* The Android resource system is not designed to offer different resources depending on the
-         * country (code). But what it can do is to offer different resources for different
-         * "mobile country codes" - i.e. in which country your mobile phone network provider
-         * operates.
-         *
-         * A few quest forms want to display different resources depending on the country.
-         *
-         * So what we do here is to override the parent activity's "mobile country code" resource
-         * configuration and use this mechanism to access our country-dependent resources */
-        countryInfo.mobileCountryCode?.let { activity?.resources?.updateConfiguration { mcc = it } }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

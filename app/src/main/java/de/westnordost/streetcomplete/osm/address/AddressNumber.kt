@@ -20,6 +20,15 @@ val AddressNumber.streetHouseNumber: String? get() = when (this) {
 }
 
 fun AddressNumber.applyTo(tags: Tags) {
+    // first, clear all...
+    listOf(
+        "addr:housenumber",
+        "addr:conscriptionnumber",
+        "addr:streetnumber",
+        "addr:block_number",
+        "addr:block"
+    ).forEach { tags.remove(it) }
+
     when (this) {
         is ConscriptionNumber -> {
             tags["addr:conscriptionnumber"] = conscriptionNumber
@@ -28,7 +37,6 @@ fun AddressNumber.applyTo(tags: Tags) {
                 tags["addr:housenumber"] = streetNumber
             } else {
                 tags["addr:housenumber"] = conscriptionNumber
-                tags.remove("addr:streetnumber")
             }
         }
         is HouseAndBlockNumber -> {
@@ -45,7 +53,7 @@ fun AddressNumber.applyTo(tags: Tags) {
     }
 }
 
-fun createAddressNumber(tags: Map<String, String>): AddressNumber? {
+fun parseAddressNumber(tags: Map<String, String>): AddressNumber? {
     val conscriptionNumber = tags["addr:conscriptionnumber"]
     if (conscriptionNumber != null) {
         val streetNumber = tags["addr:streetnumber"]

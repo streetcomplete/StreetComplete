@@ -734,7 +734,6 @@
     <string name="resurvey_intervals_less_often">"ያነሰ ይጠይቁ"</string>
     <string name="resurvey_intervals_default">"ሲጀመር እንደነበረዉ"</string>
     <string name="resurvey_intervals_more_often">"ብዙ ጊዜ ይጠይቁ"</string>
-    <string name="quest_is_defibrillator_inside_title">"ይህ defibrillator (AED) በሕንፃ ውስጥ ነው?"</string>
     <string name="about_title_translate">"ይህንን መተግበሪያ ለመተርጎም ያግዙ"</string>
     <string name="about_description_translate">"%1$s ተተርጉሟል %2$d%%"</string>
     <string name="quest_oneway2_title">"ይህ የአንድ አቅጣጫ መኪና ሚሄድበት ጎዳና ነው? በየት አቅጣጫ?"</string>

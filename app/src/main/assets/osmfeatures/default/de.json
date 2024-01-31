@@ -515,6 +515,10 @@
                         "rising": "Ausfahrbarer Poller"
                     }
                 },
+                "books": {
+                    "label": "Genre",
+                    "terms": "genre,buchart,bücherart,buchtyp,büchertyp,sparte"
+                },
                 "booth": {
                     "label": "Kabine",
                     "terms": "messestand,stand"
@@ -537,8 +541,8 @@
                     "terms": "marke"
                 },
                 "brewery": {
-                    "label": "Fassbiere",
-                    "terms": "fassbiere"
+                    "label": "Angebotene Biermarken",
+                    "terms": "biermarke,biersorte"
                 },
                 "bridge": {
                     "label": "Typ",
@@ -599,6 +603,7 @@
                         "public": "Öffentliches Amtsgebäude",
                         "residential": "Allgemeines Wohngebäude",
                         "retail": "Geschäftsgebäude",
+                        "riding_hall": "Reithalle",
                         "roof": "Dach",
                         "ruins": "Künstliche Ruine",
                         "school": "Schulgebäude",
@@ -852,6 +857,9 @@
                 "conveying_escalator": {
                     "label": "Lift"
                 },
+                "count": {
+                    "label": "Anzahl der Objekte"
+                },
                 "country": {
                     "label": "Land"
                 },
@@ -1062,7 +1070,7 @@
                         "lebanese": "Libanesisch",
                         "malaysian": "Malaysisch",
                         "mexican": "Mexikanisch",
-                        "pankcake": "Pfannkuchen",
+                        "pancake": "Pfannkuchen",
                         "pasta": "Teigwaren",
                         "peruvian": "Peruanisch",
                         "pizza": "Pizza",
@@ -1309,6 +1317,14 @@
                         "tidal": "Dockhafen"
                     }
                 },
+                "dock/height": {
+                    "label": "Höhe der Laderampe (Meter)",
+                    "terms": "laderampenhöhe"
+                },
+                "dock/width": {
+                    "label": "Breite der Laderampe (Meter)",
+                    "terms": "laderampenbreite"
+                },
                 "dog": {
                     "label": "Hunde",
                     "options": {
@@ -1320,6 +1336,14 @@
                 },
                 "door": {
                     "label": "Tür"
+                },
+                "door/height": {
+                    "label": "Türhöhe (Meter)",
+                    "terms": "durchgangshöhe,lichte höhe"
+                },
+                "door/width": {
+                    "label": "Türbreite (Meter)",
+                    "terms": "durchgangsbreite,lichte breite"
                 },
                 "door_type": {
                     "label": "Typ"
@@ -1437,6 +1461,10 @@
                 "fence_type": {
                     "label": "Typ"
                 },
+                "fhrs/id-GB": {
+                    "label": "FHRS ID",
+                    "terms": "food hygiene rating scheme,food hygiene rating system,food standards agency"
+                },
                 "fire_hydrant/diameter": {
                     "label": "Durchmesser (mm, in oder Buchstaben)",
                     "terms": "durchmesser (mm,inch oder buchstaben)"
@@ -1547,6 +1575,9 @@
                     "label": "Überschwemmungsgefährdet",
                     "terms": "hochwassergefährdet"
                 },
+                "footrest": {
+                    "label": "Fußstütze"
+                },
                 "ford": {
                     "label": "Typ",
                     "placeholder": "Standard"
@@ -1609,7 +1640,7 @@
                     "options": {
                         "female": "Weiblich ♀",
                         "male": "Männlich ♂",
-                        "unisex": "Beide Geschlechter ♂♀"
+                        "unisex": "Unisex"
                     },
                     "placeholder": "Unbekannt",
                     "terms": "geschlecht,zugang,männlich,weiblich,unisex,egal,divers"
@@ -1697,6 +1728,9 @@
                     "label": "Geländer",
                     "terms": "geländer,handlauf"
                 },
+                "handrest": {
+                    "label": "Haltebügel"
+                },
                 "hashtags": {
                     "label": "Hashtags",
                     "placeholder": "#Beispiel"
@@ -1739,7 +1773,7 @@
                         "optometrist": "Augenoptiker",
                         "pharmacy": "Apotheke",
                         "physiotherapist": "Physiotherapeut",
-                        "podiatrist": "Podiater",
+                        "podiatrist": "Podologe",
                         "psychotherapist": "Psychotherapeut",
                         "rehabilitation": "Reha-Klinik",
                         "sample_collection": "Probensammlungseinrichtung",
@@ -1808,12 +1842,12 @@
                         "osteopathy": "Osteopathie",
                         "otolaryngology": "Hals-Nasen-Ohren-Heilkunde",
                         "paediatric_surgery": "Kinderchirurgie",
-                        "paediatrics": "Pädiatrie (Kinderarzt)",
+                        "paediatrics": "Pädiatrie (Kinder- und Jugendmedizin)",
                         "palliative": "Palliativmedizin",
                         "pathology": "Pathologie (Gewebeuntersuchung)",
                         "physiatry": "Physikalische und Rehabilitative Medizin",
                         "plastic_surgery": "Plastische Chirurgie (Schönheitsoperationen)",
-                        "podiatry": "Fußmedizin",
+                        "podiatry": "Fußchirurgie",
                         "proctology": "Proktologie (Darmerkrankungen)",
                         "psychiatry": "Psychiatrie",
                         "pulmonology": "Pneumologie (Lungenerkrankungen)",
@@ -1923,15 +1957,8 @@
                     "label": "Ringe",
                     "placeholder": "1, 2, 4 ..."
                 },
-                "horse_dressage": {
-                    "label": "Dressurreiten",
-                    "options": {
-                        "equestrian": "Ja",
-                        "undefined": "Nein"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Pferdereiten",
+                    "label": "Reitanlage",
                     "options": {
                         "horse_riding": "Ja",
                         "undefined": "Nein"
@@ -1949,13 +1976,6 @@
                     },
                     "placeholder": "schwierig, gefährlich ...",
                     "terms": "reitschwierigkeitsgrad,reitschwierigkeit"
-                },
-                "horse_stables": {
-                    "label": "Reitstall",
-                    "options": {
-                        "stables": "Ja",
-                        "undefined": "Nein"
-                    }
                 },
                 "hot_water": {
                     "label": "Heißwasser"
@@ -2242,7 +2262,7 @@
                     "options": {
                         "adobe": "Lehm",
                         "aluminium": "Aluminium",
-                        "brass": "Blech",
+                        "brass": "Messing",
                         "brick": "Backstein",
                         "bronze": "Bronze",
                         "concrete": "Beton",
@@ -2327,6 +2347,10 @@
                         "stone": "Gedenkstein",
                         "war_memorial": "Kriegsmahnmal"
                     }
+                },
+                "memorial/addr": {
+                    "label": "Adresse des nächstgelegenen Gebäudes",
+                    "terms": "adresse des nächstgelegenen gebäudes"
                 },
                 "message": {
                     "label": "Art der Werbebotschaft",
@@ -2582,6 +2606,11 @@
                     "label": "Öffnungszeiten",
                     "placeholder": "Unbekannt",
                     "terms": "stunden"
+                },
+                "opening_hours/drive_through": {
+                    "label": "Drive-Through Öffnungszeiten",
+                    "placeholder": "Wie normale Öffnungszeiten",
+                    "terms": "drive-in,öffnungszeiten"
                 },
                 "operator": {
                     "label": "Betreiber",
@@ -2873,7 +2902,7 @@
                     "label": "Thema"
                 },
                 "plots": {
-                    "label": "Parzelle",
+                    "label": "Parzellen",
                     "placeholder": "10, 20, 30..."
                 },
                 "polling_station": {
@@ -3002,6 +3031,10 @@
                     "label": "SIRET Nummer",
                     "terms": "siret nummmer"
                 },
+                "ref/edubase-GB": {
+                    "label": "Referenznummer des Department for Education",
+                    "terms": "referenznummer des department for education"
+                },
                 "ref/isil": {
                     "label": "ISIL-Code"
                 },
@@ -3122,6 +3155,39 @@
                 "restrictions": {
                     "label": "Abbiegebeschränkungen"
                 },
+                "roller_coaster/track": {
+                    "label": "Typ",
+                    "options": {
+                        "brake_run": {
+                            "description": "Ein Streckenabschnitt, der dazu dient, Achterbahnzüge zu verlangsamen oder anzuhalten",
+                            "title": "Abbremsstrecke"
+                        },
+                        "launch_straight": {
+                            "description": "Ein Streckenabschnitt auf dem die Züge durch einen externen Antrieb beschleunigt werden",
+                            "title": "Beschleunigungsstrecke"
+                        },
+                        "lift_hill": {
+                            "description": "Ein ansteigender Streckenabschnitt auf dem Züge in die Höhe oben befördert werden um ihnen potenzielle Energie zu liefern",
+                            "title": "Anstiegstrecke"
+                        },
+                        "maintenance": {
+                            "description": "Ein gesonderter Streckenabschnitt für die Aufnahme von Ersatzzügen oder die Durchführung von Wartungsarbeiten",
+                            "title": "Wartungsstrecke"
+                        },
+                        "moving": {
+                            "description": "Ein Streckenabschnitt mit beweglichen Gleisen, wie z.B. Weichengleise",
+                            "title": "Gleiswechselstrecke"
+                        },
+                        "station": {
+                            "description": "Ein Streckenabschnitt, an dem Züge halten, um Fahrgäste ein- und aussteigen zu lassen",
+                            "title": "Ein- und Ausstieg"
+                        },
+                        "waiting": {
+                            "description": "Ein Streckenabschnitt in dem Züge warten, wenn der folgende Abschnitt noch belegt ist",
+                            "title": "Wartestrecke"
+                        }
+                    }
+                },
                 "roof/colour": {
                     "label": "Dachfarbe",
                     "terms": "dachfarbe"
@@ -3146,7 +3212,7 @@
                 "route_master": {
                     "label": "Typ"
                 },
-                "royal_cypher": {
+                "royal_cypher-GB": {
                     "label": "Monogramm",
                     "options": {
                         "CIIIR": "CIIIR (Charles III)",
@@ -3373,6 +3439,13 @@
                     "label": "Duschen",
                     "terms": "duschen"
                 },
+                "side": {
+                    "label": "Seite",
+                    "options": {
+                        "left": "Links",
+                        "right": "Rechts"
+                    }
+                },
                 "siren/purpose": {
                     "label": "Zweck"
                 },
@@ -3422,7 +3495,7 @@
                 "social_facility": {
                     "label": "Typ",
                     "options": {
-                        "ambulatory_care": "Ambulante Pflege",
+                        "ambulatory_care": "Ambulanter Pflegedienst",
                         "assisted_living": "Betreutes Wohnen",
                         "day_care": "Tagespflege",
                         "food_bank": "Lebensmittelausgabe",
@@ -3826,6 +3899,13 @@
                 "telecom/medium": {
                     "label": "Medium"
                 },
+                "telescope/type": {
+                    "label": "Typ",
+                    "options": {
+                        "optical": "Optisches Teleskop",
+                        "radio": "Radioteleskop"
+                    }
+                },
                 "tents": {
                     "label": "Zelte"
                 },
@@ -3929,7 +4009,7 @@
                         "dip": "Absenkung",
                         "double_dip": "Doppelte Absenkung",
                         "hump": "Lange Bodenwelle (Kreissegment)",
-                        "island": "Verkehrsinsel",
+                        "island": "Verkehrsberuhigungsinsel",
                         "mini_bumps": "Kleine Teller",
                         "rumble_strip": "Rüttelstreifen",
                         "table": "Lange Bodenwelle (Plateau)"
@@ -4465,6 +4545,10 @@
                     "name": "Geldautomat",
                     "terms": "geldautomat,bankautomat,bankomat,bancomat,geldausgabeautomat,atm"
                 },
+                "amenity/baking_oven": {
+                    "name": "Backofen",
+                    "terms": "ofen,pizzaofen,steinofen,holzofen"
+                },
                 "amenity/bank": {
                     "name": "Bank-Filiale",
                     "terms": "bank,kreditinstitut,sparkasse,kreditgenossenschaft,treuhandgesellschaft"
@@ -4731,8 +4815,8 @@
                     "aliases": "Schönheitschirurg"
                 },
                 "amenity/doctors/podiatry": {
-                    "name": "Podiater",
-                    "terms": "fußchirurg"
+                    "name": "Podiater (Fußchirurgie)",
+                    "terms": "fußchirurg,fußchirurgie"
                 },
                 "amenity/doctors/proctology": {
                     "name": "Proktologe",
@@ -4875,6 +4959,10 @@
                 "amenity/fuel": {
                     "name": "Tankstelle",
                     "terms": "tankstelle,tanke"
+                },
+                "amenity/funeral_hall": {
+                    "name": "Trauerhalle",
+                    "terms": "feierhalle,aussegnungshalle,einsegnungshalle,abdankungshalle,beerdigung,bestattung,trauerfeier"
                 },
                 "amenity/gambling": {
                     "name": "Spielhalle",
@@ -5329,8 +5417,8 @@
                     "terms": "sozialeinrichtung,sozialhilfeeinrichtung"
                 },
                 "amenity/social_facility/ambulatory_care": {
-                    "name": "Ambulante Unterstützung",
-                    "terms": "ambulanter pflegedienst,streetwork"
+                    "name": "Ambulanter Pflegedienst",
+                    "terms": "ambulanter pflegedienst,pflege,pflegeservice,pflegeambulanz,streetwork"
                 },
                 "amenity/social_facility/assisted_living": {
                     "name": "Einrichtung für betreutes Seniorenwohnen",
@@ -5514,9 +5602,13 @@
                     "name": "Lebensmittel-Verkaufsautomat",
                     "terms": "lebensmittel-verkaufs-automat"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "Snackautomat",
+                    "terms": "snack,snacks,häppchen,salziges"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "Tankautomat",
-                    "terms": "tankautomat"
+                    "terms": "tankautomat,tanken,diesel,benzin,kraftstoff,biodiesel"
                 },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Speiseeis-Automat",
@@ -5548,7 +5640,7 @@
                 },
                 "amenity/vending_machine/sweets": {
                     "name": "Süßigkeitenautomat",
-                    "terms": "süßigkeitenautomat"
+                    "terms": "süßigkeiten,süßes,bonbons,gummibärchen,kaugummi"
                 },
                 "amenity/veterinary": {
                     "name": "Tierarztpraxis",
@@ -5882,6 +5974,10 @@
                     "name": "Mehrfamilienhaus",
                     "terms": "mehrfamilienhaus,apartmenthaus,wohnblock,miethaus,wohnturm,wohnhochhaus,großes wohnhaus,geschosswohnungsbau,wohnungen"
                 },
+                "building/bakehouse": {
+                    "name": "Backhaus",
+                    "terms": "gemeindebackhaus,backes,ofenhaus"
+                },
                 "building/barn": {
                     "name": "Scheune",
                     "terms": "scheune,stadl"
@@ -6045,6 +6141,10 @@
                 "building/retail": {
                     "name": "Geschäftsgebäude",
                     "terms": "geschäftsgebäude,gebäude mit läden"
+                },
+                "building/riding_hall": {
+                    "name": "Reithalle",
+                    "terms": "reitbahn,reiten,longierhalle,longieren"
                 },
                 "building/roof": {
                     "name": "Dach",
@@ -6245,7 +6345,8 @@
                 },
                 "craft/joiner": {
                     "name": "Tischlerei",
-                    "terms": "tischler,schreiner,tischlerbetrieb,tischlerei,schreinerei,möbelbau,möbelbauer"
+                    "terms": "tischler,schreiner,tischlerbetrieb,tischlerei,schreinerei,möbelbau,möbelbauer",
+                    "aliases": "Schreinerei"
                 },
                 "craft/key_cutter": {
                     "name": "Schlüsselschneider",
@@ -6397,7 +6498,7 @@
                 },
                 "emergency/defibrillator": {
                     "name": "Defibrillator",
-                    "terms": "defibrillator,defi,schockgeber"
+                    "terms": "defibrillator,defi,schockgeber,aed"
                 },
                 "emergency/designated": {
                     "name": "Rettungsweg"
@@ -6642,8 +6743,8 @@
                     "aliases": "Physiotherapeutin"
                 },
                 "healthcare/podiatrist": {
-                    "name": "Fußpflege",
-                    "terms": "podologe,fußheilerin,fußpflege"
+                    "name": "Podologe",
+                    "terms": "podologe,fußheiler,fußpflege,podologie,fußnagel,zehnagel"
                 },
                 "healthcare/psychotherapist": {
                     "name": "Psychotherapeut",
@@ -6740,6 +6841,10 @@
                 "highway/cycleway/moped_link-NL": {
                     "name": "Mopedstraße",
                     "terms": "mopedstraße"
+                },
+                "highway/cyclist_waiting_aid": {
+                    "name": "Wartehilfe für Radfahrer",
+                    "terms": "wartehilfe,fußbrett,wartebrett,haltegriff,haltebügel,ampelgriff,ampelbügel,ampelbrett"
                 },
                 "highway/elevator": {
                     "name": "Aufzug",
@@ -7052,6 +7157,10 @@
                 "historic/memorial/plaque": {
                     "name": "Gedenktafel",
                     "terms": "gedenktafel"
+                },
+                "historic/memorial/stolperstein-EU": {
+                    "name": "Stolperstein",
+                    "terms": "stolperstein"
                 },
                 "historic/monument": {
                     "name": "Monument",
@@ -7462,8 +7571,8 @@
                 },
                 "leisure/horse_riding": {
                     "name": "Reitanlage",
-                    "terms": "pferdehof,pferdereiteinrichtung,pferdereitstall,pferdesport,pferdesportanlage,pferdesportzentrum,ponyhof,reitanlage,reitbetrieb,reiten,reiterhof,reithof,reitpark,reitsport,reitsportanlage,reitsportzentrum,reitstall,reitzentrum",
-                    "aliases": "Reiterhof\nReitstall\nReitzentrum"
+                    "terms": "pferdehof,pferdereitstall,pferdesportanlage,pferdesportzentrum,ponyhof,reitbetrieb,reiten,reiterhof,reithof,reitpark,reitsportanlage,reitsportzentrum,reitstall",
+                    "aliases": "Reitzentrum"
                 },
                 "leisure/ice_rink": {
                     "name": "Eislaufbahn",
@@ -7594,7 +7703,8 @@
                 },
                 "leisure/pitch/equestrian": {
                     "name": "Reitplatz",
-                    "terms": "reitplatz,pferdesportplatz,reitbahn,reiten,longieren,longierzirkel,roundpen,round-pen,dressurplatz,springplatz,rodeo"
+                    "terms": "reitplatz,pferdesportplatz,reitbahn,reiten,longieren,longierzirkel,roundpen,round-pen,dressurplatz,springplatz,rodeo",
+                    "aliases": "Reitbahn"
                 },
                 "leisure/pitch/field_hockey": {
                     "name": "Hockeyfeld",
@@ -7720,6 +7830,10 @@
                 "leisure/sports_centre/climbing": {
                     "name": "Kletterhalle",
                     "terms": "kletterhalle"
+                },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Hochseilgarten",
+                    "terms": "kletterpark,seilgarten,waldseilgarten,niedrigseilgarten,kletterwald"
                 },
                 "leisure/sports_centre/horse_racing": {
                     "name": "Pferderennbahn",
@@ -7904,6 +8018,10 @@
                     "terms": "fahne,flagge,flaggenmast",
                     "aliases": "Fahnenstange"
                 },
+                "man_made/fuel_pump": {
+                    "name": "Tanksäule",
+                    "terms": "tanksäule,tankstellensäule"
+                },
                 "man_made/gantry": {
                     "name": "Schilderbrücke",
                     "terms": "portal,wegweiserbrücke,vzb,wechselverkehrszeichen,kragarm",
@@ -7920,6 +8038,10 @@
                 "man_made/groyne": {
                     "name": "Buhne",
                     "terms": "buhne,stack,höft,kribbe,schlenge,schlacht"
+                },
+                "man_made/insect_hotel": {
+                    "name": "Insektenhotel",
+                    "terms": "insektenhotel,bienenhotel,insekten,bienen,käfer,nisthilfe,insektenhaus,insektenasyle,insektenwand,insektenkasten,nützlingshotel,überwinterungshilfe,wildbienen"
                 },
                 "man_made/lighthouse": {
                     "name": "Leuchtturm",
@@ -7980,7 +8102,8 @@
                 },
                 "man_made/milk_churn_stand": {
                     "name": "Milchrampe",
-                    "terms": "milchkanne,milchbank,melkbank,milchbock,milchtisch"
+                    "terms": "milchkanne,milchbank,melkbank,milchbock,milchtisch",
+                    "aliases": "Melkbank\nMilchbock\nMilchtisch"
                 },
                 "man_made/mineshaft": {
                     "name": "Bergmännischer Schacht (vertikal)",
@@ -8035,6 +8158,10 @@
                     "name": "Wasserhochbehälter",
                     "terms": "untergrund,unterirdisch,reservoir,wassertank"
                 },
+                "man_made/satellite_dish": {
+                    "name": "Satellitenschüssel",
+                    "terms": "satellitenschüssel"
+                },
                 "man_made/silo": {
                     "name": "Silo",
                     "terms": "speicher,silo"
@@ -8086,6 +8213,18 @@
                 "man_made/tailings_pond": {
                     "name": "Absetzbecken",
                     "terms": "absetzteich,staubecken,stauteich,schlamm,schlämme,rotschlamm,deponie"
+                },
+                "man_made/telescope": {
+                    "name": "Teleskop",
+                    "terms": "teleskop"
+                },
+                "man_made/telescope/optical": {
+                    "name": "Optisches Teleskop",
+                    "terms": "optikteleskop"
+                },
+                "man_made/telescope/radio": {
+                    "name": "Radioteleskop",
+                    "terms": "radioteleskop"
                 },
                 "man_made/torii": {
                     "name": "Torii",
@@ -8797,7 +8936,7 @@
                     "terms": "dorf"
                 },
                 "playground": {
-                    "name": "Spielgeräte des Spielplatz"
+                    "name": "Spielplatzgerät"
                 },
                 "playground/activitypanel": {
                     "name": "Spielwand",
@@ -9034,6 +9173,10 @@
                 "power/switch": {
                     "name": "Hochspannungsschalter",
                     "terms": "netzschalter,ein/ausschalter,hochspannungsschalter"
+                },
+                "power/switchgear": {
+                    "name": "Schaltanlage",
+                    "terms": "stromschaltanlage"
                 },
                 "power/tower": {
                     "name": "Hochspannungsmast",
@@ -9338,6 +9481,18 @@
                 "relation": {
                     "name": "Relation",
                     "terms": "relation,beziehung"
+                },
+                "roller_coaster/station": {
+                    "name": "Ein- und Ausstieg",
+                    "terms": "einstieg,ausstieg,haltestelle,station"
+                },
+                "roller_coaster/support": {
+                    "name": "Achterbahn-Tragwerk",
+                    "terms": "achterbahn-tragwerk,tragwerk,tragstruktur,holztragwerk,stahltragwerk,auflager,träger"
+                },
+                "roller_coaster/track": {
+                    "name": "Achterbahngleis",
+                    "terms": "achterbahngleis"
                 },
                 "route/ferry": {
                     "name": "Fährstrecke",
@@ -10295,8 +10450,8 @@
                     "terms": "temposchwelle,bodenschwelle,beruhigungsschwelle,rüttelschwelle,fahrbahnhöcker,bremsschwelle,bremshügel,drempel"
                 },
                 "traffic_calming/island": {
-                    "name": "Verkehrsinsel",
-                    "terms": "verkehrsinsel,fahrbahnteiler"
+                    "name": "Verkehrsberuhigungsinsel",
+                    "terms": "verkehrsberuhigungsinsel,verkehrsinsel,fahrbahninsel"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Kleine Bodenwelle",

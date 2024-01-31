@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -14,6 +13,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapter
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -21,7 +21,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
 
     private val selectedOverlayController: SelectedOverlayController by inject()
     private val overlayRegistry: OverlayRegistry by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private val selectedOverlaylistener = object : SelectedOverlaySource.Listener {
         override fun onSelectedOverlayChanged() {

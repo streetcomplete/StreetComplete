@@ -3,13 +3,13 @@ package de.westnordost.streetcomplete.data
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteDatabase.CONFLICT_ABORT
 import android.database.sqlite.SQLiteDatabase.CONFLICT_FAIL
 import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
 import android.database.sqlite.SQLiteDatabase.CONFLICT_NONE
 import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteDatabase.CONFLICT_ROLLBACK
-import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteStatement
 import androidx.core.database.getBlobOrNull
 import androidx.core.database.getDoubleOrNull
@@ -28,8 +28,7 @@ import de.westnordost.streetcomplete.data.ConflictAlgorithm.ROLLBACK
 /** Implementation of Database using android's SQLiteOpenHelper. Since the minimum API version is
  *  21, the minimum SQLite version is 3.8. */
 @SuppressLint("Recycle")
-class AndroidDatabase(private val dbHelper: SQLiteOpenHelper) : Database {
-    private val db get() = dbHelper.writableDatabase
+class AndroidDatabase(private val db: SQLiteDatabase) : Database {
 
     override fun exec(sql: String, args: Array<Any>?) {
         if (args == null) db.execSQL(sql) else db.execSQL(sql, args)

@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [CBE, Government, Dashen Bank, Commercial Bank of Ethiopia, Wegagen Bank, Bank of Abyssinia, CBE ATM, Zemen Bank, Awash International Bank, Addis International Bank, United Bank, Awash Bank]
+atmOperators: [CBE, Government, Dashen Bank, Commercial Bank of Ethiopia, Bank of Abyssinia, Wegagen Bank, cbe, CBE ATM, Zemen Bank, United Bank, Commercial bank of Ethiopia, Awash International Bank, Awash Bank, Addis International Bank]
 centerLineStyle: yellow
 mobileCountryCode: 636
 noParkingSignStyle: vienna

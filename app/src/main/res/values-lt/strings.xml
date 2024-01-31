@@ -732,7 +732,6 @@ dienų"</string>
     <string name="resurvey_intervals_less_often">"Klausti rečiau"</string>
     <string name="resurvey_intervals_default">"Numatytasis"</string>
     <string name="resurvey_intervals_more_often">"Klausti dažniau"</string>
-    <string name="quest_is_defibrillator_inside_title">"Ar defibriliatorius (AED) yra pastato viduje?"</string>
     <string name="about_title_translate">"Padėkite išversti šią programėlę"</string>
     <string name="about_description_translate">"%1$s išversta %2$d%%"</string>
     <string name="quest_oneway2_title">"Ar ši gatvė vienpusė? Į kurią kryptį?"</string>
@@ -1197,6 +1196,7 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="quest_entrance_reference_reference_label">"Įėjimo etiketė:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Plokščias diapazonas:"</string>
     <string name="quest_entrance_reference_flat_range_to">"į"</string>
+    <string name="default_disabled_msg_overlay">"Šis klausimo tipas yra išjungtas, nes yra efektyvesnis būdas suvesti ir atnaujinti duomenis"</string>
     <string name="quest_camp_drinking_water_title">"Ar geriamas vanduo yra laisvai prieinamas stovyklautojams?"</string>
     <string name="quest_camp_shower_title">"Ar čia yra dušų?"</string>
     <string name="quest_camp_power_supply_title">"Ar yra galimybė klientams pasikrauti savo telefoną, kompiuterį ar kt.?"</string>

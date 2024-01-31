@@ -85,10 +85,10 @@ class GroupedLinksAdapter(links: List<Link>, private val onClickLink: (url: Stri
     }
 }
 
-private sealed class Item
+private sealed interface Item
 
-private data class CategoryItem(val category: LinkCategory) : Item()
-private data class LinkItem(val link: Link) : Item()
+private data class CategoryItem(val category: LinkCategory) : Item
+private data class LinkItem(val link: Link) : Item
 
 private val LinkCategory.title: Int get() = when (this) {
     LinkCategory.INTRO -> R.string.link_category_intro_title

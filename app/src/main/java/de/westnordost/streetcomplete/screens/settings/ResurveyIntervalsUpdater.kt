@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.screens.settings
 
-import android.content.SharedPreferences
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.DEFAULT
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.LESS_OFTEN
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.MORE_OFTEN
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.valueOf
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
+import de.westnordost.streetcomplete.util.prefs.Preferences
 
 /** This class is just to access the user's preference about which multiplier for the resurvey
  *  intervals to use */
-class ResurveyIntervalsUpdater(private val prefs: SharedPreferences) {
+class ResurveyIntervalsUpdater(private val prefs: Preferences) {
     fun update() {
         RelativeDate.MULTIPLIER = multiplier
     }
@@ -22,5 +22,5 @@ class ResurveyIntervalsUpdater(private val prefs: SharedPreferences) {
     }
 
     private val intervalsPreference: Prefs.ResurveyIntervals get() =
-        valueOf(prefs.getString(Prefs.RESURVEY_INTERVALS, "DEFAULT")!!)
+        valueOf(prefs.getStringOrNull(Prefs.RESURVEY_INTERVALS) ?: "DEFAULT")
 }

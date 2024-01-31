@@ -65,10 +65,11 @@ class TeamModeDialog(
         getButton(BUTTON_POSITIVE)?.isEnabled = selectedTeamSize != null && selectedIndexInTeam != null
     }
 
-    private fun parseTeamSize(string: String): Int? {
-        return try {
+    private fun parseTeamSize(string: String): Int? =
+        try {
             val number = Integer.parseInt(string)
             if (number in 2..MAX_TEAM_SIZE) number else null
-        } catch (e: NumberFormatException) { null }
-    }
+        } catch (e: NumberFormatException) {
+            null
+        }
 }

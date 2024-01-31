@@ -101,8 +101,9 @@ private fun String.unescapeUnicode(): String {
             }
         } else if (hadSlash) {
             hadSlash = false
-            if (ch == 'u') inUnicode = true
-            else {
+            if (ch == 'u') {
+                inUnicode = true
+            } else {
                 out.write(92)
                 out.write(ch.toString())
             }

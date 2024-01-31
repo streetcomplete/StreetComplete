@@ -493,9 +493,6 @@
                 "brand": {
                     "label": "Merke"
                 },
-                "brewery": {
-                    "label": "Fatøl"
-                },
                 "bridge": {
                     "label": "Type",
                     "placeholder": "Standard"
@@ -929,7 +926,6 @@
                         "lebanese": "Libanesisk",
                         "malaysian": "Malaysisk",
                         "mexican": "Meksikansk",
-                        "pankcake": "Pannekake",
                         "pasta": "Pasta",
                         "pizza": "Pizza",
                         "polish": "Polsk",
@@ -1551,15 +1547,7 @@
                     "label": "Bøyler",
                     "placeholder": "1, 2, 4..."
                 },
-                "horse_dressage": {
-                    "label": "Dressurridning",
-                    "options": {
-                        "equestrian": "Ja",
-                        "undefined": "Nei"
-                    }
-                },
                 "horse_riding": {
-                    "label": "Hesteridning",
                     "options": {
                         "horse_riding": "Ja",
                         "undefined": "Nei"
@@ -1575,13 +1563,6 @@
                         "difficult": "Vanskelig: Stien er smal og utsatt. Kan inneholde hindringer man må tråkke over og smale passasjer."
                     },
                     "placeholder": "Vanskelig, Farlig ..."
-                },
-                "horse_stables": {
-                    "label": "Ridestall",
-                    "options": {
-                        "stables": "Ja",
-                        "undefined": "Nei"
-                    }
                 },
                 "hot_water": {
                     "label": "Varmtvann"
@@ -2928,7 +2909,6 @@
                         "chicane": "Sideforskyvning",
                         "choker": "Innsnervring",
                         "double_dip": "Doble fartshump",
-                        "island": "Trafikkøy",
                         "rumble_strip": "Rumlefelt"
                     }
                 },
@@ -3833,9 +3813,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Matautomat"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Drivstoffpumpe"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Iskremautomat"
                 },
@@ -3853,9 +3830,6 @@
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "Billettautomat"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Godteriautomat"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinær"
@@ -6322,9 +6296,6 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Fartshump"
-                },
-                "traffic_calming/island": {
-                    "name": "Trafikkøy"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Mini-fartshump"

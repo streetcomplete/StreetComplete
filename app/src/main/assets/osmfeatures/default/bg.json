@@ -8,6 +8,9 @@
                 "category-building": {
                     "name": "Сгради"
                 },
+                "category-golf": {
+                    "name": "Голф обекти"
+                },
                 "category-landuse": {
                     "name": "Обекти за земеползване"
                 },
@@ -263,9 +266,6 @@
                 "brand": {
                     "label": "Търговска марка"
                 },
-                "brewery": {
-                    "label": "Наливни бири"
-                },
                 "bridge": {
                     "label": "Вид",
                     "placeholder": "По подразбиране"
@@ -404,7 +404,6 @@
                         "korean": "Корейска",
                         "malaysian": "Малоазийска",
                         "mexican": "Мексиканска",
-                        "pankcake": "Палачинки",
                         "pasta": "Паста",
                         "pizza": "Пица",
                         "polish": "Полска",
@@ -1086,7 +1085,7 @@
                     "label": "Път номер"
                 },
                 "ref_route": {
-                    "label": "Маршрут номер"
+                    "label": "Номер на маршрута"
                 },
                 "ref_runway": {
                     "label": "Писта номер",
@@ -1152,7 +1151,10 @@
                 "service": {
                     "label": "Вид",
                     "options": {
-                        "alley": "Алея"
+                        "alley": "Алея",
+                        "drive-through": "Обслужване, без да напускате автомобила",
+                        "driveway": "Алея за коли към жилище/бизнес",
+                        "parking_aisle": "Паркинг алея"
                     }
                 },
                 "shelter": {
@@ -1884,6 +1886,9 @@
                 "highway/footway/sidewalk": {
                     "name": "Тротоар"
                 },
+                "highway/footway/traffic_island": {
+                    "name": "Пешеходен остров"
+                },
                 "highway/living_street": {
                     "name": "Улица в жилищна зона"
                 },
@@ -1928,16 +1933,16 @@
                     "name": "Тясна уличка между имоти"
                 },
                 "highway/service/drive-through": {
-                    "name": "Обслужване без напускане на автомобила"
+                    "name": "Обслужване, без да напускате автомобила"
                 },
                 "highway/service/driveway": {
-                    "name": "Алея за коли към жилище"
+                    "name": "Алея за коли към жилище/бизнес"
                 },
                 "highway/service/emergency_access": {
                     "name": "За достъп при спешни случаи"
                 },
                 "highway/service/parking_aisle": {
-                    "name": "Път в паркинг"
+                    "name": "Паркинг алея"
                 },
                 "highway/speed_camera": {
                     "name": "Камера за скорост"
@@ -2034,17 +2039,18 @@
                 },
                 "landuse/construction": {
                     "name": "Строителна площадка",
-                    "terms": "сграда,булдозер,строителна площадка,строителна зона,кран,събаряне,развитие,инфраструктура"
+                    "terms": "сграда,булдозер,строителна площадка,строителна зона,кран,събаряне,развитие,инфраструктура,строеж"
                 },
                 "landuse/farm": {
-                    "name": "Земеделска земя"
+                    "name": "Ферма"
                 },
                 "landuse/farmland": {
                     "name": "Земеделска земя",
                     "terms": "поле"
                 },
                 "landuse/farmyard": {
-                    "name": "Селскостопански двор"
+                    "name": "Селскостопански двор",
+                    "terms": "ткзс"
                 },
                 "landuse/grass": {
                     "name": "Трева"
@@ -2054,6 +2060,10 @@
                 },
                 "landuse/industrial": {
                     "name": "Индустриална зона"
+                },
+                "landuse/industrial/depot": {
+                    "name": "Депо",
+                    "terms": "гараж,автобус,камион,паркинг"
                 },
                 "landuse/industrial/scrap_yard": {
                     "name": "Вторични суровини",
@@ -2078,8 +2088,14 @@
                 "landuse/military/barracks": {
                     "name": "Казарми"
                 },
+                "landuse/military/base": {
+                    "name": "Военна база"
+                },
                 "landuse/orchard": {
                     "name": "Овощна градина"
+                },
+                "landuse/plant_nursery": {
+                    "name": "Разсадник"
                 },
                 "landuse/quarry": {
                     "name": "Кариера"
@@ -2288,6 +2304,10 @@
                 },
                 "natural/tree": {
                     "name": "Дърво"
+                },
+                "natural/tree_stump": {
+                    "name": "Пън на дърво",
+                    "terms": "отсечено дърво,премахнато дърво"
                 },
                 "natural/volcano": {
                     "name": "Вулкан"
@@ -2525,7 +2545,7 @@
                     "terms": "железопътен сигнал"
                 },
                 "railway/station": {
-                    "name": "ЖП гара"
+                    "name": "Гара"
                 },
                 "railway/subway_entrance": {
                     "name": "Вход на метростанция"
@@ -2909,6 +2929,9 @@
                 "type/route": {
                     "name": "Маршрут"
                 },
+                "type/route/bicycle": {
+                    "name": "Велосипеден маршрут"
+                },
                 "type/route/bus": {
                     "name": "Автобусен маршрут"
                 },
@@ -2922,20 +2945,29 @@
                 "type/route/foot": {
                     "name": "Пешеходен маршрут"
                 },
+                "type/route/light_rail": {
+                    "name": "Маршрут на леко метро"
+                },
                 "type/route/pipeline": {
                     "name": "Трасе на тръбопровод"
                 },
                 "type/route/power": {
                     "name": "Трасе на електропровод"
                 },
+                "type/route/railway": {
+                    "name": "Маршрут на железопътна линия"
+                },
                 "type/route/road": {
                     "name": "Път"
                 },
                 "type/route/train": {
-                    "name": "Железопътен маршрут"
+                    "name": "Маршрут на влак"
                 },
                 "type/route/tram": {
                     "name": "Трамваен маршрут"
+                },
+                "type/route/trolleybus": {
+                    "name": "Тролейбусен маршрут"
                 },
                 "type/route_master": {
                     "name": "Маршрутна схема"

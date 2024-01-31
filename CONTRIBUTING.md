@@ -104,7 +104,7 @@ See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW
 
 Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
 
-It is recommended to install the [Ktlint (unofficial)](https://plugins.jetbrains.com/plugin/15057-ktlint-unofficial-) Android Studio plugin which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
+It is recommended to install the [*Ktlint* Android Studio plugin](https://plugins.jetbrains.com/plugin/15057-ktlint) which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
 
 ### Hints for more active people
 
@@ -143,4 +143,3 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/osm/Shop.kt#L6)
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
-

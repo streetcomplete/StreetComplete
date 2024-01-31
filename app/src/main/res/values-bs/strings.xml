@@ -734,7 +734,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="resurvey_intervals_less_often">"Pitaj rjeđe"</string>
     <string name="resurvey_intervals_default">"Uobičajeno"</string>
     <string name="resurvey_intervals_more_often">"Pitaj češće"</string>
-    <string name="quest_is_defibrillator_inside_title">"Je li ovaj defibrilator (AVD/AED) unutar zgrade?"</string>
     <string name="about_title_translate">"Pomozite prevesti ovu aplikaciju"</string>
     <string name="about_description_translate">"%1$s je %2$d%% preveden"</string>
     <string name="quest_oneway2_title">"Je li ovo jednosmjerna ulica? U kojem smjeru?"</string>

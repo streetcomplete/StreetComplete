@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -12,25 +12,19 @@ class AddBuildingLevelsTest {
     private val questType = AddBuildingLevels()
 
     @Test fun `apply building levels answer`() {
-        questType.verifyAnswer(
-            BuildingLevelsAnswer(5, null),
-            StringMapEntryAdd("building:levels", "5")
+        assertEquals(
+            setOf(StringMapEntryAdd("building:levels", "5")),
+            questType.answerApplied(BuildingLevelsAnswer(5, null))
         )
     }
 
-    @Test fun `apply building levels and zero roof levels answer`() {
-        questType.verifyAnswer(
-            BuildingLevelsAnswer(5, 0),
-            StringMapEntryAdd("building:levels", "5"),
-            StringMapEntryAdd("roof:levels", "0")
-        )
-    }
-
-    @Test fun `apply building and roof levels answer`() {
-        questType.verifyAnswer(
-            BuildingLevelsAnswer(5, 3),
-            StringMapEntryAdd("building:levels", "5"),
-            StringMapEntryAdd("roof:levels", "3")
+    @Test fun `apply building levels and roof levels answer`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("building:levels", "5"),
+                StringMapEntryAdd("roof:levels", "0")
+            ),
+            questType.answerApplied(BuildingLevelsAnswer(5, 0))
         )
     }
 

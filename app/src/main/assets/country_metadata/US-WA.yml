@@ -1,3 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Volta, Tesla, Chargepoint, Blink, SemaConnect, GE, Tesla Motors, City of Seattle, ChargePoint, Bellingham Nissan, AV aerovironment]
-clothesContainerOperators: [USAgain]
+atmOperators: [Bank of America, Chase, Wells Fargo, BECU, U.S. Bank, KeyBank, Citibank, Rockitcoin, Columbia Bank, Umpqua Bank, Banner Bank, Numerica Credit Union, HomeStreet Bank, Cardtronics, WSECU, Kitsap Credit Union, WaFd Bank, WECU, Union Bank, TwinStar Credit Union, Seattle Metropolitan Credit Union, Seattle Credit Union, Red Canoe Credit Union, Red Canoe, Hantle, AlaskaUSA Federal Credit Union, AlaskaUSA, iQ Credit Union, iQ, Whatcom Educational Credit Union, Washington State Employees Credit Union, Timberland Bank, Sound Credit Union, Riverview Community Bank, Premier, Peoples Bank, Opus Bank, OnPoint, Navy Federal Credit Union, MetaBank, Kitsap Bank, Homestreet Bank, Heritage Bank, First Financial Northwest Bank, Columbia Credit Union, Cathay Bank, BECU (Burien Plaza)]
+chargingStationOperators: [Volta, ChargePoint, Blink, Electrify America, 'Tesla, Inc.', eVgo, EVgo, University of Washington, Shell Recharge Solutions, NRG Energy, Tesla, GE, volta, Western Washington University, FLO, City of Seattle, Bellingham Nissan, BMW Tri-Cities, Avista, Audi Tri-Cities, AV aerovironment]
+clothesContainerOperators: [USAgain, TexGreen]
+defaultSpeedLimitHasUrbanOrRural: true

@@ -98,7 +98,6 @@ class Compass(
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
 
     override fun onSensorChanged(event: SensorEvent) {
-
         if (event.sensor.type == Sensor.TYPE_MAGNETIC_FIELD) {
             geomagnetic = event.values.copyOf()
         } else if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) {

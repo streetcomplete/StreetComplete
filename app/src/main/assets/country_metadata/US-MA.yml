@@ -1,2 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, Tesla, NRG Energy, City of Melrose, Chargepoint, ChargePoint]
+atmOperators: [Bank of America, Santander, Citizens Bank, Chase, TD Bank, Florence Savings Bank, Shrewsbury Federal Credit Union, Salem Five Bank, Eastern Bank, Digital Credit Union, Cambridge Savings Bank]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Tesla Motors, Volta, Electrify America, eVgo, Town of Bolton, NRG Energy, Gordon College]
+clothesContainerOperators: [Goodwill]
+defaultSpeedLimitHasUrbanOrRural: true
