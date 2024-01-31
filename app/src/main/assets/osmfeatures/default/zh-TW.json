@@ -145,39 +145,39 @@
                     "label": "地址",
                     "placeholders": {
                         "block_number": "街區號碼",
-                        "block_number!jp": "街區號碼",
+                        "block_number!jp": "番地",
                         "city": "城市",
                         "city!cn": "地級市／自治州／地區／盟",
-                        "city!jp": "城市／鄉鎮／村里／東京特別區",
-                        "city!vn": "城市／鄉鎮",
+                        "city!jp": "市／町／村／東京都區部",
+                        "city!vn": "城庯／市社",
                         "conscriptionnumber": "123",
                         "country": "國家",
                         "county": "縣",
-                        "county!jp": "區",
+                        "county!jp": "郡",
                         "district": "區",
                         "district!cn": "市轄區／縣／縣級市／旗",
-                        "district!vn": "郡／鄉鎮／區",
+                        "district!vn": "郡／市社／縣",
                         "floor": "樓層",
                         "hamlet": "村莊",
                         "housename": "房屋名稱",
                         "housenumber": "123",
                         "housenumber!jp": "建築物號碼／地號",
                         "neighbourhood": "鄰",
-                        "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
+                        "neighbourhood!jp": "町/丁目/字/小字",
                         "place": "地方",
                         "postcode": "郵遞區號",
                         "province": "省",
                         "province!cn": "省／直轄市／自治區／特別行政區",
-                        "province!jp": "州",
+                        "province!jp": "都道府縣",
                         "quarter": "地方",
                         "quarter!jp": "Ōaza",
                         "state": "州",
                         "street": "街道",
                         "subdistrict": "分區",
-                        "subdistrict!vn": "行政區／社區／小市鎮",
+                        "subdistrict!vn": "坊／社／市鎮",
                         "suburb": "細區",
-                        "suburb!jp": "政令市 (Ward)",
-                        "unit": "單位"
+                        "suburb!jp": "政令市",
+                        "unit": "戶號"
                     },
                     "terms": "地址,住址"
                 },
@@ -250,7 +250,7 @@
                     "label": "類型",
                     "options": {
                         "baths": "浴室",
-                        "city": "歷史城市",
+                        "city": "古城遺址",
                         "crannog": "Crannog",
                         "enclosure": "圍欄",
                         "fortification": "防禦工事",
@@ -280,7 +280,7 @@
                         "bust": "半身像",
                         "graffiti": "塗鴉",
                         "installation": "裝置藝術",
-                        "mosaic": "馬賽克",
+                        "mosaic": "鑲嵌藝術",
                         "mural": "壁畫",
                         "painting": "繪畫",
                         "relief": "浮雕",
@@ -514,6 +514,10 @@
                         "removable": "可移除護柱",
                         "rising": "上升護柱"
                     }
+                },
+                "books": {
+                    "label": "書籍類型",
+                    "terms": "書籍類型"
                 },
                 "booth": {
                     "label": "亭子",
@@ -852,6 +856,9 @@
                 },
                 "conveying_escalator": {
                     "label": "電扶梯"
+                },
+                "count": {
+                    "label": "圖徵數量"
                 },
                 "country": {
                     "label": "國家"
@@ -1454,6 +1461,10 @@
                 "fence_type": {
                     "label": "種類"
                 },
+                "fhrs/id-GB": {
+                    "label": "FHRS ID",
+                    "terms": "fhrs id"
+                },
                 "fire_hydrant/diameter": {
                     "label": "直徑（毫米、英呎或 letters）",
                     "terms": "直徑 (mm)"
@@ -1563,6 +1574,9 @@
                 "flood_prone": {
                     "label": "易氾濫",
                     "terms": "洪流易發"
+                },
+                "footrest": {
+                    "label": "腳踏車腳部休息設施"
                 },
                 "ford": {
                     "label": "類型",
@@ -1713,6 +1727,9 @@
                 "handrail": {
                     "label": "扶手",
                     "terms": "扶手"
+                },
+                "handrest": {
+                    "label": "腳踏車手部休息設施"
                 },
                 "hashtags": {
                     "label": "主題標籤",
@@ -1912,7 +1929,7 @@
                         "shieling": "山區的夏季牧場",
                         "tomb": "墳墓",
                         "wayside_cross": "路邊十字架",
-                        "wayside_shrine": "路邊神祠",
+                        "wayside_shrine": "路邊神龕",
                         "wreck": "沉船"
                     }
                 },
@@ -2590,6 +2607,11 @@
                     "placeholder": "未知",
                     "terms": "營運小時"
                 },
+                "opening_hours/drive_through": {
+                    "label": "得來速開放時間",
+                    "placeholder": "與正常營業時間相同",
+                    "terms": "得來速開放時間"
+                },
                 "operator": {
                     "label": "營運商",
                     "terms": "營運商,經營商,經營者"
@@ -3009,6 +3031,10 @@
                     "label": "SIRET 編號",
                     "terms": "siret 編號"
                 },
+                "ref/edubase-GB": {
+                    "label": "教育參考相關的科系",
+                    "terms": "education reference 的科系"
+                },
                 "ref/isil": {
                     "label": "ISIL 代碼"
                 },
@@ -3128,6 +3154,39 @@
                 },
                 "restrictions": {
                     "label": "轉向限制"
+                },
+                "roller_coaster/track": {
+                    "label": "類型",
+                    "options": {
+                        "brake_run": {
+                            "description": "用來減慢或停止列車的一段軌道",
+                            "title": "煞車軌道"
+                        },
+                        "launch_straight": {
+                            "description": "一段用來透過外部輸入加速列車的軌道",
+                            "title": "發射軌道"
+                        },
+                        "lift_hill": {
+                            "description": "用來為列車提供位能的傾斜軌道",
+                            "title": "爬升丘"
+                        },
+                        "maintenance": {
+                            "description": "用來容納備用列車或進行維修的軌道",
+                            "title": "維護"
+                        },
+                        "moving": {
+                            "description": "任何類型的移動軌道，例如轉換軌道",
+                            "title": "移動"
+                        },
+                        "station": {
+                            "description": "火車停下來供乘客上下車的一段軌道",
+                            "title": "車站"
+                        },
+                        "waiting": {
+                            "description": "若下一個區塊被佔用，則用於停放列車的軌道",
+                            "title": "等待"
+                        }
+                    }
                 },
                 "roof/colour": {
                     "label": "屋頂顏色",
@@ -3379,6 +3438,13 @@
                 "shower": {
                     "label": "淋浴",
                     "terms": "淋浴"
+                },
+                "side": {
+                    "label": "使用側",
+                    "options": {
+                        "left": "左",
+                        "right": "右"
+                    }
                 },
                 "siren/purpose": {
                     "label": "目的"
@@ -3667,7 +3733,7 @@
                 "substation_pipeline": {
                     "label": "類型",
                     "options": {
-                        "compression": "壓縮變電站",
+                        "compression": "加壓站",
                         "distribution": "配電站",
                         "field_gathering": "集氣",
                         "industrial": "工業",
@@ -3703,7 +3769,7 @@
                         "mud": "持續泥濘",
                         "paved": "鋪面",
                         "paving_stones": "鋪路石",
-                        "salt": "鹽份",
+                        "salt": "乾鹽湖",
                         "sand": "沙",
                         "sett": "石塊",
                         "unhewn_cobblestone": "未切割的鵝卵石",
@@ -3798,7 +3864,7 @@
                             "title": "機動三輪車"
                         },
                         "cycle_rickshaw": {
-                            "description": "腳踏人力車（例如：padyak、velotaxi 等）",
+                            "description": "腳踏人力車（例如：三輪車等）",
                             "title": "人力車"
                         },
                         "motorcar": {
@@ -3815,7 +3881,7 @@
                 "taxon": {
                     "label": "分類單元",
                     "placeholder": "Acer platanoides Columnare, Pyrus calleryana Chanticleer …",
-                    "terms": "分類單元"
+                    "terms": "分類單元,分類單位,分類群,類元,類群"
                 },
                 "tee": {
                     "label": "發球區顏色或類型"
@@ -3943,7 +4009,7 @@
                         "dip": "減速坡",
                         "double_dip": "雙重減速坡",
                         "hump": "減速標線",
-                        "island": "分隔島",
+                        "island": "減速分隔島",
                         "mini_bumps": "迷你減速帶",
                         "rumble_strip": "跳動路面",
                         "table": "減速丘"
@@ -5520,9 +5586,13 @@
                     "name": "食物販賣機",
                     "terms": "食物販賣機,食物自動販賣機"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "零食販賣機",
+                    "terms": "零食販賣機"
+                },
                 "amenity/vending_machine/fuel": {
-                    "name": "自助加油機",
-                    "terms": "自助加油機"
+                    "name": "燃料販賣機",
+                    "terms": "燃料販賣機"
                 },
                 "amenity/vending_machine/ice_cream": {
                     "name": "冰淇淋販賣機",
@@ -5553,8 +5623,8 @@
                     "terms": "郵票販賣機,郵票自動販賣機"
                 },
                 "amenity/vending_machine/sweets": {
-                    "name": "零食販賣機",
-                    "terms": "點心販賣機,販 賣機"
+                    "name": "糖果販賣機",
+                    "terms": "糖果販賣機"
                 },
                 "amenity/veterinary": {
                     "name": "獸醫院",
@@ -6733,6 +6803,10 @@
                     "name": "輕便摩托車聯絡道",
                     "terms": "輕便摩托車聯絡道"
                 },
+                "highway/cyclist_waiting_aid": {
+                    "name": "腳踏車等待輔助設施",
+                    "terms": "腳踏車等待輔助設施"
+                },
                 "highway/elevator": {
                     "name": "電梯",
                     "terms": "電梯,升降梯"
@@ -7068,8 +7142,8 @@
                     "terms": "路邊十字架"
                 },
                 "historic/wayside_shrine": {
-                    "name": "路邊神祠",
-                    "terms": "路邊小廟"
+                    "name": "路邊神龕",
+                    "terms": "路,神龕,神社,廟,祠"
                 },
                 "historic/wreck": {
                     "name": "沈船"
@@ -7895,6 +7969,10 @@
                     "name": "旗桿",
                     "terms": "旗桿"
                 },
+                "man_made/fuel_pump": {
+                    "name": "燃料幫浦",
+                    "terms": "燃料幫浦"
+                },
                 "man_made/gantry": {
                     "name": "門架",
                     "terms": "門架"
@@ -7910,6 +7988,10 @@
                 "man_made/groyne": {
                     "name": "防波堤",
                     "terms": "防波堤"
+                },
+                "man_made/insect_hotel": {
+                    "name": "昆蟲屋",
+                    "terms": "昆蟲屋"
                 },
                 "man_made/lighthouse": {
                     "name": "燈塔",
@@ -9326,6 +9408,18 @@
                     "name": "關係",
                     "terms": "關係"
                 },
+                "roller_coaster/station": {
+                    "name": "雲霄飛車站",
+                    "terms": "雲霄飛車站"
+                },
+                "roller_coaster/support": {
+                    "name": "雲霄飛車支撐結構",
+                    "terms": "雲霄飛車支撐結構"
+                },
+                "roller_coaster/track": {
+                    "name": "雲霄飛車軌道",
+                    "terms": "雲霄飛車軌道"
+                },
                 "route/ferry": {
                     "name": "渡輪航線",
                     "terms": "渡輪航線"
@@ -10274,8 +10368,8 @@
                     "terms": "減速標線"
                 },
                 "traffic_calming/island": {
-                    "name": "分隔島",
-                    "terms": "分隔島"
+                    "name": "減速分隔島",
+                    "terms": "減速分隔島"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "迷你減速帶",

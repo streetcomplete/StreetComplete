@@ -34,8 +34,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5601
-        versionName = "56.0"
+        versionCode = 5602
+        versionName = "56.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -145,6 +145,7 @@ dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
@@ -182,7 +183,7 @@ dependencies {
     implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.28.1")
+    implementation("de.westnordost:osm-opening-hours:0.1.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -198,9 +199,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20231218"
+val nsiVersion = "v6.0.20240126"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.5.0"
+val presetsVersion = "v6.6.0"
 
 val poEditorProjectId = "97843"
 

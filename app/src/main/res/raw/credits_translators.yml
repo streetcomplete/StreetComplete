@@ -23,14 +23,14 @@ be:
    Дмитрий: 479
    Rūdolfs: 64
 bg: 
-   Plamen: 37559
+   Plamen: 39215
    Dimitar: 1951
    Kalin: 883
    Rhhs: 202
 bs: 
    msrep: 127
 ca: 
-   Pau Nofuentes Sendra: 19219
+   Pau Nofuentes Sendra: 19969
    jmaspons: 12310
    Joan Montané: 10179
    Josep: 1914
@@ -42,7 +42,7 @@ ca:
    Gabriel Fernández Fernández: 53
 cs: 
    leschek: 25845
-   Lukáš Jelínek: 15522
+   Lukáš Jelínek: 15546
    Stanislav Tichý: 2149
    Petr Kadlec: 648
    Petr Kristof: 575
@@ -53,8 +53,8 @@ cs:
    Vojtik69: 57
    Vladankudlac: 19
 da: 
-   ERyPTION: 30319
-   Dennis Kjær Jensen: 6394
+   ERyPTION: 30788
+   Dennis Kjær Jensen: 6388
    Soren: 3647
    Leonora: 2741
    Jens Hyllegaard: 907
@@ -66,8 +66,8 @@ da:
    Youri Lima: 13
    Freso: 12
 de: 
-   Flo Edelmann: 16317
-   Mr. Update: 7772
+   Flo Edelmann: 17099
+   Mr. Update: 7793
    legofahrrad: 1933
    mcliquid: 918
    papojari: 742
@@ -188,7 +188,7 @@ eu:
    Egoitz: 67
 fa: 
    Mohammad Mehdi Maliki: 18389
-   ARA2020: 12734
+   ARA2020: 12761
    Iman: 12281
    Ahmad: 698
    Mohammed: 557
@@ -281,17 +281,18 @@ hr:
    Nemanja Bračko: 59
    Mario: 9
 hu: 
-   Zachár Benjámin: 17954
-   Gábor Babos: 13282
-   Hungarian_user: 9238
+   Zachár Benjámin: 17914
+   Gábor Babos: 12686
+   Hungarian_user: 8900
    Meskó Balázs: 1758
    Antissimo: 1671
+   Erős Pista: 1223
    ursus: 680
    Botond Sugár: 638
    Máté: 380
    majdnemkocka: 156
-   infeeeee: 61
    Jakob Nolda: 61
+   infeeeee: 43
 hy: 
    Akamar87: 35146
    kakoytokot: 2942
@@ -307,7 +308,7 @@ id:
    zmni: 85
    Suryamudti0128: 17
 it: 
-   Mannivu: 13959
+   Mannivu: 14039
    Marco: 10170
    napo: 6399
    mircozorzo: 3142
@@ -359,13 +360,14 @@ lt:
    Vaidas: 639
    Jurkis: 449
    Ignas Kiela: 278
+   Audrius: 91
 lv: 
    Rudolfs. mazurs: 40857
    ForestEnjoyer: 3199
    Kārlis: 538
    Rūdolfs: 414
 nb: 
-   Mats Randgaard: 34375
+   Mats Randgaard: 34704
    Trond S: 3022
    Simen Heggestøyl: 1679
    Syver: 1551
@@ -381,7 +383,7 @@ nb:
    Borge: 25
    Martin Moen: 13
 nl: 
-   Alert Bouterse: 12380
+   Alert Bouterse: 12407
    Peter: 8427
    Rhhs: 7935
    Daniel: 4046
@@ -427,6 +429,7 @@ pl:
    Garbulix: 470
    Paba22: 457
    Lesiak: 389
+   Lukubuku: 291
    Jan: 201
    rmikke: 201
    Daniel Koć: 179
@@ -440,9 +443,9 @@ pl:
    Marek: 39
    Michal: 38
 pt: 
-   Carnum: 39486
-   Rui: 5908
+   Carnum: 39517
    NunoCaldeira: 5694
+   Rui: 2986
    waldyrious: 2429
    diogodinisf: 700
    Aurelio Pires: 625
@@ -458,10 +461,10 @@ pt-BR:
    Rodrigo Tavares: 1583
    Diego Biavati: 982
    Vandersdg: 702
-   Rui: 500
    Douglas: 325
    Infelizmente ninguém: 295
    André Alvarenga: 266
+   Rui: 250
 ro: 
    Cos: 36261
    Georgian Iosef: 10705
@@ -476,7 +479,7 @@ ru:
    Alex: 4011
    Anton Shestakov: 2930
    Akamar87: 2193
-   Kirill: 2090
+   Kirill: 2149
    Pavel Gavrilov: 1909
    zetx16: 1747
    Igorpolyakov: 1693
@@ -487,7 +490,7 @@ ru:
    Zipperok: 895
    lx5: 833
    Gum: 762
-   ksetdekov: 612
+   ksetdekov: 710
    Ivanivbum: 592
    quyse: 567
    Константин: 554
@@ -518,6 +521,7 @@ ru:
    Alexey: 43
    Serge: 43
    Erelen: 30
+   Guardian: 30
    iChill: 29
    zimirrrr: 29
    Igor: 18
@@ -527,7 +531,7 @@ sk:
    Aiqo: 12430
    Martin: 12302
    Vlado Jendrol: 9493
-   segi: 4747
+   segi: 4770
    Lukas852: 4681
    Andrej Shadura: 218
    Zaijo: 198
@@ -545,8 +549,8 @@ sr-cyrl:
    Branko Kokanovic: 6461
    Nikola: 169
 sv: 
-   riiga: 26037
-   Jonatan Nyberg: 8317
+   riiga: 26060
+   Jonatan Nyberg: 8504
    rindlerblabla: 6188
    Erik: 1135
    Ntoonio: 891
@@ -583,13 +587,13 @@ tr:
 uk: 
    Domkot_UA: 7674
    andygol: 7235
-   Serhii. Muchychka: 7152
+   Serhii. Muchychka: 7184
    nikiforovpizza: 6683
    Ілля: 4950
    Евгений: 3849
    slayzex: 1813
+   Github: 1644
    zimirrrr: 1046
-   Github: 822
    ANT Berezhnyi: 577
    Asdfpoiu: 546
    Mihajlo0743: 467
@@ -610,7 +614,7 @@ zh:
    Mumulhl: 40
    Minecraftis1st: 9
 zh-TW: 
-   Supaplex: 9669
+   Supaplex: 9808
    Kagami: 2686
    Sean Young: 813
    typebrook: 177

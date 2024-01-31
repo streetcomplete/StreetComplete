@@ -515,6 +515,10 @@
                         "rising": "Ausfahrbarer Poller"
                     }
                 },
+                "books": {
+                    "label": "Genre",
+                    "terms": "genre,buchart,bücherart,buchtyp,büchertyp,sparte"
+                },
                 "booth": {
                     "label": "Kabine",
                     "terms": "messestand,stand"
@@ -852,6 +856,9 @@
                 },
                 "conveying_escalator": {
                     "label": "Lift"
+                },
+                "count": {
+                    "label": "Anzahl der Objekte"
                 },
                 "country": {
                     "label": "Land"
@@ -1454,6 +1461,10 @@
                 "fence_type": {
                     "label": "Typ"
                 },
+                "fhrs/id-GB": {
+                    "label": "FHRS ID",
+                    "terms": "food hygiene rating scheme,food hygiene rating system,food standards agency"
+                },
                 "fire_hydrant/diameter": {
                     "label": "Durchmesser (mm, in oder Buchstaben)",
                     "terms": "durchmesser (mm,inch oder buchstaben)"
@@ -1563,6 +1574,9 @@
                 "flood_prone": {
                     "label": "Überschwemmungsgefährdet",
                     "terms": "hochwassergefährdet"
+                },
+                "footrest": {
+                    "label": "Fußstütze"
                 },
                 "ford": {
                     "label": "Typ",
@@ -1713,6 +1727,9 @@
                 "handrail": {
                     "label": "Geländer",
                     "terms": "geländer,handlauf"
+                },
+                "handrest": {
+                    "label": "Haltebügel"
                 },
                 "hashtags": {
                     "label": "Hashtags",
@@ -2590,6 +2607,11 @@
                     "placeholder": "Unbekannt",
                     "terms": "stunden"
                 },
+                "opening_hours/drive_through": {
+                    "label": "Drive-Through Öffnungszeiten",
+                    "placeholder": "Wie normale Öffnungszeiten",
+                    "terms": "drive-in,öffnungszeiten"
+                },
                 "operator": {
                     "label": "Betreiber",
                     "terms": "operator"
@@ -3009,6 +3031,10 @@
                     "label": "SIRET Nummer",
                     "terms": "siret nummmer"
                 },
+                "ref/edubase-GB": {
+                    "label": "Referenznummer des Department for Education",
+                    "terms": "referenznummer des department for education"
+                },
                 "ref/isil": {
                     "label": "ISIL-Code"
                 },
@@ -3128,6 +3154,39 @@
                 },
                 "restrictions": {
                     "label": "Abbiegebeschränkungen"
+                },
+                "roller_coaster/track": {
+                    "label": "Typ",
+                    "options": {
+                        "brake_run": {
+                            "description": "Ein Streckenabschnitt, der dazu dient, Achterbahnzüge zu verlangsamen oder anzuhalten",
+                            "title": "Abbremsstrecke"
+                        },
+                        "launch_straight": {
+                            "description": "Ein Streckenabschnitt auf dem die Züge durch einen externen Antrieb beschleunigt werden",
+                            "title": "Beschleunigungsstrecke"
+                        },
+                        "lift_hill": {
+                            "description": "Ein ansteigender Streckenabschnitt auf dem Züge in die Höhe oben befördert werden um ihnen potenzielle Energie zu liefern",
+                            "title": "Anstiegstrecke"
+                        },
+                        "maintenance": {
+                            "description": "Ein gesonderter Streckenabschnitt für die Aufnahme von Ersatzzügen oder die Durchführung von Wartungsarbeiten",
+                            "title": "Wartungsstrecke"
+                        },
+                        "moving": {
+                            "description": "Ein Streckenabschnitt mit beweglichen Gleisen, wie z.B. Weichengleise",
+                            "title": "Gleiswechselstrecke"
+                        },
+                        "station": {
+                            "description": "Ein Streckenabschnitt, an dem Züge halten, um Fahrgäste ein- und aussteigen zu lassen",
+                            "title": "Ein- und Ausstieg"
+                        },
+                        "waiting": {
+                            "description": "Ein Streckenabschnitt in dem Züge warten, wenn der folgende Abschnitt noch belegt ist",
+                            "title": "Wartestrecke"
+                        }
+                    }
                 },
                 "roof/colour": {
                     "label": "Dachfarbe",
@@ -3380,6 +3439,13 @@
                     "label": "Duschen",
                     "terms": "duschen"
                 },
+                "side": {
+                    "label": "Seite",
+                    "options": {
+                        "left": "Links",
+                        "right": "Rechts"
+                    }
+                },
                 "siren/purpose": {
                     "label": "Zweck"
                 },
@@ -3429,7 +3495,7 @@
                 "social_facility": {
                     "label": "Typ",
                     "options": {
-                        "ambulatory_care": "Ambulante Pflege",
+                        "ambulatory_care": "Ambulanter Pflegedienst",
                         "assisted_living": "Betreutes Wohnen",
                         "day_care": "Tagespflege",
                         "food_bank": "Lebensmittelausgabe",
@@ -3943,7 +4009,7 @@
                         "dip": "Absenkung",
                         "double_dip": "Doppelte Absenkung",
                         "hump": "Lange Bodenwelle (Kreissegment)",
-                        "island": "Verkehrsinsel",
+                        "island": "Verkehrsberuhigungsinsel",
                         "mini_bumps": "Kleine Teller",
                         "rumble_strip": "Rüttelstreifen",
                         "table": "Lange Bodenwelle (Plateau)"
@@ -5351,8 +5417,8 @@
                     "terms": "sozialeinrichtung,sozialhilfeeinrichtung"
                 },
                 "amenity/social_facility/ambulatory_care": {
-                    "name": "Ambulante Unterstützung",
-                    "terms": "ambulanter pflegedienst,streetwork"
+                    "name": "Ambulanter Pflegedienst",
+                    "terms": "ambulanter pflegedienst,pflege,pflegeservice,pflegeambulanz,streetwork"
                 },
                 "amenity/social_facility/assisted_living": {
                     "name": "Einrichtung für betreutes Seniorenwohnen",
@@ -5536,9 +5602,13 @@
                     "name": "Lebensmittel-Verkaufsautomat",
                     "terms": "lebensmittel-verkaufs-automat"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "Snackautomat",
+                    "terms": "snack,snacks,häppchen,salziges"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "Tankautomat",
-                    "terms": "tankautomat"
+                    "terms": "tankautomat,tanken,diesel,benzin,kraftstoff,biodiesel"
                 },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Speiseeis-Automat",
@@ -5570,7 +5640,7 @@
                 },
                 "amenity/vending_machine/sweets": {
                     "name": "Süßigkeitenautomat",
-                    "terms": "süßigkeitenautomat"
+                    "terms": "süßigkeiten,süßes,bonbons,gummibärchen,kaugummi"
                 },
                 "amenity/veterinary": {
                     "name": "Tierarztpraxis",
@@ -6275,7 +6345,8 @@
                 },
                 "craft/joiner": {
                     "name": "Tischlerei",
-                    "terms": "tischler,schreiner,tischlerbetrieb,tischlerei,schreinerei,möbelbau,möbelbauer"
+                    "terms": "tischler,schreiner,tischlerbetrieb,tischlerei,schreinerei,möbelbau,möbelbauer",
+                    "aliases": "Schreinerei"
                 },
                 "craft/key_cutter": {
                     "name": "Schlüsselschneider",
@@ -6770,6 +6841,10 @@
                 "highway/cycleway/moped_link-NL": {
                     "name": "Mopedstraße",
                     "terms": "mopedstraße"
+                },
+                "highway/cyclist_waiting_aid": {
+                    "name": "Wartehilfe für Radfahrer",
+                    "terms": "wartehilfe,fußbrett,wartebrett,haltegriff,haltebügel,ampelgriff,ampelbügel,ampelbrett"
                 },
                 "highway/elevator": {
                     "name": "Aufzug",
@@ -7943,6 +8018,10 @@
                     "terms": "fahne,flagge,flaggenmast",
                     "aliases": "Fahnenstange"
                 },
+                "man_made/fuel_pump": {
+                    "name": "Tanksäule",
+                    "terms": "tanksäule,tankstellensäule"
+                },
                 "man_made/gantry": {
                     "name": "Schilderbrücke",
                     "terms": "portal,wegweiserbrücke,vzb,wechselverkehrszeichen,kragarm",
@@ -7959,6 +8038,10 @@
                 "man_made/groyne": {
                     "name": "Buhne",
                     "terms": "buhne,stack,höft,kribbe,schlenge,schlacht"
+                },
+                "man_made/insect_hotel": {
+                    "name": "Insektenhotel",
+                    "terms": "insektenhotel,bienenhotel,insekten,bienen,käfer,nisthilfe,insektenhaus,insektenasyle,insektenwand,insektenkasten,nützlingshotel,überwinterungshilfe,wildbienen"
                 },
                 "man_made/lighthouse": {
                     "name": "Leuchtturm",
@@ -9399,6 +9482,18 @@
                     "name": "Relation",
                     "terms": "relation,beziehung"
                 },
+                "roller_coaster/station": {
+                    "name": "Ein- und Ausstieg",
+                    "terms": "einstieg,ausstieg,haltestelle,station"
+                },
+                "roller_coaster/support": {
+                    "name": "Achterbahn-Tragwerk",
+                    "terms": "achterbahn-tragwerk,tragwerk,tragstruktur,holztragwerk,stahltragwerk,auflager,träger"
+                },
+                "roller_coaster/track": {
+                    "name": "Achterbahngleis",
+                    "terms": "achterbahngleis"
+                },
                 "route/ferry": {
                     "name": "Fährstrecke",
                     "terms": "boot,schiff,wasserbus,wassershuttle,wassertaxi,vaporetto,fähre"
@@ -10355,8 +10450,8 @@
                     "terms": "temposchwelle,bodenschwelle,beruhigungsschwelle,rüttelschwelle,fahrbahnhöcker,bremsschwelle,bremshügel,drempel"
                 },
                 "traffic_calming/island": {
-                    "name": "Verkehrsinsel",
-                    "terms": "verkehrsinsel,fahrbahnteiler"
+                    "name": "Verkehrsberuhigungsinsel",
+                    "terms": "verkehrsberuhigungsinsel,verkehrsinsel,fahrbahninsel"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Kleine Bodenwelle",

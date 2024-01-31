@@ -1370,4 +1370,10 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="label_log_older_than">"To"</string>
     <string name="label_log_message_contains">"Message contains"</string>
     <string name="title_logs_filters">"Filter messages"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Number of hidden quests: %d"</string>
+    <string name="link_every_door_description">"Powerful POI editor for Android and iOS"</string>
+    <string name="link_mapcomplete_description">"Collection of thematic OSM maps that each show and let you edit one kind of feature"</string>
+    <string name="link_forum_description">"Need help? Want to read what’s going on? Come and mingle, it’s bustling with activity from communities all over the globe!"</string>
+    <string name="link_calendar_description">"Are OpenStreetMap events or community meetings near you? (If not, you could add your own!)"</string>
+    <string name="link_prettymapp_description">"Create pretty multi-colored map posters of neighbourhoods"</string>
 </resources>

@@ -2909,7 +2909,6 @@
                         "chicane": "Sideforskyvning",
                         "choker": "Innsnervring",
                         "double_dip": "Doble fartshump",
-                        "island": "Trafikkøy",
                         "rumble_strip": "Rumlefelt"
                     }
                 },
@@ -3814,9 +3813,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Matautomat"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Drivstoffpumpe"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Iskremautomat"
                 },
@@ -3834,9 +3830,6 @@
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "Billettautomat"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Godteriautomat"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinær"
@@ -6303,9 +6296,6 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Fartshump"
-                },
-                "traffic_calming/island": {
-                    "name": "Trafikkøy"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Mini-fartshump"

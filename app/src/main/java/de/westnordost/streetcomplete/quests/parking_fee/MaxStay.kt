@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
+import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.parking_fee.MaxStay.Unit.DAYS
 import de.westnordost.streetcomplete.quests.parking_fee.MaxStay.Unit.HOURS
@@ -14,8 +14,8 @@ sealed interface MaxStay {
 
 data object NoMaxStay : MaxStay
 data class MaxStayDuration(val value: Double, val unit: MaxStay.Unit) : MaxStay
-data class MaxStayAtHours(val duration: MaxStayDuration, val hours: OpeningHoursRuleList) : MaxStay
-data class MaxStayExceptAtHours(val duration: MaxStayDuration, val hours: OpeningHoursRuleList) : MaxStay
+data class MaxStayAtHours(val duration: MaxStayDuration, val hours: OpeningHours) : MaxStay
+data class MaxStayExceptAtHours(val duration: MaxStayDuration, val hours: OpeningHours) : MaxStay
 
 fun MaxStayDuration.toOsmValue(): String =
     value.toShortString() + " " + when (unit) {

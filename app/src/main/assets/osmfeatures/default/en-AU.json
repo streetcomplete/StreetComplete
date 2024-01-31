@@ -237,9 +237,6 @@
                 "amenity/trolley_bay": {
                     "name": "Trolley Bay"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Fuel Pump"
-                },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "Public Transport Ticket Vending Machine"
                 },

@@ -2537,6 +2537,7 @@
         "moreFields": [
             "{tourism/motel}",
             "bar",
+            "fhrs/id-GB",
             "ref/FR/siret-FR",
             "stars"
         ],
@@ -2554,6 +2555,7 @@
             "{tourism/guest_house}"
         ],
         "moreFields": [
+            "fhrs/id-GB",
             "{tourism/guest_house}"
         ],
         "geometry": [
@@ -2583,6 +2585,7 @@
             "{@templates/poi}",
             "air_conditioning",
             "building/levels_building",
+            "fhrs/id-GB",
             "height_building",
             "reservation",
             "smoking"
@@ -2637,6 +2640,7 @@
             "building/levels_building",
             "height_building",
             "payment_multi",
+            "fhrs/id-GB",
             "reservation",
             "smoking"
         ],
@@ -3272,6 +3276,7 @@
         "icon": "maki-alcohol-shop",
         "moreFields": [
             "{shop}",
+            "fhrs/id-GB",
             "min_age"
         ],
         "geometry": [
@@ -3385,6 +3390,9 @@
         "geometry": [
             "point",
             "area"
+        ],
+        "moreFields": [
+            "fhrs/id-GB"
         ],
         "tags": {
             "shop": "variety_store"
@@ -3515,6 +3523,9 @@
             "point",
             "area"
         ],
+        "moreFields": [
+            "fhrs/id-GB"
+        ],
         "tags": {
             "shop": "tea"
         }
@@ -3558,6 +3569,7 @@
         "moreFields": [
             "{shop}",
             "diet_multi",
+            "fhrs/id-GB",
             "organic"
         ],
         "geometry": [
@@ -3675,7 +3687,10 @@
         ],
         "tags": {
             "shop": "seafood"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/scuba_diving": {
         "icon": "temaki-scuba_diving",
@@ -3855,7 +3870,10 @@
         ],
         "tags": {
             "shop": "pastry"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/pasta": {
         "icon": "fas-plate-wheat",
@@ -3962,6 +3980,9 @@
         "geometry": [
             "point",
             "area"
+        ],
+        "moreFields": [
+            "fhrs/id-GB"
         ],
         "tags": {
             "shop": "newsagent"
@@ -4246,7 +4267,10 @@
         ],
         "tags": {
             "shop": "herbalist"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/hearing_aids": {
         "icon": "temaki-hearing_aid",
@@ -4266,7 +4290,10 @@
         ],
         "tags": {
             "shop": "health_food"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/hardware": {
         "icon": "temaki-tools",
@@ -4313,6 +4340,9 @@
         "fields": [
             "{shop}",
             "organic"
+        ],
+        "moreFields": [
+            "fhrs/id-GB"
         ],
         "geometry": [
             "point",
@@ -4418,6 +4448,9 @@
             "point",
             "area"
         ],
+        "moreFields": [
+            "fhrs/id-GB"
+        ],
         "tags": {
             "shop": "frozen_food"
         }
@@ -4492,6 +4525,9 @@
         "fields": [
             "{shop}",
             "organic"
+        ],
+        "moreFields": [
+            "fhrs/id-GB"
         ],
         "geometry": [
             "point",
@@ -4597,7 +4633,10 @@
         ],
         "tags": {
             "shop": "department_store"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/deli": {
         "icon": "fas-jar",
@@ -4607,7 +4646,10 @@
         ],
         "tags": {
             "shop": "deli"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/dairy": {
         "icon": "fas-cheese",
@@ -4673,6 +4715,7 @@
         "icon": "fas-shopping-basket",
         "moreFields": [
             "{shop}",
+            "fhrs/id-GB",
             "organic"
         ],
         "geometry": [
@@ -4691,7 +4734,10 @@
         ],
         "tags": {
             "shop": "confectionery"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/computer": {
         "icon": "fas-laptop",
@@ -4761,7 +4807,10 @@
         ],
         "tags": {
             "shop": "chemist"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/cheese": {
         "icon": "fas-cheese",
@@ -4771,7 +4820,10 @@
         ],
         "tags": {
             "shop": "cheese"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/charity": {
         "icon": "maki-shop",
@@ -4907,7 +4959,10 @@
         ],
         "tags": {
             "shop": "butcher"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/brewing_supplies": {
         "icon": "temaki-storage_fermenter",
@@ -4923,6 +4978,7 @@
         "icon": "fas-book",
         "fields": [
             "{shop}",
+            "books",
             "internet_access"
         ],
         "moreFields": [
@@ -5028,7 +5084,10 @@
         ],
         "tags": {
             "shop": "bakery"
-        }
+        },
+        "moreFields": [
+            "fhrs/id-GB"
+        ]
     },
     "shop/bag": {
         "icon": "fas-suitcase-rolling",
@@ -5094,10 +5153,12 @@
         "icon": "fas-wine-bottle",
         "fields": [
             "{shop}",
-            "drive_through"
+            "drive_through",
+            "opening_hours/drive_through"
         ],
         "moreFields": [
             "{shop}",
+            "fhrs/id-GB",
             "min_age"
         ],
         "geometry": [
@@ -5461,6 +5522,50 @@
         ],
         "tags": {
             "route": "ferry"
+        }
+    },
+    "roller_coaster/track": {
+        "icon": "temaki-roller_coaster",
+        "fields": [
+            "roller_coaster/track",
+            "height",
+            "layer"
+        ],
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "roller_coaster": "track"
+        }
+    },
+    "roller_coaster/support": {
+        "icon": "roentgen-tower",
+        "fields": [
+            "height",
+            "layer",
+            "material"
+        ],
+        "moreFields": [
+            "colour"
+        ],
+        "geometry": [
+            "line"
+        ],
+        "tags": {
+            "roller_coaster": "support"
+        }
+    },
+    "roller_coaster/station": {
+        "icon": "temaki-roller_coaster",
+        "fields": [
+            "building_area_yes"
+        ],
+        "geometry": [
+            "vertex",
+            "area"
+        ],
+        "tags": {
+            "roller_coaster": "station"
         }
     },
     "railway/yard": {
@@ -10981,6 +11086,22 @@
             "man_made": "lighthouse"
         }
     },
+    "man_made/insect_hotel": {
+        "icon": "fas-bugs",
+        "geometry": [
+            "point"
+        ],
+        "moreFields": [
+            "ref",
+            "operator",
+            "length",
+            "width",
+            "height"
+        ],
+        "tags": {
+            "man_made": "insect_hotel"
+        }
+    },
     "man_made/groyne": {
         "fields": [
             "material",
@@ -11049,6 +11170,22 @@
         ],
         "tags": {
             "man_made": "gantry"
+        }
+    },
+    "man_made/fuel_pump": {
+        "icon": "maki-fuel",
+        "fields": [
+            "ref",
+            "fuel/fuel_multi",
+            "fuel/fuel_multi-RU",
+            "operator",
+            "self_service"
+        ],
+        "geometry": [
+            "point"
+        ],
+        "tags": {
+            "man_made": "fuel_pump"
         }
     },
     "man_made/flagpole": {
@@ -12561,6 +12698,7 @@
             "fee",
             "max_age",
             "min_age",
+            "fhrs/id-GB",
             "operator"
         ],
         "geometry": [
@@ -12936,6 +13074,7 @@
             "{@templates/poi}",
             "air_conditioning",
             "min_age",
+            "fhrs/id-GB",
             "smoking"
         ],
         "geometry": [
@@ -16993,6 +17132,25 @@
             "highway": "elevator"
         }
     },
+    "highway/cyclist_waiting_aid": {
+        "icon": "temaki-guard_rail",
+        "fields": [
+            "footrest",
+            "handrest",
+            "direction_vertex",
+            "side",
+            "count"
+        ],
+        "moreFields": [
+            "capacity"
+        ],
+        "geometry": [
+            "vertex"
+        ],
+        "tags": {
+            "highway": "cyclist_waiting_aid"
+        }
+    },
     "highway/cycleway": {
         "icon": "fas-biking",
         "fields": [
@@ -19226,6 +19384,7 @@
         "icon": "maki-alcohol-shop",
         "moreFields": [
             "{craft}",
+            "fhrs/id-GB",
             "min_age"
         ],
         "geometry": [
@@ -19584,6 +19743,7 @@
         ],
         "moreFields": [
             "{craft}",
+            "fhrs/id-GB",
             "min_age"
         ],
         "geometry": [
@@ -19599,6 +19759,9 @@
         "geometry": [
             "point",
             "area"
+        ],
+        "moreFields": [
+            "fhrs/id-GB"
         ],
         "tags": {
             "craft": "confectionery"
@@ -19640,6 +19803,9 @@
             "name",
             "cuisine",
             "{craft}"
+        ],
+        "moreFields": [
+            "fhrs/id-GB"
         ],
         "geometry": [
             "point",
@@ -21419,7 +21585,8 @@
         "icon": "roentgen-slide_and_water",
         "fields": [
             "{attraction}",
-            "height"
+            "height",
+            "layer"
         ],
         "moreFields": [
             "{attraction}",
@@ -21685,7 +21852,8 @@
             "min_age"
         ],
         "geometry": [
-            "point"
+            "point",
+            "area"
         ],
         "tags": {
             "attraction": "big_wheel"
@@ -22259,6 +22427,7 @@
             "{@templates/internet_access}",
             "{@templates/poi}",
             "baby_feeding",
+            "fhrs/id-GB",
             "building_area"
         ],
         "geometry": [
@@ -22391,7 +22560,9 @@
             "capacity",
             "charge_fee",
             "fee",
+            "fhrs/id-GB",
             "gnis/feature_id-US",
+            "ref/edubase-GB",
             "internet_access",
             "internet_access/ssid",
             "level",
@@ -22448,6 +22619,7 @@
             "branch_brand",
             "brand",
             "brewery",
+            "fhrs/id-GB",
             "capacity",
             "delivery",
             "highchair",
@@ -22618,15 +22790,20 @@
             "access_simple",
             "address",
             "branch_brand",
+            "books",
             "brand",
+            "colour",
             "covered",
+            "direction",
             "email",
+            "height",
             "indoor",
             "level",
             "location",
             "opening_hours",
             "phone",
             "ref",
+            "support",
             "wheelchair"
         ],
         "geometry": [
@@ -22678,6 +22855,7 @@
             "cuisine",
             "diet_multi",
             "microbrewery",
+            "fhrs/id-GB",
             "min_age",
             "outdoor_seating",
             "real_fire-GB-IE",
@@ -22963,7 +23141,8 @@
             "building_area_yes",
             "opening_hours",
             "dispensing",
-            "drive_through"
+            "drive_through",
+            "opening_hours/drive_through"
         ],
         "moreFields": [
             "{@templates/poi}",
@@ -23145,6 +23324,7 @@
         "moreFields": [
             "{@templates/poi}",
             "air_conditioning",
+            "fhrs/id-GB",
             "fee"
         ],
         "geometry": [
@@ -23392,6 +23572,7 @@
             "access_simple",
             "air_conditioning",
             "baby_feeding",
+            "books",
             "polling_station"
         ],
         "geometry": [
@@ -23410,6 +23591,7 @@
             "height"
         ],
         "moreFields": [
+            "colour",
             "covered",
             "indoor",
             "level",
@@ -23418,6 +23600,7 @@
             "manufacturer",
             "material",
             "operator",
+            "support",
             "wheelchair"
         ],
         "geometry": [
@@ -23513,7 +23696,9 @@
         "moreFields": [
             "{@templates/contact}",
             "capacity",
+            "fhrs/id-GB",
             "gnis/feature_id-US",
+            "ref/edubase-GB",
             "internet_access",
             "internet_access/ssid",
             "level",
@@ -23599,7 +23784,9 @@
             "delivery",
             "diet_multi",
             "drive_through",
+            "opening_hours/drive_through",
             "takeaway",
+            "fhrs/id-GB",
             "website/menu"
         ],
         "geometry": [
@@ -23894,6 +24081,7 @@
             "building_area_yes",
             "opening_hours",
             "drive_through",
+            "opening_hours/drive_through",
             "phone",
             "website"
         ],
@@ -23909,6 +24097,7 @@
             "outdoor_seating",
             "smoking",
             "takeaway",
+            "fhrs/id-GB",
             "website/menu"
         ],
         "geometry": [
@@ -23958,6 +24147,7 @@
             "{@templates/internet_access}",
             "{@templates/poi}",
             "air_conditioning",
+            "fhrs/id-GB",
             "min_age",
             "smoking"
         ],
@@ -24297,6 +24487,7 @@
             "{@templates/internet_access}",
             "{@templates/poi}",
             "denomination",
+            "ref/edubase-GB",
             "religion"
         ],
         "geometry": [
@@ -24381,6 +24572,7 @@
             "air_conditioning",
             "branch_brand",
             "brand",
+            "fhrs/id-GB",
             "min_age"
         ],
         "geometry": [
@@ -24407,6 +24599,7 @@
             "{@templates/internet_access}",
             "baby_feeding",
             "capacity",
+            "fhrs/id-GB",
             "gnis/feature_id-US",
             "level",
             "max_age",
@@ -24582,7 +24775,8 @@
             "outdoor_seating",
             "{@templates/internet_access}",
             "phone",
-            "website"
+            "website",
+            "opening_hours/drive_through"
         ],
         "moreFields": [
             "{@templates/internet_access}",
@@ -24602,6 +24796,7 @@
             "takeaway",
             "toilets",
             "toilets/wheelchair",
+            "fhrs/id-GB",
             "website/menu"
         ],
         "geometry": [
@@ -24866,6 +25061,7 @@
             "operator",
             "outdoor_seating",
             "smoking",
+            "fhrs/id-GB",
             "sport/sport_pub"
         ],
         "geometry": [
@@ -24885,7 +25081,8 @@
             "building_area_yes",
             "opening_hours",
             "atm",
-            "drive_through"
+            "drive_through",
+            "opening_hours/drive_through"
         ],
         "moreFields": [
             "{@templates/internet_access}",
@@ -25312,6 +25509,12 @@
             "point",
             "vertex"
         ],
+        "fields": [
+            "ref",
+            "fuel/fuel_multi",
+            "fuel/fuel_multi-RU",
+            "operator"
+        ],
         "tags": {
             "amenity": "vending_machine",
             "vending": "fuel"
@@ -25545,6 +25748,18 @@
         "reference": {
             "key": "vending",
             "value": "bicycle_tube"
+        }
+    },
+    "amenity/vending_machine/food/snacks": {
+        "icon": "temaki-vending_machine",
+        "geometry": [
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "amenity": "vending_machine",
+            "vending": "food",
+            "food": "snacks"
         }
     },
     "amenity/townhall/city": {
@@ -28410,7 +28625,8 @@
         "fields": [
             "crossing/markings_yes",
             "crossing/markings_yes-BG",
-            "crossing/markings_yes-DE-AT-CH"
+            "crossing/markings_yes-DE-AT-CH",
+            "crossing/markings_yes-PL"
         ],
         "geometry": [
             "point"
@@ -28433,7 +28649,8 @@
         "fields": [
             "crossing/markings",
             "crossing/markings-BG",
-            "crossing/markings-DE-AT-CH"
+            "crossing/markings-DE-AT-CH",
+            "crossing/markings-PL"
         ],
         "geometry": [
             "point"

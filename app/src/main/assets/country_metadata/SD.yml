@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Bank of Khartoum, بنك الخرطوم, ATM BOK, بنك امدرمان الوطني, FAISAL ISLAMIC BANK, بنك فيصل الاسلامي السوداني, بنك الخرطوم فرع الكلاكله شرق, Sudanese French Bank, بنك المزارع التجاري, صراف آلي بنك فيصل الإسلامي, البنك السوداني الفرنسي, Faisal Islamic Bank ATM, بنك فيصل الإسلامية السوداني, بنك الخرطوم Bank of Khartoum, صراف آلي بنك الخرطوم]
+atmOperators: [Bank of Khartoum, بنك الخرطوم, ATM BOK, بنك فيصل الاسلامي السوداني, بنك امدرمان الوطني, FAISAL ISLAMIC BANK, صراف آلي بنك فيصل الإسلامي, صراف آلي بنك الخرطوم, بنك فيصل الإسلامية السوداني, بنك المزارع التجاري, بنك الخرطوم فرع الكلاكله شرق, بنك الخرطوم Bank of Khartoum, البنك السوداني الفرنسي, Sudanese French Bank, Faisal Islamic Bank ATM, Faisal Islamic Bank]
 defaultSpeedLimitHasUrbanOrRural: true
 firstDayOfWorkweek: Su
 mobileCountryCode: 634

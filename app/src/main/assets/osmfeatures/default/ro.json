@@ -2330,9 +2330,6 @@
                 "traffic_calming/hump": {
                     "name": "Cucui de Viteză"
                 },
-                "traffic_calming/island": {
-                    "name": "Insulă de Trafic"
-                },
                 "type/boundary": {
                     "name": "Graniță"
                 },

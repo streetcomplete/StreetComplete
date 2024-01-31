@@ -515,6 +515,10 @@
                         "rising": "車止め(隆起式)"
                     }
                 },
+                "books": {
+                    "label": "書籍の種類",
+                    "terms": "書籍の種類"
+                },
                 "booth": {
                     "label": "ブース種別",
                     "terms": "ブース,ブース種別,電話ボックス種別"
@@ -1454,6 +1458,10 @@
                 "fence_type": {
                     "label": "柵の種類"
                 },
+                "fhrs/id-GB": {
+                    "label": "食品衛生格付けID",
+                    "terms": "食品衛生格付けid,食品衛生評価スキーム"
+                },
                 "fire_hydrant/diameter": {
                     "label": "口径 (mm, in, または文字)",
                     "terms": "直径,径"
@@ -1563,6 +1571,9 @@
                 "flood_prone": {
                     "label": "洪水浸水想定区域",
                     "terms": "洪水浸水想定区域,洪水,浸水"
+                },
+                "footrest": {
+                    "label": "足置き"
                 },
                 "ford": {
                     "label": "種類",
@@ -1713,6 +1724,9 @@
                 "handrail": {
                     "label": "手すり",
                     "terms": "手すり,手摺"
+                },
+                "handrest": {
+                    "label": "手すり"
                 },
                 "hashtags": {
                     "label": "ハッシュタグ",
@@ -2586,6 +2600,10 @@
                     "placeholder": "不明",
                     "terms": "時間,時刻"
                 },
+                "opening_hours/drive_through": {
+                    "label": "ドライブスルー営業時間",
+                    "terms": "ドライブスルー営業時間"
+                },
                 "operator": {
                     "label": "管理主体",
                     "terms": "管理者,運営者"
@@ -3005,6 +3023,10 @@
                     "label": "SIRET番号",
                     "terms": "siret番号"
                 },
+                "ref/edubase-GB": {
+                    "label": "イギリス教育省の番号",
+                    "terms": "イギリス教育省の番号"
+                },
                 "ref/isil": {
                     "label": "ISILコード"
                 },
@@ -3124,6 +3146,39 @@
                 },
                 "restrictions": {
                     "label": "進行方向制限"
+                },
+                "roller_coaster/track": {
+                    "label": "ローラーコースターの構成要素",
+                    "options": {
+                        "brake_run": {
+                            "description": "コースターを減速または停止させる区間",
+                            "title": "減速区間"
+                        },
+                        "launch_straight": {
+                            "description": "外部からの力でコースターを加速させる区間",
+                            "title": "加速区間"
+                        },
+                        "lift_hill": {
+                            "description": "コースターに位置エネルギーを与える区間",
+                            "title": "上昇区間"
+                        },
+                        "maintenance": {
+                            "description": "予備のコースターや保守のための区間",
+                            "title": "メンテナンス用区間"
+                        },
+                        "moving": {
+                            "description": "分岐器など可動式のトラック",
+                            "title": "可動区間"
+                        },
+                        "station": {
+                            "description": "コースターが乗客の乗降のために停止する区間",
+                            "title": "乗降区間"
+                        },
+                        "waiting": {
+                            "description": "前方に他のコースターがいる場合に待機する場所",
+                            "title": "待機区間"
+                        }
+                    }
                 },
                 "roof/colour": {
                     "label": "屋根の色",
@@ -3375,6 +3430,13 @@
                 "shower": {
                     "label": "シャワー有無",
                     "terms": "シャワー有無,シャワー"
+                },
+                "side": {
+                    "label": "左右",
+                    "options": {
+                        "left": "左側",
+                        "right": "右側"
+                    }
                 },
                 "siren/purpose": {
                     "label": "利用目的"
@@ -3939,7 +4001,7 @@
                         "dip": "ディップ（凹部）",
                         "double_dip": "2連続のディップ（凹部）",
                         "hump": "弓形ハンプ（凸部）",
-                        "island": "交通島",
+                        "island": "静穏化用交通島",
                         "mini_bumps": "スピードバンプ（こぶ状）",
                         "rumble_strip": "ランブルストリップ",
                         "table": "台形ハンプ（凸部）"
@@ -5522,9 +5584,13 @@
                     "name": "食品自販機",
                     "terms": "食品,食べ物,自販機,自動販売機,食料品"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "スナック菓子販売機",
+                    "terms": "菓子,お菓子,スナック,自動販売機,自販機"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "自動車用燃料自販機",
-                    "terms": "自動車用燃料,燃料,自販機,自動販売機,ガソリン,プロパン,液化ガス,軽油"
+                    "terms": "自動車用燃料,燃料,自販機,自動販売機,給油機,ガソリン,プロパン,液化ガス,軽油,ディーゼル,lng,天然ガス"
                 },
                 "amenity/vending_machine/ice_cream": {
                     "name": "アイスクリーム自販機",
@@ -5555,8 +5621,8 @@
                     "terms": "切手,自販機,自動販売機,郵便"
                 },
                 "amenity/vending_machine/sweets": {
-                    "name": "菓子販売機",
-                    "terms": "菓子,お菓子,スナック,自動販売機,自販機"
+                    "name": "キャンディ菓子販売機",
+                    "terms": "菓子,お菓子,キャンディ,グミ,自動販売機,自販機"
                 },
                 "amenity/veterinary": {
                     "name": "獣医",
@@ -6744,6 +6810,10 @@
                     "name": "モペッド・リンク",
                     "terms": "原付専用道"
                 },
+                "highway/cyclist_waiting_aid": {
+                    "name": "サイクリスト用停車補助",
+                    "terms": "足置き,手すり"
+                },
                 "highway/elevator": {
                     "name": "エレベーター",
                     "terms": "エレベーター,エレベータ,昇降機"
@@ -7909,6 +7979,10 @@
                     "name": "旗竿",
                     "terms": "旗竿"
                 },
+                "man_made/fuel_pump": {
+                    "name": "給油機",
+                    "terms": "計量器,燃料,ガソリン,プロパン,液化ガス,軽油,ディーゼル,lng,天然ガス"
+                },
                 "man_made/gantry": {
                     "name": "ガントリー",
                     "terms": "構台,ガントリー"
@@ -7924,6 +7998,10 @@
                 "man_made/groyne": {
                     "name": "ケレップ水制",
                     "terms": "ケレップ水制"
+                },
+                "man_made/insect_hotel": {
+                    "name": "インセクトホテル",
+                    "terms": "虫ホテル"
                 },
                 "man_made/lighthouse": {
                     "name": "灯台",
@@ -9357,6 +9435,18 @@
                     "name": "リレーション",
                     "terms": "リレーション,関連"
                 },
+                "roller_coaster/station": {
+                    "name": "ローラーコースター乗り場",
+                    "terms": "ローラーコースター,ジェットコースター"
+                },
+                "roller_coaster/support": {
+                    "name": "ローラーコースターの支柱",
+                    "terms": "ローラーコースター,ジェットコースター"
+                },
+                "roller_coaster/track": {
+                    "name": "ローラーコースターのトラック",
+                    "terms": "ローラーコースター,ジェットコースター"
+                },
                 "route/ferry": {
                     "name": "フェリールート",
                     "terms": "フェリールート,航路"
@@ -9462,7 +9552,7 @@
                 },
                 "shop/bookmaker": {
                     "name": "公営競技投票券売り場",
-                    "terms": "公営競技投票券売り場,馬券売り場,車券売り場,舟券売り場,ギャンブル,アダルト"
+                    "terms": "公営競技投票券売り場,馬券売り場,車券売り場,舟券売り場,場外販売所,場外発売場,ブックメーカー,ギャンブル,アダルト"
                 },
                 "shop/books": {
                     "name": "本屋",
@@ -10311,7 +10401,7 @@
                     "terms": "スピードハンプ,ハンプ,凸部,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/island": {
-                    "name": "交通島",
+                    "name": "静穏化用交通島",
                     "terms": "交通島,導流島,誘導島,分離島,交通安全,交通静穏化,道路設備,減速"
                 },
                 "traffic_calming/mini_bumps": {

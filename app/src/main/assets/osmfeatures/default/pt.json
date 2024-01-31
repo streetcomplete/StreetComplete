@@ -509,6 +509,10 @@
                         "rising": "Retráctil"
                     }
                 },
+                "books": {
+                    "label": "Tipo de livros",
+                    "terms": "books,livros,textos,tipo,género,gênero,tema"
+                },
                 "booth": {
                     "label": "Cabina",
                     "terms": "caixa,cabine,cabina"
@@ -844,6 +848,9 @@
                 },
                 "conveying_escalator": {
                     "label": "Escadas rolantes"
+                },
+                "count": {
+                    "label": "Número de elementos"
                 },
                 "country": {
                     "label": "País"
@@ -1551,6 +1558,9 @@
                     "label": "Propenso a cheias",
                     "terms": "inundações,inundação,alagamento"
                 },
+                "footrest": {
+                    "label": "Apoio de pés"
+                },
                 "ford": {
                     "label": "Tipo",
                     "placeholder": "Padrão"
@@ -1700,6 +1710,9 @@
                 "handrail": {
                     "label": "Corrimão",
                     "terms": "corrimãos,corrimões,apoio para as mãos"
+                },
+                "handrest": {
+                    "label": "Apoio de mãos"
                 },
                 "hashtags": {
                     "label": "Hashtags",
@@ -3350,6 +3363,13 @@
                     "label": "Chuveiros",
                     "terms": "banhos,água,chuveiro,duche"
                 },
+                "side": {
+                    "label": "Lado",
+                    "options": {
+                        "left": "Esquerdo",
+                        "right": "Direito"
+                    }
+                },
                 "siren/purpose": {
                     "label": "Propósito"
                 },
@@ -3910,7 +3930,6 @@
                         "dip": "Depressão",
                         "double_dip": "Depressão dupla",
                         "hump": "Lomba grande",
-                        "island": "Ilha rodoviária",
                         "mini_bumps": "Minilombas",
                         "rumble_strip": "Banda cromática",
                         "table": "Lomba de topo plano"
@@ -5462,10 +5481,6 @@
                     "name": "Máquina de venda de comida",
                     "terms": "máquina,venda automática,comida,alimentos"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Bomba de combustível",
-                    "terms": "bomba,combustível,gasolina,diesel,gasóleo,abastecimento,estação"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Máquina de venda de gelados",
                     "terms": "máquina,venda automática,gelados,sorvetes"
@@ -5493,10 +5508,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "Máquina de venda de selos",
                     "terms": "máquina de venda automática de selos,selo,selos,correios,franquia"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Máquina de venda de guloseimas",
-                    "terms": "batatas fritas,pastilhas,bolachas,doces,guloseima,chocolates"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinário",
@@ -7831,6 +7842,10 @@
                     "name": "Mastro de bandeira",
                     "terms": "estandarte,bandeira"
                 },
+                "man_made/fuel_pump": {
+                    "name": "Bomba de combustível",
+                    "terms": "petrol,fuel,gasolina,combustível,petróleo,diesel,propano,lng,cng,biofuel,biodiesel,abastecimento"
+                },
                 "man_made/gantry": {
                     "name": "Pórtico de informação rodoviária",
                     "terms": "gantry,placas,direção,informativo,variável,painel,direções,trânsito,rodoviária,estrada,autoestrada,auto-estrada,via rápida,sinalização"
@@ -7846,6 +7861,10 @@
                 "man_made/groyne": {
                     "name": "Espigão marítimo",
                     "terms": "groyne,quebra-mar de madeira,estacada,estaca"
+                },
+                "man_made/insect_hotel": {
+                    "name": "Hotel de insetos",
+                    "terms": "insectos,insect,abrigo,refúgio,bug,bichos,bicharada,abelhas"
                 },
                 "man_made/lighthouse": {
                     "name": "Farol",
@@ -10215,10 +10234,6 @@
                 "traffic_calming/hump": {
                     "name": "Lomba grande",
                     "terms": "lomba,grande lomba,redutor de velocidade,redução de velocidade,quebra-molas,estrada"
-                },
-                "traffic_calming/island": {
-                    "name": "Ilha rodoviária",
-                    "terms": "ilha de estrada,ilha na estrada,ilha central,trânsito,redutor de velocidade,redução de velocidade"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Minilombas",

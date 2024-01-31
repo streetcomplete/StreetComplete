@@ -238,6 +238,12 @@ Additionally, some overlays allow you to add new data at the position of a displ
 &lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
 &lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;"</string>
 
+    <string name="quest_disable_action">Disable</string>
+    <string name="quest_disable_title">Disable this quest type?</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure is not installed (yet)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement.</string>
+    <string name="quest_disable_message_tape_measure">You could use a tape measure instead, but that might be a little awkward, after all.</string>
+
     <!-- Notifications -->
 
     <string name="unread_messages_message">You have %d unread messages in your inbox</string>
@@ -435,10 +441,14 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_josm_description">Fully-featured OSM editor for the desktop. This is the power tool for regular contributors.</string>
     <string name="link_vespucci_description">Advanced OSM editor for Android</string>
     <string name="link_ideditor_description">Simple OSM editor for the browser. Optimized for the desktop or large tablets</string>
+    <string name="link_every_door_description">Powerful POI editor for Android and iOS</string>
+    <string name="link_mapcomplete_description">Collection of thematic OSM maps that each show and let you edit one kind of feature</string>
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
     <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
     <string name="link_wiki_description">The wiki is your starting point to everything related to OpenStreetMap</string>
+    <string name="link_forum_description">Need help? Want to read what’s going on? Come and mingle, it’s bustling with activity from communities all over the globe!</string>
+    <string name="link_calendar_description">Are OpenStreetMap events or community meetings near you? (If not, you could add your own!)</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner’s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
@@ -459,6 +469,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
     <string name="link_opencampingmap_description">A map of campsites</string>
+    <string name="link_prettymapp_description">Create pretty multi-colored map posters of neighbourhoods</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>

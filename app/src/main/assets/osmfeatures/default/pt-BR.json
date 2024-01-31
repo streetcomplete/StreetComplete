@@ -3655,7 +3655,6 @@
                         "chicane": "Chicane",
                         "dip": "Depressão",
                         "hump": "Lombada (1,5 a 3,0 m de largura)",
-                        "island": "Ilha de refúgio ou de tráfego",
                         "mini_bumps": "Tartarugas",
                         "rumble_strip": "Sonorizador"
                     }
@@ -5096,10 +5095,6 @@
                     "name": "Máquina de venda de comida",
                     "terms": "máquina de venda automática de alimentos"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Bomba de combustível",
-                    "terms": "bomba de gasolina,bomba de etanol,bomba de diesel,gasolina,combustível,propano,diesel,biodiesel"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Máquina de venda de sorvete",
                     "terms": "máquina de venda automática de sorvetes"
@@ -5126,10 +5121,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "Máquina de venda de selos",
                     "terms": "máquina de venda automática de postagem"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Máquina de venda de lanches",
-                    "terms": "salgados,doces,petiscos,salgadinhos,snacks,chicletes,biscoitos,balas"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinário",
@@ -9573,10 +9564,6 @@
                 "traffic_calming/hump": {
                     "name": "Lombada (1,5 a 3m de largura)",
                     "terms": "lombada tipo ii,lomba,quebra-molas,ondulação transversal,lombada tipo 2,quebra mola"
-                },
-                "traffic_calming/island": {
-                    "name": "Ilha divisória",
-                    "terms": "ilha separadora de tráfego,canteiro"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Tachões/Tartarugas",

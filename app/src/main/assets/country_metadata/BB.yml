@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [CIBC FirstCaribbean International Bank, Scotiabank]
+atmOperators: [CIBC FirstCaribbean International Bank, Scotiabank, RBC]
 defaultSpeedLimitHasUrbanOrRural: false
 isLeftHandTraffic: true
 mobileCountryCode: 342

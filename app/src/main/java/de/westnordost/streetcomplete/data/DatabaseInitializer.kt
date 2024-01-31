@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 12
+    const val DB_VERSION = 13
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -215,6 +215,24 @@ object DatabaseInitializer {
         if (oldVersion <= 11 && newVersion > 11) {
             db.exec(LogsTable.CREATE)
             db.exec(LogsTable.INDEX_CREATE)
+        }
+        if (oldVersion <= 12 && newVersion > 12) {
+            // Deleting all data related to elements and their geometries, since
+            // the binary format in which `GEOMETRY_{POLYGONS,POLYLINES}` data from
+            // `{Way,Relation}GeometryTable` is stored has changed (see #5307)
+
+            db.exec("DELETE FROM ${RelationTables.NAME_MEMBERS};")
+            db.exec("DELETE FROM ${RelationTables.NAME};")
+
+            db.exec("DELETE FROM ${WayTables.NAME_NODES};")
+            db.exec("DELETE FROM ${WayTables.NAME};")
+
+            db.exec("DELETE FROM ${NodeTable.NAME};")
+
+            db.exec("DELETE FROM ${RelationGeometryTable.NAME};")
+            db.exec("DELETE FROM ${WayGeometryTable.NAME};")
+
+            db.exec("DELETE FROM ${DownloadedTilesTable.NAME};")
         }
     }
 }

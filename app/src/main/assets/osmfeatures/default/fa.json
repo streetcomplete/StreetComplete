@@ -3606,10 +3606,6 @@
                     "name": "دستگاه فروش خوراکی",
                     "terms": "غذا"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "پمپ سوخت (خودبردار)",
-                    "terms": "بنزین ، گاز ، گازوئیل ، سوخت ، پروپان ، دیزل ، سی ان جی ، ال پی جی ، سیگنال ، بیودیزل"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "دستگاه فروش بستنی",
                     "terms": "شکلات ، بستنی ، یخ زده ، بستنی یخی ، وانیل"
@@ -3637,10 +3633,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "دستگاه فروش کارت پستال و نامه",
                     "terms": "نامه ، نامه پستی ، تمبر"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "دستگاه فروش خوراکی",
-                    "terms": "آب نبات ، آدامس ، چیپ ، پرزل ، کوکی ، کراکر"
                 },
                 "amenity/veterinary": {
                     "name": "دامپزشکی",
@@ -7177,9 +7169,6 @@
                 "traffic_calming/hump": {
                     "name": "سرعتکاه قوسی",
                     "terms": "سرعتکاه,کاهش سرعت,سرعت,آهسته"
-                },
-                "traffic_calming/island": {
-                    "name": "جزیره ترافیکی"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "نوار لرزاننده",

@@ -14,6 +14,8 @@ so far!
 - ATM, charging station and clothing container operators: Provide better suggestions 
 - Bike parking capacity: Don't ask for informal bike parkings (#5428), by @bxl-forever
 - Road width: Don't ask for roads that may not be accessed by pedestrians (#5437)
+- Fire hydrant diameter: Also ask in Austria and Luxembourg
+- Fix traffic calmings did not display in the parking overlay
 - Other small enhancements (#5438, #5440, ...), thanks @Helium314, @matkoniecz
 
 ### General Enhancements and Fixes

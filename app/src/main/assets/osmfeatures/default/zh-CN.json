@@ -145,18 +145,18 @@
                     "label": "地址",
                     "placeholders": {
                         "block_number": "街区编号",
-                        "block_number!jp": "街区符号/番/番地/地番",
+                        "block_number!jp": "番地",
                         "city": "城市",
                         "city!cn": "地级市/地区/自治州/盟",
                         "city!jp": "市/町/村/东京都区部",
-                        "city!vn": "市/镇",
+                        "city!vn": "城庯/市社",
                         "conscriptionnumber": "123",
                         "country": "国家",
-                        "county": "郡",
+                        "county": "縣",
                         "county!jp": "郡",
-                        "district": "行政区",
+                        "district": "区",
                         "district!cn": "市辖区/县/县级市/旗",
-                        "district!vn": "郡/镇/区",
+                        "district!vn": "郡/市社/县",
                         "floor": "楼层",
                         "hamlet": "小村庄",
                         "housename": "房屋名称",
@@ -171,12 +171,12 @@
                         "province!jp": "都道府县",
                         "quarter": "地方",
                         "quarter!jp": "大字",
-                        "state": "行政州",
+                        "state": "州",
                         "street": "路",
                         "subdistrict": "街道",
-                        "subdistrict!vn": "行政区/社区/小镇",
+                        "subdistrict!vn": "坊/社/市镇",
                         "suburb": "城市片区",
-                        "suburb!jp": "区（政令市）",
+                        "suburb!jp": "政令市",
                         "unit": "户号"
                     },
                     "terms": "地址,方位,住址,居所,地点,住处"
@@ -1457,7 +1457,8 @@
                 "historic": {
                     "label": "类型",
                     "options": {
-                        "ruins": "废墟"
+                        "ruins": "废墟",
+                        "wayside_shrine": "路旁神龛"
                     }
                 },
                 "historic/civilization": {
@@ -1806,10 +1807,14 @@
                     "terms": "限宽,限制宽度,最大宽度,最宽宽度,宽度限制"
                 },
                 "memorial": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "stele": "碑"
+                    }
                 },
                 "microbrewery": {
-                    "label": "手工啤酒"
+                    "label": "手工啤酒",
+                    "terms": "手工啤酒"
                 },
                 "military_service": {
                     "label": "军事服务"
@@ -2219,6 +2224,9 @@
                 "plant/method": {
                     "label": "发电方式"
                 },
+                "plant/output": {
+                    "label": "能源输出形式"
+                },
                 "plant/output/electricity": {
                     "label": "电力输出",
                     "placeholder": "500 MW, 1000 MW, 2000 MW..."
@@ -2255,7 +2263,8 @@
                     "label": "类型"
                 },
                 "power_supply": {
-                    "label": "供电"
+                    "label": "供电",
+                    "terms": "供电"
                 },
                 "preschool": {
                     "label": "学前班"
@@ -2798,7 +2807,10 @@
                     "label": "内容物"
                 },
                 "substation": {
-                    "label": "类型"
+                    "label": "类型",
+                    "options": {
+                        "compensation": "无功补偿"
+                    }
                 },
                 "supervised": {
                     "label": "监督"
@@ -2821,7 +2833,8 @@
                         "paving_stones": "铺路石",
                         "sand": "沙",
                         "unpaved": "非铺装路面",
-                        "wood": "木材"
+                        "wood": "木材",
+                        "woodchips": "木屑"
                     },
                     "terms": "表面,铺装,铺设,铺面,路面,地坪,地面"
                 },
@@ -2895,6 +2908,13 @@
                 },
                 "target": {
                     "label": "目标国"
+                },
+                "taxi_vehicle": {
+                    "options": {
+                        "cycle_rickshaw": {
+                            "description": "人力脚踏车（例：三轮车）"
+                        }
+                    }
                 },
                 "taxon": {
                     "label": "物种分类单元",
@@ -3153,13 +3173,16 @@
                     "label": "电压"
                 },
                 "voltage/primary": {
-                    "label": "一次电压"
+                    "label": "一次电压",
+                    "terms": "一次电压"
                 },
                 "voltage/secondary": {
-                    "label": "二次电压"
+                    "label": "二次电压",
+                    "terms": "二次电压"
                 },
                 "voltage/tertiary": {
-                    "label": "三次电压"
+                    "label": "三次电压",
+                    "terms": "三次电压"
                 },
                 "wall": {
                     "label": "类型"
@@ -4121,8 +4144,7 @@
                     "terms": "圆形剧场,露天,竞技场,圆形露天剧场,阶梯教室"
                 },
                 "amenity/ticket_validator": {
-                    "name": "验票机",
-                    "terms": "验票机"
+                    "name": "验票机"
                 },
                 "amenity/toilets": {
                     "name": "厕所",
@@ -4140,7 +4162,7 @@
                     "name": "移动厕所"
                 },
                 "amenity/townhall": {
-                    "name": "乡镇县市区政府",
+                    "name": "地方政府/村礼堂",
                     "terms": "市政府,县政府,区政府,乡政府,镇政府,村礼堂,村委会,市政厅,大会堂,市政中心"
                 },
                 "amenity/townhall/city": {
@@ -4151,8 +4173,7 @@
                     "name": "玩具游乐/租赁店"
                 },
                 "amenity/trolley_bay": {
-                    "name": "手推车栏",
-                    "terms": "手推车栏"
+                    "name": "手推车栏"
                 },
                 "amenity/university": {
                     "name": "大学",
@@ -4170,8 +4191,7 @@
                     "terms": "自动售货机,售货,售卖,自助,自动,付货,零售"
                 },
                 "amenity/vending_machine/bicycle_tube": {
-                    "name": "自行车内胎自动贩卖机",
-                    "terms": "自行车内胎自动贩卖机"
+                    "name": "自行车内胎自动贩卖机"
                 },
                 "amenity/vending_machine/bottle_return": {
                     "name": "退瓶机"
@@ -4218,9 +4238,6 @@
                     "name": "食物售货机",
                     "terms": "食物,售货,售卖,自助,自动,付货,零售,贩卖,售货机,贩卖机,吃,食"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "油泵"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "冰淇淋售货机",
                     "terms": "冰淇淋,冰激淋,冰激凌,冰淇凌,冷饮,雪糕,冰沙,冰砖,冰棒,棒冰,售货,售卖,贩卖,售货机,自助,自动,付货,零售"
@@ -4237,8 +4254,7 @@
                     "terms": "停车,停车场,缴费,售票,缴费机,售票机"
                 },
                 "amenity/vending_machine/pizza": {
-                    "name": "披萨自动贩卖机",
-                    "terms": "披萨自动贩卖机"
+                    "name": "披萨自动贩卖机"
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "公共交通售票机",
@@ -4247,10 +4263,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "邮票售货机",
                     "terms": "邮票,邮局,邮费,售货,售卖,贩卖,售货机,自助,自动,付货,零售"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "零食售货机",
-                    "terms": "零食,点心,小食,售货,售卖,贩卖,售货机,自助,自动,付货,零售,食物"
                 },
                 "amenity/veterinary": {
                     "name": "动物医院",
@@ -4375,15 +4387,13 @@
                     "terms": "边境检查站,边境,边防,海关,检查"
                 },
                 "barrier/bump_gate": {
-                    "name": "防撞门",
-                    "terms": "防撞门"
+                    "name": "防撞门"
                 },
                 "barrier/bus_trap": {
                     "name": "巴士陷阱"
                 },
                 "barrier/cable_barrier": {
-                    "name": "钢丝绳缆索护栏",
-                    "terms": "钢丝绳缆索护栏"
+                    "name": "钢丝绳缆索护栏"
                 },
                 "barrier/cattle_grid": {
                     "name": "家畜栅栏",
@@ -4416,8 +4426,7 @@
                     "name": "围栏"
                 },
                 "barrier/full-height_turnstile": {
-                    "name": "全高转闸",
-                    "terms": "全高转闸"
+                    "name": "全高转闸"
                 },
                 "barrier/gate": {
                     "name": "门",
@@ -4427,8 +4436,7 @@
                     "name": "半高护栏"
                 },
                 "barrier/hampshire_gate": {
-                    "name": "铁丝门",
-                    "terms": "铁丝门"
+                    "name": "铁丝门"
                 },
                 "barrier/handrail": {
                     "name": "楼梯扶手"
@@ -4441,8 +4449,7 @@
                     "name": "限高杆"
                 },
                 "barrier/jersey_barrier": {
-                    "name": "新泽西护栏",
-                    "terms": "护栏,混凝土,墙"
+                    "name": "新泽西护栏"
                 },
                 "barrier/kerb": {
                     "name": "路缘",
@@ -4471,8 +4478,7 @@
                     "terms": "道闸,挡车,拦车,升降杆,门"
                 },
                 "barrier/motorcycle_barrier": {
-                    "name": "阻摩托车器",
-                    "terms": "阻摩托车器"
+                    "name": "阻摩托车器"
                 },
                 "barrier/planter": {
                     "name": "花盆（障碍）"
@@ -4482,8 +4488,7 @@
                     "terms": "挡土墙,护墙,护坡"
                 },
                 "barrier/rope": {
-                    "name": "拦索",
-                    "terms": "拦索"
+                    "name": "拦索"
                 },
                 "barrier/sally_port": {
                     "name": "城门"
@@ -4630,6 +4635,10 @@
                 "building/house": {
                     "name": "别墅楼",
                     "terms": "房屋"
+                },
+                "building/house/terraced": {
+                    "name": "联排住宅",
+                    "terms": "联排"
                 },
                 "building/houseboat": {
                     "name": "船屋"
@@ -5526,7 +5535,7 @@
                 },
                 "historic/wayside_shrine": {
                     "name": "路旁神龛",
-                    "terms": "路边神社"
+                    "terms": "路,神社,神龛,祠,庙"
                 },
                 "historic/wreck": {
                     "name": "沉船"
@@ -6984,30 +6993,36 @@
                     "terms": "发电厂,发电站,发电,电力,电机,电,电能,水能,火能,核能,核燃料,太阳能,光伏,风能,潮汐能,磁能,能源,火力,水力,垃圾,地热,火电,水电,反应炉"
                 },
                 "power/plant/source/coal": {
-                    "name": "燃煤发电厂"
+                    "name": "燃煤发电厂",
+                    "terms": "煤,电厂,火电,煤电"
                 },
                 "power/plant/source/gas": {
-                    "name": "天然气发电厂"
+                    "name": "天然气发电厂",
+                    "terms": "天然气,燃气,发电厂"
                 },
                 "power/plant/source/hydro": {
-                    "name": "水力发电厂"
+                    "name": "水力发电厂",
+                    "terms": "水电,水力"
                 },
                 "power/plant/source/method/photovoltaic": {
                     "name": "光伏发电厂",
                     "terms": "太阳能,电,光伏"
                 },
                 "power/plant/source/nuclear": {
-                    "name": "核能发电厂"
+                    "name": "核能发电厂",
+                    "terms": "核电"
                 },
                 "power/plant/source/oil": {
-                    "name": "燃油发电厂"
+                    "name": "燃油发电厂",
+                    "terms": "燃油,石油发电厂"
                 },
                 "power/plant/source/solar": {
                     "name": "太阳能发电厂",
                     "terms": "太阳能,发电,电厂,电站"
                 },
                 "power/plant/source/waste": {
-                    "name": "垃圾焚烧发电厂"
+                    "name": "垃圾焚烧发电厂",
+                    "terms": "垃圾,焚烧,电厂"
                 },
                 "power/plant/source/wind": {
                     "name": "风电场",
@@ -7022,7 +7037,8 @@
                     "terms": "变电站,配电所"
                 },
                 "power/switch": {
-                    "name": "电力开关"
+                    "name": "电力开关",
+                    "terms": "电力开关"
                 },
                 "power/tower": {
                     "name": "高压电塔",
@@ -8161,10 +8177,6 @@
                     "name": "减速丘",
                     "terms": "减速,减速丘,交通稳静化"
                 },
-                "traffic_calming/island": {
-                    "name": "交通分隔岛",
-                    "terms": "交通岛,导流岛,安全岛,中心岛,分隔岛"
-                },
                 "traffic_calming/rumble_strip": {
                     "name": "路肩警示带",
                     "terms": "路肩警示带,路侧振动带"
@@ -8384,7 +8396,8 @@
                     "terms": "闸门,闸首,水闸,船闸,运河"
                 },
                 "waterway/milestone": {
-                    "name": "水道里程碑"
+                    "name": "水道里程碑",
+                    "terms": "水路,航线,河,运河,里程碑"
                 },
                 "waterway/river": {
                     "name": "河",
