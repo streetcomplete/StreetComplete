@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/icon"
-    android:layout_width="56dp"
+    android:layout_width="54dp"
     android:layout_height="52dp"
     tools:src="@drawable/ic_building_detached"
     style="@style/Widget.AppCompat.Button.Small"
