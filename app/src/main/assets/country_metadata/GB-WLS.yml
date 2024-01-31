@@ -1,2 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Lloyds Bank, Barclays, Tesco, NatWest, Santander, Halifax, Sainsbury's Bank, RBS, HSBC UK, Cashzone, Tesco Bank, Nationwide, CashZone, Cash Zone, TSB, Post Office, Natwest, Link, HSBC, Co-operative, Barclays Bank PLC]
+chargingStationOperators: [Pod Point, 'Tesla, Inc.', Osprey Charging, Gridserve, GeniePoint, InstaVolt, ChargePoint, Connected Kerb, Clenergy, Osprey, National Trust, Tesco, Swansea Council, Ensto, Dragon Charging, Ceredigion County Council, Cardiff Capital Region, BP Pulse]
 officialLanguages: [en, cy]

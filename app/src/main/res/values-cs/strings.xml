@@ -1374,4 +1374,5 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="label_log_older_than">"Do"</string>
     <string name="label_log_message_contains">"Zpráva obsahuje"</string>
     <string name="title_logs_filters">"Filtrovat zprávy"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Počet skrytých úkolů: %d"</string>
 </resources>

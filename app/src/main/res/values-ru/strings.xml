@@ -1358,10 +1358,17 @@
     <string name="quest_sanitary_dump_station_title">"Есть ли здесь место для слива человеческих отходов?"</string>
     <string name="quest_sanitary_dump_station_description">"Место для хранения слитых отходов жизнедеятельности человека из бака туалета дома на колёсах, грузовика для дальних перевозок и т.д. Обычно обозначается таким знаком:"</string>
     <string name="quest_generalFee_title">"Нужно ли заплатить, чтобы воспользоваться этим?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Это кострище"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"В отличие от грилей, кострища не имеют варочной поверхности (например, решетки/плиты)."</string>
     <string name="about_title_logs">"Лог (%1$d)"</string>
     <string name="about_summary_logs">"для использования в отчетах об ошибках"</string>
     <string name="action_filter">"Фильтр"</string>
+    <string name="action_share">"Поделиться"</string>
     <string name="about_title_show_logs">"Показать лог"</string>
+    <string name="label_log_level">"Уровень журнала"</string>
     <string name="label_log_newer_than">"С"</string>
     <string name="label_log_older_than">"По"</string>
+    <string name="label_log_message_contains">"Сообщение содержит"</string>
+    <string name="title_logs_filters">"Фильтр сообщений"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Количество скрытых заданий: %d"</string>
 </resources>

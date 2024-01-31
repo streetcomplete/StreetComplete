@@ -3121,9 +3121,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Expendedora de comida"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Surtidor de combustíbel"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Expendedora de xeados"
                 },
@@ -3140,9 +3137,6 @@
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "Expendedora de billetes de transporte público"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Expendedora de Snacks"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinario"
@@ -6431,9 +6425,6 @@
                 "traffic_calming/hump": {
                     "name": "Badén",
                     "terms": "badén,reductora de velocidade"
-                },
-                "traffic_calming/island": {
-                    "name": "Illa de Tráfico"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Bandas sonoras",

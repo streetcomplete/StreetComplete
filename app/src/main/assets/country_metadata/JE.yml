@@ -1,5 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [HSBC, NatWest, RBS]
+atmOperators: [NatWest, HSBC, RBS, Channel Islands Co-Operative Society]
+chargingStationOperators: [Jersey Electricity Company]
+clothesContainerOperators: [Government of Jersey]
 defaultSpeedLimitHasUrbanOrRural: false
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]

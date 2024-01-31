@@ -1,2 +1,3 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors Inc.]
+atmOperators: [ICBC, 招商银行, 中国工商银行, Bank of China, 中国建设银行, 中国农业银行, China Construction Bank, 交通银行, SPD Bank, Cixi Rural Commercial Bank, BNB]
+chargingStationOperators: [国家电网有限公司, 'Tesla, Inc.']

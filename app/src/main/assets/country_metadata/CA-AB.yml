@@ -1,3 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [RBC, Instacoin, Scotiabank, CIBC, BMO, TD Canada Trust, Bitcoin Well, ATB Financial, TD, Servus Credit Union]
+chargingStationOperators: ['Tesla, Inc.', Shell, ChargePoint]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]

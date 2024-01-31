@@ -4387,10 +4387,6 @@
                     "name": "Ételárusító automata",
                     "terms": "büféautomata,automata büfé"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Benzinautomata",
-                    "terms": "önkiszolgáló benzinkút"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Jégkrém automata"
                 },
@@ -4415,10 +4411,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "Postai árusító automata",
                     "terms": "bélyegautomata"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Édességautomata",
-                    "terms": "csokoládé,cukorka,snack,chips"
                 },
                 "amenity/veterinary": {
                     "name": "Állatorvos",
@@ -8404,10 +8396,6 @@
                 "traffic_calming/hump": {
                     "name": "Hosszú fekvőrendőr",
                     "terms": "lapos és hosszú fekvőrendőr"
-                },
-                "traffic_calming/island": {
-                    "name": "Járdasziget",
-                    "terms": "sziget,járdasziget"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Rázósáv",

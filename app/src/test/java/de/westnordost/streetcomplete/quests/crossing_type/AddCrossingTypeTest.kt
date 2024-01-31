@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.quests.crossing_type
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
-import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
-import kotlin.test.assertEquals
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
+import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddCrossingTypeTest {
 

@@ -1363,4 +1363,5 @@ Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu z
     <string name="label_log_older_than">"Do"</string>
     <string name="label_log_message_contains">"Správa obsahuje"</string>
     <string name="title_logs_filters">"Filtrovanie správ"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Počet skrytých úloh: %d"</string>
 </resources>

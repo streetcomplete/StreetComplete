@@ -1,6 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
+atmOperators: [中國銀行]
 centerLineStyle: white
+chargingStationOperators: ['Tesla, Inc.', 澳電 CEM]
 defaultSpeedLimitHasUrbanOrRural: false
 edgeLineStyle: yellow
 hasSlowZone: true

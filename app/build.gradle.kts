@@ -34,8 +34,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5601
-        versionName = "56.0"
+        versionCode = 5602
+        versionName = "56.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -212,9 +212,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20231218"
+val nsiVersion = "v6.0.20240126"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.5.0"
+val presetsVersion = "v6.6.0"
 
 val poEditorProjectId = "97843"
 
@@ -285,6 +285,12 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     group = "streetcomplete"
     targetDir = "$projectDir/src/main/assets/map_theme/jawg"
     mapStyleBranch = "jawg"
+}
+
+tasks.register<UpdateChangelogTask>("updateChangelog") {
+    group = "streetcomplete"
+    sourceFile = "$rootDir/CHANGELOG.md"
+    targetFile = "$projectDir/src/main/res/raw/changelog.html"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {

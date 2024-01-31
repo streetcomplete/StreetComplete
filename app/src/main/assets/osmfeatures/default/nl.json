@@ -4886,10 +4886,6 @@
                     "name": "Voedselautomaat",
                     "terms": "etenautomaat,automaat met eten,voedingsautomaat"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Brandstofpomp",
-                    "terms": "benzinepomp,dieselpomp,gaspomp,lng-pomp,cng-pomp,biodieselpomp"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "IJs-automaat",
                     "terms": "friscoautomaat,ijsjesautomaat"
@@ -4916,10 +4912,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "Postzegelautomaat",
                     "terms": "postautomaat,zegelautomaat"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Snackautomaat",
-                    "terms": "etenautomaat,automaat"
                 },
                 "amenity/veterinary": {
                     "name": "Dierenarts",
@@ -9230,10 +9222,6 @@
                 "traffic_calming/hump": {
                     "name": "Verkeersdrempel, 2 meter of langer",
                     "terms": "snelheidsdrempel,plateau,verkeersplateau"
-                },
-                "traffic_calming/island": {
-                    "name": "Verkeerseiland",
-                    "terms": "rotonde,cirkel,langzaam"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Kleine verkeersdrempels"

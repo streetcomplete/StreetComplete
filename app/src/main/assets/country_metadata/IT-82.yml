@@ -1,2 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [scn]
+atmOperators: [Poste Italiane, Unicredit, Euronet, Banca Agricola Popolare di Ragusa, Monte dei Paschi di Siena, Intesa Sanpaolo, Crédit Agricole, UniCredit Bank, Euronet Worldwide, Credito Siciliano, Credem, Banca di Credito Cooperativo del Belice, Banca di Credito Cooperativo G. Toniolo di S. Cataldo, BNL]
+chargingStationOperators: [Enel X Way, Enel X, Enel, Be Charge, Scame, Duferco Energia, enel, BeCharge, 'Tesla, Inc.', Ionity, Driwe]
+clothesContainerOperators: [Cannone srl, Cannone]

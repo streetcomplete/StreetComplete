@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Wema Bank, UBA]
+atmOperators: [UBA, United Bank for Africa, Wema Bank, First Bank, Access Bank]
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 621
 noParkingSignStyle: vienna variant

@@ -2924,7 +2924,6 @@
                         "choker": "초커",
                         "cushion": "과속방지받침",
                         "hump": "설치식 과속방지턱",
-                        "island": "교통섬",
                         "mini_bumps": "소형 과속방지턱들"
                     }
                 },
@@ -4103,9 +4102,6 @@
                 "amenity/vending_machine/food": {
                     "name": "식품 자판기"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "가스 펌프"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "아이스크림 자판기"
                 },
@@ -4129,10 +4125,6 @@
                 },
                 "amenity/vending_machine/stamps": {
                     "name": "우표 자판기"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "간식 자판기",
-                    "terms": "간식 자판기,과자 자판기"
                 },
                 "amenity/veterinary": {
                     "name": "동물병원",
@@ -7745,10 +7737,6 @@
                 "traffic_calming/hump": {
                     "name": "설치식 과속방지턱",
                     "terms": "스피드 험프"
-                },
-                "traffic_calming/island": {
-                    "name": "교통섬",
-                    "terms": "교통섬"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "노면요철",

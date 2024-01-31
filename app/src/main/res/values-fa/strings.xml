@@ -1368,4 +1368,5 @@
     <string name="label_log_older_than">"به"</string>
     <string name="label_log_message_contains">"پیام شامل"</string>
     <string name="title_logs_filters">"فیلتر کردن پیام‌ها"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"تعداد مأموریت‌های پنهان: %d"</string>
 </resources>

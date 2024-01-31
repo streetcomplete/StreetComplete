@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.car_wash_type
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.AUTOMATED
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVICE
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SERVICE
-import de.westnordost.streetcomplete.quests.answerApplied
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

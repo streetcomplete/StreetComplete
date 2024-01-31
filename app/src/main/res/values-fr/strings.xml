@@ -1369,4 +1369,5 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="label_log_older_than">"À"</string>
     <string name="label_log_message_contains">"Le message contient"</string>
     <string name="title_logs_filters">"Filtrer les messages"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Nombre de quêtes cachées : %d"</string>
 </resources>

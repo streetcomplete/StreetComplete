@@ -309,7 +309,7 @@
                         "dip": "Dip",
                         "double_dip": "Double Dip",
                         "hump": "Speed Hump",
-                        "island": "Traffic Island",
+                        "island": "Traffic Calming Island",
                         "mini_bumps": "Mini Speed Bumps",
                         "rumble_strip": "Rumble Strip",
                         "table": "Speed Table"
@@ -720,6 +720,13 @@
                 },
                 "site": {
                     "label": "Type"
+                },
+                "side": {
+                    "label": "Side",
+                    "options": {
+                        "left": "Left",
+                        "right": "Right"
+                    }
                 },
                 "shower": {
                     "label": "Showers"
@@ -1810,6 +1817,9 @@
                     "label": "Hashtags",
                     "placeholder": "#example"
                 },
+                "handrest": {
+                    "label": "Handrest"
+                },
                 "handrail": {
                     "label": "Handrail"
                 },
@@ -1869,6 +1879,9 @@
                 "ford": {
                     "label": "Type",
                     "placeholder": "Default"
+                },
+                "footrest": {
+                    "label": "Footrest"
                 },
                 "flood_prone": {
                     "label": "Flood Prone"
@@ -2436,6 +2449,9 @@
                 "country": {
                     "label": "Country"
                 },
+                "count": {
+                    "label": "Number of Features"
+                },
                 "conveying_escalator": {
                     "label": "Escalator"
                 },
@@ -2688,6 +2704,9 @@
                 },
                 "booth": {
                     "label": "Booth"
+                },
+                "books": {
+                    "label": "Type of Books"
                 },
                 "bollard": {
                     "label": "Type",
@@ -3422,12 +3441,49 @@
                 "roof/colour": {
                     "label": "Roof Color"
                 },
+                "roller_coaster/track": {
+                    "label": "Type",
+                    "options": {
+                        "lift_hill": {
+                            "title": "Lift Hill",
+                            "description": "An inclined track meant to give the trains potential energy"
+                        },
+                        "launch_straight": {
+                            "title": "Launch Track",
+                            "description": "A section of track meant to accelerate the trains through external input"
+                        },
+                        "brake_run": {
+                            "title": "Brake Run",
+                            "description": "A section of track meant to slow or stop trains"
+                        },
+                        "station": {
+                            "title": "Station",
+                            "description": "A section of track where a train stops to board and unboard passengers"
+                        },
+                        "moving": {
+                            "title": "Moving",
+                            "description": "Any type of moving track, like switch tracks"
+                        },
+                        "waiting": {
+                            "title": "Waiting",
+                            "description": "Tracks used to hold trains if the next block section is occupied"
+                        },
+                        "maintenance": {
+                            "title": "Maintenance",
+                            "description": "Tracks meant to hold spare trains or conduct maintenance"
+                        }
+                    }
+                },
                 "ref/vatin": {
                     "label": "VAT ID Number",
                     "terms": "value added tax identification number,vatin"
                 },
                 "ref/isil": {
                     "label": "ISIL Code"
+                },
+                "ref/edubase-GB": {
+                    "label": "Department for Education Reference",
+                    "terms": "edubase reference,dfe urn"
                 },
                 "ref/linz/place_id-NZ": {
                     "label": "NZGB Place ID",
@@ -3623,6 +3679,10 @@
                 },
                 "operator/type": {
                     "label": "Operator Type"
+                },
+                "opening_hours/drive_through": {
+                    "label": "Drive Through Hours",
+                    "placeholder": "Same as regular business hours"
                 },
                 "oneway/bicycle": {
                     "label": "One Way (Bicycles)"
@@ -3944,6 +4004,10 @@
                 "fire_hydrant/diameter": {
                     "label": "Diameter (mm, in, or letters)"
                 },
+                "fhrs/id-GB": {
+                    "label": "FHRS ID",
+                    "terms": "food hygiene rating scheme,food hygiene rating system,food standards agency"
+                },
                 "door/width": {
                     "label": "Door Width (Meters)"
                 },
@@ -3989,6 +4053,7 @@
                     "label": "Dance Styles"
                 },
                 "crossing/markings_yes": {},
+                "crossing/markings_yes-PL": {},
                 "crossing/markings_yes-DE-AT-CH": {},
                 "crossing/markings_yes-BG": {},
                 "crossing/markings": {
@@ -4011,6 +4076,7 @@
                         "ladder:paired": "Ladder With Paired Longitudinal Bars"
                     }
                 },
+                "crossing/markings-PL": {},
                 "crossing/markings-DE-AT-CH": {},
                 "crossing/markings-BG": {},
                 "crossing/light": {
@@ -4557,7 +4623,7 @@
                     "terms": "bumps,circular bumps,circular speed bumps,small bumps,small speed bumps,slow,speed"
                 },
                 "traffic_calming/island": {
-                    "name": "Traffic Island",
+                    "name": "Traffic Calming Island",
                     "terms": "circle,roundabout,slow"
                 },
                 "traffic_calming/hump": {
@@ -5486,6 +5552,17 @@
                 "route/ferry": {
                     "name": "Ferry Route",
                     "terms": "boat,merchant vessel,ship,water bus,water shuttle,water taxi"
+                },
+                "roller_coaster/track": {
+                    "name": "Roller Coaster Track",
+                    "terms": "theme park,amusement ride"
+                },
+                "roller_coaster/support": {
+                    "name": "Roller Coaster Support"
+                },
+                "roller_coaster/station": {
+                    "name": "Roller Coaster Station",
+                    "terms": "theme park,amusement ride"
                 },
                 "railway/yard": {
                     "name": "Rail Yard",
@@ -6710,6 +6787,10 @@
                 "man_made/lighthouse": {
                     "name": "Lighthouse"
                 },
+                "man_made/insect_hotel": {
+                    "name": "Insect Hotel",
+                    "terms": "bee hotel,bug hotel,insect house"
+                },
                 "man_made/groyne": {
                     "name": "Groin",
                     "aliases": "Wing Dam\nWing Dyke\nSpur Dyke"
@@ -6725,6 +6806,10 @@
                 "man_made/gantry": {
                     "name": "Gantry",
                     "terms": "highway gantry,mast arm,road sign holder,road sign structure,sign assembly,sign holder,sign structure"
+                },
+                "man_made/fuel_pump": {
+                    "name": "Gas Pump",
+                    "terms": "petrol,fuel,gasoline,propane,diesel,lng,cng,biodiesel"
                 },
                 "man_made/flagpole": {
                     "name": "Flagpole"
@@ -7894,6 +7979,10 @@
                 "highway/elevator": {
                     "name": "Elevator",
                     "terms": "lift"
+                },
+                "highway/cyclist_waiting_aid": {
+                    "name": "Cyclist Waiting Aid",
+                    "terms": "foot rail,footrail,footrest,grip,hand rail,handle,handrail,handrest,holding rail"
                 },
                 "highway/cycleway": {
                     "name": "Cycle Path",
@@ -9387,7 +9476,8 @@
                     "terms": "auditorium,exhibition,exposition,lecture"
                 },
                 "amenity/compressed_air": {
-                    "name": "Compressed Air"
+                    "name": "Compressed Air",
+                    "terms": "air compressor"
                 },
                 "amenity/community_centre": {
                     "name": "Community Center",
@@ -9535,8 +9625,8 @@
                     "terms": "bin,garbage,rubbish,litter,trash,poo,dog"
                 },
                 "amenity/vending_machine/sweets": {
-                    "name": "Snack Vending Machine",
-                    "terms": "candy,gum,chip,pretzel,cookie,cracker"
+                    "name": "Candy Vending Machine",
+                    "terms": "gumball"
                 },
                 "amenity/vending_machine/stamps": {
                     "name": "Postage Vending Machine",
@@ -9568,7 +9658,7 @@
                     "terms": "chocolate,ice cream,frozen,popsicle,vanilla"
                 },
                 "amenity/vending_machine/fuel": {
-                    "name": "Gas Pump",
+                    "name": "Gas Vending Machine",
                     "terms": "petrol,fuel,gasoline,propane,diesel,lng,cng,biodiesel"
                 },
                 "amenity/vending_machine/food": {
@@ -9622,6 +9712,10 @@
                 "amenity/vending_machine/bicycle_tube": {
                     "name": "Bicycle Inner Tube Vending Machine",
                     "terms": "inner tube,bicycle tubes,bike tube"
+                },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "Snack Vending Machine",
+                    "terms": "candy,gum,chip,pretzel,cookie,cracker"
                 },
                 "amenity/townhall/city": {
                     "name": "City Hall",

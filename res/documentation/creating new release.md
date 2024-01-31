@@ -6,7 +6,7 @@ A new release is a good time to check if all dependencies are still up to date.
 
 - **Update outdated dependencies** as indicated by Android Studio in the `build.gradle`. For each to-be-updated dependency, review the changelog (see [release notes for androidx libraries](https://developer.android.com/jetpack/androidx/releases/appcompat)) - are there any (breaking) changes that may affect us? Test it.
 - **Update available languages**. Check [on POEditor](https://poeditor.com/projects/view?id=97843) if any translation not included yet reached a certain threshold of completion (~80%) to be included or if any already included translation has been abandoned (only ~50% translated). If necessary, adapt `bcp47ExportLanguages` in `app/build.gradle.kts` and mention the change in the changelog.
-- **Update presets version**. Check if `presetsVersion` and `nsiVersion` in the `build.gradle` still point to the latest version of the [iD presets](https://github.com/openstreetmap/id-tagging-schema/releases) and [name suggestion index](https://github.com/osmlab/name-suggestion-index/tags) respectively, check if the schema has any incompatible changes and update. 
+- **Update presets version**. Check if `presetsVersion` and `nsiVersion` in the `build.gradle` still point to the latest version of the [iD presets](https://github.com/openstreetmap/id-tagging-schema/releases) and [name suggestion index](https://github.com/osmlab/name-suggestion-index/tags) respectively, check if the schema has any incompatible changes and update.
 - **Update main contributor listing and other manual credit handling**. In general credits are updated automatically (see below), but [main contributors](/app/src/main/res/raw/credits_main.yml) and list of ignored commits ([`skipCommit`](/build.gradle.kts#L75)) are handled manually.
 
 ### Update translations, presets, metadata, credits, ...
@@ -14,20 +14,22 @@ A new release is a good time to check if all dependencies are still up to date.
 This is done by executing the `updateStreetCompleteData` gradle task. However, some subtasks need setting up first before they are run.
 
 For `app:updateTranslatorCredits`:
+
 - (one-time:) [Get a POEditor API token](https://poeditor.com/account/api) and put it in your `<user home>/.gradle/gradle.properties` as `POEditorAPIToken=<the api token>`
 - (every time:) [Login to POEditor](https://poeditor.com/projects/view?id=97843), press F12 to bring up the developer tools, reload the page and copy from the request cookies sent in displaying the page the `login` and the `PHPSESSID` cookie. Paste it into your `<user home>/.gradle/gradle.properties` as `POEditorCookie=<your login cookie>` and `POEditorPHPSESSID=<your PHPSESSID>` ![Firefox screenshot](get_poeditor_cookie.png)
 
 For `app:updateTranslations`: one-time setup of POEditor API token as described above.
 
 For `updateContributorStatistics`:
+
 - (one-time:) [Create a GitHub personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) (no permissions required) and put it in your `<user home>/.gradle/gradle.properties` as `GithubApiToken=<the api token>`
 
-After executing `updateStreetCompleteData`, let Android Studio check this by running _Analyze -> Run inspection by name_ , type "Invalid format string". Translators often make the mistake to not correctly write the placeholders (`%s`, `%1$s`, `%2%d` etc.) in their translations. This can lead to a crash when the string is displayed. 
+After executing `updateStreetCompleteData`, let Android Studio check this by running _Analyze -> Run inspection by name_ , type "Invalid format string". Translators often make the mistake to not correctly write the placeholders (`%s`, `%1$s`, `%2%d` etc.) in their translations. This can lead to a crash when the string is displayed.  
 Correct any mistakes found by the inspection directly in POEditor if possible (otherwise delete the offending string) and re-import the translations again (gradle task `app:updateTranslations`) until the inspections come out clean.
 
 ### Prepare Release
 
-1. Go through the git history since the last release and update the `app/src/main/res/raw/changelog.yml`. Make sure to credit everyone (use "by ..." if something was contributed by a person and "thanks ..." if that person helped but did not do it (all) himself) and reference the related pull requests and issues.
+1. Go through the git history since the last release and update `CHANGELOG.md`. Make sure to credit everyone (use "by ..." if something was contributed by a person and "thanks ..." if that person helped but did not do it (all) himself) and reference the related pull requests and issues.
 2. In the `build.gradle`, increase the `versionCode` and the `versionName`.
 3. Run the gradle task `app:installRelease` to deploy the release on your smartphone.
 4. Test if all works as expected. At least look at the changelog and download quests.
