@@ -238,6 +238,12 @@ Additionally, some overlays allow you to add new data at the position of a displ
 &lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
 &lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;"</string>
 
+    <string name="quest_disable_action">Disable</string>
+    <string name="quest_disable_title">Disable this quest type?</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure is not installed (yet)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement.</string>
+    <string name="quest_disable_message_tape_measure">You could use a tape measure instead, but that might be a little awkward, after all.</string>
+
     <!-- Notifications -->
 
     <string name="unread_messages_message">You have %d unread messages in your inbox</string>
