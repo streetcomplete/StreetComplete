@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banco General, Banistmo, Banco Nacional de Panama, Global]
+atmOperators: [Banistmo, Banco General, Scotiabank, Global, Banco Nacional de Panama, Banco Nacional]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 714

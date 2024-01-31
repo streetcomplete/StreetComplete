@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Itaú, Banco Continental, Itau, BBVA, Banco Itau, Banco Nacional de Fomento, Sudameris Bank, BNF - Dinelco, Banco Itaú, Dinelco, Banco Itaú S.A., Continental, BNF, Bancop, Itaú - Infonet, Banco Sudameris]
+atmOperators: [Itaú, Banco Continental, Itau, Banco Itau, BBVA, Banco Nacional de Fomento, Banco Itaú, BNF, Sudameris Bank, Banco Regional, BNF - Dinelco, Itaú - Infonet, ITAU, Dinelco, Continental, Bancop, Banco Sudameris]
 centerLineStyle: yellow
 chargingStationOperators: [Petropar]
 defaultSpeedLimitHasUrbanOrRural: true

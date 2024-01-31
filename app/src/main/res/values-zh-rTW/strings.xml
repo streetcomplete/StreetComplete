@@ -1350,4 +1350,19 @@
     <string name="quest_recycling_type_food_waste">"廚餘"</string>
     <string name="quest_defibrillator_location">"去顫器的位置在那裡？"</string>
     <string name="quest_defibrillator_location_description">"請提供精確的位置敘述 (例如「行李員休息室」)"</string>
+    <string name="quest_sanitary_dump_station_title">"這裡有環境衛生垃圾站嗎？"</string>
+    <string name="quest_sanitary_dump_station_description">"丟棄人類垃圾的設施，如拖車家園或長途卡車的垃圾箱等。通常會有這樣的指標："</string>
+    <string name="quest_generalFee_title">"你需要付費才能使用嗎？"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"這是封閉火爐"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"封閉火爐沒有如烤肉架有的烹煮介面 (例如爐排/烤盤)"</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"在錯誤報告使用"</string>
+    <string name="action_filter">"篩選"</string>
+    <string name="action_share">"分享 log"</string>
+    <string name="about_title_show_logs">"顯示 log"</string>
+    <string name="label_log_level">"log 層級"</string>
+    <string name="label_log_newer_than">"從"</string>
+    <string name="label_log_older_than">"到"</string>
+    <string name="label_log_message_contains">"訊息含有"</string>
+    <string name="title_logs_filters">"篩選訊息"</string>
 </resources>

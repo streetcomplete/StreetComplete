@@ -595,6 +595,10 @@
                 "building/part": {
                     "label": "Časť budovy"
                 },
+                "building/prefabricated": {
+                    "label": "Prefabrikovaná",
+                    "terms": "prefabrikovana,montovaná,montovana"
+                },
                 "bunker_type": {
                     "label": "Typ"
                 },
@@ -945,6 +949,7 @@
                         "lebanese": "Libanonská",
                         "malaysian": "Malajzijská",
                         "mexican": "Mexická",
+                        "pancake": "Palacinky",
                         "pasta": "Cestoviny",
                         "peruvian": "Peruánska",
                         "pizza": "Pizza",
@@ -1885,9 +1890,16 @@
                     "label": "Maximálna povolená rýchlosť pre nákladné vozidlá",
                     "placeholder": "40, 50, 60..."
                 },
+                "maxstay": {
+                    "label": "Maximálny čas"
+                },
                 "maxweight": {
                     "label": "Maximálna hmotnosť",
                     "terms": "maximalna hmotnost;maximalna vaha;najvacsia vaha;najvacsia hmotnost"
+                },
+                "maxwidth": {
+                    "label": "Maximálna širka",
+                    "terms": "maximalna sirka"
                 },
                 "memorial": {
                     "label": "Typ",
@@ -3177,7 +3189,6 @@
                         "cushion": "Spomaľovací vankúš",
                         "double_dip": "Dvojitá priehlbeň",
                         "hump": "Spomaľovací prah (široký)",
-                        "island": "Spomaľovací ostrovček",
                         "mini_bumps": "Kruhové spomaľovače",
                         "table": "Spomaľovací prah (plochý)"
                     }
@@ -3965,6 +3976,10 @@
                     "name": "Čerpacia stanica",
                     "terms": "pumpa,čerpacia stanica,cerpacia stanica,benzinka,benzínka"
                 },
+                "amenity/funeral_hall": {
+                    "name": "Pohrebná miestnosť",
+                    "terms": "pohrebna miestnost,dom smútku,dom smutku"
+                },
                 "amenity/gambling": {
                     "name": "Hazardné hry"
                 },
@@ -4248,6 +4263,10 @@
                 "amenity/restaurant/french": {
                     "name": "Francúzska reštaurácia"
                 },
+                "amenity/restaurant/georgian": {
+                    "name": "Gruzínska reštaurácia",
+                    "terms": "gruzinska restauracia"
+                },
                 "amenity/restaurant/german": {
                     "name": "Nemecká reštaurácia"
                 },
@@ -4306,7 +4325,7 @@
                 },
                 "amenity/school": {
                     "name": "Školský areál",
-                    "terms": "skolsky areal,skola,druzina"
+                    "terms": "skolsky areal,skola,druzina,základná škola,zakladna skola"
                 },
                 "amenity/shelter": {
                     "name": "Prístrešok",
@@ -4487,10 +4506,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Automat na jedlá"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Automat na pohonné hmoty",
-                    "terms": "automat na pohonne hmoy,pohonné hmoty,pohonne hmoty,benzín,benzin,diesel,lpg,propan,cng,čerpacia stanica,cerpacia stanica"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Automat na nanuky"
                 },
@@ -4514,10 +4529,6 @@
                 },
                 "amenity/vending_machine/stamps": {
                     "name": "Automat na poštové známky"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Automat na sladkosti",
-                    "terms": "jedlo,tyčinky,tycinky"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinár",
@@ -7855,8 +7866,8 @@
                     "terms": "obchod s erotickymi potrebami,sexshop,sex shop"
                 },
                 "shop/fabric": {
-                    "name": "Obchod s látkami",
-                    "terms": "obchod s latkami,textil"
+                    "name": "Obchod s metrovým textilom",
+                    "terms": "obchod s metrovym textilom,obchod s látkami,obchod s latkami,galantéria,galanteria"
                 },
                 "shop/farm": {
                     "name": "Farmárske potraviny",
@@ -8128,7 +8139,8 @@
                     "terms": "rybáreň,rybaren,rybárňa,rybarna,obchod s morskými špecialitami,obchod s morskymi specialitami,plody mora,ryby,morské ryby,morske ryby,kreverty,treska,tuniak"
                 },
                 "shop/sewing": {
-                    "name": "Galantéria"
+                    "name": "Obchod so šijacími potrebami",
+                    "terms": "obchod so sijacimi potrebami,šijacie potreby,sijacie potreby,krajčírske potreby,krajcirske potreby"
                 },
                 "shop/shoe_repair": {
                     "name": "Oprava obuvi"
@@ -8438,10 +8450,6 @@
                 "traffic_calming/hump": {
                     "name": "Spomaľovací prah (široký)",
                     "terms": "spomalovaci prah,retardér,retarder"
-                },
-                "traffic_calming/island": {
-                    "name": "Spomaľovací ostrovček",
-                    "terms": "spomalovaci ostrovcek,dopravný ostrovček,dopravny ostrovcek"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Kruhové spomaľovače"

@@ -1,2 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [中国农业银行, 中国工商银行, 中国银行, 中国建设银行, 桂林银行]
+chargingStationOperators: [防城港市数字生活科技有限公司, 深圳市车电网络有限公司, 南方电网广西电动汽车服务有限公司, 江苏云快充新能源科技有限公司, 广西防城港超大运输有限责任公司, 广西电网有限责任公司防城港供电局, 防城港市城投红树林汽车投资有限责任公司, 防城港市中蓝环保科技有限公司]
 officialLanguages: [zh, za]

@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Chargefox]
+atmOperators: [ANZ, RediATM, Commonwealth Bank, NAB, BankSA, Bank SA, Westpac, Bendigo Bank]
+chargingStationOperators: [Chargefox, Jolt, 'Tesla, Inc.', NRMA, Evie Networks]
 defaultSpeedLimitHasUrbanOrRural: true

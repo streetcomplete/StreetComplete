@@ -3892,10 +3892,6 @@
                     "name": "Madautomat",
                     "terms": "mad,fødevare,automat"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Benzinstander",
-                    "terms": "benzinstander,tankstander,dieselstander"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Isautomat",
                     "terms": "is,ispind"
@@ -3918,10 +3914,6 @@
                 },
                 "amenity/vending_machine/stamps": {
                     "name": "Frimærkeautomat"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Snackautomat",
-                    "terms": "snackautomat,slikautomat"
                 },
                 "amenity/veterinary": {
                     "name": "Dyrlæge",
@@ -4824,7 +4816,7 @@
                     "terms": "indendørskorridor,indendørspassage"
                 },
                 "highway/crossing": {
-                    "name": "Fodgængerfelt"
+                    "name": "Fodgængerovergang"
                 },
                 "highway/crossing/traffic_signals": {
                     "name": "Fodgængerovergang med lyssignal"
@@ -4833,8 +4825,8 @@
                     "name": "Markeret overgang"
                 },
                 "highway/crossing/unmarked": {
-                    "name": "Umarkeret fodgængerfelt",
-                    "terms": "overgang,felt,fodgænger,fodgængerovergang"
+                    "name": "Umarkeret fodgængerovergang",
+                    "terms": "overgang,felt,fodgænger,fodgængerfelt"
                 },
                 "highway/cycleway": {
                     "name": "Cykelsti",
@@ -7551,10 +7543,6 @@
                 "traffic_calming/hump": {
                     "name": "Fartbumprampe",
                     "terms": "fartbumprampe"
-                },
-                "traffic_calming/island": {
-                    "name": "Helleanlæg",
-                    "terms": "helleanlæg"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Rumlestriber",

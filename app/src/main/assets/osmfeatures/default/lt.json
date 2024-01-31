@@ -3200,9 +3200,6 @@
                 "traffic_calming/hump": {
                     "name": "Dideli greičio slopinimo kalneliai"
                 },
-                "traffic_calming/island": {
-                    "name": "Eismo salelė"
-                },
                 "type/boundary": {
                     "name": "Riba",
                     "terms": "riba,siena"

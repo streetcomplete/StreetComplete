@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors]
+atmOperators: [Hancock Whitney, The First, Southern Mississippi Federal Credit Union, Richton Bank & Trust Company, Citizens National Bank, Cadence Bank]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint]
 defaultSpeedLimitHasUrbanOrRural: false

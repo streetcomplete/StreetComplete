@@ -3566,7 +3566,6 @@
                         "cushion": "כרית האטה",
                         "dip": "שקע",
                         "hump": "פס האטה ארוך",
-                        "island": "אי תנועה",
                         "mini_bumps": "פס האטה קטן",
                         "rumble_strip": "פס רעד",
                         "table": "פס האטה משוטח"
@@ -5009,10 +5008,6 @@
                     "name": "מכונת אוכל",
                     "terms": "אוטומט אוכל"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "משאבת דלק",
-                    "terms": "משאבת דלק"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "מכונת גלידה",
                     "terms": "אוטומט גלידה"
@@ -5039,10 +5034,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "מכונת בולים",
                     "terms": "אוטומט בולים"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "מכונת חטיפים",
-                    "terms": "אוטומט מכירת חטיפים"
                 },
                 "amenity/veterinary": {
                     "name": "וטרינר",
@@ -9381,10 +9372,6 @@
                 "traffic_calming/hump": {
                     "name": "פס האטה ארוך",
                     "terms": "פסי האטה ארוכים"
-                },
-                "traffic_calming/island": {
-                    "name": "אי תנועה",
-                    "terms": "אי תנועה"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "פס האטה קטן"

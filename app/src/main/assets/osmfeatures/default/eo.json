@@ -3779,10 +3779,6 @@
                     "name": "Vendilo de manĝaĵo",
                     "terms": "manghajho,mangxajxo"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Vendilo de benzino",
-                    "terms": "benzinstacio,diseloleo,benzino,brulaĵo,lpg,biodisel"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Vendilo de glaciaĵoj",
                     "terms": "glaciaĵo"
@@ -3806,10 +3802,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "Vendilo de poŝtmarkoj",
                     "terms": "poŝtmarkoj"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Vendilo de dolĉaĵoj",
-                    "terms": "dolĉaĵoj,dolchajhoj,dolcxajxoj,sukeraĵoj,sukerajhoj,sukerajxoj"
                 },
                 "amenity/veterinary": {
                     "name": "Bestokuracistejo",
@@ -7891,10 +7883,6 @@
                 "traffic_calming/hump": {
                     "name": "Stratĝibo longa (2-4m)",
                     "terms": "stratghibo,stratgxibo"
-                },
-                "traffic_calming/island": {
-                    "name": "Trafik-insuleto",
-                    "terms": "trafikinsuleto,trafikinsulo"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Trembruaj strietoj",

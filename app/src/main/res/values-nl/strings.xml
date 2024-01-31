@@ -1362,4 +1362,5 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="label_log_older_than">"Tot"</string>
     <string name="label_log_message_contains">"Bericht bevat"</string>
     <string name="title_logs_filters">"Filter berichten"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Aantal verborgen vragen: %d"</string>
 </resources>

@@ -1368,4 +1368,5 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="label_log_older_than">"Até"</string>
     <string name="label_log_message_contains">"A mensagem contém"</string>
     <string name="title_logs_filters">"Filtrar mensagens"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Número de missões ocultadas: %d"</string>
 </resources>
