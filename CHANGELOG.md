@@ -1,5 +1,21 @@
 # Changelog
 
+## v57.0-beta1
+
+### Buildings Overlay (#5461)
+
+The new buildings overlay now lets you comprehensively view and edit building types all around town!
+(You'll be amazed and/or appalled how many buildings are currently actually tagged wrong or imprecise! 😅)
+
+### Quest and Overlay Enhancements and Fixes
+- The lit and surface overlay now each have a button to apply the last answer (#4741)
+- Measuring widths and heights: [StreetMeasure](https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure) doesn't work for you? In that case you'll be offered to quickly disable these AR measurement quests now (#4849)
+- Opening hours: Also ask for places whose already set opening hours likely contain mistakes (#5463)
+- Building quest is disabled by default now, because we have an overlay now and it was really spammy, don't you think?
+
+### General Enhancements and Fixes
+- Add some interesting links as achievement rewards (#5466)
+
 ## v56.1
 
 Some work towards an [iOS port](https://github.com/streetcomplete/StreetComplete/issues/5421) of 
