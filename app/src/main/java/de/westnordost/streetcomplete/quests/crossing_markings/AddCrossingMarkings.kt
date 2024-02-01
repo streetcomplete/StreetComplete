@@ -59,7 +59,8 @@ class AddCrossingMarkings : OsmElementQuestType<Boolean> {
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val crossingMarkings = tags["crossing:markings"]
         // don't overwrite a more specific answer (e.g. crossing:markings = zebra)
-        if (answer && (crossingMarkings != null && crossingMarkings != "no")) {
+        val hasSpecificMarking = crossingMarkings != null && crossingMarkings !in listOf("no", "yes")
+        if (answer && hasSpecificMarking) {
             tags.updateCheckDateForKey("crossing:markings")
         } else {
             tags.updateWithCheckDate("crossing:markings", answer.toYesNo())
