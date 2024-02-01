@@ -972,11 +972,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_crossing_no">No, but crossing is possible</string>
     <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
 
-    <string name="quest_crossing_type_title">What kind of crossing is this?</string>
-    <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
-    <string name="quest_crossing_type_marked">Marked</string>
-    <string name="quest_crossing_type_unmarked">Without road markings</string>
-
     <string name="quest_cycleway_title2">"Is there a bicycle lane or path here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
     <string name="quest_cycleway_value_track">sidepath or protected bicycle lane</string>
