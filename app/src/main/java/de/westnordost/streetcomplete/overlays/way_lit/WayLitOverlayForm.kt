@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.overlays.way_lit
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R
@@ -17,19 +18,38 @@ import de.westnordost.streetcomplete.osm.lit.asItem
 import de.westnordost.streetcomplete.osm.lit.parseLitStatus
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
+import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
+import org.koin.android.ext.android.inject
 
 class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
 
     override val items: List<DisplayItem<LitStatus>> =
         listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY).map { it.asItem() }
 
+    private val prefs: Preferences by inject()
+    private lateinit var favs: LastPickedValuesStore<DisplayItem<LitStatus>>
+
+    override val lastPickedItem: DisplayItem<LitStatus>?
+        get() = favs.get().firstOrNull()
+
     private var originalLitStatus: LitStatus? = null
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer()
     )
+
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(
+            prefs,
+            key = javaClass.simpleName,
+            serialize = { it.value!!.name },
+            deserialize = { LitStatus.valueOf(it).asItem() }
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,6 +63,7 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
         selectedItem?.value != originalLitStatus
 
     override fun onClickOk() {
+        favs.add(selectedItem!!)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         selectedItem!!.value!!.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))

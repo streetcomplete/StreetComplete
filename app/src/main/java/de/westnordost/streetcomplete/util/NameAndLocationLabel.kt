@@ -16,12 +16,12 @@ import java.util.Locale
 fun getNameAndLocationLabel(
     element: Element,
     resources: Resources,
-    featureDictionary: FeatureDictionary,
+    featureDictionary: FeatureDictionary?,
     showHouseNumber: Boolean? = null
 ): CharSequence? {
     // only if geometry is not a node because at this point we cannot tell apart points vs vertices
     val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
-    val feature = featureDictionary.getFeatureName(resources.configuration, element.tags, geometryType)
+    val feature = featureDictionary?.getFeatureName(resources.configuration, element.tags, geometryType)
         ?.withNonBreakingSpaces()
         ?.inItalics()
     val name = getNameLabel(element.tags)

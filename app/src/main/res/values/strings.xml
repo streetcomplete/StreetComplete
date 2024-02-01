@@ -865,12 +865,13 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_transportation">Public transportation building</string>
     <string name="quest_buildingType_university">University building</string>
     <string name="quest_buildingType_government">Government building</string>
-    <string name="quest_buildingType_cars">For cars</string>
+    <string name="quest_buildingType_outbuilding">Outbuilding</string>
+    <string name="quest_buildingType_outbuilding_description">less important building on a property</string>
     <string name="quest_buildingType_carport">Carport</string>
     <string name="quest_buildingType_carport_description">roof for a car</string>
     <string name="quest_buildingType_garage">Single garage</string>
     <string name="quest_buildingType_garages">Multiple garages</string>
-    <string name="quest_buildingType_garages_description">Separate spaces for different owners/tenants</string>
+    <string name="quest_buildingType_garages_description">separate spaces for different owners/tenants</string>
     <string name="quest_buildingType_parking">Parking building</string>
     <string name="quest_buildingType_farm">On a farm</string>
     <string name="quest_buildingType_farmhouse">Farmhouse</string>
@@ -880,8 +881,12 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_silo">Silo</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_other">Other</string>
+    <string name="quest_buildingType_other_description">a specific building that is not selectable in this app</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_boathouse">Boathouse</string>
+    <string name="quest_buildingType_container">Container</string>
+    <string name="quest_buildingType_tent">Tent</string>
+    <string name="quest_buildingType_tomb">Tomb</string>
     <string name="quest_buildingType_allotment_house">Garden allotment outbuilding</string>
     <string name="quest_buildingType_grandstand">Grandstand</string>
     <string name="quest_buildingType_toilets">Toilets</string>
@@ -893,6 +898,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_service_description">building with machinery like pumps or transformers</string>
     <string name="quest_buildingType_hangar">Hangar</string>
     <string name="quest_buildingType_hangar_description">storage for airplanes, helicopters or spacecraft</string>
+    <string name="quest_buildingType_tower">Tower</string>
+    <string name="quest_buildingType_tower_description">any kind of tower</string>
     <string name="quest_buildingType_bunker">Bunker</string>
     <string name="quest_buildingType_historic">Historic</string>
     <string name="quest_buildingType_historic_description">building of historic value, constructed for an unknown or unclear purpose</string>
@@ -902,6 +909,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
     <string name="quest_buildingType_guardhouse">Guardhouse</string>
+    <string name="quest_buildingType_under_construction">Under construction</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Is there a bench at this stop?"</string>
@@ -1675,6 +1683,8 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_addresses">Addresses</string>
     <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
+
+    <string name="overlay_buildings">Buildings</string>
 
     <string name="overlay_shops">Shops</string>
     <string name="name_label">Name:</string>

@@ -1,19 +1,17 @@
-package de.westnordost.streetcomplete.quests.building_type
+package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
+import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun List<BuildingType>.toItems() = mapNotNull { it.asItem() }
 
-fun BuildingType.asItem(): GroupableDisplayItem<BuildingType>? {
-    val iconResId = iconResId ?: return null
-    val titleResId = titleResId ?: return null
-    return Item(this, iconResId, titleResId, descriptionResId)
-}
+fun BuildingType.asItem(): GroupableDisplayItem<BuildingType> =
+    Item(this, iconResId, titleResId, descriptionResId)
 
-private val BuildingType.titleResId: Int? get() = when (this) {
+private val BuildingType.titleResId: Int get() = when (this) {
+    UNSUPPORTED ->     R.string.quest_buildingType_other
     HOUSE ->           R.string.quest_buildingType_house
     APARTMENTS ->      R.string.quest_buildingType_apartments
     DETACHED ->        R.string.quest_buildingType_detached
@@ -66,8 +64,13 @@ private val BuildingType.titleResId: Int? get() = when (this) {
     TOILETS ->         R.string.quest_buildingType_toilets
     SERVICE ->         R.string.quest_buildingType_service
     HANGAR ->          R.string.quest_buildingType_hangar
+    TOWER ->           R.string.quest_buildingType_tower
     BUNKER ->          R.string.quest_buildingType_bunker
     BOATHOUSE ->       R.string.quest_buildingType_boathouse
+    CONTAINER ->       R.string.quest_buildingType_container
+    OUTBUILDING ->     R.string.quest_buildingType_outbuilding
+    TENT ->            R.string.quest_buildingType_tent
+    TOMB ->            R.string.quest_buildingType_tomb
     HISTORIC ->        R.string.quest_buildingType_historic
     ABANDONED ->       R.string.quest_buildingType_abandoned
     RUINS ->           R.string.quest_buildingType_ruins
@@ -76,16 +79,18 @@ private val BuildingType.titleResId: Int? get() = when (this) {
     CIVIC ->           R.string.quest_buildingType_civic
     RELIGIOUS ->       R.string.quest_buildingType_religious
     GUARDHOUSE ->      R.string.quest_buildingType_guardhouse
-    CONSTRUCTION ->    null
+    CONSTRUCTION ->    R.string.quest_buildingType_under_construction
 }
 
 private val BuildingType.descriptionResId: Int? get() = when (this) {
+    UNSUPPORTED ->     R.string.quest_buildingType_other_description
     HOUSE ->           R.string.quest_buildingType_house_description2
     APARTMENTS ->      R.string.quest_buildingType_apartments_description
     DETACHED ->        R.string.quest_buildingType_detached_description
     SEMI_DETACHED ->   R.string.quest_buildingType_semi_detached_description2
     TERRACE ->         R.string.quest_buildingType_terrace_description
     BUNGALOW ->        R.string.quest_buildingType_bungalow_description2
+    OUTBUILDING ->     R.string.quest_buildingType_outbuilding_description
     HUT ->             R.string.quest_buildingType_hut_description
     INDUSTRIAL ->      R.string.quest_buildingType_industrial_description
     RETAIL ->          R.string.quest_buildingType_retail_description
@@ -95,6 +100,7 @@ private val BuildingType.descriptionResId: Int? get() = when (this) {
     FARM_AUXILIARY ->  R.string.quest_buildingType_farm_auxiliary_description
     SERVICE ->         R.string.quest_buildingType_service_description
     HANGAR ->          R.string.quest_buildingType_hangar_description
+    TOWER ->           R.string.quest_buildingType_tower_description
     HISTORIC ->        R.string.quest_buildingType_historic_description
     ABANDONED ->       R.string.quest_buildingType_abandoned_description
     RUINS ->           R.string.quest_buildingType_ruins_description
@@ -104,7 +110,8 @@ private val BuildingType.descriptionResId: Int? get() = when (this) {
     else ->            null
 }
 
-private val BuildingType.iconResId: Int? get() = when (this) {
+val BuildingType.iconResId: Int get() = when (this) {
+    UNSUPPORTED ->     R.drawable.ic_building_other
     HOUSE ->           R.drawable.ic_building_house
     APARTMENTS ->      R.drawable.ic_building_apartments
     DETACHED ->        R.drawable.ic_building_detached
@@ -157,8 +164,13 @@ private val BuildingType.iconResId: Int? get() = when (this) {
     TOILETS ->         R.drawable.ic_building_toilets
     SERVICE ->         R.drawable.ic_building_service
     HANGAR ->          R.drawable.ic_building_hangar
+    TOWER ->           R.drawable.ic_building_tower
     BUNKER ->          R.drawable.ic_building_bunker
     BOATHOUSE ->       R.drawable.ic_building_boathouse
+    OUTBUILDING ->     R.drawable.ic_building_shed
+    CONTAINER ->       R.drawable.ic_building_container
+    TENT ->            R.drawable.ic_building_tent
+    TOMB ->            R.drawable.ic_building_tomb
     HISTORIC ->        R.drawable.ic_building_historic
     ABANDONED ->       R.drawable.ic_building_abandoned
     RUINS ->           R.drawable.ic_building_ruins
@@ -167,5 +179,78 @@ private val BuildingType.iconResId: Int? get() = when (this) {
     CIVIC ->           R.drawable.ic_building_civic
     RELIGIOUS ->       R.drawable.ic_building_temple
     GUARDHOUSE ->      R.drawable.ic_building_guardhouse
-    CONSTRUCTION ->    null
+    CONSTRUCTION ->    R.drawable.ic_building_construction
+}
+
+// unfortunately, we need a string but we do not have access to resources at the point we need it
+val BuildingType.iconResName: String get() = when (this) {
+    UNSUPPORTED ->     "ic_building_other"
+    HOUSE ->           "ic_building_house"
+    APARTMENTS ->      "ic_building_apartments"
+    DETACHED ->        "ic_building_detached"
+    SEMI_DETACHED ->   "ic_building_semi_detached"
+    TERRACE ->         "ic_building_terrace"
+    HOTEL ->           "ic_building_hotel"
+    DORMITORY ->       "ic_building_dormitory"
+    HOUSEBOAT ->       "ic_building_houseboat"
+    BUNGALOW ->        "ic_building_bungalow"
+    STATIC_CARAVAN ->  "ic_building_static_caravan"
+    HUT ->             "ic_building_hut"
+    INDUSTRIAL ->      "ic_building_industrial"
+    RETAIL ->          "ic_building_retail"
+    OFFICE ->          "ic_building_office"
+    WAREHOUSE ->       "ic_building_warehouse"
+    KIOSK ->           "ic_building_kiosk"
+    STORAGE_TANK ->    "ic_building_storage_tank"
+    KINDERGARTEN ->    "ic_building_kindergarten"
+    SCHOOL ->          "ic_building_school"
+    COLLEGE ->         "ic_building_college"
+    SPORTS_CENTRE ->   "ic_sport_volleyball"
+    HOSPITAL ->        "ic_building_hospital"
+    STADIUM ->         "ic_sport_volleyball"
+    GRANDSTAND ->      "ic_sport_volleyball"
+    TRAIN_STATION ->   "ic_building_train_station"
+    TRANSPORTATION ->  "ic_building_transportation"
+    FIRE_STATION ->    "ic_building_fire_truck"
+    UNIVERSITY ->      "ic_building_university"
+    GOVERNMENT ->      "ic_building_historic"
+    CHURCH ->          "ic_religion_christian"
+    CHAPEL ->          "ic_religion_christian"
+    CATHEDRAL ->       "ic_religion_christian"
+    MOSQUE ->          "ic_religion_muslim"
+    TEMPLE ->          "ic_building_temple"
+    PAGODA ->          "ic_building_temple"
+    SYNAGOGUE ->       "ic_religion_jewish"
+    SHRINE ->          "ic_building_temple"
+    CARPORT ->         "ic_building_carport"
+    GARAGE ->          "ic_building_garage"
+    GARAGES ->         "ic_building_garages"
+    PARKING ->         "ic_building_parking"
+    FARM ->            "ic_building_farm_house"
+    FARM_AUXILIARY ->  "ic_building_barn"
+    SILO ->            "ic_building_silo"
+    GREENHOUSE ->      "ic_building_greenhouse"
+    SHED ->            "ic_building_shed"
+    ALLOTMENT_HOUSE -> "ic_building_allotment_house"
+    ROOF ->            "ic_building_roof"
+    BRIDGE ->          "ic_building_bridge"
+    TOILETS ->         "ic_building_toilets"
+    SERVICE ->         "ic_building_service"
+    HANGAR ->          "ic_building_hangar"
+    TOWER ->           "ic_building_tower"
+    BUNKER ->          "ic_building_bunker"
+    BOATHOUSE ->       "ic_building_boathouse"
+    OUTBUILDING ->     "ic_building_shed"
+    CONTAINER ->       "ic_building_container"
+    TENT ->            "ic_building_tent"
+    TOMB ->            "ic_building_tomb"
+    HISTORIC ->        "ic_building_historic"
+    ABANDONED ->       "ic_building_abandoned"
+    RUINS ->           "ic_building_ruins"
+    RESIDENTIAL ->     "ic_building_apartments"
+    COMMERCIAL ->      "ic_building_office"
+    CIVIC ->           "ic_building_civic"
+    RELIGIOUS ->       "ic_building_temple"
+    GUARDHOUSE ->      "ic_building_guardhouse"
+    CONSTRUCTION ->    "ic_building_construction"
 }

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import de.westnordost.streetcomplete.osm.building.BuildingType
+import de.westnordost.streetcomplete.osm.building.iconResId
+import de.westnordost.streetcomplete.view.presetIconIndex
 import org.koin.dsl.module
 
 val mapModule = module {
@@ -23,5 +26,11 @@ val mapModule = module {
     }
 
     single { TangramPinsSpriteSheet(get(), get(), get(), get()) }
-    single { TangramIconsSpriteSheet(get(), get()) }
+    single {
+        TangramIconsSpriteSheet(
+            get(),
+            get(),
+            presetIconIndex.values + BuildingType.values().mapNotNull { it.iconResId }
+        )
+    }
 }

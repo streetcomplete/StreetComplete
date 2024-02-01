@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 
-/** A dialog in which you can one item of a range of items */
+/** A dialog in which you can select one item of a range of items */
 class ImageListPickerDialog<T>(
     context: Context,
     items: List<DisplayItem<T>>,
