@@ -15,7 +15,7 @@ class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes with
-          crossing = traffic_signals
+          (crossing = traffic_signals or crossing:signals = yes)
           and highway ~ crossing|traffic_signals
           and foot != no
           and !button_operated
