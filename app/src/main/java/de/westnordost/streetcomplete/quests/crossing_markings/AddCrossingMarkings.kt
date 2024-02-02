@@ -21,7 +21,8 @@ class AddCrossingMarkings : OsmElementQuestType<Boolean> {
           highway = crossing
           and foot != no
           and !crossing:markings
-          and !crossing
+          and (!crossing or crossing = island)
+          and crossing:signals != yes
     """.toElementFilterExpression() }
     /* only looking for crossings that have no crossing=* at all set because if the crossing was
      * - if it had markings, it would be tagged with "marked","zebra" or "uncontrolled"
