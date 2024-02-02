@@ -21,10 +21,10 @@ class AddCrossingSignals : OsmElementQuestType<Boolean> {
           highway = crossing
           and foot != no
           and !crossing:signals
-          and !crossing
+          and (!crossing or crossing = island)
     """.toElementFilterExpression() }
     /* only looking for crossings that have no crossing=* at all set because if the crossing had
-     *  signals, it would have been tagged with crossing=traffic_signals */
+     * signals, it would have been tagged with crossing=traffic_signals */
 
     private val excludedWaysFilter by lazy { """
         ways with
