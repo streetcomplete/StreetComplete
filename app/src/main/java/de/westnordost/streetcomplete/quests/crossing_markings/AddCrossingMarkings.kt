@@ -6,10 +6,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
@@ -18,24 +17,29 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddCrossingMarkings : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
-        nodes with highway = crossing
+        nodes with
+          highway = crossing
           and foot != no
-          and (
-            !crossing:markings and crossing !~ uncontrolled|zebra|marked|unmarked
-            or crossing:markings older today -8 years
-          )
+          and !crossing:markings
+          and !crossing
     """.toElementFilterExpression() }
+    /* only looking for crossings that have no crossing=* at all set because if the crossing was
+     * - if it had markings, it would be tagged with "marked","zebra" or "uncontrolled"
+     * - if it hadn't, it would be tagged with "unmarked"
+     * - and in case of "traffic_signals", we currently assume that when there are traffic signals
+     *   it would be spammy to ask about markings because the answer would almost always be "yes".
+     *   Might differ per country, research necessary. */
 
     private val excludedWaysFilter by lazy { """
         ways with
-          highway = service and service = driveway
-          or highway and access ~ private|no
+          highway and access ~ private|no
+          or highway = service and service = driveway
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether pedestrian crossings have markings"
     override val wikiLink = "Key:crossing:markings"
     override val icon = R.drawable.ic_quest_pedestrian_crossing
-    override val achievements = listOf(EditTypeAchievement.PEDESTRIAN)
+    override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_markings
 
@@ -57,28 +61,10 @@ class AddCrossingMarkings : OsmElementQuestType<Boolean> {
     override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        val crossingMarkings = tags["crossing:markings"]
-        // don't overwrite a more specific answer (e.g. crossing:markings = zebra)
-        val hasSpecificMarking = crossingMarkings != null && crossingMarkings !in listOf("no", "yes")
-        if (answer && hasSpecificMarking) {
-            tags.updateCheckDateForKey("crossing:markings")
-        } else {
-            tags.updateWithCheckDate("crossing:markings", answer.toYesNo())
-        }
-
-        val crossing = tags["crossing"]
-        // delete crossing tag only if new answer directly conflicts with crossing value
-        if (crossing != null) {
-            val hasConflict = when (answer) {
-                false -> crossing in listOf("uncontrolled","zebra","marked")
-                true -> crossing in listOf("unmarked")
-            }
-            if (hasConflict) {
-                tags.remove("crossing")
-                tags.removeCheckDatesForKey("crossing")
-            }
-        }
+        tags["crossing:markings"] = answer.toYesNo()
+        /* We only tag yes/no, however, in countries where depending on the kind of marking,
+         * different traffic rules apply, it makes sense to ask which marking it is. But to know
+         * which kinds exist per country needs research. (Whose results should be added to the
+         * wiki page for crossing:markings first) */
     }
 }
-
-// TODO TESTS
