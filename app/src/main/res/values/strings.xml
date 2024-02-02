@@ -1285,7 +1285,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_pedestrian_crossing_signals">"Does this crossing have traffic signals?"</string>
 
-    <string name="quest_pedestrian_crossing_island">"Does this crossing have a refuge island?"</string>
+    <string name="quest_pedestrian_crossing_island">"Does this crossing have an island?"</string>
 
     <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
 
