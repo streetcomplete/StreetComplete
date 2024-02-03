@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
 class MutableMapDataWithGeometryTest {
@@ -64,5 +65,57 @@ class MutableMapDataWithGeometryTest {
         m.put(rel, geom)
         assertEquals(rel, m.getRelation(rel.id))
         assertEquals(geom, m.getRelationGeometry(rel.id))
+    }
+
+    @Test fun clear() {
+        val m = MutableMapDataWithGeometry()
+        m.put(node(0), ElementPointGeometry(p()))
+        m.put(way(0), ElementPolylinesGeometry(listOf(), p()))
+        m.put(rel(0), ElementPolygonsGeometry(listOf(), p()))
+
+        assertEquals(3, m.size)
+
+        m.clear()
+        assertEquals(0, m.size)
+        assertEquals(0, m.nodes.size)
+        assertEquals(0, m.ways.size)
+        assertEquals(0, m.relations.size)
+        assertNull(m.getNodeGeometry(0))
+        assertNull(m.getWayGeometry(0))
+        assertNull(m.getRelationGeometry(0))
+    }
+
+    @Test fun putAll() {
+        val m = MutableMapDataWithGeometry()
+        m.put(node(0), ElementPointGeometry(p()))
+        m.put(way(0), ElementPolylinesGeometry(listOf(), p()))
+        m.put(rel(0), ElementPolygonsGeometry(listOf(), p()))
+
+        val n = MutableMapDataWithGeometry()
+        n.putAll(m)
+
+        assertEquals(3, n.size)
+        assertEquals(1, m.nodes.size)
+        assertEquals(1, m.ways.size)
+        assertEquals(1, m.relations.size)
+        assertNotNull(m.getNodeGeometry(0))
+        assertNotNull(m.getWayGeometry(0))
+        assertNotNull(m.getRelationGeometry(0))
+    }
+
+    @Test fun removeAll() {
+        val m = MutableMapDataWithGeometry()
+        m.put(node(0), ElementPointGeometry(p()))
+        m.put(node(1), ElementPointGeometry(p()))
+        m.put(way(0), ElementPolylinesGeometry(listOf(), p()))
+
+        m.removeAll(listOf(ElementKey(ElementType.NODE, 0), ElementKey(ElementType.WAY, 0)))
+
+        assertNull(m.getNode(0))
+        assertNull(m.getNodeGeometry(0))
+        assertNull(m.getWay(0))
+        assertNull(m.getWayGeometry(0))
+        assertNotNull(m.getNode(1))
+        assertNotNull(m.getNodeGeometry(1))
     }
 }

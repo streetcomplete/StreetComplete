@@ -17,8 +17,9 @@ class Listeners<T> {
     }
 
     fun forEach(action: (T) -> Unit) {
-        synchronized(this) {
-            listeners.forEach(action)
-        }
+        val listenersCopy = synchronized(this) { ArrayList(listeners) }
+        // the executing of the action itself is not synchronized, only the access to the set,
+        // because it should be possible to call several Listeners::forEach at the same time
+        listenersCopy.forEach(action)
     }
 }
