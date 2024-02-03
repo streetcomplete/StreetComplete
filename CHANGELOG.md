@@ -13,8 +13,10 @@ The new buildings overlay now lets you comprehensively view and edit building ty
 - Opening hours: Also ask for places whose already set opening hours likely contain mistakes (#5463)
 - Building quest is disabled by default now, because we have an overlay now and it was really spammy, don't you think?
 
-### General Enhancements and Fixes
+### Other
 - Add some interesting links as achievement rewards (#5466)
+- Translation to Amharic has been disabled, it was not maintained for over a year
+- Other small enhancements, performance and wording improvements (#5468, #5154...), thanks @Jean-BaptisteC
 
 ## v56.1
 
