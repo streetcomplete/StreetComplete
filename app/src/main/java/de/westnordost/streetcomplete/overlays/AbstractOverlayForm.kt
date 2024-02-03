@@ -24,6 +24,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.data.location.checkIsSurvey
+import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -414,13 +415,14 @@ abstract class AbstractOverlayForm :
 
     private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry) {
         setLocked(true)
-        if (!checkIsSurvey(requireContext(), geometry, recentLocationStore.get())) {
+        val isSurvey = checkIsSurvey(geometry, recentLocationStore.get())
+        if (!isSurvey && !confirmIsSurvey(requireContext())) {
             setLocked(false)
             return
         }
 
         withContext(Dispatchers.IO) {
-            addElementEditsController.add(overlay, geometry, "survey", action)
+            addElementEditsController.add(overlay, geometry, "survey", action, isSurvey)
         }
         listener?.onEdited(overlay, geometry)
     }
