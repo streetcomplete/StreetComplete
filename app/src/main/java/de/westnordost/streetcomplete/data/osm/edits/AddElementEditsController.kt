@@ -7,6 +7,7 @@ interface AddElementEditsController {
         type: ElementEditType,
         geometry: ElementGeometry,
         source: String,
-        action: ElementEditAction
+        action: ElementEditAction,
+        isNearUserLocation: Boolean
     )
 }

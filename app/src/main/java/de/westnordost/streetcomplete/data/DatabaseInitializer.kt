@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 13
+    const val DB_VERSION = 14
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -233,6 +233,11 @@ object DatabaseInitializer {
             db.exec("DELETE FROM ${WayGeometryTable.NAME};")
 
             db.exec("DELETE FROM ${DownloadedTilesTable.NAME};")
+        }
+        if (oldVersion <= 13 && newVersion > 13) {
+            db.exec("ALTER TABLE ${ElementEditsTable.NAME} ADD COLUMN ${ElementEditsTable.Columns.IS_NEAR_USER_LOCATION} int DEFAULT 1 NOT NULL")
+            db.exec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LATITUDE} double DEFAULT 0 NOT NULL")
+            db.exec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LONGITUDE} double DEFAULT 0 NOT NULL")
         }
     }
 }

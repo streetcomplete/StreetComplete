@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.AC
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.CREATED_TIMESTAMP
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.GEOMETRY
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ID
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.IS_NEAR_USER_LOCATION
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.IS_SYNCED
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.LONGITUDE
@@ -104,7 +105,8 @@ class ElementEditsDao(
         LONGITUDE to position.longitude,
         CREATED_TIMESTAMP to createdTimestamp,
         IS_SYNCED to if (isSynced) 1 else 0,
-        ACTION to json.encodeToString(action)
+        ACTION to json.encodeToString(action),
+        IS_NEAR_USER_LOCATION to if (isNearUserLocation) 1 else 0
     )
 
     private fun CursorPosition.toElementEdit() = ElementEdit(
@@ -115,6 +117,7 @@ class ElementEditsDao(
         getString(SOURCE),
         getLong(CREATED_TIMESTAMP),
         getInt(IS_SYNCED) == 1,
-        json.decodeFromString(getString(ACTION))
+        json.decodeFromString(getString(ACTION)),
+        getInt(IS_NEAR_USER_LOCATION) == 1,
     )
 }

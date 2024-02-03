@@ -25,9 +25,10 @@ class ElementEditsController(
         type: ElementEditType,
         geometry: ElementGeometry,
         source: String,
-        action: ElementEditAction
+        action: ElementEditAction,
+        isNearUserLocation: Boolean
     ) {
-        add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, action))
+        add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, action, isNearUserLocation))
     }
 
     override fun get(id: Long): ElementEdit? =
@@ -113,7 +114,7 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted))
+            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted, edit.isNearUserLocation))
         }
         // not uploaded yet
         else {
