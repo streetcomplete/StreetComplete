@@ -53,7 +53,7 @@ class ElementEditUploader(
             if (newChangeset) {
                 changesetManager.createChangeset(edit.type, edit.source, edit.position)
             } else {
-                changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, !edit.isNearUserLocation)
+                changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, edit.isNearUserLocation)
             }
         return mapDataApi.uploadChanges(changesetId, mapDataChanges, ApplicationConstants.IGNORED_RELATION_TYPES)
     }
