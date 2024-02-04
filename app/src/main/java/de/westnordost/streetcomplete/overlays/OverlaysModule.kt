@@ -56,6 +56,6 @@ fun overlaysRegistry(
     2 to StreetParkingOverlay(),
     3 to AddressOverlay(getCountryCodeByLocation),
     4 to ShopsOverlay(getFeature),
-    7 to BuildingsOverlay()
+    7 to BuildingsOverlay(),
     8 to StreetFurnitureOverlay(getFeature),
 ))
