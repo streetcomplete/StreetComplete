@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.CHANGESET_ID
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.LATITUDE
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.LONGITUDE
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.LAST_POSITION_LATITUDE
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.LAST_POSITION_LONGITUDE
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.SOURCE
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.NAME
@@ -37,13 +37,13 @@ private fun OpenChangeset.toPairs() = listOf(
     QUEST_TYPE to questType,
     SOURCE to source,
     CHANGESET_ID to changesetId,
-    LATITUDE to lastPosition.latitude,
-    LONGITUDE to lastPosition.longitude
+    LAST_POSITION_LATITUDE to lastPosition.latitude,
+    LAST_POSITION_LONGITUDE to lastPosition.longitude
 )
 
 private fun CursorPosition.toOpenChangeset() = OpenChangeset(
     getString(QUEST_TYPE),
     getString(SOURCE),
     getLong(CHANGESET_ID),
-    LatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
+    LatLon(getDouble(LAST_POSITION_LATITUDE), getDouble(LAST_POSITION_LONGITUDE))
 )

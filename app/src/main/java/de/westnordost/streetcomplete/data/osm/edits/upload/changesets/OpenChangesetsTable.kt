@@ -7,8 +7,8 @@ object OpenChangesetsTable {
         const val QUEST_TYPE = "quest_type"
         const val SOURCE = "source"
         const val CHANGESET_ID = "changeset_id"
-        const val LATITUDE = "latitude"
-        const val LONGITUDE = "longitude"
+        const val LAST_POSITION_LATITUDE = "latitude"
+        const val LAST_POSITION_LONGITUDE = "longitude"
     }
 
     const val CREATE = """
@@ -16,8 +16,8 @@ object OpenChangesetsTable {
             ${Columns.QUEST_TYPE} varchar(255),
             ${Columns.SOURCE} varchar(255),
             ${Columns.CHANGESET_ID} int NOT NULL,
-            ${Columns.LATITUDE} double NOT NULL,
-            ${Columns.LONGITUDE} double NOT NULL,
+            ${Columns.LAST_POSITION_LATITUDE} double NOT NULL,
+            ${Columns.LAST_POSITION_LONGITUDE} double NOT NULL,
             CONSTRAINT primary_key PRIMARY KEY (${Columns.QUEST_TYPE}, ${Columns.SOURCE})
         );
     """
