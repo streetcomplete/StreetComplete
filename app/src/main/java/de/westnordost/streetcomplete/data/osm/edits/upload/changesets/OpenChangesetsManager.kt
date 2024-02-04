@@ -29,11 +29,11 @@ class OpenChangesetsManager(
         val openChangeset = openChangesetsDB.get(type.name, source)
             ?: return createChangeset(type, source, position)
 
-        if (!createNewIfTooFarAway || position.distanceTo(openChangeset.lastPosition) < MAX_EDIT_DISTANCE) {
-            return openChangeset.changesetId
-        } else {
+        if (createNewIfTooFarAway && position.distanceTo(openChangeset.lastPosition) > MAX_LAST_EDIT_DISTANCE) {
             closeChangeset(openChangeset)
             return createChangeset(type, source, position)
+        } else {
+            return openChangeset.changesetId
         }
     }
 
@@ -86,4 +86,4 @@ class OpenChangesetsManager(
 
 private const val CLOSE_CHANGESETS_AFTER_INACTIVITY_OF = 1000L * 60 * 20 // 20min
 
-private const val MAX_EDIT_DISTANCE = 5000 // 5km
+private const val MAX_LAST_EDIT_DISTANCE = 5000 // 5km
