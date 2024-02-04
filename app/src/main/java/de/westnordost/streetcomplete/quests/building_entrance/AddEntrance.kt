@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -65,12 +66,13 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
             it.id in buildingsWayNodeIds
             && it.id in incomingWayNodeIds
             && it.id !in excludedWayNodeIds
+            && it.couldBeAnEntrance()
             && withoutEntranceFilter.matches(it)
         }
     }
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (!withoutEntranceFilter.matches(element)) false else null
+        if (!withoutEntranceFilter.matches(element) || element !is Node || !element.couldBeAnEntrance()) false else null
 
     override fun createForm() = AddEntranceForm()
 
@@ -94,3 +96,16 @@ private fun Relation.getMultipolygonNodeIds(mapData: MapDataWithGeometry): List<
     }
     return nodeIds
 }
+
+/** Most nodes **could** be an entrance, depending on their location within a way.
+ *
+ *  However, if any node **could** be an entrance, this would lead to an unacceptable performance
+ *  hit because when any node is updated due to an answered quest, AddEntrance::isApplicableTo
+ *  will for most return null and thus trigger fetching from database all elements in its vicinity.
+ *
+ *  So, let's reduce it to either blank nodes (no tags) or addresses */
+private fun Node.couldBeAnEntrance(): Boolean = tags.isEmpty() || tags.keys.all { key ->
+    key.startsWith("addr:") || key in keysRelatedToAddress
+}
+
+private val keysRelatedToAddress = setOf("ref", "level", "name", "source", "source:addr")

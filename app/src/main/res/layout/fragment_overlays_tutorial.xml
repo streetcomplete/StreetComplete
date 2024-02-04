@@ -29,13 +29,13 @@
             android:id="@+id/mapImageView"
             android:layout_width="226dp"
             android:layout_height="222dp"
-            android:src="@drawable/logo_osm_map" />
+            app:srcCompat="@drawable/logo_osm_map" />
 
         <ImageView
             android:id="@+id/overlayImageView"
             android:layout_width="226dp"
             android:layout_height="222dp"
-            android:src="@drawable/overlay_osm_map_animated"
+            app:srcCompat="@drawable/overlay_osm_map_animated"
             android:visibility="invisible"
             tools:visibility="visible" />
 
@@ -43,7 +43,7 @@
             android:id="@+id/overlayIcon1"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_preset_fas_shopping_cart"
+            app:srcCompat="@drawable/ic_preset_fas_shopping_cart"
             android:visibility="invisible"
             tools:visibility="visible"
             android:translationX="80dp"
@@ -53,7 +53,7 @@
             android:id="@+id/overlayIcon2"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_preset_maki_fuel"
+            app:srcCompat="@drawable/ic_preset_maki_fuel"
             android:visibility="invisible"
             tools:visibility="visible"
             android:translationX="180dp"
@@ -63,7 +63,7 @@
             android:id="@+id/overlaySelectedImageView"
             android:layout_width="226dp"
             android:layout_height="222dp"
-            android:src="@drawable/overlay_osm_map_edit_animated"
+            app:srcCompat="@drawable/overlay_osm_map_edit_animated"
             android:visibility="invisible"
             tools:visibility="visible"  />
 
@@ -74,7 +74,7 @@
         android:id="@+id/paintRollerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/paint_roller_animated"
+        app:srcCompat="@drawable/paint_roller_animated"
         android:rotation="-45"
         android:visibility="invisible"
         tools:visibility="visible"
@@ -83,7 +83,7 @@
 
     <ImageView
         android:id="@+id/shineView1"
-        android:src="@drawable/shine"
+        app:srcCompat="@drawable/shine"
         android:layout_width="196dp"
         android:layout_height="196dp"
         android:scaleType="centerCrop"
@@ -95,7 +95,7 @@
 
     <ImageView
         android:id="@+id/shineView2"
-        android:src="@drawable/shine"
+        app:srcCompat="@drawable/shine"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:scaleType="centerCrop"
@@ -117,7 +117,7 @@
         app:layout_constraintLeft_toRightOf="@id/mapImageContainer"
         app:layout_constraintBottom_toBottomOf="@id/mapImageContainer"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_overlay_black_24dp"
+        app:srcCompat="@drawable/ic_overlay_black_24dp"
         android:scaleType="centerInside" />
 
     <FrameLayout
@@ -238,19 +238,19 @@
                 android:id="@+id/dot1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/indicator_dot_selected"/>
+                app:srcCompat="@drawable/indicator_dot_selected"/>
 
             <ImageView
                 android:id="@+id/dot2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/indicator_dot_default"/>
+                app:srcCompat="@drawable/indicator_dot_default"/>
 
             <ImageView
                 android:id="@+id/dot3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/indicator_dot_default"/>
+                app:srcCompat="@drawable/indicator_dot_default"/>
 
         </LinearLayout>
 
