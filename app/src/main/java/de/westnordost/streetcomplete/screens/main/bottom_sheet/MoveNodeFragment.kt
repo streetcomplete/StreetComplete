@@ -135,11 +135,11 @@ class MoveNodeFragment :
         val position = getMarkerPosition() ?: return
         if (!checkIsDistanceOkAndUpdateText(position)) return
         viewLifecycleScope.launch {
-            moveNode(position)
+            moveNodeTo(position)
         }
     }
 
-    private suspend fun moveNode(position: LatLon) {
+    private suspend fun moveNodeTo(position: LatLon) {
         val isSurvey = checkIsSurvey(ElementPointGeometry(position), recentLocationStore.get())
         if (isSurvey || confirmIsSurvey(requireContext())) {
             val action = MoveNodeAction(node, position)
