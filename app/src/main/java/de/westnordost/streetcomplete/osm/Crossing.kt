@@ -14,7 +14,7 @@ private val isCrossingWithTrafficSignalsExpr by lazy { """
       highway ~ crossing|traffic_signals
       and (
         crossing = traffic_signals
-        or crossing:signals = yes
+        or crossing:signals and crossing:signals != no
       )
 """.toElementFilterExpression() }
 
