@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class LogsFilters(
-    var levels: MutableSet<LogLevel> = LogLevel.values().toMutableSet(),
+    var levels: MutableSet<LogLevel> = LogLevel.entries.toMutableSet(),
     var messageContains: String? = null,
     var timestampNewerThan: LocalDateTime? = null,
     var timestampOlderThan: LocalDateTime? = null

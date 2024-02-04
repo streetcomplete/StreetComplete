@@ -43,7 +43,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         noteText != null || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
     private fun updateOkButtonEnablement() {
-        if (noteText != null ) {
+        if (noteText != null) {
             okButtonContainer.popIn()
         } else {
             okButtonContainer.popOut()

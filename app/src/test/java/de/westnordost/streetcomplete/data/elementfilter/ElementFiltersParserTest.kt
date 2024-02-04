@@ -91,13 +91,13 @@ class ElementFiltersParserTest {
         matchesTags(mapOf("shop'" to "yes"), "'shop\\\''")
         matchesTags(mapOf("shop" to "yes\""), "shop = \"yes\\\"\"")
         matchesTags(mapOf("shop" to "yes'"), "shop = 'yes\\\''")
-        matchesTags(mapOf("sh'op" to "yes'"), "sh\\'op = yes\\'")
+        matchesTags(mapOf("sh'op" to "ye\"s"), "sh'op = ye\"s")
     }
 
     @Test fun `unquoted tag may start with reserved word`() {
-        matchesTags(mapOf("withdrawn" to "with"), "withdrawn = with")
-        matchesTags(mapOf("orchard" to "or"), "orchard = or")
-        matchesTags(mapOf("android" to "and"), "android = and")
+        matchesTags(mapOf("withdrawn" to "withdrawn"), "withdrawn = withdrawn")
+        matchesTags(mapOf("orchard" to "orchard"), "orchard = orchard")
+        matchesTags(mapOf("android" to "android"), "android = android")
     }
 
     @Test fun `tag key with quotation marks is ok`() {

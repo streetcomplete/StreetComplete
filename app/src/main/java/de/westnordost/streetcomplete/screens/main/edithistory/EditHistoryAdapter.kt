@@ -154,11 +154,17 @@ class EditHistoryAdapter(
             binding.undoButtonIcon.isInvisible = selectedEdit != edit
             binding.selectionRing.isInvisible = selectedEdit != edit
 
-            if (edit.icon != 0) binding.questIcon.setImageResource(edit.icon)
-            else binding.questIcon.setImageDrawable(null)
+            if (edit.icon != 0) {
+                binding.questIcon.setImageResource(edit.icon)
+            } else {
+                binding.questIcon.setImageDrawable(null)
+            }
 
-            if (edit.overlayIcon != 0) binding.overlayIcon.setImageResource(edit.overlayIcon)
-            else binding.overlayIcon.setImageDrawable(null)
+            if (edit.overlayIcon != 0) {
+                binding.overlayIcon.setImageResource(edit.overlayIcon)
+            } else {
+                binding.overlayIcon.setImageDrawable(null)
+            }
 
             val aboveTimeStr = editAbove?.formatSameDayTime()
             val timeStr = edit.formatSameDayTime()
@@ -198,10 +204,10 @@ private fun Edit.formatDate() = DateFormat.getDateInstance(DateFormat.SHORT).for
 
 private val Edit.isToday: Boolean get() = DateUtils.isToday(this.createdTimestamp)
 
-private sealed class EditHistoryItem
+private sealed interface EditHistoryItem
 
-private data class EditItem(val edit: Edit) : EditHistoryItem()
-private object IsSyncedItem : EditHistoryItem()
+private data class EditItem(val edit: Edit) : EditHistoryItem
+private data object IsSyncedItem : EditHistoryItem
 
 private const val EDIT = 0
 private const val SYNCED = 1

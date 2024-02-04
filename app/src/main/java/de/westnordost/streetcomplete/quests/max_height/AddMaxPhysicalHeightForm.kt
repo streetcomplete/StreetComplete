@@ -1,24 +1,20 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import android.content.ActivityNotFoundException
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLengthBinding
 import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
-import de.westnordost.streetcomplete.screens.measure.MeasureContract
-import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.view.controller.LengthInputViewController
 import org.koin.android.ext.android.inject
 
-class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>() {
+class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_length
     private val binding by contentViewBinding(QuestLengthBinding::bind)
-    private val launcher = registerForActivityResult(MeasureContract(), ::onMeasured)
     private val checkArSupport: ArSupportChecker by inject()
     private var isARMeasurement: Boolean = false
     private lateinit var lengthInput: LengthInputViewController
@@ -49,14 +45,10 @@ class AddMaxPhysicalHeightForm : AbstractOsmQuestForm<MaxPhysicalHeightAnswer>()
 
     private fun takeMeasurement() {
         val lengthUnit = lengthInput.unit ?: return
-        try {
-            launcher.launch(MeasureContract.Params(lengthUnit, true))
-        } catch (e: ActivityNotFoundException) {
-            context?.openUri("market://details?id=de.westnordost.streetmeasure")
-        }
+        takeMeasurement(lengthUnit, true)
     }
 
-    private fun onMeasured(length: Length?) {
+    override fun onMeasured(length: Length) {
         lengthInput.length = length
         isARMeasurement = true
     }

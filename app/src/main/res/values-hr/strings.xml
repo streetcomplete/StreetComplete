@@ -781,7 +781,7 @@ postignuća"</string>
     <string name="quest_buildingType_ruins_description">"zapuštena i uništena zgrada koju nije moguće identificirati"</string>
     <string name="quest_charging_station_capacity_title">"Koliko se automobila može istovremeno puniti na ovoj stanici za punjenje?"</string>
     <string name="link_disaster_ninja_description">"Karta koja prikazuje nedavne prirodne katastrofe, zanimljiva za kartografe humanitarnih organizacija. Također, prikazuje mnoštvo zanimljivih statističkih podataka za analizu koliko su dobro kartirana i ažurirana mjesta."</string>
-    <string name="quest_lanes_title">"Koliko traka za automobile ima ova cesta?"</string>
+    <string name="quest_lanes_title">"Koliko automobilskih traka ima ova cesta?"</string>
     <string name="quest_lanes_answer_lanes">"Označene trake"</string>
     <string name="quest_lanes_answer_noLanes">"Nema označenih traka"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Ima dvosmjernu traku za skretanje lijevo (USA/Kanada)"</string>
@@ -1141,7 +1141,7 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_barrier_type_gate_any_size">"Vrata (svih veličina)"</string>
     <string name="quest_air_pump_compressor_title">"Postoji li ovdje kompresor zraka?"</string>
     <string name="quest_step_count_stile_hint">"Samo broj koraka za dostizanje vrha. Ako se broj koraka razlikuje na svakoj strani, navedite veći broj."</string>
-    <string name="quest_shoulder_explanation2">"Zaustavna traka je jasno razgraničena traka za zaustavljanje u nuždi. Područje označeno kao zaustavna traka nije nužno popločano cijelom širinom i niti dovoljno široko da se automobil potpuno zaustavi izvan prometne trake."</string>
+    <string name="quest_shoulder_explanation2">"Zaustavna traka je jasno razgraničena traka za zaustavljanje u nuždi. Područje označeno kao zaustavna traka ne mora nužno biti u cijelosti asfaltirano, niti dovoljno široko da se automobil može cijelom širinom zaustaviti izvan prometne trake."</string>
     <string name="quest_cycleway_value_none_and_oneway">"ne postoji, niti je dopuštena vožnja biciklom u ovom smjeru"</string>
     <string name="map_btn_create_track">"Snimi novi trag"</string>
     <string name="map_btn_stop_track">"Zaustavi snimanje traga"</string>
@@ -1258,7 +1258,7 @@ Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju bit
     <string name="quest_bicycle_parking_type_two_tier">"Nosač za bicikle na dvije razine"</string>
     <string name="user_profile_current_week_title">"Zadnjih 7 dana"</string>
     <string name="user_profile_dates_mapped">"Dani kada ste nedavno kartirali"</string>
-    <string name="quest_cycleway_value_advisory_lane">"Preporučena traka za bicikle"</string>
+    <string name="quest_cycleway_value_advisory_lane">"Preporučena biciklistička traka"</string>
     <string name="urlconfig_scan_qr_code_again2">"Nakon instaliranja aplikacije ponovno skenirajte QR kod ili kliknite &lt;a href=\"%s\"&gt;ovu poveznicu&lt;/a&gt; za primjenu Grupe zadataka."</string>
     <string name="confirmation_replace_shop_title">"Koja je ovdje sada trgovina?"</string>
     <string name="confirmation_replace_shop_message">"U tom slučaju i radno vrijeme, podaci za kontakt itd. će također biti promijenjeni. "</string>
@@ -1355,4 +1355,19 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="quest_recycling_type_food_waste">"Otpad od sve hrane"</string>
     <string name="quest_defibrillator_location">"Gdje se nalazi ovaj defibrilator (AVD/AED)?"</string>
     <string name="quest_defibrillator_location_description">"Navedite sažet ali precizan opis njegovog položaja (npr. “u portirnici”)."</string>
+    <string name="quest_sanitary_dump_station_title">"Postoji li ovdje stanica za pražnjenje fekalnih spremnika?"</string>
+    <string name="quest_sanitary_dump_station_description">"Postrojenje za odlaganje ljudskog otpada iz WC spremnika kampera, kamiona za duge relacije itd. Obično je označeno ovakvim znakom:"</string>
+    <string name="quest_generalFee_title">"Trebate li platiti za korištenje ovog?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"To je samo ognjište"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Ognjište nema površinu za kuhanje (npr. rešetku/ploču) kao što je ima roštilj."</string>
+    <string name="about_title_logs">"Logovi (%1$d)"</string>
+    <string name="about_summary_logs">"za upotrebu u izvješćima o greškama"</string>
+    <string name="action_filter">"Filtar"</string>
+    <string name="action_share">"Podijeli logove"</string>
+    <string name="about_title_show_logs">"Prikaži logove"</string>
+    <string name="label_log_level">"Razina logiranja"</string>
+    <string name="label_log_newer_than">"Od"</string>
+    <string name="label_log_older_than">"Do"</string>
+    <string name="label_log_message_contains">"Poruka sadrži"</string>
+    <string name="title_logs_filters">"Filtrirajte poruke"</string>
 </resources>

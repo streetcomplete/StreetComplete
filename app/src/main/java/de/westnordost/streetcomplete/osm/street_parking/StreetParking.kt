@@ -22,7 +22,9 @@ data class LeftAndRightStreetParking(val left: StreetParking?, val right: Street
 ) : StreetParking()
 
 enum class ParkingOrientation {
-    PARALLEL, DIAGONAL, PERPENDICULAR
+    PARALLEL,
+    DIAGONAL,
+    PERPENDICULAR
 }
 
 enum class ParkingPosition {

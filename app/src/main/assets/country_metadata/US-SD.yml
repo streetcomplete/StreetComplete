@@ -1,2 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Wells Fargo, Great Western Bank, Dacotah Bank, U.S. Bank, First National Bank, First Dakota National Bank, First Bank & Trust, CorTrust Bank]
+chargingStationOperators: ['Tesla, Inc.']
 defaultSpeedLimitHasUrbanOrRural: true

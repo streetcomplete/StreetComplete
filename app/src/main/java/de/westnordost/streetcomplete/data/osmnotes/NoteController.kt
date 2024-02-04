@@ -12,7 +12,7 @@ class NoteController(
     private val dao: NoteDao
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
-    *  database table */
+     * database table */
 
     /** Interface to be notified of new notes, updated notes and notes that have been deleted */
     interface Listener {
@@ -66,8 +66,11 @@ class NoteController(
     fun put(note: Note) {
         val hasNote = synchronized(this) { dao.get(note.id) != null }
 
-        if (hasNote) onUpdated(updated = listOf(note))
-        else onUpdated(added = listOf(note))
+        if (hasNote) {
+            onUpdated(updated = listOf(note))
+        } else {
+            onUpdated(added = listOf(note))
+        }
 
         dao.put(note)
     }

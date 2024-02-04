@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import kotlin.test.*
 import kotlin.test.Test
 
@@ -50,59 +51,84 @@ class SurfaceUtilsKtTest {
     }
 
     @Test fun `update foot and cycleway with identical surface`() {
-        val tags = StringMapChangesBuilder(mapOf(
-            "footway:surface" to "asphalt",
-            "cycleway:surface" to "asphalt"
-        ))
-        updateCommonSurfaceFromFootAndCyclewaySurface(tags)
-        tags.create().changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryAdd("surface", "asphalt")
-        ))
+        assertEquals(
+            setOf(StringMapEntryAdd("surface", "asphalt")),
+            appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
+                "footway:surface" to "asphalt",
+                "cycleway:surface" to "asphalt"
+            ))
+        )
     }
 
     @Test fun `update foot and cycleway with common paved surface`() {
-        val tags = StringMapChangesBuilder(mapOf(
-            "footway:surface" to "asphalt",
-            "cycleway:surface" to "paving_stones",
-            "surface:note" to "asphalt but also paving stones"
-        ))
-        updateCommonSurfaceFromFootAndCyclewaySurface(tags)
-        tags.create().changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryAdd("surface", "paved")
-        ))
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("surface", "paved"),
+                StringMapEntryModify("surface:note", "asphalt but also paving stones", "asphalt but also paving stones"),
+            ),
+            appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
+                "footway:surface" to "asphalt",
+                "cycleway:surface" to "paving_stones",
+                "surface:note" to "asphalt but also paving stones"
+            ))
+        )
     }
 
     @Test fun `update foot and cycleway with common unpaved surface`() {
-        val tags = StringMapChangesBuilder(mapOf(
-            "footway:surface" to "gravel",
-            "cycleway:surface" to "sand",
-        ))
-        updateCommonSurfaceFromFootAndCyclewaySurface(tags)
-        tags.create().changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryAdd("surface", "unpaved")
-        ))
+        assertEquals(
+            setOf(StringMapEntryAdd("surface", "unpaved")),
+            appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
+                "footway:surface" to "gravel",
+                "cycleway:surface" to "sand",
+            ))
+        )
     }
 
     @Test fun `update foot and cycleway with no common surface`() {
-        val tags = StringMapChangesBuilder(mapOf(
-            "footway:surface" to "asphalt",
-            "cycleway:surface" to "sand",
-        ))
-        updateCommonSurfaceFromFootAndCyclewaySurface(tags)
-        tags.create().changes.isEmpty()
+        assertEquals(
+            setOf(),
+            appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
+                "footway:surface" to "asphalt",
+                "cycleway:surface" to "sand",
+            ))
+        )
     }
 
     @Test fun `removes common surface if foot and cycleway have nothing in common`() {
-        val tags = StringMapChangesBuilder(mapOf(
-            "footway:surface" to "asphalt",
-            "cycleway:surface" to "sand",
-            "surface" to "paved",
-            "surface:note" to "actually the cycleway is sand"
-        ))
-        updateCommonSurfaceFromFootAndCyclewaySurface(tags)
-        tags.create().changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryDelete("surface", "paved"),
-            StringMapEntryDelete("surface:note", "actually the cycleway is sand")
-        ))
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("surface", "paved"),
+                StringMapEntryDelete("surface:note", "actually the cycleway is sand"),
+                StringMapEntryDelete("smoothness", "as smooth as a sandbox"),
+            ),
+            appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
+                "footway:surface" to "asphalt",
+                "cycleway:surface" to "sand",
+                "surface" to "paved",
+                "surface:note" to "actually the cycleway is sand",
+                "smoothness" to "as smooth as a sandbox",
+            ))
+        )
     }
+
+    @Test fun `removes old tags associated with surface when common surface is changed`() {
+        assertEquals(
+            setOf(
+                StringMapEntryModify("surface", "asphalt", "paved"),
+                StringMapEntryDelete("smoothness", "excellent"),
+            ),
+            appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
+                "footway:surface" to "asphalt",
+                "cycleway:surface" to "paving_stones",
+                "surface" to "asphalt",
+                "smoothness" to "excellent",
+            ))
+        )
+    }
+}
+
+private fun appliedCommonSurfaceFromFootAndCyclewaySurface(tags: Map<String, String>): Set<StringMapEntryChange> {
+    val cb = StringMapChangesBuilder(tags)
+    updateCommonSurfaceFromFootAndCyclewaySurface(cb)
+    return cb.create().changes
 }

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.LaneNarrowingTrafficCalming
-import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.createNarrowingTrafficCalming
+import de.westnordost.streetcomplete.osm.lane_narrowing_traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.street_parking.IncompleteStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.NoStreetParking
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingPositionAndOrientation
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
 import de.westnordost.streetcomplete.osm.street_parking.UnknownStreetParking
-import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -69,7 +69,7 @@ class StreetParkingOverlay : Overlay {
     override fun createForm(element: Element?): AbstractOverlayForm? =
         if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm()
-        } else if (element == null || createNarrowingTrafficCalming(element.tags) != null) {
+        } else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
             LaneNarrowingTrafficCalmingForm()
         } else {
             null
@@ -87,19 +87,19 @@ private val streetParkingTaggingNotExpected by lazy { """
 """.toElementFilterExpression() }
 
 private val parkingLotAreaStyle = PolygonStyle(Color.BLUE)
-private val parkingLotPointStyle = PointStyle("temaki-car_parked")
-private val chicaneStyle = PointStyle("temaki-chicane_arrow")
-private val trafficCalmingStyle = PointStyle("temaki-diamond")
+private val parkingLotPointStyle = PointStyle("ic_preset_temaki_car_parked")
+private val chicaneStyle = PointStyle("ic_preset_temaki_chicane_arrow")
+private val trafficCalmingStyle = PointStyle("ic_preset_temaki_diamond")
 
 private fun getNarrowingTrafficCalmingStyle(element: Element): Style? =
-    when (createNarrowingTrafficCalming(element.tags)) {
+    when (parseNarrowingTrafficCalming(element.tags)) {
         LaneNarrowingTrafficCalming.CHICANE -> chicaneStyle
         null -> null
         else -> trafficCalmingStyle
     }
 
 private fun getStreetParkingStyle(element: Element): Style {
-    val parking = createStreetParkingSides(element.tags)
+    val parking = parseStreetParkingSides(element.tags)
     // not set but private or not expected to have a sidewalk -> do not highlight as missing
     if (parking == null) {
         if (isPrivateOnFoot(element) || streetParkingTaggingNotExpected.matches(element)) {

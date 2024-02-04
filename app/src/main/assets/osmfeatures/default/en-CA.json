@@ -345,9 +345,6 @@
                 "brand": {
                     "label": "Brand"
                 },
-                "brewery": {
-                    "terms": "on tap"
-                },
                 "building": {
                     "label": "Building"
                 },

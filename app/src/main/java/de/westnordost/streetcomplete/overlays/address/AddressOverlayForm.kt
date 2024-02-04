@@ -35,7 +35,7 @@ import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.osm.address.applyTo
-import de.westnordost.streetcomplete.osm.address.createAddressNumber
+import de.westnordost.streetcomplete.osm.address.parseAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -106,7 +106,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        addressNumber = element?.tags?.let { createAddressNumber(it) }
+        addressNumber = element?.tags?.let { parseAddressNumber(it) }
         houseName = element?.tags?.get("addr:housename")
         val placeName = element?.tags?.get("addr:place")
         val streetName = element?.tags?.get("addr:street")
@@ -314,7 +314,9 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             } else {
                 AnswerItem(R.string.quest_address_answer_block) { showNumberOrNameInput(R.layout.view_house_number_and_block) }
             }
-        } else null
+        } else {
+            null
+        }
 
     /* ------------------------------ Show house name / place name ------------------------------ */
 

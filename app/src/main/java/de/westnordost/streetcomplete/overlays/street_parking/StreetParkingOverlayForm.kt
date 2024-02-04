@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSeparate
 import de.westnordost.streetcomplete.osm.street_parking.applyTo
 import de.westnordost.streetcomplete.osm.street_parking.asItem
 import de.westnordost.streetcomplete.osm.street_parking.asStreetSideItem
-import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AStreetSideSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.street_parking.ParkingSelection.DIAGONAL
@@ -34,7 +34,6 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item2
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -64,9 +63,11 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
         binding.hintTextView.text = if (width != null) {
             val widthFormatted = if (width.toFloatOrNull() != null) width + "m" else width
             getString(R.string.street_parking_street_width, widthFormatted)
-        } else null
+        } else {
+            null
+        }
 
-        originalParking = createStreetParkingSides(element!!.tags)?.validOrNullValues()
+        originalParking = parseStreetParkingSides(element!!.tags)?.validOrNullValues()
         if (savedInstanceState == null) {
             initStateFromTags()
         }
@@ -119,7 +120,7 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
     }
 
     private fun getParkingItems(context: Context): List<DisplayItem<ParkingSelection>> =
-        ParkingSelection.values().map { it.asItem(context, isLeftHandTraffic) }
+        ParkingSelection.entries.map { it.asItem(context, isLeftHandTraffic) }
 
     private fun getParkingPositionItems(context: Context, orientation: ParkingOrientation) =
         DISPLAYED_PARKING_POSITIONS
@@ -138,7 +139,11 @@ class StreetParkingOverlayForm : AStreetSideSelectOverlayForm<StreetParking>() {
 }
 
 private enum class ParkingSelection {
-    PARALLEL, DIAGONAL, PERPENDICULAR, SEPARATE, NO
+    PARALLEL,
+    DIAGONAL,
+    PERPENDICULAR,
+    SEPARATE,
+    NO
 }
 
 private val ParkingSelection.titleResId: Int get() = when (this) {

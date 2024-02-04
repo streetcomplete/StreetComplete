@@ -1,10 +1,5 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertFalse
@@ -54,31 +49,5 @@ class AddRoadSurfaceTest {
 
     @Test fun `not applicable where tracktype and very good surface match is suspicious, but not conflicting`() {
         assertIsNotApplicable("highway" to "track", "surface" to "asphalt", "tracktype" to "grade2")
-    }
-
-    @Test fun `tracktype tag is removed when surface match is suspicious`() {
-        questType.verifyAnswer(
-            mapOf(
-                "tracktype" to "grade2",
-                "smoothness" to "good"
-            ),
-            SurfaceAndNote(Surface.ASPHALT),
-            StringMapEntryAdd("surface", "asphalt"),
-            StringMapEntryDelete("tracktype", "grade2"),
-            StringMapEntryDelete("smoothness", "good"),
-        )
-    }
-
-    @Test fun `tracktype tag is removed when surface match is conflicting`() {
-        questType.verifyAnswer(
-            mapOf(
-                "tracktype" to "grade2",
-                "smoothness" to "good"
-            ),
-            SurfaceAndNote(Surface.SAND),
-            StringMapEntryAdd("surface", "sand"),
-            StringMapEntryDelete("tracktype", "grade2"),
-            StringMapEntryDelete("smoothness", "good"),
-        )
     }
 }

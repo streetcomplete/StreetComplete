@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddKerbHeightForm : AImageListQuestForm<KerbHeight, KerbHeight>() {
 
-    override val items = KerbHeight.values().map { it.asItem() }
+    override val items = KerbHeight.entries.map { it.asItem() }
     override val itemsPerRow = 2
     override val moveFavoritesToFront = false
 

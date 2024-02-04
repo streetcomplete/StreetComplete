@@ -5,7 +5,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 android {
@@ -23,7 +23,7 @@ android {
         }
     }
 
-    compileSdk = 33
+    compileSdk = 34
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -33,9 +33,9 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
-        targetSdk = 33
-        versionCode = 5600
-        versionName = "56.0-beta1"
+        targetSdk = 34
+        versionCode = 5700
+        versionName = "57.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -121,7 +121,6 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation("org.assertj:assertj-core:3.23.1")
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
@@ -129,11 +128,11 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.7.0")
+    implementation("androidx.annotation:annotation:1.7.1")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
@@ -141,31 +140,29 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // photos
-    implementation("androidx.exifinterface:exifinterface:1.3.6")
+    implementation("androidx.exifinterface:exifinterface:1.3.7")
 
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
 
     // Date/time
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.8.1")
+    implementation("androidx.work:work-runtime:2.9.0")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures-android:5.2")
     // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:2.3")
-    implementation("de.westnordost:osmapi-changesets:2.3")
-    implementation("de.westnordost:osmapi-notes:2.0")
-    implementation("de.westnordost:osmapi-traces:2.0")
-    implementation("de.westnordost:osmapi-user:2.0")
-    implementation("com.squareup.okhttp3:okhttp:3.14.9")
-    implementation("se.akerfeldt:okhttp-signpost:1.1.0")
+    implementation("de.westnordost:osmapi-map:3.0")
+    implementation("de.westnordost:osmapi-changesets:3.0")
+    implementation("de.westnordost:osmapi-notes:3.0")
+    implementation("de.westnordost:osmapi-traces:3.0")
+    implementation("de.westnordost:osmapi-user:3.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.0.0")
@@ -179,14 +176,14 @@ dependencies {
     implementation("com.google.zxing:core:3.5.2")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-    implementation("com.charleskorn.kaml:kaml:0.55.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+    implementation("com.charleskorn.kaml:kaml:0.57.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.27.1")
+    implementation("de.westnordost:osm-opening-hours:0.1.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -194,7 +191,7 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
-    "am", "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
+    "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
@@ -202,9 +199,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20231120"
+val nsiVersion = "v6.0.20240126"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.4.1"
+val presetsVersion = "v6.6.0"
 
 val poEditorProjectId = "97843"
 
@@ -275,6 +272,12 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     group = "streetcomplete"
     targetDir = "$projectDir/src/main/assets/map_theme/jawg"
     mapStyleBranch = "jawg"
+}
+
+tasks.register<UpdateChangelogTask>("updateChangelog") {
+    group = "streetcomplete"
+    sourceFile = "$rootDir/CHANGELOG.md"
+    targetFile = "$projectDir/src/main/res/raw/changelog.html"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {

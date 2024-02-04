@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.os.Bundle
@@ -18,7 +17,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
@@ -56,11 +54,11 @@ import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
-import de.westnordost.streetcomplete.util.ktx.putDouble
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -85,7 +83,7 @@ class MainActivity :
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: Preferences by inject()
 
     private var mainFragment: MainFragment? = null
 
@@ -218,10 +216,8 @@ class MainActivity :
     public override fun onPause() {
         super.onPause()
         val pos = mainFragment?.getCameraPosition()?.position ?: return
-        prefs.edit {
-            putDouble(Prefs.MAP_LATITUDE, pos.latitude)
-            putDouble(Prefs.MAP_LONGITUDE, pos.longitude)
-        }
+        prefs.putDouble(Prefs.MAP_LATITUDE, pos.latitude)
+        prefs.putDouble(Prefs.MAP_LONGITUDE, pos.longitude)
         downloadController.showNotification = true
         uploadController.showNotification = true
     }
@@ -344,7 +340,7 @@ class MainActivity :
     override fun onTutorialFinished() {
         requestLocation()
 
-        prefs.edit { putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true) }
+        prefs.putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true)
         removeTutorialFragment()
     }
 
@@ -374,7 +370,7 @@ class MainActivity :
     /* --------------------------- OverlaysTutorialFragment.Listener ---------------------------- */
 
     override fun onOverlaysTutorialFinished() {
-        prefs.edit { putBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, true) }
+        prefs.putBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, true)
         removeTutorialFragment()
     }
 

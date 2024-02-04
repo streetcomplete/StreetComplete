@@ -7,12 +7,12 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.util.ktx.containsAny
 
 /** Returns on which sides are sidewalks. Returns null if there is no sidewalk tagging */
-fun createSidewalkSides(tags: Map<String, String>): LeftAndRightSidewalk? {
+fun parseSidewalkSides(tags: Map<String, String>): LeftAndRightSidewalk? {
     if (!tags.keys.containsAny(KNOWN_SIDEWALK_KEYS)) return null
 
-    val sidewalk = createSidewalksDefault(tags)
+    val sidewalk = parseSidewalksDefault(tags)
     // alternative tagging
-    val altSidewalk = createSidewalksAlternative(tags)
+    val altSidewalk = parseSidewalksAlternative(tags)
 
     // has mixture of both sidewalk tagging styles
     if (sidewalk != null && altSidewalk != null) return LeftAndRightSidewalk(INVALID, INVALID)
@@ -29,7 +29,7 @@ fun createSidewalkSides(tags: Map<String, String>): LeftAndRightSidewalk? {
     return null
 }
 
-private fun createSidewalksDefault(tags: Map<String, String>): LeftAndRightSidewalk? = when (tags["sidewalk"]) {
+private fun parseSidewalksDefault(tags: Map<String, String>): LeftAndRightSidewalk? = when (tags["sidewalk"]) {
     "left" -> LeftAndRightSidewalk(left = YES, right = NO)
     "right" -> LeftAndRightSidewalk(left = NO, right = YES)
     "both" -> LeftAndRightSidewalk(left = YES, right = YES)
@@ -39,7 +39,7 @@ private fun createSidewalksDefault(tags: Map<String, String>): LeftAndRightSidew
     else -> LeftAndRightSidewalk(left = INVALID, right = INVALID)
 }
 
-private fun createSidewalksAlternative(tags: Map<String, String>): LeftAndRightSidewalk? {
+private fun parseSidewalksAlternative(tags: Map<String, String>): LeftAndRightSidewalk? {
     if (tags["sidewalk:both"] != null &&
         (tags["sidewalk:left"] != null || tags["sidewalk:right"] != null)) {
         return LeftAndRightSidewalk(INVALID, INVALID)
@@ -48,15 +48,15 @@ private fun createSidewalksAlternative(tags: Map<String, String>): LeftAndRightS
     val sidewalkRight = tags["sidewalk:both"] ?: tags["sidewalk:right"]
     return if (sidewalkLeft != null || sidewalkRight != null) {
         LeftAndRightSidewalk(
-            left = createSidewalkSide(sidewalkLeft),
-            right = createSidewalkSide(sidewalkRight)
+            left = parseSidewalkSide(sidewalkLeft),
+            right = parseSidewalkSide(sidewalkRight)
         )
     } else {
         null
     }
 }
 
-private fun createSidewalkSide(tag: String?): Sidewalk? = when (tag) {
+private fun parseSidewalkSide(tag: String?): Sidewalk? = when (tag) {
     "yes" -> YES
     "no", "none" -> NO
     "separate" -> SEPARATE

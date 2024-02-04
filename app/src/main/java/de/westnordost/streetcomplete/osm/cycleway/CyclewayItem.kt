@@ -88,18 +88,27 @@ private fun CyclewayAndDirection.getIconResId(isRight: Boolean, countryInfo: Cou
     else -> {
         val isForward = (direction == FORWARD)
         val showMirrored = isForward xor isRight
-        if (showMirrored) cycleway.getLeftHandTrafficIconResId(countryInfo)
-        else              cycleway.getRightHandTrafficIconResId(countryInfo)
+        if (showMirrored) {
+            cycleway.getLeftHandTrafficIconResId(countryInfo)
+        } else {
+            cycleway.getRightHandTrafficIconResId(countryInfo)
+        }
     }
 }
 
 private fun Cycleway.getDualTrafficIconResId(countryInfo: CountryInfo): Int = when (this) {
     UNSPECIFIED_LANE, EXCLUSIVE_LANE ->
-        if (countryInfo.isLeftHandTraffic) countryInfo.dualCycleLaneMirroredResId
-        else                               countryInfo.dualCycleLaneResId
+        if (countryInfo.isLeftHandTraffic) {
+            countryInfo.dualCycleLaneMirroredResId
+        } else {
+            countryInfo.dualCycleLaneResId
+        }
     TRACK ->
-        if (countryInfo.isLeftHandTraffic) R.drawable.ic_cycleway_track_dual_l
-        else                               R.drawable.ic_cycleway_track_dual
+        if (countryInfo.isLeftHandTraffic) {
+            R.drawable.ic_cycleway_track_dual_l
+        } else {
+            R.drawable.ic_cycleway_track_dual
+        }
     SIDEWALK_EXPLICIT ->                   R.drawable.ic_cycleway_sidewalk_explicit_dual
     else ->                                0
 }
@@ -138,20 +147,32 @@ private fun Cycleway.getLeftHandTrafficIconResId(countryInfo: CountryInfo): Int 
 
 private fun CyclewayAndDirection.getTitleResId(isContraflowInOneway: Boolean): Int = when (cycleway) {
     UNSPECIFIED_LANE, EXCLUSIVE_LANE -> {
-        if (direction == BOTH) R.string.quest_cycleway_value_lane_dual
-        else                   R.string.quest_cycleway_value_lane
+        if (direction == BOTH) {
+            R.string.quest_cycleway_value_lane_dual
+        } else {
+            R.string.quest_cycleway_value_lane
+        }
     }
     TRACK -> {
-        if (direction == BOTH) R.string.quest_cycleway_value_track_dual
-        else                   R.string.quest_cycleway_value_track
+        if (direction == BOTH) {
+            R.string.quest_cycleway_value_track_dual
+        } else {
+            R.string.quest_cycleway_value_track
+        }
     }
     SIDEWALK_EXPLICIT -> {
-        if (direction == BOTH) R.string.quest_cycleway_value_sidewalk_dual2
-        else                   R.string.quest_cycleway_value_sidewalk2
+        if (direction == BOTH) {
+            R.string.quest_cycleway_value_sidewalk_dual2
+        } else {
+            R.string.quest_cycleway_value_sidewalk2
+        }
     }
     NONE -> {
-        if (isContraflowInOneway) R.string.quest_cycleway_value_none_and_oneway
-        else                      R.string.quest_cycleway_value_none
+        if (isContraflowInOneway) {
+            R.string.quest_cycleway_value_none_and_oneway
+        } else {
+            R.string.quest_cycleway_value_none
+        }
     }
     ADVISORY_LANE,
     SUGGESTION_LANE ->   R.string.quest_cycleway_value_advisory_lane

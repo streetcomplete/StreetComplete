@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.sidewalk.KNOWN_SIDEWALK_KEYS
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
-import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun SeparateCycleway.applyTo(tags: Tags) {
@@ -60,15 +60,18 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             tags["highway"] = "cycleway"
             if (tags.containsKey("bicycle")) tags["bicycle"] = "designated"
 
-            if (this == EXCLUSIVE) tags["foot"] = "no"
-            // follow the same pattern as for roads here: It is uncommon for roads to have foot
-            // tagged at all when such roads have sidewalks
-            else tags.remove("foot")
+            if (this == EXCLUSIVE) {
+                tags["foot"] = "no"
+            } else {
+                // follow the same pattern as for roads here: It is uncommon for roads to have foot
+                // tagged at all when such roads have sidewalks
+                tags.remove("foot")
+            }
         }
     }
 
     // tag or remove sidewalk
-    val hasSidewalk = createSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
+    val hasSidewalk = parseSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     when (this) {
         EXCLUSIVE_WITH_SIDEWALK -> {
             if (!hasSidewalk) {

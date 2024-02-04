@@ -57,4 +57,10 @@ class NoteQuestsHiddenDaoTest : ApplicationDbTestCase() {
         assertFalse(dao.contains(1L))
         assertFalse(dao.contains(2L))
     }
+
+    @Test fun countAll() {
+        assertEquals(0, dao.countAll())
+        dao.add(3L)
+        assertEquals(1, dao.countAll())
+    }
 }

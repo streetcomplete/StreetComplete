@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddCarWashTypeForm : AImageListQuestForm<CarWashType, List<CarWashType>>() {
 
-    override val items = CarWashType.values().map { it.asItem() }
+    override val items = CarWashType.entries.map { it.asItem() }
     override val itemsPerRow = 3
     override val maxSelectableItems = -1
 

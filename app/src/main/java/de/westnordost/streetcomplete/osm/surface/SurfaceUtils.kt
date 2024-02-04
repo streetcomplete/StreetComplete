@@ -68,7 +68,7 @@ fun updateCommonSurfaceFromFootAndCyclewaySurface(tags: Tags) {
     if (cyclewaySurface != null && footwaySurface != null) {
         val commonSurface = getCommonSurface(footwaySurface, cyclewaySurface)
         if (commonSurface != null) {
-            SurfaceAndNote(createSurface(commonSurface), tags["surface:note"]).applyTo(tags)
+            SurfaceAndNote(parseSurface(commonSurface), tags["surface:note"]).applyTo(tags)
         } else {
             tags.remove("surface")
             tags.remove("surface:note")
@@ -77,7 +77,7 @@ fun updateCommonSurfaceFromFootAndCyclewaySurface(tags: Tags) {
     }
 }
 
-private fun getCommonSurface(vararg surface: String?): String?  = when {
+private fun getCommonSurface(vararg surface: String?): String? = when {
     surface.any { it == null } -> null
     surface.all { it == surface.firstOrNull() } -> surface.firstOrNull()
     surface.all { it in ANYTHING_PAVED } -> "paved"

@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddTracktypeForm : AImageListQuestForm<Tracktype, Tracktype>() {
 
-    override val items = Tracktype.values().map { it.asItem() }
+    override val items = Tracktype.entries.map { it.asItem() }
 
     override val itemsPerRow = 3
 

@@ -1343,4 +1343,19 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_crossing_kerb_height_title">"Jaka jest wysokość krawężników na tym przejściu?"</string>
     <string name="quest_maxheight_sign_title">"Jakie jest ograniczenie wysokości tutaj?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Jakie jest ograniczenie wysokości pod mostem?"</string>
+    <string name="quest_drinking_water_type_title2">"Czy woda pitna jest tu dostępna? Jeśli tak jakie jest jej źródło?"</string>
+    <string name="quest_is_amenity_inside_title">"Czy jest to w środku budynku?"</string>
+    <string name="quest_bbq_fuel_title">"Czym jest zasilany ten grill?"</string>
+    <string name="quest_bbq_fuel_wood">"Drewno"</string>
+    <string name="quest_bbq_fuel_electric">"Elektryczny"</string>
+    <string name="quest_bbq_fuel_charcoal">"Węgiel drzewny"</string>
+    <string name="inside">"W środku"</string>
+    <string name="outside">"Na zewnątrz"</string>
+    <string name="quest_defibrillator_location">"Gdzie znajduje się ten defibrylator?"</string>
+    <string name="quest_generalFee_title">"Czy musisz zapłacić aby tego używać?"</string>
+    <string name="action_filter">"Filtruj"</string>
+    <string name="label_log_newer_than">"Od"</string>
+    <string name="label_log_older_than">"Do"</string>
+    <string name="label_log_message_contains">"Wiadomość zawiera"</string>
+    <string name="title_logs_filters">"Filtruj wiadomości"</string>
 </resources>

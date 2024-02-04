@@ -26,11 +26,11 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =
-     if (tags["amenity"] == "sanitary_dump_station") {
-         R.string.quest_generalFee_title
-     } else {
-         R.string.quest_generalFee_title2
-     }
+        if (tags["amenity"] == "sanitary_dump_station") {
+            R.string.quest_generalFee_title
+        } else {
+            R.string.quest_generalFee_title2
+        }
 
     override fun createForm() = YesNoQuestForm()
 

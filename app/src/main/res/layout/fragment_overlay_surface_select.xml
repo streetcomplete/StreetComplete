@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="160dp"
-    android:weightSum="2"
-    android:divider="@drawable/space_16dp"
-    android:showDividers="middle|beginning|end"
+    android:layout_marginBottom="48dp"
     android:orientation="horizontal">
 
     <include
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintWidth_max="220dp"
         layout="@layout/view_image_select_plus_text"
-        tools:visibility="gone"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
         android:id="@+id/cycleway_surface_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:visibility="visible"
-        android:layout_weight="1"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_weight="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/footway_surface_container">
 
         <TextView
             android:id="@+id/cyclewaySurfaceLabel"
@@ -42,8 +46,7 @@
             android:id="@+id/cycleway"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/view_image_select_plus_text"
-            />
+            layout="@layout/view_image_select_plus_text" />
 
     </LinearLayout>
 
@@ -52,10 +55,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:visibility="visible"
         android:gravity="center_horizontal"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_weight="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cycleway_surface_container">
 
         <TextView
             android:id="@+id/footwaySurfaceLabel"
@@ -70,8 +78,16 @@
             android:id="@+id/footway"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/view_image_select_plus_text"
-            />
+            layout="@layout/view_image_select_plus_text" />
     </LinearLayout>
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/lastPickedButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        tools:src="@drawable/ic_lit_yes"
+        style="@style/Widget.AppCompat.Button.Small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,9 +2,9 @@ This file describes in detail the process of creating a new quest.
 
 For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#development).
 
-If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. It is quite easy to implement a quest where layout design matches an existing quest. For example one more yes/no quest or where user taps one of displayed images.
+If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. It is quite easy to implement a quest where the layout design matches an existing quest. For example, one more yes/no quest or where the user taps a displayed image.
 
-Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier! You can implement it also if you never used Kotlin or implemented anything for Android. Being highly experienced programmer is not necessary here.
+Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier! You can also implement it if you have never used Kotlin or implemented anything for Android. Being a highly experienced programmer is not necessary here.
 
 Reading the text below is not necessary to create a new quest. Duplicating an existing quest and modifying its code may be sufficient - people were creating new quests before this documentation existed. This material simply helps you get a better understanding of it.
 
@@ -25,15 +25,15 @@ If you are doing it for the first time, don't worry if there is an error to solv
 
 ## Alternative to Android Studio
 
-- Instead of installing Android Studio locally, one can use GitHub Actions to build `.apk` files. Click on `Actions` > `Build debug apk` on your GitHub fork, make sure you select correct branch with your changes when clicking `Run workflow`, and after about 15 minutes, download the ready-made `debug-apk.zip` which contains an `.apk` file to install on your phone manually.
+- Instead of installing Android Studio locally, one can use GitHub Actions to build `.apk` files. Click on `Actions` > `Build debug apk` on your GitHub fork, make sure you select the correct branch with your changes when clicking `Run workflow`, and after about 15 minutes, download the ready-made `debug-apk.zip` which contains an `.apk` file to install on your phone manually.
   This debug build of StreetComplete can be installed alongside the official version.
-- One can also edit files online in the GitHub file view via the pen icon, thus avoiding the need for a local git client and doing all the changes on the web.
+- One can also edit files online in the GitHub file view via the pen icon, thus avoiding the need for a local git client, and doing all the changes on the web.
 
 # Invent a new quest
 
 ## Own ideas
 
-To [repeat](CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](CONTRIBUTING.md#developing-new-quests), before starting other work. This way it can be confirmed that such quest can be included. This can be skipped if you are an [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
+To [repeat](CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](CONTRIBUTING.md#developing-new-quests), before starting other work. This way it can be confirmed that such a quest can be included. This can be skipped if you are an [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
 
 ## Existing proposals
 
@@ -64,7 +64,7 @@ Use <kbd>Ctrl</kbd>+<kbd>N</kbd> to go to a certain class. <kbd>Ctrl</kbd>+ mous
 Use <kbd>Ctrl</kbd>+<kbd>Q</kbd> (but not on MacOS 😉) after having marked a class, symbol or function to display the documentation for it.
 
 With <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> you can find and explore **any** action you can do in Android Studio (try it by typing for example "go to").
-But "Find usages" (<kbd>alt</kbd>+<kbd>F7</kbd>) is also a very powerful way to find where given function/constant/property/etc is appearing, classified by usages.
+But "Find usages" (<kbd>alt</kbd>+<kbd>F7</kbd>) is also a very powerful way to find where given function/constant/property/etc. appears, classified by usages.
 
 ### Base on existing
 
@@ -72,13 +72,13 @@ Base the new quest on one that exists already.
 
 Find one that has the same type of interface as the one that you are trying to implement.
 
-Are you trying to implement a quest that will have simple yes/no answer? Take [`AddBusStopLit`](app/src/main/java/de/westnordost/streetcomplete/quests/bus_stop_lit/AddBusStopLit.kt) quest as a base. Or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting one of presented images.
+Are you trying to implement a quest that will have a simple yes/no answer? Take the [`AddBusStopLit`](app/src/main/java/de/westnordost/streetcomplete/quests/bus_stop_lit/AddBusStopLit.kt) quest as a base. Or [`AddTracktype`](app/src/main/java/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting from one of some presented images.
 
-Is it going to be asked for POIs and should be disabled by default? [`AddWheelchairAccessBusiness`](app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
+If it is going to be asked for POIs and should be disabled by default, then [`AddWheelchairAccessBusiness`](app/src/main/java/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
 
 Quests are grouped in [one folder](app/src/main/java/de/westnordost/streetcomplete/quests).
 
-Implementing quest by duplicating and modifiying existing one is the recommended method.
+Implementing a quest by duplicating and modifiying an existing one is the recommended method.
 
 ### Locating a quest
 
@@ -98,7 +98,7 @@ This method can often be used to locate relevant code.
 
 ### Other people
 
-The issue proposing a quest may also contain hint which quests are similar. If you are unsure what would be a good base - you can ask in issue discussion to confirm what you found or ask for help in finding a good base for a given issue.
+The issue proposing a quest may also contain a hint as to which quests are similar. If you are unsure what would be a good base - you can ask in issue discussion to confirm what you found or ask for help in finding a good base for a given issue.
 
 ## Pull Requests
 
@@ -118,7 +118,7 @@ Duplicate the relevant quest folder from [`app/src/main/java/de/westnordost/stre
 
 Some quests are entirely defined in a single file, some have additional answer class, custom interface or utility classes.
 
-For example, lets imagine that new quest will ask whether [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoor or outdoor. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
+For example, lets imagine that new quest will ask whether an [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoors or outdoors. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
 
 So, as the first step: lets copy [`app/src/main/java/de/streetcomplete/StreetComplete/quests/bike_parking_cover/`](app/src/main/java/de/streetcomplete/StreetComplete/quests/bike_parking_cover) folder into `app/src/main/java/de/streetcomplete/StreetComplete/quests/defibrillator/`.
 
@@ -130,9 +130,9 @@ After the quest is copied it is necessary to adjust it a bit so it is not a dupl
 
 Change its class name and the file name to the new one.
 
-In copied code change package info (things like `package de.westnordost.streetcomplete.quests.defibrillator` at the top) to match the new folder containing the quest.
+In the copied code change the package info (things like `package de.westnordost.streetcomplete.quests.defibrillator` at the top) to match the new folder containing the quest.
 
-When committing changes be careful to not change already existing quest - only new code (using built-in refactoring rename will affect also `QuestsModule.kt` entry for an existing quest).
+When committing changes be careful to not change the already existing quest - only new code (using the built-in refactoring rename will also affect the `QuestsModule.kt` entry for an existing quest).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/9c65d00c7d096c3fee61650e1465a43b7e7f5712) in the example repository.
 
@@ -144,13 +144,13 @@ Each quest is associated with a number in this list. These numbers are used to i
 
 Add your quest to the list so that it will be loaded by the app.
 
-At this point you can run the app in emulator - everything should work and one of quests will appear twice.
+At this point you can run the app in the emulator - everything should work and one of the quests will appear twice.
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/b4f01eeb752f92fd6927fbb9a943ea19a4799eec) in the example repository.
 
 # Modify the template
 
-At this point prepared template can be modified to achieve the intended effect.
+At this point the prepared template can be modified to achieve the intended effect.
 
 See for example [simple yes/no quest asking whether AED is indoor or outdoor](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/blob/a9fd3efe96cbc6241b3b0f65d4a2be27f1c6afb8/app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/AddIsDefibrillatorIndoor.kt).
 
@@ -167,7 +167,7 @@ See for example [simple yes/no quest asking whether AED is indoor or outdoor](ht
     """
 ```
 
-This query will be limited to object which fulfill some requirements.
+This query will be limited to objects which fulfill some requirements.
 
 - `nodes with`
   - nodes only, ways and relations are not eligible
@@ -175,7 +175,7 @@ This query will be limited to object which fulfill some requirements.
   - this tag must be present
 - `and access !~ private|no`
   - and `access` tag must not have values `private` or `no` (the `~` indicates it is a [regular expression](https://en.wikipedia.org/wiki/Regular_expression) which will be matched against the whole string)
-  - this filter excludes objects where mapper will likely has no access necessary for survey
+  - this filter excludes objects where the mapper will likely have no access necessary for survey
 - `and !indoor`
   - and `indoor` key must not be present at all, to show only ones where this tag is still missing
 
@@ -186,7 +186,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 ### Prototyping
 
-[Overpass Turbo](http://overpass-turbo.eu/) has own syntax but it is very useful tool for prototyping filters. It is very useful to verify own assumptions how things are tagged. Especially in more complex cases.
+[Overpass Turbo](http://overpass-turbo.eu/) has its own syntax but it is a very useful tool for prototyping filters. It is very useful to verify your own assumptions about how things are tagged. Especially in more complex cases.
 
 ### Hints
 
@@ -199,7 +199,7 @@ You can obtain more info about properties by placing the cursor in a property an
 ## changesetComment
 
 ```kotlin
-override val changesetComment = "Add whether defibrillator is inside building"
+override val changesetComment = "Add whether defibrillator is inside a building"
 ```
 
 message used as a changeset comment
@@ -224,7 +224,7 @@ override val icon = R.drawable.ic_quest_defibrillator
 
 icon drawable, you can initially use any icon.
 
-Do not worry, submissions with placeholder icons are also welcomed! In many cases icon itself was not made by the PR author.
+Do not worry, submissions with placeholder icons are also welcomed! In many cases the icon itself was not made by the PR author.
 
 More info about icon handling [will be given later](#adding-quest-icon).
 
@@ -246,7 +246,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title
 ```
 
-It is a message displayed to user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
+It is a message displayed to the user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
 
 Actual strings sit in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)
 
@@ -260,15 +260,15 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 override fun createForm() = YesNoQuestForm()
 ```
 
-Form defines interface used by mappers.
+Form defines the interface used by mappers.
 
-In this case, the simplest possible is used.
+In this case, the simplest possible form is used.
 
 But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt)
 
 `override fun createForm() = AddBridgeStructureForm()`
 
-With form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
+With the form defined in [AddBridgeStructureForm](app/src/main/java/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
 
 ## applyAnswerTo
 
@@ -280,7 +280,7 @@ override fun applyAnswerTo(answer: Boolean, tags: Tags, timestampEdited: Long) {
 
 This code is responsible for modifying `tags` object (passed by reference).
 
-In this case it would set `indoor` tag to have either `yes` or `no` answer, depending on selection in the quest interface.
+In this case it would set `indoor` tag to have either `yes` or `no` answer, depending on the selection in the quest interface.
 
 Actions may include (examples from various quests):
 
@@ -309,30 +309,30 @@ override fun getHighlightedElements(element: Element, getMapData: () -> MapDataW
 
 which causes nearby `emergency = defibrillator` nodes to be shown.
 
-See [also other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
+Also [see other optional properties](app/src/main/java/de/westnordost/streetcomplete/data/osm/osmquests/OsmElementQuestType.kt).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/1d648e56562d16a5dc3588ca7de8558f97d5919a) in the example repository.
 
 Note that for this quest one extra property present in the original quest used as a template [was removed](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/a9fd3efe96cbc6241b3b0f65d4a2be27f1c6afb8)
 
 # Adding quest icon
-<!-- note that this section name is linked from section discussing val icon, in case of changing section name change also that link -->
-It is OK to submit a quest without own icon, using any icon as a placeholder.
+<!-- note that this section name is linked from section discussing val icon, in case of changing section name also change that link -->
+It is OK to submit a quest without its own icon, using any icon as a placeholder.
 
 But it would be even better to include also icon.
 
 Note that there are some graphics which haven't been used yet, created for proposed or expected quests; maybe you don't even need to create an icon!
 
-A new icon can reuse the content of [other quest icons](res/graphics/quest), it can be based on openly licensed graphics such as ones from [svgrepo.com](https://www.svgrepo.com/). See [the attribution file](res/graphics/authors.txt) for what was used so far.
+A new icon can reuse the content of [other quest icons](res/graphics/quest), it can also be based on openly licensed graphics such as ones from [svgrepo.com](https://www.svgrepo.com/). See [the attribution file](res/graphics/authors.txt) for what has been used so far.
 
-Keep similar style to existing ones and app in general. Note that the background color of the icon marks its relation group:
+Keep similar style to existing ones and the app in general. Note that the background color of the icon marks its relation group:
 - magenta: bicycle traffic
 - blue: pedestrian traffic
 - yellow: motor vehicles (car, motorcycles)
 - grey: constructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
-- light orange: shop related (opening hours, shop types/seating, shop/atm names, shop level, airconditioning, smoking, internet access, payment, surveillance) 
+- light orange: shop related (opening hours, shop types/seating, shop/atm names, shop level, air conditioning, smoking, internet access, payment, surveillance) 
 - green: amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest, is entrance paid...)
-- brown: nature-related (stile type/steps, trees/orchads)
+- brown: nature-related (stile type/steps, trees/orchards)
 
 Once the quest icon is ready:
 
@@ -350,7 +350,7 @@ Once the quest icon is ready:
 - Commit modified or created files
 - Compile, test quest in the emulator
 
-The same method applies also to other vector drawables, although they will be placed in other parts of [res/graphics/](res/graphics/)
+The same method also applies to other vector drawables, although they will be placed in other parts of [res/graphics/](res/graphics/)
 
 Inkscape is a typical tool to create and edit SVG files, it is good, free and open-source so is available to all.
 
@@ -360,20 +360,20 @@ Obviously, testing can also be done earlier. But the quest should at least be te
 
 Typically it is done using an emulator. Note that you can set location in emulator settings rather than scrolling within StreetComplete itself.
 
-* Is quest listed?
-  * Look at the quest list in settings - is your quest appearing there? If not - see [this step](#add-the-quest-to-the-list-of-active-ones).
+* Is the quest listed?
+  * Look at the quest list in settings - does your quest appear there? If not - see [this step](#add-the-quest-to-the-list-of-active-ones).
   * While you are there you can disable all quests except yours for easier testing.
 * Is it shown for expected elements?
-  * Note that due to emulator peculiarities you may need to move map after quests are downloaded to see their markers ([gory details for curious](https://github.com/streetcomplete/StreetComplete/issues/2780))
+  * Note that due to emulator peculiarities you may need to move the map after quests are downloaded to see their markers ([gory details for the curious](https://github.com/streetcomplete/StreetComplete/issues/2780))
 * Is it selected for some unwanted elements?
-* Can you tap on a quest marker to open quest form?
-* Can you fill the answer as expected?
+* Can you tap on a quest marker to open the quest form?
+* Can you fill in the answer as expected?
 * Can you solve the quest?
 * Is expected tagging being applied?
-  * You can look at logs for info what was applied or use undo menu from bottom-left in the app itself.
+  * You can look at logs for info of what was applied or use the undo menu in the bottom-left of the app itself.
   * You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers in settings.
-* Is quest disappearing after being solved?
-  * If no - then either tags are not being applied or element selection filter have some problems.
+* Does the quest disappear after being solved?
+  * If no - then either tags are not being applied or element selection filter has some problems.
 
 See "logcat" (bottom left area of the screen) to see stacktrace or logging messages.
 
@@ -387,9 +387,9 @@ Log.w("Unique string for easy grepping in logcat", "Message with whatever you ne
 
 # Open a pull request
 
-[Pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) is a submission of proposed changes to the source code.
+A [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) is a submission of proposed changes to the source code.
 
-You can put into the description of PR something like "fixes #1234" to [mark it as fixing this issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword). It can go into a commit message or PR description or the tile.
+You can put into the description of the PR something like "fixes #1234" to [mark it as fixing this issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword). It can go into a commit message or PR description or the tile.
 
 If you are stuck on something, need some help or guidance and you are willing and able to continue after solving the problem - you can open a pull request in an incomplete state and mention the blocker.
 
@@ -403,7 +403,7 @@ Changes typically include improving code style, tweaking phrasing and quest sett
 
 When you know more about the code, style and quest guidelines and general architecture of StreetComplete, you are also welcome to help with reviewing other PRs - different people have different strengths, there are active reviewers who help with code style, there are some native speakers of English, some with deep knowledge of OSM tagging schemes or deep knowledge of how StreetComplete works.
 
-In case that pull requests appears to be ready, it will be marked as approved and wait for merge.
+When the pull request appears to be ready, it will be marked as approved and wait for merge.
 
 After the PR is finished it will be merged before the beta release of the next version. This way it can be additionally tested with a wider audience before release to all and translators have time to [translate text into other languages](CONTRIBUTING.md#translating-the-app).
 
@@ -437,7 +437,7 @@ As mentioned, the user interface must leave no space for misunderstandings, it m
 - The information the user should fill in should be as atomic as possible. Users are impatient, i.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
 - "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo.
 
-Considerations about the edge cases to consider, how the design could look like and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
+Considerations about the edge cases to consider, how the design could look and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
 
 ## New photos
 
@@ -457,8 +457,8 @@ Photos go to a different folder than SVGs: they can be used directly by the buil
 
 - [mdpi](app/src/main/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
 - [hdpi](app/src/main/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
-- [xhdpi](app/src/main/res/drawable-xhdpi) 768 pixels for images (256 x 256 pixels in case of three square images in each row)
-- [xxhdpi](app/src/main/res/drawable-xxhdpi) 1152 pixels (384 x 384 pixels in case of three square images in each row)
+- [xhdpi](app/src/main/res/drawable-xhdpi) - 768 pixels for images (256 x 256 pixels in case of three square images in each row)
+- [xxhdpi](app/src/main/res/drawable-xxhdpi) - 1152 pixels (384 x 384 pixels in case of three square images in each row)
 
 Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
@@ -468,7 +468,7 @@ After adding a photo, remember to update [the credits file](app/src/main/res/aut
 
 ## Resurvey
 
-Some quests are asked not only when tag is missing but also when it is likely to be outdated. To achieve this `elementFilter` needs to query not only elements missing some tags.
+Some quests are asked not only when a tag is missing but also when it is likely to be outdated. To achieve this `elementFilter` needs to query not only elements missing some tags.
 
 Typical code is in [quest asking about motorcycle parking capacity](app/src/main/java/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
 
@@ -487,7 +487,7 @@ This quest will be triggered when:
 - `amenity = motorcycle_parking`
   - where `amenity = motorcycle_parking` tag is present
 - `and access !~ private|no`
-  - and `access` tag does neither have value `private` nor `no`
+  - and `access` tag neither has the value `private` nor `no`
 - `and (!capacity or capacity older today -4 years)`
   - and one of following is fulfilled:
     - `capacity` tag is not present at all (`!capacity`)
@@ -498,7 +498,7 @@ This quest will be triggered when:
 
 It is possible to use far more complex filters when querying for eligible elements.
 
-Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as "`surface` is either of `earth`, `dirt`, `ground`"
+Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as "`surface` is any of `earth`, `dirt`, `ground`"
 
 `access !~ private|no` will be evaluated to "`access` is neither `private` nor `no`"
 
@@ -521,7 +521,7 @@ Some quests should be enabled only in some countries or disabled in a specific c
 
 [`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/streetcomplete/StreetComplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
 
-[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/streetcomplete/StreetComplete/quests/address/AddHousenumber.kt) - not enabled in USA and Canada
+[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/streetcomplete/StreetComplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
 
 ## `defaultDisabledMessage`
 
@@ -530,10 +530,10 @@ Some quests should be disabled by default, for example ones that may require goi
 - quest will be disabled by default
 - on attempting to enable it user will get message asking are they sure. Exact message in this case would be `default_disabled_msg_go_inside` - but some quests use more specific ones.
 
-Note that quest may be both disabled by default and limited to some countries.
+Note that a quest may be both disabled by default and limited to some countries.
 
 ## `isDeleteElementEnabled`
 
-This will decode whether user should have access to direct deletion of elements. Note that ways and relations cannot be deleted by SC users.
+This will decode whether the user should have access to direct deletion of elements. Note that ways and relations cannot be deleted by SC users.
 
-For nodes within ways, node will remain and tags will be removed.
+For nodes within ways, the node will remain and tags will be removed.

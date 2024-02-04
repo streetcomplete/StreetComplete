@@ -48,6 +48,16 @@ class StringWithCursor(private val string: String) {
      *  If not found, the position past the end of the string is returned */
     fun findNext(regex: Regex, offs: Int = 0): Int =
         toDelta(regex.find(string, cursorPos + offs)?.range?.first ?: -1)
+    /** @return the position relative to the cursor position at which the given [block] returns true
+     *  If not found, the position past the end of the string is returned */
+    fun findNext(offs: Int = 0, block: (Char) -> Boolean): Int {
+        for (i in cursorPos + offs..<string.length) {
+            if (block(string[i])) {
+                return toDelta(i)
+            }
+        }
+        return string.length - cursorPos
+    }
 
     /** Advance cursor by one
      *
@@ -83,6 +93,17 @@ class StringWithCursor(private val string: String) {
         return result
     }
 
+    /** Advance the cursor until the [block] does not return true and return the number of
+     *  characters advanced */
+    fun advanceWhile(block: (Char) -> Boolean): Int {
+        var i = 0
+        while (cursorPos < string.length && block(string[cursorPos])) {
+            ++cursorPos
+            ++i
+        }
+        return i
+    }
+
     /** Retreat cursor by [x]
      *
      * @throws IndexOutOfBoundsException if x < 0
@@ -90,6 +111,17 @@ class StringWithCursor(private val string: String) {
     fun retreatBy(x: Int) {
         if (x < 0) throw IndexOutOfBoundsException()
         cursorPos = max(0, cursorPos - x)
+    }
+
+    /** Retreat the cursor until the [block] does not return true and return the number of
+     *  characters advanced */
+    fun retreatWhile(block: (Char) -> Boolean): Int {
+        var i = 0
+        while (cursorPos > 0 && block(string[cursorPos - 1])) {
+            --cursorPos
+            ++i
+        }
+        return i
     }
 
     /** @return whether the next character at the cursor is [c] */

@@ -6,20 +6,21 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.os.bundleOf
+import de.westnordost.streetcomplete.ApplicationConstants.STREETMEASURE
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
 
 class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>() {
-    data class Params(val lengthUnit: LengthUnit, val measureVertical: Boolean, )
+    data class Params(val lengthUnit: LengthUnit, val measureVertical: Boolean)
 
     override fun createIntent(context: Context, input: Params): Intent {
         val unit = when (input.lengthUnit) {
             LengthUnit.METER -> "meter"
             LengthUnit.FOOT_AND_INCH -> "foot_and_inch"
         }
-        val intent = context.packageManager.getLaunchIntentForPackage("de.westnordost.streetmeasure")
+        val intent = context.packageManager.getLaunchIntentForPackage(STREETMEASURE)
             ?: throw ActivityNotFoundException()
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
         val attributes = context.obtainStyledAttributes(intArrayOf(android.R.attr.colorAccent))

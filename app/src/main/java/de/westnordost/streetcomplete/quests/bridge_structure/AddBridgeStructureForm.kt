@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddBridgeStructureForm : AImageListQuestForm<BridgeStructure, BridgeStructure>() {
 
-    override val items = BridgeStructure.values().map { it.asItem() }
+    override val items = BridgeStructure.entries.map { it.asItem() }
     override val itemsPerRow = 2
 
     override fun onClickOk(selectedItems: List<BridgeStructure>) {

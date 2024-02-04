@@ -42,8 +42,11 @@ class UserFragment : Fragment(R.layout.fragment_user), HasTitle {
             tab.setIcon(page.icon)
             tab.setText(page.title)
             tab.tabLabelVisibility =
-                if (resources.getBoolean(R.bool.show_user_tabs_text)) TAB_LABEL_VISIBILITY_LABELED
-                else TAB_LABEL_VISIBILITY_UNLABELED
+                if (resources.getBoolean(R.bool.show_user_tabs_text)) {
+                    TAB_LABEL_VISIBILITY_LABELED
+                } else {
+                    TAB_LABEL_VISIBILITY_UNLABELED
+                }
         }.attach()
     }
 

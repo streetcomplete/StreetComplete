@@ -82,9 +82,11 @@ private fun flatAngularDistanceToArc(φ1: Double, λ1: Double, φ2: Double, λ2:
     // need the cosine as sort of "weight factor", because λ distances are much shorter at high φ
     val u = ((φ3 - φ1) * δφ12 + δλ13 * δλ12 * c * c) / (δφ12 * δφ12 + δλ12 * δλ12 * c * c)
 
-    val (closestPointφ, closestPointλ) = if (u < 0) φ1 to λ1
-        else if (u > 1) φ2 to λ2
-        else φ1 + u * δφ12 to λ1 + u * δλ12
+    val (closestPointφ, closestPointλ) = when {
+        u < 0 -> φ1 to λ1
+        u > 1 -> φ2 to λ2
+        else -> φ1 + u * δφ12 to λ1 + u * δλ12
+    }
 
     return flatAngularDistance(closestPointφ, closestPointλ, φ3, λ3)
 }

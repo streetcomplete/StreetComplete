@@ -240,8 +240,11 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
     }
 
     private fun setLanesCount(lanes: Int, isRightSide: Boolean) {
-        if (isRightSide) rightSide = lanes
-        else             leftSide = lanes
+        if (isRightSide) {
+            rightSide = lanes
+        } else {
+            leftSide = lanes
+        }
         updatePuzzleView()
     }
 
@@ -306,5 +309,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 }
 
 private enum class LanesType {
-    MARKED, MARKED_SIDES, UNMARKED
+    MARKED,
+    MARKED_SIDES,
+    UNMARKED
 }

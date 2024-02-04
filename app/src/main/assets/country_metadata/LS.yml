@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Standard Lesotho Bank, FNB, NedBank, NedBank ATM, Post Bank]
+atmOperators: [Standard Lesotho Bank, FNB, Nedbank, Post Bank, NedBank ATM]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow

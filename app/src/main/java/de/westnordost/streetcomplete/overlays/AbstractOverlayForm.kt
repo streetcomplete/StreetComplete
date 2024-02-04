@@ -67,7 +67,6 @@ import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.Locale
-import java.util.concurrent.FutureTask
 
 /** Abstract base class for any form displayed for an overlay */
 abstract class AbstractOverlayForm :
@@ -76,17 +75,17 @@ abstract class AbstractOverlayForm :
     // dependencies
     private val elementEditsController: ElementEditsController by inject()
     private val countryInfos: CountryInfos by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val overlayRegistry: OverlayRegistry by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val recentLocationStore: RecentLocationStore by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
-    protected val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
+    private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
+    protected val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
             if (field == null) {
                 field = countryInfos.getByLocation(
-                    countryBoundaries.get(),
+                    countryBoundaries.value,
                     geometry.center.longitude,
                     geometry.center.latitude,
                 )
@@ -98,7 +97,7 @@ abstract class AbstractOverlayForm :
     /** either DE or US-NY (or null), depending on what countryBoundaries returns */
     protected val countryOrSubdivisionCode: String? get() {
         val latLon = geometry.center
-        return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
+        return countryBoundaries.value.getIds(latLon.longitude, latLon.latitude).firstOrNull()
     }
 
     private val englishResources: Resources
@@ -124,7 +123,7 @@ abstract class AbstractOverlayForm :
         private set
     private var _geometry: ElementGeometry? = null
     protected val geometry: ElementGeometry
-    get() = _geometry ?: ElementPointGeometry(getDefaultMarkerPosition()!!)
+        get() = _geometry ?: ElementPointGeometry(getDefaultMarkerPosition()!!)
 
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
@@ -402,7 +401,12 @@ abstract class AbstractOverlayForm :
 
     protected fun composeNote(element: Element) {
         val overlayTitle = englishResources.getString(overlay.title)
-        val leaveNoteContext = "In context of \"$overlayTitle\" overlay"
+        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
+            "In context of overlay \"$overlayTitle\""
+        } else {
+            "In context of overlay \"$overlayTitle\" – $hintLabel"
+        }
         listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }
 

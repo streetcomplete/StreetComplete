@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
+import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 sealed interface Fee
 
-object HasFee : Fee
-object HasNoFee : Fee
-data class HasFeeAtHours(val hours: OpeningHoursRuleList) : Fee
-data class HasFeeExceptAtHours(val hours: OpeningHoursRuleList) : Fee
+data object HasFee : Fee
+data object HasNoFee : Fee
+data class HasFeeAtHours(val hours: OpeningHours) : Fee
+data class HasFeeExceptAtHours(val hours: OpeningHours) : Fee
 
 fun Fee.applyTo(tags: Tags) {
     when (this) {

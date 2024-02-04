@@ -1196,6 +1196,7 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="quest_entrance_reference_reference_label">"Įėjimo etiketė:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Plokščias diapazonas:"</string>
     <string name="quest_entrance_reference_flat_range_to">"į"</string>
+    <string name="default_disabled_msg_overlay">"Šis klausimo tipas yra išjungtas, nes yra efektyvesnis būdas suvesti ir atnaujinti duomenis"</string>
     <string name="quest_camp_drinking_water_title">"Ar geriamas vanduo yra laisvai prieinamas stovyklautojams?"</string>
     <string name="quest_camp_shower_title">"Ar čia yra dušų?"</string>
     <string name="quest_camp_power_supply_title">"Ar yra galimybė klientams pasikrauti savo telefoną, kompiuterį ar kt.?"</string>

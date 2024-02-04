@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -38,7 +37,7 @@ import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
-import de.westnordost.streetcomplete.util.ktx.getDouble
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -47,7 +46,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Collections
 import java.util.Locale
-import java.util.concurrent.FutureTask
 
 /** Adapter for the list in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionAdapter(
@@ -56,12 +54,12 @@ class QuestSelectionAdapter(
     private val questTypeOrderController: QuestTypeOrderController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val onListSizeChanged: (Int) -> Unit,
-    countryBoundaries: FutureTask<CountryBoundaries>,
-    prefs: SharedPreferences
+    countryBoundaries: Lazy<CountryBoundaries>,
+    prefs: Preferences
 ) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
 
-    private val currentCountryCodes = countryBoundaries.get()
-        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE), prefs.getDouble(Prefs.MAP_LATITUDE))
+    private val currentCountryCodes = countryBoundaries.value
+        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0), prefs.getDouble(Prefs.MAP_LATITUDE, 0.0))
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
     private val englishResources by lazy {
@@ -228,7 +226,7 @@ class QuestSelectionAdapter(
         private fun onDropped() {
             val qt = questTypesDuringDrag
             /* since we modify the quest list during move (in onMove) for the animation, the quest
-            *  type we dragged is now already at the position we want it to be. */
+             * type we dragged is now already at the position we want it to be. */
             if (draggedTo != draggedFrom && draggedTo > 0 && qt != null) {
                 val item = qt[draggedTo].questType
                 val toAfter = qt[draggedTo - 1].questType

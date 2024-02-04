@@ -1341,4 +1341,19 @@
     <string name="quest_recycling_type_food_waste">"Απόβλητα τροφίμων"</string>
     <string name="quest_defibrillator_location">"Πού βρίσκεται αυτός ο απινιδωτής;"</string>
     <string name="quest_defibrillator_location_description">"Παρακαλούμε δώστε μια συνοπτική περιγραφή της θέσης του (π.χ. \"στο σαλόνι του αχθοφόρου\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Υπάρχει σταθμός απόρριψης λυμάτων;"</string>
+    <string name="quest_sanitary_dump_station_description">"Εγκατάσταση για εναπόθεση ανθρώπινων αποβλήτων από δεξαμενή αποθήκευσης τουαλέτας τροχόσπιτου, φορτηγού μεγάλων αποστάσεων κ.λπ. Συνήθως υποδεικνύεται με μια πινακίδα όπως αυτή:"</string>
+    <string name="quest_generalFee_title">"Χρειάζεται να πληρώσετε για να το χρησιμοποιήσετε;"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Είναι μια εστία φωτιάς"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Οι εστίες φωτιάς δεν έχουν επιφάνεια μαγειρέματος (π.χ. σχάρα/πλάκα), σε αντίθεση με τις ψησταριές."</string>
+    <string name="about_title_logs">"Καταγραφές (%1$d)"</string>
+    <string name="about_summary_logs">"για χρήση σε αναφορές σφαλμάτω"</string>
+    <string name="action_filter">"Φίλτρο"</string>
+    <string name="action_share">"Κοινοποίηση καταγραφών"</string>
+    <string name="about_title_show_logs">"Εμφάνιση καταγραφών"</string>
+    <string name="label_log_level">"Επίπεδο καταγραφής"</string>
+    <string name="label_log_newer_than">"Από"</string>
+    <string name="label_log_older_than">"Μέχρι"</string>
+    <string name="label_log_message_contains">"Το μήνυμα περιέχει"</string>
+    <string name="title_logs_filters">"Φιλτράρισμα μηνυμάτων"</string>
 </resources>

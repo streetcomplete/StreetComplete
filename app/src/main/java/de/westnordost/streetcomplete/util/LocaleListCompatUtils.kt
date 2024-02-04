@@ -1,27 +1,25 @@
 package de.westnordost.streetcomplete.util
 
-import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
 import android.os.LocaleList
 import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
-import androidx.preference.PreferenceManager
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.ktx.addedToFront
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import java.util.Locale
 
 /** Get the override-locale selected in this app or null if there is no override */
-fun getSelectedLocale(context: Context): Locale? {
-    val prefs = PreferenceManager.getDefaultSharedPreferences(context)
-    val languageTag = prefs.getString(Prefs.LANGUAGE_SELECT, "") ?: ""
+fun getSelectedLocale(prefs: Preferences): Locale? {
+    val languageTag = prefs.getStringOrNull(Prefs.LANGUAGE_SELECT) ?: ""
     return if (languageTag.isEmpty()) null else Locale.forLanguageTag(languageTag)
 }
 
 /** Get the locale selected in this app (if any) appended by the system locales */
-fun getSelectedLocales(context: Context): LocaleListCompat {
-    val locale = getSelectedLocale(context)
+fun getSelectedLocales(prefs: Preferences): LocaleListCompat {
+    val locale = getSelectedLocale(prefs)
     val systemLocales = getSystemLocales()
     return if (locale == null) systemLocales else systemLocales.addedToFront(locale)
 }

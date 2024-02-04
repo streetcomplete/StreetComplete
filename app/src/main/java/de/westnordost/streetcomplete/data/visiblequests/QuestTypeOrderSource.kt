@@ -12,9 +12,12 @@ interface QuestTypeOrderSource {
         fun onQuestTypeOrdersChanged()
     }
 
-    /** sort given quest types by user's custom order, if any */
+    /** sort given [questTypes] by user's custom order defined for the given [presetId] (or the
+     *  currently selected one if null), if any. */
     fun sort(questTypes: MutableList<QuestType>, presetId: Long? = null)
 
+    /** get the user's custom quest order for the given [presetId] (or the currently selected one
+     *  if null) */
     fun getOrders(presetId: Long? = null): List<Pair<QuestType, QuestType>>
 
     fun addListener(listener: Listener)

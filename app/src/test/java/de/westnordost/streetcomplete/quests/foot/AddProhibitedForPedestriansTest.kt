@@ -3,47 +3,58 @@ package de.westnordost.streetcomplete.quests.foot
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.IS_LIVING_STREET
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddProhibitedForPedestriansTest {
 
     private val questType = AddProhibitedForPedestrians()
 
     @Test fun `apply yes answer`() {
-        questType.verifyAnswer(YES, StringMapEntryAdd("foot", "no"))
+        assertEquals(
+            setOf(StringMapEntryAdd("foot", "no")),
+            questType.answerApplied(YES)
+        )
     }
 
     @Test fun `apply no answer`() {
-        questType.verifyAnswer(NO, StringMapEntryAdd("foot", "yes"))
+        assertEquals(
+            setOf(StringMapEntryAdd("foot", "yes")),
+            questType.answerApplied(NO)
+        )
     }
 
     @Test fun `apply separate sidewalk answer`() {
-        questType.verifyAnswer(
-            mapOf("sidewalk" to "no"),
-            HAS_SEPARATE_SIDEWALK,
-            StringMapEntryModify("sidewalk", "no", "separate")
+        assertEquals(
+            setOf(StringMapEntryAdd("sidewalk:both", "separate")),
+            questType.answerApplied(HAS_SEPARATE_SIDEWALK)
         )
     }
 
     @Test fun `remove wrong sidewalk tagging`() {
-        questType.verifyAnswer(
-            mapOf("sidewalk" to "no", "sidewalk:both" to "no"),
-            HAS_SEPARATE_SIDEWALK,
-            StringMapEntryModify("sidewalk", "no", "separate"),
-            StringMapEntryDelete("sidewalk:both", "no")
+        assertEquals(
+            setOf(
+                StringMapEntryModify("sidewalk:both", "yes", "separate"),
+                StringMapEntryDelete("sidewalk:left", "yes"),
+                StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryDelete("sidewalk", "both"),
+            ),
+            questType.answerAppliedTo(HAS_SEPARATE_SIDEWALK, mapOf(
+                "sidewalk" to "both",
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+                "sidewalk:both" to "yes"
+            ))
         )
     }
 
     @Test fun `apply living street answer`() {
-        questType.verifyAnswer(
-            mapOf("highway" to "residential"),
-            IS_LIVING_STREET,
-            StringMapEntryModify("highway", "residential", "living_street")
+        assertEquals(
+            setOf(StringMapEntryModify("highway", "residential", "living_street")),
+            questType.answerAppliedTo(IS_LIVING_STREET, mapOf("highway" to "residential"))
         )
     }
 }

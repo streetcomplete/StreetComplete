@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banco de Costa Rica, BCR, Banco Nacional, Banco Popular, BAC Credomatic, ATH, BAC, Banco de Costa Rica (BCR), Cajero BCR, Scotiabank]
+atmOperators: [BCR, BAC Credomatic, Banco Popular, Banco Nacional de Costa Rica, Banco de Costa Rica, Banco Nacional, Scotiabank, Davivienda, Cajero BCR, Banco de Costa Rica (BCR), Banco De Costa Rica, ATH]
 centerLineStyle: yellow
-chargingStationOperators: [Estación de Recarga]
+chargingStationOperators: [ICE, Estación de Recarga, JASEC, Coopesantos, CNFL]
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 712
 noParkingSignStyle: mutcd latin

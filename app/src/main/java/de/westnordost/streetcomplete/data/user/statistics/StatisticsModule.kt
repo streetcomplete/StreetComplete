@@ -24,7 +24,7 @@ val statisticsModule = module {
         currentWeekEditTypeStatisticsDao = get(named("EditTypeStatisticsCurrentWeek")),
         currentWeekCountryStatisticsDao = get(named("CountryStatisticsCurrentWeek")),
         activeDatesDao = get(),
-        countryBoundaries = get(named("CountryBoundariesFuture")),
+        countryBoundaries = get(named("CountryBoundariesLazy")),
         prefs = get(),
         userLoginStatusSource = get()
     ) }

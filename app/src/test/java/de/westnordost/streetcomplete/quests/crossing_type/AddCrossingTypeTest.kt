@@ -3,63 +3,66 @@ package de.westnordost.streetcomplete.quests.crossing_type
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
+import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.MARKED
 import de.westnordost.streetcomplete.quests.crossing_type.CrossingType.TRAFFIC_SIGNALS
-import de.westnordost.streetcomplete.quests.verifyAnswer
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddCrossingTypeTest {
 
     private val questType = AddCrossingType()
 
     @Test fun `apply normal answer`() {
-        questType.verifyAnswer(
-            TRAFFIC_SIGNALS,
-            StringMapEntryAdd("crossing", "traffic_signals")
+        assertEquals(
+            setOf(StringMapEntryAdd("crossing", "traffic_signals")),
+            questType.answerApplied(TRAFFIC_SIGNALS)
         )
     }
 
     @Test fun `apply answer for crossing = island`() {
-        questType.verifyAnswer(
-            mapOf("crossing" to "island"),
-            TRAFFIC_SIGNALS,
-            StringMapEntryModify("crossing", "island", "traffic_signals"),
-            StringMapEntryAdd("crossing:island", "yes")
+        assertEquals(
+            setOf(
+                StringMapEntryModify("crossing", "island", "traffic_signals"),
+                StringMapEntryAdd("crossing:island", "yes")
+            ),
+            questType.answerAppliedTo(TRAFFIC_SIGNALS, mapOf("crossing" to "island"))
         )
     }
 
     @Test fun `apply answer for crossing = island and crossing_island set`() {
-        questType.verifyAnswer(
-            mapOf("crossing" to "island", "crossing:island" to "something"),
-            TRAFFIC_SIGNALS,
-            StringMapEntryModify("crossing", "island", "traffic_signals"),
-            StringMapEntryModify("crossing:island", "something", "yes")
+        assertEquals(
+            setOf(
+                StringMapEntryModify("crossing", "island", "traffic_signals"),
+                StringMapEntryModify("crossing:island", "something", "yes")
+            ),
+            questType.answerAppliedTo(
+                TRAFFIC_SIGNALS,
+                mapOf("crossing" to "island", "crossing:island" to "something")
+            )
         )
     }
 
     @Test fun `apply marked answer does not change the type of marked value`() {
-        questType.verifyAnswer(
-            mapOf("crossing" to "zebra"),
-            MARKED,
-            StringMapEntryAdd("check_date:crossing", nowAsCheckDateString())
+        assertEquals(
+            setOf(StringMapEntryAdd("check_date:crossing", nowAsCheckDateString())),
+            questType.answerAppliedTo(MARKED, mapOf("crossing" to "zebra"))
         )
 
-        questType.verifyAnswer(
-            mapOf("crossing" to "marked"),
-            MARKED,
-            StringMapEntryAdd("check_date:crossing", nowAsCheckDateString())
+        assertEquals(
+            setOf(StringMapEntryAdd("check_date:crossing", nowAsCheckDateString())),
+            questType.answerAppliedTo(MARKED, mapOf("crossing" to "marked"))
         )
 
-        questType.verifyAnswer(
-            mapOf("crossing" to "uncontrolled"),
-            MARKED,
-            StringMapEntryAdd("check_date:crossing", nowAsCheckDateString())
+        assertEquals(
+            setOf(StringMapEntryAdd("check_date:crossing", nowAsCheckDateString())),
+            questType.answerAppliedTo(MARKED, mapOf("crossing" to "uncontrolled"))
         )
 
-        questType.verifyAnswer(
-            mapOf("crossing" to "unmarked"),
-            MARKED,
-            StringMapEntryModify("crossing", "unmarked", "marked")
+        assertEquals(
+            setOf(StringMapEntryModify("crossing", "unmarked", "marked")),
+            questType.answerAppliedTo(MARKED, mapOf("crossing" to "unmarked"))
         )
     }
 }

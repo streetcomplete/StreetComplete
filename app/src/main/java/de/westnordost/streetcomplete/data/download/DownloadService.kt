@@ -93,8 +93,11 @@ class DownloadService : CoroutineIntentService(TAG) {
     }
 
     private fun updateShowNotification() {
-        if (!showNotification || !isDownloading) stopForeground(true)
-        else startForeground(NOTIFICATIONS_ID_SYNC, createSyncNotification(this))
+        if (!showNotification || !isDownloading) {
+            stopForeground(true)
+        } else {
+            startForeground(NOTIFICATIONS_ID_SYNC, createSyncNotification(this))
+        }
     }
 
     /** Public interface to classes that are bound to this service  */

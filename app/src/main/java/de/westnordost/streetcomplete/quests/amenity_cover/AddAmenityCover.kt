@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddAmenityCover (
+class AddAmenityCover(
     private val getFeature: (tags: Map<String, String>) -> Feature?
 ) : OsmElementQuestType<Boolean> {
 

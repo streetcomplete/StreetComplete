@@ -10,7 +10,7 @@ object ApplicationConstants {
     const val MAX_DOWNLOADABLE_AREA_IN_SQKM = 12.0
     const val MIN_DOWNLOADABLE_AREA_IN_SQKM = 0.1
 
-    const val COPYRIGHT_YEARS = "2016-2023"
+    const val COPYRIGHT_YEARS = "2016-2024"
 
     const val DATABASE_NAME = "streetcomplete_v2.db"
     const val OLD_DATABASE_NAME = "streetcomplete.db"
@@ -58,6 +58,8 @@ object ApplicationConstants {
     // name is "downloading" for historic reasons, not sure if it has any side-effects if it is changed now
     const val NOTIFICATIONS_CHANNEL_SYNC = "downloading"
     const val NOTIFICATIONS_ID_SYNC = 1
+
+    const val STREETMEASURE = "de.westnordost.streetmeasure"
 
     val IGNORED_RELATION_TYPES = setOf(
         // could be useful, but sometimes/often very very large

@@ -734,7 +734,7 @@ taso"</string>
     <string name="resurvey_intervals_default">"Oletus"</string>
     <string name="resurvey_intervals_more_often">"Kysy useammin"</string>
     <string name="about_title_translate">"Auta sovelluksen suomentamisessa"</string>
-    <string name="about_description_translate">"%1$s on %2$d%-prosenttisesti käännetty"</string>
+    <string name="about_description_translate">"%1$s on %2$d-prosenttisesti käännetty"</string>
     <string name="quest_oneway2_title">"Onko tämä yksisuuntainen tie? Mihin suuntaan?"</string>
     <string name="quest_oneway2_dir">"Yksisuuntainen tähän suuntaan"</string>
     <string name="quest_oneway2_no_oneway">"Ei yksisuuntainen"</string>

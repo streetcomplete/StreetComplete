@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:parentTag="android.widget.RelativeLayout"
     android:layout_width="wrap_content"
@@ -26,7 +27,7 @@
         android:padding="8dp"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/ic_star_white_shadow_32dp"
+        app:srcCompat="@drawable/ic_star_white_shadow_32dp"
         tools:ignore="RtlHardcoded" />
 
     <RelativeLayout

@@ -1351,4 +1351,8 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="quest_recycling_type_food_waste">"Scarti di cibo"</string>
     <string name="quest_defibrillator_location">"Dove è posizionato questo defibrillatore?"</string>
     <string name="quest_defibrillator_location_description">"Per favore, fornisci una breve descrizione della posizione (es. \"Nell'androne\")."</string>
+    <string name="quest_generalFee_title">"Bisogna pagare per usarlo?"</string>
+    <string name="about_title_logs">"Log (%1$d)"</string>
+    <string name="about_summary_logs">"da usare per le segnalazione di errori"</string>
+    <string name="action_filter">"Filtra"</string>
 </resources>

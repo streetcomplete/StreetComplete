@@ -249,22 +249,18 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
     private fun determineImplicitMaxspeedType() {
         val highwayTag = element.tags["highway"]!!
-        if (countryInfo.countryCode == "GB") {
-            if (ROADS_WITH_DEFINITE_SPEED_LIMIT_GB.contains(highwayTag)) {
-                applyNoSignAnswer(highwayTag)
-            } else {
-                askIsDualCarriageway(
-                    onYes = { applyNoSignAnswer("nsl_dual") },
-                    onNo = {
-                        determineLit(
-                            onYes = { applyNoSignAnswer("nsl_restricted", true) },
-                            onNo = { applyNoSignAnswer("nsl_single", false) }
-                        )
-                    }
-                )
-            }
-        } else if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
+        if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
             applyNoSignAnswer(highwayTag)
+        } else if (countryInfo.countryCode == "GB") {
+            askIsDualCarriageway(
+                onYes = { applyNoSignAnswer("nsl_dual") },
+                onNo = {
+                    determineLit(
+                        onYes = { applyNoSignAnswer("nsl_restricted", true) },
+                        onNo = { applyNoSignAnswer("nsl_single", false) }
+                    )
+                }
+            )
         } else {
             askUrbanOrRural(
                 onUrban = { applyNoSignAnswer("urban") },
@@ -321,14 +317,18 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         private val POSSIBLY_SLOWZONE_ROADS = listOf("residential", "unclassified", "tertiary" /*#1133*/)
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
         private val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("motorway", "living_street")
-        private val ROADS_WITH_DEFINITE_SPEED_LIMIT_GB = listOf("motorway", "living_street") /*#2750*/
 
         private var LAST_INPUT_SLOW_ZONE: Int? = null
     }
 }
 
 private enum class SpeedType {
-    SIGN, ZONE, LIVING_STREET, ADVISORY, NO_SIGN, NSL
+    SIGN,
+    ZONE,
+    LIVING_STREET,
+    ADVISORY,
+    NO_SIGN,
+    NSL
 }
 
 private fun getMaxSpeedSignLayoutResId(countryCode: String): Int = when (countryCode) {

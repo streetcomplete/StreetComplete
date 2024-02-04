@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, Charge Point (Free)]
+atmOperators: [U.S. Bank, Wells Fargo, Veridian Credit Union, Liberty Bank, Hills Bank and Trust Company, GreenState Credit Union, Community First Credit Union, Bank Iowa]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Tesla, Electrify America, Tesla Motors, Shell Greenlots, Shell Green Lots, Charge Point (Free)]
 defaultSpeedLimitHasUrbanOrRural: true

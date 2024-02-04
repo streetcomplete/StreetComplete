@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.ObjectInputStream
-import java.io.ObjectOutputStream
+import kotlinx.io.Buffer
+import kotlinx.io.readByteArray
+import kotlinx.io.readDouble
+import kotlinx.io.writeDouble
 
 /** Serializes a list of a list of latlons into to a byte array and back memory-efficiently.
  *
@@ -21,27 +21,27 @@ import java.io.ObjectOutputStream
 class PolylinesSerializer {
 
     fun serialize(polylines: List<List<LatLon>>): ByteArray {
-        val baos = ByteArrayOutputStream()
-        ObjectOutputStream(baos).use { oos ->
-            oos.writeInt(polylines.size)
-            for (polyline in polylines) {
-                oos.writeInt(polyline.size)
-                for (position in polyline) {
-                    oos.writeDouble(position.latitude)
-                    oos.writeDouble(position.longitude)
-                }
+        val buffer = Buffer()
+
+        buffer.writeInt(polylines.size)
+        for (polyline in polylines) {
+            buffer.writeInt(polyline.size)
+            for (position in polyline) {
+                buffer.writeDouble(position.latitude)
+                buffer.writeDouble(position.longitude)
             }
         }
-        return baos.toByteArray()
+
+        return buffer.readByteArray()
     }
 
     fun deserialize(byteArray: ByteArray): List<List<LatLon>> {
-        val bais = ByteArrayInputStream(byteArray)
-        return ObjectInputStream(bais).use { ois ->
-            MutableList(ois.readInt()) {
-                MutableList(ois.readInt()) {
-                    LatLon(ois.readDouble(), ois.readDouble())
-                }
+        val buffer = Buffer()
+        buffer.write(byteArray)
+
+        return MutableList(buffer.readInt()) {
+            MutableList(buffer.readInt()) {
+                LatLon(buffer.readDouble(), buffer.readDouble())
             }
         }
     }

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.createSidewalkSides
+import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.LeftAndRightSidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
@@ -47,7 +47,7 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
     }
 
     private fun initStateFromTags() {
-        val sides = createSidewalkSides(element.tags)
+        val sides = parseSidewalkSides(element.tags)
         val hasLeft = sides?.left == Sidewalk.YES
         val hasRight = sides?.right == Sidewalk.YES
 
@@ -84,8 +84,11 @@ class AddSidewalkSurfaceForm : AStreetSideSelectForm<Surface, SidewalkSurfaceAns
 
     private fun replaceSurfaceSide(isRight: Boolean, surface: Surface, description: String?) {
         val streetSideItem = surface.asStreetSideItem(requireContext().resources)
-        if (isRight) rightNote = description
-        else leftNote = description
+        if (isRight) {
+            rightNote = description
+        } else {
+            leftNote = description
+        }
         streetSideSelect.replacePuzzleSide(streetSideItem, isRight)
     }
 

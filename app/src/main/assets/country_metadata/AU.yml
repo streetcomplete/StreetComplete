@@ -2,7 +2,6 @@
 additionalValidHousenumberRegex: ([\p{N}\p{L}]{1,2}\s?/\s?|\p{L}{1,2}\s?)?\p{N}{1,5}
 advisoryCycleLaneStyle: white dashes
 advisorySpeedLimitSignStyle: yellow
-atmOperators: [Commonwealth Bank, ANZ, Westpac, NAB, Bendigo Bank, RediATM, Bankwest, St George, National Australia Bank, Suncorp, Commonwealth, Commonwealth Bank of Australia, BOM, BOQ, Bank of Queensland, CBA, firstpoint, Bank of Melbourne, Bank West, BankSA, St. George, HSBC, Redi ATM, Cashcard, redi, IMB, Next, Westpac Bank, Newcastle Permanent, Greater Bank, BitRocket, Bank SA, iCash, St.George, DC payments, Westpac Banking Corporation, Heritage Bank, Suncorp Bank, Warwick Credit Union, St George Bank, DC ATM, Travelex, Bendigo]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisoryCycleLane: true

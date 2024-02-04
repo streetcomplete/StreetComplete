@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 
-/** Select one items from a groupable list of items  */
+/** Select one item from a groupable list of items  */
 class GroupedImageSelectAdapter<T> :
     RecyclerView.Adapter<ItemViewHolder>() {
 
@@ -36,7 +36,7 @@ class GroupedImageSelectAdapter<T> :
         selectedItem?.let { indexOfItemGivenGroupMembership(it, selectedItemGroup) } ?: -1
 
     private fun indexOfItemGivenGroupMembership(item: GroupableDisplayItem<T>, group: GroupableDisplayItem<T>?): Int {
-        var currentGroup: GroupableDisplayItem<T> ? = null
+        var currentGroup: GroupableDisplayItem<T>? = null
         for (i in 0 until _items.size) {
             if (_items[i].isGroup) {
                 currentGroup = _items[i]
@@ -69,9 +69,16 @@ class GroupedImageSelectAdapter<T> :
         val previousItem = selectedItem
         val previousGroup = selectedItemGroup
 
-        val foundGroupIndex = getGroupIndex(index)
-        selectedItemGroup = if (foundGroupIndex == -1) null else _items[foundGroupIndex]
-        selectedItem = _items[index]
+        val hasSelectedSameItem = previousItem == _items[index]
+
+        if (hasSelectedSameItem) {
+            selectedItem = null
+            selectedItemGroup = null
+        } else {
+            selectedItem = _items[index]
+            val foundGroupIndex = getGroupIndex(index)
+            selectedItemGroup = if (foundGroupIndex == -1) null else _items[foundGroupIndex]
+        }
 
         if (previousItem != null) {
             val previousItemIndex = indexOfItemGivenGroupMembership(previousItem, previousGroup)

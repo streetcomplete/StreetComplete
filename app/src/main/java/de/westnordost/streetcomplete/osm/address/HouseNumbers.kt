@@ -65,8 +65,11 @@ sealed class StructuredHouseNumber : Comparable<StructuredHouseNumber> {
         if (diffNumber != 0) return diffNumber
         when {
             this is HouseNumberWithLetter && other is HouseNumberWithLetter -> {
-                if (letter < other.letter) return -1
-                else if (letter > other.letter) return +1
+                if (letter < other.letter) {
+                    return -1
+                } else if (letter > other.letter) {
+                    return +1
+                }
             }
             this is HouseNumberWithNumber && other is HouseNumberWithNumber -> {
                 val diffNumber2 = number2 - other.number2
