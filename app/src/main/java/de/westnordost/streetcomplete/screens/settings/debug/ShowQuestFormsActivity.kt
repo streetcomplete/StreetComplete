@@ -198,6 +198,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
                 geometry: ElementGeometry,
                 source: String,
                 action: ElementEditAction,
+                isNearUserLocation: Boolean
             ) {
                 when (action) {
                     is DeletePoiNodeAction -> {
