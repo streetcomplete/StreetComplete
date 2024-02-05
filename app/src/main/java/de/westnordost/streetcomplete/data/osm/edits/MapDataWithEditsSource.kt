@@ -66,10 +66,10 @@ class MapDataWithEditsSource internal constructor(
     private val onReplacedForBBoxLock = Any()
 
     // access to isReplacingForBBox is atomic (didn't want to pull in kotlinx-atomicfu dependency just for this)
-    private var isReplacingForBBoxLock = Any()
+    private val isReplacingForBBoxLock = Any()
     private var isReplacingForBBox: Boolean = false
 
-    private var updatesWhileReplacingBBox = MapDataWithGeometryUpdates()
+    private val updatesWhileReplacingBBox = MapDataWithGeometryUpdates()
 
     private val mapDataListener = object : MapDataController.Listener {
 
