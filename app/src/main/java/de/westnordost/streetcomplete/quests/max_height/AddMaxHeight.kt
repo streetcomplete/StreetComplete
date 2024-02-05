@@ -159,7 +159,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
                 tags["maxheight"] = answer.value.toOsmValue()
             }
             is NoMaxHeightSign -> {
-                tags["maxheight"] = if (answer.isTallEnough) "default" else "below_default"
+                tags["maxheight:signed"] = "no"
             }
         }
     }

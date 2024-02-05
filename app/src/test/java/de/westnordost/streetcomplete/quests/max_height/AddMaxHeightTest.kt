@@ -156,17 +156,11 @@ class AddMaxHeightTest {
         )
     }
 
-    @Test fun `apply default height answer`() {
+    @Test fun `apply no height sign answer`() {
         assertEquals(
-            setOf(StringMapEntryAdd("maxheight", "default")),
-            questType.answerApplied(NoMaxHeightSign(true))
+            setOf(StringMapEntryAdd("maxheight:signed", "no")),
+            questType.answerApplied(NoMaxHeightSign)
         )
     }
 
-    @Test fun `apply below default height answer`() {
-        assertEquals(
-            setOf(StringMapEntryAdd("maxheight", "below_default")),
-            questType.answerApplied(NoMaxHeightSign(false))
-        )
-    }
 }
