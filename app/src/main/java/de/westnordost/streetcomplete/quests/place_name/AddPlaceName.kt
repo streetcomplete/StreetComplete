@@ -9,12 +9,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.applyTo
+import de.westnordost.streetcomplete.osm.isShopOrDisusedShop
 
 class AddPlaceName(
-    private val getFeature: (tags: Map<String, String>) -> Feature?
+    private val getFeature: (Element) -> Feature?
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
@@ -123,10 +123,10 @@ class AddPlaceName(
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element): Boolean =
-        filter.matches(element) && hasFeatureName(element.tags)
+        filter.matches(element) && getFeature(element) != null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
+        getMapData().asSequence().filter { it.isShopOrDisusedShop() }
 
     override fun createForm() = AddPlaceNameForm()
 
@@ -140,6 +140,4 @@ class AddPlaceName(
             }
         }
     }
-
-    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
 }

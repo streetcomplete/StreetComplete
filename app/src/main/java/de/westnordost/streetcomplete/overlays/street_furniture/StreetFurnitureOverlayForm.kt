@@ -10,21 +10,21 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetFurnitureBinding
-import de.westnordost.streetcomplete.osm.IS_DISUSED_STREET_FURNITURE_EXPRESSION
-import de.westnordost.streetcomplete.osm.IS_STREET_FURNITURE_INCLUDING_DISUSED_EXPRESSION
-import de.westnordost.streetcomplete.osm.address.featureBehindPrefix
-import de.westnordost.streetcomplete.osm.address.reconstructFeature
+import de.westnordost.streetcomplete.osm.POPULAR_STREET_FURNITURE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.asIfItWasnt
+import de.westnordost.streetcomplete.osm.isStreetFurniture
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
-import kotlinx.coroutines.launch
 
 class StreetFurnitureOverlayForm : AbstractOverlayForm() {
 
@@ -37,29 +37,46 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        originalFeature = getOriginalFeature()
+    }
 
-        val element = element
-        originalFeature = element?.let {
-            featureDictionary
-                .byTags(element.tags)
-                .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
-                .forGeometry(element.geometryType)
-                .inCountry(countryOrSubdivisionCode)
-                .find()
-                .firstOrNull()
-                ?: if (IS_DISUSED_STREET_FURNITURE_EXPRESSION.matches(element)) {
-                    reconstructFeature(requireContext(), element.tags, "disused:", featureDictionary)
-                } else {
-                    // if not found anything in the iD presets, then something weird happened
-                    // amenity=bicycle_wash ?
-                    DummyFeature(
-                        "street_furniture/unknown",
-                        requireContext().getString(R.string.unknown_object),
-                        "ic_preset_maki_marker_stroked",
-                        element.tags
-                    )
-                }
+    private fun getOriginalFeature(): Feature? {
+        val element = element ?: return null
+        val feature = getFeatureDictionaryFeature(element)
+        if (feature != null) return feature
+
+        val disusedElement = element.asIfItWasnt("disused")
+        if (disusedElement != null) {
+            val disusedFeature = getFeatureDictionaryFeature(disusedElement)
+            if (disusedFeature != null) {
+                return DummyFeature(
+                    disusedFeature.id + "/disused",
+                    "${disusedFeature.name} (${resources.getString(R.string.disused).uppercase()})",
+                    disusedFeature.icon,
+                    disusedFeature.addTags.mapKeys { "disused:${it.key}" }
+                )
+            }
         }
+
+        return DummyFeature(
+            "street_furniture/unknown",
+            requireContext().getString(R.string.unknown_object),
+            "ic_preset_maki_marker_stroked",
+            element.tags
+        )
+    }
+
+    private fun getFeatureDictionaryFeature(element: Element): Feature? {
+        val locales = getLocalesForFeatureDictionary(resources.configuration)
+        val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
+
+        return featureDictionary
+            .byTags(element.tags)
+            .forLocale(*locales)
+            .forGeometry(geometryType)
+            .inCountry(countryOrSubdivisionCode)
+            .find()
+            .firstOrNull()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,31 +99,14 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
                 featureCtrl.feature?.name,
                 ::filterOnlyStreetFurniture,
                 ::onSelectedFeature,
-                listOf(
-                    // ordered by popularity, skipping trees as there are multiple variants of them
-                    "highway/street_lamp",      // 3.8M
-                    "amenity/bench",            // 2.3M
-                    "emergency/fire_hydrant",   // 1.9M
-                    "amenity/bicycle_parking",  // 0.6M
-                    "amenity/shelter",          // 0.5M
-                    "amenity/toilets",          // 0.4M
-                    // "amenity/post_box",      // 0.4M
-                    // blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
-                    // waiting for response in https://github.com/ideditor/schema-builder/issues/94
-                    "amenity/drinking_water",   // 0.3M
-                    "leisure/picnic_table",     // 0.3M
-
-                    // popular, a bit less than some competing entries
-                    // but interesting and worth promoting
-                    "emergency/defibrillator",  // 0.08M
-                    )
+                POPULAR_STREET_FURNITURE_FEATURE_IDS
             ).show()
         }
     }
 
     private fun filterOnlyStreetFurniture(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return IS_STREET_FURNITURE_INCLUDING_DISUSED_EXPRESSION.matches(fakeElement)
+        return fakeElement.isStreetFurniture()
     }
 
     private fun onSelectedFeature(feature: Feature) {

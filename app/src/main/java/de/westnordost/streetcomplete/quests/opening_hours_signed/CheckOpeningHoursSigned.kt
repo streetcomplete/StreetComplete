@@ -9,9 +9,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.isShopOrDisusedShop
 import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
@@ -21,7 +21,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 class CheckOpeningHoursSigned(
-    private val getFeature: (tags: Map<String, String>) -> Feature?
+    private val getFeature: (Element) -> Feature?
 ) : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
@@ -55,10 +55,10 @@ class CheckOpeningHoursSigned(
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element): Boolean =
-        filter.matches(element) && hasName(element.tags)
+        filter.matches(element) && hasName(element)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
+        getMapData().asSequence().filter { it.isShopOrDisusedShop() }
 
     override fun createForm() = YesNoQuestForm()
 
@@ -85,10 +85,10 @@ class CheckOpeningHoursSigned(
         }
     }
 
-    private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
+    private fun hasName(element: Element) = hasProperName(element.tags) || hasFeatureName(element)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
+    private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 }

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.street_furniture
+package de.westnordost.streetcomplete.util
 
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType

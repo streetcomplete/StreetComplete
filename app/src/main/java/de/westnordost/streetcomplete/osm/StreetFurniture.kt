@@ -1,8 +1,15 @@
 package de.westnordost.streetcomplete.osm
 
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
-fun isStreetFurnitureFragment(prefix: String? = null): String {
+fun Element.isStreetFurniture(): Boolean =
+    IS_STREET_FURNITURE_EXPRESSION.matches(this)
+
+fun Element.isDisusedStreetFurniture(): Boolean =
+    this.asIfItWasnt("disused")?.let { IS_STREET_FURNITURE_EXPRESSION.matches(it) } == true
+
+private val IS_STREET_FURNITURE_EXPRESSION by lazy {
     // note that some entries like amenity=bicycle_wash are not actually appearing in app
     // as there is no matching iD preset
     val amenities = listOf(
@@ -17,37 +24,40 @@ fun isStreetFurnitureFragment(prefix: String? = null): String {
         // man_made = street_cabinet and street_cabinet = postal_service
         // is also disabled to avoid bad data being added
     )
-    val p = if (prefix != null) "$prefix:" else ""
-    return ("""(
-        ${p}amenity ~ ${amenities.joinToString("|")}
-        or (${p}amenity = recycling and recycling_type = container)
-        or ${p}leisure ~ picnic_table|firepit|fitness_station
-        or ${p}man_made ~ water_tap|water_well|obelisk|cross|monitoring_station|flagpole|carpet_hanger|planter|surveillance|insect_hotel|snow_cannon|cairn
-        or ${p}man_made = street_cabinet and street_cabinet != postal_service
-        or ${p}tourism ~ viewpoint|artwork|picnic_site
-        or (${p}tourism = information and information ~ guidepost|board|map|terminal)
-        or ${p}historic ~ memorial|monument|wayside_shrine|wayside_cross|boundary_stone
-        or ${p}highway ~ milestone|street_lamp|emergency_access_point|cyclist_waiting_aid
-        or ${p}emergency ~ fire_hydrant|life_ring|phone|defibrillator|siren|lifeguard|assembly_point|access_point
-        or ${p}advertising
-        or ${p}leisure = pitch and sport ~ table_tennis|chess|table_soccer
-        or ${p}natural ~ tree|tree_stump|spring
-        or ${p}boundary ~ marker
-        )""")
+    """
+        nodes, ways, relations with
+        amenity ~ ${amenities.joinToString("|")}
+        or (amenity = recycling and recycling_type = container)
+        or leisure ~ picnic_table|firepit|fitness_station
+        or man_made ~ water_tap|water_well|obelisk|cross|monitoring_station|flagpole|carpet_hanger|planter|surveillance|insect_hotel|snow_cannon|cairn
+        or man_made = street_cabinet and street_cabinet != postal_service
+        or tourism ~ viewpoint|artwork|picnic_site
+        or (tourism = information and information ~ guidepost|board|map|terminal)
+        or historic ~ memorial|monument|wayside_shrine|wayside_cross|boundary_stone
+        or highway ~ milestone|street_lamp|emergency_access_point|cyclist_waiting_aid
+        or emergency ~ fire_hydrant|life_ring|phone|defibrillator|siren|lifeguard|assembly_point|access_point
+        or advertising
+        or leisure = pitch and sport ~ table_tennis|chess|table_soccer
+        or natural ~ tree|tree_stump|spring
+        or boundary ~ marker
+    """.toElementFilterExpression()
 }
 
-val IS_REGULAR_STREET_FURNITURE_EXPRESSION = """
-    nodes, ways, relations with
-      ${isStreetFurnitureFragment(null)}
-""".toElementFilterExpression()
+val POPULAR_STREET_FURNITURE_FEATURE_IDS = listOf(
+    // ordered by popularity, skipping trees as there are multiple variants of them
+    "highway/street_lamp",      // 3.8M
+    "amenity/bench",            // 2.3M
+    "emergency/fire_hydrant",   // 1.9M
+    "amenity/bicycle_parking",  // 0.6M
+    "amenity/shelter",          // 0.5M
+    "amenity/toilets",          // 0.4M
+    // "amenity/post_box",      // 0.4M
+    // blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
+    // waiting for response in https://github.com/ideditor/schema-builder/issues/94
+    "amenity/drinking_water",   // 0.3M
+    "leisure/picnic_table",     // 0.3M
 
-val IS_DISUSED_STREET_FURNITURE_EXPRESSION = """
-    nodes, ways, relations with
-      ${isStreetFurnitureFragment("disused")}
-""".toElementFilterExpression()
-
-val IS_STREET_FURNITURE_INCLUDING_DISUSED_EXPRESSION = """
-    nodes, ways, relations with
-      ${isStreetFurnitureFragment()}
-      or ${isStreetFurnitureFragment("disused")}
-""".toElementFilterExpression()
+    // popular, a bit less than some competing entries
+    // but interesting and worth promoting
+    "emergency/defibrillator",  // 0.08M
+)

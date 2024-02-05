@@ -1,22 +1,20 @@
 package de.westnordost.streetcomplete.overlays.street_furniture
 
-import android.util.Log
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.osm.IS_DISUSED_STREET_FURNITURE_EXPRESSION
-import de.westnordost.streetcomplete.osm.IS_REGULAR_STREET_FURNITURE_EXPRESSION
+import de.westnordost.streetcomplete.osm.asIfItWasnt
+import de.westnordost.streetcomplete.osm.isDisusedStreetFurniture
+import de.westnordost.streetcomplete.osm.isStreetFurniture
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
-import de.westnordost.streetcomplete.util.getNameLabel
 
-class StreetFurnitureOverlay(private val getFeature: (tags: Map<String, String>) -> Feature?) : Overlay {
+class StreetFurnitureOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
     override val title = R.string.overlay_street_furniture
     override val icon = R.drawable.ic_quest_bench_poi
@@ -32,41 +30,22 @@ class StreetFurnitureOverlay(private val getFeature: (tags: Map<String, String>)
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
-            .filter(IS_REGULAR_STREET_FURNITURE_EXPRESSION)
+            .asSequence()
+            .filter { it.isStreetFurniture() || it.isDisusedStreetFurniture() }
             .mapNotNull { element ->
-                val feature = getFeature(element.tags)
-                val presetIcon = feature?.icon
-                val iconIdentifier =
-                    if (presetIcon != "" && presetIcon != null) {
-                        presetIcon
-                    } else {
-                        "maki_marker_stroked"
-                    }
-                if ( feature != null) {
-                    val icon = "ic_preset_" + iconIdentifier.replace('-', '_')
-                    val label = getNameLabel(element.tags)
+                val feature = getFeature(element)
+                    ?: element.asIfItWasnt("disused")?.let { getFeature(it) }
+                    ?: return@mapNotNull null
 
-                    val style = if (element is Node) {
-                        PointStyle(icon, label)
-                    } else {
-                        PolygonStyle(Color.INVISIBLE, icon, label)
-                    }
-                    element to style
+                val icon = "ic_preset_" + (feature.icon ?: "maki-marker-stroked").replace('-', '_')
+
+                val style = if (element is Node) {
+                    PointStyle(icon)
                 } else {
-                    null
+                    PolygonStyle(Color.INVISIBLE, icon)
                 }
-            } + mapData
-        .filter(IS_DISUSED_STREET_FURNITURE_EXPRESSION)
-        .map { element ->
-            val icon = "ic_preset_maki_marker_stroked"
-            val label = null
-            val style = if (element is Node) {
-                PointStyle(icon, label)
-            } else {
-                PolygonStyle(Color.INVISIBLE, icon, label)
+                element to style
             }
-            element to style
-        }
 
     override fun createForm(element: Element?) = StreetFurnitureOverlayForm()
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="32dp">
+    android:layout_marginBottom="48dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/featureView"
@@ -52,8 +52,5 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- extra padding because the OK button overlaps with the delete-button for the lowermost
-         item if the "add language" button is not shown anymore -->
 
 </LinearLayout>
