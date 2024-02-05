@@ -7,16 +7,22 @@
 The new buildings overlay now lets you comprehensively view and edit building types all around town!
 (You'll be amazed and/or appalled how many buildings are currently actually tagged wrong or imprecise! 😅)
 
+### New Quests
+- The crossing type quest has been split up into two quests: One that asks for markings, the other for traffic signals (#5471)
+
 ### Quest and Overlay Enhancements and Fixes
-- The lit and surface overlay now each have a button to apply the last answer (#4741)
+- Lit and Surface Overlay: now each have a button to apply the last answer (#4741)
 - Measuring widths and heights: [StreetMeasure](https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure) doesn't work for you? In that case you'll be offered to quickly disable these AR measurement quests now (#4849)
-- Opening hours: Also ask for places whose already set opening hours likely contain mistakes (#5463)
-- Building quest is disabled by default now, because we have an overlay now and it was really spammy, don't you think?
+- Max Height: Don't prompt to estimate height when there is no sign (#5458)
+- Opening Hours: Also ask for places whose already set opening hours likely contain mistakes (#5463)
+- Building Type: disabled by default now, because we have an overlay now and it was really spammy, don't you think?
+- Fire Hydrant Diameter: Disable for Austria again (#5470)
 
 ### Other
+- Fix issues with doing edits while data is being downloaded (#4258)
 - Add some interesting links as achievement rewards (#5466)
 - Translation to Amharic has been disabled, it was not maintained for over a year
-- Other small enhancements, performance and wording improvements (#5468, #5154...), thanks @Jean-BaptisteC
+- Other small enhancements, performance and wording improvements (#5468, #5154, #5474...), thanks @Jean-BaptisteC
 
 ## v56.1
 
