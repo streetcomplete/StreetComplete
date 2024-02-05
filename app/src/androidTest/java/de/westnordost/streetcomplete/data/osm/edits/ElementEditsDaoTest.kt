@@ -243,7 +243,8 @@ private fun updateTags(
             StringMapEntryModify("c", "d", "e"),
             StringMapEntryDelete("f", "g"),
         ))
-    )
+    ),
+    false
 )
 
 private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
@@ -260,7 +261,8 @@ private fun revertUpdateTags(timestamp: Long = 123L, isSynced: Boolean = false) 
             StringMapEntryModify("c", "d", "e"),
             StringMapEntryDelete("f", "g"),
         ))
-    )
+    ),
+    false
 )
 
 private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
@@ -270,7 +272,8 @@ private fun deletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = Eleme
     "survey",
     timestamp,
     isSynced,
-    DeletePoiNodeAction(node)
+    DeletePoiNodeAction(node),
+    false
 )
 
 private fun revertDeletePoi(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
@@ -280,7 +283,8 @@ private fun revertDeletePoi(timestamp: Long = 123L, isSynced: Boolean = false) =
     "survey",
     timestamp,
     isSynced,
-    RevertDeletePoiNodeAction(node)
+    RevertDeletePoiNodeAction(node),
+    false
 )
 
 private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
@@ -300,7 +304,8 @@ private fun splitWay(timestamp: Long = 123L, isSynced: Boolean = false) = Elemen
                 0.5
             )
         )
-    )
+    ),
+    false
 )
 
 private fun createNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
@@ -310,7 +315,8 @@ private fun createNode(timestamp: Long = 123L, isSynced: Boolean = false) = Elem
     "survey",
     timestamp,
     isSynced,
-    CreateNodeAction(p, mapOf("shop" to "supermarket"))
+    CreateNodeAction(p, mapOf("shop" to "supermarket")),
+    false
 )
 
 private fun revertCreateNode(timestamp: Long = 123L, isSynced: Boolean = false) = ElementEdit(
@@ -320,7 +326,8 @@ private fun revertCreateNode(timestamp: Long = 123L, isSynced: Boolean = false) 
     "survey",
     timestamp,
     isSynced,
-    RevertCreateNodeAction(node)
+    RevertCreateNodeAction(node),
+    false
 )
 
 private val p = LatLon(56.7, 89.10)

@@ -111,7 +111,8 @@ fun edit(
     geometry: ElementGeometry = pGeom(),
     timestamp: Long = 123L,
     action: ElementEditAction = UpdateElementTagsAction(node(), StringMapChanges(setOf(StringMapEntryAdd("hey", "ho")))),
-    isSynced: Boolean = false
+    isSynced: Boolean = false,
+    isNearUserLocation: Boolean = true
 ) = ElementEdit(
     id,
     QUEST_TYPE,
@@ -119,7 +120,8 @@ fun edit(
     "survey",
     timestamp,
     isSynced,
-    action
+    action,
+    isNearUserLocation
 )
 
 fun questHidden(

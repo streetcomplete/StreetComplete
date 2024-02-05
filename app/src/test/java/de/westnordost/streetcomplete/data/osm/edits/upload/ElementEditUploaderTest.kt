@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
+import org.mockito.ArgumentMatchers.anyBoolean
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.doThrow
 import kotlin.test.BeforeTest
@@ -52,8 +53,8 @@ class ElementEditUploaderTest {
         on(edit.action).thenReturn(action)
         on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
 
-        on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
-        on(changesetManager.createChangeset(any(), any())).thenReturn(1)
+        on(changesetManager.getOrCreateChangeset(any(), any(), any(), anyBoolean())).thenReturn(1)
+        on(changesetManager.createChangeset(any(), any(), any())).thenReturn(1)
         on(mapDataApi.uploadChanges(anyLong(), any(), any()))
             .thenThrow(ConflictException())
 
@@ -68,8 +69,8 @@ class ElementEditUploaderTest {
         on(edit.action).thenReturn(action)
         on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
 
-        on(changesetManager.getOrCreateChangeset(any(), any())).thenReturn(1)
-        on(changesetManager.createChangeset(any(), any())).thenReturn(1)
+        on(changesetManager.getOrCreateChangeset(any(), any(), any(), anyBoolean())).thenReturn(1)
+        on(changesetManager.createChangeset(any(), any(), any())).thenReturn(1)
         doThrow(ConflictException()).doAnswer { MapDataUpdates() }
             .on(mapDataApi).uploadChanges(anyLong(), any(), any())
 
