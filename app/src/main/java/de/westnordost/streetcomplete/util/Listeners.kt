@@ -5,11 +5,11 @@ class Listeners<T> {
     private var listeners: Set<T> = HashSet()
 
     fun add(element: T) {
-        synchronized(this) { listeners += element }
+        synchronized(this) { listeners = listeners + element }
     }
 
     fun remove(element: T) {
-        synchronized(this) { listeners -= element }
+        synchronized(this) { listeners = listeners - element }
     }
 
     fun forEach(action: (T) -> Unit) {
