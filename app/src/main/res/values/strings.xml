@@ -973,11 +973,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_crossing_no">No, but crossing is possible</string>
     <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
 
-    <string name="quest_crossing_type_title">What kind of crossing is this?</string>
-    <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
-    <string name="quest_crossing_type_marked">Marked</string>
-    <string name="quest_crossing_type_unmarked">Without road markings</string>
-
     <string name="quest_cycleway_title2">"Is there a bicycle lane or path here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
     <string name="quest_cycleway_value_track">sidepath or protected bicycle lane</string>
@@ -1289,7 +1284,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
 
-    <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
+    <string name="quest_pedestrian_crossing_signals">"Do you have to wait for a traffic signal to cross here?"</string>
+
+    <string name="quest_pedestrian_crossing_island">"Does this crossing have an island?"</string>
+
+    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
 
     <string name="quest_amenityCover_title">Is this covered (protected from rain)?</string>
 
