@@ -10,35 +10,111 @@ fun Element.isDisusedStreetFurniture(): Boolean =
     this.asIfItWasnt("disused")?.let { IS_STREET_FURNITURE_EXPRESSION.matches(it) } == true
 
 private val IS_STREET_FURNITURE_EXPRESSION by lazy {
-    // note that some entries like amenity=bicycle_wash are not actually appearing in app
-    // as there is no matching iD preset
-    val amenities = listOf(
-        "bicycle_parking", "bicycle_wash", "bicycle_rental", "bench", "lounger", "bbq", "grit_bin",
-        "public_bookcase", "give_box", "clock", "bicycle_repair_station", "charging_station",
-        "parcel_locker", "telephone", "drinking_water", "vending_machine", "sanitary_dump_station",
-        "atm", "waste_basket", "trolley_bay", "hunting_stand", "toilets", "kneipp_water_cure",
-        "luggage_locker", "locker", "shelter", "taxi", "shower", "compressed_air",
-        "device_charging_station", "water_point", "watering_place", "dog_toilet", "smoking_area",
-        // "post_box", "letter_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
-        // waiting for response in https://github.com/ideditor/schema-builder/issues/94
-        // man_made = street_cabinet and street_cabinet = postal_service
-        // is also disabled to avoid bad data being added
+    val tags = mapOf(
+        "amenity" to listOf(
+            "atm",
+            "bbq",
+            "bench",
+            "bicycle_parking",
+            "bicycle_rental",
+            "bicycle_repair_station",
+            "bicycle_wash",
+            "charging_station",
+            "clock",
+            "compressed_air",
+            "dog_toilet",
+            "drinking_water",
+            "give_box",
+            "grit_bin",
+            "hunting_stand",
+            "kneipp_water_cure",
+            // "letter_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
+            "locker",
+            "lounger",
+            "luggage_locker",
+            "parcel_locker",
+            // "post_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
+            "public_bookcase",
+            // "recycling" only for containers
+            "sanitary_dump_station",
+            "shelter",
+            "shower",
+            "smoking_area",
+            "taxi",
+            "telephone",
+            "toilets",
+            "trolley_bay",
+            "vending_machine",
+            "waste_basket",
+            "water_point",
+            "watering_place",
+            "device_charging_station",
+        ),
+        "emergency" to listOf(
+            "access_point",
+            "assembly_point",
+            "defibrillator",
+            "fire_hydrant",
+            "life_ring",
+            "lifeguard",
+            "phone",
+            "siren",
+        ),
+        "highway" to listOf(
+            "cyclist_waiting_aid",
+            "emergency_access_point",
+            "milestone",
+            "street_lamp",
+        ),
+        "historic" to listOf(
+            "boundary_stone",
+            "memorial",
+            "monument",
+            "wayside_cross",
+            "wayside_shrine",
+        ),
+        "leisure" to listOf(
+            "firepit",
+            "fitness_station",
+            "picnic_table",
+        ),
+        "man_made" to listOf(
+            "cairn",
+            "carpet_hanger",
+            "cross",
+            "flagpole",
+            "insect_hotel",
+            "monitoring_station",
+            "obelisk",
+            "planter",
+            "snow_cannon",
+            // "street_cabinet", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
+            "surveillance",
+            "water_tap",
+            "water_well",
+        ),
+        "natural" to listOf(
+            "spring",
+            "tree",
+            "tree_stump",
+        ),
+        "tourism" to listOf(
+            "artwork",
+            "picnic_site",
+            "viewpoint",
+        )
     )
+    .map { it.key + " ~ " + it.value.joinToString("|") }
+    .joinToString("\n    or ")
+
     """
         nodes, ways, relations with
-        amenity ~ ${amenities.joinToString("|")}
-        or (amenity = recycling and recycling_type = container)
-        or leisure ~ picnic_table|firepit|fitness_station
-        or man_made ~ water_tap|water_well|obelisk|cross|monitoring_station|flagpole|carpet_hanger|planter|surveillance|insect_hotel|snow_cannon|cairn
-        or man_made = street_cabinet and street_cabinet != postal_service
-        or tourism ~ viewpoint|artwork|picnic_site
-        or (tourism = information and information ~ guidepost|board|map|terminal)
-        or historic ~ memorial|monument|wayside_shrine|wayside_cross|boundary_stone
-        or highway ~ milestone|street_lamp|emergency_access_point|cyclist_waiting_aid
-        or emergency ~ fire_hydrant|life_ring|phone|defibrillator|siren|lifeguard|assembly_point|access_point
+        $tags
         or advertising
-        or leisure = pitch and sport ~ table_tennis|chess|table_soccer
-        or natural ~ tree|tree_stump|spring
+        or (amenity = recycling and recycling_type = container)
+        or man_made = street_cabinet and street_cabinet != postal_service
+        or (tourism = information and information !~ office|visitor_centre)
+        or leisure = pitch and sport ~ chess|table_soccer|table_tennis
         or boundary ~ marker
     """.toElementFilterExpression()
 }

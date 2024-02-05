@@ -26,29 +26,8 @@ fun Element.isShop(): Boolean =
  *  Note: When this function is modified, please follow update instructions in:
  *  https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/README.md
  *  */
-private val IS_SHOP_EXPRESSION by lazy { ("""
-    nodes, ways, relations with
-    shop and shop !~ no|vacant|mall
-    or office and office !~ no|vacant
-    or healthcare and healthcare != hospital
-    or craft
-    or club
-    or tourism = information and information = office
-    or amenity = social_facility and social_facility ~ ${
-        listOf(
-            // only non-residential ones
-            "ambulatory_care",
-            "clothing_bank",
-            "dairy_kitchen",
-            "day_care",
-            "food_bank",
-            "healthcare",
-            "outreach",
-            "soup_kitchen",
-            "workshop"
-        ).joinToString("|")
-    }
-    or """ + mapOf(
+private val IS_SHOP_EXPRESSION by lazy {
+    val tags = mapOf(
         "leisure" to listOf(
             "adult_gaming_centre",
             "amusement_arcade",
@@ -183,7 +162,28 @@ private val IS_SHOP_EXPRESSION by lazy { ("""
     )
     .map { it.key + " ~ " + it.value.joinToString("|") }
     .joinToString("\n    or ")
-).toElementFilterExpression()
+
+    """
+    nodes, ways, relations with
+    shop and shop !~ no|vacant|mall
+    or office and office !~ no|vacant
+    or healthcare and healthcare != hospital
+    or craft
+    or club
+    or tourism = information and information = office
+    or amenity = social_facility and social_facility ~ ${listOf(
+        // only non-residential ones
+        "ambulatory_care",
+        "clothing_bank",
+        "dairy_kitchen",
+        "day_care",
+        "food_bank",
+        "healthcare",
+        "outreach",
+        "soup_kitchen",
+        "workshop"
+    ).joinToString("|")}
+    or $tags""".toElementFilterExpression()
 }
 
 /** Expression to see if an element is some kind of vacant shop */
