@@ -83,6 +83,10 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
     }
 
     private fun showWrongSurfaceDialog(surface: Surface) {
+        if (dontShowAgain) {
+            applyAnswer(WrongSurfaceAnswer, true)
+            return
+        }
         val inflater = LayoutInflater.from(requireContext())
         val inner = inflater.inflate(R.layout.dialog_quest_smoothness_wrong_surface, null, false)
         ItemViewHolder(inner.findViewById(R.id.item_view)).bind(surface.asItem())
@@ -91,6 +95,10 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
             .setView(inner)
             .setPositiveButton(R.string.quest_generic_hasFeature_yes_leave_note) { _, _ -> composeNote() }
             .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(WrongSurfaceAnswer, true) }
+            .setNeutralButton(R.string.dialog_session_dont_show_again) { _, _ ->
+                dontShowAgain = true
+                applyAnswer(WrongSurfaceAnswer, true)
+            }
             .show()
     }
 
@@ -102,6 +110,10 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         } else {
             null
         }
+    }
+
+    companion object {
+        private var dontShowAgain = false
     }
 }
 
