@@ -11,7 +11,7 @@ Code contributions: [Check this complete list of contributors on GitHub](https:/
 
 See also contributors to [projects used by StreetComplete](https://github.com/streetcomplete/StreetComplete/blob/master/CONTRIBUTING.md#streetcomplete-related-projects), some were even specially created to help it.
 
-Translations: See [info extracted from POEditor](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/res/raw/credits_translators.yml). It can be also reviewed in app itself in more readable form. Unfortunately POEditor is [not making easy](https://poeditor.uservoice.com/forums/171919-general/suggestions/31242085-public-url-to-view-project-contributors) to share list of contributors.
+Translations: See [info extracted from POEditor](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/res/raw/credits_translators.json). It can be also reviewed in app itself in more readable form. Unfortunately POEditor is [not making easy](https://poeditor.uservoice.com/forums/171919-general/suggestions/31242085-public-url-to-view-project-contributors) to share list of contributors.
 
 ## Licenses & Sources
 
