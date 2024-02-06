@@ -98,7 +98,14 @@ class MapDataController internal constructor(
 
         val oldDbJob = dbJob
         dbJob = scope.launch {
-            downloadController.setPersisting(true)
+            try {
+                downloadController.setPersisting(true)
+            } catch (_: Exception) {
+                // only ForegroundServiceStartNotAllowedException, but not gonna do annoying
+                // API checks for an exception that can only be thrown on certain APIs anyway
+                // ignore is because this is only to avoid the app being killed while doing
+                // background work, but if Android insists so much on doing this, then let it kill the app while writing to DB...
+            }
             oldDbJob?.join()
             synchronized(this@MapDataController) {
                 elementDB.deleteAll(oldElementKeys)
