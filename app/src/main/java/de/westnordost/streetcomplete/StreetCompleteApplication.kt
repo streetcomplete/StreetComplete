@@ -13,6 +13,7 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
+import de.westnordost.streetcomplete.data.DatabaseInitializer
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.dbModule
 import de.westnordost.streetcomplete.data.download.downloadModule
@@ -48,6 +49,8 @@ import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
+import de.westnordost.streetcomplete.screens.settings.DataManagementSettingsFragment
+import de.westnordost.streetcomplete.screens.settings.LAST_KNOWN_DB_VERSION
 import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.screens.settings.oldQuestNames
 import de.westnordost.streetcomplete.screens.settings.renameUpdatedQuests
@@ -161,6 +164,8 @@ class StreetCompleteApplication : Application() {
         setDefaultTheme()
 
         resurveyIntervalsUpdater.update()
+
+        require(DatabaseInitializer.DB_VERSION == LAST_KNOWN_DB_VERSION.toInt()) { "update database import/export" }
 
         val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION_DATA)
         if (BuildConfig.VERSION_NAME != lastVersion) {
