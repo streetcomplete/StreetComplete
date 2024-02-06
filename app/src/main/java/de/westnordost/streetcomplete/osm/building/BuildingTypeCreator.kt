@@ -2,10 +2,7 @@ package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
-import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateCheckDate
-import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 fun BuildingType.applyTo(tags: Tags) {
     require(osmKey != null && osmValue != null)

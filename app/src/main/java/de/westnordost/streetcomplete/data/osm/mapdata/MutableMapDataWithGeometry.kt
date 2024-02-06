@@ -91,7 +91,6 @@ class MutableMapDataWithGeometry() : MapDataWithGeometry {
         }
     }
 
-
     fun removeAll(deleted: Collection<ElementKey>) {
         for (key in deleted) {
             remove(key.type, key.id)

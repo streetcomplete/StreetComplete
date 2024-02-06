@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import kotlin.test.Test
-import kotlin.test.assertFails
 import kotlin.test.assertEquals
+import kotlin.test.assertFails
 
 class BuildingTypeCreatorKtTest {
 
@@ -46,7 +46,6 @@ class BuildingTypeCreatorKtTest {
             STORAGE_TANK.appliedTo(mapOf("building" to "roof"))
         )
     }
-
 
     @Test fun `remove ruins etc`() {
         assertEquals(

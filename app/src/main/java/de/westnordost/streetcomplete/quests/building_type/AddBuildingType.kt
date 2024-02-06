@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.osm.building.applyTo
 
 class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
-
     override val elementFilter = """
         ways, relations with
         building ~ yes|${BuildingType.deprecatedValues.joinToString("|")}

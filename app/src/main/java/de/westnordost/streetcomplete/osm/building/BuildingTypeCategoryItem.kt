@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.osm.building
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.CIVIC
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.COMMERCIAL
-import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.OUTBUILDING
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.FOR_FARMS
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.OTHER
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.OUTBUILDING
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.RELIGIOUS
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.RESIDENTIAL
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem

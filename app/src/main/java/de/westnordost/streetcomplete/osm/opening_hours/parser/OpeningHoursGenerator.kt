@@ -5,13 +5,13 @@ import de.westnordost.osm_opening_hours.model.ExtendedClockTime
 import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.Month
 import de.westnordost.osm_opening_hours.model.MonthRange
-import de.westnordost.osm_opening_hours.model.SingleMonth
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.osm_opening_hours.model.Range
 import de.westnordost.osm_opening_hours.model.Rule
 import de.westnordost.osm_opening_hours.model.RuleOperator
 import de.westnordost.osm_opening_hours.model.RuleType
+import de.westnordost.osm_opening_hours.model.SingleMonth
 import de.westnordost.osm_opening_hours.model.StartingAtTime
 import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.osm_opening_hours.model.TimeSpan
@@ -51,8 +51,11 @@ fun List<OpeningHoursRow>.toOpeningHours(): OpeningHours {
         }
         is OpeningWeekdaysRow -> {
             val wds =
-                if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekdaysAndHolidays()
-                else WeekdaysAndHolidays(null, null)
+                if (!row.weekdays.isSelectionEmpty()) {
+                    row.weekdays.toWeekdaysAndHolidays()
+                } else {
+                    WeekdaysAndHolidays(null, null)
+                }
 
             // new weekdays -> new rule
             if (currentWds != null && wds != currentWds) {
@@ -91,8 +94,11 @@ fun List<CollectionTimesRow>.toOpeningHours(): OpeningHours {
 
     for (row in this) {
         val wds =
-            if (!row.weekdays.isSelectionEmpty()) row.weekdays.toWeekdaysAndHolidays()
-            else WeekdaysAndHolidays(null, null)
+            if (!row.weekdays.isSelectionEmpty()) {
+                row.weekdays.toWeekdaysAndHolidays()
+            } else {
+                WeekdaysAndHolidays(null, null)
+            }
 
         // new weekdays -> new rule
         if (currentWds != null && wds != currentWds) {
@@ -113,11 +119,17 @@ fun List<CollectionTimesRow>.toOpeningHours(): OpeningHours {
 /* if any rule collides with another, e.g. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
    additive rules e.g. "Mo-Fr 10:00-12:00, We 14:00-16:00" */
 private fun List<Rule>.asNonColliding(): List<Rule> =
-    if (!hasCollidingWeekdays()) this
-    else map { rule ->
+    if (!hasCollidingWeekdays()) {
+        this
+    } else {
+        map { rule ->
         // "off" rules stay non-additive
-        if (rule.ruleType == RuleType.Off) rule
-        else rule.copy(ruleOperator = RuleOperator.Additional)
+        if (rule.ruleType == RuleType.Off) {
+            rule
+        } else {
+            rule.copy(ruleOperator = RuleOperator.Additional)
+        }
+    }
     }
 
 private fun createRule(
@@ -164,8 +176,11 @@ private fun TimeRange.toTimeSpansSelector(): TimeSpansSelector {
     val startTime = ClockTime(start / 60, start % 60)
     val endTime = ExtendedClockTime(end / 60, end % 60)
 
-    return if (start == end && isOpenEnded) StartingAtTime(startTime)
-    else TimeSpan(startTime, endTime, isOpenEnded)
+    return if (start == end && isOpenEnded) {
+        StartingAtTime(startTime)
+    } else {
+        TimeSpan(startTime, endTime, isOpenEnded)
+    }
 }
 
 private fun Int.toClockTime() = ClockTime(this / 60, this % 60)

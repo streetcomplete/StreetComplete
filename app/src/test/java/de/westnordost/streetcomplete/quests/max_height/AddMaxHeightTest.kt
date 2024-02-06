@@ -162,5 +162,4 @@ class AddMaxHeightTest {
             questType.answerApplied(NoMaxHeightSign)
         )
     }
-
 }

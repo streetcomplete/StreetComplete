@@ -131,7 +131,6 @@ private fun Range.isSupportedCollectionTimes(): Boolean =
     times.orEmpty().all { it.isSupported() } &&
     !isEmpty()
 
-
 /** For example, "Mo-Fr 10:00-12:00; We 14:00-16:00" self-collides: Wednesday is overwritten
  *  to only be open 14:00 to 16:00. A rule collides with another whenever the days overlap. When
  *  non-additive rules and additive rules mix, it becomes a bit difficult to find it out */
@@ -250,8 +249,11 @@ private fun HolidaySelector.intersectsWith(other: HolidaySelector): Boolean =
 private fun List<WeekdaysSelector>.expandedToNextDayIfAnyTimeExpandsIntoNextDay(
     times: Collection<TimesSelector>?
 ): List<WeekdaysSelector> =
-    if (times?.any { it.expandsIntoNextDay() } == true) map { it.expandedToNextDay() }
-    else this
+    if (times?.any { it.expandsIntoNextDay() } == true) {
+        map { it.expandedToNextDay() }
+    } else {
+        this
+    }
 
 private fun WeekdaysSelector.expandedToNextDay(): WeekdaysSelector {
     val s: Weekday
@@ -264,7 +266,9 @@ private fun WeekdaysSelector.expandedToNextDay(): WeekdaysSelector {
         is WeekdayRange -> {
             // already goes full-circle
             if (start.ordinal == end.ordinal + 1 ||
-                start.ordinal == 0 && end.ordinal == Weekday.entries.size -1) return this
+                start.ordinal == 0 && end.ordinal == Weekday.entries.size - 1) {
+                    return this
+                }
 
             s = start
             e = end

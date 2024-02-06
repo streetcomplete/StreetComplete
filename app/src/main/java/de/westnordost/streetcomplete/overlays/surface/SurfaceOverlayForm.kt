@@ -41,7 +41,6 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     private val lastPickedSurface: Surface?
         get() = favs.get().firstOrNull()
 
-
     private lateinit var surfaceCtrl: SurfaceAndNoteViewController
     private lateinit var cyclewaySurfaceCtrl: SurfaceAndNoteViewController
     private lateinit var footwaySurfaceCtrl: SurfaceAndNoteViewController

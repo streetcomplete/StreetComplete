@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 import org.koin.android.ext.android.inject
 
 /** Abstract superclass for all forms that let StreetMeasure measure stuff. */
-abstract class AbstractArMeasureQuestForm<T>: AbstractOsmQuestForm<T>() {
+abstract class AbstractArMeasureQuestForm<T> : AbstractOsmQuestForm<T>() {
     private val arQuestsDisabler: ArQuestsDisabler by inject()
 
     private val launcher = registerForActivityResult(MeasureContract(), ::onMeasuredInternal)

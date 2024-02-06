@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.building
 
+import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import de.westnordost.streetcomplete.osm.building.BuildingType.*
 
 class BuildingTypeParserKtTest {
 

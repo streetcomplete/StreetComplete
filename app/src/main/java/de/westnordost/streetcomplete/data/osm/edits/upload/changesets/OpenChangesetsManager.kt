@@ -25,7 +25,6 @@ class OpenChangesetsManager(
         position: LatLon,
         createNewIfTooFarAway: Boolean
     ): Long = synchronized(this) {
-
         val openChangeset = openChangesetsDB.get(type.name, source)
             ?: return createChangeset(type, source, position)
 
@@ -42,7 +41,6 @@ class OpenChangesetsManager(
         source: String,
         position: LatLon
     ): Long = synchronized(this) {
-
         val changesetId = mapDataApi.openChangeset(createChangesetTags(type, source))
         openChangesetsDB.put(OpenChangeset(type.name, source, changesetId, position))
         changesetAutoCloser.enqueue(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)

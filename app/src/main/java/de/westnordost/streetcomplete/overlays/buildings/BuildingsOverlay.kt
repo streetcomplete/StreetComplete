@@ -4,16 +4,15 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.overlays.Color
-import de.westnordost.streetcomplete.overlays.PolygonStyle
-import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.iconResName
+import de.westnordost.streetcomplete.overlays.Color
+import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.overlays.PolygonStyle
+import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 
 class BuildingsOverlay : Overlay {
 
@@ -43,7 +42,7 @@ class BuildingsOverlay : Overlay {
 
     override fun createForm(element: Element?) = BuildingsOverlayForm()
 
-    private val BuildingType.color get() = when(this) {
+    private val BuildingType.color get() = when (this) {
         // ~detached homes
         DETACHED, SEMI_DETACHED, HOUSEBOAT, BUNGALOW, STATIC_CARAVAN, HUT, FARM, -> // 10%
             Color.BLUE

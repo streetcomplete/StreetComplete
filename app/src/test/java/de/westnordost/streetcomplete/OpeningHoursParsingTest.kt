@@ -38,7 +38,7 @@ private val qleverQuery = """
     WHERE {?osm_id osmkey:opening_hours ?times}
     GROUP BY ?times
     ORDER BY DESC(?count) DESC(?times)
-""".trimIndent().replace("\n"," ").replace("\r","")
+""".trimIndent().replace("\n", " ").replace("\r", "")
 
 fun main() {
     var total = 0
