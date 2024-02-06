@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.ConflictAlgorithm
 import de.westnordost.streetcomplete.data.Database
+import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestTables
@@ -39,6 +40,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
 import de.westnordost.streetcomplete.overlays.custom.getCustomOverlayIndices
 import de.westnordost.streetcomplete.overlays.custom.getIndexedCustomOverlayPref
 import de.westnordost.streetcomplete.quests.custom.FILENAME_CUSTOM_QUEST
+import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.TempLogger
@@ -73,6 +75,8 @@ class DataManagementSettingsFragment :
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsController: QuestPresetsController by inject()
     private val databaseLogger: DatabaseLogger by inject()
+    private val osmoseDao: OsmoseDao by inject()
+    private val externalSourceQuestController: ExternalSourceQuestController by inject()
 
     override val title: String get() = getString(R.string.pref_screen_data_management)
 
@@ -704,6 +708,8 @@ class DataManagementSettingsFragment :
     private fun importSettings(uri: Uri): Boolean {
         val lines = activity?.contentResolver?.openInputStream(uri)?.use { it.reader().readLines().renameUpdatedQuests() } ?: return false
         val r = readToSettings(lines)
+        osmoseDao.reloadIgnoredItems()
+        externalSourceQuestController.invalidate()
         preferenceScreen.removeAll()
         onCreatePreferences(null, null)
         return r

@@ -203,7 +203,10 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         binding.okButton.setOnClickListener {
             if (!tagsChangedAndOk()) return@setOnClickListener // for now keep the button visible and just do nothing if invalid
             newTags.keys.removeAll { it.isBlank() } // if value is not blank ok button is disabled, so we discard only empty lines here
-            newTags.filterKeys { it != it.trim() }.forEach { newTags[it.key.trim()] = it.value } // trim keys
+            newTags.filterKeys { it != it.trim() }.forEach {
+                newTags.remove(it.key)
+                newTags[it.key.trim()] = it.value
+            } // trim keys
             newTags.filterValues { it != it.trim() }.forEach { newTags[it.key] = it.value.trim() } // trim values
             showingTagEditor = false
             viewLifecycleScope.launch { applyEdit() } // tags are updated, and the different timestamp should not matter

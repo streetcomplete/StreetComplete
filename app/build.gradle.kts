@@ -41,17 +41,18 @@ android {
 
     buildTypes {
         all {
-            isMinifyEnabled = true
             isShrinkResources = false
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             testProguardFile("test-proguard-rules.pro")
         }
         getByName("release") {
+            isMinifyEnabled = true
             signingConfig = signingConfigs.getByName("release")
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
         }
         getByName("debug") {
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
