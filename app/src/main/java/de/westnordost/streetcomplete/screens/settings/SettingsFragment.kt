@@ -21,6 +21,7 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
@@ -248,7 +249,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
                 .setNegativeButton(R.string.pref_read_log_save) { _, _ ->
                     val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
                         addCategory(Intent.CATEGORY_OPENABLE)
-                        val fileName = "log_${nowAsEpochMilliseconds()}.txt"
+                        val fileName = "${ApplicationConstants.NAME}_${BuildConfig.VERSION_NAME}_log_${nowAsEpochMilliseconds()}.txt"
                         putExtra(Intent.EXTRA_TITLE, fileName)
                         type = "application/text"
                     }
