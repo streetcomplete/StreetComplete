@@ -159,7 +159,7 @@ class AddMaxHeightTest {
     @Test fun `apply no height sign answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxheight:signed", "no")),
-            questType.answerApplied(NoMaxHeightSign)
+            questType.answerApplied(NoMaxHeightSign())
         )
     }
 }
