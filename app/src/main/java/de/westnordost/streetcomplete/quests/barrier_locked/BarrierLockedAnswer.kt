@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.barrier_locked
 
+import de.westnordost.osm_opening_hours.model.OpeningHours
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 sealed interface BarrierLockedAnswer
 
 object Locked : BarrierLockedAnswer
 object NotLocked : BarrierLockedAnswer
-data class LockedAtHours(val hours: OpeningHoursRuleList) : BarrierLockedAnswer
-data class LockedExceptAtHours(val hours: OpeningHoursRuleList) : BarrierLockedAnswer
+data class LockedAtHours(val hours: OpeningHours) : BarrierLockedAnswer
+data class LockedExceptAtHours(val hours: OpeningHours) : BarrierLockedAnswer
 
 fun BarrierLockedAnswer.applyTo(tags: Tags) {
     when (this) {

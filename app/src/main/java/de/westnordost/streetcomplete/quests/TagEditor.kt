@@ -38,7 +38,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
+import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.createChanges
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
@@ -100,6 +104,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     private val externalSourceQuestController: ExternalSourceQuestController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
+    protected val recentLocationStore: RecentLocationStore by inject()
 
     protected lateinit var originalElement: Element
     protected lateinit var element: Element // element with adjusted tags and edit date
@@ -356,7 +361,10 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         }
     }
 
-    protected open fun applyEdit() {
+    protected open suspend fun applyEdit() {
+        val isSurvey = checkIsSurvey(geometry, recentLocationStore.get())
+        if (!isSurvey && !confirmIsSurvey(requireContext()))
+            return
         val builder = element.tags.createChanges(originalElement.tags)
 
         val action = UpdateElementTagsAction(originalElement, builder.create())
@@ -369,7 +377,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         if (questKey is OsmQuestKey && prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
             OsmQuestController.lastAnsweredQuestKey = questKey
         // always use "survey", because either it's tag editor or some external quest that's most like supposed to allow this
-        elementEditsController.add(editType, geometry, "survey", action, questKey)
+        elementEditsController.add(editType, geometry, "survey", action, isSurvey, questKey)
         listener?.onEdited(editType, geometry)
     }
 

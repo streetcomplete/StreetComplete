@@ -375,7 +375,6 @@
     <string name="default_disabled_msg_roofColour">Diese Art der Suche ist standardmäßig deaktiviert, da die Farben der Dächer von der Straße aus oft nicht gut sichtbar sind. Diese Art der Suche ist auch ziemlich zeitaufwändig; in den meisten Fällen ist es einfacher und effizienter, diese aus Luftbildern zu Hause zu kartieren.</string>
     <string name="tree_custom_quest_export">Abrufen</string>
     <string name="quest_artwork_mosaic">Mosaik</string>
-    <string name="quest_buildingType_tent">Stationäres Zelt</string>
     <string name="import_export_custom_overlays">Benutzerdefinierte Overlays</string>
     <string name="quest_roofColour_title">Welche Farbe hat dieses Gebäudedach\?</string>
     <string name="advanced_resurvey_hint_date">Format verwenden: YYYY-MM-DD</string>

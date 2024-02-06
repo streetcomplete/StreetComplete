@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m120 108v-56h-78v56z" fill="#3279bb" stroke-width="1.0131"/>
+ <path d="m42 108v-56h-34v56z" fill="#448bcd" stroke-width=".97182"/>
+ <path d="m36 96v-12h-24v12z" fill="#3279bb" stroke-width=".92582"/>
+ <path d="m36 76v-12h-24v12z" fill="#3279bb" stroke-width=".92582"/>
+ <rect x="108" y="58" width="6" height="44" fill="#2c69a5" stroke-width=".95743"/>
+ <rect x="96" y="58" width="6" height="44" fill="#2c69a5" stroke-width=".95743"/>
+ <rect x="84" y="58" width="6" height="44" fill="#2c69a5" stroke-width=".95743"/>
+ <rect x="72" y="58" width="6" height="44" fill="#2c69a5" stroke-width=".95743"/>
+ <rect x="60" y="58" width="6" height="44" fill="#2c69a5" stroke-width=".95743"/>
+ <rect x="48" y="58" width="6" height="44" fill="#2c69a5" stroke-width=".95743"/>
+ <rect x="112" y="102" width="8" height="8" fill="#9c9c9c"/>
+ <rect x="112" y="52" width="8" height="8" fill="#9c9c9c"/>
+ <rect x="42" y="52" width="8" height="8" fill="#9c9c9c"/>
+ <rect x="42" y="102" width="8" height="8" fill="#9c9c9c"/>
+ <rect x="8" y="52" width="6" height="8" fill="#c6c6c6" stroke-width=".86602"/>
+ <rect x="8" y="102" width="6" height="8" fill="#c6c6c6" stroke-width=".86602"/>
+ <rect x="36" y="52" width="6" height="8" fill="#c6c6c6" stroke-width=".86602"/>
+ <rect x="36" y="102" width="6" height="8" fill="#c6c6c6" stroke-width=".86602"/>
+</svg>

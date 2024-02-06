@@ -15,7 +15,8 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
-        nodes with crossing = traffic_signals
+        nodes with
+         (crossing = traffic_signals or crossing:signals = yes)
          and highway ~ crossing|traffic_signals
          and foot != no
          and (

@@ -380,7 +380,6 @@
     <string name="quest_artwork_installation">Инсталляция</string>
     <string name="quest_artwork_relief">Рельеф</string>
     <string name="quest_artwork_land_art">Ленд-арт</string>
-    <string name="quest_buildingType_tent">Тент</string>
     <string name="quest_buildingType_riding_hall">Конный манеж</string>
     <string name="quest_buildingType_digester">Реактор (биореактор)</string>
     <string name="quest_buildingType_transit_shelter">Остановка общественного транспорта</string>

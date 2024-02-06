@@ -1,18 +1,19 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
-import ch.poole.openinghoursparser.Rule
+import de.westnordost.osm_opening_hours.model.OpeningHours
+import de.westnordost.osm_opening_hours.model.Rule
+import de.westnordost.osm_opening_hours.model.TwentyFourSeven
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.osm.opening_hours.parser.OpeningHoursRuleList
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class FeeTest {
-    private val oh = OpeningHoursRuleList(listOf(Rule().apply { isTwentyfourseven = true }))
+    private val oh = OpeningHours(listOf(Rule(TwentyFourSeven)))
     private val ohStr = "24/7"
 
     @Test fun `apply HasNoFee`() {

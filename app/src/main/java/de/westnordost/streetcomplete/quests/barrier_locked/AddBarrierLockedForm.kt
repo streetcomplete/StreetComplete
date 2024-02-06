@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.barrier_locked
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestFeeHoursBinding
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.barrier_locked.AddBarrierLockedForm.Mode.LOCKED_AT_HOURS
@@ -68,7 +68,7 @@ class AddBarrierLockedForm : AbstractOsmQuestForm<BarrierLockedAnswer>() {
     override fun onClickOk() {
         when (mode) {
             LOCKED_AT_HOURS -> {
-                val hours = lockedAtHoursSelect!!.times.toOpeningHoursRules()
+                val hours = lockedAtHoursSelect!!.times.toOpeningHours()
                 val locked = when (lockedAtHoursSelect!!.timeRestriction) {
                     AT_ANY_TIME -> Locked
                     ONLY_AT_HOURS -> LockedAtHours(hours)

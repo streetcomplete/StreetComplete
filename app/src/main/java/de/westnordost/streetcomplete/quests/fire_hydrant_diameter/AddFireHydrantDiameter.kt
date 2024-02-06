@@ -30,7 +30,8 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
        diameters are added, the code in the form needs to be adapted */
     // source: https://commons.wikimedia.org/wiki/Category:Fire_hydrant_signs_by_country
     override val enabledInCountries = NoCountriesExcept(
-        "DE", "BE", "LU", "AT",
+        "DE", "BE", "LU",
+        // not "AT", - see https://community.openstreetmap.org/t/streetcomplete-quest-zu-hydrantendurchmesser-in-osterreich/108899
         "GB", "IE",
         "PL",
         "FI",

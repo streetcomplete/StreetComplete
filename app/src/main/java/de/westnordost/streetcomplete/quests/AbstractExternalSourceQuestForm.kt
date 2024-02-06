@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestCont
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.data.location.checkIsSurvey
+import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.isSplittable
@@ -199,14 +200,15 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
     protected suspend fun editElement(action: ElementEditAction) {
         // currently no way to set source to "survey,extra" because even other answers are likely part of the quest for both existing quests
         setLocked(true)
-        if (!checkIsSurvey(requireContext(), geometry, recentLocationStore.get())) {
+        val isSurvey = checkIsSurvey(geometry, recentLocationStore.get())
+        if (!isSurvey && !confirmIsSurvey(requireContext())) {
             setLocked(false)
             return
         }
         tempHideQuest() // make it disappear. the questType should take care the quest does not appear again
 
         withContext(Dispatchers.IO) {
-            elementEditsController.add(externalQuestType, geometry, "survey", action, questKey)
+            elementEditsController.add(externalQuestType, geometry, "survey", action, isSurvey, questKey)
         }
         listener?.onEdited(externalQuestType, geometry)
     }

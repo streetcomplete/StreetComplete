@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometryUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
@@ -61,6 +62,15 @@ class MapDataWithEditsSource internal constructor(
     private val deletedElements = HashSet<ElementKey>()
     private val updatedElements = HashMap<ElementKey, Element>()
     private val updatedGeometries = HashMap<ElementKey, ElementGeometry?>()
+
+    // onReplacedForBBox may not be called in parallel
+    private val onReplacedForBBoxLock = Any()
+
+    // access to isReplacingForBBox is atomic (didn't want to pull in kotlinx-atomicfu dependency just for this)
+    private val isReplacingForBBoxLock = Any()
+    private var isReplacingForBBox: Boolean = false
+
+    private val updatesWhileReplacingBBox = MapDataWithGeometryUpdates()
 
     private val mapDataListener = object : MapDataController.Listener {
 
@@ -137,12 +147,21 @@ class MapDataWithEditsSource internal constructor(
         }
 
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
-            synchronized(this) {
-                rebuildLocalChanges()
-                modifyBBoxMapData(bbox, mapDataWithGeometry)
-            }
+            synchronized(onReplacedForBBoxLock) {
+                synchronized(isReplacingForBBoxLock) { isReplacingForBBox = true }
 
-            callOnReplacedForBBox(bbox, mapDataWithGeometry)
+                synchronized(this) {
+                    rebuildLocalChanges()
+                    modifyBBoxMapData(bbox, mapDataWithGeometry)
+                }
+
+                callOnReplacedForBBox(bbox, mapDataWithGeometry)
+
+                synchronized(isReplacingForBBoxLock) { isReplacingForBBox = false }
+
+                callOnUpdated(updatesWhileReplacingBBox.updated, updatesWhileReplacingBBox.deleted)
+                updatesWhileReplacingBBox.clear()
+            }
         }
 
         override fun onCleared() {
@@ -527,11 +546,17 @@ class MapDataWithEditsSource internal constructor(
         listeners.remove(listener)
     }
 
-    private fun callOnUpdated(updated: MapDataWithGeometry = MutableMapDataWithGeometry(), deleted: Collection<ElementKey> = emptyList()) {
+    private fun callOnUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
         if (updated.size == 0 && deleted.isEmpty()) return
         if (updated.size > 10 || deleted.size > 10) Log.i(TAG, "updated ${updated.size}, deleted ${deleted.size}")
         else Log.i(TAG, "updated: ${updated.map { it.key }}, deleted: $deleted")
         listeners.forEach { it.onUpdated(updated, deleted) }
+
+        synchronized(isReplacingForBBoxLock) {
+            if (isReplacingForBBox) {
+                updatesWhileReplacingBBox.add(updated, deleted)
+            }
+        }
     }
     private fun callOnReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
         if (mapDataWithGeometry.size == 0) return

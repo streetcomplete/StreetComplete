@@ -20,7 +20,7 @@
 
     <ImageView
         android:id="@+id/shineView1"
-        android:src="@drawable/shine"
+        app:srcCompat="@drawable/shine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -34,7 +34,7 @@
 
     <ImageView
         android:id="@+id/shineView2"
-        android:src="@drawable/shine"
+        app:srcCompat="@drawable/shine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:rotation="180"

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
+import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.osmfeatures.Feature
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
@@ -16,7 +17,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.booleanQuestSettingsDialog
@@ -138,8 +138,9 @@ class AddOpeningHours(
 
     override fun getTitle(tags: Map<String, String>): Int {
         // treat invalid opening hours like it is not set at all
-        val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
-        return if (hasValidOpeningHours) {
+        val oh = tags["opening_hours"]?.toOpeningHoursOrNull(lenient = true)
+        val hasSupportedOpeningHours = oh != null && oh.isSupportedOpeningHours()
+        return if (hasSupportedOpeningHours) {
             R.string.quest_openingHours_resurvey_title
         } else {
             R.string.quest_openingHours_title
@@ -155,15 +156,17 @@ class AddOpeningHours(
         // only show places that can be named somehow
         if (!hasName(tags)) return false
         // no opening_hours yet -> new survey
-        val oh = tags["opening_hours"] ?: return true
+        val ohStr = tags["opening_hours"] ?: return true
         /* don't show if it was recently checked (actually already checked by filter, but it is a
            performance improvement to avoid parsing the opening hours en masse if possible) */
         if (!olderThan1Year.matches(element)) return false
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
-        val rules = oh.toOpeningHoursRules() ?: return true
-        // only display supported rules
+        // be strict
+        val oh = ohStr.toOpeningHoursOrNull(lenient = false) ?: return true
         if (prefs.getBoolean(RESURVEY_ALL_OPENING_HOURS, false)) return true
-        return rules.isSupportedOpeningHours()
+        // only display supported rules, however, those that are supported but have colliding
+        // weekdays should be shown (->resurveyed), as they are likely mistakes
+        return oh.rules.all { rule -> rule.isSupportedOpeningHours() } && !oh.containsTimePoints()
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

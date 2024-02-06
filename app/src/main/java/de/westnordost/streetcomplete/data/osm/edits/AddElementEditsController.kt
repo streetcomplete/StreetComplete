@@ -9,6 +9,7 @@ interface AddElementEditsController {
         geometry: ElementGeometry,
         source: String,
         action: ElementEditAction,
+        isNearUserLocation: Boolean,
         key: QuestKey? = null
     )
 }

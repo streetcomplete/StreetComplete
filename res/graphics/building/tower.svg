@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+ <path d="m84 56v68h-40v-68z" fill="#888"/>
+ <path d="m32 12v36h63.998l2e-3 -36z" fill="#9c9c9c"/>
+ <path d="m40 12v36h48l-1e-5 -36z" fill="#aaa"/>
+ <path d="m76 12v36h-24v-36z" fill="#c6c6c6"/>
+ <rect x="32" y="20" width="64" height="20" fill="#bacfef"/>
+ <path d="m78 56v68h-28v-68z" fill="#a8a8a8"/>
+ <path d="m70 56v68h-12v-68z" fill="#c6c6c6"/>
+ <rect x="28" y="48" width="72" height="8" fill="#5878b7"/>
+ <rect x="28" y="4" width="72" height="8" fill="#5878b7"/>
+ <rect x="44" y="56" width="40" height="8" fill-opacity=".2"/>
+ <rect x="32" y="20" width="64" height="4" fill="#859dbf"/>
+ <rect x="32" y="20" width="4" height="20" fill="#6f829f"/>
+ <rect x="92" y="20" width="4" height="20" fill="#6f829f"/>
+ <rect x="80" y="20" width="6" height="20" fill="#6f829f"/>
+ <rect x="60" y="20" width="8" height="20" fill="#6f829f"/>
+ <rect x="42" y="20" width="6" height="20" fill="#6f829f"/>
+</svg>

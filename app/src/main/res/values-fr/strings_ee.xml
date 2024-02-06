@@ -281,7 +281,6 @@
     <string name="quest_crossing_type_raised">Passage surélevé</string>
     <string name="quest_crossing_type_signals_controlled_zebra">Feux de circulation et zébra</string>
     <string name="quest_crossing_type_zebra">Zébra</string>
-    <string name="quest_buildingType_tent">Tente fixe</string>
     <string name="quest_buildingType_transit_shelter">Abri de transport en commun</string>
     <string name="quest_buildingType_riding_hall">Manège d\'équitation</string>
     <string name="quest_surface_value_metal_grid">Grille métallique</string>

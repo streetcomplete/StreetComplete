@@ -112,8 +112,8 @@ class OsmQuestController internal constructor(
                 // quests that refer to elements that have been deleted shall be deleted
                 val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
-                val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
-                Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${seconds.format(1)}s")
+                val millis = nowAsEpochMilliseconds() - time
+                Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${millis}ms")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
                 val questKeysToDelete = lastAnsweredQuestKey?.let {

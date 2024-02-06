@@ -66,10 +66,10 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
     }
 
     private fun confirmNoSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_maxheight_answer_noSign_question_yes) { _, _ -> applyAnswer(NoMaxHeightSign(true)) }
-            .setNegativeButton(R.string.quest_maxheight_answer_noSign_question_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
+        activity?.let { AlertDialog.Builder(requireContext())
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoMaxHeightSign) }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
         }
     }

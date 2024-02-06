@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.dialogs
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.databinding.DialogAccessManagerBinding
 import de.westnordost.streetcomplete.databinding.RowAccessBinding
+import de.westnordost.streetcomplete.util.dialogs.showAddConditionalDialog
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 
 class AccessManagerDialog(context: Context, tags: Map<String, String>, onClickOk: (StringMapChangesBuilder) -> Unit) : AlertDialog(context) {

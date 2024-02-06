@@ -76,7 +76,8 @@ import de.westnordost.streetcomplete.quests.contact.AddContactWebsite
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_kerb_height.AddCrossingKerbHeight
-import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
+import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarkings
+import de.westnordost.streetcomplete.quests.crossing_signals.AddCrossingSignals
 import de.westnordost.streetcomplete.quests.cuisine.AddCuisine
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.defibrillator.AddDefibrillatorLocation
@@ -389,8 +390,9 @@ fun getQuestTypeList(
 
     // crossing quests: A little later because they are not all solvable from a distance
     38 to AddCrossing(),
+    164 to AddCrossingSignals(),
     39 to AddCrossingIsland(), // can be done at a glance
-    40 to AddCrossingType(),
+    163 to AddCrossingMarkings(),
     41 to AddTactilePavingCrosswalk(),
     159 to AddCrossingKerbHeight(),
     42 to AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.databinding.FragmentOverlayImageSelectBindi
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
+import de.westnordost.streetcomplete.view.setImage
 
 /** Abstract base class for any overlay form in which the user selects an image item */
 abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
@@ -20,6 +21,9 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
     protected open val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
+    /** item to display as last picked answer. May not be accessed before onCreate */
+    protected open val lastPickedItem: DisplayItem<I>? = null
+
     protected open val cellLayoutId: Int = R.layout.cell_icon_select_with_label_below
 
     var selectedItem: DisplayItem<I>? = null
@@ -44,6 +48,14 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
         LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.selectButton.selectedCellView, true)
         binding.selectButton.selectedCellView.children.first().background = null
+
+        binding.lastPickedButton.isGone = lastPickedItem == null
+        binding.lastPickedButton.setImage(lastPickedItem?.image)
+        binding.lastPickedButton.setOnClickListener {
+            selectedItem = lastPickedItem
+            binding.lastPickedButton.isGone = true
+            checkIsFormComplete()
+        }
 
         updateSelectedCell()
     }

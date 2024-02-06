@@ -528,7 +528,6 @@
     <string name="quest_buildingType_digester">Digester (bioreactor)</string>
     <string name="quest_buildingType_transformer_tower">Transformer tower</string>
     <string name="quest_buildingType_transit_shelter">Transit shelter</string>
-    <string name="quest_buildingType_tent">Stationary tent</string>
     <string name="quest_buildingType_elevator">Elevator</string>
     <string name="quest_crossing_type_zebra">Zebra</string>
     <string name="quest_crossing_type_signals_controlled_zebra">Traffic lights and zebra</string>

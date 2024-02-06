@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.dialogs
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -19,11 +19,10 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -155,7 +154,7 @@ fun showAddConditionalDialog(context: Context, keys: List<String>, values: List<
                         TimeRange(8 * 60, 18 * 60, false),
                         DateFormat.is24HourFormat(context)
                     ) { timeRange ->
-                        val oh = listOf(OpeningWeekdaysRow(weekdays, timeRange)).toOpeningHoursRules()
+                        val oh = listOf(OpeningWeekdaysRow(weekdays, timeRange)).toOpeningHours()
                         conditions["time"] = oh.toString()
                         createFullValue()
                     }
@@ -278,7 +277,7 @@ fun showOtherConditionalDialog(context: Context, keys: List<String>, values: Lis
                         TimeRange(8 * 60, 18 * 60, false),
                         DateFormat.is24HourFormat(context)
                     ) { timeRange ->
-                        val oh = listOf(OpeningWeekdaysRow(weekdays, timeRange)).toOpeningHoursRules()
+                        val oh = listOf(OpeningWeekdaysRow(weekdays, timeRange)).toOpeningHours()
                         conditions["time"] = oh.toString()
                         createFullValue()
                     }

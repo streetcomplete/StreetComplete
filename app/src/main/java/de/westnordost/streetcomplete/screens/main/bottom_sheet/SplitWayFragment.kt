@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.data.location.checkIsSurvey
+import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitAtLinePosition
@@ -159,10 +160,11 @@ class SplitWayFragment :
         restoreBackground()
         binding.glassPane.isGone = false
         if (splits.size <= 2 || confirmManySplits()) {
-            if (checkIsSurvey(requireContext(), geometry, recentLocationStore.get())) {
+            val isSurvey = checkIsSurvey(geometry, recentLocationStore.get())
+            if (isSurvey || confirmIsSurvey(requireContext())) {
                 val action = SplitWayAction(way, ArrayList(splits.map { it.first }))
                 withContext(Dispatchers.IO) {
-                    elementEditsController.add(editType, geometry, "survey,extra", action)
+                    elementEditsController.add(editType, geometry, "survey,extra", action, isSurvey)
                 }
                 listener?.onSplittedWay(editType, way, geometry)
                 return

@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
+import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -59,6 +62,7 @@ class MoveNodeFragment :
     private val overlayRegistry: OverlayRegistry by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val countryInfos: CountryInfos by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
     private val prefs: SharedPreferences by inject()
 
     override val elementKey: ElementKey by lazy { node.key }
@@ -152,13 +156,20 @@ class MoveNodeFragment :
     }
 
     private fun onClickOk() {
-        val pos = getMarkerPosition() ?: return
-        if (!checkIsDistanceOkAndUpdateText(pos)) return
+        val position = getMarkerPosition() ?: return
+        if (!checkIsDistanceOkAndUpdateText(position)) return
         restoreBackground()
         viewLifecycleScope.launch {
-            val action = MoveNodeAction(node, pos)
-            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey,extra", action)
-            listener?.onMovedNode(editType, pos)
+            moveNodeTo(position)
+        }
+    }
+
+    private suspend fun moveNodeTo(position: LatLon) {
+        val isSurvey = checkIsSurvey(ElementPointGeometry(position), recentLocationStore.get())
+        if (isSurvey || confirmIsSurvey(requireContext())) {
+            val action = MoveNodeAction(node, position)
+            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey,extra", action, isSurvey)
+            listener?.onMovedNode(editType, position)
         }
     }
 

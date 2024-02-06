@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlay
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
+import de.westnordost.streetcomplete.overlays.buildings.BuildingsOverlay
 import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.restriction.RestrictionOverlay
 import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
@@ -60,6 +61,7 @@ fun overlaysRegistry(
     2 to StreetParkingOverlay(),
     3 to AddressOverlay(getCountryCodeByLocation),
     4 to ShopsOverlay(getFeature),
+    7 to BuildingsOverlay(),
     (EE_QUEST_OFFSET + 1) to RestrictionOverlay(),
     (EE_QUEST_OFFSET + 0) to CustomOverlay(prefs),
 ))

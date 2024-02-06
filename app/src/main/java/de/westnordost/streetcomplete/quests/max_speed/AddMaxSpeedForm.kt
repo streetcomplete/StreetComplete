@@ -34,7 +34,7 @@ import de.westnordost.streetcomplete.util.ktx.advisorySpeedLimitSignLayoutResId
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.ktx.livingStreetSignDrawableResId
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
-import de.westnordost.streetcomplete.util.showAddConditionalDialog
+import de.westnordost.streetcomplete.util.dialogs.showAddConditionalDialog
 
 class AddMaxSpeedForm : AbstractOsmQuestForm<Pair<MaxSpeedAnswer, Pair<String, String>?>>() {
 

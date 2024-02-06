@@ -51,9 +51,9 @@ class ElementEditsControllerTest {
         on(action.newElementsCount).thenReturn(NewElementsCount(1, 2, 3))
         on(action.elementKeys).thenReturn(elementKeys)
 
-        ctrl.add(QUEST_TYPE, pGeom(), "test", action)
+        ctrl.add(QUEST_TYPE, pGeom(), "test", action, true)
 
-        verifyAdd(ElementEdit(0, QUEST_TYPE, pGeom(), "test", nowAsEpochMilliseconds(), false, action))
+        verifyAdd(ElementEdit(0, QUEST_TYPE, pGeom(), "test", nowAsEpochMilliseconds(), false, action, true))
     }
 
     @Test fun markSyncFailed() {

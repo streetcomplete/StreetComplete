@@ -222,7 +222,6 @@
     <string name="quest_buildingType_sports_hall">Pabellón de deportes</string>
     <string name="quest_buildingType_transformer_tower">Torre transformadora</string>
     <string name="quest_buildingType_transit_shelter">Refugio de tránsito</string>
-    <string name="quest_buildingType_tent">Carpa estacionaria</string>
     <string name="quest_crossing_type_signals_controlled_zebra">Semáforos y cebra</string>
     <string name="quest_crossing_type_raised">Cruce elevado</string>
     <string name="quest_surface_value_stepping_stones">Piedras pasaderas</string>
@@ -339,7 +338,7 @@
 \n Si hay dos pistas a lo largo de una plataforma, use valores separados por punto y coma, p. 2;3</string>
     <string name="quest_buildingType_digester">Digestor (biorreactor)</string>
     <string name="quest_construction_value">Ajustar \"construcción =...\", o déjelo en blanco si se desconoce</string>
-    <string name="tutorial_info_fork_message"><b>SCEE</b> 
+    <string name="tutorial_info_fork_message"><b>SCEE</b>
 \n
 \n Esta es una versión modificada de StreetComplete. Está destinado a usuarios experimentados con conocimientos avanzados sobre OSM. Te da más control, pero también más <i>responsabilidad</i>.
 \n Esto se aplica especialmente a la posibilidad de editar etiquetas sin procesar y eliminar nodos, pero también a la modificación de la selección de elementos para tareas. Las tareas añadidas en SCEE <i>pueden no ser respondibles</i> en todos los casos y están deshabilitadas de forma predeterminada. Por favor, ocúltelas en caso de que no pueda responderlas y <i>no envíe notas de spam</i>.

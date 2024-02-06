@@ -27,7 +27,7 @@
         android:layout_toEndOf="@id/takePhotoButton"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:src="@drawable/ic_attach_gpx_24dp"
+        app:srcCompat="@drawable/ic_attach_gpx_24dp"
         app:tint="@color/disabled_text"
         android:visibility="gone"
         tools:visibility="visible"

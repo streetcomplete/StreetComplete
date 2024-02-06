@@ -15,14 +15,14 @@ class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes with
-          crossing = traffic_signals
+          (crossing = traffic_signals or crossing:signals = yes)
           and highway ~ crossing|traffic_signals
           and foot != no
           and !button_operated
     """
     override val changesetComment = "Specify whether traffic signals have a button for pedestrians"
     override val wikiLink = "Tag:highway=traffic_signals"
-    override val icon = R.drawable.ic_quest_traffic_lights
+    override val icon = R.drawable.ic_quest_traffic_lights_button
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_button_title

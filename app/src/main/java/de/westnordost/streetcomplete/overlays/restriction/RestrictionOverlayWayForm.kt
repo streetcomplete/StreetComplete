@@ -62,8 +62,8 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceToArcs
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.finalBearingTo
-import de.westnordost.streetcomplete.util.showAddConditionalDialog
-import de.westnordost.streetcomplete.util.showOtherConditionalDialog
+import de.westnordost.streetcomplete.util.dialogs.showAddConditionalDialog
+import de.westnordost.streetcomplete.util.dialogs.showOtherConditionalDialog
 import de.westnordost.streetcomplete.view.ArrayImageAdapter
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
