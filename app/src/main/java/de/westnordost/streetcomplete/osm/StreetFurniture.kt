@@ -245,20 +245,29 @@ private val IS_STREET_FURNITURE_EXPRESSION by lazy {
 }
 
 val POPULAR_STREET_FURNITURE_FEATURE_IDS = listOf(
-    // ordered by popularity, skipping trees as there are multiple variants of them
-    "highway/street_lamp",      // 3.8M
-    "amenity/bench",            // 2.3M
-    "emergency/fire_hydrant",   // 1.9M
-    "amenity/bicycle_parking",  // 0.6M
-    "amenity/shelter",          // 0.5M
-    "amenity/toilets",          // 0.4M
-    // "amenity/post_box",      // 0.4M
-    // blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
-    // waiting for response in https://github.com/ideditor/schema-builder/issues/94
-    "amenity/drinking_water",   // 0.3M
-    "leisure/picnic_table",     // 0.3M
+    "natural/tree/broadleaved",    // 4.0 M
+    "highway/street_lamp",         // 4.0 M
+    "amenity/bench",               // 2.4 M
+    "emergency/fire_hydrant",      // 2.0 M
 
-    // popular, a bit less than some competing entries
-    // but interesting and worth promoting
-    "emergency/defibrillator",  // 0.08M
+    "amenity/waste_basket",        // 0.7 M
+    "amenity/bicycle_parking",     // 0.6 M
+    "amenity/shelter",             // 0.5 M
+
+    "amenity/recycling_container", // 0.4 M
+    "amenity/toilets",             // 0.4 M
+
+    // "amenity/post_box",         // 0.4 M
+    // blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
+
+    // More:
+
+    // mostly found in parks/plazas, i.e. specific places instead of ~everywhere
+    //"historic/memorial",           // 0.4 M (if this is displayed in quick select, artwork should probably too)
+    //"amenity/drinking_water",      // 0.3 M
+    //"leisure/picnic_table",        // 0.3 M
+
+    // found most often on hiking routes where there are not that many "furniture" features anyway
+    //"information/guidepost",       // 0.5M
+    //"tourism/information/board",   // 0.3M
 )
