@@ -4,11 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isShopOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
@@ -42,14 +41,14 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override val changesetComment = "Survey whether smoking is allowed or prohibited"
     override val wikiLink = "Key:smoking"
     override val icon = R.drawable.ic_quest_smoking
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_smoking_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isShopOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = SmokingAllowedForm()
 

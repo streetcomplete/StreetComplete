@@ -6,12 +6,11 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.isShopOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 
 class AddPlaceName(
     private val getFeature: (Element) -> Feature?
@@ -114,7 +113,7 @@ class AddPlaceName(
     override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title
@@ -126,7 +125,7 @@ class AddPlaceName(
         filter.matches(element) && getFeature(element) != null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isShopOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = AddPlaceNameForm()
 

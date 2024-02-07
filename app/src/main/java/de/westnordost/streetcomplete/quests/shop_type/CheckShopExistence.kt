@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isShop
-import de.westnordost.streetcomplete.osm.isShopOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.osm.updateCheckDate
 
 class CheckShopExistence(
@@ -49,11 +49,11 @@ class CheckShopExistence(
 
     override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) &&
-        element.isShop() &&
+        element.isPlace() &&
         hasName(element)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isShopOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = CheckShopExistenceForm()
 

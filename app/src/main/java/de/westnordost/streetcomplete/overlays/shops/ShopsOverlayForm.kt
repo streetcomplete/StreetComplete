@@ -21,13 +21,13 @@ import de.westnordost.streetcomplete.databinding.FragmentOverlayShopsBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.parseLocalizedNames
-import de.westnordost.streetcomplete.osm.replaceShop
+import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
-import de.westnordost.streetcomplete.osm.POPULAR_SHOP_FEATURE_IDS
-import de.westnordost.streetcomplete.osm.isDisusedShop
-import de.westnordost.streetcomplete.osm.isShop
+import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.isDisusedPlace
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
@@ -72,7 +72,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
             val locales = getLocalesForFeatureDictionary(resources.configuration)
             val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
 
-            if (element.isDisusedShop()) {
+            if (element.isDisusedPlace()) {
                 featureDictionary.byId("shop/vacant").forLocale(*locales).get()
             } else {
                 featureDictionary
@@ -115,7 +115,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
                 ::onSelectedFeature,
-                POPULAR_SHOP_FEATURE_IDS,
+                POPULAR_PLACE_FEATURE_IDS,
             ).show()
         }
 
@@ -158,7 +158,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     private fun filterOnlyShops(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isShop() || feature.id == "shop/vacant"
+        return fakeElement.isPlace() || feature.id == "shop/vacant"
     }
 
     private fun onSelectedFeature(feature: Feature) {
@@ -264,7 +264,7 @@ private suspend fun createEditAction(
     val hasChangedFeature = newFeature != previousFeature
     val isFeatureWithName = newFeature.addTags?.get("name") != null
     val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
-    val wasVacant = element != null && element.isDisusedShop()
+    val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
 
     val doReplaceShop =
@@ -300,7 +300,7 @@ private suspend fun createEditAction(
         }
 
     if (doReplaceShop) {
-        tagChanges.replaceShop(newFeature.addTags)
+        tagChanges.replacePlace(newFeature.addTags)
     } else {
         for ((key, value) in previousFeature?.removeTags.orEmpty()) {
             tagChanges.remove(key)

@@ -9,10 +9,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isDisusedShop
-import de.westnordost.streetcomplete.osm.isShop
-import de.westnordost.streetcomplete.osm.isShopOrDisusedShop
-import de.westnordost.streetcomplete.osm.replaceShop
+import de.westnordost.streetcomplete.osm.isDisusedPlace
+import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.osm.updateCheckDate
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
@@ -51,15 +51,15 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element): Boolean =
-        element.isDisusedShop() &&
+        element.isDisusedPlace() &&
         filter.matches(element) &&
         /* elements tagged like "shop=ice_cream + disused:amenity=bank" should not appear as quests.
          *  This is arguably a tagging mistake, but that mistake should not lead to all the tags of
          *  this element being cleared when the quest is answered */
-        !element.isShop()
+        !element.isPlace()
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isShopOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = ShopTypeForm()
 
@@ -69,7 +69,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
                 tags.updateCheckDate()
             }
             is ShopType -> {
-                tags.replaceShop(answer.tags)
+                tags.replacePlace(answer.tags)
             }
         }
     }

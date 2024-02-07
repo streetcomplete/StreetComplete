@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
-import de.westnordost.streetcomplete.osm.POPULAR_SHOP_FEATURE_IDS
-import de.westnordost.streetcomplete.osm.isShop
+import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
@@ -47,14 +47,14 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
                 ::onSelectedFeature,
-                POPULAR_SHOP_FEATURE_IDS,
+                POPULAR_PLACE_FEATURE_IDS,
             ).show()
         }
     }
 
     private fun filterOnlyShops(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isShop()
+        return fakeElement.isPlace()
     }
 
     private fun onSelectedFeature(feature: Feature) {

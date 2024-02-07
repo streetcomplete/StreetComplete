@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isShopOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 
 class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
@@ -110,14 +110,14 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
     override val changesetComment = "Survey wheelchair accessibility of places"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isShopOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = AddWheelchairAccessBusinessForm()
 

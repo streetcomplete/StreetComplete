@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isShop
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
@@ -44,7 +44,7 @@ class AddLevel : OsmElementQuestType<String> {
     /* disabled because in a mall with multiple levels, if there are nodes with no level defined,
      * it really makes no sense to tag something as vacant if the level is not known. Instead, if
      * the user cannot find the place on any level in the mall, delete the element completely. */
-    override val isReplaceShopEnabled = false
+    override val isReplacePlaceEnabled = false
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
@@ -83,7 +83,7 @@ class AddLevel : OsmElementQuestType<String> {
 
         // now, return all shops that have no level tagged and are inside those multi-level malls
         val shopsWithoutLevel = mapData
-            .filter { filter.matches(it) && it.isShop() }
+            .filter { filter.matches(it) && it.isPlace() }
             .toMutableList()
         if (shopsWithoutLevel.isEmpty()) return emptyList()
 
@@ -105,7 +105,7 @@ class AddLevel : OsmElementQuestType<String> {
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        if (!filter.matches(element) || !element.isShop()) return false
+        if (!filter.matches(element) || !element.isPlace()) return false
         // for shops with no level, we actually need to look at geometry in order to find if it is
         // contained within any multi-level mall
         return null
