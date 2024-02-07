@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.overlays.street_furniture
 import android.os.Bundle
 import android.view.View
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -94,7 +95,7 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
             SearchFeaturesDialog(
                 requireContext(),
                 featureDictionary,
-                element?.geometryType,
+                element?.geometryType ?: GeometryType.POINT, // for new features: always POINT
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
                 ::filterOnlyStreetFurniture,

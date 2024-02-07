@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs.PREFERRED_LANGUAGE_FOR_NAMES
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -109,7 +110,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
             SearchFeaturesDialog(
                 requireContext(),
                 featureDictionary,
-                element?.geometryType,
+                element?.geometryType ?: GeometryType.POINT,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
