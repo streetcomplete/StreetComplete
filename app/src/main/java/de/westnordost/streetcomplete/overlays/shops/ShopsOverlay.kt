@@ -19,10 +19,10 @@ import de.westnordost.streetcomplete.util.getNameLabel
 
 class ShopsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
-    override val title = R.string.overlay_shops
+    override val title = R.string.overlay_places
     override val icon = R.drawable.ic_quest_shop
-    override val changesetComment = "Survey shops etc."
-    override val wikiLink: String = "Key:shop"
+    override val changesetComment = "Survey shops, places etc."
+    override val wikiLink = null
     override val achievements = listOf(EditTypeAchievement.CITIZEN)
     override val hidesQuestTypes = setOf(
         AddPlaceName::class.simpleName!!,

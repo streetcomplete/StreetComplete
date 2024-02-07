@@ -1687,7 +1687,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
 
     <string name="overlay_buildings">Buildings</string>
 
-    <string name="overlay_shops">Shops</string>
+    <string name="overlay_places">Places</string>
     <string name="name_label">Name:</string>
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">Other kind of place</string>

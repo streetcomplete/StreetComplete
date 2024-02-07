@@ -17,57 +17,25 @@ fun Element.isDisusedShop(): Boolean =
 fun Element.isShop(): Boolean =
     IS_SHOP_EXPRESSION.matches(this)
 
-/** Tenant of retail or commercial rooms, e.g. a shop, an office etc.
- *  Something that can occupy (a part) of a non-purpose-built building
+/** Map features like shops or amenities that usually have a name and can be entered.
  *
- *  So, no larger purpose-built things like malls, cinemas, theatres, zoos, aquariums,
- *  bowling alleys...
+ *  To demarcate this category from others, the following are not included:
+ *  - things that are rather structures or buildings than places (e.g. communication towers, train station)
+ *  - landuses, outside-things (golf courses, zoos, marketplaces, car parking)
  *
  *  Note: When this function is modified, please follow update instructions in:
- *  https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/README.md
+ *        https://github.com/mnalis/StreetComplete-taginfo-categorize/blob/master/README.md
+ *
+ *  Important: The contribution policy here is that only things may be added if an iD preset for it
+ *             exists. This policy exists in order to reduce effort to maintain this list, i.e. we
+ *             don't want to check, weigh and balance requests in parallel to iD maintainers (in
+ *             terms of notability, it being unambiguous, consensus etc.)
  *  */
 private val IS_SHOP_EXPRESSION by lazy {
     val tags = mapOf(
-        "leisure" to listOf(
-            "adult_gaming_centre",
-            "amusement_arcade",
-            // "bowling_alley", // purpose-built
-            "dance", // not necessarily purpose-built, see fitness centre
-            "dancing_school",
-            "escape_game",
-            // "ice_rink", // purpose-built
-            "indoor_play",
-            "fitness_centre", // not necessarily purpose-built, esp. the smaller ones
-            "hackerspace",
-            // "resort", // a kind of hotel+theme/water/whatever park
-            "sauna",
-            // "sports_centre", // purpose-built
-            "tanning_salon",
-            // "trampoline_park", // see sports centre
-            // "water_park" // purpose-built
-        ),
-        "tourism" to listOf(
-            // tourism = information only if it is an office, see above
-            // purpose-built
-            // "aquarium",
-            // "zoo",
-            // "theme_park",
-            "gallery", // could be just an artist's show-room
-            "museum", // only the larger ones are purpose-built
-            // tourist accommodations are usually not in something that could otherwise be just a showroom, office etc.
-            // "alpine_hut",
-            // "apartment",
-            // "chalet",
-            // "camp_site",
-            // "guest_house",
-            // "hostel",
-            // "hotel",
-            // "motel",
-
-        ),
         "amenity" to listOf(
-            /* amenity, the "garbage patch in the OSM ocean" - https://media.ccc.de/v/sotm2022-18515-every-door-and-the-future-of-poi-in-openstreetmap#t=528
-               sorted by occurrence on wiki page Key:amenity */
+            /* grouped by subcategory, sorted by alphabet */
+
             /* sustenance */
             "bar",
             "biergarten",
@@ -75,115 +43,163 @@ private val IS_SHOP_EXPRESSION by lazy {
             "fast_food",
             "food_court",
             "ice_cream",
-            "internet_cafe",
             "pub",
             "restaurant",
 
             /* education */
             "childcare",
-            // "college", purpose-built
-            "dive_centre", // depends, but can be in a showroom just like a driving school
-            "dojo", // same as fitness_centre
+            "college",
+            "dancing_school",
+            "dive_centre",
+            "dojo",
             "driving_school",
             "kindergarten",
             "language_school",
             "library",
             "music_school",
             "prep_school",
-            // "research_institute", purpose-built
-            // "school", purpose-built
+            "research_institute",
+            "school",
             "toy_library",
             "training",
-            // "university", purpose-built
+            "university",
 
             /* transportation */
-            // "bicycle_rental", // usually outside, could be automatic too
-            // "boat_rental", // usually outside, could be automatic too
-            // "ski_rental", // seems borderline
-            "car_rental",
-            "car_wash", // purpose-built, but see fuel
-            "fuel", // purpose-built but too much of a shop that it would be weird to leave out
+            "boat_rental", // usually there is some kind of office, even if it is just a small stall
+            "car_rental", // usually there is some kind of office
+            "car_wash",
+            "fuel",
             "motorcycle_rental",
-            "vehicle_inspection", // often similar to a car repair shop
+            "vehicle_inspection",
 
             /* financial */
             "bank",
             "bureau_de_change",
+            "mobile_money_agent",
             "money_transfer",
             "payment_centre",
 
             /* healthcare */
-            "clinic", // sizes vary a lot, not necessarily purpose-built
-            // "crematorium", // purpose-built
+            "clinic",
             "dentist",
             "doctors",
-            // "mortuary", // purpose-built
-            // "hospital", // purpose-built
+            "health_post",
+            "hospital",
+            "nursing_home",
             "pharmacy",
-            // "social_facility", only if it is not residential, see above
+            "social_facility",
             "veterinary",
 
             /* entertainment, arts & culture */
+            "archive",
             "arts_centre",
             "brothel",
-            "casino", // usually purpose-built, but doesn't have to be
-            // "cinema", // typically purpose-built
-            "community_centre", // often purpose-built, but not necessarily
-            // "conference_centre", // purpose-built
-            "events_venue", // smaller ones are not purpose-built
-            // "exhibition_centre", // purpose-built
+            "casino",
+            "cinema",
+            "community_centre",
+            "conference_centre",
+            "events_venue",
+            "exhibition_centre",
             "gambling",
-            // "love_hotel",
-            // "planetarium", // like cinema
+            "hookah_lounge",
+            "love_hotel",
+            "music_venue",
             "nightclub",
+            "planetarium",
+            "ski_rental",
             "social_centre",
             "stripclub",
             "studio",
             "swingerclub",
-            // "theatre",
+            "theatre",
 
             /* public service */
-            // "courthouse", // purpose-built
-            // "fire_station", // purpose-built
-            // "police", // purpose-built
+            "courthouse",
+            "embassy", // deprecated now
+            "fire_station",
+            "mailroom",
+            "police",
+            "post_depot",
             "post_office",
-            // "ranger_station", // like police station
-            // "townhall", // purpose-built
+            "prison",
+            "ranger_station",
+            "townhall",
 
-            /* other */
-            "animal_boarding", // not necessarily purpose-built
-            // "animal_breeding",
-            "animal_shelter", // not necessarily purpose-built
+            /* facilities */
+            "lavoir",
+            "left_luggage",
+
+            /* others */
+            "animal_boarding",
+            "animal_shelter",
+            "animal_training",
             "coworking_space", // basically an office
-            // "embassy", // usually purpose-built / there is also office=diplomatic for those that have services
-            // "monastery", // purpose-built, often historic
-            "place_of_worship" // usually-purpose-built, but not always (also, prayer rooms)
-        )
+            "crematorium",
+            "funeral_hall",
+            "internet_cafe",
+            "meditation_centre",
+            "monastery",
+            "mortuary",
+            "place_of_mourning",
+            "place_of_worship",
+            "public_bath",
+        ),
+        "emergency" to listOf(
+            "air_rescue_service",
+            "ambulance_station",
+            "disaster_response",
+            "mountain_rescue",
+            "water_rescue",
+        ),
+        "leisure" to listOf(
+            "adult_gaming_centre",
+            "amusement_arcade",
+            "bowling_alley",
+            "dance",
+            "escape_game",
+            "fitness_centre",
+            "hackerspace",
+            "ice_rink",
+            "indoor_play",
+            "sauna",
+            "sports_hall",
+            "stadium",
+            "tanning_salon",
+            "trampoline_park",
+        ),
+        "military" to listOf(
+            "office",
+        ),
+        "tourism" to listOf(
+            "alpine_hut",
+            "apartment",
+            "aquarium",
+            "chalet",
+            "gallery",
+            "guest_house",
+            "hostel",
+            "hotel",
+            "hunting_lodge",
+            // "information", only if it is an office, see below
+            "museum",
+            "motel",
+            "trail_riding_station", // motel for riders
+            "wilderness_hut"
+        ),
     )
     .map { it.key + " ~ " + it.value.joinToString("|") }
     .joinToString("\n    or ")
 
     """
     nodes, ways, relations with
-    shop and shop !~ no|vacant|mall
-    or office and office !~ no|vacant
-    or healthcare and healthcare != hospital
-    or craft
+    $tags
     or club
-    or tourism = information and information = office
-    or amenity = social_facility and social_facility ~ ${listOf(
-        // only non-residential ones
-        "ambulatory_care",
-        "clothing_bank",
-        "dairy_kitchen",
-        "day_care",
-        "food_bank",
-        "healthcare",
-        "outreach",
-        "soup_kitchen",
-        "workshop"
-    ).joinToString("|")}
-    or $tags""".toElementFilterExpression()
+    or craft
+    or healthcare
+    or office and office !~ no|vacant
+    or shop and shop !~ no|vacant
+    or tourism = information and information ~ office|visitor_centre
+    """.toElementFilterExpression()
 }
 
 /** Expression to see if an element is some kind of vacant shop */
