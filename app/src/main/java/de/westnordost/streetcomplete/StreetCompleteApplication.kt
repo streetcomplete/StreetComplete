@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.questsModule
+import de.westnordost.streetcomplete.screens.about.aboutModule
 import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
@@ -92,6 +93,7 @@ class StreetCompleteApplication : Application() {
             modules(
                 achievementsModule,
                 appModule,
+                aboutModule,
                 createdElementsModule,
                 dbModule,
                 logsModule,
