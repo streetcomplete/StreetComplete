@@ -83,7 +83,9 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
 
     private fun onClickFilter() {
         LogsFiltersDialog(requireContext(), viewModel.filters.value) { newFilters ->
-            viewModel.filters.value = newFilters
+            if (newFilters != null) {
+                viewModel.filters.value = newFilters
+            }
         }.show()
     }
 
