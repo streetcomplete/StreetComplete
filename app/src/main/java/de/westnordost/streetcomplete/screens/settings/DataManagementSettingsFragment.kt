@@ -597,7 +597,7 @@ class DataManagementSettingsFragment :
         val settings = prefs.all.filterKeys {
             !it.contains("TangramPinsSpriteSheet") // this is huge and gets generated if missing anyway
                 && !it.contains("TangramIconsSpriteSheet") // this is huge and gets generated if missing anyway
-                && !it.contains("oauth.") // login data
+                && it != Prefs.OAUTH2_ACCESS_TOKEN // login
                 && !it.contains("osm.") // login data
                 && !it.matches(perPresetQuestSetting) // per-preset quest settings should be stored with presets, because preset id is never guaranteed to match
                 && !it.startsWith("custom_overlay") // custom overlays are exported separately
