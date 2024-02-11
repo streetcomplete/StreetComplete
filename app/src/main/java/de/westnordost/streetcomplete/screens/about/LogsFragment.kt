@@ -4,9 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
@@ -15,6 +12,7 @@ import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.databinding.FragmentLogsBinding
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.now
+import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.launch
@@ -38,14 +36,10 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
         binding.logsList.itemAnimator = null // default animations are too slow when logging many messages quickly
         binding.logsList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.logs.collect { logs ->
-                    adapter.messages = logs
-                    binding.toolbar.root.title = getString(R.string.about_title_logs, logs.size)
-                    binding.logsList.scrollToPosition(logs.lastIndex)
-                }
-            }
+        observe(viewModel.logs) { logs ->
+            adapter.messages = logs
+            binding.toolbar.root.title = getString(R.string.about_title_logs, logs.size)
+            binding.logsList.scrollToPosition(logs.lastIndex)
         }
     }
 

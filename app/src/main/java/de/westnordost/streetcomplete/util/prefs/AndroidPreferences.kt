@@ -70,6 +70,10 @@ class AndroidPreferences(private val prefs: SharedPreferences) : Preferences {
         return prefs.getString(key, null)
     }
 
+    override fun getIntOrNull(key: String): Int? {
+        return if (prefs.contains(key)) prefs.getInt(key, 0) else null
+    }
+
     override fun remove(key: String) {
         prefs.edit { remove(key) }
     }
