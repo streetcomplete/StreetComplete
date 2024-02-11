@@ -24,7 +24,7 @@ class LogsViewModelImpl(
         override fun onAdded(message: LogMessage) {
             if (filters.value.matches(message)) {
                 // TODO this is hugely inefficient (log list is copied every time a single entry is added!!!)
-                logs.getAndUpdate { it + message }
+                logs.update { it + message }
             }
         }
     }
