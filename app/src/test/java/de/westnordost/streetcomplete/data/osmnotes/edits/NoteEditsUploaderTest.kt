@@ -143,7 +143,7 @@ class NoteEditsUploaderTest {
         verify(listener, times(2))!!.onUploaded(any(), any())
     }
 
-    @Test fun `upload note comment with attached images`() {
+    @Test fun `upload note comment with attached images`() = runBlocking {
         val pos = p(1.0, 13.0)
         val edit = noteEdit(
             noteId = 1L,
@@ -169,7 +169,7 @@ class NoteEditsUploaderTest {
         verify(listener)!!.onUploaded("NOTE", pos)
     }
 
-    @Test fun `upload create note with attached images`() {
+    @Test fun `upload create note with attached images`() = runBlocking {
         val pos = p(1.0, 13.0)
         val edit = noteEdit(
             noteId = 1L,
@@ -195,7 +195,7 @@ class NoteEditsUploaderTest {
         verify(listener)!!.onUploaded("NOTE", pos)
     }
 
-    @Test fun `upload missed image activations`() {
+    @Test fun `upload missed image activations`(): Unit = runBlocking {
         val edit = noteEdit(noteId = 3)
 
         on(noteEditsController.getOldestNeedingImagesActivation()).thenReturn(edit).thenReturn(null)

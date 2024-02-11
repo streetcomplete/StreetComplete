@@ -68,7 +68,7 @@ class NoteEditsUploader(
         }
     }
 
-    private fun uploadEdit(edit: NoteEdit) {
+    private suspend fun uploadEdit(edit: NoteEdit) {
         // try to upload the image and track if we have them
         val imageText = uploadAndGetAttachedPhotosText(edit.imagePaths)
         val trackText = uploadAndGetAttachedTrackText(edit.track, edit.text)
@@ -116,7 +116,7 @@ class NoteEditsUploader(
         }
     }
 
-    private fun uploadAndGetAttachedPhotosText(imagePaths: List<String>): String {
+    private suspend fun uploadAndGetAttachedPhotosText(imagePaths: List<String>): String {
         if (imagePaths.isNotEmpty()) {
             val urls = imageUploader.upload(imagePaths)
             if (urls.isNotEmpty()) {

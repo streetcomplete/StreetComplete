@@ -11,10 +11,12 @@ import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
 
 class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
@@ -27,7 +29,9 @@ class Uploader(
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
 
-    private val bannedInfo by lazy { versionIsBannedChecker.get() }
+    private val bannedInfo = GlobalScope.async(Dispatchers.Unconfined, start = CoroutineStart.LAZY) {
+        versionIsBannedChecker.get()
+    }
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {
@@ -52,7 +56,9 @@ class Uploader(
         try {
             isUploadInProgress = true
             listeners.forEach { it.onStarted() }
-            val banned = withContext(Dispatchers.IO) { bannedInfo }
+
+            val banned = bannedInfo.await()
+
             if (banned is IsBanned) {
                 throw VersionBannedException(banned.reason)
             }

@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.ONEWAY_API_URL
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
+import io.ktor.client.HttpClient
+import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -48,8 +50,15 @@ class TrafficFlowSegmentsApiTest {
         )
     }
 
-    @Test fun withSomeRealData() {
+    @Test fun withSomeRealData(): Unit = runBlocking {
         // should just not crash...
-        TrafficFlowSegmentsApi(ONEWAY_API_URL).get(BoundingBox(-34.0, 18.0, -33.0, 19.0))
+        TrafficFlowSegmentsApi(HttpClient(), ONEWAY_API_URL).get(
+            BoundingBox(
+                -34.0,
+                18.0,
+                -33.0,
+                19.0
+            )
+        )
     }
 }
