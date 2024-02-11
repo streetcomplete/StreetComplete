@@ -66,25 +66,6 @@ class OsmQuestDao(private val db: Database) {
         return db.query(NAME, where = builder) { it.toOsmQuestEntry() }
     }
 
-    fun getAllInBboxIfNotHidden(bounds: BoundingBox, questTypes: Collection<String>? = null): List<OsmQuestDaoEntry>  {
-        var builder = inBoundsSql(bounds)
-        if (questTypes != null) {
-            if (questTypes.isEmpty()) return emptyList()
-            val questTypesStr = questTypes.joinToString(",") { "'$it'" }
-            builder += " AND $QUEST_TYPE IN ($questTypesStr)"
-        }
-        return db.rawQuery("""SELECT * FROM $NAME
-            WHERE $builder AND NOT EXISTS
-            (
-              SELECT 1 FROM ${OsmQuestsHiddenTable.NAME}
-              WHERE ${OsmQuestsHiddenTable.NAME}.${OsmQuestsHiddenTable.Columns.ELEMENT_ID} = $NAME.$ELEMENT_ID
-              AND ${OsmQuestsHiddenTable.NAME}.${OsmQuestsHiddenTable.Columns.ELEMENT_TYPE} = $NAME.$ELEMENT_TYPE
-              AND ${OsmQuestsHiddenTable.NAME}.${OsmQuestsHiddenTable.Columns.QUEST_TYPE} = $NAME.$QUEST_TYPE
-            )
-            ;
-        """.trimIndent()) { it.toOsmQuestEntry() }
-    }
-
     fun deleteAll(keys: Collection<OsmQuestKey>) {
         if (keys.isEmpty()) return
         db.transaction {

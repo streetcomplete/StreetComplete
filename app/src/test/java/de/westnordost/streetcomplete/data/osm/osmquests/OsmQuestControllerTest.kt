@@ -116,9 +116,6 @@ class OsmQuestControllerTest {
         on(hiddenDB.getAllIds()).thenReturn(hiddenQuests)
         on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
         on(db.getAllInBBox(bbox, null)).thenReturn(entries)
-        on(db.getAllInBboxIfNotHidden(bbox, null)).thenReturn(entries.filterNot {
-            hiddenQuests.contains(OsmQuestKey(it.elementType, it.elementId, it.questTypeName))
-        })
         on(mapDataSource.getGeometries(argThat {
             it.containsExactlyInAnyOrder(listOf(
                 ElementKey(NODE, 1),

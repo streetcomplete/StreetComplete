@@ -321,16 +321,13 @@ class OsmQuestController internal constructor(
             val quests = createQuestsForBBox(bbox, mapData, questTypes?.filterIsInstance<OsmElementQuestType<*>>() ?: allQuestTypes)
             return if (getHidden) quests else quests.filterNot { it.key in hiddenCache || it.position.truncateTo5Decimals() in hiddenPositions }
         }
-        val entries = if (getHidden)
-                db.getAllInBBox(bbox, questTypes?.map { it.name })
-            else if (hiddenPositions.isEmpty())
-                db.getAllInBboxIfNotHidden(bbox, questTypes?.map { it.name })
-            else
-                db.getAllInBboxIfNotHidden(bbox, questTypes?.map { it.name }).filter {
-                    it.position.truncateTo5Decimals() !in hiddenPositions
-                }
+        val allEntries = db.getAllInBBox(bbox, questTypes?.map { it.name })
+        val entries = if (getHidden) allEntries
+            else allEntries.filter { entry ->
+                entry.key !in hiddenCache && entry.position.truncateTo5Decimals() !in hiddenPositions
+            }
 
-        val elementKeys = HashSet<ElementKey>(entries.size, 0.9f)
+        val elementKeys = HashSet<ElementKey>(entries.size)
         entries.mapTo(elementKeys) { ElementKey(it.elementType, it.elementId) }
 
         val geometriesByKey = mapDataSource.getGeometries(elementKeys).associateBy { it.key }
