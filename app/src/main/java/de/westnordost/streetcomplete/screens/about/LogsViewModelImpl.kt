@@ -29,13 +29,19 @@ class LogsViewModelImpl(
         }
     }
 
-    override val filters: MutableStateFlow<LogsFilters>
+    override val filters: MutableStateFlow<LogsFilters> =
+        MutableStateFlow(
+            LogsFilters(
+                timestampNewerThan = LocalDateTime(
+                    systemTimeNow().toLocalDate(),
+                    LocalTime(0, 0, 0)
+                )
+            )
+        )
 
     override val logs: MutableStateFlow<List<LogMessage>> = MutableStateFlow(emptyList())
 
     init {
-        val startOfToday = LocalDateTime(systemTimeNow().toLocalDate(), LocalTime(0, 0, 0))
-        filters = MutableStateFlow(LogsFilters(timestampNewerThan = startOfToday))
         viewModelScope.launch {
             // get logs initially and subscribe to updates, then
             logs.value = withContext(Dispatchers.IO) { logsController.getLogs(filters.value) }
