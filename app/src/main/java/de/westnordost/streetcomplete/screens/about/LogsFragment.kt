@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogMessage
-import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.databinding.FragmentLogsBinding
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.now
@@ -62,12 +61,11 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
     }
 
     private fun onClickShare() = viewLifecycleScope.launch {
-        val logText = viewModel.logs.value.format()
         val logTimestamp = LocalDateTime.now().toString()
         val logTitle = "${BuildConfig.APPLICATION_ID}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
 
         val shareIntent = Intent(Intent.ACTION_SEND).also {
-            it.putExtra(Intent.EXTRA_TEXT, logText)
+            it.putExtra(Intent.EXTRA_TEXT, viewModel.logsText)
             it.putExtra(Intent.EXTRA_TITLE, logTitle)
             it.type = "text/plain"
         }
