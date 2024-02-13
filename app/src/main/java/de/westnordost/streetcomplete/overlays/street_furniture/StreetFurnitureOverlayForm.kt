@@ -2,11 +2,13 @@ package de.westnordost.streetcomplete.overlays.street_furniture
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -19,6 +21,8 @@ import de.westnordost.streetcomplete.osm.POPULAR_STREET_FURNITURE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isStreetFurniture
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.overlays.AnswerItem
+import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
@@ -35,6 +39,10 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
     private var originalFeature: Feature? = null
 
     private lateinit var featureCtrl: FeatureViewController
+
+    override val otherAnswers get() = listOfNotNull(
+        createDeletePoiAnswer()
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,6 +122,20 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
         featureCtrl.feature = feature
         checkIsFormComplete()
     }
+
+    private fun createDeletePoiAnswer(): IAnswerItem? {
+        val node = element as? Node ?: return null
+        return AnswerItem(R.string.quest_generic_answer_does_not_exist) { confirmDelete(node) }
+    }
+
+    private fun confirmDelete(node: Node) {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.osm_element_gone_description)
+            .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> applyEdit(DeletePoiNodeAction(node)) }
+            .setNeutralButton(R.string.leave_note) { _, _ -> composeNote(node) }
+            .show()
+    }
+
 
     override fun hasChanges(): Boolean =
         originalFeature != featureCtrl.feature
