@@ -33,6 +33,10 @@ fun Element.isDisusedStreetFurniture(): Boolean =
  *  */
 private val IS_STREET_FURNITURE_EXPRESSION by lazy {
     val tags = mapOf(
+        "aeroway" to listOf(
+            "navigationaid",
+            "windsock",
+        ),
         "amenity" to listOf(
             /* grouped by subcategory, sorted by alphabet */
 
@@ -185,18 +189,20 @@ private val IS_STREET_FURNITURE_EXPRESSION by lazy {
             // larger structures are rather alike buildings, they shouldn't be editable here
             // e.g. "water_tower", "watermill", "windmill", "tower", "telescope", "stupa" ...
             // "antenna" - I think those small-ish antennas for cellular network would be fine
-            //             but what also falls under this tag could be quite large structures
+            //             but quite large structures also fall under this tag
             "beehive",
             "cairn",
             "carpet_hanger",
             "column",
             "compass_rose",
             "cross",
+            "dolphin", // a bit of a small structure already, but on the other hand, a "boat parking"
+            "dovecote",
             "flagpole",
             "insect_hotel",
             // "manhole", - too many of them, it's madness to waste your time mapping these
             "maypole",
-            "monitoring_station",
+            "monitoring_station", // a little large, on the other hand, sizes vary
             "nesting_site",
             // "obelisk" - like historic=monument it's more of a structure
             "planter",
@@ -213,7 +219,7 @@ private val IS_STREET_FURNITURE_EXPRESSION by lazy {
             "water_well",
         ),
         "natural" to listOf(
-            // permanent geology features that are part of the landscape:
+            // permanent geology features that are part of the landscape are not included
             // "arch", "cave_entrance", "fumarole", "geyser", "hill", "hot_spring", "peak",
             // "saddle", "spring", "volcano", ...
             "rock", // de-facto synonymous to "stone"
