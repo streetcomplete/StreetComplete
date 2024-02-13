@@ -92,6 +92,9 @@ class AddRoadSurfaceTest {
         assertIsNotApplicable("highway" to "track", "surface" to "asphalt", "tracktype" to "grade2")
     }
 
+    @Test fun `not applicable to generic unpaved track with a note and nonconflicting tracktype`() {
+        assertIsNotApplicable("highway" to "track", "surface" to "unpaved", "tracktype" to "grade3", "surface:note" to "varying patches with more and less gravel")
+
     @Test fun `tracktype tag is removed when surface match is suspicious`() {
         questType.verifyAnswer(
             mapOf(
