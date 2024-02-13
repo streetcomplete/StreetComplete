@@ -8,11 +8,10 @@ import io.ktor.client.engine.mock.respondOk
 import io.ktor.http.HeadersBuilder
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.ParametersBuilder
+import io.ktor.http.Url
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.net.URL
-import java.net.URLDecoder
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
@@ -22,31 +21,30 @@ import kotlin.test.assertTrue
 
 class OAuthAuthorizationTest {
     @Test fun createAuthorizationUrl() {
-        val url = URL(createOAuth().authorizationRequestUrl)
+        val url = Url(createOAuth().authorizationRequestUrl)
 
-        assertEquals("https", url.protocol)
+        assertEquals("https", url.protocol.name)
         assertEquals("test.me", url.host)
-        assertEquals("/auth", url.path)
+        assertEquals("/auth", url.encodedPath)
 
-        val parameters = url.queryParameters
-        assertEquals("code", parameters["response_type"])
-        assertEquals("ClientId %#+!", parameters["client_id"])
-        assertEquals("localhost://oauth", parameters["redirect_uri"])
-        assertEquals("one! 2 THREE+(1/2)", parameters["scope"])
-        assertEquals("S256", parameters["code_challenge_method"])
-        assertTrue(parameters["code_challenge"]!!.length <= 128)
-        assertTrue(parameters["code_challenge"]!!.length >= 43)
+        assertEquals("code", url.parameters["response_type"])
+        assertEquals("ClientId %#+!", url.parameters["client_id"])
+        assertEquals("localhost://oauth", url.parameters["redirect_uri"])
+        assertEquals("one! 2 THREE+(1/2)", url.parameters["scope"])
+        assertEquals("S256", url.parameters["code_challenge_method"])
+        assertTrue(url.parameters["code_challenge"]!!.length <= 128)
+        assertTrue(url.parameters["code_challenge"]!!.length >= 43)
     }
 
     @Test fun `createAuthorizationUrl with state`() {
-        val parameters = URL(createOAuth("123").authorizationRequestUrl).queryParameters
+        val parameters = Url(createOAuth("123").authorizationRequestUrl).parameters
         assertEquals("123", parameters["state"])
     }
 
     @Test fun `generates different code challenge for each instance`() {
-        val url1 = URL(createOAuth().authorizationRequestUrl)
-        val url2 = URL(createOAuth().authorizationRequestUrl)
-        assertTrue(url1.queryParameters["code_challenge"] != url2.queryParameters["code_challenge"])
+        val url1 = Url(createOAuth().authorizationRequestUrl)
+        val url2 = Url(createOAuth().authorizationRequestUrl)
+        assertTrue(url1.parameters["code_challenge"] != url2.parameters["code_challenge"])
     }
 
     @Test fun `serializes correctly`() {
@@ -218,9 +216,3 @@ private fun createOAuth(state: String? = null) = OAuthAuthorizationParams(
     "localhost://oauth",
     state
 )
-
-private val URL.queryParameters get(): Map<String, String> =
-    query.split('&').associate {
-        val parts = it.split('=')
-        parts[0] to URLDecoder.decode(parts[1], "US-ASCII")
-    }
