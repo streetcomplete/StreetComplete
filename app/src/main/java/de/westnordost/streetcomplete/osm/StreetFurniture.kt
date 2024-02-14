@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.osm
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
-fun Element.isStreetFurniture(): Boolean =
-    IS_STREET_FURNITURE_EXPRESSION.matches(this)
+fun Element.isThing(): Boolean =
+    IS_THING_EXPRESSION.matches(this)
 
-fun Element.isDisusedStreetFurniture(): Boolean =
-    this.asIfItWasnt("disused")?.let { IS_STREET_FURNITURE_EXPRESSION.matches(it) } == true
+fun Element.isDisusedThing(): Boolean =
+    this.asIfItWasnt("disused")?.let { IS_THING_EXPRESSION.matches(it) } == true
 
 /** Small map features that are often mapped as points and usually cannot be entered.
  *
@@ -31,7 +31,7 @@ fun Element.isDisusedStreetFurniture(): Boolean =
  *             don't want to check, weigh and balance requests in parallel to iD maintainers (in
  *             terms of notability, it being unambiguous, consensus etc.)
  *  */
-private val IS_STREET_FURNITURE_EXPRESSION by lazy {
+private val IS_THING_EXPRESSION by lazy {
     val tags = mapOf(
         "aeroway" to listOf(
             "navigationaid",
@@ -250,7 +250,7 @@ private val IS_STREET_FURNITURE_EXPRESSION by lazy {
     """.toElementFilterExpression()
 }
 
-val POPULAR_STREET_FURNITURE_FEATURE_IDS = listOf(
+val POPULAR_THING_FEATURE_IDS = listOf(
     "natural/tree/broadleaved",    // 4.0 M
     "highway/street_lamp",         // 4.0 M
     "amenity/bench",               // 2.4 M
@@ -273,7 +273,7 @@ val POPULAR_STREET_FURNITURE_FEATURE_IDS = listOf(
     //"amenity/drinking_water",      // 0.3 M
     //"leisure/picnic_table",        // 0.3 M
 
-    // found most often on hiking routes where there are not that many "furniture" features anyway
+    // found most often on hiking routes where there are not that many "things" features anyway
     //"information/guidepost",       // 0.5M
     //"tourism/information/board",   // 0.3M
 )

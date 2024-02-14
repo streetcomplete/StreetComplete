@@ -18,16 +18,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetFurnitureBinding
-import de.westnordost.streetcomplete.osm.POPULAR_STREET_FURNITURE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.asIfItWasnt
-import de.westnordost.streetcomplete.osm.isStreetFurniture
+import de.westnordost.streetcomplete.osm.isThing
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
@@ -69,7 +68,7 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
         }
 
         return DummyFeature(
-            "street_furniture/unknown",
+            "thing/unknown",
             requireContext().getString(R.string.unknown_object),
             "ic_preset_maki_marker_stroked",
             element.tags
@@ -119,15 +118,15 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
             element?.geometryType ?: GeometryType.POINT, // for new features: always POINT
             countryOrSubdivisionCode,
             featureCtrl.feature?.name,
-            ::filterOnlyStreetFurniture,
+            ::filterOnlyThings,
             ::onSelectedFeature,
-            POPULAR_STREET_FURNITURE_FEATURE_IDS
+            POPULAR_THING_FEATURE_IDS
         ).show()
     }
 
-    private fun filterOnlyStreetFurniture(feature: Feature): Boolean {
+    private fun filterOnlyThings(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return fakeElement.isStreetFurniture()
+        return fakeElement.isThing()
     }
 
     private fun onSelectedFeature(feature: Feature) {

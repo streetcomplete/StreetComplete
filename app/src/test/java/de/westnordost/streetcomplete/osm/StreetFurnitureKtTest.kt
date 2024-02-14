@@ -9,13 +9,13 @@ class StreetFurnitureKtTest {
 
     @Test fun `disused bench matches`() {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), mapOf("disused:amenity" to "bench"), 0)
-        assertEquals(true, fakeElement.isDisusedStreetFurniture())
-        assertEquals(false, fakeElement.isStreetFurniture())
+        assertEquals(true, fakeElement.isDisusedThing())
+        assertEquals(false, fakeElement.isThing())
     }
 
     @Test fun `flagpole matches`() {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), mapOf("man_made" to "flagpole"), 0)
-        assertEquals(true, fakeElement.isStreetFurniture())
+        assertEquals(true, fakeElement.isThing())
     }
 
     @Test fun `specific flagpole matches`() {
@@ -29,6 +29,6 @@ class StreetFurnitureKtTest {
             "subject" to "Poland",
             "subject:wikidata" to "Q36",
         ), 0)
-        assertEquals(true, fakeElement.isStreetFurniture())
+        assertEquals(true, fakeElement.isThing())
     }
 }

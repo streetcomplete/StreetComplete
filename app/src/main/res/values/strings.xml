@@ -1696,7 +1696,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="confirmation_replace_shop_yes">"Different place now"</string>
     <string name="confirmation_replace_shop_no">"Still same place"</string>
 
-    <string name="overlay_street_furniture">Street furniture</string>
+    <string name="overlay_things">Things</string>
     <string name="disused">disused</string>
     <string name="unknown_object">Unknown object</string>
 
