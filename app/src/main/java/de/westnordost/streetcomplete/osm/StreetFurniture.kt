@@ -245,8 +245,8 @@ private val IS_STREET_FURNITURE_EXPRESSION by lazy {
         or boundary = marker
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or man_made = street_cabinet and street_cabinet != postal_service
+        or playground
         or tourism = information and information !~ office|visitor_centre
-
     """.toElementFilterExpression()
 }
 
