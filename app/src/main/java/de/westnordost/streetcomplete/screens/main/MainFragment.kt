@@ -1107,7 +1107,7 @@ class MainFragment :
                 if (element.tags["layer"] != e.tags["layer"]) continue
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(featureDictionary.value, e.tags)
+                val icon = getPinIcon(featureDictionary.value, e)
                 val title = getTitle(e.tags)
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }

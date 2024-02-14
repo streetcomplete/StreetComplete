@@ -10,10 +10,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAmenityCover(
-    private val getFeature: (tags: Map<String, String>) -> Feature?
+    private val getFeature: (Element) -> Feature?
 ) : OsmElementQuestType<Boolean> {
 
     private val nodesFilter by lazy { """
@@ -31,19 +32,17 @@ class AddAmenityCover(
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_amenityCover_title
+
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element) =
-        nodesFilter.matches(element) && hasAnyName(element.tags)
-
-    private fun hasAnyName(tags: Map<String, String>) = getFeature(tags) != null
+        nodesFilter.matches(element) && getFeature(element) != null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
-        val feature = getFeature(element.tags) ?: return emptySequence()
-
+        val feature = getFeature(element) ?: return emptySequence()
         return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
 
@@ -53,5 +52,3 @@ class AddAmenityCover(
         tags["covered"] = answer.toYesNo()
     }
 }
-
-private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }

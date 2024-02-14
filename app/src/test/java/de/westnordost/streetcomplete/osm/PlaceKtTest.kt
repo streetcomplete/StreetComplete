@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ShopKtTest {
+class PlaceKtTest {
 
     @Test fun `replaceShop removes all previous survey keys`() {
         assertEquals(
@@ -68,6 +68,6 @@ class ShopKtTest {
 
 private fun replaceShopApplied(newTags: Map<String, String>, oldTags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(oldTags)
-    cb.replaceShop(newTags)
+    cb.replacePlace(newTags)
     return cb.create().changes
 }

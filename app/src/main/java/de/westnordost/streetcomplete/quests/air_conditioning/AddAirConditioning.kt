@@ -4,11 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -27,14 +26,14 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Survey availability of air conditioning"
     override val wikiLink = "Key:air_conditioning"
     override val icon = R.drawable.ic_quest_snow_poi
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_airConditioning_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = YesNoQuestForm()
 

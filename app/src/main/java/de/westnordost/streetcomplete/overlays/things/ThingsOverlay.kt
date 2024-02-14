@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.shops
+package de.westnordost.streetcomplete.overlays.things
 
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
@@ -6,28 +6,21 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.asIfItWasnt
+import de.westnordost.streetcomplete.osm.isDisusedThing
+import de.westnordost.streetcomplete.osm.isThing
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
-import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
-import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
-import de.westnordost.streetcomplete.util.getNameLabel
 
-class ShopsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
+class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
-    override val title = R.string.overlay_places
-    override val icon = R.drawable.ic_quest_shop
-    override val changesetComment = "Survey shops, places etc."
+    override val title = R.string.overlay_things
+    override val icon = R.drawable.ic_quest_dot
+    override val changesetComment = "Survey small map features"
     override val wikiLink = null
     override val achievements = listOf(EditTypeAchievement.CITIZEN)
-    override val hidesQuestTypes = setOf(
-        AddPlaceName::class.simpleName!!,
-        SpecifyShopType::class.simpleName!!,
-        CheckShopType::class.simpleName!!
-    )
     override val isCreateNodeEnabled = true
 
     override val sceneUpdates = listOf(
@@ -38,20 +31,21 @@ class ShopsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .asSequence()
-            .filter { it.isPlaceOrDisusedShop() }
-            .map { element ->
+            .filter { it.isThing() || it.isDisusedThing() }
+            .mapNotNull { element ->
                 val feature = getFeature(element)
+                    ?: element.asIfItWasnt("disused")?.let { getFeature(it) }
+                    ?: return@mapNotNull null
 
-                val icon = "ic_preset_" + (feature?.icon ?: "maki-shop").replace('-', '_')
-                val label = getNameLabel(element.tags)
+                val icon = "ic_preset_" + (feature.icon ?: "maki-marker-stroked").replace('-', '_')
 
                 val style = if (element is Node) {
-                    PointStyle(icon, label)
+                    PointStyle(icon)
                 } else {
-                    PolygonStyle(Color.INVISIBLE, icon, label)
+                    PolygonStyle(Color.INVISIBLE, icon)
                 }
                 element to style
             }
 
-    override fun createForm(element: Element?) = ShopsOverlayForm()
+    override fun createForm(element: Element?) = ThingsOverlayForm()
 }
