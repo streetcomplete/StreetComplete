@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.street_furniture
+package de.westnordost.streetcomplete.overlays.things
 
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 
-class StreetFurnitureOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
+class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
     override val title = R.string.overlay_things
     override val icon = R.drawable.ic_quest_dot
@@ -47,5 +47,5 @@ class StreetFurnitureOverlay(private val getFeature: (Element) -> Feature?) : Ov
                 element to style
             }
 
-    override fun createForm(element: Element?) = StreetFurnitureOverlayForm()
+    override fun createForm(element: Element?) = ThingsOverlayForm()
 }

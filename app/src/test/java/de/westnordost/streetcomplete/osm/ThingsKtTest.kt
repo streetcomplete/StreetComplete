@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import kotlin.test.*
 import kotlin.test.Test
 
-class StreetFurnitureKtTest {
+class ThingsKtTest {
 
     @Test fun `disused bench matches`() {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), mapOf("disused:amenity" to "bench"), 0)

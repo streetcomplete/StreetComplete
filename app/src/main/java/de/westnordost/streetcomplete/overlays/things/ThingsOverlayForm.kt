@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.street_furniture
+package de.westnordost.streetcomplete.overlays.things
 
 import android.os.Bundle
 import android.view.View
@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetFurnitureBinding
+import de.westnordost.streetcomplete.databinding.FragmentOverlayThingsBinding
 import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThing
@@ -31,10 +31,10 @@ import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 
-class StreetFurnitureOverlayForm : AbstractOverlayForm() {
+class ThingsOverlayForm : AbstractOverlayForm() {
 
-    override val contentLayoutResId = R.layout.fragment_overlay_street_furniture
-    private val binding by contentViewBinding(FragmentOverlayStreetFurnitureBinding::bind)
+    override val contentLayoutResId = R.layout.fragment_overlay_things
+    private val binding by contentViewBinding(FragmentOverlayThingsBinding::bind)
 
     private var originalFeature: Feature? = null
 
