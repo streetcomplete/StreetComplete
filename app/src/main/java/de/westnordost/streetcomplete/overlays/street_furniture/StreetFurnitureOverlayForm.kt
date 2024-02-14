@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.overlays.street_furniture
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
@@ -99,18 +100,29 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
         featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode
         featureCtrl.feature = originalFeature
 
-        binding.featureView.setOnClickListener {
-            SearchFeaturesDialog(
-                requireContext(),
-                featureDictionary,
-                element?.geometryType ?: GeometryType.POINT, // for new features: always POINT
-                countryOrSubdivisionCode,
-                featureCtrl.feature?.name,
-                ::filterOnlyStreetFurniture,
-                ::onSelectedFeature,
-                POPULAR_STREET_FURNITURE_FEATURE_IDS
-            ).show()
+        // editing an existing feature is disabled because unlike shops, they don't just change
+        // (e.g. a photo booth rarely transforms into a fountain). If something doesn't exist, it
+        // should simply be deleted
+
+        if (element == null) {
+            binding.featureView.setOnClickListener { showFeatureSelectionDialog() }
+        } else {
+            binding.featureDropdownButton.isGone = true
+            binding.featureView.background = null
         }
+    }
+
+    private fun showFeatureSelectionDialog() {
+        SearchFeaturesDialog(
+            requireContext(),
+            featureDictionary,
+            element?.geometryType ?: GeometryType.POINT, // for new features: always POINT
+            countryOrSubdivisionCode,
+            featureCtrl.feature?.name,
+            ::filterOnlyStreetFurniture,
+            ::onSelectedFeature,
+            POPULAR_STREET_FURNITURE_FEATURE_IDS
+        ).show()
     }
 
     private fun filterOnlyStreetFurniture(feature: Feature): Boolean {
@@ -137,8 +149,7 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
     }
 
 
-    override fun hasChanges(): Boolean =
-        originalFeature != featureCtrl.feature
+    override fun hasChanges(): Boolean = originalFeature != featureCtrl.feature
 
     override fun isFormComplete(): Boolean = featureCtrl.feature != null
 
