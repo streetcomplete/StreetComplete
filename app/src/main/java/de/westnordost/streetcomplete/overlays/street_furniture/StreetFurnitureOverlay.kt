@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.overlays.PolygonStyle
 class StreetFurnitureOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
     override val title = R.string.overlay_street_furniture
-    override val icon = R.drawable.ic_quest_bench_poi
+    override val icon = R.drawable.ic_quest_dot
     override val changesetComment = "Survey street furniture and similar objects"
     override val wikiLink: String = "Street furniture"
     override val achievements = listOf(EditTypeAchievement.CITIZEN)

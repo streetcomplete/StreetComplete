@@ -94,7 +94,7 @@ class StreetFurnitureOverlayForm : AbstractOverlayForm() {
 
         // title hint label with name is a duplication, it is displayed in the UI already
         setTitleHintLabel(element?.tags?.let { getLocationLabel(it, resources) })
-        setMarkerIcon(R.drawable.ic_quest_plus)
+        setMarkerIcon(R.drawable.ic_quest_dot)
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)
         featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode
