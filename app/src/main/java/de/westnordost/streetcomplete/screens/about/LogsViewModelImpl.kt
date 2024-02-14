@@ -8,26 +8,21 @@ import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.getAndUpdate
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.transformLatest
+import kotlinx.coroutines.plus
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 
 class LogsViewModelImpl(
-    private val logsController: LogsController
+    private val logsController: LogsController,
 ) : LogsViewModel() {
-
-    private val logsControllerListener = object : LogsController.Listener {
-        override fun onAdded(message: LogMessage) {
-            if (filters.value.matches(message)) {
-                // TODO this is hugely inefficient (log list is copied every time a single entry is added!!!)
-                logs.update { it + message }
-            }
-        }
-    }
 
     override val filters: MutableStateFlow<LogsFilters> =
         MutableStateFlow(
@@ -39,24 +34,42 @@ class LogsViewModelImpl(
             )
         )
 
-    override val logs: MutableStateFlow<List<LogMessage>> = MutableStateFlow(emptyList())
-
-    init {
-        viewModelScope.launch {
-            // get logs initially and subscribe to updates, then
-            logs.value = withContext(Dispatchers.IO) { logsController.getLogs(filters.value) }
-            logsController.addListener(logsControllerListener)
-
-            // get logs anew whenever filters changed
-            filters.collect { f ->
-                logs.update { withContext(Dispatchers.IO) { logsController.getLogs(f) } }
+    /**
+     * Produce a call back flow of all incoming logs matching the given [filters].
+     */
+    private fun getIncomingLogs(filters: LogsFilters) = callbackFlow {
+        // Listener that sends the messages matching the filters to the observer
+        val listener = object : LogsController.Listener {
+            override fun onAdded(message: LogMessage) {
+                if (filters.matches(message)) {
+                    trySend(message) // Send it to the observer
+                }
             }
         }
+
+        // Start listening
+        logsController.addListener(listener)
+
+        // When there are no observers, stop listening.
+        awaitClose { logsController.removeListener(listener) }
     }
 
-    override fun onCleared() {
-        logsController.removeListener(logsControllerListener)
-    }
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val logs: StateFlow<List<LogMessage>> =
+        filters.transformLatest { filters ->
+            // get prior logs into a backing state
+            // There will be duplication regardless.
+            val logs = ArrayList(logsController.getLogs(filters))
+
+            // emit the logs for the first view
+            emit(logs)
+
+            // start listening to new logs
+            getIncomingLogs(filters).collect {
+                logs.add(it)
+                emit(logs)
+            }
+        }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, emptyList())
 }
 
 private fun LogsController.getLogs(filters: LogsFilters) =
