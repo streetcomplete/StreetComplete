@@ -153,31 +153,9 @@ class ThingsOverlayForm : AbstractOverlayForm() {
     override fun isFormComplete(): Boolean = featureCtrl.feature != null
 
     override fun onClickOk() {
-        applyEdit(createEditAction(
-            element, geometry,
-            featureCtrl.feature!!, originalFeature,
-        ))
-    }
-}
-
-private fun createEditAction(
-    element: Element?,
-    geometry: ElementGeometry,
-    newFeature: Feature,
-    previousFeature: Feature?
-): ElementEditAction {
-    val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
-
-    for ((key, value) in previousFeature?.removeTags.orEmpty()) {
-        tagChanges.remove(key)
-    }
-    for ((key, value) in newFeature.addTags) {
-        tagChanges[key] = value
-    }
-
-    return if (element != null) {
-        UpdateElementTagsAction(element, tagChanges.create())
-    } else {
-        CreateNodeAction(geometry.center, tagChanges)
+        if (element == null) {
+            val feature = featureCtrl.feature!!
+            applyEdit(CreateNodeAction(geometry.center, feature.addTags))
+        }
     }
 }
