@@ -7,12 +7,8 @@ import androidx.core.view.isGone
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -146,7 +142,6 @@ class ThingsOverlayForm : AbstractOverlayForm() {
             .setNeutralButton(R.string.leave_note) { _, _ -> composeNote(node) }
             .show()
     }
-
 
     override fun hasChanges(): Boolean = originalFeature != featureCtrl.feature
 
