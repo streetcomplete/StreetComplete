@@ -279,8 +279,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_walnuts">"Walnüsse"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht herunterladen. Zoome weiter hinein oder kippe die Karte weniger."</string>
-    <string name="quest_crossing_type_title">"Welche Art von Fußgängerüberweg ist das?"</string>
-    <string name="quest_crossing_type_unmarked">"Ohne Markierungen"</string>
     <string name="action_undo">"Rückgängig machen"</string>
     <string name="produce_mangosteen">"Mangostane"</string>
     <string name="produce_tomatoes">"Tomaten"</string>
@@ -442,7 +440,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_transportation">"Gebäude für den öffentlichen Personenverkehr"</string>
     <string name="quest_buildingType_university">"Universitätsgebäude"</string>
     <string name="quest_buildingType_government">"Regierungsgebäude"</string>
-    <string name="quest_buildingType_cars">"Für Autos"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"ein überdachter Autostellplatz"</string>
     <string name="quest_buildingType_garage">"Garage"</string>
@@ -481,7 +478,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_segregated_mixed">"Der Weg wird gemeinsam genutzt"</string>
     <string name="quest_maxheight_title">"Was ist die Durchfahrtshöhe hier?"</string>
     <string name="quest_maxheight_answer_noSign">"Es gibt kein Schild …"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Ist selbst für die höchsten Lastwagen (mindestens 4,5 m) genügend Platz, um darunter durchzufahren?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Diese Höhe sieht ungewöhnlich aus. Bist du sicher, dass sie korrekt ist?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Geschlossen von %1$s, %2$s"</string>
@@ -573,7 +569,7 @@ Jetzt aufspalten?"</string>
     <string name="about_description_donate">"Danke, dass du erwägst, diese App zu unterstützen! Um die laufenden Spenden zu sehen oder selbst zu spenden, tippe auf die jeweilige Plattform:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Hier herunterladen"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Aktuellen Download fortsetzen"</string>
-    <string name="quest_buildingType_garages_description">"Getrennte Stellplätze für verschiedene Besitzer oder Mieter"</string>
+    <string name="quest_buildingType_garages_description">"getrennte Stellplätze für verschiedene Besitzer/Mieter"</string>
     <string name="quest_tourism_information_title">"Was für eine Touristeninformation ist das?"</string>
     <string name="quest_tourism_information_office">"Tourismusbüro"</string>
     <string name="quest_tourism_information_board">"Informationstafel"</string>
@@ -799,9 +795,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_lanes_answer_lanes_description_one_side2">"Gib hier die Anzahl aller markierten Fahrstreifen an, die für den Autoverkehr nutzbar sind. Rad- und dedizierte Parkstreifen zählen also nicht mit.
 Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string>
     <string name="quest_surface_value_rock">"Fels"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Hohe Lastwagen können hindurch"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Hohe Lastwagen passen nicht"</string>
-    <string name="quest_crossing_type_marked">"Mit Markierungen"</string>
     <string name="quest_parkingType_street_side">"Parkbuchten am Fahrbahnrand"</string>
     <string name="quest_parkingType_lane">"Parken auf der Fahrbahn"</string>
     <string name="quest_tracktype_grade2a">"Unbefestigt, aber fest"</string>
@@ -842,11 +835,11 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Nur Plastikflaschen und Getränkekartons"</string>
     <string name="team_mode">"Team-Modus starten"</string>
     <string name="team_mode_exit">"Team-Modus beenden"</string>
-    <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen."</string>
+    <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen.
+Jeder von euch sieht dann unterschiedliche Aufgaben."</string>
     <string name="team_mode_team_size_hint">"Der Team-Modus ist für Gruppen zwischen 2 und 12 Personen gemacht."</string>
     <string name="team_mode_active">"Team-Modus ist aktiv"</string>
     <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
-    <string name="quest_crossing_type_signals_controlled">"Mit Ampeln geregelt"</string>
     <string name="undo_confirm_title2">"Folgende Bearbeitung rückgängig machen?"</string>
     <string name="synced">"Synchronisiert"</string>
     <string name="toast_undo_unavailable">"Diese Bearbeitung wurde bereits synchronisiert und kann nicht rückgängig gemacht werden"</string>
@@ -1232,7 +1225,6 @@ Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die 
     <string name="quest_drinking_water_type_spring">"Quelle"</string>
     <string name="quest_drinking_water_type_disused">"Stillgelegtes Trinkwasserobjekt"</string>
     <string name="overlay_addresses">"Adressen"</string>
-    <string name="overlay_shops">"Geschäfte"</string>
     <string name="name_label">"Name:"</string>
     <string name="unknown_shop_title">"Andere Art von Ort"</string>
     <string name="quest_address_answer_no_address">"Keine Adresse hier"</string>
@@ -1376,4 +1368,21 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="link_forum_description">"Brauchst du Hilfe? Willst du lesen, was los ist? Komm und misch dich unter die Leute, hier tummeln sich Communities aus der ganzen Welt!"</string>
     <string name="link_calendar_description">"Gibt es OpenStreetMap-Veranstaltungen oder Community-Treffen in deiner Nähe? (Wenn nicht, kannst du deine eigenen hinzufügen!)"</string>
     <string name="link_prettymapp_description">"Erstelle hübsche, mehrfarbige Kartenposter von Stadtvierteln"</string>
+    <string name="quest_disable_action">"Deaktivieren"</string>
+    <string name="quest_disable_title">"Diesen Aufgabentyp deaktivieren?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure ist (noch) nicht installiert."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure hat keine Messung zurückgegeben."</string>
+    <string name="quest_disable_message_tape_measure">"Du könntest stattdessen auch ein Maßband verwenden, aber das ist vielleicht doch ein bisschen umständlich."</string>
+    <string name="quest_buildingType_outbuilding">"Nebengebäude"</string>
+    <string name="quest_buildingType_outbuilding_description">"weniger wichtiges Gebäude auf einem Grundstück"</string>
+    <string name="quest_buildingType_other_description">"ein bestimmtes Gebäude, das in dieser App nicht auswählbar ist"</string>
+    <string name="quest_buildingType_container">"Container"</string>
+    <string name="quest_buildingType_tent">"Zelt"</string>
+    <string name="quest_buildingType_tomb">"Grabstätte"</string>
+    <string name="quest_buildingType_tower">"Turm"</string>
+    <string name="quest_buildingType_tower_description">"jede Art von Turm"</string>
+    <string name="quest_buildingType_under_construction">"Im Bau befindlich"</string>
+    <string name="overlay_buildings">"Gebäude"</string>
+    <string name="quest_pedestrian_crossing_signals">"Muss man hier auf eine Ampel warten, um die Straße zu überqueren?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Gibt es bei diesem Fußgängerüberweg Markierungen auf dem Boden?"</string>
 </resources>

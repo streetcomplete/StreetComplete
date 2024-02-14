@@ -279,8 +279,6 @@
     <string name="produce_walnuts">"אגוזי מלך"</string>
     <string name="produce_sisal">"סיסל"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"אין אפשרות לחפש כאן. נסה להתמקד עוד קצת או להטות את המפה בזווית קטנה יותר."</string>
-    <string name="quest_crossing_type_title">"מהו סוג המעבר החצייה כאן?"</string>
-    <string name="quest_crossing_type_unmarked">"ללא סימוני כביש"</string>
     <string name="action_undo">"ביטול פעולה"</string>
     <string name="produce_mangosteen">"מנגוסטין"</string>
     <string name="produce_tomatoes">"עגבניות"</string>
@@ -438,7 +436,6 @@
     <string name="quest_buildingType_transportation">"מבנה תחבורה ציבורית"</string>
     <string name="quest_buildingType_university">"מבנה אוניברסיטה"</string>
     <string name="quest_buildingType_government">"מבנה ממשל"</string>
-    <string name="quest_buildingType_cars">"עבור מכוניות"</string>
     <string name="quest_buildingType_carport_description">"גג עבור מכונית"</string>
     <string name="quest_buildingType_parking">"חניון במבנה"</string>
     <string name="quest_buildingType_farm">"בחווה"</string>
@@ -473,7 +470,6 @@
     <string name="quest_segregated_mixed">"רוכבי ואפניים והולכי רגל חלקים באותו חלל"</string>
     <string name="quest_maxheight_title">"מהי מגבלת הגובה כאן?"</string>
     <string name="quest_maxheight_answer_noSign">"אין שלט…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"האם יש מרווח גדול מספיק כך שאפילו להגבוהות שבמשאיות (לפחות כ-4.5 מטרים) יכולות לעבור בקלות?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"גובה זה נראה בלתי סביר. האם את/ה בטוח/ה שהוא נכון?"</string>
     <string name="quest_noteDiscussion_comment2">"- %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"נסגר על ידי %1$s, %2$s"</string>
@@ -768,9 +764,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"נא לציין את מספר הנתיבים המסומנים שמשמשים לתנועת רכבים. נתיבי אופניים ונתיבים שמיועדים לחנייה אינם נכללים בספירה.
 אם חלק מהנתיבים שמורים לתחבורה ציבורית, נא להשאיר הערה במקום."</string>
     <string name="quest_surface_value_rock">"אבן"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"משאיות גבוהות יכולות לעבור"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"משאיות גבוהות לא מתאימות"</string>
-    <string name="quest_crossing_type_marked">"מסומן"</string>
     <string name="quest_parkingType_street_side">"חניה במסוך לכביש"</string>
     <string name="quest_parkingType_lane">"חניה על הכביש"</string>
     <string name="quest_generic_answer_does_not_exist">"זה לא קיים..."</string>
@@ -808,7 +801,6 @@
     <string name="team_mode_team_size_hint">"מוד קבוצתי פועל לקבוצות של 2 עד 12 אנשים."</string>
     <string name="team_mode_active">"מוד קבוצתי פעיל"</string>
     <string name="team_mode_deactivated">"מוד קבוצתי לא פעיל"</string>
-    <string name="quest_crossing_type_signals_controlled">"מבוקר על ידי רמזור"</string>
     <string name="undo_confirm_title2">"לבטל את השינוי הזה?"</string>
     <string name="synced">"מסונכרן"</string>
     <string name="toast_undo_unavailable">"עריכה זו כבר סונכרנה ולא ניתן לבצע לה ביטול"</string>
@@ -1129,7 +1121,6 @@
     <string name="quest_drinking_water_type_spring">"מעיין"</string>
     <string name="quest_drinking_water_type_disused">"אוביקט מי שתיה לא בשימוש"</string>
     <string name="overlay_addresses">"כתובות"</string>
-    <string name="overlay_shops">"חנויות"</string>
     <string name="name_label">"שם:"</string>
     <string name="unknown_shop_title">"סוג אחר של מקום"</string>
     <string name="quest_address_answer_no_address">"אין כתובת כאן"</string>

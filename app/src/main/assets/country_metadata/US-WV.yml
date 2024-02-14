@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Huntington Bank, WesBanco, Chase, BB&T, MVB, City National Bank]
+atmOperators: [WesBanco, Huntington Bank, Chase, BB&T, City National Bank]
 chargingStationOperators: ['Tesla, Inc.', Tesla Motors]
 defaultSpeedLimitHasUrbanOrRural: true

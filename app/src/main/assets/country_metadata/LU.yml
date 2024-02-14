@@ -2,7 +2,6 @@
 advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [POST Luxembourg, BCEE, BIL, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, P&T, ING, Banque Internationale à Luxembourg, BNP Paribas]
 chargingStationOperators: [Chargy, Enovos, Commune de Weiler-la-Tour]
-clothesContainerOperators: [Commune de Leudelange]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true

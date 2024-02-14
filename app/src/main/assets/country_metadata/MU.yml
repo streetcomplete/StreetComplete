@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [SBM, MCB, HSBC, Absa, Mauritius Commercial Bank, Barclays, MCB ATM, Bank One]
+atmOperators: [SBM, MCB, HSBC, Absa, Mauritius Commercial Bank, Barclays, SBI, MCB ATM, Bank One]
 centerLineStyle: white
 chargingStationOperators: [Total, E-Motion]
 defaultSpeedLimitHasUrbanOrRural: false

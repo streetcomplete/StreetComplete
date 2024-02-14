@@ -279,8 +279,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="produce_walnuts">"Valrieksti"</string>
     <string name="produce_sisal">"Sizals"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Šeit nevar pārlūkot. Mēģiniet tuvināt karti vai mazināt tās sašķiebšanu."</string>
-    <string name="quest_crossing_type_title">"Kāda veida pāreja tā ir?"</string>
-    <string name="quest_crossing_type_unmarked">"Bez ceļa marķējumiem"</string>
     <string name="action_undo">"Atsaukt"</string>
     <string name="produce_mangosteen">"Mangostāni"</string>
     <string name="produce_tomatoes">"Tomāti"</string>
@@ -441,7 +439,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingType_transportation">"Sabiedriskā transporta ēka"</string>
     <string name="quest_buildingType_university">"Universitāte"</string>
     <string name="quest_buildingType_government">"Valdības ēka"</string>
-    <string name="quest_buildingType_cars">"Automašīnām"</string>
     <string name="quest_buildingType_carport">"Auto nojume"</string>
     <string name="quest_buildingType_carport_description">"Jumts automašīnām"</string>
     <string name="quest_buildingType_garage">"Viena garāža"</string>
@@ -480,7 +477,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_segregated_mixed">"Velosipēdisti un gājēji telpu lieto kopīgi"</string>
     <string name="quest_maxheight_title">"Kāds šeit ir augstuma limits?"</string>
     <string name="quest_maxheight_answer_noSign">"Šeit nav zīmes…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Vai šeit ir pietiekami daudz vietas, lai cauri varētu izbraukt pat visaugstākās kravas mašīnas (ap 4,5 metri)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Augstums izskatās neticams. Vai tas tiešām ir pareizs?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Slēdz %1$s, %2$s"</string>
@@ -796,9 +792,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="quest_lanes_answer_lanes_description_one_side2">"Norādiet kopējo iezīmēto joslu skaitu, ko satiksmē var izmantot autotransports. Velo un stāvvietu joslas neskaitās.
 Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</string>
     <string name="quest_surface_value_rock">"Akmens"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Augstas kravas mašīnas var izbraukt cauri"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Augstas kravas mašīnas nevar izspraukties cauri"</string>
-    <string name="quest_crossing_type_marked">"Marķēts"</string>
     <string name="quest_parkingType_street_side">"Auto novietošana pie ceļa"</string>
     <string name="quest_parkingType_lane">"Auto novietošana uz ceļa"</string>
     <string name="quest_tracktype_grade2a">"Cieti sablīvēta zeme"</string>
@@ -843,7 +836,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="team_mode_team_size_hint">"Komandas režīms der 2 līdz 12 cilvēku grupām."</string>
     <string name="team_mode_active">"Komandas režīms ir ieslēgts"</string>
     <string name="team_mode_deactivated">"Komandas režīms ir izslēgts"</string>
-    <string name="quest_crossing_type_signals_controlled">"Kontrolē luksofors"</string>
     <string name="undo_confirm_title2">"Atsaukt sekojošo rediģējumu?"</string>
     <string name="synced">"Sinhronizēts"</string>
     <string name="toast_undo_unavailable">"Šis rediģējums jau ir sinhronizēts un to nevar atsaukt"</string>
@@ -1229,7 +1221,6 @@ Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīt
     <string name="quest_drinking_water_type_spring">"Avots"</string>
     <string name="quest_drinking_water_type_disused">"Neizmantots dzeramā ūdens objekts"</string>
     <string name="overlay_addresses">"Adreses"</string>
-    <string name="overlay_shops">"Veikali"</string>
     <string name="name_label">"Nosaukums:"</string>
     <string name="unknown_shop_title">"Cita veida vieta"</string>
     <string name="quest_address_answer_no_address">"Šeit nav adreses"</string>
