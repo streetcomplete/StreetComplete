@@ -277,8 +277,6 @@
     <string name="produce_walnuts">"วอลนัท"</string>
     <string name="produce_sisal">"ศรนารายณ์"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"ไม่สามารถสแกนที่นี่ ลองซูมเข้ามาอีกหรือปรับให้มุมเอียงของแผนที่น้อยลง"</string>
-    <string name="quest_crossing_type_title">"นี่คือทางข้ามประเภทใด?"</string>
-    <string name="quest_crossing_type_unmarked">"ทางข้ามโดยไม่มีเครื่องหมายจราจร"</string>
     <string name="action_undo">"เลิกทำ"</string>
     <string name="produce_mangosteen">"มังคุด"</string>
     <string name="produce_tomatoes">"มะเขือเทศ"</string>
@@ -440,7 +438,6 @@
     <string name="quest_buildingType_transportation">"อาคารขนส่งสาธารณะ"</string>
     <string name="quest_buildingType_university">"อาคารมหาวิทยาลัย"</string>
     <string name="quest_buildingType_government">"อาคารราชการ"</string>
-    <string name="quest_buildingType_cars">"สำหรับรถยนต์"</string>
     <string name="quest_buildingType_carport">"ที่จอดรถ"</string>
     <string name="quest_buildingType_carport_description">"หลังคาสำหรับรถยนต์"</string>
     <string name="quest_buildingType_garage">"โรงจอดรถเดี่ยว"</string>
@@ -479,7 +476,6 @@
     <string name="quest_segregated_mixed">"นักปั่นจักรยานและคนเดินเท้าใช้พื้นที่ร่วมกัน"</string>
     <string name="quest_maxheight_title">"ที่นี่จำกัดความสูงที่เท่าใด?"</string>
     <string name="quest_maxheight_answer_noSign">"ไม่มีป้าย…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"มีช่องว่างเพียงพอสำหรับรถบรรทุกที่สูงที่สุด (อย่างน้อยประมาณ 4.5 เมตร / 15 ฟุต) ที่จะผ่านไปอย่างง่ายดายหรือไม่"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"ความสูงนี้ดูไม่น่าเป็นไปได้ แน่ใจว่าถูกต้อง?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"ถูกปิดโดย %1$s, %2$s"</string>
@@ -793,9 +789,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"ระบุจำนวนช่องจราจรที่รถยนต์ใช้ได้ที่นี่ โดยไม่นับช่องทางจักรยานและช่องสำหรับการจอดรถโดยเฉพาะ
 หากมีช่องทางใดที่สงวนไว้สำหรับรถโดยสาร โปรดระบุเป็นหมายเหตุแทน"</string>
     <string name="quest_surface_value_rock">"หิน"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"รถบรรทุกสูงผ่านได้"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"รถบรรทุกสูงผ่านไม่ได้"</string>
-    <string name="quest_crossing_type_marked">"ทางข้ามที่มีเครื่องหมายจราจร"</string>
     <string name="quest_parkingType_street_side">"ที่จอดรถอยู่ริมถนน"</string>
     <string name="quest_parkingType_lane">"จุดจอดรถริมถนน"</string>
     <string name="quest_tracktype_grade2a">"เป็นพื้นแข็งแต่ยังไม่ปรับผิวถนน"</string>
@@ -838,7 +831,6 @@
     <string name="team_mode_team_size_hint">"โหมดทีมสำหรับกลุ่ม 2 ถึง 12 คน"</string>
     <string name="team_mode_active">"โหมดทีมทำงานอยู่"</string>
     <string name="team_mode_deactivated">"โหมดทีมปิดใช้งาน"</string>
-    <string name="quest_crossing_type_signals_controlled">"ทางข้ามที่มีไฟสัญญาณจราจรกำกับ"</string>
     <string name="undo_confirm_title2">"ยกเลิกการแก้ไขต่อไปนี้ไหม?"</string>
     <string name="synced">"ซิงค์แล้ว"</string>
     <string name="toast_undo_unavailable">"การแก้ไขนี้ถูกซิงค์แล้วและจะยกเลิกไม่ได้"</string>
@@ -1223,7 +1215,6 @@
     <string name="quest_drinking_water_type_spring">"น้ำพุธรรมชาติ"</string>
     <string name="quest_drinking_water_type_disused">"อุปกรณ์น้ำดื่มที่ไม่ใช้งานแล้ว"</string>
     <string name="overlay_addresses">"ที่อยู่"</string>
-    <string name="overlay_shops">"ร้านค้า"</string>
     <string name="name_label">"ชื่อ:"</string>
     <string name="unknown_shop_title">"สถานที่ประเภทอื่น"</string>
     <string name="quest_address_answer_no_address">"ไม่มีที่อยู่ที่นี่"</string>

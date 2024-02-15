@@ -186,8 +186,8 @@ class InsertNodeFragment :
             null, // pre-filled search text
             { true }, // filter, but we want everything
             { onSelectedFeature(it, pow) },
+            defaultFeatureIds.reversed(),
             false,
-            defaultFeatureIds.reversed(), // features shown without entering text
             pow.position,
         ).show()
         restoreBackground()
@@ -212,7 +212,7 @@ class InsertNodeFragment :
                 val geo = mapData.getGeometry(it.type, it.id) ?: return@forEach
                 showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
                     geo,
-                    getPinIcon(featureDictionary.value, it.tags),
+                    getPinIcon(featureDictionary.value, it),
                     getTitle(it.tags)
                 )
             }
@@ -296,7 +296,7 @@ class InsertNodeFragment :
                     if (node.tags.isNotEmpty())
                         showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
                             ElementPointGeometry(node.position),
-                            getPinIcon(featureDictionary.value, node.tags),
+                            getPinIcon(featureDictionary.value, node),
                             getTitle(node.tags)
                         )
                 }

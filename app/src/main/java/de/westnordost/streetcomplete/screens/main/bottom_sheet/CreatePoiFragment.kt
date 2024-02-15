@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
-import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.dialogs.showOutsideDownloadedAreaDialog
@@ -94,7 +94,7 @@ class CreatePoiFragment : TagEditor() {
         listener?.onCreatedNote(position)
         arguments?.getString(ARG_ID)?.let {
             val prefillTags: Map<String, String> = arguments?.getString(ARG_PREFILLED_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
-            if (!IS_SHOP_EXPRESSION.matches(element) && prefillTags != element.tags)
+            if (!element.isPlace() && prefillTags != element.tags)
                 prefs.edit { putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags)) }
         }
     }

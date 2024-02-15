@@ -8,6 +8,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.getQuestTypeList
@@ -34,9 +35,7 @@ class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, p
     private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val arSupportChecker: ArSupportChecker by inject()
-    private val getFeature: (tags: Map<String, String>) -> Feature? = { tags ->
-        featureDictionary.value.getFeature(tags)
-    }
+    private val getFeature: (Element) -> Feature? = { featureDictionary.value.getFeature(it) }
     private val getCountryInfoByLocation:  (location: LatLon) -> CountryInfo = { location ->
         countryInfos.getByLocation(countryBoundaries.value, location.longitude, location.latitude)
     }

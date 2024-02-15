@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import kotlinx.serialization.encodeToString
@@ -50,7 +50,7 @@ class InsertNodeTagEditor : TagEditor() {
         listener?.onCreatedNote(positionOnWay.position)
         arguments?.getString(ARG_FEATURE_ID)?.let {
             val initialTags: Map<String, String> = arguments?.getString(ARG_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
-            if (!IS_SHOP_EXPRESSION.matches(element) && initialTags != element.tags)
+            if (!element.isPlace() && initialTags != element.tags)
                 prefs.edit { putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags)) }
         }
     }

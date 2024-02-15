@@ -120,8 +120,8 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
                 featureCtrl.feature?.name,
                 ::filterOnlySpecialitiesOfMedicalDoctors,
                 ::onSelectedFeature,
-                false,
                 getSuggestions(),
+                false,
                 geometry.center
             ).show()
         }
@@ -165,7 +165,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
         checkIsFormComplete()
     }
 
-    private fun getSuggestions(): Collection<String> {
+    private fun getSuggestions(): List<String> {
         if (lastPickedAnswers.size >= 12) return lastPickedAnswers
         return (lastPickedAnswers + listOf(
                 // based on https://taginfo.openstreetmap.org/keys/healthcare%3Aspeciality#values

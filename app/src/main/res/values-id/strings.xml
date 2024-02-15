@@ -281,8 +281,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="produce_walnuts">"Kenari"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat mengunduh di sini. Coba perbesar peta atau kurangi kemiringannya."</string>
-    <string name="quest_crossing_type_title">"Apakah tipe penyeberangan ini?"</string>
-    <string name="quest_crossing_type_unmarked">"Penyeberangan tanpa zebra cross"</string>
     <string name="action_undo">"Urungkan"</string>
     <string name="produce_mangosteen">"Manggis"</string>
     <string name="produce_tomatoes">"Tomat"</string>
@@ -446,7 +444,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_transportation">"Bangunan transportasi umum"</string>
     <string name="quest_buildingType_university">"Bangunan universitas"</string>
     <string name="quest_buildingType_government">"Bangunan pemerintah"</string>
-    <string name="quest_buildingType_cars">"Untuk mobil"</string>
     <string name="quest_buildingType_carport">"Garasi"</string>
     <string name="quest_buildingType_carport_description">"Atap untuk mobil"</string>
     <string name="quest_buildingType_garage">"Garasi tunggal"</string>
@@ -485,7 +482,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_segregated_mixed">"Pesepeda dan pejalan kaki berbagi bersama"</string>
     <string name="quest_maxheight_title">"Apa batas tinggi di sini?"</string>
     <string name="quest_maxheight_answer_noSign">"Tidak ada tanda…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Apa ada cukup ruang untuk truk tinggi lewat? (sekitar 4.5 meter)"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Tingginya terlihat tidak wajar. Apa kamu yakin?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Tutup saat %1$s, %2$s"</string>
@@ -801,9 +797,6 @@ Jika ada lajur yang digunakan hanya untuk bus, harap tinggalkan catatan saja."</
     <string name="quest_lanes_answer_lanes_description_one_side2">"Tentukan jumlah lajur yang ditandai yang dapat digunakan lalu lintas mobil di sini. Lajur sepeda dan lajur khusus parkir tidak termasuk.
 Jika ada lajur yang digunakan hanya untuk bus, harap meninggalkan catatan saja."</string>
     <string name="quest_surface_value_rock">"Batu"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Truk tinggi dapat melewati"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Truk-truk tinggi tidak muat"</string>
-    <string name="quest_crossing_type_marked">"Ditandai"</string>
     <string name="quest_parkingType_street_side">"Parkir di pinggir jalan"</string>
     <string name="quest_parkingType_lane">"Parkir pada jalan"</string>
     <string name="quest_tracktype_grade2a">"Tanah dipadatkan"</string>
@@ -848,7 +841,6 @@ Catat semua opsi yang tersedia: beberapa kasus tidak terlihat jelas, seperti jal
     <string name="team_mode_team_size_hint">"Mode kelompok bekerja untuk kelompok dengan 2 sampai 12 orang."</string>
     <string name="team_mode_active">"Mode kelompok aktif"</string>
     <string name="team_mode_deactivated">"Mode kelompok nonaktif"</string>
-    <string name="quest_crossing_type_signals_controlled">"Diatur oleh lampu lalu lintas"</string>
     <string name="undo_confirm_title2">"Batalkan suntingan berikut?"</string>
     <string name="synced">"Disinkronkan"</string>
     <string name="toast_undo_unavailable">"Suntingan ini sudah disinkronkan dan tidak dapat dibatalkan"</string>
@@ -1232,7 +1224,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_drinking_water_type_spring">"Mata air"</string>
     <string name="quest_drinking_water_type_disused">"Benda air minum bekas"</string>
     <string name="overlay_addresses">"Alamat"</string>
-    <string name="overlay_shops">"Toko"</string>
     <string name="name_label">"Nama:"</string>
     <string name="unknown_shop_title">"Jenis tempat lain"</string>
     <string name="quest_address_answer_no_address">"Tidak ada alamat di sini"</string>

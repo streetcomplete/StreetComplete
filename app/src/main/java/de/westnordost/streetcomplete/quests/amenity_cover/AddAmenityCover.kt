@@ -9,10 +9,11 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAmenityCover(
-    private val getFeature: (tags: Map<String, String>) -> Feature?
+    private val getFeature: (Element) -> Feature?
 ) : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
@@ -34,8 +35,7 @@ class AddAmenityCover(
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
-        val feature = getFeature(element.tags) ?: return emptySequence()
-
+        val feature = getFeature(element) ?: return emptySequence()
         return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
 
@@ -45,5 +45,3 @@ class AddAmenityCover(
         tags["covered"] = answer.toYesNo()
     }
 }
-
-private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }

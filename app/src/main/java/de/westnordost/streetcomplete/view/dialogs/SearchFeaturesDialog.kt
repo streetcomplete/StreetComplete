@@ -45,8 +45,8 @@ class SearchFeaturesDialog(
     text: String? = null,
     private val filterFn: (Feature) -> Boolean = { true },
     private val onSelectedFeatureFn: (Feature) -> Unit,
+    private val codesOfDefaultFeatures: List<String>,
     private val dismissKeyboardOnClose: Boolean = false,
-    private val preSelect: Collection<String>? = null,
     private val pos: LatLon? = null
 ) : AlertDialog(context), KoinComponent {
 
@@ -58,20 +58,6 @@ class SearchFeaturesDialog(
     private val prefs: SharedPreferences by inject()
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
-
-    private val defaultFeatures: List<String> by lazy {
-        listOf(
-            // ordered by usage number according to taginfo
-            "amenity/restaurant",
-            "shop/convenience",
-            "amenity/cafe",
-            "shop/supermarket",
-            "amenity/fast_food",
-            "amenity/pharmacy",
-            "shop/clothes",
-            "shop/hairdresser"
-        )
-    }
 
     init {
         binding.searchEditText.setText(text)
@@ -85,11 +71,11 @@ class SearchFeaturesDialog(
 
         setView(binding.root)
 
-        if (prefs.getBoolean(Prefs.CREATE_NODE_SHOW_KEYBOARD, true) || text != null || preSelect.isNullOrEmpty())
+        if (prefs.getBoolean(Prefs.CREATE_NODE_SHOW_KEYBOARD, true) || text != null || codesOfDefaultFeatures.isEmpty())
             window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         val params = ViewGroup.LayoutParams(context.dpToPx(58).toInt(), context.dpToPx(58).toInt())
-        preSelect?.forEach {
+        codesOfDefaultFeatures.forEach {
             val resId = iconOnlyFeatures[it] ?: return@forEach
             val feature = featureDictionary.byId(it).get() ?: return@forEach
             binding.shortcuts.addView(ImageView(context).apply {
@@ -142,7 +128,7 @@ class SearchFeaturesDialog(
 
     private fun updateSearchResults() {
         val text = searchText
-        val list = if (text == null) (preSelect?.filterNot { it in iconOnlyFeatures } ?: defaultFeatures).mapNotNull {
+        val list = if (text == null) codesOfDefaultFeatures.filterNot { it in iconOnlyFeatures }.mapNotNull {
             featureDictionary
                 .byId(it)
                 .forLocale(*locales)

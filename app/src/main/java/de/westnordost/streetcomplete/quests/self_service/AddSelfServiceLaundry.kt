@@ -15,7 +15,7 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     override val changesetComment = "Survey whether laundries provide self-service"
     override val wikiLink = "Tag:shop=laundry"
     override val icon = R.drawable.ic_quest_laundry
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_laundrySelfService_title2

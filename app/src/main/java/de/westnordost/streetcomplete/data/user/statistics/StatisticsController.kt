@@ -178,11 +178,11 @@ class StatisticsController(
         val today = systemTimeNow().toLocalDate()
         val lastUpdateDate = Instant.fromEpochMilliseconds(lastUpdate).toLocalDate()
         lastUpdate = nowAsEpochMilliseconds()
+        activeDatesDao.addToday()
         if (today > lastUpdateDate) {
             daysActive++
             listeners.forEach { it.onUpdatedDaysActive() }
         }
-        activeDatesDao.addToday()
     }
 
     private fun getRealCountryCode(position: LatLon): String? =

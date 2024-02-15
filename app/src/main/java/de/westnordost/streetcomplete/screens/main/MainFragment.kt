@@ -94,7 +94,8 @@ import de.westnordost.streetcomplete.data.visiblequests.LevelFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
-import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -1140,9 +1141,9 @@ class MainFragment :
 
     private fun selectPoiType(pos: LatLon) {
         val country = countryBoundaries.value.getIds(pos.longitude, pos.latitude).firstOrNull()
-        val defaultFeatureIds: List<String>? = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")
+        val defaultFeatureIds: List<String> = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")
             .split("§").filter { it.isNotBlank() }
-            .ifEmpty { null } // null will show defaults, while empty list will not
+            .ifEmpty { POPULAR_PLACE_FEATURE_IDS }
 
         SearchFeaturesDialog(
             requireContext(),
@@ -1152,8 +1153,8 @@ class MainFragment :
             null, // pre-filled search text
             { true }, // filter, but we want everything
             { addPoi(pos, it) },
+            defaultFeatureIds.reversed(),
             false,
-            defaultFeatureIds?.reversed(), // features shown without entering text
             pos,
         ).show()
     }
@@ -1165,18 +1166,21 @@ class MainFragment :
         viewLifecycleScope.launch {
             val bbox = pos.enclosingBoundingBox(50.0)
             val data = withContext(Dispatchers.IO) { mapDataWithEditsSource.getMapDataWithGeometry(bbox) }
-            val filter = if (IS_SHOP_EXPRESSION.matches(Node(0L, pos, feature.addTags))) IS_SHOP_EXPRESSION
-            else "nodes, ways, relations with ${feature.tags
+            val elements = if (Node(0L, pos, feature.addTags).isPlace()) {
+                data.filter { it.isPlace() }
+            } else {
+                val filter = "nodes, ways, relations with ${feature.tags
                     .map { if (it.value == "*") it.key else it.key + "=" + it.value }
                     .joinToString(" and ")}".toElementFilterExpression()
-            val elements = data.filter { filter.matches(it) }
+                data.filter { filter.matches(it) }
+            }
 
             for (e in elements) {
                 // include only elements that fit with the currently active level filter
                 if (!levelFilter.levelAllowed(e)) continue
 
                 val geometry = data.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(featureDictionary.value, e.tags)
+                val icon = getPinIcon(featureDictionary.value, e)
                 val title = getTitle(e.tags)
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }
@@ -1512,7 +1516,7 @@ class MainFragment :
             if (element?.tags?.get("layer") != e.tags["layer"] && e.tags["bridge"] == null) continue
 
             val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
-            val icon = getPinIcon(featureDictionary.value, e.tags)
+            val icon = getPinIcon(featureDictionary.value, e)
             val title = getTitle(e.tags, localLanguages)
             markers.add(Marker(geometry, icon, title))
         }

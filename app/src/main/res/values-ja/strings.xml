@@ -281,8 +281,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="produce_walnuts">"クルミ"</string>
     <string name="produce_sisal">"サイザル"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"ここはスキャンできません。もっとズームインしたり、地図を水平にしてください。"</string>
-    <string name="quest_crossing_type_title">"この交差点はどのような種類ですか?"</string>
-    <string name="quest_crossing_type_unmarked">"道路標示のない交差点"</string>
     <string name="action_undo">"元に戻す"</string>
     <string name="produce_mangosteen">"マンゴスチン"</string>
     <string name="produce_tomatoes">"トマト"</string>
@@ -445,7 +443,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_transportation">"公共交通施設"</string>
     <string name="quest_buildingType_university">"大学の建物"</string>
     <string name="quest_buildingType_government">"政府施設"</string>
-    <string name="quest_buildingType_cars">"自動車用の建築物"</string>
     <string name="quest_buildingType_carport">"カーポート"</string>
     <string name="quest_buildingType_carport_description">"車のための屋根"</string>
     <string name="quest_buildingType_garage">"車庫"</string>
@@ -484,7 +481,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_segregated_mixed">"歩行者と自転車は同じ部分を通る"</string>
     <string name="quest_maxheight_title">"この場所の高さ制限は何ですか?"</string>
     <string name="quest_maxheight_answer_noSign">"標識は無い…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"この場所には高いトラック(少なくとも4.5メートル / 15フィート)が通る余裕がありますか?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"その高さは変です。本当に正しいですか?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"%1$s, %2$s がクローズした"</string>
@@ -801,9 +797,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_lanes_answer_lanes_description_one_side2">"自動車が通行できる車線の数を指定してください。自転車や駐車専用の区画は数えません。
 バス専用車線がある場合は、代わりメモを残してください。"</string>
     <string name="quest_surface_value_rock">"岩"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"大型トラックが通れる"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"大型トラックはサイズが合わない"</string>
-    <string name="quest_crossing_type_marked">"横断歩道がある"</string>
     <string name="quest_parkingType_street_side">"路傍の駐車用区画"</string>
     <string name="quest_parkingType_lane">"路面の駐車用区画"</string>
     <string name="quest_tracktype_grade2a">"強くふみかためられた未舗装道路"</string>
@@ -848,7 +841,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="team_mode_team_size_hint">"チームモードは2人から12人で利用できます。"</string>
     <string name="team_mode_active">"チームモードが有効"</string>
     <string name="team_mode_deactivated">"チームモードを無効化"</string>
-    <string name="quest_crossing_type_signals_controlled">"信号機が設置されている"</string>
     <string name="undo_confirm_title2">"下記の編集を元に戻しますか？"</string>
     <string name="synced">"同期しました"</string>
     <string name="toast_undo_unavailable">"この編集は既に同期されており、元に戻す事はできません"</string>
@@ -1234,7 +1226,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_drinking_water_type_spring">"泉"</string>
     <string name="quest_drinking_water_type_disused">"使用されていない飲料水オブジェクト"</string>
     <string name="overlay_addresses">"アドレス"</string>
-    <string name="overlay_shops">"ショップ"</string>
     <string name="name_label">"名前："</string>
     <string name="unknown_shop_title">"他の種類の場所"</string>
     <string name="quest_address_answer_no_address">"ここに住所がありません"</string>

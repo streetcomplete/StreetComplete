@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.osm.level.SingleLevel
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
@@ -56,14 +56,12 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
 
         val shopsWithLevels = if (prefs.getBoolean(PREF_MORE_LEVELS, false))
                 mapData.filter { e ->
-                    e.tags["level"] != null && (
-                        IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(e)
-                            || getPinIcon(featureDictionary, e.tags) != null
-                        )
+                    e.tags["level"] != null
+                        && (e.isPlaceOrDisusedShop() || getPinIcon(featureDictionary, e) != null)
                 }
             else
                 mapData.filter {
-                    it.tags["level"] != null && IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(it)
+                    it.tags["level"] != null && it.isPlaceOrDisusedShop()
                 }
 
         shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->
@@ -108,7 +106,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         val levels = listOf(SingleLevel(level))
         for ((element, geometry) in shopElementsAndGeometry) {
             if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) continue
-            val icon = getPinIcon(featureDictionary, element.tags)
+            val icon = getPinIcon(featureDictionary, element)
             val title = getTitle(element.tags)
             showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(geometry, icon, title)
         }

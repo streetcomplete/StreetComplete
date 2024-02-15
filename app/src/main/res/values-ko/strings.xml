@@ -279,8 +279,6 @@
     <string name="produce_walnuts">"호두"</string>
     <string name="produce_sisal">"사이잘"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"이곳을 탐색할 수 없습니다. 더 확대하거나 지도를 똑바로 세워 보세요."</string>
-    <string name="quest_crossing_type_title">"어떤 종류의 횡단보도인가요?"</string>
-    <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
     <string name="action_undo">"되돌리기"</string>
     <string name="produce_mangosteen">"망고스틴"</string>
     <string name="produce_tomatoes">"토마토"</string>
@@ -442,7 +440,6 @@
     <string name="quest_buildingType_transportation">"대중교통용 건물"</string>
     <string name="quest_buildingType_university">"종합대학 건물"</string>
     <string name="quest_buildingType_government">"정부 건물"</string>
-    <string name="quest_buildingType_cars">"자동차용"</string>
     <string name="quest_buildingType_carport">"간이 차고"</string>
     <string name="quest_buildingType_carport_description">"자동차용 지붕"</string>
     <string name="quest_buildingType_garage">"단일 차고"</string>
@@ -481,7 +478,6 @@
     <string name="quest_segregated_mixed">"자전거와 사람이 같은 공간을 공유함"</string>
     <string name="quest_maxheight_title">"여기의 높이 제한은 얼마인가요?"</string>
     <string name="quest_maxheight_answer_noSign">"표지판이 없음…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"대형 트럭(최소 4.5 미터 / 15 피트 이상)이 통과하기에 충분한 공간이 있나요?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"높이 제한이 현실적인 것 같지 않습니다. 이 높이가 맞습니까?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"%1$s 닫음, %2$s"</string>
@@ -798,9 +794,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_lanes_answer_lanes_description_one_side2">"차량이 이용하는 차선이 그려진 갯수를 답하세요. 즉, 자전거 차선이나 갓길 주차로는 세지 않습니다.
 만약 버스 전용 차로가 있다면, 참고를 대신 남겨 주세요."</string>
     <string name="quest_surface_value_rock">"바위"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"큰 트럭이 통과할 수 있음"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"큰 트럭이 통과할 수 없음"</string>
-    <string name="quest_crossing_type_marked">"횡단보도가 그려져 있음"</string>
     <string name="quest_parkingType_street_side">"도로변에 위치하지 않은 주차장"</string>
     <string name="quest_parkingType_lane">"도로변 주차장"</string>
     <string name="quest_tracktype_grade2a">"단단하지만 비포장임"</string>
@@ -843,7 +836,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="team_mode_team_size_hint">"팀 모드를 통해 2명에서 12명까지 무리를 지어 활동할 수 있습니다."</string>
     <string name="team_mode_active">"팀 모드가 활성화되었습니다"</string>
     <string name="team_mode_deactivated">"팀 모드가 비활성화되었습니다"</string>
-    <string name="quest_crossing_type_signals_controlled">"신호등이 있는 건널목"</string>
     <string name="undo_confirm_title2">"이 편집을 취소할까요?"</string>
     <string name="synced">"동기화됨"</string>
     <string name="toast_undo_unavailable">"이 편집은 이미 동기화되었으므로 되돌릴 수 없습니다"</string>
@@ -1229,7 +1221,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_drinking_water_type_spring">"샘물"</string>
     <string name="quest_drinking_water_type_disused">"관리 미비로 사용 불가"</string>
     <string name="overlay_addresses">"주소"</string>
-    <string name="overlay_shops">"상점"</string>
     <string name="name_label">"이름:"</string>
     <string name="unknown_shop_title">"다른 유형의 장소"</string>
     <string name="quest_address_answer_no_address">"주소 없음"</string>

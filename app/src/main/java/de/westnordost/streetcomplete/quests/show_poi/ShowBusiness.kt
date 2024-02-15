@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.quests.NoAnswerFragment
 import de.westnordost.streetcomplete.quests.getLabelOrElementSelectionDialog
 
@@ -66,7 +66,7 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:shop"
     override val icon = R.drawable.ic_quest_poi_business
     override val dotColor = "sandybrown"
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val defaultDisabledMessage = R.string.default_disabled_msg_poi_business
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_poi_business_title
@@ -74,7 +74,7 @@ class ShowBusiness : OsmFilterQuestType<Boolean>() {
     override fun createForm() = NoAnswerFragment()
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter(IS_SHOP_EXPRESSION)
+        getMapData().asSequence().filter { it.isPlace() }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
 

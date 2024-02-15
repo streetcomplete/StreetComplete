@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isShopExpressionFragment
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
@@ -43,11 +43,6 @@ class AddLevel : OsmElementQuestType<String> {
 
     /* only nodes because ways/relations are not likely to be floating around freely in a mall
      * outline */
-    private val filter get() = if (prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false))
-        shopsAndMoreFilter
-    else
-        shopFilter
-
     private val shopsAndMoreFilter by lazy { """
         nodes with
          (
@@ -65,9 +60,8 @@ class AddLevel : OsmElementQuestType<String> {
 
     private val shopFilter by lazy { """
         nodes with
-         (${isShopExpressionFragment()})
-         and !level
-         and (name or brand or noname = yes or name:signed = no)
+          !level
+          and (name or brand or noname = yes or name:signed = no)
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine on which level elements are in a building"
@@ -76,21 +70,21 @@ class AddLevel : OsmElementQuestType<String> {
     /* disabled because in a mall with multiple levels, if there are nodes with no level defined,
      * it really makes no sense to tag something as vacant if the level is not known. Instead, if
      * the user cannot find the place on any level in the mall, delete the element completely. */
-    override val isReplaceShopEnabled = false
+    override val isReplacePlaceEnabled = false
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_level_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val moreLevels = prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false)
         // get all shops that have no level tagged
-        val shopsWithoutLevel = mapData
-            .filter { filter.matches(it)}
-            .toMutableList()
+        val shopsWithoutLevel = if (moreLevels) mapData.filter { shopsAndMoreFilter.matches(it) }.toMutableList()
+            else mapData.filter { shopFilter.matches(it) && it.isPlace() }.toMutableList()
         if (shopsWithoutLevel.isEmpty()) return emptyList()
 
         val result = mutableListOf<Element>()
-        if (prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false)) {
+        if (moreLevels) {
             // add doctors, independent of the building they're in
             // and remove them from shops without level
             shopsWithoutLevel.removeAll {
@@ -150,7 +144,11 @@ class AddLevel : OsmElementQuestType<String> {
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        if (!filter.matches(element)) return false
+        if (prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false)) {
+            if (!shopsAndMoreFilter.matches(element)) return false
+        } else {
+            if (!shopFilter.matches(element) || !element.isPlace()) return false
+        }
         // doctors are frequently at non-ground level
         if (element.isDoctor() && prefs.getBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, false) && !element.tags.containsKey("level")) return true
         // for shops with no level, we actually need to look at geometry in order to find if it is

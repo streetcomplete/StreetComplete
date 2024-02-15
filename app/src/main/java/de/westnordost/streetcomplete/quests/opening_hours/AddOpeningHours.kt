@@ -11,11 +11,10 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -24,7 +23,7 @@ import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
 import de.westnordost.streetcomplete.quests.getPrefixedFullElementSelectionPref
 
 class AddOpeningHours(
-    private val getFeature: (tags: Map<String, String>) -> Feature?
+    private val getFeature: (Element) -> Feature?
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
@@ -131,7 +130,7 @@ class AddOpeningHours(
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     private val olderThan1Year = TagOlderThan("opening_hours", RelativeDate(-365f))
@@ -152,11 +151,10 @@ class AddOpeningHours(
 
     override fun isApplicableTo(element: Element): Boolean {
         if (!filter.matches(element)) return false
-        val tags = element.tags
         // only show places that can be named somehow
-        if (!hasName(tags)) return false
+        if (!hasName(element)) return false
         // no opening_hours yet -> new survey
-        val ohStr = tags["opening_hours"] ?: return true
+        val ohStr = element.tags["opening_hours"] ?: return true
         /* don't show if it was recently checked (actually already checked by filter, but it is a
            performance improvement to avoid parsing the opening hours en masse if possible) */
         if (!olderThan1Year.matches(element)) return false
@@ -170,7 +168,7 @@ class AddOpeningHours(
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = AddOpeningHoursForm()
 
@@ -194,12 +192,12 @@ class AddOpeningHours(
         tags.remove("opening_hours:covid19")
     }
 
-    private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
+    private fun hasName(element: Element) = hasProperName(element.tags) || hasFeatureName(element)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
+    private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 
     override val hasQuestSettings: Boolean = true
 

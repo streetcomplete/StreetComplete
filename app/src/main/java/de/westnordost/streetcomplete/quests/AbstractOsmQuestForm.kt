@@ -44,9 +44,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.osm.replaceShop
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.util.AccessManagerDialog
@@ -220,12 +220,12 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     private fun createDeleteOrReplaceElementAnswer(): AnswerItem? {
         val isDeletePoiEnabled = osmElementQuestType.isDeleteElementEnabled && element.type == ElementType.NODE
-        val isReplaceShopEnabled = osmElementQuestType.isReplaceShopEnabled
-        if (!isDeletePoiEnabled && !isReplaceShopEnabled) return null
+        val isReplacePlaceEnabled = osmElementQuestType.isReplacePlaceEnabled
+        if (!isDeletePoiEnabled && !isReplacePlaceEnabled) return null
 
         return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
-            if (isReplaceShopEnabled) {
-                replaceShop() // allow both being enabled, but prefer replace over delete
+            if (isReplacePlaceEnabled) {
+                replacePlace() // allow both being enabled, but prefer replace over delete
             } else {
                 deletePoiNode()
             }
@@ -342,8 +342,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
     }
 
-    protected fun replaceShop(extra: Boolean = true) {
-        if (IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(element)) {
+    protected fun replacePlace(extra: Boolean = true) {
+        if (element.isPlaceOrDisusedShop()) {
             ShopGoneDialog(
                 requireContext(),
                 element.geometryType,
@@ -361,7 +361,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     private fun onShopReplacementSelected(tags: Map<String, String>, extra: Boolean = true) {
         viewLifecycleScope.launch {
             val builder = StringMapChangesBuilder(element.tags)
-            builder.replaceShop(tags)
+            builder.replacePlace(tags)
             solve(UpdateElementTagsAction(element, builder.create()), extra)
         }
     }

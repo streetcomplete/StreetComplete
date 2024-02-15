@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 
 class CheckShopExistenceForm : AbstractOsmQuestForm<Unit>() {
     override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { replaceShop(false) }, // avoid showing edit with "edits in context of" changeset message
+        AnswerItem(R.string.quest_generic_hasFeature_no) { replacePlace(false) }, // false to avoid showing edit with "edits in context of" changeset message
         AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(Unit) },
     )
 }

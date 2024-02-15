@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
@@ -17,12 +16,12 @@ import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
 
-class ShopsOverlay(private val getFeature: (tags: Map<String, String>) -> Feature?) : Overlay {
+class ShopsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
-    override val title = R.string.overlay_shops
+    override val title = R.string.overlay_places
     override val icon = R.drawable.ic_quest_shop
-    override val changesetComment = "Survey shops etc."
-    override val wikiLink: String = "Key:shop"
+    override val changesetComment = "Survey shops, places etc."
+    override val wikiLink = null
     override val achievements = listOf(EditTypeAchievement.CITIZEN)
     override val hidesQuestTypes = setOf(
         AddPlaceName::class.simpleName!!,
@@ -38,9 +37,10 @@ class ShopsOverlay(private val getFeature: (tags: Map<String, String>) -> Featur
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
-            .filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
+            .asSequence()
+            .filter { it.isPlaceOrDisusedShop() }
             .map { element ->
-                val feature = getFeature(element.tags)
+                val feature = getFeature(element)
 
                 val icon = "ic_preset_" + (feature?.icon ?: "maki-shop").replace('-', '_')
                 val label = getNameLabel(element.tags)
