@@ -279,8 +279,6 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="produce_walnuts">"Walnuts"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
-    <string name="quest_crossing_type_title">"What kind of crossing is this?"</string>
-    <string name="quest_crossing_type_unmarked">"Without road markings"</string>
     <string name="action_undo">"Undo"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomatoes"</string>
@@ -442,7 +440,6 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_buildingType_transportation">"Public transportation building"</string>
     <string name="quest_buildingType_university">"University building"</string>
     <string name="quest_buildingType_government">"Government building"</string>
-    <string name="quest_buildingType_cars">"For cars"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"roof for a car"</string>
     <string name="quest_buildingType_garage">"Single garage"</string>
@@ -481,7 +478,6 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_segregated_mixed">"Cyclists and pedestrians share the same space"</string>
     <string name="quest_maxheight_title">"What is the height limit here?"</string>
     <string name="quest_maxheight_answer_noSign">"There is no sign…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Is there easily enough space for even the tallest trucks (at least about 4.5 meters) to pass through?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"This height looks implausible. Are you sure that it is correct?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Closed by %1$s, %2$s"</string>
@@ -738,7 +734,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_drinking_water_type_spring">"Spring"</string>
     <string name="quest_drinking_water_type_disused">"Disused drinking water object"</string>
     <string name="overlay_addresses">"Addresses"</string>
-    <string name="overlay_shops">"Shops"</string>
     <string name="name_label">"Name:"</string>
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>

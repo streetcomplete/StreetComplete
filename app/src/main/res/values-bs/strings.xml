@@ -280,8 +280,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="produce_walnuts">"Orasi"</string>
     <string name="produce_sisal">"Sisal-konoplja"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Ovdje se ne može skenirati. Pokušajte dodatno približiti ili manje naginjati kartu."</string>
-    <string name="quest_crossing_type_title">"Kakav je ovo pješački prijelaz?"</string>
-    <string name="quest_crossing_type_unmarked">"Prijelaz bez ikakvih oznaka"</string>
     <string name="action_undo">"Poništi"</string>
     <string name="produce_mangosteen">"(Mangosteen)"</string>
     <string name="produce_tomatoes">"Paradajz"</string>
@@ -444,7 +442,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_buildingType_transportation">"Zgrada javnog prijevoza"</string>
     <string name="quest_buildingType_university">"Sveučilišna zgrada"</string>
     <string name="quest_buildingType_government">"Državna zgrada"</string>
-    <string name="quest_buildingType_cars">"Za automobile"</string>
     <string name="quest_buildingType_carport">"Nadstrešnica za automobil"</string>
     <string name="quest_buildingType_carport_description">"samo nadstrešnica, bez zidova/vrata"</string>
     <string name="quest_buildingType_garage">"Samostalna garaža"</string>
@@ -484,7 +481,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_maxheight_title">"Koje je ovdje visinsko ograničenje?
 "</string>
     <string name="quest_maxheight_answer_noSign">"Ne postoji znak…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Ima li dovoljno dovoljno mjesta za prolaz i najviših kamiona (barem 4,5 metra)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Ta visina izgleda nerealna. Jeste li sigurni da je ispravna?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Zatvorio korisnik %1$s, %2$s
@@ -799,9 +795,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="quest_lanes_answer_lanes_description_one_side2">"Navedite broj označenih traka koje se koriste za automobilski promet ovdje. Dakle, biciklističke i parkirne trake se ne računaju.
 Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</string>
     <string name="quest_surface_value_rock">"Kamenje"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Visoki kamioni mogu proći"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Visoki kamioni ne mogu proći"</string>
-    <string name="quest_crossing_type_marked">"Označen zebrom"</string>
     <string name="quest_parkingType_street_side">"Parkiralište tik uz cestu"</string>
     <string name="quest_parkingType_lane">"Parkiralište na cesti"</string>
     <string name="quest_tracktype_grade2a">"Čvrsta ali nepopločana"</string>
@@ -844,7 +837,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="team_mode_team_size_hint">"Timski način rada podržava grupe od 2 do 12 osoba."</string>
     <string name="team_mode_active">"Timski način rada je aktivan"</string>
     <string name="team_mode_deactivated">"Timski način rada je deaktiviran"</string>
-    <string name="quest_crossing_type_signals_controlled">"Prijelaz kontroliran semaforima"</string>
     <string name="undo_confirm_title2">"Poništi ovo uređivanje?"</string>
     <string name="synced">"Poslano"</string>
     <string name="toast_undo_unavailable">"Ova izmjena je već poslana i ne može se poništiti"</string>

@@ -11,13 +11,14 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> Feature?) :
+class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
     OsmElementQuestType<Boolean> {
 
     private val nodesFilter by lazy { """
@@ -52,9 +53,7 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return listOf()
-        val nodes = mapData.nodes.filter {
-            nodesFilter.matches(it) && hasAnyName(it.tags)
-        }
+        val nodes = mapData.nodes.filter { nodesFilter.matches(it) && getFeature(it) != null }
         val buildings = mapData.filter { buildingFilter.matches(it) }.toMutableList()
 
         val buildingGeometriesById = buildings.associate {
@@ -89,23 +88,16 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
     }
 
     override fun isApplicableTo(element: Element) =
-        if (nodesFilter.matches(element) && hasAnyName(element.tags)) {
-            if (nodesOnWalls.matches(element)) {
-                true
-            } else {
-                null
-            }
+        if (nodesFilter.matches(element) && getFeature(element) != null) {
+            if (nodesOnWalls.matches(element)) true else null
         } else {
             false
         }
 
-    private fun hasAnyName(tags: Map<String, String>) = getFeature(tags) != null
-
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
-        val feature = getFeature(element.tags) ?: return emptySequence()
-
+        val feature = getFeature(element) ?: return emptySequence()
         return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
 
@@ -115,5 +107,3 @@ class AddIsAmenityIndoor(private val getFeature: (tags: Map<String, String>) -> 
         tags["indoor"] = answer.toYesNo()
     }
 }
-
-private fun <X, Y> Map<X, Y>.containsAll(other: Map<X, Y>) = other.all { this[it.key] == it.value }

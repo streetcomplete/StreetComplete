@@ -278,8 +278,6 @@ Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittu
     <string name="produce_walnuts">"Saksanpähkinät"</string>
     <string name="produce_sisal">"Sisalia"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Tutkaaminen tässä ei onnistu. Kokeile lähentää vielä lisää tai kallista karttaa vähemmän."</string>
-    <string name="quest_crossing_type_title">"Minkälainen ylityspaikka tämä on?"</string>
-    <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
     <string name="action_undo">"Kumoa"</string>
     <string name="produce_mangosteen">"Mangostaneja"</string>
     <string name="produce_tomatoes">"Tomaatit"</string>
@@ -442,7 +440,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_buildingType_transportation">"Julkisen liikenteen rakennus"</string>
     <string name="quest_buildingType_university">"Yliopistorakennus"</string>
     <string name="quest_buildingType_government">"Hallintorakennus"</string>
-    <string name="quest_buildingType_cars">"Autoille"</string>
     <string name="quest_buildingType_carport">"Autokatos"</string>
     <string name="quest_buildingType_carport_description">"katos autolle"</string>
     <string name="quest_buildingType_garage">"Yksittäinen autotalli"</string>
@@ -481,7 +478,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_segregated_mixed">"Yhdistetty pyörätie ja jalkakäytävä"</string>
     <string name="quest_maxheight_title">"Mikä on suurin sallittu korkeus täällä?"</string>
     <string name="quest_maxheight_answer_noSign">"Merkki puuttuu…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Onko tässä selkeästi riittävästi tilaa jopa korkeimmille rekoille (vähintään 4,5 metriä) kulkea tästä?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Tämä korkeus vaikuttaa epätodennäköiseltä. Oletko varma, että se on oikein?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"%1$s, %2$s sulkenut"</string>
@@ -797,9 +793,6 @@ taso"</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Määritä täällä autoliikenteelle merkittyjen kaistojen määrä. Pyöräväyliä ja pysäköintikaistoja ei lasketa.
 Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_surface_value_rock">"Kivi"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Korkeat kuorma-autot mahtuvat"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Korkeat kuorma-autot eivät mahdu"</string>
-    <string name="quest_crossing_type_marked">"Merkitty suojatie"</string>
     <string name="quest_parkingType_street_side">"Pysäköinti tien varrella"</string>
     <string name="quest_parkingType_lane">"Pysäköinti tiellä"</string>
     <string name="quest_tracktype_grade2a">"Kiinteä mutta päällystämätön"</string>
@@ -842,7 +835,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="team_mode_team_size_hint">"Työryhmätila toimii 2–12 ihmisen ryhmissä."</string>
     <string name="team_mode_active">"Työryhmätila päällä"</string>
     <string name="team_mode_deactivated">"Työryhmätila pois päältä"</string>
-    <string name="quest_crossing_type_signals_controlled">"Ylitys ohjataan liikennevaloilla"</string>
     <string name="undo_confirm_title2">"Kumotaanko seuraava muutos?"</string>
     <string name="synced">"Synkronoitu"</string>
     <string name="toast_undo_unavailable">"Tämä muutos on synkronoitu ja sitä ei voida perua"</string>
@@ -1227,7 +1219,6 @@ Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="quest_drinking_water_type_spring">"Lähde"</string>
     <string name="quest_drinking_water_type_disused">"Hylätty juomavesiesine"</string>
     <string name="overlay_addresses">"Osoitteet"</string>
-    <string name="overlay_shops">"Kaupat"</string>
     <string name="name_label">"Nimi:"</string>
     <string name="unknown_shop_title">"Muunkaltainen paikka"</string>
     <string name="quest_address_answer_no_address">"Täällä ei ole osoitetta"</string>
@@ -1298,6 +1289,8 @@ Haluatko siirtää nyt?"</string>
     <string name="quest_traffic_signals_sound_description">"Vihje: etsi kaiuttimia/äänentoistolaitteita. Kaikkia äänisignaaleja ei ole mahdollista aktivoida painikkeella."</string>
     <string name="quest_presets_duplicate">"Kaksoiskappale"</string>
     <string name="label_block">"este"</string>
+    <string name="quest_address_answer_block">"Se on korttelissa"</string>
+    <string name="quest_address_answer_no_block">"Ei ole korttelissa"</string>
     <string name="quest_surface_value_mud">"Pysyvää mutaa"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Täällä ei ole WC:tä"</string>
     <string name="unknown_surface_title">"Muunkaltainen pinta"</string>
@@ -1313,11 +1306,14 @@ Haluatko siirtää nyt?"</string>
     <string name="quest_hairdresser_male_only">"Miehille"</string>
     <string name="quest_hairdresser_not_signed">"Ei ilmoitettu"</string>
     <string name="quest_amenityCover_title">"Onko tämä katettu? (suojattu sateelta)"</string>
+    <string name="lane_narrowing_traffic_calming_island">"Liikenteenjakaja"</string>
     <string name="lane_narrowing_traffic_calming_none">"Ei kavennettua kaistaa tässä"</string>
     <string name="quest_tactilePaving_title_steps">"Onko näiden portaiden ylä- ja alapäässä kosketuspäällystettä?"</string>
     <string name="quest_tactilePaving_steps_top">"Vain ylhäällä"</string>
     <string name="quest_tactilePaving_steps_bottom">"Vain alhaalla"</string>
     <string name="overlay_addresses_no_entrance">"Se ei ole sisäänkäynti…"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Yhteiskäyttöpolku"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"yhteiskäytön polku, molempiin suuntiin"</string>
     <string name="overlays_tutorial_title">"Peitteet"</string>
     <string name="overlays_tutorial_intro">"Löysit uuden tavan muokata tietoja!"</string>
     <string name="overlays_tutorial_display">"Jokainen peite näyttää tietynlaista tietoa, esimerkiksi kauppoja tai  kadunpintoja.
@@ -1342,4 +1338,24 @@ Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintii
     <string name="quest_recycling_type_food_waste">"Biojäte"</string>
     <string name="quest_defibrillator_location">"Missä tämä defibrillaattori sijaitsee?"</string>
     <string name="quest_defibrillator_location_description">"Anna ytimekäs kuvaus sijainnista (esim. “vahtimestarin tilassa”)."</string>
+    <string name="quest_generalFee_title">"Onko käyttö maksullista?"</string>
+    <string name="about_summary_logs">"käytettäväksi virheraporteissa"</string>
+    <string name="action_filter">"Suodatin"</string>
+    <string name="action_share">"Jaa lokit"</string>
+    <string name="about_title_show_logs">"Näytä lokit"</string>
+    <string name="link_calendar_description">"Onko OpenStreetMap-tapahtumia tai -tapaamisia lähelläsi? (Jos ei, voit lisätä omasi!)"</string>
+    <string name="link_prettymapp_description">"Luo kauniita monivärisiä karttajulisteita naapurustosta"</string>
+    <string name="quest_disable_action">"Poista käytöstä"</string>
+    <string name="quest_disable_title">"Poistetaanko kyselytyyppi käytöstä?"</string>
+    <string name="quest_disable_message_tape_measure">"Voisit käyttää sen sijaan mittanauhaa, mutta se voi loppujen lopuksi olla hieman hankalaa."</string>
+    <string name="quest_buildingType_outbuilding">"Ulkorakennus"</string>
+    <string name="quest_buildingType_outbuilding_description">"vähemmän tärkeä rakennus kiinteistössä"</string>
+    <string name="quest_buildingType_other_description">"tietty rakennus, jota ei voi valita tässä sovelluksessa"</string>
+    <string name="quest_buildingType_container">"Kontti"</string>
+    <string name="quest_buildingType_tent">"Teltta"</string>
+    <string name="quest_buildingType_tower">"Torni"</string>
+    <string name="quest_buildingType_tower_description">"mikä tahansa torni"</string>
+    <string name="quest_buildingType_under_construction">"Rakenteilla"</string>
+    <string name="overlay_buildings">"Rakennukset"</string>
+    <string name="quest_pedestrian_crossing_markings">"Onko tässä risteyksessä merkintöjä maassa?"</string>
 </resources>

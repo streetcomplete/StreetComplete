@@ -4,11 +4,21 @@
 
 ### Buildings Overlay (#5461)
 
-The new buildings overlay now lets you comprehensively view and edit building types all around town!
+The new Buildings overlay now lets you comprehensively view and edit building types all around town,
+color-coded for your convenience!
+
 (You'll be amazed and/or appalled how many buildings are currently actually tagged wrong or imprecise! 😅)
 
+### Things Overlay (#4912), thanks @matkoniecz
+
+The new Things overlay allows you to map all those small map features like benches, bicycle parkings, 
+roadside trees, ATMs and other street furniture in general. 
+
+It complements the Places Overlay which has been renamed from Shop overlay because it now also lets 
+you map places that are not shops - like hotels, hospitals, schools and so forth. (#5152)
+
 ### New Quests
-- The crossing type quest has been split up into two quests: One that asks for markings, the other for traffic signals (#5471)
+- The crossing type quest has been split up into two quests: One that asks for markings, the other for traffic signals (#5471, #5476)
 
 ### Quest and Overlay Enhancements and Fixes
 - Lit and Surface Overlay: now each have a button to apply the last answer (#4741)

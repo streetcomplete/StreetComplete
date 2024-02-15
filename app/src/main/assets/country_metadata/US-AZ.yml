@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Wells Fargo, Bank of America, Athena Bitcoin, Chase, Bitstop, U.S. Bank, MetaBank, BMO Harris Bank, Desert Financial, Arizona Central Credit Union, Allpoint, AZ Federal Credit Union]
-chargingStationOperators: ['Tesla, Inc.', Blink, ChargePoint, Tesla Motors, Electrify America, Volta, eVgo, Tesla, Lowell Observatory, Enel X, EVgo, APS]
+atmOperators: [Wells Fargo, Bank of America, Athena Bitcoin, Chase, Bitstop, U.S. Bank, MetaBank, Desert Financial, BMO Harris Bank, Arizona Central Credit Union, Allpoint, AZ Federal Credit Union]
+chargingStationOperators: [Blink, 'Tesla, Inc.', ChargePoint, Electrify America, Volta, Tesla Motors, eVgo, Tesla, Lowell Observatory, EVgo, APS]
 defaultSpeedLimitHasUrbanOrRural: true

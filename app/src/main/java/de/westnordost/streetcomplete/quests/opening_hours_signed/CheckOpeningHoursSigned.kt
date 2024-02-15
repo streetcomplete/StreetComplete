@@ -6,12 +6,11 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
@@ -21,7 +20,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 class CheckOpeningHoursSigned(
-    private val getFeature: (tags: Map<String, String>) -> Feature?
+    private val getFeature: (Element) -> Feature?
 ) : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
@@ -46,7 +45,7 @@ class CheckOpeningHoursSigned(
     override val changesetComment = "Survey whether opening hours are signed"
     override val wikiLink = "Key:opening_hours:signed"
     override val icon = R.drawable.ic_quest_opening_hours_signed
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_openingHours_signed_title
@@ -55,10 +54,10 @@ class CheckOpeningHoursSigned(
         mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element): Boolean =
-        filter.matches(element) && hasName(element.tags)
+        filter.matches(element) && hasName(element)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = YesNoQuestForm()
 
@@ -85,10 +84,10 @@ class CheckOpeningHoursSigned(
         }
     }
 
-    private fun hasName(tags: Map<String, String>) = hasProperName(tags) || hasFeatureName(tags)
+    private fun hasName(element: Element) = hasProperName(element.tags) || hasFeatureName(element)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(tags: Map<String, String>) = getFeature(tags) != null
+    private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
 }

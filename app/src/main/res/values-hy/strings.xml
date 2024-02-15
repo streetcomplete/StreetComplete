@@ -258,8 +258,6 @@
     <string name="produce_walnuts">"Ընկույզ"</string>
     <string name="produce_sisal">"Սիսալ"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Այստեղ չի կարող սկանավորել: Փորձեք մեծացնել հետագա կամ ավելի քիչ թեքել քարտեզը:"</string>
-    <string name="quest_crossing_type_title">"Ինչպիսի հատում է սա:"</string>
-    <string name="quest_crossing_type_unmarked">"Առանց ճանապարհային գծանշումների"</string>
     <string name="action_undo">"Չեղարկել"</string>
     <string name="produce_mangosteen">"Երանգ"</string>
     <string name="produce_tomatoes">"Լոլիկ"</string>
@@ -419,7 +417,6 @@
     <string name="quest_buildingType_transportation">"Հասարակական տրանսպորտի շենք"</string>
     <string name="quest_buildingType_university">"Համալսարանական շենք"</string>
     <string name="quest_buildingType_government">"Կառավարության շենք"</string>
-    <string name="quest_buildingType_cars">"Մեքենաների համար"</string>
     <string name="quest_buildingType_carport">"Կարագ"</string>
     <string name="quest_buildingType_carport_description">"Տանիք մեքենայի համար"</string>
     <string name="quest_buildingType_garage">"Մեկ ավտոտնակ"</string>
@@ -458,7 +455,6 @@
     <string name="quest_segregated_mixed">"Հեծանվորդներն ու հետիոտները կիսում են նույն տարածքը"</string>
     <string name="quest_maxheight_title">"Որն է այստեղ բարձրության սահմանը:"</string>
     <string name="quest_maxheight_answer_noSign">"Նշան չկա…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Հեշտությամբ տեղ կա նույնիսկ ամենաբարձր բեռնատարների համար (առնվազն մոտ 4,5 մ / 15 ոտնաչափ) անցնելու համար:"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Այս բարձրությունը անհասկանալի է թվում: Համոզված եք, որ ճիշտ է:"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Լուսանկարները, որոնք դուք կցում եք գրառմանը, վերբեռնվում են իմ սերվերում և ջնջվում գրառման լուծումից մի քանի օր անց: Նրանց մետատվյալները հեռացվում են վերբեռնումից առաջ:&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Ապամոնտաժել բոլորին"</string>
@@ -772,9 +768,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"Նշեք այստեղ մեքենաների երթեւեկությամբ օգտագործվող նշված գծերի քանակը: Այսպիսով, հեծանիվը եւ նվիրված ավտոկանգառ գոտիները չեն հաշվում:
 Եթե ​​որեւէ գոտի վերապահված է ավտոբուսներին, փոխարենը թողեք գրությունը:"</string>
     <string name="quest_surface_value_rock">"Ժայռ"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Բարձր բեռնատարները կարող են անցնել"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Բարձր բեռնատարները չեն տեղավորվում"</string>
-    <string name="quest_crossing_type_marked">"Նշանավոր"</string>
     <string name="quest_parkingType_street_side">"Ավտոճանապարհին հարող ավտոկանգառ"</string>
     <string name="quest_parkingType_lane">"Ավտոկանգառ ճանապարհի վրա"</string>
     <string name="quest_tracktype_grade2a">"Պինդ, բայց չաղտոտված"</string>
@@ -819,7 +812,6 @@
     <string name="team_mode_team_size_hint">"Թիմային ռեժիմն աշխատում է 2-ից 12 հոգու խմբերի համար:"</string>
     <string name="team_mode_active">"Թիմային ռեժիմը ակտիվ է"</string>
     <string name="team_mode_deactivated">"Թիմային ռեժիմը անջատված է"</string>
-    <string name="quest_crossing_type_signals_controlled">"Վերահսկվում է լուսացույցների կողմից"</string>
     <string name="undo_confirm_title2">"Վերացրեք հետեւյալ խմբագրումը:"</string>
     <string name="synced">"Համաժամյա"</string>
     <string name="toast_undo_unavailable">"Այս խմբագրումը արդեն համաժամեցված է եւ չի կարող վերացնել"</string>
@@ -1154,7 +1146,6 @@
     <string name="quest_drinking_water_type_generic_water_fountain">"Այլ ցայտաղբյուր"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Միայն շշերի համար"</string>
     <string name="overlay_addresses">"Հասցեներ"</string>
-    <string name="overlay_shops">"Խանութներ"</string>
     <string name="name_label">"Անուն`"</string>
     <string name="unknown_shop_title">"Այլ տեսակի"</string>
     <string name="quest_address_answer_no_address">"Հասցե չկա"</string>

@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [FNB, Barclays, First National Bank, Standard Chartered Bank, Standard Chartered, Standard Bank, Stanbic Bank, Stanbic, Fnb, FNB ATM]
+atmOperators: [FNB, Barclays, Standard Chartered, Stanbic Bank, Standard Bank, Stanbic, Fnb, FNB ATM]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow

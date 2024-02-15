@@ -8,8 +8,8 @@ import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CheckExistenceTest {
-    private val questType = CheckExistence { tags ->
-        if (tags["amenity"] == "telephone") mock() else null
+    private val questType = CheckExistence { element ->
+        if (element.tags["amenity"] == "telephone") mock() else null
     }
 
     @Test fun `isApplicableTo returns false for known places with recently edited amenity=telephone`() {

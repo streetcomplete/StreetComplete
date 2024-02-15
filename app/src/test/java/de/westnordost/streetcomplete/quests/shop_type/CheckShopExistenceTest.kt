@@ -7,8 +7,8 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class CheckShopExistenceTest {
-    private val questType = CheckShopExistence { tags ->
-        if (tags["shop"] == "greengrocer") mock() else null
+    private val questType = CheckShopExistence { element ->
+        if (element.tags["shop"] == "greengrocer") mock() else null
     }
 
     @Test

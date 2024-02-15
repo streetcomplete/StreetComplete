@@ -279,8 +279,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="produce_walnuts">"Nueces"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nun se puede descargar equí. Amplía'l mapa un poco más pa buscar xeres."</string>
-    <string name="quest_crossing_type_title">"¿Qué tipu de cruce ye?"</string>
-    <string name="quest_crossing_type_unmarked">"Cruce ensin señalizar"</string>
     <string name="action_undo">"Desfacer"</string>
     <string name="produce_mangosteen">"Mangostán"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -442,7 +440,6 @@ Por casu: 1,3 o 2–6."</string>
     <string name="quest_buildingType_transportation">"Edificiu de tresporte públicu"</string>
     <string name="quest_buildingType_university">"Universidá"</string>
     <string name="quest_buildingType_government">"Edificiu del gobiernu"</string>
-    <string name="quest_buildingType_cars">"P'automóviles"</string>
     <string name="quest_buildingType_carport">"Cochera"</string>
     <string name="quest_buildingType_carport_description">"sotecháu pa vehículos"</string>
     <string name="quest_buildingType_garage">"Garaxe individual"</string>
@@ -481,7 +478,6 @@ Por casu: 1,3 o 2–6."</string>
     <string name="quest_segregated_mixed">"Ciclistes y peatones comparten el mesmu espaciu"</string>
     <string name="quest_maxheight_title">"¿Cuála ye l'altura máxima equí?"</string>
     <string name="quest_maxheight_answer_noSign">"Nun hai señal…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"¿Hai espaciu abondo pa que pasen los camiones más altos (pelo menos unos 4,5 metros)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Esta altura paez imposible. ¿Seguro que ye correcto?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Pesllao por %1$s, %2$s"</string>

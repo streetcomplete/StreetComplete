@@ -6,6 +6,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
@@ -13,6 +14,7 @@ import de.westnordost.streetcomplete.overlays.buildings.BuildingsOverlay
 import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
+import de.westnordost.streetcomplete.overlays.things.ThingsOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
@@ -35,17 +37,17 @@ val overlaysModule = module {
                 val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
                 countryBoundaries.getIds(location).firstOrNull()
             },
-            { tags ->
-                get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(tags)
+            { element ->
+                get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(element)
             }
         )
     }
 }
 
 fun overlaysRegistry(
-    getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
-    getCountryCodeByLocation: (location: LatLon) -> String?,
-    getFeature: (tags: Map<String, String>) -> Feature?,
+    getCountryInfoByLocation: (LatLon) -> CountryInfo,
+    getCountryCodeByLocation: (LatLon) -> String?,
+    getFeature: (Element) -> Feature?,
 ) = OverlayRegistry(listOf(
 
     0 to WayLitOverlay(),
@@ -55,5 +57,6 @@ fun overlaysRegistry(
     2 to StreetParkingOverlay(),
     3 to AddressOverlay(getCountryCodeByLocation),
     4 to ShopsOverlay(getFeature),
-    7 to BuildingsOverlay()
+    8 to ThingsOverlay(getFeature),
+    7 to BuildingsOverlay(),
 ))
