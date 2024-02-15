@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.about
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.data.logs.LogMessage
 import de.westnordost.streetcomplete.databinding.RowLogMessageBinding
@@ -12,7 +13,8 @@ import kotlinx.datetime.toLocalDateTime
 
 class LogsAdapter : RecyclerView.Adapter<LogsAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: RowLogMessageBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: RowLogMessageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(with: LogMessage) {
             binding.messageTextView.text = with.toString()
 
@@ -29,8 +31,29 @@ class LogsAdapter : RecyclerView.Adapter<LogsAdapter.ViewHolder>() {
     var messages: List<LogMessage>
         get() = _messages
         set(value) {
+            val result = DiffUtil.calculateDiff(
+                object : DiffUtil.Callback() {
+                    override fun getOldListSize(): Int =
+                        _messages.size
+
+                    override fun getNewListSize(): Int =
+                        value.size
+
+                    override fun areItemsTheSame(
+                        oldItemPosition: Int,
+                        newItemPosition: Int,
+                    ): Boolean =
+                        _messages[oldItemPosition].timestamp == value[newItemPosition].timestamp
+
+                    // contents never change
+                    override fun areContentsTheSame(
+                        oldItemPosition: Int,
+                        newItemPosition: Int,
+                    ): Boolean = areItemsTheSame(oldItemPosition, newItemPosition)
+                }
+            )
             _messages = value.toMutableList()
-            notifyDataSetChanged()
+            result.dispatchUpdatesTo(this)
         }
 
     private var _messages: MutableList<LogMessage> = mutableListOf()
