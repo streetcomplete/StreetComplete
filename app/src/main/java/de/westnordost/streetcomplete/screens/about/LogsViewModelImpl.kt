@@ -59,14 +59,14 @@ class LogsViewModelImpl(
         filters.transformLatest { filters ->
             // get prior logs into a backing state
             // There will be duplication regardless.
-            val logs = ArrayList(logsController.getLogs(filters))
+            var logs: List<LogMessage> = logsController.getLogs(filters)
 
             // emit the logs for the first view
             emit(logs)
 
             // start listening to new logs
             getIncomingLogs(filters).collect {
-                logs.add(it)
+                logs = logs + it
                 emit(logs)
             }
         }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, emptyList())
