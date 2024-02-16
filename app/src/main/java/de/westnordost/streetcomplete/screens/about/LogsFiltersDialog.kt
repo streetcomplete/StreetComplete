@@ -38,7 +38,6 @@ class LogsFiltersDialog(
     private var timestampNewerThan: LocalDateTime? = initialFilters.timestampNewerThan
     private var timestampOlderThan: LocalDateTime? = initialFilters.timestampOlderThan
 
-
     private val binding = DialogLogsFiltersBinding.inflate(LayoutInflater.from(context))
     private val locale = Locale.getDefault()
 

@@ -269,11 +269,11 @@ val POPULAR_THING_FEATURE_IDS = listOf(
     // More:
 
     // mostly found in parks/plazas, i.e. specific places instead of ~everywhere
-    //"historic/memorial",           // 0.4 M (if this is displayed in quick select, artwork should probably too)
-    //"amenity/drinking_water",      // 0.3 M
-    //"leisure/picnic_table",        // 0.3 M
+    // "historic/memorial",           // 0.4 M (if this is displayed in quick select, artwork should probably too)
+    // "amenity/drinking_water",      // 0.3 M
+    // "leisure/picnic_table",        // 0.3 M
 
     // found most often on hiking routes where there are not that many "things" features anyway
-    //"information/guidepost",       // 0.5M
-    //"tourism/information/board",   // 0.3M
+    // "information/guidepost",       // 0.5M
+    // "tourism/information/board",   // 0.3M
 )
