@@ -10,10 +10,13 @@ import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.plus
@@ -24,15 +27,9 @@ class LogsViewModelImpl(
     private val logsController: LogsController,
 ) : LogsViewModel() {
 
-    override val filters: MutableStateFlow<LogsFilters> =
-        MutableStateFlow(
-            LogsFilters(
-                timestampNewerThan = LocalDateTime(
-                    systemTimeNow().toLocalDate(),
-                    LocalTime(0, 0, 0)
-                )
-            )
-        )
+    override val filters = MutableStateFlow(LogsFilters(
+        timestampNewerThan = LocalDateTime(systemTimeNow().toLocalDate(), LocalTime(0, 0, 0))
+    ))
 
     /**
      * Produce a call back flow of all incoming logs matching the given [filters].
@@ -55,21 +52,28 @@ class LogsViewModelImpl(
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override val logs: StateFlow<List<LogMessage>> =
+    private val _logs: SharedFlow<List<LogMessage>> =
         filters.transformLatest { filters ->
             // get prior logs into a backing state
             // There will be duplication regardless.
-            var logs: List<LogMessage> = logsController.getLogs(filters)
+            val logs = logsController.getLogs(filters).toMutableList()
 
             // emit the logs for the first view
             emit(logs)
 
             // start listening to new logs
             getIncomingLogs(filters).collect {
-                logs = logs + it
+                logs.add(it)
                 emit(logs)
             }
-        }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, emptyList())
+        }.shareIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 1)
+
+
+    override val logs: StateFlow<List<LogMessage>> = object :
+        StateFlow<List<LogMessage>>,
+        SharedFlow<List<LogMessage>> by _logs {
+        override val value: List<LogMessage> get() = replayCache[0]
+    }
 }
 
 private fun LogsController.getLogs(filters: LogsFilters) =
