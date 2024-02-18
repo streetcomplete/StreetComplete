@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user.oauth
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respondError
@@ -196,7 +195,6 @@ class OAuthAuthorizationTest {
         assertFails { OAuthService(HttpClient(mockEngine)).retrieveAccessToken(dummyOAuthAuthorization(), "") }
 
         val expectedHeaders = HeadersBuilder()
-        expectedHeaders.append("User-Agent", ApplicationConstants.USER_AGENT)
         expectedHeaders.append("Content-Type", "application/x-www-form-urlencoded")
         expectedHeaders.append("Accept-Charset", "UTF-8")
         expectedHeaders.append("Accept", "*/*")

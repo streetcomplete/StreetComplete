@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
@@ -91,7 +90,6 @@ class StreetCompleteImageUploaderTest {
 
         assertEquals(1, mockEngine.requestHistory.size)
         assertEquals("http://example.com/activate.php", mockEngine.requestHistory[0].url.toString())
-        assertEquals(ApplicationConstants.USER_AGENT, mockEngine.requestHistory[0].headers["User-Agent"])
         assertEquals(ContentType.Application.Json, mockEngine.requestHistory[0].body.contentType)
         assertEquals("{\"osm_note_id\": 180}", String(mockEngine.requestHistory[0].body.toByteArray()))
     }

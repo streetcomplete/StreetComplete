@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.defaultRequest
+import io.ktor.http.userAgent
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -16,5 +18,9 @@ val appModule = module {
     single { CrashReportExceptionHandler(androidContext(), get(), "streetcomplete_errors@westnordost.de", "crashreport.txt") }
     single { DatabaseLogger(get()) }
     single { SoundFx(androidContext()) }
-    single { HttpClient() }
+    single { HttpClient {
+        defaultRequest {
+            userAgent(ApplicationConstants.USER_AGENT)
+        }
+    } }
 }

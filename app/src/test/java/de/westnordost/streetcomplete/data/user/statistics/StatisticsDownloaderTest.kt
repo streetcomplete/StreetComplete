@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
@@ -41,11 +40,5 @@ class StatisticsDownloaderTest {
         ).download(100)
 
         assertEquals("https://example.com/stats/?user_id=100", validResponseMockEngine.requestHistory[0].url.toString())
-    }
-
-    @Test fun `download uses correct User Agent`() = runBlocking {
-        StatisticsDownloader(HttpClient(validResponseMockEngine), "", statisticsParser).download(100)
-
-        assertEquals(ApplicationConstants.USER_AGENT, validResponseMockEngine.requestHistory[0].headers.get("User-Agent"))
     }
 }

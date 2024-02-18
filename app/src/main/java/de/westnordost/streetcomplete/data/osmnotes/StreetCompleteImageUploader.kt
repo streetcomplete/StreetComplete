@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -11,7 +10,6 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import io.ktor.http.defaultForFile
-import io.ktor.http.userAgent
 import io.ktor.util.cio.readChannel
 import io.ktor.utils.io.errors.IOException
 import kotlinx.serialization.SerialName
@@ -51,7 +49,6 @@ class StreetCompleteImageUploader(
 
             try {
                 val response = httpClient.post(baseUrl + "upload.php") {
-                    userAgent(ApplicationConstants.USER_AGENT)
                     contentType(ContentType.defaultForFile(file))
                     header("Content-Transfer-Encoding", "binary")
                     setBody(file.readChannel())
@@ -88,7 +85,6 @@ class StreetCompleteImageUploader(
     suspend fun activate(noteId: Long) {
         try {
             val response = httpClient.post(baseUrl + "activate.php") {
-                userAgent(ApplicationConstants.USER_AGENT)
                 contentType(ContentType.Application.Json)
                 setBody("{\"osm_note_id\": $noteId}")
             }

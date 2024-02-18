@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user.oauth
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.post
@@ -12,7 +11,6 @@ import io.ktor.http.Url
 import io.ktor.http.contentType
 import io.ktor.http.decodeURLQueryComponent
 import io.ktor.http.takeFrom
-import io.ktor.http.userAgent
 import io.ktor.utils.io.errors.IOException
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
@@ -53,7 +51,6 @@ class OAuthService(private val httpClient: HttpClient) {
                     parameters.append("redirect_uri", request.redirectUri)
                     parameters.append("code_verifier", request.codeVerifier)
                 }
-                userAgent(ApplicationConstants.USER_AGENT)
                 contentType(ContentType.Application.FormUrlEncoded)
             }
 
