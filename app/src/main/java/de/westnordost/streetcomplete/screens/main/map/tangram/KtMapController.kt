@@ -230,7 +230,7 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
     private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Float? {
         val screenBounds: BoundingBox
         val currentZoom: Float
-        synchronized(mapboxMap) { // todo: what to use?
+        synchronized(mapboxMap) { // todo: what to use for synchronized?
             screenBounds = screenAreaToBoundingBox(padding) ?: return null
             currentZoom = cameraPosition.zoom.toFloat()
         }
@@ -242,7 +242,7 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
         val zoomDeltaX = log10(screenWidth / objectWidth) / log10(2.0)
         val zoomDeltaY = log10(screenHeight / objectHeight) / log10(2.0)
         val zoomDelta = min(zoomDeltaX, zoomDeltaY)
-        return max(1.0, min(currentZoom + zoomDelta, 21.0)).toFloat()
+        return max(1.0, min(currentZoom + zoomDelta, 20.0)).toFloat()
     }
 
     fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom.toFloat()): LatLon? {

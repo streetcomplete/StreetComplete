@@ -165,6 +165,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // todo
         //  performance test when updating pins (maybe CustomGeometrySource could be faster than GeoJsonSource)
         //   but looks like GeoJsonSource is the more usable one anyway, see below
+        //   -> stay at geojson
         //  mapLibre always downloads "something" on startup: what is it, and why?
         //   looks like it's some icons (glyph / sprite urls)
         //    actually they are already present, does it really look whether there are new ones at every start?
@@ -183,37 +184,37 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // todo now after removing tangram
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
         //  zoom-in for node quests is far too much (though it should not go to more than 20, what is wrong?)
-        //  overlays look awfully broken after selecting an element
+        //  overlays look awfully broken after selecting an element (not necessarily selecting in the overlay!)
         //   like first and last nodes of a way are connected
         //   it does not go away until restart?
-        //  node overlay shows nothing
+        //  overlays don't show nodes
         //   worked before removing tangram, what is wrong?
-        //  nearby text not shown
+        //  text for highlighted (nearby) elements not shown
         //  camera does not unlock when panning (keeps following position)
-        //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons dont work
+        //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons don't work
         //  later
         //   make the location pointer work (currently rotates like crazy in top left corner -> there is also a degree / radians issue)
         //   open SC -> wait and press back -> open SC, wait more -> crash without SC code in stacktrace (great)
         //    possibly sth initializing twice
         //   no tilt or rotate in follow-mode
         //   quest pin looks awful, maybe layer drawable not suitable? or just need to properly calculate insets instead of guessing
-        //   accuracy circle blocks quest pins, but not dots
-        //   accuracy circle disappears when center out of view
-        //   use the maplibre-internal position and accuracy stuff? but accuracy circle has really bad performance when zooming
+        //   accuracy circle blocks quest pins, but not dots (sth with collision)
+        //   accuracy circle disappears when center is off screen
+        //   use the maplibre-internal position and accuracy stuff?
+        //    but accuracy circle has really bad performance when zooming (that one could be fixed in the next release)
         //   gps and user tracks not working
         //   define pins/overlay/geometry/... layers in some json instead of in code? for easier change of attributes
 
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
-        //   -> use SymbolLayer and some source (GeoJson, or CustomGeometry)
+        //   -> use SymbolLayer and GeoJsonSource
         //  circle layer is much faster than symbol layer, when moving and especially when zooming
         //  enabling overlap makes things worse (probably because more symbols are displayed)
         //  smaller images help (shrink images already when adding to style, instead of using scale property)
         //  clustering helps noticeably, but still slower than circles
         //  not sorting symbols using symbolSortOrder (for priority) helps a lot
         //   using one order per quest type (instead of one per quest) considerably reduces performance impact of symbol sorting
-        //   not setting sort order, but setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is
-        //    (almost?) as faster as not sorting (requires GeoJsonSource and sorting the list of pins)
+        //   not setting sort order, but setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is same as not sorting
 
         // add used images for quests pins and other icons
         val pin = ContextCompat.getDrawable(requireContext(), R.drawable.pin)!! // why nullable? instead of resource not found?
@@ -312,17 +313,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             // set icon from feature property
             .withProperties(PropertyFactory.iconImage("{icon-image}")) // take icon name from icon-image property of feature
             //.withProperties(PropertyFactory.iconImage(Expression.get("icon-image"))) // does the same, but feels slower (nothing conclusive though)
+            .withProperties(PropertyFactory.iconOffset(listOf(-iconSize / 12f, -iconSize / 4f).toTypedArray()))
 
             // apply quest(pin) order
-            //.withProperties(PropertyFactory.symbolSortKey(Expression.get("symbol-sort-key"))) // works, but is actually somewhat slow...
+            // setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is (almost?) as fast as not sorting
+            // but it requires sorting the list of pins in the GeoJsonSource
+            // using symbolSortKey instead of this is much slower
             .withProperties(PropertyFactory.symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE))
-            .withProperties(PropertyFactory.iconOffset(listOf(-iconSize / 12f, -iconSize / 4f).toTypedArray()))
-                // avoids sort key by setting order to the order the features are added to the source
-                //  this is more performant than symbolSortKey, and appears to be working as intended (test some more?)
 
-            // set icon size
-            // no, better set icon size when creating the drawable: this is much faster when there are lots of pins
-            //.withProperties(PropertyValue("icon-size", 0.35f))
         pinsLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
         style.addLayer(pinsLayer!!)
 
@@ -341,14 +339,17 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         pinsDotLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
         style.addLayerBelow(pinsDotLayer!!, "pins-layer")
 
-        super.onMapReady(mapView, mapboxMap, style) // arguemnts are a leftover from initial implementation, maybe change?
+        super.onMapReady(mapView, mapboxMap, style) // leftover from initial implementation, maybe change?
 
         // add click listeners
+        val radius = requireContext().dpToPx(8).toInt()
         mapboxMap.addOnMapClickListener { pos ->
             // check whether we clicked a feature
             val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
+            val searchArea = RectF(screenPoint.x - radius, screenPoint.y - radius, screenPoint.x + radius, screenPoint.y + radius)
             // only query this specific layer(s), leave layerIds empty for querying all layers
-            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
+//            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
+            val features = mapboxMap.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
             if (features.isNotEmpty()) { // found a feature
                 // is the first feature always the correct one? looks like yes in a quick test
                 viewLifecycleScope.launch {

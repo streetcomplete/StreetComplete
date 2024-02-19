@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -138,13 +139,15 @@ class QuestPinsManager(
         val zoom = ctrl.cameraPosition.zoom
         // require zoom >= 14, which is the lowest zoom level where quests are shown
         if (zoom < 14) return
-        val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
-        val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
-        // area too big -> skip (performance)
-        if (tilesRect.size > 16) return
-        if (lastDisplayedRect?.contains(tilesRect) != true) {
-            lastDisplayedRect = tilesRect
-            onNewTilesRect(tilesRect)
+        MainActivity.activity?.runOnUiThread {
+            val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return@runOnUiThread
+            val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
+            // area too big -> skip (performance)
+            if (tilesRect.size > 16) return@runOnUiThread
+            if (lastDisplayedRect?.contains(tilesRect) != true) {
+                lastDisplayedRect = tilesRect
+                onNewTilesRect(tilesRect)
+            }
         }
     }
 
