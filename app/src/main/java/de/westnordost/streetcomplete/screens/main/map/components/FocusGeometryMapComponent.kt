@@ -47,7 +47,7 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
             is ElementPolylinesGeometry -> {
                 val points = geometry.polylines.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }
                 val multilineString = com.mapbox.geojson.MultiLineString.fromLngLats(points)
-                MainMapFragment.focusedGeometrySource?.setGeoJson(Feature.fromGeometry(multilineString))
+                MainMapFragment.focusedGeometrySource?.setGeoJson(Feature.fromGeometry(multilineString).apply { addStringProperty("way", "yes") })
             }
             is ElementPolygonsGeometry -> {
                 val points = geometry.polygons.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }

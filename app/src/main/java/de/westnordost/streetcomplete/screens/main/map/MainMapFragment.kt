@@ -184,9 +184,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // todo now after removing tangram
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
         //  zoom-in for node quests is far too much (though it should not go to more than 20, what is wrong?)
-        //  overlays look awfully broken after selecting an element (not necessarily selecting in the overlay!)
-        //   like first and last nodes of a way are connected
-        //   it does not go away until restart?
+        //  are overlays missing some zoom filter, iirc 16 is default SC limit
         //  overlays don't show nodes
         //   worked before removing tangram, what is wrong?
         //  text for highlighted (nearby) elements not shown
@@ -498,6 +496,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         val focusGeometryFillLayer = FillLayer("focus-geo-fill", "focus-geometry-source")
             .withProperties(PropertyFactory.fillColor("#D14000"))
             .withProperties(PropertyFactory.fillOpacity(0.3f))
+        focusGeometryFillLayer.setFilter(Expression.not(Expression.has("way")))
         style.addLayerBelow(focusGeometryFillLayer, "pins-layer")
 
         val focusGeometryCircleLayer = CircleLayer("focus-geo-circle", "focus-geometry-source")
@@ -638,10 +637,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /** Clear all highlighting */
     fun clearHighlighting() {
         pinsMapComponent?.isVisible = true
-        overlayFillLayer?.setFilter(Expression.literal(true))
-        overlayLineLayer?.setFilter(Expression.literal(true))
-        overlayDashedLineLayer?.setFilter(Expression.literal(true))
-        overlaySymbolLayer?.setFilter(Expression.literal(true))
+        overlayFillLayer?.setFilter(Expression.has("outline-color"))
+        overlayLineLayer?.setFilter(Expression.not(Expression.has("dashed")))
+        overlayDashedLineLayer?.setFilter(Expression.has("dashed"))
+        overlaySymbolLayer?.setFilter(Expression.literal(true)) // no default filter
 //        selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
