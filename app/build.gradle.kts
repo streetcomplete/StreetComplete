@@ -177,7 +177,7 @@ dependencies {
 
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
-    implementation("com.charleskorn.kaml:kaml:0.57.0")
+    implementation("net.mamoe.yamlkt:yamlkt:0.13.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
