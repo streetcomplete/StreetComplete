@@ -55,6 +55,7 @@ import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.overlays.custom.CustomOverlayForm
+import de.westnordost.streetcomplete.overlays.street_parking.LaneNarrowingTrafficCalmingForm
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
@@ -410,7 +411,9 @@ abstract class AbstractOverlayForm :
             if (element.isSplittable()) {
                 answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
             }
-            if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && element is Node)
+            if (prefs.getBoolean(Prefs.EXPERT_MODE, false) && element is Node
+                && this !is LaneNarrowingTrafficCalmingForm
+                && otherAnswers.none { (it.title as? ResText)?.resId == R.string.quest_generic_answer_does_not_exist })
                 answers.add(createDeleteElementAnswer(element))
             if (prefs.getBoolean(Prefs.EXPERT_MODE, false)) {
                 createItsDemolishedAnswer()?.let { answers.add(it) }
