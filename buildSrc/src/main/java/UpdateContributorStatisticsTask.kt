@@ -1,9 +1,8 @@
-import com.charleskorn.kaml.Yaml
-import com.charleskorn.kaml.YamlConfiguration
-import com.charleskorn.kaml.encodeToStream
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import net.mamoe.yamlkt.Yaml
+import net.mamoe.yamlkt.YamlBuilder
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -161,10 +160,11 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
     }
 
     private fun writeContributors(contributors: List<Contributor>) {
-        File(targetFile).outputStream().use {
-            val yamlFormat = Yaml(configuration = YamlConfiguration(encodeDefaults = false))
-            yamlFormat.encodeToStream(contributors, it)
+        val yamlFormat = Yaml {
+            stringSerialization = YamlBuilder.StringSerialization.DOUBLE_QUOTATION
+            encodeDefaultValues = false
         }
+        File(targetFile).writeText(yamlFormat.encodeToString(contributors) + "\n")
     }
 }
 
