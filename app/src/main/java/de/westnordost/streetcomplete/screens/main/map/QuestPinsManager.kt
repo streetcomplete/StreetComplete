@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.content.res.Resources
 import android.graphics.RectF
+import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
@@ -221,8 +222,11 @@ class QuestPinsManager(
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
         val freeValuesForEachQuest = 100000 / questTypeOrders.size
         /* position is used to add values unique to each quest to make ordering consistent
-           freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
-        val hopefullyUniqueValueForQuest = quest.position.hashCode() % freeValuesForEachQuest
+           freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int
+           note that quest.position.hashCode() can be negative and hopefullyUniqueValueForQuest
+           should be positive to ensure that it will not change quest order
+           */
+        val hopefullyUniqueValueForQuest = (freeValuesForEachQuest + quest.position.hashCode()) % freeValuesForEachQuest
         return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }
 
