@@ -12,7 +12,6 @@ import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.download.strategy.MobileDataAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.strategy.WifiAutoDownloadStrategy
@@ -85,7 +84,7 @@ class QuestAutoSyncer(
     }
 
     // on download finished, should recheck conditions for download
-    private val downloadProgressListener = object : DownloadProgressListener {
+    private val downloadProgressListener = object : DownloadProgressSource.Listener {
         override fun onSuccess() {
             triggerAutoDownload()
         }
@@ -119,7 +118,7 @@ class QuestAutoSyncer(
 
     override fun onCreate(owner: LifecycleOwner) {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
-        downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.addListener(downloadProgressListener)
         userLoginStatusSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
@@ -140,7 +139,7 @@ class QuestAutoSyncer(
 
     override fun onDestroy(owner: LifecycleOwner) {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
-        downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.removeListener(downloadProgressListener)
         userLoginStatusSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
         coroutineScope.coroutineContext.cancelChildren()

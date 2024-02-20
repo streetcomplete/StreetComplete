@@ -5,6 +5,8 @@ import de.westnordost.streetcomplete.data.download.strategy.WifiAutoDownloadStra
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -20,4 +22,6 @@ val downloadModule = module {
 
     single<DownloadedTilesSource> { get<DownloadedTilesController>() }
     single { DownloadedTilesController(get()) }
+
+    worker { DownloadWorker(get(), androidContext(), get()) }
 }

@@ -1,64 +1,44 @@
 package de.westnordost.streetcomplete.data.upload
 
-import android.content.ComponentName
 import android.content.Context
-import android.content.Intent
-import android.content.ServiceConnection
-import android.os.IBinder
+import androidx.lifecycle.LiveData
+import androidx.work.ExistingWorkPolicy
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Controls uploading */
-class UploadController(
-    private val context: Context
-) : UploadProgressSource {
+class UploadController(private val context: Context) : UploadProgressSource {
 
-    private var uploadServiceIsBound = false
-    private var uploadService: UploadService.Interface? = null
-    private val uploadServiceConnection: ServiceConnection = object : ServiceConnection {
-        override fun onServiceConnected(className: ComponentName, service: IBinder) {
-            uploadService = service as UploadService.Interface
-            uploadService?.setProgressListener(uploadProgressRelay)
-        }
+    // TODO listener
 
-        override fun onServiceDisconnected(className: ComponentName) {
-            uploadService = null
-        }
-    }
-    private val uploadProgressRelay = UploadProgressRelay()
+    private val listeners = Listeners<UploadProgressSource.Listener>()
+    private val workInfos: LiveData<List<WorkInfo>> get() =
+        WorkManager.getInstance(context).getWorkInfosForUniqueWorkLiveData(UploadWorker.TAG)
 
     /** @return true if an upload is running */
     override val isUploadInProgress: Boolean get() =
-        uploadService?.isUploadInProgress == true
-
-    var showNotification: Boolean
-        get() = uploadService?.showUploadNotification == true
-        set(value) { uploadService?.showUploadNotification = value }
+        workInfos.value?.any { !it.state.isFinished } == true
 
     init {
-        bindServices()
+        workInfos.observeForever { workInfos ->
+            TODO()
+        }
     }
 
     /** Collect and upload all changes made by the user  */
     fun upload() {
-        if (uploadService == null) return
-        context.startService(UploadService.createIntent(context))
-    }
-
-    private fun bindServices() {
-        uploadServiceIsBound = context.bindService(
-            Intent(context, UploadService::class.java),
-            uploadServiceConnection, Context.BIND_AUTO_CREATE
+        WorkManager.getInstance(context).enqueueUniqueWork(
+            UploadWorker.TAG,
+            ExistingWorkPolicy.KEEP,
+            UploadWorker.createWorkRequest()
         )
     }
 
-    private fun unbindServices() {
-        if (uploadServiceIsBound) context.unbindService(uploadServiceConnection)
-        uploadServiceIsBound = false
+    override fun addListener(listener: UploadProgressSource.Listener) {
+        listeners.add(listener)
     }
-
-    override fun addUploadProgressListener(listener: UploadProgressListener) {
-        uploadProgressRelay.addListener(listener)
-    }
-    override fun removeUploadProgressListener(listener: UploadProgressListener) {
-        uploadProgressRelay.removeListener(listener)
+    override fun removeListener(listener: UploadProgressSource.Listener) {
+        listeners.remove(listener)
     }
 }

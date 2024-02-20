@@ -28,7 +28,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.DownloadProgressListener
+import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.upload.UploadProgressListener
+import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.AuthorizationException
@@ -189,17 +189,11 @@ class MainActivity :
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
 
-        uploadController.addUploadProgressListener(uploadProgressListener)
-        downloadController.addDownloadProgressListener(downloadProgressListener)
+        uploadController.addListener(uploadProgressListener)
+        downloadController.addListener(downloadProgressListener)
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
-    }
-
-    public override fun onResume() {
-        super.onResume()
-        downloadController.showNotification = false
-        uploadController.showNotification = false
     }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
@@ -218,14 +212,12 @@ class MainActivity :
         val pos = mainFragment?.getCameraPosition()?.position ?: return
         prefs.putDouble(Prefs.MAP_LATITUDE, pos.latitude)
         prefs.putDouble(Prefs.MAP_LONGITUDE, pos.longitude)
-        downloadController.showNotification = true
-        uploadController.showNotification = true
     }
 
     public override fun onStop() {
         super.onStop()
-        uploadController.removeUploadProgressListener(uploadProgressListener)
-        downloadController.removeDownloadProgressListener(downloadProgressListener)
+        uploadController.removeListener(uploadProgressListener)
+        downloadController.removeListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
     }
 
@@ -260,7 +252,7 @@ class MainActivity :
 
     /* ------------------------------ Upload progress listener ---------------------------------- */
 
-    private val uploadProgressListener: UploadProgressListener = object : UploadProgressListener {
+    private val uploadProgressListener = object : UploadProgressSource.Listener {
         @AnyThread
         override fun onError(e: Exception) {
             runOnUiThread {
@@ -300,8 +292,7 @@ class MainActivity :
 
     /* ----------------------------- Download Progress listener  -------------------------------- */
 
-    private val downloadProgressListener: DownloadProgressListener = object :
-        DownloadProgressListener {
+    private val downloadProgressListener = object : DownloadProgressSource.Listener {
         @AnyThread
         override fun onError(e: Exception) {
             runOnUiThread {

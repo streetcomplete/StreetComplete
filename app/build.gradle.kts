@@ -151,7 +151,7 @@ dependencies {
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.9.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")

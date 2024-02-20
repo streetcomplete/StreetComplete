@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.upload
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import kotlinx.coroutines.sync.Mutex
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -22,4 +24,6 @@ val uploadModule = module {
 
     single<UploadProgressSource> { get<UploadController>() }
     single { UploadController(get()) }
+
+    worker { UploadWorker(get(), androidContext(), get()) }
 }

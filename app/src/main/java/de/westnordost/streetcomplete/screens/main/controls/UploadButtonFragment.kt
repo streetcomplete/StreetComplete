@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.upload.UploadProgressListener
+import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -34,7 +34,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
         override fun onDecreased() { viewLifecycleScope.launch { updateCount() } }
     }
 
-    private val uploadProgressListener = object : UploadProgressListener {
+    private val uploadProgressListener = object : UploadProgressSource.Listener {
         override fun onStarted() { viewLifecycleScope.launch { updateProgress(true) } }
         override fun onFinished() { viewLifecycleScope.launch { updateProgress(false) } }
     }
@@ -61,13 +61,13 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
             viewLifecycleScope.launch { updateCount() }
             updateProgress(uploadController.isUploadInProgress)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
-            uploadController.addUploadProgressListener(uploadProgressListener)
+            uploadController.addListener(uploadProgressListener)
         }
     }
 
     override fun onStop() {
         super.onStop()
-        uploadController.removeUploadProgressListener(uploadProgressListener)
+        uploadController.removeListener(uploadProgressListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
     }
 
