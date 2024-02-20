@@ -1,13 +1,11 @@
-import com.esotericsoftware.yamlbeans.YamlConfig
-import com.esotericsoftware.yamlbeans.YamlReader
-import com.esotericsoftware.yamlbeans.YamlWriter
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import net.mamoe.yamlkt.Yaml
+import net.mamoe.yamlkt.YamlBuilder
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.io.StringWriter
 import java.net.URL
 
 /** generate [country code].yml files from [property].yml files, for example
@@ -48,23 +46,18 @@ open class GenerateMetadataByCountryTask : DefaultTask() {
     }
 
     private fun writeCountryMetadata(metadataByCountry: Map<String, Map<String, Any>>) {
-        val config = YamlConfig().apply {
-            writeConfig.setWriteClassname(YamlConfig.WriteClassName.NEVER)
-            writeConfig.isFlowStyle = true
-            writeConfig.setWrapColumn(Int.MAX_VALUE)
-            writeConfig.setEscapeUnicode(false)
+        val yamlFormat = Yaml {
+            listSerialization = YamlBuilder.ListSerialization.FLOW_SEQUENCE
         }
         for ((countryCode, valuesByProperty) in metadataByCountry) {
+            val yamlString = yamlFormat.encodeToString(valuesByProperty.toSortedMap())
+                .trim()
+                .replace("\n\n", "\n")
+
             val targetFile = File(targetDir, "$countryCode.yml")
             val fileWriter = targetFile.writer()
-            fileWriter.write("# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata\n")
-            for ((property, value) in valuesByProperty.toSortedMap()) {
-                val str = StringWriter()
-                val writer = YamlWriter(str, config)
-                writer.write(value)
-                writer.close()
-                fileWriter.write("$property: $str")
-            }
+            fileWriter.write("# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata\n")
+            fileWriter.write("$yamlString\n")
             fileWriter.close()
         }
     }
@@ -73,7 +66,7 @@ open class GenerateMetadataByCountryTask : DefaultTask() {
     private fun readLocalCountryMetadata(sourceDir: File): Map<String, Map<String, Any>> =
         sourceDir.listFiles().orEmpty()
             .filter { it.isFile && it.name.endsWith(".yml") }
-            .associate { it.name.withoutExtension to YamlReader(it.readText()).read() as Map<String, Any> }
+            .associate { it.name.withoutExtension to Yaml.decodeFromString(it.readText()) }
 
     private val json = Json { ignoreUnknownKeys = true }
 
@@ -83,7 +76,7 @@ open class GenerateMetadataByCountryTask : DefaultTask() {
             .filter { it.type == "file" && it.name.endsWith(".yml") }
             .associate {
                 val response = URL(it.download_url).readText()
-                it.name.withoutExtension to YamlReader(response).read() as Map<String, Any>
+                it.name.withoutExtension to Yaml.decodeFromString("$response\n")
             }
 }
 

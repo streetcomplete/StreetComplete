@@ -1,6 +1,7 @@
-import com.esotericsoftware.yamlbeans.YamlConfig
-import com.esotericsoftware.yamlbeans.YamlWriter
 import de.westnordost.countryboundaries.CountryBoundaries
+import kotlinx.serialization.encodeToString
+import net.mamoe.yamlkt.Yaml
+import net.mamoe.yamlkt.YamlBuilder
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
@@ -51,10 +52,8 @@ open class QLeverCountValueByCountryTask : DefaultTask() {
             }
         }
 
-        val config = YamlConfig().apply {
-            writeConfig.setWriteClassname(YamlConfig.WriteClassName.NEVER)
-            writeConfig.isFlowStyle = true
-            writeConfig.setEscapeUnicode(false)
+        val yamlFormat = Yaml {
+            listSerialization = YamlBuilder.ListSerialization.FLOW_SEQUENCE
         }
 
         val fileWriter = FileWriter(targetFile, false)
@@ -74,21 +73,14 @@ open class QLeverCountValueByCountryTask : DefaultTask() {
                     fileWriter.write("$countryCode:\n")
                     hasAddedCountry = true
                 }
-                fileWriter.write("  - ${writeYaml(value, config)} # $count\n")
+                val yamlValue = yamlFormat.encodeToString(value)
+                fileWriter.write("  - $yamlValue # $count\n")
             }
         }
         fileWriter.close()
     }
 
     private val Row.countryCode: String? get() = boundaries.getIds(lon, lat).firstOrNull()
-
-    private fun writeYaml(obj: String, config: YamlConfig): String {
-        val str = StringWriter()
-        val writer = YamlWriter(str, config)
-        writer.write(obj)
-        writer.close()
-        return str.toString().removeSuffix("\n").removeSuffix("\r")
-    }
 
     private fun queryQLeverTsv(query: String): List<String> {
         val url = URL("https://qlever.cs.uni-freiburg.de/api/osm-planet?query=${URLEncoder.encode(query, "UTF-8")}&action=tsv_export")
