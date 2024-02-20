@@ -1,14 +1,20 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import com.google.gson.JsonObject
+import com.mapbox.geojson.Feature
+import com.mapbox.geojson.FeatureCollection
+import com.mapbox.geojson.LineString
+import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.geometry.LatLng
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.clear
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import kotlin.math.max
 
 /** Takes care of showing the path(s) walked on the map */
 class TracksMapComponent(ctrl: KtMapController) {
-// todo: make it work in maplibre
     /* There are two layers simply as a performance optimization: If there are thousands of
        trackpoints, we don't want to update (=copy) the thousands of points each time a new
        trackpoint is added. Instead, we only update a list of 100 trackpoints each time a new
@@ -16,8 +22,6 @@ class TracksMapComponent(ctrl: KtMapController) {
 
        So, the list of points updated ~per second doesn't grow too long.
      */
-//    private val layer1 = ctrl.addDataLayer(LAYER1)
-//    private val layer2 = ctrl.addDataLayer(LAYER2)
 
     private var index = 0
     private data class Track(val trackpoints: MutableList<LatLng>, val isRecording: Boolean)
@@ -33,7 +37,7 @@ class TracksMapComponent(ctrl: KtMapController) {
         if (trackpoints.size - index > 100) {
             putAllTracksInOldLayer()
         } else {
-//            layer1.setFeatures(listOf(trackpoints.subList(index, trackpoints.size).toPolyline(false, track.isRecording)))
+            MainMapFragment.trackSource?.setGeoJson(trackpoints.toLineFeature(track.isRecording))
         }
     }
 
@@ -58,26 +62,20 @@ class TracksMapComponent(ctrl: KtMapController) {
 
     private fun putAllTracksInOldLayer() {
         index = max(0, tracks.last().trackpoints.lastIndex)
-//        layer1.clear()
-//        layer2.setFeatures(tracks.map { it.trackpoints.toPolyline(true, it.isRecording) })
+        MainMapFragment.trackSource?.clear()
+        val features = tracks.map { it.trackpoints.toLineFeature(it.isRecording) }
+        MainMapFragment.oldTrackSource?.setGeoJson(FeatureCollection.fromFeatures(features))
     }
 
     fun clear() {
         tracks = ArrayList()
         startNewTrack(false)
     }
-
-    companion object {
-        // see streetcomplete.yaml for the definitions of the layer
-        private const val LAYER1 = "streetcomplete_track"
-        private const val LAYER2 = "streetcomplete_track2"
-    }
 }
-/*
-private fun List<LngLat>.toPolyline(old: Boolean, record: Boolean) =
-    Polyline(this, listOfNotNull(
-        "type" to "line",
-        "old" to old.toString(),
-        if (record) ("record" to "true") else null
-    ).toMap())
-*/
+
+private fun List<LatLng>.toLineFeature(record: Boolean): Feature {
+     val line = LineString.fromLngLats(map { Point.fromLngLat(it.longitude, it.latitude) })
+    val p = JsonObject()
+    p.addProperty("recording", record) // todo: this is not used (and possibly it's easier to only set it if true)
+    return Feature.fromGeometry(line, p)
+}

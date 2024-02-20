@@ -194,7 +194,7 @@ open class MapFragment : Fragment() {
         mapboxMap.addOnMoveListener(object : MapboxMap.OnMoveListener {
             override fun onMoveBegin(p0: MoveGestureDetector) {
                 // tapping also calls onMoveBegin, but with integer x and y, and with historySize 0
-                if (p0.currentEvent.historySize == 0) // crappy workaround for deciding whether it's a tap or a move
+                if (p0.currentEvent.historySize != 0) // crappy workaround for deciding whether it's a tap or a move
                     listener?.onPanBegin()
             }
             override fun onMove(p0: MoveGestureDetector) {}

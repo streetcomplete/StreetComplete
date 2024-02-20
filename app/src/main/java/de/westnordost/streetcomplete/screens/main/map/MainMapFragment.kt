@@ -177,8 +177,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   see MapTilesDownloader
         //  zoom very often is choppy, far not as smooth as tangram
         //   more quests make it a little worse, but most of it seems to be "natural"
-        //  overlay paths/roads are rather hard to select
-        //   probably the pickRadius
         //  any way tp get useful stack traces from maplibre? often it just starts at Handler.dispatchMessage, so no idea which line of SC triggered it
 
         // todo now after removing tangram
@@ -189,17 +187,20 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   required for setting both zoom and attribute filter
         //   maybe just use multiple sources?
         //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons don't work
-        //  later
-        //   open SC -> wait and press back -> open SC, wait more -> crash without SC code in stacktrace (great)
-        //    possibly sth initializing twice
+        //   can't reproduce, not seen in a while -> maybe fixed?
+        //  gps and user tracks not working
+        //  quest pins block overlay icons
+        //  downloadedAreaMapComponent does nothing
+        //  low priority
         //   no tilt or rotate in follow-mode
-        //   quest pin looks awful, maybe layer drawable not suitable? or just need to properly calculate insets instead of guessing
-        //   accuracy circle blocks quest pins, but not dots (sth with collision)
-        //   accuracy circle disappears when center is off screen
-        //   use the maplibre-internal position and accuracy stuff?
-        //    but accuracy circle has really bad performance when zooming (that one could be fixed in the next release)
-        //   gps and user tracks not working
-        //   define pins/overlay/geometry/... layers in some json instead of in code? for easier change of attributes
+        //   accuracy circle
+        //    (SC?) accuracy circle blocks quest pins, but not dots (sth with collision)
+        //    maplibre accuracy circle disappears when center is off screen
+        //     but not used anyway because of horrible performance
+        //    SC accuracy circle does not change on-screen size on zoom (only after location is changed)
+        //    use SC or maplibre-internal position and accuracy stuff?
+        //   quest pins look awful, maybe layer drawable not suitable? or just need to properly calculate insets instead of guessing
+        //   define pins/overlay/geometry/... layers in some json instead of in code?
 
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
@@ -515,6 +516,21 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withProperties(PropertyFactory.circleOpacity(0.7f))
             .withFilter(Expression.not(Expression.has("icon")))
         style.addLayerBelow(focusGeometryCircleLayer, "pins-layer")
+
+        trackSource = GeoJsonSource("track-source")
+        oldTrackSource = GeoJsonSource("old-track-source")
+        val trackLayer = LineLayer("track", "track-source")
+            .withProperties(PropertyFactory.lineWidth(10f))
+            .withProperties(PropertyFactory.lineColor("#536dfe"))
+            .withProperties(PropertyFactory.lineOpacity(0.3f))
+            .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
+        style.addLayerBelow(trackLayer, "pins-layer")
+        val oldTrackLayer = LineLayer("old-track", "old-track-source")
+            .withProperties(PropertyFactory.lineWidth(10f))
+            .withProperties(PropertyFactory.lineColor("#536dfe"))
+            .withProperties(PropertyFactory.lineOpacity(0.15f))
+            .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
+        style.addLayerBelow(oldTrackLayer, "pins-layer")
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
@@ -740,6 +756,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var overlayLineLayer: LineLayer? = null
         var overlayFillLayer: FillExtrusionLayer? = null
         var overlaySymbolLayer: SymbolLayer? = null
+
+        var trackSource: GeoJsonSource? = null
+        var oldTrackSource: GeoJsonSource? = null
     }
 }
 
@@ -785,6 +804,8 @@ fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
         Expression.stop(10, Expression.division(Expression.get(lineWidthProperty), Expression.literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
         Expression.stop(25, Expression.division(Expression.get(lineWidthProperty), Expression.literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
     )
+
+fun GeoJsonSource.clear() = setGeoJson(FeatureCollection.fromFeatures(emptyList()))
 
 private const val BASE = 1.5f
 private const val FACTOR = 2f // to get width / distance similar to tangram
