@@ -1,9 +1,9 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ 5B, Banco Industrial, Bancared, Cajero 5B, Banrural, BI, son, Cajero BI, Cajero Automatico Bancared, Banco de Desarrollo Banrural, banco industrial, Banca Red, BAC ]
-centerLineStyle: yellow
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 704
-noParkingSignStyle: mutcd latin
-noStoppingSignStyle: mutcd
-officialLanguages: [ es, myn ]
-orchardProduces: [ coffee, rubber, banana, nutmeg, avocado, pineapple, guava, mango, mangosteen, tomato, apple, lemon, lime, orange, cacao, papaya, peach, coconut ]
+'atmOperators': [ '5B', 'Banco Industrial', 'Bancared', 'Cajero 5B', 'Banrural', 'BI', 'son', 'Cajero BI', 'Cajero Automatico Bancared', 'Banco de Desarrollo Banrural', 'banco industrial', 'Banca Red', 'BAC' ]
+'centerLineStyle': 'yellow'
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 704
+'noParkingSignStyle': 'mutcd latin'
+'noStoppingSignStyle': 'mutcd'
+'officialLanguages': [ 'es', 'myn' ]
+'orchardProduces': [ 'coffee', 'rubber', 'banana', 'nutmeg', 'avocado', 'pineapple', 'guava', 'mango', 'mangosteen', 'tomato', 'apple', 'lemon', 'lime', 'orange', 'cacao', 'papaya', 'peach', 'coconut' ]

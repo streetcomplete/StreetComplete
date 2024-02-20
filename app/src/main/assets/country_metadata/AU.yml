@@ -1,24 +1,24 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalValidHousenumberRegex: '([\p{N}\p{L}]{1,2}\s?/\s?|\p{L}{1,2}\s?)?\p{N}{1,5}'
-advisoryCycleLaneStyle: white dashes
-advisorySpeedLimitSignStyle: yellow
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-hasAdvisoryCycleLane: true
-hasAdvisorySpeedLimitSign: true
-hasLivingStreet: true
-hasNoStandingSign: false
-hasSlowZone: true
-isLeftHandTraffic: true
-livingStreetSignStyle: australia
-mobileCountryCode: 505
-noEntrySignStyle: no entry
-noParkingSignStyle: australia
-noStoppingSignStyle: australia
-officialLanguages: [ en ]
-orchardProduces: [ grape, almond, olive, orange, avocado, apple, guava, mango, mangosteen, peach, banana, walnut, apricot, pear, tomato, plum, strawberry ]
-popularReligions: [ christian, muslim, buddhist ]
-popularSports: [ tennis, netball, cricket, bowls, basketball, golf, australian_football, baseball, field_hockey ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: bottom
-slowZoneLabelText: AREA
+'additionalValidHousenumberRegex': '('
+'advisoryCycleLaneStyle': 'white dashes'
+'advisorySpeedLimitSignStyle': 'yellow'
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasAdvisoryCycleLane': true
+'hasAdvisorySpeedLimitSign': true
+'hasLivingStreet': true
+'hasNoStandingSign': false
+'hasSlowZone': true
+'isLeftHandTraffic': true
+'livingStreetSignStyle': 'australia'
+'mobileCountryCode': 505
+'noEntrySignStyle': 'no entry'
+'noParkingSignStyle': 'australia'
+'noStoppingSignStyle': 'australia'
+'officialLanguages': [ 'en' ]
+'orchardProduces': [ 'grape', 'almond', 'olive', 'orange', 'avocado', 'apple', 'guava', 'mango', 'mangosteen', 'peach', 'banana', 'walnut', 'apricot', 'pear', 'tomato', 'plum', 'strawberry' ]
+'popularReligions': [ 'christian', 'muslim', 'buddhist' ]
+'popularSports': [ 'tennis', 'netball', 'cricket', 'bowls', 'basketball', 'golf', 'australian_football', 'baseball', 'field_hockey' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'bottom'
+'slowZoneLabelText': 'AREA'

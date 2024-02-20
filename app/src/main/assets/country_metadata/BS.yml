@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ RBC ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-isLeftHandTraffic: true
-lengthUnits: [ foot and inch, meter ]
-mobileCountryCode: 364
-officialLanguages: [ en ]
-orchardProduces: [ grapefruit, banana, coconut, lemon, lime, orange, guava, mango, mangosteen, tomato, avocado, papaya ]
-popularSports: [ tennis, basketball, baseball ]
-speedUnits: [ miles per hour, kilometers per hour ]
+'atmOperators': [ 'RBC' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'isLeftHandTraffic': true
+'lengthUnits': [ 'foot and inch', 'meter' ]
+'mobileCountryCode': 364
+'officialLanguages': [ 'en' ]
+'orchardProduces': [ 'grapefruit', 'banana', 'coconut', 'lemon', 'lime', 'orange', 'guava', 'mango', 'mangosteen', 'tomato', 'avocado', 'papaya' ]
+'popularSports': [ 'tennis', 'basketball', 'baseball' ]
+'speedUnits': [ 'miles per hour', 'kilometers per hour' ]

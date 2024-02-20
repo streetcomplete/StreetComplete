@@ -1,35 +1,35 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-advisorySpeedLimitSignStyle: blue
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: white
-exclusiveCycleLaneStyle: white
-firstDayOfWorkweek: Mo
-hasAdvisoryCycleLane: false
-hasAdvisorySpeedLimitSign: false
-hasBiWeeklyAlternateSideParkingSign: false
-hasBicycleBoulevard: false
-hasCenterLeftTurnLane: false
-hasDailyAlternateSideParkingSign: false
-hasLivingStreet: false
-hasNoStandingSign: false
-hasSlowZone: false
-isLeftHandTraffic: false
-isUsuallyAnyGlassRecyclableInContainers: false
-lengthUnits: [ meter ]
-noEntrySignStyle: default
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ en ]
-orchardProduces: []
-pictogramCycleLaneStyle: white
-popularReligions: [ christian, muslim, buddhist, hindu, jewish, chinese_folk, animist, bahai, sikh ]
-popularSports: []
-postboxesHaveCollectionTimes: false
-postboxesHaveRef: false
-postboxesHaveRoyalCypher: false
-regularShoppingDays: 6
-roofsAreUsuallyFlat: false
-speedUnits: [ kilometers per hour ]
-weightLimitUnits: [ ton ]
-workweekDays: 5
+'advisorySpeedLimitSignStyle': 'blue'
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'white'
+'exclusiveCycleLaneStyle': 'white'
+'firstDayOfWorkweek': 'Mo'
+'hasAdvisoryCycleLane': false
+'hasAdvisorySpeedLimitSign': false
+'hasBiWeeklyAlternateSideParkingSign': false
+'hasBicycleBoulevard': false
+'hasCenterLeftTurnLane': false
+'hasDailyAlternateSideParkingSign': false
+'hasLivingStreet': false
+'hasNoStandingSign': false
+'hasSlowZone': false
+'isLeftHandTraffic': false
+'isUsuallyAnyGlassRecyclableInContainers': false
+'lengthUnits': [ 'meter' ]
+'noEntrySignStyle': 'default'
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'en' ]
+'orchardProduces': []
+'pictogramCycleLaneStyle': 'white'
+'popularReligions': [ 'christian', 'muslim', 'buddhist', 'hindu', 'jewish', 'chinese_folk', 'animist', 'bahai', 'sikh' ]
+'popularSports': []
+'postboxesHaveCollectionTimes': false
+'postboxesHaveRef': false
+'postboxesHaveRoyalCypher': false
+'regularShoppingDays': 6
+'roofsAreUsuallyFlat': false
+'speedUnits': [ 'kilometers per hour' ]
+'weightLimitUnits': [ 'ton' ]
+'workweekDays': 5

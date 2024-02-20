@@ -1,15 +1,15 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ en ]
-atmOperators: [ ABA Bank, Canadia Bank, ANZ Royal Bank, Sathapana Bank, T, Maybank, FTB, ABA, Wing Bank, ACLEDA Bank, Cathay United Bank, BRED Bank, Acleda, Mekong Bank, វត្តពៅវេីយ, Sacombank, RHB, QK4, MB Bank, CAB Bank, BRED, ATZ, AMK ]
-centerLineStyle: yellow
-chargingStationOperators: [ 'Green E-Bike' ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasBiWeeklyAlternateSideParkingSign: true
-hasDailyAlternateSideParkingSign: true
-mobileCountryCode: 456
-noParkingLineStyle: 'yellow-white on curb'
-noStoppingLineStyle: 'red-white on curb'
-officialLanguages: [ km ]
-orchardProduces: [ rubber, banana, chilli_pepper, sweet_pepper, coconut, orange, guava, mango, mangosteen, pineapple, coffee, pepper, grapefruit, lemon, lime ]
-popularReligions: [ buddhist, muslim ]
-postboxesHaveCollectionTimes: true
+'additionalStreetsignLanguages': [ 'en' ]
+'atmOperators': [ 'ABA Bank', 'Canadia Bank', 'ANZ Royal Bank', 'Sathapana Bank', 'T', 'Maybank', 'FTB', 'ABA', 'Wing Bank', 'ACLEDA Bank', 'Cathay United Bank', 'BRED Bank', 'Acleda', 'Mekong Bank', 'វត្តពៅវេីយ', 'Sacombank', 'RHB', 'QK4', 'MB Bank', 'CAB Bank', 'BRED', 'ATZ', 'AMK' ]
+'centerLineStyle': 'yellow'
+'chargingStationOperators': [ 'Green E-Bike' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasBiWeeklyAlternateSideParkingSign': true
+'hasDailyAlternateSideParkingSign': true
+'mobileCountryCode': 456
+'noParkingLineStyle': 'yellow-white on curb'
+'noStoppingLineStyle': 'red-white on curb'
+'officialLanguages': [ 'km' ]
+'orchardProduces': [ 'rubber', 'banana', 'chilli_pepper', 'sweet_pepper', 'coconut', 'orange', 'guava', 'mango', 'mangosteen', 'pineapple', 'coffee', 'pepper', 'grapefruit', 'lemon', 'lime' ]
+'popularReligions': [ 'buddhist', 'muslim' ]
+'postboxesHaveCollectionTimes': true

@@ -1,3 +1,3 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Santander Totta, Santander, Multibanco, Euronet, Banco Santander, Novo Banco, Montepio, Millennium bcp, MB Multibanco ]
-chargingStationOperators: [ Factor Energia, Emacom, Repsol, Powerdot, EDP Comercial, Mobiletric, BP Pulse, Município de Santa Cruz, Galp Geste ]
+'atmOperators': [ 'Santander Totta', 'Santander', 'Multibanco', 'Euronet', 'Banco Santander', 'Novo Banco', 'Montepio', 'Millennium bcp', 'MB Multibanco' ]
+'chargingStationOperators': [ 'Factor Energia', 'Emacom', 'Repsol', 'Powerdot', 'EDP Comercial', 'Mobiletric', 'BP Pulse', 'Município de Santa Cruz', 'Galp Geste' ]

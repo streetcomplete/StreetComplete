@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Raiffeisen Bank, OTP Bank, Tirana Bank, Banka Kombëtare Tregtare, Fibank, BKT, Credins Bank, Union Bank, Intesa Sanpaolo, Raiffeisen BANK, Raiffeisen, Credins, Raiffeisenbank, Raifeissen Bank, otpbank, otp bank, Alpha Bank, ALPHA BANK ]
-chargingStationOperators: [ Lux Taxi, eMobility Albania, ena ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 276
-officialLanguages: [ sq ]
-orchardProduces: [ olive, grape, tomato, apple, chilli_pepper, sweet_pepper, plum, chestnut, hop, cherry, fig, peach, pear, lemon, lime, orange, date ]
-postboxesHaveCollectionTimes: true
+'atmOperators': [ 'Raiffeisen Bank', 'OTP Bank', 'Tirana Bank', 'Banka Kombëtare Tregtare', 'Fibank', 'BKT', 'Credins Bank', 'Union Bank', 'Intesa Sanpaolo', 'Raiffeisen BANK', 'Raiffeisen', 'Credins', 'Raiffeisenbank', 'Raifeissen Bank', 'otpbank', 'otp bank', 'Alpha Bank', 'ALPHA BANK' ]
+'chargingStationOperators': [ 'Lux Taxi', 'eMobility Albania', 'ena' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 276
+'officialLanguages': [ 'sq' ]
+'orchardProduces': [ 'olive', 'grape', 'tomato', 'apple', 'chilli_pepper', 'sweet_pepper', 'plum', 'chestnut', 'hop', 'cherry', 'fig', 'peach', 'pear', 'lemon', 'lime', 'orange', 'date' ]
+'postboxesHaveCollectionTimes': true

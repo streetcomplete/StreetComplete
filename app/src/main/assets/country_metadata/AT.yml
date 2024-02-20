@@ -1,24 +1,24 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-advisoryCycleLaneStyle: white dashes
-atmOperators: [ Raiffeisen, Raiffeisenbank, BAWAG PSK, Euronet, Erste Bank, Volksbank, Sparkasse, BAWAG, bank99, Oberbank, Bank Austria, PSA, ICCash, First Data, Spar, Bawag PSK, Bawag, BAWAG P.S.K., Steiermärkische Sparkasse, Sparkasse Oberösterreich, Raiffeisen Bank, BTV, BKS Bank, Kremser Bank und Sparkassen AG, Bankomat, Bank Burgenland, Salzburger Sparkasse, Hypo Salzburg, Hypo, DenizBank, Tiroler Sparkasse, Sparkasse Imst AG, Denizbank, bank 99, Sparkasse Niederösterreich, 'Sparda-Bank', Sparda Bank, Raika, Raiffeisenbank Sillian, Raiffeisen Landesbank, RLB, Marchfelder Bank, Maestro, Hypo Tirol, Bankhaus Spängler, Volksbank Kufstein, 'VKB-Bank', Steiermärkische Bank, Sparkasse Kufstein, Sparkasse Imst, Sparkasse Baden, Salzburger Sparkasse Bank AG, SPAR, Reiffeisenbank, Raiffeisenkasse, Raiffeisenbank Ybbstal, Raiffeisenbank Stockerau eGen, Raiffeisenbank Mittelburgenland Ost, 'Raiffeisenbank Amstetten-Ybbs', Raiffeisen Wien, Posojilnica Bank eGen, PSK, ICCash Services, IC Cash, Hypo Vorarlberg, Global ATM Network, Billa Plus, Bankhaus Schelhammer & Schattera ]
-chargingStationOperators: [ illwerke vkw, Wien Energie GmbH, Wien Energie, EVN, Energie AG, 'bike-energy', SMATRICS, Salzburg AG, Linz AG, Energie Steiermark, Bosch eBike Systems, Tesla, Inc., Lidl, Kelag, TIWAG, Ionity, Turmstrom, Smatrics, ÖAMTC, Energie Burgenland, Energieversorgung Kleinwalsertal GesmbH, Evn, da emobil, 'Wels Strom E-Mobil', Tesla Motors Austria GmbH, Ella, EVN AG, da emobil GmbH & Co KG, Lebensland Kärnten, IAM – Institut für Technologie und alternative Mobilität, ella, Stadtwerke Wörgl, Lidl Österreich GmbH, Eurospar, max.center, Spar, SMATRICS GmbH & Co KG, IKB, 'ÖBB-Infrastruktur', Tesla, Telekom Austria, Stadtwerke Klagenfurt, Stadtwerke Kitzbühel, Innsbrucker Kommunalbetriebe, Energie Graz GmbH & Co KG, Burgenland Energie AG, 'AT*GOE', A1, Öko Styria, tim, be.ENERGISED, Electrodrive Salzburg, AAE Naturstrom, 'da-emobil', Tiwag, 'TIWAG-Tiroler Wasserkraft AG', 'TIWAG-Tiroler Wasserkraft', Stadtwerke Mürzzuschlag, Smartrics, Shell Recharge, Mer Germany GmbH, Linz AG Strom, Keba, Hotel Der Stubaierhof, HGL, Envesta, Energie Steiermark AG, Energie AG Oberösterreich, ElectroDrive Salzburg, 'E-Werke Bad Radkersburg' ]
-clothesContainerOperators: [ Humana, Caritas, Kolping, Holding Graz, MA48, MA 48, Rotes Kreuz, HUMANA, Linz AG Abfall, Wiener Rotes Kreuz, Graz Holding, Volkshilfe, TEXAID Austria, GABL, humana, WAMS, Verein Humana, TAO, Stadtbetriebe Steyr, Stadt Graz, GVA Baden, Carla ]
-defaultSpeedLimitHasUrbanOrRural: true
-exclusiveCycleLaneStyle: white
-hasAdvisoryCycleLane: true
-hasAdvisorySpeedLimitSign: false
-hasBicycleBoulevard: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 232
-noParkingLineStyle: dashed yellow
-noStoppingLineStyle: yellow
-officialLanguages: [ de ]
-orchardProduces: [ grape, apple, strawberry, apricot, pear, hop, plum, blueberry, tomato, peach, walnut, chilli_pepper, sweet_pepper, raspberry, cherry ]
-popularSports: [ soccer, tennis, equestrian, beachvolleyball ]
-postboxesHaveCollectionTimes: true
-regularShoppingDays: 5
-slowZoneLabelPosition: bottom
-slowZoneLabelText: Zone
+'advisoryCycleLaneStyle': 'white dashes'
+'atmOperators': [ 'Raiffeisen', 'Raiffeisenbank', 'BAWAG PSK', 'Euronet', 'Erste Bank', 'Volksbank', 'Sparkasse', 'BAWAG', 'bank99', 'Oberbank', 'Bank Austria', 'PSA', 'ICCash', 'First Data', 'Spar', 'Bawag PSK', 'Bawag', 'BAWAG P.S.K.', 'Steiermärkische Sparkasse', 'Sparkasse Oberösterreich', 'Raiffeisen Bank', 'BTV', 'BKS Bank', 'Kremser Bank und Sparkassen AG', 'Bankomat', 'Bank Burgenland', 'Salzburger Sparkasse', 'Hypo Salzburg', 'Hypo', 'DenizBank', 'Tiroler Sparkasse', 'Sparkasse Imst AG', 'Denizbank', 'bank 99', 'Sparkasse Niederösterreich', 'Sparda-Bank', 'Sparda Bank', 'Raika', 'Raiffeisenbank Sillian', 'Raiffeisen Landesbank', 'RLB', 'Marchfelder Bank', 'Maestro', 'Hypo Tirol', 'Bankhaus Spängler', 'Volksbank Kufstein', 'VKB-Bank', 'Steiermärkische Bank', 'Sparkasse Kufstein', 'Sparkasse Imst', 'Sparkasse Baden', 'Salzburger Sparkasse Bank AG', 'SPAR', 'Reiffeisenbank', 'Raiffeisenkasse', 'Raiffeisenbank Ybbstal', 'Raiffeisenbank Stockerau eGen', 'Raiffeisenbank Mittelburgenland Ost', 'Raiffeisenbank Amstetten-Ybbs', 'Raiffeisen Wien', 'Posojilnica Bank eGen', 'PSK', 'ICCash Services', 'IC Cash', 'Hypo Vorarlberg', 'Global ATM Network', 'Billa Plus', 'Bankhaus Schelhammer & Schattera' ]
+'chargingStationOperators': [ 'illwerke vkw', 'Wien Energie GmbH', 'Wien Energie', 'EVN', 'Energie AG', 'bike-energy', 'SMATRICS', 'Salzburg AG', 'Linz AG', 'Energie Steiermark', 'Bosch eBike Systems', 'Tesla, Inc.', 'Lidl', 'Kelag', 'TIWAG', 'Ionity', 'Turmstrom', 'Smatrics', 'ÖAMTC', 'Energie Burgenland', 'Energieversorgung Kleinwalsertal GesmbH', 'Evn', 'da emobil', 'Wels Strom E-Mobil', 'Tesla Motors Austria GmbH', 'Ella', 'EVN AG', 'da emobil GmbH & Co KG', 'Lebensland Kärnten', 'IAM – Institut für Technologie und alternative Mobilität', 'ella', 'Stadtwerke Wörgl', 'Lidl Österreich GmbH', 'Eurospar', 'max.center', 'Spar', 'SMATRICS GmbH & Co KG', 'IKB', 'ÖBB-Infrastruktur', 'Tesla', 'Telekom Austria', 'Stadtwerke Klagenfurt', 'Stadtwerke Kitzbühel', 'Innsbrucker Kommunalbetriebe', 'Energie Graz GmbH & Co KG', 'Burgenland Energie AG', 'AT*GOE', 'A1', 'Öko Styria', 'tim', 'be.ENERGISED', 'Electrodrive Salzburg', 'AAE Naturstrom', 'da-emobil', 'Tiwag', 'TIWAG-Tiroler Wasserkraft AG', 'TIWAG-Tiroler Wasserkraft', 'Stadtwerke Mürzzuschlag', 'Smartrics', 'Shell Recharge', 'Mer Germany GmbH', 'Linz AG Strom', 'Keba', 'Hotel Der Stubaierhof', 'HGL', 'Envesta', 'Energie Steiermark AG', 'Energie AG Oberösterreich', 'ElectroDrive Salzburg', 'E-Werke Bad Radkersburg' ]
+'clothesContainerOperators': [ 'Humana', 'Caritas', 'Kolping', 'Holding Graz', 'MA48', 'MA 48', 'Rotes Kreuz', 'HUMANA', 'Linz AG Abfall', 'Wiener Rotes Kreuz', 'Graz Holding', 'Volkshilfe', 'TEXAID Austria', 'GABL', 'humana', 'WAMS', 'Verein Humana', 'TAO', 'Stadtbetriebe Steyr', 'Stadt Graz', 'GVA Baden', 'Carla' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'exclusiveCycleLaneStyle': 'white'
+'hasAdvisoryCycleLane': true
+'hasAdvisorySpeedLimitSign': false
+'hasBicycleBoulevard': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 232
+'noParkingLineStyle': 'dashed yellow'
+'noStoppingLineStyle': 'yellow'
+'officialLanguages': [ 'de' ]
+'orchardProduces': [ 'grape', 'apple', 'strawberry', 'apricot', 'pear', 'hop', 'plum', 'blueberry', 'tomato', 'peach', 'walnut', 'chilli_pepper', 'sweet_pepper', 'raspberry', 'cherry' ]
+'popularSports': [ 'soccer', 'tennis', 'equestrian', 'beachvolleyball' ]
+'postboxesHaveCollectionTimes': true
+'regularShoppingDays': 5
+'slowZoneLabelPosition': 'bottom'
+'slowZoneLabelText': 'Zone'

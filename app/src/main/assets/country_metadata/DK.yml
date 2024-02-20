@@ -1,19 +1,19 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-advisoryCycleLaneStyle: white dashes without pictogram
-atmOperators: [ Danske Bank, Nordea, Euronet, Sydbank, Arbejdernes Landsbank, Jyske Bank, Sparekassen Danmark, Spar Nord, Sparekassen Thy, Nykredit, Nordjyske Bank, Djurslands Bank, Andelskassen, Sparekassen Vendsyssel, Sparekassen Sjælland, Ringkøbing Landbobank, Lån & Spar, Jutlander Bank, vestjysk bank, Vestjysk Bank, SparekassenThy, Sparekassen Kronjylland, SparNord, Skjern Bank, Ringkjøbing Landbobank, Middelfart Sparekasse, Lån & Spar Bank, Handelsbanken, Frøs Herreds Sparekasse, DiBa, DKK ]
-chargingStationOperators: [ Clever, E.ON, 'E-On', OK, Spirii, E. On Danmark, Circle K, Norlys, 'CLEVER A/S', Tesla, Inc., Sperto, E.On Danmark, Q8, 'e-on', eon, Monta, CIRCLE K, Ionity, Base2Charge, Allego, Shell Recharge Solutions, Lidl, 'Uno-X', CLEVER, Merkur, EWII, E.ON Danmark, 'Clever A/S', Aura, Ø Strøm, Ringkøbing Skjern kommune, Københavns Kommune, 'E-on', ChargePoint, AURA, Spirii Go, MoveAbout, 'Clever/E.On', 'Clever & E-on', e.on, clever, bravida, ViggoEnergy, SEF, Hotel Fredericia, Eon, EON, EDF, Aalborg Kommune, Tesla, Speto, Powered by E.ON Drive & Clever, Ok, Nordlys, EVBox, E.On ]
-clothesContainerOperators: [ Røde Kors, Red Barnet, Dansk Røde Kors, Folkekirkens Nødhjælp, Røde kors, Københavns Kommune, Frelsens Hær, Folkekirkens nødhjælp ]
-defaultSpeedLimitHasUrbanOrRural: true
-exclusiveCycleLaneStyle: white
-hasAdvisoryCycleLane: true
-hasAdvisorySpeedLimitSign: true
-hasBicycleBoulevard: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 238
-officialLanguages: [ da ]
-orchardProduces: [ apple, strawberry, pear, cherry, blueberry, plum, raspberry, tomato ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: bottom
-slowZoneLabelText: Zone
+'advisoryCycleLaneStyle': 'white dashes without pictogram'
+'atmOperators': [ 'Danske Bank', 'Nordea', 'Euronet', 'Sydbank', 'Arbejdernes Landsbank', 'Jyske Bank', 'Sparekassen Danmark', 'Spar Nord', 'Sparekassen Thy', 'Nykredit', 'Nordjyske Bank', 'Djurslands Bank', 'Andelskassen', 'Sparekassen Vendsyssel', 'Sparekassen Sjælland', 'Ringkøbing Landbobank', 'Lån & Spar', 'Jutlander Bank', 'vestjysk bank', 'Vestjysk Bank', 'SparekassenThy', 'Sparekassen Kronjylland', 'SparNord', 'Skjern Bank', 'Ringkjøbing Landbobank', 'Middelfart Sparekasse', 'Lån & Spar Bank', 'Handelsbanken', 'Frøs Herreds Sparekasse', 'DiBa', 'DKK' ]
+'chargingStationOperators': [ 'Clever', 'E.ON', 'E-On', 'OK', 'Spirii', 'E. On Danmark', 'Circle K', 'Norlys', 'CLEVER A/S', 'Tesla, Inc.', 'Sperto', 'E.On Danmark', 'Q8', 'e-on', 'eon', 'Monta', 'CIRCLE K', 'Ionity', 'Base2Charge', 'Allego', 'Shell Recharge Solutions', 'Lidl', 'Uno-X', 'CLEVER', 'Merkur', 'EWII', 'E.ON Danmark', 'Clever A/S', 'Aura', 'Ø Strøm', 'Ringkøbing Skjern kommune', 'Københavns Kommune', 'E-on', 'ChargePoint', 'AURA', 'Spirii Go', 'MoveAbout', 'Clever/E.On', 'Clever & E-on', 'e.on', 'clever', 'bravida', 'ViggoEnergy', 'SEF', 'Hotel Fredericia', 'Eon', 'EON', 'EDF', 'Aalborg Kommune', 'Tesla', 'Speto', 'Powered by E.ON Drive & Clever', 'Ok', 'Nordlys', 'EVBox', 'E.On' ]
+'clothesContainerOperators': [ 'Røde Kors', 'Red Barnet', 'Dansk Røde Kors', 'Folkekirkens Nødhjælp', 'Røde kors', 'Københavns Kommune', 'Frelsens Hær', 'Folkekirkens nødhjælp' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'exclusiveCycleLaneStyle': 'white'
+'hasAdvisoryCycleLane': true
+'hasAdvisorySpeedLimitSign': true
+'hasBicycleBoulevard': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 238
+'officialLanguages': [ 'da' ]
+'orchardProduces': [ 'apple', 'strawberry', 'pear', 'cherry', 'blueberry', 'plum', 'raspberry', 'tomato' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'bottom'
+'slowZoneLabelText': 'Zone'

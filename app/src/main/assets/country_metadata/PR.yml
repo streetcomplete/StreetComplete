@@ -1,13 +1,13 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Popular, First Bank, Banco Popular, Oriental, Scotiabank, Oriental Bank ]
-centerLineStyle: yellow
-chargingStationOperators: [ Tesla, Inc. ]
-defaultSpeedLimitHasUrbanOrRural: true
-lengthUnits: [ foot and inch, meter ]
-noEntrySignStyle: no entre
-noParkingSignStyle: mutcd text spanish
-noStoppingSignStyle: mutcd text spanish
-officialLanguages: [ es, en ]
-orchardProduces: [ coffee, orange, banana, guava, mango, mangosteen, tomato, papaya, avocado, chilli_pepper, sweet_pepper, pineapple, coconut, lemon, lime, grapefruit ]
-popularSports: [ basketball, tennis, baseball ]
-speedUnits: [ miles per hour, kilometers per hour ]
+'atmOperators': [ 'Popular', 'First Bank', 'Banco Popular', 'Oriental', 'Scotiabank', 'Oriental Bank' ]
+'centerLineStyle': 'yellow'
+'chargingStationOperators': [ 'Tesla, Inc.' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'lengthUnits': [ 'foot and inch', 'meter' ]
+'noEntrySignStyle': 'no entre'
+'noParkingSignStyle': 'mutcd text spanish'
+'noStoppingSignStyle': 'mutcd text spanish'
+'officialLanguages': [ 'es', 'en' ]
+'orchardProduces': [ 'coffee', 'orange', 'banana', 'guava', 'mango', 'mangosteen', 'tomato', 'papaya', 'avocado', 'chilli_pepper', 'sweet_pepper', 'pineapple', 'coconut', 'lemon', 'lime', 'grapefruit' ]
+'popularSports': [ 'basketball', 'tennis', 'baseball' ]
+'speedUnits': [ 'miles per hour', 'kilometers per hour' ]

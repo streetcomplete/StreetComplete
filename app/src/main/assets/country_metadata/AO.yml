@@ -1,12 +1,12 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Multicaixa, Banco de Fomento Angola (BFA), Banco de Poupança e Credito (BPC), Banco Keve, Banco BIC Angola ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: yellow
-hasLivingStreet: true
-livingStreetSignStyle: sadc
-mobileCountryCode: 631
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ pt ]
-orchardProduces: [ banana, coffee, pineapple, tomato, cacao, cashew_nut, sisal ]
+'atmOperators': [ 'Multicaixa', 'Banco de Fomento Angola (BFA)', 'Banco de Poupança e Credito (BPC)', 'Banco Keve', 'Banco BIC Angola' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'yellow'
+'hasLivingStreet': true
+'livingStreetSignStyle': 'sadc'
+'mobileCountryCode': 631
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'pt' ]
+'orchardProduces': [ 'banana', 'coffee', 'pineapple', 'tomato', 'cacao', 'cashew_nut', 'sisal' ]

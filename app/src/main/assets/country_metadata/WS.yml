@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ ANZ, BSP, SCB ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-isLeftHandTraffic: true
-lengthUnits: [ foot and inch, meter ]
-mobileCountryCode: 549
-officialLanguages: [ sm, en ]
-orchardProduces: [ coconut, banana, cacao, papaya, pineapple, guava, mango, mangosteen, avocado, coffee, pepper ]
-popularSports: [ cricket ]
-speedUnits: [ miles per hour, kilometers per hour ]
+'atmOperators': [ 'ANZ', 'BSP', 'SCB' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'isLeftHandTraffic': true
+'lengthUnits': [ 'foot and inch', 'meter' ]
+'mobileCountryCode': 549
+'officialLanguages': [ 'sm', 'en' ]
+'orchardProduces': [ 'coconut', 'banana', 'cacao', 'papaya', 'pineapple', 'guava', 'mango', 'mangosteen', 'avocado', 'coffee', 'pepper' ]
+'popularSports': [ 'cricket' ]
+'speedUnits': [ 'miles per hour', 'kilometers per hour' ]

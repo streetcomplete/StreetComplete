@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Absa Bank Ghana Limited, Standard Chartered Ghana, Ecobank, GCB Bank, Fidelity Bank, Stanbic Bank, Access Bank, UBA, 'SG-SSB', GT Bank, CalBank PLC, GCB, Zenith Bank, Stanbic, Cal Bank, ADB, Société Générale, Republic Bank (Ghana) Limited, Prudential Bank, Absa Group Limited, UMB, Standard Chartered, Republic Bank, Republic ]
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 620
-noParkingSignStyle: vienna variant
-noStoppingSignStyle: vienna
-officialLanguages: [ en, ak, ee ]
-orchardProduces: [ cacao, cashew_nut, kola_nut, coconut, rubber, tomato, orange, chilli_pepper, sweet_pepper, pineapple, banana, guava, mango, mangosteen, lemon, lime, pepper, avocado, papaya ]
+'atmOperators': [ 'Absa Bank Ghana Limited', 'Standard Chartered Ghana', 'Ecobank', 'GCB Bank', 'Fidelity Bank', 'Stanbic Bank', 'Access Bank', 'UBA', 'SG-SSB', 'GT Bank', 'CalBank PLC', 'GCB', 'Zenith Bank', 'Stanbic', 'Cal Bank', 'ADB', 'Société Générale', 'Republic Bank (Ghana) Limited', 'Prudential Bank', 'Absa Group Limited', 'UMB', 'Standard Chartered', 'Republic Bank', 'Republic' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 620
+'noParkingSignStyle': 'vienna variant'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'en', 'ak', 'ee' ]
+'orchardProduces': [ 'cacao', 'cashew_nut', 'kola_nut', 'coconut', 'rubber', 'tomato', 'orange', 'chilli_pepper', 'sweet_pepper', 'pineapple', 'banana', 'guava', 'mango', 'mangosteen', 'lemon', 'lime', 'pepper', 'avocado', 'papaya' ]

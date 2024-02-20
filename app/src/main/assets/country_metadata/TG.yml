@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Ecobank, BTCI ]
-mobileCountryCode: 615
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ fr ]
-orchardProduces: [ coffee, cacao, chilli_pepper, sweet_pepper, cashew_nut, coconut, orange, banana, tomato, pineapple, nutmeg ]
+'atmOperators': [ 'Ecobank', 'BTCI' ]
+'mobileCountryCode': 615
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'fr' ]
+'orchardProduces': [ 'coffee', 'cacao', 'chilli_pepper', 'sweet_pepper', 'cashew_nut', 'coconut', 'orange', 'banana', 'tomato', 'pineapple', 'nutmeg' ]

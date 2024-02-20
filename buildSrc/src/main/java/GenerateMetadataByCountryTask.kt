@@ -48,6 +48,7 @@ open class GenerateMetadataByCountryTask : DefaultTask() {
     private fun writeCountryMetadata(metadataByCountry: Map<String, Map<String, Any>>) {
         val yamlFormat = Yaml {
             listSerialization = YamlBuilder.ListSerialization.FLOW_SEQUENCE
+            stringSerialization = YamlBuilder.StringSerialization.SINGLE_QUOTATION
         }
         for ((countryCode, valuesByProperty) in metadataByCountry) {
             val yamlString = yamlFormat.encodeToString(valuesByProperty.toSortedMap())

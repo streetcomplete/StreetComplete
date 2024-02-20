@@ -1,16 +1,16 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ HBL, UBL, MCB, HBL Bank, Askari Bank, Meezan Bank, HBL ATM, Bank Alfalah, Bank Al Habib, NBP, Allied Bank, ubl, JS Bank, Hbl, Faysal Bank, Bank Islami, یونائیٹڈ بینک لمیٹڈ, نیشنل بینک آف پاکستان, سونیری بینک, جے ایس بینک, اسٹینڈرڈ چارٹرڈ, Summit Bank, Standard Chartered Bank, National Bank, Habib Metro Bank, Habib Bank, Dubai Islamic Bank, ATM, بینک اسلامی, mohsin house, hbl atm, UBL ATM, Soneri Bank, NIB Bank, Meezan Bank Limited, Habib Bank Ltd, Habib Bank Limited, Habib Bank ATM, Bank AL Habib, Askari bank, Allied bank, Allied Bank Limited ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasSlowZone: true
-isLeftHandTraffic: true
-mobileCountryCode: 410
-noParkingSignStyle: vienna variant
-noStoppingSignStyle: vienna
-officialLanguages: [ ur, en, pnb, sd, ps, skr, bal ]
-orchardProduces: [ guava, mango, mangosteen, orange, date, apple, tomato, chilli_pepper, sweet_pepper, banana, apricot, grape, peach, lemon, lime, almond, plum, walnut, papaya ]
-popularReligions: [ muslim, hindu, christian, sikh, animist ]
-popularSports: [ cricket, soccer, tennis, field_hockey ]
-postboxesHaveCollectionTimes: true
-roofsAreUsuallyFlat: true
-slowZoneLabelPosition: bottom
-slowZoneLabelText: ZONE
+'atmOperators': [ 'HBL', 'UBL', 'MCB', 'HBL Bank', 'Askari Bank', 'Meezan Bank', 'HBL ATM', 'Bank Alfalah', 'Bank Al Habib', 'NBP', 'Allied Bank', 'ubl', 'JS Bank', 'Hbl', 'Faysal Bank', 'Bank Islami', 'یونائیٹڈ بینک لمیٹڈ', 'نیشنل بینک آف پاکستان', 'سونیری بینک', 'جے ایس بینک', 'اسٹینڈرڈ چارٹرڈ', 'Summit Bank', 'Standard Chartered Bank', 'National Bank', 'Habib Metro Bank', 'Habib Bank', 'Dubai Islamic Bank', 'ATM', 'بینک اسلامی', 'mohsin house', 'hbl atm', 'UBL ATM', 'Soneri Bank', 'NIB Bank', 'Meezan Bank Limited', 'Habib Bank Ltd', 'Habib Bank Limited', 'Habib Bank ATM', 'Bank AL Habib', 'Askari bank', 'Allied bank', 'Allied Bank Limited' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasSlowZone': true
+'isLeftHandTraffic': true
+'mobileCountryCode': 410
+'noParkingSignStyle': 'vienna variant'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'ur', 'en', 'pnb', 'sd', 'ps', 'skr', 'bal' ]
+'orchardProduces': [ 'guava', 'mango', 'mangosteen', 'orange', 'date', 'apple', 'tomato', 'chilli_pepper', 'sweet_pepper', 'banana', 'apricot', 'grape', 'peach', 'lemon', 'lime', 'almond', 'plum', 'walnut', 'papaya' ]
+'popularReligions': [ 'muslim', 'hindu', 'christian', 'sikh', 'animist' ]
+'popularSports': [ 'cricket', 'soccer', 'tennis', 'field_hockey' ]
+'postboxesHaveCollectionTimes': true
+'roofsAreUsuallyFlat': true
+'slowZoneLabelPosition': 'bottom'
+'slowZoneLabelText': 'ZONE'

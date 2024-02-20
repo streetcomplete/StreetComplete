@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Stanbic Bank Uganda, Centenary Rural Development Bank, Stanbic Bank, Crane Bank, Barclays Bank of Uganda, DFCU Bank, Diamond Trust Bank Uganda, Tropical Bank, Orient Bank, Equity Bank Uganda, Centenary Bank, Standard Chartered Bank, Housing Finance Bank, Ecobank Uganda, Barclays, Finance Trust Bank, Bank of Baroda, KCB Bank Uganda, DFCU, 'Bank of Africa-Uganda', Stanbic, Equity Bank, dfcu Bank, Cairo International Bank, kcb, United Bank for Africa, Pride Microfinance, Postbank, Post Bank Uganda, Opportunity Bank, NC Bank Uganda, Guaranty Trust Bank, FINCA Uganda, Equity bank, Ecobank, Diamond Trust Bank, Crane Bank Ltd. ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: white
-isLeftHandTraffic: true
-mobileCountryCode: 641
-officialLanguages: [ sw, en ]
-orchardProduces: [ coffee, cacao, tea, tomato, chilli_pepper, sweet_pepper, pepper, pineapple, vanilla, sisal ]
-workweekDays: 6
+'atmOperators': [ 'Stanbic Bank Uganda', 'Centenary Rural Development Bank', 'Stanbic Bank', 'Crane Bank', 'Barclays Bank of Uganda', 'DFCU Bank', 'Diamond Trust Bank Uganda', 'Tropical Bank', 'Orient Bank', 'Equity Bank Uganda', 'Centenary Bank', 'Standard Chartered Bank', 'Housing Finance Bank', 'Ecobank Uganda', 'Barclays', 'Finance Trust Bank', 'Bank of Baroda', 'KCB Bank Uganda', 'DFCU', 'Bank of Africa-Uganda', 'Stanbic', 'Equity Bank', 'dfcu Bank', 'Cairo International Bank', 'kcb', 'United Bank for Africa', 'Pride Microfinance', 'Postbank', 'Post Bank Uganda', 'Opportunity Bank', 'NC Bank Uganda', 'Guaranty Trust Bank', 'FINCA Uganda', 'Equity bank', 'Ecobank', 'Diamond Trust Bank', 'Crane Bank Ltd.' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'white'
+'isLeftHandTraffic': true
+'mobileCountryCode': 641
+'officialLanguages': [ 'sw', 'en' ]
+'orchardProduces': [ 'coffee', 'cacao', 'tea', 'tomato', 'chilli_pepper', 'sweet_pepper', 'pepper', 'pineapple', 'vanilla', 'sisal' ]
+'workweekDays': 6

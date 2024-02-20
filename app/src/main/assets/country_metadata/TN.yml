@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ fr ]
-atmOperators: [ الاتحاد البنكي للتجارة والصناعة, بنك تونس العربي الدولي, مصرف الزيتونة, البنك الوطني الفلاحي, STB Bank, STB, Poste Tunisienne, Banque de Tunisie, Amen Bank ]
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 605
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ ar ]
-orchardProduces: [ olive, almond, date, pistachio, tomato, apple, grape, chilli_pepper, sweet_pepper, fig, orange, peach, apricot, grapefruit, pear, lemon, lime ]
-popularReligions: [ muslim ]
-roofsAreUsuallyFlat: true
+'additionalStreetsignLanguages': [ 'fr' ]
+'atmOperators': [ 'الاتحاد البنكي للتجارة والصناعة', 'بنك تونس العربي الدولي', 'مصرف الزيتونة', 'البنك الوطني الفلاحي', 'STB Bank', 'STB', 'Poste Tunisienne', 'Banque de Tunisie', 'Amen Bank' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 605
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'ar' ]
+'orchardProduces': [ 'olive', 'almond', 'date', 'pistachio', 'tomato', 'apple', 'grape', 'chilli_pepper', 'sweet_pepper', 'fig', 'orange', 'peach', 'apricot', 'grapefruit', 'pear', 'lemon', 'lime' ]
+'popularReligions': [ 'muslim' ]
+'roofsAreUsuallyFlat': true

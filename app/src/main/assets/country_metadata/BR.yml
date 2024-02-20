@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Banco24Horas, Banco do Brasil, Bradesco, Banco 24 Horas, Caixa Econômica Federal, Itaú Unibanco, Banrisul, Banco 24 horas, Banco24horas, 24 Horas, Saque e Pague, Santander, Banco 24H, Tecnologia Bancária S.A., Banco 24h, Banco 24Horas, BRB, Sicredi, Multibanco, banco24horas, Sicoob, 24 horas, TecBan, Banco24h, Banco24H, Banco Santander, Caixa 24 Horas, Banese, Banco24, Banco 24h., Banco 24, banco 24h, Viacredi, State Bank of Sergipe, HSBC, Dinho, Caixa 24h, Banestes, Banco 24Hrs, Banco 24 horas., 24horas, 24H ]
-centerLineStyle: yellow
-chargingStationOperators: [ Ipiranga, Sat, Petrobras, ABB, ipiranga, Taurus, Shell, Petrobrás, Ferreira Costa, EDP, Copel, BR ]
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 724
-noEntrySignStyle: arrow
-noParkingSignStyle: mutcd latin
-noStoppingSignStyle: mutcd latin
-officialLanguages: [ pt ]
-orchardProduces: [ coffee, cacao, banana, cashew_nut, coconut, rubber, sisal, guava, mango, mangosteen, grape, mate, pineapple, lemon, lime, orange, tomato, pepper ]
+'atmOperators': [ 'Banco24Horas', 'Banco do Brasil', 'Bradesco', 'Banco 24 Horas', 'Caixa Econômica Federal', 'Itaú Unibanco', 'Banrisul', 'Banco 24 horas', 'Banco24horas', '24 Horas', 'Saque e Pague', 'Santander', 'Banco 24H', 'Tecnologia Bancária S.A.', 'Banco 24h', 'Banco 24Horas', 'BRB', 'Sicredi', 'Multibanco', 'banco24horas', 'Sicoob', '24 horas', 'TecBan', 'Banco24h', 'Banco24H', 'Banco Santander', 'Caixa 24 Horas', 'Banese', 'Banco24', 'Banco 24h.', 'Banco 24', 'banco 24h', 'Viacredi', 'State Bank of Sergipe', 'HSBC', 'Dinho', 'Caixa 24h', 'Banestes', 'Banco 24Hrs', 'Banco 24 horas.', '24horas', '24H' ]
+'centerLineStyle': 'yellow'
+'chargingStationOperators': [ 'Ipiranga', 'Sat', 'Petrobras', 'ABB', 'ipiranga', 'Taurus', 'Shell', 'Petrobrás', 'Ferreira Costa', 'EDP', 'Copel', 'BR' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 724
+'noEntrySignStyle': 'arrow'
+'noParkingSignStyle': 'mutcd latin'
+'noStoppingSignStyle': 'mutcd latin'
+'officialLanguages': [ 'pt' ]
+'orchardProduces': [ 'coffee', 'cacao', 'banana', 'cashew_nut', 'coconut', 'rubber', 'sisal', 'guava', 'mango', 'mangosteen', 'grape', 'mate', 'pineapple', 'lemon', 'lime', 'orange', 'tomato', 'pepper' ]

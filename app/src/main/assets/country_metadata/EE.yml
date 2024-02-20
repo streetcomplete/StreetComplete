@@ -1,22 +1,22 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ ru ]
-atmOperators: [ Swedbank, SEB, 'Luminor | LHV', LHV, 'LHV | Luminor', Luminor, brand=Swedbank, Nordea, LHV;Luminor, LHV; Luminor, brand=LHV, 'Sampo/Nordea' ]
-chargingStationOperators: [ ABB, Enefit Volt, Elmo, Eleport, ELMO, Enefit, ABB AS, eleport, Enefit VOLT, Ionity, Alexela ]
-clothesContainerOperators: [ Tallinna Jäätmekeskus, TJT ]
-defaultSpeedLimitHasUrbanOrRural: true
-exclusiveCycleLaneStyle: white
-hasAdvisoryCycleLane: false
-hasAdvisorySpeedLimitSign: true
-hasBicycleBoulevard: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 248
-noParkingLineStyle: dashed yellow
-noStoppingLineStyle: yellow
-officialLanguages: [ et ]
-orchardProduces: [ strawberry, apple, raspberry, plum, tomato ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: top
-slowZoneLabelText: ALA
+'additionalStreetsignLanguages': [ 'ru' ]
+'atmOperators': [ 'Swedbank', 'SEB', 'Luminor | LHV', 'LHV', 'LHV | Luminor', 'Luminor', 'brand=Swedbank', 'Nordea', 'LHV;Luminor', 'LHV; Luminor', 'brand=LHV', 'Sampo/Nordea' ]
+'chargingStationOperators': [ 'ABB', 'Enefit Volt', 'Elmo', 'Eleport', 'ELMO', 'Enefit', 'ABB AS', 'eleport', 'Enefit VOLT', 'Ionity', 'Alexela' ]
+'clothesContainerOperators': [ 'Tallinna Jäätmekeskus', 'TJT' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'exclusiveCycleLaneStyle': 'white'
+'hasAdvisoryCycleLane': false
+'hasAdvisorySpeedLimitSign': true
+'hasBicycleBoulevard': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 248
+'noParkingLineStyle': 'dashed yellow'
+'noStoppingLineStyle': 'yellow'
+'officialLanguages': [ 'et' ]
+'orchardProduces': [ 'strawberry', 'apple', 'raspberry', 'plum', 'tomato' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'top'
+'slowZoneLabelText': 'ALA'

@@ -1,21 +1,21 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ ПриватБанк, 'Альфа-Банк', Ukrsibbank, 'Акціонерне товариство "Державний ощадний банк України"', УкрСиббанк, Райффайзен Банк, Ощадбанк, Приватбанк, Сенс Банк, Райффайзен Банк Аваль, ПУМБ, UkrSibbank, Укрексімбанк, Укргазбанк, Sense Bank, Euronet, Raiffeisen Bank, Кредобанк, Аваль, Crédit Agricole, Райфайзен Банк Аваль, KredoBank, 'Правекс-Банк', UniCredit Bank, Райфайзен банк Аваль, Укрсиббанк, Privatbank, Credit Agricole, 'ПАТ "Укрсоцбанк"', Промінвестбанк, приватбанк, Райффайзен банк Аваль, Південний, 'Полтава-Банк', PrivatBank, ПСБ, ЦРБ, УкрЕксімБанк, Таскомбанк, Приват банк, Приват, Надра Банк, Надра, Мегабанк, Банк Форум, Банк Південний, Індустріалбанк ]
-centerLineStyle: white
-chargingStationOperators: [ Перша національна мережа електрозаправних комплексів Тока, AutoEnterprise, Toka, Infinite Charge, Одеська міська рада, ЕлектроДрайв, IONITY, ElectroUA, 'Перша національна мережа електрозаправних комплексів "Тока"', Autoenterprise, Yasno, Автоэнтерпрайз, Автоентерпрайз, АвтоЭнтерпрайз, Ionity, Electro UA, EcoFactor, Faster, FLASH, Тока, UGV Chargers, Silver Fox Energy, 'Go To-U', AutoEnterprise 201, АвтоЕнтерпрайз, ionity.ua, Tesla Club Ukraine, AutoVolt ]
-clothesContainerOperators: [ Зелений промінь, 'Емаус-Оселя' ]
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: white
-hasAdvisorySpeedLimitSign: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: russia
-mobileCountryCode: 255
-noParkingLineStyle: dashed yellow
-noStoppingLineStyle: yellow
-officialLanguages: [ uk, ru ]
-orchardProduces: [ apple, tomato, grape, plum, chilli_pepper, sweet_pepper, walnut, pear, cherry, strawberry, apricot, raspberry, peach, hop, hazelnut, blueberry ]
-popularReligions: [ christian, muslim, jewish ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: top
-slowZoneLabelText: ЗОНА
+'atmOperators': [ 'ПриватБанк', 'Альфа-Банк', 'Ukrsibbank', 'Акціонерне товариство "Державний ощадний банк України"', 'УкрСиббанк', 'Райффайзен Банк', 'Ощадбанк', 'Приватбанк', 'Сенс Банк', 'Райффайзен Банк Аваль', 'ПУМБ', 'UkrSibbank', 'Укрексімбанк', 'Укргазбанк', 'Sense Bank', 'Euronet', 'Raiffeisen Bank', 'Кредобанк', 'Аваль', 'Crédit Agricole', 'Райфайзен Банк Аваль', 'KredoBank', 'Правекс-Банк', 'UniCredit Bank', 'Райфайзен банк Аваль', 'Укрсиббанк', 'Privatbank', 'Credit Agricole', 'ПАТ "Укрсоцбанк"', 'Промінвестбанк', 'приватбанк', 'Райффайзен банк Аваль', 'Південний', 'Полтава-Банк', 'PrivatBank', 'ПСБ', 'ЦРБ', 'УкрЕксімБанк', 'Таскомбанк', 'Приват банк', 'Приват', 'Надра Банк', 'Надра', 'Мегабанк', 'Банк Форум', 'Банк Південний', 'Індустріалбанк' ]
+'centerLineStyle': 'white'
+'chargingStationOperators': [ 'Перша національна мережа електрозаправних комплексів Тока', 'AutoEnterprise', 'Toka', 'Infinite Charge', 'Одеська міська рада', 'ЕлектроДрайв', 'IONITY', 'ElectroUA', 'Перша національна мережа електрозаправних комплексів "Тока"', 'Autoenterprise', 'Yasno', 'Автоэнтерпрайз', 'Автоентерпрайз', 'АвтоЭнтерпрайз', 'Ionity', 'Electro UA', 'EcoFactor', 'Faster', 'FLASH', 'Тока', 'UGV Chargers', 'Silver Fox Energy', 'Go To-U', 'AutoEnterprise 201', 'АвтоЕнтерпрайз', 'ionity.ua', 'Tesla Club Ukraine', 'AutoVolt' ]
+'clothesContainerOperators': [ 'Зелений промінь', 'Емаус-Оселя' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'white'
+'hasAdvisorySpeedLimitSign': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'russia'
+'mobileCountryCode': 255
+'noParkingLineStyle': 'dashed yellow'
+'noStoppingLineStyle': 'yellow'
+'officialLanguages': [ 'uk', 'ru' ]
+'orchardProduces': [ 'apple', 'tomato', 'grape', 'plum', 'chilli_pepper', 'sweet_pepper', 'walnut', 'pear', 'cherry', 'strawberry', 'apricot', 'raspberry', 'peach', 'hop', 'hazelnut', 'blueberry' ]
+'popularReligions': [ 'christian', 'muslim', 'jewish' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'top'
+'slowZoneLabelText': 'ЗОНА'

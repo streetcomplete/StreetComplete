@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-defaultSpeedLimitHasUrbanOrRural: true
-lengthUnits: [ foot and inch, meter ]
-mobileCountryCode: 551
-officialLanguages: [ mh, en ]
-orchardProduces: [ coconut ]
-speedUnits: [ miles per hour, kilometers per hour ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'lengthUnits': [ 'foot and inch', 'meter' ]
+'mobileCountryCode': 551
+'officialLanguages': [ 'mh', 'en' ]
+'orchardProduces': [ 'coconut' ]
+'speedUnits': [ 'miles per hour', 'kilometers per hour' ]

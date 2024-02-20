@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Lloyds Bank ]
-defaultSpeedLimitHasUrbanOrRural: false
-isLeftHandTraffic: true
-lengthUnits: [ meter, foot and inch ]
-officialLanguages: [ en ]
-postboxesHaveRef: true
-speedUnits: [ miles per hour, kilometers per hour ]
+'atmOperators': [ 'Lloyds Bank' ]
+'defaultSpeedLimitHasUrbanOrRural': false
+'isLeftHandTraffic': true
+'lengthUnits': [ 'meter', 'foot and inch' ]
+'officialLanguages': [ 'en' ]
+'postboxesHaveRef': true
+'speedUnits': [ 'miles per hour', 'kilometers per hour' ]

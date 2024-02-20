@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Bank of Khartoum, بنك الخرطوم, ATM BOK, بنك فيصل الاسلامي السوداني, بنك امدرمان الوطني, FAISAL ISLAMIC BANK, صراف آلي بنك فيصل الإسلامي, صراف آلي بنك الخرطوم, بنك فيصل الإسلامية السوداني, بنك المزارع التجاري, بنك الخرطوم فرع الكلاكله شرق, بنك الخرطوم Bank of Khartoum, البنك السوداني الفرنسي, Sudanese French Bank, Faisal Islamic Bank ATM, Faisal Islamic Bank ]
-defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Su
-mobileCountryCode: 634
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ ar, en ]
-orchardProduces: [ tomato, banana, date, lemon, lime, guava, mango, mangosteen, grapefruit, orange, chilli_pepper, sweet_pepper, orange, pineapple ]
-popularReligions: [ muslim ]
-roofsAreUsuallyFlat: true
+'atmOperators': [ 'Bank of Khartoum', 'بنك الخرطوم', 'ATM BOK', 'بنك فيصل الاسلامي السوداني', 'بنك امدرمان الوطني', 'FAISAL ISLAMIC BANK', 'صراف آلي بنك فيصل الإسلامي', 'صراف آلي بنك الخرطوم', 'بنك فيصل الإسلامية السوداني', 'بنك المزارع التجاري', 'بنك الخرطوم فرع الكلاكله شرق', 'بنك الخرطوم Bank of Khartoum', 'البنك السوداني الفرنسي', 'Sudanese French Bank', 'Faisal Islamic Bank ATM', 'Faisal Islamic Bank' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'firstDayOfWorkweek': 'Su'
+'mobileCountryCode': 634
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'ar', 'en' ]
+'orchardProduces': [ 'tomato', 'banana', 'date', 'lemon', 'lime', 'guava', 'mango', 'mangosteen', 'grapefruit', 'orange', 'chilli_pepper', 'sweet_pepper', 'orange', 'pineapple' ]
+'popularReligions': [ 'muslim' ]
+'roofsAreUsuallyFlat': true

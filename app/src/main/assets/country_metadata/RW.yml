@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Bank of Kigali, Ecobank, KCB, BK ]
-centerLineStyle: white
-chargingStationOperators: [ Volkswagen ]
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: yellow
-mobileCountryCode: 635
-noParkingSignStyle: vienna variant
-noStoppingSignStyle: vienna
-officialLanguages: [ rw, en, fr ]
-orchardProduces: [ banana, tea, coffee, tomato, pineapple, orange, chilli_pepper, sweet_pepper, lemon, lime, pepper, guava, mango, mangosteen, avocado, papaya ]
+'atmOperators': [ 'Bank of Kigali', 'Ecobank', 'KCB', 'BK' ]
+'centerLineStyle': 'white'
+'chargingStationOperators': [ 'Volkswagen' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'yellow'
+'mobileCountryCode': 635
+'noParkingSignStyle': 'vienna variant'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'rw', 'en', 'fr' ]
+'orchardProduces': [ 'banana', 'tea', 'coffee', 'tomato', 'pineapple', 'orange', 'chilli_pepper', 'sweet_pepper', 'lemon', 'lime', 'pepper', 'guava', 'mango', 'mangosteen', 'avocado', 'papaya' ]

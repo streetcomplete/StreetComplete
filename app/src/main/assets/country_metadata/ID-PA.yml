@@ -1,2 +1,2 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Bank Mandiri ]
+'atmOperators': [ 'Bank Mandiri' ]

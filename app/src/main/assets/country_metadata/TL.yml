@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ BNCTL, Mandiri, LOOS24, BNU, Loos24, ANZ Bank, ANZ ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-isLeftHandTraffic: true
-mobileCountryCode: 514
-noStoppingSignStyle: australia
-officialLanguages: [ tet, pt ]
-orchardProduces: [ coffee, coconut, cacao, guava, mango, mangosteen, banana, avocado, orange, tomato, papaya, pineapple ]
-postboxesHaveCollectionTimes: true
+'atmOperators': [ 'BNCTL', 'Mandiri', 'LOOS24', 'BNU', 'Loos24', 'ANZ Bank', 'ANZ' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'isLeftHandTraffic': true
+'mobileCountryCode': 514
+'noStoppingSignStyle': 'australia'
+'officialLanguages': [ 'tet', 'pt' ]
+'orchardProduces': [ 'coffee', 'coconut', 'cacao', 'guava', 'mango', 'mangosteen', 'banana', 'avocado', 'orange', 'tomato', 'papaya', 'pineapple' ]
+'postboxesHaveCollectionTimes': true

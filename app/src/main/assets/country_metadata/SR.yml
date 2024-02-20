@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ DSB, Hakrinbank, Republic Bank, De Surinaamsche Bank ]
-isLeftHandTraffic: true
-mobileCountryCode: 746
-noParkingLineStyle: dashed yellow
-noParkingSignStyle: vienna
-noStoppingLineStyle: yellow
-noStoppingSignStyle: vienna
-officialLanguages: [ nl ]
-orchardProduces: [ banana, orange, coconut, coffee, pineapple, guava, mango, mangosteen, cacao, grapefruit, tomato, papaya, cherry, lemon, lime ]
-popularReligions: [ christian, hindu, muslim ]
+'atmOperators': [ 'DSB', 'Hakrinbank', 'Republic Bank', 'De Surinaamsche Bank' ]
+'isLeftHandTraffic': true
+'mobileCountryCode': 746
+'noParkingLineStyle': 'dashed yellow'
+'noParkingSignStyle': 'vienna'
+'noStoppingLineStyle': 'yellow'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'nl' ]
+'orchardProduces': [ 'banana', 'orange', 'coconut', 'coffee', 'pineapple', 'guava', 'mango', 'mangosteen', 'cacao', 'grapefruit', 'tomato', 'papaya', 'cherry', 'lemon', 'lime' ]
+'popularReligions': [ 'christian', 'hindu', 'muslim' ]

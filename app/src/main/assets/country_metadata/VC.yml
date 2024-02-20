@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Bank of Saint Vincent & the Grenadines, FirstCaribbean International Bank Ltd., Bank of Nova Scotia ]
-isLeftHandTraffic: true
-lengthUnits: [ foot and inch, meter ]
-mobileCountryCode: 360
-officialLanguages: [ en ]
-orchardProduces: [ banana, cacao, coconut, coffee, nutmeg, guava, mango, mangosteen, chilli_pepper, sweet_pepper, apple, pear, lemon, lime, orange, grapefruit ]
-speedUnits: [ miles per hour, kilometers per hour ]
+'atmOperators': [ 'Bank of Saint Vincent & the Grenadines', 'FirstCaribbean International Bank Ltd.', 'Bank of Nova Scotia' ]
+'isLeftHandTraffic': true
+'lengthUnits': [ 'foot and inch', 'meter' ]
+'mobileCountryCode': 360
+'officialLanguages': [ 'en' ]
+'orchardProduces': [ 'banana', 'cacao', 'coconut', 'coffee', 'nutmeg', 'guava', 'mango', 'mangosteen', 'chilli_pepper', 'sweet_pepper', 'apple', 'pear', 'lemon', 'lime', 'orange', 'grapefruit' ]
+'speedUnits': [ 'miles per hour', 'kilometers per hour' ]

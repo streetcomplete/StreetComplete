@@ -1,16 +1,16 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ en, 'th-Latn' ]
-advisorySpeedLimitSignStyle: yellow
-atmOperators: [ ธนาคารกรุงเทพ, Bangkok Bank, ธนาคารกสิกรไทย, Krungsri, ธนาคารไทยพาณิชย์, ธนาคารกรุงไทย, SCB, Siam Commercial Bank, Krungthai Bank, Krungthai, Kasikorn Bank, ธนาคารทหารไทย, KTB, Kasikorn, กรุงศรี, Government Savings Bank, ธนาคารออมสิน, Krungsri Bank, GSB, KBank, TMB, Kasikornbank, Bank of Ayudhya, KBANK, Thanachart Bank, ATM, ธนาคารกรุงศรีอยุธยา, Siam Commercial, 'K-Bank', UOB, Kasikornthai, Siam City Bank, Omsin, 'K-bank', ธนาคารธนชาต, Goverment Savings Bank, krungsri, Thanachart, Aeon, กสิกรไทย, Krung Thai Bank, K Bank, Easybank, Baac, BBL, ไทยพาณิชย์, ออมสิน, Siam Commercial Bank (SCB), Ktb, Krung Thai, Kasikornthai Bank, KBANK, SCB, KTB, CIMB Thai, Bangkok, ธนาคารซีไอเอ็มบีไทย, ธนาคารกรุงไทย (Krungthai Bank), ธ.ไทยพาณิชย์, ธ.ออมสิน, government savings bank, bike park, bangkok bank, atm, Thai Military Bank, TMB Bank, TCAP, SNA, Oomsin, LH Bank, Krungthai Bank ธนาคารกรุงไทย, Krungsri Bay, Krungsri ATM, Krungsiri, Krung Thai Bank (KTB), Kbank, Kasikorn Thai, KTB, BBL, GSB, KBANK, SCB, Easy Bank, Cimb, Bankok Bank, Bangkok Bank (BBL), BAY, ATM Siam Commercial Bank, ATM Krungsri ]
-centerLineStyle: yellow
-chargingStationOperators: [ PTT, MG ]
-defaultSpeedLimitHasUrbanOrRural: true
-isLeftHandTraffic: true
-mobileCountryCode: 520
-noParkingLineStyle: 'yellow-white on curb'
-noStoppingLineStyle: 'red-white on curb'
-officialLanguages: [ th ]
-orchardProduces: [ rubber, guava, mango, mangosteen, coconut, pineapple, banana, coffee, areca_nut, tea, lemon, lime, grapefruit, cashew_nut, orange, tomato, grape, papaya ]
-popularReligions: [ buddhist, animist, muslim, chinese_folk, taoist ]
-popularSports: [ tennis, soccer, golf, basketball, badminton, sepak_takraw ]
-postboxesHaveCollectionTimes: true
+'additionalStreetsignLanguages': [ 'en', 'th-Latn' ]
+'advisorySpeedLimitSignStyle': 'yellow'
+'atmOperators': [ 'ธนาคารกรุงเทพ', 'Bangkok Bank', 'ธนาคารกสิกรไทย', 'Krungsri', 'ธนาคารไทยพาณิชย์', 'ธนาคารกรุงไทย', 'SCB', 'Siam Commercial Bank', 'Krungthai Bank', 'Krungthai', 'Kasikorn Bank', 'ธนาคารทหารไทย', 'KTB', 'Kasikorn', 'กรุงศรี', 'Government Savings Bank', 'ธนาคารออมสิน', 'Krungsri Bank', 'GSB', 'KBank', 'TMB', 'Kasikornbank', 'Bank of Ayudhya', 'KBANK', 'Thanachart Bank', 'ATM', 'ธนาคารกรุงศรีอยุธยา', 'Siam Commercial', 'K-Bank', 'UOB', 'Kasikornthai', 'Siam City Bank', 'Omsin', 'K-bank', 'ธนาคารธนชาต', 'Goverment Savings Bank', 'krungsri', 'Thanachart', 'Aeon', 'กสิกรไทย', 'Krung Thai Bank', 'K Bank', 'Easybank', 'Baac', 'BBL', 'ไทยพาณิชย์', 'ออมสิน', 'Siam Commercial Bank (SCB)', 'Ktb', 'Krung Thai', 'Kasikornthai Bank', 'KBANK, SCB, KTB', 'CIMB Thai', 'Bangkok', 'ธนาคารซีไอเอ็มบีไทย', 'ธนาคารกรุงไทย (Krungthai Bank)', 'ธ.ไทยพาณิชย์', 'ธ.ออมสิน', 'government savings bank', 'bike park', 'bangkok bank', 'atm', 'Thai Military Bank', 'TMB Bank', 'TCAP', 'SNA', 'Oomsin', 'LH Bank', 'Krungthai Bank ธนาคารกรุงไทย', 'Krungsri Bay', 'Krungsri ATM', 'Krungsiri', 'Krung Thai Bank (KTB)', 'Kbank', 'Kasikorn Thai', 'KTB, BBL, GSB', 'KBANK, SCB', 'Easy Bank', 'Cimb', 'Bankok Bank', 'Bangkok Bank (BBL)', 'BAY', 'ATM Siam Commercial Bank', 'ATM Krungsri' ]
+'centerLineStyle': 'yellow'
+'chargingStationOperators': [ 'PTT', 'MG' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'isLeftHandTraffic': true
+'mobileCountryCode': 520
+'noParkingLineStyle': 'yellow-white on curb'
+'noStoppingLineStyle': 'red-white on curb'
+'officialLanguages': [ 'th' ]
+'orchardProduces': [ 'rubber', 'guava', 'mango', 'mangosteen', 'coconut', 'pineapple', 'banana', 'coffee', 'areca_nut', 'tea', 'lemon', 'lime', 'grapefruit', 'cashew_nut', 'orange', 'tomato', 'grape', 'papaya' ]
+'popularReligions': [ 'buddhist', 'animist', 'muslim', 'chinese_folk', 'taoist' ]
+'popularSports': [ 'tennis', 'soccer', 'golf', 'basketball', 'badminton', 'sepak_takraw' ]
+'postboxesHaveCollectionTimes': true

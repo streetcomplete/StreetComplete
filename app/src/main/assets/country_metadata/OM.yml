@@ -1,13 +1,13 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ en ]
-atmOperators: [ Bank Muscat, بنك مسقط, NBO, HSBC, صراف بنك مسقط, Bank Dhofar, bank muscat, Bank Muscat ATM, بنك ظفار ]
-centerLineStyle: yellow
-edgeLineStyle: yellow
-firstDayOfWorkweek: Su
-mobileCountryCode: 422
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ ar ]
-orchardProduces: [ date, tomato, lemon, lime, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, papaya ]
-popularReligions: [ muslim ]
-roofsAreUsuallyFlat: true
+'additionalStreetsignLanguages': [ 'en' ]
+'atmOperators': [ 'Bank Muscat', 'بنك مسقط', 'NBO', 'HSBC', 'صراف بنك مسقط', 'Bank Dhofar', 'bank muscat', 'Bank Muscat ATM', 'بنك ظفار' ]
+'centerLineStyle': 'yellow'
+'edgeLineStyle': 'yellow'
+'firstDayOfWorkweek': 'Su'
+'mobileCountryCode': 422
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'ar' ]
+'orchardProduces': [ 'date', 'tomato', 'lemon', 'lime', 'banana', 'guava', 'mango', 'mangosteen', 'chilli_pepper', 'sweet_pepper', 'papaya' ]
+'popularReligions': [ 'muslim' ]
+'roofsAreUsuallyFlat': true

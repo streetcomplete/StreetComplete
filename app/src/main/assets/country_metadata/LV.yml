@@ -1,22 +1,22 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Swedbank, SEB, Citadele, Luminor Bank, Luminor, BluOr Bank ]
-centerLineStyle: white
-chargingStationOperators: [ CSDD, Elektrum, 'e-mobi', Ceļu satiksmes drošības direkcija, Tesla, Inc., 'CSDD - Ceļu Satiksmes Drošības Direkcija' ]
-clothesContainerOperators: [ Eco Baltia Vide, CleanR ]
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: white
-exclusiveCycleLaneStyle: white
-hasAdvisoryCycleLane: false
-hasAdvisorySpeedLimitSign: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 247
-noParkingLineStyle: dashed yellow
-noStoppingLineStyle: yellow
-officialLanguages: [ lv ]
-orchardProduces: [ apple, blueberry, strawberry, raspberry, pear, plum ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: bottom
-slowZoneLabelText: ZONA
+'atmOperators': [ 'Swedbank', 'SEB', 'Citadele', 'Luminor Bank', 'Luminor', 'BluOr Bank' ]
+'centerLineStyle': 'white'
+'chargingStationOperators': [ 'CSDD', 'Elektrum', 'e-mobi', 'Ceļu satiksmes drošības direkcija', 'Tesla, Inc.', 'CSDD - Ceļu Satiksmes Drošības Direkcija' ]
+'clothesContainerOperators': [ 'Eco Baltia Vide', 'CleanR' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'white'
+'exclusiveCycleLaneStyle': 'white'
+'hasAdvisoryCycleLane': false
+'hasAdvisorySpeedLimitSign': 'true'
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 247
+'noParkingLineStyle': 'dashed yellow'
+'noStoppingLineStyle': 'yellow'
+'officialLanguages': [ 'lv' ]
+'orchardProduces': [ 'apple', 'blueberry', 'strawberry', 'raspberry', 'pear', 'plum' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'bottom'
+'slowZoneLabelText': 'ZONA'

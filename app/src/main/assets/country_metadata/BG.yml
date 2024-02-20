@@ -1,18 +1,18 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ international ]
-atmOperators: [ УниКредит Булбанк, Банка ДСК, Първа инвестиционна банка, Обединена Българска Банка, Пощенска банка, Централна Кооперативна Банка, KBC Bank, Raiffeisenbank, Euronet, Общинска банка, Allianz, Централна кооперативна Банка, Инвестбанк, KBC Group, International Asset Bank, Fibank, ДСК, Piraeus Bank, CCB ]
-chargingStationOperators: [ 'ОП „Общински паркинги и синя зона“ - Варна', Столичен автотранспорт, Община Варна, Kaufland, Renault, Evpoint, Eldrive ]
-clothesContainerOperators: [ TexCycle, БЧК, TEXAID Bulgaria, 'M-Texx' ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 284
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ bg ]
-orchardProduces: [ grape, cherry, plum, walnut, tomato, apple, chilli_pepper, sweet_pepper, peach, apricot, raspberry, hazelnut, almond, strawberry, pear, blueberry ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: top
-slowZoneLabelText: ЗОНА
+'additionalStreetsignLanguages': [ 'international' ]
+'atmOperators': [ 'УниКредит Булбанк', 'Банка ДСК', 'Първа инвестиционна банка', 'Обединена Българска Банка', 'Пощенска банка', 'Централна Кооперативна Банка', 'KBC Bank', 'Raiffeisenbank', 'Euronet', 'Общинска банка', 'Allianz', 'Централна кооперативна Банка', 'Инвестбанк', 'KBC Group', 'International Asset Bank', 'Fibank', 'ДСК', 'Piraeus Bank', 'CCB' ]
+'chargingStationOperators': [ 'ОП „Общински паркинги и синя зона“ - Варна', 'Столичен автотранспорт', 'Община Варна', 'Kaufland', 'Renault', 'Evpoint', 'Eldrive' ]
+'clothesContainerOperators': [ 'TexCycle', 'БЧК', 'TEXAID Bulgaria', 'M-Texx' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 284
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'bg' ]
+'orchardProduces': [ 'grape', 'cherry', 'plum', 'walnut', 'tomato', 'apple', 'chilli_pepper', 'sweet_pepper', 'peach', 'apricot', 'raspberry', 'hazelnut', 'almond', 'strawberry', 'pear', 'blueberry' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'top'
+'slowZoneLabelText': 'ЗОНА'

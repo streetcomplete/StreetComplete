@@ -1,20 +1,20 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ sr, it ]
-atmOperators: [ Zagrebačka banka, Euronet, PBZ, Hrvatska poštanska banka, Erste Bank, Erste, Privredna banka Zagreb, OTP Bank, HPB, Auro Domus, Raiffeisen Bank, ZABA, Addiko Bank, RBA, Raiffeisen, OTP banka, Euronet Worldwide, OTP Banka, OTP, Splitska Banka, otpbanka, Splitska banka, Raiffeisenbank, Raiffeisen bank, Addiko, Hypo, Erste Banka, Zaba, Raiffeisenbank Austria, Privredna Banka Zagreb, Zagrebačka Banka, MoneyGet, Raiffeisen BANK, Zagrebačka banka d.d., Sberbank, Privredna banka, Kreditna banka Zagreb, Karlovačka banka, otp banka, Payout, Intesa Sanpaolo, Hypo Alpe Adria, Hrvatska Poštanska Banka, Erste bankomat, Erste bank, Erste Bank Croatia, Erste & Steiermärkische banka, Agram Banka, Addiko bank, ATM, zaba, optbanka, Zagrebacka Banka, Volksbank, 'Societe Generale - Splitska banka', Raiffeisen banka, Raiffaisen Bank, Poštanska banka, PBZ bankomat, OTP banka d.d., Nova hrvatska banka, Monestiq, Kent Bank, Jadranska banka, Jadranska Banka, HypoGroup Alpe Adria, Hypo Group, Euonet, Erste&Steiermärkische Bank, Erste banka, ERSTE, Aura Domus, Agram banka ]
-chargingStationOperators: [ ELEN, Elen, Petrol, Qelo, Tesla, Inc., Hrvatski telekom, Tifon, Ionity, go2bike, elen, Tesla, Mol, MOL Plugee, Lidl, Kaufland, Eurokod ]
-defaultSpeedLimitHasUrbanOrRural: true
-exclusiveCycleLaneStyle: yellow
-hasAdvisoryCycleLane: false
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 219
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ hr ]
-orchardProduces: [ grape, olive, walnut, hazelnut, apple, plum, cherry, orange, peach, pear, almond, chilli_pepper, sweet_pepper, fig, tomato, blueberry ]
-popularSports: [ soccer, tennis, basketball, boules, handball ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: bottom
-slowZoneLabelText: ZONA
+'additionalStreetsignLanguages': [ 'sr', 'it' ]
+'atmOperators': [ 'Zagrebačka banka', 'Euronet', 'PBZ', 'Hrvatska poštanska banka', 'Erste Bank', 'Erste', 'Privredna banka Zagreb', 'OTP Bank', 'HPB', 'Auro Domus', 'Raiffeisen Bank', 'ZABA', 'Addiko Bank', 'RBA', 'Raiffeisen', 'OTP banka', 'Euronet Worldwide', 'OTP Banka', 'OTP', 'Splitska Banka', 'otpbanka', 'Splitska banka', 'Raiffeisenbank', 'Raiffeisen bank', 'Addiko', 'Hypo', 'Erste Banka', 'Zaba', 'Raiffeisenbank Austria', 'Privredna Banka Zagreb', 'Zagrebačka Banka', 'MoneyGet', 'Raiffeisen BANK', 'Zagrebačka banka d.d.', 'Sberbank', 'Privredna banka', 'Kreditna banka Zagreb', 'Karlovačka banka', 'otp banka', 'Payout', 'Intesa Sanpaolo', 'Hypo Alpe Adria', 'Hrvatska Poštanska Banka', 'Erste bankomat', 'Erste bank', 'Erste Bank Croatia', 'Erste & Steiermärkische banka', 'Agram Banka', 'Addiko bank', 'ATM', 'zaba', 'optbanka', 'Zagrebacka Banka', 'Volksbank', 'Societe Generale - Splitska banka', 'Raiffeisen banka', 'Raiffaisen Bank', 'Poštanska banka', 'PBZ bankomat', 'OTP banka d.d.', 'Nova hrvatska banka', 'Monestiq', 'Kent Bank', 'Jadranska banka', 'Jadranska Banka', 'HypoGroup Alpe Adria', 'Hypo Group', 'Euonet', 'Erste&Steiermärkische Bank', 'Erste banka', 'ERSTE', 'Aura Domus', 'Agram banka' ]
+'chargingStationOperators': [ 'ELEN', 'Elen', 'Petrol', 'Qelo', 'Tesla, Inc.', 'Hrvatski telekom', 'Tifon', 'Ionity', 'go2bike', 'elen', 'Tesla', 'Mol', 'MOL Plugee', 'Lidl', 'Kaufland', 'Eurokod' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'exclusiveCycleLaneStyle': 'yellow'
+'hasAdvisoryCycleLane': false
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 219
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'hr' ]
+'orchardProduces': [ 'grape', 'olive', 'walnut', 'hazelnut', 'apple', 'plum', 'cherry', 'orange', 'peach', 'pear', 'almond', 'chilli_pepper', 'sweet_pepper', 'fig', 'tomato', 'blueberry' ]
+'popularSports': [ 'soccer', 'tennis', 'basketball', 'boules', 'handball' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'bottom'
+'slowZoneLabelText': 'ZONA'

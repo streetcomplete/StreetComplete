@@ -1,3 +1,3 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ State Bank of India, SBI, Axis Bank, Bank of Baroda ]
-officialLanguages: [ hi, ur ]
+'atmOperators': [ 'State Bank of India', 'SBI', 'Axis Bank', 'Bank of Baroda' ]
+'officialLanguages': [ 'hi', 'ur' ]

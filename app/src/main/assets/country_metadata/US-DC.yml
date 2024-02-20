@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Bank of America, PNC Bank, Wells Fargo, Chase, Truist, Citibank, Capital One, BB&T ]
-chargingStationOperators: [ ChargePoint, Tesla, Inc. ]
-defaultSpeedLimitHasUrbanOrRural: false
+'atmOperators': [ 'Bank of America', 'PNC Bank', 'Wells Fargo', 'Chase', 'Truist', 'Citibank', 'Capital One', 'BB&T' ]
+'chargingStationOperators': [ 'ChargePoint', 'Tesla, Inc.' ]
+'defaultSpeedLimitHasUrbanOrRural': false

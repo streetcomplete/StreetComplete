@@ -1,13 +1,13 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ FNB, Barclays, Standard Chartered, Stanbic Bank, Standard Bank, Stanbic, Fnb, FNB ATM ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: yellow
-hasLivingStreet: true
-isLeftHandTraffic: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 652
-noParkingSignStyle: sadc
-noStoppingSignStyle: sadc
-officialLanguages: [ en, tn ]
-orchardProduces: [ tomato, orange ]
+'atmOperators': [ 'FNB', 'Barclays', 'Standard Chartered', 'Stanbic Bank', 'Standard Bank', 'Stanbic', 'Fnb', 'FNB ATM' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'yellow'
+'hasLivingStreet': true
+'isLeftHandTraffic': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 652
+'noParkingSignStyle': 'sadc'
+'noStoppingSignStyle': 'sadc'
+'officialLanguages': [ 'en', 'tn' ]
+'orchardProduces': [ 'tomato', 'orange' ]

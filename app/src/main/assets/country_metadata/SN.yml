@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ orange, SGBS, Ecobank, Bank of Africa, CBEAO ]
-defaultSpeedLimitHasUrbanOrRural: false
-mobileCountryCode: 608
-officialLanguages: [ fr, wo, ff ]
-orchardProduces: [ cashew_nut, guava, mango, mangosteen, orange, tomato, banana, coconut, chilli_pepper, sweet_pepper ]
-popularReligions: [ muslim ]
+'atmOperators': [ 'orange', 'SGBS', 'Ecobank', 'Bank of Africa', 'CBEAO' ]
+'defaultSpeedLimitHasUrbanOrRural': false
+'mobileCountryCode': 608
+'officialLanguages': [ 'fr', 'wo', 'ff' ]
+'orchardProduces': [ 'cashew_nut', 'guava', 'mango', 'mangosteen', 'orange', 'tomato', 'banana', 'coconut', 'chilli_pepper', 'sweet_pepper' ]
+'popularReligions': [ 'muslim' ]

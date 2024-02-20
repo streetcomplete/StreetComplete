@@ -1,16 +1,16 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Komercijalna banka, Поштанска штедионица, Eurobank, Mobi banka, Raiffeisen bank, Banca Intesa, Addiko Bank, Halkbank, UniCredit Bank, AIK banka, OTP banka, Erste Bank, MoneyGet, ОТП, Банка Поштанска штедионица, Telenor, Poštanska Štedionica, OTP Banka, Intesa, Bankomat, Banka Intesa ]
-chargingStationOperators: [ Газпром, Tesla, Inc. ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 220
-noParkingLineStyle: dashed yellow with Xs
-noStoppingLineStyle: yellow
-officialLanguages: [ sr ]
-orchardProduces: [ plum, apple, raspberry, grape, cherry, tomato, peach, strawberry, apricot, chilli_pepper, sweet_pepper, pear, hazelnut, walnut, hop ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: bottom
-slowZoneLabelText: ЗОНА
+'atmOperators': [ 'Komercijalna banka', 'Поштанска штедионица', 'Eurobank', 'Mobi banka', 'Raiffeisen bank', 'Banca Intesa', 'Addiko Bank', 'Halkbank', 'UniCredit Bank', 'AIK banka', 'OTP banka', 'Erste Bank', 'MoneyGet', 'ОТП', 'Банка Поштанска штедионица', 'Telenor', 'Poštanska Štedionica', 'OTP Banka', 'Intesa', 'Bankomat', 'Banka Intesa' ]
+'chargingStationOperators': [ 'Газпром', 'Tesla, Inc.' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 220
+'noParkingLineStyle': 'dashed yellow with Xs'
+'noStoppingLineStyle': 'yellow'
+'officialLanguages': [ 'sr' ]
+'orchardProduces': [ 'plum', 'apple', 'raspberry', 'grape', 'cherry', 'tomato', 'peach', 'strawberry', 'apricot', 'chilli_pepper', 'sweet_pepper', 'pear', 'hazelnut', 'walnut', 'hop' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'bottom'
+'slowZoneLabelText': 'ЗОНА'

@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Jusan Bank, Forte Bank, ForteBank, Народный банк Казахстана, Jusan, Народный банк, Halyk Bank, Казкоммерцбанк, АО, Kaspi.kz, Казкоммерцбанк, 'АО "Казкоммерцбанк"', Kazkom, Сбербанк, Halyk bank, Казкомерцбанк, Казком, Bank CenterCredit, HALYK BANK, kaspi.kz, Halyk, Халык банк, Qazkom, Халық банк, Сбербанк России, Народный Банк, Казкоммерцбанк банкомат, КазКом, Kaspi, KAZKOM, Народный банкомат, КазКоммерцБанк, Евразийский банк, Альянс банк, АТФ Банк, Халык Банк, Касса 24, Банк России, БТА банкомат, БТА банк, БТА, АТФ банк, 'АО "Народный Банк"', Qiwi, QIWI, Nurbank, Kaspi bank, Kaspi Bank, KAZ KOM, Bank RBK, народный банк, Халық банкі, Нурбанк, Народный банк казахстана, Казпочта, Казкомерц банк, 'ДБ АО "Сбербанк"', Банкомат Народный банк, Банкомат БТА банка, АльянсБанк, АТФ банкомат, АТФ, АО Казкоммерцбанк, 'АО "Цесна банк"', 'АО "Евразийский банк"', halyk bank, Qazkom банкомат, Kazcom, KaspiBank, Kaspi Bank терминал, HalykBank, Centercredit, Bank Center Credit ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-livingStreetSignStyle: russia
-mobileCountryCode: 401
-officialLanguages: [ kk, ru ]
-orchardProduces: [ apple, tomato, grape, apricot, pear, plum, walnut, peach, strawberry, chilli_pepper, sweet_pepper, almond, cherry ]
-popularReligions: [ muslim ]
-postboxesHaveCollectionTimes: true
+'atmOperators': [ 'Jusan Bank', 'Forte Bank', 'ForteBank', 'Народный банк Казахстана', 'Jusan', 'Народный банк', 'Halyk Bank', 'Казкоммерцбанк, АО', 'Kaspi.kz', 'Казкоммерцбанк', 'АО "Казкоммерцбанк"', 'Kazkom', 'Сбербанк', 'Halyk bank', 'Казкомерцбанк', 'Казком', 'Bank CenterCredit', 'HALYK BANK', 'kaspi.kz', 'Halyk', 'Халык банк', 'Qazkom', 'Халық банк', 'Сбербанк России', 'Народный Банк', 'Казкоммерцбанк банкомат', 'КазКом', 'Kaspi', 'KAZKOM', 'Народный банкомат', 'КазКоммерцБанк', 'Евразийский банк', 'Альянс банк', 'АТФ Банк', 'Халык Банк', 'Касса 24', 'Банк России', 'БТА банкомат', 'БТА банк', 'БТА', 'АТФ банк', 'АО "Народный Банк"', 'Qiwi', 'QIWI', 'Nurbank', 'Kaspi bank', 'Kaspi Bank', 'KAZ KOM', 'Bank RBK', 'народный банк', 'Халық банкі', 'Нурбанк', 'Народный банк казахстана', 'Казпочта', 'Казкомерц банк', 'ДБ АО "Сбербанк"', 'Банкомат Народный банк', 'Банкомат БТА банка', 'АльянсБанк', 'АТФ банкомат', 'АТФ', 'АО Казкоммерцбанк', 'АО "Цесна банк"', 'АО "Евразийский банк"', 'halyk bank', 'Qazkom банкомат', 'Kazcom', 'KaspiBank', 'Kaspi Bank терминал', 'HalykBank', 'Centercredit', 'Bank Center Credit' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'livingStreetSignStyle': 'russia'
+'mobileCountryCode': 401
+'officialLanguages': [ 'kk', 'ru' ]
+'orchardProduces': [ 'apple', 'tomato', 'grape', 'apricot', 'pear', 'plum', 'walnut', 'peach', 'strawberry', 'chilli_pepper', 'sweet_pepper', 'almond', 'cherry' ]
+'popularReligions': [ 'muslim' ]
+'postboxesHaveCollectionTimes': true

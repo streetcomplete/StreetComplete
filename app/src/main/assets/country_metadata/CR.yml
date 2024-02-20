@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ BCR, BAC Credomatic, Banco Popular, Banco Nacional de Costa Rica, Banco de Costa Rica, Banco Nacional, Scotiabank, Davivienda, Cajero BCR, Banco de Costa Rica (BCR), Banco De Costa Rica, ATH ]
-centerLineStyle: yellow
-chargingStationOperators: [ ICE, Estación de Recarga, JASEC, Coopesantos, CNFL ]
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 712
-noParkingSignStyle: mutcd latin
-noStoppingSignStyle: mutcd
-officialLanguages: [ es ]
-orchardProduces: [ coffee, banana, pineapple, orange, cacao, guava, mango, mangosteen, avocado, grapefruit, lemon, lime, coconut, tomato, papaya, pepper, chilli_pepper, sweet_pepper, strawberry ]
+'atmOperators': [ 'BCR', 'BAC Credomatic', 'Banco Popular', 'Banco Nacional de Costa Rica', 'Banco de Costa Rica', 'Banco Nacional', 'Scotiabank', 'Davivienda', 'Cajero BCR', 'Banco de Costa Rica (BCR)', 'Banco De Costa Rica', 'ATH' ]
+'centerLineStyle': 'yellow'
+'chargingStationOperators': [ 'ICE', 'Estación de Recarga', 'JASEC', 'Coopesantos', 'CNFL' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 712
+'noParkingSignStyle': 'mutcd latin'
+'noStoppingSignStyle': 'mutcd'
+'officialLanguages': [ 'es' ]
+'orchardProduces': [ 'coffee', 'banana', 'pineapple', 'orange', 'cacao', 'guava', 'mango', 'mangosteen', 'avocado', 'grapefruit', 'lemon', 'lime', 'coconut', 'tomato', 'papaya', 'pepper', 'chilli_pepper', 'sweet_pepper', 'strawberry' ]

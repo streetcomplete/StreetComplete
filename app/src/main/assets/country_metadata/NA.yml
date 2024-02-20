@@ -1,14 +1,14 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ FNB, Bank Windhoek, Standard Bank, Nedbank, FNB Namibia, Standard Bank ATM, First National Bank, FNB ATM ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: yellow
-hasLivingStreet: true
-isLeftHandTraffic: true
-livingStreetSignStyle: sadc
-mobileCountryCode: 649
-noParkingSignStyle: sadc
-noStoppingLineStyle: red
-noStoppingSignStyle: sadc
-officialLanguages: [ en, af ]
-orchardProduces: [ grape, tomato, orange, date, chilli_pepper, sweet_pepper, guava, mango, mangosteen ]
+'atmOperators': [ 'FNB', 'Bank Windhoek', 'Standard Bank', 'Nedbank', 'FNB Namibia', 'Standard Bank ATM', 'First National Bank', 'FNB ATM' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'yellow'
+'hasLivingStreet': true
+'isLeftHandTraffic': true
+'livingStreetSignStyle': 'sadc'
+'mobileCountryCode': 649
+'noParkingSignStyle': 'sadc'
+'noStoppingLineStyle': 'red'
+'noStoppingSignStyle': 'sadc'
+'officialLanguages': [ 'en', 'af' ]
+'orchardProduces': [ 'grape', 'tomato', 'orange', 'date', 'chilli_pepper', 'sweet_pepper', 'guava', 'mango', 'mangosteen' ]

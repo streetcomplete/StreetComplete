@@ -1,17 +1,17 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ en ]
-atmOperators: [ Hatton National Bank, Commercial Bank of Ceylon, BOC, Sampath Bank, Commercial Bank, "People's Bank", Bank of Ceylon, HNB, Seylan Bank, NSB, Union Bank, Peoples Bank, BOC ATM, Nations Trust Bank, People’s Bank, HSBC, Sampath ATM, People‘s Bank, LOLC Finance, HNB ATM, Commercial Bank ATM, Bank Of Ceylon ]
-chargingStationOperators: [ Spark EV ]
-exclusiveCycleLaneStyle: white
-hasAdvisoryCycleLane: false
-hasDailyAlternateSideParkingSign: true
-isLeftHandTraffic: true
-mobileCountryCode: 413
-noParkingLineStyle: yellow
-noStoppingLineStyle: double yellow
-officialLanguages: [ si, ta ]
-orchardProduces: [ coconut, tea, rubber, pepper, guava, mango, mangosteen, areca_nut, cashew_nut, chilli_pepper, sweet_pepper, lemon, lime, orange, tomato, coffee, pineapple, avocado, nutmeg ]
-popularReligions: [ buddhist, hindu, christian, muslim ]
-popularSports: [ soccer, tennis, cricket ]
-postboxesHaveCollectionTimes: true
-postboxesHaveRoyalCypher: true
+'additionalStreetsignLanguages': [ 'en' ]
+'atmOperators': [ 'Hatton National Bank', 'Commercial Bank of Ceylon', 'BOC', 'Sampath Bank', 'Commercial Bank', "People's Bank", 'Bank of Ceylon', 'HNB', 'Seylan Bank', 'NSB', 'Union Bank', 'Peoples Bank', 'BOC ATM', 'Nations Trust Bank', 'People’s Bank', 'HSBC', 'Sampath ATM', 'People‘s Bank', 'LOLC Finance', 'HNB ATM', 'Commercial Bank ATM', 'Bank Of Ceylon' ]
+'chargingStationOperators': [ 'Spark EV' ]
+'exclusiveCycleLaneStyle': 'white'
+'hasAdvisoryCycleLane': false
+'hasDailyAlternateSideParkingSign': true
+'isLeftHandTraffic': true
+'mobileCountryCode': 413
+'noParkingLineStyle': 'yellow'
+'noStoppingLineStyle': 'double yellow'
+'officialLanguages': [ 'si', 'ta' ]
+'orchardProduces': [ 'coconut', 'tea', 'rubber', 'pepper', 'guava', 'mango', 'mangosteen', 'areca_nut', 'cashew_nut', 'chilli_pepper', 'sweet_pepper', 'lemon', 'lime', 'orange', 'tomato', 'coffee', 'pineapple', 'avocado', 'nutmeg' ]
+'popularReligions': [ 'buddhist', 'hindu', 'christian', 'muslim' ]
+'popularSports': [ 'soccer', 'tennis', 'cricket' ]
+'postboxesHaveCollectionTimes': true
+'postboxesHaveRoyalCypher': true

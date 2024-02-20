@@ -1,13 +1,13 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ en ]
-atmOperators: [ Arab Bank, Housing Bank, Cairo Amman Bank, Jordan Kuwait Bank, Jordan Islamic Bank, دائرة الجمارك الأردنية, Salwa Islamic Bank, Islamic International Arab Bank, Bank al Etihad ]
-centerLineStyle: yellow
-chargingStationOperators: [ JoPetrol ]
-firstDayOfWorkweek: Su
-mobileCountryCode: 416
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ ar ]
-orchardProduces: [ olive, tomato, peach, date, grape, chilli_pepper, sweet_pepper, lemon, lime, apricot, orange, apple, banana, grapefruit, almond, plum, pear ]
-popularReligions: [ muslim ]
-roofsAreUsuallyFlat: true
+'additionalStreetsignLanguages': [ 'en' ]
+'atmOperators': [ 'Arab Bank', 'Housing Bank', 'Cairo Amman Bank', 'Jordan Kuwait Bank', 'Jordan Islamic Bank', 'دائرة الجمارك الأردنية', 'Salwa Islamic Bank', 'Islamic International Arab Bank', 'Bank al Etihad' ]
+'centerLineStyle': 'yellow'
+'chargingStationOperators': [ 'JoPetrol' ]
+'firstDayOfWorkweek': 'Su'
+'mobileCountryCode': 416
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'ar' ]
+'orchardProduces': [ 'olive', 'tomato', 'peach', 'date', 'grape', 'chilli_pepper', 'sweet_pepper', 'lemon', 'lime', 'apricot', 'orange', 'apple', 'banana', 'grapefruit', 'almond', 'plum', 'pear' ]
+'popularReligions': [ 'muslim' ]
+'roofsAreUsuallyFlat': true

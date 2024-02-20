@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-defaultSpeedLimitHasUrbanOrRural: true
-isLeftHandTraffic: true
-lengthUnits: [ foot and inch, meter ]
-mobileCountryCode: 344
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ en ]
-orchardProduces: [ guava, mango, mangosteen, lemon, lime, banana, tomato, pineapple, chilli_pepper, sweet_pepper ]
-speedUnits: [ miles per hour, kilometers per hour ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'isLeftHandTraffic': true
+'lengthUnits': [ 'foot and inch', 'meter' ]
+'mobileCountryCode': 344
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'en' ]
+'orchardProduces': [ 'guava', 'mango', 'mangosteen', 'lemon', 'lime', 'banana', 'tomato', 'pineapple', 'chilli_pepper', 'sweet_pepper' ]
+'speedUnits': [ 'miles per hour', 'kilometers per hour' ]

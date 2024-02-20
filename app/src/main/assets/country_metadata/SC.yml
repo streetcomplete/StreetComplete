@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Barclays, Nouvobanq, MCB ]
-hasLivingStreet: true
-isLeftHandTraffic: true
-livingStreetSignStyle: sadc
-mobileCountryCode: 633
-noParkingSignStyle: sadc
-noStoppingSignStyle: sadc
-officialLanguages: [ en, fr, crs ]
-orchardProduces: [ coconut, banana, tomato, tea, guava, mango, mangosteen, orange, lemon, lime, pineapple, avocado ]
+'atmOperators': [ 'Barclays', 'Nouvobanq', 'MCB' ]
+'hasLivingStreet': true
+'isLeftHandTraffic': true
+'livingStreetSignStyle': 'sadc'
+'mobileCountryCode': 633
+'noParkingSignStyle': 'sadc'
+'noStoppingSignStyle': 'sadc'
+'officialLanguages': [ 'en', 'fr', 'crs' ]
+'orchardProduces': [ 'coconut', 'banana', 'tomato', 'tea', 'guava', 'mango', 'mangosteen', 'orange', 'lemon', 'lime', 'pineapple', 'avocado' ]

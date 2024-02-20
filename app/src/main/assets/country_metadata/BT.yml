@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Bank of Bhutan, Bhutan National Bank, BOB, Druk PNB, Tashi Bank, PNB, BoB ATM, Bank Of Bhutan, BNB ATM, BNB, BDBL ATM, BDBL ]
-defaultSpeedLimitHasUrbanOrRural: true
-isLeftHandTraffic: true
-mobileCountryCode: 402
-noParkingSignStyle: vienna variant
-noStoppingSignStyle: vienna
-officialLanguages: [ dz ]
-orchardProduces: [ nutmeg, orange, areca_nut, chilli_pepper, sweet_pepper, apple, guava, mango, mangosteen, peach, pear, tomato, banana, plum, walnut, apricot ]
-popularReligions: [ buddhist, hindu ]
-postboxesHaveCollectionTimes: true
+'atmOperators': [ 'Bank of Bhutan', 'Bhutan National Bank', 'BOB', 'Druk PNB', 'Tashi Bank', 'PNB', 'BoB ATM', 'Bank Of Bhutan', 'BNB ATM', 'BNB', 'BDBL ATM', 'BDBL' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'isLeftHandTraffic': true
+'mobileCountryCode': 402
+'noParkingSignStyle': 'vienna variant'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'dz' ]
+'orchardProduces': [ 'nutmeg', 'orange', 'areca_nut', 'chilli_pepper', 'sweet_pepper', 'apple', 'guava', 'mango', 'mangosteen', 'peach', 'pear', 'tomato', 'banana', 'plum', 'walnut', 'apricot' ]
+'popularReligions': [ 'buddhist', 'hindu' ]
+'postboxesHaveCollectionTimes': true

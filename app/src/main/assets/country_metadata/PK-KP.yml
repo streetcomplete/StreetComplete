@@ -1,2 +1,2 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ hno, hnd, khw ]
+'additionalStreetsignLanguages': [ 'hno', 'hnd', 'khw' ]

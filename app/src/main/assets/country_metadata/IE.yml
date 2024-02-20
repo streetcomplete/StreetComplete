@@ -1,24 +1,24 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-advisoryCycleLaneStyle: white dashes
-atmOperators: [ Bank of Ireland, AIB, Ulster Bank, Euronet, Permanent TSB, Brinks, Point Cash, The ATM Co., Spar, PTSB, Credit Union, Centra ]
-centerLineStyle: white
-chargingStationOperators: [ ESB ecars, EasyGo, ESB Group, EVBox, Applegreen, GOcharge, Tesla, Inc., ePower, ubitricity, Ionity, EO, Aldi Stores (Ireland) Limited, eStation, char.gy, 'Dún Laoghaire-Rathdown County Council', Dell EMC, Circle K, ChargePoint, Zappi, YoreOn, Ubitricity, Streetcharge, Radisson Blu Hotel, Porsche, Plugsurfing GmbH, Nissan, Lidl Ireland GmbH, Kildare Village, Kildare County Council, "Kelly's Resort Hotel", Ferrycarrig Hotel, ESB eCar, EC Charging, Brooklodge Hotel ]
-clothesContainerOperators: [ Cancer Fund for Children, Cork County Council, St. James Camino Network, Textile Recycling Limited, Liberty Recycling, Enable Ireland, "Cork City Hospitals Children's Club" ]
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: short yellow dashes
-exclusiveCycleLaneStyle: white
-hasAdvisoryCycleLane: true
-hasAdvisorySpeedLimitSign: false
-hasLivingStreet: false
-isLeftHandTraffic: true
-mobileCountryCode: 272
-noEntrySignStyle: default
-noParkingLineStyle: double yellow
-noParkingSignStyle: mutcd
-noStoppingSignStyle: mutcd
-officialLanguages: [ en, ga ]
-orchardProduces: [ apple, strawberry, pear, raspberry, cherry, apple, plum, grape, hop, tomato, strawberry, chilli_pepper, sweet_pepper, raspberry, tomato ]
-popularSports: [ gaelic_games, rugby ]
-postboxesHaveCollectionTimes: true
-postboxesHaveRef: true
-postboxesHaveRoyalCypher: true
+'advisoryCycleLaneStyle': 'white dashes'
+'atmOperators': [ 'Bank of Ireland', 'AIB', 'Ulster Bank', 'Euronet', 'Permanent TSB', 'Brinks', 'Point Cash', 'The ATM Co.', 'Spar', 'PTSB', 'Credit Union', 'Centra' ]
+'centerLineStyle': 'white'
+'chargingStationOperators': [ 'ESB ecars', 'EasyGo', 'ESB Group', 'EVBox', 'Applegreen', 'GOcharge', 'Tesla, Inc.', 'ePower', 'ubitricity', 'Ionity', 'EO', 'Aldi Stores (Ireland) Limited', 'eStation', 'char.gy', 'Dún Laoghaire-Rathdown County Council', 'Dell EMC', 'Circle K', 'ChargePoint', 'Zappi', 'YoreOn', 'Ubitricity', 'Streetcharge', 'Radisson Blu Hotel', 'Porsche', 'Plugsurfing GmbH', 'Nissan', 'Lidl Ireland GmbH', 'Kildare Village', 'Kildare County Council', "Kelly's Resort Hotel", 'Ferrycarrig Hotel', 'ESB eCar', 'EC Charging', 'Brooklodge Hotel' ]
+'clothesContainerOperators': [ 'Cancer Fund for Children', 'Cork County Council', 'St. James Camino Network', 'Textile Recycling Limited', 'Liberty Recycling', 'Enable Ireland', "Cork City Hospitals Children's Club" ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'short yellow dashes'
+'exclusiveCycleLaneStyle': 'white'
+'hasAdvisoryCycleLane': true
+'hasAdvisorySpeedLimitSign': false
+'hasLivingStreet': false
+'isLeftHandTraffic': true
+'mobileCountryCode': 272
+'noEntrySignStyle': 'default'
+'noParkingLineStyle': 'double yellow'
+'noParkingSignStyle': 'mutcd'
+'noStoppingSignStyle': 'mutcd'
+'officialLanguages': [ 'en', 'ga' ]
+'orchardProduces': [ 'apple', 'strawberry', 'pear', 'raspberry', 'cherry', 'apple', 'plum', 'grape', 'hop', 'tomato', 'strawberry', 'chilli_pepper', 'sweet_pepper', 'raspberry', 'tomato' ]
+'popularSports': [ 'gaelic_games', 'rugby' ]
+'postboxesHaveCollectionTimes': true
+'postboxesHaveRef': true
+'postboxesHaveRoyalCypher': true

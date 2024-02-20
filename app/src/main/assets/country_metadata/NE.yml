@@ -1,13 +1,13 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Ecobank, Nita, Bank of Africa, BIA ]
-centerLineStyle: white
-chargingStationOperators: [ Bluezone ]
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: white
-mobileCountryCode: 614
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ fr, ha ]
-orchardProduces: [ guava, mango, mangosteen, chilli_pepper, sweet_pepper, tomato, date, pepper ]
-popularReligions: [ muslim ]
-roofsAreUsuallyFlat: true
+'atmOperators': [ 'Ecobank', 'Nita', 'Bank of Africa', 'BIA' ]
+'centerLineStyle': 'white'
+'chargingStationOperators': [ 'Bluezone' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'white'
+'mobileCountryCode': 614
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'fr', 'ha' ]
+'orchardProduces': [ 'guava', 'mango', 'mangosteen', 'chilli_pepper', 'sweet_pepper', 'tomato', 'date', 'pepper' ]
+'popularReligions': [ 'muslim' ]
+'roofsAreUsuallyFlat': true

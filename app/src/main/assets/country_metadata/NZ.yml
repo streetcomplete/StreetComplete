@@ -1,23 +1,23 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-advisorySpeedLimitSignStyle: yellow
-atmOperators: [ ANZ, Westpac, Bank of New Zealand, Kiwibank, ASB Bank, ASB, BNZ, Quick Cash, Quickcash, TSB, Kiwi Bank, TSB Bank, Next, NZCU, NBS ]
-centerLineStyle: white
-chargingStationOperators: [ ChargeNet NZ, Meridian Energy, Vector, Tesla, Inc., Orion, OpenLoop, Z Energy, charge.net.nz, Hikotron, ChargeNet, BP, WEL Networks, Bayfair, BP Pulse, Unison Networks, Todd Property Ormiston Town Centre Limited, Thundergrid, Network Waitaki, Metlink, Chargefox, AT ]
-clothesContainerOperators: [ Child Cancer Foundation ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasAdvisorySpeedLimitSign: true
-hasLivingStreet: true
-hasSlowZone: true
-isLeftHandTraffic: true
-livingStreetSignStyle: australia
-mobileCountryCode: 530
-noEntrySignStyle: no entry on white
-noParkingLineStyle: dashed yellow
-noParkingSignStyle: vienna variant
-noStoppingSignStyle: vienna
-officialLanguages: [ en ]
-orchardProduces: [ grape, kiwi, apple, avocado, cherry, blueberry, peach, orange, tomato, apricot, walnut, plum, hop, lemon, lime, pear ]
-popularReligions: [ christian, hindu, buddhist ]
-popularSports: [ tennis, bowls, golf, netball, basketball, soccer, rugby, cricket ]
-postboxesHaveCollectionTimes: true
-postboxesHaveRoyalCypher: false
+'advisorySpeedLimitSignStyle': 'yellow'
+'atmOperators': [ 'ANZ', 'Westpac', 'Bank of New Zealand', 'Kiwibank', 'ASB Bank', 'ASB', 'BNZ', 'Quick Cash', 'Quickcash', 'TSB', 'Kiwi Bank', 'TSB Bank', 'Next', 'NZCU', 'NBS' ]
+'centerLineStyle': 'white'
+'chargingStationOperators': [ 'ChargeNet NZ', 'Meridian Energy', 'Vector', 'Tesla, Inc.', 'Orion', 'OpenLoop', 'Z Energy', 'charge.net.nz', 'Hikotron', 'ChargeNet', 'BP', 'WEL Networks', 'Bayfair', 'BP Pulse', 'Unison Networks', 'Todd Property Ormiston Town Centre Limited', 'Thundergrid', 'Network Waitaki', 'Metlink', 'Chargefox', 'AT' ]
+'clothesContainerOperators': [ 'Child Cancer Foundation' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasAdvisorySpeedLimitSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'isLeftHandTraffic': true
+'livingStreetSignStyle': 'australia'
+'mobileCountryCode': 530
+'noEntrySignStyle': 'no entry on white'
+'noParkingLineStyle': 'dashed yellow'
+'noParkingSignStyle': 'vienna variant'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'en' ]
+'orchardProduces': [ 'grape', 'kiwi', 'apple', 'avocado', 'cherry', 'blueberry', 'peach', 'orange', 'tomato', 'apricot', 'walnut', 'plum', 'hop', 'lemon', 'lime', 'pear' ]
+'popularReligions': [ 'christian', 'hindu', 'buddhist' ]
+'popularSports': [ 'tennis', 'bowls', 'golf', 'netball', 'basketball', 'soccer', 'rugby', 'cricket' ]
+'postboxesHaveCollectionTimes': true
+'postboxesHaveRoyalCypher': false

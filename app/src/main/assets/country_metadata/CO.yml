@@ -1,12 +1,12 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Bancolombia, Davivienda, Servibanca, BBVA, Banco de Bogotá, A Toda Hora S.A. (Red Aval), ATH, Banco de Bogota, Colpatria, Banco Popular, Banco Caja Social, Servibanca S.A., Banco Agrario, Citibank, AV Villas, servibanca, Grupo Aval, Av Villas, ServiBanca, Scotiabank, Caja Social, Banco Agrario de Colombia, Banco AV Villas, BanColombia, davivienda, bancolombia, banco popular, Grupo AVAL, Cajero Bancolombia, BANCOLOMBIA, polv, cespo, cajero Bancolombia, cajero BBVA, caja social, banco de bogota, banco agrario, ath, VIA baloto, Servivanca, DAVIVIENDA, Cryptocoinex, Casa Kennedy, 'Cajero Bancolombia - Universidad del Norte', Cajero, CAJERO BANCO POPULAR, BancoBogota, Banco Pichincha, Banco Davivienda, Banco Colombia, Banco Bogotá, Bacolombia, Athena Bitcoin, A Toda Hora (ATH) S.A. ]
-centerLineStyle: yellow
-chargingStationOperators: [ Codensa, Terpel, parqueadero ]
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 732
-noEntrySignStyle: no entre
-noParkingSignStyle: mutcd
-noStoppingSignStyle: colombia
-officialLanguages: [ es ]
-orchardProduces: [ coffee, cacao, banana, avocado, guava, mango, mangosteen, lemon, lime, pineapple, coconut, orange, agave, chilli_pepper, sweet_pepper, tomato, rubber, papaya, grape ]
-popularSports: [ soccer, tennis, basketball, baseball, volleyball ]
+'atmOperators': [ 'Bancolombia', 'Davivienda', 'Servibanca', 'BBVA', 'Banco de Bogotá', 'A Toda Hora S.A. (Red Aval)', 'ATH', 'Banco de Bogota', 'Colpatria', 'Banco Popular', 'Banco Caja Social', 'Servibanca S.A.', 'Banco Agrario', 'Citibank', 'AV Villas', 'servibanca', 'Grupo Aval', 'Av Villas', 'ServiBanca', 'Scotiabank', 'Caja Social', 'Banco Agrario de Colombia', 'Banco AV Villas', 'BanColombia', 'davivienda', 'bancolombia', 'banco popular', 'Grupo AVAL', 'Cajero Bancolombia', 'BANCOLOMBIA', 'polv', 'cespo', 'cajero Bancolombia', 'cajero BBVA', 'caja social', 'banco de bogota', 'banco agrario', 'ath', 'VIA baloto', 'Servivanca', 'DAVIVIENDA', 'Cryptocoinex', 'Casa Kennedy', 'Cajero Bancolombia - Universidad del Norte', 'Cajero', 'CAJERO BANCO POPULAR', 'BancoBogota', 'Banco Pichincha', 'Banco Davivienda', 'Banco Colombia', 'Banco Bogotá', 'Bacolombia', 'Athena Bitcoin', 'A Toda Hora (ATH) S.A.' ]
+'centerLineStyle': 'yellow'
+'chargingStationOperators': [ 'Codensa', 'Terpel', 'parqueadero' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 732
+'noEntrySignStyle': 'no entre'
+'noParkingSignStyle': 'mutcd'
+'noStoppingSignStyle': 'colombia'
+'officialLanguages': [ 'es' ]
+'orchardProduces': [ 'coffee', 'cacao', 'banana', 'avocado', 'guava', 'mango', 'mangosteen', 'lemon', 'lime', 'pineapple', 'coconut', 'orange', 'agave', 'chilli_pepper', 'sweet_pepper', 'tomato', 'rubber', 'papaya', 'grape' ]
+'popularSports': [ 'soccer', 'tennis', 'basketball', 'baseball', 'volleyball' ]

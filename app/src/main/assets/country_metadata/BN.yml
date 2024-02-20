@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ BIBD, Baiduri Bank, Standard Chartered, TAIB, Maybank ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: white
-isLeftHandTraffic: true
-mobileCountryCode: 528
-officialLanguages: [ ms, en ]
-orchardProduces: [ rubber, banana, coconut, pineapple, pepper, orange, chilli_pepper, sweet_pepper, lemon, lime, tomato ]
-popularReligions: [ muslim ]
-postboxesHaveCollectionTimes: true
+'atmOperators': [ 'BIBD', 'Baiduri Bank', 'Standard Chartered', 'TAIB', 'Maybank' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'white'
+'isLeftHandTraffic': true
+'mobileCountryCode': 528
+'officialLanguages': [ 'ms', 'en' ]
+'orchardProduces': [ 'rubber', 'banana', 'coconut', 'pineapple', 'pepper', 'orange', 'chilli_pepper', 'sweet_pepper', 'lemon', 'lime', 'tomato' ]
+'popularReligions': [ 'muslim' ]
+'postboxesHaveCollectionTimes': true

@@ -1,15 +1,15 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ en ]
-atmOperators: [ HSBC, BISB, NBB, Ithmaar Bank, BBK Online, BBK, Kuwait Finance House ]
-centerLineStyle: yellow
-defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Su
-hasDailyAlternateSideParkingSign: true
-mobileCountryCode: 426
-noParkingSignStyle: vienna variant
-noStoppingSignStyle: vienna
-officialLanguages: [ ar ]
-orchardProduces: [ date, lemon, lime, banana, tomato, grape, chilli_pepper, sweet_pepper ]
-popularReligions: [ muslim ]
-postboxesHaveRoyalCypher: true
-roofsAreUsuallyFlat: true
+'additionalStreetsignLanguages': [ 'en' ]
+'atmOperators': [ 'HSBC', 'BISB', 'NBB', 'Ithmaar Bank', 'BBK Online', 'BBK', 'Kuwait Finance House' ]
+'centerLineStyle': 'yellow'
+'defaultSpeedLimitHasUrbanOrRural': true
+'firstDayOfWorkweek': 'Su'
+'hasDailyAlternateSideParkingSign': true
+'mobileCountryCode': 426
+'noParkingSignStyle': 'vienna variant'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'ar' ]
+'orchardProduces': [ 'date', 'lemon', 'lime', 'banana', 'tomato', 'grape', 'chilli_pepper', 'sweet_pepper' ]
+'popularReligions': [ 'muslim' ]
+'postboxesHaveRoyalCypher': true
+'roofsAreUsuallyFlat': true

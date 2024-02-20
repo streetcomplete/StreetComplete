@@ -1,22 +1,22 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Crèdit Andorrà ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: white
-exclusiveCycleLaneStyle: white on green
-hasAdvisoryCycleLane: false
-hasBiWeeklyAlternateSideParkingSign: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-hasSlowZone: true
-livingStreetSignStyle: vienna
-mobileCountryCode: 213
-noEntrySignStyle: default
-noParkingLineStyle: dashed yellow
-noParkingSignStyle: vienna
-noStoppingLineStyle: yellow
-noStoppingSignStyle: vienna
-officialLanguages: [ ca ]
-postboxesHaveCollectionTimes: true
-slowZoneLabelPosition: top
-slowZoneLabelText: ZONA
+'atmOperators': [ 'Crèdit Andorrà' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'white'
+'exclusiveCycleLaneStyle': 'white on green'
+'hasAdvisoryCycleLane': false
+'hasBiWeeklyAlternateSideParkingSign': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'hasSlowZone': true
+'livingStreetSignStyle': 'vienna'
+'mobileCountryCode': 213
+'noEntrySignStyle': 'default'
+'noParkingLineStyle': 'dashed yellow'
+'noParkingSignStyle': 'vienna'
+'noStoppingLineStyle': 'yellow'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'ca' ]
+'postboxesHaveCollectionTimes': true
+'slowZoneLabelPosition': 'top'
+'slowZoneLabelText': 'ZONA'

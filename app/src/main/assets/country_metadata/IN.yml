@@ -1,17 +1,17 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ en ]
-defaultSpeedLimitHasUrbanOrRural: true
-exclusiveCycleLaneStyle: white
-hasAdvisoryCycleLane: false
-isLeftHandTraffic: true
-mobileCountryCode: 404
-noEntrySignStyle: arrow
-noParkingLineStyle: yellow
-noParkingSignStyle: vienna variant
-noStoppingSignStyle: vienna
-officialLanguages: [ en, hi, bn, te, mr, ta, ur, gu, kn, ml, or, pa, as, mai, ks ]
-orchardProduces: [ guava, mango, mangosteen, coconut, cashew_nut, banana, tomato, chilli_pepper, sweet_pepper, orange, tea, areca_nut, coffee, rubber, lemon, lime, apple, papaya, grape ]
-popularReligions: [ hindu, muslim, christian, buddhist, jain, sikh, bahai, animist ]
-popularSports: [ tennis, basketball, soccer, cricket, field_hockey ]
-postboxesHaveCollectionTimes: true
-workweekDays: 6
+'additionalStreetsignLanguages': [ 'en' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'exclusiveCycleLaneStyle': 'white'
+'hasAdvisoryCycleLane': false
+'isLeftHandTraffic': true
+'mobileCountryCode': 404
+'noEntrySignStyle': 'arrow'
+'noParkingLineStyle': 'yellow'
+'noParkingSignStyle': 'vienna variant'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'en', 'hi', 'bn', 'te', 'mr', 'ta', 'ur', 'gu', 'kn', 'ml', 'or', 'pa', 'as', 'mai', 'ks' ]
+'orchardProduces': [ 'guava', 'mango', 'mangosteen', 'coconut', 'cashew_nut', 'banana', 'tomato', 'chilli_pepper', 'sweet_pepper', 'orange', 'tea', 'areca_nut', 'coffee', 'rubber', 'lemon', 'lime', 'apple', 'papaya', 'grape' ]
+'popularReligions': [ 'hindu', 'muslim', 'christian', 'buddhist', 'jain', 'sikh', 'bahai', 'animist' ]
+'popularSports': [ 'tennis', 'basketball', 'soccer', 'cricket', 'field_hockey' ]
+'postboxesHaveCollectionTimes': true
+'workweekDays': 6

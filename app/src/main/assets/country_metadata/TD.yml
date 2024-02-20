@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 622
-officialLanguages: [ fr, ar ]
-orchardProduces: [ date, guava, mango, mangosteen ]
-popularReligions: [ muslim ]
-roofsAreUsuallyFlat: true
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 622
+'officialLanguages': [ 'fr', 'ar' ]
+'orchardProduces': [ 'date', 'guava', 'mango', 'mangosteen' ]
+'popularReligions': [ 'muslim' ]
+'roofsAreUsuallyFlat': true

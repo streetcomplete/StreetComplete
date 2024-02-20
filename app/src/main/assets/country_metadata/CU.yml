@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Banco Metropolitano, Banco Popular de Ahorro, Banco de Crédito y Comercio, REDSA, Cajero Automático, BPA, Cajero automático, Cajeros Automáticos, Banco de Credito y Comercio, BPP, Cajeros, Bandec, BANDEC ]
-centerLineStyle: yellow
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 368
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ es ]
-orchardProduces: [ guava, mango, mangosteen, banana, tomato, coffee, papaya, agave, coconut, chilli_pepper, sweet_pepper, pineapple, grapefruit, orange, cacao, grape, sisal, lemon, lime ]
-popularSports: [ baseball, basketball ]
+'atmOperators': [ 'Banco Metropolitano', 'Banco Popular de Ahorro', 'Banco de Crédito y Comercio', 'REDSA', 'Cajero Automático', 'BPA', 'Cajero automático', 'Cajeros Automáticos', 'Banco de Credito y Comercio', 'BPP', 'Cajeros', 'Bandec', 'BANDEC' ]
+'centerLineStyle': 'yellow'
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 368
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'es' ]
+'orchardProduces': [ 'guava', 'mango', 'mangosteen', 'banana', 'tomato', 'coffee', 'papaya', 'agave', 'coconut', 'chilli_pepper', 'sweet_pepper', 'pineapple', 'grapefruit', 'orange', 'cacao', 'grape', 'sisal', 'lemon', 'lime' ]
+'popularSports': [ 'baseball', 'basketball' ]

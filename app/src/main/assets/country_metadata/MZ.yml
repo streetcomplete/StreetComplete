@@ -1,13 +1,13 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ BCI, BIM, Barclays, Millennium BIM, FNB, Standard Bank, StandardBank, Moza, Millennium bim, Millennium Bim ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: yellow
-hasLivingStreet: true
-isLeftHandTraffic: true
-livingStreetSignStyle: sadc
-mobileCountryCode: 643
-noParkingSignStyle: sadc
-noStoppingSignStyle: sadc
-officialLanguages: [ pt ]
-orchardProduces: [ cashew_nut, banana, coconut, tea, tomato, pineapple, guava, mango, mangosteen, papaya, grapefruit, sisal, lemon, lime, coffee, orange ]
+'atmOperators': [ 'BCI', 'BIM', 'Barclays', 'Millennium BIM', 'FNB', 'Standard Bank', 'StandardBank', 'Moza', 'Millennium bim', 'Millennium Bim' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'yellow'
+'hasLivingStreet': true
+'isLeftHandTraffic': true
+'livingStreetSignStyle': 'sadc'
+'mobileCountryCode': 643
+'noParkingSignStyle': 'sadc'
+'noStoppingSignStyle': 'sadc'
+'officialLanguages': [ 'pt' ]
+'orchardProduces': [ 'cashew_nut', 'banana', 'coconut', 'tea', 'tomato', 'pineapple', 'guava', 'mango', 'mangosteen', 'papaya', 'grapefruit', 'sisal', 'lemon', 'lime', 'coffee', 'orange' ]

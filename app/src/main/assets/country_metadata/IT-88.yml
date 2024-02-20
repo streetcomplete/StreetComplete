@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ sc ]
-atmOperators: [ Poste Italiane, Banco di Sardegna, Euronet ]
-chargingStationOperators: [ Enel X, Enel, Repower, DriWe, evWay, Tesla, Inc., EnelX, ChargePoint ]
+'additionalStreetsignLanguages': [ 'sc' ]
+'atmOperators': [ 'Poste Italiane', 'Banco di Sardegna', 'Euronet' ]
+'chargingStationOperators': [ 'Enel X', 'Enel', 'Repower', 'DriWe', 'evWay', 'Tesla, Inc.', 'EnelX', 'ChargePoint' ]

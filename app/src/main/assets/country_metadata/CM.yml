@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Société générale, Ecobank ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: short white dashes
-mobileCountryCode: 624
-noParkingSignStyle: vienna
-noStoppingSignStyle: vienna
-officialLanguages: [ fr, en ]
-orchardProduces: [ cacao, coffee, kola_nut, tomato, banana, rubber, avocado, chilli_pepper, sweet_pepper, pineapple, tea, coconut, pepper, apricot, date, peach ]
-popularSports: [ soccer, tennis, basketball, handball ]
+'atmOperators': [ 'Société générale', 'Ecobank' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'short white dashes'
+'mobileCountryCode': 624
+'noParkingSignStyle': 'vienna'
+'noStoppingSignStyle': 'vienna'
+'officialLanguages': [ 'fr', 'en' ]
+'orchardProduces': [ 'cacao', 'coffee', 'kola_nut', 'tomato', 'banana', 'rubber', 'avocado', 'chilli_pepper', 'sweet_pepper', 'pineapple', 'tea', 'coconut', 'pepper', 'apricot', 'date', 'peach' ]
+'popularSports': [ 'soccer', 'tennis', 'basketball', 'handball' ]

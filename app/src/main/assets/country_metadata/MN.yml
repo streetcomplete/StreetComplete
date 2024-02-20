@@ -1,14 +1,14 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Хаан банк, Хаан, хаан банк, Хаанбанк, Голомт, Төрийн банк, Голомт банк, АТМ, khaan bank, Khan bank, Khan Bank, Khaan bank, Golomt Bank, Худалдаа хөгжлийн банк, Хаан банк АТМ, Хаан Банк, ХХБ, zam, khaanbank, atm, Ger, Aa ]
-centerLineStyle: white
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: white
-hasLivingStreet: true
-livingStreetSignStyle: russia
-mobileCountryCode: 428
-noParkingLineStyle: dashed yellow
-noStoppingLineStyle: yellow
-officialLanguages: [ mn ]
-orchardProduces: [ hazelnut ]
-popularReligions: [ buddhist, chinese_folk, taoist ]
-postboxesHaveCollectionTimes: true
+'atmOperators': [ 'Хаан банк', 'Хаан', 'хаан банк', 'Хаанбанк', 'Голомт', 'Төрийн банк', 'Голомт банк', 'АТМ', 'khaan bank', 'Khan bank', 'Khan Bank', 'Khaan bank', 'Golomt Bank', 'Худалдаа хөгжлийн банк', 'Хаан банк АТМ', 'Хаан Банк', 'ХХБ', 'zam', 'khaanbank', 'atm', 'Ger', 'Aa' ]
+'centerLineStyle': 'white'
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'white'
+'hasLivingStreet': true
+'livingStreetSignStyle': 'russia'
+'mobileCountryCode': 428
+'noParkingLineStyle': 'dashed yellow'
+'noStoppingLineStyle': 'yellow'
+'officialLanguages': [ 'mn' ]
+'orchardProduces': [ 'hazelnut' ]
+'popularReligions': [ 'buddhist', 'chinese_folk', 'taoist' ]
+'postboxesHaveCollectionTimes': true

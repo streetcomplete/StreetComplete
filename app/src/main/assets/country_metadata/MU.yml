@@ -1,18 +1,18 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ SBM, MCB, HSBC, Absa, Mauritius Commercial Bank, Barclays, SBI, MCB ATM, Bank One ]
-centerLineStyle: white
-chargingStationOperators: [ Total, 'E-Motion' ]
-defaultSpeedLimitHasUrbanOrRural: false
-edgeLineStyle: short white dashes
-hasLivingStreet: true
-hasSlowZone: true
-isLeftHandTraffic: true
-livingStreetSignStyle: sadc
-mobileCountryCode: 617
-noParkingSignStyle: sadc
-noStoppingSignStyle: sadc
-officialLanguages: [ en, fr, mfe ]
-orchardProduces: [ tea, tomato, banana, pineapple, chilli_pepper, sweet_pepper, coconut ]
-popularReligions: [ hindu, christian, muslim ]
-slowZoneLabelPosition: bottom
-slowZoneLabelText: ZONE
+'atmOperators': [ 'SBM', 'MCB', 'HSBC', 'Absa', 'Mauritius Commercial Bank', 'Barclays', 'SBI', 'MCB ATM', 'Bank One' ]
+'centerLineStyle': 'white'
+'chargingStationOperators': [ 'Total', 'E-Motion' ]
+'defaultSpeedLimitHasUrbanOrRural': false
+'edgeLineStyle': 'short white dashes'
+'hasLivingStreet': true
+'hasSlowZone': true
+'isLeftHandTraffic': true
+'livingStreetSignStyle': 'sadc'
+'mobileCountryCode': 617
+'noParkingSignStyle': 'sadc'
+'noStoppingSignStyle': 'sadc'
+'officialLanguages': [ 'en', 'fr', 'mfe' ]
+'orchardProduces': [ 'tea', 'tomato', 'banana', 'pineapple', 'chilli_pepper', 'sweet_pepper', 'coconut' ]
+'popularReligions': [ 'hindu', 'christian', 'muslim' ]
+'slowZoneLabelPosition': 'bottom'
+'slowZoneLabelText': 'ZONE'

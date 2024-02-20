@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ La Banque Postale, Crédit Mutuel, BRED, BNP Paribas ]
-chargingStationOperators: [ Green Technologie, GREEN TECHNOLOGIE ]
-officialLanguages: [ fr ]
+'atmOperators': [ 'La Banque Postale', 'Crédit Mutuel', 'BRED', 'BNP Paribas' ]
+'chargingStationOperators': [ 'Green Technologie', 'GREEN TECHNOLOGIE' ]
+'officialLanguages': [ 'fr' ]

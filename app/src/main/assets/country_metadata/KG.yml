@@ -1,11 +1,11 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ РСК Банк, KICB, Demir Bank, Optima Bank, DemirBank, Demir bank, РСК, DEMiR Bank, Халык Банк, РСК банк, КБ Кыргызстан, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Коммерческий банк Кыргызстан, Демир банк, Демир Банк ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-livingStreetSignStyle: russia
-mobileCountryCode: 437
-officialLanguages: [ ky, ru ]
-orchardProduces: [ apple, tomato, apricot, hazelnut, grape, pear, peach, plum, walnut, cherry, raspberry, pistachio, almond, chilli_pepper, sweet_pepper, strawberry ]
-popularReligions: [ muslim ]
-postboxesHaveCollectionTimes: true
+'atmOperators': [ 'РСК Банк', 'KICB', 'Demir Bank', 'Optima Bank', 'DemirBank', 'Demir bank', 'РСК', 'DEMiR Bank', 'Халык Банк', 'РСК банк', 'КБ Кыргызстан', 'Айыл Банк', 'АКБ КЫРГЫЗСТАН', 'Халык Банк Кыргызстан', 'Коммерческий банк Кыргызстан', 'Демир банк', 'Демир Банк' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'livingStreetSignStyle': 'russia'
+'mobileCountryCode': 437
+'officialLanguages': [ 'ky', 'ru' ]
+'orchardProduces': [ 'apple', 'tomato', 'apricot', 'hazelnut', 'grape', 'pear', 'peach', 'plum', 'walnut', 'cherry', 'raspberry', 'pistachio', 'almond', 'chilli_pepper', 'sweet_pepper', 'strawberry' ]
+'popularReligions': [ 'muslim' ]
+'postboxesHaveCollectionTimes': true

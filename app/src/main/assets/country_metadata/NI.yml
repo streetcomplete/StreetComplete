@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ BAC, Banpro, LAFISE, BDF, banpro, Bancentro, BANPRO, VISA ATM, 'La Fise - Bancentro', Banco de América Central, Bampro, BAC Credomatic, ATM BAC ]
-centerLineStyle: yellow
-defaultSpeedLimitHasUrbanOrRural: true
-mobileCountryCode: 710
-noParkingSignStyle: mutcd latin
-noStoppingSignStyle: mutcd
-officialLanguages: [ es ]
-orchardProduces: [ coffee, orange, cacao, agave, pineapple, banana, tomato, coconut, chilli_pepper, sweet_pepper ]
-popularSports: [ basketball, baseball, soccer ]
+'atmOperators': [ 'BAC', 'Banpro', 'LAFISE', 'BDF', 'banpro', 'Bancentro', 'BANPRO', 'VISA ATM', 'La Fise - Bancentro', 'Banco de América Central', 'Bampro', 'BAC Credomatic', 'ATM BAC' ]
+'centerLineStyle': 'yellow'
+'defaultSpeedLimitHasUrbanOrRural': true
+'mobileCountryCode': 710
+'noParkingSignStyle': 'mutcd latin'
+'noStoppingSignStyle': 'mutcd'
+'officialLanguages': [ 'es' ]
+'orchardProduces': [ 'coffee', 'orange', 'cacao', 'agave', 'pineapple', 'banana', 'tomato', 'coconut', 'chilli_pepper', 'sweet_pepper' ]
+'popularSports': [ 'basketball', 'baseball', 'soccer' ]

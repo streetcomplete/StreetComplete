@@ -1,14 +1,14 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [ en ]
-atmOperators: [ Emirates NBD, ADIB, ADCB, Al Masraf Bank ATM, Dubai Islamic Bank, HSBC, Al Hilal, FAB, Union National Bank, mashreq, NBAD, UNION NATIONAL BANK, RAKBANK, Mashreq, Sharjah Islamic Bank, RAK Bank, RAK BANK, Commercial Bank of Dubai, al hilal bank, Rak Bank, Mashreq Bank, National Bank of Abu Dhabi, EMIRATES ISLAMIC, CBI, union national bank, nbf, Standard Chartered, FGB, Emirates islamic atm, Emirates Islamic Bank, Emirates Islamic, Dubai Islamic bank, City Bank, Bank of Sharjah, Abu Dhabi Distribution Co. ]
-centerLineStyle: yellow
-chargingStationOperators: [ DEWA, Wifi UAE, Tesla, Inc. ]
-defaultSpeedLimitHasUrbanOrRural: true
-edgeLineStyle: yellow
-firstDayOfWorkweek: Su
-mobileCountryCode: 424
-officialLanguages: [ ar ]
-orchardProduces: [ date, tomato, guava, mango, mangosteen, lemon, lime, fig, chilli_pepper, sweet_pepper, almond, grape, banana ]
-popularReligions: [ muslim ]
-popularSports: [ tennis, golf ]
-roofsAreUsuallyFlat: true
+'additionalStreetsignLanguages': [ 'en' ]
+'atmOperators': [ 'Emirates NBD', 'ADIB', 'ADCB', 'Al Masraf Bank ATM', 'Dubai Islamic Bank', 'HSBC', 'Al Hilal', 'FAB', 'Union National Bank', 'mashreq', 'NBAD', 'UNION NATIONAL BANK', 'RAKBANK', 'Mashreq', 'Sharjah Islamic Bank', 'RAK Bank', 'RAK BANK', 'Commercial Bank of Dubai', 'al hilal bank', 'Rak Bank', 'Mashreq Bank', 'National Bank of Abu Dhabi', 'EMIRATES ISLAMIC', 'CBI', 'union national bank', 'nbf', 'Standard Chartered', 'FGB', 'Emirates islamic atm', 'Emirates Islamic Bank', 'Emirates Islamic', 'Dubai Islamic bank', 'City Bank', 'Bank of Sharjah', 'Abu Dhabi Distribution Co.' ]
+'centerLineStyle': 'yellow'
+'chargingStationOperators': [ 'DEWA', 'Wifi UAE', 'Tesla, Inc.' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'edgeLineStyle': 'yellow'
+'firstDayOfWorkweek': 'Su'
+'mobileCountryCode': 424
+'officialLanguages': [ 'ar' ]
+'orchardProduces': [ 'date', 'tomato', 'guava', 'mango', 'mangosteen', 'lemon', 'lime', 'fig', 'chilli_pepper', 'sweet_pepper', 'almond', 'grape', 'banana' ]
+'popularReligions': [ 'muslim' ]
+'popularSports': [ 'tennis', 'golf' ]
+'roofsAreUsuallyFlat': true

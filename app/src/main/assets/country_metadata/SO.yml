@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Sa
-mobileCountryCode: 637
-officialLanguages: [ so, ar ]
-orchardProduces: [ tomato, coconut, date, orange, banana, lemon, lime, grapefruit, guava, mango, mangosteen ]
-popularReligions: [ muslim ]
-workweekDays: 6
+'defaultSpeedLimitHasUrbanOrRural': true
+'firstDayOfWorkweek': 'Sa'
+'mobileCountryCode': 637
+'officialLanguages': [ 'so', 'ar' ]
+'orchardProduces': [ 'tomato', 'coconut', 'date', 'orange', 'banana', 'lemon', 'lime', 'grapefruit', 'guava', 'mango', 'mangosteen' ]
+'popularReligions': [ 'muslim' ]
+'workweekDays': 6

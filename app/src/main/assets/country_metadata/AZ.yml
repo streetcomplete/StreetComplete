@@ -1,10 +1,10 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ Azərbaycan Beynəlxalq Bankı, Kapital Bank, Rabitəbank, YuniBank, Texnikabank, Bank Standart, Bank Respublika, Xalq Bank, Bankomat, Ata Bank, Unibank, MuğanBank, Kapital Bank ATM, Bank of Baku, RabitəBank, Nikoyl Bank, International Bank of Azerbaijan, Beynəlxalq Bank, Azəriqazbank, AFB Bank, RBC, MilliÖn, Kredo Bank, Azərbaycan Sənaye Bankı, Access Bank, Yunayted Kredit Bank, Turan Bank, Parabank, KapitalBank, Bank of Azerbaijan, Bank Avrasiya, Atrabank, Əmrahbank, Zaminbank, Kapital bank, Express Bank, Beynəlxalq Bank ATM, Beynalxalq Bank ATM, ABB, '"Azərbaycan Beynəlxalq Bankı" ASC', Капитал банк, «Kapital Bank» ASC, Yapı Kredi Bank Azərbaycan, SilkWay Bank, SILK WAY, Rabitəbank ATM, Paşa Bank, Pasha Bank, Nikoil Bank, NBC Bank, Melli İran Bank, Kapitalbank ATM, Beynelxalq Bank ATM, Bank Standard, AzərTürkBank, Azerbaijan International Bank, AtaBank, Artsakhbank, ASB ]
-defaultSpeedLimitHasUrbanOrRural: true
-hasDailyAlternateSideParkingSign: true
-hasLivingStreet: true
-livingStreetSignStyle: russia
-mobileCountryCode: 400
-officialLanguages: [ az ]
-orchardProduces: [ hazelnut, apple, tomato, grape, persimmon, pear, peach, plum, chilli_pepper, sweet_pepper, walnut, olive, apricot, raspberry, cherry, fig ]
-popularReligions: [ muslim ]
+'atmOperators': [ 'Azərbaycan Beynəlxalq Bankı', 'Kapital Bank', 'Rabitəbank', 'YuniBank', 'Texnikabank', 'Bank Standart', 'Bank Respublika', 'Xalq Bank', 'Bankomat', 'Ata Bank', 'Unibank', 'MuğanBank', 'Kapital Bank ATM', 'Bank of Baku', 'RabitəBank', 'Nikoyl Bank', 'International Bank of Azerbaijan', 'Beynəlxalq Bank', 'Azəriqazbank', 'AFB Bank', 'RBC', 'MilliÖn', 'Kredo Bank', 'Azərbaycan Sənaye Bankı', 'Access Bank', 'Yunayted Kredit Bank', 'Turan Bank', 'Parabank', 'KapitalBank', 'Bank of Azerbaijan', 'Bank Avrasiya', 'Atrabank', 'Əmrahbank', 'Zaminbank', 'Kapital bank', 'Express Bank', 'Beynəlxalq Bank ATM', 'Beynalxalq Bank ATM', 'ABB', '"Azərbaycan Beynəlxalq Bankı" ASC', 'Капитал банк', '«Kapital Bank» ASC', 'Yapı Kredi Bank Azərbaycan', 'SilkWay Bank', 'SILK WAY', 'Rabitəbank ATM', 'Paşa Bank', 'Pasha Bank', 'Nikoil Bank', 'NBC Bank', 'Melli İran Bank', 'Kapitalbank ATM', 'Beynelxalq Bank ATM', 'Bank Standard', 'AzərTürkBank', 'Azerbaijan International Bank', 'AtaBank', 'Artsakhbank', 'ASB' ]
+'defaultSpeedLimitHasUrbanOrRural': true
+'hasDailyAlternateSideParkingSign': true
+'hasLivingStreet': true
+'livingStreetSignStyle': 'russia'
+'mobileCountryCode': 400
+'officialLanguages': [ 'az' ]
+'orchardProduces': [ 'hazelnut', 'apple', 'tomato', 'grape', 'persimmon', 'pear', 'peach', 'plum', 'chilli_pepper', 'sweet_pepper', 'walnut', 'olive', 'apricot', 'raspberry', 'cherry', 'fig' ]
+'popularReligions': [ 'muslim' ]

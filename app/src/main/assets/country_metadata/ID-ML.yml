@@ -1,3 +1,3 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ BNI, Mandiri ]
-officialLanguages: [ id, abs, max ]
+'atmOperators': [ 'BNI', 'Mandiri' ]
+'officialLanguages': [ 'id', 'abs', 'max' ]
