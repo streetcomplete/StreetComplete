@@ -31,8 +31,6 @@ class DownloadWorker(
     workerParams: WorkerParameters
 ) : CoroutineWorker(context, workerParams) {
 
-    private var isPriorityDownload: Boolean = false
-
     override suspend fun getForegroundInfo(): ForegroundInfo {
         val notificationId = ApplicationConstants.NOTIFICATIONS_ID_SYNC
         val cancelIntent = WorkManager.getInstance(context).createCancelPendingIntent(id)
@@ -47,19 +45,16 @@ class DownloadWorker(
     override suspend fun doWork(): Result {
         val tiles: TilesRect =
             inputData.getString(ARG_TILES_RECT)?.let { Json.decodeFromString(it) }
-            ?: return Result.failure()
-
+                ?: return Result.failure()
         try {
-            isPriorityDownload = inputData.getBoolean(ARG_IS_PRIORITY, false)
+            val isPriorityDownload = inputData.getBoolean(ARG_IS_PRIORITY, false)
+            setProgress(workDataOf(ARG_IS_PRIORITY to isPriorityDownload))
             downloader.download(tiles, isPriorityDownload)
         } catch (e: CancellationException) {
             Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {
             Log.e(TAG, "Unable to download", e)
             return Result.failure()
-        } finally {
-            // downloading flags must be set to false before invoking the callbacks
-            isPriorityDownload = false
         }
 
         return Result.success()
@@ -67,6 +62,7 @@ class DownloadWorker(
 
     companion object {
         const val TAG = "Download"
+
         const val ARG_TILES_RECT = "tilesRect"
         const val ARG_IS_PRIORITY = "isPriority"
 

@@ -10,19 +10,25 @@ import de.westnordost.streetcomplete.util.Listeners
 /** Controls uploading */
 class UploadController(private val context: Context) : UploadProgressSource {
 
-    // TODO listener
+    private var isInProgress: Boolean = false
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
     private val workInfos: LiveData<List<WorkInfo>> get() =
         WorkManager.getInstance(context).getWorkInfosForUniqueWorkLiveData(UploadWorker.TAG)
 
     /** @return true if an upload is running */
-    override val isUploadInProgress: Boolean get() =
-        workInfos.value?.any { !it.state.isFinished } == true
+    override val isUploadInProgress: Boolean get() = isInProgress
 
     init {
         workInfos.observeForever { workInfos ->
-            TODO()
+            val nowInProgress = workInfos.any { !it.state.isFinished }
+            if (!isInProgress && nowInProgress) {
+                isInProgress = true
+                listeners.forEach { it.onStarted() }
+            } else if (isInProgress && !nowInProgress) {
+                isInProgress = false
+                listeners.forEach { it.onFinished() }
+            }
         }
     }
 
