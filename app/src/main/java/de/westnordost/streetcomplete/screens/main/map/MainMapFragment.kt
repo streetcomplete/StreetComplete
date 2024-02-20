@@ -186,7 +186,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  zoom-in for node quests is far too much (though it should not go to more than 20, what is wrong?)
         //  overlays missing some zoom filter (iirc 16 is default SC limit)
         //   there is no Expression.and, how to do it?
-        //  camera does not unlock when panning (keeps following position)
+        //   required for setting both zoom and attribute filter
+        //   maybe just use multiple sources?
         //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons don't work
         //  later
         //   make the location pointer work (currently rotates like crazy in top left corner -> there is also a degree / radians issue)

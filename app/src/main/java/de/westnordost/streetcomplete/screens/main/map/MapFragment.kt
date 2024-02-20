@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.mapbox.android.gestures.MoveGestureDetector
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
@@ -191,6 +191,15 @@ open class MapFragment : Fragment() {
         if (style == null) return
         lifecycle.addObserver(ctrl)
         registerResponders(ctrl)
+        mapboxMap.addOnMoveListener(object : MapboxMap.OnMoveListener {
+            override fun onMoveBegin(p0: MoveGestureDetector) {
+                // tapping also calls onMoveBegin, but with integer x and y, and with historySize 0
+                if (p0.currentEvent.historySize == 0) // crappy workaround for deciding whether it's a tap or a move
+                    listener?.onPanBegin()
+            }
+            override fun onMove(p0: MoveGestureDetector) {}
+            override fun onMoveEnd(p0: MoveGestureDetector) {}
+        })
 
         sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider)
         sceneMapComponent?.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
