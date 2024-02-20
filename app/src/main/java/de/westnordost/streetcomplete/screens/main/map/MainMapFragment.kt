@@ -184,10 +184,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // todo now after removing tangram
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
         //  zoom-in for node quests is far too much (though it should not go to more than 20, what is wrong?)
-        //  are overlays missing some zoom filter, iirc 16 is default SC limit
-        //  overlays don't show nodes
-        //   worked before removing tangram, what is wrong?
-        //  text for highlighted (nearby) elements not shown
+        //  overlays missing some zoom filter (iirc 16 is default SC limit)
+        //   there is no Expression.and, how to do it?
         //  camera does not unlock when panning (keeps following position)
         //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons don't work
         //  later
@@ -449,6 +447,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.iconHaloColor("white"),
                 PropertyFactory.iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
 //                PropertyFactory.iconHaloBlur(2f),
+                // does this really work?
+                PropertyFactory.iconAllowOverlap(Expression.lte(Expression.zoom(), 18f)),
+                PropertyFactory.textAllowOverlap(Expression.lte(Expression.zoom(), 18f)),
             )
         style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
 
@@ -469,17 +470,27 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         style.addLayerBelow(geometryFillLayer, "pins-layer")
 
         val geometryCircleLayer = CircleLayer("geo-circle", "geometry-source")
-            .withProperties(PropertyFactory.circleColor("#D140D0"))
-            .withProperties(PropertyFactory.circleOpacity(0.7f))
-            .withProperties(PropertyFactory.textField("{label}")) // todo: not showing, maybe need anchor, offset, ...
+            .withProperties(
+                PropertyFactory.circleColor("#D140D0"),
+                PropertyFactory.circleOpacity(0.7f),
+                PropertyFactory.textField("{label}"),
+                PropertyFactory.textAnchor(Property.TEXT_ANCHOR_LEFT),
+                PropertyFactory.textOffset(arrayOf(1.5f, 0f)),
+                PropertyFactory.textMaxWidth(5f),
+            )
             .withFilter(Expression.not(Expression.has("icon")))
         style.addLayerBelow(geometryCircleLayer, "pins-layer")
 
         val geometrySymbolLayer = SymbolLayer("geo-symbols", "geometry-source")
             .withFilter(Expression.has("icon"))
-            .withProperties(PropertyFactory.iconColor("#D140D0"))
-            .withProperties(PropertyFactory.iconImage("{icon}"))
-            .withProperties(PropertyFactory.textField("{label}")) // todo: this is never set, title has its own circle geometry thing
+            .withProperties(
+                PropertyFactory.iconColor("#D140D0"),
+                PropertyFactory.iconImage("{icon}"),
+                PropertyFactory.textField("{label}"),
+                PropertyFactory.textAnchor(Property.TEXT_ANCHOR_LEFT),
+                PropertyFactory.textOffset(arrayOf(1.5f, 0f)),
+                PropertyFactory.textMaxWidth(5f),
+            )
         style.addLayerBelow(geometrySymbolLayer, "pins-layer")
 
         // for focused element geometry

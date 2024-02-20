@@ -43,14 +43,21 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             if (drawableResId != null) {
                 val p = JsonObject()
                 p.addProperty("icon", resources.getResourceEntryName(drawableResId))
+                if (title != null) { // with text
+                    val escapedTitle = title
+                        .replace('\n', ' ')
+                        .replace("'", "''")
+                        .replace("\"", "\\\"")
+                    p.addProperty("label", escapedTitle)
+                }
                 features.add(Feature.fromGeometry(pointFromGeometry(geometry), p))
             } else {
                 features.add(Feature.fromGeometry(pointFromGeometry(geometry)))
             }
         }
 
-        // text marker
-        if (title != null) {
+        // text only marker
+        if (title != null && drawableResId == null) {
             val escapedTitle = title
                 .replace('\n', ' ')
                 .replace("'", "''")

@@ -180,6 +180,7 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
         set(value) { mapboxMap.setMaxPitchPreference(value) }
         get() = mapboxMap.maxPitch
 
+    // todo: all that stuff needs to be on UI thread
     fun screenPositionToLatLon(screenPosition: PointF): LatLon? = mapboxMap.projection.fromScreenLocation(screenPosition).toLatLon()
     fun latLonToScreenPosition(latLon: LatLon): PointF = mapboxMap.projection.toScreenLocation(latLon.toLatLng())
     fun latLonToScreenPosition(latLon: LatLon, screenPositionOut: PointF, clipToViewport: Boolean) =

@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -121,13 +122,15 @@ class StyleableOverlayManager(
         if (overlay == null) return
         val zoom = ctrl.cameraPosition.zoom
         if (zoom < TILES_ZOOM) return
-        val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return
-        val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
-        // area too big -> skip (performance)
-        if (tilesRect.size > 16) return
-        if (lastDisplayedRect?.contains(tilesRect) != true) {
-            lastDisplayedRect = tilesRect
-            onNewTilesRect(tilesRect)
+        MainActivity.activity?.runOnUiThread {
+            val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return@runOnUiThread
+            val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
+            // area too big -> skip (performance)
+            if (tilesRect.size > 16) return@runOnUiThread
+            if (lastDisplayedRect?.contains(tilesRect) != true) {
+                lastDisplayedRect = tilesRect
+                onNewTilesRect(tilesRect)
+            }
         }
     }
 
