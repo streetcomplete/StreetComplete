@@ -182,7 +182,6 @@ dependencies {
 
     // map and location
     implementation("org.maplibre.gl:android-sdk:10.0.2")
-    implementation("org.maplibre.gl:android-plugin-annotation-v9:1.0.0")
 
     // opening hours parser
     implementation("ch.poole:OpeningHoursParser:0.28.0")

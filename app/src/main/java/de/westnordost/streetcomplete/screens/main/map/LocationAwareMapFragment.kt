@@ -12,7 +12,6 @@ import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
@@ -143,7 +142,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
         val ctrl = controller ?: return
         val ctx = context ?: return
-        locationMapComponent = CurrentLocationMapComponent(ctx, style, SymbolManager(mapView, mapboxMap, style, "geo-symbols"), ctrl)
+        locationMapComponent = CurrentLocationMapComponent(ctx, style, ctrl)
         locationMapComponent?.location = displayedLocation
 
         tracksMapComponent = TracksMapComponent(ctrl)

@@ -9,23 +9,25 @@ import android.graphics.drawable.Drawable
 import android.location.Location
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
-import com.mapbox.mapboxsdk.geometry.LatLng
+import com.google.gson.JsonObject
+import com.mapbox.geojson.Feature
+import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
 import com.mapbox.mapboxsdk.location.LocationComponentOptions
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.plugins.annotation.Symbol
-import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
-import com.mapbox.mapboxsdk.plugins.annotation.SymbolOptions
 import com.mapbox.mapboxsdk.style.expressions.Expression
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.clear
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toLatLon
-import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.EARTH_CIRCUMFERENCE
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -35,12 +37,8 @@ import kotlin.math.cos
 import kotlin.math.pow
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
-class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val symbolManager: SymbolManager, private val ctrl: KtMapController) {
-    // markers showing the user's location, direction and accuracy of location
-    private val locationSymbol: Symbol
-    private val accuracySymbol: Symbol
-    private val directionSymbol: Symbol
-
+class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctrl: KtMapController) {
+    val locationSource: GeoJsonSource
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
     var isVisible: Boolean = true
@@ -106,36 +104,44 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         )
 
         val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)
-
-        symbolManager.iconAllowOverlap = true
-//        symbolManager.setFilter(Expression.literal(false)) // disable for testing location component
         mapStyle.addImage("dotImg", bitmapFromDrawableRes(ctx, R.drawable.location_dot)!!)
         mapStyle.addImage("directionImg", bitmapFromDrawableRes(ctx, R.drawable.location_direction)!!)
         mapStyle.addImage("accuracyImg", accuracyImg)
+        val locationLayer = SymbolLayer("location", "location-source")
+            .withProperties(
+                PropertyFactory.iconImage("dotImg"),
+                PropertyFactory.iconAllowOverlap(true),
+            )
+        val zoomExpression = Expression.interpolate(Expression.exponential(2), Expression.zoom(),
+                Expression.stop(4, Expression.division(Expression.get("size"), Expression.literal(4096f))),
+                Expression.stop(27, Expression.division(Expression.get("size"), Expression.literal(1/4096f)))
+            )
 
-        directionSymbol = symbolManager.create(
-            SymbolOptions()
-                .withIconImage("directionImg")
-                .withLatLng(LatLng(0.0, 0.0))
-        )
-        locationSymbol = symbolManager.create(
-            SymbolOptions()
-                .withIconImage("dotImg")
-                .withLatLng(LatLng(0.0, 0.0))
-        )
-        accuracySymbol = symbolManager.create(
-            SymbolOptions()
-                .withIconImage("accuracyImg")
-                .withLatLng(LatLng(0.0, 0.0))
-        )
+        val accuracyLayer = SymbolLayer("accuracy", "location-source")
+            .withProperties(
+                PropertyFactory.iconImage("accuracyImg"),
+                PropertyFactory.iconAllowOverlap(true),
+                PropertyFactory.iconSize(zoomExpression)
+            )
+        val directionLayer = SymbolLayer("direction", "location-source")
+            .withProperties(
+                PropertyFactory.iconImage("directionImg"),
+                PropertyFactory.iconAllowOverlap(true),
+                PropertyFactory.iconRotate(Expression.get("rotation"))
+            )
+            .withFilter(Expression.has("rotation"))
+        mapStyle.addLayerBelow(accuracyLayer, "pins-layer")
+        mapStyle.addLayerBelow(directionLayer, "pins-layer")
+        mapStyle.addLayerBelow(locationLayer, "pins-layer")
+        locationSource = GeoJsonSource("location-source")
+        mapStyle.addSource(locationSource)
     }
 
     private fun hide() {
-        symbolManager.setFilter(Expression.literal(false))
+        locationSource.clear()
     }
 
     private fun show() {
-        symbolManager.setFilter(Expression.literal(true)) // easier way?
         updateLocation()
         updateDirection()
     }
@@ -169,30 +175,21 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
     private fun updateLocation() {
         if (!isVisible) return
         val pos = location?.toLatLon() ?: return
+        val location = location ?: return
+        val p = JsonObject()
+        val size = location.accuracy * pixelsPerMeter(location.latitude, ctrl.cameraPosition.zoom.toFloat()) // should not use the zoom, actually
+        p.addProperty("size", location.accuracy / 100)
+        if (rotation != null)
+            p.addProperty("rotation", rotation?.toFloat() ?: 0f)
 
-        locationSymbol.latLng = LatLng(pos.latitude, pos.longitude)
-        directionSymbol.latLng = locationSymbol.latLng
-        accuracySymbol.latLng = locationSymbol.latLng
-        symbolManager.update(directionSymbol)
-        symbolManager.update(locationSymbol)
-        // todo: sometimes crashing with: The LocationComponent has to be activated with one of the LocationComponent#activateLocationComponent overloads before any other methods are invoked.
-        //  i guess that happens when the map isn't fully initialized?
-//        try {
-//            MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location)
-//        } catch (_: Exception) {}
-
-        updateAccuracy()
+        MainActivity.activity?.runOnUiThread {
+            locationSource.setGeoJson(Feature.fromGeometry(Point.fromLngLat(pos.longitude, pos.latitude), p))
+        }
     }
 
     /** Update the circle that shows the GPS accuracy on the map */
     private fun updateAccuracy() {
-        if (!isVisible) return
-        val location = location ?: return
-
-        // todo: size is constant, does not change when zooming
-        //  and what is the unit? not pixels it seems, but also not meters at current zoom
-        val size = location.accuracy * pixelsPerMeter(location.latitude, ctrl.cameraPosition.zoom.toFloat())
-        accuracySymbol.iconSize = size.toFloat() / 100
+        updateLocation()
     }
 
     /** Update the marker that shows the direction in which the smartphone is held */
@@ -200,8 +197,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val sym
         if (!isVisible) return
         // no sense to display direction if there is no location yet
         if (rotation == null || location == null) return
-
-        directionSymbol.iconRotate = rotation!!.toFloat() // todo: does nothing?
+        updateLocation()
     }
 
     private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {

@@ -39,9 +39,6 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
 
     /** Show the given geometry. Previously shown geometry is replaced. */
     fun showGeometry(geometry: ElementGeometry) {
-        MainMapFragment.geometryLineManager?.deleteAll()
-        MainMapFragment.geometryCircleManger?.deleteAll()
-        MainMapFragment.geometryFillManager?.deleteAll()
 
         when (geometry) {
             is ElementPolylinesGeometry -> {

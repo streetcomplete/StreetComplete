@@ -11,10 +11,6 @@ import com.mapbox.geojson.FeatureCollection
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.plugins.annotation.CircleManager
-import com.mapbox.mapboxsdk.plugins.annotation.FillManager
-import com.mapbox.mapboxsdk.plugins.annotation.LineManager
-import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager
 import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.layers.CircleLayer
 import com.mapbox.mapboxsdk.style.layers.FillExtrusionLayer
@@ -555,7 +551,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedOverlaySource.removeListener(overlayListener)
         mapboxMap = null
         mapView = null
-        geometryCircleManger = null
         style = null
     }
 
@@ -748,13 +743,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var mapboxMap: MapboxMap? = null
         var overlaySource: GeoJsonSource? = null
 
-        // keep AnnotationManagers for now, because they allow removing single annotations,
-        // which is used in GeometryMarkersComponent
-        var geometrySymbolManager: SymbolManager? = null
-        var geometryLineManager: LineManager? = null
-        var geometryFillManager: FillManager? = null
-        var geometryCircleManger: CircleManager? = null
-
         var style: Style? = null
         var pinsSource: GeoJsonSource? = null
         var geometrySource: GeoJsonSource? = null
@@ -808,6 +796,7 @@ fun changeDistanceWithZoom(lineWidth: Float): Expression =
 
 // expression for line width dependent on zoom (if we want width in meters)
 // this seems to work reasonably well, but probably should be done in the style json
+// hmm, now with the proper style the base is incorrect
 fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
     // todo: actually the style json uses 1.5 and 1.3 as base (depends for what), so overlay lines change size compared to roads
     //  also tangram seems to use something like 1.5
