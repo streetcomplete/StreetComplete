@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.content.res.Resources
 import android.graphics.RectF
-import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
@@ -30,6 +29,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.coroutineContext
+import kotlin.math.abs
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
@@ -226,7 +226,7 @@ class QuestPinsManager(
            note that quest.position.hashCode() can be negative and hopefullyUniqueValueForQuest
            should be positive to ensure that it will not change quest order
            */
-        val hopefullyUniqueValueForQuest = (freeValuesForEachQuest + quest.position.hashCode()) % freeValuesForEachQuest
+        val hopefullyUniqueValueForQuest = (abs(quest.position.hashCode())) % freeValuesForEachQuest
         return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }
 
