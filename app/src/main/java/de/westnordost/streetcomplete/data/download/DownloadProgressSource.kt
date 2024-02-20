@@ -8,7 +8,9 @@ interface DownloadProgressSource {
         fun onSuccess() {}
     }
 
+    /** @return true if a download triggered by the user is running */
     val isPriorityDownloadInProgress: Boolean
+    /** @return true if a download is running */
     val isDownloadInProgress: Boolean
 
     fun addListener(listener: Listener)

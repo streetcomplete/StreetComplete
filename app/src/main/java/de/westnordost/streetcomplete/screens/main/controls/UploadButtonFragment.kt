@@ -23,6 +23,7 @@ import org.koin.android.ext.android.inject
 class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
     private val uploadController: UploadController by inject()
+    private val uploadProgressSource: UploadProgressSource by inject()
     private val userLoginStatusSource: UserLoginStatusSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
     private val prefs: Preferences by inject()
@@ -59,15 +60,15 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
         uploadButton.isGone = isAutosync
         if (!isAutosync) {
             viewLifecycleScope.launch { updateCount() }
-            updateProgress(uploadController.isUploadInProgress)
+            updateProgress(uploadProgressSource.isUploadInProgress)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
-            uploadController.addListener(uploadProgressListener)
+            uploadProgressSource.addListener(uploadProgressListener)
         }
     }
 
     override fun onStop() {
         super.onStop()
-        uploadController.removeListener(uploadProgressListener)
+        uploadProgressSource.removeListener(uploadProgressListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
     }
 

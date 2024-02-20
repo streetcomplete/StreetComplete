@@ -17,7 +17,7 @@ val downloadModule = module {
 
     single { Downloader(get(), get(), get(), get(), get(named("SerializeSync"))) }
 
-    single<DownloadProgressSource> { get<DownloadController>() }
+    single<DownloadProgressSource> { get<Downloader>() }
     single { DownloadController(get()) }
 
     single<DownloadedTilesSource> { get<DownloadedTilesController>() }

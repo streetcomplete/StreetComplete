@@ -13,6 +13,7 @@ import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
@@ -43,13 +44,12 @@ class DownloadWorker(
     }
 
     override suspend fun doWork(): Result {
-        val tiles: TilesRect =
-            inputData.getString(ARG_TILES_RECT)?.let { Json.decodeFromString(it) }
-                ?: return Result.failure()
+        val bbox: BoundingBox = inputData.getString(ARG_BBOX)?.let { Json.decodeFromString(it) }
+            ?: return Result.failure()
+
         try {
             val isPriorityDownload = inputData.getBoolean(ARG_IS_PRIORITY, false)
-            setProgress(workDataOf(ARG_IS_PRIORITY to isPriorityDownload))
-            downloader.download(tiles, isPriorityDownload)
+            downloader.download(bbox, isPriorityDownload)
         } catch (e: CancellationException) {
             Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {
@@ -63,14 +63,14 @@ class DownloadWorker(
     companion object {
         const val TAG = "Download"
 
-        const val ARG_TILES_RECT = "tilesRect"
-        const val ARG_IS_PRIORITY = "isPriority"
+        private const val ARG_BBOX = "bbox"
+        private const val ARG_IS_PRIORITY = "isPriority"
 
-        fun createWorkRequest(tilesRect: TilesRect, isPriority: Boolean): OneTimeWorkRequest =
+        fun createWorkRequest(bbox: BoundingBox, isPriority: Boolean): OneTimeWorkRequest =
             OneTimeWorkRequestBuilder<DownloadWorker>()
                 .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
                 .setInputData(workDataOf(
-                    ARG_TILES_RECT to Json.encodeToString(tilesRect),
+                    ARG_BBOX to Json.encodeToString(bbox),
                     ARG_IS_PRIORITY to isPriority,
                 ))
                 .build()

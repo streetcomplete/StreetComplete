@@ -37,7 +37,6 @@ import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
-import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
@@ -73,8 +72,8 @@ class MainActivity :
 
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val questAutoSyncer: QuestAutoSyncer by inject()
-    private val downloadController: DownloadController by inject()
-    private val uploadController: UploadController by inject()
+    private val downloadProgressSource: DownloadProgressSource by inject()
+    private val uploadProgressSource: UploadProgressSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val userUpdater: UserUpdater by inject()
     private val elementEditsSource: ElementEditsSource by inject()
@@ -189,8 +188,8 @@ class MainActivity :
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         }
 
-        uploadController.addListener(uploadProgressListener)
-        downloadController.addListener(downloadProgressListener)
+        uploadProgressSource.addListener(uploadProgressListener)
+        downloadProgressSource.addListener(downloadProgressListener)
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
@@ -216,8 +215,8 @@ class MainActivity :
 
     public override fun onStop() {
         super.onStop()
-        uploadController.removeListener(uploadProgressListener)
-        downloadController.removeListener(downloadProgressListener)
+        uploadProgressSource.removeListener(uploadProgressListener)
+        downloadProgressSource.removeListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
     }
 
