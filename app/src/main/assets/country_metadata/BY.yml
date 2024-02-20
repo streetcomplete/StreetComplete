@@ -1,7 +1,7 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Беларусбанк, Белинвестбанк, Банк БелВЭБ, Белагропромбанк, Приорбанк, Альфа-Банк, БПС-Сбербанк, Сбер Банк, Белгазпромбанк, БелВЭБ, МТБанк, БСБ Банк, Банк Дабрабыт, БНБ-Банк, БТА Банк, Технобанк, ОАО «Белагропромбанк», Паритетбанк, ЗАО РРБ-Банк, ЗАО "РРБ-Банк", Банк ВТБ, РРБ-Банк, ВТБ, ОАО «АСБ Беларусбанк», ОАО «Белгазпромбанк», ОАО "АСБ Беларусбанк", Белвнешэкономбанк, ОАО "БПС-СБЕРБАНК", Франсабанк, ОАО «Белинвестбанк», БеларусБанк, Банк Решение, АСБ Беларусбанк, БПС-Банк, беларусбанк, Сбер, Беларусьбанк, БПС-банк, БПС, АСБ "Беларусбанк", Priorbank, Paritetbank, Belinvestbank, ОАО «БПС-Сбербанк», ОАО "Беларусбанк", ОАО "Белагропромбанк", Белaрусбанк, БПС-сбербанк, Belarusbank]
-chargingStationOperators: [Белоруснефть, РУП "Белоруснефть-Минскавтозаправка", ПО «Белоруснефть», Белтелеком, РУП "Белоруснефть-Гомельоблнефтепродукт", РУП "Белоруснефть-Гроднооблнефтепродукт", РУП "Белоруснефть-Могилёвоблнефтепродукт", РУП "Белоруснефть-Минскоблнефтепродукт", РУП "Белоруснефть-Брестоблнефтепродукт", Belorusneft, РУП "Белоруснефть-Витебскоблнефтепродукт", Маланка, Евроопт, Eleven]
-clothesContainerOperators: [ЖКХ г. Пинска]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ Беларусбанк, Белинвестбанк, Банк БелВЭБ, Белагропромбанк, Приорбанк, 'Альфа-Банк', 'БПС-Сбербанк', Сбер Банк, Белгазпромбанк, БелВЭБ, МТБанк, БСБ Банк, Банк Дабрабыт, 'БНБ-Банк', БТА Банк, Технобанк, ОАО «Белагропромбанк», Паритетбанк, 'ЗАО РРБ-Банк', 'ЗАО "РРБ-Банк"', Банк ВТБ, 'РРБ-Банк', ВТБ, ОАО «АСБ Беларусбанк», ОАО «Белгазпромбанк», 'ОАО "АСБ Беларусбанк"', Белвнешэкономбанк, 'ОАО "БПС-СБЕРБАНК"', Франсабанк, ОАО «Белинвестбанк», БеларусБанк, Банк Решение, АСБ Беларусбанк, 'БПС-Банк', беларусбанк, Сбер, Беларусьбанк, 'БПС-банк', БПС, 'АСБ "Беларусбанк"', Priorbank, Paritetbank, Belinvestbank, 'ОАО «БПС-Сбербанк»', 'ОАО "Беларусбанк"', 'ОАО "Белагропромбанк"', Белaрусбанк, 'БПС-сбербанк', Belarusbank ]
+chargingStationOperators: [ Белоруснефть, 'РУП "Белоруснефть-Минскавтозаправка"', ПО «Белоруснефть», Белтелеком, 'РУП "Белоруснефть-Гомельоблнефтепродукт"', 'РУП "Белоруснефть-Гроднооблнефтепродукт"', 'РУП "Белоруснефть-Могилёвоблнефтепродукт"', 'РУП "Белоруснефть-Минскоблнефтепродукт"', 'РУП "Белоруснефть-Брестоблнефтепродукт"', Belorusneft, 'РУП "Белоруснефть-Витебскоблнефтепродукт"', Маланка, Евроопт, Eleven ]
+clothesContainerOperators: [ ЖКХ г. Пинска ]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
@@ -11,7 +11,7 @@ livingStreetSignStyle: russia
 mobileCountryCode: 257
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
-officialLanguages: [be, ru]
-orchardProduces: [apple, strawberry, grape, plum, tomato, pear, walnut, hazelnut, cherry, cranberry]
-popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]
+officialLanguages: [ be, ru ]
+orchardProduces: [ apple, strawberry, grape, plum, tomato, pear, walnut, hazelnut, cherry, cranberry ]
+popularSports: [ soccer, basketball, tennis, field_hockey, volleyball, ice_hockey ]
 postboxesHaveCollectionTimes: true

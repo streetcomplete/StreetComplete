@@ -1,7 +1,7 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [CMB, RBC, Bancomatico, Arubabank, ArubaBank]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ CMB, RBC, Bancomatico, Arubabank, ArubaBank ]
 centerLineStyle: white
-chargingStationOperators: [Elmar]
+chargingStationOperators: [ Elmar ]
 defaultSpeedLimitHasUrbanOrRural: true
-officialLanguages: [nl, pap]
-popularSports: [baseball]
+officialLanguages: [ nl, pap ]
+popularSports: [ baseball ]

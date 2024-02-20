@@ -1,8 +1,8 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [مصرف الجمهورية, طريق الشجرة, المصرف التجاري الوطني, مصرف التجارة والتنمية, AMAN Bank, مصرف الوحدة, AL WAHDA Bank]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ مصرف الجمهورية, طريق الشجرة, المصرف التجاري الوطني, مصرف التجارة والتنمية, AMAN Bank, مصرف الوحدة, AL WAHDA Bank ]
 firstDayOfWorkweek: Su
 mobileCountryCode: 606
-officialLanguages: [ar]
-orchardProduces: [olive, almond, date, tomato, plum, grape, orange, apricot, fig, lemon, lime, chilli_pepper, sweet_pepper, peach, apple, pear]
-popularReligions: [muslim]
+officialLanguages: [ ar ]
+orchardProduces: [ olive, almond, date, tomato, plum, grape, orange, apricot, fig, lemon, lime, chilli_pepper, sweet_pepper, peach, apple, pear ]
+popularReligions: [ muslim ]
 roofsAreUsuallyFlat: true

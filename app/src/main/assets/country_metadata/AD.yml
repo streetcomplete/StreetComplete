@@ -1,5 +1,5 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Crèdit Andorrà]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ Crèdit Andorrà ]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
@@ -16,7 +16,7 @@ noParkingLineStyle: dashed yellow
 noParkingSignStyle: vienna
 noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
-officialLanguages: [ca]
+officialLanguages: [ ca ]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA

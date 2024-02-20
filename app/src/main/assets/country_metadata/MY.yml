@@ -1,15 +1,15 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Maybank, CIMB Bank, CIMB, MEPS, RHB Bank, Bank Simpanan Nasional, Bank Islam, Bank Rakyat, AmBank, Affin Bank, RHB, Agrobank, Public Bank, Bank Muamalat, ATM AmBank@7eleven, HSBC, Hong Leong Bank, UOB, Standard Chartered, 7-Eleven Malaysia Sdn Bhd, Citibank, Cimb, Bank Islam Malaysia Berhad, BSN, Alliance Bank, Agro Bank, ATM]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ Maybank, CIMB Bank, CIMB, MEPS, RHB Bank, Bank Simpanan Nasional, Bank Islam, Bank Rakyat, AmBank, Affin Bank, RHB, Agrobank, Public Bank, Bank Muamalat, ATM AmBank@7eleven, HSBC, Hong Leong Bank, UOB, Standard Chartered, '7-Eleven Malaysia Sdn Bhd', Citibank, Cimb, Bank Islam Malaysia Berhad, BSN, Alliance Bank, Agro Bank, ATM ]
 centerLineStyle: white
-chargingStationOperators: [chargEV, JomCharge, Gentari, EV Connection, ChargEV, 'Tesla, Inc.', DC Handal, ChargeSini]
+chargingStationOperators: [ chargEV, JomCharge, Gentari, EV Connection, ChargEV, Tesla, Inc., DC Handal, ChargeSini ]
 isLeftHandTraffic: true
 mobileCountryCode: 502
 noParkingLineStyle: yellow
 noParkingSignStyle: vienna
 noStoppingLineStyle: double yellow
 noStoppingSignStyle: vienna
-officialLanguages: [ms]
-orchardProduces: [rubber, coconut, banana, pineapple, pepper, cashew_nut, guava, mango, mangosteen, cacao, chilli_pepper, sweet_pepper, papaya, lemon, lime, tomato, tea, coffee, orange]
-popularReligions: [muslim, buddhist, christian, hindu, chinese_folk, taoist]
-popularSports: [soccer, tennis, basketball, volleyball, badminton, sepak_takraw]
+officialLanguages: [ ms ]
+orchardProduces: [ rubber, coconut, banana, pineapple, pepper, cashew_nut, guava, mango, mangosteen, cacao, chilli_pepper, sweet_pepper, papaya, lemon, lime, tomato, tea, coffee, orange ]
+popularReligions: [ muslim, buddhist, christian, hindu, chinese_folk, taoist ]
+popularSports: [ soccer, tennis, basketball, volleyball, badminton, sepak_takraw ]
 postboxesHaveCollectionTimes: true

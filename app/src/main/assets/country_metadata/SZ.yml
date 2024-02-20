@@ -1,10 +1,10 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Standard Bank, FNB, Nedbank, First National Bank]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ Standard Bank, FNB, Nedbank, First National Bank ]
 centerLineStyle: white
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true
 livingStreetSignStyle: sadc
 mobileCountryCode: 653
-officialLanguages: [ss, en]
-orchardProduces: [grapefruit, pineapple, banana, almond, tomato, plum, orange, avocado, guava, mango, mangosteen, date]
+officialLanguages: [ ss, en ]
+orchardProduces: [ grapefruit, pineapple, banana, almond, tomato, plum, orange, avocado, guava, mango, mangosteen, date ]

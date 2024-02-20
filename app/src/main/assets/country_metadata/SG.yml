@@ -1,15 +1,15 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [UOB, POSB, DBS, OCBC, OCBC Bank, Citibank, HSBC, State Bank of India, POSB ATM, DBS/POSB, UOB ATM, Standard Chartered, SAM, Maybank, BOC, AXS]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ UOB, POSB, DBS, OCBC, OCBC Bank, Citibank, HSBC, State Bank of India, POSB ATM, 'DBS/POSB', UOB ATM, Standard Chartered, SAM, Maybank, BOC, AXS ]
 centerLineStyle: white
-chargingStationOperators: [Greenlots, Singapore Power, BlueSG, 'Tesla, Inc.', Shell, Tesla, Shell Recharge Solutions, Charge+]
+chargingStationOperators: [ Greenlots, Singapore Power, BlueSG, Tesla, Inc., Shell, Tesla, Shell Recharge Solutions, Charge+ ]
 defaultSpeedLimitHasUrbanOrRural: false
 isLeftHandTraffic: true
 mobileCountryCode: 525
 noParkingLineStyle: double yellow
-noStandingLineStyle: yellow zig-zags
-noStoppingLineStyle: double yellow zig-zags
-officialLanguages: [en, ms, zh, ta]
-orchardProduces: [coconut, tomato]
-popularReligions: [buddhist, christian, muslim, chinese_folk, taoist, hindu]
+noStandingLineStyle: 'yellow zig-zags'
+noStoppingLineStyle: 'double yellow zig-zags'
+officialLanguages: [ en, ms, zh, ta ]
+orchardProduces: [ coconut, tomato ]
+popularReligions: [ buddhist, christian, muslim, chinese_folk, taoist, hindu ]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true

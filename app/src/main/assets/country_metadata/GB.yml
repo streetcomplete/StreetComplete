@@ -1,4 +1,4 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
 advisorySpeedLimitSignStyle: white
 defaultSpeedLimitHasUrbanOrRural: false
@@ -8,18 +8,18 @@ hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: true
 isLeftHandTraffic: true
-lengthUnits: [meter, foot and inch]
+lengthUnits: [ meter, foot and inch ]
 livingStreetSignStyle: vienna
 mobileCountryCode: 234
 noParkingLineStyle: double yellow
 noStoppingLineStyle: double red
-officialLanguages: [en]
-orchardProduces: [apple, strawberry, pear, raspberry, cherry, plum, grape, hop, tomato, chilli_pepper, sweet_pepper]
-popularReligions: [christian, muslim, jewish, hindu, sikh]
-popularSports: [soccer, tennis, bowls, cricket, golf, basketball, rugby]
+officialLanguages: [ en ]
+orchardProduces: [ apple, strawberry, pear, raspberry, cherry, plum, grape, hop, tomato, chilli_pepper, sweet_pepper ]
+popularReligions: [ christian, muslim, jewish, hindu, sikh ]
+popularSports: [ soccer, tennis, bowls, cricket, golf, basketball, rugby ]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 postboxesHaveRoyalCypher: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONE
-speedUnits: [miles per hour]
+speedUnits: [ miles per hour ]

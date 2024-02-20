@@ -1,4 +1,4 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
 centerLineStyle: yellow
 exclusiveCycleLaneStyle: white
@@ -7,17 +7,17 @@ hasAdvisorySpeedLimitSign: true
 hasCenterLeftTurnLane: true
 hasNoStandingSign: true
 hasSlowZone: false
-lengthUnits: [foot and inch]
+lengthUnits: [ foot and inch ]
 mobileCountryCode: 310
 noEntrySignStyle: do not enter
 noParkingSignStyle: mutcd text
 noStandingSignStyle: mutcd text standing
 noStoppingSignStyle: mutcd text
-officialLanguages: [en]
-orchardProduces: [almond, grape, orange, walnut, pistachio, apple, tomato, blueberry, peach, hop, lemon, lime, plum, hazelnut, avocado, chilli_pepper, sweet_pepper]
-popularReligions: [christian, jewish]
-popularSports: [baseball, tennis, basketball, soccer, golf, american_football]
+officialLanguages: [ en ]
+orchardProduces: [ almond, grape, orange, walnut, pistachio, apple, tomato, blueberry, peach, hop, lemon, lime, plum, hazelnut, avocado, chilli_pepper, sweet_pepper ]
+popularReligions: [ christian, jewish ]
+popularSports: [ baseball, tennis, basketball, soccer, golf, american_football ]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
-speedUnits: [miles per hour]
-weightLimitUnits: [short ton, pound]
+speedUnits: [ miles per hour ]
+weightLimitUnits: [ short ton, pound ]

@@ -1,8 +1,8 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [National Bank of Dominica]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ National Bank of Dominica ]
 isLeftHandTraffic: true
-lengthUnits: [foot and inch, meter]
+lengthUnits: [ foot and inch, meter ]
 mobileCountryCode: 366
-officialLanguages: [en]
-orchardProduces: [cacao, banana, coconut, guava, mango, mangosteen, grapefruit, orange, coffee, lemon, lime, avocado, tomato, pineapple, nutmeg, papaya]
-speedUnits: [miles per hour, kilometers per hour]
+officialLanguages: [ en ]
+orchardProduces: [ cacao, banana, coconut, guava, mango, mangosteen, grapefruit, orange, coffee, lemon, lime, avocado, tomato, pineapple, nutmeg, papaya ]
+speedUnits: [ miles per hour, kilometers per hour ]

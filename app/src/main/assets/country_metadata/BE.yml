@@ -1,4 +1,4 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: ochre background
 exclusiveCycleLaneStyle: white dashes on both sides
 hasAdvisoryCycleLane: true
@@ -10,9 +10,9 @@ hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 206
 noParkingLineStyle: dashed yellow
-officialLanguages: [nl, fr, de]
-orchardProduces: [pear, apple, strawberry, tomato, grape, cherry, hop, raspberry, blueberry, walnut, chilli_pepper, sweet_pepper, plum, hazelnut]
-popularSports: [soccer, tennis, basketball, equestrian, boules]
+officialLanguages: [ nl, fr, de ]
+orchardProduces: [ pear, apple, strawberry, tomato, grape, cherry, hop, raspberry, blueberry, walnut, chilli_pepper, sweet_pepper, plum, hazelnut ]
+popularSports: [ soccer, tennis, basketball, equestrian, boules ]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE

@@ -1,9 +1,9 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [St. Kitts Nevis Anguilla National Bank]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ St. Kitts Nevis Anguilla National Bank ]
 defaultSpeedLimitHasUrbanOrRural: true
 isLeftHandTraffic: true
-lengthUnits: [meter, foot and inch]
+lengthUnits: [ meter, foot and inch ]
 mobileCountryCode: 356
-officialLanguages: [en]
-orchardProduces: [coconut, tomato, chilli_pepper, sweet_pepper]
-speedUnits: [miles per hour, kilometers per hour]
+officialLanguages: [ en ]
+orchardProduces: [ coconut, tomato, chilli_pepper, sweet_pepper ]
+speedUnits: [ miles per hour, kilometers per hour ]

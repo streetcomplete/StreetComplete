@@ -1,7 +1,7 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 mobileCountryCode: 438
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
-officialLanguages: [tk, ru]
-orchardProduces: [grape, tomato, apple, apricot, peach, plum, almond]
-popularReligions: [muslim]
+officialLanguages: [ tk, ru ]
+orchardProduces: [ grape, tomato, apple, apricot, peach, plum, almond ]
+popularReligions: [ muslim ]

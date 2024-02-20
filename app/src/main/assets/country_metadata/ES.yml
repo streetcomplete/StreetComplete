@@ -1,5 +1,5 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-additionalValidHousenumberRegex: s/n
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+additionalValidHousenumberRegex: 's/n'
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
@@ -13,9 +13,9 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 214
 noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
-officialLanguages: [es]
-orchardProduces: [olive, grape, almond, orange, peach, tomato, lemon, lime, chestnut, apple, chilli_pepper, sweet_pepper, pear, apricot, fig, avocado, plum]
-popularSports: [soccer, tennis, basketball, golf, paddle_tennis, pelota]
+officialLanguages: [ es ]
+orchardProduces: [ olive, grape, almond, orange, peach, tomato, lemon, lime, chestnut, apple, chilli_pepper, sweet_pepper, pear, apricot, fig, avocado, plum ]
+popularSports: [ soccer, tennis, basketball, golf, paddle_tennis, pelota ]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA

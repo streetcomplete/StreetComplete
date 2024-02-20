@@ -1,4 +1,4 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [TFCU, Alaska USA Federal Credit Union]
-chargingStationOperators: ['Tesla, Inc.', ChargePoint]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ TFCU, Alaska USA Federal Credit Union ]
+chargingStationOperators: [ Tesla, Inc., ChargePoint ]
 defaultSpeedLimitHasUrbanOrRural: true

@@ -1,7 +1,7 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 defaultSpeedLimitHasUrbanOrRural: false
-lengthUnits: [foot and inch, meter]
+lengthUnits: [ foot and inch, meter ]
 mobileCountryCode: 550
-officialLanguages: [en, chk, pon]
-orchardProduces: [coconut, banana, cacao]
-speedUnits: [miles per hour, kilometers per hour]
+officialLanguages: [ en, chk, pon ]
+orchardProduces: [ coconut, banana, cacao ]
+speedUnits: [ miles per hour, kilometers per hour ]

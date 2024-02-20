@@ -1,17 +1,17 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [en]
-atmOperators: [בנק הפועלים, בנק לאומי, Bitcoin Change, מזרחי טפחות, דיסקונט, כספומט, בנק ירושלים, Leumi, כספונט, הבינלאומי, Bank Hapoalim]
-chargingStationOperators: ['Tesla, Inc.', מילגם, אפקון, Afcon, Kfar Hanokdim]
-clothesContainerOperators: [WIZO]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [ en ]
+atmOperators: [ בנק הפועלים, בנק לאומי, Bitcoin Change, מזרחי טפחות, דיסקונט, כספומט, בנק ירושלים, Leumi, כספונט, הבינלאומי, Bank Hapoalim ]
+chargingStationOperators: [ Tesla, Inc., מילגם, אפקון, Afcon, Kfar Hanokdim ]
+clothesContainerOperators: [ WIZO ]
 defaultSpeedLimitHasUrbanOrRural: true
 firstDayOfWorkweek: Su
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 425
-noStoppingLineStyle: red-white on curb
+noStoppingLineStyle: 'red-white on curb'
 noStoppingSignStyle: israel
-officialLanguages: [heb, ar]
-orchardProduces: [olive, avocado, grape, date, tomato, orange, peach, banana, apple, lemon, lime, chilli_pepper, sweet_pepper, guava, mango, mangosteen, grapefruit, plum, pear]
-popularReligions: [jewish, christian, muslim]
+officialLanguages: [ heb, ar ]
+orchardProduces: [ olive, avocado, grape, date, tomato, orange, peach, banana, apple, lemon, lime, chilli_pepper, sweet_pepper, guava, mango, mangosteen, grapefruit, plum, pear ]
+popularReligions: [ jewish, christian, muslim ]
 postboxesHaveCollectionTimes: true

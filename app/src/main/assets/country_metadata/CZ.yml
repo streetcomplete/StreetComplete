@@ -1,8 +1,8 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [Česká spořitelna, ČSOB, Komerční banka, Euronet, Fio banka, MONETA Money Bank, Raiffeisenbank, Air Bank, UniCredit Bank, 'MONETA Money Bank, a.s.', Pharro, Moneta, KB, GE Money Bank, 'Česká spořitelna, a.s.', Moneta Money Bank, 'Komerční banka, a.s.', AirBank, Česká spořitelna a.s., Komerční Banka, 'Československá obchodní banka, a. s.', GE Money, Air bank, Česká Spořitelna, Citibank, Airbank, Oberbank, Fio, ČS, Poštovní spořitelna, Moneta Bank, Komerční banka a.s., CSOB, Travelex, Komeční banka, Bitcoinmat, 'Česká spořitelna, a. s.', mBank, airbank, air bank, General Bytes Services s.r.o., Bitcoinmat.org]
-chargingStationOperators: [ČEZ, PRE, E.ON, Teplárny Brno, Lidl, EON, MOL, EVMAPA, 'Tesla, Inc.', Ionity, Innogy, beskolo, LEDEOS, 'ČEZ, a. s..', Kaufland, Česká spořitelna, 'ČEZ, a. s.', firemni nabijecka, evmapa.cz, Tesla, Město Dačice, MOL (CCS/CHAdeMO/Mennekes), Billa, Bauhaus, ČEZ (CCS/CHAdeMO and Mennekes type2), VŠB, UCED, TS Opava, Pre, PRE distribuce, Město Rakovník, Kraj Vysočina, InChaNet, FutureGo, EVSELECT s.r.o., EVSELECT, ChargeUp]
-clothesContainerOperators: [Kloktex, KLOK.TEX, Textileco, Diakonie Broumov, KlokTex, Klok-Tex, Služby města Český Krumlov s.r.o., recyklujemetextil.cz, potex, Marius Pedersen a.s., www.kloktex.cz, Potex, Obec Drnovice, Helptex, Diecezni charita Plzen, Diecezni charita, Český červený kříž, helptex.cz, TextilEco, Textil Eco, SAKO, POTEX, Město Veltrusy, Diecezni charita Brno, 'Diakonie Broumov, sociální družstvo']
+atmOperators: [ Česká spořitelna, ČSOB, Komerční banka, Euronet, Fio banka, MONETA Money Bank, Raiffeisenbank, Air Bank, UniCredit Bank, MONETA Money Bank, a.s., Pharro, Moneta, KB, GE Money Bank, Česká spořitelna, a.s., Moneta Money Bank, Komerční banka, a.s., AirBank, Česká spořitelna a.s., Komerční Banka, Československá obchodní banka, a. s., GE Money, Air bank, Česká Spořitelna, Citibank, Airbank, Oberbank, Fio, ČS, Poštovní spořitelna, Moneta Bank, Komerční banka a.s., CSOB, Travelex, Komeční banka, Bitcoinmat, Česká spořitelna, a. s., mBank, airbank, air bank, General Bytes Services s.r.o., Bitcoinmat.org ]
+chargingStationOperators: [ ČEZ, PRE, E.ON, Teplárny Brno, Lidl, EON, MOL, EVMAPA, Tesla, Inc., Ionity, Innogy, beskolo, LEDEOS, ČEZ, a. s.., Kaufland, Česká spořitelna, ČEZ, a. s., firemni nabijecka, evmapa.cz, Tesla, Město Dačice, 'MOL (CCS/CHAdeMO/Mennekes)', Billa, Bauhaus, 'ČEZ (CCS/CHAdeMO and Mennekes type2)', VŠB, UCED, TS Opava, Pre, PRE distribuce, Město Rakovník, Kraj Vysočina, InChaNet, FutureGo, EVSELECT s.r.o., EVSELECT, ChargeUp ]
+clothesContainerOperators: [ Kloktex, KLOK.TEX, Textileco, Diakonie Broumov, KlokTex, 'Klok-Tex', Služby města Český Krumlov s.r.o., recyklujemetextil.cz, potex, Marius Pedersen a.s., www.kloktex.cz, Potex, Obec Drnovice, Helptex, Diecezni charita Plzen, Diecezni charita, Český červený kříž, helptex.cz, TextilEco, Textil Eco, SAKO, POTEX, Město Veltrusy, Diecezni charita Brno, Diakonie Broumov, sociální družstvo ]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
@@ -13,9 +13,9 @@ hasSlowZone: true
 isUsuallyAnyGlassRecyclableInContainers: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 230
-officialLanguages: [cs]
-orchardProduces: [grape, apple, hop, plum, cherry, apricot, pear, strawberry, peach, chilli_pepper, sweet_pepper, tomato, walnut, raspberry]
-popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
+officialLanguages: [ cs ]
+orchardProduces: [ grape, apple, hop, plum, cherry, apricot, pear, strawberry, peach, chilli_pepper, sweet_pepper, tomato, walnut, raspberry ]
+popularSports: [ soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball ]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 slowZoneLabelPosition: top

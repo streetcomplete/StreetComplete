@@ -1,12 +1,12 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Türkiye İş Bankası, Akbank, Garanti Bankası, Ziraat Bankası, Denizbank, Yapı Kredi, Halkbank, Vakıfbank, QNB Finansbank, TEB, ING, İş Bankası, HSBC, PTT, Şekerbank, Akbank ATM, Ziraat Bankası ATM, DenizBank, Kuveyt Türk, Garanti, Deniz Bank, Vakıfbank ATM, İş Bankası ATM, Finansbank, Ziraat, Halkbank ATM, Bankamatik, Ziraat Bankasi, VakıfBank, Garanti BBVA, Garanti Bankası ATM, Türkiye İş Bankası Bankamatik, ING Bank, Halk Bankası, Yapı Kredi Bankası, Yapı Kredi ATM, AKBANK, YapiKredi, Türkiye Finans, T.C. Ziraat Bankası, Garanti BBVA ATM, AkBank, Ziraat Bank, Yapi Kredi, VakifBank, Türkiye Bankasi, QNB Finansbank ATM, QNB, Odeabank, Denizbank ATM]
-chargingStationOperators: [SHARZ, ZES, Astor Enerji, VOLTRUN, 'Tesla, Inc.', Sharz, Eşarj, EŞARJ, zes, Trugo, Renault]
-clothesContainerOperators: [Maltepe Belediyesi, Ortaca Belediyesi, Kızılay]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ Türkiye İş Bankası, Akbank, Garanti Bankası, Ziraat Bankası, Denizbank, Yapı Kredi, Halkbank, Vakıfbank, QNB Finansbank, TEB, ING, İş Bankası, HSBC, PTT, Şekerbank, Akbank ATM, Ziraat Bankası ATM, DenizBank, Kuveyt Türk, Garanti, Deniz Bank, Vakıfbank ATM, İş Bankası ATM, Finansbank, Ziraat, Halkbank ATM, Bankamatik, Ziraat Bankasi, VakıfBank, Garanti BBVA, Garanti Bankası ATM, Türkiye İş Bankası Bankamatik, ING Bank, Halk Bankası, Yapı Kredi Bankası, Yapı Kredi ATM, AKBANK, YapiKredi, Türkiye Finans, T.C. Ziraat Bankası, Garanti BBVA ATM, AkBank, Ziraat Bank, Yapi Kredi, VakifBank, Türkiye Bankasi, QNB Finansbank ATM, QNB, Odeabank, Denizbank ATM ]
+chargingStationOperators: [ SHARZ, ZES, Astor Enerji, VOLTRUN, Tesla, Inc., Sharz, Eşarj, EŞARJ, zes, Trugo, Renault ]
+clothesContainerOperators: [ Maltepe Belediyesi, Ortaca Belediyesi, Kızılay ]
 defaultSpeedLimitHasUrbanOrRural: true
 hasLivingStreet: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 286
-officialLanguages: [tr]
-orchardProduces: [olive, hazelnut, grape, pistachio, tomato, apple, walnut, apricot, tea, fig, orange, almond, peach, lemon, lime, pear]
-popularReligions: [muslim]
+officialLanguages: [ tr ]
+orchardProduces: [ olive, hazelnut, grape, pistachio, tomato, apple, walnut, apricot, tea, fig, orange, almond, peach, lemon, lime, pear ]
+popularReligions: [ muslim ]
 postboxesHaveCollectionTimes: true

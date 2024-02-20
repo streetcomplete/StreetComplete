@@ -1,10 +1,10 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [CIBC FirstCaribbean International Bank, Scotiabank, RBC]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ CIBC FirstCaribbean International Bank, Scotiabank, RBC ]
 defaultSpeedLimitHasUrbanOrRural: false
 isLeftHandTraffic: true
 mobileCountryCode: 342
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
-officialLanguages: [en]
-orchardProduces: [coconut, banana, avocado, tomato, chilli_pepper, sweet_pepper]
-popularSports: [cricket]
+officialLanguages: [ en ]
+orchardProduces: [ coconut, banana, avocado, tomato, chilli_pepper, sweet_pepper ]
+popularSports: [ cricket ]

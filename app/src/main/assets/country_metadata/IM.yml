@@ -1,9 +1,9 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Barclays, RBS, HSBC UK]
-chargingStationOperators: [Pod Point, POD Point]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ Barclays, RBS, HSBC UK ]
+chargingStationOperators: [ Pod Point, POD Point ]
 defaultSpeedLimitHasUrbanOrRural: true
 isLeftHandTraffic: true
-lengthUnits: [meter, foot and inch]
-officialLanguages: [gv, en]
+lengthUnits: [ meter, foot and inch ]
+officialLanguages: [ gv, en ]
 postboxesHaveRef: true
-speedUnits: [miles per hour, kilometers per hour]
+speedUnits: [ miles per hour, kilometers per hour ]

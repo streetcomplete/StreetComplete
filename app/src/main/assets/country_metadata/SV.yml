@@ -1,6 +1,6 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes without pictogram
-atmOperators: [Banco Agrícola, Banco Cuscatlan, Scotiabank, Davivienda, Chivo, Banco de América Central, Banco Hipotecario, Banco Cuscatlán, Banco Agricola, Gobierno de El Salvador, Caja de Crédito]
+atmOperators: [ Banco Agrícola, Banco Cuscatlan, Scotiabank, Davivienda, Chivo, Banco de América Central, Banco Hipotecario, Banco Cuscatlán, Banco Agricola, Gobierno de El Salvador, Caja de Crédito ]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white dots
@@ -10,5 +10,5 @@ hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 706
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd
-officialLanguages: [es]
-orchardProduces: [coffee, apple, olive, agave, guava, mango, mangosteen, coconut, orange, cashew_nut, lemon, lime, avocado, banana, cacao, tomato, tea, chilli_pepper, sweet_pepper]
+officialLanguages: [ es ]
+orchardProduces: [ coffee, apple, olive, agave, guava, mango, mangosteen, coconut, orange, cashew_nut, lemon, lime, avocado, banana, cacao, tomato, tea, chilli_pepper, sweet_pepper ]

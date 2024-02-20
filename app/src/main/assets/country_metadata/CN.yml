@@ -1,12 +1,12 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasSlowZone: true
 mobileCountryCode: 460
-officialLanguages: [zh]
-orchardProduces: [tea, orange, apple, plum, tomato, persimmon, pear, peach, grape, rubber, banana, chestnut, walnut, kiwi, guava, mango, mangosteen]
-popularReligions: [chinese_folk, taoist, buddhist, christian, muslim]
-popularSports: [basketball, soccer, badminton]
+officialLanguages: [ zh ]
+orchardProduces: [ tea, orange, apple, plum, tomato, persimmon, pear, peach, grape, rubber, banana, chestnut, walnut, kiwi, guava, mango, mangosteen ]
+popularReligions: [ chinese_folk, taoist, buddhist, christian, muslim ]
+popularSports: [ basketball, soccer, badminton ]
 postboxesHaveCollectionTimes: true

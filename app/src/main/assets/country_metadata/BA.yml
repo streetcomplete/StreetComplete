@@ -1,4 +1,4 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
@@ -7,8 +7,8 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 218
-officialLanguages: [bs, hr, sr]
-orchardProduces: [plum, apple, pear, grape, tomato, chilli_pepper, sweet_pepper, raspberry, walnut, cherry, peach, chestnut, strawberry, apricot, fig, olive]
+officialLanguages: [ bs, hr, sr ]
+orchardProduces: [ plum, apple, pear, grape, tomato, chilli_pepper, sweet_pepper, raspberry, walnut, cherry, peach, chestnut, strawberry, apricot, fig, olive ]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ЗОНА ZONA

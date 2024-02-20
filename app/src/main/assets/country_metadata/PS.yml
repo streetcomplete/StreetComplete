@@ -1,10 +1,10 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Arab Bank, Bank of Palestine, البنك العربي, بنك فلسطين, Cairo Amman Bank, בנק אוצר החייל, Palestine Islamic Bank, Arab Islamic Bank]
-chargingStationOperators: [אפקון]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ Arab Bank, Bank of Palestine, البنك العربي, بنك فلسطين, Cairo Amman Bank, בנק אוצר החייל, Palestine Islamic Bank, Arab Islamic Bank ]
+chargingStationOperators: [ אפקון ]
 defaultSpeedLimitHasUrbanOrRural: true
 firstDayOfWorkweek: Sa
 mobileCountryCode: 425
-officialLanguages: [ar]
-orchardProduces: [olive, grape, almond, tomato, date, plum, apricot, chilli_pepper, sweet_pepper, lemon, lime, peach, fig, cherry, orange, apple, strawberry]
-popularReligions: [muslim, jewish]
+officialLanguages: [ ar ]
+orchardProduces: [ olive, grape, almond, tomato, date, plum, apricot, chilli_pepper, sweet_pepper, lemon, lime, peach, fig, cherry, orange, apple, strawberry ]
+popularReligions: [ muslim, jewish ]
 workweekDays: 6

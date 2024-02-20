@@ -1,12 +1,12 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [en]
-atmOperators: [National Bank of Kuwait, NBK, Gulf Bank, بنك الكويت الوطني, بيت التمويل الكويتي, بنك بوبيان, بنك الخليج, KFH, Burgan Bank]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [ en ]
+atmOperators: [ National Bank of Kuwait, NBK, Gulf Bank, بنك الكويت الوطني, بيت التمويل الكويتي, بنك بوبيان, بنك الخليج, KFH, Burgan Bank ]
 firstDayOfWorkweek: Su
 mobileCountryCode: 419
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
-officialLanguages: [ar]
-orchardProduces: [date, tomato, chilli_pepper, sweet_pepper, olive, strawberry, grape, lemon, lime, orange]
-popularReligions: [muslim]
+officialLanguages: [ ar ]
+orchardProduces: [ date, tomato, chilli_pepper, sweet_pepper, olive, strawberry, grape, lemon, lime, orange ]
+popularReligions: [ muslim ]
 postboxesHaveRoyalCypher: true
 roofsAreUsuallyFlat: true

@@ -1,7 +1,7 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [OTP Bank, MBH Bank, Euronet, CIB Bank, Erste Bank, K&H Bank, UniCredit Bank, K&H, Erste, Raiffeisen Bank, Takarékbank, Erste Bank Hungary Zrt., MagNet Magyar Közösségi Bank Zrt., Takarékszövetkezet, Euronet Worldwide, FHB Bank, Raiffeisen, Unicredit Bank, K&H Bank Zrt., ERSTE Bank, Duna Takarék, Cashere, Sopron Bank, Raiffeisen Bank Zrt., Erste bank, Duna Takarék Bank, DT Bank]
-chargingStationOperators: [e-Mobi Elektromobilitás Nonprofit Kft., NKM Mobilitás Kft., MOL Nyrt., ELMŰ, Lidl, E.ON, Penny Market, E-On, 'Tesla, Inc.', Mobiliti, Lidl Magyarország Kereskedelmi Bt., Ionity, e.on, TEA, MVM Mobiliti, mobiliti, Teapont, Penny, MVM Partner, MVM Mobiliti Kft, Evopro, ALDI, ÉMÁSZ, holtöltsek.hu, evopro, eTank, e-on, e-Mobi, XVIII. kerület, Szekszárd Város Önkormányzata, Porsche Hungária Kft, Parkl, Nissan, NISSAN, LUKOIL Magyarország Kft., Főváros II. Kerületi Önkormányzat, Charge Point Austria GmbH, ABB]
+atmOperators: [ OTP Bank, MBH Bank, Euronet, CIB Bank, Erste Bank, K&H Bank, UniCredit Bank, K&H, Erste, Raiffeisen Bank, Takarékbank, Erste Bank Hungary Zrt., MagNet Magyar Közösségi Bank Zrt., Takarékszövetkezet, Euronet Worldwide, FHB Bank, Raiffeisen, Unicredit Bank, K&H Bank Zrt., ERSTE Bank, Duna Takarék, Cashere, Sopron Bank, Raiffeisen Bank Zrt., Erste bank, Duna Takarék Bank, DT Bank ]
+chargingStationOperators: [ 'e-Mobi Elektromobilitás Nonprofit Kft.', NKM Mobilitás Kft., MOL Nyrt., ELMŰ, Lidl, E.ON, Penny Market, 'E-On', Tesla, Inc., Mobiliti, Lidl Magyarország Kereskedelmi Bt., Ionity, e.on, TEA, MVM Mobiliti, mobiliti, Teapont, Penny, MVM Partner, MVM Mobiliti Kft, Evopro, ALDI, ÉMÁSZ, holtöltsek.hu, evopro, eTank, 'e-on', 'e-Mobi', XVIII. kerület, Szekszárd Város Önkormányzata, Porsche Hungária Kft, Parkl, Nissan, NISSAN, LUKOIL Magyarország Kft., Főváros II. Kerületi Önkormányzat, Charge Point Austria GmbH, ABB ]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: true
@@ -10,8 +10,8 @@ hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 216
-officialLanguages: [hu]
-orchardProduces: [grape, apple, cherry, plum, walnut, apricot, peach, pear, tomato, chilli_pepper, sweet_pepper, strawberry, hazelnut, raspberry, almond, chestnut]
+officialLanguages: [ hu ]
+orchardProduces: [ grape, apple, cherry, plum, walnut, apricot, peach, pear, tomato, chilli_pepper, sweet_pepper, strawberry, hazelnut, raspberry, almond, chestnut ]
 pictogramCycleLaneStyle: yellow
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom

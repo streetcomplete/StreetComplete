@@ -1,10 +1,10 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [MoneyGet, NLB, Euronet Worldwide, CKB, Euronet, Erste Bank, Prva Banka CG, NLB Banka, Hipotekarna banka, Erste, CKB Banka, Atlas Banka, Addiko Bank, Société Générale, ERSTE Bank]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [ MoneyGet, NLB, Euronet Worldwide, CKB, Euronet, Erste Bank, Prva Banka CG, NLB Banka, Hipotekarna banka, Erste, CKB Banka, Atlas Banka, Addiko Bank, Société Générale, ERSTE Bank ]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna
 mobileCountryCode: 297
-officialLanguages: [sr, bs, sq, hr]
-orchardProduces: [grape, fig, cherry, walnut, plum, apple, chilli_pepper, sweet_pepper, olive, raspberry, orange, tea, tomato, peach, pear, kiwi]
+officialLanguages: [ sr, bs, sq, hr ]
+orchardProduces: [ grape, fig, cherry, walnut, plum, apple, chilli_pepper, sweet_pepper, olive, raspberry, orange, tea, tomato, peach, pear, kiwi ]
 postboxesHaveCollectionTimes: true

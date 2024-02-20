@@ -1,14 +1,14 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [en]
-atmOperators: [KBZ, KBZ Bank, CB Bank, AYA Bank, AGD Bank, a, CB, MAB, AGD, UAB, KBZ BANK, AYA, UAB Bank, KBZ ATM, CB bank, CB Bank ATM, C B Bank, Aya Bank, AYA ATM, KBZ bank, MAB Bank, Ayeyarwaddy Bank, Aya Bank ATM, AYA bank, aa, MAB ATM, CB BANK, CB ATM, Aya, ATM, ယူနိုက်တက်အမရာဘဏ် UAB ATM, ကမ္ဘောဇဘဏ် KBZ Bank, kbz bank, kbz, atm, Myanma Apex Bank, MCB, 1]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [ en ]
+atmOperators: [ KBZ, KBZ Bank, CB Bank, AYA Bank, AGD Bank, a, CB, MAB, AGD, UAB, KBZ BANK, AYA, UAB Bank, KBZ ATM, CB bank, CB Bank ATM, C B Bank, Aya Bank, AYA ATM, KBZ bank, MAB Bank, Ayeyarwaddy Bank, Aya Bank ATM, AYA bank, aa, MAB ATM, CB BANK, CB ATM, Aya, ATM, ယူနိုက်တက်အမရာဘဏ် UAB ATM, ကမ္ဘောဇဘဏ် KBZ Bank, kbz bank, kbz, atm, Myanma Apex Bank, MCB, 1 ]
 defaultSpeedLimitHasUrbanOrRural: true
-lengthUnits: [meter, foot and inch]
+lengthUnits: [ meter, foot and inch ]
 mobileCountryCode: 414
-noParkingLineStyle: yellow-white on curb
-noStoppingLineStyle: red-white on curb
-officialLanguages: [my]
-orchardProduces: [rubber, chilli_pepper, sweet_pepper, tea, areca_nut, coconut, coffee, cashew_nut, guava, mango, mangosteen]
-popularReligions: [buddhist, christian, muslim, hindu]
-popularSports: [soccer, tennis, sepak_takraw]
+noParkingLineStyle: 'yellow-white on curb'
+noStoppingLineStyle: 'red-white on curb'
+officialLanguages: [ my ]
+orchardProduces: [ rubber, chilli_pepper, sweet_pepper, tea, areca_nut, coconut, coffee, cashew_nut, guava, mango, mangosteen ]
+popularReligions: [ buddhist, christian, muslim, hindu ]
+popularSports: [ soccer, tennis, sepak_takraw ]
 postboxesHaveCollectionTimes: true
-speedUnits: [kilometers per hour, miles per hour]
+speedUnits: [ kilometers per hour, miles per hour ]

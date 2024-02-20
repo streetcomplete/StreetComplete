@@ -1,12 +1,12 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-additionalStreetsignLanguages: [en, fr]
-atmOperators: [BCEL, LDB, Joint Development Bank, JDB, Phongsavanh Bank, STB, Lao Development Bank, APB, ANZ, BFL, LaoViet Bank, Indochina Bank, BCEL ATM, ເເເ, ທຄຕລ, bfl, Laoviet Bank, JCB, Banque Franco-Lao, BCEL Public, Acleda]
+# Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [ en, fr ]
+atmOperators: [ BCEL, LDB, Joint Development Bank, JDB, Phongsavanh Bank, STB, Lao Development Bank, APB, ANZ, BFL, LaoViet Bank, Indochina Bank, BCEL ATM, ເເເ, ທຄຕລ, bfl, Laoviet Bank, JCB, 'Banque Franco-Lao', BCEL Public, Acleda ]
 centerLineStyle: white
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 457
-noParkingLineStyle: yellow-white on curb
-noStoppingLineStyle: red-white on curb
-officialLanguages: [lo]
-orchardProduces: [coffee, banana, chilli_pepper, sweet_pepper, nutmeg, tea, pineapple, orange, papaya, grapefruit, lemon, lime, guava, mango, mangosteen]
-popularReligions: [buddhist]
+noParkingLineStyle: 'yellow-white on curb'
+noStoppingLineStyle: 'red-white on curb'
+officialLanguages: [ lo ]
+orchardProduces: [ coffee, banana, chilli_pepper, sweet_pepper, nutmeg, tea, pineapple, orange, papaya, grapefruit, lemon, lime, guava, mango, mangosteen ]
+popularReligions: [ buddhist ]
 postboxesHaveCollectionTimes: true
