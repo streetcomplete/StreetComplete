@@ -76,6 +76,7 @@ open class LocationAwareMapFragment : MapFragment() {
     var isNavigationMode: Boolean
         set(value) {
             if (_isNavigationMode != value && !value) {
+                // todo: why isn't this working
                 updateCameraPosition(300) { tilt = 0.0 }
             }
             _isNavigationMode = value
@@ -218,7 +219,7 @@ open class LocationAwareMapFragment : MapFragment() {
                         centerPosition = centerPosition.translate(distance * 0.4, bearing.toDouble())
                     }
                 }
-                tilt = PI.toFloat() / 6.0
+                tilt = 30.0 // looks like we use degrees
             }
 
             position = centerPosition

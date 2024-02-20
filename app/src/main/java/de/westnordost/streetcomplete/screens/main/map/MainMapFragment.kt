@@ -192,7 +192,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  gps and user tracks not working (why?)
         //  downloadedAreaMapComponent not working (why?)
         //  low priority
-        //   no tilt or rotate in follow-mode
+        //   disabling navigation mode doesn't undo the tilt, even though it's set using the same function
         //   accuracy circle
         //    (SC?) accuracy circle blocks quest pins, but not dots (sth with collision)
         //    maplibre accuracy circle disappears when center is off screen
