@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import android.graphics.Color
 import android.graphics.PointF
 import android.graphics.RectF
 import android.graphics.drawable.LayerDrawable
@@ -188,9 +189,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   maybe just use multiple sources?
         //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons don't work
         //   can't reproduce, not seen in a while -> maybe fixed?
-        //  gps and user tracks not working
-        //  quest pins block overlay icons
-        //  downloadedAreaMapComponent does nothing
+        //  gps and user tracks not working (why?)
+        //  downloadedAreaMapComponent not working (why?)
         //  low priority
         //   no tilt or rotate in follow-mode
         //   accuracy circle
@@ -201,6 +201,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //    use SC or maplibre-internal position and accuracy stuff?
         //   quest pins look awful, maybe layer drawable not suitable? or just need to properly calculate insets instead of guessing
         //   define pins/overlay/geometry/... layers in some json instead of in code?
+        //   quest pins block overlay icons, or icons (and text) are always overlapping (how to make dependent on zoom?)
 
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
@@ -448,9 +449,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.iconHaloColor("white"),
                 PropertyFactory.iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
 //                PropertyFactory.iconHaloBlur(2f),
-                // does this really work?
-                PropertyFactory.iconAllowOverlap(Expression.lte(Expression.zoom(), 18f)),
-                PropertyFactory.textAllowOverlap(Expression.lte(Expression.zoom(), 18f)),
+                PropertyFactory.iconAllowOverlap(true), // both overlaps are required
+                PropertyFactory.textAllowOverlap(true),
+                // why does below not work?
+//                PropertyFactory.iconAllowOverlap(Expression.gte(Expression.zoom(), 16f)),
+//                PropertyFactory.textAllowOverlap(Expression.gte(Expression.zoom(), 16f)),
             )
         style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
 
@@ -517,6 +520,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withFilter(Expression.not(Expression.has("icon")))
         style.addLayerBelow(focusGeometryCircleLayer, "pins-layer")
 
+        // something is not working here
         trackSource = GeoJsonSource("track-source")
         oldTrackSource = GeoJsonSource("old-track-source")
         val trackLayer = LineLayer("track", "track-source")
@@ -531,6 +535,12 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withProperties(PropertyFactory.lineOpacity(0.15f))
             .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
         style.addLayerBelow(oldTrackLayer, "pins-layer")
+
+        // something is not working here
+        downloadedAreaSource = GeoJsonSource("downloaded-area-source")
+        val downloadedAreaLayer = FillLayer("downloaded-area", "downloaded-area-source")
+            .withProperties(PropertyFactory.fillColor(Color.RED))
+        style.addLayerBelow(downloadedAreaLayer, "pins-layer")
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
@@ -759,6 +769,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         var trackSource: GeoJsonSource? = null
         var oldTrackSource: GeoJsonSource? = null
+
+        var downloadedAreaSource: GeoJsonSource? = null
     }
 }
 
