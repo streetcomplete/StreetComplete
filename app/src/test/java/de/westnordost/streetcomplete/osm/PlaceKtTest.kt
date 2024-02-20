@@ -32,8 +32,8 @@ class PlaceKtTest {
         )
     }
 
-    // see KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED
-    @Test fun `replaceShop removes certain tags connected with the type of shop`() {
+    // see KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED
+    @Test fun `replacePlace removes certain tags connected with the type of shop`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("shop", "ice_cream"),
