@@ -175,7 +175,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // todo now after removing tangram
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
-        //  zoom-in for node quests is far too much (though it should not go to more than 20, what is wrong?)
         //  overlays missing some zoom filter (iirc 16 is default SC limit)
         //   there is no Expression.and, how to do it?
         //   required for setting both zoom and attribute filter

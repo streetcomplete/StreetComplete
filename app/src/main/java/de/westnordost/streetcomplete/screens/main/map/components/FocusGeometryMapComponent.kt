@@ -18,7 +18,9 @@ import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.tangram.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.screens.main.map.tangram.toLatLon
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -28,8 +30,6 @@ import kotlin.math.roundToLong
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
 class FocusGeometryMapComponent(private val ctrl: KtMapController, private val mapboxMap: MapboxMap) {
-
-//    private val geometryLayer: MapData = ctrl.addDataLayer(GEOMETRY_LAYER)
 
     private var previousCameraPosition: CameraPosition? = null
 
@@ -82,7 +82,8 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
 
         val zoomTime = max(450L, (abs(currentPos.zoom - targetZoom) * 300).roundToLong())
 
-        // test implementation for showing that mapLibre can set camera to the desired area, including padding
+        // todo: works, but seems needlessly complicated
+        // and still might have some issues
         MainActivity.activity!!.runOnUiThread {
             val bounds = LatLngBounds.fromLatLngs(listOf(g.getBounds().max.toLatLng(), g.getBounds().min.toLatLng()))
             val c = MainMapFragment.mapboxMap!!.getCameraForLatLngBounds(
@@ -94,17 +95,21 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
                     offset.bottom.toInt()
                 ).toIntArray()
             )
-            c?.let { MainMapFragment.mapboxMap!!.easeCamera(CameraUpdateFactory.newCameraPosition(it), zoomTime.toInt()) }
+            c?.let {
+                if (g is ElementPointGeometry) {
+                    // because of target zoom
+                    val update = CameraUpdate().apply {
+                        zoom = targetZoom.toDouble()
+                        position = it.target?.toLatLon()
+                    }
+                    ctrl.updateCameraPosition(zoomTime, update)
+                } else {
+                    // above is nice for nodes, but actually it gets the wrong position (ignores padding)
+                    MainMapFragment.mapboxMap!!.easeCamera(CameraUpdateFactory.newCameraPosition(it), zoomTime.toInt())
+                }
+            }
         }
-
-        // commented because otherwise camera will be moved by cameraManager too
-        // this means that when clicking on an element / quest, only the mapLibre camera may move
-        //  (and only if the geometry is not fully inside tangram camera view...)
-/*        ctrl.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
-            position = pos.position
-            zoom = targetZoom
-        }
-*/    }
+    }
 
     @Synchronized fun clearFocusGeometry() {
         previousCameraPosition = null
@@ -124,10 +129,5 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
             }
         }
         previousCameraPosition = null
-    }
-
-    companion object {
-        // see streetcomplete.yaml for the definitions of the below layers
-        private const val GEOMETRY_LAYER = "streetcomplete_geometry"
     }
 }
