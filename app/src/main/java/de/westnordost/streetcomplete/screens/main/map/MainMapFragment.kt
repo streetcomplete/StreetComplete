@@ -179,23 +179,21 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   there is no Expression.and, how to do it?
         //   required for setting both zoom and attribute filter
         //   maybe just use multiple sources?
-        //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons don't work
-        //   can't reproduce, not seen in a while -> maybe fixed?
         //  gps and user tracks not working (why?)
         //  downloadedAreaMapComponent not working (why?)
-        //  low priority
-        //   disabling navigation mode doesn't undo the tilt, even though it's set using the same function
-        //   quest pins look awful, maybe layer drawable not suitable? or just need to properly calculate insets instead of guessing
-        //   define pins/overlay/geometry/... layers in some json instead of in code?
-        //   quest pins block overlay icons, or icons (and text) are always overlapping (how to make dependent on zoom?)
+        //  disabling navigation mode doesn't undo the tilt, even though it's set using the same function
+        //  quest pins look awful, maybe layer drawable not suitable?
+        //   or maybe just need to properly calculate insets instead of guessing...
+        //  define pins/overlay/geometry/... layers in some json instead of in code?
+        //  quest pins block overlay icons, or icons (and text) are always overlapping (how to make dependent on zoom?)
 
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
         //   -> use SymbolLayer and GeoJsonSource
         //  circle layer is much faster than symbol layer, when moving and especially when zooming
-        //  enabling overlap makes things worse (probably because more symbols are displayed)
+        //  enabling overlap makes things worse, but not that bad (though with many shops it's noticeable)
         //  smaller images help (shrink images already when adding to style, instead of using scale property)
-        //  clustering helps noticeably, but still slower than circles
+        //  clustering helps noticeably, but still slower than circles (how can I enable it?)
         //  not sorting symbols using symbolSortOrder (for priority) helps a lot
         //   using one order per quest type (instead of one per quest) considerably reduces performance impact of symbol sorting
         //   not setting sort order, but setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is same as not sorting
