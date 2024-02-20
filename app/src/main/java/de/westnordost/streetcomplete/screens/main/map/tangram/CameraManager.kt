@@ -132,8 +132,12 @@ data class CameraPosition(
     val tilt: Double,
     val zoom: Double
 ) {
-
-    constructor(p: MaplibreCameraPosition) : this(p.target?.toLatLon() ?: LatLon(0.0, 0.0), p.bearing, p.tilt, p.zoom)
+    constructor(p: MaplibreCameraPosition) : this(
+        p.target?.toLatLon() ?: LatLon(0.0, 0.0),
+        -p.bearing * PI / 180.0,
+        p.tilt,
+        p.zoom
+    )
 }
 
 fun LatLng.toLatLon() = LatLon(latitude, longitude)

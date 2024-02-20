@@ -190,7 +190,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   maybe just use multiple sources?
         //  there is a way to get in a weird zoom-out state where the whole world is visible, and the zoom buttons don't work
         //  later
-        //   make the location pointer work (currently rotates like crazy in top left corner -> there is also a degree / radians issue)
         //   open SC -> wait and press back -> open SC, wait more -> crash without SC code in stacktrace (great)
         //    possibly sth initializing twice
         //   no tilt or rotate in follow-mode

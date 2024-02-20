@@ -184,7 +184,7 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
     fun screenPositionToLatLon(screenPosition: PointF): LatLon? = mapboxMap.projection.fromScreenLocation(screenPosition).toLatLon()
     fun latLonToScreenPosition(latLon: LatLon): PointF = mapboxMap.projection.toScreenLocation(latLon.toLatLng())
     fun latLonToScreenPosition(latLon: LatLon, screenPositionOut: PointF, clipToViewport: Boolean) =
-        mapboxMap.projection.toScreenLocation(latLon.toLatLng()) // todo: what does it do?
+        mapboxMap.projection.toScreenLocation(latLon.toLatLng()) // todo: clip to viewport!
 
     fun screenCenterToLatLon(padding: RectF): LatLon? {
         val w = mapboxMap.width
