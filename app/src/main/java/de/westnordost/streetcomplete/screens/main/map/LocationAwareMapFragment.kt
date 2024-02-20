@@ -39,7 +39,7 @@ open class LocationAwareMapFragment : MapFragment() {
     private val recentLocationStore: RecentLocationStore by inject()
     private val prefs: Preferences by inject()
 
-//    private lateinit var compass: Compass
+    private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
 
     private var locationMapComponent: CurrentLocationMapComponent? = null
@@ -102,12 +102,12 @@ open class LocationAwareMapFragment : MapFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-//        compass = Compass(
-//            context.getSystemService<SensorManager>()!!,
-//            context.getSystemService<WindowManager>()!!.defaultDisplay,
-//            this::onCompassRotationChanged
-//        )
-//        lifecycle.addObserver(compass)
+        compass = Compass(
+            context.getSystemService<SensorManager>()!!,
+            context.getSystemService<WindowManager>()!!.defaultDisplay,
+            this::onCompassRotationChanged
+        )
+        lifecycle.addObserver(compass)
         locationManager = FineLocationManager(context, this::onLocationChanged)
     }
 

@@ -186,12 +186,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  downloadedAreaMapComponent not working (why?)
         //  low priority
         //   disabling navigation mode doesn't undo the tilt, even though it's set using the same function
-        //   accuracy circle
-        //    (SC?) accuracy circle blocks quest pins, but not dots (sth with collision)
-        //    maplibre accuracy circle disappears when center is off screen
-        //     but not used anyway because of horrible performance
-        //    SC accuracy circle does not change on-screen size on zoom (only after location is changed)
-        //    use SC or maplibre-internal position and accuracy stuff?
         //   quest pins look awful, maybe layer drawable not suitable? or just need to properly calculate insets instead of guessing
         //   define pins/overlay/geometry/... layers in some json instead of in code?
         //   quest pins block overlay icons, or icons (and text) are always overlapping (how to make dependent on zoom?)
@@ -206,6 +200,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  not sorting symbols using symbolSortOrder (for priority) helps a lot
         //   using one order per quest type (instead of one per quest) considerably reduces performance impact of symbol sorting
         //   not setting sort order, but setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is same as not sorting
+        //   maplibre accuracy circle disappears when center is off screen, and has horrible performance
 
         // add used images for quests pins and other icons
         val pin = ContextCompat.getDrawable(requireContext(), R.drawable.pin)!! // why nullable? instead of resource not found?

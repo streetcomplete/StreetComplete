@@ -177,8 +177,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
         val pos = location?.toLatLon() ?: return
         val location = location ?: return
         val p = JsonObject()
-        val size = location.accuracy * pixelsPerMeter(location.latitude, ctrl.cameraPosition.zoom.toFloat()) // should not use the zoom, actually
-        p.addProperty("size", location.accuracy / 100)
+        p.addProperty("size", location.accuracy / 100) // 100 looks ok, but is probably not correct
         if (rotation != null)
             p.addProperty("rotation", rotation?.toFloat() ?: 0f)
 
@@ -198,11 +197,5 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
         // no sense to display direction if there is no location yet
         if (rotation == null || location == null) return
         updateLocation()
-    }
-
-    private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {
-        val numberOfTiles = (2.0).pow(zoom.toDouble())
-        val metersPerTile = cos(latitude * PI / 180.0) * EARTH_CIRCUMFERENCE / numberOfTiles
-        return 256 / metersPerTile
     }
 }
