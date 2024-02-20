@@ -160,9 +160,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //    possible, but need to be careful to re-insert it at correct position
 
         // todo
-        //  performance test when updating pins (maybe CustomGeometrySource could be faster than GeoJsonSource)
-        //   but looks like GeoJsonSource is the more usable one anyway, see below
-        //   -> stay at geojson
         //  mapLibre always downloads "something" on startup: what is it, and why?
         //   looks like it's some icons (glyph / sprite urls)
         //    actually they are already present, does it really look whether there are new ones at every start?
@@ -798,8 +795,6 @@ fun changeDistanceWithZoom(lineWidth: Float): Expression =
 // this seems to work reasonably well, but probably should be done in the style json
 // hmm, now with the proper style the base is incorrect
 fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
-    // todo: actually the style json uses 1.5 and 1.3 as base (depends for what), so overlay lines change size compared to roads
-    //  also tangram seems to use something like 1.5
     Expression.interpolate(Expression.exponential(BASE), Expression.zoom(),
         // why didn't I use BASE.pow(7)?
         Expression.stop(10, Expression.division(Expression.get(lineWidthProperty), Expression.literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
@@ -808,5 +803,5 @@ fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
 
 fun GeoJsonSource.clear() = setGeoJson(FeatureCollection.fromFeatures(emptyList()))
 
-private const val BASE = 1.5f
+private const val BASE = 2f // used to be 1.5 with old style json
 private const val FACTOR = 2f // to get width / distance similar to tangram
