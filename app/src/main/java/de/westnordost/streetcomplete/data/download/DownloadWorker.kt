@@ -24,7 +24,7 @@ import kotlinx.serialization.json.Json
  *
  * Generally, starting a new download cancels the old one. This is a feature; Consideration:
  * If you request a new area to be downloaded, you'll generally be more interested in your last
- * request than any request you made earlier and you wants that as fast as possible.
+ * request than any request you made earlier and you want that as fast as possible.
  */
 class DownloadWorker(
     private val downloader: Downloader,
