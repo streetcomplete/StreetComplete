@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map.tangram
 import android.content.ContentResolver
 import android.graphics.PointF
 import android.graphics.RectF
-import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.mapbox.mapboxsdk.maps.MapView
@@ -46,54 +45,12 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
     DefaultLifecycleObserver {
 
     private val cameraManager = CameraManager(mapboxMap, contentResolver)
-//    private val markerManager = MarkerManager(c)
-//    private val gestureManager = TouchGestureManager(c)
-
-    private val defaultInterpolator = AccelerateDecelerateInterpolator()
-
-    private val sceneUpdateContinuations = mutableMapOf<Int, Continuation<Int>>()
-//    private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
-//    private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private var mapChangingListener: MapChangingListener? = null
 
     init {
-/*
-        c.setMapChangeListener(object : MapChangeListener {
-            private var calledOnMapIsChangingOnce = false
-
-            override fun onViewComplete() {  }
-
-            override fun onRegionWillChange(animated: Boolean) {
-                // could be called not on the ui thread, see https://github.com/tangrams/tangram-es/issues/2157
-                viewLifecycleScope.launch {
-                    calledOnMapIsChangingOnce = false
-                    if (!cameraManager.isAnimating) {
-                        mapChangingListener?.onMapWillChange()
-                        if (animated) flingAnimator.start()
-                    }
-                }
-            }
-
-            override fun onRegionIsChanging() {
-                viewLifecycleScope.launch {
-                    if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
-                    calledOnMapIsChangingOnce = true
-                }
-            }
-
-            override fun onRegionDidChange(animated: Boolean) {
-                viewLifecycleScope.launch {
-                    if (!cameraManager.isAnimating) {
-                        if (!calledOnMapIsChangingOnce) mapChangingListener?.onMapIsChanging()
-                        mapChangingListener?.onMapDidChange()
-                        if (animated) flingAnimator.end()
-                    }
-                }
-            }
-        })*/
         mapboxMap.addOnCameraMoveStartedListener { mapChangingListener?.onMapWillChange() }
         mapboxMap.addOnCameraMoveListener { mapChangingListener?.onMapIsChanging() }
         mapboxMap.addOnCameraIdleListener { mapChangingListener?.onMapDidChange() }
@@ -158,6 +115,7 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
     var maximumTilt: Double
         set(value) { mapboxMap.setMaxPitchPreference(value) }
         get() = mapboxMap.maxPitch
+    init { maximumTilt = 60.0 }
 
     // todo: all that stuff needs to be on UI thread
     fun screenPositionToLatLon(screenPosition: PointF): LatLon? = mapboxMap.projection.fromScreenLocation(screenPosition).toLatLon()
@@ -176,6 +134,9 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
         ))
     }
 
+    // todo: use mapboxMap.projection.getVisibleRegion(ignorePadding)?
+    //  just need to convert to bounding box
+    //  but if we want padding, we need to set it first, and unset it later
     fun screenAreaToBoundingBox(padding: RectF): BoundingBox? {
         val w = mapboxMap.width
         val h = mapboxMap.height
@@ -210,7 +171,7 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
     private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Float? {
         val screenBounds: BoundingBox
         val currentZoom: Float
-        synchronized(mapboxMap) { // todo: what to use for synchronized?
+        synchronized(mapboxMap) { // todo: what to synchronize on? is it necessary a all?
             screenBounds = screenAreaToBoundingBox(padding) ?: return null
             currentZoom = cameraPosition.zoom.toFloat()
         }

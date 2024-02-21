@@ -10,7 +10,6 @@ import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlin.math.PI
-import kotlin.math.min
 
 /**
  *  Controls the camera of a Tangram MapController. Use in place of the
@@ -31,16 +30,14 @@ import kotlin.math.min
 class CameraManager(private val mapboxMap: MapboxMap, private val contentResolver: ContentResolver) {
     val camera: ScCameraPosition get() = ScCameraPosition(mapboxMap.cameraPosition)
 
-    var maximumTilt: Double = 60.0 // maplibre is using degrees
-
     @AnyThread fun updateCamera(duration: Int = 0, update: CameraUpdate) {
-        synchronized(mapboxMap) { // todo: where to synchronize? is it necessary a all?
+        synchronized(mapboxMap) { // todo: what to synchronize on? is it necessary a all?
             update.resolveDeltas(camera)
             val cameraPositionBuilder = CameraPosition.Builder(mapboxMap.cameraPosition)
             update.rotation?.let { cameraPositionBuilder.bearing(it) }
             update.position?.let { cameraPositionBuilder.target(it.toLatLng()) }
             update.zoom?.let { cameraPositionBuilder.zoom(it) }
-            update.tilt?.let { cameraPositionBuilder.tilt(min(it, maximumTilt)) }
+            update.tilt?.let { cameraPositionBuilder.tilt(it) }
             val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPositionBuilder.build())
             if (duration == 0 || isAnimationsOff) {
                 mapboxMap.moveCamera(cameraUpdate)

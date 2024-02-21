@@ -28,17 +28,14 @@ import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toLatLon
-import de.westnordost.streetcomplete.util.math.EARTH_CIRCUMFERENCE
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.pow
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
 class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctrl: KtMapController) {
-    val locationSource: GeoJsonSource
+    private val locationSource: GeoJsonSource
+    private var useLocationComponent = false
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
     var isVisible: Boolean = true
@@ -76,25 +73,24 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
         }
 
     init {
-        // todo: use location component instead of symbol manager
-        //  problem: accuracy circle is choppy when zooming (huge performance impact) -> maybe stay with symbols...
-        //  and other icons aren't displayed, but that hopefully can be fixed
-        GlobalScope.launch {
+        GlobalScope.launch { // simply way of delaying until map is initialized, todo: do it properly
             while (MainMapFragment.mapboxMap == null) {
                 delay(100)
             }
             delay(500) // just to be sure
-            val lc = MainMapFragment.mapboxMap!!.locationComponent
             val options = LocationComponentOptions.builder(ctx)
                 .bearingDrawable(R.drawable.location_direction) // todo: not displayed
                 .gpsDrawable(R.drawable.location_dot) // todo: not displayed
                 .build()
             val activationOptions = LocationComponentActivationOptions.builder(ctx, MainMapFragment.style!!)
-                .locationEngine(null) // is this enough to disable? then lc.forceLocationUpdate(loc) pushes location update
+                .locationEngine(null) // disable listening to location updates, use locationComponent.forceLocationUpdate(location)
                 .locationComponentOptions(options)
                 .build()
             // can also set compass engine somewhere
-            MainActivity.activity?.runOnUiThread { lc.activateLocationComponent(activationOptions) }
+            MainActivity.activity?.runOnUiThread {
+                MainMapFragment.mapboxMap?.locationComponent?.activateLocationComponent(activationOptions)
+                useLocationComponent = false // maybe use it? but icons not displayed, and circle looks weird on zoom
+            }
         }
 
         val dotImg = ctx.resources.getBitmapDrawable(if (isApril1st()) R.drawable.location_nyan else R.drawable.location_dot)
@@ -177,13 +173,15 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
         val pos = location?.toLatLon() ?: return
         val location = location ?: return
         val p = JsonObject()
-        p.addProperty("size", location.accuracy / 100) // 100 looks ok, but is probably not correct
+        p.addProperty("size", location.accuracy / 50) // factor 50 seems ok, though probably not 100% correct
         if (rotation != null)
             p.addProperty("rotation", rotation?.toFloat() ?: 0f)
 
         MainActivity.activity?.runOnUiThread {
             locationSource.setGeoJson(Feature.fromGeometry(Point.fromLngLat(pos.longitude, pos.latitude), p))
         }
+        if (useLocationComponent) // do nothing instead of crashing
+            MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location)
     }
 
     /** Update the circle that shows the GPS accuracy on the map */
@@ -196,6 +194,9 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
         if (!isVisible) return
         // no sense to display direction if there is no location yet
         if (rotation == null || location == null) return
-        updateLocation()
+        if (!useLocationComponent)
+            // todo: android.util.AndroidRuntimeException: Animators may only be run on Looper threads
+            //  when using maplibre location component
+            updateLocation()
     }
 }
