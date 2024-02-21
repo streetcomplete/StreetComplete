@@ -7,8 +7,8 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkerParameters
 import de.westnordost.streetcomplete.util.logs.Log
 
-/** Collects and uploads all changes the user has done: notes he left, comments he left on existing
- * notes and quests he answered  */
+/** Collects and uploads all user changes: notes left, comments left on existing
+ * notes and quests answered  */
 class UploadWorker(
     private val uploader: Uploader,
     context: Context,
