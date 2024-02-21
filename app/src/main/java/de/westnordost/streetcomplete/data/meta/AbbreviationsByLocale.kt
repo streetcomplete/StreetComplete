@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
+import de.westnordost.streetcomplete.util.ktx.getJsonObject
 import java.util.Locale
 
 class AbbreviationsByLocale(private val applicationContext: Context) {
@@ -19,8 +19,8 @@ class AbbreviationsByLocale(private val applicationContext: Context) {
     }
 
     private fun load(locale: Locale): Abbreviations {
-        val config = getResources(locale).getYamlStringMap(R.raw.abbreviations)
-        return Abbreviations(config, locale)
+        val config = getResources(locale).getJsonObject<AbbreviationsFile>(R.raw.abbreviations)
+        return Abbreviations(config.abbreviations, locale)
     }
 
     private fun getResources(locale: Locale): Resources {
@@ -29,3 +29,8 @@ class AbbreviationsByLocale(private val applicationContext: Context) {
         return applicationContext.createConfigurationContext(configuration).resources
     }
 }
+
+private data class AbbreviationsFile(
+    val fileFormatDescription: List<String>,
+    val abbreviations: Map<String, String>,
+)

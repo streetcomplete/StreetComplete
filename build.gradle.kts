@@ -87,7 +87,7 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     )
     val skipWords = listOf("lint", "linter", "reorder imports", "organize imports")
     skipCommitRegex = Regex(".*\\b(${skipWords.joinToString("|")})\\b.*", RegexOption.IGNORE_CASE)
-    targetFile = "$projectDir/app/src/main/res/raw/credits_contributors.yml"
+    targetFile = "$projectDir/app/src/main/res/raw/credits_contributors.json"
     // gradle, py, bat, java and mjs don't exist anymore in this repo but they used to
     codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
     /* photos, illustrations, sounds ... but not yml, json, ... because most of these are updated

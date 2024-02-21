@@ -7,7 +7,7 @@ A new release is a good time to check if all dependencies are still up to date.
 - **Update outdated dependencies** as indicated by Android Studio in the `build.gradle`. For each to-be-updated dependency, review the changelog (see [release notes for androidx libraries](https://developer.android.com/jetpack/androidx/releases/appcompat)) - are there any (breaking) changes that may affect us? Test it.
 - **Update available languages**. Check [on POEditor](https://poeditor.com/projects/view?id=97843) if any translation not included yet reached a certain threshold of completion (~80%) to be included or if any already included translation has been abandoned (only ~50% translated). If necessary, adapt `bcp47ExportLanguages` in `app/build.gradle.kts` and mention the change in the changelog.
 - **Update presets version**. Check if `presetsVersion` and `nsiVersion` in the `build.gradle` still point to the latest version of the [iD presets](https://github.com/openstreetmap/id-tagging-schema/releases) and [name suggestion index](https://github.com/osmlab/name-suggestion-index/tags) respectively, check if the schema has any incompatible changes and update.
-- **Update main contributor listing and other manual credit handling**. In general credits are updated automatically (see below), but [main contributors](/app/src/main/res/raw/credits_main.yml) and list of ignored commits ([`skipCommit`](/build.gradle.kts#L75)) are handled manually.
+- **Update main contributor listing and other manual credit handling**. In general credits are updated automatically (see below), but [main contributors](/app/src/main/res/raw/credits_main.json) and list of ignored commits ([`skipCommit`](/build.gradle.kts#L75)) are handled manually.
 
 ### Update translations, presets, metadata, credits, ...
 
@@ -41,7 +41,7 @@ Correct any mistakes found by the inspection directly in POEditor if possible (o
 1. On GitHub, [create a new release](https://github.com/streetcomplete/StreetComplete/releases/new).
 2. Create a new tag by tapping on _Choose a tag_, type the name, e.g. "v99.0-beta9" and press _Create new tag: v99.0-beta9 on publish_
 3. Select the branch you built the APK on. Usually it is master.
-4. Copy&paste the text from the `changelog.yml` into the textbox
+4. Copy&paste the text from `CHANGELOG.md` into the textbox
 5. Attach the **APK**.
 6. If it is a beta, check the _This is a pre-release_ box. For major releases, you may want to check the box to create a discussion.
 7. Double-check you really committed and pushed the release before publishing.

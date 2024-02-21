@@ -1,8 +1,7 @@
-import com.charleskorn.kaml.Yaml
-import com.charleskorn.kaml.YamlConfiguration
-import com.charleskorn.kaml.encodeToStream
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
@@ -161,10 +160,9 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
     }
 
     private fun writeContributors(contributors: List<Contributor>) {
-        File(targetFile).outputStream().use {
-            val yamlFormat = Yaml(configuration = YamlConfiguration(encodeDefaults = false))
-            yamlFormat.encodeToStream(contributors, it)
-        }
+        val json = Json { prettyPrint = true }
+        val jsonString = json.encodeToString(contributors)
+        File(targetFile).writeText(jsonString + "\n")
     }
 }
 
@@ -185,4 +183,9 @@ data class Contributor(
 data class GithubCommitDetails(val author: GithubUser?)
 
 @Serializable
-data class GithubUser(val login: String, val avatar_url: String)
+data class GithubUser(
+    val login: String,
+
+    @SerialName("avatar_url")
+    val avatarUrl: String,
+)

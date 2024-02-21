@@ -1,0 +1,29 @@
+{
+    "fileFormatDescription": [
+        "only add common ones which native speakers would actually use. See default file for syntax",
+        "",
+        "Syntax for the abbreviations is regex, but:",
+        "- case is ignored for pattern",
+        "- an optional `.` is assumed at the end of each abbreviation",
+        "- `...` at the start of the pattern is interpreted as that concatenation is allowed"
+    ],
+    "abbreviations": {
+        "^all": "allée",
+        "^ave?": "avenue",
+        "^boul": "boulevard",
+        "^bl?v?d": "boulevard",
+        "^che?": "chemin",
+        "^crs": "cours",
+        "^crois": "croissant",
+        "^fb?g": "faubourg",
+        "^imp": "impasse",
+        "^mgr": "monseigneur",
+        "^pass?": "passage",
+        "^pl": "place",
+        "^st": "saint",
+        "^ste": "sainte",
+        "^rte": "route",
+        "^r": "rue",
+        "^sq": "square"
+    }
+}
