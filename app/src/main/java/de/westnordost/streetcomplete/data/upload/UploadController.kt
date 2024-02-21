@@ -9,7 +9,7 @@ class UploadController(private val context: Context) {
     /** Collect and upload all changes made by the user  */
     fun upload() {
         WorkManager.getInstance(context).enqueueUniqueWork(
-            UploadWorker.TAG,
+            Uploader.TAG,
             ExistingWorkPolicy.KEEP,
             UploadWorker.createWorkRequest()
         )

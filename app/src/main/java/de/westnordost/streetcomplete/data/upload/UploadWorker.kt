@@ -16,18 +16,15 @@ class UploadWorker(
 ) : CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result {
-        try {
+        return try {
             uploader.upload()
+            Result.success()
         } catch (e: Exception) {
-            Log.e(TAG, "Unable to upload", e)
-            return Result.failure()
+            Result.failure()
         }
-        return Result.success()
     }
 
     companion object {
-        const val TAG = "Upload"
-
         fun createWorkRequest(): OneTimeWorkRequest =
             OneTimeWorkRequestBuilder<UploadWorker>().build()
     }

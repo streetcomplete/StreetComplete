@@ -17,6 +17,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlin.coroutines.cancellation.CancellationException
 import kotlin.math.max
 
 /** Downloads all the things */
@@ -73,7 +74,10 @@ class Downloader(
             val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
             Log.i(TAG, "Finished download ($sqkm km², bbox: $bboxString) in ${seconds.format(1)}s")
 
+        } catch (e: CancellationException) {
+            Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {
+            Log.e(TAG, "Unable to download", e)
             listeners.forEach { it.onError(e) }
         } finally {
             isDownloadInProgress = false
@@ -100,6 +104,6 @@ class Downloader(
     }
 
     companion object {
-        private const val TAG = "Download"
+        const val TAG = "Download"
     }
 }

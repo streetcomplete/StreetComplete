@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.upload
 
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
@@ -10,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -71,7 +73,10 @@ class Uploader(
             }
             Log.i(TAG, "Finished upload")
 
+        } catch (e: CancellationException) {
+            Log.i(TAG, "Upload cancelled")
         } catch (e: Exception) {
+            Log.e(TAG, "Unable to upload", e)
             listeners.forEach { it.onError(e) }
         } finally {
             isUploadInProgress = false
@@ -94,6 +99,6 @@ class Uploader(
     }
 
     companion object {
-        private const val TAG = "Upload"
+        const val TAG = "Upload"
     }
 }

@@ -12,11 +12,8 @@ import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
-import de.westnordost.streetcomplete.util.logs.Log
-import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -47,22 +44,16 @@ class DownloadWorker(
         val bbox: BoundingBox = inputData.getString(ARG_BBOX)?.let { Json.decodeFromString(it) }
             ?: return Result.failure()
 
-        try {
+        return try {
             val isPriorityDownload = inputData.getBoolean(ARG_IS_PRIORITY, false)
             downloader.download(bbox, isPriorityDownload)
-        } catch (e: CancellationException) {
-            Log.i(TAG, "Download cancelled")
-        } catch (e: Exception) {
-            Log.e(TAG, "Unable to download", e)
-            return Result.failure()
+            Result.success()
+        }  catch (e: Exception) {
+            Result.failure()
         }
-
-        return Result.success()
     }
 
     companion object {
-        const val TAG = "Download"
-
         private const val ARG_BBOX = "bbox"
         private const val ARG_IS_PRIORITY = "isPriority"
 
