@@ -81,22 +81,23 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
 
                     val points = (geometry as ElementPolygonsGeometry).polygons.map { it.map { Point.fromLngLat(it.longitude, it.latitude) } }
                     val f = Feature.fromGeometry(Polygon.fromLngLats(points), p)
-                    val label = if (style.label != null)
+                    val label = if (style.label != null) {
                         Feature.fromGeometry(
                             Point.fromLngLat(geometry.center.longitude, geometry.center.latitude),
                             JsonObject().apply { addProperty("label", style.label) }
                         )
-                    else null
+                    } else null
                     listOfNotNull(f, label)
                 }
                 is PolylineStyle -> {
                     // there is no strokeColor for lines, so appearance is different and thinner due to missing "line-outline"
                     val points = (geometry as ElementPolylinesGeometry).polylines.map { it.map { Point.fromLngLat(it.longitude, it.latitude) } }
                     val line = MultiLineString.fromLngLats(points)
+                    val width = getLineWidth(element.tags)
                     val left = if (style.strokeLeft != null) {
                         val p2 = p.deepCopy()
-                        p2.addProperty("width", 7f)
-                        p2.addProperty("offset", -9f)
+                        p2.addProperty("width", 4f)
+                        p2.addProperty("offset", -width - 2f)
                         if (style.strokeLeft.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE)
                             p2.addProperty("color", style.strokeLeft.color)
                         if (style.strokeLeft.dashed)
@@ -105,8 +106,8 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     } else null
                     val right = if (style.strokeRight != null) {
                         val p2 = p.deepCopy()
-                        p2.addProperty("width", 7f)
-                        p2.addProperty("offset", 9f)
+                        p2.addProperty("width", 4f)
+                        p2.addProperty("offset", width + 2f)
                         if (style.strokeRight.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE)
                             p2.addProperty("color", style.strokeRight.color)
                         if (style.strokeRight.dashed)
@@ -115,23 +116,23 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     } else null
                     val center = if (style.stroke != null && style.stroke.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
                         val p2 = p.deepCopy()
-                        p2.addProperty("width", getLineWidth(element.tags))
+                        p2.addProperty("width", width)
                         p2.addProperty("color", style.stroke.color)
                         if (style.stroke.dashed)
                             p2.addProperty("dashed", true)
                         Feature.fromGeometry(line, p2)
                     } else null
-                    val label = if (style.label != null)
+                    val label = if (style.label != null) {
                         Feature.fromGeometry(
                             pointFromGeometry(geometry),
                             JsonObject().apply { addProperty("label", style.label) }
                         )
-                    else null
+                    } else null
                     listOfNotNull(left, right, center, label)
                 }
             }
         }
-        MainActivity.activity?.runOnUiThread { MainMapFragment.overlaySource!!.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures)) }
+        MainActivity.activity?.runOnUiThread { MainMapFragment.overlaySource?.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures)) }
     }
 
     /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */

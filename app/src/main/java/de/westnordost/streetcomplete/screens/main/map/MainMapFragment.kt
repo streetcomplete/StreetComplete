@@ -161,11 +161,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // todo
         //  mapLibre always downloads "something" on startup: what is it, and why?
-        //   looks like it's some icons (glyph / sprite urls)
-        //    actually they are already present, does it really look whether there are new ones at every start?
-        //    maybe just need to set different caching parameters... how?
-        //    or maybe this is fixed when using offline stuff
-        //   remove it by adjusting the style?
+        //   looks like it's some glyphs
+        //    This request was cancelled (https://api.jawg.io/glyphs/Roboto%20Regular%2cNoto%20Regular/0-255.pbf). This is expected for tiles that were being prefetched but are no longer needed for the map to render.
+        //   maybe just need to set different caching parameters?
+        //   or maybe this is fixed when using offline stuff
         //  enable offline stuff
         //   needs some file at server because for absolutely no reason you can't supply a local style (or even just tile url) for offline stuff
         //   see MapTilesDownloader
@@ -180,6 +179,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   required for setting both zoom and attribute filter
         //   maybe just use multiple sources?
         //  gps and user tracks not working (why?)
+        //   created features seem correct, but also not added to other layers (e.g. putting into geometrySource)
         //  downloadedAreaMapComponent not working (why?)
         //  disabling navigation mode doesn't undo the tilt, even though it's set using the same function
         //  tilt does not affect the accuracy circle (works for maplibre internal one)
@@ -187,6 +187,13 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   or maybe just need to properly calculate insets instead of guessing...
         //  define pins/overlay/geometry/... layers in some json instead of in code?
         //  quest pins block overlay icons, or icons (and text) are always overlapping (how to make dependent on zoom?)
+        //  something is wrong, error messages (possibly related to style json)
+        //   Error setting property: fill-extrusion-opacity data expressions not supported
+        //   Error setting property: text-field layer doesn't support this property
+        //   Error setting property: text-anchor layer doesn't support this property
+        //   Error setting property: text-offset layer doesn't support this property
+        //   Error setting property: text-max-width layer doesn't support this property
+        //   would be useful to specify layer, they already have a nice string id
 
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
@@ -507,13 +514,13 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // something is not working here
         trackSource = GeoJsonSource("track-source")
-        oldTrackSource = GeoJsonSource("old-track-source")
         val trackLayer = LineLayer("track", "track-source")
             .withProperties(PropertyFactory.lineWidth(10f))
             .withProperties(PropertyFactory.lineColor("#536dfe"))
             .withProperties(PropertyFactory.lineOpacity(0.3f))
             .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
         style.addLayerBelow(trackLayer, "pins-layer")
+        oldTrackSource = GeoJsonSource("old-track-source")
         val oldTrackLayer = LineLayer("old-track", "old-track-source")
             .withProperties(PropertyFactory.lineWidth(10f))
             .withProperties(PropertyFactory.lineColor("#536dfe"))

@@ -74,7 +74,7 @@ class TracksMapComponent(ctrl: KtMapController) {
 }
 
 private fun List<LatLng>.toLineFeature(record: Boolean): Feature {
-     val line = LineString.fromLngLats(map { Point.fromLngLat(it.longitude, it.latitude) })
+    val line = LineString.fromLngLats(map { Point.fromLngLat(it.longitude, it.latitude) })
     val p = JsonObject()
     p.addProperty("recording", record) // todo: this is not used (and possibly it's easier to only set it if true)
     return Feature.fromGeometry(line, p)
