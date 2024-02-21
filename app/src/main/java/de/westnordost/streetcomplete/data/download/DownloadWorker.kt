@@ -23,8 +23,8 @@ import kotlinx.serialization.json.Json
 /** Downloads all quests and tiles in a given area asynchronously.
  *
  * Generally, starting a new download cancels the old one. This is a feature; Consideration:
- * If the user requests a new area to be downloaded, he'll generally be more interested in his last
- * request than any request he made earlier and he wants that as fast as possible.
+ * If you request a new area to be downloaded, you'll generally be more interested in your last
+ * request than any request you made earlier and you wants that as fast as possible.
  */
 class DownloadWorker(
     private val downloader: Downloader,
