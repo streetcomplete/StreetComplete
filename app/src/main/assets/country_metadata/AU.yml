@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
-'additionalValidHousenumberRegex': '('
+'additionalValidHousenumberRegex': '([\p{N}\p{L}]{1,2}\s?/\s?|\p{L}{1,2}\s?)?\p{N}{1,5}'
 'advisoryCycleLaneStyle': 'white dashes'
 'advisorySpeedLimitSignStyle': 'yellow'
 'centerLineStyle': 'white'

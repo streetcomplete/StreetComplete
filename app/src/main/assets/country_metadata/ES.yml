@@ -1,4 +1,5 @@
 # Do not edit. Data is from res/country_metadata and https://github.com/streetcomplete/countrymetadata
+'additionalValidHousenumberRegex': 's/n'
 'defaultSpeedLimitHasUrbanOrRural': true
 'exclusiveCycleLaneStyle': 'white'
 'hasAdvisoryCycleLane': false
