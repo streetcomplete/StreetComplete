@@ -26,7 +26,6 @@ import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -91,7 +90,7 @@ import de.westnordost.streetcomplete.screens.main.map.MapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
-import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.tangram.ScCameraPosition
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
@@ -108,7 +107,6 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
-import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -123,7 +121,6 @@ import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
 import kotlin.math.PI
-import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
@@ -1185,14 +1182,14 @@ class MainFragment :
 
     //region Interface - For the parent fragment / activity
 
-    fun getCameraPosition(): CameraPosition? {
+    fun getCameraPosition(): ScCameraPosition? {
         return mapFragment?.cameraPosition
     }
 
     fun setCameraPosition(position: LatLon, zoom: Float) {
         mapFragment?.isFollowingPosition = false
         mapFragment?.isNavigationMode = false
-        mapFragment?.setInitialCameraPosition(CameraPosition(position, 0.0, 0.0, zoom.toDouble()))
+        mapFragment?.setInitialCameraPosition(ScCameraPosition(position, 0.0, 0.0, zoom.toDouble()))
         setIsFollowingPosition(false)
     }
 

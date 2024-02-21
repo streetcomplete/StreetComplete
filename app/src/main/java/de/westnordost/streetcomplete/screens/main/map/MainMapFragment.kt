@@ -169,11 +169,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  enable offline stuff
         //   needs some file at server because for absolutely no reason you can't supply a local style (or even just tile url) for offline stuff
         //   see MapTilesDownloader
+        //  moving to user position after auto-zoom from opening a quest does not center user (looks like it keeps the insets)
         //  zoom very often is choppy, far not as smooth as tangram
         //   more quests make it a little worse, but most of it seems to be "natural"
+        //   is it definitely a maplibre issue? or maybe some map change listener?
         //  any way tp get useful stack traces from maplibre? often it just starts at Handler.dispatchMessage, so no idea which line of SC triggered it
-
-        // todo now after removing tangram
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
         //  overlays missing some zoom filter (iirc 16 is default SC limit)
         //   there is no Expression.and, how to do it?
@@ -182,6 +182,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  gps and user tracks not working (why?)
         //  downloadedAreaMapComponent not working (why?)
         //  disabling navigation mode doesn't undo the tilt, even though it's set using the same function
+        //  tilt does not affect the accuracy circle (does it affect the maplibre internal one?)
         //  quest pins look awful, maybe layer drawable not suitable?
         //   or maybe just need to properly calculate insets instead of guessing...
         //  define pins/overlay/geometry/... layers in some json instead of in code?

@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.graphics.RectF
-import android.util.Log
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.DecelerateInterpolator
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
@@ -15,15 +12,15 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.screens.MainActivity
-import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
-import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.tangram.ScCameraPosition
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLatLon
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
@@ -31,7 +28,7 @@ import kotlin.math.roundToLong
  *  contained in the screen area */
 class FocusGeometryMapComponent(private val ctrl: KtMapController, private val mapboxMap: MapboxMap) {
 
-    private var previousCameraPosition: CameraPosition? = null
+    private var previousCameraPosition: ScCameraPosition? = null
 
     /** Returns whether beginFocusGeometry() was called earlier but not endFocusGeometry() yet */
     val isZoomedToContainGeometry: Boolean get() =
@@ -80,7 +77,7 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
 
         if (previousCameraPosition == null) previousCameraPosition = currentPos
 
-        val zoomTime = max(450L, (abs(currentPos.zoom - targetZoom) * 300).roundToLong())
+        val zoomTime = max(450, (abs(currentPos.zoom - targetZoom) * 300).roundToInt())
 
         // todo: works, but seems needlessly complicated
         // and still might have some issues
@@ -119,7 +116,7 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
         val pos = previousCameraPosition
         if (pos != null) {
             val currentPos = ctrl.cameraPosition
-            val zoomTime = max(300L, (abs(currentPos.zoom - pos.zoom) * 300).roundToLong())
+            val zoomTime = max(300, (abs(currentPos.zoom - pos.zoom) * 300).roundToInt())
 
             ctrl.updateCameraPosition(zoomTime) {
                 position = pos.position

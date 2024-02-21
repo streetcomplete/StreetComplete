@@ -218,7 +218,7 @@ open class LocationAwareMapFragment : MapFragment() {
                         centerPosition = centerPosition.translate(distance * 0.4, bearing.toDouble())
                     }
                 }
-                tilt = 30.0 // looks like we use degrees
+                tilt = 60.0 // looks like we use degrees
             }
 
             position = centerPosition

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map.tangram
 
-import android.animation.TimeAnimator
 import android.content.ContentResolver
 import android.graphics.PointF
 import android.graphics.RectF
@@ -60,26 +59,7 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
 
     private var mapChangingListener: MapChangingListener? = null
 
-    private val flingAnimator: TimeAnimator = TimeAnimator()
-
     init {
-        flingAnimator.setTimeListener { _, _, _ ->
-            mapChangingListener?.onMapIsChanging()
-        }
-
-        cameraManager.listener = object : CameraManager.AnimationsListener {
-            override fun onAnimationsStarted() {
-                mapChangingListener?.onMapWillChange()
-            }
-
-            override fun onAnimating() {
-                mapChangingListener?.onMapIsChanging()
-            }
-
-            override fun onAnimationsEnded() {
-                mapChangingListener?.onMapDidChange()
-            }
-        }
 /*
         c.setMapChangeListener(object : MapChangeListener {
             private var calledOnMapIsChangingOnce = false
@@ -121,7 +101,6 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
 
     override fun onDestroy(owner: LifecycleOwner) {
         viewLifecycleScope.cancel()
-        cameraManager.cancelAllCameraAnimations()
     }
 
     /* ----------------------------- Loading and Updating Scene --------------------------------- */
@@ -149,23 +128,23 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
 */
     /* ----------------------------------------- Camera ----------------------------------------- */
 
-    val cameraPosition: CameraPosition get() = cameraManager.camera
+    val cameraPosition: ScCameraPosition get() = cameraManager.camera
 
-    fun updateCameraPosition(duration: Long = 0, builder: CameraUpdate.() -> Unit) {
+    fun updateCameraPosition(duration: Int = 0, builder: CameraUpdate.() -> Unit) {
         updateCameraPosition(duration, CameraUpdate().apply(builder))
     }
 
-    fun updateCameraPosition(duration: Long = 0, update: CameraUpdate) {
+    fun updateCameraPosition(duration: Int = 0, update: CameraUpdate) {
         cameraManager.updateCamera(duration, update)
     }
 
-    fun setCameraPosition(camera: CameraPosition) {
+    fun setCameraPosition(camera: ScCameraPosition) {
         val update = CameraUpdate()
         update.position = camera.position
         update.rotation = camera.rotation
         update.tilt = camera.tilt
         update.zoom = camera.zoom
-        updateCameraPosition(0L, update)
+        updateCameraPosition(0, update)
     }
 
     var minimumZoomLevel: Double
@@ -220,12 +199,12 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
         return positions.enclosingBoundingBox()
     }
 
-    fun getEnclosingCameraPosition(bounds: BoundingBox, padding: RectF): CameraPosition? {
+    fun getEnclosingCameraPosition(bounds: BoundingBox, padding: RectF): ScCameraPosition? {
         val zoom = getMaxZoomThatContainsBounds(bounds, padding) ?: return null
         val boundsCenter = listOf(bounds.min, bounds.max).centerPointOfPolyline()
         val pos = getLatLonThatCentersLatLon(boundsCenter, padding, zoom) ?: return null
         val camera = cameraPosition
-        return CameraPosition(pos, camera.rotation, camera.tilt, zoom.toDouble())
+        return ScCameraPosition(pos, camera.rotation, camera.tilt, zoom.toDouble())
     }
 
     private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Float? {
