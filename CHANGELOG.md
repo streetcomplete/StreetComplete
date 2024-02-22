@@ -1,5 +1,13 @@
 # Changelog
 
+## v57.0-beta2
+
+- Use new method to upload and download data as mandated by Google Play policy. Be sure to report
+  any issues related to this. On Android 13 and above, there's no notification for continuing to 
+  sync in the background anymore.
+- A few small fixes, thanks @matkoniecz
+
+
 ## v57.0-beta1
 
 ### Buildings Overlay (#5461)

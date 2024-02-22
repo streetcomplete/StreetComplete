@@ -1384,4 +1384,8 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="overlay_buildings">"Budynki"</string>
     <string name="quest_pedestrian_crossing_signals">"Czy trzeba czekać na sygnalizację świetlną, aby tu przejść?"</string>
     <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na ziemi?"</string>
+    <string name="overlay_places">"Miejsca"</string>
+    <string name="overlay_things">"Obiekty"</string>
+    <string name="disused">"już nieużywane"</string>
+    <string name="unknown_object">"Inny obiekt"</string>
 </resources>

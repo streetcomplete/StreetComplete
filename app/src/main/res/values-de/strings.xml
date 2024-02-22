@@ -1385,4 +1385,8 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="overlay_buildings">"Gebäude"</string>
     <string name="quest_pedestrian_crossing_signals">"Muss man hier auf eine Ampel warten, um die Straße zu überqueren?"</string>
     <string name="quest_pedestrian_crossing_markings">"Gibt es bei diesem Fußgängerüberweg Markierungen auf dem Boden?"</string>
+    <string name="overlay_places">"Orte"</string>
+    <string name="overlay_things">"Dinge"</string>
+    <string name="disused">"stillgelegt"</string>
+    <string name="unknown_object">"Unbekanntes Objekt"</string>
 </resources>

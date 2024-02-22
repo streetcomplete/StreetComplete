@@ -1378,4 +1378,10 @@ Pored toga, neki slojevi na karti vam pružaju mogućnost dodavanja novih podata
     <string name="quest_buildingType_tower_description">"bilo koji toranj"</string>
     <string name="quest_buildingType_under_construction">"U izgradnji"</string>
     <string name="overlay_buildings">"Građevine"</string>
+    <string name="quest_pedestrian_crossing_signals">"Da li je ovde potrebno sačekati semafor pre prelaska?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Da li je ovaj prelaz obeležen horizontalnom signaliacjom?"</string>
+    <string name="overlay_places">"Mesta"</string>
+    <string name="overlay_things">"Stvari"</string>
+    <string name="disused">"nekoristi se"</string>
+    <string name="unknown_object">"Nepoznati objekat"</string>
 </resources>

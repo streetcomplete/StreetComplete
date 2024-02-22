@@ -1385,4 +1385,8 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="overlay_buildings">"Buildings"</string>
     <string name="quest_pedestrian_crossing_signals">"Do you have to wait for a traffic signal to cross here?"</string>
     <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
+    <string name="overlay_places">"Places"</string>
+    <string name="overlay_things">"Things"</string>
+    <string name="disused">"disused"</string>
+    <string name="unknown_object">"Unknown object"</string>
 </resources>

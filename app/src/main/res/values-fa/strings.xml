@@ -1382,4 +1382,8 @@
     <string name="overlay_buildings">"ساختمان‌ها"</string>
     <string name="quest_pedestrian_crossing_signals">"آیا باید منتظر بمانید تا یک علامت راهنمایی و رانندگی از اینجا عبور کند؟"</string>
     <string name="quest_pedestrian_crossing_markings">"آیا این گذرگاه روی زمین علامت‌گذاری دارد؟"</string>
+    <string name="overlay_places">"مکان‌ها"</string>
+    <string name="overlay_things">"اشیاء"</string>
+    <string name="disused">"بلااستفاده/از کار افتاده"</string>
+    <string name="unknown_object">"شیء ناشناخته"</string>
 </resources>
