@@ -866,7 +866,7 @@ class MainFragment :
         }
         val displayedPosition = LatLon(location.latitude, location.longitude)
 
-        var target = mapFragment.getClippedPointOf(displayedPosition) ?: return
+        var target = mapFragment.getPointOf(displayedPosition) ?: return
         windowInsets?.let {
             target -= PointF(it.left.toFloat(), it.top.toFloat())
         }

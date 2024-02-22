@@ -349,13 +349,6 @@ open class MapFragment : Fragment() {
 
     fun getPointOf(pos: LatLon): PointF? = controller?.latLonToScreenPosition(pos)
 
-    fun getClippedPointOf(pos: LatLon): PointF? {
-        return controller?.latLonToScreenPosition(pos) // todo: clip to viewport
-//        val screenPositionOut = PointF()
-//        controller?.latLonToScreenPosition(pos, screenPositionOut, true) ?: return null
-//        return screenPositionOut
-    }
-
     val cameraPosition: CameraPosition?
         get() = controller?.cameraPosition
 
