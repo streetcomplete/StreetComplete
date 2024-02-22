@@ -21,7 +21,6 @@ import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is

@@ -29,7 +29,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.math.log10
 import kotlin.math.max
@@ -94,7 +93,16 @@ class KtMapController(
     private val isAnimationsOff get() =
         Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
 
-    val cameraPosition: ScCameraPosition get() = ScCameraPosition(mapboxMap.cameraPosition)
+    var cameraPosition: ScCameraPosition
+        get() = ScCameraPosition(mapboxMap.cameraPosition)
+        set(value) {
+            mapboxMap.cameraPosition = CameraPosition.Builder()
+                .bearing(value.rotation)
+                .zoom(value.zoom)
+                .tilt(value.tilt)
+                .target(value.position.toLatLng())
+                .build()
+        }
 
     fun updateCameraPosition(duration: Int = 0, builder: CameraUpdate.() -> Unit) {
         updateCameraPosition(duration, CameraUpdate().apply(builder))
@@ -122,17 +130,6 @@ class KtMapController(
                 mapboxMap.easeCamera(cameraUpdate, duration)
             }
         }
-    }
-
-
-
-    fun setCameraPosition(camera: ScCameraPosition) {
-        val update = CameraUpdate()
-        update.position = camera.position
-        update.rotation = camera.rotation
-        update.tilt = camera.tilt
-        update.zoom = camera.zoom
-        updateCameraPosition(0, update)
     }
 
     var minimumZoomLevel: Double

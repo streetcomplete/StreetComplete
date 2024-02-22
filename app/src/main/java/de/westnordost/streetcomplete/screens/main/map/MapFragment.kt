@@ -299,7 +299,7 @@ open class MapFragment : Fragment() {
 
     private fun restoreMapState() {
         val camera = loadCameraPosition() ?: return
-        controller?.setCameraPosition(camera)
+        controller?.cameraPosition = camera
     }
 
     private fun saveMapState() {
@@ -371,7 +371,7 @@ open class MapFragment : Fragment() {
     fun setInitialCameraPosition(camera: ScCameraPosition) {
         val controller = controller
         if (controller != null) {
-            controller.setCameraPosition(camera)
+            controller.cameraPosition = camera
         } else {
             saveCameraPosition(camera)
         }
