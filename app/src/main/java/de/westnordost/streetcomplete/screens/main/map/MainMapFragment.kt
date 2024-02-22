@@ -160,11 +160,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //    possible, but need to be careful to re-insert it at correct position
 
         // todo
-        //  mapLibre always downloads "something" on startup: what is it, and why?
-        //   looks like it's some glyphs
-        //    This request was cancelled (https://api.jawg.io/glyphs/Roboto%20Regular%2cNoto%20Regular/0-255.pbf). This is expected for tiles that were being prefetched but are no longer needed for the map to render.
-        //   maybe just need to set different caching parameters?
-        //   or maybe this is fixed when using offline stuff
         //  enable offline stuff
         //   needs some file at server because for absolutely no reason you can't supply a local style (or even just tile url) for offline stuff
         //   see MapTilesDownloader
@@ -174,10 +169,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   is it definitely a maplibre issue? or maybe some map change listener?
         //  any way tp get useful stack traces from maplibre? often it just starts at Handler.dispatchMessage, so no idea which line of SC triggered it
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
-        //  overlays missing some zoom filter (iirc 16 is default SC limit)
-        //   there is no Expression.and, how to do it?
-        //   required for setting both zoom and attribute filter
-        //   maybe just use multiple sources?
+        //  rotation not stored / restored correctly on startup (but location is)
         //  gps and user tracks not working (why?)
         //   created features seem correct, but also not added to other layers (e.g. putting into geometrySource)
         //  downloadedAreaMapComponent not working (why?)
@@ -186,7 +178,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  quest pins look awful, maybe layer drawable not suitable?
         //   or maybe just need to properly calculate insets instead of guessing...
         //  define pins/overlay/geometry/... layers in some json instead of in code?
-        //  quest pins block overlay icons, or icons (and text) are always overlapping (how to make dependent on zoom?)
+        //  either quest pins block overlay icons, or icons (and text) are always overlapping (how to make dependent on zoom?)
         //  something is wrong, error messages (possibly related to style json)
         //   Error setting property: fill-extrusion-opacity data expressions not supported
         //   Error setting property: text-field layer doesn't support this property
@@ -194,6 +186,16 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   Error setting property: text-offset layer doesn't support this property
         //   Error setting property: text-max-width layer doesn't support this property
         //   would be useful to specify layer, they already have a nice string id
+        //  mapLibre always downloads "something" on startup: what is it, and why?
+        //   looks like it's some glyphs, message when offline:
+        //    This request was cancelled (https://api.jawg.io/glyphs/Roboto%20Regular%2cNoto%20Regular/0-255.pbf). This is expected for tiles that were being prefetched but are no longer needed for the map to render.
+        //   maybe just need to set different caching parameters?
+        //   or maybe this is fixed when using offline stuff
+        //  how to properly replace the old tangram layers in mapComponents?
+        //   ideally maplibre layers would be defined in json, and only the source is used in the components
+        //   but how to hide everything from a source, other than clearing the data?
+        //   filters only work on layers -> need to set filters to hide completely, then re-set to previous filters
+        //   detaching source sounds like it could be useful, but actually isn't (and can't un-detach a source)
 
         // performance observations when displaying many icons (symbols)
         //  SymbolManager is not fast enough (though CircleManager is)
@@ -201,7 +203,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  circle layer is much faster than symbol layer, when moving and especially when zooming
         //  enabling overlap makes things worse, but not that bad (though with many shops it's noticeable)
         //  smaller images help (shrink images already when adding to style, instead of using scale property)
-        //  clustering helps noticeably, but still slower than circles (how can I enable it?)
+        //  clustering helps noticeably, but still slower than circles (see below for issues)
         //  not sorting symbols using symbolSortOrder (for priority) helps a lot
         //   using one order per quest type (instead of one per quest) considerably reduces performance impact of symbol sorting
         //   not setting sort order, but setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is same as not sorting
@@ -274,7 +276,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  clustering is a source option, not a layer option
         //   this is really bad for https://github.com/streetcomplete/StreetComplete/issues/124#issuecomment-1137061717
         //   because also the dots will be in the clusters (and thus not visible individually)
-        //   if we use 2 sources, this could be done
+        //   if we use 2 sources, this could be done (but the featureCollection is copied in setGeoJson(featureCollection)...)
         //   images (quest pins) could be used for clusters: https://github.com/mapbox/mapbox-gl-native/issues/16060
 
         // use a GeoJsonSource for quests, and one layer for pins and one for circles
@@ -392,7 +394,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // or better use them in style json instead of here? probably easier
         overlayDashedLineLayer = LineLayer("overlay-dashed-lines", "overlay-source")
             // separate layer for dashed lines
-            .withFilter(Expression.has("dashed"))
+            .withFilter(Expression.all(Expression.has("dashed"), Expression.gte(Expression.zoom(), 16f)))
             .withProperties(
                 PropertyFactory.lineCap(Property.LINE_CAP_BUTT),
                 PropertyFactory.lineColor(Expression.get("color")),
@@ -404,7 +406,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             )
         style.addLayerBelow(overlayDashedLineLayer!!, "pins-layer")
         overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
-            .withFilter(Expression.not(Expression.has("dashed")))
+            .withFilter(Expression.all(Expression.not(Expression.has("dashed")), Expression.gte(Expression.zoom(), 16f)))
             .withProperties(
                 PropertyFactory.lineCap(Property.LINE_CAP_BUTT),
                 PropertyFactory.lineColor(Expression.get("color")),
@@ -418,7 +420,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // FillExtrusionLayer doesn't support outlines, only the normal FillLayer does...
         overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
-            .withFilter(Expression.has("outline-color")) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
+            .withFilter(Expression.all(Expression.has("outline-color"), Expression.gte(Expression.zoom(), 16f))) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
 //            .withProperties(PropertyFactory.fillColor(Expression.get("color")))
 //            .withProperties(PropertyFactory.fillOutlineColor(Expression.get("outline-color"))) // no outline color if extrusion?
 //            .withProperties(PropertyFactory.fillOpacity(Expression.get("opacity")))
@@ -432,21 +434,20 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 PropertyFactory.iconImage("{icon}"),
                 PropertyFactory.textField("{label}"),
                 // or maybe read text properties from feature?
-                PropertyFactory.textAnchor(Property.TEXT_ANCHOR_LEFT), // todo: only if icon -> use expression?
-                PropertyFactory.textOffset(arrayOf(1.5f, 0f)), // todo: only if icon -> use expression?
+                PropertyFactory.textAnchor(Property.TEXT_ANCHOR_LEFT),
+                PropertyFactory.textOffset(arrayOf(1.5f, 0f)),
                 PropertyFactory.textMaxWidth(5f),
                 PropertyFactory.textHaloColor("white"),
                 PropertyFactory.textHaloWidth(1.5f), // works as expected, while for icons it doesn't
                 PropertyFactory.iconColor("black"),
-                PropertyFactory.iconHaloColor("white"),
-                PropertyFactory.iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
+//                PropertyFactory.iconHaloColor("white"), // not needed any more but still why doesn't it work?
+//                PropertyFactory.iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
 //                PropertyFactory.iconHaloBlur(2f),
-                PropertyFactory.iconAllowOverlap(true), // both overlaps are required
-                PropertyFactory.textAllowOverlap(true),
-                // why does below not work?
-//                PropertyFactory.iconAllowOverlap(Expression.gte(Expression.zoom(), 16f)),
-//                PropertyFactory.textAllowOverlap(Expression.gte(Expression.zoom(), 16f)),
+                // both overlaps are required
+                PropertyFactory.iconAllowOverlap(Expression.step(Expression.zoom(), Expression.literal(false), Expression.stop(18, true))),
+                PropertyFactory.textAllowOverlap(Expression.step(Expression.zoom(), Expression.literal(false), Expression.stop(18, true))),
             )
+            .withFilter(Expression.gte(Expression.zoom(), 16f))
         style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
 
         // for nearby element geometry
@@ -665,10 +666,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /** Clear all highlighting */
     fun clearHighlighting() {
         pinsMapComponent?.isVisible = true
-        overlayFillLayer?.setFilter(Expression.has("outline-color"))
-        overlayLineLayer?.setFilter(Expression.not(Expression.has("dashed")))
-        overlayDashedLineLayer?.setFilter(Expression.has("dashed"))
-        overlaySymbolLayer?.setFilter(Expression.literal(true)) // no default filter
+        overlayFillLayer?.setFilter(Expression.all(Expression.has("outline-color"), Expression.gte(Expression.zoom(), 16f)))
+        overlayLineLayer?.setFilter(Expression.all(Expression.not(Expression.has("dashed")), Expression.gte(Expression.zoom(), 16f)))
+        overlayDashedLineLayer?.setFilter(Expression.all(Expression.has("dashed"), Expression.gte(Expression.zoom(), 16f)))
+        overlaySymbolLayer?.setFilter(Expression.gte(Expression.zoom(), 16f))
 //        selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
@@ -676,7 +677,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //        geometrySource?.setGeoJson(thisIsNoFeature) // nullable, but crashes maplibre (native) if null. great.
         geometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
         focusedGeometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
-        pinsLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
+//        pinsLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
         pinsDotLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
     }
 
