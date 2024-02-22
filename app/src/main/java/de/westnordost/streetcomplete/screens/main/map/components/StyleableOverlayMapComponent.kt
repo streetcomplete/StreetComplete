@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.addTransparency
@@ -78,11 +79,10 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     if (getHeight(element.tags) != null)
                         p.addProperty("height", getHeight(element.tags))
 
-                    val points = (geometry as ElementPolygonsGeometry).polygons.map { it.map { Point.fromLngLat(it.longitude, it.latitude) } }
-                    val f = Feature.fromGeometry(Polygon.fromLngLats(points), p)
+                    val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
                     val label = if (style.label != null) {
                         Feature.fromGeometry(
-                            Point.fromLngLat(geometry.center.longitude, geometry.center.latitude),
+                            geometry.center.toPoint(),
                             JsonObject().apply { addProperty("label", style.label) }
                         )
                     } else null
@@ -90,8 +90,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 }
                 is PolylineStyle -> {
                     // there is no strokeColor for lines, so appearance is different and thinner due to missing "line-outline"
-                    val points = (geometry as ElementPolylinesGeometry).polylines.map { it.map { Point.fromLngLat(it.longitude, it.latitude) } }
-                    val line = MultiLineString.fromLngLats(points)
+                    val line = geometry.toMapLibreGeometry()
                     val width = getLineWidth(element.tags)
                     val left = if (style.strokeLeft != null) {
                         val p2 = p.deepCopy()

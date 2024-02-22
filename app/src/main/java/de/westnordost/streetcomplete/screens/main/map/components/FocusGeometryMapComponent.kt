@@ -9,12 +9,11 @@ import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import kotlin.math.abs
 import kotlin.math.max
@@ -34,29 +33,7 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
 
     /** Show the given geometry. Previously shown geometry is replaced. */
     fun showGeometry(geometry: ElementGeometry) {
-
-        when (geometry) {
-            is ElementPolylinesGeometry -> {
-                val points = geometry.polylines.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }
-                val multilineString = com.mapbox.geojson.MultiLineString.fromLngLats(points)
-                MainMapFragment.focusedGeometrySource?.setGeoJson(Feature.fromGeometry(multilineString).apply { addStringProperty("way", "yes") })
-            }
-            is ElementPolygonsGeometry -> {
-                val points = geometry.polygons.map { it.map { com.mapbox.geojson.Point.fromLngLat(it.longitude, it.latitude) } }
-                val polygon = com.mapbox.geojson.Polygon.fromLngLats(points)
-                // todo: breaks for mulitpolygons at high zoom only
-                // todo: actually the outline is displayed in the fill layer
-                //  maybe this is what breaks multipolygon display
-                //  just set some Expression.geometryType() filter on the fill layer
-                val multilineString = com.mapbox.geojson.MultiLineString.fromLngLats(points) // outline
-                MainMapFragment.focusedGeometrySource?.setGeoJson(
-                    FeatureCollection.fromFeatures(listOf(
-                        Feature.fromGeometry(multilineString), Feature.fromGeometry(polygon))))
-            }
-            is ElementPointGeometry -> {
-                MainMapFragment.focusedGeometrySource?.setGeoJson(com.mapbox.geojson.Point.fromLngLat(geometry.center.longitude, geometry.center.latitude))
-            }
-        }
+        MainMapFragment.focusedGeometrySource?.setGeoJson(geometry.toMapLibreGeometry())
     }
 
     /** Hide all shown geometry */

@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
@@ -70,8 +71,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         // polygon / polylines marker(s)
         if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
             if (geometry is ElementPolygonsGeometry) {
-                val points = geometry.polygons.map { it.map { Point.fromLngLat(it.longitude, it.latitude) } }
-                features.add(Feature.fromGeometry(Polygon.fromLngLats(points)))
+                features.add(Feature.fromGeometry(geometry.toMapLibreGeometry()))
             }
 
             /* Polygons should be styled to have a more opaque outline. Due to a technical
@@ -82,8 +82,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 is ElementPolylinesGeometry -> geometry
                 else -> throw IllegalStateException()
             }
-            val points = polylines.polylines.map { it.map { Point.fromLngLat(it.longitude, it.latitude) } }
-            features.add(Feature.fromGeometry(Polygon.fromLngLats(points)))
+            features.add(Feature.fromGeometry(polylines.toMapLibreGeometry()))
         }
 
         featuresByPosition[center] = features

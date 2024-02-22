@@ -7,6 +7,7 @@ import com.mapbox.mapboxsdk.style.expressions.Expression
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
@@ -29,13 +30,13 @@ class PinsMapComponent(private val ctrl: KtMapController) {
     fun set(pins: Collection<Pin>) {
         // do sorting here, because we can set the symbolZOrder to SYMBOL_Z_ORDER_SOURCE, which
         // is the order in which the source has the features
-        val mapLibreFeatures = pins.sortedBy { -it.importance }.map {
-                val p = JsonObject()
-                p.addProperty("icon-image", it.iconName)
-                p.addProperty("symbol-sort-key", -it.importance.toFloat()) // still set sort key, because we may want to try it again
-                it.properties.forEach { p.addProperty(it.first, it.second) }
-                Feature.fromGeometry(com.mapbox.geojson.Point.fromLngLat(it.position.longitude, it.position.latitude), p)
-            }
+        val mapLibreFeatures = pins.sortedBy { -it.importance }.map { pin ->
+            val p = JsonObject()
+            p.addProperty("icon-image", pin.iconName)
+            p.addProperty("symbol-sort-key", -pin.importance.toFloat()) // still set sort key, because we may want to try it again
+            pin.properties.forEach { p.addProperty(it.first, it.second) }
+            Feature.fromGeometry(pin.position.toPoint(), p)
+        }
         // todo: for testing the runOnUiThread is ok, but actually it should be handled differently...
         MainActivity.activity?.runOnUiThread { MainMapFragment.pinsSource?.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures)) }
     }

@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.isApril1st
@@ -183,7 +184,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
             p.addProperty("rotation", rotation?.toFloat() ?: 0f)
 
         MainActivity.activity?.runOnUiThread {
-            locationSource.setGeoJson(Feature.fromGeometry(Point.fromLngLat(pos.longitude, pos.latitude), p))
+            locationSource.setGeoJson(Feature.fromGeometry(pos.toPoint(), p))
         }
         if (useLocationComponent) // do nothing instead of crashing
             MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location)
