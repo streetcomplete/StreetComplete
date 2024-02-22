@@ -35,4 +35,13 @@ class AddAcceptsCardsTest {
         )
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
+
+    @Test fun `not applicable to weird shop values`() {
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(1, tags = mapOf("shop" to "dgfygyug", "name" to "Foobar")),
+            ),
+        )
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
 }
