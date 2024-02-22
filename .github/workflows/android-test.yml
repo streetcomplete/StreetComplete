@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "master"
+      - "actions-instrumentation-tests"
   workflow_dispatch:
 
 jobs:
