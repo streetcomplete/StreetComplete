@@ -522,6 +522,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // something is not working here
         trackSource = GeoJsonSource("track-source")
+        style.addSource(trackSource!!)
         val trackLayer = LineLayer("track", "track-source")
             .withProperties(PropertyFactory.lineWidth(10f))
             .withProperties(PropertyFactory.lineColor("#536dfe"))
@@ -529,6 +530,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
         style.addLayerBelow(trackLayer, "pins-layer")
         oldTrackSource = GeoJsonSource("old-track-source")
+        style.addSource(oldTrackSource!!)
         val oldTrackLayer = LineLayer("old-track", "old-track-source")
             .withProperties(PropertyFactory.lineWidth(10f))
             .withProperties(PropertyFactory.lineColor("#536dfe"))
@@ -538,6 +540,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // something is not working here
         downloadedAreaSource = GeoJsonSource("downloaded-area-source")
+        style.addSource(downloadedAreaSource!!)
         val downloadedAreaLayer = FillLayer("downloaded-area", "downloaded-area-source")
             .withProperties(PropertyFactory.fillColor(Color.RED))
         style.addLayerBelow(downloadedAreaLayer, "pins-layer")
