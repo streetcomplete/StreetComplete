@@ -26,7 +26,7 @@ class NotesDownloader(
 
         yield()
 
-         noteController.putAllForBBox(bbox, notes)
+        noteController.putAllForBBox(bbox, notes)
     }
 
     companion object {

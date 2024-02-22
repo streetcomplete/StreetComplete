@@ -66,7 +66,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
      *  but it needs to know when it changed. There is no specific event for that. Whenever the
      *  zoom changed, the marker showing the accuracy must be updated because the accuracy's marker
      *  size is calculated programmatically using the current zoom. */
-    var currentMapZoom: Float? = null
+    var currentMapZoom: Double? = null
         set(value) {
             if (field == value) return
             field = value
@@ -79,6 +79,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
                 delay(100)
             }
             delay(500) // just to be sure
+            // this is the maplibre location component, could be used instead most of the stuff in here
             val options = LocationComponentOptions.builder(ctx)
                 .bearingDrawable(R.drawable.location_direction) // todo: not displayed
                 .gpsDrawable(R.drawable.location_dot) // todo: not displayed

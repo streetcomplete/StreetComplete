@@ -151,7 +151,7 @@ open class LocationAwareMapFragment : MapFragment() {
         centerCurrentPositionIfFollowing()
     }
 
-    override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
+    override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
         super.onMapIsChanging(position, rotation, tilt, zoom)
         locationMapComponent?.currentMapZoom = zoom
     }

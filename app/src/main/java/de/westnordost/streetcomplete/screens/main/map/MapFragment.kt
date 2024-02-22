@@ -79,9 +79,9 @@ open class MapFragment : Fragment() {
         /** Called when the map has been completely initialized */
         fun onMapInitialized()
         /** Called during camera animation and while the map is being controlled by a user */
-        fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
+        fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double)
         /** Called after camera animation or after the map was controlled by a user */
-        fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
+        fun onMapDidChange(position: LatLon, rotation: Double, tilt: Double, zoom: Double)
         /** Called when the user begins to pan the map */
         fun onPanBegin()
         /** Called when the user long-presses the map */
@@ -223,15 +223,15 @@ open class MapFragment : Fragment() {
                 val camera = cameraPosition ?: return
                 if (camera == previousCameraPosition) return
                 previousCameraPosition = camera
-                onMapIsChanging(camera.position, camera.rotation.toFloat(), camera.tilt.toFloat(), camera.zoom.toFloat())
-                listener?.onMapIsChanging(camera.position, camera.rotation.toFloat(), camera.tilt.toFloat(), camera.zoom.toFloat())
+                onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
+                listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }
             override fun onMapDidChange() {
                 val camera = cameraPosition ?: return
                 if (camera == previousCameraPosition) return
                 previousCameraPosition = camera
-                onMapDidChange(camera.position, camera.rotation.toFloat(), camera.tilt.toFloat(), camera.zoom.toFloat())
-                listener?.onMapDidChange(camera.position, camera.rotation.toFloat(), camera.tilt.toFloat(), camera.zoom.toFloat())
+                onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
+                listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }
         })
     }
@@ -248,9 +248,9 @@ open class MapFragment : Fragment() {
 
     @CallSuper protected open suspend fun onBeforeLoadScene() {}
 
-    protected open fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
+    protected open fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {}
 
-    protected open fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
+    protected open fun onMapDidChange(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {}
 
     /* ---------------------- Overridable callbacks for map interaction ------------------------ */
 /*

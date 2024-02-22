@@ -178,9 +178,9 @@ class MainActivity :
         val data = intent.data ?: return
         if ("geo" != data.scheme) return
         val geo = parseGeoUri(data) ?: return
-        val zoom = if (geo.zoom == null || geo.zoom < 14) 18f else geo.zoom
+        val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
         val pos = LatLon(geo.latitude, geo.longitude)
-        mainFragment?.setCameraPosition(pos, zoom.toFloat())
+        mainFragment?.setCameraPosition(pos, zoom)
     }
 
     public override fun onStart() {

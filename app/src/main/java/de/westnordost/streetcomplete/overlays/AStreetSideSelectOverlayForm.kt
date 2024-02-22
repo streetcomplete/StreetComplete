@@ -59,7 +59,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
         }
     }
 
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
+    override fun onMapOrientation(rotation: Double, tilt: Double) {
         streetSideSelect.onMapOrientation(rotation, tilt)
     }
 

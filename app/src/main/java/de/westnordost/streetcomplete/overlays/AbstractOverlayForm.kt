@@ -126,8 +126,8 @@ abstract class AbstractOverlayForm :
     protected val geometry: ElementGeometry
         get() = _geometry ?: ElementPointGeometry(getDefaultMarkerPosition()!!)
 
-    private var initialMapRotation = 0f
-    private var initialMapTilt = 0f
+    private var initialMapRotation = 0.0
+    private var initialMapTilt = 0.0
     override val elementKey: ElementKey? get() = element?.key
 
     protected val metersPerPixel: Double? get() = listener?.metersPerPixel
@@ -171,8 +171,8 @@ abstract class AbstractOverlayForm :
         element = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
         _geometry = (savedInstanceState?.getString(ARG_GEOMETRY) ?: args.getString(ARG_GEOMETRY))
             ?.let { Json.decodeFromString(it) }
-        initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
-        initialMapTilt = args.getFloat(ARG_MAP_TILT)
+        initialMapRotation = args.getDouble(ARG_MAP_ROTATION)
+        initialMapTilt = args.getDouble(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
 
         /* deliberately did not copy the mobile-country-code hack from AbstractQuestForm because
@@ -236,7 +236,7 @@ abstract class AbstractOverlayForm :
         }
     }
 
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
+    override fun onMapOrientation(rotation: Double, tilt: Double) {
         // default empty implementation
     }
 
@@ -450,7 +450,7 @@ abstract class AbstractOverlayForm :
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(overlay: Overlay, element: Element?, geometry: ElementGeometry?, rotation: Float, tilt: Float) = bundleOf(
+        fun createArguments(overlay: Overlay, element: Element?, geometry: ElementGeometry?, rotation: Double, tilt: Double) = bundleOf(
             ARG_ELEMENT to element?.let { Json.encodeToString(it) },
             ARG_GEOMETRY to geometry?.let { Json.encodeToString(it) },
             ARG_OVERLAY to overlay.name,

@@ -136,10 +136,10 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
 
     /* ------------------------------------ rotate view ----------------------------------------- */
 
-    fun onMapOrientation(rotation: Float, tilt: Float) {
-        puzzleView.streetRotation = offsetPuzzleRotation + (180 * rotation / PI).toFloat()
-        compassView.rotation = (180 * rotation / PI).toFloat()
-        compassView.rotationX = (180 * tilt / PI).toFloat()
+    fun onMapOrientation(rotation: Double, tilt: Double) {
+        puzzleView.streetRotation = offsetPuzzleRotation + rotation.toFloat()
+        compassView.rotation = rotation.toFloat()
+        compassView.rotationX = tilt.toFloat()
     }
 
     /* ------------------------------------------------------------------------------------------ */

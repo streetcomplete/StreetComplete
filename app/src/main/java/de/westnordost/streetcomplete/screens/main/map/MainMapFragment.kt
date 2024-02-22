@@ -163,7 +163,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  enable offline stuff
         //   needs some file at server because for absolutely no reason you can't supply a local style (or even just tile url) for offline stuff
         //   see MapTilesDownloader
-        //  moving to user position after auto-zoom from opening a quest does not center user (looks like it keeps the insets)
+        //  moving to user position after auto-zoom from opening a quest does not center user (looks like it keeps the insets/padding)
         //  zoom very often is choppy, far not as smooth as tangram
         //   more quests make it a little worse, but most of it seems to be "natural"
         //   is it definitely a maplibre issue? or maybe some map change listener?
@@ -540,7 +540,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         style.addLayerBelow(downloadedAreaLayer, "pins-layer")
     }
 
-    override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
+    override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
         super.onMapIsChanging(position, rotation, tilt, zoom)
         questPinsManager?.onNewScreenPosition()
         styleableOverlayManager?.onNewScreenPosition()
