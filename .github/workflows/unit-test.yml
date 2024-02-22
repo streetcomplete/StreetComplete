@@ -1,4 +1,4 @@
-name: Test with Gradle
+name: Gradle unit tests
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,5 +20,5 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v3
 
-      - name: Test with Gradle
+      - name: Run unit tests with Gradle
         run: ./gradlew test
