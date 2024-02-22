@@ -75,7 +75,6 @@ open class LocationAwareMapFragment : MapFragment() {
     var isNavigationMode: Boolean
         set(value) {
             if (_isNavigationMode != value && !value) {
-                // todo: why isn't this working
                 updateCameraPosition(300) { tilt = 0.0 }
             }
             _isNavigationMode = value

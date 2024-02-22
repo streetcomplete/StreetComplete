@@ -37,7 +37,10 @@ class CameraManager(private val mapboxMap: MapboxMap, private val contentResolve
             update.rotation?.let { cameraPositionBuilder.bearing(it) }
             update.position?.let { cameraPositionBuilder.target(it.toLatLng()) }
             update.zoom?.let { cameraPositionBuilder.zoom(it) }
-            update.tilt?.let { cameraPositionBuilder.tilt(it) }
+            update.tilt?.let {
+                // setting tilt to 0.0 is not working?
+                cameraPositionBuilder.tilt(it)
+            }
             val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPositionBuilder.build())
             if (duration == 0 || isAnimationsOff) {
                 mapboxMap.moveCamera(cameraUpdate)

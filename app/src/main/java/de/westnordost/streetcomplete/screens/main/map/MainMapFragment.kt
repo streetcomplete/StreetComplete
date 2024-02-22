@@ -175,14 +175,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   iconAllowOverlap: If true, the icon will be visible even if it collides with other previously drawn symbols.
         //  location updates just move the user location instead of smoothly moving it
         //   would be a reason for the maplibre internal location thing...
+        //  downloadedAreaMapComponent not working (why?)
         //  gps and user tracks not working (why?)
         //   created features seem correct, but also not added to other layers (e.g. putting into geometrySource)
-        //  downloadedAreaMapComponent not working (why?)
         //  disabling navigation mode doesn't undo the tilt, even though it's set using the same function
-        //  quest pins look awful, maybe layer drawable not suitable?
+        //   did some logging, and setting tilt to 0.0 definitely arrives in CameraManager
+        //  quest pins look somewhat awful, maybe layer drawable not suitable?
         //   or maybe just need to properly calculate insets instead of guessing...
-        //  define pins/overlay/geometry/... layers in some json instead of in code?
-        //  either quest pins block overlay icons, or icons (and text) are always overlapping (how to make dependent on zoom?)
+        //  define pins/overlay/geometry/... layers in some json instead of in code, like with tangram
         //  something is wrong, error messages (possibly related to style json)
         //   Error setting property: fill-extrusion-opacity data expressions not supported
         //   Error setting property: text-field layer doesn't support this property
