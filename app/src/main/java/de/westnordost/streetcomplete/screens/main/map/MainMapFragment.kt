@@ -169,7 +169,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   is it definitely a maplibre issue? or maybe some map change listener?
         //  any way tp get useful stack traces from maplibre? often it just starts at Handler.dispatchMessage, so no idea which line of SC triggered it
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
-        //  rotation not stored / restored correctly on startup (but location is)
+        //  when tilt is used and map is scrolled up far enough, pointer pin points 180° wrong
         //  gps and user tracks not working (why?)
         //   created features seem correct, but also not added to other layers (e.g. putting into geometrySource)
         //  downloadedAreaMapComponent not working (why?)

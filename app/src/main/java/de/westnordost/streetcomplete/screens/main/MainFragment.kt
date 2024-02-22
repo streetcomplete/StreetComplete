@@ -876,9 +876,9 @@ class MainFragment :
             binding.locationPointerPin.isGone = intersectionPosition == null
             if (intersectionPosition != null) {
                 val angleAtIntersection = position.initialBearingTo(intersectionPosition)
-                binding.locationPointerPin.pinRotation = angleAtIntersection.toFloat() + (180 * rotation / PI).toFloat()
+                binding.locationPointerPin.pinRotation = (angleAtIntersection + rotation).toFloat()
 
-                val a = angleAtIntersection * PI / 180f + rotation
+                val a = (angleAtIntersection + rotation) * PI / 180f
                 val offsetX = (sin(a) / 2.0 + 0.5) * binding.locationPointerPin.width
                 val offsetY = (-cos(a) / 2.0 + 0.5) * binding.locationPointerPin.height
                 binding.locationPointerPin.x = intersection.x - offsetX.toFloat()

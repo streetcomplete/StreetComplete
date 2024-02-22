@@ -53,8 +53,8 @@ class CameraManager(private val mapboxMap: MapboxMap, private val contentResolve
 
 class CameraUpdate {
     var position: LatLon? = null
-    var rotation: Double? = null
-    var tilt: Double? = null
+    var rotation: Double? = null // degrees
+    var tilt: Double? = null // degrees
     var zoom: Double? = null
 
     var zoomBy: Double? = null
@@ -70,7 +70,7 @@ data class ScCameraPosition(
 ) {
     constructor(p: CameraPosition) : this(
         p.target?.toLatLon() ?: LatLon(0.0, 0.0),
-        -p.bearing * PI / 180.0,
+        -p.bearing,
         p.tilt,
         p.zoom
     )
