@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.osm.Tags
 class AddTreeLeafType : OsmFilterQuestType<TreeLeafType>() {
     override val elementFilter = """
         nodes with natural = tree and !leaf_type
+        and !species:wikidata and !species:wikipedia and !genus:wikidata and !genus:wikipedia
+        and !genus and !species
     """
     override val changesetComment = "Specify leaf types"
     override val wikiLink = "Key:leaf_type"
