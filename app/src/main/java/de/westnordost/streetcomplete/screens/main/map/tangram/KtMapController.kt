@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toCameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraUpdate
@@ -337,6 +338,3 @@ interface MapChangingListener {
     fun onMapIsChanging()
     fun onMapDidChange()
 }
-
-fun LatLng.toLatLon() = LatLon(latitude, longitude)
-

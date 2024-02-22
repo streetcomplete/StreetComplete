@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map.maplibre
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map.tangram.toLatLon
 
 /** Builder data class for camera updates */
 class CameraUpdate {
