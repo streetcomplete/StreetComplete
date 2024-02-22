@@ -3,8 +3,13 @@ package de.westnordost.streetcomplete.screens.main.map.tangram
 import android.content.ContentResolver
 import android.graphics.PointF
 import android.graphics.RectF
+import android.provider.Settings
+import androidx.annotation.AnyThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.mapbox.mapboxsdk.camera.CameraPosition
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
+import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
@@ -41,10 +46,10 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val mapboxMap: MapboxMap, contentResolver: ContentResolver) :
-    DefaultLifecycleObserver {
-
-    private val cameraManager = CameraManager(mapboxMap, contentResolver)
+class KtMapController(
+    private val mapboxMap: MapboxMap,
+    private val contentResolver: ContentResolver
+) : DefaultLifecycleObserver {
 
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
@@ -85,15 +90,41 @@ class KtMapController(private val mapboxMap: MapboxMap, contentResolver: Content
 */
     /* ----------------------------------------- Camera ----------------------------------------- */
 
-    val cameraPosition: ScCameraPosition get() = cameraManager.camera
+    // TODO: necessary?
+    private val isAnimationsOff get() =
+        Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
+
+    val cameraPosition: ScCameraPosition get() = ScCameraPosition(mapboxMap.cameraPosition)
 
     fun updateCameraPosition(duration: Int = 0, builder: CameraUpdate.() -> Unit) {
         updateCameraPosition(duration, CameraUpdate().apply(builder))
     }
 
     fun updateCameraPosition(duration: Int = 0, update: CameraUpdate) {
-        cameraManager.updateCamera(duration, update)
+        updateCamera(duration, update)
     }
+
+    @AnyThread private fun updateCamera(duration: Int = 0, update: CameraUpdate) {
+        synchronized(mapboxMap) { // todo: what to synchronize on? is it necessary a all?
+            update.resolveDeltas(cameraPosition)
+            val cameraPositionBuilder = CameraPosition.Builder(mapboxMap.cameraPosition)
+            update.rotation?.let { cameraPositionBuilder.bearing(it) }
+            update.position?.let { cameraPositionBuilder.target(it.toLatLng()) }
+            update.zoom?.let { cameraPositionBuilder.zoom(it) }
+            update.tilt?.let {
+                // setting tilt to 0.0 is not working?
+                cameraPositionBuilder.tilt(it)
+            }
+            val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPositionBuilder.build())
+            if (duration == 0 || isAnimationsOff) {
+                mapboxMap.moveCamera(cameraUpdate)
+            } else {
+                mapboxMap.easeCamera(cameraUpdate, duration)
+            }
+        }
+    }
+
+
 
     fun setCameraPosition(camera: ScCameraPosition) {
         val update = CameraUpdate()
@@ -338,4 +369,37 @@ interface MapChangingListener {
     fun onMapWillChange()
     fun onMapIsChanging()
     fun onMapDidChange()
+}
+
+class CameraUpdate {
+    var position: LatLon? = null
+    var rotation: Double? = null // degrees
+    var tilt: Double? = null // degrees
+    var zoom: Double? = null
+
+    var zoomBy: Double? = null
+    var tiltBy: Double? = null
+    var rotationBy: Double? = null
+}
+
+data class ScCameraPosition(
+    val position: LatLon,
+    val rotation: Double,
+    val tilt: Double,
+    val zoom: Double
+) {
+    constructor(p: CameraPosition) : this(
+        p.target?.toLatLon() ?: LatLon(0.0, 0.0),
+        -p.bearing,
+        p.tilt,
+        p.zoom
+    )
+}
+
+fun LatLng.toLatLon() = LatLon(latitude, longitude)
+
+private fun CameraUpdate.resolveDeltas(pos: ScCameraPosition) {
+    zoomBy?.let { zoom = pos.zoom + (zoom ?: 0.0) + it }
+    tiltBy?.let { tilt = pos.tilt + (tilt ?: 0.0) + it }
+    rotationBy?.let { rotation = pos.rotation + (rotation ?: 0.0) + it }
 }
