@@ -138,10 +138,7 @@ private val IS_THING_EXPRESSION by lazy {
             // "water_tank" is more of a structure and would also need to include "fire_water_pond" etc. then
         ),
         "highway" to listOf(
-            // "bus_stop", - a bus stop shelter is similar to a shelter, but on the other hand, this
-            //               is used to tag the *platform*, i.e. the shelter (bench, waste basket,
-            //               ...) can also be mapped separately. If this would only be limited to
-            //               points, I guess we could include it, but for any platforms, too much
+            "bus_stop",
             "cyclist_waiting_aid",
             "emergency_access_point",
             "milestone",
@@ -246,6 +243,11 @@ private val IS_THING_EXPRESSION by lazy {
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or man_made = street_cabinet and street_cabinet != postal_service
         or playground
+        or public_transport = platform and (
+          bus = yes
+          or trolleybus = yes
+          or tram = yes
+        )
         or tourism = information and information !~ office|visitor_centre
     """.toElementFilterExpression()
 }
