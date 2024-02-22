@@ -121,7 +121,9 @@ class KtMapController(
         get() = mapboxMap.maxPitch
 
     // todo: all that stuff needs to be on UI thread
-    fun screenPositionToLatLon(screenPosition: PointF): LatLon? = mapboxMap.projection.fromScreenLocation(screenPosition).toLatLon()
+    fun screenPositionToLatLon(screenPosition: PointF): LatLon =
+        mapboxMap.projection.fromScreenLocation(screenPosition).toLatLon()
+
     fun latLonToScreenPosition(latLon: LatLon): PointF = mapboxMap.projection.toScreenLocation(latLon.toLatLng())
     fun latLonToScreenPosition(latLon: LatLon, screenPositionOut: PointF, clipToViewport: Boolean) =
         mapboxMap.projection.toScreenLocation(latLon.toLatLng()) // todo: clip to viewport!
@@ -153,12 +155,12 @@ class KtMapController(
         // dealing with tilt: this method is just not defined if the tilt is above a certain limit
         if (cameraPosition.tilt > Math.PI / 4f) return null // 45°
 
-        val positions = arrayOf(
+        val positions = listOf(
             screenPositionToLatLon(PointF(padding.left, padding.top)),
             screenPositionToLatLon(PointF(padding.left + size.x, padding.top)),
             screenPositionToLatLon(PointF(padding.left, padding.top + size.y)),
             screenPositionToLatLon(PointF(padding.left + size.x, padding.top + size.y))
-        ).filterNotNull()
+        )
 
         return positions.enclosingBoundingBox()
     }
@@ -181,13 +183,13 @@ class KtMapController(
         val h = mapboxMap.height
         if (w == 0f || h == 0f) return null
 
-        val screenCenter = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
+        val screenCenter = screenPositionToLatLon(PointF(w / 2f, h / 2f))
         val offsetScreenCenter = screenPositionToLatLon(
             PointF(
                 padding.left + (w - padding.left - padding.right) / 2,
                 padding.top + (h - padding.top - padding.bottom) / 2
             )
-        ) ?: return null
+        )
 
         val zoomDelta = zoom.toDouble() - cameraPosition.zoom
         val distance = offsetScreenCenter.distanceTo(screenCenter)
@@ -288,8 +290,8 @@ class KtMapController(
         val h = mapboxMap.height
         if (w == 0f || h == 0f) return null
 
-        val center = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
-        val bottom = screenPositionToLatLon(PointF(w / 2f, h * 1f)) ?: return null
+        val center = screenPositionToLatLon(PointF(w / 2f, h / 2f))
+        val bottom = screenPositionToLatLon(PointF(w / 2f, h * 1f))
         return center.distanceTo(bottom)
     }
 }
