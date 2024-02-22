@@ -170,11 +170,15 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //  any way tp get useful stack traces from maplibre? often it just starts at Handler.dispatchMessage, so no idea which line of SC triggered it
         //  re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
         //  when tilt is used and map is scrolled up far enough, pointer pin points 180° wrong
+        //  consider difference between iconIgnorePlacement and iconAllowOverlap
+        //   iconIgnorePlacement: If true, other symbols can be visible even if they collide with the icon.
+        //   iconAllowOverlap: If true, the icon will be visible even if it collides with other previously drawn symbols.
+        //  location updates just move the user location instead of smoothly moving it
+        //   would be a reason for the maplibre internal location thing...
         //  gps and user tracks not working (why?)
         //   created features seem correct, but also not added to other layers (e.g. putting into geometrySource)
         //  downloadedAreaMapComponent not working (why?)
         //  disabling navigation mode doesn't undo the tilt, even though it's set using the same function
-        //  tilt does not affect the accuracy circle (works for maplibre internal one)
         //  quest pins look awful, maybe layer drawable not suitable?
         //   or maybe just need to properly calculate insets instead of guessing...
         //  define pins/overlay/geometry/... layers in some json instead of in code?

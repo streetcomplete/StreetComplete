@@ -16,6 +16,7 @@ import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
 import com.mapbox.mapboxsdk.location.LocationComponentOptions
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression
+import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
@@ -107,6 +108,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
             .withProperties(
                 PropertyFactory.iconImage("dotImg"),
                 PropertyFactory.iconAllowOverlap(true),
+                PropertyFactory.iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
             )
         val zoomExpression = Expression.interpolate(Expression.exponential(2), Expression.zoom(),
                 Expression.stop(4, Expression.division(Expression.get("size"), Expression.literal(4096f))),
@@ -117,13 +119,15 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
             .withProperties(
                 PropertyFactory.iconImage("accuracyImg"),
                 PropertyFactory.iconAllowOverlap(true),
-                PropertyFactory.iconSize(zoomExpression)
+                PropertyFactory.iconSize(zoomExpression),
+                PropertyFactory.iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
             )
         val directionLayer = SymbolLayer("direction", "location-source")
             .withProperties(
                 PropertyFactory.iconImage("directionImg"),
                 PropertyFactory.iconAllowOverlap(true),
-                PropertyFactory.iconRotate(Expression.get("rotation"))
+                PropertyFactory.iconRotate(Expression.get("rotation")),
+                PropertyFactory.iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
             )
             .withFilter(Expression.has("rotation"))
         mapStyle.addLayerBelow(accuracyLayer, "pins-layer")
