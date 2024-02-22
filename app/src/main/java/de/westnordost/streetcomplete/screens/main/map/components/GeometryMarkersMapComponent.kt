@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
-import de.westnordost.streetcomplete.screens.main.map.maplibre.pointFromGeometry
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 
@@ -50,9 +50,9 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                         .replace("\"", "\\\"")
                     p.addProperty("label", escapedTitle)
                 }
-                features.add(Feature.fromGeometry(pointFromGeometry(geometry), p))
+                features.add(Feature.fromGeometry(geometry.center.toPoint(), p))
             } else {
-                features.add(Feature.fromGeometry(pointFromGeometry(geometry)))
+                features.add(Feature.fromGeometry(geometry.center.toPoint()))
             }
         }
 
@@ -64,7 +64,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 .replace("\"", "\\\"")
             val p = JsonObject()
             p.addProperty("label", escapedTitle)
-            features.add(Feature.fromGeometry(pointFromGeometry(geometry), p))
+            features.add(Feature.fromGeometry(geometry.center.toPoint(), p))
         }
 
         // polygon / polylines marker(s)

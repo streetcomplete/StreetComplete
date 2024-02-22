@@ -25,12 +25,11 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
-import de.westnordost.streetcomplete.screens.main.map.maplibre.pointFromGeometry
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.addTransparency
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
-import kotlin.math.absoluteValue
 
 /** Takes care of displaying styled map data */
 class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController) {
@@ -68,7 +67,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                         p.addProperty("icon", style.icon)
                     if (style.label != null)
                         p.addProperty("label", style.label) // offset and stuff is set for all text in layer
-                    listOf(Feature.fromGeometry(pointFromGeometry(geometry), p))
+                    listOf(Feature.fromGeometry(geometry.center.toPoint(), p))
                 }
                 is PolygonStyle -> {
                     if (style.color != de.westnordost.streetcomplete.overlays.Color.INVISIBLE) {
@@ -124,7 +123,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                     } else null
                     val label = if (style.label != null) {
                         Feature.fromGeometry(
-                            pointFromGeometry(geometry),
+                            geometry.center.toPoint(),
                             JsonObject().apply { addProperty("label", style.label) }
                         )
                     } else null

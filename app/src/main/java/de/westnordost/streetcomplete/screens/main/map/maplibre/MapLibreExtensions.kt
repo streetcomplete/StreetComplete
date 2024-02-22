@@ -19,10 +19,6 @@ import de.westnordost.streetcomplete.util.math.measuredArea
 fun LatLng.toLatLon() = LatLon(latitude, longitude)
 fun LatLon.toLatLng() = LatLng(latitude, longitude)
 
-fun pointFromGeometry(geometry: ElementGeometry): Point {
-    return Point.fromLngLat(geometry.center.longitude, geometry.center.latitude)
-}
-
 fun ElementGeometry.toMapLibreGeometry(): Geometry = when (this) {
     is ElementPointGeometry -> toMapLibreGeometry()
     is ElementPolygonsGeometry -> toMapLibreGeometry()
@@ -76,4 +72,4 @@ fun ElementPolygonsGeometry.toMapLibreGeometry(): Geometry {
     return MultiPolygon.fromLngLats(groupedRings)
 }
 
-private fun LatLon.toPoint(): Point = Point.fromLngLat(longitude, latitude)
+fun LatLon.toPoint(): Point = Point.fromLngLat(longitude, latitude)
