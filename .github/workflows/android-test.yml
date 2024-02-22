@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        api-level: [34]
+        api-level: [33]
     steps:
       - uses: actions/checkout@v4
       - name: set up JDK 17
