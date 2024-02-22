@@ -41,8 +41,6 @@ open class MapFragment : Fragment() {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-//    private val defaultCameraInterpolator = AccelerateDecelerateInterpolator()
-
     protected var controller: KtMapController? = null
     protected var mapboxMap : MapboxMap? = null
     protected var sceneMapComponent: SceneMapComponent? = null

@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraUpdate
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -162,28 +163,18 @@ class KtMapController(
         return positions.enclosingBoundingBox()
     }
 
-    fun getEnclosingCameraPosition(bounds: BoundingBox, padding: RectF): CameraPosition? {
-        val zoom = getMaxZoomThatContainsBounds(bounds, padding) ?: return null
-        val boundsCenter = listOf(bounds.min, bounds.max).centerPointOfPolyline()
-        val pos = getLatLonThatCentersLatLon(boundsCenter, padding, zoom) ?: return null
-        val camera = cameraPosition
-        return CameraPosition(pos, camera.rotation, camera.tilt, zoom.toDouble())
-    }
-
-    private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Float? {
-        val screenBounds: BoundingBox = screenAreaToBoundingBox(padding) ?: return null
-        val currentZoom: Float = cameraPosition.zoom.toFloat()
-
-        val screenWidth = normalizeLongitude(screenBounds.max.longitude - screenBounds.min.longitude)
-        val screenHeight = screenBounds.max.latitude - screenBounds.min.latitude
-        val objectWidth = normalizeLongitude(bounds.max.longitude - bounds.min.longitude)
-        val objectHeight = bounds.max.latitude - bounds.min.latitude
-
-        val zoomDeltaX = log10(screenWidth / objectWidth) / log10(2.0)
-        val zoomDeltaY = log10(screenHeight / objectHeight) / log10(2.0)
-        val zoomDelta = min(zoomDeltaX, zoomDeltaY)
-        return max(1.0, min(currentZoom + zoomDelta, 20.0)).toFloat()
-    }
+    fun getEnclosingCameraPosition(geometry: ElementGeometry, padding: RectF): CameraPosition? =
+        mapboxMap.getCameraForGeometry(
+            geometry.toMapLibreGeometry(),
+            intArrayOf(
+                padding.left.toInt(),
+                padding.top.toInt(),
+                padding.right.toInt(),
+                padding.bottom.toInt()
+            ),
+            mapboxMap.cameraPosition.bearing,
+            mapboxMap.cameraPosition.tilt
+        )?.toCameraPosition()
 
     fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom.toFloat()): LatLon? {
         val w = mapboxMap.width
@@ -300,21 +291,6 @@ class KtMapController(
         val center = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
         val bottom = screenPositionToLatLon(PointF(w / 2f, h * 1f)) ?: return null
         return center.distanceTo(bottom)
-    }
-
-    fun screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
-        val p = PointF()
-        return when (g) {
-            is ElementPolylinesGeometry -> g.polylines
-            is ElementPolygonsGeometry -> g.polygons
-            else -> listOf(listOf(g.center))
-        }.flatten().all {
-//            latLonToScreenPosition(it, p, false) ??
-                p.x >= offset.left
-                && p.x <= mapboxMap.width - offset.right
-                && p.y >= offset.top
-                && p.y <= mapboxMap.height - offset.bottom
-        }
     }
 }
 

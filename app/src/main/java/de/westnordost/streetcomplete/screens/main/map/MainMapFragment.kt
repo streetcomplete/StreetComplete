@@ -132,7 +132,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         pinsMapComponent = PinsMapComponent(ctrl)
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
-        geometryMapComponent = FocusGeometryMapComponent(ctrl, mapboxMap)
+        geometryMapComponent = FocusGeometryMapComponent(ctrl)
 
         questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
@@ -684,7 +684,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //        geometrySource?.setGeoJson(thisIsNoFeature) // nullable, but crashes maplibre (native) if null. great.
         geometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
         focusedGeometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
-//        pinsLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
+        pinsLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
         pinsDotLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
     }
 
