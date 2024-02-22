@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.upload
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
@@ -24,7 +23,7 @@ class Uploader(
     private val userLoginStatusSource: UserLoginStatusSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
     private val mutex: Mutex
-): UploadProgressSource {
+) : UploadProgressSource {
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
 
@@ -72,7 +71,6 @@ class Uploader(
                 noteEditsUploader.upload()
             }
             Log.i(TAG, "Finished upload")
-
         } catch (e: CancellationException) {
             Log.i(TAG, "Upload cancelled")
         } catch (e: Exception) {

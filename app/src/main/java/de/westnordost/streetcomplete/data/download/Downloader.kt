@@ -27,7 +27,7 @@ class Downloader(
     private val mapTilesDownloader: MapTilesDownloader,
     private val downloadedTilesController: DownloadedTilesController,
     private val mutex: Mutex
-): DownloadProgressSource {
+) : DownloadProgressSource {
 
     private val listeners = Listeners<DownloadProgressSource.Listener>()
 
@@ -74,7 +74,6 @@ class Downloader(
 
             val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
             Log.i(TAG, "Finished download ($sqkm km², bbox: $bboxString) in ${seconds.format(1)}s")
-
         } catch (e: CancellationException) {
             hasError = true
             Log.i(TAG, "Download cancelled")

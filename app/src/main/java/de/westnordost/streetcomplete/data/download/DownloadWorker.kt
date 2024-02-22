@@ -48,7 +48,7 @@ class DownloadWorker(
             val isPriorityDownload = inputData.getBoolean(ARG_IS_USER_INITIATED, false)
             downloader.download(bbox, isPriorityDownload)
             Result.success()
-        }  catch (e: Exception) {
+        } catch (e: Exception) {
             Result.failure()
         }
     }

@@ -12,7 +12,6 @@ import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
-import de.westnordost.streetcomplete.util.logs.Log
 
 /** Collects and uploads all user changes: notes left, comments left on existing
  * notes and quests answered  */
