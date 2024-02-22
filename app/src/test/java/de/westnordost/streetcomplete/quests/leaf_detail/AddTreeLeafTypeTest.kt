@@ -43,7 +43,25 @@ class AddTreeLeafTypeTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test fun `not applicable to trees with some tags indicating leaf type`() {
+    @Test fun `not applicable to trees with taxon tag indicating leaf type`() {
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(1, tags = mapOf("natural" to "tree", "taxon" to "some_value")),
+            ),
+        )
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `not applicable to trees with taxon de tag indicating leaf type`() {
+        val mapData = TestMapDataWithGeometry(
+            listOf(
+                node(1, tags = mapOf("natural" to "tree", "taxon:de" to "some_value")),
+            ),
+        )
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `not applicable to trees with species pl tag indicating leaf type`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 node(1, tags = mapOf("natural" to "tree", "species:pl" to "dąb")),

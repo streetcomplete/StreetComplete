@@ -14,8 +14,8 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafType>() {
     override val elementFilter = """
         nodes with natural = tree and !leaf_type
         and !species:wikidata and !species:wikipedia and !genus:wikidata and !genus:wikipedia
-        and !genus and !species and !genus:.* and !species:.* and !taxon and !taxon:.*
-        and !taxon:species and !taxon:species:.* and !taxon:genus and !taxon:genus:.*
+        and !genus and !~genus:.* and !species and !~species:.* and !taxon and !~taxon:.*
+        and !taxon:species and !~taxon:species:.* and !taxon:genus and !~taxon:genus:.*
     """
     override val changesetComment = "Specify leaf types"
     override val wikiLink = "Key:leaf_type"
