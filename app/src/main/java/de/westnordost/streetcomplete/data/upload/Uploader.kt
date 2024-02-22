@@ -78,6 +78,7 @@ class Uploader(
         } catch (e: Exception) {
             Log.e(TAG, "Unable to upload", e)
             listeners.forEach { it.onError(e) }
+            throw e
         } finally {
             isUploadInProgress = false
             listeners.forEach { it.onFinished() }

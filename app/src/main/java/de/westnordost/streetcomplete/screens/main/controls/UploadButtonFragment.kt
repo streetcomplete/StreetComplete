@@ -90,7 +90,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
         if (!userLoginStatusSource.isLoggedIn) {
             context?.let { RequestLoginDialog(it).show() }
         } else {
-            uploadController.upload()
+            uploadController.upload(isUserInitiated = true)
         }
     }
 

@@ -31,16 +31,17 @@ class Downloader(
 
     private val listeners = Listeners<DownloadProgressSource.Listener>()
 
-    override var isPriorityDownloadInProgress: Boolean = false
+    override var isUserInitiatedDownloadInProgress: Boolean = false
         private set
 
     override var isDownloadInProgress: Boolean = false
         private set
 
-    suspend fun download(bbox: BoundingBox, isPriority: Boolean) {
+    suspend fun download(bbox: BoundingBox, isUserInitiated: Boolean) {
+        var hasError = false
         try {
             isDownloadInProgress = true
-            isPriorityDownloadInProgress = isPriority
+            isUserInitiatedDownloadInProgress = isUserInitiated
             listeners.forEach { it.onStarted() }
 
             val tiles = bbox.enclosingTilesRect(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
@@ -53,7 +54,7 @@ class Downloader(
             ).joinToString(",")
             val sqkm = (tilesBbox.area() / 1000 / 1000).format(1)
 
-            if (!isPriority && hasDownloadedAlready(tiles)) {
+            if (!isUserInitiated && hasDownloadedAlready(tiles)) {
                 Log.i(TAG, "Not downloading ($sqkm km², bbox: $bboxString), data still fresh")
                 return
             }
@@ -75,14 +76,18 @@ class Downloader(
             Log.i(TAG, "Finished download ($sqkm km², bbox: $bboxString) in ${seconds.format(1)}s")
 
         } catch (e: CancellationException) {
+            hasError = true
             Log.i(TAG, "Download cancelled")
         } catch (e: Exception) {
+            hasError = true
             Log.e(TAG, "Unable to download", e)
             listeners.forEach { it.onError(e) }
+            throw e
         } finally {
             isDownloadInProgress = false
-            isPriorityDownloadInProgress = false
+            isUserInitiatedDownloadInProgress = false
             listeners.forEach { it.onFinished() }
+            if (!hasError) listeners.forEach { it.onSuccess() }
         }
     }
 

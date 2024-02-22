@@ -185,7 +185,7 @@ class QuestAutoSyncer(
 
         coroutineScope.launch {
             try {
-                uploadController.upload()
+                uploadController.upload(isUserInitiated = false)
             } catch (e: IllegalStateException) {
                 // The Android 9 bug described here should not result in a hard crash of the app
                 // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume

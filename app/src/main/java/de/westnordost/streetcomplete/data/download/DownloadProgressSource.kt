@@ -9,7 +9,7 @@ interface DownloadProgressSource {
     }
 
     /** @return true if a download triggered by the user is running */
-    val isPriorityDownloadInProgress: Boolean
+    val isUserInitiatedDownloadInProgress: Boolean
     /** @return true if a download is running */
     val isDownloadInProgress: Boolean
 

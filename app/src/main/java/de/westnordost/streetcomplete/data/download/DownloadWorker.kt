@@ -45,7 +45,7 @@ class DownloadWorker(
             ?: return Result.failure()
 
         return try {
-            val isPriorityDownload = inputData.getBoolean(ARG_IS_PRIORITY, false)
+            val isPriorityDownload = inputData.getBoolean(ARG_IS_USER_INITIATED, false)
             downloader.download(bbox, isPriorityDownload)
             Result.success()
         }  catch (e: Exception) {
@@ -55,14 +55,14 @@ class DownloadWorker(
 
     companion object {
         private const val ARG_BBOX = "bbox"
-        private const val ARG_IS_PRIORITY = "isPriority"
+        private const val ARG_IS_USER_INITIATED = "isUserInitiated"
 
-        fun createWorkRequest(bbox: BoundingBox, isPriority: Boolean): OneTimeWorkRequest =
+        fun createWorkRequest(bbox: BoundingBox, isUserInitiated: Boolean): OneTimeWorkRequest =
             OneTimeWorkRequestBuilder<DownloadWorker>()
                 .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
                 .setInputData(workDataOf(
                     ARG_BBOX to Json.encodeToString(bbox),
-                    ARG_IS_PRIORITY to isPriority,
+                    ARG_IS_USER_INITIATED to isUserInitiated,
                 ))
                 .build()
     }

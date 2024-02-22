@@ -7,11 +7,11 @@ import androidx.work.WorkManager
 /** Controls uploading */
 class UploadController(private val context: Context) {
     /** Collect and upload all changes made by the user  */
-    fun upload() {
+    fun upload(isUserInitiated: Boolean) {
         WorkManager.getInstance(context).enqueueUniqueWork(
             Uploader.TAG,
             ExistingWorkPolicy.KEEP,
-            UploadWorker.createWorkRequest()
+            UploadWorker.createWorkRequest(isUserInitiated)
         )
     }
 }

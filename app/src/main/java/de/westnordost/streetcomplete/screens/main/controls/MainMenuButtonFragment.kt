@@ -106,7 +106,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     private fun downloadDisplayedArea() {
         val downloadArea = listener?.getDownloadArea() ?: return
 
-        if (downloadProgressSource.isPriorityDownloadInProgress) {
+        if (downloadProgressSource.isUserInitiatedDownloadInProgress) {
             context?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_cancel_prev_download_title)
