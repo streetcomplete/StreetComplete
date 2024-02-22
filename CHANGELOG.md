@@ -4,7 +4,7 @@
 
 - Use new method to upload and download data as mandated by Google Play policy. Be sure to report
   any issues related to this. On Android 13 and above, there's no notification for continuing to 
-  sync in the background anymore.
+  sync in the background anymore. (#5492)
 - A few small fixes, thanks @matkoniecz
 
 
