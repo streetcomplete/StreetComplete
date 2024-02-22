@@ -18,8 +18,6 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    - uses: gradle/actions/setup-gradle@v3
     - name: Test with Gradle
       run: ./gradlew test
