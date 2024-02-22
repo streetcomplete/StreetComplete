@@ -13,8 +13,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
-import de.westnordost.streetcomplete.screens.main.map.tangram.ScCameraPosition
-import de.westnordost.streetcomplete.screens.main.map.tangram.CameraUpdate
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.toLatLon
 import kotlin.math.abs
@@ -27,7 +26,7 @@ import kotlin.math.roundToInt
  *  contained in the screen area */
 class FocusGeometryMapComponent(private val ctrl: KtMapController, private val mapboxMap: MapboxMap) {
 
-    private var previousCameraPosition: ScCameraPosition? = null
+    private var previousCameraPosition: CameraPosition? = null
 
     /** Returns whether beginFocusGeometry() was called earlier but not endFocusGeometry() yet */
     val isZoomedToContainGeometry: Boolean get() =
@@ -93,13 +92,12 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController, private val m
             )
             c?.let {
                 if (g is ElementPointGeometry) {
-                    // because of target zoom
-                    val update = CameraUpdate().apply {
+                    ctrl.updateCameraPosition(zoomTime) {
                         zoom = targetZoom.toDouble()
                         position = it.target?.toLatLon()
                     }
-                    ctrl.updateCameraPosition(zoomTime, update)
                 } else {
+                    // TODO
                     // above is nice for nodes, but actually it gets the wrong position (ignores padding)
                     MainMapFragment.mapboxMap!!.easeCamera(CameraUpdateFactory.newCameraPosition(it), zoomTime.toInt())
                 }

@@ -20,8 +20,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
 import de.westnordost.streetcomplete.screens.main.map.components.SceneMapComponent
-import de.westnordost.streetcomplete.screens.main.map.tangram.ScCameraPosition
-import de.westnordost.streetcomplete.screens.main.map.tangram.CameraUpdate
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.MapChangingListener
 import de.westnordost.streetcomplete.screens.main.map.tangram.initMap
@@ -47,7 +47,7 @@ open class MapFragment : Fragment() {
     protected var mapboxMap : MapboxMap? = null
     protected var sceneMapComponent: SceneMapComponent? = null
 
-    private var previousCameraPosition: ScCameraPosition? = null
+    private var previousCameraPosition: CameraPosition? = null
 
     var isMapInitialized: Boolean = false
         private set
@@ -307,7 +307,7 @@ open class MapFragment : Fragment() {
         saveCameraPosition(camera)
     }
 
-    private fun loadCameraPosition(): ScCameraPosition? {
+    private fun loadCameraPosition(): CameraPosition? {
         if (!prefs.keys.containsAll(listOf(
                 Prefs.MAP_LATITUDE,
                 Prefs.MAP_LONGITUDE,
@@ -318,7 +318,7 @@ open class MapFragment : Fragment() {
             return null
         }
 
-        return ScCameraPosition(
+        return CameraPosition(
             LatLon(
                 prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
                 prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
@@ -329,7 +329,7 @@ open class MapFragment : Fragment() {
         )
     }
 
-    private fun saveCameraPosition(camera: ScCameraPosition) {
+    private fun saveCameraPosition(camera: CameraPosition) {
         prefs.putFloat(Prefs.MAP_ROTATION, camera.rotation.toFloat())
         prefs.putFloat(Prefs.MAP_TILT, camera.tilt.toFloat())
         prefs.putFloat(Prefs.MAP_ZOOM, camera.zoom.toFloat())
@@ -358,7 +358,7 @@ open class MapFragment : Fragment() {
 //        return screenPositionOut
     }
 
-    val cameraPosition: ScCameraPosition?
+    val cameraPosition: CameraPosition?
         get() = controller?.cameraPosition
 
     fun updateCameraPosition(
@@ -368,7 +368,7 @@ open class MapFragment : Fragment() {
         controller?.updateCameraPosition(duration, builder)
     }
 
-    fun setInitialCameraPosition(camera: ScCameraPosition) {
+    fun setInitialCameraPosition(camera: CameraPosition) {
         val controller = controller
         if (controller != null) {
             controller.cameraPosition = camera

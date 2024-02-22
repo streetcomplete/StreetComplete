@@ -4,11 +4,8 @@ import android.content.ContentResolver
 import android.graphics.PointF
 import android.graphics.RectF
 import android.provider.Settings
-import androidx.annotation.AnyThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.mapbox.mapboxsdk.camera.CameraPosition
-import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
@@ -18,6 +15,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toCameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraUpdate
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -89,46 +92,17 @@ class KtMapController(
 */
     /* ----------------------------------------- Camera ----------------------------------------- */
 
-    // TODO: necessary?
-    private val isAnimationsOff get() =
-        Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
-
-    var cameraPosition: ScCameraPosition
-        get() = ScCameraPosition(mapboxMap.cameraPosition)
-        set(value) {
-            mapboxMap.cameraPosition = CameraPosition.Builder()
-                .bearing(value.rotation)
-                .zoom(value.zoom)
-                .tilt(value.tilt)
-                .target(value.position.toLatLng())
-                .build()
-        }
+    var cameraPosition: CameraPosition
+        get() = mapboxMap.cameraPosition.toCameraPosition()
+        set(value) { mapboxMap.cameraPosition = value.toMapLibreCameraPosition() }
 
     fun updateCameraPosition(duration: Int = 0, builder: CameraUpdate.() -> Unit) {
-        updateCameraPosition(duration, CameraUpdate().apply(builder))
-    }
-
-    fun updateCameraPosition(duration: Int = 0, update: CameraUpdate) {
-        updateCamera(duration, update)
-    }
-
-    @AnyThread private fun updateCamera(duration: Int = 0, update: CameraUpdate) {
-        synchronized(mapboxMap) { // todo: what to synchronize on? is it necessary a all?
-            update.resolveDeltas(cameraPosition)
-            val cameraPositionBuilder = CameraPosition.Builder(mapboxMap.cameraPosition)
-            update.rotation?.let { cameraPositionBuilder.bearing(it) }
-            update.position?.let { cameraPositionBuilder.target(it.toLatLng()) }
-            update.zoom?.let { cameraPositionBuilder.zoom(it) }
-            update.tilt?.let {
-                // setting tilt to 0.0 is not working?
-                cameraPositionBuilder.tilt(it)
-            }
-            val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPositionBuilder.build())
-            if (duration == 0 || isAnimationsOff) {
-                mapboxMap.moveCamera(cameraUpdate)
-            } else {
-                mapboxMap.easeCamera(cameraUpdate, duration)
-            }
+        val update = CameraUpdate().apply(builder).toMapLibreCameraUpdate(cameraPosition)
+        val animatorScale = Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
+        if (duration == 0 || animatorScale == 0f) {
+            mapboxMap.moveCamera(update)
+        } else {
+            mapboxMap.easeCamera(update, (duration * animatorScale).toInt())
         }
     }
 
@@ -143,7 +117,6 @@ class KtMapController(
     var maximumTilt: Double
         set(value) { mapboxMap.setMaxPitchPreference(value) }
         get() = mapboxMap.maxPitch
-    init { maximumTilt = 60.0 }
 
     // todo: all that stuff needs to be on UI thread
     fun screenPositionToLatLon(screenPosition: PointF): LatLon? = mapboxMap.projection.fromScreenLocation(screenPosition).toLatLon()
@@ -188,21 +161,18 @@ class KtMapController(
         return positions.enclosingBoundingBox()
     }
 
-    fun getEnclosingCameraPosition(bounds: BoundingBox, padding: RectF): ScCameraPosition? {
+    fun getEnclosingCameraPosition(bounds: BoundingBox, padding: RectF): CameraPosition? {
         val zoom = getMaxZoomThatContainsBounds(bounds, padding) ?: return null
         val boundsCenter = listOf(bounds.min, bounds.max).centerPointOfPolyline()
         val pos = getLatLonThatCentersLatLon(boundsCenter, padding, zoom) ?: return null
         val camera = cameraPosition
-        return ScCameraPosition(pos, camera.rotation, camera.tilt, zoom.toDouble())
+        return CameraPosition(pos, camera.rotation, camera.tilt, zoom.toDouble())
     }
 
     private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Float? {
-        val screenBounds: BoundingBox
-        val currentZoom: Float
-        synchronized(mapboxMap) { // todo: what to synchronize on? is it necessary a all?
-            screenBounds = screenAreaToBoundingBox(padding) ?: return null
-            currentZoom = cameraPosition.zoom.toFloat()
-        }
+        val screenBounds: BoundingBox = screenAreaToBoundingBox(padding) ?: return null
+        val currentZoom: Float = cameraPosition.zoom.toFloat()
+
         val screenWidth = normalizeLongitude(screenBounds.max.longitude - screenBounds.min.longitude)
         val screenHeight = screenBounds.max.latitude - screenBounds.min.latitude
         val objectWidth = normalizeLongitude(bounds.max.longitude - bounds.min.longitude)
@@ -368,35 +338,5 @@ interface MapChangingListener {
     fun onMapDidChange()
 }
 
-class CameraUpdate {
-    var position: LatLon? = null
-    var rotation: Double? = null // degrees
-    var tilt: Double? = null // degrees
-    var zoom: Double? = null
-
-    var zoomBy: Double? = null
-    var tiltBy: Double? = null
-    var rotationBy: Double? = null
-}
-
-data class ScCameraPosition(
-    val position: LatLon,
-    val rotation: Double,
-    val tilt: Double,
-    val zoom: Double
-) {
-    constructor(p: CameraPosition) : this(
-        p.target?.toLatLon() ?: LatLon(0.0, 0.0),
-        -p.bearing,
-        p.tilt,
-        p.zoom
-    )
-}
-
 fun LatLng.toLatLon() = LatLon(latitude, longitude)
 
-private fun CameraUpdate.resolveDeltas(pos: ScCameraPosition) {
-    zoomBy?.let { zoom = pos.zoom + (zoom ?: 0.0) + it }
-    tiltBy?.let { tilt = pos.tilt + (tilt ?: 0.0) + it }
-    rotationBy?.let { rotation = pos.rotation + (rotation ?: 0.0) + it }
-}

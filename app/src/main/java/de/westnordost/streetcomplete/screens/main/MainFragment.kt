@@ -90,7 +90,7 @@ import de.westnordost.streetcomplete.screens.main.map.MapFragment
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
-import de.westnordost.streetcomplete.screens.main.map.tangram.ScCameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
@@ -1182,14 +1182,14 @@ class MainFragment :
 
     //region Interface - For the parent fragment / activity
 
-    fun getCameraPosition(): ScCameraPosition? {
+    fun getCameraPosition(): CameraPosition? {
         return mapFragment?.cameraPosition
     }
 
     fun setCameraPosition(position: LatLon, zoom: Double) {
         mapFragment?.isFollowingPosition = false
         mapFragment?.isNavigationMode = false
-        mapFragment?.setInitialCameraPosition(ScCameraPosition(position, 0.0, 0.0, zoom))
+        mapFragment?.setInitialCameraPosition(CameraPosition(position, 0.0, 0.0, zoom))
         setIsFollowingPosition(false)
     }
 
