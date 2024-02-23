@@ -27,9 +27,7 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafType>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_tree_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
-            nodes with natural=tree
-        """.toElementFilterExpression())
+        getMapData().filter("nodes with natural = tree".toElementFilterExpression())
 
     override fun createForm() = AddTreeLeafTypeForm()
 
