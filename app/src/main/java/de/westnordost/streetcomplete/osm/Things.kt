@@ -205,7 +205,7 @@ private val IS_THING_EXPRESSION by lazy {
             "planter",
             "snow_cannon",
             "stele",
-            // "street_cabinet", - blocked; see note at amenity=post_box
+            // "street_cabinet", - blocked; see note at amenity=post_box, most are included by dedicated filter below
             "surveillance",
             // "survey_point" - this can be very very small -> verifiability issue
             //                  danger that mapper deletes it because he can't find it
