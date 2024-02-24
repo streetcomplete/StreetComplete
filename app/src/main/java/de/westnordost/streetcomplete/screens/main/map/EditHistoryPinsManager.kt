@@ -78,7 +78,7 @@ class EditHistoryPinsManager(
 
     private fun hide() {
         viewLifecycleScope.coroutineContext.cancelChildren()
-        viewLifecycleScope.launch { pinsMapComponent.clear() }
+        viewLifecycleScope.launch(Dispatchers.Main) { pinsMapComponent.clear() }
         editHistorySource.removeListener(editHistoryListener)
     }
 
@@ -90,7 +90,7 @@ class EditHistoryPinsManager(
             if (this@EditHistoryPinsManager.isVisible) {
                 val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
                 val pins = createEditPins(edits)
-                pinsMapComponent.set(pins)
+                withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
             }
         }
     }

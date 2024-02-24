@@ -2,19 +2,13 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.res.Resources
 import android.graphics.Color
+import androidx.annotation.UiThread
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
-import com.mapbox.geojson.MultiLineString
-import com.mapbox.geojson.Point
-import com.mapbox.geojson.Polygon
-import com.mapbox.mapboxsdk.style.expressions.Expression
-import de.westnordost.streetcomplete.R
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -23,8 +17,7 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
-import de.westnordost.streetcomplete.screens.MainActivity
-import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -33,8 +26,9 @@ import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 
 /** Takes care of displaying styled map data */
-class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController) {
-//    private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
+class StyleableOverlayMapComponent(private val resources: Resources, private val ctrl: KtMapController) {
+
+    private val overlaySource = GeoJsonSource("overlay-source")
 
     private val darkenedColors = HashMap<String, String>()
     private val transparentColors = HashMap<String, String>()
@@ -42,18 +36,22 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
     /** Shows/hides the map data */
     var isVisible: Boolean
         // add / remove source
-        get() = MainMapFragment.mapboxMap?.style?.sources?.any { it.id == "overlay-source" } == true
-        set(value) {
+        @UiThread get() = ctrl.sources?.find { it.id == "overlay-source" } != null
+        @UiThread set(value) {
             if (isVisible == value) return
             if (value) {
-                MainActivity.activity?.runOnUiThread { MainMapFragment.mapboxMap?.style?.addSource(MainMapFragment.overlaySource!!) }
+                ctrl.addSource(overlaySource)
             } else {
-                MainActivity.activity?.runOnUiThread { MainMapFragment.mapboxMap?.style?.removeSource(MainMapFragment.overlaySource!!) }
+                ctrl.removeSource(overlaySource)
             }
         }
 
+    init {
+        ctrl.addSource(overlaySource)
+    }
+
     /** Show given map data with each the given style */
-    fun set(features: Collection<StyledElement>) {
+    @UiThread fun set(features: Collection<StyledElement>) {
         // todo: color.invisible should reproduce original style?
         //  then do after actual style is decided
         val mapLibreFeatures = features.flatMap { (element, geometry, style) ->
@@ -130,7 +128,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
                 }
             }
         }
-        MainActivity.activity?.runOnUiThread { MainMapFragment.overlaySource?.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures)) }
+        overlaySource.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures))
     }
 
     /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
@@ -163,21 +161,14 @@ class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMap
         transparentColors.getOrPut(color) { toARGBString(addTransparency(Color.parseColor(color), 0.6f)) }
 
     /** Clear map data */
-    fun clear() {
-        MainActivity.activity?.runOnUiThread {
-            val fc: FeatureCollection? = null
-            MainMapFragment.overlaySource!!.setGeoJson(fc)
-        }
+    @UiThread fun clear() {
+        overlaySource.clear()
     }
 
     fun getElementKey(properties: Map<String, String>): ElementKey? {
         val type = properties[ELEMENT_TYPE]?.let { ElementType.valueOf(it) } ?: return null
         val id = properties[ELEMENT_ID]?.toLong() ?: return null
         return ElementKey(type, id)
-    }
-
-    companion object {
-        private const val MAP_DATA_LAYER = "streetcomplete_map_data"
     }
 }
 

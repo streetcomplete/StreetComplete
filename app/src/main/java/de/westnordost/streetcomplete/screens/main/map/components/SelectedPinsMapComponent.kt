@@ -14,7 +14,7 @@ class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMap
     /** Show selected pins with the given icon at the given positions. "Selected pins" are not
      *  related to pins, they are just visuals that are displayed on top of the normal pins and look
      *  highlighted/selected. */
-    fun set(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
+    @UiThread fun set(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
         val points = pinPositions.map { position ->
             Point(position.toLngLat(), mapOf(
                 "type" to "point",
@@ -25,7 +25,7 @@ class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMap
     }
 
     /** Clear the display of any selected pins */
-    fun clear() {
+    @UiThread fun clear() {
         selectedPinsLayer.clear()
     }
 

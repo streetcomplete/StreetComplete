@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.graphics.RectF
-import com.mapbox.geojson.FeatureCollection
-import com.mapbox.mapboxsdk.maps.MapboxMap
+import androidx.annotation.UiThread
+import com.mapbox.geojson.Geometry
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import kotlin.math.abs
@@ -19,24 +19,29 @@ import kotlin.math.roundToInt
  *  contained in the screen area */
 class FocusGeometryMapComponent(private val ctrl: KtMapController) {
 
+    private val focusedGeometrySource = GeoJsonSource("focus-geometry-source")
+
     private var previousCameraPosition: CameraPosition? = null
 
     /** Returns whether beginFocusGeometry() was called earlier but not endFocusGeometry() yet */
     val isZoomedToContainGeometry: Boolean get() =
         previousCameraPosition != null
 
+    init {
+        ctrl.addSource(focusedGeometrySource)
+    }
+
     /** Show the given geometry. Previously shown geometry is replaced. */
-    fun showGeometry(geometry: ElementGeometry) {
-        MainMapFragment.focusedGeometrySource?.setGeoJson(geometry.toMapLibreGeometry())
+    @UiThread fun showGeometry(geometry: ElementGeometry) {
+        focusedGeometrySource.setGeoJson(geometry.toMapLibreGeometry())
     }
 
     /** Hide all shown geometry */
-    fun clearGeometry() {
-        val fc: FeatureCollection? = null
-        MainMapFragment.focusedGeometrySource?.setGeoJson(fc)
+    @UiThread fun clearGeometry() {
+        focusedGeometrySource.clear()
     }
 
-    @Synchronized fun beginFocusGeometry(g: ElementGeometry, offset: RectF) {
+    @UiThread fun beginFocusGeometry(g: ElementGeometry, offset: RectF) {
         val targetPos = ctrl.getEnclosingCameraPosition(g, offset) ?: return
 
         val currentPos = ctrl.cameraPosition
@@ -56,11 +61,11 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController) {
         if (previousCameraPosition == null) previousCameraPosition = currentPos
     }
 
-    @Synchronized fun clearFocusGeometry() {
+    @UiThread fun clearFocusGeometry() {
         previousCameraPosition = null
     }
 
-    @Synchronized fun endFocusGeometry() {
+    @UiThread fun endFocusGeometry() {
         val pos = previousCameraPosition
         if (pos != null) {
             val currentPos = ctrl.cameraPosition

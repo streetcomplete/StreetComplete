@@ -29,6 +29,8 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.coroutineContext
 
@@ -50,6 +52,7 @@ class QuestPinsManager(
     private var lastDisplayedRect: TilesRect? = null
     // quests in current view: key -> [pin, ...]
     private val questsInView: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
+    private val questsInViewMutex = Mutex()
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
@@ -126,9 +129,13 @@ class QuestPinsManager(
     }
 
     private fun clear() {
-        synchronized(questsInView) { questsInView.clear() }
-        lastDisplayedRect = null
-        viewLifecycleScope.launch { pinsMapComponent.clear() }
+        viewLifecycleScope.launch {
+            questsInViewMutex.withLock {
+                questsInView.clear()
+                lastDisplayedRect = null
+                withContext(Dispatchers.Main) { pinsMapComponent.clear() }
+            }
+        }
     }
 
     fun getQuestKey(properties: Map<String, String>): QuestKey? =
@@ -169,33 +176,26 @@ class QuestPinsManager(
     }
 
     private suspend fun setQuestPins(quests: List<Quest>) {
-        val pins = synchronized(questsInView) {
+        questsInViewMutex.withLock {
             questsInView.clear()
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
-            questsInView.values.flatten()
-        }
-        synchronized(pinsMapComponent) {
             if (coroutineContext.isActive) {
-                pinsMapComponent.set(pins)
+                withContext(Dispatchers.Main) { pinsMapComponent.set(questsInView.values.flatten()) }
             }
         }
     }
 
     private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        // maplibre: geoJsonSource actually can't update/add/remove single pins,
-        //  but maybe customGeometrySource can invalidate the region so it's requested again
         val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
         var deletedAny = false
-        val pins = synchronized(questsInView) {
+        questsInViewMutex.withLock {
             addedInView.forEach { questsInView[it.key] = createQuestPins(it) }
             removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
-            questsInView.values.flatten()
-        }
-        if (deletedAny || addedInView.isNotEmpty()) {
-            synchronized(pinsMapComponent) {
+
+            if (deletedAny || addedInView.isNotEmpty()) {
                 if (coroutineContext.isActive) {
-                    pinsMapComponent.set(pins)
+                    withContext(Dispatchers.Main) { pinsMapComponent.set(questsInView.values.flatten()) }
                 }
             }
         }

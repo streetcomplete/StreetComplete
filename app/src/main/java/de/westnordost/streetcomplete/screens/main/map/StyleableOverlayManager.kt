@@ -25,6 +25,8 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.coroutineContext
 
@@ -42,6 +44,7 @@ class StyleableOverlayManager(
     private var lastDisplayedRect: TilesRect? = null
     // map data in current view: key -> [pin, ...]
     private val mapDataInView: MutableMap<ElementKey, StyledElement> = mutableMapOf()
+    private val mapDataInViewMutex = Mutex()
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
@@ -152,20 +155,24 @@ class StyleableOverlayManager(
     }
 
     private fun clear() {
-        synchronized(mapDataInView) { mapDataInView.clear() }
-        lastDisplayedRect = null
-        viewLifecycleScope.launch { mapComponent.clear() }
+        viewLifecycleScope.launch {
+            mapDataInViewMutex.withLock {
+                mapDataInView.clear()
+                lastDisplayedRect = null
+                withContext(Dispatchers.Main) { mapComponent.clear() }
+            }
+        }
     }
 
     private suspend fun setStyledElements(mapData: MapDataWithGeometry) {
-        val layer = overlay ?: return
-        synchronized(mapDataInView) {
+        val overlay = overlay ?: return
+        mapDataInViewMutex.withLock {
             mapDataInView.clear()
-            createStyledElementsByKey(layer, mapData).forEach { (key, styledElement) ->
+            createStyledElementsByKey(overlay, mapData).forEach { (key, styledElement) ->
                 mapDataInView[key] = styledElement
             }
             if (coroutineContext.isActive) {
-                mapComponent.set(mapDataInView.values)
+                withContext(Dispatchers.Main) { mapComponent.set(mapDataInView.values) }
             }
         }
     }
@@ -174,7 +181,7 @@ class StyleableOverlayManager(
         val overlay = overlay ?: return
         val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         var changedAnything = false
-        synchronized(mapDataInView) {
+        mapDataInViewMutex.withLock {
             deleted.forEach {
                 if (mapDataInView.remove(it) != null) {
                     changedAnything = true
@@ -196,8 +203,7 @@ class StyleableOverlayManager(
             }
 
             if (changedAnything && coroutineContext.isActive) {
-                mapComponent.set(mapDataInView.values)
-//                ctrl.requestRender()
+                withContext(Dispatchers.Main) { mapComponent.set(mapDataInView.values) }
             }
         }
     }

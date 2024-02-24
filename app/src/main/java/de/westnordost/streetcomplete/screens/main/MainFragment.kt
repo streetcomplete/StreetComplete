@@ -511,7 +511,7 @@ class MainFragment :
 
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
-    override fun putMarkerForCurrentHighlighting(
+    @UiThread override fun putMarkerForCurrentHighlighting(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?
@@ -519,11 +519,11 @@ class MainFragment :
         mapFragment?.putMarkerForCurrentHighlighting(geometry, drawableResId, title)
     }
 
-    override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
+    @UiThread override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
         mapFragment?.deleteMarkerForCurrentHighlighting(geometry)
     }
 
-    override fun clearMarkersForCurrentHighlighting() {
+    @UiThread override fun clearMarkersForCurrentHighlighting() {
         mapFragment?.clearMarkersForCurrentHighlighting()
     }
 
@@ -1108,7 +1108,7 @@ class MainFragment :
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
                 val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
                 val title = getTitle(e.tags)
-                putMarkerForCurrentHighlighting(geometry, icon, title)
+                withContext(Dispatchers.Main) { putMarkerForCurrentHighlighting(geometry, icon, title) }
             }
         }
     }

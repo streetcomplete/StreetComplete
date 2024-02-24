@@ -24,8 +24,10 @@ import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.math.translate
 import de.westnordost.streetcomplete.util.prefs.Preferences
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -180,7 +182,6 @@ open class LocationAwareMapFragment : MapFragment() {
         tracksMapComponent?.clear()
     }
 
-    @SuppressLint("MissingPermission")
     fun startPositionTrackRecording() {
         isRecordingTracks = true
         _recordedTracks.clear()
@@ -241,16 +242,18 @@ open class LocationAwareMapFragment : MapFragment() {
     }
 
     private fun onLocationChanged(location: Location) {
-        displayedLocation = location
-        recentLocationStore.add(location)
-        locationMapComponent?.location = location
-        addTrackLocation(location)
-//        compass.setLocation(location)
-        centerCurrentPositionIfFollowing()
-        listener?.onDisplayedLocationDidChange()
+        viewLifecycleScope.launch {
+            displayedLocation = location
+            recentLocationStore.add(location)
+            locationMapComponent?.location = location
+            addTrackLocation(location)
+//          compass.setLocation(location)
+            centerCurrentPositionIfFollowing()
+            listener?.onDisplayedLocationDidChange()
+        }
     }
 
-    private fun addTrackLocation(location: Location) {
+    private suspend fun addTrackLocation(location: Location) {
         // ignore if too imprecise
         if (location.accuracy > MIN_TRACK_ACCURACY) return
         val lastLocation = tracks.last().lastOrNull()
@@ -259,20 +262,18 @@ open class LocationAwareMapFragment : MapFragment() {
         if (lastLocation != null && !isRecordingTracks) {
             if ((displayedLocation?.time ?: 0) - lastLocation.time > MAX_TIME_BETWEEN_LOCATIONS) {
                 tracks.add(ArrayList())
-                tracksMapComponent?.startNewTrack(false)
+                withContext(Dispatchers.Main) { tracksMapComponent?.startNewTrack(false) }
             }
         }
         val trackpoint = Trackpoint(location.toLatLon(), location.time, location.accuracy, location.altitude.toFloat())
 
         tracks.last().add(trackpoint)
-        // delay update by 600 ms because the animation to the new location takes that long
         // in rare cases, onLocationChanged may already be called before the view has been created
         // so we need to check that first
         if (view != null) {
-            viewLifecycleScope.launch {
-                delay(600)
-                tracksMapComponent?.addToCurrentTrack(trackpoint.position)
-            }
+            // delay update by 600 ms because the animation to the new location takes that long
+            delay(600)
+            withContext(Dispatchers.Main) { tracksMapComponent?.addToCurrentTrack(trackpoint.position) }
         }
     }
 

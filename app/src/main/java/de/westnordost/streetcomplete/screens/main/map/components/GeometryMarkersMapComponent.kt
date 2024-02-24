@@ -2,18 +2,17 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.res.Resources
 import androidx.annotation.DrawableRes
+import androidx.annotation.UiThread
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
-import com.mapbox.geojson.Point
-import com.mapbox.geojson.Polygon
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.MainActivity
-import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
@@ -23,9 +22,15 @@ import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
  *  show the geometry of elements surrounding the selected quest */
 class GeometryMarkersMapComponent(private val resources: Resources, private val ctrl: KtMapController) {
 
+    private val geometrySource = GeoJsonSource("geometry-source")
+
     private val featuresByPosition: MutableMap<LatLon, List<Feature>> = HashMap()
 
-    @Synchronized fun put(
+    init {
+        ctrl.addSource(geometrySource)
+    }
+
+    @UiThread fun put(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int? = null,
         title: String? = null
@@ -88,18 +93,18 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         featuresByPosition[center] = features
         // todo: this is resetting the whole source for every single marker, adding single markers is not possible
         //  annotation managers work the same way (internally)
-        MainActivity.activity?.runOnUiThread { MainMapFragment.geometrySource?.setGeoJson(FeatureCollection.fromFeatures(featuresByPosition.values.flatten())) }
+
+        geometrySource.setGeoJson(FeatureCollection.fromFeatures(featuresByPosition.values.flatten()))
     }
 
-    @Synchronized fun delete(geometry: ElementGeometry) {
+    @UiThread fun delete(geometry: ElementGeometry) {
         val pos = geometry.center
         featuresByPosition.remove(pos)
-        MainActivity.activity?.runOnUiThread { MainMapFragment.geometrySource?.setGeoJson(FeatureCollection.fromFeatures(featuresByPosition.values.flatten())) }
+        geometrySource.setGeoJson(FeatureCollection.fromFeatures(featuresByPosition.values.flatten()))
     }
 
-    @Synchronized fun clear() {
-        val fc: FeatureCollection? = null
-        MainActivity.activity?.runOnUiThread { MainMapFragment.geometrySource?.setGeoJson(fc) }
+    @UiThread fun clear() {
+        geometrySource.clear()
         featuresByPosition.clear()
     }
 

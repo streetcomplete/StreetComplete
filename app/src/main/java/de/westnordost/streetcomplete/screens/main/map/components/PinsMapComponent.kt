@@ -1,33 +1,43 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import androidx.annotation.UiThread
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
-import com.mapbox.mapboxsdk.style.expressions.Expression
+import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.MainActivity
-import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
 class PinsMapComponent(private val ctrl: KtMapController) {
 
+    private val pinsSource = GeoJsonSource(
+        "pins-source",
+        GeoJsonOptions().withBuffer(32)  // is the buffer relevant? default value is 128, so this should load less data fromm adjacent tiles
+    )
+
     /** Shows/hides the pins */
     var isVisible: Boolean
         // add / remove source
-        get() = MainMapFragment.mapboxMap?.style?.sources?.any { it.id == "pins-source" } == true
-        set(value) {
+        @UiThread get() = ctrl.sources?.find { it.id == "pins-source" } != null
+        @UiThread set(value) {
             if (isVisible == value) return
             if (value) {
-                MainActivity.activity?.runOnUiThread { MainMapFragment.mapboxMap?.style?.addSource(MainMapFragment.pinsSource!!) }
+                ctrl.addSource(pinsSource)
             } else {
-                MainActivity.activity?.runOnUiThread { MainMapFragment.mapboxMap?.style?.removeSource(MainMapFragment.pinsSource!!) }
+                ctrl.removeSource(pinsSource)
             }
         }
 
+    init {
+        ctrl.addSource(pinsSource)
+    }
+
     /** Show given pins. Previously shown pins are replaced with these.  */
-    fun set(pins: Collection<Pin>) {
+    @UiThread fun set(pins: Collection<Pin>) {
         // do sorting here, because we can set the symbolZOrder to SYMBOL_Z_ORDER_SOURCE, which
         // is the order in which the source has the features
         val mapLibreFeatures = pins.sortedBy { -it.importance }.map { pin ->
@@ -37,19 +47,12 @@ class PinsMapComponent(private val ctrl: KtMapController) {
             pin.properties.forEach { p.addProperty(it.first, it.second) }
             Feature.fromGeometry(pin.position.toPoint(), p)
         }
-        // todo: for testing the runOnUiThread is ok, but actually it should be handled differently...
-        MainActivity.activity?.runOnUiThread { MainMapFragment.pinsSource?.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures)) }
+        pinsSource.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures))
     }
 
     /** Clear pins */
-    fun clear() {
-        val fc: FeatureCollection? = null // does it work?
-        MainActivity.activity?.runOnUiThread { MainMapFragment.pinsSource?.setGeoJson(fc) }
-    }
-
-    companion object {
-        // see streetcomplete.yaml for the definitions of the below layers
-        private const val PINS_LAYER = "streetcomplete_pins"
+    @UiThread fun clear() {
+        pinsSource.clear()
     }
 }
 

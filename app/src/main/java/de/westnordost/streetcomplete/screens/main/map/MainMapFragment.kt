@@ -5,6 +5,7 @@ import android.graphics.PointF
 import android.graphics.RectF
 import android.graphics.drawable.LayerDrawable
 import androidx.annotation.DrawableRes
+import androidx.annotation.UiThread
 import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import com.mapbox.geojson.FeatureCollection
@@ -20,7 +21,6 @@ import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
-import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -147,7 +147,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
         downloadedAreaMapComponent = DownloadedAreaMapComponent(ctrl)
-        downloadedAreaManager = DownloadedAreaManager(ctrl, downloadedAreaMapComponent!!, downloadedTilesSource)
+        downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
         selectedOverlaySource.addListener(overlayListener)
@@ -286,10 +286,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //   if we use 2 sources, this could be done (but the featureCollection is copied in setGeoJson(featureCollection)...)
         //   images (quest pins) could be used for clusters: https://github.com/mapbox/mapbox-gl-native/issues/16060
 
-        // use a GeoJsonSource for quests, and one layer for pins and one for circles
-        pinsSource = GeoJsonSource("pins-source", GeoJsonOptions().withBuffer(32)) // is the buffer relevant? default value is 128, so this should load less data fromm adjacent tiles
-        style.addSource(pinsSource!!)
-
         // discarded attempt for CustomGeometrySource
 /*
         val options = CustomGeometrySourceOptions()
@@ -390,12 +386,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         }
 
         // set map stuff available everywhere in the app (for simplified testing)
-        MainMapFragment.mapView = mapView
         MainMapFragment.mapboxMap = mapboxMap
         MainMapFragment.style = style
-
-        overlaySource = GeoJsonSource("overlay-source")
-        style.addSource(overlaySource!!)
 
         // need more information on how to work with expressions...
         // or better use them in style json instead of here? probably easier
@@ -457,10 +449,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withFilter(Expression.gte(Expression.zoom(), 16f))
         style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
 
-        // for nearby element geometry
-        geometrySource = GeoJsonSource("geometry-source")
-        style.addSource(geometrySource!!)
-
         val geometryLineLayer = LineLayer("geo-lines", "geometry-source")
             .withProperties(PropertyFactory.lineWidth(10f))
             .withProperties(PropertyFactory.lineColor("#D140D0"))
@@ -497,10 +485,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             )
         style.addLayerBelow(geometrySymbolLayer, "pins-layer")
 
-        // for focused element geometry
-        focusedGeometrySource = GeoJsonSource("focus-geometry-source")
-        style.addSource(focusedGeometrySource!!)
-
         val focusGeometryLineLayer = LineLayer("focus-geo-lines", "focus-geometry-source")
             .withProperties(PropertyFactory.lineWidth(10f))
             .withProperties(PropertyFactory.lineColor("#D14000"))
@@ -521,16 +505,12 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         style.addLayerBelow(focusGeometryCircleLayer, "pins-layer")
 
         // something is not working here
-        trackSource = GeoJsonSource("track-source")
-        style.addSource(trackSource!!)
         val trackLayer = LineLayer("track", "track-source")
             .withProperties(PropertyFactory.lineWidth(10f))
             .withProperties(PropertyFactory.lineColor("#536dfe"))
             .withProperties(PropertyFactory.lineOpacity(0.3f))
             .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
         style.addLayerBelow(trackLayer, "pins-layer")
-        oldTrackSource = GeoJsonSource("old-track-source")
-        style.addSource(oldTrackSource!!)
         val oldTrackLayer = LineLayer("old-track", "old-track-source")
             .withProperties(PropertyFactory.lineWidth(10f))
             .withProperties(PropertyFactory.lineColor("#536dfe"))
@@ -538,9 +518,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
         style.addLayerBelow(oldTrackLayer, "pins-layer")
 
-        // something is not working here
-        downloadedAreaSource = GeoJsonSource("downloaded-area-source")
-        style.addSource(downloadedAreaSource!!)
         val downloadedAreaLayer = FillLayer("downloaded-area", "downloaded-area-source")
             .withProperties(PropertyFactory.fillColor(Color.RED))
         style.addLayerBelow(downloadedAreaLayer, "pins-layer")
@@ -557,7 +534,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         super.onDestroyView()
         selectedOverlaySource.removeListener(overlayListener)
         mapboxMap = null
-        mapView = null
         style = null
     }
 
@@ -683,10 +659,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //        selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
-//        val thisIsNoFeature: Feature? = null
-//        geometrySource?.setGeoJson(thisIsNoFeature) // nullable, but crashes maplibre (native) if null. great.
-        geometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
-        focusedGeometrySource?.setGeoJson(FeatureCollection.fromFeatures(emptyList()))
         pinsLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
         pinsDotLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
     }
@@ -697,7 +669,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     /* ----------------------------  Markers for current highlighting --------------------------- */
 
-    override fun putMarkerForCurrentHighlighting(
+    @UiThread override fun putMarkerForCurrentHighlighting(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?
@@ -705,11 +677,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMarkersMapComponent?.put(geometry, drawableResId, title)
     }
 
-    override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
+    @UiThread override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
         geometryMarkersMapComponent?.delete(geometry)
     }
 
-    override fun clearMarkersForCurrentHighlighting() {
+    @UiThread override fun clearMarkersForCurrentHighlighting() {
         geometryMarkersMapComponent?.clear()
     }
 
@@ -746,14 +718,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         private const val CLICK_AREA_SIZE_IN_DP = 48
 
         // todo: this is bad, but very convenient for testing if we have access to everything from everywhere
-        var mapView: MapView? = null
         var mapboxMap: MapboxMap? = null
-        var overlaySource: GeoJsonSource? = null
 
         var style: Style? = null
-        var pinsSource: GeoJsonSource? = null
-        var geometrySource: GeoJsonSource? = null
-        var focusedGeometrySource: GeoJsonSource? = null
         var pinsLayer: SymbolLayer? = null
         var pinsDotLayer: CircleLayer? = null
 
@@ -761,11 +728,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         var overlayLineLayer: LineLayer? = null
         var overlayFillLayer: FillExtrusionLayer? = null
         var overlaySymbolLayer: SymbolLayer? = null
-
-        var trackSource: GeoJsonSource? = null
-        var oldTrackSource: GeoJsonSource? = null
-
-        var downloadedAreaSource: GeoJsonSource? = null
     }
 }
 
@@ -810,8 +772,6 @@ fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
         Expression.stop(10, Expression.division(Expression.get(lineWidthProperty), Expression.literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
         Expression.stop(25, Expression.division(Expression.get(lineWidthProperty), Expression.literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
     )
-
-fun GeoJsonSource.clear() = setGeoJson(FeatureCollection.fromFeatures(emptyList()))
 
 private const val BASE = 2f // used to be 1.5 with old style json
 private const val FACTOR = 2f // to get width / distance similar to tangram

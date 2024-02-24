@@ -1,15 +1,16 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.UiThread
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 
 interface ShowsGeometryMarkers {
-    fun putMarkerForCurrentHighlighting(
+    @UiThread fun putMarkerForCurrentHighlighting(
         geometry: ElementGeometry,
         @DrawableRes drawableResId: Int?,
         title: String?
     )
-    fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry)
+    @UiThread fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry)
 
-    fun clearMarkersForCurrentHighlighting()
+    @UiThread fun clearMarkersForCurrentHighlighting()
 }

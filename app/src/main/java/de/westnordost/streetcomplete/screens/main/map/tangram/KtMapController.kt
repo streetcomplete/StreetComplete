@@ -6,13 +6,11 @@ import android.graphics.RectF
 import android.provider.Settings
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.style.sources.Source
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
@@ -20,14 +18,11 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toCameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraPosition
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreCameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
-import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.initialBearingTo
-import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import de.westnordost.streetcomplete.util.math.translate
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -35,9 +30,6 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import kotlin.math.log10
-import kotlin.math.max
-import kotlin.math.min
 import kotlin.math.pow
 
 /** Wrapper around the Tangram MapController. Features over the Tangram MapController (0.12.0):
@@ -199,6 +191,16 @@ class KtMapController(
 
     /* -------------------------------------- Data Layers --------------------------------------- */
 
+    fun addSource(source: Source) {
+        mapboxMap.style?.addSource(source)
+    }
+
+    fun removeSource(source: Source) {
+        mapboxMap.style?.removeSource(source)
+    }
+
+    val sources: List<Source>? get() = mapboxMap.style?.sources
+
 //    fun addDataLayer(name: String, generateCentroid: Boolean = false): MapData =
 //        c.addDataLayer(name, generateCentroid)
 
@@ -240,6 +242,7 @@ class KtMapController(
             override fun onShove(distance: Float): Boolean {
                 if (cameraPosition.tilt >= maximumTilt && distance < 0) return true
                 return responder?.onShove(distance) ?: false
+
             }
         })
     }

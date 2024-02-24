@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.maplibre
 
+import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Geometry
 import com.mapbox.geojson.LineString
 import com.mapbox.geojson.MultiLineString
@@ -7,6 +8,7 @@ import com.mapbox.geojson.MultiPolygon
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.Polygon
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -73,3 +75,5 @@ fun ElementPolygonsGeometry.toMapLibreGeometry(): Geometry {
 }
 
 fun LatLon.toPoint(): Point = Point.fromLngLat(longitude, latitude)
+
+fun GeoJsonSource.clear() = setGeoJson(FeatureCollection.fromFeatures(emptyList()))
