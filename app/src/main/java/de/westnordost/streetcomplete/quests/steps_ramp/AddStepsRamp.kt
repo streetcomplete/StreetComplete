@@ -18,6 +18,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
          and (!indoor or indoor = no)
          and access !~ private|no
          and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+         and !sac_scale
          and (!conveying or conveying = no)
          and ramp != separate
          and (
