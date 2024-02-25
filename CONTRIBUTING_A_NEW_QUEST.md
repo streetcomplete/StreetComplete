@@ -537,3 +537,7 @@ Note that a quest may be both disabled by default and limited to some countries.
 This will decode whether the user should have access to direct deletion of elements. Note that ways and relations cannot be deleted by SC users.
 
 For nodes within ways, the node will remain and tags will be removed.
+
+## Per-country quest behaviour modification
+
+While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibrationForm.kt](app/src/main/java/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibrationForm.kt) for example usage.
