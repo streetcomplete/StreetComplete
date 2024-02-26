@@ -19,7 +19,7 @@ class ActiveDatesDao(private val db: Database) {
     }
 
     fun getAll(days: Int): List<LocalDate> =
-        db.query(NAME, where = "$DATE >= date('now','-$days days')") {
+        db.query(NAME, where = "$DATE >= date('now', '-$days days')") {
             LocalDate.parse(it.getString(DATE))
         }
 

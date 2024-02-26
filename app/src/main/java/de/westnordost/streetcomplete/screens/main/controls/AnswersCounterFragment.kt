@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
-import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -31,12 +29,12 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     private val answersCounterView get() = view as AnswersCounterView
     private var showCurrentWeek: Boolean = false
 
-    private val uploadProgressListener = object : UploadProgressListener {
+    private val uploadProgressListener = object : UploadProgressSource.Listener {
         override fun onStarted() { viewLifecycleScope.launch { updateProgress() } }
         override fun onFinished() { viewLifecycleScope.launch { updateProgress() } }
     }
 
-    private val downloadProgressListener = object : DownloadProgressListener {
+    private val downloadProgressListener = object : DownloadProgressSource.Listener {
         override fun onStarted() { viewLifecycleScope.launch { updateProgress() } }
         override fun onFinished() { viewLifecycleScope.launch { updateProgress() } }
     }
@@ -84,8 +82,8 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
         super.onStart()
 
         updateProgress()
-        uploadProgressSource.addUploadProgressListener(uploadProgressListener)
-        downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
+        uploadProgressSource.addListener(uploadProgressListener)
+        downloadProgressSource.addListener(downloadProgressListener)
         // If autosync is on, the answers counter shows the uploaded + uploadable amount of quests.
         if (isAutosync) unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
         statisticsSource.addListener(statisticsListener)
@@ -95,8 +93,8 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
 
     override fun onStop() {
         super.onStop()
-        uploadProgressSource.removeUploadProgressListener(uploadProgressListener)
-        downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
+        uploadProgressSource.removeListener(uploadProgressListener)
+        downloadProgressSource.removeListener(downloadProgressListener)
         statisticsSource.removeListener(statisticsListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
     }

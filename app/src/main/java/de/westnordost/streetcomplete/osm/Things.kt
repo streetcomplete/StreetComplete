@@ -138,10 +138,7 @@ private val IS_THING_EXPRESSION by lazy {
             // "water_tank" is more of a structure and would also need to include "fire_water_pond" etc. then
         ),
         "highway" to listOf(
-            // "bus_stop", - a bus stop shelter is similar to a shelter, but on the other hand, this
-            //               is used to tag the *platform*, i.e. the shelter (bench, waste basket,
-            //               ...) can also be mapped separately. If this would only be limited to
-            //               points, I guess we could include it, but for any platforms, too much
+            // "bus_stop", handled in filter below to skip some common bad tagging
             "cyclist_waiting_aid",
             "emergency_access_point",
             "milestone",
@@ -208,7 +205,7 @@ private val IS_THING_EXPRESSION by lazy {
             "planter",
             "snow_cannon",
             "stele",
-            // "street_cabinet", - blocked; see note at amenity=post_box
+            // "street_cabinet", - blocked; see note at amenity=post_box, most are included by dedicated filter below
             "surveillance",
             // "survey_point" - this can be very very small -> verifiability issue
             //                  danger that mapper deletes it because he can't find it
@@ -246,6 +243,12 @@ private val IS_THING_EXPRESSION by lazy {
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or man_made = street_cabinet and street_cabinet != postal_service
         or playground
+        or public_transport = platform and (
+          bus = yes
+          or trolleybus = yes
+          or tram = yes
+        )
+        or highway = bus_stop and public_transport != stop_position
         or tourism = information and information !~ office|visitor_centre
     """.toElementFilterExpression()
 }
@@ -269,11 +272,11 @@ val POPULAR_THING_FEATURE_IDS = listOf(
     // More:
 
     // mostly found in parks/plazas, i.e. specific places instead of ~everywhere
-    //"historic/memorial",           // 0.4 M (if this is displayed in quick select, artwork should probably too)
-    //"amenity/drinking_water",      // 0.3 M
-    //"leisure/picnic_table",        // 0.3 M
+    // "historic/memorial",           // 0.4 M (if this is displayed in quick select, artwork should probably too)
+    // "amenity/drinking_water",      // 0.3 M
+    // "leisure/picnic_table",        // 0.3 M
 
     // found most often on hiking routes where there are not that many "things" features anyway
-    //"information/guidepost",       // 0.5M
-    //"tourism/information/board",   // 0.3M
+    // "information/guidepost",       // 0.5M
+    // "tourism/information/board",   // 0.3M
 )

@@ -10,6 +10,7 @@ import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
@@ -31,6 +32,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
     private val teamModeQuestFilter: TeamModeQuestFilter by inject()
     private val downloadController: DownloadController by inject()
+    private val downloadProgressSource: DownloadProgressSource by inject()
     private val prefs: Preferences by inject()
     private val questPresetsController: QuestPresetsController by inject()
 
@@ -124,16 +126,17 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     private fun downloadDisplayedArea() {
         val downloadArea = listener?.getDownloadArea() ?: return
 
-        if (downloadController.isPriorityDownloadInProgress) {
+        if (downloadProgressSource.isUserInitiatedDownloadInProgress) {
             context?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_cancel_prev_download_title)
                     .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
                         downloadController.download(downloadArea, true)
                     }
-                    .setNeutralButton(R.string.enqueue_download) { _, _ ->
-                        downloadController.download(downloadArea, true, true)
-                    }
+                    // todo: make enqueue work again, see downloadworker
+//                    .setNeutralButton(R.string.enqueue_download) { _, _ ->
+//                        downloadController.download(downloadArea, true, true)
+//                    }
                     .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
                     .show()
             }

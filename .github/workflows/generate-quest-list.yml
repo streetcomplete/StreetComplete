@@ -13,9 +13,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - uses: gradle/actions/setup-gradle@v3
       - name: Generate quest list
         run: ./gradlew generateQuestList
       - uses: actions/upload-artifact@v4

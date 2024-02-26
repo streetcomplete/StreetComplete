@@ -18,9 +18,9 @@ import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.restriction.RestrictionOverlay
 import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
-import de.westnordost.streetcomplete.overlays.things.ThingsOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
+import de.westnordost.streetcomplete.overlays.things.ThingsOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.ktx.getIds

@@ -1,10 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
@@ -22,7 +21,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.data.upload.UploadService
+import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.util.logs.Log
@@ -44,7 +43,7 @@ class ElementEditsUploader(
     private val singleUploader: ElementEditUploader,
     private val mapDataApi: MapDataApi,
     private val statisticsController: StatisticsController,
-    private val downloadController: DownloadController,
+    private val downloader: Downloader,
     private val externalSourceQuestController: ExternalSourceQuestController,
     private val prefs: SharedPreferences,
 ) {
@@ -53,16 +52,16 @@ class ElementEditsUploader(
     private val mutex = Mutex()
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("ElementEditsUploader"))
 
-    suspend fun upload(context: Context) = mutex.withLock { withContext(Dispatchers.IO) {
+    suspend fun upload(uploader: Uploader) = mutex.withLock { withContext(Dispatchers.IO) {
         while (true) {
             val edit = elementEditsController.getOldestUnsynced() ?: break
             val getIdProvider: () -> ElementIdProvider = { elementEditsController.getIdProvider(edit.id) }
-            if (downloadController.isDownloadInProgress) {
+            if (downloader.isDownloadInProgress) {
                 // cancel upload, and re-start uploading a second later
                 // then download will already be running
                 scope.launch {
                     delay(1000)
-                    context.startService(UploadService.createIntent(context))
+                    uploader.upload()
                 }
                 throw CancellationException() // don't simply break, because otherwise upload will continue with notes
             }

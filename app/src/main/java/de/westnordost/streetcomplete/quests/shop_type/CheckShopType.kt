@@ -39,7 +39,6 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
           )
     """.toElementFilterExpression() }
 
-
     override val changesetComment = "Survey if vacant shops are still vacant"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.ic_quest_check_shop

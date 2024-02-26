@@ -98,14 +98,9 @@ class MapDataController internal constructor(
 
         val oldDbJob = dbJob
         dbJob = scope.launch {
-            try {
-                downloadController.setPersisting(true)
-            } catch (_: Exception) {
-                // only ForegroundServiceStartNotAllowedException, but not gonna do annoying
-                // API checks for an exception that can only be thrown on certain APIs anyway
-                // ignore is because this is only to avoid the app being killed while doing
-                // background work, but if Android insists so much on doing this, then let it kill the app while writing to DB...
-            }
+            // can't set persisting to show notification, so let's hope the system doesn't kill the app...
+            // no idea how aggressive Android is for such things
+            // or maybe we could not use the background stuff when app is in background, so the worker is still running
             oldDbJob?.join()
             synchronized(this@MapDataController) {
                 elementDB.deleteAll(oldElementKeys)
@@ -118,7 +113,6 @@ class MapDataController internal constructor(
                 "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
                 " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
             )
-            downloadController.setPersisting(false)
         }
     }
 

@@ -1384,4 +1384,8 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="overlay_buildings">"Građevine"</string>
     <string name="quest_pedestrian_crossing_signals">"Trebaju li pješaci čekati semafor za prelazak ovdje?"</string>
     <string name="quest_pedestrian_crossing_markings">"Ima li ovaj pješački prijelaz iscrtane oznake na cesti (zebra i sl.)?"</string>
+    <string name="overlay_places">"Usluge"</string>
+    <string name="overlay_things">"Stvari"</string>
+    <string name="disused">"Zapušteno"</string>
+    <string name="unknown_object">"Nepoznati objekt"</string>
 </resources>

@@ -55,6 +55,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_cash
     override val isReplacePlaceEnabled = true
     override val enabledInCountries = NoCountriesExcept(
+        "FI", // https://github.com/streetcomplete/StreetComplete/issues/5500
         "GB", // https://github.com/streetcomplete/StreetComplete/issues/4517
         "SE",
         "NL", // https://github.com/streetcomplete/StreetComplete/issues/4826

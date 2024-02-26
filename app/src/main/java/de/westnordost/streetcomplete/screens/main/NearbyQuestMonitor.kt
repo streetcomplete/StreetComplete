@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -51,6 +52,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
     private val prefs: SharedPreferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val downloadController: DownloadController by inject()
+    private val downloader: Downloader by inject()
     private val downloadedTilesSource: DownloadedTilesSource by inject()
     private var lastScanCenter = LatLon(0.0, 0.0)
     private val searchRadius = prefs.getFloat(Prefs.QUEST_MONITOR_RADIUS, 50f).toDouble()
@@ -132,7 +134,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
             NotificationManagerCompat.from(this).cancel(FOUND_NOTIFICATION_ID) // no quest, no notification
             if (download) {
                 // check whether surrounding area should be downloaded
-                if (downloadController.isDownloadInProgress) return // download already running
+                if (downloader.isDownloadInProgress) return // download already running
                 val activeNetworkInfo = getSystemService<ConnectivityManager>()?.activeNetworkInfo ?: return
                 if (!activeNetworkInfo.isConnected) return // we are not connected
                 val ignoreOlderThan = nowAsEpochMilliseconds() - dataRetainTime
