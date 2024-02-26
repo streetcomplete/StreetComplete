@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 14
+    const val DB_VERSION = 15
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -239,6 +239,9 @@ object DatabaseInitializer {
             db.exec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LATITUDE} double DEFAULT 0 NOT NULL")
             db.exec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LONGITUDE} double DEFAULT 0 NOT NULL")
         }
+        if (oldVersion <= 14 && newVersion > 14) {
+            db.renameOverlay("ShopsOverlay", "PlacesOverlay")
+        }
     }
 }
 
@@ -250,6 +253,11 @@ private fun Database.renameQuest(old: String, new: String) {
     renameValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, old, new)
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.BEFORE, old, new)
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, old, new)
+}
+
+private fun Database.renameOverlay(old: String, new: String) {
+    renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, old, new)
+    renameValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, old, new)
 }
 
 private fun Database.renameValue(table: String, column: String, oldValue: String, newValue: String) {

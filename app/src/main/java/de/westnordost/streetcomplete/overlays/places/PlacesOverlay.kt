@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.shops
+package de.westnordost.streetcomplete.overlays.places
 
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
 
-class ShopsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
+class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
     override val title = R.string.overlay_places
     override val icon = R.drawable.ic_quest_shop
@@ -53,5 +53,5 @@ class ShopsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                 element to style
             }
 
-    override fun createForm(element: Element?) = ShopsOverlayForm()
+    override fun createForm(element: Element?) = PlacesOverlayForm()
 }

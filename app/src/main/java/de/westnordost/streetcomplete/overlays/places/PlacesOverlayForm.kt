@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.shops
+package de.westnordost.streetcomplete.overlays.places
 
 import android.os.Bundle
 import android.view.View
@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.databinding.FragmentOverlayShopsBinding
+import de.westnordost.streetcomplete.databinding.FragmentOverlayPlacesBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyTo
@@ -44,10 +44,10 @@ import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
 
-class ShopsOverlayForm : AbstractOverlayForm() {
+class PlacesOverlayForm : AbstractOverlayForm() {
 
-    override val contentLayoutResId = R.layout.fragment_overlay_shops
-    private val binding by contentViewBinding(FragmentOverlayShopsBinding::bind)
+    override val contentLayoutResId = R.layout.fragment_overlay_places
+    private val binding by contentViewBinding(FragmentOverlayPlacesBinding::bind)
 
     private val prefs: Preferences by inject()
 
