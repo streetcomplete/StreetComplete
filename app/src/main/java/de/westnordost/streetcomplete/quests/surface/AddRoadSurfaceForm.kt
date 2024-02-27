@@ -16,7 +16,7 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<Surface>) {
-        if (hasSurfaceLanes(element.tags) {     // surface:note is not required when surface:lanes exist
+        if (hasSurfaceLanes(element.tags)) {     // surface:note is not required when surface:lanes exist
             super.onClickOk()
         } else {
             val surface = selectedItems.single()
