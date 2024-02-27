@@ -19,20 +19,6 @@ class AddRoadSurfaceTest {
         assertIsNotApplicable("highway" to "residential", "surface" to "asphalt")
     }
 
-    // see https://github.com/streetcomplete/StreetComplete/pull/5453#issuecomment-1911891944
-    @Test fun `not applicable to alternate tag for surface notes`() {
-        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "note:surface" to "alternative note format, varying asphalt and concrete")
-    }
-    @Test fun `not applicable to tagged complex surface lanes with general surface tag`() {
-        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:lanes" to "concrete|asphalt|asphalt")
-        assertIsNotApplicable("highway" to "track", "surface" to "unpaved", "surface:lanes:forward" to "compacted", "surface:lanes:backward" to "gravel" )
-        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:lanes:both_ways" to "asphalt|concrete")
-        assertIsNotApplicable("highway" to "residential", "surface" to "asphalt", "surface:lanes" to "concrete|asphalt|asphalt")
-    }
-    @Test fun `applicable to tagged complex surface lanes without surface tag`() {
-        assertIsApplicable("highway" to "residential", "surface:lanes" to "concrete|asphalt|cobblestone")
-    }
-
     @Test fun `applicable to old enough road with surface, regardless of existing surface lanes or notes`() {
         val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "residential",
@@ -61,6 +47,20 @@ class AddRoadSurfaceTest {
 
     @Test fun `not applicable to tagged surface with fitting tracktype`() {
         assertIsNotApplicable("highway" to "track", "surface" to "asphalt", "tracktype" to "grade1")
+    }
+
+    // see https://github.com/streetcomplete/StreetComplete/pull/5453#issuecomment-1911891944
+    @Test fun `not applicable to alternate tag for surface notes`() {
+        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "note:surface" to "alternative note format, varying asphalt and concrete")
+    }
+    @Test fun `not applicable to tagged complex surface lanes with general surface tag`() {
+        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:lanes" to "concrete|asphalt|asphalt")
+        assertIsNotApplicable("highway" to "track", "surface" to "unpaved", "surface:lanes:forward" to "compacted", "surface:lanes:backward" to "gravel" )
+        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:lanes:both_ways" to "asphalt|concrete")
+        assertIsNotApplicable("highway" to "residential", "surface" to "asphalt", "surface:lanes" to "concrete|asphalt|asphalt")
+    }
+    @Test fun `applicable to tagged complex surface lanes without surface tag`() {
+        assertIsApplicable("highway" to "residential", "surface:lanes" to "concrete|asphalt|cobblestone")
     }
 
     @Test fun `applicable to surface tags not providing proper info`() {
