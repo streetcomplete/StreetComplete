@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.Bundle
@@ -105,9 +106,12 @@ open class MapFragment : Fragment() {
 
         val mapView = view.findViewById<MapView>(R.id.map)
         mapView.onCreate(savedInstanceState)
-        val mapLibreJson = resources.assets.open("map_theme/jawg-streets.json").reader().readText()
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
+        val mapFile = if (isNightMode) "map_theme/streetcomplete-night.json" else "map_theme/streetcomplete.json"
+        val styleJsonString = resources.assets.open(mapFile).reader().readText()
         mapView.getMapAsync { map ->
-            val s = Style.Builder().fromJson(mapLibreJson.replace("jawgApiKey", vectorTileProvider.apiKey)) // not necessary with the new file
+            val s = Style.Builder().fromJson(styleJsonString)
             map.setStyle(s)
         }
 
