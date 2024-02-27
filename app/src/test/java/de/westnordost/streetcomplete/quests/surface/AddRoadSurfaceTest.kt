@@ -20,26 +20,26 @@ class AddRoadSurfaceTest {
     }
 
     // see https://github.com/streetcomplete/StreetComplete/pull/5453#issuecomment-1911891944
-    @Test fun `not applicable to tagged complex surface lanes - paved+note:surface`() {
+    @Test fun `not applicable to tagged complex surface lanes 1`() {
         assertIsNotApplicable("highway" to "residential", "surface" to "paved", "note:surface" to "alternative note format, varying asphalt and concrete")
     }
-    @Test fun `not applicable to tagged complex surface lanes - paved+surface:lanes`() {
+    @Test fun `not applicable to tagged complex surface lanes 2`() {
         assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:lanes" to "concrete|asphalt|asphalt")
     }
-    @Test fun `not applicable to tagged complex surface lanes - unpaved+surface:lanes:forward`() {
+    @Test fun `not applicable to tagged complex surface lanes 3`() {
         assertIsNotApplicable("highway" to "track", "surface" to "unpaved", "surface:lanes:forward" to "compacted", "surface:lanes:backward" to "gravel" )
     }
-    @Test fun `not applicable to tagged complex surface lanes - paved+surface:lanes:both_ways`() {
+    @Test fun `not applicable to tagged complex surface lanes 4`() {
         assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:lanes:both_ways" to "asphalt|concrete")
     }
-    @Test fun `applicable to tagged complex surface lanes without surface - surface=null+surface:lanes`() {
+    @Test fun `applicable to tagged complex surface lanes without surface 5`() {
         assertIsApplicable("highway" to "residential", "surface:lanes" to "concrete|asphalt|cobblestone")
     }
-    @Test fun `applicable to tagged complex surface lanes with asphalt - asphalt+surface:lanes`() {
+    @Test fun `applicable to tagged complex surface lanes with asphalt 6`() {
         assertIsApplicable("highway" to "residential", "surface" to "asphalt", "surface:lanes" to "concrete|asphalt|asphalt")
     }
 
-    @Test fun `applicable to old enough road with surface, regardless of existing surface:lanes or surface:note`() {
+    @Test fun `applicable to old enough road with surface, regardless of existing surface lanes or notes`() {
         val way = way(1L, listOf(1, 2, 3), mapOf(
             "highway" to "residential",
             "surface" to "paved",
