@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.SurfaceUtils
+import de.westnordost.streetcomplete.osm.surface.hasSurfaceLanes
 import de.westnordost.streetcomplete.osm.surface.isComplete
 import de.westnordost.streetcomplete.overlays.Color
 

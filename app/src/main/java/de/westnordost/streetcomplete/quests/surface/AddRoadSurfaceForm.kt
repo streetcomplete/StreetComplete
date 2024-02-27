@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.osm.surface.SurfaceUtils
+import de.westnordost.streetcomplete.osm.surface.hasSurfaceLanes
 import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeConflicting
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
@@ -17,8 +17,8 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
 
     override fun onClickOk(selectedItems: List<Surface>) {
         val surface = selectedItems.single()
+        if (hasSurfaceLanes(element.tags)) return   // surface:note is not required when surface:lanes exist
         confirmPotentialTracktypeMismatch(surface) {
-            return if hasSurfaceLanes(element.tags) // surface:note is not required when surface:lanes exist
             collectSurfaceDescriptionIfNecessary(requireContext(), surface) { description ->
                 applyAnswer(SurfaceAndNote(surface, description))
             }
