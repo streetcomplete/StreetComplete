@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.Surface.*
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceUtils
 import de.westnordost.streetcomplete.osm.surface.isComplete
 import de.westnordost.streetcomplete.overlays.Color
 
@@ -66,7 +67,7 @@ val Surface.color get() = when (this) {
 }
 
 fun SurfaceAndNote?.getColor(element: Element): String =
-    if (isComplexSurfaceLanes(element.tags)) {
+    if (hasSurfaceLanes(element.tags)) {
             Color.BLACK // same as other complex surfaces, e.g. surface=unpaved with surface:note=*
     } else if (this?.isComplete != true) {
         // not set but indoor, private or just a "virtual" link -> do not highlight as missing
@@ -87,5 +88,3 @@ private fun isLink(tags: Map<String, String>): Boolean =
     || tags["cycleway"] == "link"
     || tags["bridleway"] == "link"
 
-private fun isComplexSurfaceLanes(tags: Map<String, String>): Boolean =
-    tags["surface:lanes"] != null || tags["surface:lanes:forward"] != null || tags["surface:lanes:backward"] != null || tags["surface:lanes:both_ways"] != null
