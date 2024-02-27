@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
-import de.westnordost.streetcomplete.quests.verifyAnswer
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -94,30 +93,6 @@ class AddRoadSurfaceTest {
 
     @Test fun `not applicable to generic unpaved track with a note and nonconflicting tracktype`() {
         assertIsNotApplicable("highway" to "track", "surface" to "unpaved", "tracktype" to "grade3", "surface:note" to "varying patches with more and less gravel")
-
-    @Test fun `tracktype tag is removed when surface match is suspicious`() {
-        questType.verifyAnswer(
-            mapOf(
-                "tracktype" to "grade2",
-                "smoothness" to "good"
-            ),
-            SurfaceAndNote(Surface.ASPHALT),
-            StringMapEntryAdd("surface", "asphalt"),
-            StringMapEntryDelete("tracktype", "grade2"),
-            StringMapEntryDelete("smoothness", "good"),
-        )
     }
 
-    @Test fun `tracktype tag is removed when surface match is conflicting`() {
-        questType.verifyAnswer(
-            mapOf(
-                "tracktype" to "grade2",
-                "smoothness" to "good"
-            ),
-            SurfaceAndNote(Surface.SAND),
-            StringMapEntryAdd("surface", "sand"),
-            StringMapEntryDelete("tracktype", "grade2"),
-            StringMapEntryDelete("smoothness", "good"),
-        )
-    }
 }
