@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.surface.SELECTABLE_WAY_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.SurfaceUtils
 import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeConflicting
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
