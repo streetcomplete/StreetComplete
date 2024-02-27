@@ -16,11 +16,14 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<Surface>) {
-        val surface = selectedItems.single()
-        confirmPotentialTracktypeMismatch(surface) {
-            if (hasSurfaceLanes(element.tags)) return true   // surface:note is not required when surface:lanes exist
-            collectSurfaceDescriptionIfNecessary(requireContext(), surface) { description ->
-                applyAnswer(SurfaceAndNote(surface, description))
+        if (hasSurfaceLanes(element.tags) {     // surface:note is not required when surface:lanes exist
+            super.onClickOk()
+        } else {
+            val surface = selectedItems.single()
+            confirmPotentialTracktypeMismatch(surface) {
+                collectSurfaceDescriptionIfNecessary(requireContext(), surface) { description ->
+                    applyAnswer(SurfaceAndNote(surface, description))
+                }
             }
         }
     }
