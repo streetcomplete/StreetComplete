@@ -33,7 +33,10 @@ class AddRoadSurfaceTest {
         assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:lanes:both_ways" to "asphalt|concrete")
     }
     @Test fun `applicable to tagged complex surface lanes without surface - surface=null+surface:lanes`() {
-        assertIsNotApplicable("highway" to "residential", "surface:lanes" to "concrete|asphalt|cobblestone")
+        assertIsApplicable("highway" to "residential", "surface:lanes" to "concrete|asphalt|cobblestone")
+    }
+    @Test fun `applicable to tagged complex surface lanes with asphalt - asphalt+surface:lanes`() {
+        assertIsApplicable("highway" to "residential", "surface" to "asphalt", "surface:lanes" to "concrete|asphalt|asphalt")
     }
 
     @Test fun `applicable to old enough road with surface, regardless of existing surface:lanes or surface:note`() {
