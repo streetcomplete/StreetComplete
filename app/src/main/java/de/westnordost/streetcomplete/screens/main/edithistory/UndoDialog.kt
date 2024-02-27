@@ -54,7 +54,6 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.qualifier.named
 import java.util.MissingFormatArgumentException
-import java.util.concurrent.FutureTask
 
 class UndoDialog(
     context: Context,
@@ -63,9 +62,9 @@ class UndoDialog(
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val editHistoryController: EditHistoryController by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
 
-    private val featureDictionary: FeatureDictionary get() = featureDictionaryFuture.get()
+    private val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
 
     private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
 

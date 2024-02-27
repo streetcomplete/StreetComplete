@@ -18,9 +18,9 @@
     <string name="quest_generic_confirmation_title">"Biztos?"</string>
     <string name="quest_generic_confirmation_yes">"Igen, biztos"</string>
     <string name="quest_generic_confirmation_no">"Majd megnézem"</string>
-    <string name="quest_leave_new_note_title">"Inkább írsz megjegyzést?"</string>
-    <string name="quest_leave_new_note_description">"Írhatsz ide nyilvános megjegyzést, amelyhez más térképezők is hozzászólhatnak, és remélhetőleg megoldják vagy elrejtheted a kérdést magadnak"</string>
-    <string name="quest_leave_new_note_yes">"Jegyzet hozzáadása"</string>
+    <string name="quest_leave_new_note_title">"Megjegyzést írsz helyette?"</string>
+    <string name="quest_leave_new_note_description">"Írhatsz ide nyilvános megjegyzést, amelyhez más térképezők is hozzászólhatnak, és remélhetőleg megoldják, vagy elrejtheted a kérdést magadnak"</string>
+    <string name="quest_leave_new_note_yes">"Megjegyzés írása"</string>
     <string name="quest_leave_new_note_no">"Nem, csak legyen elrejtve"</string>
     <string name="quest_streetName_title">"Mi a neve ennek az utcának?"</string>
     <string name="quest_streetName_description">"ahogy az utcanévtáblán áll, a rövidítések kiírva:"</string>
@@ -51,7 +51,7 @@
     <string name="turn_on_location_request">"Helyzetmeghatározás kikapcsolva. Bekapcsolod most?"</string>
     <string name="no_location_permission_warning">"Szükség van a pozíciódra a környéked kérdéseinek lekéréséhez."</string>
     <string name="about_title_authors">"Szerzők"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick és közreműködők"</string>
+    <string name="about_summary_authors">"© %s Tobias Zwick és a közreműködők"</string>
     <string name="about_title_repository">"Források"</string>
     <string name="about_summary_repository">"a GitHubon"</string>
     <string name="about_title_report_error">"Hiba bejelentése"</string>
@@ -279,8 +279,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_walnuts">"Dió"</string>
     <string name="produce_sisal">"Szizálkender"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nem lehet beolvasni. Próbálj jobban belenagyítani, vagy kevésbé elforgatni a térképet."</string>
-    <string name="quest_crossing_type_title">"Ez milyen típusú gyalogosátkelő?"</string>
-    <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>
     <string name="action_undo">"Visszavonás"</string>
     <string name="produce_mangosteen">"Mangosztán"</string>
     <string name="produce_tomatoes">"Paradicsom"</string>
@@ -375,7 +373,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_fee_answer_hours">"Naptól és napszaktól függ…"</string>
     <string name="quest_fee_add_times">"Időpontok hozzáadása"</string>
     <string name="quest_housenumber_multiple_numbers">"Több házszáma van"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"A házszámokat megadhatod vesszővel elválasztva vagy tartományként is. Például 1,3 vagy 2–6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"A házszámokat megadhatod vesszővel elválasztva vagy tartományként is.\nPéldául 1,3 vagy 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"U-, P- vagy hasonló támasz (a vázat rögzíti)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Kerékgörbítő (csak a kereket rögzíti)"</string>
     <string name="quest_bicycle_parking_type_shed">"Zárt rácsos"</string>
@@ -442,7 +440,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_transportation">"Tömegközlekedési épület"</string>
     <string name="quest_buildingType_university">"Egyetemi épület"</string>
     <string name="quest_buildingType_government">"Kormányzati épület"</string>
-    <string name="quest_buildingType_cars">"Autóknak"</string>
     <string name="quest_buildingType_carport">"Garázstető"</string>
     <string name="quest_buildingType_carport_description">"tető egy autó fölött"</string>
     <string name="quest_buildingType_garage">"Egy garázs"</string>
@@ -481,7 +478,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_segregated_mixed">"A kerékpárosok és a gyalogosok ugyanazt az utat használják"</string>
     <string name="quest_maxheight_title">"Mekkora itt a magasságkorlátozás?"</string>
     <string name="quest_maxheight_answer_noSign">"Nincs jelzőtábla…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Van elég hely alatta akár a legmagasabb teherautóknak is (legalább 4,5 m)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Ez a magasság valószínűtlen. Biztosan helyes?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Lezárta %1$s, %2$s"</string>
@@ -794,9 +790,6 @@ szintek"</string>
     <string name="quest_lanes_answer_lanes_description2">"Add meg az autóforgalom számára használható, jelölt sávok számát (két irányban együttesen). A kerékpársávok és a parkolósávok nem számítanak bele. Ha vannak buszok számára fenntartott sávok is, akkor kérlek, inkább hagyj megjegyzést."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Add meg az autóforgalom számára használható, jelölt sávok számát. A kerékpársávok és a parkolósávok nem számítanak bele. Ha buszsáv is van, akkor inkább írj egy megjegyzést."</string>
     <string name="quest_surface_value_rock">"Kő"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Magas kamionok át tudnak haladni"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Magas kamionok nem férnek el"</string>
-    <string name="quest_crossing_type_marked">"Jelzett átkelő"</string>
     <string name="quest_parkingType_street_side">"Közvetlen az út melletti parkoló"</string>
     <string name="quest_parkingType_lane">"Útfelületen lévő parkoló"</string>
     <string name="quest_tracktype_grade2a">"Szilárd, de burkolatlan"</string>
@@ -834,12 +827,11 @@ szintek"</string>
     <string name="quest_recycling_type_beverage_cartons">"Csak italoskarton"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Kizárólag műanyag palack és karton"</string>
     <string name="team_mode">"Csapat mód"</string>
-    <string name="team_mode_exit">"Kilépés csapat módból"</string>
+    <string name="team_mode_exit">"Kilépés a csapat módból"</string>
     <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnétek térképezni, lehetőség van csapat módban felosztani a feladatokat."</string>
     <string name="team_mode_team_size_hint">"A csapat mód 2-től 12 személyig használható."</string>
     <string name="team_mode_active">"Csapat mód aktív"</string>
     <string name="team_mode_deactivated">"Csapat mód kikapcsolva"</string>
-    <string name="quest_crossing_type_signals_controlled">"Jelzőlámpával szabályozott"</string>
     <string name="undo_confirm_title2">"Visszavonod a következő szerkesztést?"</string>
     <string name="synced">"Szinkronizált"</string>
     <string name="toast_undo_unavailable">"Ez a szerkesztés már szinkronizálásra került és nem visszavonható"</string>
@@ -865,7 +857,7 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_type_bollard">"Cövek(ek)"</string>
     <string name="quest_barrier_type_chain">"Lánc"</string>
     <string name="quest_barrier_type_rope">"Kötél"</string>
-    <string name="quest_barrier_type_wire_gate">"Eltávolítható drótszakasz"</string>
+    <string name="quest_barrier_type_wire_gate">"Eltávolítható vezetékszakasz"</string>
     <string name="quest_barrier_type_cattle_grid">"Állatok áthaladását megakadályozó rács"</string>
     <string name="quest_barrier_type_block">"Nagy, nem mozdítható objektum"</string>
     <string name="quest_barrier_jersey_barrier">"Beton szalagkorlát"</string>
@@ -883,7 +875,7 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_type_swing_gate">"Vízszintesen nyíló sorompó"</string>
     <string name="quest_policeType_title">"Ez milyen típusú rendőrőrs?"</string>
     <string name="quest_barrier_type_kissing_gate_conversion">"Kettős kapuvá átalakítva"</string>
-    <string name="quest_stile_type_title">"Ez milyen típusú kerítés feletti átjáró?"</string>
+    <string name="quest_stile_type_title">"Ez milyen típusú átjáró?"</string>
     <string name="quest_buildingType_semi_detached_description2">"csatlakozó családi ház(ak)"</string>
     <string name="pref_title_quests2">"Kérdések kiválasztása és prioritásuk"</string>
     <string name="pref_subtitle_quests">"%1$d/%2$d engedélyezve"</string>
@@ -1030,7 +1022,7 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_smoothness_surface_value">"A felszín így volt címkézve:"</string>
     <string name="quest_smoothness_obstacle">"Van rajta akadály"</string>
     <string name="quest_smoothness_obstacle_hint">"Kérjük, általánosan határozd meg a simaságot. Az egyedi akadályok (pl járdaszegélyek, fekvőrendőr vagy szarvasmarha-rács) figyelmen kívül hagyhatók. Az ismétlődő vagy váratlan akadályokat viszont bele kell számítani a válaszba."</string>
-    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … add meg, hogy mely járművekkel lehet használni a felszínt. Az összkép számít, nem az egyedi sérülések."</string>
+    <string name="quest_smoothness_hint">"🚲, 🚗, 🚙, … add meg, hogy mely járművekkel lehet használni a felszínt. Az összkép számít, nem az egyedi veszélyek."</string>
     <string name="link_osmhydrant_description">"Tűzoltóságok és tűzcsapok keresése, hozzáadása és szerkesztése"</string>
     <string name="achievement_lifesaver_title">"Életmentő"</string>
     <string name="achievement_lifesaver_solved_X">"Választ adtál %d olyan kérdésre, amellyel a mentőknek, a tűzoltóknak és más segélyszolgálatoknak nyújtottál segítséget!"</string>
@@ -1225,7 +1217,6 @@ Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthe
     <string name="quest_drinking_water_type_spring">"Forrás"</string>
     <string name="quest_drinking_water_type_disused">"Nem használt vízforrás"</string>
     <string name="overlay_addresses">"Cím"</string>
-    <string name="overlay_shops">"Üzlet"</string>
     <string name="name_label">"Név:"</string>
     <string name="unknown_shop_title">"Ismeretlen hely"</string>
     <string name="quest_address_answer_no_address">"Nincs cím"</string>
@@ -1285,12 +1276,12 @@ Most akarja elmozdítani?"</string>
     <string name="separate_cycleway_path">"Gyalog- és kerékpárút"</string>
     <string name="quest_fireHydrant_type_pipe">"Cső"</string>
     <string name="measure_info_title">"Az optimális pontosság elérése"</string>
-    <string name="measure_info_html_description">"&lt;p&gt;AzARCore néha (kezdetben) feltételezi, hogy a talaj egy kicsit alacsonyabb vagy magasabb, mint amilyen valójában. Ez mérési hibát eredményez, amely annál nagyobb lesz, minél inkább a horizont felé döntöd a telefonodat.&lt;/p&gt;
+    <string name="measure_info_html_description">"&lt;p&gt;Az ARCore néha (kezdetben) feltételezi, hogy a talaj egy kicsit alacsonyabb vagy magasabb, mint amilyen valójában. Ez mérési hibát eredményez, amely annál nagyobb lesz, minél inkább a horizont felé döntöd a telefonodat.&lt;/p&gt;
 &lt;p&gt;A vízszintes méréseknél ennek a problémának a teljes kiküszöböléséhez állítsd be a kezdő- és végpontokat úgy, hogy közben a telefont egyenesen lefelé irányítod (úgy, hogy felülről a fehér nyilat lásd).&lt;/p&gt;
 &lt;p&gt;Függőleges méréseknél ehelyett azt ellenőrizd, hogy a kezdőpont nem mozdul-e el a talajhoz képest, ha különböző irányokból nézed.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Ez az alkalmazás a &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) kiterjesztettvalóság-rendszeren fut, amelyet a Google biztosít, és amelyre a &lt;a href=\"https://policies.google.com/privacy\"&gt;Google adatvédelmi irányelvei&lt;/a&gt; vonatkoznak."</string>
-    <string name="default_disabled_msg_seasonal">"Ez a küldetéstípus alapértelmezés szerint ki van kapcsolva, mivel az ellenőrzésre az év egy bizonyos szakaszában lehet szükség."</string>
-    <string name="quest_gritBinSeasonal_title">"Ez télen is kívül itt van?"</string>
+    <string name="default_disabled_msg_seasonal">"Ez a kérdéstípus alapértelmezés szerint ki van kapcsolva, mivel az ellenőrzésre az év egy bizonyos szakaszában lehet szükség."</string>
+    <string name="quest_gritBinSeasonal_title">"Ez a télen kívül is itt van?"</string>
     <string name="street_parking_staggered_on_street">"Az utcán felváltva, mindkét oldalon"</string>
     <string name="street_parking_staggered_half_on_kerb">"Részben az utca váltakozó oldalain"</string>
     <string name="quest_traffic_signals_sound_description">"Tipp: Keresse a hangszórókat. Nem minden hangjelzés aktiválható gombnyomással."</string>
@@ -1348,4 +1339,40 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_recycling_type_food_waste">"Élelmiszer-hulladék"</string>
     <string name="quest_defibrillator_location">"Hol található ez a defibrillátor?"</string>
     <string name="quest_defibrillator_location_description">"Kérlek, add meg az elhelyezés tömör leírását (pl. „a portásfülkében”)."</string>
+    <string name="quest_sanitary_dump_station_title">"Van itt WC-ből származó hulladék elhelyezésére szolgáló állomás?"</string>
+    <string name="quest_sanitary_dump_station_description">"Lakóautó, kamion, busz stb. WC-tartályából származó emberi hulladék elhelyezésére szolgáló létesítmény. Általában ilyen táblával jelzik:"</string>
+    <string name="quest_generalFee_title">"Fizetni kell a használatáért?"</string>
+    <string name="about_title_logs">"Naplók (%1$d)"</string>
+    <string name="about_summary_logs">"hibajelentésekben való használatra"</string>
+    <string name="action_filter">"Szűrő"</string>
+    <string name="action_share">"Naplók megosztása"</string>
+    <string name="about_title_show_logs">"Naplók megjelenítése"</string>
+    <string name="label_log_level">"Naplózási szint"</string>
+    <string name="label_log_newer_than">"Ettől"</string>
+    <string name="label_log_older_than">"Eddig"</string>
+    <string name="label_log_message_contains">"Az üzenet tartalma"</string>
+    <string name="title_logs_filters">"Üzenetszűrő"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Rejtett küldetések száma: %d"</string>
+    <string name="link_every_door_description">"Hatékony POI-szerkesztő Android és iOS rendszerekre"</string>
+    <string name="quest_disable_action">"Letilt"</string>
+    <string name="quest_disable_title">"Letiltod ezt a kérdéstípust?"</string>
+    <string name="quest_disable_message_not_installed">"A StreetMeasure nincs telepítve (még)."</string>
+    <string name="quest_disable_message_not_working">"A StreetMeasure nem adott mérési eredményt."</string>
+    <string name="quest_disable_message_tape_measure">"Használhatsz helyette mérőszalagot is, de az végül is kissé kellemetlen lehet."</string>
+    <string name="quest_buildingType_outbuilding">"Melléképület"</string>
+    <string name="quest_buildingType_outbuilding_description">"kevésbé fontos épület egy telken"</string>
+    <string name="quest_buildingType_other_description">"olyan épület, amely nem választható ki ebben az alkalmazásban"</string>
+    <string name="quest_buildingType_container">"Konténer"</string>
+    <string name="quest_buildingType_tent">"Sátor"</string>
+    <string name="quest_buildingType_tomb">"Sírhely"</string>
+    <string name="quest_buildingType_tower">"Torony"</string>
+    <string name="quest_buildingType_tower_description">"bármilyen torony"</string>
+    <string name="quest_buildingType_under_construction">"Építés alatt"</string>
+    <string name="overlay_buildings">"Épületek"</string>
+    <string name="quest_pedestrian_crossing_signals">"Várni kell egy jelzőlámpára, hogy át lehessen kelni?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Az átkelőhely jelölve van az útburkolaton?"</string>
+    <string name="overlay_places">"Helyek"</string>
+    <string name="overlay_things">"Dolgok"</string>
+    <string name="disused">"használaton kívül"</string>
+    <string name="unknown_object">"Ismeretlen tárgy"</string>
 </resources>

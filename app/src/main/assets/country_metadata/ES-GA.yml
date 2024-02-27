@@ -1,2 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Abanca, Santander, Banco Sabadell, Banco Santander, ABANCA, Caixabank, BBVA, Banco Pastor, Telebanco 4B, Targobank, BitBase, shitcoins.club, La Caixa, Deutsche Bank]
+chargingStationOperators: ['Tesla, Inc.', Zunder, Ionity, Endesa, Wenea, Lidl]
+clothesContainerOperators: [Cáritas]
 officialLanguages: [gl, es]

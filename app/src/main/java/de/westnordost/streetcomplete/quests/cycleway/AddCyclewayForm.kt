@@ -11,9 +11,9 @@ import de.westnordost.streetcomplete.osm.cycleway.Direction
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
 import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
-import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.getDefault
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
+import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
@@ -27,7 +27,6 @@ import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAns
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.LEFT
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController.Sides.RIGHT
 import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -84,7 +83,7 @@ class AddCyclewayForm : AStreetSideSelectForm<CyclewayAndDirection, LeftAndRight
     }
 
     private fun initStateFromTags() {
-        val cycleways = createCyclewaySides(element.tags, isLeftHandTraffic)
+        val cycleways = parseCyclewaySides(element.tags, isLeftHandTraffic)
 
         streetSideSelect.showSides = getInitiallyShownSides(cycleways)
 

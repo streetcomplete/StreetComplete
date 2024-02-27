@@ -1,2 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Euronet, Caixabank, Banco Sabadell, Cash Zone, Banco Santander, BBVA, BitBase, Bankia, Euro, Santander, Xe, Weex, Sabadell, La Caixa, Cajamar, Caja Rural, Caixa Altea, shitcoins.club, cash zone, Telebanco, CAM, Bankinter, Bancaja, xe, bankia, Telebanco 4B, Ruralcaja, Euro Automatic Cash, Deutsche Bank]
+chargingStationOperators: [Iberdrola, 'Tesla, Inc.', Repsol, Zunder, Mercadona, Ionity, Endesa, Endesa X, Ayuntamiento de Vallibona, Ayuntamiento de Segorbe, 10-22h]
+clothesContainerOperators: [Fovasa, Urbarser, Proyecto Lázaro, Cáritas]
 officialLanguages: [ca, es]

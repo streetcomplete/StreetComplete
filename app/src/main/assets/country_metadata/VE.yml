@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Mercantil, Banco Mercantil, Banco de Venezuela, Banco Mercantil (Solo Personal), Provincial, Sofitasa, Banco del Tesoro (Solo Personal), Banco del Tesoro, Banesco, Bicentenario, Banco Provincial, Banco Exterior, Banco Bicentenario del Pueblo, BOD]
+atmOperators: [Mercantil, Banco de Venezuela, Provincial, Banco Mercantil, Sofitasa, Tesoro, Bicentenario, Banesco, Banco del Tesoro (Solo Personal), Banco del Tesoro, Banco Mercantil (Solo Personal), Banco Exterior, Banco Bicentenario del Pueblo, Bancaribe, BOD]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 734

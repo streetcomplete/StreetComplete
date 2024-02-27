@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Alpha Bank, Euronet, Εθνική Τράπεζα, Eurobank, Τράπεζα Πειραιώς, Piraeus Bank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος, Euronet Worldwide, National Bank, Ελληνικά Ταχυδρομεία, Εθνική, National Bank of Greece, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Bank of Chania, ATM, HSBC, Alpha, Ethniki Bank, Ethniki, Attica Bank, NBG, Piräus Bank, Alphabank, Cooperative Bank of Dodecanese, Citibank, Pireus Bank, Piraeusbank, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, Τράπεζα Eurobank, NBG GROUP]
-chargingStationOperators: [blink, Δήμος Αλίμου, Fortizo, Peugeot, Δήμος Λαμιέων, 'https://mythicalpeloponnese.gr']
-clothesContainerOperators: [Texcycle]
+atmOperators: [Τράπεζα Πειραιώς, Alpha Bank, Euronet, Eurobank, Εθνική Τράπεζα, Euronet Worldwide, Εθνική Τράπεζα της Ελλάδος, Piraeus Bank, National Bank, Πειραιώς, Εθνική, Attica Bank, ATM, Citibank, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Ethniki Bank, Bank of Chania, Πειραιώς / Piraeus, Piräus Bank, NBG GROUP, NBG, HSBC, Bcash, Alpha, Τράπεζας Πειραιώς, Τράπεζα Eurobank, Εθνική Τράπεζα | National Bank of Greece, ΑΤΜ Τράπεζα Πειραιώς, Pireus Bank, Pireaus Bank, Piraeus bank, Hellenic Post, EuroNet, Cooperative Bank of Dodecanese]
+chargingStationOperators: [ΔΕΗ blue, ΔΕΗ, Protergia, blink, incharge, WATT AND VOLT, 'Tesla, Inc.', Peugeot, Δήμος Αλίμου, nrg incharge, Chargespot, Lidl, Joltie, Fortizo, ΔΕΗblue, 'https://mythicalpeloponnese.gr', WATT+VOLT, NRG, Evziiin, ChargePoint, Blink]
+clothesContainerOperators: [Recycom, Texcycle, RECYCOM, Δήμος Κέρκυρας]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true

@@ -33,9 +33,9 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     protected lateinit var imageSelector: GroupedImageSelectAdapter<I>
 
-    /** all items to display (after user pressed "see more"). May not be accessed before onCreate */
+    /** all items to display. May not be accessed before onCreate */
     protected abstract val allItems: List<GroupableDisplayItem<I>>
-    /** initial items to display. May not be accessed before onCreate */
+    /** items to display that are shown on the top. May not be accessed before onCreate */
     protected abstract val topItems: List<GroupableDisplayItem<I>>
 
     private lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>

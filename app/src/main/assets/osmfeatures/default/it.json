@@ -3819,7 +3819,6 @@
                         "dip": "Buca",
                         "double_dip": "Doppia cunetta",
                         "hump": "Dosso lungo (Inghilterra)",
-                        "island": "Isola di traffico",
                         "mini_bumps": "Limite minimo di velocità",
                         "rumble_strip": "Rallentatore acustico",
                         "table": "Dosso tavola\nDosso piatto"
@@ -5314,10 +5313,6 @@
                     "name": "Macchinetta del cibo",
                     "terms": "cibo,barrette,sandwich,panini,cioccolata,tramezzini"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Pompa della benzina",
-                    "terms": "benzina,petrolio,propano,diesel,benzene,ottani,verde,senza piombo,gpl,metano,bioetanolo,biodiesel"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Macchinetta del gelato",
                     "terms": "gelato,cioccolata,ghiaccoli,ghiacciato,vaniglia,grattachecca,gelati,panna,fragola,pistacchio"
@@ -5344,10 +5339,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "Macchinetta dei francobolli",
                     "terms": "posta,spedizione,invio,francobollo,francobolli,marca da bollo"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Distributore automatico di snack",
-                    "terms": "distributore automatico,macchinetta,snack,cibo"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinario",
@@ -9521,10 +9512,6 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Dosso lungo (Inghilterra)"
-                },
-                "traffic_calming/island": {
-                    "name": "Isola di traffico",
-                    "terms": "isola,pedonale"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Rallentatore acustico"

@@ -279,8 +279,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível buscar aqui. Tente aproximar mais ou inclinar menos o mapa."</string>
-    <string name="quest_crossing_type_title">"Que tipo de cruzamento é esse?"</string>
-    <string name="quest_crossing_type_unmarked">"Sem marcações na via"</string>
     <string name="action_undo">"Desfazer"</string>
     <string name="produce_mangosteen">"Mangostão"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -442,7 +440,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_buildingType_transportation">"Prédio de transporte público"</string>
     <string name="quest_buildingType_university">"Prédio universitário"</string>
     <string name="quest_buildingType_government">"Prédio governamental"</string>
-    <string name="quest_buildingType_cars">"Para carros"</string>
     <string name="quest_buildingType_carport">"Abrigo de carros"</string>
     <string name="quest_buildingType_carport_description">"abrigo para um carro"</string>
     <string name="quest_buildingType_garage">"Garagem singular"</string>
@@ -481,7 +478,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_segregated_mixed">"Ciclistas e pedestres compartilham o mesmo espaço"</string>
     <string name="quest_maxheight_title">"Qual o limite de altura aqui?"</string>
     <string name="quest_maxheight_answer_noSign">"Não há placa…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Há espaço suficiente para que mesmo os caminhões mais altos (pelo menos 4,5 metros / 15 pés) atravessem?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Essa altura parece implausível. Tem certeza de que está correta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Fechado por %1$s, %2$s"</string>
@@ -799,9 +795,6 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Especifique o número de faixas marcadas que podem ser utilizadas para tráfego de automóveis aqui. Faixas para bicicletas e dedicadas a estacionamento não contam.
 Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_surface_value_rock">"Rocha"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Caminhões altos podem passar"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Caminhões altos não cabem"</string>
-    <string name="quest_crossing_type_marked">"Marcado"</string>
     <string name="quest_parkingType_street_side">"Estacionamento adjacente à pista"</string>
     <string name="quest_parkingType_lane">"Estacionamento na estrada"</string>
     <string name="quest_tracktype_grade2a">"Sólido mas não pavimentado"</string>
@@ -846,7 +839,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="team_mode_team_size_hint">"O modo equipe funciona para grupos de 2 a 12 pessoas."</string>
     <string name="team_mode_active">"O Modo de equipe está ativo"</string>
     <string name="team_mode_deactivated">"O Modo de equipe desativado"</string>
-    <string name="quest_crossing_type_signals_controlled">"Controlado por semáforo"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>
@@ -1232,7 +1224,6 @@ Infelizmente, devido a uma política da Google Play Store, nenhum link que leve 
     <string name="quest_drinking_water_type_spring">"Nascente"</string>
     <string name="quest_drinking_water_type_disused">"Objeto de água potável em desuso"</string>
     <string name="overlay_addresses">"Endereços"</string>
-    <string name="overlay_shops">"Shoppings"</string>
     <string name="name_label">"Nome:"</string>
     <string name="unknown_shop_title">"Outro tipo de lugar"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>

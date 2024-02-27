@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import java.util.concurrent.FutureTask
 
 /** Manages edit statistics - by element edit type and by country */
 class StatisticsController(
@@ -22,7 +21,7 @@ class StatisticsController(
     private val currentWeekEditTypeStatisticsDao: EditTypeStatisticsDao,
     private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
     private val activeDatesDao: ActiveDatesDao,
-    private val countryBoundaries: FutureTask<CountryBoundaries>,
+    private val countryBoundaries: Lazy<CountryBoundaries>,
     private val prefs: Preferences,
     userLoginStatusSource: UserLoginStatusSource
 ) : StatisticsSource {
@@ -179,15 +178,15 @@ class StatisticsController(
         val today = systemTimeNow().toLocalDate()
         val lastUpdateDate = Instant.fromEpochMilliseconds(lastUpdate).toLocalDate()
         lastUpdate = nowAsEpochMilliseconds()
+        activeDatesDao.addToday()
         if (today > lastUpdateDate) {
             daysActive++
             listeners.forEach { it.onUpdatedDaysActive() }
         }
-        activeDatesDao.addToday()
     }
 
     private fun getRealCountryCode(position: LatLon): String? =
-        countryBoundaries.get().getIds(position).firstOrNull {
+        countryBoundaries.value.getIds(position).firstOrNull {
             // skip country subdivisions (e.g. US-TX)
             !it.contains('-')
         }

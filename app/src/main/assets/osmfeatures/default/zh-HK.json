@@ -3103,10 +3103,6 @@
                     "name": "郵票售賣機",
                     "terms": "郵票販賣機"
                 },
-                "amenity/vending_machine/sweets": {
-                    "name": "零食售賣機",
-                    "terms": "零食販賣機"
-                },
                 "amenity/veterinary": {
                     "name": "獸醫",
                     "terms": "獸醫,動物醫生"
@@ -5512,10 +5508,6 @@
                 "traffic_calming/hump": {
                     "name": "緩衝路拱",
                     "terms": "減速壆"
-                },
-                "traffic_calming/island": {
-                    "name": "交通島",
-                    "terms": "traffic island,分隔島,安全島"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "減速振動帶",

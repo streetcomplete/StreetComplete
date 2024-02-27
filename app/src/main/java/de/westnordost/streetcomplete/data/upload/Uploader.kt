@@ -8,7 +8,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.user.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -21,19 +23,20 @@ class Uploader(
     private val userLoginStatusSource: UserLoginStatusSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
     private val mutex: Mutex
-) {
-    var uploadedChangeListener: OnUploadedChangeListener? = null
+) : UploadProgressSource {
+
+    private val listeners = Listeners<UploadProgressSource.Listener>()
 
     private val bannedInfo by lazy { versionIsBannedChecker.get() }
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {
-            uploadedChangeListener?.onUploaded(questType, at)
+            listeners.forEach { it.onUploaded(questType, at) }
         }
 
         override fun onDiscarded(questType: String, at: LatLon) {
             invalidateArea(at)
-            uploadedChangeListener?.onDiscarded(questType, at)
+            listeners.forEach { it.onDiscarded(questType, at) }
         }
     }
 
@@ -42,27 +45,49 @@ class Uploader(
         elementEditsUploader.uploadedChangeListener = uploadedChangeRelay
     }
 
+    override var isUploadInProgress: Boolean = false
+        private set
+
     suspend fun upload() {
-        val banned = withContext(Dispatchers.IO) { bannedInfo }
-        if (banned is IsBanned) {
-            throw VersionBannedException(banned.reason)
+        try {
+            isUploadInProgress = true
+            listeners.forEach { it.onStarted() }
+            val banned = withContext(Dispatchers.IO) { bannedInfo }
+            if (banned is IsBanned) {
+                throw VersionBannedException(banned.reason)
+            }
+
+            // let's fail early in case of no authorization
+            if (!userLoginStatusSource.isLoggedIn) {
+                throw AuthorizationException("User is not authorized")
+            }
+
+            Log.i(TAG, "Starting upload")
+
+            mutex.withLock {
+                // element edit and note edit uploader must run in sequence because the notes may need
+                // to be updated if the element edit uploader creates new elements to which notes refer
+                elementEditsUploader.upload()
+                noteEditsUploader.upload()
+            }
+            Log.i(TAG, "Finished upload")
+        } catch (e: CancellationException) {
+            Log.i(TAG, "Upload cancelled")
+        } catch (e: Exception) {
+            Log.e(TAG, "Unable to upload", e)
+            listeners.forEach { it.onError(e) }
+            throw e
+        } finally {
+            isUploadInProgress = false
+            listeners.forEach { it.onFinished() }
         }
+    }
 
-        // let's fail early in case of no authorization
-        if (!userLoginStatusSource.isLoggedIn) {
-            throw AuthorizationException("User is not authorized")
-        }
-
-        Log.i(TAG, "Starting upload")
-
-        mutex.withLock {
-            // element edit and note edit uploader must run in sequence because the notes may need
-            // to be updated if the element edit uploader creates new elements to which notes refer
-            elementEditsUploader.upload()
-            noteEditsUploader.upload()
-        }
-
-        Log.i(TAG, "Finished upload")
+    override fun addListener(listener: UploadProgressSource.Listener) {
+        listeners.add(listener)
+    }
+    override fun removeListener(listener: UploadProgressSource.Listener) {
+        listeners.remove(listener)
     }
 
     private fun invalidateArea(pos: LatLon) {
@@ -73,6 +98,6 @@ class Uploader(
     }
 
     companion object {
-        private const val TAG = "Upload"
+        const val TAG = "Upload"
     }
 }

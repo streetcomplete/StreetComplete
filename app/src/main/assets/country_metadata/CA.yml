@@ -1,6 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
-atmOperators: [RBC, CIBC, TD Canada Trust, Desjardins, BMO, Scotiabank, Instacoin, Banque Laurentienne, TD, RBC Royal Bank, Royal Bank, generic, Caisse Desjardins, Vancity, Banque Nationale, Bank of Montreal, BMO Bank of Montreal, DC Bank, Alterna, Banque Manuvie, Royal Bank of Canada, PC Financial, Banque Scotia, Envision Financial, Banque Royale, ATB Financial, Steinbach Credit Union, DCBank, Frisco ATMs, BMO Banque de Montréal, Caisse populaire Desjardins, HSBC, Canadian Imperial Bank of Commerce, TD Bank, President's Choice Financial, Caisse Populaire Desjardins d'Amos, Coast Capital, coastcapital savings, Affinity Credit Union, Cambrian Credit Union]
 centerLineStyle: yellow
 hasAdvisorySpeedLimitSign: true
 hasCenterLeftTurnLane: true

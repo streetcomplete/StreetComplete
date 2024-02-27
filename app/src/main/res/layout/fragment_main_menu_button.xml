@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/map_btn_menu"
             android:scaleType="center"
-            android:src="@drawable/ic_menu_24dp" />
+            app:srcCompat="@drawable/ic_menu_24dp" />
 
     </FrameLayout>
 

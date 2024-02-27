@@ -3,17 +3,16 @@ package de.westnordost.streetcomplete.quests.level
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doAfterTextChanged
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.osm.level.SingleLevel
-import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
-import de.westnordost.streetcomplete.osm.level.createSelectableLevels
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
+import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
+import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
@@ -25,15 +24,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 import kotlin.math.ceil
 import kotlin.math.floor
 
 class AddLevelForm : AbstractOsmQuestForm<String>() {
 
     private val mapDataSource: MapDataWithEditsSource by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
 
     override val contentLayoutResId = R.layout.quest_level
     private val binding by contentViewBinding(QuestLevelBinding::bind)
@@ -59,7 +55,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
 
         val shopsWithLevels = mapData.filter {
-            it.tags["level"] != null && IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(it)
+            it.tags["level"] != null && it.isPlaceOrDisusedShop()
         }
 
         shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->
@@ -69,7 +65,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
             updateMarkers(selectedLevel)
         }
 
-        val selectableLevels = createSelectableLevels(shopsWithLevels.map { it.tags })
+        val selectableLevels = parseSelectableLevels(shopsWithLevels.map { it.tags })
         binding.plusMinusContainer.addButton.setOnClickListener {
             val level = selectedLevel
             selectedLevel = if (level != null) {
@@ -103,8 +99,8 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         if (level == null) return
         val levels = listOf(SingleLevel(level))
         for ((element, geometry) in shopElementsAndGeometry) {
-            if (!createLevelsOrNull(element.tags).levelsIntersect(levels)) continue
-            val icon = getPinIcon(featureDictionaryFuture.get(), element.tags)
+            if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) continue
+            val icon = getPinIcon(featureDictionary, element)
             val title = getTitle(element.tags)
             showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(geometry, icon, title)
         }

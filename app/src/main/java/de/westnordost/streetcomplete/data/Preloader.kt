@@ -9,12 +9,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.concurrent.FutureTask
 
 /** Initialize certain singleton classes used elsewhere throughout the app in the background */
 class Preloader(
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    private val featuresDictionaryFuture: FutureTask<FeatureDictionary>
+    private val countryBoundaries: Lazy<CountryBoundaries>,
+    private val featuresDictionary: Lazy<FeatureDictionary>
 ) {
 
     suspend fun preload() {
@@ -32,14 +31,14 @@ class Preloader(
 
     private suspend fun preloadFeatureDictionary() = withContext(Dispatchers.IO) {
         val time = nowAsEpochMilliseconds()
-        featuresDictionaryFuture.run()
+        featuresDictionary.value
         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Loaded features dictionary in ${seconds.format(1)}s")
     }
 
     private suspend fun preloadCountryBoundaries() = withContext(Dispatchers.IO) {
         val time = nowAsEpochMilliseconds()
-        countryBoundariesFuture.run()
+        countryBoundaries.value
         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Loaded country boundaries in ${seconds.format(1)}s")
     }

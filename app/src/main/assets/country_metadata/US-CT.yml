@@ -1,3 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors Inc, Tesla Motors]
+atmOperators: [Bank of America, WebsterBank, M&T Bank, Wells Fargo, Webster Bank, Webster, Citizens Bank, Citibank]
+chargingStationOperators: ['Tesla, Inc.', City of Middletown, ChargePoint, eVgo, Volta, Tesla Motors Inc, Norwich Public Utilities, Electrify America]
+clothesContainerOperators: [American Red Cross]
 defaultSpeedLimitHasUrbanOrRural: false

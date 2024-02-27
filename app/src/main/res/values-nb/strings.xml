@@ -217,7 +217,7 @@ Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen e
     <string name="quest_streetName_cantType_description">"Hvis du bruker et standardtastatur kan du trolig enkelt aktivere et tastaturoppsett for språket du trenger i innstillinger for inndatametode.
 
 Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikken. Populære tastaturer som støtter mange språk er Google Gboard, Swiftkey Keyboard og Multiling O Keyboard."</string>
-    <string name="quest_streetName_menuItem_nolanguage">"(ikke valgt)"</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(uspesifisert)"</string>
     <string name="quest_fireHydrant_type_title">"Hva slags brannhydrant er dette?"</string>
     <string name="quest_fireHydrant_type_pillar">"Stående"</string>
     <string name="quest_fireHydrant_type_underground">"Under bakken"</string>
@@ -279,8 +279,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="produce_walnuts">"Valnøtt"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Klarer ikke å finne oppdrag her. Prøv å forstørre ytterligere eller reduser perspektivet på kartet."</string>
-    <string name="quest_crossing_type_title">"Hva slags overgang er dette?"</string>
-    <string name="quest_crossing_type_unmarked">"Uten veimarkeringer"</string>
     <string name="action_undo">"Angre"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomater"</string>
@@ -442,7 +440,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_buildingType_transportation">"Offentlig transport"</string>
     <string name="quest_buildingType_university">"Universitet"</string>
     <string name="quest_buildingType_government">"Statlig bygning"</string>
-    <string name="quest_buildingType_cars">"For biler"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"Tak over en bil"</string>
     <string name="quest_buildingType_garage">"Enkeltgarasje"</string>
@@ -481,7 +478,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_segregated_mixed">"Syklister og fotgjengere deler arealet"</string>
     <string name="quest_maxheight_title">"Hva er høydegrensen her?"</string>
     <string name="quest_maxheight_answer_noSign">"Det er ikke noe skilt…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Er det helt åpenbart nok plass til at selv de største lastebilene kan passere (minst 4.5 meter / 15 fot)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Høyden virker usannsynlig. Er du sikker på at det er riktig?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Lukket av %1$s, %2$s"</string>
@@ -799,9 +795,6 @@ Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</st
     <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn antall oppmerkede kjørefelt som kan brukes av biler. Sykkelfelt og gateparkering skal ikke telles med.
 Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad."</string>
     <string name="quest_surface_value_rock">"Stein"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Høye lastebiler kan kjøre gjennom"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Høye lastebiler får ikke plass"</string>
-    <string name="quest_crossing_type_marked">"Overgang med oppmerking"</string>
     <string name="quest_parkingType_street_side">"Parkering ved siden av veien"</string>
     <string name="quest_parkingType_lane">"Parkering i veien"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikke asfaltert"</string>
@@ -846,7 +839,6 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="team_mode_team_size_hint">"Gruppemodus fungerer for grupper på 2-12 personer."</string>
     <string name="team_mode_active">"Gruppemodus er aktivt"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
-    <string name="quest_crossing_type_signals_controlled">"Overgang kontrollert med trafikklys"</string>
     <string name="undo_confirm_title2">"Angre følgende endring?"</string>
     <string name="synced">"Opplastet"</string>
     <string name="toast_undo_unavailable">"Denne endringer er lastet opp og kan ikke angres"</string>
@@ -1232,7 +1224,6 @@ Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retnings
     <string name="quest_drinking_water_type_spring">"Kilde"</string>
     <string name="quest_drinking_water_type_disused">"Nedlagt drikkevannskilde"</string>
     <string name="overlay_addresses">"Adresser"</string>
-    <string name="overlay_shops">"Butikker"</string>
     <string name="name_label">"Navn:"</string>
     <string name="unknown_shop_title">"Annet type sted"</string>
     <string name="quest_address_answer_no_address">"Ingen adresse"</string>
@@ -1340,6 +1331,7 @@ Manglende data vises alltid i rødt."</string>
     <string name="overlays_tutorial_edit">"Trykk på uthevede kartdata for å vise eller redigere det. Du kan også dele veier eller legge inn merknader, akkurat som vanlige oppdrag.
 
 I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset vises, for eksempel adressekartlaget."</string>
+    <string name="quest_crossing_kerb_height_title">"Hvor høye er fortauskantene ved denne overgangen?"</string>
     <string name="quest_maxheight_sign_title">"Hva er maksimal høyde her?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Hva er maksimal høyde under broen?"</string>
     <string name="quest_leave_new_note_as_answer">"I så fall må du lage en merknad hvor du forklarer situasjonen."</string>
@@ -1354,14 +1346,35 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="quest_recycling_type_food_waste">"Matavfall"</string>
     <string name="quest_defibrillator_location">"Hvor er defibrillatoren?"</string>
     <string name="quest_defibrillator_location_description">"Vennligst gi en nøyaktig beskrivelse av posisjonen (f.eks. “i resepsjonen“)."</string>
+    <string name="quest_sanitary_dump_station_title">"Er det et toalettømmeanlegg her?"</string>
+    <string name="quest_sanitary_dump_station_description">"Anlegg for å tømme kloakk fra beholdere i campingbiler, trailere ol. Vanligvis skiltet slik:"</string>
     <string name="quest_generalFee_title">"Må du betale for å bruke den?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Det er et åpent ildsted"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Et åpent ildsted har ingen overflate for matlagning (f.eks. rist/plate), i motsetning til griller."</string>
     <string name="about_title_logs">"Logger (%1$d)"</string>
     <string name="about_summary_logs">"for bruk i feilrapporter"</string>
     <string name="action_filter">"Filter"</string>
     <string name="action_share">"Del logger"</string>
     <string name="about_title_show_logs">"Vis logger"</string>
+    <string name="label_log_level">"Loggnivå"</string>
     <string name="label_log_newer_than">"Fra"</string>
     <string name="label_log_older_than">"Til"</string>
     <string name="label_log_message_contains">"Meldingen inneholder"</string>
     <string name="title_logs_filters">"Filtrer meldingene"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Antall skjulte oppdrags: %d"</string>
+    <string name="quest_disable_action">"Deaktiver"</string>
+    <string name="quest_disable_title">"Deaktiver denne oppdragstypen?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure er ikke installert (enda)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure returnerte ingen måleverdi."</string>
+    <string name="quest_disable_message_tape_measure">"Du kan bruke målebånd i stedet, men det kan se litt rart ut, kanskje."</string>
+    <string name="quest_buildingType_outbuilding">"Uthus"</string>
+    <string name="quest_buildingType_outbuilding_description">"en mindre viktig bygning på eiendommen"</string>
+    <string name="quest_buildingType_other_description">"en spesifikk bygningstype som ikke kan velges i denne appen"</string>
+    <string name="quest_buildingType_container">"Konteiner"</string>
+    <string name="quest_buildingType_tent">"Telt"</string>
+    <string name="quest_buildingType_tomb">"Gravkammer"</string>
+    <string name="quest_buildingType_tower">"Tårn"</string>
+    <string name="quest_buildingType_tower_description">"alle slags tårn"</string>
+    <string name="quest_buildingType_under_construction">"Under oppføring"</string>
+    <string name="overlay_buildings">"Bygninger"</string>
 </resources>

@@ -515,6 +515,10 @@
                         "rising": "Wysuwany"
                     }
                 },
+                "books": {
+                    "label": "Rodzaj książek",
+                    "terms": "rodzaj książek"
+                },
                 "booth": {
                     "label": "Model budki",
                     "terms": "model budki,budka telefoniczna,budka"
@@ -852,6 +856,9 @@
                 },
                 "conveying_escalator": {
                     "label": "Schody ruchome"
+                },
+                "count": {
+                    "label": "Liczba obiektów"
                 },
                 "country": {
                     "label": "Kraj"
@@ -1454,6 +1461,10 @@
                 "fence_type": {
                     "label": "Rodzaj"
                 },
+                "fhrs/id-GB": {
+                    "label": "Identyfikator FHRS",
+                    "terms": "identyfikator fhrs"
+                },
                 "fire_hydrant/diameter": {
                     "label": "Średnica (mm, in, lub litery)",
                     "terms": "średnica"
@@ -1563,6 +1574,9 @@
                 "flood_prone": {
                     "label": "Zagrożona zalaniem",
                     "terms": "zagrożona zalaniem"
+                },
+                "footrest": {
+                    "label": "Oparcie dla stopy"
                 },
                 "ford": {
                     "label": "Rodzaj",
@@ -1713,6 +1727,9 @@
                 "handrail": {
                     "label": "Poręcz",
                     "terms": "poręcz"
+                },
+                "handrest": {
+                    "label": "Oparcie dla ręki"
                 },
                 "hashtags": {
                     "label": "Hashtagi",
@@ -2590,6 +2607,11 @@
                     "placeholder": "24/7, sunrise-sunset, Mo-Sa 08:00-20:00",
                     "terms": "godziny otwarcia"
                 },
+                "opening_hours/drive_through": {
+                    "label": "Godziny otwarcia drive-through",
+                    "placeholder": "Identyczne jak podstawowe godziny otwarcia",
+                    "terms": "godziny otwarcia drive-through"
+                },
                 "operator": {
                     "label": "Zarządca",
                     "terms": "zarządca,zarządzający,organ prowadzący"
@@ -3009,6 +3031,10 @@
                     "label": "Numer SIRET",
                     "terms": "numer siret"
                 },
+                "ref/edubase-GB": {
+                    "label": "Oznaczenie Departamentu Edukacji",
+                    "terms": "oznaczenie departamentu edukacji,oznaczenie department of education,edubase,dfe urn"
+                },
                 "ref/isil": {
                     "label": "Kod ISIL"
                 },
@@ -3128,6 +3154,39 @@
                 },
                 "restrictions": {
                     "label": "Zakazy/nakazy skrętu"
+                },
+                "roller_coaster/track": {
+                    "label": "Rodzaj",
+                    "options": {
+                        "brake_run": {
+                            "description": "Odcinek zwalniający lub zatrzymujący kolejkę",
+                            "title": "Hamowanie"
+                        },
+                        "launch_straight": {
+                            "description": "Odcinek nadający kolejce prędkość za pomocą zewnętrznego napędu",
+                            "title": "Napędzanie"
+                        },
+                        "lift_hill": {
+                            "description": "Odcinek, którym kolejka wciągana jest na wzniesienie dla uzyskania energii potencjalnej",
+                            "title": "Wciąganie"
+                        },
+                        "maintenance": {
+                            "description": "Odcinek, na którym zaparkowane są zapasowe wagoniki lub przeprowadzane naprawy",
+                            "title": "Bocznica"
+                        },
+                        "moving": {
+                            "description": "Wszelkie ruchome odcinki torów np. zwrotnice",
+                            "title": "Ruchomy"
+                        },
+                        "station": {
+                            "description": "Odcinek, na którym pasażerowie mogą wsiadać i wysiadać z kolejki",
+                            "title": "Stacja"
+                        },
+                        "waiting": {
+                            "description": "Odcinek, na którym kolejka oczekuje na zwolnienie dalszego odcinka torów",
+                            "title": "Oczekiwanie"
+                        }
+                    }
                 },
                 "roof/colour": {
                     "label": "Kolor dachu",
@@ -3379,6 +3438,13 @@
                 "shower": {
                     "label": "Prysznice",
                     "terms": "prysznice"
+                },
+                "side": {
+                    "label": "Strona",
+                    "options": {
+                        "left": "Lewa",
+                        "right": "Prawa"
+                    }
                 },
                 "siren/purpose": {
                     "label": "Przeznaczenie"
@@ -3943,7 +4009,7 @@
                         "dip": "Zagłębienie",
                         "double_dip": "Podwójne zagłębienie",
                         "hump": "Próg zwalniający (długi)",
-                        "island": "Wysepka",
+                        "island": "Wysepka uspokajająca ruch",
                         "mini_bumps": "Progi zwalniające punktowe",
                         "rumble_strip": "Linia wibracyjna",
                         "table": "Wyniesienie jezdni"
@@ -5537,6 +5603,10 @@
                     "name": "Automat sprzedający jedzenie",
                     "terms": "automat sprzedający jedzenie,pożywienie,posiłki"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "Automat z przekąskami",
+                    "terms": "automat z przekąskami"
+                },
                 "amenity/vending_machine/fuel": {
                     "name": "Automat sprzedający paliwo",
                     "terms": "automat sprzedający paliwo,dystrybutor,paliwo,gaz,benzyna,diesel,lng,cng,biodiesel",
@@ -5573,8 +5643,8 @@
                     "terms": "automat sprzedający znaczki pocztowe"
                 },
                 "amenity/vending_machine/sweets": {
-                    "name": "Automat z przekąskami",
-                    "terms": "automat z przekąskami,przekąski,gumy do żucia,ciastka,ciasteczka,chipsy,czipsy"
+                    "name": "Automat ze słodyczami",
+                    "terms": "automat ze słodyczami,automat z cukierkami,automat z gumami do żucia"
                 },
                 "amenity/veterinary": {
                     "name": "Weterynarz",
@@ -6782,6 +6852,10 @@
                     "name": "Łącznik dla motorowerów",
                     "terms": "łącznik dla motorowerów"
                 },
+                "highway/cyclist_waiting_aid": {
+                    "name": "Podpórka dla rowerzystów",
+                    "terms": "podpórka dla rowerzystów,podpórka rowerowa,spocznik dla rowerzystów,spocznik rowerowy"
+                },
                 "highway/elevator": {
                     "name": "Winda",
                     "terms": "winda,dźwig"
@@ -6835,7 +6909,7 @@
                 },
                 "highway/footway/sidewalk": {
                     "name": "Chodnik",
-                    "terms": "chodnik wzdłuż drogi,chodnik przy jezdni"
+                    "terms": "chodnik,chodnik wzdłuż drogi,chodnik przy jezdni"
                 },
                 "highway/footway/traffic_island": {
                     "name": "Chodnik na wyspie azylu",
@@ -7961,6 +8035,10 @@
                     "name": "Maszt flagowy",
                     "terms": "maszt flagowy,flaga"
                 },
+                "man_made/fuel_pump": {
+                    "name": "Dystrybutor paliwa",
+                    "terms": "dystrybutor paliwa"
+                },
                 "man_made/gantry": {
                     "name": "Bramownica",
                     "terms": "bramownica"
@@ -7976,6 +8054,10 @@
                 "man_made/groyne": {
                     "name": "Ostroga brzegowa",
                     "terms": "ostroga brzegowa,ostroga morska,tama poprzeczna,morze"
+                },
+                "man_made/insect_hotel": {
+                    "name": "Hotel dla owadów",
+                    "terms": "hotel dla owadów,domek dla owadów,sztuczna pomoc gniazdowa"
                 },
                 "man_made/lighthouse": {
                     "name": "Latarnia morska",
@@ -9425,6 +9507,18 @@
                     "name": "Relacja",
                     "terms": "relacja"
                 },
+                "roller_coaster/station": {
+                    "name": "Stacja kolejki górskiej",
+                    "terms": "stacja kolejki górskiej,przystanek kolejki górskiej"
+                },
+                "roller_coaster/support": {
+                    "name": "Konstrukcja kolejki górskiej",
+                    "terms": "konstrukcja kolejki górskiej"
+                },
+                "roller_coaster/track": {
+                    "name": "Tor kolejki górskiej",
+                    "terms": "tor kolejki górskiej"
+                },
                 "route/ferry": {
                     "name": "Trasa promu",
                     "terms": "trasa promu,trasa promowa,promy,trasa morska"
@@ -10382,8 +10476,8 @@
                     "terms": "próg zwalniający"
                 },
                 "traffic_calming/island": {
-                    "name": "Wysepka drogowa",
-                    "terms": "wysepka drogowa"
+                    "name": "Wysepka uspokajająca ruch",
+                    "terms": "wysepka uspokajająca ruch,wysepka,wysepka drogowa,wyspa,spowalniająca,spowolnienie,zwalniająca,zwężenie"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Progi zwalniające punktowe",

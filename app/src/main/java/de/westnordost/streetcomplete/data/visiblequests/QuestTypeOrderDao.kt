@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable.Colu
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable.Columns.QUEST_PRESET_ID
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable.NAME
 
+/** Stores which quest types have been reordered after other quest types by the user */
 class QuestTypeOrderDao(private val db: Database) {
 
     fun getAll(presetId: Long): List<Pair<String, String>> =

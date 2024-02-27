@@ -36,7 +36,7 @@ data class TimeRange(val start: Int, val end: Int, val isOpenEnded: Boolean = fa
         sb.append(timeOfDayToString(locale, start))
         if (start != end || !isOpenEnded) {
             sb.append(range)
-            var displayEnd = timeOfDayToString(locale, end)
+            var displayEnd = timeOfDayToString(locale, end % (24 * 60))
             if (displayEnd == "00:00") displayEnd = "24:00"
             sb.append(displayEnd)
         }

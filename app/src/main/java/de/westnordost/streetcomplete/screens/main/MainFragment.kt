@@ -65,8 +65,8 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.databinding.FragmentMainBinding
-import de.westnordost.streetcomplete.osm.level.createLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
+import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -120,7 +120,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -174,7 +173,7 @@ class MainFragment :
     private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary> by inject(named("FeatureDictionaryFuture"))
+    private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
     private val prefs: Preferences by inject()
 
@@ -1092,7 +1091,7 @@ class MainFragment :
             return data
         }
 
-        val levels = createLevelsOrNull(element.tags)
+        val levels = parseLevelsOrNull(element.tags)
 
         viewLifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
@@ -1102,13 +1101,13 @@ class MainFragment :
                 // don't highlight "this" element
                 if (element == e) continue
                 // include only elements with the same (=intersecting) level, if any
-                val eLevels = createLevelsOrNull(e.tags)
+                val eLevels = parseLevelsOrNull(e.tags)
                 if (!levels.levelsIntersect(eLevels)) continue
                 // include only elements with the same layer, if any
                 if (element.tags["layer"] != e.tags["layer"]) continue
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
+                val icon = getPinIcon(featureDictionary.value, e)
                 val title = getTitle(e.tags)
                 putMarkerForCurrentHighlighting(geometry, icon, title)
             }

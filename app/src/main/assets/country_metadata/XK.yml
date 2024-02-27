@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [TEB, Raiffeisen Bank, NLB Banka, BKT, TEB Bank, NLB, Pcb, BPB, ProCredit Bank, Banka Ekonomike]
+atmOperators: [TEB, NLB Banka, Raiffeisen Bank, Raiffaisen Bank, NLB, BKT, TEB Bank, Banka Ekonomike, ProCredit Bank, BPB]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

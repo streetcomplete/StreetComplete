@@ -34,8 +34,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5601
-        versionName = "56.0"
+        versionCode = 5701
+        versionName = "57.0-beta2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -121,7 +121,6 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation("org.assertj:assertj-core:3.23.1")
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
@@ -146,12 +145,13 @@ dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.9.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -183,7 +183,7 @@ dependencies {
     implementation("com.mapzen.tangram:tangram:0.17.1")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.28.1")
+    implementation("de.westnordost:osm-opening-hours:0.1.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -191,7 +191,7 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
-    "am", "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
+    "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
@@ -199,9 +199,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20231218"
+val nsiVersion = "v6.0.20240214"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.5.0"
+val presetsVersion = "v6.6.0"
 
 val poEditorProjectId = "97843"
 
@@ -272,6 +272,12 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     group = "streetcomplete"
     targetDir = "$projectDir/src/main/assets/map_theme/jawg"
     mapStyleBranch = "jawg"
+}
+
+tasks.register<UpdateChangelogTask>("updateChangelog") {
+    group = "streetcomplete"
+    sourceFile = "$rootDir/CHANGELOG.md"
+    targetFile = "$projectDir/src/main/res/raw/changelog.html"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {

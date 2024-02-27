@@ -1,2 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [RBS, Bank of Scotland, Sainsbury's Bank, Royal Bank of Scotland, NoteMachine, Cash Zone, Tesco Bank, Tesco, TSB, Barclays, Virgin Money, Clydesdale Bank, Post Office, Note Machine, Cashzone, Bank of Ireland, Nationwide, Link, Clydesdale, Santander, Sainsbury's, HBOS, The Co-operative Bank, Co-op, Asda, co-op, cash zone, Travelex, Coop, Co-operative Bank, The Royal Bank of Scotland, The Co-operative Food, NatWest, NM ATM, Lloyds TSB, HSBC UK, EATM, CashZone, Cardtronics UK Ltd]
+chargingStationOperators: [ChargePlace Scotland, evolt, Pod Point, Charge Place Scotland, CYC, 'Tesla, Inc.', BP Pulse, eVolt, Evolt, Chargemaster, Gridserve, Connected Kerb, Chargeplace Scotland, Zapcharged, Rolec EV, Fife Council, Fastned, Circontrol, podpoint, VendElectric, South Lanarkshire Council, Orkney Islands Council, Ionity, Highland Council, Dundee City Council, ChargePlace scotland, BP]
+clothesContainerOperators: [The Salvation Army, Salvation Army, Fife Council]
 defaultSpeedLimitHasUrbanOrRural: false

@@ -4,58 +4,63 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddBusStopShelterTest {
 
     private val questType = AddBusStopShelter()
 
     @Test fun `apply shelter yes answer`() {
-        questType.verifyAnswer(
-            BusStopShelterAnswer.SHELTER,
-            StringMapEntryAdd("shelter", "yes")
+        assertEquals(
+            setOf(StringMapEntryAdd("shelter", "yes")),
+            questType.answerApplied(BusStopShelterAnswer.SHELTER)
         )
     }
 
     @Test fun `apply shelter yes again answer`() {
-        questType.verifyAnswer(
-            mapOf("shelter" to "yes"),
-            BusStopShelterAnswer.SHELTER,
-            StringMapEntryModify("shelter", "yes", "yes"),
-            StringMapEntryAdd("check_date:shelter", nowAsCheckDateString())
+        assertEquals(
+            setOf(
+                StringMapEntryModify("shelter", "yes", "yes"),
+                StringMapEntryAdd("check_date:shelter", nowAsCheckDateString())
+            ),
+            questType.answerAppliedTo(BusStopShelterAnswer.SHELTER, mapOf("shelter" to "yes"))
         )
     }
 
     @Test fun `apply shelter no answer`() {
-        questType.verifyAnswer(
-            BusStopShelterAnswer.NO_SHELTER,
-            StringMapEntryAdd("shelter", "no")
+        assertEquals(
+            setOf(StringMapEntryAdd("shelter", "no")),
+            questType.answerApplied(BusStopShelterAnswer.NO_SHELTER)
         )
     }
 
     @Test fun `apply shelter no again answer`() {
-        questType.verifyAnswer(
-            mapOf("shelter" to "no"),
-            BusStopShelterAnswer.NO_SHELTER,
-            StringMapEntryModify("shelter", "no", "no"),
-            StringMapEntryAdd("check_date:shelter", nowAsCheckDateString())
+        assertEquals(
+            setOf(
+                StringMapEntryModify("shelter", "no", "no"),
+                StringMapEntryAdd("check_date:shelter", nowAsCheckDateString())
+            ),
+            questType.answerAppliedTo(BusStopShelterAnswer.NO_SHELTER, mapOf("shelter" to "no"))
         )
     }
 
     @Test fun `apply covered answer`() {
-        questType.verifyAnswer(
-            BusStopShelterAnswer.COVERED,
-            StringMapEntryAdd("covered", "yes")
+        assertEquals(
+            setOf(StringMapEntryAdd("covered", "yes")),
+            questType.answerApplied(BusStopShelterAnswer.COVERED)
         )
     }
 
     @Test fun `apply covered when answer before was shelter answer`() {
-        questType.verifyAnswer(
-            mapOf("shelter" to "no"),
-            BusStopShelterAnswer.COVERED,
-            StringMapEntryAdd("covered", "yes"),
-            StringMapEntryDelete("shelter", "no")
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("covered", "yes"),
+                StringMapEntryDelete("shelter", "no")
+            ),
+            questType.answerAppliedTo(BusStopShelterAnswer.COVERED, mapOf("shelter" to "no"))
         )
     }
 }

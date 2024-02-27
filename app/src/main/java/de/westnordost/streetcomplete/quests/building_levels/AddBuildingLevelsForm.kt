@@ -33,14 +33,14 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     private val levels get() = binding.levelsInput.intOrNull?.takeIf { it >= 0 }
     private val roofLevels get() = binding.roofLevelsInput.intOrNull?.takeIf { it >= 0 }
 
+    private lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
+
     private val lastPickedAnswers by lazy {
         favs.get()
             .mostCommonWithin(target = 5, historyCount = 15, first = 1)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
             .toList()
     }
-
-    private lateinit var favs: LastPickedValuesStore<BuildingLevelsAnswer>
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
@@ -72,8 +72,9 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     }
 
     private fun onLastPickedButtonClicked(position: Int) {
-        binding.levelsInput.setText(lastPickedAnswers[position].levels.toString())
-        binding.roofLevelsInput.setText(lastPickedAnswers[position].roofLevels?.toString() ?: "")
+        val buildingLevelsAnswer = lastPickedAnswers[position]
+        binding.levelsInput.setText(buildingLevelsAnswer.levels.toString())
+        binding.roofLevelsInput.setText(buildingLevelsAnswer.roofLevels?.toString() ?: "")
     }
 
     override fun onClickOk() {

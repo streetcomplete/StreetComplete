@@ -279,8 +279,6 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="produce_walnuts">"Walnuts"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
-    <string name="quest_crossing_type_title">"What kind of crossing is this?"</string>
-    <string name="quest_crossing_type_unmarked">"Without road markings"</string>
     <string name="action_undo">"Undo"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomatoes"</string>
@@ -442,7 +440,6 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_buildingType_transportation">"Public transportation building"</string>
     <string name="quest_buildingType_university">"University building"</string>
     <string name="quest_buildingType_government">"Government building"</string>
-    <string name="quest_buildingType_cars">"For cars"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"roof for a car"</string>
     <string name="quest_buildingType_garage">"Single garage"</string>
@@ -481,7 +478,6 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_segregated_mixed">"Cyclists and pedestrians share the same space"</string>
     <string name="quest_maxheight_title">"What is the height limit here?"</string>
     <string name="quest_maxheight_answer_noSign">"There is no sign…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Is there easily enough space for even the tallest trucks (at least about 4.5 meters) to pass through?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"This height looks implausible. Are you sure that it is correct?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Closed by %1$s, %2$s"</string>
@@ -671,12 +667,15 @@ Note that this app asks for the address number of a building only after its type
     <string name="about_title_translate">"Help translate this application"</string>
     <string name="about_description_translate">"%1$s is translated %2$d%%"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
+    <string name="quest_oneway2_dir">"One way in this direction"</string>
+    <string name="quest_oneway2_no_oneway">"Not a one way"</string>
     <string name="quest_traffic_signals_sound_title">"Are there sound signals for the vision impaired here?"</string>
     <string name="quest_traffic_signals_vibrate_title">"Do these traffic lights have a tactile indication for visually impaired people for when it’s safe to cross?"</string>
     <string name="quest_steps_ramp_title">"Do these steps have a ramp? What kind?"</string>
     <string name="quest_steps_ramp_stroller">"Pram ramp"</string>
     <string name="quest_atm_operator_title">"Which financial institution operates this ATM?"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
+    <string name="quest_charging_station_capacity_title">"How many vehicles can be charged here at the same time?"</string>
     <string name="link_disaster_ninja_description">"Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyse how well-mapped and up-to-date places are."</string>
     <string name="quest_maxheight_below_bridge_title">"What is the height limit below the bridge?"</string>
     <string name="quest_tactile_paving_kerb_title">"Is there tactile paving on this kerb here?"</string>
@@ -715,13 +714,14 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_address_house_number_label">"Address number:"</string>
     <string name="quest_fireHydrant_position_sidewalk">"On the footpath"</string>
     <string name="quest_smoothness_square_title">"What is the surface quality of this square?"</string>
-    <string name="quest_fuelSelfService_title">"Can you pump petrol yourself here?"</string>
+    <string name="quest_fuelSelfService_title">"Can you pump fuel yourself here?"</string>
     <string name="quest_sidewalk_value_separate">"footpath, but displayed separately on map"</string>
     <string name="quest_sidewalk_answer_none_title">"Selecting that footpaths are missing"</string>
     <string name="quest_road_width_explanation">"The roadway width from kerb to kerb: This includes anything on the street surface, including on-street parking or bicycle lanes but excluding anything beyond the kerb like footpaths, off-street parking, or adjacent bicycle paths."</string>
     <string name="quest_sidewalk_answer_none">"No footpath at all"</string>
     <string name="quest_sidewalk_surface_title">"What's the surface of the footpath here?"</string>
     <string name="quest_fee_answer_yes_but">"Yes…"</string>
+    <string name="quest_seating_takeaway">"No seating (takeaway only)"</string>
     <string name="quest_busStopBench_title2">"Is there a seat at this stop?"</string>
     <string name="quest_busStopBin_title2">"Is there a bin at this stop?"</string>
     <string name="quest_busStopName_title2">"What is the name of this stop?"</string>
@@ -738,7 +738,6 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_drinking_water_type_spring">"Spring"</string>
     <string name="quest_drinking_water_type_disused">"Disused drinking water object"</string>
     <string name="overlay_addresses">"Addresses"</string>
-    <string name="overlay_shops">"Shops"</string>
     <string name="name_label">"Name:"</string>
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>
@@ -754,4 +753,15 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="node_moved_too_far">"Moved too far. Consider leaving a note"</string>
     <string name="quest_road_width_unusualInput_confirmation_description">"This width looks implausible. Remember, this should be the width from kerb to kerb, including on-street parking, bicycle lanes etc."</string>
     <string name="separate_cycleway_with_sidewalk">"Bike-only path with adjacent footpath (separated by a kerb)"</string>
+    <string name="quest_crossing_yes">"Yes (e.g. the kerb is lowered here or there are markings)"</string>
+    <string name="lane_narrowing_traffic_calming_choker">"Kerb extension"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Kerb extension + traffic island"</string>
+    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example shops or street surfaces.
+
+The data is highlighted in different colours to give you a good overview of what has been recorded so far.
+Missing data is always shown in red."</string>
+    <string name="quest_crossing_kerb_height_title">"What’s the height of the kerbs at this crossing?"</string>
+    <string name="quest_bbq_fuel_title">"What is this barbecue powered by?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to barbecues."</string>
+    <string name="link_prettymapp_description">"Create pretty multi-coloured map posters of neighbourhoods"</string>
 </resources>

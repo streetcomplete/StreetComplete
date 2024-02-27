@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs.PREFERRED_LANGUAGE_FOR_NAMES
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -13,18 +14,21 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.FragmentOverlayShopsBinding
-import de.westnordost.streetcomplete.osm.IS_DISUSED_SHOP_EXPRESSION
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.LocalizedName
+import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.createLocalizedNames
-import de.westnordost.streetcomplete.osm.replaceShop
+import de.westnordost.streetcomplete.osm.isDisusedPlace
+import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.parseLocalizedNames
+import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
+import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -65,13 +69,16 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
         val element = element
         originalFeature = element?.let {
-            if (IS_DISUSED_SHOP_EXPRESSION.matches(element)) {
-                featureDictionary.byId("shop/vacant").get()
+            val locales = getLocalesForFeatureDictionary(resources.configuration)
+            val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
+
+            if (element.isDisusedPlace()) {
+                featureDictionary.byId("shop/vacant").forLocale(*locales).get()
             } else {
                 featureDictionary
                     .byTags(element.tags)
-                    .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
-                    .forGeometry(element.geometryType)
+                    .forLocale(*locales)
+                    .forGeometry(geometryType)
                     .inCountry(countryOrSubdivisionCode)
                     .find()
                     .firstOrNull()
@@ -103,15 +110,16 @@ class ShopsOverlayForm : AbstractOverlayForm() {
             SearchFeaturesDialog(
                 requireContext(),
                 featureDictionary,
-                element?.geometryType,
+                element?.geometryType ?: GeometryType.POINT,
                 countryOrSubdivisionCode,
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
-                ::onSelectedFeature
+                ::onSelectedFeature,
+                POPULAR_PLACE_FEATURE_IDS,
             ).show()
         }
 
-        originalNames = createLocalizedNames(element?.tags.orEmpty()).orEmpty()
+        originalNames = parseLocalizedNames(element?.tags.orEmpty()).orEmpty()
 
         val persistedNames = savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let { Json.decodeFromString<List<LocalizedName>>(it) }
 
@@ -150,7 +158,7 @@ class ShopsOverlayForm : AbstractOverlayForm() {
 
     private fun filterOnlyShops(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return IS_SHOP_OR_DISUSED_SHOP_EXPRESSION.matches(fakeElement)
+        return fakeElement.isPlace() || feature.id == "shop/vacant"
     }
 
     private fun onSelectedFeature(feature: Feature) {
@@ -256,7 +264,7 @@ private suspend fun createEditAction(
     val hasChangedFeature = newFeature != previousFeature
     val isFeatureWithName = newFeature.addTags?.get("name") != null
     val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
-    val wasVacant = element != null && IS_DISUSED_SHOP_EXPRESSION.matches(element)
+    val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
 
     val doReplaceShop =
@@ -292,7 +300,7 @@ private suspend fun createEditAction(
         }
 
     if (doReplaceShop) {
-        tagChanges.replaceShop(newFeature.addTags)
+        tagChanges.replacePlace(newFeature.addTags)
     } else {
         for ((key, value) in previousFeature?.removeTags.orEmpty()) {
             tagChanges.remove(key)
@@ -312,7 +320,7 @@ private suspend fun createEditAction(
     }
 
     return if (element != null) {
-        UpdateElementTagsAction(element!!, tagChanges.create())
+        UpdateElementTagsAction(element, tagChanges.create())
     } else {
         CreateNodeAction(geometry.center, tagChanges)
     }

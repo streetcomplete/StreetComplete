@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.upload
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import kotlinx.coroutines.sync.Mutex
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -20,6 +22,8 @@ val uploadModule = module {
      *  has been updated. Thus, the old element overwrites the new one. */
     single(named("SerializeSync")) { Mutex() }
 
-    single<UploadProgressSource> { get<UploadController>() }
+    single<UploadProgressSource> { get<Uploader>() }
     single { UploadController(get()) }
+
+    worker { UploadWorker(get(), androidContext(), get()) }
 }

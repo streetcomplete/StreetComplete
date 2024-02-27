@@ -32,7 +32,7 @@ class VersionIsBannedChecker(private val url: String, private val userAgent: Str
 class VersionBannedException(val banReason: String?) :
     RuntimeException("This version is banned from making any changes!")
 
-sealed class BannedInfo
+sealed interface BannedInfo
 
-data class IsBanned(val reason: String?) : BannedInfo()
-object IsNotBanned : BannedInfo()
+data class IsBanned(val reason: String?) : BannedInfo
+data object IsNotBanned : BannedInfo

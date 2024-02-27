@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors]
+atmOperators: [Chase, Arvest Bank, IBC Bank, Bank of America, MidFirst Bank, Bank of Oklahoma, BancFirst, Arvest]
+chargingStationOperators: ['Tesla, Inc.', Tesla Motors]
 defaultSpeedLimitHasUrbanOrRural: true

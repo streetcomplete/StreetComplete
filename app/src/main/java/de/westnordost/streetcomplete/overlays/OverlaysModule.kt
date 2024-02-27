@@ -6,20 +6,22 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
+import de.westnordost.streetcomplete.overlays.buildings.BuildingsOverlay
 import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
 import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
+import de.westnordost.streetcomplete.overlays.things.ThingsOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.ktx.getIds
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import java.util.concurrent.FutureTask
 
 /* Each overlay is assigned an ordinal. This is used for serialization and is thus never changed,
 *  even if the order of overlays is changed.  */
@@ -28,25 +30,24 @@ val overlaysModule = module {
         overlaysRegistry(
             { location ->
                 val countryInfos = get<CountryInfos>()
-                val countryBoundaries = get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get()
+                val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
                 countryInfos.getByLocation(countryBoundaries, location.longitude, location.latitude)
             },
             { location ->
-                val countryBoundaries = get<FutureTask<CountryBoundaries>>(named("CountryBoundariesFuture")).get()
+                val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
                 countryBoundaries.getIds(location).firstOrNull()
             },
-            { tags ->
-                get<FutureTask<FeatureDictionary>>(named("FeatureDictionaryFuture"))
-                .get().getFeature(tags)
+            { element ->
+                get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(element)
             }
         )
     }
 }
 
 fun overlaysRegistry(
-    getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
-    getCountryCodeByLocation: (location: LatLon) -> String?,
-    getFeature: (tags: Map<String, String>) -> Feature?,
+    getCountryInfoByLocation: (LatLon) -> CountryInfo,
+    getCountryCodeByLocation: (LatLon) -> String?,
+    getFeature: (Element) -> Feature?,
 ) = OverlayRegistry(listOf(
 
     0 to WayLitOverlay(),
@@ -56,4 +57,6 @@ fun overlaysRegistry(
     2 to StreetParkingOverlay(),
     3 to AddressOverlay(getCountryCodeByLocation),
     4 to ShopsOverlay(getFeature),
+    8 to ThingsOverlay(getFeature),
+    7 to BuildingsOverlay(),
 ))

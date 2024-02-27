@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, Woodhouse Nissian, Chargepoint]
+atmOperators: [Wells Fargo, Pinnacle Bank, U.S. Bank, Great Western Bank, Union Bank & Trust, First National Bank, FNBO, Chase, Cardtronics, Bank of the West, American National Bank]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Electrify America, Woodhouse Nissian]
 defaultSpeedLimitHasUrbanOrRural: true

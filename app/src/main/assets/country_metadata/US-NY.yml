@@ -1,3 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, National Grid, ChargePoint, Whole Foods, Town of Penfield, Tesla Motors Inc., Tesal Motors, IBM, Holiday Inn Express, Griffiss Utilities]
+atmOperators: [Bank of America, Chase, Citibank, M&T Bank, KeyBank, Santander, PNC Bank, Allpoint, Citizens Bank, Capital One, TD Bank, ESL, AmeriCU Credit Union, Visions Federal Credit Union, NBT Bank, ESL Federal Credit Union, Wells Fargo, Valley National Bank, Trustco Bank, Sidney Federal Credit Union, Apple Bank]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Tesla Motors, Volta, National Grid, EV Connect, Blink, FLO, EvolveNY, Electrify America, Whole Foods, TownePlace Suites, Town of Penfield, NYC Department of Parks and Creation, IBM, Holiday Inn Express, Griffiss Utilities]
+clothesContainerOperators: [National Cancer Center, Hearts for the Homeless]
 defaultSpeedLimitHasUrbanOrRural: false

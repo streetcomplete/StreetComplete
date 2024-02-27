@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.util.timeOfDayToString
 import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
@@ -36,7 +36,7 @@ class CollectionTimesAdapter(
             notifyDataSetChanged()
         }
 
-    fun createCollectionTimes() = collectionTimesRows.toOpeningHoursRules()
+    fun createCollectionTimes() = collectionTimesRows.toOpeningHours()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

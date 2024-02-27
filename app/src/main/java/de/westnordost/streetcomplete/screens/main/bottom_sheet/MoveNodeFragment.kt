@@ -11,6 +11,9 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
+import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -40,12 +43,10 @@ import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 /** Fragment that lets the user move an OSM node */
 class MoveNodeFragment :
@@ -56,8 +57,9 @@ class MoveNodeFragment :
     private val elementEditsController: ElementEditsController by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val countryInfos: CountryInfos by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
 
     override val elementKey: ElementKey by lazy { node.key }
 
@@ -85,7 +87,7 @@ class MoveNodeFragment :
             ?: overlayRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!)!!
 
         val isFeetAndInch = countryInfos.getByLocation(
-            countryBoundaries.get(),
+            countryBoundaries.value,
             node.position.longitude,
             node.position.latitude
         ).lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH
@@ -130,12 +132,19 @@ class MoveNodeFragment :
     }
 
     private fun onClickOk() {
-        val pos = getMarkerPosition() ?: return
-        if (!checkIsDistanceOkAndUpdateText(pos)) return
+        val position = getMarkerPosition() ?: return
+        if (!checkIsDistanceOkAndUpdateText(position)) return
         viewLifecycleScope.launch {
-            val action = MoveNodeAction(node, pos)
-            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey", action)
-            listener?.onMovedNode(editType, pos)
+            moveNodeTo(position)
+        }
+    }
+
+    private suspend fun moveNodeTo(position: LatLon) {
+        val isSurvey = checkIsSurvey(ElementPointGeometry(position), recentLocationStore.get())
+        if (isSurvey || confirmIsSurvey(requireContext())) {
+            val action = MoveNodeAction(node, position)
+            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey", action, isSurvey)
+            listener?.onMovedNode(editType, position)
         }
     }
 

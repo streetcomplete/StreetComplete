@@ -1,7 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [NLB, NKBM, Abanka, Nova KBM, SKB, Gorenjska banka, Banka Koper, NKBM d.d., UniCredit Bank, Delavska hranilnica, Banka Celje, Bitnik d.o.o., Euronet, Nova Ljubljanska banka, SKB banka, Nova Ljubljanska banka d.d., NLB d. d., NovaKBM, Addiko Bank, A banka, Bitnik, Intesa San Paolo, Hypo Alpe-Adria-Bank d.d.]
-chargingStationOperators: [SODO, Petrol, Elektro Maribor, unknovn, elektro Celje, dravske elektrarne maribor, Renault, Elektro Ljubljana d.d., Elektro Gorenjska, EM]
+atmOperators: [NLB, NKBM, Nova KBM, Abanka, SKB, Gorenjska banka, Euronet, NovaKBM, Delavska hranilnica, NKBM d.d., Intesa Sanpaolo, Addiko Bank, UniCredit Bank, Banka Koper, ABanka, Gorenjska Banka, SKB Banka, Nova Ljubljanska banka d.d., Banka Celje, ABANKA, Sparkasse, Nova ljubljanska banka, Nova Ljubljanska Banka, NLB d. d., NKMB, Intesa Sanpaolo Bank, Hypo Alpe-Adria-Bank d.d., Bitnik d.o.o., Bitnik, ATM, A banka]
+chargingStationOperators: [SODO, Petrol, Ionity, Elektro Ljubljana, 'Tesla, Inc.', Elektro Maribor, Elektro Ljubljana d.d., unknovn, Lidl, Gremo na elektriko, Shell Recharge Solutions, Mega M d.o.o., EM, elektro Celje, dravske elektrarne maribor, Renault, Postojna, Petrol d.d., Občina Ajdovščina, Iskratel, Gremo na Elektriko, Energija Plus d.o.o., Elektro Gorenjska, DEM]
+clothesContainerOperators: [Humana]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true

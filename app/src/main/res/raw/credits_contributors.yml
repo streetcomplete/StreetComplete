@@ -1,21 +1,21 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 415894
-  linesOfInterfaceMarkupChanged: 146020
-  assetFilesChanged: 2013
+  linesOfCodeChanged: 429403
+  linesOfInterfaceMarkupChanged: 147031
+  assetFilesChanged: 2041
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 20927
-  linesOfInterfaceMarkupChanged: 5176
-  assetFilesChanged: 634
+  linesOfCodeChanged: 22009
+  linesOfInterfaceMarkupChanged: 5233
+  assetFilesChanged: 636
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 17804
-  linesOfInterfaceMarkupChanged: 3646
+  linesOfCodeChanged: 19513
+  linesOfInterfaceMarkupChanged: 3698
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 12191
+  linesOfCodeChanged: 12207
   linesOfInterfaceMarkupChanged: 1182
   assetFilesChanged: 70
 - name: "ENT8R"
@@ -28,7 +28,7 @@
   linesOfCodeChanged: 3950
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
-  linesOfCodeChanged: 3269
+  linesOfCodeChanged: 3305
   linesOfInterfaceMarkupChanged: 2280
   assetFilesChanged: 7
 - name: "Matija Nalis"
@@ -38,11 +38,11 @@
   assetFilesChanged: 70
 - name: "Krzysztof Zbudniewek"
   githubUsername: "neonowy"
-  linesOfCodeChanged: 2565
+  linesOfCodeChanged: 2626
   linesOfInterfaceMarkupChanged: 495
 - name: "riQQ"
   githubUsername: "riQQ"
-  linesOfCodeChanged: 2361
+  linesOfCodeChanged: 2364
 - name: "YoshiRulz"
   githubUsername: "YoshiRulz"
   linesOfCodeChanged: 2078
@@ -124,6 +124,9 @@
   linesOfCodeChanged: 200
   linesOfInterfaceMarkupChanged: 203
   assetFilesChanged: 44
+- name: "Filip Czaplicki"
+  githubUsername: "starsep"
+  linesOfCodeChanged: 190
 - name: "wouter van der plas"
   githubUsername: "wvanderp"
   linesOfCodeChanged: 178
@@ -143,6 +146,9 @@
   linesOfCodeChanged: 128
   linesOfInterfaceMarkupChanged: 124
   assetFilesChanged: 2
+- name: "jmizv"
+  githubUsername: "jmizv"
+  linesOfCodeChanged: 120
 - name: "Ebrahim Byagowi"
   githubUsername: "ebraminio"
   linesOfCodeChanged: 108
@@ -281,18 +287,21 @@
 - name: "Dmitry Gurovich"
   githubUsername: "yrtimiD"
   linesOfCodeChanged: 2
-- name: "Filip Czaplicki"
-  githubUsername: "starsep"
-  linesOfCodeChanged: 2
 - name: "UKChris-osm"
   githubUsername: "UKChris-osm"
   linesOfCodeChanged: 2
 - name: "Christian Paul"
   githubUsername: "jaller94"
   linesOfCodeChanged: 2
+- name: "bxl-forever"
+  githubUsername: "bxl-forever"
+  linesOfCodeChanged: 1
 - name: "John Kastner"
   githubUsername: "john-h-kastner"
   linesOfCodeChanged: 1
+- name: "Jean-BaptisteC"
+  githubUsername: "Jean-BaptisteC"
+  linesOfInterfaceMarkupChanged: 269
 - name: "Wouter van der Wal"
   githubUsername: "wjtje"
   assetFilesChanged: 1

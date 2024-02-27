@@ -279,8 +279,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="produce_walnuts">"Valnötter"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan inte söka här. Försök att zooma in ytterligare eller minska kartans lutning."</string>
-    <string name="quest_crossing_type_title">"Vilken typ av övergångsställe är det här?"</string>
-    <string name="quest_crossing_type_unmarked">"Utan vägmarkeringar"</string>
     <string name="action_undo">"Ångra"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomater"</string>
@@ -442,7 +440,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_buildingType_transportation">"Kollektivtrafiksbyggnad"</string>
     <string name="quest_buildingType_university">"Universitetsbyggnad"</string>
     <string name="quest_buildingType_government">"Myndighetsbyggnad"</string>
-    <string name="quest_buildingType_cars">"För bilar"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"tak för en bil"</string>
     <string name="quest_buildingType_garage">"Garage"</string>
@@ -481,7 +478,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_segregated_mixed">"Cyklister och gångtrafikanter delar bana"</string>
     <string name="quest_maxheight_title">"Vad är maxhöjden här?"</string>
     <string name="quest_maxheight_answer_noSign">"Det finns ingen skylt…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Är det tillräckligt med utrymme för att även de högsta lastbilarna (minst 4,5 meter) enkelt ska ta sig under?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Angiven höjd verkar osannolik. Är du säker på att den är korrekt?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Stängd av %1$s, %2$s"</string>
@@ -598,7 +594,7 @@ Du kan börja lösa dem direkt och senare logga in för att publicera dina svar.
     <string name="tutorial_stay_safe">"När du är osäker kan du alltid svara \"Svårt att säga\" och lämna en anteckning.
 
 Slutligen, kom ihåg att ta det säkra före det osäkra: var medveten om din omgivning och gå inte in på privat mark."</string>
-    <string name="tutorial_happy_mapping">"Glad kartläggning!"</string>
+    <string name="tutorial_happy_mapping">"Trevlig kartläggning!"</string>
     <string name="achievements_empty">"Du har inga prestationer ännu"</string>
     <string name="links_empty">"Du har inga länkar ännu"</string>
     <string name="quests_empty">"Du har inte publicerat några uppdragssvar ännu"</string>
@@ -799,9 +795,6 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_lanes_answer_lanes_description_one_side2">"Ange antalet markerade körfält som kan användas av biltrafik här. Cykel- och parkeringsfält räknas inte.
 Om några körfält är reserverade för bussar, vänligen lämna en anteckning istället."</string>
     <string name="quest_surface_value_rock">"Sten"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Höga lastbilar kan passera"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Höga lastbilar passar inte"</string>
-    <string name="quest_crossing_type_marked">"Markerad korsning"</string>
     <string name="quest_parkingType_street_side">"Parkering i parkeringsficka"</string>
     <string name="quest_parkingType_lane">"Parkering på väg"</string>
     <string name="quest_tracktype_grade2a">"Fast men obelagd"</string>
@@ -846,7 +839,6 @@ Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en e
     <string name="team_mode_team_size_hint">"Gruppläget fungerar för grupper om 2 till 12 personer."</string>
     <string name="team_mode_active">"Gruppläget är aktivt"</string>
     <string name="team_mode_deactivated">"Gruppläget inaktiverat"</string>
-    <string name="quest_crossing_type_signals_controlled">"Trafikljuskorsning"</string>
     <string name="undo_confirm_title2">"Ångra följande ändring?"</string>
     <string name="synced">"Synkad"</string>
     <string name="toast_undo_unavailable">"Denna ändring är redan synkad och kan inte ångras"</string>
@@ -1232,7 +1224,6 @@ Tyvärr har Google Play Store beslutat att inga länkar till donationer får vis
     <string name="quest_drinking_water_type_spring">"Källa"</string>
     <string name="quest_drinking_water_type_disused">"Övergiven dricksfontän"</string>
     <string name="overlay_addresses">"Adresser"</string>
-    <string name="overlay_shops">"Butiker"</string>
     <string name="name_label">"Namn:"</string>
     <string name="unknown_shop_title">"Annan slags plats"</string>
     <string name="quest_address_answer_no_address">"Ingen adress här"</string>
@@ -1355,6 +1346,8 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="quest_recycling_type_food_waste">"Matavfall"</string>
     <string name="quest_defibrillator_location">"Var finns denna defibrillator?"</string>
     <string name="quest_defibrillator_location_description">"Ange en kort och tydlig beskrivning av var den finns (t.ex. \"på entréplan i trapphuset\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Finns det en sanitetsdumpningsstation?"</string>
+    <string name="quest_sanitary_dump_station_description">"Anläggning för att deponera mänskligt avfall från en toalettank i en husbil, långdistanslastbil, etc. Indikeras vanligtvis med en skylt som denna:"</string>
     <string name="quest_generalFee_title">"Behöver man betala för att använda detta?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"Det är en eldstad"</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Eldstäder är öppna/har inget galler till skillnad från en grill."</string>
@@ -1368,4 +1361,31 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="label_log_older_than">"Till"</string>
     <string name="label_log_message_contains">"Meddelandet innehåller"</string>
     <string name="title_logs_filters">"Filtrera meddelanden"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Antal gömda uppdrag: %d"</string>
+    <string name="link_every_door_description">"Kraftfull intressepunktsredigerare för Android och iOS"</string>
+    <string name="link_mapcomplete_description">"Samling av OSM-kartor som var och en visar och låter dig redigera objekt på ett tema"</string>
+    <string name="link_forum_description">"Behöver du hjälp? Vill du hänga med i vad som händer i gemenskapen? Kom till forumet och möt folk från hela världen!"</string>
+    <string name="link_calendar_description">"Några OpenStreetMap-aktiviteter eller kartträffar nära dig? (Eller skapa en egen!)"</string>
+    <string name="link_prettymapp_description">"Skapa vackra kartor i flerfärg av ditt grannskap"</string>
+    <string name="quest_disable_action">"Inaktivera"</string>
+    <string name="quest_disable_title">"Inaktivera den här uppdragstypen?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure är inte installerat (ännu)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure lyckades inte mäta."</string>
+    <string name="quest_disable_message_tape_measure">"Du kan använda ett måttband eller mätstock istället, men det kan vara lite bökigt."</string>
+    <string name="quest_buildingType_outbuilding">"Ekonomibyggnad/uthus"</string>
+    <string name="quest_buildingType_outbuilding_description">"mindre viktiga byggnader på en fastighet"</string>
+    <string name="quest_buildingType_other_description">"en specifik sorts byggnad som inte går att välja här"</string>
+    <string name="quest_buildingType_container">"Container"</string>
+    <string name="quest_buildingType_tent">"Tält"</string>
+    <string name="quest_buildingType_tomb">"Gravkammare"</string>
+    <string name="quest_buildingType_tower">"Torn"</string>
+    <string name="quest_buildingType_tower_description">"alla slags torn"</string>
+    <string name="quest_buildingType_under_construction">"Under uppbyggnad"</string>
+    <string name="overlay_buildings">"Byggnader"</string>
+    <string name="quest_pedestrian_crossing_signals">"Behöver du vänta på trafiksignal för att korsa här?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Har denna korsning markeringar på marken?"</string>
+    <string name="overlay_places">"Platser"</string>
+    <string name="overlay_things">"Saker"</string>
+    <string name="disused">"inte längre använd"</string>
+    <string name="unknown_object">"Okänt objekt"</string>
 </resources>

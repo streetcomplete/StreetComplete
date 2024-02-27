@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.osm
 
-import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.estimatedWidth
-import de.westnordost.streetcomplete.osm.shoulders.createShoulders
-import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
+import de.westnordost.streetcomplete.osm.shoulders.parseShoulders
 import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOffRoad
 import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOnRoad
+import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 
 /** Functions to estimate road width(s). */
 
@@ -48,7 +48,7 @@ fun guessRoadwayWidth(tags: Map<String, String>): Float {
 
 /** Estimated width of shoulders, if any. If there is no shoulder tagging, returns null. */
 fun estimateShouldersWidth(tags: Map<String, String>): Float? {
-    val shoulders = createShoulders(tags, false) ?: return null
+    val shoulders = parseShoulders(tags, false) ?: return null
     val shoulderWidth = tags["shoulder:width"]?.toFloatOrNull() ?: SHOULDER
     return (if (shoulders.left) shoulderWidth else 0f) +
         (if (shoulders.right) shoulderWidth else 0f)
@@ -107,7 +107,7 @@ fun hasDubiousRoadWidth(tags: Map<String, String>): Boolean? {
  *
  *  Returns null if no street parking is specified */
 fun estimateParkingOnRoadWidth(tags: Map<String, String>): Float? {
-    val sides = createStreetParkingSides(tags) ?: return null
+    val sides = parseStreetParkingSides(tags) ?: return null
     return (sides.left?.estimatedWidthOnRoad ?: 0f) + (sides.right?.estimatedWidthOnRoad ?: 0f)
 }
 
@@ -115,7 +115,7 @@ fun estimateParkingOnRoadWidth(tags: Map<String, String>): Float? {
  *
  *  Returns null if no street parking is specified */
 fun estimateParkingOffRoadWidth(tags: Map<String, String>): Float? {
-    val sides = createStreetParkingSides(tags) ?: return null
+    val sides = parseStreetParkingSides(tags) ?: return null
     return (sides.left?.estimatedWidthOffRoad ?: 0f) + (sides.right?.estimatedWidthOffRoad ?: 0f)
 }
 
@@ -132,7 +132,7 @@ fun estimateCycleTrackWidth(tags: Map<String, String>): Float? =
     estimateCyclewaysWidth(tags, false)
 
 private fun estimateCyclewaysWidth(tags: Map<String, String>, isLane: Boolean): Float? {
-    val sides = createCyclewaySides(tags, false) ?: return null
+    val sides = parseCyclewaySides(tags, false) ?: return null
 
     val leftWidth = if (sides.left?.cycleway?.isLane == isLane) {
         (tags["cycleway:both:width"] ?: tags["cycleway:left:width"])?.toFloatOrNull()

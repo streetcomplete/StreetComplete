@@ -279,8 +279,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="produce_walnuts">"Noix"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer ou de moins incliner la carte."</string>
-    <string name="quest_crossing_type_title">"De quel type de passage piéton s’agit-il ?"</string>
-    <string name="quest_crossing_type_unmarked">"Passage piéton sans marquage"</string>
     <string name="action_undo">"Confirmer"</string>
     <string name="produce_mangosteen">"Mangoustan"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -442,7 +440,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_transportation">"Bâtiment en relation avec les transports publics"</string>
     <string name="quest_buildingType_university">"Université"</string>
     <string name="quest_buildingType_government">"Administration publique"</string>
-    <string name="quest_buildingType_cars">"Pour voitures"</string>
     <string name="quest_buildingType_carport">"Auvent pour voitures"</string>
     <string name="quest_buildingType_carport_description">"abri sans murs comprenant un toit soutenu par des poteaux"</string>
     <string name="quest_buildingType_garage">"Garage unique"</string>
@@ -481,7 +478,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_segregated_mixed">"Cyclistes et piétons partagent le même espace"</string>
     <string name="quest_maxheight_title">"Quelle est la limite de hauteur à cet endroit ?"</string>
     <string name="quest_maxheight_answer_noSign">"Il n’y a pas de panneau…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Y a-t-il suffisamment d’espace pour que même les plus grands camions (au moins 4,5 mètres / 15 pieds) puissent passer ?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Cette hauteur semble improbable. Cette réponse est-elle correcte ?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Fermé par %1$s, %2$s"</string>
@@ -799,9 +795,6 @@ Si certaines voies sont réservées aux bus, laissez une note."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Spécifiez le nombre de voies délimitées utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas.
 Si certaines voies sont réservées aux bus, laissez une note."</string>
     <string name="quest_surface_value_rock">"Rocher"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Les grands camions peuvent passer"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Les grands camions ne rentrent pas"</string>
-    <string name="quest_crossing_type_marked">"Passage piéton marqué"</string>
     <string name="quest_parkingType_street_side">"Stationnement à coté de la chaussée"</string>
     <string name="quest_parkingType_lane">"Stationnement sur la chaussée"</string>
     <string name="quest_tracktype_grade2a">"Dur mais sans revêtement"</string>
@@ -846,7 +839,6 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="team_mode_team_size_hint">"Le mode par équipe fonctionne pour des groupes de 2 et 12 personnes."</string>
     <string name="team_mode_active">"Le mode par équipe est activé"</string>
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
-    <string name="quest_crossing_type_signals_controlled">"Feux piétons bicolores"</string>
     <string name="undo_confirm_title2">"Annuler cette contribution ?"</string>
     <string name="synced">"Synchronisé"</string>
     <string name="toast_undo_unavailable">"Cette contribution est déjà téléversée et ne peut pas être annulée"</string>
@@ -1232,7 +1224,6 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_drinking_water_type_spring">"Source"</string>
     <string name="quest_drinking_water_type_disused">"Objet abandonné"</string>
     <string name="overlay_addresses">"Adresses"</string>
-    <string name="overlay_shops">"Magasins"</string>
     <string name="name_label">"Nom :"</string>
     <string name="unknown_shop_title">"Type de lieu non non défini"</string>
     <string name="quest_address_answer_no_address">"Pas d’adresse ici"</string>
@@ -1369,4 +1360,5 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="label_log_older_than">"À"</string>
     <string name="label_log_message_contains">"Le message contient"</string>
     <string name="title_logs_filters">"Filtrer les messages"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Nombre de quêtes cachées : %d"</string>
 </resources>

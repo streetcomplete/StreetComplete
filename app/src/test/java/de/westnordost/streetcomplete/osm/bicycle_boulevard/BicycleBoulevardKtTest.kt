@@ -6,83 +6,76 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard.*
-import org.assertj.core.api.Assertions
-import kotlin.test.*
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class BicycleBoulevardKtTest {
 
     @Test fun create() {
-        assertEquals(NO, createBicycleBoulevard(mapOf()))
-        assertEquals(NO, createBicycleBoulevard(mapOf("bicycle_road" to "no")))
-        assertEquals(YES, createBicycleBoulevard(mapOf("bicycle_road" to "yes")))
-        assertEquals(NO, createBicycleBoulevard(mapOf("cyclestreet" to "no")))
-        assertEquals(YES, createBicycleBoulevard(mapOf("cyclestreet" to "yes")))
+        assertEquals(NO, parseBicycleBoulevard(mapOf()))
+        assertEquals(NO, parseBicycleBoulevard(mapOf("bicycle_road" to "no")))
+        assertEquals(YES, parseBicycleBoulevard(mapOf("bicycle_road" to "yes")))
+        assertEquals(NO, parseBicycleBoulevard(mapOf("cyclestreet" to "no")))
+        assertEquals(YES, parseBicycleBoulevard(mapOf("cyclestreet" to "yes")))
     }
 
     @Test fun `apply yes when it was not tagged before`() {
-        verifyAnswer(mapOf(), YES, "DE", arrayOf(StringMapEntryAdd("bicycle_road", "yes")))
-        verifyAnswer(mapOf(), YES, "US", arrayOf(StringMapEntryAdd("bicycle_road", "yes")))
+        assertEquals(setOf(StringMapEntryAdd("bicycle_road", "yes")), YES.appliedTo(mapOf(), "DE"))
+        assertEquals(setOf(StringMapEntryAdd("bicycle_road", "yes")), YES.appliedTo(mapOf(), "US"))
 
-        verifyAnswer(mapOf(), YES, "BE", arrayOf(StringMapEntryAdd("cyclestreet", "yes")))
-        verifyAnswer(mapOf(), YES, "NL", arrayOf(StringMapEntryAdd("cyclestreet", "yes")))
-        verifyAnswer(mapOf(), YES, "LU", arrayOf(StringMapEntryAdd("cyclestreet", "yes")))
+        assertEquals(setOf(StringMapEntryAdd("cyclestreet", "yes")), YES.appliedTo(mapOf(), "BE"))
+        assertEquals(setOf(StringMapEntryAdd("cyclestreet", "yes")), YES.appliedTo(mapOf(), "NL"))
+        assertEquals(setOf(StringMapEntryAdd("cyclestreet", "yes")), YES.appliedTo(mapOf(), "LU"))
     }
 
     @Test fun `apply yes when it was tagged before`() {
         // modifying current tag
-        verifyAnswer(
-            mapOf("bicycle_road" to "no"),
-            YES, "DE",
-            arrayOf(StringMapEntryModify("bicycle_road", "no", "yes"))
+        assertEquals(
+            setOf(StringMapEntryModify("bicycle_road", "no", "yes")),
+            YES.appliedTo(mapOf("bicycle_road" to "no"), "DE"),
         )
-        verifyAnswer(
-            mapOf("cyclestreet" to "no"),
-            YES, "NL",
-            arrayOf(StringMapEntryModify("cyclestreet", "no", "yes"))
+        assertEquals(
+            setOf(StringMapEntryModify("cyclestreet", "no", "yes")),
+            YES.appliedTo(mapOf("cyclestreet" to "no"), "NL"),
         )
 
         // keeping current tag in country where that tag is not usually used
-        verifyAnswer(
-            mapOf("cyclestreet" to "no"),
-            YES, "DE",
-            arrayOf(StringMapEntryModify("cyclestreet", "no", "yes"))
+        assertEquals(
+            setOf(StringMapEntryModify("cyclestreet", "no", "yes")),
+            YES.appliedTo(mapOf("cyclestreet" to "no"), "DE"),
         )
-        verifyAnswer(
-            mapOf("bicycle_road" to "no"),
-            YES, "NL",
-            arrayOf(StringMapEntryModify("bicycle_road", "no", "yes"))
+        assertEquals(
+            setOf(StringMapEntryModify("bicycle_road", "no", "yes")),
+            YES.appliedTo(mapOf("bicycle_road" to "no"), "NL"),
         )
     }
 
     @Test fun `apply no`() {
-        verifyAnswer(
-            mapOf("bicycle_road" to "yes", "cyclestreet" to "yes"),
-            NO, "DE",
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryDelete("bicycle_road", "yes"),
                 StringMapEntryDelete("cyclestreet", "yes"),
-            )
+            ),
+            NO.appliedTo(mapOf(
+                "bicycle_road" to "yes",
+                "cyclestreet" to "yes"
+            ), "DE")
         )
-        verifyAnswer(
-            mapOf("bicycle_road" to "yes", "cyclestreet" to "yes"),
-            NO, "DE",
-            arrayOf(
+        assertEquals(
+            setOf(
                 StringMapEntryDelete("bicycle_road", "yes"),
                 StringMapEntryDelete("cyclestreet", "yes"),
-            )
+            ),
+            NO.appliedTo(mapOf(
+                "bicycle_road" to "yes",
+                "cyclestreet" to "yes"
+            ), "DE")
         )
     }
 }
 
-private fun verifyAnswer(
-    tags: Map<String, String>,
-    answer: BicycleBoulevard,
-    countryCode: String,
-    expectedChanges: Array<StringMapEntryChange>
-) {
+private fun BicycleBoulevard.appliedTo(tags: Map<String, String>, countryCode: String): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
-    answer.applyTo(cb, countryCode)
-    val changes = cb.create().changes
-    Assertions.assertThat(changes).containsExactlyInAnyOrder(*expectedChanges)
+    applyTo(cb, countryCode)
+    return cb.create().changes
 }

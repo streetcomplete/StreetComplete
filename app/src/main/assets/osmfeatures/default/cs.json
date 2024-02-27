@@ -165,7 +165,7 @@
                         "neighbourhood": "Část městské čtvrti, obce",
                         "neighbourhood!jp": "Machi/Chōme/Aza/Koaza",
                         "place": "Místo",
-                        "postcode": "Poštovní směrovací číslo",
+                        "postcode": "PSČ",
                         "province": "Provincie",
                         "province!cn": "Provincie/Obec/Administrativní oblast/Zvláštní admin. oblast",
                         "province!jp": "Prefektura",
@@ -324,7 +324,7 @@
                     "label": "Typ",
                     "options": {
                         "alpine_coaster": "Alpská dráha",
-                        "amusement_ride": "Zábavní jízda",
+                        "amusement_ride": "Atrakce",
                         "animal": "Ohrazení zvířat",
                         "big_wheel": "Ruské kolo",
                         "bumper_car": "Autodrom",
@@ -514,6 +514,10 @@
                         "removable": "Odstranitelný sloupek",
                         "rising": "Vysouvací sloupek"
                     }
+                },
+                "books": {
+                    "label": "Typ knih",
+                    "terms": "žánr knih,knižní žánr,určení knihy,kniha"
                 },
                 "booth": {
                     "label": "Stánek",
@@ -852,6 +856,9 @@
                 },
                 "conveying_escalator": {
                     "label": "Jezdící schody"
+                },
+                "count": {
+                    "label": "Počet prvků"
                 },
                 "country": {
                     "label": "Stát"
@@ -1454,6 +1461,10 @@
                 "fence_type": {
                     "label": "Typ"
                 },
+                "fhrs/id-GB": {
+                    "label": "FHRS ID",
+                    "terms": "schéma hodnocení hygieny potravin,systém hodnocení hygieny potravin,agentura pro potravinářské standardy"
+                },
                 "fire_hydrant/diameter": {
                     "label": "Průměr (mm, palce nebo písmena)",
                     "terms": "průměr,míra,rozměr,velikost,mm,in,cm,metrů,velké"
@@ -1563,6 +1574,9 @@
                 "flood_prone": {
                     "label": "Náchylnost k povodním",
                     "terms": "záplavová oblast,ohroženo záplavami,vodou ohroženo,povodeň,záplava,potopa,pod vodou,zaplavované,zaplavené"
+                },
+                "footrest": {
+                    "label": "Opěrka nohy"
                 },
                 "ford": {
                     "label": "Typ",
@@ -1713,6 +1727,9 @@
                 "handrail": {
                     "label": "Zábradlí",
                     "terms": "ruka,opěra,schody"
+                },
+                "handrest": {
+                    "label": "Opěrka ruky"
                 },
                 "hashtags": {
                     "label": "Hashtagy",
@@ -2589,6 +2606,11 @@
                     "placeholder": "Není známo",
                     "terms": "hodiny,otevírací doba,doba,úřední doba,v provozu,otevřeno,zavřeno,během"
                 },
+                "opening_hours/drive_through": {
+                    "label": "Otevírací hodiny Drive-throughu",
+                    "placeholder": "Stejně jako běžné pracovní hodiny",
+                    "terms": "otevírací doba drive-thru,otevírací hodiny drive-thru,drive-through,drive-thru,obsluha do auta,průjezd"
+                },
                 "operator": {
                     "label": "Provozovatel",
                     "terms": "operátor,majitel,správce,správa,provozní"
@@ -3008,6 +3030,10 @@
                     "label": "Číslo SIRET",
                     "terms": "francouzské identifikační číslo společnosti,siret"
                 },
+                "ref/edubase-GB": {
+                    "label": "odkaz na Ministerstvo školství ",
+                    "terms": "odkaz na školštví,odkaz školy"
+                },
                 "ref/isil": {
                     "label": "Kód ISIL"
                 },
@@ -3127,6 +3153,39 @@
                 },
                 "restrictions": {
                     "label": "Omezení odbočování"
+                },
+                "roller_coaster/track": {
+                    "label": "Typ",
+                    "options": {
+                        "brake_run": {
+                            "description": "Část tratě určená k zpomalení nebo zastavení vozíků",
+                            "title": "Brzdný úsek"
+                        },
+                        "launch_straight": {
+                            "description": "Část tratě určená k urychlení vozíků pomocí vnějšího zařízení",
+                            "title": "Rozjezdový úsek"
+                        },
+                        "lift_hill": {
+                            "description": "Svažující se dráha určená ke zrychlení vozíků potenciální energii",
+                            "title": "Stoupání"
+                        },
+                        "maintenance": {
+                            "description": "Záložní koleje určené pro rezervní vozíky nebo provádění údržby",
+                            "title": "Údržba"
+                        },
+                        "moving": {
+                            "description": "Jakýkoli typ pohyblivého kolejového systému, jako jsou výhybkové koleje",
+                            "title": "Pohyblivé"
+                        },
+                        "station": {
+                            "description": "Část tratě, kde vozíky zastavují, aby nastoupili a vystoupili cestující.",
+                            "title": "Stanice"
+                        },
+                        "waiting": {
+                            "description": "Trať používaná ke zdržení vozíků, pokud je další bloková sekce obsazena",
+                            "title": "Čekání"
+                        }
+                    }
                 },
                 "roof/colour": {
                     "label": "Barva střechy",
@@ -3378,6 +3437,13 @@
                 "shower": {
                     "label": "Sprchy",
                     "terms": "osprchovat,voda,mytí,hygiena,sprchovat se,sprcha"
+                },
+                "side": {
+                    "label": "Strana",
+                    "options": {
+                        "left": "Vlevo",
+                        "right": "Vpravo"
+                    }
                 },
                 "siren/purpose": {
                     "label": "Účel"
@@ -4884,7 +4950,7 @@
                 },
                 "amenity/fuel": {
                     "name": "Čerpací stanice",
-                    "terms": "benzínová pumpa,benzínka,palivo,pohonné hmoty,benzín,propan,nafta,lng,cng,bionafta"
+                    "terms": "benzín,palivo,pohon,propan,nafta,lng,cng,bionafta"
                 },
                 "amenity/funeral_hall": {
                     "name": "Síň pohřební služby",
@@ -5524,8 +5590,12 @@
                     "name": "Jídelní automat",
                     "terms": "jídlo"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "prodejní automat na svačiny",
+                    "terms": "bonbón,žvýkačka,chipsy,preclík,cookies,sušenky"
+                },
                 "amenity/vending_machine/fuel": {
-                    "name": "Pumpa na plyn",
+                    "name": "prodejní automat na plynové náplně",
                     "terms": "benzín,palivo,pohon,propan,nafta,lng,cng,bionafta"
                 },
                 "amenity/vending_machine/ice_cream": {
@@ -5557,8 +5627,8 @@
                     "terms": "pošta,poštovné,razítko"
                 },
                 "amenity/vending_machine/sweets": {
-                    "name": "Automat na drobné občerstvení",
-                    "terms": "bonbón,žvýkačka,chipsy,preclík,sušenka,krekr"
+                    "name": "Prodejní automat na cukrovinky",
+                    "terms": "žvýkačka"
                 },
                 "amenity/veterinary": {
                     "name": "Veterina",
@@ -5608,7 +5678,7 @@
                     "name": "Atrakce"
                 },
                 "attraction/amusement_ride": {
-                    "name": "Zábavní jízda",
+                    "name": "Atrakce",
                     "terms": "zábavní park,karnevalová jízda"
                 },
                 "attraction/animal": {
@@ -5617,7 +5687,7 @@
                 },
                 "attraction/big_wheel": {
                     "name": "Ruské kolo",
-                    "terms": "zábavní park,zábavní jízda"
+                    "terms": "zábavní park,atrakce"
                 },
                 "attraction/bumper_car": {
                     "name": "Autodrom",
@@ -5637,7 +5707,7 @@
                 },
                 "attraction/drop_tower": {
                     "name": "Atrakce padací věž",
-                    "terms": "zábavní park,zábavní jízda,gondola,věž,velký pokles"
+                    "terms": "zábavní park,atrakce,gondola,věž,velký pokles"
                 },
                 "attraction/kiddie_ride": {
                     "name": "Dětské houpadlo",
@@ -5645,11 +5715,11 @@
                 },
                 "attraction/log_flume": {
                     "name": "Vodní horská dráha",
-                    "terms": "zábavní park,zábavní jízda,tobogán"
+                    "terms": "zábavní park,atrakce,tobogán"
                 },
                 "attraction/maze": {
                     "name": "Bludiště",
-                    "terms": "zábavní park,zábavní jízda,labyrint"
+                    "terms": "zábavní park,atrakce,labyrint"
                 },
                 "attraction/pirate_ship": {
                     "name": "Houpačka ve tvaru pirátské lodi",
@@ -5661,7 +5731,7 @@
                 },
                 "attraction/roller_coaster": {
                     "name": "Horská dráha",
-                    "terms": "zábavní park,zábavní jízda"
+                    "terms": "zábavní park,atrakce"
                 },
                 "attraction/summer_toboggan": {
                     "name": "Letní tobogán",
@@ -5669,7 +5739,7 @@
                 },
                 "attraction/swing_carousel": {
                     "name": "Řetízkový kolotoč",
-                    "terms": "zábavní park,zábavní jízda,kolotoč,věž,věž kolotoče"
+                    "terms": "zábavní park,atrakce,kolotoč,věž,věž kolotoče"
                 },
                 "attraction/train": {
                     "name": "Turistický vláček",
@@ -6740,6 +6810,10 @@
                 },
                 "highway/cycleway/moped_link-NL": {
                     "name": "Stezka pro mopedy"
+                },
+                "highway/cyclist_waiting_aid": {
+                    "name": "Stupačky pro cyklisty",
+                    "terms": "stupačka,zábrana,podnožka,úchop,zábradlí,rukojeť,podpěrka,područka,držadlo"
                 },
                 "highway/elevator": {
                     "name": "Výtah",
@@ -7885,6 +7959,10 @@
                     "name": "Vlajka",
                     "terms": "prapor,vlajka,stožár,vlajkový stožár"
                 },
+                "man_made/fuel_pump": {
+                    "name": "Čerpací stanice",
+                    "terms": "benzín,palivo,pohon,propan,nafta,lng,cng,bionafta"
+                },
                 "man_made/gantry": {
                     "name": "Portály pro směrové značky",
                     "terms": "dálniční portál,rameno stožáru,držák dopravní značky,struktura dopravní značky,montáž značky,držák značky,struktura značky"
@@ -7900,6 +7978,10 @@
                 "man_made/groyne": {
                     "name": "Vlnolam",
                     "terms": "pobřeží,groyne,konstrukce,pláž,zábrana,moře,pobřežní hráz"
+                },
+                "man_made/insect_hotel": {
+                    "name": "Hmyzí hotel",
+                    "terms": "včelí hotel,hotel pro brouky,hmyziště"
                 },
                 "man_made/lighthouse": {
                     "name": "Maják",
@@ -9303,6 +9385,17 @@
                     "name": "Relace",
                     "terms": "relace,vztah,seznam,objekt"
                 },
+                "roller_coaster/station": {
+                    "name": "Stanice horské dráhy",
+                    "terms": "zábavní park,atrakce"
+                },
+                "roller_coaster/support": {
+                    "name": "Pilíř horské dráhy"
+                },
+                "roller_coaster/track": {
+                    "name": "Dráha horské dráhy",
+                    "terms": "zábavní park,atrakce"
+                },
                 "route/ferry": {
                     "name": "Trasa trajektu",
                     "terms": "trajekt,trasa,linka,loď,trasa trajektu"
@@ -10240,7 +10333,7 @@
                 },
                 "traffic_calming/island": {
                     "name": "Dopravní ostrůvek",
-                    "terms": "kruhák,kruháč,kulaťák,kruhový objezd,pomalu,zpomalit"
+                    "terms": "kruhák,kruhový objezd,zpomalovák"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Minimální povolená rychlost",

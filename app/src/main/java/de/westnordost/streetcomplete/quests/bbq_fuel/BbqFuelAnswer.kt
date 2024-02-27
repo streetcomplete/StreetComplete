@@ -5,7 +5,8 @@ sealed interface BbqFuelAnswer
 enum class BbqFuel(val osmValue: String) : BbqFuelAnswer {
     WOOD("wood"),
     ELECTRIC("electric"),
-    CHARCOAL("charcoal")
+    CHARCOAL("charcoal"),
+    GAS("gas"),
 }
 
-object IsFirePitAnswer : BbqFuelAnswer
+data object IsFirePitAnswer : BbqFuelAnswer

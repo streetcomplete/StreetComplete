@@ -4,10 +4,12 @@ import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
+import de.westnordost.streetcomplete.util.math.distanceTo
 import java.util.Locale
 
 /** Manages the creation and reusage of changesets */
@@ -17,18 +19,30 @@ class OpenChangesetsManager(
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val lastEditTimeStore: LastEditTimeStore
 ) {
-    fun getOrCreateChangeset(type: ElementEditType, source: String): Long = synchronized(this) {
+    fun getOrCreateChangeset(
+        type: ElementEditType,
+        source: String,
+        position: LatLon,
+        createNewIfTooFarAway: Boolean
+    ): Long = synchronized(this) {
         val openChangeset = openChangesetsDB.get(type.name, source)
-        return if (openChangeset?.changesetId != null) {
-            openChangeset.changesetId
+            ?: return createChangeset(type, source, position)
+
+        if (createNewIfTooFarAway && position.distanceTo(openChangeset.lastPosition) > MAX_LAST_EDIT_DISTANCE) {
+            closeChangeset(openChangeset)
+            return createChangeset(type, source, position)
         } else {
-            createChangeset(type, source)
+            return openChangeset.changesetId
         }
     }
 
-    fun createChangeset(type: ElementEditType, source: String): Long = synchronized(this) {
+    fun createChangeset(
+        type: ElementEditType,
+        source: String,
+        position: LatLon
+    ): Long = synchronized(this) {
         val changesetId = mapDataApi.openChangeset(createChangesetTags(type, source))
-        openChangesetsDB.put(OpenChangeset(type.name, source, changesetId))
+        openChangesetsDB.put(OpenChangeset(type.name, source, changesetId, position))
         changesetAutoCloser.enqueue(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
         Log.i(TAG, "Created changeset #$changesetId")
         return changesetId
@@ -39,14 +53,18 @@ class OpenChangesetsManager(
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
         for (info in openChangesetsDB.getAll()) {
-            try {
-                mapDataApi.closeChangeset(info.changesetId)
-                Log.i(TAG, "Closed changeset #${info.changesetId}")
-            } catch (e: ConflictException) {
-                Log.w(TAG, "Couldn't close changeset #${info.changesetId} because it has already been closed")
-            } finally {
-                openChangesetsDB.delete(info.questType, info.source)
-            }
+            closeChangeset(info)
+        }
+    }
+
+    private fun closeChangeset(openChangeset: OpenChangeset) {
+        try {
+            mapDataApi.closeChangeset(openChangeset.changesetId)
+            Log.i(TAG, "Closed changeset #${openChangeset.changesetId}")
+        } catch (e: ConflictException) {
+            Log.w(TAG, "Couldn't close changeset #${openChangeset.changesetId} because it has already been closed")
+        } finally {
+            openChangesetsDB.delete(openChangeset.questType, openChangeset.source)
         }
     }
 
@@ -65,3 +83,5 @@ class OpenChangesetsManager(
 }
 
 private const val CLOSE_CHANGESETS_AFTER_INACTIVITY_OF = 1000L * 60 * 20 // 20min
+
+private const val MAX_LAST_EDIT_DISTANCE = 5000 // 5km

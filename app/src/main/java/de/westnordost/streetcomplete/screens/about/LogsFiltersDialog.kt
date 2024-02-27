@@ -30,10 +30,14 @@ import kotlin.coroutines.resume
 class LogsFiltersDialog(
     private val context: Context,
     initialFilters: LogsFilters,
-    onApplyButtonClick: (filters: LogsFilters) -> Unit
+    onApplyButtonClick: (filters: LogsFilters?) -> Unit
 ) : AlertDialog(context) {
 
-    private val filters = initialFilters.copy()
+    private var levels: MutableSet<LogLevel> = initialFilters.levels.toMutableSet()
+    private var messageContains: String? = initialFilters.messageContains
+    private var timestampNewerThan: LocalDateTime? = initialFilters.timestampNewerThan
+    private var timestampOlderThan: LocalDateTime? = initialFilters.timestampOlderThan
+
     private val binding = DialogLogsFiltersBinding.inflate(LayoutInflater.from(context))
     private val locale = Locale.getDefault()
 
@@ -41,46 +45,48 @@ class LogsFiltersDialog(
         setView(binding.root)
 
         setButton(BUTTON_POSITIVE, context.getString(R.string.action_filter)) { _, _ ->
-            onApplyButtonClick(filters)
+            onApplyButtonClick(LogsFilters(
+                levels, messageContains, timestampNewerThan, timestampOlderThan
+            ))
             dismiss()
         }
         setButton(BUTTON_NEGATIVE, context.getString(R.string.action_reset)) { _, _ ->
-            onApplyButtonClick(LogsFilters())
+            onApplyButtonClick(null)
             cancel()
         }
 
         createLogLevelsChips()
 
-        binding.messageContainsEditText.setText(filters.messageContains)
+        binding.messageContainsEditText.setText(messageContains)
         binding.messageContainsEditText.doAfterTextChanged {
-            filters.messageContains = binding.messageContainsEditText.nonBlankTextOrNull
+            messageContains = binding.messageContainsEditText.nonBlankTextOrNull
         }
 
         updateNewerThanInput()
         binding.newerThanEditText.setOnClickListener {
             lifecycleScope.launch {
-                filters.timestampNewerThan = pickDateTime(
-                    filters.timestampNewerThan ?: LocalDateTime.now()
+                timestampNewerThan = pickDateTime(
+                    timestampNewerThan ?: LocalDateTime.now()
                 )
                 updateNewerThanInput()
             }
         }
         binding.newerThanEditTextLayout.setEndIconOnClickListener {
-            filters.timestampNewerThan = null
+            timestampNewerThan = null
             updateNewerThanInput()
         }
 
         updateOlderThanInput()
         binding.olderThanEditText.setOnClickListener {
             lifecycleScope.launch {
-                filters.timestampOlderThan = pickDateTime(
-                    filters.timestampOlderThan ?: LocalDateTime.now()
+                timestampOlderThan = pickDateTime(
+                    timestampOlderThan ?: LocalDateTime.now()
                 )
                 updateOlderThanInput()
             }
         }
         binding.olderThanEditTextLayout.setEndIconOnClickListener {
-            filters.timestampOlderThan = null
+            timestampOlderThan = null
             updateOlderThanInput()
         }
     }
@@ -89,15 +95,15 @@ class LogsFiltersDialog(
         LogLevel.entries.forEach { level ->
             val chip = createLogLevelChip(context, level)
 
-            chip.isChecked = filters.levels.contains(level)
+            chip.isChecked = levels.contains(level)
             chip.isChipIconVisible = !chip.isChecked
 
             chip.setOnClickListener {
                 chip.isChipIconVisible = !chip.isChecked
 
-                when (filters.levels.contains(level)) {
-                    true -> filters.levels.remove(level)
-                    false -> filters.levels.add(level)
+                when (levels.contains(level)) {
+                    true -> levels.remove(level)
+                    false -> levels.add(level)
                 }
             }
 
@@ -106,13 +112,13 @@ class LogsFiltersDialog(
     }
 
     private fun updateNewerThanInput() {
-        binding.newerThanEditTextLayout.isEndIconVisible = (filters.timestampNewerThan != null)
-        binding.newerThanEditText.setText(filters.timestampNewerThan?.let {  dateTimeToString(locale, it) } ?: "")
+        binding.newerThanEditTextLayout.isEndIconVisible = timestampNewerThan != null
+        binding.newerThanEditText.setText(timestampNewerThan?.let {  dateTimeToString(locale, it) } ?: "")
     }
 
     private fun updateOlderThanInput() {
-        binding.olderThanEditTextLayout.isEndIconVisible = (filters.timestampOlderThan != null)
-        binding.olderThanEditText.setText(filters.timestampOlderThan?.let { dateTimeToString(locale, it) } ?: "")
+        binding.olderThanEditTextLayout.isEndIconVisible = timestampOlderThan != null
+        binding.olderThanEditText.setText(timestampOlderThan?.let { dateTimeToString(locale, it) } ?: "")
     }
 
     private suspend fun pickDateTime(initialDateTime: LocalDateTime): LocalDateTime {

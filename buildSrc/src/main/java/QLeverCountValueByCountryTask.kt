@@ -35,7 +35,7 @@ open class QLeverCountValueByCountryTask : DefaultTask() {
             SELECT ?value ?geometry WHERE {
             ?osm $sparqlQueryPart
             osmkey:$osmTag ?value;
-            geo:hasGeometry ?geometry.
+            geo:hasGeometry/geo:asWKT ?geometry.
             }
             """.trimIndent()
 

@@ -279,8 +279,6 @@
     <string name="produce_walnuts">"Волоський горіх"</string>
     <string name="produce_sisal">"Сісал"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Не можу знайти квести. Спробуйте наблизити або зменшити нахил мапи."</string>
-    <string name="quest_crossing_type_title">"Якого типу цей перехід?"</string>
-    <string name="quest_crossing_type_unmarked">"Перехід без дорожньої розмітки"</string>
     <string name="action_undo">"Скасувати"</string>
     <string name="produce_mangosteen">"Мангостан"</string>
     <string name="produce_tomatoes">"Томати"</string>
@@ -443,7 +441,6 @@
     <string name="quest_buildingType_transportation">"Будівля громадського транспорту"</string>
     <string name="quest_buildingType_university">"Університет"</string>
     <string name="quest_buildingType_government">"Урядова будівля"</string>
-    <string name="quest_buildingType_cars">"Для автівок"</string>
     <string name="quest_buildingType_carport">"Навіс"</string>
     <string name="quest_buildingType_carport_description">"навіс для автівки"</string>
     <string name="quest_buildingType_garage">"Окремий гараж"</string>
@@ -482,7 +479,6 @@
     <string name="quest_segregated_mixed">"Пішоходи та велосипедисти ділять один простір"</string>
     <string name="quest_maxheight_title">"Який тут ліміт висоти?"</string>
     <string name="quest_maxheight_answer_noSign">"Немає знаку…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Чи достатньо тут місця для проїзду вантажівки висотою 4,5 метрів"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Така висота виглядає нереальною. Ви впевнені?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Закрито %1$s, %2$s"</string>
@@ -794,9 +790,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"Вкажіть тут кількість позначених смуг, які можна використовувати для автомобільного руху. Але велосипедні та спеціальні паркувальні смуги не враховуються.
 Якщо будь-яка смуга відведена для автобусів, залиште для цього примітку."</string>
     <string name="quest_surface_value_rock">"Каміння"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Можуть проїжджати високі вантажівки"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Високі вантажівки не пройдуть"</string>
-    <string name="quest_crossing_type_marked">"Позначений перехід"</string>
     <string name="quest_parkingType_street_side">"Парковка біля проїжджої частини"</string>
     <string name="quest_parkingType_lane">"Парковка на проїжджій частині"</string>
     <string name="quest_tracktype_grade2a">"Тверде, але ґрунтове"</string>
@@ -839,7 +832,6 @@
     <string name="team_mode_team_size_hint">"Командний режим для груп від 2 до 12 людей."</string>
     <string name="team_mode_active">"Командний режим активний"</string>
     <string name="team_mode_deactivated">"Командний режим вимкнений"</string>
-    <string name="quest_crossing_type_signals_controlled">"Перехід контролюється світлофором"</string>
     <string name="undo_confirm_title2">"Скасувати обрані правки?"</string>
     <string name="synced">"Синхронізовано"</string>
     <string name="toast_undo_unavailable">"Ця правка надіслана і не може бути скасована"</string>
@@ -1224,7 +1216,6 @@
     <string name="quest_drinking_water_type_spring">"Джерело"</string>
     <string name="quest_drinking_water_type_disused">"Об'єкт питної води, що не використовується"</string>
     <string name="overlay_addresses">"Адреси"</string>
-    <string name="overlay_shops">"Магазини"</string>
     <string name="name_label">"Назва:"</string>
     <string name="unknown_shop_title">"Щось інше"</string>
     <string name="quest_address_answer_no_address">"Тут немає адреси"</string>
@@ -1362,4 +1353,29 @@
     <string name="label_log_older_than">"До"</string>
     <string name="label_log_message_contains">"Запис з"</string>
     <string name="title_logs_filters">"Фільтрувати записи"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Кількість прихованих квестів: %d"</string>
+    <string name="link_every_door_description">"Потужний редактор POI для Android та iOS"</string>
+    <string name="link_mapcomplete_description">"Колекція тематичних карт OSM, кожна з яких показує та дозволяє редагувати один тип обʼєктів"</string>
+    <string name="link_forum_description">"Потрібна допомога? Хочете почитати, що відбувається? Приходьте та спілкуйтеся, тут кипить активність спільнот з усього світу!"</string>
+    <string name="link_calendar_description">"Чи є поблизу вас події OpenStreetMap або зустрічі спільноти? (Якщо ні, ви можете додати свої власні!)"</string>
+    <string name="link_prettymapp_description">"Створюйте гарні різнобарвні постери з мапами кварталів"</string>
+    <string name="quest_disable_action">"Вимкнути"</string>
+    <string name="quest_disable_title">"Вимкнути цей тип квесту?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure (ще) не встановлено."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure не повернув вимірювання."</string>
+    <string name="quest_disable_message_tape_measure">"Замість цього можна використати рулетку, але це може бути трохи незручно."</string>
+    <string name="quest_buildingType_outbuilding">"Надвірна будівля"</string>
+    <string name="quest_buildingType_outbuilding_description">"менш важлива будівля на ділянці"</string>
+    <string name="quest_buildingType_other_description">"інший тип будівлі"</string>
+    <string name="quest_buildingType_container">"Контейнер"</string>
+    <string name="quest_buildingType_tent">"Намет"</string>
+    <string name="quest_buildingType_tomb">"Склеп"</string>
+    <string name="quest_buildingType_tower">"Вежа"</string>
+    <string name="quest_buildingType_tower_description">"будь-яка вежа"</string>
+    <string name="quest_buildingType_under_construction">"Споруджуваний будинок"</string>
+    <string name="overlay_buildings">"Будівлі"</string>
+    <string name="quest_pedestrian_crossing_signals">"Чи потрібно чекати сигналу світлофора, щоб перейти тут?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Чи є на цьому переході розмітка?"</string>
+    <string name="overlay_places">"Місця"</string>
+    <string name="unknown_object">"Невідомий обʼєкт"</string>
 </resources>

@@ -4028,9 +4028,6 @@
                 "amenity/vending_machine/food": {
                     "name": "ตู้จำหน่ายอาหารอัตโนมัติ"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "ปั๊มแก๊ส"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "ตู้จำหน่ายไอศครีมอัตโนมัติ"
                 },
@@ -4051,9 +4048,6 @@
                 },
                 "amenity/vending_machine/stamps": {
                     "name": "ตู้จำหน่ายไปรษณีย์อัตโนมัติ"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "เครื่องจำหน่ายขนมอัตโนมัติ"
                 },
                 "amenity/veterinary": {
                     "name": "สัตวแพทย์"

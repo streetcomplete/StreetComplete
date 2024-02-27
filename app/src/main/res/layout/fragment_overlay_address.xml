@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:showDividers="middle"
-    android:paddingBottom="32dp"
+    android:layout_marginBottom="48dp"
     android:divider="@drawable/space_8dp">
 
     <include

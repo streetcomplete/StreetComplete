@@ -279,8 +279,6 @@
     <string name="produce_walnuts">"核桃"</string>
     <string name="produce_sisal">"瓊麻"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"在這裡無法掃描。請進一步放大或是傾斜地圖程度小點。"</string>
-    <string name="quest_crossing_type_title">"這是哪種交叉口?"</string>
-    <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
     <string name="action_undo">"復原"</string>
     <string name="produce_mangosteen">"山竹"</string>
     <string name="produce_tomatoes">"番茄"</string>
@@ -443,7 +441,6 @@
     <string name="quest_buildingType_transportation">"大眾運輸建築"</string>
     <string name="quest_buildingType_university">"大專院校建築"</string>
     <string name="quest_buildingType_government">"政府建築"</string>
-    <string name="quest_buildingType_cars">"汽車用"</string>
     <string name="quest_buildingType_carport">"車棚"</string>
     <string name="quest_buildingType_carport_description">"有屋頂汽車用"</string>
     <string name="quest_buildingType_garage">"單一車子車庫"</string>
@@ -482,7 +479,6 @@
     <string name="quest_segregated_mixed">"自行車與步行者共用空間"</string>
     <string name="quest_maxheight_title">"這裡的高度限制多少？"</string>
     <string name="quest_maxheight_answer_noSign">"該處並沒有標誌…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"就算是非常高的貨車（至少有4.5公尺 / 15英尺）也可以有非常充裕的空間通過嗎？"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"這個高度聽起來不太合理。您確定這是正確的嗎？"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"由 %1$s、%2$s 關閉"</string>
@@ -797,9 +793,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"具體說明所有汽車可通行標示車道 (所有方向)，所以，單車和停車場通道不算。
 如果有車道保留給公車，請留下註解。 "</string>
     <string name="quest_surface_value_rock">"石頭"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"高的貨車可通過"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"高的貨車無法通過"</string>
-    <string name="quest_crossing_type_marked">"標線行人穿越道"</string>
     <string name="quest_parkingType_street_side">"路外停車"</string>
     <string name="quest_parkingType_lane">"路邊停車"</string>
     <string name="quest_tracktype_grade2a">"堅實的但沒有舖面"</string>
@@ -842,7 +835,6 @@
     <string name="team_mode_team_size_hint">"協作模式適用於2～12位成員"</string>
     <string name="team_mode_active">"協作模式已啟用"</string>
     <string name="team_mode_deactivated">"協作模式已停用"</string>
-    <string name="quest_crossing_type_signals_controlled">"行人穿越由交通號誌控制"</string>
     <string name="undo_confirm_title2">"要復原接下來的編輯嗎？"</string>
     <string name="synced">"已經同步了"</string>
     <string name="toast_undo_unavailable">"這筆編輯已經同步，因此無法復原"</string>
@@ -1228,7 +1220,6 @@
     <string name="quest_drinking_water_type_spring">"噴泉"</string>
     <string name="quest_drinking_water_type_disused">"停止使用的飲水物件"</string>
     <string name="overlay_addresses">"地址"</string>
-    <string name="overlay_shops">"商店"</string>
     <string name="name_label">"名稱："</string>
     <string name="unknown_shop_title">"其他類型"</string>
     <string name="quest_address_answer_no_address">"這裡沒有地址"</string>
@@ -1350,4 +1341,19 @@
     <string name="quest_recycling_type_food_waste">"廚餘"</string>
     <string name="quest_defibrillator_location">"去顫器的位置在那裡？"</string>
     <string name="quest_defibrillator_location_description">"請提供精確的位置敘述 (例如「行李員休息室」)"</string>
+    <string name="quest_sanitary_dump_station_title">"這裡有環境衛生垃圾站嗎？"</string>
+    <string name="quest_sanitary_dump_station_description">"丟棄人類垃圾的設施，如拖車家園或長途卡車的垃圾箱等。通常會有這樣的指標："</string>
+    <string name="quest_generalFee_title">"你需要付費才能使用嗎？"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"這是封閉火爐"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"封閉火爐沒有如烤肉架有的烹煮介面 (例如爐排/烤盤)"</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"在錯誤報告使用"</string>
+    <string name="action_filter">"篩選"</string>
+    <string name="action_share">"分享 log"</string>
+    <string name="about_title_show_logs">"顯示 log"</string>
+    <string name="label_log_level">"log 層級"</string>
+    <string name="label_log_newer_than">"從"</string>
+    <string name="label_log_older_than">"到"</string>
+    <string name="label_log_message_contains">"訊息含有"</string>
+    <string name="title_logs_filters">"篩選訊息"</string>
 </resources>

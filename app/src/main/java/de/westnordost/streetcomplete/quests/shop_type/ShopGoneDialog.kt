@@ -14,7 +14,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
-import de.westnordost.streetcomplete.osm.IS_SHOP_EXPRESSION
+import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 
@@ -56,6 +57,7 @@ class ShopGoneDialog(
                 featureCtrl.feature?.name,
                 ::filterOnlyShops,
                 ::onSelectedFeature,
+                POPULAR_PLACE_FEATURE_IDS,
                 true
             ).show()
         }
@@ -74,7 +76,7 @@ class ShopGoneDialog(
 
     private fun filterOnlyShops(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
-        return IS_SHOP_EXPRESSION.matches(fakeElement)
+        return fakeElement.isPlace()
     }
 
     private fun onSelectedFeature(feature: Feature) {

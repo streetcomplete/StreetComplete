@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, Tesla, Unknown]
+atmOperators: [Wells Fargo, Bank of America, Nevada State Bank, U.S. Bank]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, Electrify America, Tesla, Unknown, Tesla Motors, Shell Recharge Solutions]
 defaultSpeedLimitHasUrbanOrRural: false

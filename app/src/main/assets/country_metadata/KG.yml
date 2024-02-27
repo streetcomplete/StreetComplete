@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, РСК, DemirBank, КБ Кыргызстан, Халык Банк, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Демир банк, Коммерческий банк Кыргызстан]
+atmOperators: [РСК Банк, KICB, Demir Bank, Optima Bank, DemirBank, Demir bank, РСК, DEMiR Bank, Халык Банк, РСК банк, КБ Кыргызстан, Айыл Банк, АКБ КЫРГЫЗСТАН, Халык Банк Кыргызстан, Коммерческий банк Кыргызстан, Демир банк, Демир Банк]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

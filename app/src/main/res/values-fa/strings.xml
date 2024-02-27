@@ -280,8 +280,6 @@
     <string name="produce_walnuts">"گردو"</string>
     <string name="produce_sisal">"سیسال"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"اینجا پویش نمی‌شود. بزرگ‌نمایی کنید یا نقشه را کمتر کج کنید."</string>
-    <string name="quest_crossing_type_title">"این گذرگاه از چه نوعی است؟"</string>
-    <string name="quest_crossing_type_unmarked">"گذرگاه عابر بدون خط‌ کشی"</string>
     <string name="action_undo">"برگشت"</string>
     <string name="produce_mangosteen">"ترگیل"</string>
     <string name="produce_tomatoes">"گوجه فرنگی"</string>
@@ -443,7 +441,6 @@
     <string name="quest_buildingType_transportation">"ساختمان حمل‌ونقل عمومی"</string>
     <string name="quest_buildingType_university">"ساختمان دانشگاه"</string>
     <string name="quest_buildingType_government">"ساختمان دولتی"</string>
-    <string name="quest_buildingType_cars">"برای خودروها"</string>
     <string name="quest_buildingType_carport">"سایبان خودرو"</string>
     <string name="quest_buildingType_carport_description">"سقف برای خودرو"</string>
     <string name="quest_buildingType_garage">"یک گاراژ"</string>
@@ -482,7 +479,6 @@
     <string name="quest_segregated_mixed">"مسیر دوچرخه‌سواران و پیاده‌ها مشترک است"</string>
     <string name="quest_maxheight_title">"محدودیت ارتفاع در اینجا چقدر است؟"</string>
     <string name="quest_maxheight_answer_noSign">"علائمی وجود ندارد…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"آیا فضای کافی برای عبور آسان حتی بلندترین کامیون‌ها وجود دارد (حداقل حدود ۴٬۵ متر / ۱۵ فوت)؟"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"به نظر می‌رسد این ارتفاع درست نباشد. مطمئن هستید که درست است؟"</string>
     <string name="quest_noteDiscussion_comment2">"%2$s, %1$s —"</string>
     <string name="quest_noteDiscussion_closed2">"‏%1$s بست، %2$s"</string>
@@ -796,9 +792,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"تعداد خطوط تردد قابل استفاده خودروها در اینجا را مشخص کنید. پس، خطوط دوچرخه و خطوط اختصاصی پارکینگ حساب نمی‌شوند.
 اگر خط ویژه اتوبوس در میان این خطوط وجود دارد، لطفاً در عوض یادداشت بگذارید."</string>
     <string name="quest_surface_value_rock">"سنگ"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"کامیون‌های مرتفع می‌توانند عبور کنند"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"برای عبور کامیون‌های مرتفع مناسب نیست"</string>
-    <string name="quest_crossing_type_marked">"خط عابر دارای خط‌ کشی"</string>
     <string name="quest_parkingType_street_side">"پارکینگ در کنار راه"</string>
     <string name="quest_parkingType_lane">"پارکینگ در مسیر راه"</string>
     <string name="quest_tracktype_grade2a">"سخت اما روسازی‌نشده"</string>
@@ -842,7 +835,6 @@
     <string name="team_mode_team_size_hint">"حالت گروهی برای گروه‌های ۲ تا ۱۲ نفره کار می‌کند."</string>
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی غیرفعال است"</string>
-    <string name="quest_crossing_type_signals_controlled">"کنترل عبور و مرور با چراغ‌های راهنمایی"</string>
     <string name="undo_confirm_title2">"ویرایش زیر را واگرد می‌کنید؟"</string>
     <string name="synced">"همگام سازی شده"</string>
     <string name="toast_undo_unavailable">"این ویرایش قبلاً همگام سازی شده است و قابل واگرد نیست"</string>
@@ -1230,7 +1222,6 @@
     <string name="quest_drinking_water_type_spring">"چشمه"</string>
     <string name="quest_drinking_water_type_disused">"آب نوشیدنی بلا استفاده"</string>
     <string name="overlay_addresses">"نشانی‌ها"</string>
-    <string name="overlay_shops">"فروشگاه‌ها"</string>
     <string name="name_label">"نام:"</string>
     <string name="unknown_shop_title">"نوع دیگری از مکان"</string>
     <string name="quest_address_answer_no_address">"بدون آدرس"</string>
@@ -1368,4 +1359,31 @@
     <string name="label_log_older_than">"به"</string>
     <string name="label_log_message_contains">"پیام شامل"</string>
     <string name="title_logs_filters">"فیلتر کردن پیام‌ها"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"تعداد مأموریت‌های پنهان: %d"</string>
+    <string name="link_every_door_description">"ویرایشگر قدرتمند POI برای اندروید و iOS"</string>
+    <string name="link_mapcomplete_description">"مجموعه‌ای از نقشه‌های OSM موضوعی که هر کدام نشان می‌دهند و به شما امکان می‌دهند یک نوع ویژگی را ویرایش کنید"</string>
+    <string name="link_forum_description">"کمک خواستن؟ می‌خواهید بخوانید چه خبر است؟ بیایید و با هم ترکیب شوید، با فعالیت‌های جوامع در سراسر جهان!"</string>
+    <string name="link_calendar_description">"آیا رویدادهای OpenStreetMap یا جلسات انجمن نزدیک شما هستند؟ (اگر نه، می‌توانید خود را اضافه کنید!)"</string>
+    <string name="link_prettymapp_description">"پوسترهای چندرنگی زیبا از نقشه محله‌ها ایجاد کنید"</string>
+    <string name="quest_disable_action">"غیرفعال کردن"</string>
+    <string name="quest_disable_title">"این نوع جستجو غیرفعال شود؟"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure (هنوز) نصب نشده است."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure مقدار اندازه‌گیری را نشان نداد."</string>
+    <string name="quest_disable_message_tape_measure">"می‌توانید به جای آن از یک متر نوار استفاده کنید، اما ممکن است کمی ناخوشایند باشد."</string>
+    <string name="quest_buildingType_outbuilding">"ساخت و ساز خارجی/ساختمان بیرونی"</string>
+    <string name="quest_buildingType_outbuilding_description">"ساختمان کم اهمیت در یک ملک"</string>
+    <string name="quest_buildingType_other_description">"یک ساختمان خاص که در این برنامه قابل انتخاب نیست"</string>
+    <string name="quest_buildingType_container">"ظرف/محفظه"</string>
+    <string name="quest_buildingType_tent">"چادر"</string>
+    <string name="quest_buildingType_tomb">"مقبره"</string>
+    <string name="quest_buildingType_tower">"برج"</string>
+    <string name="quest_buildingType_tower_description">"هر نوع برجی"</string>
+    <string name="quest_buildingType_under_construction">"در حال ساخت"</string>
+    <string name="overlay_buildings">"ساختمان‌ها"</string>
+    <string name="quest_pedestrian_crossing_signals">"آیا باید منتظر بمانید تا یک علامت راهنمایی و رانندگی از اینجا عبور کند؟"</string>
+    <string name="quest_pedestrian_crossing_markings">"آیا این گذرگاه روی زمین علامت‌گذاری دارد؟"</string>
+    <string name="overlay_places">"مکان‌ها"</string>
+    <string name="overlay_things">"اشیاء"</string>
+    <string name="disused">"بلااستفاده/از کار افتاده"</string>
+    <string name="unknown_object">"شیء ناشناخته"</string>
 </resources>

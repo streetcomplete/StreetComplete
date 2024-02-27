@@ -3554,7 +3554,6 @@
                         "dip": "Dip",
                         "double_dip": "Double Dip",
                         "hump": "Speed Hump",
-                        "island": "Traffic Island",
                         "mini_bumps": "Mini Speed Bumps",
                         "rumble_strip": "Rumble Strip",
                         "table": "Speed Table"
@@ -4875,9 +4874,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Yemek Otomatı"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Gaz Pompası"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Dondurma Otomatı"
                 },
@@ -4901,10 +4897,6 @@
                 },
                 "amenity/vending_machine/stamps": {
                     "name": "Posta Otomatı"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Yiyecek Otomatı",
-                    "terms": "yiyecek otomatı"
                 },
                 "amenity/veterinary": {
                     "name": "Veteriner",
@@ -8986,10 +8978,6 @@
                 "traffic_calming/hump": {
                     "name": "Hız Tümseği",
                     "terms": "hız tümseği"
-                },
-                "traffic_calming/island": {
-                    "name": "Refüj",
-                    "terms": "refüj"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Mini Speed Bumps"

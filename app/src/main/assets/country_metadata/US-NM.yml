@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, ChargePoint]
+atmOperators: [CU Anytime, Wells Fargo, Bank of America, Nusenda, Pioneer Bank, Century Bank, Bank of the Southwest, WaFd Bank, Pinnacle Bank, LANB, Guadalupe Credit Union, First National, Bank of Albuquerque]
+chargingStationOperators: ['Tesla, Inc.', Tesla Motors, ChargePoint, Electrify America, EVgo]
 defaultSpeedLimitHasUrbanOrRural: true

@@ -11,8 +11,11 @@ private val isCrossingExpr by lazy { """
 
 private val isCrossingWithTrafficSignalsExpr by lazy { """
     nodes with
-      crossing = traffic_signals
-      and highway ~ crossing|traffic_signals
+      highway ~ crossing|traffic_signals
+      and (
+        crossing = traffic_signals
+        or crossing:signals and crossing:signals != no
+      )
 """.toElementFilterExpression() }
 
 fun Element.isCrossing(): Boolean = isCrossingExpr.matches(this)

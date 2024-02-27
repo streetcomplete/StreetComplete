@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banco Popular, Popular, BanReservas, BHD, Banco BHD Leon, Banco BHD, Banco de Reservas, Banco BHD León, Banca Popular, BPD]
+atmOperators: [Banco Popular, Popular, BHD leon, Banreservas, BHD, Scotiabank, BanReservas, Banco BHD Leon, Banco de Reservas, Banco BHD León, Banco BHD, Banca Popular, BPD]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 370

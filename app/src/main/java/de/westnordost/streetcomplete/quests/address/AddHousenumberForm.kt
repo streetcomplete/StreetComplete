@@ -13,12 +13,12 @@ import de.westnordost.streetcomplete.osm.address.HouseAndBlockNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumberAndBlock
 import de.westnordost.streetcomplete.osm.address.looksInvalid
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
-import de.westnordost.streetcomplete.osm.buildingSynonyms
+import de.westnordost.streetcomplete.osm.building.BuildingType
+import de.westnordost.streetcomplete.osm.building.asItem
+import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
-import de.westnordost.streetcomplete.quests.building_type.BuildingType
-import de.westnordost.streetcomplete.quests.building_type.asItem
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
@@ -113,11 +113,9 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
     }
 
     private fun onNoHouseNumber() {
-        val buildingValue = element.tags["building"]!!
-        val transformedBuildingValue = buildingSynonyms[buildingValue] ?: buildingValue
-        val buildingType = BuildingType.getByTag("building", transformedBuildingValue)?.asItem()
+        val buildingType = createBuildingType(element.tags)
         if (buildingType != null) {
-            showNoHouseNumberDialog(buildingType)
+            showNoHouseNumberDialog(buildingType.asItem())
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by
             // building type quest

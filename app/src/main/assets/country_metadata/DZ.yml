@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [بريد الجزائر, Algérie Poste, بي إن بي باريبا, BNP Paribas El Djazaïr, Algerie Poste, القرض الشعبي الجزائري, الصندوق الوطني للتوفير والاحتياط, بنك الجزائر الخارجي, CPA, سوسيتيه جنرال, CCP, GAB CCP, GAB, CNEP]
+atmOperators: [بريد الجزائر, Algérie Poste, سوسيتيه جنرال, بي إن بي باريبا, بنك الجزائر الخارجي, القرض الشعبي الجزائري, CPA, BNP Paribas El Djazaïr, BNP Paribas, BNA, BDL, BADR Banque, Algérie poste, Algerie Poste, الصندوق الوطني للتوفير والاحتياط, algerie poste, GAB CCP, GAB, Caisse nationale d'épargne et de prévoyance-Banque, CPA القرض الشعبي الجزائري, CNEP, Algerie poste]
 firstDayOfWorkweek: Su
 mobileCountryCode: 603
 noParkingSignStyle: vienna

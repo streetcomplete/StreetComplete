@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Flo, Tesla, Expressway Ford, Tim Hortons, Fairway Plaza, City of Kitchener, University of Waterloo, Tesla Motors Inc., Tesla Motors, Sun Country, FLO, Electric Circuit, City of Waterloo, City of Stratford, Chargepoint, Cadillac Fairview, Bingemans, Bank of Nova Scotia]
-clothesContainerOperators: [Canadian Diabetes]
+atmOperators: [RBC, CIBC, TD Canada Trust, BMO, Scotiabank, Instacoin, generic, Alterna Savings, Walmart Financial, PC Financial, Alterna Bank, Alterna, TD, Meridian Credit Union, HSBC, Bitcoin Well, President's Choice Financial, Localcoin, Frisco ATMs, Elliot and Gabriela, Canadian Imperial Bank of Commerce]
+chargingStationOperators: [FLO, 'Tesla, Inc.', ChargePoint, Petro-Canada, Ivy, Expressway Ford, Tim Hortons, Sun Country, Fairway Plaza, City of Kitchener, University of Waterloo, Shell Recharge Solutions, Electrify Canada, City of Waterloo, City of Stratford, Circuit électrique, Cadillac Fairview, CIGI, Bingemans, Bank of Nova Scotia]
+clothesContainerOperators: [City of Markham, Canadian Diabetes]
 defaultSpeedLimitHasUrbanOrRural: true
 hasNoStandingSign: true
 noStandingSignStyle: mutcd text standing

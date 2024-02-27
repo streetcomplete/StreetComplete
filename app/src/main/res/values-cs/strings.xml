@@ -283,8 +283,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="produce_walnuts">"Vlašské ořechy"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nelze vyhledat úkoly. Zkuste mapu ještě více přiblížit nebo zkuste zmenšit naklonění."</string>
-    <string name="quest_crossing_type_title">"Jaký je tento přechod?"</string>
-    <string name="quest_crossing_type_unmarked">"Přechod bez označení na cestě"</string>
     <string name="action_undo">"Zpět"</string>
     <string name="produce_mangosteen">"Mangostany"</string>
     <string name="produce_tomatoes">"Rajčata"</string>
@@ -447,7 +445,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_buildingType_transportation">"Budova související s veřejnou dopravou"</string>
     <string name="quest_buildingType_university">"Univerzitní budova"</string>
     <string name="quest_buildingType_government">"Správní/vládní budova"</string>
-    <string name="quest_buildingType_cars">"Pro auta"</string>
     <string name="quest_buildingType_carport">"Přístřešek pro auto"</string>
     <string name="quest_buildingType_carport_description">"střecha s jednou nebo dvěma zdmi chránící auto"</string>
     <string name="quest_buildingType_garage">"Samostatná garáž"</string>
@@ -486,7 +483,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_segregated_mixed">"Cyklisté a chodci sdílejí stejný prostor"</string>
     <string name="quest_maxheight_title">"Jaké je tu výškové omezení?"</string>
     <string name="quest_maxheight_answer_noSign">"Není tu žádná značka…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Je tu dostatečné místo na projetí i těch nejvyšších náklaďáků? (Tzn. je tady alespoň cca 4,5 metru místa na výšku?)"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Tato výška vypadá neobvykle. Opravdu jste ji zadali správně?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Uzavřel(a) %1$s, %2$s"</string>
@@ -804,9 +800,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Určete tady celkový počet vyznačených jízdních pruhů, na kterých mohou jezdit auta. Pruhy pro kola a parkování nepočítejte.
 Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_surface_value_rock">"Skála"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Vysoký náklaďák může projet"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Vysoký náklaďák se nevejde"</string>
-    <string name="quest_crossing_type_marked">"Označený přechod"</string>
     <string name="quest_parkingType_street_side">"Parkuje se přímo vedle cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje se na cestě"</string>
     <string name="quest_tracktype_grade2a">"Víceméně pevný"</string>
@@ -849,7 +842,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="team_mode_team_size_hint">"Týmový režim funguje pro skupiny 2 až 12 lidí."</string>
     <string name="team_mode_active">"Týmový režim je aktivní"</string>
     <string name="team_mode_deactivated">"Týmový režim deaktivován"</string>
-    <string name="quest_crossing_type_signals_controlled">"Přechod řízený semaforem"</string>
     <string name="undo_confirm_title2">"Chcete vrátit následující úpravu?"</string>
     <string name="synced">"Synchronizováno"</string>
     <string name="toast_undo_unavailable">"Tato úprava je již synchronizovaná a proto ji nelze vrátit zpět"</string>
@@ -1236,7 +1228,6 @@ Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazo
     <string name="quest_drinking_water_type_spring">"Pramen"</string>
     <string name="quest_drinking_water_type_disused">"Nepoužívaný zdroj pitné vody"</string>
     <string name="overlay_addresses">"Adresy"</string>
-    <string name="overlay_shops">"Obchody"</string>
     <string name="name_label">"Název:"</string>
     <string name="unknown_shop_title">"Jiný druh místa"</string>
     <string name="quest_address_answer_no_address">"Není tu žádná adresa"</string>
@@ -1374,4 +1365,31 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="label_log_older_than">"Do"</string>
     <string name="label_log_message_contains">"Zpráva obsahuje"</string>
     <string name="title_logs_filters">"Filtrovat zprávy"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Počet skrytých úkolů: %d"</string>
+    <string name="link_every_door_description">"Výkonný editor POI pro Android a iOS"</string>
+    <string name="link_mapcomplete_description">"Soubor tématických map OSM, kde každá ukazuje a umožňuje upravit jeden druh vlastností"</string>
+    <string name="link_forum_description">"Potřebujete pomoc? Chcete si přečíst, co se děje? Přijďte a zapojte se, je tu rušno s aktivitou komunit z celého světa!"</string>
+    <string name="link_calendar_description">"Jsou blízko vás události nebo komunitní setkání OpenStreetMap? (Pokud ne, můžete přidat své vlastní!)"</string>
+    <string name="link_prettymapp_description">"Vytvořte krásné vícebarevné mapové plakáty okolí"</string>
+    <string name="quest_disable_action">"Zakázat"</string>
+    <string name="quest_disable_title">"Zakázat tento typ úkolů?"</string>
+    <string name="quest_disable_message_not_installed">"Aplikace StreetMeasure není (ještě) nainstalována."</string>
+    <string name="quest_disable_message_not_working">"Aplikace StreetMeasure nevrátila naměřenou hodnotu."</string>
+    <string name="quest_disable_message_tape_measure">"Můžete místo toho měřit svinovacím metrem, ale může to být přece jen trochu nešikovné."</string>
+    <string name="quest_buildingType_outbuilding">"Přístavba"</string>
+    <string name="quest_buildingType_outbuilding_description">"méně důležitá budova na pozemku"</string>
+    <string name="quest_buildingType_other_description">"specifická budova, kterou nelze v této aplikaci vybrat"</string>
+    <string name="quest_buildingType_container">"Kontejner"</string>
+    <string name="quest_buildingType_tent">"Stan"</string>
+    <string name="quest_buildingType_tomb">"Hrob"</string>
+    <string name="quest_buildingType_tower">"Věž"</string>
+    <string name="quest_buildingType_tower_description">"jakýkoli typ věže"</string>
+    <string name="quest_buildingType_under_construction">"Ve výstavbě"</string>
+    <string name="overlay_buildings">"Budovy"</string>
+    <string name="quest_pedestrian_crossing_signals">"Musíte tu před přecházením počkat na signál?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Má tento přechod značení na zemi?"</string>
+    <string name="overlay_places">"Místa"</string>
+    <string name="overlay_things">"Věci"</string>
+    <string name="disused">"nepoužíváno"</string>
+    <string name="unknown_object">"Neznámý předmět"</string>
 </resources>

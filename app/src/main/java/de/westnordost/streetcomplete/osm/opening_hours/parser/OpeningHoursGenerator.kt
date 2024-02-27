@@ -1,212 +1,186 @@
 package de.westnordost.streetcomplete.osm.opening_hours.parser
 
-import ch.poole.openinghoursparser.DateRange
-import ch.poole.openinghoursparser.DateWithOffset
-import ch.poole.openinghoursparser.Holiday
-import ch.poole.openinghoursparser.Month
-import ch.poole.openinghoursparser.Rule
-import ch.poole.openinghoursparser.RuleModifier
-import ch.poole.openinghoursparser.TimeSpan
-import ch.poole.openinghoursparser.WeekDay
-import ch.poole.openinghoursparser.WeekDayRange
+import de.westnordost.osm_opening_hours.model.ClockTime
+import de.westnordost.osm_opening_hours.model.ExtendedClockTime
+import de.westnordost.osm_opening_hours.model.Holiday
+import de.westnordost.osm_opening_hours.model.Month
+import de.westnordost.osm_opening_hours.model.MonthRange
+import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
+import de.westnordost.osm_opening_hours.model.OpeningHours
+import de.westnordost.osm_opening_hours.model.Range
+import de.westnordost.osm_opening_hours.model.Rule
+import de.westnordost.osm_opening_hours.model.RuleOperator
+import de.westnordost.osm_opening_hours.model.RuleType
+import de.westnordost.osm_opening_hours.model.SingleMonth
+import de.westnordost.osm_opening_hours.model.StartingAtTime
+import de.westnordost.osm_opening_hours.model.Time
+import de.westnordost.osm_opening_hours.model.TimeSpan
+import de.westnordost.osm_opening_hours.model.TimeSpansSelector
+import de.westnordost.osm_opening_hours.model.TimesSelector
+import de.westnordost.osm_opening_hours.model.Weekday
+import de.westnordost.osm_opening_hours.model.WeekdayRange
+import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.osm.opening_hours.model.CircularSection
 import de.westnordost.streetcomplete.osm.opening_hours.model.Months
-import de.westnordost.streetcomplete.osm.opening_hours.model.NumberSystem
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
-import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.PUBLIC_HOLIDAY
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.quests.postbox_collection_times.CollectionTimesRow
 
-@JvmName("openingHoursRowsToOpeningHoursRules")
-fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
+@JvmName("openingHoursRowsToOpeningHours")
+fun List<OpeningHoursRow>.toOpeningHours(): OpeningHours {
     val rules = mutableListOf<Rule>()
 
-    var currentDateRanges: List<DateRange>? = null
-    var currentWeekdays: WeekDayRangesAndHolidays? = null
-    var currentTimeSpans: MutableList<TimeSpan> = mutableListOf()
+    var currentMonths: List<MonthsOrDateSelector>? = null
+    var currentWds: WeekdaysAndHolidays? = null
+    var currentTimeSpans: MutableList<TimeSpansSelector> = mutableListOf()
 
     for (row in this) when (row) {
         is OpeningMonthsRow -> {
-            val dateRanges = row.months.toDateRanges()
-
             // new rule if we were constructing one
-            if (currentWeekdays != null) {
-                rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
-                currentWeekdays = null
+            if (currentWds != null) {
+                rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
+                currentWds = null
                 currentTimeSpans = mutableListOf()
             }
 
-            currentDateRanges = dateRanges
+            currentMonths = row.months.toMonthsSelectors()
         }
         is OpeningWeekdaysRow -> {
-            val timeSpan = row.timeRange.toTimeSpan()
-            val weekdays =
+            val wds =
                 if (!row.weekdays.isSelectionEmpty()) {
-                    row.weekdays.toWeekDayRangesAndHolidays()
+                    row.weekdays.toWeekdaysAndHolidays()
                 } else {
-                    WeekDayRangesAndHolidays()
+                    WeekdaysAndHolidays(null, null)
                 }
 
             // new weekdays -> new rule
-            if (currentWeekdays != null && weekdays != currentWeekdays) {
-                rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
+            if (currentWds != null && wds != currentWds) {
+                rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
                 currentTimeSpans = mutableListOf()
             }
 
-            currentTimeSpans.add(timeSpan)
-            currentWeekdays = weekdays
+            currentTimeSpans.add(row.timeRange.toTimeSpansSelector())
+            currentWds = wds
         }
         is OffDaysRow -> {
             // new rule if we were constructing one
-            if (currentWeekdays != null) {
-                rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
-                currentWeekdays = null
+            if (currentWds != null) {
+                rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
+                currentWds = null
                 currentTimeSpans = mutableListOf()
             }
 
-            val weekdays = row.weekdays.toWeekDayRangesAndHolidays()
-            rules.add(createOffRule(currentDateRanges, weekdays.weekdayRanges, weekdays.holidays))
+            val wds = row.weekdays.toWeekdaysAndHolidays()
+            rules.add(createRule(currentMonths, wds, null, RuleType.Off))
         }
     }
-    if (currentWeekdays != null) {
-        rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
+    if (currentWds != null) {
+        rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
     }
 
-    /* if any rule collides with another, e.g. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
-       additive rules e.g. "Mo-Fr 10:00-12:00, We 14:00-16:00" */
-    if (rules.weekdaysCollideWithAnother()) {
-        rules.makeAdditive()
-    }
-
-    return OpeningHoursRuleList(rules)
+    return OpeningHours(rules.asNonColliding())
 }
 
-@JvmName("makeAdditiveInRuleList")
-private fun List<Rule>.makeAdditive() {
-    for (rule in this) {
-        // "off" rules stay non-additive
-        if (rule.modifier?.isSimpleOff() != true) {
-            rule.isAdditive = true
-        }
-    }
-}
-
-@JvmName("collectionTimesRowsToOpeningHoursRules")
-fun List<CollectionTimesRow>.toOpeningHoursRules(): OpeningHoursRuleList {
+@JvmName("collectionTimesRowsToOpeningHours")
+fun List<CollectionTimesRow>.toOpeningHours(): OpeningHours {
     val rules = mutableListOf<Rule>()
 
-    var currentWeekdays: WeekDayRangesAndHolidays? = null
-    var currentTimeSpans: MutableList<TimeSpan> = mutableListOf()
+    var currentWds: WeekdaysAndHolidays? = null
+    var currentTimes: MutableList<Time> = mutableListOf()
 
     for (row in this) {
-        val time = row.time
-        val weekdays =
+        val wds =
             if (!row.weekdays.isSelectionEmpty()) {
-                row.weekdays.toWeekDayRangesAndHolidays()
+                row.weekdays.toWeekdaysAndHolidays()
             } else {
-                WeekDayRangesAndHolidays()
+                WeekdaysAndHolidays(null, null)
             }
 
         // new weekdays -> new rule
-        if (currentWeekdays != null && weekdays != currentWeekdays) {
-            rules.add(createRule(null, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
-            currentTimeSpans = mutableListOf()
+        if (currentWds != null && wds != currentWds) {
+            rules.add(createRule(null, currentWds, currentTimes))
+            currentTimes = mutableListOf()
         }
 
-        currentTimeSpans.add(time.toTimeSpan())
-        currentWeekdays = weekdays
+        currentTimes.add(row.time.toClockTime())
+        currentWds = wds
     }
-    if (currentWeekdays != null) {
-        rules.add(createRule(null, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
-    }
-
-    /* if any rule collides with another, e.g. "Mo-Fr 10:00; We 14:00", switch to
-       additive rules e.g. "Mo-Fr 10:00, We 14:00" */
-    if (rules.weekdaysCollideWithAnother()) {
-        rules.makeAdditive()
+    if (currentWds != null) {
+        rules.add(createRule(null, currentWds, currentTimes))
     }
 
-    return OpeningHoursRuleList(rules)
+    return OpeningHours(rules.asNonColliding())
 }
+
+/* if any rule collides with another, e.g. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
+   additive rules e.g. "Mo-Fr 10:00-12:00, We 14:00-16:00" */
+private fun List<Rule>.asNonColliding(): List<Rule> =
+    if (!hasCollidingWeekdays()) {
+        this
+    } else {
+        map { rule ->
+        // "off" rules stay non-additive
+        if (rule.ruleType == RuleType.Off) {
+            rule
+        } else {
+            rule.copy(ruleOperator = RuleOperator.Additional)
+        }
+    }
+    }
 
 private fun createRule(
-    dateRanges: List<DateRange>?,
-    weekDayRanges: List<WeekDayRange>?,
-    holidays: List<Holiday>?,
-    timeSpans: List<TimeSpan>
-) = Rule().also { r ->
+    months: List<MonthsOrDateSelector>?,
+    weekdaysAndHolidays: WeekdaysAndHolidays?,
+    times: List<TimesSelector>?,
+    ruleType: RuleType? = null
+) = Rule(
+    Range(
+        months = months,
+        weekdays = weekdaysAndHolidays?.weekdays,
+        holidays = weekdaysAndHolidays?.holidays,
+        times = times
+    ),
+    ruleType = ruleType
+)
 
-    require(timeSpans.isNotEmpty())
+private fun Months.toMonthsSelectors(): List<MonthsOrDateSelector> =
+    toCircularSections().map { it.toMonthsSelector() }
 
-    r.dates = dateRanges?.toMutableList()
-    r.days = weekDayRanges?.toMutableList()
-    r.holidays = holidays?.toMutableList()
-    r.times = timeSpans.toMutableList()
+private fun CircularSection.toMonthsSelector(): MonthsOrDateSelector {
+    val start = Month.entries[start]
+    val end = Month.entries[end]
+    return if (start != end) MonthRange(start, end) else SingleMonth(start)
 }
 
-private fun createOffRule(
-    dateRanges: List<DateRange>?,
-    weekDayRanges: List<WeekDayRange>?,
-    holidays: List<Holiday>?
-) = Rule().also { r ->
-
-    r.dates = dateRanges?.toMutableList()
-    r.days = weekDayRanges?.toMutableList()
-    r.holidays = holidays?.toMutableList()
-    r.modifier = RuleModifier().also { it.modifier = RuleModifier.Modifier.OFF }
+private fun Weekdays.toWeekdaysAndHolidays(): WeekdaysAndHolidays {
+    val weekdays = toCircularSections().flatMap { it.toWeekdayAndHolidaySelectors() }
+    val holidays = if (selection[Weekdays.PUBLIC_HOLIDAY]) listOf(Holiday.PublicHoliday) else null
+    return WeekdaysAndHolidays(weekdays, holidays)
 }
 
-private fun Int.toTimeSpan() = TimeSpan().also {
-    it.start = this
-}
-
-private fun TimeRange.toTimeSpan() = TimeSpan().also {
-    it.start = start
-    val tEnd = if (end == 0) 24 * 60 else end
-    if (start != tEnd) it.end = tEnd
-    it.isOpenEnded = isOpenEnded
-}
-
-private fun Weekdays.toWeekDayRangesAndHolidays(): WeekDayRangesAndHolidays {
-    val weekdayRanges = toCircularSections().flatMap { it.toWeekDayRanges() }
-
-    val holidays: List<Holiday>? =
-        if (selection[PUBLIC_HOLIDAY]) {
-            listOf(Holiday().also { it.type = Holiday.Type.PH })
-        } else {
-            null
-        }
-
-    return WeekDayRangesAndHolidays(weekdayRanges.takeIf { it.isNotEmpty() }, holidays)
-}
-
-private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
-    val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT - 1).getSize(this)
-    // if the range is very short (e.g. Mo-Tu), rather save it as Mo,Tu
-    return if (size == 2) {
-        listOf(
-            WeekDayRange().also { it.startDay = WeekDay.entries[start] },
-            WeekDayRange().also { it.startDay = WeekDay.entries[end] }
-        )
-    } else {
-        listOf(WeekDayRange().also {
-            it.startDay = WeekDay.entries[start]
-            it.endDay = if (start != end) WeekDay.entries[end] else null
-        })
+private fun CircularSection.toWeekdayAndHolidaySelectors(): List<WeekdaysSelector> {
+    val s = Weekday.entries[start]
+    val e = Weekday.entries[end]
+    return when {
+        start == end -> listOf(s)
+        (start + 1) % Weekday.entries.size == end -> listOf(s, e) // Mo,Tu better readable than Mo-Tu
+        else -> listOf(WeekdayRange(s, e))
     }
 }
 
-private fun Months.toDateRanges(): List<DateRange> {
-    return toCircularSections().map { it.toDateRange() }
+private fun TimeRange.toTimeSpansSelector(): TimeSpansSelector {
+    val startTime = ClockTime(start / 60, start % 60)
+    val endTime = ExtendedClockTime(end / 60, end % 60)
+
+    return if (start == end && isOpenEnded) {
+        StartingAtTime(startTime)
+    } else {
+        TimeSpan(startTime, endTime, isOpenEnded)
+    }
 }
 
-private fun CircularSection.toDateRange() = DateRange().also {
-    it.startDate = createMonthDate(Month.entries[start])
-    it.endDate = if (start != end) createMonthDate(Month.entries[end]) else null
-}
-
-private fun createMonthDate(month: Month) = DateWithOffset().also { it.month = month }
+private fun Int.toClockTime() = ClockTime(this / 60, this % 60)

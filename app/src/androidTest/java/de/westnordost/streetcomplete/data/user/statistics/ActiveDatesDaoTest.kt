@@ -39,6 +39,6 @@ class ActiveDatesDaoTest : ApplicationDbTestCase() {
         val dates = listOf(LocalDate.parse("2011-11-11"), LocalDate.parse("2020-12-12"))
         dao.replaceAll(dates)
 
-        assertEquals(dates, dao.getAll(Int.MAX_VALUE))
+        assertEquals(dates, dao.getAll(365 * 1000))
     }
 }

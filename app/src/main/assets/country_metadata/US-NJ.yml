@@ -1,3 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, EVgo]
+atmOperators: [Pay Depot, Bank of America, PNC Bank, Chase, Valley Bank ATM, LibertyX Bitcoin ATM, Access to Money, ATM, Citibank, Wells Fargo, TD Bank, Santander, PNC Bank ATM, Cardtronics, Bitcoin Depot ATM, Valley National Bank ATM, PNC, Citibank ATM, Cardtronics ATM, ATM Express, ATM (Wells Fargo Bank), ATM (TD Bank)]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla Motors, EVgo, Blink, Volta, Glen Rock, Electrify America]
+clothesContainerOperators: [The ClothesLine]
 defaultSpeedLimitHasUrbanOrRural: true

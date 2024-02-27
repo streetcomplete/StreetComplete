@@ -279,8 +279,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="produce_walnuts">"Juglandoj"</string>
     <string name="produce_sisal">"Sisalo"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Ne eblas serĉi tie. Provu zomi aŭ malfortigi la mapdeklinon."</string>
-    <string name="quest_crossing_type_title">"Kia transirejo ĉi tio estas?"</string>
-    <string name="quest_crossing_type_unmarked">"Transirejo sen vojmarkoj"</string>
     <string name="action_undo">"Malfari"</string>
     <string name="produce_mangosteen">"Mangostano"</string>
     <string name="produce_tomatoes">"Tomatoj"</string>
@@ -441,7 +439,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_buildingType_transportation">"Publiktranporta konstruaĵo"</string>
     <string name="quest_buildingType_university">"Universitata konstruaĵo"</string>
     <string name="quest_buildingType_government">"Governa konstruaĵo"</string>
-    <string name="quest_buildingType_cars">"Por aŭtoj"</string>
     <string name="quest_buildingType_carport">"Aŭttegmento"</string>
     <string name="quest_buildingType_carport_description">"tegmento por aŭto"</string>
     <string name="quest_buildingType_garage">"Unu garaĝo"</string>
@@ -480,7 +477,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_segregated_mixed">"Biciklantoj kaj piedirantoj kunuzas saman spacon"</string>
     <string name="quest_maxheight_title">"Kio estas la limo de alteco?"</string>
     <string name="quest_maxheight_answer_noSign">"Ne estas ŝildo…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Ĉu estas facile sufiĉe da spaco por trairi eĉ la plej altaj kamionoj (almenaŭ ĉirkaŭ 4,5 metroj/15 futoj)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Tiu alteco ŝajnas malkredinde. Ĉu vi certas, ke tio estas ĝusta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Fermita de %1$s, %2$s"</string>
@@ -782,9 +778,6 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</strin
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specifu la tutan nombron de markitaj vojeroj uzeblaj per aŭta trafiko. Biciklaj kaj diligentaj parkumaj vojeroj ne kalkulas.
 Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe."</string>
     <string name="quest_surface_value_rock">"Roko"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Altaj kamionoj povas trapasi"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Altaj kamionoj ne taŭgas"</string>
-    <string name="quest_crossing_type_marked">"Markita"</string>
     <string name="quest_parkingType_street_side">"Parkado apud la vojo"</string>
     <string name="quest_parkingType_lane">"Parkejo sur vojo"</string>
     <string name="quest_tracktype_grade2a">"Solida sed nepavimita"</string>
@@ -828,7 +821,6 @@ Kontrolu ĉiujn opciojn: kelkaj kazoj ne estas evidentaj, kiel unudirekta vojo k
     <string name="team_mode_team_size_hint">"Teama reĝimo funkcias por grupoj de 2 ĝis 12 homoj."</string>
     <string name="team_mode_active">"Teama Reĝimo estas aktiva"</string>
     <string name="team_mode_deactivated">"Teama Reĝimo estas malaktiva"</string>
-    <string name="quest_crossing_type_signals_controlled">"Kontrolita de trafiklumoj"</string>
     <string name="undo_confirm_title2">"Ĉu malfari la sekvan redakton?"</string>
     <string name="synced">"Sinkronigita"</string>
     <string name="toast_undo_unavailable">"Ĉi tiu redakto jam estas sinkronigita kaj ne povas esti malfarita"</string>
@@ -1200,7 +1192,6 @@ Bedaŭrinde, pro Google Play Store-politiko, neniuj ligoj kondukantaj al donacoj
     <string name="quest_drinking_water_type_spring">"Fonto"</string>
     <string name="quest_drinking_water_type_disused">"Malzorgata trinkakvo-objekto"</string>
     <string name="overlay_addresses">"Adresoj"</string>
-    <string name="overlay_shops">"Vendejoj"</string>
     <string name="name_label">"Nomo:"</string>
     <string name="unknown_shop_title">"Alia kategorio"</string>
     <string name="quest_address_answer_no_address">"Ne estas adreso"</string>

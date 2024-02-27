@@ -8,6 +8,7 @@ import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.databinding.FragmentMainMenuButtonBinding
@@ -24,6 +25,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
 
     private val teamModeQuestFilter: TeamModeQuestFilter by inject()
     private val downloadController: DownloadController by inject()
+    private val downloadProgressSource: DownloadProgressSource by inject()
 
     interface Listener {
         fun getDownloadArea(): BoundingBox?
@@ -104,7 +106,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     private fun downloadDisplayedArea() {
         val downloadArea = listener?.getDownloadArea() ?: return
 
-        if (downloadController.isPriorityDownloadInProgress) {
+        if (downloadProgressSource.isUserInitiatedDownloadInProgress) {
             context?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_cancel_prev_download_title)

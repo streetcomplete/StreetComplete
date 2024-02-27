@@ -254,8 +254,6 @@
     <string name="produce_walnuts">"Wolnati"</string>
     <string name="produce_sisal">"Mkonge"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Haiwezi kuchanganua hapa. Jaribu kuvuta zaidi au teremsha ramani kidogo."</string>
-    <string name="quest_crossing_type_title">"Hii ni aina gani ya kuvuka?"</string>
-    <string name="quest_crossing_type_unmarked">"Bila alama za barabarani"</string>
     <string name="action_undo">"Usifanye"</string>
     <string name="produce_mangosteen">"Mangostini"</string>
     <string name="produce_tomatoes">"Tungule"</string>
@@ -416,7 +414,6 @@
     <string name="quest_buildingType_transportation">"Jengo la usafiri wa umma"</string>
     <string name="quest_buildingType_university">"Jengo la chuo kikuu"</string>
     <string name="quest_buildingType_government">"Jengo la serikali"</string>
-    <string name="quest_buildingType_cars">"Kwa magari"</string>
     <string name="quest_buildingType_carport">"sehemu ya kulazia gari"</string>
     <string name="quest_buildingType_carport_description">"paa kwaajili ya gari"</string>
     <string name="quest_buildingType_garage">"Karakana moja"</string>
@@ -455,7 +452,6 @@
     <string name="quest_segregated_mixed">"Wapanda baiskeli na watembea kwa miguu wanashiriki nafasi sawa"</string>
     <string name="quest_maxheight_title">"Ni kipi kipimo cha urefu hapa?"</string>
     <string name="quest_maxheight_answer_noSign">"Hakuna ishara"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Je, kuna nafasi ya kutosha kwa hata lori refu zaidi (angalau takriban mita 4.5/futi 15) kupita?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Urefu huu unaonekana kuwa hauwezekani. Je, una uhakika kuwa ni sahihi?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Imefungwa na %1$s, %2$s"</string>
@@ -759,9 +755,6 @@
     <string name="quest_lanes_answer_lanes_description2">"Bainisha jumla ya idadi ya njia zilizowekwa alama (mielekeo yote miwili) zinazoweza kutumiwa na trafiki ya gari. Baiskeli na njia maalum za maegesho hazihesabiwi. Ikiwa njia zozote zimetengwa kwa ajili ya mabasi, tafadhali acha kidokezo badala yake."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Bainisha idadi ya njia zilizowekwa alama zinazoweza kutumiwa na trafiki ya magari hapa. Baiskeli na njia maalum za maegesho hazihesabiwi. Ikiwa njia zozote zimetengwa kwa ajili ya mabasi, tafadhali acha kidokezo badala yake."</string>
     <string name="quest_surface_value_rock">"Mwamba"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Malori marefu yanaweza kupita"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Malori marefu hayafai"</string>
-    <string name="quest_crossing_type_marked">"Imetiwa alama"</string>
     <string name="quest_parkingType_street_side">"Maegesho karibu na barabara"</string>
     <string name="quest_parkingType_lane">"Maegesho kwenye barabara"</string>
     <string name="quest_tracktype_grade2a">"takataka zilizo ngumu"</string>
@@ -804,7 +797,6 @@
     <string name="team_mode_team_size_hint">"Timu ni hali ya kufanya kazi kwa vikundi vya watu 2 hadi 12."</string>
     <string name="team_mode_active">"Hali ya timu inatumika"</string>
     <string name="team_mode_deactivated">"Hali ya timu kutotumika"</string>
-    <string name="quest_crossing_type_signals_controlled">"Inadhibitiwa na taa za trafiki"</string>
     <string name="undo_confirm_title2">"Tendua hariri ifuatayo?"</string>
     <string name="synced">"Imesawazishwa"</string>
     <string name="toast_undo_unavailable">"Uhariri huu tayari umesawazishwa na hauwezi kutenduliwa"</string>
@@ -1185,7 +1177,6 @@
     <string name="quest_drinking_water_type_spring">"chemchem"</string>
     <string name="quest_drinking_water_type_disused">"Kitu kisichotumika kwa maji ya kunywa"</string>
     <string name="overlay_addresses">"Anwani"</string>
-    <string name="overlay_shops">"Maduka"</string>
     <string name="name_label">"Jina:"</string>
     <string name="unknown_shop_title">"Aina nyingine ya mahali"</string>
     <string name="quest_address_answer_no_address">"Hakuna anwani hapa"</string>

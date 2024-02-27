@@ -2041,9 +2041,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Automat za prodaju hrane"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Pumpni automat za gorivo"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Automat za prodaju sladoleda"
                 },
@@ -2055,9 +2052,6 @@
                 },
                 "amenity/vending_machine/public_transport_tickets": {
                     "name": "Automat za karte za javni prijevoz"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Automat za grickalice"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinar"
@@ -3914,9 +3908,6 @@
                 "traffic_calming/hump": {
                     "name": "Duži uspornik u širini ceste",
                     "terms": "ležeći policajac"
-                },
-                "traffic_calming/island": {
-                    "name": "Prometni otok"
                 },
                 "type/boundary": {
                     "name": "Granica",
