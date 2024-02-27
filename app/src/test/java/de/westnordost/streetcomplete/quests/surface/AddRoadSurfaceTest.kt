@@ -32,9 +32,9 @@ class AddRoadSurfaceTest {
         assertIsApplicable("highway" to "residential", "surface:lanes" to "concrete|asphalt|cobblestone")
     }
     // this test fails, why?
-    //@Test fun `applicable to tagged complex surface lanes with specific surface tag`() {
-    //    assertIsApplicable("highway" to "residential", "surface" to "asphalt", "surface:lanes" to "concrete|asphalt|asphalt")
-    //}
+    @Test fun `applicable to tagged complex surface lanes with specific asphalt surface tag`() {
+        assertIsApplicable("highway" to "residential", "surface" to "asphalt", "surface:lanes" to "concrete|asphalt|asphalt")
+    }
 
     @Test fun `applicable to old enough road with surface, regardless of existing surface lanes or notes`() {
         val way = way(1L, listOf(1, 2, 3), mapOf(
