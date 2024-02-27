@@ -204,17 +204,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         //    maybe just need to set different caching parameters?
         //    or maybe this is fixed when using offline stuff
 
-        // performance observations when displaying many icons (symbols)
-        //  SymbolManager is not fast enough (though CircleManager is)
-        //   -> use SymbolLayer and GeoJsonSource
-        //  circle layer is much faster than symbol layer, when moving and especially when zooming
-        //  enabling overlap makes things worse, but not that bad (though with many shops it's noticeable)
-        //  smaller images help (shrink images already when adding to style, instead of using scale property)
-        //  clustering helps noticeably, but still slower than circles (see below for issues)
-        //  not sorting symbols using symbolSortOrder (for priority) helps a lot
-        //   using one order per quest type (instead of one per quest) considerably reduces performance impact of symbol sorting
-        //   not setting sort order, but setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is same as not sorting
-
         // add used images for quests pins and other icons
         val pin = ContextCompat.getDrawable(requireContext(), R.drawable.pin)!! // why nullable? instead of resource not found?
         val iconSize = pin.intrinsicWidth
@@ -241,21 +230,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // defaults: 300, 0, true
         style.transition = TransitionOptions(style.transition.duration, style.transition.delay, false)
 
-        // mapboxMap.uiSettings, has some potentially useful capabilities
-        /* UiSettings for
-         * compass (enable, position, image)
-         * attribution
-         * logo
-         * focalPoint (for setting rotation center when adding a note)
-         * enable / disable various gestures (roation, scroll, zoom, ...)
-         * zoomRate
-         * some velocity animations can be disabled... but that makes the map feel even worse compared to tangram
-         *  actually we would need at least the scroll animation to be longer for more tangram-like feeling, but no setting for that
-         *  better / more tangram-like animation is not implemented: https://github.com/maplibre/maplibre-gl-native/issues/25
-         *   apparently it may be slow, but tangram is really fast here...
-         * flingAnimation: time and threshold should be in next MapLibre version (now: 10.0.2),
-         *  and should definitely be adjusted... sth like threshold 250 and time 500
-         */
         mapboxMap.uiSettings.setCompassFadeFacingNorth(true)
         // todo: set correct top margin, should depend on where bottom of menu button is
         mapboxMap.uiSettings.setCompassMargins(0, requireContext().dpToPx(80).toInt(), 6, 0)
