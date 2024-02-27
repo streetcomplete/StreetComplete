@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -20,7 +21,7 @@ class AddRoadSurfaceTest {
 
     // see https://github.com/streetcomplete/StreetComplete/pull/5453#issuecomment-1911891944
     @Test fun `not applicable to tagged complex surface lanes - paved+note:surface`() {
-        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "note:surface" to "(alternative note format) varying asphalt and concrete")
+        assertIsNotApplicable("highway" to "residential", "surface" to "paved", "note:surface" to "alternative note format, varying asphalt and concrete")
     }
     @Test fun `not applicable to tagged complex surface lanes - paved+surface:lanes`() {
         assertIsNotApplicable("highway" to "residential", "surface" to "paved", "surface:lanes" to "concrete|asphalt|asphalt")
