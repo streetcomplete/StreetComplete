@@ -87,4 +87,3 @@ private fun isLink(tags: Map<String, String>): Boolean =
     || tags["footway"] == "link"
     || tags["cycleway"] == "link"
     || tags["bridleway"] == "link"
-

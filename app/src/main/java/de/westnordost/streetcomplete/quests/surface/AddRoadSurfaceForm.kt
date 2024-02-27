@@ -17,7 +17,7 @@ class AddRoadSurfaceForm : AImageListQuestForm<Surface, SurfaceAndNote>() {
     override fun onClickOk(selectedItems: List<Surface>) {
         val surface = selectedItems.single()
         confirmPotentialTracktypeMismatch(surface) {
-            return if hasSurfaceLanes(element.tags)
+            return if hasSurfaceLanes(element.tags) // surface:note is not required when surface:lanes exist
             collectSurfaceDescriptionIfNecessary(requireContext(), surface) { description ->
                 applyAnswer(SurfaceAndNote(surface, description))
             }
