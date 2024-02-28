@@ -381,6 +381,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             )
         style.addLayerBelow(geometrySymbolLayer, "pins-layer")
 
+        // TODO low prio: animation of width+alpha (breathing selection effect). From shader:
+        //  opacity = min(max(sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) * 0.5 + 0.125;
+        //  width *= min(max(-sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) + 0.625;
         val focusGeometryLineLayer = LineLayer("focus-geo-lines", "focus-geometry-source")
             .withProperties(
                 lineWidth(10f),
