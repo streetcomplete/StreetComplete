@@ -11,7 +11,7 @@ fun collectSurfaceDescriptionIfNecessary(
     surface: Surface,
     onDescribed: (description: String?) -> Unit
 ) {
-    if (!surface.shouldBeDescribed || hasSurfaceLanes(element.tags)) {
+    if (!surface.shouldBeDescribed) {
         onDescribed(null)
     } else {
         AlertDialog.Builder(context)
