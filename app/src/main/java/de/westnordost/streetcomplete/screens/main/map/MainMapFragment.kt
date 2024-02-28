@@ -13,12 +13,12 @@ import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression
+import com.mapbox.mapboxsdk.style.expressions.Expression.*
 import com.mapbox.mapboxsdk.style.layers.CircleLayer
 import com.mapbox.mapboxsdk.style.layers.FillExtrusionLayer
 import com.mapbox.mapboxsdk.style.layers.FillLayer
 import com.mapbox.mapboxsdk.style.layers.LineLayer
 import com.mapbox.mapboxsdk.style.layers.Property
-import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
@@ -156,7 +156,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         /* ---------------------------- MapLibre stuff --------------------------- */
 
         // how to best hide layers?
-        //   layer.setFilter(Expression.literal(false))
+        //   layer.setFilter(literal(false))
         //   maybe could also remove layer from style, but didn't try yet
         //    possible, but need to be careful to re-insert it at correct position
 
@@ -283,7 +283,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             // set icon from feature property
             .withProperties(
                 iconImage("{icon-image}"), // take icon name from icon-image property of feature
-                // iconImage(Expression.get("icon-image")) // does the same, but feels slower (nothing conclusive though)
+                //iconImage(get("icon-image")), // does the same, but feels slower (nothing conclusive though)
                 iconOffset(listOf(-iconSize / 12f, -iconSize / 4f).toTypedArray()),
                 // apply quest(pin) order
                 // setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is (almost?) as fast as not sorting
@@ -292,7 +292,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
             )
 
-        pinsLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
+        pinsLayer!!.setFilter(gte(zoom(), 14f))
         style.addLayer(pinsLayer!!)
 
         // add a circle layer using the pinsSource (could actually also be a symbol layer using the dot image, but circles are fast!)
@@ -307,7 +307,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // add layer below the pinsLayer
         // layers are kept in a list internally, and ordered by that list, so layers added later are above others by default
-        pinsDotLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
+        pinsDotLayer!!.setFilter(gte(zoom(), 14f))
         style.addLayerBelow(pinsDotLayer!!, "pins-layer")
 
         super.onMapReady(mapView, mapboxMap, style) // leftover from initial implementation, maybe change?
@@ -369,23 +369,23 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // or better use them in style json instead of here? probably easier
         overlayDashedLineLayer = LineLayer("overlay-dashed-lines", "overlay-source")
             // separate layer for dashed lines
-            .withFilter(Expression.all(Expression.has("dashed"), Expression.gte(Expression.zoom(), 16f)))
+            .withFilter(all(has("dashed"), gte(zoom(), 16f)))
             .withProperties(
                 lineCap(Property.LINE_CAP_BUTT),
-                lineColor(Expression.get("color")),
-                lineOpacity(Expression.get("opacity")),
+                lineColor(get("color")),
+                lineOpacity(get("opacity")),
                 lineOffset(changeDistanceWithZoom("offset")),
                 lineWidth(changeDistanceWithZoom("width")),
                 lineDasharray(arrayOf(1.5f, 1f)), // todo: dash length depends on zoom, but re-evaluated only at integer zoom borders and thus looks weird
-//                lineDasharray(Expression.array(Expression.literal(floatArrayOf(0.5f, 0.5f)))),
+                // lineDasharray(array(literal(floatArrayOf(0.5f, 0.5f)))),
             )
         style.addLayerBelow(overlayDashedLineLayer!!, "pins-layer")
         overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
-            .withFilter(Expression.all(Expression.not(Expression.has("dashed")), Expression.gte(Expression.zoom(), 16f)))
+            .withFilter(all(not(has("dashed")), gte(zoom(), 16f)))
             .withProperties(
                 lineCap(Property.LINE_CAP_BUTT),
-                lineColor(Expression.get("color")),
-                lineOpacity(Expression.get("opacity")),
+                lineColor(get("color")),
+                lineOpacity(get("opacity")),
                 // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
                 lineOffset(changeDistanceWithZoom("offset")),
                 lineWidth(changeDistanceWithZoom("width")),
@@ -395,14 +395,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // FillExtrusionLayer doesn't support outlines, only the normal FillLayer does...
         overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
-            .withFilter(Expression.all(Expression.has("outline-color"), Expression.gte(Expression.zoom(), 16f))) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
+            .withFilter(all(has("outline-color"), gte(zoom(), 16f))) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
             .withProperties(
-                //fillColor(Expression.get("color")),
-                //fillOutlineColor(Expression.get("outline-color")), // no outline color if extrusion?
-                //fillOpacity(Expression.get("opacity"))
-                fillExtrusionOpacity(Expression.get("opacity")),
-                fillExtrusionColor(Expression.get("color")),
-                fillExtrusionHeight(Expression.get("height")) // need extrusion layer for height
+                //fillColor(get("color")),
+                //fillOutlineColor(get("outline-color")), // no outline color if extrusion?
+                //fillOpacity(get("opacity")),
+                fillExtrusionOpacity(get("opacity")),
+                fillExtrusionColor(get("color")),
+                fillExtrusionHeight(get("height")) // need extrusion layer for height
             )
         style.addLayerBelow(overlayFillLayer!!, "pins-layer")
 
@@ -421,10 +421,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 // iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
                 // iconHaloBlur(2f),
                 // both overlaps are required
-                iconAllowOverlap(Expression.step(Expression.zoom(), Expression.literal(false), Expression.stop(18, true))),
-                textAllowOverlap(Expression.step(Expression.zoom(), Expression.literal(false), Expression.stop(18, true))),
+                iconAllowOverlap(step(zoom(), literal(false), stop(18, true))),
+                textAllowOverlap(step(zoom(), literal(false), stop(18, true))),
             )
-            .withFilter(Expression.gte(Expression.zoom(), 16f))
+            .withFilter(gte(zoom(), 16f))
         style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
 
         val geometryLineLayer = LineLayer("geo-lines", "geometry-source")
@@ -452,11 +452,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 textOffset(arrayOf(1.5f, 0f)),
                 textMaxWidth(5f),
             )
-            .withFilter(Expression.not(Expression.has("icon")))
+            .withFilter(not(has("icon")))
         style.addLayerBelow(geometryCircleLayer, "pins-layer")
 
         val geometrySymbolLayer = SymbolLayer("geo-symbols", "geometry-source")
-            .withFilter(Expression.has("icon"))
+            .withFilter(has("icon"))
             .withProperties(
                 iconColor("#D140D0"),
                 iconImage("{icon}"),
@@ -481,7 +481,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 fillColor("#D14000"),
                 fillOpacity(0.3f)
             )
-        focusGeometryFillLayer.setFilter(Expression.not(Expression.has("way")))
+        focusGeometryFillLayer.setFilter(not(has("way")))
         style.addLayerBelow(focusGeometryFillLayer, "pins-layer")
 
         val focusGeometryCircleLayer = CircleLayer("focus-geo-circle", "focus-geometry-source")
@@ -489,7 +489,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 circleColor("#D14000"),
                 circleOpacity(0.7f)
             )
-            .withFilter(Expression.not(Expression.has("icon")))
+            .withFilter(not(has("icon")))
         style.addLayerBelow(focusGeometryCircleLayer, "pins-layer")
 
         // something is not working here
@@ -625,16 +625,16 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             // currently just filtering by element id, and for OsmQuest, but at least it's clear how to do
             // and actually in MapLibre the properties can also be numbers, so no need to convert id to a string
             // todo: really use filter here? or better use source? or different layer instead of filtering?
-            pinsLayer?.setFilter(Expression.eq(Expression.get("element_id"), questKey.elementId.toString()))
-            pinsDotLayer?.setFilter(Expression.eq(Expression.get("element_id"), questKey.elementId.toString()))
+            pinsLayer?.setFilter(eq(get("element_id"), questKey.elementId.toString()))
+            pinsDotLayer?.setFilter(eq(get("element_id"), questKey.elementId.toString()))
         }
     }
 
     fun hideOverlay() {
-        overlayFillLayer?.setFilter(Expression.literal(false))
-        overlayLineLayer?.setFilter(Expression.literal(false))
-        overlayDashedLineLayer?.setFilter(Expression.literal(false))
-        overlaySymbolLayer?.setFilter(Expression.literal(false))
+        overlayFillLayer?.setFilter(literal(false))
+        overlayLineLayer?.setFilter(literal(false))
+        overlayDashedLineLayer?.setFilter(literal(false))
+        overlaySymbolLayer?.setFilter(literal(false))
     }
 
     fun highlightGeometry(geometry: ElementGeometry) {
@@ -644,15 +644,15 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /** Clear all highlighting */
     fun clearHighlighting() {
         pinsMapComponent?.isVisible = true
-        overlayFillLayer?.setFilter(Expression.all(Expression.has("outline-color"), Expression.gte(Expression.zoom(), 16f)))
-        overlayLineLayer?.setFilter(Expression.all(Expression.not(Expression.has("dashed")), Expression.gte(Expression.zoom(), 16f)))
-        overlayDashedLineLayer?.setFilter(Expression.all(Expression.has("dashed"), Expression.gte(Expression.zoom(), 16f)))
-        overlaySymbolLayer?.setFilter(Expression.gte(Expression.zoom(), 16f))
+        overlayFillLayer?.setFilter(all(has("outline-color"), gte(zoom(), 16f)))
+        overlayLineLayer?.setFilter(all(not(has("dashed")), gte(zoom(), 16f)))
+        overlayDashedLineLayer?.setFilter(all(has("dashed"), gte(zoom(), 16f)))
+        overlaySymbolLayer?.setFilter(gte(zoom(), 16f))
 //        selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
-        pinsLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
-        pinsDotLayer?.setFilter(Expression.gte(Expression.zoom(), 14f))
+        pinsLayer?.setFilter(gte(zoom(), 14f))
+        pinsDotLayer?.setFilter(gte(zoom(), 14f))
     }
 
     fun clearSelectedPins() {
@@ -727,22 +727,22 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 // is there a way of converting json string to expression? would be much more readable
 // first attempt of modifying example expression from https://docs.mapbox.com/archive/android/maps/api/7.1.2/com/mapbox/mapboxsdk/style/expressions/Expression.html
 /*
-    Expression.interpolate(Expression.exponential(2), Expression.zoom(),
-        Expression.stop(15,
-            Expression.division( // gah, there must be sth like Expression.multiplication?
-                Expression.get(lineWidthProperty),
-                Expression.division( // but ok, if we divide that thing again we have a multiplication
-                    Expression.pow(1, 1), // great and simple way to write 1
-                    Expression.pow(2, -2)
+    interpolate(exponential(2), zoom(),
+        stop(15,
+            division( // gah, there must be sth like multiplication?
+                get(lineWidthProperty),
+                division( // but ok, if we divide that thing again we have a multiplication
+                    pow(1, 1), // great and simple way to write 1
+                    pow(2, -2)
                 )
             ),
         ),
-        Expression.stop(18,
-            Expression.division(
-                Expression.get(lineWidthProperty),
-                Expression.division(
-                    Expression.pow(1, 1),
-                    Expression.pow(2, 1)
+        stop(18,
+            division(
+                get(lineWidthProperty),
+                division(
+                    pow(1, 1),
+                    pow(2, 1)
                 )
             ),
         ),
@@ -750,19 +750,19 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
  */
 
 fun changeDistanceWithZoom(lineWidth: Float): Expression =
-    Expression.interpolate(Expression.exponential(2), Expression.zoom(),
-        Expression.stop(10, lineWidth / 128f), // * 2^-7
-        Expression.stop(25, lineWidth * 256f) // * 2^8 -> 8 - (-7) = 15, which is the zoom range for this interpolation
+    interpolate(exponential(2), zoom(),
+        stop(10, lineWidth / 128f), // * 2^-7
+        stop(25, lineWidth * 256f) // * 2^8 -> 8 - (-7) = 15, which is the zoom range for this interpolation
     )
 
 // expression for line width dependent on zoom (if we want width in meters)
 // this seems to work reasonably well, but probably should be done in the style json
 // hmm, now with the proper style the base is incorrect
 fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
-    Expression.interpolate(Expression.exponential(BASE), Expression.zoom(),
+    interpolate(exponential(BASE), zoom(),
         // why didn't I use BASE.pow(7)?
-        Expression.stop(10, Expression.division(Expression.get(lineWidthProperty), Expression.literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
-        Expression.stop(25, Expression.division(Expression.get(lineWidthProperty), Expression.literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
+        stop(10, division(get(lineWidthProperty), literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
+        stop(25, division(get(lineWidthProperty), literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
     )
 
 private const val BASE = 2f // used to be 1.5 with old style json
