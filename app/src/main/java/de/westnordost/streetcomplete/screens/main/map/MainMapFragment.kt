@@ -8,7 +8,6 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
-import com.mapbox.geojson.FeatureCollection
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
@@ -22,7 +21,6 @@ import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -193,40 +191,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         mapboxMap.uiSettings.isLogoEnabled = false
         mapboxMap.uiSettings.isAttributionEnabled = false
-
-        // sources
-        //  GeoJsonSource
-        //   need to set all features for each change, though (visually) removing pins could be done via filter
-        //  CustomGeometrySource
-        //   map queries data directly (by tile, giving bbox and zoom), and caches returned data (probably unless set to volatile)
-        //   queries happen at all zoom levels, which seems unnecessary... at least overscale can be used to ignore higher zoom levels (than the 16 we use as base)
-        //   arbitrary bbox can be invalidated, but is not reloaded if already in view (thus useless for updating pins)
-        //   thus we would need to use setTileData when updating pins (maybe / hopefully only for the currently displayed tile)
-        //    would be less data to set than for GeoJsonSource, but still far from single pins
-        //    if we need to set multiple tiles (zoom levels!) at once, data might be even more than for GetJsonSource
-        //   -> just keep the tangram way of caching pins (or maybe features) and use GeoJsonSource
-        //  clustering is a source option, not a layer option
-        //   this is really bad for https://github.com/streetcomplete/StreetComplete/issues/124#issuecomment-1137061717
-        //   because also the dots will be in the clusters (and thus not visible individually)
-        //   if we use 2 sources, this could be done (but the featureCollection is copied in setGeoJson(featureCollection)...)
-        //   images (quest pins) could be used for clusters: https://github.com/mapbox/mapbox-gl-native/issues/16060
-
-        // discarded attempt for CustomGeometrySource
-/*
-        val options = CustomGeometrySourceOptions()
-            .withMaxZoom(16) // avoids requesting data at zoom higher than 16 (thanks to overscale)
-            .withMinZoom(16) // but this does not mean data from z16 is used on z15 -> how to do? or just have the same data at multiple zoom levels?
-        val customGeometrySource = CustomGeometrySource("custom-source", options, object : GeometryTileProvider {
-            override fun getFeaturesForBounds(bounds: LatLngBounds, zoomLevel: Int): FeatureCollection {
-                // looks like it's actually requesting whole tiles (didn't verify though)
-                return FeatureCollection.fromFeatures(emptyList())
-            }
-        })
-        customGeometrySource.maxOverscaleFactorForParentTiles = 10 // use data at higher zoom levels
-        style.addSource(customGeometrySource)
-
-        style.addLayer(SymbolLayer("custom-geo", "custom-source"))
-*/
 
         // use a symbol layer for the pins
         pinsLayer = SymbolLayer("pins-layer", "pins-source")
