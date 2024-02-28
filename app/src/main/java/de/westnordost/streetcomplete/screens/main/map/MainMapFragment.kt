@@ -155,56 +155,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         /* ---------------------------- MapLibre stuff --------------------------- */
 
-        // how to best hide layers?
-        //   layer.setFilter(literal(false))
-        //   maybe could also remove layer from style, but didn't try yet
-        //    possible, but need to be careful to re-insert it at correct position
-
-        // todo
-        //  issues / bugs
-        //   moving to user position after auto-zoom from opening a quest does not center user (looks like it keeps the insets/padding)
-        //   when tilt is used and map is scrolled up far enough, pointer pin points 180° wrong
-        //   location updates just move the user location instead of smoothly moving it
-        //    would be a reason for the maplibre internal location thing...
-        //   downloadedAreaMapComponent not working (why?)
-        //   gps and user tracks not working (why?)
-        //    created features seem correct, but also not added to other layers (e.g. putting into geometrySource)
-        //   disabling navigation mode doesn't undo the tilt, even though it's set using the same function
-        //    did some logging, and setting tilt to 0.0 definitely arrives in CameraManager
-        //  missing
-        //   enable offline stuff
-        //    needs some file at server because for absolutely no reason you can't supply a local style (or even just tile url) for offline stuff
-        //    see MapTilesDownloader
-        //   how to properly replace the old tangram layers in mapComponents?
-        //    ideally maplibre layers would be defined in json, and only the source is used in the components
-        //    but how to hide everything from a source, other than clearing the data?
-        //    filters only work on layers -> need to set filters to hide completely, then re-set to previous filters
-        //    detaching source sounds like it could be useful, but actually isn't (and can't un-detach a source)
-        //   define pins/overlay/geometry/... layers in some json instead of in code, like with tangram
-        //   re-arrange things so things can be added via mapController instead of doing everything here and with MainActivity
-        //  other
-        //   consider difference between iconIgnorePlacement and iconAllowOverlap
-        //    iconIgnorePlacement: If true, other symbols can be visible even if they collide with the icon.
-        //    iconAllowOverlap: If true, the icon will be visible even if it collides with other previously drawn symbols.
-        //   zoom very often is choppy, far not as smooth as tangram
-        //    more quests make it a little worse, but most of it seems to be "natural"
-        //    is it definitely a maplibre issue? or maybe some map change listener?
-        //   any way tp get useful stack traces from maplibre? often it just starts at Handler.dispatchMessage, so no idea which line of SC triggered it
-        //   quest pins look somewhat awful, maybe layer drawable not suitable?
-        //    or maybe just need to properly calculate insets instead of guessing...
-        //   something is wrong, error messages (possibly related to style json)
-        //    Error setting property: fill-extrusion-opacity data expressions not supported
-        //    Error setting property: text-field layer doesn't support this property
-        //    Error setting property: text-anchor layer doesn't support this property
-        //    Error setting property: text-offset layer doesn't support this property
-        //    Error setting property: text-max-width layer doesn't support this property
-        //    would be useful to specify layer, they already have a nice string id
-        //   mapLibre always downloads "something" on startup: what is it, and why?
-        //    looks like it's some glyphs, message when offline:
-        //     This request was cancelled (https://api.jawg.io/glyphs/Roboto%20Regular%2cNoto%20Regular/0-255.pbf). This is expected for tiles that were being prefetched but are no longer needed for the map to render.
-        //    maybe just need to set different caching parameters?
-        //    or maybe this is fixed when using offline stuff
-
         // add used images for quests pins and other icons
         val pin = ContextCompat.getDrawable(requireContext(), R.drawable.pin)!! // why nullable? instead of resource not found?
         val iconSize = pin.intrinsicWidth
@@ -648,7 +598,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         overlayLineLayer?.setFilter(all(not(has("dashed")), gte(zoom(), 16f)))
         overlayDashedLineLayer?.setFilter(all(has("dashed"), gte(zoom(), 16f)))
         overlaySymbolLayer?.setFilter(gte(zoom(), 16f))
-//        selectedPinsMapComponent?.clear()
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
         pinsLayer?.setFilter(gte(zoom(), 14f))
