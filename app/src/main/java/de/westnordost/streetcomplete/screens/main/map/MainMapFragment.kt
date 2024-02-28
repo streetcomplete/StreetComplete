@@ -511,7 +511,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         style.addLayerBelow(oldTrackLayer, "pins-layer")
 
         val downloadedAreaLayer = FillLayer("downloaded-area", "downloaded-area-source")
-            .withProperties(fillColor(Color.RED))
+            .withProperties(fillColor(Color.BLACK), fillOpacity(0.3f))
         style.addLayerBelow(downloadedAreaLayer, "pins-layer")
     }
 
