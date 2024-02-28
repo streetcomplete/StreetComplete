@@ -19,6 +19,7 @@ import com.mapbox.mapboxsdk.style.layers.FillLayer
 import com.mapbox.mapboxsdk.style.layers.LineLayer
 import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
@@ -280,15 +281,16 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // use a symbol layer for the pins
         pinsLayer = SymbolLayer("pins-layer", "pins-source")
             // set icon from feature property
-            .withProperties(PropertyFactory.iconImage("{icon-image}")) // take icon name from icon-image property of feature
-            //.withProperties(PropertyFactory.iconImage(Expression.get("icon-image"))) // does the same, but feels slower (nothing conclusive though)
-            .withProperties(PropertyFactory.iconOffset(listOf(-iconSize / 12f, -iconSize / 4f).toTypedArray()))
-
-            // apply quest(pin) order
-            // setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is (almost?) as fast as not sorting
-            // but it requires sorting the list of pins in the GeoJsonSource
-            // using symbolSortKey instead of this is much slower
-            .withProperties(PropertyFactory.symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE))
+            .withProperties(
+                iconImage("{icon-image}"), // take icon name from icon-image property of feature
+                // iconImage(Expression.get("icon-image")) // does the same, but feels slower (nothing conclusive though)
+                iconOffset(listOf(-iconSize / 12f, -iconSize / 4f).toTypedArray()),
+                // apply quest(pin) order
+                // setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is (almost?) as fast as not sorting
+                // but it requires sorting the list of pins in the GeoJsonSource
+                // using symbolSortKey instead of this is much slower
+                symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
+            )
 
         pinsLayer!!.setFilter(Expression.gte(Expression.zoom(), 14f))
         style.addLayer(pinsLayer!!)
@@ -297,10 +299,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         pinsDotLayer = CircleLayer("pin-dot-layer", "pins-source")
             // set fixed properties, circles are all the same
             .withProperties(
-                PropertyFactory.circleColor("white"),
-                PropertyFactory.circleStrokeColor("grey"),
-                PropertyFactory.circleRadius(5f),
-                PropertyFactory.circleStrokeWidth(1f)
+                circleColor("white"),
+                circleStrokeColor("grey"),
+                circleRadius(5f),
+                circleStrokeWidth(1f)
             )
 
         // add layer below the pinsLayer
@@ -369,24 +371,24 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             // separate layer for dashed lines
             .withFilter(Expression.all(Expression.has("dashed"), Expression.gte(Expression.zoom(), 16f)))
             .withProperties(
-                PropertyFactory.lineCap(Property.LINE_CAP_BUTT),
-                PropertyFactory.lineColor(Expression.get("color")),
-                PropertyFactory.lineOpacity(Expression.get("opacity")),
-                PropertyFactory.lineOffset(changeDistanceWithZoom("offset")),
-                PropertyFactory.lineWidth(changeDistanceWithZoom("width")),
-                PropertyFactory.lineDasharray(arrayOf(1.5f, 1f)), // todo: dash length depends on zoom, but re-evaluated only at integer zoom borders and thus looks weird
-//                PropertyFactory.lineDasharray(Expression.array(Expression.literal(floatArrayOf(0.5f, 0.5f)))),
+                lineCap(Property.LINE_CAP_BUTT),
+                lineColor(Expression.get("color")),
+                lineOpacity(Expression.get("opacity")),
+                lineOffset(changeDistanceWithZoom("offset")),
+                lineWidth(changeDistanceWithZoom("width")),
+                lineDasharray(arrayOf(1.5f, 1f)), // todo: dash length depends on zoom, but re-evaluated only at integer zoom borders and thus looks weird
+//                lineDasharray(Expression.array(Expression.literal(floatArrayOf(0.5f, 0.5f)))),
             )
         style.addLayerBelow(overlayDashedLineLayer!!, "pins-layer")
         overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
             .withFilter(Expression.all(Expression.not(Expression.has("dashed")), Expression.gte(Expression.zoom(), 16f)))
             .withProperties(
-                PropertyFactory.lineCap(Property.LINE_CAP_BUTT),
-                PropertyFactory.lineColor(Expression.get("color")),
-                PropertyFactory.lineOpacity(Expression.get("opacity")),
+                lineCap(Property.LINE_CAP_BUTT),
+                lineColor(Expression.get("color")),
+                lineOpacity(Expression.get("opacity")),
                 // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
-                PropertyFactory.lineOffset(changeDistanceWithZoom("offset")),
-                PropertyFactory.lineWidth(changeDistanceWithZoom("width")),
+                lineOffset(changeDistanceWithZoom("offset")),
+                lineWidth(changeDistanceWithZoom("width")),
                 // there is no "lineOutlineColor", so how to properly copy the tangram overlay style?
             )
         style.addLayerBelow(overlayLineLayer!!, "pins-layer") // means: above the dashed layer
@@ -394,55 +396,61 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // FillExtrusionLayer doesn't support outlines, only the normal FillLayer does...
         overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
             .withFilter(Expression.all(Expression.has("outline-color"), Expression.gte(Expression.zoom(), 16f))) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
-//            .withProperties(PropertyFactory.fillColor(Expression.get("color")))
-//            .withProperties(PropertyFactory.fillOutlineColor(Expression.get("outline-color"))) // no outline color if extrusion?
-//            .withProperties(PropertyFactory.fillOpacity(Expression.get("opacity")))
-            .withProperties(PropertyFactory.fillExtrusionOpacity(Expression.get("opacity")))
-            .withProperties(PropertyFactory.fillExtrusionColor(Expression.get("color")))
-            .withProperties(PropertyFactory.fillExtrusionHeight(Expression.get("height"))) // need extrusion layer for height
+            .withProperties(
+                //fillColor(Expression.get("color")),
+                //fillOutlineColor(Expression.get("outline-color")), // no outline color if extrusion?
+                //fillOpacity(Expression.get("opacity"))
+                fillExtrusionOpacity(Expression.get("opacity")),
+                fillExtrusionColor(Expression.get("color")),
+                fillExtrusionHeight(Expression.get("height")) // need extrusion layer for height
+            )
         style.addLayerBelow(overlayFillLayer!!, "pins-layer")
 
         overlaySymbolLayer = SymbolLayer("overlay-symbols", "overlay-source")
             .withProperties(
-                PropertyFactory.iconImage("{icon}"),
-                PropertyFactory.textField("{label}"),
+                iconImage("{icon}"),
+                textField("{label}"),
                 // or maybe read text properties from feature?
-                PropertyFactory.textAnchor(Property.TEXT_ANCHOR_LEFT),
-                PropertyFactory.textOffset(arrayOf(1.5f, 0f)),
-                PropertyFactory.textMaxWidth(5f),
-                PropertyFactory.textHaloColor("white"),
-                PropertyFactory.textHaloWidth(1.5f), // works as expected, while for icons it doesn't
-                PropertyFactory.iconColor("black"),
-//                PropertyFactory.iconHaloColor("white"), // not needed any more but still why doesn't it work?
-//                PropertyFactory.iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
-//                PropertyFactory.iconHaloBlur(2f),
+                textAnchor(Property.TEXT_ANCHOR_LEFT),
+                textOffset(arrayOf(1.5f, 0f)),
+                textMaxWidth(5f),
+                textHaloColor("white"),
+                textHaloWidth(1.5f), // works as expected, while for icons it doesn't
+                iconColor("black"),
+                // iconHaloColor("white"), // not needed any more but still why doesn't it work?
+                // iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
+                // iconHaloBlur(2f),
                 // both overlaps are required
-                PropertyFactory.iconAllowOverlap(Expression.step(Expression.zoom(), Expression.literal(false), Expression.stop(18, true))),
-                PropertyFactory.textAllowOverlap(Expression.step(Expression.zoom(), Expression.literal(false), Expression.stop(18, true))),
+                iconAllowOverlap(Expression.step(Expression.zoom(), Expression.literal(false), Expression.stop(18, true))),
+                textAllowOverlap(Expression.step(Expression.zoom(), Expression.literal(false), Expression.stop(18, true))),
             )
             .withFilter(Expression.gte(Expression.zoom(), 16f))
         style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
 
         val geometryLineLayer = LineLayer("geo-lines", "geometry-source")
-            .withProperties(PropertyFactory.lineWidth(10f))
-            .withProperties(PropertyFactory.lineColor("#D140D0"))
-            .withProperties(PropertyFactory.lineOpacity(0.5f))
-            .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND)) // wow, this looks really ugly with opacity
+            .withProperties(
+                lineWidth(10f),
+                lineColor("#D140D0"),
+                lineOpacity(0.5f),
+                lineCap(Property.LINE_CAP_ROUND) // wow, this looks really ugly with opacity
+            )
         style.addLayerBelow(geometryLineLayer, "pins-layer")
 
         val geometryFillLayer = FillLayer("geo-fill", "geometry-source")
-            .withProperties(PropertyFactory.fillColor("#D140D0"))
-            .withProperties(PropertyFactory.fillOpacity(0.3f))
+            .withProperties(
+                fillColor("#D140D0"),
+                fillOpacity(0.3f)
+            )
         style.addLayerBelow(geometryFillLayer, "pins-layer")
 
         val geometryCircleLayer = CircleLayer("geo-circle", "geometry-source")
             .withProperties(
-                PropertyFactory.circleColor("#D140D0"),
-                PropertyFactory.circleOpacity(0.7f),
-                PropertyFactory.textField("{label}"),
-                PropertyFactory.textAnchor(Property.TEXT_ANCHOR_LEFT),
-                PropertyFactory.textOffset(arrayOf(1.5f, 0f)),
-                PropertyFactory.textMaxWidth(5f),
+                circleColor("#D140D0"),
+                circleOpacity(0.7f),
+                textField("{label}"),
+                textAnchor(Property.TEXT_ANCHOR_LEFT),
+                textOffset(arrayOf(1.5f, 0f)),
+                textMaxWidth(5f),
             )
             .withFilter(Expression.not(Expression.has("icon")))
         style.addLayerBelow(geometryCircleLayer, "pins-layer")
@@ -450,50 +458,60 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         val geometrySymbolLayer = SymbolLayer("geo-symbols", "geometry-source")
             .withFilter(Expression.has("icon"))
             .withProperties(
-                PropertyFactory.iconColor("#D140D0"),
-                PropertyFactory.iconImage("{icon}"),
-                PropertyFactory.textField("{label}"),
-                PropertyFactory.textAnchor(Property.TEXT_ANCHOR_LEFT),
-                PropertyFactory.textOffset(arrayOf(1.5f, 0f)),
-                PropertyFactory.textMaxWidth(5f),
+                iconColor("#D140D0"),
+                iconImage("{icon}"),
+                textField("{label}"),
+                textAnchor(Property.TEXT_ANCHOR_LEFT),
+                textOffset(arrayOf(1.5f, 0f)),
+                textMaxWidth(5f),
             )
         style.addLayerBelow(geometrySymbolLayer, "pins-layer")
 
         val focusGeometryLineLayer = LineLayer("focus-geo-lines", "focus-geometry-source")
-            .withProperties(PropertyFactory.lineWidth(10f))
-            .withProperties(PropertyFactory.lineColor("#D14000"))
-            .withProperties(PropertyFactory.lineOpacity(0.5f))
-            .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND)) // wow, this looks really ugly with opacity
+            .withProperties(
+                lineWidth(10f),
+                lineColor("#D14000"),
+                lineOpacity(0.5f),
+                lineCap(Property.LINE_CAP_ROUND) // wow, this looks really ugly with opacity
+            )
         style.addLayerBelow(focusGeometryLineLayer, "pins-layer")
 
         val focusGeometryFillLayer = FillLayer("focus-geo-fill", "focus-geometry-source")
-            .withProperties(PropertyFactory.fillColor("#D14000"))
-            .withProperties(PropertyFactory.fillOpacity(0.3f))
+            .withProperties(
+                fillColor("#D14000"),
+                fillOpacity(0.3f)
+            )
         focusGeometryFillLayer.setFilter(Expression.not(Expression.has("way")))
         style.addLayerBelow(focusGeometryFillLayer, "pins-layer")
 
         val focusGeometryCircleLayer = CircleLayer("focus-geo-circle", "focus-geometry-source")
-            .withProperties(PropertyFactory.circleColor("#D14000"))
-            .withProperties(PropertyFactory.circleOpacity(0.7f))
+            .withProperties(
+                circleColor("#D14000"),
+                circleOpacity(0.7f)
+            )
             .withFilter(Expression.not(Expression.has("icon")))
         style.addLayerBelow(focusGeometryCircleLayer, "pins-layer")
 
         // something is not working here
         val trackLayer = LineLayer("track", "track-source")
-            .withProperties(PropertyFactory.lineWidth(10f))
-            .withProperties(PropertyFactory.lineColor("#536dfe"))
-            .withProperties(PropertyFactory.lineOpacity(0.3f))
-            .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
+            .withProperties(
+                lineWidth(10f),
+                lineColor("#536dfe"),
+                lineOpacity(0.3f),
+                lineCap(Property.LINE_CAP_ROUND)
+            )
         style.addLayerBelow(trackLayer, "pins-layer")
         val oldTrackLayer = LineLayer("old-track", "old-track-source")
-            .withProperties(PropertyFactory.lineWidth(10f))
-            .withProperties(PropertyFactory.lineColor("#536dfe"))
-            .withProperties(PropertyFactory.lineOpacity(0.15f))
-            .withProperties(PropertyFactory.lineCap(Property.LINE_CAP_ROUND))
+            .withProperties(
+                lineWidth(10f),
+                lineColor("#536dfe"),
+                lineOpacity(0.15f),
+                lineCap(Property.LINE_CAP_ROUND)
+            )
         style.addLayerBelow(oldTrackLayer, "pins-layer")
 
         val downloadedAreaLayer = FillLayer("downloaded-area", "downloaded-area-source")
-            .withProperties(PropertyFactory.fillColor(Color.RED))
+            .withProperties(fillColor(Color.RED))
         style.addLayerBelow(downloadedAreaLayer, "pins-layer")
     }
 
