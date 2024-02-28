@@ -143,7 +143,13 @@ class MapDataController internal constructor(
         mapDataWithGeom.boundingBox = mapData.boundingBox
 
         val bbox = (geometryEntries + getGeometries(mapDataUpdates.deleted))
+            .ifEmpty { getGeometries(geometryEntries.map { it.key }) }
             .flatMap { listOf(it.geometry.getBounds().min, it.geometry.getBounds().max) }
+            .ifEmpty {
+                // in some cases this list can be empty, find out what is going on
+                Log.w(TAG, "updateAll: geometries empty? $mapDataUpdates")
+                listOf(LatLon(0.0, 0.0))
+            }
             .enclosingBoundingBox()
         cache.noTrimPlus(bbox) // quest creation can trigger trim, so we need to set noTrim here
         onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
