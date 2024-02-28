@@ -723,47 +723,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 }
 
-// expression stuff is horrible... available examples are almost all in json
-// is there a way of converting json string to expression? would be much more readable
-// first attempt of modifying example expression from https://docs.mapbox.com/archive/android/maps/api/7.1.2/com/mapbox/mapboxsdk/style/expressions/Expression.html
-/*
-    interpolate(exponential(2), zoom(),
-        stop(15,
-            division( // gah, there must be sth like multiplication?
-                get(lineWidthProperty),
-                division( // but ok, if we divide that thing again we have a multiplication
-                    pow(1, 1), // great and simple way to write 1
-                    pow(2, -2)
-                )
-            ),
-        ),
-        stop(18,
-            division(
-                get(lineWidthProperty),
-                division(
-                    pow(1, 1),
-                    pow(2, 1)
-                )
-            ),
-        ),
-    )
- */
-
-fun changeDistanceWithZoom(lineWidth: Float): Expression =
-    interpolate(exponential(2), zoom(),
-        stop(10, lineWidth / 128f), // * 2^-7
-        stop(25, lineWidth * 256f) // * 2^8 -> 8 - (-7) = 15, which is the zoom range for this interpolation
-    )
-
-// expression for line width dependent on zoom (if we want width in meters)
-// this seems to work reasonably well, but probably should be done in the style json
-// hmm, now with the proper style the base is incorrect
+// expression for line width dependent on zoom (line width in property in meters)
+// this seems to work reasonably well, but probably should be done in the style json (plus consider which stops to use)
 fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
-    interpolate(exponential(BASE), zoom(),
-        // why didn't I use BASE.pow(7)?
-        stop(10, division(get(lineWidthProperty), literal(BASE*BASE*BASE*BASE*BASE*BASE*BASE / FACTOR))), // width / base^7
-        stop(25, division(get(lineWidthProperty), literal(1 / (BASE*BASE*BASE*BASE*BASE*BASE*BASE*BASE * FACTOR)))) // width / base^-8
+    interpolate(exponential(2), zoom(),
+        stop(10, division(get(lineWidthProperty), literal(128))),
+        stop(24, product(get(lineWidthProperty), literal(128)))
     )
-
-private const val BASE = 2f // used to be 1.5 with old style json
-private const val FACTOR = 2f // to get width / distance similar to tangram
