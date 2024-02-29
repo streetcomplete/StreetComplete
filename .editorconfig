@@ -20,6 +20,7 @@ indent_size = 4
 # disable Ktlint rules that are too strict for this project
 ktlint_standard_annotation = disabled
 ktlint_standard_argument-list-wrapping = disabled
+ktlint_standard_backing-property-naming = disabled
 ktlint_standard_blank-line-before-declaration = disabled
 ktlint_standard_block-comment-initial-star-alignment = disabled
 ktlint_standard_chain-wrapping = disabled
