@@ -22,6 +22,7 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafType>() {
     override val icon = R.drawable.ic_quest_leaf
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_tree_title
 
