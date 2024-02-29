@@ -19,7 +19,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.math.tan
 
-/** Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
+/* Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
  * approximation and totally sufficient for our use here.  */
 
 /** In meters. See https://en.wikipedia.org/wiki/Earth_radius#Mean_radius */
