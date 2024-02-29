@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOffRoad
 import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOnRoad
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 
-/** Functions to estimate road width(s). */
+/* Functions to estimate road width(s). */
 
 /** Estimated width of the roadway "from curb to curb". So, including any parking
  *  lanes on the street, cycle lanes, shoulders etc.
