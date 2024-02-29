@@ -271,7 +271,7 @@
     <string name="quest_poi_cycling_title">POI: Radfahren</string>
     <string name="default_disabled_msg_poi_camera">Diese „Suche“ zeigt Überwachungsmerkmale als rosa Punkte an. Ein Klick auf den Punkt zeigt Details und weitere Antworten an.</string>
     <string name="pref_day_night_title">Filter für die Tageszeitsuche</string>
-    <string name="manage_access">Zugriff verwalten…</string>
+    <string name="manage_access">Zugang (access) verwalten…</string>
     <string name="pref_hide_button_summary">Klicken blendet die Suche vorübergehend aus, langes Klicken blendet sie dauerhaft aus</string>
     <string name="quest_settings_max_steps_length">Maximale Länge der Stufen in Metern für die anzuzeigende Suche</string>
     <string name="create_custom_quest_title_message">Anzuzeigende Nachricht eingeben</string>
@@ -290,7 +290,7 @@
     <string name="import_export_presets_select">Wähle Vorlagen zum exportieren</string>
     <string name="pref_gps_interval_title">Aktualisierungsintervall für den GPS-Standort</string>
     <string name="import_presets_overlays_message">Importierte hinzufügen oder bestehende ersetzen? Wenn du „Ersetzen“ wählst, werden alle bereits vorhandenen Einträge entfernt.</string>
-    <string name="add_access">Zugriff hinzufügen…</string>
+    <string name="add_access">Zugang (access) hinzufügen…</string>
     <string name="pref_manual_download_cache_summary">Wenn diese Funktion deaktiviert ist, werden die Daten bei einem manuellen Download nicht erneut heruntergeladen, es sei denn, sie sind älter als 12 Stunden</string>
     <string name="custom_overlay_filter_message">Ein Klick auf den unten stehenden Link öffnet Informationen zur Syntax der Elementauswahl in einem Browser. Beachte, dass bei der Auswahl von Elementen nach Alter die Einstellung des Wiedererhebungsintervalls das Ergebnis beeinflussen kann.
 \nDie Kontrollkästchen ersetzen den Teil „Knoten, Wege mit“.</string>

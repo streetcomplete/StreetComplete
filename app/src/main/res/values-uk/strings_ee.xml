@@ -393,4 +393,5 @@
     <string name="quest_guidepost_sports_inline_skating">Ролерблейдинг</string>
     <string name="quest_guidepost_sports_climbing">Скелелазіння</string>
     <string name="quest_guidepost_sports_running">Біг</string>
+    <string name="quest_settings_leaf_type_single_tree_no">Тільки для ліній та полігонів</string>
 </resources>

@@ -1,0 +1,6 @@
+- put app name and version into log file name (old log reader only)
+- add option to stop asking for confirmation on "wrong surface" answer
+- still allow answering default / below_default for maxheight (was removed from SC)
+- trim spaces in tag editor
+- update translations
+- crash fixes
