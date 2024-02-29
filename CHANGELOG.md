@@ -17,6 +17,8 @@ color-coded for your convenience!
 
 (You'll be amazed and/or appalled how many buildings are currently actually tagged wrong or imprecise! 😅)
 
+Building quest is now disabled by default, it can be enabled in settings like other quests disabled by default.
+
 ### Things Overlay (#4912), thanks @matkoniecz
 
 The new Things overlay allows you to map all those small map features like benches, bicycle parkings,
