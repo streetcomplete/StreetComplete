@@ -79,9 +79,8 @@ class OsmNoteQuestController(
         return noteSource.get(questId)?.let { createQuestForNote(it) }
     }
 
-    override fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> {
-        return createQuestsForNotes(noteSource.getAll(bbox))
-    }
+    override fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> =
+        createQuestsForNotes(noteSource.getAll(bbox))
 
     private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
         val blockedNoteIds = getHiddenIds()

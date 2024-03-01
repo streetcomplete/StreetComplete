@@ -54,6 +54,9 @@ ktlint_standard_value-argument-comment = disabled
 ktlint_standard_value-parameter-comment = disabled
 ktlint_standard_wrapping = disabled
 
+# enable some experimental Ktlint rules
+ktlint_standard_function-expression-body = enabled
+
 [gradlew]
 indent_style = space
 indent_size = 4

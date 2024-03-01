@@ -259,9 +259,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         outState.putBoolean(ADD_ENTRANCE, addEntrance)
     }
 
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        return streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
-    }
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean =
+        streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
 
     override fun hasChanges(): Boolean =
         numberOrNameInputCtrl.addressNumber != addressNumber

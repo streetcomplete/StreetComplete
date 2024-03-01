@@ -23,15 +23,13 @@ fun ElementGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap
     is ElementPointGeometry -> toTangramGeometry(properties)
 }
 
-fun ElementPointGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Point> {
-    return listOf(Point(center.toLngLat(), properties + ("type" to "point")))
-}
+fun ElementPointGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Point> =
+    listOf(Point(center.toLngLat(), properties + ("type" to "point")))
 
-fun ElementPolylinesGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Polyline> {
-    return polylines.map { polyline ->
+fun ElementPolylinesGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Polyline> =
+    polylines.map { polyline ->
         Polyline(polyline.map { it.toLngLat() }, properties + ("type" to "line"))
     }
-}
 
 fun ElementPolygonsGeometry.toTangramGeometry(properties: Map<String, String> = emptyMap()): List<Polygon> {
     val outerRings = mutableListOf<List<LatLon>>()

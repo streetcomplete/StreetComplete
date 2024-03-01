@@ -90,19 +90,17 @@ data class TilesRect(val left: Int, val top: Int, val right: Int, val bottom: In
  *  In other words, it expands this bounding box to fit to the tile boundaries.
  *  If this bounding box crosses the 180th meridian, it'll take only the first half of the bounding
  *  box*/
-fun BoundingBox.asBoundingBoxOfEnclosingTiles(zoom: Int): BoundingBox {
-    return enclosingTilesRect(zoom).asBoundingBox(zoom)
-}
+fun BoundingBox.asBoundingBoxOfEnclosingTiles(zoom: Int): BoundingBox =
+    enclosingTilesRect(zoom).asBoundingBox(zoom)
 
 /** Returns the tile rect that enclose this bounding box at the given zoom level. If this bounding
  *  box crosses the 180th meridian, it'll take only the first half of the bounding box */
-fun BoundingBox.enclosingTilesRect(zoom: Int): TilesRect {
-    return if (crosses180thMeridian) {
+fun BoundingBox.enclosingTilesRect(zoom: Int): TilesRect =
+    if (crosses180thMeridian) {
         splitAt180thMeridian().first().enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom)
     } else {
         enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom)
     }
-}
 
 private fun BoundingBox.enclosingTilesRectOfBBoxNotCrossing180thMeridian(zoom: Int): TilesRect {
     val min = LatLon(min.latitude, min.longitude)

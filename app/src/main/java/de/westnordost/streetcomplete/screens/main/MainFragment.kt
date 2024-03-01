@@ -1183,9 +1183,7 @@ class MainFragment :
 
     //region Interface - For the parent fragment / activity
 
-    fun getCameraPosition(): CameraPosition? {
-        return mapFragment?.cameraPosition
-    }
+    fun getCameraPosition(): CameraPosition? = mapFragment?.cameraPosition
 
     fun setCameraPosition(position: LatLon, zoom: Float) {
         mapFragment?.isFollowingPosition = false

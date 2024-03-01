@@ -212,8 +212,8 @@ private fun Collection<MonthsOrDateSelector>.intersectWith(other: Collection<Mon
 private fun MonthsOrDateSelector.intersectsWith(other: MonthsOrDateSelector): Boolean =
     toCircularSection().intersects(other.toCircularSection())
 
-private fun MonthsOrDateSelector.toCircularSection(): CircularSection {
-    return when (this) {
+private fun MonthsOrDateSelector.toCircularSection(): CircularSection =
+    when (this) {
         is SingleMonth -> {
             require(year == null)
             CircularSection(month.ordinal, month.ordinal)
@@ -224,7 +224,6 @@ private fun MonthsOrDateSelector.toCircularSection(): CircularSection {
         }
         else -> throw IllegalArgumentException()
     }
-}
 
 @JvmName("weekdaysSelectorsIntersectWith")
 private fun Collection<WeekdaysSelector>.intersectWith(other: Collection<WeekdaysSelector>): Boolean =

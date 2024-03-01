@@ -13,13 +13,12 @@ fun Element.copy(
     tags: Map<String, String> = this.tags,
     version: Int = this.version,
     timestampEdited: Long = this.timestampEdited,
-): Element {
-    return when (this) {
+): Element =
+    when (this) {
         is Node -> Node(id, position, tags, version, timestampEdited)
         is Way -> Way(id, ArrayList(nodeIds), tags, version, timestampEdited)
         is Relation -> Relation(id, ArrayList(members), tags, version, timestampEdited)
     }
-}
 
 val Element.geometryType: GeometryType get() =
     when {

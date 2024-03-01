@@ -121,9 +121,8 @@ open class MapFragment :
         prefs.addListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_map, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        inflater.inflate(R.layout.fragment_map, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -266,27 +265,27 @@ open class MapFragment :
         listener?.onPanBegin()
         return false
     }
-    override fun onPan(startX: Float, startY: Float, endX: Float, endY: Float): Boolean { return false }
-    override fun onPanEnd(): Boolean { return false }
+    override fun onPan(startX: Float, startY: Float, endX: Float, endY: Float): Boolean = false
+    override fun onPanEnd(): Boolean = false
 
-    override fun onFling(posX: Float, posY: Float, velocityX: Float, velocityY: Float): Boolean { return false }
-    override fun onCancelFling(): Boolean { return false }
+    override fun onFling(posX: Float, posY: Float, velocityX: Float, velocityY: Float): Boolean = false
+    override fun onCancelFling(): Boolean = false
 
-    override fun onScaleBegin(): Boolean { return false }
-    override fun onScale(x: Float, y: Float, scale: Float, velocity: Float): Boolean { return false }
-    override fun onScaleEnd(): Boolean { return false }
+    override fun onScaleBegin(): Boolean = false
+    override fun onScale(x: Float, y: Float, scale: Float, velocity: Float): Boolean = false
+    override fun onScaleEnd(): Boolean = false
 
-    override fun onShoveBegin(): Boolean { return false }
-    override fun onShove(distance: Float): Boolean { return false }
-    override fun onShoveEnd(): Boolean { return false }
+    override fun onShoveBegin(): Boolean = false
+    override fun onShove(distance: Float): Boolean = false
+    override fun onShoveEnd(): Boolean = false
 
-    override fun onRotateBegin(): Boolean { return false }
-    override fun onRotate(x: Float, y: Float, rotation: Float): Boolean { return false }
-    override fun onRotateEnd(): Boolean { return false }
+    override fun onRotateBegin(): Boolean = false
+    override fun onRotate(x: Float, y: Float, rotation: Float): Boolean = false
+    override fun onRotateEnd(): Boolean = false
 
-    override fun onSingleTapUp(x: Float, y: Float): Boolean { return false }
+    override fun onSingleTapUp(x: Float, y: Float): Boolean = false
 
-    override fun onSingleTapConfirmed(x: Float, y: Float): Boolean { return false }
+    override fun onSingleTapConfirmed(x: Float, y: Float): Boolean = false
 
     override fun onDoubleTap(x: Float, y: Float): Boolean {
         val pos = controller?.screenPositionToLatLon(PointF(x, y))
@@ -385,9 +384,8 @@ open class MapFragment :
         }
     }
 
-    fun getPositionThatCentersPosition(pos: LatLon, offset: RectF): LatLon? {
-        return controller?.getLatLonThatCentersLatLon(pos, offset)
-    }
+    fun getPositionThatCentersPosition(pos: LatLon, offset: RectF): LatLon? =
+        controller?.getLatLonThatCentersLatLon(pos, offset)
 
     fun getDisplayedArea(): BoundingBox? = controller?.screenAreaToBoundingBox(RectF())
 
