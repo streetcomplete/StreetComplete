@@ -26,7 +26,6 @@ ktlint_standard_blank-line-between-when-conditions = disabled
 ktlint_standard_block-comment-initial-star-alignment = disabled
 ktlint_standard_chain-wrapping = disabled
 ktlint_standard_comment-wrapping = disabled
-ktlint_standard_filename = disabled
 ktlint_standard_function-naming = disabled
 ktlint_standard_function-signature = disabled
 ktlint_standard_if-else-wrapping = disabled
