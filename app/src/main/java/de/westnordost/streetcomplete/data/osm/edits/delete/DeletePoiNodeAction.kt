@@ -46,15 +46,14 @@ data class DeletePoiNodeAction(
             throw ConflictException("Element geometry changed substantially")
         }
 
-        // delete free-floating node
         return if (
             mapDataRepository.getWaysForNode(currentNode.id).isEmpty()
             && mapDataRepository.getRelationsForNode(currentNode.id).isEmpty()
         ) {
+            // delete free-floating node
             MapDataChanges(deletions = listOf(currentNode))
-        }
-        // if it is a vertex in a way or has a role in a relation: just clear the tags then
-        else {
+        } else {
+            // if it is a vertex in a way or has a role in a relation: just clear the tags then
             val emptyNode = currentNode.copy(
                 tags = emptyMap(),
                 timestampEdited = nowAsEpochMilliseconds()

@@ -14,9 +14,8 @@ fun parseHouseNumbers(string: String): HouseNumbers? {
                 val end = parseHouseNumberParts(range[1]) ?: return null
                 if (start < end) {
                     HouseNumbersPartsRange(start, end)
-                }
-                // reverse ranges are interpreted like sub-housenumbers, i.e. 4-2 is about the same as 4/2
-                else {
+                } else {
+                    // reverse ranges are interpreted like sub-housenumbers, i.e. 4-2 is about the same as 4/2
                     SingleHouseNumbersPart(parseHouseNumberParts(part) ?: return null)
                 }
             }
