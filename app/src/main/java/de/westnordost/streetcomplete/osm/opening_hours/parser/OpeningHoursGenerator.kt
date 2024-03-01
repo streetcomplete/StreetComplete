@@ -125,13 +125,13 @@ private fun List<Rule>.asNonColliding(): List<Rule> =
         this
     } else {
         map { rule ->
-        // "off" rules stay non-additive
-        if (rule.ruleType == RuleType.Off) {
-            rule
-        } else {
-            rule.copy(ruleOperator = RuleOperator.Additional)
+            // "off" rules stay non-additive
+            if (rule.ruleType == RuleType.Off) {
+                rule
+            } else {
+                rule.copy(ruleOperator = RuleOperator.Additional)
+            }
         }
-    }
     }
 
 private fun createRule(
