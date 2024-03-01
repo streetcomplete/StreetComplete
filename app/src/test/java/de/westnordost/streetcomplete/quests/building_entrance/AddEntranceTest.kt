@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class AddBuildingEntranceTest {
+class AddEntranceTest {
 
     private val questType = AddEntrance()
 
