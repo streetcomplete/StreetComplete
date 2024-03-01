@@ -75,9 +75,9 @@ class EditTagsAdapter(
             var lastFeature: Feature? = null
             val lastSuggestions = linkedSetOf<String>()
             setOnFocusChangeListener { _, focused ->
-                val text = text.toString().trim()
-                setText(text) // if focused: also gets fresh suggestions and show dropdown; showDropDown() not helping here
-                if (!focused && text !in lastSuggestions && text.isNotBlank()) {
+                val text = text.toString()
+                if (focused) setText(text) // to get fresh suggestions and show dropdown; showDropDown() not helping here
+                else if (text !in lastSuggestions && text.isNotBlank()) {
                     // store most recently used keys on focus loss
                     //  this may be because user typed answer instead of tapping suggestion
                     //  unfortunately this also happens in other cases where storing may not be wanted, but leave it for now
@@ -133,9 +133,9 @@ class EditTagsAdapter(
         val valueView: AutoCompleteTextView = binding.valueText.apply {
             val lastSuggestions = linkedSetOf<String>()
             setOnFocusChangeListener { _, focused ->
-                val text = text.toString().trim()
-                setText(text) // if focused: also gets fresh suggestions and show dropdown; showDropDown() not helping here
-                if (!focused && text !in lastSuggestions && text.isNotBlank() && keyView.text.toString().isNotBlank()) {
+                val text = text.toString()
+                if (focused) setText(text) // to get fresh suggestions and show dropdown; showDropDown() not helping here
+                else if (text !in lastSuggestions && text.isNotBlank() && keyView.text.toString().isNotBlank()) {
                     // store most recently used values on focus loss (user typed answer instead of tapping suggestion)
                     storeRecentlyUsed(text, keyView.text.toString(), false)
                 }
