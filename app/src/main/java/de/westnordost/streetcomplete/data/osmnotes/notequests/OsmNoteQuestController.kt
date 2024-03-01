@@ -237,6 +237,7 @@ private fun Note.probablyContainsQuestion(): Boolean {
         "؟", // mirrored question mark (used in script written from right to left, like Arabic)
         "՞", // Armenian question mark
         "፧", // Ethiopian question mark
+        "꘏", // Vai question mark
         "？", // full width question mark (often used in modern Chinese / Japanese)
     )
     val questionMarkPattern = ".*[${questionMarksAroundTheWorld.joinToString("")}].*"
