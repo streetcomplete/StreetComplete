@@ -56,6 +56,7 @@ ktlint_standard_wrapping = disabled
 
 # enable some experimental Ktlint rules
 ktlint_standard_function-expression-body = enabled
+ktlint_standard_multiline-loop = enabled
 
 [gradlew]
 indent_style = space
