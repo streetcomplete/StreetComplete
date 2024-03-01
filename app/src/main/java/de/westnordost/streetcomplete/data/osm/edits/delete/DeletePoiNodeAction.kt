@@ -46,10 +46,11 @@ data class DeletePoiNodeAction(
             throw ConflictException("Element geometry changed substantially")
         }
 
-        return if (
-            mapDataRepository.getWaysForNode(currentNode.id).isEmpty()
-            && mapDataRepository.getRelationsForNode(currentNode.id).isEmpty()
-        ) {
+        val isInWayOrRelation =
+            mapDataRepository.getWaysForNode(currentNode.id).isNotEmpty()
+            || mapDataRepository.getRelationsForNode(currentNode.id).isNotEmpty()
+
+        return if (!isInWayOrRelation) {
             // delete free-floating node
             MapDataChanges(deletions = listOf(currentNode))
         } else {
