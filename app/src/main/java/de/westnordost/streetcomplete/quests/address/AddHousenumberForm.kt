@@ -151,7 +151,9 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         val isUnusual = number?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
         confirmHouseNumber(isUnusual) {
             applyAnswer(AddressNumberOrName(number, numberOrNameInputCtrl.houseName))
-            if (number is HouseAndBlockNumber) { number.blockNumber.let { lastBlockNumber = it } }
+            if (number is HouseAndBlockNumber) {
+                number.blockNumber.let { lastBlockNumber = it }
+            }
             lastBlock = (number as? HouseNumberAndBlock)?.block
             number?.streetHouseNumber?.let { lastHouseNumber = it }
         }
