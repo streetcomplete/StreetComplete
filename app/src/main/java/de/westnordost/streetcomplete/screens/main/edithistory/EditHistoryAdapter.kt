@@ -63,9 +63,8 @@ class EditHistoryAdapter(
         if (syncedItemIndex != -1) {
             Collections.swap(rows, syncedItemIndex, editIndex)
             notifyItemMoved(syncedItemIndex, editIndex)
-        }
-        // there is no "synced" item yet
-        else {
+        } else {
+            // there is no "synced" item yet
             rows.add(editIndex, IsSyncedItem)
             notifyItemInserted(editIndex)
         }
