@@ -18,8 +18,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ══╪══
-    */
+        ══╪══
+     */
     @Test fun `simple crossing counts`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -35,8 +35,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ══╪══
-    */
+        ══╪══
+     */
     @Test fun `simple crossing with tags on node is skipped`() {
         val shared = node(2, p(0.0, 0.0), tags = mapOf("anything" to "whatever"))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -52,8 +52,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ═══╡
-    */
+        ═══╡
+     */
     @Test fun `crossing road on end node does not count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -68,8 +68,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ══╧══
-    */
+        ══╧══
+     */
     @Test fun `crossing barrier on end node does not count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -84,8 +84,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ══╪══ (4 ways)
-    */
+        ══╪══ (4 ways)
+     */
     @Test fun `crossing with ways split at shared node counts`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -103,10 +103,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-       │ ╱
-       │❬
-       │ ╲
-    */
+        │ ╱
+        │❬
+        │ ╲
+     */
     @Test fun `touching but not crossing barrier does not count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -122,10 +122,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-       │ ╱
-       │❬
-       │ ╲
-    */
+        │ ╱
+        │❬
+        │ ╲
+     */
     @Test fun `touching but not crossing road does not count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -141,10 +141,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-       │ ╱
-    ───│❬────
-       │ ╲
-    */
+           │ ╱
+        ───│❬────
+           │ ╲
+     */
     @Test fun `one of several barriers crosses the road counts`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -165,10 +165,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-        ║
-      ══╬══
-      ╱ ║ ╲
-    */
+          ║
+        ══╬══
+        ╱ ║ ╲
+     */
     @Test fun `one barrier crossing any of the roads count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -187,10 +187,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-        ║
-      ──╫──
-        ║
-    */
+          ║
+        ──╫──
+          ║
+     */
     @Test fun `skip roads going into tunnel`() {
         // some people map the retaining wall as joining with the road, which is not really incorrect
         val shared = node(2, p(0.0, 0.0))
