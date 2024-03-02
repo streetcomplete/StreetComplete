@@ -54,25 +54,6 @@ open class MapFragment : Fragment() {
     var isMapInitialized: Boolean = false
         private set
 
-    private val hide3DBuildingsSceneUpdates = listOf(
-        "layers.buildings.draw.buildings-style.extrude" to "false",
-        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
-    )
-    var show3DBuildings: Boolean = true
-        set(value) {
-            if (field == value) return
-            field = value
-            if (sceneMapComponent?.isAerialView == true) return
-
-            if (value) {
-                sceneMapComponent?.removeSceneUpdates(hide3DBuildingsSceneUpdates)
-            } else {
-                sceneMapComponent?.addSceneUpdates(hide3DBuildingsSceneUpdates)
-            }
-
-            viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
-        }
-
     private val vectorTileProvider: VectorTileProvider by inject()
 //    private val cacheConfig: MapTilesDownloadCacheConfig by inject()
     private val prefs: Preferences by inject()

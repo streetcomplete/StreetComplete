@@ -496,7 +496,6 @@ class MainFragment :
             mapFragment.hideOverlay()
         }
 
-        mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(node.position, RectF())
         mapFragment.updateCameraPosition { position = offsetPos }
     }
@@ -840,7 +839,6 @@ class MainFragment :
         val mapFragment = mapFragment ?: return
         showInBottomSheet(CreateNoteFragment.create(hasGpxAttached))
 
-        mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
         mapFragment.updateCameraPosition { position = offsetPos }
     }
@@ -975,7 +973,6 @@ class MainFragment :
 
     private fun clearHighlighting() {
         mapFragment?.clearHighlighting()
-        mapFragment?.show3DBuildings = true
     }
 
     //endregion
