@@ -31,11 +31,6 @@ class ShopsOverlay(private val getFeature: (tags: Map<String, String>) -> Featur
     )
     override val isCreateNodeEnabled = true
 
-    override val sceneUpdates = listOf(
-        "layers.buildings.draw.buildings-style.extrude" to "false",
-        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
-    )
-
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)

@@ -27,8 +27,6 @@ class AddressOverlay(
 
     override val sceneUpdates = listOf(
         "layers.housenumber-labels.enabled" to "false",
-        "layers.buildings.draw.buildings-style.extrude" to "false",
-        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
     )
 
     private val noAddressesOnBuildings = setOf(
