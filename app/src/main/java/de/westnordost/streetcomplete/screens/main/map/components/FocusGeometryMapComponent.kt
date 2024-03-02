@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.ContentResolver
 import android.graphics.RectF
 import androidx.annotation.UiThread
-import com.mapbox.geojson.Geometry
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -17,7 +20,7 @@ import kotlin.math.roundToInt
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
-class FocusGeometryMapComponent(private val ctrl: KtMapController) {
+class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapboxMap) {
 
     private val focusedGeometrySource = GeoJsonSource("focus-geometry-source")
 
@@ -28,7 +31,7 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController) {
         previousCameraPosition != null
 
     init {
-        ctrl.addSource(focusedGeometrySource)
+        map.style?.addSource(focusedGeometrySource)
     }
 
     /** Show the given geometry. Previously shown geometry is replaced. */
@@ -42,9 +45,9 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController) {
     }
 
     @UiThread fun beginFocusGeometry(g: ElementGeometry, offset: RectF) {
-        val targetPos = ctrl.getEnclosingCameraPosition(g, offset) ?: return
+        val targetPos = map.getEnclosingCamera(g, offset) ?: return
 
-        val currentPos = ctrl.cameraPosition
+        val currentPos = map.camera
         // limit max zoom to not zoom in to the max when zooming in on points;
         // also zoom in a bit less to have a padding around the zoomed-in element
         val targetZoom = min(targetPos.zoom - 0.5, 21.0)
@@ -52,7 +55,7 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController) {
         val zoomDiff = abs(currentPos.zoom - targetZoom)
         val zoomTime = max(450, (zoomDiff * 300).roundToInt())
 
-        ctrl.updateCameraPosition(zoomTime) {
+        map.updateCamera(zoomTime, contentResolver) {
             position = targetPos.position
             zoom = targetZoom
             padding = targetPos.padding
@@ -68,10 +71,10 @@ class FocusGeometryMapComponent(private val ctrl: KtMapController) {
     @UiThread fun endFocusGeometry() {
         val pos = previousCameraPosition
         if (pos != null) {
-            val currentPos = ctrl.cameraPosition
+            val currentPos = map.cameraPosition
             val zoomTime = max(300, (abs(currentPos.zoom - pos.zoom) * 300).roundToInt())
 
-            ctrl.updateCameraPosition(zoomTime) {
+            map.updateCamera(zoomTime, contentResolver) {
                 position = pos.position
                 zoom = pos.zoom
             }

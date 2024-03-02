@@ -2,18 +2,17 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.res.Configuration
 import android.content.res.Resources
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import java.util.Locale
 
 /** Takes care of loading the base map with the right parameters (localization, api key, night mode
  *  etc, custom scene updates, etc ...) */
 class SceneMapComponent(
     private val resources: Resources,
-    private val ctrl: KtMapController,
+    private val map: MapboxMap,
     private val vectorTileProvider: VectorTileProvider
 ) {
     private var sceneUpdates: MutableList<List<Pair<String, String>>> = mutableListOf()

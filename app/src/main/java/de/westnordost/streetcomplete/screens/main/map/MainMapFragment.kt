@@ -125,15 +125,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
-        val ctrl = controller ?: return
 //        ctrl.setPickRadius(8f)
-        geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, ctrl)
+        geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, mapboxMap)
 
-        pinsMapComponent = PinsMapComponent(ctrl)
-        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), ctrl)
-        geometryMapComponent = FocusGeometryMapComponent(ctrl)
+        pinsMapComponent = PinsMapComponent(mapboxMap)
+        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), mapboxMap)
+        geometryMapComponent = FocusGeometryMapComponent(requireContext().contentResolver, mapboxMap)
 
-        questPinsManager = QuestPinsManager(ctrl, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
+        questPinsManager = QuestPinsManager(mapboxMap, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
         questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
 
@@ -141,11 +140,11 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
 
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, ctrl)
-        styleableOverlayManager = StyleableOverlayManager(ctrl, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, mapboxMap)
+        styleableOverlayManager = StyleableOverlayManager(mapboxMap, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
-        downloadedAreaMapComponent = DownloadedAreaMapComponent(ctrl)
+        downloadedAreaMapComponent = DownloadedAreaMapComponent(mapboxMap)
         downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
@@ -274,10 +273,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             onLongPress(screenPoint.x, screenPoint.y)
             true
         }
-
-        // set map stuff available everywhere in the app (for simplified testing)
-        MainMapFragment.mapboxMap = mapboxMap
-        MainMapFragment.style = style
 
         // need more information on how to work with expressions...
         // or better use them in style json instead of here? probably easier
@@ -443,7 +438,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         super.onDestroyView()
         selectedOverlaySource.removeListener(overlayListener)
         mapboxMap = null
-        style = null
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
@@ -625,10 +619,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // see streetcomplete.yaml for the definitions of the below layers
         private const val CLICK_AREA_SIZE_IN_DP = 48
 
-        // todo: this is bad, but very convenient for testing if we have access to everything from everywhere
-        var mapboxMap: MapboxMap? = null
-
-        var style: Style? = null
         var pinsLayer: SymbolLayer? = null
         var pinsDotLayer: CircleLayer? = null
 

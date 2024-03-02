@@ -11,9 +11,9 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
-import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
 import com.mapbox.mapboxsdk.location.LocationComponentOptions
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.layers.Property
@@ -25,17 +25,15 @@ import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
-class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctrl: KtMapController) {
+class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val map: MapboxMap) {
     private val locationSource: GeoJsonSource
     private var useLocationComponent = false
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
@@ -76,22 +74,18 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
 
     init {
         GlobalScope.launch { // simply way of delaying until map is initialized, todo: do it properly
-            while (MainMapFragment.mapboxMap == null) {
-                delay(100)
-            }
-            delay(500) // just to be sure
             // this is the maplibre location component, could be used instead most of the stuff in here
             val options = LocationComponentOptions.builder(ctx)
                 .bearingDrawable(R.drawable.location_direction) // todo: not displayed
                 .gpsDrawable(R.drawable.location_dot) // todo: not displayed
                 .build()
-            val activationOptions = LocationComponentActivationOptions.builder(ctx, MainMapFragment.style!!)
+            val activationOptions = LocationComponentActivationOptions.builder(ctx, map.style!!)
                 .locationEngine(null) // disable listening to location updates, use locationComponent.forceLocationUpdate(location)
                 .locationComponentOptions(options)
                 .build()
             // can also set compass engine somewhere
             MainActivity.activity?.runOnUiThread {
-                MainMapFragment.mapboxMap?.locationComponent?.activateLocationComponent(activationOptions)
+                map.locationComponent.activateLocationComponent(activationOptions)
                 useLocationComponent = false // maybe use it? but icons not displayed, and circle looks weird on zoom
             }
         }
@@ -187,7 +181,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val ctr
             locationSource.setGeoJson(Feature.fromGeometry(pos.toPoint(), p))
         }
         if (useLocationComponent) // do nothing instead of crashing
-            MainMapFragment.mapboxMap?.locationComponent?.forceLocationUpdate(location)
+            map.locationComponent.forceLocationUpdate(location)
     }
 
     /** Update the circle that shows the GPS accuracy on the map */

@@ -7,6 +7,7 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -20,13 +21,12 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.addTransparency
 import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.toARGBString
 
 /** Takes care of displaying styled map data */
-class StyleableOverlayMapComponent(private val resources: Resources, private val ctrl: KtMapController) {
+class StyleableOverlayMapComponent(private val resources: Resources, private val map: MapboxMap) {
 
     private val overlaySource = GeoJsonSource("overlay-source")
 
@@ -36,18 +36,18 @@ class StyleableOverlayMapComponent(private val resources: Resources, private val
     /** Shows/hides the map data */
     var isVisible: Boolean
         // add / remove source
-        @UiThread get() = ctrl.sources?.find { it.id == "overlay-source" } != null
+        @UiThread get() = map.style?.sources?.find { it.id == "overlay-source" } != null
         @UiThread set(value) {
             if (isVisible == value) return
             if (value) {
-                ctrl.addSource(overlaySource)
+                map.style?.addSource(overlaySource)
             } else {
-                ctrl.removeSource(overlaySource)
+                map.style?.removeSource(overlaySource)
             }
         }
 
     init {
-        ctrl.addSource(overlaySource)
+        map.style?.addSource(overlaySource)
     }
 
     /** Show given map data with each the given style */
@@ -189,7 +189,7 @@ fun JsonElement.toElementKey(): ElementKey? {
     // todo: what are the values if it doesn't exist? empty strings?
     val id = asJsonObject.getAsJsonPrimitive(ELEMENT_ID)?.asString?.toLongOrNull() ?: return null
     val type = asJsonObject.getAsJsonPrimitive(ELEMENT_TYPE).asString
-    return if (type in ElementType.values().map { it.toString() })
+    return if (type in ElementType.entries.map { it.toString() })
         ElementKey(ElementType.valueOf(type), id)
     else null
 }

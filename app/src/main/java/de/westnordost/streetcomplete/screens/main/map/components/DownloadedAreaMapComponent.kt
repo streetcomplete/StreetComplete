@@ -2,20 +2,20 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import androidx.annotation.UiThread
 import com.mapbox.geojson.Polygon
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 
-class DownloadedAreaMapComponent(private val ctrl: KtMapController) {
+class DownloadedAreaMapComponent(private val map: MapboxMap) {
 
     private val downloadedAreaSource = GeoJsonSource("downloaded-area-source")
 
     init {
-        ctrl.addSource(downloadedAreaSource)
+        map.style?.addSource(downloadedAreaSource)
     }
 
     @UiThread fun set(tiles: Collection<TilePos>) {

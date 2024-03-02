@@ -4,15 +4,15 @@ import androidx.annotation.UiThread
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
-class PinsMapComponent(private val ctrl: KtMapController) {
+class PinsMapComponent(private val map: MapboxMap) {
 
     private val pinsSource = GeoJsonSource(
         "pins-source",
@@ -22,18 +22,18 @@ class PinsMapComponent(private val ctrl: KtMapController) {
     /** Shows/hides the pins */
     var isVisible: Boolean
         // add / remove source
-        @UiThread get() = ctrl.sources?.find { it.id == "pins-source" } != null
+        @UiThread get() = map.style?.sources?.find { it.id == "pins-source" } != null
         @UiThread set(value) {
             if (isVisible == value) return
             if (value) {
-                ctrl.addSource(pinsSource)
+                map.style?.addSource(pinsSource)
             } else {
-                ctrl.removeSource(pinsSource)
+                map.style?.removeSource(pinsSource)
             }
         }
 
     init {
-        ctrl.addSource(pinsSource)
+        map.style?.addSource(pinsSource)
     }
 
     /** Show given pins. Previously shown pins are replaced with these.  */

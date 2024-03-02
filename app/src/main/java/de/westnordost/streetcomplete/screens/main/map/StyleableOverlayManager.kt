@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -15,7 +16,7 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
 import de.westnordost.streetcomplete.util.math.intersect
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +35,7 @@ import kotlin.coroutines.coroutineContext
  *  Gets told by the MainMapFragment when a new area is in view and independently pulls the map
  *  data for the bbox surrounding the area from database and holds it in memory. */
 class StyleableOverlayManager(
-    private val ctrl: KtMapController,
+    private val map: MapboxMap,
     private val mapComponent: StyleableOverlayMapComponent,
     private val mapDataSource: MapDataWithEditsSource,
     private val selectedOverlaySource: SelectedOverlaySource
@@ -123,10 +124,10 @@ class StyleableOverlayManager(
 
     fun onNewScreenPosition() {
         if (overlay == null) return
-        val zoom = ctrl.cameraPosition.zoom
+        val zoom = map.cameraPosition.zoom
         if (zoom < TILES_ZOOM) return
         MainActivity.activity?.runOnUiThread {
-            val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return@runOnUiThread
+            val displayedArea = map.screenAreaToBoundingBox(RectF()) ?: return@runOnUiThread
             val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
             // area too big -> skip (performance)
             if (tilesRect.size > 16) return@runOnUiThread

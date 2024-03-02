@@ -6,6 +6,7 @@ import androidx.annotation.UiThread
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -15,19 +16,18 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 
 /** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
  *  show the geometry of elements surrounding the selected quest */
-class GeometryMarkersMapComponent(private val resources: Resources, private val ctrl: KtMapController) {
+class GeometryMarkersMapComponent(private val resources: Resources, private val map: MapboxMap) {
 
     private val geometrySource = GeoJsonSource("geometry-source")
 
     private val featuresByPosition: MutableMap<LatLon, List<Feature>> = HashMap()
 
     init {
-        ctrl.addSource(geometrySource)
+        map.style?.addSource(geometrySource)
     }
 
     @UiThread fun put(

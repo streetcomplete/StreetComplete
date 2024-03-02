@@ -5,6 +5,7 @@ import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonElement
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -19,7 +20,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
 import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,7 +39,7 @@ import kotlin.coroutines.coroutineContext
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
  *  for the bbox surrounding the area from database and holds it in memory. */
 class QuestPinsManager(
-    private val ctrl: KtMapController,
+    private val map: MapboxMap,
     private val pinsMapComponent: PinsMapComponent,
     private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
@@ -143,11 +144,11 @@ class QuestPinsManager(
 
     fun onNewScreenPosition() {
         if (!isStarted || !isVisible) return
-        val zoom = ctrl.cameraPosition.zoom
+        val zoom = map.cameraPosition.zoom
         // require zoom >= 14, which is the lowest zoom level where quests are shown
         if (zoom < 14) return
         MainActivity.activity?.runOnUiThread {
-            val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return@runOnUiThread
+            val displayedArea = map.screenAreaToBoundingBox(RectF()) ?: return@runOnUiThread
             val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
             // area too big -> skip (performance)
             if (tilesRect.size > 16) return@runOnUiThread

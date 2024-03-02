@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.Context
 import androidx.annotation.DrawableRes
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 
 /** Takes care of displaying "selected" pins. Those pins are always shown on top of pins displayed
  *  by the [PinsMapComponent] */
-class SelectedPinsMapComponent(private val ctx: Context, private val ctrl: KtMapController) {
+class SelectedPinsMapComponent(private val ctx: Context, private val map: MapboxMap) {
 /*   todo: is not necessary with the current way of filtering all pins except the selected pin?
     private val selectedPinsLayer: MapData = ctrl.addDataLayer(SELECTED_PINS_LAYER)
 

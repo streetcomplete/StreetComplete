@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
+import de.westnordost.streetcomplete.screens.main.map.maplibre.screenBottomToCenterDistance
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -141,12 +142,11 @@ open class LocationAwareMapFragment : MapFragment() {
         super.onMapReady(mapView, mapboxMap, style)
         restoreMapState()
 
-        val ctrl = controller ?: return
         val ctx = context ?: return
-        locationMapComponent = CurrentLocationMapComponent(ctx, style, ctrl)
+        locationMapComponent = CurrentLocationMapComponent(ctx, style, mapboxMap)
         locationMapComponent?.location = displayedLocation
 
-        tracksMapComponent = TracksMapComponent(ctrl)
+        tracksMapComponent = TracksMapComponent(mapboxMap)
         val positionsLists = tracks.map { track -> track.map { it.position } }
         tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
 
@@ -213,7 +213,7 @@ open class LocationAwareMapFragment : MapFragment() {
                     rotation = -(bearing * PI / 180.0)
                     /* move center position down a bit, so there is more space in front of than
                        behind user */
-                    val distance = controller?.screenBottomToCenterDistance()
+                    val distance = mapboxMap?.screenBottomToCenterDistance()
                     if (distance != null) {
                         centerPosition = centerPosition.translate(distance * 0.4, bearing.toDouble())
                     }

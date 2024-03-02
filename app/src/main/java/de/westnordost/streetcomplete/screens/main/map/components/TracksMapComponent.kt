@@ -7,15 +7,15 @@ import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.LineString
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import kotlin.math.max
 
 /** Takes care of showing the path(s) walked on the map */
-class TracksMapComponent(private val ctrl: KtMapController) {
+class TracksMapComponent(private val map: MapboxMap) {
     /* There are two sources simply as a performance optimization: If there are thousands of
        trackpoints, we don't want to update (=copy) the thousands of points each time a new
        trackpoint is added. Instead, we only update a list of 100 trackpoints each time a new
@@ -31,8 +31,8 @@ class TracksMapComponent(private val ctrl: KtMapController) {
     private var tracks: MutableList<Track> = arrayListOf(Track(ArrayList(), false))
 
     init {
-        ctrl.addSource(trackSource)
-        ctrl.addSource(oldTrackSource)
+        map.style?.addSource(trackSource)
+        map.style?.addSource(oldTrackSource)
     }
 
     /** Add a point to the current track */

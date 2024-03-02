@@ -23,9 +23,13 @@ import de.westnordost.streetcomplete.databinding.FragmentMapBinding
 import de.westnordost.streetcomplete.screens.main.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
-import de.westnordost.streetcomplete.screens.main.map.tangram.MapChangingListener
-import de.westnordost.streetcomplete.screens.main.map.tangram.initMap
+import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.getLatLonThatCentersLatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.latLonToScreenPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
+import de.westnordost.streetcomplete.screens.main.map.maplibre.screenCenterToLatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.screenPositionToLatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -42,7 +46,6 @@ open class MapFragment : Fragment() {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    protected var controller: KtMapController? = null
     protected var mapboxMap : MapboxMap? = null
     protected var sceneMapComponent: SceneMapComponent? = null
 
@@ -165,7 +168,6 @@ open class MapFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding.map.onDestroy()
-        controller = null
         mapboxMap = null
     }
 
@@ -186,13 +188,8 @@ open class MapFragment : Fragment() {
     /* ------------------------------------------- Map  ----------------------------------------- */
 
     private suspend fun initMap(mapView: MapView, mapboxMap: MapboxMap) {
-        val ctrl = binding.map.initMap(mapboxMap)
-        controller = ctrl
-        val style = mapboxMap.style
-        if (ctrl == null) return
-        if (style == null) return
-        lifecycle.addObserver(ctrl)
-        registerResponders(ctrl)
+        val style = mapboxMap.style ?: return
+        registerResponders(mapboxMap)
         mapboxMap.addOnMoveListener(object : MapboxMap.OnMoveListener {
             override fun onMoveBegin(p0: MoveGestureDetector) {
                 // tapping also calls onMoveBegin, but with integer x and y, and with historySize 0
@@ -203,7 +200,7 @@ open class MapFragment : Fragment() {
             override fun onMoveEnd(p0: MoveGestureDetector) {}
         })
 
-        sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider)
+        sceneMapComponent = SceneMapComponent(resources, mapboxMap, vectorTileProvider)
         sceneMapComponent?.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
 
         onBeforeLoadScene()
@@ -218,24 +215,21 @@ open class MapFragment : Fragment() {
         listener?.onMapInitialized()
     }
 
-    private fun registerResponders(ctrl: KtMapController) {
-        ctrl.setMapChangingListener(object : MapChangingListener {
-            override fun onMapWillChange() {}
-            override fun onMapIsChanging() {
-                val camera = cameraPosition ?: return
-                if (camera == previousCameraPosition) return
-                previousCameraPosition = camera
-                onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
-                listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
-            }
-            override fun onMapDidChange() {
-                val camera = cameraPosition ?: return
-                if (camera == previousCameraPosition) return
-                previousCameraPosition = camera
-                onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
-                listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
-            }
-        })
+    private fun registerResponders(map: MapboxMap) {
+        map.addOnCameraMoveListener {
+            val camera = cameraPosition ?: return@addOnCameraMoveListener
+            if (camera == previousCameraPosition) return@addOnCameraMoveListener
+            previousCameraPosition = camera
+            onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
+            listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
+        }
+        map.addOnCameraIdleListener {
+            val camera = cameraPosition ?: return@addOnCameraIdleListener
+            if (camera == previousCameraPosition) return@addOnCameraIdleListener
+            previousCameraPosition = camera
+            onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
+            listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
+        }
     }
 
     /* ----------------------------- Overridable map callbacks --------------------------------- */
@@ -301,11 +295,11 @@ open class MapFragment : Fragment() {
 
     private fun restoreMapState() {
         val camera = loadCameraPosition() ?: return
-        controller?.cameraPosition = camera
+        mapboxMap?.camera = camera
     }
 
     private fun saveMapState() {
-        val camera = controller?.cameraPosition ?: return
+        val camera = mapboxMap?.camera ?: return
         saveCameraPosition(camera)
     }
 
@@ -342,48 +336,47 @@ open class MapFragment : Fragment() {
     /* ------------------------------- Controlling the map -------------------------------------- */
 
     fun adjustToOffsets(oldOffset: RectF, newOffset: RectF) {
-        controller?.screenCenterToLatLon(oldOffset)?.let { pos ->
-            controller?.updateCameraPosition {
-                position = controller?.getLatLonThatCentersLatLon(pos, newOffset)
+        mapboxMap?.screenCenterToLatLon(oldOffset)?.let { pos ->
+            mapboxMap?.updateCamera(contentResolver = requireContext().contentResolver) {
+                position = mapboxMap?.getLatLonThatCentersLatLon(pos, newOffset)
             }
         }
     }
 
-    fun getPositionAt(point: PointF): LatLon? = controller?.screenPositionToLatLon(point)
+    fun getPositionAt(point: PointF): LatLon? = mapboxMap?.screenPositionToLatLon(point)
 
-    fun getPointOf(pos: LatLon): PointF? = controller?.latLonToScreenPosition(pos)
+    fun getPointOf(pos: LatLon): PointF? = mapboxMap?.latLonToScreenPosition(pos)
 
     val cameraPosition: CameraPosition?
-        get() = controller?.cameraPosition
+        get() = mapboxMap?.camera
 
     fun updateCameraPosition(
         duration: Int = 0,
         builder: CameraUpdate.() -> Unit
     ) {
-        controller?.updateCameraPosition(duration, builder)
+        mapboxMap?.updateCamera(duration, requireContext().contentResolver, builder)
     }
 
     fun setInitialCameraPosition(camera: CameraPosition) {
-        val controller = controller
-        if (controller != null) {
-            controller.cameraPosition = camera
+        if (mapboxMap != null) {
+            mapboxMap?.camera = camera
         } else {
             saveCameraPosition(camera)
         }
     }
 
     fun getPositionThatCentersPosition(pos: LatLon, offset: RectF): LatLon? {
-        return controller?.getLatLonThatCentersLatLon(pos, offset)
+        return mapboxMap?.getLatLonThatCentersLatLon(pos, offset)
     }
 
-    fun getDisplayedArea(): BoundingBox? = controller?.screenAreaToBoundingBox(RectF())
+    fun getDisplayedArea(): BoundingBox? = mapboxMap?.screenAreaToBoundingBox(RectF())
 
     fun getMetersPerPixel(): Double? {
         val view = view ?: return null
         val x = view.width / 2f
         val y = view.height / 2f
-        val pos1 = controller?.screenPositionToLatLon(PointF(x, y)) ?: return null
-        val pos2 = controller?.screenPositionToLatLon(PointF(x + 1, y)) ?: return null
+        val pos1 = mapboxMap?.screenPositionToLatLon(PointF(x, y)) ?: return null
+        val pos2 = mapboxMap?.screenPositionToLatLon(PointF(x + 1, y)) ?: return null
         return pos1.distanceTo(pos2)
     }
 }
