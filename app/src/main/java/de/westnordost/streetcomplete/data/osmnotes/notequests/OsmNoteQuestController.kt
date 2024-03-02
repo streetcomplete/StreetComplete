@@ -224,23 +224,26 @@ private fun Note.shouldShowAsQuest(
 }
 
 private fun Note.probablyContainsQuestion(): Boolean {
-    /* from left to right (if smartass IntelliJ wouldn't mess up left-to-right):
-       - latin question mark
-       - greek question mark (a different character than semikolon, though same appearance)
-       - semikolon (often used instead of proper greek question mark)
-       - mirrored question mark (used in script written from right to left, like Arabic)
-       - armenian question mark
-       - ethopian question mark
-       - full width question mark (often used in modern Chinese / Japanese)
-       (Source: https://en.wikipedia.org/wiki/Question_mark)
-
-        NOTE: some languages, like Thai, do not use any question mark, so this would be more
-        difficult to determine.
-   */
-    val questionMarksAroundTheWorld = "[?;;؟՞፧？]"
+    /**
+     * Source: https://en.wikipedia.org/wiki/Question_mark
+     *
+     * NOTE: some languages, like Thai, do not use any question mark, so this would be more
+     * difficult to determine.
+     */
+    val questionMarksAroundTheWorld = listOf(
+        "?", // Latin question mark
+        ";", // Greek question mark (a different character than semicolon, though same appearance)
+        ";", // semicolon (often used instead of proper greek question mark)
+        "؟", // mirrored question mark (used in script written from right to left, like Arabic)
+        "՞", // Armenian question mark
+        "፧", // Ethiopian question mark
+        "꘏", // Vai question mark
+        "？", // full width question mark (often used in modern Chinese / Japanese)
+    )
+    val questionMarkPattern = ".*[${questionMarksAroundTheWorld.joinToString("")}].*"
 
     val text = comments.firstOrNull()?.text
-    return text?.matches(Regex(".*$questionMarksAroundTheWorld.*", RegexOption.DOT_MATCHES_ALL)) ?: false
+    return text?.matches(questionMarkPattern.toRegex(RegexOption.DOT_MATCHES_ALL)) ?: false
 }
 
 private fun Note.containsSurveyRequiredMarker(): Boolean =
