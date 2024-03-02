@@ -142,7 +142,7 @@ class StyleableOverlayMapComponent(private val resources: Resources, private val
         else -> if (!isOneway(tags)) 5.5f else 3f
     }
 
-    /** estimates height of thing */
+    /** estimates height of thing, currently not used */
     private fun getHeight(tags: Map<String, String>): Float? {
         val height = tags["height"]?.toFloatOrNull()
         if (height != null) return height

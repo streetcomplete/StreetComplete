@@ -125,7 +125,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
-//        ctrl.setPickRadius(8f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, mapboxMap)
 
         pinsMapComponent = PinsMapComponent(mapboxMap)
@@ -191,17 +190,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         mapboxMap.uiSettings.isLogoEnabled = false
         mapboxMap.uiSettings.isAttributionEnabled = false
 
-        // use a symbol layer for the pins
         pinsLayer = SymbolLayer("pins-layer", "pins-source")
-            // set icon from feature property
             .withProperties(
-                iconImage("{icon-image}"), // take icon name from icon-image property of feature
-                //iconImage(get("icon-image")), // does the same, but feels slower (nothing conclusive though)
+                iconImage("{icon-image}"),
                 iconOffset(listOf(-iconSize / 12f, -iconSize / 4f).toTypedArray()),
-                // apply quest(pin) order
-                // setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is (almost?) as fast as not sorting
-                // but it requires sorting the list of pins in the GeoJsonSource
-                // using symbolSortKey instead of this is much slower
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
             )
 
@@ -210,29 +202,24 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         // add a circle layer using the pinsSource (could actually also be a symbol layer using the dot image, but circles are fast!)
         pinsDotLayer = CircleLayer("pin-dot-layer", "pins-source")
-            // set fixed properties, circles are all the same
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("grey"),
                 circleRadius(5f),
                 circleStrokeWidth(1f)
             )
-
-        // add layer below the pinsLayer
-        // layers are kept in a list internally, and ordered by that list, so layers added later are above others by default
-        pinsDotLayer!!.setFilter(gte(zoom(), 14f))
+            .withFilter(gte(zoom(), 14f))
         style.addLayerBelow(pinsDotLayer!!, "pins-layer")
 
         super.onMapReady(mapView, mapboxMap, style) // leftover from initial implementation, maybe change?
 
         // add click listeners
-        val radius = requireContext().dpToPx(8).toInt()
+        val pickRadius = requireContext().dpToPx(8).toInt()
         mapboxMap.addOnMapClickListener { pos ->
             // check whether we clicked a feature
             val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
-            val searchArea = RectF(screenPoint.x - radius, screenPoint.y - radius, screenPoint.x + radius, screenPoint.y + radius)
-            // only query this specific layer(s), leave layerIds empty for querying all layers
-//            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
+            val searchArea = RectF(screenPoint.x - pickRadius, screenPoint.y - pickRadius, screenPoint.x + pickRadius, screenPoint.y + pickRadius)
+            // only query specific layer(s), leave layerIds empty for querying all layers
             val features = mapboxMap.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
             if (features.isNotEmpty()) { // found a feature
                 // is the first feature always the correct one? looks like yes in a quick test
@@ -274,10 +261,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             true
         }
 
-        // need more information on how to work with expressions...
-        // or better use them in style json instead of here? probably easier
         overlayDashedLineLayer = LineLayer("overlay-dashed-lines", "overlay-source")
-            // separate layer for dashed lines
+            // separate layer for dashed lines, though maybe not necessary (lineDasharray dependent on property?)
             .withFilter(all(has("dashed"), gte(zoom(), 16f)))
             .withProperties(
                 lineCap(Property.LINE_CAP_BUTT),
@@ -285,8 +270,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 lineOpacity(get("opacity")),
                 lineOffset(changeDistanceWithZoom("offset")),
                 lineWidth(changeDistanceWithZoom("width")),
-                lineDasharray(arrayOf(1.5f, 1f)), // todo: dash length depends on zoom, but re-evaluated only at integer zoom borders and thus looks weird
-                // lineDasharray(array(literal(floatArrayOf(0.5f, 0.5f)))),
+                lineDasharray(arrayOf(1.5f, 1f)),
             )
         style.addLayerBelow(overlayDashedLineLayer!!, "pins-layer")
         overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
@@ -295,23 +279,20 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 lineCap(Property.LINE_CAP_BUTT),
                 lineColor(get("color")),
                 lineOpacity(get("opacity")),
-                // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
                 lineOffset(changeDistanceWithZoom("offset")),
                 lineWidth(changeDistanceWithZoom("width")),
-                // there is no "lineOutlineColor", so how to properly copy the tangram overlay style?
             )
         style.addLayerBelow(overlayLineLayer!!, "pins-layer") // means: above the dashed layer
 
-        // FillExtrusionLayer doesn't support outlines, only the normal FillLayer does...
-        overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
-            .withFilter(all(has("outline-color"), gte(zoom(), 16f))) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
+        // FillExtrusionLayer doesn't support outlines, FillLayer doesn't support 3D
+        overlayFillLayer = FillLayer("overlay-fills", "overlay-source")
+            // if a polygon has no outline-color, it's invisible anyway
+            //  actually this is to filter lines, maybe better filter by geometryType
+            .withFilter(all(has("outline-color"), gte(zoom(), 16f)))
             .withProperties(
-                //fillColor(get("color")),
-                //fillOutlineColor(get("outline-color")), // no outline color if extrusion?
-                //fillOpacity(get("opacity")),
-                fillExtrusionOpacity(get("opacity")),
-                fillExtrusionColor(get("color")),
-                fillExtrusionHeight(get("height")) // need extrusion layer for height
+                fillColor(get("color")),
+                fillOutlineColor(get("outline-color")),
+                fillOpacity(get("opacity")),
             )
         style.addLayerBelow(overlayFillLayer!!, "pins-layer")
 
@@ -319,17 +300,13 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withProperties(
                 iconImage("{icon}"),
                 textField("{label}"),
-                // or maybe read text properties from feature?
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
                 textMaxWidth(5f),
                 textHaloColor("white"),
-                textHaloWidth(1.5f), // works as expected, while for icons it doesn't
+                textHaloWidth(1.5f),
                 iconColor("black"),
-                // iconHaloColor("white"), // not needed any more but still why doesn't it work?
-                // iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
-                // iconHaloBlur(2f),
-                // both overlaps are required
+                // both overlaps are required, or symbols will be blocked by each other
                 iconAllowOverlap(step(zoom(), literal(false), stop(18, true))),
                 textAllowOverlap(step(zoom(), literal(false), stop(18, true))),
             )
@@ -341,7 +318,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
                 lineWidth(10f),
                 lineColor("#D140D0"),
                 lineOpacity(0.5f),
-                lineCap(Property.LINE_CAP_ROUND) // wow, this looks really ugly with opacity
+                lineCap(Property.LINE_CAP_ROUND)
             )
         style.addLayerBelow(geometryLineLayer, "pins-layer")
 
@@ -404,7 +381,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             .withFilter(not(has("icon")))
         style.addLayerBelow(focusGeometryCircleLayer, "pins-layer")
 
-        // something is not working here
         val trackLayer = LineLayer("track", "track-source")
             .withProperties(
                 lineWidth(10f),
@@ -623,7 +599,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         var overlayDashedLineLayer: LineLayer? = null
         var overlayLineLayer: LineLayer? = null
-        var overlayFillLayer: FillExtrusionLayer? = null
+        var overlayFillLayer: FillLayer? = null
         var overlaySymbolLayer: SymbolLayer? = null
     }
 }
