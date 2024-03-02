@@ -431,7 +431,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         super.onMapIsChanging(position, rotation, tilt, zoom)
         questPinsManager?.onNewScreenPosition()
         styleableOverlayManager?.onNewScreenPosition()
-        downloadedAreaManager?.onNewScreenPosition()
     }
 
     override fun onDestroyView() {

@@ -48,8 +48,4 @@ class DownloadedAreaManager(
             withContext(Dispatchers.Main) { mapComponent.set(tiles) }
         }
     }
-
-    fun onNewScreenPosition() {
-        update()
-    }
 }
