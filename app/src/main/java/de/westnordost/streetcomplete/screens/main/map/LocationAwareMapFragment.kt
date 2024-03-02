@@ -16,14 +16,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
-import de.westnordost.streetcomplete.screens.main.map.maplibre.screenBottomToCenterDistance
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
-import de.westnordost.streetcomplete.util.math.translate
 import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -204,24 +202,17 @@ open class LocationAwareMapFragment : MapFragment() {
 
     fun centerCurrentPosition() {
         val displayedPosition = displayedLocation?.toLatLon() ?: return
-        var centerPosition = displayedPosition
 
         updateCameraPosition(600) {
             if (isNavigationMode) {
                 val bearing = getTrackBearing(tracks.last())
                 if (bearing != null) {
                     rotation = -(bearing * PI / 180.0)
-                    /* move center position down a bit, so there is more space in front of than
-                       behind user */
-                    val distance = mapboxMap?.screenBottomToCenterDistance()
-                    if (distance != null) {
-                        centerPosition = centerPosition.translate(distance * 0.4, bearing.toDouble())
-                    }
                 }
                 tilt = 60.0 // looks like we use degrees
             }
 
-            position = centerPosition
+            position = displayedPosition
 
             if (!zoomedYet) {
                 zoomedYet = true

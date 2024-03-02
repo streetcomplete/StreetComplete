@@ -148,7 +148,7 @@ class QuestPinsManager(
         // require zoom >= 14, which is the lowest zoom level where quests are shown
         if (zoom < 14) return
         MainActivity.activity?.runOnUiThread {
-            val displayedArea = map.screenAreaToBoundingBox(RectF()) ?: return@runOnUiThread
+            val displayedArea = map.screenAreaToBoundingBox()
             val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
             // area too big -> skip (performance)
             if (tilesRect.size > 16) return@runOnUiThread

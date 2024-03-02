@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map.maplibre
 
-import android.graphics.PointF
-import android.graphics.RectF
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Geometry
 import com.mapbox.geojson.LineString
@@ -10,91 +8,27 @@ import com.mapbox.geojson.MultiPolygon
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.Polygon
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.geometry.LatLngBounds
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
-import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.math.distanceTo
-import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.util.math.isInPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import de.westnordost.streetcomplete.util.math.measuredArea
-import de.westnordost.streetcomplete.util.math.translate
-import kotlin.math.pow
 
-fun MapboxMap.screenPositionToLatLon(screenPosition: PointF): LatLon =
-    projection.fromScreenLocation(screenPosition).toLatLon()
+fun MapboxMap.getMetersPerPixel(): Double? =
+    cameraPosition.target?.latitude?.let { projection.getMetersPerPixelAtLatitude(it) }
 
-fun MapboxMap.latLonToScreenPosition(latLon: LatLon): PointF =
-    projection.toScreenLocation(latLon.toLatLng())
+fun MapboxMap.screenAreaToBoundingBox(): BoundingBox =
+    projection.getVisibleRegion(true).latLngBounds.toBoundingBox()
 
-fun MapboxMap.screenCenterToLatLon(padding: RectF): LatLon? {
-    if (width == 0f || height == 0f) return null
-
-    return screenPositionToLatLon(
-        PointF(
-            padding.left + (width - padding.left - padding.right) / 2f,
-            padding.top + (height - padding.top - padding.bottom) / 2f
-        )
-    )
-}
-
-// todo: use mapboxMap.projection.getVisibleRegion(ignorePadding)?
-//  just need to convert to bounding box
-//  but if we want padding, we need to set it first, and unset it later
-fun MapboxMap.screenAreaToBoundingBox(padding: RectF): BoundingBox? {
-    if (width == 0f || height == 0f) return null
-
-    val size = PointF(width - padding.left - padding.right, height - padding.top - padding.bottom)
-
-    // the special cases here are: map tilt and map rotation:
-    // * map tilt makes the screen area -> world map area into a trapezoid
-    // * map rotation makes the screen area -> world map area into a rotated rectangle
-    // dealing with tilt: this method is just not defined if the tilt is above a certain limit
-    if (cameraPosition.tilt > Math.PI / 4f) return null // 45°
-
-    val positions = listOf(
-        screenPositionToLatLon(PointF(padding.left, padding.top)),
-        screenPositionToLatLon(PointF(padding.left + size.x, padding.top)),
-        screenPositionToLatLon(PointF(padding.left, padding.top + size.y)),
-        screenPositionToLatLon(PointF(padding.left + size.x, padding.top + size.y))
-    )
-
-    return positions.enclosingBoundingBox()
-}
-
-fun MapboxMap.getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom.toFloat()): LatLon? {
-    if (width == 0f || height == 0f) return null
-
-    val screenCenter = screenPositionToLatLon(PointF(width / 2f, height / 2f))
-    val offsetScreenCenter = screenPositionToLatLon(
-        PointF(
-            padding.left + (width - padding.left - padding.right) / 2,
-            padding.top + (height - padding.top - padding.bottom) / 2
-        )
-    )
-
-    val zoomDelta = zoom.toDouble() - cameraPosition.zoom
-    val distance = offsetScreenCenter.distanceTo(screenCenter)
-    val angle = offsetScreenCenter.initialBearingTo(screenCenter)
-    val distanceAfterZoom = distance * (2.0).pow(-zoomDelta)
-    return position.translate(distanceAfterZoom, angle)
-}
-
-fun MapboxMap.screenBottomToCenterDistance(): Double? {
-    if (width == 0f || height == 0f) return null
-
-    val center = screenPositionToLatLon(PointF(width / 2f, height / 2f))
-    val bottom = screenPositionToLatLon(PointF(width / 2f, height * 1f))
-    return center.distanceTo(bottom)
-}
-
+fun LatLngBounds.toBoundingBox() =
+    BoundingBox(latitudeSouth, longitudeWest, latitudeNorth, longitudeEast)
 
 fun LatLng.toLatLon() = LatLon(latitude, longitude)
 fun LatLon.toLatLng() = LatLng(latitude, longitude)

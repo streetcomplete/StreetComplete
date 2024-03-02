@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.mapbox.mapboxsdk.maps.MapboxMap
@@ -127,7 +126,7 @@ class StyleableOverlayManager(
         val zoom = map.cameraPosition.zoom
         if (zoom < TILES_ZOOM) return
         MainActivity.activity?.runOnUiThread {
-            val displayedArea = map.screenAreaToBoundingBox(RectF()) ?: return@runOnUiThread
+            val displayedArea = map.screenAreaToBoundingBox()
             val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
             // area too big -> skip (performance)
             if (tilesRect.size > 16) return@runOnUiThread

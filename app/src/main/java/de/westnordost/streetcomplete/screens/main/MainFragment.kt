@@ -261,15 +261,9 @@ class MainFragment :
     @UiThread
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        val mapFragment = this.mapFragment ?: return
-        /* when rotating the screen and the bottom sheet is open, the view
-           should not rotate around its proper center but around the center
-           of the part of the map that is not occluded by the bottom sheet */
-        val previousOffset = mapOffsetWithOpenBottomSheet
+
         updateOffsetWithOpenBottomSheet()
-        if (bottomSheetFragment != null) {
-            mapFragment.adjustToOffsets(previousOffset, mapOffsetWithOpenBottomSheet)
-        }
+
         binding.crosshairView.setPadding(
             resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
@@ -496,8 +490,7 @@ class MainFragment :
             mapFragment.hideOverlay()
         }
 
-        val offsetPos = mapFragment.getPositionThatCentersPosition(node.position, RectF())
-        mapFragment.updateCameraPosition { position = offsetPos }
+        mapFragment.updateCameraPosition { position = node.position }
     }
 
     override fun onMovedNode(editType: ElementEditType, position: LatLon) {
@@ -838,9 +831,7 @@ class MainFragment :
     private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {
         val mapFragment = mapFragment ?: return
         showInBottomSheet(CreateNoteFragment.create(hasGpxAttached))
-
-        val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
-        mapFragment.updateCameraPosition { position = offsetPos }
+        mapFragment.updateCameraPosition { position = pos }
     }
 
     private fun onClickCreateTrack() {

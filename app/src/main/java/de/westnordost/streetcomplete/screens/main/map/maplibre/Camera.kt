@@ -5,7 +5,6 @@ import android.graphics.RectF
 import android.provider.Settings
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
-import de.westnordost.streetcomplete.data.maptiles.toLatLng
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
@@ -17,9 +16,7 @@ fun MapboxMap.getEnclosingCamera(geometry: ElementGeometry, padding: RectF): Cam
             padding.top.toInt(),
             padding.right.toInt(),
             padding.bottom.toInt()
-        ),
-        cameraPosition.bearing,
-        cameraPosition.tilt
+        )
     )?.toCameraPosition()
 
 var MapboxMap.camera: CameraPosition

@@ -24,11 +24,10 @@ import de.westnordost.streetcomplete.screens.main.map.components.SceneMapCompone
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
-import de.westnordost.streetcomplete.screens.main.map.maplibre.getLatLonThatCentersLatLon
-import de.westnordost.streetcomplete.screens.main.map.maplibre.latLonToScreenPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.getMetersPerPixel
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
-import de.westnordost.streetcomplete.screens.main.map.maplibre.screenCenterToLatLon
-import de.westnordost.streetcomplete.screens.main.map.maplibre.screenPositionToLatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLng
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
@@ -55,7 +54,6 @@ open class MapFragment : Fragment() {
         private set
 
     private val vectorTileProvider: VectorTileProvider by inject()
-//    private val cacheConfig: MapTilesDownloadCacheConfig by inject()
     private val prefs: Preferences by inject()
 
     interface Listener {
@@ -159,11 +157,7 @@ open class MapFragment : Fragment() {
 
     override fun onLowMemory() {
         super.onLowMemory()
-        try {
-            binding.map.onLowMemory()
-        } catch (e: Exception) {
-            // ignore (see https://github.com/streetcomplete/StreetComplete/issues/4221)
-        }
+        binding.map.onLowMemory()
     }
 
     /* ------------------------------------------- Map  ----------------------------------------- */
@@ -316,17 +310,11 @@ open class MapFragment : Fragment() {
 
     /* ------------------------------- Controlling the map -------------------------------------- */
 
-    fun adjustToOffsets(oldOffset: RectF, newOffset: RectF) {
-        mapboxMap?.screenCenterToLatLon(oldOffset)?.let { pos ->
-            mapboxMap?.updateCamera(contentResolver = requireContext().contentResolver) {
-                position = mapboxMap?.getLatLonThatCentersLatLon(pos, newOffset)
-            }
-        }
-    }
+    fun getPositionAt(point: PointF): LatLon? =
+        mapboxMap?.projection?.fromScreenLocation(point)?.toLatLon()
 
-    fun getPositionAt(point: PointF): LatLon? = mapboxMap?.screenPositionToLatLon(point)
-
-    fun getPointOf(pos: LatLon): PointF? = mapboxMap?.latLonToScreenPosition(pos)
+    fun getPointOf(pos: LatLon): PointF? =
+        mapboxMap?.projection?.toScreenLocation(pos.toLatLng())
 
     val cameraPosition: CameraPosition?
         get() = mapboxMap?.camera
@@ -346,18 +334,7 @@ open class MapFragment : Fragment() {
         }
     }
 
-    fun getPositionThatCentersPosition(pos: LatLon, offset: RectF): LatLon? {
-        return mapboxMap?.getLatLonThatCentersLatLon(pos, offset)
-    }
+    fun getDisplayedArea(): BoundingBox? = mapboxMap?.screenAreaToBoundingBox()
 
-    fun getDisplayedArea(): BoundingBox? = mapboxMap?.screenAreaToBoundingBox(RectF())
-
-    fun getMetersPerPixel(): Double? {
-        val view = view ?: return null
-        val x = view.width / 2f
-        val y = view.height / 2f
-        val pos1 = mapboxMap?.screenPositionToLatLon(PointF(x, y)) ?: return null
-        val pos2 = mapboxMap?.screenPositionToLatLon(PointF(x + 1, y)) ?: return null
-        return pos1.distanceTo(pos2)
-    }
+    fun getMetersPerPixel(): Double? = mapboxMap?.getMetersPerPixel()
 }

@@ -140,4 +140,4 @@ private sealed class DownloadResult
 private data class DownloadSuccess(val alreadyCached: Boolean, val size: Int) : DownloadResult()
 private object DownloadFailure : DownloadResult()
 
-fun LatLon.toLatLng() = LatLng(latitude, longitude)
+private fun LatLon.toLatLng() = LatLng(latitude, longitude)
