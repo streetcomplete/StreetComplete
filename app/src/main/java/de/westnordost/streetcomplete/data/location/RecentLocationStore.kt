@@ -38,7 +38,9 @@ class RecentLocationStore {
         }
         recentLocations.add(location)
     }
-}
 
-private val LOCATION_STORE_TIME = 10.minutes
-private val LOCATION_MIN_TIME_DIFFERENCE = 5.seconds
+    companion object {
+        private val LOCATION_STORE_TIME = 10.minutes
+        private val LOCATION_MIN_TIME_DIFFERENCE = 5.seconds
+    }
+}
