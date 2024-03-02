@@ -221,11 +221,12 @@ class QuestPinsManager(
     private fun getQuestImportance(quest: Quest): Int = synchronized(questTypeOrders) {
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
         val freeValuesForEachQuest = 100000 / questTypeOrders.size
-        /* position is used to add values unique to each quest to make ordering consistent
-           freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int
-           note that quest.position.hashCode() can be negative and hopefullyUniqueValueForQuest
-           should be positive to ensure that it will not change quest order
-           */
+        /*
+            position is used to add values unique to each quest to make ordering consistent
+            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int
+            note that quest.position.hashCode() can be negative and hopefullyUniqueValueForQuest
+            should be positive to ensure that it will not change quest order
+         */
         val hopefullyUniqueValueForQuest = (abs(quest.position.hashCode())) % freeValuesForEachQuest
         return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }

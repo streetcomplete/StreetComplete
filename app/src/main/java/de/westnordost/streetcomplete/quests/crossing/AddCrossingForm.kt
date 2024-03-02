@@ -17,7 +17,8 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
         TextItem(PROHIBITED, R.string.quest_crossing_prohibited),
     )
 
-    /*  PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk
+    /*
+        PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk
         infrastructure) because if the crossing does not exist, it would require to also
         delete/adapt the crossing ways, rather than just tagging crossing=no on the vertex.
 
@@ -27,7 +28,7 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
 
         NO on the other hand would be okay because crossing=informal would not require deleting
         the crossing ways (I would say... it is in edge case...)
-        */
+     */
     override fun onClickOk() {
         if (checkedItem?.value == PROHIBITED && isOnSidewalkOrCrossing()) {
             AlertDialog.Builder(requireContext())

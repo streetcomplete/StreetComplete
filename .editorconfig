@@ -23,7 +23,6 @@ ktlint_standard_argument-list-wrapping = disabled
 ktlint_standard_backing-property-naming = disabled
 ktlint_standard_blank-line-before-declaration = disabled
 ktlint_standard_blank-line-between-when-conditions = disabled
-ktlint_standard_block-comment-initial-star-alignment = disabled
 ktlint_standard_chain-wrapping = disabled
 ktlint_standard_comment-wrapping = disabled
 ktlint_standard_function-naming = disabled

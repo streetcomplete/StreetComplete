@@ -220,28 +220,28 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     private fun createSegregatedAnswer(): AnswerItem? =
         if (isSegregatedLayout) {
             /*
-            No option to switch back to single surface. Removing info about separate cycleway is
-            too complicated.
+                No option to switch back to single surface. Removing info about separate cycleway is
+                too complicated.
 
-            Typically it requires editing not only surface info but also an access info as it
-            happens in cases where bicycle access is gone. May require also removal of
-            cycleway=separate, bicycle=use_sidepath from the road.
+                Typically it requires editing not only surface info but also an access info as it
+                happens in cases where bicycle access is gone. May require also removal of
+                cycleway=separate, bicycle=use_sidepath from the road.
 
-            And in cases where there is a segregated cycleway with the same surface as footway
-            then StreetComplete will anyway ask for cycleway:surface and footway:surface.
+                And in cases where there is a segregated cycleway with the same surface as footway
+                then StreetComplete will anyway ask for cycleway:surface and footway:surface.
 
-            Fortunately need for this change are really rare. Notes can be left as usual.
-            */
+                Fortunately need for this change are really rare. Notes can be left as usual.
+             */
             null
         } else if (isBothFootAndBicycleTraffic(element!!)) {
             /*
-            Only where bicycle access is already present because adding bicycle access typically
-            requires adding proper access tags, interconnections with roads and often also other
-            geometry changes.
+                Only where bicycle access is already present because adding bicycle access typically
+                requires adding proper access tags, interconnections with roads and often also other
+                geometry changes.
 
-            In case where path is not clearly marked as carrying both foot and bicycle traffic
-            mapper can leave a note
-            */
+                In case where path is not clearly marked as carrying both foot and bicycle traffic
+                mapper can leave a note
+             */
             AnswerItem(R.string.overlay_path_surface_segregated) {
                 // reset previous data
                 surfaceCtrl.value = originalSurface
