@@ -6,13 +6,10 @@ import android.graphics.drawable.LayerDrawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.style.expressions.Expression.*
-import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -23,7 +20,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
@@ -37,7 +33,6 @@ import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverla
 import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.presetIconIndex
 import kotlinx.coroutines.Dispatchers
@@ -120,7 +115,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
-//        ctrl.setPickRadius(8f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, mapboxMap)
 
         pinsMapComponent = PinsMapComponent(requireContext(), questTypeRegistry, overlayRegistry, mapboxMap)
@@ -176,13 +170,12 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         super.onMapReady(mapView, mapboxMap, style) // leftover from initial implementation, maybe change?
 
         // add click listeners
-        val radius = requireContext().dpToPx(8).toInt()
+        val pickRadius = requireContext().dpToPx(8).toInt()
         mapboxMap.addOnMapClickListener { pos ->
             // check whether we clicked a feature
             val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
-            val searchArea = RectF(screenPoint.x - radius, screenPoint.y - radius, screenPoint.x + radius, screenPoint.y + radius)
-            // only query this specific layer(s), leave layerIds empty for querying all layers
-//            val features = mapboxMap.queryRenderedFeatures(screenPoint, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
+            val searchArea = RectF(screenPoint.x - pickRadius, screenPoint.y - pickRadius, screenPoint.x + pickRadius, screenPoint.y + pickRadius)
+            // only query specific layer(s), leave layerIds empty for querying all layers
             val features = mapboxMap.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
             if (features.isNotEmpty()) { // found a feature
                 // is the first feature always the correct one? looks like yes in a quick test
@@ -410,4 +403,3 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         private const val CLICK_AREA_SIZE_IN_DP = 48
     }
 }
-

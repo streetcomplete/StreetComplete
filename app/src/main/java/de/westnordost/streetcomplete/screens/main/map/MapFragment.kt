@@ -214,6 +214,7 @@ open class MapFragment : Fragment() {
         mapboxMap: MapboxMap,
         style: Style
     ) {
+        this.mapboxMap = mapboxMap
         restoreMapState()
     }
 
