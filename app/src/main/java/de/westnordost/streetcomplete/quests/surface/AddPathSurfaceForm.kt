@@ -31,15 +31,14 @@ class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>(
             }
     }
 
-    private fun createConvertToStepsAnswer(): AnswerItem? {
-        return if (element.couldBeSteps()) {
+    private fun createConvertToStepsAnswer(): AnswerItem? =
+        if (element.couldBeSteps()) {
             AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
                 applyAnswer(IsActuallyStepsAnswer, true)
             }
         } else {
             null
         }
-    }
 
     private fun createMarkAsIndoorsAnswer(): AnswerItem? {
         val way = element as? Way ?: return null

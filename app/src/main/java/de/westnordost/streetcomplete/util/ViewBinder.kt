@@ -33,9 +33,7 @@ class ActivityBindingPropertyDelegate<T : ViewBinding>(
         activity.lifecycle.addObserver(this)
     }
 
-    override fun getValue(thisRef: AppCompatActivity, property: KProperty<*>): T {
-        return getBinding()
-    }
+    override fun getValue(thisRef: AppCompatActivity, property: KProperty<*>): T = getBinding()
 
     override fun onStateChanged(source: LifecycleOwner, event: Event) {
         if (event == Event.ON_CREATE) {

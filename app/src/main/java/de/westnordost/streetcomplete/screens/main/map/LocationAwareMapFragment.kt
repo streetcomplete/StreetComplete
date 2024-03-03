@@ -195,9 +195,7 @@ open class LocationAwareMapFragment : MapFragment() {
         tracksMapComponent?.startNewTrack(false)
     }
 
-    protected open fun shouldCenterCurrentPosition(): Boolean {
-        return isFollowingPosition
-    }
+    protected open fun shouldCenterCurrentPosition(): Boolean = isFollowingPosition
 
     fun centerCurrentPosition() {
         val displayedPosition = displayedLocation?.toLatLon() ?: return

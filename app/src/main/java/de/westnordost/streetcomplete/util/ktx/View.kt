@@ -23,13 +23,12 @@ fun View.popIn(): ViewPropertyAnimator {
         .withEndAction(null)
 }
 
-fun View.popOut(): ViewPropertyAnimator {
-    return animate()
+fun View.popOut(): ViewPropertyAnimator =
+    animate()
         .alpha(0f).scaleX(0.5f).scaleY(0.5f)
         .setDuration(100)
         .setInterpolator(AccelerateInterpolator())
         .withEndAction { visibility = View.GONE }
-}
 
 suspend fun View.awaitLayout() {
     if (!isLaidOut || isLayoutRequested) {

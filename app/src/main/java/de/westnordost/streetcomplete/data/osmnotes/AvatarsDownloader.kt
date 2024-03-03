@@ -32,14 +32,13 @@ class AvatarsDownloader(
         Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
     }
 
-    private fun getProfileImageUrl(userId: Long): String? {
-        return try {
+    private fun getProfileImageUrl(userId: Long): String? =
+        try {
             userApi.get(userId)?.profileImageUrl
         } catch (e: Exception) {
             Log.w(TAG, "Unable to query info for user id $userId")
             null
         }
-    }
 
     /** download avatar for the given user and a known avatar url */
     fun download(userId: Long, avatarUrl: String) {
@@ -53,9 +52,8 @@ class AvatarsDownloader(
         }
     }
 
-    private fun ensureCacheDirExists(): Boolean {
-        return cacheDir.exists() || cacheDir.mkdirs()
-    }
+    private fun ensureCacheDirExists(): Boolean =
+        cacheDir.exists() || cacheDir.mkdirs()
 
     companion object {
         private const val TAG = "OsmAvatarsDownload"

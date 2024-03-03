@@ -63,9 +63,8 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
         val layoutManager = GridLayoutManager(activity, itemsPerRow)
         layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return if (imageSelector.items[position].isGroup) layoutManager.spanCount else 1
-            }
+            override fun getSpanSize(position: Int): Int =
+                if (imageSelector.items[position].isGroup) layoutManager.spanCount else 1
         }
         binding.list.layoutManager = layoutManager
         binding.list.isNestedScrollingEnabled = false

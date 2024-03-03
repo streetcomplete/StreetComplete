@@ -19,7 +19,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.math.tan
 
-/** Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
+/* Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
  * approximation and totally sufficient for our use here.  */
 
 /** In meters. See https://en.wikipedia.org/wiki/Earth_radius#Mean_radius */
@@ -183,9 +183,8 @@ fun LatLon.nearestPointOf(polyline: List<LatLon>): LatLon {
 }
 
 /** Returns the segment of the given polyline that is closest to this point */
-fun LatLon.nearestArcOf(polyline: List<LatLon>): Pair<LatLon, LatLon> {
-    return polyline.asSequenceOfPairs().minBy { distanceToArc(it.first, it.second) }
-}
+fun LatLon.nearestArcOf(polyline: List<LatLon>): Pair<LatLon, LatLon> =
+    polyline.asSequenceOfPairs().minBy { distanceToArc(it.first, it.second) }
 
 //endregion
 
@@ -222,14 +221,13 @@ fun List<LatLon>.intersectsWith(polyline: List<LatLon>): Boolean {
 }
 
 /** Returns whether the arc spanned between p1 and p2 intersects with the arc spanned by p2 and p4 */
-fun intersectionOf(p1: LatLon, p2: LatLon, p3: LatLon, p4: LatLon): LatLon? {
-    return arcIntersection(
+fun intersectionOf(p1: LatLon, p2: LatLon, p3: LatLon, p4: LatLon): LatLon? =
+    arcIntersection(
         p1.toNormalOnSphere(),
         p2.toNormalOnSphere(),
         p3.toNormalOnSphere(),
         p4.toNormalOnSphere()
     )?.toLatLon()
-}
 
 /** Returns a bounding box that contains all points */
 fun Iterable<LatLon>.enclosingBoundingBox(): BoundingBox {
@@ -270,11 +268,10 @@ fun Iterable<LatLon>.enclosingBoundingBox(): BoundingBox {
 }
 
 /** Returns the distance covered by this polyline */
-fun List<LatLon>.measuredLength(globeRadius: Double = EARTH_RADIUS): Double {
-    return asSequenceOfPairs().sumOf { (first, second) ->
+fun List<LatLon>.measuredLength(globeRadius: Double = EARTH_RADIUS): Double =
+    asSequenceOfPairs().sumOf { (first, second) ->
         first.distanceTo(second, globeRadius)
     }
-}
 
 /** Returns the line around the center point of this polyline
  *  @throws IllegalArgumentException if list is empty
@@ -305,33 +302,29 @@ fun List<LatLon>.centerPointOfPolyline(globeRadius: Double = EARTH_RADIUS): LatL
 /**
  * Returns the point the distance into the polyline. Null if the polyline is not long enough.
  */
-fun List<LatLon>.pointOnPolylineFromStart(distance: Double): LatLon? {
-    return pointsOnPolyline(false, distance).firstOrNull()
-}
+fun List<LatLon>.pointOnPolylineFromStart(distance: Double): LatLon? =
+    pointsOnPolyline(false, distance).firstOrNull()
 
 /**
  * Returns the points the distances into the polyline. Returns less points if the polyline is not
  * long enough.
  */
-fun List<LatLon>.pointsOnPolylineFromStart(distances: List<Double>): List<LatLon> {
-    return pointsOnPolyline(false, *distances.toDoubleArray())
-}
+fun List<LatLon>.pointsOnPolylineFromStart(distances: List<Double>): List<LatLon> =
+    pointsOnPolyline(false, *distances.toDoubleArray())
 
 /**
  * Returns the point the distance into the polyline, starting from the end. Null if the polyline is
  * not long enough.
  */
-fun List<LatLon>.pointOnPolylineFromEnd(distance: Double): LatLon? {
-    return pointsOnPolyline(true, distance).firstOrNull()
-}
+fun List<LatLon>.pointOnPolylineFromEnd(distance: Double): LatLon? =
+    pointsOnPolyline(true, distance).firstOrNull()
 
 /**
  * Returns the points the distances into the polyline, starting from the end. Returns less points if
  * the polyline is not long enough.
  */
-fun List<LatLon>.pointsOnPolylineFromEnd(distances: List<Double>): List<LatLon> {
-    return pointsOnPolyline(true, *distances.toDoubleArray())
-}
+fun List<LatLon>.pointsOnPolylineFromEnd(distances: List<Double>): List<LatLon> =
+    pointsOnPolyline(true, *distances.toDoubleArray())
 
 private fun List<LatLon>.pointsOnPolyline(fromEnd: Boolean, vararg distances: Double): List<LatLon> {
     if (distances.isEmpty()) return emptyList()
@@ -437,16 +430,14 @@ private fun inside(v: Double, bound0: Double, bound1: Double): Boolean =
  * Returns the area of a this multipolygon, assuming the outer shell is defined counterclockwise and
  * any holes are defined clockwise
  */
-fun List<List<LatLon>>.measuredMultiPolygonArea(globeRadius: Double = EARTH_RADIUS): Double {
-    return sumOf { it.measuredAreaSigned(globeRadius) }
-}
+fun List<List<LatLon>>.measuredMultiPolygonArea(globeRadius: Double = EARTH_RADIUS): Double =
+    sumOf { it.measuredAreaSigned(globeRadius) }
 
 /**
  * Returns the area of a this polygon
  */
-fun List<LatLon>.measuredArea(globeRadius: Double = EARTH_RADIUS): Double {
-    return abs(measuredAreaSigned(globeRadius))
-}
+fun List<LatLon>.measuredArea(globeRadius: Double = EARTH_RADIUS): Double =
+    abs(measuredAreaSigned(globeRadius))
 
 /**
  * Returns the signed area of a this polygon. If it is defined counterclockwise, it'll return
@@ -519,21 +510,19 @@ fun BoundingBox.area(globeRadius: Double = EARTH_RADIUS): Double {
 }
 
 /** Returns a new bounding box that is [radius] larger than this bounding box */
-fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): BoundingBox {
-    return BoundingBox(
+fun BoundingBox.enlargedBy(radius: Double, globeRadius: Double = EARTH_RADIUS): BoundingBox =
+    BoundingBox(
         min.translate(radius, 225.0, globeRadius),
         max.translate(radius, 45.0, globeRadius)
     )
-}
 
 /** returns whether this bounding box contains the given position */
-operator fun BoundingBox.contains(pos: LatLon): Boolean {
-    return if (crosses180thMeridian) {
+operator fun BoundingBox.contains(pos: LatLon): Boolean =
+    if (crosses180thMeridian) {
         splitAt180thMeridian().any { it.containsCanonical(pos) }
     } else {
         containsCanonical(pos)
     }
-}
 
 /** returns whether this bounding box contains the given position, assuming the bounding box does
  *  not cross the 180th meridian */
@@ -570,8 +559,8 @@ private fun BoundingBox.isCompletelyInsideCanonical(other: BoundingBox): Boolean
 private inline fun BoundingBox.checkAlignment(
     other: BoundingBox,
     canonicalCheck: (bbox1: BoundingBox, bbox2: BoundingBox) -> Boolean
-): Boolean {
-    return if (crosses180thMeridian) {
+): Boolean =
+    if (crosses180thMeridian) {
         val these = splitAt180thMeridian()
         if (other.crosses180thMeridian) {
             val others = other.splitAt180thMeridian()
@@ -587,7 +576,6 @@ private inline fun BoundingBox.checkAlignment(
             canonicalCheck(this, other)
         }
     }
-}
 
 //endregion
 

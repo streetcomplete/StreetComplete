@@ -54,10 +54,11 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
         }
 
         return onewayCandidates.filter {
-            /* ways that are simply at the border of the download bounding box are treated as if
-               they are dead ends. This is fine though, because it only leads to this quest not
-               showing up for those streets (which is better than the other way round)
-            */
+            /*
+                ways that are simply at the border of the download bounding box are treated as if
+                they are dead ends. This is fine though, because it only leads to this quest not
+                showing up for those streets (which is better than the other way round)
+             */
             // check if the way has connections to other roads at both ends
             (connectionCountByNodeIds[it.nodeIds.first()] ?: 0) > 1 &&
             (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1

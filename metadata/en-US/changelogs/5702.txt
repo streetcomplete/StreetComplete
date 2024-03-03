@@ -3,4 +3,5 @@
 - still allow answering default / below_default for maxheight (was removed from SC)
 - trim spaces in tag editor
 - update translations
-- crash fixes
+- crash
+- enqueuing manual downloads currently disabled (not working due to downloader changes)

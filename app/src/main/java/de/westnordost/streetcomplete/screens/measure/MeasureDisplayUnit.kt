@@ -27,9 +27,8 @@ data class MeasureDisplayUnitMeter(val cmStep: Int) : MeasureDisplayUnit() {
     }
 
     /** Returns the given distance in meters rounded to the given precision */
-    fun getRounded(distanceMeters: Float): Float {
-        return round(distanceMeters * 100 / cmStep) * cmStep / 100
-    }
+    fun getRounded(distanceMeters: Float): Float =
+        round(distanceMeters * 100 / cmStep) * cmStep / 100
 }
 
 /** Measurement displayed in feet+inch, inches rounded to nearest [inchStep]. Must be between 1-12 */

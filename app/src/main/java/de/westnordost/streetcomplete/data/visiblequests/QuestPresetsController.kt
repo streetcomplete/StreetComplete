@@ -28,9 +28,8 @@ class QuestPresetsController(
         return presetId
     }
 
-    override fun getName(presetId: Long): String? {
-        return questPresetsDao.getName(presetId)
-    }
+    override fun getName(presetId: Long): String? =
+        questPresetsDao.getName(presetId)
 
     fun rename(presetId: Long, name: String) {
         questPresetsDao.rename(presetId, name)

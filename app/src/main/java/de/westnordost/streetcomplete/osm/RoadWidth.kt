@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOffRoad
 import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOnRoad
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 
-/** Functions to estimate road width(s). */
+/* Functions to estimate road width(s). */
 
 /** Estimated width of the roadway "from curb to curb". So, including any parking
  *  lanes on the street, cycle lanes, shoulders etc.
@@ -83,19 +83,18 @@ fun hasDubiousRoadWidth(tags: Map<String, String>): Boolean? {
                 // all others should at least be broad enough to accommodate a truck
                 return usableWidth < 2.6f
             }
-        }
-        /* one may assume that if the usable width of non-oneway roads is below double the above
-           widths, it is also implausible, however, this is actually sometimes the case, by design:
-           - on 2-1 roads (roads with no car lanes markings and advisory cycle lanes on both sides)
-             https://en.wikipedia.org/wiki/2-1_road
-           - certain residential streets with (partial) on-street parking that narrow them down so
-             much that drivers have to do a slalom around the parking cars and have to wait on each
-             other to pass them
-           Hence, to declare such common cases implausible is dubious.
-           However, if the total carriageway (ignoring street parking etc.) of a non-oneway is below
-           2x the above, then it is dubious
-         */
-        else {
+        } else {
+            /* one may assume that if the usable width of non-oneway roads is below double the above
+               widths, it is also implausible, however, this is actually sometimes the case, by design:
+               - on 2-1 roads (roads with no car lanes markings and advisory cycle lanes on both sides)
+                 https://en.wikipedia.org/wiki/2-1_road
+               - certain residential streets with (partial) on-street parking that narrow them down so
+                 much that drivers have to do a slalom around the parking cars and have to wait on each
+                 other to pass them
+               Hence, to declare such common cases implausible is dubious.
+               However, if the total carriageway (ignoring street parking etc.) of a non-oneway is below
+               2x the above, then it is dubious
+             */
             val width = estimateRoadwayWidth(tags) ?: return null
             return width < 2 * 2.6f
         }

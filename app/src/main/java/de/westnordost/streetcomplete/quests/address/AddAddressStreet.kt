@@ -75,6 +75,5 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
     }
 }
 
-private fun Relation.contains(elementType: ElementType, elementId: Long): Boolean {
-    return members.any { it.type == elementType && it.ref == elementId }
-}
+private fun Relation.contains(elementType: ElementType, elementId: Long): Boolean =
+    members.any { it.type == elementType && it.ref == elementId }

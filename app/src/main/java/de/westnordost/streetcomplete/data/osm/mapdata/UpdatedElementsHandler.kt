@@ -48,9 +48,8 @@ class UpdatedElementsHandler(val ignoreRelationTypes: Set<String?> = emptySet())
             is Relation -> createUpdatedRelation(element, newId, newVersion)
         }
 
-    private fun createUpdatedNode(node: Node, newId: Long, newVersion: Int): Node {
-        return Node(newId, node.position, HashMap(node.tags), newVersion, node.timestampEdited)
-    }
+    private fun createUpdatedNode(node: Node, newId: Long, newVersion: Int): Node =
+        Node(newId, node.position, HashMap(node.tags), newVersion, node.timestampEdited)
 
     private fun createUpdatedWay(way: Way, newId: Long, newVersion: Int): Way {
         val newNodeIds = ArrayList<Long>(way.nodeIds.size)

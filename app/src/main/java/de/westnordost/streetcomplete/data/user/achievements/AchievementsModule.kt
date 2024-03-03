@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
@@ -61,7 +62,8 @@ private val typeAliases = listOf(
     "CyclewayOverlay"                    to AddCycleway::class.simpleName!!,
     "BuildingsOverlay"                   to AddBuildingType::class.simpleName!!,
     "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
-    "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!
+    "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!,
+    "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,
 )
 
 private val links = listOf(

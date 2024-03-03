@@ -29,8 +29,7 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
 
         @Serializable
         data class TrafficFlowSegmentList(val segments: List<TrafficFlowSegment>)
-        fun parse(jsonString: String): Map<Long, List<TrafficFlowSegment>> {
-            return json.decodeFromString<TrafficFlowSegmentList>(jsonString).segments.groupBy { it.wayId }
-        }
+        fun parse(jsonString: String): Map<Long, List<TrafficFlowSegment>> =
+            json.decodeFromString<TrafficFlowSegmentList>(jsonString).segments.groupBy { it.wayId }
     }
 }

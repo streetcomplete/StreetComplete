@@ -23,8 +23,8 @@ private data class StatisticsDTO(
 )
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
-    fun parse(json: String): Statistics {
-        return with(decodeFromString<StatisticsDTO>(json)) {
+    fun parse(json: String): Statistics =
+        with(decodeFromString<StatisticsDTO>(json)) {
             Statistics(
                 types = parseEditTypeStatistics(questTypes),
                 countries = countries.map { (key, value) ->
@@ -43,7 +43,6 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
                 isAnalyzing = isAnalyzing,
             )
         }
-    }
 
     private fun parseEditTypeStatistics(input: Map<String, Int>): List<EditTypeStatistics> {
         val result = input.toMutableMap()

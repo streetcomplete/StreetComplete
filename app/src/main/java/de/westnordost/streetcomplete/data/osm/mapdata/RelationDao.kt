@@ -167,8 +167,8 @@ class RelationDao(private val db: Database) {
             where = where.joinToString(" OR ")) { it.getLong(ID) }
     }
 
-    private fun getAllForElement(elementType: ElementType, elementId: Long): List<Relation> {
-        return db.transaction {
+    private fun getAllForElement(elementType: ElementType, elementId: Long): List<Relation> =
+        db.transaction {
             val ids = db.query(NAME_MEMBERS,
                 columns = arrayOf(ID),
                 where = "$TYPE = ? AND $REF = $elementId",
@@ -176,7 +176,6 @@ class RelationDao(private val db: Database) {
             ) { it.getLong(ID) }.toHashSet()
             getAll(ids)
         }
-    }
 }
 
 private val jsonAdapter: JsonAdapter<Map<String, String>> = Moshi.Builder().build()

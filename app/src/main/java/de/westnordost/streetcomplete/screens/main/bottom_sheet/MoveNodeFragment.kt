@@ -151,9 +151,8 @@ class MoveNodeFragment :
         return screenPos.toPointF()
     }
 
-    private fun getMarkerPosition(): LatLon? {
-        return listener?.getMapPositionAt(getMarkerScreenPosition())
-    }
+    private fun getMarkerPosition(): LatLon? =
+        listener?.getMapPositionAt(getMarkerScreenPosition())
 
     private fun onClickOk() {
         val position = getMarkerPosition() ?: return

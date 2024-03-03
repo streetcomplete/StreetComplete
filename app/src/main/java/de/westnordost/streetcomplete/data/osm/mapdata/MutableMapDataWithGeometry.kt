@@ -106,9 +106,8 @@ class MutableMapDataWithGeometry(capacity: Int = 50) : MapDataWithGeometry {
         relationGeometriesById.clear()
     }
 
-    override fun iterator(): Iterator<Element> {
-        return (nodes.asSequence() + ways.asSequence() + relations.asSequence()).iterator()
-    }
+    override fun iterator(): Iterator<Element> =
+        (nodes.asSequence() + ways.asSequence() + relations.asSequence()).iterator()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

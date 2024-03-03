@@ -31,7 +31,6 @@ open class MutableMapData() : MapData {
         }
     }
 
-    override fun iterator(): Iterator<Element> {
-        return (nodes.asSequence() + ways.asSequence() + relations.asSequence()).iterator()
-    }
+    override fun iterator(): Iterator<Element> =
+        (nodes.asSequence() + ways.asSequence() + relations.asSequence()).iterator()
 }

@@ -79,9 +79,8 @@ class OsmNoteQuestController(
         return noteSource.get(questId)?.let { createQuestForNote(it) }
     }
 
-    override fun getAllVisibleInBBox(bbox: BoundingBox, getHidden: Boolean): List<OsmNoteQuest> {
-        return createQuestsForNotes(noteSource.getAll(bbox), getHidden)
-    }
+    override fun getAllVisibleInBBox(bbox: BoundingBox, getHidden: Boolean): List<OsmNoteQuest> =
+        createQuestsForNotes(noteSource.getAll(bbox), getHidden)
 
     private fun createQuestsForNotes(notes: Collection<Note>, getHidden: Boolean): List<OsmNoteQuest> {
         val blockedNoteIds = if (getHidden) emptySet() else getHiddenIds()
@@ -211,7 +210,7 @@ private fun Note.shouldShowAsQuest(
         if (notesPreferences.blockedNames.contains(it.user?.displayName?.lowercase())) return false
     }
 
-    /* don't show notes where user replied last unless he wrote a survey required marker */
+    // don't show notes where user replied last unless he wrote a survey required marker
     if (showOnlyNotesPhrasedAsQuestions
         && comments.last().isReplyFromUser(userId)
         && !comments.last().containsSurveyRequiredMarker()
@@ -219,14 +218,15 @@ private fun Note.shouldShowAsQuest(
         return false
     }
 
-    /* newly created notes by user should not be shown if it was both created in this app and has no
-       replies yet */
+    // newly created notes by user should not be shown if it was both created in this app and has no replies yet
     if (probablyCreatedByUserInThisApp(userId, !showOnlyNotesPhrasedAsQuestions) && !hasReplies) return false
 
-    /* many notes are created to report problems on the map that cannot be resolved
-     * through an on-site survey.
-     * Likely, if something is posed as a question, the reporter expects someone to
-     * answer/comment on it, possibly an information on-site is missing, so let's only show these */
+    /*
+        many notes are created to report problems on the map that cannot be resolved
+        through an on-site survey.
+        Likely, if something is posed as a question, the reporter expects someone to
+        answer/comment on it, possibly an information on-site is missing, so let's only show these
+     */
     if (showOnlyNotesPhrasedAsQuestions
         && !probablyContainsQuestion()
         && !containsSurveyRequiredMarker()
@@ -238,23 +238,26 @@ private fun Note.shouldShowAsQuest(
 }
 
 private fun Note.probablyContainsQuestion(): Boolean {
-    /* from left to right (if smartass IntelliJ wouldn't mess up left-to-right):
-       - latin question mark
-       - greek question mark (a different character than semikolon, though same appearance)
-       - semikolon (often used instead of proper greek question mark)
-       - mirrored question mark (used in script written from right to left, like Arabic)
-       - armenian question mark
-       - ethopian question mark
-       - full width question mark (often used in modern Chinese / Japanese)
-       (Source: https://en.wikipedia.org/wiki/Question_mark)
-
-        NOTE: some languages, like Thai, do not use any question mark, so this would be more
-        difficult to determine.
-   */
-    val questionMarksAroundTheWorld = "[?;;؟՞፧？]"
+    /**
+     * Source: https://en.wikipedia.org/wiki/Question_mark
+     *
+     * NOTE: some languages, like Thai, do not use any question mark, so this would be more
+     * difficult to determine.
+     */
+    val questionMarksAroundTheWorld = listOf(
+        "?", // Latin question mark
+        ";", // Greek question mark (a different character than semicolon, though same appearance)
+        ";", // semicolon (often used instead of proper greek question mark)
+        "؟", // mirrored question mark (used in script written from right to left, like Arabic)
+        "՞", // Armenian question mark
+        "፧", // Ethiopian question mark
+        "꘏", // Vai question mark
+        "？", // full width question mark (often used in modern Chinese / Japanese)
+    )
+    val questionMarkPattern = ".*[${questionMarksAroundTheWorld.joinToString("")}].*"
 
     val text = comments.firstOrNull()?.text
-    return text?.matches(Regex(".*$questionMarksAroundTheWorld.*", RegexOption.DOT_MATCHES_ALL)) ?: false
+    return text?.matches(questionMarkPattern.toRegex(RegexOption.DOT_MATCHES_ALL)) ?: false
 }
 
 private fun Note.containsSurveyRequiredMarker(): Boolean =

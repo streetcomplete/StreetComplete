@@ -102,15 +102,14 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
             .show()
     }
 
-    private fun createConvertToStepsAnswer(): AnswerItem? {
-        return if (element.couldBeSteps()) {
+    private fun createConvertToStepsAnswer(): AnswerItem? =
+        if (element.couldBeSteps()) {
             AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
                 applyAnswer(IsActuallyStepsAnswer, true)
             }
         } else {
             null
         }
-    }
 
     companion object {
         private var dontShowAgain = false
