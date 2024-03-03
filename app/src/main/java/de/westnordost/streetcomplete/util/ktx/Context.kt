@@ -14,28 +14,20 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationManagerCompat
 import androidx.core.net.toUri
+import androidx.core.util.TypedValueCompat
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-/** return the number of density independent pixels for the given pixels */
-fun Context.pxToDp(px: Float): Float = px / resources.displayMetrics.density
-
-/** return the number of pixels for the given density independent pixels */
-fun Context.dpToPx(dip: Float): Float = dip * resources.displayMetrics.density
-
 /** return the number of pixels for the given scalable pixels */
-fun Context.spToPx(sp: Float): Float = sp * resources.displayMetrics.scaledDensity
+fun Context.spToPx(sp: Float): Float = TypedValueCompat.spToPx(sp, resources.displayMetrics)
 
 /** return the number of density independent pixels for the given pixels */
-fun Context.pxToDp(px: Int): Float = px / resources.displayMetrics.density
+fun Context.pxToDp(px: Int): Float = TypedValueCompat.pxToDp(px.toFloat(), resources.displayMetrics)
 
 /** return the number of pixels for the given density independent pixels */
-fun Context.dpToPx(dp: Int): Float = dp * resources.displayMetrics.density
-
-/** return the number of pixels for the given scalable pixels */
-fun Context.spToPx(sp: Int): Float = sp * resources.displayMetrics.scaledDensity
+fun Context.dpToPx(dp: Int): Float = TypedValueCompat.dpToPx(dp.toFloat(), resources.displayMetrics)
 
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text, duration).show()
