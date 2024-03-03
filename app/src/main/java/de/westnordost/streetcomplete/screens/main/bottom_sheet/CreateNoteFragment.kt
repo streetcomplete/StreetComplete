@@ -14,6 +14,8 @@ import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
@@ -140,7 +142,11 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override fun onComposedNote(text: String, imagePaths: List<String>) {
         /* pressing once on "OK" should first only close the keyboard, so that the user can review
            the position of the note he placed */
-        if (contentBinding.noteInput.hideKeyboard() == true) return
+        val rootInsets = ViewCompat.getRootWindowInsets(contentBinding.noteInput)
+        if (rootInsets?.isVisible(WindowInsetsCompat.Type.ime()) == true) {
+            contentBinding.noteInput.hideKeyboard()
+            return
+        }
 
         val createNoteMarker = binding.markerCreateLayout.createNoteMarker
         val screenPos = createNoteMarker.getLocationInWindow()
