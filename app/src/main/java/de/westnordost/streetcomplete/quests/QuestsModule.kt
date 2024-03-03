@@ -95,6 +95,7 @@ import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
+import de.westnordost.streetcomplete.quests.leaf_detail.AddTreeLeafType
 import de.westnordost.streetcomplete.quests.level.AddLevel
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
@@ -436,6 +437,7 @@ fun questTypeRegistry(
     105 to AddSummitCross(), // summit markings are not necessarily directly at the peak, need to look around
     106 to AddSummitRegister(), // register is harder to find than cross
 
+    165 to AddTreeLeafType(), // may need to get close in trickier cases
     107 to AddForestLeafType(), // need to walk around in the highlighted section
 
     108 to AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
