@@ -24,3 +24,15 @@ fun toARGBString(color: Int): String =
         color.red.toString(16).padStart(2, '0') +
         color.green.toString(16).padStart(2, '0') +
         color.blue.toString(16).padStart(2, '0')
+
+fun toColorInt(string: String): Int {
+    require(string.length == 7 || string.length == 9)
+    require(string[0] == '#')
+    // Use a long to avoid rollovers on #ffXXXXXX
+    var color = string.substring(1).toLong(16)
+    if (string.length == 7) {
+        // Set the alpha value
+        color = color or 0x00000000ff000000L
+    }
+    return color.toInt()
+}

@@ -1,25 +1,18 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.graphics.Color
 import android.graphics.PointF
 import android.graphics.RectF
 import android.graphics.drawable.LayerDrawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.expressions.Expression.*
-import com.mapbox.mapboxsdk.style.layers.CircleLayer
-import com.mapbox.mapboxsdk.style.layers.FillExtrusionLayer
-import com.mapbox.mapboxsdk.style.layers.FillLayer
-import com.mapbox.mapboxsdk.style.layers.LineLayer
-import com.mapbox.mapboxsdk.style.layers.Property
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
-import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -28,6 +21,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -41,7 +35,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
-import de.westnordost.streetcomplete.util.ktx.asBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -58,6 +52,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
+    private val overlayRegistry: OverlayRegistry by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val editHistorySource: EditHistorySource by inject()
     private val mapDataSource: MapDataWithEditsSource by inject()
@@ -128,8 +123,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 //        ctrl.setPickRadius(8f)
         geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, mapboxMap)
 
-        pinsMapComponent = PinsMapComponent(mapboxMap)
-        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), mapboxMap)
+        pinsMapComponent = PinsMapComponent(requireContext(), questTypeRegistry, overlayRegistry, mapboxMap)
         geometryMapComponent = FocusGeometryMapComponent(requireContext().contentResolver, mapboxMap)
 
         questPinsManager = QuestPinsManager(mapboxMap, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
@@ -140,7 +134,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
 
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(resources, mapboxMap)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(mapboxMap)
         styleableOverlayManager = StyleableOverlayManager(mapboxMap, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
@@ -148,29 +142,17 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
+        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), mapboxMap)
+
         selectedOverlaySource.addListener(overlayListener)
 
         /* ---------------------------- MapLibre stuff --------------------------- */
 
-        // add used images for quests pins and other icons
-        val pin = ContextCompat.getDrawable(requireContext(), R.drawable.pin)!! // why nullable? instead of resource not found?
-        val iconSize = pin.intrinsicWidth
-        questTypeRegistry.forEach {
-            val iconDrawable = ContextCompat.getDrawable(requireContext(), it.icon)!!
-            val iconBitmap = iconDrawable.asBitmapDrawable(
-                resources,
-                (iconDrawable.intrinsicWidth*0.35).toInt(),
-                (iconDrawable.intrinsicHeight*0.35).toInt()
-            ) // MapLibre converts everything to bitmap anyway, see https://github.com/maplibre/maplibre-gl-native/blob/c5992d58f1270f110960b326e2ae2d756d57d6ff/platform/android/MapboxGLAndroidSDK/src/main/java/com/mapbox/mapboxsdk/maps/Style.java#L341-L347
-            val drawable = LayerDrawable(arrayOf(pin, iconBitmap)) // behaves really weird with inset...
-            drawable.setLayerInset(1, (iconDrawable.intrinsicWidth * 0.35 / 2).toInt(), pin.intrinsicHeight / 10, (iconDrawable.intrinsicWidth * 0.35 / 8).toInt(), pin.intrinsicHeight / 4) // not perfect, but not the right way to do it anyway
-            style.addImage(resources.getResourceEntryName(it.icon), drawable)
-        }
         // use sdf here
         // this is only recommended for monochrome icons, and allows using halo stuff for symbols
         // but for some reason halo just does nothing, or creates a box around the icon, see https://github.com/mapbox/mapbox-gl-js/issues/7204
         presetIconIndex.values.forEach {
-            style.addImage(resources.getResourceEntryName(it), resources.getBitmapDrawable(it).bitmap, true)
+            style.addImage(resources.getResourceEntryName(it), requireContext().getDrawable(it)!!.createBitmap(), true)
         } // getBitmapDrawable gives a lot of log warnings
 
         // disable enablePlacementTransitions, so icons don't fade but (dis)appear immediately
@@ -190,38 +172,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         mapboxMap.uiSettings.isLogoEnabled = false
         mapboxMap.uiSettings.isAttributionEnabled = false
-
-        // use a symbol layer for the pins
-        pinsLayer = SymbolLayer("pins-layer", "pins-source")
-            // set icon from feature property
-            .withProperties(
-                iconImage("{icon-image}"), // take icon name from icon-image property of feature
-                //iconImage(get("icon-image")), // does the same, but feels slower (nothing conclusive though)
-                iconOffset(listOf(-iconSize / 12f, -iconSize / 4f).toTypedArray()),
-                // apply quest(pin) order
-                // setting layer.symbolZOrder to SYMBOL_Z_ORDER_SOURCE is (almost?) as fast as not sorting
-                // but it requires sorting the list of pins in the GeoJsonSource
-                // using symbolSortKey instead of this is much slower
-                symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
-            )
-
-        pinsLayer!!.setFilter(gte(zoom(), 14f))
-        style.addLayer(pinsLayer!!)
-
-        // add a circle layer using the pinsSource (could actually also be a symbol layer using the dot image, but circles are fast!)
-        pinsDotLayer = CircleLayer("pin-dot-layer", "pins-source")
-            // set fixed properties, circles are all the same
-            .withProperties(
-                circleColor("white"),
-                circleStrokeColor("grey"),
-                circleRadius(5f),
-                circleStrokeWidth(1f)
-            )
-
-        // add layer below the pinsLayer
-        // layers are kept in a list internally, and ordered by that list, so layers added later are above others by default
-        pinsDotLayer!!.setFilter(gte(zoom(), 14f))
-        style.addLayerBelow(pinsDotLayer!!, "pins-layer")
 
         super.onMapReady(mapView, mapboxMap, style) // leftover from initial implementation, maybe change?
 
@@ -274,157 +224,13 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             true
         }
 
-        // need more information on how to work with expressions...
-        // or better use them in style json instead of here? probably easier
-        overlayDashedLineLayer = LineLayer("overlay-dashed-lines", "overlay-source")
-            // separate layer for dashed lines
-            .withFilter(all(has("dashed"), gte(zoom(), 16f)))
-            .withProperties(
-                lineCap(Property.LINE_CAP_BUTT),
-                lineColor(get("color")),
-                lineOpacity(get("opacity")),
-                lineOffset(changeDistanceWithZoom("offset")),
-                lineWidth(changeDistanceWithZoom("width")),
-                lineDasharray(arrayOf(1.5f, 1f)), // todo: dash length depends on zoom, but re-evaluated only at integer zoom borders and thus looks weird
-                // lineDasharray(array(literal(floatArrayOf(0.5f, 0.5f)))),
-            )
-        style.addLayerBelow(overlayDashedLineLayer!!, "pins-layer")
-        overlayLineLayer = LineLayer("overlay-lines", "overlay-source")
-            .withFilter(all(not(has("dashed")), gte(zoom(), 16f)))
-            .withProperties(
-                lineCap(Property.LINE_CAP_BUTT),
-                lineColor(get("color")),
-                lineOpacity(get("opacity")),
-                // problem: click listener apparently only reacts to the underlying geometry, not the line at some offset
-                lineOffset(changeDistanceWithZoom("offset")),
-                lineWidth(changeDistanceWithZoom("width")),
-                // there is no "lineOutlineColor", so how to properly copy the tangram overlay style?
-            )
-        style.addLayerBelow(overlayLineLayer!!, "pins-layer") // means: above the dashed layer
-
-        // FillExtrusionLayer doesn't support outlines, only the normal FillLayer does...
-        overlayFillLayer = FillExtrusionLayer("overlay-fills", "overlay-source")
-            .withFilter(all(has("outline-color"), gte(zoom(), 16f))) // if a polygon has no outline-color, it's invisible anyway (actually this is to filter lines, maybe better filter by geometryType)
-            .withProperties(
-                //fillColor(get("color")),
-                //fillOutlineColor(get("outline-color")), // no outline color if extrusion?
-                //fillOpacity(get("opacity")),
-                fillExtrusionOpacity(get("opacity")),
-                fillExtrusionColor(get("color")),
-                fillExtrusionHeight(get("height")) // need extrusion layer for height
-            )
-        style.addLayerBelow(overlayFillLayer!!, "pins-layer")
-
-        overlaySymbolLayer = SymbolLayer("overlay-symbols", "overlay-source")
-            .withProperties(
-                iconImage("{icon}"),
-                textField("{label}"),
-                // or maybe read text properties from feature?
-                textAnchor(Property.TEXT_ANCHOR_LEFT),
-                textOffset(arrayOf(1.5f, 0f)),
-                textMaxWidth(5f),
-                textHaloColor("white"),
-                textHaloWidth(1.5f), // works as expected, while for icons it doesn't
-                iconColor("black"),
-                // iconHaloColor("white"), // not needed any more but still why doesn't it work?
-                // iconHaloWidth(1.5f), // size has almost no effect, halo stays tiny... (requires sdf icons, see above when adding to style)
-                // iconHaloBlur(2f),
-                // both overlaps are required
-                iconAllowOverlap(step(zoom(), literal(false), stop(18, true))),
-                textAllowOverlap(step(zoom(), literal(false), stop(18, true))),
-            )
-            .withFilter(gte(zoom(), 16f))
-        style.addLayerBelow(overlaySymbolLayer!!, "pins-layer")
-
-        val geometryLineLayer = LineLayer("geo-lines", "geometry-source")
-            .withProperties(
-                lineWidth(10f),
-                lineColor("#D140D0"),
-                lineOpacity(0.5f),
-                lineCap(Property.LINE_CAP_ROUND) // wow, this looks really ugly with opacity
-            )
-        style.addLayerBelow(geometryLineLayer, "pins-layer")
-
-        val geometryFillLayer = FillLayer("geo-fill", "geometry-source")
-            .withProperties(
-                fillColor("#D140D0"),
-                fillOpacity(0.3f)
-            )
-        style.addLayerBelow(geometryFillLayer, "pins-layer")
-
-        val geometryCircleLayer = CircleLayer("geo-circle", "geometry-source")
-            .withProperties(
-                circleColor("#D140D0"),
-                circleOpacity(0.7f),
-                textField("{label}"),
-                textAnchor(Property.TEXT_ANCHOR_LEFT),
-                textOffset(arrayOf(1.5f, 0f)),
-                textMaxWidth(5f),
-            )
-            .withFilter(not(has("icon")))
-        style.addLayerBelow(geometryCircleLayer, "pins-layer")
-
-        val geometrySymbolLayer = SymbolLayer("geo-symbols", "geometry-source")
-            .withFilter(has("icon"))
-            .withProperties(
-                iconColor("#D140D0"),
-                iconImage("{icon}"),
-                textField("{label}"),
-                textAnchor(Property.TEXT_ANCHOR_LEFT),
-                textOffset(arrayOf(1.5f, 0f)),
-                textMaxWidth(5f),
-            )
-        style.addLayerBelow(geometrySymbolLayer, "pins-layer")
-
-        // TODO low prio: animation of width+alpha (breathing selection effect). From shader:
-        //  opacity = min(max(sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) * 0.5 + 0.125;
-        //  width *= min(max(-sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) + 0.625;
-        val focusGeometryLineLayer = LineLayer("focus-geo-lines", "focus-geometry-source")
-            .withProperties(
-                lineWidth(10f),
-                lineColor("#D14000"),
-                lineOpacity(0.5f),
-                lineCap(Property.LINE_CAP_ROUND) // wow, this looks really ugly with opacity
-            )
-        style.addLayerBelow(focusGeometryLineLayer, "pins-layer")
-
-        val focusGeometryFillLayer = FillLayer("focus-geo-fill", "focus-geometry-source")
-            .withProperties(
-                fillColor("#D14000"),
-                fillOpacity(0.3f)
-            )
-        focusGeometryFillLayer.setFilter(not(has("way")))
-        style.addLayerBelow(focusGeometryFillLayer, "pins-layer")
-
-        val focusGeometryCircleLayer = CircleLayer("focus-geo-circle", "focus-geometry-source")
-            .withProperties(
-                circleColor("#D14000"),
-                circleOpacity(0.7f)
-            )
-            .withFilter(not(has("icon")))
-        style.addLayerBelow(focusGeometryCircleLayer, "pins-layer")
-
-        // something is not working here
-        val trackLayer = LineLayer("track", "track-source")
-            .withProperties(
-                lineWidth(10f),
-                lineColor("#536dfe"),
-                lineOpacity(0.3f),
-                lineCap(Property.LINE_CAP_ROUND)
-            )
-        style.addLayerBelow(trackLayer, "pins-layer")
-        val oldTrackLayer = LineLayer("old-track", "old-track-source")
-            .withProperties(
-                lineWidth(10f),
-                lineColor("#536dfe"),
-                lineOpacity(0.15f),
-                lineCap(Property.LINE_CAP_ROUND)
-            )
-        style.addLayerBelow(oldTrackLayer, "pins-layer")
-
-        val downloadedAreaLayer = FillLayer("downloaded-area", "downloaded-area-source")
-            .withProperties(fillColor(Color.BLACK), fillOpacity(0.3f))
-        style.addLayerBelow(downloadedAreaLayer, "pins-layer")
+        // layers added first appear behind other layers
+        downloadedAreaMapComponent?.layers?.forEach { style.addLayer(it) }
+        styleableOverlayMapComponent?.layers?.forEach { style.addLayer(it) }
+        geometryMarkersMapComponent?.layers?.forEach { style.addLayer(it) }
+        geometryMapComponent?.layers?.forEach { style.addLayer(it) }
+        pinsMapComponent?.layers?.forEach { style.addLayer(it) }
+        selectedPinsMapComponent?.layers?.forEach { style.addLayer(it) }
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
@@ -525,26 +331,15 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 
     fun highlightPins(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
-//        selectedPinsMapComponent?.set(iconResId, pinPositions)
+        selectedPinsMapComponent?.set(iconResId, pinPositions)
     }
 
     fun hideNonHighlightedPins(questKey: QuestKey? = null) {
         pinsMapComponent?.isVisible = false
-        if (questKey is OsmQuestKey) {
-            // set filter, so only pins of the highlighted quest are shown
-            // currently just filtering by element id, and for OsmQuest, but at least it's clear how to do
-            // and actually in MapLibre the properties can also be numbers, so no need to convert id to a string
-            // todo: really use filter here? or better use source? or different layer instead of filtering?
-            pinsLayer?.setFilter(eq(get("element_id"), questKey.elementId.toString()))
-            pinsDotLayer?.setFilter(eq(get("element_id"), questKey.elementId.toString()))
-        }
     }
 
     fun hideOverlay() {
-        overlayFillLayer?.setFilter(literal(false))
-        overlayLineLayer?.setFilter(literal(false))
-        overlayDashedLineLayer?.setFilter(literal(false))
-        overlaySymbolLayer?.setFilter(literal(false))
+        styleableOverlayMapComponent?.isVisible = false
     }
 
     fun highlightGeometry(geometry: ElementGeometry) {
@@ -554,18 +349,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /** Clear all highlighting */
     fun clearHighlighting() {
         pinsMapComponent?.isVisible = true
-        overlayFillLayer?.setFilter(all(has("outline-color"), gte(zoom(), 16f)))
-        overlayLineLayer?.setFilter(all(not(has("dashed")), gte(zoom(), 16f)))
-        overlayDashedLineLayer?.setFilter(all(has("dashed"), gte(zoom(), 16f)))
-        overlaySymbolLayer?.setFilter(gte(zoom(), 16f))
+        styleableOverlayMapComponent?.isVisible = true
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
-        pinsLayer?.setFilter(gte(zoom(), 14f))
-        pinsDotLayer?.setFilter(gte(zoom(), 14f))
+        selectedPinsMapComponent?.clear()
     }
 
     fun clearSelectedPins() {
-//        selectedPinsMapComponent?.clear()
+        selectedPinsMapComponent?.clear()
     }
 
     /* ----------------------------  Markers for current highlighting --------------------------- */
@@ -617,21 +408,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     companion object {
         // see streetcomplete.yaml for the definitions of the below layers
         private const val CLICK_AREA_SIZE_IN_DP = 48
-
-        var pinsLayer: SymbolLayer? = null
-        var pinsDotLayer: CircleLayer? = null
-
-        var overlayDashedLineLayer: LineLayer? = null
-        var overlayLineLayer: LineLayer? = null
-        var overlayFillLayer: FillExtrusionLayer? = null
-        var overlaySymbolLayer: SymbolLayer? = null
     }
 }
 
-// expression for line width dependent on zoom (line width in property in meters)
-// this seems to work reasonably well, but probably should be done in the style json (plus consider which stops to use)
-fun changeDistanceWithZoom(lineWidthProperty: String): Expression =
-    interpolate(exponential(2), zoom(),
-        stop(10, division(get(lineWidthProperty), literal(128))),
-        stop(24, product(get(lineWidthProperty), literal(128)))
-    )

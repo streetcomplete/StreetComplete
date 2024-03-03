@@ -8,6 +8,11 @@ import com.mapbox.geojson.LineString
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.style.expressions.Expression.*
+import com.mapbox.mapboxsdk.style.layers.Layer
+import com.mapbox.mapboxsdk.style.layers.LineLayer
+import com.mapbox.mapboxsdk.style.layers.Property
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -29,6 +34,29 @@ class TracksMapComponent(private val map: MapboxMap) {
     private var index = 0
     private data class Track(val trackpoints: MutableList<LatLng>, val isRecording: Boolean)
     private var tracks: MutableList<Track> = arrayListOf(Track(ArrayList(), false))
+
+    val layers: List<Layer> = listOf(
+        LineLayer("track", "track-source")
+            .withProperties(
+                lineWidth(10f),
+                lineColor(match(get("recording"),
+                    literal(true), literal("#fe1616"),
+                    literal("#536dfe")
+                )),
+                lineOpacity(0.3f),
+                lineCap(Property.LINE_CAP_ROUND)
+            ),
+        LineLayer("old-track", "old-track-source")
+            .withProperties(
+                lineWidth(10f),
+                lineColor(match(get("recording"),
+                    literal(true), literal("#fe1616"),
+                    literal("#536dfe")
+                )),
+                lineOpacity(0.15f),
+                lineCap(Property.LINE_CAP_ROUND)
+            )
+    )
 
     init {
         map.style?.addSource(trackSource)
@@ -84,6 +112,6 @@ class TracksMapComponent(private val map: MapboxMap) {
 private fun List<LatLng>.toLineFeature(record: Boolean): Feature {
     val line = LineString.fromLngLats(map { Point.fromLngLat(it.longitude, it.latitude) })
     val p = JsonObject()
-    p.addProperty("recording", record) // todo: this is not used (and possibly it's easier to only set it if true)
+    p.addProperty("recording", record)
     return Feature.fromGeometry(line, p)
 }

@@ -4,13 +4,20 @@ import android.content.ContentResolver
 import android.graphics.RectF
 import androidx.annotation.UiThread
 import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.style.expressions.Expression.*
+import com.mapbox.mapboxsdk.style.layers.CircleLayer
+import com.mapbox.mapboxsdk.style.layers.FillLayer
+import com.mapbox.mapboxsdk.style.layers.Layer
+import com.mapbox.mapboxsdk.style.layers.LineLayer
+import com.mapbox.mapboxsdk.style.layers.Property
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreFeature
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import kotlin.math.abs
 import kotlin.math.max
@@ -22,7 +29,7 @@ import kotlin.math.roundToInt
  *  contained in the screen area */
 class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapboxMap) {
 
-    private val focusedGeometrySource = GeoJsonSource("focus-geometry-source")
+    private val focusedGeometrySource = GeoJsonSource(SOURCE)
 
     private var previousCameraPosition: CameraPosition? = null
 
@@ -30,13 +37,38 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
     val isZoomedToContainGeometry: Boolean get() =
         previousCameraPosition != null
 
+    val layers: List<Layer> = listOf(
+        FillLayer("focus-geo-fill", SOURCE)
+            .withFilter(eq(get("type"), literal("polygon")))
+            .withProperties(
+                fillColor("#D14000"),
+                fillOpacity(0.3f)
+            ),
+        // TODO low prio: animation of width+alpha (breathing selection effect). From shader:
+        //  opacity = min(max(sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) * 0.5 + 0.125;
+        //  width *= min(max(-sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) + 0.625;
+        LineLayer("focus-geo-lines", SOURCE)
+            // both polygon and line
+            .withProperties(
+                lineWidth(10f),
+                lineColor("#D14000"),
+                lineOpacity(0.5f),
+                lineCap(Property.LINE_CAP_ROUND)
+            ),
+        CircleLayer("focus-geo-circle", SOURCE)
+            .withProperties(
+                circleColor("#D14000"),
+                circleOpacity(0.7f)
+            ),
+    )
+
     init {
         map.style?.addSource(focusedGeometrySource)
     }
 
     /** Show the given geometry. Previously shown geometry is replaced. */
     @UiThread fun showGeometry(geometry: ElementGeometry) {
-        focusedGeometrySource.setGeoJson(geometry.toMapLibreGeometry())
+        focusedGeometrySource.setGeoJson(geometry.toMapLibreFeature())
     }
 
     /** Hide all shown geometry */
@@ -80,5 +112,9 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
             }
         }
         previousCameraPosition = null
+    }
+
+    companion object {
+        private const val SOURCE = "focus-geometry-source"
     }
 }

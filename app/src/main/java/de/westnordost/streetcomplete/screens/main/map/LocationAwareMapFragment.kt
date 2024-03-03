@@ -148,6 +148,9 @@ open class LocationAwareMapFragment : MapFragment() {
         val positionsLists = tracks.map { track -> track.map { it.position } }
         tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
 
+        tracksMapComponent?.layers?.forEach { mapboxMap.style?.addLayer(it) }
+        locationMapComponent?.layers?.forEach { mapboxMap.style?.addLayer(it) }
+
         centerCurrentPositionIfFollowing()
     }
 

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map.maplibre
 
+import com.google.gson.JsonObject
+import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Geometry
 import com.mapbox.geojson.LineString
@@ -32,6 +34,18 @@ fun LatLngBounds.toBoundingBox() =
 
 fun LatLng.toLatLon() = LatLon(latitude, longitude)
 fun LatLon.toLatLng() = LatLng(latitude, longitude)
+
+fun ElementGeometry.toMapLibreFeature(): Feature {
+    val jsonObject = JsonObject().apply { addProperty("type", toType()) }
+    val geometry = toMapLibreGeometry()
+    return Feature.fromGeometry(geometry, jsonObject)
+}
+
+private fun ElementGeometry.toType(): String = when (this) {
+    is ElementPointGeometry -> "point"
+    is ElementPolygonsGeometry -> "polygon"
+    is ElementPolylinesGeometry -> "line"
+}
 
 fun ElementGeometry.toMapLibreGeometry(): Geometry = when (this) {
     is ElementPointGeometry -> toMapLibreGeometry()

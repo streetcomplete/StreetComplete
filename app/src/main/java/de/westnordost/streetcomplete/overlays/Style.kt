@@ -27,6 +27,8 @@ data class PolygonStyle(
     val icon: String? = null,
     /** label to show in the center of the area */
     val label: String? = null,
+    /** whether and how much to extrude this area */
+    val height: Float? = null,
 ) : Style
 
 data class PointStyle(

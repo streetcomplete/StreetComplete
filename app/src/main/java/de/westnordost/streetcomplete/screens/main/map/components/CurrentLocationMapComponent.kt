@@ -1,40 +1,32 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.PointF
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.location.Location
-import androidx.annotation.DrawableRes
-import androidx.appcompat.content.res.AppCompatResources
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
 import com.mapbox.mapboxsdk.location.LocationComponentOptions
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.style.expressions.Expression
+import com.mapbox.mapboxsdk.style.expressions.Expression.*
+import com.mapbox.mapboxsdk.style.layers.Layer
 import com.mapbox.mapboxsdk.style.layers.Property
-import com.mapbox.mapboxsdk.style.layers.PropertyFactory
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.MainActivity
-import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
-import de.westnordost.streetcomplete.util.ktx.isApril1st
-import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
 class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val map: MapboxMap) {
-    private val locationSource: GeoJsonSource
+
+    private val locationSource = GeoJsonSource("location-source")
+
     private var useLocationComponent = false
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
@@ -72,6 +64,33 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val map
             updateAccuracy()
         }
 
+    val layers: List<Layer> = listOf(
+        SymbolLayer("accuracy", "location-source")
+            .withProperties(
+                iconImage("accuracyImg"),
+                iconAllowOverlap(true),
+                iconSize(interpolate(exponential(2), zoom(),
+                    stop(4, division(get("size"), literal(4096f))),
+                    stop(27, division(get("size"), literal(1/4096f)))
+                )),
+                iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
+            ),
+        SymbolLayer("direction", "location-source")
+            .withFilter(has("rotation"))
+            .withProperties(
+                iconImage("directionImg"),
+                iconAllowOverlap(true),
+                iconRotate(get("rotation")),
+                iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
+            ),
+        SymbolLayer("location", "location-source")
+            .withProperties(
+                iconImage("dotImg"),
+                iconAllowOverlap(true),
+                iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
+            ),
+    )
+
     init {
         GlobalScope.launch { // simply way of delaying until map is initialized, todo: do it properly
             // this is the maplibre location component, could be used instead most of the stuff in here
@@ -90,46 +109,10 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val map
             }
         }
 
-        val dotImg = ctx.resources.getBitmapDrawable(if (isApril1st()) R.drawable.location_nyan else R.drawable.location_dot)
-        val dotSize = PointF(
-            ctx.pxToDp(dotImg.bitmap.width),
-            ctx.pxToDp(dotImg.bitmap.height)
-        )
+        mapStyle.addImage("dotImg", ctx.getDrawable(R.drawable.location_dot)!!)
+        mapStyle.addImage("directionImg", ctx.getDrawable(R.drawable.location_direction)!!)
+        mapStyle.addImage("accuracyImg", ctx.getDrawable(R.drawable.accuracy_circle)!!)
 
-        val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)
-        mapStyle.addImage("dotImg", bitmapFromDrawableRes(ctx, R.drawable.location_dot)!!)
-        mapStyle.addImage("directionImg", bitmapFromDrawableRes(ctx, R.drawable.location_direction)!!)
-        mapStyle.addImage("accuracyImg", accuracyImg)
-        val locationLayer = SymbolLayer("location", "location-source")
-            .withProperties(
-                PropertyFactory.iconImage("dotImg"),
-                PropertyFactory.iconAllowOverlap(true),
-                PropertyFactory.iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
-            )
-        val zoomExpression = Expression.interpolate(Expression.exponential(2), Expression.zoom(),
-                Expression.stop(4, Expression.division(Expression.get("size"), Expression.literal(4096f))),
-                Expression.stop(27, Expression.division(Expression.get("size"), Expression.literal(1/4096f)))
-            )
-
-        val accuracyLayer = SymbolLayer("accuracy", "location-source")
-            .withProperties(
-                PropertyFactory.iconImage("accuracyImg"),
-                PropertyFactory.iconAllowOverlap(true),
-                PropertyFactory.iconSize(zoomExpression),
-                PropertyFactory.iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
-            )
-        val directionLayer = SymbolLayer("direction", "location-source")
-            .withProperties(
-                PropertyFactory.iconImage("directionImg"),
-                PropertyFactory.iconAllowOverlap(true),
-                PropertyFactory.iconRotate(Expression.get("rotation")),
-                PropertyFactory.iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
-            )
-            .withFilter(Expression.has("rotation"))
-        mapStyle.addLayerBelow(accuracyLayer, "pins-layer")
-        mapStyle.addLayerBelow(directionLayer, "pins-layer")
-        mapStyle.addLayerBelow(locationLayer, "pins-layer")
-        locationSource = GeoJsonSource("location-source")
         mapStyle.addSource(locationSource)
     }
 
@@ -140,31 +123,6 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val map
     private fun show() {
         updateLocation()
         updateDirection()
-    }
-
-    // actually this is unnecessary, as MapLibre creates bitmap from supplied drawable anyway -> just add dotImg / directionImg
-    private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int) =
-        convertDrawableToBitmap(AppCompatResources.getDrawable(context, resourceId))
-
-    private fun convertDrawableToBitmap(sourceDrawable: Drawable?): Bitmap? {
-        if (sourceDrawable == null) {
-            return null
-        }
-        return if (sourceDrawable is BitmapDrawable) {
-            sourceDrawable.bitmap
-        } else {
-            // copying drawable object to not manipulate on the same reference
-            val constantState = sourceDrawable.constantState ?: return null
-            val drawable = constantState.newDrawable().mutate()
-            val bitmap: Bitmap = Bitmap.createBitmap(
-                drawable.intrinsicWidth, drawable.intrinsicHeight,
-                Bitmap.Config.ARGB_8888
-            )
-            val canvas = Canvas(bitmap)
-            drawable.setBounds(0, 0, canvas.width, canvas.height)
-            drawable.draw(canvas)
-            bitmap
-        }
     }
 
     /** Update the GPS position shown on the map */
