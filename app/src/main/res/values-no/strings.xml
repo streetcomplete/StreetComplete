@@ -1377,4 +1377,10 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="quest_buildingType_tower_description">"alle slags tårn"</string>
     <string name="quest_buildingType_under_construction">"Under oppføring"</string>
     <string name="overlay_buildings">"Bygninger"</string>
+    <string name="quest_pedestrian_crossing_signals">"Må du vente på et trafikksignal for å krysse her?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Har denne overgangen oppmerking på bakken?"</string>
+    <string name="overlay_places">"Steder"</string>
+    <string name="overlay_things">"Gjenstander"</string>
+    <string name="disused">"nedlagt"</string>
+    <string name="unknown_object">"Ukjent objekt"</string>
 </resources>

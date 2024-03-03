@@ -1377,5 +1377,7 @@
     <string name="quest_pedestrian_crossing_signals">"Чи потрібно чекати сигналу світлофора, щоб перейти тут?"</string>
     <string name="quest_pedestrian_crossing_markings">"Чи є на цьому переході розмітка?"</string>
     <string name="overlay_places">"Місця"</string>
+    <string name="overlay_things">"Інфраструктура"</string>
+    <string name="disused">"вийшло з ужитку"</string>
     <string name="unknown_object">"Невідомий обʼєкт"</string>
 </resources>

@@ -1358,7 +1358,7 @@
     <string name="label_log_newer_than">"از سوی"</string>
     <string name="label_log_older_than">"به"</string>
     <string name="label_log_message_contains">"پیام شامل"</string>
-    <string name="title_logs_filters">"فیلتر کردن پیام‌ها"</string>
+    <string name="title_logs_filters">"پالایش پیام‌ها"</string>
     <string name="pref_title_quests_restore_hidden_summary">"تعداد مأموریت‌های پنهان: %d"</string>
     <string name="link_every_door_description">"ویرایشگر قدرتمند POI برای اندروید و iOS"</string>
     <string name="link_mapcomplete_description">"مجموعه‌ای از نقشه‌های OSM موضوعی که هر کدام نشان می‌دهند و به شما امکان می‌دهند یک نوع ویژگی را ویرایش کنید"</string>
@@ -1375,15 +1375,15 @@
     <string name="quest_buildingType_other_description">"یک ساختمان خاص که در این برنامه قابل انتخاب نیست"</string>
     <string name="quest_buildingType_container">"ظرف/محفظه"</string>
     <string name="quest_buildingType_tent">"چادر"</string>
-    <string name="quest_buildingType_tomb">"مقبره"</string>
+    <string name="quest_buildingType_tomb">"آرامگاه"</string>
     <string name="quest_buildingType_tower">"برج"</string>
     <string name="quest_buildingType_tower_description">"هر نوع برجی"</string>
     <string name="quest_buildingType_under_construction">"در حال ساخت"</string>
     <string name="overlay_buildings">"ساختمان‌ها"</string>
-    <string name="quest_pedestrian_crossing_signals">"آیا باید منتظر بمانید تا یک علامت راهنمایی و رانندگی از اینجا عبور کند؟"</string>
+    <string name="quest_pedestrian_crossing_signals">"آیا باید منتظر اجازه عبور توسط چراغ راهنمایی و رانندگی بمانید تا از اینجا عبور کنید؟"</string>
     <string name="quest_pedestrian_crossing_markings">"آیا این گذرگاه روی زمین علامت‌گذاری دارد؟"</string>
     <string name="overlay_places">"مکان‌ها"</string>
-    <string name="overlay_things">"اشیاء"</string>
+    <string name="overlay_things">"چیزها"</string>
     <string name="disused">"بلااستفاده/از کار افتاده"</string>
     <string name="unknown_object">"شیء ناشناخته"</string>
 </resources>
