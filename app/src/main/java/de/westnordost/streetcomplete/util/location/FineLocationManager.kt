@@ -102,7 +102,7 @@ private fun Location.isBetterThan(previous: Location?): Boolean {
     val diffMinutes = (elapsedDuration - previous.elapsedDuration).inWholeMinutes
     val isMuchNewer = diffMinutes > 2
     val isMuchOlder = diffMinutes < -2
-    val isNewer = diffMinutes > 0L
+    val isNewer = diffMinutes > 0
 
     // Check whether the new location fix is more or less accurate
     val accuracyDelta = accuracy - previous.accuracy
