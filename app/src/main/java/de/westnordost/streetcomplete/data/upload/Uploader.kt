@@ -17,6 +17,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
@@ -29,9 +30,7 @@ class Uploader(
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
 
-    private val bannedInfo = GlobalScope.async(Dispatchers.Unconfined, start = CoroutineStart.LAZY) {
-        versionIsBannedChecker.get()
-    }
+    private lateinit var bannedInfo: BannedInfo
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {
@@ -57,8 +56,10 @@ class Uploader(
             isUploadInProgress = true
             listeners.forEach { it.onStarted() }
 
-            val banned = bannedInfo.await()
-
+            if (!::bannedInfo.isInitialized) {
+                bannedInfo = withContext(Dispatchers.IO) { versionIsBannedChecker.get() }
+            }
+            val banned = bannedInfo
             if (banned is IsBanned) {
                 throw VersionBannedException(banned.reason)
             }
