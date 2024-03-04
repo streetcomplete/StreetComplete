@@ -8,14 +8,12 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.LocationManager
-import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationManagerCompat
 import androidx.core.net.toUri
-import androidx.core.view.SoftwareKeyboardControllerCompat
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -49,10 +47,6 @@ fun Context.toast(@StringRes resId: Int, duration: Int = Toast.LENGTH_SHORT) {
 
 fun Context.hasPermission(permission: String): Boolean =
     ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
-
-fun View.showKeyboard() = SoftwareKeyboardControllerCompat(this).show()
-
-fun View.hideKeyboard() = SoftwareKeyboardControllerCompat(this).hide()
 
 val Context.isLocationEnabled: Boolean get() = LocationManagerCompat.isLocationEnabled(locationManager)
 val Context.hasLocationPermission: Boolean get() = hasPermission(ACCESS_FINE_LOCATION)

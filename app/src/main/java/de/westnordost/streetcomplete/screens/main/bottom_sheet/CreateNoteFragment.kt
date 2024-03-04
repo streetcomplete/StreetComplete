@@ -14,8 +14,6 @@ import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
@@ -29,6 +27,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
+import de.westnordost.streetcomplete.util.ktx.isKeyboardOpen
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
@@ -142,8 +141,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override fun onComposedNote(text: String, imagePaths: List<String>) {
         /* pressing once on "OK" should first only close the keyboard, so that the user can review
            the position of the note he placed */
-        val rootInsets = ViewCompat.getRootWindowInsets(contentBinding.noteInput)
-        if (rootInsets?.isVisible(WindowInsetsCompat.Type.ime()) == true) {
+        if (contentBinding.noteInput.isKeyboardOpen) {
             contentBinding.noteInput.hideKeyboard()
             return
         }
