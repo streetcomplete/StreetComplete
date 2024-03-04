@@ -27,7 +27,7 @@ fun LeftAndRightSidewalk.applyTo(tags: Tags) {
     tags.expandSides("sidewalk", includeBareTag = false)
     tags.separateConflatedSidewalk()
 
-    if (left != null)  tags["sidewalk:left"] = left.osmValue
+    if (left != null) tags["sidewalk:left"] = left.osmValue
     if (right != null) tags["sidewalk:right"] = right.osmValue
 
     // use shortcut syntax if possible, preferred by community according to usage numbers on taginfo

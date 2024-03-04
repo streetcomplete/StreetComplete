@@ -77,7 +77,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
             buildings.any { building ->
                 val buildingGeometry = buildingGeometriesById[building.id]
 
-                if (buildingGeometry != null  && buildingGeometry.getBounds().contains(it.position)) {
+                if (buildingGeometry != null && buildingGeometry.getBounds().contains(it.position)) {
                     it.position.isInMultipolygon(buildingGeometry.polygons)
                 } else {
                     false

@@ -109,7 +109,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         }
 
         require(root != null) { "No root node found" }
-        require(root.tagName  == "svg") { "Root must be <svg>" }
+        require(root.tagName == "svg") { "Root must be <svg>" }
 
         var width = root.getAttribute("width")
         var height = root.getAttribute("height")
