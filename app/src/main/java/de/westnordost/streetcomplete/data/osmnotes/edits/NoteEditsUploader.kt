@@ -50,7 +50,7 @@ class NoteEditsUploader(
     private suspend fun uploadMissedImageActivations() {
         while (true) {
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
-            /* see uploadEdits */
+            // see uploadEdits
             withContext(scope.coroutineContext) {
                 imageUploader.activate(edit.noteId)
                 noteEditsController.markImagesActivated(edit.id)

@@ -38,9 +38,9 @@ private val IS_THING_EXPRESSION by lazy {
             "windsock",
         ),
         "amenity" to listOf(
-            /* grouped by subcategory, sorted by alphabet */
+            // grouped by subcategory, sorted by alphabet
 
-            /* transportation */
+            // transportation
             "bicycle_parking",
             "bicycle_rental",
             "bicycle_repair_station",
@@ -56,23 +56,23 @@ private val IS_THING_EXPRESSION by lazy {
             "ticket_validator",
             "vacuum_cleaner",
 
-            /* financial */
+            // financial
             "atm",
             "payment_terminal",
 
-            /* healthcare */
+            // healthcare
             "baby_hatch",
             "kneipp_water_cure",
 
-            /* entertainment, arts & culture */
+            // entertainment, arts & culture
             "fountain",
             "public_bookcase",
             "whirlpool",
 
-            /* public service */
+            // public service
             // "post_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
 
-            /* facilities & others */
+            // facilities & others
             "baking_oven",
             "bbq",
             "bench",
@@ -106,13 +106,13 @@ private val IS_THING_EXPRESSION by lazy {
             "water_point",
             "watering_place",
 
-            /* waste management */
+            // waste management
             // "recycling" only for containers, see bottom
             "sanitary_dump_station",
             "waste_basket",
             "waste_disposal",
 
-            /* animals */
+            // animals
             "feeding_place",
             "game_feeding",
             "hunting_stand",

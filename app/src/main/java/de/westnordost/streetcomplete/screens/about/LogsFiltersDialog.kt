@@ -113,7 +113,7 @@ class LogsFiltersDialog(
 
     private fun updateNewerThanInput() {
         binding.newerThanEditTextLayout.isEndIconVisible = timestampNewerThan != null
-        binding.newerThanEditText.setText(timestampNewerThan?.let {  dateTimeToString(locale, it) } ?: "")
+        binding.newerThanEditText.setText(timestampNewerThan?.let { dateTimeToString(locale, it) } ?: "")
     }
 
     private fun updateOlderThanInput() {

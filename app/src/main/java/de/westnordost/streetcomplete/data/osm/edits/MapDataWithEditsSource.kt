@@ -280,7 +280,7 @@ class MapDataWithEditsSource internal constructor(
         val ids = way.nodeIds.toSet()
         val nodes = getNodes(ids)
 
-        /* If the way is (now) not complete, this is not acceptable */
+        // If the way is (now) not complete, this is not acceptable
         if (nodes.size < ids.size) return null
 
         return nodes
@@ -317,7 +317,7 @@ class MapDataWithEditsSource internal constructor(
     private fun getRelationElements(relation: Relation): MutableMapData = synchronized(this) {
         val elements = ArrayList<Element>()
         for (member in relation.members) {
-            /* for way members, also get their nodes */
+            // for way members, also get their nodes
             if (member.type == WAY) {
                 val wayComplete = getWayComplete(member.ref)
                 if (wayComplete != null) {

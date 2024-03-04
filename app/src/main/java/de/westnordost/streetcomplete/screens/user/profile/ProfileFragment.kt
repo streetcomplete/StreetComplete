@@ -71,7 +71,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             viewLifecycleScope.launch { updateEditCountTexts() }
         }
         override fun onSubtractedOne(type: String) {
-            viewLifecycleScope.launch { updateEditCountTexts()  }
+            viewLifecycleScope.launch { updateEditCountTexts() }
         }
         override fun onUpdatedAll() {
             viewLifecycleScope.launch { updateStatisticsTexts() }

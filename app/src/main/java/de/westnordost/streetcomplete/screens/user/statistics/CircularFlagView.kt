@@ -63,7 +63,7 @@ class CircularFlagView @JvmOverloads constructor(
     }
 
     override fun setRotation(rotation: Float) {
-        /* this view can't handle rotation properly */
+        // this view can't handle rotation properly
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -137,7 +137,7 @@ class CircularFlagView @JvmOverloads constructor(
     }
 
     companion object {
-        /* make sure the YAML is only read once and kept once for all instances of SquareFlagView*/
+        // make sure the YAML is only read once and kept once for all instances of SquareFlagView
         private var map: Map<String, FlagAlignment>? = null
 
         private fun get(resources: Resources, countryCode: String): FlagAlignment? {

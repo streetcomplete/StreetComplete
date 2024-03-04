@@ -98,7 +98,7 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
             ("building" to "cottage") to BUNGALOW, // not documented
             ("building" to "ger") to TENT, // a Mongolian tent
             ("building" to "stilt_house") to HOUSE,
-            ("building" to "terrace_house") to HOUSE,  // not documented, auto-changing to house would be a loss of information
+            ("building" to "terrace_house") to HOUSE, // not documented, auto-changing to house would be a loss of information
             ("building" to "trullo") to HUT,
             ("building" to "pajaru") to HUT, // not documented, but similar to trullo https://it.wikipedia.org/wiki/Pajaru
 

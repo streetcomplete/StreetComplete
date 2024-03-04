@@ -33,7 +33,7 @@ internal fun expandTrafficCalmingValue(values: String): List<String> =
     values
         .split(';') // split e.g. choker;table;island
         .flatMap {
-            when  {
+            when {
                 // e.g. choked_table, choked_island... anything chocked_* is also a choker
                 it.startsWith("choked_") ->
                     listOf("choker", it.substringAfter('_'))
