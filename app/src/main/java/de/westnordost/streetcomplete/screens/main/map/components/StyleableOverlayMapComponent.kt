@@ -49,6 +49,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
         LineLayer("overlay-lines-casing", SOURCE)
             .withFilter(all(
                 eq(get("type"), "line"),
+                not(has("dashed")),
                 gte(zoom(), 16f)
             ))
             .withProperties(
