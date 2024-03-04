@@ -31,7 +31,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    /* undo button is not shown when there is nothing to undo */
+    // undo button is not shown when there is nothing to undo
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(edit: Edit) { viewLifecycleScope.launch { animateInIfAnythingToUndo() } }
         override fun onSynced(edit: Edit) { viewLifecycleScope.launch { animateOutIfNothingLeftToUndo() } }

@@ -23,7 +23,7 @@ class BuildingsOverlay : Overlay {
     override val achievements = listOf(BUILDING)
     override val hidesQuestTypes = setOf(AddBuildingType::class.simpleName!!)
 
-    /* building:use not supported, so don't offer to change it -> exclude from the overlay */
+    // building:use not supported, so don't offer to change it -> exclude from the overlay
     override fun getStyledElements(mapData: MapDataWithGeometry) = mapData.filter(
         """
             ways, relations with

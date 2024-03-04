@@ -14,7 +14,7 @@ class AddSport : OsmFilterQuestType<List<Sport>>() {
           and (!sport or sport ~ football|skating|hockey|team_handball)
           and access !~ private|no
     """
-    /* treat ambiguous values as if it is not set */
+    // treat ambiguous values as if it is not set
     override val changesetComment = "Specify sport played on pitches"
     override val wikiLink = "Key:sport"
     override val icon = R.drawable.ic_quest_sport

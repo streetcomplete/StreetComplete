@@ -70,7 +70,7 @@ class ElementFilterExpression(
     internal val elementsTypes: Set<ElementsTypeFilter>,
     internal val elementExprRoot: BooleanExpression<ElementFilter, Element>?
 ) {
-    /* Performance improvement: Allows to skip early on elements that have no tags at all */
+    // Performance improvement: Allows to skip early on elements that have no tags at all
     val mayEvaluateToTrueWithNoTags = elementExprRoot?.mayEvaluateToTrueWithNoTags ?: true
 
     /** returns whether the given element is found through (=matches) this expression */
