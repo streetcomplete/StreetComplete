@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.drawable.LayerDrawable
 import androidx.annotation.UiThread
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
@@ -53,13 +52,13 @@ class PinsMapComponent(
 
     /** Shows/hides the pins */
     var isVisible: Boolean
-        @UiThread get() = map.style?.sources?.find { it.id == "pins-source" } != null
+        @UiThread get() = layers.first().visibility.value != Property.NONE
         @UiThread set(value) {
             if (isVisible == value) return
             if (value) {
-                map.style?.addSource(pinsSource)
+                layers.forEach { it.setProperties(visibility(Property.VISIBLE)) }
             } else {
-                map.style?.removeSource(pinsSource)
+                layers.forEach { it.setProperties(visibility(Property.NONE)) }
             }
         }
 
