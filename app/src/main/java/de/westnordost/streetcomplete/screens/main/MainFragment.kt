@@ -26,6 +26,7 @@ import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -121,6 +122,7 @@ import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.concurrent.FutureTask
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
@@ -318,11 +320,11 @@ class MainFragment :
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
-//        binding.compassView.rotation = (180 * rotation / PI).toFloat()
-//        binding.compassView.rotationX = (180 * tilt / PI).toFloat()
+        binding.compassView.rotation = rotation.toFloat()
+        binding.compassView.rotationX = tilt.toFloat()
 
-//        val margin = 2 * PI / 180
-//        binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
+        val margin = 2
+        binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
 
         updateLocationPointerPin()
         updateCreateButtonEnablement(zoom)

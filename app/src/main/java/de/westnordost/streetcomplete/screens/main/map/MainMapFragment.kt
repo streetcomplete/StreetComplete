@@ -154,16 +154,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // defaults: 300, 0, true
         style.transition = TransitionOptions(style.transition.duration, style.transition.delay, false)
 
-        mapboxMap.uiSettings.setCompassFadeFacingNorth(true)
-        // todo: set correct top margin, should depend on where bottom of menu button is
-        mapboxMap.uiSettings.setCompassMargins(0, requireContext().dpToPx(80).toInt(), 6, 0)
-        val compass = LayerDrawable(arrayOf(
-            ContextCompat.getDrawable(requireContext(), R.drawable.round_white_button)!!,
-            ContextCompat.getDrawable(requireContext(), R.drawable.ic_compass_needle_48dp)!!
-        ))
-        // todo: image too large, but when creating a correctly sized bitmap, it's grey and not white (wtf?)
-        mapboxMap.uiSettings.setCompassImage(compass)
-
+        mapboxMap.uiSettings.isCompassEnabled = false
         mapboxMap.uiSettings.isLogoEnabled = false
         mapboxMap.uiSettings.isAttributionEnabled = false
 
