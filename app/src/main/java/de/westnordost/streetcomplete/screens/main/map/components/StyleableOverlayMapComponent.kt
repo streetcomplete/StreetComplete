@@ -140,14 +140,13 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
     /** Shows/hides the map data */
     var isVisible: Boolean
         // add / remove source
-        @UiThread get() =
-            map.style?.sources?.find { it.id == "overlay-source" } != null
+        @UiThread get() = layers.first().visibility.value != Property.NONE
         @UiThread set(value) {
             if (isVisible == value) return
             if (value) {
-                map.style?.addSource(overlaySource)
+                layers.forEach { it.setProperties(visibility(Property.VISIBLE)) }
             } else {
-                map.style?.removeSource(overlaySource)
+                layers.forEach { it.setProperties(visibility(Property.NONE)) }
             }
         }
 
