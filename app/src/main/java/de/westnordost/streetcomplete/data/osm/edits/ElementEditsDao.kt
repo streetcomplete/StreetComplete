@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ACTION
@@ -23,9 +24,6 @@ import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -35,8 +33,7 @@ import kotlinx.serialization.modules.subclass
 
 class ElementEditsDao(
     private val db: Database,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val overlayRegistry: OverlayRegistry
+    private val allEditTypes: AllEditTypes,
 ) {
     private val json = Json {
         serializersModule = SerializersModule {
@@ -111,8 +108,7 @@ class ElementEditsDao(
 
     private fun CursorPosition.toElementEdit() = ElementEdit(
         getLong(ID),
-        questTypeRegistry.getByName(getString(QUEST_TYPE)) as? OsmElementQuestType<*>
-            ?: overlayRegistry.getByName(getString(QUEST_TYPE))!!,
+        allEditTypes.getByName(getString(QUEST_TYPE)) as ElementEditType,
         json.decodeFromString(getString(GEOMETRY)),
         getString(SOURCE),
         getLong(CREATED_TIMESTAMP),
