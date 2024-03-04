@@ -12,6 +12,7 @@ import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.runBlocking
+import okio.FileSystem
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
@@ -33,7 +34,7 @@ class StreetCompleteImageUploaderTest {
 
         else -> throw Exception("Invalid request body")
     } }
-    private val uploader = StreetCompleteImageUploader(HttpClient(mockEngine), "http://example.com/" )
+    private val uploader = StreetCompleteImageUploader(FileSystem.SYSTEM, HttpClient(mockEngine), "http://example.com/" )
 
     @Test
     fun `upload makes POST request with file contents`() = runBlocking {

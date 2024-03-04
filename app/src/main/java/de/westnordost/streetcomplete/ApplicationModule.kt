@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.http.userAgent
+import okio.FileSystem
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -23,4 +24,5 @@ val appModule = module {
             userAgent(ApplicationConstants.USER_AGENT)
         }
     } }
+    single { FileSystem.SYSTEM }
 }

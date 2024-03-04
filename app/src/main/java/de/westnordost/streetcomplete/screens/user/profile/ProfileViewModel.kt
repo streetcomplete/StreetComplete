@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.osmnotes.AvatarStore
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
@@ -19,11 +20,10 @@ import kotlinx.coroutines.flow.update
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.io.File
 
 abstract class ProfileViewModel : ViewModel() {
     abstract val userName: StateFlow<String?>
-    abstract val userAvatarFile: StateFlow<File>
+    abstract val userAvatarFilePath: StateFlow<String?>
 
     abstract val achievementLevels: StateFlow<Int>
 
@@ -58,12 +58,12 @@ class ProfileViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val avatarsCacheDirectory: File,
+    private val avatarStore: AvatarStore,
     private val prefs: ObservableSettings
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)
-    override val userAvatarFile = MutableStateFlow(getUserAvatarFile())
+    override val userAvatarFilePath = MutableStateFlow(getUserAvatarFile())
     override val achievementLevels = MutableStateFlow(0)
     override val unsyncedChangesCount = MutableStateFlow(0)
     override val datesActive = MutableStateFlow(DatesActiveInRange(emptyList(), 0))
@@ -135,12 +135,12 @@ class ProfileViewModelImpl(
     private val userListener = object : UserDataSource.Listener {
         override fun onUpdated() {
             userName.value = userDataSource.userName
-            userAvatarFile.value = getUserAvatarFile()
+            userAvatarFilePath.value = getUserAvatarFile()
         }
     }
     private val userAvatarListener = object : UserUpdater.Listener {
         override fun onUserAvatarUpdated() {
-            userAvatarFile.value = getUserAvatarFile()
+            userAvatarFilePath.value = getUserAvatarFile()
         }
     }
 
@@ -203,8 +203,7 @@ class ProfileViewModelImpl(
         }
     }
 
-    private fun getUserAvatarFile(): File =
-        File(avatarsCacheDirectory, userDataSource.userId.toString())
+    private fun getUserAvatarFile(): String? = avatarStore.cachedProfileImagePath(userDataSource.userId)
 
     override fun onCleared() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)

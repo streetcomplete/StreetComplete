@@ -7,17 +7,22 @@ import de.westnordost.streetcomplete.util.logs.Log
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.get
-import io.ktor.client.statement.bodyAsChannel
-import io.ktor.util.cio.writeChannel
-import io.ktor.utils.io.copyAndClose
-import java.io.File
+import io.ktor.client.statement.readBytes
+import okio.FileSystem
+import okio.IOException
+import okio.Path
+
+interface AvatarStore {
+    fun cachedProfileImagePath(userId: Long): String?
+}
 
 /** Downloads and stores the OSM avatars of users */
 class AvatarsDownloader(
     private val httpClient: HttpClient,
     private val userApi: UserApi,
-    private val cacheDir: File
-) {
+    private val filesystem: FileSystem,
+    private val cacheDir: Path
+) : AvatarStore {
 
     suspend fun download(userIds: Collection<Long>) {
         if (!ensureCacheDirExists()) {
@@ -47,20 +52,37 @@ class AvatarsDownloader(
     /** download avatar for the given user and a known avatar url */
     suspend fun download(userId: Long, avatarUrl: String) {
         if (!ensureCacheDirExists()) return
-        val avatarFile = File(cacheDir, "$userId")
+        val avatarPath = avatarPath(userId)
         try {
             val response = httpClient.get(avatarUrl) {
                 expectSuccess = true
             }
-            response.bodyAsChannel().copyAndClose(avatarFile.writeChannel())
-            Log.d(TAG, "Downloaded file: ${avatarFile.path}")
+            filesystem.write(avatarPath) {
+                this.write(response.readBytes())
+            }
+            Log.d(TAG, "Downloaded file: $avatarPath")
         } catch (e: Exception) {
             Log.w(TAG, "Unable to download avatar for user id $userId")
         }
     }
 
-    private fun ensureCacheDirExists(): Boolean =
-        cacheDir.exists() || cacheDir.mkdirs()
+    override fun cachedProfileImagePath(userId: Long): String? {
+        val path = avatarPath(userId)
+        return if (filesystem.exists(path)) {
+            path.toString()
+        } else {
+            null
+        }
+    }
+
+    private fun avatarPath(userId: Long) = cacheDir.resolve("$userId")
+
+    private fun ensureCacheDirExists(): Boolean = try {
+        filesystem.createDirectory(cacheDir)
+        true
+    } catch (e: IOException) {
+        false
+    }
 
     companion object {
         private const val TAG = "OsmAvatarsDownload"

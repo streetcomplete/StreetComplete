@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.AvatarStore
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
@@ -37,8 +38,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
-import java.io.File
 
 class NoteDiscussionForm : AbstractQuestForm() {
 
@@ -52,7 +51,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
     private val noteSource: NotesWithEditsSource by inject()
     private val noteEditsController: NoteEditsController by inject()
     private val osmNoteQuestController: OsmNoteQuestController by inject()
-    private val avatarsCacheDir: File by inject(named("AvatarsCacheDirectory"))
+    private val avatarStore: AvatarStore by inject()
 
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
@@ -184,8 +183,8 @@ class NoteDiscussionForm : AbstractQuestForm() {
         }
 
         private val User.avatar: Bitmap? get() {
-            val file = File(avatarsCacheDir.toString() + File.separator + id)
-            return if (file.exists()) BitmapFactory.decodeFile(file.path) else null
+            val imagePath = avatarStore.cachedProfileImagePath(id) ?: return null
+            return BitmapFactory.decodeFile(imagePath)
         }
 
         private val NoteComment.Action.actionResourceId get() = when (this) {

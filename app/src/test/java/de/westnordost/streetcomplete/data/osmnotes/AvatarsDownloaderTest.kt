@@ -12,10 +12,14 @@ import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.runBlocking
-import java.nio.file.Files
+import okio.Path.Companion.toPath
+import okio.fakefilesystem.FakeFileSystem
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class AvatarsDownloaderTest {
     private val mockEngine = MockEngine { request -> when (request.url.encodedPath) {
@@ -23,14 +27,24 @@ class AvatarsDownloaderTest {
         "/ConnectionError" -> throw IOException("Cannot connect")
         else -> respondOk("Image Content")
     } }
-    private val tempFolder = Files.createTempDirectory("images").toFile()
+    private val fileSystem = FakeFileSystem()
+    private val tempFolder = "/avatars/".toPath()
     private val userApi: UserApi = mock()
-    private val downloader = AvatarsDownloader(HttpClient(mockEngine), userApi, tempFolder)
+    private val downloader = AvatarsDownloader(HttpClient(mockEngine), userApi, fileSystem, tempFolder)
     private val userInfo = UserInfo(100, "Map Enthusiast 530")
 
     @BeforeTest fun setUp() {
         userInfo.profileImageUrl = "http://example.com/BigImage.png"
         on(userApi.get(userInfo.id)).thenReturn(userInfo)
+    }
+
+    @Test
+    fun `download generates the tempFolder`() = runBlocking {
+        assertFalse(fileSystem.exists(tempFolder))
+
+        downloader.download(listOf())
+
+        assertTrue(fileSystem.exists(tempFolder))
     }
 
     @Test
@@ -46,7 +60,7 @@ class AvatarsDownloaderTest {
     fun `download copies HTTP response from profileImageUrl into tempFolder`() = runBlocking {
         downloader.download(listOf(userInfo.id))
 
-        assertEquals("Image Content", tempFolder.resolve("100").readText())
+        assertEquals("Image Content", fileSystem.read(tempFolder.resolve("100")) { readUtf8() })
     }
 
     @Test
@@ -74,5 +88,17 @@ class AvatarsDownloaderTest {
         downloader.download(listOf(userInfo.id))
 
         assertEquals(0, mockEngine.requestHistory.size)
+    }
+
+    @Test
+    fun `cachedProfileImagePath returns null when image not downloaded`() = runBlocking {
+        assertNull(downloader.cachedProfileImagePath(100))
+    }
+
+    @Test
+    fun `cachedProfileImagePath returns path when image downloaded`() = runBlocking {
+        downloader.download(listOf(userInfo.id))
+
+        assertEquals("/avatars/${userInfo.id}", downloader.cachedProfileImagePath(userInfo.id).toString())
     }
 }
