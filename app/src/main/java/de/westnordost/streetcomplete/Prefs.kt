@@ -48,12 +48,6 @@ object Prefs {
     const val MAP_FOLLOWING = "map.following"
     const val MAP_NAVIGATION_MODE = "map.navigation_mode"
 
-    const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
-    const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"
-
-    const val ICON_SPRITES_VERSION = "TangramIconsSpriteSheet.version"
-    const val ICON_SPRITES = "TangramIconsSpriteSheet.sprites"
-
     const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"
 
     const val LAST_SHOWN_USER_GLOBAL_RANK = "last_shown.user_global_rank"
