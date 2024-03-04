@@ -159,6 +159,10 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:2.3.8")
     testImplementation("io.ktor:ktor-client-mock:2.3.8")
 
+    // File/Stream/IO API
+    implementation("com.squareup.okio:okio:3.8.0")
+    testImplementation("com.squareup.okio:okio-fakefilesystem:3.8.0")
+
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
