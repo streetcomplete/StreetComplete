@@ -14,7 +14,7 @@ val statisticsModule = module {
 
     factory { ActiveDatesDao(get()) }
 
-    factory { StatisticsDownloader(STATISTICS_BACKEND_URL, get()) }
+    factory { StatisticsDownloader(get(), STATISTICS_BACKEND_URL, get()) }
     factory { StatisticsParser(get(named("TypeAliases"))) }
 
     single<StatisticsSource> { get<StatisticsController>() }

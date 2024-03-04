@@ -153,6 +153,11 @@ dependencies {
     // scheduling background jobs
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
+    // HTTP Client
+    implementation("io.ktor:ktor-client-core:2.3.8")
+    implementation("io.ktor:ktor-client-cio:2.3.8")
+    testImplementation("io.ktor:ktor-client-mock:2.3.8")
+
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
