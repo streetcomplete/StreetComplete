@@ -24,7 +24,6 @@ ktlint_standard_backing-property-naming = disabled
 ktlint_standard_blank-line-before-declaration = disabled
 ktlint_standard_blank-line-between-when-conditions = disabled
 ktlint_standard_chain-wrapping = disabled
-ktlint_standard_comment-wrapping = disabled
 ktlint_standard_function-naming = disabled
 ktlint_standard_function-signature = disabled
 ktlint_standard_indent = disabled
@@ -47,8 +46,6 @@ ktlint_standard_statement-wrapping = disabled
 ktlint_standard_string-template-indent = disabled
 ktlint_standard_trailing-comma-on-call-site = disabled
 ktlint_standard_trailing-comma-on-declaration-site = disabled
-ktlint_standard_value-argument-comment = disabled
-ktlint_standard_value-parameter-comment = disabled
 ktlint_standard_wrapping = disabled
 
 # enable some experimental Ktlint rules
