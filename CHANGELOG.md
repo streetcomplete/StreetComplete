@@ -36,7 +36,7 @@ you map places that are not shops - like hotels, hospitals, schools and so forth
 
 ### Other
 
-- Fix a (shokingly common) crash (#5498)
+- Fix a (shockingly common) crash (#5498)
 - Fix issues with doing edits while data is being downloaded (#4258)
 - Add some interesting links as achievement rewards (#5466)
 - Translation to Amharic has been disabled, it was not maintained for over a year
