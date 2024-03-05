@@ -7,6 +7,7 @@ import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.style.expressions.Expression.*
 import com.mapbox.mapboxsdk.style.layers.Layer
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
@@ -24,7 +25,7 @@ class SelectedPinsMapComponent(private val context: Context, private val map: Ma
     val layers: List<Layer> = listOf(
         SymbolLayer("selected-pins-layer", "selected-pins-source")
             .withProperties(
-                iconImage("{icon-image}"),
+                iconImage(get("icon-image")),
                 iconOffset(listOf(-8f, -33f).toTypedArray()),
             )
     )

@@ -53,7 +53,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             .withProperties(
                 circleColor("#D140D0"),
                 circleOpacity(0.7f),
-                textField("{label}"),
+                textField(get("label")),
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
                 textMaxWidth(5f),
@@ -62,8 +62,8 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             .withFilter(has("icon"))
             .withProperties(
                 iconColor("#D140D0"),
-                iconImage("{icon}"),
-                textField("{label}"),
+                iconImage(get("icon")),
+                textField(get("label")),
                 textOffset(arrayOf(1.5f, 0f)),
                 textMaxWidth(5f),
             )

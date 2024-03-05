@@ -44,7 +44,7 @@ class PinsMapComponent(
         SymbolLayer("pins-layer", SOURCE)
             .withFilter(gte(zoom(), 16f))
             .withProperties(
-                iconImage("{icon-image}"),
+                iconImage(get("icon-image")),
                 iconOffset(listOf(-8f, -33f).toTypedArray()),
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
             )
