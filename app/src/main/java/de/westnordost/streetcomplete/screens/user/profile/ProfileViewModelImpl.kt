@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.user.profile
 
-import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
@@ -10,13 +9,11 @@ import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
+import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.prefs.Preferences
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -67,7 +64,7 @@ class ProfileViewModelImpl(
         get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK)?.let { Json.decodeFromString(it) }
 
     override fun logOutUser() {
-        viewModelScope.launch { userLoginStatusController.logOut() }
+        launch { userLoginStatusController.logOut() }
     }
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
@@ -123,47 +120,42 @@ class ProfileViewModelImpl(
     }
 
     private fun updateRanks() {
-        viewModelScope.launch {
+        launch(IO) {
             rank.value = statisticsSource.rank
             rankCurrentWeek.value = statisticsSource.currentWeekRank
             biggestSolvedCountCountryStatistics.value =
-                withContext(Dispatchers.IO) { statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount() }
+                statisticsSource.getCountryStatisticsOfCountryWithBiggestSolvedCount()
             biggestSolvedCountCurrentWeekCountryStatistics.value =
-                withContext(Dispatchers.IO) { statisticsSource.getCurrentWeekCountryStatisticsOfCountryWithBiggestSolvedCount() }
+                statisticsSource.getCurrentWeekCountryStatisticsOfCountryWithBiggestSolvedCount()
         }
     }
 
     private fun updateEditCounts() {
-        viewModelScope.launch {
-            editCount.update { withContext(Dispatchers.IO) { statisticsSource.getEditCount() } }
-            editCountCurrentWeek.update { withContext(Dispatchers.IO) { statisticsSource.getCurrentWeekEditCount() } }
+        launch(IO) {
+            editCount.update { statisticsSource.getEditCount() }
+            editCountCurrentWeek.update { statisticsSource.getCurrentWeekEditCount() }
         }
     }
 
     private fun updateAchievementLevels() {
-        viewModelScope.launch {
-            val achievements = withContext(Dispatchers.IO) { achievementsSource.getAchievements() }
-            achievementLevels.value = achievements.sumOf { it.second }
+        launch(IO) {
+            achievementLevels.value = achievementsSource.getAchievements().sumOf { it.second }
         }
     }
 
     private fun updateDatesActive() {
-        daysActive.value = statisticsSource.daysActive
-        viewModelScope.launch {
+        launch(IO) {
+            daysActive.value = statisticsSource.daysActive
             datesActive.value = DatesActiveInRange(
-                withContext(Dispatchers.IO) { statisticsSource.getActiveDates() },
+                statisticsSource.getActiveDates(),
                 statisticsSource.activeDatesRange
             )
         }
     }
 
     private fun updateUnsyncedChangesCount() {
-        viewModelScope.launch {
-            unsyncedChangesCount.update {
-                withContext(Dispatchers.IO) {
-                    unsyncedChangesCountSource.getCount()
-                }
-            }
+        launch(IO) {
+            unsyncedChangesCount.update { unsyncedChangesCountSource.getCount() }
         }
     }
 
