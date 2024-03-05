@@ -3,10 +3,7 @@ package de.westnordost.streetcomplete.screens.user.statistics
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleObserver
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentStatisticsBallPitBinding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -24,23 +21,23 @@ class StatisticsByCountryFragment : Fragment(R.layout.fragment_statistics_ball_p
 
     private val binding by viewBinding(FragmentStatisticsBallPitBinding::bind)
     private val viewModel by viewModel<EditStatisticsViewModel>(ownerProducer = { requireParentFragment() })
+    private var hasCreatedBallPit: Boolean = false // only add it once, no update
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.queryCountryStatistics()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val container = binding.ballPitViewContainer
-
+        lifecycle.addObserver(binding.ballPitView)
         observe(viewModel.countryStatistics) { countryStatistics ->
-            // remove previous views
-            container.children.forEach { if (it is LifecycleObserver) lifecycle.removeObserver(it) }
-            container.removeAllViews()
-
-            // add new views
-            val ballPitView = BallPitView(view.context)
-            ballPitView.setViews(countryStatistics.map {
-                createCountryBubbleView(it.countryCode, it.count, it.rank) to it.count
-            })
-            lifecycle.addObserver(ballPitView)
-            container.addView(ballPitView, MATCH_PARENT, MATCH_PARENT)
+            if (countryStatistics.isNotEmpty() && !hasCreatedBallPit) {
+                binding.ballPitView.setViews(countryStatistics.map {
+                    createCountryBubbleView(it.countryCode, it.count, it.rank) to it.count
+                })
+                hasCreatedBallPit = true
+            }
         }
     }
 

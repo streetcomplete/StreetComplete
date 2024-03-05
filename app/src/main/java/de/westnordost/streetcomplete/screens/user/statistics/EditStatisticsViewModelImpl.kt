@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.screens.user.statistics
 
-import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import kotlinx.coroutines.Dispatchers
+import de.westnordost.streetcomplete.util.ktx.launch
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class EditStatisticsViewModelImpl(
     private val statisticsSource: StatisticsSource,
@@ -17,17 +15,22 @@ class EditStatisticsViewModelImpl(
     override val hasEdits = MutableStateFlow(true)
     override val isSynchronizingStatistics = MutableStateFlow(false)
     override val countryStatistics = MutableStateFlow<Collection<CountryStatistics>>(emptyList())
-    override val editTypeObjStatistics = MutableStateFlow<Collection<EditTypeObjStatistics>>(emptyList())
+    override val editTypeStatistics = MutableStateFlow<Collection<EditTypeObjStatistics>>(emptyList())
+
+    // no updating of data implemented (because actually not needed. Not possible to add edits
+    // while in this screen)
 
     init {
-        viewModelScope.launch {
-            hasEdits.value = withContext(Dispatchers.IO) { statisticsSource.getEditCount() > 0 }
-            isSynchronizingStatistics.value = statisticsSource.isSynchronizing
-            countryStatistics.value = withContext(Dispatchers.IO) { statisticsSource.getCountryStatistics() }
-            editTypeObjStatistics.value = withContext(Dispatchers.IO) { getEditTypeStatistics() }
-        }
-        // no updating of data implemented (because actually not needed. Not possible to add edits
-        // while in this screen)
+        isSynchronizingStatistics.value = statisticsSource.isSynchronizing
+        launch(IO) { hasEdits.value = statisticsSource.getEditCount() > 0 }
+    }
+
+    override fun queryCountryStatistics() {
+        launch(IO) { countryStatistics.value = statisticsSource.getCountryStatistics() }
+    }
+
+    override fun queryEditTypeStatistics() {
+        launch(IO) { editTypeStatistics.value = getEditTypeStatistics() }
     }
 
     private fun getEditTypeStatistics(): Collection<EditTypeObjStatistics> =

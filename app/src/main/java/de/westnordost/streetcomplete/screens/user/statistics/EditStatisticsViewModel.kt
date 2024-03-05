@@ -9,7 +9,10 @@ abstract class EditStatisticsViewModel: ViewModel() {
     abstract val hasEdits: StateFlow<Boolean>
     abstract val isSynchronizingStatistics: StateFlow<Boolean>
     abstract val countryStatistics: StateFlow<Collection<CountryStatistics>>
-    abstract val editTypeObjStatistics: StateFlow<Collection<EditTypeObjStatistics>>
+    abstract val editTypeStatistics: StateFlow<Collection<EditTypeObjStatistics>>
+
+    abstract fun queryCountryStatistics()
+    abstract fun queryEditTypeStatistics()
 }
 
 data class EditTypeObjStatistics(val type: EditType, val count: Int)

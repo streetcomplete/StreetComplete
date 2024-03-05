@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import android.widget.ImageView
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleObserver
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.databinding.FragmentStatisticsBallPitBinding
@@ -29,25 +27,23 @@ class StatisticsByEditTypeFragment : Fragment(R.layout.fragment_statistics_ball_
 
     private val binding by viewBinding(FragmentStatisticsBallPitBinding::bind)
     private val viewModel by viewModel<EditStatisticsViewModel>(ownerProducer = { requireParentFragment() })
+    private var hasCreatedBallPit: Boolean = false // only add it once, no update
 
-    /* --------------------------------------- Lifecycle ---------------------------------------- */
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.queryEditTypeStatistics()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val container = binding.ballPitViewContainer
-
-        observe(viewModel.editTypeObjStatistics) { editTypeStatistics ->
-            // remove previous views
-            container.children.forEach { if (it is LifecycleObserver) lifecycle.removeObserver(it) }
-            container.removeAllViews()
-
-            // add new views
-            val ballPitView = BallPitView(view.context)
-            ballPitView.setViews(editTypeStatistics.map {
-                createEditTypeBubbleView(it.type, it.count) to it.count
-            })
-            lifecycle.addObserver(ballPitView)
-            container.addView(ballPitView, MATCH_PARENT, MATCH_PARENT)
+        lifecycle.addObserver(binding.ballPitView)
+        observe(viewModel.editTypeStatistics) { editTypeStatistics ->
+            if (editTypeStatistics.isNotEmpty() && !hasCreatedBallPit) {
+                binding.ballPitView.setViews(editTypeStatistics.map {
+                    createEditTypeBubbleView(it.type, it.count) to it.count
+                })
+                hasCreatedBallPit = true
+            }
         }
     }
 
