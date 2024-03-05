@@ -1,11 +1,11 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 430421
-  linesOfInterfaceMarkupChanged: 147031
+  linesOfCodeChanged: 430446
+  linesOfInterfaceMarkupChanged: 147033
   assetFilesChanged: 2041
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 22037
+  linesOfCodeChanged: 22038
   linesOfInterfaceMarkupChanged: 5233
   assetFilesChanged: 636
 - name: "Flo Edelmann"

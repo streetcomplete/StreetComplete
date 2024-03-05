@@ -1339,14 +1339,23 @@ Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintii
     <string name="quest_defibrillator_location">"Missä tämä defibrillaattori sijaitsee?"</string>
     <string name="quest_defibrillator_location_description">"Anna ytimekäs kuvaus sijainnista (esim. “vahtimestarin tilassa”)."</string>
     <string name="quest_generalFee_title">"Onko käyttö maksullista?"</string>
+    <string name="about_title_logs">"Lokit (%1$d)"</string>
     <string name="about_summary_logs">"käytettäväksi virheraporteissa"</string>
     <string name="action_filter">"Suodatin"</string>
     <string name="action_share">"Jaa lokit"</string>
     <string name="about_title_show_logs">"Näytä lokit"</string>
+    <string name="label_log_level">"Lokitaso"</string>
+    <string name="label_log_newer_than">"Alkaa"</string>
+    <string name="label_log_older_than">"Päättyy"</string>
+    <string name="label_log_message_contains">"Viesti sisältää"</string>
+    <string name="title_logs_filters">"Suodata viestejä"</string>
+    <string name="link_every_door_description">"Tehokas POI-muokkain Androidille ja iOS:lle"</string>
     <string name="link_calendar_description">"Onko OpenStreetMap-tapahtumia tai -tapaamisia lähelläsi? (Jos ei, voit lisätä omasi!)"</string>
     <string name="link_prettymapp_description">"Luo kauniita monivärisiä karttajulisteita naapurustosta"</string>
     <string name="quest_disable_action">"Poista käytöstä"</string>
     <string name="quest_disable_title">"Poistetaanko kyselytyyppi käytöstä?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure ei ole (vielä) asennettu."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure ei palauttanut mittaustulosta."</string>
     <string name="quest_disable_message_tape_measure">"Voisit käyttää sen sijaan mittanauhaa, mutta se voi loppujen lopuksi olla hieman hankalaa."</string>
     <string name="quest_buildingType_outbuilding">"Ulkorakennus"</string>
     <string name="quest_buildingType_outbuilding_description">"vähemmän tärkeä rakennus kiinteistössä"</string>
@@ -1358,4 +1367,8 @@ Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintii
     <string name="quest_buildingType_under_construction">"Rakenteilla"</string>
     <string name="overlay_buildings">"Rakennukset"</string>
     <string name="quest_pedestrian_crossing_markings">"Onko tässä risteyksessä merkintöjä maassa?"</string>
+    <string name="overlay_places">"Paikat"</string>
+    <string name="overlay_things">"Asiat"</string>
+    <string name="unknown_object">"Tuntematon objekti"</string>
+    <string name="quest_leafType_tree_title">"Onko tällä puulla neulaset vai lehdet?"</string>
 </resources>

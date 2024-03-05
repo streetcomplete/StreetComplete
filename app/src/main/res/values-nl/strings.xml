@@ -1380,4 +1380,6 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="overlay_things">"Dingen"</string>
     <string name="disused">"Niet meer in gebruik"</string>
     <string name="unknown_object">"Onbekend object"</string>
+    <string name="quest_leafType_tree_title">"Is dit een naaldboom of een loofboom?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
 </resources>

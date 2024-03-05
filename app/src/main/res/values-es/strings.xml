@@ -1373,4 +1373,9 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="overlay_buildings">"Edificios"</string>
     <string name="quest_pedestrian_crossing_signals">"¿Hay que esperar a que cambie un semáforo para cruzar?"</string>
     <string name="quest_pedestrian_crossing_markings">"¿Este cruce está demarcado?"</string>
+    <string name="overlay_places">"Lugares"</string>
+    <string name="overlay_things">"Cosas"</string>
+    <string name="disused">"en desuso"</string>
+    <string name="unknown_object">"Objeto desconocido"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
 </resources>

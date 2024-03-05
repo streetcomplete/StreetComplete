@@ -1385,4 +1385,6 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="overlay_things">"Ting"</string>
     <string name="disused">"ubrugt"</string>
     <string name="unknown_object">"Ukendt objekt"</string>
+    <string name="quest_leafType_tree_title">"Har dette træ nåle eller blade?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
 </resources>

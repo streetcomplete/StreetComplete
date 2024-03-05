@@ -1325,7 +1325,7 @@ Move it now?"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"shared-use path, both directions"</string>
     <string name="overlays_tutorial_title">"Overlays"</string>
     <string name="overlays_tutorial_intro">"You found a new way to edit data!"</string>
-    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example shops or street surfaces.
+    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example “places“ or “street surfaces“.
 
 The data is highlighted in different colors to give you a good overview of what has been recorded so far.
 Missing data is always shown in red."</string>
@@ -1389,4 +1389,6 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="overlay_things">"Things"</string>
     <string name="disused">"disused"</string>
     <string name="unknown_object">"Unknown object"</string>
+    <string name="quest_leafType_tree_title">"Does this tree have needles or leaves?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
 </resources>
