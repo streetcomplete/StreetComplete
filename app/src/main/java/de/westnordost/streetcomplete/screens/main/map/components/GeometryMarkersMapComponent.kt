@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
 import de.westnordost.streetcomplete.screens.main.map.tangram.toTangramGeometry
 import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.math.centerPointOfPolyline
 
 /** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
@@ -42,7 +43,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             if (drawableResId != null) {
                 val drawable = getBitmapDrawable(drawableResId)
                 marker.setDrawable(drawable)
-                iconSize = (drawable.bitmap.width / resources.displayMetrics.density).toInt()
+                iconSize = resources.pxToDp(drawable.bitmap.width).toInt()
                 color = pointColorOpaque
             } else {
                 iconSize = pointSize

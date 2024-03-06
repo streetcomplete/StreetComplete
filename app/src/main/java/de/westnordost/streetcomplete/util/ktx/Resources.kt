@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.util.ktx
 
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
+import androidx.core.util.TypedValueCompat
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.decodeFromStream
 import de.westnordost.streetcomplete.view.DrawableImage
@@ -30,3 +32,9 @@ fun Resources.getDrawable(image: Image): Drawable = when (image) {
     is ResImage -> getDrawable(image.resId)
     is DrawableImage -> image.drawable
 }
+
+/** return the number of density independent pixels for the given pixels */
+fun Resources.pxToDp(px: Int): Float = TypedValueCompat.pxToDp(px.toFloat(), displayMetrics)
+
+/** return the number of pixels for the given density independent pixels */
+fun Resources.dpToPx(dp: Int): Float = TypedValueCompat.dpToPx(dp.toFloat(), displayMetrics)

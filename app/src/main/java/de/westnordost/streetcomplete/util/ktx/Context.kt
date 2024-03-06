@@ -24,10 +24,10 @@ import kotlin.coroutines.resume
 fun Context.spToPx(sp: Float): Float = TypedValueCompat.spToPx(sp, resources.displayMetrics)
 
 /** return the number of density independent pixels for the given pixels */
-fun Context.pxToDp(px: Int): Float = TypedValueCompat.pxToDp(px.toFloat(), resources.displayMetrics)
+fun Context.pxToDp(px: Int): Float = resources.pxToDp(px)
 
 /** return the number of pixels for the given density independent pixels */
-fun Context.dpToPx(dp: Int): Float = TypedValueCompat.dpToPx(dp.toFloat(), resources.displayMetrics)
+fun Context.dpToPx(dp: Int): Float = resources.dpToPx(dp)
 
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text, duration).show()
