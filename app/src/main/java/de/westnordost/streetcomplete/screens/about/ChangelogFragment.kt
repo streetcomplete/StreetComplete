@@ -11,6 +11,7 @@ import android.webkit.WebView
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.appcompat.app.AlertDialog
+import androidx.core.util.TypedValueCompat
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogWhatsNewBinding
 import de.westnordost.streetcomplete.databinding.FragmentChangelogBinding
@@ -83,10 +84,10 @@ private fun Resources.getHexColor(@ColorRes resId: Int) =
     String.format("#%06X", 0xffffff and getColor(resId))
 
 private fun Resources.getDimensionInSp(@DimenRes resId: Int) =
-    (getDimension(resId) / displayMetrics.scaledDensity).roundToInt()
+    TypedValueCompat.pxToSp(getDimension(resId), displayMetrics).roundToInt()
 
 private fun Resources.getDimensionInDp(@DimenRes resId: Int) =
-    (getDimension(resId) / displayMetrics.density).roundToInt()
+    TypedValueCompat.pxToDp(getDimension(resId), displayMetrics).roundToInt()
 
 private fun WebView.setHtmlFromString(body: String) {
     val textColor = resources.getHexColor(R.color.text)
