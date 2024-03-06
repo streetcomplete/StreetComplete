@@ -200,6 +200,7 @@
         android:id="@+id/glassPane"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="@dimen/speech_bubble_elevation"
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"

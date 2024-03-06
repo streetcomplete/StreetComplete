@@ -998,7 +998,7 @@ class MainFragment :
     }
 
     private fun onClickCompassButton() {
-        /* Clicking the compass button will always rotate the map back to north and remove tilt */
+        // Clicking the compass button will always rotate the map back to north and remove tilt
         val mapFragment = mapFragment ?: return
         val camera = mapFragment.cameraPosition ?: return
 

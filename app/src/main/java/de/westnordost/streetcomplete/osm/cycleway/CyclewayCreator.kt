@@ -53,7 +53,7 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     ).applyTo(tags)
 }
 
-/* bare cycleway tags are interpreted differently for oneways */
+// bare cycleway tags are interpreted differently for oneways
 private fun expandBareTags(tags: Tags, isLeftHandTraffic: Boolean) {
     val cycleway = tags["cycleway"] ?: return
     // i.e. they are only expanded into one side. Which side depends on country, direction of oneway

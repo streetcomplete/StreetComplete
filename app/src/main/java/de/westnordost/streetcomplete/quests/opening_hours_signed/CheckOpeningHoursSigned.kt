@@ -79,7 +79,7 @@ class CheckOpeningHoursSigned(
             }
         } else {
             tags["opening_hours:signed"] = "no"
-            /* still unsigned: just set the check date to now, user was on-site */
+            // still unsigned: just set the check date to now, user was on-site
             tags.updateCheckDateForKey("opening_hours")
         }
     }

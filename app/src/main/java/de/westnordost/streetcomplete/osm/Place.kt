@@ -34,9 +34,9 @@ fun Element.isPlace(): Boolean =
 private val IS_PLACE_EXPRESSION by lazy {
     val tags = mapOf(
         "amenity" to listOf(
-            /* grouped by subcategory, sorted by alphabet */
+            // grouped by subcategory, sorted by alphabet
 
-            /* sustenance */
+            // sustenance
             "bar",
             "biergarten",
             "cafe",
@@ -46,7 +46,7 @@ private val IS_PLACE_EXPRESSION by lazy {
             "pub",
             "restaurant",
 
-            /* education */
+            // education
             "childcare",
             "college",
             "dancing_school",
@@ -64,7 +64,7 @@ private val IS_PLACE_EXPRESSION by lazy {
             "training",
             "university",
 
-            /* transportation */
+            // transportation
             "boat_rental", // usually there is some kind of office, even if it is just a small stall
             "car_rental", // usually there is some kind of office
             "car_wash",
@@ -72,14 +72,14 @@ private val IS_PLACE_EXPRESSION by lazy {
             "motorcycle_rental",
             "vehicle_inspection",
 
-            /* financial */
+            // financial
             "bank",
             "bureau_de_change",
             "mobile_money_agent",
             "money_transfer",
             "payment_centre",
 
-            /* healthcare */
+            // healthcare
             "clinic",
             "dentist",
             "doctors",
@@ -90,7 +90,7 @@ private val IS_PLACE_EXPRESSION by lazy {
             "social_facility",
             "veterinary",
 
-            /* entertainment, arts & culture */
+            // entertainment, arts & culture
             "archive",
             "arts_centre",
             "brothel",
@@ -113,7 +113,7 @@ private val IS_PLACE_EXPRESSION by lazy {
             "swingerclub",
             "theatre",
 
-            /* public service */
+            // public service
             "courthouse",
             "embassy", // deprecated now
             "fire_station",
@@ -125,11 +125,11 @@ private val IS_PLACE_EXPRESSION by lazy {
             "ranger_station",
             "townhall",
 
-            /* facilities */
+            // facilities
             "lavoir",
             "left_luggage",
 
-            /* others */
+            // others
             "animal_boarding",
             "animal_shelter",
             "animal_training",

@@ -18,8 +18,10 @@ import de.westnordost.streetcomplete.data.user.OAUTH2_REDIRECT_URI
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUESTED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUIRED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_TOKEN_URL
-import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorization
+import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorizationParams
 import de.westnordost.streetcomplete.data.user.oauth.OAuthException
+import de.westnordost.streetcomplete.data.user.oauth.OAuthService
+import de.westnordost.streetcomplete.data.user.oauth.extractAuthorizationCode
 import de.westnordost.streetcomplete.databinding.FragmentOauthBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -31,8 +33,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.net.URI
-import java.net.URISyntaxException
+import org.koin.android.ext.android.inject
 import java.util.Locale
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resumeWithException
@@ -49,8 +50,8 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
     private val webViewClient: OAuthWebViewClient = OAuthWebViewClient()
-
-    private lateinit var oAuth: OAuthAuthorization
+    private val oAuthService: OAuthService by inject()
+    private lateinit var oAuth: OAuthAuthorizationParams
 
     override val title: String get() = getString(R.string.user_login)
 
@@ -78,7 +79,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
     override fun onCreate(inState: Bundle?) {
         super.onCreate(inState)
         oAuth = inState?.getString(OAUTH)?.let { Json.decodeFromString(it) }
-            ?: OAuthAuthorization(
+            ?: OAuthAuthorizationParams(
                 OAUTH2_AUTHORIZATION_URL,
                 OAUTH2_TOKEN_URL,
                 OAUTH2_CLIENT_ID,
@@ -113,7 +114,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
         try {
             binding.webView.visibility = View.VISIBLE
             binding.webView.loadUrl(
-                oAuth.createAuthorizationUrl(),
+                oAuth.authorizationRequestUrl,
                 mutableMapOf("Accept-Language" to Locale.getDefault().toLanguageTag())
             )
             val authorizationCode = webViewClient.awaitOAuthCallback()
@@ -121,7 +122,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
 
             binding.progressView.visibility = View.VISIBLE
             val accessTokenResponse = withContext(Dispatchers.IO) {
-                oAuth.retrieveAccessToken(authorizationCode)
+                oAuthService.retrieveAccessToken(oAuth, authorizationCode)
             }
             // not all requires scopes granted
             if (accessTokenResponse.grantedScopes?.containsAll(OAUTH2_REQUIRED_SCOPES) == false) {
@@ -159,13 +160,8 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), HasTitle {
 
         @Deprecated("Deprecated in Java")
         override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
-            val uri = try {
-                URI(url)
-            } catch (e: URISyntaxException) {
-                return false
-            }
-            if (!oAuth.itsForMe(uri)) return false
-            continuation?.resumeWith(runCatching { oAuth.extractAuthorizationCode(uri) })
+            if (!oAuth.itsForMe(url)) return false
+            continuation?.resumeWith(runCatching { extractAuthorizationCode(url) })
             return true
         }
 

@@ -9,6 +9,9 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.graphics.Insets
 import androidx.core.os.postDelayed
+import androidx.core.view.SoftwareKeyboardControllerCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.updateLayoutParams
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -95,3 +98,10 @@ fun View.updateMargins(left: Int? = null, top: Int? = null, right: Int? = null, 
         )
     }
 }
+
+fun View.showKeyboard(): Unit = SoftwareKeyboardControllerCompat(this).show()
+
+fun View.hideKeyboard(): Unit = SoftwareKeyboardControllerCompat(this).hide()
+
+val View.isKeyboardOpen: Boolean
+    get() = ViewCompat.getRootWindowInsets(this)?.isVisible(WindowInsetsCompat.Type.ime()) == true

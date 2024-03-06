@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user
 
+import de.westnordost.streetcomplete.data.user.oauth.OAuthService
 import org.koin.dsl.module
 
 const val OAUTH2_TOKEN_URL = "https://www.openstreetmap.org/oauth2/token"
@@ -42,4 +43,6 @@ val userModule = module {
     single { UserLoginStatusController(get(), get()) }
 
     single { UserUpdater(get(), get(), get(), get(), get()) }
+
+    single { OAuthService(get()) }
 }

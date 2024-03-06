@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegm
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.coroutines.runBlocking
 import kotlin.math.hypot
 
 class AddSuspectedOneway(
@@ -53,7 +54,7 @@ class AddSuspectedOneway(
 
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
         try {
-            trafficDirectionMap = trafficFlowSegmentsApi.get(bbox)
+            runBlocking { trafficDirectionMap = trafficFlowSegmentsApi.get(bbox) }
         } catch (e: Exception) {
             Log.e("AddSuspectedOneway", "Unable to download traffic metadata", e)
             return emptyList()

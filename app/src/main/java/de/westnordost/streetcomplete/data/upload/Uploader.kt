@@ -33,7 +33,7 @@ class Uploader(
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
 
-    private val bannedInfo by lazy { versionIsBannedChecker.get() }
+    private lateinit var bannedInfo: BannedInfo
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {
@@ -58,7 +58,11 @@ class Uploader(
         try {
             isUploadInProgress = true
             listeners.forEach { it.onStarted() }
-            val banned = withContext(Dispatchers.IO) { bannedInfo }
+
+            if (!::bannedInfo.isInitialized) {
+                bannedInfo = withContext(Dispatchers.IO) { versionIsBannedChecker.get() }
+            }
+            val banned = bannedInfo
             if (banned is IsBanned) {
                 throw VersionBannedException(banned.reason)
             } else if (banned is UnknownIfBanned) {
