@@ -32,10 +32,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.util.ktx.addTransparency
-import de.westnordost.streetcomplete.util.ktx.darken
-import de.westnordost.streetcomplete.util.ktx.toARGBString
-import de.westnordost.streetcomplete.util.ktx.toColorInt
+import de.westnordost.streetcomplete.util.ktx.toRGBA
 
 /** Takes care of displaying styled map data */
 class StyleableOverlayMapComponent(private val map: MapboxMap) {
@@ -46,7 +43,6 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
     )
 
     private val darkenedColors = HashMap<String, String>()
-    private val transparentColors = HashMap<String, String>()
 
     val layers: List<Layer> = listOf(
         LineLayer("overlay-lines-casing", SOURCE)
@@ -181,6 +177,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
                 if (style.color != INVISIBLE) {
                     p.addProperty("color", style.color)
                     p.addProperty("outline-color", getDarkenedColor(style.color))
+                    p.addProperty("opacity", 0.8f)
                 } else {
                     p.addProperty("opacity", 0f)
                 }
@@ -264,10 +261,12 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
 
     // no need to parse, modify and write to string darkening the same colors for every single element
     private fun getDarkenedColor(color: String): String =
-        darkenedColors.getOrPut(color) { toARGBString(darken(toColorInt(color), 0.67f)) }
-
-    private fun getColorWithSomeTransparency(color: String): String =
-        transparentColors.getOrPut(color) { toARGBString(addTransparency(toColorInt(color), 0.6f)) }
+        darkenedColors.getOrPut(color) {
+            val rgba = color.toRGBA()
+            val hsv = rgba.toHsv()
+            val darkenedHsv = hsv.copy(value = hsv.value * 0.67f)
+            darkenedHsv.toRgba(alpha = rgba.alpha).toHexString()
+        }
 
     /** Clear map data */
     @UiThread fun clear() {

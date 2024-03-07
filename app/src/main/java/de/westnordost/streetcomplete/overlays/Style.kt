@@ -21,7 +21,7 @@ data class StrokeStyle(
 )
 
 data class PolygonStyle(
-    /** argb value as hex value, e.g. "#66ff00" */
+    /** rgb value as hex value, e.g. "#66ff00" */
     val color: String,
     /** icon name to show on the point */
     val icon: String? = null,
