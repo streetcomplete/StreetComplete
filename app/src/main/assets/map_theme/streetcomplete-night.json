@@ -4,7 +4,7 @@
   "sources": {
     "jawg-streets": {
       "type": "vector",
-      "tiles": ["https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=XQYxWyY9JsVlwq0XYXqB8OO4ttBTNxm46ITHHwPj5F6CX4JaaSMBkvmD8kCqn7z7"],
+      "tiles": ["https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"],
       "attribution": "<a href='https://www.openstreetmap.org/copyright' title='OpenStreetMap is open data licensed under ODbL' target='_blank' class='osm-attrib'>&copy; OSM contributors</a> | <a href='https://jawg.io?utm_medium=map&utm_source=attribution' title='Tiles Courtesy of Jawg Maps' target='_blank' class='jawg-attrib'>&copy; <b>Jawg</b>Maps</a>",
       "maxzoom": 16
     }
