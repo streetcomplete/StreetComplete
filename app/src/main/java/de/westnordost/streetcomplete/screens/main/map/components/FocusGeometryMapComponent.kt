@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreFeature
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import kotlin.math.abs
 import kotlin.math.max
@@ -39,7 +39,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
 
     val layers: List<Layer> = listOf(
         FillLayer("focus-geo-fill", SOURCE)
-            .withFilter(eq(get("type"), literal("polygon")))
+            .withFilter(any(eq(geometryType(), "Polygon"), eq(geometryType(), "MultiPolygon")))
             .withProperties(
                 fillColor("#D14000"),
                 fillOpacity(0.3f)
@@ -56,6 +56,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
                 lineCap(Property.LINE_CAP_ROUND)
             ),
         CircleLayer("focus-geo-circle", SOURCE)
+            .withFilter(eq(geometryType(), "Point"))
             .withProperties(
                 circleColor("#D14000"),
                 circleRadius(12f),
@@ -69,7 +70,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
 
     /** Show the given geometry. Previously shown geometry is replaced. */
     @UiThread fun showGeometry(geometry: ElementGeometry) {
-        focusedGeometrySource.setGeoJson(geometry.toMapLibreFeature())
+        focusedGeometrySource.setGeoJson(geometry.toMapLibreGeometry())
     }
 
     /** Hide all shown geometry */

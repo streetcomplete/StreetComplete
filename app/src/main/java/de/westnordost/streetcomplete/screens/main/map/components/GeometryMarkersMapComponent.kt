@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreFeature
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 
 /** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
@@ -35,7 +35,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
     val layers: List<Layer> = listOf(
         FillLayer("geo-fill", SOURCE)
-            .withFilter(eq(get("type"), literal("polygon")))
+            .withFilter(any(eq(geometryType(), "Polygon"), eq(geometryType(), "MultiPolygon")))
             .withProperties(
                 fillColor("#D140D0"),
                 fillOpacity(0.3f)
@@ -49,7 +49,10 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 lineCap(Property.LINE_CAP_ROUND)
             ),
         CircleLayer("geo-circle", SOURCE)
-            .withFilter(not(has("icon")))
+            .withFilter(all(
+                not(has("icon")),
+                eq(geometryType(), "Point")
+            ))
             .withProperties(
                 circleColor("#D140D0"),
                 circleOpacity(0.7f),
@@ -60,7 +63,10 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 textOffset(arrayOf(1.5f, 0f)),
             ),
         SymbolLayer("geo-symbols", SOURCE)
-            .withFilter(has("icon"))
+            .withFilter(all(
+                has("icon"),
+                eq(geometryType(), "Point")
+            ))
             .withProperties(
                 iconColor("#D140D0"),
                 iconImage(get("icon")),
@@ -101,7 +107,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
         // polygon / polylines marker(s)
         if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-            features.add(geometry.toMapLibreFeature())
+            features.add(Feature.fromGeometry(geometry.toMapLibreGeometry()))
         }
 
         featuresByPosition[geometry.center] = features
