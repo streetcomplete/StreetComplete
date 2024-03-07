@@ -27,6 +27,9 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.maplibre.changeDistanceWithZoom
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.ktx.addTransparency
@@ -48,7 +51,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
     val layers: List<Layer> = listOf(
         LineLayer("overlay-lines-casing", SOURCE)
             .withFilter(all(
-                eq(get("type"), "line"),
+                isLine(),
                 not(has("dashed")),
                 gte(zoom(), 16f)
             ))
@@ -61,7 +64,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
             ),
         FillLayer("overlay-fills", SOURCE)
             .withFilter(all(
-                eq(get("type"), "polygon"),
+                isArea(),
                 gte(zoom(), 16f)
             ))
             .withProperties(
@@ -70,7 +73,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
             ),
         LineLayer("overlay-dashed-lines", SOURCE)
             .withFilter(all(
-                eq(get("type"), "line"),
+                isLine(),
                 has("dashed"),
                 gte(zoom(), 16f)
             ))
@@ -84,7 +87,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
             ),
         LineLayer("overlay-lines", SOURCE)
             .withFilter(all(
-                eq(get("type"), "line"),
+                isLine(),
                 not(has("dashed")),
                 gte(zoom(), 16f)
             ))
@@ -97,7 +100,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
             ),
         LineLayer("overlay-fills-outline", SOURCE)
             .withFilter(all(
-                eq(get("type"), "polygon"),
+                isArea(),
                 gte(zoom(), 16f)
             ))
             .withProperties(
@@ -108,7 +111,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
             ),
         FillExtrusionLayer("overlay-heights", SOURCE)
             .withFilter(all(
-                eq(get("type"), "polygon"),
+                isArea(),
                 has("height"),
                 gte(zoom(), 16f)
             ))
@@ -118,7 +121,10 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
                 fillExtrusionHeight(get("height")),
             ),
         SymbolLayer("overlay-symbols", SOURCE)
-            .withFilter(gte(zoom(), 16f))
+            .withFilter(all(
+                gte(zoom(), 16f),
+                isPoint()
+            ))
             .withProperties(
                 iconImage(get("icon")),
                 textField(get("label")),
@@ -172,7 +178,6 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
                 listOf(Feature.fromGeometry(geometry.center.toPoint(), p))
             }
             is PolygonStyle -> {
-                p.addProperty("type", "polygon")
                 if (style.color != INVISIBLE) {
                     p.addProperty("color", style.color)
                     p.addProperty("outline-color", getDarkenedColor(style.color))
@@ -195,8 +200,6 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
                 listOfNotNull(f, label)
             }
             is PolylineStyle -> {
-                p.addProperty("type", "line")
-
                 val line = geometry.toMapLibreGeometry()
                 val width = getLineWidth(element.tags)
 

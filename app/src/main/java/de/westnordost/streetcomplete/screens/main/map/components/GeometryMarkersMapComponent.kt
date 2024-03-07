@@ -22,6 +22,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 
@@ -35,7 +37,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
 
     val layers: List<Layer> = listOf(
         FillLayer("geo-fill", SOURCE)
-            .withFilter(any(eq(geometryType(), "Polygon"), eq(geometryType(), "MultiPolygon")))
+            .withFilter(isArea())
             .withProperties(
                 fillColor("#D140D0"),
                 fillOpacity(0.3f)
@@ -49,10 +51,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 lineCap(Property.LINE_CAP_ROUND)
             ),
         CircleLayer("geo-circle", SOURCE)
-            .withFilter(all(
-                not(has("icon")),
-                eq(geometryType(), "Point")
-            ))
+            .withFilter(all(not(has("icon")), isPoint()))
             .withProperties(
                 circleColor("#D140D0"),
                 circleOpacity(0.7f),
@@ -63,10 +62,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 textOffset(arrayOf(1.5f, 0f)),
             ),
         SymbolLayer("geo-symbols", SOURCE)
-            .withFilter(all(
-                has("icon"),
-                eq(geometryType(), "Point")
-            ))
+            .withFilter(all(has("icon"), isPoint()))
             .withProperties(
                 iconColor("#D140D0"),
                 iconImage(get("icon")),

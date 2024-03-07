@@ -9,3 +9,12 @@ fun changeDistanceWithZoom(propertyName: String): Expression =
         stop(10, division(get(propertyName), literal(128))),
         stop(24, product(get(propertyName), literal(128)))
     )
+
+fun isArea(): Expression =
+    any(eq(geometryType(), "Polygon"), eq(geometryType(), "MultiPolygon"))
+
+fun isLine(): Expression =
+    any(eq(geometryType(), "LineString"), eq(geometryType(), "MultiLineString"))
+
+fun isPoint(): Expression =
+    any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))

@@ -17,6 +17,8 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import kotlin.math.abs
@@ -39,7 +41,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
 
     val layers: List<Layer> = listOf(
         FillLayer("focus-geo-fill", SOURCE)
-            .withFilter(any(eq(geometryType(), "Polygon"), eq(geometryType(), "MultiPolygon")))
+            .withFilter(isArea())
             .withProperties(
                 fillColor("#D14000"),
                 fillOpacity(0.3f)
@@ -56,7 +58,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
                 lineCap(Property.LINE_CAP_ROUND)
             ),
         CircleLayer("focus-geo-circle", SOURCE)
-            .withFilter(eq(geometryType(), "Point"))
+            .withFilter(isPoint())
             .withProperties(
                 circleColor("#D14000"),
                 circleRadius(12f),
