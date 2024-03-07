@@ -58,6 +58,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
         CircleLayer("focus-geo-circle", SOURCE)
             .withProperties(
                 circleColor("#D14000"),
+                circleRadius(12f),
                 circleOpacity(0.7f)
             ),
     )

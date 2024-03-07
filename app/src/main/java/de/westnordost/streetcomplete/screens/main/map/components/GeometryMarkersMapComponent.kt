@@ -53,19 +53,24 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
             .withProperties(
                 circleColor("#D140D0"),
                 circleOpacity(0.7f),
+                circleRadius(12f),
                 textField(get("label")),
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
+                textJustify(Property.TEXT_JUSTIFY_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
-                textMaxWidth(5f),
             ),
         SymbolLayer("geo-symbols", SOURCE)
             .withFilter(has("icon"))
             .withProperties(
                 iconColor("#D140D0"),
                 iconImage(get("icon")),
+                iconAllowOverlap(true),
                 textField(get("label")),
+                textAnchor(Property.TEXT_ANCHOR_LEFT),
+                textJustify(Property.TEXT_JUSTIFY_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
-                textMaxWidth(5f),
+                textHaloColor("white"),
+                textHaloWidth(1.5f),
             )
     )
 

@@ -122,10 +122,9 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
             .withProperties(
                 iconImage(get("icon")),
                 textField(get("label")),
-                // or maybe read text properties from feature?
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
+                textJustify(Property.TEXT_JUSTIFY_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
-                textMaxWidth(5f),
                 textHaloColor("white"),
                 textHaloWidth(1.5f),
                 iconColor("black"),
