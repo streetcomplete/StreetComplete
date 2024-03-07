@@ -53,7 +53,6 @@ open class MapFragment : Fragment() {
     var isMapInitialized: Boolean = false
         private set
 
-    private val vectorTileProvider: VectorTileProvider by inject()
     private val prefs: Preferences by inject()
 
     interface Listener {
@@ -106,8 +105,8 @@ open class MapFragment : Fragment() {
         binding.map.onCreate(savedInstanceState)
 
         binding.openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
-        binding.mapTileProviderLink.text = vectorTileProvider.copyrightText
-        binding.mapTileProviderLink.setOnClickListener { showOpenUrlDialog(vectorTileProvider.copyrightLink) }
+        binding.mapTileProviderLink.text = "© JawgMaps"
+        binding.mapTileProviderLink.setOnClickListener { showOpenUrlDialog("https://www.jawg.io") }
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
@@ -175,7 +174,7 @@ open class MapFragment : Fragment() {
             override fun onMoveEnd(p0: MoveGestureDetector) {}
         })
 
-        sceneMapComponent = SceneMapComponent(resources, mapboxMap, vectorTileProvider)
+        sceneMapComponent = SceneMapComponent(resources, mapboxMap)
         sceneMapComponent?.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
 
         onBeforeLoadScene()

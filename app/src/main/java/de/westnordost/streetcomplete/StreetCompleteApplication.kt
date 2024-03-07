@@ -40,7 +40,6 @@ import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.main.mainModule
-import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.screens.settings.settingsModule
@@ -100,7 +99,6 @@ class StreetCompleteApplication : Application() {
                 elementEditsModule,
                 elementGeometryModule,
                 mapDataModule,
-                mapModule,
                 mainModule,
                 maptilesModule,
                 metadataModule,

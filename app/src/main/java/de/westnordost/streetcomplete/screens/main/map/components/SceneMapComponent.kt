@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.mapbox.mapboxsdk.maps.MapboxMap
-import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
-import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -13,7 +11,6 @@ import kotlinx.coroutines.sync.withLock
 class SceneMapComponent(
     private val resources: Resources,
     private val map: MapboxMap,
-    private val vectorTileProvider: VectorTileProvider
 ) {
     private var sceneUpdates: MutableList<List<Pair<String, String>>> = mutableListOf()
 
@@ -76,15 +73,4 @@ class SceneMapComponent(
         SceneUpdate("global.language_script", Locale.getDefault().script)
     )
 */
-    private fun getSceneFilePath(): String {
-        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val april1 = if (isApril1st()) "wonky-" else ""
-        val scene = april1 + when {
-            isAerialView -> "scene-satellite.yaml"
-            isNightMode -> "scene-dark.yaml"
-            else -> "scene-light.yaml"
-        }
-        return "${vectorTileProvider.sceneFilePath}/$scene"
-    }
 }

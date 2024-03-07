@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.MainActivity
-import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
@@ -21,9 +20,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MapTilesDownloader(
-    private val vectorTileProvider: VectorTileProvider,
-) {
+class MapTilesDownloader() {
 
     data class Tile(val zoom: Int, val x: Int, val y: Int)
 
