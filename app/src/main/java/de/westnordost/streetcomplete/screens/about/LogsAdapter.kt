@@ -33,23 +33,12 @@ class LogsAdapter : RecyclerView.Adapter<LogsAdapter.ViewHolder>() {
         set(value) {
             val result = DiffUtil.calculateDiff(
                 object : DiffUtil.Callback() {
-                    override fun getOldListSize(): Int =
-                        _messages.size
-
-                    override fun getNewListSize(): Int =
-                        value.size
-
-                    override fun areItemsTheSame(
-                        oldItemPosition: Int,
-                        newItemPosition: Int,
-                    ): Boolean =
+                    override fun getOldListSize() = _messages.size
+                    override fun getNewListSize() = value.size
+                    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
                         _messages[oldItemPosition].timestamp == value[newItemPosition].timestamp
-
-                    // contents never change
-                    override fun areContentsTheSame(
-                        oldItemPosition: Int,
-                        newItemPosition: Int,
-                    ): Boolean = areItemsTheSame(oldItemPosition, newItemPosition)
+                    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                        _messages[oldItemPosition] == _messages[newItemPosition]
                 }
             )
             _messages = value.toMutableList()
