@@ -41,8 +41,7 @@
 
 # kotlinx-serialization end ------------------------------------------------------------------------
 
-# after removing tangram, this must be added or build will fail
-# but it's just dontwarn, wtf?
+# TODO remove after upgrading to maplibre sdk 11 (they added these to their own proguard rules)
 -dontwarn org.bouncycastle.jsse.BCSSLParameters
 -dontwarn org.bouncycastle.jsse.BCSSLSocket
 -dontwarn org.bouncycastle.jsse.provider.BouncyCastleJsseProvider
