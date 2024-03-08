@@ -12,6 +12,7 @@ interface Overlay : ElementEditType {
     val hidesQuestTypes: Set<String> get() = emptySet()
 
     /** scene updates that should be applied to the map when this overlay is active */
+    // TODO like this it won't work with maplibre. Maybe -> hidesLayers: List<String> ?
     val sceneUpdates: List<Pair<String, String>>? get() = null
 
     val isCreateNodeEnabled: Boolean get() = false
