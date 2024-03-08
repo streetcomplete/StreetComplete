@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.util.ktx.toRGBA
+import de.westnordost.streetcomplete.util.ktx.toRGB
 
 /** Takes care of displaying styled map data */
 class StyleableOverlayMapComponent(private val map: MapboxMap) {
@@ -44,19 +44,54 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
 
     private val darkenedColors = HashMap<String, String>()
 
+    private val sideLinesProperties = arrayOf(
+        lineCap(Property.LINE_CAP_BUTT),
+        lineJoin(Property.LINE_JOIN_ROUND),
+        lineColor(get("color")),
+        lineOpacity(get("opacity")),
+        lineOffset(changeDistanceWithZoom("offset")),
+        lineWidth(changeDistanceWithZoom("width")),
+    )
+
+    private val sideLineFilters = arrayOf(
+        isLine(),
+        gte(zoom(), 16f),
+        has("offset"),
+    )
+
+    val sideLayers: List<Layer> = listOf(
+        LineLayer("overlay-lines-side", SOURCE)
+            .withFilter(all(*sideLineFilters, not(has("bridge")), not(has("dashed"))))
+            .withProperties(*sideLinesProperties),
+        LineLayer("overlay-lines-dashed-side", SOURCE)
+            .withFilter(all(*sideLineFilters, not(has("bridge")), has("dashed")))
+            .withProperties(*sideLinesProperties, lineDasharray(arrayOf(1.5f, 1f))),
+    )
+
+    val sideLayersBridge: List<Layer> = listOf(
+        LineLayer("overlay-lines-bridge-side", SOURCE)
+            .withFilter(all(*sideLineFilters, has("bridge"), not(has("dashed"))))
+            .withProperties(*sideLinesProperties),
+        LineLayer("overlay-lines-dashed-bridge-side", SOURCE)
+            .withFilter(all(*sideLineFilters, has("bridge"), has("dashed")))
+            .withProperties(*sideLinesProperties, lineDasharray(arrayOf(1.5f, 1f))),
+    )
+
     val layers: List<Layer> = listOf(
         LineLayer("overlay-lines-casing", SOURCE)
             .withFilter(all(
                 isLine(),
-                not(has("dashed")),
-                gte(zoom(), 16f)
+                gte(zoom(), 16f),
+                not(has("offset")),
+                not(has("dashed"))
             ))
             .withProperties(
-                lineCap(Property.LINE_CAP_BUTT),
+                lineCap(Property.LINE_CAP_ROUND),
+                lineJoin(Property.LINE_JOIN_ROUND),
                 lineColor(get("outline-color")),
                 lineOpacity(get("opacity")),
-                lineOffset(changeDistanceWithZoom("offset")),
-                lineWidth(changeDistanceWithZoom("width")),
+                lineGapWidth(changeDistanceWithZoom("width")),
+                lineWidth(changeDistanceWithZoom(1f)),
             ),
         FillLayer("overlay-fills", SOURCE)
             .withFilter(all(
@@ -67,32 +102,34 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
                 fillColor(get("color")),
                 fillOpacity(get("opacity")),
             ),
-        LineLayer("overlay-dashed-lines", SOURCE)
-            .withFilter(all(
-                isLine(),
-                has("dashed"),
-                gte(zoom(), 16f)
-            ))
-            .withProperties(
-                lineCap(Property.LINE_CAP_BUTT),
-                lineColor(get("color")),
-                lineOpacity(get("opacity")),
-                lineOffset(changeDistanceWithZoom("offset")),
-                lineWidth(changeDistanceWithZoom("width")),
-                lineDasharray(arrayOf(1.5f, 1f)),
-            ),
         LineLayer("overlay-lines", SOURCE)
             .withFilter(all(
                 isLine(),
-                not(has("dashed")),
-                gte(zoom(), 16f)
+                gte(zoom(), 16f),
+                not(has("offset")),
+                not(has("dashed"))
             ))
             .withProperties(
-                lineCap(Property.LINE_CAP_BUTT),
+                lineCap(Property.LINE_CAP_ROUND),
+                lineJoin(Property.LINE_JOIN_ROUND),
                 lineColor(get("color")),
                 lineOpacity(get("opacity")),
-                lineOffset(changeDistanceWithZoom("offset")),
                 lineWidth(changeDistanceWithZoom("width")),
+            ),
+        LineLayer("overlay-lines-dashed", SOURCE)
+            .withFilter(all(
+                isLine(),
+                gte(zoom(), 16f),
+                not(has("offset")),
+                has("dashed")
+            ))
+            .withProperties(
+                lineCap(Property.LINE_CAP_BUTT), // because of dashed
+                lineJoin(Property.LINE_JOIN_ROUND),
+                lineColor(get("color")),
+                lineOpacity(get("opacity")),
+                lineWidth(changeDistanceWithZoom("width")),
+                lineDasharray(arrayOf(1.5f, 1f)),
             ),
         LineLayer("overlay-fills-outline", SOURCE)
             .withFilter(all(
@@ -103,7 +140,7 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
                 lineCap(Property.LINE_CAP_BUTT),
                 lineColor(get("outline-color")),
                 lineOpacity(get("opacity")),
-                lineWidth(4f),
+                lineWidth(changeDistanceWithZoom(1f)),
             ),
         FillExtrusionLayer("overlay-heights", SOURCE)
             .withFilter(all(
@@ -199,14 +236,16 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
             is PolylineStyle -> {
                 val line = geometry.toMapLibreGeometry()
                 val width = getLineWidth(element.tags)
+                if (isBridge(element.tags)) p.addProperty("bridge", true)
 
                 val left = style.strokeLeft?.let {
                     val p2 = p.deepCopy()
-                    p2.addProperty("width", 4f)
-                    p2.addProperty("offset", -width - 2f)
+                    p2.addProperty("width", 6f)
+                    p2.addProperty("offset", -(width / 2f + 3f))
                     if (it.color != INVISIBLE) {
                         p2.addProperty("color", it.color)
-                        p2.addProperty("outline-color", getDarkenedColor(it.color))
+                    } else {
+                        p2.addProperty("opacity", 0f)
                     }
                     if (it.dashed) p2.addProperty("dashed", true)
                     Feature.fromGeometry(line, p2)
@@ -214,25 +253,27 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
 
                 val right = style.strokeRight?.let {
                     val p2 = p.deepCopy()
-                    p2.addProperty("width", 4f)
-                    p2.addProperty("offset", +width + 2f)
+                    p2.addProperty("width", 6f)
+                    p2.addProperty("offset", +(width / 2f + 3f))
                     if (it.color != INVISIBLE) {
                         p2.addProperty("color", it.color)
-                        p2.addProperty("outline-color", getDarkenedColor(it.color))
+                    } else {
+                        p2.addProperty("opacity", 0f)
                     }
                     if (it.dashed) p2.addProperty("dashed", true)
                     Feature.fromGeometry(line, p2)
                 }
 
-                val center = style.stroke?.let {
+                val center = style.stroke.let {
                     val p2 = p.deepCopy()
                     p2.addProperty("width", width)
-                    p2.addProperty("color", it.color)
-                    if (it.color != INVISIBLE) {
+                    if (it != null && it.color != INVISIBLE) {
                         p2.addProperty("color", it.color)
                         p2.addProperty("outline-color", getDarkenedColor(it.color))
+                    } else {
+                        p2.addProperty("opacity", 0f)
                     }
-                    if (it.dashed) p2.addProperty("dashed", true)
+                    if (it?.dashed == true) p2.addProperty("dashed", true)
                     Feature.fromGeometry(line, p2)
                 }
 
@@ -248,24 +289,13 @@ class StyleableOverlayMapComponent(private val map: MapboxMap) {
         }
     }
 
-    /** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
-    private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
-        "motorway" -> 15f
-        "motorway_link" -> 4.5f
-        "trunk", "primary", "secondary", "tertiary" -> 7.5f
-        "service", "track" -> 3f
-        "path", "cycleway", "footway", "bridleway", "steps" -> 1f
-        null -> 3f
-        else -> 5.5f
-    }
-
     // no need to parse, modify and write to string darkening the same colors for every single element
     private fun getDarkenedColor(color: String): String =
         darkenedColors.getOrPut(color) {
-            val rgba = color.toRGBA()
-            val hsv = rgba.toHsv()
-            val darkenedHsv = hsv.copy(value = hsv.value * 0.67f)
-            darkenedHsv.toRgba(alpha = rgba.alpha).toHexString()
+            val rgb = color.toRGB()
+            val hsv = rgb.toHsv()
+            val darkenedHsv = hsv.copy(value = hsv.value * 2 / 3)
+            darkenedHsv.toRgb().toHexString()
         }
 
     /** Clear map data */
@@ -294,3 +324,17 @@ fun JsonElement.toElementKey(): ElementKey? {
         ElementKey(ElementType.valueOf(type), id)
     else null
 }
+
+/** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
+private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
+    "motorway" -> 16f
+    "motorway_link" -> 8f
+    "trunk", "primary", "secondary", "tertiary" -> 12f
+    "service", "track", "busway" -> 6f
+    "path", "cycleway", "footway", "bridleway", "steps" -> 1f
+    null -> 4f
+    else -> 8f
+}
+
+private fun isBridge(tags: Map<String, String>): Boolean =
+    tags["bridge"] != null && tags["bridge"] != "no"

@@ -5,7 +5,7 @@ import kotlin.math.roundToInt
 
 // conversion code rgb <-> hsv pretty much taken from https://www.tlbx.app/color-converter
 
-data class RGBA(val red: UByte, val green: UByte, val blue: UByte, val alpha: UByte = 255u) {
+data class RGB(val red: UByte, val green: UByte, val blue: UByte) {
 
     /** return as HSV */
     fun toHsv(): HSV {
@@ -32,23 +32,18 @@ data class RGBA(val red: UByte, val green: UByte, val blue: UByte, val alpha: UB
     /** return color as hexadecimal string "#rrggbbaa" */
     @OptIn(ExperimentalStdlibApi::class)
     fun toHexString(): String =
-        "#" + red.toHexString() + green.toHexString() + blue.toHexString() + alpha.toHexString()
+        "#" + red.toHexString() + green.toHexString() + blue.toHexString()
 }
 
-/** Creates RGBA from string in the form "#rrggbb" or "#rrggbbaa" */
+/** Creates RGB from string in the form "#rrggbb" */
 @OptIn(ExperimentalStdlibApi::class, ExperimentalUnsignedTypes::class)
-fun String.toRGBA(): RGBA {
+fun String.toRGB(): RGB {
     require(length == 7 || length == 9)
     require(get(0) == '#')
 
-    val rgba = substring(1).hexToUByteArray()
+    val rgb = substring(1).hexToUByteArray()
 
-    return RGBA(
-        red = rgba[0],
-        green = rgba[1],
-        blue = rgba[2],
-        alpha = if (rgba.size > 3) rgba[3] else 255u,
-    )
+    return RGB(rgb[0], rgb[1], rgb[2])
 }
 
 data class HSV(val hue: Float, val saturation: Float, val value: Float) {
@@ -59,8 +54,8 @@ data class HSV(val hue: Float, val saturation: Float, val value: Float) {
         require(value in 0f .. 1f) { "value must be between 0..1 but was $value" }
     }
 
-    /** return as RGB + alpha */
-    fun toRgba(alpha: UByte = 255u): RGBA {
+    /** return as RGB */
+    fun toRgb(): RGB {
         val h = hue / 60f
         val chroma = value * saturation
         val x = chroma * (1 - abs(h % 2 - 1))
@@ -74,11 +69,10 @@ data class HSV(val hue: Float, val saturation: Float, val value: Float) {
             h <= 6 -> Triple(chroma + m, 0 + m, x + m)
             else ->   Triple(0f, 0f, 0f)
         }
-        return RGBA(
+        return RGB(
             red = (red * 255).roundToInt().toUByte(),
             green = (green * 255).roundToInt().toUByte(),
-            blue = (blue * 255).roundToInt().toUByte(),
-            alpha = alpha
+            blue = (blue * 255).roundToInt().toUByte()
         )
     }
 }

@@ -167,7 +167,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
             val searchArea = RectF(screenPoint.x - pickRadius, screenPoint.y - pickRadius, screenPoint.x + pickRadius, screenPoint.y + pickRadius)
             // only query specific layer(s), leave layerIds empty for querying all layers
-            val features = mapboxMap.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-dashed-lines", "overlay-fills")
+            val features = mapboxMap.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills")
             if (features.isNotEmpty()) { // found a feature
                 // is the first feature always the correct one? looks like yes in a quick test
                 viewLifecycleScope.launch {
@@ -211,6 +211,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // layers added first appear behind other layers
         downloadedAreaMapComponent?.layers?.forEach { style.addLayer(it) }
         styleableOverlayMapComponent?.layers?.forEach { style.addLayer(it) }
+        styleableOverlayMapComponent?.sideLayers?.forEach { style.addLayerAbove(it, "pedestrian-tunnel-casing") }
+        styleableOverlayMapComponent?.sideLayersBridge?.forEach { style.addLayerAbove(it, "pedestrian-bridge-casing") }
         geometryMarkersMapComponent?.layers?.forEach { style.addLayer(it) }
         geometryMapComponent?.layers?.forEach { style.addLayer(it) }
         pinsMapComponent?.layers?.forEach { style.addLayer(it) }

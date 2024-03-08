@@ -10,6 +10,12 @@ fun changeDistanceWithZoom(propertyName: String): Expression =
         stop(24, product(get(propertyName), literal(128)))
     )
 
+fun changeDistanceWithZoom(width: Float): Expression =
+    interpolate(exponential(2), zoom(),
+        stop(10, width / 128),
+        stop(24, width * 128)
+    )
+
 fun isArea(): Expression =
     any(eq(geometryType(), "Polygon"), eq(geometryType(), "MultiPolygon"))
 
