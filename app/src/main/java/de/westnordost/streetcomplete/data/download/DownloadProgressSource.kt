@@ -1,9 +1,18 @@
 package de.westnordost.streetcomplete.data.download
 
 interface DownloadProgressSource {
-    val isPriorityDownloadInProgress: Boolean
+    interface Listener {
+        fun onStarted() {}
+        fun onError(e: Exception) {}
+        fun onFinished() {}
+        fun onSuccess() {}
+    }
+
+    /** @return true if a download triggered by the user is running */
+    val isUserInitiatedDownloadInProgress: Boolean
+    /** @return true if a download is running */
     val isDownloadInProgress: Boolean
 
-    fun addDownloadProgressListener(listener: DownloadProgressListener)
-    fun removeDownloadProgressListener(listener: DownloadProgressListener)
+    fun addListener(listener: Listener)
+    fun removeListener(listener: Listener)
 }

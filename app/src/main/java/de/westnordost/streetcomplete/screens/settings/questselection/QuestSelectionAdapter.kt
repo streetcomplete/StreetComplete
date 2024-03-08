@@ -328,15 +328,12 @@ class QuestSelectionAdapter(
     }
 
     private object QuestDiffUtil : DiffUtil.ItemCallback<QuestVisibility>() {
-        override fun areItemsTheSame(oldItem: QuestVisibility, newItem: QuestVisibility): Boolean {
-            return oldItem.questType.name == newItem.questType.name
-        }
+        override fun areItemsTheSame(oldItem: QuestVisibility, newItem: QuestVisibility): Boolean =
+            oldItem.questType.name == newItem.questType.name
 
         override fun areContentsTheSame(
             oldItem: QuestVisibility,
             newItem: QuestVisibility,
-        ): Boolean {
-            return oldItem.visible == newItem.visible
-        }
+        ): Boolean = oldItem.visible == newItem.visible
     }
 }

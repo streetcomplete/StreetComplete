@@ -92,7 +92,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
         override fun onUnhidAll() { setHiddenQuestsSummary() }
     }
 
-    private val onAutosyncChanged =  {
+    private val onAutosyncChanged = {
         if (Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") != Prefs.Autosync.ON) {
             AlertDialog.Builder(requireContext())
                 .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))

@@ -1378,4 +1378,10 @@
     <string name="quest_buildingType_tower_description">"било који торањ"</string>
     <string name="quest_buildingType_under_construction">"У изградњи"</string>
     <string name="overlay_buildings">"Грађевине"</string>
+    <string name="quest_pedestrian_crossing_signals">"Да ли је овде потребно сачекати семафор пре преласка?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Да ли је овај прелаз обележен хоризонталном сигналиацјом?"</string>
+    <string name="overlay_places">"Места"</string>
+    <string name="overlay_things">"Ствари"</string>
+    <string name="disused">"некористи се"</string>
+    <string name="unknown_object">"Непознати објекат"</string>
 </resources>

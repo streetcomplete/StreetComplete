@@ -23,13 +23,32 @@ class BuildingsOverlay : Overlay {
     override val achievements = listOf(BUILDING)
     override val hidesQuestTypes = setOf(AddBuildingType::class.simpleName!!)
 
-    /* building:use not supported, so don't offer to change it -> exclude from the overlay */
+    // building:use not supported, so don't offer to change it -> exclude from the overlay
     override fun getStyledElements(mapData: MapDataWithGeometry) = mapData.filter(
         """
             ways, relations with
-              (building and building !~ no|entrance
-              or man_made ~ communications_tower|tower|lighthouse|chimney|silo|storage_tank|water_tower|gasometer|cooling_tower
-              ) and !building:use
+              (
+                building and building !~ no|entrance
+                or historic ~ monument|ship|wreck
+                or man_made ~ ${listOf(
+                  "antenna",
+                  "chimney",
+                  "cooling_tower",
+                  "communications_tower",
+                  "gasometer",
+                  "lighthouse",
+                  "obelisk",
+                  "silo",
+                  "storage_tank",
+                  "stupa",
+                  "telescope",
+                  "tower",
+                  "watermill",
+                  "water_tower",
+                  "windmill",
+                ).joinToString("|")}
+              )
+              and !building:use
         """)
         .map { element ->
             val building = createBuildingType(element.tags)

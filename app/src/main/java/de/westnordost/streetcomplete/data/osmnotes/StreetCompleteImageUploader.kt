@@ -1,16 +1,22 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.ConnectionException
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.header
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
+import io.ktor.http.contentType
+import io.ktor.http.defaultForFile
+import io.ktor.util.cio.readChannel
+import io.ktor.utils.io.errors.IOException
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import java.io.File
-import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLConnection
 
 @Serializable
 private data class PhotoUploadResponse(
@@ -19,9 +25,12 @@ private data class PhotoUploadResponse(
 )
 
 /** Upload and activate a list of image paths to an instance of the
- * <a href="https://github.com/exploide/sc-photo-service">StreetComplete image hosting service</a>
+ * <a href="https://github.com/streetcomplete/sc-photo-service">StreetComplete image hosting service</a>
  */
-class StreetCompleteImageUploader(private val baseUrl: String) {
+class StreetCompleteImageUploader(
+    private val httpClient: HttpClient,
+    private val baseUrl: String
+) {
     private val json = Json {
         ignoreUnknownKeys = true
     }
@@ -31,7 +40,7 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
      *  @throws ImageUploadServerException when there was a server error on upload (server error)
      *  @throws ImageUploadClientException when the server rejected the upload request (client error)
      *  @throws ConnectionException if it is currently not reachable (no internet etc) */
-    fun upload(imagePaths: List<String>): List<String> {
+    suspend fun upload(imagePaths: List<String>): List<String> {
         val imageLinks = ArrayList<String>()
 
         for (path in imagePaths) {
@@ -39,35 +48,28 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
             if (!file.exists()) continue
 
             try {
-                val connection = createConnection("upload.php")
-                connection.requestMethod = "POST"
-                connection.setRequestProperty("Content-Type", URLConnection.guessContentTypeFromName(file.path))
-                connection.setRequestProperty("Content-Transfer-Encoding", "binary")
-                connection.setRequestProperty("Content-Length", file.length().toString())
-                connection.outputStream.use { output ->
-                    file.inputStream().use { input ->
-                        input.copyTo(output)
-                    }
+                val response = httpClient.post(baseUrl + "upload.php") {
+                    contentType(ContentType.defaultForFile(file))
+                    header("Content-Transfer-Encoding", "binary")
+                    setBody(file.readChannel())
                 }
 
-                val status = connection.responseCode
-                if (status == HttpURLConnection.HTTP_OK) {
-                    val response = connection.inputStream.bufferedReader().use { it.readText() }
+                val status = response.status
+                val body = response.body<String>()
+                if (status == HttpStatusCode.OK) {
                     try {
-                        val parsedResponse = json.decodeFromString<PhotoUploadResponse>(response)
+                        val parsedResponse = json.decodeFromString<PhotoUploadResponse>(body)
                         imageLinks.add(parsedResponse.futureUrl)
                     } catch (e: SerializationException) {
-                        throw ImageUploadServerException("Upload Failed: Unexpected response \"$response\"")
+                        throw ImageUploadServerException("Upload Failed: Unexpected response \"$body\"")
                     }
                 } else {
-                    val error = connection.errorStream.bufferedReader().use { it.readText() }
-                    if (status / 100 == 5) {
-                        throw ImageUploadServerException("Upload failed: Error code $status, Message: \"$error\"")
+                    if (status.value / 100 == 5) {
+                        throw ImageUploadServerException("Upload failed: Error code $status, Message: \"$body\"")
                     } else {
-                        throw ImageUploadClientException("Upload failed: Error code $status, Message: \"$error\"")
+                        throw ImageUploadClientException("Upload failed: Error code $status, Message: \"$body\"")
                     }
                 }
-                connection.disconnect()
             } catch (e: IOException) {
                 throw ConnectionException("Upload failed", e)
             }
@@ -80,38 +82,28 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
      *  @throws ImageUploadServerException when there was a server error on upload (server error)
      *  @throws ImageUploadClientException when the server rejected the upload request (client error)
      *  @throws ConnectionException if it is currently not reachable (no internet etc)  */
-    fun activate(noteId: Long) {
+    suspend fun activate(noteId: Long) {
         try {
-            val connection = createConnection("activate.php")
-            connection.requestMethod = "POST"
-            connection.setRequestProperty("Content-Type", "Content-Type: application/json")
-            connection.outputStream.bufferedWriter().use { it.write("{\"osm_note_id\": $noteId}") }
+            val response = httpClient.post(baseUrl + "activate.php") {
+                contentType(ContentType.Application.Json)
+                setBody("{\"osm_note_id\": $noteId}")
+            }
 
-            val status = connection.responseCode
-            if (status == HttpURLConnection.HTTP_GONE) {
+            val status = response.status
+            if (status == HttpStatusCode.Gone) {
                 // it's gone if the note does not exist anymore. That's okay, it should only fail
                 // if we might want to try again later.
-            } else if (status != HttpURLConnection.HTTP_OK) {
-                val error = connection.errorStream.bufferedReader().use { it.readText() }
-                if (status / 100 == 5) {
+            } else if (status != HttpStatusCode.OK) {
+                val error = response.body<String>()
+                if (status.value / 100 == 5) {
                     throw ImageUploadServerException("Error code $status, Message: \"$error\"")
                 } else {
                     throw ImageUploadClientException("Error code $status, Message: \"$error\"")
                 }
             }
-            connection.disconnect()
         } catch (e: IOException) {
             throw ConnectionException("", e)
         }
-    }
-
-    private fun createConnection(url: String): HttpURLConnection {
-        val connection = URL(baseUrl + url).openConnection() as HttpURLConnection
-        connection.useCaches = false
-        connection.doOutput = true
-        connection.doInput = true
-        connection.setRequestProperty("User-Agent", ApplicationConstants.USER_AGENT)
-        return connection
     }
 }
 

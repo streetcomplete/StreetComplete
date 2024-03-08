@@ -1,51 +1,61 @@
 # Changelog
 
-## v57.0-beta1
+## v57.0
+
+Take cover! For you don't want to be squashed by this m-m-mega phat update, or do you?
 
 ### Buildings Overlay (#5461)
 
 The new Buildings overlay now lets you comprehensively view and edit building types all around town,
 color-coded for your convenience!
+Conversely, the building type quest is disabled by default now as it was really spammy, don't you think?
 
 (You'll be amazed and/or appalled how many buildings are currently actually tagged wrong or imprecise! 😅)
 
 ### Things Overlay (#4912), thanks @matkoniecz
 
-The new Things overlay allows you to map all those small map features like benches, bicycle parkings, 
-roadside trees, ATMs and other street furniture in general. 
+The new Things overlay allows you to map all those small map features like benches, bicycle parkings,
+roadside trees, ATMs and other street furniture in general.
 
-It complements the Places Overlay which has been renamed from Shop overlay because it now also lets 
+It complements the Places Overlay which has been renamed from Shop overlay because it now also lets
 you map places that are not shops - like hotels, hospitals, schools and so forth. (#5152)
 
 ### New Quests
+
 - The crossing type quest has been split up into two quests: One that asks for markings, the other for traffic signals (#5471, #5476)
 
 ### Quest and Overlay Enhancements and Fixes
+
 - Lit and Surface Overlay: now each have a button to apply the last answer (#4741)
 - Measuring widths and heights: [StreetMeasure](https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure) doesn't work for you? In that case you'll be offered to quickly disable these AR measurement quests now (#4849)
 - Max Height: Don't prompt to estimate height when there is no sign (#5458)
 - Opening Hours: Also ask for places whose already set opening hours likely contain mistakes (#5463)
-- Building Type: disabled by default now, because we have an overlay now and it was really spammy, don't you think?
+- BBQ fuel: Add "gas" answer (#5495), by @k-yle
+- Steps: Don't ask about ramps and tactile paving for hiking steps, by @matkoniecz
 - Fire Hydrant Diameter: Disable for Austria again (#5470)
 
 ### Other
+
+- Fix a (shockingly common) crash (#5498)
 - Fix issues with doing edits while data is being downloaded (#4258)
 - Add some interesting links as achievement rewards (#5466)
 - Translation to Amharic has been disabled, it was not maintained for over a year
-- Other small enhancements, performance and wording improvements (#5468, #5154, #5474...), thanks @Jean-BaptisteC
+- Use new method to upload and download data as mandated by Google Play policy. On Android 13 and above, there's no notification for continuing to sync in the background anymore. (#5492)
+- Other small enhancements, performance and wording improvements (#5468, #5154, #5474...), thanks @Jean-BaptisteC, @matkoniecz, @FloEdelmann
 
 ## v56.1
 
-Some work towards an [iOS port](https://github.com/streetcomplete/StreetComplete/issues/5421) of 
+Some work towards an [iOS port](https://github.com/streetcomplete/StreetComplete/issues/5421) of
 StreetComplete has begun - starting with making the code more platform independent for now.
 (Monitor the linked tickets for updates, because non user-facing changes are usually not
 mentioned in the changelogs)
 
 Thanks to @FloEdelmann, @neonowy, @starsep, @YoshiRulz, @riQQ and others [for their contributions](https://github.com/orgs/streetcomplete/projects/1/views/1)
-so far! 
+so far!
 
 ### Quest Enhancements and Fixes
-- ATM, charging station and clothing container operators: Provide better suggestions 
+
+- ATM, charging station and clothing container operators: Provide better suggestions
 - Bike parking capacity: Don't ask for informal bike parkings (#5428), by @bxl-forever
 - Road width: Don't ask for roads that may not be accessed by pedestrians (#5437)
 - Fire hydrant diameter: Also ask in Austria and Luxembourg
@@ -53,6 +63,7 @@ so far!
 - Other small enhancements (#5438, #5440, ...), thanks @Helium314, @matkoniecz
 
 ### General Enhancements and Fixes
+
 - In settings, show how many quests have been hidden by you (#5359), by @jmizv
 - Show both ref number and name in the quest title hint for roads (#5427) @arrival-spring
 - Fix filtering logs by tag name did not work
@@ -156,7 +167,7 @@ Sponsored by [SUSE Open Source Community Citizens (OSCC)](https://www.suse.com/e
 - Max height: Also ask for crossings with rails electrified with overhead wires (#5180, #5223)
 - Bus stop refs: Also ask in Colombia (#5124)
 - Sidewalks, bike paths: Also ask on roads that have a foot path or bike path nearby.  
- You can always answer that it exists but is displayed separately on the map (#5060).
+  You can always answer that it exists but is displayed separately on the map (#5060).
 - Shop level in mall: Only ask after its name has been determined (#5198), by @matkoniecz
 - Ask for more railway platforms about their properties (#5183), by @burrscurr
 - Fix put name of railway halts and stations on correct element (#5215)
@@ -165,7 +176,7 @@ Sponsored by [SUSE Open Source Community Citizens (OSCC)](https://www.suse.com/e
 ### General Enhancements and Fixes
 
 - Moved the overlay button to the main screen (#5109).  
- Enjoy the short tutorial first time you tap on that button (#5158)!
+  Enjoy the short tutorial first time you tap on that button (#5158)!
 - Never ask _"Are you sure you checked this on-site?"_ for places you've just been to up to ten minutes ago (#4947), by @Helium314
 - Fix two problems that may appear as performance issues (#5091, #5146), by @Helium314
 - Fix source for a crash (#5177)
@@ -796,7 +807,7 @@ Google Play / F-Droid will not update to the next major version v41 automaticall
 
 - _Does this road have a shoulder?_ (#2444, #3613)
 - _What is the surface quality of this road here?_ (#3617, #3257, #1630, #3633), special thanks to @Helium314 but also to @FloEdelmann, @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more  
- It is disabled by default, enable it in the settings to try it out!
+  It is disabled by default, enable it in the settings to try it out!
 - _Where is this fire hydrant located?_ (#3368), by @thefeiter
 
 ### Other enhancements
@@ -1000,7 +1011,7 @@ Fix crash on entering quest selection screen
 
 - Show quests that are quick and easy to solve (from a distance) first by default. This makes contributing more efficient and diverse while also easier to do as e.g. a passenger (#2944, ...)
 - You can now save different quest presets for different situations, e.g. one preset when you only want a solve some important quests while on a bus, or on a bike tour etc.  
-This was a much requested feature: (#1301, #1654, #1746, #1987, #2054, #2069, #2279, #2565, #2308, #3034, #3216, ...)
+  This was a much requested feature: (#1301, #1654, #1746, #1987, #2054, #2069, #2279, #2565, #2308, #3034, #3216, ...)
 - Inform new users once about the possibility to change quest presets
 - Add search/filter function for the quest presets settings (#3008)
 
@@ -1316,10 +1327,10 @@ Did you already [take the survey](https://osmf.limequery.org/281662) of the Open
 
 ### 🗺️ Map available offline!
 
-In the area quests are downloaded, the background map is now also downloaded into the cache.  
-  
-So, when you are offline later, you can continue to use this app in that area without any problem because the background is also available (#122, #2428).  
-  
+In the area quests are downloaded, the background map is now also downloaded into the cache.
+
+So, when you are offline later, you can continue to use this app in that area without any problem because the background is also available (#122, #2428).
+
 To download not at your current GPS location but somewhere else, just pan and zoom to that location and tap "search for quests here" in the menu.
 
 ### New Quests
@@ -2733,7 +2744,7 @@ minor bugfix update: bugfixes, updated translations
 
 ## v0.10
 
-fixed #108: opening\_hours used wrong separator
+fixed #108: opening_hours used wrong separator
 
 ## v0.9
 

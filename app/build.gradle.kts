@@ -34,8 +34,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5700
-        versionName = "57.0-beta1"
+        versionCode = 5702
+        versionName = "57.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -152,7 +152,12 @@ dependencies {
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.9.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    // HTTP Client
+    implementation("io.ktor:ktor-client-core:2.3.8")
+    implementation("io.ktor:ktor-client-cio:2.3.8")
+    testImplementation("io.ktor:ktor-client-mock:2.3.8")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -200,7 +205,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20240126"
+val nsiVersion = "v6.0.20240228"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v6.6.0"
 

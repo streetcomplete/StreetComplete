@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 14
+    const val DB_VERSION = 16
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -239,7 +239,23 @@ object DatabaseInitializer {
             db.exec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LATITUDE} double DEFAULT 0 NOT NULL")
             db.exec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LONGITUDE} double DEFAULT 0 NOT NULL")
         }
+        if (oldVersion <= 14 && newVersion > 14) {
+            db.renameOverlay("ShopsOverlay", "PlacesOverlay")
+        }
+        if (oldVersion <= 15 && newVersion > 15) {
+            db.deleteQuest("AddCrossingType")
+        }
     }
+}
+
+private fun Database.deleteQuest(name: String) {
+    deleteValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, name)
+    deleteValue(OsmQuestTable.NAME, OsmQuestTable.Columns.QUEST_TYPE, name)
+    deleteValue(OsmQuestsHiddenTable.NAME, OsmQuestsHiddenTable.Columns.QUEST_TYPE, name)
+    deleteValue(VisibleQuestTypeTable.NAME, VisibleQuestTypeTable.Columns.QUEST_TYPE, name)
+    deleteValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, name)
+    deleteValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.BEFORE, name)
+    deleteValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, name)
 }
 
 private fun Database.renameQuest(old: String, new: String) {
@@ -252,6 +268,15 @@ private fun Database.renameQuest(old: String, new: String) {
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, old, new)
 }
 
+private fun Database.renameOverlay(old: String, new: String) {
+    renameValue(ElementEditsTable.NAME, ElementEditsTable.Columns.QUEST_TYPE, old, new)
+    renameValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, old, new)
+}
+
 private fun Database.renameValue(table: String, column: String, oldValue: String, newValue: String) {
     update(table, listOf(column to newValue), "$column = ?", arrayOf(oldValue))
+}
+
+private fun Database.deleteValue(table: String, column: String, value: String) {
+    delete(table, "$column = ?", arrayOf(value))
 }

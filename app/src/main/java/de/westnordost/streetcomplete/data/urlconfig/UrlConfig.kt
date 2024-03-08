@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.overlays.Overlay
-import java.net.URLDecoder
-import java.net.URLEncoder
+import io.ktor.http.decodeURLQueryComponent
+import io.ktor.http.encodeURLQueryComponent
 
 data class UrlConfig(
     val presetName: String?,
@@ -45,7 +45,7 @@ fun parseConfigUrl(
             keyValue[0].lowercase() to keyValue[1]
         }
 
-    val name = parameters[PARAM_NAME]?.let { URLDecoder.decode(it, "UTF-8") }
+    val name = parameters[PARAM_NAME]?.let { it.decodeURLQueryComponent(plusIsSpace = true) }
 
     val questTypesString = parameters[PARAM_QUESTS] ?: return null
     val questTypes = stringToQuestTypes(questTypesString, questTypeRegistry) ?: return null
@@ -79,7 +79,7 @@ fun createConfigUrl(
     val name = urlConfig.presetName
     if (name != null) {
         val shortenedName = if (name.length > 60) name.substring(0, 57) + "..." else name
-        parameters.add(PARAM_NAME to URLEncoder.encode(shortenedName, "UTF-8"))
+        parameters.add(PARAM_NAME to shortenedName.encodeURLQueryComponent(spaceToPlus = true))
     }
     parameters.add(PARAM_QUESTS to questTypesToString(urlConfig.questTypes, questTypeRegistry))
 

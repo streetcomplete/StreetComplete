@@ -151,13 +151,12 @@ class AchievementsController(
         return level - 1
     }
 
-    private fun getAchievedPoints(achievement: Achievement): Int {
-        return when (achievement.condition) {
+    private fun getAchievedPoints(achievement: Achievement): Int =
+        when (achievement.condition) {
             is EditsOfTypeCount -> statisticsSource.getEditCount(getEditTypesContributingToAchievement(achievement.id))
             is TotalEditCount -> statisticsSource.getEditCount()
             is DaysActive -> statisticsSource.daysActive
         }
-    }
 
     private fun isContributingToAchievement(editType: String, achievementId: String): Boolean =
         allEditTypes.getByName(editType)?.achievements?.anyHasId(achievementId) == true

@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.osmtracks.TracksApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
@@ -143,7 +145,7 @@ class NoteEditsUploaderTest {
         verify(listener, times(2))!!.onUploaded(any(), any())
     }
 
-    @Test fun `upload note comment with attached images`() {
+    @Test fun `upload note comment with attached images`() = runBlocking {
         val pos = p(1.0, 13.0)
         val edit = noteEdit(
             noteId = 1L,
@@ -169,7 +171,7 @@ class NoteEditsUploaderTest {
         verify(listener)!!.onUploaded("NOTE", pos)
     }
 
-    @Test fun `upload create note with attached images`() {
+    @Test fun `upload create note with attached images`() = runBlocking {
         val pos = p(1.0, 13.0)
         val edit = noteEdit(
             noteId = 1L,
@@ -195,7 +197,31 @@ class NoteEditsUploaderTest {
         verify(listener)!!.onUploaded("NOTE", pos)
     }
 
-    @Test fun `upload missed image activations`() {
+    @Test fun `upload create note with attached GPS trace`() = runBlocking {
+        val pos = p(1.0, 13.0)
+        val edit = noteEdit(
+            noteId = 1L,
+            action = NoteEditAction.CREATE,
+            text = "test",
+            pos = pos,
+            track = listOf(Trackpoint(LatLon(0.0, 0.0), 180, 0.0f, 100.0f))
+        )
+        val note = note(1)
+
+        on(noteEditsController.getOldestUnsynced()).thenReturn(edit).thenReturn(null)
+        on(userDataSource.userName).thenReturn("blah mc/Blah")
+        on(notesApi.create(any(), any())).thenReturn(note)
+        on(tracksApi.create(edit.track, edit.text)).thenReturn(988)
+
+        upload()
+
+        verify(notesApi).create(pos, "test\n\nGPS Trace: https://www.openstreetmap.org/user/blah%20mc%2FBlah/traces/988\n")
+        verify(noteController).put(note)
+        verify(noteEditsController).markSynced(edit, note)
+        verify(listener)!!.onUploaded("NOTE", pos)
+    }
+
+    @Test fun `upload missed image activations`(): Unit = runBlocking {
         val edit = noteEdit(noteId = 3)
 
         on(noteEditsController.getOldestNeedingImagesActivation()).thenReturn(edit).thenReturn(null)

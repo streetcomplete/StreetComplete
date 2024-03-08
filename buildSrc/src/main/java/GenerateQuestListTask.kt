@@ -1,17 +1,3 @@
-/**
- * This Gradle task generates a CSV file with information about quest types (see `writeCsvFile` function).
- *
- * First, it fetches and parses the table in the OSM Wiki (`WikiQuest`).
- * Then it reads and parses the quest types from the repository code (`RepoQuest`) and
- * matches them to the corresponding WikiQuest (if possible).
- *
- * The generated CSV file contains 3 sections of rows:
- * 1. WikiQuests that could not be matched with RepoQuests
- * 2. RepoQuests that could not be matched with WikiQuests
- * 3. RepoQuests that could be matched with WikiQuests
- *    (note that the "Default Priority" column may be different from the wiki)
- */
-
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -27,6 +13,19 @@ const val wikiRowSpan2 = " rowspan=\"2\" |"
 const val noteQuestName = "OsmNoteQuest"
 const val noteQuestPackageName = "note_discussion"
 
+/**
+ * This Gradle task generates a CSV file with information about quest types (see `writeCsvFile` function).
+ *
+ * First, it fetches and parses the table in the OSM Wiki (`WikiQuest`).
+ * Then it reads and parses the quest types from the repository code (`RepoQuest`) and
+ * matches them to the corresponding WikiQuest (if possible).
+ *
+ * The generated CSV file contains 3 sections of rows:
+ * 1. WikiQuests that could not be matched with RepoQuests
+ * 2. RepoQuests that could not be matched with WikiQuests
+ * 3. RepoQuests that could be matched with WikiQuests
+ *    (note that the "Default Priority" column may be different from the wiki)
+ */
 open class GenerateQuestListTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:InputDirectory lateinit var projectDirectory: File

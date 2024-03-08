@@ -17,14 +17,13 @@ class LogsController(private val logsDao: LogsDao) {
         messageContains: String? = null,
         newerThan: Long? = null,
         olderThan: Long? = null,
-    ): List<LogMessage> {
-        return logsDao.getAll(
+    ): List<LogMessage> =
+        logsDao.getAll(
             levels = levels,
             messageContains = messageContains,
             newerThan = newerThan,
             olderThan = olderThan,
         )
-    }
 
     fun deleteOlderThan(timestamp: Long) {
         val deletedCount = logsDao.deleteOlderThan(timestamp)

@@ -46,29 +46,23 @@ class AndroidPreferences(private val prefs: SharedPreferences) : Preferences {
         prefs.edit { putString(key, string) }
     }
 
-    override fun getBoolean(key: String, defaultValue: Boolean): Boolean {
-        return prefs.getBoolean(key, defaultValue)
-    }
+    override fun getBoolean(key: String, defaultValue: Boolean): Boolean =
+        prefs.getBoolean(key, defaultValue)
 
-    override fun getInt(key: String, defaultValue: Int): Int {
-        return prefs.getInt(key, defaultValue)
-    }
+    override fun getInt(key: String, defaultValue: Int): Int =
+        prefs.getInt(key, defaultValue)
 
-    override fun getLong(key: String, defaultValue: Long): Long {
-        return prefs.getLong(key, defaultValue)
-    }
+    override fun getLong(key: String, defaultValue: Long): Long =
+        prefs.getLong(key, defaultValue)
 
-    override fun getFloat(key: String, defaultValue: Float): Float {
-        return prefs.getFloat(key, defaultValue)
-    }
+    override fun getFloat(key: String, defaultValue: Float): Float =
+        prefs.getFloat(key, defaultValue)
 
-    override fun getDouble(key: String, defaultValue: Double): Double {
-        return Double.fromBits(prefs.getLong(key, defaultValue.toRawBits()))
-    }
+    override fun getDouble(key: String, defaultValue: Double): Double =
+        Double.fromBits(prefs.getLong(key, defaultValue.toRawBits()))
 
-    override fun getStringOrNull(key: String): String? {
-        return prefs.getString(key, null)
-    }
+    override fun getStringOrNull(key: String): String? =
+        prefs.getString(key, null)
 
     override fun getIntOrNull(key: String): Int? {
         return if (prefs.contains(key)) prefs.getInt(key, 0) else null

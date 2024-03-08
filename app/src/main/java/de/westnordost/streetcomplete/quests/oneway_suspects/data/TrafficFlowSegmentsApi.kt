@@ -2,14 +2,20 @@ package de.westnordost.streetcomplete.quests.oneway_suspects.data
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.util.ktx.format
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.plugins.expectSuccess
+import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import java.net.URL
 
-/** Dao for using this API: https://github.com/ENT8R/oneway-data-api  */
-class TrafficFlowSegmentsApi(private val apiUrl: String) {
+/** Dao for using this API: https://github.com/streetcomplete/oneway-data-api  */
+class TrafficFlowSegmentsApi(
+    private val httpClient: HttpClient,
+    private val apiUrl: String
+) {
 
-    fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
+    suspend fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
         val leftBottomRightTopString = listOf(
             bbox.min.longitude,
             bbox.min.latitude,
@@ -17,9 +23,10 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
             bbox.max.latitude
         ).joinToString(",") { it.format(7) }
 
-        val url = URL("$apiUrl?bbox=$leftBottomRightTopString")
-        val json = url.openConnection().getInputStream().bufferedReader().use { it.readText() }
-        return parse(json)
+        val response = httpClient.get("$apiUrl?bbox=$leftBottomRightTopString") {
+            expectSuccess = true
+        }
+        return parse(response.body())
     }
 
     companion object {
@@ -29,8 +36,7 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
 
         @Serializable
         data class TrafficFlowSegmentList(val segments: List<TrafficFlowSegment>)
-        fun parse(jsonString: String): Map<Long, List<TrafficFlowSegment>> {
-            return json.decodeFromString<TrafficFlowSegmentList>(jsonString).segments.groupBy { it.wayId }
-        }
+        fun parse(jsonString: String): Map<Long, List<TrafficFlowSegment>> =
+            json.decodeFromString<TrafficFlowSegmentList>(jsonString).segments.groupBy { it.wayId }
     }
 }

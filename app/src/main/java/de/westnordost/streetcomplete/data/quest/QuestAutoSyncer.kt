@@ -12,7 +12,6 @@ import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.DownloadProgressListener
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.download.strategy.MobileDataAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.strategy.WifiAutoDownloadStrategy
@@ -85,7 +84,7 @@ class QuestAutoSyncer(
     }
 
     // on download finished, should recheck conditions for download
-    private val downloadProgressListener = object : DownloadProgressListener {
+    private val downloadProgressListener = object : DownloadProgressSource.Listener {
         override fun onSuccess() {
             triggerAutoDownload()
         }
@@ -119,7 +118,7 @@ class QuestAutoSyncer(
 
     override fun onCreate(owner: LifecycleOwner) {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
-        downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.addListener(downloadProgressListener)
         userLoginStatusSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
@@ -140,7 +139,7 @@ class QuestAutoSyncer(
 
     override fun onDestroy(owner: LifecycleOwner) {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
-        downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.removeListener(downloadProgressListener)
         userLoginStatusSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
         coroutineScope.coroutineContext.cancelChildren()
@@ -160,7 +159,7 @@ class QuestAutoSyncer(
     private fun triggerAutoDownload() {
         val pos = pos ?: return
         if (!isConnected) return
-        if (downloadController.isDownloadInProgress) return
+        if (downloadProgressSource.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
@@ -186,7 +185,7 @@ class QuestAutoSyncer(
 
         coroutineScope.launch {
             try {
-                uploadController.upload()
+                uploadController.upload(isUserInitiated = false)
             } catch (e: IllegalStateException) {
                 // The Android 9 bug described here should not result in a hard crash of the app
                 // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume

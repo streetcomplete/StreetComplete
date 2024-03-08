@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
-import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -32,7 +31,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    /* undo button is not shown when there is nothing to undo */
+    // undo button is not shown when there is nothing to undo
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(edit: Edit) { viewLifecycleScope.launch { animateInIfAnythingToUndo() } }
         override fun onSynced(edit: Edit) { viewLifecycleScope.launch { animateOutIfNothingLeftToUndo() } }
@@ -42,7 +41,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
 
     /* Don't allow undoing while uploading. Should prevent race conditions. (Undoing quest while
      * also uploading it at the same time) */
-    private val uploadProgressListener = object : UploadProgressListener {
+    private val uploadProgressListener = object : UploadProgressSource.Listener {
         override fun onStarted() { viewLifecycleScope.launch { updateUndoButtonEnablement(false) } }
         override fun onFinished() { viewLifecycleScope.launch { updateUndoButtonEnablement(true) } }
     }
@@ -62,13 +61,13 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button) {
         viewLifecycleScope.launch { updateUndoButtonVisibility() }
         updateUndoButtonEnablement(true)
         editHistorySource.addListener(editHistoryListener)
-        uploadProgressSource.addUploadProgressListener(uploadProgressListener)
+        uploadProgressSource.addListener(uploadProgressListener)
     }
 
     override fun onStop() {
         super.onStop()
         editHistorySource.removeListener(editHistoryListener)
-        uploadProgressSource.removeUploadProgressListener(uploadProgressListener)
+        uploadProgressSource.removeListener(uploadProgressListener)
     }
 
     /* ------------------------------------------------------------------------------------------ */

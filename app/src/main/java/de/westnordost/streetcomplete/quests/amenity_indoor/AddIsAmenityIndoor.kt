@@ -25,7 +25,8 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
         nodes with
           (
             emergency ~ defibrillator|fire_extinguisher|fire_hose
-            or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|clock|post_box|public_bookcase|give_box|ticket_validator|vending_machine
+            or amenity ~ atm|telephone|parcel_locker|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|vending_machine
+            or amenity = clock and display != sundial
           )
           and access !~ private|no
           and !indoor and !location and !level and !level:ref
@@ -76,7 +77,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
             buildings.any { building ->
                 val buildingGeometry = buildingGeometriesById[building.id]
 
-                if (buildingGeometry != null  && buildingGeometry.getBounds().contains(it.position)) {
+                if (buildingGeometry != null && buildingGeometry.getBounds().contains(it.position)) {
                     it.position.isInMultipolygon(buildingGeometry.polygons)
                 } else {
                     false

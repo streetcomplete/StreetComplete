@@ -233,7 +233,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
         bicycleBoulevard == BicycleBoulevard.YES
 
     override fun hasChanges(): Boolean =
-        streetSideSelect.left?.value != originalCycleway?.left  ||
+        streetSideSelect.left?.value != originalCycleway?.left ||
         streetSideSelect.right?.value != originalCycleway?.right ||
         originalBicycleBoulevard != bicycleBoulevard
 

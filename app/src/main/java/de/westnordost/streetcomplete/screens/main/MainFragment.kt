@@ -726,7 +726,7 @@ class MainFragment :
     }
 
     private fun onClickCompassButton() {
-        /* Clicking the compass button will always rotate the map back to north and remove tilt */
+        // Clicking the compass button will always rotate the map back to north and remove tilt
         val mapFragment = mapFragment ?: return
         val camera = mapFragment.cameraPosition ?: return
 
@@ -901,9 +901,12 @@ class MainFragment :
     private fun showEditHistorySidebar() {
         val appearAnim = R.animator.edit_history_sidebar_appear
         val disappearAnim = R.animator.edit_history_sidebar_disappear
+        if (editHistoryFragment != null) {
+            childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
         childFragmentManager.commit(true) {
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
-            replace(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
+            add(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
             addToBackStack(EDIT_HISTORY)
         }
         mapFragment?.hideOverlay()
@@ -944,14 +947,15 @@ class MainFragment :
     private fun showInBottomSheet(f: Fragment, clearPreviousHighlighting: Boolean = true) {
         activity?.currentFocus?.hideKeyboard()
         freezeMap()
-        if (bottomSheetFragment != null && clearPreviousHighlighting) {
-            clearHighlighting()
+        if (bottomSheetFragment != null) {
+            if (clearPreviousHighlighting) clearHighlighting()
+            childFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         val appearAnim = R.animator.quest_answer_form_appear
         val disappearAnim = R.animator.quest_answer_form_disappear
         childFragmentManager.commit(true) {
             setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
-            replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
+            add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
         }
         sheetBackPressedCallback.isEnabled = f is IsCloseableBottomSheet
@@ -1183,9 +1187,7 @@ class MainFragment :
 
     //region Interface - For the parent fragment / activity
 
-    fun getCameraPosition(): CameraPosition? {
-        return mapFragment?.cameraPosition
-    }
+    fun getCameraPosition(): CameraPosition? = mapFragment?.cameraPosition
 
     fun setCameraPosition(position: LatLon, zoom: Float) {
         mapFragment?.isFollowingPosition = false

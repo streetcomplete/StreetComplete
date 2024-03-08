@@ -6,7 +6,5 @@ import de.westnordost.streetcomplete.screens.TwoPaneHeaderFragment
 /** Shows the about screen lists and details in a two pane layout. */
 class TwoPaneAboutFragment : TwoPaneHeaderFragment() {
 
-    override fun onCreatePreferenceHeader(): PreferenceFragmentCompat {
-        return AboutFragment()
-    }
+    override fun onCreatePreferenceHeader(): PreferenceFragmentCompat = AboutFragment()
 }

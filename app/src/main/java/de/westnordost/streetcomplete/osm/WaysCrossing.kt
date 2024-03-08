@@ -20,7 +20,7 @@ data class WaysCrossing(val node: Node, var barrierWays: List<Way>, var movingWa
  */
 fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>, mapData: MapData): Iterable<WaysCrossing> {
     val barriersByNodeId = barrierWays.groupByNodeIds()
-    /* filter out nodes of roads that are the end of a barrier not continuing further */
+    // filter out nodes of roads that are the end of a barrier not continuing further
     barriersByNodeId.removeEndNodes()
 
     val waysByNodeId = movingWays.groupByNodeIds()
@@ -32,7 +32,7 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
      * https://www.openstreetmap.org/node/56606744 (with roads) */
     waysByNodeId.removeEndNodes()
 
-    /* filter out all nodes that are not shared nodes of both a road and a footway */
+    // filter out all nodes that are not shared nodes of both a road and a footway
     barriersByNodeId.keys.retainAll(waysByNodeId.keys)
     waysByNodeId.keys.retainAll(barriersByNodeId.keys)
 

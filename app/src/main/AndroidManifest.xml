@@ -7,9 +7,16 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="22" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" android:minSdkVersion="34"/>
+    <!--
+    The app itself does not use foreground services but WorkManager.
+    WorkManager uses foreground services on Android older than Android 12 for expedited work, but
+    we expect that the manifest of the WorkManager library includes the uses-permission lines it
+    needs.
+
+    https://developer.android.com/develop/background-work/background-tasks/persistent/getting-started/define-work#backwards-compat
+
+    Foreground service types exists since Android 10.
+    -->
 
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
     <uses-feature android:name="android.hardware.screen.portrait" />
@@ -89,12 +96,12 @@
             android:name="de.westnordost.streetcomplete.screens.user.UserActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+        <!-- For WorkManager -->
         <service
-            android:name="de.westnordost.streetcomplete.data.download.DownloadService"
-            android:foregroundServiceType="dataSync" />
-        <service
-            android:name="de.westnordost.streetcomplete.data.upload.UploadService"
-            android:foregroundServiceType="dataSync" />
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            android:foregroundServiceType="dataSync"
+            tools:node="merge" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="@string/fileprovider_authority"

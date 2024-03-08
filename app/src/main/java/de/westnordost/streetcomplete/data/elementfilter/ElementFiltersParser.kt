@@ -316,7 +316,7 @@ private fun StringWithCursor.parseQuotedWord(quot: Char): String? {
     val word = advanceBy(length)
     return word
         .substring(1, word.length - 1) // remove quotes
-        .replace("\\$quot", "$quot")  // unescape quotes within string
+        .replace("\\$quot", "$quot") // unescape quotes within string
 }
 
 private fun StringWithCursor.parseWord(): String {

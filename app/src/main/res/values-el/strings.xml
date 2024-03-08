@@ -1370,4 +1370,8 @@
     <string name="overlay_buildings">"Κτίρια"</string>
     <string name="quest_pedestrian_crossing_signals">"Πρέπει να περιμένετε το σήμα κυκλοφορίας για να περάσετε εδώ;"</string>
     <string name="quest_pedestrian_crossing_markings">"Αυτή η διάβαση έχει σημάδια στο έδαφος;"</string>
+    <string name="overlay_places">"Μέρη"</string>
+    <string name="overlay_things">"Πράγματα"</string>
+    <string name="disused">"αχρησιμοποίητο"</string>
+    <string name="unknown_object">"Άγνωστο αντικείμενο"</string>
 </resources>

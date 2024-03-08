@@ -68,9 +68,8 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         outState.putBoolean(IS_PLACE_NAME, isShowingPlaceName)
     }
 
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        return streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
-    }
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean =
+        streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
 
     override fun onClickOk() {
         lastWasPlaceName = isShowingPlaceName

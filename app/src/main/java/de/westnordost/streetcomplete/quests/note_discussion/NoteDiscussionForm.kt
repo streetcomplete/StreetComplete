@@ -137,11 +137,10 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
     private inner class NoteCommentListAdapter(list: List<NoteComment>) : ListAdapter<NoteComment>(list) {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<NoteComment> {
-            return NoteCommentViewHolder(
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<NoteComment> =
+            NoteCommentViewHolder(
                 QuestNoteDiscussionItemBinding.inflate(layoutInflater, parent, false)
             )
-        }
     }
 
     private inner class NoteCommentViewHolder(private val itemBinding: QuestNoteDiscussionItemBinding) :

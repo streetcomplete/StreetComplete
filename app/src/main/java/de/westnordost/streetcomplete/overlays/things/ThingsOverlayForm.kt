@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
-import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController

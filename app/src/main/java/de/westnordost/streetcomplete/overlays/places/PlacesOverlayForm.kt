@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays.shops
+package de.westnordost.streetcomplete.overlays.places
 
 import android.os.Bundle
 import android.view.View
@@ -17,17 +17,17 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.databinding.FragmentOverlayShopsBinding
+import de.westnordost.streetcomplete.databinding.FragmentOverlayPlacesBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
+import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyTo
+import de.westnordost.streetcomplete.osm.isDisusedPlace
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.parseLocalizedNames
 import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
-import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
-import de.westnordost.streetcomplete.osm.isDisusedPlace
-import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
@@ -44,10 +44,10 @@ import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
 
-class ShopsOverlayForm : AbstractOverlayForm() {
+class PlacesOverlayForm : AbstractOverlayForm() {
 
-    override val contentLayoutResId = R.layout.fragment_overlay_shops
-    private val binding by contentViewBinding(FragmentOverlayShopsBinding::bind)
+    override val contentLayoutResId = R.layout.fragment_overlay_places
+    private val binding by contentViewBinding(FragmentOverlayPlacesBinding::bind)
 
     private val prefs: Preferences by inject()
 
@@ -267,35 +267,32 @@ private suspend fun createEditAction(
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
 
+    val shouldNotReplaceShop =
+        // only a name was added (name was missing before; user wouldn't be able to answer
+        // if the place changed or not anyway, so rather keep previous information)
+        hasAddedNames && !hasChangedFeature
+        // previously: only the feature was changed, the non-empty name did not change
+        // - see #5195
+        // place has been added, nothing to replace
+        || element == null
+    val shouldAlwaysReplaceShop =
+        // the feature is or was a brand feature (i.e. overwrites the name)
+        isFeatureWithName || wasFeatureWithName
+        // was vacant before but not anymore (-> cleans up any previous tags that may be
+        // associated with the old place)
+        || wasVacant && hasChangedFeature
+        // it's vacant now
+        || isVacant
+
     val doReplaceShop =
-        // do not replace shop if:
-        if (
-            // only a name was added (name was missing before; user wouldn't be able to answer
-            // if the place changed or not anyway, so rather keep previous information)
-            hasAddedNames && !hasChangedFeature
-            // previously: only the feature was changed, the non-empty name did not change
-            // - see #5195
-            // place has been added, nothing to replace
-            || element == null
-        ) {
+        if (shouldNotReplaceShop) {
             false
-        }
-        // always replace if:
-        else if (
-            // the feature is a brand feature or was a brand feature (i.e. overwrites the name)
-            isFeatureWithName || wasFeatureWithName
-            // was vacant before but not anymore (-> cleans up any previous tags that may be
-            // associated with the old place
-            || wasVacant && hasChangedFeature
-            // it's vacant now
-            || isVacant
-        ) {
+        } else if (shouldAlwaysReplaceShop) {
             true
-        }
-        // ask whether it is still the same shop if:
-        // + the name was changed
-        // + the feature was changed and the name was empty before
-        else {
+        } else {
+            // ask whether it is still the same shop if:
+            // + the name was changed
+            // + the feature was changed and the name was empty before
             confirmReplaceShop()
         }
 

@@ -39,7 +39,7 @@ ca:
    Gabriel Fernández Fernández: 53
 cs: 
    leschek: 25693
-   Lukáš Jelínek: 16257
+   Lukáš Jelínek: 16292
    Stanislav Tichý: 2149
    Petr Kadlec: 648
    Petr Kristof: 575
@@ -50,7 +50,7 @@ cs:
    Vojtik69: 57
    Vladankudlac: 19
 da: 
-   ERyPTION: 31100
+   ERyPTION: 31129
    Dennis Kjær Jensen: 6331
    Soren: 3647
    Leonora: 2732
@@ -66,7 +66,7 @@ de:
    Flo Edelmann: 17397
    Mr. Update: 7694
    legofahrrad: 1933
-   mcliquid: 1221
+   mcliquid: 1259
    papojari: 742
    Mopshase12: 711
    Lenni: 427
@@ -93,18 +93,18 @@ de:
    mrab: 9
    Alexander Romme: 8
 el: 
-   makmar: 40909
+   makmar: 40954
    jimkats: 11452
    Nelli.k.21: 613
    tinigrillion: 186
 en: 
    Claudius Henrichs: 49
 en-AU: 
-   Didz: 8924
+   Didz: 9627
    Tech Dec: 5661
    Declan: 4408
    Baku: 1859
-   Andrew: 1252
+   Andrew: 1218
    Sellyme: 541
    Finn: 431
    James: 252
@@ -182,11 +182,11 @@ eu:
    Jokin: 218
    Egoitz: 67
 fa: 
-   Mohammad Mehdi Maliki: 18332
-   ARA2020: 13503
+   Mohammad Mehdi Maliki: 18442
+   ARA2020: 13470
    Iman: 12163
    Ahmad: 698
-   Mohammed: 557
+   Mohammed: 539
    Mostafa Ahangarha: 378
    mojtaba: 134
    Goudarz Jafari: 29
@@ -272,13 +272,13 @@ he:
    Slava Sukhochev: 3349
    Ilya Kogan: 404
 hr: 
-   Matija Nalis: 48856
+   Matija Nalis: 48893
    Nemanja Bračko: 59
    Mario: 9
 hu: 
-   Zachár Benjámin: 17717
+   Zachár Benjámin: 18214
    Gábor Babos: 12678
-   Hungarian_user: 9421
+   Hungarian_user: 9316
    Meskó Balázs: 1758
    Antissimo: 1671
    Erős Pista: 1223
@@ -362,7 +362,7 @@ lv:
    Kārlis: 538
    Rūdolfs: 414
 nb: 
-   Mats Randgaard: 34836
+   Mats Randgaard: 34964
    Trond S: 3022
    Simen Heggestøyl: 1679
    Syver: 1551
@@ -378,7 +378,7 @@ nb:
    Borge: 25
    Martin Moen: 13
 nl: 
-   Alert Bouterse: 12378
+   Alert Bouterse: 13373
    Peter: 8335
    Rhhs: 7839
    Daniel: 4039
@@ -405,7 +405,7 @@ nn:
    Rudi: 701
    10992: 12
 pl: 
-   Mateusz Konieczny: 13486
+   Mateusz Konieczny: 13525
    Ilona Sadowska: 8226
    Tomasz Maciejewski: 3210
    Kamil: 3004
@@ -451,10 +451,10 @@ pt-BR:
    Suburbanno: 10755
    Eduardo Addad de Oliviera: 8083
    Alexandre de Menezes: 3757
+   Diego Biavati: 2519
    Patrick: 1754
    Lucas Pereria: 1723
    Rodrigo Tavares: 1583
-   Diego Biavati: 982
    Vandersdg: 702
    Douglas: 325
    Infelizmente ninguém: 295
@@ -497,7 +497,6 @@ ru:
    Alexander: 228
    Vlad: 226
    dbf: 205
-   XnL: 185
    Agehrg4: 163
    Евгений: 154
    Artem: 149
@@ -532,14 +531,14 @@ sk:
    Zaijo: 198
    Brano: 31
 sl: 
-   CTJ: 28928
+   CTJ: 30282
    Jaka Kranjc: 6520
    StefanB: 5837
    SimonG: 1846
    Timotej Lazar: 208
    Bojan Marusic: 122
 sr-cyrl: 
-   Nemanja Bračko: 21273
+   Nemanja Bračko: 21423
    Mario: 17654
    Branko Kokanovic: 6408
    Nikola: 138
@@ -551,6 +550,7 @@ sv:
    Ntoonio: 891
    Henrik: 278
    Daniel: 211
+   Peter Kvillegård: 134
    Albin FL: 116
    Landrash: 30
    Elin Henrikson: 7
@@ -581,7 +581,7 @@ tr:
    lemedro: 27
    rie: 13
 uk: 
-   Serhii. Muchychka: 7979
+   Serhii. Muchychka: 8029
    Domkot_UA: 7606
    andygol: 7235
    nikiforovpizza: 6619
@@ -608,12 +608,14 @@ zh:
    Settingdust: 270
    Redaready. dev: 90
    Mumulhl: 40
+   Almy127: 27
    Minecraftis1st: 9
 zh-TW: 
-   Supaplex: 9769
+   Supaplex: 10059
    Kagami: 2686
    Sean Young: 765
    typebrook: 177
    thomas: 174
    Sevenwuying: 66
    秉宏: 25
+   Edison_lu: 10
