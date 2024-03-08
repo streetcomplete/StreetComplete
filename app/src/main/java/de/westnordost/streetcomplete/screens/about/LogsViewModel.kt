@@ -7,6 +7,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 abstract class LogsViewModel : ViewModel() {
-    abstract val filters: MutableStateFlow<LogsFilters>
+    abstract val filters: StateFlow<LogsFilters>
     abstract val logs: StateFlow<List<LogMessage>>
+
+    abstract fun setFilters(filters: LogsFilters)
 }

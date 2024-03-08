@@ -10,14 +10,12 @@ import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.shareIn
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.plus
 import kotlinx.datetime.LocalDateTime
@@ -43,25 +41,17 @@ class LogsViewModelImpl(
                 }
             }
         }
-
-        // Start listening
         logsController.addListener(listener)
-
-        // When there are no observers, stop listening.
         awaitClose { logsController.removeListener(listener) }
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private val _logs: SharedFlow<List<LogMessage>> =
         filters.transformLatest { filters ->
-            // get prior logs into a backing state
-            // There will be duplication regardless.
             val logs = logsController.getLogs(filters).toMutableList()
 
-            // emit the logs for the first view
             emit(logs)
 
-            // start listening to new logs
             getIncomingLogs(filters).collect {
                 logs.add(it)
                 emit(logs)
@@ -73,6 +63,10 @@ class LogsViewModelImpl(
         StateFlow<List<LogMessage>>,
         SharedFlow<List<LogMessage>> by _logs {
         override val value: List<LogMessage> get() = replayCache[0]
+    }
+
+    override fun setFilters(filters: LogsFilters) {
+        this.filters.value = filters
     }
 }
 
