@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.data.logs
 
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import kotlinx.datetime.LocalDateTime
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class LogsFilters(
     val levels: Set<LogLevel> = LogLevel.entries.toSet(),
     val messageContains: String? = null,

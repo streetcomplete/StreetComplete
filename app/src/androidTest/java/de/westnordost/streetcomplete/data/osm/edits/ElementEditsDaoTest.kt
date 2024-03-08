@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.create.RevertCreateNodeAction
@@ -43,7 +44,7 @@ class ElementEditsDaoTest : ApplicationDbTestCase() {
     @BeforeTest fun createDao() {
         val list = listOf(1 to TEST_QUEST_TYPE, 2 to TEST_QUEST_TYPE2)
         val list2 = listOf(1 to TestOverlay)
-        dao = ElementEditsDao(database, QuestTypeRegistry(list), OverlayRegistry(list2))
+        dao = ElementEditsDao(database, AllEditTypes(listOf(QuestTypeRegistry(list), OverlayRegistry(list2))))
     }
 
     @Test fun addGet_UpdateElementTagsEdit() {

@@ -42,7 +42,7 @@ val achievementsModule = module {
     factory { UserLinksDao(get()) }
 
     single<AchievementsSource> { get<AchievementsController>() }
-    single { AchievementsController(get(), get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
+    single { AchievementsController(get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
 }
 
 // list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)
