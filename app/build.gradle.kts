@@ -140,6 +140,7 @@ dependencies {
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     // photos
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 

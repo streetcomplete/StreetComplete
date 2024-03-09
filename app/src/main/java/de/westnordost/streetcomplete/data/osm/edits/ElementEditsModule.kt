@@ -14,7 +14,7 @@ val elementEditsModule = module {
     factory { ChangesetAutoCloser(get()) }
     factory { ElementEditUploader(get(), get(), get()) }
 
-    factory { ElementEditsDao(get(), get(), get()) }
+    factory { ElementEditsDao(get(), get()) }
     factory { ElementIdProviderDao(get()) }
     factory { LastEditTimeStore(get()) }
     factory { OpenChangesetsDao(get()) }

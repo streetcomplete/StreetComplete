@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsTable.Columns.ACTION
@@ -23,12 +24,9 @@ import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateRelationAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeleteRelationAction
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.tagEdit
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.addNodeEdit
 import kotlinx.serialization.encodeToString
@@ -39,8 +37,7 @@ import kotlinx.serialization.modules.subclass
 
 class ElementEditsDao(
     private val db: Database,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val overlayRegistry: OverlayRegistry
+    private val allEditTypes: AllEditTypes,
 ) {
     private val json = Json {
         serializersModule = SerializersModule {
@@ -117,9 +114,7 @@ class ElementEditsDao(
 
     private fun CursorPosition.toElementEdit() = ElementEdit(
         getLong(ID),
-        questTypeRegistry.getByName(getString(QUEST_TYPE)) as? OsmElementQuestType<*>
-            ?: overlayRegistry.getByName(getString(QUEST_TYPE))
-            ?: questTypeRegistry.getByName(getString(QUEST_TYPE)) as? ExternalSourceQuestType
+        allEditTypes.getByName(getString(QUEST_TYPE)) as? ElementEditType
             ?: addNodeEdit.takeIf { getString(QUEST_TYPE) == addNodeEdit.name }
             ?: tagEdit, // always assume it's a tagEdit if nothing matches, to avoid crashes if SCEE quests are removed
         json.decodeFromString(getString(GEOMETRY)),

@@ -64,6 +64,10 @@ class AndroidPreferences(private val prefs: SharedPreferences) : Preferences {
     override fun getStringOrNull(key: String): String? =
         prefs.getString(key, null)
 
+    override fun getIntOrNull(key: String): Int? {
+        return if (prefs.contains(key)) prefs.getInt(key, 0) else null
+    }
+
     override fun getString(key: String, defaultValue: String): String {
         return prefs.getString(key, defaultValue)!!
     }

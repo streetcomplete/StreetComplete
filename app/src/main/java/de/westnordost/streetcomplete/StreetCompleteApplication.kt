@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.DatabaseInitializer
 import de.westnordost.streetcomplete.data.Preloader
+import de.westnordost.streetcomplete.data.allEditTypesModule
 import de.westnordost.streetcomplete.data.dbModule
 import de.westnordost.streetcomplete.data.download.downloadModule
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
@@ -46,6 +47,7 @@ import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.questsModule
+import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
@@ -55,6 +57,7 @@ import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.screens.settings.oldQuestNames
 import de.westnordost.streetcomplete.screens.settings.renameUpdatedQuests
 import de.westnordost.streetcomplete.screens.settings.settingsModule
+import de.westnordost.streetcomplete.screens.user.userScreenModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.TempLogger
 import de.westnordost.streetcomplete.util.getDefaultTheme
@@ -108,6 +111,8 @@ class StreetCompleteApplication : Application() {
             modules(
                 achievementsModule,
                 appModule,
+                aboutScreenModule,
+                userScreenModule,
                 createdElementsModule,
                 dbModule,
                 logsModule,
@@ -129,6 +134,7 @@ class StreetCompleteApplication : Application() {
                 preferencesModule,
                 questModule,
                 questPresetsModule,
+                allEditTypesModule,
                 questsModule,
                 settingsModule,
                 statisticsModule,
