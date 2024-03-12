@@ -43,29 +43,35 @@ class ProfileViewModelImpl(
     override val biggestSolvedCountCurrentWeekCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
 
     override var lastShownGlobalUserRank: Int?
-        set(value) =
+        set(value) {
             if (value != null) {
                 prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, value)
             } else {
                 prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
             }
+        }
         get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
 
     override var lastShownGlobalUserRankCurrentWeek: Int?
-        set(value) =
+        set(value) {
             if (value != null) {
                 prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, value)
             } else {
                 prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
             }
+        }
         get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
 
     override var lastShownLocalUserRank: CountryStatistics?
-        set(value) = prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(value))
+        set(value) {
+            prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(value))
+        }
         get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK)?.let { Json.decodeFromString(it) }
 
     override var lastShownLocalUserRankCurrentWeek: CountryStatistics?
-        set(value) = prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(value))
+        set(value) {
+            prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(value))
+        }
         get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK)?.let { Json.decodeFromString(it) }
 
     override fun logOutUser() {
