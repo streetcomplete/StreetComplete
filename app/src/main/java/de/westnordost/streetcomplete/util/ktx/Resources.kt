@@ -33,16 +33,13 @@ fun Resources.getDrawable(image: Image): Drawable = when (image) {
 }
 
 /** return the number of density independent pixels for the given pixels */
-fun Resources.pxToDp(px: Float): Float = TypedValueCompat.pxToDp(px, displayMetrics)
-
-/** return the number of density independent pixels for the given pixels */
-fun Resources.pxToDp(px: Int): Float = pxToDp(px.toFloat())
+fun Resources.pxToDp(px: Number): Float = TypedValueCompat.pxToDp(px.toFloat(), displayMetrics)
 
 /** return the number of pixels for the given density independent pixels */
-fun Resources.dpToPx(dp: Int): Float = TypedValueCompat.dpToPx(dp.toFloat(), displayMetrics)
+fun Resources.dpToPx(dp: Number): Float = TypedValueCompat.dpToPx(dp.toFloat(), displayMetrics)
 
 /** return the number of pixels for the given scalable pixels */
-fun Resources.spToPx(sp: Float): Float = TypedValueCompat.spToPx(sp, displayMetrics)
+fun Resources.spToPx(sp: Number): Float = TypedValueCompat.spToPx(sp.toFloat(), displayMetrics)
 
 /** return the number of scalable pixels for the given pixels */
-fun Resources.pxToSp(px: Float): Float = TypedValueCompat.pxToSp(px, displayMetrics)
+fun Resources.pxToSp(px: Number): Float = TypedValueCompat.pxToSp(px.toFloat(), displayMetrics)
