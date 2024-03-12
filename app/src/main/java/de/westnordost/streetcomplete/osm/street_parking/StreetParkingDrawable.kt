@@ -18,9 +18,10 @@ import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_HALF_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlin.math.ceil
-import kotlin.math.round
+import kotlin.math.roundToInt
 import kotlin.random.Random
 
 /** Drawable that displays parking cars in the given orientation and position in the given size */
@@ -40,8 +41,8 @@ class StreetParkingDrawable(
     @Deprecated("Deprecated in Java")
     override fun getOpacity() = PixelFormat.TRANSLUCENT
 
-    override fun getIntrinsicWidth(): Int = round(width * context.resources.displayMetrics.density).toInt()
-    override fun getIntrinsicHeight(): Int = round(height * context.resources.displayMetrics.density).toInt()
+    override fun getIntrinsicWidth() = context.resources.dpToPx(width).roundToInt()
+    override fun getIntrinsicHeight() = context.resources.dpToPx(height).roundToInt()
 
     /** Y-Offset in percent (0..<1) */
     var phase: Float = 0f
@@ -73,7 +74,8 @@ class StreetParkingDrawable(
         // drawing the street background
         if (backgroundResId != null) {
             val background = context.getDrawable(backgroundResId)!!
-            val backgroundHeight = (background.intrinsicHeight.toDouble() / background.intrinsicWidth * width).toInt()
+            val backgroundHeight =
+                (background.intrinsicHeight.toDouble() / background.intrinsicWidth * width).toInt()
             val offsetY = (phase * height).toInt()
             for (i in 0 until repeats) {
                 val y = (i * height).toInt() + offsetY

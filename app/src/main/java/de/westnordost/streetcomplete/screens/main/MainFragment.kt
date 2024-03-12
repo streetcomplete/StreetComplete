@@ -1132,7 +1132,7 @@ class MainFragment :
         val offset = view?.getLocationInWindow() ?: return
         val startPos = mapFragment?.getPointOf(position) ?: return
 
-        val size = ctx.dpToPx(42).toInt()
+        val size = ctx.resources.dpToPx(42).toInt()
         startPos.x += offset.x - size / 2f
         startPos.y += offset.y - size * 1.5f
 

@@ -120,8 +120,8 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
         binding.paintRollerView.rotation = -15f
         binding.paintRollerView.scaleX = 0.1f
         binding.paintRollerView.scaleY = 0.1f
-        binding.paintRollerView.translationX = ctx.dpToPx(132)
-        binding.paintRollerView.translationY = ctx.dpToPx(66)
+        binding.paintRollerView.translationX = ctx.resources.dpToPx(132)
+        binding.paintRollerView.translationY = ctx.resources.dpToPx(66)
 
         delay(300)
 
@@ -180,8 +180,8 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
             .scaleX(2f)
             .scaleY(2f)
             .rotation(-15f)
-            .translationX(ctx.dpToPx(+60))
-            .translationY(ctx.dpToPx(-120))
+            .translationX(ctx.resources.dpToPx(+60))
+            .translationY(ctx.resources.dpToPx(-120))
             .start()
 
         binding.overlaySelectedImageView.isInvisible = false
@@ -200,7 +200,7 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
     }
 
     private fun appearText(view: View) {
-        view.translationY = view.context.pxToDp(-100)
+        view.translationY = view.resources.pxToDp(-100)
         view.animate()
             .withStartAction { view.visibility = View.VISIBLE }
             .setDuration(300)
@@ -213,7 +213,7 @@ class OverlaysTutorialFragment : Fragment(R.layout.fragment_overlays_tutorial) {
         view.animate()
             .setDuration(300)
             .alpha(0f)
-            .translationY(view.context.pxToDp(100))
+            .translationY(view.resources.pxToDp(100))
             .withEndAction { view.visibility = View.GONE }
             .start()
     }

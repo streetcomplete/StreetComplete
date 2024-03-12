@@ -65,14 +65,14 @@ class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapControlle
     init {
         val dotImg = ctx.resources.getBitmapDrawable(if (isApril1st()) R.drawable.location_nyan else R.drawable.location_dot)
         val dotSize = PointF(
-            ctx.pxToDp(dotImg.bitmap.width),
-            ctx.pxToDp(dotImg.bitmap.height)
+            ctx.resources.pxToDp(dotImg.bitmap.width),
+            ctx.resources.pxToDp(dotImg.bitmap.height)
         )
 
         val directionImg = ctx.resources.getBitmapDrawable(R.drawable.location_direction)
         directionMarkerSize = PointF(
-            ctx.pxToDp(directionImg.bitmap.width),
-            ctx.pxToDp(directionImg.bitmap.height)
+            ctx.resources.pxToDp(directionImg.bitmap.width),
+            ctx.resources.pxToDp(directionImg.bitmap.height)
         )
 
         val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)

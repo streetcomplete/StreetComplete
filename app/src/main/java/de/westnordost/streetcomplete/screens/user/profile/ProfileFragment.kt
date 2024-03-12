@@ -84,9 +84,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.datesActiveView.setImageDrawable(DatesActiveDrawable(
                 datesActive.toSet(),
                 range,
-                context.dpToPx(18),
-                context.dpToPx(2),
-                context.dpToPx(4),
+                context.resources.dpToPx(18),
+                context.resources.dpToPx(2),
+                context.resources.dpToPx(4),
                 context.resources.getColor(R.color.hint_text)
             ))
         }
@@ -211,7 +211,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         anim.duration = 3000
         anim.addUpdateListener { block(it.animatedValue as Int) }
         val p = view.getLocationInWindow()
-        anim.startDelay = max(0, view.context.pxToDp(p.y).toLong() * 12 - 2000)
+        anim.startDelay = max(0, view.resources.pxToDp(p.y).toLong() * 12 - 2000)
         anim.interpolator = AccelerateDecelerateInterpolator()
         anim.start()
         animations.add(anim)

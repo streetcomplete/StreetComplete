@@ -73,7 +73,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
             popupWindow.dismiss()
         }
         popupWindow.anchorView = view
-        popupWindow.width = requireContext().dpToPx(240).toInt()
+        popupWindow.width = resources.dpToPx(240).toInt()
         popupWindow.show()
     }
 

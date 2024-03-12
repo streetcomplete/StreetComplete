@@ -47,7 +47,7 @@ class StatisticsByCountryFragment : Fragment(R.layout.fragment_statistics_ball_p
         countryBubbleView.id = View.generateViewId()
         countryBubbleView.layoutParams = ViewGroup.LayoutParams(240, 240)
         countryBubbleView.countryCode = countryCode
-        countryBubbleView.elevation = ctx.dpToPx(6)
+        countryBubbleView.elevation = ctx.resources.dpToPx(6)
         countryBubbleView.setOnClickListener { v ->
             listener?.onClickedCountryFlag(countryCode, solvedCount, rank, v)
         }

@@ -32,14 +32,18 @@ class TangramIconsSpriteSheet(
 
     private fun createSpritesheet(): String {
         val iconResIds = icons.toSortedSet()
-        val iconSize = context.dpToPx(26).toInt()
-        val borderWidth = context.dpToPx(3).toInt()
-        val safePadding = context.dpToPx(2).toInt()
+        val iconSize = context.resources.dpToPx(26).toInt()
+        val borderWidth = context.resources.dpToPx(3).toInt()
+        val safePadding = context.resources.dpToPx(2).toInt()
         val size = iconSize + borderWidth * 2 + safePadding
 
         val spriteSheetEntries: MutableList<String> = ArrayList(iconResIds.size)
         val sheetSideLength = ceil(sqrt(iconResIds.size.toDouble())).toInt()
-        val spriteSheet = Bitmap.createBitmap(size * sheetSideLength, size * sheetSideLength, Bitmap.Config.ARGB_8888)
+        val spriteSheet = Bitmap.createBitmap(
+            size * sheetSideLength,
+            size * sheetSideLength,
+            Bitmap.Config.ARGB_8888
+        )
 
         val canvas = Canvas(spriteSheet)
 

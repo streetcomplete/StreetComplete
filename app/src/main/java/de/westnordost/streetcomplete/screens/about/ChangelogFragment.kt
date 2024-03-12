@@ -18,6 +18,8 @@ import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.getRawTextFile
 import de.westnordost.streetcomplete.util.ktx.indicesOf
+import de.westnordost.streetcomplete.util.ktx.pxToDp
+import de.westnordost.streetcomplete.util.ktx.pxToSp
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.CoroutineScope
@@ -82,11 +84,9 @@ private suspend fun readChangelog(resources: Resources): String = withContext(Di
 private fun Resources.getHexColor(@ColorRes resId: Int) =
     String.format("#%06X", 0xffffff and getColor(resId))
 
-private fun Resources.getDimensionInSp(@DimenRes resId: Int) =
-    (getDimension(resId) / displayMetrics.scaledDensity).roundToInt()
+private fun Resources.getDimensionInSp(@DimenRes resId: Int) = pxToSp(getDimension(resId)).roundToInt()
 
-private fun Resources.getDimensionInDp(@DimenRes resId: Int) =
-    (getDimension(resId) / displayMetrics.density).roundToInt()
+private fun Resources.getDimensionInDp(@DimenRes resId: Int) = pxToDp(getDimension(resId)).roundToInt()
 
 private fun WebView.setHtmlFromString(body: String) {
     val textColor = resources.getHexColor(R.color.text)
