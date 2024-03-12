@@ -58,7 +58,6 @@ class LogsViewModelImpl(
             }
         }.shareIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 1)
 
-
     override val logs: StateFlow<List<LogMessage>> = object :
         StateFlow<List<LogMessage>>,
         SharedFlow<List<LogMessage>> by _logs {

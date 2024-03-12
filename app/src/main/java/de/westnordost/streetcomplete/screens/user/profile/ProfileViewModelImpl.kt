@@ -18,7 +18,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
 
-
 class ProfileViewModelImpl(
     private val userDataSource: UserDataSource,
     private val userLoginStatusController: UserLoginStatusController,
@@ -45,14 +44,20 @@ class ProfileViewModelImpl(
 
     override var lastShownGlobalUserRank: Int?
         set(value) =
-            if (value != null) prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, value)
-            else prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
+            if (value != null) {
+                prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, value)
+            } else {
+                prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
+            }
         get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
 
     override var lastShownGlobalUserRankCurrentWeek: Int?
         set(value) =
-            if (value != null) prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, value)
-            else prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
+            if (value != null) {
+                prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, value)
+            } else {
+                prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
+            }
         get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
 
     override var lastShownLocalUserRank: CountryStatistics?
@@ -69,7 +74,7 @@ class ProfileViewModelImpl(
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {
         override fun onIncreased() { unsyncedChangesCount.update { it + 1 } }
-        override fun onDecreased() { unsyncedChangesCount.update { it -1 } }
+        override fun onDecreased() { unsyncedChangesCount.update { it - 1 } }
     }
     private val statisticsListener = object : StatisticsSource.Listener {
         override fun onAddedOne(type: String) {

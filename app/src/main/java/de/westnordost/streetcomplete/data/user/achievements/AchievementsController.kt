@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.data.AllEditTypes
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.Listeners
 

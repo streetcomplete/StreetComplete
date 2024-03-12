@@ -8,16 +8,9 @@ import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.EditType
-import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentEditStatisticsBinding
-import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModel
 import de.westnordost.streetcomplete.util.ktx.observe
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /** Shows the user's edits of each type in some kind of ball pit. Clicking on each opens
@@ -55,8 +48,11 @@ class EditStatisticsFragment :
         }
         observe(viewModel.isSynchronizingStatistics) { isSynchronizing ->
             binding.emptyText.setText(
-                if (isSynchronizing) R.string.stats_are_syncing
-                else R.string.quests_empty
+                if (isSynchronizing) {
+                    R.string.stats_are_syncing
+                } else {
+                    R.string.quests_empty
+                }
             )
         }
     }

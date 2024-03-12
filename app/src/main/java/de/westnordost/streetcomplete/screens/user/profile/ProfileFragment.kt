@@ -22,10 +22,10 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.LaurelWreathDrawable
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -124,7 +124,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         animations.forEach { it.end() }
         animations.clear()
     }
-
 
     private fun updateRank(rank: Int, editCount: Int) {
         val showRank = rank > 0 && editCount > 100
