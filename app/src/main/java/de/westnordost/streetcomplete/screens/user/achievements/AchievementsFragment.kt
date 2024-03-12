@@ -47,7 +47,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ctx = requireContext()
-        val minCellWidth = ctx.dpToPx(144)
+        val minCellWidth = ctx.resources.dpToPx(144)
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
         viewLifecycleScope.launch {

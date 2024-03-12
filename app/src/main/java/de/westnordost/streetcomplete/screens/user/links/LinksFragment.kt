@@ -40,7 +40,7 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
 
             binding.emptyText.visibility = View.GONE
 
-            val viewWidth = ctx.pxToDp(view.width)
+            val viewWidth = ctx.resources.pxToDp(view.width)
             val spanCount = (viewWidth / minCellWidth).toInt()
 
             val links = withContext(Dispatchers.IO) { achievementsSource.getLinks() }

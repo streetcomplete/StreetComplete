@@ -196,7 +196,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         val clickPos = controller?.screenPositionToLatLon(PointF(x, y)) ?: return
 
-        val fingerRadius = context.dpToPx(CLICK_AREA_SIZE_IN_DP) / 2
+        val fingerRadius = context.resources.dpToPx(CLICK_AREA_SIZE_IN_DP) / 2
         val fingerEdgeClickPos = controller?.screenPositionToLatLon(PointF(x + fingerRadius, y)) ?: return
         val fingerRadiusInMeters = clickPos.distanceTo(fingerEdgeClickPos)
 

@@ -64,7 +64,7 @@ class StatisticsByEditTypeFragment : Fragment(R.layout.fragment_statistics_ball_
         val clickableContainer = FrameLayout(ctx)
         clickableContainer.layoutParams = ViewGroup.LayoutParams(256, 256)
         clickableContainer.foreground = requireContext().getDrawable(R.drawable.round_pressed)
-        clickableContainer.elevation = ctx.dpToPx(6)
+        clickableContainer.elevation = ctx.resources.dpToPx(6)
         clickableContainer.outlineProvider = CircularOutlineProvider
         clickableContainer.addView(questView)
         clickableContainer.setOnClickListener { v ->

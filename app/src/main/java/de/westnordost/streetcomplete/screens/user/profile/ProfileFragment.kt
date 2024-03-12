@@ -188,14 +188,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val context = context ?: return
 
         val datesActive = withContext(Dispatchers.IO) { statisticsSource.getActiveDates() }.toSet()
-        binding.datesActiveView.setImageDrawable(DatesActiveDrawable(
-            datesActive,
-            statisticsSource.activeDatesRange,
-            context.dpToPx(18),
-            context.dpToPx(2),
-            context.dpToPx(4),
-            context.resources.getColor(R.color.hint_text)
-        ))
+        binding.datesActiveView.setImageDrawable(
+            DatesActiveDrawable(
+                datesActive,
+                statisticsSource.activeDatesRange,
+                context.resources.dpToPx(18),
+                context.resources.dpToPx(2),
+                context.resources.dpToPx(4),
+                context.resources.getColor(R.color.hint_text)
+            ))
     }
 
     private suspend fun updateEditCountTexts() {
@@ -337,7 +338,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         anim.duration = 3000
         anim.addUpdateListener { block(it.animatedValue as Int) }
         val p = view.getLocationInWindow()
-        anim.startDelay = max(0, view.context.pxToDp(p.y).toLong() * 12 - 2000)
+        anim.startDelay = max(0, view.resources.pxToDp(p.y).toLong() * 12 - 2000)
         anim.interpolator = AccelerateDecelerateInterpolator()
         anim.start()
         animations.add(anim)

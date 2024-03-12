@@ -41,8 +41,8 @@ class StreetParkingDrawable(
     @Deprecated("Deprecated in Java")
     override fun getOpacity() = PixelFormat.TRANSLUCENT
 
-    override fun getIntrinsicWidth() = context.dpToPx(width).roundToInt()
-    override fun getIntrinsicHeight() = context.dpToPx(height).roundToInt()
+    override fun getIntrinsicWidth() = context.resources.dpToPx(width).roundToInt()
+    override fun getIntrinsicHeight() = context.resources.dpToPx(height).roundToInt()
 
     /** Y-Offset in percent (0..<1) */
     var phase: Float = 0f
@@ -74,7 +74,8 @@ class StreetParkingDrawable(
         // drawing the street background
         if (backgroundResId != null) {
             val background = context.getDrawable(backgroundResId)!!
-            val backgroundHeight = (background.intrinsicHeight.toDouble() / background.intrinsicWidth * width).toInt()
+            val backgroundHeight =
+                (background.intrinsicHeight.toDouble() / background.intrinsicWidth * width).toInt()
             val offsetY = (phase * height).toInt()
             for (i in 0 until repeats) {
                 val y = (i * height).toInt() + offsetY

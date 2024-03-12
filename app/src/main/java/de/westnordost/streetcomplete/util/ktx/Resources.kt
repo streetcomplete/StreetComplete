@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.util.ktx
 
-import android.content.Context
 import android.content.res.Resources
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -38,3 +37,6 @@ fun Resources.pxToDp(px: Int): Float = TypedValueCompat.pxToDp(px.toFloat(), dis
 
 /** return the number of pixels for the given density independent pixels */
 fun Resources.dpToPx(dp: Int): Float = TypedValueCompat.dpToPx(dp.toFloat(), displayMetrics)
+
+/** return the number of pixels for the given scalable pixels */
+fun Resources.spToPx(sp: Float): Float = TypedValueCompat.spToPx(sp, displayMetrics)

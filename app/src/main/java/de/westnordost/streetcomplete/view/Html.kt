@@ -22,7 +22,7 @@ fun TextView.setHtml(html: String) {
         null,
         ::handleList
     )
-    text = spanned.replaceUglyBulletSpans(context.spToPx(2.5f))
+    text = spanned.replaceUglyBulletSpans(resources.spToPx(2.5f))
     movementMethod = LinkMovementMethod.getInstance()
 }
 
