@@ -86,8 +86,6 @@
     <color name="log_warning">#ff9800</color>
     <color name="log_error">#f44336</color>
 
-    <color name="star_of_david">#22f</color>
-
     <!-- for fading out images -->
     <color name="fade_out">#fff</color>
     <color name="fade_out_transparent">#00FFFFFF</color>
