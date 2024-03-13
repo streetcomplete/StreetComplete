@@ -1747,6 +1747,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="label_log_older_than">To</string>
     <string name="label_log_message_contains">Message contains</string>
     <string name="title_logs_filters">Filter messages</string>
-    <string name="quest_isAmenityIndoor_outside_covered">Covered by building but not inside</string>
+    <string name="quest_isAmenityIndoor_outside_covered">Not inside, but covered</string>
 
 </resources>
