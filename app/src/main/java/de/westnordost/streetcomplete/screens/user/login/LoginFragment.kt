@@ -1,87 +1,100 @@
 package de.westnordost.streetcomplete.screens.user.login
 
+import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
-import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.databinding.FragmentLoginBinding
 import de.westnordost.streetcomplete.screens.HasTitle
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.screens.user.login.LoginError.*
+import de.westnordost.streetcomplete.util.ktx.observe
+import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.viewBinding
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.Locale
 
-/** Shows only a login button and a text that clarifies that login is necessary for publishing the
- *  answers. */
-class LoginFragment :
-    Fragment(R.layout.fragment_login),
-    HasTitle,
-    OAuthFragment.Listener {
-
-    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    private val userLoginStatusController: UserLoginStatusController by inject()
-    private val userUpdater: UserUpdater by inject()
+/** Leads user through the OAuth 2 auth flow to login */
+class LoginFragment : Fragment(R.layout.fragment_login), HasTitle {
 
     override val title: String get() = getString(R.string.user_login)
 
+    private val viewModel by viewModel<LoginViewModel>()
     private val binding by viewBinding(FragmentLoginBinding::bind)
 
+    private val webViewClient: OAuthWebViewClient = OAuthWebViewClient()
+
+    private val backPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            binding.webView.goBack()
+        }
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.loginButton.setOnClickListener { pushOAuthFragment() }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
+
+        binding.webView.settings.userAgentString = ApplicationConstants.USER_AGENT
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.settings.allowContentAccess = true
+        binding.webView.settings.setSupportZoom(false)
+        binding.webView.webViewClient = webViewClient
+
+        binding.loginButton.setOnClickListener { viewModel.startLogin() }
 
         val launchAuth = arguments?.getBoolean(ARG_LAUNCH_AUTH, false) ?: false
         if (launchAuth) {
-            pushOAuthFragment()
+            viewModel.startLogin()
+        }
+
+        observe(viewModel.unsyncedChangesCount) { count ->
+            binding.unpublishedEditCountText.text = getString(R.string.unsynced_quests_not_logged_in_description, count)
+            binding.unpublishedEditCountText.isGone = count <= 0
+        }
+        observe(viewModel.loginState) { state ->
+            binding.loginButtonContainer.isInvisible = state !is LoggedOut
+            binding.webView.isInvisible = state !is RequestingAuthorization
+            // fragment is dismissed on login, so while it is still there, show progress spinner
+            binding.progressView.isInvisible = state !is RetrievingAccessToken && state !is LoggedIn
+
+            if (state is RequestingAuthorization) {
+                binding.webView.loadUrl(
+                    viewModel.authorizationRequestUrl,
+                    mutableMapOf("Accept-Language" to Locale.getDefault().toLanguageTag())
+                )
+            } else if (state is LoginError) {
+                activity?.toast(when (state) {
+                    RequiredPermissionsNotGranted -> R.string.oauth_failed_permissions
+                    CommunicationError -> R.string.oauth_communication_error
+                }, Toast.LENGTH_LONG)
+
+                viewModel.resetLogin()
+            }
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        viewLifecycleScope.launch {
-            val unsyncedChanges = unsyncedChangesCountSource.getCount()
-            binding.unpublishedEditCountText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
-            binding.unpublishedEditCountText.isGone = unsyncedChanges <= 0
-        }
+    override fun onPause() {
+        super.onPause()
+        binding.webView.onPause()
     }
 
-    /* ------------------------------- OAuthFragment.Listener ----------------------------------- */
-
-    override fun onOAuthSuccess(accessToken: String) {
-        binding.loginButton.visibility = View.INVISIBLE
-        binding.loginProgress.visibility = View.VISIBLE
-        childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
-        userLoginStatusController.logIn(accessToken)
-        userUpdater.update()
-        binding.loginProgress.visibility = View.INVISIBLE
-    }
-
-    override fun onOAuthFailed(e: Exception?) {
-        childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
-        userLoginStatusController.logOut()
+    override fun onResume() {
+        super.onResume()
+        binding.webView.onResume()
     }
 
     /* ------------------------------------------------------------------------------------------ */
-
-    private fun pushOAuthFragment() {
-        childFragmentManager.commit {
-            setCustomAnimations(
-                R.anim.enter_from_end, R.anim.exit_to_start,
-                R.anim.enter_from_start, R.anim.exit_to_end
-            )
-            replace<OAuthFragment>(R.id.oauthFragmentContainer)
-            addToBackStack("oauth")
-        }
-    }
 
     companion object {
         fun create(launchAuth: Boolean = false): LoginFragment {
@@ -91,5 +104,29 @@ class LoginFragment :
         }
 
         private const val ARG_LAUNCH_AUTH = "launch_auth"
+    }
+
+    private inner class OAuthWebViewClient : WebViewClient() {
+
+        @Deprecated("Deprecated in Java")
+        override fun shouldOverrideUrlLoading(view: WebView?, url: String): Boolean {
+            if (!viewModel.isAuthorizationResponseUrl(url)) return false
+            viewModel.finishAuthorization(url)
+            return true
+        }
+
+        @Deprecated("Deprecated in Java")
+        override fun onReceivedError(view: WebView?, errorCode: Int, description: String?, url: String?) {
+            viewModel.failAuthorization(url.toString(), errorCode, description)
+        }
+
+        override fun onPageStarted(view: WebView, url: String?, favicon: Bitmap?) {
+            binding.progressView.visibility = View.VISIBLE
+            backPressedCallback.isEnabled = view.canGoBack()
+        }
+
+        override fun onPageFinished(view: WebView?, url: String?) {
+            binding.progressView.visibility = View.INVISIBLE
+        }
     }
 }

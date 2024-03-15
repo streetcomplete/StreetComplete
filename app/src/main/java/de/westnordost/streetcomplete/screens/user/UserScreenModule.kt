@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.user
 
+import de.westnordost.streetcomplete.screens.user.login.LoginViewModel
+import de.westnordost.streetcomplete.screens.user.login.LoginViewModelImpl
 import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModel
 import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModelImpl
 import de.westnordost.streetcomplete.screens.user.statistics.EditStatisticsViewModel
@@ -11,6 +13,8 @@ val userScreenModule = module {
     factory<ProfileViewModel> { ProfileViewModelImpl(
         get(), get(), get(), get(), get(), get(), get(named("AvatarsCacheDirectory")), get()
     ) }
+
+    factory<LoginViewModel> { LoginViewModelImpl(get(), get(), get(), get()) }
 
     factory<EditStatisticsViewModel> { EditStatisticsViewModelImpl(get(), get()) }
 }

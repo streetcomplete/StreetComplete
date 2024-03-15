@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
+
+        android:id="@+id/loginButtonContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -30,20 +32,22 @@
             android:layout_centerInParent="true"
             android:text="@string/user_login"/>
 
-        <ProgressBar
-            android:id="@+id/loginProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:layout_centerInParent="true"
-            android:visibility="invisible"
-            tools:visibility="visible"/>
-
     </RelativeLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/oauthFragmentContainer"
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="invisible"/>
+
+    <ProgressBar
+        android:id="@+id/progressView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/MapProgressBar.Horizontal"
+        android:visibility="visible"
+        tools:progress="50"
+        tools:max="100"
+        android:indeterminate="true"/>
 
 </RelativeLayout>
