@@ -13,24 +13,27 @@ class EditStatisticsViewModelImpl(
 ) : EditStatisticsViewModel() {
 
     override val hasEdits = MutableStateFlow(true)
-    override val isSynchronizingStatistics = MutableStateFlow(false)
-    override val countryStatistics = MutableStateFlow<Collection<CountryStatistics>>(emptyList())
-    override val editTypeStatistics = MutableStateFlow<Collection<EditTypeObjStatistics>>(emptyList())
+    override val isSynchronizingStatistics = MutableStateFlow(statisticsSource.isSynchronizing)
+    override val countryStatistics = MutableStateFlow<Collection<CountryStatistics>?>(null)
+    override val editTypeStatistics = MutableStateFlow<Collection<EditTypeObjStatistics>?>(null)
 
     // no updating of data implemented (because actually not needed. Not possible to add edits
     // while in this screen)
 
     init {
-        isSynchronizingStatistics.value = statisticsSource.isSynchronizing
         launch(IO) { hasEdits.value = statisticsSource.getEditCount() > 0 }
     }
 
     override fun queryCountryStatistics() {
-        launch(IO) { countryStatistics.value = statisticsSource.getCountryStatistics() }
+        if (countryStatistics.value == null) {
+            launch(IO) { countryStatistics.value = statisticsSource.getCountryStatistics() }
+        }
     }
 
     override fun queryEditTypeStatistics() {
-        launch(IO) { editTypeStatistics.value = getEditTypeStatistics() }
+        if (editTypeStatistics.value == null) {
+            launch(IO) { editTypeStatistics.value = getEditTypeStatistics() }
+        }
     }
 
     private fun getEditTypeStatistics(): Collection<EditTypeObjStatistics> =

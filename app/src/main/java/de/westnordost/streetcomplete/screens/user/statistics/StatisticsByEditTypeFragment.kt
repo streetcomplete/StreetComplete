@@ -38,7 +38,7 @@ class StatisticsByEditTypeFragment : Fragment(R.layout.fragment_statistics_ball_
         super.onViewCreated(view, savedInstanceState)
         lifecycle.addObserver(binding.ballPitView)
         observe(viewModel.editTypeStatistics) { editTypeStatistics ->
-            if (editTypeStatistics.isNotEmpty() && !hasCreatedBallPit) {
+            if (editTypeStatistics != null && !hasCreatedBallPit) {
                 binding.ballPitView.setViews(editTypeStatistics.map {
                     createEditTypeBubbleView(it.type, it.count) to it.count
                 })
