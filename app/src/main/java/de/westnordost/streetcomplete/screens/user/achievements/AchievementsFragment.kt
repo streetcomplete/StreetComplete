@@ -7,32 +7,27 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
-import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
-import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.CellAchievementBinding
 import de.westnordost.streetcomplete.databinding.FragmentAchievementsBinding
 import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import de.westnordost.streetcomplete.view.ListAdapter
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
  *  details on click. */
 class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
 
-    private val achievementsSource: AchievementsSource by inject()
-    private val statisticsSource: StatisticsSource by inject()
-
+    private val viewModel by viewModel<AchievementsViewModel>()
     private val binding by viewBinding(FragmentAchievementsBinding::bind)
 
     private var actualCellWidth: Int = 0
@@ -42,47 +37,41 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    /* --------------------------------------- Lifecycle ---------------------------------------- */
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ctx = requireContext()
-        val minCellWidth = ctx.resources.dpToPx(144)
-        val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
-        viewLifecycleScope.launch {
+        binding.emptyText.isGone = true
+
+        observe(viewModel.isSynchronizingStatistics) { isSynchronizingStatistics ->
+            binding.emptyText.setText(
+                if (isSynchronizingStatistics)
+                    R.string.stats_are_syncing
+                else
+                    R.string.links_empty
+            )
+        }
+
+        observe(viewModel.achievements) { achievements ->
+            binding.emptyText.isGone = achievements == null || achievements.isNotEmpty()
+            if (achievements != null) {
+                binding.achievementsList.adapter = AchievementsAdapter(achievements)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
             view.awaitLayout()
 
-            binding.emptyText.visibility = View.GONE
-
+            val minCellWidth = resources.dpToPx(144)
+            val itemSpacing = resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
             val spanCount = (view.width / (minCellWidth + itemSpacing)).toInt()
             actualCellWidth = (view.width.toFloat() / spanCount - itemSpacing).toInt()
 
-            val layoutManager = GridLayoutManager(ctx, spanCount, RecyclerView.VERTICAL, false)
+            val layoutManager = GridLayoutManager(requireContext(), spanCount, RecyclerView.VERTICAL, false)
             binding.achievementsList.layoutManager = layoutManager
             binding.achievementsList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
             binding.achievementsList.clipToPadding = false
-
-            val achievements = withContext(Dispatchers.IO) {
-                achievementsSource.getAchievements()
-            }
-            binding.achievementsList.adapter = AchievementsAdapter(achievements)
-
-            binding.emptyText.isGone = achievements.isNotEmpty()
         }
     }
-
-    override fun onStart() {
-        super.onStart()
-
-        if (statisticsSource.isSynchronizing) {
-            binding.emptyText.setText(R.string.stats_are_syncing)
-        } else {
-            binding.emptyText.setText(R.string.achievements_empty)
-        }
-    }
-
-    /* -------------------------------------- Interaction --------------------------------------- */
 
     private inner class AchievementsAdapter(
         achievements: List<Pair<Achievement, Int>>
