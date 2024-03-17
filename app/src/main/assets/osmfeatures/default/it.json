@@ -1967,7 +1967,7 @@
                 },
                 "indoor": {
                     "label": "Al chiuso",
-                    "terms": "all'interno,in un lluogo chiuso"
+                    "terms": "all'interno,in un luogo chiuso"
                 },
                 "indoor_type": {
                     "label": "Tipo"
@@ -8713,7 +8713,7 @@
                 },
                 "shop/beverages": {
                     "name": "Negozio di bevande",
-                    "terms": "negozio di bevande"
+                    "terms": "negozio di bevande,bibite"
                 },
                 "shop/bicycle": {
                     "name": "Negozio di biciclette",
@@ -9277,7 +9277,8 @@
                     "terms": "negozio pneumatici"
                 },
                 "shop/vacant": {
-                    "name": "Negozio vuoto"
+                    "name": "Negozio vuoto",
+                    "terms": "chiuso,vacante"
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Negozio di aspirapolveri",
