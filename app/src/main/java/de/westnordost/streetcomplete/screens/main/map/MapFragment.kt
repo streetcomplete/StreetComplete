@@ -91,6 +91,12 @@ open class MapFragment : Fragment() {
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
         val mapFile = if (isNightMode) "map_theme/streetcomplete-night.json" else "map_theme/streetcomplete.json"
         val styleJsonString = resources.assets.open(mapFile).reader().readText()
+            // API key replaced during development to match key of online style used in MapTilesDownloader
+            // TODO: remove this later
+            .replace(
+                "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ",
+                "XQYxWyY9JsVlwq0XYXqB8OO4ttBTNxm46ITHHwPj5F6CX4JaaSMBkvmD8kCqn7z7"
+            )
         mapView.getMapAsync { map ->
             val s = Style.Builder().fromJson(styleJsonString)
             map.setStyle(s)
