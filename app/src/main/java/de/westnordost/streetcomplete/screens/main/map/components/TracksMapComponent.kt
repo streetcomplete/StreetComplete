@@ -38,9 +38,9 @@ class TracksMapComponent(private val map: MapLibreMap) {
     val layers: List<Layer> = listOf(
         LineLayer("track", "track-source")
             .withProperties(
-                lineWidth(10f),
+                lineWidth(14f),
                 lineColor(match(get("recording"),
-                    literal(true), literal("#fe1616"),
+                    literal("true"), literal("#fe1616"),
                     literal("#536dfe")
                 )),
                 lineOpacity(0.3f),
@@ -48,9 +48,9 @@ class TracksMapComponent(private val map: MapLibreMap) {
             ),
         LineLayer("old-track", "old-track-source")
             .withProperties(
-                lineWidth(10f),
+                lineWidth(14f),
                 lineColor(match(get("recording"),
-                    literal(true), literal("#fe1616"),
+                    literal("true"), literal("#fe1616"),
                     literal("#536dfe")
                 )),
                 lineOpacity(0.15f),
