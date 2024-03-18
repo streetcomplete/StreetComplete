@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.openUri
-import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import kotlinx.coroutines.launch
@@ -32,10 +31,11 @@ class LinksFragment : Fragment(R.layout.fragment_links) {
 
         observe(viewModel.isSynchronizingStatistics) { isSynchronizingStatistics ->
             binding.emptyText.setText(
-                if (isSynchronizingStatistics)
+                if (isSynchronizingStatistics) {
                     R.string.stats_are_syncing
-                else
+                } else {
                     R.string.links_empty
+                }
             )
         }
 

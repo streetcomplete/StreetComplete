@@ -44,10 +44,11 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements) {
 
         observe(viewModel.isSynchronizingStatistics) { isSynchronizingStatistics ->
             binding.emptyText.setText(
-                if (isSynchronizingStatistics)
+                if (isSynchronizingStatistics) {
                     R.string.stats_are_syncing
-                else
+                } else {
                     R.string.links_empty
+                }
             )
         }
 

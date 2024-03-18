@@ -35,4 +35,3 @@ enum class LoginError : LoginState {
     CommunicationError
 }
 data object LoggedIn : LoginState
-

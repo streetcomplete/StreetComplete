@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 class LinksViewModelImpl(
     private val achievementsSource: AchievementsSource,
     private val statisticsSource: StatisticsSource,
-): LinksViewModel() {
+) : LinksViewModel() {
     override val isSynchronizingStatistics = MutableStateFlow(statisticsSource.isSynchronizing)
     override val links = MutableStateFlow<List<Link>?>(null)
 

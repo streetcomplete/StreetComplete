@@ -10,10 +10,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 class AchievementsViewModelImpl(
     private val achievementsSource: AchievementsSource,
     private val statisticsSource: StatisticsSource,
-): AchievementsViewModel() {
+) : AchievementsViewModel() {
     override val isSynchronizingStatistics = MutableStateFlow(statisticsSource.isSynchronizing)
     override val achievements = MutableStateFlow<List<Pair<Achievement, Int>>?>(null)
-
 
     init {
         launch(Dispatchers.IO) {
@@ -21,4 +20,3 @@ class AchievementsViewModelImpl(
         }
     }
 }
-
