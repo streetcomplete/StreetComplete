@@ -228,7 +228,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     override fun onDestroyView() {
         super.onDestroyView()
         selectedOverlaySource.removeListener(overlayListener)
-        mapLibreMap = null
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */

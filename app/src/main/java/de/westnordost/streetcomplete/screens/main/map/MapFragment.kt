@@ -43,8 +43,8 @@ open class MapFragment : Fragment() {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    protected var mapLibreMap : MapLibreMap? = null
     protected var sceneMapComponent: SceneMapComponent? = null
+    private var mapLibreMap : MapLibreMap? = null
 
     private var previousCameraPosition: CameraPosition? = null
 
@@ -143,8 +143,8 @@ open class MapFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding.map.onDestroy()
         mapLibreMap = null
+        binding.map.onDestroy()
     }
 
     override fun onDestroy() {
