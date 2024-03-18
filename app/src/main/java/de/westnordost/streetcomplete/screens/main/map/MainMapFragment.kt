@@ -112,7 +112,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override suspend fun onMapReady(mapView: MapView, mapLibreMap: MapLibreMap, style: Style) {
-        geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, mapLibreMap)
+        geometryMarkersMapComponent = GeometryMarkersMapComponent(requireContext(), mapLibreMap)
 
         pinsMapComponent = PinsMapComponent(requireContext(), questTypeRegistry, overlayRegistry, mapLibreMap)
         geometryMapComponent = FocusGeometryMapComponent(requireContext().contentResolver, mapLibreMap)
@@ -125,7 +125,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
 
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(mapLibreMap)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(requireContext(), mapLibreMap)
         styleableOverlayManager = StyleableOverlayManager(mapLibreMap, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 

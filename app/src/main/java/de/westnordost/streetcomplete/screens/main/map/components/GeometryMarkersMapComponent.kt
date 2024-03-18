@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.Context
 import android.content.res.Resources
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
@@ -29,7 +30,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 
 /** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
  *  show the geometry of elements surrounding the selected quest */
-class GeometryMarkersMapComponent(private val resources: Resources, private val map: MapLibreMap) {
+class GeometryMarkersMapComponent(private val context: Context, private val map: MapLibreMap) {
 
     private val geometrySource = GeoJsonSource(SOURCE)
 
@@ -60,6 +61,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
                 textJustify(Property.TEXT_JUSTIFY_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
+                textSize(16 * context.resources.configuration.fontScale)
             ),
         SymbolLayer("geo-symbols", SOURCE)
             .withFilter(all(has("icon"), isPoint()))
@@ -71,6 +73,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
                 textJustify(Property.TEXT_JUSTIFY_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
+                textSize(16 * context.resources.configuration.fontScale),
                 textHaloColor("white"),
                 textHaloWidth(1.5f),
             )
@@ -93,7 +96,7 @@ class GeometryMarkersMapComponent(private val resources: Resources, private val 
         if (drawableResId != null || title != null || geometry is ElementPointGeometry) {
             val p = JsonObject()
             if (drawableResId != null) {
-                p.addProperty("icon", resources.getResourceEntryName(drawableResId))
+                p.addProperty("icon", context.resources.getResourceEntryName(drawableResId))
             }
             if (title != null) {
                 p.addProperty("label", title)

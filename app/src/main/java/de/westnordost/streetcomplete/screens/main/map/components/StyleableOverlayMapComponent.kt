@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.Context
 import androidx.annotation.UiThread
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
@@ -35,7 +36,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.ktx.toRGB
 
 /** Takes care of displaying styled map data */
-class StyleableOverlayMapComponent(private val map: MapLibreMap) {
+class StyleableOverlayMapComponent(private val context: Context, private val map: MapLibreMap) {
 
     private val overlaySource = GeoJsonSource(
         SOURCE,
@@ -164,6 +165,7 @@ class StyleableOverlayMapComponent(private val map: MapLibreMap) {
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
                 textJustify(Property.TEXT_JUSTIFY_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
+                textSize(16 * context.resources.configuration.fontScale),
                 textHaloColor("white"),
                 textHaloWidth(1.5f),
                 iconColor("black"),
