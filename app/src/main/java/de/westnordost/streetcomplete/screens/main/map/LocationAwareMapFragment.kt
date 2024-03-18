@@ -7,11 +7,11 @@ import android.location.Location
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.getSystemService
-import com.mapbox.mapboxsdk.maps.MapView
-import com.mapbox.mapboxsdk.maps.MapboxMap
+import org.maplibre.android.maps.MapView
+import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import com.mapbox.mapboxsdk.maps.Style
+import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
@@ -136,20 +136,20 @@ open class LocationAwareMapFragment : MapFragment() {
 
     /* ---------------------------------- Map State Callbacks ----------------------------------- */
 
-    override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
-        super.onMapReady(mapView, mapboxMap, style)
+    override suspend fun onMapReady(mapView: MapView, mapLibreMap: MapLibreMap, style: Style) {
+        super.onMapReady(mapView, mapLibreMap, style)
         restoreMapState()
 
         val ctx = context ?: return
-        locationMapComponent = CurrentLocationMapComponent(ctx, style, mapboxMap)
+        locationMapComponent = CurrentLocationMapComponent(ctx, style, mapLibreMap)
         locationMapComponent?.location = displayedLocation
 
-        tracksMapComponent = TracksMapComponent(mapboxMap)
+        tracksMapComponent = TracksMapComponent(mapLibreMap)
         val positionsLists = tracks.map { track -> track.map { it.position } }
         tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
 
-        tracksMapComponent?.layers?.forEach { mapboxMap.style?.addLayer(it) }
-        locationMapComponent?.layers?.forEach { mapboxMap.style?.addLayer(it) }
+        tracksMapComponent?.layers?.forEach { mapLibreMap.style?.addLayer(it) }
+        locationMapComponent?.layers?.forEach { mapLibreMap.style?.addLayer(it) }
 
         centerCurrentPositionIfFollowing()
     }

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.res.Configuration
 import android.content.res.Resources
-import com.mapbox.mapboxsdk.maps.MapboxMap
+import org.maplibre.android.maps.MapLibreMap
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
@@ -10,7 +10,7 @@ import kotlinx.coroutines.sync.withLock
  *  etc, custom scene updates, etc ...) */
 class SceneMapComponent(
     private val resources: Resources,
-    private val map: MapboxMap,
+    private val map: MapLibreMap,
 ) {
     private var sceneUpdates: MutableList<List<Pair<String, String>>> = mutableListOf()
 

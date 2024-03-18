@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map.maplibre
 
-import com.mapbox.mapboxsdk.style.expressions.Expression
-import com.mapbox.mapboxsdk.style.expressions.Expression.*
+import org.maplibre.android.style.expressions.Expression
+import org.maplibre.android.style.expressions.Expression.*
 
 /* expression for line width dependent on zoom (line width in property in meters) */
 fun changeDistanceWithZoom(propertyName: String): Expression =

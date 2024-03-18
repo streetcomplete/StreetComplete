@@ -13,8 +13,8 @@
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
     <uses-feature android:name="android.hardware.screen.portrait" />
 
-    <!-- Tangram-ES needs at least OpenGL ES 2.0, without it, the app is not usable. -->
-    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+    <!-- MapLibre 11+ needs at least OpenGL ES 3.0 -->
+    <uses-feature android:glEsVersion="0x00030000" android:required="true" />
 
     <queries>
         <!-- open location in another app -->

@@ -7,10 +7,10 @@ import com.mapbox.geojson.MultiLineString
 import com.mapbox.geojson.MultiPolygon
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.Polygon
-import com.mapbox.mapboxsdk.geometry.LatLng
-import com.mapbox.mapboxsdk.geometry.LatLngBounds
-import com.mapbox.mapboxsdk.maps.MapboxMap
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
+import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.geometry.LatLngBounds
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -21,10 +21,10 @@ import de.westnordost.streetcomplete.util.math.isInPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import de.westnordost.streetcomplete.util.math.measuredArea
 
-fun MapboxMap.getMetersPerPixel(): Double? =
+fun MapLibreMap.getMetersPerPixel(): Double? =
     cameraPosition.target?.latitude?.let { projection.getMetersPerPixelAtLatitude(it) }
 
-fun MapboxMap.screenAreaToBoundingBox(): BoundingBox =
+fun MapLibreMap.screenAreaToBoundingBox(): BoundingBox =
     projection.getVisibleRegion(true).latLngBounds.toBoundingBox()
 
 fun LatLngBounds.toBoundingBox() =

@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.screens.main.map.maplibre
 import android.content.ContentResolver
 import android.graphics.RectF
 import android.provider.Settings
-import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
-import com.mapbox.mapboxsdk.maps.MapboxMap
+import org.maplibre.android.camera.CameraUpdateFactory
+import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
-fun MapboxMap.getEnclosingCamera(geometry: ElementGeometry, padding: RectF): CameraPosition? =
+fun MapLibreMap.getEnclosingCamera(geometry: ElementGeometry, padding: RectF): CameraPosition? =
     getCameraForGeometry(
         geometry.toMapLibreGeometry(),
         intArrayOf(
@@ -19,11 +19,11 @@ fun MapboxMap.getEnclosingCamera(geometry: ElementGeometry, padding: RectF): Cam
         )
     )?.toCameraPosition()
 
-var MapboxMap.camera: CameraPosition
+var MapLibreMap.camera: CameraPosition
     get() = cameraPosition.toCameraPosition()
     set(value) { cameraPosition = value.toMapLibreCameraPosition() }
 
-fun MapboxMap.updateCamera(duration: Int = 0, contentResolver: ContentResolver, builder: CameraUpdate.() -> Unit) {
+fun MapLibreMap.updateCamera(duration: Int = 0, contentResolver: ContentResolver, builder: CameraUpdate.() -> Unit) {
     val update = CameraUpdate().apply(builder).toMapLibreCameraUpdate(camera)
     val animatorScale = Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
     if (duration == 0 || animatorScale == 0f) {
@@ -46,9 +46,9 @@ class CameraUpdate {
     var rotationBy: Double? = null
 }
 
-private fun CameraUpdate.toMapLibreCameraUpdate(cameraPosition: CameraPosition): com.mapbox.mapboxsdk.camera.CameraUpdate {
+private fun CameraUpdate.toMapLibreCameraUpdate(cameraPosition: CameraPosition): org.maplibre.android.camera.CameraUpdate {
     resolveDeltas(cameraPosition)
-    val builder = com.mapbox.mapboxsdk.camera.CameraPosition.Builder(cameraPosition.toMapLibreCameraPosition())
+    val builder = org.maplibre.android.camera.CameraPosition.Builder(cameraPosition.toMapLibreCameraPosition())
     rotation?.let { builder.bearing(it) }
     position?.let { builder.target(it.toLatLng()) }
     zoom?.let { builder.zoom(it) }
@@ -73,7 +73,7 @@ data class CameraPosition(
 )
 data class Padding(val left: Double, val top: Double, val right: Double, val bottom: Double)
 
-private fun com.mapbox.mapboxsdk.camera.CameraPosition.toCameraPosition() = CameraPosition(
+private fun org.maplibre.android.camera.CameraPosition.toCameraPosition() = CameraPosition(
     position = target?.toLatLon() ?: LatLon(0.0, 0.0),
     rotation = -bearing,
     tilt = tilt,
@@ -81,8 +81,8 @@ private fun com.mapbox.mapboxsdk.camera.CameraPosition.toCameraPosition() = Came
     padding = padding?.toPadding()
 )
 
-private fun CameraPosition.toMapLibreCameraPosition(): com.mapbox.mapboxsdk.camera.CameraPosition =
-    com.mapbox.mapboxsdk.camera.CameraPosition.Builder()
+private fun CameraPosition.toMapLibreCameraPosition(): org.maplibre.android.camera.CameraPosition =
+    org.maplibre.android.camera.CameraPosition.Builder()
         .bearing(rotation)
         .zoom(zoom)
         .tilt(tilt)

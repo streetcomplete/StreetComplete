@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.content.res.Configuration
 import android.graphics.PointF
-import android.graphics.RectF
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +10,9 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.mapbox.android.gestures.MoveGestureDetector
-import com.mapbox.mapboxsdk.Mapbox
-import com.mapbox.mapboxsdk.maps.MapView
-import com.mapbox.mapboxsdk.maps.MapboxMap
-import com.mapbox.mapboxsdk.maps.Style
+import org.maplibre.android.maps.MapView
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -32,20 +30,20 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.maplibre.android.MapLibre
 
 /** Manages a map that remembers its last location*/
 open class MapFragment : Fragment() {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    protected var mapboxMap : MapboxMap? = null
+    protected var mapLibreMap : MapLibreMap? = null
     protected var sceneMapComponent: SceneMapComponent? = null
 
     private var previousCameraPosition: CameraPosition? = null
@@ -82,7 +80,7 @@ open class MapFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Mapbox.getInstance(requireContext())
+        MapLibre.getInstance(requireContext())
         val view = inflater.inflate(R.layout.fragment_map, container, false)
 
         val mapView = view.findViewById<MapView>(R.id.map)
@@ -152,7 +150,7 @@ open class MapFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding.map.onDestroy()
-        mapboxMap = null
+        mapLibreMap = null
     }
 
     override fun onDestroy() {
@@ -167,10 +165,10 @@ open class MapFragment : Fragment() {
 
     /* ------------------------------------------- Map  ----------------------------------------- */
 
-    private suspend fun initMap(mapView: MapView, mapboxMap: MapboxMap) {
-        val style = mapboxMap.style ?: return
-        registerResponders(mapboxMap)
-        mapboxMap.addOnMoveListener(object : MapboxMap.OnMoveListener {
+    private suspend fun initMap(mapView: MapView, mapLibreMap: MapLibreMap) {
+        val style = mapLibreMap.style ?: return
+        registerResponders(mapLibreMap)
+        mapLibreMap.addOnMoveListener(object : MapLibreMap.OnMoveListener {
             override fun onMoveBegin(p0: MoveGestureDetector) {
                 // tapping also calls onMoveBegin, but with integer x and y, and with historySize 0
                 if (p0.currentEvent.historySize != 0) // crappy workaround for deciding whether it's a tap or a move
@@ -180,7 +178,7 @@ open class MapFragment : Fragment() {
             override fun onMoveEnd(p0: MoveGestureDetector) {}
         })
 
-        sceneMapComponent = SceneMapComponent(resources, mapboxMap)
+        sceneMapComponent = SceneMapComponent(resources, mapLibreMap)
         sceneMapComponent?.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
 
         onBeforeLoadScene()
@@ -189,13 +187,13 @@ open class MapFragment : Fragment() {
 
 //        ctrl.glViewHolder!!.view.awaitLayout()
 
-        onMapReady(mapView, mapboxMap, style)
+        onMapReady(mapView, mapLibreMap, style)
 
         isMapInitialized = true
         listener?.onMapInitialized()
     }
 
-    private fun registerResponders(map: MapboxMap) {
+    private fun registerResponders(map: MapLibreMap) {
         map.addOnCameraMoveListener {
             val camera = cameraPosition ?: return@addOnCameraMoveListener
             if (camera == previousCameraPosition) return@addOnCameraMoveListener
@@ -216,10 +214,10 @@ open class MapFragment : Fragment() {
 
     @CallSuper protected open suspend fun onMapReady(
         mapView: MapView,
-        mapboxMap: MapboxMap,
+        mapLibreMap: MapLibreMap,
         style: Style
     ) {
-        this.mapboxMap = mapboxMap
+        this.mapLibreMap = mapLibreMap
         restoreMapState()
     }
 
@@ -276,11 +274,11 @@ open class MapFragment : Fragment() {
 
     private fun restoreMapState() {
         val camera = loadCameraPosition() ?: return
-        mapboxMap?.camera = camera
+        mapLibreMap?.camera = camera
     }
 
     private fun saveMapState() {
-        val camera = mapboxMap?.camera ?: return
+        val camera = mapLibreMap?.camera ?: return
         saveCameraPosition(camera)
     }
 
@@ -317,30 +315,30 @@ open class MapFragment : Fragment() {
     /* ------------------------------- Controlling the map -------------------------------------- */
 
     fun getPositionAt(point: PointF): LatLon? =
-        mapboxMap?.projection?.fromScreenLocation(point)?.toLatLon()
+        mapLibreMap?.projection?.fromScreenLocation(point)?.toLatLon()
 
     fun getPointOf(pos: LatLon): PointF? =
-        mapboxMap?.projection?.toScreenLocation(pos.toLatLng())
+        mapLibreMap?.projection?.toScreenLocation(pos.toLatLng())
 
     val cameraPosition: CameraPosition?
-        get() = mapboxMap?.camera
+        get() = mapLibreMap?.camera
 
     fun updateCameraPosition(
         duration: Int = 0,
         builder: CameraUpdate.() -> Unit
     ) {
-        mapboxMap?.updateCamera(duration, requireContext().contentResolver, builder)
+        mapLibreMap?.updateCamera(duration, requireContext().contentResolver, builder)
     }
 
     fun setInitialCameraPosition(camera: CameraPosition) {
-        if (mapboxMap != null) {
-            mapboxMap?.camera = camera
+        if (mapLibreMap != null) {
+            mapLibreMap?.camera = camera
         } else {
             saveCameraPosition(camera)
         }
     }
 
-    fun getDisplayedArea(): BoundingBox? = mapboxMap?.screenAreaToBoundingBox()
+    fun getDisplayedArea(): BoundingBox? = mapLibreMap?.screenAreaToBoundingBox()
 
-    fun getMetersPerPixel(): Double? = mapboxMap?.getMetersPerPixel()
+    fun getMetersPerPixel(): Double? = mapLibreMap?.getMetersPerPixel()
 }

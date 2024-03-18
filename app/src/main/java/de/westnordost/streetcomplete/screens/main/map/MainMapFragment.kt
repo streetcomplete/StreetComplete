@@ -2,16 +2,13 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.graphics.PointF
 import android.graphics.RectF
-import android.graphics.drawable.LayerDrawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
-import androidx.core.content.ContextCompat
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
-import com.mapbox.mapboxsdk.maps.MapView
-import com.mapbox.mapboxsdk.maps.MapboxMap
-import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.style.layers.TransitionOptions
-import de.westnordost.streetcomplete.R
+import org.maplibre.android.maps.MapView
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
+import org.maplibre.android.style.layers.TransitionOptions
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -114,13 +111,13 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
-    override suspend fun onMapReady(mapView: MapView, mapboxMap: MapboxMap, style: Style) {
-        geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, mapboxMap)
+    override suspend fun onMapReady(mapView: MapView, mapLibreMap: MapLibreMap, style: Style) {
+        geometryMarkersMapComponent = GeometryMarkersMapComponent(resources, mapLibreMap)
 
-        pinsMapComponent = PinsMapComponent(requireContext(), questTypeRegistry, overlayRegistry, mapboxMap)
-        geometryMapComponent = FocusGeometryMapComponent(requireContext().contentResolver, mapboxMap)
+        pinsMapComponent = PinsMapComponent(requireContext(), questTypeRegistry, overlayRegistry, mapLibreMap)
+        geometryMapComponent = FocusGeometryMapComponent(requireContext().contentResolver, mapLibreMap)
 
-        questPinsManager = QuestPinsManager(mapboxMap, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
+        questPinsManager = QuestPinsManager(mapLibreMap, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
         questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
 
@@ -128,15 +125,15 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
 
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(mapboxMap)
-        styleableOverlayManager = StyleableOverlayManager(mapboxMap, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(mapLibreMap)
+        styleableOverlayManager = StyleableOverlayManager(mapLibreMap, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
-        downloadedAreaMapComponent = DownloadedAreaMapComponent(requireContext(), mapboxMap)
+        downloadedAreaMapComponent = DownloadedAreaMapComponent(requireContext(), mapLibreMap)
         downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
-        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), mapboxMap)
+        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), mapLibreMap)
 
         selectedOverlaySource.addListener(overlayListener)
 
@@ -154,20 +151,20 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // defaults: 300, 0, true
         style.transition = TransitionOptions(style.transition.duration, style.transition.delay, false)
 
-        mapboxMap.uiSettings.isCompassEnabled = false
-        mapboxMap.uiSettings.isLogoEnabled = false
-        mapboxMap.uiSettings.isAttributionEnabled = false
+        mapLibreMap.uiSettings.isCompassEnabled = false
+        mapLibreMap.uiSettings.isLogoEnabled = false
+        mapLibreMap.uiSettings.isAttributionEnabled = false
 
-        super.onMapReady(mapView, mapboxMap, style) // leftover from initial implementation, maybe change?
+        super.onMapReady(mapView, mapLibreMap, style) // leftover from initial implementation, maybe change?
 
         // add click listeners
         val pickRadius = requireContext().dpToPx(8).toInt()
-        mapboxMap.addOnMapClickListener { pos ->
+        mapLibreMap.addOnMapClickListener { pos ->
             // check whether we clicked a feature
-            val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
+            val screenPoint: PointF = mapLibreMap.projection.toScreenLocation(pos)
             val searchArea = RectF(screenPoint.x - pickRadius, screenPoint.y - pickRadius, screenPoint.x + pickRadius, screenPoint.y + pickRadius)
             // only query specific layer(s), leave layerIds empty for querying all layers
-            val features = mapboxMap.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills")
+            val features = mapLibreMap.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills")
             if (features.isNotEmpty()) { // found a feature
                 // is the first feature always the correct one? looks like yes in a quick test
                 viewLifecycleScope.launch {
@@ -202,8 +199,8 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             listener?.onClickedMapAt(LatLon(pos.latitude, pos.longitude), 1.0)
             false
         }
-        mapboxMap.addOnMapLongClickListener { pos ->
-            val screenPoint: PointF = mapboxMap.projection.toScreenLocation(pos)
+        mapLibreMap.addOnMapLongClickListener { pos ->
+            val screenPoint: PointF = mapLibreMap.projection.toScreenLocation(pos)
             onLongPress(screenPoint.x, screenPoint.y)
             true
         }
@@ -231,7 +228,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     override fun onDestroyView() {
         super.onDestroyView()
         selectedOverlaySource.removeListener(overlayListener)
-        mapboxMap = null
+        mapLibreMap = null
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */

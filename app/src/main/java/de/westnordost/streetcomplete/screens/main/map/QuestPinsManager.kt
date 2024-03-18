@@ -5,7 +5,7 @@ import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonElement
-import com.mapbox.mapboxsdk.maps.MapboxMap
+import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -39,7 +39,7 @@ import kotlin.coroutines.coroutineContext
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
  *  for the bbox surrounding the area from database and holds it in memory. */
 class QuestPinsManager(
-    private val map: MapboxMap,
+    private val map: MapLibreMap,
     private val pinsMapComponent: PinsMapComponent,
     private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
