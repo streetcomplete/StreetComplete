@@ -212,44 +212,7 @@ open class MapFragment : Fragment() {
     protected open fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {}
 
     /* ---------------------- Overridable callbacks for map interaction ------------------------ */
-/*
-    override fun onPanBegin(): Boolean {
-        listener?.onPanBegin()
-        return false
-    }
-    override fun onPan(startX: Float, startY: Float, endX: Float, endY: Float): Boolean { return false }
-    override fun onPanEnd(): Boolean { return false }
 
-    override fun onFling(posX: Float, posY: Float, velocityX: Float, velocityY: Float): Boolean { return false }
-    override fun onCancelFling(): Boolean { return false }
-
-    override fun onScaleBegin(): Boolean { return false }
-    override fun onScale(x: Float, y: Float, scale: Float, velocity: Float): Boolean { return false }
-    override fun onScaleEnd(): Boolean { return false }
-
-    override fun onShoveBegin(): Boolean { return false }
-    override fun onShove(distance: Float): Boolean { return false }
-    override fun onShoveEnd(): Boolean { return false }
-
-    override fun onRotateBegin(): Boolean { return false }
-    override fun onRotate(x: Float, y: Float, rotation: Float): Boolean { return false }
-    override fun onRotateEnd(): Boolean { return false }
-
-    override fun onSingleTapUp(x: Float, y: Float): Boolean { return false }
-
-    override fun onSingleTapConfirmed(x: Float, y: Float): Boolean { return false }
-
-    override fun onDoubleTap(x: Float, y: Float): Boolean {
-        val pos = controller?.screenPositionToLatLon(PointF(x, y))
-        if (pos != null) {
-            controller?.updateCameraPosition(300L) {
-                zoomBy = 1f
-                position = pos
-            }
-        }
-        return true
-    }
-*/
     fun onLongPress(x: Float, y: Float) {
         listener?.onLongPress(x, y)
     }
