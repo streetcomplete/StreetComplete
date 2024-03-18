@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.Context
 import androidx.annotation.UiThread
+import androidx.core.graphics.drawable.toBitmap
 import com.mapbox.geojson.Polygon
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.style.layers.FillLayer
@@ -8,26 +10,30 @@ import com.mapbox.mapboxsdk.style.layers.Layer
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 
-class DownloadedAreaMapComponent(private val map: MapboxMap) {
+class DownloadedAreaMapComponent(private val context: Context, private val map: MapboxMap) {
 
     private val downloadedAreaSource = GeoJsonSource("downloaded-area-source")
 
     val layers: List<Layer> = listOf(
         FillLayer("downloaded-area", "downloaded-area-source")
             .withProperties(
-                // TODO low prio: should be a hatched pattern (like in JOSM/before)
-                fillColor(Color.BLACK),
-                fillOpacity(0.3f)
+                fillPattern("downloaded_area_hatching"),
+                fillOpacity(0.6f)
             )
     )
 
     init {
+        map.style?.addImage(
+            "downloaded_area_hatching",
+            context.getDrawable(R.drawable.downloaded_area_hatching)!!.toBitmap()
+        )
         map.style?.addSource(downloadedAreaSource)
     }
 

@@ -132,7 +132,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         styleableOverlayManager = StyleableOverlayManager(mapboxMap, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
-        downloadedAreaMapComponent = DownloadedAreaMapComponent(mapboxMap)
+        downloadedAreaMapComponent = DownloadedAreaMapComponent(requireContext(), mapboxMap)
         downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
@@ -208,11 +208,14 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             true
         }
 
-        // layers added first appear behind other layers
-        downloadedAreaMapComponent?.layers?.forEach { style.addLayer(it) }
-        styleableOverlayMapComponent?.layers?.forEach { style.addLayer(it) }
+        // names etc. should still be readable behind hatching
+        downloadedAreaMapComponent?.layers?.forEach { style.addLayerAbove(it, "labels-country") }
+        // left-and-right lines should be rendered behind the actual road
         styleableOverlayMapComponent?.sideLayers?.forEach { style.addLayerAbove(it, "pedestrian-tunnel-casing") }
         styleableOverlayMapComponent?.sideLayersBridge?.forEach { style.addLayerAbove(it, "pedestrian-bridge-casing") }
+
+        // layers added first appear behind other layers
+        styleableOverlayMapComponent?.layers?.forEach { style.addLayer(it) }
         geometryMarkersMapComponent?.layers?.forEach { style.addLayer(it) }
         geometryMapComponent?.layers?.forEach { style.addLayer(it) }
         pinsMapComponent?.layers?.forEach { style.addLayer(it) }
