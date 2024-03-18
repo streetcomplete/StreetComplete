@@ -343,8 +343,6 @@ class MainFragment :
         }
     }
 
-    override fun onMapDidChange(position: LatLon, rotation: Double, tilt: Double, zoom: Double) { }
-
     override fun onLongPress(x: Float, y: Float) {
         val point = PointF(x, y)
         val position = mapFragment?.getPositionAt(point) ?: return

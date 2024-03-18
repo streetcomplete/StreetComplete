@@ -58,8 +58,6 @@ open class MapFragment : Fragment() {
         fun onMapInitialized()
         /** Called during camera animation and while the map is being controlled by a user */
         fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double)
-        /** Called after camera animation or after the map was controlled by a user */
-        fun onMapDidChange(position: LatLon, rotation: Double, tilt: Double, zoom: Double)
         /** Called when the user begins to pan the map */
         fun onPanBegin()
         /** Called when the user long-presses the map */
@@ -201,13 +199,6 @@ open class MapFragment : Fragment() {
             onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
             listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
         }
-        map.addOnCameraIdleListener {
-            val camera = cameraPosition ?: return@addOnCameraIdleListener
-            if (camera == previousCameraPosition) return@addOnCameraIdleListener
-            previousCameraPosition = camera
-            onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
-            listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
-        }
     }
 
     /* ----------------------------- Overridable map callbacks --------------------------------- */
@@ -224,8 +215,6 @@ open class MapFragment : Fragment() {
     @CallSuper protected open suspend fun onBeforeLoadScene() {}
 
     protected open fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {}
-
-    protected open fun onMapDidChange(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {}
 
     /* ---------------------- Overridable callbacks for map interaction ------------------------ */
 /*
