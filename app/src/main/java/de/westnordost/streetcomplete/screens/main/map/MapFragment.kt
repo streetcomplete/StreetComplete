@@ -48,9 +48,6 @@ open class MapFragment : Fragment() {
 
     private var previousCameraPosition: CameraPosition? = null
 
-    var isMapInitialized: Boolean = false
-        private set
-
     private val prefs: Preferences by inject()
 
     interface Listener {
@@ -103,7 +100,6 @@ open class MapFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        isMapInitialized = false
         binding.map.onCreate(savedInstanceState)
 
         binding.openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
@@ -187,7 +183,6 @@ open class MapFragment : Fragment() {
 
         onMapReady(mapView, mapLibreMap, style)
 
-        isMapInitialized = true
         listener?.onMapInitialized()
     }
 
