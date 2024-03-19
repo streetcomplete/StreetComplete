@@ -100,12 +100,20 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         super.onStart()
         // sceneMapComponent might actually be null if map style not initialized yet
         sceneMapComponent?.updateStyle()
+    }
+
+    override fun onResume() {
+        super.onResume()
         binding.map.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.map.onPause()
     }
 
     override fun onStop() {
         super.onStop()
-        binding.map.onPause()
         saveMapState()
     }
 
