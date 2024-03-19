@@ -43,8 +43,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     private var mapLibreMap : MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
-    private var previousCameraPosition: CameraPosition? = null
-
     private val prefs: Preferences by inject()
 
     interface Listener {
@@ -141,8 +139,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         })
         map.addOnCameraMoveListener {
             val camera = cameraPosition ?: return@addOnCameraMoveListener
-            if (camera == previousCameraPosition) return@addOnCameraMoveListener
-            previousCameraPosition = camera
             onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
             listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
         }
