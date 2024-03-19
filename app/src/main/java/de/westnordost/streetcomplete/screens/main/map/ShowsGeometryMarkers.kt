@@ -5,12 +5,13 @@ import androidx.annotation.UiThread
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 
 interface ShowsGeometryMarkers {
-    @UiThread fun putMarkerForCurrentHighlighting(
-        geometry: ElementGeometry,
-        @DrawableRes drawableResId: Int?,
-        title: String?
-    )
+    @UiThread fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>)
     @UiThread fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry)
-
     @UiThread fun clearMarkersForCurrentHighlighting()
 }
+
+data class Marker(
+    val geometry: ElementGeometry,
+    @DrawableRes val icon: Int? = null,
+    val title: String? = null
+)

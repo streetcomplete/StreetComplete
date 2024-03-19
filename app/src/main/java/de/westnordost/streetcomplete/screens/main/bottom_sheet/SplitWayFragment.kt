@@ -37,6 +37,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
+import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
@@ -207,11 +208,12 @@ class SplitWayFragment :
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
             animateScissors()
-            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(
-                ElementPointGeometry(splitPosition),
-                R.drawable.crosshair_marker,
-                null
-            )
+            showsGeometryMarkersListener?.putMarkersForCurrentHighlighting(listOf(
+                Marker(
+                    ElementPointGeometry(splitPosition),
+                    R.drawable.crosshair_marker,
+                )
+            ))
         }
 
         // always consume event. User should press the cancel button to exit

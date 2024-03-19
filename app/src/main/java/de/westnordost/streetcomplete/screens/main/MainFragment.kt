@@ -88,6 +88,7 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragmen
 import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MapFragment
+import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
@@ -503,12 +504,8 @@ class MainFragment :
 
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
-    @UiThread override fun putMarkerForCurrentHighlighting(
-        geometry: ElementGeometry,
-        @DrawableRes drawableResId: Int?,
-        title: String?
-    ) {
-        mapFragment?.putMarkerForCurrentHighlighting(geometry, drawableResId, title)
+    @UiThread override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
+        mapFragment?.putMarkersForCurrentHighlighting(markers)
     }
 
     @UiThread override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
@@ -1084,20 +1081,23 @@ class MainFragment :
             val elements = withContext(Dispatchers.IO) {
                 quest.type.getHighlightedElements(element, ::getMapData)
             }
-            for (e in elements) {
+
+            val markers = elements.mapNotNull { e ->
                 // don't highlight "this" element
-                if (element == e) continue
+                if (element == e) return@mapNotNull null
                 // include only elements with the same (=intersecting) level, if any
                 val eLevels = createLevelsOrNull(e.tags)
-                if (!levels.levelsIntersect(eLevels)) continue
+                if (!levels.levelsIntersect(eLevels)) return@mapNotNull null
                 // include only elements with the same layer, if any
-                if (element.tags["layer"] != e.tags["layer"]) continue
+                if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
 
-                val geometry = mapData?.getGeometry(e.type, e.id) ?: continue
+                val geometry = mapData?.getGeometry(e.type, e.id) ?: return@mapNotNull null
                 val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
                 val title = getTitle(e.tags)
-                withContext(Dispatchers.Main) { putMarkerForCurrentHighlighting(geometry, icon, title) }
-            }
+                Marker(geometry, icon, title)
+            }.toList()
+
+            withContext(Dispatchers.Main) { putMarkersForCurrentHighlighting(markers) }
         }
     }
 

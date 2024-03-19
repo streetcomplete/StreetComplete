@@ -7,7 +7,6 @@ import androidx.annotation.UiThread
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
-import org.maplibre.android.style.layers.TransitionOptions
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -31,10 +30,8 @@ import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.presetIconIndex
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
 /** This is the map shown in the main view. It manages a map that shows the quest pins, quest
@@ -322,12 +319,9 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
     /* ----------------------------  Markers for current highlighting --------------------------- */
 
-    @UiThread override fun putMarkerForCurrentHighlighting(
-        geometry: ElementGeometry,
-        @DrawableRes drawableResId: Int?,
-        title: String?
-    ) {
-        geometryMarkersMapComponent?.put(geometry, drawableResId, title)
+
+    @UiThread override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
+        geometryMarkersMapComponent?.putAll(markers)
     }
 
     @UiThread override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {

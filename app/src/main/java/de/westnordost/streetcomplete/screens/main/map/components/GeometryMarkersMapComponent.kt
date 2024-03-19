@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
@@ -34,7 +35,7 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
 
     private val geometrySource = GeoJsonSource(SOURCE)
 
-    private val featuresByPosition: MutableMap<LatLon, List<Feature>> = HashMap()
+    private val featuresByGeometry: MutableMap<ElementGeometry, List<Feature>> = HashMap()
 
     val layers: List<Layer> = listOf(
         FillLayer("geo-fill", SOURCE)
@@ -83,51 +84,49 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
         map.style?.addSource(geometrySource)
     }
 
-    @UiThread fun put(
-        geometry: ElementGeometry,
-        @DrawableRes drawableResId: Int? = null,
-        title: String? = null
-    ) {
-        featuresByPosition.remove(geometry.center)
-
-        val features = mutableListOf<Feature>()
-
-        // point marker or any marker with title or icon
-        if (drawableResId != null || title != null || geometry is ElementPointGeometry) {
-            val p = JsonObject()
-            if (drawableResId != null) {
-                p.addProperty("icon", context.resources.getResourceEntryName(drawableResId))
-            }
-            if (title != null) {
-                p.addProperty("label", title)
-            }
-            features.add(Feature.fromGeometry(geometry.center.toPoint(), p))
+    @UiThread fun putAll(markers: Iterable<Marker>) {
+        for (marker in markers) {
+            featuresByGeometry[marker.geometry] = marker.toFeatures(context.resources)
         }
-
-        // polygon / polylines marker(s)
-        if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-            features.add(Feature.fromGeometry(geometry.toMapLibreGeometry()))
-        }
-
-        featuresByPosition[geometry.center] = features
         update()
     }
 
     @UiThread fun delete(geometry: ElementGeometry) {
-        featuresByPosition.remove(geometry.center)
+        featuresByGeometry.remove(geometry)
         update()
     }
 
     @UiThread fun clear() {
-        featuresByPosition.clear()
+        featuresByGeometry.clear()
         geometrySource.clear()
     }
 
     private fun update() {
-        geometrySource.setGeoJson(FeatureCollection.fromFeatures(featuresByPosition.values.flatten()))
+        geometrySource.setGeoJson(FeatureCollection.fromFeatures(featuresByGeometry.values.flatten()))
     }
 
     companion object {
         private const val SOURCE = "geometry-source"
     }
+}
+
+private fun Marker.toFeatures(resources: Resources): List<Feature> {
+    val features = ArrayList<Feature>(3)
+    // point marker or any marker with title or icon
+    if (icon != null || title != null || geometry is ElementPointGeometry) {
+        val p = JsonObject()
+        if (icon != null) {
+            p.addProperty("icon", resources.getResourceEntryName(icon))
+        }
+        if (title != null) {
+            p.addProperty("label", title)
+        }
+        features.add(Feature.fromGeometry(geometry.center.toPoint(), p))
+    }
+
+    // polygon / polylines marker(s)
+    if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
+        features.add(Feature.fromGeometry(geometry.toMapLibreGeometry()))
+    }
+    return features
 }
