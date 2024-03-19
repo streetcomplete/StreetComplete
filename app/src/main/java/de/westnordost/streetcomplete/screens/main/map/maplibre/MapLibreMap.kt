@@ -8,7 +8,3 @@ import kotlin.coroutines.suspendCoroutine
 suspend fun MapLibreMap.awaitSetStyle(builder: Style.Builder): Style = suspendCoroutine { cont ->
     setStyle(builder) { cont.resume(it) }
 }
-
-suspend fun MapLibreMap.awaitSetStyle(style: String): Style = suspendCoroutine { cont ->
-    setStyle(style) { cont.resume(it) }
-}

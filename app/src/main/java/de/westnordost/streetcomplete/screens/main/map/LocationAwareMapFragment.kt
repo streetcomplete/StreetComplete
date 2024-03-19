@@ -7,7 +7,6 @@ import android.location.Location
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.getSystemService
-import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
@@ -136,20 +135,20 @@ open class LocationAwareMapFragment : MapFragment() {
 
     /* ---------------------------------- Map State Callbacks ----------------------------------- */
 
-    override suspend fun onMapReady(mapView: MapView, mapLibreMap: MapLibreMap, style: Style) {
-        super.onMapReady(mapView, mapLibreMap, style)
+    override suspend fun onMapReady(map: MapLibreMap, style: Style) {
+        super.onMapReady(map, style)
         restoreMapState()
 
         val ctx = context ?: return
-        locationMapComponent = CurrentLocationMapComponent(ctx, style, mapLibreMap)
+        locationMapComponent = CurrentLocationMapComponent(ctx, style, map)
         locationMapComponent?.location = displayedLocation
 
-        tracksMapComponent = TracksMapComponent(mapLibreMap)
+        tracksMapComponent = TracksMapComponent(map)
         val positionsLists = tracks.map { track -> track.map { it.position } }
         tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
 
-        tracksMapComponent?.layers?.forEach { mapLibreMap.style?.addLayer(it) }
-        locationMapComponent?.layers?.forEach { mapLibreMap.style?.addLayer(it) }
+        tracksMapComponent?.layers?.forEach { map.style?.addLayer(it) }
+        locationMapComponent?.layers?.forEach { map.style?.addLayer(it) }
 
         centerCurrentPositionIfFollowing()
     }

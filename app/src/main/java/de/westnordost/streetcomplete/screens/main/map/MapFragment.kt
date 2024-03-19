@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.content.res.Configuration
 import android.graphics.PointF
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -21,6 +18,7 @@ import de.westnordost.streetcomplete.databinding.FragmentMapBinding
 import de.westnordost.streetcomplete.screens.main.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
+import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitGetMap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getMetersPerPixel
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
@@ -33,18 +31,17 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.maplibre.android.MapLibre
 
 /** Manages a map that remembers its last location*/
-open class MapFragment : Fragment() {
+open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    protected var sceneMapComponent: SceneMapComponent? = null
     private var mapLibreMap : MapLibreMap? = null
+    private var sceneMapComponent: SceneMapComponent? = null
 
     private var previousCameraPosition: CameraPosition? = null
 
@@ -71,31 +68,8 @@ open class MapFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        prefs.addListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         MapLibre.getInstance(requireContext())
-        val view = inflater.inflate(R.layout.fragment_map, container, false)
-
-        val mapView = view.findViewById<MapView>(R.id.map)
-        mapView.onCreate(savedInstanceState)
-        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val mapFile = if (isNightMode) "map_theme/streetcomplete-night.json" else "map_theme/streetcomplete.json"
-        val styleJsonString = resources.assets.open(mapFile).reader().readText()
-            // API key replaced during development to match key of online style used in MapTilesDownloader
-            // TODO: remove this later
-            .replace(
-                "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ",
-                "XQYxWyY9JsVlwq0XYXqB8OO4ttBTNxm46ITHHwPj5F6CX4JaaSMBkvmD8kCqn7z7"
-            )
-        mapView.getMapAsync { map ->
-            val s = Style.Builder().fromJson(styleJsonString)
-            map.setStyle(s)
-        }
-
-        return view
+        prefs.addListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -108,9 +82,10 @@ open class MapFragment : Fragment() {
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
-        val mapView = binding.map
-        mapView.getMapAsync {
-            map -> viewLifecycleScope.launch { initMap(mapView, map) }
+        viewLifecycleScope.launch {
+            val map = binding.map.awaitGetMap()
+            mapLibreMap = map
+            initMap(map)
         }
     }
 
@@ -125,13 +100,8 @@ open class MapFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        viewLifecycleScope.launch {
-            /* delay reloading of the scene a bit because if the language changed, the container
-               activity will actually want to restart. onStart however is still called in that
-               case */
-            delay(50)
-            sceneMapComponent?.loadScene()
-        }
+        // sceneMapComponent might actually be null if map style not initialized yet
+        sceneMapComponent?.updateStyle()
         binding.map.onResume()
     }
 
@@ -159,34 +129,16 @@ open class MapFragment : Fragment() {
 
     /* ------------------------------------------- Map  ----------------------------------------- */
 
-    private suspend fun initMap(mapView: MapView, mapLibreMap: MapLibreMap) {
-        val style = mapLibreMap.style ?: return
-        registerResponders(mapLibreMap)
-        mapLibreMap.addOnMoveListener(object : MapLibreMap.OnMoveListener {
-            override fun onMoveBegin(p0: MoveGestureDetector) {
+    private suspend fun initMap(map: MapLibreMap) {
+        map.addOnMoveListener(object : MapLibreMap.OnMoveListener {
+            override fun onMoveBegin(detector: MoveGestureDetector) {
                 // tapping also calls onMoveBegin, but with integer x and y, and with historySize 0
-                if (p0.currentEvent.historySize != 0) // crappy workaround for deciding whether it's a tap or a move
+                if (detector.currentEvent.historySize != 0) // crappy workaround for deciding whether it's a tap or a move
                     listener?.onPanBegin()
             }
-            override fun onMove(p0: MoveGestureDetector) {}
-            override fun onMoveEnd(p0: MoveGestureDetector) {}
+            override fun onMove(detector: MoveGestureDetector) {}
+            override fun onMoveEnd(detector: MoveGestureDetector) {}
         })
-
-        sceneMapComponent = SceneMapComponent(resources, mapLibreMap)
-        sceneMapComponent?.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
-
-        onBeforeLoadScene()
-
-        sceneMapComponent?.loadScene()
-
-//        ctrl.glViewHolder!!.view.awaitLayout()
-
-        onMapReady(mapView, mapLibreMap, style)
-
-        listener?.onMapInitialized()
-    }
-
-    private fun registerResponders(map: MapLibreMap) {
         map.addOnCameraMoveListener {
             val camera = cameraPosition ?: return@addOnCameraMoveListener
             if (camera == previousCameraPosition) return@addOnCameraMoveListener
@@ -194,26 +146,34 @@ open class MapFragment : Fragment() {
             onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
             listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
         }
+        map.addOnMapLongClickListener { pos ->
+            val screenPoint: PointF = map.projection.toScreenLocation(pos)
+            onLongPress(screenPoint.x, screenPoint.y)
+            true
+        }
+
+        val sceneMapComponent = SceneMapComponent(requireContext(), map)
+        sceneMapComponent.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
+
+        val style = sceneMapComponent.loadStyle()
+        this.sceneMapComponent = sceneMapComponent
+
+        onMapReady(map, style)
+
+        listener?.onMapInitialized()
     }
 
     /* ----------------------------- Overridable map callbacks --------------------------------- */
 
-    @CallSuper protected open suspend fun onMapReady(
-        mapView: MapView,
-        mapLibreMap: MapLibreMap,
-        style: Style
-    ) {
-        this.mapLibreMap = mapLibreMap
+    @CallSuper protected open suspend fun onMapReady(map: MapLibreMap, style: Style) {
         restoreMapState()
     }
-
-    @CallSuper protected open suspend fun onBeforeLoadScene() {}
 
     protected open fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {}
 
     /* ---------------------- Overridable callbacks for map interaction ------------------------ */
 
-    fun onLongPress(x: Float, y: Float) {
+    open fun onLongPress(x: Float, y: Float) {
         listener?.onLongPress(x, y)
     }
 

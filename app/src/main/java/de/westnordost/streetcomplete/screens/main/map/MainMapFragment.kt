@@ -5,7 +5,6 @@ import android.graphics.RectF
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
-import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.layers.TransitionOptions
@@ -86,38 +85,23 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             val old = overlaySceneUpdates
             if (old == new) return
 
-            old?.let { sceneMapComponent?.removeSceneUpdates(it) }
-            new?.let { sceneMapComponent?.addSceneUpdates(it) }
+            // TODO apply "sceneUpdates"
 
-            if (old != null || new != null) {
-                viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
-            }
             overlaySceneUpdates = new
         }
     }
 
-    /* ------------------------------------- Map setup ------------------------------------------ */
-
-    override suspend fun onBeforeLoadScene() {
-        super.onBeforeLoadScene()
-        val sceneUpdates = withContext(Dispatchers.IO) {
-//            questPinsSpriteSheet.sceneUpdates + iconsSpriteSheet.sceneUpdates
-        }
-//        sceneMapComponent?.addSceneUpdates(sceneUpdates)
-
-        overlaySceneUpdates = selectedOverlaySource.selectedOverlay?.sceneUpdates
-        overlaySceneUpdates?.let { sceneMapComponent?.addSceneUpdates(it) }
-    }
-
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
-    override suspend fun onMapReady(mapView: MapView, mapLibreMap: MapLibreMap, style: Style) {
-        geometryMarkersMapComponent = GeometryMarkersMapComponent(requireContext(), mapLibreMap)
+    override suspend fun onMapReady(map: MapLibreMap, style: Style) {
+        super.onMapReady(map, style)
 
-        pinsMapComponent = PinsMapComponent(requireContext(), questTypeRegistry, overlayRegistry, mapLibreMap)
-        geometryMapComponent = FocusGeometryMapComponent(requireContext().contentResolver, mapLibreMap)
+        geometryMarkersMapComponent = GeometryMarkersMapComponent(requireContext(), map)
 
-        questPinsManager = QuestPinsManager(mapLibreMap, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
+        pinsMapComponent = PinsMapComponent(requireContext(), questTypeRegistry, overlayRegistry, map)
+        geometryMapComponent = FocusGeometryMapComponent(requireContext().contentResolver, map)
+
+        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
         questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
 
@@ -125,15 +109,15 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
         editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
 
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(requireContext(), mapLibreMap)
-        styleableOverlayManager = StyleableOverlayManager(mapLibreMap, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(requireContext(), map)
+        styleableOverlayManager = StyleableOverlayManager(map, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
-        downloadedAreaMapComponent = DownloadedAreaMapComponent(requireContext(), mapLibreMap)
+        downloadedAreaMapComponent = DownloadedAreaMapComponent(requireContext(), map)
         downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
-        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), mapLibreMap)
+        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), map)
 
         selectedOverlaySource.addListener(overlayListener)
 
@@ -144,27 +128,21 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         // but for some reason halo just does nothing, or creates a box around the icon, see https://github.com/mapbox/mapbox-gl-js/issues/7204
         presetIconIndex.values.forEach {
             style.addImage(resources.getResourceEntryName(it), requireContext().getDrawable(it)!!.createBitmap(), true)
-        } // getBitmapDrawable gives a lot of log warnings
+        }
 
-        // disable enablePlacementTransitions, so icons don't fade but (dis)appear immediately
-        // this mimics tangram behavior, and noticeably improves performance when there are many icons
-        // defaults: 300, 0, true
-        style.transition = TransitionOptions(style.transition.duration, style.transition.delay, false)
+        map.uiSettings.isCompassEnabled = false
+        map.uiSettings.isLogoEnabled = false
+        map.uiSettings.isAttributionEnabled = false
 
-        mapLibreMap.uiSettings.isCompassEnabled = false
-        mapLibreMap.uiSettings.isLogoEnabled = false
-        mapLibreMap.uiSettings.isAttributionEnabled = false
-
-        super.onMapReady(mapView, mapLibreMap, style) // leftover from initial implementation, maybe change?
 
         // add click listeners
         val pickRadius = requireContext().dpToPx(8).toInt()
-        mapLibreMap.addOnMapClickListener { pos ->
+        map.addOnMapClickListener { pos ->
             // check whether we clicked a feature
-            val screenPoint: PointF = mapLibreMap.projection.toScreenLocation(pos)
+            val screenPoint: PointF = map.projection.toScreenLocation(pos)
             val searchArea = RectF(screenPoint.x - pickRadius, screenPoint.y - pickRadius, screenPoint.x + pickRadius, screenPoint.y + pickRadius)
             // only query specific layer(s), leave layerIds empty for querying all layers
-            val features = mapLibreMap.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills")
+            val features = map.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills")
             if (features.isNotEmpty()) { // found a feature
                 // is the first feature always the correct one? looks like yes in a quick test
                 viewLifecycleScope.launch {
@@ -199,11 +177,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             listener?.onClickedMapAt(LatLon(pos.latitude, pos.longitude), 1.0)
             false
         }
-        mapLibreMap.addOnMapLongClickListener { pos ->
-            val screenPoint: PointF = mapLibreMap.projection.toScreenLocation(pos)
-            onLongPress(screenPoint.x, screenPoint.y)
-            true
-        }
+
 
         // names etc. should still be readable behind hatching
         downloadedAreaMapComponent?.layers?.forEach { style.addLayerAbove(it, "labels-country") }
