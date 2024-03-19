@@ -119,6 +119,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), map)
+        viewLifecycleOwner.lifecycle.addObserver(selectedPinsMapComponent!!)
 
         selectedOverlaySource.addListener(overlayListener)
 
