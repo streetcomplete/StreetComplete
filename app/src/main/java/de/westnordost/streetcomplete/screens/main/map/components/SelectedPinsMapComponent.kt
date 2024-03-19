@@ -45,6 +45,7 @@ class SelectedPinsMapComponent(private val context: Context, private val map: Ma
         map.style?.addSource(selectedPinsSource)
         animation = ValueAnimator.ofFloat(1f, 1.75f)
         animation.duration = 300
+        animation.interpolator = OvershootInterpolator()
         animation.addUpdateListener { animatePin(it.animatedValue as Float) }
     }
 
