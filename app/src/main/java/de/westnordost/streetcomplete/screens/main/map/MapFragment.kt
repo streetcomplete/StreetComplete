@@ -7,7 +7,6 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.mapbox.android.gestures.MoveGestureDetector
-import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.Prefs
@@ -40,7 +39,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    private var mapLibreMap : MapLibreMap? = null
+    private var map : MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val prefs: Preferences by inject()
@@ -82,7 +81,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
         viewLifecycleScope.launch {
             val map = binding.map.awaitGetMap()
-            mapLibreMap = map
+            this@MapFragment.map = map
             initMap(map)
         }
     }
@@ -119,7 +118,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mapLibreMap = null
+        map = null
         binding.map.onDestroy()
     }
 
@@ -185,11 +184,11 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private fun restoreMapState() {
         val camera = loadCameraPosition() ?: return
-        mapLibreMap?.camera = camera
+        map?.camera = camera
     }
 
     private fun saveMapState() {
-        val camera = mapLibreMap?.camera ?: return
+        val camera = map?.camera ?: return
         saveCameraPosition(camera)
     }
 
@@ -226,30 +225,30 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     /* ------------------------------- Controlling the map -------------------------------------- */
 
     fun getPositionAt(point: PointF): LatLon? =
-        mapLibreMap?.projection?.fromScreenLocation(point)?.toLatLon()
+        map?.projection?.fromScreenLocation(point)?.toLatLon()
 
     fun getPointOf(pos: LatLon): PointF? =
-        mapLibreMap?.projection?.toScreenLocation(pos.toLatLng())
+        map?.projection?.toScreenLocation(pos.toLatLng())
 
     val cameraPosition: CameraPosition?
-        get() = mapLibreMap?.camera
+        get() = map?.camera
 
     fun updateCameraPosition(
         duration: Int = 0,
         builder: CameraUpdate.() -> Unit
     ) {
-        mapLibreMap?.updateCamera(duration, requireContext().contentResolver, builder)
+        map?.updateCamera(duration, requireContext().contentResolver, builder)
     }
 
     fun setInitialCameraPosition(camera: CameraPosition) {
-        if (mapLibreMap != null) {
-            mapLibreMap?.camera = camera
+        if (map != null) {
+            map?.camera = camera
         } else {
             saveCameraPosition(camera)
         }
     }
 
-    fun getDisplayedArea(): BoundingBox? = mapLibreMap?.screenAreaToBoundingBox()
+    fun getDisplayedArea(): BoundingBox? = map?.screenAreaToBoundingBox()
 
-    fun getMetersPerPixel(): Double? = mapLibreMap?.getMetersPerPixel()
+    fun getMetersPerPixel(): Double? = map?.getMetersPerPixel()
 }
