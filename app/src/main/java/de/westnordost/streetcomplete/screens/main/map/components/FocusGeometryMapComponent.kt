@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.animation.TimeAnimator
 import android.content.ContentResolver
 import android.graphics.RectF
+import android.provider.Settings
 import androidx.annotation.UiThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -39,7 +40,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
 
     private var previousCameraPosition: CameraPosition? = null
 
-    private var animation: TimeAnimator? = null
+    private val animation: TimeAnimator
     private var animationTick: Int = 0
 
     /** Returns whether beginFocusGeometry() was called earlier but not endFocusGeometry() yet */
@@ -72,33 +73,32 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
 
     init {
         map.style?.addSource(focusedGeometrySource)
+        animation = TimeAnimator()
+        animation.setTimeListener { _, _, _ ->
+            // we don't care about delta time etc because if this function is called rarely
+            // when device slow etc, the animation should just slow down rather than look
+            // jarring
+            animateGeometry()
+        }
     }
 
     override fun onPause(owner: LifecycleOwner) {
-        animation?.pause()
+        animation.pause()
     }
 
     override fun onResume(owner: LifecycleOwner) {
-        animation?.resume()
+        animation.resume()
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        animation?.cancel()
-        animation = null
+        animation.cancel()
     }
 
     /** Show the given geometry. Previously shown geometry is replaced. */
     @UiThread fun showGeometry(geometry: ElementGeometry) {
         focusedGeometrySource.setGeoJson(geometry.toMapLibreGeometry())
-        animation?.cancel()
-        val animation = TimeAnimator().apply { setTimeListener { _, _, _ ->
-            // we don't care about delta time etc because if this function is called rarely
-            // when device slow etc, the animation should just slow down rather than look
-            // jarring
-            animateGeometry()
-        } }
-        animation.start()
-        this.animation = animation
+        val animatorDurationScale = Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
+        if (animatorDurationScale > 0f) animation.start()
     }
 
     private fun animateGeometry() {
@@ -119,8 +119,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
     /** Hide all shown geometry */
     @UiThread fun clearGeometry() {
         focusedGeometrySource.clear()
-        animation?.cancel()
-        animation = null
+        animation.end()
     }
 
     @UiThread fun beginFocusGeometry(g: ElementGeometry, offset: RectF) {
