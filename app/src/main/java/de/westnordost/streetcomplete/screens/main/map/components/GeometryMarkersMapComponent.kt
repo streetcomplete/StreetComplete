@@ -37,6 +37,17 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
 
     private val featuresByGeometry: MutableMap<ElementGeometry, List<Feature>> = HashMap()
 
+    private val textProperties = arrayOf(
+        textField(get("label")),
+        textAnchor(Property.TEXT_ANCHOR_LEFT),
+        textJustify(Property.TEXT_JUSTIFY_LEFT),
+        textOffset(arrayOf(1.5f, 0f)),
+        textSize(16 * context.resources.configuration.fontScale),
+        textColor("#D140D0"),
+        textFont(arrayOf("Roboto Bold", "Noto Bold")),
+        textOptional(true)
+    )
+
     val layers: List<Layer> = listOf(
         FillLayer("geo-fill", SOURCE)
             .withFilter(isArea())
@@ -58,15 +69,7 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
                 circleColor("#D140D0"),
                 circleOpacity(0.7f),
                 circleRadius(12f),
-
-                textField(get("label")),
-                textAnchor(Property.TEXT_ANCHOR_LEFT),
-                textJustify(Property.TEXT_JUSTIFY_LEFT),
-                textOffset(arrayOf(1.5f, 0f)),
-                textSize(16 * context.resources.configuration.fontScale),
-                textColor("#D140D0"),
-                textFont(arrayOf("Roboto Bold", "Noto Bold")),
-                textOptional(true)
+                *textProperties
             ),
         SymbolLayer("geo-symbols", SOURCE)
             .withFilter(all(has("icon"), isPoint()))
@@ -74,15 +77,7 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
                 iconColor("#D140D0"),
                 iconImage(get("icon")),
                 iconAllowOverlap(true),
-
-                textField(get("label")),
-                textAnchor(Property.TEXT_ANCHOR_LEFT),
-                textJustify(Property.TEXT_JUSTIFY_LEFT),
-                textOffset(arrayOf(1.5f, 0f)),
-                textSize(16 * context.resources.configuration.fontScale),
-                textColor("#D140D0"),
-                textFont(arrayOf("Roboto Bold", "Noto Bold")),
-                textOptional(true)
+                *textProperties
             )
     )
 
