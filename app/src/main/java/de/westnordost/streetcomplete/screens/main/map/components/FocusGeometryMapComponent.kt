@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.animation.TimeAnimator
 import android.content.ContentResolver
 import android.graphics.RectF
 import androidx.annotation.UiThread
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.style.expressions.Expression.*
 import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.FillLayer
 import org.maplibre.android.style.layers.Layer
@@ -24,16 +26,21 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.sin
 import kotlin.math.roundToInt
 
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
-class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapLibreMap) {
+class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapLibreMap)
+    : DefaultLifecycleObserver {
 
     private val focusedGeometrySource = GeoJsonSource(SOURCE)
 
     private var previousCameraPosition: CameraPosition? = null
+
+    private var animation: TimeAnimator? = null
+    private var animationTick: Int = 0
 
     /** Returns whether beginFocusGeometry() was called earlier but not endFocusGeometry() yet */
     val isZoomedToContainGeometry: Boolean get() =
@@ -46,15 +53,12 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
                 fillColor("#D14000"),
                 fillOpacity(0.3f)
             ),
-        // TODO low prio: animation of width+alpha (breathing selection effect). From shader:
-        //  opacity = min(max(sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) * 0.5 + 0.125;
-        //  width *= min(max(-sin(u_time * 3.0) / 2.0 + 0.5, 0.125), 0.875) + 0.625;
         LineLayer("focus-geo-lines", SOURCE)
             // both polygon and line
             .withProperties(
                 lineWidth(10f),
                 lineColor("#D14000"),
-                lineOpacity(0.5f),
+                lineOpacity(0.7f),
                 lineCap(Property.LINE_CAP_ROUND)
             ),
         CircleLayer("focus-geo-circle", SOURCE)
@@ -70,14 +74,53 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
         map.style?.addSource(focusedGeometrySource)
     }
 
+    override fun onPause(owner: LifecycleOwner) {
+        animation?.pause()
+    }
+
+    override fun onResume(owner: LifecycleOwner) {
+        animation?.resume()
+    }
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        animation?.cancel()
+        animation = null
+    }
+
     /** Show the given geometry. Previously shown geometry is replaced. */
     @UiThread fun showGeometry(geometry: ElementGeometry) {
         focusedGeometrySource.setGeoJson(geometry.toMapLibreGeometry())
+        animation?.cancel()
+        val animation = TimeAnimator().apply { setTimeListener { _, _, _ ->
+            // we don't care about delta time etc because if this function is called rarely
+            // when device slow etc, the animation should just slow down rather than look
+            // jarring
+            animateGeometry()
+        } }
+        animation.start()
+        this.animation = animation
+    }
+
+    private fun animateGeometry() {
+        animationTick++
+        val breathing = (sin(animationTick++ * 0.03f) / 2f + 0.5f) // 0.0 .. 1.0
+        val widthFactor = breathing + 0.75f // 0.75 .. 1.5
+        val opacity = (1f - breathing) * 0.5f + 0.15f // 0.525 .. 0.9
+        map.style?.getLayerAs<LineLayer>("focus-geo-lines")?.setProperties(
+            lineWidth(10f * widthFactor),
+            lineOpacity(opacity),
+        )
+        map.style?.getLayerAs<CircleLayer>("focus-geo-circle")?.setProperties(
+            circleRadius(12f * widthFactor),
+            circleOpacity(opacity)
+        )
     }
 
     /** Hide all shown geometry */
     @UiThread fun clearGeometry() {
         focusedGeometrySource.clear()
+        animation?.cancel()
+        animation = null
     }
 
     @UiThread fun beginFocusGeometry(g: ElementGeometry, offset: RectF) {
