@@ -102,6 +102,9 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
     }
 
     private fun animateGeometry() {
+        // rather than editing the style, it is recommended to use feature-state for things like
+        // this. However, this is not implemented on Android yet. See
+        // https://github.com/maplibre/maplibre-native/issues/1698
         animationTick++
         val breathing = (sin(animationTick++ * 0.03f) / 2f + 0.5f) // 0.0 .. 1.0
         val widthFactor = breathing + 0.75f // 0.75 .. 1.5
