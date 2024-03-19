@@ -38,7 +38,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
   * Dark theme uses dark buttons
   * Prevent short scroll to user location at app start when map was at a different position
   * Downloading data will interrupt upload queue (will resume afterwards)
-  * Manual downloads can be queued instead of always cancelling the previous one
+  * Manual downloads can be queued instead of always cancelling the previous one (**currently not working, option is not shown**)
   * Show all hidden quests on long press on undo button (works only for downloaded areas)
   * Additional answers for some quests
     * Additional building types
@@ -60,13 +60,23 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
   * Outdoor seating type
   * Service building type
   * Service building operator
+  * Street cabinet type
   * Artwork type
   * Railway platform number
+  * Trail visibility of hiking trails
   * Genus / species of trees
     * Allows providing a file containing translated tree names instead of the default English ones
   * Color of building roofs
+  * Whether a barrier is locked
+  * Height of barriers
   * Whether pharmacy is dispensing prescription drugs
   * Destination of some road types after intersections
+  * Which beers are sold in restaurants
+  * Elevation, ref, sports and name of guideposts
+  * Width of footways
+  * Size and type of maps
+  * Via ferrata scale
+  * Difficulty and ref for pistes, and whether they are lit
   * Quests based on external sources
     * Osmose quest showing Osmose issues as quests, with filter options
     * Custom quest from CSV file, allows creating nodes (see in-app description)
