@@ -161,6 +161,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
             ))
             .withProperties(
                 iconImage(get("icon")),
+
                 textField(get("label")),
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
                 textJustify(Property.TEXT_JUSTIFY_LEFT),
@@ -172,8 +173,9 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 iconHaloColor("white"),
                 iconHaloWidth(1.5f),
                 iconHaloBlur(2f),
+                textOptional(true),
                 iconAllowOverlap(step(zoom(), literal(false), stop(18, true))),
-                textAllowOverlap(step(zoom(), literal(false), stop(18, true))),
+                textAllowOverlap(step(zoom(), literal(false), stop(20, true))),
             )
     )
 

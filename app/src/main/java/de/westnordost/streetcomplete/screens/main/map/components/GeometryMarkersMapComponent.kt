@@ -65,7 +65,8 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
                 textOffset(arrayOf(1.5f, 0f)),
                 textSize(16 * context.resources.configuration.fontScale),
                 textColor("#D140D0"),
-                textFont(arrayOf("Roboto Bold", "Noto Bold"))
+                textFont(arrayOf("Roboto Bold", "Noto Bold")),
+                textOptional(true)
             ),
         SymbolLayer("geo-symbols", SOURCE)
             .withFilter(all(has("icon"), isPoint()))
@@ -80,7 +81,8 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
                 textOffset(arrayOf(1.5f, 0f)),
                 textSize(16 * context.resources.configuration.fontScale),
                 textColor("#D140D0"),
-                textFont(arrayOf("Roboto Bold", "Noto Bold"))
+                textFont(arrayOf("Roboto Bold", "Noto Bold")),
+                textOptional(true)
             )
     )
 
