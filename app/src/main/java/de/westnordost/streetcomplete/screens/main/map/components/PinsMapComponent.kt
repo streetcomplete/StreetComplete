@@ -124,9 +124,7 @@ data class Pin(
     val iconName: String,
     val properties: Collection<Pair<String, String>> = emptyList(),
     val importance: Int = 0
-) {
-    // todo: maplibre feature by lazy?
-}
+)
 
 private fun Pin.toFeature(): Feature {
     val p = JsonObject()
