@@ -171,7 +171,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 textField(get("label")),
                 textAnchor(Property.TEXT_ANCHOR_LEFT),
                 textJustify(Property.TEXT_JUSTIFY_LEFT),
-                textOffset(arrayOf(1.5f, 0f)),
+                textOffset(switchCase(has("icon"), literal(arrayOf(1.5f, 0f)), literal(arrayOf(0f, 0f)))),
                 textSize(16 * context.resources.configuration.fontScale),
                 textColor(if (isNightMode) "#ccf" else "#124"),
                 textHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
