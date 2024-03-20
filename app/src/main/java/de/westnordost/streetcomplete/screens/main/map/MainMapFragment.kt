@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
 import androidx.annotation.DrawableRes
@@ -122,12 +123,13 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
 
         /* ---------------------------- MapLibre stuff --------------------------- */
 
-        // use sdf here
-        // this is only recommended for monochrome icons, and allows using halo stuff for symbols
-        // but for some reason halo just does nothing, or creates a box around the icon, see https://github.com/mapbox/mapbox-gl-js/issues/7204
+        val presetIcons = HashMap<String, Bitmap>(presetIconIndex.values.size)
         presetIconIndex.values.forEach {
-            style.addImage(resources.getResourceEntryName(it), requireContext().getDrawable(it)!!.createBitmap(), true)
+            val name = resources.getResourceEntryName(it)
+            val bitmap = requireContext().getDrawable(it)!!.createBitmap()
+            presetIcons[name] = bitmap
         }
+        style.addImagesAsync(presetIcons, true)
 
         map.uiSettings.isCompassEnabled = false
         map.uiSettings.isLogoEnabled = false
