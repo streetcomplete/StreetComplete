@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.RectF
 import androidx.annotation.UiThread
+import androidx.core.graphics.toRect
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
@@ -22,6 +24,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import kotlin.math.ceil
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
 class PinsMapComponent(
@@ -45,7 +48,8 @@ class PinsMapComponent(
             .withFilter(gte(zoom(), 16f))
             .withProperties(
                 iconImage(get("icon-image")),
-                iconOffset(listOf(-8f, -33f).toTypedArray()),
+                iconSize(0.5f),
+                iconOffset(listOf(-9f, -69f).toTypedArray()),
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
             )
     )
@@ -75,24 +79,38 @@ class PinsMapComponent(
 
         val result = HashMap<String, Bitmap>(questIconResIds.size)
 
+        val scale = 2f
+        val size = context.dpToPx(71 * scale)
+        val sizeInt = ceil(size).toInt()
+        val iconSize = context.dpToPx(48 * scale)
+        val iconPinOffset = context.dpToPx(2 * scale)
+        val pinTopRightPadding = context.dpToPx(5 * scale)
+
         val pin = context.getDrawable(R.drawable.pin)!!
-        val pinSize = context.dpToPx(66).toInt()
-        val iconSize = 2 * pinSize / 3
-        val iconOffsetX = 56 * pinSize / 192
-        val iconOffsetY = 18 * pinSize / 192
+        val pinShadow = context.getDrawable(R.drawable.pin_shadow)!!
+
+        val pinWidth = (size - pinTopRightPadding) * pin.intrinsicWidth / pin.intrinsicHeight
+        val pinXOffset = size - pinTopRightPadding - pinWidth
 
         for (questIconResId in questIconResIds) {
-            val bitmap = Bitmap.createBitmap(pinSize, pinSize, Bitmap.Config.ARGB_8888)
+            val bitmap = Bitmap.createBitmap(sizeInt, sizeInt, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
-            pin.setBounds(0, 0, pinSize, pinSize)
+            pinShadow.setBounds(0, 0, sizeInt, sizeInt)
+            pinShadow.draw(canvas)
+            pin.bounds = RectF(
+                pinXOffset,
+                pinTopRightPadding,
+                size - pinTopRightPadding,
+                size
+            ).toRect()
             pin.draw(canvas)
             val questIcon = context.getDrawable(questIconResId)!!
-            questIcon.setBounds(
-                iconOffsetX,
-                iconOffsetY,
-                iconOffsetX + iconSize,
-                iconOffsetY + iconSize
-            )
+            questIcon.bounds = RectF(
+                pinXOffset + iconPinOffset,
+                pinTopRightPadding + iconPinOffset,
+                pinXOffset + iconPinOffset + iconSize,
+                pinTopRightPadding + iconPinOffset + iconSize
+            ).toRect()
             questIcon.draw(canvas)
             val questIconName = context.resources.getResourceEntryName(questIconResId)
             result[questIconName] = bitmap

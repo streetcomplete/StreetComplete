@@ -37,14 +37,15 @@ class SelectedPinsMapComponent(private val context: Context, private val map: Ma
         SymbolLayer("selected-pins-layer", "selected-pins-source")
             .withProperties(
                 iconImage(get("icon-image")),
-                iconOffset(listOf(-8f, -33f).toTypedArray()),
+                iconSize(0.5f),
+                iconOffset(listOf(-9f, -69f).toTypedArray()),
             )
     )
 
     init {
         map.style?.addSource(selectedPinsSource)
-        animation = ValueAnimator.ofFloat(1f, 1.75f)
-        animation.duration = 300
+        animation = ValueAnimator.ofFloat(0.5f, 1f)
+        animation.duration = 450
         animation.interpolator = OvershootInterpolator()
         animation.addUpdateListener { animatePin(it.animatedValue as Float) }
     }
