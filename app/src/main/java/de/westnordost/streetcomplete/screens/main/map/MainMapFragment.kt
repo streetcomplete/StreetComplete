@@ -34,6 +34,8 @@ import de.westnordost.streetcomplete.view.presetIconIndex
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.maplibre.android.style.layers.Property
+import org.maplibre.android.style.layers.PropertyFactory.visibility
 
 /** This is the map shown in the main view. It manages a map that shows the quest pins, quest
  *  geometry, overlays... */
@@ -75,18 +77,10 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             updatePinMode()
         }
 
-    private var overlaySceneUpdates: List<Pair<String, String>>? = null
+    private var previouslyHiddenLayers: List<String> = emptyList()
 
     private val overlayListener = object : SelectedOverlaySource.Listener {
-        override fun onSelectedOverlayChanged() {
-            val new = selectedOverlaySource.selectedOverlay?.sceneUpdates
-            val old = overlaySceneUpdates
-            if (old == new) return
-
-            // TODO apply "sceneUpdates"
-
-            overlaySceneUpdates = new
-        }
+        override fun onSelectedOverlayChanged() { hideLayersAsPerOverlaySelected() }
     }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
@@ -119,6 +113,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), map)
         viewLifecycleOwner.lifecycle.addObserver(selectedPinsMapComponent!!)
 
+        hideLayersAsPerOverlaySelected()
         selectedOverlaySource.addListener(overlayListener)
 
         /* ---------------------------- MapLibre stuff --------------------------- */
@@ -263,6 +258,22 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         listener?.onClickedMapAt(clickPos, fingerRadiusInMeters)
     }
 */
+
+    private fun hideLayersAsPerOverlaySelected() {
+        val new = selectedOverlaySource.selectedOverlay?.hidesLayers.orEmpty()
+        val old = previouslyHiddenLayers
+        if (old == new) return
+
+        old.forEach { layer ->
+            map?.style?.getLayer(layer)?.setProperties(visibility(Property.VISIBLE))
+        }
+        new.forEach { layer ->
+            map?.style?.getLayer(layer)?.setProperties(visibility(Property.NONE))
+        }
+
+        previouslyHiddenLayers = new
+    }
+
     /* --------------------------- Focusing on edit/quest/element ------------------------------- */
 
     /** Focus the view on the given geometry */

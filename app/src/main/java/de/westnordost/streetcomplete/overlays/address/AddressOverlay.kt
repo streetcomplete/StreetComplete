@@ -25,9 +25,7 @@ class AddressOverlay(
     override val hidesQuestTypes = setOf(AddHousenumber::class.simpleName!!)
     override val isCreateNodeEnabled = true
 
-    override val sceneUpdates = listOf(
-        "layers.housenumber-labels.enabled" to "false",
-    )
+    override val hidesLayers = listOf("labels-housenumbers")
 
     private val noAddressesOnBuildings = setOf(
         "IT" // https://github.com/streetcomplete/StreetComplete/issues/4801
