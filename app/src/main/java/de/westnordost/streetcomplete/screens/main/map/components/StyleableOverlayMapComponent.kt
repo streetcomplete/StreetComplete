@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.Context
+import android.content.res.Configuration
 import androidx.annotation.UiThread
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
@@ -44,6 +45,11 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
     )
 
     private val darkenedColors = HashMap<String, String>()
+
+    private val isNightMode: Boolean get() {
+        val currentNightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
+    }
 
     private val sideLinesProperties = arrayOf(
         lineCap(Property.LINE_CAP_BUTT),
@@ -167,10 +173,11 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 textJustify(Property.TEXT_JUSTIFY_LEFT),
                 textOffset(arrayOf(1.5f, 0f)),
                 textSize(16 * context.resources.configuration.fontScale),
-                textHaloColor("white"),
+                textColor(if (isNightMode) "#ccf" else "#124"),
+                textHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
                 textHaloWidth(1.5f),
-                iconColor("black"),
-                iconHaloColor("white"),
+                iconColor(if (isNightMode) "#ccf" else "#124"),
+                iconHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
                 iconHaloWidth(1.5f),
                 iconHaloBlur(2f),
                 textOptional(true),
