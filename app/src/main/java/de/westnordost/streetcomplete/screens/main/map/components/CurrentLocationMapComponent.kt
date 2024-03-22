@@ -70,7 +70,7 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val map
         CircleLayer("accuracy", "location-source")
             .withProperties(
                 circleColor(context.resources.getColor(R.color.location_dot)),
-                circleRadius(changeDistanceWithZoom(get("radius"))),
+                circleRadius(inMeters(get("radius"))),
                 circleOpacity(0.15f)
             ),
         SymbolLayer("direction", "location-source")

@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
-import de.westnordost.streetcomplete.screens.main.map.maplibre.changeDistanceWithZoom
+import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
@@ -56,8 +56,8 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
         lineJoin(Property.LINE_JOIN_ROUND),
         lineColor(get("color")),
         lineOpacity(get("opacity")),
-        lineOffset(changeDistanceWithZoom("offset")),
-        lineWidth(changeDistanceWithZoom("width")),
+        lineOffset(inMeters(get("offset"))),
+        lineWidth(inMeters(get("width"))),
     )
 
     private val sideLineFilters = arrayOf(
@@ -97,8 +97,8 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 lineJoin(Property.LINE_JOIN_ROUND),
                 lineColor(get("outline-color")),
                 lineOpacity(get("opacity")),
-                lineGapWidth(changeDistanceWithZoom("width")),
-                lineWidth(changeDistanceWithZoom(1f)),
+                lineGapWidth(inMeters(get("width"))),
+                lineWidth(inMeters(0.5f)),
             ),
         FillLayer("overlay-fills", SOURCE)
             .withFilter(all(
@@ -121,7 +121,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 lineJoin(Property.LINE_JOIN_ROUND),
                 lineColor(get("color")),
                 lineOpacity(get("opacity")),
-                lineWidth(changeDistanceWithZoom("width")),
+                lineWidth(inMeters(get("width"))),
             ),
         LineLayer("overlay-lines-dashed", SOURCE)
             .withFilter(all(
@@ -135,7 +135,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 lineJoin(Property.LINE_JOIN_ROUND),
                 lineColor(get("color")),
                 lineOpacity(get("opacity")),
-                lineWidth(changeDistanceWithZoom("width")),
+                lineWidth(inMeters(get("width"))),
                 lineDasharray(arrayOf(1.5f, 1f)),
             ),
         LineLayer("overlay-fills-outline", SOURCE)
@@ -147,7 +147,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 lineCap(Property.LINE_CAP_BUTT),
                 lineColor(get("outline-color")),
                 lineOpacity(get("opacity")),
-                lineWidth(changeDistanceWithZoom(1f)),
+                lineWidth(inMeters(0.5f)),
             ),
         FillExtrusionLayer("overlay-heights", SOURCE)
             .withFilter(all(
@@ -250,8 +250,8 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
 
                 val left = style.strokeLeft?.let {
                     val p2 = p.deepCopy()
-                    p2.addProperty("width", 6f)
-                    p2.addProperty("offset", -(width / 2f + 3f))
+                    p2.addProperty("width", 3f)
+                    p2.addProperty("offset", -(width / 2f + 1.5f))
                     if (it.color != INVISIBLE) {
                         p2.addProperty("color", it.color)
                     } else {
@@ -263,8 +263,8 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
 
                 val right = style.strokeRight?.let {
                     val p2 = p.deepCopy()
-                    p2.addProperty("width", 6f)
-                    p2.addProperty("offset", +(width / 2f + 3f))
+                    p2.addProperty("width", 3f)
+                    p2.addProperty("offset", +(width / 2f + 1.5f))
                     if (it.color != INVISIBLE) {
                         p2.addProperty("color", it.color)
                     } else {
@@ -335,15 +335,15 @@ fun JsonElement.toElementKey(): ElementKey? {
     else null
 }
 
-/** mimics width of line as seen in StreetComplete map style (or otherwise 3m) */
+/** mimics width of line as seen in StreetComplete map style */
 private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {
-    "motorway" -> 16f
-    "motorway_link" -> 8f
-    "trunk", "primary", "secondary", "tertiary" -> 12f
-    "service", "track", "busway" -> 6f
-    "path", "cycleway", "footway", "bridleway", "steps" -> 1f
-    null -> 4f
-    else -> 8f
+    "motorway" -> 8f
+    "motorway_link" -> 4f
+    "trunk", "primary", "secondary", "tertiary" -> 6f
+    "service", "track", "busway" -> 3f
+    "path", "cycleway", "footway", "bridleway", "steps" -> 0.5f
+    null -> 2f
+    else -> 4f
 }
 
 private fun isBridge(tags: Map<String, String>): Boolean =

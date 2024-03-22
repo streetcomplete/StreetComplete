@@ -4,16 +4,16 @@ import org.maplibre.android.style.expressions.Expression
 import org.maplibre.android.style.expressions.Expression.*
 
 /* expression for line width dependent on zoom (line width in property in meters) */
-fun changeDistanceWithZoom(propertyName: String): Expression =
+fun inMeters(expression: Expression): Expression =
     interpolate(exponential(2), zoom(),
-        stop(10, division(get(propertyName), literal(128))),
-        stop(24, product(get(propertyName), literal(128)))
+        stop(7.5, division(expression, literal(512))),
+        stop(24.5, product(expression, literal(512)))
     )
 
-fun changeDistanceWithZoom(width: Float): Expression =
+fun inMeters(width: Float): Expression =
     interpolate(exponential(2), zoom(),
-        stop(10, width / 128),
-        stop(24, width * 128)
+        stop(7.5, width / 512),
+        stop(24.5, width * 512)
     )
 
 fun isArea(): Expression =
