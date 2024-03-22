@@ -16,11 +16,13 @@ import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.MainActivity
+import de.westnordost.streetcomplete.screens.main.map.maplibre.changeDistanceWithZoom
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.maplibre.android.style.layers.CircleLayer
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
 class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val map: MapLibreMap) {
@@ -65,15 +67,11 @@ class CurrentLocationMapComponent(ctx: Context, mapStyle: Style, private val map
         }
 
     val layers: List<Layer> = listOf(
-        SymbolLayer("accuracy", "location-source")
+        CircleLayer("accuracy", "location-source")
             .withProperties(
-                iconImage("accuracyImg"),
-                iconAllowOverlap(true),
-                iconSize(interpolate(exponential(2), zoom(),
-                    stop(4, division(get("size"), literal(4096f))),
-                    stop(27, division(get("size"), literal(1/4096f)))
-                )),
-                iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
+                circleColor(context.resources.getColor(R.color.location_dot)),
+                circleRadius(changeDistanceWithZoom(get("radius"))),
+                circleOpacity(0.15f)
             ),
         SymbolLayer("direction", "location-source")
             .withFilter(has("rotation"))

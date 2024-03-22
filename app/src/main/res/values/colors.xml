@@ -18,8 +18,6 @@
 
     <color name="location_dot">#536dfe</color>
     <color name="quest_selection_frame">#bbFF5722</color>
-    <color name="location_accuracy_fill">#22536dfe</color>
-    <color name="location_accuracy_stroke">#88536dfe</color>
 
     <color name="background">#fff</color>
     <color name="background_transparent">#0fff</color>
