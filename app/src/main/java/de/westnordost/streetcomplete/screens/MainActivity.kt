@@ -52,8 +52,7 @@ import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFrag
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
-import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
@@ -194,7 +193,7 @@ class MainActivity :
         downloadController.addDownloadProgressListener(downloadProgressListener)
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
-        updateLocationAvailability(hasLocationPermission && isLocationEnabled)
+        updateLocationAvailability(isLocationAvailable)
     }
 
     public override fun onResume() {

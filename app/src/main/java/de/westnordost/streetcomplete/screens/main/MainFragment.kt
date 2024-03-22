@@ -100,7 +100,7 @@ import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
-import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -282,7 +282,7 @@ class MainFragment :
         mapDataWithEditsSource.addListener(this)
         selectedOverlaySource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
-        updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
+        updateLocationAvailability(requireContext().isLocationAvailable)
     }
 
     override fun onStop() {

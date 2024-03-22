@@ -15,8 +15,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
-import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
-import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
@@ -123,7 +122,7 @@ open class LocationAwareMapFragment : MapFragment() {
     override fun onStart() {
         super.onStart()
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
-        updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
+        updateLocationAvailability(requireContext().isLocationAvailable)
     }
 
     override fun onStop() {
