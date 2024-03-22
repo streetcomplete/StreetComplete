@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import com.mapbox.android.gestures.MoveGestureDetector
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.map.MapCameraPositionStore
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
@@ -27,7 +27,6 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
@@ -42,7 +41,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     protected var map : MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
-    private val prefs: Preferences by inject()
+    private val cameraPositionStore: MapCameraPositionStore by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -52,21 +51,15 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         /** Called when the user begins to pan the map */
         fun onPanBegin()
         /** Called when the user long-presses the map */
-        fun onLongPress(x: Float, y: Float)
+        fun onLongPress(point: PointF, position: LatLon)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    private val onThemeBackgroundChanged = {
-        sceneMapComponent?.isAerialView =
-            (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
-    }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MapLibre.getInstance(requireContext())
-        prefs.addListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,7 +67,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         binding.map.onCreate(savedInstanceState)
 
         binding.openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
-        binding.mapTileProviderLink.text = "© JawgMaps"
         binding.mapTileProviderLink.setOnClickListener { showOpenUrlDialog("https://www.jawg.io") }
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
@@ -122,11 +114,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         binding.map.onDestroy()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        prefs.removeListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
-    }
-
     override fun onLowMemory() {
         super.onLowMemory()
         binding.map.onLowMemory()
@@ -135,6 +122,9 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     /* ------------------------------------------- Map  ----------------------------------------- */
 
     private suspend fun initMap(map: MapLibreMap) {
+        map.uiSettings.isAttributionEnabled = false
+        map.uiSettings.isLogoEnabled = false
+
         map.addOnMoveListener(object : MapLibreMap.OnMoveListener {
             override fun onMoveBegin(detector: MoveGestureDetector) {
                 // tapping also calls onMoveBegin, but with integer x and y, and with historySize 0
@@ -150,14 +140,11 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
             listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
         }
         map.addOnMapLongClickListener { pos ->
-            val screenPoint: PointF = map.projection.toScreenLocation(pos)
-            onLongPress(screenPoint.x, screenPoint.y)
+            onLongPress(map.projection.toScreenLocation(pos), pos.toLatLon())
             true
         }
 
         val sceneMapComponent = SceneMapComponent(requireContext(), map)
-        sceneMapComponent.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
-
         val style = sceneMapComponent.loadStyle()
         this.sceneMapComponent = sceneMapComponent
 
@@ -176,15 +163,14 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     /* ---------------------- Overridable callbacks for map interaction ------------------------ */
 
-    open fun onLongPress(x: Float, y: Float) {
-        listener?.onLongPress(x, y)
+    open fun onLongPress(point: PointF, position: LatLon) {
+        listener?.onLongPress(point, position)
     }
 
     /* -------------------------------- Save and Restore State ---------------------------------- */
 
     private fun restoreMapState() {
-        val camera = loadCameraPosition() ?: return
-        map?.camera = camera
+        map?.camera = loadCameraPosition()
     }
 
     private fun saveMapState() {
@@ -192,34 +178,18 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         saveCameraPosition(camera)
     }
 
-    private fun loadCameraPosition(): CameraPosition? {
-        if (!prefs.keys.containsAll(listOf(
-                Prefs.MAP_LATITUDE,
-                Prefs.MAP_LONGITUDE,
-                Prefs.MAP_ROTATION,
-                Prefs.MAP_TILT,
-                Prefs.MAP_ZOOM,
-        ))) {
-            return null
-        }
-
-        return CameraPosition(
-            LatLon(
-                prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
-                prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
-            ),
-            prefs.getFloat(Prefs.MAP_ROTATION, 0f).toDouble(),
-            prefs.getFloat(Prefs.MAP_TILT, 0f).toDouble(),
-            prefs.getFloat(Prefs.MAP_ZOOM, 0f).toDouble()
-        )
-    }
+    private fun loadCameraPosition() = CameraPosition(
+        position = cameraPositionStore.position,
+        rotation = cameraPositionStore.rotation,
+        tilt = cameraPositionStore.tilt,
+        zoom = cameraPositionStore.zoom
+    )
 
     private fun saveCameraPosition(camera: CameraPosition) {
-        prefs.putFloat(Prefs.MAP_ROTATION, camera.rotation.toFloat())
-        prefs.putFloat(Prefs.MAP_TILT, camera.tilt.toFloat())
-        prefs.putFloat(Prefs.MAP_ZOOM, camera.zoom.toFloat())
-        prefs.putDouble(Prefs.MAP_LATITUDE, camera.position.latitude)
-        prefs.putDouble(Prefs.MAP_LONGITUDE, camera.position.longitude)
+        cameraPositionStore.position = camera.position
+        cameraPositionStore.tilt = camera.tilt
+        cameraPositionStore.rotation = camera.rotation
+        cameraPositionStore.zoom = camera.zoom
     }
 
     /* ------------------------------- Controlling the map -------------------------------------- */
@@ -233,10 +203,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     val cameraPosition: CameraPosition?
         get() = map?.camera
 
-    fun updateCameraPosition(
-        duration: Int = 0,
-        builder: CameraUpdate.() -> Unit
-    ) {
+    fun updateCameraPosition(duration: Int = 0, builder: CameraUpdate.() -> Unit) {
         map?.updateCamera(duration, requireContext().contentResolver, builder)
     }
 

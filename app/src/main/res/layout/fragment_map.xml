@@ -36,7 +36,7 @@
             android:textSize="12sp"
             android:shadowColor="@color/background"
             android:shadowRadius="6"
-            tools:text="© JawgMaps"
+            android:text="© JawgMaps"
             android:paddingLeft="8dp"
             android:layout_toRightOf="@id/openstreetmapLink"
             tools:ignore="RtlHardcoded,RtlSymmetry" />

@@ -42,9 +42,9 @@ object Prefs {
 
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"
-    const val MAP_ROTATION = "map.rotation"
-    const val MAP_TILT = "map.tilt"
-    const val MAP_ZOOM = "map.zoom"
+    const val MAP_ROTATION = "map.rotation2"
+    const val MAP_TILT = "map.tilt2"
+    const val MAP_ZOOM = "map.zoom2"
     const val MAP_FOLLOWING = "map.following"
     const val MAP_NAVIGATION_MODE = "map.navigation_mode"
 

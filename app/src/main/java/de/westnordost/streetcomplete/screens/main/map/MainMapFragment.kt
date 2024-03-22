@@ -127,9 +127,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         style.addImagesAsync(presetIcons, true)
 
         map.uiSettings.isCompassEnabled = false
-        map.uiSettings.isLogoEnabled = false
-        map.uiSettings.isAttributionEnabled = false
-
 
         // add click listeners
         val pickRadius = requireContext().dpToPx(8).toInt()

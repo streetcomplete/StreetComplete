@@ -14,8 +14,8 @@ import androidx.core.view.isGone
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.map.MapCameraPositionStore
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -41,7 +41,6 @@ import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.math.translate
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.ListAdapter
 import org.koin.android.ext.android.inject
@@ -51,7 +50,7 @@ import java.util.Locale
 class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val prefs: Preferences by inject()
+    private val mapCameraPositionStore: MapCameraPositionStore by inject()
 
     private val binding by viewBinding(FragmentShowQuestFormsBinding::inflate)
 
@@ -100,10 +99,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     override fun onStart() {
         super.onStart()
-        pos = LatLon(
-            prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
-            prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
-        )
+        pos = mapCameraPositionStore.position
     }
 
     private fun popQuestForm() {

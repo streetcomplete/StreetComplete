@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesControll
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
 import de.westnordost.streetcomplete.data.logs.logsModule
+import de.westnordost.streetcomplete.data.map.mapModule
 import de.westnordost.streetcomplete.data.maptiles.maptilesModule
 import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
@@ -120,7 +121,8 @@ class StreetCompleteApplication : Application() {
                 arModule,
                 overlaysModule,
                 overlayModule,
-                urlConfigModule
+                urlConfigModule,
+                mapModule,
             )
         }
 

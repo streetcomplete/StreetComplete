@@ -344,13 +344,11 @@ class MainFragment :
         }
     }
 
-    override fun onLongPress(x: Float, y: Float) {
-        val point = PointF(x, y)
-        val position = mapFragment?.getPositionAt(point) ?: return
+    override fun onLongPress(point: PointF, position: LatLon) {
         if (bottomSheetFragment != null || editHistoryFragment != null) return
 
-        binding.contextMenuView.translationX = x
-        binding.contextMenuView.translationY = y
+        binding.contextMenuView.translationX = point.x
+        binding.contextMenuView.translationY = point.y
 
         showMapContextMenu(position)
     }

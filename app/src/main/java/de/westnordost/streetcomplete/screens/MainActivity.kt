@@ -216,9 +216,6 @@ class MainActivity :
 
     public override fun onPause() {
         super.onPause()
-        val pos = mainFragment?.getCameraPosition()?.position ?: return
-        prefs.putDouble(Prefs.MAP_LATITUDE, pos.latitude)
-        prefs.putDouble(Prefs.MAP_LONGITUDE, pos.longitude)
         downloadController.showNotification = true
         uploadController.showNotification = true
     }

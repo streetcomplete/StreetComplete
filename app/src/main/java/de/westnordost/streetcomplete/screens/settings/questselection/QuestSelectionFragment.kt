@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.map.MapCameraPositionStore
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
@@ -36,7 +37,7 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val questTypeOrderController: QuestTypeOrderController by inject()
     private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
-    private val prefs: Preferences by inject()
+    private val mapCameraPositionStore: MapCameraPositionStore by inject()
 
     private val binding by viewBinding(FragmentQuestSelectionBinding::bind)
 
@@ -53,7 +54,8 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
         super.onAttach(context)
         questSelectionAdapter = QuestSelectionAdapter(
             requireContext(), visibleQuestTypeController, questTypeOrderController,
-            questTypeRegistry, ::onDisplayedListSizeChanged, countryBoundaries, prefs
+            questTypeRegistry, ::onDisplayedListSizeChanged, countryBoundaries,
+            mapCameraPositionStore.position
         )
         questSelectionAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
     }

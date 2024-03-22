@@ -19,8 +19,6 @@ class SceneMapComponent(
     private val context: Context,
     private val map: MapLibreMap,
 ) {
-    var isAerialView: Boolean = false // TODO to be implemented
-
     /** Load the scene */
     suspend fun loadStyle(): Style {
         val currentNightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
