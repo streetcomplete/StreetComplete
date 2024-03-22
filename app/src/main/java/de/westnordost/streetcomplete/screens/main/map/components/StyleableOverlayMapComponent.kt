@@ -341,7 +341,7 @@ private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway
     "motorway_link" -> 4f
     "trunk", "primary", "secondary", "tertiary" -> 6f
     "service", "track", "busway" -> 3f
-    "path", "cycleway", "footway", "bridleway", "steps" -> 0.5f
+    "path", "cycleway", "footway", "bridleway", "steps" -> 1.0f
     null -> 2f
     else -> 4f
 }

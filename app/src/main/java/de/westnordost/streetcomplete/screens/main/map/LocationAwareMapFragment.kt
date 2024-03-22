@@ -157,11 +157,6 @@ open class LocationAwareMapFragment : MapFragment() {
         centerCurrentPositionIfFollowing()
     }
 
-    override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
-        super.onMapIsChanging(position, rotation, tilt, zoom)
-        locationMapComponent?.currentMapZoom = zoom
-    }
-
     /* --------------------------------- Position tracking -------------------------------------- */
 
     @SuppressLint("MissingPermission")
@@ -244,7 +239,7 @@ open class LocationAwareMapFragment : MapFragment() {
             recentLocationStore.add(location)
             locationMapComponent?.location = location
             addTrackLocation(location)
-//          compass.setLocation(location)
+            compass.setLocation(location)
             centerCurrentPositionIfFollowing()
             listener?.onDisplayedLocationDidChange()
         }
@@ -277,7 +272,9 @@ open class LocationAwareMapFragment : MapFragment() {
     /* --------------------------------- Rotation tracking -------------------------------------- */
 
     private fun onCompassRotationChanged(rot: Float, tilt: Float) {
-        locationMapComponent?.rotation = rot * 180 / PI
+        viewLifecycleScope.launch {
+            locationMapComponent?.rotation = rot * 180 / PI
+        }
     }
 
     /* -------------------------------- Save and Restore State ---------------------------------- */
