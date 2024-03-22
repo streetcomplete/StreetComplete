@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.hardware.SensorManager
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.getSystemService
@@ -102,7 +103,11 @@ open class LocationAwareMapFragment : MapFragment() {
         super.onAttach(context)
         compass = Compass(
             context.getSystemService<SensorManager>()!!,
-            context.getSystemService<WindowManager>()!!.defaultDisplay,
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                context.display!!
+            } else {
+                context.getSystemService<WindowManager>()!!.defaultDisplay
+            },
             this::onCompassRotationChanged
         )
         lifecycle.addObserver(compass)
