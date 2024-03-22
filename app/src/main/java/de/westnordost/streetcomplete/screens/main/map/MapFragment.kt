@@ -122,6 +122,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     /* ------------------------------------------- Map  ----------------------------------------- */
 
     private suspend fun initMap(map: MapLibreMap) {
+        map.uiSettings.isCompassEnabled = false
         map.uiSettings.isAttributionEnabled = false
         map.uiSettings.isLogoEnabled = false
 
