@@ -145,7 +145,6 @@ open class LocationAwareMapFragment : MapFragment() {
 
         val ctx = context ?: return
         locationMapComponent = CurrentLocationMapComponent(ctx, style, map)
-        locationMapComponent?.location = displayedLocation
 
         tracksMapComponent = TracksMapComponent(map)
         val positionsLists = tracks.map { track -> track.map { it.position } }
@@ -153,6 +152,8 @@ open class LocationAwareMapFragment : MapFragment() {
 
         tracksMapComponent?.layers?.forEach { map.style?.addLayer(it) }
         locationMapComponent?.layers?.forEach { map.style?.addLayer(it) }
+
+        locationMapComponent?.location = displayedLocation
 
         centerCurrentPositionIfFollowing()
     }
@@ -272,9 +273,7 @@ open class LocationAwareMapFragment : MapFragment() {
     /* --------------------------------- Rotation tracking -------------------------------------- */
 
     private fun onCompassRotationChanged(rot: Float, tilt: Float) {
-        viewLifecycleScope.launch {
-            locationMapComponent?.rotation = rot * 180 / PI
-        }
+        locationMapComponent?.rotation = rot * 180 / PI
     }
 
     /* -------------------------------- Save and Restore State ---------------------------------- */
