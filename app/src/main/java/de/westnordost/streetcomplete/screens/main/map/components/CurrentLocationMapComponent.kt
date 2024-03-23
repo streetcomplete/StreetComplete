@@ -99,8 +99,11 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         if (!isVisible) return
         val location = location ?: return
         val p = JsonObject()
-        p.addProperty("radius", 8.5)
+        p.addProperty("radius", location.accuracy)
         rotation?.let { p.addProperty("rotation", it) }
+        map.style?.getLayer("accuracy")?.setProperties(
+            circleRadius(inMeters(get("radius"), location.latitude))
+        )
         locationSource.setGeoJson(Feature.fromGeometry(location.toLatLon().toPoint(), p))
     }
 
