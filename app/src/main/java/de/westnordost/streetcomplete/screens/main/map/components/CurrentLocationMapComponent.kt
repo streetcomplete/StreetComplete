@@ -22,7 +22,7 @@ import org.maplibre.android.style.layers.CircleLayer
 /** Takes care of showing the location + direction + accuracy marker on the map */
 class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap) {
 
-    private val locationSource = GeoJsonSource("location-source")
+    private val locationSource = GeoJsonSource(SOURCE)
 
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
@@ -50,13 +50,13 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         }
 
     val layers: List<Layer> = listOf(
-        CircleLayer("accuracy", "location-source")
+        CircleLayer("accuracy", SOURCE)
             .withProperties(
                 circleColor(context.resources.getColor(R.color.location_dot)),
                 circleRadius(inMeters(get("radius"))),
                 circleOpacity(0.15f)
             ),
-        SymbolLayer("direction", "location-source")
+        SymbolLayer("direction", SOURCE)
             .withFilter(has("rotation"))
             .withProperties(
                 iconImage("directionImg"),
@@ -64,17 +64,24 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
                 iconRotate(get("rotation")),
                 iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
             ),
-        SymbolLayer("location", "location-source")
+        SymbolLayer("location-shadow", SOURCE)
             .withProperties(
-                iconImage("dotImg"),
+                iconImage("shadowImg"),
                 iconAllowOverlap(true),
                 iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
+            ),
+        CircleLayer("location", SOURCE)
+            .withProperties(
+                circleColor(context.resources.getColor(R.color.location_dot)),
+                circleRadius(8.0f),
+                circleStrokeWidth(2.0f),
+                circleStrokeColor("#fff")
             ),
     )
 
     init {
-        mapStyle.addImage("dotImg", context.getDrawable(R.drawable.location_dot)!!)
         mapStyle.addImage("directionImg", context.getDrawable(R.drawable.location_direction)!!)
+        mapStyle.addImage("shadowImg", context.getDrawable(R.drawable.location_shadow)!!)
 
         mapStyle.addSource(locationSource)
     }
@@ -95,5 +102,9 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         p.addProperty("radius", 8.5)
         rotation?.let { p.addProperty("rotation", it) }
         locationSource.setGeoJson(Feature.fromGeometry(location.toLatLon().toPoint(), p))
+    }
+
+    companion object {
+        private const val SOURCE = "location-source"
     }
 }
