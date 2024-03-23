@@ -53,14 +53,19 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         CircleLayer("accuracy", SOURCE)
             .withProperties(
                 circleColor(context.resources.getColor(R.color.location_dot)),
+                circleOpacity(0.15f),
                 circleRadius(inMeters(get("radius"))),
-                circleOpacity(0.15f)
+                circleStrokeColor(context.resources.getColor(R.color.location_dot)),
+                circleStrokeWidth(1.0f),
+                circleStrokeOpacity(0.5f),
+                circlePitchAlignment(Property.CIRCLE_PITCH_ALIGNMENT_MAP)
             ),
         SymbolLayer("direction", SOURCE)
             .withFilter(has("rotation"))
             .withProperties(
                 iconImage("directionImg"),
                 iconAllowOverlap(true),
+                iconIgnorePlacement(true),
                 iconRotate(get("rotation")),
                 iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
             ),
@@ -68,6 +73,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
             .withProperties(
                 iconImage("shadowImg"),
                 iconAllowOverlap(true),
+                iconIgnorePlacement(true),
                 iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
             ),
         CircleLayer("location", SOURCE)
@@ -75,7 +81,8 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
                 circleColor(context.resources.getColor(R.color.location_dot)),
                 circleRadius(8.0f),
                 circleStrokeWidth(2.0f),
-                circleStrokeColor("#fff")
+                circleStrokeColor("#fff"),
+                circlePitchAlignment(Property.CIRCLE_PITCH_ALIGNMENT_MAP)
             ),
     )
 
