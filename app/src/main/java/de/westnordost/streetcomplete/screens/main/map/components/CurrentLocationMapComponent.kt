@@ -87,7 +87,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     )
 
     init {
-        mapStyle.addImage("directionImg", context.getDrawable(R.drawable.location_direction)!!)
+        mapStyle.addImage("directionImg", context.getDrawable(R.drawable.location_view_direction)!!)
         mapStyle.addImage("shadowImg", context.getDrawable(R.drawable.location_shadow)!!)
 
         mapStyle.addSource(locationSource)
