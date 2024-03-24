@@ -12,7 +12,6 @@ import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import org.maplibre.android.maps.Style
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
@@ -153,7 +152,7 @@ open class LocationAwareMapFragment : MapFragment() {
         tracksMapComponent?.layers?.forEach { map.style?.addLayer(it) }
         locationMapComponent?.layers?.forEach { map.style?.addLayer(it) }
 
-        locationMapComponent?.location = displayedLocation
+        locationMapComponent?.targetLocation = displayedLocation
 
         centerCurrentPositionIfFollowing()
     }
@@ -230,7 +229,7 @@ open class LocationAwareMapFragment : MapFragment() {
     private fun updateLocationAvailability(isAvailable: Boolean) {
         if (!isAvailable) {
             displayedLocation = null
-            locationMapComponent?.location = null
+            locationMapComponent?.targetLocation = null
         }
     }
 
@@ -238,7 +237,7 @@ open class LocationAwareMapFragment : MapFragment() {
         viewLifecycleScope.launch {
             displayedLocation = location
             recentLocationStore.add(location)
-            locationMapComponent?.location = location
+            locationMapComponent?.targetLocation = location
             addTrackLocation(location)
             compass.setLocation(location)
             centerCurrentPositionIfFollowing()

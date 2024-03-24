@@ -33,6 +33,8 @@ class Compass(
     private var geomagnetic: FloatArray? = null
 
     private var declination = 0f
+    private val rotationMatrix = FloatArray(9)
+    private val orientation = FloatArray(3)
 
     private var rotation = 0f
     private var tilt = 0f
@@ -40,8 +42,8 @@ class Compass(
     private var accuracy: Int = 0
 
     override fun onResume(owner: LifecycleOwner) {
-        accelerometer?.let { sensorManager.registerListener(this, it, 10000) }
-        magnetometer?.let { sensorManager.registerListener(this, it, 10000) }
+        accelerometer?.let { sensorManager.registerListener(this, it, 33333) }
+        magnetometer?.let { sensorManager.registerListener(this, it, 33333) }
     }
 
     override fun onPause(owner: LifecycleOwner) {
@@ -63,11 +65,9 @@ class Compass(
         val grav = gravity ?: return
         val geomag = geomagnetic ?: return
 
-        val rotationMatrix = FloatArray(9)
         val success = SensorManager.getRotationMatrix(rotationMatrix, null, grav, geomag)
         if (success) {
             remapToDisplayRotation(rotationMatrix)
-            val orientation = FloatArray(3)
             SensorManager.getOrientation(rotationMatrix, orientation)
             val azimuth = orientation[0] + declination
             val pitch = orientation[1]
