@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.util.ktx
 
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import java.util.Locale
@@ -17,5 +18,15 @@ fun FeatureDictionary.getFeature(
         .isSuggestion(false) // no brands
         .forGeometry(geometryType)
     if (locales != null) builder.forLocale(*locales)
-    return builder.find().firstOrNull()
+    val features = builder.find()
+
+    // see comment above - we want at least only features that can either be nodes or vertices if
+    // our element is a node
+    return if (element.type == ElementType.NODE) {
+        features.firstOrNull { feature ->
+            feature.geometry.any { it == GeometryType.POINT || it == GeometryType.VERTEX }
+        }
+    } else {
+        features.firstOrNull()
+    }
 }
