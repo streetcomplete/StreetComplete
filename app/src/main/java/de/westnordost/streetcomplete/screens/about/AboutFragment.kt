@@ -100,7 +100,7 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
                 .show()
         } else {
             AlertDialog.Builder(ctx)
-                .setMessage(R.string.about_description_donate_google_play2)
+                .setMessage(R.string.about_description_donate_google_play3)
                 .show()
         }
     }
