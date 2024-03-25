@@ -345,8 +345,6 @@ You can find donation information on our website or project home, Google Play do
     <string name="credits_translations_title">Translations</string>
     <string name="credits_art_contributors_title">Art contributors</string>
     <string name="credits_projects_contributors_title">Projects made for StreetComplete</string>
-    <!-- As in "Person A, Person B, Person C and others..." -->
-    <string name="credits_and_more">and others…</string>
 
 
     <!-- Privacy screen -->
