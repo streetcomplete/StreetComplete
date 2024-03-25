@@ -114,7 +114,7 @@ class GpxImportSettingsDialog(
                 binding.displayTrackCheckBox.isChecked,
                 binding.downloadCheckBox.isChecked,
                 minDownloadDistanceInMeters()
-            ) { p -> withContext(Dispatchers.Main) { binding.importProgress.progress = p } }
+            )
         }
         val importData = worker!!.await()
 

@@ -12,16 +12,17 @@ class ImportedTrackMapComponent(ctrl: KtMapController) : KoinComponent {
     private val trackLayer = ctrl.addDataLayer(IMPORTED_TRACK_LAYER)
 
     fun replaceImportedTrack(
-        trackpoints: List<LatLon>,
+        trackpoints: List<List<LatLon>>,
     ) {
+
         trackLayer.clear()
         trackLayer.setFeatures(
-            listOf(
+            trackpoints.map { it ->
                 Polyline(
-                    trackpoints.map { it.toLngLat() }.toMutableList(),
+                    it.map { it.toLngLat() }.toMutableList(),
                     mutableMapOf("type" to "line")
                 )
-            )
+            }
         )
     }
 

@@ -316,7 +316,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 
     /* -------------------------------- Show imported tracks ------------------------------------ */
-    fun replaceImportedTrack(trackpoints: List<LatLon>) {
+    fun replaceImportedTrack(trackpoints: List<List<LatLon>>) {
         importedTrackMapComponent?.replaceImportedTrack(trackpoints)
     }
 }

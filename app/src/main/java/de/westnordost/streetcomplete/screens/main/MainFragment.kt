@@ -1221,7 +1221,8 @@ class MainFragment :
             }.getOrNull() ?: return@launch
 
             if (importData.displayTrack) {
-                fragment.replaceImportedTrack(importData.trackpoints)
+                // TODO sgr: maybe want to get rid of showing the track, as it would mean storing all points which we are avoiding with sequences..
+                fragment.replaceImportedTrack(importData.segments)
             }
             if (importData.downloadAlongTrack) {
                 if (importData.areaToDownloadInSqkm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM * 25) {
@@ -1234,7 +1235,6 @@ class MainFragment :
                             lengthUnit
                         ) { cont.resume(it) }.show()
                     }
-
                     for (bBox in importData.downloadBBoxes) {
                         downloadController.download(bBox)
                     }

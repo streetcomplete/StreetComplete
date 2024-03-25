@@ -8,48 +8,72 @@ import java.io.IOException
 import java.io.InputStream
 
 private const val TRACK_POINT = "trkpt"
-private const val TRACK = "trk"
+private const val SEGMENT = "trkseg"
+
+typealias TrackSegment = Sequence<LatLon>
 
 /**
- * Parses the track points of the first track from a GPX file.
+ * Parses all track points from a GPX file.
  *
- * As the standard doesn't require multiple tracks to be connected, and this lightweight parser
- * function is intended to provide a single consecutive track, further tracks are ignored.
- * Multiple track segments within the first track are parsed however, assuming any gaps are
- * negligible and can be interpolated meaningfully during subsequent processing.
+ * Yields consecutive segments. Track points within a TrackSegment can be interpolated meaningfully
+ * during subsequent processing, while track points from different TrackSegments cannot be assumed
+ * to be connected.
  *
  * @param inputStream valid XML according to http://www.topografix.com/GPX/1/1 schema
- */
-fun parseSingleGpxTrack(inputStream: InputStream): List<LatLon> {
-    // TODO sgr: if this should return a sequence, would need to pass e.g. a Sequence<String> from
-    // File.useLines to make sure the file is correctly closed; inputStream.use closes it
-    // immediately upon return, leading to an exception when requesting the next element of the sequence
-    inputStream.use {
-        val xpp = Xml.newPullParser()
-        xpp.setInput(inputStream, "UTF-8")
-        try {
-            return parseSingleGpxTrack(xpp).toList()
-        } catch (e: Exception) {
-            throw e;
-        }
-    }
-}
-
-/**
- * @param parser a pull parser with input already set, ready to call nextTag
+ * Note: the caller is responsible to close the inputStream as appropriate;
+ * calls to the resulting sequence after closing the inputStream may fail.
+ * @return a sequence of TrackSegments, i.e. sequences of track points logically connected.
+ *
+ * Note: The nested sequences returned work on a single input stream, thus make sure to exhaust
+ * any TrackSegment first before proceeding to the next one. A TrackSegment will not yield any
+ * more track points once you proceed to the next TrackSegment in the outer sequence, thus e.g.
+ * result.toList().first().toList() will not yield any element, while
+ * result.flatMap { it.toList() }.toList() will.
  */
 @Throws(XmlPullParserException::class, IOException::class)
-fun parseSingleGpxTrack(parser: XmlPullParser): Sequence<LatLon> = sequence {
+fun parseGpxFile(inputStream: InputStream): Sequence<TrackSegment> {
+    val parser = Xml.newPullParser()
+    parser.setInput(inputStream, "UTF-8")
+
     parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, true)
 
     parser.nextTag()
     parser.require(XmlPullParser.START_TAG, "http://www.topografix.com/GPX/1/1", "gpx")
 
+    return sequence {
+        var depth = 1
+        while (depth != 0) {
+            when (parser.next()) {
+                XmlPullParser.END_TAG -> {
+                    depth--
+                }
+
+                XmlPullParser.START_TAG -> {
+                    if (parser.name == SEGMENT) {
+                        // segment is closed while parsing, thus depth remains the same
+                        yield(
+                            parseSegment(parser)
+                        )
+                    } else {
+                        depth++
+                    }
+                }
+
+                XmlPullParser.END_DOCUMENT -> {
+                    break
+                }
+            }
+        }
+    }
+}
+
+@Throws(XmlPullParserException::class, IOException::class)
+private fun parseSegment(parser: XmlPullParser): TrackSegment = sequence {
     var depth = 1
     while (depth != 0) {
         when (parser.next()) {
             XmlPullParser.END_TAG -> {
-                if (parser.name == TRACK) {
+                if (parser.name == SEGMENT) {
                     return@sequence
                 }
                 depth--
