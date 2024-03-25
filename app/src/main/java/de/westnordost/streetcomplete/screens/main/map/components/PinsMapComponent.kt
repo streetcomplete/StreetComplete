@@ -67,6 +67,7 @@ class PinsMapComponent(
         }
 
     init {
+        pinsSource.isVolatile = true
         map.style?.addImagesAsync(createPinBitmaps())
         map.style?.addSource(pinsSource)
     }

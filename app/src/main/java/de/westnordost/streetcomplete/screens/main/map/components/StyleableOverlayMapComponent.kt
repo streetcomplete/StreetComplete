@@ -199,6 +199,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
         }
 
     init {
+        overlaySource.isVolatile = true
         map.style?.addSource(overlaySource)
     }
 

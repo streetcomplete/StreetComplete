@@ -34,6 +34,7 @@ class DownloadedAreaMapComponent(private val context: Context, private val map: 
             "downloaded_area_hatching",
             context.getDrawable(R.drawable.downloaded_area_hatching)!!.toBitmap()
         )
+        downloadedAreaSource.isVolatile = true
         map.style?.addSource(downloadedAreaSource)
     }
 

@@ -81,6 +81,7 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
     )
 
     init {
+        geometrySource.isVolatile = true
         map.style?.addSource(geometrySource)
     }
 

@@ -124,6 +124,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         mapStyle.addImage("directionImg", context.getDrawable(R.drawable.location_view_direction)!!)
         mapStyle.addImage("shadowImg", context.getDrawable(R.drawable.location_shadow)!!)
 
+        locationSource.isVolatile = true
         mapStyle.addSource(locationSource)
     }
 

@@ -72,6 +72,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
     )
 
     init {
+        focusedGeometrySource.isVolatile = true
         map.style?.addSource(focusedGeometrySource)
         animation = TimeAnimator()
         animation.setTimeListener { _, _, _ ->

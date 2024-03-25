@@ -59,6 +59,8 @@ class TracksMapComponent(private val map: MapLibreMap) {
     )
 
     init {
+        trackSource.isVolatile = true
+        oldTrackSource.isVolatile = true
         map.style?.addSource(trackSource)
         map.style?.addSource(oldTrackSource)
     }

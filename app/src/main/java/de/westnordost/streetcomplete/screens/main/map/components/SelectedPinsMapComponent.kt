@@ -43,6 +43,7 @@ class SelectedPinsMapComponent(private val context: Context, private val map: Ma
     )
 
     init {
+        selectedPinsSource.isVolatile = true
         map.style?.addSource(selectedPinsSource)
         animation = ValueAnimator.ofFloat(0.5f, 1f)
         animation.duration = 450
