@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.asItem
+import de.westnordost.streetcomplete.osm.surface.hasSurfaceLanes
 import de.westnordost.streetcomplete.osm.surface.shouldBeDescribed
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.surface.DescribeGenericSurfaceDialog
@@ -92,7 +93,7 @@ class SurfaceAndNoteViewController(
     private fun collectSurfaceData(callback: (Surface, String?) -> Unit) {
         ImageListPickerDialog(selectButton.context, items, cellLayoutId, 2) { item ->
             val value = item.value
-            if (value != null && value.shouldBeDescribed) {
+            if (value != null && value.shouldBeDescribed && !hasSurfaceLanes(element.tags)) {
                 DescribeGenericSurfaceDialog(selectButton.context) { description ->
                     callback(item.value!!, description)
                 }.show()
