@@ -4,11 +4,10 @@ import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.datetime.LocalDate
-import java.io.File
 
 abstract class ProfileViewModel : ViewModel() {
     abstract val userName: StateFlow<String?>
-    abstract val userAvatarFile: StateFlow<File>
+    abstract val userAvatarFilePath: StateFlow<String?>
 
     abstract val achievementLevels: StateFlow<Int>
 
