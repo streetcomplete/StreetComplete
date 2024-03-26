@@ -59,12 +59,11 @@ class CreditsViewModelImpl(private val resources: Resources) : CreditsViewModel(
     private fun readProjectsContributors(): List<String> =
         resources.getYamlObject<List<String>>(R.raw.credits_projects)
 
-    private fun readCodeContributors(skipUsers: List<String?>): List<Contributor> {
-        return resources
+    private fun readCodeContributors(skipUsers: List<String?>): List<Contributor> =
+        resources
             .getYamlObject<List<Contributor>>(R.raw.credits_contributors)
             .filter { it.githubUsername !in skipUsers && it.score >= 50 }
             .sortedByDescending { it.score }
-    }
 
     private fun readTranslators(): Map<String, List<String>> {
         val translatorsByLanguage =
