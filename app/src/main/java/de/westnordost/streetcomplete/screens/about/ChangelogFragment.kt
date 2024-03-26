@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.getRawTextFile
 import de.westnordost.streetcomplete.util.ktx.indicesOf
+import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.pxToSp
 import de.westnordost.streetcomplete.util.ktx.setHtmlBody
@@ -28,21 +29,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.roundToInt
 
 /** Shows the full changelog */
 class ChangelogFragment : TwoPaneDetailFragment(R.layout.fragment_changelog), HasTitle {
 
     private val binding by viewBinding(FragmentChangelogBinding::bind)
+    private val viewModel by viewModel<ChangelogViewModel>()
 
     override val title: String get() = getString(R.string.about_title_changelog)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewLifecycleScope.launch {
-            val changelog = readChangelog(resources)
-            binding.webView.setHtmlBody(changelog)
+        observe(viewModel.changelog) { changelog ->
+            if (changelog != null) binding.webView.setHtmlBody(changelog)
         }
     }
 }
