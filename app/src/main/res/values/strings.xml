@@ -561,7 +561,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_title_quests_restore_hidden_summary">Number of hidden quests: %d</string>
     <string name="restore_confirmation">Restore</string>
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
-    <string name="restore_hidden_success">Restored %d hidden quests</string>
 
     <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>

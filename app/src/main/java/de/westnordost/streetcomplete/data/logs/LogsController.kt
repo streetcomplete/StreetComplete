@@ -18,18 +18,14 @@ class LogsController(private val logsDao: LogsDao) {
         newerThan: Long? = null,
         olderThan: Long? = null,
     ): List<LogMessage> =
-        logsDao.getAll(
-            levels = levels,
-            messageContains = messageContains,
-            newerThan = newerThan,
-            olderThan = olderThan,
-        )
+        logsDao.getAll(levels, messageContains, newerThan, olderThan)
 
     fun deleteOlderThan(timestamp: Long) {
-        val deletedCount = logsDao.deleteOlderThan(timestamp)
-        if (deletedCount > 0) {
-            Log.v(TAG, "Deleted $deletedCount old log messages")
-        }
+        logsDao.deleteOlderThan(timestamp)
+    }
+
+    fun clear() {
+        logsDao.clear()
     }
 
     fun add(message: LogMessage) {
@@ -47,9 +43,5 @@ class LogsController(private val logsDao: LogsDao) {
 
     private fun onAdded(message: LogMessage) {
         listeners.forEach { it.onAdded(message) }
-    }
-
-    companion object {
-        private const val TAG = "LogsController"
     }
 }

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data
 
+import android.content.Context
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.logs.LogsController
@@ -8,17 +9,26 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 /** Deletes old unused persisted data in the background */
 class Cleaner(
+    private val context: Context,
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val downloadedTilesController: DownloadedTilesController,
     private val logsController: LogsController
 ) {
-    fun clean() {
+    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Cleaner") + Dispatchers.IO)
+
+    fun cleanOld() = scope.launch {
         val time = nowAsEpochMilliseconds()
 
         val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
@@ -32,6 +42,15 @@ class Cleaner(
         logsController.deleteOlderThan(oldLogTimestamp)
 
         Log.i(TAG, "Cleaning took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
+    }
+
+    fun cleanAll() = scope.launch {
+        context.externalCacheDir?.purge()
+        downloadedTilesController.clear()
+        mapDataController.clear()
+        noteController.clear()
+        logsController.clear()
+        questTypeRegistry.forEach { it.deleteMetadataOlderThan(nowAsEpochMilliseconds()) }
     }
 
     companion object {

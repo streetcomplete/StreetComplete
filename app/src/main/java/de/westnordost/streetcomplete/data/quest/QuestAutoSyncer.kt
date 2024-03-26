@@ -9,6 +9,7 @@ import android.net.ConnectivityManager
 import androidx.core.content.getSystemService
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -110,7 +111,7 @@ class QuestAutoSyncer(
 
     val isAllowedByPreference: Boolean
         get() {
-            val p = Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON")
+            val p = Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC)
             return p == Prefs.Autosync.ON || p == Prefs.Autosync.WIFI && isWifi
         }
 

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.controls
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
@@ -105,7 +106,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     }
 
     private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") == Prefs.Autosync.ON
+        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC) == Prefs.Autosync.ON
 
     private fun updateProgress() {
         answersCounterView.showProgress =

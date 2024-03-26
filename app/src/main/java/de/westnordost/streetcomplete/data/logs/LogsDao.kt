@@ -50,6 +50,8 @@ class LogsDao(private val db: Database) {
     }
 
     fun deleteOlderThan(time: Long): Int = db.delete(NAME, where = "$TIMESTAMP < $time")
+
+    fun clear(): Int = db.delete(NAME)
 }
 
 private fun LogMessage.toPairs(): List<Pair<String, Any?>> = listOfNotNull(

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import android.content.Context
+import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.prefs.Preferences
@@ -38,7 +39,7 @@ class MapTilesDownloadCacheConfig(context: Context, prefs: Preferences) {
         }
 
         cache = if (tileCacheDir?.exists() == true) {
-            val mbs = prefs.getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
+            val mbs = prefs.getInt(Prefs.MAP_TILECACHE_IN_MB, DEFAULT_MAP_CACHE_SIZE_IN_MB)
             Cache(tileCacheDir, mbs * 1000L * 1000L)
         } else {
             null

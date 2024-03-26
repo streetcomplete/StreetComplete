@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings
 
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.DEFAULT
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.LESS_OFTEN
@@ -22,5 +23,5 @@ class ResurveyIntervalsUpdater(private val prefs: Preferences) {
     }
 
     private val intervalsPreference: Prefs.ResurveyIntervals get() =
-        valueOf(prefs.getStringOrNull(Prefs.RESURVEY_INTERVALS) ?: "DEFAULT")
+        valueOf(prefs.getStringOrNull(Prefs.RESURVEY_INTERVALS) ?: ApplicationConstants.DEFAULT_RESURVEY_INTERVALS)
 }
