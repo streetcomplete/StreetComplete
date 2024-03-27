@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Prefs
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import com.russhwolf.settings.ObservableSettings
 

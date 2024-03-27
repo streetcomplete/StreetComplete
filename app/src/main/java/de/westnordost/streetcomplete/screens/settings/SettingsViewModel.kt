@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings
 
 import android.content.res.Resources
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -18,13 +15,10 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
-import de.westnordost.streetcomplete.util.getDefaultTheme
-import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
-import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
-import de.westnordost.streetcomplete.util.setDefaultLocales
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -45,18 +39,17 @@ abstract class SettingsViewModel : ViewModel() {
     *  current choice, the ViewModel needs to be adapted anyway later when the view does not
     *  inherit from that construct anymore and include many more StateFlows based off the
     *  Preferences displayed here -  */
-    abstract val prefs: ObservableSettings
+    abstract val prefs: Preferences
 }
 
 data class QuestTypeCount(val total: Int, val enabled: Int)
 
 class SettingsViewModelImpl(
-    override val prefs: ObservableSettings,
+    override val prefs: Preferences,
     private val resources: Resources,
     private val cleaner: Cleaner,
     private val osmQuestsHiddenController: OsmQuestsHiddenController,
     private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController,
-    private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater,
     private val questTypeRegistry: QuestTypeRegistry,
     private val visibleQuestTypeSource: VisibleQuestTypeSource,
     private val questPresetsSource: QuestPresetsSource,
@@ -90,10 +83,7 @@ class SettingsViewModelImpl(
     override val questTypeCount = MutableStateFlow<QuestTypeCount?>(null)
     override val selectedQuestPresetName = MutableStateFlow<String?>(null)
     override val selectableLanguageCodes = MutableStateFlow<List<String>?>(null)
-    override val tileCacheSize = MutableStateFlow(prefs.getInt(
-        Prefs.MAP_TILECACHE_IN_MB,
-        ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
-    ))
+    override val tileCacheSize = MutableStateFlow(prefs.mapTileCacheSize)
 
     private val listeners = mutableListOf<SettingsListener>()
 
@@ -103,20 +93,7 @@ class SettingsViewModelImpl(
         osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
 
-        listeners += prefs.addStringOrNullListener(Prefs.THEME_SELECT) { theme ->
-            val themeOrDefault = Prefs.Theme.valueOf(theme ?: getDefaultTheme())
-            AppCompatDelegate.setDefaultNightMode(themeOrDefault.appCompatNightMode)
-        }
-
-        listeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
-            setDefaultLocales(getSelectedLocales(prefs))
-        }
-        listeners += prefs.addStringOrNullListener(Prefs.RESURVEY_INTERVALS) {
-            resurveyIntervalsUpdater.update()
-        }
-        listeners += prefs.addIntOrNullListener(Prefs.MAP_TILECACHE_IN_MB) { size ->
-            tileCacheSize.value = size ?: ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
-        }
+        listeners += prefs.onMapTileCacheSizeChanged { tileCacheSize.value = prefs.mapTileCacheSize }
 
         updateSelectableLanguageCodes()
         updateHiddenQuests()
@@ -130,9 +107,8 @@ class SettingsViewModelImpl(
         osmNoteQuestsHiddenController.removeListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.removeListener(osmQuestsHiddenListener)
 
-        for (listener in listeners) {
-            listener.deactivate()
-        }
+        listeners.forEach { it.deactivate() }
+        listeners.clear()
     }
 
     override fun deleteCache() {

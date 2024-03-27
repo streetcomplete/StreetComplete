@@ -1,16 +1,15 @@
 package de.westnordost.streetcomplete.data
 
-import android.content.SharedPreferences
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiImpl
 import de.westnordost.streetcomplete.data.osmnotes.NotesApi
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiImpl
 import de.westnordost.streetcomplete.data.osmtracks.TracksApi
 import de.westnordost.streetcomplete.data.osmtracks.TracksApiImpl
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -29,7 +28,7 @@ val osmApiModule = module {
     single { OsmConnection(
         OSM_API_URL,
         ApplicationConstants.USER_AGENT,
-        get<SharedPreferences>().getString(Prefs.OAUTH2_ACCESS_TOKEN, null)
+        get<Preferences>().oAuth2AccessToken
     ) }
     single { UnsyncedChangesCountSource(get(), get()) }
 

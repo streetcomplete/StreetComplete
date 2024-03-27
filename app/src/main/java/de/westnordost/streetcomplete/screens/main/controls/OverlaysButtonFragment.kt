@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.ListPopupWindow
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
@@ -13,7 +12,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapter
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -21,7 +20,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
 
     private val selectedOverlayController: SelectedOverlayController by inject()
     private val overlayRegistry: OverlayRegistry by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     private val selectedOverlaylistener = object : SelectedOverlaySource.Listener {
         override fun onSelectedOverlayChanged() {
@@ -51,8 +50,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
     }
 
     private fun onClickButton() {
-        val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, false)
-        if (!hasShownTutorial) {
+        if (!prefs.hasShownTutorial) {
             showOverlaysTutorial()
         } else {
             showOverlaysMenu()

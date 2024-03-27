@@ -159,11 +159,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         if (showRank) {
             updateRank(
                 statistics?.rank ?: 0,
-                viewModel.lastShownLocalUserRank?.rank,
+                viewModel.lastShownLocalUserCountryStatistics?.rank,
                 ::getScaledLocalRank,
                 binding.localRankText
             )
-            viewModel.lastShownLocalUserRank = statistics
+            viewModel.lastShownLocalUserCountryStatistics = statistics
             binding.localRankLabel.text = getLocalRankText(statistics?.countryCode)
         }
     }
@@ -174,11 +174,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         if (showRank) {
             updateRank(
                 statistics?.rank ?: 0,
-                viewModel.lastShownLocalUserRankCurrentWeek?.rank,
+                viewModel.lastShownLocalUserCountryStatisticsCurrentWeek?.rank,
                 ::getScaledLocalRank,
                 binding.currentWeekLocalRankText
             )
-            viewModel.lastShownLocalUserRankCurrentWeek = statistics
+            viewModel.lastShownLocalUserCountryStatisticsCurrentWeek = statistics
             binding.currentWeekLocalRankLabel.text = getLocalRankText(statistics?.countryCode)
         }
     }

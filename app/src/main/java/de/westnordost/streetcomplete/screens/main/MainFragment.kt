@@ -33,7 +33,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.Edit
@@ -112,7 +111,8 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
@@ -175,7 +175,7 @@ class MainFragment :
     private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     private lateinit var locationManager: FineLocationManager
 
@@ -1161,8 +1161,7 @@ class MainFragment :
         flingQuestMarkerTo(img, answerTarget) { root.removeView(img) }
     }
 
-    private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC) == Prefs.Autosync.ON
+    private val isAutosync: Boolean get() = prefs.autosync == Autosync.ON
 
     private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
         val targetPos = target.getLocationInWindow().toPointF()

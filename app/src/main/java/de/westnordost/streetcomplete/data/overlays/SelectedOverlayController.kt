@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.overlays
 
 import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Prefs
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.Listeners
 

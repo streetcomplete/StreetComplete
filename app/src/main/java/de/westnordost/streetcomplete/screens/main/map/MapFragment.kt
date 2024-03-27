@@ -21,7 +21,6 @@ import com.mapzen.tangram.TouchInput.TapResponder
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -38,7 +37,7 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
@@ -93,7 +92,7 @@ open class MapFragment :
 
     private val vectorTileProvider: VectorTileProvider by inject()
     private val cacheConfig: MapTilesDownloadCacheConfig by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -289,8 +288,7 @@ open class MapFragment :
     /* -------------------------------- Save and Restore State ---------------------------------- */
 
     private fun restoreMapState() {
-        val camera = loadCameraPosition() ?: return
-        controller?.setCameraPosition(camera)
+        controller?.setCameraPosition(loadCameraPosition())
     }
 
     private fun saveMapState() {
@@ -298,34 +296,19 @@ open class MapFragment :
         saveCameraPosition(camera)
     }
 
-    private fun loadCameraPosition(): CameraPosition? {
-        if (!prefs.keys.containsAll(listOf(
-                Prefs.MAP_LATITUDE,
-                Prefs.MAP_LONGITUDE,
-                Prefs.MAP_ROTATION,
-                Prefs.MAP_TILT,
-                Prefs.MAP_ZOOM,
-        ))) {
-            return null
-        }
-
-        return CameraPosition(
-            LatLon(
-                prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
-                prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
-            ),
-            prefs.getFloat(Prefs.MAP_ROTATION, 0f),
-            prefs.getFloat(Prefs.MAP_TILT, 0f),
-            prefs.getFloat(Prefs.MAP_ZOOM, 0f)
+    private fun loadCameraPosition(): CameraPosition =
+        CameraPosition(
+            position = prefs.mapPosition,
+            rotation = prefs.mapRotation,
+            tilt = prefs.mapTilt,
+            zoom = prefs.mapZoom
         )
-    }
 
     private fun saveCameraPosition(camera: CameraPosition) {
-        prefs.putFloat(Prefs.MAP_ROTATION, camera.rotation)
-        prefs.putFloat(Prefs.MAP_TILT, camera.tilt)
-        prefs.putFloat(Prefs.MAP_ZOOM, camera.zoom)
-        prefs.putDouble(Prefs.MAP_LATITUDE, camera.position.latitude)
-        prefs.putDouble(Prefs.MAP_LONGITUDE, camera.position.longitude)
+        prefs.mapRotation = camera.rotation
+        prefs.mapTilt = camera.tilt
+        prefs.mapZoom = camera.zoom
+        prefs.mapPosition = camera.position
     }
 
     /* ------------------------------- Controlling the map -------------------------------------- */

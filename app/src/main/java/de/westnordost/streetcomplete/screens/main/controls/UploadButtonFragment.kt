@@ -6,8 +6,6 @@ import android.view.View
 import androidx.core.content.getSystemService
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.upload.UploadController
@@ -15,7 +13,8 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -27,7 +26,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
     private val uploadProgressSource: UploadProgressSource by inject()
     private val userLoginStatusSource: UserLoginStatusSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     private val uploadButton get() = view as UploadButton
 
@@ -75,8 +74,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
 
     // ---------------------------------------------------------------------------------------------
 
-    private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC) == Prefs.Autosync.ON
+    private val isAutosync: Boolean get() = prefs.autosync == Autosync.ON
 
     private suspend fun updateCount() {
         uploadButton.uploadableCount = unsyncedChangesCountSource.getCount()

@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.data.messages
 
 import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.user.UserDataController
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.util.Listeners
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
 
 /** This class is to access user messages, which are basically dialogs that pop up when
  *  clicking on the mail icon, such as "you have a new OSM message in your inbox" etc. */
@@ -15,7 +14,7 @@ class MessagesSource(
     private val userDataController: UserDataController,
     private val achievementsSource: AchievementsSource,
     private val questSelectionHintController: QuestSelectionHintController,
-    private val prefs: ObservableSettings
+    private val prefs: Preferences
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table*/
@@ -62,10 +61,10 @@ class MessagesSource(
     fun getNumberOfMessages(): Int {
         val shouldShowQuestSelectionHint = questSelectionHintController.state == QuestSelectionHintState.SHOULD_SHOW
         val hasUnreadMessages = userDataController.unreadMessagesCount > 0
-        val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION)
+        val lastVersion = prefs.lastChangelogVersion
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
         if (lastVersion == null) {
-            prefs.putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME)
+            prefs.lastChangelogVersion = BuildConfig.VERSION_NAME
         }
 
         var messages = 0
@@ -77,9 +76,9 @@ class MessagesSource(
     }
 
     fun popNextMessage(): Message? {
-        val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION)
+        val lastVersion = prefs.lastChangelogVersion
         if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME)
+            prefs.lastChangelogVersion = BuildConfig.VERSION_NAME
             if (lastVersion != null) {
                 onNumberOfMessagesUpdated()
                 return NewVersionMessage("v$lastVersion")

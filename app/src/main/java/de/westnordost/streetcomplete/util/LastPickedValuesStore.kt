@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.util
 
 import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Prefs
 
 class LastPickedValuesStore<T : Any>(
     private val prefs: ObservableSettings,

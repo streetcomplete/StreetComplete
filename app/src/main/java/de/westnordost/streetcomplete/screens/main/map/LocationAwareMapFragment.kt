@@ -7,7 +7,6 @@ import android.location.Location
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.getSystemService
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -21,7 +20,7 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.math.translate
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
@@ -35,7 +34,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val recentLocationStore: RecentLocationStore by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
@@ -281,13 +280,13 @@ open class LocationAwareMapFragment : MapFragment() {
     /* -------------------------------- Save and Restore State ---------------------------------- */
 
     private fun restoreMapState() {
-        isFollowingPosition = prefs.getBoolean(Prefs.MAP_FOLLOWING, true)
-        isNavigationMode = prefs.getBoolean(Prefs.MAP_NAVIGATION_MODE, false)
+        isFollowingPosition = prefs.mapIsFollowing
+        isNavigationMode = prefs.mapIsNavigationMode
     }
 
     private fun saveMapState() {
-        prefs.putBoolean(Prefs.MAP_FOLLOWING, isFollowingPosition)
-        prefs.putBoolean(Prefs.MAP_NAVIGATION_MODE, isNavigationMode)
+        prefs.mapIsFollowing = isFollowingPosition
+        prefs.mapIsNavigationMode = isNavigationMode
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

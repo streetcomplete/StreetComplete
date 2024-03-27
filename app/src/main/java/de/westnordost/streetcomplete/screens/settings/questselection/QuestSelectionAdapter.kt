@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.ItemTouchHelper.UP
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountries
@@ -37,7 +36,8 @@ import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.util.ktx.getIds
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -55,11 +55,10 @@ class QuestSelectionAdapter(
     private val questTypeRegistry: QuestTypeRegistry,
     private val onListSizeChanged: (Int) -> Unit,
     countryBoundaries: Lazy<CountryBoundaries>,
-    prefs: ObservableSettings
+    prefs: Preferences
 ) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
 
-    private val currentCountryCodes = countryBoundaries.value
-        .getIds(prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0), prefs.getDouble(Prefs.MAP_LATITUDE, 0.0))
+    private val currentCountryCodes = countryBoundaries.value.getIds(prefs.mapPosition)
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
     private val englishResources by lazy {

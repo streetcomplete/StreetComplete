@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Prefs
 import com.russhwolf.settings.ObservableSettings
 
 class SelectedQuestPresetStore(private val prefs: ObservableSettings) {

@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.QuestStreetSidePuzzleWithLastAnswerButtonBinding

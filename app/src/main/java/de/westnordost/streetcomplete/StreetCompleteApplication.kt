@@ -44,19 +44,17 @@ import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
-import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
+import de.westnordost.streetcomplete.data.preferences.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.getDefaultTheme
-import de.westnordost.streetcomplete.util.getSelectedLocale
-import de.westnordost.streetcomplete.util.getSystemLocales
-import de.westnordost.streetcomplete.util.ktx.addedToFront
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.AndroidLogger
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import de.westnordost.streetcomplete.util.logs.Log
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.Theme
+import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.prefs.preferencesModule
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
@@ -77,7 +75,7 @@ class StreetCompleteApplication : Application() {
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val downloadedTilesController: DownloadedTilesController by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
     private val editHistoryController: EditHistoryController by inject()
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val cacheTrimmer: CacheTrimmer by inject()
@@ -135,11 +133,11 @@ class StreetCompleteApplication : Application() {
         setLoggerInstances()
 
         // Force logout users who are logged in with OAuth 1.0a, they need to re-authenticate with OAuth 2
-        if (prefs.getStringOrNull(Prefs.OAUTH1_ACCESS_TOKEN) != null) {
+        if (prefs.hasOAuth1AccessToken) {
             userLoginStatusController.logOut()
         }
 
-        setDefaultLocales()
+        updateDefaultLocales()
 
         crashReportExceptionHandler.install()
 
@@ -150,17 +148,20 @@ class StreetCompleteApplication : Application() {
 
         enqueuePeriodicCleanupWork()
 
-        setDefaultTheme()
+        updateDefaultTheme()
 
         resurveyIntervalsUpdater.update()
 
-        val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION_DATA)
+        val lastVersion = prefs.lastDataVersion
         if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME)
+            prefs.lastDataVersion = BuildConfig.VERSION_NAME
             if (lastVersion != null) {
                 onNewVersion()
             }
         }
+
+        prefs.onLanguageChanged { updateDefaultLocales() }
+        prefs.onThemeChanged { updateDefaultTheme() }
     }
 
     private fun onNewVersion() {
@@ -187,16 +188,12 @@ class StreetCompleteApplication : Application() {
         }
     }
 
-    private fun setDefaultLocales() {
-        val locale = getSelectedLocale(prefs)
-        if (locale != null) {
-            setDefaultLocales(getSystemLocales().addedToFront(locale))
-        }
+    private fun updateDefaultLocales() {
+        setDefaultLocales(getSelectedLocales(prefs))
     }
 
-    private fun setDefaultTheme() {
-        val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
-        AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
+    private fun updateDefaultTheme() {
+        AppCompatDelegate.setDefaultNightMode(prefs.theme.appCompatNightMode)
     }
 
     private fun setLoggerInstances() {
@@ -215,4 +212,11 @@ class StreetCompleteApplication : Application() {
             ).setInitialDelay(1, TimeUnit.HOURS).build()
         )
     }
+}
+
+private val Theme.appCompatNightMode: Int get() = when (this) {
+    Theme.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
+    Theme.DARK -> AppCompatDelegate.MODE_NIGHT_YES
+    Theme.AUTO -> AppCompatDelegate.MODE_NIGHT_AUTO
+    Theme.SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
 }

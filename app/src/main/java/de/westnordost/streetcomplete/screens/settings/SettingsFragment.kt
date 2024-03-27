@@ -10,12 +10,11 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import com.russhwolf.settings.SettingsListener
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneListFragment
@@ -114,7 +113,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
             entryValues.add(0, "")
             entries.add(0, getString(R.string.language_default))
 
-            val pref = findPreference<ListPreference>(Prefs.LANGUAGE_SELECT)
+            val pref = findPreference<ListPreference>("language.select")
             pref?.entries = entries.toTypedArray()
             pref?.entryValues = entryValues.toTypedArray()
             // must set this (default) so that the preference updates its summary ... 🙄
@@ -122,13 +121,12 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
         }
 
         observe(viewModel.tileCacheSize) { size ->
-            findPreference<Preference>(Prefs.MAP_TILECACHE_IN_MB)?.summary =
+            findPreference<Preference>("map.tilecache")?.summary =
                 getString(R.string.pref_tilecache_size_summary, size)
         }
 
-        listeners += viewModel.prefs.addStringOrNullListener(Prefs.AUTOSYNC) { autosync ->
-            val autosyncOrDefault = Prefs.Autosync.valueOf(autosync ?: ApplicationConstants.DEFAULT_AUTOSYNC)
-            if (autosyncOrDefault != Prefs.Autosync.ON) {
+        listeners += viewModel.prefs.onAutosyncChanged {
+            if (viewModel.prefs.autosync != Autosync.ON) {
                 AlertDialog.Builder(requireContext())
                     .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))
                     .setPositiveButton(android.R.string.ok, null)
@@ -136,20 +134,19 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
             }
         }
 
-        listeners += viewModel.prefs.addStringOrNullListener(Prefs.THEME_SELECT) {
+        listeners += viewModel.prefs.onThemeChanged {
             activity?.let { ActivityCompat.recreate(it) }
         }
 
-        listeners += viewModel.prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
+        listeners += viewModel.prefs.onLanguageChanged {
             activity?.let { ActivityCompat.recreate(it) }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        for (listener in listeners) {
-            listener.deactivate()
-        }
+        listeners.forEach { it.deactivate() }
+        listeners.clear()
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {

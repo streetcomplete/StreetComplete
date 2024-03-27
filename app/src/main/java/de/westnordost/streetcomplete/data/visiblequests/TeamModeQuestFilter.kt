@@ -1,24 +1,23 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsSource
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.util.Listeners
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
 
 /** Controller for filtering all quests that are hidden because they are shown to other users in
  *  team mode. Takes care of persisting team mode settings and notifying listeners about changes */
 class TeamModeQuestFilter internal constructor(
     private val createdElementsSource: CreatedElementsSource,
-    private val prefs: ObservableSettings
+    private val prefs: Preferences
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  shared preferences */
 
-    private val teamSize: Int get() = prefs.getInt(Prefs.TEAM_MODE_TEAM_SIZE, -1)
-    val indexInTeam: Int get() = prefs.getInt(Prefs.TEAM_MODE_INDEX_IN_TEAM, -1)
+    private val teamSize: Int get() = prefs.teamModeSize
+    val indexInTeam: Int get() = prefs.teamModeIndexInTeam
 
     val isEnabled: Boolean get() = teamSize > 0
 
@@ -40,13 +39,14 @@ class TeamModeQuestFilter internal constructor(
     }
 
     fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
-        prefs.putInt(Prefs.TEAM_MODE_TEAM_SIZE, teamSize)
-        prefs.putInt(Prefs.TEAM_MODE_INDEX_IN_TEAM, indexInTeam)
+        prefs.teamModeSize = teamSize
+        prefs.teamModeIndexInTeam = indexInTeam
         listeners.forEach { it.onTeamModeChanged(true) }
     }
 
     fun disableTeamMode() {
-        prefs.putInt(Prefs.TEAM_MODE_TEAM_SIZE, -1)
+        prefs.teamModeSize = -1
+        prefs.teamModeIndexInTeam = -1
         listeners.forEach { it.onTeamModeChanged(false) }
     }
 

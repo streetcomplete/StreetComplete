@@ -4,12 +4,10 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.util.ktx.isApril1st
-import com.russhwolf.settings.ObservableSettings
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
@@ -19,14 +17,14 @@ class TangramPinsSpriteSheet(
     private val context: Context,
     private val questTypeRegistry: QuestTypeRegistry,
     private val overlayRegistry: OverlayRegistry,
-    private val prefs: ObservableSettings
+    private val prefs: Preferences
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
-        val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
+        val isSpriteSheetCurrent = prefs.pinSpritesVersion == BuildConfig.VERSION_CODE
 
         val spriteSheet = when {
-            !isSpriteSheetCurrent || BuildConfig.DEBUG || shouldBeUpsideDown() -> createSpritesheet()
-            else -> prefs.getStringOrNull(Prefs.PIN_SPRITES) ?: ""
+            !isSpriteSheetCurrent || BuildConfig.DEBUG -> createSpritesheet()
+            else -> prefs.pinSprites
         }
 
         createSceneUpdates(spriteSheet)
@@ -60,11 +58,6 @@ class TangramPinsSpriteSheet(
             val questY = y + questIconOffsetY
             questIcon.setBounds(questX, questY, questX + questIconSize, questY + questIconSize)
             val checkpoint = canvas.save()
-            if (shouldBeUpsideDown()) {
-                val questCenterX = questX + questIconSize / 2f
-                val questCenterY = questY + questIconSize / 2f
-                canvas.rotate(180f, questCenterX, questCenterY)
-            }
             questIcon.draw(canvas)
             canvas.restoreToCount(checkpoint)
             val questIconName = context.resources.getResourceEntryName(questIconResId)
@@ -78,15 +71,10 @@ class TangramPinsSpriteSheet(
 
         val questSprites = "{${spriteSheetEntries.joinToString(",")}}"
 
-        prefs.putInt(Prefs.PIN_SPRITES_VERSION, if (shouldBeUpsideDown()) -1 else BuildConfig.VERSION_CODE)
-        prefs.putString(Prefs.PIN_SPRITES, questSprites)
+        prefs.pinSpritesVersion = BuildConfig.VERSION_CODE
+        prefs.pinSprites = questSprites
 
         return questSprites
-    }
-
-    private fun shouldBeUpsideDown(): Boolean {
-        val isBelowEquator = prefs.getDouble(Prefs.MAP_LATITUDE, 0.0) < 0.0
-        return isBelowEquator && isApril1st()
     }
 
     private fun createSceneUpdates(pinSprites: String): List<Pair<String, String>> = listOf(

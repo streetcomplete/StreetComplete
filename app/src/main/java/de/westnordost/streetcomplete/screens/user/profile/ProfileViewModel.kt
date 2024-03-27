@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.user.profile
 
 import androidx.lifecycle.ViewModel
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
@@ -11,14 +10,12 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.launch
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.datetime.LocalDate
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.io.File
 
 abstract class ProfileViewModel : ViewModel() {
@@ -43,8 +40,8 @@ abstract class ProfileViewModel : ViewModel() {
 
     abstract var lastShownGlobalUserRank: Int?
     abstract var lastShownGlobalUserRankCurrentWeek: Int?
-    abstract var lastShownLocalUserRank: CountryStatistics?
-    abstract var lastShownLocalUserRankCurrentWeek: CountryStatistics?
+    abstract var lastShownLocalUserCountryStatistics: CountryStatistics?
+    abstract var lastShownLocalUserCountryStatisticsCurrentWeek: CountryStatistics?
 
     abstract fun logOutUser()
 }
@@ -59,7 +56,7 @@ class ProfileViewModelImpl(
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val avatarsCacheDirectory: File,
-    private val prefs: ObservableSettings
+    private val prefs: Preferences
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)
@@ -76,36 +73,20 @@ class ProfileViewModelImpl(
     override val biggestSolvedCountCurrentWeekCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
 
     override var lastShownGlobalUserRank: Int?
-        set(value) {
-            if (value != null) {
-                prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, value)
-            } else {
-                prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
-            }
-        }
-        get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
+        set(value) { prefs.lastShownGlobalUserRank = value }
+        get() = prefs.lastShownGlobalUserRank
 
     override var lastShownGlobalUserRankCurrentWeek: Int?
-        set(value) {
-            if (value != null) {
-                prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, value)
-            } else {
-                prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
-            }
-        }
-        get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
+        set(value) { prefs.lastShownGlobalUserRankCurrentWeek = value }
+        get() = prefs.lastShownGlobalUserRankCurrentWeek
 
-    override var lastShownLocalUserRank: CountryStatistics?
-        set(value) {
-            prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(value))
-        }
-        get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK)?.let { Json.decodeFromString(it) }
+    override var lastShownLocalUserCountryStatistics: CountryStatistics?
+        set(value) { prefs.lastShownLocalUserCountryStatistics = value }
+        get() = prefs.lastShownLocalUserCountryStatistics
 
-    override var lastShownLocalUserRankCurrentWeek: CountryStatistics?
-        set(value) {
-            prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(value))
-        }
-        get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK)?.let { Json.decodeFromString(it) }
+    override var lastShownLocalUserCountryStatisticsCurrentWeek: CountryStatistics?
+        set(value) { prefs.lastShownLocalUserCountryStatisticsCurrentWeek = value }
+        get() = prefs.lastShownLocalUserCountryStatisticsCurrentWeek
 
     override fun logOutUser() {
         launch { userLoginStatusController.logOut() }

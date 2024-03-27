@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.messages
 
 import de.westnordost.streetcomplete.ApplicationConstants.QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Prefs
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintState.NOT_SHOWN
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintState.SHOULD_SHOW
 import de.westnordost.streetcomplete.data.quest.Quest
