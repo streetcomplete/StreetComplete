@@ -566,6 +566,15 @@
     <string name="quest_piste_difficulty_freeride">Freeride</string>
     <string name="quest_piste_difficulty_extreme">Extreme</string>
 
+    <!-- parking capacity quests -->
+    <string name="quest_parking_capacity_title">How many cars can park here?</string>
+    <string name="quest_parking_capacity_hint">This also includes special spaces like for disabled people, families, for charging etc. Hide the quest if the parking spaces are not marked and thus not countable</string>
+    <string name="quest_parking_capacity_disabled_title">How many parking spaces for disabled people are here?</string>
+    <string name="quest_parking_capacity_disabled_answer_yes">There are, but unclear count</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">Quests added in SCEE are always disabled by default, as they may not always be answerable, and may require knowledge of the topic and tagging.\nThis quest will not be asked if capacity:disabled=yes is set. If you want to specify them as well, change the element selection from \"and !capacity:disabled\" to \"and (!capacity:disabled or capacity:disabled=yes)\"</string>
+
+    <!-- parking orientation quest -->
+    <string name="quest_parking_orientation_title">In what orientation do cars park here?</string>
 
     <!-- new overlays -->
 
