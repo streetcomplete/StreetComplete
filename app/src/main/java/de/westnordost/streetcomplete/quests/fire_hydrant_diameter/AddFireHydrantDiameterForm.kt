@@ -16,12 +16,12 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDia
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.mostCommonWithin
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import org.koin.android.ext.android.inject
 
 class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }

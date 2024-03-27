@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -55,7 +55,7 @@ class QuestSelectionAdapter(
     private val questTypeRegistry: QuestTypeRegistry,
     private val onListSizeChanged: (Int) -> Unit,
     countryBoundaries: Lazy<CountryBoundaries>,
-    prefs: Preferences
+    prefs: ObservableSettings
 ) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
 
     private val currentCountryCodes = countryBoundaries.value

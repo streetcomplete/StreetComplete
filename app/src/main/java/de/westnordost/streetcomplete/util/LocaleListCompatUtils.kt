@@ -8,17 +8,17 @@ import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.ktx.addedToFront
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import java.util.Locale
 
 /** Get the override-locale selected in this app or null if there is no override */
-fun getSelectedLocale(prefs: Preferences): Locale? {
-    val languageTag = prefs.getStringOrNull(Prefs.LANGUAGE_SELECT) ?: ""
+fun getSelectedLocale(prefs: ObservableSettings): Locale? {
+    val languageTag = prefs.getString(Prefs.LANGUAGE_SELECT, "")
     return if (languageTag.isEmpty()) null else Locale.forLanguageTag(languageTag)
 }
 
 /** Get the locale selected in this app (if any) appended by the system locales */
-fun getSelectedLocales(prefs: Preferences): LocaleListCompat {
+fun getSelectedLocales(prefs: ObservableSettings): LocaleListCompat {
     val locale = getSelectedLocale(prefs)
     val systemLocales = getSystemLocales()
     return if (locale == null) systemLocales else systemLocales.addedToFront(locale)

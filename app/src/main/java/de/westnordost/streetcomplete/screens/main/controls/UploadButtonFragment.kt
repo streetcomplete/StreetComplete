@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -27,7 +27,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button) {
     private val uploadProgressSource: UploadProgressSource by inject()
     private val userLoginStatusSource: UserLoginStatusSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private val uploadButton get() = view as UploadButton
 

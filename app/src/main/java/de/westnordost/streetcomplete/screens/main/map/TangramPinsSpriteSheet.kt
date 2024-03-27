@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
@@ -19,7 +19,7 @@ class TangramPinsSpriteSheet(
     private val context: Context,
     private val questTypeRegistry: QuestTypeRegistry,
     private val overlayRegistry: OverlayRegistry,
-    private val prefs: Preferences
+    private val prefs: ObservableSettings
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE

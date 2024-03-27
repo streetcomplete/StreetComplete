@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.math.translate
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
@@ -35,7 +35,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val recentLocationStore: RecentLocationStore by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager

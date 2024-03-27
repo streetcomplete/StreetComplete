@@ -56,7 +56,7 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -81,7 +81,7 @@ class MainActivity :
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private var mainFragment: MainFragment? = null
 

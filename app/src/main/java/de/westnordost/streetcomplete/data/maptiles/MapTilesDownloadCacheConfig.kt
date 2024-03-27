@@ -4,7 +4,7 @@ import android.content.Context
 import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import okhttp3.Cache
 import okhttp3.CacheControl
 import java.io.File
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 
 /** Configuration for the common cache shared by tangram-es and the map tile ("pre"-)downloader
  *  integrated into the normal map download process */
-class MapTilesDownloadCacheConfig(context: Context, prefs: Preferences) {
+class MapTilesDownloadCacheConfig(context: Context, prefs: ObservableSettings) {
 
     val cacheControl: CacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)

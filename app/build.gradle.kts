@@ -143,6 +143,9 @@ dependencies {
     // photos
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 
+    // settings
+    implementation("com.russhwolf:multiplatform-settings:1.1.1")
+
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")

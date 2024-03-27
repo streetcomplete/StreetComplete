@@ -8,11 +8,11 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 
 class QuestSelectionHintController(
     private val visibleQuestsSource: VisibleQuestsSource,
-    private val prefs: Preferences
+    private val prefs: ObservableSettings
 ) {
 
     interface Listener {
@@ -22,7 +22,7 @@ class QuestSelectionHintController(
 
     var state: QuestSelectionHintState
         set(value) {
-            prefs.putString(Prefs.QUEST_SELECTION_HINT_STATE, value.toString())
+            prefs.putString(Prefs.QUEST_SELECTION_HINT_STATE, value.name)
             listeners.forEach { it.onQuestSelectionHintStateChanged() }
         }
         get() {

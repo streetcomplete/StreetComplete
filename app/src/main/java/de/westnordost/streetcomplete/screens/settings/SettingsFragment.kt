@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
@@ -33,24 +34,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
     override val title: String get() = getString(R.string.action_settings)
 
-    private val onAutosyncChanged = {
-        if (Prefs.Autosync.valueOf(viewModel.prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC) != Prefs.Autosync.ON) {
-            AlertDialog.Builder(requireContext())
-                .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
-        }
-    }
-
-    private val onThemeChanged = {
-        activity?.let { ActivityCompat.recreate(it) }
-        Unit
-    }
-
-    private val onLanguageChanged = {
-        activity?.let { ActivityCompat.recreate(it) }
-        Unit
-    }
+    private val listeners = mutableListOf<SettingsListener>()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences, false)
@@ -142,16 +126,30 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
                 getString(R.string.pref_tilecache_size_summary, size)
         }
 
-        viewModel.prefs.addListener(Prefs.AUTOSYNC, onAutosyncChanged)
-        viewModel.prefs.addListener(Prefs.THEME_SELECT, onThemeChanged)
-        viewModel.prefs.addListener(Prefs.LANGUAGE_SELECT, onLanguageChanged)
+        listeners += viewModel.prefs.addStringOrNullListener(Prefs.AUTOSYNC) { autosync ->
+            val autosyncOrDefault = Prefs.Autosync.valueOf(autosync ?: ApplicationConstants.DEFAULT_AUTOSYNC)
+            if (autosyncOrDefault != Prefs.Autosync.ON) {
+                AlertDialog.Builder(requireContext())
+                    .setView(layoutInflater.inflate(R.layout.dialog_tutorial_upload, null))
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show()
+            }
+        }
+
+        listeners += viewModel.prefs.addStringOrNullListener(Prefs.THEME_SELECT) {
+            activity?.let { ActivityCompat.recreate(it) }
+        }
+
+        listeners += viewModel.prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
+            activity?.let { ActivityCompat.recreate(it) }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.prefs.removeListener(Prefs.AUTOSYNC, onAutosyncChanged)
-        viewModel.prefs.removeListener(Prefs.THEME_SELECT, onThemeChanged)
-        viewModel.prefs.removeListener(Prefs.LANGUAGE_SELECT, onLanguageChanged)
+        for (listener in listeners) {
+            listener.deactivate()
+        }
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {

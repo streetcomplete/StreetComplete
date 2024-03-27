@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,7 +23,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     private val uploadProgressSource: UploadProgressSource by inject()
     private val downloadProgressSource: DownloadProgressSource by inject()
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
     private val statisticsSource: StatisticsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
 

@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.data.user
 import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 
 /** Controller that handles user login, logout, auth and updated data */
 class UserDataController(
-    private val prefs: Preferences,
+    private val prefs: ObservableSettings,
     private val userLoginStatusSource: UserLoginStatusSource
 ) : UserDataSource {
 

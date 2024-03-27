@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.logs.Log
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -45,7 +45,7 @@ class QuestAutoSyncer(
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
     private val userLoginStatusSource: UserLoginStatusSource,
-    private val prefs: Preferences,
+    private val prefs: ObservableSettings,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesController: DownloadedTilesController
 ) : DefaultLifecycleObserver {

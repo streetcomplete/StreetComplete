@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.util.padWith
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import org.koin.android.ext.android.inject
@@ -27,7 +27,7 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val defaultExpanded = false
 

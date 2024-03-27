@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.databinding.FragmentQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,7 +35,7 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val questTypeOrderController: QuestTypeOrderController by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private val binding by viewBinding(FragmentQuestSelectionBinding::bind)
 

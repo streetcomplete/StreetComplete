@@ -22,7 +22,8 @@ import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -44,13 +45,13 @@ abstract class SettingsViewModel : ViewModel() {
     *  current choice, the ViewModel needs to be adapted anyway later when the view does not
     *  inherit from that construct anymore and include many more StateFlows based off the
     *  Preferences displayed here -  */
-    abstract val prefs: Preferences
+    abstract val prefs: ObservableSettings
 }
 
 data class QuestTypeCount(val total: Int, val enabled: Int)
 
 class SettingsViewModelImpl(
-    override val prefs: Preferences,
+    override val prefs: ObservableSettings,
     private val resources: Resources,
     private val cleaner: Cleaner,
     private val osmQuestsHiddenController: OsmQuestsHiddenController,
@@ -85,26 +86,6 @@ class SettingsViewModelImpl(
         override fun onUnhidAll() { updateHiddenQuests() }
     }
 
-    private val onThemeChanged = {
-        val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
-        AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
-    }
-
-    private val onLanguageChanged = {
-        setDefaultLocales(getSelectedLocales(prefs))
-    }
-
-    private val onResurveyIntervalsChanged = {
-        resurveyIntervalsUpdater.update()
-    }
-
-    private val onMapTileCacheSizeChanged = {
-        tileCacheSize.value = prefs.getInt(
-            Prefs.MAP_TILECACHE_IN_MB,
-            ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
-        )
-    }
-
     override val hiddenQuestCount = MutableStateFlow(0L)
     override val questTypeCount = MutableStateFlow<QuestTypeCount?>(null)
     override val selectedQuestPresetName = MutableStateFlow<String?>(null)
@@ -114,16 +95,28 @@ class SettingsViewModelImpl(
         ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
     ))
 
+    private val listeners = mutableListOf<SettingsListener>()
+
     init {
         visibleQuestTypeSource.addListener(visibleQuestTypeListener)
         questPresetsSource.addListener(questPresetsListener)
         osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
 
-        prefs.addListener(Prefs.THEME_SELECT, onThemeChanged)
-        prefs.addListener(Prefs.LANGUAGE_SELECT, onLanguageChanged)
-        prefs.addListener(Prefs.RESURVEY_INTERVALS, onResurveyIntervalsChanged)
-        prefs.addListener(Prefs.MAP_TILECACHE_IN_MB, onMapTileCacheSizeChanged)
+        listeners += prefs.addStringOrNullListener(Prefs.THEME_SELECT) { theme ->
+            val themeOrDefault = Prefs.Theme.valueOf(theme ?: getDefaultTheme())
+            AppCompatDelegate.setDefaultNightMode(themeOrDefault.appCompatNightMode)
+        }
+
+        listeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
+            setDefaultLocales(getSelectedLocales(prefs))
+        }
+        listeners += prefs.addStringOrNullListener(Prefs.RESURVEY_INTERVALS) {
+            resurveyIntervalsUpdater.update()
+        }
+        listeners += prefs.addIntOrNullListener(Prefs.MAP_TILECACHE_IN_MB) { size ->
+            tileCacheSize.value = size ?: ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
+        }
 
         updateSelectableLanguageCodes()
         updateHiddenQuests()
@@ -137,10 +130,9 @@ class SettingsViewModelImpl(
         osmNoteQuestsHiddenController.removeListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.removeListener(osmQuestsHiddenListener)
 
-        prefs.removeListener(Prefs.THEME_SELECT, onThemeChanged)
-        prefs.removeListener(Prefs.LANGUAGE_SELECT, onLanguageChanged)
-        prefs.removeListener(Prefs.RESURVEY_INTERVALS, onResurveyIntervalsChanged)
-        prefs.removeListener(Prefs.MAP_TILECACHE_IN_MB, onMapTileCacheSizeChanged)
+        for (listener in listeners) {
+            listener.deactivate()
+        }
     }
 
     override fun deleteCache() {

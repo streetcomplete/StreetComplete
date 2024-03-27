@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -59,7 +59,7 @@ class ProfileViewModelImpl(
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val avatarsCacheDirectory: File,
-    private val prefs: Preferences
+    private val prefs: ObservableSettings
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)

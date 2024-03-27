@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
 
@@ -29,7 +29,7 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     override val items: List<DisplayItem<LitStatus>> =
         listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY).map { it.asItem() }
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
     private lateinit var favs: LastPickedValuesStore<DisplayItem<LitStatus>>
 
     override val lastPickedItem: DisplayItem<LitStatus>?

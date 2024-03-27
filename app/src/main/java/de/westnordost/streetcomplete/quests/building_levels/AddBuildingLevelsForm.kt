@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.mostCommonWithin
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import com.russhwolf.settings.ObservableSettings
 import org.koin.android.ext.android.inject
 
 class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
@@ -24,7 +24,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     override val contentLayoutResId = R.layout.quest_building_levels
     private val binding by contentViewBinding(QuestBuildingLevelsBinding::bind)
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
