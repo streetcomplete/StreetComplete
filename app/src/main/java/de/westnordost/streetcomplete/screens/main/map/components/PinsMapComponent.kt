@@ -19,6 +19,7 @@ import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -75,7 +76,8 @@ class PinsMapComponent(
     private fun createPinBitmaps(): HashMap<String, Bitmap> {
         val questIconResIds = (
             questTypeRegistry.map { it.icon } +
-            overlayRegistry.map { it.icon }
+            overlayRegistry.map { it.icon } +
+            OsmNoteQuestType.icon
         ).toSortedSet()
 
         val result = HashMap<String, Bitmap>(questIconResIds.size)
