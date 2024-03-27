@@ -24,8 +24,8 @@ import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivi
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
-import java.util.Locale
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.Locale
 
 /** Shows the settings lists */
 class SettingsFragment : TwoPaneListFragment(), HasTitle {

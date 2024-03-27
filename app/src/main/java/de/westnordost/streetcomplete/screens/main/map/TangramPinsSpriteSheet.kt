@@ -3,13 +3,13 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import com.russhwolf.settings.ObservableSettings
 import kotlin.math.ceil
 import kotlin.math.sqrt
 

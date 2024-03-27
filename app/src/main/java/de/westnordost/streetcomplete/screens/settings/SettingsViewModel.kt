@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.screens.settings
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
+import com.russhwolf.settings.ObservableSettings
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -22,8 +24,6 @@ import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
-import com.russhwolf.settings.ObservableSettings
-import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,10 +41,10 @@ abstract class SettingsViewModel : ViewModel() {
     abstract fun deleteCache()
 
     /* this direct access should be removed in the mid-term. However, since the
-    *  PreferenceFragmentCompat already implicitly accesses the shared preferences to display the
-    *  current choice, the ViewModel needs to be adapted anyway later when the view does not
-    *  inherit from that construct anymore and include many more StateFlows based off the
-    *  Preferences displayed here -  */
+     * PreferenceFragmentCompat already implicitly accesses the shared preferences to display the
+     * current choice, the ViewModel needs to be adapted anyway later when the view does not
+     * inherit from that construct anymore and include many more StateFlows based off the
+     * Preferences displayed here -  */
     abstract val prefs: ObservableSettings
 }
 

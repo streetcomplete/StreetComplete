@@ -4,11 +4,11 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.ktx.createBitmapWithWhiteBorder
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import com.russhwolf.settings.ObservableSettings
 import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.sqrt

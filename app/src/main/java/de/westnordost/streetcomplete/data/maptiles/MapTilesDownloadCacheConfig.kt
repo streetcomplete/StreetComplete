@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import android.content.Context
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.Prefs
-import com.russhwolf.settings.ObservableSettings
 import okhttp3.Cache
 import okhttp3.CacheControl
 import java.io.File

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -10,7 +11,6 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.logs.Log
-import com.russhwolf.settings.ObservableSettings
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 

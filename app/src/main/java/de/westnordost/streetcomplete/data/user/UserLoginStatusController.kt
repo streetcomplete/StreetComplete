@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.user
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
-import com.russhwolf.settings.ObservableSettings
 
 class UserLoginStatusController(
     private val osmConnection: OsmConnection,

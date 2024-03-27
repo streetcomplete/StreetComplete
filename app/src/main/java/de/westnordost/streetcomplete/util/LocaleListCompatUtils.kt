@@ -6,9 +6,9 @@ import android.os.Build
 import android.os.LocaleList
 import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.ktx.addedToFront
-import com.russhwolf.settings.ObservableSettings
 import java.util.Locale
 
 /** Get the override-locale selected in this app or null if there is no override */

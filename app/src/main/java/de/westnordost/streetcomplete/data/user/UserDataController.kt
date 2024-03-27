@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.user
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
-import com.russhwolf.settings.ObservableSettings
 
 /** Controller that handles user login, logout, auth and updated data */
 class UserDataController(
