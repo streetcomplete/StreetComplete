@@ -186,7 +186,11 @@ private fun Way.getAllowedBearingStartingAt(nodeId: Long, mapData: MapDataWithGe
     val nodeIndex = nodeIds.indexOf(nodeId)
     // ways in mapData are complete, so we must have all way nodes
     return when (nodeIndex) {
-        0 -> listOf(startPos.initialBearingTo(mapData.getNode(nodeIds[1])!!.position))
+        0 -> {
+            val p = mapData.getNode(nodeIds[1])?.position
+            require(p != null) { "node ${nodeIds[1]} not in mapData, but it's in way $this" }
+            listOf(startPos.initialBearingTo(p))
+        }
         nodeIds.lastIndex -> listOf(startPos.initialBearingTo(mapData.getNode(nodeIds[nodeIndex - 1])!!.position))
         else -> listOfNotNull(
             if (!isReversedOneway(tags)) // i to i+1 not allowed if reverse
@@ -207,7 +211,11 @@ private fun Way.getAllowedBearingGoingTo(nodeId: Long, mapData: MapDataWithGeome
     val nodeIndex = nodeIds.indexOf(nodeId)
     // ways in mapData are complete, so we must have all way nodes
     return when (nodeIndex) {
-        0 -> listOf(mapData.getNode(nodeIds[1])!!.position.finalBearingTo(endPos))
+        0 -> {
+            val n = mapData.getNode(nodeIds[1])
+            require(n != null) { "node ${nodeIds[1]} not in mapData, but it's in way $this" }
+            listOf(n.position.finalBearingTo(endPos))
+        }
         nodeIds.lastIndex -> listOf(mapData.getNode(nodeIds[nodeIndex - 1])!!.position.finalBearingTo(endPos))
         else -> listOfNotNull(
             if (!isForwardOneway(tags)) // i+1 to i not allowed if forward
