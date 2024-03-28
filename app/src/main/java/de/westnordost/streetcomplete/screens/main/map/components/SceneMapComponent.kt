@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.mapzen.tangram.SceneUpdate
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.util.Locale
@@ -18,7 +18,7 @@ class SceneMapComponent(
     private val resources: Resources,
     private val ctrl: KtMapController,
     private val vectorTileProvider: VectorTileProvider,
-    private val prefs: Preferences,
+    private val prefs: ObservableSettings,
 ) {
     private var sceneUpdates: MutableList<List<Pair<String, String>>> = mutableListOf()
 

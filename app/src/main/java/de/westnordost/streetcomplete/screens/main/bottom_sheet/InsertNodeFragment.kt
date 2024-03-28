@@ -249,7 +249,7 @@ class InsertNodeFragment :
         if (position !in mapData.boundingBox!!)
             getMapData(position)
         val metersPerPixel = overlayFormListener?.metersPerPixel ?: return
-        val maxDistance = metersPerPixel * requireContext().dpToPx(20)
+        val maxDistance = metersPerPixel * requireContext().resources.dpToPx(20)
         val snapToVertexDistance = maxDistance / 2
 
         positionOnWay =

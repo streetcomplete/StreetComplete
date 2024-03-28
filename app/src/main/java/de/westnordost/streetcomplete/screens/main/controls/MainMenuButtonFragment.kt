@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
@@ -20,7 +21,6 @@ import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -33,7 +33,7 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
     private val teamModeQuestFilter: TeamModeQuestFilter by inject()
     private val downloadController: DownloadController by inject()
     private val downloadProgressSource: DownloadProgressSource by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
     private val questPresetsController: QuestPresetsController by inject()
 
     interface Listener {

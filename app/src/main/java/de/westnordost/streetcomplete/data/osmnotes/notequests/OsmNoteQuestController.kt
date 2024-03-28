@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
@@ -8,6 +10,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.Listeners
+import kotlinx.serialization.json.Json
 
 /** Used to get visible osm note quests */
 class OsmNoteQuestController(
@@ -15,7 +18,7 @@ class OsmNoteQuestController(
     private val hiddenDB: NoteQuestsHiddenDao,
     private val userDataSource: UserDataSource,
     private val userLoginStatusSource: UserLoginStatusSource,
-    private val notesPreferences: NotesPreferences,
+    private val prefs: ObservableSettings,
 ) : OsmNoteQuestSource, OsmNoteQuestsHiddenController, OsmNoteQuestsHiddenSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
@@ -25,7 +28,7 @@ class OsmNoteQuestController(
     private val listeners = Listeners<OsmNoteQuestSource.Listener>()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
-        notesPreferences.showOnlyNotesPhrasedAsQuestions
+        !prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
@@ -61,17 +64,31 @@ class OsmNoteQuestController(
         override fun onLoggedOut() {}
     }
 
-    private val notesPreferencesListener = object : NotesPreferences.Listener {
-        override fun onNotesPreferencesChanged() {
-            // a lot of notes become visible/invisible if this option is changed
-            onInvalidated()
-        }
-    }
-
     init {
         noteSource.addListener(noteUpdatesListener)
         userLoginStatusSource.addListener(userLoginStatusListener)
-        notesPreferences.listener = notesPreferencesListener
+        prefs.addBooleanListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false) {
+            // a lot of notes become visible/invisible if this option is changed
+            onInvalidated()
+        }
+        prefs.addStringListener(Prefs.HIDE_NOTES_BY_USERS, "") {
+            reloadBlocks()
+        }
+        reloadBlocks()
+    }
+
+    private val blockedUserIds = hashSetOf<Long>()
+    private val blockedUserNames = hashSetOf<String>()
+
+    private fun reloadBlocks() {
+        val blockedList: List<String> = Json.decodeFromString(prefs.getString(Prefs.HIDE_NOTES_BY_USERS, ""))
+        blockedUserIds.clear()
+        blockedUserNames.clear()
+        blockedList.forEach {
+            val id = it.toLongOrNull()
+            if (id == null) blockedUserNames.add(it)
+            else blockedUserIds.add(id)
+        }
     }
 
     override fun getVisible(questId: Long): OsmNoteQuest? {
@@ -88,7 +105,7 @@ class OsmNoteQuestController(
     }
 
     private fun createQuestForNote(note: Note, blockedNoteIds: Set<Long> = setOf()): OsmNoteQuest? =
-        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds, notesPreferences)) {
+        if (note.shouldShowAsQuest(userDataSource.userId, showOnlyNotesPhrasedAsQuestions, blockedNoteIds, blockedUserIds, blockedUserNames)) {
             OsmNoteQuest(note.id, note.position)
         } else {
             null
@@ -198,7 +215,8 @@ private fun Note.shouldShowAsQuest(
     userId: Long,
     showOnlyNotesPhrasedAsQuestions: Boolean,
     blockedNoteIds: Set<Long>,
-    notesPreferences: NotesPreferences,
+    blockedIds: Collection<Long>,
+    blockedNames: Collection<String>,
 ): Boolean {
     // don't show notes hidden by user
     if (id in blockedNoteIds) return false
@@ -206,8 +224,8 @@ private fun Note.shouldShowAsQuest(
 
     // don't show notes created by specific users
     comments.firstOrNull()?.let {
-        if (notesPreferences.blockedIds.contains(it.user?.id)) return false
-        if (notesPreferences.blockedNames.contains(it.user?.displayName?.lowercase())) return false
+        if (blockedIds.contains(it.user?.id)) return false
+        if (blockedNames.contains(it.user?.displayName?.lowercase())) return false
     }
 
     // don't show notes where user replied last unless he wrote a survey required marker

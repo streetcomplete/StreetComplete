@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.overlays.cycleway
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -11,10 +12,8 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.cycleway_separate.applyTo
 import de.westnordost.streetcomplete.osm.cycleway_separate.asItem
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
-import de.westnordost.streetcomplete.osm.lit.asItem
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
 
@@ -25,7 +24,7 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
             it.asItem(countryInfo.isLeftHandTraffic)
         }
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
     private lateinit var favs: LastPickedValuesStore<DisplayItem<SeparateCycleway>>
 
     override val lastPickedItem: DisplayItem<SeparateCycleway>?

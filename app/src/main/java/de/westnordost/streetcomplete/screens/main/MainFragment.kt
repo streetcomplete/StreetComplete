@@ -44,6 +44,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -152,7 +153,6 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.showOverlayCustomizer
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
@@ -221,7 +221,7 @@ class MainFragment :
     private val selectedOverlaySource: SelectedOverlayController by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
     private val questPresetsController: QuestPresetsController by inject()
     private val levelFilter: LevelFilter by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
@@ -455,7 +455,7 @@ class MainFragment :
                 else overlayRegistry.getOrdinalOf(it)!! < ApplicationConstants.EE_QUEST_OFFSET
             eeAllowed && it !is CustomOverlay
         } + getFakeCustomOverlays(prefs, requireContext())
-        val params = ViewGroup.LayoutParams(requireContext().dpToPx(52).toInt(), requireContext().dpToPx(52).toInt())
+        val params = ViewGroup.LayoutParams(requireContext().resources.dpToPx(52).toInt(), requireContext().resources.dpToPx(52).toInt())
         overlays.forEach { overlay ->
             val view = ImageView(requireContext())
             val index = overlay.wikiLink?.toIntOrNull()
@@ -1554,7 +1554,7 @@ class MainFragment :
                 Pair(color, mutableListOf())
             }.second.add(it)
         }
-        val params = ViewGroup.LayoutParams(requireContext().dpToPx(54).toInt(), requireContext().dpToPx(54).toInt())
+        val params = ViewGroup.LayoutParams(requireContext().resources.dpToPx(54).toInt(), requireContext().resources.dpToPx(54).toInt())
         activity?.runOnUiThread {
             questsAndColorByElement.values.forEach {
                 val color = it.first
@@ -1601,7 +1601,7 @@ class MainFragment :
         val offset = view?.getLocationInWindow() ?: return
         val startPos = mapFragment?.getPointOf(position) ?: return
 
-        val size = ctx.dpToPx(42).toInt()
+        val size = ctx.resources.dpToPx(42).toInt()
         startPos.x += offset.x - size / 2f
         startPos.y += offset.y - size * 1.5f
 
@@ -1631,7 +1631,7 @@ class MainFragment :
     }
 
     private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON") == Prefs.Autosync.ON
+        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC) == Prefs.Autosync.ON
 
     private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
         val targetPos = target.getLocationInWindow().toPointF()

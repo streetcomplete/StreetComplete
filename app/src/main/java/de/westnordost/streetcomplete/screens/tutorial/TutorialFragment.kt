@@ -97,7 +97,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .start()
 
         // map zooms in and tilts
-        val mapTranslate = ctx.dpToPx(-50)
+        val mapTranslate = ctx.resources.dpToPx(-50)
         val mapRotate = 50f
         val mapScale = 1.5f
 
@@ -144,10 +144,9 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
         // quest pins fall into place
         listOf(binding.questPin1, binding.questPin2, binding.questPin3).forEach { pin ->
-
             delay(400)
 
-            pin.translationY = ctx.pxToDp(-200)
+            pin.translationY = ctx.resources.pxToDp(-200)
             pin.animate()
                 .setInterpolator(BounceInterpolator())
                 .setDuration(400)
@@ -193,7 +192,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     }
 
     private fun appearText(view: View) {
-        view.translationY = view.context.pxToDp(-100)
+        view.translationY = view.resources.pxToDp(-100)
         view.animate()
             .withStartAction { view.visibility = View.VISIBLE }
             .setDuration(300)
@@ -206,7 +205,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         view.animate()
             .setDuration(300)
             .alpha(0f)
-            .translationY(view.context.pxToDp(100))
+            .translationY(view.resources.pxToDp(100))
             .withEndAction { view.visibility = View.GONE }
             .start()
     }
@@ -222,7 +221,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         tutorialStepStaySafe.animate()
             .setDuration(400)
             .alpha(0f)
-            .translationY(ctx.pxToDp(100))
+            .translationY(ctx.resources.pxToDp(100))
             .withEndAction { tutorialStepStaySafe.visibility = View.GONE }
             .start()
 
@@ -245,7 +244,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
             .withEndAction { binding.tutorialGpsButton.visibility = View.GONE }
             .start()
 
-        binding.tutorialStepFork.translationY = ctx.pxToDp(-100)
+        binding.tutorialStepFork.translationY = ctx.resources.pxToDp(-100)
 
         delay(400)
 

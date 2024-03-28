@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.util
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.util.prefs.Preferences
 
 class LastPickedValuesStore<T : Any>(
-    private val prefs: Preferences,
+    private val prefs: ObservableSettings,
     private val key: String,
     private val serialize: (T) -> String,
     private val deserialize: (String) -> T?, // null = unwanted value, see mostCommonWithin

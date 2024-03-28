@@ -98,7 +98,7 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
                 finishCurrentDestination()
             checkIsFormComplete()
         }
-        binding.destinationInput.doOnLayout { binding.destinationInput.dropDownWidth = binding.destinationInput.width - requireContext().dpToPx(60).toInt() }
+        binding.destinationInput.doOnLayout { binding.destinationInput.dropDownWidth = binding.destinationInput.width - requireContext().resources.dpToPx(60).toInt() }
 
         binding.addDestination.setOnClickListener {
             if (binding.destinationInput.text.isBlank()) return@setOnClickListener

@@ -118,9 +118,9 @@ class AddressNumberInputViewController(
             val formWidth = ctx.resources.getDimension(R.dimen.quest_form_width).toInt().takeIf { it > 0 }
                 ?: ctx.resources.displayMetrics.widthPixels
             // form width minus 250dp, but max. 150dp
-            editText.maxWidth = (formWidth - ctx.dpToPx(250).toInt())
-                .coerceAtMost(ctx.dpToPx(150).toInt())
-                .coerceAtLeast(ctx.dpToPx(56).toInt())
+            editText.maxWidth = (formWidth - ctx.resources.dpToPx(250).toInt())
+                .coerceAtMost(ctx.resources.dpToPx(150).toInt())
+                .coerceAtLeast(ctx.resources.dpToPx(56).toInt())
         }
     }
 

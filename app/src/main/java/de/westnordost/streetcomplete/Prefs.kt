@@ -75,7 +75,7 @@ object Prefs {
     const val AUTO_DOWNLOAD = "auto_download"
     const val GPS_INTERVAL = "gps_interval"
     const val NETWORK_INTERVAL = "network_interval"
-    const val HIDE_NOTES_BY_USERS = "hide_notes_by_users"
+    const val HIDE_NOTES_BY_USERS = "hide_notes_by_users2"
     const val MANUAL_DOWNLOAD_OVERRIDE_CACHE = "manual_download_override_cache"
     const val QUICK_SETTINGS = "quick_settings"
     const val ALLOWED_LEVEL = "allowed_level"

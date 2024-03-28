@@ -96,7 +96,7 @@ class OsmoseQuest(private val osmoseDao: OsmoseDao) : ExternalSourceQuestType {
         }
         val appLanguageInfo = TextView(context).apply {
             setText(R.string.quest_osmose_use_app_language_information)
-            val padding = context.dpToPx(8).toInt()
+            val padding = context.resources.dpToPx(8).toInt()
             setPadding(padding, 0, padding, 0)
         }
         val layout = LinearLayout(context).apply {

@@ -68,7 +68,7 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
                 addValue(it.toString())
             checkIsFormComplete()
         }
-        binding.valueInput.doOnLayout { binding.valueInput.dropDownWidth = binding.valueInput.width - requireContext().dpToPx(60).toInt() }
+        binding.valueInput.doOnLayout { binding.valueInput.dropDownWidth = binding.valueInput.width - requireContext().resources.dpToPx(60).toInt() }
 
         binding.addValueButton.setOnClickListener {
             if (!isFormComplete() || binding.valueInput.text.isBlank()) return@setOnClickListener

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -10,7 +11,6 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.logs.Log
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 
@@ -22,7 +22,7 @@ class StatisticsController(
     private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
     private val activeDatesDao: ActiveDatesDao,
     private val countryBoundaries: Lazy<CountryBoundaries>,
-    private val prefs: Preferences,
+    private val prefs: ObservableSettings,
     userLoginStatusSource: UserLoginStatusSource
 ) : StatisticsSource {
 

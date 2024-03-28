@@ -32,7 +32,7 @@ class StatisticsByCountryFragment : Fragment(R.layout.fragment_statistics_ball_p
         super.onViewCreated(view, savedInstanceState)
         lifecycle.addObserver(binding.ballPitView)
         observe(viewModel.countryStatistics) { countryStatistics ->
-            if (countryStatistics.isNotEmpty() && !hasCreatedBallPit) {
+            if (countryStatistics != null && !hasCreatedBallPit) {
                 binding.ballPitView.setViews(countryStatistics.map {
                     createCountryBubbleView(it.countryCode, it.count, it.rank) to it.count
                 })
@@ -47,7 +47,7 @@ class StatisticsByCountryFragment : Fragment(R.layout.fragment_statistics_ball_p
         countryBubbleView.id = View.generateViewId()
         countryBubbleView.layoutParams = ViewGroup.LayoutParams(240, 240)
         countryBubbleView.countryCode = countryCode
-        countryBubbleView.elevation = ctx.dpToPx(6)
+        countryBubbleView.elevation = ctx.resources.dpToPx(6)
         countryBubbleView.setOnClickListener { v ->
             listener?.onClickedCountryFlag(countryCode, solvedCount, rank, v)
         }

@@ -233,8 +233,8 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
     private fun checkCurrentCursorPosition() {
         val roads = roads ?: return
         val metersPerPixel = metersPerPixel ?: return
-        val maxDistance = metersPerPixel * requireContext().dpToPx(24)
-        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(12)
+        val maxDistance = metersPerPixel * requireContext().resources.dpToPx(24)
+        val snapToVertexDistance = metersPerPixel * requireContext().resources.dpToPx(12)
         val pos = geometry.center.getPositionOnWays(roads, maxDistance, snapToVertexDistance)
         if (pos is VertexOfWay) {
             val node = mapDataWithEditsSource.getNode(pos.nodeId)!!

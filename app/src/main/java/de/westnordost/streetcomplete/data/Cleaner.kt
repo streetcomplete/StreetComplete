@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data
 
+import android.content.Context
 import android.content.SharedPreferences
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
@@ -10,10 +11,17 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 /** Deletes old unused persisted data in the background */
 class Cleaner(
+    private val context: Context,
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
     private val questTypeRegistry: QuestTypeRegistry,
@@ -21,7 +29,9 @@ class Cleaner(
     private val logsController: LogsController,
     private val prefs: SharedPreferences,
 ) {
-    fun clean() {
+    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Cleaner") + Dispatchers.IO)
+
+    fun cleanOld() = scope.launch {
         val time = nowAsEpochMilliseconds()
 
         val oldDataTimestamp = nowAsEpochMilliseconds() - prefs.getInt(Prefs.DATA_RETAIN_TIME, ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS) * 24L * 60 * 60 * 1000
@@ -35,6 +45,16 @@ class Cleaner(
         logsController.deleteOlderThan(oldLogTimestamp)
 
         Log.i(TAG, "Cleaning took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
+    }
+
+    fun cleanTiles() =  scope.launch { context.externalCacheDir?.purge() }
+
+    fun cleanData() = scope.launch {
+        downloadedTilesController.clear()
+        mapDataController.clear()
+        noteController.clear()
+        logsController.clear()
+        questTypeRegistry.forEach { it.deleteMetadataOlderThan(nowAsEpochMilliseconds()) }
     }
 
     companion object {

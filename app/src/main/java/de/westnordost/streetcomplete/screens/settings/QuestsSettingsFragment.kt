@@ -113,7 +113,7 @@ class QuestsSettingsFragment :
             val downloadSwitch = SwitchCompat(requireContext()).apply {
                 isChecked = prefs.getBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, false)
                 setText(R.string.pref_quest_monitor_download)
-                setPadding(0, 0, 0, context.dpToPx(8).toInt())
+                setPadding(0, 0, 0, context.resources.dpToPx(8).toInt())
             }
             val activeText = TextView(context).apply { setText(R.string.quest_monitor_active_request) }
             val gpsSwitch = SwitchCompat(requireContext()).apply {

@@ -248,7 +248,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
                     is WeightRestriction -> restriction.weight
                 }
                 val drawable = restriction.getDrawable(layoutInflater, countryInfo)
-                val height = context.dpToPx(56).toInt()
+                val height = context.resources.dpToPx(56).toInt()
                 val resizedDrawable = drawable
                     ?.createBitmap(height, drawable.intrinsicWidth * height / drawable.intrinsicHeight)
                     ?.toDrawable(context.resources)

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.util.prefs.Preferences
 
-class LastEditTimeStore(private val prefs: Preferences) {
+class LastEditTimeStore(private val prefs: ObservableSettings) {
 
     fun touch() {
         prefs.putLong(Prefs.LAST_EDIT_TIME, nowAsEpochMilliseconds())

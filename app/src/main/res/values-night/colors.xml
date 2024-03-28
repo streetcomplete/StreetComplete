@@ -28,9 +28,6 @@
     <color name="log_warning">#ffcc80</color>
     <color name="log_error">#ef9a9a</color>
 
-    <!-- because on dark background, normal blue doesn't work well -->
-    <color name="star_of_david">#44f</color>
-
     <!-- for fading out images -->
     <color name="fade_out">#303030</color>
     <color name="fade_out_transparent">#00303030</color>

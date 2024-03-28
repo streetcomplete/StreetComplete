@@ -16,6 +16,7 @@ import androidx.core.text.HtmlCompat
 import androidx.core.widget.doAfterTextChanged
 import com.github.difflib.text.DiffRow.Tag
 import com.github.difflib.text.DiffRowGenerator
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
@@ -25,7 +26,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import java.util.regex.PatternSyntaxException
 
 // restarts are typically necessary on changes of element selection because the filter is created by lazy
@@ -196,7 +196,7 @@ fun booleanQuestSettingsDialog(context: Context, prefs: SharedPreferences, pref:
 
 private fun dialog(context: Context, messageId: Int, initialValue: String, input: EditText): AlertDialog.Builder {
     input.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
-    val padding = context.dpToPx(8).toInt()
+    val padding = context.resources.dpToPx(8).toInt()
     input.setPadding(2 * padding, padding, 2 * padding, padding) // should be less than default padding to allow more text per line
     input.setText(initialValue)
     input.maxLines = 15 // if lines are not limited, the edit text might get so big that buttons are off screen (thanks, google for allowing this)
@@ -255,7 +255,7 @@ fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SET
 else
     ""
 
-fun questPrefix(prefs: Preferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
+fun questPrefix(prefs: ObservableSettings) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
     prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
 else
     ""

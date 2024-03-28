@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.DialogMainMenuBinding
@@ -15,7 +16,6 @@ import de.westnordost.streetcomplete.screens.main.teammode.TeamModeDialog
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.util.dialogs.showProfileSelectionDialog
-import de.westnordost.streetcomplete.util.prefs.Preferences
 
 /** Shows a dialog containing the main menu items */
 class MainMenuDialog(
@@ -24,7 +24,7 @@ class MainMenuDialog(
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
     onDisableTeamMode: () -> Unit,
-    prefs: Preferences,
+    prefs: ObservableSettings,
     questPresetsController: QuestPresetsController,
 ) : AlertDialog(context) {
     init {

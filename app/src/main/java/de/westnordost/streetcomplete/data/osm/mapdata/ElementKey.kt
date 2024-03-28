@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ElementKey(val type: ElementType, val id: Long) {
-    override fun toString() = "${type.name} $id"
+    override fun toString() = "${type.name}#$id"
 }
 
 val ElementGeometryEntry.key get() = ElementKey(elementType, elementId)

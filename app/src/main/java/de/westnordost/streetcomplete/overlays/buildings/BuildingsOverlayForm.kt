@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.overlays.buildings
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.osm.building.BuildingType
@@ -16,13 +17,12 @@ import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.util.padWith
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import org.koin.android.ext.android.inject
 
 class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
     private lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<BuildingType>>
 
     override val allItems = BuildingTypeCategory.entries.toItems()

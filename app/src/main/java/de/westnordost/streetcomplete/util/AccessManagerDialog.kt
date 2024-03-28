@@ -71,7 +71,7 @@ class AccessManagerDialog(context: Context, tags: Map<String, String>, onClickOk
             newAccessTags.remove(key)
             createAccessTagViews()
         }
-        view.root.setPadding(0, context.dpToPx(4).toInt(), 0, context.dpToPx(4).toInt())
+        view.root.setPadding(0, context.resources.dpToPx(4).toInt(), 0, context.resources.dpToPx(4).toInt())
         return view.root
     }
 

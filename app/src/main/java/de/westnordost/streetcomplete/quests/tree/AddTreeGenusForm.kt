@@ -56,7 +56,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
         binding.nameInput.setOnFocusChangeListener { _, focused ->
             if (focused) binding.nameInput.setText(" ", true)
         }
-        binding.nameInput.doOnLayout { binding.nameInput.dropDownWidth = binding.nameInput.width - requireContext().dpToPx(60).toInt() }
+        binding.nameInput.doOnLayout { binding.nameInput.dropDownWidth = binding.nameInput.width - requireContext().resources.dpToPx(60).toInt() }
         binding.nameInput.requestFocus()
     }
 

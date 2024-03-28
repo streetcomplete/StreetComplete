@@ -42,8 +42,8 @@ class EditTagsAdapter(
     val suggestionMaxHeight = (context.resources.displayMetrics.heightPixels * 0.8).toInt()
     // used to avoid covering keyboard button by tag dropdown
     // autocomplete view height is sth like 18sp text size, 16sp edit date text size + some padding
-    val keyViewOffset = (context.spToPx(34) + context.dpToPx(32)).toInt()
-    val topMargin = context.dpToPx(60).toInt() // for id/editorContainer
+    val keyViewOffset = (context.resources.spToPx(34) + context.resources.dpToPx(32)).toInt()
+    val topMargin = context.resources.dpToPx(60).toInt() // for id/editorContainer
 
     init {
         if (keySuggestionsForFeatureId.isEmpty() && valueSuggestionsByKey.isEmpty()) {

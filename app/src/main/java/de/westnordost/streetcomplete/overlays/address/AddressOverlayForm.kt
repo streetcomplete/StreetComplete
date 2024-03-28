@@ -207,8 +207,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     private fun checkCurrentCursorPosition() {
         val buildings = buildings ?: return
         val metersPerPixel = metersPerPixel ?: return
-        val maxDistance = metersPerPixel * requireContext().dpToPx(12)
-        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(8)
+        val maxDistance = metersPerPixel * resources.dpToPx(12)
+        val snapToVertexDistance = metersPerPixel * resources.dpToPx(8)
         positionOnWay = geometry.center.getPositionOnWays(buildings, maxDistance, snapToVertexDistance)
     }
 

@@ -22,10 +22,10 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.LaurelWreathDrawable
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -84,9 +84,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.datesActiveView.setImageDrawable(DatesActiveDrawable(
                 datesActive.toSet(),
                 range,
-                context.dpToPx(18),
-                context.dpToPx(2),
-                context.dpToPx(4),
+                context.resources.dpToPx(18),
+                context.resources.dpToPx(2),
+                context.resources.dpToPx(4),
                 context.resources.getColor(R.color.hint_text)
             ))
         }
@@ -124,7 +124,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         animations.forEach { it.end() }
         animations.clear()
     }
-
 
     private fun updateRank(rank: Int, editCount: Int) {
         val showRank = rank > 0 && editCount > 100
@@ -211,7 +210,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         anim.duration = 3000
         anim.addUpdateListener { block(it.animatedValue as Int) }
         val p = view.getLocationInWindow()
-        anim.startDelay = max(0, view.context.pxToDp(p.y).toLong() * 12 - 2000)
+        anim.startDelay = max(0, view.resources.pxToDp(p.y).toLong() * 12 - 2000)
         anim.interpolator = AccelerateDecelerateInterpolator()
         anim.start()
         animations.add(anim)

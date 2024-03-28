@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.ListPopupWindow
 import androidx.fragment.app.Fragment
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -19,7 +20,6 @@ import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapt
 import de.westnordost.streetcomplete.util.getFakeCustomOverlays
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.showOverlayCustomizer
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -29,7 +29,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
     private val selectedOverlayController: SelectedOverlayController by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private val selectedOverlaylistener = object : SelectedOverlaySource.Listener {
         override fun onSelectedOverlayChanged() {
@@ -105,7 +105,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
             popupWindow.dismiss()
         }
         popupWindow.anchorView = view
-        popupWindow.width = requireContext().dpToPx(240).toInt()
+        popupWindow.width = resources.dpToPx(240).toInt()
         popupWindow.show()
     }
 

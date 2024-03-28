@@ -9,7 +9,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.screens.HasTitle
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 fun Fragment.openUri(uri: String) = context?.openUri(uri) ?: false

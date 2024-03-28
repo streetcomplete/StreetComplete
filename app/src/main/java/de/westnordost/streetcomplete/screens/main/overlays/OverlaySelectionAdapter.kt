@@ -7,19 +7,20 @@ import android.widget.AdapterView
 import android.widget.BaseAdapter
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.graphics.drawable.updateBounds
 import androidx.core.view.isVisible
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.showOverlayCustomizer
 
 /** Adapter for the list in which the user can select which overlay he wants to use */
 class OverlaySelectionAdapter(
     private val overlays: List<Overlay>,
-    private val prefs: Preferences,
+    private val prefs: ObservableSettings,
     private val questTypeRegistry: QuestTypeRegistry,
     ) : BaseAdapter() {
 
@@ -38,6 +39,7 @@ class OverlaySelectionAdapter(
         val textView = view.findViewById(R.id.overlay_text) as TextView
         val isAdd = overlay == null && position != 0
         val titleResId = overlay?.title ?: if (isAdd) R.string.custom_overlay_add_button else R.string.overlay_none
+        val bound = context.resources.dpToPx(38).toInt()
         if (titleResId != 0) { // normal overlay
             textView.setText(titleResId)
         } else { // custom overlay
@@ -62,9 +64,9 @@ class OverlaySelectionAdapter(
         }
 
         val icon = context.getDrawable(overlay?.icon ?: if (isAdd) R.drawable.ic_add_24dp else R.drawable.space_24dp)
-        icon?.setBounds(0, 0, context.dpToPx(38).toInt(), context.dpToPx(38).toInt())
+        icon?.updateBounds(right = bound, bottom = bound)
         textView.setCompoundDrawables(icon, null, null, null)
-        textView.compoundDrawablePadding = context.dpToPx(8).toInt()
+        textView.compoundDrawablePadding = context.resources.dpToPx(8).toInt()
         return view
     }
 }

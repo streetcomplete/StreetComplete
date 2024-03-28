@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.logs.Log
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
@@ -47,6 +48,7 @@ class ElementEditsController(
         isNearUserLocation: Boolean,
         key: QuestKey?
     ) {
+        Log.d(TAG, "Add ${type.name} for ${action.elementKeys.joinToString()}")
         // removes discardable tags if they were part of original element, but not if user added them
         val newAction = if (action is UpdateElementTagsAction && action.originalElement.tags.keys.any { it in DISCARDABLE_TAGS }) {
             val builder = StringMapChangesBuilder(action.originalElement.tags)
@@ -154,12 +156,14 @@ class ElementEditsController(
             if (action !is IsActionRevertable) return false
             // first create the revert action, as ElementIdProvider will be deleted when deleting the edit
             val reverted = action.createReverted(getIdProvider(edit.id))
+            Log.d(TAG, "Add revert ${edit.type.name} for ${edit.action.elementKeys.joinToString()}")
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
             add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted, edit.isNearUserLocation))
         } else {
             // not uploaded yet
+            Log.d(TAG, "Undo ${edit.type.name} for ${edit.action.elementKeys.joinToString()}")
             delete(edit)
         }
         return true
@@ -242,6 +246,10 @@ class ElementEditsController(
 
     private fun onDeletedEdits(edits: List<ElementEdit>) {
         listeners.forEach { it.onDeletedEdits(edits) }
+    }
+
+    companion object {
+        private const val TAG = "ElementEditsController"
     }
 }
 

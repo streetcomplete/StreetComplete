@@ -206,17 +206,14 @@ class MapDataController internal constructor(
         mapData.addAll(ways)
     }
 
-    fun getGeometry(type: ElementType, id: Long): ElementGeometry? = cache.getGeometry(type, id, geometryDB::get, nodeDB::get)
+    fun getGeometry(type: ElementType, id: Long): ElementGeometry? =
+        cache.getGeometry(type, id, geometryDB::get, nodeDB::get)
 
-    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> = cache.getGeometries(keys, geometryDB::getAllEntries, nodeDB::getAll)
+    fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> =
+        cache.getGeometries(keys, geometryDB::getAllEntries, nodeDB::getAll)
 
-    fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry {
-        val time = nowAsEpochMilliseconds()
-        val result = cache.getMapDataWithGeometry(bbox)
-        Log.i(TAG, "Fetched ${result.size} elements and geometries in ${nowAsEpochMilliseconds() - time}ms")
-
-        return result
-    }
+    fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry =
+        cache.getMapDataWithGeometry(bbox)
 
     data class ElementCounts(val nodes: Int, val ways: Int, val relations: Int)
     // this is used after downloading one tile with auto-download, so we should always have it cached

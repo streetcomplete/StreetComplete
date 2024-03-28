@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.osmose
 
 import android.database.sqlite.SQLiteException
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.ConflictAlgorithm
 import de.westnordost.streetcomplete.data.CursorPosition
@@ -32,7 +33,6 @@ import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.koin.core.component.KoinComponent
@@ -41,7 +41,7 @@ import java.io.IOException
 
 class OsmoseDao(
     private val db: Database,
-    private val prefs: Preferences,
+    private val prefs: ObservableSettings,
 ) : KoinComponent {
     private val client by lazy { OkHttpClient() }
 

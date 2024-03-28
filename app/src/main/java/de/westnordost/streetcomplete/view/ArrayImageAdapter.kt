@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.util.ktx.dpToPx
 class ArrayImageAdapter(context: Context, private val items: List<Int>, imageSizeDp: Int) :
     ArrayAdapter<Int>(context, android.R.layout.select_dialog_item, items)
 {
-    private val params = ViewGroup.LayoutParams(context.dpToPx(imageSizeDp).toInt(), context.dpToPx(imageSizeDp).toInt())
+    private val params = ViewGroup.LayoutParams(context.resources.dpToPx(imageSizeDp).toInt(), context.resources.dpToPx(imageSizeDp).toInt())
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // for non-dropdown
         val view = super.getView(position, convertView, parent)
         val tv = view.findViewById<TextView>(android.R.id.text1)

@@ -105,8 +105,8 @@ class LaneNarrowingTrafficCalmingForm :
     private fun checkCurrentCursorPosition() {
         val roads = roads ?: return
         val metersPerPixel = metersPerPixel ?: return
-        val maxDistance = metersPerPixel * requireContext().dpToPx(24)
-        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(12)
+        val maxDistance = metersPerPixel * resources.dpToPx(24)
+        val snapToVertexDistance = metersPerPixel * resources.dpToPx(12)
         positionOnWay = geometry.center.getPositionOnWays(roads, maxDistance, snapToVertexDistance)
         checkIsFormComplete()
     }

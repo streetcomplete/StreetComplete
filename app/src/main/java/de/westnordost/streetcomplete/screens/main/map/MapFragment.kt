@@ -20,6 +20,7 @@ import com.mapzen.tangram.TouchInput.ShoveResponder
 import com.mapzen.tangram.TouchInput.TapResponder
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -38,7 +39,6 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
@@ -94,7 +94,7 @@ open class MapFragment :
 
     private val vectorTileProvider: VectorTileProvider by inject()
     private val cacheConfig: MapTilesDownloadCacheConfig by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -110,19 +110,13 @@ open class MapFragment :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val onThemeBackgroundChanged = {
+    private val onBackgroundChangedListener = prefs.addStringListener(Prefs.THEME_BACKGROUND, "MAP") {
         sceneMapComponent?.isAerialView =
             (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
         viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
-        Unit
     }
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        prefs.addListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_map, container, false)
@@ -171,12 +165,8 @@ open class MapFragment :
     override fun onDestroyView() {
         super.onDestroyView()
         binding.map.onDestroy()
+        onBackgroundChangedListener.deactivate()
         controller = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        prefs.removeListener(Prefs.THEME_BACKGROUND, onThemeBackgroundChanged)
     }
 
     override fun onLowMemory() {
@@ -199,7 +189,6 @@ open class MapFragment :
         restoreMapState() // load previous camera position as early as possible
 
         sceneMapComponent = SceneMapComponent(resources, ctrl, vectorTileProvider, prefs)
-        sceneMapComponent?.isAerialView = (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
 
         onBeforeLoadScene()
 

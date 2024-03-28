@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs.PREFERRED_LANGUAGE_FOR_NAMES
@@ -33,7 +34,6 @@ import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
@@ -49,7 +49,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_places
     private val binding by contentViewBinding(FragmentOverlayPlacesBinding::bind)
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private var originalFeature: Feature? = null
     private var originalNoName: Boolean = false

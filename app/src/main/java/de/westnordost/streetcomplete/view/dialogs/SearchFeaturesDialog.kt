@@ -74,7 +74,7 @@ class SearchFeaturesDialog(
         if (prefs.getBoolean(Prefs.CREATE_NODE_SHOW_KEYBOARD, true) || text != null || codesOfDefaultFeatures.isEmpty())
             window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
-        val params = ViewGroup.LayoutParams(context.dpToPx(58).toInt(), context.dpToPx(58).toInt())
+        val params = ViewGroup.LayoutParams(context.resources.dpToPx(58).toInt(), context.resources.dpToPx(58).toInt())
         codesOfDefaultFeatures.forEach {
             val resId = iconOnlyFeatures[it] ?: return@forEach
             val feature = featureDictionary.byId(it).get() ?: return@forEach

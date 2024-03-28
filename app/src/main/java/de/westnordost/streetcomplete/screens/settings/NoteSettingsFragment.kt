@@ -18,6 +18,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
 import de.westnordost.streetcomplete.util.ktx.toast
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.FileInputStream
@@ -37,7 +40,8 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
 
         findPreference<Preference>("hide_notes_by")?.setOnPreferenceClickListener {
             val text = EditText(context)
-            text.setText(prefs.getStringSet(Prefs.HIDE_NOTES_BY_USERS, emptySet())?.joinToString(","))
+            val blockList: List<String> = Json.decodeFromString(prefs.getString(Prefs.HIDE_NOTES_BY_USERS, "")!!)
+            text.setText(blockList.joinToString(", "))
             text.setHint(R.string.pref_hide_notes_hint)
             text.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
 
@@ -50,8 +54,8 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
                 .setTitle(R.string.pref_hide_notes_message)
                 .setView(layout)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
-                    val content = text.text.split(",").map { it.trim().lowercase() }.toSet()
-                    prefs.edit().putStringSet(Prefs.HIDE_NOTES_BY_USERS, content).apply()
+                    val content = text.text.split(",").map { it.trim().lowercase() }
+                    prefs.edit().putString(Prefs.HIDE_NOTES_BY_USERS, Json.encodeToString(content)).apply()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()

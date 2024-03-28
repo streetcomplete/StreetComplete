@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.util.prefs
 
-import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
+import com.russhwolf.settings.ObservableSettings
+import com.russhwolf.settings.SharedPreferencesSettings
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val preferencesModule = module {
-    factory<SharedPreferences> { PreferenceManager.getDefaultSharedPreferences(androidContext()) }
-
-    single<Preferences> { AndroidPreferences(get()) }
+    single<ObservableSettings> { SharedPreferencesSettings.Factory(androidContext()).create() }
 }

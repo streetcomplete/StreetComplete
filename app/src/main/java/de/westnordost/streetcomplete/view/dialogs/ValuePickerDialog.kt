@@ -42,7 +42,7 @@ class ValuePickerDialog<T>(
         numberPicker.minValue = 0
         numberPicker.maxValue = values.size - 1
         if (android.os.Build.VERSION.SDK_INT >= 29) {
-            numberPicker.textSize = context.spToPx(32)
+            numberPicker.textSize = context.resources.spToPx(32)
         }
         selectedValue?.let { numberPicker.value = values.indexOf(it) }
         // do not allow keyboard input

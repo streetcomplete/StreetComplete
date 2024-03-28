@@ -18,7 +18,7 @@ fun View.setDefaultDialogPadding() {
     val padding = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
         getDimensionFromAttribute(context, android.R.attr.dialogPreferredPadding)
     } else {
-        context.dpToPx(20).toInt()
+        context.resources.dpToPx(20).toInt()
     }
     // no source for /3, but it looks ok
     setPadding(padding, padding / 3, padding, padding / 3)
