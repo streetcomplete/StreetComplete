@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings
 
 import android.content.res.Resources
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
@@ -20,11 +19,8 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
-import de.westnordost.streetcomplete.util.getDefaultTheme
-import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -102,14 +98,6 @@ class SettingsViewModelImpl(
         osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
 
-        listeners += prefs.addStringOrNullListener(Prefs.THEME_SELECT) { theme ->
-            val themeOrDefault = Prefs.Theme.valueOf(theme ?: getDefaultTheme())
-            AppCompatDelegate.setDefaultNightMode(themeOrDefault.appCompatNightMode)
-        }
-
-        listeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
-            setDefaultLocales(getSelectedLocales(prefs))
-        }
         listeners += prefs.addIntOrNullListener(Prefs.MAP_TILECACHE_IN_MB) { size ->
             tileCacheSize.value = size ?: ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
         }

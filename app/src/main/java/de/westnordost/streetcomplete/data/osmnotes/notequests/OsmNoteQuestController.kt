@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import com.russhwolf.settings.ObservableSettings
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -28,6 +29,8 @@ class OsmNoteQuestController(
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
         !prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
+
+    private val settingsListener: SettingsListener
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
@@ -66,7 +69,7 @@ class OsmNoteQuestController(
     init {
         noteSource.addListener(noteUpdatesListener)
         userLoginStatusSource.addListener(userLoginStatusListener)
-        prefs.addBooleanListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false) {
+        settingsListener = prefs.addBooleanListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false) {
             // a lot of notes become visible/invisible if this option is changed
             onInvalidated()
         }
