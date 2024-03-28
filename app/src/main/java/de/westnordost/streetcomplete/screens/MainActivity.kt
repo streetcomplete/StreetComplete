@@ -183,9 +183,7 @@ class MainActivity :
     public override fun onStart() {
         super.onStart()
 
-        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        }
+        updateScreenOn()
 
         uploadProgressSource.addListener(uploadProgressListener)
         downloadProgressSource.addListener(downloadProgressListener)
@@ -247,6 +245,16 @@ class MainActivity :
 
     private val isConnected: Boolean
         get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
+
+    /* ------------------------------------- Preferences ---------------------------------------- */
+
+    private fun updateScreenOn() {
+        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        } else {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+    }
 
     /* ------------------------------ Upload progress listener ---------------------------------- */
 
