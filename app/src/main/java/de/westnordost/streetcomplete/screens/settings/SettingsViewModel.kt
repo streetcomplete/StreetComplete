@@ -126,9 +126,8 @@ class SettingsViewModelImpl(
         osmNoteQuestsHiddenController.removeListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.removeListener(osmQuestsHiddenListener)
 
-        for (listener in listeners) {
-            listener.deactivate()
-        }
+        listeners.forEach { it.deactivate() }
+        listeners.clear()
     }
 
     override fun deleteCache() {
