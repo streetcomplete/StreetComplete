@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
-import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.Color
 import androidx.collection.ArrayMap
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Geometry
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.util.ktx.toARGBString
 import kotlin.math.absoluteValue
 
 /** Takes care of displaying styled map data */
-class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController, private val prefs: SharedPreferences) {
+class StyleableOverlayMapComponent(private val resources: Resources, ctrl: KtMapController, private val prefs: ObservableSettings) {
 
     private val layer: MapData = ctrl.addDataLayer(MAP_DATA_LAYER)
 

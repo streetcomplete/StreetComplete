@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import android.animation.AnimatorInflater
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
@@ -13,12 +12,12 @@ import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
@@ -75,7 +74,7 @@ class SplitWayFragment :
     private val allEditTypes: AllEditTypes by inject()
     private val soundFx: SoundFx by inject()
     private val recentLocationStore: RecentLocationStore by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val elementKey: ElementKey by lazy { way.key }
 
@@ -194,7 +193,7 @@ class SplitWayFragment :
     }
 
     private fun toggleBackground() {
-        prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
+        prefs.putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP")
         updateMapButtonText()
     }
 
@@ -206,7 +205,7 @@ class SplitWayFragment :
 
     private fun restoreBackground() {
         if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != initialMap)
-            prefs.edit { putString(Prefs.THEME_BACKGROUND, initialMap) }
+            prefs.putString(Prefs.THEME_BACKGROUND, initialMap)
     }
 
     @UiThread

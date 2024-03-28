@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import android.content.SharedPreferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.quest.DayNightCycle.DAY_AND_NIGHT
 import de.westnordost.streetcomplete.data.quest.DayNightCycle.ONLY_DAY
@@ -9,13 +9,13 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.util.isDay
 
 class DayNightQuestFilter internal constructor(
-    private val prefs: SharedPreferences
+    private val prefs: ObservableSettings
 ) {
     var isEnabled = false
         private set
 
     fun reload() {
-        isEnabled = Prefs.DayNightBehavior.valueOf(prefs.getString(Prefs.DAY_NIGHT_BEHAVIOR, "IGNORE")!!) == Prefs.DayNightBehavior.VISIBILITY
+        isEnabled = Prefs.DayNightBehavior.valueOf(prefs.getString(Prefs.DAY_NIGHT_BEHAVIOR, "IGNORE")) == Prefs.DayNightBehavior.VISIBILITY
     }
 
     /*

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data
 
 import android.content.Context
-import android.content.SharedPreferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
@@ -27,7 +27,7 @@ class Cleaner(
     private val questTypeRegistry: QuestTypeRegistry,
     private val downloadedTilesController: DownloadedTilesController,
     private val logsController: LogsController,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Cleaner") + Dispatchers.IO)
 

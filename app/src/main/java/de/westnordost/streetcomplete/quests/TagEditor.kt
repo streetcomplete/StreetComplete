@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 import android.annotation.SuppressLint
 import android.app.ActionBar.LayoutParams
-import android.content.SharedPreferences
 import android.icu.text.DateFormat
 import android.os.Build
 import android.os.Bundle
@@ -23,6 +22,7 @@ import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.Prefs
@@ -97,7 +97,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     private var minBottomInset = Int.MAX_VALUE
 
     private val osmQuestController: OsmQuestController by inject()
-    protected val prefs: SharedPreferences by inject()
+    protected val prefs: ObservableSettings by inject()
     protected val elementEditsController: ElementEditsController by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     protected val mapDataSource: MapDataWithEditsSource by inject()

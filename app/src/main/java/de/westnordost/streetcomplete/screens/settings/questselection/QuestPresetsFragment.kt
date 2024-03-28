@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.View
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
@@ -27,7 +27,7 @@ class QuestPresetsFragment : TwoPaneDetailFragment(R.layout.fragment_quest_prese
     private val questTypeOrderController: QuestTypeOrderController by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val urlConfigController: UrlConfigController by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private val binding by viewBinding(FragmentQuestPresetsBinding::bind)
 

@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.content.edit
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -36,7 +36,7 @@ class QuestPresetsAdapter(
     private val questTypeOrderController: QuestTypeOrderController,
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val urlConfigController: UrlConfigController,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), DefaultLifecycleObserver {
 
     private var presets: MutableList<QuestPreset> = mutableListOf()
@@ -179,8 +179,8 @@ class QuestPresetsAdapter(
                 visibleQuestTypeController.copyVisibilities(presetId, newPresetId)
                 questPresetsController.selectedId = newPresetId
 
-                val copyFromQuestSettings = prefs.all.filterKeys { it.startsWith("${presetId}_qs_") }
-                prefs.edit {
+                val copyFromQuestSettings = StreetCompleteApplication.preferences.all.filterKeys { it.startsWith("${presetId}_qs_") }
+                prefs.apply {
                     copyFromQuestSettings.forEach { (key, value) ->
                         val newKey = key.replace("${presetId}_qs_", "${newPresetId}_qs_")
                         when (value) {
@@ -189,7 +189,6 @@ class QuestPresetsAdapter(
                             is String -> putString(newKey, value)
                             is Long -> putLong(newKey, value)
                             is Float -> putFloat(newKey, value)
-                            is Set<*> -> putStringSet(newKey, value.toSet() as? Set<String>)
                         }
                     }
                 }

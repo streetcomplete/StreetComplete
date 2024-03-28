@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.util
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Build
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -10,10 +9,10 @@ import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.content.edit
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
@@ -33,7 +32,7 @@ class EditTagsAdapter(
     private val geometryType: GeometryType, // todo: currently unused, but should be used (later) for getting correct suggestions
     private val featureDictionary: FeatureDictionary,
     context: Context,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
     private val onDataChanged: () -> Unit
 ) :
     RecyclerView.Adapter<EditTagsAdapter.ViewHolder>() {
@@ -67,8 +66,8 @@ class EditTagsAdapter(
         private fun storeRecentlyUsed(text: String, name: String, isKey: Boolean) { // will be value if not key
             val keys = linkedSetOf(text)
             val pref = "EditTagsAdapter_${name}_" + if (isKey) "keys" else "values"
-            keys.addAll(prefs.getString(pref, "")!!.split("§§"))
-            prefs.edit { putString(pref, keys.filter { it.isNotEmpty() }.take(15).joinToString("§§")) }
+            keys.addAll(prefs.getString(pref, "").split("§§"))
+            prefs.putString(pref, keys.filter { it.isNotEmpty() }.take(15).joinToString("§§"))
         }
 
         val keyView: AutoCompleteTextView = binding.keyText.apply {
@@ -147,7 +146,7 @@ class EditTagsAdapter(
                 if (!isFocused) return@SearchAdapter emptyList()
                 val key = displaySet[absoluteAdapterPosition].first
                 lastSuggestions.clear()
-                prefs.getString("EditTagsAdapter_${keyView.text}_values", "")!!
+                prefs.getString("EditTagsAdapter_${keyView.text}_values", "")
                     .split("§§").forEach {
                         if (it.startsWith(search) && it.isNotEmpty())
                             lastSuggestions.add(it)
@@ -219,7 +218,7 @@ class EditTagsAdapter(
     //  basic test: no building suggestion when adding a shop node (though currently this is manually excluded)
     //  ideally FeatureDictionary at some point implements fields / moreFields...
     private fun getKeySuggestions(featureId: String?, tags: Map<String, String>): Collection<String> {
-        val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "")!!.split("§§").filter { it.isNotEmpty() }.toMutableSet()
+        val suggestions = prefs.getString("EditTagsAdapter_${featureId}_keys", "").split("§§").filter { it.isNotEmpty() }.toMutableSet()
         if (featureId == null) return suggestions.filterNot { it in tags.keys }
         val fields = getMainSuggestions(featureId)
         val moreFields = getSecondarySuggestions(featureId)

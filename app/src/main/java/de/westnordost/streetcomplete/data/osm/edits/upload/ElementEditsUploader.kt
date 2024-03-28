@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
-import android.content.SharedPreferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.Downloader
@@ -45,7 +45,7 @@ class ElementEditsUploader(
     private val statisticsController: StatisticsController,
     private val downloader: Downloader,
     private val externalSourceQuestController: ExternalSourceQuestController,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 

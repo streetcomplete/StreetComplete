@@ -24,6 +24,7 @@ import androidx.preference.PreferenceManager
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.ConflictAlgorithm
 import de.westnordost.streetcomplete.data.Database
@@ -67,7 +68,7 @@ class DataManagementSettingsFragment :
     HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private val prefs get() = preferenceManager.sharedPreferences!!
+    private val prefs = StreetCompleteApplication.preferences
     private val scPrefs: ObservableSettings by inject()
     private val db: Database by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()

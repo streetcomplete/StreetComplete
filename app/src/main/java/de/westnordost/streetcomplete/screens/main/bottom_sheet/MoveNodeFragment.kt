@@ -1,16 +1,15 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
-import android.content.SharedPreferences
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -28,7 +27,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.databinding.FragmentMoveNodeBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
@@ -60,7 +58,7 @@ class MoveNodeFragment :
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val countryInfos: CountryInfos by inject()
     private val recentLocationStore: RecentLocationStore by inject()
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val elementKey: ElementKey by lazy { node.key }
 
@@ -124,7 +122,7 @@ class MoveNodeFragment :
     }
 
     private fun toggleBackground() {
-        prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
+        prefs.putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP")
         updateMapButtonText()
     }
 
@@ -136,7 +134,7 @@ class MoveNodeFragment :
 
     private fun restoreBackground() {
         if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != initialMap)
-            prefs.edit { putString(Prefs.THEME_BACKGROUND, initialMap) }
+            prefs.putString(Prefs.THEME_BACKGROUND, initialMap)
     }
 
     private fun getMarkerScreenPosition(): PointF {

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
-import android.content.SharedPreferences
 import android.graphics.RectF
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.mapzen.tangram.MapData
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -20,7 +20,7 @@ import kotlin.math.roundToLong
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
-class FocusGeometryMapComponent(private val ctrl: KtMapController, private val prefs: SharedPreferences) {
+class FocusGeometryMapComponent(private val ctrl: KtMapController, private val prefs: ObservableSettings) {
 
     private val geometryLayer: MapData = ctrl.addDataLayer(GEOMETRY_LAYER)
 

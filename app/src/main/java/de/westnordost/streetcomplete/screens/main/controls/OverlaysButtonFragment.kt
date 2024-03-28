@@ -91,7 +91,7 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
                 selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
             }
             if (selectedOverlay == null && position != 0) {
-                val newIdx = if (prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").isNullOrBlank()) 0
+                val newIdx = if (prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").isBlank()) 0
                     else getCustomOverlayIndices(prefs).max() + 1
                 showOverlayCustomizer(newIdx, requireContext(), prefs, questTypeRegistry, {
                     selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)

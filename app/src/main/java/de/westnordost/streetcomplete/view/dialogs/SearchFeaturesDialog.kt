@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.view.dialogs
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -13,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -55,7 +55,7 @@ class SearchFeaturesDialog(
     private val adapter = FeaturesAdapter()
     private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
 

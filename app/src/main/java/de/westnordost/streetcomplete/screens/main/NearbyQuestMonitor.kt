@@ -5,7 +5,6 @@ import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION
 import android.location.Location
@@ -23,6 +22,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.PendingIntentCompat
 import androidx.core.content.getSystemService
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -49,7 +49,7 @@ import kotlin.math.max
 class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
 
     private val locationManager: LocationManager by lazy { applicationContext.getSystemService(LOCATION_SERVICE) as LocationManager }
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val downloadController: DownloadController by inject()
     private val downloader: Downloader by inject()

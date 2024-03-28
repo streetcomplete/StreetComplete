@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
 import android.app.DatePickerDialog
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.PointF
@@ -22,6 +21,7 @@ import androidx.core.view.isInvisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Prefs
@@ -109,7 +109,7 @@ abstract class AbstractOverlayForm :
     private val recentLocationStore: RecentLocationStore by inject()
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     protected val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
             if (field == null) {

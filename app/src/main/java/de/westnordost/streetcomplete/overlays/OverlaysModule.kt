@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
-import android.content.SharedPreferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants.EE_QUEST_OFFSET
 import de.westnordost.osmfeatures.Feature
@@ -53,7 +53,7 @@ fun overlaysRegistry(
     getCountryInfoByLocation: (LatLon) -> CountryInfo,
     getCountryCodeByLocation: (LatLon) -> String?,
     getFeature: (Element) -> Feature?,
-    prefs: SharedPreferences,
+    prefs: ObservableSettings,
 ) = OverlayRegistry(listOf(
 
     0 to WayLitOverlay(),

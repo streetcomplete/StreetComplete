@@ -14,13 +14,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.app.ActivityCompat
-import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.visiblequests.DayNightQuestFilter
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
@@ -38,7 +39,7 @@ class QuestsSettingsFragment :
     HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val dayNightQuestFilter: DayNightQuestFilter by inject()
@@ -78,10 +79,8 @@ class QuestsSettingsFragment :
                     .setViewWithDefaultPadding(layout)
                     .setNegativeButton(android.R.string.cancel, null)
                     .setPositiveButton(android.R.string.ok) { _, _ ->
-                        prefs.edit {
-                            putString(Prefs.RESURVEY_DATE, dateEditText.text.toString())
-                            putString(Prefs.RESURVEY_KEYS, keyEditText.text.toString())
-                        }
+                        prefs.putString(Prefs.RESURVEY_DATE, dateEditText.text.toString())
+                        prefs.putString(Prefs.RESURVEY_KEYS, keyEditText.text.toString())
                         resurveyIntervalsUpdater.update()
                     }
                     .show()
@@ -142,13 +141,11 @@ class QuestsSettingsFragment :
                 .setViewWithDefaultPadding(ScrollView(context).apply { addView(layout) })
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
-                    prefs.edit {
-                        putBoolean(Prefs.QUEST_MONITOR, enable.isChecked)
-                        putBoolean(Prefs.QUEST_MONITOR_GPS, gpsSwitch.isChecked)
-                        putBoolean(Prefs.QUEST_MONITOR_NET, netSwitch.isChecked)
-                        putBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, downloadSwitch.isChecked)
-                        putFloat(Prefs.QUEST_MONITOR_RADIUS, accuracyEditText.text.toString().toFloatOrNull() ?: 50f)
-                    }
+                    prefs.putBoolean(Prefs.QUEST_MONITOR, enable.isChecked)
+                    prefs.putBoolean(Prefs.QUEST_MONITOR_GPS, gpsSwitch.isChecked)
+                    prefs.putBoolean(Prefs.QUEST_MONITOR_NET, netSwitch.isChecked)
+                    prefs.putBoolean(Prefs.QUEST_MONITOR_DOWNLOAD, downloadSwitch.isChecked)
+                    prefs.putFloat(Prefs.QUEST_MONITOR_RADIUS, accuracyEditText.text.toString().toFloatOrNull() ?: 50f)
                 }
                 .show()
             true
@@ -176,12 +173,12 @@ class QuestsSettingsFragment :
 
     override fun onResume() {
         super.onResume()
-        prefs.registerOnSharedPreferenceChangeListener(this)
+        StreetCompleteApplication.preferences.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onPause() {
         super.onPause()
-        prefs.unregisterOnSharedPreferenceChangeListener(this)
+        StreetCompleteApplication.preferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
 }

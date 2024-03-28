@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.util
 
 import android.app.Activity
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Build
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
@@ -37,7 +37,7 @@ import java.util.Locale
 class CrashReportExceptionHandler(
     private val appCtx: Context,
     private val logsController: LogsController,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
     private val mailReportTo: String,
     private val crashReportFile: String
 ) : Thread.UncaughtExceptionHandler {

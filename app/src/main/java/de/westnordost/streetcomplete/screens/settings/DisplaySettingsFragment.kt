@@ -11,13 +11,14 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.edit
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
@@ -38,7 +39,7 @@ class DisplaySettingsFragment :
     HasTitle,
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
     private val downloadController: DownloadController by inject()
 
@@ -67,7 +68,7 @@ class DisplaySettingsFragment :
                 isChecked = prefs.getBoolean(Prefs.SHOW_GPX_TRACK, false)
                 isEnabled = gpxFileExists
                 setOnCheckedChangeListener { _, _ ->
-                    prefs.edit { putBoolean(Prefs.SHOW_GPX_TRACK, isChecked) }
+                    prefs.putBoolean(Prefs.SHOW_GPX_TRACK, isChecked)
                     gpx_track_changed = true
                 }
             }
@@ -153,12 +154,12 @@ class DisplaySettingsFragment :
 
     override fun onResume() {
         super.onResume()
-        prefs.registerOnSharedPreferenceChangeListener(this)
+        StreetCompleteApplication.preferences.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onPause() {
         super.onPause()
-        prefs.unregisterOnSharedPreferenceChangeListener(this)
+        StreetCompleteApplication.preferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
     companion object {

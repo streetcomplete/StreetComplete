@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings
 
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.InputType
 import android.widget.EditText
@@ -10,11 +9,11 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
@@ -23,7 +22,7 @@ import org.koin.android.ext.android.inject
 
 class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val title: String get() = getString(R.string.pref_screen_ui)
 
@@ -61,7 +60,7 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
             buttons.check(prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0))
             buttons.setOnCheckedChangeListener { _, _ ->
                 if (buttons.checkedRadioButtonId in 0..3)
-                    prefs.edit { putInt(Prefs.SHOW_NEARBY_QUESTS, buttons.checkedRadioButtonId) }
+                    prefs.putInt(Prefs.SHOW_NEARBY_QUESTS, buttons.checkedRadioButtonId)
             }
 
             val distanceText = TextView(context).apply { setText(R.string.show_nearby_quests_distance) }
@@ -77,7 +76,7 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
             builder.setViewWithDefaultPadding(linearLayout)
             builder.setPositiveButton(android.R.string.ok) { _, _ ->
                 distance.text.toString().toFloatOrNull()?.let {
-                    prefs.edit { putFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, it.coerceAtLeast(0.0f).coerceAtMost(10.0f)) }
+                    prefs.putFloat(Prefs.SHOW_NEARBY_QUESTS_DISTANCE, it.coerceAtLeast(0.0f).coerceAtMost(10.0f))
                 }
             }
             builder.show()

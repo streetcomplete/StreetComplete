@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 import android.os.Bundle
 import android.view.View
 import android.widget.RelativeLayout
-import androidx.core.content.edit
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
@@ -11,7 +10,6 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
-import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.data.location.checkIsSurvey
 import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -64,11 +62,11 @@ class CreatePoiFragment : TagEditor() {
         p.topMargin = (resources.displayMetrics.heightPixels - resources.getDimensionPixelOffset(R.dimen.quest_form_bottomOffset)) * 2 / 3
 
         arguments?.getString(ARG_ID)?.let {
-            val recentFeatureIds = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "")!!.split("§").toMutableList()
+            val recentFeatureIds = prefs.getString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, "").split("§").toMutableList()
             if (recentFeatureIds.lastOrNull() == it) return@let
             recentFeatureIds.remove(it)
             recentFeatureIds.add(it)
-            prefs.edit().putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(25).joinToString("§")).apply()
+            prefs.putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(25).joinToString("§"))
         }
 
         binding.markerCreateLayout.createNoteIconView.setImageResource(R.drawable.ic_add_poi)
@@ -95,7 +93,7 @@ class CreatePoiFragment : TagEditor() {
         arguments?.getString(ARG_ID)?.let {
             val prefillTags: Map<String, String> = arguments?.getString(ARG_PREFILLED_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
             if (!element.isPlace() && prefillTags != element.tags)
-                prefs.edit { putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags)) }
+                prefs.putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags))
         }
     }
 

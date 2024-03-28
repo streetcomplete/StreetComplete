@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
@@ -51,7 +50,7 @@ class InsertNodeTagEditor : TagEditor() {
         arguments?.getString(ARG_FEATURE_ID)?.let {
             val initialTags: Map<String, String> = arguments?.getString(ARG_TAGS)?.let { Json.decodeFromString(it) } ?: emptyMap()
             if (!element.isPlace() && initialTags != element.tags)
-                prefs.edit { putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags)) }
+                prefs.putString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, Json.encodeToString(element.tags))
         }
     }
 

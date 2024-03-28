@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.content.SharedPreferences
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
@@ -18,7 +18,7 @@ class DownloadedAreaManager(
     private val ctrl: KtMapController,
     private val mapComponent: DownloadedAreaMapComponent,
     private val downloadedTilesSource: DownloadedTilesSource,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
 ) : DefaultLifecycleObserver {
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())

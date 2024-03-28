@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.PointF
@@ -12,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
-import androidx.core.content.edit
 import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
@@ -21,6 +19,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -60,11 +59,9 @@ import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
-import org.koin.core.component.inject
 import org.koin.core.qualifier.named
 
 /** Fragment that lets the user split an OSM way */
@@ -77,7 +74,7 @@ class InsertNodeFragment :
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
     private val levelFilter: LevelFilter by inject()
 
     private val isFormComplete get() = positionOnWay != null
@@ -173,7 +170,7 @@ class InsertNodeFragment :
         val pow = positionOnWay ?: return
         val fd = featureDictionary.value
         val country = countryBoundaries.value.getIds(pow.position.longitude, pow.position.latitude).firstOrNull()
-        val defaultFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")!!
+        val defaultFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")
             .split("§").filter { it.isNotBlank() }
             .ifEmpty { listOf("amenity/post_box", "barrier/gate", "highway/crossing/unmarked", "highway/crossing/uncontrolled", "highway/traffic_signals", "barrier/bollard", "traffic_calming/table") }
 
@@ -195,11 +192,11 @@ class InsertNodeFragment :
 
     private fun onSelectedFeature(feature: Feature, positionOnWay: PositionOnWay) {
         viewLifecycleScope.launch {
-            val recentFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "")!!.split("§").toMutableList()
+            val recentFeatureIds = prefs.getString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, "").split("§").toMutableList()
             if (recentFeatureIds.lastOrNull() != feature.id) {
                 recentFeatureIds.remove(feature.id)
                 recentFeatureIds.add(feature.id)
-                prefs.edit().putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(25).joinToString("§")).apply()
+                prefs.putString(Prefs.INSERT_NODE_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(25).joinToString("§"))
             }
             showsGeometryMarkersListener?.putMarkerForCurrentHighlighting( // currently not done, but still need it
                 ElementPointGeometry(positionOnWay.position),
@@ -226,7 +223,7 @@ class InsertNodeFragment :
     }
 
     private fun toggleBackground() {
-        prefs.edit { putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP") }
+        prefs.putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP")
         updateMapButtonText()
     }
 
@@ -238,7 +235,7 @@ class InsertNodeFragment :
 
     private fun restoreBackground() {
         if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") != initialMap)
-            prefs.edit { putString(Prefs.THEME_BACKGROUND, initialMap) }
+            prefs.putString(Prefs.THEME_BACKGROUND, initialMap)
     }
 
     override fun onMapMoved(position: LatLon) {

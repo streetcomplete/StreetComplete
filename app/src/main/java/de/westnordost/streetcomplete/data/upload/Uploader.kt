@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.upload
 
-import android.content.SharedPreferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
@@ -28,7 +28,7 @@ class Uploader(
     private val versionIsBannedChecker: VersionIsBannedChecker,
     private val mutex: Mutex,
     private val externalSourceQuestController: ExternalSourceQuestController,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
 ) : UploadProgressSource {
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
@@ -67,9 +67,9 @@ class Uploader(
                 throw VersionBannedException(banned.reason)
             } else if (banned is UnknownIfBanned) {
                 val old = prefs.getInt(Prefs.BAN_CHECK_ERROR_COUNT, 0)
-                prefs.edit().putInt(Prefs.BAN_CHECK_ERROR_COUNT, old + 1).apply()
+                prefs.putInt(Prefs.BAN_CHECK_ERROR_COUNT, old + 1)
             } else
-                prefs.edit().putInt(Prefs.BAN_CHECK_ERROR_COUNT, 0).apply()
+                prefs.putInt(Prefs.BAN_CHECK_ERROR_COUNT, 0)
             if (prefs.getInt(Prefs.BAN_CHECK_ERROR_COUNT, 0) > 10) {
                 // todo: make it work again, or kick it out...
 //                ContextCompat.getMainExecutor(context).execute {

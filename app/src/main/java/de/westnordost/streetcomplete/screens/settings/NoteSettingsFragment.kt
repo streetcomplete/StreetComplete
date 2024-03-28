@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.app.Activity
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.text.InputType
@@ -13,12 +12,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
 import de.westnordost.streetcomplete.util.ktx.toast
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -30,7 +29,7 @@ import java.util.zip.ZipOutputStream
 
 class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val title: String get() = getString(R.string.pref_screen_notes)
 
@@ -55,7 +54,7 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
                 .setView(layout)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     val content = text.text.split(",").map { it.trim().lowercase() }
-                    prefs.edit().putString(Prefs.HIDE_NOTES_BY_USERS, Json.encodeToString(content)).apply()
+                    prefs.putString(Prefs.HIDE_NOTES_BY_USERS, Json.encodeToString(content))
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()

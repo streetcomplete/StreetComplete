@@ -18,9 +18,9 @@ class ResurveyIntervalsUpdater(private val prefs: ObservableSettings) {
     fun update() {
         RelativeDate.MULTIPLIER = multiplier
         // parse date from prefs, null if bad format
-        CompareTagAge.resurveyDate = prefs.getString(Prefs.RESURVEY_DATE, "")?.toCheckDate()
+        CompareTagAge.resurveyDate = prefs.getString(Prefs.RESURVEY_DATE, "").toCheckDate()
         // set element filter list
-        CompareTagAge.resurveyKeys = prefs.getString(Prefs.RESURVEY_KEYS, "")!!.split(",").map { it.trim() }
+        CompareTagAge.resurveyKeys = prefs.getString(Prefs.RESURVEY_KEYS, "").split(",").map { it.trim() }
     }
 
     private val multiplier: Float get() = when (intervalsPreference) {

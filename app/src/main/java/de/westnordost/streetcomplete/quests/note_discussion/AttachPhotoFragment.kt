@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.note_discussion
 
 import android.content.ActivityNotFoundException
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.pm.PackageManager.FEATURE_CAMERA_ANY
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -16,6 +15,7 @@ import androidx.exifinterface.media.ExifInterface
 import androidx.exifinterface.media.ExifInterface.TAG_GPS_IMG_DIRECTION
 import androidx.exifinterface.media.ExifInterface.TAG_GPS_IMG_DIRECTION_REF
 import androidx.fragment.app.Fragment
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -36,7 +36,7 @@ import java.lang.Exception
 class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 
     private val binding by viewBinding(FragmentAttachPhotoBinding::bind)
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private val takePhoto = registerForActivityResult(ActivityResultContracts.TakePicture(), ::onTookPhoto)
 

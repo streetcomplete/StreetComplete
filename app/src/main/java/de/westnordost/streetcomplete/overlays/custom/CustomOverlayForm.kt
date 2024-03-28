@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.overlays.custom
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.FragmentOverlayCustomBinding
@@ -11,14 +11,14 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import org.koin.android.ext.android.inject
 
 class CustomOverlayForm : AbstractOverlayForm() {
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val contentLayoutResId = R.layout.fragment_overlay_custom
     private val binding by contentViewBinding(FragmentOverlayCustomBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val colorKeyPref = prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")!!
+        val colorKeyPref = prefs.getString(getCurrentCustomOverlayPref(Prefs.CUSTOM_OVERLAY_IDX_COLOR_KEY, prefs), "")
         val colorKeySelector = try {
             val actualColorKeyPref = if (colorKeyPref.startsWith("!"))
                     colorKeyPref.substringAfter("!")

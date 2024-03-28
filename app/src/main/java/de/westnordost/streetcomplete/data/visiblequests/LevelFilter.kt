@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
 import android.text.InputType
 import android.widget.CheckBox
 import android.widget.EditText
@@ -11,7 +10,7 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.edit
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -26,7 +25,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 /** Controller for filtering all quests that are hidden because they are on the wrong level */
-class LevelFilter internal constructor(private val sharedPrefs: SharedPreferences) : KoinComponent {
+class LevelFilter internal constructor(private val prefs: ObservableSettings) : KoinComponent {
     var isEnabled = false
         private set
     var allowedLevel: String? = null
@@ -41,8 +40,8 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
     init { reload() }
 
     private fun reload() {
-        allowedLevel = sharedPrefs.getString(Prefs.ALLOWED_LEVEL, "").let { if (it.isNullOrBlank()) null else it.trim() }
-        allowedLevelTags = sharedPrefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref")!!.split(",").toHashSet()
+        allowedLevel = prefs.getString(Prefs.ALLOWED_LEVEL, "").let { if (it.isBlank()) null else it.trim() }
+        allowedLevelTags = prefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref").split(",").toHashSet()
     }
 
     fun isVisible(quest: Quest): Boolean =
@@ -87,7 +86,7 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
         builder.setTitle(R.string.level_filter_title)
         val linearLayout = LinearLayout(context)
         linearLayout.orientation = LinearLayout.VERTICAL
-        val levelTags = sharedPrefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref")!!.split(",")
+        val levelTags = prefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref")!!.split(",")
 
         val levelText = TextView(context)
         levelText.setText(R.string.level_filter_message)
@@ -95,7 +94,7 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
         val level = EditText(context)
         level.inputType = InputType.TYPE_CLASS_TEXT
         level.setHint(R.string.level_filter_hint)
-        level.setText(sharedPrefs.getString(Prefs.ALLOWED_LEVEL, ""))
+        level.setText(prefs.getString(Prefs.ALLOWED_LEVEL, ""))
 
         val enable = SwitchCompat(context)
         enable.setText(R.string.level_filter_enable)
@@ -132,10 +131,8 @@ class LevelFilter internal constructor(private val sharedPrefs: SharedPreference
             if (tagRepeatOn.isChecked) levelTagList.add("repeat_on")
             if (tagLevelRef.isChecked) levelTagList.add("level:ref")
             if (tagAddrFloor.isChecked) levelTagList.add("addr:floor")
-            sharedPrefs.edit {
-                putString(Prefs.ALLOWED_LEVEL_TAGS, levelTagList.joinToString(","))
-                putString(Prefs.ALLOWED_LEVEL, level.text.toString())
-            }
+            prefs.putString(Prefs.ALLOWED_LEVEL_TAGS, levelTagList.joinToString(","))
+            prefs.putString(Prefs.ALLOWED_LEVEL, level.text.toString())
             isEnabled = enable.isChecked
             reload()
 

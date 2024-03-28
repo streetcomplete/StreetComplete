@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.quest
 
-import android.content.SharedPreferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
@@ -30,7 +30,7 @@ class VisibleQuestsSource(
     private val selectedOverlaySource: SelectedOverlaySource,
     private val levelFilter: LevelFilter,
     private val dayNightQuestFilter: DayNightQuestFilter,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
     private val externalSourceQuestController: ExternalSourceQuestController
 ) {
     interface Listener {

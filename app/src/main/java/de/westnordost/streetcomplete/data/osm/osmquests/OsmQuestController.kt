@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import android.content.SharedPreferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
@@ -56,7 +56,7 @@ class OsmQuestController internal constructor(
     private val notesSource: NotesWithEditsSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val countryBoundaries: Lazy<CountryBoundaries>,
-    private val prefs: SharedPreferences,
+    private val prefs: ObservableSettings,
 ) : OsmQuestSource, OsmQuestsHiddenController, OsmQuestsHiddenSource {
 
     /* Must be a singleton because there is a listener that should respond to a change in the

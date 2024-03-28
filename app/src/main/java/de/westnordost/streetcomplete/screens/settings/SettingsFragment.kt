@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.app.Activity
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -20,6 +19,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
 import androidx.preference.TwoStatePreference
+import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS
@@ -27,8 +27,6 @@ import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneListFragment
@@ -49,7 +47,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
     private val viewModel by viewModel<SettingsViewModel>()
 
-    private val prefs: SharedPreferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val title: String get() = getString(R.string.action_settings)
 
