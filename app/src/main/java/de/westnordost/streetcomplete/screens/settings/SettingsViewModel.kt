@@ -56,7 +56,6 @@ class SettingsViewModelImpl(
     private val cleaner: Cleaner,
     private val osmQuestsHiddenController: OsmQuestsHiddenController,
     private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController,
-    private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater,
     private val questTypeRegistry: QuestTypeRegistry,
     private val visibleQuestTypeSource: VisibleQuestTypeSource,
     private val questPresetsSource: QuestPresetsSource,
@@ -110,9 +109,6 @@ class SettingsViewModelImpl(
 
         listeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
             setDefaultLocales(getSelectedLocales(prefs))
-        }
-        listeners += prefs.addStringOrNullListener(Prefs.RESURVEY_INTERVALS) {
-            resurveyIntervalsUpdater.update()
         }
         listeners += prefs.addIntOrNullListener(Prefs.MAP_TILECACHE_IN_MB) { size ->
             tileCacheSize.value = size ?: ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB

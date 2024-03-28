@@ -13,13 +13,11 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
  *  intervals to use */
 class ResurveyIntervalsUpdater(private val prefs: ObservableSettings) {
     fun update() {
-        RelativeDate.MULTIPLIER = multiplier
+        RelativeDate.MULTIPLIER = intervalsPreference.multiplier
     }
 
-    private val multiplier: Float get() = when (intervalsPreference) {
-        LESS_OFTEN -> 2.0f
-        DEFAULT -> 1.0f
-        MORE_OFTEN -> 0.5f
+    init {
+        prefs.addStringOrNullListener(Prefs.RESURVEY_INTERVALS) { update() }
     }
 
     private val intervalsPreference: Prefs.ResurveyIntervals get() =
@@ -27,4 +25,10 @@ class ResurveyIntervalsUpdater(private val prefs: ObservableSettings) {
             Prefs.RESURVEY_INTERVALS,
             ApplicationConstants.DEFAULT_RESURVEY_INTERVALS
         ))
+}
+
+private val Prefs.ResurveyIntervals.multiplier: Float get() = when (this) {
+    LESS_OFTEN -> 2.0f
+    DEFAULT -> 1.0f
+    MORE_OFTEN -> 0.5f
 }
