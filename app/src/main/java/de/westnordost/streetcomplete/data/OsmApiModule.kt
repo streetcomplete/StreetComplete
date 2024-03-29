@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data
 
-import android.content.SharedPreferences
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -29,7 +29,7 @@ val osmApiModule = module {
     single { OsmConnection(
         OSM_API_URL,
         ApplicationConstants.USER_AGENT,
-        get<SharedPreferences>().getString(Prefs.OAUTH2_ACCESS_TOKEN, null)
+        get<ObservableSettings>().getStringOrNull(Prefs.OAUTH2_ACCESS_TOKEN)
     ) }
     single { UnsyncedChangesCountSource(get(), get()) }
 

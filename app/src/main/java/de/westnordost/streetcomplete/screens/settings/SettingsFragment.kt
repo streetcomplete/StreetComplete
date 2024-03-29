@@ -259,9 +259,8 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        for (listener in listeners) {
-            listener.deactivate()
-        }
+        listeners.forEach { it.deactivate() }
+        listeners.clear()
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {

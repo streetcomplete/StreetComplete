@@ -43,8 +43,8 @@ abstract class ProfileViewModel : ViewModel() {
 
     abstract var lastShownGlobalUserRank: Int?
     abstract var lastShownGlobalUserRankCurrentWeek: Int?
-    abstract var lastShownLocalUserRank: CountryStatistics?
-    abstract var lastShownLocalUserRankCurrentWeek: CountryStatistics?
+    abstract var lastShownUserLocalCountryStatistics: CountryStatistics?
+    abstract var lastShownUserLocalCountryStatisticsCurrentWeek: CountryStatistics?
 
     abstract fun logOutUser()
 }
@@ -95,13 +95,13 @@ class ProfileViewModelImpl(
         }
         get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
 
-    override var lastShownLocalUserRank: CountryStatistics?
+    override var lastShownUserLocalCountryStatistics: CountryStatistics?
         set(value) {
             prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(value))
         }
         get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK)?.let { Json.decodeFromString(it) }
 
-    override var lastShownLocalUserRankCurrentWeek: CountryStatistics?
+    override var lastShownUserLocalCountryStatisticsCurrentWeek: CountryStatistics?
         set(value) {
             prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(value))
         }

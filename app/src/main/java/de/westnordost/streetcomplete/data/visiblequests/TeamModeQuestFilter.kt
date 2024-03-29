@@ -48,7 +48,8 @@ class TeamModeQuestFilter internal constructor(
     }
 
     fun disableTeamMode() {
-        prefs.putInt(Prefs.TEAM_MODE_TEAM_SIZE, -1)
+        prefs.remove(Prefs.TEAM_MODE_TEAM_SIZE)
+        prefs.remove(Prefs.TEAM_MODE_INDEX_IN_TEAM)
         listeners.forEach { it.onTeamModeChanged(false) }
     }
 

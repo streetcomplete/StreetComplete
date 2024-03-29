@@ -12,6 +12,7 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.russhwolf.settings.ObservableSettings
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.DatabaseInitializer
@@ -62,9 +63,7 @@ import de.westnordost.streetcomplete.screens.user.userScreenModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.TempLogger
 import de.westnordost.streetcomplete.util.getDefaultTheme
-import de.westnordost.streetcomplete.util.getSelectedLocale
-import de.westnordost.streetcomplete.util.getSystemLocales
-import de.westnordost.streetcomplete.util.ktx.addedToFront
+import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.AndroidLogger
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
@@ -95,6 +94,8 @@ class StreetCompleteApplication : Application() {
     private val cacheTrimmer: CacheTrimmer by inject()
 
     private val applicationScope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
+
+    private val settingsListeners = mutableListOf<SettingsListener>()
 
     override fun onCreate() {
         super.onCreate()
@@ -161,13 +162,13 @@ class StreetCompleteApplication : Application() {
             userLoginStatusController.logOut()
         }
 
-        setDefaultLocales()
+        updateDefaultLocales()
 
         crashReportExceptionHandler.install()
 
         enqueuePeriodicCleanupWork()
 
-        setDefaultTheme()
+        updateDefaultTheme()
 
         resurveyIntervalsUpdater.update()
 
@@ -176,7 +177,7 @@ class StreetCompleteApplication : Application() {
         val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION_DATA)
         if (BuildConfig.VERSION_NAME != lastVersion) {
             prefs.putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME)
-            if (lastVersion != null) { // todo: remove the migration code, that was long ago
+            if (lastVersion != null) {
                 onNewVersion()
             }
             // update prefs referring to renamed quests
@@ -197,6 +198,12 @@ class StreetCompleteApplication : Application() {
                 }
             }
             e.apply()
+        }
+        settingsListeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
+            updateDefaultLocales()
+        }
+        settingsListeners += prefs.addStringOrNullListener(Prefs.THEME_SELECT) {
+            updateDefaultTheme()
         }
 
     }
@@ -227,20 +234,17 @@ class StreetCompleteApplication : Application() {
         }
     }
 
+    private fun updateDefaultLocales() {
+        setDefaultLocales(getSelectedLocales(prefs))
+    }
+
     private fun getMemString(): String {
         val memInfo = MemoryInfo()
         getSystemService<ActivityManager>()?.getMemoryInfo(memInfo)
         return "${memInfo.availMem / 0x100000L} MB of ${memInfo.totalMem / 0x100000L} available, mem low: ${memInfo.lowMemory}, mem low threshold: ${memInfo.threshold / 0x100000L} MB"
     }
 
-    private fun setDefaultLocales() {
-        val locale = getSelectedLocale(prefs)
-        if (locale != null) {
-            setDefaultLocales(getSystemLocales().addedToFront(locale))
-        }
-    }
-
-    private fun setDefaultTheme() {
+    private fun updateDefaultTheme() {
         val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
     }
