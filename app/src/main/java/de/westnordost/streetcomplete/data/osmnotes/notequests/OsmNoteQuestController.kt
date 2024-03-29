@@ -33,6 +33,15 @@ class OsmNoteQuestController(
 
     private val settingsListener: SettingsListener
 
+    private val blockedUserIds = hashSetOf<Long>()
+    private val blockedUserNames = hashSetOf<String>()
+
+    // store it, or it will get GCed and thus not work
+    private val prefsListener = prefs.addStringListener(Prefs.HIDE_NOTES_BY_USERS, "") {
+        reloadBlocks()
+    }
+
+
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
             val hiddenNoteIds = getHiddenIds()
@@ -74,17 +83,11 @@ class OsmNoteQuestController(
             // a lot of notes become visible/invisible if this option is changed
             onInvalidated()
         }
-        prefs.addStringListener(Prefs.HIDE_NOTES_BY_USERS, "") {
-            reloadBlocks()
-        }
         reloadBlocks()
     }
 
-    private val blockedUserIds = hashSetOf<Long>()
-    private val blockedUserNames = hashSetOf<String>()
-
     private fun reloadBlocks() {
-        val blockedList: List<String> = Json.decodeFromString(prefs.getString(Prefs.HIDE_NOTES_BY_USERS, ""))
+        val blockedList: List<String> = getRawBlockList(prefs)
         blockedUserIds.clear()
         blockedUserNames.clear()
         blockedList.forEach {
@@ -307,3 +310,11 @@ private val NoteComment.isReply: Boolean get() =
 
 private fun NoteComment.isFromUser(userId: Long): Boolean =
     user?.id == userId
+
+fun getRawBlockList(prefs: ObservableSettings): List<String> {
+    return try {
+        Json.decodeFromString(prefs.getString(Prefs.HIDE_NOTES_BY_USERS, ""))
+    } catch (e: Exception) { // why isn't it showing in the log any more? well, just catch all...
+        emptyList()
+    }
+}

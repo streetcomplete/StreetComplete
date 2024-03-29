@@ -15,6 +15,8 @@ import androidx.preference.PreferenceManager
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.getRawBlockList
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -37,9 +39,9 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences_ee_notes, false)
         addPreferencesFromResource(R.xml.preferences_ee_notes)
 
-        findPreference<Preference>("hide_notes_by")?.setOnPreferenceClickListener {
+        findPreference<Preference>("hide_notes_by2")?.setOnPreferenceClickListener {
             val text = EditText(context)
-            val blockList: List<String> = Json.decodeFromString(prefs.getString(Prefs.HIDE_NOTES_BY_USERS, "")!!)
+            val blockList: List<String> = getRawBlockList(prefs)
             text.setText(blockList.joinToString(", "))
             text.setHint(R.string.pref_hide_notes_hint)
             text.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
@@ -55,6 +57,7 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     val content = text.text.split(",").map { it.trim().lowercase() }
                     prefs.putString(Prefs.HIDE_NOTES_BY_USERS, Json.encodeToString(content))
+                    OsmQuestController.reloadQuestTypes()
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()

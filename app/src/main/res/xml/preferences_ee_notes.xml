@@ -36,7 +36,7 @@
         android:persistent="true" />
 
     <Preference
-        android:key="hide_notes_by"
+        android:key="hide_notes_by2"
         android:title="@string/pref_hide_notes_title" />
 
     <Preference
