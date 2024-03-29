@@ -45,6 +45,7 @@ class DownloadWorker(
     override suspend fun doWork(): Result {
         val bbox: BoundingBox = inputData.getString(ARG_BBOX)?.let { Json.decodeFromString(it) }
             ?: return Result.failure()
+        downloading = true
 
         return try {
             val isPriorityDownload = inputData.getBoolean(ARG_IS_USER_INITIATED, false)
@@ -55,16 +56,23 @@ class DownloadWorker(
             Result.success()
         } catch (e: Exception) {
             Result.failure()
+        } finally {
+            downloading = false
+            if (enqueuedDownloads.isNotEmpty()) {
+                val next = enqueuedDownloads.first()
+                enqueuedDownloads.removeFirstOrNull()
+                DownloadController(context).download(next, true)
+            }
         }
     }
 
     companion object {
         private const val ARG_BBOX = "bbox"
         private const val ARG_IS_USER_INITIATED = "isUserInitiated"
+        var downloading = false
 
-        // todo: how to enqueue? when is the previous download actually canceled?
-        //  is it implicit when starting this work request?
-        fun createWorkRequest(bbox: BoundingBox, isUserInitiated: Boolean, enqueue: Boolean): OneTimeWorkRequest =
+        val enqueuedDownloads = mutableListOf<BoundingBox>()
+        fun createWorkRequest(bbox: BoundingBox, isUserInitiated: Boolean): OneTimeWorkRequest =
             OneTimeWorkRequestBuilder<DownloadWorker>()
                 .setExpedited(OutOfQuotaPolicy.DROP_WORK_REQUEST)
                 .setInputData(workDataOf(

@@ -133,10 +133,9 @@ class MainMenuButtonFragment : Fragment(R.layout.fragment_main_menu_button) {
                     .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
                         downloadController.download(downloadArea, true)
                     }
-                    // todo: make enqueue work again, see downloadworker
-//                    .setNeutralButton(R.string.enqueue_download) { _, _ ->
-//                        downloadController.download(downloadArea, true, true)
-//                    }
+                    .setNeutralButton(R.string.enqueue_download) { _, _ ->
+                        downloadController.download(downloadArea, true, true)
+                    }
                     .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
                     .show()
             }

@@ -16,10 +16,14 @@ class DownloadController(private val context: Context) {
      *        and puts itself in the front)
      */
     fun download(bbox: BoundingBox, isUserInitiated: Boolean = false, enqueue: Boolean = false) {
+        if (enqueue && DownloadWorker.downloading) {
+            DownloadWorker.enqueuedDownloads.add(bbox)
+            return
+        }
         WorkManager.getInstance(context).enqueueUniqueWork(
             Downloader.TAG,
             if (isUserInitiated) ExistingWorkPolicy.REPLACE else ExistingWorkPolicy.KEEP,
-            DownloadWorker.createWorkRequest(bbox, isUserInitiated, enqueue)
+            DownloadWorker.createWorkRequest(bbox, isUserInitiated)
         )
     }
 }
