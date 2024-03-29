@@ -115,6 +115,7 @@ private val cyclewayTaggingNotExpectedFilter by lazy { """
       or maxspeed <= 20
       or cyclestreet = yes
       or bicycle_road = yes
+      or bicycle = no
       or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
       or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(zone)?:?([1-9]|[1-2][0-9]|30)"
 """.toElementFilterExpression() }
