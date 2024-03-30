@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.mockPrefs
+import de.westnordost.streetcomplete.testutils.mockPrefs2
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.osmNoteQuest
 import de.westnordost.streetcomplete.testutils.osmQuest
@@ -93,7 +93,7 @@ class VisibleQuestsSourceTest {
             Unit
         }
 
-        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, selectedOverlaySource, levelFilter, dayNightFilter, mockPrefs(), mock())
+        source = VisibleQuestsSource(questTypeRegistry, osmQuestSource, osmNoteQuestSource, visibleQuestTypeSource, teamModeQuestFilter, selectedOverlaySource, levelFilter, dayNightFilter, mockPrefs2(), mock())
 
         listener = mock()
         source.addListener(listener)

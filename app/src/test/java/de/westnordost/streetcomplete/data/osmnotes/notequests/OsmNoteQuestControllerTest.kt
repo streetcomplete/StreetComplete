@@ -162,7 +162,6 @@ class OsmNoteQuestControllerTest {
             comment(text = "test", user = User(id = 1, "Blubbi"))
         )))
         on(userDataSource.userId).thenReturn(1)
-        on(notesPreferences.showOnlyNotesPhrasedAsQuestions).thenReturn(true)
 
         assertNull(ctrl.getVisible(1))
     }

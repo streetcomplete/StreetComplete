@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.mockPrefs
+import de.westnordost.streetcomplete.testutils.mockPrefs2
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import kotlinx.coroutines.cancelAndJoin
@@ -49,7 +49,7 @@ class ElementEditsUploaderTest {
 
         listener = mock()
 
-        uploader = ElementEditsUploader(elementEditsController, noteEditsController, mapDataController, singleUploader, mapDataApi, statisticsController, mock(), mock(), mockPrefs())
+        uploader = ElementEditsUploader(elementEditsController, noteEditsController, mapDataController, singleUploader, mapDataApi, statisticsController, mock(), mock(), mockPrefs2())
         uploader.uploadedChangeListener = listener
     }
 
