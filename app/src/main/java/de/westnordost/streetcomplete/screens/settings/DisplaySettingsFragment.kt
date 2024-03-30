@@ -20,16 +20,23 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
+import de.westnordost.streetcomplete.data.importGpx
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
+import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.IOException
@@ -77,32 +84,14 @@ class DisplaySettingsFragment :
                 isEnabled = gpxFileExists
                 setOnClickListener {
                     val points = loadGpxTrackPoints(requireContext(), true) ?: return@setOnClickListener
-                    // for getting tiles containing the track, we simply assume that there is at least one point in each tile
-                    // this will cause issues for crude tracks, but we can take care about that later
-                    val usedTiles = hashSetOf<TilePos>()
-                    points.forEach { usedTiles.add(it.enclosingTilePos(16)) }
-                    val bbox = points.enclosingBoundingBox()
-                    // only directly download if area < 2 km²
-                    if (bbox.area() < 2 * 1000000) {
-                        downloadController.download(bbox, false, true)
-                        return@setOnClickListener
+                    GlobalScope.launch {
+                        val import = importGpx(points, true, 10.0).getOrNull()
+                        import?.downloadBBoxes?.let {
+                            if (it.isEmpty()) return@launch
+                            DownloadWorker.enqueuedDownloads.addAll(it.drop(1))
+                            downloadController.download(it.first(), false, true)
+                        }
                     }
-                    // try splitting
-                    // todo: this way of splitting is not working well for tracks, so often the area is too large
-                    //  -> need to improve it
-                    val tileRects = usedTiles.upToTwoMinTileRects() ?: return@setOnClickListener
-                    if (tileRects.size == 1) {
-                        if (bbox.area() < MAX_DOWNLOADABLE_AREA_IN_SQKM * 1000000)
-                            downloadController.download(bbox, false, true)
-                        else context?.toast(R.string.pref_gpx_track_download_too_big, Toast.LENGTH_LONG)
-                        return@setOnClickListener
-                    }
-                    // if any area can't be split to smaller MAX_DOWNLOADABLE_AREA_IN_SQKM, cancel
-                    // could try to split the tileRects even more, but don't care for now
-                    if (tileRects.any { it.asBoundingBox(16).area() > MAX_DOWNLOADABLE_AREA_IN_SQKM * 1000000 })
-                        context?.toast(R.string.pref_gpx_track_download_too_big, Toast.LENGTH_LONG)
-                    else
-                        tileRects.forEach { downloadController.download(it.asBoundingBox(16), false, true) }
                 }
             }
             val layout = LinearLayout(requireContext()).apply {

@@ -64,6 +64,7 @@
     <string name="pref_gpx_track_loading_error">Error loading GPX track file</string>
     <string name="pref_gpx_track_enable">Display GPX track</string>
     <string name="pref_gpx_track_download">Download area covered by GPX track</string>
+    <!-- pref_gpx_track_download_too_big is currently not used, no need to translate (may get deleted later) -->
     <string name="pref_gpx_track_download_too_big">Download area too big, please download manually</string>
 
     <!-- ui settings -->
