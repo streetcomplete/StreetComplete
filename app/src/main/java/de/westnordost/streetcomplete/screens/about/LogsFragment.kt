@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.logs.LogMessage
 import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.databinding.FragmentLogsBinding
 import de.westnordost.streetcomplete.screens.TwoPaneDetailFragment
@@ -37,9 +36,12 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
         binding.logsList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         observe(viewModel.logs) { logs ->
-            adapter.messages = logs
             binding.toolbar.root.title = getString(R.string.about_title_logs, logs.size)
-            binding.logsList.scrollToPosition(logs.lastIndex)
+            val hasPreviouslyScrolledToBottom = binding.logsList.hasScrolledToBottom()
+            adapter.messages = logs
+            if (hasPreviouslyScrolledToBottom) {
+                binding.logsList.scrollToPosition(logs.lastIndex)
+            }
         }
     }
 
@@ -81,15 +83,6 @@ class LogsFragment : TwoPaneDetailFragment(R.layout.fragment_logs) {
                 viewModel.setFilters(newFilters)
             }
         }.show()
-    }
-
-    private fun onMessageAdded(message: LogMessage) {
-        adapter.add(message)
-        binding.toolbar.root.title = getString(R.string.about_title_logs, adapter.messages.size)
-
-        if (binding.logsList.hasScrolledToBottom()) {
-            binding.logsList.scrollToPosition(adapter.messages.lastIndex)
-        }
     }
 }
 

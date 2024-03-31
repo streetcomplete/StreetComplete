@@ -28,6 +28,7 @@ class LogsAdapter : RecyclerView.Adapter<LogsAdapter.ViewHolder>() {
         }
     }
 
+    private var _messages: List<LogMessage> = listOf()
     var messages: List<LogMessage>
         get() = _messages
         set(value) {
@@ -41,16 +42,9 @@ class LogsAdapter : RecyclerView.Adapter<LogsAdapter.ViewHolder>() {
                         _messages[oldItemPosition] == _messages[newItemPosition]
                 }
             )
-            _messages = value.toMutableList()
+            _messages = value.toList()
             result.dispatchUpdatesTo(this)
         }
-
-    private var _messages: MutableList<LogMessage> = mutableListOf()
-
-    fun add(message: LogMessage) {
-        _messages.add(message)
-        notifyItemInserted(_messages.lastIndex)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

@@ -17,6 +17,7 @@ import androidx.core.os.CancellationSignal
 import androidx.core.util.Consumer
 import de.westnordost.streetcomplete.util.ktx.elapsedDuration
 import kotlin.time.Duration.Companion.nanoseconds
+import kotlin.time.Duration.Companion.minutes
 
 /** Convenience wrapper around the location manager with easier API, making use of both the GPS
  *  and Network provider */
@@ -71,13 +72,13 @@ class FineLocationManager(context: Context, locationUpdateCallback: (Location) -
     fun getLastLocation() : Location? {
         if (deviceHasGPS) {
             locationManager.getLastKnownLocation(GPS_PROVIDER)?.let {
-                if ((SystemClock.elapsedRealtimeNanos().nanoseconds - it.elapsedDuration).inWholeMinutes < 2)
+                if ((SystemClock.elapsedRealtimeNanos().nanoseconds - it.elapsedDuration) < 2.minutes)
                     return it
             }
         }
         if (deviceHasNetworkLocationProvider) {
             locationManager.getLastKnownLocation(NETWORK_PROVIDER)?.let {
-                if ((SystemClock.elapsedRealtimeNanos().nanoseconds - it.elapsedDuration).inWholeMinutes < 2)
+                if ((SystemClock.elapsedRealtimeNanos().nanoseconds - it.elapsedDuration) < 2.minutes)
                     return it
             }
         }
@@ -120,10 +121,10 @@ private fun Location.isBetterThan(previous: Location?): Boolean {
     // Check whether the new location fix is newer or older
     // we use elapsedRealtimeNanos instead of epoch time because some devices have issues
     // that may lead to incorrect GPS location.time (e.g. GPS week rollover, but also others)
-    val diffMinutes = (elapsedDuration - previous.elapsedDuration).inWholeMinutes
-    val isMuchNewer = diffMinutes > 2
-    val isMuchOlder = diffMinutes < -2
-    val isNewer = diffMinutes > 0
+    val locationTimeDiff = elapsedDuration - previous.elapsedDuration
+    val isMuchNewer = locationTimeDiff > 2.minutes
+    val isMuchOlder = locationTimeDiff < (-2).minutes
+    val isNewer = locationTimeDiff.isPositive()
 
     // Check whether the new location fix is more or less accurate
     val accuracyDelta = accuracy - previous.accuracy
