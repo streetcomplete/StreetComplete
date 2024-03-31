@@ -57,57 +57,61 @@ class DisplaySettingsFragment :
         addPreferencesFromResource(R.xml.preferences_ee_display)
 
         findPreference<Preference>("display_gpx_track")?.setOnPreferenceClickListener {
-            val gpxFileExists = context?.getExternalFilesDir(null)?.let { File(it, GPX_TRACK_FILE) }?.exists() == true
-            var d: AlertDialog? = null
-            val selectFileButton = Button(context).apply {
-                setText(R.string.pref_gpx_track_provide)
-                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-                    addCategory(Intent.CATEGORY_OPENABLE)
-                    type = "application/octet-stream" // allows too many files, but application/gpx+xml doesn't work
-                }
-                setOnClickListener {
-                    d?.dismiss()
-                    startActivityForResult(intent, GPX_TRACK_CODE)
-                }
+            onClickDisplayGpxTrack()
+            true
+        }
+    }
+
+    private fun onClickDisplayGpxTrack() {
+        val gpxFileExists = context?.getExternalFilesDir(null)?.let { File(it, GPX_TRACK_FILE) }?.exists() == true
+        var d: AlertDialog? = null
+        val selectFileButton = Button(context).apply {
+            setText(R.string.pref_gpx_track_provide)
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "application/octet-stream" // allows too many files, but application/gpx+xml doesn't work
             }
-            val enableSwitch = SwitchCompat(requireContext()).apply {
-                setText(R.string.pref_gpx_track_enable)
-                isChecked = prefs.getBoolean(Prefs.SHOW_GPX_TRACK, false)
-                isEnabled = gpxFileExists
-                setOnCheckedChangeListener { _, _ ->
-                    prefs.putBoolean(Prefs.SHOW_GPX_TRACK, isChecked)
-                    gpx_track_changed = true
-                }
+            setOnClickListener {
+                d?.dismiss()
+                startActivityForResult(intent, GPX_TRACK_CODE)
             }
-            val downloadButton = Button(context).apply {
-                setText(R.string.pref_gpx_track_download)
-                isEnabled = gpxFileExists
-                setOnClickListener {
-                    val points = loadGpxTrackPoints(requireContext(), true) ?: return@setOnClickListener
-                    GlobalScope.launch {
-                        val import = importGpx(points, true, 10.0).getOrNull()
-                        import?.downloadBBoxes?.let {
-                            if (it.isEmpty()) return@launch
-                            DownloadWorker.enqueuedDownloads.addAll(it.drop(1))
-                            downloadController.download(it.first(), false, true)
-                        }
+        }
+        val enableSwitch = SwitchCompat(requireContext()).apply {
+            setText(R.string.pref_gpx_track_enable)
+            isChecked = prefs.getBoolean(Prefs.SHOW_GPX_TRACK, false)
+            isEnabled = gpxFileExists
+            setOnCheckedChangeListener { _, _ ->
+                prefs.putBoolean(Prefs.SHOW_GPX_TRACK, isChecked)
+                gpx_track_changed = true
+            }
+        }
+        val downloadButton = Button(context).apply {
+            setText(R.string.pref_gpx_track_download)
+            isEnabled = gpxFileExists
+            setOnClickListener {
+                val points = loadGpxTrackPoints(requireContext(), true) ?: return@setOnClickListener
+                GlobalScope.launch {
+                    val import = importGpx(points, true, 10.0).getOrNull()
+                    import?.downloadBBoxes?.let {
+                        if (it.isEmpty()) return@launch
+                        DownloadWorker.enqueuedDownloads.addAll(it.drop(1))
+                        downloadController.download(it.first(), false, true)
                     }
                 }
             }
-            val layout = LinearLayout(requireContext()).apply {
-                orientation = LinearLayout.VERTICAL
-                addView(downloadButton)
-                addView(selectFileButton)
-                addView(enableSwitch)
-            }
-            d = AlertDialog.Builder(requireContext())
-                .setTitle(R.string.pref_gpx_track_title)
-                .setViewWithDefaultPadding(layout)
-                .setPositiveButton(R.string.close, null)
-                .create()
-            d.show()
-            true
         }
+        val layout = LinearLayout(requireContext()).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(downloadButton)
+            addView(selectFileButton)
+            addView(enableSwitch)
+        }
+        d = AlertDialog.Builder(requireContext())
+            .setTitle(R.string.pref_gpx_track_title)
+            .setViewWithDefaultPadding(layout)
+            .setPositiveButton(R.string.close, null)
+            .create()
+        d.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -131,6 +135,7 @@ class DisplaySettingsFragment :
                 File(context?.getExternalFilesDir(null), GPX_TRACK_FILE).writeText(reader.readText())
             } }
             gpx_track_changed = true
+            onClickDisplayGpxTrack()
         } catch (e: IOException) {
             context?.toast(R.string.pref_gpx_track_loading_error, Toast.LENGTH_LONG)
         }
