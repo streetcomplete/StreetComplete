@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings
 
+import de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsViewModel
+import de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionViewModelImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -11,4 +13,5 @@ val settingsModule = module {
 
     viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get()) }
     viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }
+    viewModel<QuestPresetsViewModel> { QuestPresetsViewModelImpl(get(), get(), get(), get()) }
 }
