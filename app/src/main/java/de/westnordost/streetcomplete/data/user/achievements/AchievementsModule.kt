@@ -489,7 +489,7 @@ private val links = listOf(
         "Prettymapp",
         LinkCategory.GOODIES,
         R.drawable.ic_link_prettymapp,
-        R.string.link_opencampingmap_description
+        R.string.link_prettymapp_description
     )
 )
 
