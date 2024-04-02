@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -13,18 +12,11 @@ import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.databinding.RowEditItemBinding
 import de.westnordost.streetcomplete.databinding.RowEditSyncedBinding
-import de.westnordost.streetcomplete.util.ktx.findNext
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toast
-import java.text.DateFormat
-import java.util.Collections
 import kotlin.collections.ArrayList
 
 /** Adapter to show the edit history in a list */
 class EditHistoryAdapter(
-    val onSelected: (edit: Edit) -> Unit,
-    val onSelectionDeleted: () -> Unit,
-    val onUndo: (edit: Edit) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val rows: MutableList<EditHistoryItem> = ArrayList()
@@ -34,10 +26,9 @@ class EditHistoryAdapter(
     fun setEdits(edits: List<Edit>) {
         rows.clear()
 
-        val sortedEdits = edits.sortedByDescending { it.createdTimestamp }
-        rows.addAll(sortedEdits.map { EditItem(it) })
+        rows.addAll(edits.map { EditItem(it) })
 
-        val firstSyncedItemIndex = sortedEdits.indexOfFirst { it.isSynced == true }
+        val firstSyncedItemIndex = edits.indexOfFirst { it.isSynced == true }
         if (firstSyncedItemIndex != -1) {
             rows.add(firstSyncedItemIndex, IsSyncedItem)
         }
@@ -45,53 +36,10 @@ class EditHistoryAdapter(
         notifyDataSetChanged()
     }
 
-    fun onAdded(edit: Edit) {
-        var insertIndex = rows.indexOfFirst { it is EditItem && it.edit.createdTimestamp < edit.createdTimestamp }
-        if (insertIndex == -1) insertIndex = rows.size
-
-        rows.add(insertIndex, EditItem(edit))
-        // Item below may no longer need to show a date header
-        if (insertIndex > 0) notifyItemChanged(insertIndex - 1)
-        notifyItemInserted(insertIndex)
-    }
-
-    fun onSynced(edit: Edit) {
-        val editIndex = rows.indexOfFirst { it is EditItem && it.edit == edit }
-        if (editIndex == -1) return
-
-        val syncedItemIndex = rows.indexOfFirst { it is IsSyncedItem }
-        if (syncedItemIndex != -1) {
-            Collections.swap(rows, syncedItemIndex, editIndex)
-            notifyItemMoved(syncedItemIndex, editIndex)
-        } else {
-            // there is no "synced" item yet
-            rows.add(editIndex, IsSyncedItem)
-            notifyItemInserted(editIndex)
-        }
-    }
-
-    fun onDeleted(edits: List<Edit>) {
-        val editIndices = edits
-            .map { edit -> rows.indexOfFirst { it is EditItem && it.edit == edit } }
-            .filter { it != -1 }
-            .sortedDescending()
-
-        if (selectedEdit != null && edits.contains(selectedEdit)) {
-            selectedEdit = null
-            onSelectionDeleted()
-        }
-
-        for (index in editIndices) {
-            rows.removeAt(index)
-            notifyItemRemoved(index)
-            // Item below may need to show a date header now
-            if (index > 0) notifyItemChanged(index - 1)
-        }
-    }
-
     override fun getItemViewType(position: Int): Int = when (rows[position]) {
-        is EditItem -> EDIT
-        IsSyncedItem -> SYNCED
+        is EditHistoryItem.EditItem -> EDIT
+        EditHistoryItem.SyncedHeader -> SYNCED
+        EditHistoryItem.DateHeader -> DATE
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -109,16 +57,14 @@ class EditHistoryAdapter(
         return when (viewType) {
             EDIT   -> EditViewHolder(RowEditItemBinding.inflate(inflater, parent, false))
             SYNCED -> SyncedViewHolder(RowEditSyncedBinding.inflate(inflater, parent, false))
+            DATE   -> DateViewHolder(RowEditDateBinding.inflate(inflater, parent, false))
             else   -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val row = rows[position]
-        val rowAbove = rows.findNext(position + 1) { it is EditItem } as EditItem?
-        when (holder) {
-            is EditViewHolder -> holder.onBind((row as EditItem).edit, rowAbove?.edit)
-        }
+        (holder as? EditViewHolder)?.onBind(row as EditHistoryItem.EditItem)
     }
 
     override fun getItemCount(): Int = rows.size
@@ -140,73 +86,65 @@ class EditHistoryAdapter(
         onSelected(edit)
     }
 
-    private fun undo(edit: Edit) {
-        onUndo(edit)
-    }
-
     private inner class EditViewHolder(
         private val binding: RowEditItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(edit: Edit, editAbove: Edit?) {
-            binding.undoButtonIcon.isEnabled = edit.isUndoable
-            binding.undoButtonIcon.isInvisible = selectedEdit != edit
-            binding.selectionRing.isInvisible = selectedEdit != edit
+        fun onBind(item: EditHistoryItem.EditItem) {
+            binding.undoButtonIcon.isEnabled = item.edit.isUndoable
+            binding.undoButtonIcon.isInvisible = !item.isSelected
+            binding.selectionRing.isInvisible = !item.isSelected
 
-            if (edit.icon != 0) {
-                binding.questIcon.setImageResource(edit.icon)
+            if (item.edit.icon != 0) {
+                binding.questIcon.setImageResource(item.edit.icon)
             } else {
                 binding.questIcon.setImageDrawable(null)
             }
 
-            if (edit.overlayIcon != 0) {
-                binding.overlayIcon.setImageResource(edit.overlayIcon)
+            if (item.edit.overlayIcon != 0) {
+                binding.overlayIcon.setImageResource(item.edit.overlayIcon)
             } else {
                 binding.overlayIcon.setImageDrawable(null)
             }
 
             val aboveTimeStr = editAbove?.formatSameDayTime()
-            val timeStr = edit.formatSameDayTime()
+            val timeStr = item.formatSameDayTime()
             binding.timeTextContainer.isGone = aboveTimeStr == timeStr
             binding.timeText.text = timeStr
 
             // Only show today's date if there is an above from a different day
-            binding.todayTextContainer.isGone = !(edit.isToday && editAbove?.isToday == false)
-            binding.todayText.text = edit.formatDate()
+            binding.todayTextContainer.isGone = !(item.isToday && editAbove?.isToday == false)
+            binding.todayText.text = item.formatDate()
 
-            val res = itemView.context.resources
-            val bgColor = res.getColor(if (edit.isSynced == true) R.color.slightly_greyed_out else R.color.background)
-            itemView.setBackgroundColor(bgColor)
-            binding.clickArea.isSelected = edit == selectedEdit
+            itemView.setBackgroundColor(
+                itemView.context.resources.getColor(
+                    if (item.edit.isSynced == true) R.color.slightly_greyed_out
+                    else R.color.background
+                )
+            )
+
+            binding.clickArea.isSelected = item.isSelected
             binding.clickArea.setOnClickListener {
-                if (selectedEdit == edit) {
-                    if (edit.isUndoable) {
-                        undo(edit)
+                if (selectedEdit == item) {
+                    if (item.isUndoable) {
+                        viewModel.undo(item)
                     } else {
                         itemView.context.toast(R.string.toast_undo_unavailable, Toast.LENGTH_LONG)
                     }
                 } else {
-                    select(edit)
+                    select(item)
                 }
             }
         }
     }
 
     private class SyncedViewHolder(binding: RowEditSyncedBinding) : RecyclerView.ViewHolder(binding.root)
+    private class DateViewHolder(binding: RowEditDateBinding) : RecyclerView.ViewHolder(binding.root)
+
+    companion object {
+        private const val EDIT = 0
+        private const val SYNCED = 1
+        private const val DATE = 2
+
+    }
 }
-
-private fun Edit.formatSameDayTime() = DateUtils.formatSameDayTime(
-    createdTimestamp, nowAsEpochMilliseconds(), DateFormat.SHORT, DateFormat.SHORT
-)
-
-private fun Edit.formatDate() = DateFormat.getDateInstance(DateFormat.SHORT).format(createdTimestamp)
-
-private val Edit.isToday: Boolean get() = DateUtils.isToday(this.createdTimestamp)
-
-private sealed interface EditHistoryItem
-
-private data class EditItem(val edit: Edit) : EditHistoryItem
-private data object IsSyncedItem : EditHistoryItem
-
-private const val EDIT = 0
-private const val SYNCED = 1
