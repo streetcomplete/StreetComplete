@@ -40,20 +40,18 @@ class QuestSelectionAdapter(
 
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
-    private var _quests: MutableList<QuestSelection> = mutableListOf()
-    var quests: List<QuestSelection>
-        get() = _quests
+    var quests: List<QuestSelection> = listOf()
         set(value) {
-            val result = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
-                override fun getOldListSize() = _quests.size
+            val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+                override fun getOldListSize() = field.size
                 override fun getNewListSize() = value.size
                 override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-                    _quests[oldItemPosition].questType == value[newItemPosition].questType
+                    field[oldItemPosition].questType == value[newItemPosition].questType
                 override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-                    _quests[oldItemPosition].selected == value[newItemPosition].selected
+                    field[oldItemPosition].selected == value[newItemPosition].selected
             })
-            _quests = value.toMutableList()
-            result.dispatchUpdatesTo(this)
+            field = value.toList()
+            diff.dispatchUpdatesTo(this)
         }
 
     var onlySceeQuests: Boolean = false
@@ -63,7 +61,7 @@ class QuestSelectionAdapter(
             viewModel.onlySceeQuests = value
         }
 
-    override fun getItemCount(): Int = _quests.size
+    override fun getItemCount(): Int = quests.size
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -76,7 +74,7 @@ class QuestSelectionAdapter(
     }
 
     override fun onBindViewHolder(holder: QuestSelectionViewHolder, position: Int) {
-        holder.onBind(_quests[position])
+        holder.onBind(quests[position])
     }
 
     /** Contains the logic for drag and drop (for reordering) */
@@ -95,7 +93,7 @@ class QuestSelectionAdapter(
         override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
             val from = viewHolder.bindingAdapterPosition
             val to = target.bindingAdapterPosition
-            Collections.swap(_quests, from, to)
+            Collections.swap(quests, from, to)
             notifyItemMoved(from, to)
             return true
         }
@@ -122,8 +120,8 @@ class QuestSelectionAdapter(
             /* since we modify the quest list during move (in onMove) for the animation, the quest
              * type we dragged is now already at the position we want it to be. */
             if (draggedTo != draggedFrom && draggedTo > 0) {
-                val item = _quests[draggedTo].questType
-                val toAfter = _quests[draggedTo - 1].questType
+                val item = quests[draggedTo].questType
+                val toAfter = quests[draggedTo - 1].questType
 
                 viewModel.orderQuest(item, toAfter)
             }
