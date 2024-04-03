@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests
 
 import android.annotation.SuppressLint
 import android.app.ActionBar.LayoutParams
+import android.graphics.Color
+import android.graphics.Paint
 import android.icu.text.DateFormat
 import android.os.Build
 import android.os.Bundle
@@ -59,6 +61,7 @@ import de.westnordost.streetcomplete.util.ktx.copy
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
@@ -190,6 +193,19 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
             date.toString()
         binding.elementInfo.text = resources.getString(R.string.tag_editor_last_edited, dateText)
         binding.elementInfo.layoutParams.height = LayoutParams.WRAP_CONTENT
+        if (element.id > 0) {
+            binding.elementInfo.setTextColor(Color.BLUE)
+            binding.elementInfo.paintFlags = binding.elementInfo.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+            binding.elementInfo.setOnClickListener {
+                val url = "https://www.openstreetmap.org/${element.type.name.lowercase()}/${element.id}/history"
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.open_url)
+                    .setMessage(url)
+                    .setPositiveButton(android.R.string.ok) { _, _ -> openUri(url) }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show()
+            }
+        }
 
         // fill recyclerview and quests view
         binding.editTags.layoutManager = LinearLayoutManager(requireContext())
