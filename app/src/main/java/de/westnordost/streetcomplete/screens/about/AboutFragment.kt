@@ -134,7 +134,8 @@ private enum class DonationPlatform(
     @DrawableRes val iconId: Int,
     val url: String
 ) {
-    GITHUB("GitHub Sponsors", R.drawable.ic_github, "https://github.com/sponsors/westnordost"),
-    LIBERAPAY("Liberapay", R.drawable.ic_liberapay, "https://liberapay.com/westnordost"),
-    PATREON("Patreon", R.drawable.ic_patreon, "https://patreon.com/westnordost")
+    LIBERAPAY2("Liberapay (Helium314)", R.drawable.ic_liberapay, "https://liberapay.com/helium314"),
+    GITHUB("GitHub Sponsors (westnordost)", R.drawable.ic_github, "https://github.com/sponsors/westnordost"),
+    LIBERAPAY("Liberapay (westnordost)", R.drawable.ic_liberapay, "https://liberapay.com/westnordost"),
+    PATREON("Patreon (westnordost)", R.drawable.ic_patreon, "https://patreon.com/westnordost")
 }
