@@ -556,6 +556,9 @@
     <string name="quest_guidepostName_hint">Signed (location) name of this map or guidepost. Do not enter a reference number here.</string>
     <string name="quest_guidepost_disabled_msg">This quest is disabled by default because what is signed strongly varies by region and operator. You may need to refine the element selection for your area (e.g. add or remove maps, only select elements with hiking=yes, etc.)</string>
 
+    <string name="quest_subwayEntranceRef_hint">Reference number or code of this entrance:</string>
+    <string name="quest_subwayEntranceRef_disabled_msg">This quest is disabled by default because what is signed strongly varies by region and operator.</string>
+
 
     <!-- piste difficulty -->
     <string name="quest_piste_difficulty_title">What is the difficulty of this piste?</string>

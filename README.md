@@ -63,6 +63,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
   * Street cabinet type
   * Artwork type
   * Railway platform number
+  * Subway entrance reference number
   * Trail visibility of hiking trails
   * Genus / species of trees
     * Allows providing a file containing translated tree names instead of the default English ones
