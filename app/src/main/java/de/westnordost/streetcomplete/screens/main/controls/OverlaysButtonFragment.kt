@@ -5,29 +5,19 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.ListPopupWindow
 import androidx.fragment.app.Fragment
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapter
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
 
-    private val selectedOverlayController: SelectedOverlayController by inject()
-    private val overlayRegistry: OverlayRegistry by inject()
-    private val prefs: ObservableSettings by inject()
-
-    private val selectedOverlaylistener = object : SelectedOverlaySource.Listener {
-        override fun onSelectedOverlayChanged() {
-            viewLifecycleScope.launch { updateOverlayButtonIcon() }
-        }
-    }
+    private val viewModel by viewModel<OverlaysButtonViewModel>()
 
     interface Listener {
         fun onShowOverlaysTutorial()
@@ -36,26 +26,18 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.setOnClickListener { onClickButton() }
-    }
 
-    override fun onStart() {
-        super.onStart()
-        updateOverlayButtonIcon()
-        selectedOverlayController.addListener(selectedOverlaylistener)
-    }
+        view.setOnClickListener {
+            if (viewModel.hasShownOverlaysTutorial == false) {
+                showOverlaysTutorial()
+            } else {
+                showOverlaysMenu()
+            }
+        }
 
-    override fun onStop() {
-        super.onStop()
-        selectedOverlayController.removeListener(selectedOverlaylistener)
-    }
-
-    private fun onClickButton() {
-        val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, false)
-        if (!hasShownTutorial) {
-            showOverlaysTutorial()
-        } else {
-            showOverlaysMenu()
+        observe(viewModel.selectedOverlay) { overlay ->
+            val iconRes = overlay?.icon ?: R.drawable.ic_overlay_black_24dp
+            (view as ImageView).setImageResource(iconRes)
         }
     }
 
@@ -64,21 +46,16 @@ class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
     }
 
     private fun showOverlaysMenu() {
-        val adapter = OverlaySelectionAdapter(overlayRegistry)
+        val adapter = OverlaySelectionAdapter(viewModel.overlays)
         val popupWindow = ListPopupWindow(requireContext())
 
         popupWindow.setAdapter(adapter)
         popupWindow.setOnItemClickListener { _, _, position, _ ->
-            selectedOverlayController.selectedOverlay = adapter.getItem(position)
+            viewModel.selectOverlay(adapter.getItem(position))
             popupWindow.dismiss()
         }
         popupWindow.anchorView = view
         popupWindow.width = resources.dpToPx(240).toInt()
         popupWindow.show()
-    }
-
-    private fun updateOverlayButtonIcon() {
-        val iconRes = selectedOverlayController.selectedOverlay?.icon ?: R.drawable.ic_overlay_black_24dp
-        (view as ImageView).setImageResource(iconRes)
     }
 }
