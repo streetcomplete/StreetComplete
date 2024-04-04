@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.main
 
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.screens.main.controls.AnswersCounterViewModel
+import de.westnordost.streetcomplete.screens.main.controls.AnswersCounterViewModelImpl
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonViewModel
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonViewModelImpl
 import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonViewModel
@@ -24,4 +26,5 @@ val mainModule = module {
     viewModel<OverlaysButtonViewModel> { OverlaysButtonViewModelImpl(get(), get(), get()) }
     viewModel<MessagesButtonViewModel> { MessagesButtonViewModelImpl(get()) }
     viewModel<MainMenuButtonViewModel> { MainMenuButtonViewModelImpl(get(), get(), get(), get()) }
+    viewModel<AnswersCounterViewModel> { AnswersCounterViewModelImpl(get(), get(), get(), get(), get()) }
 }
