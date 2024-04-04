@@ -13,8 +13,6 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter) {
     private val viewModel by viewModel<AnswersCounterViewModel>()
     private val answersCounterView get() = view as AnswersCounterView
 
-    /* --------------------------------------- Lifecycle ---------------------------------------- */
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
