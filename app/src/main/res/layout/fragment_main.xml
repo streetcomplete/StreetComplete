@@ -43,50 +43,69 @@
             android:visibility="gone"
             tools:ignore="MissingConstraints" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/answers_counter_fragment"
-            android:name="de.westnordost.streetcomplete.screens.main.controls.AnswersCounterFragment"
+        <de.westnordost.streetcomplete.screens.main.controls.StarsCounterView
+            android:id="@+id/starsCounterView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout="@layout/fragment_answers_counter"
+            android:clipChildren="false"
+            android:elevation="4dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/upload_button_fragment"
-            android:name="de.westnordost.streetcomplete.screens.main.controls.UploadButtonFragment"
+        <de.westnordost.streetcomplete.screens.main.controls.UploadButton
+            android:id="@+id/uploadButton"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            tools:layout="@layout/fragment_upload_button"
-            app:layout_constraintRight_toLeftOf="@+id/overlays_button_fragment"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:contentDescription="@string/action_upload"
+            app:layout_constraintRight_toLeftOf="@+id/overlaysButton"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/RoundWhiteButton"
+            />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/main_menu_button_fragment"
-            android:name="de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonFragment"
+        <ImageButton
+            android:id="@+id/mainMenuButton"
+            style="@style/RoundWhiteButton"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            tools:layout="@layout/fragment_main_menu_button"
+            android:contentDescription="@string/map_btn_menu"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_menu_24dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/overlays_button_fragment"
-            android:name="de.westnordost.streetcomplete.screens.main.controls.OverlaysButtonFragment"
+
+        <de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircleView
+            android:id="@+id/teamModeColorCircle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="@id/mainMenuButton"
+            app:layout_constraintTop_toTopOf="@id/mainMenuButton"
+            tools:visibility="visible"/>
+
+        <ImageButton
+            android:id="@+id/overlaysButton"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            tools:layout="@layout/fragment_overlays_button"
+            android:background="@drawable/round_white_button"
+            android:elevation="4dp"
+            app:srcCompat="@drawable/ic_overlay_black_24dp"
+            android:contentDescription="@string/action_overlays"
+            android:scaleType="centerInside"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/main_menu_button_fragment" />
+            app:layout_constraintRight_toLeftOf="@+id/mainMenuButton" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/messages_button_fragment"
-            android:name="de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment"
+        <de.westnordost.streetcomplete.screens.main.controls.MessagesButton
+            android:id="@+id/messagesButton"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            tools:layout="@layout/fragment_messages_button"
-            app:layout_constraintRight_toLeftOf="@+id/upload_button_fragment"
-            app:layout_constraintTop_toTopOf="parent" />
+            style="@style/RoundWhiteButton"
+            app:layout_constraintRight_toLeftOf="@+id/uploadButton"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <!-- note the other compass in quest_street_side_puzzle -->
         <ImageView
@@ -97,7 +116,7 @@
             android:elevation="4dp"
             android:padding="14dp"
             app:srcCompat="@drawable/ic_compass_needle_48dp"
-            app:layout_constraintTop_toBottomOf="@+id/main_menu_button_fragment"
+            app:layout_constraintTop_toBottomOf="@+id/mainMenuButton"
             app:layout_constraintRight_toRightOf="parent" />
 
         <ImageButton
@@ -148,15 +167,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="22dp"/>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/undo_button_fragment"
-            android:name="de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment"
+        <ImageButton
+            android:id="@+id/undoButton"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
-            tools:layout="@layout/fragment_undo_button"
+            android:scaleType="center"
+            style="@style/RoundWhiteButton"
+            app:srcCompat="@drawable/ic_undo_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginBottom="22dp"/>
+            android:layout_marginBottom="22dp"
+            android:contentDescription="@string/action_undo" />
 
         <ImageButton
             android:id="@+id/createButton"

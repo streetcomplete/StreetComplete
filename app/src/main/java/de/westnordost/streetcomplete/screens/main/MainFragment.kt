@@ -19,6 +19,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.AnyThread
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.ListPopupWindow
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
@@ -31,15 +33,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -83,8 +84,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAwar
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
-import de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonFragment
-import de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment
+import de.westnordost.streetcomplete.screens.main.controls.MainMenuDialog
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
@@ -93,6 +93,7 @@ import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
+import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapter
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
@@ -101,6 +102,9 @@ import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.observe
+import de.westnordost.streetcomplete.util.ktx.popIn
+import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -114,11 +118,13 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.util.viewBinding
+import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 import kotlin.math.PI
 import kotlin.math.abs
@@ -159,8 +165,6 @@ class MainFragment :
     CreateNoteFragment.Listener,
     MoveNodeFragment.Listener,
     EditHistoryFragment.Listener,
-    MainMenuButtonFragment.Listener,
-    UndoButtonFragment.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
@@ -175,10 +179,10 @@ class MainFragment :
     private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
-    private val prefs: ObservableSettings by inject()
 
     private lateinit var locationManager: FineLocationManager
 
+    private val controlsViewModel by viewModel<MainViewModel>()
     private val binding by viewBinding(FragmentMainBinding::bind)
 
     private var wasFollowingPosition: Boolean? = null
@@ -187,7 +191,6 @@ class MainFragment :
     private var windowInsets: Insets? = null
 
     private var mapFragment: MainMapFragment? = null
-    private var mainMenuButtonFragment: MainMenuButtonFragment? = null
 
     private val bottomSheetFragment: Fragment? get() =
         childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
@@ -199,6 +202,8 @@ class MainFragment :
 
     interface Listener {
         fun onMapInitialized()
+        fun onClickShowMessage(message: Message)
+        fun onShowOverlaysTutorial()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -226,7 +231,6 @@ class MainFragment :
         childFragmentManager.addFragmentOnAttachListener { _, fragment ->
             when (fragment) {
                 is MainMapFragment -> mapFragment = fragment
-                is MainMenuButtonFragment -> mainMenuButtonFragment = fragment
             }
         }
         childFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
@@ -248,6 +252,12 @@ class MainFragment :
         binding.zoomInButton.setOnClickListener { onClickZoomIn() }
         binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
         binding.createButton.setOnClickListener { onClickCreateButton() }
+        binding.uploadButton.setOnClickListener { onClickUploadButton() }
+        binding.undoButton.setOnClickListener { onClickUndoButton() }
+        binding.messagesButton.setOnClickListener { onClickMessagesButton() }
+        binding.starsCounterView.setOnClickListener { onClickAnswersCounterView() }
+        binding.overlaysButton.setOnClickListener { onClickOverlaysButton() }
+        binding.mainMenuButton.setOnClickListener { onClickMainMenu() }
 
         updateOffsetWithOpenBottomSheet()
 
@@ -257,6 +267,53 @@ class MainFragment :
         requireActivity().onBackPressedDispatcher
             .addCallback(viewLifecycleOwner, sheetBackPressedCallback)
         sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
+
+        observe(controlsViewModel.isAutoSync) { isAutoSync ->
+            binding.uploadButton.isGone = isAutoSync
+        }
+        observe(controlsViewModel.unsyncedEditsCount) { count ->
+            binding.uploadButton.uploadableCount = count
+        }
+        observe(controlsViewModel.isUploading) { isUploadInProgress ->
+            binding.uploadButton.isEnabled = !isUploadInProgress
+            // Don't allow undoing while uploading. Should prevent race conditions.
+            // (Undoing quest while also uploading it at the same time)
+            binding.undoButton.isEnabled = !isUploadInProgress
+        }
+        observe(controlsViewModel.hasUndoableEdits) { hasUndoableEdits ->
+            binding.undoButton.isGone = !hasUndoableEdits
+        }
+        observe(controlsViewModel.messagesCount) { messagesCount ->
+            binding.messagesButton.messagesCount = messagesCount
+            binding.messagesButton.isGone = messagesCount <= 0
+        }
+        observe(controlsViewModel.isUploadingOrDownloading) { isUploadingOrDownloading ->
+            binding.starsCounterView.showProgress = isUploadingOrDownloading
+        }
+        observe(controlsViewModel.isShowingStarsCurrentWeek) { isShowingCurrentWeek ->
+            binding.starsCounterView.showLabel = isShowingCurrentWeek
+        }
+        observe(controlsViewModel.starsCount) { count ->
+            // only animate if count is positive, for positive feedback
+            binding.starsCounterView.setUploadedCount(count, count > 0)
+        }
+        observe(controlsViewModel.selectedOverlay) { overlay ->
+            val iconRes = overlay?.icon ?: R.drawable.ic_overlay_black_24dp
+            binding.overlaysButton.setImageResource(iconRes)
+        }
+        observe(controlsViewModel.isTeamMode) { isTeamMode ->
+            if (isTeamMode) {
+                // always show this toast on start to remind user that it is still on
+                context?.toast(R.string.team_mode_active)
+                binding.teamModeColorCircle.popIn()
+                binding.teamModeColorCircle.setIndexInTeam(controlsViewModel.indexInTeam)
+            } else {
+                // show this only once when turning it off
+                if (controlsViewModel.teamModeChanged) context?.toast(R.string.team_mode_deactivated)
+                binding.teamModeColorCircle.popOut()
+            }
+            controlsViewModel.teamModeChanged = false
+        }
     }
 
     @UiThread
@@ -401,44 +458,6 @@ class MainFragment :
         } else {
             viewLifecycleScope.launch { showElementDetails(elementKey) }
         }
-    }
-
-    //endregion
-
-    //region Buttons - Callbacks from the buttons in the main view
-
-    /* ---------------------------- MainMenuButtonFragment.Listener ----------------------------- */
-
-    override fun getDownloadArea(): BoundingBox? {
-        val displayArea = mapFragment?.getDisplayedArea()
-        if (displayArea == null) {
-            context?.toast(R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG)
-            return null
-        }
-
-        val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
-        val areaInSqKm = enclosingBBox.area() / 1000000
-        if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
-            context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
-            return null
-        }
-
-        // below a certain threshold, it does not make sense to download, so let's enlarge it
-        if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
-            val cameraPosition = mapFragment?.cameraPosition
-            if (cameraPosition != null) {
-                val radius = sqrt(1000000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
-                return cameraPosition.position.enclosingBoundingBox(radius)
-            }
-        }
-
-        return enclosingBBox
-    }
-
-    /* ------------------------------ UndoButtonFragment.Listener ------------------------------- */
-
-    override fun onClickShowEditHistory() {
-        showEditHistorySidebar()
     }
 
     //endregion
@@ -705,7 +724,34 @@ class MainFragment :
     //region Buttons - Functionality for the buttons in the main view
 
     fun onClickMainMenu() {
-        mainMenuButtonFragment?.onClickMainMenu()
+        MainMenuDialog(
+            requireContext(),
+            if (controlsViewModel.isTeamMode.value) controlsViewModel.indexInTeam else null,
+            this::onClickDownload,
+            controlsViewModel::enableTeamMode,
+            controlsViewModel::disableTeamMode
+        ).show()
+    }
+
+    private fun onClickDownload() {
+        if (controlsViewModel.isConnected) {
+            val downloadBbox = getDownloadArea() ?: return
+            if (controlsViewModel.isUserInitiatedDownloadInProgress) {
+                context?.let {
+                    AlertDialog.Builder(it)
+                        .setMessage(R.string.confirmation_cancel_prev_download_title)
+                        .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
+                            controlsViewModel.download(downloadBbox)
+                        }
+                        .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
+                        .show()
+                }
+            } else {
+                controlsViewModel.download(downloadBbox)
+            }
+        } else {
+            context?.toast(R.string.offline)
+        }
     }
 
     private fun onClickZoomOut() {
@@ -723,6 +769,43 @@ class MainFragment :
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
         composeNote(pos, true)
+    }
+
+    private fun onClickUploadButton() {
+        if (controlsViewModel.isConnected) {
+            if (controlsViewModel.isLoggedIn.value) {
+                controlsViewModel.upload()
+            } else {
+                context?.let { RequestLoginDialog(it).show() }
+            }
+        } else {
+            context?.toast(R.string.offline)
+        }
+    }
+
+    private fun onClickUndoButton() {
+        showEditHistorySidebar()
+    }
+
+    private fun onClickMessagesButton() {
+        viewLifecycleScope.launch {
+            val message = controlsViewModel.popMessage()
+            if (message != null) {
+                listener?.onClickShowMessage(message)
+            }
+        }
+    }
+
+    private fun onClickAnswersCounterView() {
+        controlsViewModel.toggleShowingCurrentWeek()
+    }
+
+    private fun onClickOverlaysButton() {
+        if (!controlsViewModel.hasShownOverlaysTutorial) {
+            showOverlaysTutorial()
+        } else {
+            showOverlaysMenu()
+        }
     }
 
     private fun onClickCompassButton() {
@@ -789,6 +872,50 @@ class MainFragment :
         mapFragment.isFollowingPosition = follow
         binding.gpsTrackingButton.isActivated = follow
         if (follow) mapFragment.centerCurrentPositionIfFollowing()
+    }
+
+    private fun showOverlaysTutorial() {
+        listener?.onShowOverlaysTutorial()
+    }
+
+    private fun showOverlaysMenu() {
+        val adapter = OverlaySelectionAdapter(controlsViewModel.overlays)
+        val popupWindow = ListPopupWindow(requireContext())
+
+        popupWindow.setAdapter(adapter)
+        popupWindow.setOnItemClickListener { _, _, position, _ ->
+            controlsViewModel.selectOverlay(adapter.getItem(position))
+            popupWindow.dismiss()
+        }
+        popupWindow.anchorView = binding.overlaysButton
+        popupWindow.width = resources.dpToPx(240).toInt()
+        popupWindow.show()
+    }
+
+    private fun getDownloadArea(): BoundingBox? {
+        val displayArea = mapFragment?.getDisplayedArea()
+        if (displayArea == null) {
+            context?.toast(R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG)
+            return null
+        }
+
+        val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
+        val areaInSqKm = enclosingBBox.area() / 1000000
+        if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
+            context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
+            return null
+        }
+
+        // below a certain threshold, it does not make sense to download, so let's enlarge it
+        if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
+            val cameraPosition = mapFragment?.cameraPosition
+            if (cameraPosition != null) {
+                val radius = sqrt(1000000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
+                return cameraPosition.position.enclosingBoundingBox(radius)
+            }
+        }
+
+        return enclosingBBox
     }
 
     /* -------------------------------------- Context Menu -------------------------------------- */
@@ -1155,14 +1282,10 @@ class MainFragment :
         img.setImageResource(iconResId)
         root.addView(img)
 
-        val answerTarget = view.findViewById<View>(
-            if (isAutosync) R.id.answers_counter_fragment else R.id.upload_button_fragment
-        )
+        val isAutoSync = controlsViewModel.isAutoSync.value
+        val answerTarget = if (isAutoSync) binding.starsCounterView else binding.uploadButton
         flingQuestMarkerTo(img, answerTarget) { root.removeView(img) }
     }
-
-    private val isAutosync: Boolean get() =
-        Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC) == Prefs.Autosync.ON
 
     private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
         val targetPos = target.getLocationInWindow().toPointF()
