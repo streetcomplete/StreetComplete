@@ -168,7 +168,6 @@ class MainFragment :
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
-    SelectedOverlaySource.Listener,
     // rest
     ShowsGeometryMarkers {
 
@@ -176,7 +175,6 @@ class MainFragment :
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
-    private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
 
@@ -241,8 +239,6 @@ class MainFragment :
 
         binding.mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
-
-        updateCreateButtonVisibility()
 
         binding.locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
@@ -314,6 +310,16 @@ class MainFragment :
             }
             controlsViewModel.teamModeChanged = false
         }
+        observe(controlsViewModel.selectedOverlay) { overlay ->
+            val isCreateNodeEnabled = overlay?.isCreateNodeEnabled == true
+            binding.createButton.isGone = !isCreateNodeEnabled
+            binding.crosshairView.isGone = !isCreateNodeEnabled
+
+            val f = bottomSheetFragment
+            if (f is IsShowingElement) {
+                closeBottomSheet()
+            }
+        }
     }
 
     @UiThread
@@ -341,7 +347,6 @@ class MainFragment :
         super.onStart()
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
-        selectedOverlaySource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(requireContext().run { hasLocationPermission && isLocationEnabled })
     }
@@ -353,7 +358,6 @@ class MainFragment :
         visibleQuestsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
         mapDataWithEditsSource.removeListener(this)
-        selectedOverlaySource.removeListener(this)
         locationManager.removeUpdates()
     }
 
@@ -574,19 +578,6 @@ class MainFragment :
     //endregion
 
     //region Data Updates - Callbacks for when data changed in the local database
-
-    /* ------------------------------ SelectedOverlaySource.Listener -----------------------------*/
-
-    override fun onSelectedOverlayChanged() {
-        viewLifecycleScope.launch {
-            updateCreateButtonVisibility()
-
-            val f = bottomSheetFragment
-            if (f is IsShowingElement) {
-                closeBottomSheet()
-            }
-        }
-    }
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
@@ -847,12 +838,6 @@ class MainFragment :
 
     private fun onClickCreateButton() {
         showOverlayFormForNewElement()
-    }
-
-    private fun updateCreateButtonVisibility() {
-        val isCreateNodeEnabled = selectedOverlaySource.selectedOverlay?.isCreateNodeEnabled == true
-        binding.createButton.isGone = !isCreateNodeEnabled
-        binding.crosshairView.isGone = !isCreateNodeEnabled
     }
 
     private fun updateCreateButtonEnablement(zoom: Float) {
@@ -1116,7 +1101,7 @@ class MainFragment :
 
     @UiThread
     private fun showOverlayFormForNewElement() {
-        val overlay = selectedOverlaySource.selectedOverlay ?: return
+        val overlay = controlsViewModel.selectedOverlay.value ?: return
         val mapFragment = mapFragment ?: return
 
         val f = overlay.createForm(null) ?: return
@@ -1134,7 +1119,7 @@ class MainFragment :
     @UiThread
     private suspend fun showElementDetails(elementKey: ElementKey) {
         if (isElementCurrentlyDisplayed(elementKey)) return
-        val overlay = selectedOverlaySource.selectedOverlay ?: return
+        val overlay = controlsViewModel.selectedOverlay.value ?: return
         val geometry = mapDataWithEditsSource.getGeometry(elementKey.type, elementKey.id) ?: return
         val mapFragment = mapFragment ?: return
 
