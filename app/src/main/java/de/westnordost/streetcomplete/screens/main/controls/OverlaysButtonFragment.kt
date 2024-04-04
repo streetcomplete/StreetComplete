@@ -5,14 +5,10 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.ListPopupWindow
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapter
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.observe
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OverlaysButtonFragment : Fragment(R.layout.fragment_overlays_button) {
