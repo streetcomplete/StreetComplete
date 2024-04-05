@@ -123,8 +123,10 @@ dependencies {
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
-    implementation("io.insert-koin:koin-android-compat:3.4.1")
-    implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
+    implementation(platform("io.insert-koin:koin-bom:3.5.4"))
+    implementation("io.insert-koin:koin-core")
+    implementation("io.insert-koin:koin-android")
+    implementation("io.insert-koin:koin-androidx-workmanager")
 
     // Android stuff
     implementation("com.google.android.material:material:1.11.0")
