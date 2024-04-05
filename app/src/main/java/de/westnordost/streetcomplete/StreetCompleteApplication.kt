@@ -38,6 +38,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.osmNoteQuestModule
 import de.westnordost.streetcomplete.data.osmnotes.notesModule
 import de.westnordost.streetcomplete.data.externalsource.externalSourceModule
 import de.westnordost.streetcomplete.data.overlays.overlayModule
+import de.westnordost.streetcomplete.data.platform.platformModule
 import de.westnordost.streetcomplete.data.quest.questModule
 import de.westnordost.streetcomplete.data.upload.uploadModule
 import de.westnordost.streetcomplete.data.urlconfig.urlConfigModule
@@ -146,6 +147,7 @@ class StreetCompleteApplication : Application() {
                 overlaysModule,
                 overlayModule,
                 urlConfigModule,
+                platformModule,
                 externalSourceModule,
             )
         }

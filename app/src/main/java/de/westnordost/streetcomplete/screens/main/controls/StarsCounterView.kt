@@ -8,10 +8,13 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.databinding.ViewAnswersCounterBinding
+import org.koin.android.ext.android.inject
 
 /** View that displays the user's quest answer counter */
-class AnswersCounterView @JvmOverloads constructor(
+class StarsCounterView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -26,7 +29,7 @@ class AnswersCounterView @JvmOverloads constructor(
             field = value
         }
 
-    var uploadedCount: Int = 0
+    var starsCount: Int = 0
         set(value) {
             field = value
             binding.textView.text = value.toString()
@@ -43,10 +46,10 @@ class AnswersCounterView @JvmOverloads constructor(
         get() = binding.labelView.isGone
 
     fun setUploadedCount(uploadedCount: Int, animate: Boolean) {
-        if (this.uploadedCount < uploadedCount && animate) {
+        if (this.starsCount < uploadedCount && animate) {
             animateChange()
         }
-        this.uploadedCount = uploadedCount
+        this.starsCount = uploadedCount
     }
 
     private fun animateChange() {

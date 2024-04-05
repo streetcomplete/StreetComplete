@@ -21,7 +21,7 @@ class MessagesSource(
      * database table*/
 
     interface UpdateListener {
-        fun onNumberOfMessagesUpdated(numberOfMessages: Int)
+        fun onNumberOfMessagesUpdated(messageCount: Int)
     }
     private val listeners = Listeners<UpdateListener>()
 

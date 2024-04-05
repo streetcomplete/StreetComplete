@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.controls
 
 import android.content.Context
 import android.content.Intent
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.doOnPreDraw
@@ -103,6 +104,14 @@ class MainMenuDialog(
             dismiss()
         }
 
+        setOnKeyListener { _, _, keyEvent ->
+            if (keyEvent.keyCode == KeyEvent.KEYCODE_MENU && keyEvent.action == KeyEvent.ACTION_UP) {
+                val intent = Intent(context, SettingsActivity::class.java)
+                context.startActivity(intent)
+                dismiss()
+                true
+            } else false
+        }
         setView(binding.root)
     }
 }

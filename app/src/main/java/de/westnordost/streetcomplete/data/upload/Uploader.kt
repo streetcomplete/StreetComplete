@@ -88,6 +88,7 @@ class Uploader(
                 // element edit and note edit uploader must run in sequence because the notes may need
                 // to be updated if the element edit uploader creates new elements to which notes refer
                 elementEditsUploader.upload(this)
+                if (!userLoginStatusSource.isLoggedIn) return@withLock // avoid the 2 below in debug apk
                 noteEditsUploader.upload()
                 externalSourceQuestController.upload()
             }
