@@ -26,9 +26,8 @@ class UnsyncedChangesCountSource(
 
     /** count of unsynced changes that count towards the statistics. That is, unsynced note stuff
      *  doesn't count and reverts of changes count negative */
-    suspend fun getSolvedCount(): Int = withContext(Dispatchers.IO) {
+    fun getSolvedCount(): Int =
         elementEditsSource.getPositiveUnsyncedCount()
-    }
 
     private val noteEditsListener = object : NoteEditsSource.Listener {
         override fun onAddedEdit(edit: NoteEdit) { if (!edit.isSynced) onUpdate(+1) }
