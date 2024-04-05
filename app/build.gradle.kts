@@ -147,8 +147,8 @@ dependencies {
     implementation("com.russhwolf:multiplatform-settings:1.1.1")
 
     // Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
 
     // Date/time
@@ -208,9 +208,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20240228"
+val nsiVersion = "v6.0.20240401"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.6.0"
+val presetsVersion = "v6.7.3"
 
 val poEditorProjectId = "97843"
 
