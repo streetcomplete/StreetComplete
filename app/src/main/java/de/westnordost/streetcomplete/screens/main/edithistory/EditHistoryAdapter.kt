@@ -2,45 +2,39 @@ package de.westnordost.streetcomplete.screens.main.edithistory
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.databinding.RowEditItemBinding
-import de.westnordost.streetcomplete.databinding.RowEditSyncedBinding
-import de.westnordost.streetcomplete.util.ktx.toast
-import kotlin.collections.ArrayList
+import java.text.DateFormat
 
 /** Adapter to show the edit history in a list */
 class EditHistoryAdapter(
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val onClick: (EditItem) -> Unit
+) : RecyclerView.Adapter<EditHistoryAdapter.EditViewHolder>() {
 
-    private val rows: MutableList<EditHistoryItem> = ArrayList()
-    private var selectedEdit: Edit? = null
-    private var recyclerView: RecyclerView? = null
+    var edits: List<EditItem> = listOf()
+        set(value) {
+            val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+                override fun getOldListSize() = field.size
+                override fun getNewListSize() = value.size
+                override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                    field[oldItemPosition].edit.key == value[newItemPosition].edit.key
+                override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                    field[oldItemPosition] == value[newItemPosition]
+            })
+            field = value.toList()
+            diff.dispatchUpdatesTo(this)
 
-    fun setEdits(edits: List<Edit>) {
-        rows.clear()
-
-        rows.addAll(edits.map { EditItem(it) })
-
-        val firstSyncedItemIndex = edits.indexOfFirst { it.isSynced == true }
-        if (firstSyncedItemIndex != -1) {
-            rows.add(firstSyncedItemIndex, IsSyncedItem)
+            val newSelectedIndex = value.indexOfFirst { it.isSelected }
+            if (newSelectedIndex != -1) recyclerView?.scrollToPosition(newSelectedIndex)
         }
 
-        notifyDataSetChanged()
-    }
-
-    override fun getItemViewType(position: Int): Int = when (rows[position]) {
-        is EditHistoryItem.EditItem -> EDIT
-        EditHistoryItem.SyncedHeader -> SYNCED
-        EditHistoryItem.DateHeader -> DATE
-    }
+    private var recyclerView: RecyclerView? = null
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -52,45 +46,20 @@ class EditHistoryAdapter(
         this.recyclerView = null
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        return when (viewType) {
-            EDIT   -> EditViewHolder(RowEditItemBinding.inflate(inflater, parent, false))
-            SYNCED -> SyncedViewHolder(RowEditSyncedBinding.inflate(inflater, parent, false))
-            DATE   -> DateViewHolder(RowEditDateBinding.inflate(inflater, parent, false))
-            else   -> throw IllegalArgumentException("Unknown viewType $viewType")
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        EditViewHolder(RowEditItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+
+    override fun onBindViewHolder(holder: EditViewHolder, position: Int) {
+        holder.onBind(edits[position])
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val row = rows[position]
-        (holder as? EditViewHolder)?.onBind(row as EditHistoryItem.EditItem)
-    }
+    override fun getItemCount() = edits.size
 
-    override fun getItemCount(): Int = rows.size
-
-    fun select(edit: Edit) {
-        val previousSelectedIndex = rows.indexOfFirst { it is EditItem && it.edit == selectedEdit }
-        val newSelectedIndex = rows.indexOfFirst { it is EditItem && it.edit == edit }
-        /* edit can in rare cases not be in adapter any more - when the edit is removed from the
-           database while it is being tapped */
-        if (newSelectedIndex == -1) return
-
-        recyclerView?.scrollToPosition(newSelectedIndex)
-
-        selectedEdit = edit
-
-        if (previousSelectedIndex != -1) notifyItemChanged(previousSelectedIndex)
-        notifyItemChanged(newSelectedIndex)
-
-        onSelected(edit)
-    }
-
-    private inner class EditViewHolder(
+    inner class EditViewHolder(
         private val binding: RowEditItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(item: EditHistoryItem.EditItem) {
+        fun onBind(item: EditItem) {
             binding.undoButtonIcon.isEnabled = item.edit.isUndoable
             binding.undoButtonIcon.isInvisible = !item.isSelected
             binding.selectionRing.isInvisible = !item.isSelected
@@ -107,14 +76,13 @@ class EditHistoryAdapter(
                 binding.overlayIcon.setImageDrawable(null)
             }
 
-            val aboveTimeStr = editAbove?.formatSameDayTime()
-            val timeStr = item.formatSameDayTime()
-            binding.timeTextContainer.isGone = aboveTimeStr == timeStr
-            binding.timeText.text = timeStr
+            binding.timeDateContainer.isGone = !item.showDate && !item.showTime
 
-            // Only show today's date if there is an above from a different day
-            binding.todayTextContainer.isGone = !(item.isToday && editAbove?.isToday == false)
-            binding.todayText.text = item.formatDate()
+            binding.dateText.isGone = !item.showDate
+            binding.dateText.text = DateFormat.getDateInstance(DateFormat.SHORT).format(item.edit.createdTimestamp)
+
+            binding.timeText.isGone = !item.showTime
+            binding.timeText.text = DateFormat.getTimeInstance(DateFormat.SHORT).format(item.edit.createdTimestamp)
 
             itemView.setBackgroundColor(
                 itemView.context.resources.getColor(
@@ -124,27 +92,7 @@ class EditHistoryAdapter(
             )
 
             binding.clickArea.isSelected = item.isSelected
-            binding.clickArea.setOnClickListener {
-                if (selectedEdit == item) {
-                    if (item.isUndoable) {
-                        viewModel.undo(item)
-                    } else {
-                        itemView.context.toast(R.string.toast_undo_unavailable, Toast.LENGTH_LONG)
-                    }
-                } else {
-                    select(item)
-                }
-            }
+            binding.clickArea.setOnClickListener { onClick(item) }
         }
-    }
-
-    private class SyncedViewHolder(binding: RowEditSyncedBinding) : RecyclerView.ViewHolder(binding.root)
-    private class DateViewHolder(binding: RowEditDateBinding) : RecyclerView.ViewHolder(binding.root)
-
-    companion object {
-        private const val EDIT = 0
-        private const val SYNCED = 1
-        private const val DATE = 2
-
     }
 }

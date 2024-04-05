@@ -10,8 +10,6 @@ interface EditHistorySource {
 
     fun get(key: EditKey): Edit?
 
-    fun getMostRecentUndoable(): Edit?
-
     fun getAll(): List<Edit>
     fun getCount(): Int
 

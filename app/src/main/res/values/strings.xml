@@ -214,7 +214,6 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="added_tag_action_title">Added %s</string>
     <string name="removed_tag_action_title">Removed %s</string>
     <string name="changed_tag_action_title">Updated to %s</string>
-    <string name="synced">Synced</string>
     <string name="undo_confirm_title2">Undo the following edit?</string>
     <string name="undo_confirm_positive">Undo</string>
     <string name="undo_confirm_negative">Cancel</string>

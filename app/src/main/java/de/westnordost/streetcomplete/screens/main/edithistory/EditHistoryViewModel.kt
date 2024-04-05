@@ -1,37 +1,99 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
-import android.text.format.DateUtils
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
+import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
-import kotlinx.datetime.LocalDate
-import java.text.DateFormat
+import kotlinx.coroutines.withContext
+import kotlinx.datetime.Instant
 
 abstract class EditHistoryViewModel : ViewModel() {
-    abstract val edits: StateFlow<List<EditHistoryItem>>
-
+    abstract val editItems: StateFlow<List<EditItem>>
     abstract val selectedEdit: StateFlow<Edit?>
+
+    abstract suspend fun getEditElement(edit: Edit): Element?
+    abstract suspend fun getEditGeometry(edit: Edit): ElementGeometry
+
+    abstract fun select(editKey: EditKey?)
+    abstract fun undo(edit: Edit)
+
+    abstract val featureDictionaryLazy: Lazy<FeatureDictionary>
 }
 
-sealed interface EditHistoryItem {
-    data class EditItem(val edit: Edit, val isSelected: Boolean) : EditHistoryItem
-    data object SyncedHeader : EditHistoryItem
-    data class DateHeader(val date: LocalDate) : EditHistoryItem
-}
+data class EditItem(
+    val edit: Edit,
+    val showDate: Boolean,
+    val showTime: Boolean,
+    val isSelected: Boolean
+)
 
 class EditHistoryViewModelImpl(
-    private val editHistorySource: EditHistorySource
+    private val mapDataSource: MapDataWithEditsSource,
+    private val editHistoryController: EditHistoryController,
+    override val featureDictionaryLazy: Lazy<FeatureDictionary>,
 ) : EditHistoryViewModel() {
 
-    override val edits = MutableStateFlow<List<EditHistoryItem>>(emptyList())
+    private val edits = MutableStateFlow<List<Edit>>(emptyList())
 
     override val selectedEdit = MutableStateFlow<Edit?>(null)
+
+    override val editItems = combine(edits, selectedEdit) { edits, selection ->
+        edits.mapIndexed { index, edit ->
+            val editAbove = if (index < edits.indices.last) edits[index + 1] else null
+
+            val editDateTime = Instant.fromEpochMilliseconds(edit.createdTimestamp).toLocalDateTime()
+            val editAboveDateTime = editAbove?.let { Instant.fromEpochMilliseconds(it.createdTimestamp).toLocalDateTime() }
+            val sameDate = editDateTime.date == editAboveDateTime?.date
+            val sameTime = editDateTime.time.hour == editAboveDateTime?.time?.hour &&
+                           editDateTime.time.minute == editAboveDateTime.time.minute
+
+            EditItem(edit,
+                showDate = !sameDate,
+                showTime = !sameTime || !sameDate,
+                isSelected = selection?.key == edit.key
+            )
+        }
+    }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+
+    override suspend fun getEditElement(edit: Edit): Element? {
+        val key = edit.primaryElementKey ?: return null
+        return withContext(IO) { mapDataSource.get(key.type, key.id) }
+    }
+
+    override suspend fun getEditGeometry(edit: Edit): ElementGeometry = when (edit) {
+        is ElementEdit -> edit.originalGeometry
+        is OsmQuestHidden -> withContext(IO) { mapDataSource.getGeometry(edit.elementType, edit.elementId) }
+        else -> null
+    } ?: ElementPointGeometry(edit.position)
+
+    override fun select(editKey: EditKey?) {
+        selectedEdit.value = edits.value.firstOrNull { it.key == editKey }
+    }
+
+    override fun undo(edit: Edit) {
+        launch(IO) {
+            editHistoryController.undo(edit)
+        }
+    }
 
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(added: Edit) {
@@ -43,6 +105,9 @@ class EditHistoryViewModelImpl(
         }
 
         override fun onSynced(synced: Edit) {
+            if (selectedEdit.value?.key == synced.key) {
+                selectedEdit.value = synced
+            }
             edits.update { edits ->
                 val editIndex = edits.indexOfFirst { it.key == synced.key }
                 if (editIndex != -1) edits.toMutableList().also { it[editIndex] = synced }
@@ -56,7 +121,7 @@ class EditHistoryViewModelImpl(
                 selectedEdit.value = null
             }
             edits.update { edits ->
-                edits.filter { it.key in deletedKeys }
+                edits.filter { it.key !in deletedKeys }
             }
         }
 
@@ -66,26 +131,23 @@ class EditHistoryViewModelImpl(
     }
 
     init {
-        editHistorySource.addListener(editHistoryListener)
+        updateEdits()
+        editHistoryController.addListener(editHistoryListener)
     }
 
     override fun onCleared() {
-        editHistorySource.removeListener(editHistoryListener)
+        editHistoryController.removeListener(editHistoryListener)
     }
 
     private fun updateEdits() {
         launch(IO) {
-            edits.value = editHistorySource.getAll().sortedByDescending { it.createdTimestamp }
-            // only if there is no selection yet
-            selectedEdit.compareAndSet(null, edits.value.firstOrNull { it.isUndoable })
+            edits.value = editHistoryController.getAll().sortedByDescending { it.createdTimestamp }
         }
     }
 }
 
-private fun Edit.formatSameDayTime() = DateUtils.formatSameDayTime(
-    createdTimestamp, nowAsEpochMilliseconds(), DateFormat.SHORT, DateFormat.SHORT
-)
-
-private fun Edit.formatDate() = DateFormat.getDateInstance(DateFormat.SHORT).format(createdTimestamp)
-
-private val Edit.isToday: Boolean get() = DateUtils.isToday(this.createdTimestamp)
+private val Edit.primaryElementKey: ElementKey? get() = when (this) {
+    is ElementEdit -> action.elementKeys.firstOrNull()
+    is OsmQuestHidden -> ElementKey(elementType, elementId)
+    else -> null
+}
