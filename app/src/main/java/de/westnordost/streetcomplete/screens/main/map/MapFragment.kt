@@ -7,6 +7,7 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.mapbox.android.gestures.MoveGestureDetector
+import de.westnordost.streetcomplete.Prefs
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.R
@@ -27,11 +28,13 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.maplibre.android.MapLibre
+import org.maplibre.android.offline.OfflineManager
 
 /** Manages a map that remembers its last location*/
 open class MapFragment : Fragment(R.layout.fragment_map) {
@@ -42,6 +45,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val cameraPositionStore: MapCameraPositionStore by inject()
+    private val prefs: Preferences by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -72,10 +76,23 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
         viewLifecycleScope.launch {
+            setOfflineCacheSize()
             val map = binding.map.awaitGetMap()
             this@MapFragment.map = map
             initMap(map)
         }
+    }
+
+    // todo: also call it on Prefs.MAP_TILECACHE_IN_MB changed (after merging master)
+    private fun setOfflineCacheSize() {
+        val offlineManager = OfflineManager.getInstance(requireContext())
+        // Note: offline regions may exceed this limit, but will count against it
+        // This means that when offline regions exceed size, no tiles will be cached when panning
+        val ambientCacheSizeInBytes = prefs.getInt(Prefs.MAP_TILECACHE_IN_MB, 1).toLong() * 1024 * 1024
+
+        // This should be called BEFORE setting a style and loading a map, because otherwise
+        // the cache will have 50 MB at start (means it will possibly delete tiles)
+        offlineManager.setMaximumAmbientCacheSize(ambientCacheSizeInBytes, null)
     }
 
     private fun showOpenUrlDialog(url: String) {

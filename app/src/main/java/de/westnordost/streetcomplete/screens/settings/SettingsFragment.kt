@@ -46,6 +46,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.maplibre.android.offline.OfflineManager
 import java.util.Locale
 
 /** Shows the settings lists */
@@ -237,7 +238,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
     }
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
-        context?.externalCacheDir?.purge()
+        OfflineManager.getInstance(requireContext()).resetDatabase(null)
         downloadedTilesController.clear()
         mapDataController.clear()
         noteController.clear()
