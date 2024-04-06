@@ -71,7 +71,6 @@ private fun getSeparateCyclewayStyle(element: Element) =
 
 private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.NOT_ALLOWED,
-    SeparateCycleway.ALLOWED_ON_FOOTWAY,
     SeparateCycleway.NON_DESIGNATED,
     SeparateCycleway.PATH ->
         Color.BLACK
@@ -83,6 +82,8 @@ private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.EXCLUSIVE,
     SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK ->
         Color.BLUE
+    SeparateCycleway.ALLOWED_ON_FOOTWAY ->
+        Color.AQUAMARINE
 
     null ->
         Color.INVISIBLE
@@ -151,7 +152,7 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
         StrokeStyle(Color.LIME, dashed = true)
 
     SIDEWALK_EXPLICIT ->
-        StrokeStyle(Color.CYAN, dashed = true)
+        StrokeStyle(Color.CYAN, dashed = false)
 
     NONE ->
         StrokeStyle(Color.BLACK)
@@ -161,4 +162,6 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
 
     SEPARATE ->
         StrokeStyle(Color.INVISIBLE)
+    SIDEWALK_OK ->
+        StrokeStyle(Color.CYAN, dashed = true)
 }

@@ -20,7 +20,7 @@ private val SeparateCycleway.titleResId: Int get() = when (this) {
 
 private fun SeparateCycleway.getIconResId(isLeftHandTraffic: Boolean): Int = when (this) {
     PATH ->               R.drawable.ic_separate_cycleway_path
-    NOT_ALLOWED ->        R.drawable.ic_separate_cycleway_no
+    NOT_ALLOWED ->        R.drawable.ic_separate_cycleway_disallowed
     ALLOWED_ON_FOOTWAY -> R.drawable.ic_separate_cycleway_allowed
     NON_DESIGNATED ->     R.drawable.ic_separate_cycleway_no
     NON_SEGREGATED ->     R.drawable.ic_separate_cycleway_not_segregated

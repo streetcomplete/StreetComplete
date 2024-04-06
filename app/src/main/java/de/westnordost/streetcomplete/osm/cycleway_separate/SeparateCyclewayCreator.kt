@@ -17,6 +17,11 @@ fun SeparateCycleway.applyTo(tags: Tags) {
         PATH -> {
             tags["highway"] = "path"
 
+            // Because in SCEE you are able to tag a footway as bicycle=yes, choosing PATH or NOT_ALLOWED when bicycle=yes/no is set, should remove bicycle=yes
+            // as this means the user has explicitly chosen to tag the way as not allowed for cyclists
+            if (tags.containsKey("bicycle") && (tags["bicycle"] == "yes" || tags["bicycle"] == "no")) {
+                tags.remove("bicycle")
+            }
             // only re-tag to "yes" if defined and not some kind of "yes" value
             if (tags.containsKey("foot") && tags["foot"] !in yesButNotDesignated) {
                 tags["foot"] = "yes"
@@ -38,9 +43,11 @@ fun SeparateCycleway.applyTo(tags: Tags) {
                 ALLOWED_ON_FOOTWAY -> {
                     if (tags["bicycle"] !in yesButNotDesignated) tags["bicycle"] = "yes"
                 }
-                else -> {
-                    if (tags["bicycle"] == "designated") tags.remove("bicycle")
+                NON_DESIGNATED -> {
+                    // if we answer NON_DESIGNATED, in SCEE, that means the user wants to explicitly not make a statement if cycling is allowed or not
+                    if (tags.containsKey("bicycle")) tags.remove("bicycle")
                 }
+                else -> throw IllegalStateException("Unexpected value: $this")
             }
             if (tags["foot"] == "no") {
                 tags["foot"] = "yes"

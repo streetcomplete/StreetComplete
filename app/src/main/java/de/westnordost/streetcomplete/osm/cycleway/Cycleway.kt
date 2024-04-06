@@ -115,7 +115,7 @@ enum class Cycleway {
     SIDEWALK_EXPLICIT,
     // the following not anymore, see #2276
     // no cycleway, but cyclists are allowed on sidewalk
-    // SIDEWALK_OK,
+    SIDEWALK_OK,
 
     /** no cycle track or lane */
     NONE,
@@ -180,16 +180,17 @@ fun getSelectableCycleways(
 ): List<CyclewayAndDirection> {
     val dir = direction?.takeUnless { it == BOTH } ?: Direction.getDefault(isRightSide, isLeftHandTraffic)
     val cycleways = mutableListOf(
-        NONE,
         TRACK,
         EXCLUSIVE_LANE,
         ADVISORY_LANE,
         UNSPECIFIED_LANE,
         SUGGESTION_LANE,
         SEPARATE,
+        NONE,
         PICTOGRAMS,
         BUSWAY,
         SIDEWALK_EXPLICIT,
+        SIDEWALK_OK,
         SHOULDER
     )
     val dualCycleways = listOf(
