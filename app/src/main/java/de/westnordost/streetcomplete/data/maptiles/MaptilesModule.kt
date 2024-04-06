@@ -3,5 +3,6 @@ package de.westnordost.streetcomplete.data.maptiles
 import org.koin.dsl.module
 
 val maptilesModule = module {
-    factory { MapTilesDownloader(get()) }
+    factory { MapTilesDownloader(get(), get()) }
+    single { DownloadedRegionsDao(get()) }
 }

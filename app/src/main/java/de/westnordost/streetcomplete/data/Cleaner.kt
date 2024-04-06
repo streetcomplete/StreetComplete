@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.logs.LogsController
+import de.westnordost.streetcomplete.data.maptiles.DownloadedRegionsDao
+import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -16,7 +18,8 @@ class Cleaner(
     private val mapDataController: MapDataController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val downloadedTilesController: DownloadedTilesController,
-    private val logsController: LogsController
+    private val logsController: LogsController,
+    private val mapTilesDownloader: MapTilesDownloader,
 ) {
     fun clean() {
         val time = nowAsEpochMilliseconds()
@@ -25,6 +28,7 @@ class Cleaner(
         noteController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         downloadedTilesController.deleteOlderThan(oldDataTimestamp)
+        mapTilesDownloader.deleteRegionsOlderThan(oldDataTimestamp)
         /* do this after cleaning map data and notes, because some metadata rely on map data */
         questTypeRegistry.forEach { it.deleteMetadataOlderThan(oldDataTimestamp) }
 

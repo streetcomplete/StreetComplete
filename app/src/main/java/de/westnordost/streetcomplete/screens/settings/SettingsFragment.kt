@@ -36,7 +36,6 @@ import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
-import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -239,6 +238,7 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
     private suspend fun deleteCache() = withContext(Dispatchers.IO) {
         OfflineManager.getInstance(requireContext()).resetDatabase(null)
+        // todo: also clear downloaded regions
         downloadedTilesController.clear()
         mapDataController.clear()
         noteController.clear()

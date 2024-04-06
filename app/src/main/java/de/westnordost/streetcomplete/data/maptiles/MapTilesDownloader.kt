@@ -15,12 +15,16 @@ import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MapTilesDownloader(context: Context) {
+class MapTilesDownloader(
+    context: Context,
+    private val downloadedRegionsDao: DownloadedRegionsDao
+) {
 
     data class Tile(val zoom: Int, val x: Int, val y: Int)
 
     private val offlineManager = OfflineManager.getInstance(context)
     init {
+        // todo: maybe don't set in here? MapTilesDownloader is not a singleton
         // When exceeded mapboxTileCountLimitExceeded is called according to documentation,
         // but even when setting to 10 nothing happened
         offlineManager.setOfflineMapboxTileCountLimit(6000) // 6000 is default
@@ -46,6 +50,7 @@ class MapTilesDownloader(context: Context) {
                     // status contains information about downloaded tile count and size
                     if (status.isComplete) { // and whether the download is complete
                         offlineRegion.setDownloadState(OfflineRegion.STATE_INACTIVE) // this is needed once download is done!
+                        downloadedRegionsDao.put(offlineRegion)
                         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
                         Log.i(TAG, "Downloaded ${status.completedTileCount} tiles (${status.completedTileSize / 1000}kB) in ${seconds.format(1)}s")
                         // note that the numbers include tiles that were already on device
@@ -63,6 +68,30 @@ class MapTilesDownloader(context: Context) {
         override fun onError(error: String) {
             // creating the offline region failed, when can this happen?
         }
+    }
+
+    fun deleteRegionsOlderThan(time: Long) {
+        val ids = downloadedRegionsDao.getIdsOlderThan(time)
+        offlineManager.listOfflineRegions(object : OfflineManager.ListOfflineRegionsCallback{
+            override fun onError(error: String) { }
+
+            override fun onList(offlineRegions: Array<OfflineRegion>?) {
+                offlineRegions?.forEach {
+                    if (it.id in ids) {
+                        it.delete(object : OfflineRegion.OfflineRegionDeleteCallback {
+                            override fun onDelete() {
+                                // only delete when we got the callback
+                                // otherwise the offline region might stay in DB on error, and then
+                                // we certainly want to keep the id in downloadedRegionsDao
+                                downloadedRegionsDao.delete(it.id)
+                            }
+
+                            override fun onError(error: String) {}
+                        })
+                    }
+                }
+            }
+        })
     }
 
     suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
