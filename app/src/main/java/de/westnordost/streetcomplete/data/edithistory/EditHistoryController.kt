@@ -128,11 +128,6 @@ class EditHistoryController(
         }
     }
 
-    override fun getMostRecentUndoable(): Edit? =
-        // this could be optimized later by not querying all. Though, the amount that is queried
-        // from database should never be that big anyway...
-        getAll().firstOrNull { it.isUndoable }
-
     // difference to upstream: may contain older hidden quests
     // but that really doesn't matter
     override fun getAll(allHidden: Boolean): List<Edit> =

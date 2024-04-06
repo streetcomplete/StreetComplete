@@ -11,10 +11,6 @@ abstract class MainViewModel : ViewModel() {
     abstract val messagesCount: StateFlow<Int>
     abstract suspend fun popMessage(): Message?
 
-    /* edits */
-    abstract val hasUndoableEdits: StateFlow<Boolean>
-    abstract val unsyncedEditsCount: StateFlow<Int>
-
     /* overlays */
     abstract val selectedOverlay: StateFlow<Overlay?>
     abstract val overlays: List<Overlay>
@@ -32,6 +28,7 @@ abstract class MainViewModel : ViewModel() {
 
     /* uploading, downloading */
     abstract val isAutoSync: StateFlow<Boolean>
+    abstract val unsyncedEditsCount: StateFlow<Int>
 
     abstract val isUploading: StateFlow<Boolean>
     abstract val isUploadingOrDownloading: StateFlow<Boolean>

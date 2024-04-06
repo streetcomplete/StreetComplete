@@ -39,7 +39,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
   * Prevent short scroll to user location at app start when map was at a different position
   * Downloading data will interrupt upload queue (will resume afterwards)
   * Manual downloads can be queued instead of always cancelling the previous one
-  * Show all hidden quests on long press on undo button (works only for downloaded areas)
+  * Show all hidden quests on long press undo button (works only for downloaded areas, but currently broken completely)
   * Additional answers for some quests
     * Additional building types
     * Additional path surfaces

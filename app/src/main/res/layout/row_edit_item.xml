@@ -8,36 +8,23 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/todayTextContainer"
+        android:id="@+id/timeDateContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp">
+        android:layout_marginBottom="4dp"
+        android:divider="@drawable/space_4dp"
+        android:showDividers="middle">
 
         <TextView
-            android:id="@+id/todayText"
+            android:id="@+id/dateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:gravity="center"
             tools:text="10/14/21" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/divider" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/timeTextContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp">
 
         <TextView
             android:id="@+id/timeText"
@@ -107,7 +94,7 @@
             app:layout_constraintEnd_toEndOf="@id/questIcon"
             app:layout_constraintStart_toStartOf="@id/questIcon"
             app:layout_constraintTop_toTopOf="@id/questIcon"
-            tools:visibility="invisible"/>
+            tools:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

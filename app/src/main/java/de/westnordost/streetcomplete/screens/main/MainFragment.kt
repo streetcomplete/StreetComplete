@@ -57,17 +57,14 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
-import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.messages.Message
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -81,15 +78,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.isWayComplete
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
-import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -126,6 +122,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuDialog
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
+import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MapFragment
@@ -213,7 +210,6 @@ class MainFragment :
     LeaveNoteInsteadFragment.Listener,
     CreateNoteFragment.Listener,
     MoveNodeFragment.Listener,
-    EditHistoryFragment.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
@@ -242,6 +238,8 @@ class MainFragment :
     private lateinit var locationManager: FineLocationManager
 
     private val controlsViewModel by viewModel<MainViewModel>()
+    private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
+
     private val binding by viewBinding(FragmentMainBinding::bind)
 
     private var wasFollowingPosition: Boolean? = null
@@ -391,9 +389,6 @@ class MainFragment :
             // (Undoing quest while also uploading it at the same time)
             binding.undoButton.isEnabled = !isUploadInProgress
         }
-        observe(controlsViewModel.hasUndoableEdits) { hasUndoableEdits ->
-            binding.undoButton.isGone = !hasUndoableEdits
-        }
         observe(controlsViewModel.messagesCount) { messagesCount ->
             binding.messagesButton.messagesCount = messagesCount
             binding.messagesButton.isGone = messagesCount <= 0
@@ -445,6 +440,22 @@ class MainFragment :
             val f = bottomSheetFragment
             if (f is IsShowingElement) {
                 closeBottomSheet()
+            }
+        }
+        observe(editHistoryViewModel.editItems) { editItems ->
+            if (editItems.isEmpty()) closeEditHistorySidebar()
+            binding.undoButton.isGone = editItems.isEmpty()
+        }
+        observe(editHistoryViewModel.selectedEdit) { edit ->
+            if (edit == null) {
+                mapFragment?.endFocus()
+                mapFragment?.clearHighlighting()
+            } else {
+                val geometry = editHistoryViewModel.getEditGeometry(edit)
+                mapFragment?.startFocus(geometry, mapOffsetWithOpenBottomSheet)
+                mapFragment?.highlightGeometry(geometry)
+                mapFragment?.highlightPins(edit.icon, listOf(edit.position))
+                mapFragment?.hideOverlay()
             }
         }
     }
@@ -658,7 +669,7 @@ class MainFragment :
         updateLocationPointerPin()
     }
 
-    /* ---------------------------- QuestsMapFragment.Listener --------------------------- */
+    /* ---------------------------- MainMapFragment.Listener --------------------------- */
 
     override fun onClickedQuest(questKey: QuestKey) {
         if (isQuestDetailsCurrentlyDisplayedFor(questKey)) return
@@ -671,7 +682,7 @@ class MainFragment :
     }
 
     override fun onClickedEdit(editKey: EditKey) {
-        editHistoryFragment?.select(editKey)
+        editHistoryViewModel.select(editKey)
     }
 
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
@@ -914,34 +925,6 @@ class MainFragment :
                 closeBottomSheet()
             }
         }
-    }
-
-    //endregion
-
-    //region Edit History - Callbacks from the Edit History Sidebar
-
-    override fun onSelectedEdit(edit: Edit) {
-        val geometry = edit.getGeometry()
-        mapFragment?.startFocus(geometry, mapOffsetWithOpenBottomSheet)
-        mapFragment?.highlightGeometry(geometry)
-        mapFragment?.highlightPins(edit.icon, listOf(edit.position))
-        mapFragment?.hideOverlay()
-    }
-
-    private fun Edit.getGeometry(): ElementGeometry = when (this) {
-        is ElementEdit -> originalGeometry
-        is OsmQuestHidden -> mapDataWithEditsSource.getGeometry(elementType, elementId)
-        else -> null
-    } ?: ElementPointGeometry(position)
-
-    override fun onDeletedSelectedEdit() {
-        mapFragment?.endFocus()
-        mapFragment?.clearHighlighting()
-    }
-
-    override fun onEditHistoryIsEmpty() {
-        mapFragment?.endFocus()
-        closeEditHistorySidebar()
     }
 
     //endregion
@@ -1420,7 +1403,8 @@ class MainFragment :
             addToBackStack(EDIT_HISTORY)
         }
         mapFragment?.hideOverlay()
-        mapFragment?.pinMode = if (allHidden) MainMapFragment.PinMode.HIDDEN_QUESTS else MainMapFragment.PinMode.EDITS
+        // todo: uncomment when fixing allHidden stuff
+        mapFragment?.pinMode = /*if (allHidden) MainMapFragment.PinMode.HIDDEN_QUESTS else*/ MainMapFragment.PinMode.EDITS
         historyBackPressedCallback.isEnabled = true
     }
 
