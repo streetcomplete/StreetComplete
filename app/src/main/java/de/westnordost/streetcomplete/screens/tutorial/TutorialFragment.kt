@@ -41,6 +41,10 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.respectSystemInsets()
+
+        binding.questPin1.pinIconView.setImageResource(R.drawable.ic_quest_traffic_lights)
+        binding.questPin2.pinIconView.setImageResource(R.drawable.ic_quest_street)
+        binding.questPin3.pinIconView.setImageResource(R.drawable.ic_quest_recycling)
         updateIndicatorDots()
         enableNextButton()
     }
@@ -137,11 +141,13 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         delay(800)
 
         // quest pins fall into place
-        listOf(binding.questPin1, binding.questPin2, binding.questPin3).forEach { pin ->
+        listOf(binding.questPin1.root, binding.questPin2.root, binding.questPin3.root).forEach { pin ->
 
             delay(400)
 
+            pin.visibility = View.VISIBLE
             pin.translationY = ctx.pxToDp(-200)
+            pin.alpha = 0f
             pin.animate()
                 .setInterpolator(BounceInterpolator())
                 .setDuration(400)
@@ -166,7 +172,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
         appearText(binding.tutorialStepStaySafe)
 
         // quest pins fade out
-        listOf(binding.questPin1, binding.questPin2, binding.questPin3).forEach { pin ->
+        listOf(binding.questPin1.root, binding.questPin2.root, binding.questPin3.root).forEach { pin ->
             pin.animate()
                 .setInterpolator(AccelerateInterpolator())
                 .setDuration(300)

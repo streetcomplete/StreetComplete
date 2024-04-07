@@ -189,7 +189,7 @@ abstract class AbstractOverlayForm :
         super.onViewCreated(view, savedInstanceState)
 
         setMarkerVisibility(_geometry == null)
-        binding.createMarker.doOnLayout { setMarkerPosition(null) }
+        binding.pin.root.doOnLayout { setMarkerPosition(null) }
         binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
@@ -295,11 +295,11 @@ abstract class AbstractOverlayForm :
     }
 
     protected fun setMarkerIcon(iconResId: Int) {
-        binding.createMarkerIconView.setImageResource(iconResId)
+        binding.pin.pinIconView.setImageResource(iconResId)
     }
 
     protected fun setMarkerVisibility(isVisible: Boolean) {
-        binding.createMarker.isInvisible = !isVisible
+        binding.pin.root.isInvisible = !isVisible
     }
 
     protected fun setMarkerPosition(position: LatLon?) {
@@ -308,8 +308,8 @@ abstract class AbstractOverlayForm :
         } else {
             listener?.getPointOf(position)
         } ?: return
-        binding.createMarker.x = point.x - binding.createMarker.width / 2
-        binding.createMarker.y = point.y - binding.createMarker.height
+        binding.pin.root.x = point.x - binding.pin.root.width / 2
+        binding.pin.root.y = point.y - binding.pin.root.height / 2
     }
 
     private fun updateContentPadding() {

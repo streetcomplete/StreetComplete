@@ -103,7 +103,7 @@ class MoveNodeFragment :
 
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
-        binding.moveNodeIconView.setImageResource(editType.icon)
+        binding.pin.pinIconView.setImageResource(editType.icon)
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
         val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
@@ -119,7 +119,7 @@ class MoveNodeFragment :
     }
 
     private fun getMarkerScreenPosition(): PointF {
-        val moveNodeMarker = binding.moveNodeMarker
+        val moveNodeMarker = binding.pin.root
         val screenPos = moveNodeMarker.getLocationInWindow()
         screenPos.offset(moveNodeMarker.width / 2, moveNodeMarker.height / 2)
         return screenPos.toPointF()
