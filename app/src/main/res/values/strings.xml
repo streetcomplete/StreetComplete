@@ -1152,8 +1152,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_memorialType_sculpture">Other sculpture</string>
 
     <string name="quest_moped_prohibited_title">Are mopeds allowed on this cycleway?</string>
-    <string name="quest_moped_prohibited_designated">Mandatory</string>
-    <string name="quest_moped_prohibited_description">An additional sign will indicate if the cycleway is allowed for mopeds</string>
+    <string name="quest_moped_prohibited_designated">Yes, a mandatory sign is attached to the cycleway sign.</string>
+    <string name="quest_moped_prohibited_allowed">Yes,there is no prohibition sign is visible.</string>
+    <string name="quest_moped_prohibited_forbidden">No, a prohibition sign is attached to the cycleway sign.</string>
+
+    <string name="default_disabled_msg_visible_sign_moped">This quest type is disabled by default because moped access is only indicated by a specific signs at start/end of a cycleway. </string>
 
 
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>

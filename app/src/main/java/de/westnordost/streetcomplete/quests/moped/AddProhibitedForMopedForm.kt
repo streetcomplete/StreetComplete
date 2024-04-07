@@ -1,20 +1,19 @@
 package de.westnordost.streetcomplete.quests.moped
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.AListQuestForm
+import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.moped.ProhibitedForMopedAnswer.FORBIDDEN
-import de.westnordost.streetcomplete.quests.moped.ProhibitedForMopedAnswer.YES
+import de.westnordost.streetcomplete.quests.moped.ProhibitedForMopedAnswer.ALLOWED
 import de.westnordost.streetcomplete.quests.moped.ProhibitedForMopedAnswer.DESIGNATED
 
 
-class AddProhibitedForMopedForm : AbstractOsmQuestForm<ProhibitedForMopedAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_moped
+class AddProhibitedForMopedForm : AListQuestForm<ProhibitedForMopedAnswer>() {
 
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(FORBIDDEN) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) },
-        AnswerItem(R.string.quest_moped_prohibited_designated) { applyAnswer(DESIGNATED) }
+    override val items = listOf(
+        TextItem(DESIGNATED, R.string.quest_moped_prohibited_designated),
+        TextItem(ALLOWED, R.string.quest_moped_prohibited_allowed) ,
+        TextItem(FORBIDDEN, R.string.quest_moped_prohibited_forbidden)
     )
 }
