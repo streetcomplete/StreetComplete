@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import org.maplibre.android.style.layers.CircleLayer
@@ -79,7 +80,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
             update()
         }
 
-    val layers: List<Layer> = listOf(
+    val layers: List<Layer> = listOfNotNull(
         CircleLayer("accuracy", SOURCE)
             .withProperties(
                 circleColor(context.resources.getColor(R.color.location_dot)),
@@ -114,6 +115,15 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
                 circleStrokeColor("#fff"),
                 circlePitchAlignment(Property.CIRCLE_PITCH_ALIGNMENT_MAP)
             ),
+        if (isApril1st()) {
+            SymbolLayer("location-nyan", SOURCE)
+                .withProperties(
+                    iconImage("nyanImg"),
+                    iconSize(2.0f),
+                    iconAllowOverlap(true),
+                    iconIgnorePlacement(true)
+                )
+        } else null
     )
 
     init {
@@ -121,8 +131,12 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         animation.interpolator = AccelerateDecelerateInterpolator()
         animation.addUpdateListener { update() }
 
-        mapStyle.addImage("directionImg", context.getDrawable(R.drawable.location_view_direction)!!)
-        mapStyle.addImage("shadowImg", context.getDrawable(R.drawable.location_shadow)!!)
+        if (!isApril1st()) {
+            mapStyle.addImage("directionImg", context.getDrawable(R.drawable.location_view_direction)!!)
+            mapStyle.addImage("shadowImg", context.getDrawable(R.drawable.location_shadow)!!)
+        } else {
+            mapStyle.addImage("nyanImg", context.getDrawable(R.drawable.location_nyan)!!)
+        }
 
         locationSource.isVolatile = true
         mapStyle.addSource(locationSource)

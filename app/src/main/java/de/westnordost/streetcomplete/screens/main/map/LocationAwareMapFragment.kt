@@ -145,7 +145,7 @@ open class LocationAwareMapFragment : MapFragment() {
         val ctx = context ?: return
         locationMapComponent = CurrentLocationMapComponent(ctx, style, map)
 
-        tracksMapComponent = TracksMapComponent(map)
+        tracksMapComponent = TracksMapComponent(ctx, style, map)
         val positionsLists = tracks.map { track -> track.map { it.position } }
         tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
 
