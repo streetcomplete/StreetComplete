@@ -31,6 +31,7 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     tags.expandSides("cycleway", "oneway", false)
     tags.expandSides("cycleway", "segregated", false)
     tags.expandSides("sidewalk", "bicycle", false)
+    tags.expandSides("sidewalk", "bicycle:signed", false)
 
     applyOnewayNotForCyclists(tags)
     left?.applyTo(tags, false, isLeftHandTraffic)
@@ -41,6 +42,7 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     tags.mergeSides("cycleway", "oneway")
     tags.mergeSides("cycleway", "segregated")
     tags.mergeSides("sidewalk", "bicycle")
+    tags.mergeSides("sidewalk", "bicycle:signed")
 
     // update check date
     if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
@@ -109,9 +111,9 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
     when (cycleway) {
         NONE, NONE_NO_ONEWAY -> {
             tags[cyclewayKey] = "no"
-            // Since tagging the sidewalk as useable for bicycles is doable in SCEE, tagging "no" should remove the statement that is is usable, while regular SC will just ignore it
-            if (tags.containsKey("sidewalk:$side:bicycle") and (tags["sidewalk:$side:bicycle"] == "yes")) {
+            if (tags.containsKey("sidewalk:$side:bicycle") and (tags["sidewalk:$side:bicycle"] == "yes") and tags.containsKey("sidewalk:$side:bicycle:signed")){
                 tags.remove("sidewalk:$side:bicycle")
+                tags.remove("sidewalk:$side:bicycle:signed")
             }
         }
         UNSPECIFIED_LANE -> {
@@ -162,6 +164,7 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
         SIDEWALK_OK -> {
             tags[cyclewayKey] = "no"
             tags["sidewalk:$side:bicycle"] = "yes"
+            tags["sidewalk:$side:bicycle:signed"] = "yes"
         }
         else -> {
             throw IllegalArgumentException("Invalid cycleway")

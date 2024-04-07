@@ -25,6 +25,8 @@ fun parseSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
         else -> null // only happens if highway=footway
     }
 
+    val bicycleSigned = tags["bicycle:signed"] == "yes"
+
     // footway implies foot=designated, path implies foot=yes
     val foot = tags["foot"] ?: when (tags["highway"]) {
         "footway" -> "designated"
@@ -34,7 +36,7 @@ fun parseSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
 
     if (bicycle in noCycling) return NOT_ALLOWED
 
-    if (bicycle in yesButNotDesignated && foot == "designated") return ALLOWED_ON_FOOTWAY
+    if (bicycle in yesButNotDesignated && bicycleSigned && foot == "designated") return ALLOWED_ON_FOOTWAY
 
     if (bicycle in yesButNotDesignated && foot in yesButNotDesignated) return PATH
 
