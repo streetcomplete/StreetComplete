@@ -43,8 +43,8 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
         LineLayer("track", "track-source")
             .withProperties(
                 lineWidth(14f),
-                lineColor(match(get("recording"),
-                    literal("true"), literal("#fe1616"),
+                lineColor(switchCase(
+                    get("recording"), literal("#fe1616"),
                     literal("#536dfe")
                 )),
                 lineOpacity(0.3f),
@@ -53,8 +53,8 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
         LineLayer("old-track", "old-track-source")
             .withProperties(
                 lineWidth(14f),
-                lineColor(match(get("recording"),
-                    literal("true"), literal("#fe1616"),
+                lineColor(switchCase(
+                    get("recording"), literal("#fe1616"),
                     literal("#536dfe")
                 )),
                 lineOpacity(0.15f),
@@ -64,8 +64,8 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
         LineLayer("track", "track-source")
             .withProperties(
                 lineWidth(34f),
-                linePattern(match(get("recording"),
-                    literal("true"), literal("trackRecordImg"),
+                linePattern(switchCase(
+                    get("recording"), literal("trackRecordImg"),
                     literal("trackImg")
                 )),
                 lineOpacity(1.0f),
@@ -74,8 +74,8 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
         LineLayer("old-track", "old-track-source")
             .withProperties(
                 lineWidth(34f),
-                linePattern(match(get("recording"),
-                    literal("true"), literal("trackRecordImg"),
+                linePattern(switchCase(
+                    get("recording"), literal("trackRecordImg"),
                     literal("trackImg")
                 )),
                 lineOpacity(0.25f),
