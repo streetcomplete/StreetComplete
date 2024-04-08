@@ -16,13 +16,20 @@ fun BuildingType.applyTo(tags: Tags) {
     }
 
     // clear the *=yes tags, after that, re-add if this was selected
-    listOf("disused", "abandoned", "ruins", "historic").forEach {
+    listOf("disused", "abandoned", "ruins").forEach {
         tags.remove(it)
     }
 
     // switch between man-made and building
     if (osmKey == "man_made") tags.remove("building")
     if (osmKey == "building") tags.remove("man_made")
+
+    // handle historic: The description of HISTORIC in this app is "building of historic value,
+    //  constructed for an unknown or unclear purpose", i.e. the user will rather only change the
+    // building type to historic if he thinks the previous building type is wrong
+    if (this == HISTORIC) {
+        tags["building"] = "yes"
+    }
 
     tags[osmKey] = osmValue
 
