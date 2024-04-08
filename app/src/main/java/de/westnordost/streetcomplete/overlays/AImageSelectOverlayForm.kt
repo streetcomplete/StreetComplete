@@ -21,6 +21,8 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
     protected open val itemsPerRow = 2
     /** items to display. May not be accessed before onCreate */
     protected abstract val items: List<DisplayItem<I>>
+    /** items to that are selectable. May not be accessed before onCreate */
+    protected open val selectableItems: List<DisplayItem<I>> get() = items
     /** item to display as last picked answer. May not be accessed before onCreate */
     protected open val lastPickedItem: DisplayItem<I>? = null
 
@@ -36,7 +38,7 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.selectButton.root.setOnClickListener {
-            ImageListPickerDialog(requireContext(), items, cellLayoutId, itemsPerRow) { item ->
+            ImageListPickerDialog(requireContext(), selectableItems, cellLayoutId, itemsPerRow) { item ->
                 if (item != selectedItem) {
                     selectedItem = item
                     checkIsFormComplete()
@@ -83,7 +85,7 @@ abstract class AImageSelectOverlayForm<I> : AbstractOverlayForm() {
 
     /* -------------------------------------- apply answer -------------------------------------- */
 
-    override fun isFormComplete() = selectedItem != null
+    override fun isFormComplete() = selectedItem != null && selectedItem in selectableItems
 
     companion object {
         private const val SELECTED_INDEX = "selected_index"
