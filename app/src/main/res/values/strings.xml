@@ -139,6 +139,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
 
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
+    <!-- The sound someone makes if he is not sure what to answer... uh… er… oh… äh…-->
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
     <!-- aka "not applicable", "not answerable" -->
     <string name="quest_generic_answer_notApplicable">"Can’t say…"</string>
 
