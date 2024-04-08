@@ -7,7 +7,7 @@
 - Fix regression in v57.1 that may lead to issues displaying the current GPS location (#5516)
 - Fix the feature name label was slightly wrong for a few map features (#5549)
 - Fix description of Prettymapp (#5570), by @FloEdelmann
-- Other small improvements (#5533, #5558, #5559, #5525), thanks @matkoniecz, @burrscurr
+- Other small improvements (#5533, #5558, #5559, #5525, #5573), thanks @matkoniecz, @burrscurr
 
 ## v57.1
 
