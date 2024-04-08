@@ -2,10 +2,12 @@
 
 ## v57.2
 
-- Fix description of Prettymapp (#5570), by @FloEdelmann
+- Lit overlay: Unsupported current tagging is now indicated as such (#5571)
+- Building overlay: Selecting a specific building type for a historic building does now not remove its property as historic (#5547)
 - Fix regression in v57.1 that may lead to issues displaying the current GPS location (#5516)
-- Fix for very few map features, the feature name label was (slightly) wrong (#5549)
-- Other small improvements (#5533, #5558, #5559), thanks @matkoniecz, @burrscurr
+- Fix the feature name label was slightly wrong for a few map features (#5549)
+- Fix description of Prettymapp (#5570), by @FloEdelmann
+- Other small improvements (#5533, #5558, #5559, #5525), thanks @matkoniecz, @burrscurr
 
 ## v57.1
 
