@@ -8,7 +8,10 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.LocationManager
+import android.os.Build
+import android.view.Display
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT
 import android.widget.Toast
@@ -64,6 +67,13 @@ val Context.isLocationAvailable: Boolean get() = hasLocationPermission && isLoca
 
 private val Context.inputMethodManager get() = getSystemService<InputMethodManager>()!!
 private val Context.locationManager get() = getSystemService<LocationManager>()!!
+
+val Context.currentDisplay: Display get() =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        display!!
+    } else {
+        getSystemService<WindowManager>()!!.defaultDisplay
+    }
 
 /** Await a call from a broadcast once and return it */
 suspend fun Context.awaitReceiverCall(intentFilter: IntentFilter): Intent =

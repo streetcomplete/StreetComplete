@@ -36,7 +36,7 @@ import org.koin.android.ext.android.inject
 import org.maplibre.android.MapLibre
 import org.maplibre.android.offline.OfflineManager
 
-/** Manages a map that remembers its last location*/
+/** Manages a map that remembers its last location */
 open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
@@ -166,16 +166,15 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         val style = sceneMapComponent.loadStyle()
         this.sceneMapComponent = sceneMapComponent
 
-        onMapReady(map, style)
+        restoreMapState()
+        onMapStyleLoaded(map, style)
 
         listener?.onMapInitialized()
     }
 
     /* ----------------------------- Overridable map callbacks --------------------------------- */
 
-    @CallSuper protected open suspend fun onMapReady(map: MapLibreMap, style: Style) {
-        restoreMapState()
-    }
+    protected open suspend fun onMapStyleLoaded(map: MapLibreMap, style: Style) {}
 
     protected open fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {}
 

@@ -1,45 +1,64 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
+import android.hardware.SensorManager
+import android.location.Location
+import android.os.Bundle
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
+import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.FocusGeometryMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.GeometryMarkersMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
+import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
+import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.util.ktx.createBitmap
+import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
+import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.location.FineLocationManager
+import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.view.presetIconIndex
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.visibility
+import kotlin.math.PI
 
 /** This is the map shown in the main view. It manages a map that shows the quest pins, quest
- *  geometry, overlays... */
-class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
+ *  geometry, overlays, tracks, location... */
+class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
@@ -49,6 +68,12 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val downloadedTilesSource: DownloadedTilesSource by inject()
+    private val mapStateStore: MapStateStore by inject()
+    private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
+
+    private lateinit var compass: Compass
+    private lateinit var locationManager: FineLocationManager
 
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
@@ -60,74 +85,126 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     private var styleableOverlayManager: StyleableOverlayManager? = null
     private var downloadedAreaMapComponent: DownloadedAreaMapComponent? = null
     private var downloadedAreaManager: DownloadedAreaManager? = null
+    private var locationMapComponent: CurrentLocationMapComponent? = null
+    private var tracksMapComponent: TracksMapComponent? = null
 
     interface Listener {
         fun onClickedQuest(questKey: QuestKey)
         fun onClickedEdit(editKey: EditKey)
         fun onClickedElement(elementKey: ElementKey)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
+
+        /** Called after the map fragment updated its displayed location */
+        fun onDisplayedLocationDidChange()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+    /** When the view follows the GPS position, whether the view already zoomed to the location once*/
+    private var zoomedYet = false
+
+    /** The GPS position at which the user is displayed at */
+    var displayedLocation: Location? = null
+        private set
+
+    /** The GPS trackpoints the user has walked */
+    private var tracks: ArrayList<ArrayList<Trackpoint>>
+
+    private var _recordedTracks: ArrayList<Trackpoint>
+    /** The GPS trackpoints the user has recorded */
+    val recordedTracks: List<Trackpoint> get() = _recordedTracks
+
+    /** If we are actively recording track history */
+    var isRecordingTracks = false
+        private set
+
+    /** Whether the view should automatically center on the GPS location */
+    var isFollowingPosition = true
+        set(value) {
+            if (!value) zoomedYet = false
+            field = value
+            if (field != value && !value) {
+                _isNavigationMode = false
+            }
+        }
+
+    /** Whether the view should automatically rotate with bearing (like during navigation) */
+    private var _isNavigationMode: Boolean = false
+    var isNavigationMode: Boolean
+        set(value) {
+            if (_isNavigationMode != value && !value) {
+                updateCameraPosition(300) { tilt = 0.0 }
+            }
+            _isNavigationMode = value
+        }
+        get() = _isNavigationMode
 
     enum class PinMode { NONE, QUESTS, EDITS }
     var pinMode: PinMode = PinMode.QUESTS
         set(value) {
             if (field == value) return
             field = value
-            updatePinMode()
+            onUpdatedPinMode()
         }
 
     private var previouslyHiddenLayers: List<String> = emptyList()
 
     private val overlayListener = object : SelectedOverlaySource.Listener {
-        override fun onSelectedOverlayChanged() { hideLayersAsPerOverlaySelected() }
+        override fun onSelectedOverlayChanged() {
+            this@MainMapFragment.onSelectedOverlayChanged()
+        }
     }
 
-    /* ------------------------------------ Lifecycle ------------------------------------------- */
+    //region Lifecycle
+
+    init {
+        tracks = ArrayList()
+        tracks.add(ArrayList())
+        _recordedTracks = ArrayList()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        compass = Compass(
+            context.getSystemService<SensorManager>()!!,
+            context.currentDisplay,
+            this::onCompassRotationChanged
+        )
+        lifecycle.addObserver(compass)
+        locationManager = FineLocationManager(context, this::onLocationChanged)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState != null) {
+            displayedLocation = savedInstanceState.getParcelable(DISPLAYED_LOCATION)
+            isRecordingTracks = savedInstanceState.getBoolean(TRACKS_IS_RECORDING)
+            tracks = Json.decodeFromString(savedInstanceState.getString(TRACKS)!!)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        locationAvailabilityReceiver.addListener(::onLocationAvailabilityChanged)
+        onLocationAvailabilityChanged(requireContext().isLocationAvailable)
+    }
 
     override suspend fun onMapReady(map: MapLibreMap, style: Style) {
         super.onMapReady(map, style)
 
-        geometryMarkersMapComponent = GeometryMarkersMapComponent(requireContext(), map)
+        val context = requireContext()
 
-        pinsMapComponent = PinsMapComponent(requireContext(), questTypeRegistry, overlayRegistry, map)
-        geometryMapComponent = FocusGeometryMapComponent(requireContext().contentResolver, map)
-        viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
-
-        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
-        viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
-        questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
-
-        editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
-        viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
-        editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
-
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(requireContext(), map)
-        styleableOverlayManager = StyleableOverlayManager(map, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
-        viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
-
-        downloadedAreaMapComponent = DownloadedAreaMapComponent(requireContext(), map)
-        downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
-        viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
-
-        selectedPinsMapComponent = SelectedPinsMapComponent(requireContext(), map)
-        viewLifecycleOwner.lifecycle.addObserver(selectedPinsMapComponent!!)
-
-        hideLayersAsPerOverlaySelected()
-        selectedOverlaySource.addListener(overlayListener)
-
-        /* ---------------------------- MapLibre stuff --------------------------- */
+        setupComponents(context, map, style)
 
         val presetIcons = HashMap<String, Bitmap>(presetIconIndex.values.size)
         presetIconIndex.values.forEach {
             val name = resources.getResourceEntryName(it)
-            val bitmap = requireContext().getDrawable(it)!!.createBitmap()
+            val bitmap = context.getDrawable(it)!!.createBitmap()
             presetIcons[name] = bitmap
         }
         style.addImagesAsync(presetIcons, true)
 
         // add click listeners
-        val pickRadius = requireContext().dpToPx(8).toInt()
+        val pickRadius = context.dpToPx(CLICK_AREA_SIZE_IN_DP / 2).toInt()
         map.addOnMapClickListener { pos ->
             // check whether we clicked a feature
             val screenPoint: PointF = map.projection.toScreenLocation(pos)
@@ -169,7 +246,33 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
             false
         }
 
+        setupLayers(style)
 
+        setupData(map)
+    }
+
+    private fun setupComponents(context: Context, map: MapLibreMap, style: Style) {
+        geometryMarkersMapComponent = GeometryMarkersMapComponent(context, map)
+
+        locationMapComponent = CurrentLocationMapComponent(context, style, map)
+        viewLifecycleOwner.lifecycle.addObserver(locationMapComponent!!)
+
+        tracksMapComponent = TracksMapComponent(context, style, map)
+        viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
+
+        pinsMapComponent = PinsMapComponent(context, questTypeRegistry, overlayRegistry, map)
+        geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
+        viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
+
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(context, map)
+
+        downloadedAreaMapComponent = DownloadedAreaMapComponent(context, map)
+
+        selectedPinsMapComponent = SelectedPinsMapComponent(context, map)
+        viewLifecycleOwner.lifecycle.addObserver(selectedPinsMapComponent!!)
+    }
+
+    private fun setupLayers(style: Style) {
         // names etc. should still be readable behind hatching
         downloadedAreaMapComponent?.layers?.forEach { style.addLayerAbove(it, "labels-country") }
         // left-and-right lines should be rendered behind the actual road
@@ -177,11 +280,85 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         styleableOverlayMapComponent?.sideLayersBridge?.forEach { style.addLayerAbove(it, "pedestrian-bridge-casing") }
 
         // layers added first appear behind other layers
+        tracksMapComponent?.layers?.forEach { style.addLayer(it) }
+        locationMapComponent?.layers?.forEach { style.addLayer(it) }
         styleableOverlayMapComponent?.layers?.forEach { style.addLayer(it) }
         geometryMarkersMapComponent?.layers?.forEach { style.addLayer(it) }
         geometryMapComponent?.layers?.forEach { style.addLayer(it) }
         pinsMapComponent?.layers?.forEach { style.addLayer(it) }
         selectedPinsMapComponent?.layers?.forEach { style.addLayer(it) }
+    }
+
+    private fun setupData(map: MapLibreMap) {
+        restoreMapState()
+        centerCurrentPositionIfFollowing()
+
+        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
+        questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
+        viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
+
+        editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
+        editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
+        viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
+
+        styleableOverlayManager = StyleableOverlayManager(map, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
+        viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
+
+        downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
+        viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
+
+        onSelectedOverlayChanged()
+        selectedOverlaySource.addListener(overlayListener)
+
+        locationMapComponent?.targetLocation = displayedLocation
+
+        val positionsLists = tracks.map { track -> track.map { it.position } }
+        tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        locationAvailabilityReceiver.removeListener(::onLocationAvailabilityChanged)
+        saveMapState()
+        stopPositionTracking()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(DISPLAYED_LOCATION, displayedLocation)
+        // the amount of data one can put into a bundle is limited, let's cut off at 1000 points
+        outState.putString(TRACKS, Json.encodeToString(tracks.takeLastNested(1000)))
+        outState.putBoolean(TRACKS_IS_RECORDING, isRecordingTracks)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        selectedOverlaySource.removeListener(overlayListener)
+    }
+
+    //endregion
+
+    //region Tracking GPS, Rotation, location availability, pin mode, ...
+
+    private fun onLocationAvailabilityChanged(isAvailable: Boolean) {
+        if (!isAvailable) {
+            displayedLocation = null
+            locationMapComponent?.targetLocation = null
+        }
+    }
+
+    private fun onCompassRotationChanged(rot: Float, tilt: Float) {
+        locationMapComponent?.rotation = rot * 180 / PI
+    }
+
+    private fun onLocationChanged(location: Location) {
+        displayedLocation = location
+        recentLocationStore.add(location)
+        locationMapComponent?.targetLocation = location
+        addTrackLocation(location)
+        compass.setLocation(location)
+        centerCurrentPositionIfFollowing()
+        listener?.onDisplayedLocationDidChange()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
@@ -190,10 +367,64 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         styleableOverlayManager?.onNewScreenPosition()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        selectedOverlaySource.removeListener(overlayListener)
+    private fun onUpdatedPinMode() {
+        /* both managers use the same resource (PinsMapComponent), so the newly visible manager
+           may only be activated after the old has been deactivated
+         */
+        when (pinMode) {
+            PinMode.QUESTS -> {
+                editHistoryPinsManager?.isVisible = false
+                questPinsManager?.isVisible = true
+            }
+            PinMode.EDITS -> {
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = true
+            }
+            else -> {
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = false
+            }
+        }
     }
+
+    private fun onSelectedOverlayChanged() {
+        val new = selectedOverlaySource.selectedOverlay?.hidesLayers.orEmpty()
+        val old = previouslyHiddenLayers
+        if (old == new) return
+
+        old.forEach { layer ->
+            map?.style?.getLayer(layer)?.setProperties(visibility(Property.VISIBLE))
+        }
+        new.forEach { layer ->
+            map?.style?.getLayer(layer)?.setProperties(visibility(Property.NONE))
+        }
+
+        previouslyHiddenLayers = new
+    }
+
+    private fun addTrackLocation(location: Location) {
+        // ignore if too imprecise
+        if (location.accuracy > MIN_TRACK_ACCURACY) return
+        val lastLocation = tracks.last().lastOrNull()
+
+        // create new track if last position too old
+        if (lastLocation != null && !isRecordingTracks) {
+            if ((displayedLocation?.time ?: 0) - lastLocation.time > MAX_TIME_BETWEEN_LOCATIONS) {
+                tracks.add(ArrayList())
+                tracksMapComponent?.startNewTrack(false)
+            }
+        }
+        val trackpoint = Trackpoint(location.toLatLon(), location.time, location.accuracy, location.altitude.toFloat())
+
+        tracks.last().add(trackpoint)
+        // in rare cases, onLocationChanged may already be called before the view has been created
+        // so we need to check that first
+        if (view != null) {
+            tracksMapComponent?.addToCurrentTrack(trackpoint.position)
+        }
+    }
+
+    //endregion
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
 /*
@@ -254,22 +485,7 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
     }
 */
 
-    private fun hideLayersAsPerOverlaySelected() {
-        val new = selectedOverlaySource.selectedOverlay?.hidesLayers.orEmpty()
-        val old = previouslyHiddenLayers
-        if (old == new) return
-
-        old.forEach { layer ->
-            map?.style?.getLayer(layer)?.setProperties(visibility(Property.VISIBLE))
-        }
-        new.forEach { layer ->
-            map?.style?.getLayer(layer)?.setProperties(visibility(Property.NONE))
-        }
-
-        previouslyHiddenLayers = new
-    }
-
-    /* --------------------------- Focusing on edit/quest/element ------------------------------- */
+    //region Control focusing on and highlighting edit / quest / element
 
     /** Focus the view on the given geometry */
     fun startFocus(geometry: ElementGeometry, offset: RectF) {
@@ -317,9 +533,6 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         selectedPinsMapComponent?.clear()
     }
 
-    /* ----------------------------  Markers for current highlighting --------------------------- */
-
-
     @UiThread override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
         geometryMarkersMapComponent?.putAll(markers)
     }
@@ -332,36 +545,115 @@ class MainMapFragment : LocationAwareMapFragment(), ShowsGeometryMarkers {
         geometryMarkersMapComponent?.clear()
     }
 
-    /* --------------------- Switching between quests and edit history pins --------------------- */
+    //endregion
 
-    private fun updatePinMode() {
-        /* both managers use the same resource (PinsMapComponent), so the newly visible manager
-           may only be activated after the old has been deactivated
-         */
-        when (pinMode) {
-            PinMode.QUESTS -> {
-                editHistoryPinsManager?.isVisible = false
-                questPinsManager?.isVisible = true
+    //region Control position tracking
+
+    @SuppressLint("MissingPermission")
+    fun startPositionTracking() {
+        locationMapComponent?.isVisible = true
+        locationManager.requestUpdates(0, 5000, 1f)
+    }
+
+    fun stopPositionTracking() {
+        locationMapComponent?.isVisible = false
+        locationManager.removeUpdates()
+    }
+
+    fun clearPositionTracking() {
+        stopPositionTracking()
+        displayedLocation = null
+        isNavigationMode = false
+
+        tracks = ArrayList()
+        tracks.add(ArrayList())
+        tracksMapComponent?.clear()
+    }
+
+    fun startPositionTrackRecording() {
+        isRecordingTracks = true
+        _recordedTracks.clear()
+        tracks.add(ArrayList())
+        locationMapComponent?.isVisible = true
+        tracksMapComponent?.startNewTrack(true)
+    }
+
+    fun stopPositionTrackRecording() {
+        isRecordingTracks = false
+        _recordedTracks.clear()
+        _recordedTracks.addAll(tracks.last())
+        tracks.add(ArrayList())
+        tracksMapComponent?.startNewTrack(false)
+    }
+
+    private fun centerCurrentPosition() {
+        val displayedPosition = displayedLocation?.toLatLon() ?: return
+
+        updateCameraPosition(600) {
+            if (isNavigationMode) {
+                val bearing = getTrackBearing(tracks.last())
+                if (bearing != null) {
+                    rotation = -(bearing * PI / 180.0)
+                }
+                tilt = 60.0 // looks like we use degrees
             }
-            PinMode.EDITS -> {
-                questPinsManager?.isVisible = false
-                editHistoryPinsManager?.isVisible = true
-            }
-            else -> {
-                questPinsManager?.isVisible = false
-                editHistoryPinsManager?.isVisible = false
+
+            position = displayedPosition
+
+            if (!zoomedYet) {
+                zoomedYet = true
+                val currentZoom = map?.camera?.zoom
+                if (currentZoom != null && currentZoom < 17.0f) zoom = 18.0
             }
         }
     }
 
-    /* --------------------------------- Position tracking -------------------------------------- */
+    fun centerCurrentPositionIfFollowing() {
+        if (shouldCenterCurrentPosition()) centerCurrentPosition()
+    }
 
-    override fun shouldCenterCurrentPosition(): Boolean =
+    private fun shouldCenterCurrentPosition(): Boolean =
         // don't center position while displaying a quest
-        super.shouldCenterCurrentPosition() && geometryMapComponent?.isZoomedToContainGeometry != true
+        isFollowingPosition && geometryMapComponent?.isZoomedToContainGeometry != true
+
+    //endregion
+
+    //region Save and restore state
+
+    private fun restoreMapState() {
+        isFollowingPosition = mapStateStore.isFollowingPosition
+        isNavigationMode = mapStateStore.isNavigationMode
+    }
+
+    private fun saveMapState() {
+        mapStateStore.isFollowingPosition = isFollowingPosition
+        mapStateStore.isNavigationMode = isNavigationMode
+    }
+
+    //endregion
 
     companion object {
-        // see streetcomplete.yaml for the definitions of the below layers
-        private const val CLICK_AREA_SIZE_IN_DP = 48
+        private const val DISPLAYED_LOCATION = "displayed_location"
+        private const val TRACKS = "tracks"
+        private const val TRACKS_IS_RECORDING = "tracks_is_recording"
+
+        private const val MIN_TRACK_ACCURACY = 20f
+        private const val MAX_TIME_BETWEEN_LOCATIONS = 60L * 1000 // 1 minute
+
+        private const val CLICK_AREA_SIZE_IN_DP = 32
     }
+}
+
+private fun <T> ArrayList<ArrayList<T>>.takeLastNested(n: Int): ArrayList<ArrayList<T>> {
+    var sum = 0
+    for (i in lastIndex downTo 0) {
+        val s = get(i).size
+        if (sum + s > n) {
+            val result = ArrayList(subList(i + 1, size))
+            if (n > sum) result.add(0, ArrayList(get(i).takeLast(n - sum)))
+            return result
+        }
+        sum += s
+    }
+    return this
 }

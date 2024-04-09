@@ -85,7 +85,6 @@ import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuButtonFragment
 import de.westnordost.streetcomplete.screens.main.controls.UndoButtonFragment
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
-import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MapFragment
 import de.westnordost.streetcomplete.screens.main.map.Marker
@@ -151,7 +150,6 @@ class MainFragment :
     Fragment(R.layout.fragment_main),
     // listeners to child fragments:
     MapFragment.Listener,
-    LocationAwareMapFragment.Listener,
     MainMapFragment.Listener,
     AbstractOsmQuestForm.Listener,
     AbstractOverlayForm.Listener,
@@ -353,13 +351,7 @@ class MainFragment :
         showMapContextMenu(position)
     }
 
-    /* ---------------------------- LocationAwareMapFragment.Listener --------------------------- */
-
-    override fun onDisplayedLocationDidChange() {
-        updateLocationPointerPin()
-    }
-
-    /* ---------------------------- QuestsMapFragment.Listener --------------------------- */
+    /* ---------------------------- MainMapFragment.Listener --------------------------- */
 
     override fun onClickedQuest(questKey: QuestKey) {
         if (isQuestDetailsCurrentlyDisplayedFor(questKey)) return
@@ -393,6 +385,10 @@ class MainFragment :
         } else {
             viewLifecycleScope.launch { showElementDetails(elementKey) }
         }
+    }
+
+    override fun onDisplayedLocationDidChange() {
+        updateLocationPointerPin()
     }
 
     //endregion
