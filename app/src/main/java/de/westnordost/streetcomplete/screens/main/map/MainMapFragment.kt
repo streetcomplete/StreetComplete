@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
 import android.hardware.SensorManager
@@ -23,7 +22,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -39,7 +37,6 @@ import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverla
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
-import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
@@ -47,7 +44,6 @@ import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
-import de.westnordost.streetcomplete.view.presetIconIndex
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -62,7 +58,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val overlayRegistry: OverlayRegistry by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val editHistorySource: EditHistorySource by inject()
     private val mapDataSource: MapDataWithEditsSource by inject()
@@ -71,6 +66,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private val mapStateStore: MapStateStore by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val recentLocationStore: RecentLocationStore by inject()
+    private val mapIcons: MapIcons by inject()
 
     private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
@@ -188,20 +184,13 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         onLocationAvailabilityChanged(requireContext().isLocationAvailable)
     }
 
-    override suspend fun onMapReady(map: MapLibreMap, style: Style) {
-        super.onMapReady(map, style)
-
+    override suspend fun onMapStyleLoaded(map: MapLibreMap, style: Style) {
         val context = requireContext()
 
         setupComponents(context, map, style)
 
-        val presetIcons = HashMap<String, Bitmap>(presetIconIndex.values.size)
-        presetIconIndex.values.forEach {
-            val name = resources.getResourceEntryName(it)
-            val bitmap = context.getDrawable(it)!!.createBitmap()
-            presetIcons[name] = bitmap
-        }
-        style.addImagesAsync(presetIcons, true)
+        style.addImagesAsync(mapIcons.presetBitmaps, true)
+        style.addImagesAsync(mapIcons.pinBitmaps)
 
         // add click listeners
         val pickRadius = context.dpToPx(CLICK_AREA_SIZE_IN_DP / 2).toInt()
@@ -260,7 +249,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
-        pinsMapComponent = PinsMapComponent(context, questTypeRegistry, overlayRegistry, map)
+        pinsMapComponent = PinsMapComponent(map)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 

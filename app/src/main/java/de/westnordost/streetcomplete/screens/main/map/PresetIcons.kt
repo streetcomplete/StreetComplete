@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.util.getShortHouseNumber
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.view.presetIconIndex
 
-@DrawableRes fun getPinIcon(featureDictionary: FeatureDictionary, tags: Map<String, String>): Int? {
+@DrawableRes fun getIcon(featureDictionary: FeatureDictionary, tags: Map<String, String>): Int? {
     val icon = featureDictionary.getFeature(tags)?.let { presetIconIndex[it.icon] }
     if (icon != null) return icon
 

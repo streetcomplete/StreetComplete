@@ -89,7 +89,7 @@ import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MapFragment
 import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
-import de.westnordost.streetcomplete.screens.main.map.getPinIcon
+import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.SoundFx
@@ -1086,7 +1086,7 @@ class MainFragment :
                 if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: return@mapNotNull null
-                val icon = getPinIcon(featureDictionaryFuture.get(), e.tags)
+                val icon = getIcon(featureDictionaryFuture.get(), e.tags)
                 val title = getTitle(e.tags)
                 Marker(geometry, icon, title)
             }.toList()

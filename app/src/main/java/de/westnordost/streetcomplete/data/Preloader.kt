@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data
 
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.screens.main.map.MapIcons
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
@@ -14,7 +15,8 @@ import java.util.concurrent.FutureTask
 /** Initialize certain singleton classes used elsewhere throughout the app in the background */
 class Preloader(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>,
-    private val featuresDictionaryFuture: FutureTask<FeatureDictionary>
+    private val featuresDictionaryFuture: FutureTask<FeatureDictionary>,
+    private val mapIcons: MapIcons,
 ) {
 
     suspend fun preload() {
@@ -25,6 +27,8 @@ class Preloader(
             // names dictionary is necessary when displaying an element that has no name or
             // when downloading the place name quest (etc)
             launch { preloadFeatureDictionary() }
+            // map icons should be displayed as soon as the map finished loading its style
+            launch { createMapIcons() }
         }
 
         Log.i(TAG, "Preloading data took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
@@ -42,6 +46,14 @@ class Preloader(
         countryBoundariesFuture.run()
         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Loaded country boundaries in ${seconds.format(1)}s")
+    }
+
+    private suspend fun createMapIcons() = withContext(Dispatchers.Default) {
+        val time = nowAsEpochMilliseconds()
+        mapIcons.pinBitmaps
+        mapIcons.presetBitmaps
+        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        Log.i(TAG, "Created map icons in ${seconds.format(1)}s")
     }
 
     companion object {
