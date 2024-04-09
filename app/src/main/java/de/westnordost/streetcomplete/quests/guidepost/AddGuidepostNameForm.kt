@@ -1,32 +1,29 @@
 package de.westnordost.streetcomplete.quests.guidepost
 
 import android.os.Bundle
-import android.text.InputType
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestGuidepostRefBinding
+import de.westnordost.streetcomplete.databinding.QuestGuidepostNameBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 
 class AddGuidepostNameForm : AbstractOsmQuestForm<GuidepostNameAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_guidepost_ref
-    private val binding by contentViewBinding(QuestGuidepostRefBinding::bind)
+    override val contentLayoutResId = R.layout.quest_guidepost_name
+    private val binding by contentViewBinding(QuestGuidepostNameBinding::bind)
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoRef() }
     )
 
-    private val name get() = binding.refInput.nonBlankTextOrNull
+    private val name get() = binding.nameInput.nonBlankTextOrNull
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.refInput.doAfterTextChanged { checkIsFormComplete() }
-        binding.tvHint.setText(R.string.quest_guidepostName_hint)
-        binding.refInput.inputType = InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
+        binding.nameInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
     override fun onClickOk() {

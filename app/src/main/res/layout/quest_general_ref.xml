@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<TextView
-    android:id="@+id/tvHint"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/quest_guidepostRef_hint"/>
+    <TextView
+        android:id="@+id/tvHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_generalRef_hint" />
 
     <EditText
         android:id="@+id/refInput"
@@ -17,5 +17,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:inputType="text" />
+        android:inputType="textCapSentences" />
 </LinearLayout>
