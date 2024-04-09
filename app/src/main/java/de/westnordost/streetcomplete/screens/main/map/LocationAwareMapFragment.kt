@@ -143,7 +143,9 @@ open class LocationAwareMapFragment : MapFragment() {
         restoreMapState()
 
         val ctx = context ?: return
-        locationMapComponent = CurrentLocationMapComponent(ctx, style, map)
+        locationMapComponent = CurrentLocationMapComponent(ctx, style, map).also { locationMapComponent ->
+            viewLifecycleOwner.lifecycle.addObserver(locationMapComponent)
+        }
 
         tracksMapComponent = TracksMapComponent(ctx, style, map)
         val positionsLists = tracks.map { track -> track.map { it.position } }
