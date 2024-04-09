@@ -20,7 +20,7 @@ import org.koin.android.ext.android.inject
 class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
 
     override val items: List<DisplayItem<SeparateCycleway>> get() =
-        listOf(PATH, NON_DESIGNATED, ALLOWED_ON_FOOTWAY, NOT_ALLOWED, NON_SEGREGATED, SEGREGATED, EXCLUSIVE_WITH_SIDEWALK, EXCLUSIVE).map {
+        listOf(PATH, NON_DESIGNATED, ALLOWED_ON_FOOTWAY, NON_SEGREGATED, SEGREGATED, EXCLUSIVE_WITH_SIDEWALK, EXCLUSIVE).map {
             it.asItem(countryInfo.isLeftHandTraffic)
         }
 

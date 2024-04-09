@@ -108,13 +108,10 @@ private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags) {
 private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Boolean) {
     val side = if (isRight) "right" else "left"
     val cyclewayKey = "cycleway:$side"
+
     when (cycleway) {
         NONE, NONE_NO_ONEWAY -> {
             tags[cyclewayKey] = "no"
-            if (tags.containsKey("sidewalk:$side:bicycle") and (tags["sidewalk:$side:bicycle"] == "yes") and tags.containsKey("sidewalk:$side:bicycle:signed")){
-                tags.remove("sidewalk:$side:bicycle")
-                tags.remove("sidewalk:$side:bicycle:signed")
-            }
         }
         UNSPECIFIED_LANE -> {
             tags[cyclewayKey] = "lane"
@@ -139,6 +136,7 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
             // https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
             tags[cyclewayKey] = "track"
             tags["$cyclewayKey:segregated"] = "no"
+
         }
         PICTOGRAMS -> {
             tags[cyclewayKey] = "shared_lane"
@@ -197,6 +195,11 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
     val touchedSegregatedValue = cycleway in listOf(SIDEWALK_EXPLICIT, TRACK)
     if (!touchedSegregatedValue) {
         tags.remove("$cyclewayKey:segregated")
+    }
+    // no matter what option was chosen, if it's not SIDEWAY_OK, remove that cycling is signed and ok on sidewalk if it's there
+    if (cycleway != SIDEWALK_OK && tags.containsKey("sidewalk:$side:bicycle") && tags["sidewalk:$side:bicycle"] == "yes" && tags.containsKey("sidewalk:$side:bicycle:signed")) {
+        tags.remove("sidewalk:$side:bicycle")
+        tags.remove("sidewalk:$side:bicycle:signed")
     }
 }
 

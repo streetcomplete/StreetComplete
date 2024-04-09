@@ -17,8 +17,6 @@ fun SeparateCycleway.applyTo(tags: Tags) {
         PATH -> {
             tags["highway"] = "path"
 
-            // Because in SCEE you are able to tag a footway as bicycle=yes, choosing PATH or NOT_ALLOWED when bicycle=yes/no is set, should remove bicycle=yes
-            // as this means the user has explicitly chosen to tag the way as not allowed for cyclists
             if (tags.containsKey("bicycle") && (tags["bicycle"] == "yes" || tags["bicycle"] == "no")) {
                 tags.remove("bicycle")
             }
@@ -28,6 +26,9 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             }
             if (tags.containsKey("bicycle") && tags["bicycle"] !in yesButNotDesignated) {
                 tags["bicycle"] = "yes"
+            }
+            if (tags.containsKey("bicycle:signed")) {
+                tags.remove("bicycle:signed")
             }
         }
         NOT_ALLOWED, ALLOWED_ON_FOOTWAY, NON_DESIGNATED -> {
@@ -41,11 +42,17 @@ fun SeparateCycleway.applyTo(tags: Tags) {
                     if (tags["bicycle"] !in noCycling) tags["bicycle"] = "no"
                 }
                 ALLOWED_ON_FOOTWAY -> {
-                    if (tags["bicycle"] !in yesButNotDesignated) tags["bicycle"] = "yes"
+                    if (tags["bicycle"] !in yesButNotDesignated) {
+                        tags["bicycle"] = "yes"
+                        tags["bicycle:signed"] = "yes"
+                        // ALLOWED_ON_FOOTWAY implies foot=designated
+                        tags["foot"] = "designated"
+                    }
                 }
                 NON_DESIGNATED -> {
-                    // if we answer NON_DESIGNATED, in SCEE, that means the user wants to explicitly not make a statement if cycling is allowed or not
-                    if (tags.containsKey("bicycle")) tags.remove("bicycle")
+                    // if the user answers NOT_DESIGNATED, remove that there is a sign for bicycles but do not touch bicycle=, unless it is designated
+                    if (tags.containsKey("bicycle:signed")) tags.remove("bicycle:signed")
+                    if (tags["bicycle"] == "designated") tags.remove("bicycle")
                 }
                 else -> throw IllegalStateException("Unexpected value: $this")
             }
