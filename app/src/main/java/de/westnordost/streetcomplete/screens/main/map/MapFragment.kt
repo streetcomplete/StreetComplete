@@ -44,7 +44,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     protected var map : MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
-    private val cameraPositionStore: MapStateStore by inject()
+    private val mapStateStore: MapStateStore by inject()
     private val prefs: Preferences by inject()
 
     interface Listener {
@@ -197,17 +197,17 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     }
 
     private fun loadCameraPosition() = CameraPosition(
-        position = cameraPositionStore.position,
-        rotation = cameraPositionStore.rotation,
-        tilt = cameraPositionStore.tilt,
-        zoom = cameraPositionStore.zoom
+        position = mapStateStore.position,
+        rotation = mapStateStore.rotation,
+        tilt = mapStateStore.tilt,
+        zoom = mapStateStore.zoom
     )
 
     private fun saveCameraPosition(camera: CameraPosition) {
-        cameraPositionStore.position = camera.position
-        cameraPositionStore.tilt = camera.tilt
-        cameraPositionStore.rotation = camera.rotation
-        cameraPositionStore.zoom = camera.zoom
+        mapStateStore.position = camera.position
+        mapStateStore.tilt = camera.tilt
+        mapStateStore.rotation = camera.rotation
+        mapStateStore.zoom = camera.zoom
     }
 
     /* ------------------------------- Controlling the map -------------------------------------- */
