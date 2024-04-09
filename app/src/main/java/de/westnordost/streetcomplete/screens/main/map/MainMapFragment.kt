@@ -329,10 +329,13 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     //region Tracking GPS, Rotation, location availability, pin mode, ...
 
+    @SuppressLint("MissingPermission")
     private fun onLocationAvailabilityChanged(isAvailable: Boolean) {
         if (!isAvailable) {
             displayedLocation = null
             locationMapComponent?.targetLocation = null
+        } else {
+            locationManager.getCurrentLocation()
         }
     }
 
