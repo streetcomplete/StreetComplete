@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.Prefs
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.map.MapCameraPositionStore
+import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
@@ -44,7 +44,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     protected var map : MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
-    private val cameraPositionStore: MapCameraPositionStore by inject()
+    private val cameraPositionStore: MapStateStore by inject()
     private val prefs: Preferences by inject()
 
     interface Listener {

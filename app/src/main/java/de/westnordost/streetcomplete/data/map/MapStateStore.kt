@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.prefs.Preferences
 
 /** Stores position of map camera */
-class MapCameraPositionStore(private val prefs: Preferences) {
+class MapStateStore(private val prefs: Preferences) {
     var position: LatLon
         set(value) {
             prefs.putDouble(Prefs.MAP_LATITUDE, value.latitude)
@@ -27,4 +27,12 @@ class MapCameraPositionStore(private val prefs: Preferences) {
     var zoom: Double
         set(value) { prefs.putDouble(Prefs.MAP_ZOOM, value) }
         get() = prefs.getDouble(Prefs.MAP_ZOOM, 1.0)
+
+    var isFollowingPosition: Boolean
+        set(value) { prefs.putBoolean(Prefs.MAP_FOLLOWING, value) }
+        get() = prefs.getBoolean(Prefs.MAP_FOLLOWING, true)
+
+    var isNavigationMode: Boolean
+        set(value) { prefs.putBoolean(Prefs.MAP_NAVIGATION_MODE, value) }
+        get() = prefs.getBoolean(Prefs.MAP_NAVIGATION_MODE, false)
 }

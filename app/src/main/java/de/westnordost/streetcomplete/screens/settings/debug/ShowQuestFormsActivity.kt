@@ -15,7 +15,7 @@ import androidx.fragment.app.commit
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.map.MapCameraPositionStore
+import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -50,7 +50,7 @@ import java.util.Locale
 class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val mapCameraPositionStore: MapCameraPositionStore by inject()
+    private val mapStateStore: MapStateStore by inject()
 
     private val binding by viewBinding(FragmentShowQuestFormsBinding::inflate)
 
@@ -99,7 +99,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     override fun onStart() {
         super.onStart()
-        pos = mapCameraPositionStore.position
+        pos = mapStateStore.position
     }
 
     private fun popQuestForm() {
