@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.encodeToString
@@ -147,9 +146,11 @@ open class LocationAwareMapFragment : MapFragment() {
             viewLifecycleOwner.lifecycle.addObserver(locationMapComponent)
         }
 
-        tracksMapComponent = TracksMapComponent(ctx, style, map)
-        val positionsLists = tracks.map { track -> track.map { it.position } }
-        tracksMapComponent?.setTracks(positionsLists, isRecordingTracks)
+        tracksMapComponent = TracksMapComponent(ctx, style, map).also { tracksMapComponent ->
+            viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent)
+            val positionsLists = tracks.map { track -> track.map { it.position } }
+            tracksMapComponent.setTracks(positionsLists, isRecordingTracks)
+        }
 
         tracksMapComponent?.layers?.forEach { map.style?.addLayer(it) }
         locationMapComponent?.layers?.forEach { map.style?.addLayer(it) }
@@ -265,8 +266,6 @@ open class LocationAwareMapFragment : MapFragment() {
         // in rare cases, onLocationChanged may already be called before the view has been created
         // so we need to check that first
         if (view != null) {
-            // delay update by 600 ms because the animation to the new location takes that long
-            delay(600)
             withContext(Dispatchers.Main) { tracksMapComponent?.addToCurrentTrack(trackpoint.position) }
         }
     }
