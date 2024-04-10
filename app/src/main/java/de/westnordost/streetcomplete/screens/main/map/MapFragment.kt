@@ -145,6 +145,8 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         map.uiSettings.isCompassEnabled = false
         map.uiSettings.isAttributionEnabled = false
         map.uiSettings.isLogoEnabled = false
+        map.uiSettings.flingThreshold = 250
+        map.uiSettings.flingAnimationBaseTime = 500
 
         map.addOnMoveListener(object : MapLibreMap.OnMoveListener {
             override fun onMoveBegin(detector: MoveGestureDetector) {

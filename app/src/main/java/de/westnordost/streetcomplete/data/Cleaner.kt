@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.logs.LogsController
-import de.westnordost.streetcomplete.data.maptiles.DownloadedRegionsDao
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
