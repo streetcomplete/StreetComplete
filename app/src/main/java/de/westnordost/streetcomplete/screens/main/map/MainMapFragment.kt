@@ -37,17 +37,17 @@ import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverla
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
-import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
+import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.visibility
 import kotlin.math.PI
@@ -185,55 +185,12 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     override suspend fun onMapStyleLoaded(map: MapLibreMap, style: Style) {
-        val context = requireContext()
+        map.addOnMapClickListener { onClickMap(it) }
 
-        setupComponents(context, map, style)
+        setupComponents(requireContext(), map, style)
 
         style.addImagesAsync(mapIcons.presetBitmaps, true)
         style.addImagesAsync(mapIcons.pinBitmaps)
-
-        // add click listeners
-        val pickRadius = context.dpToPx(CLICK_AREA_SIZE_IN_DP / 2).toInt()
-        map.addOnMapClickListener { pos ->
-            // check whether we clicked a feature
-            val screenPoint: PointF = map.projection.toScreenLocation(pos)
-            val searchArea = RectF(screenPoint.x - pickRadius, screenPoint.y - pickRadius, screenPoint.x + pickRadius, screenPoint.y + pickRadius)
-            // only query specific layer(s), leave layerIds empty for querying all layers
-            val features = map.queryRenderedFeatures(searchArea, "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills")
-            if (features.isNotEmpty()) { // found a feature
-                // is the first feature always the correct one? looks like yes in a quick test
-                viewLifecycleScope.launch {
-                    when (pinMode) {
-                        PinMode.QUESTS -> {
-                            val questKey = features.first().properties()?.toQuestKey()
-                            if (questKey != null) {
-                                listener?.onClickedQuest(questKey)
-                                return@launch
-                            }
-                        }
-                        PinMode.EDITS -> {
-                            val editKey = features.first().properties()?.toEditKey()
-                            if (editKey != null) {
-                                listener?.onClickedEdit(editKey)
-                                return@launch
-                            }
-                        }
-                        PinMode.NONE -> {}
-                    }
-
-                    // maybe it was an overlay?
-                    val elementKey = features.first().properties()?.toElementKey()
-                    if (elementKey != null) {
-                        listener?.onClickedElement(elementKey)
-                    }
-                }
-                return@addOnMapClickListener true
-            }
-
-            // no feature: just click the map
-            listener?.onClickedMapAt(LatLon(pos.latitude, pos.longitude), 1.0)
-            false
-        }
 
         setupLayers(style)
 
@@ -327,7 +284,55 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     //endregion
 
-    //region Tracking GPS, Rotation, location availability, pin mode, ...
+    //region Tracking GPS, Rotation, location availability, pin mode, click ...
+
+    private fun onClickMap(position: LatLng): Boolean {
+        val fingerRadius = context?.dpToPx(CLICK_AREA_SIZE_IN_DP / 2)?.toInt() ?: return false
+        val clickPos = map?.projection?.toScreenLocation(position) ?: return false
+        val searchArea = RectF(
+            clickPos.x - fingerRadius,
+            clickPos.y - fingerRadius,
+            clickPos.x + fingerRadius,
+            clickPos.y + fingerRadius
+        )
+        // only query specific layer(s) - leaving layerIds empty would query all layers
+        // result is already sorted by visual render order, descending
+        val feature = map?.queryRenderedFeatures(searchArea,
+            "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
+        )?.firstOrNull()
+
+        if (feature != null) {
+            when (pinMode) {
+                PinMode.QUESTS -> {
+                    val questKey = feature.properties()?.toQuestKey() // TODO
+                    if (questKey != null) {
+                        listener?.onClickedQuest(questKey)
+                        return true
+                    }
+                }
+                PinMode.EDITS -> {
+                    val editKey = feature.properties()?.toEditKey() // TODO
+                    if (editKey != null) {
+                        listener?.onClickedEdit(editKey)
+                        return true
+                    }
+                }
+                PinMode.NONE -> {}
+            }
+
+            val elementKey = feature.properties()?.toElementKey() // TODO
+            if (elementKey != null) {
+                listener?.onClickedElement(elementKey)
+                return true
+            }
+        }
+
+        // no feature: just click the map
+        val fingerEdgePosition = map?.projection?.fromScreenLocation(PointF(clickPos.x + fingerRadius, clickPos.y)) ?: return false
+        val fingerRadiusInMeters = position.distanceTo(fingerEdgePosition)
+        listener?.onClickedMapAt(position.toLatLon(), fingerRadiusInMeters)
+        return false
+    }
 
     @SuppressLint("MissingPermission")
     private fun onLocationAvailabilityChanged(isAvailable: Boolean) {
@@ -417,65 +422,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     //endregion
-
-    /* -------------------------------- Picking quest pins -------------------------------------- */
-/*
-    override fun onSingleTapConfirmed(x: Float, y: Float): Boolean {
-        viewLifecycleScope.launch {
-            if (pinsMapComponent?.isVisible == true) {
-                when (pinMode) {
-                    PinMode.QUESTS -> {
-                        val props = controller?.pickLabel(x, y)?.properties
-                        val questKey = props?.let { questPinsManager?.getQuestKey(it) }
-                        if (questKey != null) {
-                            listener?.onClickedQuest(questKey)
-                            return@launch
-                        }
-                    }
-                    PinMode.EDITS -> {
-                        val props = controller?.pickLabel(x, y)?.properties
-                        val editKey = props?.let { editHistoryPinsManager?.getEditKey(it) }
-                        if (editKey != null) {
-                            listener?.onClickedEdit(editKey)
-                            return@launch
-                        }
-                    }
-                    PinMode.NONE -> {}
-                }
-            }
-
-            if (styleableOverlayMapComponent?.isVisible == true) {
-                if (selectedOverlaySource.selectedOverlay != null) {
-                    val props = controller?.pickLabel(x, y)?.properties
-                        ?: controller?.pickFeature(x, y)?.properties
-                    val elementKey = props?.let { styleableOverlayMapComponent?.getElementKey(it) }
-                    if (elementKey != null) {
-                        listener?.onClickedElement(elementKey)
-                        return@launch
-                    }
-                }
-            }
-
-            val pickMarkerResult = controller?.pickMarker(x, y)
-            if (pickMarkerResult == null) {
-                onClickedMap(x, y)
-            }
-        }
-        return true
-    }
-
-    private fun onClickedMap(x: Float, y: Float) {
-        val context = context ?: return
-
-        val clickPos = controller?.screenPositionToLatLon(PointF(x, y)) ?: return
-
-        val fingerRadius = context.dpToPx(CLICK_AREA_SIZE_IN_DP) / 2
-        val fingerEdgeClickPos = controller?.screenPositionToLatLon(PointF(x + fingerRadius, y)) ?: return
-        val fingerRadiusInMeters = clickPos.distanceTo(fingerEdgeClickPos)
-
-        listener?.onClickedMapAt(clickPos, fingerRadiusInMeters)
-    }
-*/
 
     //region Control focusing on and highlighting edit / quest / element
 
@@ -632,7 +578,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         private const val MIN_TRACK_ACCURACY = 20f
         private const val MAX_TIME_BETWEEN_LOCATIONS = 60L * 1000 // 1 minute
 
-        private const val CLICK_AREA_SIZE_IN_DP = 32
+        private const val CLICK_AREA_SIZE_IN_DP = 24
     }
 }
 
