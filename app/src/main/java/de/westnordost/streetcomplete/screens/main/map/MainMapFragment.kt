@@ -35,6 +35,8 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
+import de.westnordost.streetcomplete.screens.main.map.maplibre.addLayers
+import de.westnordost.streetcomplete.screens.main.map.maplibre.addLayersAbove
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
@@ -218,20 +220,30 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     private fun setupLayers(style: Style) {
-        // names etc. should still be readable behind hatching
-        downloadedAreaMapComponent?.layers?.forEach { style.addLayerAbove(it, "labels-country") }
-        // left-and-right lines should be rendered behind the actual road
-        styleableOverlayMapComponent?.sideLayers?.forEach { style.addLayerAbove(it, "pedestrian-tunnel-casing") }
-        styleableOverlayMapComponent?.sideLayersBridge?.forEach { style.addLayerAbove(it, "pedestrian-bridge-casing") }
-
         // layers added first appear behind other layers
-        tracksMapComponent?.layers?.forEach { style.addLayer(it) }
-        locationMapComponent?.layers?.forEach { style.addLayer(it) }
-        styleableOverlayMapComponent?.layers?.forEach { style.addLayer(it) }
-        geometryMarkersMapComponent?.layers?.forEach { style.addLayer(it) }
-        geometryMapComponent?.layers?.forEach { style.addLayer(it) }
-        pinsMapComponent?.layers?.forEach { style.addLayer(it) }
-        selectedPinsMapComponent?.layers?.forEach { style.addLayer(it) }
+
+        // left-and-right lines should be rendered behind the actual road
+        val firstCasingLayer = "pedestrian-tunnel-casing"
+        style.addLayersAbove(styleableOverlayMapComponent?.sideLayers.orEmpty(), firstCasingLayer)
+        val firstBridgeCasingLayer = "pedestrian-bridge-casing"
+        style.addLayersAbove(styleableOverlayMapComponent?.sideLayersBridge.orEmpty(), firstBridgeCasingLayer)
+
+        // labels should be on top of other layers
+        val firstLabelLayer = "labels-country"
+        style.addLayersAbove(listOfNotNull(
+            downloadedAreaMapComponent?.layers,
+            tracksMapComponent?.layers,
+            styleableOverlayMapComponent?.layers,
+            geometryMarkersMapComponent?.layers,
+            geometryMapComponent?.layers
+        ).flatten(), firstLabelLayer)
+
+        // these are always on top of everything else (including labels)
+        style.addLayers(listOfNotNull(
+            locationMapComponent?.layers,
+            pinsMapComponent?.layers,
+            selectedPinsMapComponent?.layers
+        ).flatten())
     }
 
     private fun setupData(map: MapLibreMap) {
