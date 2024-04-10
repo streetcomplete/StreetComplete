@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.content.res.Resources
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -148,7 +147,7 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
         NoteEditKey(getValue(MARKER_ID).toLong())
     EDIT_TYPE_HIDE_OSM_QUEST ->
         OsmQuestHiddenKey(OsmQuestKey(
-            getValue(MARKER_ELEMENT_TYPE).let { ElementType.valueOf(it) },
+            ElementType.valueOf(getValue(MARKER_ELEMENT_TYPE)),
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         ))
@@ -156,20 +155,3 @@ private fun Map<String, String>.toEditKey(): EditKey? = when (get(MARKER_EDIT_TY
         OsmNoteQuestHiddenKey(OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong()))
     else -> null
 }
-
-fun JsonObject.toEditKey(): EditKey? =
-    when (get(MARKER_EDIT_TYPE)?.asString) {
-        EDIT_TYPE_ELEMENT ->
-            ElementEditKey(get(MARKER_ID).asLong)
-        EDIT_TYPE_NOTE ->
-            NoteEditKey(get(MARKER_ID).asLong)
-        EDIT_TYPE_HIDE_OSM_QUEST ->
-            OsmQuestHiddenKey(OsmQuestKey(
-                ElementType.valueOf(get(MARKER_ELEMENT_TYPE).asString),
-                get(MARKER_ELEMENT_ID).asLong,
-                get(MARKER_QUEST_TYPE).asString,
-            ))
-        EDIT_TYPE_HIDE_OSM_NOTE_QUEST ->
-            OsmNoteQuestHiddenKey(OsmNoteQuestKey(get(MARKER_NOTE_ID).asLong))
-        else -> null
-    }

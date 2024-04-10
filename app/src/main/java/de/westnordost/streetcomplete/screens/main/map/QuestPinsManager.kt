@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.content.res.Resources
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.google.gson.JsonObject
 import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
@@ -264,16 +263,3 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST
         )
     else -> null
 }
-
-fun JsonObject.toQuestKey(): QuestKey? =
-    when (get(MARKER_QUEST_GROUP)?.asString) {
-        QUEST_GROUP_OSM_NOTE ->
-            OsmNoteQuestKey(get(MARKER_NOTE_ID).asLong)
-        QUEST_GROUP_OSM ->
-            OsmQuestKey(
-                ElementType.valueOf(get(MARKER_ELEMENT_TYPE).asString),
-                get(MARKER_ELEMENT_ID).asLong,
-                get(MARKER_QUEST_TYPE).asString,
-            )
-        else -> null
-    }

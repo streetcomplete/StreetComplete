@@ -299,6 +299,12 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
         }
     }
 
+    fun getElementKey(properties: JsonObject): ElementKey? {
+        val id = properties[ELEMENT_ID]?.asLong ?: return null
+        val type = properties[ELEMENT_TYPE]?.asString ?: return null
+        return ElementKey(ElementType.valueOf(type), id)
+    }
+
     // no need to parse, modify and write to string darkening the same colors for every single element
     private fun getDarkenedColor(color: String): String =
         darkenedColors.getOrPut(color) {
@@ -315,25 +321,17 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
 
     companion object {
         private const val SOURCE = "overlay-source"
+
+        private const val ELEMENT_TYPE = "element_type"
+        private const val ELEMENT_ID = "element_id"
     }
 }
-
-private const val ELEMENT_TYPE = "element_type"
-private const val ELEMENT_ID = "element_id"
 
 data class StyledElement(
     val element: Element,
     val geometry: ElementGeometry,
     val style: Style
 )
-
-fun JsonObject.toElementKey(): ElementKey? {
-    val id = getAsJsonPrimitive(ELEMENT_ID)?.asLong ?: return null
-    val type = getAsJsonPrimitive(ELEMENT_TYPE).asString
-    return if (type in ElementType.entries.map { it.toString() })
-        ElementKey(ElementType.valueOf(type), id)
-    else null
-}
 
 /** mimics width of line as seen in StreetComplete map style */
 private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway"]) {

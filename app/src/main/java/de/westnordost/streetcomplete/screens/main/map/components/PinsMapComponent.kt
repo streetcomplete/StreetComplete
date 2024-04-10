@@ -51,6 +51,10 @@ class PinsMapComponent(private val map: MapLibreMap) {
             }
         }
 
+    fun getProperties(properties: JsonObject): Map<String, String> =
+        properties.getProperties()
+
+
     init {
         pinsSource.isVolatile = true
         map.style?.addSource(pinsSource)
@@ -85,3 +89,6 @@ private fun Pin.toFeature(): Feature {
     properties.forEach { p.addProperty(it.first, it.second) }
     return Feature.fromGeometry(position.toPoint(), p)
 }
+
+private fun JsonObject.getProperties(): Map<String, String> =
+    entrySet().associate { it.key to it.value.asString }

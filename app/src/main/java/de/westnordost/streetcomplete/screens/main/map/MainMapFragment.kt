@@ -35,7 +35,6 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
-import de.westnordost.streetcomplete.screens.main.map.components.toElementKey
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
@@ -297,21 +296,23 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         )
         // only query specific layer(s) - leaving layerIds empty would query all layers
         // result is already sorted by visual render order, descending
-        val feature = map?.queryRenderedFeatures(searchArea,
+        val jsonObject = map?.queryRenderedFeatures(searchArea,
             "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
-        )?.firstOrNull()
+        )?.firstOrNull()?.properties()
 
-        if (feature != null) {
+        if (jsonObject != null) {
             when (pinMode) {
                 PinMode.QUESTS -> {
-                    val questKey = feature.properties()?.toQuestKey() // TODO
+                    val properties = pinsMapComponent?.getProperties(jsonObject)
+                    val questKey = properties?.let { questPinsManager?.getQuestKey(it) }
                     if (questKey != null) {
                         listener?.onClickedQuest(questKey)
                         return true
                     }
                 }
                 PinMode.EDITS -> {
-                    val editKey = feature.properties()?.toEditKey() // TODO
+                    val properties = pinsMapComponent?.getProperties(jsonObject)
+                    val editKey = properties?.let { editHistoryPinsManager?.getEditKey(it) }
                     if (editKey != null) {
                         listener?.onClickedEdit(editKey)
                         return true
@@ -320,7 +321,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
                 PinMode.NONE -> {}
             }
 
-            val elementKey = feature.properties()?.toElementKey() // TODO
+            val elementKey = styleableOverlayMapComponent?.getElementKey(jsonObject)
             if (elementKey != null) {
                 listener?.onClickedElement(elementKey)
                 return true
