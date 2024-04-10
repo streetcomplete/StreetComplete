@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
-import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
@@ -145,11 +144,11 @@ class QuestPinsManager(
         val zoom = map.cameraPosition.zoom
         // require zoom >= 14, which is the lowest zoom level where quests are shown
         if (zoom < 14) return
-        MainActivity.activity?.runOnUiThread {
+        viewLifecycleScope.launch(Dispatchers.Main) {
             val displayedArea = map.screenAreaToBoundingBox()
             val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
             // area too big -> skip (performance)
-            if (tilesRect.size > 16) return@runOnUiThread
+            if (tilesRect.size > 16) return@launch
             if (lastDisplayedRect?.contains(tilesRect) != true) {
                 lastDisplayedRect = tilesRect
                 onNewTilesRect(tilesRect)

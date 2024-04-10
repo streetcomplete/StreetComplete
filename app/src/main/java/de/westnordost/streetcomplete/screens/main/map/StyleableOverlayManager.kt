@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.overlays.Overlay
-import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
@@ -125,11 +124,11 @@ class StyleableOverlayManager(
         if (overlay == null) return
         val zoom = map.cameraPosition.zoom
         if (zoom < TILES_ZOOM) return
-        MainActivity.activity?.runOnUiThread {
+        viewLifecycleScope.launch(Dispatchers.Main) {
             val displayedArea = map.screenAreaToBoundingBox()
             val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
             // area too big -> skip (performance)
-            if (tilesRect.size > 16) return@runOnUiThread
+            if (tilesRect.size > 16) return@launch
             if (lastDisplayedRect?.contains(tilesRect) != true) {
                 lastDisplayedRect = tilesRect
                 onNewTilesRect(tilesRect)
