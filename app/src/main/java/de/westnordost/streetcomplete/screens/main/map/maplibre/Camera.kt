@@ -75,7 +75,7 @@ data class Padding(val left: Double, val top: Double, val right: Double, val bot
 
 private fun org.maplibre.android.camera.CameraPosition.toCameraPosition() = CameraPosition(
     position = target?.toLatLon() ?: LatLon(0.0, 0.0),
-    rotation = -bearing,
+    rotation = bearing,
     tilt = tilt,
     zoom = zoom,
     padding = padding?.toPadding()

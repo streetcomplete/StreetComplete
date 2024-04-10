@@ -319,7 +319,7 @@ class MainFragment :
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
-        binding.compassView.rotation = rotation.toFloat()
+        binding.compassView.rotation = -rotation.toFloat()
         binding.compassView.rotationX = tilt.toFloat()
 
         val margin = 2

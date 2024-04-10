@@ -95,8 +95,8 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
     private fun updateStreetOrientation() {
         val streetLanesPuzzleBinding = streetLanesPuzzleBinding ?: return
 
-        streetLanesPuzzleBinding.puzzleViewRotateContainer.streetRotation = wayRotation + mapRotation
-        streetLanesPuzzleBinding.littleCompass.root.rotation = mapRotation
+        streetLanesPuzzleBinding.puzzleViewRotateContainer.streetRotation = wayRotation - mapRotation
+        streetLanesPuzzleBinding.littleCompass.root.rotation = -mapRotation
         streetLanesPuzzleBinding.littleCompass.root.rotationX = mapTilt
     }
 
