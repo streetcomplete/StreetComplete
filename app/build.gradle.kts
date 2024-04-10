@@ -269,13 +269,6 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
 }
 
-tasks.register<UpdateMapStyleTask>("updateMapStyle") {
-    group = "streetcomplete"
-    targetDir = "$projectDir/src/main/assets/map_theme"
-    apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
-    mapStyleBranch = "master"
-}
-
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
