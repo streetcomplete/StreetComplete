@@ -15,20 +15,11 @@ import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MapTilesDownloader(
-    context: Context,
-    private val downloadedRegionsDao: DownloadedRegionsDao
-) {
+class MapTilesDownloader(context: Context) {
 
     data class Tile(val zoom: Int, val x: Int, val y: Int)
 
     private val offlineManager = OfflineManager.getInstance(context)
-    init {
-        // todo: maybe don't set in here? MapTilesDownloader is not a singleton
-        // When exceeded mapboxTileCountLimitExceeded is called according to documentation,
-        // but even when setting to 10 nothing happened
-        offlineManager.setOfflineMapboxTileCountLimit(6000) // 6000 is default
-    }
     private val pixelRatio = context.resources.displayMetrics.density
     private val offlineRegionCallback = object : OfflineManager.CreateOfflineRegionCallback {
         override fun onCreate(offlineRegion: OfflineRegion) {
@@ -36,9 +27,8 @@ class MapTilesDownloader(
 
             offlineRegion.setObserver(object : OfflineRegion.OfflineRegionObserver {
                 override fun mapboxTileCountLimitExceeded(limit: Long) {
-                    // is this actually called?
-                    offlineRegion.setDownloadState(OfflineRegion.STATE_INACTIVE) // stop downloading
-                    Log.i(TAG, "Tile download limit of $limit exceeded")
+                    // was never called in a test with 10 tiles limit
+                    // ignore since we limit cache only by size
                 }
 
                 override fun onError(error: OfflineRegionError) {
@@ -47,21 +37,18 @@ class MapTilesDownloader(
                 }
 
                 override fun onStatusChanged(status: OfflineRegionStatus) {
-                    // status contains information about downloaded tile count and size
-                    if (status.isComplete) { // and whether the download is complete
-                        offlineRegion.setDownloadState(OfflineRegion.STATE_INACTIVE) // this is needed once download is done!
-                        downloadedRegionsDao.put(offlineRegion)
+                    if (status.isComplete) {
+                        offlineRegion.setDownloadState(OfflineRegion.STATE_INACTIVE) // also needed when download is complete
                         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
                         Log.i(TAG, "Downloaded ${status.completedTileCount} tiles (${status.completedTileSize / 1000}kB) in ${seconds.format(1)}s")
                         // note that the numbers include tiles that were already on device
-                        //  no idea how to check which tiles were really downloaded (other than in android log for maplibre)
+                        //  no idea how to check which tiles were really downloaded (other than in android log for MapLibre)
                         // status.requiredResourceCount and status.completedResourceSize might be interesting too
                     }
                 }
             })
 
             // start the download by setting state to active
-            // state must be set to inactive once download is done -> need that observer above
             offlineRegion.setDownloadState(OfflineRegion.STATE_ACTIVE)
         }
 
@@ -70,21 +57,17 @@ class MapTilesDownloader(
         }
     }
 
-    fun deleteRegionsOlderThan(time: Long) {
-        val ids = downloadedRegionsDao.getIdsOlderThan(time)
+    /** delete regions, which allows contained tiles to be deleted if cache size is exceeded */
+    fun deleteRegionsOlderThan(olderThan: Long) {
         offlineManager.listOfflineRegions(object : OfflineManager.ListOfflineRegionsCallback{
             override fun onError(error: String) { }
 
             override fun onList(offlineRegions: Array<OfflineRegion>?) {
                 offlineRegions?.forEach {
-                    if (it.id in ids) {
+                    val timestamp = it.metadata.toString(Charsets.UTF_8).toLongOrNull() ?: 0
+                    if (timestamp < olderThan) {
                         it.delete(object : OfflineRegion.OfflineRegionDeleteCallback {
-                            override fun onDelete() {
-                                // only delete when we got the callback
-                                // otherwise the offline region might stay in DB on error, and then
-                                // we certainly want to keep the id in downloadedRegionsDao
-                                downloadedRegionsDao.delete(it.id)
-                            }
+                            override fun onDelete() {}
 
                             override fun onError(error: String) {}
                         })
@@ -98,9 +81,9 @@ class MapTilesDownloader(
         val bounds = LatLngBounds.fromLatLngs(listOf(bbox.max.toLatLng(), bbox.min.toLatLng()))
         val regionDefinition = OfflineTilePyramidRegionDefinition(styleUrl, bounds, 0.0, 16.0, pixelRatio)
 
-        // what to use metadata for? in database it's called "description"
-        // no need for identifier, region already gets a unique id (in callback)
-        val metadata = "yes this is a region".toByteArray()
+        // store timestamp as metadata for deleting areas older than
+        // (could also be done directly from the long)
+        val metadata = nowAsEpochMilliseconds().toString().toByteArray(Charsets.UTF_8)
         offlineManager.createOfflineRegion(regionDefinition, metadata, offlineRegionCallback)
     }
 

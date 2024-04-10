@@ -93,6 +93,9 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         // This should be called BEFORE setting a style and loading a map, because otherwise
         // the cache will have 50 MB at start (means it will possibly delete tiles)
         offlineManager.setMaximumAmbientCacheSize(ambientCacheSizeInBytes, null)
+
+        // set really high tile count limit, we only want to care about size
+        offlineManager.setOfflineMapboxTileCountLimit(10000) // very roughly 1000 km²
     }
 
     private fun showOpenUrlDialog(url: String) {
