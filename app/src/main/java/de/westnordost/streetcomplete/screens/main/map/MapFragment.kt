@@ -69,6 +69,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.map.onCreate(savedInstanceState)
+        binding.map.foreground = view.context.getDrawable(R.color.background)
 
         binding.openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
         binding.mapTileProviderLink.setOnClickListener { showOpenUrlDialog("https://www.jawg.io") }
@@ -172,6 +173,8 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         this.sceneMapComponent = sceneMapComponent
 
         restoreMapState()
+        binding.map.foreground = null
+
         onMapStyleLoaded(map, style)
 
         listener?.onMapInitialized()
