@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.content.res.Resources
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
@@ -258,22 +258,22 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST
         OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong())
     QUEST_GROUP_OSM ->
         OsmQuestKey(
-            getValue(MARKER_ELEMENT_TYPE).let { ElementType.valueOf(it) },
+            ElementType.valueOf(getValue(MARKER_ELEMENT_TYPE)),
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         )
     else -> null
 }
 
-fun JsonElement.toQuestKey(): QuestKey? =
-    when (asJsonObject.getAsJsonPrimitive(MARKER_QUEST_GROUP)?.asString) {
+fun JsonObject.toQuestKey(): QuestKey? =
+    when (get(MARKER_QUEST_GROUP)?.asString) {
         QUEST_GROUP_OSM_NOTE ->
-            OsmNoteQuestKey(asJsonObject.getAsJsonPrimitive(MARKER_NOTE_ID).asLong)
+            OsmNoteQuestKey(get(MARKER_NOTE_ID).asLong)
         QUEST_GROUP_OSM ->
             OsmQuestKey(
-                asJsonObject.getAsJsonPrimitive(MARKER_ELEMENT_TYPE).asString.let { ElementType.valueOf(it) },
-                asJsonObject.getAsJsonPrimitive(MARKER_ELEMENT_ID).asLong,
-                asJsonObject.getAsJsonPrimitive(MARKER_QUEST_TYPE).asString,
+                ElementType.valueOf(get(MARKER_ELEMENT_TYPE).asString),
+                get(MARKER_ELEMENT_ID).asLong,
+                get(MARKER_QUEST_TYPE).asString,
             )
         else -> null
     }

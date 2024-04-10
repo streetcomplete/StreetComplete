@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.Context
 import android.content.res.Configuration
 import androidx.annotation.UiThread
-import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
@@ -328,9 +327,9 @@ data class StyledElement(
     val style: Style
 )
 
-fun JsonElement.toElementKey(): ElementKey? {
-    val id = asJsonObject.getAsJsonPrimitive(ELEMENT_ID)?.asLong ?: return null
-    val type = asJsonObject.getAsJsonPrimitive(ELEMENT_TYPE).asString
+fun JsonObject.toElementKey(): ElementKey? {
+    val id = getAsJsonPrimitive(ELEMENT_ID)?.asLong ?: return null
+    val type = getAsJsonPrimitive(ELEMENT_TYPE).asString
     return if (type in ElementType.entries.map { it.toString() })
         ElementKey(ElementType.valueOf(type), id)
     else null
