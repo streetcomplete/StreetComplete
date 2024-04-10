@@ -144,7 +144,8 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
 
     private fun updateAnimatedTrack(progress: Float) {
         val size = track.trackpoints.size
-        val s = track.trackpoints[size - 2] // TODO
+        if (size < 2) return
+        val s = track.trackpoints[size - 2]
         val e = track.trackpoints[size - 1]
         val animated = LatLon(
             latitude = s.latitude + (e.latitude - s.latitude) * progress,
