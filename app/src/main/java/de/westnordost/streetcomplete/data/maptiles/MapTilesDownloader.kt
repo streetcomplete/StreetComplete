@@ -90,7 +90,6 @@ class MapTilesDownloader(context: Context) {
     companion object {
         private const val TAG = "MapTilesDownload"
 
-        // todo: should be a stripped down json, we only use it to get a tiles URL and want to minimize download size
         private const val styleUrl = "https://streetcomplete.app/map-jawg/streetcomplete.json"
     }
 }
