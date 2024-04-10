@@ -35,7 +35,7 @@ class PinsMapComponent(private val map: MapLibreMap) {
                 iconImage(get("icon-image")),
                 iconSize(0.5f),
                 iconOffset(listOf(-9f, -69f).toTypedArray()),
-                symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
+                symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE), // = order in which they were added
             )
     )
 
@@ -58,9 +58,7 @@ class PinsMapComponent(private val map: MapLibreMap) {
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     @UiThread fun set(pins: Collection<Pin>) {
-        // do sorting here, because we can set the symbolZOrder to SYMBOL_Z_ORDER_SOURCE, which
-        // is the order in which the source has the features
-        val mapLibreFeatures = pins.sortedBy { -it.importance }.map { it.toFeature() }
+        val mapLibreFeatures = pins.sortedBy { it.order }.map { it.toFeature() }
         pinsSource.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures))
     }
 
@@ -78,13 +76,12 @@ data class Pin(
     val position: LatLon,
     val iconName: String,
     val properties: Collection<Pair<String, String>> = emptyList(),
-    val importance: Int = 0
+    val order: Int = 0
 )
 
 private fun Pin.toFeature(): Feature {
     val p = JsonObject()
     p.addProperty("icon-image", iconName)
-    p.addProperty("symbol-sort-key", -importance.toFloat()) // still set sort key, because we may want to try it again
     properties.forEach { p.addProperty(it.first, it.second) }
     return Feature.fromGeometry(position.toPoint(), p)
 }

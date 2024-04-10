@@ -101,7 +101,7 @@ class EditHistoryPinsManager(
                 edit.position,
                 resources.getResourceEntryName(edit.icon),
                 edit.toProperties(),
-                edits.size - index // most recent first
+                index // most recent first
             )
         }
 }
