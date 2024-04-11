@@ -119,21 +119,15 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         set(value) {
             if (!value) zoomedYet = false
             field = value
-            if (field != value && !value) {
-                _isNavigationMode = false
-            }
         }
 
     /** Whether the view should automatically rotate with bearing (like during navigation) */
-    private var _isNavigationMode: Boolean = false
-    var isNavigationMode: Boolean
+    var isNavigationMode: Boolean = false
         set(value) {
-            if (_isNavigationMode != value && !value) {
-                updateCameraPosition(300) { tilt = 0.0 }
-            }
-            _isNavigationMode = value
+            val valueChanged = field != value
+            field = value
+            if (valueChanged) onUpdatedNavigationMode()
         }
-        get() = _isNavigationMode
 
     enum class PinMode { NONE, QUESTS, EDITS }
     var pinMode: PinMode = PinMode.QUESTS
@@ -546,7 +540,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
                 if (bearing != null) {
                     rotation = -(bearing * PI / 180.0)
                 }
-                tilt = 60.0 // looks like we use degrees
+                tilt = 60.0
             }
 
             position = displayedPosition
@@ -566,6 +560,18 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private fun shouldCenterCurrentPosition(): Boolean =
         // don't center position while displaying a quest
         isFollowingPosition && geometryMapComponent?.isZoomedToContainGeometry != true
+
+    private fun onUpdatedNavigationMode() {
+        if (!isNavigationMode) {
+            updateCameraPosition(300) {
+                rotation = 0.0
+                tilt = 0.0
+            }
+        } else {
+            centerCurrentPositionIfFollowing()
+        }
+    }
+
 
     //endregion
 

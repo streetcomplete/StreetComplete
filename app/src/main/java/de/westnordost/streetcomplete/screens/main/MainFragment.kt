@@ -762,8 +762,6 @@ class MainFragment :
         val mapFragment = mapFragment ?: return
         mapFragment.isNavigationMode = navigation
         binding.gpsTrackingButton.isNavigation = navigation
-        // always re-center position because navigation mode shifts the center position
-        mapFragment.centerCurrentPositionIfFollowing()
     }
 
     private fun setIsFollowingPosition(follow: Boolean) {
