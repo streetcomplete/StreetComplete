@@ -18,6 +18,7 @@ import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
@@ -160,6 +161,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
             map.updateCamera(zoomTime, contentResolver) {
                 position = pos.position
                 zoom = pos.zoom
+                padding = Padding(0.0, 0.0, 0.0, 0.0)
             }
         }
         previousCameraPosition = null
