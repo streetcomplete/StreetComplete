@@ -21,15 +21,14 @@ class Months(private val data: BooleanArray = BooleanArray(MONTHS_COUNT)) {
     fun toLocalizedString(locale: Locale) =
         toStringUsing(getNames(locale), ", ", "–")
 
-    fun toStringUsing(names: Array<String>, separator: String, range: String): String {
-        return toCircularSections().joinToString(separator) { section ->
+    fun toStringUsing(names: Array<String>, separator: String, range: String): String =
+        toCircularSections().joinToString(separator) { section ->
             if (section.start == section.end) {
                 names[section.start]
             } else {
                 names[section.start] + range + names[section.end]
             }
         }
-    }
 
     fun toCircularSections(): List<CircularSection> {
         val result = mutableListOf<CircularSection>()

@@ -13,6 +13,7 @@ object ElementEditsTable {
         const val CREATED_TIMESTAMP = "created"
         const val IS_SYNCED = "synced"
         const val ACTION = "action"
+        const val IS_NEAR_USER_LOCATION = "is_near"
     }
 
     const val CREATE = """
@@ -25,7 +26,8 @@ object ElementEditsTable {
             ${Columns.LONGITUDE} double NOT NULL,
             ${Columns.CREATED_TIMESTAMP} int NOT NULL,
             ${Columns.IS_SYNCED} int NOT NULL,
-            ${Columns.ACTION} text
+            ${Columns.ACTION} text,
+            ${Columns.IS_NEAR_USER_LOCATION} int NOT NULL
         );
     """
 }

@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.osm.LengthInFeetAndInches
 import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
@@ -143,30 +143,23 @@ class AddMaxHeightTest {
     }
 
     @Test fun `apply metric height answer`() {
-        questType.verifyAnswer(
-            MaxHeight(LengthInMeters(3.5)),
-            StringMapEntryAdd("maxheight", "3.5")
+        assertEquals(
+            setOf(StringMapEntryAdd("maxheight", "3.5")),
+            questType.answerApplied(MaxHeight(LengthInMeters(3.5)))
         )
     }
 
     @Test fun `apply imperial height answer`() {
-        questType.verifyAnswer(
-            MaxHeight(LengthInFeetAndInches(10, 6)),
-            StringMapEntryAdd("maxheight", "10'6\"")
+        assertEquals(
+            setOf(StringMapEntryAdd("maxheight", "10'6\"")),
+            questType.answerApplied(MaxHeight(LengthInFeetAndInches(10, 6)))
         )
     }
 
-    @Test fun `apply default height answer`() {
-        questType.verifyAnswer(
-            NoMaxHeightSign(true),
-            StringMapEntryAdd("maxheight", "default")
-        )
-    }
-
-    @Test fun `apply below default height answer`() {
-        questType.verifyAnswer(
-            NoMaxHeightSign(false),
-            StringMapEntryAdd("maxheight", "below_default")
+    @Test fun `apply no height sign answer`() {
+        assertEquals(
+            setOf(StringMapEntryAdd("maxheight:signed", "no")),
+            questType.answerApplied(NoMaxHeightSign)
         )
     }
 }

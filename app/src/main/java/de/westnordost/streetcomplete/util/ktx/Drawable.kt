@@ -15,12 +15,11 @@ import androidx.core.graphics.get
 import androidx.core.graphics.set
 import kotlin.math.min
 
-fun Drawable.createBitmap(width: Int = intrinsicWidth, height: Int = intrinsicHeight): Bitmap {
-    return createBitmap(width, height, Bitmap.Config.ARGB_8888).applyCanvas {
+fun Drawable.createBitmap(width: Int = intrinsicWidth, height: Int = intrinsicHeight): Bitmap =
+    createBitmap(width, height, Bitmap.Config.ARGB_8888).applyCanvas {
         setBounds(0, 0, this.width, this.height)
         draw(this)
     }
-}
 
 fun Drawable.asBitmapDrawable(resources: Resources, width: Int = intrinsicWidth, height: Int = intrinsicHeight): BitmapDrawable =
     if (this is BitmapDrawable) this else createBitmap(width, height).toDrawable(resources)

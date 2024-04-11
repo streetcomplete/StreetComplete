@@ -1,7 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [CRDB, NMB, NBC, CRDB Bank, Barclays, Stanbic Bank, FNB, Ecobank, National Microfinance Bank (NMB), Absa, NBC Bank, National Bank of Commerce, Barclays Bank, Exim Bank, Umoja, NMB Bank, Machochwe Ranger Post, NMB wakala, Tpb bank, NMB & CRDB Wakala]
+atmOperators: [CRDB, NMB, NBC, NMB Bank, CRDB Bank, crdb, Stanbic Bank, nmb, National Microfinance Bank (NMB), CRDB ATM, Barclays, NMB wakala, FNB, Ecobank, CRDB BANK, Tpb bank, Private, National Bank of Commerce, NMB & CRDB Wakala, NBC Bank, Machochwe Ranger Post, CRDB bank]
 centerLineStyle: white
-chargingStationOperators: [Jaza Energy]
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: yellow
 hasLivingStreet: true

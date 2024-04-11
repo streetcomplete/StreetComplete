@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Real Estate Bank, البنك التجاري, Commercial Bank of Syria, المصرف العقاري]
+atmOperators: [البنك التجاري, Real Estate Bank]
 firstDayOfWorkweek: Su
 mobileCountryCode: 417
 officialLanguages: [ar]

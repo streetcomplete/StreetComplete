@@ -4,12 +4,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.osm.IS_SHOP_OR_DISUSED_SHOP_EXPRESSION
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -54,8 +53,9 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override val changesetComment = "Survey whether payment with cash is accepted"
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.ic_quest_cash
-    override val isReplaceShopEnabled = true
+    override val isReplacePlaceEnabled = true
     override val enabledInCountries = NoCountriesExcept(
+        "FI", // https://github.com/streetcomplete/StreetComplete/issues/5500
         "GB", // https://github.com/streetcomplete/StreetComplete/issues/4517
         "SE",
         "NL", // https://github.com/streetcomplete/StreetComplete/issues/4826
@@ -66,7 +66,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter(IS_SHOP_OR_DISUSED_SHOP_EXPRESSION)
+        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
     override fun createForm() = YesNoQuestForm()
 

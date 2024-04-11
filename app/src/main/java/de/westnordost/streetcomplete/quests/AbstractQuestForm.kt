@@ -35,7 +35,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 /** abstract base class for the form that is shown to answer a quest. I.e., it is...
  *  - a bottom sheet that can be pulled up to fill the screen (see AbstractBottomSheetFragment)
@@ -48,7 +47,7 @@ abstract class AbstractQuestForm :
 
     // dependencies
     private val countryInfos: CountryInfos by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val questTypeRegistry: QuestTypeRegistry by inject()
 
     private var _binding: FragmentQuestAnswerBinding? = null
@@ -69,7 +68,7 @@ abstract class AbstractQuestForm :
         get() {
             if (field == null) {
                 field = countryInfos.getByLocation(
-                    countryBoundaries.get(),
+                    countryBoundaries.value,
                     geometry.center.longitude,
                     geometry.center.latitude,
                 )
@@ -81,7 +80,7 @@ abstract class AbstractQuestForm :
     /** either DE or US-NY (or null), depending on what countryBoundaries returns */
     protected val countryOrSubdivisionCode: String? get() {
         val latLon = geometry.center
-        return countryBoundaries.get().getIds(latLon.longitude, latLon.latitude).firstOrNull()
+        return countryBoundaries.value.getIds(latLon.longitude, latLon.latitude).firstOrNull()
     }
 
     // passed in parameters

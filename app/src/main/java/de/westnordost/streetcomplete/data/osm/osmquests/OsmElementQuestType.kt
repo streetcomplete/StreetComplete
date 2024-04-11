@@ -54,7 +54,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  elements that are expected to be some kind of shop/amenity should be replaceable this way,
      *  i.e. anything that when it's gone, there is a vacant shop then.
      *  */
-    val isReplaceShopEnabled: Boolean get() = false
+    val isReplacePlaceEnabled: Boolean get() = false
 
     override val title: Int get() = getTitle(emptyMap())
 

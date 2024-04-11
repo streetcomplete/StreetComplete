@@ -5,7 +5,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("plugin.serialization") version "1.9.10"
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 android {
@@ -23,7 +23,7 @@ android {
         }
     }
 
-    compileSdk = 33
+    compileSdk = 34
     testOptions {
         unitTests {
             isReturnDefaultValues = true
@@ -33,9 +33,9 @@ android {
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete.ml"
         minSdk = 21
-        targetSdk = 33
-        versionCode = 5601
-        versionName = "56.0"
+        targetSdk = 34
+        versionCode = 5704
+        versionName = "57.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -121,7 +121,6 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
-    androidTestImplementation("org.assertj:assertj-core:3.23.1")
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
@@ -129,8 +128,8 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.7.1")
@@ -140,19 +139,28 @@ dependencies {
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     // photos
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 
+    // settings
+    implementation("com.russhwolf:multiplatform-settings:1.1.1")
+
     // Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
 
     // Date/time
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime:2.8.1")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    // HTTP Client
+    implementation("io.ktor:ktor-client-core:2.3.8")
+    implementation("io.ktor:ktor-client-cio:2.3.8")
+    testImplementation("io.ktor:ktor-client-mock:2.3.8")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -177,14 +185,14 @@ dependencies {
     implementation("com.google.zxing:core:3.5.2")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-    implementation("com.charleskorn.kaml:kaml:0.55.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+    implementation("com.charleskorn.kaml:kaml:0.57.0")
 
     // map and location
     implementation("org.maplibre.gl:android-sdk:11.0.0-pre4")
 
     // opening hours parser
-    implementation("ch.poole:OpeningHoursParser:0.28.0")
+    implementation("de.westnordost:osm-opening-hours:0.1.0")
 
     // image view that allows zoom and pan
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
@@ -192,7 +200,7 @@ dependencies {
 
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
-    "am", "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
+    "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
     "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
@@ -200,9 +208,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20231218"
+val nsiVersion = "v6.0.20240228"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.5.0"
+val presetsVersion = "v6.6.0"
 
 val poEditorProjectId = "97843"
 
@@ -267,6 +275,12 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     apiToken = properties["POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
+}
+
+tasks.register<UpdateChangelogTask>("updateChangelog") {
+    group = "streetcomplete"
+    sourceFile = "$rootDir/CHANGELOG.md"
+    targetFile = "$projectDir/src/main/res/raw/changelog.html"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {

@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.logs.Log
 
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
@@ -25,9 +26,11 @@ class ElementEditsController(
         type: ElementEditType,
         geometry: ElementGeometry,
         source: String,
-        action: ElementEditAction
+        action: ElementEditAction,
+        isNearUserLocation: Boolean
     ) {
-        add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, action))
+        Log.d(TAG, "Add ${type.name} for ${action.elementKeys.joinToString()}")
+        add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, action, isNearUserLocation))
     }
 
     override fun get(id: Long): ElementEdit? =
@@ -104,19 +107,20 @@ class ElementEditsController(
     /** Undo edit with the given id. If unsynced yet, will delete the edit if it is undoable. If
      *  already synced, will add a revert of that edit as a new edit, if possible */
     fun undo(edit: ElementEdit): Boolean {
-        // already uploaded
         if (edit.isSynced) {
+            // already uploaded
             val action = edit.action
             if (action !is IsActionRevertable) return false
             // first create the revert action, as ElementIdProvider will be deleted when deleting the edit
             val reverted = action.createReverted(getIdProvider(edit.id))
+            Log.d(TAG, "Add revert ${edit.type.name} for ${edit.action.elementKeys.joinToString()}")
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted))
-        }
-        // not uploaded yet
-        else {
+            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted, edit.isNearUserLocation))
+        } else {
+            // not uploaded yet
+            Log.d(TAG, "Undo ${edit.type.name} for ${edit.action.elementKeys.joinToString()}")
             delete(edit)
         }
         return true
@@ -196,5 +200,9 @@ class ElementEditsController(
 
     private fun onDeletedEdits(edits: List<ElementEdit>) {
         listeners.forEach { it.onDeletedEdits(edits) }
+    }
+
+    companion object {
+        private const val TAG = "ElementEditsController"
     }
 }

@@ -282,8 +282,6 @@
     <string name="produce_walnuts">"المكسرات"</string>
     <string name="produce_sisal">"سيزال"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"لا يمكن المسح هنا. حاول تكبير الخريطة أو إمالتها بدرجة أقل."</string>
-    <string name="quest_crossing_type_title">"أي نوع من معابر المشاة هذا؟"</string>
-    <string name="quest_crossing_type_unmarked">"معبر بدون علامات أو إشارات مرورية"</string>
     <string name="action_undo">"تراجع"</string>
     <string name="produce_mangosteen">"جوز جندم/مانغوستين"</string>
     <string name="produce_tomatoes">"طماطم - بندورة"</string>
@@ -445,7 +443,6 @@
     <string name="quest_buildingType_transportation">"مبنى النقل العام"</string>
     <string name="quest_buildingType_university">"مبنى جامعة"</string>
     <string name="quest_buildingType_government">"مبنى حكومي"</string>
-    <string name="quest_buildingType_cars">"للسيارات"</string>
     <string name="quest_buildingType_carport">"مرآب - مظلات سيارات"</string>
     <string name="quest_buildingType_carport_description">"سقف لسيارة"</string>
     <string name="quest_buildingType_garage">"جراج واحد"</string>
@@ -484,7 +481,6 @@
     <string name="quest_segregated_mixed">"يتشارك راكبو الدراجات والمشاة في نفس المساحة"</string>
     <string name="quest_maxheight_title">"ما هو سقف الارتفاع هنا؟"</string>
     <string name="quest_maxheight_answer_noSign">"لا توجد لوحة أو لافتة…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"هل هناك مساحة كافية مريحة حتى لأطول الشاحنات (على الأقل 4.5 متر / 15 قدم) للمرور خلالها ؟"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"هذا الارتفاع يبدو بأنه غير صحيح وغير واقعي. هل أنت متأكد بأنه صحيح ؟"</string>
     <string name="quest_noteDiscussion_comment2">"%2$s, %1$s —"</string>
     <string name="quest_noteDiscussion_closed2">"مغلق من قبل %1$s, %2$,s"</string>
@@ -800,9 +796,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"حدد عدد المسارات المحددة التي يمكن استخدامها من قبل حركة مرور السيارات هنا. لذلك، لا يتم احتساب مسارات الدراجات والمسارات المخصصة لوقوف السيارات.
 إذا كانت أي مسارات محجوزة للحافلات، فيرجى ترك ملاحظة بدلاً من ذلك."</string>
     <string name="quest_surface_value_rock">"صخر"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"يمكن للشاحنات الطويلة أن تمر"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"الشاحنات الطويلة لا يمكنها المرور"</string>
-    <string name="quest_crossing_type_marked">"معبر مشاة بعلامات ولافتات مرورية"</string>
     <string name="quest_parkingType_street_side">"وقوف السيارات قبالة الطريق"</string>
     <string name="quest_parkingType_lane">"موقف سيارات على الطريق"</string>
     <string name="quest_tracktype_grade2a">"صلبة لكنها غير ممهدة/معبدة أو مرصوفة"</string>
@@ -845,7 +838,6 @@
     <string name="team_mode_team_size_hint">"يعمل وضع الفريق لمجموعات من 2 إلى 12 شخصًا."</string>
     <string name="team_mode_active">"وضع الفريق نشط"</string>
     <string name="team_mode_deactivated">"تم إيقاف وضع الفريق"</string>
-    <string name="quest_crossing_type_signals_controlled">"معبر يتحكم به عبر الإشارات المرورية"</string>
     <string name="undo_confirm_title2">"التراجع عن التعديل التالي؟"</string>
     <string name="synced">"متزامن"</string>
     <string name="toast_undo_unavailable">"تمت مزامنة هذا التعديل بالفعل ولا يمكن التراجع عنه"</string>
@@ -1236,7 +1228,6 @@
     <string name="quest_drinking_water_type_spring">"ينبوع"</string>
     <string name="quest_drinking_water_type_disused">"كائن مياه الشرب المهجورة"</string>
     <string name="overlay_addresses">"عناوين"</string>
-    <string name="overlay_shops">"محلات"</string>
     <string name="name_label">"اسم:"</string>
     <string name="unknown_shop_title">"نوع آخر من الأماكن"</string>
     <string name="quest_address_answer_no_address">"لا يوجد عنوان هنا"</string>

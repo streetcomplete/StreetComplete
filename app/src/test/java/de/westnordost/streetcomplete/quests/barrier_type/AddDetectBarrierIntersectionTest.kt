@@ -18,8 +18,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ══╪══
-    */
+        ══╪══
+     */
     @Test fun `simple crossing counts`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -35,8 +35,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ══╪══
-    */
+        ══╪══
+     */
     @Test fun `simple crossing with tags on node is skipped`() {
         val shared = node(2, p(0.0, 0.0), tags = mapOf("anything" to "whatever"))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -52,8 +52,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ═══╡
-    */
+        ═══╡
+     */
     @Test fun `crossing road on end node does not count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -68,8 +68,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ══╧══
-    */
+        ══╧══
+     */
     @Test fun `crossing barrier on end node does not count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -84,8 +84,8 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-      ══╪══ (4 ways)
-    */
+        ══╪══ (4 ways)
+     */
     @Test fun `crossing with ways split at shared node counts`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -103,10 +103,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-       │ ╱
-       │❬
-       │ ╲
-    */
+        │ ╱
+        │❬
+        │ ╲
+     */
     @Test fun `touching but not crossing barrier does not count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -122,10 +122,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-       │ ╱
-       │❬
-       │ ╲
-    */
+        │ ╱
+        │❬
+        │ ╲
+     */
     @Test fun `touching but not crossing road does not count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -141,10 +141,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-       │ ╱
-    ───│❬────
-       │ ╲
-    */
+           │ ╱
+        ───│❬────
+           │ ╲
+     */
     @Test fun `one of several barriers crosses the road counts`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -165,10 +165,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-        ║
-      ══╬══
-      ╱ ║ ╲
-    */
+          ║
+        ══╬══
+        ╱ ║ ╲
+     */
     @Test fun `one barrier crossing any of the roads count`() {
         val shared = node(2, p(0.0, 0.0))
         val mapData = TestMapDataWithGeometry(listOf(
@@ -187,10 +187,10 @@ class AddDetectBarrierIntersectionTest {
     }
 
     /*
-        ║
-      ──╫──
-        ║
-    */
+          ║
+        ──╫──
+          ║
+     */
     @Test fun `skip roads going into tunnel`() {
         // some people map the retaining wall as joining with the road, which is not really incorrect
         val shared = node(2, p(0.0, 0.0))
@@ -203,6 +203,17 @@ class AddDetectBarrierIntersectionTest {
             way(1, nodes = listOf(1, 2), tags = mapOf("highway" to "unclassified", "tunnel" to "yes")),
             way(2, nodes = listOf(3, 2), tags = mapOf("highway" to "unclassified")),
             way(3, nodes = listOf(4, 2, 5), tags = mapOf("barrier" to "retaining_wall")),
+        ))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+    }
+
+    @Test fun `do not ask for road on city wall tagged as one object`() {
+        // see https://github.com/streetcomplete/StreetComplete/issues/5438
+        val mapData = TestMapDataWithGeometry(listOf(
+            node(1, p(0.0, -1.0)),
+            node(2, p(0.0, +1.0)),
+            node(3, p(0.0, +2.0)),
+            way(3, nodes = listOf(1, 2, 3), tags = mapOf("barrier" to "city_wall", "highway" to "service")),
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }

@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Evie Networks, Chargefox]
+atmOperators: [Westpac, Commonwealth Bank, ANZ, NAB, Suncorp, BOQ, Bendigo Bank, rediATM, Heritage Bank, St.George, DC ATM, ATMx, nab, atmx, armaguard, Suncorp Bank, RediATM, National Australia Bank, Bendigo, Armaguard]
+chargingStationOperators: [Yurika, Evie Networks, 'Tesla, Inc.', Chargefox, AmpCharge]
 defaultSpeedLimitHasUrbanOrRural: true

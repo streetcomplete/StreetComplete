@@ -14,10 +14,6 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.BEVERAGE_CARTONS
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PET
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_BOTTLES
-import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
 
 class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
@@ -70,41 +66,26 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         }
 
         // if the user chose deliberately not "all plastic", also tag it explicitly
-        if (materials.any { it in RecyclingMaterial.plastics }) {
-            for (plastic in RecyclingMaterial.plastics) {
+        val selectedPlastics = materials.filter { it in RecyclingMaterial.allPlastics }
+        if (selectedPlastics.isNotEmpty()) {
+            for (plastic in RecyclingMaterial.allPlastics) {
                 tags.remove("recycling:${plastic.value}")
             }
-            when {
-                PLASTIC_PACKAGING in materials -> {
-                    tags["recycling:plastic"] = "no"
-                }
-                BEVERAGE_CARTONS in materials && PLASTIC_BOTTLES in materials -> {
-                    tags["recycling:plastic_packaging"] = "no"
-                    tags["recycling:plastic"] = "no"
-                }
-                BEVERAGE_CARTONS in materials -> {
-                    tags["recycling:plastic_bottles"] = "no"
-                    tags["recycling:plastic_packaging"] = "no"
-                    tags["recycling:plastic"] = "no"
-                }
-                PLASTIC_BOTTLES in materials -> {
-                    tags["recycling:beverage_cartons"] = "no"
-                    tags["recycling:plastic_packaging"] = "no"
-                    tags["recycling:plastic"] = "no"
-                }
-                PET in materials -> {
-                    tags["recycling:plastic_bottles"] = "no"
-                    tags["recycling:beverage_cartons"] = "no"
-                    tags["recycling:plastic_packaging"] = "no"
-                    tags["recycling:plastic"] = "no"
-                }
+
+            val selectedAndIndirectlySelectedPlastics =
+                selectedPlastics + selectedPlastics.flatMapTo(HashSet()) { it.subValues }
+
+            val notSelectedPlastics =
+                RecyclingMaterial.allPlastics - selectedAndIndirectlySelectedPlastics.toSet()
+
+            for (notSelectedPlastic in notSelectedPlastics) {
+                tags["recycling:${notSelectedPlastic.value}"] = "no"
             }
         }
 
         // set selected recycling:* taggings to "yes"
-        val selectedMaterials = materials.map { "recycling:${it.value}" }
-        for (material in selectedMaterials) {
-            tags[material] = "yes"
+        for (material in materials) {
+            tags["recycling:${material.value}"] = "yes"
         }
 
         // only set the check date if nothing was changed
@@ -128,7 +109,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 private val recyclingOlderThan2Years =
     TagOlderThan("recycling", RelativeDate(-(365 * 2).toFloat()))
 
-private val allKnownMaterials = RecyclingMaterial.values().map { "recycling:" + it.value }
+private val allKnownMaterials = RecyclingMaterial.entries.map { "recycling:" + it.value }
 
 private fun Element.hasAnyRecyclingMaterials(): Boolean =
     tags.any { it.key.startsWith("recycling:") && it.value == "yes" }

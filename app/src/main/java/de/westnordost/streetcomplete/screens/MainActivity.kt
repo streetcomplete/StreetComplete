@@ -23,12 +23,12 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.ConnectionException
-import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.DownloadProgressListener
+import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
@@ -37,8 +37,7 @@ import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
-import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.upload.UploadProgressListener
+import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.AuthorizationException
@@ -46,8 +45,6 @@ import de.westnordost.streetcomplete.data.user.UserLoginStatusController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
-import de.westnordost.streetcomplete.screens.main.controls.MessagesButtonFragment
-import de.westnordost.streetcomplete.screens.main.controls.OverlaysButtonFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
@@ -57,7 +54,6 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -66,14 +62,12 @@ class MainActivity :
     BaseActivity(),
     MainFragment.Listener,
     TutorialFragment.Listener,
-    OverlaysButtonFragment.Listener,
-    OverlaysTutorialFragment.Listener,
-    MessagesButtonFragment.Listener {
+    OverlaysTutorialFragment.Listener {
 
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val questAutoSyncer: QuestAutoSyncer by inject()
-    private val downloadController: DownloadController by inject()
-    private val uploadController: UploadController by inject()
+    private val downloadProgressSource: DownloadProgressSource by inject()
+    private val uploadProgressSource: UploadProgressSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val userUpdater: UserUpdater by inject()
     private val elementEditsSource: ElementEditsSource by inject()
@@ -82,7 +76,7 @@ class MainActivity :
     private val userLoginStatusController: UserLoginStatusController by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     private var mainFragment: MainFragment? = null
 
@@ -184,21 +178,13 @@ class MainActivity :
     public override fun onStart() {
         super.onStart()
 
-        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        }
+        updateScreenOn()
 
-        uploadController.addUploadProgressListener(uploadProgressListener)
-        downloadController.addDownloadProgressListener(downloadProgressListener)
+        uploadProgressSource.addListener(uploadProgressListener)
+        downloadProgressSource.addListener(downloadProgressListener)
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(isLocationAvailable)
-    }
-
-    public override fun onResume() {
-        super.onResume()
-        downloadController.showNotification = false
-        uploadController.showNotification = false
     }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
@@ -212,16 +198,10 @@ class MainActivity :
         return super.dispatchKeyEvent(event)
     }
 
-    public override fun onPause() {
-        super.onPause()
-        downloadController.showNotification = true
-        uploadController.showNotification = true
-    }
-
     public override fun onStop() {
         super.onStop()
-        uploadController.removeUploadProgressListener(uploadProgressListener)
-        downloadController.removeDownloadProgressListener(downloadProgressListener)
+        uploadProgressSource.removeListener(uploadProgressListener)
+        downloadProgressSource.removeListener(downloadProgressListener)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
     }
 
@@ -254,9 +234,19 @@ class MainActivity :
     private val isConnected: Boolean
         get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
 
+    /* ------------------------------------- Preferences ---------------------------------------- */
+
+    private fun updateScreenOn() {
+        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        } else {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+    }
+
     /* ------------------------------ Upload progress listener ---------------------------------- */
 
-    private val uploadProgressListener: UploadProgressListener = object : UploadProgressListener {
+    private val uploadProgressListener = object : UploadProgressSource.Listener {
         @AnyThread
         override fun onError(e: Exception) {
             runOnUiThread {
@@ -296,8 +286,7 @@ class MainActivity :
 
     /* ----------------------------- Download Progress listener  -------------------------------- */
 
-    private val downloadProgressListener: DownloadProgressListener = object :
-        DownloadProgressListener {
+    private val downloadProgressListener = object : DownloadProgressSource.Listener {
         @AnyThread
         override fun onError(e: Exception) {
             runOnUiThread {

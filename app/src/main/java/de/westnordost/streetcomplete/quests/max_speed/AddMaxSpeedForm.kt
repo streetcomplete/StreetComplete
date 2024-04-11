@@ -314,7 +314,11 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     }
 
     companion object {
-        private val POSSIBLY_SLOWZONE_ROADS = listOf("residential", "unclassified", "tertiary" /*#1133*/)
+        private val POSSIBLY_SLOWZONE_ROADS = listOf(
+            "residential",
+            "unclassified",
+            "tertiary", // #1133
+        )
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
         private val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("motorway", "living_street")
 

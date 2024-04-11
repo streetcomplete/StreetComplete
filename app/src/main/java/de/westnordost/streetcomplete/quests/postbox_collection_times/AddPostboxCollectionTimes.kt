@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
+import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -11,7 +12,6 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedCollectionTimes
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
@@ -56,8 +56,9 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         /* treat invalid collection times like it is not set at all. Any opening hours are
            legal tagging for collection times, even though they are not supported in
            this app, i.e. are never asked again */
-        val hasValidCollectionTimes = tags["collection_times"]?.toOpeningHoursRules() != null
-        return if (hasValidCollectionTimes) {
+        val oh = tags["collection_times"]?.toOpeningHoursOrNull(lenient = true)
+        val hasSupportedCollectionTimes = oh != null && oh.isSupportedCollectionTimes()
+        return if (hasSupportedCollectionTimes) {
             R.string.quest_postboxCollectionTimes_resurvey_title
         } else {
             R.string.quest_postboxCollectionTimes_title
@@ -73,9 +74,11 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         // no collection_times yet -> new survey
         val ct = tags["collection_times"] ?: return true
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
-        val rules = ct.toOpeningHoursRules() ?: return true
-        // only display supported rules
-        return rules.isSupportedCollectionTimes()
+        // be strict
+        val oh = ct.toOpeningHoursOrNull(lenient = false) ?: return true
+        // only display supported rules, however, those that are supported but have colliding
+        // weekdays should be shown (->resurveyed), as they are likely mistakes
+        return oh.rules.all { rule -> rule.isSupportedCollectionTimes() } && oh.containsTimePoints()
     }
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

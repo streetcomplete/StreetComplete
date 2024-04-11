@@ -279,8 +279,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível descarregar dados aqui. Tente ampliar a visualização com o botão + ou incline menos o mapa."</string>
-    <string name="quest_crossing_type_title">"Que tipo de passadeira é esta?"</string>
-    <string name="quest_crossing_type_unmarked">"Sem marcas"</string>
     <string name="action_undo">"Desfazer"</string>
     <string name="produce_mangosteen">"Mangostim"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -442,7 +440,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_buildingType_transportation">"Edifício de um serviço de transporte público"</string>
     <string name="quest_buildingType_university">"Edifício de uma universidade"</string>
     <string name="quest_buildingType_government">"Edifício do governo nacional ou local"</string>
-    <string name="quest_buildingType_cars">"Para carros"</string>
     <string name="quest_buildingType_carport">"Abrigo para carros"</string>
     <string name="quest_buildingType_carport_description">"pequena estrutura com telhado ou cobertura mas sem paredes para abrigar carros"</string>
     <string name="quest_buildingType_garage">"Uma garagem"</string>
@@ -481,7 +478,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_segregated_mixed">"Os ciclistas e peões partilham a mesma pista"</string>
     <string name="quest_maxheight_title">"Qual é o limite de altura aqui?"</string>
     <string name="quest_maxheight_answer_noSign">"Não existe sinal…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Existe altura suficiente para que os camiões mais altos (com pelo menos 4,5 metros / 15 pés) possam passar?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Esta altura não é plausível. Tem a certeza que está correta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Fechada por %1$s, %2$s"</string>
@@ -797,9 +793,6 @@ conquista"</string>
     <string name="quest_lanes_answer_lanes_description2">"Indique o número total de vias de trânsito marcadas (incluindo ambas as direções) que podem ser utilizadas pelo tráfego de veículos. Excluir desse no total: ciclovias, vias exclusivas para estacionamento, bermas e vias só para autocarros (BUS). Se for o caso, deixe uma nota a descrever o lado e o número de vias para autocarros."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Indique o número total de vias de trânsito marcadas que podem ser utilizadas pelo tráfego de veículos. Excluir desse no total: ciclovias, vias exclusivas para estacionamento, bermas e vias só para autocarros (BUS). Se for o caso, deixe uma nota a descrever o lado e o número de vias para autocarros."</string>
     <string name="quest_surface_value_rock">"Pedras toscas amontoadas (trilhos montanhosos)"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Camiões altos podem passar"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Camiões altos não cabem"</string>
-    <string name="quest_crossing_type_marked">"Com marcas"</string>
     <string name="quest_parkingType_street_side">"Estacionamento ao lado, fora da estrada"</string>
     <string name="quest_parkingType_lane">"Estacionamento dentro da estrada"</string>
     <string name="quest_tracktype_grade2a">"Terra compacta"</string>
@@ -844,7 +837,6 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="team_mode_team_size_hint">"O modo de equipa funciona para grupos de 2 a 12 pessoas."</string>
     <string name="team_mode_active">"O modo de equipa está ativo"</string>
     <string name="team_mode_deactivated">"Modo de equipa desativado"</string>
-    <string name="quest_crossing_type_signals_controlled">"Controlada por semáforos"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>
@@ -1231,7 +1223,6 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="quest_drinking_water_type_spring">"Nascente"</string>
     <string name="quest_drinking_water_type_disused">"Ponto de água potável avariado"</string>
     <string name="overlay_addresses">"Endereços"</string>
-    <string name="overlay_shops">"Lojas"</string>
     <string name="name_label">"Nome:"</string>
     <string name="unknown_shop_title">"Outro tipo de local"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
@@ -1368,4 +1359,27 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="label_log_older_than">"Até"</string>
     <string name="label_log_message_contains">"A mensagem contém"</string>
     <string name="title_logs_filters">"Filtrar mensagens"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Número de missões ocultadas: %d"</string>
+    <string name="link_every_door_description">"Editor de POI poderoso para Android e iOS"</string>
+    <string name="link_mapcomplete_description">"Coleção de mapas OSM temáticos que mostram e permitem editar um tipo de caraterística"</string>
+    <string name="link_forum_description">"Precisa de ajuda? Quer saber o que se está a passar? Venha e misture-se, está repleto de atividade de comunidades de todo o mundo!"</string>
+    <string name="link_calendar_description">"Há eventos OpenStreetMap ou reuniões comunitárias perto de si? (Se não, pode acrescentar os seus!)"</string>
+    <string name="link_prettymapp_description">"Criar bonitos cartazes multicoloridos com mapas dos bairros"</string>
+    <string name="quest_disable_action">"Desativar"</string>
+    <string name="quest_disable_title">"Desativar este tipo de missão?"</string>
+    <string name="quest_disable_message_not_installed">"O StreetMeasure não está instalado (ainda)."</string>
+    <string name="quest_disable_message_not_working">"O StreetMeasure não devolveu uma medição."</string>
+    <string name="quest_disable_message_tape_measure">"Em vez disso, pode utilizar uma fita métrica, mas isso pode ser um pouco estranho."</string>
+    <string name="quest_buildingType_outbuilding">"Anexo"</string>
+    <string name="quest_buildingType_outbuilding_description">"edifício menos importante de uma propriedade"</string>
+    <string name="quest_buildingType_other_description">"um edifício específico que não pode ser selecionado nesta aplicação"</string>
+    <string name="quest_buildingType_container">"Contentor"</string>
+    <string name="quest_buildingType_tent">"Tenda"</string>
+    <string name="quest_buildingType_tomb">"Túmulo"</string>
+    <string name="quest_buildingType_tower">"Torre"</string>
+    <string name="quest_buildingType_tower_description">"qualquer tipo de torre"</string>
+    <string name="quest_buildingType_under_construction">"Em construção"</string>
+    <string name="overlay_buildings">"Edifícios"</string>
+    <string name="quest_pedestrian_crossing_signals">"É preciso esperar pelo sinal do semáforo para atravessar a estrada aqui?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Este atravessamento de peões tem marcas na estrada?"</string>
 </resources>

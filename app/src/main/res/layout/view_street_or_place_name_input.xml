@@ -62,7 +62,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_town_silhouette"
+            app:srcCompat="@drawable/ic_town_silhouette"
             app:tint="#e0e0e0"
             android:layout_marginTop="-24dp"
             android:layout_marginBottom="-20dp"

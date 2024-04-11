@@ -1,6 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Bank of Georgia, TBC Bank, Liberty Bank, ProCredit Bank, Bank Republic, Tao Private Bank, საქართველოს ბანკი, Cartu Bank, Cryptomat, TBC Bank ATM, VTB Bank, TBC, TBC Bank - თიბისი ბანკი, International Bank of Azerbaijan - Georgia, VTB]
+atmOperators: [საქართველოს ბანკი, თიბისი ბანკი, ლიბერთი ბანკი, ბაზისბანკი, კრედო ბანკი, BitXChange, ტერაბანკი, პროკრედიტ ბანკი, ბანკი ქართუ, Cryptomat, Bank Republic, ხალიკ ბანკი საქართველო, Tao Private Bank, პაშა ბანკი საქართველო, ზირაათ ბანკი]
+chargingStationOperators: [E-Space]
+clothesContainerOperators: [Emmaus Geo, Caritas Georgia]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

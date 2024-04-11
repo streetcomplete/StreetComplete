@@ -1,6 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
-atmOperators: [ICBC, China Construction Bank, 中国银行, 中国建设银行, Bank of China, 中国工商银行, HSBC, 交通银行, 中国农业银行, ABC, 招商银行, 北京银行, Agricultural Bank of China, SPD Bank, 工商银行ATM, 上海浦东发展银行, Standard Chartered Bank, 中信银行, China Merchants Bank, 中国光大银行, 建设银行, 中国邮政储蓄银行, ICBC ATM, 工商银行, Standard Chartered, Hang Seng Bank, 建设银行ATM, 昌邑农村商业银行, 浦发银行, 中國銀行（香港）Bank of China (Hong Kong), 中国民生银行, 华夏银行, 江苏银行, 农业银行, 平安银行, Bank of Communications, 中国工商银行ICBC ATM, 交通银行BCM ATM, Postal Savings Bank of China, CGB, BOC, 恒生銀行 Heng Seng Bank, 农业银行ATM, 富顺农商银行ATM, CMB, Citibank, Bank of Shanghai, 滙豐 HSBC, Bank of Jiangsu, China Everbright Bank, Construction Bank of China, Yunnan Rural Credit Cooperatives, 上海银行, Bank of Beijing, BEA, Agricultural Bank of China  (ABC), 滙豐銀行 HSBC, CRS, Heng Seng Bank, Bank of China (Hong Kong), 中國銀行澳門分行 BOC Macau, 桂林银行, ABC Bank, 兴业银行, BNB, Cixi Rural Commercial Bank, 邮政储蓄银ATM]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true

@@ -292,7 +292,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     //region Tracking GPS, Rotation, location availability, pin mode, click ...
 
     private fun onClickMap(position: LatLng): Boolean {
-        val fingerRadius = context?.dpToPx(CLICK_AREA_SIZE_IN_DP / 2)?.toInt() ?: return false
+        val fingerRadius = context?.resources?.dpToPx(CLICK_AREA_SIZE_IN_DP / 2)?.toInt() ?: return false
         val clickPos = map?.projection?.toScreenLocation(position) ?: return false
         val searchArea = RectF(
             clickPos.x - fingerRadius,

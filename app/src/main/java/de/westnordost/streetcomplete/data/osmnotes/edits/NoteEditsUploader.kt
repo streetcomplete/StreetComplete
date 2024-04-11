@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.util.ktx.truncate
 import de.westnordost.streetcomplete.util.logs.Log
+import io.ktor.http.encodeURLPathPart
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,6 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import java.net.URLEncoder
 
 class NoteEditsUploader(
     private val noteEditsController: NoteEditsController,
@@ -50,7 +50,7 @@ class NoteEditsUploader(
     private suspend fun uploadMissedImageActivations() {
         while (true) {
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
-            /* see uploadEdits */
+            // see uploadEdits
             withContext(scope.coroutineContext) {
                 imageUploader.activate(edit.noteId)
                 noteEditsController.markImagesActivated(edit.id)
@@ -68,7 +68,7 @@ class NoteEditsUploader(
         }
     }
 
-    private fun uploadEdit(edit: NoteEdit) {
+    private suspend fun uploadEdit(edit: NoteEdit) {
         // try to upload the image and track if we have them
         val imageText = uploadAndGetAttachedPhotosText(edit.imagePaths)
         val trackText = uploadAndGetAttachedTrackText(edit.track, edit.text)
@@ -116,7 +116,7 @@ class NoteEditsUploader(
         }
     }
 
-    private fun uploadAndGetAttachedPhotosText(imagePaths: List<String>): String {
+    private suspend fun uploadAndGetAttachedPhotosText(imagePaths: List<String>): String {
         if (imagePaths.isNotEmpty()) {
             val urls = imageUploader.upload(imagePaths)
             if (urls.isNotEmpty()) {
@@ -132,7 +132,7 @@ class NoteEditsUploader(
     ): String {
         if (trackpoints.isEmpty()) return ""
         val trackId = tracksApi.create(trackpoints, noteText?.truncate(255))
-        val encodedUsername = URLEncoder.encode(userDataSource.userName, "utf-8").replace("+", "%20")
+        val encodedUsername = userDataSource.userName!!.encodeURLPathPart()
         return "\n\nGPS Trace: https://www.openstreetmap.org/user/$encodedUsername/traces/$trackId\n"
     }
 

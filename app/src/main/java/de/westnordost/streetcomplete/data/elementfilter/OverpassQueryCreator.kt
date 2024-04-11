@@ -50,14 +50,13 @@ class OverpassQueryCreator(
         } }
     }
 
-    private fun BooleanExpression<ElementFilter, Element>.toOverpassString(elementType: String, resultSetId: Int?): String {
-        return when (this) {
+    private fun BooleanExpression<ElementFilter, Element>.toOverpassString(elementType: String, resultSetId: Int?): String =
+        when (this) {
             is Leaf -> AllTagFilters(value).toOverpassString(elementType, null, resultSetId)
             is AnyOf -> toOverpassString(elementType, null, resultSetId)
             is AllOf -> toOverpassString(elementType, null, resultSetId)
             else -> throw IllegalStateException("Unexpected expression")
         }
-    }
 
     private fun AllOf<ElementFilter, Element>.childrenWithLeavesMerged(): List<BooleanExpression<ElementFilter, Element>> {
         val consecutiveLeaves = mutableListOf<ElementFilter>()
@@ -142,9 +141,8 @@ class OverpassQueryCreator(
         return ".$prefix$id"
     }
 
-    private fun BooleanExpression<ElementFilter, Element>.assignResultSetId(): Int {
-        return dataSets.getOrPut(this) { setIdCounter++ }
-    }
+    private fun BooleanExpression<ElementFilter, Element>.assignResultSetId(): Int =
+        dataSets.getOrPut(this) { setIdCounter++ }
 
     private class AllTagFilters(val values: List<ElementFilter>) : BooleanExpression<ElementFilter, Element>() {
         constructor(value: ElementFilter) : this(listOf(value))

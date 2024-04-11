@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -10,10 +11,8 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.logs.Log
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import java.util.concurrent.FutureTask
 
 /** Manages edit statistics - by element edit type and by country */
 class StatisticsController(
@@ -22,8 +21,8 @@ class StatisticsController(
     private val currentWeekEditTypeStatisticsDao: EditTypeStatisticsDao,
     private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
     private val activeDatesDao: ActiveDatesDao,
-    private val countryBoundaries: FutureTask<CountryBoundaries>,
-    private val prefs: Preferences,
+    private val countryBoundaries: Lazy<CountryBoundaries>,
+    private val prefs: ObservableSettings,
     userLoginStatusSource: UserLoginStatusSource
 ) : StatisticsSource {
 
@@ -179,15 +178,15 @@ class StatisticsController(
         val today = systemTimeNow().toLocalDate()
         val lastUpdateDate = Instant.fromEpochMilliseconds(lastUpdate).toLocalDate()
         lastUpdate = nowAsEpochMilliseconds()
+        activeDatesDao.addToday()
         if (today > lastUpdateDate) {
             daysActive++
             listeners.forEach { it.onUpdatedDaysActive() }
         }
-        activeDatesDao.addToday()
     }
 
     private fun getRealCountryCode(position: LatLon): String? =
-        countryBoundaries.get().getIds(position).firstOrNull {
+        countryBoundaries.value.getIds(position).firstOrNull {
             // skip country subdivisions (e.g. US-TX)
             !it.contains('-')
         }

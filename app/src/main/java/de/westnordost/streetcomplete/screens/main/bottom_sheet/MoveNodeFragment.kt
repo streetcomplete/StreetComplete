@@ -11,6 +11,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.AllEditTypes
+import de.westnordost.streetcomplete.data.location.RecentLocationStore
+import de.westnordost.streetcomplete.data.location.checkIsSurvey
+import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -22,9 +26,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentMoveNodeBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
@@ -40,12 +41,10 @@ import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.concurrent.FutureTask
 
 /** Fragment that lets the user move an OSM node */
 class MoveNodeFragment :
@@ -54,10 +53,10 @@ class MoveNodeFragment :
     private val binding by viewBinding(FragmentMoveNodeBinding::bind)
 
     private val elementEditsController: ElementEditsController by inject()
-    private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val overlayRegistry: OverlayRegistry by inject()
-    private val countryBoundaries: FutureTask<CountryBoundaries> by inject(named("CountryBoundariesFuture"))
+    private val allEditTypes: AllEditTypes by inject()
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val countryInfos: CountryInfos by inject()
+    private val recentLocationStore: RecentLocationStore by inject()
 
     override val elementKey: ElementKey by lazy { node.key }
 
@@ -81,11 +80,10 @@ class MoveNodeFragment :
         super.onCreate(savedInstanceState)
         val args = requireArguments()
         node = Json.decodeFromString(args.getString(ARG_NODE)!!)
-        editType = questTypeRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!) as? OsmElementQuestType<*>
-            ?: overlayRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!)!!
+        editType = allEditTypes.getByName(args.getString(ARG_QUEST_TYPE)!!) as ElementEditType
 
         val isFeetAndInch = countryInfos.getByLocation(
-            countryBoundaries.get(),
+            countryBoundaries.value,
             node.position.longitude,
             node.position.latitude
         ).lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH
@@ -125,17 +123,23 @@ class MoveNodeFragment :
         return screenPos.toPointF()
     }
 
-    private fun getMarkerPosition(): LatLon? {
-        return listener?.getMapPositionAt(getMarkerScreenPosition())
-    }
+    private fun getMarkerPosition(): LatLon? =
+        listener?.getMapPositionAt(getMarkerScreenPosition())
 
     private fun onClickOk() {
-        val pos = getMarkerPosition() ?: return
-        if (!checkIsDistanceOkAndUpdateText(pos)) return
+        val position = getMarkerPosition() ?: return
+        if (!checkIsDistanceOkAndUpdateText(position)) return
         viewLifecycleScope.launch {
-            val action = MoveNodeAction(node, pos)
-            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey", action)
-            listener?.onMovedNode(editType, pos)
+            moveNodeTo(position)
+        }
+    }
+
+    private suspend fun moveNodeTo(position: LatLon) {
+        val isSurvey = checkIsSurvey(ElementPointGeometry(position), recentLocationStore.get())
+        if (isSurvey || confirmIsSurvey(requireContext())) {
+            val action = MoveNodeAction(node, position)
+            elementEditsController.add(editType, ElementPointGeometry(node.position), "survey", action, isSurvey)
+            listener?.onMovedNode(editType, position)
         }
     }
 

@@ -280,8 +280,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="produce_walnuts">"Valnødder"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikke søge her. Prøv at zoome længere ind eller vip kortet mindre."</string>
-    <string name="quest_crossing_type_title">"Hvilken type overgang er dette?"</string>
-    <string name="quest_crossing_type_unmarked">"Uden markering på vejen"</string>
     <string name="action_undo">"Fortryd"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomater"</string>
@@ -444,7 +442,6 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_buildingType_transportation">"Offentlig transport"</string>
     <string name="quest_buildingType_university">"Universitetsbygning"</string>
     <string name="quest_buildingType_government">"Regeringsbygning"</string>
-    <string name="quest_buildingType_cars">"Til biler"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"tag til en bil"</string>
     <string name="quest_buildingType_garage">"Enkelt-garage"</string>
@@ -483,7 +480,6 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_segregated_mixed">"Cyklister og fodgængere deler det samme vejsegment"</string>
     <string name="quest_maxheight_title">"Hvad er den maksimale højde her?"</string>
     <string name="quest_maxheight_answer_noSign">"Der er intet skilt…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Er der rigelig plads til, at selv de højeste lastbiler (mindst ca. 4,5 meter høje) kan passere?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Denne højde virker usandsynlig. Er du sikker på, at den er korrekt?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Lukket af %1$s, %2$s"</string>
@@ -759,10 +755,10 @@ aktiv"</string>
     <string name="link_indoorequal_description">"Indendørs kort over indkøbscentre, jernbanestationer osv."</string>
     <string name="achievement_rare_title">"Skattejagt"</string>
     <string name="achievement_rare_solved_X">"Du har fundet og fuldført %d opgaver der meget sjældent bliver løst. Tillykke!"</string>
-    <string name="achievement_citizen_title">"Borger"</string>
+    <string name="achievement_citizen_title">"Samfundsborger"</string>
     <string name="achievement_citizen_solved_X">"Du har løst %d opgaver, der er nyttige for hverdagslivet i byen!"</string>
     <string name="achievement_outdoors_title">"Friluftsliv"</string>
-    <string name="achievement_outdoors_solved_X">"Du løste %d opgaver, der er nyttige for friluftsmennesker!"</string>
+    <string name="achievement_outdoors_solved_X">"Du løste %d opgaver, der er nyttige for friluftsfolket!"</string>
     <string name="quest_pedestrian_crossing_island">"Har dette fodgængerfelt en midterhelle?"</string>
     <string name="quest_generic_answer_noSign">"Der er ikke noget skilt"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Er kørestolrampen vist som en særskilt vej på kortet?"</string>
@@ -796,9 +792,6 @@ aktiv"</string>
     <string name="quest_lanes_answer_lanes_description2">"Angiv antallet af markerede vejbaner (begge retninger) for biltrafik her. Cykelbaner, dedikerede parkeringsbaner skal ikke tælles med. Hvis der er afsat busbaner, så efterlad en note i stedet."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Angiv antallet af markerede vejbaner for biltrafik her. Cykelbaner, markerede parkeringsbaner skal ikke tælles med. Hvis der er afsat busbaner, så efterlad en note i stedet."</string>
     <string name="quest_surface_value_rock">"Sten"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Høje lastbiler kan passere"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Høje lastbiler kan ikke passere"</string>
-    <string name="quest_crossing_type_marked">"Markeret fodgængerfelt"</string>
     <string name="quest_parkingType_street_side">"Parkering lige ved siden ad vejen"</string>
     <string name="quest_parkingType_lane">"Parkering på vejen"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikke asfalteret"</string>
@@ -843,7 +836,6 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, f.eks. ensrettet vej 
     <string name="team_mode_team_size_hint">"Holdtilstand virker for grupper fra 2 til 12 personer."</string>
     <string name="team_mode_active">"Holdtilstand er aktiv"</string>
     <string name="team_mode_deactivated">"Holdtilstand er deaktiveret"</string>
-    <string name="quest_crossing_type_signals_controlled">"Styret af trafiklys"</string>
     <string name="undo_confirm_title2">"Fortryd denne redigering?"</string>
     <string name="synced">"Synkroniseret"</string>
     <string name="toast_undo_unavailable">"Denne redigering er allerede synkroniseret og kan ikke fortrydes"</string>
@@ -1109,7 +1101,7 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="quest_dietType_kosher_name_title2">"Tilbydes der kosherprodukter her?"</string>
     <string name="quest_dietType_vegan_title2">"Er der veganske ting på menuen her?"</string>
     <string name="quest_dietType_vegetarian_title2">"Er der vegetariske ting på menuen her?"</string>
-    <string name="quest_drinking_water_title2">"Er vandet her drikkeligt?"</string>
+    <string name="quest_drinking_water_title2">"Kan vandet her drikkes?"</string>
     <string name="quest_existence_title2">"Er dette stadig her?"</string>
     <string name="quest_generalFee_title2">"Skal man betale for at komme ind her?"</string>
     <string name="quest_internet_access_title">"Hvilken slags internetforbindelse tilbydes der på dette sted?"</string>
@@ -1229,7 +1221,6 @@ På grund af en politik i Google Play Store må der desværre ikke vises links, 
     <string name="quest_drinking_water_type_spring">"Kilde"</string>
     <string name="quest_drinking_water_type_disused">"Nedlagt drikkevandsobjekt"</string>
     <string name="overlay_addresses">"Adresser"</string>
-    <string name="overlay_shops">"Butikker"</string>
     <string name="name_label">"Navn:"</string>
     <string name="unknown_shop_title">"Ukendt type sted"</string>
     <string name="quest_address_answer_no_address">"Ingen adresse her"</string>
@@ -1367,4 +1358,31 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="label_log_older_than">"Til"</string>
     <string name="label_log_message_contains">"Besked indeholder"</string>
     <string name="title_logs_filters">"Filtrér beskeder"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Antal skjulte opgaver: %d"</string>
+    <string name="link_every_door_description">"Effektiv interessepunkt-editor til Android og iOS"</string>
+    <string name="link_mapcomplete_description">"Samling af tematiske OSM-kort, der hver især viser og lader dig redigere en bestemt type element"</string>
+    <string name="link_forum_description">"Har du brug for hjælp? Vil du læse om, hvad der rører sig? Kig forbi og vær med. Det er masser af aktiviteter i fællesskaber over hele verden!"</string>
+    <string name="link_calendar_description">"Er der OpenStreetMap-events eller -møder i nærheden af dig? (Hvis ikke, kan du tilføje dine egne!)"</string>
+    <string name="link_prettymapp_description">"Lav flotte flerfarvede kortplakater over kvarterer"</string>
+    <string name="quest_disable_action">"Deaktivér"</string>
+    <string name="quest_disable_title">"Deaktiver denne opgavetype?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure er ikke installeret (endnu)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure returnerede ikke en måling."</string>
+    <string name="quest_disable_message_tape_measure">"Du kan bruge et målebånd i stedet, men det er trods alt nok lidt besværligt."</string>
+    <string name="quest_buildingType_outbuilding">"Udhus"</string>
+    <string name="quest_buildingType_outbuilding_description">"mindre vigtig bygning på en ejendom"</string>
+    <string name="quest_buildingType_other_description">"en bestemt bygning, som ikke kan vælges i denne app"</string>
+    <string name="quest_buildingType_container">"Container"</string>
+    <string name="quest_buildingType_tent">"Telt"</string>
+    <string name="quest_buildingType_tomb">"Gravkammer"</string>
+    <string name="quest_buildingType_tower">"Tårn"</string>
+    <string name="quest_buildingType_tower_description">"enhver form for tårn"</string>
+    <string name="quest_buildingType_under_construction">"Under opførelse"</string>
+    <string name="overlay_buildings">"Bygninger"</string>
+    <string name="quest_pedestrian_crossing_signals">"Skal man vente på et trafiksignal for at krydse her?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Er der markeringer på jorden ved denne overgang?"</string>
+    <string name="overlay_places">"Steder"</string>
+    <string name="overlay_things">"Ting"</string>
+    <string name="disused">"ubrugt"</string>
+    <string name="unknown_object">"Ukendt objekt"</string>
 </resources>

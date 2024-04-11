@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.TextItem
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.CHARCOAL
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.ELECTRIC
+import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.GAS
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.WOOD
 
 class AddBbqFuelForm : AListQuestForm<BbqFuelAnswer>() {
@@ -14,6 +15,7 @@ class AddBbqFuelForm : AListQuestForm<BbqFuelAnswer>() {
         TextItem(WOOD, R.string.quest_bbq_fuel_wood),
         TextItem(ELECTRIC, R.string.quest_bbq_fuel_electric),
         TextItem(CHARCOAL, R.string.quest_bbq_fuel_charcoal),
+        TextItem(GAS, R.string.quest_bbq_fuel_gas),
     )
 
     override val otherAnswers = listOf(

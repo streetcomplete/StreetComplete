@@ -279,8 +279,6 @@ V nasprotnem primeru lahko prenesete drugačno tipkovnico iz trgovine za aplikac
     <string name="produce_walnuts">"Orehe"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Ni mogoče "</string>
-    <string name="quest_crossing_type_title">"Kakšne vrste prehod je to?"</string>
-    <string name="quest_crossing_type_unmarked">"Brez oznak na cestišču"</string>
     <string name="action_undo">"Razveljavi"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Paradižnike"</string>
@@ -442,7 +440,6 @@ Na primer 1,3 ali 2–6."</string>
     <string name="quest_buildingType_transportation">"Za javni prevoz"</string>
     <string name="quest_buildingType_university">"Univerza"</string>
     <string name="quest_buildingType_government">"Javna uprava"</string>
-    <string name="quest_buildingType_cars">"Za avtomobile"</string>
     <string name="quest_buildingType_carport">"Avtomobilski nadstrešek"</string>
     <string name="quest_buildingType_carport_description">"Streha za avtomobile"</string>
     <string name="quest_buildingType_garage">"Enojna garaža"</string>
@@ -481,7 +478,6 @@ Na primer 1,3 ali 2–6."</string>
     <string name="quest_segregated_mixed">"Kolesarji in pešci si delijo isti prostor"</string>
     <string name="quest_maxheight_title">"Kakšna je tu omejitev višine?"</string>
     <string name="quest_maxheight_answer_noSign">"Ni prometnega znaka …"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Ali je dovolj prostora, da gredo spodaj tudi najvišji tovornjaki (vsaj 4,5 metra / 15 čevljev)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Ta omejitev višine je neverjetna. Ali ste prepričani, da je pravilna?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Zaprl-a %1$s, %2$s"</string>
@@ -697,8 +693,8 @@ Mesto"</string>
 %s"</string>
     <string name="user_profile_days_active">"Aktivni
 dnevi"</string>
-    <string name="user_profile_achievement_levels">"Dosežki
-nivoji"</string>
+    <string name="user_profile_achievement_levels">"Doseženi
+novoji"</string>
     <string name="quest_address_street_no_named_streets">"Ne pripada poimenovani ulici"</string>
     <string name="quest_address_street_place_name_label">"Ime kraja:"</string>
     <string name="quest_recycling_type_cooking_oil">"Kuhalno olje"</string>
@@ -799,9 +795,6 @@ nivoji"</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Določi število vseh označenih pasov v obe smeri na tej cesti. Kolesarske proge in parkirišča ne štejejo.
 Če je kateriloli pas rezerviran za avtobuse, namesto tega prosim pusti opombo.označenih"</string>
     <string name="quest_surface_value_rock">"Kamen"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Visoki tovornjaki se lahko peljejo skozi"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Visoki tovornjaki se ne morejo peljati skozi"</string>
-    <string name="quest_crossing_type_marked">"Označen"</string>
     <string name="quest_parkingType_street_side">"Rarkirišče zraven ceste"</string>
     <string name="quest_parkingType_lane">"Parkirišče na cesti"</string>
     <string name="quest_tracktype_grade2a">"Trdna zemlja"</string>
@@ -846,7 +839,6 @@ Pazi na vse razpoložljive možnosti: nekateri primeri niso očitni, kot na prim
     <string name="team_mode_team_size_hint">"Ekipni način deluje za skupine dveh do 12 ljudi."</string>
     <string name="team_mode_active">"Ekipni način je vklopljen"</string>
     <string name="team_mode_deactivated">"Ekipni način je izklopljen"</string>
-    <string name="quest_crossing_type_signals_controlled">"Prehod s semaforjem"</string>
     <string name="undo_confirm_title2">"Razveljavi to spremembo?"</string>
     <string name="synced">"Sinhroniziran"</string>
     <string name="toast_undo_unavailable">"Te spremembe ni mogoče razveljaviti, saj je že sinhronizirana"</string>
@@ -1232,7 +1224,6 @@ Na žalost zaradi pravil trgovine Google Play, v aplikaciji ne smemo prikazati n
     <string name="quest_drinking_water_type_spring">"Izvir"</string>
     <string name="quest_drinking_water_type_disused">"Ni več v uporabi"</string>
     <string name="overlay_addresses">"Naslovi"</string>
-    <string name="overlay_shops">"Trgovine"</string>
     <string name="name_label">"Ime:"</string>
     <string name="unknown_shop_title">"Druga vrsta kraja"</string>
     <string name="quest_address_answer_no_address">"Tukaj ni naslova"</string>
@@ -1354,4 +1345,46 @@ Poleg tega ti nekatere prekrivne plasti omogočajo dodajanje novih podatkov na p
     <string name="quest_recycling_type_food_waste">"Odpadna hrana"</string>
     <string name="quest_defibrillator_location">"Kje se nahaja ta defibrilator?"</string>
     <string name="quest_defibrillator_location_description">"Na kratko opišite lego (npr. \"na recepciji\")."</string>
+    <string name="quest_sanitary_dump_station_title">"Ali je tukaj postaja za praznjenje sanitarij?"</string>
+    <string name="quest_sanitary_dump_station_description">"Objekt za odlaganje človeških iztrebkov iz toaletnih zabojev ki se nahajajo v avtodomih, tovornjakih... Navadno je kraj označen z znakom podobnim temu:"</string>
+    <string name="quest_generalFee_title">"Ali moraš plačati da lahko uporabiš to?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"To je odprto ognjišče"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Odprto ognjišče, v nasprotju z žarom, nima kuhalne plošče ali rešetk"</string>
+    <string name="about_title_logs">"Zapiski (%1$d)"</string>
+    <string name="about_summary_logs">"za uporabo pri poročanju napak"</string>
+    <string name="action_filter">"FIlter"</string>
+    <string name="action_share">"Deli zapiske"</string>
+    <string name="about_title_show_logs">"Prikaži zapiske"</string>
+    <string name="label_log_level">"Nivo zapiskov"</string>
+    <string name="label_log_newer_than">"Od"</string>
+    <string name="label_log_older_than">"Do"</string>
+    <string name="label_log_message_contains">"Sporočilo vsebuje"</string>
+    <string name="title_logs_filters">"Filtriraj sporočila"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Število skritih nalog: %d"</string>
+    <string name="link_every_door_description">"Sposoben urejevalnik interesantnih točk za mobilne naprave"</string>
+    <string name="link_mapcomplete_description">"Zbirka tematskih OSM zemljevidov, od katerih ti vsak omogoča urejanje ene vrste podatkov"</string>
+    <string name="link_forum_description">"Ali potrebuješ pomoč? Želiš vedeti kaj se dogaja? Pridite in se družite, polno je dejavnosti iz skupnosti po vsem svetu!"</string>
+    <string name="link_calendar_description">"Ali so v bližini OSM dogodki ali srečanja? (Če niso lahko ustvariš svoje!)"</string>
+    <string name="link_prettymapp_description">"Ustvari čudovite večbarvne plakate z zemljevidom krajev"</string>
+    <string name="quest_disable_action">"Onemogoči"</string>
+    <string name="quest_disable_title">"Želiš onemogočiti ta tip naloge?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure še ni naložen."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure ni vrnil meritve."</string>
+    <string name="quest_disable_message_tape_measure">"Namesto tega bi lahko uporabil tračni meter, ampak to bi vseeno izgledalo nekoliko čudno kajne?"</string>
+    <string name="quest_buildingType_outbuilding">"Pomožna stavba"</string>
+    <string name="quest_buildingType_outbuilding_description">"ne tako pomembna stavba na zemljišču"</string>
+    <string name="quest_buildingType_other_description">"specifična stavba, ki ni na izbiro v tej aplikaciji"</string>
+    <string name="quest_buildingType_container">"Kontejner"</string>
+    <string name="quest_buildingType_tent">"Šotor"</string>
+    <string name="quest_buildingType_tomb">"Grobnica"</string>
+    <string name="quest_buildingType_tower">"Stolp"</string>
+    <string name="quest_buildingType_tower_description">"katerakoli vrsta stolpa"</string>
+    <string name="quest_buildingType_under_construction">"Se še gradi"</string>
+    <string name="overlay_buildings">"Stavbe"</string>
+    <string name="quest_pedestrian_crossing_signals">"Ali moraš počakati na signal da lahko prečkaš?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Ali ima ta prehod na tleh oznake?"</string>
+    <string name="overlay_places">"Krajii"</string>
+    <string name="overlay_things">"Stvari"</string>
+    <string name="disused">"neuporabljen"</string>
+    <string name="unknown_object">"Neznan objekt"</string>
 </resources>

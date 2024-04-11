@@ -130,7 +130,6 @@ private fun Feature.findMatchedName(searchText: String): String? {
 }
 
 private fun Feature.getIconDrawable(context: Context): Drawable? {
-    if (icon == null) return null
-    val id = presetIconIndex[icon] ?: return null
+    val id = icon?.let { presetIconIndex[it] } ?: R.drawable.ic_preset_maki_marker_stroked
     return context.getDrawable(id)
 }

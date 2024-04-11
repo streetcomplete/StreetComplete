@@ -279,8 +279,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_walnuts">"Walnuts"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t download here. Try to zoom in further or tilt the map less."</string>
-    <string name="quest_crossing_type_title">"What kind of crossing is this?"</string>
-    <string name="quest_crossing_type_unmarked">"Without road markings"</string>
     <string name="action_undo">"Undo"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomatoes"</string>
@@ -442,7 +440,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_buildingType_transportation">"Public transportation building"</string>
     <string name="quest_buildingType_university">"University building"</string>
     <string name="quest_buildingType_government">"Government building"</string>
-    <string name="quest_buildingType_cars">"For cars"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"roof for a car"</string>
     <string name="quest_buildingType_garage">"Single garage"</string>
@@ -481,7 +478,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_segregated_mixed">"Cyclists and pedestrians share the same space"</string>
     <string name="quest_maxheight_title">"What’s the height limit here?"</string>
     <string name="quest_maxheight_answer_noSign">"There is no sign…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Is there easily enough space for even the tallest lorries (at least 4.5 metres / 15 feet) to pass through?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"This height looks implausible. Are you sure that is correct?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Closed by %1$s, %2$s"</string>
@@ -573,7 +569,7 @@ Split it now?"</string>
     <string name="about_description_donate">"Thank you for considering supporting this app! To see current donations and to donate yourself, tap on the respective platform:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Download here instead"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Continue current download"</string>
-    <string name="quest_buildingType_garages_description">"Separate spaces for different owners/tenants"</string>
+    <string name="quest_buildingType_garages_description">"separate spaces for different owners/tenants"</string>
     <string name="quest_tourism_information_title">"What type of tourist information is this?"</string>
     <string name="quest_tourism_information_office">"Tourist information office"</string>
     <string name="quest_tourism_information_board">"Information board"</string>
@@ -764,7 +760,7 @@ levels"</string>
     <string name="achievement_citizen_solved_X">"You solved %d quests that are useful for everyday life in town!"</string>
     <string name="achievement_outdoors_title">"Outdoors"</string>
     <string name="achievement_outdoors_solved_X">"You solved %d quests that are useful for outdoor enthusiasts!"</string>
-    <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
+    <string name="quest_pedestrian_crossing_island">"Does this crossing have an island?"</string>
     <string name="quest_generic_answer_noSign">"There is no sign"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Is the wheelchair ramp displayed as a separate way on the map?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separate"</string>
@@ -799,9 +795,6 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specify the number of marked lanes usable by car traffic here. Lanes dedicated to bicycles or parking don’t count.
 If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_surface_value_rock">"Rock"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Tall lorries can pass through"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Tall lorries don’t fit"</string>
-    <string name="quest_crossing_type_marked">"Marked"</string>
     <string name="quest_parkingType_street_side">"Parking adjacent to the carriageway"</string>
     <string name="quest_parkingType_lane">"Parking on carriageway"</string>
     <string name="quest_tracktype_grade2a">"Hard-packed dirt"</string>
@@ -842,11 +835,11 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Plastic bottles and cartons only"</string>
     <string name="team_mode">"Enter Team Mode"</string>
     <string name="team_mode_exit">"Exit Team Mode"</string>
-    <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members."</string>
+    <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members.
+Each of you will then see different quests."</string>
     <string name="team_mode_team_size_hint">"Team mode works for groups of 2 to 12 people."</string>
     <string name="team_mode_active">"Team mode is active"</string>
     <string name="team_mode_deactivated">"Team mode deactivated"</string>
-    <string name="quest_crossing_type_signals_controlled">"Controlled by traffic lights"</string>
     <string name="undo_confirm_title2">"Undo the following edit?"</string>
     <string name="synced">"Synced"</string>
     <string name="toast_undo_unavailable">"This edit is already synced and cannot be undone"</string>
@@ -1232,7 +1225,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="quest_drinking_water_type_spring">"Spring"</string>
     <string name="quest_drinking_water_type_disused">"Disused drinking water object"</string>
     <string name="overlay_addresses">"Addresses"</string>
-    <string name="overlay_shops">"Shops"</string>
     <string name="name_label">"Name:"</string>
     <string name="unknown_shop_title">"Other kind of place"</string>
     <string name="quest_address_answer_no_address">"No address here"</string>
@@ -1370,4 +1362,31 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="label_log_older_than">"To"</string>
     <string name="label_log_message_contains">"Message contains"</string>
     <string name="title_logs_filters">"Filter messages"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Number of hidden quests: %d"</string>
+    <string name="link_every_door_description">"Powerful POI editor for Android and iOS"</string>
+    <string name="link_mapcomplete_description">"Collection of thematic OSM maps that each show and let you edit one kind of feature"</string>
+    <string name="link_forum_description">"Need help? Want to read what’s going on? Come and mingle, it’s bustling with activity from communities all over the globe!"</string>
+    <string name="link_calendar_description">"Are OpenStreetMap events or community meetings near you? (If not, you could add your own!)"</string>
+    <string name="link_prettymapp_description">"Create pretty multi-colored map posters of neighbourhoods"</string>
+    <string name="quest_disable_action">"Disable"</string>
+    <string name="quest_disable_title">"Disable this quest type?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure is not installed (yet)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement."</string>
+    <string name="quest_disable_message_tape_measure">"You could use a tape measure instead, but that might be a little awkward, after all."</string>
+    <string name="quest_buildingType_outbuilding">"Outbuilding"</string>
+    <string name="quest_buildingType_outbuilding_description">"less important building on a property"</string>
+    <string name="quest_buildingType_other_description">"a specific building that is not selectable in this app"</string>
+    <string name="quest_buildingType_container">"Container"</string>
+    <string name="quest_buildingType_tent">"Tent"</string>
+    <string name="quest_buildingType_tomb">"Tomb"</string>
+    <string name="quest_buildingType_tower">"Tower"</string>
+    <string name="quest_buildingType_tower_description">"any kind of tower"</string>
+    <string name="quest_buildingType_under_construction">"Under construction"</string>
+    <string name="overlay_buildings">"Buildings"</string>
+    <string name="quest_pedestrian_crossing_signals">"Do you have to wait for a traffic signal to cross here?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
+    <string name="overlay_places">"Places"</string>
+    <string name="overlay_things">"Things"</string>
+    <string name="disused">"disused"</string>
+    <string name="unknown_object">"Unknown object"</string>
 </resources>

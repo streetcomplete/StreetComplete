@@ -14,13 +14,13 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.maplibre.android.MapLibre
 
-class MapTilesDownloader(context: Context) {
+class MapTilesDownloader(private val context: Context) {
 
-    data class Tile(val zoom: Int, val x: Int, val y: Int)
-
-    private val offlineManager = OfflineManager.getInstance(context)
+    private val offlineManager get() = OfflineManager.getInstance(context)
     private val pixelRatio = context.resources.displayMetrics.density
+
     private val offlineRegionCallback = object : OfflineManager.CreateOfflineRegionCallback {
         override fun onCreate(offlineRegion: OfflineRegion) {
             val time = nowAsEpochMilliseconds()
@@ -57,6 +57,10 @@ class MapTilesDownloader(context: Context) {
         }
     }
 
+    init {
+        MapLibre.getInstance(context) // must be called before getting OfflineManager instance
+    }
+
     /** delete regions, which allows contained tiles to be deleted if cache size is exceeded */
     fun deleteRegionsOlderThan(olderThan: Long) {
         offlineManager.listOfflineRegions(object : OfflineManager.ListOfflineRegionsCallback{
@@ -75,6 +79,10 @@ class MapTilesDownloader(context: Context) {
                 }
             }
         })
+    }
+
+    fun clear() {
+        offlineManager.resetDatabase(null)
     }
 
     suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {

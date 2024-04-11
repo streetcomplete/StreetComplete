@@ -16,7 +16,7 @@ open class ApplicationDbTestCase {
             InstrumentationRegistry.getInstrumentation().targetContext,
             DATABASE_NAME
         )
-        database = AndroidDatabase(dbHelper)
+        database = AndroidDatabase(dbHelper.writableDatabase)
     }
 
     @Test fun databaseAvailable() {

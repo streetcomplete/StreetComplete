@@ -35,7 +35,7 @@ import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.osm.address.applyTo
-import de.westnordost.streetcomplete.osm.address.createAddressNumber
+import de.westnordost.streetcomplete.osm.address.parseAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
@@ -106,7 +106,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        addressNumber = element?.tags?.let { createAddressNumber(it) }
+        addressNumber = element?.tags?.let { parseAddressNumber(it) }
         houseName = element?.tags?.get("addr:housename")
         val placeName = element?.tags?.get("addr:place")
         val streetName = element?.tags?.get("addr:street")
@@ -207,8 +207,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     private fun checkCurrentCursorPosition() {
         val buildings = buildings ?: return
         val metersPerPixel = metersPerPixel ?: return
-        val maxDistance = metersPerPixel * requireContext().dpToPx(12)
-        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(8)
+        val maxDistance = metersPerPixel * resources.dpToPx(12)
+        val snapToVertexDistance = metersPerPixel * resources.dpToPx(8)
         positionOnWay = geometry.center.getPositionOnWays(buildings, maxDistance, snapToVertexDistance)
     }
 
@@ -259,9 +259,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         outState.putBoolean(ADD_ENTRANCE, addEntrance)
     }
 
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        return streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
-    }
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean =
+        streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
 
     override fun hasChanges(): Boolean =
         numberOrNameInputCtrl.addressNumber != addressNumber

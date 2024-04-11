@@ -98,15 +98,14 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
             .setInterpolator(DecelerateInterpolator())
     }
 
-    private fun createFadeOutBackgroundAnimation(): ViewPropertyAnimator {
-        return dialogBackground.animate()
+    private fun createFadeOutBackgroundAnimation(): ViewPropertyAnimator =
+        dialogBackground.animate()
             .alpha(0f)
             .setDuration(ANIMATION_TIME_OUT_MS)
             .setInterpolator(AccelerateInterpolator())
             .withEndAction {
                 dialogAndBackgroundContainer.visibility = View.INVISIBLE
             }
-    }
 
     private fun createTitleImageFlingInAnimation(sourceView: View): ViewPropertyAnimator {
         sourceView.visibility = View.INVISIBLE
@@ -116,18 +115,17 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
             .setInterpolator(OvershootInterpolator())
     }
 
-    private fun createTitleImageFlingOutAnimation(targetView: View): ViewPropertyAnimator {
-        return titleView.animateTo(targetView)
+    private fun createTitleImageFlingOutAnimation(targetView: View): ViewPropertyAnimator =
+        titleView.animateTo(targetView)
             .setDuration(ANIMATION_TIME_OUT_MS)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .withEndAction {
                 targetView.visibility = View.VISIBLE
                 sharedTitleView = null
             }
-    }
 
-    private fun createDialogPopInAnimations(): List<ViewPropertyAnimator> {
-        return listOf(dialogContentContainer, dialogBubbleBackground).map {
+    private fun createDialogPopInAnimations(): List<ViewPropertyAnimator> =
+        listOf(dialogContentContainer, dialogBubbleBackground).map {
             it.alpha = 0f
             it.scaleX = 0.5f
             it.scaleY = 0.5f
@@ -138,10 +136,9 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
                 .setDuration(ANIMATION_TIME_IN_MS)
                 .setInterpolator(OvershootInterpolator())
         }
-    }
 
-    private fun createDialogPopOutAnimations(): List<ViewPropertyAnimator> {
-        return listOf(dialogContentContainer, dialogBubbleBackground).map {
+    private fun createDialogPopOutAnimations(): List<ViewPropertyAnimator> =
+        listOf(dialogContentContainer, dialogBubbleBackground).map {
             it.animate()
                 .alpha(0f)
                 .scaleX(0.5f).scaleY(0.5f)
@@ -149,7 +146,6 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
                 .setDuration(ANIMATION_TIME_OUT_MS)
                 .setInterpolator(AccelerateInterpolator())
         }
-    }
 
     private fun playAll(animators: Collection<ViewPropertyAnimator>) {
         animatorsPlayer = ViewPropertyAnimatorsPlayer(animators.toMutableList()).also {

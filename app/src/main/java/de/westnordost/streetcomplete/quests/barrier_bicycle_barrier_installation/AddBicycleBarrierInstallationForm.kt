@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 class AddBicycleBarrierInstallationForm :
     AImageListQuestForm<BicycleBarrierInstallation, BicycleBarrierInstallationAnswer>() {
 
-    override val items = BicycleBarrierInstallation.values().map { it.asItem() }
+    override val items = BicycleBarrierInstallation.entries.map { it.asItem() }
     override val itemsPerRow = 3
     override val moveFavoritesToFront = false
 

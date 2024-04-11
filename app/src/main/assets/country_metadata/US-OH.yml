@@ -1,3 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, Bowling Green State University, Kent State University, University of Cincinnati, Easton Town Center]
+atmOperators: [American Crypto, PNC Bank, Fifth Third Bank, Huntington Bank, KeyBank, Chase, Huntington, U.S. Bank, Citizens Bank, PNC, First United Bank, The Huntington National Bank, The Community Bank, First National Bank, First Financial Bank, Charter One, Athena Bitcoin, Ohio University Credit Union, Glass City Federal Credit Union, First-Knox National Bank, Cardtronics, Bank of America]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla Motors, Electrify America, Shell, Bowling Green State University, Kent State University, latitude apartments, University of Cincinnati, Miami University, Easton Town Center]
+clothesContainerOperators: [Planet Aid, Paralyzed Veterans of America]
 defaultSpeedLimitHasUrbanOrRural: true

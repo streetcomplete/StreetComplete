@@ -19,9 +19,8 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
         nodes with
           highway = crossing
           and foot != no
-          and crossing
-          and crossing != island
           and !crossing:island
+          and crossing != island
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """

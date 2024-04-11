@@ -12,7 +12,7 @@ class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
         AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
     )
 
-    override val items get() = Religion.values()
+    override val items get() = Religion.entries
         .mapNotNull { it.asItem() }
         .sortedBy { religionPosition(it.value!!.osmValue) }
 

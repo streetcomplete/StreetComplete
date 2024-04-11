@@ -254,8 +254,6 @@
     <string name="produce_walnuts">"Valnøtter"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikkje søkja her. Prøv å zooma lenger inn eller å ha kartet mindre på skrå."</string>
-    <string name="quest_crossing_type_title">"Kva type fotgjengarovergang er dette?"</string>
-    <string name="quest_crossing_type_unmarked">"Utan vegmarkering"</string>
     <string name="action_undo">"Angra"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomatar"</string>
@@ -416,7 +414,6 @@
     <string name="quest_buildingType_transportation">"Kollektiv­transport"</string>
     <string name="quest_buildingType_university">"Universitetsbygning"</string>
     <string name="quest_buildingType_government">"Statleg bygning"</string>
-    <string name="quest_buildingType_cars">"For bilar"</string>
     <string name="quest_buildingType_carport">"Bilbås (carport)"</string>
     <string name="quest_buildingType_carport_description">"tak over ein bil"</string>
     <string name="quest_buildingType_garage">"Enkeltgarasje"</string>
@@ -455,7 +452,6 @@
     <string name="quest_segregated_mixed">"Syklistar og fotgjengarar deler same felt"</string>
     <string name="quest_maxheight_title">"Kva er høgdegrensa her?"</string>
     <string name="quest_maxheight_answer_noSign">"Det finst ikkje noko skilt …"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Er det klart plass til sjølv det høgaste vogntoget (minst 4½ meter)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Høgda verkar usannsynleg. Er du sikker på at ho er rett?"</string>
     <string name="quest_noteDiscussion_comment2">"– %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Lukka av %1$s, %2$s"</string>
@@ -759,9 +755,6 @@
     <string name="quest_lanes_answer_lanes_description2">"Skriv inn talet på oppmerkte køyrefelt (i begge retningar) som kan brukast av bilar. Sykkel- og parkerings­felt tel altså ikkje. Viss nokre av felta er reine bussfelt, legg heller att ein merknad."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Skriv inn talet på oppmerkte køyrefelt som kan brukast av bilar. Sykkel- og parkerings­felt tel altså ikkje. Viss nokre av felta er reine bussfelt, legg heller att ein merknad."</string>
     <string name="quest_surface_value_rock">"Stein"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Høge vogntog kan passera"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Høge vogntog får ikkje plass"</string>
-    <string name="quest_crossing_type_marked">"Med vegmarkering"</string>
     <string name="quest_parkingType_street_side">"Parkering i grøftekanten"</string>
     <string name="quest_parkingType_lane">"Parkering på vegen"</string>
     <string name="quest_tracktype_grade2a">"Fast, men ikkje asfaltert"</string>
@@ -804,7 +797,6 @@
     <string name="team_mode_team_size_hint">"Lagmodus verkar for grupper på 2–12 personar."</string>
     <string name="team_mode_active">"Lagmodus er på"</string>
     <string name="team_mode_deactivated">"Lagmodus er av"</string>
-    <string name="quest_crossing_type_signals_controlled">"Med trafikklys"</string>
     <string name="undo_confirm_title2">"Vil du angra denne endringa?"</string>
     <string name="synced">"Synkronisert"</string>
     <string name="toast_undo_unavailable">"Denne endringa er alt synkronisert og kan derfor ikkje angrast."</string>
@@ -1042,7 +1034,6 @@
     <string name="quest_drinking_water_type_hand_pump">"Handpumpe"</string>
     <string name="quest_drinking_water_type_spring">"Kjelde"</string>
     <string name="overlay_addresses">"Adresser"</string>
-    <string name="overlay_shops">"Butikkar"</string>
     <string name="name_label">"Namn:"</string>
     <string name="quest_buildingType_guardhouse">"Vaktbu"</string>
     <string name="user_profile_current_week_title">"Siste 7 dagar"</string>

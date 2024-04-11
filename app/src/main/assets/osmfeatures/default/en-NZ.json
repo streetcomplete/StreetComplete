@@ -209,10 +209,6 @@
                 "amenity/trolley_bay": {
                     "name": "Shopping Trolley Bay"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Fuel Pump",
-                    "terms": "petrol,fuel,gasoline,propane,diesel,lng,cng,biodiesel,gas pump"
-                },
                 "amenity/water_point": {
                     "terms": "water faucet,water point,water tap,water source,water spigot,rv drinking water,campervan drinking water"
                 },

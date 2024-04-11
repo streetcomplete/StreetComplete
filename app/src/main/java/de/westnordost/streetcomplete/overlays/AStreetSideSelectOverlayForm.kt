@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.overlays
 
 import android.os.Bundle
 import android.view.View
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
@@ -20,7 +20,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_street_side_puzzle_with_last_answer_button
     protected val binding by contentViewBinding(FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding::bind)
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val contentPadding = false
 

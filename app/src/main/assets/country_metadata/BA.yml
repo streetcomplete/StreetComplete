@@ -1,6 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [UniCredit Bank, Raiffeisen Bank, Raiffeisen, Nova Banka, NLB Banka, Sberbank, Unicredit, Raifefisen Bank dd BIH, NLB, Raiffeisenbank, Sparkasse, Addiko Bank, Komercijalna Banka, Raiffeisen banka, Unicredit banka, Ziraat Bank, Sparkasse Bank, Raiffeisen Bank BiH, Raiffeisen Bank dd BIH, Bosna Bank International, BBI, Intesa San Paolo]
-chargingStationOperators: [City]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false

@@ -278,8 +278,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="produce_walnuts">"Walnoten"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Niet mogelijk hier te scannen. Probeer meer in te zoomen, of kantel de kaart minder."</string>
-    <string name="quest_crossing_type_title">"Wat voor oversteekplaats is dit?"</string>
-    <string name="quest_crossing_type_unmarked">"Oversteekplaats zonder wegmarkeringen"</string>
     <string name="action_undo">"Ongedaan maken"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomaten"</string>
@@ -441,7 +439,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_buildingType_transportation">"Openbaar vervoer-gebouw"</string>
     <string name="quest_buildingType_university">"Universiteitsgebouw"</string>
     <string name="quest_buildingType_government">"Overheidsgebouw"</string>
-    <string name="quest_buildingType_cars">"Voor auto's"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"Een dak waar auto's onder gestald kunnen worden"</string>
     <string name="quest_buildingType_garage">"Garage (voor één auto)"</string>
@@ -480,7 +477,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_segregated_mixed">"Fietsers en voetgangers delen dezelfde ruimte."</string>
     <string name="quest_maxheight_title">"Wat is hier de maximumhoogte?"</string>
     <string name="quest_maxheight_answer_noSign">"Er is geen bord…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Is er genoeg ruimte (minstens ca 4,5 meter) om zelfs de grootste vrachtwagens door te laten?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Deze hoogte lijkt onwaarschijnlijk. Weet je zeker dat dit correct is?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Gesloten door %1$s, %2$s"</string>
@@ -791,9 +787,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_lanes_answer_lanes_description2">"Geef het totaal aantal gemarkeerde rijstroken (beide richtingen) die door autoverkeer gebruikt kunnen worden. Fiets- en parkeerstroken tellen dus niet mee. Als er busstroken zijn, laat dan een notitie achter."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Geef het aantal gemarkeerde rijstroken die door autoverkeer gebruikt kunnen worden. Fiets- en parkeerstroken tellen dus niet mee. Als er busstroken zijn, laat dan een notitie achter."</string>
     <string name="quest_surface_value_rock">"Rots"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Hoge vrachtwagens kunnen erdoor"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Hoge vrachtwagens passen niet"</string>
-    <string name="quest_crossing_type_marked">"Gemarkeerde oversteekplaats"</string>
     <string name="quest_parkingType_street_side">"Parkeren langs de weg"</string>
     <string name="quest_parkingType_lane">"Parkeren op de weg"</string>
     <string name="quest_tracktype_grade2a">"Hard maar niet bestraat"</string>
@@ -838,7 +831,6 @@ Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals
     <string name="team_mode_team_size_hint">"Team modus is geschikt voor groepen van 2 tot 12 mensen."</string>
     <string name="team_mode_active">"Team modus is actief"</string>
     <string name="team_mode_deactivated">"Team modus is uitgeschakeld"</string>
-    <string name="quest_crossing_type_signals_controlled">"Oversteekplaats met verkeerslichten"</string>
     <string name="undo_confirm_title2">"De volgende wijziging ongedaan maken?"</string>
     <string name="synced">"Gesynchroniseerd"</string>
     <string name="toast_undo_unavailable">"Deze wijziging is al gesynchroniseerd en kan niet ongedaan gemaakt worden"</string>
@@ -1224,7 +1216,6 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_drinking_water_type_spring">"Bron"</string>
     <string name="quest_drinking_water_type_disused">"Drinkwater werkt niet meer"</string>
     <string name="overlay_addresses">"Adressen"</string>
-    <string name="overlay_shops">"Winkels"</string>
     <string name="name_label">"Naam:"</string>
     <string name="unknown_shop_title">"Ander soort winkel"</string>
     <string name="quest_address_answer_no_address">"Hier is geen adres"</string>
@@ -1362,4 +1353,31 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="label_log_older_than">"Tot"</string>
     <string name="label_log_message_contains">"Bericht bevat"</string>
     <string name="title_logs_filters">"Filter berichten"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Aantal verborgen vragen: %d"</string>
+    <string name="link_every_door_description">"Krachtige POI-editor voor Android en iOS"</string>
+    <string name="link_mapcomplete_description">"Verzameling thematische OSM-kaarten die elk één soort object tonen en waarmee u één soort object kunt bewerken"</string>
+    <string name="link_forum_description">"Hulp nodig? Wil je lezen wat er aan de hand is? Kom samen, het bruist van de activiteiten van gemeenschappen over de hele wereld!"</string>
+    <string name="link_calendar_description">"Zijn er OpenStreetMap-evenementen of gemeenschapsbijeenkomsten bij u in de buurt? (Zo niet, dan kunt u uw eigen toevoegen!)"</string>
+    <string name="link_prettymapp_description">"Maak mooie veelkleurige kaartposters van jullie buurt"</string>
+    <string name="quest_disable_action">"UItschakelen"</string>
+    <string name="quest_disable_title">"Schakel dit vrssg type uit?"</string>
+    <string name="quest_disable_message_not_installed">"Straat meting is (nog) niet geïnstalleerd."</string>
+    <string name="quest_disable_message_not_working">"Straat meting gaf geen meetresultaat"</string>
+    <string name="quest_disable_message_tape_measure">"Je zou in plaats daarvan een meetlint kunnen gebruiken, maar dat kan toch een beetje lastig zijn."</string>
+    <string name="quest_buildingType_outbuilding">"Bijgebouw"</string>
+    <string name="quest_buildingType_outbuilding_description">"minder belangrijk gebouw op een terrein"</string>
+    <string name="quest_buildingType_other_description">"een specifiek gebouw dat niet selecteerbaar is in deze app"</string>
+    <string name="quest_buildingType_container">"Container"</string>
+    <string name="quest_buildingType_tent">"Tent"</string>
+    <string name="quest_buildingType_tomb">"Graf"</string>
+    <string name="quest_buildingType_tower">"Toren"</string>
+    <string name="quest_buildingType_tower_description">"Iedere soort toren"</string>
+    <string name="quest_buildingType_under_construction">"In opbouw"</string>
+    <string name="overlay_buildings">"Gebouwen"</string>
+    <string name="quest_pedestrian_crossing_signals">"Moet je wachten op een verkeerslicht voordat je kan oversteken?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Heeft deze oversteekplaats markeringen op de grond?"</string>
+    <string name="overlay_places">"Plaatsen"</string>
+    <string name="overlay_things">"Dingen"</string>
+    <string name="disused">"Niet meer in gebruik"</string>
+    <string name="unknown_object">"Onbekend object"</string>
 </resources>

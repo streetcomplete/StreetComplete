@@ -18,9 +18,8 @@ fun Resources.getHtmlQuestTitle(questType: QuestType, tags: Map<String, String>)
     return getString(getQuestTitleResId(questType, tags), *spannedArguments).parseAsHtml()
 }
 
-private fun getTemplateArguments(questType: QuestType, tags: Map<String, String>): Array<String> {
-    return ((questType as? OsmElementQuestType<*>)?.getTitleArgs(tags)) ?: emptyArray()
-}
+private fun getTemplateArguments(questType: QuestType, tags: Map<String, String>): Array<String> =
+    ((questType as? OsmElementQuestType<*>)?.getTitleArgs(tags)) ?: emptyArray()
 
 private fun getQuestTitleResId(questType: QuestType, tags: Map<String, String>) =
     (questType as? OsmElementQuestType<*>)?.getTitle(tags) ?: questType.title

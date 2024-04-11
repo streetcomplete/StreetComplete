@@ -94,13 +94,13 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
 
         if (!BuildConfig.IS_GOOGLE_PLAY) {
             val dialogBinding = DialogDonateBinding.inflate(layoutInflater)
-            dialogBinding.donateList.adapter = DonationPlatformAdapter(DonationPlatform.values().asList())
+            dialogBinding.donateList.adapter = DonationPlatformAdapter(DonationPlatform.entries)
             AlertDialog.Builder(ctx)
                 .setView(dialogBinding.root)
                 .show()
         } else {
             AlertDialog.Builder(ctx)
-                .setMessage(R.string.about_description_donate_google_play2)
+                .setMessage(R.string.about_description_donate_google_play3)
                 .show()
         }
     }

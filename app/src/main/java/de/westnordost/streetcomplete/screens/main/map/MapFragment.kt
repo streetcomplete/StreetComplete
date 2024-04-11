@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.CallSuper
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.mapbox.android.gestures.MoveGestureDetector
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
@@ -28,7 +28,6 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
@@ -45,7 +44,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val mapStateStore: MapStateStore by inject()
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */

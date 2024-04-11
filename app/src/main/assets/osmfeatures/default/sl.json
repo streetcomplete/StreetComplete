@@ -1768,9 +1768,6 @@
                     "name": "Avtomat za prodajo vozovnic",
                     "terms": "avtomat,prodaja,vozovnice,karte,kartice,vstopnice,javni prevoz,avtobus,tramvaj"
                 },
-                "amenity/vending_machine/sweets": {
-                    "name": "Avtomat za prigrizke"
-                },
                 "amenity/veterinary": {
                     "name": "Veterinar",
                     "terms": "veterinarska klinika,klinika za pse,klinika za mačke"
@@ -3490,9 +3487,6 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Hitrostna grbina"
-                },
-                "traffic_calming/island": {
-                    "name": "Prometni otok"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Cestne tresavke",

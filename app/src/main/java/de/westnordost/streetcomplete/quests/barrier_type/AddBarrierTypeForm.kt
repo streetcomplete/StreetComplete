@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddBarrierTypeForm : AImageListQuestForm<BarrierType, BarrierType>() {
 
-    override val items = BarrierType.values().map { it.asItem() }
+    override val items = BarrierType.entries.map { it.asItem() }
 
     override val itemsPerRow = 3
 

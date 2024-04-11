@@ -279,8 +279,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível buscar aqui. Tente aproximar mais ou inclinar menos o mapa."</string>
-    <string name="quest_crossing_type_title">"Que tipo de cruzamento é esse?"</string>
-    <string name="quest_crossing_type_unmarked">"Sem marcações na via"</string>
     <string name="action_undo">"Desfazer"</string>
     <string name="produce_mangosteen">"Mangostão"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -442,7 +440,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_buildingType_transportation">"Prédio de transporte público"</string>
     <string name="quest_buildingType_university">"Prédio universitário"</string>
     <string name="quest_buildingType_government">"Prédio governamental"</string>
-    <string name="quest_buildingType_cars">"Para carros"</string>
     <string name="quest_buildingType_carport">"Abrigo de carros"</string>
     <string name="quest_buildingType_carport_description">"abrigo para um carro"</string>
     <string name="quest_buildingType_garage">"Garagem singular"</string>
@@ -481,7 +478,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_segregated_mixed">"Ciclistas e pedestres compartilham o mesmo espaço"</string>
     <string name="quest_maxheight_title">"Qual o limite de altura aqui?"</string>
     <string name="quest_maxheight_answer_noSign">"Não há placa…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Há espaço suficiente para que mesmo os caminhões mais altos (pelo menos 4,5 metros / 15 pés) atravessem?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Essa altura parece implausível. Tem certeza de que está correta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Fechado por %1$s, %2$s"</string>
@@ -799,9 +795,6 @@ Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Especifique o número de faixas marcadas que podem ser utilizadas para tráfego de automóveis aqui. Faixas para bicicletas e dedicadas a estacionamento não contam.
 Se alguma faixa for reservada para ônibus, deixe uma nota."</string>
     <string name="quest_surface_value_rock">"Rocha"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Caminhões altos podem passar"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Caminhões altos não cabem"</string>
-    <string name="quest_crossing_type_marked">"Marcado"</string>
     <string name="quest_parkingType_street_side">"Estacionamento adjacente à pista"</string>
     <string name="quest_parkingType_lane">"Estacionamento na estrada"</string>
     <string name="quest_tracktype_grade2a">"Sólido mas não pavimentado"</string>
@@ -846,7 +839,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="team_mode_team_size_hint">"O modo equipe funciona para grupos de 2 a 12 pessoas."</string>
     <string name="team_mode_active">"O Modo de equipe está ativo"</string>
     <string name="team_mode_deactivated">"O Modo de equipe desativado"</string>
-    <string name="quest_crossing_type_signals_controlled">"Controlado por semáforo"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>
@@ -1232,7 +1224,6 @@ Infelizmente, devido a uma política da Google Play Store, nenhum link que leve 
     <string name="quest_drinking_water_type_spring">"Nascente"</string>
     <string name="quest_drinking_water_type_disused">"Objeto de água potável em desuso"</string>
     <string name="overlay_addresses">"Endereços"</string>
-    <string name="overlay_shops">"Shoppings"</string>
     <string name="name_label">"Nome:"</string>
     <string name="unknown_shop_title">"Outro tipo de lugar"</string>
     <string name="quest_address_answer_no_address">"Sem endereço aqui"</string>
@@ -1355,4 +1346,47 @@ Além disso, algumas sobreposições permitem adicionar novos dados na posição
     <string name="quest_recycling_type_food_waste">"Desperdício de comida"</string>
     <string name="quest_defibrillator_location">"Onde está localizado esse desfibrilador?"</string>
     <string name="quest_defibrillator_location_description">"Por favor, forneça uma descrição da sua posição (por exemplo, “na portaria”)."</string>
+    <string name="quest_sanitary_dump_station_title">"Existe uma estação de despejo de esgotos?"</string>
+    <string name="quest_sanitary_dump_station_description">"Instalação para depósito de dejetos humanos provenientes de tanque sanitário de autocaravana (motorhome), carreta, etc.
+Geralmente indicado por uma placa como esta:"</string>
+    <string name="quest_generalFee_title">"Você precisa pagar para usar?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"É um sistema corta-fogo"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"O sistema corta-fogo não têm superfície para cozimento (por exemplo, grelha/placa), ao contrário das churrasqueiras."</string>
+    <string name="about_title_logs">"Logs (%1$d)"</string>
+    <string name="about_summary_logs">"para uso em relatórios de erros"</string>
+    <string name="action_filter">"Filtro"</string>
+    <string name="action_share">"Compartilhar logs"</string>
+    <string name="about_title_show_logs">"Exiba os logs"</string>
+    <string name="label_log_level">"Detalhamento do log"</string>
+    <string name="label_log_newer_than">"De"</string>
+    <string name="label_log_older_than">"Para"</string>
+    <string name="label_log_message_contains">"A mensagem contém"</string>
+    <string name="title_logs_filters">"Filtrar mensagens"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Número de missões ocultas: %d"</string>
+    <string name="link_every_door_description">"Poderoso editor de POI para Android e iOS"</string>
+    <string name="link_mapcomplete_description">"Coleção de mapas OSM temáticos que mostram e permitem editar um tipo de elemento"</string>
+    <string name="link_forum_description">"Preciso de ajuda? Quer saber o que está acontecendo? Venha e misture-se, o fórum está repleto de atividades das comunidades de todo o mundo!"</string>
+    <string name="link_calendar_description">"Os eventos ou reuniões das comunidades do OpenStreetMap estão perto de você? (Se não, você pode adicionar o seu próprio!)"</string>
+    <string name="link_prettymapp_description">"Crie lindos pôsteres de mapas multicoloridos de bairros ou freguesias"</string>
+    <string name="quest_disable_action">"Desativar"</string>
+    <string name="quest_disable_title">"Desativar este tipo de missão?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure (ainda) não está instalado."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure não retornou nenhuma medição."</string>
+    <string name="quest_disable_message_tape_measure">"Você poderia usar uma fita métrica, mas isso pode ser um pouco estranho."</string>
+    <string name="quest_buildingType_outbuilding">"Anexo"</string>
+    <string name="quest_buildingType_outbuilding_description">"edifício de menor importância em uma propriedade"</string>
+    <string name="quest_buildingType_other_description">"um edifício específico que não pode ser selecionado neste aplicativo"</string>
+    <string name="quest_buildingType_container">"Container"</string>
+    <string name="quest_buildingType_tent">"Tenda"</string>
+    <string name="quest_buildingType_tomb">"Tumba"</string>
+    <string name="quest_buildingType_tower">"Torre"</string>
+    <string name="quest_buildingType_tower_description">"qualquer tipo de torre"</string>
+    <string name="quest_buildingType_under_construction">"Em contrução"</string>
+    <string name="overlay_buildings">"Edifícios"</string>
+    <string name="quest_pedestrian_crossing_signals">"Você tem que esperar um sinal do semáforo  para passar aqui?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Esta passagem de pedestres tem marcações no terreno?"</string>
+    <string name="overlay_places">"Lugares"</string>
+    <string name="overlay_things">"Coisas"</string>
+    <string name="disused">"não está mais em uso"</string>
+    <string name="unknown_object">"Objeto desconhecido"</string>
 </resources>

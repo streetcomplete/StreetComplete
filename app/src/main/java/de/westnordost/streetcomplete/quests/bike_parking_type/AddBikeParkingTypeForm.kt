@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
 class AddBikeParkingTypeForm : AImageListQuestForm<BikeParkingType, BikeParkingType>() {
 
-    override val items = BikeParkingType.values().map { it.asItem() }
+    override val items = BikeParkingType.entries.map { it.asItem() }
     override val itemsPerRow = 3
 
     override fun onClickOk(selectedItems: List<BikeParkingType>) {

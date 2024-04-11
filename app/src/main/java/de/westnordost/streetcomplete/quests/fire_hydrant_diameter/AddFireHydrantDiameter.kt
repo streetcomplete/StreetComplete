@@ -28,7 +28,15 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     /* NOTE: if any countries that (sometimes) use anything else than millimeters as hydrant
        diameters are added, the code in the form needs to be adapted */
-    override val enabledInCountries = NoCountriesExcept("DE", "BE", "GB", "PL", "IE", "FI", "NL")
+    // source: https://commons.wikimedia.org/wiki/Category:Fire_hydrant_signs_by_country
+    override val enabledInCountries = NoCountriesExcept(
+        "DE", "BE", "LU",
+        // not "AT", - see https://community.openstreetmap.org/t/streetcomplete-quest-zu-hydrantendurchmesser-in-osterreich/108899
+        "GB", "IE",
+        "PL",
+        "FI",
+        "NL"
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
 

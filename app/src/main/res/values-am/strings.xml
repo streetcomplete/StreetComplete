@@ -279,8 +279,6 @@
     <string name="produce_walnuts">"ዎልነስ"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"እዚህ ማንበብ አይቻልም። የበለጠ ለማጉላት ይሞክሩ ወይም ካርታውን በትንሹ ያዘንብሉት።"</string>
-    <string name="quest_crossing_type_title">"ይህ ምን ዓይነት መሻገሪያ ነው?"</string>
-    <string name="quest_crossing_type_unmarked">"ያለ የመንገድ ምልክቶች መሻገሪያ "</string>
     <string name="action_undo">"ቀልብስ"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"ቲማቲም"</string>
@@ -442,7 +440,6 @@
     <string name="quest_buildingType_transportation">"የህዝብ ማመላለሻ ግንባታ"</string>
     <string name="quest_buildingType_university">"የዩኒቨርሲቲ ህንፃ"</string>
     <string name="quest_buildingType_government">"የመንግስት ህንፃ"</string>
-    <string name="quest_buildingType_cars">"ለመኪናዎች"</string>
     <string name="quest_buildingType_carport">"ካርፖርት"</string>
     <string name="quest_buildingType_carport_description">"ለመኪና ጣሪያ"</string>
     <string name="quest_buildingType_garage">"ነጠላ ጋራዥ"</string>
@@ -481,7 +478,6 @@
     <string name="quest_segregated_mixed">"ብስክሌተኞች እና እግረኞች አንድ አይነት ቦታ ይጋራሉ"</string>
     <string name="quest_maxheight_title">"እዚህ የከፍታ ገደቡ ምን ያህል ነው?"</string>
     <string name="quest_maxheight_answer_noSign">"ምንም ምልክት የለም…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"ረጅሙ የጭነት መኪናዎች እንኳን (ቢያንስ ወደ 4.5 ሜትር / 15 ጫማ ያህል) የሚያልፉበት ቦታ በቀላሉ አለ?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"ይህ ቁመት የማይታመን ይመስላል። ትክክል መሆኑን እርግጠኛ ነዎት?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"በ%1$s ፣%2$s ተዘግቷል"</string>
@@ -799,9 +795,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"በመኪና ትራፊክ የሚጠቀሙባቸውን ምልክት የተደረገባቸውን መንገዶች ቁጥር እዚህ ይግለጹ። ስለዚህ ፣ ብስክሌት እና የተለዩ የመኪና ማቆሚያ መንገዶች አይቆጠሩም።
 ማናቸውም መንገዶች ለአውቶቡሶች የተያዙ ከሆኑ እባክዎ በምትኩ ማስታወሻ ይተው ፡፡"</string>
     <string name="quest_surface_value_rock">"ድንጋይ "</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"ረዥም የጭነት መኪናዎች ሊያልፉ ይችላሉ"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"ረዥም የጭነት መኪናዎች አያልፍም"</string>
-    <string name="quest_crossing_type_marked">"ምልክት የተደረገበት መሻገሪያ"</string>
     <string name="quest_parkingType_street_side">"ከመንገዱ ዳር መኪና ማቆም"</string>
     <string name="quest_parkingType_lane">"በመንገድ ላይ መኪና ማቆም"</string>
     <string name="quest_tracktype_grade2a">"ጠንካራ ግን ያልተነጠፈ"</string>
@@ -844,7 +837,6 @@
     <string name="team_mode_team_size_hint">"የቡድን ሞድ ከ 2 እስከ 12 ሰዎች ለሆኑ ሰዎች ይሠራል ፡፡"</string>
     <string name="team_mode_active">"የቡድን ሁነታ ንቁ ነው"</string>
     <string name="team_mode_deactivated">"የቡድን ሁነታ ጠፍቷል"</string>
-    <string name="quest_crossing_type_signals_controlled">"በትራፊክ መብራቶች ቁጥጥር የሚደረግበት መሻገሪያ"</string>
     <string name="undo_confirm_title2">"የሚከተለው አርትዖት ይቀልበስ?"</string>
     <string name="synced">"አንድ ሆኗል"</string>
     <string name="toast_undo_unavailable">"ይህ አርትዖት ቀድሞውኑ ተመሳስሏል እናም ሊቀለበስ አይችልም"</string>

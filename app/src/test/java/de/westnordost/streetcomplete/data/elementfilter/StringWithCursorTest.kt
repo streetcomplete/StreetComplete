@@ -96,6 +96,15 @@ class StringWithCursorTest {
         assertEquals(3, x.findNext("[a-z]{3}".toRegex()))
     }
 
+    @Test fun findNextFn() {
+        val x = StringWithCursor("abc abc")
+        assertEquals("abc abc".length, x.findNext { it == 'x' })
+
+        assertEquals(0, x.findNext { it == 'a' })
+        x.advance()
+        assertEquals(3, x.findNext { it == 'a' })
+    }
+
     @Test fun isAtEnd() {
         val x = StringWithCursor("abc")
         assertFalse(x.isAtEnd(2))
@@ -150,6 +159,27 @@ class StringWithCursorTest {
         assertNull(x.nextMatchesAndAdvance(Regex("[0-9]{3}")))
         assertNotNull(x.nextMatchesAndAdvance(Regex("[0-9]{2}")))
         assertTrue(x.isAtEnd())
+    }
+
+    @Test fun advanceWhile() {
+        val x = StringWithCursor("hello you   !")
+        assertEquals(0, x.advanceWhile { it == ' ' })
+        x.advanceBy(5)
+        assertEquals(1, x.advanceWhile { it == ' ' })
+        x.advanceBy(3)
+        assertEquals(3, x.advanceWhile { it == ' ' })
+    }
+
+    @Test fun retreatWhile() {
+        val x = StringWithCursor(" ello you   !")
+        x.advanceBy(13)
+        assertEquals(0, x.retreatWhile { it == ' ' })
+        x.retreatBy(1)
+        assertEquals(3, x.retreatWhile { it == ' ' })
+        x.retreatBy(3)
+        assertEquals(1, x.retreatWhile { it == ' ' })
+        x.retreatBy(4)
+        assertEquals(1, x.retreatWhile { it == ' ' })
     }
 
     @Test fun toStringMethod() {

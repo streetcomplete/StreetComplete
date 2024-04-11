@@ -12,34 +12,35 @@ import de.westnordost.streetcomplete.data.logs.LogsTable.NAME
 /** Stores the app logs */
 class LogsDao(private val db: Database) {
     fun getAll(
-        levels: Set<LogLevel> = LogLevel.values().toSet(),
+        levels: Set<LogLevel> = LogLevel.entries.toSet(),
         messageContains: String? = null,
         newerThan: Long? = null,
         olderThan: Long? = null,
     ): List<LogMessage> {
         val levelsString = levels.joinToString(",") { "'${it.name}'" }
-        var where = "$LEVEL IN ($levelsString)"
-        var args = arrayOf<Any>()
+        val where = mutableListOf("$LEVEL IN ($levelsString)")
+        val args = mutableListOf<Any>()
 
         if (messageContains != null) {
-            where += " AND $MESSAGE LIKE ?"
+            where += "AND ($MESSAGE LIKE ? OR $TAG LIKE ?)"
+            args += "%$messageContains%"
             args += "%$messageContains%"
         }
 
         if (newerThan != null) {
-            where += " AND $TIMESTAMP > ?"
+            where += "AND $TIMESTAMP > ?"
             args += newerThan
         }
 
         if (olderThan != null) {
-            where += " AND $TIMESTAMP < ?"
+            where += "AND $TIMESTAMP < ?"
             args += olderThan
         }
 
         return db.query(
             NAME,
-            where = where,
-            args = args,
+            where = where.joinToString(" "),
+            args = args.toTypedArray(),
             orderBy = "$TIMESTAMP ASC"
         ) { it.toLogMessage() }
     }
@@ -49,6 +50,8 @@ class LogsDao(private val db: Database) {
     }
 
     fun deleteOlderThan(time: Long): Int = db.delete(NAME, where = "$TIMESTAMP < $time")
+
+    fun clear(): Int = db.delete(NAME)
 }
 
 private fun LogMessage.toPairs(): List<Pair<String, Any?>> = listOfNotNull(

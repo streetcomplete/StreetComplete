@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.LocalizedName
-import de.westnordost.streetcomplete.osm.createLocalizedNames
+import de.westnordost.streetcomplete.osm.parseLocalizedNames
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -36,7 +36,7 @@ class RoadNameSuggestionsSource(
             val minDistanceToRoad = points.distanceTo(polyline)
             if (minDistanceToRoad > maxDistance) continue
 
-            val names = createLocalizedNames(road.tags) ?: continue
+            val names = parseLocalizedNames(road.tags) ?: continue
 
             // eliminate duplicates (same road, different segments, different distances)
             val prev = result[names]
@@ -48,9 +48,8 @@ class RoadNameSuggestionsSource(
         return result.entries.sortedBy { it.value }.map { it.key }
     }
 
-    private fun Way.isRoadWithName(): Boolean {
-        return tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
-    }
+    private fun Way.isRoadWithName(): Boolean =
+        tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
 
     companion object {
         private val ALL_ROADS_AND_PATHS = ALL_ROADS + ALL_PATHS

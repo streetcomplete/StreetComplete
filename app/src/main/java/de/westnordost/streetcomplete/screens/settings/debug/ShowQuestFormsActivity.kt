@@ -12,8 +12,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.fragment.app.commit
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
@@ -24,7 +26,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.HideOsmQuestController
@@ -32,7 +33,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentShowQuestFormsBinding
 import de.westnordost.streetcomplete.databinding.RowQuestDisplayBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
@@ -42,31 +42,33 @@ import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.math.translate
 import de.westnordost.streetcomplete.util.viewBinding
-import de.westnordost.streetcomplete.view.ListAdapter
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 
 /** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
-    private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val mapStateStore: MapStateStore by inject()
-
     private val binding by viewBinding(FragmentShowQuestFormsBinding::inflate)
-
-    private val showQuestFormAdapter: ShowQuestFormAdapter = ShowQuestFormAdapter()
+    private val viewModel by viewModel<ShowQuestFormsViewModel>()
 
     private var currentQuestType: QuestType? = null
 
-    private var pos: LatLon = LatLon(0.0, 0.0)
+    private val filter: String get() =
+        (binding.toolbarLayout.toolbar.menu.findItem(R.id.action_search).actionView as SearchView)
+            .query.trim().toString()
 
-    init {
-        showQuestFormAdapter.list = questTypeRegistry.toMutableList()
+    private val englishResources by lazy {
+        val conf = Configuration(resources.configuration)
+        conf.setLocale(Locale.ENGLISH)
+        val localizedContext = createConfigurationContext(conf)
+        localizedContext.resources
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_show_quest_forms)
+
+        val questsAdapter = ShowQuestFormAdapter()
 
         val toolbar = binding.toolbarLayout.toolbar
         toolbar.navigationIcon = getDrawable(R.drawable.ic_close_24dp)
@@ -78,28 +80,23 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = false
             override fun onQueryTextChange(newText: String?): Boolean {
-                showQuestFormAdapter.filter = newText.orEmpty()
+                questsAdapter.quests = filterQuests(viewModel.quests, newText)
                 return false
             }
         })
 
-        binding.questFormContainer.setOnClickListener { popQuestForm() }
+        val questsList = binding.showQuestFormsList
+        questsAdapter.quests = filterQuests(viewModel.quests, filter)
+        questsList.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        questsList.layoutManager = LinearLayoutManager(this)
+        questsList.adapter = questsAdapter
 
-        binding.showQuestFormsList.apply {
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-            layoutManager = LinearLayoutManager(context)
-            adapter = showQuestFormAdapter
-        }
+        binding.questFormContainer.setOnClickListener { popQuestForm() }
 
         updateContainerVisibility()
         supportFragmentManager.addOnBackStackChangedListener {
             updateContainerVisibility()
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        pos = mapStateStore.position
     }
 
     private fun popQuestForm() {
@@ -112,41 +109,45 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         binding.questFormContainer.isGone = supportFragmentManager.findFragmentById(R.id.questForm) == null
     }
 
-    inner class ShowQuestFormAdapter : ListAdapter<QuestType>() {
-        private val englishResources by lazy {
-            val conf = Configuration(resources.configuration)
-            conf.setLocale(Locale.ENGLISH)
-            val localizedContext = createConfigurationContext(conf)
-            localizedContext.resources
+    private fun filterQuests(quests: List<QuestType>, filter: String?): List<QuestType> {
+        val words = filter.orEmpty().trim().lowercase()
+        return if (words.isEmpty()) {
+            quests
+        } else {
+            quests.filter { questTypeMatchesSearchWords(it, words.split(' ')) }
         }
+    }
 
-        var filter: String = ""
+    private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>) =
+        genericQuestTitle(resources, questType).lowercase().containsAll(words) ||
+        genericQuestTitle(englishResources, questType).lowercase().containsAll(words)
+
+    private inner class ShowQuestFormAdapter : RecyclerView.Adapter<ShowQuestFormAdapter.ViewHolder>() {
+        var quests: List<QuestType> = listOf()
             set(value) {
-                val n = value.trim()
-                if (n != field) {
-                    field = n
-                    filterQuestTypes(field)
-                }
+                val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+                    override fun getOldListSize() = field.size
+                    override fun getNewListSize() = value.size
+                    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                        field[oldItemPosition] == value[newItemPosition]
+                    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                        areItemsTheSame(oldItemPosition, newItemPosition)
+                })
+                field = value.toList()
+                diff.dispatchUpdatesTo(this)
             }
 
-        private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>) =
-            genericQuestTitle(resources, questType).lowercase().containsAll(words)
-                || genericQuestTitle(englishResources, questType).lowercase().containsAll(words)
-
-        private fun filterQuestTypes(f: String) {
-            if (f.isEmpty()) {
-                list = questTypeRegistry.toMutableList()
-            } else {
-                val words = f.lowercase().split(' ')
-                list = questTypeRegistry.filter { questTypeMatchesSearchWords(it, words) }.toMutableList()
-            }
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.ViewHolder<QuestType> =
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             ViewHolder(RowQuestDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-        private inner class ViewHolder(val binding: RowQuestDisplayBinding) : ListAdapter.ViewHolder<QuestType>(binding) {
-            override fun onBind(with: QuestType) {
+        override fun getItemCount(): Int = quests.size
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            holder.onBind(quests[position])
+        }
+
+        private inner class ViewHolder(val binding: RowQuestDisplayBinding) : RecyclerView.ViewHolder(binding.root) {
+            fun onBind(with: QuestType) {
                 binding.questIcon.setImageResource(with.icon)
                 binding.questTitle.text = genericQuestTitle(itemView.resources, with)
                 binding.root.setOnClickListener { onClickQuestType(with) }
@@ -157,8 +158,8 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
     private fun onClickQuestType(questType: QuestType) {
         if (questType !is OsmElementQuestType<*>) return
 
-        val firstPos = pos.translate(20.0, 45.0)
-        val secondPos = pos.translate(20.0, 135.0)
+        val firstPos = viewModel.position.translate(20.0, 45.0)
+        val secondPos = viewModel.position.translate(20.0, 135.0)
         /* tags are values that results in more that quests working on showing/solving debug quest
            form, i.e. some quests expect specific tags to be set and crash without them - what is
            OK, but here some tag combination needs to be setup to reduce number of crashes when
@@ -172,7 +173,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         )
         // way geometry is needed by quests using clickable way display (steps direction, sidewalk quest, lane quest, cycleway quest...)
         val element = Way(1, listOf(1, 2), tags, 1)
-        val geometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), pos)
+        val geometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), viewModel.position)
         // for testing quests requiring nodes code above can be commented out and this uncommented
         // val element = Node(1, centerPos, tags, 1)
         // val geometry = ElementPointGeometry(centerPos)
@@ -194,6 +195,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
                 geometry: ElementGeometry,
                 source: String,
                 action: ElementEditAction,
+                isNearUserLocation: Boolean
             ) {
                 when (action) {
                     is DeletePoiNodeAction -> {
@@ -218,8 +220,8 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
 
     override val displayedMapLocation: Location
         get() = Location(LocationManager.GPS_PROVIDER).apply {
-            latitude = pos.latitude
-            longitude = pos.longitude
+            latitude = viewModel.position.latitude
+            longitude = viewModel.position.longitude
         }
 
     override fun onEdited(editType: ElementEditType, geometry: ElementGeometry) {

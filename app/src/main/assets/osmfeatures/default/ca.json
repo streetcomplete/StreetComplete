@@ -386,7 +386,7 @@
                         "guard_rail": "Guarda rail",
                         "hedge": "Tanca de bardissa",
                         "height_restrictor": "Restrictor de gàlib",
-                        "jersey_barrier": "Barrera Jerse",
+                        "jersey_barrier": "Barrera Jersey",
                         "kerb": "Gual",
                         "kissing_gate": "Porta giratòria",
                         "lift_gate": "Porta barrera",
@@ -4759,9 +4759,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Màquina expenedora de menjar"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Sortidor de benzina"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Expenedora de gelats"
                 },
@@ -4785,9 +4782,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "Màquina expenedora de segells",
                     "terms": "segell,correu,postal,correu postal"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Màquina de vènding de comestibles"
                 },
                 "amenity/veterinary": {
                     "name": "Veterinari",
@@ -7987,10 +7981,6 @@
                 "traffic_calming/hump": {
                     "name": "Esquena d'ase",
                     "terms": "esquena de ruc,esquena de burro,esquena de bou,esquena de toro,llom d'ase,llom de ruc,llom de burro,llom de bou,llom de toro,ressalt,cavalló,túmul"
-                },
-                "traffic_calming/island": {
-                    "name": "Refugi viari",
-                    "terms": "cercle,redona,rotonda,glorieta,espai,baixa velocitat"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Xinxeta reductora de velocitat"

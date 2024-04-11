@@ -8,14 +8,10 @@ import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.EditType
-import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.databinding.FragmentEditStatisticsBinding
-import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.viewBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /** Shows the user's edits of each type in some kind of ball pit. Clicking on each opens
  *  a EditTypeInfoFragment that shows the quest's details. */
@@ -23,7 +19,6 @@ class EditStatisticsFragment :
     Fragment(R.layout.fragment_edit_statistics),
     StatisticsByEditTypeFragment.Listener,
     StatisticsByCountryFragment.Listener {
-    private val statisticsSource: StatisticsSource by inject()
 
     interface Listener {
         fun onClickedEditType(editType: EditType, editCount: Int, questBubbleView: View)
@@ -31,14 +26,11 @@ class EditStatisticsFragment :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private val viewModel by viewModel<EditStatisticsViewModel>()
     private val binding by viewBinding(FragmentEditStatisticsBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewLifecycleScope.launch {
-            binding.emptyText.isGone = withContext(Dispatchers.IO) { statisticsSource.getEditCount() != 0 }
-        }
 
         binding.byEditTypeButton.setOnClickListener { v -> binding.selectorButton.check(v.id) }
         binding.byCountryButton.setOnClickListener { v -> binding.selectorButton.check(v.id) }
@@ -51,15 +43,17 @@ class EditStatisticsFragment :
                 }
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        if (statisticsSource.isSynchronizing) {
-            binding.emptyText.setText(R.string.stats_are_syncing)
-        } else {
-            binding.emptyText.setText(R.string.quests_empty)
+        observe(viewModel.hasEdits) { hasEdits ->
+            binding.emptyText.isGone = hasEdits
+        }
+        observe(viewModel.isSynchronizingStatistics) { isSynchronizing ->
+            binding.emptyText.setText(
+                if (isSynchronizing) {
+                    R.string.stats_are_syncing
+                } else {
+                    R.string.quests_empty
+                }
+            )
         }
     }
 

@@ -25,7 +25,7 @@
         android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="-48dp"
-        android:src="@drawable/ic_arrow_expand_down_24dp"
+        app:srcCompat="@drawable/ic_arrow_expand_down_24dp"
         style="@style/Base.Widget.AppCompat.Button.Borderless" />
 
     <TextView

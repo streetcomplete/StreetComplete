@@ -1,7 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [BCP, Scotiabank, Banco de la Nación, Caja Arequipa, Interbank, Globalnet, BBVA, Multired, Banco de Crédito del Perú, Banco de la Nacion, BBVA Continental, Banco Continental, Banco de Credito, Caja Piura, 1, Multi Red, Caja Cusco, Banco de Crédito, Global Net, Continental, max, Scotia Bank, CODO DE POZUZO]
+atmOperators: [BCP, Banco de la Nación, Interbank, Scotiabank, Banco de Crédito del Perú, BBVA, Caja Arequipa, Globalnet, Multired, BBVA Continental, globalnet, MultiRed, multiRed, GlobalNet, Banco Continental, Global Net, Caja Cusco, banco de la nacion, Multi Red, Caja Piura, Banco de la Nacion, Banco de Crédito, Banco Bilbao Vizcaya Argentaria, 1, multired, max, Skotiabank, Scotia Bank, Banco de la nación, Banco de La Nación]
 centerLineStyle: yellow
-chargingStationOperators: [La Puntilla]
 defaultSpeedLimitHasUrbanOrRural: true
 hasSlowZone: true
 mobileCountryCode: 716

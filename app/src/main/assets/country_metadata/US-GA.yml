@@ -1,3 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Tesla Motors, Georgia Power, Whole Foods]
+atmOperators: [Bank of America, Wells Fargo, Publix, PNC Bank, Truist, SunTrust, United Community Bank, Synovus, Athena Bitcoin, Chase, iTHINK Financial, BB&T, Regions Bank, Ameris Bank, USAA, Fifth Third Bank, Delta Community Credit Union, Western Union, LGE Community Credit Union, Community Bank of the South, Bank OZK, Allpoint, SRP Federal Credit Union, Georgia's Own Credit Union, First Citizens Bank, Credit Union of Georgia, Associated Credit Union]
+chargingStationOperators: [Electrify America, ChargePoint, Georgia Power, 'Tesla, Inc.', Volta, eVgo, Tesla, Whole Foods, NRG Energy, Middle Georgia State University, Georgia College, EVgo, Cobb EMC, City of Thomasville, Blink]
+clothesContainerOperators: [Green Zone Recycling]
 defaultSpeedLimitHasUrbanOrRural: true

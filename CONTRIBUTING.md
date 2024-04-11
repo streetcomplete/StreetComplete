@@ -52,7 +52,7 @@ If you experience problems, crashes or a quest is not clear to you, feel free to
 
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
 2. Remember to report map style issues [in the appropriate repository](#issues-with-dependencies).
-3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues) (remember to check closed issues too, it may have already been fixed and is due to appear in the next release).
+3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue) (remember to check closed issues too, it may have already been fixed and is due to appear in the next release).
 
 ### Issues with dependencies
 
@@ -140,6 +140,6 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
 * [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
 * [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
-* [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_SHOP_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/osm/Shop.kt#L6)
+* [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/osm/Place.kt#L244)
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.

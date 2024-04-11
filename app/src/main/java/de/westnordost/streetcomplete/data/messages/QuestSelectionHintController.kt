@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.messages
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants.QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintState.NOT_SHOWN
@@ -8,11 +9,10 @@ import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.prefs.Preferences
 
 class QuestSelectionHintController(
     private val visibleQuestsSource: VisibleQuestsSource,
-    private val prefs: Preferences
+    private val prefs: ObservableSettings
 ) {
 
     interface Listener {
@@ -22,7 +22,7 @@ class QuestSelectionHintController(
 
     var state: QuestSelectionHintState
         set(value) {
-            prefs.putString(Prefs.QUEST_SELECTION_HINT_STATE, value.toString())
+            prefs.putString(Prefs.QUEST_SELECTION_HINT_STATE, value.name)
             listeners.forEach { it.onQuestSelectionHintStateChanged() }
         }
         get() {

@@ -27,7 +27,10 @@ data class ElementEdit(
     override val isSynced: Boolean,
 
     /** The action to perform */
-    val action: ElementEditAction
+    val action: ElementEditAction,
+
+    /** Whether the user was near the element that is being edited when this edit was created */
+    val isNearUserLocation: Boolean
 ) : Edit {
     override val isUndoable: Boolean get() = !isSynced || action is IsActionRevertable
     override val key: ElementEditKey get() = ElementEditKey(id)

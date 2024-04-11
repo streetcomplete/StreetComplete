@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.osm
 
-import de.westnordost.streetcomplete.osm.cycleway.createCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.estimatedWidth
-import de.westnordost.streetcomplete.osm.shoulders.createShoulders
-import de.westnordost.streetcomplete.osm.street_parking.createStreetParkingSides
+import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
+import de.westnordost.streetcomplete.osm.shoulders.parseShoulders
 import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOffRoad
 import de.westnordost.streetcomplete.osm.street_parking.estimatedWidthOnRoad
+import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 
-/** Functions to estimate road width(s). */
+/* Functions to estimate road width(s). */
 
 /** Estimated width of the roadway "from curb to curb". So, including any parking
  *  lanes on the street, cycle lanes, shoulders etc.
@@ -48,7 +48,7 @@ fun guessRoadwayWidth(tags: Map<String, String>): Float {
 
 /** Estimated width of shoulders, if any. If there is no shoulder tagging, returns null. */
 fun estimateShouldersWidth(tags: Map<String, String>): Float? {
-    val shoulders = createShoulders(tags, false) ?: return null
+    val shoulders = parseShoulders(tags, false) ?: return null
     val shoulderWidth = tags["shoulder:width"]?.toFloatOrNull() ?: SHOULDER
     return (if (shoulders.left) shoulderWidth else 0f) +
         (if (shoulders.right) shoulderWidth else 0f)
@@ -83,19 +83,18 @@ fun hasDubiousRoadWidth(tags: Map<String, String>): Boolean? {
                 // all others should at least be broad enough to accommodate a truck
                 return usableWidth < 2.6f
             }
-        }
-        /* one may assume that if the usable width of non-oneway roads is below double the above
-           widths, it is also implausible, however, this is actually sometimes the case, by design:
-           - on 2-1 roads (roads with no car lanes markings and advisory cycle lanes on both sides)
-             https://en.wikipedia.org/wiki/2-1_road
-           - certain residential streets with (partial) on-street parking that narrow them down so
-             much that drivers have to do a slalom around the parking cars and have to wait on each
-             other to pass them
-           Hence, to declare such common cases implausible is dubious.
-           However, if the total carriageway (ignoring street parking etc.) of a non-oneway is below
-           2x the above, then it is dubious
-         */
-        else {
+        } else {
+            /* one may assume that if the usable width of non-oneway roads is below double the above
+               widths, it is also implausible, however, this is actually sometimes the case, by design:
+               - on 2-1 roads (roads with no car lanes markings and advisory cycle lanes on both sides)
+                 https://en.wikipedia.org/wiki/2-1_road
+               - certain residential streets with (partial) on-street parking that narrow them down so
+                 much that drivers have to do a slalom around the parking cars and have to wait on each
+                 other to pass them
+               Hence, to declare such common cases implausible is dubious.
+               However, if the total carriageway (ignoring street parking etc.) of a non-oneway is below
+               2x the above, then it is dubious
+             */
             val width = estimateRoadwayWidth(tags) ?: return null
             return width < 2 * 2.6f
         }
@@ -107,7 +106,7 @@ fun hasDubiousRoadWidth(tags: Map<String, String>): Boolean? {
  *
  *  Returns null if no street parking is specified */
 fun estimateParkingOnRoadWidth(tags: Map<String, String>): Float? {
-    val sides = createStreetParkingSides(tags) ?: return null
+    val sides = parseStreetParkingSides(tags) ?: return null
     return (sides.left?.estimatedWidthOnRoad ?: 0f) + (sides.right?.estimatedWidthOnRoad ?: 0f)
 }
 
@@ -115,7 +114,7 @@ fun estimateParkingOnRoadWidth(tags: Map<String, String>): Float? {
  *
  *  Returns null if no street parking is specified */
 fun estimateParkingOffRoadWidth(tags: Map<String, String>): Float? {
-    val sides = createStreetParkingSides(tags) ?: return null
+    val sides = parseStreetParkingSides(tags) ?: return null
     return (sides.left?.estimatedWidthOffRoad ?: 0f) + (sides.right?.estimatedWidthOffRoad ?: 0f)
 }
 
@@ -132,7 +131,7 @@ fun estimateCycleTrackWidth(tags: Map<String, String>): Float? =
     estimateCyclewaysWidth(tags, false)
 
 private fun estimateCyclewaysWidth(tags: Map<String, String>, isLane: Boolean): Float? {
-    val sides = createCyclewaySides(tags, false) ?: return null
+    val sides = parseCyclewaySides(tags, false) ?: return null
 
     val leftWidth = if (sides.left?.cycleway?.isLane == isLane) {
         (tags["cycleway:both:width"] ?: tags["cycleway:left:width"])?.toFloatOrNull()

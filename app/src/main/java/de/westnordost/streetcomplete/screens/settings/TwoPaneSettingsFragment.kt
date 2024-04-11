@@ -9,9 +9,7 @@ import de.westnordost.streetcomplete.screens.settings.questselection.QuestSelect
 /** Shows the settings lists and details in a two pane layout. */
 class TwoPaneSettingsFragment : TwoPaneHeaderFragment() {
 
-    override fun onCreatePreferenceHeader(): PreferenceFragmentCompat {
-        return SettingsFragment()
-    }
+    override fun onCreatePreferenceHeader(): PreferenceFragmentCompat = SettingsFragment()
 
     override fun onCreateInitialDetailFragment(): Fragment {
         val launchQuestSettings = requireActivity().intent.getBooleanExtra(

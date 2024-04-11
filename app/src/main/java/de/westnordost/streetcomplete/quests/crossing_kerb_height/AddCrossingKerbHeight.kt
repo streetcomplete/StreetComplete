@@ -20,7 +20,6 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
         nodes with
           highway = crossing
           and foot != no
-          and crossing
           and (!kerb:left or !kerb:right)
           and (
             !kerb
@@ -37,6 +36,7 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
         ways with
           highway and access ~ private|no
           or highway ~ footway|path|cycleway
+          or highway = service and service = driveway
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine the heights of kerbs at crossings"

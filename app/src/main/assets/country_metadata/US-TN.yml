@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [NRG Energy]
+atmOperators: [Bank of America, SunTrust, Regions, Regions Bank, Heritage Bank, Fifth Third Bank, ORNL Federal Credit Union, Fort Campbell Federal Credit Union, First Horizon Bank, Eastman Credit Union]
+chargingStationOperators: [ChargePoint, NRG Energy, Blink, 'Tesla, Inc.', Electrify America]
 defaultSpeedLimitHasUrbanOrRural: true

@@ -1,2 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Ulster Bank, Danske Bank, Bank of Ireland, AIB, Santander, RBS, Halifax, First Trust, Nationwide, HSBC UK, Barclays, Post Office, Northern Bank, ChangeGroup, Cashzone]
+chargingStationOperators: [ecarNI, ESB ecars, ESB Group, BP Pulse, EasyGo, 'Tesla, Inc.', Pod Point, ChargePoint, Weev, Porsche]
+clothesContainerOperators: [Cancer Fund for Children]
 officialLanguages: [en, ga]

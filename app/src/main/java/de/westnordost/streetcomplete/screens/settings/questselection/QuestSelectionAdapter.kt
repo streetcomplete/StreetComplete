@@ -1,181 +1,63 @@
 package de.westnordost.streetcomplete.screens.settings.questselection
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
-import de.westnordost.streetcomplete.util.ktx.containsAll
-import de.westnordost.streetcomplete.util.ktx.containsAny
-import de.westnordost.streetcomplete.util.ktx.getIds
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancelChildren
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.Collections
 import java.util.Locale
-import java.util.concurrent.FutureTask
 
 /** Adapter for the list in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionAdapter(
     private val context: Context,
-    private val visibleQuestTypeController: VisibleQuestTypeController,
-    private val questTypeOrderController: QuestTypeOrderController,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val onListSizeChanged: (Int) -> Unit,
-    countryBoundaries: FutureTask<CountryBoundaries>,
-    mapPosition: LatLon
-) : ListAdapter<QuestVisibility, QuestSelectionAdapter.QuestVisibilityViewHolder>(QuestDiffUtil), DefaultLifecycleObserver {
+    private val viewModel: QuestSelectionViewModel
+) : RecyclerView.Adapter<QuestSelectionAdapter.QuestSelectionViewHolder>() {
 
-    private val currentCountryCodes = countryBoundaries.get().getIds(mapPosition)
     private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
 
-    private val englishResources by lazy {
-        val conf = Configuration(context.resources.configuration)
-        conf.setLocale(Locale.ENGLISH)
-        val localizedContext = context.createConfigurationContext(conf)
-        localizedContext.resources
-    }
-
-    private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-
-    /** all quest types */
-    private var questTypes: MutableList<QuestVisibility> = mutableListOf()
+    var quests: List<QuestSelection> = listOf()
         set(value) {
-            field = value
-            submitList(field)
+            val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+                override fun getOldListSize() = field.size
+                override fun getNewListSize() = value.size
+                override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                    field[oldItemPosition].questType == value[newItemPosition].questType
+                override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                    field[oldItemPosition].selected == value[newItemPosition].selected
+            })
+            field = value.toList()
+            diff.dispatchUpdatesTo(this)
         }
 
-    var filter: String = ""
-        set(value) {
-            val n = value.trim()
-            if (n != field) {
-                field = n
-                filterQuestTypes(field)
-            }
-        }
-
-    private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>) =
-        genericQuestTitle(context.resources, questType).lowercase().containsAll(words)
-        || genericQuestTitle(englishResources, questType).lowercase().containsAll(words)
-
-    private fun filterQuestTypes(f: String) {
-        if (f.isEmpty()) {
-            submitList(questTypes)
-        } else {
-            val words = f.lowercase().split(' ')
-            submitList(questTypes.filter { questTypeMatchesSearchWords(it.questType, words) })
-        }
-    }
-
-    private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) {
-            /* not doing anything here - we assume that this happened due to a tap on the checkbox
-             * for a quest, so the display and data was already updated :-/ */
-        }
-
-        override fun onQuestTypeVisibilitiesChanged() {
-            // all/many visibilities have changed - update the data and notify UI of changes
-            viewLifecycleScope.launch {
-                withContext(Dispatchers.IO) {
-                    questTypes.forEach { it.visible = visibleQuestTypeController.isVisible(it.questType) }
-                }
-                notifyDataSetChanged()
-            }
-        }
-    }
-
-    private val questTypeOrderListener = object : QuestTypeOrderSource.Listener {
-        override fun onQuestTypeOrderAdded(item: QuestType, toAfter: QuestType) {
-            val itemIndex = questTypes.indexOfFirst { it.questType == item }
-            val toAfterIndex = questTypes.indexOfFirst { it.questType == toAfter }
-
-            val questType = questTypes.removeAt(itemIndex)
-            questTypes.add(toAfterIndex + if (itemIndex > toAfterIndex) 1 else 0, questType)
-            /* not calling notifyItemMoved here because the view change has already been performed
-               on drag&drop, we just need to update the data now */
-        }
-
-        override fun onQuestTypeOrdersChanged() {
-            // all/many quest orders have been changed - re-init list
-            viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
-        }
-    }
-
-    override fun onStart(owner: LifecycleOwner) {
-        viewLifecycleScope.launch { questTypes = createQuestTypeVisibilityList() }
-
-        visibleQuestTypeController.addListener(visibleQuestsListener)
-        questTypeOrderController.addListener(questTypeOrderListener)
-    }
-
-    override fun onStop(owner: LifecycleOwner) {
-        visibleQuestTypeController.removeListener(visibleQuestsListener)
-        questTypeOrderController.removeListener(questTypeOrderListener)
-    }
-
-    override fun onDestroy(owner: LifecycleOwner) {
-        // not calling .cancel because the adapter can be re-used with a new view
-        viewLifecycleScope.coroutineContext.cancelChildren()
-    }
+    override fun getItemCount(): Int = quests.size
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestVisibilityViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestSelectionViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return QuestVisibilityViewHolder(RowQuestSelectionBinding.inflate(inflater, parent, false))
+        return QuestSelectionViewHolder(RowQuestSelectionBinding.inflate(inflater, parent, false))
     }
 
-    override fun onBindViewHolder(holder: QuestVisibilityViewHolder, position: Int) {
-        holder.onBind(getItem(position))
-    }
-
-    override fun onCurrentListChanged(
-        previousList: MutableList<QuestVisibility>,
-        currentList: MutableList<QuestVisibility>,
-    ) {
-        onListSizeChanged(currentList.size)
-    }
-
-    private suspend fun createQuestTypeVisibilityList() = withContext(Dispatchers.IO) {
-        val sortedQuestTypes = questTypeRegistry.toMutableList()
-        questTypeOrderController.sort(sortedQuestTypes)
-        sortedQuestTypes.map { QuestVisibility(it, visibleQuestTypeController.isVisible(it)) }.toMutableList()
+    override fun onBindViewHolder(holder: QuestSelectionViewHolder, position: Int) {
+        holder.onBind(quests[position])
     }
 
     /** Contains the logic for drag and drop (for reordering) */
@@ -183,13 +65,8 @@ class QuestSelectionAdapter(
         private var draggedFrom = -1
         private var draggedTo = -1
 
-        /** during dragging, a mutable copy of the quest types. This is necessary to show the
-         *  dragging animation (where the dragged item pushes aside other items to make room while
-         *  being dragged). */
-        private var questTypesDuringDrag: MutableList<QuestVisibility>? = null
-
         override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
-            val qv = (viewHolder as QuestVisibilityViewHolder).item
+            val qv = (viewHolder as QuestSelectionViewHolder).item ?: return 0
             if (!qv.isInteractionEnabled) return 0
 
             return makeFlag(ACTION_STATE_IDLE, UP or DOWN) or
@@ -199,14 +76,13 @@ class QuestSelectionAdapter(
         override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
             val from = viewHolder.bindingAdapterPosition
             val to = target.bindingAdapterPosition
-            if (questTypesDuringDrag == null) questTypesDuringDrag = currentList.toMutableList()
-            Collections.swap(questTypesDuringDrag!!, from, to)
+            Collections.swap(quests, from, to)
             notifyItemMoved(from, to)
             return true
         }
 
         override fun canDropOver(recyclerView: RecyclerView, current: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-            val qv = (target as QuestVisibilityViewHolder).item
+            val qv = (target as QuestSelectionViewHolder).item ?: return false
             return qv.isInteractionEnabled
         }
 
@@ -224,19 +100,14 @@ class QuestSelectionAdapter(
         }
 
         private fun onDropped() {
-            val qt = questTypesDuringDrag
             /* since we modify the quest list during move (in onMove) for the animation, the quest
              * type we dragged is now already at the position we want it to be. */
-            if (draggedTo != draggedFrom && draggedTo > 0 && qt != null) {
-                val item = qt[draggedTo].questType
-                val toAfter = qt[draggedTo - 1].questType
+            if (draggedTo != draggedFrom && draggedTo > 0) {
+                val item = quests[draggedTo].questType
+                val toAfter = quests[draggedTo - 1].questType
 
-                viewLifecycleScope.launch(Dispatchers.IO) {
-                    questTypeOrderController.addOrderItem(item, toAfter)
-                }
+                viewModel.orderQuest(item, toAfter)
             }
-
-            questTypesDuringDrag = null
             draggedFrom = -1
             draggedTo = -1
         }
@@ -247,35 +118,54 @@ class QuestSelectionAdapter(
     }
 
     /** View Holder for a single quest type */
-    inner class QuestVisibilityViewHolder(private val binding: RowQuestSelectionBinding) :
-        RecyclerView.ViewHolder(binding.root), CompoundButton.OnCheckedChangeListener {
+    inner class QuestSelectionViewHolder(private val binding: RowQuestSelectionBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        lateinit var item: QuestVisibility
+        var item: QuestSelection? = null
 
-        private val isEnabledInCurrentCountry: Boolean
-            get() {
-                (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-                    return when (val countries = questType.enabledInCountries) {
-                        is AllCountries -> true
-                        is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
-                        is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
-                    }
-                }
-                return true
-            }
-
-        fun onBind(with: QuestVisibility) {
-            this.item = with
-            val colorResId = if (item.isInteractionEnabled) R.color.background else R.color.greyed_out
-            itemView.setBackgroundResource(colorResId)
+        @SuppressLint("ClickableViewAccessibility")
+        fun onBind(item: QuestSelection) {
+            this.item = item
             binding.questIcon.setImageResource(item.questType.icon)
             binding.questTitle.text = genericQuestTitle(binding.questTitle.resources, item.questType)
-            binding.visibilityCheckBox.setOnCheckedChangeListener(null)
-            binding.visibilityCheckBox.isChecked = item.visible
-            binding.visibilityCheckBox.isEnabled = item.isInteractionEnabled
-            binding.visibilityCheckBox.setOnCheckedChangeListener(this)
 
+            binding.visibilityCheckBox.isEnabled = item.isInteractionEnabled
             binding.dragHandle.isInvisible = !item.isInteractionEnabled
+            itemView.setBackgroundResource(if (item.isInteractionEnabled) R.color.background else R.color.greyed_out)
+
+            if (!item.selected) {
+                binding.questIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.greyed_out))
+            } else {
+                binding.questIcon.clearColorFilter()
+            }
+            binding.visibilityCheckBox.isChecked = item.selected
+            binding.questTitle.isEnabled = item.selected
+
+            val isEnabledInCurrentCountry = viewModel.isQuestEnabledInCurrentCountry(item.questType)
+            binding.disabledText.isGone = isEnabledInCurrentCountry
+            if (!isEnabledInCurrentCountry) {
+                val country = viewModel.currentCountry?.let { Locale("", it).displayCountry } ?: "Atlantis"
+                binding.disabledText.text = binding.disabledText.resources.getString(
+                    R.string.questList_disabled_in_country, country
+                )
+            }
+
+            binding.visibilityCheckBox.setOnClickListener {
+                if (!item.selected && item.questType.defaultDisabledMessage != 0) {
+                    AlertDialog.Builder(context)
+                        .setTitle(R.string.enable_quest_confirmation_title)
+                        .setMessage(item.questType.defaultDisabledMessage)
+                        .setPositiveButton(android.R.string.ok) { _, _ ->
+                            viewModel.selectQuest(item.questType, true)
+                        }
+                        .setNegativeButton(android.R.string.cancel) { _, _ -> binding.visibilityCheckBox.isChecked = false }
+                        .setOnCancelListener { binding.visibilityCheckBox.isChecked = false }
+                        .show()
+                } else {
+                    viewModel.selectQuest(item.questType, !item.selected)
+                }
+            }
+
             binding.dragHandle.setOnTouchListener { v, event ->
                 when (event.actionMasked) {
                     MotionEvent.ACTION_DOWN -> itemTouchHelper.startDrag(this)
@@ -283,60 +173,6 @@ class QuestSelectionAdapter(
                 }
                 true
             }
-
-            binding.disabledText.isGone = isEnabledInCurrentCountry
-            if (!isEnabledInCurrentCountry) {
-                val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
-                binding.disabledText.text = binding.disabledText.resources.getString(
-                    R.string.questList_disabled_in_country, Locale("", cc).displayCountry
-                )
-            }
-
-            updateSelectionStatus()
-        }
-
-        private fun updateSelectionStatus() {
-            if (!item.visible) {
-                binding.questIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.greyed_out))
-            } else {
-                binding.questIcon.clearColorFilter()
-            }
-            binding.questTitle.isEnabled = item.visible
-        }
-
-        override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
-            if (!b || item.questType.defaultDisabledMessage == 0) {
-                applyChecked(b)
-            } else {
-                AlertDialog.Builder(compoundButton.context)
-                    .setTitle(R.string.enable_quest_confirmation_title)
-                    .setMessage(item.questType.defaultDisabledMessage)
-                    .setPositiveButton(android.R.string.ok) { _, _ -> applyChecked(b) }
-                    .setNegativeButton(android.R.string.cancel) { _, _ -> compoundButton.isChecked = false }
-                    .setOnCancelListener { compoundButton.isChecked = false }
-                    .show()
-            }
-        }
-
-        private fun applyChecked(b: Boolean) {
-            item.visible = b
-            updateSelectionStatus()
-            viewLifecycleScope.launch(Dispatchers.IO) {
-                visibleQuestTypeController.setVisibility(item.questType, item.visible)
-            }
-        }
-    }
-
-    private object QuestDiffUtil : DiffUtil.ItemCallback<QuestVisibility>() {
-        override fun areItemsTheSame(oldItem: QuestVisibility, newItem: QuestVisibility): Boolean {
-            return oldItem.questType.name == newItem.questType.name
-        }
-
-        override fun areContentsTheSame(
-            oldItem: QuestVisibility,
-            newItem: QuestVisibility,
-        ): Boolean {
-            return oldItem.visible == newItem.visible
         }
     }
 }

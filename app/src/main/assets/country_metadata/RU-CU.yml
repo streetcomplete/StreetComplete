@@ -1,2 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Сбербанк, ПАО Сбербанк, Альфа-Банк, Промсвязьбанк, Банк ВТБ (ПАО), ВТБ, ПАО "АК БАРС" БАНК, Авангард, Газпромбанк, АО "Альфа-Банк", Россельхозбанк, Открытие, РГС Банк, Ак Барс Банк, АО "Тинькофф Банк"]
+chargingStationOperators: [РусГидро]
 officialLanguages: [ru, cv]

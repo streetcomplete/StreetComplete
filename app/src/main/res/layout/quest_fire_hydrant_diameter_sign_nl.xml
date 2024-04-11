@@ -37,7 +37,7 @@
         android:id="@+id/suggestionsButton"
         android:layout_width="48dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_expand_down_24dp"
+        app:srcCompat="@drawable/ic_arrow_expand_down_24dp"
         app:tint="@color/traffic_white"
         app:layout_constraintRight_toRightOf="@id/diameterInput"
         app:layout_constraintTop_toTopOf="@id/diameterInput"

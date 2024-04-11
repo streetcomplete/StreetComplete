@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.view.image_select.Item
 
 fun Religion.asItem(): DisplayItem<Religion>? {
     val iconResId = iconResId ?: return null
-    val titleResId = titleResId  ?: return null
+    val titleResId = titleResId ?: return null
     return Item(this, iconResId, titleResId)
 }
 

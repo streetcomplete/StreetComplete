@@ -10,8 +10,13 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
-/** Deletes old unused data in the background */
+/** Deletes old unused persisted data in the background */
 class Cleaner(
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
@@ -20,7 +25,9 @@ class Cleaner(
     private val logsController: LogsController,
     private val mapTilesDownloader: MapTilesDownloader,
 ) {
-    fun clean() {
+    private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Cleaner") + Dispatchers.IO)
+
+    fun cleanOld() = scope.launch {
         val time = nowAsEpochMilliseconds()
 
         val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
@@ -28,13 +35,22 @@ class Cleaner(
         mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         downloadedTilesController.deleteOlderThan(oldDataTimestamp)
         mapTilesDownloader.deleteRegionsOlderThan(oldDataTimestamp)
-        /* do this after cleaning map data and notes, because some metadata rely on map data */
+        // do this after cleaning map data and notes, because some metadata rely on map data
         questTypeRegistry.forEach { it.deleteMetadataOlderThan(oldDataTimestamp) }
 
         val oldLogTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_LOG_AFTER
         logsController.deleteOlderThan(oldLogTimestamp)
 
         Log.i(TAG, "Cleaning took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
+    }
+
+    fun cleanAll() = scope.launch {
+        mapTilesDownloader.clear()
+        downloadedTilesController.clear()
+        mapDataController.clear()
+        noteController.clear()
+        logsController.clear()
+        questTypeRegistry.forEach { it.deleteMetadataOlderThan(nowAsEpochMilliseconds()) }
     }
 
     companion object {

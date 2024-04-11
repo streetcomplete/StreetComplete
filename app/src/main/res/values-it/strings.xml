@@ -279,8 +279,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="produce_walnuts">"Noci"</string>
     <string name="produce_sisal">"Agave sisalana"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Non riesco ad esplorare la zona. Prova ad aumentare lo zoom o a tenere la mappa meno inclinata."</string>
-    <string name="quest_crossing_type_title">"Che tipo di attraversamento pedonale è questo?"</string>
-    <string name="quest_crossing_type_unmarked">"Attraversamento senza segnaletica stradale"</string>
     <string name="action_undo">"Cancella"</string>
     <string name="produce_mangosteen">"Mangostano"</string>
     <string name="produce_tomatoes">"Pomodori"</string>
@@ -442,7 +440,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_buildingType_transportation">"Stazione del trasporto pubblico"</string>
     <string name="quest_buildingType_university">"Università"</string>
     <string name="quest_buildingType_government">"Edificio governativo"</string>
-    <string name="quest_buildingType_cars">"Per auto"</string>
     <string name="quest_buildingType_carport">"Posto auto coperto"</string>
     <string name="quest_buildingType_carport_description">"tettoia per auto"</string>
     <string name="quest_buildingType_garage">"Garage singolo"</string>
@@ -481,7 +478,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_segregated_mixed">"Ciclisti e pedoni condividono lo stesso spazio"</string>
     <string name="quest_maxheight_title">"Qual è il limite di altezza qui?"</string>
     <string name="quest_maxheight_answer_noSign">"Non c’è alcun cartello…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"C’è spazio sufficiente per far passare anche il più alto dei camion (almeno 4,5 metri / 15 piedi)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Quest'altezza sembra improbabile. Confermi sia corretta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Chiusa da %1$s, %2$s"</string>
@@ -796,9 +792,6 @@ riconoscimento"</string>
     <string name="quest_lanes_answer_lanes_description2">"Specifica il numero totale di corsie segnate (entrambe le direzioni) utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vengono contate. Se invece qualche corsia è riservata ai bus per favore lascia un commento."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specifica il numero totale di corsie segnate in questo tratto utilizzabili dal traffico automobilistico. Le corsie ciclabili e quelle dei parcheggi non vanno contate. Se invece qualche corsia è riservata ai bus per favore lascia un commento."</string>
     <string name="quest_surface_value_rock">"Rocce"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"I camion alti possono passare"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"I camion alti non passano"</string>
-    <string name="quest_crossing_type_marked">"Attraversamento indicato"</string>
     <string name="quest_parkingType_street_side">"Parcheggio poco fuori dalla carreggiata"</string>
     <string name="quest_parkingType_lane">"Parcheggio sulla carreggiata"</string>
     <string name="quest_tracktype_grade2a">"Solido ma non pavimentato"</string>
@@ -843,7 +836,6 @@ Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio un
     <string name="team_mode_team_size_hint">"La modalità squadra consente gruppi da 2 a 12 persone."</string>
     <string name="team_mode_active">"Modalità squadra attiva"</string>
     <string name="team_mode_deactivated">"Modalità squadra disattivata"</string>
-    <string name="quest_crossing_type_signals_controlled">"Controllato da semafori"</string>
     <string name="undo_confirm_title2">"Vuoi cancellare questa modifica?"</string>
     <string name="synced">"Sincronizzato"</string>
     <string name="toast_undo_unavailable">"La modifica è già sincronizzata e non può essere cancellata"</string>
@@ -983,7 +975,7 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="street_parking_street_side">"Accanto alla strada solo su spazi dedicati"</string>
     <string name="street_parking_painted_area_only">"Sulla strada solo su spazi dedicati"</string>
     <string name="street_parking_separate">"Parcheggio visualizzato separatamente sulla mappa"</string>
-    <string name="street_parking_no">"Divieto di parcheggio"</string>
+    <string name="street_parking_no">"Nessun parcheggio/parcheggio vietato"</string>
     <string name="street_parking_prohibited">"Sosta vietata"</string>
     <string name="street_stopping_prohibited">"No fermata"</string>
     <string name="street_standing_prohibited">"Divieto di sosta"</string>
@@ -1229,7 +1221,6 @@ Sfortunatamente le policy del Google Play Store non permettono di avere link di 
     <string name="quest_drinking_water_type_spring">"Sorgiva"</string>
     <string name="quest_drinking_water_type_disused">"Fontanella dismessa"</string>
     <string name="overlay_addresses">"Indirizzi"</string>
-    <string name="overlay_shops">"Negozi"</string>
     <string name="name_label">"Nome:"</string>
     <string name="unknown_shop_title">"Tipo di luogo sconosciuto"</string>
     <string name="quest_address_answer_no_address">"Nessun indirizzo qui"</string>
@@ -1351,4 +1342,24 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="quest_recycling_type_food_waste">"Scarti di cibo"</string>
     <string name="quest_defibrillator_location">"Dove è posizionato questo defibrillatore?"</string>
     <string name="quest_defibrillator_location_description">"Per favore, fornisci una breve descrizione della posizione (es. \"Nell'androne\")."</string>
+    <string name="quest_sanitary_dump_station_title">"C'è una stazione di scarico?"</string>
+    <string name="quest_sanitary_dump_station_description">"Punto per depositare le sostanze di scarico di un bagno chimico di camper, caravan, ecc. Generalmente indicato da questo cartello:"</string>
+    <string name="quest_generalFee_title">"Bisogna pagare per usarlo?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"È una protezione antincendio"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Le protezioni antincendio non hanno superfici di cottura (griglie, piani, ecc), in opposizione alle griglie."</string>
+    <string name="about_title_logs">"Log (%1$d)"</string>
+    <string name="about_summary_logs">"da usare per le segnalazione di errori"</string>
+    <string name="action_filter">"Filtra"</string>
+    <string name="action_share">"Condividi log"</string>
+    <string name="about_title_show_logs">"Mostra log"</string>
+    <string name="label_log_newer_than">"Da"</string>
+    <string name="label_log_older_than">"Fino"</string>
+    <string name="label_log_message_contains">"Il messaggio contiene"</string>
+    <string name="title_logs_filters">"Filtra messaggi"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Numero di missioni nascoste: %d"</string>
+    <string name="link_every_door_description">"Editor di PDI completi per Android e iOS"</string>
+    <string name="link_mapcomplete_description">"Collezione di mappe OSM tematiche che mostrano e permettono la modifica di una caratteristica"</string>
+    <string name="link_forum_description">"Serve aiuto? Vuoi sapere cosa succede? Vieni su mingle, è fremente di attività delle community di tutto il mondo!"</string>
+    <string name="link_calendar_description">"Ci sono eventi o raduni OpenStreetMap vicino a te? (Se mancano, aggiungine uno!)"</string>
+    <string name="link_prettymapp_description">"Crea poster multicolore con la mappa del tuo quartiere"</string>
 </resources>

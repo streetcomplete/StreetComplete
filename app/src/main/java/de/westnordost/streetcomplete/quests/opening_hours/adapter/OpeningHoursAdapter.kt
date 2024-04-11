@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.databinding.QuestTimesWeekdayRowBinding
 import de.westnordost.streetcomplete.osm.opening_hours.model.Months
 import de.westnordost.streetcomplete.osm.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
@@ -175,7 +175,7 @@ class OpeningHoursAdapter(private val context: Context) :
         notifyItemInserted(insertIndex)
     }
 
-    fun createOpeningHours() = rows.toOpeningHoursRules()
+    fun createOpeningHours() = rows.toOpeningHours()
 
     fun changeToMonthsMode() {
         if (rows.isEmpty()) {

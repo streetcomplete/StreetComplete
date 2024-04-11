@@ -279,8 +279,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="produce_walnuts">"Nuci"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nu se poate descărca aici. Încercați să apropiați mai mult sau înclinați mai puțin harta."</string>
-    <string name="quest_crossing_type_title">"Ce fel de trecere este?"</string>
-    <string name="quest_crossing_type_unmarked">"Fără marcaje"</string>
     <string name="action_undo">"Anulează"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Roșii"</string>
@@ -443,7 +441,6 @@ la parter"</string>
     <string name="quest_buildingType_transportation">"Clădire transport public"</string>
     <string name="quest_buildingType_university">"Universitate"</string>
     <string name="quest_buildingType_government">"Clădire guvernamentală"</string>
-    <string name="quest_buildingType_cars">"Pentru mașini"</string>
     <string name="quest_buildingType_carport">"Umbrar"</string>
     <string name="quest_buildingType_carport_description">"acoperiș pentru o mașină"</string>
     <string name="quest_buildingType_garage">"Garaj simplu"</string>
@@ -482,7 +479,6 @@ la parter"</string>
     <string name="quest_segregated_mixed">"Bicliștii și pietonii folosesc același spațiu"</string>
     <string name="quest_maxheight_title">"Care este limita de înălțime?"</string>
     <string name="quest_maxheight_answer_noSign">"Nu este niciun indicator…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Este suficient spațiu de trecere chiar și pentru cele mai înalte camioane (cel puțin 4.5 metri / 15 picioare)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Înălțimea pare neplauzibilă. Sigur este corectă?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Închisă de %1$s, %2$s"</string>
@@ -797,9 +793,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="quest_lanes_answer_lanes_description_one_side2">"Specificați numărul total de benzi marcate ce pot fi utilizate de traficul auto. Benzile de bicicletă și benzile de parcare nu se numără.
 Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</string>
     <string name="quest_surface_value_rock">"Piatră"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Camioanele înalte pot trece"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Camioanele înalte nu pot trece"</string>
-    <string name="quest_crossing_type_marked">"Cu marcaje"</string>
     <string name="quest_parkingType_street_side">"Parcare adiacentă drumului"</string>
     <string name="quest_parkingType_lane">"Parcare pe carosabil"</string>
     <string name="quest_tracktype_grade2a">"Drum de pământ bătătorit"</string>
@@ -842,7 +835,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="team_mode_team_size_hint">"Modul de echipă funcționează pentru grupuri de 2 până la 12 persoane."</string>
     <string name="team_mode_active">"Modul echipă este activat"</string>
     <string name="team_mode_deactivated">"Modul echipă este dezactivat"</string>
-    <string name="quest_crossing_type_signals_controlled">"Controlată prin semafoare"</string>
     <string name="undo_confirm_title2">"Anulați următoarea editare?"</string>
     <string name="synced">"Sincronizat"</string>
     <string name="toast_undo_unavailable">"Această editare este deja sincronizată și nu mai poate fi anulată"</string>
@@ -1227,7 +1219,6 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă."</stri
     <string name="quest_drinking_water_type_spring">"Izvor"</string>
     <string name="quest_drinking_water_type_disused">"Dispozitiv pentru apă potabilă nefolosit"</string>
     <string name="overlay_addresses">"Adrese"</string>
-    <string name="overlay_shops">"Magazine"</string>
     <string name="name_label">"Nume:"</string>
     <string name="unknown_shop_title">"Alt fel de loc"</string>
     <string name="quest_address_answer_no_address">"Nicio adresă aici"</string>

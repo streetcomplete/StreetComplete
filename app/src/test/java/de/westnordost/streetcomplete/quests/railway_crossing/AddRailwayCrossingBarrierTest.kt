@@ -3,7 +3,8 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
@@ -55,19 +56,25 @@ class AddRailwayCrossingBarrierTest {
     }
 
     @Test fun `chicane answer sets barrier to no and chicane to yes`() {
-        questType.verifyAnswer(
-            RailwayCrossingBarrier.CHICANE,
-            StringMapEntryAdd("crossing:barrier", "no"),
-            StringMapEntryAdd("crossing:chicane", "yes"),
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("crossing:barrier", "no"),
+                StringMapEntryAdd("crossing:chicane", "yes"),
+            ),
+            questType.answerApplied(RailwayCrossingBarrier.CHICANE)
         )
     }
 
     @Test fun `barrier answer sets barrier and deletes chicane`() {
-        questType.verifyAnswer(
-            mapOf("crossing:chicane" to "yes"),
-            RailwayCrossingBarrier.FULL,
-            StringMapEntryAdd("crossing:barrier", "full"),
-            StringMapEntryDelete("crossing:chicane", "yes"),
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("crossing:barrier", "full"),
+                StringMapEntryDelete("crossing:chicane", "yes")
+            ),
+            questType.answerAppliedTo(
+                RailwayCrossingBarrier.FULL,
+                mapOf("crossing:chicane" to "yes")
+            )
         )
     }
 }

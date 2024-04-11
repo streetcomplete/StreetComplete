@@ -14,6 +14,7 @@ interface Overlay : ElementEditType {
     /** layers that should be hidden while this overlay is active */
     val hidesLayers: List<String> get() = emptyList()
 
+    /** Whether the form can be opened with a null element (=new element) */
     val isCreateNodeEnabled: Boolean get() = false
 
     /** return pairs of element to style for all elements in the map data that should be displayed */

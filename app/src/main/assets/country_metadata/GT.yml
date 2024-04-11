@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [5B, Banco Industrial, Cajero 5B, Bancared, Cajero Automatico Bancared, son, Banca Red, Banrural, BI, veronica lopez, BAC, Cajero BI]
+atmOperators: [5B, Banco Industrial, Bancared, Cajero 5B, Banrural, BI, son, Cajero BI, Cajero Automatico Bancared, Banco de Desarrollo Banrural, banco industrial, Banca Red, BAC]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 704

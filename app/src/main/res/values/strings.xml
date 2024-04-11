@@ -181,7 +181,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- Overlay tutorial screen -->
     <string name="overlays_tutorial_title">Overlays</string>
     <string name="overlays_tutorial_intro">"You found a new way to edit data!"</string>
-    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example shops or street surfaces.
+    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example “places“ or “street surfaces“.
 
 The data is highlighted in different colors to give you a good overview of what has been recorded so far.
 Missing data is always shown in red."</string>
@@ -238,6 +238,12 @@ Additionally, some overlays allow you to add new data at the position of a displ
 &lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
 &lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;"</string>
 
+    <string name="quest_disable_action">Disable</string>
+    <string name="quest_disable_title">Disable this quest type?</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure is not installed (yet)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure didn’t return a measurement.</string>
+    <string name="quest_disable_message_tape_measure">You could use a tape measure instead, but that might be a little awkward, after all.</string>
+
     <!-- Notifications -->
 
     <string name="unread_messages_message">You have %d unread messages in your inbox</string>
@@ -252,7 +258,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <!-- Team mode -->
 
     <string name="team_mode_exit">Exit Team Mode</string>
-    <string name="team_mode_description">When mapping the same area together in a group, you can enter team mode to split up quests between all team members.</string>
+    <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members.
+Each of you will then see different quests."</string>
     <string name="team_mode_team_size_label2">How many people are mapping? Enter the same number on everyone’s phone.</string>
     <string name="team_mode_team_size_hint">Team mode works for groups of 2 to 12 people.</string>
     <string name="team_mode_choose_color2">Next, each person must pick a different color. Choose yours:</string>
@@ -304,8 +311,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="about_title_sponsors">Sponsors</string>
     <string name="about_description_donate">Thank you for considering supporting this app! To see current donations and to donate yourself, tap on the respective platform:</string>
-    <string name="about_description_donate_google_play2">"Thank you for considering supporting this app!
-Unfortunately, due to Google Play Store policy, no links leading to donations may be displayed in-app. In this context, even linking to our project home is not allowed."</string>
+    <string name="about_description_donate_google_play3">"Thank you for considering supporting this app!
+You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app."</string>
 
     <string name="about_title_translate">Help translate this app</string>
     <string name="about_description_translate">%1$s is translated %2$d%%</string>
@@ -338,8 +345,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="credits_translations_title">Translations</string>
     <string name="credits_art_contributors_title">Art contributors</string>
     <string name="credits_projects_contributors_title">Projects made for StreetComplete</string>
-    <!-- As in "Person A, Person B, Person C and others..." -->
-    <string name="credits_and_more">and others…</string>
 
 
     <!-- Privacy screen -->
@@ -435,10 +440,14 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_josm_description">Fully-featured OSM editor for the desktop. This is the power tool for regular contributors.</string>
     <string name="link_vespucci_description">Advanced OSM editor for Android</string>
     <string name="link_ideditor_description">Simple OSM editor for the browser. Optimized for the desktop or large tablets</string>
+    <string name="link_every_door_description">Powerful POI editor for Android and iOS</string>
+    <string name="link_mapcomplete_description">Collection of thematic OSM maps that each show and let you edit one kind of feature</string>
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
     <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
     <string name="link_wiki_description">The wiki is your starting point to everything related to OpenStreetMap</string>
+    <string name="link_forum_description">Need help? Want to read what’s going on? Come and mingle, it’s bustling with activity from communities all over the globe!</string>
+    <string name="link_calendar_description">Are OpenStreetMap events or community meetings near you? (If not, you could add your own!)</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner’s guide</string>
     <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
     <string name="link_disaster_ninja_description">Map that shows recent natural disasters, interesting for humanitarian mappers. Also, shows many interesting statistics to analyze how well-mapped and up-to-date places are.</string>
@@ -459,6 +468,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
     <string name="link_opencampingmap_description">A map of campsites</string>
+    <string name="link_prettymapp_description">Create pretty multi-colored map posters of neighbourhoods</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
@@ -548,9 +558,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoring notes not phrased as questions"</string>
 
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
+    <string name="pref_title_quests_restore_hidden_summary">Number of hidden quests: %d</string>
     <string name="restore_confirmation">Restore</string>
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
-    <string name="restore_hidden_success">Restored %d hidden quests</string>
 
     <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
@@ -853,12 +863,13 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_transportation">Public transportation building</string>
     <string name="quest_buildingType_university">University building</string>
     <string name="quest_buildingType_government">Government building</string>
-    <string name="quest_buildingType_cars">For cars</string>
+    <string name="quest_buildingType_outbuilding">Outbuilding</string>
+    <string name="quest_buildingType_outbuilding_description">less important building on a property</string>
     <string name="quest_buildingType_carport">Carport</string>
     <string name="quest_buildingType_carport_description">roof for a car</string>
     <string name="quest_buildingType_garage">Single garage</string>
     <string name="quest_buildingType_garages">Multiple garages</string>
-    <string name="quest_buildingType_garages_description">Separate spaces for different owners/tenants</string>
+    <string name="quest_buildingType_garages_description">separate spaces for different owners/tenants</string>
     <string name="quest_buildingType_parking">Parking building</string>
     <string name="quest_buildingType_farm">On a farm</string>
     <string name="quest_buildingType_farmhouse">Farmhouse</string>
@@ -868,8 +879,12 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_silo">Silo</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_other">Other</string>
+    <string name="quest_buildingType_other_description">a specific building that is not selectable in this app</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_boathouse">Boathouse</string>
+    <string name="quest_buildingType_container">Container</string>
+    <string name="quest_buildingType_tent">Tent</string>
+    <string name="quest_buildingType_tomb">Tomb</string>
     <string name="quest_buildingType_allotment_house">Garden allotment outbuilding</string>
     <string name="quest_buildingType_grandstand">Grandstand</string>
     <string name="quest_buildingType_toilets">Toilets</string>
@@ -881,6 +896,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_service_description">building with machinery like pumps or transformers</string>
     <string name="quest_buildingType_hangar">Hangar</string>
     <string name="quest_buildingType_hangar_description">storage for airplanes, helicopters or spacecraft</string>
+    <string name="quest_buildingType_tower">Tower</string>
+    <string name="quest_buildingType_tower_description">any kind of tower</string>
     <string name="quest_buildingType_bunker">Bunker</string>
     <string name="quest_buildingType_historic">Historic</string>
     <string name="quest_buildingType_historic_description">building of historic value, constructed for an unknown or unclear purpose</string>
@@ -890,6 +907,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingType_ruins_description">derelict, ruined and unidentifiable building</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
     <string name="quest_buildingType_guardhouse">Guardhouse</string>
+    <string name="quest_buildingType_under_construction">Under construction</string>
 
     <!-- "stop" as in "bus stop". But could be a tram stop, railway stop etc. too -->
     <string name="quest_busStopBench_title2">"Is there a bench at this stop?"</string>
@@ -951,11 +969,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_crossing_yes">Yes (e.g. the curb is lowered here or there are markings)</string>
     <string name="quest_crossing_no">No, but crossing is possible</string>
     <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
-
-    <string name="quest_crossing_type_title">What kind of crossing is this?</string>
-    <string name="quest_crossing_type_signals_controlled">Controlled by traffic lights</string>
-    <string name="quest_crossing_type_marked">Marked</string>
-    <string name="quest_crossing_type_unmarked">Without road markings</string>
 
     <string name="quest_cycleway_title2">"Is there a bicycle lane or path here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
@@ -1086,6 +1099,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_leaf_type_needles">Needles</string>
     <string name="quest_leaf_type_broadleaved">Leaves</string>
     <string name="quest_leaf_type_mixed">Both are present</string>
+    <string name="quest_leafType_tree_title">Does this tree have needles or leaves?</string>
 
     <string name="quest_level_title2">On which level number is this place located?</string>
 
@@ -1097,9 +1111,6 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_maxheight_sign_below_bridge_title">What height limit is indicated below the bridge?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
     <string name="quest_maxheight_split_way_hint">If it doesn’t apply for the whole way, consider answering “%s”.</string>
-    <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">Tall trucks can pass through</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don’t fit"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
 
     <string name="quest_maxspeed_title_short2">"What’s the speed limit for this street?"</string>
@@ -1268,7 +1279,11 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
 
-    <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
+    <string name="quest_pedestrian_crossing_signals">"Do you have to wait for a traffic signal to cross here?"</string>
+
+    <string name="quest_pedestrian_crossing_island">"Does this crossing have an island?"</string>
+
+    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
 
     <string name="quest_amenityCover_title">Is this covered (protected from rain)?</string>
 
@@ -1300,6 +1315,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_bbq_fuel_wood">Wood</string>
     <string name="quest_bbq_fuel_electric">Electric</string>
     <string name="quest_bbq_fuel_charcoal">Charcoal</string>
+    <string name="quest_bbq_fuel_gas">Gas</string>
     <string name="quest_bbq_fuel_not_a_bbq">It’s a fire enclosure</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills.</string>
 
@@ -1664,7 +1680,9 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="overlay_addresses">Addresses</string>
     <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
 
-    <string name="overlay_shops">Shops</string>
+    <string name="overlay_buildings">Buildings</string>
+
+    <string name="overlay_places">Places</string>
     <string name="name_label">Name:</string>
     <!-- Used for places unknown by iD presets. Does not mean it is invalid. The wording that it is "unknown" is avoided so that the user does not think an action is necessary from him -->
     <string name="unknown_shop_title">Other kind of place</string>
@@ -1672,6 +1690,10 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="confirmation_replace_shop_message">"In that case, the opening hours, contact information etc. will have changed, too."</string>
     <string name="confirmation_replace_shop_yes">"Different place now"</string>
     <string name="confirmation_replace_shop_no">"Still same place"</string>
+
+    <string name="overlay_things">Things</string>
+    <string name="disused">disused</string>
+    <string name="unknown_object">Unknown object</string>
 
     <string name="overlay_street_parking">Street parking</string>
 
@@ -1722,5 +1744,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="label_log_older_than">To</string>
     <string name="label_log_message_contains">Message contains</string>
     <string name="title_logs_filters">Filter messages</string>
+    <string name="quest_isAmenityIndoor_outside_covered">Not inside, but covered</string>
 
 </resources>

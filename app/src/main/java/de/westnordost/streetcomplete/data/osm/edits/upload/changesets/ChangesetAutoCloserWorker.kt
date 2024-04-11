@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import android.content.Context
-import androidx.work.Worker
+import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.user.AuthorizationException
@@ -10,9 +10,9 @@ class ChangesetAutoCloserWorker(
     private val openChangesetsManager: OpenChangesetsManager,
     context: Context,
     workerParams: WorkerParameters
-) : Worker(context, workerParams) {
+) : CoroutineWorker(context, workerParams) {
 
-    override fun doWork(): Result {
+    override suspend fun doWork(): Result {
         try {
             openChangesetsManager.closeOldChangesets()
         } catch (e: ConnectionException) {

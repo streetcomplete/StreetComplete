@@ -6,9 +6,8 @@ import android.graphics.Canvas
 import android.graphics.RectF
 import androidx.core.graphics.toRect
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.view.presetIconIndex
@@ -16,27 +15,22 @@ import kotlin.math.ceil
 
 class MapIcons(
     private val context: Context,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val overlayRegistry: OverlayRegistry
+    private val allEditTypes: AllEditTypes,
 ) {
     val pinBitmaps by lazy { createPinBitmaps() }
     val presetBitmaps by lazy { createPresetBitmaps() }
 
     private fun createPinBitmaps(): HashMap<String, Bitmap> {
-        val questIconResIds = (
-            questTypeRegistry.map { it.icon } +
-            overlayRegistry.map { it.icon } +
-            OsmNoteQuestType.icon
-        ).toSortedSet()
+        val questIconResIds = (allEditTypes.map { it.icon } + OsmNoteQuestType.icon).toSortedSet()
 
         val result = HashMap<String, Bitmap>(questIconResIds.size)
 
         val scale = 2f
-        val size = context.dpToPx(71 * scale)
+        val size = context.resources.dpToPx(71 * scale)
         val sizeInt = ceil(size).toInt()
-        val iconSize = context.dpToPx(48 * scale)
-        val iconPinOffset = context.dpToPx(2 * scale)
-        val pinTopRightPadding = context.dpToPx(5 * scale)
+        val iconSize = context.resources.dpToPx(48 * scale)
+        val iconPinOffset = context.resources.dpToPx(2 * scale)
+        val pinTopRightPadding = context.resources.dpToPx(5 * scale)
 
         val pin = context.getDrawable(R.drawable.pin)!!
         val pinShadow = context.getDrawable(R.drawable.pin_shadow)!!

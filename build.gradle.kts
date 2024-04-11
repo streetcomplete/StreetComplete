@@ -4,8 +4,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        val kotlinVersion = "1.9.10"
-        classpath("com.android.tools.build:gradle:8.1.4")
+        val kotlinVersion = "1.9.22"
+        classpath("com.android.tools.build:gradle:8.2.2")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
     }
 }
@@ -114,6 +114,7 @@ tasks.register("updateStreetCompleteData") {
         "app:updateTranslationCompleteness",
         "app:copyDefaultStringsToEnStrings",
         "app:updateMapStyle",
+        "app:updateChangelog",
         "app:generateMetadataByCountry",
         "app:updateTranslatorCredits",
         "app:updateAvailableLanguages",

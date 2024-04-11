@@ -29,6 +29,7 @@ class SearchFeaturesDialog(
     text: String? = null,
     private val filterFn: (Feature) -> Boolean = { true },
     private val onSelectedFeatureFn: (Feature) -> Unit,
+    private val codesOfDefaultFeatures: List<String>,
     private val dismissKeyboardOnClose: Boolean = false,
 ) : AlertDialog(context) {
 
@@ -39,17 +40,7 @@ class SearchFeaturesDialog(
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
 
     private val defaultFeatures: List<Feature> by lazy {
-        listOf(
-            // ordered by usage number according to taginfo
-            "amenity/restaurant",
-            "shop/convenience",
-            "amenity/cafe",
-            "shop/supermarket",
-            "amenity/fast_food",
-            "amenity/pharmacy",
-            "shop/clothes",
-            "shop/hairdresser"
-        ).mapNotNull {
+        codesOfDefaultFeatures.mapNotNull {
             featureDictionary
                 .byId(it)
                 .forLocale(*locales)

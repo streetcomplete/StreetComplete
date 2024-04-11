@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -38,21 +39,25 @@ class AddSidewalkSurfaceTest {
     }
 
     @Test fun `remove all sidewalk information`() {
-        questType.verifyAnswer(
-            mapOf("sidewalk:left:surface" to "asphalt",
-                "sidewalk:right:surface" to "concrete",
-                "sidewalk:left:smoothness" to "excellent",
-                "sidewalk:right:smoothness" to "good",
-                "sidewalk:left" to "yes",
-                "sidewalk:right" to "yes",
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
+                StringMapEntryDelete("sidewalk:right:surface", "concrete"),
+                StringMapEntryDelete("sidewalk:left:smoothness", "excellent"),
+                StringMapEntryDelete("sidewalk:right:smoothness", "good"),
+                StringMapEntryDelete("sidewalk:left", "yes"),
+                StringMapEntryDelete("sidewalk:right", "yes")
             ),
-            SidewalkIsDifferent,
-            StringMapEntryDelete("sidewalk:left:surface", "asphalt"),
-            StringMapEntryDelete("sidewalk:right:surface", "concrete"),
-            StringMapEntryDelete("sidewalk:left:smoothness", "excellent"),
-            StringMapEntryDelete("sidewalk:right:smoothness", "good"),
-            StringMapEntryDelete("sidewalk:left", "yes"),
-            StringMapEntryDelete("sidewalk:right", "yes")
+            questType.answerAppliedTo(
+                SidewalkIsDifferent,
+                mapOf("sidewalk:left:surface" to "asphalt",
+                    "sidewalk:right:surface" to "concrete",
+                    "sidewalk:left:smoothness" to "excellent",
+                    "sidewalk:right:smoothness" to "good",
+                    "sidewalk:left" to "yes",
+                    "sidewalk:right" to "yes",
+                )
+            )
         )
     }
 

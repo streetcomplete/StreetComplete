@@ -278,8 +278,6 @@
     <string name="produce_walnuts">"Орехи"</string>
     <string name="produce_sisal">"Сизал"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Невъзможно сканирането. Опитайте се да приближите повече или наклонете леко картата."</string>
-    <string name="quest_crossing_type_title">"Какъв тип кръстовище е това?"</string>
-    <string name="quest_crossing_type_unmarked">"Необозначено кръстовище"</string>
     <string name="action_undo">"Отмяна"</string>
     <string name="produce_mangosteen">"Мангостин"</string>
     <string name="produce_tomatoes">"Домати"</string>
@@ -440,7 +438,6 @@
     <string name="quest_buildingType_transportation">"Сграда на обществен транспорт"</string>
     <string name="quest_buildingType_university">"Университет"</string>
     <string name="quest_buildingType_government">"Правителствена сграда"</string>
-    <string name="quest_buildingType_cars">"За автомобили"</string>
     <string name="quest_buildingType_carport">"Навес за коли"</string>
     <string name="quest_buildingType_carport_description">"само покрив, без стени"</string>
     <string name="quest_buildingType_garage">"Единичен гараж"</string>
@@ -479,7 +476,6 @@
     <string name="quest_segregated_mixed">"Пътеката е обща"</string>
     <string name="quest_maxheight_title">"Какво е ограничението за височина тук?"</string>
     <string name="quest_maxheight_answer_noSign">"Тук няма знак…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Има ли достатъчно височина за да могат да преминават високи камиони или автобуси (поне 4.5 м)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Тази височина изглежда нереална. Сигурни ли сте, че е вярна?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Затворена от %1$s, %2$s"</string>
@@ -786,9 +782,6 @@
     <string name="quest_lanes_answer_lanes_description2">"Въведете общия брой пътни ленти (в двете посоки), които са за автомобилен трафик. Велоалеите и ленти предназначени само за паркиране не се броят. Ако има ленти запазени за автобуси, оставете бележка."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Въведете броя на маркираните пътни ленти за автомобили. Велоалеите и лентите за паркиране не се броят. Ако има бус-ленти, по-добре оставете бележка."</string>
     <string name="quest_surface_value_rock">"Камъни"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Високи камиони могат да минат"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Високи камиони не могат да минат"</string>
-    <string name="quest_crossing_type_marked">"Маркирано пресичане"</string>
     <string name="quest_parkingType_street_side">"Паркиране до пътя"</string>
     <string name="quest_parkingType_lane">"Паркиране на пътя"</string>
     <string name="quest_tracktype_grade2a">"Солиден, но без покритие"</string>
@@ -831,7 +824,6 @@
     <string name="team_mode_team_size_hint">"Работа в екип за група от 2 до 12 човека"</string>
     <string name="team_mode_active">"Работата в екип е активирана"</string>
     <string name="team_mode_deactivated">"Работата в екип е прекратена"</string>
-    <string name="quest_crossing_type_signals_controlled">"Кръстовището е със светофари"</string>
     <string name="undo_confirm_title2">"Връщане на последната редакция?"</string>
     <string name="synced">"Синхронизирано"</string>
     <string name="toast_undo_unavailable">"Тази редакция вече е синхронизирана и не може да бъде върната"</string>
@@ -1207,8 +1199,8 @@
     <string name="quest_address_street_street_name_label">"Име на улица:"</string>
     <string name="quest_address_street_hint2">"Докоснете улица на картата, за да я изберете"</string>
     <string name="quest_bicycle_incline_title">"Коя посока е за нагоре?"</string>
-    <string name="quest_bicycle_incline_up_and_down">"Това е хмел нагоре и надолу"</string>
-    <string name="quest_drinking_water_type_generic_water_fountain">"Друг фонтан"</string>
+    <string name="quest_bicycle_incline_up_and_down">"Вертикални стойки"</string>
+    <string name="quest_drinking_water_type_generic_water_fountain">"Друг вид чешма"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Воден фонтан, изпускащ малка водна струя"</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">"Само презареждане на бутилки"</string>
     <string name="quest_drinking_water_type_tap">"Кран за вода"</string>
@@ -1217,7 +1209,6 @@
     <string name="quest_drinking_water_type_spring">"Извор"</string>
     <string name="quest_drinking_water_type_disused">"Неизползван обект за питейна вода"</string>
     <string name="overlay_addresses">"Адреси"</string>
-    <string name="overlay_shops">"Магазини"</string>
     <string name="name_label">"Име:"</string>
     <string name="unknown_shop_title">"Друг вид място"</string>
     <string name="quest_address_answer_no_address">"Тук няма адрес"</string>
@@ -1308,6 +1299,7 @@
     <string name="lane_narrowing_traffic_calming_choker">"Разширен бордюр"</string>
     <string name="lane_narrowing_traffic_calming_island">"Остров"</string>
     <string name="lane_narrowing_traffic_calming_chicane">"Шикан"</string>
+    <string name="lane_narrowing_traffic_calming_choked_island">"Разширение на бордюра + остров за движение"</string>
     <string name="lane_narrowing_traffic_calming_none">"Няма стеснение на пътя"</string>
     <string name="quest_tactilePaving_title_steps">"Има ли тактилна настилка на най-горното и най-долното стъпало?"</string>
     <string name="quest_tactilePaving_steps_top">"Само на най-горното"</string>
@@ -1315,4 +1307,43 @@
     <string name="overlay_addresses_no_entrance">"Това не е вход"</string>
     <string name="quest_cycleway_value_sidewalk2">"Споделено ползване"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Споделено ползване, двупосочно"</string>
+    <string name="overlays_tutorial_title">"наслагвания"</string>
+    <string name="overlays_tutorial_intro">"Открихте нов начин за редактиране на данни!"</string>
+    <string name="overlays_tutorial_display">"Всяко наслагване показва един вид данни, например магазини или улични повърхности.
+
+Данните са подчертани в различни цветове, за да ви дадат добър преглед на записаното до момента.
+Липсващите данни винаги се показват в червено."</string>
+    <string name="overlays_tutorial_edit">"Докоснете маркираните данни, за да ги покажете или редактирате. Можете също така да разделите начини или да докладвате бележки, като при куестове.
+
+Освен това някои наслагвания ви позволяват да добавяте нови данни на позицията на показан мерник, като например наслагването на адреси."</string>
+    <string name="quest_crossing_kerb_height_title">"Каква е височината на бордюрите на това пресичане?"</string>
+    <string name="quest_maxheight_sign_title">"Какво ограничение на височината е посочено тук?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Каква граница на височината е посочена под моста?"</string>
+    <string name="quest_leave_new_note_as_answer">"В този случай трябва да оставите бележка, в която да обясните ситуацията."</string>
+    <string name="quest_drinking_water_type_title2">"Тук има ли питейна вода? Ако е така, какъв е източникът му?"</string>
+    <string name="quest_is_amenity_inside_title">"Това вътре в сграда ли е?"</string>
+    <string name="quest_bbq_fuel_title">"С какво се захранва тази скара?"</string>
+    <string name="quest_bbq_fuel_wood">"дърво"</string>
+    <string name="quest_bbq_fuel_electric">"Електрически"</string>
+    <string name="quest_bbq_fuel_charcoal">"дървени въглища"</string>
+    <string name="inside">"вътре"</string>
+    <string name="outside">"навън"</string>
+    <string name="quest_recycling_type_food_waste">"Хранителни отпадъци"</string>
+    <string name="quest_defibrillator_location">"Къде се намира този дефибрилатор?"</string>
+    <string name="quest_defibrillator_location_description">"Моля, предоставете кратко описание на местоположението му (напр. „в салона на портиера“)."</string>
+    <string name="quest_sanitary_dump_station_title">"Има ли санитарна станция?"</string>
+    <string name="quest_sanitary_dump_station_description">"Съоръжение за депониране на човешки отпадъци от резервоар за тоалетна на кемпер, камион за дълги разстояния и др. Обикновено се обозначава със знак като този:"</string>
+    <string name="quest_generalFee_title">"Трябва ли да платите, за да използвате това?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Това е противопожарно заграждение"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Огнеупорните камери нямат повърхност за готвене (напр. решетка/плоча), за разлика от скарите."</string>
+    <string name="about_title_logs">"Дневници (%1$d)"</string>
+    <string name="about_summary_logs">"за използване в отчети за грешки"</string>
+    <string name="action_filter">"Филтър"</string>
+    <string name="action_share">"Споделяне на регистрационни файлове"</string>
+    <string name="about_title_show_logs">"Показване на регистрационни файлове"</string>
+    <string name="label_log_level">"Ниво на дневник"</string>
+    <string name="label_log_newer_than">"от"</string>
+    <string name="label_log_older_than">"Да се"</string>
+    <string name="label_log_message_contains">"Съобщението съдържа"</string>
+    <string name="title_logs_filters">"Филтриране на съобщения"</string>
 </resources>

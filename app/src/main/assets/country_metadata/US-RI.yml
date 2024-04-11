@@ -1,2 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Citizens Bank, Bank of America]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.']
+clothesContainerOperators: [Goodwill]
 defaultSpeedLimitHasUrbanOrRural: true

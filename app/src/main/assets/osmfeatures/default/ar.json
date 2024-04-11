@@ -4097,10 +4097,6 @@
                     "name": "آلة بيع مواد غذائية",
                     "terms": "آلة بيع مواد غذائية"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "مضخة وقود",
-                    "terms": "مضخة وقود,مضخة غاز,مضخة بترول,مضخة جاز,مضخة سولار"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "آلة بيع آيس كريم",
                     "terms": "آلة بيع آيس كريم,آلة بيع مثلجات"
@@ -4128,10 +4124,6 @@
                 "amenity/vending_machine/stamps": {
                     "name": "آلة بيع طوابع بريدية",
                     "terms": "آلة بيع طوابع بريدية"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "آلة بيع الوجبات الخفيفة",
-                    "terms": "آلة بيع الوجبات الخفيفة"
                 },
                 "amenity/veterinary": {
                     "name": "عيادة بيطرية",
@@ -8429,10 +8421,6 @@
                 "traffic_calming/hump": {
                     "name": "مطب طويل لتخفيف السرعة",
                     "terms": "مطب لتخفيف السرعة"
-                },
-                "traffic_calming/island": {
-                    "name": "جزيرة فاصلة بين مسارين طريق",
-                    "terms": "جزيرة فاصلة بين مسارين طريق"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "مطبات تخفيف سرعة صغيرة",

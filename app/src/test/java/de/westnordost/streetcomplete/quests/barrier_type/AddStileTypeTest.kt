@@ -4,184 +4,219 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
-import de.westnordost.streetcomplete.quests.verifyAnswer
+import de.westnordost.streetcomplete.quests.answerAppliedTo
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class AddStileTypeTest {
     private val questType = AddStileType()
 
     @Test
     fun `set stile as squeezer`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-            ),
-            StileType.SQUEEZER,
-            StringMapEntryAdd("stile", "squeezer"),
+        assertEquals(
+            setOf(StringMapEntryAdd("stile", "squeezer")),
+            questType.answerAppliedTo(StileType.SQUEEZER, mapOf("barrier" to "stile"))
         )
     }
 
     @Test
     fun `set stile as still squeezer`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "stile" to "squeezer",
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("check_date", nowAsCheckDateString()),
+                StringMapEntryModify("stile", "squeezer", "squeezer"),
             ),
-            StileType.SQUEEZER,
-            StringMapEntryAdd("check_date", nowAsCheckDateString()),
-            StringMapEntryModify("stile", "squeezer", "squeezer"),
+            questType.answerAppliedTo(
+                StileType.SQUEEZER,
+                mapOf(
+                    "barrier" to "stile",
+                    "stile" to "squeezer",
+                )
+            )
         )
     }
 
     @Test
     fun `reset tags when marking stile as a rebuilt stepover`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "stile" to "stepover",
-                "material" to "wood",
-                "steps" to "5",
-                "tag_not_in_list_for_removal" to "dummy_value",
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("steps", "5"),
+                StringMapEntryModify("material", "wood", "stone"),
+                StringMapEntryModify("stile", "stepover", "stepover"),
             ),
-            StileType.STEPOVER_STONE,
-            StringMapEntryDelete("steps", "5"),
-            StringMapEntryModify("material", "wood", "stone"),
-            StringMapEntryModify("stile", "stepover", "stepover"),
+            questType.answerAppliedTo(
+                StileType.STEPOVER_STONE,
+                mapOf(
+                    "barrier" to "stile",
+                    "stile" to "stepover",
+                    "material" to "wood",
+                    "steps" to "5",
+                    "tag_not_in_list_for_removal" to "dummy_value",
+                )
+            )
         )
     }
 
     @Test
     fun `reset tags when stile has been rebuilt as another kind of stile`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "stile" to "stepover",
-                "material" to "wood",
-                "steps" to "5",
-                "tag_not_in_list_for_removal" to "dummy_value",
+        assertEquals(
+            setOf(
+                StringMapEntryModify("stile", "stepover", "squeezer"),
+                StringMapEntryDelete("steps", "5"),
+                StringMapEntryDelete("material", "wood"),
             ),
-            StileType.SQUEEZER,
-            StringMapEntryModify("stile", "stepover", "squeezer"),
-            StringMapEntryDelete("steps", "5"),
-            StringMapEntryDelete("material", "wood"),
+            questType.answerAppliedTo(
+                StileType.SQUEEZER,
+                mapOf(
+                    "barrier" to "stile",
+                    "stile" to "stepover",
+                    "material" to "wood",
+                    "steps" to "5",
+                    "tag_not_in_list_for_removal" to "dummy_value",
+                )
+            )
         )
     }
 
     @Test
     fun `don't reset tags when adding a stile type tag to an existing enhanced metadata stile`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "material" to "stone",
-                "tag_not_in_list_for_removal" to "dummy_value",
-            ),
-            StileType.SQUEEZER,
-            StringMapEntryAdd("stile", "squeezer"),
+        assertEquals(
+            setOf(StringMapEntryAdd("stile", "squeezer")),
+            questType.answerAppliedTo(
+                StileType.SQUEEZER,
+                mapOf(
+                    "barrier" to "stile",
+                    "material" to "stone",
+                    "tag_not_in_list_for_removal" to "dummy_value",
+                )
+            )
         )
     }
 
     @Test
     fun `don't reset tags when adding a stile type tag to a stile where the chosen material is already tagged`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "material" to "wood",
-                "tag_not_in_list_for_removal" to "dummy_value",
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("stile", "stepover"),
+                StringMapEntryModify("material", "wood", "wood")
             ),
-            StileType.STEPOVER_WOODEN,
-            StringMapEntryAdd("stile", "stepover"),
-            StringMapEntryModify("material", "wood", "wood"),
+            questType.answerAppliedTo(
+                StileType.STEPOVER_WOODEN,
+                mapOf(
+                    "barrier" to "stile",
+                    "material" to "wood",
+                    "tag_not_in_list_for_removal" to "dummy_value",
+                )
+            )
         )
     }
 
     @Test
     fun `handle adding stile tag where other values are present`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "material" to "stone",
-                "steps" to "3",
-                "tag_not_in_list_for_removal" to "dummy_value",
-            ),
-            StileType.SQUEEZER,
-            StringMapEntryAdd("stile", "squeezer"),
+        assertEquals(
+            setOf(StringMapEntryAdd("stile", "squeezer")),
+            questType.answerAppliedTo(
+                StileType.SQUEEZER,
+                mapOf(
+                    "barrier" to "stile",
+                    "material" to "stone",
+                    "steps" to "3",
+                    "tag_not_in_list_for_removal" to "dummy_value",
+                )
+            )
         )
     }
 
     @Test
     fun `handle unmodified, well tagged stepover`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "stile" to "stepover",
-                "material" to "wood",
-                "steps" to "5",
-                "tag_not_in_list_for_removal" to "dummy_value",
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("check_date", nowAsCheckDateString()),
+                StringMapEntryModify("stile", "stepover", "stepover"),
+                StringMapEntryModify("material", "wood", "wood"),
             ),
-            StileType.STEPOVER_WOODEN,
-            StringMapEntryAdd("check_date", nowAsCheckDateString()),
-            StringMapEntryModify("stile", "stepover", "stepover"),
-            StringMapEntryModify("material", "wood", "wood"),
-
+            questType.answerAppliedTo(
+                StileType.STEPOVER_WOODEN,
+                mapOf(
+                    "barrier" to "stile",
+                    "stile" to "stepover",
+                    "material" to "wood",
+                    "steps" to "5",
+                    "tag_not_in_list_for_removal" to "dummy_value",
+                )
+            )
         )
     }
 
     @Test
     fun `on stepover add material if everything else is tagged`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "stile" to "stepover",
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("material", "wood"),
+                StringMapEntryModify("stile", "stepover", "stepover"),
             ),
-            StileType.STEPOVER_WOODEN,
-            StringMapEntryAdd("material", "wood"),
-            StringMapEntryModify("stile", "stepover", "stepover"),
+            questType.answerAppliedTo(
+                StileType.STEPOVER_WOODEN,
+                mapOf(
+                    "barrier" to "stile",
+                    "stile" to "stepover",
+                )
+            )
         )
     }
 
     @Test
     fun `answering that it is now a kissing gate`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile"
+        assertEquals(
+            setOf(
+                StringMapEntryModify("barrier", "stile", "kissing_gate"),
             ),
-            ConvertedStile.KISSING_GATE,
-            StringMapEntryModify("barrier", "stile", "kissing_gate"),
+            questType.answerAppliedTo(
+                ConvertedStile.KISSING_GATE,
+                mapOf("barrier" to "stile")
+            )
         )
     }
 
     @Test
     fun `answering that it is now a kissing gate removes any stile properties`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "stile" to "something",
-                "material" to "something else",
-                "ref" to "123",
+        assertEquals(
+            setOf(
+                StringMapEntryModify("barrier", "stile", "kissing_gate"),
+                StringMapEntryDelete("stile", "something"),
+                StringMapEntryDelete("material", "something else"),
             ),
-            ConvertedStile.KISSING_GATE,
-            StringMapEntryModify("barrier", "stile", "kissing_gate"),
-            StringMapEntryDelete("stile", "something"),
-            StringMapEntryDelete("material", "something else"),
+            questType.answerAppliedTo(
+                ConvertedStile.KISSING_GATE,
+                mapOf(
+                    "barrier" to "stile",
+                    "stile" to "something",
+                    "material" to "something else",
+                    "ref" to "123",
+                )
+            )
         )
     }
 
     @Test
     fun `reset tags when marking stile as a passage`() {
-        questType.verifyAnswer(
-            mapOf(
-                "barrier" to "stile",
-                "stile" to "stepover",
-                "material" to "wood",
-                "steps" to "5",
-                "tag_not_in_list_for_removal" to "dummy_value",
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("steps", "5"),
+                StringMapEntryDelete("material", "wood"),
+                StringMapEntryDelete("stile", "stepover"),
+                StringMapEntryModify("barrier", "stile", "entrance"),
             ),
-            ConvertedStile.PASSAGE,
-            StringMapEntryDelete("steps", "5"),
-            StringMapEntryDelete("material", "wood"),
-            StringMapEntryDelete("stile", "stepover"),
-            StringMapEntryModify("barrier", "stile", "entrance"),
+            questType.answerAppliedTo(
+                ConvertedStile.PASSAGE,
+                mapOf(
+                    "barrier" to "stile",
+                    "stile" to "stepover",
+                    "material" to "wood",
+                    "steps" to "5",
+                    "tag_not_in_list_for_removal" to "dummy_value",
+                )
+            )
         )
     }
 }

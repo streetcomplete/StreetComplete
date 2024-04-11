@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.GridLayoutManager
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.padWith
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import org.koin.android.ext.android.inject
@@ -28,7 +28,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
-    private val prefs: Preferences by inject()
+    private val prefs: ObservableSettings by inject()
 
     override val defaultExpanded = false
 
@@ -112,13 +112,12 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
-    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
-        return if (originalList.size > itemsPerRow && moveFavoritesToFront) {
+    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> =
+        if (originalList.size > itemsPerRow && moveFavoritesToFront) {
             favs.get().filterNotNull().padWith(originalList).toList()
         } else {
             originalList
         }
-    }
 
     companion object {
         private const val SELECTED_INDICES = "selected_indices"

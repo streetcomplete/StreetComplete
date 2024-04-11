@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.data.overlays
 
+import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.Listeners
 
 class SelectedOverlayController(
-    private val selectedOverlayStore: SelectedOverlayStore,
+    private val prefs: ObservableSettings,
     private val overlayRegistry: OverlayRegistry
 ) : SelectedOverlaySource {
 
@@ -15,13 +17,14 @@ class SelectedOverlayController(
             if (selectedOverlay == value) return
 
             if (value != null && value in overlayRegistry) {
-                selectedOverlayStore.set(value.name)
+                prefs.putString(Prefs.SELECTED_OVERLAY, value.name)
             } else {
-                selectedOverlayStore.set(null)
+
+                prefs.remove(Prefs.SELECTED_OVERLAY)
             }
             listeners.forEach { it.onSelectedOverlayChanged() }
         }
-        get() = selectedOverlayStore.get()?.let { overlayRegistry.getByName(it) }
+        get() = prefs.getStringOrNull(Prefs.SELECTED_OVERLAY)?.let { overlayRegistry.getByName(it) }
 
     override fun addListener(listener: SelectedOverlaySource.Listener) {
         listeners.add(listener)

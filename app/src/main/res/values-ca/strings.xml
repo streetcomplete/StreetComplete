@@ -280,8 +280,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="produce_walnuts">"Nous"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"No pot escanejar aquí. Proveu d'ampliar més o d'inclinar menys el mapa."</string>
-    <string name="quest_crossing_type_title">"Quina classe d’encreuament és aquest?"</string>
-    <string name="quest_crossing_type_unmarked">"Encreuament sense senyals horitzontals"</string>
     <string name="action_undo">"Desfés"</string>
     <string name="produce_mangosteen">"Mangostà"</string>
     <string name="produce_tomatoes">"Tomàquets"</string>
@@ -443,7 +441,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_buildingType_transportation">"Edifici de transport públic"</string>
     <string name="quest_buildingType_university">"Edifici universitari"</string>
     <string name="quest_buildingType_government">"Edifici governamental"</string>
-    <string name="quest_buildingType_cars">"Per a cotxes"</string>
     <string name="quest_buildingType_carport">"Cobert per a vehícles"</string>
     <string name="quest_buildingType_carport_description">"cobert per a cotxes"</string>
     <string name="quest_buildingType_garage">"Garatge individual"</string>
@@ -482,7 +479,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_segregated_mixed">"Ciclistes i vianants ocupen el mateix espai"</string>
     <string name="quest_maxheight_title">"Quin és el límit d'alçada aquí?"</string>
     <string name="quest_maxheight_answer_noSign">"No hi ha senyal…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Hi ha espai suficient fins i tot per als tràilers més alts (4.5 metres / 15 peus) per passar-hi?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Aquesta alçada sembla increible. Estàs segur que és correcta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Tancat per %1$s, %2$s"</string>
@@ -796,9 +792,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="quest_lanes_answer_lanes_description_one_side2">"Especifiqueu el nombre de carrils marcats utilitzables pel trànsit de cotxes. Per tant, els carrils bici o dedicats a aparcaments no conten.
 Si algun dels carrils estan reservats per busos, deixeu una nota com a alternativa."</string>
     <string name="quest_surface_value_rock">"Roca"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Els camions alts poden passar-hi"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Els camions alts no hi caben"</string>
-    <string name="quest_crossing_type_marked">"Pas de zebra"</string>
     <string name="quest_parkingType_street_side">"Aparcament en bateria"</string>
     <string name="quest_parkingType_lane">"Aparcament en fila"</string>
     <string name="quest_tracktype_grade2a">"Sòlid però sense pavimentar"</string>
@@ -843,7 +836,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="team_mode_team_size_hint">"El mode equip funciona per a grups de 2 a 12 persones."</string>
     <string name="team_mode_active">"El mode d'equip està activat"</string>
     <string name="team_mode_deactivated">"S'ha desactivat el mode d'equip"</string>
-    <string name="quest_crossing_type_signals_controlled">"Encreuament controlat per semàfor"</string>
     <string name="undo_confirm_title2">"Desfer aquesta edició?"</string>
     <string name="synced">"Sincronitzat"</string>
     <string name="toast_undo_unavailable">"Aquesta edició ja està sincronitzada i no es pot desfer"</string>
@@ -1239,7 +1231,6 @@ Malauradament, a causa d'una política de Google Play Store, no es poden mostrar
     <string name="quest_drinking_water_type_spring">"Brollador"</string>
     <string name="quest_drinking_water_type_disused">"Objecte per a veure en desús"</string>
     <string name="overlay_addresses">"Adreces"</string>
-    <string name="overlay_shops">"Botigues"</string>
     <string name="name_label">"Nom:"</string>
     <string name="unknown_shop_title">"Tipus de lloc desconegut"</string>
     <string name="quest_address_answer_no_address">"No hi ha adreça"</string>
@@ -1350,4 +1341,30 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_crossing_kerb_height_title">"Quina és l'alçada dels vorals en aquest pas?"</string>
     <string name="quest_maxheight_sign_title">"Quin límit d'alçada s'indica aquí?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Quin límit d'alçada s'indica a sota del pont?"</string>
+    <string name="quest_leave_new_note_as_answer">"En aquest cas, cal deixar una nota on expliqui la situació."</string>
+    <string name="quest_drinking_water_type_title2">"Hi ha aigua potable aquí? Si és així, quina és la seva font?"</string>
+    <string name="quest_is_amenity_inside_title">"Això és dins d'un edifici?"</string>
+    <string name="quest_bbq_fuel_title">"Amb què funciona aquesta graella?"</string>
+    <string name="quest_bbq_fuel_wood">"Fusta"</string>
+    <string name="quest_bbq_fuel_electric">"Electricitat"</string>
+    <string name="quest_bbq_fuel_charcoal">"Carbó"</string>
+    <string name="inside">"Dins"</string>
+    <string name="outside">"Fora"</string>
+    <string name="quest_recycling_type_food_waste">"Restes de menjar"</string>
+    <string name="quest_defibrillator_location">"On es troba el desfibrilador?"</string>
+    <string name="quest_defibrillator_location_description">"Si us plau, proporcioneu una descripció concisa de la seva posició (p.e. , “a la sala del porter”)."</string>
+    <string name="quest_sanitary_dump_station_title">"Hi ha un abocador sanitari?"</string>
+    <string name="quest_sanitary_dump_station_description">"Instal·lació per dipositar els residus humans d'un vàter d'una autocaravana, camió de llarg recorregut, etc. Normalment s'indica amb un senyal com aquest:"</string>
+    <string name="quest_generalFee_title">"Cal pagar per utilitzar-lo?"</string>
+    <string name="about_title_logs">"Registres (%1$d)"</string>
+    <string name="about_summary_logs">"per utilitzar-los en informes d'errors"</string>
+    <string name="action_filter">"Filtre"</string>
+    <string name="action_share">"Comparteix registres"</string>
+    <string name="about_title_show_logs">"Mostra els registres"</string>
+    <string name="label_log_level">"Nivell de registre"</string>
+    <string name="label_log_newer_than">"Des de"</string>
+    <string name="label_log_older_than">"A"</string>
+    <string name="label_log_message_contains">"El missatge conté"</string>
+    <string name="title_logs_filters">"Filtrar missatges"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Nombre de missions amagades: %d"</string>
 </resources>

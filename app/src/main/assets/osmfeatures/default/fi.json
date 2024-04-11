@@ -2794,7 +2794,6 @@
                         "bump": "töyssy",
                         "chicane": "shikaani",
                         "hump": "lievä hidastetöyssy",
-                        "island": "keskisaareke",
                         "rumble_strip": "heräteraidat"
                     }
                 },
@@ -3890,9 +3889,6 @@
                 "amenity/vending_machine/food": {
                     "name": "Ruoka-automaatti"
                 },
-                "amenity/vending_machine/fuel": {
-                    "name": "Polttoainepumppu"
-                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Jäätelöautomaatti"
                 },
@@ -3915,10 +3911,6 @@
                 },
                 "amenity/vending_machine/stamps": {
                     "name": "Postimerkkiautomaatti"
-                },
-                "amenity/vending_machine/sweets": {
-                    "name": "Välipala-automaatti",
-                    "terms": "snack,välipala,patukka,karkki,automaatti,syötävää,syömistä"
                 },
                 "amenity/veterinary": {
                     "name": "Eläinlääkäri"
@@ -7156,10 +7148,6 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Lievä hidastustöyssy"
-                },
-                "traffic_calming/island": {
-                    "name": "Liikenteenjakaja",
-                    "terms": "saareke,keskisaareke"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Heräteraidat"

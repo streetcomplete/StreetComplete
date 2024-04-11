@@ -280,8 +280,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="produce_walnuts">"Graikiniai riešutai"</string>
     <string name="produce_sisal">"Sizalis"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nepavyksta čia skenuoti. Labiau priartinkite arba mažiau pakreipkite žemėlapį."</string>
-    <string name="quest_crossing_type_title">"Kokio tipo tai perėja?"</string>
-    <string name="quest_crossing_type_unmarked">"Perėja be horizontalaus žymėjimo"</string>
     <string name="action_undo">"Atšaukti"</string>
     <string name="produce_mangosteen">"Mangostaninė garcinija"</string>
     <string name="produce_tomatoes">"Pomidorai"</string>
@@ -443,7 +441,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_buildingType_transportation">"Viešo transporto pastatas"</string>
     <string name="quest_buildingType_university">"Universiteto pastatas"</string>
     <string name="quest_buildingType_government">"Vyriausybės pastatas"</string>
-    <string name="quest_buildingType_cars">"Mašinoms"</string>
     <string name="quest_buildingType_carport">"Mašinų garažas"</string>
     <string name="quest_buildingType_carport_description">"stogas mašinai"</string>
     <string name="quest_buildingType_garage">"Vienas garažas"</string>
@@ -482,7 +479,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_segregated_mixed">"Dviratininkai ir pėstieji dalinasi ta pačia erdve."</string>
     <string name="quest_maxheight_title">"Koks čia yra aukščio apribojimas?"</string>
     <string name="quest_maxheight_answer_noSign">"Nėra ženklo…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Ar čia yra pakankamai vietos net aukščiausiems sunkvežimiams (bent 4,5 metrai) pravažiuoti?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Aukštis atrodo neįmanomas. Ar jūs įsitikinę, kad jis teisingas?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Uždarė %1$s, %2$s"</string>
@@ -797,9 +793,6 @@ Jei kuri nors juosta skirta autobusams, palikite pastabą."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Nurodykite pažymėtų eismo juostų, kuriomis gali važiuoti automobiliai, skaičių. Dviračių ir specialios automobilių stovėjimo juostos neskaičiuojamos.
 Jei kuri nors juosta skirta autobusams, palikite pastabą."</string>
     <string name="quest_surface_value_rock">"Akmuo"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Aukšti sunkvežimiai gali pravažiuoti"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Aukšti sunkvežimiai netelpa"</string>
-    <string name="quest_crossing_type_marked">"Pažymėta"</string>
     <string name="quest_parkingType_street_side">"Automobilių stovėjimo aikštelė šalia kelio"</string>
     <string name="quest_parkingType_lane">"Parkavimas ant važiuojamosios dalies"</string>
     <string name="quest_tracktype_grade2a">"Kietai supiltas purvas"</string>
@@ -844,7 +837,6 @@ Atkreipkite dėmesį į visas galimas parinktis: kai kurie atvejai nėra akivaiz
     <string name="team_mode_team_size_hint">"komandinis veikia grupei nuo 2 iki 12 žmonių"</string>
     <string name="team_mode_active">"įjungtas komandinis režimas"</string>
     <string name="team_mode_deactivated">"komandinis režimas išjungtas"</string>
-    <string name="quest_crossing_type_signals_controlled">"yra šviesoforas"</string>
     <string name="undo_confirm_title2">"Atšaukti šį redagavimą?"</string>
     <string name="synced">"Sinchronizuota"</string>
     <string name="toast_undo_unavailable">"Šis redagavimas jau sinchronizuotas ir negali būti atšauktas"</string>
@@ -1196,6 +1188,7 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="quest_entrance_reference_reference_label">"Įėjimo etiketė:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Plokščias diapazonas:"</string>
     <string name="quest_entrance_reference_flat_range_to">"į"</string>
+    <string name="default_disabled_msg_overlay">"Šis klausimo tipas yra išjungtas, nes yra efektyvesnis būdas suvesti ir atnaujinti duomenis"</string>
     <string name="quest_camp_drinking_water_title">"Ar geriamas vanduo yra laisvai prieinamas stovyklautojams?"</string>
     <string name="quest_camp_shower_title">"Ar čia yra dušų?"</string>
     <string name="quest_camp_power_supply_title">"Ar yra galimybė klientams pasikrauti savo telefoną, kompiuterį ar kt.?"</string>
@@ -1212,7 +1205,6 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="quest_drinking_water_type_jet_water_fountain">"Vandens fontanas leidžantis mažą vandens srovę"</string>
     <string name="quest_drinking_water_type_hand_pump">"Rankinis pumpavimas"</string>
     <string name="overlay_addresses">"Adresai"</string>
-    <string name="overlay_shops">"Parduotuvės"</string>
     <string name="name_label">"Pavadinimas:"</string>
     <string name="unknown_shop_title">"Kitokio pobūdžio vieta"</string>
     <string name="quest_address_answer_no_address">"Nėra adreso"</string>

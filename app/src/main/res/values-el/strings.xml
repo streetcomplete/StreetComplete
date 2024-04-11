@@ -279,8 +279,6 @@
     <string name="produce_walnuts">"Καρύδια"</string>
     <string name="produce_sisal">"Αγαύη"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Δεν είναι δυνατή η σάρωση εδώ. Προσπαθήστε να μεγενθύνετε κι άλλο ή γύρτε τον χάρτη λιγότερο."</string>
-    <string name="quest_crossing_type_title">"Τι είδους διασταύρωση είναι αυτή;"</string>
-    <string name="quest_crossing_type_unmarked">"Διασταύρωση χωρίς οδικές σημάνσεις"</string>
     <string name="action_undo">"Αναίρεση"</string>
     <string name="produce_mangosteen">"Μανγκοστίν"</string>
     <string name="produce_tomatoes">"Ντομάτες"</string>
@@ -442,7 +440,6 @@
     <string name="quest_buildingType_transportation">"Κτίριο δημόσιων συγκοινωνιών"</string>
     <string name="quest_buildingType_university">"Κτίριο Πανεπιστημίου"</string>
     <string name="quest_buildingType_government">"Κυβερνητικό κτίριο"</string>
-    <string name="quest_buildingType_cars">"Για αυτοκίνητα"</string>
     <string name="quest_buildingType_carport">"Υπόστεγο αυτοκινήτου"</string>
     <string name="quest_buildingType_carport_description">"στέγη για ένα αυτοκίνητο"</string>
     <string name="quest_buildingType_garage">"Μονό γκαράζ"</string>
@@ -481,7 +478,6 @@
     <string name="quest_segregated_mixed">"Οι ποδηλάτες και οι πεζοί μοιράζονται τον ίδιο χώρο"</string>
     <string name="quest_maxheight_title">"Ποιό είναι το όριο του ύψους εδώ;"</string>
     <string name="quest_maxheight_answer_noSign">"Δεν υπάρχει πινακίδα…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Υπάρχει αρκετός χώρος για να περάσουν ακόμα και τα ψηλότερα φορτηγά (τουλάχιστον περίπου 4,5 μέτρα / 15 πόδια);"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Αυτό το ύψος φαίνεται απίθανο. Είστε βέβαιοι ότι είναι σωστό;"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Κλειστό από %1$s, %2$s"</string>
@@ -788,9 +784,6 @@
     <string name="quest_lanes_answer_lanes_description_one_side2">"Καθορίστε τον αριθμό των σηματοδοτημένων λωρίδων για την χρήση της κυκλοφορίας των αυτοκινήτων εδώ. Έτσι, οι μοτοσυκλέτες και οι ειδικές λωρίδες στάθμευσης δεν μετράνε.
 Εάν υπάρχουν λωρίδες που προορίζονται για λεωφορεία, παρακαλώ αφήστε ένα σημείωμα."</string>
     <string name="quest_surface_value_rock">"Πέτρα"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Μπορούν να περάσουν ψηλά φορτηγά"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Τα ψηλά φορτηγά δεν χωράνε"</string>
-    <string name="quest_crossing_type_marked">"Σηματοδοτημένες διαβάσεις"</string>
     <string name="quest_parkingType_street_side">"Χώρος στάθμευσης ακριβώς έξω από το δρόμο"</string>
     <string name="quest_parkingType_lane">"Χώρος στάθμευσης σε δρόμο"</string>
     <string name="quest_tracktype_grade2a">"Στερεό αλλά μη ασφαλτοστρωμένο"</string>
@@ -833,7 +826,6 @@
     <string name="team_mode_team_size_hint">"Η ομαδική κατάσταση λειτουργεί για ομάδες από 2 έως 12 άτομα."</string>
     <string name="team_mode_active">"Η λειτουργία ομάδας είναι ενεργή"</string>
     <string name="team_mode_deactivated">"Η λειτουργία ομάδας απενεργοποιήθηκε"</string>
-    <string name="quest_crossing_type_signals_controlled">"Η διέλευση ελέγχεται από φανάρια"</string>
     <string name="undo_confirm_title2">"Αναίρεση της ακόλουθης επεξεργασίας;"</string>
     <string name="synced">"Συγχρονισμένο"</string>
     <string name="toast_undo_unavailable">"Αυτή η επεξεργασία έχει ήδη συγχρονιστεί και δεν μπορεί να αναιρεθεί"</string>
@@ -1218,7 +1210,6 @@
     <string name="quest_drinking_water_type_spring">"Πηγή"</string>
     <string name="quest_drinking_water_type_disused">"Αχρησιμοποίητο αντικείμενο πόσιμου νερού"</string>
     <string name="overlay_addresses">"Διευθύνσεις"</string>
-    <string name="overlay_shops">"Καταστήματα"</string>
     <string name="name_label">"Όνομα:"</string>
     <string name="unknown_shop_title">"Άλλου είδους μέρος"</string>
     <string name="quest_address_answer_no_address">"Καμία διεύθυνση εδώ"</string>
@@ -1356,4 +1347,31 @@
     <string name="label_log_older_than">"Μέχρι"</string>
     <string name="label_log_message_contains">"Το μήνυμα περιέχει"</string>
     <string name="title_logs_filters">"Φιλτράρισμα μηνυμάτων"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Αριθμός κρυφών αναζητήσεων: %d"</string>
+    <string name="link_every_door_description">"Ισχυρό πρόγραμμα επεξεργασίας POI για Android και iOS"</string>
+    <string name="link_mapcomplete_description">"Συλλογή θεματικών χαρτών OSM που ο καθένας εμφανίζει και επιτρέπει να επεξεργαστείτε ένα είδος λειτουργίας"</string>
+    <string name="link_forum_description">"Χρειάζεστε βοήθεια? Θέλετε να διαβάσετε τι συμβαίνει; Ελάτε να συναναστραφείτε, είναι γεμάτο με δραστηριότητες από κοινότητες σε όλο τον κόσμο!"</string>
+    <string name="link_calendar_description">"Υπάρχουν εκδηλώσεις ή συναντήσεις κοινότητας του OpenStreetMap κοντά σας; (Εάν όχι, μπορείτε να προσθέσετε την δική σας!)"</string>
+    <string name="link_prettymapp_description">"Δημιουργήστε όμορφες πολύχρωμες αφίσες χαρτών των γειτονιών"</string>
+    <string name="quest_disable_action">"Απενεργοποίηση"</string>
+    <string name="quest_disable_title">"Απενεργοποίηση αυτού του τύπου αναζήτησης;"</string>
+    <string name="quest_disable_message_not_installed">"Το StreetMeasure δεν έχει εγκατασταθεί (ακόμα)."</string>
+    <string name="quest_disable_message_not_working">"Το StreetMeasure δεν επέστρεψε μέτρηση."</string>
+    <string name="quest_disable_message_tape_measure">"Θα μπορούσατε να χρησιμοποιήσετε μια μεζούρα, αλλά αυτό μπορεί να είναι λίγο άβολο, τελικά."</string>
+    <string name="quest_buildingType_outbuilding">"Βοηθητικό κτίσμα"</string>
+    <string name="quest_buildingType_outbuilding_description">"λιγότερο σημαντικό κτίριο σε μία ιδιοκτησία"</string>
+    <string name="quest_buildingType_other_description">"ένα συγκεκριμένο κτίριο που δεν είναι επιλέξιμο σε αυτήν την εφαρμογή"</string>
+    <string name="quest_buildingType_container">"Κοντέϊνερ"</string>
+    <string name="quest_buildingType_tent">"Σκηνή"</string>
+    <string name="quest_buildingType_tomb">"Τύμβος"</string>
+    <string name="quest_buildingType_tower">"Πύργος"</string>
+    <string name="quest_buildingType_tower_description">"κάθε είδους πύργος"</string>
+    <string name="quest_buildingType_under_construction">"Υπό κατασκευή"</string>
+    <string name="overlay_buildings">"Κτίρια"</string>
+    <string name="quest_pedestrian_crossing_signals">"Πρέπει να περιμένετε το σήμα κυκλοφορίας για να περάσετε εδώ;"</string>
+    <string name="quest_pedestrian_crossing_markings">"Αυτή η διάβαση έχει σημάδια στο έδαφος;"</string>
+    <string name="overlay_places">"Μέρη"</string>
+    <string name="overlay_things">"Πράγματα"</string>
+    <string name="disused">"αχρησιμοποίητο"</string>
+    <string name="unknown_object">"Άγνωστο αντικείμενο"</string>
 </resources>

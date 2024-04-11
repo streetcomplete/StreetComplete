@@ -278,8 +278,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="produce_walnuts">"Intxaurrak"</string>
     <string name="produce_sisal">"SIsala"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Ezin da hemen eskaneatu. Saiatu zooma hurbiltzen."</string>
-    <string name="quest_crossing_type_title">"Zein motako bidegurutzea da hau?"</string>
-    <string name="quest_crossing_type_unmarked">"Errepide-markarik gabeko bidegurutzea"</string>
     <string name="action_undo">"Desegin"</string>
     <string name="produce_mangosteen">"Mangostanak"</string>
     <string name="produce_tomatoes">"Tomateak"</string>
@@ -441,7 +439,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_transportation">"Garraio publikoaren eraikina"</string>
     <string name="quest_buildingType_university">"Unibertsitatea"</string>
     <string name="quest_buildingType_government">"Gobernua"</string>
-    <string name="quest_buildingType_cars">"Kotxeentzat"</string>
     <string name="quest_buildingType_carport">"Kotxerako estalpea"</string>
     <string name="quest_buildingType_carport_description">"autoentzako aterpea"</string>
     <string name="quest_buildingType_garage">"Garaje bakuna"</string>
@@ -480,7 +477,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_segregated_mixed">"Ziklistek eta oinezkoek espazio bera partekatzen dute"</string>
     <string name="quest_maxheight_title">"Zein da altuera-muga hemen?"</string>
     <string name="quest_maxheight_answer_noSign">"Ez dago seinalerik…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Ba al dago lekua soberan kamioi altuenentzat? (gutxienez 4,5 metro / 15 oin gutxi gorabehera) bertatik igarotzeko?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Altuera hau sinesgaitza dirudi. Ziur al zaude ondo dagoela?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"%1$s(e)k itxita, %2$s"</string>
@@ -795,9 +791,6 @@ Autobusentzako bat baldin badago, utzi ohar bat."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Trafikoaren bidez erabilgarri dauden errail seinalatuen kopurua zehaztu. Beraz, bidegorriek eta aparkalekuek ez dute balio.
 Autobusentzako bat baldin badago, utzi ohar bat."</string>
     <string name="quest_surface_value_rock">"Arroka"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Kamioi altuak bertatik pasa daitezke"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Kamioi altuak ezin dira pasa"</string>
-    <string name="quest_crossing_type_marked">"Markatua"</string>
     <string name="quest_parkingType_street_side">"Errepidearen kanpoan aparka daiteke"</string>
     <string name="quest_parkingType_lane">"Errepidean aparka daiteke"</string>
     <string name="quest_tracktype_grade2a">"Solidoa, baina asfaltorik gabekoa"</string>
@@ -842,7 +835,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="team_mode_team_size_hint">"Talde Modua erabil daiteke 2 eta 12 pertsona artean."</string>
     <string name="team_mode_active">"Talde modua gaituta dago"</string>
     <string name="team_mode_deactivated">"Talde modua ezgaitu da"</string>
-    <string name="quest_crossing_type_signals_controlled">"Semaforo bidez kontrolatua"</string>
     <string name="undo_confirm_title2">"Aldaketa hau ezeztatu?"</string>
     <string name="synced">"Sinkronizatua"</string>
     <string name="toast_undo_unavailable">"Aldaketa hau jada sinkronizatu da eta ezin da kendu"</string>
@@ -1231,7 +1223,6 @@ Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan d
     <string name="quest_drinking_water_type_spring">"Iturburua"</string>
     <string name="quest_drinking_water_type_disused">"Erabiltzen ez den ura edateko objektua"</string>
     <string name="overlay_addresses">"Helbideak"</string>
-    <string name="overlay_shops">"Dendak"</string>
     <string name="name_label">"Izena:"</string>
     <string name="unknown_shop_title">"Beste leku mota bat"</string>
     <string name="quest_address_answer_no_address">"Hemen ez dago helbiderik"</string>

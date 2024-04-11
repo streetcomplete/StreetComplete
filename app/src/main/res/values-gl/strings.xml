@@ -279,8 +279,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="produce_walnuts">"Noces"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Non se puido buscar aquí. Achega o mapa un chisco máis ou non o inclines tanto."</string>
-    <string name="quest_crossing_type_title">"Que tipo de paso de peóns é este?"</string>
-    <string name="quest_crossing_type_unmarked">"Sen marcas viarias"</string>
     <string name="action_undo">"Desfacer"</string>
     <string name="produce_mangosteen">"Mangostán"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -442,7 +440,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingType_transportation">"Edificio de transporte público"</string>
     <string name="quest_buildingType_university">"Edificio de universidade"</string>
     <string name="quest_buildingType_government">"Edificio do goberno"</string>
-    <string name="quest_buildingType_cars">"Para automóbiles"</string>
     <string name="quest_buildingType_carport">"Marquesiñas do aparcadoiro"</string>
     <string name="quest_buildingType_carport_description">"tellado ou marquesiña para automóbiles"</string>
     <string name="quest_buildingType_garage">"Garaxe individual"</string>
@@ -481,7 +478,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_segregated_mixed">"Ciclistas e peóns comparten o mesmo espazo"</string>
     <string name="quest_maxheight_title">"Cal é o límite de altura aquí?"</string>
     <string name="quest_maxheight_answer_noSign">"Non hai sinal…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Hai espazo dabondo para que pasen os camións máis altos (polo menos uns 4,5 metros / 15 pés)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Esta altura non parece estar ben. Estás na certeza de que é correcta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Pechada por %1$s, %2$s"</string>
@@ -797,9 +793,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Especifica aquí o número de carrís marcados utilizables para a circulación de coches. Isto quere dicir que os carrís para bicicletas e os de aparcamento non contan.
 Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="quest_surface_value_rock">"Rocha"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Os camións altos poden pasar"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Os camións altos non caben"</string>
-    <string name="quest_crossing_type_marked">"Con marcas viarias"</string>
     <string name="quest_parkingType_street_side">"Aparcadoiro ao carón da estrada"</string>
     <string name="quest_parkingType_lane">"Liña de aparcadoiro"</string>
     <string name="quest_tracktype_grade2a">"Sólido pero sen pavimentar"</string>
@@ -842,7 +835,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="team_mode_team_size_hint">"O modo equipo é para grupos de 2 a 12 persoas."</string>
     <string name="team_mode_active">"O modo equipo está activado"</string>
     <string name="team_mode_deactivated">"Modo equipo desactivado"</string>
-    <string name="quest_crossing_type_signals_controlled">"Controlado por semáforos"</string>
     <string name="undo_confirm_title2">"Desfacer a seguinte edición?"</string>
     <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edición xa está sincronizada e non se pode desfacer"</string>

@@ -1,9 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [Bank of Ireland, AIB, Ulster Bank, Permanent TSB, Euronet, Spar]
+atmOperators: [Bank of Ireland, AIB, Ulster Bank, Euronet, Permanent TSB, Brinks, Point Cash, The ATM Co., Spar, PTSB, Credit Union, Centra]
 centerLineStyle: white
-chargingStationOperators: [ESB ecars, easygo.ie, Tesla, Nissan Ireland, Kildare Village, Ionity, Circle K, Dell EMC, Streetcharge, Radisson Blu Hotel, Plugsurfing GmbH]
-clothesContainerOperators: [Cork County Council, Cancer Fund for Children, Textile Recycling Limited]
+chargingStationOperators: [ESB ecars, EasyGo, ESB Group, EVBox, Applegreen, GOcharge, 'Tesla, Inc.', ePower, ubitricity, Ionity, EO, Aldi Stores (Ireland) Limited, eStation, char.gy, Dún Laoghaire-Rathdown County Council, Dell EMC, Circle K, ChargePoint, Zappi, YoreOn, Ubitricity, Streetcharge, Radisson Blu Hotel, Porsche, Plugsurfing GmbH, Nissan, Lidl Ireland GmbH, Kildare Village, Kildare County Council, Kelly's Resort Hotel, Ferrycarrig Hotel, ESB eCar, EC Charging, Brooklodge Hotel]
+clothesContainerOperators: [Cancer Fund for Children, Cork County Council, St. James Camino Network, Textile Recycling Limited, Liberty Recycling, Enable Ireland, Cork City Hospitals Children's Club]
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: short yellow dashes
 exclusiveCycleLaneStyle: white

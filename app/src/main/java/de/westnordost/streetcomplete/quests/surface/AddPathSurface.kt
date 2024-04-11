@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.changeToSteps
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.applyTo
 
@@ -23,7 +22,6 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         and (!indoor or indoor = no)
         and (
           !surface
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
           or surface older today -8 years
           or (
             surface ~ paved|unpaved|${INVALID_SURFACES.joinToString("|")}
@@ -33,7 +31,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         )
         and ~path|footway|cycleway|bridleway !~ link
     """
-    /* ~paved ways are less likely to change the surface type */
+    // ~paved ways are less likely to change the surface type
 
     override val changesetComment = "Specify path surfaces"
     override val wikiLink = "Key:surface"

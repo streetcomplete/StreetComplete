@@ -1,8 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisorySpeedLimitSignStyle: yellow
-atmOperators: [ANZ, Westpac, ASB, Bank of New Zealand, Kiwibank, BNZ, ASB Bank, Kiwi Bank, Quick Cash, Quickcash, ANZ Bank, TSB Bank, NBS, NZCU, TSB]
+atmOperators: [ANZ, Westpac, Bank of New Zealand, Kiwibank, ASB Bank, ASB, BNZ, Quick Cash, Quickcash, TSB, Kiwi Bank, TSB Bank, Next, NZCU, NBS]
 centerLineStyle: white
-chargingStationOperators: [ChargeNet NZ, charge.net.nz, Vector, Orion, ChargeNet, Unison, Charge.net.nz, Vector Limited, Thundergrid, Tesla, Powerco, Network Waitaki, Network Tasman]
+chargingStationOperators: [ChargeNet NZ, Meridian Energy, Vector, 'Tesla, Inc.', Orion, OpenLoop, Z Energy, charge.net.nz, Hikotron, ChargeNet, BP, WEL Networks, Bayfair, BP Pulse, Unison Networks, Todd Property Ormiston Town Centre Limited, Thundergrid, Network Waitaki, Metlink, Chargefox, AT]
+clothesContainerOperators: [Child Cancer Foundation]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true

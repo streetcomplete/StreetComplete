@@ -17,16 +17,9 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 
-/** Checks if geometry was looked at on a survey, either by looking at the GPS position or asking
- *  the user  */
-suspend fun checkIsSurvey(
-    context: Context,
-    geometry: ElementGeometry,
-    locations: Sequence<Location>
-): Boolean {
-    if (dontShowAgain || isWithinSurveyDistance(geometry, locations)) {
-        return true
-    }
+/** Asks user if he was really on-site */
+suspend fun confirmIsSurvey(context: Context): Boolean {
+    if (dontShowAgain) return true
     return suspendCancellableCoroutine { cont ->
         val dialogBinding = QuestSourceDialogLayoutBinding.inflate(LayoutInflater.from(context))
         dialogBinding.checkBoxDontShowAgain.isGone = timesShown < 1
@@ -49,7 +42,8 @@ suspend fun checkIsSurvey(
     }
 }
 
-private suspend fun isWithinSurveyDistance(
+/** Checks if geometry was looked at on a survey, by looking at the GPS position */
+suspend fun checkIsSurvey(
     geometry: ElementGeometry,
     locations: Sequence<Location>
 ): Boolean = withContext(Dispatchers.Default) {

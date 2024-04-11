@@ -77,7 +77,6 @@
                         android:paddingEnd="@dimen/quest_form_horizontal_padding"
                         android:paddingTop="@dimen/quest_form_vertical_padding"
                         android:paddingBottom="@dimen/quest_form_vertical_padding"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
@@ -86,7 +85,7 @@
                         android:id="@+id/moreButton"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_more_24dp"
+                        app:srcCompat="@drawable/ic_more_24dp"
                         android:padding="12dp"
                         android:background="?android:attr/selectableItemBackgroundBorderless"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,7 +114,7 @@
 
                         <ImageView
                             android:id="@+id/okButton"
-                            android:src="@drawable/ic_check_48dp"
+                            app:srcCompat="@drawable/ic_check_48dp"
                             android:scaleType="centerInside"
                             style="@style/RoundAccentButton"
                             android:layout_width="@dimen/ok_button_size"
@@ -134,6 +133,7 @@
             android:id="@+id/glassPane"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:elevation="@dimen/speech_bubble_elevation"
             android:clickable="true"
             android:focusable="true"
             android:visibility="gone"

@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-chargingStationOperators: [Chargefox, The District Docklands, Tesla Motors, Tesla, Secure Parking, RACV, Chargepoint]
-clothesContainerOperators: [Southern Cross Recycling, Boots for all]
+atmOperators: [Commonwealth Bank, ANZ, NAB, Westpac, Bendigo Bank, BOM, Next, Bankwest, Next Payments, atmx, HSBC, CBA, Commonwealth, Bank of Melbourne, rediATM, atmX, Westpac Bank, RediATM, Commonwealth Bank of Australia, Bank Australia]
+chargingStationOperators: [Evie Networks, Chargefox, 'Tesla, Inc.', Central Victorian Greenhouse Alliance, BP Pulse, ChargePoint, AmpCharge, Jolt, The District Docklands, Secure Parking, RACV, Linga Network, IKEA, Foxcharger]
 defaultSpeedLimitHasUrbanOrRural: true

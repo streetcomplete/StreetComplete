@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
@@ -7,11 +8,9 @@ import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.datetime.LocalDate
 import org.mockito.ArgumentMatchers.anyDouble
 import org.mockito.Mockito.verify
-import java.util.concurrent.FutureTask
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -24,7 +23,7 @@ class StatisticsControllerTest {
     private lateinit var currentWeekCountryStatisticsDao: CountryStatisticsDao
     private lateinit var activeDatesDao: ActiveDatesDao
     private lateinit var countryBoundaries: CountryBoundaries
-    private lateinit var prefs: Preferences
+    private lateinit var prefs: ObservableSettings
     private lateinit var loginStatusSource: UserLoginStatusSource
     private lateinit var loginStatusListener: UserLoginStatusSource.Listener
 
@@ -45,9 +44,6 @@ class StatisticsControllerTest {
         listener = mock()
         loginStatusSource = mock()
 
-        val ft = FutureTask({}, countryBoundaries)
-        ft.run()
-
         on(loginStatusSource.addListener(any())).then { invocation ->
             loginStatusListener = invocation.getArgument(0)
             Unit
@@ -57,7 +53,7 @@ class StatisticsControllerTest {
             editTypeStatisticsDao, countryStatisticsDao,
             currentWeekEditTypeStatisticsDao, currentWeekCountryStatisticsDao,
             activeDatesDao,
-            ft, prefs, loginStatusSource
+            lazyOf(countryBoundaries), prefs, loginStatusSource
         )
         statisticsController.addListener(listener)
     }

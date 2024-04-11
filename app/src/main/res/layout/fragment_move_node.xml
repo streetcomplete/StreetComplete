@@ -100,7 +100,7 @@
 
         <ImageView
             android:id="@+id/okButton"
-            android:src="@drawable/ic_check_48dp"
+            app:srcCompat="@drawable/ic_check_48dp"
             android:layout_width="@dimen/ok_button_size"
             android:layout_height="@dimen/ok_button_size"
             android:layout_alignParentEnd="true"

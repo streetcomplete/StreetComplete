@@ -19,7 +19,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:padding="0dp"
-        android:src="@drawable/ic_close_24dp"
+        app:srcCompat="@drawable/ic_close_24dp"
         android:scaleType="center"
         app:tint="#fff"
         android:background="#9333"

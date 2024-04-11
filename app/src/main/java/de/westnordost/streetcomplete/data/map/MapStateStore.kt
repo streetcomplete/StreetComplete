@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.map
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.util.prefs.Preferences
 
 /** Stores position of map camera */
-class MapStateStore(private val prefs: Preferences) {
+class MapStateStore(private val prefs: ObservableSettings) {
     var position: LatLon
         set(value) {
             prefs.putDouble(Prefs.MAP_LATITUDE, value.latitude)

@@ -37,13 +37,14 @@ class LogsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getAll_filters_containing_string() {
-        val m1 = createMessage("foo")
+        val m1 = createMessage("very foo")
         val m2 = createMessage("bar")
         val m3 = createMessage("foobar")
+        val m4 = createMessage("something else", tag = "very foonky")
 
-        listOf(m1, m2, m3).forEach { dao.add(it) }
+        listOf(m1, m2, m3, m4).forEach { dao.add(it) }
 
-        assertTrue(dao.getAll(messageContains = "foo").containsExactlyInAnyOrder(listOf(m1, m3)))
+        assertTrue(dao.getAll(messageContains = "foo").containsExactlyInAnyOrder(listOf(m1, m3, m4)))
     }
 
     @Test fun getAll_filters_older_than_timestamp() {
@@ -63,18 +64,25 @@ class LogsDaoTest : ApplicationDbTestCase() {
 
         assertEquals(listOf(m2), dao.getAll(newerThan = 1))
     }
+
+    @Test fun clear() {
+        dao.add(createMessage("1", timestamp = 1))
+        dao.add(createMessage("2", timestamp = 2))
+
+        assertEquals(2, dao.clear())
+        assertEquals(0, dao.getAll().size)
+    }
 }
 
 private fun createMessage(
     message: String,
+    tag: String = "LogsDaoTest",
     level: LogLevel = VERBOSE,
     timestamp: Long = 1
 ) = LogMessage(
     level,
-    TAG,
+    tag,
     message,
     null,
     timestamp
 )
-
-private const val TAG = "LogsDaoTest"

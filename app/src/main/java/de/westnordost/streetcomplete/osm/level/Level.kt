@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.osm.level
 
-sealed class Level
-data class SingleLevel(val level: Double) : Level()
-data class LevelRange(val start: Double, val end: Double) : Level() {
+sealed interface Level
+data class SingleLevel(val level: Double) : Level
+data class LevelRange(val start: Double, val end: Double) : Level {
     /** get levels that would appear on level filter buttons like in JOSM etc.
      *  A range of 1-5 would return 1,2,3,4,5.
      *  A range of -0.5-1.5 would return -0.5,0.5,1.5

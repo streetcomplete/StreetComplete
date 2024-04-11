@@ -7,7 +7,9 @@ import de.westnordost.osmfeatures.AndroidFeatureDictionary
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import java.util.Locale
+import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -27,7 +29,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2512
     @Test fun newspaperVendingMachineWithName() {
-        assertEquals("Bild (Newspaper Vending Machine)", getQuestLabel(mapOf(
+        assertEquals("Bild (Newspaper Vending Machine)", getQuestLabelForNode(mapOf(
             "amenity" to "vending_machine",
             "vending" to "newspapers",
             "name" to "Bild",
@@ -36,7 +38,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2512
     @Test fun newspaperVendingMachineWithBrand() {
-        assertEquals("Abendzeitung (Newspaper Vending Machine)", getQuestLabel(mapOf(
+        assertEquals("Abendzeitung (Newspaper Vending Machine)", getQuestLabelForNode(mapOf(
             "amenity" to "vending_machine",
             "vending" to "newspapers",
             "brand" to "Abendzeitung",
@@ -44,8 +46,9 @@ class NameAndLocationLabelTest {
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2640
+    @Ignore("https://github.com/streetcomplete/StreetComplete/issues/4916")
     @Test fun postBox() {
-        assertEquals("Deutsche Post (Mail Drop Box)", getQuestLabel(mapOf(
+        assertEquals("Deutsche Post (Mail Drop Box)", getQuestLabelForNode(mapOf(
             "amenity" to "post_box",
             "brand" to "Deutsche Post",
             "operator" to "Deutsche Post AG",
@@ -55,7 +58,7 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2806
     @Test fun namedBench() {
-        assertEquals("Sergey's Seat (Bench)", getQuestLabel(mapOf(
+        assertEquals("Sergey's Seat (Bench)", getQuestLabelForNode(mapOf(
             "amenity" to "bench",
             "name" to "Sergey's Seat",
             "ref" to "600913",
@@ -66,23 +69,63 @@ class NameAndLocationLabelTest {
 
     // https://github.com/streetcomplete/StreetComplete/issues/2806
     @Test fun unnamedBench() {
-        assertEquals("Bench", getQuestLabel(mapOf(
+        assertEquals("Bench", getQuestLabelForNode(mapOf(
             "amenity" to "bench",
         )))
     }
 
     // https://github.com/streetcomplete/StreetComplete/issues/2840#issuecomment-831245075
     @Test fun schoki() {
-        assertEquals("Schoko Lädchen [3680] (Vending Machine)", getQuestLabel(mapOf(
+        assertEquals("Schoko Lädchen [3680] (Vending Machine)", getQuestLabelForNode(mapOf(
             "amenity" to "vending_machine",
             "ref" to "3680",
             "operator" to "Schoko Lädchen",
         )))
     }
 
-    private fun getQuestLabel(tags: Map<String, String>): String? =
+    // https://github.com/streetcomplete/StreetComplete/issues/5549
+    @Test fun pointNotVertex() {
+        assertEquals("Bollard", getQuestLabelForNode(mapOf(
+            "barrier" to "bollard",
+        )))
+    }
+
+    // https://github.com/streetcomplete/StreetComplete/issues/5427
+    @Test fun roadWithName() {
+        assertEquals("Main Street (Residential Road)", getQuestLabelForWay(mapOf(
+            "highway" to "residential",
+            "name" to "Main Street",
+            "operator" to "Road Agency",
+        )))
+    }
+
+    @Test fun roadWitRef() {
+        assertEquals("A1 (Residential Road)", getQuestLabelForWay(mapOf(
+            "highway" to "residential",
+            "ref" to "A1",
+            "operator" to "Road Agency",
+        )))
+    }
+
+    @Test fun roadWithNameAndRef() {
+        assertEquals("Main Street [A1] (Residential Road)", getQuestLabelForWay(mapOf(
+            "highway" to "residential",
+            "name" to "Main Street",
+            "ref" to "A1",
+            "operator" to "Road Agency",
+        )))
+    }
+
+    private fun getQuestLabelForNode(tags: Map<String, String>): String? =
         getNameAndLocationLabel(
             Node(0, LatLon(0.0, 0.0), tags),
+            englishResources,
+            featureDictionary
+        )?.toString()
+
+    private fun getQuestLabelForWay(tags: Map<String, String>): String? =
+        getNameAndLocationLabel(
+            Way(0, listOf(), tags),
             englishResources,
             featureDictionary
         )?.toString()

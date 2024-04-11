@@ -13,6 +13,7 @@ class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
     override val elementFilter = """
         ways with highway = steps
          and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+         and !sac_scale
          and (!conveying or conveying = no)
          and access !~ private|no
         and (

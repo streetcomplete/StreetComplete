@@ -279,8 +279,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="produce_walnuts">"Vlašské orechy"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nie je tu možné vyhľadať úlohy. Skúste ešte priblížiť mapu alebo ju menej nakloniť."</string>
-    <string name="quest_crossing_type_title">"Akého typu je tento prechod?"</string>
-    <string name="quest_crossing_type_unmarked">"Prechod bez označenia na ceste"</string>
     <string name="action_undo">"Späť"</string>
     <string name="produce_mangosteen">"Mangostány"</string>
     <string name="produce_tomatoes">"Paradajky"</string>
@@ -442,7 +440,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingType_transportation">"Budova verejnej dopravy"</string>
     <string name="quest_buildingType_university">"Univerzitná budova"</string>
     <string name="quest_buildingType_government">"Vládna budova"</string>
-    <string name="quest_buildingType_cars">"Pre autá"</string>
     <string name="quest_buildingType_carport">"Prístrešok pre auto"</string>
     <string name="quest_buildingType_carport_description">"prístrešok pre auto"</string>
     <string name="quest_buildingType_garage">"Samostatná garáž"</string>
@@ -481,7 +478,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_segregated_mixed">"Cyklisti a chodci zdieľajú spoločný priestor"</string>
     <string name="quest_maxheight_title">"Aký je tu výškový limit?"</string>
     <string name="quest_maxheight_answer_noSign">"Nie je tam žiadna značka…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Je tam dosť miesta na prejazd aj pre najvyššie kamióny (viac ako 4,5 metra)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Táto výška vyzerá nepravdepodobne. Ste si istý, že je správna?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Zatvoril(a) %1$s, %2$s"</string>
@@ -792,9 +788,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_lanes_answer_lanes_description2">"Určte celkový počet vyznačených jazdných pruhov (v oboch smeroch), na ktorých môžu jazdiť autá. Pruhy pre bicykle a parkovanie nepočítajte."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Určite tu celkový počet vyznačených jazdných pruhov, na ktorých môžu jazdiť autá. Pruhy pre bicykle a parkovanie nepočítajte."</string>
     <string name="quest_surface_value_rock">"Skala"</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">"Vysoký nákladiak môže prejsť"</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Vysoký nákladiak sa nezmestí"</string>
-    <string name="quest_crossing_type_marked">"Označený prechod"</string>
     <string name="quest_parkingType_street_side">"Parkuje sa priamo vedľa cesty"</string>
     <string name="quest_parkingType_lane">"Parkuje sa na ceste"</string>
     <string name="quest_tracktype_grade2a">"Viac-menej pevný"</string>
@@ -839,7 +832,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="team_mode_team_size_hint">"Tímový režim je pre 2 až 12 ľudí."</string>
     <string name="team_mode_active">"Tímový režim je aktívny"</string>
     <string name="team_mode_deactivated">"Tímový režim je neaktívny"</string>
-    <string name="quest_crossing_type_signals_controlled">"Prejazd riadený semaformi"</string>
     <string name="undo_confirm_title2">"Chcete vrátiť nasledujúcu úpravu?"</string>
     <string name="synced">"Synchronizované"</string>
     <string name="toast_undo_unavailable">"Táto úprava je už synchronizovaná a nedá sa vrátiť späť"</string>
@@ -1225,7 +1217,6 @@ Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazen
     <string name="quest_drinking_water_type_spring">"Prameň"</string>
     <string name="quest_drinking_water_type_disused">"Nevyužívaný objekt pitnej vody"</string>
     <string name="overlay_addresses">"Adresy"</string>
-    <string name="overlay_shops">"Obchody"</string>
     <string name="name_label">"Meno:"</string>
     <string name="unknown_shop_title">"Iný druh miesta"</string>
     <string name="quest_address_answer_no_address">"Bez adresy"</string>
@@ -1363,4 +1354,7 @@ Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu z
     <string name="label_log_older_than">"Do"</string>
     <string name="label_log_message_contains">"Správa obsahuje"</string>
     <string name="title_logs_filters">"Filtrovanie správ"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Počet skrytých úloh: %d"</string>
+    <string name="link_mapcomplete_description">"Zbierka tematických máp OSM, z ktorých každá zobrazuje a umožňuje upravovať jeden druh prvkov"</string>
+    <string name="link_prettymapp_description">"Vytvorenie pekných viacfarebných plagátov s mapami štvrtí"</string>
 </resources>

@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [香港上海滙豐銀行 HSBC, 中國銀行 Bank of China, 恒生銀行 Hang Seng Bank, 花旗銀行 Citibank, 渣打銀行 Standard Chartered, 東亞銀行 Bank of East Asia, HSBC, Standard Chartered Bank, 中國工商銀行, Hang Seng Bank, BOCHK]
 centerLineStyle: white
-chargingStationOperators: [HKEV, HK Electric, Tesla Motors Inc., Tesla Motors]
+chargingStationOperators: ['Tesla, Inc.', HKEV, HK Electric, Cornerstone Technologies]
 defaultSpeedLimitHasUrbanOrRural: false
 edgeLineStyle: two yellow lines
 isLeftHandTraffic: true

@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.quests.building_type
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.osm.building.BuildingType
+import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
+import de.westnordost.streetcomplete.osm.building.toItems
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
@@ -15,7 +18,7 @@ class AddBuildingTypeForm : AGroupedImageListQuestForm<BuildingType, BuildingTyp
 
     override val topItems = BuildingType.topSelectableValues.toItems()
 
-    override val allItems = BuildingTypeCategory.values().toItems()
+    override val allItems = BuildingTypeCategory.entries.toItems()
 
     override val itemsPerRow = 1
 

@@ -30,6 +30,9 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 
+# ktor client, see https://youtrack.jetbrains.com/issue/KTOR-5528
+-dontwarn org.slf4j.impl.StaticLoggerBinder
+
 # Change here com.yourcompany.yourpackage
 -keep,includedescriptorclasses class de.westnordost.streetcomplete.**$$serializer { *; }
 -keepclassmembers class de.westnordost.streetcomplete.** {
@@ -40,14 +43,3 @@
 }
 
 # kotlinx-serialization end ------------------------------------------------------------------------
-
-# TODO remove after upgrading to maplibre sdk 11 (they added these to their own proguard rules)
--dontwarn org.bouncycastle.jsse.BCSSLParameters
--dontwarn org.bouncycastle.jsse.BCSSLSocket
--dontwarn org.bouncycastle.jsse.provider.BouncyCastleJsseProvider
--dontwarn org.conscrypt.Conscrypt$Version
--dontwarn org.conscrypt.Conscrypt
--dontwarn org.conscrypt.ConscryptHostnameVerifier
--dontwarn org.openjsse.javax.net.ssl.SSLParameters
--dontwarn org.openjsse.javax.net.ssl.SSLSocket
--dontwarn org.openjsse.net.ssl.OpenJSSE

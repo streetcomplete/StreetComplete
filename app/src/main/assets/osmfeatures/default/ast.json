@@ -1512,9 +1512,6 @@
                     "name": "Máquina de venta de billetes de tresporte",
                     "terms": "máquina,automática,billete,tren,autobús,recarga"
                 },
-                "amenity/vending_machine/sweets": {
-                    "name": "Máquina de venta de llambionaes"
-                },
                 "amenity/veterinary": {
                     "name": "Veterinariu",
                     "terms": "clínica veterinaria"
@@ -3031,10 +3028,6 @@
                 },
                 "traffic_calming/hump": {
                     "name": "Llombu anchu pa reducir velocidá"
-                },
-                "traffic_calming/island": {
-                    "name": "Refuxu de tráficu",
-                    "terms": "islla de tráficu"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Bandes sonores"

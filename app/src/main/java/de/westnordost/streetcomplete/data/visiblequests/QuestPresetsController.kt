@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import de.westnordost.streetcomplete.util.Listeners
 
+/** Controls the ids and names of quest presets */
 class QuestPresetsController(
     private val questPresetsDao: QuestPresetsDao,
     private val selectedQuestPresetStore: SelectedQuestPresetStore
@@ -25,9 +26,8 @@ class QuestPresetsController(
         return presetId
     }
 
-    override fun getName(presetId: Long): String? {
-        return questPresetsDao.getName(presetId)
-    }
+    override fun getName(presetId: Long): String? =
+        questPresetsDao.getName(presetId)
 
     fun rename(presetId: Long, name: String) {
         questPresetsDao.rename(presetId, name)
