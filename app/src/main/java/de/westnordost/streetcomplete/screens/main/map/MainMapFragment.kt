@@ -218,13 +218,13 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         // left-and-right lines should be rendered behind the actual road
         val firstCasingLayer = "pedestrian-tunnel-casing"
-        style.addLayersAbove(styleableOverlayMapComponent?.sideLayers.orEmpty(), firstCasingLayer)
+        style.addLayersBelow(styleableOverlayMapComponent?.sideLayers.orEmpty(), firstCasingLayer)
         val firstBridgeCasingLayer = "pedestrian-bridge-casing"
-        style.addLayersAbove(styleableOverlayMapComponent?.sideLayersBridge.orEmpty(), firstBridgeCasingLayer)
+        style.addLayersBelow(styleableOverlayMapComponent?.sideLayersBridge.orEmpty(), firstBridgeCasingLayer)
 
         // labels should be on top of other layers
         val firstLabelLayer = "labels-country"
-        style.addLayersAbove(listOfNotNull(
+        style.addLayersBelow(listOfNotNull(
             downloadedAreaMapComponent?.layers,
             tracksMapComponent?.layers,
             styleableOverlayMapComponent?.layers,

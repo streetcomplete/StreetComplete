@@ -10,9 +10,9 @@ suspend fun MapLibreMap.awaitSetStyle(builder: Style.Builder): Style = suspendCo
     setStyle(builder) { cont.resume(it) }
 }
 
-fun Style.addLayersAbove(layers: List<Layer> , above: String) {
-    for (layer in layers.asReversed()) {
-        addLayerAbove(layer, above)
+fun Style.addLayersBelow(layers: List<Layer> , above: String) {
+    for (layer in layers) {
+        addLayerBelow(layer, above)
     }
 }
 
