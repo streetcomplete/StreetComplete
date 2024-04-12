@@ -36,7 +36,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMap
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.addLayers
-import de.westnordost.streetcomplete.screens.main.map.maplibre.addLayersAbove
+import de.westnordost.streetcomplete.screens.main.map.maplibre.addLayersBelow
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
@@ -186,6 +186,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         style.addImagesAsync(mapIcons.presetBitmaps, true)
         style.addImagesAsync(mapIcons.pinBitmaps)
+        style.addImagesAsync(mapIcons.markerBitmaps)
 
         setupLayers(style)
 

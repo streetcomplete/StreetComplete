@@ -51,6 +51,7 @@ class Preloader(
         val time = nowAsEpochMilliseconds()
         mapIcons.pinBitmaps
         mapIcons.presetBitmaps
+        mapIcons.markerBitmaps
         val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
         Log.i(TAG, "Created map icons in ${seconds.format(1)}s")
     }

@@ -8,6 +8,9 @@ import androidx.core.graphics.toRect
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
+import de.westnordost.streetcomplete.osm.building.BuildingType
+import de.westnordost.streetcomplete.osm.building.iconResId
+import de.westnordost.streetcomplete.osm.building.iconResName
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.view.presetIconIndex
@@ -19,6 +22,7 @@ class MapIcons(
 ) {
     val pinBitmaps by lazy { createPinBitmaps() }
     val presetBitmaps by lazy { createPresetBitmaps() }
+    val markerBitmaps by lazy { createMarkerBitmaps() }
 
     private fun createPinBitmaps(): HashMap<String, Bitmap> {
         val questIconResIds = (allEditTypes.map { it.icon } + OsmNoteQuestType.icon).toSortedSet()
@@ -72,6 +76,19 @@ class MapIcons(
             val bitmap = context.getDrawable(presetIconResId)!!.createBitmap()
             result[name] = bitmap
         }
+        return result
+    }
+
+    private fun createMarkerBitmaps(): HashMap<String, Bitmap> {
+        val icons = BuildingType.entries.map { it.iconResId }
+        val result = HashMap<String, Bitmap>(icons.size)
+        val iconSize = context.resources.dpToPx(32).toInt()
+        for (iconId in icons) {
+            val name = context.resources.getResourceEntryName(iconId)
+            val bitmap = context.getDrawable(iconId)!!.createBitmap(iconSize, iconSize)
+            result[name] = bitmap
+        }
+        result["crosshair_marker"] = context.getDrawable(R.drawable.crosshair_marker)!!.createBitmap()
         return result
     }
 }

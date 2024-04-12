@@ -166,7 +166,6 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
             ))
             .withProperties(
                 iconImage(get("icon")),
-
                 textField(get("label")),
                 textAnchor(Property.TEXT_ANCHOR_TOP),
                 textOffset(switchCase(has("icon"), literal(arrayOf(0f, 1f)), literal(arrayOf(0f, 0f)))),
@@ -181,7 +180,8 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 textOptional(true),
                 iconAllowOverlap(step(zoom(), literal(false), stop(18, true))),
                 textAllowOverlap(step(zoom(), literal(false), stop(20, true))),
-            )
+                symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
+            ),
     )
 
     /** Shows/hides the map data */
@@ -234,14 +234,14 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 }
 
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
-                val label = if (style.label != null) {
-                    Feature.fromGeometry(
-                        geometry.center.toPoint(),
-                        JsonObject().apply { addProperty("label", style.label) }
-                    )
+                val point = if (style.label != null || style.icon != null) {
+                    val pp = JsonObject()
+                    if (style.icon != null) pp.addProperty("icon", style.icon)
+                    if (style.label != null) pp.addProperty("label", style.label)
+                    Feature.fromGeometry(geometry.center.toPoint(),pp)
                 } else null
 
-                listOfNotNull(f, label)
+                listOfNotNull(f, point)
             }
             is PolylineStyle -> {
                 val line = geometry.toMapLibreGeometry()
