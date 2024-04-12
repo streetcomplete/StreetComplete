@@ -133,7 +133,7 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
         val currentPos = map.camera
         // limit max zoom to not zoom in to the max when zooming in on points;
         // also zoom in a bit less to have a padding around the zoomed-in element
-        val targetZoom = min(targetPos.zoom - 0.5, 19.5)
+        val targetZoom = min(targetPos.zoom - 0.75, 19.0)
 
         val zoomDiff = abs(currentPos.zoom - targetZoom)
         val zoomTime = max(450, (zoomDiff * 450).roundToInt())
