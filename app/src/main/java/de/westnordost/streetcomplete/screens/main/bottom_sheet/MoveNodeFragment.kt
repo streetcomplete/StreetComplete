@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
@@ -31,6 +32,7 @@ import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitFeetInch
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
+import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -113,6 +115,12 @@ class MoveNodeFragment :
             binding.speechbubbleContentContainer.startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
+        }
+
+        // to lay out the arrow drawable correctly, view must have been layouted first
+        viewLifecycleOwner.lifecycleScope.launch {
+            view.awaitLayout()
+            updateArrowDrawable()
         }
     }
 
