@@ -283,6 +283,13 @@ tasks.register<UpdateChangelogTask>("updateChangelog") {
     targetFile = "$projectDir/src/main/res/raw/changelog.html"
 }
 
+tasks.register<UpdateMapStyleTask>("updateMapStyle") {
+    group = "streetcomplete"
+    targetDir = "$projectDir/src/main/assets/map_theme"
+    apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
+    mapStyleBranch = "master"
+}
+
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
