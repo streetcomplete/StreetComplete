@@ -239,6 +239,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             pinsMapComponent?.layers,
             selectedPinsMapComponent?.layers
         ).flatten())
+
+        // workaround for https://github.com/maplibre/maplibre-native/issues/2259
+        val overlaySymbols = style.getLayer("overlay-symbols")!!
+        style.removeLayer(overlaySymbols)
+        style.addLayerBelow(overlaySymbols, "geo-symbols")
     }
 
     private fun setupData(map: MapLibreMap) {
