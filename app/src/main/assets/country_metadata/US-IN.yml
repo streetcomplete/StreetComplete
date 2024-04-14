@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Chase, PNC Bank, American Crypto, Wells Fargo, Horizon Bank, Centra Credit Union, Athena Bitcoin, Terre Haute Savings Bank, Regions Bank, Purdue Federal Credit Union, KeyBank, IU Credit Union, First Financial Bank, Fifth Third Bank, Centier Bank, Beacon Credit Union, BMO Harris, 1st Source Bank]
+atmOperators: [Chase, PNC Bank, American Crypto, Wells Fargo, Horizon Bank, Centra Credit Union, Athena Bitcoin, Terre Haute Savings Bank, Fifth Third Bank, Regions Bank, Purdue Federal Credit Union, KeyBank, IU Credit Union, First Financial Bank, Centier Bank, Beacon Credit Union, BMO Harris, 1st Source Bank]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Indiana Power & Light]
 defaultSpeedLimitHasUrbanOrRural: true

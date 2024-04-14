@@ -225,7 +225,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="credits_translations_title">"Itzulpenak"</string>
     <string name="credits_contributors_title">"Kode ekarpenak"</string>
     <string name="credits_author_title">"Egile eta mantentzailea"</string>
-    <string name="credits_and_more">"eta gehiago…"</string>
     <string name="quest_maxspeed_answer_living_street">"Bizitegi-kalea"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Honen antzeko seinale bat dago?"</string>
     <string name="quest_orchard_produce_title">"Zer landatzen da hemen?"</string>
@@ -498,7 +497,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_motorcycleParkingCoveredStatus_title">"Motorrentzako aparkaleku honek estalkia al du (euriarengandiko babesa)?"</string>
     <string name="default_disabled_msg_maxspeed">"Eronka mota hau desgaituta dago orokorrean kale osoa ibiltzea eskatzen zaizulako abiadura mugen bila, eta ez soilik markatutako sekzioa. Hau batzuetan gehiegizkoa izan daiteke erronka bakarrean argitzeko."</string>
     <string name="pref_title_quests_restore_hidden">"Berreskuratu ezkutatutako erronkak"</string>
-    <string name="restore_hidden_success">"Ezkutatutako %d erronka berreskuratu dira"</string>
     <string name="on_level">"%s. pisuan"</string>
     <string name="underground">"lurrazpian"</string>
     <string name="quest_sidewalk_value_yes">"espaloia"</string>
@@ -836,7 +834,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="team_mode_active">"Talde modua gaituta dago"</string>
     <string name="team_mode_deactivated">"Talde modua ezgaitu da"</string>
     <string name="undo_confirm_title2">"Aldaketa hau ezeztatu?"</string>
-    <string name="synced">"Sinkronizatua"</string>
     <string name="toast_undo_unavailable">"Aldaketa hau jada sinkronizatu da eta ezin da kendu"</string>
     <string name="quest_cycleway_value_separate">"mapan bereizia agertzen da"</string>
     <string name="created_note_action_title">"Oharra sortu da"</string>
@@ -1060,8 +1057,6 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="quest_road_width_title">"Zein da hemengo errepide honen zabalera?"</string>
     <string name="quest_road_width_explanation">"Galtzadaren zabalera ertzetik ertzera: kaleko gainazalean dagoen edozer barne hartzen du, hala nola kaleko aparkalekuak edo bidegorriak, baina kanpoan uzten du hortik haratagokoa, adibidez, bidegorriak edo galtzada ondoko aparkalekuak."</string>
     <string name="quest_sidewalk_answer_none">"Espaloirik ez"</string>
-    <string name="about_description_donate_google_play2">"Eskerrik asko aplikazio hau babestea kontuan hartzeagatik!
-Zoritxarrez, Google Play Store-ren gidalerro bat dela eta, ezin da aplikazioan dohaintzak lortzeko estekarik bistaratu. Testuinguru honetan, gure proiektuaren hasierara estekatzea ere ez da onartzen."</string>
     <string name="link_osmand_description">"Mugikorretarako aplikazioa linean eta lineaz kanpo mapak ikusteko eta nabigatzeko"</string>
     <string name="link_sunders_description">"Kameren eta zaintza ekipoen mapa"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Mantendu gezitik gertuago baina kontuz trafikoarekin!"</string>

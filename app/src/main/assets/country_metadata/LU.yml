@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes without pictogram
 atmOperators: [POST Luxembourg, BCEE, BIL, BGL BNP Paribas, Raiffeisen, Banque Raiffeisen, P&T, ING, Banque Internationale à Luxembourg, BNP Paribas]
-chargingStationOperators: [Chargy, Enovos, Commune de Weiler-la-Tour]
+chargingStationOperators: [Chargy, ABB, Enovos, Commune de Weiler-la-Tour]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true

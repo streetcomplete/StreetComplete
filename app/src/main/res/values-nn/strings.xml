@@ -201,7 +201,6 @@
     <string name="credits_translations_title">"Omsetjingar"</string>
     <string name="credits_contributors_title">"Kodebidrag"</string>
     <string name="credits_author_title">"Opphavsperson og vedlikehaldar"</string>
-    <string name="credits_and_more">"og fleire andre …"</string>
     <string name="quest_maxspeed_answer_living_street">"Det er eit gatetun"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Finst det altså eit slikt skilt?"</string>
     <string name="quest_orchard_produce_title">"Kva vert dyrka her?"</string>
@@ -473,7 +472,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Er det tak over denne motorsykkel­parkeringa?"</string>
     <string name="default_disabled_msg_maxspeed">"Denne oppdragstypen vert som standard ikkje vist, då du vanlegvis må kontrollera heile gata for fartsskilt, ikkje berre den merkte gate­stubben. Dette kan vera veldig mykje arbeid berre for eitt oppdrag."</string>
     <string name="pref_title_quests_restore_hidden">"Gjenopprett gøymde oppdrag"</string>
-    <string name="restore_hidden_success">"Gjenoppretta %d gøymde oppdrag"</string>
     <string name="on_level">"på nivå %s"</string>
     <string name="underground">"underjordisk"</string>
     <string name="quest_sidewalk_value_yes">"fortau"</string>
@@ -798,7 +796,6 @@
     <string name="team_mode_active">"Lagmodus er på"</string>
     <string name="team_mode_deactivated">"Lagmodus er av"</string>
     <string name="undo_confirm_title2">"Vil du angra denne endringa?"</string>
-    <string name="synced">"Synkronisert"</string>
     <string name="toast_undo_unavailable">"Denne endringa er alt synkronisert og kan derfor ikkje angrast."</string>
     <string name="quest_cycleway_value_separate">"vist for seg på kart"</string>
     <string name="created_note_action_title">"La til ny merknad"</string>
@@ -951,7 +948,6 @@
     <string name="quest_cycleway_width_title">"Kor brei er sykkelvegen her?"</string>
     <string name="quest_road_width_title">"Kor brei er vegen her?"</string>
     <string name="quest_sidewalk_answer_none">"Ikkje noko fortaug"</string>
-    <string name="about_description_donate_google_play2">"Takk for at du vurderer å støtta denne appen! På grunn av reglane til Google Play kan me dessverre ikkje visa ei lenkje for å gje pengegåver direkte i appen. Me får ikkje eingong lenkja til heimesida vår i denne samanhengen."</string>
     <string name="link_osmand_description">"Mobilapp for kartvising og navigering både til- og fråkopla Internett"</string>
     <string name="link_sunders_description">"Kart over kamera og annan overvaking"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Hald deg nærare pila, men pass deg for trafikken!"</string>

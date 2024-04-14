@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [UOB, POSB, DBS, OCBC, OCBC Bank, Citibank, HSBC, State Bank of India, POSB ATM, DBS/POSB, UOB ATM, Standard Chartered, SAM, Maybank, BOC, AXS]
+atmOperators: [UOB, POSB, DBS, OCBC, OCBC Bank, Citibank, HSBC, State Bank of India, POSB ATM, DBS/POSB, BOC, UOB ATM, Standard Chartered, SAM, Maybank, ICBC, AXS]
 centerLineStyle: white
-chargingStationOperators: [Greenlots, Singapore Power, BlueSG, 'Tesla, Inc.', Shell, Tesla, Shell Recharge Solutions, Charge+]
+chargingStationOperators: [Greenlots, 'Tesla, Inc.', Singapore Power, BlueSG, Shell, Charge+, Tesla, Shell Recharge Solutions]
 defaultSpeedLimitHasUrbanOrRural: false
 isLeftHandTraffic: true
 mobileCountryCode: 525

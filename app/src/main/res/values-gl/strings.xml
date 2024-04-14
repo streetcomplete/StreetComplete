@@ -226,7 +226,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="credits_translations_title">"Traducións"</string>
     <string name="credits_contributors_title">"Colaboradores do código"</string>
     <string name="credits_author_title">"Autor e mantedor"</string>
-    <string name="credits_and_more">"e máis…"</string>
     <string name="quest_maxspeed_answer_living_street">"É unha rúa residencial"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Entón hai un sinal como este?"</string>
     <string name="quest_orchard_produce_title">"Que é o que se sementa aquí?"</string>
@@ -499,7 +498,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_motorcycleParkingCoveredStatus_title">"Este aparcadoiro de motos está cuberto (protexido da choiva)?"</string>
     <string name="default_disabled_msg_maxspeed">"Este tipo de tarefa está deshabilitada de xeito predeterminado porque, polo xeral, precísase que comprobe toda a rúa na procura de sinais de límite de velocidade, non só a escolla resaltada. Ás veces, isto pode levar moito tempo só para resolver unha soa tarefa."</string>
     <string name="pref_title_quests_restore_hidden">"Restaurar as tarefas agochadas"</string>
-    <string name="restore_hidden_success">"Restauráronse %d tarefas agochadas"</string>
     <string name="on_level">"no nivel %s"</string>
     <string name="underground">"subterráneo"</string>
     <string name="quest_sidewalk_value_yes">"beirarrúa"</string>
@@ -836,7 +834,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="team_mode_active">"O modo equipo está activado"</string>
     <string name="team_mode_deactivated">"Modo equipo desactivado"</string>
     <string name="undo_confirm_title2">"Desfacer a seguinte edición?"</string>
-    <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edición xa está sincronizada e non se pode desfacer"</string>
     <string name="quest_cycleway_value_separate">"amosado por separado no mapa"</string>
     <string name="created_note_action_title">"Nota creada"</string>

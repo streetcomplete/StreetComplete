@@ -226,7 +226,6 @@
     <string name="credits_translations_title">"翻譯"</string>
     <string name="credits_contributors_title">"程式碼貢獻者"</string>
     <string name="credits_author_title">"作者及維護者"</string>
-    <string name="credits_and_more">"以及更多…"</string>
     <string name="quest_maxspeed_answer_living_street">"社區街道"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"所以那裡有一個像這樣的道路標識嗎？"</string>
     <string name="quest_orchard_produce_title">"這裡栽種了些什麼？"</string>
@@ -501,7 +500,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"這個機車/電單車停車場屬於有蓋式嗎(可遮陽擋雨)？"</string>
     <string name="default_disabled_msg_maxspeed">"這項任務類型預設關閉，因為通常得檢查整條道路的速限指標，不只是注意路段。有時候只是要簡單解決的話，會相當累。"</string>
     <string name="pref_title_quests_restore_hidden">"恢復被隱藏的任務"</string>
-    <string name="restore_hidden_success">"恢復 %d 被藏隱的任務"</string>
     <string name="on_level">"位於樓層 %s"</string>
     <string name="underground">"地下"</string>
     <string name="quest_sidewalk_value_yes">"人行道"</string>
@@ -836,7 +834,6 @@
     <string name="team_mode_active">"協作模式已啟用"</string>
     <string name="team_mode_deactivated">"協作模式已停用"</string>
     <string name="undo_confirm_title2">"要復原接下來的編輯嗎？"</string>
-    <string name="synced">"已經同步了"</string>
     <string name="toast_undo_unavailable">"這筆編輯已經同步，因此無法復原"</string>
     <string name="quest_cycleway_value_separate">"在地圖上顯示分離的"</string>
     <string name="created_note_action_title">"新增註解"</string>
@@ -1058,8 +1055,6 @@
     <string name="quest_road_width_title">"這條道路的寬度多少？"</string>
     <string name="quest_road_width_explanation">"道路從路緣到路緣之間寬度：這包括路面鋪面上的事物，如路邊停車場或是單車道，但排除之外的事物，例如單車道或是路緣外的停車場。"</string>
     <string name="quest_sidewalk_answer_none">"完全沒有人行道"</string>
-    <string name="about_description_donate_google_play2">"感謝你考慮支持這款 app！
-然後，由於 Google Play 商店的政策，我們不會在 app 內顯示導引至捐款連結，所以，我們也不能連到自家官網。"</string>
     <string name="link_osmand_description">"顯示或導航線上或離線地圖的行動 app"</string>
     <string name="link_sunders_description">"照相機與監視器的地圖"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"盡量靠近箭頭但小心路況！"</string>
@@ -1383,4 +1378,6 @@
     <string name="overlay_things">"東西"</string>
     <string name="disused">"棄用"</string>
     <string name="unknown_object">"未知物件"</string>
+    <string name="quest_leafType_tree_title">"這棵樹是針葉還是會落葉？"</string>
+    <string name="quest_bbq_fuel_gas">"燒油的"</string>
 </resources>

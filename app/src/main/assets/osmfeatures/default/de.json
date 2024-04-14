@@ -524,7 +524,8 @@
                     "terms": "messestand,stand"
                 },
                 "bottle": {
-                    "label": "Flaschenfüllung"
+                    "label": "Flaschenfüllung",
+                    "terms": "flasche,wasserflasche,wiederbefüllen,auffüllen,nachfüllen"
                 },
                 "boules": {
                     "label": "Typ"
@@ -556,7 +557,17 @@
                     "label": "Typ"
                 },
                 "bridge_combo": {
-                    "label": "Typ"
+                    "label": "Typ",
+                    "options": {
+                        "aqueduct": "Aquädukt",
+                        "boardwalk": "Bohlenweg",
+                        "cantilever": "Auslegerbrücke",
+                        "covered": "Gedeckte Brücke",
+                        "low_water_crossing": "Niedrige Gewässerquerung",
+                        "movable": "Bewegliche Brücke",
+                        "trestle": "Trestle-Brücke",
+                        "viaduct": "Viadukt"
+                    }
                 },
                 "building": {
                     "label": "Gebäude",
@@ -741,7 +752,8 @@
                     }
                 },
                 "changing_table": {
-                    "label": "Wickeltisch"
+                    "label": "Wickeltisch",
+                    "terms": "windel,wickeltisch,wickelkommode,wickeln,baby"
                 },
                 "charge_fee": {
                     "label": "Gebührenbetrag",
@@ -1330,6 +1342,7 @@
                     "options": {
                         "leashed": "Nur an der Leine",
                         "no": "Nicht erlaubt",
+                        "unleashed": "Leinen nicht erforderlich",
                         "yes": "Erlaubt"
                     },
                     "terms": "hunde"
@@ -1498,7 +1511,7 @@
                         "dry": "Trockene Steigleitung",
                         "no": "Nein",
                         "wet": "Nasse Steigleitung",
-                        "yes": "unbekannter Typ"
+                        "yes": "Unbekannter Typ"
                     }
                 },
                 "fire_service_inlet": {
@@ -1582,6 +1595,9 @@
                     "label": "Typ",
                     "placeholder": "Standard"
                 },
+                "fortification_type": {
+                    "label": "Art der Befestigung"
+                },
                 "fountain": {
                     "label": "Typ"
                 },
@@ -1609,7 +1625,8 @@
                         "e10": "E10",
                         "e85": "E85",
                         "h70": "Gasförmiger Wasserstoff (700 bar)",
-                        "lpg": "Autogas",
+                        "lng": "Flüssigerdgas (LNG)",
+                        "lpg": "Flüssiggas (LPG)",
                         "octane_100": "Benzin (100 Oktan)",
                         "octane_80": "Benzin (80 Oktan)",
                         "octane_85": "Benzin (85 Oktan)",
@@ -1920,6 +1937,7 @@
                         "manor": "Herrenhaus",
                         "memorial": "Denkmal",
                         "milestone": "Meilenstein",
+                        "millstone": "Mühlstein",
                         "mine": "Mine",
                         "mine_shaft": "Minenschacht",
                         "monument": "Großdenkmal",
@@ -2072,10 +2090,39 @@
                 },
                 "kerb": {
                     "label": "Bordstein",
+                    "options": {
+                        "flush": {
+                            "description": "Ein abgesenkter Bordstein, der mit der umgebenden Fläche bündig ist.",
+                            "title": "Bündig"
+                        },
+                        "lowered": {
+                            "description": "Ein abgesenkter Bordstein, der von Rollstuhlfahrern genutzt werden kann, nicht höher als wenige Zentimeter.",
+                            "title": "Abgesenkt"
+                        },
+                        "no": {
+                            "description": "Es ist kein Bordstein an diesem Ort vorhanden.",
+                            "title": "Nein"
+                        },
+                        "raised": {
+                            "description": "Ein erhöhter Bordstein, der von Rollstuhlfahrern nicht leicht genutzt werden kann, höher als ein paar Zentimeter.",
+                            "title": "Angehoben"
+                        },
+                        "rolled": {
+                            "description": "Ein erhöhter Bordstein mit abgerundeter Kante, der die Nutzung für Autos oder Fahrräder erleichtert, aber nicht für Rollstühle.",
+                            "title": "Abgerundet"
+                        },
+                        "yes": {
+                            "description": "Ein gewisser Bordstein ist an diesem Ort vorhanden, ob er erhöht, abgesenkt, bündig usw. ist, ist unbekannt.",
+                            "title": "Ja"
+                        }
+                    },
                     "terms": "bordstein,kantstein,randstein,bordsteinkante"
                 },
                 "kerb/height": {
                     "label": "Höhe"
+                },
+                "kerb/kerb_barrier": {
+                    "label": "Typ"
                 },
                 "kitchen": {
                     "label": "Küche",
@@ -2166,6 +2213,13 @@
                     "terms": "führerscheinklassen,führerscheinkategorien"
                 },
                 "lifeguard": {
+                    "label": "Typ",
+                    "options": {
+                        "base": "Rettungsschwimmerstützpunkt",
+                        "tower": "Rettungsschwimmerturm"
+                    }
+                },
+                "lifeguard_check": {
                     "label": "Rettungsschwimmer"
                 },
                 "lift_gate/type": {
@@ -2976,6 +3030,20 @@
                         "forward": "Vorwärts"
                     }
                 },
+                "railway/switch": {
+                    "label": "Weichentyp",
+                    "options": {
+                        "abt": "Abtsche Weiche",
+                        "default": "Einfache Weiche",
+                        "double_slip": "Doppelkreuzungsweiche",
+                        "single_slip": "Kreuzungsweiche",
+                        "three_way": "Dreiwegweiche",
+                        "wye": "Y-Weiche"
+                    }
+                },
+                "railway/track_ref": {
+                    "label": "Gleisnummer"
+                },
                 "ramp": {
                     "label": "integrierte Rampe",
                     "options": {
@@ -3036,7 +3104,8 @@
                     "terms": "referenznummer des department for education"
                 },
                 "ref/isil": {
-                    "label": "ISIL-Code"
+                    "label": "ISIL-Code",
+                    "terms": "bibliothekssigel,isil"
                 },
                 "ref/linz/place_id-NZ": {
                     "label": "NZGB Ortskennung",
@@ -3062,6 +3131,10 @@
                 },
                 "ref_platform": {
                     "label": "Steignummer"
+                },
+                "ref_rail": {
+                    "label": "Streckennummer",
+                    "terms": "streckennummer"
                 },
                 "ref_road_number": {
                     "label": "Straßennummer",
@@ -3442,8 +3515,8 @@
                 "side": {
                     "label": "Seite",
                     "options": {
-                        "left": "Links",
-                        "right": "Rechts"
+                        "left": "Links vom Radfahrer",
+                        "right": "Rechts vom Radfahrer"
                     }
                 },
                 "siren/purpose": {
@@ -3576,6 +3649,7 @@
                         "cricket": "Cricket",
                         "curling": "Curling",
                         "cycling": "Radfahren",
+                        "darts": "Darts",
                         "disc_golf": "Discgolf",
                         "dog_racing": "Hunderennen",
                         "equestrian": "Pferdesport",
@@ -3745,6 +3819,10 @@
                         "valve_group": "Gruppe von Ventil-Stationen"
                     }
                 },
+                "summit/cross": {
+                    "label": "Gipfelkreuz",
+                    "terms": "bergkreuz,kreuz"
+                },
                 "supervised": {
                     "label": "Überwacht",
                     "terms": "überwacht,bemannt,bewacht"
@@ -3828,7 +3906,17 @@
                     }
                 },
                 "swimming_pool": {
-                    "label": "Schwimmbecken (Typ)"
+                    "label": "Schwimmbecken (Typ)",
+                    "options": {
+                        "kids": "Kinderbecken",
+                        "lazy_river": "Strömungskanal",
+                        "personal": "Privater Swimmingpool",
+                        "plunge": "Sprungbecken",
+                        "spa": "Spa-Becken",
+                        "swimming": "Sportbecken",
+                        "wading": "Nichtschwimmerbecken",
+                        "wave_pool": "Wellenbecken"
+                    }
                 },
                 "switch": {
                     "label": "Typ",
@@ -3932,6 +4020,15 @@
                 "toilets/handwashing": {
                     "label": "Handwaschbecken",
                     "terms": "handwäsche"
+                },
+                "toilets/menstrual_products": {
+                    "label": "Kostenlose Menstruationsprodukte verfügbar",
+                    "options": {
+                        "limited": "Nur in manchen Kabinen",
+                        "no": "Nein",
+                        "yes": "Ja, in allen Kabinen"
+                    },
+                    "terms": "menstruationshygiene,binden,periodenprodukte,menstruationsprodukte,tampons,monatshygiene,menstruationspflege,regelhygiene,damenhygieneartikel,menstruationsschutz,regelprodukte,menstruationsschutzprodukte,periodenartikel"
                 },
                 "toilets/position": {
                     "label": "Positionen",
@@ -4213,7 +4310,8 @@
                     "terms": "ukw kanal,ukw frequenz"
                 },
                 "via": {
-                    "label": "via"
+                    "label": "via",
+                    "terms": "durch,über,mittels,per"
                 },
                 "video_calls": {
                     "label": "Videoanruf",
@@ -4593,6 +4691,11 @@
                     "name": "Fahrradreparatur-Werkzeugkasten",
                     "terms": "fahrradreparatur-werkzeugkasten,fahrradreparatur-werkzeug-standplatz"
                 },
+                "amenity/bicycle_wash": {
+                    "name": "Fahrradwaschanlage",
+                    "terms": "fahrradwaschanlage,fahrradwaschstation,fahrradwaschplatz,fahrradreinigungsstation",
+                    "aliases": "Fahrradwaschstation\nFahrradwaschplatz\nFahrradreinigungsstation"
+                },
                 "amenity/biergarten": {
                     "name": "Biergarten",
                     "terms": "biergarten"
@@ -4850,6 +4953,9 @@
                     "name": "Urologe",
                     "terms": "nebennieren,blase,nebenhoden,niere,penis,prostata,fortpflanzung,hodensack,hoden,harnröhre,harnleiter,urologie,harnwege"
                 },
+                "amenity/dog_toilet": {
+                    "name": "Hundetoilette"
+                },
                 "amenity/dojo": {
                     "name": "Kampfsportstudio",
                     "terms": "kampfsportstudio,kampfsportzentrum,karatestudio,dojo"
@@ -5032,6 +5138,10 @@
                     "name": "Bibliothek",
                     "terms": "bibliothek,bücherei"
                 },
+                "amenity/library_dropoff": {
+                    "name": "Buchrückgabe",
+                    "terms": "bücherrückgabe,rückgabe,bücherei,bibliothek"
+                },
                 "amenity/loading_dock": {
                     "name": "Laderampe",
                     "terms": "tür,ladenbucht,verschiffen,entladen,lagerhaus"
@@ -5043,6 +5153,11 @@
                 "amenity/love_hotel": {
                     "name": "Stundenhotel",
                     "terms": "stundenhotel,liebeshotel,love hotel"
+                },
+                "amenity/luggage_locker": {
+                    "name": "Gepäckschließfach",
+                    "terms": "gepäck,taschen,schließfach,schließfächer,reisegepäck,aufbewahrung,reisen,koffer,lagerung,tour,gepäckstück",
+                    "aliases": "Gepäckaufbewahrung\nGepäckdepot\nGepäcklager"
                 },
                 "amenity/marketplace": {
                     "name": "Marktplatz",
@@ -5514,16 +5629,16 @@
                     "terms": "toilette,porta john,töpfchen,chemische toilette"
                 },
                 "amenity/townhall": {
-                    "name": "Rathaus",
-                    "terms": "gemeindezentrum,stadtverwaltung,gemeindeverwaltung,rathaus,verwaltungszentrum,verwaltung"
+                    "name": "Rathaus, Gemeindeamt",
+                    "terms": "gemeindezentrum,gemeindeverwaltung,rathaus,verwaltungszentrum,verwaltung"
                 },
                 "amenity/townhall/barangay-PH": {
                     "name": "Barangay Halle",
                     "terms": "baranggay,barrio"
                 },
                 "amenity/townhall/city": {
-                    "name": "Rathaus",
-                    "terms": "regierung,bürgermeister,gemeinde,gemeinderat,gerichtsgebäude"
+                    "name": "Städtisches Rathaus",
+                    "terms": "bürgermeister,stadtamt,gemeinderat,stadtrat,stadtregierung,rathaus"
                 },
                 "amenity/toy_library": {
                     "name": "Spielzeugbibliothek",
@@ -6506,6 +6621,11 @@
                 "emergency/destination": {
                     "name": "Notzufahrt ohne Notdurchfahrt"
                 },
+                "emergency/disaster_response": {
+                    "name": "Technisches Hilfswerk",
+                    "terms": "katastrophenschutz,zivilschutz,bevölkerungsschutz,thw,technisches hilfswerk",
+                    "aliases": "Katastrophenhilfsdienst\nKatastrophen-Hilfswerk\nBevölkerungsschutz\nFeuerlösch- und Katastrophenschutzdienst\nFeuerlösch- und Bergungsdienst\nZivilschutz"
+                },
                 "emergency/fire_alarm": {
                     "name": "Feueralarm-Knopf",
                     "terms": "feueralarm-knopf,feueralarmierungskasten"
@@ -7122,6 +7242,10 @@
                     "name": "Historisches Gebäude",
                     "terms": "denkmal,fachwerk,historisch,gotisch,romanisch,klassizistisch,barock,mittelalterlich,geschichtlich"
                 },
+                "historic/cannon": {
+                    "name": "Kanone",
+                    "terms": "kanone,haubitze,geschütz"
+                },
                 "historic/castle": {
                     "name": "Burg",
                     "terms": "burg,schloss,festung,kastell"
@@ -7557,6 +7681,10 @@
                     "name": "Gemeinschaftsgarten",
                     "terms": "gemeinschaftsgarten,gartengemeinschaft,kommunaler garten,kooperativer garten,kollektiver garten"
                 },
+                "leisure/garden/kitchen": {
+                    "name": "Küchengarten",
+                    "terms": "nutzgarten,potager,selbstversorger"
+                },
                 "leisure/garden/residential": {
                     "name": "Hausgarten",
                     "terms": "privatgarten"
@@ -7573,6 +7701,10 @@
                     "name": "Reitanlage",
                     "terms": "pferdehof,pferdereitstall,pferdesportanlage,pferdesportzentrum,ponyhof,reitbetrieb,reiten,reiterhof,reithof,reitpark,reitsportanlage,reitsportzentrum,reitstall",
                     "aliases": "Reitzentrum"
+                },
+                "leisure/hot_tub": {
+                    "name": "Whirlpool",
+                    "terms": "sprudelbecken,warmwasserbecken,jacuzzi"
                 },
                 "leisure/ice_rink": {
                     "name": "Eislaufbahn",
@@ -7969,6 +8101,10 @@
                     "name": "Schornstein",
                     "terms": "schornstein,kamin"
                 },
+                "man_made/clarifier": {
+                    "name": "Absetzbecken",
+                    "terms": "absetzanlage,vorklärbecken,nachklärbecken"
+                },
                 "man_made/clearcut": {
                     "name": "Kahlschlagfläche",
                     "terms": "kahlfläche,waldkahlfläcke,kahlschlagfläche"
@@ -8097,7 +8233,7 @@
                 },
                 "man_made/mast/lighting": {
                     "name": "Beleuchtungsmast",
-                    "terms": "flutlicht,stadionbeleuchtung,beleuchtung,lichtmast,sportplatzbeleuchtung,flutlichtanlage",
+                    "terms": "flutlicht,stadionbeleuchtung,beleuchtung,lichtmast,sportplatzbeleuchtung,flutlichtanlage,scheinwerfermast",
                     "aliases": "Flutlichtmast"
                 },
                 "man_made/milk_churn_stand": {
@@ -8176,7 +8312,7 @@
                 },
                 "man_made/street_cabinet": {
                     "name": "Schaltschrank im Freien",
-                    "terms": "kabel-tv-schrank überwachungsbox,telekomunikationsschrank,ampelsteuerungsschrank"
+                    "terms": "kabel-tv-schrank,überwachungsbox,telekomunikationsschrank,ampelsteuerungsschrank,verteilerkasten,elektroverteiler,verteilerschrank"
                 },
                 "man_made/street_cabinet/postal_service": {
                     "name": "Postablagekasten",
@@ -10403,7 +10539,7 @@
                 },
                 "tourism/wilderness_hut": {
                     "name": "unbewirtschaftete Schutzhütte",
-                    "terms": "unbewirtschaftete schutzhütte,biwakschachtel"
+                    "terms": "unbewirtschaftete schutzhütte,biwakschachtel,selbstversorgerhütte"
                 },
                 "tourism/zoo": {
                     "name": "Zoo",

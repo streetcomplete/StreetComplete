@@ -227,7 +227,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="credits_translations_title">"Prijevodi"</string>
     <string name="credits_contributors_title">"Programerski suradnici"</string>
     <string name="credits_author_title">"Autor i održavatelj"</string>
-    <string name="credits_and_more">"i drugi…"</string>
     <string name="quest_maxspeed_answer_living_street">"To je područje smirenog prometa"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Dakle, postoji znak poput ovog?"</string>
     <string name="quest_orchard_produce_title">"Što se ovdje uzgaja?"</string>
@@ -503,7 +502,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Je li ovo parkiralište za motocikle natkriveno (zaštićeno od kiše)?"</string>
     <string name="default_disabled_msg_maxspeed">"Ova je vrsta zadatka inicijalno onemogućena jer biste obično morali proći cijelu ulicu da provjerite ima li igdje znakova ograničenja brzine, a ne samo u istaknutom dijelu. To ponekad može biti prilično naporno da bi se riješio jedan zadatak."</string>
     <string name="pref_title_quests_restore_hidden">"Vrati skrivene zadatke"</string>
-    <string name="restore_hidden_success">"Vraćeno je %d skrivenih zadataka"</string>
     <string name="on_level">"na katu %s"</string>
     <string name="underground">"ispod površine"</string>
     <string name="quest_sidewalk_value_yes">"Ima trotoar"</string>
@@ -838,7 +836,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="team_mode_active">"Timski način rada je aktivan"</string>
     <string name="team_mode_deactivated">"Timski način rada je deaktiviran"</string>
     <string name="undo_confirm_title2">"Poništi ovo uređivanje?"</string>
-    <string name="synced">"Poslano"</string>
     <string name="toast_undo_unavailable">"Ova izmjena je već poslana i ne može se poništiti"</string>
     <string name="quest_cycleway_value_separate">"prikazan odvojeno na karti"</string>
     <string name="created_note_action_title">"Napravljena bilješka"</string>
@@ -1060,8 +1057,6 @@ Učinite isto za drugu stranu ako je prikazana na ekranu."</string>
     <string name="quest_road_width_title">"Kolika je širina ove ceste?"</string>
     <string name="quest_road_width_explanation">"Širina cesta od rubnika do rubnika: ovo uključuje sve na površini ulice poput parkinga na ulici ili biciklističkih traka, ali isključuje sve izvan nje, poput biciklističkih staza ili parkinga pored cesta."</string>
     <string name="quest_sidewalk_answer_none">"Uopće nema nogostupa"</string>
-    <string name="about_description_donate_google_play2">"Zahvaljujemo što razmišljate o tome da tražite ovu aplikaciju!
-Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju biti prikazane u aplikacijama. U tom kontekstu, čak niti direktna poveznica na našu internetsku stranicu nije dopuštena ovdje."</string>
     <string name="link_osmand_description">"Mobilna aplikacija za navigaciju i pregled karte (online i offline)"</string>
     <string name="link_sunders_description">"Karta nadzornih kamera"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Držite se bliže strelici, ali pripazite na promet!"</string>

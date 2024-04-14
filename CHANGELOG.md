@@ -4,6 +4,7 @@
 
 - Lit overlay: Unsupported current tagging is now indicated as such (#5571)
 - Building overlay: Selecting a specific building type for a historic building does now not remove its property as historic (#5547)
+- Fix max width for road narrowing traffic calmings were not answerable if mapped as a way (#5569, #5578), by @mnalis
 - Fix regression in v57.1 that may lead to issues displaying the current GPS location (#5516)
 - Fix the feature name label was slightly wrong for a few map features (#5549)
 - Fix description of Prettymapp (#5570), by @FloEdelmann

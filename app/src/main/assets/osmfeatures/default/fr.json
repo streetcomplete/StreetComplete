@@ -524,7 +524,8 @@
                     "terms": "type,sorte,aspect,cabine,téléphone,téléphonique"
                 },
                 "bottle": {
-                    "label": "Remplissage de bouteilles"
+                    "label": "Remplissage de bouteilles",
+                    "terms": "remplissage de bouteilles,remplissage,remplir,remplir des bouteilles,bouteilles"
                 },
                 "boules": {
                     "label": "Type"
@@ -540,6 +541,10 @@
                     "label": "Marque",
                     "terms": "marque"
                 },
+                "brewery": {
+                    "label": "Marques de bière vendues",
+                    "terms": "bière,brasserie,marque de bière,société de bière"
+                },
                 "bridge": {
                     "label": "Type",
                     "placeholder": "Défaut"
@@ -552,7 +557,16 @@
                     "label": "Type"
                 },
                 "bridge_combo": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "aqueduct": "Aqueduc",
+                        "boardwalk": "Promenade",
+                        "cantilever": "Pont à poutres en porte-à-faux",
+                        "covered": "Pont couvert",
+                        "movable": "Pont mobile",
+                        "trestle": "Pont à tréteaux",
+                        "viaduct": "Viaduc"
+                    }
                 },
                 "building": {
                     "label": "Bâtiment ",
@@ -1326,6 +1340,7 @@
                     "options": {
                         "leashed": "Tenus en laisse",
                         "no": "Interdits",
+                        "unleashed": "Laisse non requise",
                         "yes": "Autorisés"
                     },
                     "terms": "chiens,animaux,canin"
@@ -1457,6 +1472,10 @@
                 "fence_type": {
                     "label": "Type"
                 },
+                "fhrs/id-GB": {
+                    "label": "Identifiant FHRS (Food Hygiene Rating Scheme, GB uniquement)",
+                    "terms": "identifiant,food hygiene rating scheme,fhrs"
+                },
                 "fire_hydrant/diameter": {
                     "label": "Diamètre (mm, pouces, ou lettres)",
                     "terms": "diamètre"
@@ -1574,6 +1593,9 @@
                     "label": "Type",
                     "placeholder": "Défaut"
                 },
+                "fortification_type": {
+                    "label": "Type de fortification"
+                },
                 "fountain": {
                     "label": "Type"
                 },
@@ -1601,7 +1623,8 @@
                         "e10": "Carburant E10",
                         "e85": "Carburant E85",
                         "h70": "Hydrogène gazeux (700 bar)",
-                        "lpg": "Gaz naturel liquéfié (GNL)",
+                        "lng": "Gaz naturel liquéfié (GNL)",
+                        "lpg": "Pétrole naturel liquéfié (PNL)",
                         "octane_100": "Essence (octane 100)",
                         "octane_80": "Essence (octane 80)",
                         "octane_85": "Essence (octane 85)",
@@ -1839,7 +1862,7 @@
                         "pathology": "Pathologie",
                         "physiatry": "Médecine physique & réadaptation",
                         "plastic_surgery": "Chirurgie plastique",
-                        "podiatry": "Podiatrie",
+                        "podiatry": "Podologie",
                         "proctology": "Chirurgie colorectale",
                         "psychiatry": "Psychiatrie",
                         "pulmonology": "Pneumologie",
@@ -1912,6 +1935,7 @@
                         "manor": "Manoir",
                         "memorial": "Mémorial",
                         "milestone": "Borne",
+                        "millstone": "Meule",
                         "mine": "Mine",
                         "mine_shaft": "Puits de mine",
                         "monument": "Monument commémoratif",
@@ -2064,10 +2088,39 @@
                 },
                 "kerb": {
                     "label": "Aménagement de trottoir, Abaissement (bateau)",
+                    "options": {
+                        "flush": {
+                            "description": "Un trottoir affleurant qui est de niveau avec la zone environnante.",
+                            "title": "Affleurant"
+                        },
+                        "lowered": {
+                            "description": "Trottoir abaissé qui peut être utilisé par des utilisateurs en fauteuil roulant, pas plus de quelques centimètres.",
+                            "title": "Abaissé"
+                        },
+                        "no": {
+                            "description": "Il n'y a aucun trottoir à cet endroit.",
+                            "title": "Non"
+                        },
+                        "raised": {
+                            "description": "Un trottoir surélevé qui ne peut pas être utilisé par des utilisateurs en fauteuil roulant, élevé de plus que quelques centimètres.",
+                            "title": "Relevé"
+                        },
+                        "rolled": {
+                            "description": "Un trottoir relevé avec un bord arrondi, ce qui le rend plus facile à franchir par les véhicules, mais pas par les fauteuils roulants.",
+                            "title": "Arrondi et relevé"
+                        },
+                        "yes": {
+                            "description": "Une sorte de bordure est présente à cet endroit, on ne sait pas si elle est surélevée, abaissée, à fleur, etc.",
+                            "title": "Oui"
+                        }
+                    },
                     "terms": "trottoir,bord,bordure"
                 },
                 "kerb/height": {
                     "label": "Hauteur"
+                },
+                "kerb/kerb_barrier": {
+                    "label": "Type"
                 },
                 "kitchen": {
                     "label": "Cuisine",
@@ -2158,6 +2211,13 @@
                     "terms": "catégorie,type,permis,conduire,véhicule"
                 },
                 "lifeguard": {
+                    "label": "Type",
+                    "options": {
+                        "base": "Base des sauveteurs",
+                        "tower": "Tour de sauveteur"
+                    }
+                },
+                "lifeguard_check": {
                     "label": "Sauveteur"
                 },
                 "lift_gate/type": {
@@ -2232,12 +2292,15 @@
                             "title": "Sol"
                         },
                         "pedestal": {
+                            "description": "Borne surélevée montée sur un socle",
                             "title": "Piédestal"
                         },
                         "plate": {
+                            "description": "Plaque posée sur un mur ou équivalent",
                             "title": "Plaque"
                         },
                         "post": {
+                            "description": "Borne de type petit poteau (sans socle)",
                             "title": "Poteau"
                         },
                         "stone": {
@@ -2598,6 +2661,7 @@
                 },
                 "opening_hours/drive_through": {
                     "label": "Heures d'ouverture du drive",
+                    "placeholder": "Horaires identiques au magasin",
                     "terms": "heures d'ouverture du drive"
                 },
                 "operator": {
@@ -2964,6 +3028,20 @@
                         "forward": "Vers l'avant"
                     }
                 },
+                "railway/switch": {
+                    "label": "Type d'aiguillage",
+                    "options": {
+                        "abt": "Aiguillage de funiculaire",
+                        "default": "Aiguillage normal",
+                        "double_slip": "Traversée jonction double",
+                        "single_slip": "Traversée jonction simple",
+                        "three_way": "Aiguillage triple",
+                        "wye": "Aiguillage symétrique"
+                    }
+                },
+                "railway/track_ref": {
+                    "label": "Référence de la voie"
+                },
                 "ramp": {
                     "label": "Rampe d'accès",
                     "options": {
@@ -3019,8 +3097,13 @@
                     "label": "Numéro SIRET",
                     "terms": "siret,siren"
                 },
+                "ref/edubase-GB": {
+                    "label": "Identifiant URN (GB uniquement)",
+                    "terms": "identifiant,référence,école,éducation,grande-bretagne"
+                },
                 "ref/isil": {
-                    "label": "Code ISIL"
+                    "label": "Code ISIL",
+                    "terms": "code isil,identifiant international normalisé pour les bibliothèques et les organismes apparentés,iso 15511,international standard identifier for libraries and related organisations"
                 },
                 "ref/linz/place_id-NZ": {
                     "label": "Numéro d'identification NZGB",
@@ -3046,6 +3129,10 @@
                 },
                 "ref_platform": {
                     "label": "Identifiant du quai"
+                },
+                "ref_rail": {
+                    "label": "Numéro de la ligne",
+                    "terms": "numéro de la ligne"
                 },
                 "ref_road_number": {
                     "label": "Identifiant de la route",
@@ -3140,9 +3227,23 @@
                     "label": "Interdictions de tourner"
                 },
                 "roller_coaster/track": {
+                    "label": "Type",
                     "options": {
+                        "brake_run": {
+                            "description": "Une section de voie destinée à ralentir ou arrêter les trains"
+                        },
+                        "launch_straight": {
+                            "description": "Une section de voie destinée à accélérer les trains grâce à une poussée externe"
+                        },
                         "maintenance": {
                             "title": "Entretien"
+                        },
+                        "station": {
+                            "description": "Une section de voie où un train s'arrête pour embarquer et débarquer des passagers",
+                            "title": "Station"
+                        },
+                        "waiting": {
+                            "description": "Voies utilisées pour maintenir les trains si la section de bloc suivante est occupée"
                         }
                     }
                 },
@@ -3397,6 +3498,9 @@
                     "label": "Douches",
                     "terms": "douches,laver,doucher"
                 },
+                "side": {
+                    "label": "Côté"
+                },
                 "siren/purpose": {
                     "label": "Usage"
                 },
@@ -3527,6 +3631,7 @@
                         "cricket": "Cricket",
                         "curling": "Curling",
                         "cycling": "Cyclisme",
+                        "darts": "Fléchettes",
                         "disc_golf": "Disc golf",
                         "dog_racing": "Course de chiens",
                         "equestrian": "Sports équestres",
@@ -3696,6 +3801,10 @@
                         "valve_group": "Groupe de valves"
                     }
                 },
+                "summit/cross": {
+                    "label": "Croix sommitale",
+                    "terms": "croix sommitale,calvaire,croix,sommet,pic,montagne"
+                },
                 "supervised": {
                     "label": "Supervisé par un agent",
                     "terms": "supervisé,gardé,surveillé"
@@ -3779,7 +3888,17 @@
                     }
                 },
                 "swimming_pool": {
-                    "label": "Type de piscine"
+                    "label": "Type de piscine",
+                    "options": {
+                        "kids": "Piscine pour enfants",
+                        "lazy_river": "Rivière paresseuse",
+                        "personal": "Privative",
+                        "plunge": "Bassin profond",
+                        "spa": "Spa",
+                        "swimming": "Couloir de nage",
+                        "wading": "Pataugeoire",
+                        "wave_pool": "Piscine à vagues"
+                    }
                 },
                 "switch": {
                     "label": "Type",
@@ -3883,6 +4002,15 @@
                     "label": "Lavabo",
                     "terms": "lavage de main,savon,lavabo,laver les mains"
                 },
+                "toilets/menstrual_products": {
+                    "label": "Produits pour les règles gratuits à disposition",
+                    "options": {
+                        "limited": "Limité à certaines cabines",
+                        "no": "Non",
+                        "yes": "Oui, dans toutes les cabines"
+                    },
+                    "terms": "produits pour les règles gratuits à disposition,produits pour les règles,produits hygiéniques,tampons,serviette hygiénique,serviettes hygiéniques,règles,menstrues,menstruations"
+                },
                 "toilets/position": {
                     "label": "Positions",
                     "terms": "emplacements,positions"
@@ -3959,6 +4087,7 @@
                         "dip": "Creux",
                         "double_dip": "Double creux",
                         "hump": "Ralentisseur dos d’âne",
+                        "island": "Îlot d'apaisement du trafic",
                         "mini_bumps": "Mini ralentisseurs",
                         "rumble_strip": "Bande rugueuse",
                         "table": "Dos d'âne trapézoïdal"
@@ -4542,6 +4671,9 @@
                     "name": "Stand d'outils de réparation de vélos",
                     "terms": "magasin de vélos,atelier de réparation de vélos,bicycle repair station"
                 },
+                "amenity/bicycle_wash": {
+                    "name": "Lavage de vélo"
+                },
                 "amenity/biergarten": {
                     "name": "Biergarten",
                     "terms": "brasserie en plein air,bierre"
@@ -4638,8 +4770,8 @@
                     "terms": "enseignement supérieur non universitaire,enseignement supérieur,non universitaire,école supérieure,grande école,établissement d'enseignement supérieur,post-bac,post bac,institut,haute école,cegep,cégep,etablissement d'enseignement superieur,enseignement superieur,ecole superieure,grande ecole,école,ecole,college,amenity college,université,university"
                 },
                 "amenity/community_centre": {
-                    "name": "Salle polyvalente",
-                    "terms": "salle des fêtes,salle festive,centre communautaire,maison de quartier,maison des associations,salle des associations,centre d'animation,salle des fetes,salle des fètes,salle polyvalente,community centre"
+                    "name": "Centre communautaire",
+                    "terms": "maison de quartier,maison des associations,salle des associations,centre d'animation,centre communautaire,salle polyvalente,salle des fêtes,salle festive"
                 },
                 "amenity/community_centre/lgbtq": {
                     "name": "Salle polyvalente LGBTQ+",
@@ -4792,6 +4924,10 @@
                     "name": "Urologue",
                     "terms": "urine,urologue,urologie"
                 },
+                "amenity/dog_toilet": {
+                    "name": "Toilettes pour chien",
+                    "terms": "toilettes pour chien"
+                },
                 "amenity/dojo": {
                     "name": "Dojo",
                     "terms": "dojo,arts martiaux,art martial,tatami,judo,karate,aikido,aïkido,kendo,jujitsu,jujutsu,ju-jitsu,ju-jutsu,jūjutsu,jiu-jitsu,akhara,dojang,gelanggang,silat melayu,heya,sumo,kalari,kalaripayat,sasaran,pencak silat,wuguan,wushu,shorinji kempo,yoseikan budo,budo,aïkibudo,kenjutsu,bujutsu,katana,wakizashi,bokken,kobudo,bo-jutsu,bojustu,kendō,bō-jutsu,taijitsu,taijutsu"
@@ -4901,6 +5037,9 @@
                     "name": "Station-service",
                     "terms": "station-service,station service,station de carburant,station-essence,station essence,station d’essence,station à essence,essencerie,pompe à essence,pompe à carburant,carburant,essence,diesel,gpl,fuel"
                 },
+                "amenity/funeral_hall": {
+                    "name": "Salle de service funéraire"
+                },
                 "amenity/gambling": {
                     "name": "Salle de jeux d'argent",
                     "terms": "jeux,casino,paris,machine à sous,machines à sous,poker,roulette,black jack"
@@ -4969,6 +5108,9 @@
                     "name": "Bibliothèque",
                     "terms": "bibliothèque,médiathèque"
                 },
+                "amenity/library_dropoff": {
+                    "name": "Boîte de retour de livres"
+                },
                 "amenity/loading_dock": {
                     "name": "Quai de chargement",
                     "terms": "quai de chargement,zone de chargement,plateforme de chargement,plate-forme de chargement,embarcadère,chargement"
@@ -4980,6 +5122,9 @@
                 "amenity/love_hotel": {
                     "name": "Love hôtel",
                     "terms": "love hôtel"
+                },
+                "amenity/luggage_locker": {
+                    "name": "Consigne à bagages"
                 },
                 "amenity/marketplace": {
                     "name": "Marché",
@@ -5355,8 +5500,8 @@
                     "terms": "soins ambulatoires"
                 },
                 "amenity/social_facility/assisted_living": {
-                    "name": "EPHAD",
-                    "terms": "maison de retraite,ehpad,maison de repos"
+                    "name": "Résidence autonomie pour personnes âgées",
+                    "terms": "résidence autonomie pour personnes âgées"
                 },
                 "amenity/social_facility/food_bank": {
                     "name": "Banque alimentaire",
@@ -5364,7 +5509,7 @@
                 },
                 "amenity/social_facility/group_home": {
                     "name": "Maison de retraite",
-                    "terms": "maison de retraite,ehpad"
+                    "terms": "maison de retraite"
                 },
                 "amenity/social_facility/homeless_shelter": {
                     "name": "Foyer pour sans-abri",
@@ -5372,7 +5517,7 @@
                 },
                 "amenity/social_facility/nursing_home": {
                     "name": "Maison de repos",
-                    "terms": "maison de repis,maison de convalescence,maison de retraite médicalisée"
+                    "terms": "maison de repos,maison de convalescence,maison de retraite médicalisée,ehpad"
                 },
                 "amenity/stripclub": {
                     "name": "Club de strip-tease",
@@ -7196,8 +7341,8 @@
                     "terms": "terrain pour garages,garages"
                 },
                 "landuse/grass": {
-                    "name": "Herbe",
-                    "terms": "herbe"
+                    "name": "Pelouse",
+                    "terms": "herbe,pelouse entretenue,herbe entretenue"
                 },
                 "landuse/greenfield": {
                     "name": "Terrain vierge",
@@ -7460,6 +7605,9 @@
                     "name": "Jardin partagé",
                     "terms": "jardin,communautaire,familial,partagé,associatif,collectif"
                 },
+                "leisure/garden/kitchen": {
+                    "name": "Jardin potager"
+                },
                 "leisure/garden/residential": {
                     "name": "Jardin résidentiel",
                     "terms": "jardin résidentiel,jardin domestique,jardin privé,cour arrière,cour avant,espace vert,parterre"
@@ -7475,6 +7623,10 @@
                 "leisure/horse_riding": {
                     "name": "Centre équestre",
                     "terms": "centre équestre,poney-club,centre d'équitation,centre hippique,club hippique,manège,cercle hippique"
+                },
+                "leisure/hot_tub": {
+                    "name": "Jacuzzi",
+                    "terms": "jacuzzi,bain chaud,bain à remous,cuve thermale,bain tourbillon"
                 },
                 "leisure/ice_rink": {
                     "name": "Patinoire",
@@ -8625,7 +8777,7 @@
                 },
                 "office/insurance": {
                     "name": "Agence d'assurance",
-                    "terms": "agence d'assurance"
+                    "terms": "assurance,mutuelle"
                 },
                 "office/it": {
                     "name": "Spécialiste en informatique",
@@ -9975,7 +10127,7 @@
                     "terms": "magasin,dépot,friperie,seconde main,aubaine,solidaire"
                 },
                 "shop/sewing": {
-                    "name": "Magasin de couture",
+                    "name": "Mercerie",
                     "terms": "magasin de couture,magasin de matériel de couture"
                 },
                 "shop/shoe_repair": {
@@ -10281,7 +10433,7 @@
                 },
                 "tourism/wilderness_hut": {
                     "name": "Refuge de bivouac",
-                    "terms": "refuge de bivouac,refuge non gardé,cabane."
+                    "terms": "refuge de bivouac,refuge non gardé,cabane"
                 },
                 "tourism/zoo": {
                     "name": "Parc zoologique",
@@ -10326,6 +10478,9 @@
                 "traffic_calming/hump": {
                     "name": "Ralentisseur dos d’âne",
                     "terms": "dos d'âne,gendarme couché"
+                },
+                "traffic_calming/island": {
+                    "name": "Îlot d'apaisement du trafic"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Mini ralentisseurs",

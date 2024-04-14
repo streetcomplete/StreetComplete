@@ -1263,7 +1263,6 @@
                         "e10": "E10 benzin",
                         "e85": "E85 benzin",
                         "h70": "Brint i gasform (700 bar)",
-                        "lpg": "Flydende naturgas (LNG)",
                         "octane_100": "Benzin (100 oktan)",
                         "octane_80": "Benzin (80 oktan)",
                         "octane_85": "Benzin (85 oktan)",
@@ -1689,9 +1688,6 @@
                 },
                 "liaison": {
                     "label": "Type"
-                },
-                "lifeguard": {
-                    "label": "Livredder"
                 },
                 "lit": {
                     "label": "Gadebelysning"
