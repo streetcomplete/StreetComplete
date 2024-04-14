@@ -163,7 +163,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
             ),
         SymbolLayer("overlay-symbols", SOURCE)
             .withFilter(all(
-                gte(zoom(), 16f),
+                gte(zoom(), 17f),
                 isPoint()
             ))
             .withProperties(
@@ -180,8 +180,8 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 iconHaloWidth(2.5f),
                 iconHaloBlur(2f),
                 textOptional(true),
-                iconAllowOverlap(step(zoom(), literal(false), stop(18, true))),
-                textAllowOverlap(step(zoom(), literal(false), stop(20, true))),
+                iconAllowOverlap(step(zoom(), literal(false), stop(19, true))),
+                textAllowOverlap(step(zoom(), literal(false), stop(21, true))),
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
             ),
     )
