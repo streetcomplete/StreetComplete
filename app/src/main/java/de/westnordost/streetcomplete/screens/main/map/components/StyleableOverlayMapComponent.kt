@@ -229,7 +229,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                     p.addProperty("opacity", 0f)
                 }
 
-                if (style.height != null) {
+                if (style.height != null && style.color != INVISIBLE) {
                     p.addProperty("height", style.height)
                     if (style.minHeight != null) {
                         p.addProperty("min-height", style.minHeight.coerceAtMost(style.minHeight))
