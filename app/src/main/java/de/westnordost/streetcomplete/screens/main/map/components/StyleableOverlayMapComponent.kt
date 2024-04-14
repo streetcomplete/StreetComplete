@@ -158,6 +158,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 fillExtrusionColor(get("color")),
                 fillExtrusionOpacity(get("opacity")),
                 fillExtrusionHeight(get("height")),
+                fillExtrusionBase(get("min-height")),
             ),
         SymbolLayer("overlay-symbols", SOURCE)
             .withFilter(all(
@@ -231,6 +232,9 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
 
                 if (style.height != null) {
                     p.addProperty("height", style.height)
+                    if (style.minHeight != null) {
+                        p.addProperty("min-height", style.minHeight.coerceAtMost(style.minHeight))
+                    }
                 }
 
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)

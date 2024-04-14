@@ -29,6 +29,7 @@ data class PolygonStyle(
     val label: String? = null,
     /** whether and how much to extrude this area */
     val height: Float? = null,
+    val minHeight: Float? = null,
 ) : Style
 
 data class PointStyle(
