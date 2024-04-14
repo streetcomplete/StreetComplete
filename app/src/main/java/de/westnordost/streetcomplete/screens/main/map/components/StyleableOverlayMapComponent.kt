@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.overlays.Color.INVISIBLE
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
@@ -210,9 +211,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
     }
 
     private fun StyledElement.toFeatures(): List<Feature> {
-        val p = JsonObject()
-        p.addProperty(ELEMENT_ID, element.id)
-        p.addProperty(ELEMENT_TYPE, element.type.name)
+        val p = getElementKeyProperties(element.key)
 
         return when (style) {
             is PointStyle -> {
@@ -239,7 +238,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
 
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
                 val point = if (style.label != null || style.icon != null) {
-                    val pp = JsonObject()
+                    val pp = getElementKeyProperties(element.key)
                     if (style.icon != null) pp.addProperty("icon", style.icon)
                     if (style.label != null) pp.addProperty("label", style.label)
                     Feature.fromGeometry(geometry.center.toPoint(),pp)
@@ -307,6 +306,13 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
         val id = properties[ELEMENT_ID]?.asLong ?: return null
         val type = properties[ELEMENT_TYPE]?.asString ?: return null
         return ElementKey(ElementType.valueOf(type), id)
+    }
+
+    private fun getElementKeyProperties(key: ElementKey): JsonObject {
+        val p = JsonObject()
+        p.addProperty(ELEMENT_ID, key.id)
+        p.addProperty(ELEMENT_TYPE, key.type.name)
+        return p
     }
 
     // no need to parse, modify and write to string darkening the same colors for every single element
