@@ -176,7 +176,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         val otherAnswersItem = if (answers.size == 1) {
             answers.single()
         } else {
-            AnswerItem(R.string.quest_generic_otherAnswers) { showOtherAnswers() }
+            AnswerItem(R.string.quest_generic_otherAnswers2) { showOtherAnswers() }
         }
         setButtonPanelAnswers(listOf(otherAnswersItem) + buttonPanelAnswers)
     }

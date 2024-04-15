@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Swedbank, SEB, Citadele, Luminor Bank, Luminor, BluOr Bank]
 centerLineStyle: white
-chargingStationOperators: [CSDD, Elektrum, e-mobi, Ceļu satiksmes drošības direkcija, 'Tesla, Inc.', CSDD - Ceļu Satiksmes Drošības Direkcija]
-clothesContainerOperators: [Eco Baltia Vide, CleanR]
+chargingStationOperators: [CSDD, Elektrum, ChargePoint, e-mobi, Ceļu satiksmes drošības direkcija, 'Tesla, Inc.', CSDD - Ceļu Satiksmes Drošības Direkcija]
+clothesContainerOperators: [Kuldīgas komunālie pakalpojumi, Eco Baltia Vide, CleanR]
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white

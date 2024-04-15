@@ -227,7 +227,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="credits_translations_title">"Vertimai"</string>
     <string name="credits_contributors_title">"Kodo talkininkai"</string>
     <string name="credits_author_title">"Autorius ir prižiūrėtojas"</string>
-    <string name="credits_and_more">"ir daugiau …"</string>
     <string name="quest_maxspeed_answer_living_street">"Tai gyvenamoji zona"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Taigi yra toks kelio ženklas?"</string>
     <string name="quest_orchard_produce_title">"Kas čia auginama?"</string>
@@ -500,7 +499,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ar ši motociklų stovėjimo vieta dengta (apsaugota nuo lietaus)?"</string>
     <string name="default_disabled_msg_maxspeed">"Šis užduočių tipas išjungtas, nes jūsų paprastai prašoma patikrinti apribojimus visoje gatvėje, ne tik pažymėtoje vietoje. Gali būti labai sunku išspręsti net vieną užduotį."</string>
     <string name="pref_title_quests_restore_hidden">"Atstatyti paslėptas užduotis"</string>
-    <string name="restore_hidden_success">"Atstatytos %d paslėptos užduotys"</string>
     <string name="on_level">"lygyje %s"</string>
     <string name="underground">"po žeme"</string>
     <string name="quest_sidewalk_value_yes">"šaligatvis"</string>
@@ -838,7 +836,6 @@ Atkreipkite dėmesį į visas galimas parinktis: kai kurie atvejai nėra akivaiz
     <string name="team_mode_active">"įjungtas komandinis režimas"</string>
     <string name="team_mode_deactivated">"komandinis režimas išjungtas"</string>
     <string name="undo_confirm_title2">"Atšaukti šį redagavimą?"</string>
-    <string name="synced">"Sinchronizuota"</string>
     <string name="toast_undo_unavailable">"Šis redagavimas jau sinchronizuotas ir negali būti atšauktas"</string>
     <string name="quest_cycleway_value_separate">"žemėlapyje rodomi atskirai."</string>
     <string name="created_note_action_title">"Sukurta pastaba"</string>
@@ -1060,8 +1057,6 @@ Tą patį padarykite ir kitoje pusėje, jei yra."</string>
     <string name="quest_road_width_title">"Kokio pločio čia kelias?"</string>
     <string name="quest_road_width_explanation">"Kelio važiuojamosios dalies plotis nuo šaligatvio bortelio iki šaligatvio bortelio: Tai apima viską, kas yra gatvės paviršiuje, įskaitant gatvės automobilių stovėjimo aikšteles ar dviračių takus, tačiau neapima visko, kas yra už šaligatvio bortelio, pavyzdžiui, šaligatvių, automobilių stovėjimo aikštelių už gatvės ribų ar gretimų dviračių takų."</string>
     <string name="quest_sidewalk_answer_none">"Nėra šaligatvio"</string>
-    <string name="about_description_donate_google_play2">"Dėkojame, kad svarstote galimybę paremti šią programą!
-Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti nuorodų, vedančių į aukas. Atsižvelgiant į tai, net nuorodos į mūsų projekto namus neleidžiamos."</string>
     <string name="link_osmand_description">"Mobilioji programėlė žemėlapių peržiūrai ir navigacijai internetu ir neprisijungus"</string>
     <string name="link_sunders_description">"Kamerų ir stebėjimo įrangos žemėlapis"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Laikykitės arčiau rodyklės, bet saugokitės eismo!"</string>

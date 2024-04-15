@@ -125,7 +125,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
     * Capitalize words when entering names
     * Zoom using volume buttons
   * Display settings
-    * Disable 3D buildings
+    * Disable 3D buildings (currently broken)
     * Show arrows indicating direction of highlighted way
     * Highlight geometries for nearby quests
     * Put pin on exact location of a quest

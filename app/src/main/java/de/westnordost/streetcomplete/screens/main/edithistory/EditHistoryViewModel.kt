@@ -110,8 +110,11 @@ class EditHistoryViewModelImpl(
             }
             edits.update { edits ->
                 val editIndex = edits.indexOfFirst { it.key == synced.key }
-                if (editIndex != -1) edits.toMutableList().also { it[editIndex] = synced }
-                else edits
+                if (editIndex != -1) {
+                    edits.toMutableList().also { it[editIndex] = synced }
+                } else {
+                    edits
+                }
             }
         }
 

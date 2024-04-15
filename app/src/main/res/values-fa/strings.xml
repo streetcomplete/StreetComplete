@@ -227,7 +227,6 @@
     <string name="credits_translations_title">"ترجمه‌ها"</string>
     <string name="credits_contributors_title">"مشارکت‌کنندگان در بخش کدنویسی"</string>
     <string name="credits_author_title">"سازنده و نگهدارنده"</string>
-    <string name="credits_and_more">"و دیگران…"</string>
     <string name="quest_maxspeed_answer_living_street">"این یک خیابان محل سکونت است"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"پس، علامتی مانند این وجود دارد؟"</string>
     <string name="quest_orchard_produce_title">"چه چیزی در اینجا به عمل می‌آید؟"</string>
@@ -500,7 +499,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"آیا این پارکینگ موتورسیکلت سرپوشیده است؟ (از باران محافظت می‌شود)"</string>
     <string name="default_disabled_msg_maxspeed">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا معمولاً لازم است نه فقط بخش انتخاب‌شده را، بلکه سرتاسر خیابان را برای تابلوهای محدودیت سرعت بررسی کنید. این موضوع گاهی زمان فعالیت زیادی می‌طلبد آن هم برای حل‌کردن فقط یک جُستار."</string>
     <string name="pref_title_quests_restore_hidden">"بازگرداندن جُستارهای پنهان"</string>
-    <string name="restore_hidden_success">"%d جُستار پنهان بازگردانده شد"</string>
     <string name="on_level">"در طبقه %s"</string>
     <string name="underground">"زیر زمین"</string>
     <string name="quest_sidewalk_value_yes">"پیاده‌رو"</string>
@@ -836,7 +834,6 @@
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی غیرفعال است"</string>
     <string name="undo_confirm_title2">"ویرایش زیر را واگرد می‌کنید؟"</string>
-    <string name="synced">"همگام سازی شده"</string>
     <string name="toast_undo_unavailable">"این ویرایش قبلاً همگام سازی شده است و قابل واگرد نیست"</string>
     <string name="quest_cycleway_value_separate">"جداگانه روی نقشه نمایش داده می‌شود"</string>
     <string name="created_note_action_title">"یادداشت ایجاد شد"</string>
@@ -1060,8 +1057,6 @@
     <string name="quest_road_width_title">"پهنای این جاده در اینجا چقدر است؟"</string>
     <string name="quest_road_width_explanation">"عرض جاده از جدول تا جدول: شامل هر چیزی در سطح خیابان می‌شود مانند جای پارک در خیابان یا خطوط دوچرخه‌سواری؛ اما شامل هر چیزی فراتر از جدول نمی‌شود مانند پیاده‌روها، پارکینگ بیرون از خیابان یا مسیرهای دوچرخه‌سواری در کنار خیابان."</string>
     <string name="quest_sidewalk_answer_none">"اصلا پیاده‌رو ندارد"</string>
-    <string name="about_description_donate_google_play2">"برای پشتیبانی از این برنامه از شما سپاسگزاریم!
-متأسفانه، به دلیل خط‌مشی فروشگاه Google Play، هیچ پیوندی برای کمک مالی در برنامه نمایش داده نمی‌شود. در این زمینه، حتی پیونددادن به صفحهٔ اصلی پروژهٔ ما مجاز نیست."</string>
     <string name="link_osmand_description">"برنامهٔ همراه برای مشاهدهٔ نقشه و ناوبری؛ آنلاین و آفلاین"</string>
     <string name="link_sunders_description">"نقشه دوربین‌ها و تجهیزات نظارتی"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"به جهت‌یاب نزدیک‌تر شوید، اما مراقب عبور و مرور باشید!"</string>
@@ -1386,4 +1381,11 @@
     <string name="overlay_things">"چیزها"</string>
     <string name="disused">"بلااستفاده/از کار افتاده"</string>
     <string name="unknown_object">"شیء ناشناخته"</string>
+    <string name="quest_leafType_tree_title">"آیا این درخت سوزنی است یا برگ؟"</string>
+    <string name="quest_bbq_fuel_gas">"گاز"</string>
+    <string name="about_description_donate_google_play3">"باتشکر از شما برای حمایت از این برنامه!
+شما می‌توانید اطلاعات کمک مالی را در وب‌سایت یا خانه پروژه ما بیابید، Google Play به ما اجازه نمی‌دهد پیوند را در برنامه ارائه دهیم."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"نه در داخل، بلکه پوشیده شده است"</string>
+    <string name="lit_value_unsupported">"وضعیت روشنایی خاصی که در این برنامه قابل انتخاب نیست"</string>
+    <string name="quest_generic_otherAnswers2">"آه…"</string>
 </resources>

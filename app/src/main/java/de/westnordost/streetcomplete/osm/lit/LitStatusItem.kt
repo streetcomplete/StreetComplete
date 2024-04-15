@@ -17,7 +17,7 @@ private val LitStatus.iconResId: Int get() = when (this) {
     NO -> R.drawable.ic_lit_no
     AUTOMATIC -> R.drawable.ic_lit_automatic
     NIGHT_AND_DAY -> R.drawable.ic_lit_24_7
-    UNSUPPORTED -> 0
+    UNSUPPORTED -> R.drawable.ic_lit_unsupported
 }
 
 private val LitStatus.titleResId: Int get() = when (this) {
@@ -25,5 +25,5 @@ private val LitStatus.titleResId: Int get() = when (this) {
     NO -> R.string.lit_value_no
     AUTOMATIC -> R.string.lit_value_automatic
     NIGHT_AND_DAY -> R.string.lit_value_24_7
-    UNSUPPORTED -> 0
+    UNSUPPORTED -> R.string.lit_value_unsupported
 }

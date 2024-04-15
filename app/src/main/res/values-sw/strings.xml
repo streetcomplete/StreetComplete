@@ -201,7 +201,6 @@
     <string name="credits_translations_title">"Tafsiri"</string>
     <string name="credits_contributors_title">"Wapangiliaji wa mifumo"</string>
     <string name="credits_author_title">"Mwandishi na mtunzaji"</string>
-    <string name="credits_and_more">"na wengine…"</string>
     <string name="quest_maxspeed_answer_living_street">"Ni barabara hai"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Kwa hivyo, kuna aiama kama hii?"</string>
     <string name="quest_orchard_produce_title">"Ni nini kinachokuzwa hapa?"</string>
@@ -473,7 +472,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Je, maegesho haya ya pikipiki yamefunikwa (yamelindwa dhidi ya mvua)?"</string>
     <string name="default_disabled_msg_maxspeed">"Njia hii imefungwa kwa sababu kwa kawaida unatakiwa kuangalia mtaa mzima kwa alama za kikomo cha kasi, si tu sehemu iliyoangaziwa. Hii inaweza kutumia nguvu nyingi kwa kutatua kazi moja tu."</string>
     <string name="pref_title_quests_restore_hidden">"Rejesha mambo yaliyofichwa"</string>
-    <string name="restore_hidden_success">"Imerejesha mambo %d yaliyofichwa"</string>
     <string name="on_level">"kwenye kiwango cha %s"</string>
     <string name="underground">"chini ya ardhi"</string>
     <string name="quest_sidewalk_value_yes">"Njia ya pembezoni mwa barabara"</string>
@@ -798,7 +796,6 @@
     <string name="team_mode_active">"Hali ya timu inatumika"</string>
     <string name="team_mode_deactivated">"Hali ya timu kutotumika"</string>
     <string name="undo_confirm_title2">"Tendua hariri ifuatayo?"</string>
-    <string name="synced">"Imesawazishwa"</string>
     <string name="toast_undo_unavailable">"Uhariri huu tayari umesawazishwa na hauwezi kutenduliwa"</string>
     <string name="quest_cycleway_value_separate">"kuonyeshwa tofauti kwenye ramani"</string>
     <string name="created_note_action_title">"Kidokezo kimeundwa"</string>
@@ -1016,7 +1013,6 @@
     <string name="quest_road_width_title">"Barabara hapa ina upana gani?"</string>
     <string name="quest_road_width_explanation">"Upana wa barabara kutoka ukingo hadi ukingo: Hii inajumuisha chochote kwenye eneo la barabara, ikiwa ni pamoja na maegesho ya barabarani au njia za baiskeli lakini bila kujumuisha chochote kilicho nje ya kingo kama vile vijia, maegesho ya barabarani au njia za baiskeli zilizo karibu."</string>
     <string name="quest_sidewalk_answer_none">"Hakuna njia ya kando ya barabara kabisa"</string>
-    <string name="about_description_donate_google_play2">"Asante kwa kuzingatia kusaidia programu hii! Kwa bahati mbaya, kutokana na sera ya mtandao wa google , hakuna kiunganishi inayoelekeza labda kuonesha ndani ya programu. Katika muktadha huu, hata kiunganishi kwenye mradi hairuhusi"</string>
     <string name="link_osmand_description">"Programu ya rununu au simu ya kutazama ramani mtandaoni na nje ya mtandao na urambazaji"</string>
     <string name="link_sunders_description">"Ramani ya kamera na vifaa vya uchunguzi"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Ekaa karibu na mshale lakini angalia kwa makini barabarani"</string>

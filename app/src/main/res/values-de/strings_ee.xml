@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="pref_hide_notes_title">Notizen bestimmter Nutzer verstecken</string>
+    <string name="pref_hide_notes_title">Hinweise bestimmter Nutzer verstecken</string>
     <string name="pref_category_mods">SCEE-Einstellungen</string>
-    <string name="pref_screen_notes">Notizen</string>
+    <string name="pref_screen_notes">Hinweise</string>
     <string name="pref_save_file_error">Fehler beim Speichern der Datei</string>
     <string name="pref_expert_mode_title">Expertenmodus</string>
     <string name="pref_expert_mode_summary">Erweiterte Bearbeitungsmöglichkeiten aktivieren</string>
@@ -10,13 +10,13 @@
     <string name="pref_hide_notes_message">Gib Usernamen oder IDs ein, die ignoriert werden sollen</string>
     <string name="pref_read_filter_hint">Filter…</string>
     <string name="pref_hide_notes_hint">Verwende Kommas, um Usernamen oder IDs zu trennen</string>
-    <string name="pref_show_gpx_button_title">Schaltfläche für GPX-Notiz anzeigen</string>
-    <string name="pref_swap_gpx_note_button">OSM- und GPX-Notizschaltflächen vertauschen</string>
-    <string name="pref_hide_keyboard_title">Tastatur vor dem Erstellen einer Notiz ausblenden</string>
+    <string name="pref_show_gpx_button_title">Schaltfläche für GPX-Hinweis anzeigen</string>
+    <string name="pref_swap_gpx_note_button">Knöpfe für OSM- und GPX-Hinweise vertauschen</string>
+    <string name="pref_hide_keyboard_title">Tastatur vor dem Erstellen eines Hinweises ausblenden</string>
     <string name="pref_files_not_found">Keine Dateien gefunden</string>
     <string name="pref_read_log_save">Vollständige Logdatei speichern</string>
-    <string name="pref_save_photos_title">Fotos speichern, die für Notizen aufgenommen wurden</string>
-    <string name="pref_save_photos_summary">Fotos in voller Auflösung speichern, die für Notizen aufgenommen wurden, ohne die EXIF-Daten zu löschen</string>
+    <string name="pref_save_photos_title">Fotos speichern, die für Hinweise aufgenommen wurden</string>
+    <string name="pref_save_photos_summary">Fotos in voller Auflösung speichern, die für Hinweise aufgenommen wurden, ohne die EXIF-Daten zu löschen</string>
     <string name="pref_3d_buildings_title">3D-Gebäude anzeigen</string>
     <string name="pref_way_direction">Richtung von Wegen anzeigen</string>
     <string name="pref_quest_monitor_title">Benachrichtigung bei Quests in der Nähe</string>
@@ -50,7 +50,7 @@
     <string name="restriction_overlay_select_way">Klicke den nächsten Weg auf der Karte an. Er braucht einen gemeinsamen Endknoten mit dem aktuellen Weg. Teile ihn, falls nötig.</string>
     <string name="pref_main_menu_switch_presets_title">Schaltfläche „Voreinstellung wechseln“ im Hauptmenü</string>
     <string name="quest_osmose_delete_this_issue">Entferne dieses Problem lokal</string>
-    <string name="pref_offset_fix_summary">Diese existieren, sodass weiße Punkte durch Questpins verdeckt werden</string>
+    <string name="pref_offset_fix_summary">Diese existieren, sodass weiße Punkte durch Aufgabenpins verdeckt werden</string>
     <string name="quest_settings_reset">Zurücksetzen</string>
     <string name="quest_monitor_gps">Aktiv nach GPS-Standorten fragen?</string>
     <string name="create_poi">POI hinzufügen</string>
@@ -77,7 +77,7 @@
     <string name="pref_gpx_track_download">Vom GPX-Track abgedeckter Bereich herunterladen</string>
     <string name="quest_seating_sidewalk">Auf dem Gehsteig</string>
     <string name="quest_osmose_select_element">Element auswählen</string>
-    <string name="pref_create_custom_quest_title">Erstellen von benutzerdefinierten Quests erlauben</string>
+    <string name="pref_create_custom_quest_title">Erstellen von benutzerdefinierten Aufgaben erlauben</string>
     <string name="quest_fixme_remove">Dieses FixMe entfernen</string>
     <string name="quest_buildingType_sty">Schweinestall</string>
     <string name="quest_settings_osmose_level_title">Wähle den Schweregrad des Problems zum Herunterladen und Anzeigen</string>
@@ -92,7 +92,7 @@
     <string name="quest_railwayPlatformRef_message">Welches Tag soll für Tracks verwendet werden, die von dieser Plattform aus zugänglich sind\? Laut OSM-Wiki könnte local_ref vorzuziehen sein, aber die tatsächliche Verwendung ist meist ref.</string>
     <string name="pref_trees_title">Baumabfrage-Datei laden</string>
     <string name="delete_confirmation_data">OSM- und Questdaten</string>
-    <string name="pref_save_gpx">GPX-Notizen und angehängte Fotos und Tracks aufrufen</string>
+    <string name="pref_save_gpx">GPX-Hinweise und angehängte Fotos und Tracks aufrufen</string>
     <string name="quest_artwork_relief">Relief</string>
     <string name="move_node_of_other_relation">Dieser Knoten ist Teil der folgenden Relationen, die keine Multipolygone sind: %s</string>
     <string name="level_filter">Level-Filter</string>
@@ -111,7 +111,7 @@
     <string name="quest_settings_fixme_title">Zu ignorierende FixMe-Werte auswählen</string>
     <string name="delete_confirmation_tiles">Kartenkacheln</string>
     <string name="restriction_overlay_only_for">Nur für: %s</string>
-    <string name="pref_hide_keyboard_summary">Blendet die Tastatur aus, wenn sie geöffnet ist, bevor die Notiz tatsächlich erstellt wird (um eine erneute Ansicht der Position zu ermöglichen)</string>
+    <string name="pref_hide_keyboard_summary">Blendet die Tastatur aus, wenn sie geöffnet ist, bevor der Hinweis tatsächlich erstellt wird (um eine erneute Ansicht der Position zu ermöglichen)</string>
     <string name="quest_disabled_msg_railway_platform_ref">Beachte, dass im Wiki nicht ganz klar ist, welches Tag am besten zu verwenden ist und es daher dem Benutzer überlassen bleibt. Wähle zwischen „ref“ (Standard) und „local_ref“ in den Sucheinstellungen.
 \nWenn es zwei Gleise entlang einer Plattform gibt, verwende durch Semikolon getrennte Werte, z. B. 2;3</string>
     <string name="quest_monitor_channel_name_found">Aufgabe in der Nähe gefunden</string>
@@ -147,8 +147,8 @@
     <string name="quest_service_building_operator_title">Wer ist der Betreiber dieses Servicegebäudes\?</string>
     <string name="quest_osmose_title">Osmose-Quest: %s</string>
     <string name="quest_wheelchair_description_answer">Beschreibung hinzufügen</string>
-    <string name="pref_create_custom_quest_summary">… als Alternative zum Hinterlassen einer Notiz. Diese kann als lokal gespeicherte, auf der Karte sichtbare Notiz verwendet werden. Beachte, dass du die benutzerdefinierten Quests aktivieren musst.</string>
-    <string name="pref_show_nearby_quests_summary">Ermöglicht das Umschalten zwischen nahe gelegenen Quests, wenn ein Questformular angezeigt wird</string>
+    <string name="pref_create_custom_quest_summary">… als Alternative zum Hinterlassen eines Hinweises. Diese kann als lokal gespeicherter, auf der Karte sichtbarer Hinweis verwendet werden. Beachte, dass du die benutzerdefinierten Aufgaben aktivieren musst.</string>
+    <string name="pref_show_nearby_quests_summary">Ermöglicht das Umschalten zwischen nahe gelegenen Aufgaben, wenn ein Aufgabenformular angezeigt wird</string>
     <string name="import_export_hidden_quests">Versteckte Aufgaben</string>
     <string name="advanced_resurvey_title">Datum und Schlüssel der Neuerhebung festlegen</string>
     <string name="quest_tree_disabled_msg">Diese Aufgabe ist standardmäßig deaktiviert, weil sie nicht leicht zu beantworten ist. Arten/Gattungen müssen aus Vorschlägen ausgewählt werden, die aus den am häufigsten verwendeten Werten übernommen werden. Du kannst Vorschläge aus deiner eigenen Liste von Arten mit durchsuchbaren Namen machen, indem du eine Datei im Einstellungsmenü der Datenverwaltung bereitstellst, die &lt;species&gt; (&lt;name&gt;) enthalten.</string>
@@ -161,8 +161,8 @@
     <string name="restriction_overlay_sign_stop">Halt</string>
     <string name="quest_poi_traffic_title">POI: Verkehr %s</string>
     <string name="quest_settings_element_selection">Lege die für diese Aufgabe berechtigten Elemente fest. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Klicke hier</a>, um Informationen zur Syntax der Elementauswahl in einem Browser anzuzeigen.</string>
-    <string name="pref_offset_fix_title">Offsets der Questmarker entfernen</string>
-    <string name="close_note_checkbox">Schließe die Notiz (tue dies nur, wenn du die Notiz tatsächlich löst!)</string>
+    <string name="pref_offset_fix_title">Offsets der Aufgabenmarker entfernen</string>
+    <string name="close_note_checkbox">Schließe den Hinweis (mach das nur, wenn du den Hinweis tatsächlich löst!)</string>
     <string name="quest_lanes_answer_noLanes_known_count">Keine Markierungen, offensichtliche Anzahl von Fahrspuren</string>
     <string name="quest_buildingType_barn">Scheune</string>
     <string name="quest_buildingType_digester">Faulbehälter (Bioreaktor)</string>
@@ -183,10 +183,10 @@
     <string name="quest_settings_sidewalk_distance_button">Abstand</string>
     <string name="tutorial_info_fork_message"><b>SCEE</b>
 \n
-\nDies ist eine modifizierte Version von StreetComplete. Sie richtet sich an erfahrene Benutzer mit fortgeschrittenem Wissen über OSM. Sie bietet mehr Kontrolle, aber auch mehr <i>Verantwortung</i>.
-\nDies gilt insbesondere für die Möglichkeit, Tags direkt zu bearbeiten und Knoten zu löschen, aber auch für die Änderung der Elementauswahl für Aufgaben. Aufgaben, die in SCEE hinzugefügt wurden, sind standardmäßig <i>nicht immer beantwortbar</i> und daher deaktiviert. Bitte verberge sie, wenn du sie nicht beantworten kannst, und <i>spamme keine Notizen</i>.
+\n Dies ist eine modifizierte Version von StreetComplete. Sie richtet sich an erfahrene Benutzer mit fortgeschrittenem Wissen über OSM. Sie bietet mehr Kontrolle, aber auch mehr <i>Verantwortung</i>.
+\n Dies gilt insbesondere für die Möglichkeit, Tags direkt zu bearbeiten und Knoten zu löschen, aber auch für die Änderung der Elementauswahl für Aufgaben. Aufgaben, die in SCEE hinzugefügt wurden, sind standardmäßig <i>nicht immer beantwortbar</i> und daher deaktiviert. Bitte verberge sie, wenn du sie nicht beantworten kannst, und <i>spamme keine Hinweise</i>.
 \n
-\nStandardmäßig ist SCEE so konfiguriert, dass es sich sehr ähnlich wie StreetComplete verhält.</string>
+\n Standardmäßig ist SCEE so konfiguriert, dass es sich sehr ähnlich wie StreetComplete verhält.</string>
     <string name="import_presets_overlays_replace">Ersetzen</string>
     <string name="show_nearby_quests_even_hidden">Alle Typen und versteckte Aufgaben anzeigen</string>
     <string name="quest_custom_quest_title">Benutzerdefinierte Quest: %s</string>
@@ -308,15 +308,15 @@
     <string name="pref_read_reverse_button">Umkehren</string>
     <string name="pref_delete_old_data_after_message">Entferne heruntergeladene OSM-Daten, wenn sie älter als diese Anzahl von Tagen sind</string>
     <string name="pref_expert_mode_message">Dies wird die Verwendung von Aufgaben ermöglichen, die in SCEE hinzugefügt wurden, sowie Möglichkeiten zum
-\n <li>Direkten Bearbeiten von Tags</li>
-\n <li>Verschieben von Knoten, die Teil von Wegen oder Relationen sind</li>
-\n <li>Löschen von alleinstehenden Knoten</li>
-\n <li>Bearbeiten von Elementen, die durch eine Notiz blockiert sein sollten</li>
-\n <li>Hinzufügen von alleinstehenden Knoten an beliebigen Stellen</li>
-\n <li>Ändern der Elementauswahl von Aufgaben</li>
+\n \u0020<li>Direkten Bearbeiten von Tags</li>
+\n \u0020<li>Verschieben von Knoten, die Teil von Wegen oder Relationen sind</li>
+\n \u0020<li>Löschen von alleinstehenden Knoten</li>
+\n \u0020<li>Bearbeiten von Elementen, die durch einen Hinweis blockiert sein sollten</li>
+\n \u0020<li>Hinzufügen von alleinstehenden Knoten an beliebigen Stellen</li>
+\n \u0020<li>Ändern der Elementauswahl von Aufgaben</li>
 \n
-\nDies ist immer noch weniger als die meisten anderen Editoren zulassen, aber unvorsichtige Verwendung kann zu Schäden an Daten führen, die in StreetComplete nicht möglich sind. Beachte, dass du durch das Aktivieren des Expertenmodus eine deutlich größere Verantwortung für deine Bearbeitungen trägst.
-\nAktiviere diese Einstellung nur, wenn du Erfahrung mit OSM außerhalb von StreetComplete hast und verstehst, was du tust. </string>
+\n \u0020Dies ist immer noch weniger als die meisten anderen Editoren zulassen, aber unvorsichtige Verwendung kann zu Schäden an Daten führen, die in StreetComplete nicht möglich sind. Beachte, dass du durch das Aktivieren des Expertenmodus eine deutlich größere Verantwortung für deine Bearbeitungen trägst.
+\n \u0020Aktiviere diese Einstellung nur, wenn du Erfahrung mit OSM außerhalb von StreetComplete hast und verstehst, was du tust. \u0020</string>
     <string name="access_manager_message">Wähle Zugangs-Tags aus. Denke daran, nur ausgeschilderten Zugang zu kennzeichnen, und vermeide möglichst das allgemeine Tag „access“</string>
     <string name="quest_is_pharmacy_dispensing_title">Gibt diese Apotheke alle verschreibungspflichtigen Arzneimittel ab\?</string>
     <string name="custom_overlay_dash_filter_hint">Filter mit gestricheltem Element</string>
@@ -343,7 +343,7 @@
     <string name="default_disabled_msg_poi_vacant">Diese „Suche“ zeigt leer stehende Geschäfte als graue Punkte an. Ein Klick auf den Punkt zeigt Details und andere Antworten an.</string>
     <string name="quest_generic_surface_yes">Ohne Hinweis zulassen</string>
     <string name="quest_recycling_excrement_bag_dispenser">Es hat einen Kotbeutelspender</string>
-    <string name="quest_generic_surface_message">Generische Oberflächen als Antwort zulassen, ohne eine Notiz zu verlangen\?</string>
+    <string name="quest_generic_surface_message">Generische Oberflächen als Antwort zulassen, ohne eine Beschreibung zu verlangen?</string>
     <string name="quest_buildingType_riding_hall">Reithalle</string>
     <string name="pref_search_more_languages_title">Suchfunktionen in mehreren Sprachen</string>
     <string name="time_limited_from">Von</string>
@@ -360,7 +360,7 @@
     <string name="general_warning">Warnung</string>
     <string name="quest_buildingColour_title">Welche Farbe hat das Gebäude\?</string>
     <string name="tree_custom_quest_import">Bereitstellen</string>
-    <string name="quest_tree_error">Nicht erkannt. Versuche, die Gattung, die Art oder den englischen Namen des Baumes einzugeben. Anderenfalls solltest du eine Notiz hinterlassen.</string>
+    <string name="quest_tree_error">Nicht erkannt. Versuche, die Gattung, die Art oder den englischen Namen des Baumes einzugeben. Anderenfalls solltest du einen Hinweis hinterlassen.</string>
     <string name="show_nearby_quests_disable">Keine Aufgaben in der Nähe anzeigen</string>
     <string name="quest_crossing_type_zebra">Zebrastreifen</string>
     <string name="quest_buildingPartColour_title">Welche Farbe hat dieses Gebäudeteil\?</string>
@@ -399,7 +399,7 @@
     <string name="enqueue_download">Start nach Abschluss der aktuellen Suche</string>
     <string name="create_relation_action_description">Du hast eine Relation erstellt mit …</string>
     <string name="quest_poi_has_atm_title">POI: hat Geldautomaten</string>
-    <string name="pref_show_gpx_button_summary">Im Gegensatz zu OSM-Notizen versteckt das Hinzufügen einer GPX-Notiz keine Aufgabe an der betroffenen Stelle</string>
+    <string name="pref_show_gpx_button_summary">Im Gegensatz zu OSM-Hinweisen versteckt das Hinzufügen eines GPX-Hinweises keine Aufgabe an der betroffenen Stelle</string>
     <string name="quest_cuisine_add_more">Eine weitere Variante der Küche hinzufügen</string>
     <string name="import_export_settings">Andere App-Einstellungen</string>
     <string name="quest_surface_value_metal_grid">Metallgitter</string>
@@ -537,7 +537,7 @@
     <string name="quest_barrier_locked_title">Ist diese Barriere (normalerweise) verschlossen\?</string>
     <string name="import_export_custom_overlays_select">Wähle Overlays zum Exportieren aus</string>
     <string name="quest_piste_lit_title">Ist diese Piste hier beleuchtet\?</string>
-    <string name="quest_guidepost_sports_note">Wenn es etwas gibt, das nicht durch die aufgelisteten Sportarten abgedeckt ist, hinterlasse bitte eine Notiz.</string>
+    <string name="quest_guidepost_sports_note">Wenn es etwas gibt, das nicht durch die aufgelisteten Sportarten abgedeckt ist, hinterlasse bitte einen Hinweis.</string>
     <string name="quest_guidepost_sports_winter_hiking">Winterwandern</string>
     <string name="quest_guidepost_sports_horse">Reiten</string>
     <string name="quest_guidepost_sports_title">Für welche Sportarten ist dieser Wegweiser gedacht?</string>
@@ -557,4 +557,15 @@
     <string name="quest_guidepost_sports_climbing">Klettern</string>
     <string name="quest_guidepost_sports_running">Laufen</string>
     <string name="quest_guidepostName_title">Wie lautet der Name hier?</string>
+    <string name="quest_parking_capacity_disabled_title">Wie viele Behindertenparkplätze gibt es hier?</string>
+    <string name="quest_parking_capacity_disabled_answer_yes">Es gibt sie, aber die Anzahl ist unklar</string>
+    <string name="quest_parking_orientation_title">In welcher Ausrichtung parken Autos hier?</string>
+    <string name="quest_parking_capacity_hint">Dazu gehören auch Sonderparkplätze wie für Behinderte, Familien, zum Aufladen von Elektrofahrzeugen usw. Blende den Quest aus, wenn die Parkplätze nicht markiert und somit nicht zählbar sind.</string>
+    <string name="quest_parking_capacity_title">Wie viele Autos können hier parken?</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">In SCEE hinzugefügte Quests sind standardmäßig immer deaktiviert, da sie nicht immer beantwortet werden können und möglicherweise Wissen über das Thema und die Kennzeichnung erfordern.
+\nDieser Quest wird nicht gestellt, wenn capacity:disabled=yes gesetzt ist. Wenn du sie auch angeben möchtest, ändere die Elementauswahl von \"and !capacity:disabled\" in \"and (!capacity:disabled or capacity:disabled=yes)\"</string>
+    <string name="quest_subwayEntranceRef_hint">Referenznummer für diesen Eingang:</string>
+    <string name="quest_subwayEntranceRef_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, da die Beschilderung je nach Region und Betreiber sehr unterschiedlich ist.</string>
+    <string name="quest_generalRef_hint">Referenznummer</string>
+    <string name="quest_generalRef_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, da die Beschilderung je nach Region und Betreiber sehr unterschiedlich ist. Möglicherweise musst du die Auswahl der Elemente für dein Gebiet verfeinern (z.B. Straßenlaternen entfernen, Karten hinzufügen, nur Wegweiser mit hiking=yes auswählen usw.)</string>
 </resources>

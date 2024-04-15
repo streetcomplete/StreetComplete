@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Slovenská sporiteľňa, VÚB, Tatra banka, ČSOB, Všeobecná úverová banka, Prima banka, UniCredit Bank, Poštová banka, OTP banka, Euronet, Fio banka, 365.bank, Prima Banka, Bitcoinmat, ATM Point, Raiffeisen banka, wBTCb, 'Tatra banka, a.s.', OTP Banka, ATM point, Tatra Banka, Slovenská Sporiteľňa, General Bytes]
-chargingStationOperators: [GreenWay, ejoin, ZSE, Západoslovenská energetika, nabibajk.sk, Lidl, ZSE Drive, Specialized, Slovnaft, 'Sharengo/4 SALE,s.r.o', Billa, ebajk connect, 'Tesla, Inc.', LEDEOS, ebajkconnect, VSE, Antik Telecom, ABB, 'ejoin, s.r.o.', ebajkonnect, Ledeos, Farmárska reštaurácia, E.ON, BMW T.O.B.]
-clothesContainerOperators: [Ekocharita, EKOCHARITA, HUMANA, Humana, 'Marius Pedersen,a.s.', Nadácia ECO, ECO textil, FCC Trnava, Ekotextil, 'EKO CHARITA VÝCHOD, o.z.']
+atmOperators: [Slovenská sporiteľňa, VÚB, Tatra banka, ČSOB, Všeobecná úverová banka, Prima banka, UniCredit Bank, Poštová banka, OTP banka, Euronet, Bitcoinmat.sk, Fio banka, 365.bank, Prima Banka, ATM Point, wBTCb, Raiffeisen banka, Bitcoinmat, 'Tatra banka, a.s.', ATM point, 'VÚB,a.s.', Tatra Banka, Slovenská Sporiteľňa, OTP Banka, OTP Bank]
+chargingStationOperators: [GreenWay, ejoin, ZSE, Západoslovenská energetika, nabibajk.sk, Lidl, ZSE Drive, Specialized, Slovnaft, 'Sharengo/4 SALE,s.r.o', Billa, 'Tesla, Inc.', ebajk connect, LEDEOS, ebajkconnect, VSE, Antik Telecom, ABB, 'ejoin, s.r.o.', ebajkonnect, Ledeos, Farmárska reštaurácia, E.ON, BMW T.O.B.]
+clothesContainerOperators: [Ekocharita, EKOCHARITA, HUMANA, 'KOSIT, a.s.', Humana, 'Marius Pedersen,a.s.', Nadácia ECO, ECO textil, FCC Trnava, Ekotextil]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true

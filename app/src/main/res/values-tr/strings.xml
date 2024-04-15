@@ -226,7 +226,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="credits_translations_title">"Çeviriler"</string>
     <string name="credits_contributors_title">"Kod Katkıcıları"</string>
     <string name="credits_author_title">"Hazırlayan ve Sürdüren"</string>
-    <string name="credits_and_more">"ve dahası…"</string>
     <string name="quest_maxspeed_answer_living_street">"Bu bir yaşam sokağı"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Buna benzer bir tabela var mı?"</string>
     <string name="quest_orchard_produce_title">"Burada ne yetişiyor?"</string>
@@ -500,7 +499,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_motorcycleParkingCoveredStatus_title">"Bu motosiklet park yeri kapalı mı (yağmurdan korunuyor)?"</string>
     <string name="default_disabled_msg_maxspeed">"Bu görev türü varsayılan olarak devre dışı bırakılmıştır, çünkü yalnızca vurgulanan bölümü değil, tüm caddeyi hız sınırı işaretleri için kontrol etmeniz gerekir.  Bu bazen sadece tek bir görevi çözmek için zor olabilir."</string>
     <string name="pref_title_quests_restore_hidden">"Gizli görevleri geri yükle"</string>
-    <string name="restore_hidden_success">"%d gizlenmiş görev geri yüklendi"</string>
     <string name="on_level">"%s. katta"</string>
     <string name="underground">"Yer altı"</string>
     <string name="quest_sidewalk_value_yes">"Kaldırım var"</string>
@@ -804,7 +802,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="team_mode_active">"Takım modu etkin"</string>
     <string name="team_mode_deactivated">"Takım modu etkisiz"</string>
     <string name="undo_confirm_title2">"Bu düzenleme geri alınsın mı?"</string>
-    <string name="synced">"Senkron"</string>
     <string name="toast_undo_unavailable">"Bu düzenleme eşleştirildi ve artık geri alınamaz"</string>
     <string name="quest_cycleway_value_separate">"haritada ayrı gösterilmiş"</string>
     <string name="created_note_action_title">"Not yaratıldı"</string>

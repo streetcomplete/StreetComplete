@@ -72,7 +72,7 @@
     <string name="delete_confirmation_tiles">地图瓦片</string>
     <string name="pref_hide_keyboard_summary">在注记被实际创建之前隐藏将要打开的键盘（以便重新查看位置）</string>
     <string name="quest_settings_resurvey_all_opening_hours_message">重新调查所有开放时间，包括 SCEE 无法理解的值？您可能需要使用标签编辑器输入正确的值。</string>
-    <string name="quest_service_building_type_reservoir">储液容器</string>
+    <string name="quest_service_building_type_reservoir">储水容器</string>
     <string name="quest_osmose_message">这些任务是从 Osmose 服务下载的，以表示 OSM 数据的潜在问题。只有在任务设置中选择了至少一个严重等级时，才会下载。 
 \n Osmose 消息会与任务一起显示，任何编辑都会将问题报告为已解决。
 \n 也有可能将问题报告为误报；这是无法撤销的。</string>
@@ -94,7 +94,7 @@
     <string name="import_export_presets">预设</string>
     <string name="quest_fixme_title">修复我：%1$s</string>
     <string name="quest_custom_quest_add_node">添加节点</string>
-    <string name="quest_service_building_operator_title">谁是这座服务用建筑的运营商？</string>
+    <string name="quest_service_building_operator_title">谁是这座服务性建筑的运营商？</string>
     <string name="quest_osmose_title">Osmose 任务： %s</string>
     <string name="pref_create_custom_quest_summary">...作为留下注记的替代方法。这可以用作本地存储的笔记，使其在地图上可见。前提是您需要启用自定义任务。</string>
     <string name="pref_show_nearby_quests_summary">当显示任务表单时，允许切换附近的任务</string>
@@ -160,7 +160,7 @@
     <string name="quest_settings_what_to_edit">要设置什么？</string>
     <string name="quest_artwork_fountain">喷泉</string>
     <string name="pref_show_next_quest_title">立即显示下一个任务</string>
-    <string name="quest_settings_building_levels_mandatory_roof">大多数国家要求加入屋顶层（默认值）</string>
+    <string name="quest_settings_building_levels_mandatory_roof">要求在大多数国家计入屋顶楼层（默认值）</string>
     <string name="show_nearby_quests_visible">只显示已启用的任务类型</string>
     <string name="quest_seating_terrace">在露天平台</string>
     <string name="quest_poi_misc_title">兴趣点：杂项</string>
@@ -223,7 +223,7 @@
     <string name="pref_interval_summary">%d 秒</string>
     <string name="quest_osmose_no_undo">您确定吗？这是无法撤回的！</string>
     <string name="pref_expert_mode_title">专家模式</string>
-    <string name="quest_service_building_type_pressure">气体压力调节</string>
+    <string name="quest_service_building_type_pressure">燃气压力调节</string>
     <string name="default_disabled_msg_poi_machine">这个“任务”将自动取款机、电话或自动售货机等兴趣点显示为蓝点。点击圆点可显示详细信息和其他回答。</string>
     <string name="quest_custom_quest_add_node_text">您可以用这些添加节点：%s</string>
     <string name="quest_settings_resurvey_all_opening_hours_no">默认</string>
@@ -296,9 +296,148 @@
     <string name="import_export_settings">其他应用设置</string>
     <string name="pref_search_more_languages_summary">功能搜索以所有系统和本地语言显示结果</string>
     <string name="quest_generic_surface_button">通用表面答案</string>
-    <string name="quest_piste_ref_title">这个滑雪到是有那个号码？</string>
+    <string name="quest_piste_ref_title">这条滑雪道的编号是？</string>
     <string name="quest_utility_water">水</string>
     <string name="quest_utility_gas">气</string>
     <string name="quest_settings_leaf_type_single_tree_yes">是</string>
     <string name="quest_utility_power">电</string>
+    <string name="quest_private">这是私人的</string>
+    <string name="quest_construction">正在施工，直到……</string>
+    <string name="time_limited_to">到</string>
+    <string name="custom_overlay_title">自订叠加图层</string>
+    <string name="restriction_overlay_exceptions">例外：%s</string>
+    <string name="restriction_overlay_show_details">显示关系详情</string>
+    <string name="restriction_overlay_relation_unsupported">不支持的关系类型：
+\n%s</string>
+    <string name="hide_button">隐藏</string>
+    <string name="quest_monitor_channel_name">附近任务监视器</string>
+    <string name="create_custom_quest_button">创建自订任务</string>
+    <string name="closed_note_action_title">已关闭</string>
+    <string name="access_time_limit">时间</string>
+    <string name="quest_maxspeed_conditional_limited_enter_default">在选择此答案前，请选择默认限制</string>
+    <string name="quest_building_entrance_parking">停车场出入口</string>
+    <string name="quest_maxspeed_conditional">取决于…</string>
+    <string name="quest_monitor_channel_name_found">已发现的附近任务</string>
+    <string name="quest_monitor_running">监测位置</string>
+    <string name="custom_overlay_color_hint">留空即可以相同颜色显示所有内容</string>
+    <string name="restriction_overlay_other_restrictions">对这条路径的其它限制：</string>
+    <string name="restriction_overlay_direction_text">适用于行进方向：</string>
+    <string name="tag_editor_duplicate_key">忽略重复键 %s 的更改</string>
+    <string name="quest_piste_ref_connection">这是条滑雪道连接线</string>
+    <string name="quest_buildingType_sports_hall">体育馆</string>
+    <string name="time_limited_from">从</string>
+    <string name="quest_guidepost_sports_title">该路标适用于哪些运动？</string>
+    <string name="quest_guidepost_sports_note">如果列出的特征均未涵盖，请留下注记以说明。</string>
+    <string name="quest_guidepost_sports_answer_simple">这只是个简单的路标</string>
+    <string name="quest_guidepost_sports_hiking">徒步旅行</string>
+    <string name="quest_guidepost_sports_bicycle">单车骑行</string>
+    <string name="quest_guidepost_sports_mtb">山地自行车</string>
+    <string name="quest_guidepost_sports_climbing">攀登</string>
+    <string name="quest_guidepost_sports_horse">骑马</string>
+    <string name="quest_guidepost_sports_nordic_walking">北欧式健走</string>
+    <string name="quest_guidepost_sports_ski">滑雪</string>
+    <string name="quest_guidepost_sports_inline_skating">直排轮滑</string>
+    <string name="quest_guidepost_sports_running">跑步</string>
+    <string name="quest_piste_lit_title">这条滑雪道有照明吗？</string>
+    <string name="quest_wheelchair_description_no_language">未指定语言</string>
+    <string name="manage_access">管理通行限制……</string>
+    <string name="custom_overlay_color_info">上色细节</string>
+    <string name="custom_overlay_filter_info">筛选细节</string>
+    <string name="custom_overlay_add_button">新自订</string>
+    <string name="restriction_overlay_remove_conditional_restrictions">移除条件</string>
+    <string name="quest_seating_no">没有座位，但不提供外卖</string>
+    <string name="import_export_custom_overlays_select">选择要导出的叠加图层</string>
+    <string name="quest_settings_leaf_type_single_tree_no">只用于路径和区域</string>
+    <string name="quest_destination_all_lanes_button">所有
+\n车道</string>
+    <string name="quest_destination_add_more">添加其它目的地</string>
+    <string name="quest_surface_value_stepping_stones">踏脚石</string>
+    <string name="quest_buildingType_elevator">电梯</string>
+    <string name="quest_crossing_type_zebra">斑马线</string>
+    <string name="quest_crossing_type_signals_controlled_zebra">交通灯和斑马线</string>
+    <string name="quest_wheelchair_description_answer">添加描述</string>
+    <string name="quest_lanes_answer_noLanes_known_count">无标线，车道数明显</string>
+    <string name="restriction_overlay_only_for">仅用于：%s</string>
+    <string name="restriction_overlay_sign_stop_all_way">全向停止</string>
+    <string name="tag_editor_last_edited">最后编辑：%s</string>
+    <string name="fork_about_title_repository">SCEE 项目主页</string>
+    <string name="ban_check_fails">检查已禁止版本持续失败。您运行的可能是过时的版本，请考虑升级。</string>
+    <string name="enqueue_download">在当前搜索完成后启动</string>
+    <string name="create_poi">添加兴趣点（POI）</string>
+    <string name="quest_monitor_found">附近有 %d 个任务，距离最近：</string>
+    <string name="quest_monitor_error">无法开始监测，可能是权限问题</string>
+    <string name="general_warning">警告</string>
+    <string name="move_node_with_geometry">移动此节点将修改以下路径或多边形关系的几何形状：%s。
+\n请注意：任何更改都不会在背景地图上立刻显现。</string>
+    <string name="move_node_message_external_source_addition">请注意，该任务的位置可能不会随节点移动。</string>
+    <string name="close_note_checkbox">关闭注记（只有当你真正解决了注记中的问题时才能这么做！）</string>
+    <string name="access_manager_message">选择通行限制标签。切记只添加已标识过的通行限制，并尽可能避免一般性的“access”标签</string>
+    <string name="access_manager_button_add_conditional">添加条件</string>
+    <string name="access_length_limit">长度</string>
+    <string name="access_width_limit">宽度</string>
+    <string name="outside_downloaded_area_warning">该位置位于已下载区域之外。继续吗？</string>
+    <string name="quest_name_brand">它有个品牌名称……</string>
+    <string name="access_manager_button_add">添加</string>
+    <string name="quest_settings_leaf_type_single_tree_message">同时询问单棵树的树叶类型？</string>
+    <string name="quest_guidepost_sports_winter_hiking">冬季徒步</string>
+    <string name="dialog_button_understood">了解</string>
+    <string name="quest_destination_title">这条路上有哪些目的地的标志？</string>
+    <string name="quest_surface_value_metal_grid">金属格栅</string>
+    <string name="quest_building_demolished">已被拆除（痕迹可见）</string>
+    <string name="quest_generic_answer_show_edit_tags">显示/编辑标签</string>
+    <string name="quest_barrier_locked_title">这道屏障（通常）是锁着的吗？</string>
+    <string name="quest_guidepost_sports_answer_simple_description">这只是个简单的路标，不含具体的运动项目。</string>
+    <string name="quest_seating_veranda">阳台/门廊上</string>
+    <string name="quest_disabled_msg_railway_platform_ref">请注意，维基中并没有明确说明使用哪个标签最好，因此要由用户自己决定。请在任务设置中选择 \"ref\"（默认）或 \"local_ref\"。
+\n 如果一个站台上有两条轨道，则使用分号分隔开数值，例如：2;3</string>
+    <string name="custom_overlay_highlight_missing">高亮显示缺少的数据</string>
+    <string name="restriction_overlay_relation_incomplete">限制关系不完整，需要下载周边区域</string>
+    <string name="restriction_overlay_sign_stop">停止</string>
+    <string name="quest_wheelchair_description_title">填写至少一种语言</string>
+    <string name="custom_overlay_dash_filter_hint">虚线元素筛选器</string>
+    <string name="custom_overlay_delete">确定要删除%s吗？</string>
+    <string name="restriction_overlay_title">交通限制</string>
+    <string name="restriction_overlay_signed_switch">存在标志或道路标记</string>
+    <string name="restriction_overlay_select_way">点击地图上的下一条路径。它需要一个与当前路径共享的末端节点。如有必要，请将其拆分。</string>
+    <string name="restriction_overlay_sign_give_way">让路</string>
+    <string name="tutorial_info_fork_message"><b>SCEE</b> 
+\n
+\n这是 StreetComplete 的修改版本。它适用于具有 OSM 进阶知识，经验丰富的用户。它为您提供更多控制权，同时也将承载更多<i>责任</i>。
+\n这尤其适用于编辑原始标签和删除节点的可能性，也适用于修改任务的元素选择。在 SCEE 中添加的任务，在所有情况下<i>可能都无法回答</i>，并且默认情况下处于禁用状态。，如果您无法回答，请隐藏它们。同时请<i>不要滥发注记</i>。
+\n
+\n开箱即用， SCEE 被设定为与 StreetComplete 高度相似。</string>
+    <string name="insert_node">将节点插入到路径</string>
+    <string name="insert_node_select_way">选择节点在路径上的位置</string>
+    <string name="create_custom_quest_title_message">输入要显示的消息</string>
+    <string name="move_node_of_other_relation">该节点是以下非多边形关系的一部分： %s</string>
+    <string name="add_access">添加通行限制……</string>
+    <string name="access_weight_limit">重量</string>
+    <string name="create_relation_action_description">您与……建立了关系</string>
+    <string name="custom_overlay_filter_message">单击下面的链接可在浏览器中打开有关元素选择语法的信息。请注意，按年份选择元素时，重新调查间隔设置可能会影响结果。
+\n复选框取代了“节点、路径”部分。</string>
+    <string name="quest_construction_value">设置 \"construction=...\"，如果未知则留空</string>
+    <string name="default_disabled_msg_viaFerrataScale">默认情况下，此任务类型处于禁用状态。因为铁索攀岩路线的评级非常主观，需要对其所使用的分级系统以及进行铁索攀岩时的专业知识。而这需要高级的登山技能。由于铁索攀岩难度没有全球通用的评级，因此这里使用德国的Huesler 评级。</string>
+    <string name="quest_service_building_oil_pumping_station_description">设施包括用于将油从一处抽送到另一处的泵</string>
+    <string name="quest_service_building_sewerage_description">与污水收集、输送或处理相关的服务建筑</string>
+    <string name="quest_service_building_gas_pumping_station">燃气泵站</string>
+    <string name="quest_service_building_type_pump_description">设施包括用于将水从一处抽送到另一处的水泵</string>
+    <string name="quest_service_building_gas_pumping_station_description">设施包括用于将气体从一处泵送到另一处的泵机</string>
+    <string name="quest_service_building_heating">供暖</string>
+    <string name="quest_service_building_telecom_exchange">电信交换</string>
+    <string name="quest_service_building_railway">铁路</string>
+    <string name="quest_service_building_railway_ventilation_shaft">铁路通风</string>
+    <string name="quest_service_building_railway_ventilation_shaft_description">地下铁路隧道的通风结构</string>
+    <string name="quest_utility_sewerage">污水</string>
+    <string name="quest_utility_telecom">电信</string>
+    <string name="quest_service_building_type_traction_substation">牵引变电所</string>
+    <string name="quest_service_building_type_plant">发电厂</string>
+    <string name="quest_service_building_telecom_exchange_description">将固定电话用户连接到电信服务设备的场所</string>
+    <string name="quest_service_building_internet_exchange_description">将互联网用户连接到互联网服务设备的场所</string>
+    <string name="quest_service_building_internet_exchange">互联网交换</string>
+    <string name="default_disabled_msg_trail_visibility">默认情况下禁用此任务类型，因为路径可见性的评级非常主观，并且需要其所使用的评级系统的专业知识。</string>
+    <string name="quest_service_building_type_well_description">通过挖掘或钻探获得地下水的结构设施</string>
+    <string name="quest_service_building_type_reservoir_description">用于储存淡水的大型人工水箱</string>
+    <string name="quest_service_building_oil_pumping_station">油泵站</string>
+    <string name="quest_service_building_type_pressure_description">建筑物内的燃气调压站负责减小附近消费者的燃气压力</string>
+    <string name="quest_service_building_heating_description">向工业和家庭消费者输送和分配热能的建筑（区域供热）</string>
 </resources>

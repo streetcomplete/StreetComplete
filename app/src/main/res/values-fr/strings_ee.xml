@@ -413,4 +413,10 @@
     <string name="quest_utility_gas">Gaz naturel</string>
     <string name="quest_settings_leaf_type_single_tree_yes">Oui</string>
     <string name="quest_utility_power">Électricité</string>
+    <string name="quest_guidepost_sports_mtb">VTT</string>
+    <string name="quest_guidepost_sports_hiking">Randonnée</string>
+    <string name="quest_guidepost_sports_climbing">Escalade</string>
+    <string name="quest_guidepost_sports_nordic_walking">Marche Nordique</string>
+    <string name="quest_guidepost_sports_ski">Ski</string>
+    <string name="quest_guidepost_sports_running">Course à pied</string>
 </resources>

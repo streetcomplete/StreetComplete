@@ -347,16 +347,16 @@
     <string name="custom_overlay_filter_message">Haga clic en el enlace a continuación para abrir información sobre la sintaxis de selección de elementos en un navegador. Tenga en cuenta que al seleccionar elementos por edad, la configuración del intervalo de repregunta puede influir en el resultado.
 \nLas casillas de verificación reemplazan la parte \"nodos, vías con\".</string>
     <string name="restriction_overlay_title">Restricciones de tráfico</string>
-    <string name="pref_expert_mode_message">Esto permitirá usar tareas agregadas en SCEE y vías para
-\n <li>editar etiquetas sin procesar</li>
-\n <li>nodos en movimiento que forman parte de vías o relaciones</li>
-\n <li>eliminación de cualquier nodo flotante</li>
-\n <li>editar elementos que deberían estar bloqueados por una nota</li>
-\n <li>agregar nodos flotantes libres en cualquier lugar</li>
-\n <li>cambiar la selección de elementos de las tareas</li>
+    <string name="pref_expert_mode_message">Esto permitirá usar las misiones añadidas en SCEE, y las formas de
+\n \u0020<li>Edición de etiquetas sin procesar</li>
+\n \u0020<li>Nodos móviles que forman parte de vías o relaciones</li>
+\n \u0020<li>Eliminación de cualquier nodo flotante</li>
+\n \u0020<li>Editar elementos que deben ser bloqueados por una nota</li>
+\n \u0020<li>Adición de nodos flotantes libres en cualquier lugar</li>
+\n \u0020<li>Cambiar la selección de elementos de las misiones</li>
 \n
-\n Esto sigue siendo menos de lo que permiten la mayoría de los otros editores, pero el uso imprudente puede dañar los datos de formas que no son posibles en StreetComplete. Tenga en cuenta que al habilitar el modo experto, usted asume una responsabilidad significativamente mayor por sus ediciones.
-\n Solo habilite este ajuste si tiene experiencia con OSM fuera de StreetComplete y entiende lo que está haciendo. </string>
+\n \u0020Esto sigue siendo menos de lo que la mayoría de los otros editores permiten, pero el uso imprudente puede dañar los datos de formas que no son posibles en StreetComplete. \u0020Tenga en cuenta que al habilitar el modo experto, tiene una responsabilidad significativamente mayor por sus ediciones.
+\n \u0020Por favor, solo habilite esta configuración si tiene experiencia en OSM fuera de StreetComplete y entiende lo que está haciendo. \u0020</string>
     <string name="restriction_overlay_relation_incomplete">La relación de restricción está incompleta, se requiere la descarga del área circundante</string>
     <string name="show_nearby_quests_distance">Mostrar tareas dentro de esta distancia (limitado a 10 metros)</string>
     <string name="import_presets_overlays_message">¿Añadir importado o reemplazar el existente\? Si elige reemplazar, se eliminarán todos los existentes actualmente.</string>
@@ -557,4 +557,13 @@
     <string name="quest_guidepost_sports_climbing">Escalada</string>
     <string name="quest_guidepost_sports_running">Correr</string>
     <string name="quest_guidepostName_title">¿Cómo se llama aquí?</string>
+    <string name="quest_parking_capacity_disabled_title">¿Cuántas plazas de aparcamiento para discapacitados hay aquí?</string>
+    <string name="quest_parking_capacity_disabled_answer_yes">Existen, pero el número no está claro</string>
+    <string name="quest_parking_orientation_title">¿En qué orientación aparcan los coches aquí?</string>
+    <string name="quest_parking_capacity_title">¿Cuántos coches pueden aparcar aquí?</string>
+    <string name="quest_parking_capacity_hint">Esto también incluye espacios especiales como para personas discapacitadas, familias, para cargar, etc. Oculta la misión si los espacios de estacionamiento no están marcados y, por lo tanto, no son contables</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">Las búsquedas añadidas en SCEE siempre están deshabilitadas por defecto, ya que pueden no ser siempre respondibles, y pueden requerir conocimiento del tema y etiquetado.
+\nEsta búsqueda no se preguntará si capacity:disabled=yes está configurado. Si desea especificarlos también, cambie la selección del elemento de \"y !capacity:disabled\" a \"y (!capacity:disabled o capacity:disabled=yes)\"</string>
+    <string name="quest_generalRef_hint">Número o código de referencia</string>
+    <string name="quest_generalRef_disabled_msg">Esta búsqueda está desactivada por defecto porque lo que se señaliza varía mucho según la región y el operador. Puede que necesites refinar la selección de elementos para tu zona (por ejemplo :añadir mapas, seleccionar sólo postes guía con hiking=yes, etc.)</string>
 </resources>

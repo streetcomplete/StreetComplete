@@ -237,6 +237,8 @@
                         "megalith": "Megalit",
                         "necropolis": "Necropolă",
                         "petroglyph": "Piatră cioplită",
+                        "roman_circus": "Circ roman",
+                        "roman_villa": "Vilă romană",
                         "settlement": "Așezare istorică",
                         "tumulus": "Tumul"
                     }
@@ -296,6 +298,7 @@
                     "label": "Tip",
                     "options": {
                         "animal": "Țarc animale",
+                        "bungee_jumping": "Sărituri cu coarda elastică",
                         "carousel": "Carusel",
                         "maze": "Labirint",
                         "roller_coaster": "Roller coaster",
@@ -338,6 +341,7 @@
                         "height_restrictor": "Limitator de înălțime",
                         "kerb": "Bordură",
                         "stile": "Pârleaz",
+                        "turnstile": "Turnichet",
                         "wall": "Zid"
                     }
                 },
@@ -362,6 +366,8 @@
                 "bath/type": {
                     "label": "Specialitate",
                     "options": {
+                        "hammam": "Hammam",
+                        "hot_spring": "Izvor termal",
                         "lake": "Lac",
                         "thermal": "Baie termală"
                     }
@@ -490,11 +496,54 @@
                         "house": "Casă",
                         "houseboat": "Casă plutitoare",
                         "hut": "Colibă",
-                        "industrial": "Clădire industrială"
+                        "industrial": "Clădire industrială",
+                        "mosque": "Clădire moschee",
+                        "office": "Clădire birouri",
+                        "public": "Clădire publică",
+                        "residential": "Clădire rezidențială",
+                        "roof": "Acoperiș",
+                        "sty": "Cocină",
+                        "synagogue": "Clădire sinagogă",
+                        "temple": "Clădire templu",
+                        "warehouse": "Depozit"
                     }
+                },
+                "building/flats": {
+                    "placeholder": "2, 4, 6, 8..."
+                },
+                "building/levels": {
+                    "label": "Etaje",
+                    "placeholder": "2, 4, 6..."
+                },
+                "building/levels/underground": {
+                    "label": "Etaje subterane",
+                    "placeholder": "2, 4, 6..."
+                },
+                "building/part": {
+                    "label": "Parte de clădire"
+                },
+                "building/prefabricated": {
+                    "label": "Prefabricat"
                 },
                 "bunker_type": {
                     "label": "Tip"
+                },
+                "button_operated": {
+                    "label": "Buton apelare"
+                },
+                "cables": {
+                    "label": "Cabluri",
+                    "placeholder": "1, 2, 3..."
+                },
+                "cai_scale-IT": {
+                    "label": "Dificultate traseu de drumeție (Clubul Alpin Italian)",
+                    "options": {
+                        "EAI": "EAI: Drumeție în condiții de iarnă",
+                        "EE": "EE: Pentru experți",
+                        "EEA": "EEA: Pentru experți, cu echipament",
+                        "T": "T: Turistic"
+                    },
+                    "placeholder": "T, E, EE, ..."
                 },
                 "camera/direction": {
                     "label": "Direcție (Grade în Sens de Ceasornic)",
@@ -513,16 +562,50 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "castle_type": {
-                    "label": "Tip"
+                    "label": "Tip",
+                    "options": {
+                        "defensive": "Castel defensiv"
+                    }
+                },
+                "charge_fee": {
+                    "label": "Valoare taxă"
+                },
+                "check_date": {
+                    "label": "Data ultimei verificări"
                 },
                 "clothes": {
-                    "label": "Haine"
+                    "label": "Haine",
+                    "options": {
+                        "babies": "Haine bebeluș",
+                        "children": "Haine copii",
+                        "fur": "Haine blană",
+                        "hats": "Pălării",
+                        "maternity": "Haine maternitate",
+                        "men": "Haine bărbați",
+                        "motorcycle": "Haine motocicliști",
+                        "oversize": "Haine cu mărimi mari",
+                        "socks": "Șosete",
+                        "sports": "Haine sport",
+                        "suits": "Costume",
+                        "swimwear": "Haine înot",
+                        "traditional": "Haine/costume populare",
+                        "underwear": "Lenjerie intimă",
+                        "wedding": "Haine nuntă",
+                        "women": "Haine femei",
+                        "workwear": "Haine muncă"
+                    }
                 },
                 "club": {
                     "label": "Tip"
                 },
                 "collection_times": {
                     "label": "Ore de colectare"
+                },
+                "collector": {
+                    "options": {
+                        "coins": "Monede",
+                        "stamps": "Timbre"
+                    }
                 },
                 "communication_multi": {
                     "label": "Tipuri de Comunicație"

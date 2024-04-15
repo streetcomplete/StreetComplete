@@ -9,7 +9,7 @@
                     "name": "عناصر المباني"
                 },
                 "category-golf": {
-                    "name": "عناصر ملعب الجولف"
+                    "name": "عناصر الجولف"
                 },
                 "category-landuse": {
                     "name": "عناصر الأراضي"
@@ -181,6 +181,9 @@
                 "admin_level": {
                     "label": "المستوى الإداري"
                 },
+                "advertising": {
+                    "label": "النوع"
+                },
                 "aerialway": {
                     "label": "النوع"
                 },
@@ -241,7 +244,11 @@
                     "label": "للحيوانات"
                 },
                 "archaeological_site": {
-                    "label": "نوع"
+                    "label": "نوع",
+                    "options": {
+                        "baths": "حمامات",
+                        "city": "مدينة تاريخية"
+                    }
                 },
                 "architect": {
                     "label": "مهندس معماري",
@@ -1234,7 +1241,11 @@
                 "generator/method": {
                     "label": "الطريقة",
                     "options": {
-                        "anaerobic_digestion": "الهضم اللاهوائي"
+                        "anaerobic_digestion": "الهضم اللاهوائي",
+                        "stream": "تيار المد والجزر",
+                        "thermal": "طاقة شمسية",
+                        "water-storage": "خزان",
+                        "wind_turbine": "توربينة رياح"
                     }
                 },
                 "generator/output/electricity": {
@@ -1244,12 +1255,21 @@
                 "generator/source": {
                     "label": "المصدر",
                     "options": {
+                        "battery": "بطارية",
+                        "biofuel": "وقود حيوي",
+                        "biogas": "غاز حيوي",
+                        "coal": "فحم",
+                        "diesel": "ديزل",
+                        "gas": "غاز طبيعي",
+                        "gasoline": "بنزين",
+                        "hydro": "طاقة كهرومائية",
                         "nuclear": "طاقة نووية",
                         "oil": "نفط",
                         "solar": "إشعاع الشمس",
                         "tidal": "طاقة المد والجزر",
                         "waste": "نفايات",
-                        "wave": "طاقة الأمواج"
+                        "wave": "طاقة الأمواج",
+                        "wind": "رياح"
                     }
                 },
                 "generator/type": {
@@ -1295,8 +1315,36 @@
                     "label": "الوسوم",
                     "placeholder": "#مثال"
                 },
+                "hazard_boundary": {
+                    "label": "خطر",
+                    "options": {
+                        "avalanche": "انهيار ثلجي",
+                        "biohazard": "خطر حيوي",
+                        "contamination": "تلوث كيميائي",
+                        "electricity": "صعقة كهربائية",
+                        "hole": "حُفرة",
+                        "minefield": "ألغام أرضية",
+                        "nuclear": "نووي / إشعاعي",
+                        "quicksand": "رمال متحركة",
+                        "shooting_range": "إطلاق نار"
+                    }
+                },
                 "healthcare": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "alternative": "الطب البديل",
+                        "blood_bank": "بنك الدم",
+                        "blood_donation": "مركز تبرع بالدم",
+                        "clinic": "عيادة طبية",
+                        "dentist": "طبيب أسنان",
+                        "dialysis": "غسيل كلى",
+                        "doctor": "طبيب",
+                        "hospital": "مستشفى",
+                        "laboratory": "معمل طبي",
+                        "nurse": "تمريض",
+                        "occupational_therapist": "أخصائي علاج وظيفي",
+                        "optometrist": "أخصائي بصريات"
+                    }
                 },
                 "healthcare/speciality": {
                     "label": "التخصصات"
@@ -1549,9 +1597,6 @@
                 "liaison": {
                     "label": "النوع"
                 },
-                "lifeguard": {
-                    "label": "حارس الشاطئ"
-                },
                 "line_attachment": {
                     "label": "كيفية ارتباط الكيابل"
                 },
@@ -1641,7 +1686,14 @@
                     "label": "Microbrewery"
                 },
                 "military_service": {
-                    "label": "خدمة عسكرية"
+                    "label": "خدمة عسكرية",
+                    "options": {
+                        "air_force": "قوات جوية",
+                        "army": "جيش",
+                        "coast_guard": "خفر سواحل",
+                        "marines": "مشاة البحرية",
+                        "navy": "قوات بحرية"
+                    }
                 },
                 "mimics": {
                     "label": "محاكاة",
@@ -1658,6 +1710,9 @@
                     "label": "الحد الأدنى للسرعة",
                     "placeholder": "20, 30, 40...",
                     "terms": "الحد الأدنى للسرعة"
+                },
+                "mobile": {
+                    "label": "هاتف محمول"
                 },
                 "monitoring_multi": {
                     "label": "الرصد/المراقبة"

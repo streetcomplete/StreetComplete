@@ -226,7 +226,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_translations_title">"Translations"</string>
     <string name="credits_contributors_title">"Code contributors"</string>
     <string name="credits_author_title">"Author and maintainer"</string>
-    <string name="credits_and_more">"and others…"</string>
     <string name="quest_maxspeed_answer_living_street">"It is a Home Zone"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"So, there is a sign like this?"</string>
     <string name="quest_orchard_produce_title">"What’s being grown here?"</string>
@@ -499,7 +498,6 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_motorcycleParkingCoveredStatus_title">"Is this motorcycle parking covered (protected from rain)?"</string>
     <string name="default_disabled_msg_maxspeed">"This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be a lot of work just to solve a single quest."</string>
     <string name="pref_title_quests_restore_hidden">"Restore hidden quests"</string>
-    <string name="restore_hidden_success">"Restored %d hidden quests"</string>
     <string name="on_level">"on level %s"</string>
     <string name="underground">"underground"</string>
     <string name="quest_sidewalk_value_yes">"pavement"</string>
@@ -841,7 +839,6 @@ Each of you will then see different quests."</string>
     <string name="team_mode_active">"Team mode is active"</string>
     <string name="team_mode_deactivated">"Team mode deactivated"</string>
     <string name="undo_confirm_title2">"Undo the following edit?"</string>
-    <string name="synced">"Synced"</string>
     <string name="toast_undo_unavailable">"This edit is already synced and cannot be undone"</string>
     <string name="quest_cycleway_value_separate">"displayed separately on the map"</string>
     <string name="created_note_action_title">"Created note"</string>
@@ -1063,8 +1060,6 @@ Do the same for the other side if present."</string>
     <string name="quest_road_width_title">"How wide is the road here?"</string>
     <string name="quest_road_width_explanation">"The carriageway width from kerb to kerb: This includes anything on the street surface, including on-street parking or cycle lanes but excludes anything beyond the kerb like pavements, off-street parking or adjacent cycle paths."</string>
     <string name="quest_sidewalk_answer_none">"No pavement at all"</string>
-    <string name="about_description_donate_google_play2">"Thank you for considering supporting this app!
-Unfortunately, due to Google Play Store policy, no links leading to donations may be displayed in-app. In this context, even linking to our project home is not allowed."</string>
     <string name="link_osmand_description">"Mobile app for online and offline map viewing and navigation"</string>
     <string name="link_sunders_description">"A map of cameras and surveillance equipment"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Keep closer to the arrow but watch out for traffic!"</string>
@@ -1325,7 +1320,7 @@ Move it now?"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"shared-use path, both directions"</string>
     <string name="overlays_tutorial_title">"Overlays"</string>
     <string name="overlays_tutorial_intro">"You found a new way to edit data!"</string>
-    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example shops or street surfaces.
+    <string name="overlays_tutorial_display">"Each overlay displays one kind of data, for example “places“ or “street surfaces“.
 
 The data is highlighted in different colors to give you a good overview of what has been recorded so far.
 Missing data is always shown in red."</string>
@@ -1389,4 +1384,11 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="overlay_things">"Things"</string>
     <string name="disused">"disused"</string>
     <string name="unknown_object">"Unknown object"</string>
+    <string name="quest_leafType_tree_title">"Does this tree have needles or leaves?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Thank you for considering supporting this app!
+You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Not inside, but covered"</string>
+    <string name="lit_value_unsupported">"Specific lit status that is not selectable in this app"</string>
+    <string name="quest_generic_otherAnswers2">"Er…"</string>
 </resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_search_more_languages_summary">Hľadanie objektov zobrazuje výsledky vo všetkých systémových a lokálnych jazykoch</string>
+    <string name="pref_select_first_edit_summary">Umožňuje rýchlejšie vrátenie zmeny, ale hýbe obrazovkou automaticky</string>
+    <string name="pref_auto_download_title">Automatické sťahovanie</string>
+    <string name="pref_recent_answers_first_min_lines">Presunúť nedávne odpovede navrch</string>
+    <string name="pref_show_nearby_quests_summary">Povoľuje prepínanie blízkych úloh, keď sú možnosti úlohy zobrazené</string>
+    <string name="pref_manual_download_cache_summary">Pokiaľ je nastavenie zakázané, dáta nebudú znova stiahnuté pri ručnom sťahovaní, pokiaľ nie sú staršie ako 12 hodín</string>
+    <string name="pref_category_mods">SCEE nastavenia</string>
+    <string name="pref_expert_mode_title">Režim pre expertov</string>
+    <string name="pref_expert_mode_summary">Povoliť pokročilé možnosti úprav</string>
+    <string name="pref_read_log_title">Čítač záznamov</string>
+    <string name="pref_read_log_save">Ulož všetky záznamy do súboru</string>
+    <string name="pref_read_reverse_button">Obrátiť</string>
+    <string name="pref_read_filter_hint">Filter…</string>
+    <string name="pref_screen_notes">Poznámky</string>
+    <string name="pref_hide_notes_title">Skryť poznámky od konkrétnych používateľov</string>
+    <string name="pref_hide_notes_message">Vlož používateľské mená alebo ID-čka, ktoré majú byť skryté</string>
+    <string name="pref_hide_notes_hint">Použi čiarku na oddelenie používateľských mien alebo ID-čiek</string>
+    <string name="pref_show_gpx_button_title">Zobraz tlačidlo na GPX poznámku</string>
+    <string name="pref_show_gpx_button_summary">Na rozdiel od OSM poznámok, pridanie GPX poznámky neskryje žiadnu úlohu v danej lokalite</string>
+    <string name="pref_swap_gpx_note_button">Vymeň tlačidlá OSM a GPX poznámok</string>
+    <string name="pref_hide_keyboard_title">Skryť klávesnicu pred pridaním poznámky</string>
+    <string name="pref_hide_keyboard_summary">Skryje klávesnicu, keď je zobrazená, predtým než je poznámka vytvorená (pre umožnenie kontroly pozície)</string>
+    <string name="pref_save_gpx">Exportuj GPX poznámky, fotografie a trasy</string>
+    <string name="pref_save_file_error">Chyba pri ukladaní súboru</string>
+    <string name="pref_files_not_found">Nenašli sa žiadne súbory</string>
+    <string name="pref_create_custom_quest_title">Povoliť pridávanie vlastných úloh</string>
+    <string name="pref_create_custom_quest_summary">...ako alternatíva k pridávaniu poznámok. Toto môže byť použité ako lokálne uložená poznámka viditeľná na mape. Nezabudni, že musíš povoliť vlastné úlohy.</string>
+    <string name="pref_save_photos_title">Exportovať fotografie uložené pri poznámkach</string>
+    <string name="pref_save_photos_summary">Exportovať fotografie v plnej veľkosti vytvorené k poznámkam, bez vymazania EXIF dát</string>
+    <string name="pref_get_photos_title">Exportuj fotografie v plnej veľkosti</string>
+    <string name="pref_screen_display">Zobraz</string>
+    <string name="pref_3d_buildings_title">Zobraz 3D budovy</string>
+    <string name="pref_way_direction">Zobraz smer ciest</string>
+    <string name="pref_way_direction_summary">Zobraz šípky na zvýraznených čiarach pri otváraní úlohy. Nápomocné napr. pri pridávaní jednosmerky.</string>
+    <string name="pref_quest_geometries_title">Zobraz geometriu úloh</string>
+    <string name="pref_quest_geometries_summary">Zvýrazní čiary a plochy, ktoré majú úlohu</string>
+    <string name="pref_offset_fix_title">Skry offset označenia úloh</string>
+    <string name="pref_offset_fix_summary">Zobrazí biele bodky pri základe označenia úloh</string>
+    <string name="pref_show_solved_animation">Zobraz animáciu pri splnení úlohy</string>
+    <string name="pref_gpx_track_title">Zobraz GPX záznamy zo súboru</string>
+    <string name="pref_gpx_track_provide">Vyber GPX súbor</string>
+    <string name="pref_gpx_track_loading_error">Chyba pri načítavaní GPX súboru</string>
+    <string name="pref_gpx_track_enable">Zobraz GPX záznam</string>
+    <string name="pref_gpx_track_download">Stiahni oblasť okolo GPX záznamu</string>
+    <string name="pref_screen_ui">Používateľské rozhranie</string>
+    <string name="pref_volume_zoom_title">Priblíženie/oddialenie tlačidlami hlasitosti</string>
+    <string name="pref_volume_zoom_summary">Ovládanie priblíženia/oddialenia pomocou tlačidiel hlasitosti</string>
+    <string name="pref_show_quick_settings_title">Zobraz tlačidlo rýchlych nastavení</string>
+    <string name="pref_select_first_edit_title">Vyber poslednú úpravu pri otváraní histórie</string>
+    <string name="pref_main_menu_grid">Zobraz všetky položky v hlavnom menu v mriežke</string>
+    <string name="pref_caps_word_name_input">Začínať každé slovo s veľkým písmenom</string>
+    <string name="pref_show_next_quest_title">Zobraz ďalšiu úlohu ihneď</string>
+    <string name="pref_show_next_quest_summary">Zobrazí ďalšiu úlohu pre rovnaký objekt hneď po vyriešení aktuálnej</string>
+    <string name="pref_hide_button_title">Zobraz tlačidlo na skrytie</string>
+    <string name="pref_hide_button_summary">Stlačenie skryje úlohu dočasne, dlhé stlačenie skryje úlohu natrvalo</string>
+    <string name="pref_recent_answers_first_min_lines_summary">Keď sú možnosti na %d riadkoch</string>
+    <string name="pref_recent_answers_first_min_lines_message">Presuň nedávne odpovede na začiatok, pokiaľ sú možnosti na takomto počte riadkov</string>
+    <string name="pref_show_nearby_quests_title">Zobraz úlohy v blízkosti</string>
+    <string name="show_nearby_quests_disable">Nezobrazuj blízke úlohy</string>
+    <string name="show_nearby_quests_visible">Zobrazuj iba povolené typy úloh</string>
+    <string name="show_nearby_quests_all_types">Zobrazuj všetky typy úloh</string>
+    <string name="show_nearby_quests_even_hidden">Zobrazuj všetky typy úloh aj skryté úlohy</string>
+    <string name="show_nearby_quests_distance">Zobraz úlohy v tejto vzdialenosti (limit 10 metrov)</string>
+    <string name="pref_search_more_languages_title">Vyhľadávaj objekty v rôznych jazykoch</string>
+    <string name="pref_overlay_quick_selector_title">Zobraz lištu predvoľby prekrytí</string>
+    <string name="pref_create_node_show_keyboard_title">Automaticky zobraz klávesnicu pri pridávaní bodov</string>
+    <string name="pref_main_menu_switch_presets_title">Zobraz tlačidlo zmeny predvoľby v hlavnom menu</string>
+    <string name="pref_disable_navigation_mode_title">Vypnúť mód navigácie</string>
+    <string name="pref_screen_data_management">Správca dát</string>
+    <string name="pref_manual_download_cache_title">Vždy stiahni dáta nanovo</string>
+    <string name="pref_export">Exportovať nastavenia</string>
+    <string name="pref_import">Importovať nastavenia</string>
+    <string name="import_export_presets">Predvoľby</string>
+    <string name="import_export_presets_select">Vyber predvoľby na exportovanie</string>
+    <string name="import_export_custom_overlays">Vlastné prekrytia</string>
+    <string name="import_export_custom_overlays_select">Vyber prekrytia na exportovanie</string>
+    <string name="import_export_settings">Ostatné nastavenia aplikácie</string>
+    <string name="import_export_hidden_quests">Skryté úlohy</string>
+    <string name="pref_expert_mode_message">Toto povolí používanie úloh pridaných v SCEE, a možnosti
+\n \u0020<li>upravovať značky</li>
+\n \u0020<li>posúvať body, ktoré sú súčasťou čiar alebo relácií</li>
+\n \u0020<li>mazanie voľných bodov</li>
+\n \u0020<li>upravovanie objektov, ktoré sú blokované poznámkou</li>
+\n \u0020<li>pridanie voľných bodov kdekoľvek</li>
+\n \u0020<li>úpravu výberu objektových úloh</li>
+\n
+\n \u0020Toto je stále menej ako ponúka väčšina editorov, ale nepozornosť môže viesť k poškodzovaniu dát tak, ako to v StreetComplete možné nie je. Maj na pamäti, že povolením režimu pre expertov budeš oveľa viac zodpovedný za svoje úpravy.
+\n \u0020Prosím povoľ toto nastavenie len keď máš skúsenosti s OSM mimo \u0020StreetComplete a vieš čo robíš. \u0020</string>
+    <string name="pref_show_solved_animation_summary">Toto taktiež upravuje zvuk splnenia úlohy</string>
+    <string name="pref_gpx_track_download_too_big">Sťahovaná oblasť je príliš veľká, prosím stiahni ju manuálne</string>
+    <string name="pref_disable_navigation_mode_summary">Zakáže mód, ktorý automaticky nakláňa a rotuje mapu</string>
+    <string name="pref_auto_download_summary">Automaticky stiahne dáta v okolí</string>
+    <string name="import_presets_overlays_message">Pridať importované, alebo nahradiť existujúce? Pokiaľ si vyberieš nahradiť, tak všetky aktuálne budú vymazané.</string>
+    <string name="import_presets_overlays_add">Pridať</string>
+    <string name="import_presets_overlays_replace">Nahradiť</string>
+    <string name="import_error">Chyba pri importovaní</string>
+    <string name="import_error_db_version">Chyba pri importovaní: neznáma verzia</string>
+    <string name="export_warning_db_version">Varovanie: neznáma verzia databázy, import nemusí fungovať. Prosím aktualizuj aplikáciu.</string>
+    <string name="pref_delete_old_data_after">Vymaž staré údaje po</string>
+    <string name="pref_delete_old_data_after_message">Vymaž stiahnuté OSM dáta, pokiaľ sú staršie ako tento počet dní</string>
+    <string name="pref_delete_old_data_after_summary">%d dňoch</string>
+    <string name="pref_use_sd">Použi SD kartu na ukladanie mapových podkladov</string>
+    <string name="pref_use_sd_summary">Zmena týchto nastavení presúva dáta, toto môže chvíľu trvať</string>
+    <string name="moving">Presúvanie podkladov…</string>
+</resources>

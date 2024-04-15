@@ -26,7 +26,9 @@ import org.koin.android.ext.android.inject
 
 class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
 
-    override val items: List<DisplayItem<LitStatus>> =
+    override val items: List<DisplayItem<LitStatus>> = LitStatus.entries.map { it.asItem() }
+
+    override val selectableItems: List<DisplayItem<LitStatus>> =
         listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY).map { it.asItem() }
 
     private val prefs: ObservableSettings by inject()
@@ -54,8 +56,7 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val litStatus = parseLitStatus(element!!.tags)
-        originalLitStatus = if (litStatus != UNSUPPORTED) litStatus else null
+        originalLitStatus = parseLitStatus(element!!.tags)
         selectedItem = originalLitStatus?.asItem()
     }
 

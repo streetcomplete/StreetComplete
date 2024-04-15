@@ -226,7 +226,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="credits_translations_title">"Preklady"</string>
     <string name="credits_contributors_title">"Prispievatelia kódu"</string>
     <string name="credits_author_title">"Autor a udržiavateľ"</string>
-    <string name="credits_and_more">"a ďalší…"</string>
     <string name="quest_maxspeed_answer_living_street">"Je to obytná zóna"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Takže je tam značka ako táto?"</string>
     <string name="quest_orchard_produce_title">"Čo sa tu pestuje?"</string>
@@ -499,7 +498,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_motorcycleParkingCoveredStatus_title">"Je toto parkovisko pre motorky zastrešené (chránené pred dažďom)?"</string>
     <string name="default_disabled_msg_maxspeed">"Tento typ úloh je v predvolenom nastavení zakázaný, pretože pre nájdenie značiek s rýchlostným obmedzením je zvyčajne potrebné skontrolovať celú ulicu a nie iba zvýraznenú časť. To môže byť náročnejšie vzhľadom k tomu, že ide o vyriešenie iba jednej úlohy."</string>
     <string name="pref_title_quests_restore_hidden">"Obnoviť skryté úlohy"</string>
-    <string name="restore_hidden_success">"Obnovených %d skrytých úloh"</string>
     <string name="on_level">"na poschodí %s"</string>
     <string name="underground">"v podzemí"</string>
     <string name="quest_sidewalk_value_yes">"chodník"</string>
@@ -522,8 +520,8 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_leave_new_note_photos_are_useful">"Pridaním fotografie urobíte poznámku oveľa užitočnejšiu."</string>
     <string name="create_new_note_hint">"Najlepšie je napísať poznámku v jazyku, ktorým sa tu hovorí, alebo inak v angličtine."</string>
     <string name="quest_leafType_title">"Sú tu ihličnaté alebo listnaté stromy?"</string>
-    <string name="quest_leaf_type_needles">"Ihličnany"</string>
-    <string name="quest_leaf_type_broadleaved">"Listnáče"</string>
+    <string name="quest_leaf_type_needles">"Ihličnaté"</string>
+    <string name="quest_leaf_type_broadleaved">"Listnaté"</string>
     <string name="quest_leaf_type_mixed">"Sú to oba"</string>
     <string name="quest_cyclewayPartSurface_title">"Aký povrch má táto cyklotrasa?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"V rôznych častiach rôzny…"</string>
@@ -833,7 +831,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="team_mode_active">"Tímový režim je aktívny"</string>
     <string name="team_mode_deactivated">"Tímový režim je neaktívny"</string>
     <string name="undo_confirm_title2">"Chcete vrátiť nasledujúcu úpravu?"</string>
-    <string name="synced">"Synchronizované"</string>
     <string name="toast_undo_unavailable">"Táto úprava je už synchronizovaná a nedá sa vrátiť späť"</string>
     <string name="quest_cycleway_value_separate">"zobrazené samostatne na mape"</string>
     <string name="created_note_action_title">"Vytvorená poznámka"</string>
@@ -1055,8 +1052,6 @@ To isté urobte pre druhú stranu, ak tu je."</string>
     <string name="quest_road_width_title">"Aká je tu šírka tejto cesty?"</string>
     <string name="quest_road_width_explanation">"Šírka cesty od obrubníku k obrubníku: Toto zahrňuje čokoľvek na povrchu cesty, ako parkovacie miesto na ceste / pruhy pre cyklistov, ale vylučuje čokoľvek mimo cesty, ako cyklocesty / parkovanie."</string>
     <string name="quest_sidewalk_answer_none">"Nie je tu žiadny chodník"</string>
-    <string name="about_description_donate_google_play2">"Ďakujeme, že zvažujete podporu tejto aplikácie!
-Vzhľadom k pravidlám v Google Play Store, nemôžu byť v aplikácií zobrazené žiadne linky vedúce k podpore vývoja aplikácie. V tomto kontexte, nie je povolený ani odkaz na domovskú stránku."</string>
     <string name="link_osmand_description">"Mobilná aplikácia pre online a offline prezeranie mapy a navigáciu"</string>
     <string name="link_sunders_description">"Mapa kamier a sledovacích zariadení"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Držte sa bližšie k šípke, ale dávajte pozor na premávku!"</string>
@@ -1355,6 +1350,32 @@ Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu z
     <string name="label_log_message_contains">"Správa obsahuje"</string>
     <string name="title_logs_filters">"Filtrovanie správ"</string>
     <string name="pref_title_quests_restore_hidden_summary">"Počet skrytých úloh: %d"</string>
+    <string name="link_every_door_description">"Výkonný editor bodov záujmu pre Android a iOS"</string>
     <string name="link_mapcomplete_description">"Zbierka tematických máp OSM, z ktorých každá zobrazuje a umožňuje upravovať jeden druh prvkov"</string>
+    <string name="link_calendar_description">"Sú OpenStreetMap podujatia alebo stretnutia komunity blízko teba? (Keď nie, môžeš pridať svoje vlastné!)"</string>
     <string name="link_prettymapp_description">"Vytvorenie pekných viacfarebných plagátov s mapami štvrtí"</string>
+    <string name="quest_disable_action">"Zakázať"</string>
+    <string name="quest_disable_title">"Zakázať tento typ úlohy?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure nie je nainštalovaný (zatiaľ)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure nevrátilo meranie."</string>
+    <string name="quest_disable_message_tape_measure">"Môžeš použiť meter, ale môže to byť trocha nepríjemné."</string>
+    <string name="quest_buildingType_outbuilding">"Prístavba"</string>
+    <string name="quest_buildingType_outbuilding_description">"menej podstatná budova na pozemku"</string>
+    <string name="quest_buildingType_other_description">"špecifická budova, ktorá nie je na výber v aplikácií"</string>
+    <string name="quest_buildingType_container">"Kontajner"</string>
+    <string name="quest_buildingType_tent">"Stan"</string>
+    <string name="quest_buildingType_tomb">"Hrobka"</string>
+    <string name="quest_buildingType_tower">"Veža"</string>
+    <string name="quest_buildingType_tower_description">"hocijaký typ veže"</string>
+    <string name="quest_buildingType_under_construction">"Vo výstavbe"</string>
+    <string name="overlay_buildings">"Budovy"</string>
+    <string name="quest_pedestrian_crossing_signals">"Musíte tu čakať na semafore, keď chcete prejsť cez cestu?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Je tento prechod vyznačený na ceste?"</string>
+    <string name="overlay_places">"Miesta"</string>
+    <string name="overlay_things">"Veci"</string>
+    <string name="disused">"nepoužívané"</string>
+    <string name="unknown_object">"Neznámy objekt"</string>
+    <string name="quest_leafType_tree_title">"Má tento strom ihličie, alebo listy?"</string>
+    <string name="quest_bbq_fuel_gas">"Benzín"</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Nie vo vnútri, ale pod strechou"</string>
 </resources>

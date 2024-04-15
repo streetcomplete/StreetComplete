@@ -226,7 +226,6 @@
     <string name="credits_translations_title">"תרגומים"</string>
     <string name="credits_contributors_title">"תורמי קוד"</string>
     <string name="credits_author_title">"היוצר והמתחזק"</string>
-    <string name="credits_and_more">"ואחרים…"</string>
     <string name="quest_maxspeed_answer_living_street">"זהו רחוב משולב"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"אז יש כאן תמרור כזה?"</string>
     <string name="quest_orchard_produce_title">"מה מגדלים כאן?"</string>
@@ -802,7 +801,6 @@
     <string name="team_mode_active">"מוד קבוצתי פעיל"</string>
     <string name="team_mode_deactivated">"מוד קבוצתי לא פעיל"</string>
     <string name="undo_confirm_title2">"לבטל את השינוי הזה?"</string>
-    <string name="synced">"מסונכרן"</string>
     <string name="toast_undo_unavailable">"עריכה זו כבר סונכרנה ולא ניתן לבצע לה ביטול"</string>
     <string name="quest_cycleway_value_separate">"מוצג בנפרד על המפה"</string>
     <string name="hid_action_description">"הוסתר על ידך"</string>
@@ -978,8 +976,6 @@
     <string name="quest_road_width_title">"מה רוחב הכביש כאן?"</string>
     <string name="quest_road_width_explanation">"רוחב הכביש מדופן לדופן: זה כולל כל דבר על משטח הרחוב, כולל חנייה בכביש ושבילי אופניים אבל לא כולל כל דבר מעבר לדופן הכביש כמו מדרכות, חנייה שמופרדת מהכביש ושבילי אופניים מופרדים."</string>
     <string name="quest_sidewalk_answer_none">"אין מדרכה כלל"</string>
-    <string name="about_description_donate_google_play2">"תודה שבחרת לתמוך ביישום זה!
-לצערנו, על פי המדיניות של חנות Google Play, לא ניתן להציג קישורים לתרומות בתוך היישום. בהקשר זה, אפילו קישור לדף הבית של הפרויקט שלנו אסור."</string>
     <string name="link_osmand_description">"יישום לטלפון נייד לצפייה במפות וניווט במצב מקוון ולא מקוון"</string>
     <string name="link_sunders_description">"מפה של מצלמות וציוד מעקב"</string>
     <string name="quest_sidewalk_surface_title">"מה סוג המשטח של המדרכה כאן?"</string>

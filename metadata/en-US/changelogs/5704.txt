@@ -1,0 +1,7 @@
+- more generic ref quest by @FloEdelmann (#532), for easy tuning in quest settings
+- open element history in tag editor by clicking on the last edited date (#526)
+- improved download of data along GPX tracks (#471)
+- add quest for parking capacity, orientation and disabled capacity by @wielandb (#497)
+- update translations
+- option to disable 3D buildings currently not working
+- bug fixes

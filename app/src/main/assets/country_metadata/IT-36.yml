@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Poste Italiane, Euronet, UniCredit Bank, Postamat, Unicredit, Intesa Sanpaolo, Friuladria, Banca di Cividale, Crédit Agricole, Banco BPM, Banca TER, Banca Popolare di Cividale, BCC]
+atmOperators: [Poste Italiane, Euronet, UniCredit Bank, Postamat, Intesa Sanpaolo, Friuladria, Banca di Cividale, Unicredit, Crédit Agricole, Banco BPM, Banca TER, Banca Popolare di Cividale, BCC]
 chargingStationOperators: [Repower, Enel X, Hera / AcegasApsAmga, Be Charge, Enel, Hera, Emobitaly, EVAD, 'Tesla, Inc.', Tesla Motors (Destination Charging), Plenitude, Là di Anselmi, Hera / AcegasApsAmga (EnelX)]
 clothesContainerOperators: [Caritas Diocesana, Caritas]
 officialLanguages: [it, fur, sl, de]
