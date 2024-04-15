@@ -226,7 +226,6 @@ V nasprotnem primeru lahko prenesete drugačno tipkovnico iz trgovine za aplikac
     <string name="credits_translations_title">"Prevodi"</string>
     <string name="credits_contributors_title">"Soavtorji kode"</string>
     <string name="credits_author_title">"Avtor in vzdrževalec"</string>
-    <string name="credits_and_more">"in ostali …"</string>
     <string name="quest_maxspeed_answer_living_street">"Je ulica z umirjenim prometom"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Torej je tam tak znak?"</string>
     <string name="quest_orchard_produce_title">"Kaj gojijo tu?"</string>
@@ -499,7 +498,6 @@ Na primer 1,3 ali 2–6."</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Je to parkirišče za motorje pokrito (ščiti pred dežjem)?"</string>
     <string name="default_disabled_msg_maxspeed">"Ta naloga je privzeto izključena, saj ponavadi zahteva pregled celotne ulice, ne le označenega dela, za prisotnost znakov za omejitev hitrosti. Včasih to pomeni precejšnjo razdaljo za razrešitev samo ene naloge."</string>
     <string name="pref_title_quests_restore_hidden">"Ponastavi skrite naloge"</string>
-    <string name="restore_hidden_success">"Ponastavljenih %d skritih nalog"</string>
     <string name="on_level">"na nadstropju %s"</string>
     <string name="underground">"pod zemljo"</string>
     <string name="quest_sidewalk_value_yes">"pločnik"</string>
@@ -840,7 +838,6 @@ Pazi na vse razpoložljive možnosti: nekateri primeri niso očitni, kot na prim
     <string name="team_mode_active">"Ekipni način je vklopljen"</string>
     <string name="team_mode_deactivated">"Ekipni način je izklopljen"</string>
     <string name="undo_confirm_title2">"Razveljavi to spremembo?"</string>
-    <string name="synced">"Sinhroniziran"</string>
     <string name="toast_undo_unavailable">"Te spremembe ni mogoče razveljaviti, saj je že sinhronizirana"</string>
     <string name="quest_cycleway_value_separate">"Na zemljevidu je prikazana ločeno"</string>
     <string name="created_note_action_title">"Opomba ustvarjena"</string>
@@ -1062,8 +1059,6 @@ Naredi enako za drugo stran, če ta obstaja."</string>
     <string name="quest_road_width_title">"Kako široka je ta cesta?"</string>
     <string name="quest_road_width_explanation">"Cestišče od robnika do robnika: to vključuje karkoli na površini cestišča, tudi parkirišča ali kolesarske steze. Izključene so vse stvari za robnikom, kot so pločnik, parkirišče izven ceste, ali kolesarske steze, ki niso del ceste."</string>
     <string name="quest_sidewalk_answer_none">"Sploh ni pločnika"</string>
-    <string name="about_description_donate_google_play2">"Hvala ker bi rad podprl to aplikacijo!
-Na žalost zaradi pravil trgovine Google Play, v aplikaciji ne smemo prikazati nobenih povezav do mest za donacijo. V tem kontekstu ni dovoljeno niti prikazovanje povezave do spletne strani našega projekta."</string>
     <string name="link_osmand_description">"Izjemno prilagodljiva mobilna aplikacija za brskanje po zemljevidu z ali brez povezave s spletom."</string>
     <string name="link_sunders_description">"Zemljevid kamer in opreme za nadzor"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Ostani bliže puščici, vendar pazi na promet!"</string>

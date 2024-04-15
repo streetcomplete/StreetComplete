@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banco República, BROU, Santander, BBVA, Itaú, Banred, RedBROU, Scotiabank, RedBrou, Devoto Pando]
+atmOperators: [Banco República, Santander, BROU, BBVA, Banred, Itaú, Scotiabank, RedBROU, RedBrou, Devoto Pando, Banco Santander]
 centerLineStyle: yellow
 chargingStationOperators: [UTE]
 defaultSpeedLimitHasUrbanOrRural: true

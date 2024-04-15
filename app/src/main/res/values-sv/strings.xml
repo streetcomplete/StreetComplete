@@ -226,7 +226,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="credits_translations_title">"Översättningar"</string>
     <string name="credits_contributors_title">"Kodbidragsgivare"</string>
     <string name="credits_author_title">"Upphovsman och förvaltare"</string>
-    <string name="credits_and_more">"och fler…"</string>
     <string name="quest_maxspeed_answer_living_street">"Det är gångfartsområde"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Så det finns en skylt som ser ut så här?"</string>
     <string name="quest_orchard_produce_title">"Vad odlas här?"</string>
@@ -307,7 +306,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_cycleway_value_track">"separat cykelbana"</string>
     <string name="quest_cycleway_value_lane">"cykelkörfält"</string>
     <string name="quest_cycleway_value_none">"ingen"</string>
-    <string name="quest_cycleway_value_shared">"cykelkörfält delad med annan trafik"</string>
+    <string name="quest_cycleway_value_shared">"cykelkörfält delad med annan trafik (används normalt ej i Sverige)"</string>
     <string name="quest_cycleway_value_bus_lane">"i busskörfältet"</string>
     <string name="quest_leave_new_note_create_image_error">"Fel vid skapandet av foto"</string>
     <string name="quest_cycleway_value_lane_dual">"cykelkörfält, båda riktningarna"</string>
@@ -499,7 +498,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_motorcycleParkingCoveredStatus_title">"Har denna motorcykelparkering tak (skyddad från regn)?"</string>
     <string name="default_disabled_msg_maxspeed">"Uppdragstypen är inaktiverad som standard eftersom du vanligtvis måste kontrollera hela gatan efter hastighetsbegränsningsskyltar, inte bara den markerade delen. Detta kan ibland vara ganska överdrivet bara för att lösa ett enda uppdrag."</string>
     <string name="pref_title_quests_restore_hidden">"Återställ dolda uppdrag"</string>
-    <string name="restore_hidden_success">"Återställde %d dolda uppdrag"</string>
     <string name="on_level">"på våningsplan %s"</string>
     <string name="underground">"underjordisk"</string>
     <string name="quest_sidewalk_value_yes">"trottoar"</string>
@@ -840,7 +838,6 @@ Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en e
     <string name="team_mode_active">"Gruppläget är aktivt"</string>
     <string name="team_mode_deactivated">"Gruppläget inaktiverat"</string>
     <string name="undo_confirm_title2">"Ångra följande ändring?"</string>
-    <string name="synced">"Synkad"</string>
     <string name="toast_undo_unavailable">"Denna ändring är redan synkad och kan inte ångras"</string>
     <string name="quest_cycleway_value_separate">"visas separat på kartan"</string>
     <string name="created_note_action_title">"Skapade anteckning"</string>
@@ -1062,8 +1059,6 @@ Gör detta för varje sida som finns."</string>
     <string name="quest_road_width_title">"Hur bred är denna vägen här?"</string>
     <string name="quest_road_width_explanation">"Hela vägbredden från kant till kant: Detta inkluderar allt som utgör vägytan som parkering på gatan eller cykelfiler, men inte gång- och cykelbanor eller särskilt anordnad parkering vid sidan av vägen."</string>
     <string name="quest_sidewalk_answer_none">"Ingen trottoar alls"</string>
-    <string name="about_description_donate_google_play2">"Tack för att du vill stödja den här appen!
-Tyvärr har Google Play Store beslutat att inga länkar till donationer får visas i appen, inte ens en länk till vår hemsida."</string>
     <string name="link_osmand_description">"Mobilapp för kartor och navigation, både online och offline"</string>
     <string name="link_sunders_description">"En karta med övervakningskameror och -utrustning"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Håll dig nära pilen men se upp för trafik!"</string>
@@ -1388,4 +1383,11 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="overlay_things">"Saker"</string>
     <string name="disused">"inte längre använd"</string>
     <string name="unknown_object">"Okänt objekt"</string>
+    <string name="quest_leafType_tree_title">"Har det här trädet barr eller blad?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Tack för att du överväger att stödja den här appen!
+Du kan hitta information om donationer på vår hemsida, Google Play tillåter oss inte att länka dit i appen."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Inte inomhus, men tak över"</string>
+    <string name="lit_value_unsupported">"Specifik belysningsstatus som ej är valbar i denna app"</string>
+    <string name="quest_generic_otherAnswers2">"Eh…"</string>
 </resources>

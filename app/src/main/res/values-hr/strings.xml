@@ -180,7 +180,7 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <string name="quest_manySports_confirmation_generic">"Opće namjene"</string>
     <string name="quest_sport_manySports_confirmation_title">"Označili ste mnogo sportova"</string>
     <string name="quest_toiletsFee_title">"Plaća li se ovaj toalet?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Postoje li trake vodilje za slijepe s obje strane ovog pješačkog prijelaza?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Postoje li trake vodilje za slijepe na oba kraja ovog pješačkog prijelaza?"</string>
     <string name="quest_source_dialog_title">"Jeste li sigurni da ste to provjerili na licu mjesta?"</string>
     <string name="quest_source_dialog_note">"Treba unositi samo one podatke koji su pronađeni tijekom istraživanja."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Je li ovo parkiralište za bicikle natkriveno (zaštićeno od kiše)?"</string>
@@ -226,7 +226,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="credits_translations_title">"Prijevodi"</string>
     <string name="credits_contributors_title">"Programerski suradnici"</string>
     <string name="credits_author_title">"Autor i održavatelj"</string>
-    <string name="credits_and_more">"i drugi…"</string>
     <string name="quest_maxspeed_answer_living_street">"To je područje smirenog prometa"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Dakle, postoji znak poput ovog?"</string>
     <string name="quest_orchard_produce_title">"Što se ovdje uzgaja?"</string>
@@ -499,7 +498,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_motorcycleParkingCoveredStatus_title">"Je li ovo parkiralište za motocikle natkriveno (zaštićeno od kiše)?"</string>
     <string name="default_disabled_msg_maxspeed">"Ova je vrsta zadatka inicijalno onemogućena jer biste obično morali proći cijelu ulicu da provjerite ima li igdje znakova ograničenja brzine, a ne samo u istaknutom dijelu. To ponekad može biti prilično naporno da bi se riješio jedan zadatak."</string>
     <string name="pref_title_quests_restore_hidden">"Vrati skrivene zadatke"</string>
-    <string name="restore_hidden_success">"Vraćeno je %d skrivenih zadataka"</string>
     <string name="on_level">"na razini %s"</string>
     <string name="underground">"pod zemljom"</string>
     <string name="quest_sidewalk_value_yes">"Ima nogostup"</string>
@@ -566,7 +564,7 @@ Razdvojiti put sada?"</string>
     <string name="about_summary_rate">"na Trgovina Playu"</string>
     <string name="about_title_donate">"Donirajte"</string>
     <string name="about_summary_donate">"Pokažite svoju zahvalnost! ❤️"</string>
-    <string name="about_description_donate">"Zahvaljujemo što razmišljate o tome da podržite ovu aplikaciju! Da biste vidjeli trenutne donacije kao i sami donirali, dotaknite odgovarajuću platformu:"</string>
+    <string name="about_description_donate">"Zahvaljujemo što razmišljate o tome da podržite ovu aplikaciju! Da biste vidjeli trenutne donacije kao i sami donirali, odaberite odgovarajuću platformu:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Umjesto toga pretražuj ovdje"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Nastavi započetu pretragu"</string>
     <string name="quest_buildingType_garages_description">"Odvojena parkirna mjesta za različite vlasnike / stanare"</string>
@@ -840,7 +838,6 @@ Pripazite na sve dostupne opcije: neki slučajevi nisu očigledni, poput jednosm
     <string name="team_mode_active">"Timski način rada je aktivan"</string>
     <string name="team_mode_deactivated">"Timski način rada je deaktiviran"</string>
     <string name="undo_confirm_title2">"Poništi ovo uređivanje?"</string>
-    <string name="synced">"Poslano"</string>
     <string name="toast_undo_unavailable">"Ova izmjena je već poslana i ne može se poništiti"</string>
     <string name="quest_cycleway_value_separate">"prikazana odvojeno na karti"</string>
     <string name="created_note_action_title">"Napravljena bilješka"</string>
@@ -1062,8 +1059,6 @@ Učinite isto za drugu stranu ako je prikazana na ekranu."</string>
     <string name="quest_road_width_title">"Kolika je širina ove ceste?"</string>
     <string name="quest_road_width_explanation">"Širina ceste od rubnika do rubnika: ovo uključuje sve na površini ulice poput parkinga na ulici ili biciklističkih traka, ali isključuje sve izvan nje, poput biciklističkih staza ili parkinga pored ceste."</string>
     <string name="quest_sidewalk_answer_none">"Uopće nema nogostupa"</string>
-    <string name="about_description_donate_google_play2">"Zahvaljujemo što razmišljate o tome da podržite ovu aplikaciju!
-Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju biti prikazane u aplikaciji. U tom kontekstu, čak niti direktna poveznica na našu internetsku stranicu nije dopuštena ovdje."</string>
     <string name="link_osmand_description">"Mobilna aplikacija za navigaciju i pregled karte (online i offline)"</string>
     <string name="link_sunders_description">"Karta nadzornih kamera"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Držite se bliže strelici, ali pripazite na promet!"</string>
@@ -1338,7 +1333,7 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="quest_drinking_water_type_title2">"Ima li ovdje pitke vode? Ako ima, koji je njezin izvor?"</string>
     <string name="quest_is_amenity_inside_title">"Je li ovo unutar zgrade?"</string>
     <string name="quest_bbq_fuel_title">"Koje gorivo koristi ovaj roštilj?"</string>
-    <string name="quest_bbq_fuel_wood">"Drvo"</string>
+    <string name="quest_bbq_fuel_wood">"Drva"</string>
     <string name="quest_bbq_fuel_electric">"Struju"</string>
     <string name="quest_bbq_fuel_charcoal">"Ugljen"</string>
     <string name="inside">"unutra"</string>
@@ -1388,4 +1383,11 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="overlay_things">"Stvari"</string>
     <string name="disused">"Zapušteno"</string>
     <string name="unknown_object">"Nepoznati objekt"</string>
+    <string name="quest_leafType_tree_title">"Ima li ovo drvo iglice ili lišće?"</string>
+    <string name="quest_bbq_fuel_gas">"Plin"</string>
+    <string name="about_description_donate_google_play3">"Zahvaljujemo što razmišljate o tome da podržite ovu aplikaciju!
+Informacije o donacijama možete pronaći na našoj web stranici ili repozitoriju izvornog koda, jer nam Google Play ne dopušta direktne donacijske poveznice unutar aplikacije."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Nije unutra, ali je natkriveno"</string>
+    <string name="lit_value_unsupported">"Specifični status osvijetljenosti koji nije moguće odabrati u ovoj aplikaciji"</string>
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
 </resources>

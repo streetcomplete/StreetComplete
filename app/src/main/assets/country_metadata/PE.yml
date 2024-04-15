@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [BCP, Banco de la Nación, Interbank, Scotiabank, Banco de Crédito del Perú, BBVA, Caja Arequipa, Globalnet, Multired, BBVA Continental, globalnet, MultiRed, multiRed, GlobalNet, Banco Continental, Global Net, Caja Cusco, banco de la nacion, Multi Red, Caja Piura, Banco de la Nacion, Banco de Crédito, Banco Bilbao Vizcaya Argentaria, 1, multired, max, Skotiabank, Scotia Bank, Banco de la nación, Banco de La Nación]
+atmOperators: [BCP, Banco de la Nación, Interbank, Scotiabank, Banco de Crédito del Perú, BBVA, Caja Arequipa, Globalnet, Multired, BBVA Continental, globalnet, MultiRed, multiRed, GlobalNet, Banco Continental, Global Net, Caja Piura, Caja Cusco, banco de la nacion, Multi Red, Banco de la Nacion, Banco de Crédito, Banco Bilbao Vizcaya Argentaria, multired, max, Skotiabank, Scotia Bank, Banco de la nación, Banco de La Nación, 1]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
 hasSlowZone: true

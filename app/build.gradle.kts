@@ -115,7 +115,6 @@ dependencies {
     // tests
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
-    testImplementation("org.assertj:assertj-core:3.23.1")
     testImplementation(kotlin("test"))
 
     androidTestImplementation("androidx.test:runner:1.5.2")
@@ -124,8 +123,10 @@ dependencies {
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
-    implementation("io.insert-koin:koin-android-compat:3.4.1")
-    implementation("io.insert-koin:koin-androidx-workmanager:3.4.1")
+    implementation(platform("io.insert-koin:koin-bom:3.5.4"))
+    implementation("io.insert-koin:koin-core")
+    implementation("io.insert-koin:koin-android")
+    implementation("io.insert-koin:koin-androidx-workmanager")
 
     // Android stuff
     implementation("com.google.android.material:material:1.11.0")
@@ -147,9 +148,9 @@ dependencies {
     implementation("com.russhwolf:multiplatform-settings:1.1.1")
 
     // Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.2")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
@@ -158,9 +159,9 @@ dependencies {
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     // HTTP Client
-    implementation("io.ktor:ktor-client-core:2.3.8")
-    implementation("io.ktor:ktor-client-cio:2.3.8")
-    testImplementation("io.ktor:ktor-client-mock:2.3.8")
+    implementation("io.ktor:ktor-client-core:2.3.9")
+    implementation("io.ktor:ktor-client-cio:2.3.9")
+    testImplementation("io.ktor:ktor-client-mock:2.3.9")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -182,11 +183,11 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // sharing presets/settings via QR Code
-    implementation("com.google.zxing:core:3.5.2")
+    implementation("com.google.zxing:core:3.5.3")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
-    implementation("com.charleskorn.kaml:kaml:0.57.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("com.charleskorn.kaml:kaml:0.58.0")
 
     // map and location
     implementation("org.maplibre.gl:android-sdk:11.0.0-pre4")
@@ -208,9 +209,9 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20240228"
+val nsiVersion = "v6.0.20240413"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
-val presetsVersion = "v6.6.0"
+val presetsVersion = "v6.7.3"
 
 val poEditorProjectId = "97843"
 

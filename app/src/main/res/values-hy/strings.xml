@@ -206,7 +206,6 @@
     <string name="credits_translations_title">"Թարգմանություններ"</string>
     <string name="credits_contributors_title">"Կոդ ներդրողներ"</string>
     <string name="credits_author_title">"Հեղինակ եւ պահպանող"</string>
-    <string name="credits_and_more">"եւ ավելին…"</string>
     <string name="quest_maxspeed_answer_living_street">"Դա կենդանի փողոց է"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Այսպիսով, այսպիսի նշան կա:"</string>
     <string name="quest_orchard_produce_title">"Ինչ է մշակվում այստեղ:"</string>
@@ -472,7 +471,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Արդյոք այս մոտոցիկլետը ծածկված է (պաշտպանված անձրեւից):"</string>
     <string name="default_disabled_msg_maxspeed">"Այս որոնման տեսակը անջատված է լռելյայն, քանի որ սովորաբար ձեզանից պահանջվում է ստուգել ամբողջ փողոցը արագության սահմանափակումների համար, ոչ միայն ընդգծված հատվածը: Սա երբեմն կարող է լինել բավականին ձգվող պարզապես մեկ որոնման լուծման համար:"</string>
     <string name="pref_title_quests_restore_hidden">"Վերականգնել թաքնված որոնումները"</string>
-    <string name="restore_hidden_success">"Վերականգնվել է %d թաքնված որոնում"</string>
     <string name="on_level">"%s-րդ հարկում"</string>
     <string name="underground">"ստորգետնյա"</string>
     <string name="quest_sidewalk_value_yes">"մայթ"</string>
@@ -813,7 +811,6 @@
     <string name="team_mode_active">"Թիմային ռեժիմը ակտիվ է"</string>
     <string name="team_mode_deactivated">"Թիմային ռեժիմը անջատված է"</string>
     <string name="undo_confirm_title2">"Վերացրեք հետեւյալ խմբագրումը:"</string>
-    <string name="synced">"Համաժամյա"</string>
     <string name="toast_undo_unavailable">"Այս խմբագրումը արդեն համաժամեցված է եւ չի կարող վերացնել"</string>
     <string name="quest_cycleway_value_separate">"Displayed ուցադրվում է առանձին քարտեզի վրա"</string>
     <string name="created_note_action_title">"Ստեղծված նշում"</string>
@@ -1035,8 +1032,6 @@
     <string name="quest_road_width_title">"Որն է այստեղ այս ճանապարհի լայնությունը:"</string>
     <string name="quest_road_width_explanation">"Road անապարհի լայնությունը զսպելու համար. Սա ներառում է փողոցային մակերեւույթի վրա ցանկացած բան, ինչպիսին է փողոցային կայանատեղի կամ ցիկլային գծեր, բայց ճանապարհի կողքին գտնվող ցիկլի ուղիների կամ ավտոկանգառի կողքին բացվում է որեւէ բան:"</string>
     <string name="quest_sidewalk_answer_none">"Ոչ մի մայթ ամենեւին"</string>
-    <string name="about_description_donate_google_play2">"Շնորհակալ եմ այս հավելվածին աջակցելու համար:
-Դժբախտաբար, Google Play Store- ի քաղաքականության շնորհիվ, նվիրատվությունների տանող ոչ մի հղում չի կարող ցուցադրվել հավելվածում: Այս համատեքստում նույնիսկ մեր նախագծի հետ կապելը չի ​​թույլատրվում:"</string>
     <string name="link_osmand_description">"Բջջային ծրագիր առցանց եւ անցանց քարտեզի դիտման եւ նավիգացիայի համար"</string>
     <string name="link_sunders_description">"Տեսախցիկների եւ հսկողության սարքավորումների քարտեզ"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Մոտեցեք սլաքին, բայց դիտեք երթեւեկությունը:"</string>

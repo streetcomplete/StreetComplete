@@ -227,7 +227,6 @@
     <string name="credits_translations_title">"Пераклад"</string>
     <string name="credits_contributors_title">"Уклад у код унеслі"</string>
     <string name="credits_author_title">"Аўтар і суправаджальнік"</string>
-    <string name="credits_and_more">"і іншыя…"</string>
     <string name="quest_maxspeed_answer_living_street">"Гэта жылая вуліца"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Значыць, тут ёсць такі знак?"</string>
     <string name="quest_orchard_produce_title">"Што тут вырошчваюць?"</string>
@@ -501,7 +500,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ці забяспечана гэтая паркоўка для матацыклаў падстрэшкам ад дажджу?"</string>
     <string name="default_disabled_msg_maxspeed">"Гэтае заданне выключана па змаўчанні, таму што звычайна патрабуе праверыць усю вуліцу на знакі абмежавання хуткасці, не толькі падсветлены сегмент. Гэта можа быць дастаткова доўгім для аднаго задання."</string>
     <string name="pref_title_quests_restore_hidden">"Паказаць схаваныя квэсты"</string>
-    <string name="restore_hidden_success">"Паказана %d схаваных квэстаў"</string>
     <string name="on_level">"на узроўню %s"</string>
     <string name="underground">"падземнае"</string>
     <string name="quest_sidewalk_value_yes">"тратуар"</string>
@@ -840,7 +838,6 @@
     <string name="team_mode_active">"Камандны рэжым уключаны"</string>
     <string name="team_mode_deactivated">"Камандны рэжым адключаны"</string>
     <string name="undo_confirm_title2">"Адмяніць гэтую праўку?"</string>
-    <string name="synced">"Сiнхранiзавана"</string>
     <string name="toast_undo_unavailable">"Гэтая праўка ўжо сінхранізаваная і не можа быць адменена"</string>
     <string name="quest_cycleway_value_separate">"адлюстроўваецца на мапе асобна"</string>
     <string name="created_note_action_title">"Нататка створана"</string>
@@ -1062,8 +1059,6 @@
     <string name="quest_road_width_title">"Якая шырыня гэтай дарогі?"</string>
     <string name="quest_road_width_explanation">"Шырыня праезнай часткі ад бардзюра да бардзюра: гэта складаецца з усё, што знаходзіцца на паверхні дарогі, як паркоўка на дарозе, роварная лінія, але не складаецца з штосьці за межамі, як роварная дарожка і паркоўка па-за дарогай."</string>
     <string name="quest_sidewalk_answer_none">"Наогул няма дарогі"</string>
-    <string name="about_description_donate_google_play2">"Дзякуй за рашэнне падтрымаць гэта дадатак!
-Да няшчасця, з-за палітыкі Google Play Store, мы не можам"</string>
     <string name="link_osmand_description">"Мабільнае прыкладанне для онлайн і афлайн прагляду карт і навігацыі"</string>
     <string name="link_sunders_description">"Карта камер і відэакантролю"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Будзьце бліжэй да дарогі, але сачыце за трафікам!

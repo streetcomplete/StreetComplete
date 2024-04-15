@@ -39,4 +39,10 @@ class BuildingTypeParserKtTest {
         assertEquals(DETACHED, createBuildingType(mapOf("building" to "house", "house" to "detached")))
         assertEquals(HOUSE, createBuildingType(mapOf("building" to "house", "house" to "something else")))
     }
+
+    @Test fun `parse historic is secondary`() {
+        assertEquals(HISTORIC, createBuildingType(mapOf("historic" to "yes")))
+        assertEquals(HISTORIC, createBuildingType(mapOf("building" to "yes", "historic" to "yes")))
+        assertEquals(APARTMENTS, createBuildingType(mapOf("building" to "apartments", "historic" to "yes")))
+    }
 }

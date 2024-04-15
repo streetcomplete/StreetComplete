@@ -7,8 +7,6 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
-import de.westnordost.streetcomplete.data.edithistory.Edit
-import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.MessagesSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -44,7 +42,6 @@ class MainViewModelImpl(
     private val userLoginStatusSource: UserLoginStatusSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val statisticsSource: StatisticsSource,
-    private val editHistorySource: EditHistorySource,
     private val internetConnectionState: InternetConnectionState,
     private val selectedOverlayController: SelectedOverlayController,
     private val overlayRegistry: OverlayRegistry,
@@ -66,52 +63,6 @@ class MainViewModelImpl(
 
     override suspend fun popMessage(): Message? = withContext(Dispatchers.IO) {
         messagesSource.popNextMessage()
-    }
-
-    /* edits */
-
-    override val hasUndoableEdits = MutableStateFlow(false)
-
-    override val unsyncedEditsCount: StateFlow<Int> = callbackFlow {
-        var count = unsyncedChangesCountSource.getCount()
-        send(count)
-        val listener = object : UnsyncedChangesCountSource.Listener {
-            override fun onIncreased() { trySend(++count) }
-            override fun onDecreased() { trySend(--count) }
-        }
-        unsyncedChangesCountSource.addListener(listener)
-        awaitClose { unsyncedChangesCountSource.removeListener(listener) }
-    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
-
-    private var undoable: Edit? = null // not necessarily the last undoable edit
-
-    private val editHistoryListener = object : EditHistorySource.Listener {
-        override fun onAdded(edit: Edit) {
-            if (undoable == null && edit.isUndoable) {
-                undoable = edit
-                hasUndoableEdits.value = true
-            }
-        }
-        override fun onSynced(edit: Edit) {
-            val undoable = undoable
-            if (undoable == null || undoable.key == edit.key) {
-                updateMostRecentUndoable()
-            }
-        }
-        override fun onDeleted(edits: List<Edit>) {
-            val undoable = undoable
-            if (undoable == null || undoable.key in edits.map { it.key }) {
-                updateMostRecentUndoable()
-            }
-        }
-        override fun onInvalidated() { updateMostRecentUndoable() }
-    }
-
-    private fun updateMostRecentUndoable() {
-        launch(Dispatchers.IO) {
-            undoable = editHistorySource.getMostRecentUndoable()
-            hasUndoableEdits.value = undoable != null
-        }
     }
 
     /* overlays */
@@ -176,6 +127,17 @@ class MainViewModelImpl(
 
     private fun isAutoSync(pref: String?): Boolean =
         Prefs.Autosync.valueOf(pref ?: ApplicationConstants.DEFAULT_AUTOSYNC) == Prefs.Autosync.ON
+
+    override val unsyncedEditsCount: StateFlow<Int> = callbackFlow {
+        var count = unsyncedChangesCountSource.getCount()
+        send(count)
+        val listener = object : UnsyncedChangesCountSource.Listener {
+            override fun onIncreased() { trySend(++count) }
+            override fun onDecreased() { trySend(--count) }
+        }
+        unsyncedChangesCountSource.addListener(listener)
+        awaitClose { unsyncedChangesCountSource.removeListener(listener) }
+    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
 
     override val isUploading: StateFlow<Boolean> = callbackFlow {
         val listener = object : UploadProgressSource.Listener {
@@ -291,11 +253,9 @@ class MainViewModelImpl(
 
     init {
         teamModeQuestFilter.addListener(teamModeListener)
-        editHistorySource.addListener(editHistoryListener)
     }
 
     override fun onCleared() {
         teamModeQuestFilter.removeListener(teamModeListener)
-        editHistorySource.removeListener(editHistoryListener)
     }
 }

@@ -226,7 +226,6 @@ U suprotnom, možete preuzeti drugu tastaturu u radnji sa aplikacijama. Popularn
     <string name="credits_translations_title">"Prevodi"</string>
     <string name="credits_contributors_title">"Saradnici programeri"</string>
     <string name="credits_author_title">"Autor"</string>
-    <string name="credits_and_more">"i drugi…"</string>
     <string name="quest_maxspeed_answer_living_street">"To je stambena ulica"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Znači, postoji ovakav znak?"</string>
     <string name="quest_orchard_produce_title">"Šta se ovde uzgaja?"</string>
@@ -499,7 +498,6 @@ U suprotnom, možete preuzeti drugu tastaturu u radnji sa aplikacijama. Popularn
     <string name="quest_motorcycleParkingCoveredStatus_title">"Da li je ovaj parking za motore natkriven (pruža li zaštitu od kiše)?"</string>
     <string name="default_disabled_msg_maxspeed">"Ova vrsta zadatka je inicijalno isključena jer obično morate proveriti celu ulicu za ograničenja brzine, a ne samo istaknuti deo. Ovo nekad može biti prilično naporno da bi se rešio samo jedan zadatak."</string>
     <string name="pref_title_quests_restore_hidden">"Vrati skrivene zadatke"</string>
-    <string name="restore_hidden_success">"Vraćeno je %d skrivenih zadataka"</string>
     <string name="on_level">"na spratu %s"</string>
     <string name="underground">"pod zemljom"</string>
     <string name="quest_sidewalk_value_yes">"ima trotoar"</string>
@@ -837,7 +835,6 @@ Ako su neke trake za javni prevoz, ostavite napomenu."</string>
     <string name="team_mode_active">"Uključen je rad u timu"</string>
     <string name="team_mode_deactivated">"Isključen je rad u timu"</string>
     <string name="undo_confirm_title2">"Opozvati sledeću promenu?"</string>
-    <string name="synced">"Sinhronizovano"</string>
     <string name="toast_undo_unavailable">"Ova promena je već sinhronizovana i nije moguć njen opoziv"</string>
     <string name="quest_cycleway_value_separate">"prikazano odvojeno na karti"</string>
     <string name="created_note_action_title">"Napravljena napomena"</string>
@@ -1059,8 +1056,6 @@ Uradite isto i za suprotnu stranu ako postoji."</string>
     <string name="quest_road_width_title">"Koja je širina puta ovde?"</string>
     <string name="quest_road_width_explanation">"Širina puta od ivičnjaka do ivičnjaka: ovo obuhvata sve na površini puta kao što su parkinzi na putu ili biciklističke trake, ali ne ne uključuje ništa van toga, kao npr. biciklističke staze ili parkinge pored puta."</string>
     <string name="quest_sidewalk_answer_none">"Uopšte nema trotoara"</string>
-    <string name="about_description_donate_google_play2">"Hvala što želite da podržite ovu aplikaciju!
-Nažalost, zbog politike Google prodavnice, ne smemo da prikažemo vezu ka donacijama unutar aplikacije. Štaviše, ne smemo da stavimo vezu ni do našeg glavnog projekta."</string>
     <string name="link_osmand_description">"Aplikacija za mobilni, za pregled karte i navigaciju bez interneta"</string>
     <string name="link_sunders_description">"Karta kamera i opreme za nadzor"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Držite blizu strelice, ali pazite na saobraćaj!"</string>
@@ -1379,9 +1374,11 @@ Pored toga, neki slojevi na karti vam pružaju mogućnost dodavanja novih podata
     <string name="quest_buildingType_under_construction">"U izgradnji"</string>
     <string name="overlay_buildings">"Građevine"</string>
     <string name="quest_pedestrian_crossing_signals">"Da li je ovde potrebno sačekati semafor pre prelaska?"</string>
-    <string name="quest_pedestrian_crossing_markings">"Da li je ovaj prelaz obeležen horizontalnom signaliacjom?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Da li je ovaj prelaz obeležen horizontalnom signalizacijom?"</string>
     <string name="overlay_places">"Mesta"</string>
     <string name="overlay_things">"Stvari"</string>
     <string name="disused">"nekoristi se"</string>
     <string name="unknown_object">"Nepoznati objekat"</string>
+    <string name="quest_leafType_tree_title">"Da li ovo drvo ima iglice ili lišće?"</string>
+    <string name="quest_bbq_fuel_gas">"Pumpa"</string>
 </resources>

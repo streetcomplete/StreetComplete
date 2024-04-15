@@ -139,6 +139,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
 
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
+    <!-- The sound someone makes if he is not sure what to answer... uh… er… oh… äh…-->
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
     <!-- aka "not applicable", "not answerable" -->
     <string name="quest_generic_answer_notApplicable">"Can’t say…"</string>
 
@@ -214,7 +216,6 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="added_tag_action_title">Added %s</string>
     <string name="removed_tag_action_title">Removed %s</string>
     <string name="changed_tag_action_title">Updated to %s</string>
-    <string name="synced">Synced</string>
     <string name="undo_confirm_title2">Undo the following edit?</string>
     <string name="undo_confirm_positive">Undo</string>
     <string name="undo_confirm_negative">Cancel</string>
@@ -1674,6 +1675,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="lit_value_no">Not lit</string>
     <string name="lit_value_24_7">Lit night and day</string>
     <string name="lit_value_automatic">Lit when someone passes by</string>
+    <string name="lit_value_unsupported">Specific lit status that is not selectable in this app</string>
 
     <string name="overlay_sidewalk">Sidewalks</string>
 

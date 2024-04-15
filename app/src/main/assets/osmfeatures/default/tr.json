@@ -1510,7 +1510,6 @@
                         "e10": "E10 Gasoline",
                         "e85": "E85 Gasoline",
                         "h70": "Gaseous Hydrogen (700 bar)",
-                        "lpg": "Liquefied Natural Gas (LPG)",
                         "octane_100": "Gasoline (100 Octane)",
                         "octane_80": "Gasoline (80 Octane)",
                         "octane_85": "Gasoline (85 Octane)",
@@ -1983,9 +1982,6 @@
                 },
                 "license_classes": {
                     "label": "Classes of Driver’s License"
-                },
-                "lifeguard": {
-                    "label": "Lifeguard"
                 },
                 "lift_gate/type": {
                     "label": "Type",

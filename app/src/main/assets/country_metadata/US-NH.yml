@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [TD Bank, Bank of America, Citizens Bank, Bank of New Hampshire, American Crypto, Service Credit Union, Triangle Credit Union, Santander, Eastern Bank]
+atmOperators: [TD Bank, Bank of America, Citizens Bank, Service Credit Union, Bank of New Hampshire, American Crypto, Triangle Credit Union, Sugar River Bank, Santander, Eastern Bank]
 chargingStationOperators: ['Tesla, Inc.', Electrify America, 'Tesla, Inc', ChargePoint]
 clothesContainerOperators: [Apparel Impact, The Salvation Army, Planet Aid]
 defaultSpeedLimitHasUrbanOrRural: true

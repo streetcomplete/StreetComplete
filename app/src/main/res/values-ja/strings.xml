@@ -228,7 +228,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="credits_translations_title">"翻訳"</string>
     <string name="credits_contributors_title">"コードの貢献"</string>
     <string name="credits_author_title">"作者と開発者"</string>
-    <string name="credits_and_more">"その他 …"</string>
     <string name="quest_maxspeed_answer_living_street">"生活道路です"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"それで、このような標識がありますか?"</string>
     <string name="quest_orchard_produce_title">"ここでは何が栽培されていますか?"</string>
@@ -502,7 +501,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_motorcycleParkingCoveredStatus_title">"このオートバイの駐車場に屋根はありますか? (雨から守られていますか)"</string>
     <string name="default_disabled_msg_maxspeed">"このクエストタイプの質問に答えるためには強調表示されている部分だけではなく、通り全域の速度制限標識を確認する必要があるためデフォルトで無効になっています。場合によっては1つのクエストを解決するのに非常に労力がかかるでしょう。"</string>
     <string name="pref_title_quests_restore_hidden">"非表示にしたクエストを元に戻す"</string>
-    <string name="restore_hidden_success">"非表示にしたクエスト %d 件を元に戻しました"</string>
     <string name="on_level">"レベル %s です"</string>
     <string name="underground">"地下"</string>
     <string name="quest_sidewalk_value_yes">"歩道"</string>
@@ -842,7 +840,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="team_mode_active">"チームモードが有効"</string>
     <string name="team_mode_deactivated">"チームモードを無効化"</string>
     <string name="undo_confirm_title2">"下記の編集を元に戻しますか？"</string>
-    <string name="synced">"同期しました"</string>
     <string name="toast_undo_unavailable">"この編集は既に同期されており、元に戻す事はできません"</string>
     <string name="quest_cycleway_value_separate">"地図上に別々に表示"</string>
     <string name="created_note_action_title">"作成したメモ"</string>
@@ -1064,8 +1061,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_road_width_title">"この道路の幅は？"</string>
     <string name="quest_road_width_explanation">"縁石から縁石までの道路幅: これには、路上駐車や自転車専用車線など、路面上のものが含まれますが、歩道、路外駐車場、隣接する自転車道など、縁石を超えるものは含まれません。"</string>
     <string name="quest_sidewalk_answer_none">"歩道は一切ありません"</string>
-    <string name="about_description_donate_google_play2">"このアプリへの支援をご検討いただき、ありがとうございます！
-残念ながら、Google Playストアのポリシーにより、アプリ内で寄付につながるリンクを表示することができません。これに関連して、私たちのプロジェクトのホームへのリンクも許可されていません。"</string>
     <string name="link_osmand_description">"オンラインおよびオフラインの地図表示とナビゲーションのためのモバイルアプリ"</string>
     <string name="link_sunders_description">"カメラと監視機器の地図"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"矢印に近づいてください、しかし交通に注意してください!"</string>
@@ -1324,4 +1319,41 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="overlay_addresses_no_entrance">"入り口ではありません..."</string>
     <string name="quest_cycleway_value_sidewalk2">"共有使用パス"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"共有パス、両方向"</string>
+    <string name="overlays_tutorial_title">"上塗り"</string>
+    <string name="overlays_tutorial_intro">"新しいデータ編集方法が見つかりました！"</string>
+    <string name="overlays_tutorial_display">"上塗りは、それぞれ”場所”や”道路の表面”といったデータの種類に対応しています。
+
+データは異なる色付けがされており、これまでに登録されたものが分かりやすく見えるようになっています。
+データがない箇所は赤で表示されます。"</string>
+    <string name="quest_crossing_kerb_height_title">"この横断歩道の、歩道と車道の間の段差の高さはどのくらいですか？"</string>
+    <string name="quest_maxheight_sign_title">"高さ制限はどのくらいですか?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"橋の下の高さ制限はどのくらいですか？"</string>
+    <string name="quest_leave_new_note_as_answer">"この場合、状況がわかるようにメモを残す必要があります。"</string>
+    <string name="quest_drinking_water_type_title2">"飲用水はありますか？ある場合、その出所はどこですか？"</string>
+    <string name="quest_is_amenity_inside_title">"これは建物の中ですか？"</string>
+    <string name="quest_bbq_fuel_title">"このグリルの加熱源はなんですか？"</string>
+    <string name="quest_bbq_fuel_wood">"薪"</string>
+    <string name="quest_bbq_fuel_electric">"電気"</string>
+    <string name="quest_bbq_fuel_charcoal">"木炭"</string>
+    <string name="inside">"内部"</string>
+    <string name="outside">"外部"</string>
+    <string name="quest_recycling_type_food_waste">"生ゴミ"</string>
+    <string name="quest_defibrillator_location">"このAEDはどこに設置されていますか？"</string>
+    <string name="quest_defibrillator_location_description">"このAEDの設置場所について簡潔に説明してください(例 “スタッフルームの中”)"</string>
+    <string name="quest_generalFee_title">"これを使うのにお金を払う必要がありますか。"</string>
+    <string name="action_filter">"フィルター"</string>
+    <string name="label_log_newer_than">"から"</string>
+    <string name="label_log_older_than">"まで"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasureが(まだ)インストールされていません。"</string>
+    <string name="quest_buildingType_outbuilding_description">"物件における重要度の低い建物"</string>
+    <string name="quest_buildingType_tent">"テント"</string>
+    <string name="quest_buildingType_tomb">"墓石"</string>
+    <string name="quest_buildingType_tower">"塔"</string>
+    <string name="quest_buildingType_under_construction">"建設中"</string>
+    <string name="overlay_buildings">"建物"</string>
+    <string name="quest_pedestrian_crossing_signals">"ここを横断するのに信号待ちをする必要がありますか。"</string>
+    <string name="overlay_places">"場所"</string>
+    <string name="overlay_things">"物"</string>
+    <string name="quest_leafType_tree_title">"この木には針葉または広葉がついていますか。"</string>
+    <string name="quest_bbq_fuel_gas">"ガス"</string>
 </resources>

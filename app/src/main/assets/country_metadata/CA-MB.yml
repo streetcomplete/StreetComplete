@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Instacoin, RBC, CIBC, Steinbach Credit Union, Winnipeg Police Credit Union, Scotiabank, Cambrian Credit Union]
+atmOperators: [RBC, Instacoin, CIBC, Steinbach Credit Union, Winnipeg Police Credit Union, Scotiabank, HoneyBadger, HODL Digital Services, Cambrian Credit Union, BMO]
 chargingStationOperators: ['Tesla, Inc.']
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]
