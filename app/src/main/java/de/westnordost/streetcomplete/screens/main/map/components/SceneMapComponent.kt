@@ -30,12 +30,6 @@ class SceneMapComponent(
         val styleJsonString = context.resources.assets.open(mapFile)
             .bufferedReader()
             .use { it.readText() }
-            // API key replaced during development to match key of online style used in MapTilesDownloader
-            // TODO: remove this later
-            .replace(
-                "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ",
-                "XQYxWyY9JsVlwq0XYXqB8OO4ttBTNxm46ITHHwPj5F6CX4JaaSMBkvmD8kCqn7z7"
-            )
 
         val styleBuilder = Style.Builder().fromJson(styleJsonString)
         val style = map.awaitSetStyle(styleBuilder)
