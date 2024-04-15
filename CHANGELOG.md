@@ -1,5 +1,15 @@
 # Changelog
 
+## vNext
+
+### 🗺️ MapLibre (#3123), by @Helium314 and me
+
+Migrated from the map renderer tangram-es to [MapLibre](https://maplibre.org/). The former has effectively been unmaintained for quite a few years and does not support modern iOS, so this solves some long-standing display and crash issues.
+
+Display-wise, nothing much *should* change, the map will just look and behave a little different.
+
+Issues solved in particular are #318, #3275, #3397, #3417, #4277, #4259, #5146, #4522, #4550, #4542, #4554, #4556, #4844, #5006, #5027, #5048, #5137, #5161, #5216, #5241..., probably more. Thanks to @riQQ for this list.
+
 ## v57.2
 
 - Lit overlay: Unsupported current tagging is now indicated as such (#5571)
