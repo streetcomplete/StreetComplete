@@ -35,8 +35,6 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
-import de.westnordost.streetcomplete.screens.main.map.maplibre.addLayers
-import de.westnordost.streetcomplete.screens.main.map.maplibre.addLayersBelow
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
@@ -219,26 +217,34 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         // left-and-right lines should be rendered behind the actual road
         val firstCasingLayer = "pedestrian-tunnel-casing"
-        style.addLayersBelow(styleableOverlayMapComponent?.sideLayers.orEmpty(), firstCasingLayer)
+        for (layer in styleableOverlayMapComponent?.sideLayers.orEmpty()) {
+            style.addLayerBelow(layer, firstCasingLayer)
+        }
         val firstBridgeCasingLayer = "pedestrian-bridge-casing"
-        style.addLayersBelow(styleableOverlayMapComponent?.sideLayersBridge.orEmpty(), firstBridgeCasingLayer)
+        for (layer in styleableOverlayMapComponent?.sideLayersBridge.orEmpty()) {
+            style.addLayerBelow(layer, firstBridgeCasingLayer)
+        }
 
         // labels should be on top of other layers
         val firstLabelLayer = "labels-country"
-        style.addLayersBelow(listOfNotNull(
+        for (layer in listOfNotNull(
             downloadedAreaMapComponent?.layers,
             tracksMapComponent?.layers,
             styleableOverlayMapComponent?.layers,
             geometryMarkersMapComponent?.layers,
             geometryMapComponent?.layers
-        ).flatten(), firstLabelLayer)
+        ).flatten()) {
+            style.addLayerBelow(layer, firstLabelLayer)
+        }
 
         // these are always on top of everything else (including labels)
-        style.addLayers(listOfNotNull(
+        for (layer in listOfNotNull(
             locationMapComponent?.layers,
             pinsMapComponent?.layers,
             selectedPinsMapComponent?.layers
-        ).flatten())
+        ).flatten()) {
+            style.addLayer(layer)
+        }
 
         // workaround for https://github.com/maplibre/maplibre-native/issues/2259
         val overlaySymbols = style.getLayer("overlay-symbols")!!
