@@ -7,6 +7,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.mapbox.android.gestures.MoveGestureDetector
 import com.russhwolf.settings.ObservableSettings
+import com.russhwolf.settings.SettingsListener
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
@@ -58,6 +60,15 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    private var mapTileCacheListener: SettingsListener? = null
+
+    // Note: offline regions may exceed this limit, but will count against it
+    // This means that when offline regions exceed size, no tiles will be cached when panning
+    private val mapTileCacheInBytes get() = prefs.getInt(
+        Prefs.MAP_TILECACHE_IN_MB,
+        ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
+    ).toLong() * 1024 * 1024
+
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,27 +86,25 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
+        mapTileCacheListener = prefs.addIntOrNullListener(Prefs.MAP_TILECACHE_IN_MB) { updateOfflineCacheSize() }
+        initOfflineCacheSize()
+
         viewLifecycleScope.launch {
-            setOfflineCacheSize()
             val map = binding.map.awaitGetMap()
             this@MapFragment.map = map
             initMap(map)
         }
     }
 
-    // todo: also call it on Prefs.MAP_TILECACHE_IN_MB changed (after merging master)
-    private fun setOfflineCacheSize() {
-        val offlineManager = OfflineManager.getInstance(requireContext())
-        // Note: offline regions may exceed this limit, but will count against it
-        // This means that when offline regions exceed size, no tiles will be cached when panning
-        val ambientCacheSizeInBytes = prefs.getInt(Prefs.MAP_TILECACHE_IN_MB, 1).toLong() * 1024 * 1024
-
-        // This should be called BEFORE setting a style and loading a map, because otherwise
-        // the cache will have 50 MB at start (means it will possibly delete tiles)
-        offlineManager.setMaximumAmbientCacheSize(ambientCacheSizeInBytes, null)
-
+    private fun initOfflineCacheSize() {
+        updateOfflineCacheSize()
         // set really high tile count limit, we only want to care about size
-        offlineManager.setOfflineMapboxTileCountLimit(10000) // very roughly 1000 km²
+        OfflineManager.getInstance(requireContext()).setOfflineMapboxTileCountLimit(10000) // very roughly 1000 km²
+    }
+
+    private fun updateOfflineCacheSize() {
+        OfflineManager.getInstance(requireContext())
+            .setMaximumAmbientCacheSize(mapTileCacheInBytes, null)
     }
 
     private fun showOpenUrlDialog(url: String) {
@@ -131,6 +140,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     override fun onDestroyView() {
         super.onDestroyView()
         map = null
+        mapTileCacheListener?.deactivate()
         binding.map.onDestroy()
     }
 
