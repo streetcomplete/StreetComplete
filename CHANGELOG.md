@@ -8,7 +8,7 @@ Migrated from the map renderer tangram-es to [MapLibre](https://maplibre.org/). 
 
 Display-wise, nothing much *should* change, the map will just look and behave a little different.
 
-Issues solved or made obsolete by the migration are #318, #3275, #3397, #3417, #4277, #4259, #5146, #4522, #4550, #4542, #4554, #4556, #4844, #5006, #5027, #5048, #5137, #5161, #5216, #5241..., probably more. Thanks to @riQQ for this list.
+Issues solved or made obsolete by the migration are #318, #807, #1019, #1684, #1713, #2187, #2571, #2612, #2703, #2711, #3022, #3275, #3346, #3397, #3417, #4277, #4259, #4522, #4550, #4542, #4554, #4556, #4844, #5006, #5027, #5048, #5137, #5146, #5161, #5216, #5241..., probably more. Thanks to @riQQ for this list.
 
 ## v57.2
 
