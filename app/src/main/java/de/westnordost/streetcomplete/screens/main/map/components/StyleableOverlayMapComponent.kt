@@ -176,9 +176,11 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 textHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
                 textHaloWidth(2.5f),
                 iconColor(if (isNightMode) "#ccf" else "#124"),
-                iconHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
-                iconHaloWidth(2.5f),
-                iconHaloBlur(2f),
+                // as workaround for https://github.com/maplibre/maplibre-native/issues/2175
+                // - ugly SDF icons especially with halo - don't show the icon halo for now
+                //iconHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
+                //iconHaloWidth(2.5f),
+                //iconHaloBlur(2f),
                 textOptional(true),
                 iconAllowOverlap(step(zoom(), literal(false), stop(19, true))),
                 textAllowOverlap(step(zoom(), literal(false), stop(21, true))),
