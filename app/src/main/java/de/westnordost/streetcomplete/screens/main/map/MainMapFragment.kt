@@ -41,8 +41,10 @@ import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
+import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -408,11 +410,13 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         val old = previouslyHiddenLayers
         if (old == new) return
 
-        old.forEach { layer ->
-            map?.style?.getLayer(layer)?.setProperties(visibility(Property.VISIBLE))
-        }
-        new.forEach { layer ->
-            map?.style?.getLayer(layer)?.setProperties(visibility(Property.NONE))
+        viewLifecycleScope.launch {
+            old.forEach { layer ->
+                map?.style?.getLayer(layer)?.setProperties(visibility(Property.VISIBLE))
+            }
+            new.forEach { layer ->
+                map?.style?.getLayer(layer)?.setProperties(visibility(Property.NONE))
+            }
         }
 
         previouslyHiddenLayers = new
