@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.building.iconResId
 import de.westnordost.streetcomplete.osm.building.iconResName
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.toSdf
 import de.westnordost.streetcomplete.view.presetIconIndex
 import kotlin.math.ceil
 
@@ -73,7 +74,9 @@ class MapIcons(
         val result = HashMap<String, Bitmap>(presetIconIndex.values.size)
         for (presetIconResId in presetIconIndex.values) {
             val name = context.resources.getResourceEntryName(presetIconResId)
-            val bitmap = context.getDrawable(presetIconResId)!!.createBitmap()
+            val bitmap = context.getDrawable(presetIconResId)!!.createBitmap().toSdf(
+                radius = ceil(context.resources.dpToPx(2.5)).toInt()
+            )
             result[name] = bitmap
         }
         return result
