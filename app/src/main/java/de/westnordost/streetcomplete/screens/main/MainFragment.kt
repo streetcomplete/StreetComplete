@@ -960,6 +960,7 @@ class MainFragment :
     //region Edit History Sidebar
 
     private fun showEditHistorySidebar() {
+        freezeMap()
         val appearAnim = R.animator.edit_history_sidebar_appear
         val disappearAnim = R.animator.edit_history_sidebar_disappear
         if (editHistoryFragment != null) {
@@ -976,6 +977,7 @@ class MainFragment :
     }
 
     private fun closeEditHistorySidebar() {
+        unfreezeMap()
         if (editHistoryFragment != null) {
             childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }

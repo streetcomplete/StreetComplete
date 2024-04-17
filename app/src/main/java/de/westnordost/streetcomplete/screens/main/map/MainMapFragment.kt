@@ -457,13 +457,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     /** End the focussing but do not return to position before focussing */
     fun clearFocus() {
         geometryMapComponent?.clearFocusGeometry()
-        centerCurrentPositionIfFollowing()
     }
 
     /** return to the position before focussing */
     fun endFocus() {
         geometryMapComponent?.endFocusGeometry()
-        centerCurrentPositionIfFollowing()
     }
 
     fun highlightPins(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
@@ -571,12 +569,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     fun centerCurrentPositionIfFollowing() {
-        if (shouldCenterCurrentPosition()) centerCurrentPosition()
+        if (isFollowingPosition) centerCurrentPosition()
     }
-
-    private fun shouldCenterCurrentPosition(): Boolean =
-        // don't center position while displaying a quest
-        isFollowingPosition && geometryMapComponent?.isZoomedToContainGeometry != true
 
     private fun onUpdatedNavigationMode() {
         if (!isNavigationMode) {

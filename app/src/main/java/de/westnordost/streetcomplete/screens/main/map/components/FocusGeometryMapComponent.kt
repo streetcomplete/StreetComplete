@@ -44,10 +44,6 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
     private val animation: TimeAnimator
     private var animationTick: Int = 0
 
-    /** Returns whether beginFocusGeometry() was called earlier but not endFocusGeometry() yet */
-    val isZoomedToContainGeometry: Boolean get() =
-        previousCameraPosition != null
-
     val layers: List<Layer> = listOf(
         FillLayer("focus-geo-fill", SOURCE)
             .withFilter(isArea())
