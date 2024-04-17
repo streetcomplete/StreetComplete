@@ -13,11 +13,23 @@
         android:layout_height="match_parent"
         app:tint="@color/accent"/>
 
-    <include layout="@layout/view_pin"
-        android:id="@+id/pin"
+    <RelativeLayout
+        android:id="@+id/centeredMarkerLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:paddingTop="@dimen/quest_form_topOffset"
+        android:paddingBottom="@dimen/quest_form_bottomOffset"
+        android:paddingLeft="@dimen/quest_form_leftOffset"
+        android:paddingRight="@dimen/quest_form_rightOffset"
+        android:layout_centerInParent="true"
+        tools:ignore="RtlHardcoded,RtlSymmetry,UselessParent">
+
+        <include layout="@layout/view_pin"
+            android:id="@+id/pin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
     <de.westnordost.streetcomplete.view.SlidingRelativeLayout
         android:layout_width="@dimen/quest_form_width"

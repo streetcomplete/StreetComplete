@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import android.content.res.Configuration
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
@@ -122,6 +123,16 @@ class MoveNodeFragment :
             view.awaitLayout()
             updateArrowDrawable()
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.centeredMarkerLayout.setPadding(
+            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        )
     }
 
     private fun getMarkerScreenPosition(): PointF {
