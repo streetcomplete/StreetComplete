@@ -89,6 +89,7 @@ import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapter
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
@@ -321,7 +322,7 @@ class MainFragment :
                 mapFragment?.clearHighlighting()
             } else {
                 val geometry = editHistoryViewModel.getEditGeometry(edit)
-                mapFragment?.startFocus(geometry, getQuestFormInsets())
+                mapFragment?.startFocus(geometry, Insets.NONE)
                 mapFragment?.highlightGeometry(geometry)
                 mapFragment?.highlightPins(edit.icon, listOf(edit.position))
                 mapFragment?.hideOverlay()
@@ -506,8 +507,10 @@ class MainFragment :
         if (editType !is Overlay) {
             mapFragment.hideOverlay()
         }
-
-        mapFragment.updateCameraPosition { position = node.position }
+        mapFragment.updateCameraPosition {
+            position = node.position
+            padding = getQuestFormInsets().toPadding()
+        }
     }
 
     override fun onMovedNode(editType: ElementEditType, position: LatLon) {
@@ -904,7 +907,10 @@ class MainFragment :
     private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {
         val mapFragment = mapFragment ?: return
         showInBottomSheet(CreateNoteFragment.create(hasGpxAttached))
-        mapFragment.updateCameraPosition { position = pos }
+        mapFragment.updateCameraPosition(300) {
+            position = pos
+            padding = getQuestFormInsets().toPadding()
+        }
     }
 
     private fun onClickCreateTrack() {
@@ -1063,6 +1069,11 @@ class MainFragment :
         f.requireArguments().putAll(args)
 
         showInBottomSheet(f)
+        val pos = getCrosshairPoint()?.let { getMapPositionAt(it) }
+        mapFragment.updateCameraPosition {
+            position = pos
+            padding = getQuestFormInsets().toPadding()
+        }
         mapFragment.hideNonHighlightedPins()
     }
 
@@ -1133,12 +1144,10 @@ class MainFragment :
             val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
             val osmArgs = AbstractOsmQuestForm.createArguments(element)
             f.requireArguments().putAll(osmArgs)
-
-            showInBottomSheet(f)
             showHighlightedElements(quest, element)
-        } else {
-            showInBottomSheet(f)
         }
+
+        showInBottomSheet(f)
 
         mapFragment.startFocus(quest.geometry, getQuestFormInsets())
         mapFragment.highlightGeometry(quest.geometry)
@@ -1186,6 +1195,17 @@ class MainFragment :
     private fun isQuestDetailsCurrentlyDisplayedFor(questKey: QuestKey): Boolean {
         val f = bottomSheetFragment
         return f is IsShowingQuestDetails && f.questKey == questKey
+    }
+
+    private fun getCrosshairPoint(): PointF? {
+        val view = view ?: return null
+        val left = resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset)
+        val right = resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset)
+        val top = resources.getDimensionPixelSize(R.dimen.quest_form_topOffset)
+        val bottom = resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        val x = (view.width + left - right) / 2f
+        val y = (view.height + top - bottom) / 2f
+        return PointF(x, y)
     }
 
     //endregion
