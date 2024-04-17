@@ -8,7 +8,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonObject
-import com.mapbox.geojson.Feature
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.expressions.Expression.*
@@ -25,6 +24,7 @@ import de.westnordost.streetcomplete.util.ktx.isApril1st
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import org.maplibre.android.style.layers.CircleLayer
+import org.maplibre.geojson.Feature
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
 class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap)

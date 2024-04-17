@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.screens.main.map.maplibre
 
-import com.mapbox.geojson.FeatureCollection
-import com.mapbox.geojson.Geometry
-import com.mapbox.geojson.LineString
-import com.mapbox.geojson.MultiLineString
-import com.mapbox.geojson.MultiPolygon
-import com.mapbox.geojson.Point
-import com.mapbox.geojson.Polygon
+import org.maplibre.geojson.FeatureCollection
+import org.maplibre.geojson.Geometry
+import org.maplibre.geojson.LineString
+import org.maplibre.geojson.MultiLineString
+import org.maplibre.geojson.MultiPolygon
+import org.maplibre.geojson.Point
+import org.maplibre.geojson.Polygon
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.geometry.LatLngBounds
 import org.maplibre.android.maps.MapLibreMap

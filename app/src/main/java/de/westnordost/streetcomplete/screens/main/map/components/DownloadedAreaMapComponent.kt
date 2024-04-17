@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.Context
 import androidx.annotation.UiThread
 import androidx.core.graphics.drawable.toBitmap
-import com.mapbox.geojson.Polygon
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.style.layers.FillLayer
 import org.maplibre.android.style.layers.Layer
@@ -14,8 +13,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
-import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import org.maplibre.geojson.Polygon
 
 class DownloadedAreaMapComponent(private val context: Context, private val map: MapLibreMap) {
 

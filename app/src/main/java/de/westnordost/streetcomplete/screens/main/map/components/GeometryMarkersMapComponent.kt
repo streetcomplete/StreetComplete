@@ -5,8 +5,8 @@ import android.content.res.Resources
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import com.google.gson.JsonObject
-import com.mapbox.geojson.Feature
-import com.mapbox.geojson.FeatureCollection
+import org.maplibre.geojson.Feature
+import org.maplibre.geojson.FeatureCollection
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.style.expressions.Expression.*
 import org.maplibre.android.style.layers.CircleLayer
