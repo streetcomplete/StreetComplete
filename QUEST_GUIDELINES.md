@@ -5,7 +5,7 @@ Do you have an idea for a new quest? Read this!
 Consider the following:
 
 ### Limitations of StreetComplete
-- 🌟 Only existing elements can be extended, no elements can be added or removed.
+- 🌟 Only existing elements can be extended, no elements can be added or removed (except point objects added through an overlay layer).
 - ✂️ The geometry of elements cannot be changed (except splitting up ways)
 - 🏷️ So, basically: Only tags can be edited
 
