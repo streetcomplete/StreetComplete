@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.animation.TimeAnimator
 import android.content.ContentResolver
-import android.graphics.RectF
 import android.provider.Settings
 import androidx.annotation.UiThread
+import androidx.core.graphics.Insets
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import org.maplibre.android.maps.MapLibreMap
@@ -127,8 +127,8 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
         animation.end()
     }
 
-    @UiThread fun beginFocusGeometry(g: ElementGeometry, offset: RectF) {
-        val targetPos = map.getEnclosingCamera(g, offset) ?: return
+    @UiThread fun beginFocusGeometry(g: ElementGeometry, insets: Insets) {
+        val targetPos = map.getEnclosingCamera(g, insets) ?: return
 
         val currentPos = map.camera
         // limit max zoom to not zoom in to the max when zooming in on points;

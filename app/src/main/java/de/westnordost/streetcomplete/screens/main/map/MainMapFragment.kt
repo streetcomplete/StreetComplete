@@ -10,6 +10,7 @@ import android.os.Bundle
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.core.content.getSystemService
+import androidx.core.graphics.Insets
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
@@ -449,8 +450,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     //region Control focusing on and highlighting edit / quest / element
 
     /** Focus the view on the given geometry */
-    fun startFocus(geometry: ElementGeometry, offset: RectF) {
-        geometryMapComponent?.beginFocusGeometry(geometry, offset)
+    fun startFocus(geometry: ElementGeometry, insets: Insets) {
+        geometryMapComponent?.beginFocusGeometry(geometry, insets)
     }
 
     /** End the focussing but do not return to position before focussing */

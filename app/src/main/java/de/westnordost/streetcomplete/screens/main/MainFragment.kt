@@ -193,8 +193,6 @@ class MainFragment :
     private val editHistoryFragment: EditHistoryFragment? get() =
         childFragmentManagerOrNull?.findFragmentByTag(EDIT_HISTORY) as? EditHistoryFragment
 
-    private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
-
     interface Listener {
         fun onMapInitialized()
         fun onClickShowMessage(message: Message)
@@ -251,8 +249,6 @@ class MainFragment :
         binding.starsCounterView.setOnClickListener { onClickAnswersCounterView() }
         binding.overlaysButton.setOnClickListener { onClickOverlaysButton() }
         binding.mainMenuButton.setOnClickListener { onClickMainMenu() }
-
-        updateOffsetWithOpenBottomSheet()
 
         requireActivity().onBackPressedDispatcher
             .addCallback(viewLifecycleOwner, historyBackPressedCallback)
@@ -324,7 +320,7 @@ class MainFragment :
                 mapFragment?.clearHighlighting()
             } else {
                 val geometry = editHistoryViewModel.getEditGeometry(edit)
-                mapFragment?.startFocus(geometry, mapOffsetWithOpenBottomSheet)
+                mapFragment?.startFocus(geometry, getQuestFormInsets())
                 mapFragment?.highlightGeometry(geometry)
                 mapFragment?.highlightPins(edit.icon, listOf(edit.position))
                 mapFragment?.hideOverlay()
@@ -336,14 +332,8 @@ class MainFragment :
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
 
-        updateOffsetWithOpenBottomSheet()
+        binding.crosshairView.setPadding(getQuestFormInsets())
 
-        binding.crosshairView.setPadding(
-            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
-        )
         updateLocationPointerPin()
     }
 
@@ -365,14 +355,12 @@ class MainFragment :
         locationManager.removeUpdates()
     }
 
-    private fun updateOffsetWithOpenBottomSheet() {
-        mapOffsetWithOpenBottomSheet = Rect(
-            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
-        ).toRectF()
-    }
+    private fun getQuestFormInsets() = Insets.of(
+        resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+        resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+        resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+        resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+    )
 
     //endregion
 
@@ -1149,7 +1137,7 @@ class MainFragment :
             showInBottomSheet(f)
         }
 
-        mapFragment.startFocus(quest.geometry, mapOffsetWithOpenBottomSheet)
+        mapFragment.startFocus(quest.geometry, getQuestFormInsets())
         mapFragment.highlightGeometry(quest.geometry)
         mapFragment.highlightPins(quest.type.icon, quest.markerLocations)
         mapFragment.hideNonHighlightedPins(quest.key)

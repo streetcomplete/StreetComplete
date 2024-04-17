@@ -1,22 +1,17 @@
 package de.westnordost.streetcomplete.screens.main.map.maplibre
 
 import android.content.ContentResolver
-import android.graphics.RectF
 import android.provider.Settings
+import androidx.core.graphics.Insets
 import org.maplibre.android.camera.CameraUpdateFactory
 import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
-fun MapLibreMap.getEnclosingCamera(geometry: ElementGeometry, padding: RectF): CameraPosition? =
+fun MapLibreMap.getEnclosingCamera(geometry: ElementGeometry, insets: Insets): CameraPosition? =
     getCameraForGeometry(
         geometry.toMapLibreGeometry(),
-        intArrayOf(
-            padding.left.toInt(),
-            padding.top.toInt(),
-            padding.right.toInt(),
-            padding.bottom.toInt()
-        )
+        intArrayOf(insets.left, insets.top, insets.right, insets.bottom)
     )?.toCameraPosition()
 
 var MapLibreMap.camera: CameraPosition
@@ -92,3 +87,5 @@ private fun CameraPosition.toMapLibreCameraPosition(): org.maplibre.android.came
 
 private fun Padding.toDoubleArray() = doubleArrayOf(left, top, right, bottom)
 private fun DoubleArray.toPadding() = Padding(this[0], this[1], this[2], this[3])
+
+fun Insets.toPadding() = Padding(left.toDouble(), top.toDouble(), right.toDouble(), bottom.toDouble())
