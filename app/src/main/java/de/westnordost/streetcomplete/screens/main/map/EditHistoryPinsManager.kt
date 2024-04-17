@@ -47,9 +47,9 @@ class EditHistoryPinsManager(
     private var isStarted: Boolean = false
 
     private val editHistoryListener = object : EditHistorySource.Listener {
-        override fun onAdded(edit: Edit) { updatePins() }
-        override fun onSynced(edit: Edit) {}
-        override fun onDeleted(edits: List<Edit>) { updatePins() }
+        override fun onAdded(added: Edit) { updatePins() }
+        override fun onSynced(synced: Edit) {}
+        override fun onDeleted(deleted: List<Edit>) { updatePins() }
         override fun onInvalidated() { updatePins() }
     }
 
