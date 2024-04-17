@@ -25,7 +25,11 @@ class MapIcons(
     val markerBitmaps by lazy { createMarkerBitmaps() }
 
     private fun createPinBitmaps(): HashMap<String, Bitmap> {
-        val questIconResIds = (allEditTypes.map { it.icon } + OsmNoteQuestType.icon).toSortedSet()
+        val questIconResIds = (
+            allEditTypes.map { it.icon } +
+            OsmNoteQuestType.icon +
+            R.drawable.ic_quest_create_note
+        ).toSortedSet()
 
         val result = HashMap<String, Bitmap>(questIconResIds.size)
 
