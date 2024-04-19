@@ -31,6 +31,9 @@ object Color {
     val Team9 = Color(0xff494EAD)
     val Team10 = Color(0xffAA335D)
     val Team11 = Color(0xff655555)
+
+    val GrassGreen = Color(0xff80b158)
+    val DisabledGray = Color(0x33808080)
 }
 
 val LightColors = lightColors(

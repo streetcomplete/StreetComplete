@@ -408,10 +408,10 @@
                 android:textAppearance="@style/TextAppearance.Title"
                 android:text="@string/user_profile_dates_mapped" />
 
-            <ImageView
+            <androidx.compose.ui.platform.ComposeView
                 android:id="@+id/datesActiveView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

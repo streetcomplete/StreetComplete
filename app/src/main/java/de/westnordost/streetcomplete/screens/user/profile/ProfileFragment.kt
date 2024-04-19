@@ -9,13 +9,16 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
+import androidx.compose.ui.unit.dp
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
+import de.westnordost.streetcomplete.ui.theme.AppTheme
+import de.westnordost.streetcomplete.ui.theme.Color
+import de.westnordost.streetcomplete.ui.user.profile.DatesActive
 import de.westnordost.streetcomplete.util.ktx.createBitmap
-import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.openUri
@@ -80,15 +83,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.unpublishedEditCountText.isGone = count <= 0
         }
         observe(viewModel.datesActive) { (datesActive, range) ->
-            val context = requireContext()
-            binding.datesActiveView.setImageDrawable(DatesActiveDrawable(
-                datesActive.toSet(),
-                range,
-                context.resources.dpToPx(18),
-                context.resources.dpToPx(2),
-                context.resources.dpToPx(4),
-                context.resources.getColor(R.color.hint_text)
-            ))
+            binding.datesActiveView.setContent {
+                AppTheme {
+                    DatesActive(
+                        datesActive = datesActive.toSet(),
+                        datesActiveRange = range,
+                        padding = 2.dp,
+                        boxCornerRadius = 4.dp,
+                        boxColor = Color.GrassGreen,
+                        emptyBoxColor = Color.DisabledGray
+                    )
+                }
+            }
         }
         observe(viewModel.daysActive) { daysActive ->
             binding.daysActiveContainer.isGone = daysActive <= 0
