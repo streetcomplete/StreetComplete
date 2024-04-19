@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.ui.user.profile
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -34,16 +33,17 @@ import kotlin.math.floor
 fun DatesActive(
     datesActive: Set<LocalDate>,
     datesActiveRange: Int,
-    boxColor: Color,
-    emptyBoxColor: Color,
-    padding: Dp = 2.dp,
-    boxCornerRadius: Dp = 8.dp,
+    modifier: Modifier = Modifier,
+    boxColor: Color = GrassGreen,
+    emptyBoxColor: Color = DisabledGray,
+    cellPadding: Dp = 2.dp,
+    cellCornerRadius: Dp = 8.dp,
 ) {
-    BoxWithConstraints(Modifier.fillMaxWidth()) {
+    BoxWithConstraints(modifier) {
         val dayOffset = 7 - systemTimeNow().toLocalDateTime(TimeZone.UTC).dayOfWeek.value
 
-        val verticalBoxes = 7 // days in a week
-        val horizontalBoxes = ceil((dayOffset + datesActiveRange).toDouble() / verticalBoxes).toInt()
+        val verticalCells = 7 // days in a week
+        val horizontalCells = ceil((dayOffset + datesActiveRange).toDouble() / verticalCells).toInt()
 
         val textMeasurer = rememberTextMeasurer()
 
@@ -56,17 +56,17 @@ fun DatesActive(
         val textHeight = textMeasurer.measure(months[0]).size.height.pxToDp()
 
         // stretch 100% width and determine available box size and then the height from that
-        val boxSize = (maxWidth - weekdayColumnWidth - padding * 2) / horizontalBoxes - padding
-        val height = textHeight + padding * 2 + (boxSize + padding) * verticalBoxes
+        val boxSize = (maxWidth - weekdayColumnWidth - cellPadding * 2) / horizontalCells - cellPadding
+        val height = textHeight + cellPadding * 2 + (boxSize + cellPadding) * verticalCells
 
-        fun getLeft(x: Int) = weekdayColumnWidth + padding * 2 + (boxSize + padding) * x
-        fun getTop(y: Int) = textHeight + padding * 2 + (boxSize + padding) * y
+        fun getLeft(x: Int) = weekdayColumnWidth + cellPadding * 2 + (boxSize + cellPadding) * x
+        fun getTop(y: Int) = textHeight + cellPadding * 2 + (boxSize + cellPadding) * y
 
         Canvas(Modifier.size(maxWidth, height)) {
             // weekdays
             for (i in 0 until 7) {
                 val top = getTop(i)
-                val bottom = (getTop(i + 1) - padding)
+                val bottom = (getTop(i + 1) - cellPadding)
                 // center text vertically
                 val centerTop = top + (bottom - top - textHeight) / 2
                 val left = 0f
@@ -82,8 +82,8 @@ fun DatesActive(
                 val time = systemTimeNow().minus(i, DateTimeUnit.DAY, TimeZone.UTC)
                 val date = time.toLocalDateTime(TimeZone.UTC).date
 
-                val y = (verticalBoxes - 1) - (i + dayOffset) % verticalBoxes
-                val x = (horizontalBoxes - 1) - floor(((i + dayOffset) / verticalBoxes).toDouble()).toInt()
+                val y = (verticalCells - 1) - (i + dayOffset) % verticalCells
+                val x = (horizontalCells - 1) - floor(((i + dayOffset) / verticalCells).toDouble()).toInt()
 
                 val left = getLeft(x).toPx()
                 val top = getTop(y).toPx()
@@ -92,7 +92,7 @@ fun DatesActive(
                     color = if (date in datesActive) boxColor else emptyBoxColor,
                     topLeft = Offset(left, top),
                     size = Size(boxSize.toPx(), boxSize.toPx()),
-                    cornerRadius = CornerRadius(boxCornerRadius.toPx(), boxCornerRadius.toPx())
+                    cornerRadius = CornerRadius(cellCornerRadius.toPx(), cellCornerRadius.toPx())
                 )
 
                 if (date.dayOfMonth == 1) {
@@ -114,8 +114,6 @@ fun DatesActivePreview() {
         datesActive = IntArray(30) { (0..90).random() }.map {
             systemTimeNow().minus(it, DateTimeUnit.DAY, TimeZone.UTC).toLocalDateTime(TimeZone.UTC).date
         }.toSet(),
-        datesActiveRange = 90,
-        boxColor = GrassGreen,
-        emptyBoxColor = DisabledGray,
+        datesActiveRange = 90
     )
 }
