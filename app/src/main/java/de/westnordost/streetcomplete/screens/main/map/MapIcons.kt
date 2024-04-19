@@ -13,7 +13,14 @@ import de.westnordost.streetcomplete.osm.building.iconResId
 import de.westnordost.streetcomplete.osm.building.iconResName
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.toSdf
 import de.westnordost.streetcomplete.view.presetIconIndex
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.runBlocking
 import kotlin.math.ceil
 
 class MapIcons(
@@ -74,12 +81,18 @@ class MapIcons(
     }
 
     private fun createPresetBitmaps(): HashMap<String, Bitmap> {
-        val result = HashMap<String, Bitmap>(presetIconIndex.values.size)
-        for (presetIconResId in presetIconIndex.values) {
-            val name = context.resources.getResourceEntryName(presetIconResId)
-            val bitmap = context.getDrawable(presetIconResId)!!.createBitmap()
-            result[name] = bitmap
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+        val deferredIcons = presetIconIndex.values.map { presetIconResId ->
+            scope.async {
+                val name = context.resources.getResourceEntryName(presetIconResId)
+                val bitmap = context.getDrawable(presetIconResId)!!.createBitmap().toSdf(
+                    radius = ceil(context.resources.dpToPx(2.5)).toInt()
+                )
+                name to bitmap
+            }
         }
+        val result = HashMap<String, Bitmap>(presetIconIndex.values.size)
+        runBlocking { deferredIcons.awaitAll().associateTo(result) { it } }
         return result
     }
 
