@@ -24,8 +24,8 @@ import kotlin.math.min
  *  below 1000: guaranteed to have no decorative leaves at all
  */
 class LaurelWreathDrawable(private val resources: Resources) : Drawable() {
-    private val pairOfLaurelLeafs = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_pair)
-    private val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.ic_laurel_leaf_ending)
+    private val pairOfLaurelLeafs = resources.getBitmapDrawable(R.drawable.laurel_leaf_pair)
+    private val horizontalEndingLeaf = resources.getBitmapDrawable(R.drawable.laurel_leaf_ending)
     private val backgroundPaint = Paint()
 
     private val antiAliasPaint: Paint = Paint().apply {
