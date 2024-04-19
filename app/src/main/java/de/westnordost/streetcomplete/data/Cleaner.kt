@@ -34,7 +34,6 @@ class Cleaner(
         noteController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
         downloadedTilesController.deleteOlderThan(oldDataTimestamp)
-        mapTilesDownloader.deleteRegionsOlderThan(oldDataTimestamp)
         // do this after cleaning map data and notes, because some metadata rely on map data
         questTypeRegistry.forEach { it.deleteMetadataOlderThan(oldDataTimestamp) }
 

@@ -28,21 +28,6 @@ class MapTilesDownloader(private val context: Context) {
         } catch (_: Exception) { }
     }
 
-    /** delete regions, which allows contained tiles to be deleted if cache size is exceeded */
-    suspend fun deleteRegionsOlderThan(olderThan: Long) {
-        try {
-            val offlineRegions = OfflineManager.getInstance(context).awaitGetOfflineRegions()
-            for (offlineRegion in offlineRegions) {
-                val timestamp = offlineRegion.metadata.toString(Charsets.UTF_8).toLongOrNull() ?: 0
-                if (timestamp < olderThan) {
-                    offlineRegion.awaitDelete()
-                }
-            }
-        } catch (e: Exception) {
-            Log.w(TAG, e.message.orEmpty(), e)
-        }
-    }
-
     suspend fun clear() {
         try {
             OfflineManager.getInstance(context).awaitResetDatabase()

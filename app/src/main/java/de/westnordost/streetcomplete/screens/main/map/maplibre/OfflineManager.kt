@@ -84,3 +84,16 @@ suspend fun OfflineRegion.awaitDownload(): OfflineRegionStatus = suspendCoroutin
     })
     setDownloadState(OfflineRegion.STATE_ACTIVE)
 }
+
+/**
+ *  Delete regions, which allows contained tiles to be deleted if cache size is exceeded.
+ *  Assumes that download date is stored as string in [OfflineRegion.metadata].
+ */
+suspend fun OfflineManager.deleteRegionsOlderThan(olderThan: Long) {
+    for (offlineRegion in awaitGetOfflineRegions()) {
+        val timestamp = offlineRegion.metadata.toString(Charsets.UTF_8).toLongOrNull() ?: 0
+        if (timestamp < olderThan) {
+            offlineRegion.awaitDelete()
+        }
+    }
+}

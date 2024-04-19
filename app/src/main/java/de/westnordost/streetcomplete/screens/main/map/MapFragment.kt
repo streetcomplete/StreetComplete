@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.mapbox.android.gestures.MoveGestureDetector
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
@@ -22,16 +23,19 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitGetMap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.deleteRegionsOlderThan
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getMetersPerPixel
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLng
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.maplibre.android.MapLibre
@@ -88,6 +92,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
         mapTileCacheListener = prefs.addIntOrNullListener(Prefs.MAP_TILECACHE_IN_MB) { updateOfflineCacheSize() }
         initOfflineCacheSize()
+        cleanOldOfflineRegions()
 
         viewLifecycleScope.launch {
             val map = binding.map.awaitGetMap()
@@ -105,6 +110,15 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     private fun updateOfflineCacheSize() {
         OfflineManager.getInstance(requireContext())
             .setMaximumAmbientCacheSize(mapTileCacheInBytes, null)
+    }
+
+    private fun cleanOldOfflineRegions() {
+        // the offline manager is only available together with the map, i.e. not from the CleanerWorker
+        lifecycleScope.launch {
+            delay(30000) // cleaning is low priority, do it once startup is done
+            val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
+            OfflineManager.getInstance(requireContext()).deleteRegionsOlderThan(oldDataTimestamp)
+        }
     }
 
     private fun showOpenUrlDialog(url: String) {
