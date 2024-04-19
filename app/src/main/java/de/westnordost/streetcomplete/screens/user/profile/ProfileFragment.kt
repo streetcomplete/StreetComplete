@@ -9,14 +9,14 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
-import androidx.compose.ui.unit.dp
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.ui.theme.AppTheme
-import de.westnordost.streetcomplete.ui.theme.Color
+import de.westnordost.streetcomplete.ui.theme.DisabledGray
+import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.user.profile.DatesActive
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -88,10 +88,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     DatesActive(
                         datesActive = datesActive.toSet(),
                         datesActiveRange = range,
-                        padding = 2.dp,
-                        boxCornerRadius = 4.dp,
-                        boxColor = Color.GrassGreen,
-                        emptyBoxColor = Color.DisabledGray
+                        boxColor = GrassGreen,
+                        emptyBoxColor = DisabledGray
                     )
                 }
             }

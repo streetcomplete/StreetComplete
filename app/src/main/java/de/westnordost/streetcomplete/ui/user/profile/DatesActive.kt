@@ -13,7 +13,11 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.theme.DisabledGray
+import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.util.pxToDp
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import kotlinx.datetime.DateTimeUnit
@@ -30,10 +34,10 @@ import kotlin.math.floor
 fun DatesActive(
     datesActive: Set<LocalDate>,
     datesActiveRange: Int,
-    padding: Dp,
-    boxCornerRadius: Dp,
     boxColor: Color,
     emptyBoxColor: Color,
+    padding: Dp = 2.dp,
+    boxCornerRadius: Dp = 8.dp,
 ) {
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val dayOffset = 7 - systemTimeNow().toLocalDateTime(TimeZone.UTC).dayOfWeek.value
@@ -49,24 +53,27 @@ fun DatesActive(
         val months = symbols.shortMonths
 
         val weekdayColumnWidth = weekdays.maxOf { textMeasurer.measure(it, textStyle).size.width }.pxToDp()
-        val monthRowHeight = textMeasurer.measure(months[0]).size.height.pxToDp()
+        val textHeight = textMeasurer.measure(months[0]).size.height.pxToDp()
 
         // stretch 100% width and determine available box size and then the height from that
         val boxSize = (maxWidth - weekdayColumnWidth - padding * 2) / horizontalBoxes - padding
-        val height = monthRowHeight + padding * 2 + (boxSize + padding) * verticalBoxes
+        val height = textHeight + padding * 2 + (boxSize + padding) * verticalBoxes
 
         fun getLeft(x: Int) = weekdayColumnWidth + padding * 2 + (boxSize + padding) * x
-        fun getTop(y: Int) = monthRowHeight + padding * 2 + (boxSize + padding) * y
+        fun getTop(y: Int) = textHeight + padding * 2 + (boxSize + padding) * y
 
-        Canvas(modifier = Modifier.size(maxWidth, height)) {
+        Canvas(Modifier.size(maxWidth, height)) {
             // weekdays
             for (i in 0 until 7) {
-                val top = getTop(i).toPx()
+                val top = getTop(i)
+                val bottom = (getTop(i + 1) - padding)
+                // center text vertically
+                val centerTop = top + (bottom - top - textHeight) / 2
                 val left = 0f
                 drawText(
                     textMeasurer,
                     text = weekdays[i],
-                    topLeft = Offset(left, top),
+                    topLeft = Offset(left, centerTop.toPx()),
                     style = textStyle
                 )
             }
@@ -99,4 +106,16 @@ fun DatesActive(
             }
         }
     }
+}
+
+@Preview @Composable
+fun DatesActivePreview() {
+    DatesActive(
+        datesActive = IntArray(30) { (0..90).random() }.map {
+            systemTimeNow().minus(it, DateTimeUnit.DAY, TimeZone.UTC).toLocalDateTime(TimeZone.UTC).date
+        }.toSet(),
+        datesActiveRange = 90,
+        boxColor = GrassGreen,
+        emptyBoxColor = DisabledGray,
+    )
 }
