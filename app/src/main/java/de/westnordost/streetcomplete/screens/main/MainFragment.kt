@@ -798,7 +798,7 @@ class MainFragment :
     }
 
     private fun updateCreateButtonEnablement(zoom: Double) {
-        binding.createButton.isEnabled = zoom >= 18.0
+        binding.createButton.isEnabled = zoom >= 19.0
     }
 
     private fun setIsNavigationMode(navigation: Boolean) {
