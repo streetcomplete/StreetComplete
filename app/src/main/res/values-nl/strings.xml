@@ -1165,10 +1165,10 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_memorialType_stele_wooden">"Houten zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_stele_stone">"Stenen zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_sculpture">"Ander beeldhouwwerk"</string>
-    <string name="quest_moped_prohibited_title">Zijn bromfietsen (klasse b) toegelaten op dit fietspad?</string>
-    <string name="quest_moped_prohibited_designated">Ja, een gebodsbord is gekoppeld aan het "fietspad" bord.</string>
-    <string name="quest_moped_prohibited_allowed">Ja, maar er is geen verbodsbord zichtbaar bij het fietspad.</string>
-    <string name="quest_moped_prohibited_forbidden">Nee, er is een verbodsbord gekoppeld aan het "fietspad" bord.</string>
+    <string name="quest_moped_access_title">Is er een bord dat de toegang voor bromfietsen op dit fietspad aangeeft?</string>
+    <string name="quest_moped_access_allowed">Nee, er is geen bord</string>
+    <string name="quest_moped_access_designated">Ja, dit fietspad is verplicht voor bromfietsen</string>
+    <string name="quest_moped_access_forbidden">Ja, bromfietsen zijn niet toegestaan op dit fietspad</string>
     <string name="overlay_none">"Geen"</string>
     <string name="overlay_lit">"Straatverlichting"</string>
     <string name="lit_value_yes">"Verlicht"</string>

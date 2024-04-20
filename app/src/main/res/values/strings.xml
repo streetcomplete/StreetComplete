@@ -1151,10 +1151,10 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_memorialType_stele_stone">Stone stele (memorial slab)</string>
     <string name="quest_memorialType_sculpture">Other sculpture</string>
 
-    <string name="quest_moped_prohibited_title">Are mopeds allowed on this cycleway?</string>
-    <string name="quest_moped_prohibited_designated">Yes, a mandatory sign is attached to the cycleway sign.</string>
-    <string name="quest_moped_prohibited_allowed">Yes,there is no prohibition sign is visible.</string>
-    <string name="quest_moped_prohibited_forbidden">No, a prohibition sign is attached to the cycleway sign.</string>
+    <string name="quest_moped_access_title">Is there a sign indicating access for mopeds on this bike path?</string>
+    <string name="quest_moped_access_allowed">No, there is no sign</string>
+    <string name="quest_moped_access_designated">Yes, this bike path is mandatory for mopeds</string>
+    <string name="quest_moped_access_forbidden">Yes, mopeds are not allowed on this bike path</string>
 
     <string name="default_disabled_msg_visible_sign_moped">This quest type is disabled by default because moped access is only indicated by a specific signs at start/end of a cycleway. </string>
 
