@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.databinding.FragmentProfileBinding
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.DisabledGray
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
-import de.westnordost.streetcomplete.ui.user.profile.DatesActive
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.observe

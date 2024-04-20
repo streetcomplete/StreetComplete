@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.user.profile
+package de.westnordost.streetcomplete.screens.user.profile
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
