@@ -17,6 +17,7 @@ Bernard
 Birra Moretti
 Bitburger
 Bosch
+Brains
 Brauhaus Faust
 BrewDog
 Budweiser
@@ -35,6 +36,7 @@ Erzquell
 Farny
 Feldschlösschen
 Finsterwalder
+Fohrenburger
 Forst
 Fuller's
 Fürstenberg
@@ -51,6 +53,7 @@ Hatz
 Heineken
 Herrnbräu
 Hirsch
+Hirter
 Hoegaarden
 Hoepfner
 Hofbräu München
@@ -60,6 +63,7 @@ Jever
 Jupiler
 Kaiser
 Karlsberg
+Ketterer
 Kirin
 Klosterbrauerei Reutberg
 Krombacher
@@ -76,6 +80,7 @@ Löwenbräu
 Marton's
 Meckatzer
 Miller
+Mohrenbräu
 Molson Coors
 Ninkasi
 Oettinger
@@ -95,6 +100,7 @@ Sapporo
 Schloss Eggenberg
 Schlossbrauerei Haimhausen
 Schlösser
+Schremser
 Schützengarten
 Shepherd Neame
 Spalter Bier
@@ -112,14 +118,19 @@ Svijany
 Tegernseer
 Thurn und Taxis
 Thwaites
+Trumer
 Tucher
 Unterbaarer
 Ur-Krostitzer
 Veltins
 Waldhaus
 Warsteiner
+Weitra Bräu
 Weldebräu
+Wieselburger
 Wildbräu
+Zipfer
+Zwettler
 Zwiefalter
 Zötler
 Сыктывкарпиво
