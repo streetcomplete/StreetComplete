@@ -89,4 +89,6 @@
     <!-- for fading out images -->
     <color name="fade_out">#fff</color>
     <color name="fade_out_transparent">#00FFFFFF</color>
+
+    <color name="link">#00f</color>
 </resources>

@@ -31,4 +31,6 @@
     <!-- for fading out images -->
     <color name="fade_out">#303030</color>
     <color name="fade_out_transparent">#00303030</color>
+
+    <color name="link">#55f</color>
 </resources>

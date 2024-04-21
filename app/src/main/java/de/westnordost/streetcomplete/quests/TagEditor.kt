@@ -194,7 +194,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         binding.elementInfo.text = resources.getString(R.string.tag_editor_last_edited, dateText)
         binding.elementInfo.layoutParams.height = LayoutParams.WRAP_CONTENT
         if (element.id > 0) {
-            binding.elementInfo.setTextColor(Color.BLUE)
+            binding.elementInfo.setTextColor(ContextCompat.getColor(requireContext(), R.color.link))
             binding.elementInfo.paintFlags = binding.elementInfo.paintFlags or Paint.UNDERLINE_TEXT_FLAG
             binding.elementInfo.setOnClickListener {
                 val url = "https://www.openstreetmap.org/${element.type.name.lowercase()}/${element.id}/history"
