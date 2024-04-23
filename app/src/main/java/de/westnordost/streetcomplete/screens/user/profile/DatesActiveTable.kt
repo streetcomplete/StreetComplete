@@ -26,20 +26,22 @@ import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
 import java.text.DateFormatSymbols
 import kotlin.math.ceil
-import kotlin.math.floor
 
 /** Draws a github-style like days-active graphic */
 @Composable
-fun DatesActive(
+fun DatesActiveTable(
     datesActive: Set<LocalDate>,
     datesActiveRange: Int,
     modifier: Modifier = Modifier,
     boxColor: Color = GrassGreen,
     emptyBoxColor: Color = DisabledGray,
     cellPadding: Dp = 2.dp,
-    cellCornerRadius: Dp = 8.dp,
+    cellCornerRadius: Dp = 6.dp,
 ) {
     BoxWithConstraints(modifier) {
+        // no data, no table
+        if (datesActiveRange <= 0) return@BoxWithConstraints
+
         val dayOffset = 7 - systemTimeNow().toLocalDateTime(TimeZone.UTC).dayOfWeek.value
 
         val verticalCells = 7 // days in a week
@@ -56,34 +58,35 @@ fun DatesActive(
         val textHeight = textMeasurer.measure(months[0]).size.height.pxToDp()
 
         // stretch 100% width and determine available box size and then the height from that
-        val boxSize = (maxWidth - weekdayColumnWidth - cellPadding * 2) / horizontalCells - cellPadding
-        val height = textHeight + cellPadding * 2 + (boxSize + cellPadding) * verticalCells
+        val cellSize = (maxWidth - weekdayColumnWidth - cellPadding * 2) / horizontalCells - cellPadding
+        val height = textHeight + cellPadding * 2 + (cellSize + cellPadding) * verticalCells
 
-        fun getLeft(x: Int) = weekdayColumnWidth + cellPadding * 2 + (boxSize + cellPadding) * x
-        fun getTop(y: Int) = textHeight + cellPadding * 2 + (boxSize + cellPadding) * y
+        fun getLeft(x: Int) = weekdayColumnWidth + cellPadding * 2 + (cellSize + cellPadding) * x
+        fun getTop(y: Int) = textHeight + cellPadding * 2 + (cellSize + cellPadding) * y
 
         Canvas(Modifier.size(maxWidth, height)) {
             // weekdays
             for (i in 0 until 7) {
                 val top = getTop(i)
                 val bottom = (getTop(i + 1) - cellPadding)
-                // center text vertically
-                val centerTop = top + (bottom - top - textHeight) / 2
+                val centerTop = top + (bottom - top - textHeight) / 2 // center text vertically
                 val left = 0f
                 drawText(
                     textMeasurer,
+                    size = Size(weekdayColumnWidth.toPx(), textHeight.toPx()),
                     text = weekdays[i],
                     topLeft = Offset(left, centerTop.toPx()),
-                    style = textStyle
+                    style = textStyle,
                 )
             }
+            if (horizontalCells < 1) return@Canvas
             // grid + months
-            for (i in 0..datesActiveRange) {
+            for (i in 0 ..< datesActiveRange) {
                 val time = systemTimeNow().minus(i, DateTimeUnit.DAY, TimeZone.UTC)
                 val date = time.toLocalDateTime(TimeZone.UTC).date
 
                 val y = (verticalCells - 1) - (i + dayOffset) % verticalCells
-                val x = (horizontalCells - 1) - floor(((i + dayOffset) / verticalCells).toDouble()).toInt()
+                val x = (horizontalCells - 1) - (i + dayOffset) / verticalCells
 
                 val left = getLeft(x).toPx()
                 val top = getTop(y).toPx()
@@ -91,13 +94,14 @@ fun DatesActive(
                 drawRoundRect(
                     color = if (date in datesActive) boxColor else emptyBoxColor,
                     topLeft = Offset(left, top),
-                    size = Size(boxSize.toPx(), boxSize.toPx()),
+                    size = Size(cellSize.toPx(), cellSize.toPx()),
                     cornerRadius = CornerRadius(cellCornerRadius.toPx(), cellCornerRadius.toPx())
                 )
 
                 if (date.dayOfMonth == 1) {
                     drawText(
                         textMeasurer,
+                        size = Size(Float.NaN, textHeight.toPx()),
                         text = months[date.month.value - 1],
                         topLeft = Offset(left, 0f),
                         style = textStyle
@@ -110,7 +114,7 @@ fun DatesActive(
 
 @Preview @Composable
 fun DatesActivePreview() {
-    DatesActive(
+    DatesActiveTable(
         datesActive = IntArray(30) { (0..90).random() }.map {
             systemTimeNow().minus(it, DateTimeUnit.DAY, TimeZone.UTC).toLocalDateTime(TimeZone.UTC).date
         }.toSet(),
