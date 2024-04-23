@@ -164,7 +164,7 @@ Database and preferences files are compatible with StreetComplete, so if you hav
 ## Contributing quests
 The original [contributing guidelines](README_StreetComplete.md#contributing) are still valid, but note that the [guidelines for contributing a quest](QUEST_GUIDELINES.md) have been significantly relaxed:
 * Creating, moving and deleting nodes is possible
-  * Inserting nodes into a way is not (yet) possible
+  * Inserting nodes into a way is possible
 * Guidelines are useful suggestions, but not enforced
 * Quests may be based on external sources like Osmose, not just on element selection
 
