@@ -12,7 +12,7 @@ private const val INF = 1e20
 fun convertToSdf(
     bitmap: IntArray,
     width: Int,
-    radius: Int = 9,
+    radius: Double = 8.0,
     cutoff: Double = 0.25
 ) {
     val height = bitmap.size / width

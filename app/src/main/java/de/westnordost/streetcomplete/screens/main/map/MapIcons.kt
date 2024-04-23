@@ -86,7 +86,7 @@ class MapIcons(
             scope.async {
                 val name = context.resources.getResourceEntryName(presetIconResId)
                 val bitmap = context.getDrawable(presetIconResId)!!.createBitmap().toSdf(
-                    radius = ceil(context.resources.dpToPx(2.5)).toInt()
+                    radius = context.resources.dpToPx(8.0).toDouble()
                 )
                 name to bitmap
             }

@@ -174,11 +174,10 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 textSize(16 * context.resources.configuration.fontScale),
                 textColor(if (isNightMode) "#ccf" else "#124"),
                 textHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
-                textHaloWidth(2.0f),
+                textHaloWidth(2.5f),
                 iconColor(if (isNightMode) "#ccf" else "#124"),
                 iconHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
-                // multiply by screen density to workaround https://github.com/maplibre/maplibre-native/issues/2281
-                iconHaloWidth(2.0f * context.resources.displayMetrics.density),
+                iconHaloWidth(2.5f),
                 textOptional(true),
                 iconAllowOverlap(step(zoom(), literal(false), stop(19, true))),
                 textAllowOverlap(step(zoom(), literal(false), stop(21, true))),
