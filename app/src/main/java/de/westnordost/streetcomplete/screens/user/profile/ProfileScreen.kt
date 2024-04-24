@@ -27,19 +27,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ui.theme.headline
-import de.westnordost.streetcomplete.ui.theme.title
+import de.westnordost.streetcomplete.ui.theme.headlineLarge
+import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.util.toDp
 import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
@@ -89,7 +87,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             ) {
                 Text(
                     text = userName.orEmpty(),
-                    style = MaterialTheme.typography.headline
+                    style = MaterialTheme.typography.headlineLarge
                 )
                 StarCount(editCount)
                 if (unsyncedChangesCount > 0) {
@@ -160,7 +158,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         ) {
             Text(
                 text = stringResource(R.string.user_profile_current_week_title),
-                style = MaterialTheme.typography.title
+                style = MaterialTheme.typography.titleLarge
             )
             StarCount(editCountCurrentWeek)
         }
@@ -181,7 +179,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         }
         Text(
             text = stringResource(R.string.user_profile_dates_mapped),
-            style = MaterialTheme.typography.title
+            style = MaterialTheme.typography.titleLarge
         )
         DatesActiveTable(
             datesActive = datesActive.datesActive.toSet(),
@@ -269,7 +267,7 @@ private fun StarCount(count: Int) {
         )
         Text(
             text = count.toString(),
-            style = MaterialTheme.typography.title
+            style = MaterialTheme.typography.titleLarge
         )
     }
 }

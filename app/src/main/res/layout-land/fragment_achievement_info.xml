@@ -99,7 +99,7 @@
                 android:id="@+id/achievementTitleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.Title"
+                android:textAppearance="@style/TextAppearance.TitleLarge"
                 tools:text="@string/achievement_wheelchair_title" />
 
             <TextView
@@ -116,7 +116,7 @@
                 android:layout_gravity="start"
                 android:text="@string/achievements_unlocked_links"
                 android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.Title2" />
+                android:textAppearance="@style/TextAppearance.TitleMedium" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/unlockedLinksList"

@@ -10,7 +10,7 @@
         android:id="@+id/linkCategoryTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Title"
+        android:textAppearance="@style/TextAppearance.TitleLarge"
         tools:text="Goodies" />
 
     <TextView

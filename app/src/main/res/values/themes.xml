@@ -16,7 +16,7 @@
 
         <item name="alertDialogTheme">@style/Theme.Bubble.Dialog.Alert</item>
         <item name="dialogTheme">@style/Theme.Bubble.Dialog</item>
-        <item name="titleTextAppearance">@style/TextAppearance.Title</item>
+        <item name="titleTextAppearance">@style/TextAppearance.TitleLarge</item>
         <item name="buttonBarStyle">@style/ButtonBar</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

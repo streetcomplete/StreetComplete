@@ -49,7 +49,7 @@ fun DatesActiveTable(
 
         val textMeasurer = rememberTextMeasurer()
 
-        val textStyle = MaterialTheme.typography.caption
+        val textStyle = MaterialTheme.typography.body2
         val symbols = DateFormatSymbols.getInstance()
         val weekdays = Array(7) { symbols.shortWeekdays[1 + (it + 1) % 7] }
         val months = symbols.shortMonths

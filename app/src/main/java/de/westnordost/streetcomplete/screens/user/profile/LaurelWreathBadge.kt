@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.screens.user.profile
 
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationSpec
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,20 +15,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.theme.DisabledGray
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.theme.White
-import de.westnordost.streetcomplete.ui.theme.title
+import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.util.toDp
 
 @Composable
@@ -71,7 +64,7 @@ fun LaurelWreathBadge(
             Text(
                 text = value,
                 color = White,
-                style = MaterialTheme.typography.title
+                style = MaterialTheme.typography.titleLarge
             )
         }
         Text(
