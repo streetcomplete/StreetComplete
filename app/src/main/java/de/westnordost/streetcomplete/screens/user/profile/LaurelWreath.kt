@@ -26,6 +26,7 @@ fun LaurelWreath(
     if (progress < 0.1f) return
 
     val leafPair = painterResource(R.drawable.laurel_leaf_pair)
+    val leafPairGrowing = painterResource(R.drawable.laurel_leaf_pair)
     val leafSingle = painterResource(R.drawable.laurel_leaf_ending)
 
     Box(modifier.aspectRatio(1f).drawBehind {
@@ -35,14 +36,15 @@ fun LaurelWreath(
         val leafY = center.y - leafSize.center.y
         val maxLeafAngle = 160.0f
 
-        fun drawLeaf(leaf: Painter, angle: Float) {
+        fun drawLeaf(leaf: Painter, angle: Float, scale: Float = 1f) {
+            val offset = (1f - scale) * leafSize.width
             for (scaleX in listOf(1f, -1f)) {
                 withTransform({
                     scale(scaleX, 1f)
                     rotate(angle)
-                    translate(top = leafY)
+                    translate(top = leafY + offset, left = offset / 2f)
                 }) {
-                    with(leaf) { draw(leafSize, colorFilter = ColorFilter.tint(color)) }
+                    with(leaf) { draw(leafSize * scale, colorFilter = ColorFilter.tint(color)) }
                 }
             }
         }
@@ -59,8 +61,12 @@ fun LaurelWreath(
         }
 
         // leaves left and right
-        for (i in 0..<leafs) {
-            drawLeaf(leafPair, (i + 1f) * maxLeafAngle / maxLeafs - 90f)
+        for (i in 0 ..< leafs) {
+            drawLeaf(
+                leaf = if (i == leafs -1) leafPairGrowing else leafPair,
+                angle = (i + 1f) * maxLeafAngle / maxLeafs - 90f,
+                scale = if (i == leafs - 1) maxLeafs * progress % 1f else 1f
+            )
         }
 
         // leading leaf
