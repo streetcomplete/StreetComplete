@@ -45,7 +45,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
               or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
               or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
             )
-            and !payment:cash and !payment:coins and !payment:notes
+            and !payment:cash and !payment:coins and !payment:notes and payment:others != no
             and (name or brand or noname = yes or name:signed = no)
         """
     }
