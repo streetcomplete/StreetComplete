@@ -67,7 +67,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             .fillMaxWidth()
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(24.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         // Basic user info
 

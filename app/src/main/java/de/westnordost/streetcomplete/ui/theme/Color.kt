@@ -57,6 +57,9 @@ val DarkColors = darkColors(
     onSecondary = Color.White
 )
 
+val Colors.hint @Composable get() =
+    if (isLight) Color(0xff666666) else Color(0xff999999)
+
 // use lighter tones (200) for increased contrast with dark background
 
 val Colors.logVerbose @Composable get() =

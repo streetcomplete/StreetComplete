@@ -12,13 +12,16 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.activity.OnBackPressedCallback
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.databinding.FragmentAchievementInfoBinding
-import de.westnordost.streetcomplete.screens.user.links.LinksAdapter
+import de.westnordost.streetcomplete.screens.user.links.LazyLinksColumn
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.Transforms
@@ -69,11 +72,6 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.dialogAndBackgroundContainer.setOnClickListener { dismiss() }
-        // in order to not show the scroll indicators
-        binding.unlockedLinksList.isNestedScrollingEnabled = false
-        binding.unlockedLinksList.layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
-            override fun canScrollVertically() = false
-        }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backPressedCallback)
     }
 
@@ -131,20 +129,21 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         }
 
         val unlockedLinks = achievement.unlockedLinks[level].orEmpty()
-        val hasNoUnlockedLinks = unlockedLinks.isEmpty() || !showLinks
-        binding.unlockedLinkTitleText.isGone = hasNoUnlockedLinks
-        binding.unlockedLinksList.isGone = hasNoUnlockedLinks
-        if (hasNoUnlockedLinks) {
-            binding.unlockedLinksList.adapter = null
-        } else {
+        val hasUnlockedLinks = unlockedLinks.isNotEmpty() && showLinks
+        binding.unlockedLinkTitleText.isGone = !hasUnlockedLinks
+        binding.unlockedLinksList.isGone = !hasUnlockedLinks
+        if (hasUnlockedLinks) {
             binding.unlockedLinkTitleText.setText(
-                if (unlockedLinks.size == 1) {
-                    R.string.achievements_unlocked_link
-                } else {
-                    R.string.achievements_unlocked_links
-                }
+                if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
+                else R.string.achievements_unlocked_links
             )
-            binding.unlockedLinksList.adapter = LinksAdapter(unlockedLinks, ::openUri)
+            (binding.unlockedLinksList as ComposeView).content {
+                val context = LocalContext.current
+                LazyLinksColumn(
+                    links = unlockedLinks,
+                    onClickLink = { context.openUri(it) }
+                )
+            }
         }
     }
 

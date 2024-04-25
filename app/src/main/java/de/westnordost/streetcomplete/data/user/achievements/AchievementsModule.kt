@@ -66,7 +66,7 @@ private val typeAliases = listOf(
     "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,
 )
 
-private val links = listOf(
+val links = listOf(
 
     /* ---------------------------------------- Intro ----------------------------------------*/
     Link(

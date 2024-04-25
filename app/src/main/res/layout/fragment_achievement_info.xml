@@ -124,15 +124,10 @@
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.TitleMedium" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <androidx.compose.ui.platform.ComposeView
                 android:id="@+id/unlockedLinksList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="vertical"
-                android:nestedScrollingEnabled="false"
-                tools:itemCount="1"
-                tools:listitem="@layout/row_link_item" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
