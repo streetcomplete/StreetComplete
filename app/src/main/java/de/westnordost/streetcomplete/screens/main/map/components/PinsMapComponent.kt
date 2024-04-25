@@ -15,10 +15,18 @@ import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.util.logs.Log
+import org.maplibre.android.style.sources.GeoJsonOptions
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
 class PinsMapComponent(private val map: MapLibreMap) {
-    private val pinsSource = GeoJsonSource(SOURCE)
+    private val pinsSource = GeoJsonSource(SOURCE,
+        GeoJsonOptions()
+            .withCluster(true)
+            .withClusterMaxZoom(17)
+        // how does it work?
+//            .withClusterProperty(propertyName = , operatorExpr = , mapExpr = )
+    )
 
     val layers: List<Layer> = listOf(
         CircleLayer("pin-dot-layer", SOURCE)
@@ -26,7 +34,7 @@ class PinsMapComponent(private val map: MapLibreMap) {
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("grey"),
-                circleRadius(5f),
+                circleRadius(toNumber(get("point_count"))),
                 circleStrokeWidth(1f)
             ),
         SymbolLayer("pins-layer", SOURCE)
