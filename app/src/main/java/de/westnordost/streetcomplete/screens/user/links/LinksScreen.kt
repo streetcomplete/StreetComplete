@@ -25,8 +25,6 @@ fun LinksScreen(viewModel: LinksViewModel) {
     val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
     val links by viewModel.links.collectAsState()
 
-    // TODO animation
-
     val allLinks = links
     if (allLinks != null) {
         if (allLinks.isNotEmpty()) {
