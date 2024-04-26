@@ -75,7 +75,8 @@ fun LaurelWreathBadge(
     }
 }
 
-@Preview @Composable
+@Preview
+@Composable
 fun BadgePreview() {
     LaurelWreathBadge(label = "Label\ntext", value = "#12", progress = 1.0f)
 }

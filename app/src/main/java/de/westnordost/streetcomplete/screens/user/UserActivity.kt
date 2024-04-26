@@ -97,8 +97,8 @@ class UserActivity :
 
     /* ---------------------------- AchievementsFragment.Listener ------------------------------- */
 
-    override fun onClickedAchievement(achievement: Achievement, level: Int, achievementBubbleView: View) {
-        achievementDetailsFragment?.show(achievement, level, achievementBubbleView)
+    override fun onClickedAchievement(achievement: Achievement, level: Int) {
+        achievementDetailsFragment?.show(achievement, level)
     }
 
     /* --------------------------- QuestStatisticsFragment.Listener ----------------------------- */

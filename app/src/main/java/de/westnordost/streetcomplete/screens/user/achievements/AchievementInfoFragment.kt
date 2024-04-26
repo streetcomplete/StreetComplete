@@ -86,13 +86,12 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     /* ---------------------------------------- Interface --------------------------------------- */
 
     /** Show as details of a tapped view */
-    fun show(achievement: Achievement, level: Int, achievementBubbleView: View): Boolean {
+    fun show(achievement: Achievement, level: Int): Boolean {
         if (animatorsPlayer != null) return false
         backPressedCallback.isEnabled = true
-        this.achievementIconBubble = achievementBubbleView
 
         bind(achievement, level, false)
-        animateInFromView(achievementBubbleView)
+        animateIn()
         return true
     }
 
@@ -116,8 +115,12 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     /* ----------------------------------- Animating in and out --------------------------------- */
 
     private fun bind(achievement: Achievement, level: Int, showLinks: Boolean) {
-        binding.achievementIconView.icon = context?.getDrawable(achievement.icon)
-        binding.achievementIconView.level = level
+        binding.achievementIconView.content {
+            AchievementIcon(
+                icon = achievement.icon,
+                level = level
+            )
+        }
         binding.achievementTitleText.setText(achievement.title)
 
         binding.achievementDescriptionText.isGone = achievement.description == null

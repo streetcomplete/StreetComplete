@@ -66,6 +66,7 @@ private val typeAliases = listOf(
     "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,
 )
 
+/** this is only public so that it can be previewed in compose */
 val links = listOf(
 
     /* ---------------------------------------- Intro ----------------------------------------*/
@@ -495,7 +496,8 @@ val links = listOf(
 
 private val linksById = links.associateBy { it.id }
 
-private val achievements = listOf(
+/** this is only public so that it can be previewed in compose */
+val achievements = listOf(
 
     Achievement(
         "first_edit",
