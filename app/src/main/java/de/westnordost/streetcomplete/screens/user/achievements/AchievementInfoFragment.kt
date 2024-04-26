@@ -137,7 +137,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
                 if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
                 else R.string.achievements_unlocked_links
             )
-            (binding.unlockedLinksList as ComposeView).content {
+            binding.unlockedLinksList.content {
                 val context = LocalContext.current
                 LazyLinksColumn(
                     links = unlockedLinks,
