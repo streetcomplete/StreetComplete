@@ -21,8 +21,7 @@ import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.achievements
 import de.westnordost.streetcomplete.screens.user.CenteredLargeTitleHint
 
-/** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
- *  details on click. */
+/** Shows the icons for all achieved achievements and opens a dialog to show the details on click. */
 @Composable
 fun AchievementsScreen(
     viewModel: AchievementsViewModel,

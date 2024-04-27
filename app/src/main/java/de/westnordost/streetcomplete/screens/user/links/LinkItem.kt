@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.LinkCategory
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.theme.titleMedium
+import de.westnordost.streetcomplete.ui.theme.titleSmall
 
 @Composable
 fun LinkCategoryItem(category: LinkCategory, modifier: Modifier = Modifier) {
@@ -58,13 +59,13 @@ fun LinkItem(link: Link, onClickLink: (url: String) -> Unit, modifier: Modifier 
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         // if no icon, the space should still be filled
-        Box(Modifier.size(64.dp)) {
+        Box(Modifier.size(44.dp)) {
             if (link.icon != null) {
                 Image(painterResource(link.icon), null, Modifier.fillMaxSize())
             }
         }
         Column {
-            Text(link.title, style = MaterialTheme.typography.titleMedium)
+            Text(link.title, style = MaterialTheme.typography.titleSmall)
             if (link.description != null) {
                 Text(stringResource(link.description), style = MaterialTheme.typography.body2)
             }
