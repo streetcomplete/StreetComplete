@@ -22,7 +22,7 @@ fun AnimatedTadaShine() {
     val infiniteTransition = rememberInfiniteTransition("ta-da shine rotation")
     val rotation by infiniteTransition.animateFloat(
         0f, 360f,
-        infiniteRepeatable(tween(9000, 0, LinearEasing)),
+        infiniteRepeatable(tween(15000, 0, LinearEasing)),
         "ta-da shine rotation"
     )
 
