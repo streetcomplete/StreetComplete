@@ -9,6 +9,8 @@ class SeparateCyclewayParserKtTest {
     @Test fun `parse no cycleway at all`() {
         assertEquals(null, parse())
         assertEquals(null, parse("highway" to "residential"))
+        assertEquals(null, parse("highway" to "cycleway", "bicycle" to "no"))
+        assertEquals(null, parse("highway" to "cycleway", "bicycle" to "dismount"))
     }
 
     @Test fun `parse path`() {
@@ -30,8 +32,6 @@ class SeparateCyclewayParserKtTest {
     @Test fun `parse no bicyclists allowed on path`() {
         assertEquals(NOT_ALLOWED, parse("highway" to "path", "bicycle" to "no"))
         assertEquals(NOT_ALLOWED, parse("highway" to "footway", "bicycle" to "no"))
-        assertEquals(NOT_ALLOWED, parse("highway" to "cycleway", "bicycle" to "no"))
-        assertEquals(NOT_ALLOWED, parse("highway" to "cycleway", "bicycle" to "dismount"))
     }
 
     @Test fun `parse bicyclists allowed on footway`() {
