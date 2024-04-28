@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banorte, Santander, Banamex, HSBC, Bancomer, BBVA, Scotiabank, BBVA Bancomer, Banco Azteca, Bansi, BTM, Banjercito, Interacciones, Afirme, Citibanamex, Banco Santander, Multiva, Inbursa, CryptoFlamingo, Coppel, Banregio, BANCOMER, 'BBVA Bancomer, S.A.', BANORTE, Intercam Banco, Citibank, CIBanco, Bancoppel, Banco Multiva, BANAMEX, banamex, Santander Serfin, 'Santander Consumo, S.A. de C.V.', SANTANDER, Hsbc, CFE, Bancomer BBVA, Banco del Bajío, BBVA BANCOMER]
+atmOperators: [Banorte, Santander, HSBC, Banamex, Bancomer, BBVA, Scotiabank, BBVA Bancomer, Banco Santander, Banco Azteca, Bansi, BTM, Banjercito, Interacciones, Afirme, Citibanamex, Multiva, Inbursa, CryptoFlamingo, Coppel, Banregio, BANCOMER, 'BBVA Bancomer, S.A.', BANORTE, Intercam Banco, Citibank, CIBanco, Bancoppel, Banco Multiva, BANAMEX, banamex, Santander Serfin, 'Santander Consumo, S.A. de C.V.', SANTANDER, Hsbc, CFE, Bancomer BBVA, Banco del Bajío, BBVA BANCOMER]
 centerLineStyle: yellow
 chargingStationOperators: ['Tesla, Inc.', Servicio de Transportes Eléctricos de la Ciudad de México, Nissan]
 defaultSpeedLimitHasUrbanOrRural: true

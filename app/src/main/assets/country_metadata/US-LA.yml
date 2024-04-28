@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Coinstar, Hancock Whitney, Capital One, Xplore, Chase]
+atmOperators: [Hancock Whitney, Coinstar, Capital One, Xplore, Chase]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, telefonix, Tesla Motors]
 defaultSpeedLimitHasUrbanOrRural: false

@@ -226,7 +226,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="credits_translations_title">"Oversettelser"</string>
     <string name="credits_contributors_title">"Programmerere"</string>
     <string name="credits_author_title">"Opphavsmann og vedlikeholder"</string>
-    <string name="credits_and_more">"med fler…"</string>
     <string name="quest_maxspeed_answer_living_street">"Det er et gatetun"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Så det er et slikt skilt?"</string>
     <string name="quest_orchard_produce_title">"Hva dyrkes her?"</string>
@@ -499,7 +498,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_motorcycleParkingCoveredStatus_title">"Er motorsykkelparkeringen under tak (beskyttet mot regn)?"</string>
     <string name="default_disabled_msg_maxspeed">"Denne oppdragstypen er ikke aktivt som standard fordi man vanligvis må kontrollere hele strekningen for fartsgrenser, og ikke bare den viste strekningen. Dette kan ofte være en lang vei kun for ett oppdrag."</string>
     <string name="pref_title_quests_restore_hidden">"Gjennopprett skulte oppdrag"</string>
-    <string name="restore_hidden_success">"Gjenopprettet %d skjulte oppdrag"</string>
     <string name="on_level">"på nivå %s"</string>
     <string name="underground">"underjordisk"</string>
     <string name="quest_sidewalk_value_yes">"fortau"</string>
@@ -840,7 +838,6 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="team_mode_active">"Gruppemodus er aktivt"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
     <string name="undo_confirm_title2">"Angre følgende endring?"</string>
-    <string name="synced">"Opplastet"</string>
     <string name="toast_undo_unavailable">"Denne endringer er lastet opp og kan ikke angres"</string>
     <string name="quest_cycleway_value_separate">"vises adskilt på kartet"</string>
     <string name="created_note_action_title">"Lagde merknad"</string>
@@ -1062,8 +1059,6 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_road_width_title">"Hvor bred er denne veien her?"</string>
     <string name="quest_road_width_explanation">"Veibanens bredde fra fortauskant til fortauskant: Dette inkluderer alt på veiens overflate som gateparkering og sykkelfelt, men ikke noe utenfor som fortau, parkering utenfor veibanen eller parallelle sykkelveier."</string>
     <string name="quest_sidewalk_answer_none">"Ingen fortau"</string>
-    <string name="about_description_donate_google_play2">"Takk for at du vurderer å støtte denne appen!
-Dessverre kan ikke lenker til doneringssiden vises i appen på grunn av retningslinjer fra Google Play Store. Heller ikke lenker til prosjektets hjemmeside kan vises i denne sammenhengen."</string>
     <string name="link_osmand_description">"Mobilapp for kart og navigasjon med og uten internettilgang"</string>
     <string name="link_sunders_description">"Et kart over kameraer og overvåkningsutstyr"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Vær nærmere pilen, men følg med på trafikken!"</string>

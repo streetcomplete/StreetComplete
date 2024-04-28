@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Raiffeisen Bank, OTP Bank, Tirana Bank, Banka Kombëtare Tregtare, Fibank, BKT, Credins Bank, Union Bank, Intesa Sanpaolo, Raiffeisen BANK, Raiffeisen, Credins, Raiffeisenbank, Raifeissen Bank, otpbank, otp bank, Alpha Bank, ALPHA BANK]
+atmOperators: [Raiffeisen Bank, Banka Kombëtare Tregtare, OTP Bank, Tirana Bank, Union Bank, Fibank, Credins Bank, BKT, Intesa Sanpaolo, Raiffeisen BANK, Raiffeisen, otpbank, otp bank, Raiffeisenbank, Raifeissen Bank, ALPHA BANK]
 chargingStationOperators: [Lux Taxi, eMobility Albania, ena]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true

@@ -82,7 +82,7 @@
     <string name="quest_roofShape_answer_many">"Она имеет несколько разных форм"</string>
     <string name="map_btn_zoom_out">"Отдалить"</string>
     <string name="map_btn_zoom_in">"Приблизить"</string>
-    <string name="privacy_html">"&lt;p&gt;Ага, кто-то, заботится о конфиденциальности, отлично! У меня для вас только хорошие новости:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Ага, кто-то заботится о конфиденциальности, отлично! У меня для вас только хорошие новости:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Непосредственное внесение вклада&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Прежде всего, с помощью этого приложения вы отправляете все улучшения и заметки в OpenStreetMap напрямую.&lt;br/&gt;
@@ -227,7 +227,6 @@
     <string name="credits_translations_title">"Переводы"</string>
     <string name="credits_contributors_title">"Вклад в код внесли"</string>
     <string name="credits_author_title">"Автор и сопровождающий"</string>
-    <string name="credits_and_more">"и другие…"</string>
     <string name="quest_maxspeed_answer_living_street">"Это жилая улица"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Значит здесь есть такой знак?"</string>
     <string name="quest_orchard_produce_title">"Что здесь выращивают?"</string>
@@ -501,7 +500,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Снабжена ли эта парковка для мотоциклов навесом от дождя?"</string>
     <string name="default_disabled_msg_maxspeed">"Это задание выключено по умолчанию, потому что обычно требует проверить всю улицу на знаки ограничения скорости, не только подсвеченный сегмент. Это может быть достаточно долгим для одного задания."</string>
     <string name="pref_title_quests_restore_hidden">"Показать скрытые квесты"</string>
-    <string name="restore_hidden_success">"Показано %d скрытых квестов"</string>
     <string name="on_level">"на уровне %s"</string>
     <string name="underground">"подземное"</string>
     <string name="quest_sidewalk_value_yes">"тротуар"</string>
@@ -840,7 +838,6 @@
     <string name="team_mode_active">"Командный режим включён"</string>
     <string name="team_mode_deactivated">"Командный режим отключён"</string>
     <string name="undo_confirm_title2">"Отменить эту правку?"</string>
-    <string name="synced">"Синхронизировано"</string>
     <string name="toast_undo_unavailable">"Эта правка уже синхронизирована и не может быть отменена"</string>
     <string name="quest_cycleway_value_separate">"отображается на карте отдельно"</string>
     <string name="created_note_action_title">"Заметка создана"</string>
@@ -1062,8 +1059,6 @@
     <string name="quest_road_width_title">"Какова ширина этой дороги?"</string>
     <string name="quest_road_width_explanation">"Ширина проезжей части от бордюра до бордюра: это включает в себя всё, находящееся на поверхности дороги, как парковка на дороге, велосипедная линия, но не включает в себя что-либо за пределами, как велосипедная дорожка и парковка вне дороги."</string>
     <string name="quest_sidewalk_answer_none">"Вообще нет дороги"</string>
-    <string name="about_description_donate_google_play2">"Спасибо за решение поддержать это приложение!
-К несчастью, из-за политики Google Play Store, мы не можем "</string>
     <string name="link_osmand_description">"Мобильное приложение для онлайн и оффлайн просмотра карт и навигации
 "</string>
     <string name="link_sunders_description">"Карта камер и видеоконтроля"</string>
@@ -1362,4 +1357,37 @@
     <string name="label_log_message_contains">"Сообщение содержит"</string>
     <string name="title_logs_filters">"Фильтр сообщений"</string>
     <string name="pref_title_quests_restore_hidden_summary">"Количество скрытых заданий: %d"</string>
+    <string name="link_every_door_description">"Мощный редактор POI для Android и iOS"</string>
+    <string name="link_mapcomplete_description">"Коллекция тематических карт OSM, каждая из которых показывает и позволяет редактировать один тип объектов"</string>
+    <string name="link_forum_description">"Нужна помощь?  Хотите узнать, что происходит?  Приходите и общайтесь, здесь кипит активность сообществ со всего мира!"</string>
+    <string name="link_calendar_description">"Проходят ли рядом с вами мероприятия OpenStreetMap или общественные собрания?  (Если нет, вы можете добавить своё!)"</string>
+    <string name="link_prettymapp_description">"Создайте красивые разноцветные плакаты с картами окрестностей"</string>
+    <string name="quest_disable_action">"Отключить"</string>
+    <string name="quest_disable_title">"Отключить этот тип квеста?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure не установлен (пока)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure не вернул результат измерения."</string>
+    <string name="quest_disable_message_tape_measure">"Вместо этого вы могли бы использовать рулетку, но в конце концов это может быть немного неудобно."</string>
+    <string name="quest_buildingType_outbuilding">"Пристройка"</string>
+    <string name="quest_buildingType_outbuilding_description">"менее важное здание на участке"</string>
+    <string name="quest_buildingType_other_description">"конкретное здание, которое нельзя выбрать в этом приложении"</string>
+    <string name="quest_buildingType_container">"Контейнер"</string>
+    <string name="quest_buildingType_tent">"Палатка"</string>
+    <string name="quest_buildingType_tomb">"Могила"</string>
+    <string name="quest_buildingType_tower">"Башня"</string>
+    <string name="quest_buildingType_tower_description">"любая башня"</string>
+    <string name="quest_buildingType_under_construction">"Строящийся"</string>
+    <string name="overlay_buildings">"Здания"</string>
+    <string name="quest_pedestrian_crossing_signals">"Вам придется ждать светофора, чтобы перейти здесь?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Есть ли на этом переходе разметка на земле?"</string>
+    <string name="overlay_places">"Места"</string>
+    <string name="overlay_things">"Вещи"</string>
+    <string name="disused">"не использующийся"</string>
+    <string name="unknown_object">"Неизвестный объект"</string>
+    <string name="quest_leafType_tree_title">"Есть ли у этого дерева иголки или листья?"</string>
+    <string name="quest_bbq_fuel_gas">"Газ"</string>
+    <string name="about_description_donate_google_play3">"Спасибо что хотите поддержать это приложение!
+Вы можете найти информацию о пожертвовании на нашем вебсайте, Google Play не разрешает нам показывать ссылку в приложении."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Не внутри, но крыто"</string>
+    <string name="lit_value_unsupported">"Конкретный тип освещения, который нельзя выбрать в этом приложении"</string>
+    <string name="quest_generic_otherAnswers2">"Эм…"</string>
 </resources>

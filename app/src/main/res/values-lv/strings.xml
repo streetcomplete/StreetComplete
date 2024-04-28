@@ -226,7 +226,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="credits_translations_title">"Tulkojumi"</string>
     <string name="credits_contributors_title">"Programmējuši"</string>
     <string name="credits_author_title">"Autors un uzturētāji"</string>
-    <string name="credits_and_more">"un vēl…"</string>
     <string name="quest_maxspeed_answer_living_street">"Tā ir dzīvojamā iela"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Vai šeit ir šāda zīme?"</string>
     <string name="quest_orchard_produce_title">"Kas šeit tiek audzēts?"</string>
@@ -498,7 +497,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_motorcycleParkingCoveredStatus_title">"Vai šī motociklu stāvvieta ir nosegta (pasargāta no lietus)?"</string>
     <string name="default_disabled_msg_maxspeed">"Pēc noklusējuma šis uzdevuma veids ir izslēgts, jo lai noskaidrotu ātruma ierobežojumus, ir jāapseko visa iela, ne tikai izvēlētais nogrieznis. Varētu nākties šķērsot lielus attālumus, lai izpildītu vienu uzdevumu."</string>
     <string name="pref_title_quests_restore_hidden">"Atjaunot paslēptos uzdevumus"</string>
-    <string name="restore_hidden_success">"Atjaunoja %d paslēptus uzdevumus"</string>
     <string name="on_level">"līmenī %s"</string>
     <string name="underground">"pazemē"</string>
     <string name="quest_sidewalk_value_yes">"ietve"</string>
@@ -837,7 +835,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="team_mode_active">"Komandas režīms ir ieslēgts"</string>
     <string name="team_mode_deactivated">"Komandas režīms ir izslēgts"</string>
     <string name="undo_confirm_title2">"Atsaukt sekojošo rediģējumu?"</string>
-    <string name="synced">"Sinhronizēts"</string>
     <string name="toast_undo_unavailable">"Šis rediģējums jau ir sinhronizēts un to nevar atsaukt"</string>
     <string name="quest_cycleway_value_separate">"attēlots uz kartes atsevišķi"</string>
     <string name="created_note_action_title">"Izveidoja piezīmi"</string>
@@ -1059,8 +1056,6 @@ Dariet to arī otrai pusei, ja tāda ir."</string>
     <string name="quest_road_width_title">"Kāds šeit ir ceļa platums?"</string>
     <string name="quest_road_width_explanation">"Autoceļa platums no ietves līdz ietvei: tas iekļauj visu uz ceļa virsmas, ieskaitot autostāvvietas uz braucamās daļas un velojoslas, bet neiekļauj visu pārējo, piemēram, gājēju celiņus,  veloceliņus un autostāvvietas ārpus ceļa braucamās daļas."</string>
     <string name="quest_sidewalk_answer_none">"Vispār nav ietves"</string>
-    <string name="about_description_donate_google_play2">"Paldies, ka apsvērāt atbalstīt šo lietotni!
-Diemžēl Google Play Store politikas dēļ šajā lietotnē nedrīkst parādīties neviena saite, kas ved uz ziedojumu lapu. Šādā kontekstā nedrīkst pat likt saiti uz mūsu projekta mājas lapu."</string>
     <string name="link_osmand_description">"Mobilā lietotne tiešsaistes un bezsaistes karšu skatīšanai un navigācijai"</string>
     <string name="link_sunders_description">"Karte ar kamerām un novērošanas aprīkojumu"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Turies tuvāk bultai, bet sargies satiksmes!"</string>

@@ -93,6 +93,7 @@ class ElementEditsControllerTest {
         on(elementsDb.getAllByElement(NODE, -8)).thenReturn(listOf())
 
         ctrl.markSynced(edit0, updates)
+        val edit0Synced = edit0.copy(isSynced = true)
 
         // as explained above, edit 9 is get-put and its element keys updated
         val edit1New = edit1.copy(action = edit1ActionNew)
@@ -100,9 +101,9 @@ class ElementEditsControllerTest {
         verify(elementsDb).delete(edit1New.id)
         verify(elementsDb).put(edit1New.id, edit1New.action.elementKeys)
 
-        verify(db).markSynced(edit0.id)
+        verify(db).markSynced(edit0Synced.id)
         verify(idProvider).updateIds(updates.idUpdates)
-        verify(listener).onSyncedEdit(edit0)
+        verify(listener).onSyncedEdit(edit0Synced)
     }
 
     @Test fun `undo unsynced`() {

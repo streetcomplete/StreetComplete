@@ -8,14 +8,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
-import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.databinding.RowQuestPresetBinding
 import de.westnordost.streetcomplete.view.dialogs.EditTextDialog
 import kotlinx.coroutines.CoroutineScope
@@ -28,52 +23,24 @@ import kotlinx.coroutines.launch
  *  use. */
 class QuestPresetsAdapter(
     private val context: Context,
-    private val questPresetsController: QuestPresetsController,
-    private val questTypeOrderController: QuestTypeOrderController,
-    private val visibleQuestTypeController: VisibleQuestTypeController,
-    private val urlConfigController: UrlConfigController
+    private val viewModel: QuestPresetsViewModel
 ) : RecyclerView.Adapter<QuestPresetsAdapter.QuestPresetViewHolder>(), DefaultLifecycleObserver {
 
-    private var presets: MutableList<QuestPreset> = mutableListOf()
+    var presets: List<QuestPresetSelection> = listOf()
+        set(value) {
+            val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+                override fun getOldListSize() = field.size
+                override fun getNewListSize() = value.size
+                override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                    field[oldItemPosition].id == value[newItemPosition].id
+                override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
+                    field[oldItemPosition] == value[newItemPosition]
+            })
+            field = value.toList()
+            diff.dispatchUpdatesTo(this)
+        }
 
     private val viewLifecycleScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
-
-    private val questPresetsListener = object : QuestPresetsSource.Listener {
-        override fun onSelectedQuestPresetChanged() { viewLifecycleScope.launch {
-            notifyDataSetChanged()
-        } }
-
-        override fun onAddedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
-            presets.add(preset)
-            notifyItemInserted(presets.size - 1)
-        } }
-
-        override fun onRenamedQuestPreset(preset: QuestPreset) { viewLifecycleScope.launch {
-            val index = presets.indexOfFirst { it.id == preset.id }
-            if (index != -1) {
-                presets[index] = preset
-                notifyItemChanged(index)
-            }
-        } }
-
-        override fun onDeletedQuestPreset(presetId: Long) { viewLifecycleScope.launch {
-            val deleteIndex = presets.indexOfFirst { it.id == presetId }
-            presets.removeAt(deleteIndex)
-            notifyItemRemoved(deleteIndex)
-        } }
-    }
-
-    override fun onStart(owner: LifecycleOwner) {
-        presets = mutableListOf()
-        presets.add(QuestPreset(0, context.getString(R.string.quest_presets_default_name)))
-        presets.addAll(questPresetsController.getAll())
-
-        questPresetsController.addListener(questPresetsListener)
-    }
-
-    override fun onStop(owner: LifecycleOwner) {
-        questPresetsController.removeListener(questPresetsListener)
-    }
 
     override fun onDestroy(owner: LifecycleOwner) {
         viewLifecycleScope.cancel()
@@ -93,24 +60,18 @@ class QuestPresetsAdapter(
     inner class QuestPresetViewHolder(private val binding: RowQuestPresetBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(with: QuestPreset) {
-            binding.presetTitleText.text = with.name
+        fun onBind(with: QuestPresetSelection) {
+            binding.presetTitleText.text = with.nonEmptyName
             binding.selectionRadioButton.setOnCheckedChangeListener(null)
-            binding.selectionRadioButton.isChecked = questPresetsController.selectedId == with.id
+            binding.selectionRadioButton.isChecked = with.selected
             binding.selectionRadioButton.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) onSelectQuestPreset(with.id)
+                if (isChecked) viewModel.select(with.id)
             }
             binding.menuButton.isEnabled = true
             binding.menuButton.setOnClickListener { onClickMenuButton(with) }
         }
 
-        private fun onSelectQuestPreset(presetId: Long) {
-            viewLifecycleScope.launch(Dispatchers.IO) {
-                questPresetsController.selectedId = presetId
-            }
-        }
-
-        private fun onClickMenuButton(preset: QuestPreset) {
+        private fun onClickMenuButton(preset: QuestPresetSelection) {
             val popup = PopupMenu(itemView.context, binding.menuButton)
             popup.setForceShowIcon(true)
             if (preset.id != 0L) {
@@ -136,61 +97,46 @@ class QuestPresetsAdapter(
             popup.show()
         }
 
-        private fun onClickRenamePreset(preset: QuestPreset) {
+        private fun onClickRenamePreset(preset: QuestPresetSelection) {
             val ctx = itemView.context
             val dialog = EditTextDialog(ctx,
                 title = ctx.getString(R.string.quest_presets_rename),
-                text = preset.name,
+                text = preset.nonEmptyName,
                 hint = ctx.getString(R.string.quest_presets_preset_name),
-                callback = { name -> renameQuestPreset(preset.id, name) }
+                callback = { name -> viewModel.rename(preset.id, name) }
             )
             dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
             dialog.show()
         }
 
-        private fun renameQuestPreset(presetId: Long, name: String) {
-            viewLifecycleScope.launch(Dispatchers.IO) {
-                questPresetsController.rename(presetId, name)
-            }
-        }
-        private fun onClickDuplicatePreset(preset: QuestPreset) {
+        private fun onClickDuplicatePreset(preset: QuestPresetSelection) {
             val ctx = itemView.context
             val dialog = EditTextDialog(ctx,
                 title = ctx.getString(R.string.quest_presets_duplicate),
-                text = preset.name,
+                text = preset.nonEmptyName,
                 hint = ctx.getString(R.string.quest_presets_preset_name),
-                callback = { name -> duplicateQuestPreset(preset.id, name) }
+                callback = { name -> viewModel.duplicate(preset.id, name) }
             )
             dialog.editText.filters = arrayOf(InputFilter.LengthFilter(60))
             dialog.show()
         }
 
-        private fun duplicateQuestPreset(presetId: Long, name: String) {
-            viewLifecycleScope.launch(Dispatchers.IO) {
-                val newPresetId = questPresetsController.add(name)
-                questTypeOrderController.copyOrders(presetId, newPresetId)
-                visibleQuestTypeController.copyVisibilities(presetId, newPresetId)
-                questPresetsController.selectedId = newPresetId
+        private fun onClickSharePreset(preset: QuestPresetSelection) {
+            viewLifecycleScope.launch {
+                val url = viewModel.createUrlConfig(preset.id)
+                UrlConfigQRCodeDialog(context, url).show()
             }
         }
 
-        private fun onClickSharePreset(preset: QuestPreset) {
-            val url = urlConfigController.create(preset.id)
-            UrlConfigQRCodeDialog(context, url).show()
-        }
-
-        private fun onClickDeleteQuestPreset(preset: QuestPreset) {
+        private fun onClickDeleteQuestPreset(preset: QuestPresetSelection) {
             AlertDialog.Builder(itemView.context)
-                .setMessage(itemView.context.getString(R.string.quest_presets_delete_message, preset.name))
-                .setPositiveButton(R.string.delete_confirmation) { _, _ -> deleteQuestPreset(preset.id) }
+                .setMessage(itemView.context.getString(R.string.quest_presets_delete_message, preset.nonEmptyName))
+                .setPositiveButton(R.string.delete_confirmation) { _, _ -> viewModel.delete(preset.id) }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
         }
-
-        private fun deleteQuestPreset(presetId: Long) {
-            viewLifecycleScope.launch(Dispatchers.IO) {
-                questPresetsController.delete(presetId)
-            }
-        }
     }
+
+    private val QuestPresetSelection.nonEmptyName: String get() =
+        if (name.isNotEmpty()) name else context.getString(R.string.quest_presets_default_name)
 }

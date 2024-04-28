@@ -225,7 +225,6 @@ Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittu
     <string name="credits_translations_title">"Käännökset"</string>
     <string name="credits_contributors_title">"Koodaajat"</string>
     <string name="credits_author_title">"Tekijä ja ylläpitäjä"</string>
-    <string name="credits_and_more">"ja lisää…"</string>
     <string name="quest_maxspeed_answer_living_street">"Se on pihakatu"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Onko siellä merkki kuten tämä?"</string>
     <string name="quest_orchard_produce_title">"Mitä tässä viljellään?"</string>
@@ -499,7 +498,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_motorcycleParkingCoveredStatus_title">"Onko tämä moottoripyöräpysäkki katoksellinen (suojattu sateelta)?"</string>
     <string name="default_disabled_msg_maxspeed">"Tämä kysymystyyppi on oletuksena pois käytöstä, koska yleensä pitää tarkistaa koko tien nopeusrajoituskyltti, ei pelkästään valittua kohtaa. Tämä voi olla vaativaa ratkaistakseen yhden kysymyksen."</string>
     <string name="pref_title_quests_restore_hidden">"Palauta piilotetut kyselyt"</string>
-    <string name="restore_hidden_success">"Palautettiin %d piilotettua kyselyä"</string>
     <string name="on_level">"kerroksessa %s"</string>
     <string name="underground">"maan alla"</string>
     <string name="quest_sidewalk_value_yes">"Jalkakäytävä"</string>
@@ -836,7 +834,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="team_mode_active">"Työryhmätila päällä"</string>
     <string name="team_mode_deactivated">"Työryhmätila pois päältä"</string>
     <string name="undo_confirm_title2">"Kumotaanko seuraava muutos?"</string>
-    <string name="synced">"Synkronoitu"</string>
     <string name="toast_undo_unavailable">"Tämä muutos on synkronoitu ja sitä ei voida perua"</string>
     <string name="quest_cycleway_value_separate">"Näkyy erillisenä kartalla"</string>
     <string name="created_note_action_title">"Luotu ilmoitus"</string>
@@ -1056,9 +1053,6 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa)."</string>
     <string name="quest_road_width_title">"Mikä on tämän tien leveys tässä?"</string>
     <string name="quest_road_width_explanation">"Ajotien leveys reunasta reunaan: Tämä sisältää kaiken kadulla, sisältäen kadunvarsiparkkeerauksen tai pyörätien mutta ei mitään reunan jälkeen, kuten jalkakäytävät, kadun ulkopuoliset parkkipaikat tai erilliset pyörätiet."</string>
     <string name="quest_sidewalk_answer_none">"Ei jalkakäytävää"</string>
-    <string name="about_description_donate_google_play2">"Kiitos ajatuksesta tukea tätä sovellusta!
-Valitettavasti Google Playn takia linkkejä lahjoituksiin ei sallita sovelluksen sisällä.
-Sen takia edes linkkejä projektimme kotisivuille ei sallita."</string>
     <string name="link_osmand_description">"Mobiilisovellus karttojen katseluun ja navigointiin online- ja offlinetilassa."</string>
     <string name="link_sunders_description">"Kartta kameroista ja valvontalaitteistoista"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Pysy lähempänä osoitinta mutta varo liikennettä!"</string>
@@ -1339,14 +1333,24 @@ Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintii
     <string name="quest_defibrillator_location">"Missä tämä defibrillaattori sijaitsee?"</string>
     <string name="quest_defibrillator_location_description">"Anna ytimekäs kuvaus sijainnista (esim. “vahtimestarin tilassa”)."</string>
     <string name="quest_generalFee_title">"Onko käyttö maksullista?"</string>
+    <string name="about_title_logs">"Lokit (%1$d)"</string>
     <string name="about_summary_logs">"käytettäväksi virheraporteissa"</string>
     <string name="action_filter">"Suodatin"</string>
     <string name="action_share">"Jaa lokit"</string>
     <string name="about_title_show_logs">"Näytä lokit"</string>
+    <string name="label_log_level">"Lokitaso"</string>
+    <string name="label_log_newer_than">"Alkaa"</string>
+    <string name="label_log_older_than">"Päättyy"</string>
+    <string name="label_log_message_contains">"Viesti sisältää"</string>
+    <string name="title_logs_filters">"Suodata viestejä"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Piilotettujen kysymysten määrä: %d"</string>
+    <string name="link_every_door_description">"Tehokas POI-muokkain Androidille ja iOS:lle"</string>
     <string name="link_calendar_description">"Onko OpenStreetMap-tapahtumia tai -tapaamisia lähelläsi? (Jos ei, voit lisätä omasi!)"</string>
     <string name="link_prettymapp_description">"Luo kauniita monivärisiä karttajulisteita naapurustosta"</string>
     <string name="quest_disable_action">"Poista käytöstä"</string>
     <string name="quest_disable_title">"Poistetaanko kyselytyyppi käytöstä?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure ei ole (vielä) asennettu."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure ei palauttanut mittaustulosta."</string>
     <string name="quest_disable_message_tape_measure">"Voisit käyttää sen sijaan mittanauhaa, mutta se voi loppujen lopuksi olla hieman hankalaa."</string>
     <string name="quest_buildingType_outbuilding">"Ulkorakennus"</string>
     <string name="quest_buildingType_outbuilding_description">"vähemmän tärkeä rakennus kiinteistössä"</string>
@@ -1357,5 +1361,10 @@ Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintii
     <string name="quest_buildingType_tower_description">"mikä tahansa torni"</string>
     <string name="quest_buildingType_under_construction">"Rakenteilla"</string>
     <string name="overlay_buildings">"Rakennukset"</string>
+    <string name="quest_pedestrian_crossing_signals">"Pitääkö tässä ylityksessä odottaa valojen vaihtumista?"</string>
     <string name="quest_pedestrian_crossing_markings">"Onko tässä risteyksessä merkintöjä maassa?"</string>
+    <string name="overlay_places">"Paikat"</string>
+    <string name="overlay_things">"Asiat"</string>
+    <string name="unknown_object">"Tuntematon objekti"</string>
+    <string name="quest_leafType_tree_title">"Onko tällä puulla neulaset vai lehdet?"</string>
 </resources>

@@ -11,7 +11,7 @@ import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.databinding.ViewAnswersCounterBinding
 
 /** View that displays the user's quest answer counter */
-class AnswersCounterView @JvmOverloads constructor(
+class StarsCounterView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -19,7 +19,7 @@ class AnswersCounterView @JvmOverloads constructor(
 
     private val binding = ViewAnswersCounterBinding.inflate(LayoutInflater.from(context), this)
 
-    var uploadedCount: Int = 0
+    var starsCount: Int = 0
         set(value) {
             field = value
             binding.textView.text = value.toString()
@@ -36,10 +36,10 @@ class AnswersCounterView @JvmOverloads constructor(
         get() = binding.labelView.isGone
 
     fun setUploadedCount(uploadedCount: Int, animate: Boolean) {
-        if (this.uploadedCount < uploadedCount && animate) {
+        if (this.starsCount < uploadedCount && animate) {
             animateChange()
         }
-        this.uploadedCount = uploadedCount
+        this.starsCount = uploadedCount
     }
 
     private fun animateChange() {

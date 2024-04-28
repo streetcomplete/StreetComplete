@@ -226,7 +226,6 @@
     <string name="credits_translations_title">"Преводи"</string>
     <string name="credits_contributors_title">"Сарадници програмери"</string>
     <string name="credits_author_title">"Аутор"</string>
-    <string name="credits_and_more">"и други…"</string>
     <string name="quest_maxspeed_answer_living_street">"То је стамбена улица"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Значи, постоји овакав знак?"</string>
     <string name="quest_orchard_produce_title">"Шта се овде узгаја?"</string>
@@ -499,7 +498,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Да ли је овај паркинг за моторе наткривен (пружа ли заштиту од кише)?"</string>
     <string name="default_disabled_msg_maxspeed">"Ова врста задатка је иницијално искључена јер обично морате проверити целу улицу за ограничења брзине, а не само истакнути део. Ово некад може бити прилично напорно да би се решио само један задатак."</string>
     <string name="pref_title_quests_restore_hidden">"Врати скривене задатке"</string>
-    <string name="restore_hidden_success">"Враћено је %d скривених задатака"</string>
     <string name="on_level">"на спрату %s"</string>
     <string name="underground">"под земљом"</string>
     <string name="quest_sidewalk_value_yes">"има тротоар"</string>
@@ -837,7 +835,6 @@
     <string name="team_mode_active">"Укључен је рад у тиму"</string>
     <string name="team_mode_deactivated">"Искључен је рад у тиму"</string>
     <string name="undo_confirm_title2">"Опозвати следећу промену?"</string>
-    <string name="synced">"Синхронизовано"</string>
     <string name="toast_undo_unavailable">"Ова промена је већ синхронизована и није могућ њен опозив"</string>
     <string name="quest_cycleway_value_separate">"приказано одвојено на карти"</string>
     <string name="created_note_action_title">"Направљена напомена"</string>
@@ -1059,8 +1056,6 @@
     <string name="quest_road_width_title">"Која је ширина пута овде?"</string>
     <string name="quest_road_width_explanation">"Ширина пута од ивичњака до ивичњака: ово обухвата све на површини пута као што су паркинзи на путу или бициклистичке траке, али не не укључује ништа ван тога, као нпр. бициклистичке стазе или паркинге поред пута."</string>
     <string name="quest_sidewalk_answer_none">"Уопште нема тротоара"</string>
-    <string name="about_description_donate_google_play2">"Хвала што желите да подржите ову апликацију!
-Нажалост, због политике Google продавнице, не смемо да прикажемо везу ка донацијама унутар апликације. Штавише, не смемо да ставимо везу ни до нашег главног пројекта."</string>
     <string name="link_osmand_description">"Апликација за мобилни, за преглед карте и навигацију без интернета"</string>
     <string name="link_sunders_description">"Карта камера и опреме за надзор"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Држите близу стрелице, али пазите на саобраћај!"</string>
@@ -1379,9 +1374,11 @@
     <string name="quest_buildingType_under_construction">"У изградњи"</string>
     <string name="overlay_buildings">"Грађевине"</string>
     <string name="quest_pedestrian_crossing_signals">"Да ли је овде потребно сачекати семафор пре преласка?"</string>
-    <string name="quest_pedestrian_crossing_markings">"Да ли је овај прелаз обележен хоризонталном сигналиацјом?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Да ли је овај прелаз обележен хоризонталном сигнализацијом?"</string>
     <string name="overlay_places">"Места"</string>
     <string name="overlay_things">"Ствари"</string>
     <string name="disused">"некористи се"</string>
     <string name="unknown_object">"Непознати објекат"</string>
+    <string name="quest_leafType_tree_title">"Да ли ово дрво има иглице или лишће?"</string>
+    <string name="quest_bbq_fuel_gas">"Пумпа"</string>
 </resources>

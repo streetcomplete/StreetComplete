@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en, international]
-atmOperators: [中国银行, 中国工商银行, 北京银行, 中国建设银行, 中国农业银行, ICBC, 交通银行, 招商银行, 华夏银行, 中国光大银行, 中信银行, 上海浦东发展银行]
+atmOperators: [中国银行, 中国工商银行, 北京银行, 中国建设银行, 中国农业银行, ICBC, 交通银行, 招商银行, 华夏银行, 中国光大银行, 中信银行, 上海浦东发展银行, China Construction Bank, Bank of Beijing]
 chargingStationOperators: [国家电网有限公司, 国家电网, 'Tesla, Inc.', Tesla Motors Inc.]

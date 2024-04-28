@@ -226,7 +226,6 @@
     <string name="credits_translations_title">"번역"</string>
     <string name="credits_contributors_title">"코드 기여자"</string>
     <string name="credits_author_title">"제작자·유지보수자"</string>
-    <string name="credits_and_more">"그 외…"</string>
     <string name="quest_maxspeed_answer_living_street">"주택가 거리입니다"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"그러면, 이렇게 생긴 표지판이 있나요?"</string>
     <string name="quest_orchard_produce_title">"이곳의 재배 작물이 무엇인가요?"</string>
@@ -499,7 +498,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"이 오토바이 주차장에 지붕이 있나요?"</string>
     <string name="default_disabled_msg_maxspeed">"이 유형의 과제를 해결하려면 속도 제한 표지판을 찾아 강조된 부분만이 아니라 도로 전체를 확인해야 하기 때문에 기본적으로 비활성화되어 있습니다. 한 과제를 해결하기 위해 불필요하게 많은 노력이 필요할 수 있습니다."</string>
     <string name="pref_title_quests_restore_hidden">"숨겨진 과제 복원"</string>
-    <string name="restore_hidden_success">"숨겨진 과제 %d개가 복원되었습니다"</string>
     <string name="on_level">"%s층에 있음"</string>
     <string name="underground">"지하"</string>
     <string name="quest_sidewalk_value_yes">"인도"</string>
@@ -837,7 +835,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="team_mode_active">"팀 모드가 활성화되었습니다"</string>
     <string name="team_mode_deactivated">"팀 모드가 비활성화되었습니다"</string>
     <string name="undo_confirm_title2">"이 편집을 취소할까요?"</string>
-    <string name="synced">"동기화됨"</string>
     <string name="toast_undo_unavailable">"이 편집은 이미 동기화되었으므로 되돌릴 수 없습니다"</string>
     <string name="quest_cycleway_value_separate">"지도에 별도로 표시됨"</string>
     <string name="created_note_action_title">"생성된 참고"</string>
@@ -1059,8 +1056,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_road_width_title">"이 도로의 폭은 얼마인가요?"</string>
     <string name="quest_road_width_explanation">"연석 끝에서 끝까지의 길이: 여기에는 갓길 주차공간이나 자전거 차선과 같이 도로 표면에 있는 모든 것을 포함하나 자전거길이나 도로 옆 주차공간 같이 그 너머의 것은 배제합니다."</string>
     <string name="quest_sidewalk_answer_none">"인도 없음"</string>
-    <string name="about_description_donate_google_play2">"저희 앱을 후원해주시려는 마음은 감사합니다!
-안타깝게도, 구글 플레이 스토어 정책상, 기부 링크를 앱 내부에 표시할 수 없습니다. 저희의 경우, 프로젝트 홈으로 연결하는 것 조차 불가능합니다."</string>
     <string name="link_osmand_description">"온라인 또는 오프라인 지도 열람 및 길찾기용 모바일 앱"</string>
     <string name="link_sunders_description">"카메라와 감시 장비 지도"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"교통 흐름에 주의하며 화살표에 가까이 가세요!"</string>

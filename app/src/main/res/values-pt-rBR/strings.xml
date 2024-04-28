@@ -226,7 +226,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>
     <string name="credits_author_title">"Autor e mantenedor"</string>
-    <string name="credits_and_more">"e outros…"</string>
     <string name="quest_maxspeed_answer_living_street">"É uma rua compartilhada"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Então, há uma placa como esta?"</string>
     <string name="quest_orchard_produce_title">"O que é cultivado aqui?"</string>
@@ -499,7 +498,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_motorcycleParkingCoveredStatus_title">"O estacionamento de motocicletas é coberto (protegido da chuva)?"</string>
     <string name="default_disabled_msg_maxspeed">"Este tipo de missão está desabilitado por padrão porque normalmente é necessário conferir a rua toda por placas de limite de velocidade, não apenas o trecho destacado. Isto às vezes pode ser bastante trabalho para para resolver uma única missão."</string>
     <string name="pref_title_quests_restore_hidden">"Restaurar missões ocultadas"</string>
-    <string name="restore_hidden_success">"Restauradas %d missões ocultadas"</string>
     <string name="on_level">"no nível %s"</string>
     <string name="underground">"subterrâneo"</string>
     <string name="quest_sidewalk_value_yes">"com calçada"</string>
@@ -840,7 +838,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="team_mode_active">"O Modo de equipe está ativo"</string>
     <string name="team_mode_deactivated">"O Modo de equipe desativado"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
-    <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>
     <string name="quest_cycleway_value_separate">"exibido separadamente no mapa"</string>
     <string name="created_note_action_title">"Nota criada"</string>
@@ -1062,8 +1059,6 @@ Faça o mesmo para o outro lado, se houver."</string>
     <string name="quest_road_width_title">"Qual é a largura desta estrada aqui?"</string>
     <string name="quest_road_width_explanation">"A largura da estrada de um meio-fio ao outro: isto inclui qualquer coisa na superfície da rua, inclusive estacionamento na própria via ou ciclofaixas, mas exclui qualquer coisa além do meio-fio como calçadas, estacionamento fora da via ou ciclovias próximas."</string>
     <string name="quest_sidewalk_answer_none">"Nada de calçada"</string>
-    <string name="about_description_donate_google_play2">"Obrigado por considerar apoiar este aplicativo!
-Infelizmente, devido a uma política da Google Play Store, nenhum link que leve a doações pode ser exibido no aplicativo. Nesse contexto, nem mesmo o link para a página inicial do nosso projeto é permitido."</string>
     <string name="link_osmand_description">"Aplicativo móvel para visualização e navegação de mapas online e offline"</string>
     <string name="link_sunders_description">"Um mapa de câmeras e equipamentos de vigilância"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Mantenha-se mais perto da seta, mas cuidado com o trânsito!"</string>

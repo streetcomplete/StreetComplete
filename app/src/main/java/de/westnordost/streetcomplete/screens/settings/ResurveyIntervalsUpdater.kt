@@ -29,8 +29,6 @@ class ResurveyIntervalsUpdater(private val prefs: ObservableSettings) {
     init {
         settingsListener = prefs.addStringOrNullListener(Prefs.RESURVEY_INTERVALS) { update() }
     }
-
-
 }
 
 private val Prefs.ResurveyIntervals.multiplier: Float get() = when (this) {

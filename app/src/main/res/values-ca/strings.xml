@@ -227,7 +227,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="credits_translations_title">"Traduccions"</string>
     <string name="credits_contributors_title">"Contribuïdors al codi"</string>
     <string name="credits_author_title">"Autor i mantenidor"</string>
-    <string name="credits_and_more">"i més…"</string>
     <string name="quest_maxspeed_answer_living_street">"És una via residencial"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Per tant, hi ha un senyal com aquest?"</string>
     <string name="quest_orchard_produce_title">"Què hi cultiven aquí?"</string>
@@ -500,7 +499,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_motorcycleParkingCoveredStatus_title">"Aquest aparcament de motos és cobert (protegit de la pluja)?"</string>
     <string name="default_disabled_msg_maxspeed">"Aquest tipus de missió està desactivada per defecte perquè habitualment cal revisar els senyals de límit de velocitat en tot el carrer, no només de la secció ressaltada. De vegades això pot ser massa per només resoldre una única missió."</string>
     <string name="pref_title_quests_restore_hidden">"Restaura les missions ocultes"</string>
-    <string name="restore_hidden_success">"S'han restaurat %d missions ocultes"</string>
     <string name="on_level">"en la planta %s"</string>
     <string name="underground">"subterrani"</string>
     <string name="quest_sidewalk_value_yes">"amb vorera"</string>
@@ -837,7 +835,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="team_mode_active">"El mode d'equip està activat"</string>
     <string name="team_mode_deactivated">"S'ha desactivat el mode d'equip"</string>
     <string name="undo_confirm_title2">"Desfer aquesta edició?"</string>
-    <string name="synced">"Sincronitzat"</string>
     <string name="toast_undo_unavailable">"Aquesta edició ja està sincronitzada i no es pot desfer"</string>
     <string name="quest_cycleway_value_separate">"es mostra separadament al mapa"</string>
     <string name="created_note_action_title">"S'ha creat una nota"</string>
@@ -1063,8 +1060,6 @@ Feu el mateix per a l'altre costat."</string>
     <string name="quest_road_width_title">"Quina és l’amplada de la via ací?"</string>
     <string name="quest_road_width_explanation">"L'amplada de la calçada de vorada a vorada. Això inclou qualsevol cosa en la superfície de la via, com ara places d'aparcament o carrils bici, però exclou qualsevol cosa més enllà, com ara carrils bici o aparcaments als costats de la calçada."</string>
     <string name="quest_sidewalk_answer_none">"No hi ha vorera"</string>
-    <string name="about_description_donate_google_play2">"Gràcies per considerar donar suport a aquesta aplicació!
-Malauradament, a causa d'una política de Google Play Store, no es poden mostrar enllaços a l'aplicació que condueixin a donacions. En aquest context, ni tan sols es permet la vinculació amb el nostre projecte."</string>
     <string name="link_osmand_description">"Aplicació mòbil per a navegació i visualització del mapa en línia i fora de línia"</string>
     <string name="link_sunders_description">"Un mapa de càmeres i equipament de vigilància"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Mantén més pròxim a la fletxa, però vigila amb el trànsit!"</string>

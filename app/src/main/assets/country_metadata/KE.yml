@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Standard Chartered, Barclays, KCB ATM, KCB, Equity Bank, PesaPoint, Pesa Point, National Bank ATM, Kenya Commercial Bank, Ecobank, Cooperative Bank, Barclays Bank ATM, Stanbic Bank, Equity Bank ATM, Diamond Trust Bank, Prime Bank, Kcb, Equity Bank Atm, Equity ATM, Cooprative Bank, Cooperative Bank ATM, CFC Stanbic, CBA ATM]
+atmOperators: [Standard Chartered, Barclays, KCB ATM, KCB, Equity Bank, Cooperative Bank, PesaPoint, Pesa Point, National Bank ATM, Kenya Commercial Bank, Ecobank, Barclays Bank ATM, Stanbic Bank, Equity Bank ATM, Diamond Trust Bank, Prime Bank, Post Bank, Kcb, Equity Bank Atm, Equity ATM, Cooprative Bank, Cooperative Bank ATM, CFC Stanbic, CBA ATM]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white

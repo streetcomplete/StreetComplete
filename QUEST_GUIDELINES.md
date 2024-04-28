@@ -1,12 +1,12 @@
 Do you have an idea for a new quest? Read this!
 
-## 1. Decide whether the idea works out with StreetComplete
+## 1. Decide whether the idea works out with StreetComplete Quests
 
 Consider the following:
 
-### Limitations of StreetComplete
+### Limitations of StreetComplete Quests
 - 🌟 Only existing elements can be extended, no elements can be added or removed.
-- ✂️ The geometry of elements cannot be changed (except splitting up ways)
+- ✂️ The geometry of elements cannot be changed (except splitting up ways and moving nodes)
 - 🏷️ So, basically: Only tags can be edited
 
 ### General guidelines

@@ -524,7 +524,8 @@
                     "terms": "model budki,budka telefoniczna,budka"
                 },
                 "bottle": {
-                    "label": "Napełnianie butelek"
+                    "label": "Napełnianie butelek",
+                    "terms": "napełnianie butelek"
                 },
                 "boules": {
                     "label": "Odmiana gry w bule"
@@ -556,7 +557,17 @@
                     "label": "Rodzaj"
                 },
                 "bridge_combo": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "aqueduct": "Akwedukt",
+                        "boardwalk": "Kładka drewniana",
+                        "cantilever": "Wspornikowy",
+                        "covered": "Kryty",
+                        "low_water_crossing": "Niskowodny",
+                        "movable": "Ruchomy",
+                        "trestle": "Wsparty na kratownicy",
+                        "viaduct": "Wiadukt"
+                    }
                 },
                 "building": {
                     "label": "Budynek",
@@ -741,7 +752,8 @@
                     }
                 },
                 "changing_table": {
-                    "label": "Przewijak"
+                    "label": "Przewijak",
+                    "terms": "przewijak,stół do przewijania niemowląt,stół do zmieniania pieluch"
                 },
                 "charge_fee": {
                     "label": "Wysokość opłaty",
@@ -1330,6 +1342,7 @@
                     "options": {
                         "leashed": "Tylko na smyczy",
                         "no": "Niedozwolone",
+                        "unleashed": "Smycz nieobowiązkowa",
                         "yes": "Dozwolone"
                     },
                     "terms": "psy"
@@ -1582,6 +1595,9 @@
                     "label": "Rodzaj",
                     "placeholder": "Domyślny"
                 },
+                "fortification_type": {
+                    "label": "Rodzaj"
+                },
                 "fountain": {
                     "label": "Rodzaj"
                 },
@@ -1604,11 +1620,12 @@
                         "adblue": "AdBlue",
                         "adblue:canister": "AdBlue (w kanistrach)",
                         "biodiesel": "Biodiesel",
-                        "cng": "CNG",
+                        "cng": "Sprężony gaz ziemny (CNG)",
                         "diesel": "Olej napędowy",
                         "e10": "Paliwo z etanolem (E10)",
                         "e85": "Paliwo z etanolem (E85)",
                         "h70": "Wodór gazowy (700 bar)",
+                        "lng": "Skroplony gaz ziemny (LNG)",
                         "lpg": "LPG (propan-butan)",
                         "octane_100": "Benzyna (100 oktanów)",
                         "octane_80": "Benzyna (80 oktanów)",
@@ -1920,6 +1937,7 @@
                         "manor": "Dwór",
                         "memorial": "Pomnik",
                         "milestone": "Kamień milowy",
+                        "millstone": "Kamień młyński",
                         "mine": "Kopalnia / kamieniołom",
                         "mine_shaft": "Szyb",
                         "monument": "Monument (duży pomnik)",
@@ -2072,10 +2090,39 @@
                 },
                 "kerb": {
                     "label": "Krawężnik",
+                    "options": {
+                        "flush": {
+                            "description": "Krawężnik obniżony do poziomu jezdni.",
+                            "title": "Równy z jezdnią"
+                        },
+                        "lowered": {
+                            "description": "Krawężnik obniżony do wysokości nie więcej niż kilku centymetrów nad poziom jezdni. Może być pokonany przez osoby na wózkach inwalidzkich.",
+                            "title": "Obniżony"
+                        },
+                        "no": {
+                            "description": "W tym miejscu wcale nie ma krawężnika.",
+                            "title": "Brak"
+                        },
+                        "raised": {
+                            "description": "Krawężnik o wysokości większej niż kilka centymetrów nad poziom jezdni. Nie może być z łatwością pokonany przez osoby na wózkach inwalidzkich.",
+                            "title": "Wysoki"
+                        },
+                        "rolled": {
+                            "description": "Wysoki krawężnik o zaokrąglonym profilu, który ułatwia pokonanie go przez samochody lub rowery, ale nie przez osoby na wózkach inwalidzkich.",
+                            "title": "Zaokrąglony"
+                        },
+                        "yes": {
+                            "description": "W tym miejscu znajduje się krawężnik, ale nie wiadomo, jakiej jest wysokości i kształtu.",
+                            "title": "Tak (nieokreślony)"
+                        }
+                    },
                     "terms": "krawężnik"
                 },
                 "kerb/height": {
                     "label": "Wysokość"
+                },
+                "kerb/kerb_barrier": {
+                    "label": "Rodzaj"
                 },
                 "kitchen": {
                     "label": "Kuchnia",
@@ -2166,7 +2213,14 @@
                     "terms": "kategorie prawa jazdy"
                 },
                 "lifeguard": {
-                    "label": "Ratownik"
+                    "label": "Rodzaj",
+                    "options": {
+                        "base": "Baza",
+                        "tower": "Wieża ratownicza"
+                    }
+                },
+                "lifeguard_check": {
+                    "label": "Ratownik wodny"
                 },
                 "lift_gate/type": {
                     "label": "Rodzaj",
@@ -2976,6 +3030,20 @@
                         "forward": "Do przodu"
                     }
                 },
+                "railway/switch": {
+                    "label": "Rodzaj",
+                    "options": {
+                        "abt": "Abta",
+                        "default": "Zwykły",
+                        "double_slip": "Krzyżowy dwustronny",
+                        "single_slip": "Krzyżowy jednostronny",
+                        "three_way": "Trójdrożny",
+                        "wye": "Łukowy"
+                    }
+                },
+                "railway/track_ref": {
+                    "label": "Numer toru"
+                },
                 "ramp": {
                     "label": "Pochylnia",
                     "options": {
@@ -3036,7 +3104,8 @@
                     "terms": "oznaczenie departamentu edukacji,oznaczenie department of education,edubase,dfe urn"
                 },
                 "ref/isil": {
-                    "label": "Kod ISIL"
+                    "label": "Kod ISIL",
+                    "terms": "kod isil"
                 },
                 "ref/linz/place_id-NZ": {
                     "label": "Identyfikator NZGB",
@@ -3062,6 +3131,10 @@
                 },
                 "ref_platform": {
                     "label": "Numer peronu"
+                },
+                "ref_rail": {
+                    "label": "Numer linii",
+                    "terms": "numer linii"
                 },
                 "ref_road_number": {
                     "label": "Numer drogi",
@@ -3352,7 +3425,7 @@
                     "label": "Sprzęt ratujący życie",
                     "options": {
                         "aircraft": "Samolot",
-                        "first_aid": "Wyposażenie do pierwszej pomoc",
+                        "first_aid": "Wyposażenie do pierwszej pomocy",
                         "hovercraft": "Poduszkowiec",
                         "lifeboat": "Łódź ratunkowa (na lądzie)",
                         "lifeboat_on_mooring": "Łódź ratunkowa (zacumowana)",
@@ -3442,8 +3515,8 @@
                 "side": {
                     "label": "Strona",
                     "options": {
-                        "left": "Lewa",
-                        "right": "Prawa"
+                        "left": "Po lewej (dla rowerzysty)",
+                        "right": "Po prawej (dla rowerzysty)"
                     }
                 },
                 "siren/purpose": {
@@ -3576,6 +3649,7 @@
                         "cricket": "Krykiet",
                         "curling": "Curling",
                         "cycling": "Kolarstwo",
+                        "darts": "Dart",
                         "disc_golf": "Disc golf",
                         "dog_racing": "Wyścigi psów",
                         "equestrian": "Jeździectwo",
@@ -3745,6 +3819,10 @@
                         "valve_group": "Grupa zaworów"
                     }
                 },
+                "summit/cross": {
+                    "label": "Krzyż na wierzchołku",
+                    "terms": "krzyż na wierzchołku,krzyż na szczycie"
+                },
                 "supervised": {
                     "label": "Strzeżone / Nadzorowane",
                     "terms": "strzeżone,nadzorowane"
@@ -3828,7 +3906,17 @@
                     }
                 },
                 "swimming_pool": {
-                    "label": "Rodzaj"
+                    "label": "Rodzaj",
+                    "options": {
+                        "kids": "Dla dzieci",
+                        "lazy_river": "Leniwa rzeka",
+                        "personal": "Przydomowy",
+                        "plunge": "Do skoków",
+                        "spa": "Relaksacyjny",
+                        "swimming": "Pływacki",
+                        "wading": "Rekreacyjny / Brodzik",
+                        "wave_pool": "Z falami"
+                    }
                 },
                 "switch": {
                     "label": "Rodzaj",
@@ -3932,6 +4020,15 @@
                 "toilets/handwashing": {
                     "label": "Umywalki",
                     "terms": "umywalki,mycie rąk"
+                },
+                "toilets/menstrual_products": {
+                    "label": "Darmowe środki higieny menstruacyjnej",
+                    "options": {
+                        "limited": "W niektórych pomieszczeniach",
+                        "no": "Brak",
+                        "yes": "We wszystkich pomieszczeniach"
+                    },
+                    "terms": "środki higieny menstruacyjnej,podpaski,tampony"
                 },
                 "toilets/position": {
                     "label": "Pozycje",
@@ -4193,7 +4290,7 @@
                         "electronics": "Urządzenia elektroniczne",
                         "elongated_coin": "Monety pamiątkowe",
                         "excrement_bags": "Worki na psie odchody",
-                        "feminine_hygiene": "Produkty higieny kobiecej",
+                        "feminine_hygiene": "Środki higieny kobiecej",
                         "food": "Jedzenie",
                         "fuel": "Paliwo",
                         "ice_cream": "Lody",
@@ -4213,7 +4310,8 @@
                     "terms": "kanał vhf"
                 },
                 "via": {
-                    "label": "Przez"
+                    "label": "Przez",
+                    "terms": "przez,poprzez"
                 },
                 "video_calls": {
                     "label": "Rozmowy wideo",
@@ -4596,6 +4694,10 @@
                     "name": "Samoobsługowa stacja naprawy rowerów",
                     "terms": "samoobsługowa stacja naprawy rowerów,naprawa rowerów,narzędzia rowerowe,serwis,rowery,naprawy"
                 },
+                "amenity/bicycle_wash": {
+                    "name": "Myjnia rowerowa",
+                    "terms": "myjnia rowerowa,myjnia dla rowerów,myjka rowerowa"
+                },
                 "amenity/biergarten": {
                     "name": "Ogródek piwny",
                     "terms": "ogródek piwny,bar plażowy,beach bar"
@@ -4850,6 +4952,10 @@
                     "name": "Urolog",
                     "terms": "urolog,urologia"
                 },
+                "amenity/dog_toilet": {
+                    "name": "Toaleta dla psów",
+                    "terms": "toaleta dla psów"
+                },
                 "amenity/dojo": {
                     "name": "Szkoła sztuk walki",
                     "terms": "szkoła sztuk walki,szkoła walki,dojo"
@@ -5032,6 +5138,10 @@
                     "name": "Biblioteka",
                     "terms": "biblioteka,czytelnia,wypożyczalnia książek"
                 },
+                "amenity/library_dropoff": {
+                    "name": "Wrzutnia biblioteczna",
+                    "terms": "wrzutnia biblioteczna,wrzutomat,zwrot książek,skrzynka do zwrotu książek"
+                },
                 "amenity/loading_dock": {
                     "name": "Dok załadunkowy",
                     "terms": "dok załadunkowy"
@@ -5043,6 +5153,10 @@
                 "amenity/love_hotel": {
                     "name": "Hotel miłości",
                     "terms": "hotel miłości,hotel na godziny,love hotel"
+                },
+                "amenity/luggage_locker": {
+                    "name": "Skrytki bagażowe",
+                    "terms": "skrytki bagażowe,schowki bagażowe,skrytka,schowek,na bagaż"
                 },
                 "amenity/marketplace": {
                     "name": "Targowisko / Hala targowa",
@@ -5596,8 +5710,8 @@
                     "terms": "dozownik z workami na psie odchody,woreczki na psie odchody"
                 },
                 "amenity/vending_machine/feminine_hygiene": {
-                    "name": "Automat z produktami higieny kobiecej",
-                    "terms": "automat z produktami higieny kobiecej,podpaski,tampony"
+                    "name": "Automat ze środkami higieny kobiecej",
+                    "terms": "automat ze środkami higieny kobiecej,podpaski,tampony"
                 },
                 "amenity/vending_machine/food": {
                     "name": "Automat sprzedający jedzenie",
@@ -6520,6 +6634,10 @@
                 "emergency/destination": {
                     "name": "Docelowy dojazd dla służb ratowniczych"
                 },
+                "emergency/disaster_response": {
+                    "name": "Baza formacji obrony cywilnej",
+                    "terms": "baza formacji obrony cywilnej,obrona cywilna,zarządzanie kryzysowe,stacja ratownictwa specjalistycznego"
+                },
                 "emergency/fire_alarm": {
                     "name": "Skrzynka z alarmem przeciwpożarowym",
                     "terms": "skrzynka z alarmem przeciwpożarowym"
@@ -7132,6 +7250,10 @@
                     "name": "Budynek zabytkowy",
                     "terms": "budynek zabytkowy,budynek historyczny,zabytek"
                 },
+                "historic/cannon": {
+                    "name": "Armata",
+                    "terms": "armata,działo"
+                },
                 "historic/castle": {
                     "name": "Zamek",
                     "terms": "zamek,gród"
@@ -7569,6 +7691,10 @@
                     "terms": "ogród społeczny,ogród społecznościowy,ogród sąsiedzki",
                     "aliases": "Ogród społecznościowy\nOgród sąsiedzki"
                 },
+                "leisure/garden/kitchen": {
+                    "name": "Ogródek warzywny/ziołowy",
+                    "terms": "ogródek warzywny,ogródek ziołowy,ogródek kuchenny"
+                },
                 "leisure/garden/residential": {
                     "name": "Ogródek przydomowy",
                     "terms": "ogródek przydomowy"
@@ -7584,6 +7710,10 @@
                 "leisure/horse_riding": {
                     "name": "Ośrodek jeździecki",
                     "terms": "ośrodek jeździecki,ośrodek jazdy konnej,stadnina,jeździectwo"
+                },
+                "leisure/hot_tub": {
+                    "name": "Jacuzzi",
+                    "terms": "jacuzzi"
                 },
                 "leisure/ice_rink": {
                     "name": "Lodowisko",
@@ -7987,6 +8117,10 @@
                     "name": "Komin",
                     "terms": "komin"
                 },
+                "man_made/clarifier": {
+                    "name": "Osadnik (ścieki)",
+                    "terms": "osadnik,odstojnik"
+                },
                 "man_made/clearcut": {
                     "name": "Poręba",
                     "terms": "poręba,wyręba,obszar wycinki,wycinka,las,drewno,drzewo"
@@ -8231,9 +8365,8 @@
                     "aliases": "Reper geodezyjny"
                 },
                 "man_made/tailings_pond": {
-                    "name": "Osadnik",
-                    "terms": "osadnik,odstojnik,kopania,szlam",
-                    "aliases": "Odstojnik"
+                    "name": "Osadnik (wody kopalniane)",
+                    "terms": "osadnik,odstojnik,kopania,szlam"
                 },
                 "man_made/telescope": {
                     "name": "Teleskop",
@@ -8573,8 +8706,8 @@
                     "terms": "koryto strumienia,strumień,strumyk,struga,potok,ciek"
                 },
                 "natural/water/wastewater": {
-                    "name": "Osadnik ścieków",
-                    "terms": "osadnik ścieków,odstojnik ścieków,zbiornik wodny,sztuczny zbiornik,zbiornik na ścieki,oczyszczalnia ścieków"
+                    "name": "Osadnik (ścieki)",
+                    "terms": "osadnik,odstojnik,zbiornik wodny,sztuczny zbiornik,zbiornik na ścieki,oczyszczalnia ścieków"
                 },
                 "natural/wetland": {
                     "name": "Mokradło",

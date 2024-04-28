@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Maybank, CIMB Bank, CIMB, MEPS, RHB Bank, Bank Simpanan Nasional, Bank Islam, Bank Rakyat, AmBank, Affin Bank, RHB, Agrobank, Public Bank, Bank Muamalat, ATM AmBank@7eleven, HSBC, Hong Leong Bank, UOB, Standard Chartered, 7-Eleven Malaysia Sdn Bhd, Citibank, Cimb, Bank Islam Malaysia Berhad, BSN, Alliance Bank, Agro Bank, ATM]
+atmOperators: [Maybank, CIMB Bank, CIMB, MEPS, RHB Bank, Bank Simpanan Nasional, Bank Islam, Bank Rakyat, AmBank, Affin Bank, RHB, Agrobank, Public Bank, Bank Muamalat, HSBC, ATM AmBank@7eleven, Hong Leong Bank, UOB, Standard Chartered, Alliance Bank, 7-Eleven Malaysia Sdn Bhd, Citibank, Cimb, Bank Islam Malaysia Berhad, BSN, Agro Bank, ATM]
 centerLineStyle: white
-chargingStationOperators: [chargEV, JomCharge, Gentari, EV Connection, ChargEV, 'Tesla, Inc.', DC Handal, ChargeSini]
+chargingStationOperators: [chargEV, JomCharge, Gentari, ChargeSini, 'Tesla, Inc.', ChargEV, Shell Recharge Solutions, EV Connection, DC Handal]
 isLeftHandTraffic: true
 mobileCountryCode: 502
 noParkingLineStyle: yellow
