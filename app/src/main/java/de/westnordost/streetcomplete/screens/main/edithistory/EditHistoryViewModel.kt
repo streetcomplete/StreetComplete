@@ -86,7 +86,9 @@ class EditHistoryViewModelImpl(
     } ?: ElementPointGeometry(edit.position)
 
     override fun select(editKey: EditKey?) {
-        selectedEdit.value = edits.value.firstOrNull { it.key == editKey }
+        selectedEdit.value =
+            if (editKey != null) edits.value.firstOrNull { it.key == editKey }
+            else null
     }
 
     override fun undo(edit: Edit) {
