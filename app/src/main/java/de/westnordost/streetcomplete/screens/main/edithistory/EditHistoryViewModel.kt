@@ -87,8 +87,11 @@ class EditHistoryViewModelImpl(
 
     override fun select(editKey: EditKey?) {
         selectedEdit.value =
-            if (editKey != null) edits.value.firstOrNull { it.key == editKey }
-            else null
+            if (editKey != null) {
+                edits.value.firstOrNull { it.key == editKey }
+            } else {
+                null
+            }
     }
 
     override fun undo(edit: Edit) {
