@@ -34,7 +34,7 @@ abstract class EditHistoryViewModel : ViewModel() {
     abstract suspend fun getEditGeometry(edit: Edit): ElementGeometry
 
     abstract fun select(editKey: EditKey?)
-    abstract fun undo(edit: Edit)
+    abstract fun undo(editKey: EditKey)
 
     abstract val featureDictionaryLazy: Lazy<FeatureDictionary>
 }
@@ -91,9 +91,9 @@ class EditHistoryViewModelImpl(
             else null
     }
 
-    override fun undo(edit: Edit) {
+    override fun undo(editKey: EditKey) {
         launch(IO) {
-            editHistoryController.undo(edit)
+            editHistoryController.undo(editKey)
         }
     }
 
