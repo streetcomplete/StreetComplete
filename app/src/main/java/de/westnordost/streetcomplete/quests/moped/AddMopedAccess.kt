@@ -9,20 +9,17 @@ import de.westnordost.streetcomplete.osm.Tags
 
 class AddProhibitedForMoped : OsmFilterQuestType<AddMopedAccessAnswer>() {
 
-    override val elementFilter =
-        //only include separate cycleways,
-        // in case of a cycleway that is part of a road, mopeds are assumed to be allowed on the road
-        """
+    override val elementFilter = """
         ways with (
             highway = cycleway
+            or highway = path and bicycle = designated
+            or highway = footway and bicycle = designated
         )
         and !moped
         and (motor_vehicle != no or !motor_vehicle)
-        """
+    """
     override val enabledInCountries = NoCountriesExcept("BE")
     override val defaultDisabledMessage = R.string.default_disabled_msg_visible_sign_moped
-
-
     override val changesetComment = "Specify if a moped is allowed on the cycleway"
     override val wikiLink = "Key:moped"
     override val icon = R.drawable.ic_quest_moped_access
