@@ -115,6 +115,7 @@ class ElementEditsController(
         }
         val syncSuccess: Boolean
         val editIdsToUpdate = HashSet<Long>()
+        val syncedEdit by lazy { edit.copy(isSynced = true) }
         synchronized(this) {
             elementUpdates.idUpdates.flatMapTo(editIdsToUpdate) {
                 editElementsDB.getAllByElement(it.elementType, it.oldElementId)
@@ -133,10 +134,10 @@ class ElementEditsController(
             syncSuccess = editsDB.markSynced(edit.id)
 
             if (syncSuccess)
-                editCache[edit.id] = edit.copy(isSynced = true)
+                editCache[edit.id] = syncedEdit
         }
 
-        if (syncSuccess) onSyncedEdit(edit, editIdsToUpdate) // forward which ids were updated, because history controller needs to reload those edits
+        if (syncSuccess) onSyncedEdit(syncedEdit, editIdsToUpdate) // forward which ids were updated, because history controller needs to reload those edits
         elementIdProviderDB.updateIds(elementUpdates.idUpdates)
         synchronized(emptyIdProviderCache) { emptyIdProviderCache.remove(edit.id) }
     }

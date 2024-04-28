@@ -1,12 +1,12 @@
 Do you have an idea for a new quest? Read this!
 
-## 1. Decide whether the idea works out with SCEE
+## 1. Decide whether the idea works out with SCEE Quests
 
 Consider the following:
 
-### Limitations of SCEE
+### Limitations of SCEE Quests
 - 🌟 Only existing elements can be extended, but nodes can be moved, removed and added (free-floating or to a single way).
-- ✂️ The geometry of elements cannot be changed (except splitting up ways and moving single nodes)
+- ✂️ The geometry of elements cannot be changed (except splitting up ways and moving nodes)
 
 ### General guidelines
 - See them as suggestions, not necessarily as requirements.

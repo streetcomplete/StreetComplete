@@ -54,7 +54,7 @@ class EditHistoryFragment(private val allHidden: Boolean = false) : Fragment(R.l
                         editItem.edit,
                         element,
                         viewModel.featureDictionaryLazy,
-                        viewModel::undo
+                        { viewModel.undo(it.key) }
                     ).show()
                 }
             } else {

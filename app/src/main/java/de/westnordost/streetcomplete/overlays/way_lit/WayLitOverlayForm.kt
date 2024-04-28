@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus
 import de.westnordost.streetcomplete.osm.lit.LitStatus.AUTOMATIC
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
-import de.westnordost.streetcomplete.osm.lit.LitStatus.UNSUPPORTED
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.osm.lit.applyTo
 import de.westnordost.streetcomplete.osm.lit.asItem

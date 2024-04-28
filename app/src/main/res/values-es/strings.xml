@@ -687,7 +687,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="user_profile_global_rank">"Clasificación"</string>
     <string name="user_profile_local_rank">"Clasificación en
 %s"</string>
-    <string name="user_profile_days_active">"Dias activo"</string>
+    <string name="user_profile_days_active">"Días activo"</string>
     <string name="user_profile_achievement_levels">"Logros y niveles"</string>
     <string name="quest_address_street_no_named_streets">"No pertenece a una calle con nombre"</string>
     <string name="quest_address_street_place_name_label">"Poner nombre:"</string>
@@ -699,7 +699,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="privacy_html_tileserver2">"&lt;p&gt;Para poder ver el mapa descargamos teselas vectoriales de %1$s. Mira la &lt;a href=\"%2$s\"&gt;declaración de privacidad&lt;/a&gt; para más información.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
     <string name="quest_board_type_history">"Historia"</string>
-    <string name="quest_board_type_geology">"Geografía"</string>
+    <string name="quest_board_type_geology">"Geología"</string>
     <string name="quest_board_type_plants">"Plantas"</string>
     <string name="quest_board_type_wildlife">"Fauna silvestre"</string>
     <string name="quest_board_type_nature">"Naturaleza (temas múltiples)"</string>
@@ -711,7 +711,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_board_type_map_description">"Si el cartel es sobre un tema en particular déjalo claro y afina tu selección, sin importar el mapa que pueda tener. Por ejemplo; un cartel de transporte público puede tener un mapa con una ruta de autobús. Si el tema no aparece en la lista deja una nota."</string>
     <string name="quest_surface_detailed_answer_impossible">"Varios tipos de superficie…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"¿Estás seguro de que no puedes poner el tipo exacto de superficie? Ten en cuenta que responder «difiere a lo largo de la vía» te permite partir en dos en el punto donde cambia. Puedes pulsar en «no sabría decir» si hay un solo tipo de superficie pero no aparece en la lista."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Explica brevemente el tipo de superficie, por ejemplo; «arenoso con algún adoquín». Puedes escribir hasta un máximo de 255 caracteres."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Explica brevemente el tipo de superficie, por ejemplo; «arenoso con algún adoquín». Puedes escribir hasta un máximo de 255 carácteres."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Casas adosadas"</string>
     <string name="at_housename">"Nombre de la casa %s"</string>
@@ -1122,8 +1122,8 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_step_count_stile_hint">"Pon el número de escalones hasta la parte más alta, si hay más de un lado que de otro pon el lado que más tenga."</string>
     <string name="quest_shoulder_explanation2">"Un arcén es una franja pensada para paradas de emergencia. Puede que no esté del todo pavimentado o que no tenga la anchura suficiente para que un vehículo entero salga de la calzada."</string>
     <string name="quest_cycleway_value_none_and_oneway">"no hay nada, y no se puede ir en bici en esta dirección"</string>
-    <string name="map_btn_create_track">"Empezar una nueva traza GPS"</string>
-    <string name="map_btn_stop_track">"Parar la grabación de la traza GPS"</string>
+    <string name="map_btn_create_track">"Empezar una nueva traza GPX"</string>
+    <string name="map_btn_stop_track">"Parar la grabación de la traza GPX"</string>
     <string name="quest_bicycle_rental_capacity_title">"¿Cuál es el tope de bicis de alquiler que admite?"</string>
     <string name="quest_bicycle_rental_type_title">"¿De qué tipo de alquiler de bici estamos hablando?"</string>
     <string name="quest_bicycle_rental_type_docking_station">"Una estación base con anclajes"</string>

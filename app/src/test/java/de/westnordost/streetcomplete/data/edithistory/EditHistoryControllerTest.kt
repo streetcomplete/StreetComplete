@@ -93,25 +93,31 @@ class EditHistoryControllerTest {
 
     @Test fun `undo element edit`() {
         val e = edit()
-        ctrl.undo(e)
+        on(elementEditsController.get(e.id)).thenReturn(e)
+        on(elementEditsController.getAll()).thenReturn(listOf(e))
+        ctrl.undo(e.key)
         verify(elementEditsController).undo(e)
     }
 
     @Test fun `undo note edit`() {
         val e = noteEdit()
-        ctrl.undo(e)
+        on(noteEditsController.get(e.id)).thenReturn(e)
+        on(noteEditsController.getAll()).thenReturn(listOf(e))
+        ctrl.undo(e.key)
         verify(noteEditsController).undo(e)
     }
 
     @Test fun `undo hid quest`() {
         val e = questHidden(ElementType.NODE, 1L, TestQuestTypeA())
-        ctrl.undo(e)
-        verify(osmQuestsHiddenController).unhide(OsmQuestKey(ElementType.NODE, 1L, "TestQuestTypeA"))
+        on(osmQuestsHiddenController.getHidden(e.questKey)).thenReturn(e)
+        ctrl.undo(e.key)
+        verify(osmQuestsHiddenController).unhide(e.questKey)
     }
 
     @Test fun `undo hid note quest`() {
         val e = noteQuestHidden()
-        ctrl.undo(e)
+        on(osmNoteQuestsHiddenController.getHidden(e.note.id)).thenReturn(e)
+        ctrl.undo(e.key)
         verify(osmNoteQuestsHiddenController).unhide(e.note.id)
     }
 

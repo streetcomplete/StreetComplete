@@ -32,18 +32,21 @@ fun parseSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
         else -> null // only happens if highway=cycleway
     }
 
+    // invalid tagging: e.g. highway=footway + foot=no
+    if ((foot == null || foot in noFoot) && (bicycle == null || bicycle in noCycling)) return null
+
     if (bicycle in noCycling) return NOT_ALLOWED
 
     if (bicycle in yesButNotDesignated && foot == "designated") return ALLOWED_ON_FOOTWAY
 
-    if (bicycle in yesButNotDesignated && foot in yesButNotDesignated) return PATH
+    if (bicycle in yesButNotDesignated && foot != "designated") return PATH
 
-    if (bicycle != "designated") return NON_DESIGNATED
+    if (bicycle != "designated") return NON_DESIGNATED_ON_FOOTWAY
 
     val hasSidewalk = parseSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     if (hasSidewalk) return EXCLUSIVE_WITH_SIDEWALK
 
-    if (foot == "no" || foot == "use_sidepath" || foot == null) return EXCLUSIVE
+    if (foot in noFoot || foot == null) return EXCLUSIVE
 
     val segregated = tags["segregated"] == "yes"
     return if (segregated) SEGREGATED else NON_SEGREGATED
@@ -51,6 +54,10 @@ fun parseSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
 
 private val noCycling = setOf(
     "no", "dismount"
+)
+
+private val noFoot = setOf(
+    "no", "use_sidepath"
 )
 
 private val yesButNotDesignated = setOf(
