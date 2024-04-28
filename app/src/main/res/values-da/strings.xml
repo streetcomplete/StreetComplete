@@ -1387,4 +1387,5 @@ Du kan finde oplysninger om donationer på vores hjemmeside eller projekthjemmes
     <string name="quest_isAmenityIndoor_outside_covered">"Ikke indenfor, men overdækket"</string>
     <string name="lit_value_unsupported">"Specifik belysningsstatus, som ikke kan vælges i denne app"</string>
     <string name="quest_generic_otherAnswers2">"Øh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Er der trafiksignaler, der viser, hvornår man skal krydse her?"</string>
 </resources>

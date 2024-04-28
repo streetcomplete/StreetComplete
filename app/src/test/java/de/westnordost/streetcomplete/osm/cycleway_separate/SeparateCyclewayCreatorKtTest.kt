@@ -98,13 +98,19 @@ class SeparateCyclewayCreatorKtTest {
 
     @Test fun `apply allowed`() {
         assertEquals(
-            setOf(StringMapEntryAdd("bicycle", "yes")),
+            setOf(
+                StringMapEntryAdd("bicycle", "yes"),
+                StringMapEntryModify("highway", "footway", "footway")
+            ),
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway"
             ))
         )
         assertEquals(
-            setOf(StringMapEntryModify("bicycle", "no", "yes")),
+            setOf(
+                StringMapEntryModify("bicycle", "no", "yes"),
+                StringMapEntryModify("highway", "footway", "footway")
+            ),
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "bicycle" to "no"
@@ -114,14 +120,20 @@ class SeparateCyclewayCreatorKtTest {
 
     @Test fun `apply allowed does not re-tag bicycle=permissive etc`() {
         assertEquals(
-            setOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())),
+            setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())
+            ),
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "bicycle" to "permissive"
             ))
         )
         assertEquals(
-            setOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())),
+            setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())
+            ),
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "bicycle" to "private"
@@ -133,8 +145,8 @@ class SeparateCyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("bicycle", "yes"),
-                StringMapEntryModify("highway", "cycleway", "path"),
-                StringMapEntryModify("foot", "no", "yes")
+                StringMapEntryModify("highway", "cycleway", "footway"),
+                StringMapEntryModify("foot", "no", "designated")
             ),
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -147,7 +159,8 @@ class SeparateCyclewayCreatorKtTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("bicycle", "yes"),
-                StringMapEntryModify("highway", "cycleway", "footway")
+                StringMapEntryModify("highway", "cycleway", "footway"),
+                StringMapEntryModify("foot", "designated", "designated"),
             ),
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "cycleway",
@@ -159,6 +172,7 @@ class SeparateCyclewayCreatorKtTest {
     @Test fun `apply allowed removes sidewalk and segregated tags`() {
         assertEquals(
             setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
                 StringMapEntryAdd("bicycle", "yes"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
@@ -171,6 +185,7 @@ class SeparateCyclewayCreatorKtTest {
         )
         assertEquals(
             setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
                 StringMapEntryAdd("bicycle", "yes"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
@@ -183,6 +198,7 @@ class SeparateCyclewayCreatorKtTest {
         )
         assertEquals(
             setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
                 StringMapEntryAdd("bicycle", "yes"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
@@ -199,29 +215,41 @@ class SeparateCyclewayCreatorKtTest {
 
     @Test fun `apply non-designated`() {
         assertEquals(
-            setOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())),
-            NON_DESIGNATED.appliedTo(mapOf("highway" to "footway"))
+            setOf(
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString()),
+                StringMapEntryModify("highway", "footway", "footway"),
+            ),
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf("highway" to "footway"))
         )
     }
 
     @Test fun `apply non-designated does not change bicycle tag unless it is designated`() {
         assertEquals(
-            setOf(StringMapEntryDelete("bicycle", "designated")),
-            NON_DESIGNATED.appliedTo(mapOf(
+            setOf(
+                StringMapEntryDelete("bicycle", "designated"),
+                StringMapEntryModify("highway", "footway", "footway"),
+            ),
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "bicycle" to "designated"
             ))
         )
         assertEquals(
-            setOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())),
-            NON_DESIGNATED.appliedTo(mapOf(
+            setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())
+            ),
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "bicycle" to "yes"
             ))
         )
         assertEquals(
-            setOf(StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())),
-            NON_DESIGNATED.appliedTo(mapOf(
+            setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
+                StringMapEntryAdd("check_date:bicycle", nowAsCheckDateString())
+            ),
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "bicycle" to "no"
             ))
@@ -231,10 +259,10 @@ class SeparateCyclewayCreatorKtTest {
     @Test fun `apply non-designated re-tags cycleway and adds foot=yes if foot was not yes before`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("highway", "cycleway", "path"),
-                StringMapEntryModify("foot", "no", "yes")
+                StringMapEntryModify("highway", "cycleway", "footway"),
+                StringMapEntryModify("foot", "no", "designated")
             ),
-            NON_DESIGNATED.appliedTo(mapOf(
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "cycleway",
                 "foot" to "no"
             ))
@@ -244,9 +272,10 @@ class SeparateCyclewayCreatorKtTest {
     @Test fun `apply non-designated re-tags cycleway to footway if foot is designated`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("highway", "cycleway", "footway")
+                StringMapEntryModify("highway", "cycleway", "footway"),
+                StringMapEntryModify("foot", "designated", "designated"),
             ),
-            NON_DESIGNATED.appliedTo(mapOf(
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "cycleway",
                 "foot" to "designated"
             )),
@@ -256,10 +285,11 @@ class SeparateCyclewayCreatorKtTest {
     @Test fun `apply non-designated removes sidewalk and segregated tags`() {
         assertEquals(
             setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
             ),
-            NON_DESIGNATED.appliedTo(mapOf(
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "segregated" to "yes",
                 "sidewalk" to "both",
@@ -267,11 +297,12 @@ class SeparateCyclewayCreatorKtTest {
         )
         assertEquals(
             setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
             ),
-            NON_DESIGNATED.appliedTo(mapOf(
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "segregated" to "yes",
                 "sidewalk:left" to "yes",
@@ -280,10 +311,11 @@ class SeparateCyclewayCreatorKtTest {
         )
         assertEquals(
             setOf(
+                StringMapEntryModify("highway", "footway", "footway"),
                 StringMapEntryDelete("segregated", "yes"),
                 StringMapEntryDelete("sidewalk:both", "yes"),
             ),
-            NON_DESIGNATED.appliedTo(mapOf(
+            NON_DESIGNATED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "segregated" to "yes",
                 "sidewalk:both" to "yes",

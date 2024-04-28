@@ -1,5 +1,13 @@
 # Changelog
 
+## v57.3
+- Fix UNDO: It didn't actually do anything for edits that were already synced! This critical issue existed since v57.2 (#5600, #5602)
+- Traffic signals: Improve wording (#5591)
+- Max speed: Show warning when inputting implausible slow zone tempo limit (#5592)
+- Payment methods: Don't ask in shops if they have been specified exhaustively already (#5589), by @urbalazs
+- Railway crossings barriers: Don't ask for abandoned railways (#5597)
+- Bike paths overlay: Fix selecting "not designated as bike path" when it was a "path or trail" wouldn't do anything (#5596)
+
 ## v57.2
 
 - Lit overlay: Unsupported current tagging is now indicated as such (#5571)

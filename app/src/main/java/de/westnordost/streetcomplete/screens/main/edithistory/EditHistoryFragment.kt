@@ -51,7 +51,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
                         editItem.edit,
                         element,
                         viewModel.featureDictionaryLazy,
-                        viewModel::undo
+                        { viewModel.undo(it.key) }
                     ).show()
                 }
             } else {

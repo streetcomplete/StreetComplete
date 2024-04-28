@@ -1390,5 +1390,6 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
 Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden, Google Play erlaubt uns nicht, sie direkt aus der App heraus zu verlinken."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Nicht drinnen, aber überdacht"</string>
     <string name="lit_value_unsupported">"Spezifischer Beleuchtungsstatus, der in dieser App nicht wählbar ist"</string>
-    <string name="quest_generic_otherAnswers2">"Äh…"</string>
+    <string name="quest_generic_otherAnswers2">"Ähh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Ist hier eine Ampel, die zeigt, wann man die Straße überqueren kann?"</string>
 </resources>

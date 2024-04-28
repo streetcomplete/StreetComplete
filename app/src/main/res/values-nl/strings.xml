@@ -287,7 +287,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_parkingType_title">"Wat voor parkeerplaats is dit?"</string>
     <string name="quest_parkingType_surface">"Parkeerplaats"</string>
     <string name="quest_parkingType_underground">"Ondergrondse parkeergarage"</string>
-    <string name="quest_parkingType_multiStorage">"Bovengrondse parkeergarage"</string>
+    <string name="quest_parkingType_multiStorage">"Parkeergarage"</string>
     <string name="quest_powerPolesMaterial_title">"Waar is deze stroompaal van gemaakt?"</string>
     <string name="quest_powerPolesMaterial_wood">"Hout"</string>
     <string name="quest_powerPolesMaterial_metal">"Staal"</string>
@@ -440,7 +440,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_buildingType_government">"Overheidsgebouw"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"Een dak waar auto's onder gestald kunnen worden"</string>
-    <string name="quest_buildingType_garage">"Garage (voor één auto)"</string>
+    <string name="quest_buildingType_garage">"Enkele garage"</string>
     <string name="quest_buildingType_garages">"Meerdere garages"</string>
     <string name="quest_buildingType_parking">"Parkeergebouw"</string>
     <string name="quest_buildingType_farm">"Op een boerderij"</string>
@@ -565,7 +565,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="about_description_donate">"Bedankt dat je deze app wilt ondersteunen! Om huidige donaties te zien en zelf te doneren, tik op het respectieve platform:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Scan hier"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Ga door met scannen"</string>
-    <string name="quest_buildingType_garages_description">"Scheid de verschillende eigenaren door een spatie"</string>
+    <string name="quest_buildingType_garages_description">"aparte plaatsen voor verschillende eigenaren/huurders"</string>
     <string name="quest_tourism_information_title">"Welke soort toeristeninformatie is dit?"</string>
     <string name="quest_tourism_information_office">"Toeristeninformatiekantoor"</string>
     <string name="quest_tourism_information_board">"Informatiebord"</string>
@@ -1369,7 +1369,7 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="quest_buildingType_tower_description">"Iedere soort toren"</string>
     <string name="quest_buildingType_under_construction">"In aanbouw"</string>
     <string name="overlay_buildings">"Gebouwen"</string>
-    <string name="quest_pedestrian_crossing_signals">"Moet je wachten op een verkeerslicht voordat je kan oversteken?"</string>
+    <string name="quest_pedestrian_crossing_signals">"Moet je wachten op een verkeerslicht voordat je hier kan oversteken?"</string>
     <string name="quest_pedestrian_crossing_markings">"Heeft deze oversteekplaats markeringen op de grond?"</string>
     <string name="overlay_places">"Plaatsen"</string>
     <string name="overlay_things">"Dingen"</string>
@@ -1380,4 +1380,6 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="about_description_donate_google_play3">"Bedankt dat u overweegt deze app te ondersteunen!
 U kunt informatie over doneren terugvinden op onze website of project homepage. Google Play staat ons niet toe de link in de app te tonen."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Niet binnen, maar overdekt"</string>
+    <string name="lit_value_unsupported">"Specifieke verlichtings-status die in deze app niet gekozen kan worden"</string>
+    <string name="quest_generic_otherAnswers2">"Anders…"</string>
 </resources>

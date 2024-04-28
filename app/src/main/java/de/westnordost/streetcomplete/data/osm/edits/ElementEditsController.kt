@@ -94,7 +94,7 @@ class ElementEditsController(
             }
             syncSuccess = editsDB.markSynced(edit.id)
         }
-        if (syncSuccess) onSyncedEdit(edit)
+        if (syncSuccess) onSyncedEdit(edit.copy(isSynced = true))
         elementIdProviderDB.updateIds(elementUpdates.idUpdates)
     }
 
