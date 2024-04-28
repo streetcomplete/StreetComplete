@@ -1,7 +1,7 @@
 # Changelog
 
 ## v57.3
-- Fix UNDO: It didn't actually do anything for edits that were already synced! This critical issue existed since v57.2 (#5600, 5602)
+- Fix UNDO: It didn't actually do anything for edits that were already synced! This critical issue existed since v57.2 (#5600, #5602)
 - Traffic signals: Improve wording (#5591)
 - Max speed: Show warning when inputting implausible slow zone tempo limit (#5592)
 - Payment methods: Don't ask in shops if they have been specified exhaustively already (#5589), by @urbalazs
