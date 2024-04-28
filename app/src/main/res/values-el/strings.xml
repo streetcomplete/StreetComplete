@@ -1371,4 +1371,9 @@
     <string name="unknown_object">"Άγνωστο αντικείμενο"</string>
     <string name="quest_leafType_tree_title">"Αυτό το δέντρο έχει βελόνες ή φύλλα;"</string>
     <string name="quest_bbq_fuel_gas">"Καύσιμο"</string>
+    <string name="about_description_donate_google_play3">"Σας ευχαριστούμε που σκεφτήκατε να υποστηρίξετε αυτή την εφαρμογή!
+Μπορείτε να βρείτε πληροφορίες για δωρεές στον ιστότοπό μας ή στο Github του έργου, το Google Play δεν μας επιτρέπει να παρέχουμε τον σύνδεσμο μέσα στην εφαρμογή."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Όχι εσωτερικός χώρος, αλλά καλύπτεται"</string>
+    <string name="lit_value_unsupported">"Η κατάσταση φωτισμού δεν είναι επιλέξιμη στην εφαρμογή"</string>
+    <string name="quest_generic_otherAnswers2">"Εμ…"</string>
 </resources>

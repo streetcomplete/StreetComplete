@@ -19,7 +19,7 @@
     <string name="quest_generic_confirmation_yes">"Sim, tenho a certeza"</string>
     <string name="quest_generic_confirmation_no">"Vou verificar"</string>
     <string name="quest_leave_new_note_title">"Prefere deixar uma nota?"</string>
-    <string name="quest_leave_new_note_description">"Pode deixar uma nota pública nesta localização para que outros contribuidores resolvam a questão ou então oculte a missão apenas para si"</string>
+    <string name="quest_leave_new_note_description">"Pode deixar uma nota pública nesta localização para que outros contribuidores resolvam a questão, ou ocultar a missão apenas para si"</string>
     <string name="quest_leave_new_note_yes">"Deixar uma nota"</string>
     <string name="quest_leave_new_note_no">"Ocultar"</string>
     <string name="quest_streetName_title">"Qual é o nome desta rua?"</string>
@@ -44,11 +44,11 @@
     <string name="action_upload">"Enviar respostas"</string>
     <string name="no_changes">"Não deu uma resposta"</string>
     <string name="close">"fechar"</string>
-    <string name="download_error">"Erro ao descarregar dados"</string>
+    <string name="download_error">"Surgiu um erro ao descarregar dados"</string>
     <string name="upload_error">"Surgiu um erro ao enviar as respostas"</string>
-    <string name="download_area_too_big">"Aproxime mais"</string>
+    <string name="download_area_too_big">"Por favor aproxime mais"</string>
     <string name="confirmation_cancel_prev_download_title">"Parar o descarregamento atual e descarregar antes nesta área?"</string>
-    <string name="turn_on_location_request">"A localização por GPS está desativada. Quer aceder agora às Opções do Android para a ativar?"</string>
+    <string name="turn_on_location_request">"A localização está desativada. Quer aceder agora às definições para a ativar?"</string>
     <string name="no_location_permission_warning">"É preciso conceder a permissão de localização ao StreetComplete para este poder descarregar dados nas suas redondezas."</string>
     <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick e colaboradores"</string>
