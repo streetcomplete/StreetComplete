@@ -114,15 +114,12 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             Button(onClick = {
                 context.openUri("https://www.openstreetmap.org/user/" + viewModel.userName.value)
             }) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_open_in_browser_24dp),
-                    contentDescription = null
-                )
+                Icon(painterResource(R.drawable.ic_open_in_browser_24dp), null)
                 Spacer(Modifier.width(8.dp))
-                Text(text = stringResource(R.string.osm_profile).uppercase())
+                Text(stringResource(R.string.osm_profile).uppercase())
             }
             OutlinedButton(onClick = { viewModel.logOutUser() }) {
-                Text(text = stringResource(R.string.user_logout).uppercase())
+                Text(stringResource(R.string.user_logout).uppercase())
             }
         }
 
