@@ -1160,6 +1160,10 @@ Doe hetzelfde voor de andere zijde, als aanwezig."</string>
     <string name="quest_memorialType_stele_wooden">"Houten zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_stele_stone">"Stenen zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_sculpture">"Ander beeldhouwwerk"</string>
+    <string name="quest_moped_access_title">Is er een bord dat de toegang voor bromfietsen op dit fietspad aangeeft?</string>
+    <string name="quest_moped_access_allowed">Nee, er is geen bord</string>
+    <string name="quest_moped_access_designated">Ja, dit fietspad is verplicht voor bromfietsen</string>
+    <string name="quest_moped_access_forbidden">Ja, bromfietsen zijn niet toegestaan op dit fietspad</string>
     <string name="overlay_none">"Geen"</string>
     <string name="overlay_lit">"Straatverlichting"</string>
     <string name="lit_value_yes">"Verlicht"</string>

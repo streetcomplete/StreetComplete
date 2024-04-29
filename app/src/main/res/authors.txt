@@ -54,6 +54,8 @@ bicycle_rental_dropoff_poin... CC-BY-SA 4.0      Alexander Migl https://commons.
 bicycle_rental_human.jpg       CC-BY-SA 2.0      TijsB https://commons.wikimedia.org/wiki/File:Tel_Aviv-_bike_rental_(5889990605).jpg
 bicycle_rental_shop_with_re... CC-BY-SA 2.0      Darb02 https://commons.wikimedia.org/wiki/File:Rydjor_Bike_Shop_and_Antique_Bike_Museum.jpg
 
+bicycleway_moped.svg           PD                Ionutneagu https://www.svgrepo.com/download/490323/scooter-2.svg
+
 bollard_fixed.jpg              CC-BY-SA 4.0      Matija Nalis https://github.com/streetcomplete/StreetComplete/issues/3657#issuecomment-1020666101
 bollard_flexible.jpg           CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Flexible_bollard.jpg
 bollard_foldable.jpg           CC-BY-SA 3.0      Hauke Stieler https://wiki.openstreetmap.org/wiki/File:Bollard_foldable.jpg

@@ -122,6 +122,7 @@ import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
 import de.westnordost.streetcomplete.quests.memorial_type.AddMemorialType
+import de.westnordost.streetcomplete.quests.moped.AddProhibitedForMoped
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -498,6 +499,8 @@ fun getQuestTypeList(
 
     99 to AddEntrance(),
     100 to AddEntranceReference(),
+
+    166 to AddProhibitedForMoped(),
 
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
