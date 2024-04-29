@@ -80,11 +80,10 @@ fun LazyAchievementsGrid(
                 AchievementIcon(icon = achievement.icon, level = level)
                 // clickable area as separate box because the ripple should be on top of all of it
                 // while the icon should not be clipped within the achievement frame
-                Box(
-                    Modifier
-                        .matchParentSize()
-                        .clip(AchievementFrameShape)
-                        .clickable { onClickAchievement(achievement, level) }
+                Box(Modifier
+                    .matchParentSize()
+                    .clip(AchievementFrameShape)
+                    .clickable { onClickAchievement(achievement, level) }
                 )
             }
         }
