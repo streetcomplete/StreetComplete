@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
@@ -63,61 +64,64 @@ fun AchievementDetailsDialog(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .clickable(interactionSource, null) {
-                    // dismiss when clicking wherever - no ripple effect
-                    onDismissRequest()
-                },
+                // dismiss when clicking wherever - no ripple effect
+                .clickable(interactionSource, null) { onDismissRequest() },
             contentAlignment = Alignment.Center
         ) {
-            // in landscape layout, dialog would become too tall to fit
-            BoxWithConstraints(Modifier.padding(16.dp)) {
-                val isLandscape = maxWidth > maxHeight
+            ContentWithIconPortraitOrLandscape(modifier.padding(16.dp)) { isLandscape, iconSize ->
+                AchievementIcon(achievement.icon, level, Modifier.size(iconSize))
+                AchievementDetails(
+                    achievement, level,
+                    horizontalAlignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally,
+                    showLinks = isNew
+                )
+            }
+        }
+    }
+}
 
-                // scale down icon to fit small devices
-                val iconSize = (min(maxWidth, maxHeight) * 0.67f).coerceAtMost(320.dp)
+@Composable
+private fun ContentWithIconPortraitOrLandscape(
+    modifier: Modifier = Modifier,
+    content: @Composable (isLandscape: Boolean, iconSize: Dp) -> Unit
+) {
+    // in landscape layout, dialog would become too tall to fit
+    BoxWithConstraints(modifier) {
+        val isLandscape = maxWidth > maxHeight
 
-                val backgroundPadding =
-                    if (isLandscape) PaddingValues(start = iconSize * 0.75f)
-                    else PaddingValues(top = iconSize  * 0.75f)
+        // scale down icon to fit small devices
+        val iconSize = (min(maxWidth, maxHeight) * 0.67f).coerceAtMost(320.dp)
+
+        val backgroundPadding =
+            if (isLandscape) PaddingValues(start = iconSize * 0.75f)
+            else PaddingValues(top = iconSize  * 0.75f)
 
 
-                val dialogModifier = modifier
-                    .backgroundWithPadding(
-                        color = MaterialTheme.colors.surface,
-                        padding = backgroundPadding,
-                        shape = MaterialTheme.shapes.medium
-                    )
-                    .padding(24.dp)
+        val dialogModifier = modifier
+            .backgroundWithPadding(
+                color = MaterialTheme.colors.surface,
+                padding = backgroundPadding,
+                shape = MaterialTheme.shapes.medium
+            )
+            .padding(24.dp)
 
-                val contentColor = contentColorFor(MaterialTheme.colors.surface)
-                CompositionLocalProvider(LocalContentColor provides contentColor) {
-                    if (isLandscape) {
-                        Row(
-                            modifier = dialogModifier.width(maxWidth.coerceAtMost(720.dp)),
-                            horizontalArrangement = Arrangement.spacedBy(24.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            AchievementIcon(achievement.icon, level, Modifier.size(iconSize))
-                            AchievementDetails(
-                                achievement, level,
-                                horizontalAlignment = Alignment.Start,
-                                isNew = isNew
-                            )
-                        }
-                    } else {
-                        Column(
-                            modifier = dialogModifier,
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(16.dp)
-                        ) {
-                            AchievementIcon(achievement.icon, level, Modifier.size(iconSize))
-                            AchievementDetails(
-                                achievement, level,
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                isNew = isNew
-                            )
-                        }
-                    }
+        val contentColor = contentColorFor(MaterialTheme.colors.surface)
+        CompositionLocalProvider(LocalContentColor provides contentColor) {
+            if (isLandscape) {
+                Row(
+                    modifier = dialogModifier.width(maxWidth.coerceAtMost(720.dp)),
+                    horizontalArrangement = Arrangement.spacedBy(24.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    content(true, iconSize)
+                }
+            } else {
+                Column(
+                    modifier = dialogModifier,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    content(false, iconSize)
                 }
             }
         }
@@ -129,8 +133,8 @@ private fun AchievementDetails(
     achievement: Achievement,
     level: Int,
     modifier: Modifier = Modifier,
-    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
-    isNew: Boolean,
+    horizontalAlignment: Alignment.Horizontal,
+    showLinks: Boolean,
 ) {
     Column(
         modifier = modifier,
@@ -151,7 +155,7 @@ private fun AchievementDetails(
             )
         }
         val unlockedLinks = achievement.unlockedLinks[level].orEmpty()
-        if (unlockedLinks.isNotEmpty() && isNew) {
+        if (unlockedLinks.isNotEmpty() && showLinks) {
             val unlockedLinksText = stringResource(
                 if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
                 else R.string.achievements_unlocked_links
