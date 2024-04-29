@@ -10,10 +10,13 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.DisabledGray
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
@@ -61,7 +64,10 @@ fun DatesActiveTable(
         val cellSize = (maxWidth - weekdayColumnWidth - cellPadding * 2) / horizontalCells - cellPadding
         val height = textHeight + cellPadding * 2 + (cellSize + cellPadding) * verticalCells
 
-        fun getLeft(x: Int) = weekdayColumnWidth + cellPadding * 2 + (cellSize + cellPadding) * x
+        val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
+        val marginLeft = if (isLtr) weekdayColumnWidth else 0.dp
+
+        fun getLeft(x: Int) = marginLeft + cellPadding * 2 + (cellSize + cellPadding) * x
         fun getTop(y: Int) = textHeight + cellPadding * 2 + (cellSize + cellPadding) * y
 
         Canvas(Modifier.size(maxWidth, height)) {
@@ -70,12 +76,12 @@ fun DatesActiveTable(
                 val top = getTop(i)
                 val bottom = (getTop(i + 1) - cellPadding)
                 val centerTop = top + (bottom - top - textHeight) / 2 // center text vertically
-                val left = 0f
+                val left = if (isLtr) 0.dp else getLeft(horizontalCells)
                 drawText(
                     textMeasurer,
                     size = Size(weekdayColumnWidth.toPx(), textHeight.toPx()),
                     text = weekdays[i],
-                    topLeft = Offset(left, centerTop.toPx()),
+                    topLeft = Offset(left.toPx(), centerTop.toPx()),
                     style = textStyle,
                 )
             }
@@ -86,7 +92,8 @@ fun DatesActiveTable(
                 val date = time.toLocalDateTime(TimeZone.UTC).date
 
                 val y = (verticalCells - 1) - (i + dayOffset) % verticalCells
-                val x = (horizontalCells - 1) - (i + dayOffset) / verticalCells
+                val xLtr = (horizontalCells - 1) - (i + dayOffset) / verticalCells
+                val x = if (isLtr) xLtr else (horizontalCells - 1) - xLtr
 
                 val left = getLeft(x).toPx()
                 val top = getTop(y).toPx()
@@ -112,7 +119,10 @@ fun DatesActiveTable(
     }
 }
 
-@Preview @Composable
+@Preview
+@Preview(locale = "ar", fontScale = 1.8f) // right-to-left and large text
+@Preview(device = Devices.NEXUS_7) // large screen
+@Composable
 fun DatesActivePreview() {
     DatesActiveTable(
         datesActive = IntArray(30) { (0..90).random() }.map {
