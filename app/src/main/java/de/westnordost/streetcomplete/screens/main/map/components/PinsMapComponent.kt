@@ -24,18 +24,27 @@ class PinsMapComponent(private val map: MapLibreMap) {
         GeoJsonOptions()
             .withCluster(true)
             .withClusterMaxZoom(17)
-        // how does it work?
+            // how does it work? needs other properties, so I guess it's not useful for us...
+            // though maybe it could help with the todo below?
 //            .withClusterProperty(propertyName = , operatorExpr = , mapExpr = )
     )
 
+    // todo:
+    //  avoid clustering for multiple quests on the same element
+    //  maybe replace circles with some special pins, would look nicer
     val layers: List<Layer> = listOf(
         CircleLayer("pin-dot-layer", SOURCE)
-            .withFilter(gte(zoom(), 14f))
+            .withFilter(all(gte(zoom(), 14f), lte(zoom(), 17f), gt(toNumber(get("point_count")), 1)))
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("grey"),
-                circleRadius(toNumber(get("point_count"))),
+                circleRadius(12f), // is that dp? or should it be scaled with display size or something like that?
                 circleStrokeWidth(1f)
+            ),
+        SymbolLayer("pin-dot-text-layer", SOURCE)
+            .withFilter(all(gte(zoom(), 14f), lte(zoom(), 17f), gt(toNumber(get("point_count")), 1)))
+            .withProperties(
+                textField(get("point_count")),
             ),
         SymbolLayer("pins-layer", SOURCE)
             .withFilter(gte(zoom(), 16f))

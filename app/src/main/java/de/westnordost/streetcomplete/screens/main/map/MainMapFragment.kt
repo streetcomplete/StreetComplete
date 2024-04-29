@@ -318,12 +318,20 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         // only query specific layer(s) - leaving layerIds empty would query all layers
         // result is already sorted by visual render order, descending
         val jsonObject = map?.queryRenderedFeatures(searchArea,
-            "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
+            "pins-layer", "pin-dot-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
         )?.firstOrNull()?.properties()
 
         if (jsonObject != null) {
             when (pinMode) {
                 PinMode.QUESTS -> {
+                    if (jsonObject.has("point_count")) {
+                        // todo:
+                        //  move and zoom so all pins in cluster are on screen
+                        //  consider there should be some padding
+                        //  and a certain max zoom
+                        updateCameraPosition(300) { zoomBy = +1.0 }
+                        return true
+                    }
                     val properties = pinsMapComponent?.getProperties(jsonObject)
                     val questKey = properties?.let { questPinsManager?.getQuestKey(it) }
                     if (questKey != null) {
