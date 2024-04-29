@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.user.profile
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -33,6 +34,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.R
@@ -181,10 +183,13 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             text = stringResource(R.string.user_profile_dates_mapped),
             style = MaterialTheme.typography.titleLarge
         )
-        DatesActiveTable(
-            datesActive = datesActive.datesActive.toSet(),
-            datesActiveRange = datesActive.range
-        )
+        BoxWithConstraints {
+            DatesActiveTable(
+                datesActive = datesActive.datesActive.toSet(),
+                datesActiveRange = datesActive.range,
+                modifier = Modifier.width(maxWidth.coerceAtMost(640.dp))
+            )
+        }
     }
 }
 
