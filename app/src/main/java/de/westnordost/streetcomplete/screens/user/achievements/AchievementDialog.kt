@@ -44,7 +44,7 @@ import de.westnordost.streetcomplete.ui.util.backgroundWithPadding
 import de.westnordost.streetcomplete.util.ktx.openUri
 
 @Composable
-fun AchievementDetailsDialog(
+fun AchievementDialog(
     achievement: Achievement,
     level: Int,
     onDismissRequest: () -> Unit,
@@ -180,7 +180,7 @@ private fun AchievementDetails(
 @Composable
 fun PreviewAchievementDetailsDialog() {
     AppTheme {
-        AchievementDetailsDialog(
+        AchievementDialog(
             achievement = achievements.associateBy { it.id }["regular"]!!,
             level = 7,
             onDismissRequest = {}

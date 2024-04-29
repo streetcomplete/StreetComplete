@@ -51,7 +51,7 @@ fun AchievementsScreen(viewModel: AchievementsViewModel) {
     }
 
     showAchievement.value?.let { (achievement, level) ->
-        AchievementDetailsDialog(
+        AchievementDialog(
             achievement, level,
             onDismissRequest = {
                 showAchievement.value = null
