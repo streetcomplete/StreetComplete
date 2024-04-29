@@ -1393,5 +1393,6 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
 Informace o dárcovství najdete na našem webu nebo na stránce projektu, Google Play nám neumožňuje dát odkaz přímo do aplikace."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Ne uvnitř, ale kryté"</string>
     <string name="lit_value_unsupported">"Specifický stav osvětlení, který v aplikaci nelze vybrat"</string>
-    <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_generic_otherAnswers2">"Další odpovědi…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Jsou tu světelné signály, které ukazují, kdy přejít?"</string>
 </resources>

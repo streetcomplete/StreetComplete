@@ -144,7 +144,7 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="upload_server_error">"Napaka v povezavi med pošiljanjem odgovorov. Poskusite znova, pozneje."</string>
     <string name="quest_generic_hasFeature_yes">"Da"</string>
     <string name="quest_generic_hasFeature_no">"Ne"</string>
-    <string name="quest_bikeParkingCapacity_title">"Koliko koles je tu lahko parkiranih?"</string>
+    <string name="quest_bikeParkingCapacity_title">"Koliko koles je lahko tu parkiranih?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Ta hišna številka izgleda zelo nenavadno."</string>
     <string name="quest_sport_title">"Kateri šport igrajo tu?"</string>
     <string name="quest_sport_answer_multi">"Noben specifičen šport"</string>
@@ -371,7 +371,7 @@ V nasprotnem primeru lahko prenesete drugačno tipkovnico iz trgovine za aplikac
     <string name="quest_fee_answer_hours">"Odvisno od ure in dneva …"</string>
     <string name="quest_fee_add_times">"Vnesite ure"</string>
     <string name="quest_housenumber_multiple_numbers">"Ima več hišnih številk"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Vnesete lahko več hišnih številk, ločenih z vejicami ali vezajem.
+    <string name="quest_housenumber_multiple_numbers_description">"Vnesete lahko več hišnih številk, ločenih z vejicami ali vezajem.\n
 Na primer 1,3 ali 2–6."</string>
     <string name="quest_bicycle_parking_type_stand">"Visoko stojalo (opora okviru kolesa)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Nizko stojalo (opora kolesu kolesa)"</string>
@@ -414,7 +414,7 @@ Na primer 1,3 ali 2–6."</string>
     <string name="quest_buildingType_commercial">"Poslovna stavba"</string>
     <string name="quest_buildingType_commercial_generic_description">"stavba, v kateri ljudje delajo, nakupujejo, ali se ukvarjajo z drugimi komercialnimi aktivnostmi"</string>
     <string name="quest_buildingType_industrial">"Industrijska zgradba"</string>
-    <string name="quest_buildingType_industrial_description">"npr. tovarna, delavnica, avtoservis, …"</string>
+    <string name="quest_buildingType_industrial_description">"npr. tovarna, delavnica, avtoservis …"</string>
     <string name="quest_buildingType_office">"Pisarne"</string>
     <string name="quest_buildingType_retail">"Trgovina"</string>
     <string name="quest_buildingType_warehouse">"Skladišče"</string>
@@ -471,7 +471,7 @@ Na primer 1,3 ali 2–6."</string>
     <string name="quest_buildingType_sports_centre">"Športno središče"</string>
     <string name="quest_buildingType_toilets">"Stranišča"</string>
     <string name="quest_maxspeed_sign_question">"Kaj omejuje hitrost?"</string>
-    <string name="quest_segregated_title">"Kako sta pot za pešče in kolesa postavljeni?"</string>
+    <string name="quest_segregated_title">"Kako sta postavljeni poti za pešče in kolesa?"</string>
     <string name="dialog_tutorial_upload">"Da ročno naložiš spremembe, uporabi gumb, ki izgleda tako, v orodni vrstici. "</string>
     <string name="quest_segregated_separated">"Ločen en od drugega"</string>
     <string name="quest_segregated_mixed">"Kolesarji in pešci si delijo isti prostor"</string>
@@ -484,14 +484,14 @@ Na primer 1,3 ali 2–6."</string>
     <string name="quest_noteDiscussion_hide2">"Skril-a %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Slike, ki jih dodate k opombam so naložene na razvijalčev strežnik in izbrisane nekaj dni po razrešitvi opombe. Njihovi metapodatki so izbrisani pred nalaganjem.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Odznači vse"</string>
-    <string name="quest_buildingType_retail_description">"vključno z zgradbami restavracij, barov …"</string>
+    <string name="quest_buildingType_retail_description">"vključno z zgradbami restavracij, barov, trgovin …"</string>
     <string name="quest_openingHours_timeSelect_next">"Naprej"</string>
     <string name="quest_tracktype_title">"Kakšna je trdnost površine na tej poti?"</string>
     <string name="quest_tracktype_grade1">"Trda"</string>
     <string name="quest_tracktype_grade4">"Pretežno mehka"</string>
     <string name="quest_tracktype_grade5">"Mehka"</string>
     <string name="quest_building_underground_title">"Ali je ta zgradba v celoti pod zemljo?"</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">"Delno pomeni, da dostop omejuje največ ena stopnica."</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Delno pomeni, da dostop omejuje največ ena stopnica v višini gležnja."</string>
     <string name="quest_wheelchairAccess_outside_title">"Ali je možen dostop z invalidskim vozičkom?"</string>
     <string name="quest_traffic_signals_button_title">"Ali ima ta semafor gumb za pešce?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Koliko motorjev je lahko tu parkiranih?"</string>
@@ -537,7 +537,7 @@ Ali želiš nadaljevati?"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Bi radi dodali opombo? Opomba s fotografijo bo pomagala ostalim kartografom rešiti zadevo."</string>
     <string name="quest_handrail_title">"Imajo te stopnice ograjo?"</string>
     <string name="about_summary_current_version">"Trenutna različica: %s"</string>
-    <string name="quest_ref_answer_noRef">"Nobene referenčne številke ni videti…"</string>
+    <string name="quest_ref_answer_noRef">"Nobene referenčne številke ni videti …"</string>
     <string name="quest_street_side_puzzle_tutorial">"Cesta v ponazoritvi je obrnjena enako kot zemljevid."</string>
     <string name="quest_recycling_materials_title">"Katere odpadke je mogoče pustiti tukaj?"</string>
     <string name="quest_recycling_materials_note">"Če kater od materialov, ki se jih tukaj da reciklirati ni naštet, raje ustvari opombo. "</string>
@@ -567,7 +567,7 @@ Ali želiš nadaljevati?"</string>
     <string name="about_description_donate">"Hvala, ker želite podpreti to aplikacijo! Za ogled trenutnih donacij in vaš prispevek izberite ustrezno platformo:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Raje išči tukaj"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Nadaljuj iskanje"</string>
-    <string name="quest_buildingType_garages_description">"Ločeni prostori za različne lastnike / najemnike"</string>
+    <string name="quest_buildingType_garages_description">"ločeni prostori za različne lastnike / najemnike"</string>
     <string name="quest_tourism_information_title">"Kakšne vrste info točka je to? "</string>
     <string name="quest_tourism_information_office">"Turistične informacije"</string>
     <string name="quest_tourism_information_board">"Informacijska tabla"</string>
@@ -681,12 +681,12 @@ Upoštevaj da ta aplikacija vpraša po hišni številki šele takrat, ko je tip 
     <string name="credits_projects_contributors_title">"Projekti narejeni za StreetComplete"</string>
     <string name="credits_main_contributors_title">"Glavni prispevalci"</string>
     <string name="stats_are_syncing">"Tvoja statistika se še vedno sinhronizira. Preveri ta zaslon pozneje."</string>
-    <string name="user_statistics_country_rank">"Meato v %2$s: %1$d"</string>
+    <string name="user_statistics_country_rank">"Mesto v %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal za kartografijo %s"</string>
     <string name="user_statistics_filter_by_country">"po državi"</string>
     <string name="user_statistics_filter_by_quest_type">"po tipu"</string>
     <string name="user_profile_global_rank">"Globalno
-Mesto"</string>
+mesto"</string>
     <string name="user_profile_local_rank">"Mesto v
 %s"</string>
     <string name="user_profile_days_active">"Aktivni
@@ -718,7 +718,7 @@ novoji"</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Prosim, na kratko opiši karakteristiko površine, naprimer \"peščeno z kamnitimi odseki\". Dolžina besedila je omejena na 255 znakov. "</string>
     <string name="quest_streetName_menuItem_international">"Mednaroden"</string>
     <string name="quest_buildingType_terrace2">"Vrstne hiše"</string>
-    <string name="at_housename">"Ime zgradbe %s"</string>
+    <string name="at_housename">"ime zgradbe %s"</string>
     <string name="at_housenumber">"hišna številka %s"</string>
     <string name="quest_openingHours_add_off_days">"Dodaj dneve počitka"</string>
     <string name="quest_openingHours_off_day">"Dan počitka"</string>
@@ -1382,4 +1382,11 @@ Poleg tega ti nekatere prekrivne plasti omogočajo dodajanje novih podatkov na p
     <string name="overlay_things">"Stvari"</string>
     <string name="disused">"neuporabljen"</string>
     <string name="unknown_object">"Neznan objekt"</string>
+    <string name="quest_leafType_tree_title">"Ima to drevo iglice ali liste?"</string>
+    <string name="quest_bbq_fuel_gas">"Plin"</string>
+    <string name="about_description_donate_google_play3">"Hvala da razmišljate o podpori aplikaciji!
+Podatke o donacijah lahko najdete na naših spletnih straneh; Google Play namreč ne dovoli, da bi tukaj vključili neposredno povezavo."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Ni notri, a je pokrito"</string>
+    <string name="lit_value_unsupported">"Drugo stanje osvetljenosti, ki ni na voljo v tej aplikaciji"</string>
+    <string name="quest_generic_otherAnswers2">"Uh …"</string>
 </resources>

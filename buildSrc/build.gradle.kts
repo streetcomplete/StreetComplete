@@ -10,7 +10,7 @@ dependencies {
     implementation("org.jsoup:jsoup:1.15.3")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     implementation("com.charleskorn.kaml:kaml:0.58.0")
-    implementation("org.jetbrains:markdown:0.5.0")
+    implementation("org.jetbrains:markdown:0.7.0")
 }
 
 plugins {

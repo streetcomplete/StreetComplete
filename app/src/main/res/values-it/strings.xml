@@ -1362,6 +1362,7 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="quest_disable_message_not_installed">"StreetMeasure non è (ancora) installato."</string>
     <string name="quest_disable_message_not_working">"StreetMeasure non ha restituito una misura."</string>
     <string name="quest_disable_message_tape_measure">"Puoi usare un metro per misurare, ma sarebbe una cosa strana, dopotutto."</string>
+    <string name="quest_buildingType_outbuilding">"Dependance"</string>
     <string name="quest_buildingType_outbuilding_description">"edificio meno importante sulla proprietà"</string>
     <string name="quest_buildingType_other_description">"un edificio specifico che non è selezionabile in questa app"</string>
     <string name="quest_buildingType_container">"Container"</string>
@@ -1379,4 +1380,9 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="unknown_object">"Oggetto sconosciuto"</string>
     <string name="quest_leafType_tree_title">"Questo albero ha aghi o foglie larghe?"</string>
     <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Grazie per aiutare quest'app!
+Troverai le informazioni sulle donazioni sul nostro sito o sulla home del progetto, Google Play ci impedisce di condividere il link nell'app."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Non dentro, ma coperto"</string>
+    <string name="lit_value_unsupported">"Tipo di illuminazione non selezionabile in questa app"</string>
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
 </resources>

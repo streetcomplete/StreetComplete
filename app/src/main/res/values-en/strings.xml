@@ -1280,7 +1280,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
 
-    <string name="quest_pedestrian_crossing_signals">"Do you have to wait for a traffic signal to cross here?"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Are there traffic signals that show when to cross here?"</string>
 
     <string name="quest_pedestrian_crossing_island">"Does this crossing have an island?"</string>
 
