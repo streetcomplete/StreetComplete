@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.R
 
 @Composable
@@ -41,4 +42,10 @@ private fun TadaShine(modifier: Modifier = Modifier) {
         alignment = Alignment.Center,
         contentScale = ContentScale.Crop,
     )
+}
+
+@Preview
+@Composable
+fun PreviewAnimatedTadaShine() {
+    AnimatedTadaShine()
 }
