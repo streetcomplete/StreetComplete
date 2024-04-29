@@ -5,18 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.ui.util.composableContent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AchievementsFragment : Fragment() {
 
     private val viewModel by viewModel<AchievementsViewModel>()
-
-    interface Listener {
-        fun onClickedAchievement(achievement: Achievement, level: Int)
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         composableContent { AchievementsScreen(viewModel) }
