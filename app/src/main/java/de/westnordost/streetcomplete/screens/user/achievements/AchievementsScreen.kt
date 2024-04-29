@@ -55,7 +55,8 @@ fun AchievementsScreen(viewModel: AchievementsViewModel) {
             achievement, level,
             onDismissRequest = {
                 showAchievement.value = null
-            }
+            },
+            isNew = false
         )
     }
 }
