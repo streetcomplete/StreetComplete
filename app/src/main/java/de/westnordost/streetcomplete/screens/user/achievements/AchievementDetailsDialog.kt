@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.user.achievements
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -16,6 +18,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -45,18 +48,25 @@ fun AchievementDetailsDialog(
     level: Int,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
-    showTada: Boolean = true,
+    isNew: Boolean = true,
 ) {
     Dialog(
         onDismissRequest = onDismissRequest,
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
-        if (showTada) {
+        val interactionSource = remember { MutableInteractionSource() }
+
+        if (isNew) {
             AnimatedTadaShine()
         }
         // center everything
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable(interactionSource, null) {
+                    // dismiss when clicking wherever - no ripple effect
+                    onDismissRequest()
+                },
             contentAlignment = Alignment.Center
         ) {
             // in landscape layout, dialog would become too tall to fit
@@ -90,7 +100,8 @@ fun AchievementDetailsDialog(
                             AchievementIcon(achievement.icon, level, Modifier.size(iconSize))
                             AchievementDetails(
                                 achievement, level,
-                                horizontalAlignment = Alignment.Start
+                                horizontalAlignment = Alignment.Start,
+                                isNew = isNew
                             )
                         }
                     } else {
@@ -102,7 +113,8 @@ fun AchievementDetailsDialog(
                             AchievementIcon(achievement.icon, level, Modifier.size(iconSize))
                             AchievementDetails(
                                 achievement, level,
-                                horizontalAlignment = Alignment.CenterHorizontally
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                isNew = isNew
                             )
                         }
                     }
@@ -117,7 +129,8 @@ private fun AchievementDetails(
     achievement: Achievement,
     level: Int,
     modifier: Modifier = Modifier,
-    horizontalAlignment: Alignment.Horizontal = Alignment.Start
+    horizontalAlignment: Alignment.Horizontal = Alignment.Start,
+    isNew: Boolean,
 ) {
     Column(
         modifier = modifier,
@@ -138,7 +151,7 @@ private fun AchievementDetails(
             )
         }
         val unlockedLinks = achievement.unlockedLinks[level].orEmpty()
-        if (unlockedLinks.isNotEmpty()) {
+        if (unlockedLinks.isNotEmpty() && isNew) {
             val unlockedLinksText = stringResource(
                 if (unlockedLinks.size == 1) R.string.achievements_unlocked_link
                 else R.string.achievements_unlocked_links

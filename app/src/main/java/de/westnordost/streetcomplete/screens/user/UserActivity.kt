@@ -29,7 +29,6 @@ import org.koin.android.ext.android.inject
  * */
 class UserActivity :
     FragmentContainerActivity(R.layout.activity_user),
-    AchievementsFragment.Listener,
     EditStatisticsFragment.Listener {
 
     private val userLoginStatusSource: UserLoginStatusSource by inject()
@@ -89,12 +88,6 @@ class UserActivity :
     override fun onDestroy() {
         super.onDestroy()
         userLoginStatusSource.removeListener(loginStatusListener)
-    }
-
-    /* ---------------------------- AchievementsFragment.Listener ------------------------------- */
-
-    override fun onClickedAchievement(achievement: Achievement, level: Int) {
-        // TODO
     }
 
     /* --------------------------- QuestStatisticsFragment.Listener ----------------------------- */

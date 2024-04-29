@@ -11,6 +11,8 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
@@ -23,19 +25,20 @@ import de.westnordost.streetcomplete.screens.user.CenteredLargeTitleHint
 
 /** Shows the icons for all achieved achievements and opens a dialog to show the details on click. */
 @Composable
-fun AchievementsScreen(
-    viewModel: AchievementsViewModel,
-    onClickAchievement: (achievement: Achievement, level: Int) -> Unit
-) {
+fun AchievementsScreen(viewModel: AchievementsViewModel) {
     val isSynchronizingStatistics by viewModel.isSynchronizingStatistics.collectAsState()
     val achievements by viewModel.achievements.collectAsState()
+
+    val showAchievement = remember { mutableStateOf<Pair<Achievement, Int>?>(null) }
 
     val allAchievements = achievements
     if (allAchievements != null) {
         if (allAchievements.isNotEmpty()) {
             LazyAchievementsGrid(
                 achievements = allAchievements,
-                onClickAchievement = { achievement, level -> onClickAchievement(achievement, level) },
+                onClickAchievement = { achievement, level ->
+                    showAchievement.value = achievement to level
+                },
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp)
             )
@@ -45,6 +48,15 @@ fun AchievementsScreen(
                 else R.string.achievements_empty
             ))
         }
+    }
+
+    showAchievement.value?.let { (achievement, level) ->
+        AchievementDetailsDialog(
+            achievement, level,
+            onDismissRequest = {
+                showAchievement.value = null
+            }
+        )
     }
 }
 
@@ -67,10 +79,11 @@ fun LazyAchievementsGrid(
                 AchievementIcon(icon = achievement.icon, level = level)
                 // clickable area as separate box because the ripple should be on top of all of it
                 // while the icon should not be clipped within the achievement frame
-                Box(Modifier
-                    .matchParentSize()
-                    .clip(AchievementFrameShape)
-                    .clickable { onClickAchievement(achievement, level) }
+                Box(
+                    Modifier
+                        .matchParentSize()
+                        .clip(AchievementFrameShape)
+                        .clickable { onClickAchievement(achievement, level) }
                 )
             }
         }

@@ -19,8 +19,5 @@ class AchievementsFragment : Fragment() {
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        composableContent { AchievementsScreen(
-            viewModel,
-            { achievement: Achievement, level: Int -> listener?.onClickedAchievement(achievement, level) }
-        ) }
+        composableContent { AchievementsScreen(viewModel) }
 }
