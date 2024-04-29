@@ -52,6 +52,7 @@ android {
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
         }
         getByName("debug") {
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
