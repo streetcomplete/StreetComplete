@@ -18,8 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.ui.theme.DisabledGray
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
+import de.westnordost.streetcomplete.ui.theme.surfaceContainer
 import de.westnordost.streetcomplete.ui.util.pxToDp
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import kotlinx.datetime.DateTimeUnit
@@ -37,7 +37,7 @@ fun DatesActiveTable(
     datesActiveRange: Int,
     modifier: Modifier = Modifier,
     boxColor: Color = GrassGreen,
-    emptyBoxColor: Color = DisabledGray,
+    emptyBoxColor: Color = MaterialTheme.colors.surfaceContainer,
     cellPadding: Dp = 2.dp,
     cellCornerRadius: Dp = 6.dp,
 ) {

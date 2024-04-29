@@ -35,9 +35,8 @@ val Team11 = Color(0xff655555)
 val White = Color(0xffffffff)
 
 val GrassGreen = Color(0xff80b158)
+val GrassGray = Color(0xffb1b1b1)
 val LeafGreen = Color(0xff006a00)
-
-val DisabledGray = Color(0x33808080)
 
 
 val LightColors = lightColors(
@@ -60,6 +59,9 @@ val DarkColors = darkColors(
 
 val Colors.hint @Composable get() =
     if (isLight) Color(0xff666666) else Color(0xff999999)
+
+val Colors.surfaceContainer @Composable get() =
+    if (isLight) Color(0xffdddddd) else Color(0xff222222)
 
 // use lighter tones (200) for increased contrast with dark background
 
