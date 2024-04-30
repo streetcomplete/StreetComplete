@@ -73,6 +73,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
         and !maxheight:signed
         and !maxheight:physical
         and (!maxheight:forward or !maxheight:backward)
+        and !maxheight:lanes
     """
 
     override val changesetComment = "Specify maximum heights"
