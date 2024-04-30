@@ -9,14 +9,16 @@ import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
-import io.ktor.http.defaultForFile
-import io.ktor.util.cio.readChannel
+import io.ktor.http.defaultForFilePath
+import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.errors.IOException
+import kotlinx.io.buffered
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
-import java.io.File
 
 @Serializable
 private data class PhotoUploadResponse(
@@ -28,6 +30,7 @@ private data class PhotoUploadResponse(
  * <a href="https://github.com/streetcomplete/sc-photo-service">StreetComplete image hosting service</a>
  */
 class StreetCompleteImageUploader(
+    private val fileSystem: FileSystem,
     private val httpClient: HttpClient,
     private val baseUrl: String
 ) {
@@ -44,14 +47,14 @@ class StreetCompleteImageUploader(
         val imageLinks = ArrayList<String>()
 
         for (path in imagePaths) {
-            val file = File(path)
-            if (!file.exists()) continue
+            val file = Path(path)
+            if (!fileSystem.exists(file)) continue
 
             try {
                 val response = httpClient.post(baseUrl + "upload.php") {
-                    contentType(ContentType.defaultForFile(file))
+                    contentType(ContentType.defaultForFilePath(path))
                     header("Content-Transfer-Encoding", "binary")
-                    setBody(file.readChannel())
+                    setBody(ByteReadChannel(fileSystem.source(file).buffered()))
                 }
 
                 val status = response.status
