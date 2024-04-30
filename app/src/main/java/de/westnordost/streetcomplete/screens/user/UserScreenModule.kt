@@ -25,4 +25,6 @@ val userScreenModule = module {
     factory<LinksViewModel> { LinksViewModelImpl(get(), get()) }
 
     factory<AchievementsViewModel> { AchievementsViewModelImpl(get(), get()) }
+
+    factory<UserViewModel> { UserViewModelImpl(get()) }
 }
