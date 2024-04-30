@@ -17,13 +17,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.datetime.LocalDate
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.io.File
 
 abstract class ProfileViewModel : ViewModel() {
     abstract val userName: StateFlow<String?>
-    abstract val userAvatarFile: StateFlow<File>
+    abstract val userAvatarFile: StateFlow<Path?>
 
     abstract val achievementLevels: StateFlow<Int>
 
@@ -58,7 +59,8 @@ class ProfileViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val avatarsCacheDirectory: File,
+    private val fileSystem: FileSystem,
+    private val avatarsCacheDirectory: Path,
     private val prefs: ObservableSettings
 ) : ProfileViewModel() {
 
@@ -203,8 +205,10 @@ class ProfileViewModelImpl(
         }
     }
 
-    private fun getUserAvatarFile(): File =
-        File(avatarsCacheDirectory, userDataSource.userId.toString())
+    private fun getUserAvatarFile(): Path? {
+        val path = Path(avatarsCacheDirectory, userDataSource.userId.toString())
+        return if (fileSystem.exists(path)) path else null
+    }
 
     override fun onCleared() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)

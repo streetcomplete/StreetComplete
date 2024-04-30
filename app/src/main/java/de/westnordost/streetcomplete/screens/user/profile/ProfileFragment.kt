@@ -61,7 +61,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.userNameTextView.text = name
         }
         observe(viewModel.userAvatarFile) { file ->
-            val avatar = if (file.exists()) BitmapFactory.decodeFile(file.path) else anonAvatar
+            val avatar = if (file != null) BitmapFactory.decodeFile(file.name) else anonAvatar
             binding.userAvatarImageView.setImageBitmap(avatar)
         }
         observe(viewModel.editCount) { count ->
