@@ -3,10 +3,9 @@ package de.westnordost.streetcomplete.data.meta
 import android.content.res.AssetManager
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
-import com.charleskorn.kaml.decodeFromStream
 import de.westnordost.countryboundaries.CountryBoundaries
-import java.io.File
-import java.io.SequenceInputStream
+import kotlinx.io.files.Path
+import kotlinx.serialization.decodeFromString
 
 class CountryInfos(private val assetManager: AssetManager) {
     private val yaml = Yaml(configuration = YamlConfiguration(
@@ -40,13 +39,13 @@ class CountryInfos(private val assetManager: AssetManager) {
     }
 
     private fun loadCountryInfo(countryCodeIso3166: String): IncompleteCountryInfo {
-        val filename = "$countryCodeIso3166.yml"
-        assetManager.open(BASEPATH + File.separator + filename).use { inputStream ->
-            val countryCode = countryCodeIso3166.split("-").first()
-            val stream = SequenceInputStream("countryCode: $countryCode\n".byteInputStream(), inputStream)
-
-            return yaml.decodeFromStream(stream)
-        }
+        val countryCode = countryCodeIso3166.split("-").first()
+        val path = Path(BASEPATH, "$countryCodeIso3166.yml")
+        val countryInfos = "countryCode: $countryCode\n" + assetManager
+            .open(path.name)
+            .bufferedReader()
+            .use { it.readText() }
+        return yaml.decodeFromString(countryInfos)
     }
 
     companion object {
