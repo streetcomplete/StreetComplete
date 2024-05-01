@@ -41,7 +41,7 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
         "RU" // see https://github.com/streetcomplete/StreetComplete/issues/4021
     )
 
-    override val hintText = R.string.quest_traffic_signals_vibrate_description
+    override val hint = R.string.quest_traffic_signals_vibrate_description
     override val hintImages = listOf(R.drawable.vibrating_button_illustration)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_vibrate_title

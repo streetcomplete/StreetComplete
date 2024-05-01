@@ -24,7 +24,7 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
     override val icon = R.drawable.ic_quest_wheelchair
     override val achievements = listOf(WHEELCHAIR)
 
-    override val hintText = R.string.quest_wheelchairAccess_limited_description_public_transport
+    override val hint = R.string.quest_wheelchairAccess_limited_description_public_transport
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 

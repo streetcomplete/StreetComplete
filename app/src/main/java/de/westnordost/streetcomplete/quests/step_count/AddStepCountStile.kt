@@ -42,7 +42,7 @@ class AddStepCountStile : OsmElementQuestType<Int> {
     override val icon = R.drawable.ic_quest_steps_count_brown
     override val achievements = listOf(OUTDOORS)
 
-    override val hintText = R.string.quest_step_count_stile_hint
+    override val hint = R.string.quest_step_count_stile_hint
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title
 

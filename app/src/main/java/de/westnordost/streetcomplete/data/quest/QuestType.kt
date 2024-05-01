@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
 interface QuestType : EditType {
 
     /** Hint text to be shown when the user taps on the ℹ️ button */
-    val hintText: Int? get() = null
+    val hint: Int? get() = null
 
     /** Hint pictures to be shown when the user taps on the ℹ️ button */
     val hintImages: List<Int> get() = emptyList()

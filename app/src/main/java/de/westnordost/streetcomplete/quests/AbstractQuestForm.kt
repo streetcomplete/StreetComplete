@@ -31,10 +31,7 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
-import de.westnordost.streetcomplete.view.animateFrom
-import de.westnordost.streetcomplete.view.setImage
 import de.westnordost.streetcomplete.view.setText
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -122,7 +119,7 @@ abstract class AbstractQuestForm :
 
         setTitle(resources.getString(questType.title))
         setTitleHintLabel(null)
-        setHint(questType.hintText?.let { resources.getString(it) })
+        setHint(questType.hint?.let { resources.getString(it) })
         setHintImages(questType.hintImages.mapNotNull { requireContext().getDrawable(it) })
 
         binding.okButton.setOnClickListener {

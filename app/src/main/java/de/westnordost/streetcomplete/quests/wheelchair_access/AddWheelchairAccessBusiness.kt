@@ -114,7 +114,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
-    override val hintText = R.string.quest_wheelchairAccess_limited_description_business
+    override val hint = R.string.quest_wheelchairAccess_limited_description_business
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 

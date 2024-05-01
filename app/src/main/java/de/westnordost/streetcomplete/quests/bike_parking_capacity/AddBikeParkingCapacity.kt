@@ -31,7 +31,7 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
     override val icon = R.drawable.ic_quest_bicycle_parking_capacity
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
-    override val hintText = R.string.quest_bikeParkingCapacity_hint
+    override val hint = R.string.quest_bikeParkingCapacity_hint
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bikeParkingCapacity_title
 
