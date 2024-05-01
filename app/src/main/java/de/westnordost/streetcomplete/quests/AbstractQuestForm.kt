@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -116,25 +117,23 @@ abstract class AbstractQuestForm :
         return binding.root
     }
 
-    private fun setupInfoArea() {
-        infoIsExpanded = false
-        val hintTextId = questType.hintText
-        val hintImageIds = questType.hintImages
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        binding.infoText.isGone = hintTextId == null
-        if (hintTextId != null) {
-            binding.infoText.setText(hintTextId)
-        }
-        binding.infoPictures.isGone = hintImageIds.isEmpty()
-        if (hintImageIds.isNotEmpty()) {
-            for (hintImageId in hintImageIds) {
-                val imageView = ImageView(requireContext())
-                imageView.setImageResource(hintImageId)
-                binding.infoPictures.addView(imageView)
+        setTitle(resources.getString(questType.title))
+        setTitleHintLabel(null)
+        setHint(questType.hintText?.let { resources.getString(it) })
+        setHintImages(questType.hintImages.mapNotNull { requireContext().getDrawable(it) })
+
+        binding.okButton.setOnClickListener {
+            if (!isFormComplete()) {
+                activity?.toast(R.string.no_changes)
+            } else {
+                onClickOk()
             }
         }
 
-        binding.infoButton.isGone = hintTextId == null && hintImageIds.isEmpty()
+        infoIsExpanded = false
         binding.infoButton.setOnClickListener {
             infoIsExpanded = !infoIsExpanded
 
@@ -143,24 +142,7 @@ abstract class AbstractQuestForm :
                 else R.drawable.ic_info_outline_24dp
             )
             binding.infoButton.isActivated = infoIsExpanded
-
             binding.infoArea.isGone = !infoIsExpanded
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setTitle(resources.getString(questType.title))
-        setTitleHintLabel(null)
-        setupInfoArea()
-
-        binding.okButton.setOnClickListener {
-            if (!isFormComplete()) {
-                activity?.toast(R.string.no_changes)
-            } else {
-                onClickOk()
-            }
         }
 
         // no content? -> hide the content container
@@ -190,6 +172,27 @@ abstract class AbstractQuestForm :
     protected fun setTitleHintLabel(text: CharSequence?) {
         binding.titleHintLabel.isGone = text == null
         binding.titleHintLabel.text = text
+    }
+
+    protected fun setHint(text: CharSequence?) {
+        binding.infoText.isGone = text == null
+        binding.infoText.text = text
+        updateInfoButtonVisibility()
+    }
+
+    protected fun setHintImages(images: List<Drawable>) {
+        binding.infoPictures.isGone = images.isEmpty()
+        binding.infoPictures.removeAllViews()
+        for (image in images) {
+            val imageView = ImageView(requireContext())
+            imageView.setImageDrawable(image)
+            binding.infoPictures.addView(imageView)
+        }
+        updateInfoButtonVisibility()
+    }
+
+    private fun updateInfoButtonVisibility() {
+        binding.infoButton.isGone = binding.infoText.isGone && binding.infoPictures.isGone
     }
 
     /** Inflate given layout resource id into the content view and return the inflated view */
