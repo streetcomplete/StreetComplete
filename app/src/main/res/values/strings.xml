@@ -941,7 +941,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camp_type_tents_only">Only tents</string>
     <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
     <string name="quest_sanitary_dump_station_title">Is there a sanitary dump station?</string>
-    <string name="quest_sanitary_dump_station_description">Facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:</string>
+    <string name="quest_sanitary_dump_station_description">A sanitary dump station is a facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:</string>
 
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
@@ -1549,7 +1549,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
 
-    <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
+    <string name="quest_streetSurface_title">"What surface does this road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
 
     <string name="quest_summit_cross_title">Is there a summit cross here?</string>
