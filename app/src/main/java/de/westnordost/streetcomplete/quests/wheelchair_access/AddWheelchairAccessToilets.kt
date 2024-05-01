@@ -25,6 +25,7 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
     override val achievements = listOf(WHEELCHAIR)
 
     override val hint = R.string.quest_wheelchairAccess_description_toilets
+    override val hintImages = listOf(R.drawable.wheelchair_sign)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
