@@ -94,7 +94,6 @@
                     android:orientation="vertical"
                     android:visibility="gone"
                     android:showDividers="middle"
-
                     android:divider="@drawable/space_8dp">
 
                     <TextView
@@ -107,7 +106,9 @@
                         android:id="@+id/infoPictures"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"/>
+                        android:orientation="horizontal"
+                        android:showDividers="middle"
+                        android:divider="@drawable/space_8dp" />
 
                 </LinearLayout>
 
