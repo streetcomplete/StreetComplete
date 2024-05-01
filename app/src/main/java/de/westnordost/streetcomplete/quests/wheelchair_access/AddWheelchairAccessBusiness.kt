@@ -114,12 +114,14 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
+    override val hintText = R.string.quest_wheelchairAccess_limited_description_business
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
-    override fun createForm() = AddWheelchairAccessBusinessForm()
+    override fun createForm() = WheelchairAccessForm()
 
     override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["wheelchair"] = answer.osmValue
