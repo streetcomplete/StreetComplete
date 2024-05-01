@@ -14,11 +14,6 @@ import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddShoulderForm : AStreetSideSelectForm<Boolean, ShoulderSides>() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.descriptionLabel).setText(R.string.quest_shoulder_explanation2)
-    }
-
     override fun onClickSide(isRight: Boolean) {
         val items = listOf(false, true).map { it.asItem() }
         ImageListPickerDialog(requireContext(), items, R.layout.cell_icon_select_with_label_below, 2) { item ->
