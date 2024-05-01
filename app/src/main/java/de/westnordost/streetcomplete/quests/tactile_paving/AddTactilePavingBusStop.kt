@@ -30,6 +30,9 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val achievements = listOf(BLIND)
 
+    override val hintText = R.string.quest_generic_looks_like_this
+    override val hintImages = listOf(R.drawable.tactile_paving_illustration)
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopTactilePaving_title
 
     override fun createForm() = TactilePavingForm()

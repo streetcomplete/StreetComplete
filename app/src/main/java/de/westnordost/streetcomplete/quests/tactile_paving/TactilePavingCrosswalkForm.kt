@@ -9,8 +9,6 @@ import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswal
 
 class TactilePavingCrosswalkForm : AbstractOsmQuestForm<TactilePavingCrosswalkAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_tactile_paving
-
     override val otherAnswers get() = listOf(
         AnswerItem(R.string.quest_tactilePaving_incorrect) { applyAnswer(INCORRECT) }
     )
