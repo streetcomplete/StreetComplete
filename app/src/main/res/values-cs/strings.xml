@@ -230,7 +230,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="credits_translations_title">"Překladatelé"</string>
     <string name="credits_contributors_title">"Přispěvatelé kódu"</string>
     <string name="credits_author_title">"Autor a udržovatel"</string>
-    <string name="credits_and_more">"a další…"</string>
     <string name="quest_maxspeed_answer_living_street">"Je tu obytná zóna"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Takže tady je taková značka obytné zóny?"</string>
     <string name="quest_orchard_produce_title">"Co se tu pěstuje?"</string>
@@ -505,7 +504,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_motorcycleParkingCoveredStatus_title">"Má toto parkoviště pro motocykly střechu (ochranu proti dešti)?"</string>
     <string name="default_disabled_msg_maxspeed">"Tento typ úkolů je ve výchozím nastavení zakázán, protože pro nalezení cedulí s rychlostním omezením je obvykle nutné zkontrolovat celou ulici a ne pouze zvýrazněnou část. To může být náročnější vzhledem k tomu, že jde o vyřešení pouze jednoho úkolu."</string>
     <string name="pref_title_quests_restore_hidden">"Obnovit skryté úkoly"</string>
-    <string name="restore_hidden_success">"Obnoveno %d skrytých úkolů"</string>
     <string name="on_level">"na podlaží %s"</string>
     <string name="underground">"v podzemí"</string>
     <string name="quest_sidewalk_value_yes">"chodník"</string>
@@ -843,7 +841,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="team_mode_active">"Týmový režim je aktivní"</string>
     <string name="team_mode_deactivated">"Týmový režim deaktivován"</string>
     <string name="undo_confirm_title2">"Chcete vrátit následující úpravu?"</string>
-    <string name="synced">"Synchronizováno"</string>
     <string name="toast_undo_unavailable">"Tato úprava je již synchronizovaná a proto ji nelze vrátit zpět"</string>
     <string name="quest_cycleway_value_separate">"zobrazeno samostatně na mapě"</string>
     <string name="created_note_action_title">"Vytvořená poznámka"</string>
@@ -1066,8 +1063,6 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna."</string>
     <string name="quest_road_width_title">"Jaká je tu šířka této cesty?"</string>
     <string name="quest_road_width_explanation">"Šířka cesty od obrubníku k obrubníku: Toto zahrnuje cokoliv na povrchu cesty jako jsou parkovací místa na cestě nebo pruhy pro cyklisty, ale vylučuje cokoli mimo cestu, jako jsou cyklostezky nebo parkování."</string>
     <string name="quest_sidewalk_answer_none">"Není tu žádný chodník"</string>
-    <string name="about_description_donate_google_play2">"Děkujeme, že zvažujete podporu této aplikace!
-Bohužel, vzhledem k pravidlům v Google Play Store, nelze v aplikacích zobrazovat žádné odkazy vedoucí k darům pro vývojáře. Proto není povolen ani odkaz na domovskou stránku našeho projektu."</string>
     <string name="link_osmand_description">"Mobilní aplikace pro online a offline zobrazení map a navigaci"</string>
     <string name="link_sunders_description">"Mapa kamer a sledovacích zařízení"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Držte se blíže k šipce, ale dávejte pozor na provoz!"</string>
@@ -1392,4 +1387,12 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="overlay_things">"Věci"</string>
     <string name="disused">"nepoužíváno"</string>
     <string name="unknown_object">"Neznámý předmět"</string>
+    <string name="quest_leafType_tree_title">"Má tento strom jehličí nebo listy?"</string>
+    <string name="quest_bbq_fuel_gas">"Plyn"</string>
+    <string name="about_description_donate_google_play3">"Děkujeme, že uvažujete podpořit tuto aplikaci!
+Informace o dárcovství najdete na našem webu nebo na stránce projektu, Google Play nám neumožňuje dát odkaz přímo do aplikace."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Ne uvnitř, ale kryté"</string>
+    <string name="lit_value_unsupported">"Specifický stav osvětlení, který v aplikaci nelze vybrat"</string>
+    <string name="quest_generic_otherAnswers2">"Další odpovědi…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Jsou tu světelné signály, které ukazují, kdy přejít?"</string>
 </resources>

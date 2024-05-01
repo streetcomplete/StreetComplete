@@ -226,7 +226,6 @@
     <string name="credits_translations_title">"Μεταφράσεις"</string>
     <string name="credits_contributors_title">"Αρθρογράφοι Κώδικα"</string>
     <string name="credits_author_title">"Δημιουργός και συντηρητής"</string>
-    <string name="credits_and_more">"και άλλα άτομα…"</string>
     <string name="quest_maxspeed_answer_living_street">"Είναι δρόμος ήπιας κυκλοφορίας"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Οπότε, υπάρχει ένα σημάδι σαν αυτό;"</string>
     <string name="quest_orchard_produce_title">"Τι καλλιεργείται εδώ;"</string>
@@ -499,7 +498,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Αυτό το πάρκινγκ μοτοσυκλετών καλύπτεται (προστατεύεται από τη βροχή);"</string>
     <string name="default_disabled_msg_maxspeed">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συνήθως απαιτείται να ελέγχετε ολόκληρη την οδό για πινακίδες ορίων ταχύτητας και όχι μόνο για το επισημασμένο τμήμα. Αυτό μπορεί μερικές φορές να είναι αρκετό απλά για να λύσει μια μόνο αναζήτηση."</string>
     <string name="pref_title_quests_restore_hidden">"Επαναφορά κρυφών αναζητήσεων"</string>
-    <string name="restore_hidden_success">"Επαναφορά %d κρυφών αναζητήσεων"</string>
     <string name="on_level">"στο επίπεδο %s"</string>
     <string name="underground">"Υπόγειος"</string>
     <string name="quest_sidewalk_value_yes">"πεζοδρόμιο"</string>
@@ -827,7 +825,6 @@
     <string name="team_mode_active">"Η λειτουργία ομάδας είναι ενεργή"</string>
     <string name="team_mode_deactivated">"Η λειτουργία ομάδας απενεργοποιήθηκε"</string>
     <string name="undo_confirm_title2">"Αναίρεση της ακόλουθης επεξεργασίας;"</string>
-    <string name="synced">"Συγχρονισμένο"</string>
     <string name="toast_undo_unavailable">"Αυτή η επεξεργασία έχει ήδη συγχρονιστεί και δεν μπορεί να αναιρεθεί"</string>
     <string name="quest_cycleway_value_separate">"εμφανίζεται ξεχωριστά στο χάρτη"</string>
     <string name="created_note_action_title">"Δημιουργήθηκε σημείωση"</string>
@@ -1048,8 +1045,6 @@
     <string name="quest_road_width_title">"Ποιο είναι το πλάτος αυτού του δρόμου εδώ;"</string>
     <string name="quest_road_width_explanation">"Το πλάτος του οδοστρώματος από κράσπεδο σε κράσπεδο: Αυτό περιλαμβάνει οτιδήποτε στην επιφάνεια του δρόμου, όπως στάθμευση στο δρόμο ή λωρίδα ποδηλάτων, αλλά αποκλείει οτιδήποτε πέρα από αυτό, όπως μονοπάτι ποδηλάτων ή στάθμευση δίπλα στο οδόστρωμα."</string>
     <string name="quest_sidewalk_answer_none">"Δεν υπάρχει καθόλου πεζοδρόμιο"</string>
-    <string name="about_description_donate_google_play2">"Σας ευχαριστούμε που σκεφτήκατε να υποστηρίξετε αυτήν την εφαρμογή!
-Δυστυχώς, λόγω μιας πολιτικής του Google Play Store, δεν επιτρέπεται να εμφανίζονται εντός της εφαρμογής σύνδεσμοι που οδηγούν σε δωρεές. Σε αυτό το πλαίσιο, δεν επιτρέπεται ακόμη και η σύνδεση με τον κυρίως χώρο του έργου μας."</string>
     <string name="link_osmand_description">"Εφαρμογή για κινητά για online και offline προβολή και πλοήγηση χαρτών"</string>
     <string name="link_sunders_description">"Χάρτης με κάμερες και εξοπλισμό επιτήρησης"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Μείνετε πιο κοντά στο βέλος αλλά προσέξτε την κυκλοφορία!"</string>
@@ -1374,4 +1369,11 @@
     <string name="overlay_things">"Πράγματα"</string>
     <string name="disused">"αχρησιμοποίητο"</string>
     <string name="unknown_object">"Άγνωστο αντικείμενο"</string>
+    <string name="quest_leafType_tree_title">"Αυτό το δέντρο έχει βελόνες ή φύλλα;"</string>
+    <string name="quest_bbq_fuel_gas">"Καύσιμο"</string>
+    <string name="about_description_donate_google_play3">"Σας ευχαριστούμε που σκεφτήκατε να υποστηρίξετε αυτή την εφαρμογή!
+Μπορείτε να βρείτε πληροφορίες για δωρεές στον ιστότοπό μας ή στο Github του έργου, το Google Play δεν μας επιτρέπει να παρέχουμε τον σύνδεσμο μέσα στην εφαρμογή."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Όχι εσωτερικός χώρος, αλλά καλύπτεται"</string>
+    <string name="lit_value_unsupported">"Η κατάσταση φωτισμού δεν είναι επιλέξιμη στην εφαρμογή"</string>
+    <string name="quest_generic_otherAnswers2">"Εμ…"</string>
 </resources>

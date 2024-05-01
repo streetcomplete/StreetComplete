@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [State Bank of India, ICICI Bank, Punjab National Bank, HDFC Bank, Kotak Mahindra Bank, Yes Bank, Axis Bank, Canara Bank, Bank of Baroda, Central Bank of India, SBI, Oriental Bank of Commerce, Union Bank of India, IndusInd Bank, Citibank, Bank of India, hdfc, atm, Union Bank, Standard Chartered, Punjab & Sind Bank, Kotak Bank, Indian Bank, HDFC, Andhra Bank]
+atmOperators: [State Bank of India, Punjab National Bank, ICICI Bank, HDFC Bank, Kotak Mahindra Bank, Yes Bank, Axis Bank, Canara Bank, Bank of Baroda, IndusInd Bank, Central Bank of India, SBI, Oriental Bank of Commerce, Union Bank of India, Standard Chartered, IDBI Bank, Citibank, atm, Union Bank, Punjab & Sind Bank, Kotak Bank, Indian Bank, HDFC, Bank of Maharashtra, Bank of India, Andhra Bank]
 chargingStationOperators: [ElectriVa, Energy Efficiency Services Limited (EESL)]
 officialLanguages: [hi, en, pa]
 popularReligions: [hindu, muslim, sikh]

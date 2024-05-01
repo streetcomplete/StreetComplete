@@ -19,7 +19,7 @@
     <string name="quest_generic_confirmation_yes">"Sim, tenho a certeza"</string>
     <string name="quest_generic_confirmation_no">"Vou verificar"</string>
     <string name="quest_leave_new_note_title">"Prefere deixar uma nota?"</string>
-    <string name="quest_leave_new_note_description">"Pode deixar uma nota pública nesta localização para que outros contribuidores resolvam a questão ou então oculte a missão apenas para si"</string>
+    <string name="quest_leave_new_note_description">"Pode deixar uma nota pública nesta localização para que outros contribuidores resolvam a questão, ou ocultar a missão apenas para si"</string>
     <string name="quest_leave_new_note_yes">"Deixar uma nota"</string>
     <string name="quest_leave_new_note_no">"Ocultar"</string>
     <string name="quest_streetName_title">"Qual é o nome desta rua?"</string>
@@ -44,11 +44,11 @@
     <string name="action_upload">"Enviar respostas"</string>
     <string name="no_changes">"Não deu uma resposta"</string>
     <string name="close">"fechar"</string>
-    <string name="download_error">"Erro ao descarregar dados"</string>
+    <string name="download_error">"Surgiu um erro ao descarregar dados"</string>
     <string name="upload_error">"Surgiu um erro ao enviar as respostas"</string>
-    <string name="download_area_too_big">"Aproxime mais"</string>
+    <string name="download_area_too_big">"Por favor aproxime mais"</string>
     <string name="confirmation_cancel_prev_download_title">"Parar o descarregamento atual e descarregar antes nesta área?"</string>
-    <string name="turn_on_location_request">"A localização por GPS está desativada. Quer aceder agora às Opções do Android para a ativar?"</string>
+    <string name="turn_on_location_request">"A localização está desativada. Quer aceder agora às definições para a ativar?"</string>
     <string name="no_location_permission_warning">"É preciso conceder a permissão de localização ao StreetComplete para este poder descarregar dados nas suas redondezas."</string>
     <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick e colaboradores"</string>
@@ -226,7 +226,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>
     <string name="credits_author_title">"Autoria e manutenção"</string>
-    <string name="credits_and_more">"e mais…"</string>
     <string name="quest_maxspeed_answer_living_street">"É uma zona de coexistência"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Então, há um sinal como este?"</string>
     <string name="quest_orchard_produce_title">"O que é cultivado aqui?"</string>
@@ -499,7 +498,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_motorcycleParkingCoveredStatus_title">"Este estacionamento de motociclos é coberto (protegido da chuva)?"</string>
     <string name="default_disabled_msg_maxspeed">"Esta missão está desativada de origem porque é necessário verificar se a totalidade da rua tem outros sinais de limite de velocidade e não apenas o trecho selecionado. Isto pode tornar complicada a resolução destas missões."</string>
     <string name="pref_title_quests_restore_hidden">"Restaurar missões ocultadas"</string>
-    <string name="restore_hidden_success">"Restauradas %d missões ocultadas"</string>
     <string name="on_level">"no piso %s"</string>
     <string name="underground">"subterrâneo"</string>
     <string name="quest_sidewalk_value_yes">"com passeio"</string>
@@ -569,7 +567,7 @@ Dividir agora?"</string>
     <string name="about_description_donate">"Obrigado por considerar apoiar esta aplicação! Para ver os donativos atuais e fazer o seu donativo, toque na respetiva plataforma:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Descarregar antes aqui"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Continuar o descarregamento atual"</string>
-    <string name="quest_buildingType_garages_description">"Espaços separados para diferentes proprietários / inquilinos"</string>
+    <string name="quest_buildingType_garages_description">"espaços separados para diferentes proprietários / inquilinos"</string>
     <string name="quest_tourism_information_title">"Que tipo de informação turística é esta?"</string>
     <string name="quest_tourism_information_office">"Posto turístico"</string>
     <string name="quest_tourism_information_board">"Painel de informações"</string>
@@ -833,12 +831,12 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Apenas garrafas de plástico e pacotes"</string>
     <string name="team_mode">"Modo de equipa"</string>
     <string name="team_mode_exit">"Sair do modo de equipa"</string>
-    <string name="team_mode_description">"Se estiver a mapear a mesma área como um grupo, pode entrar no modo de equipa para dividir as missões entre todos os membros da equipa."</string>
+    <string name="team_mode_description">"Ao mapear a mesma área em grupo, pode entrar no modo de equipa para dividir as missões entre todos os membros da equipa.
+Cada um verá missões diferentes."</string>
     <string name="team_mode_team_size_hint">"O modo de equipa funciona para grupos de 2 a 12 pessoas."</string>
     <string name="team_mode_active">"O modo de equipa está ativo"</string>
     <string name="team_mode_deactivated">"Modo de equipa desativado"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
-    <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>
     <string name="quest_cycleway_value_separate">"mostrado em separado no mapa"</string>
     <string name="created_note_action_title">"Nota criada"</string>
@@ -1061,8 +1059,6 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="quest_road_width_explanation">"A largura da estrada de uma berma à outra: isto inclui qualquer coisa na superfície da estrada, como faixa de estacionamento ou faixa de bicicletas, mas exclui qualquer coisa para além dela, como passeios, ciclovias em pistas dedicadas e com separador ou estacionamento fora da estrada.
 "</string>
     <string name="quest_sidewalk_answer_none">"Não existe passeio"</string>
-    <string name="about_description_donate_google_play2">"Obrigado por considerar apoiar esta aplicação!
-Infelizmente, devido a uma política da Google Play Store, não pode ser mostrada nenhuma hiperligação que conduza a donativos. Devido a isso, também não é permitida uma hiperligação para o nosso site."</string>
     <string name="link_osmand_description">"Aplicação móvel para navegação e visualização online e offline"</string>
     <string name="link_sunders_description">"Um mapa de câmaras e equipamento de vigilância"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Mantenha-se mais perto da seta mas cuidado com o trânsito!"</string>
@@ -1322,7 +1318,7 @@ Infelizmente, devido a uma política da Google Play Store, não pode ser mostrad
     <string name="quest_cycleway_value_sidewalk_dual2">"via partilhada em ambas as direções"</string>
     <string name="overlays_tutorial_title">"Camadas"</string>
     <string name="overlays_tutorial_intro">"Encontrou uma nova forma de editar dados!"</string>
-    <string name="overlays_tutorial_display">"Cada camada apresenta um tipo de dados, por exemplo, lojas ou superfícies de ruas.
+    <string name="overlays_tutorial_display">"Cada camada apresenta um tipo de dados, por exemplo, “lojas“ ou “superfícies de ruas“.
 
 Os dados são destacados em cores diferentes para ter uma boa visão geral do que foi registado até agora.
 Os dados em falta são sempre apresentados a vermelho."</string>
@@ -1382,4 +1378,15 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="overlay_buildings">"Edifícios"</string>
     <string name="quest_pedestrian_crossing_signals">"É preciso esperar pelo sinal do semáforo para atravessar a estrada aqui?"</string>
     <string name="quest_pedestrian_crossing_markings">"Este atravessamento de peões tem marcas na estrada?"</string>
+    <string name="overlay_places">"Locais"</string>
+    <string name="overlay_things">"Coisas"</string>
+    <string name="disused">"não utilizado"</string>
+    <string name="unknown_object">"Objeto desconhecido"</string>
+    <string name="quest_leafType_tree_title">"Esta árvore tem agulhas ou folhas?"</string>
+    <string name="quest_bbq_fuel_gas">"Gás"</string>
+    <string name="about_description_donate_google_play3">"Obrigado por considerar apoiar esta aplicação!
+Pode encontrar informações sobre donativos no nosso site ou na página inicial do projeto. O Google Play não nos permite fornecer a hiperligação na aplicação."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Não no interior, mas coberto"</string>
+    <string name="lit_value_unsupported">"Estado específico de iluminado que não é selecionável nesta aplicação"</string>
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
 </resources>

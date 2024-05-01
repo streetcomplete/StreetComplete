@@ -22,7 +22,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
-        and !maxheight and !maxheight:signed and !maxheight:physical
+        and $noMaxHeight
     """.toElementFilterExpression() }
 
     private val roadsWithoutMaxHeightFilter by lazy { """
@@ -31,13 +31,13 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
-        and !maxheight and !maxheight:signed and !maxheight:physical
+        and $noMaxHeight
     """.toElementFilterExpression() }
 
     private val railwayCrossingsFilter by lazy { """
         nodes with
           railway = level_crossing
-          and !maxheight and !maxheight:signed and !maxheight:physical
+          and $noMaxHeight
     """.toElementFilterExpression() }
 
     private val electrifiedRailwaysFilter by lazy { """
@@ -67,6 +67,14 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           )
           and layer
     """.toElementFilterExpression() }
+
+    private val noMaxHeight = """
+        !maxheight
+        and !maxheight:signed
+        and !maxheight:physical
+        and (!maxheight:forward or !maxheight:backward)
+        and !maxheight:lanes
+    """
 
     override val changesetComment = "Specify maximum heights"
     override val wikiLink = "Key:maxheight"

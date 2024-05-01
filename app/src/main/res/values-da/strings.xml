@@ -227,7 +227,6 @@ Ellers kan du downloade et andet keyboard i Play Store. Populære keyboards der 
     <string name="credits_translations_title">"Oversættelser"</string>
     <string name="credits_contributors_title">"Kodebidragsydere"</string>
     <string name="credits_author_title">"Udvikler og vedligeholder"</string>
-    <string name="credits_and_more">"og andre …"</string>
     <string name="quest_maxspeed_answer_living_street">"Det er en beboelsesvej"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Så der er altså et skilt som dette?"</string>
     <string name="quest_orchard_produce_title">"Hvad dyrkes der her?"</string>
@@ -501,7 +500,6 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_motorcycleParkingCoveredStatus_title">"Er denne motorcykelparkering overdækket (beskyttet mod regn)?"</string>
     <string name="default_disabled_msg_maxspeed">"Denne opgavetype er som standard deaktiveret, fordi du normalt skal kontrollere hele gaden for hastighedsbegrænsningsskilte, ikke kun det fremhævede afsnit. Dette kan undertiden være en ganske lang strækning bare for at løse en enkelt opgave."</string>
     <string name="pref_title_quests_restore_hidden">"Gendan skjulte opgaver"</string>
-    <string name="restore_hidden_success">"Gendannet %d skjulte opgaver"</string>
     <string name="on_level">"på niveau %s"</string>
     <string name="underground">"underjordisk"</string>
     <string name="quest_sidewalk_value_yes">"fortov"</string>
@@ -837,7 +835,6 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, f.eks. ensrettet vej 
     <string name="team_mode_active">"Holdtilstand er aktiv"</string>
     <string name="team_mode_deactivated">"Holdtilstand er deaktiveret"</string>
     <string name="undo_confirm_title2">"Fortryd denne redigering?"</string>
-    <string name="synced">"Synkroniseret"</string>
     <string name="toast_undo_unavailable">"Denne redigering er allerede synkroniseret og kan ikke fortrydes"</string>
     <string name="quest_cycleway_value_separate">"vises separat på kortet"</string>
     <string name="created_note_action_title">"Oprettede note"</string>
@@ -1059,8 +1056,6 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="quest_road_width_title">"Hvor bred er vejen her?"</string>
     <string name="quest_road_width_explanation">"Vejbredden fra kantsten til kantsten: Dette omfatter alt på vejoverfladen som f.eks. parkering på gaden eller cykelbaner, men ikke det ved siden af, som f.eks. fortove, cykelstier eller parkering ved siden af vejbanen."</string>
     <string name="quest_sidewalk_answer_none">"Slet ikke noget fortov"</string>
-    <string name="about_description_donate_google_play2">"Tak, fordi du overvejer at støtte denne app!
-På grund af en politik i Google Play Store må der desværre ikke vises links, der fører til donationer, i appen. I denne sammenhæng er det ikke engang tilladt at linke til vores projekthjemmeside."</string>
     <string name="link_osmand_description">"Mobilapp til online og offline kortvisning og navigation"</string>
     <string name="link_sunders_description">"Et kort over kameraer og overvågningsudstyr"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Hold dig tættere på pilen, men hold øje med trafikken!"</string>
@@ -1383,6 +1378,14 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="quest_pedestrian_crossing_markings">"Er der markeringer på jorden ved denne overgang?"</string>
     <string name="overlay_places">"Steder"</string>
     <string name="overlay_things">"Ting"</string>
-    <string name="disused">"ubrugt"</string>
+    <string name="disused">"ikke længere i brug"</string>
     <string name="unknown_object">"Ukendt objekt"</string>
+    <string name="quest_leafType_tree_title">"Har dette træ nåle eller blade?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Tak, fordi du overvejer at støtte denne app!
+Du kan finde oplysninger om donationer på vores hjemmeside eller projekthjemmeside. Google Play tillader os ikke at give linket i appen."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Ikke indenfor, men overdækket"</string>
+    <string name="lit_value_unsupported">"Specifik belysningsstatus, som ikke kan vælges i denne app"</string>
+    <string name="quest_generic_otherAnswers2">"Øh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Er der trafiksignaler, der viser, hvornår man skal krydse her?"</string>
 </resources>

@@ -227,7 +227,6 @@
     <string name="credits_translations_title">"Пераклад"</string>
     <string name="credits_contributors_title">"Уклад у код унеслі"</string>
     <string name="credits_author_title">"Аўтар і суправаджальнік"</string>
-    <string name="credits_and_more">"і іншыя…"</string>
     <string name="quest_maxspeed_answer_living_street">"Гэта жылая вуліца"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Значыць, тут ёсць такі знак?"</string>
     <string name="quest_orchard_produce_title">"Што тут вырошчваюць?"</string>
@@ -501,7 +500,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ці забяспечана гэтая паркоўка для матацыклаў падстрэшкам ад дажджу?"</string>
     <string name="default_disabled_msg_maxspeed">"Гэтае заданне выключана па змаўчанні, таму што звычайна патрабуе праверыць усю вуліцу на знакі абмежавання хуткасці, не толькі падсветлены сегмент. Гэта можа быць дастаткова доўгім для аднаго задання."</string>
     <string name="pref_title_quests_restore_hidden">"Паказаць схаваныя квэсты"</string>
-    <string name="restore_hidden_success">"Паказана %d схаваных квэстаў"</string>
     <string name="on_level">"на узроўню %s"</string>
     <string name="underground">"падземнае"</string>
     <string name="quest_sidewalk_value_yes">"тратуар"</string>
@@ -840,7 +838,6 @@
     <string name="team_mode_active">"Камандны рэжым уключаны"</string>
     <string name="team_mode_deactivated">"Камандны рэжым адключаны"</string>
     <string name="undo_confirm_title2">"Адмяніць гэтую праўку?"</string>
-    <string name="synced">"Сiнхранiзавана"</string>
     <string name="toast_undo_unavailable">"Гэтая праўка ўжо сінхранізаваная і не можа быць адменена"</string>
     <string name="quest_cycleway_value_separate">"адлюстроўваецца на мапе асобна"</string>
     <string name="created_note_action_title">"Нататка створана"</string>
@@ -1062,8 +1059,6 @@
     <string name="quest_road_width_title">"Якая шырыня гэтай дарогі?"</string>
     <string name="quest_road_width_explanation">"Шырыня праезнай часткі ад бардзюра да бардзюра: гэта складаецца з усё, што знаходзіцца на паверхні дарогі, як паркоўка на дарозе, роварная лінія, але не складаецца з штосьці за межамі, як роварная дарожка і паркоўка па-за дарогай."</string>
     <string name="quest_sidewalk_answer_none">"Наогул няма дарогі"</string>
-    <string name="about_description_donate_google_play2">"Дзякуй за рашэнне падтрымаць гэта дадатак!
-Да няшчасця, з-за палітыкі Google Play Store, мы не можам"</string>
     <string name="link_osmand_description">"Мабільнае прыкладанне для онлайн і афлайн прагляду карт і навігацыі"</string>
     <string name="link_sunders_description">"Карта камер і відэакантролю"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Будзьце бліжэй да дарогі, але сачыце за трафікам!
@@ -1360,4 +1355,38 @@
     <string name="label_log_older_than">"Да"</string>
     <string name="label_log_message_contains">"Паведамленне змяшчае"</string>
     <string name="title_logs_filters">"Фільтраваць паведамленні"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"Колькасць схаваных квэстаў: %d"</string>
+    <string name="link_every_door_description">"Магутны рэдактар POI для Android і iOS"</string>
+    <string name="link_mapcomplete_description">"Калекцыя тэматычных карт OSM, кожная з якіх паказвае і дазваляе рэдагаваць адзін від аб'ектаў"</string>
+    <string name="link_forum_description">"Патрэбна дапамога? Хочаце прачытаць, што адбываецца? Прыходзьце і далучайцеся, тут кіпіць актыўнасць суполак па ўсім свеце!"</string>
+    <string name="link_calendar_description">"Ці праводзяцца побач з вамі падзеі OpenStreetMap або сустрэчы супольнасці? (Калі няма, вы можаце дадаць сваю!)"</string>
+    <string name="link_prettymapp_description">"Стварыце прыгожыя рознакаляровыя плакаты з мапай наваколля"</string>
+    <string name="quest_disable_action">"Адключыць"</string>
+    <string name="quest_disable_title">"Адключыць гэты тып квэста?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure не ўсталяваны (пакуль)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure не даў вынікі вымярэння."</string>
+    <string name="quest_disable_message_tape_measure">"Замест гэтага вы можаце выкарыстоўваць рулетку, але ў рэшце рэшт гэта можа быць крыху няёмка."</string>
+    <string name="quest_buildingType_outbuilding">"Прыбудова"</string>
+    <string name="quest_buildingType_outbuilding_description">"менш важны будынак на маёмасці"</string>
+    <string name="quest_buildingType_other_description">"канкрэтны будынак, які нельга выбраць у гэтым дадатку"</string>
+    <string name="quest_buildingType_container">"Кантэйнер"</string>
+    <string name="quest_buildingType_tent">"Намёт"</string>
+    <string name="quest_buildingType_tomb">"Магіла"</string>
+    <string name="quest_buildingType_tower">"Вежа"</string>
+    <string name="quest_buildingType_tower_description">"любая вежа"</string>
+    <string name="quest_buildingType_under_construction">"будуецца"</string>
+    <string name="overlay_buildings">"Будынкі"</string>
+    <string name="quest_pedestrian_crossing_signals">"Вам трэба чакаць сігналу святлафора, каб перайсці тут?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Ці ёсць на гэтым пераходзе разметка?"</string>
+    <string name="overlay_places">"Месцы"</string>
+    <string name="overlay_things">"Рэчы"</string>
+    <string name="disused">"не выкарыстоўваецца"</string>
+    <string name="unknown_object">"Невядомы аб'ект"</string>
+    <string name="quest_leafType_tree_title">"У гэтага дрэва ёсць іголкі ці лісце?"</string>
+    <string name="quest_bbq_fuel_gas">"Газ"</string>
+    <string name="about_description_donate_google_play3">"Дзякуй за тое, што вы падтрымлівалі гэта дадатак!
+Вы можаце знайсці інфармацыю аб ахвяраваннях на нашым сайце або на галоўнай старонцы праекта, Google Play не дазваляе нам даць спасылку ў дадатку."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Не ўнутры, але накрыта"</string>
+    <string name="lit_value_unsupported">"Спецыфічны статус, які нельга выбраць у гэтым дадатку"</string>
+    <string name="quest_generic_otherAnswers2">"Э-э..."</string>
 </resources>

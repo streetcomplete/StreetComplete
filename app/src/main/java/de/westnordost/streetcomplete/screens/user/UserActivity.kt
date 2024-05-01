@@ -6,10 +6,8 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.EditType
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.screens.FragmentContainerActivity
 import de.westnordost.streetcomplete.screens.HasTitle
@@ -19,8 +17,8 @@ import de.westnordost.streetcomplete.screens.user.login.LoginFragment
 import de.westnordost.streetcomplete.screens.user.statistics.CountryInfoFragment
 import de.westnordost.streetcomplete.screens.user.statistics.EditStatisticsFragment
 import de.westnordost.streetcomplete.screens.user.statistics.EditTypeInfoFragment
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import de.westnordost.streetcomplete.util.ktx.observe
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /** Shows all the user information, login etc.
  *  This activity coordinates quite a number of fragments, which all call back to this one. In order
@@ -33,7 +31,7 @@ class UserActivity :
     AchievementsFragment.Listener,
     EditStatisticsFragment.Listener {
 
-    private val userLoginStatusSource: UserLoginStatusSource by inject()
+    private val viewModel by viewModel<UserViewModel>()
 
     private val countryDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment?
@@ -43,11 +41,6 @@ class UserActivity :
 
     private val achievementDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
-
-    private val loginStatusListener = object : UserLoginStatusSource.Listener {
-        override fun onLoggedIn() { lifecycleScope.launch { replaceMainFragmentAnimated(UserFragment()) } }
-        override fun onLoggedOut() { lifecycleScope.launch { replaceMainFragmentAnimated(LoginFragment()) } }
-    }
 
     private val fragmentLifecycleCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
         override fun onFragmentStarted(fragmentManager: FragmentManager, fragment: Fragment) {
@@ -65,11 +58,14 @@ class UserActivity :
         if (savedInstanceState == null) {
             replaceMainFragment(when {
                 intent.getBooleanExtra(EXTRA_LAUNCH_AUTH, false) -> LoginFragment.create(true)
-                userLoginStatusSource.isLoggedIn -> UserFragment()
+                viewModel.isLoggedIn.value -> UserFragment()
                 else -> LoginFragment.create()
             })
         }
-        userLoginStatusSource.addListener(loginStatusListener)
+
+        observe(viewModel.isLoggedIn) { isLoggedIn ->
+            replaceMainFragmentAnimated(if (isLoggedIn) UserFragment() else LoginFragment())
+        }
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         if (toolbar != null) {
@@ -88,11 +84,6 @@ class UserActivity :
         } else {
             super.onOptionsItemSelected(item)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        userLoginStatusSource.removeListener(loginStatusListener)
     }
 
     /* ---------------------------- AchievementsFragment.Listener ------------------------------- */

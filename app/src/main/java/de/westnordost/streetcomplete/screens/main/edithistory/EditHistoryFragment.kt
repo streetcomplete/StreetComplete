@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -52,7 +51,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
                         editItem.edit,
                         element,
                         viewModel.featureDictionaryLazy,
-                        viewModel::undo
+                        { viewModel.undo(it.key) }
                     ).show()
                 }
             } else {

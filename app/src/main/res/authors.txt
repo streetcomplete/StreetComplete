@@ -47,6 +47,8 @@ bicycle_rental_dropoff_poin... CC-BY-SA 4.0      Alexander Migl https://commons.
 bicycle_rental_human.jpg       CC-BY-SA 2.0      TijsB https://commons.wikimedia.org/wiki/File:Tel_Aviv-_bike_rental_(5889990605).jpg
 bicycle_rental_shop_with_re... CC-BY-SA 2.0      Darb02 https://commons.wikimedia.org/wiki/File:Rydjor_Bike_Shop_and_Antique_Bike_Museum.jpg
 
+bicycleway_moped.svg           PD                Ionutneagu https://www.svgrepo.com/download/490323/scooter-2.svg
+
 bollard_fixed.jpg              CC-BY-SA 4.0      Matija Nalis https://github.com/streetcomplete/StreetComplete/issues/3657#issuecomment-1020666101
 bollard_flexible.jpg           CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Flexible_bollard.jpg
 bollard_foldable.jpg           CC-BY-SA 3.0      Hauke Stieler https://wiki.openstreetmap.org/wiki/File:Bollard_foldable.jpg
@@ -270,13 +272,13 @@ surface_concrete_very_bad.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/w
 surface_gravel_bad.jpg         CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
 surface_gravel_intermediate... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Compacted_-_intermediate.jpg (Supaplex030)
 surface_gravel_very_bad.jpg    CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Mountain_path_with_large_gravel.jpg (Andre Thum)
-surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)
+surface_paving_stones_bad.jpg  CC0 1.0           https://wiki.openstreetmap.org/wiki/File:20230418_142605c.jpg (Rhhsmits)
 surface_paving_stones_excel... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Footway_with_very_smooth_paving.jpg (mcliquid)
 surface_paving_stones_good.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
 surface_paving_stones_inter... Public Domain     https://wiki.openstreetmap.org/wiki/File:Damaged_and_loose_paving_stones.jpg (helium314)
 surface_paving_stones_very_... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Broken_up_sidewalk_near_the_shore_of_the_St._Lawrence_River_near_Aultsville,_Ontario.jpg (Aultsville)
 surface_sett_bad.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_-_bad.jpg (Supaplex030)
-surface_sett_good.jpg          CC0              https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_flattened_stones_and_very_shallow_gaps.jpg (NicoHood)
+surface_sett_good.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_flattened_stones_and_very_shallow_gaps.jpg (NicoHood)
 surface_sett_intermediate.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_mostly_square_but_rough_stones.jpg (Andre Thum)
 surface_sett_very_bad.jpg      Public Domain     https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
 surface_unpaved_horrible.jpg   CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Smoothness_horrible.jpg (rhhsm)

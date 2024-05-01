@@ -227,7 +227,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="credits_translations_title">"Tłumaczenia"</string>
     <string name="credits_contributors_title">"Współtwórcy kodu"</string>
     <string name="credits_author_title">"Autor i opiekun projektu"</string>
-    <string name="credits_and_more">"i inni…"</string>
     <string name="quest_maxspeed_answer_living_street">"Jest to droga w strefie zamieszkania"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Czyli jest tu taki znak?"</string>
     <string name="quest_orchard_produce_title">"Co się tutaj uprawia?"</string>
@@ -500,7 +499,6 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_motorcycleParkingCoveredStatus_title">"Czy ten parking dla motocykli jest osłonięty (chroniony przed deszczem)?"</string>
     <string name="default_disabled_msg_maxspeed">"To zadanie jest domyślnie wyłączone, ponieważ zazwyczaj musisz sprawdzić na całej ulicy znaki ograniczenia prędkości, a nie tylko podświetloną sekcję. Czasami może to być więc dość trudna sprawa, aby rozwiązać pojedyncze zadanie."</string>
     <string name="pref_title_quests_restore_hidden">"Przywróć ukryte zadania"</string>
-    <string name="restore_hidden_success">"Przywrócono %d ukrytych zadań"</string>
     <string name="on_level">"na piętrze %s"</string>
     <string name="underground">"pod ziemią"</string>
     <string name="quest_sidewalk_value_yes">"chodnik"</string>
@@ -840,7 +838,6 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="team_mode_active">"Tryb zespołowy aktywny"</string>
     <string name="team_mode_deactivated">"Tryb zespołowy nieaktywny"</string>
     <string name="undo_confirm_title2">"Cofnąć następującą edycję?"</string>
-    <string name="synced">"Zsynchornizowane"</string>
     <string name="toast_undo_unavailable">"Ta edycja jest już zsynchronizowana i nie można jej wycofać"</string>
     <string name="quest_cycleway_value_separate">"Wyświetlone osobno na mapie"</string>
     <string name="created_note_action_title">"Utworzono notatkę"</string>
@@ -1062,8 +1059,6 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_road_width_title">"Jaka jest szerokość tej drogi?"</string>
     <string name="quest_road_width_explanation">"Szerokość jezdni między krawędziami np. krawężnikami, liczona włącznie z pasami do parkowania i rowerowymi, za to bez oddzielonych ścieżek rowerowych, zatoczek parkingowych i chodników."</string>
     <string name="quest_sidewalk_answer_none">"Nie ma chodnika"</string>
-    <string name="about_description_donate_google_play2">"Dziękujemy za zainteresowanie wsparciem naszej aplikacji!
-Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn nie mogą być wyświetlane w aplikacji. Z tego powodu nawet umieszczanie odnośników do strony głównej naszego projektu nie jest dozwolone."</string>
     <string name="link_osmand_description">"Mobilna aplikacja do przeglądania map i navigacji online albo offline"</string>
     <string name="link_sunders_description">"Mapa kamer i sprzętu inwigilacyjnego"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Trzymaj się bliżej strzałki, ale uważaj na pojazdy!"</string>

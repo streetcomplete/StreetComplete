@@ -226,7 +226,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="credits_translations_title">"Traduceri"</string>
     <string name="credits_contributors_title">"Contribuții la cod"</string>
     <string name="credits_author_title">"Autor și întreținător"</string>
-    <string name="credits_and_more">"mai mult…"</string>
     <string name="quest_maxspeed_answer_living_street">"Este o zonă rezidențială"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Deci, există un indicator ca acesta?"</string>
     <string name="quest_orchard_produce_title">"Ce se cultivă aici?"</string>
@@ -500,7 +499,6 @@ la parter"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Parcarea de motociclete este acoperită (protejată de ploaie)?"</string>
     <string name="default_disabled_msg_maxspeed">"Acest tip de misiune este dezactivat implicit, fiindcă trebuie să verificați întreaga stradă pentru indicatoare de limitare a vitezei, nu doar secțiunea evidențiată. Asta necesită uneori destulă muncă pentru a rezolva o doar singură misiune."</string>
     <string name="pref_title_quests_restore_hidden">"Reactivează întrebările ascunse"</string>
-    <string name="restore_hidden_success">"S-au reactivat %d întrebări ascunse"</string>
     <string name="on_level">"la nivelul %s"</string>
     <string name="underground">"subteran"</string>
     <string name="quest_sidewalk_value_yes">"trotuar"</string>
@@ -836,7 +834,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă."</st
     <string name="team_mode_active">"Modul echipă este activat"</string>
     <string name="team_mode_deactivated">"Modul echipă este dezactivat"</string>
     <string name="undo_confirm_title2">"Anulați următoarea editare?"</string>
-    <string name="synced">"Sincronizat"</string>
     <string name="toast_undo_unavailable">"Această editare este deja sincronizată și nu mai poate fi anulată"</string>
     <string name="quest_cycleway_value_separate">"afișată separat pe hartă"</string>
     <string name="created_note_action_title">"S-a creat nota"</string>
@@ -1058,7 +1055,6 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă."</stri
     <string name="quest_road_width_title">"Cât de lat este drumul aici?"</string>
     <string name="quest_road_width_explanation">"Lățimea drumului de la bordură la bordură: Aceasta include tot ce este pe suprafața drumului, incluzând benzile de parcare sau de biciclete, dar excluzând orice dincolo de bordură, cum ar fi trotuar, parcarea în afara străzii sau benzi de biciclete adiacente."</string>
     <string name="quest_sidewalk_answer_none">"Niciun trotuar"</string>
-    <string name="about_description_donate_google_play2">"Vă mulțumim pentru că luați în considerare sprijinirea acestei aplicații! Din păcate, din cauza politicilor Google Play Store, nu pot fi afișate în aplicație linkuri pentru donații. În acest context, nici măcar un link către pagina proiectului nu este permis."</string>
     <string name="link_osmand_description">"Aplicație mobilă pentru vizualizarea hărții și navigație, online și offline"</string>
     <string name="link_sunders_description">"O hartă a camerelor video și echipamentelor de supraveghere"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Stați aproape de săgeată, dar fiți atent(ă) la trafic!"</string>

@@ -139,6 +139,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
 
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
+    <!-- The sound someone makes if he is not sure what to answer... uh… er… oh… äh…-->
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
     <!-- aka "not applicable", "not answerable" -->
     <string name="quest_generic_answer_notApplicable">"Can’t say…"</string>
 
@@ -214,7 +216,6 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="added_tag_action_title">Added %s</string>
     <string name="removed_tag_action_title">Removed %s</string>
     <string name="changed_tag_action_title">Updated to %s</string>
-    <string name="synced">Synced</string>
     <string name="undo_confirm_title2">Undo the following edit?</string>
     <string name="undo_confirm_positive">Undo</string>
     <string name="undo_confirm_negative">Cancel</string>
@@ -311,8 +312,8 @@ Each of you will then see different quests."</string>
 
     <string name="about_title_sponsors">Sponsors</string>
     <string name="about_description_donate">Thank you for considering supporting this app! To see current donations and to donate yourself, tap on the respective platform:</string>
-    <string name="about_description_donate_google_play2">"Thank you for considering supporting this app!
-Unfortunately, due to Google Play Store policy, no links leading to donations may be displayed in-app. In this context, even linking to our project home is not allowed."</string>
+    <string name="about_description_donate_google_play3">"Thank you for considering supporting this app!
+You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app."</string>
 
     <string name="about_title_translate">Help translate this app</string>
     <string name="about_description_translate">%1$s is translated %2$d%%</string>
@@ -345,8 +346,6 @@ Unfortunately, due to Google Play Store policy, no links leading to donations ma
     <string name="credits_translations_title">Translations</string>
     <string name="credits_art_contributors_title">Art contributors</string>
     <string name="credits_projects_contributors_title">Projects made for StreetComplete</string>
-    <!-- As in "Person A, Person B, Person C and others..." -->
-    <string name="credits_and_more">and others…</string>
 
 
     <!-- Privacy screen -->
@@ -563,7 +562,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_title_quests_restore_hidden_summary">Number of hidden quests: %d</string>
     <string name="restore_confirmation">Restore</string>
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
-    <string name="restore_hidden_success">Restored %d hidden quests</string>
 
     <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
@@ -1102,6 +1100,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_leaf_type_needles">Needles</string>
     <string name="quest_leaf_type_broadleaved">Leaves</string>
     <string name="quest_leaf_type_mixed">Both are present</string>
+    <string name="quest_leafType_tree_title">Does this tree have needles or leaves?</string>
 
     <string name="quest_level_title2">On which level number is this place located?</string>
 
@@ -1281,7 +1280,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Parking garage</string>
 
-    <string name="quest_pedestrian_crossing_signals">"Do you have to wait for a traffic signal to cross here?"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Are there traffic signals that show when to cross here?"</string>
 
     <string name="quest_pedestrian_crossing_island">"Does this crossing have an island?"</string>
 
@@ -1676,6 +1675,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="lit_value_no">Not lit</string>
     <string name="lit_value_24_7">Lit night and day</string>
     <string name="lit_value_automatic">Lit when someone passes by</string>
+    <string name="lit_value_unsupported">Specific lit status that is not selectable in this app</string>
 
     <string name="overlay_sidewalk">Sidewalks</string>
 
@@ -1746,5 +1746,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="label_log_older_than">To</string>
     <string name="label_log_message_contains">Message contains</string>
     <string name="title_logs_filters">Filter messages</string>
+    <string name="quest_isAmenityIndoor_outside_covered">Not inside, but covered</string>
 
 </resources>

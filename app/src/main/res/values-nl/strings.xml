@@ -225,7 +225,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="credits_translations_title">"Vertalingen"</string>
     <string name="credits_contributors_title">"Code mede-auteurs"</string>
     <string name="credits_author_title">"Auteur en onderhouder"</string>
-    <string name="credits_and_more">"en verder…"</string>
     <string name="quest_maxspeed_answer_living_street">"Dit is een woonerf"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Dus, is er zo'n bord?"</string>
     <string name="quest_orchard_produce_title">"Wat wordt hier geteeld?"</string>
@@ -288,7 +287,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_parkingType_title">"Wat voor parkeerplaats is dit?"</string>
     <string name="quest_parkingType_surface">"Parkeerplaats"</string>
     <string name="quest_parkingType_underground">"Ondergrondse parkeergarage"</string>
-    <string name="quest_parkingType_multiStorage">"Bovengrondse parkeergarage"</string>
+    <string name="quest_parkingType_multiStorage">"Parkeergarage"</string>
     <string name="quest_powerPolesMaterial_title">"Waar is deze stroompaal van gemaakt?"</string>
     <string name="quest_powerPolesMaterial_wood">"Hout"</string>
     <string name="quest_powerPolesMaterial_metal">"Staal"</string>
@@ -441,7 +440,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_buildingType_government">"Overheidsgebouw"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
     <string name="quest_buildingType_carport_description">"Een dak waar auto's onder gestald kunnen worden"</string>
-    <string name="quest_buildingType_garage">"Garage (voor één auto)"</string>
+    <string name="quest_buildingType_garage">"Enkele garage"</string>
     <string name="quest_buildingType_garages">"Meerdere garages"</string>
     <string name="quest_buildingType_parking">"Parkeergebouw"</string>
     <string name="quest_buildingType_farm">"Op een boerderij"</string>
@@ -498,7 +497,6 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Is deze motorparkeerplaats overdekt?"</string>
     <string name="default_disabled_msg_maxspeed">"Dit type vraag is standaard uitgeschakeld, omdat je normaal een hele straat moet controleren op snelheidsborden/signalen, niet alleen het aangegeven stuk weg. Het kan daarom soms veel moeite kosten om één enkele vraag op te lossen."</string>
     <string name="pref_title_quests_restore_hidden">"Herstel verborgen vragen"</string>
-    <string name="restore_hidden_success">"%d verborgen vragen hersteld"</string>
     <string name="on_level">"op niveau %s"</string>
     <string name="underground">"ondergronds"</string>
     <string name="quest_sidewalk_value_yes">"trottoir"</string>
@@ -567,7 +565,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="about_description_donate">"Bedankt dat je deze app wilt ondersteunen! Om huidige donaties te zien en zelf te doneren, tik op het respectieve platform:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Scan hier"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Ga door met scannen"</string>
-    <string name="quest_buildingType_garages_description">"Scheid de verschillende eigenaren door een spatie"</string>
+    <string name="quest_buildingType_garages_description">"aparte plaatsen voor verschillende eigenaren/huurders"</string>
     <string name="quest_tourism_information_title">"Welke soort toeristeninformatie is dit?"</string>
     <string name="quest_tourism_information_office">"Toeristeninformatiekantoor"</string>
     <string name="quest_tourism_information_board">"Informatiebord"</string>
@@ -832,7 +830,6 @@ Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals
     <string name="team_mode_active">"Team modus is actief"</string>
     <string name="team_mode_deactivated">"Team modus is uitgeschakeld"</string>
     <string name="undo_confirm_title2">"De volgende wijziging ongedaan maken?"</string>
-    <string name="synced">"Gesynchroniseerd"</string>
     <string name="toast_undo_unavailable">"Deze wijziging is al gesynchroniseerd en kan niet ongedaan gemaakt worden"</string>
     <string name="quest_cycleway_value_separate">"apart weergegeven op de kaart"</string>
     <string name="created_note_action_title">"Notitie aangemaakt"</string>
@@ -1054,8 +1051,6 @@ Doe hetzelfde voor de andere zijde, als aanwezig."</string>
     <string name="quest_road_width_title">"Hoe breed is deze weg hier?"</string>
     <string name="quest_road_width_explanation">"De rijbaanbreedte van stoeprand tot stoeprand: dit omvat alles op het straatoppervlak, zoals parkeren op straat of fietspaden op de rijbaan, maar sluit alles daarbuiten uit, zoals fietspaden of parkeren naast de rijbaan."</string>
     <string name="quest_sidewalk_answer_none">"Helemaal geen trottoir"</string>
-    <string name="about_description_donate_google_play2">"Bedankt voor het overwegen om deze app te ondersteunen!
-Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in de app worden weergegeven. In deze context is zelfs het linken naar onze projectpagina niet toegestaan."</string>
     <string name="link_osmand_description">"Mobiele app voor online en offline kaartweergave en navigatie"</string>
     <string name="link_sunders_description">"Een kaart met camera's en bewakingsapparatuur"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Ga dichter naar de pijl maar pas op voor het verkeer!"</string>
@@ -1165,6 +1160,10 @@ Helaas mogen er vanwege een Google Play Store-beleid geen links naar donaties in
     <string name="quest_memorialType_stele_wooden">"Houten zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_stele_stone">"Stenen zuil (gedenkplaat)"</string>
     <string name="quest_memorialType_sculpture">"Ander beeldhouwwerk"</string>
+    <string name="quest_moped_access_title">Is er een bord dat de toegang voor bromfietsen op dit fietspad aangeeft?</string>
+    <string name="quest_moped_access_allowed">Nee, er is geen bord</string>
+    <string name="quest_moped_access_designated">Ja, dit fietspad is verplicht voor bromfietsen</string>
+    <string name="quest_moped_access_forbidden">Ja, bromfietsen zijn niet toegestaan op dit fietspad</string>
     <string name="overlay_none">"Geen"</string>
     <string name="overlay_lit">"Straatverlichting"</string>
     <string name="lit_value_yes">"Verlicht"</string>
@@ -1360,7 +1359,7 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="link_calendar_description">"Zijn er OpenStreetMap-evenementen of gemeenschapsbijeenkomsten bij u in de buurt? (Zo niet, dan kunt u uw eigen toevoegen!)"</string>
     <string name="link_prettymapp_description">"Maak mooie veelkleurige kaartposters van jullie buurt"</string>
     <string name="quest_disable_action">"UItschakelen"</string>
-    <string name="quest_disable_title">"Schakel dit vrssg type uit?"</string>
+    <string name="quest_disable_title">"Schakel dit vraagtype uit?"</string>
     <string name="quest_disable_message_not_installed">"Straat meting is (nog) niet geïnstalleerd."</string>
     <string name="quest_disable_message_not_working">"Straat meting gaf geen meetresultaat"</string>
     <string name="quest_disable_message_tape_measure">"Je zou in plaats daarvan een meetlint kunnen gebruiken, maar dat kan toch een beetje lastig zijn."</string>
@@ -1372,12 +1371,19 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="quest_buildingType_tomb">"Graf"</string>
     <string name="quest_buildingType_tower">"Toren"</string>
     <string name="quest_buildingType_tower_description">"Iedere soort toren"</string>
-    <string name="quest_buildingType_under_construction">"In opbouw"</string>
+    <string name="quest_buildingType_under_construction">"In aanbouw"</string>
     <string name="overlay_buildings">"Gebouwen"</string>
-    <string name="quest_pedestrian_crossing_signals">"Moet je wachten op een verkeerslicht voordat je kan oversteken?"</string>
+    <string name="quest_pedestrian_crossing_signals">"Moet je wachten op een verkeerslicht voordat je hier kan oversteken?"</string>
     <string name="quest_pedestrian_crossing_markings">"Heeft deze oversteekplaats markeringen op de grond?"</string>
     <string name="overlay_places">"Plaatsen"</string>
     <string name="overlay_things">"Dingen"</string>
     <string name="disused">"Niet meer in gebruik"</string>
     <string name="unknown_object">"Onbekend object"</string>
+    <string name="quest_leafType_tree_title">"Is dit een naaldboom of een loofboom?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Bedankt dat u overweegt deze app te ondersteunen!
+U kunt informatie over doneren terugvinden op onze website of project homepage. Google Play staat ons niet toe de link in de app te tonen."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Niet binnen, maar overdekt"</string>
+    <string name="lit_value_unsupported">"Specifieke verlichtings-status die in deze app niet gekozen kan worden"</string>
+    <string name="quest_generic_otherAnswers2">"Anders…"</string>
 </resources>

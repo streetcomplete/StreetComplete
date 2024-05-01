@@ -227,7 +227,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="credits_translations_title">"Traducciones"</string>
     <string name="credits_contributors_title">"Aportaciones de código"</string>
     <string name="credits_author_title">"Autor y encargado principal"</string>
-    <string name="credits_and_more">"y más…"</string>
     <string name="quest_maxspeed_answer_living_street">"Es una calle peatonal"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"¿Hay una señal como ésta?"</string>
     <string name="quest_orchard_produce_title">"¿Qué es lo que se cultiva aquí?"</string>
@@ -500,7 +499,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_motorcycleParkingCoveredStatus_title">"¿Está este estacionamiento cubierto (protegido de la lluvia)?"</string>
     <string name="default_disabled_msg_maxspeed">"Este tipo de pregunta viene desactivada de serie porque por lo general habría que buscar señales de límite de velocidad en toda la calle, no solo de la sección resaltada. Puede ser demasiado trabajo para completar una sola tarea."</string>
     <string name="pref_title_quests_restore_hidden">"Mostrar tareas ocultas"</string>
-    <string name="restore_hidden_success">"Mostrar %d tareas ocultas"</string>
     <string name="on_level">"en el nivel %s"</string>
     <string name="underground">"subterránea"</string>
     <string name="quest_sidewalk_value_yes">"acera"</string>
@@ -528,7 +526,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_leaf_type_mixed">"Hay de los dos tipos"</string>
     <string name="quest_cyclewayPartSurface_title">"¿De qué está hecho el carril bici?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Difiere a lo largo de la vía…"</string>
-    <string name="quest_split_way_description">"Si difiere a lo largo de la vía el primer paso es trocearla, luego puedes responder en cada trozo por separado. ¿Quieres empezar ahora?"</string>
+    <string name="quest_split_way_description">"Si difiere a lo largo de la vía, el primer paso es trocearla, luego puedes responder en cada trozo por separado. ¿Quieres empezar ahora?"</string>
     <string name="quest_split_way_tutorial">"Toca en la vía para trocearla en los puntos donde hay un cambio. Intenta hacerlo con precisión. Puedes acercarte un poco para verlo mejor, si quieres."</string>
     <string name="quest_split_way_too_imprecise">"Prueba acercando el mapa un poco más"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Parece que has hecho demasiadas divisiones. Siempre puedes dividir la vía más adelante."</string>
@@ -586,7 +584,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="letsgo">"¡Vamos allá!"</string>
     <string name="tutorial_welcome_to_osm">"Te damos la bienvenida a OpenStreetMap"</string>
     <string name="tutorial_welcome_to_osm_subtitle">"El mapamundi libre y colaborativo"</string>
-    <string name="tutorial_intro">"StreetComplete te facilita editar OpenStreetMap; busca cosas que faltan por poner en tu vecindario; como carriles bici, números de portal, horarios de apertura y mucho más…"</string>
+    <string name="tutorial_intro">"StreetComplete te facilita editar OpenStreetMap; busca cosas que faltan por poner en tu vecindario; como carriles de bici, números de portal, horarios de apertura y mucho más…"</string>
     <string name="tutorial_solving_quests">"Una vez se cargue la zona verás las tareas como puntos de interés a arreglar.
 
 Puedes empezar a arreglar cosas sin tener que iniciar sesión y dejarlo para más tarde, cuando quieras subir tus cambios."</string>
@@ -689,7 +687,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="user_profile_global_rank">"Clasificación"</string>
     <string name="user_profile_local_rank">"Clasificación en
 %s"</string>
-    <string name="user_profile_days_active">"Dias activo"</string>
+    <string name="user_profile_days_active">"Días activo"</string>
     <string name="user_profile_achievement_levels">"Logros y niveles"</string>
     <string name="quest_address_street_no_named_streets">"No pertenece a una calle con nombre"</string>
     <string name="quest_address_street_place_name_label">"Poner nombre:"</string>
@@ -701,7 +699,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="privacy_html_tileserver2">"&lt;p&gt;Para poder ver el mapa descargamos teselas vectoriales de %1$s. Mira la &lt;a href=\"%2$s\"&gt;declaración de privacidad&lt;/a&gt; para más información.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
     <string name="quest_board_type_history">"Historia"</string>
-    <string name="quest_board_type_geology">"Geografía"</string>
+    <string name="quest_board_type_geology">"Geología"</string>
     <string name="quest_board_type_plants">"Plantas"</string>
     <string name="quest_board_type_wildlife">"Fauna silvestre"</string>
     <string name="quest_board_type_nature">"Naturaleza (temas múltiples)"</string>
@@ -713,7 +711,7 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_board_type_map_description">"Si el cartel es sobre un tema en particular déjalo claro y afina tu selección, sin importar el mapa que pueda tener. Por ejemplo; un cartel de transporte público puede tener un mapa con una ruta de autobús. Si el tema no aparece en la lista deja una nota."</string>
     <string name="quest_surface_detailed_answer_impossible">"Varios tipos de superficie…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"¿Estás seguro de que no puedes poner el tipo exacto de superficie? Ten en cuenta que responder «difiere a lo largo de la vía» te permite partir en dos en el punto donde cambia. Puedes pulsar en «no sabría decir» si hay un solo tipo de superficie pero no aparece en la lista."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Explica brevemente el tipo de superficie, por ejemplo; «arenoso con algún adoquín». Puedes escribir hasta un máximo de 255 caracteres."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Explica brevemente el tipo de superficie, por ejemplo; «arenoso con algún adoquín». Puedes escribir hasta un máximo de 255 carácteres."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Casas adosadas"</string>
     <string name="at_housename">"Nombre de la casa %s"</string>
@@ -833,7 +831,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="team_mode_active">"El modo equipo está activo"</string>
     <string name="team_mode_deactivated">"El modo equipo está desactivado"</string>
     <string name="undo_confirm_title2">"¿Deshacer la siguiente edición?"</string>
-    <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edición ya está sincronizada y no se puede deshacer"</string>
     <string name="quest_cycleway_value_separate">"tiene su propia vía en el mapa"</string>
     <string name="created_note_action_title">"Nota creada"</string>
@@ -1054,7 +1051,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_road_width_title">"¿Cuál es el ancho del camino en este punto?"</string>
     <string name="quest_road_width_explanation">"El ancho de la calzada de bordillo a bordillo: Esto comprende toda superficie de la vía, incluido su espacio de aparcamiento a la orilla o carriles bici, pero excluye todo lo que vaya más allá del bordillo; como aceras, aparcamiento fuera de vía pública u otras vías bici aledañas."</string>
     <string name="quest_sidewalk_answer_none">"No hay ninguna acera"</string>
-    <string name="about_description_donate_google_play2">"¡Gracias por considerar apoyar esta aplicación! Lamentablemente, debido a la política de Google Play Store, no se mostrarán en la aplicación enlaces que conduzcan a donaciones. En este contexto, ni siquiera se permite vincular a la web de nuestro proyecto."</string>
     <string name="link_osmand_description">"Aplicación móvil para visualización y navegación de mapas en línea y fuera de línea"</string>
     <string name="link_sunders_description">"Mapa de cámaras y equipos de vigilancia"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"¡Manténgase más cerca de la flecha pero tenga cuidado con el tráfico!"</string>
@@ -1126,8 +1122,8 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_step_count_stile_hint">"Pon el número de escalones hasta la parte más alta, si hay más de un lado que de otro pon el lado que más tenga."</string>
     <string name="quest_shoulder_explanation2">"Un arcén es una franja pensada para paradas de emergencia. Puede que no esté del todo pavimentado o que no tenga la anchura suficiente para que un vehículo entero salga de la calzada."</string>
     <string name="quest_cycleway_value_none_and_oneway">"no hay nada, y no se puede ir en bici en esta dirección"</string>
-    <string name="map_btn_create_track">"Empezar una nueva traza GPS"</string>
-    <string name="map_btn_stop_track">"Parar la grabación de la traza GPS"</string>
+    <string name="map_btn_create_track">"Empezar una nueva traza GPX"</string>
+    <string name="map_btn_stop_track">"Parar la grabación de la traza GPX"</string>
     <string name="quest_bicycle_rental_capacity_title">"¿Cuál es el tope de bicis de alquiler que admite?"</string>
     <string name="quest_bicycle_rental_type_title">"¿De qué tipo de alquiler de bici estamos hablando?"</string>
     <string name="quest_bicycle_rental_type_docking_station">"Una estación base con anclajes"</string>
@@ -1181,7 +1177,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_entrance_reference_reference_label">"Señalización de entrada:"</string>
     <string name="quest_entrance_reference_flat_range_label">"Rango de números:"</string>
     <string name="quest_entrance_reference_flat_range_to">"a"</string>
-    <string name="default_disabled_msg_overlay">"Este tipo de tarea no está activada para el público en general porque ya hay un tipo de capa de visualización que cumple la misma función y es más fácil de usar"</string>
+    <string name="default_disabled_msg_overlay">"Este tipo de tarea no está activada para el público en general porque ya hay un tipo de capa de visualización que cumple la misma función y es más fácil de usar."</string>
     <string name="quest_camp_drinking_water_title">"¿Hay agua potable gratis para campistas?"</string>
     <string name="quest_camp_shower_title">"¿Tienen duchas?"</string>
     <string name="quest_camp_power_supply_title">"¿Los clientes pueden cargar sus teléfonos y dispositivos electrónicos?"</string>
@@ -1218,7 +1214,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="name_label">"Nombre:"</string>
     <string name="unknown_shop_title">"De otro tipo"</string>
     <string name="quest_address_answer_no_address">"No hay ningún número visible"</string>
-    <string name="quest_bicycle_barrier_installation_title">"¿Se puede abrir esta barrera de bicicleta (con o din llaves)?"</string>
+    <string name="quest_bicycle_barrier_installation_title">"¿Se puede abrir esta barrera de bicicleta (con o sin llaves)?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Es estática"</string>
     <string name="quest_barrier_bicycle_installation_openable">"Se abre al paso"</string>
     <string name="quest_barrier_bicycle_installation_removable">"Se puede mover"</string>
@@ -1314,7 +1310,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Camino de uso compartido, ambas direcciones"</string>
     <string name="overlays_tutorial_title">"Capas de visualización"</string>
     <string name="overlays_tutorial_intro">"Vaya, ahora tienes otra forma de editar cosas"</string>
-    <string name="overlays_tutorial_display">"Cada capa muesta una categoría distinta de cosas por hacer; como ver solo «tiendas» o filtrar por distintas partes de la infraestructura urbana, como «aceras».
+    <string name="overlays_tutorial_display">"Cada capa muestra una categoría distinta de cosas por hacer; como ver solo «tiendas» o filtrar por distintas partes de la infraestructura urbana, como «aceras».
 
 Los datos se resaltan en diferentes colores para brindarte una buena visión general de lo que se ha ido guardando hasta ahora. Lo que falta siempre aparece en rojo."</string>
     <string name="overlays_tutorial_edit">"Toca cualquier dato resaltado para ver su contenido o editarlo. También puedes dividir caminos o poner notas, como pasa con las tareas.
@@ -1373,4 +1369,14 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="overlay_buildings">"Edificios"</string>
     <string name="quest_pedestrian_crossing_signals">"¿Hay que esperar a que cambie un semáforo para cruzar?"</string>
     <string name="quest_pedestrian_crossing_markings">"¿Este cruce está demarcado?"</string>
+    <string name="overlay_places">"Lugares"</string>
+    <string name="overlay_things">"Cosas"</string>
+    <string name="disused">"en desuso"</string>
+    <string name="unknown_object">"Objeto desconocido"</string>
+    <string name="quest_leafType_tree_title">"¿Tiene este árbol hojas anchas o en forma de aguja?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Te agrademos el detalle de aportar tu granito de arena con una donación. Para ello te invitamos a visitar nuestra web, ya que Google Play no nos permite enlazar directamente."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"No está dentro, pero está a cubierto"</string>
+    <string name="lit_value_unsupported">"Otro tipo de iluminación que no esté en la aplicación"</string>
+    <string name="quest_generic_otherAnswers2">"Eh..."</string>
 </resources>

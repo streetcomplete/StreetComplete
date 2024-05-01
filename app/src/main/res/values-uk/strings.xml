@@ -226,7 +226,6 @@
     <string name="credits_translations_title">"Перекладачі"</string>
     <string name="credits_contributors_title">"Співавтори коду"</string>
     <string name="credits_author_title">"Автор та підтримувач"</string>
-    <string name="credits_and_more">"та більше…"</string>
     <string name="quest_maxspeed_answer_living_street">"Це житлова вулиця"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Тобто тут є такий знак?"</string>
     <string name="quest_orchard_produce_title">"Що тут вирощують?"</string>
@@ -402,7 +401,7 @@
     <string name="quest_buildingType_residential">"Жила оселя"</string>
     <string name="quest_buildingType_residential_description">"дім, в якому живуть люди"</string>
     <string name="quest_buildingType_house">"Дім"</string>
-    <string name="quest_buildingType_apartments_description">"будинок для декількох сімей, може мати роздрібні торговельні точки на першому поверсі"</string>
+    <string name="quest_buildingType_apartments_description">"будинок для декількох сімей, може мати роздрібні торгівельні точки на першому поверсі"</string>
     <string name="quest_buildingType_apartments">"Багатоквартирний будинок"</string>
     <string name="quest_buildingType_detached">"Особняк"</string>
     <string name="quest_buildingType_detached_description">"окремо стоячий дім для однієї сім'ї"</string>
@@ -500,7 +499,6 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ця парковка для мотоциклів крита (захищена від дощу)?"</string>
     <string name="default_disabled_msg_maxspeed">"Цей тип квесту є типово вимкненим, оскільки зазвичай потрібно перевірити всю вулицю на наявність знаків обмеження швидкості, а не лише виділений відрізок. Іноді це може бути достатньо великим завданням лише для розв'язання одного квесту."</string>
     <string name="pref_title_quests_restore_hidden">"Відновити приховані завдання"</string>
-    <string name="restore_hidden_success">"Відновлено %d прихованих квеста(ів)"</string>
     <string name="on_level">"на %s поверсі"</string>
     <string name="underground">"під землею"</string>
     <string name="quest_sidewalk_value_yes">"тротуар"</string>
@@ -833,7 +831,6 @@
     <string name="team_mode_active">"Командний режим активний"</string>
     <string name="team_mode_deactivated">"Командний режим вимкнений"</string>
     <string name="undo_confirm_title2">"Скасувати обрані правки?"</string>
-    <string name="synced">"Синхронізовано"</string>
     <string name="toast_undo_unavailable">"Ця правка надіслана і не може бути скасована"</string>
     <string name="quest_cycleway_value_separate">"Показати окремо від карти"</string>
     <string name="created_note_action_title">"Створена точка"</string>
@@ -1054,8 +1051,6 @@
     <string name="quest_road_width_title">"Яка тут ширина цієї дороги?"</string>
     <string name="quest_road_width_explanation">"Дорожнє полотно від бордюру до бордюру: включно з усім, "</string>
     <string name="quest_sidewalk_answer_none">"Зовсім немає тротуару"</string>
-    <string name="about_description_donate_google_play2">"Дякуємо, що вирішили підтримати цей застосунок!
-Нажаль політики Google Play Store забороняють цьому застосунку наводити будь-які посилання на донати. В цьому контексті заборонено навіть посилання на домашню сторінку проєкту о_О."</string>
     <string name="link_osmand_description">"Мобільний застосунок для перегляду та навігації онлайн та офлайн мапами"</string>
     <string name="link_sunders_description">"Карта камер і обладнання спостереження"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Тримайтеся ближче до стрілки, але стережіться руху!"</string>
@@ -1378,6 +1373,13 @@
     <string name="quest_pedestrian_crossing_markings">"Чи є на цьому переході розмітка?"</string>
     <string name="overlay_places">"Місця"</string>
     <string name="overlay_things">"Інфраструктура"</string>
-    <string name="disused">"вийшло з ужитку"</string>
+    <string name="disused">"вийшло з вжитку"</string>
     <string name="unknown_object">"Невідомий обʼєкт"</string>
+    <string name="quest_leafType_tree_title">"У цього дерева є хвоя чи листя?"</string>
+    <string name="quest_bbq_fuel_gas">"Газ"</string>
+    <string name="about_description_donate_google_play3">"Дякуємо, що вирішили підтримати цей застосунок!
+Ви можете знайти інформацію про пожертви на нашому веб-сайті чи на головній сторінці проєкту, Google Play не дозволяє нам надавати посилання в застосунку."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Не всередині, але вкрито"</string>
+    <string name="lit_value_unsupported">"Інший режим освітлення, який не можна вибрати в цьому застосунку"</string>
+    <string name="quest_generic_otherAnswers2">"Дзуськи…"</string>
 </resources>

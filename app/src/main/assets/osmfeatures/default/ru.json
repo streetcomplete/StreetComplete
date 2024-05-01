@@ -247,6 +247,7 @@
                         "baths": "Бани",
                         "city": "Исторический город",
                         "crannog": "Кранног",
+                        "enclosure": "Загон",
                         "fortification": "Фортификация",
                         "hut_circle": "Круг хижины",
                         "megalith": "Мегалит",
@@ -496,6 +497,9 @@
                         "rising": "Подъёмный столбик"
                     }
                 },
+                "books": {
+                    "label": "Типы книг"
+                },
                 "booth": {
                     "label": "Тип будки"
                 },
@@ -513,6 +517,9 @@
                 },
                 "brand": {
                     "label": "Бренд"
+                },
+                "brewery": {
+                    "label": "Продаваемые марки пива"
                 },
                 "bridge": {
                     "label": "Тип моста",
@@ -568,7 +575,7 @@
                         "mosque": "Мечеть",
                         "office": "Офисное здание",
                         "outbuilding": "Пристройка",
-                        "pavilion": "Павильон",
+                        "pavilion": "Спортивный павильон",
                         "public": "Общественное здание",
                         "residential": "Жилое здание",
                         "retail": "Торговое здание",
@@ -624,6 +631,7 @@
                     "placeholder": "1, 2, 3…"
                 },
                 "cai_scale-IT": {
+                    "label": "Сложность маршрута (Italian Alpine Club)",
                     "options": {
                         "E": "Е: Для хайкеров (горных походников)",
                         "EAI": "EAI: Поход в заснеженных условиях",
@@ -889,7 +897,7 @@
                     }
                 },
                 "crop": {
-                    "label": "Cельхоз культура",
+                    "label": "Сельхоз культура",
                     "options": {
                         "asparagus": "Спаржа",
                         "barley": "Ячмень",
@@ -1083,6 +1091,9 @@
                 "dance/style": {
                     "label": "Танцевальные стили"
                 },
+                "dance/teaching": {
+                    "label": "Предлагает уроки танцев"
+                },
                 "date": {
                     "label": "Дата"
                 },
@@ -1106,6 +1117,9 @@
                         "timetable": "Точное расписание",
                         "yes": "Есть"
                     }
+                },
+                "deposit/trolley": {
+                    "label": "Залог"
                 },
                 "depot": {
                     "label": "Тип"
@@ -1230,16 +1244,26 @@
                         "floating": "Сухой плавучий док"
                     }
                 },
+                "dock/width": {
+                    "label": "Ширина дока (метры)"
+                },
                 "dog": {
                     "label": "Собаки",
                     "options": {
                         "leashed": "Только на поводке",
                         "no": "Не разрешено",
+                        "unleashed": "Поводки не требуются",
                         "yes": "Разрешено"
                     }
                 },
                 "door": {
                     "label": "Дверь"
+                },
+                "door/height": {
+                    "label": "Высота двери (метры)"
+                },
+                "door/width": {
+                    "label": "Ширина двери (метры)"
                 },
                 "door_type": {
                     "label": "Тип"
@@ -1364,6 +1388,7 @@
                     }
                 },
                 "fire_service_inlet": {
+                    "label": "Форма",
                     "options": {
                         "pillar": "Надземный",
                         "pipe": "Труба с заглушкой",
@@ -1451,7 +1476,8 @@
                         "e10": "Бензин E10",
                         "e85": "Бензин E85",
                         "h70": "Газообразный водород (700 бар)",
-                        "lpg": "Сжиженный природный газ (СПГ)",
+                        "lng": "Сжиженный природный газ (СПГ)",
+                        "lpg": "Сжиженный нефтяной газ (LPG)",
                         "octane_100": "Бензин (октановое число 100)",
                         "octane_80": "Бензин (октановое число 80)",
                         "octane_85": "Бензин (октановое число 85)",
@@ -1705,6 +1731,7 @@
                     "label": "Тип дороги"
                 },
                 "highway_cartpath": {
+                    "label": "Тип пути",
                     "options": {
                         "service": "Служебная дорога"
                     }
@@ -1797,7 +1824,7 @@
                     }
                 },
                 "indoor": {
-                    "label": "План помещения"
+                    "label": "В помещении"
                 },
                 "indoor_type": {
                     "label": "Тип"
@@ -1851,10 +1878,39 @@
                     }
                 },
                 "kerb": {
-                    "label": "Бордюр"
+                    "label": "Бордюр",
+                    "options": {
+                        "flush": {
+                            "description": "Заниженный бордюр, который находится на одном уровне с окружающей территорией.",
+                            "title": "Вровень с дорогой"
+                        },
+                        "lowered": {
+                            "description": "Заниженный бордюр, через который могут передвигаться инвалиды-колясочники, высотой не более нескольких сантиметров.",
+                            "title": "Пониженный"
+                        },
+                        "no": {
+                            "description": "В этом месте бордюр отсутствует.",
+                            "title": "Отсутствует"
+                        },
+                        "raised": {
+                            "description": "Приподнятый на несколько сантиметров бордюр, через который не могут легко передвигаться инвалиды-колясочники.",
+                            "title": "Приподнятый"
+                        },
+                        "rolled": {
+                            "description": "Приподнятый бордюр с закруглённым краем, облегчающим передвижение автомобилей и велосипедов, но не инвалидных колясок.",
+                            "title": "Скруглённый"
+                        },
+                        "yes": {
+                            "description": "В этом месте находится какой-то бордюр, но пока неизвестно, какой: приподнятый, заниженный, вровень и т.д.",
+                            "title": "Присутствует"
+                        }
+                    }
                 },
                 "kerb/height": {
                     "label": "Высота"
+                },
+                "kerb/kerb_barrier": {
+                    "label": "Тип"
                 },
                 "kitchen": {
                     "label": "Кухня"
@@ -1932,9 +1988,6 @@
                 },
                 "license_classes": {
                     "label": "Виды водительских прав"
-                },
-                "lifeguard": {
-                    "label": "Спасательный пункт"
                 },
                 "lift_gate/type": {
                     "label": "Тип",
@@ -2070,6 +2123,9 @@
                 },
                 "maxweight": {
                     "label": "Ограничение по весу"
+                },
+                "maxwidth": {
+                    "label": "Ограничение по ширине"
                 },
                 "memorial": {
                     "label": "Тип памятника",
@@ -2321,6 +2377,9 @@
                     "label": "Время работы",
                     "placeholder": "Неизвестно"
                 },
+                "opening_hours/drive_through": {
+                    "label": "Время работы обслуживания, не выходя из машины"
+                },
                 "operator": {
                     "label": "Обслуживающая компания"
                 },
@@ -2365,16 +2424,25 @@
                     "options": {
                         "carports": "Навес",
                         "garage_boxes": "Одноярусные гаражи",
+                        "half_on_kerb": "Частично на тротуаре",
                         "lane": "Уличная парковка",
                         "multi-storey": "Многоярусная",
+                        "on_kerb": "На тротуаре",
                         "rooftop": "На крыше",
                         "sheds": "Козырёк",
+                        "shoulder": "На обочине",
                         "street_side": "Придорожная",
                         "surface": "Наземная",
                         "underground": "Подземная"
                     }
                 },
                 "parking/side/orientation": {
+                    "label": "Ориентация при парковке",
+                    "options": {
+                        "diagonal": "Диагонально относительно улицы (~45°)",
+                        "parallel": "Параллельно улице",
+                        "perpendicular": "Перпендикулярно улице (~90°)"
+                    },
                     "types": {
                         "parking:left:orientation": "Левая сторона",
                         "parking:right:orientation": "Правая сторона"
@@ -2383,7 +2451,13 @@
                 "parking/side/parking": {
                     "label": "Парковка",
                     "options": {
+                        "half_on_kerb": "Частично на тротуаре",
+                        "lane": "На полосе",
                         "no": "Нет",
+                        "on_kerb": "На тротуаре",
+                        "separate": "Парковка нанесена на карту отдельно",
+                        "shoulder": "На обочине",
+                        "street_side": "В кармане",
                         "yes": "Да (без уточнения)"
                     },
                     "types": {
@@ -2415,6 +2489,7 @@
                         "cryptocurrencies": "Криптовалюта",
                         "debit_cards": "Дебетовая карта",
                         "diners_club": "Diners Club",
+                        "electronic_purses": "Электронные кошельки",
                         "ep_easycard": "悠遊卡EasyCard",
                         "ep_geldkarte": "GeldKarte",
                         "ep_ipass": "iPASS一卡通",
@@ -2933,8 +3008,10 @@
                     "label": "Тип проезда",
                     "options": {
                         "alley": "Проулок",
+                        "drive-through": "Проезд для обслуживания, не выходя из машины",
                         "driveway": "Дорога",
-                        "emergency_access": "Проезд для экстренных служб"
+                        "emergency_access": "Проезд для экстренных служб",
+                        "parking_aisle": "Между рядами парковки"
                     }
                 },
                 "service/bicycle": {
@@ -3220,9 +3297,10 @@
                         "ground": "Голая почва",
                         "metal": "Металл",
                         "paved": "Твердое покрытие (любое)",
-                        "paving_stones": "Брусчатка",
+                        "paving_stones": "Тротуарная плитка",
                         "salt": "Соль",
                         "sand": "Песок",
+                        "sett": "Брусчатка",
                         "unhewn_cobblestone": "Булыжник (необработанные, округлые камни)",
                         "unpaved": "Рыхлое покрытие (любое)",
                         "wood": "Дерево",
@@ -3275,7 +3353,8 @@
                     }
                 },
                 "tactile_paving": {
-                    "label": "Тактильное покрытие"
+                    "label": "Тактильное покрытие",
+                    "terms": "тактильное мощение,тактильная плитка,плитка для слабовидящих"
                 },
                 "takeaway": {
                     "label": "Еда на вынос",
@@ -3396,10 +3475,16 @@
                     "options": {
                         "bump": "Искусственная неровность",
                         "chicane": "Шикана",
+                        "choked_table": "Широкая искусственная неровность с плоским верхом в заужении дороги",
+                        "choker": "Заужение дороги",
+                        "cushion": "Искусственная неровность с разрывами",
                         "dip": "Выемка",
                         "double_dip": "Двойная выемка",
                         "hump": "Широкая искусственная неровность",
-                        "rumble_strip": "Шумовая полоса"
+                        "island": "Успокоительный островок между проезжими частями",
+                        "mini_bumps": "Малые искусственные неровности",
+                        "rumble_strip": "Шумовая полоса",
+                        "table": "Широкая искусственная неровность с плоским верхом"
                     }
                 },
                 "traffic_sign": {
@@ -3516,10 +3601,13 @@
                     }
                 },
                 "utility": {
+                    "label": "Назначение",
                     "options": {
                         "gas": "Природный газ",
                         "oil": "Нефть",
+                        "power": "Электричество",
                         "street_lighting": "Уличное освещение",
+                        "telecom": "Телекоммуникации",
                         "water": "Вода"
                     }
                 },
@@ -3566,6 +3654,9 @@
                 },
                 "vhf": {
                     "label": "УКВ канал"
+                },
+                "via": {
+                    "label": "Через"
                 },
                 "video_calls": {
                     "label": "Видеозвонки"
@@ -3885,6 +3976,9 @@
                 "amenity/bicycle_repair_station": {
                     "name": "Стойка для ремонта велосипедов",
                     "terms": "велосипед,ремонт,цепи,подкачка"
+                },
+                "amenity/bicycle_wash": {
+                    "name": "Мойка велосипедов"
                 },
                 "amenity/biergarten": {
                     "name": "Пивной сад",
@@ -4294,6 +4388,9 @@
                     "name": "Отдельное парковочное место на парковке",
                     "terms": "парковочное место,отдельное парковочное место на стоянке"
                 },
+                "amenity/parking_space/disabled": {
+                    "name": "Место парковки для инвалидов"
+                },
                 "amenity/payment_centre": {
                     "name": "Центр платежей"
                 },
@@ -4630,6 +4727,9 @@
                     "name": "Торговый автомат",
                     "terms": "автомат по продаже товаров"
                 },
+                "amenity/vending_machine/bicycle_tube": {
+                    "name": "Автомат по продаже велосипедных камер"
+                },
                 "amenity/vending_machine/bottle_return": {
                     "name": "Установка для возврата бутылок"
                 },
@@ -4699,6 +4799,9 @@
                     "name": "Почтовый автомат",
                     "terms": "письма,почта,марки"
                 },
+                "amenity/vending_machine/sweets": {
+                    "name": "Автомат по продаже сладостей"
+                },
                 "amenity/veterinary": {
                     "name": "Ветеринар",
                     "terms": "ветеринар,ветеринарный врач,ветеринарная клиника"
@@ -4765,6 +4868,12 @@
                 "attraction/drop_tower": {
                     "name": "Аттракцион Падающая башня"
                 },
+                "attraction/kiddie_ride": {
+                    "name": "Детский аттракцион"
+                },
+                "attraction/log_flume": {
+                    "name": "Сплав на брёвнах"
+                },
                 "attraction/maze": {
                     "name": "Лабиринт",
                     "terms": "аттракцион,головоломка,загадка,лабиринт"
@@ -4804,6 +4913,9 @@
                     "name": "Пограничный пропускной пункт",
                     "terms": "пограничный контроль,пограничный кпп"
                 },
+                "barrier/cable_barrier": {
+                    "name": "Тросовое ограждение"
+                },
                 "barrier/cattle_grid": {
                     "name": "Сетка для животных",
                     "terms": "сетка для животных,препятствие для животных,барьер"
@@ -4832,6 +4944,9 @@
                 },
                 "barrier/fence/railing": {
                     "name": "Перила"
+                },
+                "barrier/full-height_turnstile": {
+                    "name": "Полноростовой турникет"
                 },
                 "barrier/gate": {
                     "name": "Ворота / калитка",
@@ -4865,6 +4980,9 @@
                 "barrier/kerb/raised": {
                     "name": "Возвышающийся бордюр"
                 },
+                "barrier/kerb/rolled": {
+                    "name": "Скруглённый бордюр"
+                },
                 "barrier/kissing_gate": {
                     "name": "Преграда для животных",
                     "terms": "ворота с защитой от животных,преграда для животных"
@@ -4872,6 +4990,9 @@
                 "barrier/lift_gate": {
                     "name": "Шлагбаум",
                     "terms": "заграждающий барьер,заграждение,барьер"
+                },
+                "barrier/log": {
+                    "name": "Препятствие в виде упавшего дерева"
                 },
                 "barrier/motorcycle_barrier": {
                     "name": "Барьер для мотоциклов"
@@ -4901,6 +5022,9 @@
                 "barrier/wall/noise_barrier": {
                     "name": "Шумозащитный барьер"
                 },
+                "barrier/wicket_gate": {
+                    "name": "Калитка"
+                },
                 "barrier/yes": {
                     "name": "Барьер (неуточненный тип)"
                 },
@@ -4910,6 +5034,9 @@
                 "boundary/administrative": {
                     "name": "Административная граница",
                     "terms": "административная граница"
+                },
+                "boundary/hazard": {
+                    "name": "Опасная зона"
                 },
                 "bridge/support": {
                     "name": "Опора моста"
@@ -5062,7 +5189,7 @@
                     "name": "Пристройка"
                 },
                 "building/pavilion": {
-                    "name": "Павильон"
+                    "name": "Спортивный павильон"
                 },
                 "building/public": {
                     "name": "Общественное здание",
@@ -5346,6 +5473,9 @@
                     "name": "Винокурня",
                     "terms": "вино,лоза,напитки,алкоголь"
                 },
+                "cycleway/asl": {
+                    "name": "Зона остановки велосипедистов (ASL)"
+                },
                 "demolished/building": {
                     "name": "Недавно снесенное здание"
                 },
@@ -5449,6 +5579,9 @@
                 "ford": {
                     "name": "Брод",
                     "terms": "форд,брод,переправа"
+                },
+                "ford_line": {
+                    "name": "Брод"
                 },
                 "golf/bunker": {
                     "name": "Бункер",
@@ -5621,6 +5754,9 @@
                 "highway/footway": {
                     "name": "Пешеходная дорожка",
                     "terms": "пешеходная тропа,пешая тропа"
+                },
+                "highway/footway/access_aisle": {
+                    "name": "Проход между парковочными местам"
                 },
                 "highway/footway/conveying": {
                     "name": "Траволатор",
@@ -5839,6 +5975,9 @@
                 "historic/building": {
                     "name": "Историческое здание"
                 },
+                "historic/cannon": {
+                    "name": "Пушка"
+                },
                 "historic/castle": {
                     "name": "Замок",
                     "terms": "замок,форт,укрепление"
@@ -6013,7 +6152,7 @@
                     "terms": "свалка,отходы,полигон бытовых отходов"
                 },
                 "landuse/meadow": {
-                    "name": "Cенокосный луг (пастбище)",
+                    "name": "Сенокосный луг (пастбище)",
                     "terms": "луг,пашня,пастбище,сенокосный луг"
                 },
                 "landuse/military": {
@@ -6293,6 +6432,9 @@
                     "name": "Площадка для игры в боулз",
                     "terms": "боулз,боулинг,шары"
                 },
+                "leisure/pitch/chess": {
+                    "name": "Гигантская шахматная доска"
+                },
                 "leisure/pitch/cricket": {
                     "name": "Поля для крикета"
                 },
@@ -6312,6 +6454,9 @@
                 "leisure/pitch/rugby_union": {
                     "name": "Регби",
                     "terms": "регби"
+                },
+                "leisure/pitch/shooting": {
+                    "name": "Стрельбище"
                 },
                 "leisure/pitch/skateboard": {
                     "name": "Скейт-парк",
@@ -6364,6 +6509,9 @@
                 },
                 "leisure/sports_centre/climbing": {
                     "name": "Скалодром"
+                },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Канатный парк"
                 },
                 "leisure/sports_centre/horse_racing": {
                     "name": "Ипподром"
@@ -6481,6 +6629,9 @@
                     "name": "Флагшток",
                     "terms": "флагшток,флаг,знамя,герб"
                 },
+                "man_made/gantry": {
+                    "name": "Портал"
+                },
                 "man_made/gasometer": {
                     "name": "Газгольдер",
                     "terms": "газовое хранилище"
@@ -6575,6 +6726,9 @@
                     "name": "Насосная станция",
                     "terms": "водокачка,перекачивающая станция,насосная"
                 },
+                "man_made/quay": {
+                    "name": "Набережная"
+                },
                 "man_made/satellite_dish": {
                     "name": "Спутниковая тарелка",
                     "terms": "ресивер,параболическая антенна,облучатель"
@@ -6584,7 +6738,7 @@
                     "terms": "зерно,пшеница,мука,хранилище"
                 },
                 "man_made/storage_tank": {
-                    "name": "Cооружение для хранения жидкостей или газов",
+                    "name": "Сооружение для хранения жидкостей или газов",
                     "terms": "контейнер,танк,танкер"
                 },
                 "man_made/street_cabinet": {
@@ -6635,6 +6789,9 @@
                 "man_made/tower/defensive": {
                     "name": "Крепостная башня"
                 },
+                "man_made/tower/diving": {
+                    "name": "Вышка для прыжков в воду"
+                },
                 "man_made/tower/minaret": {
                     "name": "Минарет"
                 },
@@ -6643,6 +6800,9 @@
                 },
                 "man_made/tower/pagoda": {
                     "name": "Пагода"
+                },
+                "man_made/tunnel": {
+                    "name": "Туннель"
                 },
                 "man_made/utility_pole": {
                     "name": "Опора линии электропередачи"
@@ -6683,6 +6843,9 @@
                 },
                 "man_made/works/brewery": {
                     "name": "Промышленная пивоварня"
+                },
+                "man_made/yes": {
+                    "name": "Рукотворный объект (неуточненный тип)"
                 },
                 "marker": {
                     "name": "Маркер/указатель/табличка",
@@ -6816,6 +6979,24 @@
                 "natural/tree": {
                     "name": "Дерево",
                     "terms": "дерево"
+                },
+                "natural/tree/broadleaved": {
+                    "name": "Лиственное дерево"
+                },
+                "natural/tree/broadleaved/deciduous": {
+                    "name": "Лиственное дерево (листопадное)"
+                },
+                "natural/tree/broadleaved/evergreen": {
+                    "name": "Лиственное дерево (вечнозелёное)"
+                },
+                "natural/tree/needleleaved": {
+                    "name": "Хвойное дерево"
+                },
+                "natural/tree/needleleaved/deciduous": {
+                    "name": "Хвойное дерево (листопадное)"
+                },
+                "natural/tree/needleleaved/evergreen": {
+                    "name": "Хвойное дерево (вечнозелёное)"
                 },
                 "natural/tree_row": {
                     "name": "Ряд деревьев",
@@ -7090,6 +7271,15 @@
                 "office/yes": {
                     "name": "Офис (любой тип)"
                 },
+                "pipeline": {
+                    "name": "Трубопроводный объект"
+                },
+                "pipeline/substation": {
+                    "name": "Трубопроводная подстанция"
+                },
+                "pipeline/valve": {
+                    "name": "Трубопроводная арматура"
+                },
                 "piste/downhill": {
                     "name": "Горнолыжный спуск"
                 },
@@ -7317,6 +7507,9 @@
                 "public_transport/platform/bus_tram_point": {
                     "name": "Трамвайная и автобусная остановка (платформа)"
                 },
+                "public_transport/platform/ferry_point": {
+                    "name": "Пристань для парома"
+                },
                 "public_transport/platform/light_rail": {
                     "name": "Платформа легкорельсового транспорта"
                 },
@@ -7330,6 +7523,9 @@
                     "name": "Остановка монорельса (платформа)"
                 },
                 "public_transport/platform/subway": {
+                    "name": "Платформа метро"
+                },
+                "public_transport/platform/subway_point": {
                     "name": "Платформа метро"
                 },
                 "public_transport/platform/train": {

@@ -226,7 +226,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="credits_translations_title">"Fordítás"</string>
     <string name="credits_contributors_title">"A kódolásban közreműködők"</string>
     <string name="credits_author_title">"Szerző és működtető"</string>
-    <string name="credits_and_more">"és még sokan mások…"</string>
     <string name="quest_maxspeed_answer_living_street">"Ez lakó-pihenő övezet"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Tehát ki van téve egy ilyen tábla?"</string>
     <string name="quest_orchard_produce_title">"Mit termesztenek itt?"</string>
@@ -499,7 +498,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_motorcycleParkingCoveredStatus_title">"Fedett (esőtől védett) ez a motorkerékpár-parkoló?"</string>
     <string name="default_disabled_msg_maxspeed">"Ez a kérdéstípus alapértelmezésben ki van kapcsolva, mert általában nem csak a kiemelt szakaszt, hanem az egész utcát végig kellene nézni a sebességkorlátozások szempontjából. Ez eléggé elnyújthatja ennek az egyetlen kérdésnek a megválaszolását."</string>
     <string name="pref_title_quests_restore_hidden">"Rejtett kérdések visszaállítása"</string>
-    <string name="restore_hidden_success">"%d rejtett kérdés visszaállítása"</string>
     <string name="on_level">"a(z) %s. szinten"</string>
     <string name="underground">"föld alatti"</string>
     <string name="quest_sidewalk_value_yes">"járda"</string>
@@ -833,7 +831,6 @@ szintek"</string>
     <string name="team_mode_active">"Csapat mód aktív"</string>
     <string name="team_mode_deactivated">"Csapat mód kikapcsolva"</string>
     <string name="undo_confirm_title2">"Visszavonod a következő szerkesztést?"</string>
-    <string name="synced">"Szinkronizált"</string>
     <string name="toast_undo_unavailable">"Ez a szerkesztés már szinkronizálásra került és nem visszavonható"</string>
     <string name="quest_cycleway_value_separate">"a térképen külön szerepel"</string>
     <string name="created_note_action_title">"Létrehozott megjegyzés"</string>
@@ -1055,8 +1052,6 @@ Tedd meg a másiknál is, ha van olyan."</string>
     <string name="quest_road_width_title">"Mekkora az út szélessége?"</string>
     <string name="quest_road_width_explanation">"Az úttest szélessége a két járdaszegély között: Ebben benne van a parkolónak használt rész és a kerékpársáv, de nem tartalmazza az azon túli részeket, mint például a külön kerékpárutat vagy az úttest melletti parkolót."</string>
     <string name="quest_sidewalk_answer_none">"Egyáltalán nincs járda"</string>
-    <string name="about_description_donate_google_play2">"Köszönjük, hogy támogatod ezt az alkalmazást!
-Sajnos a Google Play Áruház irányelvei miatt az alkalmazásban nem jeleníthetők meg adományozásra vezető linkek. Még a projekt honlapjára mutató hivatkozás sem megengedett."</string>
     <string name="link_osmand_description">"Telefonos app online és offline térpépböngészéshez és navigációhoz"</string>
     <string name="link_sunders_description">"Megfigyelő kamerák térképe"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Menj közelebb a nyílhoz, de vigyázz a forgalomra!"</string>
@@ -1342,6 +1337,8 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_sanitary_dump_station_title">"Van itt WC-ből származó hulladék elhelyezésére szolgáló állomás?"</string>
     <string name="quest_sanitary_dump_station_description">"Lakóautó, kamion, busz stb. WC-tartályából származó emberi hulladék elhelyezésére szolgáló létesítmény. Általában ilyen táblával jelzik:"</string>
     <string name="quest_generalFee_title">"Fizetni kell a használatáért?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Ez egy tűzrakó hely"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"A tűzrakó helyeknek nincs főzőfelülete (pl. rács/lemez), ellentétben a grillekkel."</string>
     <string name="about_title_logs">"Naplók (%1$d)"</string>
     <string name="about_summary_logs">"hibajelentésekben való használatra"</string>
     <string name="action_filter">"Szűrő"</string>
@@ -1354,6 +1351,10 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="title_logs_filters">"Üzenetszűrő"</string>
     <string name="pref_title_quests_restore_hidden_summary">"Rejtett küldetések száma: %d"</string>
     <string name="link_every_door_description">"Hatékony POI-szerkesztő Android és iOS rendszerekre"</string>
+    <string name="link_mapcomplete_description">"Tematikus OSM-térképek gyűjteménye, amelyek egy-egy funkciót jelenítenek meg és biztosítják ezek szerkesztését"</string>
+    <string name="link_forum_description">"Segítségre van szükséged? Szeretnél olvasni arról, mi zajlik? Gyere és vegyülj el, itt nyüzsögnek a közösségek a világ minden tájáról!"</string>
+    <string name="link_calendar_description">"Vannak OpenStreetMap-események vagy közösségi találkozók a közeledben? (Ha nincsenek, hozzáadhatod a sajátodat!)"</string>
+    <string name="link_prettymapp_description">"Készíts szép, többszínű fali térképeket városrészekről"</string>
     <string name="quest_disable_action">"Letilt"</string>
     <string name="quest_disable_title">"Letiltod ezt a kérdéstípust?"</string>
     <string name="quest_disable_message_not_installed">"A StreetMeasure nincs telepítve (még)."</string>
@@ -1375,4 +1376,11 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="overlay_things">"Dolgok"</string>
     <string name="disused">"használaton kívül"</string>
     <string name="unknown_object">"Ismeretlen tárgy"</string>
+    <string name="quest_leafType_tree_title">"Ez a fa tűlevelű vagy lombos?"</string>
+    <string name="quest_bbq_fuel_gas">"Gáz"</string>
+    <string name="about_description_donate_google_play3">"Köszönjük, hogy az alkalmazás támogatására készülsz!
+Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőoldalán talász, a Google Play nem engedi, hogy a hivatkozásokat az alkalmazásban megadjuk."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Nem beltéri, de fedett"</string>
+    <string name="lit_value_unsupported">"Különleges kivilágítási állapot, ami nem választható ki ebben az alkalmazásban"</string>
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
 </resources>

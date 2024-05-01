@@ -226,7 +226,6 @@ Otherwise you can download another keyboard in the app store. Popular keyboards 
     <string name="credits_translations_title">"Translations"</string>
     <string name="credits_contributors_title">"Code contributors"</string>
     <string name="credits_author_title">"Author and maintainer"</string>
-    <string name="credits_and_more">"and others…"</string>
     <string name="quest_maxspeed_answer_living_street">"It is a living street"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"So, there is a sign like this?"</string>
     <string name="quest_orchard_produce_title">"What is being grown here?"</string>
@@ -499,7 +498,6 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_motorcycleParkingCoveredStatus_title">"Is this motorcycle parking covered (protected from rain)?"</string>
     <string name="default_disabled_msg_maxspeed">"This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be a lot of work just to solve a single quest."</string>
     <string name="pref_title_quests_restore_hidden">"Restore hidden quests"</string>
-    <string name="restore_hidden_success">"Restored %d hidden quests"</string>
     <string name="on_level">"on level %s"</string>
     <string name="underground">"underground"</string>
     <string name="quest_sidewalk_value_yes">"footpath"</string>
@@ -689,7 +687,6 @@ If any lanes are reserved for buses please leave a note instead."</string>
     <string name="quest_recycling_type_beverage_cartons">"Beverage cartons only"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Plastic bottles and cartons only"</string>
     <string name="team_mode_description">"When mapping the same area together in a group you can enter team mode to split up quests between all team members."</string>
-    <string name="synced">"Synced"</string>
     <string name="delete_cache_dialog_message">"Delete all downloaded map data including quests?
 Data is refreshed after %1$s days and unused data is deleted after %2$s days automatically."</string>
     <string name="background_type_map">"Map"</string>

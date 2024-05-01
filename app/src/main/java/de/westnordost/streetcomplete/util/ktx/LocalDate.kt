@@ -26,7 +26,6 @@ fun Instant.toLocalDate(): LocalDate =
 fun Instant.toLocalDateTime(): LocalDateTime =
     this.toLocalDateTime(TimeZone.currentSystemDefault())
 
-
 fun isApril1st(): Boolean {
     val now = systemTimeNow().toLocalDate()
     return now.dayOfMonth == 1 && now.month == Month.APRIL

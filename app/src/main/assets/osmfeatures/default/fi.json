@@ -1243,7 +1243,6 @@
                         "e10": "E10-bensiini",
                         "e85": "E85-bensiini",
                         "h70": "Kaasumainen typpi (700 bar)",
-                        "lpg": "Nesteytetty maakaasu (LNG)",
                         "octane_100": "Bensiini (100-oktaaninen)",
                         "octane_80": "Bensiini (80-oktaaninen)",
                         "octane_85": "Bensiini (85-oktaaninen)",
@@ -1624,9 +1623,6 @@
                 },
                 "liaison": {
                     "label": "Tyyppi"
-                },
-                "lifeguard": {
-                    "label": "Hengenpelastaja"
                 },
                 "lift_gate/type": {
                     "options": {

@@ -226,7 +226,6 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="credits_translations_title">"Übersetzungen"</string>
     <string name="credits_contributors_title">"Programmierbeiträge"</string>
     <string name="credits_author_title">"Hauptentwickler"</string>
-    <string name="credits_and_more">"und weitere …"</string>
     <string name="quest_maxspeed_answer_living_street">"Es ist eine Spielstraße"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Hier ist also so ein Schild wie dieses?"</string>
     <string name="quest_orchard_produce_title">"Was wird hier angebaut?"</string>
@@ -499,7 +498,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ist der Motorradstellplatz überdacht (regengeschützt)?"</string>
     <string name="default_disabled_msg_maxspeed">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du normalerweise die ganze Straße nach entsprechenden Schildern absuchen musst, nicht nur den hervorgehobenen Abschnitt. Das kann manchmal viel Arbeit für eine einzelne Aufgabe sein."</string>
     <string name="pref_title_quests_restore_hidden">"Verborgene Aufgaben wiederherstellen"</string>
-    <string name="restore_hidden_success">"%d verborgene Aufgaben wiederhergestellt"</string>
     <string name="on_level">"auf Ebene %s"</string>
     <string name="underground">"unterirdisch"</string>
     <string name="quest_sidewalk_value_yes">"Bürgersteig"</string>
@@ -809,7 +807,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_shop_gone_replaced_answer_hint">"Hier Art des Ortes eingeben"</string>
     <string name="quest_shop_vacant_type_title">"Dieser Laden stand leer. Was ist jetzt hier?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Jede Seite hat unterschiedliche Anzahl von Fahrstreifen"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er in manchen Regionen nicht sinnvoll ist und du wahrscheinlich den Ort betreten muss, um die Aufgabe lösen zu können."</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er in manchen Regionen nicht sinnvoll ist und du wahrscheinlich den Ort betreten musst, um die Aufgabe lösen zu können."</string>
     <string name="quest_dietType_explanation_kosher">"Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungs-Agenturen diese Produkte überprüfen."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Kein Radweg vorhanden"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Wie üblich, tippe auf eine Seite des Bildes, wähle die passende Antwort und wiederhole dies für die andere Seite.
@@ -841,7 +839,6 @@ Jeder von euch sieht dann unterschiedliche Aufgaben."</string>
     <string name="team_mode_active">"Team-Modus ist aktiv"</string>
     <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
     <string name="undo_confirm_title2">"Folgende Bearbeitung rückgängig machen?"</string>
-    <string name="synced">"Synchronisiert"</string>
     <string name="toast_undo_unavailable">"Diese Bearbeitung wurde bereits synchronisiert und kann nicht rückgängig gemacht werden"</string>
     <string name="quest_cycleway_value_separate">"separat auf Karte eingezeichnet"</string>
     <string name="created_note_action_title">"Hinweis erstellt"</string>
@@ -1063,8 +1060,6 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="quest_road_width_title">"Wie breit ist die Fahrbahn hier?"</string>
     <string name="quest_road_width_explanation">"Die Fahrbahn von Bordstein zu Bordstein: Das beinhaltet alles dazwischen, wie etwa Parkstreifen oder Radfahrstreifen, aber schließt alles jenseits davon aus, wie etwa Bürgersteige, Radwege oder Parkbuchten."</string>
     <string name="quest_sidewalk_answer_none">"Gar kein Bürgersteig"</string>
-    <string name="about_description_donate_google_play2">"Danke, dass du diese App unterstützen möchtest!
-Aufgrund einer Richtlinie des Google Play Store dürfen leider keine Links, die zu Spenden führen, in der App angezeigt werden. Sogar die Verlinkung zu unserer Projektseite ist in diesem Zusammenhang nicht erlaubt."</string>
     <string name="link_osmand_description">"App für Online- und Offline-Kartenansicht und Navigation"</string>
     <string name="link_sunders_description">"Eine Karte für Kameras und Überwachungstechnik"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Bleib dichter am Pfeil, aber achte dabei auf den Verkehr!"</string>
@@ -1325,7 +1320,7 @@ Jetzt verschieben?"</string>
     <string name="quest_cycleway_value_sidewalk_dual2">"Gemeinsamer Geh- und Radweg, beide Richtungen"</string>
     <string name="overlays_tutorial_title">"Overlays"</string>
     <string name="overlays_tutorial_intro">"Du hast einen neuen Weg gefunden, um Daten zu bearbeiten!"</string>
-    <string name="overlays_tutorial_display">"Jedes Overlay zeigt nur bestimmte Daten an, beispielsweise Geschäfte oder Wegeoberflächen.
+    <string name="overlays_tutorial_display">"Jedes Overlay zeigt nur bestimmte Daten an, beispielsweise „Orte“ oder „Oberflächen“.
 
 Die Hervorhebung der Daten in unterschiedlichen Farben soll dir einen guten Überblick darüber geben, was bisher erfasst wurde.
 Fehlende Daten sind immer rot eingefärbt."</string>
@@ -1389,4 +1384,12 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="overlay_things">"Dinge"</string>
     <string name="disused">"stillgelegt"</string>
     <string name="unknown_object">"Unbekanntes Objekt"</string>
+    <string name="quest_leafType_tree_title">"Hat dieser Baum Nadeln oder Blätter?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Danke, dass du erwägst, diese App zu unterstützen!
+Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden, Google Play erlaubt uns nicht, sie direkt aus der App heraus zu verlinken."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Nicht drinnen, aber überdacht"</string>
+    <string name="lit_value_unsupported">"Spezifischer Beleuchtungsstatus, der in dieser App nicht wählbar ist"</string>
+    <string name="quest_generic_otherAnswers2">"Ähh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Ist hier eine Ampel, die zeigt, wann man die Straße überqueren kann?"</string>
 </resources>

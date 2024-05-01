@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.osm.building
 enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     UNSUPPORTED     (null, null),
 
-    HISTORIC        ("historic", "yes"),
     ABANDONED       ("abandoned", "yes"),
     RUINS           ("ruins", "yes"),
 
@@ -79,6 +78,9 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     CIVIC           ("building", "civic"),
     RELIGIOUS       ("building", "religious"),
 
+    // historic is back here because if a building is tagged as e.g. building=civic + historic=yes
+    // the building type parsed should rather be "civic building" than "historic building"
+    HISTORIC        ("historic", "yes"),
     CONSTRUCTION    ("building", "construction");
 
     companion object {

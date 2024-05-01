@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus
 import de.westnordost.streetcomplete.osm.lit.LitStatus.AUTOMATIC
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
-import de.westnordost.streetcomplete.osm.lit.LitStatus.UNSUPPORTED
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.osm.lit.applyTo
 import de.westnordost.streetcomplete.osm.lit.asItem
@@ -21,12 +20,15 @@ import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
 
 class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
 
-    override val items: List<DisplayItem<LitStatus>> =
+    override val items: List<DisplayItem<LitStatus>> = LitStatus.entries.map { it.asItem() }
+
+    override val selectableItems: List<DisplayItem<LitStatus>> =
         listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY).map { it.asItem() }
 
     private val prefs: ObservableSettings by inject()
@@ -47,15 +49,14 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
             prefs,
             key = javaClass.simpleName,
             serialize = { it.value!!.name },
-            deserialize = { LitStatus.valueOf(it).asItem() }
+            deserialize = { valueOfOrNull<LitStatus>(it)?.asItem() }
         )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val litStatus = parseLitStatus(element!!.tags)
-        originalLitStatus = if (litStatus != UNSUPPORTED) litStatus else null
+        originalLitStatus = parseLitStatus(element!!.tags)
         selectedItem = originalLitStatus?.asItem()
     }
 

@@ -226,7 +226,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="credits_translations_title">"Traduzioni"</string>
     <string name="credits_contributors_title">"Contributori al codice"</string>
     <string name="credits_author_title">"Autore e manutentore"</string>
-    <string name="credits_and_more">"e altri…"</string>
     <string name="quest_maxspeed_answer_living_street">"È una via ad uso sociale (living street)"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Quindi è presente un cartello come questo?"</string>
     <string name="quest_orchard_produce_title">"Cosa viene coltivato qui?"</string>
@@ -499,7 +498,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_motorcycleParkingCoveredStatus_title">"Questo parcheggio per motocicli è coperto (protetto dalla pioggia)?"</string>
     <string name="default_disabled_msg_maxspeed">"Questo tipo di missione non è attivo perché generalmente è richiesto di controllare tutta la strada per verificare i segnali dei limiti di velocità, non solo nella sezione evidenziata. Questo potrebbe richiedere molto tempo solo per risolvere una singola missione."</string>
     <string name="pref_title_quests_restore_hidden">"Ripristina le missioni nascoste"</string>
-    <string name="restore_hidden_success">"Ripristinate %d missioni nascoste"</string>
     <string name="on_level">"al piano %s"</string>
     <string name="underground">"sottoterra"</string>
     <string name="quest_sidewalk_value_yes">"percorso pedonale"</string>
@@ -837,7 +835,6 @@ Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio un
     <string name="team_mode_active">"Modalità squadra attiva"</string>
     <string name="team_mode_deactivated">"Modalità squadra disattivata"</string>
     <string name="undo_confirm_title2">"Vuoi cancellare questa modifica?"</string>
-    <string name="synced">"Sincronizzato"</string>
     <string name="toast_undo_unavailable">"La modifica è già sincronizzata e non può essere cancellata"</string>
     <string name="quest_cycleway_value_separate">"mostrato separatamente sulla mappa"</string>
     <string name="created_note_action_title">"Hai creato una nota"</string>
@@ -1059,8 +1056,6 @@ Fai la stessa cosa per l'altro lato, se presente."</string>
     <string name="quest_road_width_title">"Qual è la larghezza della strada qui?"</string>
     <string name="quest_road_width_explanation">"Larghezza della strada da un bordo del marciapiede all'altro: sono inclusi tutti gli elementi presenti sulla carreggiata, come i parcheggi lungo la strada e le corsie ciclabili, sono invece esclusi tutti gli elementi al di fuori della carreggiata, come i marciapiedi, le piste ciclabili e i parcheggi fuori la carreggiata."</string>
     <string name="quest_sidewalk_answer_none">"Nessun marciapiede"</string>
-    <string name="about_description_donate_google_play2">"Grazie per aver pensato di supportare questa app!
-Sfortunatamente le policy del Google Play Store non permettono di avere link di donazioni interni alla app. In questo caso anche il link al nostro progetto non è permesso."</string>
     <string name="link_osmand_description">"App per visualizzazione mappe e navigazione sia online che offline"</string>
     <string name="link_sunders_description">"Una mappa che mostra le telecamere e i dispositivi di sorveglianza"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Avvicinati alla freccia ma attenzione al traffico!"</string>
@@ -1362,4 +1357,32 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="link_forum_description">"Serve aiuto? Vuoi sapere cosa succede? Vieni su mingle, è fremente di attività delle community di tutto il mondo!"</string>
     <string name="link_calendar_description">"Ci sono eventi o raduni OpenStreetMap vicino a te? (Se mancano, aggiungine uno!)"</string>
     <string name="link_prettymapp_description">"Crea poster multicolore con la mappa del tuo quartiere"</string>
+    <string name="quest_disable_action">"Disattiva"</string>
+    <string name="quest_disable_title">"Disattivare questo tipo di missione?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure non è (ancora) installato."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure non ha restituito una misura."</string>
+    <string name="quest_disable_message_tape_measure">"Puoi usare un metro per misurare, ma sarebbe una cosa strana, dopotutto."</string>
+    <string name="quest_buildingType_outbuilding">"Dependance"</string>
+    <string name="quest_buildingType_outbuilding_description">"edificio meno importante sulla proprietà"</string>
+    <string name="quest_buildingType_other_description">"un edificio specifico che non è selezionabile in questa app"</string>
+    <string name="quest_buildingType_container">"Container"</string>
+    <string name="quest_buildingType_tent">"Tenda"</string>
+    <string name="quest_buildingType_tomb">"Tomba"</string>
+    <string name="quest_buildingType_tower">"Torre"</string>
+    <string name="quest_buildingType_tower_description">"qualsiasi tipo di torre"</string>
+    <string name="quest_buildingType_under_construction">"In costruzione"</string>
+    <string name="overlay_buildings">"Edifici"</string>
+    <string name="quest_pedestrian_crossing_signals">"Devi aspettare il semaforo per attraversare qui?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Questo attraversamento ha della segnaletica orizzontale?"</string>
+    <string name="overlay_places">"Luoghi"</string>
+    <string name="overlay_things">"Oggetti"</string>
+    <string name="disused">"inutilizzato"</string>
+    <string name="unknown_object">"Oggetto sconosciuto"</string>
+    <string name="quest_leafType_tree_title">"Questo albero ha aghi o foglie larghe?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
+    <string name="about_description_donate_google_play3">"Grazie per aiutare quest'app!
+Troverai le informazioni sulle donazioni sul nostro sito o sulla home del progetto, Google Play ci impedisce di condividere il link nell'app."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Non dentro, ma coperto"</string>
+    <string name="lit_value_unsupported">"Tipo di illuminazione non selezionabile in questa app"</string>
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
 </resources>

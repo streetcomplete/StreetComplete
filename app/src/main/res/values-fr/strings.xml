@@ -9,7 +9,7 @@
     <string name="pref_tilecache_size_message">"Espace en mégaoctets réservé à la mise en cache des tuiles de la carte sur le stockage externe"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Montrer toutes les notes"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Montrer également les notes qui ne ressemblent pas à des questions"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorer les notes qui ne ressemblent pas à des questions"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorer les notes non formulées comme questions"</string>
     <string name="pref_title_map_cache">"Taille du cache de la carte"</string>
     <string name="map_btn_gps_tracking">"Me suivre"</string>
     <string name="map_attribution_osm">"© Contributeurs d’OpenStreetMap"</string>
@@ -130,7 +130,7 @@ Toutefois, avant de télécharger vos modifications, l’application vérifie, �
 
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L’information liée à chaque marqueur peut être complétée en répondant à une question simple.
 
-Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap, à votre nom, sans qu’il soit nécessaire d’utiliser un autre éditeur de carte."</string>
+Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap, avec votre compte OSM, sans qu’il soit nécessaire d’utiliser un autre éditeur de carte."</string>
     <string name="quest_name_answer_noName">"Il n’y a pas de nom…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, pas de nom"</string>
@@ -182,7 +182,7 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il un revêtement podotactile des deux côtés ?"</string>
     <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifié cela sur place ?"</string>
-    <string name="quest_source_dialog_note">"Seules des informations relevées sur place devraient être saisies."</string>
+    <string name="quest_source_dialog_note">"Seules des informations vérifiées sur place devraient être saisies."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélos est-il couvert (protégé de la pluie) ?"</string>
     <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Cette limitation de vitesse semble peu plausible."</string>
@@ -193,7 +193,7 @@ S’il n’y a pas de panneau applicable à ce tronçon le long de la voie, les 
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"La limite de vitesse par défaut en agglomération est inférieure à celle hors agglomération."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"En agglomération"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Hors agglomération"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"S’il y a un panneau de ce type au carrefour de la rue principale, vous ne trouverez pas d’autres panneaux de limitation dans la zone car cette limite de vitesse s’applique à toute la zone."</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"S’il y a un panneau de ce type au carrefour avec la rue principale, vous ne trouverez pas d’autres panneaux de limitation dans la zone car cette limite de vitesse s’applique à toute la zone."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Racquetball"</string>
     <string name="quest_sport_ice_skating">"Patinage sur glace"</string>
@@ -226,7 +226,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="credits_translations_title">"Traductions"</string>
     <string name="credits_contributors_title">"Contributeurs au code"</string>
     <string name="credits_author_title">"Auteur et mainteneur"</string>
-    <string name="credits_and_more">"et plus encore…"</string>
     <string name="quest_maxspeed_answer_living_street">"C’est une zone de rencontre"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Alors, y a-t-il un panneau comme celui-ci ?"</string>
     <string name="quest_orchard_produce_title">"Qu’est-ce qui est cultivé ici ?"</string>
@@ -499,7 +498,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ce parking moto est-il couvert (protégé de la pluie) ?"</string>
     <string name="default_disabled_msg_maxspeed">"Ce type de quête est désactivé par défaut car vous devez généralement vérifier les panneaux de limitation de vitesse sur toute la voie et pas seulement sur le tronçon mis en évidence. Il peut parfois être particulièrement long de résoudre une seule quête."</string>
     <string name="pref_title_quests_restore_hidden">"Rétablir les quêtes cachées"</string>
-    <string name="restore_hidden_success">"%d quêtes cachées ont été rétablies"</string>
     <string name="on_level">"à l’étage %s"</string>
     <string name="underground">"en sous-sol"</string>
     <string name="quest_sidewalk_value_yes">"trottoir"</string>
@@ -790,7 +788,7 @@ accomplis"</string>
     <string name="quest_kerb_height_lowered">"Basse"</string>
     <string name="quest_kerb_height_raised">"Haute"</string>
     <string name="quest_kerb_height_lowered_ramp">"Il s’agit d’une pente douce"</string>
-    <string name="quest_lanes_answer_lanes_description2">"Spécifiez le nombre total de voies délimitées (dans les deux sens) utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas.
+    <string name="quest_lanes_answer_lanes_description2">"Spécifiez le nombre total de voies délimitées (dans les deux sens) utilisables pour le trafic routier. Les voies cyclables et emplacements de parking ne comptent pas.
 Si certaines voies sont réservées aux bus, laissez une note."</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">"Spécifiez le nombre de voies délimitées utilisables pour le trafic routier. Les voies cyclables et emplacement de parking ne comptent pas.
 Si certaines voies sont réservées aux bus, laissez une note."</string>
@@ -807,7 +805,7 @@ Si certaines voies sont réservées aux bus, laissez une note."</string>
     <string name="quest_shop_gone_vacant_answer">"L’emplacement est vacant"</string>
     <string name="quest_shop_gone_replaced_answer">"Un(e) …"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Écrire un type de lieu ici"</string>
-    <string name="quest_shop_vacant_type_title">"Cet emplacement de magasin a été vacant. Qu’y a-t’il ici maintenant ?"</string>
+    <string name="quest_shop_vacant_type_title">"Cet emplacement de magasin a été vacant. Qu’y a-t-il ici maintenant ?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Le nombre de voies n’est pas le même de chaque côté"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Cette quête est désactivée par défaut car elle n’est pas utile dans certaines régions et vous auriez certainement besoin de rentrer à l’intérieur du bâtiment pour y répondre."</string>
     <string name="quest_dietType_explanation_kosher">"Les produits casher doivent être préparés selon certaines règles, avec un certificat produit par un organisme de certification."</string>
@@ -840,7 +838,6 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="team_mode_active">"Le mode par équipe est activé"</string>
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
     <string name="undo_confirm_title2">"Annuler cette contribution ?"</string>
-    <string name="synced">"Synchronisé"</string>
     <string name="toast_undo_unavailable">"Cette contribution est déjà téléversée et ne peut pas être annulée"</string>
     <string name="quest_cycleway_value_separate">"Affichée distinctement sur la carte"</string>
     <string name="created_note_action_title">"Créer une note"</string>
@@ -851,7 +848,7 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="added_tag_action_title">"Ajouté %s"</string>
     <string name="removed_tag_action_title">"Retiré %s"</string>
     <string name="changed_tag_action_title">"Mettre à jour à %s"</string>
-    <string name="pref_title_delete_cache">"Supprimer le cache"</string>
+    <string name="pref_title_delete_cache">"Vider le cache"</string>
     <string name="pref_title_delete_cache_summary">"Si vous pensez que certaines données sont périmées"</string>
     <string name="delete_confirmation">"Supprimer"</string>
     <string name="delete_cache_dialog_message">"Supprimer toutes les données de cartes téléchargées, y compris les quêtes ?
@@ -884,7 +881,7 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_barrier_type_kissing_gate_conversion">"Changé en un portillon à chicane mobile"</string>
     <string name="quest_stile_type_title">"Quel type d’échalier est-ce ?"</string>
     <string name="quest_buildingType_semi_detached_description2">"maison·s unifamiliale·s contiguë·s"</string>
-    <string name="pref_title_quests2">"Sélection et priorité des quêtes"</string>
+    <string name="pref_title_quests2">"Sélection des quêtes et priorités"</string>
     <string name="pref_subtitle_quests">"%1$d sur %2$d activées"</string>
     <string name="no_location_permission_warning_title">"Permission de localisation"</string>
     <string name="quest_surface_value_woodchips">"Copeaux de bois"</string>
@@ -963,8 +960,8 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_barrier_bicycle_type_single">"Passage entre barrières"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barrière de chaque côté"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - plus de deux barrières"</string>
-    <string name="pref_title_language_select">"Sélectionnez une langue"</string>
-    <string name="language_default">"Défaut du système"</string>
+    <string name="pref_title_language_select">"Sélectionner une langue"</string>
+    <string name="language_default">"Langue du système"</string>
     <string name="on_floor">"à l’étage %s :"</string>
     <string name="select_street_parking_orientation">"Sélectionnez l’orientation vers la chaussée :"</string>
     <string name="select_street_parking_position">"Sélectionnez la position :"</string>
@@ -1062,8 +1059,6 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="quest_road_width_title">"Quelle est la largeur de cette route ici ?"</string>
     <string name="quest_road_width_explanation">"La taille de la route de bord à bord : ceci inclut tout ce qui se trouve sur la surface de la rue comme les emplacements de stationnement et les bandes cyclables, mais exclut tout ce qui se trouve au delà, comme les pistes cyclables ou les places de parking."</string>
     <string name="quest_sidewalk_answer_none">"Pas de trottoir du tout"</string>
-    <string name="about_description_donate_google_play2">"Merci de vouloir nous soutenir !
-Malheureusement, les règles du Google Play Store nous empêche d’afficher dans l’application les liens pour nous soutenir financièrement. Même un lien vers la page principale de notre projet ne peut être affiché."</string>
     <string name="link_osmand_description">"Application mobile pour la visualisation de carte et la navigation, hors ligne ou en ligne"</string>
     <string name="link_sunders_description">"Une carte des caméras et équipements de surveillance"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Restez proche de la flèche, mais faites attention à la circulation !"</string>
@@ -1117,7 +1112,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_shop_type_title2">"De quel type de commerce s’agit-il ?"</string>
     <string name="quest_smoking_title2">"Peut-on fumer à cet endroit ?"</string>
     <string name="quest_smoothness_title">"Quelle est la qualité de la surface ?"</string>
-    <string name="quest_summit_register_title2">"Y’a-t’il un registre d’ascenscion de sommet de montagne ?"</string>
+    <string name="quest_summit_register_title2">"Y a-t-il un registre d’ascenscion de sommet de montagne ?"</string>
     <string name="quest_surface_title">"Quel est le matériau qui compose la surface ?"</string>
     <string name="quest_toiletAvailability_title">"Y a-t-il des toilettes à cet endroit ?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Les toilettes de ce lieu sont-elles accessibles aux fauteuils roulants ?"</string>
@@ -1225,7 +1220,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_drinking_water_type_disused">"Objet abandonné"</string>
     <string name="overlay_addresses">"Adresses"</string>
     <string name="name_label">"Nom :"</string>
-    <string name="unknown_shop_title">"Type de lieu non non défini"</string>
+    <string name="unknown_shop_title">"Type de lieu non défini"</string>
     <string name="quest_address_answer_no_address">"Pas d’adresse ici"</string>
     <string name="quest_bicycle_barrier_installation_title">"Peut-on ouvrir cette barrière à vélos (avec ou sans clé) ?"</string>
     <string name="quest_barrier_bicycle_installation_fixed">"Fixe"</string>
@@ -1260,7 +1255,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="node_moved_not_far_enough">"Veuillez le déplacer plus loin"</string>
     <string name="node_moved_too_far">"Déplacé trop loin. Pensez à laisser une note"</string>
     <string name="node_moved">"Déplacé par %s"</string>
-    <string name="move_node_description">"Déplacez la carte pour pour placer l’objet à l’emplacement correct. Utilisez le zoom et essayer d’être aussi précis que possible. Notez également que votre position affichée peut être manquer de précision."</string>
+    <string name="move_node_description">"Déplacez la carte pour pour placer l’objet à l’emplacement correct. Utilisez le zoom et essayez d’être aussi précis que possible. Notez également que votre position affichée peut manquer de précision."</string>
     <string name="move_node_action_description">"Vous avez déplacé le noeud"</string>
     <string name="quest_cycleway_value_shoulder">"aucune, mais bande d’arrêt d’urgence cyclable"</string>
     <string name="quest_placeName_no_name_answer">"Il n’y a pas de signe de nom…"</string>
@@ -1283,7 +1278,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_fireHydrant_type_pipe">"Colonne"</string>
     <string name="measure_info_title">"Améliorer la précision de mesure"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore présume parfois (à l’initialisation) que le sol est plus bas ou plus haut qu’il ne l’est vraiment. Cela introduit une erreur de mesure qui s’accroit lorsque vous inclinez votre téléphone vers l’horizon.&lt;/p&gt;
-&lt;p&gt;Réglez les points de départ et de terminaison en pointant le téléphone vers le bas (de manière à voir la flèche blanche du dessus) pour remédier au problème pour les mesures horizontales.&lt;/p&gt;
+&lt;p&gt;Réglez les points de départ et d’arrivée en pointant le téléphone vers le bas (de manière à voir la flèche blanche du dessus) pour remédier au problème pour les mesures horizontales.&lt;/p&gt;
 &lt;p&gt;Pour les mesures verticales, vous devez vérifier manuellement que le point de départ n’est pas en mouvement par rapport au sol, en regardant depuis des directions différentes.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Cette application utilise les &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Services Google Play pour RA&lt;/a&gt; (ARCore), qui sont fournis par Google et sont soumis aux &lt;a href=\"https://policies.google.com/privacy\"&gt;règles de confidentialité de Google&lt;/a&gt;."</string>
     <string name="default_disabled_msg_seasonal">"Ce type de quête est désactivé par défaut car il peut nécessiter une re-vérification de la situation à différentes périodes de l’année."</string>
@@ -1308,7 +1303,7 @@ Malheureusement, les règles du Google Play Store nous empêche d’afficher dan
     <string name="quest_hairdresser_male_and_female">"Toute personne"</string>
     <string name="quest_hairdresser_female_only">"Femmes"</string>
     <string name="quest_hairdresser_male_only">"Hommes"</string>
-    <string name="quest_hairdresser_not_signed">"Non signé"</string>
+    <string name="quest_hairdresser_not_signed">"Non indiqué"</string>
     <string name="quest_amenityCover_title">"Est-ce couvert (protégé de la pluie) ?"</string>
     <string name="lane_narrowing_traffic_calming_choker">"Extension de trottoir"</string>
     <string name="lane_narrowing_traffic_calming_island">"Îlot de circulation"</string>
@@ -1361,4 +1356,37 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="label_log_message_contains">"Le message contient"</string>
     <string name="title_logs_filters">"Filtrer les messages"</string>
     <string name="pref_title_quests_restore_hidden_summary">"Nombre de quêtes cachées : %d"</string>
+    <string name="link_every_door_description">"Editeur de point d’intérêt pour Android et iOS"</string>
+    <string name="link_mapcomplete_description">"Collection de cartes OSM thématiques qui permettent de modifier un type d’élément."</string>
+    <string name="link_forum_description">"Besoin d’aide ? Vous voulez savoir ce qui se passe ? Venez voir, c’est plein d’activités pour les communautés du monde entier !"</string>
+    <string name="link_calendar_description">"Y a-t-il des évènements ou des rassemblements de communautés OpenStreetMap près de vous ? (Si non, vous pouvez ajouter les vôtres !)"</string>
+    <string name="link_prettymapp_description">"Créer de jolies affiches de cartes multicolores des quartiers"</string>
+    <string name="quest_disable_action">"Désactiver"</string>
+    <string name="quest_disable_title">"Désactiver cette quête ?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure n’est pas installé"</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure n’a pas renvoyé de mesure."</string>
+    <string name="quest_disable_message_tape_measure">"Vous pourriez utiliser un mètre ruban à la place, mais c’est un peu plus gênant."</string>
+    <string name="quest_buildingType_outbuilding">"Annexe"</string>
+    <string name="quest_buildingType_outbuilding_description">"bâtiment moins important sur une propriété"</string>
+    <string name="quest_buildingType_other_description">"un bâtiment spécifique qui n’est pas sélectionnable dans cette application"</string>
+    <string name="quest_buildingType_container">"Conteneur"</string>
+    <string name="quest_buildingType_tent">"Tente"</string>
+    <string name="quest_buildingType_tomb">"Tombeau"</string>
+    <string name="quest_buildingType_tower">"Tour"</string>
+    <string name="quest_buildingType_tower_description">"Tout type de tour"</string>
+    <string name="quest_buildingType_under_construction">"En cours de construction"</string>
+    <string name="overlay_buildings">"Immeubles"</string>
+    <string name="quest_pedestrian_crossing_signals">"Faut-il attendre un feu de signalisation pour traverser ici ?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Est-ce que ce passage piéton est peint sur la chaussée ?"</string>
+    <string name="overlay_places">"Places"</string>
+    <string name="overlay_things">"Objets"</string>
+    <string name="disused">"désaffecté"</string>
+    <string name="unknown_object">"Objet inconnu"</string>
+    <string name="quest_leafType_tree_title">"Cet arbre a-t-il des aiguilles ou des feuilles ?"</string>
+    <string name="quest_bbq_fuel_gas">"Gaz"</string>
+    <string name="about_description_donate_google_play3">"Merci d’envisager de soutenir cette application !
+Vous pouvez trouver des informations sur les dons sur notre site web ou sur la page d’accueil du projet. Google Play ne nous permet pas de fournir le lien dans l’application."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Pas à l’intérieur, mais couvert"</string>
+    <string name="lit_value_unsupported">"État éclairé spécifique qui ne peut pas être sélectionné dans cette application"</string>
+    <string name="quest_generic_otherAnswers2">"Euh…"</string>
 </resources>

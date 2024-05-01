@@ -1573,7 +1573,6 @@
                         "e10": "Benzina E10",
                         "e85": "Benzina E85",
                         "h70": "Idrogeno gassoso (700 bar)",
-                        "lpg": "Gas naturale liquefatto (LPG)",
                         "octane_100": "Benzina (100 ottani)",
                         "octane_80": "Benzina (80 ottani)",
                         "octane_85": "Benzina (85 ottani)",
@@ -2113,9 +2112,6 @@
                 },
                 "license_classes": {
                     "label": "Classi di patente di guida"
-                },
-                "lifeguard": {
-                    "label": "Bagnino"
                 },
                 "lift_gate/type": {
                     "label": "Tipo",

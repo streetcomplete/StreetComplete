@@ -680,6 +680,7 @@
                         "socks": "Zoknik",
                         "sports": "Sportruházat",
                         "swimwear": "Úszóöltözet",
+                        "underwear": "Fehérnemű",
                         "wedding": "Esküvői ruhák",
                         "women": "Nőiruhák",
                         "workwear": "Munkaruhák"
@@ -693,7 +694,11 @@
                     "label": "Ürítési idő"
                 },
                 "collector": {
-                    "label": "Gyűjtött tárgy"
+                    "label": "Gyűjtött tárgy",
+                    "options": {
+                        "coins": "Pénzérme",
+                        "stamps": "Bélyeg"
+                    }
                 },
                 "colour": {
                     "label": "Szín",
@@ -714,7 +719,11 @@
                     "label": "Típus"
                 },
                 "consulate": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "honorary_consul": "Tiszteletbeli konzul",
+                        "yes": "Konzulátus"
+                    }
                 },
                 "consulting": {
                     "label": "Szakterület"
@@ -1008,6 +1017,7 @@
                     "label": "Jelentőség"
                 },
                 "departures_board": {
+                    "label": "Indulásjelző tábla",
                     "options": {
                         "no": "Nincs",
                         "realtime": "Valós idejű",
@@ -1071,7 +1081,11 @@
                     "terms": "diéta,étrend"
                 },
                 "diplomatic": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "consulate": "Konzulátus",
+                        "embassy": "Követség"
+                    }
                 },
                 "diplomatic/services": {
                     "label": "Szolgáltatások"
@@ -1136,7 +1150,10 @@
                     "label": "Típus"
                 },
                 "dock": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "drydock": "Szárazdokk"
+                    }
                 },
                 "dog": {
                     "label": "Kutya",
@@ -1290,6 +1307,20 @@
                         "wall": "Fali"
                     }
                 },
+                "fire_mains": {
+                    "options": {
+                        "wet": "Vízhálózatra csatlakoztatva"
+                    }
+                },
+                "fire_service_inlet": {
+                    "label": "Alak",
+                    "options": {
+                        "pillar": "Felszíni",
+                        "pipe": "szívócsonk, csővég",
+                        "underground": "Föld alatti",
+                        "wall": "Fali"
+                    }
+                },
                 "fireplace": {
                     "label": "Tűzrakóhely"
                 },
@@ -1371,7 +1402,6 @@
                         "e10": "E10 benzin",
                         "e85": "E85 benzin",
                         "h70": "Nagynyomású hidrogén",
-                        "lpg": "Cseppfolyós gáz (LPG)",
                         "octane_100": "Benzin (100 oktános)",
                         "octane_80": "Benzin (80 oktános)",
                         "octane_85": "Benzin (85 oktános)",
@@ -1495,7 +1525,22 @@
                     }
                 },
                 "healthcare": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "audiologist": "Audiológus",
+                        "birthing_centre": "Szülészet",
+                        "blood_donation": "Véradóközpont",
+                        "dentist": "Fogorvos",
+                        "midwife": "Bába",
+                        "optometrist": "Optometrista",
+                        "pharmacy": "Gyógyszertár",
+                        "physiotherapist": "Gyógytornász",
+                        "podiatrist": "Lábgyógyász",
+                        "psychotherapist": "Pszichoterapeuta",
+                        "rehabilitation": "Rehabilitációs létesítmény",
+                        "speech_therapist": "Beszédterapeuta",
+                        "vaccination_centre": "Oltóközpont"
+                    }
                 },
                 "healthcare/speciality": {
                     "label": "Szakorvosi ellátás",
@@ -1505,6 +1550,7 @@
                         "allergology": "Allergia és asztma",
                         "anaesthetics": "Aneszteziológia",
                         "angiology": "Angiológia",
+                        "anthroposophical": "Antropozófus orvoslás",
                         "applied_kinesiology": "Alkalmazott kineziológia",
                         "aromatherapy": "Aromaterápia",
                         "ayurveda": "Ájurvéda",
@@ -1541,6 +1587,7 @@
                         "neuropsychiatry": "Idegpszichiátria",
                         "neurosurgery": "Idegsebészet",
                         "nuclear": "Nukleáris gyógyászat",
+                        "oncology": "Onkológia",
                         "ophthalmology": "Szemészet",
                         "orthodontics": "Fogszabályozás",
                         "orthopaedics": "Ortopéd sebészet",
@@ -1552,7 +1599,11 @@
                         "plastic_surgery": "Plasztikai sebészet",
                         "proctology": "Vastagbélsebészet",
                         "psychiatry": "Pszichiátria",
+                        "radiology": "Radiológia",
+                        "reflexology": "Reflexológia",
+                        "reiki": "Reiki",
                         "rheumatology": "Reumatológia",
+                        "shiatsu": "Siacu",
                         "stomatology": "Fogászat",
                         "surgery": "Általános sebészet",
                         "traditional_chinese_medicine": "Hagyományos kínai gyógyászat",
@@ -1593,7 +1644,19 @@
                     }
                 },
                 "historic": {
-                    "label": "Típus"
+                    "label": "Típus",
+                    "options": {
+                        "archaeological_site": "Régészeti lelőhely",
+                        "bomb_crater": "Bombatölcsér",
+                        "boundary_stone": "Történelmi határkő",
+                        "building": "Történelmi épület",
+                        "castle": "Vár",
+                        "charcoal_pile": "Szénégető boksa",
+                        "church": "Templom",
+                        "city_gate": "Városkapu",
+                        "citywalls": "Városfal",
+                        "fort": "(Késő újkori) erőd"
+                    }
                 },
                 "historic/civilization": {
                     "label": "Történelmi civilizáció"
@@ -1810,9 +1873,6 @@
                 },
                 "license_classes": {
                     "label": "Jogosítványtípus"
-                },
-                "lifeguard": {
-                    "label": "Életmentő, úszómester"
                 },
                 "lift_gate/type": {
                     "label": "Típus"
@@ -2064,7 +2124,7 @@
                         "alternating": "Váltakozó",
                         "no": "Nem",
                         "reversible": "Megfordítható",
-                        "undefined": "Feltehetően nem egyirányú",
+                        "undefined": "Feltehetőleg nem",
                         "yes": "Igen"
                     },
                     "terms": "egyirányú,kétirányú"
@@ -2078,7 +2138,7 @@
                         "alternating": "Váltakozó",
                         "no": "Nem",
                         "reversible": "Megfordítható",
-                        "undefined": "Feltehetően egyirányú",
+                        "undefined": "Feltehetőleg egyirányú",
                         "yes": "Igen"
                     }
                 },
@@ -2159,6 +2219,7 @@
                     "options": {
                         "alipay": "Alipay",
                         "american_express": "American Express",
+                        "app": "Mobilalkalmazás",
                         "apple_pay": "Apple Pay",
                         "cash": "Készpénz",
                         "cheque": "Csekk",
@@ -3041,6 +3102,10 @@
                     "label": "Típusok",
                     "terms": "piszoár,guggolós wc,angol wc"
                 },
+                "toilets/wheelchair": {
+                    "label": "Kerekesszékkel használható wc",
+                    "terms": "kerekesszékkel használható mosdó"
+                },
                 "toll": {
                     "label": "Útdíj",
                     "terms": "úthasználati díj,autópályadíj"
@@ -3825,6 +3890,9 @@
                 "amenity/fuel": {
                     "name": "Benzinkút",
                     "terms": "töltőállomás,shell,agip,lukoil,omv,mol,benzin,gázolaj,üzemanyag,autógáz,dízel,diesel,bioetanol"
+                },
+                "amenity/funeral_hall": {
+                    "name": "Ravatalozó"
                 },
                 "amenity/gambling": {
                     "name": "Szerencsejáték-helyszín",
@@ -5456,7 +5524,7 @@
                     "terms": "futószalag"
                 },
                 "highway/footway/crossing": {
-                    "name": "Gyalogosátkelő"
+                    "name": "Gyalogos átkelő"
                 },
                 "highway/footway/crossing/traffic_signals": {
                     "name": "Gyalogosátkelő gyalogos jelzésekkel"

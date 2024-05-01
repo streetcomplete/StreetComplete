@@ -226,7 +226,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="credits_translations_title">"Çeviriler"</string>
     <string name="credits_contributors_title">"Kod Katkıcıları"</string>
     <string name="credits_author_title">"Hazırlayan ve Sürdüren"</string>
-    <string name="credits_and_more">"ve dahası…"</string>
     <string name="quest_maxspeed_answer_living_street">"Bu bir yaşam sokağı"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Buna benzer bir tabela var mı?"</string>
     <string name="quest_orchard_produce_title">"Burada ne yetişiyor?"</string>
@@ -500,7 +499,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_motorcycleParkingCoveredStatus_title">"Bu motosiklet park yeri kapalı mı (yağmurdan korunuyor)?"</string>
     <string name="default_disabled_msg_maxspeed">"Bu görev türü varsayılan olarak devre dışı bırakılmıştır, çünkü yalnızca vurgulanan bölümü değil, tüm caddeyi hız sınırı işaretleri için kontrol etmeniz gerekir.  Bu bazen sadece tek bir görevi çözmek için zor olabilir."</string>
     <string name="pref_title_quests_restore_hidden">"Gizli görevleri geri yükle"</string>
-    <string name="restore_hidden_success">"%d gizlenmiş görev geri yüklendi"</string>
     <string name="on_level">"%s. katta"</string>
     <string name="underground">"Yer altı"</string>
     <string name="quest_sidewalk_value_yes">"Kaldırım var"</string>
@@ -679,6 +677,7 @@ Bu veri yalnızca postacılar için değil navigasyon sistemleri için de çok �
     <string name="map_btn_menu">"Menü"</string>
     <string name="confirmation_authorize_now_note2">"Bunu daha sonra profil ekranından da yapabilirsiniz."</string>
     <string name="credits_art_contributors_title">"Sanatsal katkıcılar"</string>
+    <string name="credits_projects_contributors_title">"StreetComplete için yapılmış projeler."</string>
     <string name="credits_main_contributors_title">"Ana katkıcılar"</string>
     <string name="stats_are_syncing">"İstatistikleriniz hala senkronize ediliyor. Bu ekranı daha sonra kontrol edin."</string>
     <string name="user_statistics_filter_by_country">"ülkeye göre"</string>
@@ -708,11 +707,17 @@ seviyeleri"</string>
     <string name="quest_board_type_map">"Bu bir harita"</string>
     <string name="quest_board_type_map_description">"Pano belirli bir konu hakkındaysa, lütfen bir harita içerip içermediğine bakılmaksızın bunu belirtin. Örneğin, bir toplu taşıma panosunun bir otobüs güzergah haritası olabilir. Konu mevcut cevaplar arasında listelenmemişse, lütfen bunun yerine bir not bırakın."</string>
     <string name="quest_surface_detailed_answer_impossible">"Bir kaç yüzey…"</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Bu yüzeyi tanımlamanın imkansız olduğuna emin misiniz? \"Yol boyunca değişiyor\" seçeneği ile yolun değişen kısmını kesebilirsiniz. Yol tek bir yüzeyse ve listede yoksa lütfen \"Söyleyemem\" seçeneğini seçin."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Lütfen burada yüzeyin yapısını kısaca belirtin, örneğin \"arnavut kaldırımlı yer yer kumlu\". Metin uzunluğu 255 karakterle sınırlıdır."</string>
     <string name="quest_streetName_menuItem_international">"uluslararası"</string>
+    <string name="quest_buildingType_terrace2">"Sıra Evler"</string>
     <string name="at_housename">"Ev ismi %s"</string>
     <string name="at_housenumber">"ev numarası %s"</string>
+    <string name="quest_openingHours_add_off_days">"Kapalı günleri ekle"</string>
+    <string name="quest_openingHours_off_day">"Kapalı Günler"</string>
     <string name="quest_openingHours_unspecified_range">"Belirtilmemiş"</string>
+    <string name="quest_cycleway_resurvey_title">"Burada hâla bisiklet yolu var mı?"</string>
+    <string name="pref_title_resurvey_intervals">"Anket tekrarı sıklığı"</string>
     <string name="resurvey_intervals_less_often">"Daha az sor"</string>
     <string name="resurvey_intervals_default">"Varsayılan"</string>
     <string name="resurvey_intervals_more_often">"Daha sık sor"</string>
@@ -743,6 +748,7 @@ seviyeleri"</string>
     <string name="achievement_rare_title">"Hazine avı"</string>
     <string name="achievement_rare_solved_X">"Gerçekten nadiren tamamlanan %d görev buldunuz ve çözdünüz, tebrikler!"</string>
     <string name="achievement_citizen_title">"Vatandaş"</string>
+    <string name="achievement_citizen_solved_X">"Şehirdeki günlük yaşama "</string>
     <string name="achievement_outdoors_title">"Açık havada"</string>
     <string name="quest_pedestrian_crossing_island">"Bu yaya geçidinde bir trafik adası var mı?"</string>
     <string name="quest_generic_answer_noSign">"İşaret yok"</string>
@@ -781,6 +787,8 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_surface_value_rock">"Kaya"</string>
     <string name="quest_parkingType_street_side">"Yola bitişik park"</string>
     <string name="quest_parkingType_lane">"Yol üzerine park"</string>
+    <string name="quest_tracktype_grade2a">"Sertleşmiş Toprak"</string>
+    <string name="quest_tracktype_grade3a">"Genellikle sağlam"</string>
     <string name="quest_generic_answer_does_not_exist">"Böyle bir şey yok…"</string>
     <string name="osm_element_gone_confirmation">"Böyle bir şey yok"</string>
     <string name="leave_note">"Not bırak"</string>
@@ -798,13 +806,17 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_surface_value_artificial_turf">"Suni çim"</string>
     <string name="quest_surface_value_tartan">"Kauçuk Zemin"</string>
     <string name="quest_bicycle_parking_fee_title">"Buraya bisiklet park etmek için ödeme yapmanız gerekiyor mu?"</string>
+    <string name="quest_drinking_water_potable_signed">"İçmek için uygun (İşaretli)"</string>
+    <string name="quest_drinking_water_potable_unsigned">"İçmek için uygun (İşaretsiz)"</string>
+    <string name="quest_drinking_water_not_potable_signed">"İçmek için uygun değil (İşaretli)"</string>
+    <string name="quest_drinking_water_not_potable_unsigned">"İçmek için uygun değil (İşaretsiz)"</string>
+    <string name="quest_postboxRoyalCypher_title">"Bu posta kutusundaki kraliyet kodu nedir?"</string>
     <string name="quest_buildingType_fire_station">"İtfaiye"</string>
     <string name="team_mode">"Takım Kipi"</string>
     <string name="team_mode_exit">"Takım Kipinden Çık"</string>
     <string name="team_mode_active">"Takım modu etkin"</string>
     <string name="team_mode_deactivated">"Takım modu etkisiz"</string>
     <string name="undo_confirm_title2">"Bu düzenleme geri alınsın mı?"</string>
-    <string name="synced">"Senkron"</string>
     <string name="toast_undo_unavailable">"Bu düzenleme eşleştirildi ve artık geri alınamaz"</string>
     <string name="quest_cycleway_value_separate">"haritada ayrı gösterilmiş"</string>
     <string name="created_note_action_title">"Not yaratıldı"</string>

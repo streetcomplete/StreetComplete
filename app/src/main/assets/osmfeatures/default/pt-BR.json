@@ -504,6 +504,10 @@
                         "rising": "Pilarete móvel"
                     }
                 },
+                "books": {
+                    "label": "Tipo de livros",
+                    "terms": "books,livros,textos,tipo,gênero,tema"
+                },
                 "booth": {
                     "label": "Cabine",
                     "terms": "cabine,cabina,estande,abrigo"
@@ -541,7 +545,17 @@
                     "label": "Tipo"
                 },
                 "bridge_combo": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "aqueduct": "Aqueduto",
+                        "boardwalk": "Passadiço",
+                        "cantilever": "Ponte Cantilever",
+                        "covered": "Ponte Coberta",
+                        "low_water_crossing": "Vau",
+                        "movable": "Ponte Móvel",
+                        "trestle": "Ponte de cavalete",
+                        "viaduct": "Viaduto"
+                    }
                 },
                 "building": {
                     "label": "Edifício",
@@ -745,7 +759,8 @@
                 },
                 "circumference": {
                     "label": "Circunferência (na altura do peito)",
-                    "placeholder": "1 m, 20 cm, 30\"…"
+                    "placeholder": "1 m, 20 cm, 30\"…",
+                    "terms": "dbh,diâmetro,altura,peito"
                 },
                 "clothes": {
                     "label": "Roupas",
@@ -775,7 +790,8 @@
                     "label": "Tipo"
                 },
                 "collection_times": {
-                    "label": "Horários de coleta"
+                    "label": "Horários de coleta",
+                    "terms": "recolha,levantamento,collection,horário,horas,times,calendário,encomenda,postal"
                 },
                 "collector": {
                     "label": "Itens",
@@ -806,6 +822,7 @@
                 "consulate": {
                     "label": "Tipo",
                     "options": {
+                        "consular_agency": "Agência consular",
                         "consular_office": "Escritório Consular",
                         "consulate_general": "Consulado geral",
                         "honorary_consul": "Cônsul honorário",
@@ -818,7 +835,8 @@
                 },
                 "contact/facebook": {
                     "label": "Nome de usuário ou URL do Facebook",
-                    "placeholder": "https://www.facebook.com/NegocioLocal"
+                    "placeholder": "https://www.facebook.com/NegocioLocal",
+                    "terms": "facebook,meta,rede social,redes sociais,contacto,contato"
                 },
                 "contact/webcam": {
                     "label": "URL da webcam",
@@ -837,6 +855,9 @@
                 },
                 "conveying_escalator": {
                     "label": "Escada rolante"
+                },
+                "count": {
+                    "label": "Número de elementos"
                 },
                 "country": {
                     "label": "País"
@@ -895,6 +916,7 @@
                         "metal_construction": "Metalurgia",
                         "oil_mill": "Lagar de óleo",
                         "painter": "Pintor",
+                        "parquet_layer": "Técnico de parqué",
                         "photographer": "Fotógrafo",
                         "photographic_laboratory": "Laboratório Fotográfico",
                         "plasterer": "Estucador",
@@ -1047,6 +1069,7 @@
                         "lebanese": "Libanesa",
                         "malaysian": "Malaia",
                         "mexican": "Mexicano",
+                        "pancake": "Panquecas",
                         "pasta": "Macarrão",
                         "peruvian": "Peruana",
                         "pizza": "Pizza",
@@ -1404,6 +1427,9 @@
                 "fence_type": {
                     "label": "Tipo"
                 },
+                "fhrs/id-GB": {
+                    "label": "FHRS ID"
+                },
                 "fire_hydrant/diameter": {
                     "label": "Diâmetro (mm, in ou letras)",
                     "terms": "diâmetro"
@@ -1535,7 +1561,6 @@
                         "e10": "Gasolina E10",
                         "e85": "Gasolina E85",
                         "h70": "Gás hidrogênio (700 bar)",
-                        "lpg": "Gás natural liquefeito (GLP)",
                         "octane_100": "Gasolina (100 octanas)",
                         "octane_80": "Gasolina (80 octanas)",
                         "octane_85": "Gasolina (85 octanas)",
@@ -2037,9 +2062,6 @@
                 },
                 "license_classes": {
                     "label": "Categorias de condução"
-                },
-                "lifeguard": {
-                    "label": "Salva-vidas"
                 },
                 "lift_gate/type": {
                     "label": "Tipo",
@@ -3655,6 +3677,7 @@
                         "chicane": "Chicane",
                         "dip": "Depressão",
                         "hump": "Lombada (1,5 a 3,0 m de largura)",
+                        "island": "Ilha divisória",
                         "mini_bumps": "Tartarugas",
                         "rumble_strip": "Sonorizador"
                     }
@@ -4823,7 +4846,8 @@
                     "terms": "asiático,comida asiática,restaurante,ásia"
                 },
                 "amenity/restaurant/barbecue": {
-                    "name": "Churrascaria"
+                    "name": "Churrascaria",
+                    "terms": "barbeque,bbq,grill,grelhados,refeições,churrasco,churrascaria"
                 },
                 "amenity/restaurant/chinese": {
                     "name": "Restaurante chinês",
@@ -4832,6 +4856,10 @@
                 "amenity/restaurant/french": {
                     "name": "Restaurante francês",
                     "terms": "restaurante francês,comida francesa,frança,comida mediterrânea,restaurante mediterrâneo"
+                },
+                "amenity/restaurant/georgian": {
+                    "name": "Restaurante georgiano",
+                    "terms": "comida,repasto,comer,jantar,almoço,geórgia,georgia,georgian,alimentação,alimentar,lanche,lanchar"
                 },
                 "amenity/restaurant/german": {
                     "name": "Restaurante alemão",
@@ -4854,7 +4882,8 @@
                     "terms": "comida japonesa,sushi,temaki,teriaki"
                 },
                 "amenity/restaurant/korean": {
-                    "name": "Restaurante coreano"
+                    "name": "Restaurante coreano",
+                    "terms": "coreia,korean,korea"
                 },
                 "amenity/restaurant/mexican": {
                     "name": "Restaurante mexicano",
@@ -4868,9 +4897,17 @@
                     "name": "Pizzaria",
                     "terms": "restaurante,alimentação,pizza,comida italiana"
                 },
+                "amenity/restaurant/ramen": {
+                    "name": "Restaurante de ramen",
+                    "terms": "cozinha,ramen,japão,japonês,japonesa,ramen-ten,ramen-ya,sopa,lamen,miojo"
+                },
                 "amenity/restaurant/seafood": {
                     "name": "Restaurante de frutos do mar",
                     "terms": "pescados,alimentação,frutos do mar,peixes"
+                },
+                "amenity/restaurant/spanish": {
+                    "name": "Restaurante espanhol",
+                    "terms": "comida,espanhol,espanhola,espanha,comer,tapa,pintxo"
                 },
                 "amenity/restaurant/steakhouse": {
                     "name": "Steak house",
@@ -4888,6 +4925,10 @@
                 "amenity/restaurant/turkish": {
                     "name": "Restaurante turco",
                     "terms": "restaurante,turquia,comida turca,kebab,falafel,shawarma,homus,tahine"
+                },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Restaurante ucraniano",
+                    "terms": "comida,repasto,comer,jantar,almoço,ucrânia,ukraine,alimentação,alimentar,lanche,lanchar"
                 },
                 "amenity/restaurant/vietnamese": {
                     "name": "Restaurante vietnamita",
@@ -8318,6 +8359,10 @@
                     "name": "Interruptor de energia",
                     "terms": "disjuntor,eletricidade"
                 },
+                "power/switchgear": {
+                    "name": "Dispositivo de manobra",
+                    "terms": "equipamento de manobra,conjunto de manobra"
+                },
                 "power/tower": {
                     "name": "Torre de Alta Tensão",
                     "terms": "alta tensão"
@@ -9538,7 +9583,7 @@
                     "terms": "parque de vida selvagem"
                 },
                 "traffic_calming": {
-                    "name": "Redutor de Velocidade",
+                    "name": "Moderador de tráfego",
                     "terms": "lombada,sinalizador,quebra mola,quebra-molas,lombada tipo 1,redutor de velocidade"
                 },
                 "traffic_calming/bump": {
@@ -9564,6 +9609,10 @@
                 "traffic_calming/hump": {
                     "name": "Lombada (1,5 a 3m de largura)",
                     "terms": "lombada tipo ii,lomba,quebra-molas,ondulação transversal,lombada tipo 2,quebra mola"
+                },
+                "traffic_calming/island": {
+                    "name": "Ilha divisória",
+                    "terms": "canteiro central,estrada,ilha,ilha central,trânsito,redutor de velocidade,redução de velocidade,acalmia,rodovia,speed,calming,island"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Tachões/Tartarugas",

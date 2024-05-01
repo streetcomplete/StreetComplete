@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [NLB, NKBM, Nova KBM, Abanka, SKB, Gorenjska banka, Euronet, NovaKBM, Delavska hranilnica, NKBM d.d., Intesa Sanpaolo, Addiko Bank, UniCredit Bank, Banka Koper, ABanka, Gorenjska Banka, SKB Banka, Nova Ljubljanska banka d.d., Banka Celje, ABANKA, Sparkasse, Nova ljubljanska banka, Nova Ljubljanska Banka, NLB d. d., NKMB, Intesa Sanpaolo Bank, Hypo Alpe-Adria-Bank d.d., Bitnik d.o.o., Bitnik, ATM, A banka]
-chargingStationOperators: [SODO, Petrol, Ionity, Elektro Ljubljana, 'Tesla, Inc.', Elektro Maribor, Elektro Ljubljana d.d., unknovn, Lidl, Gremo na elektriko, Shell Recharge Solutions, Mega M d.o.o., EM, elektro Celje, dravske elektrarne maribor, Renault, Postojna, Petrol d.d., Občina Ajdovščina, Iskratel, Gremo na Elektriko, Energija Plus d.o.o., Elektro Gorenjska, DEM]
+atmOperators: [NLB, NKBM, Nova KBM, Abanka, NovaKBM, SKB, Gorenjska banka, Euronet, Intesa Sanpaolo, Delavska hranilnica, NKBM d.d., Addiko Bank, Banka Koper, ABanka, shitcoins.club, UniCredit Bank, SKB Banka, Gorenjska Banka, NLB d. d., Banka Celje, ABANKA, Sparkasse, Nova ljubljanska banka, Nova Ljubljanska banka d.d., Nova Ljubljanska Banka, NKMB, Intesa Sanpaolo Bank, Hypo Alpe-Adria-Bank d.d., Bitnik d.o.o., Bitnik, ATM, A banka]
+chargingStationOperators: [SODO, Petrol, Ionity, Elektro Ljubljana, 'Tesla, Inc.', Elektro Maribor, Elektro Ljubljana d.d., unknovn, Lidl, Gremo na elektriko, Shell Recharge Solutions, Mega M d.o.o., EM, elektro Celje, dravske elektrarne maribor, Renault, Postojna, Petrol d.d., Občina Ajdovščina, Iskratel, Gremo na Elektriko, Energija Plus d.o.o., Elektro Gorenjska]
 clothesContainerOperators: [Humana]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white

@@ -44,6 +44,7 @@ class AddRoadWidth(
         )
         and area != yes
         and (!width or source:width ~ ".*estimat.*")
+        and (traffic_calming !~ ${ROAD_NARROWERS.joinToString("|")} or !maxwidth or source:maxwidth ~".*estimat.*")
         and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
         and (access !~ private|no or (foot and foot !~ private|no))
         and foot != no

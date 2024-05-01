@@ -1,11 +1,27 @@
 # Changelog
 
+## v57.4
+
+- Fix crash under certain circumstances in bike path overlay (#5604) (regression from #5596)
+
+## v57.3
+
+- Fix UNDO: It didn't actually do anything for edits that were already synced! This critical issue existed since v57.2 (#5600, #5602)
+- Traffic signals: Improve wording (#5591)
+- Max speed: Show warning when inputting implausible slow zone tempo limit (#5592)
+- Payment methods: Don't ask in shops if they have been specified exhaustively already (#5589), by @urbalazs
+- Railway crossings barriers: Don't ask for abandoned railways (#5597)
+- Bike paths overlay: Fix selecting "not designated as bike path" when it was a "path or trail" wouldn't do anything (#5596)
+
 ## v57.2
 
-- Fix description of Prettymapp (#5570), by @FloEdelmann
+- Lit overlay: Unsupported current tagging is now indicated as such (#5571)
+- Building overlay: Selecting a specific building type for a historic building does now not remove its property as historic (#5547)
+- Fix max width for road narrowing traffic calmings were not answerable if mapped as a way (#5569, #5578), by @mnalis
 - Fix regression in v57.1 that may lead to issues displaying the current GPS location (#5516)
-- Fix for very few map features, the feature name label was (slightly) wrong (#5549)
-- Other small improvements (#5533, #5558, #5559), thanks @matkoniecz, @burrscurr
+- Fix the feature name label was slightly wrong for a few map features (#5549)
+- Fix description of Prettymapp (#5570), by @FloEdelmann
+- Other small improvements (#5533, #5558, #5559, #5525, #5573), thanks @matkoniecz, @burrscurr
 
 ## v57.1
 
