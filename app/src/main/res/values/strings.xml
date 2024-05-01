@@ -126,7 +126,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- when the user left the answer form empty -->
     <string name="no_changes">"You did not give an answer"</string>
 
-    <string name="close">"close"</string>
+    <string name="info">"More information"</string>
     <string name="confirmation_discard_title">"Discard input?"</string>
     <string name="confirmation_discard_positive">"Discard"</string>
     <string name="short_no_answer_on_button">No</string>

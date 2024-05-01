@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.AnyThread
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -29,6 +30,8 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
+import de.westnordost.streetcomplete.view.animateFrom
+import de.westnordost.streetcomplete.view.setImage
 import de.westnordost.streetcomplete.view.setText
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -89,6 +92,8 @@ abstract class AbstractQuestForm :
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
 
+    private var infoIsExpanded: Boolean = false
+
     // overridable by child classes
     open val contentLayoutResId: Int? = null
     open val contentPadding = true
@@ -111,11 +116,44 @@ abstract class AbstractQuestForm :
         return binding.root
     }
 
+    private fun setupInfoArea() {
+        infoIsExpanded = false
+        val hintTextId = questType.hintText
+        val hintImageIds = questType.hintImages
+
+        binding.infoText.isGone = hintTextId == null
+        if (hintTextId != null) {
+            binding.infoText.setText(hintTextId)
+        }
+        binding.infoPictures.isGone = hintImageIds.isEmpty()
+        if (hintImageIds.isNotEmpty()) {
+            for (hintImageId in hintImageIds) {
+                val imageView = ImageView(requireContext())
+                imageView.setImageResource(hintImageId)
+                binding.infoPictures.addView(imageView)
+            }
+        }
+
+        binding.infoButton.isGone = hintTextId == null && hintImageIds.isEmpty()
+        binding.infoButton.setOnClickListener {
+            infoIsExpanded = !infoIsExpanded
+
+            binding.infoButton.setImageResource(
+                if (infoIsExpanded) R.drawable.ic_info_filled_24dp
+                else R.drawable.ic_info_outline_24dp
+            )
+            binding.infoButton.isActivated = infoIsExpanded
+
+            binding.infoArea.isGone = !infoIsExpanded
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setTitle(resources.getString(questType.title))
         setTitleHintLabel(null)
+        setupInfoArea()
 
         binding.okButton.setOnClickListener {
             if (!isFormComplete()) {
