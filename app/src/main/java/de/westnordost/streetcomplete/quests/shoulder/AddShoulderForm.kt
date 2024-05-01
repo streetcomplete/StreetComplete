@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.shoulder
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.util.ktx.shoulderLineStyleResId
@@ -13,6 +12,15 @@ import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
 import de.westnordost.streetcomplete.view.image_select.Item
 
 class AddShoulderForm : AStreetSideSelectForm<Boolean, ShoulderSides>() {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // we have actually two hints, so we concatenate them here...
+        setHint(
+            resources.getString(R.string.quest_shoulder_explanation2) + "\n" +
+            resources.getString(R.string.quest_street_side_puzzle_tutorial)
+        )
+    }
 
     override fun onClickSide(isRight: Boolean) {
         val items = listOf(false, true).map { it.asItem() }
