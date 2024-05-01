@@ -102,13 +102,19 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.Body"/>
 
-                    <LinearLayout
-                        android:id="@+id/infoPictures"
+                    <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:showDividers="middle"
-                        android:divider="@drawable/space_8dp" />
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/infoPictures"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:showDividers="middle"
+                            android:divider="@drawable/space_8dp" />
+
+                    </HorizontalScrollView>
 
                 </LinearLayout>
 
