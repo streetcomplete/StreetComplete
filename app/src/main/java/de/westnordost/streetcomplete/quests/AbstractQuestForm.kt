@@ -59,7 +59,6 @@ abstract class AbstractQuestForm :
     override val bottomSheetTitle get() = binding.speechBubbleTitleContainer
     override val bottomSheetContent get() = binding.speechbubbleContentContainer
     override val floatingBottomView get() = binding.okButtonContainer
-    override val backButton get() = binding.closeButton
     protected val scrollView: NestedScrollView get() = binding.scrollView
 
     private var startedOnce = false
