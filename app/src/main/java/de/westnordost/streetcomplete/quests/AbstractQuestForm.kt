@@ -131,16 +131,8 @@ abstract class AbstractQuestForm :
         }
 
         infoIsExpanded = false
-        binding.infoButton.setOnClickListener {
-            infoIsExpanded = !infoIsExpanded
-
-            binding.infoButton.setImageResource(
-                if (infoIsExpanded) R.drawable.ic_info_filled_24dp
-                else R.drawable.ic_info_outline_24dp
-            )
-            binding.infoButton.isActivated = infoIsExpanded
-            binding.infoArea.isGone = !infoIsExpanded
-        }
+        binding.infoButton.setOnClickListener { toggleInfoArea() }
+        binding.infoArea.setOnClickListener { toggleInfoArea() }
 
         // no content? -> hide the content container
         if (binding.content.childCount == 0) {
@@ -183,9 +175,20 @@ abstract class AbstractQuestForm :
         for (image in images) {
             val imageView = ImageView(requireContext())
             imageView.setImageDrawable(image)
+            imageView.scaleType
             binding.infoPictures.addView(imageView)
         }
         updateInfoButtonVisibility()
+    }
+
+    private fun toggleInfoArea() {
+        infoIsExpanded = !infoIsExpanded
+        binding.infoButton.setImageResource(
+            if (infoIsExpanded) R.drawable.ic_info_filled_24dp
+            else R.drawable.ic_info_outline_24dp
+        )
+        binding.infoButton.isActivated = infoIsExpanded
+        binding.infoArea.isGone = !infoIsExpanded
     }
 
     private fun updateInfoButtonVisibility() {
