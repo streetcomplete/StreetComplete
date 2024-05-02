@@ -814,6 +814,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
+    <string name="quest_buildingLevels_hint">"For buildings on a slope, the level count starts from the ground level of the lowest side.
+
+A level counts as a roof level when its windows are in the roof. Subsequently, roofs with zero roof levels are not necessarily flat, just not tall enough for an entire level.
+    "</string>
 
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
