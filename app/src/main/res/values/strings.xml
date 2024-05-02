@@ -642,8 +642,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road here?</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. If there is a sidewalk but it is displayed as a separate way, please answer “sidewalk”.</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without sidewalk here?</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">It is forbidden.</string>
+    <string name="quest_accessible_for_pedestrians_allowed">it is allowed.</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">Actually, there is a sidewalk, but it is displayed separately on the map.</string>
 
     <string name="quest_address_title">"What’s the house number of this building?"</string>
     <string name="quest_address_house_number_label">House number:</string>
