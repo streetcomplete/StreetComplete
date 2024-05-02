@@ -43,8 +43,10 @@ fun parseSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
 
     if (bicycle in yesButNotDesignated && foot != "designated") return PATH
 
-    if (bicycle != "designated") return NON_DESIGNATED_ON_FOOTWAY
+    // highway=path and foot=no should be treated as PATH
+    if (tags["highway"] == "path" && foot == "no") return PATH
 
+    if (bicycle != "designated") return NON_DESIGNATED_ON_FOOTWAY
     val hasSidewalk = parseSidewalkSides(tags)?.any { it == Sidewalk.YES } == true || tags["sidewalk"] == "yes"
     if (hasSidewalk) return EXCLUSIVE_WITH_SIDEWALK
 

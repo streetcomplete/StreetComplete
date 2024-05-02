@@ -17,9 +17,6 @@ fun SeparateCycleway.applyTo(tags: Tags) {
         PATH -> {
             tags["highway"] = "path"
 
-            if (tags.containsKey("bicycle") && (tags["bicycle"] == "yes" || tags["bicycle"] == "no")) {
-                tags.remove("bicycle")
-            }
             // only re-tag to "yes" if defined and not some kind of "yes" value
             if (tags.containsKey("foot") && tags["foot"] !in yesButNotDesignated) {
                 tags["foot"] = "yes"
@@ -46,6 +43,8 @@ fun SeparateCycleway.applyTo(tags: Tags) {
 
             if (this == ALLOWED_ON_FOOTWAY) {
                 if (tags["bicycle"] !in yesButNotDesignated) tags["bicycle"] = "yes"
+                // add bicycle:signed=yes if not already present
+                tags["bicycle:signed"] = "yes"
             } else {
                 if (tags["bicycle"] == "designated") tags.remove("bicycle")
             }
