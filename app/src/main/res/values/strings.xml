@@ -58,7 +58,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
     <string name="map_btn_create_note">Create new note</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
-    <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>
+    <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map.</string>
     <string name="create_new_note_hint">Ideally, write the note in the local language, or otherwise in English.</string>
 
     <string name="map_btn_create_track">Create new track recording</string>
