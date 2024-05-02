@@ -31,7 +31,11 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
     override val achievements = listOf(BLIND)
 
     override val hint = R.string.quest_generic_looks_like_this
-    override val hintImages = listOf(R.drawable.tactile_paving_illustration)
+    override val hintImages = listOf(
+        R.drawable.tactile_paving1,
+        R.drawable.tactile_paving2,
+        R.drawable.tactile_paving3
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tactile_paving_kerb_title
 
