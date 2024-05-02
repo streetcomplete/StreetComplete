@@ -179,13 +179,13 @@ fun getSelectableCycleways(
 ): List<CyclewayAndDirection> {
     val dir = direction?.takeUnless { it == BOTH } ?: Direction.getDefault(isRightSide, isLeftHandTraffic)
     val cycleways = mutableListOf(
+        NONE,
         TRACK,
         EXCLUSIVE_LANE,
         ADVISORY_LANE,
         UNSPECIFIED_LANE,
         SUGGESTION_LANE,
         SEPARATE,
-        NONE,
         PICTOGRAMS,
         BUSWAY,
         SIDEWALK_EXPLICIT,
