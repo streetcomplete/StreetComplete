@@ -113,7 +113,6 @@ enum class Cycleway {
     /** cyclists explicitly ought to share the sidewalk with pedestrians, i.e. the cycle track is
      *  not segregated from the sidewalk */
     SIDEWALK_EXPLICIT,
-    // the following not anymore, see #2276
     // no cycleway, but cyclists are allowed on sidewalk
     SIDEWALK_OK,
 
