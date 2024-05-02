@@ -101,7 +101,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">Are you sure that you can not determine it more specifically?</string>
 
-    <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as its center on the map.</string>
+    <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as on the map at its center pin location. Try rotating the map and you’ll get it.</string>
+
+    <string name="quest_arrow_tutorial">The arrows in the illustration point towards the directions in which the way runs on the map at its center pin location. Try rotating the map and you’ll get it.</string>
+
 
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
