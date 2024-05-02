@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:layout_width="180dp"
     android:padding="6dp"
     android:background="@drawable/image_select_cell_rounded">
 
