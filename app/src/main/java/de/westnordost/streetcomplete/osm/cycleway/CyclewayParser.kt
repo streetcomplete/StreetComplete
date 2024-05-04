@@ -94,7 +94,7 @@ private fun parseCyclewayForSide(
     val cycleway = tags[cyclewayKey]
     val cyclewayLane = tags["$cyclewayKey:lane"]
     val isSegregated = tags["$cyclewayKey:segregated"] != "no"
-    val isCyclingOkOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "yes" || tags["sidewalk:both:bicycle"] == "yes"
+    val isCyclingOkOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "yes"
 
     val result = when (cycleway) {
         "lane", "opposite_lane" -> {
@@ -189,6 +189,8 @@ private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, Stri
     result.expandSidesTags("cycleway", "lane", true)
     result.expandSidesTags("cycleway", "oneway", true)
     result.expandSidesTags("cycleway", "segregated", true)
+    result.expandSidesTags("sidewalk", "bicycle", true)
+    result.expandSidesTags("sidewalk", "bicycle:signed", true)
     return result
 }
 
