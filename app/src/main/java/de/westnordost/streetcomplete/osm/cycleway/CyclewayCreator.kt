@@ -197,7 +197,7 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
         tags.remove("$cyclewayKey:segregated")
     }
     // no matter what option was chosen, if it's not SIDEWAY_OK, remove that cycling is signed and ok on sidewalk if it's there
-    if (cycleway != SIDEWALK_OK && tags.containsKey("sidewalk:$side:bicycle") && tags["sidewalk:$side:bicycle"] == "yes" && tags.containsKey("sidewalk:$side:bicycle:signed")) {
+    if (cycleway != SIDEWALK_OK && tags["sidewalk:$side:bicycle"] == "yes" && tags["sidewalk:$side:bicycle:signed"] == "yes") {
         tags.remove("sidewalk:$side:bicycle")
         tags.remove("sidewalk:$side:bicycle:signed")
     }
