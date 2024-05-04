@@ -41,6 +41,8 @@ fun AchievementsScreen(viewModel: AchievementsViewModel) {
         }
     }
 
+    // TODO Compose: revisit animate-from-icon when androidx.compose.animation 1.7 is stable
+    // https://developer.android.com/develop/ui/compose/animation/shared-elements
     showAchievement.value?.let { (achievement, level) ->
         AchievementDialog(
             achievement, level,
