@@ -1661,6 +1661,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="bicycle_boulevard_is_not_a">It’s not a %1$s</string>
     <string name="bicycle_boulevard">Bicycle boulevard</string>
     <string name="separate_cycleway_no">No cycling</string>
+    <string name="separate_cycleway_no_signed">A sign prohibits cycling</string>
     <string name="separate_cycleway_footway_allowed_sign">Footway, but a sign allows cycling</string>
     <!-- highway=path / foot=yes + bicycle=yes -->
     <string name="separate_cycleway_path">Path or trail</string>

@@ -9,7 +9,7 @@ fun SeparateCycleway.asItem(isLeftHandTraffic: Boolean) =
 
 private val SeparateCycleway.titleResId: Int get() = when (this) {
     PATH ->               R.string.separate_cycleway_path
-    NOT_ALLOWED ->        R.string.separate_cycleway_no
+    NOT_ALLOWED ->        R.string.separate_cycleway_no_signed
     ALLOWED_ON_FOOTWAY -> R.string.separate_cycleway_footway_allowed_sign
     NON_DESIGNATED_ON_FOOTWAY -> R.string.separate_cycleway_no_or_allowed
     NON_SEGREGATED ->     R.string.separate_cycleway_non_segregated

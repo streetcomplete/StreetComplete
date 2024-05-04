@@ -36,6 +36,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             if (tags["foot"] == "no") {
                 tags["foot"] = "yes"
             }
+            tags["bicycle:signed"] = "yes"
         }
         ALLOWED_ON_FOOTWAY, NON_DESIGNATED_ON_FOOTWAY -> {
             tags["highway"] = "footway"
