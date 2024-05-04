@@ -48,6 +48,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
                 tags["bicycle:signed"] = "yes"
             } else {
                 if (tags["bicycle"] == "designated") tags.remove("bicycle")
+                tags.remove("bicycle:signed")
             }
         }
         NON_SEGREGATED, SEGREGATED -> {
