@@ -49,23 +49,22 @@ This software is released under the terms of the [GNU General Public License](ht
 
 ## Sponsors
 
-<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="100"/> <img src=".github/images/logo_ngi0.svg" height="100"/></a><br/>
-<a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a grant program organized by the NLnet foundation which sponsored the development on this app in three individual grants:<br/>
-Grants given to Mateusz Konieczny in <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a> enabled him to work on StreetComplete for about one year in total.
-Furthermore, yet another grant from <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a> enabled Tobias Zwick to work on the app for about 4-5 months!<br/>
-<br/>
-
-<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" height="160"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" height="160"/></a><br/>
-The <a href="https://bmbf.de/">German Federal Ministry of Education and Research</a> sponsored Tobias Zwick to work on this project (grant code 01IS20S35) within the frame of round 8 of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a> for about six months in 2020/2021.<br/>
-<br/>
-
 <a href="https://github.com/sponsors/westnordost"><img src=".github/images/logo_github.png" width="58"/></a> <a href="https://liberapay.com/westnordost"><img src=".github/images/logo_liberapay.svg" width="58"/></a> <a href="https://www.patreon.com/westnordost"><img src=".github/images/logo_patreon.png" width="58"/></a><br/>
 Many people are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them ☺️ to support the continued support and maintenance of the app.<br/>
 <br/>
 
-<a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" height="58"/></a><br>
-<a href="https://www.jawg.io">JawgMaps</a> is a provider of online custom maps, geocoding and routing based on OpenStreetMap data. They are providing their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.</td>
+<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="100"/><img src=".github/images/logo_ngi0.svg" height="100"/></a><br/>
+<a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a grant program organized by the NLnet foundation.<br/>
+Grants given to Mateusz Konieczny in <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a> enabled him to work on StreetComplete for about one year in total. Another grant from <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a> enabled Tobias Zwick to work on the app for about 4-5 months as well.<br/>
+<br/>
+
+<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" height="160"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" height="160"/></a><br/>
+The <a href="https://bmbf.de/">German Federal Ministry of Education and Research</a> sponsored Tobias Zwick to work on this project within the framework of the <a href="https://prototypefund.de/">Prototype Fund</a> for about six months in <a href="https://prototypefund.de/en/project/streetcomplete/">2020-2021</a> (grant code 01IS20S35) and again in <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">2024</a>.<br/>
 <br/>
 
 <a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" height="58"/></a><br/>
-The <a href="https://osmfoundation.org/">OpenStreetMap foundation</a> was funding the development of doing <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">map maintenance with StreetComplete</a> (~ 3 weeks) in their <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">first round</a> of the <a href="https://wiki.osmfoundation.org/wiki/Microgrants">microgrant program</a> in 2020.
+The <a href="https://osmfoundation.org/">OpenStreetMap Foundation</a> funded development for about 3 weeks in <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">2020</a> as part of the <a href="https://wiki.osmfoundation.org/wiki/Microgrants">Microgrants program</a>.<br/>
+<br/>
+
+<a href="https://www.jawg.io/"><img src=".github/images/logo_jawgmaps.png" height="58"/></a><br>
+<a href="https://www.jawg.io/">JawgMaps</a> is a provider of online custom maps, geocoding and routing based on OpenStreetMap data. They are providing their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.
