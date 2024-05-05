@@ -58,7 +58,7 @@ Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/proj
 Development on this app was also sponsored in <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021) of the Prototype fund, with focus on collecting more data points and on general improvements of this app.<br/>
 <br/>
 
-<a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" alt="JawgMaps" height="60"/></a><br>
+<a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" alt="JawgMaps" height="58"/></a><br>
 Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.<br/>
 <br/>
 
