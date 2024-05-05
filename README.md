@@ -49,23 +49,28 @@ This software is released under the terms of the [GNU General Public License](ht
 
 ## Sponsors
 
-<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="100"/> <img src=".github/images/logo_ngi0.svg" height="100"/></a><br/>
-<a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a grant program organized by the NLnet foundation which sponsored the development on this app in three individual grants:<br/>
-Grants given to Mateusz Konieczny in <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a> enabled him to work on StreetComplete for about one year in total.
-Furthermore, yet another grant from <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a> enabled Tobias Zwick to work on the app for about 4-5 months!<br/>
+<a href="https://github.com/sponsors/westnordost"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/logo_github_dark.svg"><img alt="GitHub Sponsors" width="80" src=".github/images/logo_github.svg"></picture></a> <a href="https://liberapay.com/westnordost"><img src=".github/images/logo_liberapay.svg" alt="Liberapay" width="80"/></a> <a href="https://www.patreon.com/westnordost"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/logo_patreon_dark.svg"><img alt="Patreon" width="80" src=".github/images/logo_patreon.svg"></picture></a><br/>
+Many users are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them ☺️ to support the continued development and maintenance of the app.<br/>
 <br/>
 
-<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" height="160"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" height="160"/></a><br/>
-The <a href="https://bmbf.de/">German Federal Ministry of Education and Research</a> sponsored Tobias Zwick to work on this project (grant code 01IS20S35) within the frame of round 8 of the <a href="https://prototypefund.de/en/project/streetcomplete/">Prototype Fund</a> for about six months in 2020/2021.<br/>
+<a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="120"/></a><a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="100"/></a><br/>
+Within the frame of <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">round 15</a> of the **Prototype Fund**, the German Federal Ministry of Education and Research currently sponsors Tobias Zwick to work on StreetComplete for iOS<br/>
 <br/>
 
-<a href="https://github.com/sponsors/westnordost"><img src=".github/images/logo_github.png" width="58"/></a> <a href="https://liberapay.com/westnordost"><img src=".github/images/logo_liberapay.svg" width="58"/></a> <a href="https://www.patreon.com/westnordost"><img src=".github/images/logo_patreon.png" width="58"/></a><br/>
-Many people are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them ☺️ to support the continued support and maintenance of the app.<br/>
+## Past Sponsors
+
+<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="80"/></a><br/>
+The **NLnet foundation** sponsored development on this app in three individual grants with funds from the European Commission:<br/>
+**2019, 2021 – 2022** — <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Two</a> <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">grants</a> given to Mateusz Konieczny enabled him to work on various improvements for about one year in total.<br/>
+**2021 – 2022** <a href="https://nlnet.nl/project/StreetComplete-Together/">Another grant</a> enabled Tobias Zwick to work about five months on - most notably - the overlays functionality and measuring with AR.<br/>
+
+<a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="120"/></a><a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="100"/></a><br/>
+**2020-09 to 2021-02** — Within the frame of <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> of the **Prototype Fund**, the German Federal Ministry of Education and Research sponsored development on general improvements and collecting more data points with this app.<br/>
 <br/>
 
-<a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" height="58"/></a><br>
-<a href="https://www.jawg.io">JawgMaps</a> is a provider of online custom maps, geocoding and routing based on OpenStreetMap data. They are providing their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.</td>
+<a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" alt="JawgMaps" height="40"/></a><br>
+**since 2020-07** — **JawgMaps** provides their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.
 <br/>
 
-<a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" height="58"/></a><br/>
-The <a href="https://osmfoundation.org/">OpenStreetMap foundation</a> was funding the development of doing <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">map maintenance with StreetComplete</a> (~ 3 weeks) in their <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">first round</a> of the <a href="https://wiki.osmfoundation.org/wiki/Microgrants">microgrant program</a> in 2020.
+<a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" alt="OpenStreetMap foundation" height="50"/></a><br/>
+**2020-08** — The **OpenStreetMap foundation** funded the <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">microgrant project</a> <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">Map Maintenance with StreetComplete</a>.
