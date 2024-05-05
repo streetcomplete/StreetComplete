@@ -53,20 +53,20 @@ This software is released under the terms of the [GNU General Public License](ht
 Many users are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them ☺️ to support the continued development and maintenance of the app.<br/>
 <br/>
 
-<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="120"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="120"/></a><br/>
-Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">round 15</a> (Mar. 2024 to Aug. 2024), the German Federal Ministry of Education and Research currently sponsors Tobias Zwick to work on StreetComplete for iOS.<br/>
+<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="140"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="140"/></a><br/>
+Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">round 15</a> (March 2024 to August 2024), the German Federal Ministry of Education and Research currently sponsors Tobias Zwick to work on StreetComplete for iOS.<br/>
 <br/>
 
 ## Past Sponsors
 
-<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="80"/></a><br/>
+<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="70"/></a><br/>
 The **NLnet foundation** sponsored development on this app in three individual grants with funds from the European Commission:<br/>
-Grants given to Mateusz Konieczny in <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a> enabled him to work on StreetComplete for about one year in total.<br/>
-Furthermore, yet another grant from <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a> enabled Tobias Zwick to work about five months on - most notably - the overlays functionality and measuring with AR.<br/>
+<a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Two</a> <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">grants</a> given to Mateusz Konieczny in 2019 and 2021 enabled him to work on StreetComplete for about one year in total, with a focus on clearer UI and improvements on data collection.
+Furthermore, <a href="https://nlnet.nl/project/StreetComplete-Together/">yet another grant</a> from enabled Tobias Zwick to work about five months in 2021/2022 on - most notably - the overlays functionality and measuring with AR.<br/>
 <br/>
 
 <a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="90"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="90"/></a><br/>
-Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (Sep. 2020 to Feb. 2021), the German Federal Ministry of Education and Research sponsored development on general improvements and collecting more data points with this app.<br/>
+Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021), the German Federal Ministry of Education and Research sponsored development on general improvements on and collecting more data points with this app.<br/>
 <br/>
 
 <a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" alt="JawgMaps" height="40"/></a><br>
