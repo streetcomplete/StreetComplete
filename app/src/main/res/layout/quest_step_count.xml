@@ -1,51 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:showDividers="middle"
-    android:divider="@drawable/space_8dp">
+    android:gravity="bottom">
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/x_large_input"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/countMultiplierLabel"
+        android:minEms="1"
+        android:id="@+id/countInput"
+        android:inputType="number"
+        android:maxLines="1"
+        />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/countMultiplierLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/descriptionLabel"/>
+        android:textSize="@dimen/x_large_input"
+        android:layout_centerInParent="true"
+        android:padding="6dp"
+        android:text=" × "
+        tools:ignore="HardcodedText"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="bottom">
-
-        <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="@dimen/x_large_input"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/countMultiplierLabel"
-            android:minEms="1"
-            android:id="@+id/countInput"
-            android:inputType="number"
-            android:maxLines="1"
-            />
-
-        <TextView
-            android:id="@+id/countMultiplierLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/x_large_input"
-            android:layout_centerInParent="true"
-            android:padding="6dp"
-            android:text=" × "
-            tools:ignore="HardcodedText"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/countMultiplierLabel"
-            android:id="@+id/capacityBikeImage"
-            android:background="@drawable/ic_step"/>
-    </RelativeLayout>
-</LinearLayout>
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/countMultiplierLabel"
+        android:id="@+id/capacityBikeImage"
+        android:background="@drawable/ic_step"/>
+</RelativeLayout>

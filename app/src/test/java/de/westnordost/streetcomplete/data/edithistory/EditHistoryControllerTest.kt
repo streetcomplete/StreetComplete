@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.edit

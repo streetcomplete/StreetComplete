@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.asItem
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
+import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
 
@@ -41,7 +42,7 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
             prefs,
             key = javaClass.simpleName,
             serialize = { it.value!!.name },
-            deserialize = { SeparateCycleway.valueOf(it).asItem(countryInfo.isLeftHandTraffic) }
+            deserialize = { valueOfOrNull<SeparateCycleway>(it)?.asItem(countryInfo.isLeftHandTraffic) }
         )
     }
 

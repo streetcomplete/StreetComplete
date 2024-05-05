@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
 
@@ -48,7 +49,7 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
             prefs,
             key = javaClass.simpleName,
             serialize = { it.value!!.name },
-            deserialize = { LitStatus.valueOf(it).asItem() }
+            deserialize = { valueOfOrNull<LitStatus>(it)?.asItem() }
         )
     }
 

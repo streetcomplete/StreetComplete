@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.setImage
 import org.koin.android.ext.android.inject
 
@@ -79,7 +80,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             prefs,
             key = javaClass.simpleName,
             serialize = { it.name },
-            deserialize = { Surface.valueOf(it) }
+            deserialize = { valueOfOrNull<Surface>(it) }
         )
     }
 

@@ -35,12 +35,14 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override val achievements = listOf(VEG, CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
+    override val hint = R.string.quest_dietType_explanation_vegan
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_vegan_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
-    override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegan)
+    override fun createForm() = AddDietTypeForm()
 
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

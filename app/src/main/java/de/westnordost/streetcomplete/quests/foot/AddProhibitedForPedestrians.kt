@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.IS_LIVING_STREET
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 
@@ -63,7 +62,6 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
                 tags.remove("sidewalk:left")
                 tags.remove("sidewalk:right")
             }
-            IS_LIVING_STREET -> tags["highway"] = "living_street"
         }
     }
 }

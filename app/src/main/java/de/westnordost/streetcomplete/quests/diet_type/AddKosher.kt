@@ -31,12 +31,14 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside_regional_warning
 
+    override val hint = R.string.quest_dietType_explanation_kosher
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_kosher_name_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
 
-    override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_kosher)
+    override fun createForm() = AddDietTypeForm()
 
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

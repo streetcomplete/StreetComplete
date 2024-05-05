@@ -12,6 +12,12 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
  *  Most QuestType inherit from [OsmElementQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType] */
 interface QuestType : EditType {
 
+    /** Hint text to be shown when the user taps on the ℹ️ button */
+    val hint: Int? get() = null
+
+    /** Hint pictures to be shown when the user taps on the ℹ️ button */
+    val hintImages: List<Int> get() = emptyList()
+
     /** the string resource id that explains why this quest is disabled by default or zero if it is
      *  not disabled by default.
      *

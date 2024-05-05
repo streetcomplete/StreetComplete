@@ -20,6 +20,8 @@ class AddStepsIncline : OsmFilterQuestType<Incline>() {
     override val icon = R.drawable.ic_quest_steps
     override val achievements = listOf(PEDESTRIAN)
 
+    override val hint = R.string.quest_arrow_tutorial
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_incline_title
 
     override fun createForm() = AddInclineForm()
