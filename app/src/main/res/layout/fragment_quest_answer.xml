@@ -31,51 +31,92 @@
 
             <LinearLayout
                 android:id="@+id/speechBubbleTitleContainer"
+                android:background="@drawable/speech_bubble_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/speech_bubble_top"
-                android:orientation="horizontal"
-                android:layoutDirection="locale"
+                android:orientation="vertical"
                 android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
                 android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
                 android:layout_marginBottom="4dp"
+                android:showDividers="middle"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:paddingTop="40dp"
+                android:paddingBottom="16dp"
+                android:divider="@drawable/space_16dp"
                 android:elevation="@dimen/speech_bubble_elevation">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="8dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layoutDirection="locale">
 
-                    <TextView
-                        android:id="@+id/titleLabel"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.Title"/>
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/titleHintLabel"
-                        android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/titleLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Title"/>
+
+                        <TextView
+                            android:id="@+id/titleHintLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.Title.Hint"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/infoButton"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.Title.Hint"
-                        android:visibility="gone"/>
+                        app:srcCompat = "@drawable/ic_info_outline_24dp"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        app:tint="@color/activated_tint"
+                        android:visibility="visible"
+                        android:contentDescription="@string/info"
+                        android:padding="12dp"/>
 
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/closeButton"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/infoArea"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="center"
-                    app:srcCompat = "@drawable/ic_close_24dp"
-                    android:background="?android:attr/actionBarItemBackground"
+                    android:orientation="vertical"
                     android:visibility="gone"
-                    android:contentDescription="@string/close"
-                    android:padding="16dp"/>
+                    android:showDividers="middle"
+                    android:divider="@drawable/space_8dp">
+
+                    <TextView
+                        android:id="@+id/infoText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Body"/>
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/infoPictures"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:showDividers="middle"
+                            android:divider="@drawable/space_8dp" />
+
+                    </HorizontalScrollView>
+
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -46,6 +46,8 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
         return null
     }
 
+    override val hint = R.string.quest_arrow_tutorial
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_incline_title
 
     override fun createForm() = AddBicycleInclineForm()

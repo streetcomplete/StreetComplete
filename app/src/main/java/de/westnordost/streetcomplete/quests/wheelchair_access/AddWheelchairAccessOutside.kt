@@ -21,9 +21,11 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
     override val icon = R.drawable.ic_quest_toilets_wheelchair
     override val achievements = listOf(RARE, WHEELCHAIR)
 
+    override val hint = R.string.quest_wheelchairAccess_limited_description_outside
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
-    override fun createForm() = AddWheelchairAccessOutsideForm()
+    override fun createForm() = WheelchairAccessForm()
 
     override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("wheelchair", answer.osmValue)

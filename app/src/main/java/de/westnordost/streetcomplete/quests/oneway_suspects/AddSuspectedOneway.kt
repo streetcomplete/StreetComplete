@@ -41,6 +41,8 @@ class AddSuspectedOneway(
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 
+    override val hint = R.string.quest_arrow_tutorial
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {

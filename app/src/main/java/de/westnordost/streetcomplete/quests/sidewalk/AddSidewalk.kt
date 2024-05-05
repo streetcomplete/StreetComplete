@@ -34,6 +34,8 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
               and access !~ no|private
         """)
 
+    override val hint = R.string.quest_street_side_puzzle_tutorial
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

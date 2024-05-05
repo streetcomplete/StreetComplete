@@ -51,7 +51,6 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override val bottomSheetTitle get() = bottomSheetBinding.speechBubbleTitleContainer
     override val bottomSheetContent get() = bottomSheetBinding.speechbubbleContentContainer
     override val floatingBottomView get() = bottomSheetBinding.okButton
-    override val backButton get() = bottomSheetBinding.closeButton
     override val okButton get() = bottomSheetBinding.okButton
     override val okButtonContainer get() = bottomSheetBinding.okButtonContainer
 
