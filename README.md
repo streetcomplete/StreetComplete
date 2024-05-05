@@ -55,6 +55,11 @@ Many users are currently supporting this app through <a href="https://github.com
 
 <a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="140"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="140"/></a><br/>
 Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">round 15</a> (March 2024 to August 2024), the German Federal Ministry of Education and Research currently sponsors Tobias Zwick to work on StreetComplete for iOS.<br/>
+Development on this app was also sponsored in <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021) of the Prototype fund, with focus on collecting more data points and on general improvements of this app.<br/>
+<br/>
+
+<a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" alt="JawgMaps" height="60"/></a><br>
+Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.<br/>
 <br/>
 
 ## Past Sponsors
@@ -63,14 +68,6 @@ Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/proj
 The **NLnet foundation** sponsored development on this app in three individual grants with funds from the European Commission:<br/>
 <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Two</a> <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">grants</a> given to Mateusz Konieczny in 2019 and 2021 enabled him to work on StreetComplete for about one year in total, with a focus on clearer UI and improvements on data collection.
 Furthermore, <a href="https://nlnet.nl/project/StreetComplete-Together/">yet another grant</a> enabled Tobias Zwick to work about five months in 2021/2022 on - most notably - the overlays functionality and measuring with AR.<br/>
-<br/>
-
-<a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="90"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="90"/></a><br/>
-Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021), the German Federal Ministry of Education and Research sponsored development on general improvements on and collecting more data points with this app.<br/>
-<br/>
-
-<a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" alt="JawgMaps" height="40"/></a><br>
-Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.<br/>
 <br/>
 
 <a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" alt="OpenStreetMap foundation" height="50"/></a><br/>
