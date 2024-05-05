@@ -62,7 +62,7 @@ Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/proj
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="70"/></a><br/>
 The **NLnet foundation** sponsored development on this app in three individual grants with funds from the European Commission:<br/>
 <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Two</a> <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">grants</a> given to Mateusz Konieczny in 2019 and 2021 enabled him to work on StreetComplete for about one year in total, with a focus on clearer UI and improvements on data collection.
-Furthermore, <a href="https://nlnet.nl/project/StreetComplete-Together/">yet another grant</a> from enabled Tobias Zwick to work about five months in 2021/2022 on - most notably - the overlays functionality and measuring with AR.<br/>
+Furthermore, <a href="https://nlnet.nl/project/StreetComplete-Together/">yet another grant</a> enabled Tobias Zwick to work about five months in 2021/2022 on - most notably - the overlays functionality and measuring with AR.<br/>
 <br/>
 
 <a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="90"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="90"/></a><br/>
