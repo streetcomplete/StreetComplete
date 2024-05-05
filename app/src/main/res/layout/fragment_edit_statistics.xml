@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
-        android:textAppearance="@style/TextAppearance.Title"
+        android:textAppearance="@style/TextAppearance.TitleLarge"
         android:textColor="@color/hint_text"
         android:gravity="center"
         android:text="@string/quests_empty"/>

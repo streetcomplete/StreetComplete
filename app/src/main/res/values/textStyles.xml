@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance.Headline" parent="TextAppearance.AppCompat.Headline">
+    <style name="TextAppearance.HeadlineSmall" parent="TextAppearance.AppCompat.Headline">
         <item name="android:textSize">24sp</item>
     </style>
     <style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead">
         <item name="android:textSize">15sp</item>
     </style>
     <style name="TextAppearance.BigBody" parent="TextAppearance.Body">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
-    <style name="TextAppearance.Title" parent="TextAppearance.AppCompat.Title">
+    <style name="TextAppearance.TitleLarge" parent="TextAppearance.AppCompat.Title">
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.Title.Hint">
+    <style name="TextAppearance.TitleLarge.Hint">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/hint_text</item>
         <item name="android:textStyle">normal</item>
@@ -30,7 +30,7 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
-    <style name="TextAppearance.Title2" parent="TextAppearance.AppCompat.Title">
+    <style name="TextAppearance.TitleMedium" parent="TextAppearance.AppCompat.Title">
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif-condensed</item>

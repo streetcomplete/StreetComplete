@@ -123,10 +123,6 @@
             android:key="debug.quests"
             android:title="Show Quest Forms" />
 
-        <Preference
-            android:key="debug.links"
-            android:title="Show Achievement Links" />
-
     </PreferenceCategory>
 
 </PreferenceScreen>

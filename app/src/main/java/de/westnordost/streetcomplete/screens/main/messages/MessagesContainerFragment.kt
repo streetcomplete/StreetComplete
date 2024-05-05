@@ -1,6 +1,11 @@
 package de.westnordost.streetcomplete.screens.main.messages
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
@@ -10,15 +15,33 @@ import de.westnordost.streetcomplete.data.messages.OsmUnreadMessagesMessage
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
 import de.westnordost.streetcomplete.screens.about.WhatsNewDialog
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
-import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
+import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
+import de.westnordost.streetcomplete.ui.util.composableContent
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /** A fragment that contains any fragments that would show messages.
  *  Usually, messages are shown as dialogs, however there is currently one exception which
  *  makes this necessary as a fragment */
-class MessagesContainerFragment : Fragment(R.layout.fragment_messages_container) {
+class MessagesContainerFragment : Fragment() {
+
+    private val shownMessage = MutableStateFlow<Message?>(null)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = composableContent {
+        val message by shownMessage.collectAsState()
+
+        val msg = message
+        if (msg is NewAchievementMessage) {
+            AchievementDialog(
+                msg.achievement,
+                msg.level,
+                onDismissRequest = { shownMessage.value = null }
+            )
+        }
+    }
 
     fun showMessage(message: Message) {
         val ctx = context ?: return
+        shownMessage.value = message
         when (message) {
             is OsmUnreadMessagesMessage -> {
                 OsmUnreadMessagesFragment
@@ -30,8 +53,7 @@ class MessagesContainerFragment : Fragment(R.layout.fragment_messages_container)
                     .show()
             }
             is NewAchievementMessage -> {
-                val f: Fragment = childFragmentManager.findFragmentById(R.id.achievement_info_fragment)!!
-                (f as AchievementInfoFragment).showNew(message.achievement, message.level)
+                shownMessage.value = message
             }
             is QuestSelectionHintMessage -> {
                 AlertDialog.Builder(ctx)

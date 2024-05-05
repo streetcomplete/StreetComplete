@@ -16,13 +16,6 @@
         android:layout_alignParentBottom="true"/>
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment"
-        android:id="@+id/achievementDetailsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:visibility="gone" />
-
-    <androidx.fragment.app.FragmentContainerView
         android:name="de.westnordost.streetcomplete.screens.user.statistics.EditTypeInfoFragment"
         android:id="@+id/editTypeDetailsFragment"
         android:layout_width="match_parent"

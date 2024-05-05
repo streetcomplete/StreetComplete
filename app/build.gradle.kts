@@ -5,7 +5,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.23"
 }
 
 android {
@@ -52,6 +52,7 @@ android {
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
         }
         getByName("debug") {
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
             buildConfigField("boolean", "IS_GOOGLE_PLAY", "false")
@@ -65,6 +66,11 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.12"
     }
 
     bundle {
@@ -140,7 +146,18 @@ dependencies {
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
+    // Jetpack Compose
+    val composeBom = platform("androidx.compose:compose-bom:2024.04.01")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+    implementation("androidx.compose.material:material")
+    // Jetpack Compose Previews
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+
+
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     // photos
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 

@@ -8,11 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.EditType
-import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.screens.FragmentContainerActivity
 import de.westnordost.streetcomplete.screens.HasTitle
-import de.westnordost.streetcomplete.screens.user.achievements.AchievementInfoFragment
-import de.westnordost.streetcomplete.screens.user.achievements.AchievementsFragment
 import de.westnordost.streetcomplete.screens.user.login.LoginFragment
 import de.westnordost.streetcomplete.screens.user.statistics.CountryInfoFragment
 import de.westnordost.streetcomplete.screens.user.statistics.EditStatisticsFragment
@@ -24,11 +21,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *  This activity coordinates quite a number of fragments, which all call back to this one. In order
  *  of appearance:
  *  The LoginFragment, the UserFragment (which contains the viewpager with more
- *  fragments) and the "fake" dialogs AchievementInfoFragment and QuestTypeInfoFragment.
+ *  fragments) and the "fake" dialog QuestTypeInfoFragment.
  * */
 class UserActivity :
     FragmentContainerActivity(R.layout.activity_user),
-    AchievementsFragment.Listener,
     EditStatisticsFragment.Listener {
 
     private val viewModel by viewModel<UserViewModel>()
@@ -38,9 +34,6 @@ class UserActivity :
 
     private val editTypeDetailsFragment get() =
         supportFragmentManager.findFragmentById(R.id.editTypeDetailsFragment) as EditTypeInfoFragment?
-
-    private val achievementDetailsFragment get() =
-        supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment?
 
     private val fragmentLifecycleCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
         override fun onFragmentStarted(fragmentManager: FragmentManager, fragment: Fragment) {
@@ -84,12 +77,6 @@ class UserActivity :
         } else {
             super.onOptionsItemSelected(item)
         }
-    }
-
-    /* ---------------------------- AchievementsFragment.Listener ------------------------------- */
-
-    override fun onClickedAchievement(achievement: Achievement, level: Int, achievementBubbleView: View) {
-        achievementDetailsFragment?.show(achievement, level, achievementBubbleView)
     }
 
     /* --------------------------- QuestStatisticsFragment.Listener ----------------------------- */

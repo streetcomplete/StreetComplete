@@ -63,13 +63,13 @@
                             android:id="@+id/titleLabel"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.Title"/>
+                            android:textAppearance="@style/TextAppearance.TitleLarge"/>
 
                         <TextView
                             android:id="@+id/titleHintLabel"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.Title.Hint"
+                            android:textAppearance="@style/TextAppearance.TitleLarge.Hint"
                             android:visibility="gone"/>
 
                     </LinearLayout>
