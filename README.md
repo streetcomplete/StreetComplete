@@ -64,11 +64,11 @@ Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetCo
 
 ## Past Sponsors
 
-<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="70"/></a><br/>
+<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="100"/></a><br/>
 The **NLnet foundation** sponsored development on this app in three individual grants with funds from the European Commission:<br/>
 <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Two</a> <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">grants</a> given to Mateusz Konieczny in 2019 and 2021 enabled him to work on StreetComplete for about one year in total, with a focus on clearer UI and improvements on data collection.
 Furthermore, <a href="https://nlnet.nl/project/StreetComplete-Together/">yet another grant</a> enabled Tobias Zwick to work about five months in 2021/2022 on - most notably - the overlays functionality and measuring with AR.<br/>
 <br/>
 
-<a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" alt="OpenStreetMap foundation" height="50"/></a><br/>
+<a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" alt="OpenStreetMap foundation" height="70"/></a><br/>
 In August 2020, the **OpenStreetMap foundation** funded the development of <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">Map Maintenance with StreetComplete</a> within the frame of the <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">microgrants program</a>.<br/>
