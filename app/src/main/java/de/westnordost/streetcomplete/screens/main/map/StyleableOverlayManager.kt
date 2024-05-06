@@ -195,10 +195,19 @@ class StyleableOverlayManager(
                     }
                 }
             }
+            // elements that are either newly displayed or whose appearance was updated
             styledElementsByKey.forEach { (key, styledElement) ->
+                val oldStyledElement = mapDataInView[key]
                 mapDataInView[key] = styledElement
-                if (!changedAnything && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
-                    changedAnything = true
+                if (!changedAnything) {
+                    // performance optimization: only update geojson if either the geometry of the
+                    // previous element or the current element are within the current view
+                    if (
+                        styledElement.geometry.getBounds().intersect(displayedBBox) ||
+                        oldStyledElement?.geometry?.getBounds()?.intersect(displayedBBox) == true
+                    ) {
+                        changedAnything = true
+                    }
                 }
             }
 
