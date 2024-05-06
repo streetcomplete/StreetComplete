@@ -44,16 +44,10 @@ class PinsMapComponent(private val map: MapLibreMap) {
     )
 
     /** Shows/hides the pins */
-    var isVisible: Boolean
-        @UiThread get() = layers.first().visibility.value != Property.NONE
-        @UiThread set(value) {
-            if (isVisible == value) return
-            if (value) {
-                layers.forEach { it.setProperties(visibility(Property.VISIBLE)) }
-            } else {
-                layers.forEach { it.setProperties(visibility(Property.NONE)) }
-            }
-        }
+    @UiThread fun setVisible(value: Boolean) {
+        val visibility = if (value) Property.VISIBLE else Property.NONE
+        layers.forEach { it.setProperties(visibility(visibility)) }
+    }
 
     fun getProperties(properties: JsonObject): Map<String, String> =
         properties.getProperties()

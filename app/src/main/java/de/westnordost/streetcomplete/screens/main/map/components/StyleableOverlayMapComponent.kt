@@ -189,17 +189,10 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
     )
 
     /** Shows/hides the map data */
-    var isVisible: Boolean
-        // add / remove source
-        @UiThread get() = layers.first().visibility.value != Property.NONE
-        @UiThread set(value) {
-            if (isVisible == value) return
-            if (value) {
-                layers.forEach { it.setProperties(visibility(Property.VISIBLE)) }
-            } else {
-                layers.forEach { it.setProperties(visibility(Property.NONE)) }
-            }
-        }
+    @UiThread fun setVisible(value: Boolean) {
+        val visibility = if (value) Property.VISIBLE else Property.NONE
+        layers.forEach { it.setProperties(visibility(visibility)) }
+    }
 
     init {
         overlaySource.isVolatile = true

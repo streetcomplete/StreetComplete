@@ -470,11 +470,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     fun hideNonHighlightedPins(questKey: QuestKey? = null) {
-        pinsMapComponent?.isVisible = false
+        pinsMapComponent?.setVisible(false)
     }
 
     fun hideOverlay() {
-        styleableOverlayMapComponent?.isVisible = false
+        styleableOverlayMapComponent?.setVisible(false)
     }
 
     fun highlightGeometry(geometry: ElementGeometry) {
@@ -483,8 +483,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     /** Clear all highlighting */
     fun clearHighlighting() {
-        pinsMapComponent?.isVisible = true
-        styleableOverlayMapComponent?.isVisible = true
+        pinsMapComponent?.setVisible(true)
+        styleableOverlayMapComponent?.setVisible(true)
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
         selectedPinsMapComponent?.clear()
