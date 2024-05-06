@@ -87,7 +87,7 @@ fun DatesActiveTable(
             }
             if (horizontalCells < 1) return@Canvas
             // grid + months
-            for (i in 0 ..< datesActiveRange) {
+            for (i in 0..<datesActiveRange) {
                 val time = systemTimeNow().minus(i, DateTimeUnit.DAY, TimeZone.UTC)
                 val date = time.toLocalDateTime(TimeZone.UTC).date
 

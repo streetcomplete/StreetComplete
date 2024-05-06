@@ -135,7 +135,6 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
                 horizontalArrangement = Arrangement.SpaceAround,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-
                 val localStats = biggestSolvedCountCountryStatistics
                 if (localStats?.rank != null) {
                     LocalRankBadge(localStats.rank, localStats.countryCode, getAnimationDelay(delay++))
@@ -194,7 +193,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
 private fun LocalRankBadge(rank: Int, countryCode: String?, delay: Int) {
     LaurelWreathBadge(
         label = getLocalRankText(countryCode),
-        value = "#${rank}",
+        value = "#$rank",
         // 2024-05: rank 850 is about top 50% of users (~20 edits), rank 200 top 5% (~1500 edits)
         //          in Italy, which is the top 5 country in terms of contributions
         progress = getRankProgress(rank, maxProgressAtRank = 200, minProgressAtRank = 850),

@@ -38,7 +38,6 @@ abstract class ProfileViewModel : ViewModel() {
     abstract val biggestSolvedCountCountryStatistics: StateFlow<CountryStatistics?>
     abstract val biggestSolvedCountCurrentWeekCountryStatistics: StateFlow<CountryStatistics?>
 
-
     abstract fun logOutUser()
 }
 
@@ -67,7 +66,6 @@ class ProfileViewModelImpl(
     override val rankCurrentWeek = MutableStateFlow(-1)
     override val biggestSolvedCountCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
     override val biggestSolvedCountCurrentWeekCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
-
 
     override fun logOutUser() {
         launch { userLoginStatusController.logOut() }

@@ -120,7 +120,7 @@ Some quests are entirely defined in a single file, some have additional answer c
 
 For example, lets imagine that new quest will ask whether an [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoors or outdoors. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
 
-So, as the first step: lets copy [`app/src/main/java/de/streetcomplete/StreetComplete/quests/bike_parking_cover/`](app/src/main/java/de/streetcomplete/StreetComplete/quests/bike_parking_cover) folder into `app/src/main/java/de/streetcomplete/StreetComplete/quests/defibrillator/`.
+So, as the first step: lets copy [`app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/`](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover) folder into `app/src/main/java/de/westnordost/streetcomplete/quests/defibrillator/`.
 
 This is done in [this commit](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/7d9ad571f521055a4c5a0006743762fd16e4c9d6) in the demonstration repository.
 
@@ -509,7 +509,7 @@ It is possible to check for [age of elements](app/src/main/java/de/westnordost/s
 
 It is possible to share and reuse [information about tagging schemes](app/src/main/java/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L18).
 
-(this info is gathered [here](/app/src/main/java/de/streetcomplete/StreetComplete/data/meta/OsmTaggings.kt))
+(this info is gathered [here](app/src/main/java/de/westnordost/streetcomplete/osm))
 
 Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](app/src/main/java/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
 
@@ -519,9 +519,9 @@ It allows it to make complex geometry checks, but writing them is also far more 
 
 Some quests should be enabled only in some countries or disabled in a specific countries.
 
-[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/streetcomplete/StreetComplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
+[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
 
-[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/streetcomplete/StreetComplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
+[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
 
 ## `defaultDisabledMessage`
 

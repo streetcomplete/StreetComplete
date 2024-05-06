@@ -11,7 +11,7 @@ abstract class UserViewModel : ViewModel() {
 
 class UserViewModelImpl(
     private val userLoginStatusSource: UserLoginStatusSource
-): UserViewModel() {
+) : UserViewModel() {
     override val isLoggedIn = MutableStateFlow(userLoginStatusSource.isLoggedIn)
 
     private val loginStatusListener = object : UserLoginStatusSource.Listener {

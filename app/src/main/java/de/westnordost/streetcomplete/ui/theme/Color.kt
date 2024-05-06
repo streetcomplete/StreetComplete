@@ -6,7 +6,6 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-
 /* Colors as they could be found on (illustrations of) traffic signs. */
 val TrafficRed = Color(0xffc1121c)
 val TrafficBlue = Color(0xff2255bb)
@@ -37,7 +36,6 @@ val White = Color(0xffffffff)
 val GrassGreen = Color(0xff80b158)
 val GrassGray = Color(0xffb1b1b1)
 val LeafGreen = Color(0xff006a00)
-
 
 val LightColors = lightColors(
     primary = Color(0xff4141ba),
