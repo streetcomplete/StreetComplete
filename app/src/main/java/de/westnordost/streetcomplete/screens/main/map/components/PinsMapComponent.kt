@@ -60,8 +60,9 @@ class PinsMapComponent(private val map: MapLibreMap) {
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     @UiThread fun set(pins: Collection<Pin>) {
-        val mapLibreFeatures = pins.sortedBy { it.order }.map { it.toFeature() }
-        pinsSource.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures))
+        val features = pins.sortedBy { it.order }.map { it.toFeature() }
+        val mapLibreFeatures = FeatureCollection.fromFeatures(features)
+        pinsSource.setGeoJson(mapLibreFeatures)
     }
 
     /** Clear pins */

@@ -202,9 +202,10 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
     }
 
     /** Show given map data with each the given style */
-    @UiThread fun set(features: Collection<StyledElement>) {
-        val mapLibreFeatures = features.flatMap { it.toFeatures() }
-        overlaySource.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures))
+    @UiThread fun set(styledElements: Collection<StyledElement>) {
+        val features = styledElements.flatMap { it.toFeatures() }
+        val mapLibreFeatures = FeatureCollection.fromFeatures(features)
+        overlaySource.setGeoJson(mapLibreFeatures)
     }
 
     private fun StyledElement.toFeatures(): List<Feature> {
