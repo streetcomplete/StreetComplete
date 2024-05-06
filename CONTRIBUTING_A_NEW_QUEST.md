@@ -120,7 +120,7 @@ Some quests are entirely defined in a single file, some have additional answer c
 
 For example, lets imagine that new quest will ask whether an [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoors or outdoors. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
 
-So, as the first step: lets copy [`app/src/main/java/de/streetcomplete/StreetComplete/quests/bike_parking_cover/`](app/src/main/java/de/streetcomplete/StreetComplete/quests/bike_parking_cover) folder into `app/src/main/java/de/streetcomplete/StreetComplete/quests/defibrillator/`.
+So, as the first step: lets copy [`app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover/`](app/src/main/java/de/westnordost/streetcomplete/quests/bike_parking_cover) folder into `app/src/main/java/de/streetcomplete/StreetComplete/quests/defibrillator/`.
 
 This is done in [this commit](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/7d9ad571f521055a4c5a0006743762fd16e4c9d6) in the demonstration repository.
 
