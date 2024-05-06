@@ -26,6 +26,7 @@ ktlint_standard_blank-line-between-when-conditions = disabled
 ktlint_standard_chain-wrapping = disabled
 ktlint_standard_function-naming = disabled
 ktlint_standard_function-signature = disabled
+ktlint_standard_if-else-wrapping = disabled
 ktlint_standard_indent = disabled
 ktlint_standard_max-line-length = disabled
 ktlint_standard_multiline-expression-wrapping = disabled
