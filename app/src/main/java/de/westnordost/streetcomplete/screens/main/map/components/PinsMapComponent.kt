@@ -35,6 +35,9 @@ class PinsMapComponent(private val map: MapLibreMap) {
             .withProperties(
                 iconImage(get("icon-image")),
                 iconSize(0.5f),
+                // better would be arrayOf(-5f, 0f, -14f, 5f) or something like that, but setting
+                // different paddings per side is not supported by MapLibre Native yet
+                iconPadding(-4f),
                 iconOffset(listOf(-9f, -69f).toTypedArray()),
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE), // = order in which they were added
             )
