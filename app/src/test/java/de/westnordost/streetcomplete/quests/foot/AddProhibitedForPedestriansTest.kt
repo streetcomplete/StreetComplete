@@ -50,11 +50,4 @@ class AddProhibitedForPedestriansTest {
             ))
         )
     }
-
-    @Test fun `apply living street answer`() {
-        assertEquals(
-            setOf(StringMapEntryModify("highway", "residential", "living_street")),
-            questType.answerAppliedTo(IS_LIVING_STREET, mapOf("highway" to "residential"))
-        )
-    }
 }
