@@ -178,7 +178,7 @@ class StyleableOverlayManager(
 
     private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
         val overlay = overlay ?: return
-        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
+        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
         var changedAnything = false
         mapDataInViewMutex.withLock {
             deleted.forEach {
@@ -187,11 +187,12 @@ class StyleableOverlayManager(
                 }
             }
             val styledElementsByKey = createStyledElementsByKey(overlay, updated).toMap()
-            // for elements that used to be displayed in the overlay but now not anymore
+            // elements that used to be displayed in the overlay but now not anymore
             updated.forEach {
                 if (!styledElementsByKey.containsKey(it.key)) {
-                    mapDataInView.remove(it.key)
-                    changedAnything = true
+                    if (mapDataInView.remove(it.key) != null) {
+                        changedAnything = true
+                    }
                 }
             }
             styledElementsByKey.forEach { (key, styledElement) ->
