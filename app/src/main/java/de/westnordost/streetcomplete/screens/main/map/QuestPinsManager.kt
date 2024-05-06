@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
@@ -25,12 +26,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
@@ -51,6 +50,8 @@ class QuestPinsManager(
     // quests in current view: key -> [pin, ...]
     private val questsInView: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
     private val questsInViewMutex = Mutex()
+
+    private val visibleQuestsSourceMutex = Mutex()
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
@@ -157,45 +158,57 @@ class QuestPinsManager(
     }
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
-        val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
+        /* Imagine you are panning the map fast, many different tiles come into and vanish from view
+           again quickly. Suppose, that fetching the data from DB takes longer than panning through
+           and out of a tile - we would end up with a long queue of DB fetches (and subsequent
+           map updates) of which the data is discarded immediately after because it is out of view
+           again.
+           So, what we do here is to discard each such update except the last one. All jobs started
+           in potentially quick succession have to wait at for the DB fetch to complete and will
+           stop when they have been cancelled in the meantime. The same with if they have been
+           cancelled just after the DB fetch etc. (The coroutine can be cancelled at every place
+           where you see that arrow with that green squiggle in the IDE)
+           */
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
-            val quests = withContext(Dispatchers.IO) {
-                synchronized(visibleQuestsSource) {
-                    if (!coroutineContext.isActive) {
-                        null
-                    } else {
-                        visibleQuestsSource.getAllVisible(bbox)
-                    }
-                }
-            } ?: return@launch
-            setQuestPins(quests)
+            val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
+            setQuestPins(bbox)
         }
     }
 
-    private suspend fun setQuestPins(quests: List<Quest>) {
+    private suspend fun setQuestPins(bbox: BoundingBox) {
+        val quests = visibleQuestsSourceMutex.withLock {
+            withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
+        }
         questsInViewMutex.withLock {
             questsInView.clear()
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
-            if (coroutineContext.isActive) {
-                withContext(Dispatchers.Main) { pinsMapComponent.set(questsInView.values.flatten()) }
-            }
+            val pins = questsInView.values.flatten()
+            withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
         }
     }
 
     private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
-        val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
-        var deletedAny = false
         questsInViewMutex.withLock {
-            addedInView.forEach { questsInView[it.key] = createQuestPins(it) }
-            removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
+            val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
+            var hasChanges = false
 
-            if (deletedAny || addedInView.isNotEmpty()) {
-                if (coroutineContext.isActive) {
-                    withContext(Dispatchers.Main) { pinsMapComponent.set(questsInView.values.flatten()) }
+            removed.forEach {
+                if (questsInView.remove(it) != null) hasChanges = true
+            }
+            added.forEach {
+                if (displayedBBox.contains(it.position)) {
+                    questsInView[it.key] = createQuestPins(it)
+                    hasChanges = true
+                } else {
+                    if (questsInView.remove(it.key) != null) hasChanges = true
                 }
             }
+
+            if (!hasChanges) return
+
+            val pins = questsInView.values.flatten()
+            withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
         }
     }
 
