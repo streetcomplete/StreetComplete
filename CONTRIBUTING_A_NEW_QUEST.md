@@ -509,7 +509,7 @@ It is possible to check for [age of elements](app/src/main/java/de/westnordost/s
 
 It is possible to share and reuse [information about tagging schemes](app/src/main/java/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L18).
 
-(this info is gathered [here](/app/src/main/java/de/westnordost/streetcomplete/osm))
+(this info is gathered [here](app/src/main/java/de/westnordost/streetcomplete/osm))
 
 Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](app/src/main/java/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
 
@@ -519,9 +519,9 @@ It allows it to make complex geometry checks, but writing them is also far more 
 
 Some quests should be enabled only in some countries or disabled in a specific countries.
 
-[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/streetcomplete/StreetComplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
+[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/main/java/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
 
-[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/streetcomplete/StreetComplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
+[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/main/java/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
 
 ## `defaultDisabledMessage`
 
