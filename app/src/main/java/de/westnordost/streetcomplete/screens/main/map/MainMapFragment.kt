@@ -234,14 +234,15 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             downloadedAreaMapComponent?.layers,
             tracksMapComponent?.layers,
             styleableOverlayMapComponent?.layers,
-            geometryMarkersMapComponent?.layers,
-            geometryMapComponent?.layers
         ).flatten()) {
             style.addLayerBelow(layer, firstLabelLayer)
         }
 
         // these are always on top of everything else (including labels)
         for (layer in listOfNotNull(
+            styleableOverlayMapComponent?.labelLayers,
+            geometryMarkersMapComponent?.layers,
+            geometryMapComponent?.layers,
             locationMapComponent?.layers,
             pinsMapComponent?.layers,
             selectedPinsMapComponent?.layers

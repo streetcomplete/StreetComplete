@@ -161,6 +161,9 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 fillExtrusionHeight(get("height")),
                 fillExtrusionBase(get("min-height")),
             ),
+    )
+
+    val labelLayers = listOf(
         SymbolLayer("overlay-symbols", SOURCE)
             .withFilter(all(
                 gte(zoom(), 17f),
