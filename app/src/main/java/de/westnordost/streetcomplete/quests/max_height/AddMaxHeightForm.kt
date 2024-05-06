@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm

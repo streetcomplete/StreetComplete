@@ -96,7 +96,6 @@ private fun ContentWithIconPortraitOrLandscape(
             if (isLandscape) PaddingValues(start = iconSize * 0.75f)
             else PaddingValues(top = iconSize  * 0.75f)
 
-
         val dialogModifier = modifier
             .backgroundWithPadding(
                 color = MaterialTheme.colors.surface,

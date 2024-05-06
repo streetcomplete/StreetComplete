@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.LinkCategory
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.ui.theme.titleMedium
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 
 @Composable

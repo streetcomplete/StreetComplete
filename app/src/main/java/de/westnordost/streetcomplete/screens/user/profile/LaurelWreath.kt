@@ -61,9 +61,9 @@ fun LaurelWreath(
         }
 
         // leaves left and right
-        for (i in 0 ..< leafs) {
+        for (i in 0..<leafs) {
             drawLeaf(
-                leaf = if (i == leafs -1) leafPairGrowing else leafPair,
+                leaf = if (i == leafs - 1) leafPairGrowing else leafPair,
                 angle = (i + 1f) * maxLeafAngle / maxLeafs - 90f,
                 scale = if (i == leafs - 1) maxLeafs * progress % 1f else 1f
             )

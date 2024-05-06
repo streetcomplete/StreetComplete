@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.step_count
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestStepCountBinding
