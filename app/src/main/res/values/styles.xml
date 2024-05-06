@@ -10,7 +10,7 @@
     <!-- +++++++++++++++++++++++++++++++++++ Dialogs +++++++++++++++++++++++++++++++++++++++++++ -->
 
     <style name="DialogWindowTitle.Bubble" parent="android:Widget">
-        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:textAppearance">@style/TextAppearance.TitleLarge</item>
         <item name="android:paddingBottom">8dp</item>
     </style>
 

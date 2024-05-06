@@ -658,5 +658,7 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="access_time_limit">Time</string>
     <string name="create_relation_action_description">You created a relation with …</string>
     <string name="outside_downloaded_area_warning">This position is outside the downloaded area. Continue?</string>
+    <!-- actually there are still SC translations available, as only the main string has been removed from SC. -->
+    <string name="close">Close</string>
 
 </resources>

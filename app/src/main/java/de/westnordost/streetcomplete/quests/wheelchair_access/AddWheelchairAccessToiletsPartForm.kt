@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.N
 import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.YES
 
 class AddWheelchairAccessToiletsPartForm : AbstractOsmQuestForm<WheelchairAccessToiletsPartAnswer>() {
-    override val contentLayoutResId = R.layout.quest_wheelchair_toilets_explanation
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(WheelchairAccessToiletsPart(NO)) },

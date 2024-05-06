@@ -63,6 +63,8 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
     override val icon = R.drawable.ic_quest_street_shoulder
     override val achievements = listOf(CAR)
 
+    override val hint = R.string.quest_shoulder_explanation2
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shoulder_title
 
     override fun createForm() = AddShoulderForm()

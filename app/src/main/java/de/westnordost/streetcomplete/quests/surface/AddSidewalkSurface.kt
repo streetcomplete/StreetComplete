@@ -36,6 +36,8 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
+    override val hint = R.string.quest_street_side_puzzle_tutorial
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_surface_title
 
     override fun createForm() = AddSidewalkSurfaceForm()

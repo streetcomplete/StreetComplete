@@ -123,7 +123,7 @@ class AboutFragment : TwoPaneListFragment(), HasTitle {
                 binding.imageView.setImageResource(with.iconId)
                 binding.textView.text = with.title
                 binding.root.setOnClickListener { openUri(with.url) }
-                TextViewCompat.setTextAppearance(binding.textView, R.style.TextAppearance_Title)
+                TextViewCompat.setTextAppearance(binding.textView, R.style.TextAppearance_TitleLarge)
             }
         }
     }

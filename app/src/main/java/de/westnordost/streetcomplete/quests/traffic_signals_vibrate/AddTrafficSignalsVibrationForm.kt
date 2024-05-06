@@ -2,20 +2,17 @@ package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddTrafficSignalsVibrationForm : AbstractOsmQuestForm<Boolean>() {
 
-    override val contentLayoutResId = R.layout.quest_traffic_lights_vibration
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<ImageView>(R.id.buttonIllustrationImageView)
-            .setImageResource(getVibratingButtonIllustrationResId(countryInfo.countryCode))
+        val illustrationResId = getVibratingButtonIllustrationResId(countryInfo.countryCode)
+        setHintImages(listOfNotNull(requireContext().getDrawable(illustrationResId)))
     }
 
     override val buttonPanelAnswers = listOf(

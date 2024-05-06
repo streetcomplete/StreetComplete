@@ -55,14 +55,6 @@
     <dimen name="quest_statistics_country_icon_height">220dp</dimen>
     <dimen name="quest_statistics_country_icon_offset">120dp</dimen>
 
-    <dimen name="achievement_icon_size">320dp</dimen>
-    <dimen name="achievement_icon_offset">220dp</dimen>
-
-    <!-- links screen -->
-
-    <dimen name="links_item_margin">8dp</dimen>
-    <dimen name="achievements_item_margin">16dp</dimen>
-
     <!-- tutorial screen -->
 
     <dimen name="tutorial_textbox_width">320dp</dimen>

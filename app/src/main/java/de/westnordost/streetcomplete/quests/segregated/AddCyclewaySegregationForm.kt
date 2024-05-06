@@ -10,7 +10,7 @@ class AddCyclewaySegregationForm : AImageListQuestForm<CyclewaySegregation, Cycl
     override val items get() =
         CyclewaySegregation.entries.map { it.asItem(countryInfo.isLeftHandTraffic) }
 
-    override val itemsPerRow = 2
+    override val itemsPerRow = 1
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

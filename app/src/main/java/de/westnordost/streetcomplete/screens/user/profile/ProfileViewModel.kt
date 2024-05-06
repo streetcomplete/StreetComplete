@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.screens.user.profile
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginStatusController
@@ -17,8 +16,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.datetime.LocalDate
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.io.File
 
 abstract class ProfileViewModel : ViewModel() {
@@ -41,14 +38,11 @@ abstract class ProfileViewModel : ViewModel() {
     abstract val biggestSolvedCountCountryStatistics: StateFlow<CountryStatistics?>
     abstract val biggestSolvedCountCurrentWeekCountryStatistics: StateFlow<CountryStatistics?>
 
-    abstract var lastShownGlobalUserRank: Int?
-    abstract var lastShownGlobalUserRankCurrentWeek: Int?
-    abstract var lastShownUserLocalCountryStatistics: CountryStatistics?
-    abstract var lastShownUserLocalCountryStatisticsCurrentWeek: CountryStatistics?
 
     abstract fun logOutUser()
 }
 
+@Immutable
 data class DatesActiveInRange(val datesActive: List<LocalDate>, val range: Int)
 
 class ProfileViewModelImpl(
@@ -58,8 +52,7 @@ class ProfileViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val avatarsCacheDirectory: File,
-    private val prefs: ObservableSettings
+    private val avatarsCacheDirectory: File
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)
@@ -75,37 +68,6 @@ class ProfileViewModelImpl(
     override val biggestSolvedCountCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
     override val biggestSolvedCountCurrentWeekCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
 
-    override var lastShownGlobalUserRank: Int?
-        set(value) {
-            if (value != null) {
-                prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK, value)
-            } else {
-                prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
-            }
-        }
-        get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
-
-    override var lastShownGlobalUserRankCurrentWeek: Int?
-        set(value) {
-            if (value != null) {
-                prefs.putInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK, value)
-            } else {
-                prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
-            }
-        }
-        get() = prefs.getIntOrNull(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
-
-    override var lastShownUserLocalCountryStatistics: CountryStatistics?
-        set(value) {
-            prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK, Json.encodeToString(value))
-        }
-        get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK)?.let { Json.decodeFromString(it) }
-
-    override var lastShownUserLocalCountryStatisticsCurrentWeek: CountryStatistics?
-        set(value) {
-            prefs.putString(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, Json.encodeToString(value))
-        }
-        get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK)?.let { Json.decodeFromString(it) }
 
     override fun logOutUser() {
         launch { userLoginStatusController.logOut() }

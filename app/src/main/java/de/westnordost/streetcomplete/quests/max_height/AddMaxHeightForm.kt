@@ -28,9 +28,11 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val splitWayHint = view.findViewById<TextView>(R.id.splitWayHint)
-        splitWayHint?.text = getString(R.string.quest_maxheight_split_way_hint, getString(R.string.quest_generic_answer_differs_along_the_way))
-        splitWayHint?.isGone = element.type == ElementType.NODE
+        if (element.type == ElementType.WAY) {
+            setHint(getString(R.string.quest_maxheight_split_way_hint,
+                getString(R.string.quest_generic_answer_differs_along_the_way)
+            ))
+        }
 
         lengthInput = LengthInputViewController(
             unitSelect = view.findViewById(R.id.heightUnitSelect),

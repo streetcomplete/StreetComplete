@@ -35,6 +35,8 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevelsAnswer>() {
     override val achievements = listOf(BUILDING)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
 
+    override val hint = R.string.quest_buildingLevels_hint
+
     override fun getTitle(tags: Map<String, String>) = when {
         tags.containsKey("building:part") -> R.string.quest_buildingLevels_title_buildingPart2
         else -> R.string.quest_buildingLevels_title2

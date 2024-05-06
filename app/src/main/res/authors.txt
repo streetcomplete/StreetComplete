@@ -301,9 +301,9 @@ surface_unpaved_horrible.jpg   CC-BY-SA 4.0      https://wiki.openstreetmap.org/
 surface_unpaved_impassable.jpg Public Domain     https://drive.google.com/file/d/1yZXynVd07IWQPKpBbrlbABzfKHkG9X7R/view?usp=sharing (Tobias Zwick)
 surface_unpaved_very_horrib... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Very_horrible_ruts.jpg (Preslav)
 
-tactile_paving_illustration... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Trajet_Ouigo,_train_low-cost_(SNCF,France)_(10072029534).jpg (jean-louis Zimmermann)
-                               CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Accessibilit%C3%A9_handicap%C3%A9s%2C_aire_autoroute_(Meyrargues%2CFR13)_(10493532264).jpg (jean-louis Zimmermann)
-                               CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bande_podotactile_clout%C3%A9e%2C_rue_Saint_Florent_(ORANGE%2CFR84)_(10473021344).jpg (jean-louis Zimmermann)
+tactile_paving1.jpg            CC-0 1.0          https://commons.wikimedia.org/wiki/File:Tactile_paving_in_China_2.jpg
+tactile_paving2.jpg            CC-0 1.0          https://commons.wikimedia.org/wiki/File:Tactile_paving_in_a_Mass_Rapid_Transit_station_in_Singapore_-_20131105.jpg
+tactile_paving3.jpg            CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bande_podotactile_clout%C3%A9e%2C_rue_Saint_Florent_(ORANGE%2CFR84)_(10473021344).jpg
 
 traffic_calming_bump.jpg       Public Domain     Goldfinger https://commons.wikimedia.org/wiki/File%3ALe%C5%BEe%C4%87i%5Fpolicajac%5F016%2Ejpg
 traffic_calming_chicane.jpg    CC-BY-SA 2.0      Richard Drdul https://commons.wikimedia.org/wiki/File:One-lane_chicane_1.jpg

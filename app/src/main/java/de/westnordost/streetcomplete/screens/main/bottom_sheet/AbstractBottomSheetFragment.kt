@@ -51,17 +51,8 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     /** View that floats at the bottom on top of any retracted/expanded bottom sheet */
     protected abstract val floatingBottomView: View?
     protected abstract val floatingBottomView2: View?
-    /** View that is only shown when the bottom sheet is expanded and acts like a back-button */
-    protected abstract val backButton: View?
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
-    private val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
-        override fun onStateChanged(bottomSheet: View, newState: Int) {}
-
-        override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            updateCloseButtonVisibility()
-        }
-    }
 
     private var minBottomInset = Int.MAX_VALUE
 
@@ -70,16 +61,6 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        bottomSheet.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-            viewLifecycleScope.launch {
-                // not immediately because this is called during layout change (view.getTop() == 0)
-                delay(1)
-                updateCloseButtonVisibility()
-            }
-        }
-
-        backButton?.setOnClickListener { activity?.onBackPressed() }
 
         minBottomInset = Int.MAX_VALUE
         view.respectSystemInsets {
@@ -116,8 +97,6 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
             }
         }
 
-        bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
-
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE || defaultExpanded) {
             expand()
         }
@@ -143,17 +122,8 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        bottomSheetBehavior.removeBottomSheetCallback(bottomSheetCallback)
-    }
-
     fun expand() {
         bottomSheetBehavior.state = STATE_EXPANDED
-    }
-
-    private fun updateCloseButtonVisibility() {
-        backButton?.isGone = (bottomSheet.top) > 0
     }
 
     @UiThread

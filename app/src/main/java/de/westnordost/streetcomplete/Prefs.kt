@@ -68,11 +68,6 @@ object Prefs {
     const val ACTIVE_DATES_RANGE = "active_days_range"
     const val IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics"
 
-    const val LAST_SHOWN_USER_GLOBAL_RANK = "last_shown.user_global_rank"
-    const val LAST_SHOWN_USER_LOCAL_RANK = "last_shown.user_local_rank"
-    const val LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK = "last_shown.user_global_rank_current_week"
-    const val LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK = "last_shown.user_local_rank_current_week"
-
     // modified
     const val VOLUME_ZOOM = "volume_button_zoom"
     const val SHOW_3D_BUILDINGS = "3d_buildings"

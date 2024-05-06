@@ -31,7 +31,7 @@
          otherwise it will be shown once at bottom and once where it should be -->
         <TextView
             android:id="@+id/elementInfo"
-            android:textAppearance="@style/TextAppearance.Title.Hint"
+            android:textAppearance="@style/TextAppearance.TitleLarge.Hint"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_above="@id/questsGrid"

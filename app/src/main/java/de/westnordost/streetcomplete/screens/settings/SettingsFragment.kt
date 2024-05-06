@@ -30,7 +30,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogDeleteCacheBinding
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.screens.TwoPaneListFragment
-import de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity
 import de.westnordost.streetcomplete.util.TempLogger
 import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
@@ -180,11 +179,6 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
 
         findPreference<Preference>("debug.quests")?.setOnPreferenceClickListener {
             startActivity(Intent(context, ShowQuestFormsActivity::class.java))
-            true
-        }
-
-        findPreference<Preference>("debug.links")?.setOnPreferenceClickListener {
-            startActivity(Intent(context, ShowLinksActivity::class.java))
             true
         }
     }

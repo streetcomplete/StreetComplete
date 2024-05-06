@@ -5,20 +5,11 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/splitWayHint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/quest_maxheight_split_way_hint"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingBottom="@dimen/quest_form_vertical_padding"/>
-
     <RelativeLayout
-        android:layout_below="@id/splitWayHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inputSigns"
-        app:layout_constraintTop_toBottomOf="@+id/splitWayHint"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 

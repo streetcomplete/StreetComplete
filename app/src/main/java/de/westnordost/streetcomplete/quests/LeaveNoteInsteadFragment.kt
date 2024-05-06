@@ -41,7 +41,6 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     override val bottomSheetContent get() = binding.speechbubbleContentContainer
     override val floatingBottomView get() = binding.okButtonContainer
     override val floatingBottomView2 get() = binding.hideButton
-    override val backButton get() = binding.closeButton
     override val okButtonContainer get() = binding.okButtonContainer
     override val gpxButton get() = if (prefs.getBoolean(Prefs.SWAP_GPX_NOTE_BUTTONS, false) && prefs.getBoolean(Prefs.GPX_BUTTON, false))
             binding.okButton

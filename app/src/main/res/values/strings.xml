@@ -58,7 +58,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
     <string name="map_btn_create_note">Create new note</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
-    <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>
+    <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map.</string>
     <string name="create_new_note_hint">Ideally, write the note in the local language, or otherwise in English.</string>
 
     <string name="map_btn_create_track">Create new track recording</string>
@@ -101,7 +101,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- E.g user answered that the surface of a road is "paved", but maybe he can say what kind of pavement it is? -->
     <string name="quest_generic_item_confirmation">Are you sure that you can not determine it more specifically?</string>
 
-    <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as its center on the map.</string>
+    <string name="quest_street_side_puzzle_tutorial">The road in the illustration is rotated the same as on the map at its center pin location. Try rotating the map and you’ll get it.</string>
+
+    <string name="quest_arrow_tutorial">The arrows in the illustration point towards the directions in which the way runs on the map at its center pin location. Try rotating the map and you’ll get it.</string>
+
 
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
@@ -126,7 +129,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- when the user left the answer form empty -->
     <string name="no_changes">"You did not give an answer"</string>
 
-    <string name="close">"close"</string>
+    <string name="info">"More information"</string>
     <string name="confirmation_discard_title">"Discard input?"</string>
     <string name="confirmation_discard_positive">"Discard"</string>
     <string name="short_no_answer_on_button">No</string>
@@ -639,8 +642,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road here?</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. If there is a sidewalk but it is displayed as a separate way, please answer “sidewalk”.</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without sidewalk here?</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">It is forbidden.</string>
+    <string name="quest_accessible_for_pedestrians_allowed">it is allowed.</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">Actually, there is a sidewalk, but it is displayed separately on the map.</string>
 
     <string name="quest_address_title">"What’s the house number of this building?"</string>
     <string name="quest_address_house_number_label">House number:</string>
@@ -762,7 +767,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_shop_second_hand_no_bicycles">No bicycles sold at all</string>
 
     <string name="quest_bikeParkingCapacity_title">"How many bicycles can be parked here?"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note that many stands can be used to park one bicycle on each side."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand."</string>
 
     <string name="quest_air_pump_bicycle_shop_title">Is there a public bicycle pump here (at least when it’s open)?</string>
     <string name="quest_air_pump_bicycle_repair_station_title">Is there a working bicycle pump here?</string>
@@ -809,6 +814,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
+    <string name="quest_buildingLevels_hint">"For buildings on a slope, the level count starts from the ground level of the lowest side.
+
+A level counts as a roof level when its windows are in the roof. Subsequently, roofs with zero roof levels are not necessarily flat, just not tall enough for an entire level.
+    "</string>
 
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
@@ -941,7 +950,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_camp_type_tents_only">Only tents</string>
     <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
     <string name="quest_sanitary_dump_station_title">Is there a sanitary dump station?</string>
-    <string name="quest_sanitary_dump_station_description">Facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:</string>
+    <string name="quest_sanitary_dump_station_description">A sanitary dump station is a facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:</string>
 
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
@@ -1549,7 +1558,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_streetName_menuItem_international">international</string>
 
-    <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
+    <string name="quest_streetSurface_title">"What surface does this road have?"</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
 
     <string name="quest_summit_cross_title">Is there a summit cross here?</string>

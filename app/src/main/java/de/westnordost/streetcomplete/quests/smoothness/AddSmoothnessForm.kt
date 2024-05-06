@@ -55,9 +55,7 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         stringBuilder.replaceEmojiWithImageSpan(context, "🚲", R.drawable.ic_smoothness_city_bike)
         stringBuilder.replaceEmojiWithImageSpan(context, "🚗", R.drawable.ic_smoothness_car)
         stringBuilder.replaceEmojiWithImageSpan(context, "🚙", R.drawable.ic_smoothness_suv)
-
-        binding.descriptionLabel.isGone = false
-        binding.descriptionLabel.text = stringBuilder
+        setHint(stringBuilder)
 
 
         setTitle(resources.getString((questType as OsmElementQuestType<*>).getTitle(element.tags)) + " (${element.tags["surface"]})")

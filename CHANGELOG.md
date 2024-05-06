@@ -2,7 +2,7 @@
 
 ## v57.4
 
-- Fix  crash under certain circumstances in bike path overlay (#5604) (regression from #5596)
+- Fix crash under certain circumstances in bike path overlay (#5604) (regression from #5596)
 
 ## v57.3
 
