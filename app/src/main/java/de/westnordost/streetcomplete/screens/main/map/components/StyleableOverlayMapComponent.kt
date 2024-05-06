@@ -188,10 +188,12 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
             ),
     )
 
+    private val allLayers = layers + sideLayers + sideLayersBridge + labelLayers
+
     /** Shows/hides the map data */
     @UiThread fun setVisible(value: Boolean) {
         val visibility = if (value) Property.VISIBLE else Property.NONE
-        layers.forEach { it.setProperties(visibility(visibility)) }
+        allLayers.forEach { it.setProperties(visibility(visibility)) }
     }
 
     init {
