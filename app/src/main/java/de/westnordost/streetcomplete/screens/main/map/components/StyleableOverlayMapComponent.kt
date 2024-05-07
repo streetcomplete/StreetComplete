@@ -157,7 +157,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
             ))
             .withProperties(
                 fillExtrusionColor(get("color")),
-                fillExtrusionOpacity(get("opacity")),
+                fillExtrusionOpacity(1f), // can't use get("opacity"), data expressions not supported
                 fillExtrusionHeight(get("height")),
                 fillExtrusionBase(get("min-height")),
             ),
