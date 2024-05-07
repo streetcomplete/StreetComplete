@@ -5,6 +5,7 @@ import android.content.res.Resources
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import com.google.gson.JsonObject
+import de.westnordost.streetcomplete.R
 import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.android.maps.MapLibreMap
@@ -37,16 +38,6 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
 
     private val featuresByGeometry: MutableMap<ElementGeometry, List<Feature>> = HashMap()
 
-    private val textProperties = arrayOf(
-        textField(get("label")),
-        textAnchor(Property.TEXT_ANCHOR_TOP),
-        textOffset(arrayOf(0f, 1f)),
-        textSize(16 * context.resources.configuration.fontScale),
-        textColor("#D140D0"),
-        textFont(arrayOf("Roboto Bold", "Noto Bold")),
-        textOptional(true)
-    )
-
     val layers: List<Layer> = listOf(
         FillLayer("geo-fill", SOURCE)
             .withFilter(isArea())
@@ -62,21 +53,19 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
                 lineOpacity(0.5f),
                 lineCap(Property.LINE_CAP_ROUND)
             ),
-        CircleLayer("geo-circle", SOURCE)
-            .withFilter(all(not(has("icon")), isPoint()))
-            .withProperties(
-                circleColor("#D140D0"),
-                circleOpacity(0.7f),
-                circleRadius(12f),
-                *textProperties
-            ),
         SymbolLayer("geo-symbols", SOURCE)
-            .withFilter(all(has("icon"), isPoint()))
+            .withFilter(isPoint())
             .withProperties(
                 iconColor("#D140D0"),
                 iconImage(get("icon")),
                 iconAllowOverlap(true),
-                *textProperties
+                textField(get("label")),
+                textAnchor(Property.TEXT_ANCHOR_TOP),
+                textOffset(arrayOf(0f, 1f)),
+                textSize(16 * context.resources.configuration.fontScale),
+                textColor("#D140D0"),
+                textFont(arrayOf("Roboto Bold", "Noto Bold")),
+                textOptional(true)
             )
     )
 
@@ -116,9 +105,8 @@ private fun Marker.toFeatures(resources: Resources): List<Feature> {
     // point marker or any marker with title or icon
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = JsonObject()
-        if (icon != null) {
-            p.addProperty("icon", resources.getResourceEntryName(icon))
-        }
+        val mustHaveIcon = icon ?: R.drawable.ic_preset_maki_circle
+        p.addProperty("icon", resources.getResourceEntryName(mustHaveIcon))
         if (title != null) {
             p.addProperty("label", title)
         }
