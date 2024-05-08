@@ -4,6 +4,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
@@ -15,6 +16,7 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -38,6 +40,7 @@ fun DatesActiveTable(
     modifier: Modifier = Modifier,
     boxColor: Color = GrassGreen,
     emptyBoxColor: Color = MaterialTheme.colors.surfaceContainer,
+    textColor: Color = contentColorFor(MaterialTheme.colors.surface),
     cellPadding: Dp = 2.dp,
     cellCornerRadius: Dp = 6.dp,
 ) {
@@ -50,7 +53,7 @@ fun DatesActiveTable(
         val verticalCells = 7 // days in a week
         val horizontalCells = ceil((dayOffset + datesActiveRange).toDouble() / verticalCells).toInt()
 
-        val textMeasurer = rememberTextMeasurer()
+        val textMeasurer = rememberTextMeasurer(12)
 
         val textStyle = MaterialTheme.typography.body2
         val symbols = DateFormatSymbols.getInstance()
@@ -77,12 +80,15 @@ fun DatesActiveTable(
                 val bottom = (getTop(i + 1) - cellPadding)
                 val centerTop = top + (bottom - top - textHeight) / 2 // center text vertically
                 val left = if (isLtr) 0.dp else getLeft(horizontalCells)
+
                 drawText(
-                    textMeasurer,
-                    size = Size(weekdayColumnWidth.toPx(), textHeight.toPx()),
-                    text = weekdays[i],
-                    topLeft = Offset(left.toPx(), centerTop.toPx()),
-                    style = textStyle,
+                    textMeasurer.measure(
+                        text = weekdays[i],
+                        style = textStyle,
+                        constraints = Constraints.fixedWidth(weekdayColumnWidth.toPx().toInt())
+                    ),
+                    color = textColor,
+                    topLeft = Offset(left.toPx(), centerTop.toPx())
                 )
             }
             if (horizontalCells < 1) return@Canvas
@@ -107,11 +113,12 @@ fun DatesActiveTable(
 
                 if (date.dayOfMonth == 1) {
                     drawText(
-                        textMeasurer,
-                        size = Size(Float.NaN, textHeight.toPx()),
-                        text = months[date.month.value - 1],
+                        textMeasurer.measure(
+                            text = months[date.month.value - 1],
+                            style = textStyle
+                        ),
+                        color = textColor,
                         topLeft = Offset(left, 0f),
-                        style = textStyle
                     )
                 }
             }
