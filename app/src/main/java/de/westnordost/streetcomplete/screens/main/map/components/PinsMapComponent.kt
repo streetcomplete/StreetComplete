@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.logs.Log
+import org.maplibre.android.style.expressions.Expression
 import org.maplibre.android.style.sources.GeoJsonOptions
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
@@ -29,22 +30,25 @@ class PinsMapComponent(private val map: MapLibreMap) {
 //            .withClusterProperty(propertyName = , operatorExpr = , mapExpr = )
     )
 
+    fun getClusterExpansionZoom(feature: Feature) = pinsSource.getClusterExpansionZoom(feature)
+
     // todo:
     //  avoid clustering for multiple quests on the same element
-    //  maybe replace circles with some special pins, would look nicer
+    //  maybe replace circles with pins with the number written on them?
     val layers: List<Layer> = listOf(
         CircleLayer("pin-dot-layer", SOURCE)
             .withFilter(all(gte(zoom(), 14f), lte(zoom(), 17f), gt(toNumber(get("point_count")), 1)))
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("grey"),
-                circleRadius(12f), // is that dp? or should it be scaled with display size or something like that?
+                circleRadius(sum(toNumber(literal(10f)), sqrt(get("point_count")))),
                 circleStrokeWidth(1f)
             ),
         SymbolLayer("pin-dot-text-layer", SOURCE)
             .withFilter(all(gte(zoom(), 14f), lte(zoom(), 17f), gt(toNumber(get("point_count")), 1)))
             .withProperties(
                 textField(get("point_count")),
+                textAllowOverlap(true) // avoid quest pins hiding number
             ),
         SymbolLayer("pins-layer", SOURCE)
             .withFilter(gte(zoom(), 16f))
