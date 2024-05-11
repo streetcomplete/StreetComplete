@@ -233,7 +233,7 @@ val links = listOf(
     ),
     Link(
         "qwant_maps",
-        "https://www.qwant.com/maps/",
+        "https://map.qwant.com/",
         "Qwant Maps",
         LinkCategory.MAPS,
         R.drawable.ic_link_qwant,
