@@ -37,7 +37,7 @@ fun parseSeparateCycleway(tags: Map<String, String>): SeparateCycleway? {
     // invalid tagging: e.g. highway=footway + foot=no
     if ((foot == null || foot in noFoot) && (bicycle == null || bicycle in noCycling)) return null
 
-    if (bicycle in noCycling && tags["bicycle:signed"] == "yes") return NOT_ALLOWED
+    if (bicycle in noCycling && bicycleSigned) return NOT_ALLOWED
 
     if (bicycle in yesButNotDesignated && bicycleSigned && foot == "designated") return ALLOWED_ON_FOOTWAY
 
