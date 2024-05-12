@@ -95,7 +95,6 @@ private fun parseCyclewayForSide(
     val cyclewayLane = tags["$cyclewayKey:lane"]
     val isSegregated = tags["$cyclewayKey:segregated"] != "no"
     val isCyclingOkOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "yes" && tags["sidewalk$sideVal:bicycle:signed"] == "yes"
-    val isCyclingDesignatedOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "designated"
 
     val result = when (cycleway) {
         "lane", "opposite_lane" -> {
