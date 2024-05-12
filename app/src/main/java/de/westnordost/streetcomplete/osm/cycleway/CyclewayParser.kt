@@ -191,7 +191,6 @@ private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, Stri
     result.expandSidesTags("cycleway", "segregated", true)
     result.expandSidesTags("sidewalk", "bicycle", true)
     result.expandSidesTags("sidewalk", "bicycle:signed", true)
-    result.expandSidesTags("sidewalk", "foot", true)
     return result
 }
 
