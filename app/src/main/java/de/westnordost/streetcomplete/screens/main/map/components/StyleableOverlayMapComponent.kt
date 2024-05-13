@@ -157,10 +157,13 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
             ))
             .withProperties(
                 fillExtrusionColor(get("color")),
-                fillExtrusionOpacity(get("opacity")),
+                fillExtrusionOpacity(1f), // can't use get("opacity"), data expressions not supported
                 fillExtrusionHeight(get("height")),
                 fillExtrusionBase(get("min-height")),
             ),
+    )
+
+    val labelLayers = listOf(
         SymbolLayer("overlay-symbols", SOURCE)
             .withFilter(all(
                 gte(zoom(), 17f),
@@ -174,11 +177,10 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
                 textSize(16 * context.resources.configuration.fontScale),
                 textColor(if (isNightMode) "#ccf" else "#124"),
                 textHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
-                textHaloWidth(2.0f),
+                textHaloWidth(2.5f),
                 iconColor(if (isNightMode) "#ccf" else "#124"),
                 iconHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
-                // multiply by screen density to workaround https://github.com/maplibre/maplibre-native/issues/2281
-                iconHaloWidth(2.0f * context.resources.displayMetrics.density),
+                iconHaloWidth(2.5f),
                 textOptional(true),
                 iconAllowOverlap(step(zoom(), literal(false), stop(19, true))),
                 textAllowOverlap(step(zoom(), literal(false), stop(21, true))),
@@ -186,18 +188,13 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
             ),
     )
 
+    private val allLayers = layers + sideLayers + sideLayersBridge + labelLayers
+
     /** Shows/hides the map data */
-    var isVisible: Boolean
-        // add / remove source
-        @UiThread get() = layers.first().visibility.value != Property.NONE
-        @UiThread set(value) {
-            if (isVisible == value) return
-            if (value) {
-                layers.forEach { it.setProperties(visibility(Property.VISIBLE)) }
-            } else {
-                layers.forEach { it.setProperties(visibility(Property.NONE)) }
-            }
-        }
+    @UiThread fun setVisible(value: Boolean) {
+        val visibility = if (value) Property.VISIBLE else Property.NONE
+        allLayers.forEach { it.setProperties(visibility(visibility)) }
+    }
 
     init {
         overlaySource.isVolatile = true
@@ -205,9 +202,10 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
     }
 
     /** Show given map data with each the given style */
-    @UiThread fun set(features: Collection<StyledElement>) {
-        val mapLibreFeatures = features.flatMap { it.toFeatures() }
-        overlaySource.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures))
+    @UiThread fun set(styledElements: Collection<StyledElement>) {
+        val features = styledElements.flatMap { it.toFeatures() }
+        val mapLibreFeatures = FeatureCollection.fromFeatures(features)
+        overlaySource.setGeoJson(mapLibreFeatures)
     }
 
     private fun StyledElement.toFeatures(): List<Feature> {

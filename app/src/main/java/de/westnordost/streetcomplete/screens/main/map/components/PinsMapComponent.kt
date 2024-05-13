@@ -55,31 +55,29 @@ class PinsMapComponent(private val map: MapLibreMap) {
             .withFilter(gt(zoom(), CLUSTER_START_ZOOM))
             .withProperties(
                 circleColor("white"),
-                circleStrokeColor("grey"),
-                circleRadius(5f),
-                circleStrokeWidth(1f)
+                circleStrokeColor("#aaaaaa"),
+                circleRadius(4f),
+                circleStrokeWidth(1f),
+                circleTranslate(arrayOf(0f, -6f)) // so that it hides behind the pin
             ),
         SymbolLayer("pins-layer", SOURCE)
             .withFilter(gte(zoom(), 16f))
             .withProperties(
                 iconImage(get("icon-image")),
                 iconSize(0.5f),
+                // better would be arrayOf(-5f, 0f, -14f, 5f) or something like that, but setting
+                // different paddings per side is not supported by MapLibre Native yet
+                iconPadding(-4f),
                 iconOffset(listOf(-9f, -69f).toTypedArray()),
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE), // = order in which they were added
             )
     )
 
     /** Shows/hides the pins */
-    var isVisible: Boolean
-        @UiThread get() = layers.first().visibility.value != Property.NONE
-        @UiThread set(value) {
-            if (isVisible == value) return
-            if (value) {
-                layers.forEach { it.setProperties(visibility(Property.VISIBLE)) }
-            } else {
-                layers.forEach { it.setProperties(visibility(Property.NONE)) }
-            }
-        }
+    @UiThread fun setVisible(value: Boolean) {
+        val visibility = if (value) Property.VISIBLE else Property.NONE
+        layers.forEach { it.setProperties(visibility(visibility)) }
+    }
 
     fun getProperties(properties: JsonObject): Map<String, String> =
         properties.getProperties()
@@ -92,8 +90,9 @@ class PinsMapComponent(private val map: MapLibreMap) {
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     @UiThread fun set(pins: Collection<Pin>) {
-        val mapLibreFeatures = pins.sortedBy { it.order }.distinctBy { it.position }.map { it.toFeature() }
-        pinsSource.setGeoJson(FeatureCollection.fromFeatures(mapLibreFeatures))
+        val features = pins.sortedBy { it.order }.distinctBy { it.position }.map { it.toFeature() }
+        val mapLibreFeatures = FeatureCollection.fromFeatures(features)
+        pinsSource.setGeoJson(mapLibreFeatures)
     }
 
     /** Clear pins */

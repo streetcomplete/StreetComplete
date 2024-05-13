@@ -22,12 +22,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 /** Manages the layer of styled map data in the map view:
  *  Gets told by the MainMapFragment when a new area is in view and independently pulls the map
@@ -44,6 +42,8 @@ class StyleableOverlayManager(
     // map data in current view: key -> [pin, ...]
     private val mapDataInView: MutableMap<ElementKey, StyledElement> = mutableMapOf()
     private val mapDataInViewMutex = Mutex()
+
+    private val mapDataSourceMutex = Mutex()
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
@@ -137,19 +137,12 @@ class StyleableOverlayManager(
     }
 
     private fun onNewTilesRect(tilesRect: TilesRect) {
-        val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
+        // Check QuestPinsManager::onNewTilesRect for an explanation what this updateJob stuff is
+        // about.
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
-            val mapData = withContext(Dispatchers.IO) {
-                synchronized(mapDataSource) {
-                    if (!coroutineContext.isActive) {
-                        null
-                    } else {
-                        mapDataSource.getMapDataWithGeometry(bbox)
-                    }
-                }
-            } ?: return@launch
-            setStyledElements(mapData)
+            val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
+            setStyledElements(bbox)
         }
     }
 
@@ -163,47 +156,51 @@ class StyleableOverlayManager(
         }
     }
 
-    private suspend fun setStyledElements(mapData: MapDataWithGeometry) {
-        val overlay = overlay ?: return
+    private suspend fun setStyledElements(bbox: BoundingBox) {
+        val mapData = mapDataSourceMutex.withLock {
+            withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
+        }
         mapDataInViewMutex.withLock {
+            val overlay = overlay ?: return
             mapDataInView.clear()
             createStyledElementsByKey(overlay, mapData).forEach { (key, styledElement) ->
                 mapDataInView[key] = styledElement
             }
-            if (coroutineContext.isActive) {
-                withContext(Dispatchers.Main) { mapComponent.set(mapDataInView.values) }
-            }
+            val styledElements = mapDataInView.values
+            withContext(Dispatchers.Main) { mapComponent.set(styledElements) }
         }
     }
 
     private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-        val overlay = overlay ?: return
-        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
-        var changedAnything = false
         mapDataInViewMutex.withLock {
+            val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
+            var hasChanges = false
+            val overlay = overlay ?: return
+
             deleted.forEach {
-                if (mapDataInView.remove(it) != null) {
-                    changedAnything = true
-                }
+                if (mapDataInView.remove(it) != null) hasChanges = true
             }
             val styledElementsByKey = createStyledElementsByKey(overlay, updated).toMap()
-            // for elements that used to be displayed in the overlay but now not anymore
+            // elements that used to be displayed in the overlay but now not anymore
             updated.forEach {
                 if (!styledElementsByKey.containsKey(it.key)) {
-                    mapDataInView.remove(it.key)
-                    changedAnything = true
+                    if (mapDataInView.remove(it.key) != null) hasChanges = true
                 }
             }
+            // elements that are either newly displayed or which were updated
             styledElementsByKey.forEach { (key, styledElement) ->
-                mapDataInView[key] = styledElement
-                if (!changedAnything && displayedBBox?.intersect(styledElement.geometry.getBounds()) != false) {
-                    changedAnything = true
+                if (displayedBBox.intersect(styledElement.geometry.getBounds())) {
+                    mapDataInView[key] = styledElement
+                    hasChanges = true
+                } else {
+                    if (mapDataInView.remove(key) != null) hasChanges = true
                 }
             }
 
-            if (changedAnything && coroutineContext.isActive) {
-                withContext(Dispatchers.Main) { mapComponent.set(mapDataInView.values) }
-            }
+            if (!hasChanges) return
+
+            val styledElements = mapDataInView.values
+            withContext(Dispatchers.Main) { mapComponent.set(styledElements) }
         }
     }
 

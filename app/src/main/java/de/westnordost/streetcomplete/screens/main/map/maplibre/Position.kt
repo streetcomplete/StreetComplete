@@ -98,4 +98,4 @@ fun ElementPolygonsGeometry.toMapLibreGeometry(): Geometry {
 fun LatLon.toPoint(): Point = Point.fromLngLat(longitude, latitude)
 fun Point.toLatLon(): LatLon = LatLon(latitude(), longitude())
 
-fun GeoJsonSource.clear() = setGeoJson(FeatureCollection.fromFeatures(emptyList()))
+fun GeoJsonSource.clear() = setGeoJson(null as FeatureCollection?)

@@ -235,25 +235,21 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             downloadedAreaMapComponent?.layers,
             tracksMapComponent?.layers,
             styleableOverlayMapComponent?.layers,
-            geometryMarkersMapComponent?.layers,
-            geometryMapComponent?.layers
         ).flatten()) {
             style.addLayerBelow(layer, firstLabelLayer)
         }
 
         // these are always on top of everything else (including labels)
         for (layer in listOfNotNull(
+            styleableOverlayMapComponent?.labelLayers,
+            geometryMarkersMapComponent?.layers,
+            geometryMapComponent?.layers,
             locationMapComponent?.layers,
             pinsMapComponent?.layers,
             selectedPinsMapComponent?.layers
         ).flatten()) {
             style.addLayer(layer)
         }
-
-        // workaround for https://github.com/maplibre/maplibre-native/issues/2259
-        val overlaySymbols = style.getLayer("overlay-symbols")!!
-        style.removeLayer(overlaySymbols)
-        style.addLayerBelow(overlaySymbols, "geo-symbols")
     }
 
     private fun setupData(map: MapLibreMap) {
@@ -482,11 +478,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     fun hideNonHighlightedPins(questKey: QuestKey? = null) {
-        pinsMapComponent?.isVisible = false
+        pinsMapComponent?.setVisible(false)
     }
 
     fun hideOverlay() {
-        styleableOverlayMapComponent?.isVisible = false
+        styleableOverlayMapComponent?.setVisible(false)
     }
 
     fun highlightGeometry(geometry: ElementGeometry) {
@@ -495,8 +491,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     /** Clear all highlighting */
     fun clearHighlighting() {
-        pinsMapComponent?.isVisible = true
-        styleableOverlayMapComponent?.isVisible = true
+        pinsMapComponent?.setVisible(true)
+        styleableOverlayMapComponent?.setVisible(true)
         geometryMapComponent?.clearGeometry()
         geometryMarkersMapComponent?.clear()
         selectedPinsMapComponent?.clear()
