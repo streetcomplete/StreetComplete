@@ -28,7 +28,8 @@ class PinsMapComponent(private val map: MapLibreMap) {
                 circleStrokeColor("#aaaaaa"),
                 circleRadius(4f),
                 circleStrokeWidth(1f),
-                circleTranslate(arrayOf(0f, -6f)) // so that it hides behind the pin
+                circleTranslate(arrayOf(0f, -6f)), // so that it hides behind the pin
+                circleTranslateAnchor(Property.CIRCLE_TRANSLATE_ANCHOR_VIEWPORT),
             ),
         SymbolLayer("pins-layer", SOURCE)
             .withFilter(gte(zoom(), 16f))
