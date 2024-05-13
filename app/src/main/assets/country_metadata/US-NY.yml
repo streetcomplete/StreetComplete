@@ -3,3 +3,4 @@ atmOperators: [Bank of America, Chase, Citibank, M&T Bank, KeyBank, Santander, P
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Tesla Motors, Volta, National Grid, EV Connect, Blink, FLO, EvolveNY, Electrify America, Whole Foods, TownePlace Suites, Town of Penfield, NYC Department of Parks and Creation, IBM, Holiday Inn Express, Griffiss Utilities]
 clothesContainerOperators: [National Cancer Center, Hearts for the Homeless]
 defaultSpeedLimitHasUrbanOrRural: false
+parcelLockerBrand: [Amazon Hub, Amazon Locker, Amazon Hub Locker]

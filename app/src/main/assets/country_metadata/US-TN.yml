@@ -2,3 +2,4 @@
 atmOperators: [Bank of America, SunTrust, Regions, Regions Bank, Fifth Third Bank, Heritage Bank, ORNL Federal Credit Union, Fort Campbell Federal Credit Union, First Horizon Bank, Eastman Credit Union]
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', NRG Energy, Blink, Electrify America]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Locker]

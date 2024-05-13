@@ -3,3 +3,4 @@ atmOperators: [Wells Fargo, U.S. Bank, Chase, Bank of America, Umpqua Bank, OnPo
 chargingStationOperators: [ChargePoint, Blink, 'Tesla, Inc.', Electrify America, Volta, EVCS, Portland General Electric, EVgo, Chargepoint, Rivian, AeroVironment, eVgo, OpConnect, Holiday Inn Express & Suites Portland Airport - Cascade Station, Church Extension Plan]
 clothesContainerOperators: [Gemtext, Gaia Movement USA]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub, Amazon Locker]

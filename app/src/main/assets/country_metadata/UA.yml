@@ -15,6 +15,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [uk, ru]
 orchardProduces: [apple, tomato, grape, plum, chilli_pepper, sweet_pepper, walnut, pear, cherry, strawberry, apricot, raspberry, peach, hop, hazelnut, blueberry]
+parcelLockerBrand: [Нова Пошта, Нова пошта, Meest, Rozetka]
 popularReligions: [christian, muslim, jewish]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top

@@ -12,6 +12,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 216
 officialLanguages: [hu]
 orchardProduces: [grape, apple, cherry, plum, walnut, apricot, peach, pear, tomato, chilli_pepper, sweet_pepper, strawberry, hazelnut, raspberry, almond, chestnut]
+parcelLockerBrand: [GLS, easybox, Foxpost, Packeta, AlzaBox, Magyar Posta Logisztika (MPL), MPL, FoxPost, DHL, Alzabox]
 pictogramCycleLaneStyle: yellow
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom

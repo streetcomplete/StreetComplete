@@ -3,3 +3,4 @@ atmOperators: [Wells Fargo, Bank of America, Truist, First Citizens Bank, Palmet
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Blink, City of Greenville]
 clothesContainerOperators: [There Is Hope, Green Zone]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub]

@@ -3,3 +3,4 @@ atmOperators: [Poste Italiane, Euronet, UniCredit Bank, Postamat, Intesa Sanpaol
 chargingStationOperators: [Repower, Enel X, Hera / AcegasApsAmga, Be Charge, Enel, Hera, Emobitaly, EVAD, 'Tesla, Inc.', Tesla Motors (Destination Charging), Plenitude, Là di Anselmi, Hera / AcegasApsAmga (EnelX)]
 clothesContainerOperators: [Caritas Diocesana, Caritas]
 officialLanguages: [it, fur, sl, de]
+parcelLockerBrand: [Amazon Hub, Amazon Locker, InPost, Amazon]

@@ -3,3 +3,4 @@ atmOperators: [Kutxabank, Santander, Telebanco 4B, Kutxa, Banco Sabadell, BBVA, 
 chargingStationOperators: [Iberdrola, Repsol, IBIL, 'Tesla, Inc.', Ibil, Endesa X, Endesa, EDP]
 clothesContainerOperators: [UROLA ERDIKO MANKOMUNITATEA]
 officialLanguages: [eu, es]
+parcelLockerBrand: [Amazon Hub, CityPaq, Amazon Locker]

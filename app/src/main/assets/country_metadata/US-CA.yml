@@ -4,3 +4,4 @@ chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Electrify America, EVgo, 
 clothesContainerOperators: [Disabled American Veterans, USAgain]
 defaultSpeedLimitHasUrbanOrRural: true
 noStoppingLineStyle: red on curb
+parcelLockerBrand: [Amazon Hub, Amazon Locker, Amazon Hub Locker]

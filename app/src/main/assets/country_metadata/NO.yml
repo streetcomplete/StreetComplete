@@ -14,6 +14,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 242
 officialLanguages: [nb, nn, no]
 orchardProduces: [apple, strawberry, plum, raspberry, cherry, pear, tomato, blueberry]
+parcelLockerBrand: [Posten, PostNord, Pakkeboks]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: Sone

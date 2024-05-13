@@ -4,3 +4,4 @@ chargingStationOperators: [NRMA, Jolt, Evie Networks, 'Tesla, Inc.', Chargefox, 
 clothesContainerOperators: [Dankha Pty Ltd, 1-World Charity Shops]
 defaultSpeedLimitHasUrbanOrRural: true
 hasSlowZone: false
+parcelLockerBrand: [Australia Post]

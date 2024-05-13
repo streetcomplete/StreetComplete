@@ -14,6 +14,7 @@ noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [hr]
 orchardProduces: [grape, olive, walnut, hazelnut, apple, plum, cherry, orange, peach, pear, almond, chilli_pepper, sweet_pepper, fig, tomato, blueberry]
+parcelLockerBrand: [Paket24, GLS, BoxNow]
 popularSports: [soccer, tennis, basketball, boules, handball]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom

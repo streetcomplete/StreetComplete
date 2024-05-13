@@ -13,6 +13,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 260
 officialLanguages: [pl]
 orchardProduces: [apple, strawberry, cherry, raspberry, plum, tomato, blueberry, pear, hazelnut, chilli_pepper, sweet_pepper, walnut, hop, peach, apricot, grape]
+parcelLockerBrand: [Paczkomat InPost, Allegro One Box, Orlen Paczka, DPD Pickup Station, DHL Pop Box, AliExpress, DPD, Allegro, InPost, DHL POP BOX, DHL, Orlen]
 popularSports: [soccer, athletics, volleyball, basketball, handball, tennis]
 postboxesHaveCollectionTimes: true
 regularShoppingDays: 5

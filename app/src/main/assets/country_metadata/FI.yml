@@ -15,5 +15,6 @@ mobileCountryCode: 244
 noEntrySignStyle: yellow
 officialLanguages: [fi, sv]
 orchardProduces: [strawberry, apple, raspberry, blueberry, tomato, pear, chilli_pepper, sweet_pepper]
+parcelLockerBrand: [Smartpost, Posti, Postin automaatti, Budbee Box, Pakettipiste, Smartmile, PostNord, Budbee]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]
 postboxesHaveCollectionTimes: true

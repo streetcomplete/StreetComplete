@@ -2,3 +2,4 @@
 atmOperators: [Euronet, Caja Rural, Caixabank, Unicaja, Santander, BBVA, Unicaja Banco, BitBase, Cajamar, Banco Santander, Banco Sabadell, shitcoins.club, La Caixa, ING, Cajasol, CaixaBank, Telebanco 4B, Cash Zone, CajaSur, Bankia, Shitcoins.club, Deutsche Bank, Cajasur, Caja Rural Granada, Banco Popular, cajamar, SabadellSolbank, Caja Rural de Granada, Bankinter, Banco de Andalucía, Banca March]
 chargingStationOperators: [Iberdrola, Endesa, 'Tesla, Inc.', Mercadona, Ionity, Wenea, SMASSA, Repsol, EDP, Carrefour, Ayuntamiento de Huelva, ALDI]
 clothesContainerOperators: [Madre Coraje, Humana, Madre coraje, Inagra, Cáritas]
+parcelLockerBrand: [Amazon Locker, Amazon Hub Locker, Amazon Hub, CityPaq]

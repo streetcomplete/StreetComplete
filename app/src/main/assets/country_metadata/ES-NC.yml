@@ -2,3 +2,4 @@
 atmOperators: [Caixabank, La Caixa, Laboral Kutxa, Caja Rural de Navarra, Caja Rural, BBVA]
 chargingStationOperators: [Ionity, 'Tesla, Inc.', Ingeteam]
 officialLanguages: [es, eu]
+parcelLockerBrand: [Amazon Locker]

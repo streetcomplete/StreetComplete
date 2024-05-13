@@ -4,3 +4,4 @@ chargingStationOperators: [Allego, Blue Corner, TotalEnergies, Lidl, Last Mile S
 clothesContainerOperators: [Vlaams Inzamel Centrum Textiel, Wereld Missie Hulp, Limburg.net, Limburg.Net, Vlaams Internationaal Centrum, De Kringwinkel, Vlaams Inzamelcentrum Textiel, Curitas, Curitas n.v., V.H.S. Europ, Kringwinkel, IVIO, WMH, IVAREM, Caritas n.v., ivio, Oxfam, Wereldmissiehulp, Stad Halle, Rode Kruis, Les Petits Riens - Spullenhulp, Curitas NV, www.dekringwinkel.be, de kringwinkel, Wereldmissiehulp en O.L.V. van zeven Weeën vzw, Wereld-Missiehulp, TEXTIEL, Salvatorlaanse Hulpactie & Ontwikkelingshulp, Hulpzorg, De Bremberg, Curitas N.V.]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [nl]
+parcelLockerBrand: [bpost, bpost Pakjesautomaat]

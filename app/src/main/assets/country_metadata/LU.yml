@@ -14,6 +14,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 270
 officialLanguages: [fr, de, lb]
 orchardProduces: [grape, apple, plum, pear, walnut, strawberry]
+parcelLockerBrand: [POST Luxembourg]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONE

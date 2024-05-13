@@ -3,3 +3,4 @@ atmOperators: [Bank of America, Chase, Wells Fargo, BECU, U.S. Bank, KeyBank, Ci
 chargingStationOperators: [Volta, ChargePoint, Blink, Electrify America, 'Tesla, Inc.', eVgo, EVgo, University of Washington, Shell Recharge Solutions, NRG Energy, Tesla, GE, volta, FLO, City of Seattle, Bellingham Nissan, Avista, AV aerovironment]
 clothesContainerOperators: [USAgain, TexGreen]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub, Amazon Locker, Amazon]

@@ -13,6 +13,7 @@ mobileCountryCode: 222
 noParkingLineStyle: yellow-black on curb
 officialLanguages: [it]
 orchardProduces: [olive, grape, tomato, hazelnut, peach, apple, almond, chestnut, orange, cherry, pear, kiwi, lemon, lime, apricot, plum]
+parcelLockerBrand: [Amazon Hub, Amazon Locker, InPost, Amazon Hub Locker, PuntoPoste, Locker InPost, Amazon]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: zona
