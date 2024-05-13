@@ -27,9 +27,6 @@ class PinsMapComponent(private val map: MapLibreMap) {
         GeoJsonOptions()
             .withCluster(true)
             .withClusterMaxZoom(17)
-            // how does it work? needs other properties, so I guess it's not useful for us...
-            // though maybe it could help with the todo below?
-//            .withClusterProperty(propertyName = , operatorExpr = , mapExpr = )
     )
 
     fun getBboxForCluster(feature: Feature): BoundingBox? {
@@ -39,9 +36,6 @@ class PinsMapComponent(private val map: MapLibreMap) {
             ?.enclosingBoundingBox()
     }
 
-    // todo:
-    //  avoid clustering for multiple quests on the same element
-    //  maybe replace circles with pins with the number written on them?
     val layers: List<Layer> = listOf(
         CircleLayer("pin-cluster-layer", SOURCE)
             .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))

@@ -325,11 +325,13 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         if (jsonObject != null) {
             if (jsonObject.has("point_count")) {
+                // zoom-in to cluster
                 val bbox = pinsMapComponent?.getBboxForCluster(feature)
                 val target = bbox?.let { map?.getEnclosingCamera(it, Insets.NONE) }
                 target?.let { updateCameraPosition(300) {
                     this.position = it.position
-                    this.zoom = (it.zoom - 0.2).coerceAtMost(19.0) // don't zoom in fully
+                    // don't zoom in fully: leave some space to show the full pins, and limit max zoom
+                    this.zoom = (it.zoom - 0.25).coerceAtMost(19.0)
                 } }
                 return true
             }
