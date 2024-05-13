@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import androidx.annotation.UiThread
 import com.google.gson.JsonObject
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.android.maps.MapLibreMap
@@ -13,9 +14,14 @@ import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.logs.Log
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.maplibre.android.style.sources.GeoJsonOptions
+import org.maplibre.geojson.Point
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
 class PinsMapComponent(private val map: MapLibreMap) {
@@ -29,6 +35,19 @@ class PinsMapComponent(private val map: MapLibreMap) {
     )
 
     fun getClusterExpansionZoom(feature: Feature) = pinsSource.getClusterExpansionZoom(feature)
+    fun getBboxForCluster(feature: Feature): BoundingBox {
+        val leaves = pinsSource.getClusterLeaves(feature, Long.MAX_VALUE, 0L)
+        val ll = mutableListOf<LatLon>()
+        leaves.features()?.forEach { ll.add((it.geometry()!! as Point).let { LatLon(it.latitude(), it.longitude()) }) }
+        return ll.enclosingBoundingBox()
+    }
+    fun getCamera(feature: Feature): BoundingBox {
+        CameraUpdate()
+        val leaves = pinsSource.getClusterLeaves(feature, Long.MAX_VALUE, 0L)
+        val ll = mutableListOf<LatLon>()
+        leaves.features()?.forEach { ll.add((it.geometry()!! as Point).let { LatLon(it.latitude(), it.longitude()) }) }
+        return ll.enclosingBoundingBox()
+    }
 
     // todo:
     //  avoid clustering for multiple quests on the same element
