@@ -14,11 +14,9 @@ import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.maplibre.android.style.sources.GeoJsonOptions
 import org.maplibre.geojson.Point
@@ -34,19 +32,11 @@ class PinsMapComponent(private val map: MapLibreMap) {
 //            .withClusterProperty(propertyName = , operatorExpr = , mapExpr = )
     )
 
-    fun getClusterExpansionZoom(feature: Feature) = pinsSource.getClusterExpansionZoom(feature)
-    fun getBboxForCluster(feature: Feature): BoundingBox {
+    fun getBboxForCluster(feature: Feature): BoundingBox? {
         val leaves = pinsSource.getClusterLeaves(feature, Long.MAX_VALUE, 0L)
-        val ll = mutableListOf<LatLon>()
-        leaves.features()?.forEach { ll.add((it.geometry()!! as Point).let { LatLon(it.latitude(), it.longitude()) }) }
-        return ll.enclosingBoundingBox()
-    }
-    fun getCamera(feature: Feature): BoundingBox {
-        CameraUpdate()
-        val leaves = pinsSource.getClusterLeaves(feature, Long.MAX_VALUE, 0L)
-        val ll = mutableListOf<LatLon>()
-        leaves.features()?.forEach { ll.add((it.geometry()!! as Point).let { LatLon(it.latitude(), it.longitude()) }) }
-        return ll.enclosingBoundingBox()
+        return leaves.features()
+            ?.mapNotNull { (it.geometry() as? Point)?.toLatLon() }
+            ?.enclosingBoundingBox()
     }
 
     // todo:

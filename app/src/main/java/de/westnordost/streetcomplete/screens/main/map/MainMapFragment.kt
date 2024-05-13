@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -327,19 +326,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         if (jsonObject != null) {
             if (jsonObject.has("point_count")) {
                 val bbox = pinsMapComponent?.getBboxForCluster(feature)
-                val geo = bbox?.let { ElementPolylinesGeometry(listOf(listOf(it.max, it.min)), it.min) } // incorrect and cheap
-
-                val target = geo?.let { map?.getEnclosingCamera(it, Insets.NONE) }
+                val target = bbox?.let { map?.getEnclosingCamera(it, Insets.NONE) }
                 target?.let { updateCameraPosition(300) {
                     this.position = it.position
                     this.zoom = (it.zoom - 0.2).coerceAtMost(19.0) // don't zoom in fully
                 } }
-/*                updateCameraPosition(300) {
-                    this.position = position.toLatLon()
-                    // this zooms so that the cluster splits into single elements or other clusters
-                    // getClusterChildren() and calculating bbox would be even better
-                    zoom = pinsMapComponent?.getClusterExpansionZoom(feature)?.coerceAtMost(19)?.toDouble()
-                }*/
                 return true
             }
             when (pinMode) {
