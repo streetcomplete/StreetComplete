@@ -4,7 +4,7 @@ URLs to other sources used:
  - Twemoji 2 (MIT license)      https://github.com/twitter/twemoji/
  - EmojiOne 2 (CC-BY 4 license) https://github.com/emojione/emojione/tree/2.2.7
  - Google Noto Color Emoji      https://github.com/googlefonts/noto-emoji/tree/main
-   (Apache license, version 2.0) 
+   (Apache license, version 2.0)
 
 File                            Author if not Tobias Zwick / Source
 ===============================================================================
@@ -366,6 +366,8 @@ quest/
     oneway.svg
     opening_hours.svg
     opening_hours_signed.svg
+    parcel_locker_deposit.svg        Arthur-GYT, parts from https://emojipedia.org/ (License: CC0 1.0)
+    parcel_locker_pickup.svg         Arthur-GYT, parts from https://emojipedia.org/ (License: CC0 1.0)
     parking.svg
     parking_access.svg               parts taken from EmojiOne 2: U+1F511
     parking_fee.svg                  parts taken from EmojiOne 2: U+1F4B8
