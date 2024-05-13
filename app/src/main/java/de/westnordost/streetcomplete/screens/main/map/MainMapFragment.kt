@@ -318,22 +318,22 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         // only query specific layer(s) - leaving layerIds empty would query all layers
         // result is already sorted by visual render order, descending
         val feature = map?.queryRenderedFeatures(searchArea,
-            "pins-layer", "pin-dot-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
+            "pins-layer", "pin-cluster-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
         )?.firstOrNull()
         val jsonObject = feature?.properties()
 
         if (jsonObject != null) {
+            if (jsonObject.has("point_count")) {
+                updateCameraPosition(300) {
+                    this.position = position.toLatLon()
+                    // this zooms so that the cluster splits into single elements or other clusters
+                    // getClusterChildren() and calculating bbox would be even better
+                    zoom = pinsMapComponent?.getClusterExpansionZoom(feature)?.coerceAtMost(19)?.toDouble()
+                }
+                return true
+            }
             when (pinMode) {
                 PinMode.QUESTS -> {
-                    if (jsonObject.has("point_count")) {
-                        updateCameraPosition(300) {
-                            this.position = position.toLatLon()
-                            // this zooms so that the cluster splits into single elements or other clusters
-                            // getClusterChildren() and calculating bbox would be even better
-                            zoom = pinsMapComponent?.getClusterExpansionZoom(feature)?.coerceAtMost(19)?.toDouble()
-                        }
-                        return true
-                    }
                     val properties = pinsMapComponent?.getProperties(jsonObject)
                     val questKey = properties?.let { questPinsManager?.getQuestKey(it) }
                     if (questKey != null) {

@@ -36,19 +36,27 @@ class PinsMapComponent(private val map: MapLibreMap) {
     //  avoid clustering for multiple quests on the same element
     //  maybe replace circles with pins with the number written on them?
     val layers: List<Layer> = listOf(
-        CircleLayer("pin-dot-layer", SOURCE)
-            .withFilter(all(gte(zoom(), 14f), lte(zoom(), 17f), gt(toNumber(get("point_count")), 1)))
+        CircleLayer("pin-cluster-layer", SOURCE)
+            .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("grey"),
                 circleRadius(sum(toNumber(literal(10f)), sqrt(get("point_count")))),
                 circleStrokeWidth(1f)
             ),
-        SymbolLayer("pin-dot-text-layer", SOURCE)
-            .withFilter(all(gte(zoom(), 14f), lte(zoom(), 17f), gt(toNumber(get("point_count")), 1)))
+        SymbolLayer("pin-cluster-text-layer", SOURCE)
+            .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
             .withProperties(
                 textField(get("point_count")),
                 textAllowOverlap(true) // avoid quest pins hiding number
+            ),
+        CircleLayer("pin-dot-layer", SOURCE)
+            .withFilter(gt(zoom(), CLUSTER_START_ZOOM))
+            .withProperties(
+                circleColor("white"),
+                circleStrokeColor("grey"),
+                circleRadius(5f),
+                circleStrokeWidth(1f)
             ),
         SymbolLayer("pins-layer", SOURCE)
             .withFilter(gte(zoom(), 16f))
@@ -94,6 +102,7 @@ class PinsMapComponent(private val map: MapLibreMap) {
 
     companion object {
         private const val SOURCE = "pins-source"
+        private const val CLUSTER_START_ZOOM = 17f
     }
 }
 
