@@ -8,7 +8,7 @@ Migrated from the map renderer tangram-es to [MapLibre](https://maplibre.org/). 
 
 Display-wise, nothing much *should* change, the map will just look and behave a little different.
 
-Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #3417, #3397, #3346, #3275, #3022, #2711, #2703, #2612, #2571, #2187, #1713, #1684, #1019, #807, #318, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
+Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #4026, #3417, #3397, #3346, #3275, #3022, #2878, #2711, #2703, #2612, #2571, #2373, #2359, #2358, #2187, #1713, #1684, #1264, #1019, #869, #807, #318, #179, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
 
 ## v57.2
 
