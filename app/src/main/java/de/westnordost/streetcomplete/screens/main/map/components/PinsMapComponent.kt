@@ -49,6 +49,7 @@ class PinsMapComponent(private val map: MapLibreMap) {
             .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
             .withProperties(
                 textField(get("point_count")),
+                textSize(sum(literal(15f), division(sqrt(get("point_count")), literal(2f)))),
                 textAllowOverlap(true) // avoid quest pins hiding number
             ),
         CircleLayer("pin-dot-layer", SOURCE)
