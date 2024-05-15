@@ -204,7 +204,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
-        pinsMapComponent = PinsMapComponent(map)
+        pinsMapComponent = PinsMapComponent(context.contentResolver, map)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 
@@ -321,14 +321,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         if (jsonObject != null) {
             if (jsonObject.has("point_count")) {
-                // zoom-in to cluster
-                val bbox = pinsMapComponent?.getBboxForCluster(feature)
-                val target = bbox?.let { map?.getEnclosingCamera(it, Insets.NONE) }
-                target?.let { updateCameraPosition(300) {
-                    this.position = it.position
-                    // don't zoom in fully: leave some space to show the full pins, and limit max zoom
-                    this.zoom = (it.zoom - 0.25).coerceAtMost(19.0)
-                } }
+                pinsMapComponent?.zoomToCluster(feature)
                 return true
             }
             when (pinMode) {

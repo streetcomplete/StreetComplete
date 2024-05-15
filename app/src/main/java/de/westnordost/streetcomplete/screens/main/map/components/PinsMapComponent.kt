@@ -1,12 +1,23 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.ContentResolver
 import androidx.annotation.UiThread
+import androidx.core.graphics.Insets
 import com.google.gson.JsonObject
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.style.expressions.Expression.*
+import org.maplibre.android.style.expressions.Expression.all
+import org.maplibre.android.style.expressions.Expression.division
+import org.maplibre.android.style.expressions.Expression.gte
+import org.maplibre.android.style.expressions.Expression.lte
+import org.maplibre.android.style.expressions.Expression.gt
+import org.maplibre.android.style.expressions.Expression.get
+import org.maplibre.android.style.expressions.Expression.literal
+import org.maplibre.android.style.expressions.Expression.sqrt
+import org.maplibre.android.style.expressions.Expression.sum
+import org.maplibre.android.style.expressions.Expression.toNumber
+import org.maplibre.android.style.expressions.Expression.zoom
 import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.Layer
 import org.maplibre.android.style.layers.Property
@@ -15,26 +26,28 @@ import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.maplibre.android.style.sources.GeoJsonOptions
 import org.maplibre.geojson.Point
+import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.roundToInt
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
-class PinsMapComponent(private val map: MapLibreMap) {
+class PinsMapComponent(
+    private val contentResolver: ContentResolver,
+    private val map: MapLibreMap
+) {
     private val pinsSource = GeoJsonSource(SOURCE,
         GeoJsonOptions()
             .withCluster(true)
             .withClusterMaxZoom(17)
     )
-
-    fun getBboxForCluster(feature: Feature): BoundingBox? {
-        val leaves = pinsSource.getClusterLeaves(feature, Long.MAX_VALUE, 0L)
-        return leaves.features()
-            ?.mapNotNull { (it.geometry() as? Point)?.toLatLon() }
-            ?.enclosingBoundingBox()
-    }
 
     val layers: List<Layer> = listOf(
         CircleLayer("pin-cluster-layer", SOURCE)
@@ -99,6 +112,27 @@ class PinsMapComponent(private val map: MapLibreMap) {
     /** Clear pins */
     @UiThread fun clear() {
         pinsSource.clear()
+    }
+
+    @UiThread fun zoomToCluster(feature: Feature) {
+        val leaves = pinsSource.getClusterLeaves(feature, Long.MAX_VALUE, 0L)
+        val bbox = leaves.features()
+            ?.mapNotNull { (it.geometry() as? Point)?.toLatLon() }
+            ?.enclosingBoundingBox()
+            ?: return
+        val targetPos = map.getEnclosingCamera(bbox, Insets.NONE) ?: return
+
+        // don't zoom in fully: leave some space to show the full pins, and limit max zoom
+        val targetZoom = min(targetPos.zoom - 0.25, 19.0)
+
+        val zoomDiff = abs(map.cameraPosition.zoom - targetZoom)
+        val zoomTime = max(450, (zoomDiff * 450).roundToInt())
+
+        map.updateCamera(zoomTime, contentResolver) {
+            position = targetPos.position
+            padding = targetPos.padding
+            this.zoom = targetZoom
+        }
     }
 
     companion object {
