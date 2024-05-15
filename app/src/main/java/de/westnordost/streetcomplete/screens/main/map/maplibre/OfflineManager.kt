@@ -66,17 +66,20 @@ suspend fun OfflineRegion.awaitDelete(): Unit = suspendCoroutine { cont ->
 suspend fun OfflineRegion.awaitDownload(): OfflineRegionStatus = suspendCoroutine { cont ->
     setObserver(object : OfflineRegion.OfflineRegionObserver {
         override fun mapboxTileCountLimitExceeded(limit: Long) {
+            setObserver(null)
             setDownloadState(OfflineRegion.STATE_INACTIVE)
             cont.resumeWithException(OfflineManagerException("Tile count limit of $limit tiles exceeded"))
         }
 
         override fun onError(error: OfflineRegionError) {
+            setObserver(null)
             setDownloadState(OfflineRegion.STATE_INACTIVE)
             cont.resumeWithException(OfflineManagerException(error.message))
         }
 
         override fun onStatusChanged(status: OfflineRegionStatus) {
             if (status.isComplete) {
+                setObserver(null)
                 setDownloadState(OfflineRegion.STATE_INACTIVE)
                 cont.resume(status)
             }
