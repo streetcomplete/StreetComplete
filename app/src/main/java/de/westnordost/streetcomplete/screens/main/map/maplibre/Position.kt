@@ -30,6 +30,9 @@ fun MapLibreMap.screenAreaToBoundingBox(): BoundingBox =
 fun LatLngBounds.toBoundingBox() =
     BoundingBox(latitudeSouth, longitudeWest, latitudeNorth, longitudeEast)
 
+fun BoundingBox.toLatLngBounds() =
+    LatLngBounds.from(max.latitude, max.longitude, min.latitude, min.longitude)
+
 fun LatLng.toLatLon() = LatLon(latitude, longitude)
 fun LatLon.toLatLng() = LatLng(latitude, longitude)
 
@@ -93,5 +96,6 @@ fun ElementPolygonsGeometry.toMapLibreGeometry(): Geometry {
 }
 
 fun LatLon.toPoint(): Point = Point.fromLngLat(longitude, latitude)
+fun Point.toLatLon(): LatLon = LatLon(latitude(), longitude())
 
 fun GeoJsonSource.clear() = setGeoJson(null as FeatureCollection?)

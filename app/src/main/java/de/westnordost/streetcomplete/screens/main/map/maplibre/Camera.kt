@@ -6,11 +6,18 @@ import androidx.core.graphics.Insets
 import org.maplibre.android.camera.CameraUpdateFactory
 import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 fun MapLibreMap.getEnclosingCamera(geometry: ElementGeometry, insets: Insets): CameraPosition? =
     getCameraForGeometry(
         geometry.toMapLibreGeometry(),
+        intArrayOf(insets.left, insets.top, insets.right, insets.bottom)
+    )?.toCameraPosition()
+
+fun MapLibreMap.getEnclosingCamera(bbox: BoundingBox, insets: Insets): CameraPosition? =
+    getCameraForLatLngBounds(
+        bbox.toLatLngBounds(),
         intArrayOf(insets.left, insets.top, insets.right, insets.bottom)
     )?.toCameraPosition()
 

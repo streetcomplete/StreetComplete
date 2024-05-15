@@ -1,11 +1,23 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.ContentResolver
 import androidx.annotation.UiThread
+import androidx.core.graphics.Insets
 import com.google.gson.JsonObject
 import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.style.expressions.Expression.*
+import org.maplibre.android.style.expressions.Expression.all
+import org.maplibre.android.style.expressions.Expression.division
+import org.maplibre.android.style.expressions.Expression.gte
+import org.maplibre.android.style.expressions.Expression.lte
+import org.maplibre.android.style.expressions.Expression.gt
+import org.maplibre.android.style.expressions.Expression.get
+import org.maplibre.android.style.expressions.Expression.literal
+import org.maplibre.android.style.expressions.Expression.sqrt
+import org.maplibre.android.style.expressions.Expression.sum
+import org.maplibre.android.style.expressions.Expression.toNumber
+import org.maplibre.android.style.expressions.Expression.zoom
 import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.Layer
 import org.maplibre.android.style.layers.Property
@@ -14,15 +26,47 @@ import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import org.maplibre.android.style.sources.GeoJsonOptions
+import org.maplibre.geojson.Point
+import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.roundToInt
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
-class PinsMapComponent(private val map: MapLibreMap) {
-    private val pinsSource = GeoJsonSource(SOURCE)
+class PinsMapComponent(
+    private val contentResolver: ContentResolver,
+    private val map: MapLibreMap
+) {
+    private val pinsSource = GeoJsonSource(SOURCE,
+        GeoJsonOptions()
+            .withCluster(true)
+            .withClusterMaxZoom(17)
+    )
 
     val layers: List<Layer> = listOf(
+        CircleLayer("pin-cluster-layer", SOURCE)
+            .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
+            .withProperties(
+                circleColor("white"),
+                circleStrokeColor("grey"),
+                circleRadius(sum(toNumber(literal(10f)), sqrt(get("point_count")))),
+                circleStrokeWidth(1f)
+            ),
+        SymbolLayer("pin-cluster-text-layer", SOURCE)
+            .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
+            .withProperties(
+                textField(get("point_count")),
+                textSize(sum(literal(15f), division(sqrt(get("point_count")), literal(2f)))),
+                textAllowOverlap(true) // avoid quest pins hiding number
+            ),
         CircleLayer("pin-dot-layer", SOURCE)
-            .withFilter(gte(zoom(), 14f))
+            .withFilter(gt(zoom(), CLUSTER_START_ZOOM))
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("#aaaaaa"),
@@ -61,7 +105,7 @@ class PinsMapComponent(private val map: MapLibreMap) {
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     @UiThread fun set(pins: Collection<Pin>) {
-        val features = pins.sortedBy { it.order }.map { it.toFeature() }
+        val features = pins.sortedBy { it.order }.distinctBy { it.position }.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         pinsSource.setGeoJson(mapLibreFeatures)
     }
@@ -71,8 +115,30 @@ class PinsMapComponent(private val map: MapLibreMap) {
         pinsSource.clear()
     }
 
+    @UiThread fun zoomToCluster(feature: Feature) {
+        val leaves = pinsSource.getClusterLeaves(feature, Long.MAX_VALUE, 0L)
+        val bbox = leaves.features()
+            ?.mapNotNull { (it.geometry() as? Point)?.toLatLon() }
+            ?.enclosingBoundingBox()
+            ?: return
+        val targetPos = map.getEnclosingCamera(bbox, Insets.NONE) ?: return
+
+        // don't zoom in fully: leave some space to show the full pins, and limit max zoom
+        val targetZoom = min(targetPos.zoom - 0.25, 19.0)
+
+        val zoomDiff = abs(map.cameraPosition.zoom - targetZoom)
+        val zoomTime = max(450, (zoomDiff * 450).roundToInt())
+
+        map.updateCamera(zoomTime, contentResolver) {
+            position = targetPos.position
+            padding = targetPos.padding
+            this.zoom = targetZoom
+        }
+    }
+
     companion object {
         private const val SOURCE = "pins-source"
+        private const val CLUSTER_START_ZOOM = 17f
     }
 }
 

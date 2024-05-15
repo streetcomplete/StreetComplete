@@ -37,6 +37,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMap
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -203,7 +204,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
-        pinsMapComponent = PinsMapComponent(map)
+        pinsMapComponent = PinsMapComponent(context.contentResolver, map)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 
@@ -313,11 +314,16 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         )
         // only query specific layer(s) - leaving layerIds empty would query all layers
         // result is already sorted by visual render order, descending
-        val jsonObject = map?.queryRenderedFeatures(searchArea,
-            "pins-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
-        )?.firstOrNull()?.properties()
+        val feature = map?.queryRenderedFeatures(searchArea,
+            "pins-layer", "pin-cluster-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
+        )?.firstOrNull()
+        val jsonObject = feature?.properties()
 
         if (jsonObject != null) {
+            if (jsonObject.has("point_count")) {
+                pinsMapComponent?.zoomToCluster(feature)
+                return true
+            }
             when (pinMode) {
                 PinMode.QUESTS -> {
                     val properties = pinsMapComponent?.getProperties(jsonObject)
