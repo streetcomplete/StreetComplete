@@ -54,7 +54,7 @@ class PinsMapComponent(
             .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
             .withProperties(
                 circleColor("white"),
-                circleStrokeColor("grey"),
+                circleStrokeColor("#aaaaaa"),
                 circleRadius(sum(toNumber(literal(10f)), sqrt(get("point_count")))),
                 circleStrokeWidth(1f)
             ),
@@ -79,11 +79,11 @@ class PinsMapComponent(
             .withFilter(gte(zoom(), 16f))
             .withProperties(
                 iconImage(get("icon-image")),
-                iconSize(0.5f),
-                // better would be arrayOf(-5f, 0f, -14f, 5f) or something like that, but setting
+                iconSize(1f),
+                // better would be arrayOf(-2.5f, 0f, -7f, 2.5f) or something like that, but setting
                 // different paddings per side is not supported by MapLibre Native yet
-                iconPadding(-4f),
-                iconOffset(listOf(-9f, -69f).toTypedArray()),
+                iconPadding(-2f),
+                iconOffset(listOf(-4.5f, -34.5f).toTypedArray()),
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE), // = order in which they were added
             )
     )

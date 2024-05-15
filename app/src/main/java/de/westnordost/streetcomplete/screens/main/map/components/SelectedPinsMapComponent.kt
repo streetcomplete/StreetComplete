@@ -38,15 +38,15 @@ class SelectedPinsMapComponent(private val context: Context, private val map: Ma
             .withProperties(
                 iconImage(get("icon-image")),
                 iconSize(0.5f),
-                iconOffset(listOf(-9f, -69f).toTypedArray()),
+                iconOffset(listOf(-4.5f, -34.5f).toTypedArray()),
             )
     )
 
     init {
         selectedPinsSource.isVolatile = true
         map.style?.addSource(selectedPinsSource)
-        animation = ValueAnimator.ofFloat(0.5f, 1f)
-        animation.duration = 450
+        animation = ValueAnimator.ofFloat(0.5f, 1.5f)
+        animation.duration = 300
         animation.interpolator = OvershootInterpolator()
         animation.addUpdateListener { animatePin(it.animatedValue as Float) }
     }

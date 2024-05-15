@@ -40,7 +40,7 @@ class MapIcons(
 
         val result = HashMap<String, Bitmap>(questIconResIds.size)
 
-        val scale = 2f
+        val scale = 1f
         val size = context.resources.dpToPx(71 * scale)
         val sizeInt = ceil(size).toInt()
         val iconSize = context.resources.dpToPx(48 * scale)
