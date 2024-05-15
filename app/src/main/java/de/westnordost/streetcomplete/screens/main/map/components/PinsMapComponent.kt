@@ -27,10 +27,12 @@ import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.style.sources.GeoJsonOptions
 import org.maplibre.geojson.Point
 import kotlin.math.abs
@@ -41,7 +43,9 @@ import kotlin.math.roundToInt
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
 class PinsMapComponent(
     private val contentResolver: ContentResolver,
-    private val map: MapLibreMap
+    private val map: MapLibreMap,
+    private val clickRadius: Float,
+    private val onClickPin: (properties: Map<String, String>) -> Unit
 ) {
     private val pinsSource = GeoJsonSource(SOURCE,
         GeoJsonOptions()
@@ -94,13 +98,10 @@ class PinsMapComponent(
         layers.forEach { it.setProperties(visibility(visibility)) }
     }
 
-    fun getProperties(properties: JsonObject): Map<String, String> =
-        properties.getProperties()
-
-
     init {
         pinsSource.isVolatile = true
         map.style?.addSource(pinsSource)
+        map.addOnMapClickListener(::onClick)
     }
 
     /** Show given pins. Previously shown pins are replaced with these.  */
@@ -115,7 +116,24 @@ class PinsMapComponent(
         pinsSource.clear()
     }
 
-    @UiThread fun zoomToCluster(feature: Feature) {
+    private fun onClick(position: LatLng): Boolean {
+        val feature = map.queryRenderedFeatures(
+            coordinates = map.projection.toScreenLocation(position),
+            radius = clickRadius,
+            layerIds = arrayOf("pins-layer", "pin-cluster-layer")
+        ).firstOrNull() ?: return false
+
+        val properties = feature.properties()
+
+        if (properties.has("point_count")) {
+            zoomToCluster(feature)
+        } else {
+            onClickPin(properties.getProperties())
+        }
+        return true
+    }
+
+    private fun zoomToCluster(feature: Feature) {
         val leaves = pinsSource.getClusterLeaves(feature, Long.MAX_VALUE, 0L)
         val bbox = leaves.features()
             ?.mapNotNull { (it.geometry() as? Point)?.toLatLon() }

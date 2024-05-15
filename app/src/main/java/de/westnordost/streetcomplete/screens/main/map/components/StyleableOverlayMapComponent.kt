@@ -32,12 +32,19 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
+import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.ktx.toRGB
+import org.maplibre.android.geometry.LatLng
 
 /** Takes care of displaying styled map data */
-class StyleableOverlayMapComponent(private val context: Context, private val map: MapLibreMap) {
+class StyleableOverlayMapComponent(
+    private val context: Context,
+    private val map: MapLibreMap,
+    private val clickRadius: Float,
+    private val onClickElement: (key: ElementKey) -> Unit
+) {
 
     private val overlaySource = GeoJsonSource(
         SOURCE,
@@ -199,6 +206,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
     init {
         overlaySource.isVolatile = true
         map.style?.addSource(overlaySource)
+        map.addOnMapClickListener(::onClick)
     }
 
     /** Show given map data with each the given style */
@@ -206,6 +214,23 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
         val features = styledElements.flatMap { it.toFeatures() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         overlaySource.setGeoJson(mapLibreFeatures)
+    }
+
+    private fun onClick(position: LatLng): Boolean {
+        val feature = map.queryRenderedFeatures(
+            coordinates = map.projection.toScreenLocation(position),
+            radius = clickRadius,
+            layerIds = arrayOf("overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills")
+        ).firstOrNull() ?: return false
+
+        val properties = feature.properties()
+
+        val elementKey = getElementKey(properties)
+        if (elementKey != null) {
+            onClickElement(elementKey)
+            return true
+        }
+        return false
     }
 
     private fun StyledElement.toFeatures(): List<Feature> {
@@ -300,7 +325,7 @@ class StyleableOverlayMapComponent(private val context: Context, private val map
         }
     }
 
-    fun getElementKey(properties: JsonObject): ElementKey? {
+    private fun getElementKey(properties: JsonObject): ElementKey? {
         val id = properties[ELEMENT_ID]?.asLong ?: return null
         val type = properties[ELEMENT_TYPE]?.asString ?: return null
         return ElementKey(ElementType.valueOf(type), id)

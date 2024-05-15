@@ -38,6 +38,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverla
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -182,9 +183,9 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     override suspend fun onMapStyleLoaded(map: MapLibreMap, style: Style) {
-        map.addOnMapClickListener { onClickMap(it) }
-
         setupComponents(requireContext(), map, style)
+
+        map.addOnMapClickListener(::onClickMap)
 
         style.addImagesAsync(mapIcons.presetBitmaps, true)
         style.addImagesAsync(mapIcons.pinBitmaps)
@@ -196,6 +197,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     private fun setupComponents(context: Context, map: MapLibreMap, style: Style) {
+        val fingerRadius = context.resources.dpToPx(CLICK_AREA_SIZE_IN_DP / 2)
+
         geometryMarkersMapComponent = GeometryMarkersMapComponent(context, map)
 
         locationMapComponent = CurrentLocationMapComponent(context, style, map)
@@ -204,11 +207,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
-        pinsMapComponent = PinsMapComponent(context.contentResolver, map)
+        pinsMapComponent = PinsMapComponent(context.contentResolver, map, fingerRadius, ::onClickPin)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(context, map)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(context, map, fingerRadius, ::onClickElement)
 
         downloadedAreaMapComponent = DownloadedAreaMapComponent(context, map)
 
@@ -303,59 +306,31 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     //region Tracking GPS, Rotation, location availability, pin mode, click ...
 
-    private fun onClickMap(position: LatLng): Boolean {
-        val fingerRadius = context?.resources?.dpToPx(CLICK_AREA_SIZE_IN_DP / 2)?.toInt() ?: return false
-        val clickPos = map?.projection?.toScreenLocation(position) ?: return false
-        val searchArea = RectF(
-            clickPos.x - fingerRadius,
-            clickPos.y - fingerRadius,
-            clickPos.x + fingerRadius,
-            clickPos.y + fingerRadius
-        )
-        // only query specific layer(s) - leaving layerIds empty would query all layers
-        // result is already sorted by visual render order, descending
-        val feature = map?.queryRenderedFeatures(searchArea,
-            "pins-layer", "pin-cluster-layer", "overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills"
-        )?.firstOrNull()
-        val jsonObject = feature?.properties()
-
-        if (jsonObject != null) {
-            if (jsonObject.has("point_count")) {
-                pinsMapComponent?.zoomToCluster(feature)
-                return true
+    private fun onClickPin(properties: Map<String, String>) {
+        when (pinMode) {
+            PinMode.QUESTS -> {
+                questPinsManager?.getQuestKey(properties)?.let { listener?.onClickedQuest(it) }
             }
-            when (pinMode) {
-                PinMode.QUESTS -> {
-                    val properties = pinsMapComponent?.getProperties(jsonObject)
-                    val questKey = properties?.let { questPinsManager?.getQuestKey(it) }
-                    if (questKey != null) {
-                        listener?.onClickedQuest(questKey)
-                        return true
-                    }
-                }
-                PinMode.EDITS -> {
-                    val properties = pinsMapComponent?.getProperties(jsonObject)
-                    val editKey = properties?.let { editHistoryPinsManager?.getEditKey(it) }
-                    if (editKey != null) {
-                        listener?.onClickedEdit(editKey)
-                        return true
-                    }
-                }
-                PinMode.NONE -> {}
+            PinMode.EDITS -> {
+                editHistoryPinsManager?.getEditKey(properties)?.let { listener?.onClickedEdit(it) }
             }
-
-            val elementKey = styleableOverlayMapComponent?.getElementKey(jsonObject)
-            if (elementKey != null) {
-                listener?.onClickedElement(elementKey)
-                return true
-            }
+            PinMode.NONE -> {}
         }
+    }
+
+    private fun onClickElement(key: ElementKey) {
+        listener?.onClickedElement(key)
+    }
+
+    private fun onClickMap(position: LatLng): Boolean {
+        val fingerRadius = context?.resources?.dpToPx(CLICK_AREA_SIZE_IN_DP / 2) ?: return false
+        val clickPos = map?.projection?.toScreenLocation(position) ?: return false
 
         // no feature: just click the map
         val fingerEdgePosition = map?.projection?.fromScreenLocation(PointF(clickPos.x + fingerRadius, clickPos.y)) ?: return false
         val fingerRadiusInMeters = position.distanceTo(fingerEdgePosition)
         listener?.onClickedMapAt(position.toLatLon(), fingerRadiusInMeters)
-        return false
+        return true
     }
 
     @SuppressLint("MissingPermission")
