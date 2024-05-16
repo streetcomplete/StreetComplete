@@ -15,6 +15,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [nl]
 orchardProduces: [pear, apple, tomato, strawberry, chilli_pepper, sweet_pepper, blueberry, plum, raspberry, cherry, grape]
+parcelLockerBrand: [PostNL, DHL, DHL Packstation, de Buren, Hub, Budbee, MyPup, DHL Parcelstation]
 popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian, basketball, field_hockey]
 postboxesHaveCollectionTimes: true

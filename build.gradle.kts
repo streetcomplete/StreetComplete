@@ -43,6 +43,15 @@ tasks.register<QLeverCountValueByCountryTask>("updateAtmOperators") {
     minPercent = 0.1
 }
 
+tasks.register<QLeverCountValueByCountryTask>("updateParcelLockerBrand") {
+    group = "streetcomplete"
+    targetFile = "$projectDir/res/country_metadata/parcelLockerBrand.yml"
+    osmTag = "brand"
+    sparqlQueryPart = "osmkey:amenity 'parcel_locker';"
+    minCount = 2
+    minPercent = 0.1
+}
+
 tasks.register<QLeverCountValueByCountryTask>("updateClothesContainerOperators") {
     group = "streetcomplete"
     targetFile = "$projectDir/res/country_metadata/clothesContainerOperators.yml"
@@ -107,6 +116,7 @@ tasks.register("updateStreetCompleteData") {
         "updateChargingStationOperators",
         "updateClothesContainerOperators",
         "updateAtmOperators",
+        "updateParcelLockerBrand",
         "generateQuestList",
         "app:updatePresets",
         "app:updateNsiPresets",

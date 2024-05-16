@@ -2,3 +2,4 @@
 atmOperators: [Chase, Wells Fargo, Bank of America, Truist, SunTrust, Publix, Fifth Third Bank, Citibank, PNC Bank, Presto!, ATM, iTHINK Financial, TD Bank, Athena Bitcoin, VyStar, Tyndall Federal Credit Union, Tampa Bay Federal Credit Union, Suncoast Credit Union, Regions Bank, Centennial Bank, Arco Globus Vending LLC, Allpoint, Synovus, PenFed Credit Union, Partners Federal Credit Union, FNBT, Community First Credit Union, Athena Bitcoin Inc.]
 chargingStationOperators: ['Tesla, Inc.', Electrify America, ChargePoint, Duke Energy, Blink, Shell Recharge Solutions, adstec, Tesla Motors, Seaside, Clipper Creek, Whole Foods, Publix, EVgo, 7-Eleven]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub, Amazon Hub Locker, Amazon Locker]

@@ -15,6 +15,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 230
 officialLanguages: [cs]
 orchardProduces: [grape, apple, hop, plum, cherry, apricot, pear, strawberry, peach, chilli_pepper, sweet_pepper, tomato, walnut, raspberry]
+parcelLockerBrand: [Packeta, AlzaBox, Penguin Box, PPL, GLS, DPD, WE|DO, PPL Box]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true

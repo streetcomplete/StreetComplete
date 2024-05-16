@@ -4,3 +4,4 @@ chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Volta, Blink, EVgo, BGE, 
 clothesContainerOperators: [Planet Aid, JJ Recycling]
 defaultSpeedLimitHasUrbanOrRural: true
 noStoppingLineStyle: yellow on curb
+parcelLockerBrand: [Amazon Hub, Amazon Locker]

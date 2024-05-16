@@ -3,3 +3,4 @@ atmOperators: [Bank of America, Wells Fargo, Publix, PNC Bank, Truist, SunTrust,
 chargingStationOperators: [Electrify America, ChargePoint, Georgia Power, 'Tesla, Inc.', Volta, eVgo, Tesla, Whole Foods, NRG Energy, Middle Georgia State University, Georgia College, EVgo, Cobb EMC, City of Thomasville, Blink]
 clothesContainerOperators: [Green Zone Recycling]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub, Amazon Locker]

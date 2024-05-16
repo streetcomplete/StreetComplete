@@ -3,3 +3,4 @@ atmOperators: [Bank of America, Chase, Wells Fargo, Capital One, USAA, Frost Ban
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Volta, Austin Energy, Blink, EVgo, NRG Energy, Tesla Motors, Tesla, Holiday Inn Express and Suites Amarillo West – Tesla Destination, BEC, Vitesco Technologies, Hampton Inn & Suites Amarillo East - Tesla Destination, Electrify America, BMW, eVgo, ZEF, Hyatt Place Dallas/Allen - Tesla Destination, Hilton Garden Inn Tesla Destination, Globe Life Park in Arlington, Cinemark Allen 16 & XD]
 clothesContainerOperators: [Arms of Hope]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub Locker, Amazon Hub, Amazon Locker]

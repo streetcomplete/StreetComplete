@@ -11,6 +11,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
 orchardProduces: [grape, apple, walnut, plum, tomato, peach, strawberry, chilli_pepper, sweet_pepper, apricot, hop, pear, blueberry, cherry, raspberry]
+parcelLockerBrand: [Packeta, AlzaBox, BalíkoBOX, GLS Balíkomat, GLS, Z-BOX, Penguin Box, Dr. Max, Direct4me, Balíkomat]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 slowZoneLabelPosition: top

@@ -11,6 +11,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 226
 officialLanguages: [ro]
 orchardProduces: [grape, plum, apple, tomato, chilli_pepper, sweet_pepper, strawberry, pear, cherry, apricot, walnut, peach, hazelnut, blueberry, hop, raspberry]
+parcelLockerBrand: [easybox, FANbox, GLS, Ship & Go, EasyBox, DPD Pickup Station, Sameday Easybox, Cargus]
 popularSports: [soccer, tennis, basketball, handball]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom

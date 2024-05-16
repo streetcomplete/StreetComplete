@@ -1273,6 +1273,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="produce_brazil_nuts">Brazil nuts</string>
     <string name="produce_tung_nuts">Tung nuts</string>
 
+    <string name="quest_parcel_locker_brand">"What’s the brand of this parcel locker?"</string>
     <string name="quest_parcel_locker_pickup">Can you pick up parcels here?</string>
     <string name="quest_parcel_locker_mail_in">Can you drop off parcels here?</string>
 

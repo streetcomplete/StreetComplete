@@ -11,6 +11,7 @@ noParkingSignStyle: taiwan
 noStoppingSignStyle: vienna
 officialLanguages: [zh]
 orchardProduces: [areca_nut, guava, mango, mangosteen, banana, tea, pineapple, pear, persimmon, orange, grapefruit, tomato, apricot, papaya, lemon, lime, grape, chilli_pepper, sweet_pepper]
+parcelLockerBrand: [i郵箱]
 popularReligions: [chinese_folk, taoist, buddhist, christian]
 popularSports: [basketball, tennis, volleyball, baseball]
 postboxesHaveCollectionTimes: true

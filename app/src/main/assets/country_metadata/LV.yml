@@ -17,6 +17,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lv]
 orchardProduces: [apple, blueberry, strawberry, raspberry, pear, plum]
+parcelLockerBrand: [Omniva, Smartpost, DPD, Latvijas Pasts, Itella, DPD Pickup Station, Venipak]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA

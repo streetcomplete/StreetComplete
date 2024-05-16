@@ -2,3 +2,4 @@
 atmOperators: [Commonwealth Bank, ANZ, NAB, Westpac, Bendigo Bank, BOM, Next, Bankwest, Next Payments, atmx, HSBC, CBA, Commonwealth, Bank of Melbourne, rediATM, atmX, Westpac Bank, RediATM, Precinct, Commonwealth Bank of Australia, Bank Australia]
 chargingStationOperators: [Evie Networks, Chargefox, Central Victorian Greenhouse Alliance, 'Tesla, Inc.', BP Pulse, AmpCharge, ChargePoint, Jolt, The District Docklands, Secure Parking, RACV, Linga Network, IKEA, Foxcharger]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Australia Post, Amazon Hub]

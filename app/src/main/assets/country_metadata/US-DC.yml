@@ -2,3 +2,4 @@
 atmOperators: [Bank of America, PNC Bank, Wells Fargo, Chase, Truist, Citibank, Capital One, BB&T]
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.']
 defaultSpeedLimitHasUrbanOrRural: false
+parcelLockerBrand: [Amazon Hub]
