@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.setImage
@@ -142,9 +142,11 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             switchToFootwayCyclewaySurfaceLayout()
         }
 
-        val locales = getLocalesForFeatureDictionary(resources.configuration)
-        binding.cyclewaySurfaceLabel.text = featureDictionary.byId("highway/cycleway").forLocale(*locales).get()?.name
-        binding.footwaySurfaceLabel.text = featureDictionary.byId("highway/footway").forLocale(*locales).get()?.name
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        binding.cyclewaySurfaceLabel.text =
+            featureDictionary.getById("highway/cycleway", languages = languages)?.name
+        binding.footwaySurfaceLabel.text =
+            featureDictionary.getById("highway/footway", languages = languages)?.name
 
         checkIsFormComplete()
     }

@@ -14,7 +14,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.databinding.ViewFeatureBinding
 import de.westnordost.streetcomplete.databinding.ViewSelectPresetBinding
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -34,17 +34,14 @@ class SearchFeaturesDialog(
 ) : AlertDialog(context) {
 
     private val binding = ViewSelectPresetBinding.inflate(LayoutInflater.from(context))
-    private val locales = getLocalesForFeatureDictionary(context.resources.configuration)
+    private val languages = getLanguagesForFeatureDictionary(context.resources.configuration)
     private val adapter = FeaturesAdapter()
 
     private val searchText: String? get() = binding.searchEditText.nonBlankTextOrNull
 
     private val defaultFeatures: List<Feature> by lazy {
-        codesOfDefaultFeatures.mapNotNull {
-            featureDictionary
-                .byId(it)
-                .forLocale(*locales)
-                .inCountry(countryOrSubdivisionCode).get()
+        codesOfDefaultFeatures.mapNotNull { id ->
+            featureDictionary.getById(id, languages = languages, country = countryOrSubdivisionCode)
         }
     }
 
@@ -66,13 +63,12 @@ class SearchFeaturesDialog(
     }
 
     private fun getFeatures(startsWith: String): List<Feature> =
-        featureDictionary
-            .byTerm(startsWith)
-            .forGeometry(geometryType)
-            .inCountry(countryOrSubdivisionCode)
-            .forLocale(*locales)
-            .find()
-            .filter(filterFn)
+        featureDictionary.getByTerm(
+            search = startsWith,
+            languages = languages,
+            country = countryOrSubdivisionCode,
+            geometry = geometryType,
+        ).filter(filterFn).take(50).toList()
 
     private fun updateSearchResults() {
         val text = searchText

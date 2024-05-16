@@ -113,6 +113,8 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerBrand
+import de.westnordost.streetcomplete.quests.parcel_locker_mail_in.AddParcelLockerMailIn
+import de.westnordost.streetcomplete.quests.parcel_locker_pickup.AddParcelLockerPickup
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
@@ -387,6 +389,8 @@ fun questTypeRegistry(
     74 to AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
     167 to AddParcelLockerBrand(),
+    168 to AddParcelLockerPickup(),
+    169 to AddParcelLockerMailIn(),
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     75 to AddHousenumber(),

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.ViewStreetOrPlaceNameInputBinding
+import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
@@ -72,8 +73,9 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
 
     override fun onClickOk() {
-        lastWasPlaceName = isShowingPlaceName
-        applyAnswer(streetOrPlaceCtrl.streetOrPlaceName!!)
+        val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName!!
+        lastWasPlaceName = streetOrPlaceName is PlaceName
+        applyAnswer(streetOrPlaceName)
     }
 
     override fun isFormComplete(): Boolean =

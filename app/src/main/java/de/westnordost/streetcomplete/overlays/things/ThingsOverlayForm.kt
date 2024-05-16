@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.DummyFeature
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
@@ -72,16 +72,15 @@ class ThingsOverlayForm : AbstractOverlayForm() {
     }
 
     private fun getFeatureDictionaryFeature(element: Element): Feature? {
-        val locales = getLocalesForFeatureDictionary(resources.configuration)
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
         val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
 
-        return featureDictionary
-            .byTags(element.tags)
-            .forLocale(*locales)
-            .forGeometry(geometryType)
-            .inCountry(countryOrSubdivisionCode)
-            .find()
-            .firstOrNull()
+        return featureDictionary.getByTags(
+            tags = element.tags,
+            languages = languages,
+            country = countryOrSubdivisionCode,
+            geometry = geometryType
+        ).firstOrNull()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

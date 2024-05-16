@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
 import de.westnordost.streetcomplete.util.DummyFeature
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -69,19 +69,18 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
         val element = element
         originalFeature = element?.let {
-            val locales = getLocalesForFeatureDictionary(resources.configuration)
+            val languages = getLanguagesForFeatureDictionary(resources.configuration)
             val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
 
             if (element.isDisusedPlace()) {
-                featureDictionary.byId("shop/vacant").forLocale(*locales).get()
+                featureDictionary.getById("shop/vacant", languages = languages)
             } else {
-                featureDictionary
-                    .byTags(element.tags)
-                    .forLocale(*locales)
-                    .forGeometry(geometryType)
-                    .inCountry(countryOrSubdivisionCode)
-                    .find()
-                    .firstOrNull()
+                featureDictionary.getByTags(
+                    tags = element.tags,
+                    languages = languages,
+                    country = countryOrSubdivisionCode,
+                    geometry = geometryType,
+                ).firstOrNull()
                 // if not found anything in the iD presets, it's a shop type unknown to iD presets
                 ?: DummyFeature(
                     "shop/unknown",
@@ -165,7 +164,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         featureCtrl.feature = feature
         // clear (previous) names if selected feature contains already a name (i.e. is a brand feature)
         // or is vacant
-        if (feature.addTags?.get("name") != null || feature.id == "shop/vacant") {
+        if (feature.addTags["name"] != null || feature.id == "shop/vacant") {
             namesAdapter?.names = emptyList()
         }
 
@@ -174,7 +173,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 
     private fun setVacant() {
-        onSelectedFeature(featureDictionary.byId("shop/vacant").get())
+        onSelectedFeature(featureDictionary.getById("shop/vacant")!!)
     }
 
     private fun createNoNameAnswer(): AnswerItem? =
