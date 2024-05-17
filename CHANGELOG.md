@@ -1,5 +1,29 @@
 # Changelog
 
+## vNext
+
+### New quests
+
+- *"What’s the brand of this parcel locker?*" (#5638), by @Arthur-GYT
+- *"Can you pick up parcels here?*" (#5639), by @Arthur-GYT
+- *"Can you drop off parcels here?*" (#5639), by @Arthur-GYT
+- *"Is there a sign indicating access for mopeds on this bike path?"* - asked exclusively in Belgium (#5567), by @PowerPlop
+
+### Quest improvements
+
+- Max height: Don't ask if it has been specified for forward and backward or individual lanes separately (#5609)
+- Fire hydrant diameter: Now enabled in Hungary (#5617), by @dnet
+- Tactile paving: Now enabled in Columbia (#5579)
+- Prohibited for pedestrians: Clarified UI and wording (#5610)
+- Drinking water: Don't ask for intermittent water sources (#5632), by @esilja
+- Other small improvements and fixes (#5631, ...)
+
+### General improvements
+
+- For some quests, there is now an ℹ-button which expands a help text (#5612, #1913)
+- The user profile screen looks a bit different now (#5607)
+- Other small improvements (#5635), thanks @riQQ
+
 ## v57.4
 
 - Fix crash under certain circumstances in bike path overlay (#5604) (regression from #5596)
