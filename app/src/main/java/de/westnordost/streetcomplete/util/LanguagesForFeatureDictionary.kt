@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.util.ktx.toList
 
 fun getLanguagesForFeatureDictionary(configuration: Configuration): List<String?> {
     val result = ArrayList<String?>()
-    result.addAll(ConfigurationCompat.getLocales(configuration).toList().map { it.toLanguageTag() } )
+    result.addAll(ConfigurationCompat.getLocales(configuration).toList().map { it.toLanguageTag() })
     /* add fallback to English if (some) English is not part of the locale list already as the
        fallback for text is also always English in this app (strings.xml) independent of, or rather
        additionally to what is in the user's LocaleList. */
