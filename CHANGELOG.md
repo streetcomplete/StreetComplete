@@ -7,7 +7,7 @@
 - _"What’s the brand of this parcel locker?"_ (#5638), by @Arthur-GYT
 - _"Can you pick up parcels here?"_ (#5639), by @Arthur-GYT
 - _"Can you drop off parcels here?"_ (#5639), by @Arthur-GYT
-- _"Is there a sign indicating access for mopeds on this bike path"?_ – asked exclusively in Belgium (#5567), by @PowerPlop
+- _"Is there a sign indicating access for mopeds on this bike path?"_ – asked exclusively in Belgium (#5567), by @PowerPlop
 
 ### Quest improvements
 
@@ -2457,7 +2457,7 @@ Otherwise identical to v5.1.
 ### New Quests
 
 - Bicycle parking type: _"What is the type of this bicycle parking?"_ (#923) by @matkoniecz
-- Bus stop names: _"What is the name of this bus stop?_" (#986 / #551) by @PanierAvide
+- Bus stop names: _"What is the name of this bus stop?"_ (#986 / #551) by @PanierAvide
 - Postbox collection times: _"What are the collection times of this postbox?"_ (#85)
 - Construction Site complete: _"Is this road completed?"_ and _"Is this building completed?"_ (#920) by @matkoniecz
 
