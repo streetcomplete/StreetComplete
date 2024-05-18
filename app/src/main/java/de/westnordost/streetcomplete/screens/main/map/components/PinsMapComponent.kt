@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.ContentResolver
+import android.content.Context
 import androidx.annotation.UiThread
 import androidx.core.graphics.Insets
 import com.google.gson.JsonObject
+import de.westnordost.streetcomplete.R
 import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.android.maps.MapLibreMap
@@ -42,6 +44,7 @@ import kotlin.math.roundToInt
 
 /** Takes care of displaying pins on the map, e.g. quest pins or pins for recent edits */
 class PinsMapComponent(
+    private val context: Context,
     private val contentResolver: ContentResolver,
     private val map: MapLibreMap,
     private val clickRadius: Float,
@@ -54,20 +57,15 @@ class PinsMapComponent(
     )
 
     val layers: List<Layer> = listOf(
-        CircleLayer("pin-cluster-layer", SOURCE)
+        SymbolLayer("pin-cluster-layer", SOURCE)
             .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
             .withProperties(
-                circleColor("white"),
-                circleStrokeColor("#aaaaaa"),
-                circleRadius(sum(toNumber(literal(10f)), sqrt(get("point_count")))),
-                circleStrokeWidth(1f)
-            ),
-        SymbolLayer("pin-cluster-text-layer", SOURCE)
-            .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
-            .withProperties(
+                iconImage("cluster-circle"),
+                iconSize(sum(literal(0.5f), division(sqrt(get("point_count")), literal(12f)))),
                 textField(get("point_count")),
-                textSize(sum(literal(15f), division(sqrt(get("point_count")), literal(2f)))),
-                textAllowOverlap(true) // avoid quest pins hiding number
+                textSize(sum(literal(15f), division(sqrt(get("point_count")), literal(1.5f)))),
+                iconAllowOverlap(true),
+                textAllowOverlap(true),
             ),
         CircleLayer("pin-dot-layer", SOURCE)
             .withFilter(gt(zoom(), CLUSTER_START_ZOOM))
@@ -100,6 +98,7 @@ class PinsMapComponent(
 
     init {
         pinsSource.isVolatile = true
+        map.style?.addImageAsync("cluster-circle", context.getDrawable(R.drawable.pin_circle)!!)
         map.style?.addSource(pinsSource)
         map.addOnMapClickListener(::onClick)
     }
