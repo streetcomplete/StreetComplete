@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.style.expressions.Expression.any
 import org.maplibre.android.style.sources.GeoJsonOptions
 import org.maplibre.geojson.Point
 import kotlin.math.abs
@@ -53,12 +54,16 @@ class PinsMapComponent(
     private val pinsSource = GeoJsonSource(SOURCE,
         GeoJsonOptions()
             .withCluster(true)
-            .withClusterMaxZoom(17)
+            .withClusterMaxZoom(CLUSTER_MAX_ZOOM)
     )
 
     val layers: List<Layer> = listOf(
         SymbolLayer("pin-cluster-layer", SOURCE)
-            .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
+            .withFilter(all(
+                gte(zoom(), 14f),
+                lte(zoom(), CLUSTER_MAX_ZOOM),
+                gt(toNumber(get("point_count")), 1)
+            ))
             .withProperties(
                 iconImage("cluster-circle"),
                 iconSize(sum(literal(0.5f), division(sqrt(get("point_count")), literal(12f)))),
@@ -68,7 +73,10 @@ class PinsMapComponent(
                 textAllowOverlap(true),
             ),
         CircleLayer("pin-dot-layer", SOURCE)
-            .withFilter(gt(zoom(), CLUSTER_START_ZOOM))
+            .withFilter(any(
+                gt(zoom(), CLUSTER_MAX_ZOOM),
+                all(gte(zoom(), 14f), lte(toNumber(get("point_count")), 1))
+            ))
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("#aaaaaa"),
@@ -78,7 +86,7 @@ class PinsMapComponent(
                 circleTranslateAnchor(Property.CIRCLE_TRANSLATE_ANCHOR_VIEWPORT),
             ),
         SymbolLayer("pins-layer", SOURCE)
-            .withFilter(gte(zoom(), 16f))
+            .withFilter(gt(zoom(), CLUSTER_MAX_ZOOM))
             .withProperties(
                 iconImage(get("icon-image")),
                 iconSize(1f),
@@ -105,7 +113,7 @@ class PinsMapComponent(
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     @UiThread fun set(pins: Collection<Pin>) {
-        val features = pins.sortedBy { it.order }.distinctBy { it.position }.map { it.toFeature() }
+        val features = pins.sortedBy { it.order }.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         pinsSource.setGeoJson(mapLibreFeatures)
     }
@@ -155,7 +163,7 @@ class PinsMapComponent(
 
     companion object {
         private const val SOURCE = "pins-source"
-        private const val CLUSTER_START_ZOOM = 17f
+        private const val CLUSTER_MAX_ZOOM = 16
     }
 }
 
