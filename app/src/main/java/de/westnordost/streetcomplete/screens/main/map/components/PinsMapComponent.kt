@@ -61,10 +61,9 @@ class PinsMapComponent(
             .withFilter(all(gte(zoom(), 14f), lte(zoom(), CLUSTER_START_ZOOM), gt(toNumber(get("point_count")), 1)))
             .withProperties(
                 iconImage("cluster-circle"),
-                iconSize(sum(literal(0.33f), division(sqrt(get("point_count")), literal(12f)))),
+                iconSize(sum(literal(0.5f), division(sqrt(get("point_count")), literal(12f)))),
                 textField(get("point_count")),
-                textSize(sum(literal(15f), division(sqrt(get("point_count")), literal(2f)))),
-                iconOffset(listOf(-4f, -4f).toTypedArray()),
+                textSize(sum(literal(15f), division(sqrt(get("point_count")), literal(1.5f)))),
                 iconAllowOverlap(true),
                 textAllowOverlap(true),
             ),
@@ -99,7 +98,7 @@ class PinsMapComponent(
 
     init {
         pinsSource.isVolatile = true
-        map.style?.addImageAsync("cluster-circle", context.getDrawable(R.drawable.dot)!!)
+        map.style?.addImageAsync("cluster-circle", context.getDrawable(R.drawable.pin_circle)!!)
         map.style?.addSource(pinsSource)
         map.addOnMapClickListener(::onClick)
     }

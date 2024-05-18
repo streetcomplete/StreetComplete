@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <radialGradient id="radialGradient898" cx="50" cy="24.465" r="14" gradientTransform="matrix(1.7143 0 0 1.7143 -37.714 6.0593)" gradientUnits="userSpaceOnUse">
+   <stop stop-opacity=".078431" offset=".7835"/>
+   <stop stop-opacity="0" offset="1"/>
+  </radialGradient>
+ </defs>
+ <circle cx="48" cy="48" r="48" fill-opacity=".06" stroke-width="0"/>
+ <circle cx="48" cy="48" r="24" fill="url(#radialGradient898)" stroke="#aaa"/>
+ <circle cx="48" cy="48" r="18" fill="#fff" stroke="#aaa" stroke-width="2"/>
+</svg>
