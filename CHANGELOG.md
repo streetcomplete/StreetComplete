@@ -1217,8 +1217,8 @@ Special thanks to @FloEdelmann for helping with the refactor.
 - Enhance maxspeed collection for the United Kingdom (#2745, #2748, #2750, #2811), by @arrival-spring
 - Periodically ask for the existence of BBQ spots, ticket validators, emergency life rings and emergency phones (#2679), thanks @arrival-spring
 - Also ask for the surface of service roads as long as they are not driveways (#2783)
-- Don't remove the check_date tag if it is already tagged, instead, update it (#2861, #2883)
-- Don't tag foot=use_sidepath on the road if there is a separate sidewalk (#2895)
+- Don't remove the `check_date` tag if it is already tagged, instead, update it (#2861, #2883)
+- Don't tag `foot=use_sidepath` on the road if there is a separate sidewalk (#2895)
 
 ### Other Enhancements
 
@@ -1443,7 +1443,7 @@ This update is devoted to checking whether things still exist the way they are m
 - Tracktypes: Better wording and pictures (#2294)
 - Parking type: Added lane and off-street parking (#2346)
 - Ask for roof shape even if roof levels is 0 - but only in countries where flat roofs are not the norm (#1929)
-- Kerb quests: Tag barrier=kerb if it is missing (#2348, #2393)
+- Kerb quests: Tag `barrier=kerb` if it is missing (#2348, #2393)
 - Do not ask for the bench backrest if the bench type is already recorded (#2365)
 - Lanes quest: Move "differs for each side" option to main UI (#2350)
 - Other small enhancements (#2382)
@@ -1488,7 +1488,7 @@ This update is devoted to checking whether things still exist the way they are m
 - Ask for the max height also below bridges (#1882, #2234)
 - Building type: fix wrong name for a silo (#2303)
 - Surface: Add "rock" as an answer option (#2298)
-- Cycleway resurvey: Interpret a road with oneway:bicycle=no to have no cycleway unless it is tagged explicitly (#2310)
+- Cycleway resurvey: Interpret a road with `oneway:bicycle=no` to have no cycleway unless it is tagged explicitly (#2310)
 - A few minor enhancements (#2280, #2276, #2221, #2160, #2315, ...)
 
 ## v26.2
@@ -2556,7 +2556,7 @@ Otherwise identical to v5.1.
 - Improve street surface quest UI (#76)
 - Clearer wording for pedestrian streets (#862) by @ENT8R
 - Add "metal" as answer option (#568)
-- tag either sett or unhewn_cobblestone, not cobblestone
+- tag either `sett` or `unhewn_cobblestone`, not `cobblestone`
 
 #### Road name quest
 
@@ -2638,7 +2638,7 @@ A pretty long list for a bugfix update! To be honest, I squeezed in some tiny fe
 - fix crash when inputting certain values for cycleways (#740)
 - fix rare crash when rotating the map while specifying the cycleway
 - don't display the quest for Android <4.4 users (#713)
-- always tag oneway:bicycle=no for oneways with bicycle infrastructure for contraflow direction (#717)
+- always tag `oneway:bicycle=no` for oneways with bicycle infrastructure for contraflow direction (#717)
 - for oneways in contraflow, replace "sharrows" option with option to state that a oneway road is not oneway for cyclists (but has still no dedicated cycleway) (#717)
 - show compass needle in cycleway form (#723)
 - limit cycleway quests to a few countries which are likely to have any bicycle infrastructure (#749)
@@ -2796,7 +2796,7 @@ minor bugfix update: bugfixes, updated translations
 
 ## v0.10
 
-fixed #108: opening_hours used wrong separator
+fixed #108: `opening_hours` used wrong separator
 
 ## v0.9
 
