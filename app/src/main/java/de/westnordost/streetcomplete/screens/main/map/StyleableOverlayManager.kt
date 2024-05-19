@@ -147,10 +147,10 @@ class StyleableOverlayManager(
     }
 
     private fun clear() {
+        lastDisplayedRect = null
         viewLifecycleScope.launch {
             mapDataInViewMutex.withLock {
                 mapDataInView.clear()
-                lastDisplayedRect = null
                 withContext(Dispatchers.Main) { mapComponent.clear() }
             }
         }

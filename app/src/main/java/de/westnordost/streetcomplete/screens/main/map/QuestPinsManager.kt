@@ -128,10 +128,10 @@ class QuestPinsManager(
     }
 
     private fun clear() {
+        lastDisplayedRect = null
         viewLifecycleScope.launch {
             questsInViewMutex.withLock {
                 questsInView.clear()
-                lastDisplayedRect = null
                 withContext(Dispatchers.Main) { pinsMapComponent.clear() }
             }
         }
