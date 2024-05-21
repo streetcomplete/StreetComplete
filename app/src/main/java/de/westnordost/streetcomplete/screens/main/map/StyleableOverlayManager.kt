@@ -58,7 +58,7 @@ class StyleableOverlayManager(
             when {
                 isNullNow -> hide()
                 wasNull ->   show()
-                else ->      switchOverlay()
+                else ->      invalidate()
             }
         }
 
@@ -78,8 +78,7 @@ class StyleableOverlayManager(
         }
 
         override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-            clear()
-            onNewScreenPosition()
+            invalidate()
         }
 
         override fun onCleared() {
@@ -104,13 +103,13 @@ class StyleableOverlayManager(
     }
 
     private fun show() {
-        clear()
+        lastDisplayedRect = null
         onNewScreenPosition()
         mapDataSource.addListener(mapDataListener)
     }
 
-    private fun switchOverlay() {
-        clear()
+    private fun invalidate() {
+        lastDisplayedRect = null
         onNewScreenPosition()
     }
 
@@ -122,23 +121,22 @@ class StyleableOverlayManager(
 
     fun onNewScreenPosition() {
         if (overlay == null) return
-        val zoom = map.cameraPosition.zoom
-        if (zoom < TILES_ZOOM) return
-        viewLifecycleScope.launch(Dispatchers.Main) {
-            val displayedArea = map.screenAreaToBoundingBox()
-            val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
-            // area too big -> skip (performance)
-            if (tilesRect.size > 16) return@launch
-            if (lastDisplayedRect?.contains(tilesRect) != true) {
-                lastDisplayedRect = tilesRect
-                onNewTilesRect(tilesRect)
-            }
-        }
+        viewLifecycleScope.launch { updateCurrentScreenArea() }
     }
 
-    private fun onNewTilesRect(tilesRect: TilesRect) {
-        // Check QuestPinsManager::onNewTilesRect for an explanation what this updateJob stuff is
-        // about.
+    private suspend fun updateCurrentScreenArea() {
+        val zoom = map.cameraPosition.zoom
+        if (zoom < TILES_ZOOM) return
+        val displayedArea = withContext(Dispatchers.Main) { map.screenAreaToBoundingBox() }
+        val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
+        // area too big -> skip (performance)
+        if (tilesRect.size > 16) return
+        val isNewRect = lastDisplayedRect?.contains(tilesRect) != true
+        if (!isNewRect) return
+
+        lastDisplayedRect = tilesRect
+        // Check QuestPinsManager::updateCurrentScreenArea for an explanation what this updateJob
+        // stuff is about.
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
             val bbox = tilesRect.asBoundingBox(TILES_ZOOM)

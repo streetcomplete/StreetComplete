@@ -123,7 +123,7 @@ class QuestPinsManager(
     }
 
     private fun invalidate() {
-        clear()
+        lastDisplayedRect = null
         onNewScreenPosition()
     }
 
@@ -140,22 +140,21 @@ class QuestPinsManager(
 
     fun onNewScreenPosition() {
         if (!isStarted || !isVisible) return
-        val zoom = map.cameraPosition.zoom
-        // require zoom >= 14, which is the lowest zoom level where quests are shown
-        if (zoom < 14) return
-        viewLifecycleScope.launch(Dispatchers.Main) {
-            val displayedArea = map.screenAreaToBoundingBox()
-            val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
-            // area too big -> skip (performance)
-            if (tilesRect.size > 16) return@launch
-            if (lastDisplayedRect?.contains(tilesRect) != true) {
-                lastDisplayedRect = tilesRect
-                onNewTilesRect(tilesRect)
-            }
-        }
+        viewLifecycleScope.launch { updateCurrentScreenArea() }
     }
 
-    private fun onNewTilesRect(tilesRect: TilesRect) {
+    private suspend fun updateCurrentScreenArea() {
+        // require zoom >= 14, which is the lowest zoom level where quests are shown
+        val zoom = map.cameraPosition.zoom
+        if (zoom < 14) return
+        val displayedArea = withContext(Dispatchers.Main) { map.screenAreaToBoundingBox() }
+        val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
+        // area too big -> skip (performance)
+        if (tilesRect.size > 16) return
+        val isNewRect = lastDisplayedRect?.contains(tilesRect) != true
+        if (!isNewRect) return
+
+        lastDisplayedRect = tilesRect
         /* Imagine you are panning the map fast, many different tiles come into and vanish from view
            again quickly. Suppose, that fetching the data from DB takes longer than panning through
            and out of a tile - we would end up with a long queue of DB fetches (and subsequent
