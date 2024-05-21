@@ -130,10 +130,8 @@ class QuestPinsManager(
     private fun clear() {
         lastDisplayedRect = null
         viewLifecycleScope.launch {
-            questsInViewMutex.withLock {
-                questsInView.clear()
-                withContext(Dispatchers.Main) { pinsMapComponent.clear() }
-            }
+            questsInViewMutex.withLock { questsInView.clear() }
+            withContext(Dispatchers.Main) { pinsMapComponent.clear() }
         }
     }
 
@@ -180,16 +178,16 @@ class QuestPinsManager(
         val quests = visibleQuestsSourceMutex.withLock {
             withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
         }
-        questsInViewMutex.withLock {
+        val pins = questsInViewMutex.withLock {
             questsInView.clear()
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
-            val pins = questsInView.values.flatten()
-            withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
+            questsInView.values.flatten()
         }
+        withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
     }
 
     private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        questsInViewMutex.withLock {
+        val pins = questsInViewMutex.withLock {
             val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
             var hasChanges = false
 
@@ -207,9 +205,9 @@ class QuestPinsManager(
 
             if (!hasChanges) return
 
-            val pins = questsInView.values.flatten()
-            withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
+            questsInView.values.flatten()
         }
+        withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
     }
 
     private fun initializeQuestTypeOrders() {

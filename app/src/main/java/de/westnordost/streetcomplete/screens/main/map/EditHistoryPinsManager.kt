@@ -85,12 +85,11 @@ class EditHistoryPinsManager(
         properties.toEditKey()
 
     private fun updatePins() {
+        if (!isVisible) return
         viewLifecycleScope.launch {
-            if (this@EditHistoryPinsManager.isVisible) {
-                val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
-                val pins = createEditPins(edits)
-                withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
-            }
+            val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
+            val pins = createEditPins(edits)
+            withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
         }
     }
 

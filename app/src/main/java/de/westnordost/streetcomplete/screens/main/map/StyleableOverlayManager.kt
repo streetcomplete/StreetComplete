@@ -149,10 +149,8 @@ class StyleableOverlayManager(
     private fun clear() {
         lastDisplayedRect = null
         viewLifecycleScope.launch {
-            mapDataInViewMutex.withLock {
-                mapDataInView.clear()
-                withContext(Dispatchers.Main) { mapComponent.clear() }
-            }
+            mapDataInViewMutex.withLock { mapDataInView.clear() }
+            withContext(Dispatchers.Main) { mapComponent.clear() }
         }
     }
 
@@ -160,19 +158,19 @@ class StyleableOverlayManager(
         val mapData = mapDataSourceMutex.withLock {
             withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
         }
-        mapDataInViewMutex.withLock {
+        val styledElements = mapDataInViewMutex.withLock {
             val overlay = overlay ?: return
             mapDataInView.clear()
             createStyledElementsByKey(overlay, mapData).forEach { (key, styledElement) ->
                 mapDataInView[key] = styledElement
             }
-            val styledElements = mapDataInView.values
-            withContext(Dispatchers.Main) { mapComponent.set(styledElements) }
+            mapDataInView.values
         }
+        withContext(Dispatchers.Main) { mapComponent.set(styledElements) }
     }
 
     private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-        mapDataInViewMutex.withLock {
+        val styledElements = mapDataInViewMutex.withLock {
             val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
             var hasChanges = false
             val overlay = overlay ?: return
@@ -199,9 +197,9 @@ class StyleableOverlayManager(
 
             if (!hasChanges) return
 
-            val styledElements = mapDataInView.values
-            withContext(Dispatchers.Main) { mapComponent.set(styledElements) }
+            mapDataInView.values
         }
+        withContext(Dispatchers.Main) { mapComponent.set(styledElements) }
     }
 
     private fun createStyledElementsByKey(
