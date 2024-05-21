@@ -177,7 +177,7 @@ private fun AchievementDetails(
 @PreviewScreenSizes
 @PreviewLightDark
 @Composable
-fun PreviewAchievementDetailsDialog() {
+private fun PreviewAchievementDetailsDialog() {
     AppTheme {
         AchievementDialog(
             achievement = achievements.associateBy { it.id }["regular"]!!,

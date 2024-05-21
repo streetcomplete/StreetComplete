@@ -75,6 +75,6 @@ fun LaurelWreath(
 }
 
 @Preview @Composable
-fun LaurelWreathBadgePreview() {
+private fun LaurelWreathBadgePreview() {
     LaurelWreath(progress = 1.0f)
 }

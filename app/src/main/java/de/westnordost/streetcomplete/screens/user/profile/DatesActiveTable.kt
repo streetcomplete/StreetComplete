@@ -130,7 +130,7 @@ fun DatesActiveTable(
 @Preview(locale = "ar", fontScale = 1.8f) // right-to-left and large text
 @Preview(device = Devices.NEXUS_7) // large screen
 @Composable
-fun DatesActivePreview() {
+private fun DatesActivePreview() {
     DatesActiveTable(
         datesActive = IntArray(30) { (0..90).random() }.map {
             systemTimeNow().minus(it, DateTimeUnit.DAY, TimeZone.UTC).toLocalDateTime(TimeZone.UTC).date

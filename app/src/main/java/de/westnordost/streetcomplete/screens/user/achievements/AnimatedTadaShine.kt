@@ -46,6 +46,6 @@ private fun TadaShine(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-fun PreviewAnimatedTadaShine() {
+private fun PreviewAnimatedTadaShine() {
     AnimatedTadaShine()
 }

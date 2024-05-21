@@ -74,13 +74,13 @@ fun LinkItem(link: Link, onClickLink: (url: String) -> Unit, modifier: Modifier 
 
 @Preview
 @Composable
-fun LinkCategoryItemPreview() {
+private fun LinkCategoryItemPreview() {
     LinkCategoryItem(LinkCategory.GOODIES)
 }
 
 @Preview
 @Composable
-fun LinkItemPreview() {
+private fun LinkItemPreview() {
     LinkItem(Link(
         "wiki",
         "https://wiki.openstreetmap.org",

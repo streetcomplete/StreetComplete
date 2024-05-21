@@ -71,7 +71,7 @@ private fun LazyLinksGrid(
 
 @PreviewScreenSizes
 @Composable
-fun PreviewLazyGroupedLinksColumn() {
+private fun PreviewLazyGroupedLinksColumn() {
     LazyGroupedLinksColumn(links,
         onClickLink = {},
         contentPadding = PaddingValues(16.dp)
