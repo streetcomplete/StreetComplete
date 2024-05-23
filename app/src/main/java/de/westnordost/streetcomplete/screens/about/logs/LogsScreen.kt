@@ -39,7 +39,7 @@ fun LogsScreen(
 
     var showFiltersDialog by remember { mutableStateOf<LogsFilters?>(null) }
 
-    // TODO scroll to bottom
+    // TODO scroll to bottom if user didn't scroll up
 
     // TODO doesn't seem to update at all
 
