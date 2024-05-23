@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 val INVALID_SURFACES = setOf(
     "cobblestone", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dcobblestone
     "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 and https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
+    "trail", // https://wiki.openstreetmap.org/wiki/Tag%3Asurface%3Dtrail
 )
 
 val FULLY_PAVED_SURFACES = setOf(
