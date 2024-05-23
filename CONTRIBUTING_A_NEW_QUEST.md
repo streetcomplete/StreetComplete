@@ -541,3 +541,8 @@ For nodes within ways, the node will remain and tags will be removed.
 ## Per-country quest behaviour modification
 
 While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibrationForm.kt](app/src/main/java/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibrationForm.kt) for example usage.
+
+## Info button
+
+When there are doubts on the question itself (terms used, etc.), how to answer or how to find the answer, more information can be provided via info button text & images.
+Examples for such info button would be explanation of what is halal, what is [tactile paving](https://github.com/streetcomplete/StreetComplete/blob/46a3605c1337f88d0d62a2e140121d1e6f9ffd03/app/src/main/java/de/westnordost/streetcomplete/quests/tactile_paving/AddTactilePavingBusStop.kt#L33-L38), what is a sanitary dump station, when a level counts as a roof level and when as a normal level, explanation of the street side puzzle UI, etc.
