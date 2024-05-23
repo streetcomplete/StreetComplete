@@ -35,19 +35,6 @@ val Context.hasLocationPermission: Boolean get() = hasPermission(ACCESS_FINE_LOC
 
 private val Context.locationManager get() = getSystemService<LocationManager>()!!
 
-/** Await a call from a broadcast once and return it */
-suspend fun Context.awaitReceiverCall(intentFilter: IntentFilter): Intent =
-    suspendCancellableCoroutine { continuation ->
-        val receiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                unregisterReceiver(this)
-                continuation.resume(intent)
-            }
-        }
-        registerReceiver(receiver, intentFilter)
-        continuation.invokeOnCancellation { unregisterReceiver(receiver) }
-    }
-
 fun Context.sendEmail(email: String, subject: String, text: String? = null) {
     val intent = Intent(Intent.ACTION_SENDTO).apply {
         data = "mailto:".toUri()
