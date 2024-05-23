@@ -138,7 +138,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 # Add the quest to the list of active ones
 
-Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L218-L247) but do not worry too much, it can be tweaked later.
+Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L217-L247) but do not worry too much, it can be tweaked later.
 
 Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
 
