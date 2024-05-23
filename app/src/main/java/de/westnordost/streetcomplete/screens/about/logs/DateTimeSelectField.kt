@@ -59,7 +59,7 @@ fun DateTimeSelectField(
     )
 }
 
-// TODO: unfortunately, Jetpack Compose is still lacking Date and Time Pickers and dialogs
+// TODO Compose - Jetpack Compose is still lacking Date and Time Pickers and dialogs
 
 private suspend fun Context.pickDateTime(initialDateTime: LocalDateTime): LocalDateTime {
     val date = pickDate(initialDateTime.date)
