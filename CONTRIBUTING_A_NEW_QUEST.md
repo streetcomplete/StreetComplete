@@ -138,7 +138,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 # Add the quest to the list of active ones
 
-Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L172-L195) but do not worry too much, it can be tweaked later.
+Adjust [QuestsModule.kt](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/main/java/de/westnordost/streetcomplete/quests/QuestsModule.kt#L218-L247) but do not worry too much, it can be tweaked later.
 
 Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
 
@@ -432,7 +432,7 @@ Article about [null safety related syntax](https://kotlinlang.org/docs/null-safe
 As mentioned, the user interface must leave no space for misunderstandings, it must be concise and quick and easy to use. Also sounds obvious, but you will quickly find out that a balance must be found between covering all the edge cases and designing the form to be as straightforward and clutterless as possible.
 
 - Design the main form clutter-free so that it is straightforward for the majority of use cases.
-- Allow to answer popular edge cases, but don't clutter up the main form with that. A good pattern is to move such answers into the "Uh..." menu. E.g. look at the [opening hours quest](app/src/main/java/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHoursForm.kt#L40-L48).
+- Allow to answer popular edge cases, but don't clutter up the main form with that. A good pattern is to move such answers into the "Uh..." menu. E.g. look at the [opening hours quest](app/src/main/java/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHoursForm.kt#L45-L53).
 - Don't rely on the "leave a note" fallback too much. It is not intended and does not work as a regular answer but is designed to cover the case that the question was invalid itself because it was based on wrong data like i.e. the place does not exist anymore.
 - The information the user should fill in should be as atomic as possible. Users are impatient, i.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
 - "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo.
@@ -505,9 +505,9 @@ Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as "`s
 
 But using regexp like `surface ~ ^(.*)[0-9]$` is [also possible](app/src/test/java/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88).
 
-It is possible to check for [age of elements](app/src/main/java/de/westnordost/streetcomplete/quests/construction/MarkCompletedHighwayConstruction.kt#L13-L17) or implement a [fully custom tag parsing](app/src/main/java/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt#L137-L151), still combined with filter syntax.
+It is possible to check for [age of elements](app/src/main/java/de/westnordost/streetcomplete/quests/construction/MarkCompletedHighwayConstruction.kt#L14-L18) or implement a [fully custom tag parsing](app/src/main/java/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt#L144-L159), still combined with filter syntax.
 
-It is possible to share and reuse [information about tagging schemes](app/src/main/java/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L18).
+It is possible to share and reuse [information about tagging schemes](app/src/main/java/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L28).
 
 (this info is gathered [here](app/src/main/java/de/westnordost/streetcomplete/osm))
 
