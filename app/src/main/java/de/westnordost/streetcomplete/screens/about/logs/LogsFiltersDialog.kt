@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.ui.theme.AppTheme
 fun LogsFiltersDialog(
     initialFilters: LogsFilters,
     onDismissRequest: () -> Unit,
-    onApplyFilters: (filters: LogsFilters?) -> Unit,
+    onApplyFilters: (filters: LogsFilters) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var logLevels by remember { mutableStateOf(initialFilters.levels) }
@@ -52,7 +52,7 @@ fun LogsFiltersDialog(
             }
         },
         dismissButton = {
-            TextButton(onClick = { onApplyFilters(null) }) {
+            TextButton(onClick = { onApplyFilters(LogsFilters()) }) {
                 Text(stringResource(R.string.action_reset))
             }
         },

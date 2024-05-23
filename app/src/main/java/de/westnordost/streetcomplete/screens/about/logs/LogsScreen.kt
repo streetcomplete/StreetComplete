@@ -81,7 +81,7 @@ fun LogsScreen(
             onDismissRequest = { showFiltersDialog = null },
             onApplyFilters = {
                 showFiltersDialog = null
-                viewModel.setFilters(filters)
+                viewModel.setFilters(it)
             }
         )
     }

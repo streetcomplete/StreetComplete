@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.about.logs
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
-import androidx.compose.foundation.clickable
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
@@ -37,8 +36,7 @@ fun DateTimeSelectField(
     OutlinedTextField(
         value = value?.let { dateTimeToString(locale, it) } ?: "",
         onValueChange = { },
-        // TODO it would be better if the whole field was clickable, but this does currently not
-        //      work in compose via modifier.clickable { }
+        // TODO Compose modifier.clickable { } does not work
         modifier = modifier,
         readOnly = true,
         label = label,
