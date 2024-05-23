@@ -8,26 +8,44 @@ val INVALID_SURFACES = setOf(
     "cement", // https://community.openstreetmap.org/t/mysterious-surface-cement/5158 and https://wiki.openstreetmap.org/wiki/Tag:surface%3Dconcrete
 )
 
-val SOFT_SURFACES = setOf(
-    "earth", "dirt", "soil", "grass", "sand", "mud", "ice", "salt", "snow", "woodchips"
+val FULLY_PAVED_SURFACES = setOf(
+    "paved",
+    // sealed
+    "asphalt", "concrete", "chipseal", "concrete:plates", "cement",
+    // paving stones
+    "brick", "bricks", "paving_stones", "paving_stones:30",
+    "sett", "cobblestone", "cobblestone:flattened", "unhewn_cobblestone",
+    // other
+    "metal", "wood", "plastic", "acrylic", "tartan", "rubber",
 )
 
-val UNPAVED_BUT_NOT_ALWAYS_SOFT = setOf(
+val NATURAL_SURFACES = setOf(
+    "ground",
+    // earthy
+    "earth", "dirt", "soil", "grass", "sand", "mud",
+    // other
+    "ice", "salt", "snow", "rock", "stone", "stepping_stones",
+)
+
+val UNPAVED_SURFACES = NATURAL_SURFACES + setOf(
+    "unpaved",
+    "compacted", "gravel", "fine_gravel", "pebblestone",
+    "woodchips", "artificial_turf", "clay",
+)
+
+val PAVED_SURFACES = FULLY_PAVED_SURFACES + setOf(
+    "concrete:lanes",
+    "grass_paver",
+    "metal_grid",
+)
+
+private val SOFT_SURFACES = setOf(
+    "earth", "dirt", "soil", "grass", "sand", "mud", "snow", "woodchips", "artificial_turf"
+)
+
+private val UNPAVED_BUT_NOT_ALWAYS_SOFT = setOf(
     "ground", // see https://community.openstreetmap.org/t/is-tracktype-grade2-also-for-trails-with-large-naturally-occuring-pieces-of-rock/96850
     "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver"
-)
-
-val ANYTHING_UNPAVED = SOFT_SURFACES + UNPAVED_BUT_NOT_ALWAYS_SOFT
-
-val ANYTHING_FULLY_PAVED = setOf(
-    "paved", "asphalt", "cobblestone", "cobblestone:flattened", "sett",
-    "concrete", "concrete:plates", "paving_stones",
-    "metal", "wood", "unhewn_cobblestone", "chipseal",
-    "brick", "bricks", "cobblestone:flattened", "paving_stones:30",
-)
-
-val ANYTHING_PAVED = ANYTHING_FULLY_PAVED + setOf(
-    "concrete:lanes"
 )
 
 val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
@@ -80,8 +98,8 @@ fun updateCommonSurfaceFromFootAndCyclewaySurface(tags: Tags) {
 private fun getCommonSurface(vararg surface: String?): String? = when {
     surface.any { it == null } -> null
     surface.all { it == surface.firstOrNull() } -> surface.firstOrNull()
-    surface.all { it in ANYTHING_PAVED } -> "paved"
-    surface.all { it in ANYTHING_UNPAVED } -> "unpaved"
+    surface.all { it in PAVED_SURFACES } -> "paved"
+    surface.all { it in UNPAVED_SURFACES } -> "unpaved"
     else -> null
 }
 

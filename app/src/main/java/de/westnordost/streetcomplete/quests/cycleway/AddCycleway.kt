@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.isImplicitMaxSpeedButNotSlowZone
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 
 class AddCycleway(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
@@ -148,7 +148,7 @@ private val untaggedRoadsFilter by lazy { """
         or maxspeed > 20
         or $isImplicitMaxSpeedButNotSlowZone
       )
-      and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+      and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
       and ~bicycle|bicycle:backward|bicycle:forward !~ use_sidepath
       and sidewalk != separate
 """.toElementFilterExpression() }
