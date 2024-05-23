@@ -58,8 +58,10 @@ fun isSurfaceAndTracktypeConflicting(surface: String, tracktype: String?): Boole
     INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
 
 private val EXPECTED_SURFACES_FOR_TRACKTYPES = mapOf(
-    "grade1" to PAVED_SURFACES + setOf("stone", "rock", "ice"), // natural solid surfaces are fine too
-    "grade2" to UNPAVED_SURFACES + PAVED_SURFACES - SOFT_TRACK_SURFACES, // could be basically anything except soft surfaces
+    // natural solid surfaces are fine too
+    "grade1" to PAVED_SURFACES + setOf("stone", "rock", "ice"),
+    // anything not soft or not fully paved
+    "grade2" to UNPAVED_SURFACES + PAVED_SURFACES - SOFT_TRACK_SURFACES - FULLY_PAVED_SURFACES,
     "grade3" to UNPAVED_SURFACES,
     "grade4" to UNPAVED_SURFACES,
     "grade5" to SOFT_TRACK_SURFACES,
