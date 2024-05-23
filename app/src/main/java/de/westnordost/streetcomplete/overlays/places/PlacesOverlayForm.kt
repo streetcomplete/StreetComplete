@@ -195,7 +195,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
            and if that feature doesn't already set a name (i.e. is a brand)
          */
         val isNameInputInvisible = selectedFeature == null ||
-            selectedFeature.addTags?.get("name") != null ||
+            selectedFeature.addTags["name"] != null ||
             selectedFeature.id == "shop/vacant"
 
         binding.nameContainer.root.isGone = isNameInputInvisible
@@ -261,7 +261,7 @@ private suspend fun createEditAction(
     val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
     val hasChangedNames = previousNames != newNames
     val hasChangedFeature = newFeature != previousFeature
-    val isFeatureWithName = newFeature.addTags?.get("name") != null
+    val isFeatureWithName = newFeature.addTags.get("name") != null
     val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
