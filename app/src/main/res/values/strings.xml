@@ -296,6 +296,10 @@ Each of you will then see different quests."</string>
     <string name="crash_compose_email">"Compose email"</string>
     <string name="no_email_client">"You have no email client installed."</string>
 
+    <!-- Generic buttons -->
+
+    <string name="action_back">Back</string>
+    <string name="action_clear">Clear</string>
 
     <!-- About screen -->
 
@@ -338,6 +342,8 @@ You can find donation information on our website or project home, Google Play do
 
     <string name="about_title_license">"License"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
+
+    <string name="about_category_contribute">Contribute</string>
 
 
     <!-- Credits screen -->

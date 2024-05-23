@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.about
+package de.westnordost.streetcomplete.screens.about.logs
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -69,7 +69,7 @@ class LogsViewModelImpl(
     override val logs: StateFlow<List<LogMessage>> = object :
         StateFlow<List<LogMessage>>,
         SharedFlow<List<LogMessage>> by _logs {
-        override val value: List<LogMessage> get() = replayCache[0]
+        override val value: List<LogMessage> get() = replayCache.firstOrNull() ?: emptyList()
     }
 
     override fun setFilters(filters: LogsFilters) {
