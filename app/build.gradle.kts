@@ -129,18 +129,18 @@ dependencies {
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
-    implementation(platform("io.insert-koin:koin-bom:3.5.4"))
+    implementation(platform("io.insert-koin:koin-bom:3.5.6"))
     implementation("io.insert-koin:koin-core")
     implementation("io.insert-koin:koin-android")
     implementation("io.insert-koin:koin-androidx-workmanager")
 
     // Android stuff
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.7.1")
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("androidx.annotation:annotation:1.8.0")
+    implementation("androidx.fragment:fragment-ktx:1.7.1")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
@@ -156,8 +156,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
     // photos
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 
@@ -165,20 +165,20 @@ dependencies {
     implementation("com.russhwolf:multiplatform-settings:1.1.1")
 
     // Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.5")
 
     // Date/time
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
 
     // scheduling background jobs
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     // HTTP Client
-    implementation("io.ktor:ktor-client-core:2.3.9")
-    implementation("io.ktor:ktor-client-cio:2.3.9")
-    testImplementation("io.ktor:ktor-client-mock:2.3.9")
+    implementation("io.ktor:ktor-client-core:2.3.11")
+    implementation("io.ktor:ktor-client-cio:2.3.11")
+    testImplementation("io.ktor:ktor-client-mock:2.3.11")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -188,11 +188,11 @@ dependencies {
     implementation("de.westnordost:osmapi-map:3.0")
     implementation("de.westnordost:osmapi-changesets:3.0")
     implementation("de.westnordost:osmapi-notes:3.0")
-    implementation("de.westnordost:osmapi-traces:3.0")
+    implementation("de.westnordost:osmapi-traces:3.1")
     implementation("de.westnordost:osmapi-user:3.0")
 
     // widgets
-    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
     implementation("me.grantland:autofittextview:0.2.1")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
 
@@ -204,7 +204,7 @@ dependencies {
 
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-    implementation("com.charleskorn.kaml:kaml:0.58.0")
+    implementation("com.charleskorn.kaml:kaml:0.59.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")

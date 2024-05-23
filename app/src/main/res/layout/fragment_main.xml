@@ -161,7 +161,7 @@
             android:scaleType="center"
             style="@style/RoundWhiteButton"
             app:srcCompat="@drawable/ic_location_state_24dp"
-            app:tint="@color/activated_tint"
+            app:tint="@color/activated_tint_on_white"
             android:contentDescription="@string/map_btn_gps_tracking"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

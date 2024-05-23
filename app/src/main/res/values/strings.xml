@@ -650,7 +650,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without sidewalk here?</string>
     <string name="quest_accessible_for_pedestrians_prohibited">It is forbidden.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">it is allowed.</string>
+    <string name="quest_accessible_for_pedestrians_allowed">It is allowed.</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk">Actually, there is a sidewalk, but it is displayed separately on the map.</string>
 
     <string name="quest_address_title">"What’s the house number of this building?"</string>

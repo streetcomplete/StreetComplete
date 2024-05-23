@@ -5,14 +5,14 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
 
     override val elementFilter = """
         ways with highway = steps
-         and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+         and surface ~ ${PAVED_SURFACES.joinToString("|")}
          and !sac_scale
          and (!conveying or conveying = no)
          and access !~ private|no

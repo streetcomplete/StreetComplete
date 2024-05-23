@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -116,7 +116,7 @@ private val cyclewayTaggingNotExpectedFilter by lazy { """
       or cyclestreet = yes
       or bicycle_road = yes
       or bicycle = no
-      or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
+      or surface ~ ${UNPAVED_SURFACES.joinToString("|")}
       or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(zone)?:?([1-9]|[1-2][0-9]|30)"
 """.toElementFilterExpression() }
 
