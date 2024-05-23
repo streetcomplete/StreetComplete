@@ -49,7 +49,7 @@ fun Smoothness.asItem(context: Context, surface: String): DisplayItem<Smoothness
 }
 
 /** return fitting vehicle type emoji that corresponds to the "usable by" column in the wiki */
-val Smoothness.icon get(): @DrawableRes Int = when (this) {
+val Smoothness.icon @DrawableRes get(): Int = when (this) {
     EXCELLENT ->     R.drawable.ic_smoothness_skateboard
     GOOD ->          R.drawable.ic_smoothness_scooter
     INTERMEDIATE ->  R.drawable.ic_smoothness_city_bike
