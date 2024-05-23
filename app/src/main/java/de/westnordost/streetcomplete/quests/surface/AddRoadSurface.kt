@@ -32,13 +32,12 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
             and !surface:note
             and !note:surface
           )
-          ${INVALID_SURFACES_FOR_TRACKTYPES.map{tracktypeConflictClause(it)}.joinToString("\n")}
+          ${INVALID_SURFACES_FOR_TRACKTYPES.entries.joinToString("\n") { (tracktype, surfaces) ->
+              "or tracktype = $tracktype and surface ~ ${surfaces.joinToString("|")}"
+          }}
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
-
-    private fun tracktypeConflictClause(conflictEntry: Map.Entry<String, Set<String>>): String =
-        "          or tracktype = " + conflictEntry.key + " and surface ~ ${conflictEntry.value.joinToString("|")}"
 
     override val changesetComment = "Specify road surfaces"
     override val wikiLink = "Key:surface"
