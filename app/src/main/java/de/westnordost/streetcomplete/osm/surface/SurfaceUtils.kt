@@ -40,21 +40,16 @@ val PAVED_SURFACES = FULLY_PAVED_SURFACES + setOf(
     "metal_grid",
 )
 
-private val SOFT_SURFACES = setOf(
-    "earth", "dirt", "soil", "grass", "sand", "mud", "snow", "woodchips", "artificial_turf"
-)
-
-private val UNPAVED_BUT_NOT_ALWAYS_SOFT = setOf(
-    "ground", // see https://community.openstreetmap.org/t/is-tracktype-grade2-also-for-trails-with-large-naturally-occuring-pieces-of-rock/96850
-    "unpaved", "compacted", "gravel", "fine_gravel", "pebblestone", "grass_paver"
+private val SOFT_TRACK_SURFACES = setOf(
+    "earth", "dirt", "soil", "grass", "sand", "mud", "snow", "woodchips",
 )
 
 val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
-    "grade1" to ANYTHING_UNPAVED,
-    "grade2" to SOFT_SURFACES,
-    "grade3" to ANYTHING_FULLY_PAVED,
-    "grade4" to ANYTHING_FULLY_PAVED,
-    "grade5" to ANYTHING_FULLY_PAVED,
+    "grade1" to SOFT_TRACK_SURFACES, // could be compacted, as long as it is "solid"
+    "grade2" to SOFT_TRACK_SURFACES,
+    "grade3" to FULLY_PAVED_SURFACES,
+    "grade4" to FULLY_PAVED_SURFACES,
+    "grade5" to FULLY_PAVED_SURFACES,
 )
 
 /** @return whether the given tag value for [surface] contradicts the tag value for [tracktype].
@@ -62,12 +57,12 @@ val INVALID_SURFACES_FOR_TRACKTYPES = mapOf(
 fun isSurfaceAndTracktypeConflicting(surface: String, tracktype: String?): Boolean =
     INVALID_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) == true
 
-val EXPECTED_SURFACES_FOR_TRACKTYPES = mapOf(
-    "grade1" to ANYTHING_FULLY_PAVED,
-    "grade2" to UNPAVED_BUT_NOT_ALWAYS_SOFT,
-    "grade3" to ANYTHING_UNPAVED,
-    "grade4" to ANYTHING_UNPAVED,
-    "grade5" to SOFT_SURFACES,
+private val EXPECTED_SURFACES_FOR_TRACKTYPES = mapOf(
+    "grade1" to PAVED_SURFACES + setOf("stone", "rock", "ice"), // natural solid surfaces are fine too
+    "grade2" to UNPAVED_SURFACES + PAVED_SURFACES - SOFT_TRACK_SURFACES, // could be basically anything except soft surfaces
+    "grade3" to UNPAVED_SURFACES,
+    "grade4" to UNPAVED_SURFACES,
+    "grade5" to SOFT_TRACK_SURFACES,
 )
 
 /** @return whether the given tag value for [surface] likely contradicts the tag value for [tracktype].
