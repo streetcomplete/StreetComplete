@@ -165,6 +165,15 @@ class StreetCompleteApplication : Application() {
                 onNewVersion()
             }
         }
+        if (!prefs.getBoolean(Prefs.CLEARED_TANGRAM_CACHE, false)) {
+            val externalCache = externalCacheDir
+            if (externalCache != null) {
+                for (file in externalCache.walk()) {
+                    file.delete()
+                }
+            }
+            prefs.putBoolean(Prefs.CLEARED_TANGRAM_CACHE, true)
+        }
 
         settingsListeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
             updateDefaultLocales()

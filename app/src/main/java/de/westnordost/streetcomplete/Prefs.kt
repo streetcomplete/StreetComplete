@@ -66,6 +66,9 @@ object Prefs {
     const val LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK = "last_shown.user_global_rank_current_week"
     const val LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK = "last_shown.user_local_rank_current_week"
 
+    // clean-up after upgrade
+    const val CLEARED_TANGRAM_CACHE = "cleared_tangram_cache"
+
     enum class Autosync {
         ON,
         WIFI,
