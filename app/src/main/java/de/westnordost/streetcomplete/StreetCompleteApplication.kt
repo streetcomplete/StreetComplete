@@ -61,6 +61,7 @@ import de.westnordost.streetcomplete.util.prefs.preferencesModule
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -68,6 +69,7 @@ import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 class StreetCompleteApplication : Application() {
@@ -165,15 +167,7 @@ class StreetCompleteApplication : Application() {
                 onNewVersion()
             }
         }
-        if (!prefs.getBoolean(Prefs.CLEARED_TANGRAM_CACHE, false)) {
-            val externalCache = externalCacheDir
-            if (externalCache != null) {
-                for (file in externalCache.walk()) {
-                    file.delete()
-                }
-            }
-            prefs.putBoolean(Prefs.CLEARED_TANGRAM_CACHE, true)
-        }
+        clearTangramCache()
 
         settingsListeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
             updateDefaultLocales()
@@ -231,5 +225,19 @@ class StreetCompleteApplication : Application() {
                 1, TimeUnit.DAYS,
             ).setInitialDelay(1, TimeUnit.HOURS).build()
         )
+    }
+
+    private fun clearTangramCache() {
+        if (prefs.getBoolean(Prefs.CLEARED_TANGRAM_CACHE, false))
+            return
+        val externalCache = externalCacheDir ?: return
+        val tileCache = File(externalCache, "tile_cache")
+        if (!tileCache.exists()) return
+        applicationScope.launch(Dispatchers.IO) {
+            for (file in externalCache.walk()) {
+                file.delete()
+            }
+            prefs.putBoolean(Prefs.CLEARED_TANGRAM_CACHE, true)
+        }
     }
 }
