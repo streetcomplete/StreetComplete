@@ -94,7 +94,7 @@ class PinsMapComponent(
                 // different paddings per side is not supported by MapLibre Native yet
                 iconPadding(-2f),
                 iconOffset(listOf(-4.5f, -34.5f).toTypedArray()),
-                symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE), // = order in which they were added
+                symbolSortKey(get("icon-order")),
             )
     )
 
@@ -113,7 +113,7 @@ class PinsMapComponent(
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     @UiThread fun set(pins: Collection<Pin>) {
-        val features = pins.sortedBy { it.order }.map { it.toFeature() }
+        val features = pins.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         pinsSource.setGeoJson(mapLibreFeatures)
     }
@@ -177,6 +177,7 @@ data class Pin(
 private fun Pin.toFeature(): Feature {
     val p = JsonObject()
     p.addProperty("icon-image", iconName)
+    p.addProperty("icon-order", order)
     properties.forEach { p.addProperty(it.first, it.second) }
     return Feature.fromGeometry(position.toPoint(), p)
 }
