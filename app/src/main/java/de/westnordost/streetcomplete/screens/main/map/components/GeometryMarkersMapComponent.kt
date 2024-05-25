@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.Context
 import android.content.res.Resources
-import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.R
@@ -10,7 +9,6 @@ import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.style.expressions.Expression.*
-import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.FillLayer
 import org.maplibre.android.style.layers.Layer
 import org.maplibre.android.style.layers.LineLayer
@@ -22,8 +20,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.Marker
+import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
@@ -81,6 +79,11 @@ class GeometryMarkersMapComponent(
 
     @UiThread fun putAll(markers: Iterable<Marker>) {
         for (marker in markers) {
+            val icon = marker.icon ?: R.drawable.ic_preset_maki_circle
+            val iconName = context.resources.getResourceEntryName(icon)
+            val sdf = iconName.startsWith("ic_preset_")
+            mapImages.add(iconName, sdf = sdf) { createIconBitmap(context, icon, createSdf = sdf)  }
+
             featuresByGeometry[marker.geometry] = marker.toFeatures(context.resources)
         }
         update()

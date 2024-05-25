@@ -27,6 +27,7 @@ import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
@@ -115,6 +116,10 @@ class PinsMapComponent(
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     @UiThread fun set(pins: Collection<Pin>) {
+        for (pin in pins) {
+            val iconName = context.resources.getResourceEntryName(pin.icon)
+            mapImages.add(iconName) { createPinBitmap(context, pin.icon) }
+        }
         val features = pins.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         pinsSource.setGeoJson(mapLibreFeatures)

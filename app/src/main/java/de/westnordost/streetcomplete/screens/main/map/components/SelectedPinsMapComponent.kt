@@ -17,6 +17,7 @@ import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
@@ -68,6 +69,7 @@ class SelectedPinsMapComponent(
      *  highlighted/selected. */
     @UiThread fun set(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
         val iconName = context.resources.getResourceEntryName(iconResId)
+        mapImages.add(iconName) { createPinBitmap(context, iconResId) }
         val p = JsonObject()
         p.addProperty("icon-image", iconName)
         val points = pinPositions.map { Feature.fromGeometry(it.toPoint(), p) }

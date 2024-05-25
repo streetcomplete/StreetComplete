@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -213,6 +214,16 @@ class StyleableOverlayMapComponent(
 
     /** Show given map data with each the given style */
     @UiThread fun set(styledElements: Collection<StyledElement>) {
+        for (styledElement in styledElements) {
+            val icon = when (styledElement.style) {
+                is PointStyle -> styledElement.style.icon
+                is PolygonStyle -> styledElement.style.icon
+                is PolylineStyle -> null
+            } ?: continue
+            val iconName = context.resources.getResourceEntryName(icon)
+            val sdf = iconName.startsWith("ic_preset_")
+            mapImages.add(iconName, sdf = sdf) { createIconBitmap(context, icon, createSdf = sdf) }
+        }
         val features = styledElements.flatMap { it.toFeatures() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         overlaySource.setGeoJson(mapLibreFeatures)

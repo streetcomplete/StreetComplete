@@ -9,6 +9,7 @@ import androidx.core.graphics.toRect
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.toSdf
 import kotlin.math.ceil
 
 fun createPinBitmap(
@@ -53,12 +54,15 @@ fun createPinBitmap(
 fun createIconBitmap(
     context: Context,
     @DrawableRes iconResId: Int,
+    createSdf: Boolean = false,
     maxSizeDp: Int = 48
 ): Bitmap {
     val drawable = context.getDrawable(iconResId)!!
     val maxIconSize = context.resources.dpToPx(maxSizeDp).toInt()
-    return drawable.createBitmap(
+    val bitmap = drawable.createBitmap(
         width = drawable.intrinsicWidth.coerceAtMost(maxIconSize),
         height = drawable.intrinsicHeight.coerceAtMost(maxIconSize),
     )
+    if (!createSdf) return bitmap
+    return bitmap.toSdf(radius = context.resources.dpToPx(8.0).toDouble())
 }
