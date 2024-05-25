@@ -164,7 +164,7 @@ class StyleableOverlayManager(
             }
             mapDataInView.values
         }
-        withContext(Dispatchers.Main) { mapComponent.set(styledElements) }
+        mapComponent.set(styledElements)
     }
 
     private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
@@ -197,7 +197,7 @@ class StyleableOverlayManager(
 
             mapDataInView.values
         }
-        withContext(Dispatchers.Main) { mapComponent.set(styledElements) }
+        mapComponent.set(styledElements)
     }
 
     private fun createStyledElementsByKey(

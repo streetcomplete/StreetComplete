@@ -48,6 +48,7 @@ import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -441,7 +442,9 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     fun highlightPins(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
-        selectedPinsMapComponent?.set(iconResId, pinPositions)
+        viewLifecycleScope.launch(Dispatchers.Default) {
+            selectedPinsMapComponent?.set(iconResId, pinPositions)
+        }
     }
 
     fun hideNonHighlightedPins(questKey: QuestKey? = null) {
@@ -469,8 +472,10 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         selectedPinsMapComponent?.clear()
     }
 
-    @UiThread override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
-        geometryMarkersMapComponent?.putAll(markers)
+    override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
+        viewLifecycleScope.launch(Dispatchers.Default) {
+            geometryMarkersMapComponent?.putAll(markers)
+        }
     }
 
     @UiThread override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {

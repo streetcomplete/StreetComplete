@@ -21,6 +21,8 @@ import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /** Takes care of displaying "selected" pins. Those pins are always shown on top of pins displayed
  *  by the [PinsMapComponent] */
@@ -67,13 +69,15 @@ class SelectedPinsMapComponent(
     /** Show selected pins with the given icon at the given positions. "Selected pins" are not
      *  related to pins, they are just visuals that are displayed on top of the normal pins and look
      *  highlighted/selected. */
-    @UiThread fun set(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
+    suspend fun set(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
         mapImages.addOnce(iconResId) { createPinBitmap(context, iconResId) to false }
         val p = JsonObject()
         p.addProperty("icon-image", context.resources.getResourceEntryName(iconResId))
         val points = pinPositions.map { Feature.fromGeometry(it.toPoint(), p) }
-        selectedPinsSource.setGeoJson(FeatureCollection.fromFeatures(points))
-        animation.start()
+        withContext(Dispatchers.Main) {
+            selectedPinsSource.setGeoJson(FeatureCollection.fromFeatures(points))
+            animation.start()
+        }
     }
 
     private fun animatePin(value: Float) {

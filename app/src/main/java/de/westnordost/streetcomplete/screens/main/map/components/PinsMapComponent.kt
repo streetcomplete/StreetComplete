@@ -36,6 +36,8 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.style.expressions.Expression.any
 import org.maplibre.android.style.sources.GeoJsonOptions
@@ -115,13 +117,13 @@ class PinsMapComponent(
     }
 
     /** Show given pins. Previously shown pins are replaced with these.  */
-    @UiThread fun set(pins: Collection<Pin>) {
+    suspend fun set(pins: Collection<Pin>) {
         for (pin in pins) {
             mapImages.addOnce(pin.icon) { createPinBitmap(context, pin.icon) to false }
         }
         val features = pins.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
-        pinsSource.setGeoJson(mapLibreFeatures)
+        withContext(Dispatchers.Main) { pinsSource.setGeoJson(mapLibreFeatures) }
     }
 
     /** Clear pins */

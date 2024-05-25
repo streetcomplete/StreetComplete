@@ -181,7 +181,7 @@ class QuestPinsManager(
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }
-        withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
+        pinsMapComponent.set(pins)
     }
 
     private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
@@ -205,7 +205,7 @@ class QuestPinsManager(
 
             questsInView.values.flatten()
         }
-        withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
+        pinsMapComponent.set(pins)
     }
 
     private fun initializeQuestTypeOrders() {

@@ -28,6 +28,8 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
  *  show the geometry of elements surrounding the selected quest */
@@ -77,7 +79,7 @@ class GeometryMarkersMapComponent(
         map.style?.addSource(geometrySource)
     }
 
-    @UiThread fun putAll(markers: Iterable<Marker>) {
+    suspend fun putAll(markers: Iterable<Marker>) {
         for (marker in markers) {
             val icon = marker.icon ?: R.drawable.ic_preset_maki_circle
             mapImages.addOnce(icon) {
@@ -87,7 +89,7 @@ class GeometryMarkersMapComponent(
             }
             featuresByGeometry[marker.geometry] = marker.toFeatures(context.resources)
         }
-        update()
+        withContext(Dispatchers.Main) { update() }
     }
 
     @UiThread fun delete(geometry: ElementGeometry) {
