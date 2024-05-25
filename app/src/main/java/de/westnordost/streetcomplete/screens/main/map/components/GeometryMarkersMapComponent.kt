@@ -80,10 +80,11 @@ class GeometryMarkersMapComponent(
     @UiThread fun putAll(markers: Iterable<Marker>) {
         for (marker in markers) {
             val icon = marker.icon ?: R.drawable.ic_preset_maki_circle
-            val iconName = context.resources.getResourceEntryName(icon)
-            val sdf = iconName.startsWith("ic_preset_")
-            mapImages.add(iconName, sdf = sdf) { createIconBitmap(context, icon, createSdf = sdf)  }
-
+            mapImages.add(icon) {
+                val name = context.resources.getResourceEntryName(icon)
+                val sdf = name.startsWith("ic_preset_")
+                createIconBitmap(context, icon, sdf) to sdf
+            }
             featuresByGeometry[marker.geometry] = marker.toFeatures(context.resources)
         }
         update()

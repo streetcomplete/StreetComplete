@@ -220,9 +220,11 @@ class StyleableOverlayMapComponent(
                 is PolygonStyle -> styledElement.style.icon
                 is PolylineStyle -> null
             } ?: continue
-            val iconName = context.resources.getResourceEntryName(icon)
-            val sdf = iconName.startsWith("ic_preset_")
-            mapImages.add(iconName, sdf = sdf) { createIconBitmap(context, icon, createSdf = sdf) }
+            mapImages.add(icon) {
+                val name = context.resources.getResourceEntryName(icon)
+                val sdf = name.startsWith("ic_preset_")
+                createIconBitmap(context, icon, sdf) to sdf
+            }
         }
         val features = styledElements.flatMap { it.toFeatures() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)

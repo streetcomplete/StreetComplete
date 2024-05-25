@@ -117,8 +117,7 @@ class PinsMapComponent(
     /** Show given pins. Previously shown pins are replaced with these.  */
     @UiThread fun set(pins: Collection<Pin>) {
         for (pin in pins) {
-            val iconName = context.resources.getResourceEntryName(pin.icon)
-            mapImages.add(iconName) { createPinBitmap(context, pin.icon) }
+            mapImages.add(pin.icon) { createPinBitmap(context, pin.icon) to false }
         }
         val features = pins.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)

@@ -68,10 +68,9 @@ class SelectedPinsMapComponent(
      *  related to pins, they are just visuals that are displayed on top of the normal pins and look
      *  highlighted/selected. */
     @UiThread fun set(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
-        val iconName = context.resources.getResourceEntryName(iconResId)
-        mapImages.add(iconName) { createPinBitmap(context, iconResId) }
+        mapImages.add(iconResId) { createPinBitmap(context, iconResId) to false }
         val p = JsonObject()
-        p.addProperty("icon-image", iconName)
+        p.addProperty("icon-image", context.resources.getResourceEntryName(iconResId))
         val points = pinPositions.map { Feature.fromGeometry(it.toPoint(), p) }
         selectedPinsSource.setGeoJson(FeatureCollection.fromFeatures(points))
         animation.start()

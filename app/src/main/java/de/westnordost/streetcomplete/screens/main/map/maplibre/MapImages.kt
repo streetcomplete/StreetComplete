@@ -1,15 +1,19 @@
 package de.westnordost.streetcomplete.screens.main.map.maplibre
 
+import android.content.res.Resources
 import android.graphics.Bitmap
 import org.maplibre.android.maps.Style
 
-class MapImages(private val style: Style) {
-    private val images = HashSet<String>()
+class MapImages( private val resources: Resources, private val style: Style) {
+    private val images = HashSet<Int>()
 
-    fun add(name: String, sdf: Boolean = false, createBitmap: (name: String) -> Bitmap) {
-        if (name !in images) {
-            style.addImage(name, createBitmap(name), sdf)
-            images.add(name)
+    fun add(id: Int, createBitmap: () -> Pair<Bitmap, Boolean>) {
+        if (id !in images) {
+            val name = resources.getResourceEntryName(id)
+            val (bitmap, sdf) = createBitmap()
+            style.addImageAsync(name, bitmap, sdf)
+            images.add(id)
+            Log.d("MapImages", name)
         }
     }
 }
