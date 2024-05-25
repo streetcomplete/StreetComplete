@@ -215,11 +215,7 @@ class StyleableOverlayMapComponent(
     /** Show given map data with each the given style */
     @UiThread fun set(styledElements: Collection<StyledElement>) {
         for (styledElement in styledElements) {
-            val icon = when (styledElement.style) {
-                is PointStyle -> styledElement.style.icon
-                is PolygonStyle -> styledElement.style.icon
-                is PolylineStyle -> null
-            } ?: continue
+            val icon = styledElement.style.getIcon() ?: continue
             mapImages.addOnce(icon) {
                 val name = context.resources.getResourceEntryName(icon)
                 val sdf = name.startsWith("ic_preset_")
@@ -398,3 +394,9 @@ private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway
 
 private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
+
+private fun Style.getIcon(): Int? = when(this) {
+    is PointStyle -> icon
+    is PolygonStyle -> icon
+    is PolylineStyle -> null
+}
