@@ -251,7 +251,9 @@ class StyleableOverlayMapComponent(
 
         return when (style) {
             is PointStyle -> {
-                if (style.icon != null) p.addProperty("icon", style.icon)
+                if (style.icon != null) {
+                    p.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+                }
                 if (style.label != null) p.addProperty("label", style.label)
 
                 listOf(Feature.fromGeometry(geometry.center.toPoint(), p))
@@ -275,7 +277,9 @@ class StyleableOverlayMapComponent(
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
                 val point = if (style.label != null || style.icon != null) {
                     val pp = getElementKeyProperties(element.key)
-                    if (style.icon != null) pp.addProperty("icon", style.icon)
+                    if (style.icon != null) {
+                        p.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+                    }
                     if (style.label != null) pp.addProperty("label", style.label)
                     Feature.fromGeometry(geometry.center.toPoint(),pp)
                 } else null

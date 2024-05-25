@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.iconResId
-import de.westnordost.streetcomplete.osm.building.iconResName
 import de.westnordost.streetcomplete.osm.estimateBuildingHeight
 import de.westnordost.streetcomplete.osm.estimateMinBuildingHeight
 import de.westnordost.streetcomplete.overlays.Color
