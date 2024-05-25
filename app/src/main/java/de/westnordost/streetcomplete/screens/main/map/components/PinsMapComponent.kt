@@ -27,6 +27,7 @@ import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
@@ -48,6 +49,7 @@ class PinsMapComponent(
     private val context: Context,
     private val contentResolver: ContentResolver,
     private val map: MapLibreMap,
+    private val mapImages: MapImages,
     private val clickRadius: Float,
     private val onClickPin: (properties: Map<String, String>) -> Unit
 ) {

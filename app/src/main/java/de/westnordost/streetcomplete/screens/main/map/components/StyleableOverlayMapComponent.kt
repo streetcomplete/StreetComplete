@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
@@ -42,6 +43,7 @@ import org.maplibre.android.geometry.LatLng
 class StyleableOverlayMapComponent(
     private val context: Context,
     private val map: MapLibreMap,
+    private val mapImages: MapImages,
     private val clickRadius: Float,
     private val onClickElement: (key: ElementKey) -> Unit
 ) {

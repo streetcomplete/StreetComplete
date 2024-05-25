@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.Marker
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
@@ -32,7 +33,11 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 
 /** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
  *  show the geometry of elements surrounding the selected quest */
-class GeometryMarkersMapComponent(private val context: Context, private val map: MapLibreMap) {
+class GeometryMarkersMapComponent(
+    private val context: Context,
+    private val map: MapLibreMap,
+    private val mapImages: MapImages
+) {
 
     private val geometrySource = GeoJsonSource(SOURCE)
 

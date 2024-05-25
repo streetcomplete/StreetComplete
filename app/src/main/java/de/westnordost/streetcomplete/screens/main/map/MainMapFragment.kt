@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponen
 import de.westnordost.streetcomplete.screens.main.map.components.SelectedPinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverlayMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
@@ -70,11 +71,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private val mapStateStore: MapStateStore by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val recentLocationStore: RecentLocationStore by inject()
-    private val mapIcons: MapIcons by inject()
 
     private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
 
+    private var mapImages: MapImages? = null
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
     private var pinsMapComponent: PinsMapComponent? = null
     private var selectedPinsMapComponent: SelectedPinsMapComponent? = null
@@ -187,10 +188,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         map.addOnMapClickListener(::onClickMap)
 
-        style.addImagesAsync(mapIcons.presetBitmaps, true)
-        style.addImagesAsync(mapIcons.pinBitmaps)
-        style.addImagesAsync(mapIcons.markerBitmaps)
-
         setupLayers(style)
 
         setupData(map)
@@ -199,7 +196,9 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private fun setupComponents(context: Context, map: MapLibreMap, style: Style) {
         val fingerRadius = context.resources.dpToPx(CLICK_AREA_SIZE_IN_DP / 2)
 
-        geometryMarkersMapComponent = GeometryMarkersMapComponent(context, map)
+        mapImages = MapImages(style)
+
+        geometryMarkersMapComponent = GeometryMarkersMapComponent(context, map, mapImages!!)
 
         locationMapComponent = CurrentLocationMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(locationMapComponent!!)
@@ -207,15 +206,15 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
-        pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, fingerRadius, ::onClickPin)
+        pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, fingerRadius, ::onClickPin)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 
-        styleableOverlayMapComponent = StyleableOverlayMapComponent(context, map, fingerRadius, ::onClickElement)
+        styleableOverlayMapComponent = StyleableOverlayMapComponent(context, map, mapImages!!, fingerRadius, ::onClickElement)
 
         downloadedAreaMapComponent = DownloadedAreaMapComponent(context, map)
 
-        selectedPinsMapComponent = SelectedPinsMapComponent(context, map)
+        selectedPinsMapComponent = SelectedPinsMapComponent(context, map, mapImages!!)
         viewLifecycleOwner.lifecycle.addObserver(selectedPinsMapComponent!!)
     }
 

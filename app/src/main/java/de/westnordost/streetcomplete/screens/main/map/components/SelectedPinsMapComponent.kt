@@ -2,14 +2,9 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.AnticipateOvershootInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
-import androidx.core.animation.addListener
-import androidx.core.animation.doOnEnd
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonObject
@@ -22,12 +17,17 @@ import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 
 /** Takes care of displaying "selected" pins. Those pins are always shown on top of pins displayed
  *  by the [PinsMapComponent] */
-class SelectedPinsMapComponent(private val context: Context, private val map: MapLibreMap)
+class SelectedPinsMapComponent(
+    private val context: Context,
+    private val map: MapLibreMap,
+    private val mapImages: MapImages
+)
     : DefaultLifecycleObserver {
 
     private val selectedPinsSource = GeoJsonSource("selected-pins-source")
