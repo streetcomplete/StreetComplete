@@ -220,7 +220,7 @@ class StyleableOverlayMapComponent(
                 is PolygonStyle -> styledElement.style.icon
                 is PolylineStyle -> null
             } ?: continue
-            mapImages.add(icon) {
+            mapImages.addOnce(icon) {
                 val name = context.resources.getResourceEntryName(icon)
                 val sdf = name.startsWith("ic_preset_")
                 createIconBitmap(context, icon, sdf) to sdf

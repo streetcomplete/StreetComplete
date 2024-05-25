@@ -80,7 +80,7 @@ class GeometryMarkersMapComponent(
     @UiThread fun putAll(markers: Iterable<Marker>) {
         for (marker in markers) {
             val icon = marker.icon ?: R.drawable.ic_preset_maki_circle
-            mapImages.add(icon) {
+            mapImages.addOnce(icon) {
                 val name = context.resources.getResourceEntryName(icon)
                 val sdf = name.startsWith("ic_preset_")
                 createIconBitmap(context, icon, sdf) to sdf
