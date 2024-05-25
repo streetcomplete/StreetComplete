@@ -118,9 +118,8 @@ class PinsMapComponent(
 
     /** Show given pins. Previously shown pins are replaced with these.  */
     suspend fun set(pins: Collection<Pin>) {
-        for (pin in pins) {
-            mapImages.addOnce(pin.icon) { createPinBitmap(context, pin.icon) to false }
-        }
+        val icons = pins.map { it.icon }
+        mapImages.addOnce(icons) { createPinBitmap(context, it) to false }
         val features = pins.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         withContext(Dispatchers.Main) { pinsSource.setGeoJson(mapLibreFeatures) }

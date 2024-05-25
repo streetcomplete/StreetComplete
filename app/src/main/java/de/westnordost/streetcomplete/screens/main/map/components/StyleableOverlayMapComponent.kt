@@ -216,13 +216,11 @@ class StyleableOverlayMapComponent(
 
     /** Show given map data with each the given style */
     suspend fun set(styledElements: Collection<StyledElement>) {
-        for (styledElement in styledElements) {
-            val icon = styledElement.style.getIcon() ?: continue
-            mapImages.addOnce(icon) {
-                val name = context.resources.getResourceEntryName(icon)
-                val sdf = name.startsWith("ic_preset_")
-                createIconBitmap(context, icon, sdf) to sdf
-            }
+        val icons = styledElements.mapNotNull { it.style.getIcon() }
+        mapImages.addOnce(icons) {
+            val name = context.resources.getResourceEntryName(it)
+            val sdf = name.startsWith("ic_preset_")
+            createIconBitmap(context, it, sdf) to sdf
         }
         val features = styledElements.flatMap { it.toFeatures() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
