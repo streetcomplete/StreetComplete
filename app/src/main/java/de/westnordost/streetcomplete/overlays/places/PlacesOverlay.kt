@@ -38,7 +38,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
             .map { element ->
                 val feature = getFeature(element)
 
-                val icon = presetIconIndex[(feature?.icon ?: "maki-shop")]
+                val icon = feature?.icon?.let { presetIconIndex[it] } ?: R.drawable.ic_preset_maki_marker_stroked
                 val label = getNameLabel(element.tags)
 
                 val style = if (element is Node) {
