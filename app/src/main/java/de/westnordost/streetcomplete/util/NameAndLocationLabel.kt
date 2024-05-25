@@ -16,9 +16,9 @@ fun getNameAndLocationLabel(
     featureDictionary: FeatureDictionary?,
     showHouseNumber: Boolean? = null
 ): CharSequence? {
-    val locales = getLocalesForFeatureDictionary(resources.configuration)
+    val languages = getLanguagesForFeatureDictionary(resources.configuration)
     val feature = featureDictionary
-        ?.getFeature(element, locales)
+        ?.getFeature(element, languages)
         ?.name
         ?.withNonBreakingSpaces()
         ?.inItalics()

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.SearchAdapter
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.showKeyboard
 
 class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
@@ -32,22 +32,21 @@ class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
         if (!element.tags.containsKey("shop") && !element.tags.containsKey("amenity")
             && !element.tags.containsKey("leisure") && !element.tags.containsKey("tourism")) return null
         return AnswerItem(R.string.quest_name_brand) {
-            val locales = getLocalesForFeatureDictionary(ctx.resources.configuration)
+            val languages = getLanguagesForFeatureDictionary(ctx.resources.configuration)
             val searchAdapter = SearchAdapter(ctx, { search ->
-                featureDictionary
-                    .byTerm(search)
-                    .forGeometry(GeometryType.POINT)
-                    .inCountry(countryOrSubdivisionCode)
-                    .forLocale(*locales)
-                    .find()
-                    .filter {
-                        it.addTags.containsKey("brand") && when {
-                            element.tags.containsKey("amenity") -> it.addTags["amenity"] == element.tags["amenity"]
-                            element.tags.containsKey("shop") -> it.addTags["shop"] == element.tags["shop"]
-                            element.tags.containsKey("leisure") -> it.addTags["leisure"] == element.tags["leisure"]
-                            element.tags.containsKey("tourism") -> it.addTags["tourism"] == element.tags["tourism"]
-                            else -> false
-                        } }
+                featureDictionary.getByTerm(
+                    search = search,
+                    languages = languages,
+                    country = countryOrSubdivisionCode,
+                    geometry = GeometryType.POINT
+                ).filter {
+                    it.addTags.containsKey("brand") && when {
+                        element.tags.containsKey("amenity") -> it.addTags["amenity"] == element.tags["amenity"]
+                        element.tags.containsKey("shop") -> it.addTags["shop"] == element.tags["shop"]
+                        element.tags.containsKey("leisure") -> it.addTags["leisure"] == element.tags["leisure"]
+                        element.tags.containsKey("tourism") -> it.addTags["tourism"] == element.tags["tourism"]
+                        else -> false
+                    } }.toList()
             }, { it.name })
             var feature: Feature? = null
             var dialog: AlertDialog? = null

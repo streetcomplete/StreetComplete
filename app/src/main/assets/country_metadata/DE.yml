@@ -15,6 +15,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 262
 officialLanguages: [de]
 orchardProduces: [grape, apple, hop, strawberry, plum, blueberry, pear, cherry, raspberry, tomato, walnut, apricot, peach, chilli_pepper, sweet_pepper]
+parcelLockerBrand: [DHL Packstation, Amazon Hub, Amazon Locker, Packstation, Amazon Hub Locker, DHL, Myflexbox, DHL Paketbox, Amazon, DHL Poststation]
 popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian]
 postboxesHaveCollectionTimes: true

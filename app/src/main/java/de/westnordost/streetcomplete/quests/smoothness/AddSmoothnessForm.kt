@@ -21,8 +21,6 @@ import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
 
-    private val binding by contentViewBinding(QuestGenericListBinding::bind)
-
     override val otherAnswers get() = listOfNotNull(
         if (Surface.values().find { it.osmValue == surfaceTag } != null)
             AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() }

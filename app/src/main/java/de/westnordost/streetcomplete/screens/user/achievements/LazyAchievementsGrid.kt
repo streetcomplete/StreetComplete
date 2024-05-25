@@ -49,7 +49,7 @@ fun LazyAchievementsGrid(
 
 @Preview
 @Composable
-fun PreviewLazyAchievementsGrid() {
+private fun PreviewLazyAchievementsGrid() {
     LazyAchievementsGrid(
         achievements = achievements.map { it to (1..20).random() },
         onClickAchievement = { achievement, level ->  }

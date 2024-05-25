@@ -233,7 +233,7 @@ val links = listOf(
     ),
     Link(
         "qwant_maps",
-        "https://www.qwant.com/maps/",
+        "https://map.qwant.com/",
         "Qwant Maps",
         LinkCategory.MAPS,
         R.drawable.ic_link_qwant,
@@ -444,7 +444,7 @@ val links = listOf(
         R.drawable.ic_link_osmlab,
         R.string.link_show_me_the_way_description
     ),
-    Link( // TODO map does not show since Nov 2023
+    Link(
         "osm-haiku",
         "https://satellitestud.io/osm-haiku/app",
         "OpenStreetMap Haiku",

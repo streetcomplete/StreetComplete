@@ -2,3 +2,4 @@
 atmOperators: [Westpac, Commonwealth Bank, ANZ, NAB, Suncorp, BOQ, Bendigo Bank, rediATM, Heritage Bank, St.George, DC ATM, ATMx, nab, atmx, armaguard, Suncorp Bank, RediATM, National Australia Bank, Bendigo, Bank of Queensland, Armaguard]
 chargingStationOperators: [Yurika, Evie Networks, 'Tesla, Inc.', Chargefox, AmpCharge]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Australia Post, Amazon Hub]

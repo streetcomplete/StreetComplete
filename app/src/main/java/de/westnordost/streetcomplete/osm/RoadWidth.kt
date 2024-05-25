@@ -72,34 +72,36 @@ fun estimateUsableRoadwayWidth(tags: Map<String, String>): Float? {
 /** Returns whether the estimated width of the given road is improbable */
 fun hasDubiousRoadWidth(tags: Map<String, String>): Boolean? {
     val roadType = tags["highway"]
-    if (roadType in ALL_ROADS) {
-        val usableWidth = estimateUsableRoadwayWidth(tags) ?: return null
-        if (isOneway(tags)) {
-            if (roadType == "service" || roadType == "track") {
-                // a service road (e.g. driveway) or just some track should be at least as broad
-                // as the default profile of OSRM considers as passable by cars
-                return usableWidth < 1.9f
-            } else {
-                // all others should at least be broad enough to accommodate a truck
-                return usableWidth < 2.6f
-            }
-        } else {
-            /* one may assume that if the usable width of non-oneway roads is below double the above
-               widths, it is also implausible, however, this is actually sometimes the case, by design:
-               - on 2-1 roads (roads with no car lanes markings and advisory cycle lanes on both sides)
-                 https://en.wikipedia.org/wiki/2-1_road
-               - certain residential streets with (partial) on-street parking that narrow them down so
-                 much that drivers have to do a slalom around the parking cars and have to wait on each
-                 other to pass them
-               Hence, to declare such common cases implausible is dubious.
-               However, if the total carriageway (ignoring street parking etc.) of a non-oneway is below
-               2x the above, then it is dubious
-             */
-            val width = estimateRoadwayWidth(tags) ?: return null
-            return width < 2 * 2.6f
-        }
+    if (roadType !in ALL_ROADS) {
+        return null
     }
-    return null
+
+    val usableWidth = estimateUsableRoadwayWidth(tags) ?: return null
+
+    // service roads (alleys, driveways, ...) and tracks don't need to be oneways for it to be
+    // plausible to be only as broad as the default profile of OSRM considers as passable by cars
+    if (roadType == "service" || roadType == "track") {
+        return usableWidth < 1.9f
+    }
+
+    // usable width of oneways should be broad enough to accommodate a truck
+    if (isOneway(tags)) {
+        return usableWidth < 2.6f
+    }
+
+    /* one may assume that if the usable width of non-oneway roads is below double the above
+       widths, it is also implausible, however, this is actually sometimes the case, by design:
+       - on 2-1 roads (roads with no car lanes markings and advisory cycle lanes on both sides)
+         https://en.wikipedia.org/wiki/2-1_road
+       - certain residential streets with (partial) on-street parking that narrow them down so
+         much that drivers have to do a slalom around the parking cars and have to wait on each
+         other to pass them
+       Hence, to declare such common cases implausible does not make sense.
+       However, if the total carriageway (ignoring street parking etc.) of a non-oneway is below
+       2x the above, THEN it is dubious
+     */
+    val width = estimateRoadwayWidth(tags) ?: return null
+    return width < 2 * 2.6f
 }
 
 /** Estimated width of the street-parking on the roadway.

@@ -19,6 +19,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [fr]
 orchardProduces: [grape, apple, walnut, olive, plum, apricot, peach, chestnut, banana, tomato, hazelnut, pear, cherry, kiwi, strawberry]
+parcelLockerBrand: [Amazon Hub, Mondial Relay, Amazon Locker, Pickup Station, Amazon, Amazon Hub Locker, Pickup, La Poste, Decathlon, InPost, Vinted, Parcel Pending, Locker  24/7, Casino, Mondial relay, Leroy Merlin, GLS;Relais colis;UPS, Box Colis Mobile, Amazon locker]
 popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true

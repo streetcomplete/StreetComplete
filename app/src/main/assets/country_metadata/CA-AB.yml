@@ -3,3 +3,4 @@ atmOperators: [RBC, CIBC, Instacoin, BMO, Scotiabank, TD Canada Trust, HoneyBadg
 chargingStationOperators: ['Tesla, Inc.', FLO, Shell, ChargePoint]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]
+parcelLockerBrand: [Canada Post]

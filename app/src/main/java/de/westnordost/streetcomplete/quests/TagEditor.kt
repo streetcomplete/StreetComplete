@@ -56,7 +56,7 @@ import de.westnordost.streetcomplete.overlays.custom.CustomOverlayForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.InsertNodeTagEditor
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.util.EditTagsAdapter
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.copy
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
@@ -262,11 +262,11 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
 
         if (element.id == 0L) {
             val previousTagsForFeature: Map<String, String>? = try { featureDictionary.value
-                .byTags(newTags)
-                .isSuggestion(false)
-                .forLocale(*getLocalesForFeatureDictionary(resources.configuration))
-                .find()
-                .firstOrNull()
+                .getByTags(
+                    tags = newTags,
+                    isSuggestion = false,
+                    languages = getLanguagesForFeatureDictionary(resources.configuration)
+                ).firstOrNull()
                 ?.let { prefs.getString(Prefs.CREATE_NODE_LAST_TAGS_FOR_FEATURE + it, "") }
                 ?.let { Json.decodeFromString(it) }
             } catch (e: Exception) { null }

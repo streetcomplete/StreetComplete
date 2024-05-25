@@ -2,3 +2,4 @@
 atmOperators: [OTP Bank, Banca Intesa, Raiffeisen bank, Поштанска штедионица, UniCredit Bank, Erste Bank, NLB, Eurobank, AIK banka, Банка Поштанска штедионица, Société Générale, NLB Komercijalna banka, Mobi banka, Erste bank, Addiko Bank, AIK Banka]
 chargingStationOperators: [Газпром]
 officialLanguages: [sr, hu, hr, sk, ro, rsk]
+parcelLockerBrand: [Поштин пакетомат]

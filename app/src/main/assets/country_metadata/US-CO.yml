@@ -2,3 +2,4 @@
 atmOperators: [Wells Fargo, Chase, First Bank, KeyBank, U.S. Bank, Huntington Bank, Bank of the West, Ent Credit Union, Canvas Credit Union, Bank of America, BBVA, FNBO, Bank of Colorado, Academy Bank, Western Union, Vectra Bank, University of Colorado Colorado Springs, UMB Bank, Security Service, Public Service Credit Union, PNC Bank, North Valley Bank, First National Bank, Elevations Credit Union, Credit Union of Colorado, Community Banks of Colorado, Citibank, CardTronics, BMO]
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Electrify America, Blink, EVgo, eVgo, Hampton Inn, Volta, Regis University, rivian, Schneider Electric, City of Boulder]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Locker, Amazon Hub]

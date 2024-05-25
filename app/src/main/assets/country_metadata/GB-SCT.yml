@@ -3,3 +3,4 @@ atmOperators: [RBS, Bank of Scotland, Sainsbury's Bank, NoteMachine, Royal Bank 
 chargingStationOperators: [ChargePlace Scotland, evolt, Pod Point, Charge Place Scotland, CYC, 'Tesla, Inc.', BP Pulse, eVolt, Evolt, Chargemaster, Gridserve, Connected Kerb, Zapcharged, Rolec EV, RAW Charging, Ionity, Fife Council, Fastned, Circontrol, Chargeplace Scotland, Charge Your Car, podpoint, VendElectric, South Lanarkshire Council, Orkney Islands Council, MFG, Highland Council, Dundee City Council, BP]
 clothesContainerOperators: [The Salvation Army, Salvation Army, Fife Council]
 defaultSpeedLimitHasUrbanOrRural: false
+parcelLockerBrand: [Amazon Hub, InPost, Locker InPost, Amazon Locker, Amazon Hub Locker]

@@ -6,3 +6,4 @@ defaultSpeedLimitHasUrbanOrRural: true
 hasNoStandingSign: true
 noStandingSignStyle: mutcd text standing
 officialLanguages: [en]
+parcelLockerBrand: [Amazon Hub, Locker InPost]

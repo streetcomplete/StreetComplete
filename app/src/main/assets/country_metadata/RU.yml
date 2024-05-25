@@ -16,6 +16,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [ru]
 orchardProduces: [apple, tomato, grape, plum, strawberry, raspberry, apricot, cherry, pear, peach, blueberry, tea, hop, orange]
+parcelLockerBrand: [Ozon Box, PickPoint, Ozon box, Почта России, 5post, ОмниСДЭК, Халва, Яндекс.Маркет, Cainiao, СберЛогистика, Ozon, СДЭК, 5Post, Qiwi, Цайняо, Яндекс Маркет, Утконос, Wildberries, fivepost.ru, QIWI, OZON, InPost, Aliexpress, AliExpress]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top

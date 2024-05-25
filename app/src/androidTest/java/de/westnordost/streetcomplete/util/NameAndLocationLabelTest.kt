@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.util
 import android.content.res.Configuration
 import android.content.res.Resources
 import androidx.test.platform.app.InstrumentationRegistry
-import de.westnordost.osmfeatures.AndroidFeatureDictionary
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.osmfeatures.create
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -19,7 +19,7 @@ class NameAndLocationLabelTest {
 
     init {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
-        featureDictionary = AndroidFeatureDictionary.create(context.assets, "osmfeatures/default", "osmfeatures/brands")
+        featureDictionary = FeatureDictionary.create(context.assets, "osmfeatures/default", "osmfeatures/brands")
 
         val conf = Configuration(context.resources.configuration)
         conf.setLocale(Locale.ENGLISH)

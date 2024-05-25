@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [中国建设银行, 中国银行, 招商银行, 中国工商银行, 中国农业银行, 中国邮政储蓄银行, 交通银行, 中国民生银行, 中信银行, 上海浦东发展银行]
 chargingStationOperators: [小兔充充, 'Tesla, Inc.', Potevio, CSG]
+parcelLockerBrand: [丰巢]

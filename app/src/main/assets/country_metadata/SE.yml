@@ -15,6 +15,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [sv]
 orchardProduces: [strawberry, apple, raspberry, pear, grape, tomato, plum, blueberry, cherry]
+parcelLockerBrand: [Instabox, PostNord, Budbee, Paketbox, iBoxen, Postnord, PostNord Paketbox]
 popularSports: [soccer, tennis, basketball, golf, boules, equestrian, ice_hockey]
 postboxesHaveCollectionTimes: true
 regularShoppingDays: 5

@@ -16,6 +16,7 @@ noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [el]
 orchardProduces: [olive, grape, peach, orange, almond, walnut, tomato, apple, kiwi, apricot, chestnut, pear, fig, lemon, lime, chilli_pepper, sweet_pepper]
+parcelLockerBrand: [BoxNow, Box Now, Skroutz Point, Skroutz]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ΠΕΡΙΟΧΗ

@@ -102,7 +102,7 @@ class OAuthService(private val httpClient: HttpClient) {
      * and required in the OAuth 2.1 draft
      * https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-09
      */
-    public val codeVerifier: String = createRandomAlphanumericString(128)
+    val codeVerifier: String = createRandomAlphanumericString(128)
 
     /**
      * Creates the URL to be opened in the browser or a web view in which the user agrees to
@@ -144,7 +144,7 @@ class OAuthService(private val httpClient: HttpClient) {
  *                        the user did not accept the requested permissions
  * @throws OAuthConnectionException if the server reply is malformed
  */
-public fun extractAuthorizationCode(uri: String): String {
+fun extractAuthorizationCode(uri: String): String {
     val parameters = Url(uri).parameters
     val authorizationCode = parameters["code"]
     if (authorizationCode != null) return authorizationCode

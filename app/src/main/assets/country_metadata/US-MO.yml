@@ -2,3 +2,4 @@
 atmOperators: [Commerce Bank, U.S. Bank, Bank of America, Bank of Washington, US Bank, Great Southern Bank, Regions Bank, First Bank, United Bank of Union, PNC Bank, Chase, Bank of Sullivan, UMB Bank, UMB, Reliance Bank, Citizens Bank, Bank of Franklin County, Bank Midwest, Arvest, Academy Bank]
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Evergy, Tesla Motors]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Locker]

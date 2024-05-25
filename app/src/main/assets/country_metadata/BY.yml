@@ -13,5 +13,6 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [be, ru]
 orchardProduces: [apple, strawberry, grape, plum, tomato, pear, walnut, hazelnut, cherry, cranberry]
+parcelLockerBrand: [Белпошта]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]
 postboxesHaveCollectionTimes: true

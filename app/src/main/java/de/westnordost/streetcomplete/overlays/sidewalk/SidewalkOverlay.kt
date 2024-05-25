@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -101,7 +101,7 @@ private val sidewalkTaggingNotExpectedFilter by lazy { """
       or expressway = yes
       or maxspeed <= 10
       or maxspeed = walk
-      or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
+      or surface ~ ${UNPAVED_SURFACES.joinToString("|")}
       or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(zone)?:?([1-9]|10)"
 """.toElementFilterExpression() }
 

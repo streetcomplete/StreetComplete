@@ -2,3 +2,4 @@
 atmOperators: [Bank of America, Chase, BMO, CEFCU, PNC Bank, Fifth Third Bank, Bitcoin Depot, U.S. Bank, Citibank, Circle K, Huntington Bank, Busey Bank, Bitcoin of America, Bank of Springfield, Road Ranger, Regions Bank, Old National Bank, Morton Community Bank, Triton, Old Second National Bank, INB, Hyde Park Bank, Banterra Bank, Athena Bitcoin Inc.]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Volta, Electrify America, EVgo, Blink, Tesla, NRG Energy, iGo, Bradley University]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub]

@@ -68,6 +68,7 @@ data class IncompleteCountryInfo(
     val noStoppingSignStyle: String? = null,
     val officialLanguages: List<String>? = null,
     val orchardProduces: List<String>? = null,
+    val parcelLockerBrand: List<String>? = null,
     val pictogramCycleLaneStyle: String? = null,
     val popularReligions: List<String>? = null,
     val popularSports: List<String>? = null,
@@ -177,6 +178,8 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
         get() = infos.firstNotNullOfOrNull { it.noStoppingLineStyle }
     val orchardProduces: List<String>
         get() = infos.firstNotNullOfOrNull { it.orchardProduces } ?: emptyList()
+    val parcelLockerBrand: List<String>?
+        get() = infos.firstNotNullOfOrNull { it.parcelLockerBrand }
     val popularSports: List<String>
         get() = infos.firstNotNullOfOrNull { it.popularSports } ?: emptyList()
     val slowZoneLabelPosition: String?

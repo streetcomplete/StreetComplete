@@ -10,6 +10,7 @@ noStandingLineStyle: yellow zig-zags
 noStoppingLineStyle: double yellow zig-zags
 officialLanguages: [en, ms, zh, ta]
 orchardProduces: [coconut, tomato]
+parcelLockerBrand: [Pick, POPStation]
 popularReligions: [buddhist, christian, muslim, chinese_folk, taoist, hindu]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true

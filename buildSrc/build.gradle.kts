@@ -8,8 +8,8 @@ dependencies {
     implementation("de.westnordost:countryboundaries:2.1")
     implementation("com.esotericsoftware.yamlbeans:yamlbeans:1.15")
     implementation("org.jsoup:jsoup:1.15.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-    implementation("com.charleskorn.kaml:kaml:0.58.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("com.charleskorn.kaml:kaml:0.59.0")
     implementation("org.jetbrains:markdown:0.7.0")
 }
 

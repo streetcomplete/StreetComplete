@@ -3,3 +3,4 @@ atmOperators: [Westpac, Commonwealth Bank, St.George, ANZ]
 chargingStationOperators: ['Tesla, Inc.', Evie Networks]
 defaultSpeedLimitHasUrbanOrRural: true
 hasSlowZone: false
+parcelLockerBrand: [Australia Post]

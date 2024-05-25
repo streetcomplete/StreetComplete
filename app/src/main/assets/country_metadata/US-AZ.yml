@@ -2,3 +2,4 @@
 atmOperators: [Wells Fargo, Bank of America, Athena Bitcoin, Chase, Bitstop, U.S. Bank, MetaBank, RockItCoin, Desert Financial, BMO Harris Bank, Arizona Central Credit Union, Allpoint, AZ Federal Credit Union]
 chargingStationOperators: [Blink, 'Tesla, Inc.', ChargePoint, Electrify America, Volta, Tesla Motors, EVgo, eVgo, Tesla, Lowell Observatory, APS]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub, Amazon Locker]

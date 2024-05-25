@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.singleTypeElementSelectionDialog
 
@@ -90,7 +90,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
           highway ~ ${prefs.getString(questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}
           and (!sidewalk or sidewalk = none) and !sidewalk:both and !sidewalk:left and !sidewalk:right
           and (!maxspeed or maxspeed > 9 or maxspeed ~ [A-Z].*)
-          and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+          and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
           and (
             lit = yes
             or highway = residential

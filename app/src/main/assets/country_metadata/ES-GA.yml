@@ -3,3 +3,4 @@ atmOperators: [Abanca, Santander, Banco Sabadell, Banco Santander, ABANCA, Caixa
 chargingStationOperators: ['Tesla, Inc.', Zunder, Ionity, Endesa, Wenea, Lidl]
 clothesContainerOperators: [Cáritas, Padre Rubinos]
 officialLanguages: [gl, es]
+parcelLockerBrand: [Amazon Hub Locker, Amazon Hub, Amazon Locker]

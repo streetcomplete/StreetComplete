@@ -367,6 +367,9 @@ quest/
     oneway.svg
     opening_hours.svg
     opening_hours_signed.svg
+    parcel_locker_brand.svg          Arthur-GYT, parts from Google Noto Color Emoji: U+1F4E6
+    parcel_locker_deposit.svg        Arthur-GYT, parts from Google Noto Color Emoji: U+1F4E6
+    parcel_locker_pickup.svg         Arthur-GYT, parts from Google Noto Color Emoji: U+1F4E6
     parking.svg
     parking_access.svg               parts taken from EmojiOne 2: U+1F511
     parking_fee.svg                  parts taken from EmojiOne 2: U+1F4B8

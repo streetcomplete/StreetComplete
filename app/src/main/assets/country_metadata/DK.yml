@@ -14,6 +14,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 238
 officialLanguages: [da]
 orchardProduces: [apple, strawberry, pear, cherry, blueberry, plum, raspberry, tomato]
+parcelLockerBrand: [Pakkeboksen, Nærboks, Instabox, instabox]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: Zone

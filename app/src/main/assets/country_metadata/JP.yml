@@ -14,6 +14,7 @@ noParkingLineStyle: dashed yellow on curb
 noStoppingLineStyle: yellow on curb
 officialLanguages: [ja]
 orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomato, peach, strawberry, cherry, chilli_pepper, sweet_pepper, plum, orange, kiwi]
+parcelLockerBrand: [Amazon Hub ロッカー, プドー, Amazon Locker, PUDOステーション, はこぽす, PUDO, Tajimingo, amazon, Amazon Hub Locker]
 popularReligions: [shinto, buddhist, animist]
 popularSports: [tennis, baseball]
 postboxesHaveCollectionTimes: true

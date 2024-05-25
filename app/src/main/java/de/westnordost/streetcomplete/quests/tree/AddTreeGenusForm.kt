@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.doOnLayout
 import androidx.core.widget.doAfterTextChanged
-import de.westnordost.osmfeatures.StringUtils
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -22,6 +21,9 @@ import de.westnordost.streetcomplete.util.mostCommonWithin
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.IOException
+import java.text.Normalizer
+import java.util.Locale
+import java.util.regex.Pattern
 
 class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
 
@@ -81,7 +83,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
 
     private fun getSelectedTree(): Tree? {
         val input = binding.nameInput.text.toString()
-        return getTrees(input).firstOrNull { StringUtils.canonicalize(it.toDisplayString()) == StringUtils.canonicalize(input) }
+        return getTrees(input).firstOrNull { canonicalize(it.toDisplayString()) == canonicalize(input) }
     }
 
     private fun getTrees(fullSearch: String): List<Tree> {
@@ -155,3 +157,13 @@ private fun String.toTree(isSpecies: Boolean): Tree? {
 }
 
 const val FILENAME_TREES = "trees.csv"
+
+private val FIND_DIACRITICS: Pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+")
+
+private fun canonicalize(str: String): String? {
+    return stripDiacritics(str).lowercase(Locale.US)
+}
+
+private fun stripDiacritics(str: String): String {
+    return FIND_DIACRITICS.matcher(Normalizer.normalize(str, Normalizer.Form.NFD)).replaceAll("")
+}

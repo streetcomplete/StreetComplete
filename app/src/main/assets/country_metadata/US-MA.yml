@@ -2,3 +2,4 @@
 atmOperators: [Bank of America, Santander, Citizens Bank, TD Bank, Chase, Florence Savings Bank, Cambridge Savings Bank, Shrewsbury Federal Credit Union, MIT Federal Credit Union, Eastern Bank, Digital Credit Union]
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Volta, Tesla Motors, Electrify America, EVgo, eVgo, Town of Bolton]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub]

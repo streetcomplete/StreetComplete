@@ -11,6 +11,7 @@ noParkingLineStyle: dashed yellow with Xs
 noStoppingLineStyle: yellow
 officialLanguages: [sr]
 orchardProduces: [plum, apple, raspberry, grape, cherry, tomato, peach, strawberry, apricot, chilli_pepper, sweet_pepper, pear, hazelnut, walnut, hop]
+parcelLockerBrand: [Поштин Пакетомат]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ЗОНА

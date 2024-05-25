@@ -13,6 +13,7 @@ noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [bg]
 orchardProduces: [grape, cherry, plum, walnut, tomato, apple, chilli_pepper, sweet_pepper, peach, apricot, raspberry, hazelnut, almond, strawberry, pear, blueberry]
+parcelLockerBrand: [BoxNow, easybox, Еконт, Speedy, Box Now]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ЗОНА

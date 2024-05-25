@@ -11,6 +11,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [pt]
 orchardProduces: [olive, grape, chestnut, almond, orange, tomato, apple, pear, walnut, fig, peach, kiwi, blueberry, avocado, plum]
+parcelLockerBrand: [Locky CTT, Locky]
 popularReligions: [christian, jewish, muslim]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top

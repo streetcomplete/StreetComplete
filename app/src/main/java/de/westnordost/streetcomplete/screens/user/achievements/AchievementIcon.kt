@@ -89,6 +89,6 @@ object AchievementFrameShape : Shape {
 
 @Preview
 @Composable
-fun PreviewAchievementIcon() {
+private fun PreviewAchievementIcon() {
     AchievementIcon(icon = R.drawable.ic_achievement_first_edit, level = 8)
 }

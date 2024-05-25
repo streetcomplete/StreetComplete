@@ -15,6 +15,7 @@ noParkingLineStyle: dashed yellow with Xs
 noStoppingLineStyle: yellow
 officialLanguages: [de, fr, it, rm]
 orchardProduces: [grape, apple, walnut, pear, apricot, cherry, strawberry, plum, raspberry, tomato, blueberry, hop, chilli_pepper, sweet_pepper, kiwi, peach]
+parcelLockerBrand: [My Post 24, PickMup, MyPost24, DHL Packstation]
 popularSports: [soccer, tennis, basketball, shooting, equestrian]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true

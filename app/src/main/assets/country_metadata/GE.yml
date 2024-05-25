@@ -10,5 +10,6 @@ livingStreetSignStyle: russia
 mobileCountryCode: 282
 officialLanguages: [ka]
 orchardProduces: [grape, apple, orange, hazelnut, peach, walnut, tomato, plum, tea, pear, apricot, cherry, almond, chilli_pepper, sweet_pepper, lemon, lime]
+parcelLockerBrand: [Locker.ge]
 popularSports: [rugby]
 postboxesHaveCollectionTimes: true

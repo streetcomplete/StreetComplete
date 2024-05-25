@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isImplicitMaxSpeedButNotSlowZone
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
@@ -21,7 +21,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
             )
           )
           and area != yes
-          and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
+          and (surface ~ ${PAVED_SURFACES.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
           and (!lanes or lanes = 0)
           and (!lanes:backward or !lanes:forward)
           and lane_markings != no

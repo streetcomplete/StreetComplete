@@ -4,3 +4,4 @@ chargingStationOperators: [Lidl, Allego, 'Tesla, Inc.', Ionity, ZE-MO, Luminus, 
 clothesContainerOperators: [Terre, IDELUX-Environnement, Terre ASBL, Terre asbl, Oxfam, Les Petits Riens, Oxfam-Solidarité, Les Petits Riens - Spullenhulp, ASBL Terre, Caritas n.v., Les Petits Riens-Spullenhulp, Curitas, BEP, ASBL la chaîne du cœur]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [fr, de]
+parcelLockerBrand: [bpost, Mondial Relay, Bpost]

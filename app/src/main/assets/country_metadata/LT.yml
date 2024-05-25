@@ -15,4 +15,5 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lt]
 orchardProduces: [apple, raspberry, strawberry, pear, blueberry, plum, tomato, cherry]
+parcelLockerBrand: [Omniva, LP Express, DPD, DPD Pickup Station, uDrop, Venipak, OMNIVA, Smartpost, Lietuvos Paštas, Omniva paštomatas, LP express paštomatas, LP EXPRESS]
 postboxesHaveCollectionTimes: true

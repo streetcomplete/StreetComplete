@@ -2,3 +2,4 @@
 atmOperators: [Caixabank, Santander, Ibercaja, Caja Rural, BanCaixa, Banco Santander, Unicaja Banco, Caja Duero, BBVA, Caja España, BitBase, Banco Sabadell, Unicaja, Shitcoins.club, La Caixa, ING, EspañaDuero, Caja Rural de Soria, Caja Rural de Salamanca, Bankia, Banco Popular]
 chargingStationOperators: [Iberdrola, Zunder, 'Tesla, Inc.', Repsol, Ionity, BMW, Iberdrola Clientes SAU, Senae Energy, Feníe Energía, Endesa, Wenea, IBIL, EDP, Parkmusa, Iberdrola SAU, Cargacoches, Bridgestone]
 clothesContainerOperators: [Porsiete, Cáritas, Fundación Lesmes, Caritas, Por Siete]
+parcelLockerBrand: [Amazon Hub, Amazon Locker]

@@ -2,3 +2,4 @@
 atmOperators: [Lloyds Bank, Barclays, NatWest, Tesco, Halifax, Santander, HSBC UK, Tesco Bank, Sainsbury's Bank, RBS, Cashzone, Cash Zone, Nationwide, CashZone, TSB, Post Office, Link, HSBC, Co-operative, Barclays Bank PLC]
 chargingStationOperators: [Pod Point, 'Tesla, Inc.', Osprey Charging, Gridserve, GeniePoint, InstaVolt, Connected Kerb, Clenergy, Osprey, National Trust, ChargePoint, Tesco, Swarco, Swansea Council, Ensto, Dragon Charging, Ceredigion County Council, Cardiff Capital Region, BP Pulse]
 officialLanguages: [en, cy]
+parcelLockerBrand: [Amazon Hub, InPost, Amazon Locker]

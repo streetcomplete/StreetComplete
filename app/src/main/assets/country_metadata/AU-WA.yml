@@ -2,3 +2,4 @@
 atmOperators: [Westpac, ANZ, Bankwest, Commonwealth Bank, National Australia Bank, NAB, Commonwealth, Bendigo Bank, Commonwealth Bank of Australia, next, nab, DCATM, DC payments, CBA, BankWest]
 chargingStationOperators: [Chargefox, 'Tesla, Inc.', RAC]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Australia Post]

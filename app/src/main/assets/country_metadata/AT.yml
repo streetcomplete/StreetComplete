@@ -17,6 +17,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [de]
 orchardProduces: [grape, apple, strawberry, apricot, pear, hop, plum, blueberry, tomato, peach, walnut, chilli_pepper, sweet_pepper, raspberry, cherry]
+parcelLockerBrand: [Amazon Hub, Myflexbox, Post Abholstation, Amazon Locker, MYFLEXBOX, DHL Packstation, Amazon, Tamburi, GLS, Amazon Hub Locker, A1]
 popularSports: [soccer, tennis, equestrian, beachvolleyball]
 postboxesHaveCollectionTimes: true
 regularShoppingDays: 5
