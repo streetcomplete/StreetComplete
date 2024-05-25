@@ -276,7 +276,7 @@ class StyleableOverlayMapComponent(
                 val point = if (style.label != null || style.icon != null) {
                     val pp = getElementKeyProperties(element.key)
                     if (style.icon != null) {
-                        p.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+                        pp.addProperty("icon", context.resources.getResourceEntryName(style.icon))
                     }
                     if (style.label != null) pp.addProperty("label", style.label)
                     Feature.fromGeometry(geometry.center.toPoint(),pp)
