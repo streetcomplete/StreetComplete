@@ -31,7 +31,6 @@ import kotlinx.coroutines.withContext
 class EditHistoryPinsManager(
     private val pinsMapComponent: PinsMapComponent,
     private val editHistorySource: EditHistorySource,
-    private val resources: Resources
 ) : DefaultLifecycleObserver {
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
@@ -97,7 +96,7 @@ class EditHistoryPinsManager(
         edits.mapIndexed { index, edit ->
             Pin(
                 edit.position,
-                resources.getResourceEntryName(edit.icon),
+                edit.icon,
                 edit.toProperties(),
                 index // most recent first
             )

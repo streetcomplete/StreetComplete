@@ -258,11 +258,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         restoreMapState()
         centerCurrentPositionIfFollowing()
 
-        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, resources, visibleQuestsSource)
+        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, visibleQuestsSource)
         questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
 
-        editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource, resources)
+        editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource)
         editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
 

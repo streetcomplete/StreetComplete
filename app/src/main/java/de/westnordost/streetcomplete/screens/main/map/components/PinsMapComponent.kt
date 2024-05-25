@@ -163,6 +163,14 @@ class PinsMapComponent(
         }
     }
 
+    private fun Pin.toFeature(): Feature {
+        val p = JsonObject()
+        p.addProperty("icon-image", context.resources.getResourceEntryName(icon))
+        p.addProperty("icon-order", order)
+        properties.forEach { p.addProperty(it.first, it.second) }
+        return Feature.fromGeometry(position.toPoint(), p)
+    }
+
     companion object {
         private const val SOURCE = "pins-source"
         private const val CLUSTER_MAX_ZOOM = 16
@@ -171,18 +179,10 @@ class PinsMapComponent(
 
 data class Pin(
     val position: LatLon,
-    val iconName: String,
+    val icon: Int,
     val properties: Collection<Pair<String, String>> = emptyList(),
     val order: Int = 0
 )
-
-private fun Pin.toFeature(): Feature {
-    val p = JsonObject()
-    p.addProperty("icon-image", iconName)
-    p.addProperty("icon-order", order)
-    properties.forEach { p.addProperty(it.first, it.second) }
-    return Feature.fromGeometry(position.toPoint(), p)
-}
 
 private fun JsonObject.getProperties(): Map<String, String> =
     entrySet().associate { it.key to it.value.asString }

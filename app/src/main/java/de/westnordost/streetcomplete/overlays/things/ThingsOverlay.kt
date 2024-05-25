@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
+import de.westnordost.streetcomplete.view.presetIconIndex
 
 class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
@@ -32,7 +33,7 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                     ?: element.asIfItWasnt("disused")?.let { getFeature(it) }
                     ?: return@mapNotNull null
 
-                val icon = "ic_preset_" + (feature.icon ?: "maki-marker-stroked").replace('-', '_')
+                val icon = presetIconIndex[feature.icon ?: "maki-marker-stroked"]
 
                 val style = if (element is Node) {
                     PointStyle(icon)
