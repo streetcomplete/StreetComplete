@@ -7,6 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.AnyThread
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
@@ -95,6 +102,9 @@ abstract class AbstractQuestForm :
     // overridable by child classes
     open val contentLayoutResId: Int? = null
     open val contentPadding = true
+
+    @Composable
+    open fun QuestForm(){}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -203,6 +213,12 @@ abstract class AbstractQuestForm :
         binding.content.visibility = View.VISIBLE
         updateContentPadding()
         layoutInflater.inflate(resourceId, binding.content)
+        binding.composeView.apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                QuestForm()
+            }
+        }
         return binding.content.getChildAt(0)
     }
 
