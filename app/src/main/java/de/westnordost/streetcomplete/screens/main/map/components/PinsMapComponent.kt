@@ -16,7 +16,6 @@ import org.maplibre.android.style.expressions.Expression.lte
 import org.maplibre.android.style.expressions.Expression.gt
 import org.maplibre.android.style.expressions.Expression.get
 import org.maplibre.android.style.expressions.Expression.literal
-import org.maplibre.android.style.expressions.Expression.sqrt
 import org.maplibre.android.style.expressions.Expression.sum
 import org.maplibre.android.style.expressions.Expression.toNumber
 import org.maplibre.android.style.expressions.Expression.zoom
@@ -36,6 +35,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.style.expressions.Expression.any
+import org.maplibre.android.style.expressions.Expression.log2
 import org.maplibre.android.style.sources.GeoJsonOptions
 import org.maplibre.geojson.Point
 import kotlin.math.abs
@@ -55,6 +55,7 @@ class PinsMapComponent(
         GeoJsonOptions()
             .withCluster(true)
             .withClusterMaxZoom(CLUSTER_MAX_ZOOM)
+            .withClusterRadius(55)
     )
 
     val layers: List<Layer> = listOf(
@@ -66,9 +67,9 @@ class PinsMapComponent(
             ))
             .withProperties(
                 iconImage("cluster-circle"),
-                iconSize(sum(literal(0.5f), division(sqrt(get("point_count")), literal(12f)))),
+                iconSize(sum(literal(0.5f), division(log2(get("point_count")), literal(10f)))),
                 textField(get("point_count")),
-                textSize(sum(literal(15f), division(sqrt(get("point_count")), literal(1.5f)))),
+                textSize(sum(literal(15f), division(log2(get("point_count")), literal(1.5f)))),
                 iconAllowOverlap(true),
                 textAllowOverlap(true),
             ),
