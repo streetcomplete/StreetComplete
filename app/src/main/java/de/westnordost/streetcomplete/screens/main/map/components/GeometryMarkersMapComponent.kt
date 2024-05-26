@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.Context
 import android.content.res.Resources
-import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.R
@@ -10,7 +9,6 @@ import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.style.expressions.Expression.*
-import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.FillLayer
 import org.maplibre.android.style.layers.Layer
 import org.maplibre.android.style.layers.LineLayer
@@ -22,17 +20,24 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.Marker
+import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /** Manages putting some generic geometry markers with an optional drawable on the map. I.e. to
  *  show the geometry of elements surrounding the selected quest */
-class GeometryMarkersMapComponent(private val context: Context, private val map: MapLibreMap) {
+class GeometryMarkersMapComponent(
+    private val context: Context,
+    private val map: MapLibreMap,
+    private val mapImages: MapImages
+) {
 
     private val geometrySource = GeoJsonSource(SOURCE)
 
@@ -74,11 +79,17 @@ class GeometryMarkersMapComponent(private val context: Context, private val map:
         map.style?.addSource(geometrySource)
     }
 
-    @UiThread fun putAll(markers: Iterable<Marker>) {
+    suspend fun putAll(markers: Iterable<Marker>) {
+        val icons = markers.map { it.icon ?: R.drawable.ic_preset_maki_circle }
+        mapImages.addOnce(icons) {
+            val name = context.resources.getResourceEntryName(it)
+            val sdf = name.startsWith("ic_preset_")
+            createIconBitmap(context, it, sdf) to sdf
+        }
         for (marker in markers) {
             featuresByGeometry[marker.geometry] = marker.toFeatures(context.resources)
         }
-        update()
+        withContext(Dispatchers.Main) { update() }
     }
 
     @UiThread fun delete(geometry: ElementGeometry) {

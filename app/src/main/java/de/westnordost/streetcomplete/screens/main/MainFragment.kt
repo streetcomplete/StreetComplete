@@ -523,7 +523,7 @@ class MainFragment :
 
     /* ------------------------------- ShowsPointMarkers -------------------------------- */
 
-    @UiThread override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
+    override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
         mapFragment?.putMarkersForCurrentHighlighting(markers)
     }
 

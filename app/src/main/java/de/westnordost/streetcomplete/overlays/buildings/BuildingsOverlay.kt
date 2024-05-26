@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.createBuildingType
-import de.westnordost.streetcomplete.osm.building.iconResName
+import de.westnordost.streetcomplete.osm.building.iconResId
 import de.westnordost.streetcomplete.osm.estimateBuildingHeight
 import de.westnordost.streetcomplete.osm.estimateMinBuildingHeight
 import de.westnordost.streetcomplete.overlays.Color
@@ -63,7 +63,7 @@ class BuildingsOverlay : Overlay {
 
             element to PolygonStyle(
                 color = color,
-                icon = building?.iconResName,
+                icon = building?.iconResId,
                 height = height,
                 minHeight = minHeight
             )

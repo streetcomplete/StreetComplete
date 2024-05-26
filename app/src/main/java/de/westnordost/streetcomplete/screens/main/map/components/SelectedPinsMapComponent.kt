@@ -2,14 +2,9 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.AnticipateOvershootInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
-import androidx.core.animation.addListener
-import androidx.core.animation.doOnEnd
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonObject
@@ -22,12 +17,20 @@ import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /** Takes care of displaying "selected" pins. Those pins are always shown on top of pins displayed
  *  by the [PinsMapComponent] */
-class SelectedPinsMapComponent(private val context: Context, private val map: MapLibreMap)
+class SelectedPinsMapComponent(
+    private val context: Context,
+    private val map: MapLibreMap,
+    private val mapImages: MapImages
+)
     : DefaultLifecycleObserver {
 
     private val selectedPinsSource = GeoJsonSource("selected-pins-source")
@@ -66,12 +69,15 @@ class SelectedPinsMapComponent(private val context: Context, private val map: Ma
     /** Show selected pins with the given icon at the given positions. "Selected pins" are not
      *  related to pins, they are just visuals that are displayed on top of the normal pins and look
      *  highlighted/selected. */
-    @UiThread fun set(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
+    suspend fun set(@DrawableRes iconResId: Int, pinPositions: Collection<LatLon>) {
+        mapImages.addOnce(iconResId) { createPinBitmap(context, it) to false }
         val p = JsonObject()
         p.addProperty("icon-image", context.resources.getResourceEntryName(iconResId))
         val points = pinPositions.map { Feature.fromGeometry(it.toPoint(), p) }
-        selectedPinsSource.setGeoJson(FeatureCollection.fromFeatures(points))
-        animation.start()
+        withContext(Dispatchers.Main) {
+            selectedPinsSource.setGeoJson(FeatureCollection.fromFeatures(points))
+            animation.start()
+        }
     }
 
     private fun animatePin(value: Float) {

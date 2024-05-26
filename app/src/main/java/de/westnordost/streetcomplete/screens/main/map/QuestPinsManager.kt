@@ -39,7 +39,6 @@ class QuestPinsManager(
     private val pinsMapComponent: PinsMapComponent,
     private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource
 ) : DefaultLifecycleObserver {
 
@@ -182,7 +181,7 @@ class QuestPinsManager(
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }
-        withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
+        pinsMapComponent.set(pins)
     }
 
     private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
@@ -206,7 +205,7 @@ class QuestPinsManager(
 
             questsInView.values.flatten()
         }
-        withContext(Dispatchers.Main) { pinsMapComponent.set(pins) }
+        pinsMapComponent.set(pins)
     }
 
     private fun initializeQuestTypeOrders() {
@@ -222,10 +221,9 @@ class QuestPinsManager(
     }
 
     private fun createQuestPins(quest: Quest): List<Pin> {
-        val iconName = resources.getResourceEntryName(quest.type.icon)
         val props = quest.key.toProperties()
         val order = synchronized(questTypeOrders) { questTypeOrders[quest.type] ?: 0 }
-        return quest.markerLocations.map { Pin(it, iconName, props, order) }
+        return quest.markerLocations.map { Pin(it, quest.type.icon, props, order) }
     }
 
     private fun reinitializeQuestTypeOrders() {

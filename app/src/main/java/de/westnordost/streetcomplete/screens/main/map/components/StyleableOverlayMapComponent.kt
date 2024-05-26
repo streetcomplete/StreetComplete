@@ -27,6 +27,8 @@ import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
+import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
@@ -36,12 +38,15 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeat
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.ktx.toRGB
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
 
 /** Takes care of displaying styled map data */
 class StyleableOverlayMapComponent(
     private val context: Context,
     private val map: MapLibreMap,
+    private val mapImages: MapImages,
     private val clickRadius: Float,
     private val onClickElement: (key: ElementKey) -> Unit
 ) {
@@ -210,10 +215,16 @@ class StyleableOverlayMapComponent(
     }
 
     /** Show given map data with each the given style */
-    @UiThread fun set(styledElements: Collection<StyledElement>) {
+    suspend fun set(styledElements: Collection<StyledElement>) {
+        val icons = styledElements.mapNotNull { it.style.getIcon() }
+        mapImages.addOnce(icons) {
+            val name = context.resources.getResourceEntryName(it)
+            val sdf = name.startsWith("ic_preset_")
+            createIconBitmap(context, it, sdf) to sdf
+        }
         val features = styledElements.flatMap { it.toFeatures() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
-        overlaySource.setGeoJson(mapLibreFeatures)
+        withContext(Dispatchers.Main) { overlaySource.setGeoJson(mapLibreFeatures) }
     }
 
     private fun onClick(position: LatLng): Boolean {
@@ -238,7 +249,9 @@ class StyleableOverlayMapComponent(
 
         return when (style) {
             is PointStyle -> {
-                if (style.icon != null) p.addProperty("icon", style.icon)
+                if (style.icon != null) {
+                    p.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+                }
                 if (style.label != null) p.addProperty("label", style.label)
 
                 listOf(Feature.fromGeometry(geometry.center.toPoint(), p))
@@ -262,7 +275,9 @@ class StyleableOverlayMapComponent(
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
                 val point = if (style.label != null || style.icon != null) {
                     val pp = getElementKeyProperties(element.key)
-                    if (style.icon != null) pp.addProperty("icon", style.icon)
+                    if (style.icon != null) {
+                        pp.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+                    }
                     if (style.label != null) pp.addProperty("label", style.label)
                     Feature.fromGeometry(geometry.center.toPoint(),pp)
                 } else null
@@ -379,3 +394,9 @@ private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway
 
 private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
+
+private fun Style.getIcon(): Int? = when(this) {
+    is PointStyle -> icon
+    is PolygonStyle -> icon
+    is PolylineStyle -> null
+}

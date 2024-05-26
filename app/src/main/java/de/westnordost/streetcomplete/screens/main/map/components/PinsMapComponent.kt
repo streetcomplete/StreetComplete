@@ -26,6 +26,8 @@ import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
@@ -33,6 +35,8 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.style.expressions.Expression.any
 import org.maplibre.android.style.expressions.Expression.log2
@@ -48,6 +52,7 @@ class PinsMapComponent(
     private val context: Context,
     private val contentResolver: ContentResolver,
     private val map: MapLibreMap,
+    private val mapImages: MapImages,
     private val clickRadius: Float,
     private val onClickPin: (properties: Map<String, String>) -> Unit
 ) {
@@ -113,10 +118,12 @@ class PinsMapComponent(
     }
 
     /** Show given pins. Previously shown pins are replaced with these.  */
-    @UiThread fun set(pins: Collection<Pin>) {
+    suspend fun set(pins: Collection<Pin>) {
+        val icons = pins.map { it.icon }
+        mapImages.addOnce(icons) { createPinBitmap(context, it) to false }
         val features = pins.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
-        pinsSource.setGeoJson(mapLibreFeatures)
+        withContext(Dispatchers.Main) { pinsSource.setGeoJson(mapLibreFeatures) }
     }
 
     /** Clear pins */
@@ -162,6 +169,14 @@ class PinsMapComponent(
         }
     }
 
+    private fun Pin.toFeature(): Feature {
+        val p = JsonObject()
+        p.addProperty("icon-image", context.resources.getResourceEntryName(icon))
+        p.addProperty("icon-order", order)
+        properties.forEach { p.addProperty(it.first, it.second) }
+        return Feature.fromGeometry(position.toPoint(), p)
+    }
+
     companion object {
         private const val SOURCE = "pins-source"
         private const val CLUSTER_MAX_ZOOM = 16
@@ -170,18 +185,10 @@ class PinsMapComponent(
 
 data class Pin(
     val position: LatLon,
-    val iconName: String,
+    val icon: Int,
     val properties: Collection<Pair<String, String>> = emptyList(),
     val order: Int = 0
 )
-
-private fun Pin.toFeature(): Feature {
-    val p = JsonObject()
-    p.addProperty("icon-image", iconName)
-    p.addProperty("icon-order", order)
-    properties.forEach { p.addProperty(it.first, it.second) }
-    return Feature.fromGeometry(position.toPoint(), p)
-}
 
 private fun JsonObject.getProperties(): Map<String, String> =
     entrySet().associate { it.key to it.value.asString }
