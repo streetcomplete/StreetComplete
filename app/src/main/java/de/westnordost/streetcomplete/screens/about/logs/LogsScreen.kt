@@ -6,12 +6,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,6 +29,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd
 import de.westnordost.streetcomplete.util.ktx.now
 import kotlinx.datetime.LocalDateTime
 
@@ -38,8 +41,11 @@ fun LogsScreen(
     val logs by viewModel.logs.collectAsState()
 
     var showFiltersDialog by remember { mutableStateOf<LogsFilters?>(null) }
+    val listState = rememberLazyListState()
 
-    // TODO scroll to bottom if user didn't scroll up
+    LaunchedEffect(logs.size) {
+        if (listState.isScrolledToEnd) listState.scrollToItem(logs.size)
+    }
 
     // TODO doesn't seem to update at all
 
@@ -67,7 +73,7 @@ fun LogsScreen(
                 }
             }
         )
-        LazyColumn() {
+        LazyColumn(state = listState) {
             itemsIndexed(logs) { index, item ->
                 if (index > 0) Divider()
                 LogsItem(item, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
