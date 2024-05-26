@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.shareIn
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.plus
 import kotlinx.datetime.LocalDateTime
@@ -54,23 +55,17 @@ class LogsViewModelImpl(
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    private val _logs: SharedFlow<List<LogMessage>> =
+    override val logs: StateFlow<List<LogMessage>> =
         filters.transformLatest { filters ->
             val logs = logsController.getLogs(filters).toMutableList()
 
-            emit(logs)
+            emit(UniqueList(logs))
 
             getIncomingLogs(filters).collect {
                 logs.add(it)
-                emit(logs)
+                emit(UniqueList(logs))
             }
-        }.shareIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 1)
-
-    override val logs: StateFlow<List<LogMessage>> = object :
-        StateFlow<List<LogMessage>>,
-        SharedFlow<List<LogMessage>> by _logs {
-        override val value: List<LogMessage> get() = replayCache.firstOrNull() ?: emptyList()
-    }
+        }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, UniqueList(emptyList()))
 
     override fun setFilters(filters: LogsFilters) {
         this.filters.value = filters
@@ -84,3 +79,9 @@ private fun LogsController.getLogs(filters: LogsFilters) =
         newerThan = filters.timestampNewerThan?.toEpochMilli(),
         olderThan = filters.timestampOlderThan?.toEpochMilli()
     )
+
+/** List that only returns true on equals if it is compared to the same instance */
+private class UniqueList<T>(private val list: List<T>) : List<T> by list {
+    override fun equals(other: Any?) = this === other
+    override fun hashCode() = list.hashCode()
+}

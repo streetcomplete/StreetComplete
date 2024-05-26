@@ -47,8 +47,6 @@ fun LogsScreen(
         if (listState.isScrolledToEnd) listState.scrollToItem(logs.size)
     }
 
-    // TODO doesn't seem to update at all
-
     Column {
         TopAppBar(
             title = {
