@@ -30,8 +30,7 @@ class SelectedPinsMapComponent(
     private val context: Context,
     private val map: MapLibreMap,
     private val mapImages: MapImages
-)
-    : DefaultLifecycleObserver {
+) : DefaultLifecycleObserver {
 
     private val selectedPinsSource = GeoJsonSource("selected-pins-source")
     private val animation: ValueAnimator

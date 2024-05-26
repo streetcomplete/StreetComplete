@@ -5,6 +5,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.location.Location
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.annotation.UiThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonObject
@@ -36,7 +37,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
     var isVisible: Boolean = true
-        set(value) {
+        @UiThread set(value) {
             if (field == value) return
             field = value
             if (!value) hide() else show()
@@ -44,7 +45,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
 
     /** The location the GPS location dot on the map should be animated to */
     var targetLocation: Location? = null
-        set(value) {
+        @UiThread set(value) {
             if (field == value) return
             field = value
             val location = this.location
@@ -74,7 +75,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
 
     /** The view rotation angle in degrees. Null if not set (yet) */
     var rotation: Double? = null
-        set(value) {
+        @UiThread set(value) {
             if (field == value) return
             field = value
             update()

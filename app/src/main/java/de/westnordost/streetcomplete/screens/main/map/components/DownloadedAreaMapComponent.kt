@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.geojson.Polygon
 
 class DownloadedAreaMapComponent(private val context: Context, private val map: MapLibreMap) {
@@ -37,7 +39,7 @@ class DownloadedAreaMapComponent(private val context: Context, private val map: 
         map.style?.addSource(downloadedAreaSource)
     }
 
-    @UiThread fun set(tiles: Collection<TilePos>) {
+    suspend fun set(tiles: Collection<TilePos>) {
         val zoom = ApplicationConstants.DOWNLOAD_TILE_ZOOM
         val world = listOf(
             LatLon(+90.0, -180.0),
@@ -50,6 +52,6 @@ class DownloadedAreaMapComponent(private val context: Context, private val map: 
         val polygons = listOf(world) + holes
 
         val feature = Polygon.fromLngLats(polygons.map { polygon -> polygon.map { it.toPoint() } })
-        downloadedAreaSource.setGeoJson(feature)
+        withContext(Dispatchers.Main) { downloadedAreaSource.setGeoJson(feature) }
     }
 }

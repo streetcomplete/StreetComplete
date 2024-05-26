@@ -3,7 +3,10 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.Context
 import android.content.res.Configuration
 import android.provider.Settings
+import androidx.annotation.UiThread
 import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitSetStyle
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.expressions.Expression
@@ -33,13 +36,13 @@ class SceneMapComponent(
 
         val styleBuilder = Style.Builder().fromJson(styleJsonString)
         val style = map.awaitSetStyle(styleBuilder)
-        updateStyle()
+        withContext(Dispatchers.Main) { updateStyle() }
         return style
     }
 
     /** Updates part of the style depending on the user settings:
      *  Language, animator duration scale, font scale */
-    fun updateStyle() {
+    @UiThread fun updateStyle() {
         val style = map.style ?: return
 
         // apply global animator duration scale
