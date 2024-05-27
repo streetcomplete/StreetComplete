@@ -6,7 +6,6 @@ import kotlin.math.min
 /** Convenience class to make it easier to go step by step through a string  */
 class StringWithCursor(private val string: String) {
     var cursor = 0
-        private set
 
     operator fun get(index: Int): Char? =
         if (index < string.length) string[index] else null
