@@ -157,6 +157,12 @@ class StringWithCursor(private val string: String) {
         return if (i == 0) null else string.substring(cursor, cursor + i)
     }
 
+    fun getNextWordAndAdvance(maxLength: Int? = null, block: (Char) -> Boolean): String? {
+        val result = getNextWord(maxLength, block) ?: return null
+        cursor += result.length
+        return result
+    }
+
     private fun toDelta(index: Int): Int =
         if (index == -1) string.length - cursor else index - cursor
 
