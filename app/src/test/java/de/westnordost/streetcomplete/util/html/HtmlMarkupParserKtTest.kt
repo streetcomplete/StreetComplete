@@ -9,7 +9,6 @@ class HtmlMarkupParserKtTest {
         assertEquals(listOf(HtmlText("abc")), parse("abc"))
         assertEquals(listOf(HtmlText("<abc>")), parse("&lt;abc&gt;"))
         assertEquals(listOf(), parse(""))
-        assertFails { parse("ab\bc") }
     }
 
     @Test fun `one comment`() {
@@ -17,13 +16,7 @@ class HtmlMarkupParserKtTest {
         assertEquals(listOf(HtmlComment(" test ")), parse("<!-- test -->"))
         assertEquals(listOf(HtmlComment("")), parse("<!---->"))
         assertEquals(listOf(HtmlComment("<>[]{}()-:%\"'#$|~")), parse("<!--<>[]{}()-:%\"'#$|~-->"))
-        assertFails { parse("<!--ab\bc-->") }
         assertFails { parse("<!--") }
-        assertFails { parse("<!-->hey-->") }
-        assertFails { parse("<!--->hey-->") }
-        assertFails { parse("<!--h--ey-->") }
-        assertFails { parse("<!--hey--->") }
-        assertFails { parse("<!--he\by-->") }
     }
 
     @Test fun `one simple element`() {
@@ -69,9 +62,30 @@ class HtmlMarkupParserKtTest {
         )
     }
 
-    // TODO several elements
+    @Test fun `several elements`() {
+        assertEquals(
+            listOf(HtmlText("hello "), HtmlElement("and"), HtmlText(" good "), HtmlComment(" bye")),
+            parse("hello <and></and> good <!-- bye-->")
+        )
+    }
 
-    // TODO nested elements
+    @Test fun `nested elements`() {
+        assertEquals(
+            listOf(HtmlElement("a", children = listOf(HtmlText("hi")))),
+            parse("<a>hi</a>")
+        )
+        assertEquals(
+            listOf(
+                HtmlElement("a", children = listOf(
+                    HtmlText("h"), HtmlElement("b", children = listOf(
+                        HtmlText("i")
+                    ))
+                ))
+            ),
+            parse("<a>h<b>i</b></a>")
+        )
+        assertFails { parse("<a>h<b>i</a></b>") }
+    }
 }
 
 

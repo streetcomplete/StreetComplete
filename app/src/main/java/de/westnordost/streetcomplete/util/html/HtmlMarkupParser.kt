@@ -2,17 +2,17 @@ package de.westnordost.streetcomplete.util.html
 
 import de.westnordost.streetcomplete.util.StringWithCursor
 
-/** Parses some basic HTML for basic markup like listed below.
+/** Parses some basic HTML for basic markup like seen here:
+ *  https://developer.android.com/guide/topics/resources/string-resource#StylingWithHTML
  *
- *  Stricter parsing than normal HTML5 because we really just need basic markup tags:
+ *  Only supports a subset of HTML5, i.e.:
  *  - just elements, comments and text (no DOCTYPE, CDATA, ...)
  *  - attribute names must be alphanumeric
  *  - attribute values that are not alphanumeric must be quoted (with `"` or `'`)
  *  - only the entities `&amp;` `&quot;` `&lt;` and `&gt;` are recognized
  *
  *  We just need this to parse html markup for basic styling, like here:
- *  https://developer.android.com/guide/topics/resources/string-resource#StylingWithHTML
- *
+
  *  @throws HtmlParseException
  *  */
 fun parseHtmlMarkup(string: String): List<HtmlNode> =
@@ -49,7 +49,6 @@ private fun StringWithCursor.parseNodes(): List<HtmlNode> {
 
 private fun StringWithCursor.parseElement(): HtmlElement? {
     val start = cursor
-    // or something else entirely
     if (!nextIsAndAdvance('<')) return null
     // start tag with attributes
     val tag = getNextWordAndAdvance { it.isAlphanumeric() }?.lowercase()
@@ -79,21 +78,12 @@ private fun StringWithCursor.parseElement(): HtmlElement? {
 }
 
 private fun StringWithCursor.parseText(): String? {
-    val end = findNext('<')
-    val text = advanceBy(end)
-    if (text.isEmpty()) return null
-    if (text.any { it.isISOControl() }) fail("Text contains control characters")
-    return text.replaceHtmlEntities()
+    return getNextWordAndAdvance { it != '<' }?.replaceHtmlEntities()
 }
 
 private fun StringWithCursor.parseComment(): String? {
     if (!nextIsAndAdvance("<!--")) return null
     val comment = advanceBy(findNext("-->"))
-    if (comment.startsWith('>') || comment.startsWith("->") ||
-        comment.endsWith('-') || comment.indexOf("--") != -1 ||
-        comment.any { it.isISOControl() }) {
-        fail("Malformed comment")
-    }
     if (!nextIsAndAdvance("-->")) fail("Expected end of comment")
     return comment
 }

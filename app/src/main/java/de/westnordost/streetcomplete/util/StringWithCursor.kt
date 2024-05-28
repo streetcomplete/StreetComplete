@@ -4,7 +4,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 /** Convenience class to make it easier to go step by step through a string  */
-class StringWithCursor(private val string: String) {
+class StringWithCursor(val string: String) {
     var cursor = 0
 
     operator fun get(index: Int): Char? =
@@ -26,7 +26,7 @@ class StringWithCursor(private val string: String) {
         return true
     }
 
-    fun nextIsAndAdvance(block: (Char) -> Boolean): Char? {
+    inline fun nextIsAndAdvance(block: (Char) -> Boolean): Char? {
         if (!nextIs(block)) return null
         return advance()
     }
@@ -56,10 +56,10 @@ class StringWithCursor(private val string: String) {
         toDelta(regex.find(string, cursor + offs)?.range?.first ?: -1)
     /** @return the position relative to the cursor position at which the given [block] returns true
      *  If not found, the position past the end of the string is returned */
-    fun findNext(offs: Int = 0, block: (Char) -> Boolean): Int {
+    inline fun findNext(offs: Int = 0, block: (Char) -> Boolean): Int {
         for (i in cursor + offs..<string.length) {
             if (block(string[i])) {
-                return toDelta(i)
+                return i - cursor
             }
         }
         return string.length - cursor
@@ -117,7 +117,7 @@ class StringWithCursor(private val string: String) {
         string.startsWith(str, cursor, ignoreCase)
 
     /** @return whether the [block] returns true for the next character */
-    fun nextIs(block: (Char) -> Boolean): Boolean =
+    inline fun nextIs(block: (Char) -> Boolean): Boolean =
         get(cursor)?.let(block) == true
 
     /** @return the match of [regex] at the next string sequence at the cursor */
@@ -125,7 +125,7 @@ class StringWithCursor(private val string: String) {
 
     /** Advance the cursor until the [block] does not return true and return the number of
      *  characters advanced */
-    fun advanceWhile(block: (Char) -> Boolean): Int {
+    inline fun advanceWhile(block: (Char) -> Boolean): Int {
         var i = 0
         while (cursor < string.length && block(string[cursor])) {
             ++cursor
@@ -136,7 +136,7 @@ class StringWithCursor(private val string: String) {
 
     /** Retreat the cursor until the [block] does not return true and return the number of
      *  characters advanced */
-    fun retreatWhile(block: (Char) -> Boolean): Int {
+    inline fun retreatWhile(block: (Char) -> Boolean): Int {
         var i = 0
         while (cursor > 0 && block(string[cursor - 1])) {
             --cursor
@@ -148,7 +148,7 @@ class StringWithCursor(private val string: String) {
     /** @return the next string that contains only characters where [block] returns true of the
      *  given [maxLength].
      *  Returns null if the word is either longer than that or there is no word at this position. */
-    fun getNextWord(maxLength: Int? = null, block: (Char) -> Boolean): String? {
+    inline fun getNextWord(maxLength: Int? = null, block: (Char) -> Boolean): String? {
         var i = 0
         while (!isAtEnd(i) && block(string[cursor + i])) {
             ++i
@@ -157,7 +157,7 @@ class StringWithCursor(private val string: String) {
         return if (i == 0) null else string.substring(cursor, cursor + i)
     }
 
-    fun getNextWordAndAdvance(maxLength: Int? = null, block: (Char) -> Boolean): String? {
+    inline fun getNextWordAndAdvance(maxLength: Int? = null, block: (Char) -> Boolean): String? {
         val result = getNextWord(maxLength, block) ?: return null
         cursor += result.length
         return result
