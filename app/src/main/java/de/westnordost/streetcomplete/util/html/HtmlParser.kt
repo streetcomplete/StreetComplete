@@ -5,23 +5,25 @@ import de.westnordost.streetcomplete.util.StringWithCursor
 /** Parses some basic HTML for basic markup like seen here:
  *  https://developer.android.com/guide/topics/resources/string-resource#StylingWithHTML
  *
- *  Only supports a subset of HTML5, i.e.:
- *  - just elements, comments and text (no DOCTYPE, CDATA, ...)
- *  - attribute names must be alphanumeric
- *  - attribute values that are not alphanumeric must be quoted (with `"` or `'`)
- *  - only the entities `&amp;` `&quot;` `&lt;` and `&gt;` are recognized
+ *  The parser has the following limitations:
+ *  - only the character references (=HTML entities) `&amp;` `&quot;` `&lt;` and `&gt;` are recognized
  *
- *  We just need this to parse html markup for basic styling, like here:
-
  *  @throws HtmlParseException
  *  */
-fun parseHtmlMarkup(string: String): List<HtmlNode> =
+fun parseHtmlMarkup(string: String): HtmlRoot =
     StringWithCursor(string).parseRoot()
 
-private fun StringWithCursor.parseRoot(): List<HtmlNode> {
+private fun StringWithCursor.parseRoot(): HtmlRoot {
+    // ignore starting <!doctype html>
+    if (nextIsAndAdvance("<!doctype", ignoreCase = true)) {
+        skipWhitespaces()
+        if (!nextIsAndAdvance("html", ignoreCase = true)) fail("Invalid doctype")
+        skipWhitespaces()
+        if (!nextIsAndAdvance('>')) fail("Missing >")
+    }
     val result = parseNodes()
     if (!isAtEnd()) fail("Unexpected end of string")
-    return result
+    return HtmlRoot(result)
 }
 
 private fun StringWithCursor.parseNodes(): List<HtmlNode> {
@@ -32,9 +34,10 @@ private fun StringWithCursor.parseNodes(): List<HtmlNode> {
             children.add(element)
             continue
         }
-        val comment = parseComment()
-        if (comment != null) {
-            children.add(HtmlComment(comment))
+        if (parseComment() != null) {
+            continue
+        }
+        if (parseCdataSection() != null) {
             continue
         }
         val text = parseText()
@@ -78,14 +81,28 @@ private fun StringWithCursor.parseElement(): HtmlElement? {
 }
 
 private fun StringWithCursor.parseText(): String? {
-    return getNextWordAndAdvance { it != '<' }?.replaceHtmlEntities()
+    val text = getNextWordAndAdvance { it != '<' } ?: return null
+    if (text.any { it.isISOControl() }) fail("Text contains control characters")
+    return text.replaceHtmlEntities()
 }
 
 private fun StringWithCursor.parseComment(): String? {
     if (!nextIsAndAdvance("<!--")) return null
     val comment = advanceBy(findNext("-->"))
+    if (comment.startsWith('>') || comment.startsWith("->") ||
+        comment.endsWith('-') || comment.indexOf("--") != -1 ||
+        comment.any { it.isISOControl() }) {
+        fail("Malformed comment")
+    }
     if (!nextIsAndAdvance("-->")) fail("Expected end of comment")
     return comment
+}
+
+private fun StringWithCursor.parseCdataSection(): String? {
+    if (!nextIsAndAdvance("<![CDATA[", ignoreCase = true)) return null
+    val cdata = advanceBy(findNext("]]>"))
+    if (!nextIsAndAdvance("]]>")) fail("Expected end of cdata")
+    return cdata
 }
 
 private fun StringWithCursor.parseAttributes(): Map<String, String> {
@@ -99,7 +116,7 @@ private fun StringWithCursor.parseAttributes(): Map<String, String> {
 }
 
 private fun StringWithCursor.parseAttribute(): Pair<String, String>? {
-    val name = getNextWordAndAdvance { it.isAlphanumeric() } ?: return null
+    val name = getNextWordAndAdvance { it !in notAllowedCharactersInAttributeName } ?: return null
     skipWhitespaces()
     if (!nextIsAndAdvance('=')) return name to ""
     skipWhitespaces()
@@ -115,9 +132,10 @@ private fun StringWithCursor.parseAttribute(): Pair<String, String>? {
         value = advanceBy(end)
         advance()
     } else {
-        value = getNextWordAndAdvance { it.isAlphanumeric() }
+        value = getNextWordAndAdvance { it !in notAllowedCharactersInUnquotedAttributeValue }
         if (value == null) fail("Expected alphanumeric attribute value")
     }
+    if (value.any { it.isISOControl() }) fail("Attribute value contains control characters")
     return name to value.replaceHtmlEntities()
 }
 
@@ -138,7 +156,13 @@ private val voidTags = setOf(
     "area","base","br","col","embed","hr","img","input","link","meta","param","source","track","wbr"
 )
 
-private val entityRegex = Regex("&[a-zA-Z0-9]+;")
+private val notAllowedCharactersInUnquotedAttributeValue =
+    setOf(' ', '"', '\'', '=', '<', '>', '`')
+
+private val notAllowedCharactersInAttributeName =
+    setOf(' ', '"', '\'', '>', '/', '=')
+
+private val entityRegex by lazy { Regex("&[a-zA-Z0-9]+;") }
 
 private val entities = mapOf(
     "&quot;" to '"',

@@ -4,19 +4,39 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
 
-class HtmlMarkupParserKtTest {
+class HtmlParserKtTest {
+    @Test fun doctype() {
+        assertEquals(listOf(HtmlText("abc")), parse("<!DOCTYPE html>abc"))
+        assertEquals(listOf(HtmlText("abc")), parse("<!doctype  HTML >abc"))
+        assertFails { parse("<!doctype blubber>abc") }
+        assertFails { parse("<!doctype html abc") }
+    }
+
     @Test fun `one text`() {
         assertEquals(listOf(HtmlText("abc")), parse("abc"))
         assertEquals(listOf(HtmlText("<abc>")), parse("&lt;abc&gt;"))
         assertEquals(listOf(), parse(""))
+        assertFails { parse("ab\bc") }
     }
 
     @Test fun `one comment`() {
-        assertEquals(listOf(HtmlComment("test")), parse("<!--test-->"))
-        assertEquals(listOf(HtmlComment(" test ")), parse("<!-- test -->"))
-        assertEquals(listOf(HtmlComment("")), parse("<!---->"))
-        assertEquals(listOf(HtmlComment("<>[]{}()-:%\"'#$|~")), parse("<!--<>[]{}()-:%\"'#$|~-->"))
+        assertEquals(listOf(), parse("<!--test-->"))
+        assertEquals(listOf(), parse("<!---->"))
+        assertEquals(listOf(HtmlText("a")), parse("<!--test-->a"))
+        assertFails { parse("<!--ab\bc-->") }
         assertFails { parse("<!--") }
+        assertFails { parse("<!-->hey-->") }
+        assertFails { parse("<!--->hey-->") }
+        assertFails { parse("<!--h--ey-->") }
+        assertFails { parse("<!--hey--->") }
+        assertFails { parse("<!--he\by-->") }
+    }
+
+    @Test fun `one cdata`() {
+        assertEquals(listOf(), parse("<![CDATA[]]>"))
+        assertEquals(listOf(), parse("<![CDATA[<>=\"']]>"))
+        assertEquals(listOf(HtmlText("a")), parse("<![CDATA[]]>a"))
+        assertFails { parse("<![CDATA[") }
     }
 
     @Test fun `one simple element`() {
@@ -43,11 +63,15 @@ class HtmlMarkupParserKtTest {
         assertEquals(listOf(HtmlElement("a", mapOf("b" to "c d"))), parse("<a b='c d'></a>"))
         assertEquals(listOf(HtmlElement("a", mapOf("b" to "c d"))), parse("<a b=\"c d\"></a>"))
         assertEquals(listOf(HtmlElement("a", mapOf("b" to "c\"d"))), parse("<a b=\"c&quot;d\"></a>"))
+        assertEquals(listOf(HtmlElement("a", mapOf("%" to "b"))), parse("<a %=b></a>"))
+        assertEquals(listOf(HtmlElement("a", mapOf("%" to "#"))), parse("<a %=#></a>"))
+        assertFails { parse("<a b=`></a>") }
+        assertFails { parse("<a b/c=a></a>") }
         assertFails { parse("<a b= ></a>") }
-        assertFails { parse("<a %=b></a>") }
         assertFails { parse("<a b='c></a>") }
         assertFails { parse("<a b='c'd'></a>") }
         assertFails { parse("<a b=\"c\"d\"></a>") }
+        assertFails { parse("<a b='\b'></a>") }
     }
 
     @Test fun `element with attributes`() {
@@ -64,20 +88,20 @@ class HtmlMarkupParserKtTest {
 
     @Test fun `several elements`() {
         assertEquals(
-            listOf(HtmlText("hello "), HtmlElement("and"), HtmlText(" good "), HtmlComment(" bye")),
-            parse("hello <and></and> good <!-- bye-->")
+            listOf(HtmlText("hello "), HtmlElement("and"), HtmlText(" bye ")),
+            parse("hello <and><![CDATA[ <a>]]></and><!-- good--> bye ")
         )
     }
 
     @Test fun `nested elements`() {
         assertEquals(
-            listOf(HtmlElement("a", children = listOf(HtmlText("hi")))),
+            listOf(HtmlElement("a", nodes = listOf(HtmlText("hi")))),
             parse("<a>hi</a>")
         )
         assertEquals(
             listOf(
-                HtmlElement("a", children = listOf(
-                    HtmlText("h"), HtmlElement("b", children = listOf(
+                HtmlElement("a", nodes = listOf(
+                    HtmlText("h"), HtmlElement("b", nodes = listOf(
                         HtmlText("i")
                     ))
                 ))
@@ -89,4 +113,4 @@ class HtmlMarkupParserKtTest {
 }
 
 
-private fun parse(string: String) = parseHtmlMarkup(string)
+private fun parse(string: String) = parseHtmlMarkup(string).nodes
