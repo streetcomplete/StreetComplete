@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.ui.theme.GrassGray
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.theme.White
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.ui.util.toDp
+import de.westnordost.streetcomplete.ui.ktx.toDp
 
 @Composable
 fun LaurelWreathBadge(

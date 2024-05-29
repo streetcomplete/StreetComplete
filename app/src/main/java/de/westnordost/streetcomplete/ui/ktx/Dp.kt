@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.util
+package de.westnordost.streetcomplete.ui.ktx
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalDensity
