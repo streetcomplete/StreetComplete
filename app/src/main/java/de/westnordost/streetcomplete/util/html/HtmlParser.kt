@@ -9,10 +9,10 @@ import de.westnordost.streetcomplete.util.StringWithCursor
  *
  *  @throws HtmlParseException
  *  */
-fun parseHtmlMarkup(string: String): HtmlRoot =
+fun parseHtmlMarkup(string: String): List<HtmlNode> =
     StringWithCursor(string).parseRoot()
 
-private fun StringWithCursor.parseRoot(): HtmlRoot {
+private fun StringWithCursor.parseRoot(): List<HtmlNode> {
     // ignore starting <!doctype html>
     if (nextIsAndAdvance("<!doctype", ignoreCase = true)) {
         skipWhitespaces()
@@ -22,7 +22,7 @@ private fun StringWithCursor.parseRoot(): HtmlRoot {
     }
     val result = parseNodes()
     if (!isAtEnd()) fail("Unexpected end of string")
-    return HtmlRoot(result)
+    return result
 }
 
 private fun StringWithCursor.parseNodes(): List<HtmlNode> {

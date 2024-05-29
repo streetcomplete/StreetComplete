@@ -111,4 +111,4 @@ class HtmlParserKtTest {
 }
 
 
-private fun parse(string: String) = parseHtmlMarkup(string).nodes
+private fun parse(string: String) = parseHtmlMarkup(string)
