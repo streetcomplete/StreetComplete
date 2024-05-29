@@ -16,14 +16,12 @@ class HtmlParserKtTest {
         assertEquals(listOf(HtmlText("abc")), parse("abc"))
         assertEquals(listOf(HtmlText("<abc>")), parse("&lt;abc&gt;"))
         assertEquals(listOf(), parse(""))
-        assertFails { parse("ab\bc") }
     }
 
     @Test fun `one comment`() {
         assertEquals(listOf(), parse("<!--test-->"))
         assertEquals(listOf(), parse("<!---->"))
         assertEquals(listOf(HtmlText("a")), parse("<!--test-->a"))
-        assertFails { parse("<!--ab\bc-->") }
         assertFails { parse("<!--") }
         assertFails { parse("<!-->hey-->") }
         assertFails { parse("<!--->hey-->") }

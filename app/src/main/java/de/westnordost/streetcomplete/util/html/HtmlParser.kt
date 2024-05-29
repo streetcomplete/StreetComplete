@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.util.html
 
 import de.westnordost.streetcomplete.util.StringWithCursor
 
-/** Parses some basic HTML for basic markup like seen here:
- *  https://developer.android.com/guide/topics/resources/string-resource#StylingWithHTML
+/** Parses some HTML for markup
  *
  *  The parser has the following limitations:
  *  - only the character references (=HTML entities) `&amp;` `&quot;` `&lt;` and `&gt;` are recognized
@@ -81,17 +80,14 @@ private fun StringWithCursor.parseElement(): HtmlElement? {
 }
 
 private fun StringWithCursor.parseText(): String? {
-    val text = getNextWordAndAdvance { it != '<' } ?: return null
-    if (text.any { it.isISOControl() }) fail("Text contains control characters")
-    return text.replaceHtmlEntities()
+    return getNextWordAndAdvance { it != '<' }?.replaceHtmlEntities()
 }
 
 private fun StringWithCursor.parseComment(): String? {
     if (!nextIsAndAdvance("<!--")) return null
     val comment = advanceBy(findNext("-->"))
     if (comment.startsWith('>') || comment.startsWith("->") ||
-        comment.endsWith('-') || comment.indexOf("--") != -1 ||
-        comment.any { it.isISOControl() }) {
+        comment.endsWith('-') || comment.indexOf("--") != -1) {
         fail("Malformed comment")
     }
     if (!nextIsAndAdvance("-->")) fail("Expected end of comment")
