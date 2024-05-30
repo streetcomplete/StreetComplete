@@ -34,12 +34,8 @@ fun AboutScreen(
 
     Column {
         TopAppBar(
-            title = {
-                Text(stringResource(R.string.action_about2))
-            },
-            navigationIcon = {
-                IconButton(onClick = onClickBack) { BackIcon() }
-            },
+            title = { Text(stringResource(R.string.action_about2)) },
+            navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
 
         PreferenceItem(

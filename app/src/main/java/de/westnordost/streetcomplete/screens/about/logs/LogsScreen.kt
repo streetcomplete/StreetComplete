@@ -50,12 +50,8 @@ fun LogsScreen(
 
     Column {
         TopAppBar(
-            title = {
-                Text(stringResource(R.string.about_title_logs, logs.size))
-            },
-            navigationIcon = {
-                IconButton(onClick = { onClickBack() }) { BackIcon() }
-            },
+            title = { Text(stringResource(R.string.about_title_logs, logs.size)) },
+            navigationIcon = { IconButton(onClick = { onClickBack() }) { BackIcon() } },
             actions = {
                 IconButton(onClick = { showFiltersDialog = viewModel.filters.value }) {
                     Icon(

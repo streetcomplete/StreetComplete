@@ -49,12 +49,8 @@ fun CreditsScreen(
 
     Column {
         TopAppBar(
-            title = {
-                Text(stringResource(R.string.about_title_authors))
-            },
-            navigationIcon = {
-                IconButton(onClick = { onClickBack() }) { BackIcon() }
-            },
+            title = { Text(stringResource(R.string.about_title_authors)) },
+            navigationIcon = { IconButton(onClick = { onClickBack() }) { BackIcon() } },
         )
         credits?.let { credits ->
             val context = LocalContext.current
