@@ -59,9 +59,9 @@ private fun AnnotatedString.Builder.append(element: HtmlElementNode, linkColor: 
         "tt", "code", "kbd", "samp" ->
             SpanStyle(fontFamily = FontFamily.Monospace, background = Color(0x33bbbbbb))
         "sup" ->
-            SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = TextUnit(0.75f, TextUnitType.Em))
+            SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = TextUnit(0.8f, TextUnitType.Em))
         "sub" ->
-            SpanStyle(baselineShift = BaselineShift.Subscript, fontSize = TextUnit(0.75f, TextUnitType.Em))
+            SpanStyle(baselineShift = BaselineShift.Subscript, fontSize = TextUnit(0.8f, TextUnitType.Em))
         "big" ->
             SpanStyle(fontSize = TextUnit(1.25f, TextUnitType.Em))
         "small" ->
