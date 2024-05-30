@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.board_type
 
-enum class BoardType(val osmValue: String) {
+sealed interface BoardTypeAnswer
+enum class BoardType(val osmValue: String) : BoardTypeAnswer {
     HISTORY("history"),
     GEOLOGY("geology"),
     PLANTS("plants"),
@@ -8,6 +9,6 @@ enum class BoardType(val osmValue: String) {
     NATURE("nature"),
     PUBLIC_TRANSPORT("public_transport"),
     NOTICE("notice"),
-    MAP("map"),
     SPORT("sport")
 }
+data object NoBoardJustMap : BoardTypeAnswer
