@@ -30,8 +30,8 @@ class SeparateCyclewayParserKtTest {
     }
 
     @Test fun `parse no bicyclists allowed on path`() {
-        assertEquals(NOT_ALLOWED, parse("highway" to "path", "bicycle" to "no"))
-        assertEquals(NOT_ALLOWED, parse("highway" to "footway", "bicycle" to "no"))
+        assertEquals(NOT_ALLOWED, parse("highway" to "path", "bicycle" to "no", "bicycle:signed" to "yes"))
+        assertEquals(NOT_ALLOWED, parse("highway" to "footway", "bicycle" to "no", "bicycle:signed" to "yes"))
     }
 
     @Test fun `parse bicyclists allowed on footway`() {

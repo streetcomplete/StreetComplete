@@ -201,6 +201,10 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
         tags.remove("sidewalk:$side:bicycle")
         tags.remove("sidewalk:$side:bicycle:signed")
     }
+    // if anything that is not SIDEWALK_EXPLICIT is chosen, remove sidewalk:<side>:bicycle=designated if it's there
+    if (cycleway != SIDEWALK_EXPLICIT && tags["sidewalk:$side:bicycle"] == "designated") {
+        tags.remove("sidewalk:$side:bicycle")
+    }
 }
 
 private val Direction.onewayValue get() = when (this) {
