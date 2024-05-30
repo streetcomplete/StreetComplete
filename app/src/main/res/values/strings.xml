@@ -1332,7 +1332,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Steel</string>
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
-    <string name="quest_powerPolesMaterial_is_terminal">The power line is anchored to a building</string>
+    <string name="quest_powerPolesMaterial_is_terminal">Power line is anchored to building</string>
 
     <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
     <string name="quest_bbq_fuel_wood">Wood</string>
