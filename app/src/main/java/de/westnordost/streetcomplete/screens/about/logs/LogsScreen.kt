@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd
 import de.westnordost.streetcomplete.util.ktx.now
 import kotlinx.datetime.LocalDateTime
 
+/** Shows the app logs */
 @Composable
 fun LogsScreen(
     viewModel: LogsViewModel,

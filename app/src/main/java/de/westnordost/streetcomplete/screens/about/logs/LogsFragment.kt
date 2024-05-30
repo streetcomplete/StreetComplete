@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ui.util.composableContent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/** Shows the app logs */
 class LogsFragment : Fragment() {
 
     private val viewModel by viewModel<LogsViewModel>()
