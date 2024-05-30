@@ -1,6 +1,6 @@
 # Changelog
 
-## vNext
+## v58.0
 
 ### New quests
 
@@ -11,8 +11,10 @@
 
 ### Quest improvements
 
+- Road Surface: Fix it was possible to answer track type and surface for a road in an endless loop (#5650)
 - Max height: Don't ask if it has been specified for forward and backward or individual lanes separately (#5609)
 - Fire hydrant diameter: Now enabled in Hungary (#5617), by @dnet
+- Power pole material: Can now answer with that power line is anchored to building (#5663), by @qugebert
 - Tactile paving: Now enabled in Columbia (#5579)
 - Prohibited for pedestrians: Clarified UI and wording (#5610)
 - Drinking water: Don't ask for intermittent water sources (#5632), by @esilja
@@ -22,7 +24,7 @@
 
 - For some quests, there is now an ℹ-button which expands a help text (#5612, #1913)
 - The user profile screen looks a bit different now (#5607)
-- Other small improvements (#5635), thanks @riQQ
+- Other small improvements (#5635, #5645, ...), thanks @riQQ
 
 ## v57.4
 
