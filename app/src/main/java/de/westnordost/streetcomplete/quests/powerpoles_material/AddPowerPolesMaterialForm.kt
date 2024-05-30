@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material
 
-import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
