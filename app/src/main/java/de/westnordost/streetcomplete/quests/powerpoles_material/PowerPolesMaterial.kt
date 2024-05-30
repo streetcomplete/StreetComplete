@@ -7,4 +7,4 @@ enum class PowerPolesMaterial(val osmValue: String) : PowerPolesMaterialAnswer {
     CONCRETE("concrete")
 }
 
-data object IsPowerTerminal : PowerPolesMaterialAnswer
+data object PowerLineAnchoredToBuilding : PowerPolesMaterialAnswer

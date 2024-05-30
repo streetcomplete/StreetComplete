@@ -10,7 +10,7 @@ class AddPowerPolesMaterialForm : AImageListQuestForm<PowerPolesMaterial, PowerP
     override val itemsPerRow = 3
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_powerPolesMaterial_is_terminal) { applyAnswer(IsPowerTerminal) }
+        AnswerItem(R.string.quest_powerPolesMaterial_is_terminal) { applyAnswer(PowerLineAnchoredToBuilding) }
     )
 
     override fun onClickOk(selectedItems: List<PowerPolesMaterial>) {
