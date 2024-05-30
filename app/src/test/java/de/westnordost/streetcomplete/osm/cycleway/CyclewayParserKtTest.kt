@@ -2636,6 +2636,113 @@ class CyclewayParserKtTest {
         )
     }
 
+    /* -------------------------------------- sidewalk:<side>:bicycle tagging -----------------------------------*/
+
+    @Test fun `right side sidewalk ok`() {
+        assertEquals(
+            cycleway(null, SIDEWALK_OK),
+            parse(
+                "sidewalk:right:bicycle" to "yes",
+                "sidewalk:right:bicycle:signed" to "yes",
+                "cycleway:right" to "no"
+            )
+        )
+    }
+
+    @Test fun `left side sidewalk ok`() {
+        assertEquals(
+            cycleway(SIDEWALK_OK, null),
+            parse(
+                "sidewalk:left:bicycle" to "yes",
+                "sidewalk:left:bicycle:signed" to "yes",
+                "cycleway:left" to "no"
+            )
+        )
+    }
+
+    @Test fun `both sides sidewalk ok`() {
+        assertEquals(
+            cycleway(SIDEWALK_OK, SIDEWALK_OK),
+            parse(
+                "sidewalk:both:bicycle" to "yes",
+                "sidewalk:both:bicycle:signed" to "yes",
+                "cycleway:both" to "no"
+            )
+        )
+    }
+
+    @Test fun `right side sidewalk ok but without signed yes tag leads to null`() {
+        assertNull(
+            parse(
+                "sidewalk:right:bicycle" to "yes"
+            )
+        )
+        assertNull(
+            parse(
+                "sidewalk:right:bicycle" to "yes",
+                "sidewalk:right:bicycle:signed" to "no"
+            )
+        )
+    }
+
+    @Test fun `left side sidewalk ok but without signed yes tag leads to null`() {
+        assertNull(
+            parse(
+                "sidewalk:left:bicycle" to "yes"
+            )
+        )
+        assertNull(
+            parse(
+                "sidewalk:left:bicycle" to "yes",
+                "sidewalk:left:bicycle:signed" to "no"
+            )
+        )
+    }
+
+    @Test fun `both sides sidewalk ok but without signed yes tag leads to null`() {
+        assertNull(
+            parse(
+                "sidewalk:both:bicycle" to "yes"
+            )
+        )
+        assertNull(
+            parse(
+                "sidewalk:both:bicycle" to "yes",
+                "sidewalk:both:bicycle:signed" to "no"
+            )
+        )
+    }
+
+    @Test fun `right side sidewalk ok cycleway no but without signed yes leads to none`() {
+        assertEquals(
+            cycleway(null, NONE),
+            parse(
+                "sidewalk:right:bicycle" to "yes",
+                "cycleway:right" to "no"
+            )
+        )
+    }
+
+    @Test fun `left side sidewalk ok cycleway no but without signed yes leads to none`() {
+        assertEquals(
+            cycleway(NONE, null),
+            parse(
+                "sidewalk:left:bicycle" to "yes",
+                "cycleway:left" to "no"
+            )
+        )
+    }
+
+    @Test fun `both sides sidewalk ok cycleway no but without signed yes leads to none`() {
+        assertEquals(
+            cycleway(NONE, NONE),
+            parse(
+                "sidewalk:both:bicycle" to "yes",
+                "cycleway:both" to "no"
+            )
+        )
+    }
+
     /* -------------------------------- parse failures -------------------------------------------*/
 
     @Test fun `don't parse opposite-tagging on non oneways`() {
