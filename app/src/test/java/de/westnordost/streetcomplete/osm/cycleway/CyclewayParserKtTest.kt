@@ -2743,6 +2743,36 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `right side sidewalk designated leads to sidewalk explicit`() {
+        assertEquals(
+            cycleway(null, SIDEWALK_EXPLICIT),
+            parse(
+                "sidewalk:right:bicycle" to "designated",
+                "cycleway:right" to "no"
+            )
+        )
+    }
+
+    @Test fun `left side sidewalk designated leads to sidewalk explicit`() {
+        assertEquals(
+            cycleway(SIDEWALK_EXPLICIT, null),
+            parse(
+                "sidewalk:left:bicycle" to "designated",
+                "cycleway:left" to "no"
+            )
+        )
+    }
+
+    @Test fun `both sides sidewalk designated leads to sidewalk explicit`() {
+        assertEquals(
+            cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT),
+            parse(
+                "sidewalk:both:bicycle" to "designated",
+                "cycleway:both" to "no"
+            )
+        )
+    }
+
     /* -------------------------------- parse failures -------------------------------------------*/
 
     @Test fun `don't parse opposite-tagging on non oneways`() {

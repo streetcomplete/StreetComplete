@@ -197,6 +197,19 @@ class CyclewayCreatorKtTest {
         )
     }
 
+    @Test fun `apply none to a side where sidewalk bicycle designated it set`() {
+        assertEquals(
+            setOf(
+                StringMapEntryModify("cycleway:right", "no", "no"),
+                StringMapEntryDelete("sidewalk:right:bicycle", "designated"),
+            ),
+            cycleway(null, NONE).appliedTo(mapOf(
+                "cycleway:right" to "no",
+                "sidewalk:right:bicycle" to "designated",
+            ))
+        )
+    }
+
     @Test fun `apply dual cycle track answer`() {
         assertEquals(
             setOf(
