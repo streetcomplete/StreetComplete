@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddBoardType : OsmFilterQuestType<BoardType>() {
+class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>() {
 
     override val elementFilter = """
         nodes with
@@ -33,10 +33,10 @@ class AddBoardType : OsmFilterQuestType<BoardType>() {
 
     override fun createForm() = AddBoardTypeForm()
 
-    override fun applyAnswerTo(answer: BoardType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (answer == BoardType.MAP) {
+    override fun applyAnswerTo(answer: BoardTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer is NoBoardJustMap) {
             tags["information"] = "map"
-        } else {
+        } else if (answer is BoardType) {
             tags["board_type"] = answer.osmValue
         }
     }
