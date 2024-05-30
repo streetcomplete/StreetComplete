@@ -37,6 +37,10 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
     override fun createForm() = AddPowerPolesMaterialForm()
 
     override fun applyAnswerTo(answer: PowerPolesMaterial, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["material"] = answer.osmValue
+        if (answer == PowerPolesMaterial.TERMINAL) {
+            tags["power"] = "terminal"
+        } else {
+            tags["material"] = answer.osmValue
+        }
     }
 }

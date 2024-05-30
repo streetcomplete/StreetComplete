@@ -4,4 +4,5 @@ enum class PowerPolesMaterial(val osmValue: String) {
     WOOD("wood"),
     STEEL("steel"),
     CONCRETE("concrete"),
+    TERMINAL("terminal"),
 }
