@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.ui.util
 
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.ExperimentalTextApi
@@ -13,33 +13,14 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
-import de.westnordost.streetcomplete.util.html.HtmlElement
+import de.westnordost.streetcomplete.util.html.HtmlElementNode
 import de.westnordost.streetcomplete.util.html.HtmlNode
-import de.westnordost.streetcomplete.util.html.HtmlText
-import de.westnordost.streetcomplete.util.html.parseHtmlMarkup
-
-@Preview
-@Composable
-fun Html() {
-    Text(parseHtmlMarkup("""
-    <b>bold</b><br>
-    <i>italic</i><br>
-    <s>strike</s><br>
-    <u>underline</u><br>
-    <tt>monospace</tt><br>
-    <sup>superspace</sup><br>
-    <sub>subspace</sub><br>
-    <big>big</big><br>
-    <small>small</small><br>
-    <a href="url">link</a><br>
-    <mark>mark</mark><br>
-    """.trimIndent()).toAnnotatedString())
-}
+import de.westnordost.streetcomplete.util.html.HtmlTextNode
 
 @Composable
+@ReadOnlyComposable
 fun List<HtmlNode>.toAnnotatedString(): AnnotatedString {
     val linkColor = MaterialTheme.colors.secondary
     val builder = AnnotatedString.Builder()
@@ -48,12 +29,13 @@ fun List<HtmlNode>.toAnnotatedString(): AnnotatedString {
 }
 
 private fun AnnotatedString.Builder.append(node: HtmlNode, linkColor: Color) {
-    if (node is HtmlElement) append(node, linkColor)
-    else if (node is HtmlText) append(node.text.replace('\n', ' '))
+    if (node is HtmlElementNode) append(node, linkColor)
+    // linebreaks in HTML are treated as spaces, use <br> for linebreaks
+    else if (node is HtmlTextNode) append(node.text.replace('\n', ' '))
 }
 
 @OptIn(ExperimentalTextApi::class)
-private fun AnnotatedString.Builder.append(element: HtmlElement, linkColor: Color) {
+private fun AnnotatedString.Builder.append(element: HtmlElementNode, linkColor: Color) {
     if (element.tag == "br") {
         append('\n')
         return
@@ -61,6 +43,11 @@ private fun AnnotatedString.Builder.append(element: HtmlElement, linkColor: Colo
 
     val span = when (element.tag) {
         // Spans
+        "h1", "h2", "h3", "h4", "h5", "h6" -> {
+            val sizes = arrayOf(2.0f, 1.5f, 1.17f, 1.0f, 0.83f, 0.67f)
+            val size = sizes[element.tag.last().digitToInt() - 1]
+            SpanStyle(fontWeight = FontWeight.Bold, fontSize = TextUnit(size, TextUnitType.Em))
+        }
         "b", "strong" ->
             SpanStyle(fontWeight = FontWeight.Bold)
         "i", "em", "dfn", "cite", "var" ->
@@ -70,11 +57,11 @@ private fun AnnotatedString.Builder.append(element: HtmlElement, linkColor: Colo
         "u", "ins" ->
             SpanStyle(textDecoration = TextDecoration.Underline)
         "tt", "code", "kbd", "samp" ->
-            SpanStyle(fontFamily = FontFamily.Monospace)
+            SpanStyle(fontFamily = FontFamily.Monospace, background = Color(0x33bbbbbb))
         "sup" ->
-            SpanStyle(baselineShift = BaselineShift.Superscript)
+            SpanStyle(baselineShift = BaselineShift.Superscript, fontSize = TextUnit(0.75f, TextUnitType.Em))
         "sub" ->
-            SpanStyle(baselineShift = BaselineShift.Subscript)
+            SpanStyle(baselineShift = BaselineShift.Subscript, fontSize = TextUnit(0.75f, TextUnitType.Em))
         "big" ->
             SpanStyle(fontSize = TextUnit(1.25f, TextUnitType.Em))
         "small" ->

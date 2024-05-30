@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.util.StringWithCursor
  *
  *  @throws HtmlParseException
  *  */
-fun parseHtmlMarkup(string: String): List<HtmlNode> =
+fun parseHtml(string: String): List<HtmlNode> =
     StringWithCursor(string).parseRoot()
 
 private fun StringWithCursor.parseRoot(): List<HtmlNode> {
@@ -41,7 +41,7 @@ private fun StringWithCursor.parseNodes(): List<HtmlNode> {
         }
         val text = parseText()
         if (text != null) {
-            children.add(HtmlText(text))
+            children.add(HtmlTextNode(text))
             continue
         }
         break
@@ -49,7 +49,7 @@ private fun StringWithCursor.parseNodes(): List<HtmlNode> {
     return children
 }
 
-private fun StringWithCursor.parseElement(): HtmlElement? {
+private fun StringWithCursor.parseElement(): HtmlElementNode? {
     val start = cursor
     if (!nextIsAndAdvance('<')) return null
     // start tag with attributes
@@ -64,7 +64,7 @@ private fun StringWithCursor.parseElement(): HtmlElement? {
     nextIsAndAdvance('/') // ignore closing tag
     if (!nextIsAndAdvance('>')) fail("Expected >")
 
-    if (tag in voidTags) return HtmlElement(tag, attributes)
+    if (tag in voidTags) return HtmlElementNode(tag, attributes)
 
     val children = parseNodes()
 
@@ -76,7 +76,7 @@ private fun StringWithCursor.parseElement(): HtmlElement? {
         skipWhitespaces()
         if (!nextIsAndAdvance('>')) fail("Expected >")
     }
-    return HtmlElement(tag, attributes, children)
+    return HtmlElementNode(tag, attributes, children)
 }
 
 private fun StringWithCursor.parseText(): String? {
