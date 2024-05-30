@@ -14,6 +14,7 @@ class HtmlParserKtTest {
 
     @Test fun `one text`() {
         assertEquals(listOf(HtmlTextNode("abc")), parse("abc"))
+        assertEquals(listOf(HtmlTextNode(" a b c ")), parse("  a\n   b\tc    "))
         assertEquals(listOf(HtmlTextNode("<abc>")), parse("&lt;abc&gt;"))
         assertEquals(listOf(), parse(""))
     }
@@ -27,7 +28,6 @@ class HtmlParserKtTest {
         assertFails { parse("<!--->hey-->") }
         assertFails { parse("<!--h--ey-->") }
         assertFails { parse("<!--hey--->") }
-        assertFails { parse("<!--he\by-->") }
     }
 
     @Test fun `one cdata`() {

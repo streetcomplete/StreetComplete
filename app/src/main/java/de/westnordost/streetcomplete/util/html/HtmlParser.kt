@@ -80,7 +80,16 @@ private fun StringWithCursor.parseElement(): HtmlElementNode? {
 }
 
 private fun StringWithCursor.parseText(): String? {
-    return getNextWordAndAdvance { it != '<' }?.replaceHtmlEntities()
+    // convert all whitespaces (including tab, linefeed, ...) to spaces and then ensure that there
+    // are no spaces next to each other
+    val chars = ArrayList<Char>()
+    while (!isAtEnd() && !nextIs('<')) {
+        var c = advance()
+        if (c.isWhitespace()) c = ' '
+        if (c != ' ' || chars.lastOrNull() != ' ') chars.add(c)
+    }
+    if (chars.isEmpty()) return null
+    return String(chars.toCharArray()).replaceHtmlEntities()
 }
 
 private fun StringWithCursor.parseComment(): String? {
