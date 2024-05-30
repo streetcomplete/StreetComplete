@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material
 
-enum class PowerPolesMaterial(val osmValue: String) {
+sealed interface PowerPolesMaterialAnswer
+enum class PowerPolesMaterial(val osmValue: String) : PowerPolesMaterialAnswer {
     WOOD("wood"),
     STEEL("steel"),
-    CONCRETE("concrete"),
-    TERMINAL("terminal"),
+    CONCRETE("concrete")
 }
+
+data object IsPowerTerminal : PowerPolesMaterialAnswer
