@@ -26,11 +26,13 @@ private fun StringWithCursor.parseRoot(): List<HtmlNode> {
 }
 
 private fun StringWithCursor.parseNodes(): List<HtmlNode> {
-    val children = ArrayList<HtmlNode>()
+    val nodes = ArrayList<HtmlNode>()
+    // blank text after the start tag is ignored in HTML
+    skipWhitespaces()
     while (!isAtEnd()) {
         val element = parseElement()
         if (element != null) {
-            children.add(element)
+            nodes.add(element)
             continue
         }
         if (parseComment() != null) {
@@ -41,12 +43,18 @@ private fun StringWithCursor.parseNodes(): List<HtmlNode> {
         }
         val text = parseText()
         if (text != null) {
-            children.add(HtmlTextNode(text))
+            nodes.add(HtmlTextNode(text))
             continue
         }
         break
     }
-    return children
+    // blank text before the end tag is ignored in HTML (we already parsed it, need to remove it)
+    val last = nodes.lastOrNull() as? HtmlTextNode
+    if (last != null && last.text.lastOrNull() == ' ') {
+        if (last.text.isBlank()) nodes.removeLast()
+        else nodes[nodes.lastIndex] = HtmlTextNode(last.text.trimEnd())
+    }
+    return nodes
 }
 
 private fun StringWithCursor.parseElement(): HtmlElementNode? {

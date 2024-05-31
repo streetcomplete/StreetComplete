@@ -14,7 +14,7 @@ class HtmlParserKtTest {
 
     @Test fun `one text`() {
         assertEquals(listOf(HtmlTextNode("abc")), parse("abc"))
-        assertEquals(listOf(HtmlTextNode(" a b c ")), parse("  a\n   b\tc    "))
+        assertEquals(listOf(HtmlTextNode("a b c")), parse("  a\n   b\tc    "))
         assertEquals(listOf(HtmlTextNode("<abc>")), parse("&lt;abc&gt;"))
         assertEquals(listOf(), parse(""))
     }
@@ -39,6 +39,7 @@ class HtmlParserKtTest {
 
     @Test fun `one simple element`() {
         assertEquals(listOf(HtmlElementNode("a")), parse("<a></a>"))
+        assertEquals(listOf(HtmlElementNode("a", nodes = listOf(HtmlTextNode("t")))), parse(" <a> t </a> "))
         assertEquals(listOf(HtmlElementNode("a")), parse("<a ></a >"))
         assertEquals(listOf(HtmlElementNode("abc")), parse("<AbC></aBc>"))
         assertEquals(listOf(HtmlElementNode("a")), parse("<a>"))
@@ -86,7 +87,7 @@ class HtmlParserKtTest {
 
     @Test fun `several elements`() {
         assertEquals(
-            listOf(HtmlTextNode("hello "), HtmlElementNode("and"), HtmlTextNode(" bye ")),
+            listOf(HtmlTextNode("hello "), HtmlElementNode("and"), HtmlTextNode(" bye")),
             parse("hello <and><![CDATA[ <a>]]></and><!-- good--> bye ")
         )
     }
