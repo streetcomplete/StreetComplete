@@ -9,36 +9,19 @@ import de.westnordost.streetcomplete.util.StringWithCursor
  *
  *  @throws HtmlParseException
  *  */
-fun parseHtml(string: String): List<HtmlNode> =
-    StringWithCursor(string).parseRoot()
-
-private fun StringWithCursor.parseRoot(): List<HtmlNode> {
-    // ignore starting <!doctype html>
-    if (nextIsAndAdvance("<!doctype", ignoreCase = true)) {
-        skipWhitespaces()
-        if (!nextIsAndAdvance("html", ignoreCase = true)) fail("Invalid doctype")
-        skipWhitespaces()
-        if (!nextIsAndAdvance('>')) fail("Missing >")
-    }
-    val result = parseNodes()
-    if (!isAtEnd()) fail("Unexpected end of string")
+fun parseHtml(string: String): List<HtmlNode> {
+    val cursor = StringWithCursor(string.replace(ignoredElementsRegex, "").trim())
+    val result = cursor.parseNodes()
+    if (!cursor.isAtEnd()) cursor.fail("Unexpected end of string")
     return result
 }
 
 private fun StringWithCursor.parseNodes(): List<HtmlNode> {
     val nodes = ArrayList<HtmlNode>()
-    // blank text after the start tag is ignored in HTML
-    skipWhitespaces()
     while (!isAtEnd()) {
         val element = parseElement()
         if (element != null) {
             nodes.add(element)
-            continue
-        }
-        if (parseComment() != null) {
-            continue
-        }
-        if (parseCdataSection() != null) {
             continue
         }
         val text = parseText()
@@ -47,12 +30,6 @@ private fun StringWithCursor.parseNodes(): List<HtmlNode> {
             continue
         }
         break
-    }
-    // blank text before the end tag is ignored in HTML (we already parsed it, need to remove it)
-    val last = nodes.lastOrNull() as? HtmlTextNode
-    if (last != null && last.text.lastOrNull() == ' ') {
-        if (last.text.isBlank()) nodes.removeLast()
-        else nodes[nodes.lastIndex] = HtmlTextNode(last.text.trimEnd())
     }
     return nodes
 }
@@ -74,13 +51,15 @@ private fun StringWithCursor.parseElement(): HtmlElementNode? {
 
     if (tag in voidTags) return HtmlElementNode(tag, attributes)
 
-    val children = parseNodes()
+    val length = findNext("</$tag", ignoreCase = true)
+
+    val contents = string.substring(cursor, cursor + length).trim()
+    val children = StringWithCursor(contents).parseNodes()
 
     // end tag
+    advanceBy(length)
     if (!isAtEnd()) {
-        if (!nextIsAndAdvance('<')) fail("Expected end tag")
-        if (!nextIsAndAdvance('/')) fail("Expected /")
-        if (!nextIsAndAdvance(tag, ignoreCase = true)) fail("Expected end tag")
+        if (!nextIsAndAdvance("</$tag", ignoreCase = true)) fail("Expected end tag")
         skipWhitespaces()
         if (!nextIsAndAdvance('>')) fail("Expected >")
     }
@@ -98,24 +77,6 @@ private fun StringWithCursor.parseText(): String? {
     }
     if (chars.isEmpty()) return null
     return String(chars.toCharArray()).replaceHtmlEntities()
-}
-
-private fun StringWithCursor.parseComment(): String? {
-    if (!nextIsAndAdvance("<!--")) return null
-    val comment = advanceBy(findNext("-->"))
-    if (comment.startsWith('>') || comment.startsWith("->") ||
-        comment.endsWith('-') || comment.indexOf("--") != -1) {
-        fail("Malformed comment")
-    }
-    if (!nextIsAndAdvance("-->")) fail("Expected end of comment")
-    return comment
-}
-
-private fun StringWithCursor.parseCdataSection(): String? {
-    if (!nextIsAndAdvance("<![CDATA[", ignoreCase = true)) return null
-    val cdata = advanceBy(findNext("]]>"))
-    if (!nextIsAndAdvance("]]>")) fail("Expected end of cdata")
-    return cdata
 }
 
 private fun StringWithCursor.parseAttributes(): Map<String, String> {
@@ -175,6 +136,13 @@ private val notAllowedCharactersInUnquotedAttributeValue =
 private val notAllowedCharactersInAttributeName =
     setOf(' ', '"', '\'', '>', '/', '=')
 
+// cdata sections, comments, doctype at start
+private val ignoredElementsRegex by lazy {
+    Regex(
+        "^<!DOCTYPE +?HTML *?>|<!\\[CDATA\\[.*?]]>|<!--.*?-->",
+        setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL)
+    )
+}
 private val entityRegex by lazy { Regex("&[a-zA-Z0-9]+;") }
 
 private val entities = mapOf(
