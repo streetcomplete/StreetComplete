@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.annotation.AnyThread
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
+import androidx.core.view.size
 import androidx.core.widget.NestedScrollView
 import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
@@ -62,6 +63,7 @@ abstract class AbstractQuestForm :
     override val floatingBottomView get() = binding.okButtonContainer
     override val floatingBottomView2 get() = binding.hideButton
     protected val scrollView: NestedScrollView get() = binding.scrollView
+    override val hideButtonBottomMarginDp get() = if (binding.buttonPanel.size > 3) 32 else 8
 
     private var startedOnce = false
 

@@ -47,6 +47,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     /** View that floats at the bottom on top of any retracted/expanded bottom sheet */
     protected abstract val floatingBottomView: View?
     protected abstract val floatingBottomView2: View?
+    open val hideButtonBottomMarginDp = 8
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
 
@@ -63,7 +64,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
             scrollViewChild.updatePadding(bottom = it.bottom)
             bottomSheetContainer.updateMargins(top = it.top, left = it.left, right = it.right)
             floatingBottomView?.updateMargins(bottom = it.bottom)
-            floatingBottomView2?.updateMargins(bottom = it.bottom + context.resources.dpToPx(8).toInt())
+            floatingBottomView2?.updateMargins(bottom = it.bottom + context.resources.dpToPx(hideButtonBottomMarginDp).toInt())
 
             // expanding bottom sheet when keyboard is opened
             if (minBottomInset < it.bottom) expand()

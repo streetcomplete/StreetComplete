@@ -113,6 +113,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
   * UI settings
     * Quick settings button for switching preset, background and reverse quest order. Also contains a level filter for displayed quests / overlay elements
     * Quick selector for overlays (on main screen)
+      * long-press custom overlays to edit
     * Show next quest for this element immediately
     * Show nearby quests / other quests for same element when quest form is open
     * Hide button for temporarily hiding quests (long press for permanent hide)
