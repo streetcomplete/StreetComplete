@@ -28,38 +28,41 @@ import de.westnordost.streetcomplete.util.html.HtmlTextNode
 
 @Composable
 fun List<HtmlNode>.toAnnotatedString(): AnnotatedString {
-    val linkColor = MaterialTheme.colors.secondary
     val builder = AnnotatedString.Builder()
-    for (node in this) builder.append(node, linkColor, null)
+    builder.append(this)
     return builder.toAnnotatedString()
 }
 
 @SuppressLint("ComposableNaming")
 @Composable
-private fun AnnotatedString.Builder.append(
-    node: HtmlNode,
-    linkColor: Color,
-    currentParagraphIndex: Int?
-) {
-    if (node is HtmlElementNode) append(node, linkColor, currentParagraphIndex)
+private fun AnnotatedString.Builder.append(nodes: List<HtmlNode>) {
+    nodes.forEachIndexed { i, node ->
+        val nextNode = nodes.getOrNull(i + 1)
+        // ignore blank elements before block elements
+        if (nextNode?.isBlockElement() != true || !node.isBlankText()) {
+            append(node)
+        }
+    }
+}
+
+@SuppressLint("ComposableNaming")
+@Composable
+private fun AnnotatedString.Builder.append(node: HtmlNode) {
+    if (node is HtmlElementNode) append(node)
     else if (node is HtmlTextNode) append(node.text)
 }
 
 @SuppressLint("ComposableNaming")
 @OptIn(ExperimentalTextApi::class)
 @Composable
-private fun AnnotatedString.Builder.append(
-    element: HtmlElementNode,
-    linkColor: Color,
-    currentParagraphIndex: Int?
-) {
+private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
     if (element.tag == "br") {
         append('\n')
         return
     }
 
     val paragraph = when (element.tag) {
-        "h1", "h2", "h3", "h4", "h5", "h6", "p" -> {
+        "h1", "h2", "h3", "h4", "h5", "h6", "p", "div" -> {
             ParagraphStyle()
         }
         "blockquote" -> {
@@ -81,12 +84,11 @@ private fun AnnotatedString.Builder.append(
         }
         else -> null
     }
-    val paragraphIndex = if (paragraph != null) {
-        // Compose doesn't allow nesting paragraphs, so we need to pop the old one before
-        if (currentParagraphIndex != null) pop(currentParagraphIndex)
+    if (paragraph != null) {
+        // Compose doesn't allow nesting paragraphs, so we pop everything before adding a new one
+        tryPopAll()
         pushStyle(paragraph)
-    } else null
-    if (element.tag == "li") append(bullet)
+    }
 
     val span = when (element.tag) {
         // Spans
@@ -117,21 +119,42 @@ private fun AnnotatedString.Builder.append(
             SpanStyle(background = Color.Yellow)
         "span" ->
             SpanStyle()
-        "a" ->
+        "a" -> {
+            val linkColor = MaterialTheme.colors.secondary
             SpanStyle(textDecoration = TextDecoration.Underline, color = linkColor)
+        }
         else -> null
     }
     if (span != null) pushStyle(span)
     if (element.tag == "a") pushUrlAnnotation(UrlAnnotation(element.attributes["href"].orEmpty()))
 
-    for (node in element.nodes) {
-        append(node, linkColor, paragraphIndex)
-    }
+    if (paragraph != null) append('\n')
+    if (element.tag == "li") append(bullet)
 
-    if (element.tag == "a") pop()
-    if (span != null) pop()
-    if (paragraph != null) pop()
+    append(element.nodes)
+
+    if (element.tag == "a") tryPop()
+    if (span != null) tryPop()
+    if (paragraph != null) tryPop()
 }
+
+private fun AnnotatedString.Builder.tryPopAll() {
+    try { pop(0) } catch (_: Exception) {}
+}
+
+private fun AnnotatedString.Builder.tryPop() {
+    try { pop() } catch (_: Exception) {}
+}
+
+private fun HtmlNode.isBlockElement(): Boolean =
+    this is HtmlElementNode && this.tag in blockElements
+
+private fun HtmlNode.isBlankText(): Boolean =
+    this is HtmlTextNode && this.text.isBlank()
 
 private const val indent = 24f
 private const val bullet = "●  "
+
+private val blockElements = setOf(
+    "h1", "h2", "h3", "h4", "h5", "h6", "p", "div", "ul", "blockquote", "li"
+)
