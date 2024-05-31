@@ -1660,20 +1660,21 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="bicycle_boulevard_is_a">It’s a %1$s</string>
     <string name="bicycle_boulevard_is_not_a">It’s not a %1$s</string>
     <string name="bicycle_boulevard">Bicycle boulevard</string>
-    <string name="separate_cycleway_no_signed">A sign prohibits cycling</string>
+    <!-- Focus on cycling being the thing that is explicitly disallowed -->
+    <string name="separate_cycleway_no_signed">A sign explicitly prohibits cycling</string>
     <string name="separate_cycleway_footway_allowed_sign">Footway, but a sign allows cycling</string>
     <!-- highway=path / foot=yes + bicycle=yes -->
-    <string name="separate_cycleway_path">Path or trail</string>
+    <string name="separate_cycleway_path">Generic path or trail (Not designated for anyone in particular)</string>
     <!-- highway=footway / foot=designated and anything else that is not designated for cyclists-->
-    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (cycling may still be allowed)</string>
+    <string name="separate_cycleway_no_or_allowed">Footway, no explicit sign about cycling (whether it is allowed depends on legislation)</string>
     <!-- foot=designated + bicycle=designated -->
-    <string name="separate_cycleway_non_segregated">Shared-use path</string>
+    <string name="separate_cycleway_non_segregated">Designated shared-use path</string>
     <!-- foot=designated + bicycle=designated + segregated=yes -->
-    <string name="separate_cycleway_segregated">Separated bike and foot path</string>
+    <string name="separate_cycleway_segregated">Designated separated bike and foot path</string>
     <!-- highway=cycleway / bicycle=designated -->
-    <string name="separate_cycleway_exclusive">Bike-only path</string>
+    <string name="separate_cycleway_exclusive">Designated bike-only path</string>
     <!-- highway=cycleway + sidewalk=* -->
-    <string name="separate_cycleway_with_sidewalk">Bike-only path with adjacent sidewalk (separated by a curb)</string>
+    <string name="separate_cycleway_with_sidewalk">Designated bike-only path with adjacent sidewalk (separated by a curb)</string>
     <string name="cycleway_reverse_direction">Reverse bike path direction</string>
     <string name="cycleway_reverse_direction_warning">A bike path that goes into the other direction is extremely rare.</string>
     <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>
