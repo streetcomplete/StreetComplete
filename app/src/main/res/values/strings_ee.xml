@@ -626,7 +626,8 @@ This especially applies to the possibility of editing raw tags and deleting node
 Quests added in SCEE <i>may not be answerable</i> in all cases and are disabled by default. Please hide them in case you can’t answer them, and <i>do not spam notes</i>.\n\n
 Out of the box SCEE is configured to behave very similar to StreetComplete.</string>
     <string name="fork_about_title_repository">SCEE project home</string>
-    <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>
+<!-- ban_check_fails is currently unused, translating it would be a waste of time if it's not put to use again
+    <string name="ban_check_fails">Check for banned versions keeps failing. You might run an outdated version, please consider upgrading.</string>-->
     <string name="enqueue_download">Start after current search is done</string>
     <string name="create_poi">Add POI</string>
     <string name="insert_node">Insert node into way</string>
