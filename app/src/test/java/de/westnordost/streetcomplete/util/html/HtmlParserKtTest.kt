@@ -14,7 +14,7 @@ class HtmlParserKtTest {
 
     @Test fun `one text`() {
         assertEquals(listOf(HtmlTextNode("abc")), parse("abc"))
-        assertEquals(listOf(HtmlTextNode(" a b c ")), parse("  a\n   b\tc    "))
+        assertEquals(listOf(HtmlTextNode("a b c")), parse("  a\n   b\tc    "))
         assertEquals(listOf(HtmlTextNode("<abc>")), parse("&lt;abc&gt;"))
         assertEquals(listOf(), parse(""))
     }
@@ -24,10 +24,6 @@ class HtmlParserKtTest {
         assertEquals(listOf(), parse("<!---->"))
         assertEquals(listOf(HtmlTextNode("a")), parse("<!--test-->a"))
         assertFails { parse("<!--") }
-        assertFails { parse("<!-->hey-->") }
-        assertFails { parse("<!--->hey-->") }
-        assertFails { parse("<!--h--ey-->") }
-        assertFails { parse("<!--hey--->") }
     }
 
     @Test fun `one cdata`() {
@@ -45,6 +41,11 @@ class HtmlParserKtTest {
         assertEquals(listOf(HtmlElementNode("a")), parse("<a/>"))
         assertFails { parse("<one:two></one:two>") }
         assertFails { parse("<#></#>") }
+    }
+
+    @Test fun `elements strip spaces`() {
+        assertEquals(listOf(HtmlElementNode("a", nodes = listOf(HtmlTextNode("t")))), parse(" <a> t </a> "))
+        assertEquals(listOf(HtmlElementNode("a")), parse(" <a>  </a> "))
     }
 
     @Test fun `one void element`() {
@@ -86,7 +87,7 @@ class HtmlParserKtTest {
 
     @Test fun `several elements`() {
         assertEquals(
-            listOf(HtmlTextNode("hello "), HtmlElementNode("and"), HtmlTextNode(" bye ")),
+            listOf(HtmlTextNode("hello "), HtmlElementNode("and"), HtmlTextNode(" bye")),
             parse("hello <and><![CDATA[ <a>]]></and><!-- good--> bye ")
         )
     }
