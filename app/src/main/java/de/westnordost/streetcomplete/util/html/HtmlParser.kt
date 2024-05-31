@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.util.StringWithCursor
  *  @throws HtmlParseException
  *  */
 fun parseHtml(string: String): List<HtmlNode> {
-    val cursor = StringWithCursor(string.replace(ignoredElementsRegex, "").trim())
+    val cursor = StringWithCursor(string.replace(ignoredElementsRegex, ""))
     val result = cursor.parseNodes()
     if (!cursor.isAtEnd()) cursor.fail("Unexpected end of string")
     return result
@@ -51,13 +51,9 @@ private fun StringWithCursor.parseElement(): HtmlElementNode? {
 
     if (tag in voidTags) return HtmlElementNode(tag, attributes)
 
-    val length = findNext("</$tag", ignoreCase = true)
-
-    val contents = string.substring(cursor, cursor + length).trim()
-    val children = StringWithCursor(contents).parseNodes()
+    val children = parseNodes()
 
     // end tag
-    advanceBy(length)
     if (!isAtEnd()) {
         if (!nextIsAndAdvance("</$tag", ignoreCase = true)) fail("Expected end tag")
         skipWhitespaces()
