@@ -152,7 +152,7 @@ private fun HtmlNode.isBlockElement(): Boolean =
 private fun HtmlNode.isBlankText(): Boolean =
     this is HtmlTextNode && this.text.isBlank()
 
-private const val indent = 24f
+private const val indent = 32f
 private const val bullet = "●  "
 
 private val blockElements = setOf(

@@ -29,13 +29,23 @@ class MessagesContainerFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = composableContent {
         val message by shownMessage.collectAsState()
 
-        val msg = message
-        if (msg is NewAchievementMessage) {
-            AchievementDialog(
-                msg.achievement,
-                msg.level,
-                onDismissRequest = { shownMessage.value = null }
-            )
+        when (val msg = message) {
+            is NewAchievementMessage -> {
+                AchievementDialog(
+                    msg.achievement,
+                    msg.level,
+                    onDismissRequest = { shownMessage.value = null }
+                )
+            }
+            is NewVersionMessage -> {
+                msg.sinceVersion
+                WhatsNewDialog(
+                    changelog = ,
+                    onDismissRequest = { shownMessage.value = null },
+                    onClickLink = { }
+                )
+            }
+            else -> {}
         }
     }
 
@@ -48,13 +58,6 @@ class MessagesContainerFragment : Fragment() {
                     .create(message.unreadMessages)
                     .show(childFragmentManager, null)
             }
-            is NewVersionMessage -> {
-                WhatsNewDialog(ctx, message.sinceVersion)
-                    .show()
-            }
-            is NewAchievementMessage -> {
-                shownMessage.value = message
-            }
             is QuestSelectionHintMessage -> {
                 AlertDialog.Builder(ctx)
                     .setTitle(R.string.quest_selection_hint_title)
@@ -65,6 +68,7 @@ class MessagesContainerFragment : Fragment() {
                     .setNegativeButton(android.R.string.ok, null)
                     .show()
             }
+            else -> {}
         }
     }
 }
