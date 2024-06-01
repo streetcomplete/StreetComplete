@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.VEG
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
@@ -40,7 +40,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_vegan_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddDietTypeForm()
 

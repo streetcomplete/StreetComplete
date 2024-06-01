@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Vermont Federal Credit Union]
-chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Blink, EVgo, Clipper Creek, Champlain College]
+chargingStationOperators: [ChargePoint, Blink, 'Tesla, Inc.', EVgo, Clipper Creek, Champlain College]
 defaultSpeedLimitHasUrbanOrRural: false

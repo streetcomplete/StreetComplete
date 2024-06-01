@@ -94,6 +94,8 @@ private fun parseCyclewayForSide(
     val cycleway = tags[cyclewayKey]
     val cyclewayLane = tags["$cyclewayKey:lane"]
     val isSegregated = tags["$cyclewayKey:segregated"] != "no"
+    val isCyclingOkOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "yes" && tags["sidewalk$sideVal:bicycle:signed"] == "yes"
+    val isCyclingDesignatedOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "designated"
 
     val result = when (cycleway) {
         "lane", "opposite_lane" -> {
@@ -122,7 +124,12 @@ private fun parseCyclewayForSide(
             if (isSegregated) TRACK else SIDEWALK_EXPLICIT
         }
         "separate" -> SEPARATE
-        "no", "opposite" -> NONE
+        "opposite" -> NONE
+        "no" -> when {
+            isCyclingOkOnSidewalk -> SIDEWALK_OK
+            isCyclingDesignatedOnSidewalk -> SIDEWALK_EXPLICIT
+            else -> NONE
+        }
         "share_busway", "opposite_share_busway" -> BUSWAY
         "shoulder" -> SHOULDER
         // values known to be invalid, ambiguous or obsolete:
@@ -184,6 +191,8 @@ private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, Stri
     result.expandSidesTags("cycleway", "lane", true)
     result.expandSidesTags("cycleway", "oneway", true)
     result.expandSidesTags("cycleway", "segregated", true)
+    result.expandSidesTags("sidewalk", "bicycle", true)
+    result.expandSidesTags("sidewalk", "bicycle:signed", true)
     return result
 }
 

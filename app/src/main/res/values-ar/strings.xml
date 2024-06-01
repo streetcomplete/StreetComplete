@@ -43,7 +43,6 @@
     <string name="action_download">"تحميل البيانات هنا"</string>
     <string name="action_upload">"رفع الإجابات"</string>
     <string name="no_changes">"لم تقدم أي إجابة"</string>
-    <string name="close">"إغلاق"</string>
     <string name="download_error">"حدث خطأ أثناء تحميل البيانات"</string>
     <string name="upload_error">"خطأ أثناء تحميل الإجابات"</string>
     <string name="download_area_too_big">"يرجى تكبير الخريطة للمزيد"</string>
@@ -506,7 +505,6 @@
     <string name="quest_sidewalk_value_yes">"يوجد رصيف"</string>
     <string name="quest_sidewalk_value_no">"لايوجد رصيف"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"هل يُمنع المشاة من السير على هذا الطريق في هذا المكان؟"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"تم وضع علامة على هذا الشارع على أنه لا يوجد به رصيف على أي من الجانبين. في حالة وجود رصيف بعد كل شيء ولكن يتم عرضه بطريق منفصلة، يرجى الإجابة على \"الرصيف\"."</string>
     <string name="quest_buildingType_title">"ما هو نوع هذا المبنى؟"</string>
     <string name="pref_title_theme_select">"حدد السمة"</string>
     <string name="theme_automatic">"تلقائي"</string>
@@ -1249,7 +1247,7 @@
     <string name="user_profile_current_week_title">"اخر 7 ايام"</string>
     <string name="user_profile_dates_mapped">"الأيام التي حددتها مؤخرًا"</string>
     <string name="quest_cycleway_value_advisory_lane">"حارة إرشادية للدراجات"</string>
-    <string name="urlconfig_scan_qr_code_again2">"بعد تثبيت التطبيق ، امسح رمز الاستجابة السريعة ضوئيًا مرة أخرى أو انقر على &lt;a href=\"٪s\"&gt; هذا الرابط &lt;/a&gt; لتطبيق الإعداد المسبق."</string>
+    <string name="urlconfig_scan_qr_code_again2">"بعد تثبيت التطبيق ، امسح رمز الاستجابة السريعة ضوئيًا مرة أخرى أو انقر على &lt;a href=\"%s\"&gt; هذا الرابط &lt;/a&gt; لتطبيق الإعداد المسبق."</string>
     <string name="confirmation_replace_shop_title">"هل هو مكان مختلف الآن؟"</string>
     <string name="confirmation_replace_shop_message">"في هذه الحالة ، ستتغير أيضًا ساعات العمل ومعلومات الاتصال وما إلى ذلك."</string>
     <string name="confirmation_replace_shop_yes">"مكان مختلف الآن"</string>
@@ -1269,8 +1267,6 @@
     <string name="bicycle_boulevard_is_a">"إنها %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"إنها ليست بـ%1$s"</string>
     <string name="bicycle_boulevard">"شارع دراجات"</string>
-    <string name="separate_cycleway_no">"الدراجات ممنوعة"</string>
-    <string name="separate_cycleway_allowed">"يسمح بالدراجين"</string>
     <string name="separate_cycleway_no_or_allowed">"ليست مصممة للدراجين (لكن ربما لا يزال يسمح بركوب الدراجات)"</string>
     <string name="separate_cycleway_non_segregated">"ممر يشارك استخدامه"</string>
     <string name="separate_cycleway_segregated">"ممرات مشي ودراجات مفصولة"</string>
@@ -1381,7 +1377,6 @@
     <string name="quest_buildingType_tower_description">"أي نوع من الأبراج"</string>
     <string name="quest_buildingType_under_construction">"تحت الإنشاء"</string>
     <string name="overlay_buildings">"مباني"</string>
-    <string name="quest_pedestrian_crossing_signals">"أتحتاج لأن تنتظر إشارة مرور لتعبر هذا الطريق؟"</string>
     <string name="quest_pedestrian_crossing_markings">"هل توجد علامات على الأرض لمعبر المشاة هذا؟"</string>
     <string name="overlay_places">"أماكن"</string>
     <string name="overlay_things">"أشياء"</string>

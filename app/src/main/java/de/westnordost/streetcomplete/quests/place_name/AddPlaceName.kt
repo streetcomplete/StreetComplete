@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.quests.fullElementSelectionDialog
 import de.westnordost.streetcomplete.quests.questPrefix
 
@@ -53,7 +53,7 @@ class AddPlaceName(
         filter.matches(element) && getFeature(element) != null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddPlaceNameForm()
 

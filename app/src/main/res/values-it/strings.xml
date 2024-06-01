@@ -43,7 +43,6 @@
     <string name="action_download">"Trova le missioni in zona"</string>
     <string name="action_upload">"Carica risposte"</string>
     <string name="no_changes">"Non hai fornito una risposta"</string>
-    <string name="close">"chiudi"</string>
     <string name="download_error">"Errore durante la ricerca di missioni"</string>
     <string name="upload_error">"Errore durante il caricamento delle risposte"</string>
     <string name="download_area_too_big">"È necessario ingrandire ancora di più"</string>
@@ -503,7 +502,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_sidewalk_value_yes">"percorso pedonale"</string>
     <string name="quest_sidewalk_value_no">"nessun percorso pedonale"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ai pedoni è vietato camminare su questa strada?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"È stato indicato che questa strada non ha un percorso pedonale su nessun lato. Nel caso ci sia comunque un percorso pedonale, ma è indicato come percorso separato, rispondi \"percorso pedonale\"."</string>
     <string name="quest_buildingType_title">"Che tipo di edificio è questo?"</string>
     <string name="pref_title_theme_select">"Seleziona tema"</string>
     <string name="theme_automatic">"Automatico"</string>
@@ -1262,8 +1260,6 @@ Spostarlo ora?"</string>
     <string name="bicycle_boulevard_is_a">"È un %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Non è un %1$s"</string>
     <string name="bicycle_boulevard">"Viale ciclabile"</string>
-    <string name="separate_cycleway_no">"No biciclette"</string>
-    <string name="separate_cycleway_allowed">"I velocipedi sono ammessi"</string>
     <string name="separate_cycleway_no_or_allowed">"Non progettata per i velocipedi (ma forse sono ammessi)"</string>
     <string name="separate_cycleway_non_segregated">"Percorso a uso promiscuo"</string>
     <string name="separate_cycleway_segregated">"Percorso pedonale e ciclabile separati"</string>
@@ -1347,6 +1343,7 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="action_filter">"Filtra"</string>
     <string name="action_share">"Condividi log"</string>
     <string name="about_title_show_logs">"Mostra log"</string>
+    <string name="label_log_level">"Livello di registro"</string>
     <string name="label_log_newer_than">"Da"</string>
     <string name="label_log_older_than">"Fino"</string>
     <string name="label_log_message_contains">"Il messaggio contiene"</string>
@@ -1372,7 +1369,6 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="quest_buildingType_tower_description">"qualsiasi tipo di torre"</string>
     <string name="quest_buildingType_under_construction">"In costruzione"</string>
     <string name="overlay_buildings">"Edifici"</string>
-    <string name="quest_pedestrian_crossing_signals">"Devi aspettare il semaforo per attraversare qui?"</string>
     <string name="quest_pedestrian_crossing_markings">"Questo attraversamento ha della segnaletica orizzontale?"</string>
     <string name="overlay_places">"Luoghi"</string>
     <string name="overlay_things">"Oggetti"</string>
@@ -1385,4 +1381,22 @@ Troverai le informazioni sulle donazioni sul nostro sito o sulla home del proget
     <string name="quest_isAmenityIndoor_outside_covered">"Non dentro, ma coperto"</string>
     <string name="lit_value_unsupported">"Tipo di illuminazione non selezionabile in questa app"</string>
     <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Ci sono segnali del traffico che indicano quando attraversare qui?"</string>
+    <string name="quest_moped_access_title">"C'è un cartello che indica l'accesso ai ciclomotori su questo percorso ciclabile?"</string>
+    <string name="quest_moped_access_allowed">"Non c'è alcun cartello"</string>
+    <string name="quest_moped_access_designated">"C'è un cartello che indica questo percorso ciclabile per i ciclomotori"</string>
+    <string name="quest_moped_access_forbidden">"C'è un cartello che vieta i ciclomotori"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Questo tipo di ricerca è disattivato per impostazione predefinita, perché l'accesso dei ciclomotori è indicato solo da una specifica segnaletica all'inizio e alla fine di una pista ciclabile."</string>
+    <string name="quest_arrow_tutorial">"La freccia nell'immagine indica la direzione verso cui corre la strada sulla mappa. Prova a ruotare la mappa e capirai."</string>
+    <string name="info">"Maggiori informazioni"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"È proibito."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"È permesso."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"In realtà, c'è un marciapiede, ma è mostrato separatamente sulla mappa."</string>
+    <string name="quest_buildingLevels_hint">"Per gli edifici su una pendenza, i piani si contano dal lato più basso.
+
+Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tetto con 0 piani non è necessariamente piatto, ma non sufficientemente alto per un intero piano.
+    "</string>
+    <string name="quest_parcel_locker_brand">"Di che marca è questo punto pacchi?"</string>
+    <string name="quest_parcel_locker_pickup">"Puoi ritirare pacchi qui?"</string>
+    <string name="quest_parcel_locker_mail_in">"Puoi lasciare pacchi qui?"</string>
 </resources>

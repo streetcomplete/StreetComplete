@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
+class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>() {
 
     override val elementFilter = """
         nodes with
@@ -38,7 +38,11 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterial>() {
 
     override val isDeleteElementEnabled = false
 
-    override fun applyAnswerTo(answer: PowerPolesMaterial, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["material"] = answer.osmValue
+    override fun applyAnswerTo(answer: PowerPolesMaterialAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer is PowerPolesMaterial) {
+            tags["material"] = answer.osmValue
+        } else if(answer is PowerLineAnchoredToBuilding) {
+            tags["power"] = "terminal"
+        }
     }
 }

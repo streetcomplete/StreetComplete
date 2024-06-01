@@ -43,7 +43,6 @@
     <string name="action_download">"Kérdések beolvasása itt"</string>
     <string name="action_upload">"Válaszok feltöltése"</string>
     <string name="no_changes">"Nem válaszoltál"</string>
-    <string name="close">"bezárás"</string>
     <string name="download_error">"Hiba a kérdések beolvasása során"</string>
     <string name="upload_error">"Hiba a válaszok feltöltése során"</string>
     <string name="download_area_too_big">"Nagyíts rá jobban"</string>
@@ -503,7 +502,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_sidewalk_value_yes">"járda"</string>
     <string name="quest_sidewalk_value_no">"nincs járda"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"A gyalogosok ki vannak tiltva ebből az utcából?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ezt azt utat úgy jelölték meg, hogy egyik oldalon sincs járda. Abban az esetben, ha végső soron van járda, csak külön vonalként szerepel a térképen, kérlek a \"járdá\"-t jelöld meg."</string>
     <string name="quest_buildingType_title">"Ez milyen épület?"</string>
     <string name="pref_title_theme_select">"Téma kiválasztása"</string>
     <string name="theme_automatic">"Automatikus"</string>
@@ -1258,8 +1256,6 @@ Most akarja elmozdítani?"</string>
     <string name="bicycle_boulevard_is_a">"Ez egy %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Ez nem %1$s"</string>
     <string name="bicycle_boulevard">"Bicikliút"</string>
-    <string name="separate_cycleway_no">"Kerékpározás nem megengedett"</string>
-    <string name="separate_cycleway_allowed">"Kerékpározás megengedett"</string>
     <string name="separate_cycleway_no_or_allowed">"Nem kerékpárosok számára van kijelölve (a kerékpározás ettől még megengedett lehet)"</string>
     <string name="separate_cycleway_non_segregated">"Nem elválasztott gyalog- és kerékpárút"</string>
     <string name="separate_cycleway_segregated">"Elválasztott gyalog- és kerékpárút"</string>
@@ -1370,7 +1366,6 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_buildingType_tower_description">"bármilyen torony"</string>
     <string name="quest_buildingType_under_construction">"Építés alatt"</string>
     <string name="overlay_buildings">"Épületek"</string>
-    <string name="quest_pedestrian_crossing_signals">"Várni kell egy jelzőlámpára, hogy át lehessen kelni?"</string>
     <string name="quest_pedestrian_crossing_markings">"Az átkelőhely jelölve van az útburkolaton?"</string>
     <string name="overlay_places">"Helyek"</string>
     <string name="overlay_things">"Dolgok"</string>

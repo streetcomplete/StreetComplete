@@ -43,7 +43,6 @@
     <string name="action_download">"Σάρωση για αναζητήσεις εδώ"</string>
     <string name="action_upload">"Μεταφόρτωση Απαντήσεων"</string>
     <string name="no_changes">"Δεν δώσατε καμία απάντηση"</string>
-    <string name="close">"κλειστά"</string>
     <string name="download_error">"Σφάλμα κατά την σάρωση για αναζητήσεις"</string>
     <string name="upload_error">"Σφάλμα κατά την μεταφόρτωση των απαντήσεων"</string>
     <string name="download_area_too_big">"Παρακαλούμε μεγεθύνετε επιπλέον"</string>
@@ -503,7 +502,6 @@
     <string name="quest_sidewalk_value_yes">"πεζοδρόμιο"</string>
     <string name="quest_sidewalk_value_no">"χωρίς πεζοδρόμιο"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Απαγορεύεται οι πεζοί να περπατούν στον δρόμο εδώ;"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Αυτός ο δρόμος χαρακτηρίστηκε ως χωρίς πεζοδρόμιο και στις δύο πλευρές. Στην περίπτωση που υπάρχει πεζοδρόμιο, αλλά εμφανίζεται ξεχωριστά, παρακαλούμε απαντήστε \"πεζοδρόμιο\"."</string>
     <string name="quest_buildingType_title">"Τι είδους κτίριο είναι αυτό;"</string>
     <string name="pref_title_theme_select">"Επιλέξτε θέμα"</string>
     <string name="theme_automatic">"Αυτόματο"</string>
@@ -1251,8 +1249,6 @@
     <string name="bicycle_boulevard_is_a">"Είναι %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Δεν είναι %1$s"</string>
     <string name="bicycle_boulevard">"Λεωφόρος ποδηλάτων"</string>
-    <string name="separate_cycleway_no">"Όχι ποδηλασία"</string>
-    <string name="separate_cycleway_allowed">"Επιτρέπονται οι ποδηλάτες"</string>
     <string name="separate_cycleway_no_or_allowed">"Δεν προορίζεται για ποδηλάτες (η ποδηλασία μπορεί να εξακολουθεί να επιτρέπεται)"</string>
     <string name="separate_cycleway_non_segregated">"Διαδρομή κοινής χρήσης"</string>
     <string name="separate_cycleway_segregated">"Ξεχωριστός ποδηλατόδρομος και πεζόδρομος"</string>
@@ -1363,7 +1359,6 @@
     <string name="quest_buildingType_tower_description">"κάθε είδους πύργος"</string>
     <string name="quest_buildingType_under_construction">"Υπό κατασκευή"</string>
     <string name="overlay_buildings">"Κτίρια"</string>
-    <string name="quest_pedestrian_crossing_signals">"Πρέπει να περιμένετε το σήμα κυκλοφορίας για να περάσετε εδώ;"</string>
     <string name="quest_pedestrian_crossing_markings">"Αυτή η διάβαση έχει σημάδια στο έδαφος;"</string>
     <string name="overlay_places">"Μέρη"</string>
     <string name="overlay_things">"Πράγματα"</string>
@@ -1376,4 +1371,20 @@
     <string name="quest_isAmenityIndoor_outside_covered">"Όχι εσωτερικός χώρος, αλλά καλύπτεται"</string>
     <string name="lit_value_unsupported">"Η κατάσταση φωτισμού δεν είναι επιλέξιμη στην εφαρμογή"</string>
     <string name="quest_generic_otherAnswers2">"Εμ…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Υπάρχουν σήματα κυκλοφορίας που δείχνουν πότε πρέπει να περάσετε από εδώ;"</string>
+    <string name="quest_moped_access_title">"Υπάρχει πινακίδα που υποδεικνύει πρόσβαση για μοτοποδήλατα σε αυτόν τον ποδηλατόδρομο;"</string>
+    <string name="quest_moped_access_allowed">"Δεν υπάρχει πινακίδα"</string>
+    <string name="quest_moped_access_designated">"Υπάρχει πινακίδα που υποδεικνύει αυτόν τον ποδηλατόδρομο για μοτοποδήλατα"</string>
+    <string name="quest_moped_access_forbidden">"Υπάρχει πινακίδα που απαγορεύει τα μοτοποδήλατα"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή η πρόσβαση στο μοτοποδήλατο υποδεικνύεται μόνο από συγκεκριμένη πινακίδα στην αρχή/στο τέλος ενός ποδηλατόδρομου."</string>
+    <string name="info">"Περισσότερες πληροφορίες"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Είναι απαγορευμένο."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"επιτρέπεται."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Στην πραγματικότητα, υπάρχει πεζοδρόμιο, αλλά εμφανίζεται ξεχωριστά στον χάρτη."</string>
+    <string name="quest_buildingLevels_hint">"Για κτίρια σε κλίση, η μέτρηση επιπέδων ξεκινά από το επίπεδο του εδάφους της χαμηλότερης πλευράς.
+Ένα επίπεδο μετράει ως επίπεδο στέγης όταν τα παράθυρά του βρίσκονται στην οροφή. Ακολούθως, οι στέγες με μηδενικά επίπεδα στέγης δεν είναι απαραίτητα επίπεδες, απλώς δεν είναι αρκετά ψηλές για ένα ολόκληρο επίπεδο."</string>
+    <string name="quest_parcel_locker_brand">"Ποια είναι η μάρκα αυτού του ντουλαπιού δεμάτων;"</string>
+    <string name="quest_parcel_locker_pickup">"Μπορείτε να παραλάβετε δέματα από εδώ;"</string>
+    <string name="quest_parcel_locker_mail_in">"Μπορείτε να αφήσετε δέματα εδώ;"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Το ηλεκτρικό καλώδιο είναι στερεωμένο στο κτίριο"</string>
 </resources>

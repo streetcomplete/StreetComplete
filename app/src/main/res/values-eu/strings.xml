@@ -43,7 +43,6 @@
     <string name="action_download">"Bilatu erronkak hemen"</string>
     <string name="action_upload">"Igo erantzunak"</string>
     <string name="no_changes">"Ez duzu erantzunik eman"</string>
-    <string name="close">"itxi"</string>
     <string name="download_error">"Errorea erronkak bilatzean"</string>
     <string name="upload_error">"Errorea erantzunak igotzean"</string>
     <string name="download_area_too_big">"Hurbildu zooma gehiago"</string>
@@ -502,7 +501,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_sidewalk_value_yes">"espaloia"</string>
     <string name="quest_sidewalk_value_no">"espaloirik ez"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Oinezkoek debekatuta al dute bide honetan ibiltzea?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Kale hau alde bietan espaloirik gabeko gisa etiketatu da. Oinezkoen bidea egon badago, baina aparteko bide gisa adierazia, erantzun \"espaloia\"."</string>
     <string name="quest_buildingType_title">"Ze motako eraikina da hau?"</string>
     <string name="pref_title_theme_select">"Hautatu azala"</string>
     <string name="theme_automatic">"Automatikoa"</string>
@@ -1264,8 +1262,6 @@ Orain mugitu?"</string>
     <string name="bicycle_boulevard_is_a">"%1$s bat da"</string>
     <string name="bicycle_boulevard_is_not_a">"Ez da %1$s bat"</string>
     <string name="bicycle_boulevard">"Bizikleta bulebarra"</string>
-    <string name="separate_cycleway_no">"Bizikletarik ez"</string>
-    <string name="separate_cycleway_allowed">"Txirrindulariak onartzen dira"</string>
     <string name="separate_cycleway_no_or_allowed">"Ez dago txirrindularientzat egokituta (baliteke bizikletaz ibiltzea baimenduta)"</string>
     <string name="separate_cycleway_non_segregated">"Erabilera partekatuko bidea"</string>
     <string name="separate_cycleway_segregated">"Bizikleta eta oinezko bidea bereizita"</string>

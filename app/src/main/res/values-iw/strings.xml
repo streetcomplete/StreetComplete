@@ -43,7 +43,6 @@
     <string name="action_download">"הורד מידע כאן"</string>
     <string name="action_upload">"העלה תשובות"</string>
     <string name="no_changes">"לא נתת שום תשובה"</string>
-    <string name="close">"סגור"</string>
     <string name="download_error">"שגיאה בזמן חיפוש משימות"</string>
     <string name="upload_error">"שגיאה בזמן העלת תשובות"</string>
     <string name="download_area_too_big">"התמקד עוד קצת"</string>
@@ -492,7 +491,6 @@
     <string name="quest_sidewalk_value_yes">"מדרכה"</string>
     <string name="quest_sidewalk_value_no">"ללא מדרכה"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"האם אסור להולכי רגל לצעוד בכביש כאן?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"הכביש תויג ללא מדרכות בשני הצדדים. אם יש מדרכה אבל היא מוצגת כדרך נפרדת, נא לענות \"מדרכה\""</string>
     <string name="quest_buildingType_title">"איזה סוג של מבנה זה?"</string>
     <string name="pref_title_theme_select">"בחירת נושא"</string>
     <string name="theme_automatic">"אוטומטי"</string>
@@ -661,7 +659,7 @@
     <string name="credits_projects_contributors_title">"פרויקטים שנעשו עבור StreetComplete"</string>
     <string name="credits_main_contributors_title">"תורמים/ות עיקריים"</string>
     <string name="stats_are_syncing">"נתוני הסטטיסטיקה שלך עדיין מסתנכרנים. נא לבדוק מסך זה במועד מאוחר יותר."</string>
-    <string name="user_statistics_country_rank">"דירוג ב-%2$s: %1$s"</string>
+    <string name="user_statistics_country_rank">"דירוג ב-%2$s: %1$d"</string>
     <string name="user_statistics_filter_by_country">"לפי מדינה"</string>
     <string name="user_statistics_filter_by_quest_type">"לפי סוג משימה"</string>
     <string name="user_profile_days_active">"ימי
@@ -1153,8 +1151,6 @@
     <string name="bicycle_boulevard_is_a">"זה %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"זה לא %1$s"</string>
     <string name="bicycle_boulevard">"שדרת אופניים"</string>
-    <string name="separate_cycleway_no">"אין רכיבה"</string>
-    <string name="separate_cycleway_allowed">"רכיסה מותרת"</string>
     <string name="separate_cycleway_no_or_allowed">"לא מיועד לרכיבה (רכיבה עשויה להיות מותרת)"</string>
     <string name="separate_cycleway_non_segregated">"נתיב מעורב-שימושים"</string>
     <string name="separate_cycleway_segregated">"נתיב מופרד לאופניים ולהולכי רגל"</string>

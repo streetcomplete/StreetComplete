@@ -43,8 +43,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.ALL_PATHS
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
 import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
@@ -334,7 +334,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun replacePlace(extra: Boolean = true) {
-        if (element.isPlaceOrDisusedShop()) {
+        if (element.isPlaceOrDisusedPlace()) {
             ShopGoneDialog(
                 requireContext(),
                 element.geometryType,

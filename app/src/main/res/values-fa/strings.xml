@@ -43,7 +43,6 @@
     <string name="action_download">"کاوش جُستارهای اینجا"</string>
     <string name="action_upload">"بارگذاری پاسخ‌ها "</string>
     <string name="no_changes">"شما هیچگونه پاسخی ندادید"</string>
-    <string name="close">"بستن"</string>
     <string name="download_error">"خطا هنگام پویش جُستارها"</string>
     <string name="upload_error">"خطا در زمان بارگذاری پاسخ‌ها"</string>
     <string name="download_area_too_big">"لطفاً بزرگنمایی را بیشتر کنید"</string>
@@ -504,7 +503,6 @@
     <string name="quest_sidewalk_value_yes">"پیاده‌رو"</string>
     <string name="quest_sidewalk_value_no">"بدون پیاده‌رو"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"آیا پیاده‌روی عابران در این جاده ممنوع است؟"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"این خیابان این‌طور برچسب‌گذاری شده که در هیچ طرف پیاده‌رو ندارد. در صورتی که پیاده‌رو دارد، ولی با خط جداگانه نمایش داده شده، لطفاً پاسخ دهید «پیاده‌رو»."</string>
     <string name="quest_buildingType_title">"نوع این ساختمان چیست؟"</string>
     <string name="pref_title_theme_select">"انتخاب زمینه"</string>
     <string name="theme_automatic">"خودکار"</string>
@@ -1263,8 +1261,6 @@
     <string name="bicycle_boulevard_is_a">"این یک %1$s است"</string>
     <string name="bicycle_boulevard_is_not_a">"این %1$s نیست"</string>
     <string name="bicycle_boulevard">"بلوار دوچرخه"</string>
-    <string name="separate_cycleway_no">"دوچرخه سواری ممنوع"</string>
-    <string name="separate_cycleway_allowed">"دوچرخه‌سواران مجاز می‌باشند"</string>
     <string name="separate_cycleway_no_or_allowed">"برای دوچرخه سواری مشخص نشده است (دوچرخه سواری ممکن است همچنان مجاز باشد)"</string>
     <string name="separate_cycleway_non_segregated">"مسیر با استفاده مشترک"</string>
     <string name="separate_cycleway_segregated">"مسیر دوچرخه و پیاده مجزا"</string>
@@ -1375,7 +1371,6 @@
     <string name="quest_buildingType_tower_description">"هر نوع برجی"</string>
     <string name="quest_buildingType_under_construction">"در حال ساخت"</string>
     <string name="overlay_buildings">"ساختمان‌ها"</string>
-    <string name="quest_pedestrian_crossing_signals">"آیا باید منتظر اجازه عبور توسط چراغ راهنمایی و رانندگی بمانید تا از اینجا عبور کنید؟"</string>
     <string name="quest_pedestrian_crossing_markings">"آیا این گذرگاه روی زمین علامت‌گذاری دارد؟"</string>
     <string name="overlay_places">"مکان‌ها"</string>
     <string name="overlay_things">"چیزها"</string>
@@ -1388,4 +1383,23 @@
     <string name="quest_isAmenityIndoor_outside_covered">"نه در داخل، بلکه پوشیده شده است"</string>
     <string name="lit_value_unsupported">"وضعیت روشنایی خاصی که در این برنامه قابل انتخاب نیست"</string>
     <string name="quest_generic_otherAnswers2">"آه…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"آیا علائم راهنمایی و رانندگی وجود دارد که نشان بدهد چه زمانی باید از اینجا عبور کرد؟"</string>
+    <string name="quest_moped_access_title">"آیا تابلویی وجود دارد که نشان دهنده دسترسی موتورسوارها در این مسیر دوچرخه‌سواری باشد؟"</string>
+    <string name="quest_moped_access_allowed">"هیچ علامتی وجود ندارد"</string>
+    <string name="quest_moped_access_designated">"تابلویی وجود دارد که این مسیر دوچرخه‌سواری را برای موتورسواری مشخص می‌کند"</string>
+    <string name="quest_moped_access_forbidden">"علامتی وجود دارد که موتورسواری را ممنوع می‌کند"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"این نوع جستجو به‌طور پیش‌فرض غیرفعال است، زیرا دسترسی به موتورسیکلت فقط با یک علامت خاص در شروع/پایان یک مسیر دوچرخه‌سواری نشان داده می‌شود."</string>
+    <string name="quest_arrow_tutorial">"فلش‌های تصویر به سمت جهت‌هایی که مسیر روی نقشه در محل پین مرکزی آن اجرا می‌شود، اشاره می‌کند. سعی کنید نقشه را بچرخانید و آن را دریافت خواهید کرد."</string>
+    <string name="info">"اطلاعات بیشتر"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"ممنوع است."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"مجاز است."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"در واقع یک پیاده‌رو وجود دارد اما به طور جداگانه روی نقشه نمایش داده می‌شود."</string>
+    <string name="quest_buildingLevels_hint">"برای ساختمان‌های شیب‌دار، شمارش سطح از سطح زمین پایین‌ترین سمت شروع می‌شود.
+
+یک سطح زمانی که پنجره‌های آن در پشت بام باشد به عنوان سطح مسقف محسوب می‌شود. پس از آن، سقف‌هایی با سطح سقف صفر لزوماً مسطح نیستند، فقط برای کل سطح به اندازه کافی بلند نیستند.
+␣␣␣␣"</string>
+    <string name="quest_parcel_locker_brand">"مارک این بسته‌بندی چیست؟"</string>
+    <string name="quest_parcel_locker_pickup">"آیا می‌توانید بسته‌ها را از اینجا تحویل بگیرید؟"</string>
+    <string name="quest_parcel_locker_mail_in">"آیا می‌توانید بسته‌ها را اینجا تحویل دهید؟"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"خط برق به ساختمان متصل است"</string>
 </resources>

@@ -43,7 +43,6 @@
     <string name="action_download">"Poišči naloge v bližini"</string>
     <string name="action_upload">"Pošlji odgovore"</string>
     <string name="no_changes">"Obrazec ste pustili prazen"</string>
-    <string name="close">"zapri"</string>
     <string name="download_error">"Napaka pri iskanju nalog"</string>
     <string name="upload_error">"Napaka pri pošiljanju odgovorov"</string>
     <string name="download_area_too_big">"Bolj približajte"</string>
@@ -503,7 +502,6 @@ Na primer 1,3 ali 2–6."</string>
     <string name="quest_sidewalk_value_yes">"pločnik"</string>
     <string name="quest_sidewalk_value_no">"brez pločnika"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ali je pešcem prepovedano hoditi po tej cesti?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ta ulica je bila označena brez pločnika na eni ali drugi strani. Če vseeno ima pločnik, a kot ločeno pot, odgovorite \"pločnik\"."</string>
     <string name="quest_buildingType_title">"Kakšne vrste zgradba je to?"</string>
     <string name="pref_title_theme_select">"Izberi témo"</string>
     <string name="theme_automatic">"Samodejna"</string>
@@ -1265,8 +1263,6 @@ Naredi enako za drugo stran, če ta obstaja."</string>
     <string name="bicycle_boulevard_is_a">"To je %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"To ni %1$s"</string>
     <string name="bicycle_boulevard">"Kolesarska ulica"</string>
-    <string name="separate_cycleway_no">"Ni kolesarske poti"</string>
-    <string name="separate_cycleway_allowed">"Kolesarjenje je dovoljeno"</string>
     <string name="separate_cycleway_no_or_allowed">"NI zasnovano za kolesarje (kolesarjenje je lahko še vedno dovoljeno)"</string>
     <string name="separate_cycleway_non_segregated">"Souporaba poti"</string>
     <string name="separate_cycleway_segregated">"Ločena pot za kolesarje in pešce"</string>
@@ -1376,7 +1372,6 @@ Poleg tega ti nekatere prekrivne plasti omogočajo dodajanje novih podatkov na p
     <string name="quest_buildingType_tower_description">"katerakoli vrsta stolpa"</string>
     <string name="quest_buildingType_under_construction">"Se še gradi"</string>
     <string name="overlay_buildings">"Stavbe"</string>
-    <string name="quest_pedestrian_crossing_signals">"Ali moraš počakati na signal da lahko prečkaš?"</string>
     <string name="quest_pedestrian_crossing_markings">"Ali ima ta prehod na tleh oznake?"</string>
     <string name="overlay_places">"Krajii"</string>
     <string name="overlay_things">"Stvari"</string>

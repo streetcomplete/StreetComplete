@@ -43,7 +43,6 @@
     <string name="action_download">"Hier herunterladen"</string>
     <string name="action_upload">"Antworten hochladen"</string>
     <string name="no_changes">"Die Frage wurde nicht beantwortet"</string>
-    <string name="close">"Schließen"</string>
     <string name="download_error">"Fehler beim Herunterladen"</string>
     <string name="upload_error">"Fehler beim Hochladen der Antworten"</string>
     <string name="download_area_too_big">"Zoome weiter hinein"</string>
@@ -104,7 +103,7 @@ Bevor deine Änderungen hochgeladen werden, überprüft die App mithilfe &lt;a h
     <string name="autosync_on">"An"</string>
     <string name="autosync_only_on_wifi">"Nur bei WLAN"</string>
     <string name="autosync_off">"Aus"</string>
-    <string name="quest_streetSurface_title">"Welche Oberfläche hat dieser Straßenabschnitt?"</string>
+    <string name="quest_streetSurface_title">"Welche Oberfläche hat diese Straße?"</string>
     <string name="quest_surface_value_paved">"Befestigt (allgemein)"</string>
     <string name="quest_surface_value_unpaved">"Unbefestigt (allgemein)"</string>
     <string name="quest_surface_value_ground">"Naturbelassen (allgemein)"</string>
@@ -125,7 +124,7 @@ Bevor deine Änderungen hochgeladen werden, überprüft die App mithilfe &lt;a h
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
     <string name="quest_oneway_title">"Ist dies eine Einbahnstraße?"</string>
     <string name="quest_address_title">"Welche Hausnummer hat dieses Gebäude?"</string>
-    <string name="store_listing_short_description">"OpenStreetMap-Erhebungs-App"</string>
+    <string name="store_listing_short_description">"Unterwegs kartieren für OpenStreetMap"</string>
     <string name="store_listing_full_description">"Hilf mit, die OpenStreetMap-Karte zu vervollständigen – mit StreetComplete!
 
 Diese App findet fehlende Kartendaten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.
@@ -201,7 +200,7 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_sport_gaelic_games">"Gälische Sportarten"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Teilweise"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Beachte, dass die meisten Ständer auf beiden Seiten von einem Fahrrad beparkt werden können."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Beachte, dass man normalerweise auf beiden Seiten eines Fahrradbügels je ein Fahrrad anschließen kann."</string>
     <string name="quest_sport_roller_skating">"Rollschuh­laufen"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt, um das Gebäude zu betreten, und die meisten Räume darin zugänglich für Rollstuhlfahrer sind."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Teilweise bedeutet, dass es nicht mehr als eine knöchelhohe Stufe zu überwinden gilt."</string>
@@ -340,7 +339,7 @@ Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beli
 Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist."</string>
     <string name="map_btn_create_note">"Neuen Hinweis erstellen"</string>
     <string name="create_new_note_unprecise">"Zoome weiter herein, um einen Hinweis zu erstellen"</string>
-    <string name="create_new_note_description">"Erstelle hier einen Hinweis, um anderen Mappern ein Problem zu melden. Bewege die Karte, um die Position des Hinweises anzupassen:"</string>
+    <string name="create_new_note_description">"Erstelle hier einen Hinweis, um anderen Mappern ein Problem zu melden. Bewege die Karte, um die Position des Hinweises anzupassen."</string>
     <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
@@ -502,8 +501,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="underground">"unterirdisch"</string>
     <string name="quest_sidewalk_value_yes">"Bürgersteig"</string>
     <string name="quest_sidewalk_value_no">"kein Bürgersteig"</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">"Ist es Fußgängern verboten, hier auf dieser Straße zu gehen?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. Sollte es doch einen Bürgersteig geben, der aber als separater Weg angezeigt wird, bitte mit „Bürgersteig“ antworten."</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Ist es Fußgängern verboten, hier auf dieser bürgersteiglosen Straße zu gehen?"</string>
     <string name="quest_buildingType_title">"Was für ein Gebäude ist das?"</string>
     <string name="pref_title_theme_select">"Design auswählen"</string>
     <string name="theme_automatic">"Auto"</string>
@@ -538,7 +536,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_handrail_title">"Gibt es an dieser Treppe ein Geländer?"</string>
     <string name="about_summary_current_version">"Aktuelle Version: %s"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar …"</string>
-    <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie ihr Mittelpunkt auf der Karte."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie ihr Mittelpunkt auf der Karte. Drehe die Karte und du wirst es verstehen."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
     <string name="quest_recycling_materials_note">"Wenn hier etwas recycelt werden kann, das nicht aufgelistet ist, hinterlasse bitte stattdessen einen Hinweis."</string>
     <string name="quest_recycling_type_batteries">"Batterien"</string>
@@ -658,7 +656,7 @@ Denke auch daran, dich nicht in Gefahr zu begeben: Achte auf deine Umgebung und 
     <string name="achievement_wheelchair_title">"Mobilität"</string>
     <string name="achievement_wheelchair_solved_X">"Du hast %d Aufgaben gelöst, die Rollstuhlfahrern helfen, sich in der Stadt zurechtzufinden!"</string>
     <string name="achievement_postman_title">"Postbote"</string>
-    <string name="achievement_postman_solved_X">"Du hast geholfen, %d Adressen zu lokalisieren!
+    <string name="achievement_postman_solved_X">"Du hast geholfen, %d Adressen und andere Post-Einrichtungen zu lokalisieren!
 Diese Daten sind nicht nur für Postboten unentbehrlich, sondern auch für Navigationssysteme."</string>
     <string name="achievement_building_title">"Hoch hinaus"</string>
     <string name="achievement_building_solved_X">"Du hast %d gebäudebezogene Aufgaben gelöst.
@@ -1266,17 +1264,18 @@ Jetzt verschieben?"</string>
     <string name="bicycle_boulevard_is_a">"Es ist eine %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Es ist keine %1$s"</string>
     <string name="bicycle_boulevard">"Fahrradstraße"</string>
-    <string name="separate_cycleway_no">"Kein Radverkehr"</string>
-    <string name="separate_cycleway_allowed">"Radverkehr ist erlaubt"</string>
-    <string name="separate_cycleway_no_or_allowed">"Nicht ausgewiesen als Radweg (Radfahren kann trotzdem erlaubt sein)"</string>
-    <string name="separate_cycleway_non_segregated">"Gemeinsamer Geh- und Radweg"</string>
+    <string name="separate_cycleway_no_or_allowed">"Fußweg, ohne explizites Schild zum Radfahren
+(ob es erlaubt ist, hängt von Verkehrsvorschriften ab)"</string>
+    <string name="separate_cycleway_non_segregated">"Gekennzeichnet als gemeinsamer Geh- und Radweg"</string>
     <string name="separate_cycleway_segregated">"Getrennter Geh- und Radweg"</string>
     <string name="separate_cycleway_exclusive">"Ausschließlicher Radweg"</string>
-    <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg mit Bürgersteig für Fußverkehr (getrennt durch Bordstein)"</string>
+    <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg mit Bürgersteig für Fußverkehr
+(getrennt durch Bordstein)"</string>
     <string name="cycleway_reverse_direction">"Richtung des Radweges umdrehen"</string>
     <string name="cycleway_reverse_direction_warning">"Dass ein Radweg in die andere Richtung geht, ist extrem selten."</string>
     <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite, die umgedreht werden soll"</string>
-    <string name="separate_cycleway_path">"Weg oder Pfad"</string>
+    <string name="separate_cycleway_path">"Unspezifischer Weg oder Pfad
+(ohne Kennzeichnung für wen er bestimmt ist)"</string>
     <string name="quest_fireHydrant_type_pipe">"Rohr"</string>
     <string name="measure_info_title">"Optimale Genauigkeit erreichen"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore geht manchmal (anfangs) davon aus, dass der Boden etwas niedriger oder höher ist als in der Realität. Dadurch entsteht ein Messfehler, der umso größer wird, je mehr du das Telefon in Richtung Horizont neigst.&lt;/p&gt;
@@ -1343,7 +1342,7 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="quest_defibrillator_location">"Wo befindet sich dieser Defibrillator?"</string>
     <string name="quest_defibrillator_location_description">"Bitte beschreibe die Position kurz und präzise (z. B. „in der Empfangshalle“)."</string>
     <string name="quest_sanitary_dump_station_title">"Gibt es eine Entsorgungsstation für Sanitäranlagen?"</string>
-    <string name="quest_sanitary_dump_station_description">"Eine Einrichtung zur Entsorgung von menschlichen Abfällen aus dem Fäkalientank eines Wohnmobils, Lkws usw. Normalerweise durch ein Schild wie dieses gekennzeichnet:"</string>
+    <string name="quest_sanitary_dump_station_description">"In einer Entsorgungstation wird die Bordtoilette von Wohnmobilen oder auch LKWs usw. entsorgt. Diese sind normalerweise durch ein Schild wie dieses gekennzeichnet:"</string>
     <string name="quest_generalFee_title">"Muss man zahlen, um dies nutzen zu dürfen?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"Nur eine Feuerstelle"</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Feuerstellen haben im Gegensatz zu Grills keine Kochfläche (z. B. Rost/Platte)."</string>
@@ -1378,7 +1377,6 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="quest_buildingType_tower_description">"jede Art von Turm"</string>
     <string name="quest_buildingType_under_construction">"Im Bau befindlich"</string>
     <string name="overlay_buildings">"Gebäude"</string>
-    <string name="quest_pedestrian_crossing_signals">"Muss man hier auf eine Ampel warten, um die Straße zu überqueren?"</string>
     <string name="quest_pedestrian_crossing_markings">"Gibt es bei diesem Fußgängerüberweg Markierungen auf dem Boden?"</string>
     <string name="overlay_places">"Orte"</string>
     <string name="overlay_things">"Dinge"</string>
@@ -1392,4 +1390,26 @@ Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden,
     <string name="lit_value_unsupported">"Spezifischer Beleuchtungsstatus, der in dieser App nicht wählbar ist"</string>
     <string name="quest_generic_otherAnswers2">"Ähh…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Ist hier eine Ampel, die zeigt, wann man die Straße überqueren kann?"</string>
+    <string name="quest_moped_access_title">"Gibt es ein Schild, das den Zugang für Mopeds auf diesem Radweg kennzeichnet?"</string>
+    <string name="quest_moped_access_allowed">"Es gibt kein Schild"</string>
+    <string name="quest_moped_access_designated">"Es gibt ein Schild, das diesen Radweg für Mopeds kennzeichnet"</string>
+    <string name="quest_moped_access_forbidden">"Es gibt ein Schild, das Mopeds verbietet"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Dieser Aufgabentyp ist standardmäßig deaktiviert, da der Zugang für Mopeds nur durch ein bestimmtes Schild am Anfang/Ende eines Radwegs gekennzeichnet ist."</string>
+    <string name="quest_arrow_tutorial">"Die Pfeile in der Abbildung zeigen in die Richtungen, in die der Weg auf der Karte an der Stelle der mittleren Nadel verläuft. Versuche, die Karte zu drehen, und du wirst es verstehen."</string>
+    <string name="info">"Weitere Informationen"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Es ist verboten."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Es ist erlaubt."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Es gibt zwar einen Gehweg, aber er wird auf der Karte separat angezeigt."</string>
+    <string name="quest_buildingLevels_hint">"Bei Gebäuden in Hanglage beginnt die Zählung der Stockwerke mit dem Bodenniveau der untersten Ebene.
+
+Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer mit null Dachebenen sind also nicht unbedingt flach, sondern nur nicht hoch genug für eine ganze Ebene.
+    "</string>
+    <string name="quest_parcel_locker_brand">"Was ist die Marke dieser Packstation?"</string>
+    <string name="quest_parcel_locker_pickup">"Kann man hier Pakete abholen?"</string>
+    <string name="quest_parcel_locker_mail_in">"Kann man hier Pakete abgeben?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Stromleitung ist an Gebäude"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"Keiner, aber ein Schild erlaubt Radfahren auf dem Bürgersteig"</string>
+    <string name="separate_cycleway_no_signed">"Ein Schild verbietet explizit das Radfahren"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Fußweg, aber ein Schild erlaubt Radfahren"</string>
+    <string name="quest_bicycle_parking_type_floor">"Ausgewiesener Bereich"</string>
 </resources>

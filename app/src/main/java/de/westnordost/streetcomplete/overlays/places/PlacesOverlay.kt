@@ -5,8 +5,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
@@ -38,7 +39,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .asSequence()
-            .filter { it.isPlaceOrDisusedShop() }
+            .filter { it.isPlaceOrDisusedPlace() }
             .map { element ->
                 val feature = getFeature(element)
 
@@ -51,7 +52,16 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                     PolygonStyle(Color.INVISIBLE, icon, label)
                 }
                 element to style
-            }
+            } +
+        // additionally show entrances but no addresses as they are already shown on the background
+        mapData
+            .filter("""
+                nodes with
+                  entrance
+                  and !(addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+            """)
+            .map { it to PointStyle(icon = null, label = "◽") }
 
-    override fun createForm(element: Element?) = PlacesOverlayForm()
+    override fun createForm(element: Element?) =
+        if (element == null || element.isPlaceOrDisusedPlace()) PlacesOverlayForm() else null
 }

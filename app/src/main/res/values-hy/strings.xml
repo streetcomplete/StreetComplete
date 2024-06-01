@@ -43,7 +43,6 @@
     <string name="action_download">"Որոնումներ փնտրեք այստեղ"</string>
     <string name="action_upload">"Վերբեռնեք պատասխանները"</string>
     <string name="no_changes">"Դուք ոչ մի պատասխան չեք տվել"</string>
-    <string name="close">"փակել"</string>
     <string name="download_error">"Սխալ՝ որոնումներ փնտրելիս"</string>
     <string name="upload_error">"Սխալը պատասխանները վերբեռնելիս"</string>
     <string name="download_area_too_big">"Խնդրում ենք մեծացնել հետագա"</string>
@@ -476,7 +475,6 @@
     <string name="quest_sidewalk_value_yes">"մայթ"</string>
     <string name="quest_sidewalk_value_no">"ոչ մի մայթ"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Արդյոք հետիոտները արգելվում են այստեղ քայլել այս ճանապարհով:"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Այս փողոցը պիտակավորված էր որպես ոչ մի կողմում մայթ: Այն դեպքում, երբ ի վերջո մայթ կա, բայց այն ցուցադրվում է որպես առանձին ձեւ, խնդրում ենք պատասխանել «մայթին»:"</string>
     <string name="quest_buildingType_title">"Ինչպիսի շենք է սա:"</string>
     <string name="pref_title_theme_select">"Ընտրեք թեման"</string>
     <string name="theme_automatic">"Ավտո"</string>
