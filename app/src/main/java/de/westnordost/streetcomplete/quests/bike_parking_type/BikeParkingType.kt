@@ -8,5 +8,5 @@ enum class BikeParkingType(val osmValue: String) {
     BUILDING("building"),
     HANDLEBAR_HOLDER("handlebar_holder"),
     TWO_TIER("two-tier"),
-    //FLOOR("floor"),
+    FLOOR("floor"),
 }

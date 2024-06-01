@@ -9,6 +9,11 @@
 - _"Can you drop off parcels here?"_ (#5639), by @Arthur-GYT
 - _"Is there a sign indicating access for mopeds on this bike path?"_ – asked exclusively in Belgium (#5567), by @PowerPlop
 
+### Overlay improvements
+- Bike paths: Now possible to select that cycling on footway is explicitly allowed or prohibited (#5575, #4913), by @wielandb
+- Places: Entrances are shown to help with orientation (#5497)
+- Things: Advertising totem was not displayed (#5588)
+
 ### Quest improvements
 
 - Road Surface: Fix it was possible to answer track type and surface for a road in an endless loop (#5650)
@@ -17,6 +22,7 @@
 - Power pole material: Can now answer with that power line is anchored to building (#5663), by @qugebert
 - Tactile paving: Now enabled in Columbia (#5579)
 - Prohibited for pedestrians: Clarified UI and wording (#5610)
+- Bicycle parking: Add option for just markings on the ground (#5191)
 - Drinking water: Don't ask for intermittent water sources (#5632), by @esilja
 - Other small improvements and fixes (#5631, ...)
 
