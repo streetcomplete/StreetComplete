@@ -568,4 +568,5 @@
     <string name="quest_subwayEntranceRef_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, da die Beschilderung je nach Region und Betreiber sehr unterschiedlich ist.</string>
     <string name="quest_generalRef_hint">Referenznummer</string>
     <string name="quest_generalRef_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, da die Beschilderung je nach Region und Betreiber sehr unterschiedlich ist. Möglicherweise musst du die Auswahl der Elemente für dein Gebiet verfeinern (z.B. Straßenlaternen entfernen, Karten hinzufügen, nur Wegweiser mit hiking=yes auswählen usw.)</string>
+    <string name="close">Schließen</string>
 </resources>

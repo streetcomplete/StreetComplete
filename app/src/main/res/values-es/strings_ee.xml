@@ -566,4 +566,5 @@
 \nEsta búsqueda no se preguntará si capacity:disabled=yes está configurado. Si desea especificarlos también, cambie la selección del elemento de \"y !capacity:disabled\" a \"y (!capacity:disabled o capacity:disabled=yes)\"</string>
     <string name="quest_generalRef_hint">Número o código de referencia</string>
     <string name="quest_generalRef_disabled_msg">Esta búsqueda está desactivada por defecto porque lo que se señaliza varía mucho según la región y el operador. Puede que necesites refinar la selección de elementos para tu zona (por ejemplo :añadir mapas, seleccionar sólo postes guía con hiking=yes, etc.)</string>
+    <string name="close">Cerrar</string>
 </resources>

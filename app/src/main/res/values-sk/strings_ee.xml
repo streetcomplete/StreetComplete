@@ -104,4 +104,26 @@
     <string name="pref_use_sd">Použi SD kartu na ukladanie mapových podkladov</string>
     <string name="pref_use_sd_summary">Zmena týchto nastavení presúva dáta, toto môže chvíľu trvať</string>
     <string name="moving">Presúvanie podkladov…</string>
+    <string name="day_night_visibility">Nezobrazovať úlohy nevhodné pre aktuálnu časť dňa</string>
+    <string name="day_night_priority">Zvýšiť prioritu úloh vhodných pre daný čas dňa</string>
+    <string name="pref_trees_title">Načítaj strom úloh zo súboru</string>
+    <string name="pref_custom_title">Načítaj vlastné úlohy zo súboru</string>
+    <string name="tree_custom_quest_import_export_message">Použiť nový alebo aktuálne používaný súbor? Skontroluj správu o povolení úlohy pre podrobnosti.</string>
+    <string name="tree_custom_quest_import">Vybrať</string>
+    <string name="tree_custom_quest_export">Získať</string>
+    <string name="pref_tile_source_title">Zdroj satelitných/leteckých snímok</string>
+    <string name="pref_tile_source_message">URL musí obsahovať {x}, {y} a {z}</string>
+    <string name="pref_tile_source_hide_labels">Skyť štítky</string>
+    <string name="pref_update_local_statistics">Aktualizácia štatistík pri nahratí zmien</string>
+    <string name="pref_update_local_statistics_summary">Vypnutie zrýchľuje nahrávanie a pozastavuje správy o úspechoch</string>
+    <string name="pref_screen_quests">Úlohy</string>
+    <string name="pref_advanced_resurvey_title">Pokročilý opätovný prieskum</string>
+    <string name="pref_advanced_resurvey_summary">Vynútiť opätovný prieskum pre značky</string>
+    <string name="advanced_resurvey_title">Nastav dátum a kľuče</string>
+    <string name="advanced_resurvey_message_keys">Vždy opätovne preskúmaj tieto značky, pokiaľ tu nie je dátum kontroly. Dátum kontroly bude stále pridaný pri odpovedi na súvisiace otázky</string>
+    <string name="advanced_resurvey_message_date">Namiesto použitia intervalov opätovného preskúmania, opätovne preskúmaj značky vyššie, pokiaľ dátum kontroly je starší ako:</string>
+    <string name="advanced_resurvey_hint_keys">Oddeľ viaceré značky čiarkou</string>
+    <string name="advanced_resurvey_hint_date">Použi formát: RRRR-MM-DD</string>
+    <string name="pref_day_night_title">Filter úloh pre časť dňa</string>
+    <string name="day_night_ignore">Ignorovať časť dňa</string>
 </resources>

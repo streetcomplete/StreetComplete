@@ -15,18 +15,18 @@
     <string name="pref_create_custom_quest_summary">…som alternativ til at efterlade en note. Dette kan bruges som en lokalt gemt note, der er synlig på kortet. Bemærk, at du skal aktivere brugerdefinerede opgaver.</string>
     <string name="pref_files_not_found">Ingen filer fundet</string>
     <string name="pref_get_photos_title">Hent billeder i fuld størrelse</string>
-    <string name="pref_quest_geometries_summary">Fremhæv ways og områder, der har opgaver</string>
+    <string name="pref_quest_geometries_summary">Fremhæv veje (ways) og områder, der har opgaver</string>
     <string name="pref_quest_geometries_title">Vis geometrier for opgaver</string>
-    <string name="pref_expert_mode_message">Dette vil gøre det muligt at bruge opgaver tilføjet i SCEE, og muligheder for at
-\n <li>redigere raw tags</li>
-\n <li>flytte punkter der er en del af veje eller relationer</li>
-\n <li>slette ethvert fritflydende punkt</li>
-\n <li>redigere elementer, der skal blokeres af en note</li>
-\n <li>tilføje fritflydende punkter overalt</li>
-\n <li>ændre elementvalg for opgaver</li>
-\n
-\n Det er stadig mindre, end de fleste andre editorer tillader, men uforsigtig brug kan resultere i beskadigelse af data på måder, som ikke er mulige i StreetComplete. Vær opmærksom på, at du ved at aktivere eksperttilstand bærer et betydeligt større ansvar for dine redigeringer..
-\n Aktivér kun denne indstilling, hvis du har erfaring med OSM uden for StreetComplete og ved, hvad du gør.. </string>
+    <string name="pref_expert_mode_message">Dette vil gøre det muligt at bruge opgaver tilføjet i SCEE, og mulighed for at 
+\n <li>redigere rå tags</li> 
+\n <li>flytte punkter der er en del af veje eller relationer</li> 
+\n <li>slette ethvert fritflydende punkt</li> 
+\n <li>redigere elementer, der skal blokeres af en note</li> 
+\n <li>tilføje fritflydende punkter overalt</li> 
+\n <li>ændre elementvalg for opgaver</li> 
+\n 
+\n \u0020Det er stadig mindre, end hvad de fleste andre editorer tillader, men uforsigtig brug kan resultere i beskadigelse af data på måder, som ikke er mulige i StreetComplete. Vær opmærksom på, at du ved at aktivere eksperttilstand bærer et betydeligt større ansvar for dine redigeringer. 
+\n \u0020Aktivér kun denne indstilling, hvis du har erfaring med OSM uden for StreetComplete og ved, hvad du gør. \u0020</string>
     <string name="pref_expert_mode_title">Ekspert-tilstand</string>
     <string name="pref_expert_mode_summary">Aktivér avancerede redigeringsfunktioner</string>
     <string name="pref_save_photos_summary">Gem billeder i fuld størrelse, der er taget under oprettelse af noter, uden at slette EXIF-data</string>
@@ -35,7 +35,7 @@
     <string name="pref_screen_notes">Noter</string>
     <string name="pref_read_log_save">Gem fuld log til fil</string>
     <string name="pref_way_direction_summary">Viser pile på fremhævede linjer, når du åbner en opgave. F.eks. nyttigt når du tilføjer ensretning.</string>
-    <string name="pref_show_gpx_button_summary">I modsætning til OSM-noter vil tilføjelse af en GPX ikke skjule nogen opgaver på det pågældende sted</string>
+    <string name="pref_show_gpx_button_summary">I modsætning til OSM-noter vil tilføjelse af en GPX-note ikke skjule nogen opgaver på det pågældende sted</string>
     <string name="pref_hide_notes_message">Indtast brugernavne eller ID\'er, der skal ignoreres</string>
     <string name="pref_manual_download_cache_title">Download altid data igen</string>
     <string name="pref_delete_old_data_after_summary">%d dage</string>
@@ -106,7 +106,7 @@
     <string name="pref_screen_quests">Opgaver</string>
     <string name="pref_hide_button_title">Vis skjul-knap</string>
     <string name="tree_custom_quest_export">Hent</string>
-    <string name="import_export_custom_overlays">Brugerdefinerede overlejringer</string>
+    <string name="import_export_custom_overlays">Egne overlejringer</string>
     <string name="pref_tile_source_title">Flisekilde til satellit- og luftbilleder</string>
     <string name="pref_update_local_statistics_summary">Deaktivering accelererer upload og stopper præstationsbeskeder</string>
     <string name="pref_create_node_show_keyboard_title">Vis automatisk tastatur, når du tilføjer et punkt</string>
@@ -134,7 +134,7 @@
     <string name="restore_dialog_hint">Du kan også manuelt vælge, hvilke opgaver der skal gendannes, ved at trykke længe på fortryd-knappen.</string>
     <string name="delete_confirmation_data">OSM &amp; opgavedata</string>
     <string name="pref_hide_overlay_quests">Skjul overlejrings-specifikke opgaver</string>
-    <string name="delete_cache_dialog_message2">Slette alle downloadede kortdata, inklusive opgaver\?
+    <string name="delete_cache_dialog_message2">Slet alle downloadede kortdata, inklusive opgaver?
 \nData genopfriskes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
 \nVælg, hvad du vil fjerne.</string>
     <string name="delete_confirmation_tiles">Kortfliser</string>
@@ -153,7 +153,7 @@
     <string name="pref_quest_monitor_title">Giv besked om nærliggende opgaver</string>
     <string name="quest_monitor_permission_warning">Tilladelse til baggrundsplacering er påkrævet, for at overvågningen af nærliggende opgaver kan fungere</string>
     <string name="quest_tree_genus_title">Hvilken slægt eller art tilhører dette træ\?</string>
-    <string name="quest_settings_eligible_highways">Angiv motorveje, der er tilgængelige til denne opgave, adskilt af komma</string>
+    <string name="quest_settings_eligible_highways">Angiv typer af \'highway\', der er tilgængelige til denne opgave, adskilt af komma</string>
     <string name="quest_settings_sidewalk_cycleway_distance_message">Indstil minimumsafstanden fra separate stier, hvis den er lavere, vil opgaven ikke blive vist</string>
     <string name="pref_quest_settings_preset_title">Forudindstillede opgaveindstillinger</string>
     <string name="quest_settings_sidewalk_distance_button">Afstand</string>
@@ -165,4 +165,406 @@
     <string name="quest_settings_level_title">Vis denne opgave for:</string>
     <string name="quest_settings_max_steps_length">Maksimal længde af trin i meter for at opgaven vises</string>
     <string name="quest_settings_level_default">Butikker og lignende i indkøbscentre (standard)</string>
+    <string name="quest_piste_lit_title">Er der lys på pisten her?</string>
+    <string name="quest_poi_cycling_title">IP: Cykling</string>
+    <string name="quest_poi_seating_title">IP: Siddepladser</string>
+    <string name="quest_fixme_remove">Fjern dette Retmig</string>
+    <string name="quest_poi_camera_title">IP: Kamera</string>
+    <string name="quest_poi_vending_title">IP: Automat %s</string>
+    <string name="quest_piste_ref_connection">Det er en piste-forbindelse</string>
+    <string name="quest_service_building_type_traction_substation_description">Elektrisk transformatorstation, der konverterer strøm til at forsyne jernbaner, sporvogne eller trolleybusser med kørestrøm</string>
+    <string name="quest_service_building_type_switchgear">Koblingsanlæg</string>
+    <string name="quest_service_building_type_minor_substation">Lille elektrisk transformerstation</string>
+    <string name="quest_service_building_type_traction_substation">Transformatorstation til trækkraft</string>
+    <string name="quest_service_building_type_pump">Vandpumpestation</string>
+    <string name="quest_service_building_type_pump_description">Anlæg med pumper til at pumpe vand fra et sted til et andet</string>
+    <string name="quest_service_building_heating">Opvarmning</string>
+    <string name="quest_service_building_internet_exchange_description">Sted til at forbinde internetabonnenter med internetudstyr</string>
+    <string name="quest_service_building_type_pressure_description">Gasforsyningsstation i en bygning med ansvar for at sænke trykket til forbrugere i området</string>
+    <string name="quest_service_building_railway_ventilation_shaft">Ventilation af jernbane</string>
+    <string name="quest_service_building_railway_engine_shed_description">Et skur til at beskytte lokomotiver og rullende materiel mod vejr og vind</string>
+    <string name="quest_service_building_railway_wash">Jernbane-vaskeplads</string>
+    <string name="quest_service_building_railway_wash_description">En bygning, hvor der findes et vaskeanlæg til tog</string>
+    <string name="quest_service_building_ventilation">Ventilationsskakt</string>
+    <string name="quest_seating_pedestrian_zone">I et fodgængerområde</string>
+    <string name="quest_seating_veranda">På en veranda</string>
+    <string name="quest_artwork_bust">Buste</string>
+    <string name="quest_artwork_stone">Sten</string>
+    <string name="quest_artwork_fountain">Fontæne</string>
+    <string name="quest_artwork_land_art">Landkunst</string>
+    <string name="quest_trail_visibility_good_description">Stien eller den næste markør er altid synlig, men nogle gange skal man lede efter den. Grundlæggende retningssans nødvendig, kort anbefales.</string>
+    <string name="quest_trail_visibility_intermediate_description">Stien er for det meste synlig, ingen markører. God retningssans nødvendig, kort påkrævet.</string>
+    <string name="quest_trail_visibility_intermediate">Nogenlunde</string>
+    <string name="quest_trail_visibility_bad_description">Stien er nogle gange usynlig, ruten er delvist uden stier, ingen markeringer. Grundlæggende færdigheder i orientering kræves.</string>
+    <string name="quest_trail_visibility_bad">Dårlig</string>
+    <string name="quest_mapSize_region">Et større område med f.eks. flere landsbyer</string>
+    <string name="quest_viaFerrataScale_two">Grad 2/K2/B - nem</string>
+    <string name="quest_viaFerrataScale_one_description">Gode naturlige trin eller tilhuggede trapper, korte stiger eller jerntrin. Udsatte passager er udstyret med kabler, kæder eller reb til gelændere. Erfarne bjergbestigere kan vælge ikke at spænde sig fast.</string>
+    <string name="quest_viaFerrataScale_five">Grad 5/K5/E - meget svær</string>
+    <string name="quest_destination_title">Hvilke destinationer er skiltet for denne vej?</string>
+    <string name="quest_wheelchair_description_title">Udfyld mindst ét sprog</string>
+    <string name="quest_wheelchair_description_answer">Tilføj beskrivelse</string>
+    <string name="quest_wheelchair_description_no_language">intet sprog angivet</string>
+    <string name="insert_node">Indsæt punkt i vej</string>
+    <string name="quest_monitor_channel_name">Nærliggende opgave-monitorering</string>
+    <string name="add_access">Tilføj adgang…</string>
+    <string name="access_manager_message">Vælg adgangs-tags. Husk kun at tagge skiltet adgang, og undgå generiske \"access\"-tags, hvis det er muligt</string>
+    <string name="restriction_overlay_show_details">Vis detaljer om relation</string>
+    <string name="create_custom_quest_title_message">Indtast den besked, der skal vises</string>
+    <string name="general_warning">Advarsel</string>
+    <string name="closed_note_action_title">Du lukkede den</string>
+    <string name="custom_overlay_highlight_missing">Fremhæv manglende data</string>
+    <string name="quest_benchMaterial_title">Hvad er denne lavet af?</string>
+    <string name="quest_poi_business_title">IP: Forretning</string>
+    <string name="default_disabled_msg_poi_vacant">Denne \"opgave\" viser ledige butikker som grå prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="quest_poi_has_atm_title">IP: Har hæveautomat</string>
+    <string name="quest_poi_machine_title">IP: Maskine</string>
+    <string name="quest_utility_gas">Gas</string>
+    <string name="quest_service_building_oil_pumping_station">Oliepumpestation</string>
+    <string name="quest_service_building_railway_signal_box_description">Stationært jernbanesystem til kontrol af jernbanedrift</string>
+    <string name="quest_service_building_monitoring_station">Monitoreringsstation</string>
+    <string name="quest_service_building_other">Anden servicebygning</string>
+    <string name="quest_shelter_type_is_weather_shelter">Dette er et generisk vejrly</string>
+    <string name="quest_buildingColour_title">Hvilken overordnet farve har denne bygning?</string>
+    <string name="quest_brewery_is_various">Her serveres mange forskellige ølmærker</string>
+    <string name="quest_brewery_is_not_available">Der sælges ikke øl her</string>
+    <string name="ban_check_fails">Tjek for forbudte versioner fejler hele tiden. Du kører måske en forældet version, overvej at opgradere.</string>
+    <string name="quest_piste_ref_title">Hvad er nummeret på denne piste?</string>
+    <string name="quest_contact_website">Hvad er hjemmesiden for dette sted?</string>
+    <string name="quest_surface_value_metal_grid">Metalgitter</string>
+    <string name="quest_barrier_height_title">Hvor høj er denne barriere?</string>
+    <string name="quest_mapType_title">Hvilken slags kort er det?</string>
+    <string name="quest_mapType_street_title">Gade</string>
+    <string name="quest_mapType_topo_title">Topografisk</string>
+    <string name="quest_cuisine_add_more">Tilføj et andet køkken</string>
+    <string name="quest_brewery_add_more">Tilføj endnu et bryggeri</string>
+    <string name="quest_contact_phone">Hvad er telefonnummeret til dette sted?</string>
+    <string name="quest_cuisine_title">Hvilket slags køkken har dette sted? Brug de foreslåede OSM-tags!</string>
+    <string name="quest_healthcare_speciality_switch_ui">Skift brugergrænseflade</string>
+    <string name="tag_editor_last_edited">Senest redigeret: %s</string>
+    <string name="quest_guidepost_sports_title">Hvilken sport er denne vejviser beregnet til?</string>
+    <string name="quest_guidepost_sports_note">Hvis der er noget, der ikke er dækket af de anførte funktioner/faciliteter, bedes du skrive en note i stedet.</string>
+    <string name="quest_guidepost_sports_answer_simple">Det er bare en simpel vejviser</string>
+    <string name="quest_guidepost_sports_answer_simple_description">Dette er bare en simpel vejledning uden specifik sport.</string>
+    <string name="quest_guidepost_sports_hiking">Vandring</string>
+    <string name="quest_guidepost_sports_bicycle">Cykling</string>
+    <string name="quest_guidepost_sports_mtb">MTB</string>
+    <string name="quest_guidepost_sports_climbing">Klatring</string>
+    <string name="quest_guidepost_sports_horse">Ridning</string>
+    <string name="quest_guidepost_sports_nordic_walking">Nordic Walking</string>
+    <string name="quest_guidepost_sports_ski">Skiløb</string>
+    <string name="quest_guidepost_sports_inline_skating">Inline-rulleskøjter</string>
+    <string name="quest_guidepost_sports_running">Løb</string>
+    <string name="quest_guidepost_sports_winter_hiking">Vintervandring</string>
+    <string name="default_disabled_msg_poi_bench">Denne \"opgave\" viser interessepunkter som bænke eller bord- og bænkesæt som brune prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="default_disabled_msg_poi_bike">Denne \"opgave\" viser cykelrelaterede interessepunkter som lilla prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="default_disabled_msg_poi_business">Denne \"opgave\" viser butikker, restauranter, læger og lignende IP\'er som orange prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="quest_traffic_stuff_raised">Det er en forhøjet overgang</string>
+    <string name="quest_utility_sewerage">Kloakering</string>
+    <string name="quest_utility_telecom">Telekommunikation</string>
+    <string name="quest_service_building_type_title">Hvilken slags servicebygning er dette %s?</string>
+    <string name="quest_service_building_type_substation">Elektrisk transformerstation</string>
+    <string name="quest_service_building_type_substation_description">Understationer, der hovedsageligt er relateret til regionale distributionsnetværk</string>
+    <string name="quest_service_building_type_industrial_substation">Industriel elektrisk transformerstation</string>
+    <string name="quest_service_building_type_industrial_substation_description">Dedikeret til industrielle eller tunge forretningsaktiviteter, der forsyner</string>
+    <string name="quest_service_building_type_plant">Kraftværk</string>
+    <string name="quest_service_building_type_well">Vandbrønd</string>
+    <string name="quest_service_building_type_well_description">Et konstrueret anlæg der giver adgang til grundvand, skabt ved at grave eller bore</string>
+    <string name="quest_service_building_type_reservoir">Vandreservoir</string>
+    <string name="quest_service_building_sewerage_description">Servicebygning relateret til opsamling, transmission eller behandling af spildevand</string>
+    <string name="quest_service_building_gas_pumping_station">Gaspumpestation</string>
+    <string name="quest_service_building_gas_pumping_station_description">Anlæg med pumper til at pumpe gas fra et sted til et andet</string>
+    <string name="quest_service_building_type_pressure">Regulering af gastryk</string>
+    <string name="quest_service_building_telecom_exchange">Telekommunikationscentral</string>
+    <string name="quest_service_building_internet_exchange">Internet-udveksling</string>
+    <string name="quest_service_building_railway">Jernbane</string>
+    <string name="quest_service_building_railway_signal_box">Jernbane-signalanlæg</string>
+    <string name="quest_service_building_railway_engine_shed">Jernbanes lokomotivskur</string>
+    <string name="quest_service_building_ventilation_description">Lodret konstruktion, der tillader luftudskiftning for ikke-jernbaneinfrastruktur</string>
+    <string name="quest_service_building_monitoring_station_description">En station placeret i egen bygning, der overvåger noget</string>
+    <string name="quest_street_cabinet_type_title">Hvilken slags gadeskab er dette %s?</string>
+    <string name="quest_street_cabinet_traffic">Trafik</string>
+    <string name="quest_street_cabinet_postal_service">Postvæsen</string>
+    <string name="quest_street_cabinet_traffic_control">Trafikstyring</string>
+    <string name="quest_street_cabinet_transport_management">Transportledelse</string>
+    <string name="quest_street_cabinet_waste">Affald</string>
+    <string name="quest_street_cabinet_television">Fjernsyn</string>
+    <string name="quest_street_cabinet_street_lighting">Gadebelysning</string>
+    <string name="quest_seating_street">I et gadeareal</string>
+    <string name="quest_seating_sidewalk">På fortovet</string>
+    <string name="quest_seating_patio">I en patio/indre gård</string>
+    <string name="quest_seating_terrace">På en terrasse</string>
+    <string name="quest_seating_balcony">På en balkon</string>
+    <string name="quest_seating_roof">På et tag</string>
+    <string name="quest_seating_garden">I et haveområde</string>
+    <string name="quest_seating_beach">Ved en strand</string>
+    <string name="quest_shelter_type_public_transport">Offentlig transport</string>
+    <string name="quest_shelter_type_picnic_shelter">Madpakkehus</string>
+    <string name="quest_shelter_type_gazebo">Lysthus</string>
+    <string name="quest_shelter_type_lean_to">Shelter</string>
+    <string name="quest_shelter_type_basic_hut">Simple hytte</string>
+    <string name="quest_shelter_type_sun_shelter">Læ for solen</string>
+    <string name="quest_shelter_type_field_shelter">Læskur (til dyr)</string>
+    <string name="quest_shelter_type_rock_shelter">Hulelignende læ i klippe</string>
+    <string name="quest_artwork_title">Hvilken slags kunstværk er det her?</string>
+    <string name="quest_artwork_statue">Statue</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installation</string>
+    <string name="quest_artwork_painting">Maleri</string>
+    <string name="quest_artwork_architecture">Arkitektur</string>
+    <string name="quest_artwork_mosaic">Mosaik</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_trail_visibility_horrible">Forfærdelig</string>
+    <string name="quest_trail_visibility_no">Ingen synlighed</string>
+    <string name="quest_trail_visibility_no_description">For det meste uden sti, ingen markører. Fremragende orienteringsevner er påkrævet.</string>
+    <string name="quest_trail_visibility_horrible_description">Ofte uden sti, ingen markører. Gode orienteringsevner påkrævet.</string>
+    <string name="quest_buildingPartColour_title">Hvilken overordnet farve har denne bygningsdel?</string>
+    <string name="quest_roofColour_title">Hvilken overordnet farve har denne bygnings tag?</string>
+    <string name="quest_mapType_scheme_title">Skematisk</string>
+    <string name="quest_mapType_toposcope_title">Retningsskive</string>
+    <string name="quest_mapType_topo_description">Et kort med topografisk baggrund til f.eks. et historisk kort eller et vandrekort. Kortet indeholder højdekurver.</string>
+    <string name="quest_mapType_street_description">Et kort med alle gader eller veje i et område. Gaderne er for det meste navngivne. Vinkler, afstande osv. er nøjagtige. Bruges f.eks. på turistkontorer til oversigten over overnatningsmuligheder.</string>
+    <string name="quest_mapType_toposcope_description">En markør, der er opstillet på høje steder, og som angiver retningen til bemærkelsesværdige landskabselementer, der kan ses fra dette punkt. Bruges ofte sammen med udsigtspunkter.</string>
+    <string name="quest_mapSize_site">Et sted, f.eks. en park eller en zoologisk have</string>
+    <string name="quest_mapSize_city">En hel by</string>
+    <string name="quest_viaFerrataScale_three">Grad 3/K3/C - moderat</string>
+    <string name="quest_viaFerrataScale_three_description">Lidt teknisk klatring, men ikke noget, der kræver særligt stærke arme. Ferrata-sæt er nødvendigt.</string>
+    <string name="quest_viaFerrataScale_four">Grad 4/K4/D - svær</string>
+    <string name="quest_viaFerrataScale_five_description">Lang, vedvarende krævende og meget anstrengende. Udsat terræn må kun have kabler af sikkerhedshensyn, men de er forbeholdt steder, som ellers ville være umulige at krydse. For erfarne klatrere.</string>
+    <string name="quest_viaFerrataScale_six">Grad 6/K6/F - ekstremt svær</string>
+    <string name="quest_service_building_operator_title">Hvem er operatør for denne servicebygning?</string>
+    <string name="quest_healthcare_speciality_add_more">Tilføj en anden specialitet</string>
+    <string name="quest_railwayPlatformRef_title">Hvilket spornummer er der her?</string>
+    <string name="quest_railwayPlatformRef_abc">ABC</string>
+    <string name="quest_disabled_msg_railway_platform_ref">Bemærk, at det ikke er helt klart i wikien, hvilket tag der er bedst at bruge, og at det derfor er op til brugeren. Vælg mellem \'ref\' (standard) og \'local_ref\' i opgaveindstillingerne.
+\n Hvis der er to spor langs en perron, skal du bruge semikolon-adskilte værdier, f.eks. 2;3</string>
+    <string name="quest_lanes_answer_noLanes_known_count">Ingen markeringer, tydeligt antal vognbaner</string>
+    <string name="quest_generic_answer_show_edit_tags">Vis/rediger tags</string>
+    <string name="quest_construction">Under opførelse indtil…</string>
+    <string name="quest_building_demolished">Det er revet ned (synlige spor)</string>
+    <string name="quest_construction_value">Angiv \"construction=…\", eller lad være tom, hvis ukendt</string>
+    <string name="quest_maxspeed_conditional">Afhænger af…</string>
+    <string name="quest_maxspeed_conditional_limited_enter_default">Vælg standardgrænsen, før du vælger dette svar</string>
+    <string name="time_limited_from">Fra</string>
+    <string name="time_limited_to">Til</string>
+    <string name="quest_name_brand">Den har et varemærke…</string>
+    <string name="quest_guidepostName_title">Hvad er navnet her?</string>
+    <string name="restriction_overlay_only_for">Kun for: %s</string>
+    <string name="quest_guidepostEle_title">Hvad er højden her?</string>
+    <string name="quest_guidepostEle_hint">Brug ikke GPS-højde, da den typisk er for unøjagtig og ikke leveres i det korrekte højdereferencesystem.</string>
+    <string name="quest_guidepostRef_hint">Referencenummeret på dette kort eller denne vejviser, ikke referencenummeret på skiltede ruter.</string>
+    <string name="pref_read_filter_hint">Filtrer…</string>
+    <string name="pref_screen_display">Skærm</string>
+    <string name="quest_osmose_message_for_element">Elementtype %1$s: %2$s</string>
+    <string name="quest_osmose_remove_checked">Fjern</string>
+    <string name="quest_osmose_settings_items">Ændr elementtyper, der skal ignoreres</string>
+    <string name="quest_osmose_use_app_language">Download problemer i applikationssprog</string>
+    <string name="quest_osmose_use_app_language_information">Dette vil forstyrre elementer, der ignoreres af undertekst</string>
+    <string name="quest_osmose_delete_this_issue">Fjern dette problem lokalt</string>
+    <string name="quest_osmose_no_undo">Er du sikker? Det kan ikke gøres om!</string>
+    <string name="quest_osmose_select_element">Vælg element</string>
+    <string name="quest_custom_quest_osmose_not_found">Post slettet, fjerner opgave</string>
+    <string name="level_filter_hint">Lad det være tomt for at vise ikke-tagget</string>
+    <string name="quest_custom_quest_remove">Fjern fra liste</string>
+    <string name="quest_osmose_hide_type">Ignorér problemer med samme…</string>
+    <string name="level_filter_enable">Aktivér etage-filter</string>
+    <string name="quick_switch_map_background">Skift mellem luftfoto- og kortbaggrund</string>
+    <string name="quick_switch_preset">Skift forudindstilling</string>
+    <string name="quest_osmose_title">Osmose-opgave: %s</string>
+    <string name="quest_osmose_false_positive">Rapportér falsk positiv</string>
+    <string name="quest_osmose_message">Disse opgaver downloades fra Osmose-tjenesten og indikerer potentielle problemer med OSM-data. Download sker kun, hvis der er valgt mindst én alvorlighedsgrad i opgave-indstillingerne.
+\n Osmose-meddelelsen vises sammen med opgaven, og enhver redigering rapporterer problemet som løst..
+\n Det er også muligt at rapportere problemet som falsk positivt; dette kan ikke fortrydes.</string>
+    <string name="quest_poi_misc_title">IP: Diverse</string>
+    <string name="default_disabled_msg_poi_recycling">Denne \"opgave\" viser genbrugs-/affaldsrelaterede interessepunkter som grønne prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="default_disabled_msg_poi_traffic">Denne \"opgave\" viser trafikrelaterede interessepunkter som lyseblå prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="quest_fixme_title">Retmig: %1$s</string>
+    <string name="quest_poi_recycling_title">IP: Genbrug %s</string>
+    <string name="default_disabled_msg_poi_other">Denne \"opgave\" viser forskellige interessepunkter som brandhaner, udsigtspunkter eller toiletter som gule prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="quest_poi_vacant_title">IP: Tomt sted</string>
+    <string name="quest_poi_traffic_title">IP: Trafik %s</string>
+    <string name="default_disabled_msg_poi_machine">Denne \"opgave\" viser interessepunkter som pengeautomater, telefoner eller automater som blå prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="restriction_overlay_direction_text">Gælder for kørselsretning:</string>
+    <string name="restriction_overlay_other_restrictions">Andre restriktioner på denne vej:</string>
+    <string name="quest_utility_water">Vand</string>
+    <string name="quest_utility_power">Elektricitet</string>
+    <string name="quest_artwork_mural">Vægmaleri</string>
+    <string name="outside_downloaded_area_warning">Denne position er uden for det downloadede område. Vil du fortsætte?</string>
+    <string name="access_time_limit">Tidspunkt</string>
+    <string name="create_relation_action_description">Du oprettede en relation med …</string>
+    <string name="dialog_button_understood">Forstået</string>
+    <string name="manage_access">Administrer adgang…</string>
+    <string name="move_node_message_external_source_addition">Bemærk, at positionen for denne opgave ikke nødvendigvis flytter sig med punktet.</string>
+    <string name="close_note_checkbox">Luk noten (gør kun dette, hvis du rent faktisk løser noten!)</string>
+    <string name="quest_brewery_title">Hvilke ølmærker serveres her?</string>
+    <string name="quest_viaFerrataScale_zero">"Grad 0 -  ingen"</string>
+    <string name="quest_viaFerrataScale_one">Grad 1/K1/A - meget let</string>
+    <string name="quest_viaFerrataScale_zero_description">Lav sværhedsgrad; terrænet varierer fra fladt til stejlt; nogle udsatte sektioner. Sikret med kabler, kæder eller korte stiger. Kræver godt fodfæste; fint for de usportslige. Ferrata-sæt er valgfrit for de fleste.</string>
+    <string name="quest_viaFerrataScale_title">Hvad er Via Ferrata-skalaen for denne ferrata?</string>
+    <string name="quest_generic_surface_button">Generisk overflade-svar</string>
+    <string name="quest_generic_surface_yes">Tillad uden note</string>
+    <string name="level_filter">Etage-filter</string>
+    <string name="quest_settings_osmose_level_title">Vælg alvorlighedsniveauer for problemer, der skal downloades og vises</string>
+    <string name="quest_settings_osmose_level_high">Højt</string>
+    <string name="quest_settings_osmose_level_medium">Medium</string>
+    <string name="quest_settings_osmose_level_low">Lavt</string>
+    <string name="quest_settings_resurvey_all_opening_hours_title">Undersøg alle åbningstider igen</string>
+    <string name="quest_settings_resurvey_all_opening_hours_message">Undersøg alle åbningstider igen, herunder værdier, der ikke forstås af SCEE? Det kan være nødvendigt at bruge tag-editoren til at indtaste de korrekte værdier.</string>
+    <string name="quest_settings_resurvey_all_opening_hours_yes">Alle</string>
+    <string name="quest_settings_resurvey_all_opening_hours_no">Standard</string>
+    <string name="element_selection_button">Valg af element</string>
+    <string name="quest_settings_building_levels_mandatory_roof">Kræv angivelse af tagetager i de fleste lande (standard)</string>
+    <string name="quest_settings_highlight_changes_button">Fremhæv ændringer</string>
+    <string name="quest_settings_leaf_type_single_tree_message">Spørg også om bladtype for enkeltstående træer?</string>
+    <string name="quest_settings_leaf_type_single_tree_yes">Ja</string>
+    <string name="quest_settings_leaf_type_single_tree_no">Kun for linjer og områder</string>
+    <string name="quest_order_reverse">Omvendt rækkefølge af opgaver</string>
+    <string name="quest_order_normal">Tilbage til normal opgave-rækkefølge</string>
+    <string name="quest_custom_quest_title">Brugerdefineret opgave: %s</string>
+    <string name="quest_settings_fixme_title">Vælg Retmig-værdier, der skal ignoreres</string>
+    <string name="level_filter_title">Vælg nøgler (keys), der skal kontrolleres</string>
+    <string name="quest_custom_quest_add_node">Tilføj punkt</string>
+    <string name="quest_custom_quest_add_node_text">Du kan tilføje et punkt med: %s</string>
+    <string name="quest_barrier_locked_title">Er denne barriere (normalt) låst?</string>
+    <string name="quest_benchMaterial_wood">Træ</string>
+    <string name="quest_benchMaterial_metal">Metal</string>
+    <string name="quest_benchMaterial_plastic">Plastik</string>
+    <string name="quest_benchMaterial_concrete">Beton</string>
+    <string name="quest_benchMaterial_stone">Sten</string>
+    <string name="quest_benchMaterial_brick">Mursten</string>
+    <string name="quest_is_pharmacy_dispensing_title">Udleverer dette apotek alle receptpligtige lægemidler?</string>
+    <string name="level_filter_message">Indtast etageværdi, eller filtrer ved hjælp af &gt; og &lt;. Brug * til at matche alle elementer, der indeholder en tilladt etagenøgle</string>
+    <string name="quest_mapSize_title">Hvilket område er dækket af dette kort?</string>
+    <string name="restriction_overlay_relation_incomplete">Begrænsningsrelationen er ufuldstændig, download af det omkringliggende område er påkrævet</string>
+    <string name="quest_generic_surface_message">Tillad generiske overfladesvar uden at kræve en note?</string>
+    <string name="quest_generic_surface_no">Kun med note (standard)</string>
+    <string name="quest_trail_visibility_excellent">Fremragende</string>
+    <string name="quest_trail_visibility_excellent_description">Tydelig sti eller markører overalt. Uproblematisk at orientere sig, intet kort nødvendigt.</string>
+    <string name="quest_trail_visibility_good">God</string>
+    <string name="quest_trail_visibility_title">Hvad er sporets synlighed på denne vej?</string>
+    <string name="default_disabled_msg_trail_visibility">Denne opgavetype er som standard deaktiveret, fordi vurderingen af sporets synlighed er meget subjektiv og kræver ekspertviden om det anvendte klassificeringssystem.</string>
+    <string name="quest_footway_width_title">Hvor bred er gangstien her?</string>
+    <string name="quest_destination_add_more">Tilføj en anden destination</string>
+    <string name="quest_destination_all_lanes_button">Alle
+\nbaner</string>
+    <string name="custom_overlay_dash_filter_hint">Stiplet elementfilter</string>
+    <string name="custom_overlay_color_info">Detaljer om farvelægning</string>
+    <string name="custom_overlay_filter_info">Detaljer om filtrering</string>
+    <string name="quest_surface_value_stepping_stones">Trædesten</string>
+    <string name="quest_buildingType_sports_hall">Sportshal</string>
+    <string name="quest_buildingType_riding_hall">Ridehal</string>
+    <string name="quest_buildingType_digester">Fordøjer (bioreaktor)</string>
+    <string name="quest_buildingType_transformer_tower">Transformatortårn</string>
+    <string name="quest_buildingType_transit_shelter">Læskur til transport</string>
+    <string name="quest_buildingType_elevator">Elevator</string>
+    <string name="quest_buildingType_presbytery">Presbyteriansk</string>
+    <string name="quest_buildingType_barn">Lade</string>
+    <string name="quest_buildingType_cowshed">Kostald</string>
+    <string name="quest_buildingType_stable">Hestestald</string>
+    <string name="quest_buildingType_sty">Svinesti</string>
+    <string name="quest_crossing_type_signals_controlled_zebra">Trafiklys og zebra-striber</string>
+    <string name="quest_crossing_type_zebra">Zebra-striber</string>
+    <string name="quest_crossing_type_raised">Forhøjet overgang</string>
+    <string name="tag_editor_duplicate_key">Ignorerer ændring af duplikat-nøgle %s</string>
+    <string name="restriction_overlay_title">Trafikrestriktioner</string>
+    <string name="custom_overlay_title">Egen overlejring</string>
+    <string name="quest_guidepost_disabled_msg">Denne opgave er som standard deaktiveret, fordi det, der skrives, varierer meget fra region til region og fra operatør til operatør. Det kan være nødvendigt at forfine elementvalget for dit område (f.eks. tilføje eller fjerne kort, kun vælge elementer med hiking=yes osv.)</string>
+    <string name="quest_piste_difficulty_title">Hvad er sværhedsgraden på denne piste?</string>
+    <string name="quest_private">Er privat</string>
+    <string name="quest_piste_difficulty_easy">Nem</string>
+    <string name="restriction_overlay_sign_stop">Stop</string>
+    <string name="quest_seating_no">Ingen siddepladser, men ikke kun takeaway</string>
+    <string name="quest_guidepostName_hint">Skiltet stednavn for dette kort eller denne vejviser. Indtast ikke et referencenummer her.</string>
+    <string name="quest_piste_difficulty_freeride">Freeride</string>
+    <string name="quest_piste_difficulty_extreme">Ekstrem</string>
+    <string name="custom_overlay_delete">Vil du virkelig slette %s?</string>
+    <string name="custom_overlay_add_button">Ny brugerdefineret</string>
+    <string name="restriction_overlay_exceptions">Undtagelser: %s</string>
+    <string name="restriction_overlay_remove_conditional_restrictions">Fjern betinget</string>
+    <string name="restriction_overlay_signed_switch">Der er et skilt eller en vejafmærkning</string>
+    <string name="close">Luk</string>
+    <string name="quest_generalRef_hint">Referencenummer eller -kode</string>
+    <string name="quest_generalRef_disabled_msg">Denne opgave er som standard deaktiveret, fordi det, der er skiltet, varierer meget fra område til område og fra operatør til operatør. Det kan være nødvendigt at forfine elementvalget for dit område (f.eks. fjerne gadelamper, tilføje kort, kun vælge vejvisere med hiking=yes osv.)</string>
+    <string name="quest_parking_orientation_title">I hvilken retning parkerer biler her?</string>
+    <string name="quest_piste_difficulty_novice">Nybegynder</string>
+    <string name="quest_piste_difficulty_intermediate">Mellem</string>
+    <string name="quest_piste_difficulty_expert">Ekspert</string>
+    <string name="quest_parking_capacity_disabled_answer_yes">Det er der, men antallet er uklart</string>
+    <string name="custom_overlay_filter_message">Klik på nedenstående link for at åbne oplysninger om syntaksen for valg af elementer i en browser. Bemærk, at når du vælger elementer efter alder, kan indstillingen af genundersøgelsesintervallet påvirke resultatet.
+\nAfkrydsningsfelterne erstatter \"nodes, ways with\"-delen.</string>
+    <string name="custom_overlay_color_hint">Lad det være tomt for at vise alle i samme farve</string>
+    <string name="restriction_overlay_relation_unsupported">Ikke-understøttet relationstype:
+\n%s</string>
+    <string name="restriction_overlay_sign_give_way">Vigepligt</string>
+    <string name="restriction_overlay_sign_stop_all_way">Stop for alle retninger</string>
+    <string name="hide_button">Skjul</string>
+    <string name="fork_about_title_repository">SCEE-projektets hjemmeside</string>
+    <string name="enqueue_download">Start, når den aktuelle søgning er færdig</string>
+    <string name="create_poi">Tilføj IP</string>
+    <string name="insert_node_select_way">Vælg en position på en vej</string>
+    <string name="quest_monitor_found">%d opgaver i nærheden, tættest på:</string>
+    <string name="quest_monitor_channel_name_found">Opgave fundet i nærheden</string>
+    <string name="quest_monitor_running">Monitorerer lokalitet</string>
+    <string name="quest_monitor_error">Kunne ikke starte monitorering, muligt tilladelsesproblem</string>
+    <string name="move_node_with_geometry">Flytning af dette punkt vil ændre geometrien for følgende veje eller multipolygon-relationer: %s.
+\n Vær opmærksom på, at eventuelle ændringer ikke umiddelbart vil være synlige på baggrundskortet.</string>
+    <string name="move_node_of_other_relation">Dette punkt er en del af følgende ikke-multipolygon-relationer: %s</string>
+    <string name="access_manager_button_add">Tilføj</string>
+    <string name="access_manager_button_add_conditional">Tilføj betinget</string>
+    <string name="access_length_limit">Længde</string>
+    <string name="access_weight_limit">Vægt</string>
+    <string name="access_width_limit">Bredde</string>
+    <string name="quest_settings_building_levels_optional_roof">Tillad at udelade tagetager overalt</string>
+    <string name="quest_settings_dot_labels_message">Indstil, hvilke tags der skal bruges til etiketten i en given rækkefølge. En tom streng vil aldrig vise nogen etiketter, \"etiket\" vil vise standard StreetComplete-navnetiketten ved hjælp af navn, mærke, ref, local_ref og operator.</string>
+    <string name="quest_shelter_type_title">Hvilken slags shelter er det?</string>
+    <string name="quest_parking_capacity_title">Hvor mange biler kan parkere her?</string>
+    <string name="quest_parking_capacity_disabled_title">Hvor mange parkeringspladser for handicappede er der her?</string>
+    <string name="quest_custom_quest_message">Bruges til at tjekke specifikke foruddefinerede elementer eller placeringer. Du kan også angive tags og tilføje et punkt (node) med dem. For at bruge det skal du indlæse en fil i hovedindstillingsmenuen, der indeholder enten type,id,message (f.eks. NODE,1234,check position) eller latitude,longitude,message. For at tilføje punkter skal du sætte tags i beskeden efter \'addNode\', f.eks. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
+    <string name="quest_recycling_excrement_bag_dispenser">Den har en hundepose-dispenser</string>
+    <string name="default_disabled_msg_poi_camera">Denne \"opgave\" viser overvågningsfunktioner som lyserøde prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="quest_service_building_type_minor_substation_description">En lille transformerstation på det laveste transformationsniveau i distributionsnettet</string>
+    <string name="quest_service_building_type_switchgear_description">Kontroludstyr til et elektrisk system</string>
+    <string name="quest_service_building_type_reservoir_description">Stor menneskeskabt tank til opbevaring af ferskvand</string>
+    <string name="quest_service_building_oil_pumping_station_description">Anlæg med pumper til at pumpe olie fra et sted til et andet</string>
+    <string name="quest_service_building_heating_description">Bygning til varmetransmission og -distribution til industrier og private forbrugere (fjernvarme)</string>
+    <string name="quest_service_building_railway_ventilation_shaft_description">En konstruktion, der gør det muligt at lave ventilation i underjordiske jernbanetunneler</string>
+    <string name="quest_service_building_telecom_exchange_description">Sted for tilslutning af fastnetabonnenter til telekommunikationsudstyr</string>
+    <string name="default_disabled_msg_poi_fixme">Denne \"opgave\" viser Retmig\'er som røde prikker (med standardundtagelser for \'ja\' og \'fortsæt\'). Klik på prikken for at få vist detaljer og andre svar.</string>
+    <string name="quest_outdoor_seating_name_title">Hvilken slags udendørs siddepladser har dette sted?</string>
+    <string name="quest_shelter_type_disabled_msg">Denne opgave er deaktiveret som standard, fordi den ikke er let at besvare. Sheltertypen skal vælges ud fra forslag, som er taget fra de mest brugte værdier, og disse er ofte ikke lette at skelne fra hinanden.</string>
+    <string name="quest_mapType_scheme_description">Et skitseret kort med kun vigtige veje og interessepunkter. Vinkler, afstande osv. er kun illustrative, ikke nøjagtige. Bruges f.eks. af rejsebureauer til at forklare deres ture.</string>
+    <string name="quest_healthcare_speciality_disabled_message">Denne opgave kræver viden om healthcare:speciality-tags. Uden denne viden kan opgaven være meget vanskelig at besvare.</string>
+    <string name="quest_railwayPlatformRef_message">Hvilket tag skal man bruge til spor, der er tilgængelige fra denne platform? Ifølge OSM-wiki kan local_ref være at foretrække, men den faktiske brug er for det meste ref.</string>
+    <string name="quest_street_cabinet_traffic_monitoring">Trafikovervågning</string>
+    <string name="quest_seating_parklet">Ved kantstenen, eller hvor der plejede at være parkering</string>
+    <string name="quest_artwork_sculpture">Skulptur</string>
+    <string name="default_disabled_msg_roofColour">Denne opgavetype er som standard deaktiveret, fordi tagfarver ofte ikke er let synlige fra gaden. Denne opgavetype er også ret tidskrævende; i de fleste tilfælde er det nemmere og mere effektivt at kortlægge dette ud fra luftfotos derhjemme.</string>
+    <string name="quest_viaFerrataScale_two_description">Stejle eller lodrette passager er udstyret med stiger eller jerntrin. Stålkabler og kæder sikrer klatreren, selv i mindre vanskeligt terræn. Ferrata-sæt anbefales på det kraftigste.</string>
+    <string name="quest_tree_disabled_msg">Denne opgave er deaktiveret som standard, fordi den ikke er let at besvare. Art/slægt skal vælges fra forslag, som er taget fra de mest brugte værdier. Du kan give forslag fra din egen liste over arter med søgbare navne ved at angive en fil i menuen for datahåndteringsindstillinger, der indeholder &lt;species&gt; (&lt;name&gt;).</string>
+    <string name="quest_building_entrance_parking">Indgang til parkering</string>
+    <string name="quest_mapSize_landscape">Et helt landskab, mest brugt på retningsskiver</string>
+    <string name="quest_healthcare_speciality_title">Hvilke sundhedsspecialer har dette sted?</string>
+    <string name="quest_tree_error">Ikke genkendt. Prøv at indtaste træets slægt, art eller engelske navn. Ellers kan du overveje at efterlade en note.</string>
+    <string name="quest_piste_difficulty_advanced">Øvet</string>
+    <string name="tutorial_info_fork_message"><b>SCEE</b>
+\n
+\n Dette er en modificeret version af StreetComplete. Den er beregnet til erfarne brugere med avanceret viden om OSM. Den giver dig mere kontrol, men også et større <i>ansvar</i>.
+\n Det gælder især muligheden for at redigere rå tags og slette punkter, men også for ændring af elementvalg til opgaver. Opgaver tilføjet i SCEE <i>kan måske ikke besvares</i> i alle tilfælde og er deaktiveret som standard. Skjul dem, hvis du ikke kan svare på dem, og <i>lav ikke en masse noter</i>.
+\n
+\n Som udgangspunkt er SCEE konfigureret til at opføre sig meget ligesom StreetComplete.</string>
+    <string name="default_disabled_msg_viaFerrataScale">Denne opgavetype er som standard deaktiveret, fordi vurderingen af via ferrata-ruter er meget subjektiv og kræver ekspertviden om det anvendte klassificeringssystem og om klatring af via ferrata, da det kræver avancerede bjergbestigningsevner. Da der ikke findes en verdensomspændende skala for via ferratas sværhedsgrad, bruges den tyske Huesler-skala her.</string>
+    <string name="quest_viaFerrataScale_four_description">Stejlt terræn med gennemgående stålkabler til fastgørelse. Kræver styrke i armene. Kunstige hjælpemidler (jerntrin, håndtag) på de sværeste strækninger.</string>
+    <string name="quest_viaFerrataScale_six_description">Lange, sparsomt sikrede gymnastiske strækninger, der kræver stor udholdenhed. Klatresko kan være nyttige. Ekstra sikkerhed sker ved hjælp af reb eller sikring (anbefales)</string>
+    <string name="default_disabled_msg_ee">Opgaver, der tilføjes i SCEE, er altid deaktiveret som standard, da de ikke altid kan besvares og kan kræve viden om emnet og tagging.</string>
+    <string name="quest_parking_capacity_hint">Dette omfatter også særlige pladser til handicappede, familier, opladning osv. Skjul opgaven, hvis parkeringspladserne ikke er markerede og dermed ikke kan tælles</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">Opgaver, der tilføjes i SCEE, er altid deaktiveret som standard, da de ikke altid kan besvares og kan kræve viden om emnet og tagging.
+\nDenne opgave vil ikke blive stillet, hvis capacity:disabled=yes er angivet. Hvis du også vil specificere det, skal du ændre elementvalget fra \"and !capacity:disabled\" til \"and (!capacity:disabled or capacity:disabled=yes)\"</string>
+    <string name="restriction_overlay_select_way">Klik på den næste vej på kortet. Den skal have en fælles slutpunkt med den nuværende vej. Opdel om nødvendigt.</string>
+    <string name="create_custom_quest_button">Opret brugerdefineret opgave</string>
+    <string name="custom_overlay_color_message">Vælg nøgle(r) til at få farve fra. Accepterer regex og bruger matchende tags til at få en farve. Farven udledes af nøgle og værdi for alle matchende nøgler. Hvis en matchende nøgle indeholder :left/right/both, vil den blive brugt til at farve de respektive sider af en vej, men ikke midterlinjen. Hvis der ikke er noget match, er farven altid rød, hvilket indikerer manglende data. Viden om regulære udtryk er meget nyttig for denne funktion.
+\nHvis udtrykket ikke er en regex, skal du bruge præfikset \'!\' til at starte med den værdi, der fokuseres på, når du redigerer tags.
+\n
+\nEksempel:
+\n\"surface\" viser surface=asphalt i samme farve og surface=concrete i en anden farve
+\n\".*surface\" ligner, men viser også sidewalk:(left/right/both):surface=asphalt i én farve, og cycleway:(left/right/both):surface=asphalt i en anden farve</string>
 </resources>

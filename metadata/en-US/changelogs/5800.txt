@@ -1,0 +1,2 @@
+- Move the hide button (when enabled) up in some quest forms, so the leftmost button is not covered
+- Fix a crash when closing an already closed note
