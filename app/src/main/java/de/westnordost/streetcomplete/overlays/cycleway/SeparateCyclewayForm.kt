@@ -21,7 +21,7 @@ import org.koin.android.ext.android.inject
 class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
 
     override val items: List<DisplayItem<SeparateCycleway>> get() =
-        listOf(PATH, NON_DESIGNATED_ON_FOOTWAY, NON_SEGREGATED, SEGREGATED, EXCLUSIVE_WITH_SIDEWALK, EXCLUSIVE).map {
+        SeparateCycleway.entries.map {
             it.asItem(countryInfo.isLeftHandTraffic)
         }
 
@@ -75,8 +75,7 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
             prerequisite for it being  displayed as a selectable option due to the reasons stated
             above.
          */
-        currentCycleway = if (cycleway == NOT_ALLOWED || cycleway == ALLOWED_ON_FOOTWAY) NON_DESIGNATED_ON_FOOTWAY else cycleway
-        selectedItem = currentCycleway?.asItem(countryInfo.isLeftHandTraffic)
+        selectedItem = cycleway?.asItem(countryInfo.isLeftHandTraffic)
     }
 
     override fun hasChanges(): Boolean =

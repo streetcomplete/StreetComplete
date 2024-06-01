@@ -123,6 +123,7 @@ private fun Cycleway.getRightHandTrafficIconResId(countryInfo: CountryInfo): Int
     NONE_NO_ONEWAY ->    R.drawable.ic_cycleway_none_no_oneway
     PICTOGRAMS ->        countryInfo.pictogramCycleLaneResId
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit
+    SIDEWALK_OK ->       R.drawable.ic_cycleway_sidewalk_ok
     BUSWAY ->            R.drawable.ic_cycleway_bus_lane
     SEPARATE ->          R.drawable.ic_cycleway_none
     SHOULDER ->          R.drawable.ic_cycleway_shoulder
@@ -139,6 +140,7 @@ private fun Cycleway.getLeftHandTrafficIconResId(countryInfo: CountryInfo): Int 
     NONE_NO_ONEWAY ->    R.drawable.ic_cycleway_none_no_oneway_l
     PICTOGRAMS ->        countryInfo.pictogramCycleLaneMirroredResId
     SIDEWALK_EXPLICIT -> R.drawable.ic_cycleway_sidewalk_explicit_l
+    SIDEWALK_OK ->       R.drawable.ic_cycleway_sidewalk_ok_l
     BUSWAY ->            R.drawable.ic_cycleway_bus_lane_l
     SEPARATE ->          R.drawable.ic_cycleway_none
     SHOULDER ->          R.drawable.ic_cycleway_shoulder
@@ -181,5 +183,6 @@ private fun CyclewayAndDirection.getTitleResId(isContraflowInOneway: Boolean): I
     BUSWAY ->            R.string.quest_cycleway_value_bus_lane
     SEPARATE ->          R.string.quest_cycleway_value_separate
     SHOULDER ->          R.string.quest_cycleway_value_shoulder
+    SIDEWALK_OK ->       R.string.quest_cycleway_value_sidewalk_ok
     else -> 0
 }
