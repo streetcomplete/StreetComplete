@@ -125,12 +125,10 @@ private fun parseCyclewayForSide(
         }
         "separate" -> SEPARATE
         "opposite" -> NONE
-        "no" -> when (isCyclingOkOnSidewalk) {
-            true -> SIDEWALK_OK
-            false -> when (isCyclingDesignatedOnSidewalk) {
-                true -> SIDEWALK_EXPLICIT
-                false -> NONE
-            }
+        "no" -> when {
+            isCyclingOkOnSidewalk -> SIDEWALK_OK
+            isCyclingDesignatedOnSidewalk -> SIDEWALK_EXPLICIT
+            else -> NONE
         }
         "share_busway", "opposite_share_busway" -> BUSWAY
         "shoulder" -> SHOULDER
