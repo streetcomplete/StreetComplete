@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PointStyle
@@ -38,7 +38,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .asSequence()
-            .filter { it.isPlaceOrDisusedShop() }
+            .filter { it.isPlaceOrDisusedPlace() }
             .map { element ->
                 val feature = getFeature(element)
 
