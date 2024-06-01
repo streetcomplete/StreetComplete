@@ -748,7 +748,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_parking_type_building">Building</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
     <string name="quest_bicycle_parking_type_two_tier">Two-tier bike rack</string>
-
+    <string name="quest_bicycle_parking_type_floor">Designated area</string>
 
     <string name="quest_bicycle_rental_capacity_title">How many rental bicycle spaces are here?</string>
 
