@@ -1021,6 +1021,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_dietType_explanation">Only answer “yes” if the place provides a comparable choice of eating options for this diet</string>
     <string name="quest_diet_answer_no_food">It has no food</string>
 
+    <string name="quest_drinking_water_fee_title">"Do you have to pay to use this drinking water?"</string>
+
     <string name="quest_drinking_water_title2">Is the water potable here?</string>
     <string name="quest_drinking_water_potable_signed">Safe to drink (signed)</string>
     <string name="quest_drinking_water_potable_unsigned">Safe to drink (unsigned)</string>
