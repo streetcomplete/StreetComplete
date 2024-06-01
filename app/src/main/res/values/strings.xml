@@ -1670,11 +1670,11 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <!-- foot=designated + bicycle=designated -->
     <string name="separate_cycleway_non_segregated">Designated shared-use path</string>
     <!-- foot=designated + bicycle=designated + segregated=yes -->
-    <string name="separate_cycleway_segregated">Designated separated bike and foot path</string>
+    <string name="separate_cycleway_segregated">Separated bike and foot path</string>
     <!-- highway=cycleway / bicycle=designated -->
-    <string name="separate_cycleway_exclusive">Designated bike-only path</string>
+    <string name="separate_cycleway_exclusive">Bike-only path</string>
     <!-- highway=cycleway + sidewalk=* -->
-    <string name="separate_cycleway_with_sidewalk">Designated bike-only path with adjacent sidewalk (separated by a curb)</string>
+    <string name="separate_cycleway_with_sidewalk">Bike-only path with adjacent sidewalk (separated by a curb)</string>
     <string name="cycleway_reverse_direction">Reverse bike path direction</string>
     <string name="cycleway_reverse_direction_warning">A bike path that goes into the other direction is extremely rare.</string>
     <string name="cycleway_reverse_direction_toast">Tap which side to reverse</string>
