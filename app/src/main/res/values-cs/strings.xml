@@ -43,7 +43,6 @@
     <string name="action_download">"Vyhledat zde úkoly"</string>
     <string name="action_upload">"Nahrát odpovědi"</string>
     <string name="no_changes">"Nechali jste prázdný formulář"</string>
-    <string name="close">"zavřít"</string>
     <string name="download_error">"Během vyhledávání úkolů došlo k chybě"</string>
     <string name="upload_error">"Během nahrávání odpovědí došlo k chybě"</string>
     <string name="download_area_too_big">"Přibližte, prosím, více mapu"</string>
@@ -70,7 +69,7 @@
     <string name="about_summary_privacy_statement">"a použití dat"</string>
     <string name="quest_openingHours_public_holidays">"Státní svátky"</string>
     <string name="quest_openingHours_public_holidays_short">"St. sv."</string>
-    <string name="quest_openingHours_open_end">"Do odchodu posledního návštěvníka"</string>
+    <string name="quest_openingHours_open_end">"do odchodu posledního návštěvníka"</string>
     <string name="quest_openingHours_answer_247">"Otevřeno nonstop"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Liší se podle měsíce…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nepravidelná otevírací doba…"</string>
@@ -301,20 +300,20 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_address_house_name_label">"Název budovy:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"patra ve střeše"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normální patra (bez střechy)"</string>
-    <string name="quest_buildingLevels_answer_multipleLevels">"liší se podle části budovy"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Liší se podle částí budovy"</string>
     <string name="quest_buildingLevels_answer_description">"V tom případě vložte hodnoty pro nejvyšší část budovy."</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Jsou vozovky na této cestě fyzicky oddělené (např. svodidly)? Omezení rychlosti může být v každém směru jiné."</string>
     <string name="about_category_feedback">"Zpětná vazba"</string>
     <string name="quest_leave_new_note_photo">"Připojit fotku"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Chcete smazat tento obrázek?"</string>
-    <string name="quest_cycleway_value_track">"Cyklostezka"</string>
+    <string name="quest_cycleway_value_track">"cyklostezka"</string>
     <string name="quest_cycleway_value_lane">"cyklopruh"</string>
-    <string name="quest_cycleway_value_none">"Není"</string>
+    <string name="quest_cycleway_value_none">"není"</string>
     <string name="quest_cycleway_value_shared">"pruh výslovně sdílený s jinou dopravou"</string>
     <string name="quest_cycleway_value_bus_lane">"na pruhu pro autobusy"</string>
     <string name="quest_leave_new_note_create_image_error">"Nepodařilo se vytvořit fotku"</string>
     <string name="quest_cycleway_value_lane_dual">"cyklopruh, oba směry"</string>
-    <string name="quest_cycleway_value_track_dual">"Cyklostezka s oddělenými směry jízdy"</string>
+    <string name="quest_cycleway_value_track_dual">"cyklostezka nebo cháněný pruh, v obou směrech"</string>
     <string name="pref_category_advanced">"Pokročilé"</string>
     <string name="quest_enabled">"Povoleno"</string>
     <string name="quest_type">"Druh úkolu"</string>
@@ -509,7 +508,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_sidewalk_value_yes">"chodník"</string>
     <string name="quest_sidewalk_value_no">"bez chodníku"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Mají tu chodci zakázáno chodit po této cestě?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Tato ulice/cesta byla označena jako že nemá chodník na žádné straně. Pokud ale chodník má a ten je označen jako samostatná cesta, vyberte prosím odpověď „chodník“."</string>
     <string name="quest_buildingType_title">"Jakého druhu je tato stavba?"</string>
     <string name="pref_title_theme_select">"Vyberte vzhled"</string>
     <string name="theme_automatic">"Automaticky"</string>
@@ -1269,8 +1267,6 @@ Chcete ho posunout?"</string>
     <string name="bicycle_boulevard_is_a">"Je to %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Není to %1$s"</string>
     <string name="bicycle_boulevard">"Cyklobulvár"</string>
-    <string name="separate_cycleway_no">"Jízda na kole zakázána"</string>
-    <string name="separate_cycleway_allowed">"Cyklisté povoleni"</string>
     <string name="separate_cycleway_no_or_allowed">"Není určeno pro cyklisty (jízda na kole může být stále povolena)"</string>
     <string name="separate_cycleway_non_segregated">"Stezka pro chodce a cyklisty"</string>
     <string name="separate_cycleway_segregated">"Oddělené stezky pro cyklisty a chodce"</string>
@@ -1381,7 +1377,6 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="quest_buildingType_tower_description">"jakýkoli typ věže"</string>
     <string name="quest_buildingType_under_construction">"Ve výstavbě"</string>
     <string name="overlay_buildings">"Budovy"</string>
-    <string name="quest_pedestrian_crossing_signals">"Musíte tu před přecházením počkat na signál?"</string>
     <string name="quest_pedestrian_crossing_markings">"Má tento přechod značení na zemi?"</string>
     <string name="overlay_places">"Místa"</string>
     <string name="overlay_things">"Věci"</string>
@@ -1395,4 +1390,26 @@ Informace o dárcovství najdete na našem webu nebo na stránce projektu, Googl
     <string name="lit_value_unsupported">"Specifický stav osvětlení, který v aplikaci nelze vybrat"</string>
     <string name="quest_generic_otherAnswers2">"Další odpovědi…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Jsou tu světelné signály, které ukazují, kdy přejít?"</string>
+    <string name="quest_moped_access_title">"Je tu značka indikující přístup mopedů na tuto cyklostezku?"</string>
+    <string name="quest_moped_access_allowed">"Není tu žádná značka"</string>
+    <string name="quest_moped_access_designated">"Je tu značka, která povoluje přístup mopedů na tuto cyklostezku"</string>
+    <string name="quest_moped_access_forbidden">"Je tu značka zakazující mopedy"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Tento typ úkolů je ve výchozím stavu zakázán, protože přístup mopedů je indikován jen specifickými značkami na začátku/konci cyklostezky."</string>
+    <string name="quest_arrow_tutorial">"Šipky v ilustraci ukazují do směrů, kam cesta na mapě vede od centrální pozice. Zkuste otočit mapu a dostanete to."</string>
+    <string name="info">"Více informací"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Je zakázán."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Je povolen."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Ve skutečnosti tu je chodník, ale je na mapě zobrazen samostatně."</string>
+    <string name="quest_buildingLevels_hint">"U budov na svahu začíná počítání podlaží od přízemí na nejnižší straně.
+
+Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Tedy střechy s nulovým počtem podlaží nemusejí být ploché, stačí, že nejsou dost vysoké pro celé podlaží.
+    "</string>
+    <string name="quest_parcel_locker_brand">"Jaká je značka tohoto boxu na balíčky?"</string>
+    <string name="quest_parcel_locker_pickup">"Můžete si tu vyzvedávat balíčky?"</string>
+    <string name="quest_parcel_locker_mail_in">"Můžete sem vkládat balíčky k odeslání?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Elektrické vedení je zakončeno na budově"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"není, ale značka povoluje jízdu po chodníku"</string>
+    <string name="separate_cycleway_no_signed">"Značka výslovně zakazuje jízdu na kole"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Chodník, ale značka povoluje jízdu na kole"</string>
+    <string name="quest_bicycle_parking_type_floor">"Určený prostor"</string>
 </resources>

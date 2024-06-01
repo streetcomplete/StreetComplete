@@ -43,7 +43,6 @@
     <string name="action_download">"Busca xeres alredor"</string>
     <string name="action_upload">"Xubir les respuestes"</string>
     <string name="no_changes">"Nun respondisti"</string>
-    <string name="close">"zarrar"</string>
     <string name="download_error">"Hubo un error al buscar xeres"</string>
     <string name="upload_error">"Hubo un error al xubir les respuestes"</string>
     <string name="download_area_too_big">"Acércate un poco más"</string>
@@ -503,7 +502,6 @@ Por casu: 1,3 o 2–6."</string>
     <string name="quest_sidewalk_value_yes">"cera"</string>
     <string name="quest_sidewalk_value_no">"nun hai cera"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"¿Ta prohibío que los peatones circulen per esti tramu de carretera?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Nun figura qu'haya cera a nengún llau d'esta carretera. En casu de qu'haya, pero figure como una vía alternativa, contesta «cera»."</string>
     <string name="quest_buildingType_title">"¿Qué tipu d'edificiu ye esti?"</string>
     <string name="pref_title_theme_select">"Tema de colores"</string>
     <string name="theme_automatic">"Automático"</string>
@@ -1019,8 +1017,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="bicycle_boulevard_is_a">"Ye un %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Nun ye un %1$s"</string>
     <string name="bicycle_boulevard">"Bulevar ciclista"</string>
-    <string name="separate_cycleway_no">"Nun ta permitida la bici"</string>
-    <string name="separate_cycleway_allowed">"Ciclistes permitíos"</string>
     <string name="separate_cycleway_no_or_allowed">"Nun ta pensao pa ciclistes (nun significa que tea prohibío)"</string>
     <string name="separate_cycleway_non_segregated">"Camín d'usu compartíu"</string>
     <string name="separate_cycleway_segregated">"Separáu ente ciclistes y peatones"</string>
@@ -1130,7 +1126,6 @@ Dalgunes capes tamién permiten añader datos que falten al traviés del marcado
     <string name="quest_buildingType_tower_description">"forma de torre"</string>
     <string name="quest_buildingType_under_construction">"En construcción"</string>
     <string name="overlay_buildings">"Edificios"</string>
-    <string name="quest_pedestrian_crossing_signals">"¿Hai qu'esperar a que cambie un semáforu pa cruzar?"</string>
     <string name="quest_pedestrian_crossing_markings">"¿Esti cruce ta marcáu?"</string>
     <string name="overlay_places">"Sitios"</string>
     <string name="overlay_things">"Coses"</string>

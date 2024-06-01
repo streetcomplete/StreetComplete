@@ -43,7 +43,6 @@
     <string name="action_download">"Søg efter opgaver her"</string>
     <string name="action_upload">"Upload svar"</string>
     <string name="no_changes">"Du gav ikke noget svar"</string>
-    <string name="close">"luk"</string>
     <string name="download_error">"Fejl under hentning af opgaver"</string>
     <string name="upload_error">"Fejl mens der blev uploadet svar"</string>
     <string name="download_area_too_big">"Zoom længere ind"</string>
@@ -115,7 +114,7 @@ Før dine ændringer indsendes, tjekker appen en &lt;a href=\"https://www.westno
     <string name="quest_surface_value_dirt">"Jord"</string>
     <string name="quest_surface_value_fine_gravel">"Fint grus"</string>
     <string name="quest_surface_value_grass">"Græs"</string>
-    <string name="quest_surface_value_grass_paver">"Græsarmeringssten"</string>
+    <string name="quest_surface_value_grass_paver">"Græsarmering"</string>
     <string name="quest_surface_value_gravel">"Grus"</string>
     <string name="quest_surface_value_paving_stones">"Belægningssten"</string>
     <string name="quest_surface_value_pebblestone">"Ral"</string>
@@ -505,7 +504,6 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_sidewalk_value_yes">"fortov"</string>
     <string name="quest_sidewalk_value_no">"intet fortov"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Er det forbudt for fodgængere at gå på denne vej her?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Denne vej blev markeret som værende uden fortov på begge sider. Hvis der alligevel er et fortov, men det vises som en separat vej, skal du svare “fortov”."</string>
     <string name="quest_buildingType_title">"Hvilken type bygning er dette?"</string>
     <string name="pref_title_theme_select">"Vælg tema"</string>
     <string name="theme_automatic">"Auto"</string>
@@ -780,7 +778,7 @@ aktiv"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Den har en to-vejs bane med venstre svingsbane"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Er dette korrekt?"</string>
     <string name="quest_maxheight_below_bridge_title">"Hvad er højdebegrænsningen under broen?"</string>
-    <string name="quest_maxheight_split_way_hint">"Hvis dette ikke vedrører hele vejen så overvej at svare \"%s\"."</string>
+    <string name="quest_maxheight_split_way_hint">"Hvis dette ikke vedrører hele vejen, så overvej at svare \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Er der taktil markering på kantstenen her?"</string>
     <string name="quest_kerb_height_title">"Hvor høj er kantstenen?"</string>
     <string name="quest_kerb_height_flush">"Samme niveau som vejens overflade"</string>
@@ -815,7 +813,7 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, f.eks. ensrettet vej 
     <string name="quest_construction_completion_date_title">"Hvornår vil det være færdigt?"</string>
     <string name="quest_surface_value_clay">"Ler"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgræs"</string>
-    <string name="quest_surface_value_tartan">"Skotskternet"</string>
+    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Skal man betale for at parkere en cykel her?"</string>
     <string name="quest_buildingType_house_description2">"Ikke-fritliggende enfamiliehus, f.eks. et rækkehus"</string>
     <string name="quest_drinking_water_potable_signed">"Drikkevand (skiltet)"</string>
@@ -1262,8 +1260,6 @@ Vil du flytte det nu?"</string>
     <string name="bicycle_boulevard_is_a">"Det er en %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Det er ikke en %1$s"</string>
     <string name="bicycle_boulevard">"Cykelgade"</string>
-    <string name="separate_cycleway_no">"Ingen cykling"</string>
-    <string name="separate_cycleway_allowed">"Cykling er tilladt"</string>
     <string name="separate_cycleway_no_or_allowed">"Ikke beregnet til cyklister (cykling kan dog være tilladt)"</string>
     <string name="separate_cycleway_non_segregated">"Fællessti"</string>
     <string name="separate_cycleway_segregated">"Opdelt cykel- og gangsti"</string>
@@ -1374,7 +1370,6 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="quest_buildingType_tower_description">"enhver form for tårn"</string>
     <string name="quest_buildingType_under_construction">"Under opførelse"</string>
     <string name="overlay_buildings">"Bygninger"</string>
-    <string name="quest_pedestrian_crossing_signals">"Skal man vente på et trafiksignal for at krydse her?"</string>
     <string name="quest_pedestrian_crossing_markings">"Er der markeringer på jorden ved denne overgang?"</string>
     <string name="overlay_places">"Steder"</string>
     <string name="overlay_things">"Ting"</string>
@@ -1388,4 +1383,22 @@ Du kan finde oplysninger om donationer på vores hjemmeside eller projekthjemmes
     <string name="lit_value_unsupported">"Specifik belysningsstatus, som ikke kan vælges i denne app"</string>
     <string name="quest_generic_otherAnswers2">"Øh…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Er der trafiksignaler, der viser, hvornår man skal krydse her?"</string>
+    <string name="quest_moped_access_title">"Er der et skilt, der viser, at der er adgang for knallerter på denne cykelsti?"</string>
+    <string name="quest_moped_access_allowed">"Der er intet skilt"</string>
+    <string name="quest_moped_access_designated">"Der er et skilt, der angiver, at denne cykelsti er for knallerter"</string>
+    <string name="quest_moped_access_forbidden">"Der er et skilt, som forbyder knallerter"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Denne opgavetype er som standard deaktiveret, fordi knallertadgang kun er angivet med et bestemt skilt ved starten/slutningen af en cykelsti."</string>
+    <string name="quest_arrow_tutorial">"Pilene i illustrationen peger i de retninger, som vejen løber i på kortet, hvor den er fastgjort i midten. Prøv at rotere kortet, så forstår du det."</string>
+    <string name="info">"Mere information"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Det er forbudt."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Det er tilladt."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Der er faktisk et fortov, men det vises separat på kortet."</string>
+    <string name="quest_buildingLevels_hint">"Hvis bygningen ligger på en skråning, starter optællingen af etager fra terrænniveauet på den laveste side.
+
+En etage tæller som en tagetage, når dets vinduer er i taget. Derfor er tage med nul tagetager ikke nødvendigvis flade, de er bare ikke høje nok til en hel etage.
+␣␣␣␣"</string>
+    <string name="quest_parcel_locker_brand">"Hvilket firma står bag denne pakkeboks?"</string>
+    <string name="quest_parcel_locker_pickup">"Kan man hente pakker her?"</string>
+    <string name="quest_parcel_locker_mail_in">"Kan man aflevere pakker her?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"El-ledning er forankret til bygning"</string>
 </resources>

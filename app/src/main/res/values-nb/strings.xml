@@ -43,7 +43,6 @@
     <string name="action_download">"Let etter oppdrag her"</string>
     <string name="action_upload">"Last opp svar"</string>
     <string name="no_changes">"Du ga ingen svar"</string>
-    <string name="close">"lukk"</string>
     <string name="download_error">"Feil ved leting etter oppdrag"</string>
     <string name="upload_error">"Feil ved opplasting av svar"</string>
     <string name="download_area_too_big">"Forstørr ytterligere"</string>
@@ -503,7 +502,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_sidewalk_value_yes">"fortau"</string>
     <string name="quest_sidewalk_value_no">"ingen fortau"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Er det forbudt å gå på denne veien her?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Denne veien er definert uten fortau på noen av sidene. Dersom det er et fortau, men dette er vist som en adskilt vei, skal du likevel velge «fortau»."</string>
     <string name="quest_buildingType_title">"Hva slags bygning er dette?"</string>
     <string name="pref_title_theme_select">"Velg modus"</string>
     <string name="theme_automatic">"Auto"</string>
@@ -1265,8 +1263,6 @@ Vil du flytte den nå?"</string>
     <string name="bicycle_boulevard_is_a">"Der er en %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Det er ikke en %1$s"</string>
     <string name="bicycle_boulevard">"Sykkelgate"</string>
-    <string name="separate_cycleway_no">"Sykling forbudt"</string>
-    <string name="separate_cycleway_allowed">"Sykling er tillatt"</string>
     <string name="separate_cycleway_no_or_allowed">"Ikke tilrettelagt for sykling (men kan likevel være tillatt)"</string>
     <string name="separate_cycleway_non_segregated">"Delt gang- og sykkelvei"</string>
     <string name="separate_cycleway_segregated">"Adskilt gang og sykkelvei"</string>
@@ -1372,10 +1368,13 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="quest_buildingType_tower_description">"alle slags tårn"</string>
     <string name="quest_buildingType_under_construction">"Under oppføring"</string>
     <string name="overlay_buildings">"Bygninger"</string>
-    <string name="quest_pedestrian_crossing_signals">"Må du vente på et trafikksignal for å krysse her?"</string>
     <string name="quest_pedestrian_crossing_markings">"Har denne overgangen oppmerking på bakken?"</string>
     <string name="overlay_places">"Steder"</string>
     <string name="overlay_things">"Gjenstander"</string>
     <string name="disused">"nedlagt"</string>
     <string name="unknown_object">"Ukjent objekt"</string>
+    <string name="quest_leafType_tree_title">"Har dette treet nåler eller blader?"</string>
+    <string name="quest_bbq_fuel_gas">"Gass"</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Utendørs, men tildekket"</string>
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
 </resources>

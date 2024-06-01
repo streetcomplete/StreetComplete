@@ -43,7 +43,6 @@
     <string name="action_download">"Télécharger les données ici"</string>
     <string name="action_upload">"Envoyer les réponses"</string>
     <string name="no_changes">"Vous n’avez pas donné de réponse"</string>
-    <string name="close">"fermer"</string>
     <string name="download_error">"Erreur pendant le téléchargement des données"</string>
     <string name="upload_error">"Erreur pendant le téléversement des réponses"</string>
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
@@ -503,7 +502,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_sidewalk_value_yes">"trottoir"</string>
     <string name="quest_sidewalk_value_no">"pas de trottoir"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Les piétons ont-ils l’interdiction de marcher sur cette voie à cet endroit ?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Cette rue a été marquée comme n’ayant aucun trottoir des deux côtés. Dans le cas où il y aurait un trottoir qui serait indiqué sur la carte comme une voie séparée, veuillez répondre « trottoir »."</string>
     <string name="quest_buildingType_title">"Quel est le type de ce bâtiment ?"</string>
     <string name="pref_title_theme_select">"Sélectionner un thème"</string>
     <string name="theme_automatic">"Automatique"</string>
@@ -1264,8 +1262,6 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="bicycle_boulevard_is_a">"C’est un(e) %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Ce n’est pas un(e) %1$s"</string>
     <string name="bicycle_boulevard">"Rue cyclable"</string>
-    <string name="separate_cycleway_no">"Cyclistes non autorisés"</string>
-    <string name="separate_cycleway_allowed">"Cyclistes autorisés"</string>
     <string name="separate_cycleway_no_or_allowed">"Non désigné pour les cyclistes (le cyclisme peut encore être autorisé)"</string>
     <string name="separate_cycleway_non_segregated">"Chemin à usage partagé"</string>
     <string name="separate_cycleway_segregated">"Voie ségréguée piétons et cycles"</string>
@@ -1376,7 +1372,6 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_buildingType_tower_description">"Tout type de tour"</string>
     <string name="quest_buildingType_under_construction">"En cours de construction"</string>
     <string name="overlay_buildings">"Immeubles"</string>
-    <string name="quest_pedestrian_crossing_signals">"Faut-il attendre un feu de signalisation pour traverser ici ?"</string>
     <string name="quest_pedestrian_crossing_markings">"Est-ce que ce passage piéton est peint sur la chaussée ?"</string>
     <string name="overlay_places">"Places"</string>
     <string name="overlay_things">"Objets"</string>
@@ -1389,4 +1384,18 @@ Vous pouvez trouver des informations sur les dons sur notre site web ou sur la p
     <string name="quest_isAmenityIndoor_outside_covered">"Pas à l’intérieur, mais couvert"</string>
     <string name="lit_value_unsupported">"État éclairé spécifique qui ne peut pas être sélectionné dans cette application"</string>
     <string name="quest_generic_otherAnswers2">"Euh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Existe-t-il des feux de signalisation indiquant quand il faut traverser à cet endroit ?"</string>
+    <string name="quest_moped_access_title">"Y a-t-il un panneau indiquant l’accès aux cyclomoteurs sur cette piste cyclable ?"</string>
+    <string name="quest_moped_access_allowed">"Il n’y a aucun panneau"</string>
+    <string name="quest_moped_access_designated">"Un panneau indique que cette piste cyclable est réservée aux cyclomoteurs."</string>
+    <string name="quest_moped_access_forbidden">"Un panneau interdit les cyclomoteurs."</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Ce type de quête est désactivé par défaut car l’accès des cyclomoteurs n’est indiqué que par des panneaux spécifiques au début et à la fin d’une piste cyclable."</string>
+    <string name="quest_arrow_tutorial">"Les flèches de l’illustration indiquent les directions dans lesquelles le chemin est tracé sur la carte à l’emplacement de l’épingle centrale. Essayez de faire pivoter la carte et vous comprendrez."</string>
+    <string name="info">"Plus d’informations"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"C’est interdit."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"C’est autorisé."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Actuellement, il y a un trottoir, mais il est représenté séparément sur la carte."</string>
+    <string name="quest_parcel_locker_brand">"Quelle est la marque de cette consignes automatiques de colis?"</string>
+    <string name="quest_parcel_locker_pickup">"Est-il possible de retirer des colis ici ?"</string>
+    <string name="quest_parcel_locker_mail_in">"Est-il possible de déposer des colis ici ?"</string>
 </resources>

@@ -44,7 +44,6 @@
     <string name="action_download">"Cerca missions aquí"</string>
     <string name="action_upload">"Puja respostes"</string>
     <string name="no_changes">"No heu indicat cap resposta"</string>
-    <string name="close">"tanca"</string>
     <string name="download_error">"S'ha produït un error en cercar missions"</string>
     <string name="upload_error">"S'ha produït un error en pujar les respostes"</string>
     <string name="download_area_too_big">"Apropeu-vos-hi més"</string>
@@ -504,7 +503,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_sidewalk_value_yes">"amb vorera"</string>
     <string name="quest_sidewalk_value_no">"sense vorera"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Els vianants tenen prohibit caminar per aquesta via en aquest punt?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Aquest carrer es va etiquetar sense vorera en cap costat. En cas que hi hagi una vorera, però es mostri com a una via separada, respongueu «vorera»"</string>
     <string name="quest_buildingType_title">"Quin tipus d'edifici és?"</string>
     <string name="pref_title_theme_select">"Seleccioneu un tema"</string>
     <string name="theme_automatic">"Automàtic"</string>
@@ -1272,8 +1270,6 @@ Menejar ara?"</string>
     <string name="bicycle_boulevard_is_a">"És un %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"No és un %1$s"</string>
     <string name="bicycle_boulevard">"És un bulevard per a bicicletes"</string>
-    <string name="separate_cycleway_no">"Les bicicletes no estan permeses"</string>
-    <string name="separate_cycleway_allowed">"Les bicicletes estan permeses"</string>
     <string name="separate_cycleway_no_or_allowed">"No designat per a anar en bicicleta (però podria estar-hi permés)"</string>
     <string name="separate_cycleway_non_segregated">"Via d'us compartit"</string>
     <string name="separate_cycleway_segregated">"Ciclovia i camí per a vianants segregats"</string>
@@ -1362,4 +1358,36 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="label_log_message_contains">"El missatge conté"</string>
     <string name="title_logs_filters">"Filtrar missatges"</string>
     <string name="pref_title_quests_restore_hidden_summary">"Nombre de missions amagades: %d"</string>
+    <string name="link_every_door_description">"Editor potent de PDI per Android i iOS"</string>
+    <string name="link_mapcomplete_description">"Col·lecció de mapes temàtics d'OSM que cada un mostra i us permet editar un tipus d'objecte"</string>
+    <string name="link_forum_description">"Necessiteu ajuda? Voleu llegir de què va? Veniu i uniu-vos, bull d'activitat de comunitats d'arreu del món!"</string>
+    <string name="link_calendar_description">"Hi ha esdeveniments d'OpenStreetMap o reunions de comunitats  a prop? (Si no, podeu afegir els vostres!)"</string>
+    <string name="link_prettymapp_description">"Creeu pòsters bonics de mapes multicolors de barris"</string>
+    <string name="quest_disable_action">"Deshabilita"</string>
+    <string name="quest_disable_title">"Deshabilita aquest tipus de missió?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure no és instal·lat (encara)."</string>
+    <string name="quest_buildingType_container">"Contenidor"</string>
+    <string name="quest_buildingType_tower">"Torre"</string>
+    <string name="quest_buildingType_tower_description">"qualsevol mena de torre"</string>
+    <string name="quest_buildingType_under_construction">"En construcció"</string>
+    <string name="overlay_buildings">"Edificis"</string>
+    <string name="quest_pedestrian_crossing_markings">"Aquest encreuament té marques a terra?"</string>
+    <string name="overlay_places">"Llocs"</string>
+    <string name="overlay_things">"Coses"</string>
+    <string name="disused">"en desús"</string>
+    <string name="unknown_object">"Objecte desconegut"</string>
+    <string name="quest_leafType_tree_title">"Aquest arbre té agulles o fulles amples?"</string>
+    <string name="about_description_donate_google_play3">"Gràcies per considerar ajudar aquesta aplicació!
+Podeu trobar informació sobre les donacions a la nostra web o al portal del projecte, Google Play no ens permet afegir l'enllaç dins de l'aplicació."</string>
+    <string name="quest_generic_otherAnswers2">"Bufa…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Hi ha senyals de trànsit que indiquen quan creuar aquí?"</string>
+    <string name="quest_moped_access_allowed">"No hi ha cap senyal"</string>
+    <string name="info">"Més informació"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"És prohibit."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"és permès."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"De fet, hi ha vorera, però es mostra separadament en el mapa."</string>
+    <string name="quest_buildingLevels_hint">"Per edificis en un pendent, el recompte de pisos comença des del nivell de terra en el costat més baix.
+
+Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.
+    "</string>
 </resources>

@@ -43,7 +43,6 @@
     <string name="action_download">"Шукаць квэсты тут"</string>
     <string name="action_upload">"Адправіць адказы"</string>
     <string name="no_changes">"Вы пакінулі поле пустым"</string>
-    <string name="close">"Закрыць"</string>
     <string name="download_error">"Памылка пошуку квэстаў"</string>
     <string name="upload_error">"Памылка адпраўкі адказаў"</string>
     <string name="download_area_too_big">"Наблізьце калі ласка"</string>
@@ -505,7 +504,6 @@
     <string name="quest_sidewalk_value_yes">"тратуар"</string>
     <string name="quest_sidewalk_value_no">"няма тратуара"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ці забараняецца пешаходам хадзіць па гэтай дарозе?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Гэта вуліца была адзначана як тратуара з абодвух бакоў, якая не мае. У выпадку, калі ўсё ж тратуар ёсць, але ён намаляваны як асобная дарога, калі ласка, адкажыце \"тратуар\"."</string>
     <string name="quest_buildingType_title">"Якога тыпу гэты будынак?"</string>
     <string name="pref_title_theme_select">"Выбар тэмы"</string>
     <string name="theme_automatic">"Аўтаматычна"</string>
@@ -1266,8 +1264,6 @@
     <string name="bicycle_boulevard_is_a">"Гэта %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Гэта не %1$s"</string>
     <string name="bicycle_boulevard">"Веласіпедны бульвар"</string>
-    <string name="separate_cycleway_no">"Праезд на ровары забаронены"</string>
-    <string name="separate_cycleway_allowed">"Рух на ровары дазволены"</string>
     <string name="separate_cycleway_no_or_allowed">"Не прызначана для раварыстаў (праезд на ровары можа быць дазволены)"</string>
     <string name="separate_cycleway_non_segregated">"Не аддзеленая дарожка"</string>
     <string name="separate_cycleway_segregated">"Раздзеленыя пешаходная і веладарожка"</string>
@@ -1376,7 +1372,6 @@
     <string name="quest_buildingType_tower_description">"любая вежа"</string>
     <string name="quest_buildingType_under_construction">"будуецца"</string>
     <string name="overlay_buildings">"Будынкі"</string>
-    <string name="quest_pedestrian_crossing_signals">"Вам трэба чакаць сігналу святлафора, каб перайсці тут?"</string>
     <string name="quest_pedestrian_crossing_markings">"Ці ёсць на гэтым пераходзе разметка?"</string>
     <string name="overlay_places">"Месцы"</string>
     <string name="overlay_things">"Рэчы"</string>
@@ -1389,4 +1384,10 @@
     <string name="quest_isAmenityIndoor_outside_covered">"Не ўнутры, але накрыта"</string>
     <string name="lit_value_unsupported">"Спецыфічны статус, які нельга выбраць у гэтым дадатку"</string>
     <string name="quest_generic_otherAnswers2">"Э-э..."</string>
+    <string name="quest_pedestrian_crossing_signals2">"Ці ёсць сігналы святлафора, якія паказваюць, калі тут трэба пераходзіць?"</string>
+    <string name="quest_moped_access_title">"Ці ёсць на гэтай веладарожцы знак, які паказвае доступ для мапедаў?"</string>
+    <string name="quest_moped_access_allowed">"Знаку няма"</string>
+    <string name="quest_moped_access_designated">"Ёсць знак, які пазначае гэтую веладарожку для мапедаў"</string>
+    <string name="quest_moped_access_forbidden">"Знак забаронены на мапеды"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Гэты тып квэста адключаны па змаўчанні, таму што доступ да мапеда пазначаецца толькі адмысловымі знакамі ў пачатку/канцы веладарожкі."</string>
 </resources>

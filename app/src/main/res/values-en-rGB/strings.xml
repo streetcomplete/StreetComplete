@@ -43,7 +43,6 @@
     <string name="action_download">"Download data here"</string>
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give an answer"</string>
-    <string name="close">"close"</string>
     <string name="download_error">"Error while downloading data"</string>
     <string name="upload_error">"Error while uploading answers"</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
@@ -104,7 +103,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wi-Fi"</string>
     <string name="autosync_off">"Off"</string>
-    <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
+    <string name="quest_streetSurface_title">"What surface does this road have?"</string>
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
     <string name="quest_surface_value_ground">"Ground (generic)"</string>
@@ -201,7 +200,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_sport_gaelic_games">"Gaelic games"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Partially"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note that many stands can be used to park one bicycle on each side."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand."</string>
     <string name="quest_sport_roller_skating">"Roller skating"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Partially means that there is no more than an ankle-high step to access the place and that most rooms inside are wheelchair accessible."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Partially means that there is no more than an ankle-high step to access it."</string>
@@ -502,8 +501,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="underground">"underground"</string>
     <string name="quest_sidewalk_value_yes">"pavement"</string>
     <string name="quest_sidewalk_value_no">"no pavement"</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">"Are pedestrians forbidden to walk on this road here?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"This street was tagged as having no pavement on either side. If there is a pavement after all, but it is displayed as a separate way, please answer “pavement”."</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Are pedestrians forbidden to walk on this road without sidewalk here?"</string>
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="pref_title_theme_select">"Select theme"</string>
     <string name="theme_automatic">"Auto"</string>
@@ -538,7 +536,7 @@ Split it now?"</string>
     <string name="quest_handrail_title">"Do these steps have a handrail?"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="quest_ref_answer_noRef">"No number or code visible…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"The road in the illustration is rotated the same as its centre on the map."</string>
+    <string name="quest_street_side_puzzle_tutorial">"The road in the illustration is rotated the same as on the map at its centre pin location. Try rotating the map and you’ll get it."</string>
     <string name="quest_recycling_materials_title">"What can be left here for recycling?"</string>
     <string name="quest_recycling_materials_note">"If anything not listed can be recycled here, please leave a note instead."</string>
     <string name="quest_recycling_type_batteries">"Batteries"</string>
@@ -658,7 +656,7 @@ Finally, remember to stay safe: Be aware of your surroundings and don’t enter 
     <string name="achievement_wheelchair_title">"Mobility"</string>
     <string name="achievement_wheelchair_solved_X">"You solved %d quests that help wheelchair users get around town!"</string>
     <string name="achievement_postman_title">"Postman"</string>
-    <string name="achievement_postman_solved_X">"You helped locate %d addresses!
+    <string name="achievement_postman_solved_X">"You helped to locate %d addresses and other postal amenities!
 This data is essential not only for the postman but also for any navigation system."</string>
     <string name="achievement_building_title">"High-Rise"</string>
     <string name="achievement_building_solved_X">"You solved %d building related quests.
@@ -1266,8 +1264,6 @@ Move it now?"</string>
     <string name="bicycle_boulevard_is_a">"It’s a %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"It’s not a %1$s"</string>
     <string name="bicycle_boulevard">"Bicycle boulevard"</string>
-    <string name="separate_cycleway_no">"No cycling"</string>
-    <string name="separate_cycleway_allowed">"Cyclists are allowed"</string>
     <string name="separate_cycleway_no_or_allowed">"Not designated for cyclists (cycling may still be allowed)"</string>
     <string name="separate_cycleway_non_segregated">"Shared-use path"</string>
     <string name="separate_cycleway_segregated">"Separated bike and foot path"</string>
@@ -1343,7 +1339,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_defibrillator_location">"Where is this defibrillator located?"</string>
     <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
     <string name="quest_sanitary_dump_station_title">"Is there a sanitary dump station?"</string>
-    <string name="quest_sanitary_dump_station_description">"Facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:"</string>
+    <string name="quest_sanitary_dump_station_description">"A sanitary dump station is a facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:"</string>
     <string name="quest_generalFee_title">"Do you need to pay to use this?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"It’s a fire enclosure"</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills."</string>
@@ -1378,7 +1374,6 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_buildingType_tower_description">"any kind of tower"</string>
     <string name="quest_buildingType_under_construction">"Under construction"</string>
     <string name="overlay_buildings">"Buildings"</string>
-    <string name="quest_pedestrian_crossing_signals">"Do you have to wait for a traffic signal to cross here?"</string>
     <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
     <string name="overlay_places">"Places"</string>
     <string name="overlay_things">"Things"</string>
@@ -1391,4 +1386,23 @@ You can find donation information on our website or project home, Google Play do
     <string name="quest_isAmenityIndoor_outside_covered">"Not inside, but covered"</string>
     <string name="lit_value_unsupported">"Specific lit status that is not selectable in this app"</string>
     <string name="quest_generic_otherAnswers2">"Er…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Are there traffic signals that show when to cross here?"</string>
+    <string name="quest_moped_access_title">"Is there a sign indicating access for mopeds on this bike path?"</string>
+    <string name="quest_moped_access_allowed">"There is no sign"</string>
+    <string name="quest_moped_access_designated">"There is a sign that designates this bike path for mopeds"</string>
+    <string name="quest_moped_access_forbidden">"There is a sign that prohibits mopeds"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"This quest type is disabled by default because moped access is only indicated by a specific signs at start/end of a cycleway."</string>
+    <string name="quest_arrow_tutorial">"The arrows in the illustration point towards the directions in which the way runs on the map at its center pin location. Try rotating the map and you’ll get it."</string>
+    <string name="info">"More information"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"It is forbidden."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"It is allowed."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Actually, there is a sidewalk, but it is displayed separately on the map."</string>
+    <string name="quest_buildingLevels_hint">"For buildings on a slope, the level count starts from the ground level of the lowest side.
+
+A level counts as a roof level when its windows are in the roof. Subsequently, roofs with zero roof levels are not necessarily flat, just not tall enough for an entire level.
+    "</string>
+    <string name="quest_parcel_locker_brand">"What’s the brand of this parcel locker?"</string>
+    <string name="quest_parcel_locker_pickup">"Can you pick up parcels here?"</string>
+    <string name="quest_parcel_locker_mail_in">"Can you drop off parcels here?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Power line is anchored to building"</string>
 </resources>

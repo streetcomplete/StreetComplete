@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Instacoin, RBC]
-chargingStationOperators: [FLO, NB Power, Énergie NB Power, Petro Canada, Parks Canada]
+chargingStationOperators: [FLO, NB Power, Énergie NB Power, 'Tesla, Inc.', Petro Canada, Parks Canada, ChargePoint]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en, fr]

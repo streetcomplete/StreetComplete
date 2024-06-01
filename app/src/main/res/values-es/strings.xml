@@ -43,7 +43,6 @@
     <string name="action_download">"Descargar tareas cercanas"</string>
     <string name="action_upload">"Subir respuestas"</string>
     <string name="no_changes">"El formulario está vacío"</string>
-    <string name="close">"cerrar"</string>
     <string name="download_error">"Hubo un error al buscar tareas"</string>
     <string name="upload_error">"Hubo un error al subir las respuestas"</string>
     <string name="download_area_too_big">"Acerca un poco más el mapa"</string>
@@ -355,7 +354,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_religion_for_place_of_worship_title">"¿Qué religión se practica en este lugar?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islam"</string>
-    <string name="quest_religion_hindu">"Hinduísmo"</string>
+    <string name="quest_religion_hindu">"Hinduismo"</string>
     <string name="quest_religion_buddhist">"Budismo"</string>
     <string name="quest_religion_shinto">"Sintoísmo (shinto)"</string>
     <string name="quest_religion_jewish">"Judaísmo"</string>
@@ -504,7 +503,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_sidewalk_value_yes">"acera"</string>
     <string name="quest_sidewalk_value_no">"no hay acera"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"¿Está prohibido que los peatones circulen por este tramo de carretera?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"No figura que haya acera a ningún lado de esta carretera. En caso de que la haya, pero figure como una vía alternativa, contesta «acera»."</string>
     <string name="quest_buildingType_title">"¿Qué tipo de edificio es?"</string>
     <string name="pref_title_theme_select">"Tema de colores"</string>
     <string name="theme_automatic">"Automático"</string>
@@ -1256,8 +1254,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="bicycle_boulevard_is_a">"Es un %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"No es un %1$s"</string>
     <string name="bicycle_boulevard">"Calle ciclista"</string>
-    <string name="separate_cycleway_no">"No se puede montar en bici"</string>
-    <string name="separate_cycleway_allowed">"Se puede montar en bici"</string>
     <string name="separate_cycleway_no_or_allowed">"No pensado para ciclistas (no significa que esté prohibido)"</string>
     <string name="separate_cycleway_non_segregated">"Camino de uso compartido"</string>
     <string name="separate_cycleway_segregated">"Camino peatonal y ciclista por separado"</string>
@@ -1367,7 +1363,6 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="quest_buildingType_tower_description">"edificaciones con forma de torre"</string>
     <string name="quest_buildingType_under_construction">"En construcción"</string>
     <string name="overlay_buildings">"Edificios"</string>
-    <string name="quest_pedestrian_crossing_signals">"¿Hay que esperar a que cambie un semáforo para cruzar?"</string>
     <string name="quest_pedestrian_crossing_markings">"¿Este cruce está demarcado?"</string>
     <string name="overlay_places">"Lugares"</string>
     <string name="overlay_things">"Cosas"</string>
@@ -1379,4 +1374,6 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="quest_isAmenityIndoor_outside_covered">"No está dentro, pero está a cubierto"</string>
     <string name="lit_value_unsupported">"Otro tipo de iluminación que no esté en la aplicación"</string>
     <string name="quest_generic_otherAnswers2">"Eh..."</string>
+    <string name="quest_pedestrian_crossing_signals2">"¿Hay algún semáforo que muestre cuando se cruza aquí?"</string>
+    <string name="quest_moped_access_title">"¿Hay alguna señal indicando acceso para mopeds sobre es"</string>
 </resources>

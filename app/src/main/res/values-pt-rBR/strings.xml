@@ -43,7 +43,6 @@
     <string name="action_download">"Baixar dados aqui"</string>
     <string name="action_upload">"Enviar respostas"</string>
     <string name="no_changes">"Você não deu uma resposta"</string>
-    <string name="close">"fechar"</string>
     <string name="download_error">"Erro ao procurar por missões"</string>
     <string name="upload_error">"Erro ao enviar respostas"</string>
     <string name="download_area_too_big">"Aproxime mais o zoom"</string>
@@ -503,7 +502,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_sidewalk_value_yes">"com calçada"</string>
     <string name="quest_sidewalk_value_no">"sem calçada"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Pedestres são proibidos de andar aqui nesta via?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rua foi marcada como não tendo calçadas em nenhum lado. Caso haja uma calçada mas conste como uma via separada, responda “calçada”."</string>
     <string name="quest_buildingType_title">"Que tipo de edificação é esta?"</string>
     <string name="pref_title_theme_select">"Selecione tema"</string>
     <string name="theme_automatic">"Automático"</string>
@@ -1265,8 +1263,6 @@ Movê-lo agora?"</string>
     <string name="bicycle_boulevard_is_a">"É um %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Não é %1$s"</string>
     <string name="bicycle_boulevard">"Avenida da bicicleta"</string>
-    <string name="separate_cycleway_no">"Sem andar de bicicleta"</string>
-    <string name="separate_cycleway_allowed">"Ciclistas são permitidos"</string>
     <string name="separate_cycleway_no_or_allowed">"Não designado para ciclistas (o ciclismo ainda pode ser permitido)"</string>
     <string name="separate_cycleway_non_segregated">"Caminho de uso compartilhado"</string>
     <string name="separate_cycleway_segregated">"Bicicleta e caminhos separados"</string>
@@ -1378,7 +1374,6 @@ Geralmente indicado por uma placa como esta:"</string>
     <string name="quest_buildingType_tower_description">"qualquer tipo de torre"</string>
     <string name="quest_buildingType_under_construction">"Em contrução"</string>
     <string name="overlay_buildings">"Edifícios"</string>
-    <string name="quest_pedestrian_crossing_signals">"Você tem que esperar um sinal do semáforo  para passar aqui?"</string>
     <string name="quest_pedestrian_crossing_markings">"Esta passagem de pedestres tem marcações no terreno?"</string>
     <string name="overlay_places">"Lugares"</string>
     <string name="overlay_things">"Coisas"</string>

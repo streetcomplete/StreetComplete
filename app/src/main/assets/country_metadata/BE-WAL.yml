@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Batopin, bpost, BNP Paribas Fortis, Belfius, ING, Bpost, Crelan, BNP Paribas, Argenta, AXA]
-chargingStationOperators: [Lidl, Allego, 'Tesla, Inc.', Ionity, ZE-MO, Luminus, Q8, DATS 24, Ores, Electra, D'Ieteren, Blue Corner, Administration communale, TEC, Eoly, Emyon, EVBox, Audi]
-clothesContainerOperators: [Terre, IDELUX-Environnement, Terre ASBL, Terre asbl, Oxfam, Les Petits Riens, Oxfam-Solidarité, Les Petits Riens - Spullenhulp, ASBL Terre, Caritas n.v., Les Petits Riens-Spullenhulp, Curitas, BEP, ASBL la chaîne du cœur]
+atmOperators: [Batopin, bpost, Belfius, BNP Paribas Fortis, ING, Crelan, Bpost, BNP Paribas, Argenta, AXA]
+chargingStationOperators: [Lidl, Allego, 'Tesla, Inc.', Ionity, ZE-MO, Luminus, DATS 24, Q8, Ores, Electra, D'Ieteren, Blue Corner, Administration communale, TEC, Eoly, Emyon, EVBox, Audi]
+clothesContainerOperators: [Terre, IDELUX-Environnement, Terre ASBL, Oxfam, Terre asbl, Les Petits Riens, Oxfam-Solidarité, Les Petits Riens - Spullenhulp, ASBL Terre, Caritas n.v., Les Petits Riens-Spullenhulp, Curitas, BEP, ASBL la chaîne du cœur, A.S.B.L. La Chaîne du Cœur]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [fr, de]
 parcelLockerBrand: [bpost, Mondial Relay, Bpost]

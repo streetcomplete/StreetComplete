@@ -43,7 +43,6 @@
     <string name="action_download">"Ieškoti užduočių čia"</string>
     <string name="action_upload">"Nusiųsti atsakymus"</string>
     <string name="no_changes">"Jūs palikote formą tuščią"</string>
-    <string name="close">"uždaryti"</string>
     <string name="download_error">"Klaida ieškant užduočių"</string>
     <string name="upload_error">"Klaida nusiunčiant atsakymus"</string>
     <string name="download_area_too_big">"Prašome labiau priartinti"</string>
@@ -504,7 +503,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_sidewalk_value_yes">"šaligatvis"</string>
     <string name="quest_sidewalk_value_no">"nėra šaligatvio"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ar pėstiesiems draudžiama eiti šiuo keliu?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ši gatvė pažymėta kaip neturinti šaligatvio nei vienoje pusėje. Jei visgi yra šaligatvis, bet jis rodomas kaip atskiras kelias, atsakykite „šaligatvis“."</string>
     <string name="quest_buildingType_title">"Kokio tipo šis pastatas?"</string>
     <string name="pref_title_theme_select">"Parinkite temą"</string>
     <string name="theme_automatic">"Automatinė"</string>
@@ -1217,7 +1215,6 @@ Tą patį padarykite ir kitoje pusėje, jei yra."</string>
     <string name="node_moved_too_far">"Pastumtas per toli. Rekomenduojame palikti pastabą"</string>
     <string name="quest_placeName_no_name_answer">"Čia nėra pavadinimo ženklo"</string>
     <string name="overlay_cycleway">"Dviračių takai"</string>
-    <string name="separate_cycleway_allowed">"Dviratininkai yra leidžiami"</string>
     <string name="separate_cycleway_no_or_allowed">"Nepritaikyta dviratininkams (dviratininkai vistiek gali buti leidžiami)"</string>
     <string name="separate_cycleway_non_segregated">"Bendro naudojimo kelias"</string>
     <string name="separate_cycleway_segregated">"Atskiras pėsčiųjų ir dviratininkų kelias"</string>

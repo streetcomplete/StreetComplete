@@ -43,7 +43,6 @@
     <string name="action_download">"Buradaki veriyi indir"</string>
     <string name="action_upload">"Yanıtları yükle"</string>
     <string name="no_changes">"Cevap vermedin"</string>
-    <string name="close">"kapat"</string>
     <string name="download_error">"Veri indirilirken hata oluştu"</string>
     <string name="upload_error">"Yanıtlar yüklenirken hata oluştu"</string>
     <string name="download_area_too_big">"Lütfen daha da yakınlaştırın"</string>
@@ -396,7 +395,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="pref_quests_reset">"Görevin sırasını ve açık kapalı durumunu sıfırla?"</string>
     <string name="quest_generic_item_invalid_value">"Lütfen daha spesifik bir değer seçin."</string>
     <string name="quest_buildingType_answer_multiple_types">"Birden fazla amacı var"</string>
-    <string name="quest_buildingType_answer_multiple_types_description">"Basitçe bu binanın ana amacını seçin.  Örneğin.  Zemin katında, üstünde daire bulunan bir dükkan varsa, hala esas olarak bir apartman binasıdır."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Basitçe bu binanın ana amacını seçin.  Örneğin.  Zemin katında, üstünde daire bulunan bir dükkân varsa, hala esas olarak bir apartman binasıdır."</string>
     <string name="quest_buildingType_answer_construction_site">"Hala inşa ediliyor"</string>
     <string name="quest_buildingType_residential">"Meskun"</string>
     <string name="quest_buildingType_residential_description">"insanların yaşadığı bina"</string>
@@ -504,7 +503,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_sidewalk_value_yes">"Kaldırım var"</string>
     <string name="quest_sidewalk_value_no">"Kaldırım yok"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Yayaların bu yolda yürümesi yasak mı?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Bu caddenin iki tarafında da kaldırım olmadığı etiketlendi. Her şeye rağmen bir kaldırım olduğu halde ayrı bir yol olarak gösteriliyorsa, lütfen 'kaldırım' cevabını verin."</string>
     <string name="quest_buildingType_title">"Bu nasıl bir bina?"</string>
     <string name="pref_title_theme_select">"Tema seçin"</string>
     <string name="theme_automatic">"Otomatik"</string>
@@ -547,7 +545,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_recycling_type_green_waste">"Bahçe atıkları"</string>
     <string name="quest_recycling_type_glass_bottles">"Cam şişe ve kavanozlar"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Şişe ve kavanozlar"</string>
-    <string name="quest_recycling_type_paper">"Kağıt"</string>
+    <string name="quest_recycling_type_paper">"Kâğıt"</string>
     <string name="quest_recycling_type_plastic_generic">"Plastik"</string>
     <string name="quest_recycling_type_plastic">"Herhangi plastik"</string>
     <string name="quest_recycling_type_shoes">"Ayakkabı"</string>
@@ -705,7 +703,7 @@ seviyeleri"</string>
     <string name="quest_board_type_public_transport">"Toplu taşıma"</string>
     <string name="quest_board_type_title">"Bu bilgi panosunun konusu nedir?"</string>
     <string name="quest_board_type_map">"Bu bir harita"</string>
-    <string name="quest_board_type_map_description">"Pano belirli bir konu hakkındaysa, lütfen bir harita içerip içermediğine bakılmaksızın bunu belirtin. Örneğin, bir toplu taşıma panosunun bir otobüs güzergah haritası olabilir. Konu mevcut cevaplar arasında listelenmemişse, lütfen bunun yerine bir not bırakın."</string>
+    <string name="quest_board_type_map_description">"Pano belirli bir konu hakkındaysa, lütfen bir harita içerip içermediğine bakılmaksızın bunu belirtin. Örneğin, bir toplu taşıma panosunun bir otobüs güzergâh haritası olabilir. Konu mevcut cevaplar arasında listelenmemişse, lütfen bunun yerine bir not bırakın."</string>
     <string name="quest_surface_detailed_answer_impossible">"Bir kaç yüzey…"</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">"Bu yüzeyi tanımlamanın imkansız olduğuna emin misiniz? \"Yol boyunca değişiyor\" seçeneği ile yolun değişen kısmını kesebilirsiniz. Yol tek bir yüzeyse ve listede yoksa lütfen \"Söyleyemem\" seçeneğini seçin."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Lütfen burada yüzeyin yapısını kısaca belirtin, örneğin \"arnavut kaldırımlı yer yer kumlu\". Metin uzunluğu 255 karakterle sınırlıdır."</string>
@@ -748,7 +746,6 @@ seviyeleri"</string>
     <string name="achievement_rare_title">"Hazine avı"</string>
     <string name="achievement_rare_solved_X">"Gerçekten nadiren tamamlanan %d görev buldunuz ve çözdünüz, tebrikler!"</string>
     <string name="achievement_citizen_title">"Vatandaş"</string>
-    <string name="achievement_citizen_solved_X">"Şehirdeki günlük yaşama "</string>
     <string name="achievement_outdoors_title">"Açık havada"</string>
     <string name="quest_pedestrian_crossing_island">"Bu yaya geçidinde bir trafik adası var mı?"</string>
     <string name="quest_generic_answer_noSign">"İşaret yok"</string>
@@ -796,7 +793,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_shop_gone_vacant_answer">"Boş"</string>
     <string name="quest_shop_gone_replaced_answer">"Bir…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Buraya bir tür yer yazın"</string>
-    <string name="quest_shop_vacant_type_title">"Bu dükkan boştu. Şimdi burada ne var?"</string>
+    <string name="quest_shop_vacant_type_title">"Bu dükkân boştu. Şimdi burada ne var?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Şerit sayısı iki taraf için farklı"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Bu görev türü varsayılan olarak devre dışı bırakılmıştır çünkü bazı bölgelerde kullanışlı değildir ve bu türden bir görevi cevaplayabilmek için büyük olasılıkla bir yere girmeniz gerekecektir."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Hiç bisiklet yolu yok"</string>
@@ -996,8 +993,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_placeName_no_name_answer">"İsim tabelası yok."</string>
     <string name="overlay_cycleway">"Bisiklet yolları"</string>
     <string name="bicycle_boulevard">"Bisiklet bulvarı"</string>
-    <string name="separate_cycleway_no">"Bisiklet sürmek yasak"</string>
-    <string name="separate_cycleway_allowed">"Bisikletçiler girebilir"</string>
     <string name="separate_cycleway_no_or_allowed">"Bisikletçiler için belirtilmemiş (bisiklet sürmeye izin verilebilir)"</string>
     <string name="separate_cycleway_non_segregated">"Paylaşımlı yol"</string>
     <string name="separate_cycleway_segregated">"Ayrılmış bisiklet ve yaya yolu"</string>
@@ -1010,7 +1005,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="overlay_surface">"Zeminler"</string>
     <string name="overlay_path_surface_segregated">"Bisiklet ve yaya için ayrılmış bölge"</string>
     <string name="quest_crossing_title2">"Burada bir geçit var mı?"</string>
-    <string name="quest_crossing_yes">"Evet (kaldırım alçaltılmış yada işaretler var)"</string>
+    <string name="quest_crossing_yes">"Evet (kaldırım alçaltılmış ya da işaretler var)"</string>
     <string name="quest_crossing_no">"Hayır fakat geçmek mümkün"</string>
     <string name="quest_crossing_prohibited">"Hayır geçmek yasak ya da imkansız "</string>
     <string name="quest_hairdresser_title">"Bu kuaförün müşterisi kimlerdir?"</string>
