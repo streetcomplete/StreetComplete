@@ -75,7 +75,7 @@ private fun CreditsSections(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(32.dp),
     ) {
         CreditsSection(stringResource(R.string.credits_author_title)) {
