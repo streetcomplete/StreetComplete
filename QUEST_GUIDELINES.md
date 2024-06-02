@@ -37,7 +37,7 @@ Depending on the quest, this requires some research but is necessary preparation
 As mentioned, the user interface must leave no space for misunderstandings, it must be concise and quick and easy to use. Also sounds obvious, but you will quickly find out that a balance must be found between covering all the edge cases and designing the form to be as straightforward and clutterless as possible.
 
 - Design the main form clutter-free so that it is straightforward for the majority of use cases.
-- Make it not impossible to answer the edge cases (but don't clutter up the main form with that). A good pattern is to "ban" answering edge cases into the "Other answers..." menu. I.e. look at the opening hours quest.
+- Make it not impossible to answer the edge cases (but don't clutter up the main form with that). A good pattern is to "ban" answering edge cases into the "Uh..." menu. I.e. look at the opening hours quest.
 - Don't rely on the "leave a note" fallback too much. It is not intended and does not work as a regular answer but is designed to cover the case that the question was invalid itself because it was based on wrong data like i.e. the place does not exist anymore.
 - The information the user should fill in should be as atomic as possible. Users are impatient. I.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
 - "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo. 

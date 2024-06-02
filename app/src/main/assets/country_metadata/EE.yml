@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [ru]
-atmOperators: [Swedbank, SEB, LHV, Luminor | LHV, LHV | Luminor, Luminor, brand=Swedbank, Nordea, LHV;Luminor, LHV; Luminor, brand=LHV, Sampo/Nordea, LHV / Luminor]
-chargingStationOperators: [ABB, Enefit Volt, Elmo, Eleport, Enefit, ELMO, ABB AS, eleport, Enefit VOLT, Alexela, Ionity, Elelevi]
-clothesContainerOperators: [Tallinna Jäätmekeskus, TJT]
+atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Luminor, brand=Swedbank, Nordea, LHV;Luminor, LHV; Luminor, brand=LHV, Sampo/Nordea, LHV / Luminor, Euronet]
+chargingStationOperators: [ABB, Eleport, Enefit Volt, Elmo, Enefit, ELMO, ABB AS, eleport, Enefit VOLT, Alexela, Ionity, Elelevi]
+clothesContainerOperators: [Tallinna Jäätmekeskus, TJT, Riidepunkt]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false

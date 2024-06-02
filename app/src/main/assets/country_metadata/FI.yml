@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Otto, Nosto, Suomen Automatia Oy, Otto., Automatia Pankkiautomaatit Oy, OttoPlus, Osuuspankki, TalletusOtto, Nordea, Loomis Automatia Oy, bittiraha.fi, OTTO, Nokas CMS Oy, atm, Otto-pankkiautomaatti, Otto-automaatti, OP, Nokas, Automatia, Aktia]
-chargingStationOperators: [Virta, VIRTA, Recharge, 'Tesla, Inc.', Ionity, Helen, Liikennevirta Oy, Fortum Charge & Drive, Lidl, K-Lataus, Fortum, ABC, Recharge Finland Oy, Plugit, Asikkalan kunta, KSSe, Motonet, eParking, S-ryhmä, HOK-Elanto, Väre, Kotkan energia, K-lataus, Helen Oy, ABC Lataus, PlugIt, Fortum Charge&Drive, k-lataus, Virtapiste, Virta Global Charging Station, Tokmanni, Tesla, Recharge Infra, Plugit Finland Oy, Lapland Hotels, Kymen Seudun Osuuskauppa, Juustoportti, Helsingin Energia, Charge&Drive, Alva, ABC-lataus, ABC latauspiste, ABB]
-clothesContainerOperators: [UFF, Rinki, HSY, Suomen Pakkauskierrätys RINKI Oy, Recci, Fida, Rosk'n roll, Rinki-ekopiste, Rinki Oy, Auringonnousu, Suomen Pakkauskierrätys Rinki Oy, Rinkiin, Pelastusarmeija]
+atmOperators: [Otto, Nosto, Suomen Automatia Oy, Otto., Automatia Pankkiautomaatit Oy, OttoPlus, Osuuspankki, TalletusOtto, Loomis Automatia Oy, Nordea, Nokas CMS Oy, OTTO, bittiraha.fi, atm, Otto-pankkiautomaatti, Otto-automaatti, OP, Nokas, Bittimaatti, Automatia, Aktia]
+chargingStationOperators: [Virta, VIRTA, Recharge, 'Tesla, Inc.', Helen, Ionity, Fortum Charge & Drive, Lidl, K-Lataus, ABC, Fortum, Liikennevirta Oy, eParking, Recharge Finland Oy, Plugit, Asikkalan kunta, KSSe, Motonet, HOK-Elanto, ABC Lataus, S-ryhmä, K-lataus, Väre, Kotkan energia, Helen Oy, PlugIt, Fortum Charge&Drive, k-lataus, Virtapiste, Virta Global Charging Station, Tokmanni, Tesla, Recharge Infra, Plugit Finland Oy, Lapland Hotels, Kymen Seudun Osuuskauppa, Juustoportti, Helsingin Energia, Charge&Drive, Alva, ABC-lataus, ABC latauspiste, ABB]
+clothesContainerOperators: [UFF, Rinki, HSY, Suomen Pakkauskierrätys RINKI Oy, Recci, Fida, Rosk'n roll, Rinki-ekopiste, Rinki Oy, Auringonnousu, Suomen Pakkauskierrätys Rinki Oy, Rinkiin, Pelastusarmeija, Emmy]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false
@@ -15,6 +15,6 @@ mobileCountryCode: 244
 noEntrySignStyle: yellow
 officialLanguages: [fi, sv]
 orchardProduces: [strawberry, apple, raspberry, blueberry, tomato, pear, chilli_pepper, sweet_pepper]
-parcelLockerBrand: [Smartpost, Posti, Postin automaatti, Budbee Box, Pakettipiste, Smartmile, PostNord, Budbee]
+parcelLockerBrand: [Smartpost, Posti, Postin automaatti, Budbee Box, Pakettipiste, iBoxen, Smartmile, PostNord, Budbee]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]
 postboxesHaveCollectionTimes: true

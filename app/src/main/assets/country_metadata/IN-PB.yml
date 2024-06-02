@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [State Bank of India, SBI, HDFC Bank, SBI ATM, HDFC, Axis Bank, ICICI Bank, Bank of India, axis bank, State Bank of Patiala, PNB ATM, PNB, ICICI]
+atmOperators: [State Bank of India, SBI, HDFC Bank, SBI ATM, HDFC, Bank of India, Axis Bank, ICICI Bank, axis bank, State Bank of Patiala, PNB ATM, PNB, ICICI]
 officialLanguages: [pa, hi, en]
 popularReligions: [sikh, hindu, muslim, christian, jain]

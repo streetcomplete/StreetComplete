@@ -1,1 +1,1 @@
-OpenStreetMap 조사 앱
+OpenStreetMap 설문조사 앱

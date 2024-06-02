@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Fifth Third Bank, PNC Bank, Chase, Farmers National Bank, U.S. Bank]
-chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla Motors, Electrify America]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, Electrify America]
 defaultSpeedLimitHasUrbanOrRural: true

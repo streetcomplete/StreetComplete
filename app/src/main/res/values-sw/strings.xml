@@ -43,7 +43,6 @@
     <string name="action_download">"Tafuta utafutaji hapa"</string>
     <string name="action_upload">"Tuma majibu"</string>
     <string name="no_changes">"Hukutoa jibu"</string>
-    <string name="close">"Karibu/Pembeni au Funga"</string>
     <string name="download_error">"Hitilafu wakati wa utafutaji"</string>
     <string name="upload_error">"Hitilafu wakati wa kutuma majibu"</string>
     <string name="download_area_too_big">"Tafadhali ikuze zaidi"</string>
@@ -477,7 +476,6 @@
     <string name="quest_sidewalk_value_yes">"Njia ya pembezoni mwa barabara"</string>
     <string name="quest_sidewalk_value_no">"hakuna njia pembeni mwa barabara"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Je, watembea kwa miguu hawaruhusiwi kutembea kwenye barabara hii hapa?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Mtaa huu uliwekwa alama kuwa hauna njia za pembezoni mwa barabara katika pande zote. Ikiwa kuna njia ya pembezoni lakini imeoneshwa kama njia iliyo kando, tafadhali jibu \"Njia ya pembezoni\"."</string>
     <string name="quest_buildingType_title">"Jengo hili ni la aina gani?"</string>
     <string name="pref_title_theme_select">"Chagua mandhari"</string>
     <string name="theme_automatic">"Otomatiki"</string>
@@ -1218,8 +1216,6 @@
     <string name="bicycle_boulevard_is_a">"Ni %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Sio %1$s"</string>
     <string name="bicycle_boulevard">"Njia ya baiskeli iliojengewa"</string>
-    <string name="separate_cycleway_no">"Hakuna kuendesha baiskeli"</string>
-    <string name="separate_cycleway_allowed">"waendesha baskeli wanaruhusiwa"</string>
     <string name="separate_cycleway_no_or_allowed">"Haijaundwa kwa ajili ya waendesha baiskeli (baiskeli bado inaweza kuruhusiwa)"</string>
     <string name="separate_cycleway_non_segregated">"Njia ya matumizi ya pamoja"</string>
     <string name="separate_cycleway_segregated">"Njia iliyotengwa ya baiskeli na miguu"</string>

@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [La Banque Postale, BNP Paribas, Crédit Mutuel, Crédit Agricole, Banque Postale, BRED]
+atmOperators: [La Banque Postale, BNP Paribas, Crédit Mutuel, Banque Postale, BRED]
 centerLineStyle: white
 chargingStationOperators: [Green Technologie, EZDrive]
 edgeLineStyle: short white dashes

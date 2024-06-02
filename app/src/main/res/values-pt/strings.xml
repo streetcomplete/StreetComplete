@@ -43,7 +43,6 @@
     <string name="action_download">"Descarregar dados aqui"</string>
     <string name="action_upload">"Enviar respostas"</string>
     <string name="no_changes">"Não deu uma resposta"</string>
-    <string name="close">"fechar"</string>
     <string name="download_error">"Surgiu um erro ao descarregar dados"</string>
     <string name="upload_error">"Surgiu um erro ao enviar as respostas"</string>
     <string name="download_area_too_big">"Por favor aproxime mais"</string>
@@ -503,7 +502,6 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_sidewalk_value_yes">"com passeio"</string>
     <string name="quest_sidewalk_value_no">"sem passeio"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"É proibida a circulação pedestre nesta estrada?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rua foi etiquetada como não tendo passeio em nenhum dos lados. Caso tenha passeio, mas este está mapeado em 1 ou 2 linhas à parte de via pedonal, responda \"passeio\"."</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é este?"</string>
     <string name="pref_title_theme_select">"Tema"</string>
     <string name="theme_automatic">"Automático"</string>
@@ -899,7 +897,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="pref_subtitle_quests_preset_name">"Conjunto: %s"</string>
     <string name="default_disabled_msg_roofShape">"Esta missão está desativada de origem porque as formas dos telhados são muitas vezes difíceis de ver ao nível da rua. Além disso este tipo de missão leva bastante tempo. Na maioria dos casos é mais fácil e mais eficiente mapear isto num computador em casa com imagens de satélites."</string>
     <string name="quest_religion_animist">"Animista"</string>
-    <string name="quest_construction_steps_title">"A contrução destes degraus já terminou?"</string>
+    <string name="quest_construction_steps_title">"A construção destes degraus já terminou?"</string>
     <string name="pref_quests_deselect_all">"Desselecionar todas as missões?"</string>
     <string name="quest_buildingType_boathouse">"Barco-casa"</string>
     <string name="quest_buildingType_allotment_house">"Barraco de horta"</string>
@@ -1264,8 +1262,6 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="bicycle_boulevard_is_a">"É %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Não é %1$s"</string>
     <string name="bicycle_boulevard">"Ciclovia"</string>
-    <string name="separate_cycleway_no">"Sem ciclovia"</string>
-    <string name="separate_cycleway_allowed">"São permitidos ciclistas"</string>
     <string name="separate_cycleway_no_or_allowed">"Não destinado a ciclistas (pode ainda ser permitido andar de bicicleta)"</string>
     <string name="separate_cycleway_non_segregated">"Via partilhada"</string>
     <string name="separate_cycleway_segregated">"Via pedonal e de bicicleta separadas"</string>
@@ -1376,7 +1372,6 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="quest_buildingType_tower_description">"qualquer tipo de torre"</string>
     <string name="quest_buildingType_under_construction">"Em construção"</string>
     <string name="overlay_buildings">"Edifícios"</string>
-    <string name="quest_pedestrian_crossing_signals">"É preciso esperar pelo sinal do semáforo para atravessar a estrada aqui?"</string>
     <string name="quest_pedestrian_crossing_markings">"Este atravessamento de peões tem marcas na estrada?"</string>
     <string name="overlay_places">"Locais"</string>
     <string name="overlay_things">"Coisas"</string>
@@ -1389,4 +1384,21 @@ Pode encontrar informações sobre donativos no nosso site ou na página inicial
     <string name="quest_isAmenityIndoor_outside_covered">"Não no interior, mas coberto"</string>
     <string name="lit_value_unsupported">"Estado específico de iluminado que não é selecionável nesta aplicação"</string>
     <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Existem sinais de trânsito que indiquem quando se deve atravessar aqui?"</string>
+    <string name="quest_moped_access_title">"Existe algum sinal que indique o acesso de ciclomotores a esta ciclovia?"</string>
+    <string name="quest_moped_access_allowed">"Não há qualquer sinal"</string>
+    <string name="quest_moped_access_designated">"Há um sinal que designa esta ciclovia para ciclomotores"</string>
+    <string name="quest_moped_access_forbidden">"Há um sinal que proíbe os ciclomotores"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Este tipo de missão está desativado por defeito porque o acesso de ciclomotores só é indicado por um sinal específico no início/fim de uma ciclovia."</string>
+    <string name="quest_arrow_tutorial">"As setas na ilustração apontam para as direções em que a via se posiciona no mapa na localização do pino central. Experimente rodar o mapa e vai perceber."</string>
+    <string name="info">"Mais informações"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"É proibido."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"É permitido."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Na verdade, existe um passeio, mas é apresentado em separado no mapa."</string>
+    <string name="quest_buildingLevels_hint">"Para edifícios num declive, a contagem de andares começa a partir do nível do solo do lado mais baixo.
+
+Um andar conta como um andar de telhado quando as suas janelas estão no telhado. Por conseguinte, os telhados com zero andares de telhado não são necessariamente planos, apenas não têm altura suficiente para um andar inteiro."</string>
+    <string name="quest_parcel_locker_brand">"Qual é a marca deste cacifo de encomendas?"</string>
+    <string name="quest_parcel_locker_pickup">"É possível levantar encomendas aqui?"</string>
+    <string name="quest_parcel_locker_mail_in">"É possível deixar encomendas aqui?"</string>
 </resources>

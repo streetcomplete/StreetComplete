@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [HBL, UBL, MCB, HBL Bank, Askari Bank, Allied Bank Limited, Meezan Bank, HBL ATM, Bank Al Habib, Bank Alfalah, NBP, Allied Bank, یونائیٹڈ بینک لمیٹڈ, نیشنل بینک آف پاکستان, ubl, JS Bank, Hbl, Faysal Bank, Bank Islami, سونیری بینک, جے ایس بینک, اسٹینڈرڈ چارٹرڈ, Summit Bank, Standard Chartered Bank, National Bank, Habib Metro Bank, Habib Bank, Dubai Islamic Bank, ATM, بینک اسلامی, mohsin house, hbl atm, UBL ATM, Soneri Bank, NIB Bank, Meezan Bank Limited, Habib Bank Ltd, Habib Bank Limited, Habib Bank ATM, Bank AL Habib, Askari bank]
+atmOperators: [HBL, UBL, MCB, HBL Bank, Askari Bank, Allied Bank Limited, Meezan Bank, HBL ATM, Bank Al Habib, Bank Alfalah, NBP, Faysal Bank, Allied Bank, یونائیٹڈ بینک لمیٹڈ, نیشنل بینک آف پاکستان, ubl, JS Bank, Hbl, Bank Islami, سونیری بینک, جے ایس بینک, اسٹینڈرڈ چارٹرڈ, Summit Bank, Standard Chartered Bank, National Bank, Habib Metro Bank, Habib Bank, Dubai Islamic Bank, ATM, بینک اسلامی, mohsin house, hbl atm, UBL ATM, Soneri Bank, NIB Bank, Meezan Bank Limited, Habib Bank Ltd, Habib Bank Limited, Habib Bank ATM, Bank AL Habib, Askari bank]
 defaultSpeedLimitHasUrbanOrRural: true
 hasSlowZone: true
 isLeftHandTraffic: true

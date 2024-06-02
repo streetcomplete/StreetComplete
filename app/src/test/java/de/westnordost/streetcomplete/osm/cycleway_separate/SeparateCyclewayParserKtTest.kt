@@ -30,15 +30,15 @@ class SeparateCyclewayParserKtTest {
     }
 
     @Test fun `parse no bicyclists allowed on path`() {
-        assertEquals(NOT_ALLOWED, parse("highway" to "path", "bicycle" to "no"))
-        assertEquals(NOT_ALLOWED, parse("highway" to "footway", "bicycle" to "no"))
+        assertEquals(NOT_ALLOWED, parse("highway" to "path", "bicycle" to "no", "bicycle:signed" to "yes"))
+        assertEquals(NOT_ALLOWED, parse("highway" to "footway", "bicycle" to "no", "bicycle:signed" to "yes"))
     }
 
     @Test fun `parse bicyclists allowed on footway`() {
-        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "yes"))
-        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "destination"))
-        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "yes"))
-        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "permissive"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "yes", "bicycle:signed" to "yes"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "destination", "bicycle:signed" to "yes"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "yes", "bicycle:signed" to "yes"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "permissive", "bicycle:signed" to "yes"))
     }
 
     @Test fun `parse cyclists on non-segregated path`() {
@@ -80,5 +80,6 @@ class SeparateCyclewayParserKtTest {
         assertEquals(EXCLUSIVE_WITH_SIDEWALK, parse("highway" to "cycleway", "sidewalk" to "yes"))
     }
 }
+
 
 private fun parse(vararg pairs: Pair<String, String>) = parseSeparateCycleway(mapOf(*pairs))

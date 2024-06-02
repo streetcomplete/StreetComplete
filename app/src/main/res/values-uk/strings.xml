@@ -43,7 +43,6 @@
     <string name="action_download">"Знайти завдання поруч"</string>
     <string name="action_upload">"Надіслати відповіді"</string>
     <string name="no_changes">"Ви залишили форму пустою"</string>
-    <string name="close">"закрити"</string>
     <string name="download_error">"Помилка пошуку завдань"</string>
     <string name="upload_error">"Помилка надсилання відповідей"</string>
     <string name="download_area_too_big">"Збільшіть масштаб"</string>
@@ -504,7 +503,6 @@
     <string name="quest_sidewalk_value_yes">"тротуар"</string>
     <string name="quest_sidewalk_value_no">"немає тротуару"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Чи заборонено пішоходам ходити цією дорогою?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Вказано, що вулиця не має тротуару з жодної зі сторін. Якщо все ж вулиця має тротуар, але він позначений окремим шляхом, будь ласка дайте відповідь \"тротуар\"."</string>
     <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
     <string name="pref_title_theme_select">"Оберіть тему"</string>
     <string name="theme_automatic">"Авто"</string>
@@ -1257,8 +1255,6 @@
     <string name="bicycle_boulevard_is_a">"Це %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Це не %1$s"</string>
     <string name="bicycle_boulevard">"Велобульвар"</string>
-    <string name="separate_cycleway_no">"Без їзди на велосипеді"</string>
-    <string name="separate_cycleway_allowed">"Дозволено велосипедистам"</string>
     <string name="separate_cycleway_no_or_allowed">"Не призначено для велосипедистів (їзда на велосипеді все одно може бути дозволена)"</string>
     <string name="separate_cycleway_non_segregated">"Вело- та пішохідна доріжка без роздільника"</string>
     <string name="separate_cycleway_segregated">"Окремі вело- та пішохідна доріжка"</string>
@@ -1369,7 +1365,6 @@
     <string name="quest_buildingType_tower_description">"будь-яка вежа"</string>
     <string name="quest_buildingType_under_construction">"Споруджуваний будинок"</string>
     <string name="overlay_buildings">"Будівлі"</string>
-    <string name="quest_pedestrian_crossing_signals">"Чи потрібно чекати сигналу світлофора, щоб перейти тут?"</string>
     <string name="quest_pedestrian_crossing_markings">"Чи є на цьому переході розмітка?"</string>
     <string name="overlay_places">"Місця"</string>
     <string name="overlay_things">"Інфраструктура"</string>
@@ -1381,5 +1376,11 @@
 Ви можете знайти інформацію про пожертви на нашому веб-сайті чи на головній сторінці проєкту, Google Play не дозволяє нам надавати посилання в застосунку."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Не всередині, але вкрито"</string>
     <string name="lit_value_unsupported">"Інший режим освітлення, який не можна вибрати в цьому застосунку"</string>
-    <string name="quest_generic_otherAnswers2">"Дзуськи…"</string>
+    <string name="quest_generic_otherAnswers2">"Інше…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Чи є сигнали світлофора, які показують, коли тут переходити?"</string>
+    <string name="quest_moped_access_title">"Чи є на цій велодоріжці знак, що вказує доступ для мопедів?"</string>
+    <string name="quest_moped_access_allowed">"Вивіски немає"</string>
+    <string name="quest_moped_access_designated">"Є знак, який позначає цю велодоріжку для мопедів"</string>
+    <string name="quest_moped_access_forbidden">"Стоїть знак, який забороняє рух мопедів"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Цей тип квесту вимкнено за замовчуванням, оскільки доступ для мопедів позначено спеціальними знаками на початку/кінці велодоріжки."</string>
 </resources>

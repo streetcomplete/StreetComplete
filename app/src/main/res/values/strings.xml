@@ -510,7 +510,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="achievement_wheelchair_title">Mobility</string>
     <string name="achievement_wheelchair_solved_X">You solved %d quests that help wheelchair users get around town!</string>
     <string name="achievement_postman_title">Postman</string>
-    <string name="achievement_postman_solved_X">You helped to locate %d addresses!\nThis data is essential not only for the mail carrier but also for any navigation system.</string>
+    <string name="achievement_postman_solved_X">You helped to locate %d addresses and other postal amenities!\nThis data is essential not only for the mail carrier but also for any navigation system.</string>
     <string name="achievement_building_title">High-Rise</string>
     <string name="achievement_building_solved_X">You solved %d building related quests.\nNote that this app asks for the house number of a building only after its type has been determined.</string>
     <string name="achievement_blind_title">Sixth Sense</string>
@@ -754,7 +754,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_parking_type_building">Building</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar holder</string>
     <string name="quest_bicycle_parking_type_two_tier">Two-tier bike rack</string>
-
+    <string name="quest_bicycle_parking_type_floor">Designated area</string>
 
     <string name="quest_bicycle_rental_capacity_title">How many rental bicycle spaces are here?</string>
 
@@ -1003,6 +1003,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_cycleway_value_none_and_oneway">none, no cycling allowed in this direction</string>
     <string name="quest_cycleway_value_shoulder">none, but shoulder is usable for cyclists</string>
+    <string name="quest_cycleway_value_sidewalk_ok">none, but sign allows cycling on sidewalk</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also bicycle path on the other side…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No bicycle lane or path at all</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
@@ -1338,6 +1339,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Steel</string>
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
+    <string name="quest_powerPolesMaterial_is_terminal">Power line is anchored to building</string>
 
     <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
     <string name="quest_bbq_fuel_wood">Wood</string>
@@ -1678,14 +1680,15 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="bicycle_boulevard_is_a">It’s a %1$s</string>
     <string name="bicycle_boulevard_is_not_a">It’s not a %1$s</string>
     <string name="bicycle_boulevard">Bicycle boulevard</string>
-    <string name="separate_cycleway_no">No cycling</string>
-    <string name="separate_cycleway_allowed">Cyclists are allowed</string>
+    <!-- Focus on cycling being the thing that is explicitly disallowed -->
+    <string name="separate_cycleway_no_signed">A sign explicitly prohibits cycling</string>
+    <string name="separate_cycleway_footway_allowed_sign">Footway, but a sign allows cycling</string>
     <!-- highway=path / foot=yes + bicycle=yes -->
-    <string name="separate_cycleway_path">Path or trail</string>
+    <string name="separate_cycleway_path">Generic path or trail (Not designated for anyone in particular)</string>
     <!-- highway=footway / foot=designated and anything else that is not designated for cyclists-->
-    <string name="separate_cycleway_no_or_allowed">Not designated for cyclists (cycling may still be allowed)</string>
+    <string name="separate_cycleway_no_or_allowed">Footway, no explicit sign about cycling (whether it is allowed depends on legislation)</string>
     <!-- foot=designated + bicycle=designated -->
-    <string name="separate_cycleway_non_segregated">Shared-use path</string>
+    <string name="separate_cycleway_non_segregated">Designated shared-use path</string>
     <!-- foot=designated + bicycle=designated + segregated=yes -->
     <string name="separate_cycleway_segregated">Separated bike and foot path</string>
     <!-- highway=cycleway / bicycle=designated -->

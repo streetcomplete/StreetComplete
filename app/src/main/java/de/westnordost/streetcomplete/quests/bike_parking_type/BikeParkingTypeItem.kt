@@ -14,6 +14,7 @@ private val BikeParkingType.titleResId: Int get() = when (this) {
     BUILDING ->         R.string.quest_bicycle_parking_type_building
     HANDLEBAR_HOLDER -> R.string.quest_bicycle_parking_type_handlebarholder
     TWO_TIER ->         R.string.quest_bicycle_parking_type_two_tier
+    FLOOR ->            R.string.quest_bicycle_parking_type_floor
 }
 
 private val BikeParkingType.iconResId: Int get() = when (this) {
@@ -24,4 +25,5 @@ private val BikeParkingType.iconResId: Int get() = when (this) {
     BUILDING ->         R.drawable.bicycle_parking_type_building
     HANDLEBAR_HOLDER -> R.drawable.bicycle_parking_type_handlebarholder
     TWO_TIER ->         R.drawable.bicycle_parking_type_two_tier
+    FLOOR ->            R.drawable.bicycle_parking_type_floor
 }
