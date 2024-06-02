@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.messages
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.changelog.Changelog
 import de.westnordost.streetcomplete.data.user.UserDataController
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
@@ -15,7 +16,8 @@ class MessagesSource(
     private val userDataController: UserDataController,
     private val achievementsSource: AchievementsSource,
     private val questSelectionHintController: QuestSelectionHintController,
-    private val prefs: ObservableSettings
+    private val changelog: Changelog,
+    private val prefs: ObservableSettings,
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table*/
@@ -76,13 +78,14 @@ class MessagesSource(
         return messages
     }
 
-    fun popNextMessage(): Message? {
+    suspend fun popNextMessage(): Message? {
         val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION)
         if (BuildConfig.VERSION_NAME != lastVersion) {
             prefs.putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME)
             if (lastVersion != null) {
+                val version = "v$lastVersion"
                 onNumberOfMessagesUpdated()
-                return NewVersionMessage("v$lastVersion")
+                return NewVersionMessage(changelog.getChangelog(version))
             }
         }
 

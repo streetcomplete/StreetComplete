@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.messages.NewAchievementMessage
 import de.westnordost.streetcomplete.data.messages.NewVersionMessage
 import de.westnordost.streetcomplete.data.messages.OsmUnreadMessagesMessage
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
-import de.westnordost.streetcomplete.screens.about.WhatsNewDialog
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
 import de.westnordost.streetcomplete.ui.util.composableContent
@@ -38,9 +37,8 @@ class MessagesContainerFragment : Fragment() {
                 )
             }
             is NewVersionMessage -> {
-                msg.sinceVersion
                 WhatsNewDialog(
-                    changelog = ,
+                    changelog = msg.changelog,
                     onDismissRequest = { shownMessage.value = null },
                     onClickLink = { }
                 )

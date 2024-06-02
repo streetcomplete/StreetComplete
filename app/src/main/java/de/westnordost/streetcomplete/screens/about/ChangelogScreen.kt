@@ -44,7 +44,8 @@ fun ChangelogScreen(
             SelectionContainer {
                 ChangelogList(
                     changelog = changelog,
-                    onClickLink = { context.openUri(it) }
+                    onClickLink = { context.openUri(it) },
+                    paddingValues = PaddingValues(16.dp)
                 )
             }
         }
@@ -56,10 +57,11 @@ fun ChangelogList(
     changelog: Map<String, List<HtmlNode>>,
     onClickLink: (String) -> Unit,
     modifier: Modifier = Modifier,
+    paddingValues: PaddingValues = PaddingValues()
 ) {
     LazyColumn(
         modifier = modifier,
-        contentPadding = PaddingValues(16.dp)
+        contentPadding = paddingValues
     ) {
         itemsIndexed(
             items = changelog.entries.toList(),
