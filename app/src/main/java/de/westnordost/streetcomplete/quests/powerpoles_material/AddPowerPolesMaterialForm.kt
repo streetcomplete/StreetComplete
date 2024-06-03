@@ -16,5 +16,4 @@ class AddPowerPolesMaterialForm : AImageListQuestForm<PowerPolesMaterial, PowerP
     override fun onClickOk(selectedItems: List<PowerPolesMaterial>) {
         applyAnswer(selectedItems.single())
     }
-
 }

@@ -81,5 +81,4 @@ class SeparateCyclewayParserKtTest {
     }
 }
 
-
 private fun parse(vararg pairs: Pair<String, String>) = parseSeparateCycleway(mapOf(*pairs))

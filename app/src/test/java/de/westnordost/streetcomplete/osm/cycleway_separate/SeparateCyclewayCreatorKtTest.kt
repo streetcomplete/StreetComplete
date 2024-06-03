@@ -797,7 +797,6 @@ class SeparateCyclewayCreatorKtTest {
             ))
         )
     }
-
 }
 
 private fun SeparateCycleway.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
