@@ -64,7 +64,8 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             // retag if it is an exclusive cycleway
             tags["highway"] = "cycleway"
             if (tags.containsKey("bicycle")) tags["bicycle"] = "designated"
-
+            // if bicycle:signed is explicitly no, set it to yes
+            if (tags["bicycle:signed"] == "no") tags["bicycle:signed"] = "yes"
             if (this == EXCLUSIVE) {
                 tags["foot"] = "no"
             } else {
