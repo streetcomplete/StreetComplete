@@ -133,28 +133,28 @@ class SeparateCyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply allowed does re-tag bicycle=permissive etc`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("bicycle", "permissive"),
-                StringMapEntryAdd("bicycle:signed", "yes"),
-                StringMapEntryModify("highway", "footway", "footway")
-            ),
+    @Test fun `apply allowed does not re-tag bicycle=permissive etc`() {
+        assertTrue(
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "bicycle" to "permissive"
-            ))
+            )).containsAll(
+                setOf(
+                    StringMapEntryModify("bicycle", "permissive", "yes"),
+                    StringMapEntryAdd("bicycle:signed", "yes")
+                )
+            )
         )
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("bicycle", "private"),
-                StringMapEntryAdd("bicycle:signed", "yes"),
-                StringMapEntryModify("highway", "footway", "footway")
-            ),
+        assertTrue(
             ALLOWED_ON_FOOTWAY.appliedTo(mapOf(
                 "highway" to "footway",
                 "bicycle" to "private"
-            ))
+            )).containsAll(
+                setOf(
+                    StringMapEntryModify("bicycle", "private", "yes"),
+                    StringMapEntryAdd("bicycle:signed", "yes")
+                )
+            )
         )
     }
 

@@ -43,8 +43,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             if (tags.containsKey("foot")) tags["foot"] = "designated"
 
             if (this == ALLOWED_ON_FOOTWAY) {
-                if (tags["bicycle"] !in yesButNotDesignated) tags["bicycle"] = "yes"
-                // add bicycle:signed=yes if not already present
+                tags["bicycle"] = "yes"
                 tags["bicycle:signed"] = "yes"
             } else {
                 if (tags["bicycle"] == "designated") tags.remove("bicycle")
