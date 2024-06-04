@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
 import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
+import de.westnordost.streetcomplete.quests.bench_armrest.AddBenchArmrest
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
@@ -266,6 +267,7 @@ fun questTypeRegistry(
     9 to AddCarWashType(),
 
     10 to AddBenchBackrest(),
+    170 to AddBenchArmrest(),
     11 to AddAmenityCover(getFeature),
 
     12 to AddBridgeStructure(),

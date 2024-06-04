@@ -715,6 +715,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_barrier_type_passage_conversion">Converted into a passage in a wall/fence/etc.</string>
     <string name="quest_barrier_type_gate_conversion">Converted into a gate</string>
 
+    <string name="quest_bench_armrest_title">Does this bench have any armrests?</string>
+    <string name="quest_bench_armrest_description">It does not matter how many armrests the bench has or where they are on the bench.</string>
+
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
 
