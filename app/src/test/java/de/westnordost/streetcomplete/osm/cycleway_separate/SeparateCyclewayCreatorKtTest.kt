@@ -818,8 +818,6 @@ class SeparateCyclewayCreatorKtTest {
         }
     }
 
-
-
 private fun SeparateCycleway.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
     applyTo(cb)
