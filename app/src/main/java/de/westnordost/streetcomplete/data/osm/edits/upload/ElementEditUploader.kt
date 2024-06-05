@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
-import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.data.ConflictException
 
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,

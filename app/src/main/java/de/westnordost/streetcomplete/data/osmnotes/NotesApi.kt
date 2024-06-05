@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.data.download.ConnectionException
+import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.download.QueryTooBigException
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.data.user.AuthorizationException
+import de.westnordost.streetcomplete.data.ConflictException
+import de.westnordost.streetcomplete.data.AuthorizationException
 
 /**
  * Creates, comments, closes, reopens and search for notes.

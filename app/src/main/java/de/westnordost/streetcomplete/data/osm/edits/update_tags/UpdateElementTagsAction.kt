@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.util.ktx.copy
 import kotlinx.serialization.Serializable
 
