@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osmtracks.TracksApi
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.util.ktx.truncate
 import de.westnordost.streetcomplete.util.logs.Log
 import io.ktor.http.encodeURLPathPart
 import kotlinx.coroutines.CoroutineName
@@ -126,12 +125,12 @@ class NoteEditsUploader(
         return ""
     }
 
-    private fun uploadAndGetAttachedTrackText(
+    private suspend fun uploadAndGetAttachedTrackText(
         trackpoints: List<Trackpoint>,
         noteText: String?
     ): String {
         if (trackpoints.isEmpty()) return ""
-        val trackId = tracksApi.create(trackpoints, noteText?.truncate(255))
+        val trackId = tracksApi.create(trackpoints, noteText)
         val encodedUsername = userDataSource.userName!!.encodeURLPathPart()
         return "\n\nGPS Trace: https://www.openstreetmap.org/user/$encodedUsername/traces/$trackId\n"
     }

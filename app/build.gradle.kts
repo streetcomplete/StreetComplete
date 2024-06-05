@@ -184,7 +184,6 @@ dependencies {
     implementation("de.westnordost:osmapi-map:3.0")
     implementation("de.westnordost:osmapi-changesets:3.0")
     implementation("de.westnordost:osmapi-notes:3.0")
-    implementation("de.westnordost:osmapi-traces:3.1")
     implementation("de.westnordost:osmapi-user:3.0")
 
     // widgets
@@ -201,6 +200,7 @@ dependencies {
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("com.charleskorn.kaml:kaml:0.59.0")
+    implementation("io.github.pdvrieze.xmlutil:serialization-android:0.86.3")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
