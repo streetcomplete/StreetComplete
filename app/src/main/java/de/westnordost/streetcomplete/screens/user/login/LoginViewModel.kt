@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorizationParams
 import de.westnordost.streetcomplete.data.user.oauth.OAuthException
 import de.westnordost.streetcomplete.data.user.oauth.OAuthService
-import de.westnordost.streetcomplete.data.user.oauth.extractAuthorizationCode
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
@@ -104,9 +103,8 @@ class LoginViewModelImpl(
     private suspend fun retrieveAccessToken(authorizationResponseUrl: String): String? {
         try {
             loginState.value = RetrievingAccessToken
-            val authorizationCode = extractAuthorizationCode(authorizationResponseUrl)
             val accessTokenResponse = withContext(Dispatchers.IO) {
-                oAuthService.retrieveAccessToken(oAuth, authorizationCode)
+                oAuthService.retrieveAccessToken(oAuth, authorizationResponseUrl)
             }
             if (accessTokenResponse.grantedScopes?.containsAll(OAUTH2_REQUIRED_SCOPES) == false) {
                 loginState.value = LoginError.RequiredPermissionsNotGranted
