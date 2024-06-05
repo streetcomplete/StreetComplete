@@ -94,9 +94,9 @@ class StreetCompleteImageUploader(
             if (status == HttpStatusCode.Gone) {
                 // it's gone if the note does not exist anymore. That's okay, it should only fail
                 // if we might want to try again later.
-            } else if (status != HttpStatusCode.OK) {
+            } else if (!status.isSuccess()) {
                 val error = response.body<String>()
-                if (status.value / 100 == 5) {
+                if (status.value in 500..599) {
                     throw ImageUploadServerException("Error code $status, Message: \"$error\"")
                 } else {
                     throw ImageUploadClientException("Error code $status, Message: \"$error\"")
