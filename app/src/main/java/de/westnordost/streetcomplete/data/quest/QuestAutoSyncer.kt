@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.download.strategy.WifiAutoDownloadStra
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -44,7 +44,7 @@ class QuestAutoSyncer(
     private val context: Context,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
-    private val userLoginStatusSource: UserLoginStatusSource,
+    private val userLoginSource: UserLoginSource,
     private val prefs: ObservableSettings,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesController: DownloadedTilesController
@@ -91,7 +91,7 @@ class QuestAutoSyncer(
         }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
+    private val userLoginStatusListener = object : UserLoginSource.Listener {
         override fun onLoggedIn() {
             triggerAutoUpload()
         }
@@ -120,7 +120,7 @@ class QuestAutoSyncer(
     override fun onCreate(owner: LifecycleOwner) {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addListener(downloadProgressListener)
-        userLoginStatusSource.addListener(userLoginStatusListener)
+        userLoginSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
@@ -141,7 +141,7 @@ class QuestAutoSyncer(
     override fun onDestroy(owner: LifecycleOwner) {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeListener(downloadProgressListener)
-        userLoginStatusSource.removeListener(userLoginStatusListener)
+        userLoginSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
         coroutineScope.coroutineContext.cancelChildren()
     }
@@ -182,7 +182,7 @@ class QuestAutoSyncer(
     private fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
         if (!isConnected) return
-        if (!userLoginStatusSource.isLoggedIn) return
+        if (!userLoginSource.isLoggedIn) return
 
         coroutineScope.launch {
             try {

@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.platform.InternetConnectionState
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -39,7 +39,7 @@ class MainViewModelImpl(
     private val uploadProgressSource: UploadProgressSource,
     private val downloadController: DownloadController,
     private val downloadProgressSource: DownloadProgressSource,
-    private val userLoginStatusSource: UserLoginStatusSource,
+    private val userLoginSource: UserLoginSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val statisticsSource: StatisticsSource,
     private val internetConnectionState: InternetConnectionState,
@@ -165,13 +165,13 @@ class MainViewModelImpl(
         get() = downloadProgressSource.isUserInitiatedDownloadInProgress
 
     override var isLoggedIn: StateFlow<Boolean> = callbackFlow {
-        send(userLoginStatusSource.isLoggedIn)
-        val listener = object : UserLoginStatusSource.Listener {
+        send(userLoginSource.isLoggedIn)
+        val listener = object : UserLoginSource.Listener {
             override fun onLoggedIn() { trySend(true) }
             override fun onLoggedOut() { trySend(false) }
         }
-        userLoginStatusSource.addListener(listener)
-        awaitClose { userLoginStatusSource.removeListener(listener) }
+        userLoginSource.addListener(listener)
+        awaitClose { userLoginSource.removeListener(listener) }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
     override val isConnected: Boolean get() = internetConnectionState.isConnected

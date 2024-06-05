@@ -8,8 +8,7 @@ import de.westnordost.streetcomplete.data.user.OAUTH2_REDIRECT_URI
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUESTED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUIRED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_TOKEN_URL
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
-import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorizationParams
 import de.westnordost.streetcomplete.data.user.oauth.OAuthException
 import de.westnordost.streetcomplete.data.user.oauth.OAuthService
@@ -56,9 +55,8 @@ data object LoggedIn : LoginState
 
 class LoginViewModelImpl(
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val userLoginStatusController: UserLoginStatusController,
-    private val oAuthService: OAuthService,
-    private val userUpdater: UserUpdater
+    private val userLoginController: UserLoginController,
+    private val oAuthService: OAuthService
 ) : LoginViewModel() {
     override val loginState = MutableStateFlow<LoginState>(LoggedOut)
     override val unsyncedChangesCount = MutableStateFlow(0)
@@ -124,8 +122,7 @@ class LoginViewModelImpl(
 
     private suspend fun login(accessToken: String) {
         loginState.value = LoggedIn
-        userLoginStatusController.logIn(accessToken)
-        userUpdater.update()
+        userLoginController.logIn(accessToken)
     }
 
     override fun resetLogin() {

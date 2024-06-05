@@ -41,7 +41,7 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.AuthorizationException
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
@@ -74,7 +74,7 @@ class MainActivity :
     private val elementEditsSource: ElementEditsSource by inject()
     private val noteEditsSource: NoteEditsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userLoginController: UserLoginController by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
     private val prefs: ObservableSettings by inject()
@@ -122,13 +122,13 @@ class MainActivity :
         if (savedInstanceState == null) {
             supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
             val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false)
-            if (!hasShownTutorial && !userLoginStatusController.isLoggedIn) {
+            if (!hasShownTutorial && !userLoginController.isLoggedIn) {
                 supportFragmentManager.commit {
                     setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
                     add(R.id.fragment_container, TutorialFragment())
                 }
             }
-            if (userLoginStatusController.isLoggedIn && isConnected) {
+            if (userLoginController.isLoggedIn && isConnected) {
                 userUpdater.update()
             }
         }
@@ -230,7 +230,7 @@ class MainActivity :
 
     private suspend fun ensureLoggedIn() {
         if (!questAutoSyncer.isAllowedByPreference) return
-        if (userLoginStatusController.isLoggedIn) return
+        if (userLoginController.isLoggedIn) return
 
         // new users should not be immediately pestered to login after each change (#1446)
         if (unsyncedChangesCountSource.getCount() < 3 || dontShowRequestAuthorizationAgain) return
@@ -282,7 +282,7 @@ class MainActivity :
                     toast(R.string.upload_server_error, Toast.LENGTH_LONG)
                 } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
-                    userLoginStatusController.logOut()
+                    userLoginController.logOut()
                     RequestLoginDialog(this@MainActivity).show()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity,
@@ -304,7 +304,7 @@ class MainActivity :
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
                 } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
-                    userLoginStatusController.logOut()
+                    userLoginController.logOut()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity,
                         R.string.download_error, e)
