@@ -25,10 +25,10 @@ import nl.adaptivity.xmlutil.serialization.XmlElement
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 class NotesApiParser {
-    private val xmlParser = XML { defaultPolicy { ignoreUnknownChildren() }}
+    private val xml = XML { defaultPolicy { ignoreUnknownChildren() }}
 
-    fun parse(xml: String): List<Note> {
-        val osm = xmlParser.decodeFromString<ApiOsm>(xml)
+    fun parseNotes(osmXml: String): List<Note> {
+        val osm = xml.decodeFromString<ApiOsm>(osmXml)
         return osm.notes.map { it.toNote() }
     }
 }
@@ -55,6 +55,7 @@ private data class ApiOsm(
 )
 
 @Serializable
+@XmlSerialName("note")
 private data class ApiNote(
     val lon: Double,
     val lat: Double,
@@ -66,6 +67,7 @@ private data class ApiNote(
 )
 
 @Serializable
+@XmlSerialName("comment")
 private data class ApiNoteComment(
     @XmlElement val date: Instant,
     @XmlElement val action: String,

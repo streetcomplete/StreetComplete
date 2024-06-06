@@ -28,7 +28,7 @@ class NotesApiParserTest {
             comments = listOf()
         )
 
-        assertEquals(listOf(note), NotesApiParser().parse(xml))
+        assertEquals(listOf(note), NotesApiParser().parseNotes(xml))
     }
 
     @Test fun `parse one full note`() {
@@ -83,7 +83,7 @@ class NotesApiParserTest {
             )
         )
 
-        assertEquals(listOf(note), NotesApiParser().parse(xml))
+        assertEquals(listOf(note), NotesApiParser().parseNotes(xml))
     }
 
     @Test fun `parse several notes`() {
@@ -121,6 +121,6 @@ class NotesApiParserTest {
             ),
         )
 
-        assertEquals(notes, NotesApiParser().parse(xml))
+        assertEquals(notes, NotesApiParser().parseNotes(xml))
     }
 }

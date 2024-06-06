@@ -46,7 +46,7 @@ class NotesApiClient(
             parameter("lon", pos.longitude.format(7))
             parameter("text", text)
         }
-        return notesApiParser.parse(response.body<String>()).single()
+        return notesApiParser.parseNotes(response.body<String>()).single()
     }
 
     /**
@@ -65,7 +65,7 @@ class NotesApiClient(
             userLoginSource.accessToken?.let { bearerAuth(it) }
             parameter("text", text)
         }
-        return notesApiParser.parse(response.body<String>()).single()
+        return notesApiParser.parseNotes(response.body<String>()).single()
     }
 
     /**
@@ -83,7 +83,7 @@ class NotesApiClient(
             return null
         }
 
-        return notesApiParser.parse(response.body<String>()).singleOrNull()
+        return notesApiParser.parseNotes(response.body<String>()).singleOrNull()
     }
 
     /**
@@ -106,7 +106,7 @@ class NotesApiClient(
             parameter("limit", limit)
             parameter("closed", 0)
         }
-        return notesApiParser.parse(response.body<String>())
+        return notesApiParser.parseNotes(response.body<String>())
     }
 }
 
