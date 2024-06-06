@@ -26,6 +26,6 @@ val statisticsModule = module {
         activeDatesDao = get(),
         countryBoundaries = get(named("CountryBoundariesLazy")),
         prefs = get(),
-        userLoginStatusSource = get()
+        userLoginSource = get()
     ) }
 }

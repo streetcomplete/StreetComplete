@@ -4,7 +4,7 @@ import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -23,12 +23,12 @@ class StatisticsController(
     private val activeDatesDao: ActiveDatesDao,
     private val countryBoundaries: Lazy<CountryBoundaries>,
     private val prefs: ObservableSettings,
-    userLoginStatusSource: UserLoginStatusSource
+    userLoginSource: UserLoginSource
 ) : StatisticsSource {
 
     private val listeners = Listeners<StatisticsSource.Listener>()
 
-    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
+    private val userLoginStatusListener = object : UserLoginSource.Listener {
         override fun onLoggedIn() {}
         override fun onLoggedOut() {
             clear()
@@ -73,7 +73,7 @@ class StatisticsController(
         }
 
     init {
-        userLoginStatusSource.addListener(userLoginStatusListener)
+        userLoginSource.addListener(userLoginStatusListener)
     }
 
     override fun getEditCount(): Int =

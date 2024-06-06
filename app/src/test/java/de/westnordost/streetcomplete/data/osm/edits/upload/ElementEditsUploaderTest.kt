@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -8,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.testutils.any

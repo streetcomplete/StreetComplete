@@ -13,8 +13,6 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
-import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -39,6 +37,8 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.checkIsSurvey
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString

@@ -1385,7 +1385,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
 You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Not inside, but covered"</string>
     <string name="lit_value_unsupported">"Specific lit status that is not selectable in this app"</string>
-    <string name="quest_generic_otherAnswers2">"Er…"</string>
+    <string name="quest_generic_otherAnswers2">"Uh…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Are there traffic signals that show when to cross here?"</string>
     <string name="quest_moped_access_title">"Is there a sign indicating access for mopeds on this bike path?"</string>
     <string name="quest_moped_access_allowed">"There is no sign"</string>

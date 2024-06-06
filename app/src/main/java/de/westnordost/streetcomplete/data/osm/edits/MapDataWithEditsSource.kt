@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -26,7 +27,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.intersect

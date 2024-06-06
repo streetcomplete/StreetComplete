@@ -8,10 +8,10 @@ import de.westnordost.streetcomplete.util.Listeners
 /** Controller that handles user login, logout, auth and updated data */
 class UserDataController(
     private val prefs: ObservableSettings,
-    private val userLoginStatusSource: UserLoginStatusSource
+    private val userLoginSource: UserLoginSource
 ) : UserDataSource {
 
-    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
+    private val userLoginStatusListener = object : UserLoginSource.Listener {
         override fun onLoggedIn() {}
         override fun onLoggedOut() {
             clear()
@@ -31,7 +31,7 @@ class UserDataController(
         }
 
     init {
-        userLoginStatusSource.addListener(userLoginStatusListener)
+        userLoginSource.addListener(userLoginStatusListener)
     }
 
     fun setDetails(userDetails: UserDetails) {

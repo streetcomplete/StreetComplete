@@ -10,8 +10,8 @@ import de.westnordost.osmapi.traces.GpsTraceDetails
 import de.westnordost.osmapi.traces.GpsTracesApi
 import de.westnordost.osmapi.traces.GpsTrackpoint
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.ConnectionException
-import de.westnordost.streetcomplete.data.user.AuthorizationException
+import de.westnordost.streetcomplete.data.AuthorizationException
+import de.westnordost.streetcomplete.data.ConnectionException
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone

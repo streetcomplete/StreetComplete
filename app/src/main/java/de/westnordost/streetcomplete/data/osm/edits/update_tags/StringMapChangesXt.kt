@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.copy
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 

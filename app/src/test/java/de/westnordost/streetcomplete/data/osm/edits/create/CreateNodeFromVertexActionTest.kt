@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.create
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
@@ -8,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on

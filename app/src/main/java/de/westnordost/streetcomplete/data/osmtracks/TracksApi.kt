@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osmtracks
 
-import de.westnordost.streetcomplete.data.download.ConnectionException
-import de.westnordost.streetcomplete.data.user.AuthorizationException
+import de.westnordost.streetcomplete.data.AuthorizationException
+import de.westnordost.streetcomplete.data.ConnectionException
 
 /**
  * Creates GPS / GPX trackpoint histories
