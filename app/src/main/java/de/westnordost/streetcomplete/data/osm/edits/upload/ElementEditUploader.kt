@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.ConflictException
 
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,
-    private val mapDataApi: MapDataApi,
+    private val mapDataApi: MapDataApiClient,
     private val mapDataController: MapDataController
 ) {
 

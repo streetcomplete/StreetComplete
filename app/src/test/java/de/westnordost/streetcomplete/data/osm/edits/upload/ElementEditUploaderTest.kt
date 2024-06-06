@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
@@ -21,7 +21,7 @@ import kotlin.test.assertFailsWith
 class ElementEditUploaderTest {
 
     private lateinit var changesetManager: OpenChangesetsManager
-    private lateinit var mapDataApi: MapDataApi
+    private lateinit var mapDataApi: MapDataApiClient
     private lateinit var mapDataController: MapDataController
     private lateinit var uploader: ElementEditUploader
 

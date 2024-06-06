@@ -10,7 +10,7 @@ import kotlinx.coroutines.yield
 
 /** Takes care of downloading notes and referenced avatar pictures into persistent storage */
 class NotesDownloader(
-    private val notesApi: NotesApi,
+    private val notesApi: NotesApiClient,
     private val noteController: NoteController
 ) {
     suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {

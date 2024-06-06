@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
@@ -14,7 +14,7 @@ import java.util.Locale
 
 /** Manages the creation and reusage of changesets */
 class OpenChangesetsManager(
-    private val mapDataApi: MapDataApi,
+    private val mapDataApi: MapDataApiClient,
     private val openChangesetsDB: OpenChangesetsDao,
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val lastEditTimeStore: LastEditTimeStore

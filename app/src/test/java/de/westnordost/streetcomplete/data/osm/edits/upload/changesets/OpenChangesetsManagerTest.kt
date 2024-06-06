@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.any
@@ -20,7 +20,7 @@ import kotlin.test.assertEquals
 class OpenChangesetsManagerTest {
 
     private lateinit var questType: OsmElementQuestType<*>
-    private lateinit var mapDataApi: MapDataApi
+    private lateinit var mapDataApi: MapDataApiClient
     private lateinit var openChangesetsDB: OpenChangesetsDao
     private lateinit var changesetAutoCloser: ChangesetAutoCloser
     private lateinit var manager: OpenChangesetsManager

@@ -11,7 +11,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
 
-class StatisticsDownloaderTest {
+class StatisticsApiClientTest {
     private val statisticsParser: StatisticsParser = mock()
 
     private val validResponseMockEngine = MockEngine { _ -> respondOk("simple response") }
@@ -19,12 +19,12 @@ class StatisticsDownloaderTest {
     @Test fun `download parses all statistics`() = runBlocking {
         val stats = Statistics(types = listOf(), countries = listOf(), rank = 2, daysActive = 100, currentWeekRank = 50, currentWeekTypes = listOf(), currentWeekCountries = listOf(), activeDates = listOf(), activeDatesRange = 100, isAnalyzing = false, lastUpdate = 10)
         on(statisticsParser.parse("simple response")).thenReturn(stats)
-        assertEquals(stats, StatisticsDownloader(HttpClient(validResponseMockEngine), "", statisticsParser).download(100))
+        assertEquals(stats, StatisticsApiClient(HttpClient(validResponseMockEngine), "", statisticsParser).get(100))
     }
 
     @Test fun `download throws Exception for a 400 response`() = runBlocking {
         val mockEngine = MockEngine { _ -> respondBadRequest() }
-        val exception = assertFails { StatisticsDownloader(HttpClient(mockEngine), "", statisticsParser).download(100) }
+        val exception = assertFails { StatisticsApiClient(HttpClient(mockEngine), "", statisticsParser).get(100) }
 
         assertEquals(
             "Client request(GET http://localhost/?user_id=100) invalid: 400 Bad Request. Text: \"Bad Request\"",
@@ -33,11 +33,11 @@ class StatisticsDownloaderTest {
     }
 
     @Test fun `download constructs request URL`() = runBlocking {
-        StatisticsDownloader(
+        StatisticsApiClient(
             HttpClient(validResponseMockEngine),
             "https://example.com/stats/",
             statisticsParser
-        ).download(100)
+        ).get(100)
 
         assertEquals("https://example.com/stats/?user_id=100", validResponseMockEngine.requestHistory[0].url.toString())
     }

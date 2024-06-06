@@ -26,15 +26,13 @@ private data class PhotoUploadResponse(
 )
 
 /** Upload and activate a list of image paths to an instance of the
- * <a href="https://github.com/streetcomplete/sc-photo-service">StreetComplete image hosting service</a>
+ * https://github.com/streetcomplete/sc-photo-service
  */
-class StreetCompleteImageUploader(
+class PhotoServiceApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String
 ) {
-    private val json = Json {
-        ignoreUnknownKeys = true
-    }
+    private val json = Json { ignoreUnknownKeys = true }
 
     /** Upload list of images.
      *

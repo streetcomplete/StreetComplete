@@ -9,8 +9,8 @@ import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-/** Dao for using this API: https://github.com/streetcomplete/oneway-data-api  */
-class TrafficFlowSegmentsApi(
+/** Api client for using this API: https://github.com/streetcomplete/oneway-data-api  */
+class TrafficFlowSegmentsApiClient(
     private val httpClient: HttpClient,
     private val apiUrl: String
 ) {

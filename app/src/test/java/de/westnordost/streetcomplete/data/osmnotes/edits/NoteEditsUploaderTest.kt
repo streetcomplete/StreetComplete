@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.NotesApi
-import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
+import de.westnordost.streetcomplete.data.osmnotes.PhotoServiceApiClient
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.osmtracks.TracksApi
+import de.westnordost.streetcomplete.data.osmtracks.TracksApiClient
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.UserDataSource
@@ -29,9 +29,9 @@ class NoteEditsUploaderTest {
 
     private lateinit var noteController: NoteController
     private lateinit var noteEditsController: NoteEditsController
-    private lateinit var notesApi: NotesApi
-    private lateinit var tracksApi: TracksApi
-    private lateinit var imageUploader: StreetCompleteImageUploader
+    private lateinit var notesApi: NotesApiClient
+    private lateinit var tracksApi: TracksApiClient
+    private lateinit var imageUploader: PhotoServiceApiClient
     private lateinit var userDataSource: UserDataSource
 
     private lateinit var uploader: NoteEditsUploader

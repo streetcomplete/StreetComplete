@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.data.user.UserApi
+import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.data.user.UserInfo
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
@@ -25,7 +25,7 @@ class AvatarsDownloaderTest {
         }
     }
     private val tempFolder = Files.createTempDirectory("images").toFile()
-    private val userApi: UserApi = mock()
+    private val userApi: UserApiClient = mock()
     private val downloader = AvatarsDownloader(HttpClient(mockEngine), userApi, tempFolder)
 
     @Test

@@ -30,7 +30,7 @@ import kotlin.io.encoding.ExperimentalEncodingApi
  * 3. Check if the URI received is matches the OAuthAuthorizationParams instance with itsForMe(uri)
  *    and feed the received uri to OAuthService.retrieveAccessToken(uri)
  */
-class OAuthService(private val httpClient: HttpClient) {
+class OAuthApiClient(private val httpClient: HttpClient) {
     private val json = Json { ignoreUnknownKeys = true }
 
     /**
@@ -40,7 +40,7 @@ class OAuthService(private val httpClient: HttpClient) {
      * @throws OAuthConnectionException if the server reply is malformed or there is an issue with
      *                                   the connection
      */
-    suspend fun retrieveAccessToken(
+    suspend fun getAccessToken(
         request: OAuthAuthorizationParams,
         authorizationResponseUrl: String
     ): AccessTokenResponse {

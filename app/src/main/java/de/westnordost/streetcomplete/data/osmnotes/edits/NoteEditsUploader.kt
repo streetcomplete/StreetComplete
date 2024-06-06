@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.NotesApi
-import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
+import de.westnordost.streetcomplete.data.osmnotes.PhotoServiceApiClient
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.osmtracks.TracksApi
+import de.westnordost.streetcomplete.data.osmtracks.TracksApiClient
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.UserDataSource
@@ -25,9 +25,9 @@ class NoteEditsUploader(
     private val noteEditsController: NoteEditsController,
     private val noteController: NoteController,
     private val userDataSource: UserDataSource,
-    private val notesApi: NotesApi,
-    private val tracksApi: TracksApi,
-    private val imageUploader: StreetCompleteImageUploader
+    private val notesApi: NotesApiClient,
+    private val tracksApi: TracksApiClient,
+    private val imageUploader: PhotoServiceApiClient
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.user.oauth
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
-import io.ktor.client.engine.mock.MockEngineConfig
 import io.ktor.client.engine.mock.respondError
 import io.ktor.client.engine.mock.respondOk
 import io.ktor.http.HeadersBuilder
@@ -83,40 +82,40 @@ class OAuthAuthorizationTest {
 
     @Test fun `extractAuthorizationCode fails with useful error messages`(): Unit = runBlocking {
         val oauth = createOAuth()
-        val service = OAuthService(HttpClient(MockEngine { respondOk() }))
+        val service = OAuthApiClient(HttpClient(MockEngine { respondOk() }))
 
         // server did not respond correctly with "error"
         assertFailsWith<OAuthConnectionException> {
-            service.retrieveAccessToken(oauth, "localhost://oauth?e=something")
+            service.getAccessToken(oauth, "localhost://oauth?e=something")
         }
 
         try {
-            service.retrieveAccessToken(oauth, "localhost://oauth?error=hey%2Bwhat%27s%2Bup")
+            service.getAccessToken(oauth, "localhost://oauth?error=hey%2Bwhat%27s%2Bup")
         } catch (e: OAuthException) {
             assertEquals("hey what's up", e.message)
         }
 
         try {
-            service.retrieveAccessToken(oauth, "localhost://oauth?error=A%21&error_description=B%21")
+            service.getAccessToken(oauth, "localhost://oauth?error=A%21&error_description=B%21")
         } catch (e: OAuthException) {
             assertEquals("A!: B!", e.message)
         }
 
         try {
-            service.retrieveAccessToken(oauth, "localhost://oauth?error=A%21&error_uri=http%3A%2F%2Fabc.de")
+            service.getAccessToken(oauth, "localhost://oauth?error=A%21&error_uri=http%3A%2F%2Fabc.de")
         } catch (e: OAuthException) {
             assertEquals("A! (see http://abc.de)", e.message)
         }
 
         try {
-            service.retrieveAccessToken(oauth, "localhost://oauth?error=A%21&error_description=B%21&error_uri=http%3A%2F%2Fabc.de")
+            service.getAccessToken(oauth, "localhost://oauth?error=A%21&error_description=B%21&error_uri=http%3A%2F%2Fabc.de")
         } catch (e: OAuthException) {
             assertEquals("A!: B! (see http://abc.de)", e.message)
         }
     }
 
     @Test fun extractAuthorizationCode() = runBlocking {
-        val service = OAuthService(HttpClient(MockEngine { request ->
+        val service = OAuthApiClient(HttpClient(MockEngine { request ->
             if (request.url.parameters["code"] == "my code") {
                 respondOk("""{
                     "access_token": "TOKEN",
@@ -131,12 +130,12 @@ class OAuthAuthorizationTest {
 
         assertEquals(
             AccessTokenResponse("TOKEN", listOf("A", "B", "C")),
-            service.retrieveAccessToken(oauth, "localhost://oauth?code=my%20code")
+            service.getAccessToken(oauth, "localhost://oauth?code=my%20code")
         )
     }
 
     @Test fun `retrieveAccessToken throws OAuthConnectionException with invalid response token_type`(): Unit = runBlocking {
-        val service = OAuthService(HttpClient(MockEngine { respondOk("""{
+        val service = OAuthApiClient(HttpClient(MockEngine { respondOk("""{
             "access_token": "TOKEN",
             "token_type": "an_unusual_token_type",
             "scope": "A B C"
@@ -144,7 +143,7 @@ class OAuthAuthorizationTest {
         }))
 
         val exception = assertFailsWith<OAuthConnectionException> {
-            service.retrieveAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
+            service.getAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
         }
 
         assertEquals(
@@ -154,7 +153,7 @@ class OAuthAuthorizationTest {
     }
 
     @Test fun `retrieveAccessToken throws OAuthException when error response`(): Unit = runBlocking {
-        val service = OAuthService(HttpClient(MockEngine { respondError(
+        val service = OAuthApiClient(HttpClient(MockEngine { respondError(
             HttpStatusCode.BadRequest, """{
                 "error": "Missing auth code",
                 "error_description": "Please specify a code",
@@ -163,7 +162,7 @@ class OAuthAuthorizationTest {
         ) }))
 
         val exception = assertFailsWith<OAuthException> {
-            service.retrieveAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
+            service.getAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
         }
 
         assertEquals("Missing auth code", exception.error)
@@ -182,7 +181,7 @@ class OAuthAuthorizationTest {
             "scheme://there"
         )
 
-        assertFails { OAuthService(HttpClient(mockEngine)).retrieveAccessToken(auth, "scheme://there?code=C0D3") }
+        assertFails { OAuthApiClient(HttpClient(mockEngine)).getAccessToken(auth, "scheme://there?code=C0D3") }
 
         val expectedParams = ParametersBuilder()
         expectedParams.append("grant_type", "authorization_code")
@@ -200,7 +199,7 @@ class OAuthAuthorizationTest {
         val mockEngine = MockEngine { respondOk() }
 
         assertFails {
-            OAuthService(HttpClient(mockEngine)).retrieveAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
+            OAuthApiClient(HttpClient(mockEngine)).getAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
         }
 
         val expectedHeaders = HeadersBuilder()

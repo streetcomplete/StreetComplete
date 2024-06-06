@@ -54,7 +54,7 @@ class Uploader(
             listeners.forEach { it.onStarted() }
 
             if (!::bannedInfo.isInitialized) {
-                bannedInfo = withContext(Dispatchers.IO) { versionIsBannedChecker.get() }
+                bannedInfo = versionIsBannedChecker.get()
             }
             val banned = bannedInfo
             if (banned is IsBanned) {

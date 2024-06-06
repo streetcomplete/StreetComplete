@@ -107,7 +107,7 @@ import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotor
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApiClient
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
@@ -207,7 +207,7 @@ val questsModule = module {
 }
 
 fun questTypeRegistry(
-    trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
+    trafficFlowSegmentsApi: TrafficFlowSegmentsApiClient,
     trafficFlowDao: WayTrafficFlowDao,
     arSupportChecker: ArSupportChecker,
     getCountryInfoByLocation: (LatLon) -> CountryInfo,

@@ -14,7 +14,7 @@ import kotlin.test.Test
 
 class NotesDownloaderTest {
     private lateinit var noteController: NoteController
-    private lateinit var notesApi: NotesApi
+    private lateinit var notesApi: NotesApiClient
 
     @BeforeTest fun setUp() {
         noteController = mock()

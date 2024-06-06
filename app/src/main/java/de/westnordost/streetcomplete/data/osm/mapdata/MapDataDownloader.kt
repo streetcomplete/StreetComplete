@@ -12,7 +12,7 @@ import kotlinx.coroutines.yield
 
 /** Takes care of downloading all note and osm quests */
 class MapDataDownloader(
-    private val mapDataApi: MapDataApi,
+    private val mapDataApi: MapDataApiClient,
     private val mapDataController: MapDataController
 ) {
     suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {

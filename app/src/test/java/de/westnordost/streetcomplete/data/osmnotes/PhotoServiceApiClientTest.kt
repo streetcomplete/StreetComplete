@@ -17,7 +17,7 @@ import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
-class StreetCompleteImageUploaderTest {
+class PhotoServiceApiClientTest {
     private val mockEngine = MockEngine { request -> when (String(request.body.toByteArray())) {
         // Upload requests
         "valid\n" -> respondOk("{\"future_url\": \"market.jpg\"}")
@@ -33,7 +33,7 @@ class StreetCompleteImageUploaderTest {
 
         else -> throw Exception("Invalid request body")
     } }
-    private val uploader = StreetCompleteImageUploader(HttpClient(mockEngine), "http://example.com/" )
+    private val uploader = PhotoServiceApiClient(HttpClient(mockEngine), "http://example.com/" )
 
     @Test
     fun `upload makes POST request with file contents`() = runBlocking {

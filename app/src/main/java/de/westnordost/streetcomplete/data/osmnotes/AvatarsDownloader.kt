@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.data.user.UserApi
+import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
@@ -15,7 +15,7 @@ import java.io.File
 /** Downloads and stores the OSM avatars of users */
 class AvatarsDownloader(
     private val httpClient: HttpClient,
-    private val userApi: UserApi,
+    private val userApi: UserApiClient,
     private val cacheDir: File
 ) {
 

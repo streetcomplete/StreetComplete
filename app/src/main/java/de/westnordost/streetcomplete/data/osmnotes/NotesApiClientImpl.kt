@@ -22,7 +22,7 @@ import de.westnordost.osmapi.notes.NoteComment as OsmApiNoteComment
 import de.westnordost.osmapi.notes.NotesApi as OsmApiNotesApi
 import de.westnordost.osmapi.user.User as OsmApiUser
 
-class NotesApiImpl(osm: OsmConnection) : NotesApi {
+class NotesApiClientImpl(osm: OsmConnection) : NotesApiClient {
     private val api: OsmApiNotesApi = OsmApiNotesApi(osm)
 
     override fun create(pos: LatLon, text: String): Note = wrapExceptions {

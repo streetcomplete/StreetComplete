@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.AuthorizationException
 
 /** Get and upload changes to map data */
-interface MapDataApi : MapDataRepository {
+interface MapDataApiClient : MapDataRepository {
 
     /**
      * Upload changes into an opened changeset.

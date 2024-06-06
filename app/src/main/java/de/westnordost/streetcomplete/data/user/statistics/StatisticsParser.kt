@@ -23,26 +23,27 @@ private data class StatisticsDTO(
 )
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
+
     fun parse(json: String): Statistics =
-        with(decodeFromString<StatisticsDTO>(json)) {
-            Statistics(
-                types = parseEditTypeStatistics(questTypes),
-                countries = countries.map { (key, value) ->
-                    CountryStatistics(countryCode = key, count = value, rank = countryRanks[key])
-                }.sortedBy(CountryStatistics::countryCode),
-                rank = rank,
-                daysActive = daysActive,
-                currentWeekRank = currentWeekRank,
-                currentWeekTypes = parseEditTypeStatistics(currentWeekQuestTypes),
-                currentWeekCountries = currentWeekCountries.map { (key, value) ->
-                    CountryStatistics(countryCode = key, count = value, rank = currentWeekCountryRanks[key])
-                }.sortedBy(CountryStatistics::countryCode),
-                activeDatesRange = activeDatesRange,
-                activeDates = activeDates,
-                lastUpdate = lastUpdate.toEpochMilliseconds(),
-                isAnalyzing = isAnalyzing,
-            )
-        }
+        decodeFromString<StatisticsDTO>(json).toStatistics()
+
+    private fun StatisticsDTO.toStatistics() = Statistics(
+        types = parseEditTypeStatistics(questTypes),
+        countries = countries.map { (key, value) ->
+            CountryStatistics(countryCode = key, count = value, rank = countryRanks[key])
+        }.sortedBy(CountryStatistics::countryCode),
+        rank = rank,
+        daysActive = daysActive,
+        currentWeekRank = currentWeekRank,
+        currentWeekTypes = parseEditTypeStatistics(currentWeekQuestTypes),
+        currentWeekCountries = currentWeekCountries.map { (key, value) ->
+            CountryStatistics(countryCode = key, count = value, rank = currentWeekCountryRanks[key])
+        }.sortedBy(CountryStatistics::countryCode),
+        activeDatesRange = activeDatesRange,
+        activeDates = activeDates,
+        lastUpdate = lastUpdate.toEpochMilliseconds(),
+        isAnalyzing = isAnalyzing,
+    )
 
     private fun parseEditTypeStatistics(input: Map<String, Int>): List<EditTypeStatistics> {
         val result = input.toMutableMap()

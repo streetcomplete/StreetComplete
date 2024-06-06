@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.OAUTH2_TOKEN_URL
 import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorizationParams
 import de.westnordost.streetcomplete.data.user.oauth.OAuthException
-import de.westnordost.streetcomplete.data.user.oauth.OAuthService
+import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
@@ -56,7 +56,7 @@ data object LoggedIn : LoginState
 class LoginViewModelImpl(
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val userLoginController: UserLoginController,
-    private val oAuthService: OAuthService
+    private val oAuthApiClient: OAuthApiClient
 ) : LoginViewModel() {
     override val loginState = MutableStateFlow<LoginState>(LoggedOut)
     override val unsyncedChangesCount = MutableStateFlow(0)
@@ -101,9 +101,7 @@ class LoginViewModelImpl(
     private suspend fun retrieveAccessToken(authorizationResponseUrl: String): String? {
         try {
             loginState.value = RetrievingAccessToken
-            val accessTokenResponse = withContext(Dispatchers.IO) {
-                oAuthService.retrieveAccessToken(oAuth, authorizationResponseUrl)
-            }
+            val accessTokenResponse = oAuthApiClient.getAccessToken(oAuth, authorizationResponseUrl)
             if (accessTokenResponse.grantedScopes?.containsAll(OAUTH2_REQUIRED_SCOPES) == false) {
                 loginState.value = LoginError.RequiredPermissionsNotGranted
                 return null

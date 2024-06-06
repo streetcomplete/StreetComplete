@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
@@ -30,7 +30,7 @@ class ElementEditsUploader(
     private val noteEditsController: NoteEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
-    private val mapDataApi: MapDataApi,
+    private val mapDataApi: MapDataApiClient,
     private val statisticsController: StatisticsController
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.AuthorizationException
  * Creates, comments, closes, reopens and search for notes.
  * All interactions with this class require an OsmConnection with a logged in user.
  */
-interface NotesApi {
+interface NotesApiClient {
     /**
      * Create a new note at the given location
      *

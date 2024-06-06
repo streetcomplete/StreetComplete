@@ -16,7 +16,7 @@ import kotlin.test.assertFailsWith
 // other than some other APIs we are speaking to, we do not control the OSM API, so I think it is
 // more effective to test with the official test API instead of mocking some imagines server
 // response
-class TracksApiIntegrationTest {
+class TracksApiClientIntegrationTest {
 
     private val trackpoint = Trackpoint(LatLon(1.23, 3.45), Instant.now().toEpochMilli(), 1f, 1f)
 
@@ -27,7 +27,7 @@ class TracksApiIntegrationTest {
             .thenReturn(OsmDevApi.ALLOW_NOTHING_TOKEN)
             .thenReturn("unknown")
 
-        val api = TracksApi(HttpClient(CIO), OsmDevApi.URL, userLoginSource)
+        val api = TracksApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource)
 
         assertFailsWith<AuthorizationException> { api.create(listOf(trackpoint)) }
         assertFailsWith<AuthorizationException> { api.create(listOf(trackpoint)) }
@@ -38,7 +38,7 @@ class TracksApiIntegrationTest {
         val userLoginSource = mock<UserLoginSource>()
         on(userLoginSource.accessToken).thenReturn(OsmDevApi.ALLOW_EVERYTHING_TOKEN)
 
-        val api = TracksApi(HttpClient(CIO), OsmDevApi.URL, userLoginSource)
+        val api = TracksApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource)
 
         api.create(listOf(trackpoint))
     }

@@ -17,7 +17,7 @@ import nl.adaptivity.xmlutil.serialization.XML
 /**
  * Talks with OSM user API
  */
-class UserApi(
+class UserApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,
     private val userLoginSource: UserLoginSource,
