@@ -183,7 +183,6 @@ dependencies {
     // talking with the OSM API
     implementation("de.westnordost:osmapi-map:3.0")
     implementation("de.westnordost:osmapi-changesets:3.0")
-    implementation("de.westnordost:osmapi-notes:3.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.1.0")

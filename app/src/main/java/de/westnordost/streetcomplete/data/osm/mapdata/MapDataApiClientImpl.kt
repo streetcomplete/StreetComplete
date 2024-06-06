@@ -30,7 +30,7 @@ import de.westnordost.osmapi.map.data.Relation as OsmApiRelation
 import de.westnordost.osmapi.map.data.RelationMember as OsmApiRelationMember
 import de.westnordost.osmapi.map.data.Way as OsmApiWay
 
-class `MapDataApiClientI mpl`(osm: OsmConnection) : MapDataApiClient {
+class MapDataApiClientImpl(osm: OsmConnection) : MapDataApiClient {
 
     private val api: OsmApiMapDataApi = OsmApiMapDataApi(osm)
 

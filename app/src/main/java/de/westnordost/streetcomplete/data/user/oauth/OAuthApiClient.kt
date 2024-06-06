@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.user.oauth
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
@@ -10,6 +11,7 @@ import io.ktor.http.URLParserException
 import io.ktor.http.Url
 import io.ktor.http.contentType
 import io.ktor.http.decodeURLQueryComponent
+import io.ktor.http.parameters
 import io.ktor.http.takeFrom
 import io.ktor.utils.io.errors.IOException
 import kotlinx.serialization.Serializable
@@ -47,14 +49,12 @@ class OAuthApiClient(private val httpClient: HttpClient) {
         val authorizationCode = extractAuthorizationCode(authorizationResponseUrl)
         try {
             val response = httpClient.post(request.accessTokenUrl) {
-                url {
-                    parameters.append("grant_type", "authorization_code")
-                    parameters.append("client_id", request.clientId)
-                    parameters.append("code", authorizationCode)
-                    parameters.append("redirect_uri", request.redirectUri)
-                    parameters.append("code_verifier", request.codeVerifier)
-                }
                 contentType(ContentType.Application.FormUrlEncoded)
+                parameter("grant_type", "authorization_code")
+                parameter("client_id", request.clientId)
+                parameter("code", authorizationCode)
+                parameter("redirect_uri", request.redirectUri)
+                parameter("code_verifier", request.codeVerifier)
             }
 
             if (response.status != HttpStatusCode.OK) {

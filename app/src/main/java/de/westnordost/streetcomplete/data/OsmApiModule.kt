@@ -6,9 +6,8 @@ import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
-import de.westnordost.streetcomplete.data.osm.mapdata.`MapDataApiClientI mpl`
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClientImpl
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
-import de.westnordost.streetcomplete.data.osmnotes.NotesApiClientImpl
 import de.westnordost.streetcomplete.data.osmtracks.TracksApiClient
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
@@ -19,8 +18,8 @@ private const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
 val osmApiModule = module {
     factory { Cleaner(get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
-    factory<MapDataApiClient> { `MapDataApiClientI mpl`(get()) }
-    factory<NotesApiClient> { NotesApiClientImpl(get()) }
+    factory<MapDataApiClient> { MapDataApiClientImpl(get()) }
+    factory { NotesApiClient(get(), OSM_API_URL, get()) }
     factory { TracksApiClient(get(), OSM_API_URL, get()) }
     factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
     factory { UserApiClient(get(), OSM_API_URL, get()) }

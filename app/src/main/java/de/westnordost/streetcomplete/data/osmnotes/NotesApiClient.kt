@@ -6,12 +6,24 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.AuthorizationException
+import de.westnordost.streetcomplete.data.osm.mapdata.toOsmApiString
+import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.util.ktx.format
+import io.ktor.client.HttpClient
+import io.ktor.client.request.bearerAuth
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
+import io.ktor.client.request.post
 
 /**
  * Creates, comments, closes, reopens and search for notes.
- * All interactions with this class require an OsmConnection with a logged in user.
  */
-interface NotesApiClient {
+class NotesApiClient(
+    private val httpClient: HttpClient,
+    private val baseUrl: String,
+    private val userLoginSource: UserLoginSource,
+) {
+
     /**
      * Create a new note at the given location
      *
@@ -19,12 +31,19 @@ interface NotesApiClient {
      * @param text text for the new note. Must not be empty.
      *
      * @throws AuthorizationException if this application is not authorized to write notes
-     *                                (Permission.WRITE_NOTES)
+     *                                (scope "write_notes")
      * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the new note
      */
-    fun create(pos: LatLon, text: String): Note
+    suspend fun create(pos: LatLon, text: String): Note {
+        val response = httpClient.post(baseUrl + "notes") {
+            userLoginSource.accessToken?.let { bearerAuth(it) }
+            parameter("lat", pos.latitude.format(7))
+            parameter("lon", pos.longitude.format(7))
+            parameter("text", text)
+        }
+    }
 
     /**
      * @param id id of the note
@@ -32,12 +51,17 @@ interface NotesApiClient {
      *
      * @throws ConflictException if the note has already been closed or doesn't exist (anymore).
      * @throws AuthorizationException if this application is not authorized to write notes
-     *                                (Permission.WRITE_NOTES)
+     *                                (scope "write_notes")
      * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the updated commented note
      */
-    fun comment(id: Long, text: String): Note
+    suspend fun comment(id: Long, text: String): Note {
+        val response = httpClient.post(baseUrl + "notes/$id/comment") {
+            userLoginSource.accessToken?.let { bearerAuth(it) }
+            parameter("text", text)
+        }
+    }
 
     /**
      * @param id id of the note
@@ -46,17 +70,18 @@ interface NotesApiClient {
      *
      * @return the note with the given id. null if the note with that id does not exist (anymore).
      */
-    fun get(id: Long): Note?
+    suspend fun get(id: Long): Note? {
+        val response = httpClient.get(baseUrl + "notes/$id") {
+            userLoginSource.accessToken?.let { bearerAuth(it) }
+        }
+    }
 
     /**
-     * Retrieve those notes in the given area that match the given search string
+     * Retrieve all open notes in the given area
      *
      * @param bounds the area within the notes should be queried. This is usually limited at 25
      *               square degrees. Check the server capabilities.
      * @param limit number of entries returned at maximum. Any value between 1 and 10000
-     * @param hideClosedNoteAfter number of days until a closed note should not be shown anymore.
-     *                            -1 means that all notes should be returned, 0 that only open notes
-     *                            are returned.
      *
      * @throws QueryTooBigException if the bounds area is too large
      * @throws IllegalArgumentException if the bounds cross the 180th meridian
@@ -64,5 +89,14 @@ interface NotesApiClient {
      *
      * @return the incoming notes
      */
-    fun getAll(bounds: BoundingBox, limit: Int, hideClosedNoteAfter: Int): List<Note>
+    suspend fun getAllOpen(bounds: BoundingBox, limit: Int): List<Note> {
+        val response = httpClient.get(baseUrl + "notes") {
+            userLoginSource.accessToken?.let { bearerAuth(it) }
+            parameter("bbox", bounds.toOsmApiString())
+            parameter("limit", limit)
+            parameter("closed", 0)
+        }
+    }
 }
+
+// TODO TEST

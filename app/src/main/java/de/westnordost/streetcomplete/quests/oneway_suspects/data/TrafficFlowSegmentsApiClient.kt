@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects.data
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.data.osm.mapdata.toOsmApiString
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.expectSuccess
@@ -16,13 +16,7 @@ class TrafficFlowSegmentsApiClient(
 ) {
 
     suspend fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
-        val bboxString = listOf(
-            bbox.min.longitude,
-            bbox.min.latitude,
-            bbox.max.longitude,
-            bbox.max.latitude
-        ).joinToString(",") { it.format(7) }
-
+        val bboxString = bbox.toOsmApiString()
         val response = httpClient.get("$apiUrl?bbox=$bboxString") { expectSuccess = true }
         val json = Json { ignoreUnknownKeys = true }
         val segmentsList = json.decodeFromString<TrafficFlowSegmentList>(response.body())

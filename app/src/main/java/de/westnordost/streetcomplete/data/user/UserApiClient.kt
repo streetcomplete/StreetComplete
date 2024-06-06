@@ -62,6 +62,7 @@ class UserApiClient(
             userLoginSource.accessToken?.let { bearerAuth(it) }
         }
         val status = response.status
+
         if (status.isSuccess()) {
             val body = response.body<String>()
             val osm = xml.decodeFromString<Osm>(body)
