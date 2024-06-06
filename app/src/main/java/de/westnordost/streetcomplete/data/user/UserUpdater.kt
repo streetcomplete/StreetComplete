@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user
 
-import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.data.osmnotes.AvatarsDownloader
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsDownloader

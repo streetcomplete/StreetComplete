@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data
 
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.osmapi.user.UserApi
+import de.westnordost.streetcomplete.data.user.UserApi
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
@@ -23,7 +23,7 @@ val osmApiModule = module {
     factory<NotesApi> { NotesApiImpl(get()) }
     factory { TracksApi(get(), OSM_API_URL, get()) }
     factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
-    factory { UserApi(get()) }
+    factory { UserApi(get(), OSM_API_URL, get()) }
 
     single { OsmConnection(
         OSM_API_URL,

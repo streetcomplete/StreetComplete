@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.user
 
 import com.russhwolf.settings.ObservableSettings
-import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
 
@@ -34,10 +33,10 @@ class UserDataController(
         userLoginSource.addListener(userLoginStatusListener)
     }
 
-    fun setDetails(userDetails: UserDetails) {
+    fun setDetails(userDetails: UserInfo) {
         prefs.putLong(Prefs.OSM_USER_ID, userDetails.id)
         prefs.putString(Prefs.OSM_USER_NAME, userDetails.displayName)
-        prefs.putInt(Prefs.OSM_UNREAD_MESSAGES, userDetails.unreadMessagesCount)
+        userDetails.unreadMessagesCount?.let { prefs.putInt(Prefs.OSM_UNREAD_MESSAGES, it) }
         listeners.forEach { it.onUpdated() }
     }
 

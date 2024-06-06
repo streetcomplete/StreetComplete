@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.osmapi.user.UserApi
+import de.westnordost.streetcomplete.data.user.UserApi
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
@@ -36,7 +36,7 @@ class AvatarsDownloader(
         Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
     }
 
-    private fun getProfileImageUrl(userId: Long): String? =
+    private suspend fun getProfileImageUrl(userId: Long): String? =
         try {
             userApi.get(userId)?.profileImageUrl
         } catch (e: Exception) {

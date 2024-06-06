@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.ktx.truncate
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.forms.MultiPartFormDataContent
 import io.ktor.client.request.forms.formData
@@ -68,8 +67,7 @@ class TracksApi(
             status == HttpStatusCode.Forbidden || status == HttpStatusCode.Unauthorized -> {
                 throw AuthorizationException(status.toString())
             }
-            // treat request timeout as a temporary connection error
-            status == HttpStatusCode.RequestTimeout || status.value in 500..599 -> {
+            status.value in 500..599 -> {
                 throw ConnectionException(status.toString())
             }
             else -> {
