@@ -55,8 +55,6 @@ class NotesApiParserTest {
               <comment>
                 <date>2024-06-06 12:47:51 UTC</date>
                 <action>closed</action>
-                <text>I closed it!</text>
-                <html><p>Some</p><p>text</p></html>
               </comment>
             </comments>
           </note>
@@ -79,7 +77,7 @@ class NotesApiParserTest {
                 NoteComment(
                     timestamp = Instant.parse("2024-06-06T12:47:51Z").toEpochMilliseconds(),
                     action = NoteComment.Action.CLOSED,
-                    text = "I closed it!",
+                    text = null,
                     user = null
                 ),
             )

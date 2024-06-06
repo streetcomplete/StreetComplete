@@ -99,7 +99,7 @@ class NotesApiClient(
      *
      * @return the incoming notes
      */
-    suspend fun getAllOpen(bounds: BoundingBox, limit: Int): List<Note> {
+    suspend fun getAllOpen(bounds: BoundingBox, limit: Int? = null): List<Note> {
         val response = httpClient.get(baseUrl + "notes") {
             userLoginSource.accessToken?.let { bearerAuth(it) }
             parameter("bbox", bounds.toOsmApiString())
@@ -110,6 +110,4 @@ class NotesApiClient(
     }
 }
 
-// TODO TEST
-
-// TODO error handling
+// TODO error handling + test

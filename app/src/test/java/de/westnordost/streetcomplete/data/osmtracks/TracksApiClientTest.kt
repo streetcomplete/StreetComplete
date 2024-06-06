@@ -14,9 +14,9 @@ import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
 // other than some other APIs we are speaking to, we do not control the OSM API, so I think it is
-// more effective to test with the official test API instead of mocking some imagines server
+// more effective to test with the official test API instead of mocking some imagined server
 // response
-class TracksApiClientIntegrationTest {
+class TracksApiClientTest {
 
     private val trackpoint = Trackpoint(LatLon(1.23, 3.45), Instant.now().toEpochMilli(), 1f, 1f)
 

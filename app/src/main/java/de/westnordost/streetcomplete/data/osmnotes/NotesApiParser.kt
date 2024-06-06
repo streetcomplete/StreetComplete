@@ -9,12 +9,9 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.format
 import kotlinx.datetime.format.DateTimeComponents
-import kotlinx.datetime.format.DateTimeFormat
-import kotlinx.datetime.format.byUnicodePattern
 import kotlinx.datetime.format.char
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Serializer
 import kotlinx.serialization.UseSerializers
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -72,7 +69,7 @@ private data class ApiNote(
 private data class ApiNoteComment(
     @XmlElement val date: Instant,
     @XmlElement val action: String,
-    @XmlElement val text: String,
+    @XmlElement val text: String?,
     @XmlElement val uid: Long?,
     @XmlElement val user: String?,
 )
