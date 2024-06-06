@@ -25,7 +25,7 @@ class NotesDownloaderTest {
         val note1 = note()
         val bbox = bbox()
 
-        on(notesApi.getAll(any(), anyInt(), anyInt())).thenReturn(listOf(note1))
+        on(notesApi.getAllOpen(any(), anyInt())).thenReturn(listOf(note1))
         val dl = NotesDownloader(notesApi, noteController)
         dl.download(bbox)
 

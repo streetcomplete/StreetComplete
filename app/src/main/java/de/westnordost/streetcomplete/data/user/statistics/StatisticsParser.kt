@@ -3,31 +3,17 @@ package de.westnordost.streetcomplete.data.user.statistics
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json.Default.decodeFromString
-
-@Serializable
-private data class StatisticsDTO(
-    val questTypes: Map<String, Int>,
-    val countries: Map<String, Int>,
-    val countryRanks: Map<String, Int>,
-    val rank: Int,
-    val currentWeekRank: Int,
-    val currentWeekQuestTypes: Map<String, Int>,
-    val currentWeekCountries: Map<String, Int>,
-    val currentWeekCountryRanks: Map<String, Int>,
-    val daysActive: Int,
-    val activeDatesRange: Int,
-    val activeDates: List<LocalDate>,
-    val lastUpdate: Instant,
-    val isAnalyzing: Boolean,
-)
+import kotlinx.serialization.json.Json
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
+    private val jsonParser = Json { ignoreUnknownKeys = true }
 
-    fun parse(json: String): Statistics =
-        decodeFromString<StatisticsDTO>(json).toStatistics()
+    fun parse(json: String): Statistics {
+        val apiStatistics = jsonParser.decodeFromString<ApiStatistics>(json)
+        return apiStatistics.toStatistics()
+    }
 
-    private fun StatisticsDTO.toStatistics() = Statistics(
+    private fun ApiStatistics.toStatistics() = Statistics(
         types = parseEditTypeStatistics(questTypes),
         countries = countries.map { (key, value) ->
             CountryStatistics(countryCode = key, count = value, rank = countryRanks[key])
@@ -61,3 +47,20 @@ class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
         }
     }
 }
+
+@Serializable
+private data class ApiStatistics(
+    val questTypes: Map<String, Int>,
+    val countries: Map<String, Int>,
+    val countryRanks: Map<String, Int>,
+    val rank: Int,
+    val currentWeekRank: Int,
+    val currentWeekQuestTypes: Map<String, Int>,
+    val currentWeekCountries: Map<String, Int>,
+    val currentWeekCountryRanks: Map<String, Int>,
+    val daysActive: Int,
+    val activeDatesRange: Int,
+    val activeDates: List<LocalDate>,
+    val lastUpdate: Instant,
+    val isAnalyzing: Boolean,
+)

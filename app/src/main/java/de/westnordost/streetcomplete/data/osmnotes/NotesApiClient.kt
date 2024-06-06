@@ -10,10 +10,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.toOsmApiString
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.ktx.format
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
+import io.ktor.http.HttpStatusCode
 
 /**
  * Creates, comments, closes, reopens and search for notes.
@@ -22,6 +24,7 @@ class NotesApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,
     private val userLoginSource: UserLoginSource,
+    private val notesApiParser: NotesApiParser
 ) {
 
     /**
@@ -43,6 +46,7 @@ class NotesApiClient(
             parameter("lon", pos.longitude.format(7))
             parameter("text", text)
         }
+        return notesApiParser.parse(response.body<String>()).single()
     }
 
     /**
@@ -61,6 +65,7 @@ class NotesApiClient(
             userLoginSource.accessToken?.let { bearerAuth(it) }
             parameter("text", text)
         }
+        return notesApiParser.parse(response.body<String>()).single()
     }
 
     /**
@@ -74,6 +79,11 @@ class NotesApiClient(
         val response = httpClient.get(baseUrl + "notes/$id") {
             userLoginSource.accessToken?.let { bearerAuth(it) }
         }
+        if (response.status == HttpStatusCode.Gone || response.status == HttpStatusCode.NotFound) {
+            return null
+        }
+
+        return notesApiParser.parse(response.body<String>()).singleOrNull()
     }
 
     /**
@@ -96,7 +106,10 @@ class NotesApiClient(
             parameter("limit", limit)
             parameter("closed", 0)
         }
+        return notesApiParser.parse(response.body<String>())
     }
 }
 
 // TODO TEST
+
+// TODO error handling
