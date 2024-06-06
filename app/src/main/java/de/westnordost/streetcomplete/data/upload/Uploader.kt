@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.upload
 
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
-import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log

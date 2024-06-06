@@ -21,7 +21,6 @@ class ConnectionException @JvmOverloads constructor(
     cause: Throwable? = null
 ) : CommunicationException(message, cause)
 
-
 /** While posting an update to an API over the internet, the API reports that our data is based on
  *  outdated data */
 class ConflictException @JvmOverloads constructor(
