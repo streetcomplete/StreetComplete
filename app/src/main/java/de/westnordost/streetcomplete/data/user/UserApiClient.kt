@@ -52,7 +52,7 @@ class UserApiClient(
      * @return the user info of the given user. Null if the user does not exist.
      */
     suspend fun get(userId: Long): UserInfo? {
-        val response = httpClient.get("user/$userId") {
+        val response = httpClient.get(baseUrl + "user/$userId") {
             userLoginSource.accessToken?.let { bearerAuth(it) }
         }
         val status = response.status
@@ -79,6 +79,4 @@ class UserApiClient(
         }
     }
 }
-
-// TODO TEST
 
