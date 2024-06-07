@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClientImpl
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiParser
 import de.westnordost.streetcomplete.data.osmtracks.TracksApiClient
+import de.westnordost.streetcomplete.data.osmtracks.TracksSerializer
+import de.westnordost.streetcomplete.data.user.UserApiParser
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -24,6 +26,10 @@ val osmApiModule = module {
     factory { TracksApiClient(get(), OSM_API_URL, get(), get()) }
     factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
     factory { UserApiClient(get(), OSM_API_URL, get(), get()) }
+
+    factory { UserApiParser() }
+    factory { NotesApiParser() }
+    factory { TracksSerializer() }
 
     single { OsmConnection(
         OSM_API_URL,
