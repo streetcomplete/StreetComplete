@@ -163,7 +163,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
         override fun onBind(with: NoteComment) {
             val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, nowAsEpochMilliseconds(), MINUTE_IN_MILLIS)
-            val userName = if (with.user != null) with.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
+            val userName = if (with.user != null) with.user.name else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = with.action.actionResourceId
             val hasNoteAction = commentActionResourceId != 0

@@ -46,7 +46,7 @@ private fun ApiNoteComment.toNoteComment() = NoteComment(
     timestamp = date.toEpochMilliseconds(),
     action = NoteComment.Action.valueOf(action.uppercase()),
     text = text,
-    user = if (uid != null && user != null) User(id = uid, displayName = user) else null
+    user = if (uid != null && user != null) User(id = uid, name = user) else null
 )
 
 @Serializable

@@ -360,7 +360,7 @@ class NotesWithEditsSourceTest {
 
 private val bbox = bbox()
 
-val user = User(id = -1, displayName = "")
+val user = User(id = -1, name = "")
 
 val initialNotes1 = listOf(
     note(id = 1, position = p(1.0, 2.0), timestamp = 10, comments = arrayListOf(
