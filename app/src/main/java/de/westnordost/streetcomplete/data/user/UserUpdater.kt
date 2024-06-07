@@ -15,21 +15,36 @@ class UserUpdater(
     private val userApi: UserApi,
     private val avatarsDownloader: AvatarsDownloader,
     private val statisticsDownloader: StatisticsDownloader,
-    private val userController: UserDataController,
-    private val statisticsController: StatisticsController
+    private val userDataController: UserDataController,
+    private val statisticsController: StatisticsController,
+    private val userLoginSource: UserLoginSource
 ) {
     private val coroutineScope = CoroutineScope(SupervisorJob())
+
+    private val userLoginListener = object : UserLoginSource.Listener {
+        override fun onLoggedIn() {
+            update()
+        }
+        override fun onLoggedOut() {
+            clear()
+        }
+    }
 
     interface Listener {
         fun onUserAvatarUpdated()
     }
     private val userAvatarListeners = Listeners<Listener>()
 
+    init {
+        userLoginSource.addListener(userLoginListener)
+    }
+
     fun update() = coroutineScope.launch(Dispatchers.IO) {
+        if (!userLoginSource.isLoggedIn) return@launch
         try {
             val userDetails = userApi.getMine()
 
-            userController.setDetails(userDetails)
+            userDataController.setDetails(userDetails)
             val profileImageUrl = userDetails.profileImageUrl
             if (profileImageUrl != null) {
                 updateAvatar(userDetails.id, profileImageUrl)
@@ -38,6 +53,11 @@ class UserUpdater(
         } catch (e: Exception) {
             Log.w(TAG, "Unable to download user details", e)
         }
+    }
+
+    fun clear() {
+        userDataController.clear()
+        statisticsController.clear()
     }
 
     private fun updateAvatar(userId: Long, imageUrl: String) = coroutineScope.launch(Dispatchers.IO) {

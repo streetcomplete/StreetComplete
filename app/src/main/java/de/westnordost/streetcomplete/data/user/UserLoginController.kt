@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.util.Listeners
 class UserLoginController(
     private val osmConnection: OsmConnection,
     private val prefs: ObservableSettings,
-    private val userUpdater: UserUpdater,
 ) : UserLoginSource {
 
     private val listeners = Listeners<UserLoginSource.Listener>()
@@ -22,7 +21,6 @@ class UserLoginController(
         prefs.putString(Prefs.OAUTH2_ACCESS_TOKEN, accessToken)
         osmConnection.oAuthAccessToken = accessToken
         listeners.forEach { it.onLoggedIn() }
-        userUpdater.update()
     }
 
     fun logOut() {

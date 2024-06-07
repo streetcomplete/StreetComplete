@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.Configuration
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -17,7 +16,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.getSystemService
 import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
@@ -42,7 +40,6 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.UserLoginController
-import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
@@ -70,7 +67,6 @@ class MainActivity :
     private val downloadProgressSource: DownloadProgressSource by inject()
     private val uploadProgressSource: UploadProgressSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
-    private val userUpdater: UserUpdater by inject()
     private val elementEditsSource: ElementEditsSource by inject()
     private val noteEditsSource: NoteEditsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
@@ -127,9 +123,6 @@ class MainActivity :
                     setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
                     add(R.id.fragment_container, TutorialFragment())
                 }
-            }
-            if (userLoginController.isLoggedIn && isConnected) {
-                userUpdater.update()
             }
         }
 
@@ -238,9 +231,6 @@ class MainActivity :
         RequestLoginDialog(this).show()
         dontShowRequestAuthorizationAgain = true
     }
-
-    private val isConnected: Boolean
-        get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
 
     /* ------------------------------------- Preferences ---------------------------------------- */
 
