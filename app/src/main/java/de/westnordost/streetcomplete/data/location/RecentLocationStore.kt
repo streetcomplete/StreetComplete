@@ -55,7 +55,7 @@ class RecentLocationStore {
         - the distance is the minimum distance between the quest geometry (i.e. a road) and the line
           between the user's position when he opened the quest form and the position when he pressed
           "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
-        */
+         */
         const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
 
         private val LOCATION_STORE_TIME = 10.minutes

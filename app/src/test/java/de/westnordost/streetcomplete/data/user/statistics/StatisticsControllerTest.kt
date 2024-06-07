@@ -53,7 +53,7 @@ class StatisticsControllerTest {
             editTypeStatisticsDao, countryStatisticsDao,
             currentWeekEditTypeStatisticsDao, currentWeekCountryStatisticsDao,
             activeDatesDao,
-            lazyOf(countryBoundaries), prefs, loginStatusSource
+            lazyOf(countryBoundaries), prefs
         )
         statisticsController.addListener(listener)
     }

@@ -62,8 +62,6 @@ suspend fun checkIsSurvey(
     }
 }
 
-
-
 // "static" values, i.e. persisted per application start
 private var dontShowAgain = false
 private var timesShown = 0

@@ -5,17 +5,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
 
 /** Controller that handles user login, logout, auth and updated data */
-class UserDataController(
-    private val prefs: ObservableSettings,
-    private val userLoginSource: UserLoginSource
-) : UserDataSource {
-
-    private val userLoginStatusListener = object : UserLoginSource.Listener {
-        override fun onLoggedIn() {}
-        override fun onLoggedOut() {
-            clear()
-        }
-    }
+class UserDataController(private val prefs: ObservableSettings) : UserDataSource {
 
     private val listeners = Listeners<UserDataSource.Listener>()
 
@@ -29,10 +19,6 @@ class UserDataController(
             listeners.forEach { it.onUpdated() }
         }
 
-    init {
-        userLoginSource.addListener(userLoginStatusListener)
-    }
-
     fun setDetails(userDetails: UserInfo) {
         prefs.putLong(Prefs.OSM_USER_ID, userDetails.id)
         prefs.putString(Prefs.OSM_USER_NAME, userDetails.displayName)
@@ -40,7 +26,7 @@ class UserDataController(
         listeners.forEach { it.onUpdated() }
     }
 
-    private fun clear() {
+    fun clear() {
         prefs.remove(Prefs.OSM_USER_ID)
         prefs.remove(Prefs.OSM_USER_NAME)
         prefs.remove(Prefs.OSM_UNREAD_MESSAGES)
