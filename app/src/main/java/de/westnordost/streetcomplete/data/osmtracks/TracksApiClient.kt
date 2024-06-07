@@ -27,6 +27,7 @@ class TracksApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,
     private val userLoginSource: UserLoginSource,
+    private val tracksSerializer: TracksSerializer
 ) {
 
     /**
@@ -44,7 +45,7 @@ class TracksApiClient(
         val name = Instant.fromEpochMilliseconds(trackpoints.first().time).toString() + ".gpx"
         val description = noteText ?: "Uploaded via ${ApplicationConstants.USER_AGENT}"
         val tags = listOf(ApplicationConstants.NAME.lowercase()).joinToString()
-        val xml = XML.encodeToString(trackpoints.toGpx())
+        val xml = tracksSerializer.serialize(trackpoints)
 
         val response = httpClient.post(baseUrl + "gpx/create") {
             userLoginSource.accessToken?.let { bearerAuth(it) }
@@ -76,17 +77,3 @@ class TracksApiClient(
         }
     }
 }
-
-private fun List<Trackpoint>.toGpx() = Gpx(
-    version = 1.0f,
-    creator = ApplicationConstants.USER_AGENT,
-    tracks = listOf(GpsTrack(listOf(GpsTrackSegment(map { it.toGpsTrackPoint() }))))
-)
-
-private fun Trackpoint.toGpsTrackPoint() = GpsTrackPoint(
-    lat = position.latitude,
-    lon = position.longitude,
-    time = Instant.fromEpochMilliseconds(time),
-    ele = elevation,
-    hdop = accuracy
-)

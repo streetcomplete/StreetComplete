@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osmtracks
 
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.user.UserApiClient
+import de.westnordost.streetcomplete.data.user.UserApiParser
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.testutils.mock
@@ -20,27 +22,26 @@ class TracksApiClientTest {
 
     private val trackpoint = Trackpoint(LatLon(1.23, 3.45), Instant.now().toEpochMilli(), 1f, 1f)
 
+    private val allowEverything = mock<UserLoginSource>()
+    private val allowNothing = mock<UserLoginSource>()
+    private val anonymous = mock<UserLoginSource>()
+
+    init {
+        on(allowEverything.accessToken).thenReturn(OsmDevApi.ALLOW_EVERYTHING_TOKEN)
+        on(allowNothing.accessToken).thenReturn(OsmDevApi.ALLOW_NOTHING_TOKEN)
+        on(anonymous.accessToken).thenReturn(null)
+    }
+
     @Test fun `throws exception on insufficient privileges`(): Unit = runBlocking {
-        val userLoginSource = mock<UserLoginSource>()
-        on(userLoginSource.accessToken)
-            .thenReturn(null)
-            .thenReturn(OsmDevApi.ALLOW_NOTHING_TOKEN)
-            .thenReturn("unknown")
-
-        val api = TracksApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource)
-
-        assertFailsWith<AuthorizationException> { api.create(listOf(trackpoint)) }
-        assertFailsWith<AuthorizationException> { api.create(listOf(trackpoint)) }
-        assertFailsWith<AuthorizationException> { api.create(listOf(trackpoint)) }
+        assertFailsWith<AuthorizationException> { client(anonymous).create(listOf(trackpoint)) }
+        assertFailsWith<AuthorizationException> { client(allowNothing).create(listOf(trackpoint)) }
     }
 
     @Test fun `create works without error`(): Unit = runBlocking {
-        val userLoginSource = mock<UserLoginSource>()
-        on(userLoginSource.accessToken).thenReturn(OsmDevApi.ALLOW_EVERYTHING_TOKEN)
-
-        val api = TracksApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource)
-
-        api.create(listOf(trackpoint))
+        client(allowEverything).create(listOf(trackpoint))
     }
+
+    private fun client(userLoginSource: UserLoginSource) =
+        TracksApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, TracksSerializer())
 }
 
