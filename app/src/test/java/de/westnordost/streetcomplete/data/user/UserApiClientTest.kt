@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user
 
+import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
@@ -8,6 +9,7 @@ import io.ktor.client.engine.cio.CIO
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertNotNull
 
 // other than some other APIs we are speaking to, we do not control the OSM API, so I think it is
@@ -44,8 +46,11 @@ class UserApiClientTest {
         assertNotNull(info.profileImageUrl)
     }
 
+    @Test
+    fun `getMine fails when not logged in`(): Unit = runBlocking {
+        assertFailsWith<AuthorizationException> { client(anonymous).getMine() }
+    }
+
     private fun client(userLoginSource: UserLoginSource) =
         UserApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, UserApiParser())
 }
-
-// TODO test errors

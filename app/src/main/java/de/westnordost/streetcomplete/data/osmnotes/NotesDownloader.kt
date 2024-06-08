@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 
-/** Takes care of downloading notes and referenced avatar pictures into persistent storage */
+/** Takes care of downloading notes into persistent storage */
 class NotesDownloader(
     private val notesApi: NotesApiClient,
     private val noteController: NoteController

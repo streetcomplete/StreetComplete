@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.data.osmtracks
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.AuthorizationException
-import de.westnordost.streetcomplete.data.CommunicationException
 import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import de.westnordost.streetcomplete.util.ktx.truncate
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.forms.MultiPartFormDataContent
 import io.ktor.client.request.forms.formData
@@ -15,10 +16,7 @@ import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
-import io.ktor.http.HttpStatusCode
-import io.ktor.http.isSuccess
 import kotlinx.datetime.Instant
-import nl.adaptivity.xmlutil.serialization.XML
 
 /**
  * Talks with OSM traces API to uploads GPS trackpoints
@@ -29,19 +27,19 @@ class TracksApiClient(
     private val userLoginSource: UserLoginSource,
     private val tracksSerializer: TracksSerializer
 ) {
-
     /**
      * Upload a list of trackpoints as a GPX
      *
      * @param trackpoints recorded trackpoints
      * @param noteText optional description text
      *
-     * @throws AuthorizationException if we are not authorized to upload traces (scope "write_gpx")
+     * @throws AuthorizationException if not logged in or not not authorized to upload traces
+     *                                (scope "write_gpx")
      * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return id of the uploaded track
      */
-    suspend fun create(trackpoints: List<Trackpoint>, noteText: String? = null): Long {
+    suspend fun create(trackpoints: List<Trackpoint>, noteText: String? = null): Long = wrapApiClientExceptions {
         val name = Instant.fromEpochMilliseconds(trackpoints.first().time).toString() + ".gpx"
         val description = noteText ?: "Uploaded via ${ApplicationConstants.USER_AGENT}"
         val tags = listOf(ApplicationConstants.NAME.lowercase()).joinToString()
@@ -58,22 +56,8 @@ class TracksApiClient(
                 append("tags", tags)
                 append("visibility", "identifiable")
             }))
+            expectSuccess = true
         }
-        val status = response.status
-
-        when {
-            status.isSuccess() -> {
-                return response.body<String>().toLong()
-            }
-            status == HttpStatusCode.Forbidden || status == HttpStatusCode.Unauthorized -> {
-                throw AuthorizationException(status.toString())
-            }
-            status.value in 500..599 -> {
-                throw ConnectionException(status.toString())
-            }
-            else -> {
-                throw CommunicationException(status.toString())
-            }
-        }
+        return response.body<String>().toLong()
     }
 }

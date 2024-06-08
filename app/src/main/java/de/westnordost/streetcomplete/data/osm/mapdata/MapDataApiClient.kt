@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.ConnectionException
-import de.westnordost.streetcomplete.data.download.QueryTooBigException
+import de.westnordost.streetcomplete.data.QueryTooBigException
 
 /** Get and upload changes to map data */
 interface MapDataApiClient : MapDataRepository {

@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects.data
 
+import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.toOsmApiString
+import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.expectSuccess
@@ -14,8 +16,10 @@ class TrafficFlowSegmentsApiClient(
     private val httpClient: HttpClient,
     private val apiUrl: String
 ) {
-
-    suspend fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
+    /** Get traffic flow segments for the given bounding box.
+     *
+     *  @throws ConnectionException on connection or server error */
+    suspend fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> = wrapApiClientExceptions {
         val bboxString = bbox.toOsmApiString()
         val response = httpClient.get("$apiUrl?bbox=$bboxString") { expectSuccess = true }
         val json = Json { ignoreUnknownKeys = true }

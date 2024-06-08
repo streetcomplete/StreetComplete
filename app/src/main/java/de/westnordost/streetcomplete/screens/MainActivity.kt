@@ -32,7 +32,6 @@ import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
@@ -265,7 +264,7 @@ class MainActivity :
                         messageView.movementMethod = LinkMovementMethod.getInstance()
                         Linkify.addLinks(messageView, Linkify.WEB_URLS)
                     }
-                } else if (e is ConnectionException || e is ImageUploadServerException) {
+                } else if (e is ConnectionException) {
                     /* A network connection error or server error is not the fault of this app.
                        Nothing we can do about it, so it does not make sense to send an error
                        report. Just notify the user. */

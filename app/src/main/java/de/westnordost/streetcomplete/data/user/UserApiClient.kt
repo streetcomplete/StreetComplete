@@ -1,14 +1,15 @@
 package de.westnordost.streetcomplete.data.user
 
 import de.westnordost.streetcomplete.data.AuthorizationException
-import de.westnordost.streetcomplete.data.CommunicationException
 import de.westnordost.streetcomplete.data.ConnectionException
+import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.expectSuccess
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode
-import io.ktor.http.isSuccess
 
 /**
  * Talks with OSM user API
@@ -21,62 +22,35 @@ class UserApiClient(
 ) {
     /**
      * @return the user info of the current user
+     *
      * @throws AuthorizationException if we are not authorized to read user details (scope "read_prefs")
+     * @throws ConnectionException on connection or server error
      */
-    suspend fun getMine(): UserInfo {
+    suspend fun getMine(): UserInfo = wrapApiClientExceptions {
         val response = httpClient.get(baseUrl + "user/details") {
             userLoginSource.accessToken?.let { bearerAuth(it) }
+            expectSuccess = true
         }
-        val status = response.status
-
-        if (status.isSuccess()) {
-            val body = response.body<String>()
-            return userApiParser.parseUsers(body).first()
-        }
-
-        when {
-            status == HttpStatusCode.Forbidden || status == HttpStatusCode.Unauthorized -> {
-                throw AuthorizationException(status.toString())
-            }
-            status == HttpStatusCode.RequestTimeout || status.value in 500..599 -> {
-                throw ConnectionException(status.toString())
-            }
-            else -> {
-                throw CommunicationException(status.toString())
-            }
-        }
+        val body = response.body<String>()
+        return userApiParser.parseUsers(body).first()
     }
 
     /**
      * @param userId id of the user to get the user info for
      * @return the user info of the given user. Null if the user does not exist.
+     *
+     * @throws ConnectionException on connection or server error
      */
-    suspend fun get(userId: Long): UserInfo? {
-        val response = httpClient.get(baseUrl + "user/$userId") {
-            userLoginSource.accessToken?.let { bearerAuth(it) }
-        }
-        val status = response.status
-
-        if (status.isSuccess()) {
+    suspend fun get(userId: Long): UserInfo? = wrapApiClientExceptions {
+        try {
+            val response = httpClient.get(baseUrl + "user/$userId") { expectSuccess = true }
             val body = response.body<String>()
             return userApiParser.parseUsers(body).first()
-        }
-
-        if (status == HttpStatusCode.Gone || status == HttpStatusCode.NotFound) {
-            return null
-        }
-
-        when {
-            status == HttpStatusCode.Forbidden || status == HttpStatusCode.Unauthorized -> {
-                throw AuthorizationException(status.toString())
-            }
-            status == HttpStatusCode.RequestTimeout || status.value in 500..599 -> {
-                throw ConnectionException(status.toString())
-            }
-            else -> {
-                throw CommunicationException(status.toString())
+        } catch (e: ClientRequestException) {
+            when (e.response.status) {
+                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
+                else -> throw e
             }
         }
     }
 }
-

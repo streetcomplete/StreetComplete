@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import de.westnordost.streetcomplete.data.AuthorizationException
+import de.westnordost.streetcomplete.data.ConflictException
+import de.westnordost.streetcomplete.data.QueryTooBigException
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.UserLoginSource
@@ -14,6 +17,7 @@ import io.ktor.client.request.post
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -61,6 +65,30 @@ class NotesApiClientTest {
         assertEquals("westnordost", note.comments[1].user?.name)
     }
 
+    @Test fun `comment note fails when not logged in`(): Unit = runBlocking {
+        val note = client(allowEverything).create(LatLon(83.0, 9.1), "Created note for comment!")
+        assertFailsWith<AuthorizationException> {
+            client(anonymous).comment(note.id, "test")
+        }
+        closeNote(note.id)
+    }
+
+    @Test fun `comment note fails when not authorized`(): Unit = runBlocking {
+        val note = client(allowEverything).create(LatLon(83.0, 9.1), "Created note for comment!")
+        assertFailsWith<AuthorizationException> {
+            client(allowNothing).comment(note.id, "test")
+        }
+        closeNote(note.id)
+    }
+
+    @Test fun `comment note fails when already closed`(): Unit = runBlocking {
+        val note = client(allowEverything).create(LatLon(83.0, 9.1), "Created note for comment!")
+        closeNote(note.id)
+        assertFailsWith<ConflictException> {
+            client(allowEverything).comment(note.id, "test")
+        }
+    }
+
     @Test fun `get note`(): Unit = runBlocking {
         val note = client(allowEverything).create(LatLon(83.0, 9.2), "Created note to get it!")
         val note2 = client(anonymous).get(note.id)
@@ -83,6 +111,21 @@ class NotesApiClientTest {
         closeNote(note2.id)
 
         assertTrue(notes.isNotEmpty())
+    }
+
+    @Test fun `get notes fails when bbox crosses 180th meridian`(): Unit = runBlocking {
+        assertFailsWith<IllegalArgumentException> {
+            client(anonymous).getAllOpen(BoundingBox(0.0, 179.0, 0.1, -179.0))
+        }
+    }
+
+    @Test fun `get notes fails when limit is too large`(): Unit = runBlocking {
+        assertFailsWith<QueryTooBigException> {
+            client(anonymous).getAllOpen(BoundingBox(0.0, 0.0, 0.1, 0.1), 100000000)
+        }
+        assertFailsWith<QueryTooBigException> {
+            client(anonymous).getAllOpen(BoundingBox(0.0, 0.0, 90.0, 90.0))
+        }
     }
 
     private fun client(userLoginSource: UserLoginSource) =

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.oauth
 
+import de.westnordost.streetcomplete.data.ConnectionException
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respondError
@@ -85,7 +86,7 @@ class OAuthAuthorizationTest {
         val service = OAuthApiClient(HttpClient(MockEngine { respondOk() }))
 
         // server did not respond correctly with "error"
-        assertFailsWith<OAuthConnectionException> {
+        assertFailsWith<ConnectionException> {
             service.getAccessToken(oauth, "localhost://oauth?e=something")
         }
 
@@ -142,7 +143,7 @@ class OAuthAuthorizationTest {
         }""")
         }))
 
-        val exception = assertFailsWith<OAuthConnectionException> {
+        val exception = assertFailsWith<ConnectionException> {
             service.getAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
         }
 
