@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.Downloader
@@ -19,10 +20,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.osm.edits.IsRevertAction
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
@@ -69,7 +69,7 @@ class ElementEditsUploader(
              * otherwise an inconsistency in the data would occur. E.g. no "star" for an uploaded
              * change, a change could be uploaded twice etc */
             withContext(scope.coroutineContext) { uploadEdit(edit, getIdProvider) }
-            if (BuildConfig.DEBUG && !UserLoginStatusController.loggedIn)
+            if (BuildConfig.DEBUG && !UserLoginController.loggedIn)
                 break // slow uploading is much better to read in logs
         }
     } }

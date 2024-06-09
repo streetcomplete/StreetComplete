@@ -5,6 +5,7 @@ import android.app.ActivityManager.MemoryInfo
 import android.app.Application
 import android.content.ComponentCallbacks2
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.getSystemService
 import androidx.preference.PreferenceManager
@@ -42,7 +43,8 @@ import de.westnordost.streetcomplete.data.platform.platformModule
 import de.westnordost.streetcomplete.data.quest.questModule
 import de.westnordost.streetcomplete.data.upload.uploadModule
 import de.westnordost.streetcomplete.data.urlconfig.urlConfigModule
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserLoginController
+import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
@@ -91,8 +93,9 @@ class StreetCompleteApplication : Application() {
     private val downloadedTilesController: DownloadedTilesController by inject()
     private val prefs: ObservableSettings by inject()
     private val editHistoryController: EditHistoryController by inject()
-    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userLoginController: UserLoginController by inject()
     private val cacheTrimmer: CacheTrimmer by inject()
+    private val userUpdater: UserUpdater by inject()
 
     private val applicationScope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 
@@ -161,12 +164,14 @@ class StreetCompleteApplication : Application() {
 
         // Force logout users who are logged in with OAuth 1.0a, they need to re-authenticate with OAuth 2
         if (prefs.getStringOrNull(Prefs.OAUTH1_ACCESS_TOKEN) != null) {
-            userLoginStatusController.logOut()
+            userLoginController.logOut()
         }
 
         updateDefaultLocales()
 
         crashReportExceptionHandler.install()
+
+        if (isConnected) userUpdater.update()
 
         enqueuePeriodicCleanupWork()
 
@@ -274,4 +279,7 @@ class StreetCompleteApplication : Application() {
     companion object {
         lateinit var preferences: SharedPreferences
     }
+
+    private val isConnected: Boolean
+        get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
 }

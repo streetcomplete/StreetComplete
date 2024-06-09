@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.upload
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
@@ -10,8 +11,7 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
-import de.westnordost.streetcomplete.data.user.AuthorizationException
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
@@ -24,7 +24,7 @@ class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
     private val elementEditsUploader: ElementEditsUploader,
     private val downloadedTilesController: DownloadedTilesController,
-    private val userLoginStatusSource: UserLoginStatusSource,
+    private val userLoginSource: UserLoginSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
     private val mutex: Mutex,
     private val externalSourceQuestController: ExternalSourceQuestController,
@@ -78,7 +78,7 @@ class Uploader(
             }
 
             // let's fail early in case of no authorization
-            if (!userLoginStatusSource.isLoggedIn && !BuildConfig.DEBUG) {
+            if (!userLoginSource.isLoggedIn && !BuildConfig.DEBUG) {
                 throw AuthorizationException("User is not authorized")
             }
 
@@ -88,7 +88,7 @@ class Uploader(
                 // element edit and note edit uploader must run in sequence because the notes may need
                 // to be updated if the element edit uploader creates new elements to which notes refer
                 elementEditsUploader.upload(this)
-                if (!userLoginStatusSource.isLoggedIn) return@withLock // avoid the 2 below in debug apk
+                if (!userLoginSource.isLoggedIn) return@withLock // avoid the 2 below in debug apk
                 noteEditsUploader.upload()
                 externalSourceQuestController.upload()
             }

@@ -10,8 +10,6 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
-import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -23,6 +21,8 @@ import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.dialogs.showOutsideDownloadedAreaDialog
+import de.westnordost.streetcomplete.view.checkIsSurvey
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

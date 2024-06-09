@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.data.download.ConnectionException
+import de.westnordost.streetcomplete.data.ConnectionException
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respondBadRequest

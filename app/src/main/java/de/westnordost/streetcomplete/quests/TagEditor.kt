@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests
 
 import android.annotation.SuppressLint
 import android.app.ActionBar.LayoutParams
-import android.graphics.Color
 import android.graphics.Paint
 import android.icu.text.DateFormat
 import android.os.Build
@@ -41,10 +40,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
-import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.createChanges
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
@@ -68,6 +64,8 @@ import de.westnordost.streetcomplete.util.ktx.showKeyboard
 import de.westnordost.streetcomplete.util.ktx.updateMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.view.checkIsSurvey
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers

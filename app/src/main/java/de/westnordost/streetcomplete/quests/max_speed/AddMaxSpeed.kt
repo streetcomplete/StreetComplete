@@ -2,6 +2,9 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -34,6 +37,9 @@ class AddMaxSpeed : OsmFilterQuestType<Pair<MaxSpeedAnswer, Pair<String, String>
     override val defaultDisabledMessage = R.string.default_disabled_msg_maxspeed
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_maxspeed_title_short2
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("nodes with traffic_sign = city_limit")
 
     override fun createForm() = AddMaxSpeedForm()
 

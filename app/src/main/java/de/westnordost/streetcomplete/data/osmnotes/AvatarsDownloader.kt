@@ -49,9 +49,7 @@ class AvatarsDownloader(
         if (!ensureCacheDirExists()) return
         val avatarFile = File(cacheDir, "$userId")
         try {
-            val response = httpClient.get(avatarUrl) {
-                expectSuccess = true
-            }
+            val response = httpClient.get(avatarUrl) { expectSuccess = true }
             response.bodyAsChannel().copyAndClose(avatarFile.writeChannel())
             Log.d(TAG, "Downloaded file: ${avatarFile.path}")
         } catch (e: Exception) {

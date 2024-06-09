@@ -18,7 +18,7 @@ val userScreenModule = module {
         get(), get(), get(), get(), get(), get(), get(named("AvatarsCacheDirectory"))
     ) }
 
-    factory<LoginViewModel> { LoginViewModelImpl(get(), get(), get(), get()) }
+    factory<LoginViewModel> { LoginViewModelImpl(get(), get(), get()) }
 
     factory<EditStatisticsViewModel> { EditStatisticsViewModelImpl(get(), get()) }
 

@@ -136,7 +136,6 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
             // https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
             tags[cyclewayKey] = "track"
             tags["$cyclewayKey:segregated"] = "no"
-
         }
         PICTOGRAMS -> {
             tags[cyclewayKey] = "shared_lane"

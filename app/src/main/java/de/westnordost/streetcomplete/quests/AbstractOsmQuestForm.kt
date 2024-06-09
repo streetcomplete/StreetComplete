@@ -18,8 +18,6 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
-import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -64,6 +62,8 @@ import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.view.add
+import de.westnordost.streetcomplete.view.checkIsSurvey
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

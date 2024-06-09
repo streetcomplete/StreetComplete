@@ -16,27 +16,19 @@ class TrafficFlowSegmentsApi(
 ) {
 
     suspend fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
-        val leftBottomRightTopString = listOf(
+        val bboxString = listOf(
             bbox.min.longitude,
             bbox.min.latitude,
             bbox.max.longitude,
             bbox.max.latitude
         ).joinToString(",") { it.format(7) }
 
-        val response = httpClient.get("$apiUrl?bbox=$leftBottomRightTopString") {
-            expectSuccess = true
-        }
-        return parse(response.body())
-    }
-
-    companion object {
-        private val json = Json {
-            ignoreUnknownKeys = true
-        }
-
-        @Serializable
-        data class TrafficFlowSegmentList(val segments: List<TrafficFlowSegment>)
-        fun parse(jsonString: String): Map<Long, List<TrafficFlowSegment>> =
-            json.decodeFromString<TrafficFlowSegmentList>(jsonString).segments.groupBy { it.wayId }
+        val response = httpClient.get("$apiUrl?bbox=$bboxString") { expectSuccess = true }
+        val json = Json { ignoreUnknownKeys = true }
+        val segmentsList = json.decodeFromString<TrafficFlowSegmentList>(response.body())
+        return segmentsList.segments.groupBy { it.wayId }
     }
 }
+
+@Serializable
+private data class TrafficFlowSegmentList(val segments: List<TrafficFlowSegment>)

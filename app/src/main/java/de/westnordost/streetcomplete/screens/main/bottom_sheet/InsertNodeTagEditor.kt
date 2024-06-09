@@ -5,14 +5,14 @@ import android.view.View
 import androidx.core.os.bundleOf
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
-import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.quests.TagEditor
 import de.westnordost.streetcomplete.util.math.PositionOnWay
+import de.westnordost.streetcomplete.view.checkIsSurvey
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 

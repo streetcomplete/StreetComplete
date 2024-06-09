@@ -23,13 +23,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
-import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.view.checkIsSurvey
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
@@ -11,8 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.util.ktx.copy
 
 class ElementEditUploader(
@@ -30,7 +30,7 @@ class ElementEditUploader(
         val localChanges by lazy { edit.action.createUpdates(mapDataController, getIdProvider()) }
 
         // fake upload in debug mode: create pseudo-random new (positive!) ids that are unlikely to clash with real ids
-        if (BuildConfig.DEBUG && !UserLoginStatusController.loggedIn) {
+        if (BuildConfig.DEBUG && !UserLoginController.loggedIn) {
             val creationsByNewId = localChanges.creations.associateBy { Long.MAX_VALUE - Int.MAX_VALUE + it.hashCode() }
             val updates = MapDataUpdates(
                 updated = (localChanges.modifications + creationsByNewId.map { it.value.copy(id = it.key) })

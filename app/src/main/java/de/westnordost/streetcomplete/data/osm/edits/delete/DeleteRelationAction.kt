@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.delete
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
@@ -8,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import kotlinx.serialization.Serializable
 
 /** Action that deletes a POI node.
