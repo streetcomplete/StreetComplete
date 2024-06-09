@@ -1772,10 +1772,4 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="title_logs_filters">Filter messages</string>
     <string name="quest_isAmenityIndoor_outside_covered">Not inside, but covered</string>
 
-    <!-- strings in default file instead of EE because translations are also here -->
-    <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
-    <string name="quest_maxheight_answer_noSign_question_yes">Tall trucks can pass through</string>
-    <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don’t fit"</string>
-    <string name="quest_maxheight_answer_noSign_question_unclear">"Unclear"</string>
-
 </resources>

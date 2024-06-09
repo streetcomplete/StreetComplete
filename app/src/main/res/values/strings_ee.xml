@@ -555,6 +555,11 @@
     <string name="quest_guidepostRef_hint">Reference number of this map or guidepost, not the reference number of signed routes.</string>
     <string name="quest_guidepostName_hint">Signed (location) name of this map or guidepost. Do not enter a reference number here.</string>
     <string name="quest_guidepost_disabled_msg">This quest is disabled by default because what is signed strongly varies by region and operator. You may need to refine the element selection for your area (e.g. add or remove maps, only select elements with hiking=yes, etc.)</string>
+    <!-- maxheight_answer_noSign strings removed in SC, could take existing translations from https://github.com/streetcomplete/StreetComplete/blob/312dd4135ad75beff9f13c446040d1c3afbc9a80/app/src/main/res/values/strings.xml -->
+    <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">Tall trucks can pass through</string>
+    <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don’t fit"</string>
+    <string name="quest_maxheight_answer_noSign_question_unclear">"Unclear"</string>
 
     <string name="quest_generalRef_hint">Reference number or code</string>
     <string name="quest_generalRef_disabled_msg">This quest is disabled by default because what is signed strongly varies by region and operator. You may need to refine the element selection for your area (e.g. remove street lamps, add maps, only select guideposts with hiking=yes, etc.)</string>
