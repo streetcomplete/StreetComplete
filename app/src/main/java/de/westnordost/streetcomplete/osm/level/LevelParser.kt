@@ -2,22 +2,22 @@ package de.westnordost.streetcomplete.osm.level
 
 /** get for which level(s) the element with the given tags is defined, if any.
  *  repeat_on is interpreted the same way as level */
-fun parseLevelsOrNull(tags: Map<String, String>): List<Level>? {
-    val levels = tags["level"]?.toLevelsOrNull()
-    val repeatOns = tags["repeat_on"]?.toLevelsOrNull()
-    return if (levels == null) {
-        if (repeatOns == null) null else repeatOns
-    } else {
-        if (repeatOns == null) levels else levels + repeatOns
+fun parseLevelsOrNull(tags: Map<String, String>, allowed: List<LevelTypes> = defaultTypes): List<Level>? {
+    val resultDelegate = lazy { mutableListOf<Level>() }
+    val result by resultDelegate
+    allowed.forEach {
+        tags[it.tag]?.toLevelsOrNull()?.let { result.addAll(it) }
     }
+    return if (resultDelegate.isInitialized()) result
+    else null
 }
 
 /** get levels that would appear on level filter buttons like in JOSM for the elements with the
  *  given tags */
-fun parseSelectableLevels(tagsList: Iterable<Map<String, String>>): List<Double> {
+fun parseSelectableLevels(tagsList: Iterable<Map<String, String>>, allowed: List<LevelTypes> = defaultTypes): List<Double> {
     val allLevels = mutableSetOf<Double>()
     for (tags in tagsList) {
-        val levels = parseLevelsOrNull(tags) ?: continue
+        val levels = parseLevelsOrNull(tags, allowed) ?: continue
         for (level in levels) {
             when (level) {
                 is LevelRange -> allLevels.addAll(level.getSelectableLevels())
@@ -45,3 +45,9 @@ private fun String.toLevelOrNull(): Level? {
 }
 
 private val levelRegex = Regex("([+-]?\\d+(?:\\.\\d+)?)(?:-([+-]?\\d+(?:\\.\\d+)?))?")
+
+enum class LevelTypes(val tag: String) {
+    LEVEL("level"), REPEAT_ON("repeat_on"), LEVEL_REF("level:ref"), ADDR_FLOOR("addr:floor)")
+}
+
+private val defaultTypes = listOf(LevelTypes.LEVEL, LevelTypes.REPEAT_ON)

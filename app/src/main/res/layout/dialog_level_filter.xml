@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="@dimen/dialog_horizontal_margin">
+
+    <CheckBox
+        android:id="@+id/level_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="level" />
+
+    <CheckBox
+        android:id="@+id/repeat_on_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="repeat_on" />
+
+    <CheckBox
+        android:id="@+id/level_ref_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="level:ref" />
+
+    <CheckBox
+        android:id="@+id/addr_floor_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="addr:floor" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/level_filter_message" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:hint="@string/level_filter_hint" />
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:layout_marginHorizontal="4dp"
+            android:text="+"
+            style="@style/Dialog.OutlinedButton.WithNightModeSupport" />
+
+        <Button
+            android:id="@+id/minus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="-"
+            style="@style/Dialog.OutlinedButton.WithNightModeSupport" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/enable_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/level_filter_enable" />
+
+</LinearLayout>

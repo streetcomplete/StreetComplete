@@ -1,15 +1,9 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.text.InputType
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.LinearLayout
+import android.view.LayoutInflater
 import android.widget.ScrollView
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.SwitchCompat
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -17,12 +11,19 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.databinding.DialogLevelFilterBinding
+import de.westnordost.streetcomplete.osm.level.LevelTypes
+import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
+import de.westnordost.streetcomplete.screens.main.map.MapFragment
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import kotlin.math.ceil
+import kotlin.math.floor
 
 /** Controller for filtering all quests that are hidden because they are on the wrong level */
 class LevelFilter internal constructor(private val prefs: ObservableSettings) : KoinComponent {
@@ -35,6 +36,7 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
 
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val visibleQuestTypeController: VisibleQuestTypeController by inject()
+    private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
 
     init { reload() }
@@ -80,60 +82,57 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
         return false
     }
 
-    @SuppressLint("SetTextI18n") // tags should not be translated
-    fun showLevelFilterDialog(context: Context) {
+    fun showLevelFilterDialog(context: Context, mapFragment: MapFragment?) {
         val builder = AlertDialog.Builder(context)
+        val binding = DialogLevelFilterBinding.inflate(LayoutInflater.from(context))
         builder.setTitle(R.string.level_filter_title)
-        val linearLayout = LinearLayout(context)
-        linearLayout.orientation = LinearLayout.VERTICAL
-        val levelTags = prefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref")!!.split(",")
+        binding.level.setText(prefs.getString(Prefs.ALLOWED_LEVEL, ""))
+        binding.enableSwitch.isChecked = isEnabled
+        val levelTags = prefs.getString(Prefs.ALLOWED_LEVEL_TAGS, "level,repeat_on,level:ref").split(",")
+        val allowedLevelTypes = LevelTypes.entries.filter { levelTags.contains(it.tag) }
+        binding.plus.setOnClickListener {
+            val selectableLevels = getLevelsInView(mapFragment?.getDisplayedArea(), allowedLevelTypes)
+            val oldText = binding.level.text?.toString()
+            val currentLevel = oldText?.let { "[\\d.+-]+".toRegex().find(it)?.value }
+            val currentLevelNumber = currentLevel?.toDoubleOrNull()
+            val newLevel = if (currentLevelNumber == null) {
+                selectableLevels.find { it >= 0 } ?: selectableLevels.firstOrNull() ?: 0.0
+            } else {
+                val nextInt = floor(currentLevelNumber + 1.0)
+                selectableLevels.find { it > currentLevelNumber && it < nextInt } ?: nextInt
+            }
+            binding.level.setText(oldText?.replace(currentLevel ?: oldText, newLevel.toNiceString()) ?: newLevel.toNiceString())
+        }
+        binding.minus.setOnClickListener {
+            val selectableLevels = getLevelsInView(mapFragment?.getDisplayedArea(), allowedLevelTypes)
+            val oldText = binding.level.text?.toString()
+            val currentLevel = oldText?.let { "[\\d.+-]+".toRegex().find(it)?.value }
+            val currentLevelNumber = currentLevel?.toDoubleOrNull()
+            val newLevel = if (currentLevelNumber == null) {
+                selectableLevels.findLast { it <= 0 } ?: selectableLevels.firstOrNull() ?: 0.0
+            } else {
+                val prevInt = ceil(currentLevelNumber - 1.0)
+                selectableLevels.findLast { it < currentLevelNumber && it > prevInt } ?: prevInt
+            }
+            binding.level.setText(oldText?.replace(currentLevel ?: oldText, newLevel.toNiceString()) ?: newLevel.toNiceString())
+        }
 
-        val levelText = TextView(context)
-        levelText.setText(R.string.level_filter_message)
+        binding.levelBox.isChecked = allowedLevelTypes.contains(LevelTypes.LEVEL)
+        binding.repeatOnBox.isChecked = allowedLevelTypes.contains(LevelTypes.REPEAT_ON)
+        binding.levelRefBox.isChecked = allowedLevelTypes.contains(LevelTypes.LEVEL_REF)
+        binding.addrFloorBox.isChecked = allowedLevelTypes.contains(LevelTypes.ADDR_FLOOR)
 
-        val level = EditText(context)
-        level.inputType = InputType.TYPE_CLASS_TEXT
-        level.setHint(R.string.level_filter_hint)
-        level.setText(prefs.getString(Prefs.ALLOWED_LEVEL, ""))
-
-        val enable = SwitchCompat(context)
-        enable.setText(R.string.level_filter_enable)
-        enable.isChecked = isEnabled
-
-        val tagLevel = CheckBox(context)
-        tagLevel.text = "level"
-        tagLevel.isChecked = levelTags.contains("level")
-
-        val tagRepeatOn = CheckBox(context)
-        tagRepeatOn.text = "repeat_on"
-        tagRepeatOn.isChecked = levelTags.contains("repeat_on")
-
-        val tagLevelRef = CheckBox(context)
-        tagLevelRef.text = "level:ref"
-        tagLevelRef.isChecked = levelTags.contains("level:ref")
-
-        val tagAddrFloor = CheckBox(context)
-        tagAddrFloor.text = "addr:floor"
-        tagAddrFloor.isChecked = levelTags.contains("addr:floor")
-
-        linearLayout.addView(tagLevel)
-        linearLayout.addView(tagRepeatOn)
-        linearLayout.addView(tagLevelRef)
-        linearLayout.addView(tagAddrFloor)
-        linearLayout.addView(levelText)
-        linearLayout.addView(level)
-        linearLayout.addView(enable)
-        builder.setViewWithDefaultPadding(ScrollView(context).apply { addView(linearLayout) })
+        builder.setView(ScrollView(context).apply { addView(binding.root) })
         builder.setNegativeButton(android.R.string.cancel, null)
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             val levelTagList = mutableListOf<String>()
-            if (tagLevel.isChecked) levelTagList.add("level")
-            if (tagRepeatOn.isChecked) levelTagList.add("repeat_on")
-            if (tagLevelRef.isChecked) levelTagList.add("level:ref")
-            if (tagAddrFloor.isChecked) levelTagList.add("addr:floor")
+            if (binding.levelBox.isChecked) levelTagList.add("level")
+            if ( binding.repeatOnBox.isChecked) levelTagList.add("repeat_on")
+            if (binding.levelRefBox.isChecked) levelTagList.add("level:ref")
+            if (binding.addrFloorBox.isChecked) levelTagList.add("addr:floor")
             prefs.putString(Prefs.ALLOWED_LEVEL_TAGS, levelTagList.joinToString(","))
-            prefs.putString(Prefs.ALLOWED_LEVEL, level.text.toString())
-            isEnabled = enable.isChecked
+            prefs.putString(Prefs.ALLOWED_LEVEL, binding.level.text.toString())
+            isEnabled = binding.enableSwitch.isChecked
             reload()
 
             val overlayController = selectedOverlaySource as? SelectedOverlayController
@@ -146,6 +145,24 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
             }
         }
         builder.show()
+    }
+
+    private fun getLevelsInView(displayedArea: BoundingBox?, allowed: List<LevelTypes>): List<Double> {
+        val tags = if (displayedArea != null) {
+            visibleQuestsSource.getAllVisible(displayedArea).mapNotNull {
+                when (it) {
+                    is OsmQuest -> mapDataSource.get(it.elementType, it.elementId)
+                    is ExternalSourceQuest -> it.elementKey?.let { mapDataSource.get(it.type, it.id) }
+                    else -> null
+                }?.tags
+            }
+        } else emptyList()
+        return parseSelectableLevels(tags, allowed)
+    }
+
+    private fun Double.toNiceString(): String {
+        if (toInt().toDouble() == this) return toInt().toString()
+        return toString()
     }
 
 }

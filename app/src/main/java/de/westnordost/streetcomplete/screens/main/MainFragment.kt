@@ -1017,7 +1017,7 @@ class MainFragment :
         popupMenu.setOnMenuItemClickListener { item ->
             when(item.itemId) {
                 1 -> showProfileSelectionDialog(requireContext(), questPresetsController, prefs)
-                2 -> this.context?.let { levelFilter.showLevelFilterDialog(it) }
+                2 -> levelFilter.showLevelFilterDialog(requireContext(), mapFragment)
                 3 -> prefs.putString(Prefs.THEME_BACKGROUND, if (prefs.getString(Prefs.THEME_BACKGROUND, "MAP") == "MAP") "AERIAL" else "MAP")
                 4 -> { viewLifecycleScope.launch { mapFragment?.reverseQuests() } }
             }
