@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,12 +30,14 @@ import kotlinx.datetime.Instant
 abstract class EditHistoryViewModel : ViewModel() {
     abstract val editItems: StateFlow<List<EditItem>>
     abstract val selectedEdit: StateFlow<Edit?>
+    var allHidden = false
 
     abstract suspend fun getEditElement(edit: Edit): Element?
     abstract suspend fun getEditGeometry(edit: Edit): ElementGeometry
 
     abstract fun select(editKey: EditKey?)
     abstract fun undo(editKey: EditKey)
+    abstract fun updateEdits()
 
     abstract val featureDictionaryLazy: Lazy<FeatureDictionary>
 }
@@ -147,9 +150,10 @@ class EditHistoryViewModelImpl(
         editHistoryController.removeListener(editHistoryListener)
     }
 
-    private fun updateEdits() {
+    override fun updateEdits() {
         launch(IO) {
-            edits.value = editHistoryController.getAll().sortedByDescending { it.createdTimestamp }
+            Log.i("test", "all hidden $allHidden")
+            edits.value = editHistoryController.getAll(allHidden).sortedByDescending { it.createdTimestamp }
         }
     }
 }

@@ -1403,8 +1403,7 @@ class MainFragment :
             addToBackStack(EDIT_HISTORY)
         }
         mapFragment?.hideOverlay()
-        // todo: uncomment when fixing allHidden stuff
-        mapFragment?.pinMode = /*if (allHidden) MainMapFragment.PinMode.HIDDEN_QUESTS else*/ MainMapFragment.PinMode.EDITS
+        mapFragment?.pinMode = if (allHidden) MainMapFragment.PinMode.HIDDEN_QUESTS else MainMapFragment.PinMode.EDITS
         historyBackPressedCallback.isEnabled = true
     }
 

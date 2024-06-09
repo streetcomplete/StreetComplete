@@ -25,6 +25,9 @@ class EditHistoryFragment(private val allHidden: Boolean = false) : Fragment(R.l
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.allHidden = allHidden
+        if (allHidden)
+            viewModel.updateEdits()
 
         val initialPaddingBottom = binding.editHistoryList.paddingBottom
         binding.editHistoryList.respectSystemInsets {
