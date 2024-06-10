@@ -14,7 +14,7 @@ import java.util.Locale
 
 /** Manages the creation and reusage of changesets */
 class OpenChangesetsManager(
-    private val mapDataApi: MapDataApiClient,
+    private val changesetApiClient: ChangesetApiClient,
     private val openChangesetsDB: OpenChangesetsDao,
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val lastEditTimeStore: LastEditTimeStore
@@ -41,7 +41,7 @@ class OpenChangesetsManager(
         source: String,
         position: LatLon
     ): Long = synchronized(this) {
-        val changesetId = mapDataApi.openChangeset(createChangesetTags(type, source))
+        val changesetId = changesetApiClient.open(createChangesetTags(type, source))
         openChangesetsDB.put(OpenChangeset(type.name, source, changesetId, position))
         changesetAutoCloser.enqueue(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
         Log.i(TAG, "Created changeset #$changesetId")
@@ -59,7 +59,7 @@ class OpenChangesetsManager(
 
     private fun closeChangeset(openChangeset: OpenChangeset) {
         try {
-            mapDataApi.closeChangeset(openChangeset.changesetId)
+            changesetApiClient.close(openChangeset.changesetId)
             Log.i(TAG, "Closed changeset #${openChangeset.changesetId}")
         } catch (e: ConflictException) {
             Log.w(TAG, "Couldn't close changeset #${openChangeset.changesetId} because it has already been closed")
