@@ -95,12 +95,10 @@ class ElementEditsUploader(
     }
 
     private suspend fun fetchElementComplete(elementType: ElementType, elementId: Long): MapData? =
-        withContext(Dispatchers.IO) {
-            when (elementType) {
-                ElementType.NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
-                ElementType.WAY -> mapDataApi.getWayComplete(elementId)
-                ElementType.RELATION -> mapDataApi.getRelationComplete(elementId)
-            }
+        when (elementType) {
+            ElementType.NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
+            ElementType.WAY -> mapDataApi.getWayComplete(elementId)
+            ElementType.RELATION -> mapDataApi.getRelationComplete(elementId)
         }
 
     companion object {

@@ -4,9 +4,28 @@ import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.QueryTooBigException
+import de.westnordost.streetcomplete.data.user.UserLoginSource
+import de.westnordost.streetcomplete.data.wrapApiClientExceptions
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.expectSuccess
+import io.ktor.client.request.bearerAuth
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.http.HttpStatusCode
+
+// TODO tests
 
 /** Get and upload changes to map data */
-interface MapDataApiClient : MapDataRepository {
+class MapDataApiClient(
+    private val httpClient: HttpClient,
+    private val baseUrl: String,
+    private val userLoginSource: UserLoginSource,
+    private val serializer: MapDataApiSerializer,
+) : MapDataRepository {
 
     /**
      * Upload changes into an opened changeset.
@@ -18,157 +37,214 @@ interface MapDataApiClient : MapDataRepository {
      *                           the elements being uploaded or the user who created the changeset
      *                           is not the same as the one uploading the change
      * @throws AuthorizationException if the application does not have permission to edit the map
-     *                                (Permission.MODIFY_MAP)
+     *                                (OAuth scope "write_api")
      * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the updated elements
      */
-    fun uploadChanges(changesetId: Long, changes: MapDataChanges, ignoreRelationTypes: Set<String?> = emptySet()): MapDataUpdates
+    suspend fun uploadChanges(
+        changesetId: Long,
+        changes: MapDataChanges,
+        ignoreRelationTypes: Set<String?> = emptySet()
+    ) = wrapApiClientExceptions {
+
+        // TODO handle errors
+
+        try {
+            val response = httpClient.post(baseUrl + "changeset/$changesetId/upload") {
+                userLoginSource.accessToken?.let { bearerAuth(it) }
+                setBody(serializer.serializeMapDataChanges(changes, changesetId))
+                expectSuccess = true
+            }
+            val diff = serializer.parseElementsDiffs(response.body<String>())
+
+            // TODO ignore relation types...
+            val handler = UpdatedElementsHandler(ignoreRelationTypes)
+            api.uploadChanges(changesetId, changes.toOsmApiElements()) {
+                handler.handle(it.toDiffElement())
+            }
+            val allChangedElements = changes.creations + changes.modifications + changes.deletions
+            handler.getElementUpdates(allChangedElements)
+        } catch (e: OsmApiException) {
+            throw ConflictException(e.message, e)
+        }
+    }
 
     /**
-     * Open a new changeset with the given tags
-     *
-     * @param tags tags of this changeset. Usually it is comment and source.
-     *
-     * @throws AuthorizationException if the application does not have permission to edit the map
-     *                                (Permission.MODIFY_MAP)
-     * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return the id of the changeset
-     */
-    fun openChangeset(tags: Map<String, String?>): Long
-
-    /**
-     * Closes the given changeset.
-     *
-     * @param changesetId id of the changeset to close
-     *
-     * @throws ConflictException if the changeset has already been closed
-     * @throws AuthorizationException if the application does not have permission to edit the map
-     *                                (Permission.MODIFY_MAP)
-     * @throws ConnectionException if a temporary network connection problem occurs
-     */
-    fun closeChangeset(changesetId: Long)
-
-    /**
-     * Feeds map data to the given MapDataHandler.
-     * If not logged in, the Changeset for each returned element will be null
+     * Returns the map data in the given bounding box.
      *
      * @param bounds rectangle in which to query map data. May not cross the 180th meridian. This is
      * usually limited at 0.25 square degrees. Check the server capabilities.
-     * @param mutableMapData mutable map data to add the add the data to
      * @param ignoreRelationTypes don't put any relations of the given types in the given mutableMapData
      *
-     * @throws QueryTooBigException if the bounds area is too large
+     * @throws QueryTooBigException if the bounds area is too large or too many elements would be returned
      * @throws IllegalArgumentException if the bounds cross the 180th meridian.
      * @throws ConnectionException if a temporary network connection problem occurs
      *
      * @return the map data
      */
-    fun getMap(bounds: BoundingBox, mutableMapData: MutableMapData, ignoreRelationTypes: Set<String?> = emptySet())
+    suspend fun getMap(
+        bounds: BoundingBox,
+        ignoreRelationTypes: Set<String?> = emptySet()
+    ): NodesWaysRelations = wrapApiClientExceptions {
+        if (bounds.crosses180thMeridian) {
+            throw IllegalArgumentException("Bounding box crosses 180th meridian")
+        }
+
+        try {
+            val response = httpClient.get(baseUrl + "map") {
+                parameter("bbox", bounds.toOsmApiString())
+                expectSuccess = true
+            }
+            // TODO ignore relation types relation.tags?.get("type")
+            return serializer.parseMapData(response.body())
+        } catch (e: ClientRequestException) {
+            if (e.response.status == HttpStatusCode.BadRequest) {
+                throw QueryTooBigException(e.message, e)
+            } else {
+                throw e
+            }
+        }
+    }
 
     /**
-     * Queries the way with the given id plus all nodes that are in referenced by it.
-     * If not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the way's id
+     * Returns the given way by id plus all its nodes or null if the way does not exist.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return the map data
      */
-    override fun getWayComplete(id: Long): MapData?
+    override suspend fun getWayComplete(id: Long): NodesWaysRelations? = wrapApiClientExceptions {
+        try {
+            val response = httpClient.get(baseUrl + "way/$id/full") { expectSuccess = true }
+            return serializer.parseMapData(response.body())
+        } catch (e: ClientRequestException) {
+            when (e.response.status) {
+                // hidden by moderator, does not exist
+                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
+                else -> throw e
+            }
+        }
+    }
 
     /**
-     * Queries the relation with the given id plus all it's members and all nodes of ways that are
-     * members of the relation.
-     * If not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the relation's id
+     * Returns the given relation by id plus all its members and all nodes of ways that are members
+     * of the relation. Or null if the relation does not exist.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return the map data
      */
-    override fun getRelationComplete(id: Long): MapData?
+    override suspend fun getRelationComplete(id: Long): NodesWaysRelations? = wrapApiClientExceptions {
+        try {
+            val response = httpClient.get(baseUrl + "relation/$id/full") { expectSuccess = true }
+            return serializer.parseMapData(response.body())
+        } catch (e: ClientRequestException) {
+            when (e.response.status) {
+                // hidden by moderator, does not exist
+                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
+                else -> throw e
+            }
+        }
+    }
 
     /**
-     * Note that if not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the node's id
+     * Return the given node by id or null if it doesn't exist
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return the node with the given id or null if it does not exist
      */
-    override fun getNode(id: Long): Node?
+    override suspend fun getNode(id: Long): Node? = wrapApiClientExceptions {
+        try {
+            val response = httpClient.get(baseUrl + "way/$id") { expectSuccess = true }
+            return serializer.parseMapData(response.body()).nodes.single()
+        } catch (e: ClientRequestException) {
+            when (e.response.status) {
+                // hidden by moderator, does not exist
+                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
+                else -> throw e
+            }
+        }
+    }
 
     /**
-     * Note that if not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the way's id
+     * Return the given way by id or null if it doesn't exist
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return the way with the given id or null if it does not exist
      */
-    override fun getWay(id: Long): Way?
+    override suspend fun getWay(id: Long): Way? = wrapApiClientExceptions {
+        try {
+            val response = httpClient.get(baseUrl + "way/$id") { expectSuccess = true }
+            return serializer.parseMapData(response.body()).ways.single()
+        } catch (e: ClientRequestException) {
+            when (e.response.status) {
+                // hidden by moderator, does not exist
+                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
+                else -> throw e
+            }
+        }
+    }
 
     /**
-     * Note that if not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the relation's id
+     * Return the given relation by id or null if it doesn't exist
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return the relation with the given id or null if it does not exist
      */
-    override fun getRelation(id: Long): Relation?
+    override suspend fun getRelation(id: Long): Relation? = wrapApiClientExceptions {
+        try {
+            val response = httpClient.get(baseUrl + "relation/$id") { expectSuccess = true }
+            return serializer.parseMapData(response.body()).relations.single()
+        } catch (e: ClientRequestException) {
+            when (e.response.status) {
+                // hidden by moderator, does not exist
+                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
+                else -> throw e
+            }
+        }
+    }
 
     /**
-     * Note that if not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the node's id
+     * Return all ways in which the given node is used.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return all ways that reference the node with the given id. Empty if none.
      */
-    override fun getWaysForNode(id: Long): List<Way>
+    override suspend fun getWaysForNode(id: Long): List<Way> = wrapApiClientExceptions {
+        val response = httpClient.get(baseUrl + "node/$id/ways") { expectSuccess = true }
+        return serializer.parseMapData(response.body()).ways
+    }
 
     /**
-     * Note that if not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the node's id
+     * Return all relations in which the given node is used.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return all relations that reference the node with the given id. Empty if none.
      */
-    override fun getRelationsForNode(id: Long): List<Relation>
+    override suspend fun getRelationsForNode(id: Long): List<Relation> = wrapApiClientExceptions {
+        val response = httpClient.get(baseUrl + "node/$id/relations") { expectSuccess = true }
+        return serializer.parseMapData(response.body()).relations
+    }
 
     /**
-     * Note that if not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the way's id
+     * Return all relations in which the given way is used.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return all relations that reference the way with the given id. Empty if none.
      */
-    override fun getRelationsForWay(id: Long): List<Relation>
+    override suspend fun getRelationsForWay(id: Long): List<Relation> = wrapApiClientExceptions {
+        val response = httpClient.get(baseUrl + "way/$id/relations") { expectSuccess = true }
+        return serializer.parseMapData(response.body()).relations
+    }
 
     /**
-     * Note that if not logged in, the Changeset for each returned element will be null
-     *
-     * @param id the relation's id
+     * Return all relations in which the given relation is used.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
-     *
-     * @return all relations that reference the relation with the given id. Empty if none.
      */
-    override fun getRelationsForRelation(id: Long): List<Relation>
+    override suspend fun getRelationsForRelation(id: Long): List<Relation> = wrapApiClientExceptions {
+        val response = httpClient.get(baseUrl + "relation/$id/relations") { expectSuccess = true }
+        return serializer.parseMapData(response.body()).relations
+    }
 }
+
+// TODO or use MapData?
+data class NodesWaysRelations(
+    val nodes: List<Node>,
+    val ways: List<Way>,
+    val relations: List<Relation>
+)
 
 /** Data class that contains the map data updates (updated elements, deleted elements, elements
  *  whose id have been updated) after the modifications have been uploaded */
@@ -189,4 +265,11 @@ data class MapDataChanges(
     val creations: Collection<Element> = emptyList(),
     val modifications: Collection<Element> = emptyList(),
     val deletions: Collection<Element> = emptyList()
+)
+
+data class DiffElement(
+    val type: ElementType,
+    val clientId: Long,
+    val serverId: Long? = null,
+    val serverVersion: Int? = null
 )
