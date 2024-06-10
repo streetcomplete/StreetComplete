@@ -432,7 +432,8 @@ fun questTypeRegistry(
     99 to AddEntrance(),
     100 to AddEntranceReference(),
 
-    166 to AddProhibitedForMoped(),
+    // see #5565 - deactivated until changed so that user can not unknowingly add wrong information
+    //166 to AddProhibitedForMoped(),
 
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
