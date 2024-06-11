@@ -8,16 +8,14 @@ import nl.adaptivity.xmlutil.serialization.XML
 import nl.adaptivity.xmlutil.serialization.XmlChildrenName
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
-// TODO tests
-
 class MapDataApiSerializer {
     private val xml = XML { defaultPolicy { ignoreUnknownChildren() }}
 
     fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): NodesWaysRelations =
         xml.decodeFromString<ApiOsm>(osmXml).toMapData(ignoreRelationTypes)
 
-    fun parseElementsDiffs(diffResultXml: String, ): List<DiffElement> =
-        xml.decodeFromString<ApiDiffResult>(diffResultXml).toDiffElements()
+    fun parseElementUpdates(diffResultXml: String): Map<ElementKey, ElementUpdateAction> =
+        xml.decodeFromString<ApiDiffResult>(diffResultXml).toElementUpdates()
 
     fun serializeMapDataChanges(changes: MapDataChanges, changesetId: Long): String =
         xml.encodeToString(changes.toApiOsmChange(changesetId))
@@ -67,17 +65,20 @@ private fun ApiRelationMember.toRelationMember() = RelationMember(
 
 private fun List<ApiTag>.toMap(): Map<String, String> = associate { (k, v) -> k to v }
 
-private fun ApiDiffResult.toDiffElements(): List<DiffElement> =
-    nodes.map { it.toDiffElement(ElementType.NODE) } +
-    ways.map { it.toDiffElement(ElementType.WAY) } +
-    relations.map { it.toDiffElement(ElementType.RELATION) }
+private fun ApiDiffResult.toElementUpdates(): Map<ElementKey, ElementUpdateAction> {
+    val result = HashMap<ElementKey, ElementUpdateAction>(nodes.size + ways.size + relations.size)
+    result.putAll(nodes.map { it.toDiffElement(ElementType.NODE) })
+    result.putAll(ways.map { it.toDiffElement(ElementType.WAY) })
+    result.putAll(relations.map { it.toDiffElement(ElementType.RELATION) })
+    return result
+}
 
-private fun ApiDiffElement.toDiffElement(type: ElementType) = DiffElement(
-    type = type,
-    clientId = oldId,
-    serverId = newId,
-    serverVersion = newVersion
-)
+private fun ApiDiffElement.toDiffElement(type: ElementType): Pair<ElementKey, ElementUpdateAction> {
+    val action =
+        if (newId != null && newVersion != null) UpdateElement(newId, newVersion)
+        else DeleteElement
+    return ElementKey(type, oldId) to action
+}
 
 //endregion
 

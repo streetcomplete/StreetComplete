@@ -32,6 +32,10 @@ class MapDataApiClient(
      *
      * @param changesetId id of the changeset to upload changes into
      * @param changes changes to upload.
+     * @param ignoreRelationTypes omit any updates to relations of the given types from the result.
+     *                            Such relations can still be referred to as relation members,
+     *                            though, the relations themselves are just not included
+     *
      *
      * @throws ConflictException if the changeset has already been closed, there is a conflict for
      *                           the elements being uploaded or the user who created the changeset
@@ -56,7 +60,7 @@ class MapDataApiClient(
                 setBody(serializer.serializeMapDataChanges(changes, changesetId))
                 expectSuccess = true
             }
-            val diff = serializer.parseElementsDiffs(response.body<String>())
+            val updates = serializer.parseElementUpdates(response.body<String>())
 
             // TODO ignore relation types...
             val handler = UpdatedElementsHandler(ignoreRelationTypes)
@@ -75,7 +79,9 @@ class MapDataApiClient(
      *
      * @param bounds rectangle in which to query map data. May not cross the 180th meridian. This is
      * usually limited at 0.25 square degrees. Check the server capabilities.
-     * @param ignoreRelationTypes don't put any relations of the given types in the given mutableMapData
+     * @param ignoreRelationTypes omit any relations of the given types from the result.
+     *                            Such relations can still be referred to as relation members,
+     *                            though, the relations themselves are just not included
      *
      * @throws QueryTooBigException if the bounds area is too large or too many elements would be returned
      * @throws IllegalArgumentException if the bounds cross the 180th meridian.
@@ -214,16 +220,13 @@ data class ElementIdUpdate(
     val newElementId: Long
 )
 
-/** Data class that contains a the request to create, modify elements and delete the given elements */
+/** Data class that contains the request to create, modify elements and delete the given elements */
 data class MapDataChanges(
     val creations: Collection<Element> = emptyList(),
     val modifications: Collection<Element> = emptyList(),
     val deletions: Collection<Element> = emptyList()
 )
 
-data class DiffElement(
-    val type: ElementType,
-    val clientId: Long,
-    val serverId: Long? = null,
-    val serverVersion: Int? = null
-)
+sealed interface ElementUpdateAction
+data object DeleteElement : ElementUpdateAction
+data class UpdateElement(val newId: Long, val newVersion: Int) : ElementUpdateAction
