@@ -112,18 +112,8 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getWayComplete(id: Long): NodesWaysRelations? = wrapApiClientExceptions {
-        try {
-            val response = httpClient.get(baseUrl + "way/$id/full") { expectSuccess = true }
-            return serializer.parseMapData(response.body())
-        } catch (e: ClientRequestException) {
-            when (e.response.status) {
-                // hidden by moderator, does not exist
-                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
-                else -> throw e
-            }
-        }
-    }
+    override suspend fun getWayComplete(id: Long): NodesWaysRelations? =
+        getMapDataOrNull("way/$id/full")
 
     /**
      * Returns the given relation by id plus all its members and all nodes of ways that are members
@@ -131,111 +121,76 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationComplete(id: Long): NodesWaysRelations? = wrapApiClientExceptions {
-        try {
-            val response = httpClient.get(baseUrl + "relation/$id/full") { expectSuccess = true }
-            return serializer.parseMapData(response.body())
-        } catch (e: ClientRequestException) {
-            when (e.response.status) {
-                // hidden by moderator, does not exist
-                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
-                else -> throw e
-            }
-        }
-    }
+    override suspend fun getRelationComplete(id: Long): NodesWaysRelations? =
+        getMapDataOrNull("relation/$id/full")
 
     /**
      * Return the given node by id or null if it doesn't exist
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getNode(id: Long): Node? = wrapApiClientExceptions {
-        try {
-            val response = httpClient.get(baseUrl + "way/$id") { expectSuccess = true }
-            return serializer.parseMapData(response.body()).nodes.single()
-        } catch (e: ClientRequestException) {
-            when (e.response.status) {
-                // hidden by moderator, does not exist
-                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
-                else -> throw e
-            }
-        }
-    }
+    override suspend fun getNode(id: Long): Node? =
+        getMapDataOrNull("node/$id")?.nodes?.single()
 
     /**
      * Return the given way by id or null if it doesn't exist
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getWay(id: Long): Way? = wrapApiClientExceptions {
-        try {
-            val response = httpClient.get(baseUrl + "way/$id") { expectSuccess = true }
-            return serializer.parseMapData(response.body()).ways.single()
-        } catch (e: ClientRequestException) {
-            when (e.response.status) {
-                // hidden by moderator, does not exist
-                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
-                else -> throw e
-            }
-        }
-    }
+    override suspend fun getWay(id: Long): Way? =
+        getMapDataOrNull("way/$id")?.ways?.single()
 
     /**
      * Return the given relation by id or null if it doesn't exist
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelation(id: Long): Relation? = wrapApiClientExceptions {
-        try {
-            val response = httpClient.get(baseUrl + "relation/$id") { expectSuccess = true }
-            return serializer.parseMapData(response.body()).relations.single()
-        } catch (e: ClientRequestException) {
-            when (e.response.status) {
-                // hidden by moderator, does not exist
-                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
-                else -> throw e
-            }
-        }
-    }
+    override suspend fun getRelation(id: Long): Relation? =
+        getMapDataOrNull("relation/$id")?.relations?.single()
 
     /**
      * Return all ways in which the given node is used.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getWaysForNode(id: Long): List<Way> = wrapApiClientExceptions {
-        val response = httpClient.get(baseUrl + "node/$id/ways") { expectSuccess = true }
-        return serializer.parseMapData(response.body()).ways
-    }
+    override suspend fun getWaysForNode(id: Long): List<Way> =
+        getMapDataOrNull("node/$id/ways")?.ways.orEmpty()
 
     /**
      * Return all relations in which the given node is used.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForNode(id: Long): List<Relation> = wrapApiClientExceptions {
-        val response = httpClient.get(baseUrl + "node/$id/relations") { expectSuccess = true }
-        return serializer.parseMapData(response.body()).relations
-    }
+    override suspend fun getRelationsForNode(id: Long): List<Relation> =
+        getMapDataOrNull("node/$id/relations")?.relations.orEmpty()
 
     /**
      * Return all relations in which the given way is used.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForWay(id: Long): List<Relation> = wrapApiClientExceptions {
-        val response = httpClient.get(baseUrl + "way/$id/relations") { expectSuccess = true }
-        return serializer.parseMapData(response.body()).relations
-    }
+    override suspend fun getRelationsForWay(id: Long): List<Relation> =
+        getMapDataOrNull("way/$id/relations")?.relations.orEmpty()
 
     /**
      * Return all relations in which the given relation is used.
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForRelation(id: Long): List<Relation> = wrapApiClientExceptions {
-        val response = httpClient.get(baseUrl + "relation/$id/relations") { expectSuccess = true }
-        return serializer.parseMapData(response.body()).relations
+    override suspend fun getRelationsForRelation(id: Long): List<Relation> =
+        getMapDataOrNull("relation/$id/relations")?.relations.orEmpty()
+
+
+    private suspend fun getMapDataOrNull(query: String): NodesWaysRelations? = wrapApiClientExceptions {
+        try {
+            val response = httpClient.get(baseUrl + query) { expectSuccess = true }
+            return serializer.parseMapData(response.body())
+        } catch (e: ClientRequestException) {
+            when (e.response.status) {
+                HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
+                else -> throw e
+            }
+        }
     }
 }
 
