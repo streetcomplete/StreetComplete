@@ -46,7 +46,7 @@ class MapDataApiClient(
         changesetId: Long,
         changes: MapDataChanges,
         ignoreRelationTypes: Set<String?> = emptySet()
-    ) = wrapApiClientExceptions {
+    ): MapDataUpdates = wrapApiClientExceptions {
 
         // TODO handle errors
 
@@ -96,8 +96,7 @@ class MapDataApiClient(
                 parameter("bbox", bounds.toOsmApiString())
                 expectSuccess = true
             }
-            // TODO ignore relation types relation.tags?.get("type")
-            return serializer.parseMapData(response.body())
+            return serializer.parseMapData(response.body(), ignoreRelationTypes)
         } catch (e: ClientRequestException) {
             if (e.response.status == HttpStatusCode.BadRequest) {
                 throw QueryTooBigException(e.message, e)

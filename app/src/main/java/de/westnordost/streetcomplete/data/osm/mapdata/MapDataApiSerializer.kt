@@ -13,25 +13,24 @@ import nl.adaptivity.xmlutil.serialization.XmlSerialName
 class MapDataApiSerializer {
     private val xml = XML { defaultPolicy { ignoreUnknownChildren() }}
 
-    fun parseMapData(osmXml: String): NodesWaysRelations {
-        return xml.decodeFromString<ApiOsm>(osmXml).toMapData()
-    }
+    fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): NodesWaysRelations =
+        xml.decodeFromString<ApiOsm>(osmXml).toMapData(ignoreRelationTypes)
 
-    fun parseElementsDiffs(diffResultXml: String): List<DiffElement> {
-        return xml.decodeFromString<ApiDiffResult>(diffResultXml).toDiffElements()
-    }
+    fun parseElementsDiffs(diffResultXml: String, ): List<DiffElement> =
+        xml.decodeFromString<ApiDiffResult>(diffResultXml).toDiffElements()
 
-    fun serializeMapDataChanges(changes: MapDataChanges, changesetId: Long): String {
-        return xml.encodeToString(changes.toApiOsmChange(changesetId))
-    }
+    fun serializeMapDataChanges(changes: MapDataChanges, changesetId: Long): String =
+        xml.encodeToString(changes.toApiOsmChange(changesetId))
 }
 
 //region Convert OSM API data structure to our data structure
 
-private fun ApiOsm.toMapData() = NodesWaysRelations(
+private fun ApiOsm.toMapData(ignoreRelationTypes: Set<String?>) = NodesWaysRelations(
     nodes = nodes.map { it.toNode() },
     ways = ways.map { it.toWay() },
-    relations = relations.map { it.toRelation() },
+    relations = relations.mapNotNull {
+        if (it.type !in ignoreRelationTypes) it.toRelation() else null
+    },
 )
 
 private fun ApiNode.toNode() = Node(
@@ -57,6 +56,8 @@ private fun ApiRelation.toRelation() = Relation(
     version = version,
     timestampEdited = timestamp.toEpochMilliseconds()
 )
+
+private val ApiRelation.type: String? get() = tags.find { it.k == "type" }?.v
 
 private fun ApiRelationMember.toRelationMember() = RelationMember(
     type = ElementType.valueOf(type.uppercase()),
