@@ -10,6 +10,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import java.util.Locale
 
 /** Manages the creation and reusage of changesets */
@@ -19,13 +23,15 @@ class OpenChangesetsManager(
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val lastEditTimeStore: LastEditTimeStore
 ) {
-    fun getOrCreateChangeset(
+    private val mutex = Mutex()
+
+    suspend fun getOrCreateChangeset(
         type: ElementEditType,
         source: String,
         position: LatLon,
         createNewIfTooFarAway: Boolean
-    ): Long = synchronized(this) {
-        val openChangeset = openChangesetsDB.get(type.name, source)
+    ): Long = mutex.withLock {
+        val openChangeset = withContext(IO) { openChangesetsDB.get(type.name, source) }
             ?: return createChangeset(type, source, position)
 
         if (createNewIfTooFarAway && position.distanceTo(openChangeset.lastPosition) > MAX_LAST_EDIT_DISTANCE) {
@@ -36,35 +42,34 @@ class OpenChangesetsManager(
         }
     }
 
-    fun createChangeset(
+    suspend fun createChangeset(
         type: ElementEditType,
         source: String,
         position: LatLon
-    ): Long = synchronized(this) {
+    ): Long = mutex.withLock {
         val changesetId = changesetApiClient.open(createChangesetTags(type, source))
-        openChangesetsDB.put(OpenChangeset(type.name, source, changesetId, position))
+        withContext(IO) { openChangesetsDB.put(OpenChangeset(type.name, source, changesetId, position)) }
         changesetAutoCloser.enqueue(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
         Log.i(TAG, "Created changeset #$changesetId")
         return changesetId
     }
 
-    fun closeOldChangesets() = synchronized(this) {
+    suspend fun closeOldChangesets() = mutex.withLock {
         val timePassed = nowAsEpochMilliseconds() - lastEditTimeStore.get()
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
-        for (info in openChangesetsDB.getAll()) {
-            closeChangeset(info)
-        }
+        val openChangesets = withContext(IO) { openChangesetsDB.getAll() }
+        openChangesets.forEach { closeChangeset(it) }
     }
 
-    private fun closeChangeset(openChangeset: OpenChangeset) {
+    private suspend fun closeChangeset(openChangeset: OpenChangeset) {
         try {
             changesetApiClient.close(openChangeset.changesetId)
             Log.i(TAG, "Closed changeset #${openChangeset.changesetId}")
         } catch (e: ConflictException) {
             Log.w(TAG, "Couldn't close changeset #${openChangeset.changesetId} because it has already been closed")
         } finally {
-            openChangesetsDB.delete(openChangeset.questType, openChangeset.source)
+            withContext(IO) { openChangesetsDB.delete(openChangeset.questType, openChangeset.source) }
         }
     }
 

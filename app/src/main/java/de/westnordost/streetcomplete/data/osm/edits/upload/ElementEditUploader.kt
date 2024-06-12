@@ -20,7 +20,7 @@ class ElementEditUploader(
      *
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      *  */
-    fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
+    suspend fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
         val remoteChanges by lazy { edit.action.createUpdates(mapDataApi, getIdProvider()) }
         val localChanges by lazy { edit.action.createUpdates(mapDataController, getIdProvider()) }
 
@@ -48,13 +48,16 @@ class ElementEditUploader(
         }
     }
 
-    private fun uploadChanges(edit: ElementEdit, mapDataChanges: MapDataChanges, newChangeset: Boolean): MapDataUpdates {
-        val changesetId =
-            if (newChangeset) {
-                changesetManager.createChangeset(edit.type, edit.source, edit.position)
-            } else {
-                changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, edit.isNearUserLocation)
-            }
-        return mapDataApi.uploadChanges(changesetId, mapDataChanges, ApplicationConstants.IGNORED_RELATION_TYPES)
+    private suspend fun uploadChanges(
+        edit: ElementEdit,
+        changes: MapDataChanges,
+        newChangeset: Boolean
+    ): MapDataUpdates {
+        val changesetId = if (newChangeset) {
+            changesetManager.createChangeset(edit.type, edit.source, edit.position)
+        } else {
+            changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, edit.isNearUserLocation)
+        }
+        return mapDataApi.uploadChanges(changesetId, changes, ApplicationConstants.IGNORED_RELATION_TYPES)
     }
 }
