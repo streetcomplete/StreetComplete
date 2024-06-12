@@ -7,11 +7,12 @@ import kotlinx.serialization.encodeToString
 import nl.adaptivity.xmlutil.serialization.XML
 import nl.adaptivity.xmlutil.serialization.XmlChildrenName
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
+import kotlin.math.max
 
 class MapDataApiSerializer {
     private val xml = XML { defaultPolicy { ignoreUnknownChildren() }}
 
-    fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): NodesWaysRelations =
+    fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): MapData =
         xml.decodeFromString<ApiOsm>(osmXml).toMapData(ignoreRelationTypes)
 
     fun parseElementUpdates(diffResultXml: String): Map<ElementKey, ElementUpdateAction> =
@@ -23,13 +24,13 @@ class MapDataApiSerializer {
 
 //region Convert OSM API data structure to our data structure
 
-private fun ApiOsm.toMapData(ignoreRelationTypes: Set<String?>) = NodesWaysRelations(
+private fun ApiOsm.toMapData(ignoreRelationTypes: Set<String?>) = MutableMapData(
     nodes = nodes.map { it.toNode() },
     ways = ways.map { it.toWay() },
     relations = relations.mapNotNull {
         if (it.type !in ignoreRelationTypes) it.toRelation() else null
     },
-)
+).also { it.boundingBox = bounds?.toBoundingBox() }
 
 private fun ApiNode.toNode() = Node(
     id = id,
@@ -64,6 +65,13 @@ private fun ApiRelationMember.toRelationMember() = RelationMember(
 )
 
 private fun List<ApiTag>.toMap(): Map<String, String> = associate { (k, v) -> k to v }
+
+private fun ApiBoundingBox.toBoundingBox() = BoundingBox(
+    minLatitude = minlat,
+    minLongitude = minlon,
+    maxLatitude = maxlat,
+    maxLongitude = maxlon
+)
 
 private fun ApiDiffResult.toElementUpdates(): Map<ElementKey, ElementUpdateAction> {
     val result = HashMap<ElementKey, ElementUpdateAction>(nodes.size + ways.size + relations.size)
@@ -174,7 +182,7 @@ private data class ApiOsm(
 @XmlSerialName("bounds")
 private data class ApiBoundingBox(
     val minlat: Double,
-    val monlon: Double,
+    val minlon: Double,
     val maxlat: Double,
     val maxlon: Double
 )

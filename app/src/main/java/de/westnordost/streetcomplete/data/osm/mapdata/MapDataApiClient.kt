@@ -17,8 +17,6 @@ import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.HttpStatusCode
 
-// TODO tests
-
 /** Get and upload changes to map data */
 class MapDataApiClient(
     private val httpClient: HttpClient,
@@ -92,7 +90,7 @@ class MapDataApiClient(
     suspend fun getMap(
         bounds: BoundingBox,
         ignoreRelationTypes: Set<String?> = emptySet()
-    ): NodesWaysRelations = wrapApiClientExceptions {
+    ): MapData = wrapApiClientExceptions {
         if (bounds.crosses180thMeridian) {
             throw IllegalArgumentException("Bounding box crosses 180th meridian")
         }
@@ -117,7 +115,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getWayComplete(id: Long): NodesWaysRelations? =
+    override suspend fun getWayComplete(id: Long): MapData? =
         getMapDataOrNull("way/$id/full")
 
     /**
@@ -126,7 +124,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationComplete(id: Long): NodesWaysRelations? =
+    override suspend fun getRelationComplete(id: Long): MapData? =
         getMapDataOrNull("relation/$id/full")
 
     /**
@@ -158,7 +156,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getWaysForNode(id: Long): List<Way> =
+    override suspend fun getWaysForNode(id: Long): Collection<Way> =
         getMapDataOrNull("node/$id/ways")?.ways.orEmpty()
 
     /**
@@ -166,7 +164,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForNode(id: Long): List<Relation> =
+    override suspend fun getRelationsForNode(id: Long): Collection<Relation> =
         getMapDataOrNull("node/$id/relations")?.relations.orEmpty()
 
     /**
@@ -174,7 +172,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForWay(id: Long): List<Relation> =
+    override suspend fun getRelationsForWay(id: Long): Collection<Relation> =
         getMapDataOrNull("way/$id/relations")?.relations.orEmpty()
 
     /**
@@ -182,10 +180,10 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForRelation(id: Long): List<Relation> =
+    override suspend fun getRelationsForRelation(id: Long): Collection<Relation> =
         getMapDataOrNull("relation/$id/relations")?.relations.orEmpty()
 
-    private suspend fun getMapDataOrNull(query: String): NodesWaysRelations? = wrapApiClientExceptions {
+    private suspend fun getMapDataOrNull(query: String): MapData? = wrapApiClientExceptions {
         try {
             val response = httpClient.get(baseUrl + query) { expectSuccess = true }
             return serializer.parseMapData(response.body(), emptySet())
@@ -197,13 +195,6 @@ class MapDataApiClient(
         }
     }
 }
-
-// TODO or use MapData?
-data class NodesWaysRelations(
-    val nodes: List<Node>,
-    val ways: List<Way>,
-    val relations: List<Relation>
-)
 
 /** Data class that contains the request to create, modify elements and delete the given elements */
 data class MapDataChanges(

@@ -1,14 +1,18 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-open class MutableMapData() : MapData {
+open class MutableMapData(
+    nodes: Collection<Node> = emptyList(),
+    ways: Collection<Way> = emptyList(),
+    relations: Collection<Relation> = emptyList()
+) : MapData {
 
     constructor(other: Iterable<Element>) : this() {
         addAll(other)
     }
 
-    protected val nodesById: MutableMap<Long, Node> = mutableMapOf()
-    protected val waysById: MutableMap<Long, Way> = mutableMapOf()
-    protected val relationsById: MutableMap<Long, Relation> = mutableMapOf()
+    private val nodesById: MutableMap<Long, Node> = nodes.associateByTo(HashMap()) { it.id }
+    private val waysById: MutableMap<Long, Way> = ways.associateByTo(HashMap()) { it.id }
+    private val relationsById: MutableMap<Long, Relation> = relations.associateByTo(HashMap()) { it.id }
     override var boundingBox: BoundingBox? = null
 
     override val nodes get() = nodesById.values

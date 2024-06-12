@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiClient
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiSerializer
 import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiSerializer

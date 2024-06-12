@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import kotlinx.datetime.Instant
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 class MapDataApiSerializerTest {
 
@@ -92,10 +93,9 @@ class MapDataApiSerializerTest {
     )
 
     @Test fun `parseMapData minimum`() {
-        assertEquals(
-            NodesWaysRelations(listOf(), listOf(), listOf()),
-            MapDataApiSerializer().parseMapData("<osm></osm>", emptySet())
-        )
+        val empty = MapDataApiSerializer().parseMapData("<osm></osm>", emptySet())
+        assertEquals(0, empty.size)
+        assertNull(empty.boundingBox)
     }
 
     @Test fun `parseMapData full`() {
@@ -109,10 +109,11 @@ class MapDataApiSerializerTest {
             </osm>
         """
 
-        assertEquals(
-            NodesWaysRelations(nodes, ways, relations),
-            MapDataApiSerializer().parseMapData(osm, emptySet())
-        )
+        val data = MapDataApiSerializer().parseMapData(osm, emptySet())
+        assertEquals(nodes.toSet(), data.nodes)
+        assertEquals(ways.toSet(), data.ways)
+        assertEquals(relations.toSet(), data.relations)
+        assertEquals(BoundingBox(53.0, 9.0, 53.01, 9.01), data.boundingBox)
     }
 
     @Test fun `parseMapData with ignored relation types`() {
@@ -124,10 +125,8 @@ class MapDataApiSerializerTest {
             </osm>
         """
 
-        assertEquals(
-            NodesWaysRelations(listOf(), listOf(), listOf()),
-            MapDataApiSerializer().parseMapData(osm, setOf("route"))
-        )
+        val empty = MapDataApiSerializer().parseMapData(osm, setOf("route"))
+        assertEquals(0, empty.size)
     }
 
     @Test fun `serializeMapDataChanges minimum`() {
