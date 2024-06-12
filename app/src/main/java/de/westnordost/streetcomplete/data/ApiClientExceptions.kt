@@ -29,6 +29,10 @@ inline fun <T> wrapApiClientExceptions(block: () -> T): T =
             HttpStatusCode.RequestTimeout -> {
                 throw ConnectionException(e.message, e)
             }
+            // rate limiting is treated like a temporary connection error, i.e. try again later
+            HttpStatusCode.TooManyRequests -> {
+                throw ConnectionException(e.message, e)
+            }
             // authorization is something we can handle (by requiring (re-)login of the user)
             HttpStatusCode.Forbidden, HttpStatusCode.Unauthorized -> {
                 throw AuthorizationException(e.message, e)

@@ -36,7 +36,6 @@ class MapDataApiClient(
      *                            Such relations can still be referred to as relation members,
      *                            though, the relations themselves are just not included
      *
-     *
      * @throws ConflictException if the changeset has already been closed, there is a conflict for
      *                           the elements being uploaded or the user who created the changeset
      *                           is not the same as the one uploading the change
@@ -51,9 +50,6 @@ class MapDataApiClient(
         changes: MapDataChanges,
         ignoreRelationTypes: Set<String?> = emptySet()
     ): MapDataUpdates = wrapApiClientExceptions {
-
-        // TODO handle errors
-
         try {
             val response = httpClient.post(baseUrl + "changeset/$changesetId/upload") {
                 userLoginSource.accessToken?.let { bearerAuth(it) }
@@ -63,8 +59,18 @@ class MapDataApiClient(
             val updates = serializer.parseElementUpdates(response.body<String>())
             val changedElements = changes.creations + changes.modifications + changes.deletions
             return createMapDataUpdates(changedElements, updates, ignoreRelationTypes)
-        } catch (e: OsmApiException) {
-            throw ConflictException(e.message, e)
+        } catch (e: ClientRequestException) {
+            when (e.response.status) {
+                // current element version is outdated, current changeset has been closed already
+                HttpStatusCode.Conflict,
+                // an element referred to by another element does not exist (anymore) or was redacted
+                HttpStatusCode.PreconditionFailed,
+                // some elements do not exist (anymore)
+                HttpStatusCode.NotFound -> {
+                    throw ConflictException(e.message, e)
+                }
+                else -> throw e
+            }
         }
     }
 
@@ -183,7 +189,7 @@ class MapDataApiClient(
     private suspend fun getMapDataOrNull(query: String): NodesWaysRelations? = wrapApiClientExceptions {
         try {
             val response = httpClient.get(baseUrl + query) { expectSuccess = true }
-            return serializer.parseMapData(response.body())
+            return serializer.parseMapData(response.body(), emptySet())
         } catch (e: ClientRequestException) {
             when (e.response.status) {
                 HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
