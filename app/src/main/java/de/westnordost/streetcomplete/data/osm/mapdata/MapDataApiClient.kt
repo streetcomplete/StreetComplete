@@ -90,7 +90,7 @@ class MapDataApiClient(
     suspend fun getMap(
         bounds: BoundingBox,
         ignoreRelationTypes: Set<String?> = emptySet()
-    ): MapData = wrapApiClientExceptions {
+    ): MutableMapData = wrapApiClientExceptions {
         if (bounds.crosses180thMeridian) {
             throw IllegalArgumentException("Bounding box crosses 180th meridian")
         }

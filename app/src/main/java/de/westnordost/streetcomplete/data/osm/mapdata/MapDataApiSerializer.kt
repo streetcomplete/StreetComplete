@@ -12,7 +12,7 @@ import kotlin.math.max
 class MapDataApiSerializer {
     private val xml = XML { defaultPolicy { ignoreUnknownChildren() }}
 
-    fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): MapData =
+    fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): MutableMapData =
         xml.decodeFromString<ApiOsm>(osmXml).toMapData(ignoreRelationTypes)
 
     fun parseElementUpdates(diffResultXml: String): Map<ElementKey, ElementUpdateAction> =
