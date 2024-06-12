@@ -61,14 +61,8 @@ class MapDataApiClient(
                 expectSuccess = true
             }
             val updates = serializer.parseElementUpdates(response.body<String>())
-
-            // TODO ignore relation types...
-            val handler = UpdatedElementsHandler(ignoreRelationTypes)
-            api.uploadChanges(changesetId, changes.toOsmApiElements()) {
-                handler.handle(it.toDiffElement())
-            }
-            val allChangedElements = changes.creations + changes.modifications + changes.deletions
-            handler.getElementUpdates(allChangedElements)
+            val changedElements = changes.creations + changes.modifications + changes.deletions
+            return createMapDataUpdates(changedElements, updates, ignoreRelationTypes)
         } catch (e: OsmApiException) {
             throw ConflictException(e.message, e)
         }
@@ -206,20 +200,6 @@ data class NodesWaysRelations(
     val relations: List<Relation>
 )
 
-/** Data class that contains the map data updates (updated elements, deleted elements, elements
- *  whose id have been updated) after the modifications have been uploaded */
-data class MapDataUpdates(
-    val updated: Collection<Element> = emptyList(),
-    val deleted: Collection<ElementKey> = emptyList(),
-    val idUpdates: Collection<ElementIdUpdate> = emptyList()
-)
-
-data class ElementIdUpdate(
-    val elementType: ElementType,
-    val oldElementId: Long,
-    val newElementId: Long
-)
-
 /** Data class that contains the request to create, modify elements and delete the given elements */
 data class MapDataChanges(
     val creations: Collection<Element> = emptyList(),
@@ -228,5 +208,5 @@ data class MapDataChanges(
 )
 
 sealed interface ElementUpdateAction
-data object DeleteElement : ElementUpdateAction
 data class UpdateElement(val newId: Long, val newVersion: Int) : ElementUpdateAction
+data object DeleteElement : ElementUpdateAction
