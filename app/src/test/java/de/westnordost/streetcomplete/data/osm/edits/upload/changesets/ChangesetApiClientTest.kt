@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import de.westnordost.streetcomplete.data.AuthorizationException
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.testutils.mock
@@ -33,6 +34,7 @@ class ChangesetApiClientTest {
     @Test fun `open and close works without error`(): Unit = runBlocking {
         val id = client(allowEverything).open(mapOf("testKey" to "testValue"))
         client(allowEverything).close(id)
+        assertFailsWith<ConflictException> { client(allowEverything).close(id) }
     }
 
     @Test fun `close throws exception on insufficient privileges`(): Unit = runBlocking {

@@ -185,7 +185,6 @@ class MapDataApiClient(
     override suspend fun getRelationsForRelation(id: Long): List<Relation> =
         getMapDataOrNull("relation/$id/relations")?.relations.orEmpty()
 
-
     private suspend fun getMapDataOrNull(query: String): NodesWaysRelations? = wrapApiClientExceptions {
         try {
             val response = httpClient.get(baseUrl + query) { expectSuccess = true }
