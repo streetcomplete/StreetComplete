@@ -40,7 +40,7 @@ val userModule = module {
     single { UserDataController(get()) }
 
     single<UserLoginSource> { get<UserLoginController>() }
-    single { UserLoginController(get(), get()) }
+    single { UserLoginController(get()) }
 
     single { UserUpdater(get(), get(), get(), get(), get(), get()) }
 

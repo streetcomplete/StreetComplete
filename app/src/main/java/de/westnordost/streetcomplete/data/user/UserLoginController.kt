@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.data.user
 
 import com.russhwolf.settings.ObservableSettings
-import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
 
 class UserLoginController(
-    private val osmConnection: OsmConnection,
     private val prefs: ObservableSettings,
 ) : UserLoginSource {
 
@@ -19,7 +17,6 @@ class UserLoginController(
 
     fun logIn(accessToken: String) {
         prefs.putString(Prefs.OAUTH2_ACCESS_TOKEN, accessToken)
-        osmConnection.oAuthAccessToken = accessToken
         listeners.forEach { it.onLoggedIn() }
     }
 
@@ -28,7 +25,6 @@ class UserLoginController(
         prefs.remove(Prefs.OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP)
         prefs.remove(Prefs.OAUTH1_ACCESS_TOKEN)
         prefs.remove(Prefs.OAUTH1_ACCESS_TOKEN_SECRET)
-        osmConnection.oAuthAccessToken = null
         listeners.forEach { it.onLoggedOut() }
     }
 
