@@ -47,7 +47,7 @@ class NotesApiClientTest {
         val comment = note.comments.first()
         assertEquals("Created note!", comment.text)
         assertEquals(NoteComment.Action.OPENED, comment.action)
-        assertEquals("westnordost", comment.user?.name)
+        assertEquals("westnordost", comment.user?.displayName)
     }
 
     @Test fun `comment note`(): Unit = runBlocking {
@@ -58,11 +58,11 @@ class NotesApiClientTest {
         assertEquals(2, note.comments.size)
         assertEquals("Created note for comment!", note.comments[0].text)
         assertEquals(NoteComment.Action.OPENED, note.comments[0].action)
-        assertEquals("westnordost", note.comments[0].user?.name)
+        assertEquals("westnordost", note.comments[0].user?.displayName)
 
         assertEquals("First comment!", note.comments[1].text)
         assertEquals(NoteComment.Action.COMMENTED, note.comments[1].action)
-        assertEquals("westnordost", note.comments[1].user?.name)
+        assertEquals("westnordost", note.comments[1].user?.displayName)
     }
 
     @Test fun `comment note fails when not logged in`(): Unit = runBlocking {
