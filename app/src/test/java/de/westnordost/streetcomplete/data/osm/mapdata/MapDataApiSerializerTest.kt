@@ -8,32 +8,32 @@ import kotlin.test.assertNull
 class MapDataApiSerializerTest {
 
     private fun nodesOsm(c: Long): String = """
-        <node id="122" visible="true" version="2" changeset="$c" timestamp="2019-03-15T01:52:26Z" user="DinkaDonka" uid="7890" lat="53.0098761" lon="9.0065254"/>
-        <node id="123" visible="true" version="1" changeset="$c" timestamp="2019-03-15T01:52:25Z" user="DinkaDonka" uid="7890" lat="53.0098760" lon="9.0065253">
-        <tag k="emergency" v="fire_hydrant"/>
-        <tag k="fire_hydrant:type" v="pillar"/>
+        <node id="122" version="2" changeset="$c" timestamp="2019-03-15T01:52:26Z" lat="53.0098761" lon="9.0065254" />
+        <node id="123" version="1" changeset="$c" timestamp="2019-03-15T01:52:25Z" lat="53.009876" lon="9.0065253">
+        <tag k="emergency" v="fire_hydrant" />
+        <tag k="fire_hydrant:type" v="pillar" />
         </node>
     """
 
     private fun waysOsm(c: Long): String = """
-        <way id="336145990" visible="true" version="20" changeset="$c" timestamp="2018-10-17T06:39:01Z" user="Bison" uid="55555"/>
-        <way id="47076097" visible="true" version="2" changeset="$c" timestamp="2012-08-12T22:14:39Z" user="Hippie" uid="7777">
-        <nd ref="600397018"/>
-        <nd ref="600397019"/>
-        <nd ref="600397020"/>
-        <tag k="landuse" v="farmland"/>
-        <tag k="name" v="Hippiefarm"/>
+        <way id="336145990" version="20" changeset="$c" timestamp="2018-10-17T06:39:01Z" />
+        <way id="47076097" version="2" changeset="$c" timestamp="2012-08-12T22:14:39Z">
+        <nd ref="600397018" />
+        <nd ref="600397019" />
+        <nd ref="600397020" />
+        <tag k="landuse" v="farmland" />
+        <tag k="name" v="Hippiefarm" />
         </way>
     """
 
     private fun relationsOsm(c: Long): String = """
-        <relation id="55555" visible="true" version="3" changeset="$c" timestamp="2021-05-08T14:14:51Z" user="Mittelweser" uid="999999"/>
-        <relation id="8379313" visible="true" version="21" changeset="$c" timestamp="2023-05-08T14:14:51Z" user="Mittelweser" uid="999999">
-        <member type="node" ref="123" role="something"/>
-        <member type="way" ref="234" role=""/>
-        <member type="relation" ref="345" role="connection"/>
-        <tag k="network" v="rcn"/>
-        <tag k="route" v="bicycle"/>
+        <relation id="55555" version="3" changeset="$c" timestamp="2021-05-08T14:14:51Z" />
+        <relation id="8379313" version="21" changeset="$c" timestamp="2023-05-08T14:14:51Z">
+        <member type="node" ref="123" role="something" />
+        <member type="way" ref="234" role="" />
+        <member type="relation" ref="345" role="connection" />
+        <tag k="network" v="rcn" />
+        <tag k="route" v="bicycle" />
         </relation>
     """
 
@@ -99,8 +99,7 @@ class MapDataApiSerializerTest {
     }
 
     @Test fun `parseMapData full`() {
-        val osm = """
-            <?xml version="1.0" encoding="UTF-8"?>
+        val osm = """<?xml version="1.0" encoding="UTF-8"?>
             <osm version="0.6" generator="CGImap 0.9.2 (2448320 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
             <bounds minlat="53.0000000" minlon="9.0000000" maxlat="53.0100000" maxlon="9.0100000"/>
             ${nodesOsm(123)}
@@ -110,9 +109,9 @@ class MapDataApiSerializerTest {
         """
 
         val data = MapDataApiSerializer().parseMapData(osm, emptySet())
-        assertEquals(nodes.toSet(), data.nodes)
-        assertEquals(ways.toSet(), data.ways)
-        assertEquals(relations.toSet(), data.relations)
+        assertEquals(nodes.toSet(), data.nodes.toSet())
+        assertEquals(ways.toSet(), data.ways.toSet())
+        assertEquals(relations.toSet(), data.relations.toSet())
         assertEquals(BoundingBox(53.0, 9.0, 53.01, 9.01), data.boundingBox)
     }
 
@@ -131,7 +130,7 @@ class MapDataApiSerializerTest {
 
     @Test fun `serializeMapDataChanges minimum`() {
         assertEquals(
-            "<osmChange></osmChange>",
+            "<osmChange />",
             MapDataApiSerializer().serializeMapDataChanges(MapDataChanges(), 123L)
         )
     }
@@ -161,19 +160,19 @@ class MapDataApiSerializerTest {
         )
 
         assertEquals(
-            osmChange.trimIndent().replace(Regex("[\n\r]"), ""),
+            osmChange.replace(Regex("[\n\r] *"), ""),
             MapDataApiSerializer().serializeMapDataChanges(mapDataChanges, 1234L)
         )
     }
 
-    @Test fun `parseElementsDiffs minimum`() {
+    @Test fun `parseElementUpdates minimum`() {
         assertEquals(
             mapOf(),
             MapDataApiSerializer().parseElementUpdates("<diffResult></diffResult>")
         )
     }
 
-    @Test fun `parseElementsDiffs full`() {
+    @Test fun `parseElementUpdates full`() {
         val diffResult = """
             <diffResult generator="OpenStreetMap Server" version="0.6">
             <node old_id="1"/>
@@ -191,7 +190,7 @@ class MapDataApiSerializerTest {
             ElementKey(ElementType.RELATION, 3) to DeleteElement,
             ElementKey(ElementType.NODE, -1) to UpdateElement(9, 99),
             ElementKey(ElementType.WAY, -2) to UpdateElement(8, 88),
-            ElementKey(ElementType.WAY, -3) to UpdateElement(7, 77),
+            ElementKey(ElementType.RELATION, -3) to UpdateElement(7, 77),
         )
 
         assertEquals(

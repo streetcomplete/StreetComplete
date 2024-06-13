@@ -9,8 +9,8 @@ class ChangesetApiSerializerTest {
         val osm = """
             <osm>
             <changeset>
-            <tag k="one" v="1"/>
-            <tag k="two" v="2"/>
+            <tag k="one" v="1" />
+            <tag k="two" v="2" />
             </changeset>
             </osm>
         """
@@ -21,7 +21,7 @@ class ChangesetApiSerializerTest {
         )
 
         assertEquals(
-            osm.trimIndent().replace(Regex("[\n\r]"), ""),
+            osm.replace(Regex("[\n\r] *"), ""),
             ChangesetApiSerializer().serialize(changesetTags)
         )
     }

@@ -47,7 +47,7 @@ class TracksSerializerTest {
         )
 
         assertEquals(
-            gpx.trimIndent().replace(Regex("[\n\r]"), ""),
+            gpx.replace(Regex("[\n\r] *"), ""),
             TracksSerializer().serialize(track)
         )
     }

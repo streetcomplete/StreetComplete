@@ -23,7 +23,7 @@ class MapDataApiClient(
     private val baseUrl: String,
     private val userLoginSource: UserLoginSource,
     private val serializer: MapDataApiSerializer,
-) : MapDataRepository {
+) {
 
     /**
      * Upload changes into an opened changeset.
@@ -115,7 +115,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getWayComplete(id: Long): MapData? =
+    suspend fun getWayComplete(id: Long): MapData? =
         getMapDataOrNull("way/$id/full")
 
     /**
@@ -124,7 +124,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationComplete(id: Long): MapData? =
+    suspend fun getRelationComplete(id: Long): MapData? =
         getMapDataOrNull("relation/$id/full")
 
     /**
@@ -132,7 +132,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getNode(id: Long): Node? =
+    suspend fun getNode(id: Long): Node? =
         getMapDataOrNull("node/$id")?.nodes?.single()
 
     /**
@@ -140,7 +140,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getWay(id: Long): Way? =
+    suspend fun getWay(id: Long): Way? =
         getMapDataOrNull("way/$id")?.ways?.single()
 
     /**
@@ -148,7 +148,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelation(id: Long): Relation? =
+    suspend fun getRelation(id: Long): Relation? =
         getMapDataOrNull("relation/$id")?.relations?.single()
 
     /**
@@ -156,7 +156,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getWaysForNode(id: Long): Collection<Way> =
+    suspend fun getWaysForNode(id: Long): Collection<Way> =
         getMapDataOrNull("node/$id/ways")?.ways.orEmpty()
 
     /**
@@ -164,7 +164,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForNode(id: Long): Collection<Relation> =
+    suspend fun getRelationsForNode(id: Long): Collection<Relation> =
         getMapDataOrNull("node/$id/relations")?.relations.orEmpty()
 
     /**
@@ -172,7 +172,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForWay(id: Long): Collection<Relation> =
+    suspend fun getRelationsForWay(id: Long): Collection<Relation> =
         getMapDataOrNull("way/$id/relations")?.relations.orEmpty()
 
     /**
@@ -180,7 +180,7 @@ class MapDataApiClient(
      *
      * @throws ConnectionException if a temporary network connection problem occurs
      */
-    override suspend fun getRelationsForRelation(id: Long): Collection<Relation> =
+    suspend fun getRelationsForRelation(id: Long): Collection<Relation> =
         getMapDataOrNull("relation/$id/relations")?.relations.orEmpty()
 
     private suspend fun getMapDataOrNull(query: String): MapData? = wrapApiClientExceptions {

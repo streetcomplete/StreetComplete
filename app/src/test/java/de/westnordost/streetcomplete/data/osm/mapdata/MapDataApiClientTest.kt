@@ -101,7 +101,7 @@ class MapDataApiClientTest {
 
     @Test fun `getMap fails when bbox crosses 180th meridian`(): Unit = runBlocking {
         assertFailsWith<IllegalArgumentException> {
-            liveClient.getMap(BoundingBox(0.0, 180.0, 0.0000001, -179.9999999))
+            liveClient.getMap(BoundingBox(0.0, 179.9999999, 0.0000001, -179.9999999))
         }
     }
 
@@ -138,7 +138,7 @@ class MapDataApiClientTest {
         assertFailsWith<ConflictException> {
             client(allowEverything).uploadChanges(
                 changesetId = changesetId,
-                changes = MapDataChanges(modifications = listOf(node(0)))
+                changes = MapDataChanges(modifications = listOf(node(Long.MAX_VALUE)))
             )
         }
         changesetClient(allowEverything).close(changesetId)
@@ -196,7 +196,7 @@ class MapDataApiClientTest {
         ChangesetApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, ChangesetApiSerializer())
 
     private val liveClient =
-        MapDataApiClient(HttpClient(CIO), OsmDevApi.URL, anonymous, MapDataApiSerializer())
+        MapDataApiClient(HttpClient(CIO), "https://api.openstreetmap.org/api/0.6/", anonymous, MapDataApiSerializer())
 
     // some elements that should exist on the live API
 

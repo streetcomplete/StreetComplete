@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.osm.mapdata.RemoteMapDataRepository
 
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,
@@ -21,7 +22,7 @@ class ElementEditUploader(
      *  @throws ConflictException if element has been changed server-side in an incompatible way
      *  */
     suspend fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
-        val remoteChanges by lazy { edit.action.createUpdates(mapDataApi, getIdProvider()) }
+        val remoteChanges by lazy { edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider()) }
         val localChanges by lazy { edit.action.createUpdates(mapDataController, getIdProvider()) }
 
         val mustUseRemoteData = edit.action::class in ApplicationConstants.EDIT_ACTIONS_NOT_ALLOWED_TO_USE_LOCAL_CHANGES

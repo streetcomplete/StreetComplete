@@ -5,12 +5,14 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import nl.adaptivity.xmlutil.serialization.XML
+import nl.adaptivity.xmlutil.serialization.XmlBefore
 import nl.adaptivity.xmlutil.serialization.XmlChildrenName
+import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 import kotlin.math.max
 
 class MapDataApiSerializer {
-    private val xml = XML { defaultPolicy { ignoreUnknownChildren() }}
+    private val xml = XML { defaultPolicy { ignoreUnknownChildren() } }
 
     fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): MutableMapData =
         xml.decodeFromString<ApiOsm>(osmXml).toMapData(ignoreRelationTypes)
@@ -148,13 +150,13 @@ private fun Map<String, String>.toApiTags(): List<ApiTag> = map { (k, v) -> ApiT
 @Serializable
 @XmlSerialName("diffResult")
 private data class ApiDiffResult(
-    @XmlChildrenName("node") val nodes: List<ApiDiffElement>,
-    @XmlChildrenName("way") val ways: List<ApiDiffElement>,
-    @XmlChildrenName("relation") val relations: List<ApiDiffElement>,
+    @XmlSerialName("node") val nodes: List<ApiDiffElement>,
+    @XmlSerialName("way") val ways: List<ApiDiffElement>,
+    @XmlSerialName("relation") val relations: List<ApiDiffElement>,
 )
 
 @Serializable
-private data class ApiDiffElement(
+private open class ApiDiffElement(
     @XmlSerialName("old_id") val oldId: Long,
     @XmlSerialName("new_id") val newId: Long? = null,
     @XmlSerialName("new_version") val newVersion: Int? = null,
@@ -172,9 +174,9 @@ private data class ApiOsmChange(
 @XmlSerialName("osm")
 private data class ApiOsm(
     val bounds: ApiBoundingBox? = null,
-    @XmlChildrenName("node") val nodes: List<ApiNode>,
-    @XmlChildrenName("way") val ways: List<ApiWay>,
-    @XmlChildrenName("relation") val relations: List<ApiRelation>,
+    val nodes: List<ApiNode>,
+    val ways: List<ApiWay>,
+    val relations: List<ApiRelation>,
 )
 
 
@@ -191,8 +193,8 @@ private data class ApiBoundingBox(
 @XmlSerialName("node")
 private data class ApiNode(
     val id: Long,
-    val changeset: Long? = null,
     val version: Int,
+    val changeset: Long? = null,
     val timestamp: Instant,
     val lat: Double,
     val lon: Double,
@@ -203,11 +205,11 @@ private data class ApiNode(
 @XmlSerialName("way")
 private data class ApiWay(
     val id: Long,
-    val changeset: Long? = null,
     val version: Int,
+    val changeset: Long? = null,
     val timestamp: Instant,
-    val tags: List<ApiTag> = emptyList(),
     val nodes: List<ApiWayNode> = emptyList(),
+    val tags: List<ApiTag> = emptyList(),
 )
 
 @Serializable
@@ -218,8 +220,8 @@ private data class ApiWayNode(val ref: Long)
 @XmlSerialName("relation")
 private data class ApiRelation(
     val id: Long,
-    val changeset: Long? = null,
     val version: Int,
+    val changeset: Long? = null,
     val timestamp: Instant,
     val members: List<ApiRelationMember> = emptyList(),
     val tags: List<ApiTag> = emptyList(),
