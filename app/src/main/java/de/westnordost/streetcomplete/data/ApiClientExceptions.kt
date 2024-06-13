@@ -19,11 +19,11 @@ inline fun <T> wrapApiClientExceptions(block: () -> T): T =
         throw ConnectionException(e.message, e)
     }
     // issue with establishing a connection -> nothing we can do about
-    catch(e: IOException) {
+    catch (e: IOException) {
         throw ConnectionException(e.message, e)
     }
     // server replied with (client) error 4xx
-    catch(e: ClientRequestException) {
+    catch (e: ClientRequestException) {
         when (e.response.status) {
             // request timeout is rather a temporary connection error
             HttpStatusCode.RequestTimeout -> {
