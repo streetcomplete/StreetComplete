@@ -2,14 +2,11 @@ package de.westnordost.streetcomplete.data.osmtracks
 
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.user.UserApiClient
-import de.westnordost.streetcomplete.data.user.UserApiParser
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
 import kotlinx.coroutines.runBlocking
 import java.time.Instant
 import kotlin.test.Test
@@ -42,6 +39,6 @@ class TracksApiClientTest {
     }
 
     private fun client(userLoginSource: UserLoginSource) =
-        TracksApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, TracksSerializer())
+        TracksApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, TracksSerializer())
 }
 

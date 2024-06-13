@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
@@ -43,5 +42,5 @@ class ChangesetApiClientTest {
     }
 
     private fun client(userLoginSource: UserLoginSource) =
-        ChangesetApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, ChangesetApiSerializer())
+        ChangesetApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, ChangesetApiSerializer())
 }

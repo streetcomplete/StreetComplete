@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -52,5 +51,5 @@ class UserApiClientTest {
     }
 
     private fun client(userLoginSource: UserLoginSource) =
-        UserApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, UserApiParser())
+        UserApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, UserApiParser())
 }

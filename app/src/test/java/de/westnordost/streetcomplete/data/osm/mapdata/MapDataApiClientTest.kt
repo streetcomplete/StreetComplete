@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -190,13 +189,13 @@ class MapDataApiClientTest {
     }
 
     private fun client(userLoginSource: UserLoginSource) =
-        MapDataApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, MapDataApiSerializer())
+        MapDataApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, MapDataApiSerializer())
 
     private fun changesetClient(userLoginSource: UserLoginSource) =
-        ChangesetApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, ChangesetApiSerializer())
+        ChangesetApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, ChangesetApiSerializer())
 
     private val liveClient =
-        MapDataApiClient(HttpClient(CIO), "https://api.openstreetmap.org/api/0.6/", anonymous, MapDataApiSerializer())
+        MapDataApiClient(HttpClient(), "https://api.openstreetmap.org/api/0.6/", anonymous, MapDataApiSerializer())
 
     // some elements that should exist on the live API
 

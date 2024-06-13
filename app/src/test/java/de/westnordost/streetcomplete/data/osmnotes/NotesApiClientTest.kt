@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
@@ -129,11 +128,11 @@ class NotesApiClientTest {
     }
 
     private fun client(userLoginSource: UserLoginSource) =
-        NotesApiClient(HttpClient(CIO), OsmDevApi.URL, userLoginSource, NotesApiParser())
+        NotesApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, NotesApiParser())
 
     // for cleanup
     private fun closeNote(id: Long): Unit = runBlocking {
-        HttpClient(CIO).post(OsmDevApi.URL + "notes/$id/close") {
+        HttpClient().post(OsmDevApi.URL + "notes/$id/close") {
             bearerAuth(OsmDevApi.ALLOW_EVERYTHING_TOKEN)
             parameter("text", "")
         }
