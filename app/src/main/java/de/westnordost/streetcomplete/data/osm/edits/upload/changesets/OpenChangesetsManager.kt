@@ -6,13 +6,10 @@ import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.util.Locale
 
@@ -23,14 +20,12 @@ class OpenChangesetsManager(
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val lastEditTimeStore: LastEditTimeStore
 ) {
-    private val mutex = Mutex()
-
     suspend fun getOrCreateChangeset(
         type: ElementEditType,
         source: String,
         position: LatLon,
         createNewIfTooFarAway: Boolean
-    ): Long = mutex.withLock {
+    ): Long {
         val openChangeset = withContext(IO) { openChangesetsDB.get(type.name, source) }
             ?: return createChangeset(type, source, position)
 
@@ -42,11 +37,7 @@ class OpenChangesetsManager(
         }
     }
 
-    suspend fun createChangeset(
-        type: ElementEditType,
-        source: String,
-        position: LatLon
-    ): Long = mutex.withLock {
+    suspend fun createChangeset(type: ElementEditType, source: String, position: LatLon): Long {
         val changesetId = changesetApiClient.open(createChangesetTags(type, source))
         withContext(IO) { openChangesetsDB.put(OpenChangeset(type.name, source, changesetId, position)) }
         changesetAutoCloser.enqueue(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
@@ -54,7 +45,7 @@ class OpenChangesetsManager(
         return changesetId
     }
 
-    suspend fun closeOldChangesets() = mutex.withLock {
+    suspend fun closeOldChangesets() {
         val timePassed = nowAsEpochMilliseconds() - lastEditTimeStore.get()
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 

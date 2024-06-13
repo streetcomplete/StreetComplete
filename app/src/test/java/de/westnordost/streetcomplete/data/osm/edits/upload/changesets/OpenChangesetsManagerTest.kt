@@ -87,6 +87,7 @@ class OpenChangesetsManagerTest {
         on(openChangesetsDB.get(any(), any())).thenReturn(null)
         val locale = Locale.getDefault()
         Locale.setDefault(Locale("es", "AR"))
+        on(changesetApiClient.open(any())).thenReturn(1)
 
         manager.getOrCreateChangeset(questType, "my source", LatLon(0.0, 0.0), false)
 
