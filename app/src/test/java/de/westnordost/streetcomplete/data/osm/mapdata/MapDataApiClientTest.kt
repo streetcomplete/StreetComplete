@@ -110,7 +110,10 @@ class MapDataApiClientTest {
         }
     }
 
-    // TODO test returned bounds for getMap
+    @Test fun `getMap returns bounding box that was specified in request`(): Unit = runBlocking {
+        val hamburg = liveClient.getMap(HAMBURG_CITY_AREA)
+        assertEquals(HAMBURG_CITY_AREA, hamburg.boundingBox)
+    }
 
     @Test fun `uploadChanges as anonymous fails`(): Unit = runBlocking {
         assertFailsWith<AuthorizationException> {
