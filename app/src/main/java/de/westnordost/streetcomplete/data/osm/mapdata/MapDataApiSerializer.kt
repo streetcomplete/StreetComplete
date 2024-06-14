@@ -2,20 +2,20 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
+import nl.adaptivity.xmlutil.EventType.*
+import nl.adaptivity.xmlutil.XmlReader
 import nl.adaptivity.xmlutil.serialization.XML
-import nl.adaptivity.xmlutil.serialization.XmlBefore
-import nl.adaptivity.xmlutil.serialization.XmlChildrenName
-import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
-import kotlin.math.max
+import nl.adaptivity.xmlutil.xmlStreaming
 
 class MapDataApiSerializer {
     private val xml = XML { defaultPolicy { ignoreUnknownChildren() } }
 
     fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): MutableMapData =
-        xml.decodeFromString<ApiOsm>(osmXml).toMapData(ignoreRelationTypes)
+        xmlStreaming.newReader(osmXml).parseMapData(ignoreRelationTypes)
 
     fun parseElementUpdates(diffResultXml: String): Map<ElementKey, ElementUpdateAction> =
         xml.decodeFromString<ApiDiffResult>(diffResultXml).toElementUpdates()
@@ -24,56 +24,71 @@ class MapDataApiSerializer {
         xml.encodeToString(changes.toApiOsmChange(changesetId))
 }
 
+private fun XmlReader.parseMapData(ignoreRelationTypes: Set<String?>): MutableMapData = try {
+    val result = MutableMapData()
+    var tags: MutableMap<String, String>? = null
+    var nodes: MutableList<Long> = ArrayList()
+    var members: MutableList<RelationMember> = ArrayList()
+    var id: Long? = null
+    var position: LatLon? = null
+    var version: Int? = null
+    var timestamp: Long? = null
+
+    forEach { when (it) {
+        START_ELEMENT -> when (localName) {
+            "tag" -> {
+                if (tags == null) tags = HashMap()
+                tags!![attribute("k")] = attribute("v")
+            }
+            "nd" -> nodes.add(attribute("ref").toLong())
+            "member" -> members.add(RelationMember(
+                type = ElementType.valueOf(attribute("type").uppercase()),
+                ref = attribute("ref").toLong(),
+                role = attribute("role")
+            ))
+            "bounds" -> result.boundingBox = BoundingBox(
+                minLatitude = attribute("minlat").toDouble(),
+                minLongitude = attribute("minlon").toDouble(),
+                maxLatitude = attribute("maxlat").toDouble(),
+                maxLongitude = attribute("maxlon").toDouble()
+            )
+            "node", "way", "relation" -> {
+                id = attribute("id").toLong()
+                version = attribute("version").toInt()
+                timestamp = Instant.parse(attribute("timestamp")).toEpochMilliseconds()
+                if (localName == "node") {
+                    position = LatLon(attribute("lat").toDouble(), attribute("lon").toDouble())
+                }
+            }
+        }
+        END_ELEMENT -> when (localName) {
+            "node" -> {
+                result.add(Node(id!!, position!!, tags.orEmpty(), version!!, timestamp!!))
+                tags = null
+            }
+            "way" -> {
+                result.add(Way(id!!, nodes, tags.orEmpty(), version!!, timestamp!!))
+                nodes = ArrayList()
+                tags = null
+            }
+            "relation" -> {
+                if (tags.orEmpty()["type"] !in ignoreRelationTypes) {
+                    result.add(Relation(id!!, members, tags.orEmpty(), version!!, timestamp!!))
+                }
+                members = ArrayList()
+                tags = null
+            }
+        }
+        else -> {}
+    } }
+    result
+} catch (e: Exception) { throw SerializationException(e) }
+
+private fun XmlReader.attribute(name: String): String = getAttributeValue(null, name)!!
+
+private fun XmlReader.attributeOrNull(name: String): String? = getAttributeValue(null, name)
+
 //region Convert OSM API data structure to our data structure
-
-private fun ApiOsm.toMapData(ignoreRelationTypes: Set<String?>) = MutableMapData(
-    nodes = nodes.map { it.toNode() },
-    ways = ways.map { it.toWay() },
-    relations = relations.mapNotNull {
-        if (it.type !in ignoreRelationTypes) it.toRelation() else null
-    },
-).also { it.boundingBox = bounds?.toBoundingBox() }
-
-private fun ApiNode.toNode() = Node(
-    id = id,
-    position = LatLon(lat, lon),
-    tags = tags.toMap(),
-    version = version,
-    timestampEdited = timestamp.toEpochMilliseconds()
-)
-
-private fun ApiWay.toWay() = Way(
-    id = id,
-    nodeIds = nodes.map { it.ref },
-    tags = tags.toMap(),
-    version = version,
-    timestampEdited = timestamp.toEpochMilliseconds()
-)
-
-private fun ApiRelation.toRelation() = Relation(
-    id = id,
-    members = members.map { it.toRelationMember() },
-    tags = tags.toMap(),
-    version = version,
-    timestampEdited = timestamp.toEpochMilliseconds()
-)
-
-private val ApiRelation.type: String? get() = tags.find { it.k == "type" }?.v
-
-private fun ApiRelationMember.toRelationMember() = RelationMember(
-    type = ElementType.valueOf(type.uppercase()),
-    ref = ref,
-    role = role
-)
-
-private fun List<ApiTag>.toMap(): Map<String, String> = associate { (k, v) -> k to v }
-
-private fun ApiBoundingBox.toBoundingBox() = BoundingBox(
-    minLatitude = minlat,
-    minLongitude = minlon,
-    maxLatitude = maxlat,
-    maxLongitude = maxlon
-)
 
 private fun ApiDiffResult.toElementUpdates(): Map<ElementKey, ElementUpdateAction> {
     val result = HashMap<ElementKey, ElementUpdateAction>(nodes.size + ways.size + relations.size)
@@ -173,20 +188,9 @@ private data class ApiOsmChange(
 @Serializable
 @XmlSerialName("osm")
 private data class ApiOsm(
-    val bounds: ApiBoundingBox? = null,
     val nodes: List<ApiNode>,
     val ways: List<ApiWay>,
     val relations: List<ApiRelation>,
-)
-
-
-@Serializable
-@XmlSerialName("bounds")
-private data class ApiBoundingBox(
-    val minlat: Double,
-    val minlon: Double,
-    val maxlat: Double,
-    val maxlon: Double
 )
 
 @Serializable
