@@ -102,14 +102,6 @@ repositories {
     mavenCentral()
 }
 
-configurations {
-    all {
-        // it's already included in Android
-        exclude(group = "net.sf.kxml", module = "kxml2")
-        exclude(group = "xmlpull", module = "xmlpull")
-    }
-}
-
 dependencies {
     val mockitoVersion = "3.12.4"
 
