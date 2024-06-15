@@ -43,10 +43,10 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
           and (!parking:lane:left or parking:lane:left ~ no|none|no_stopping|no_parking|separate)
           and (!parking:lane:right or parking:lane:right ~ no|none|no_stopping|no_parking|separate)
           and (!parking:lane:both or parking:lane:both ~ no|none|no_stopping|no_parking|separate)
-          and cycleway !~ lane|opposite_lane
-          and cycleway:left !~ lane|opposite_lane
-          and cycleway:right !~ lane|opposite_lane
-          and cycleway:both !~ lane|opposite_lane
+          and cycleway != lane
+          and cycleway:left != lane
+          and cycleway:right != lane
+          and cycleway:both != lane
           and !verge
           and !shoulder
           and !shoulder:left and !shoulder:right and !shoulder:both
