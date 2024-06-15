@@ -24,9 +24,6 @@ class StatisticsControllerTest {
     private lateinit var activeDatesDao: ActiveDatesDao
     private lateinit var countryBoundaries: CountryBoundaries
     private lateinit var prefs: ObservableSettings
-    private lateinit var loginStatusSource: UserLoginSource
-    private lateinit var loginStatusListener: UserLoginSource.Listener
-
     private lateinit var statisticsController: StatisticsController
     private lateinit var listener: StatisticsSource.Listener
 
@@ -42,18 +39,12 @@ class StatisticsControllerTest {
         countryBoundaries = mock()
         prefs = mock()
         listener = mock()
-        loginStatusSource = mock()
-
-        on(loginStatusSource.addListener(any())).then { invocation ->
-            loginStatusListener = invocation.getArgument(0)
-            Unit
-        }
 
         statisticsController = StatisticsController(
             editTypeStatisticsDao, countryStatisticsDao,
             currentWeekEditTypeStatisticsDao, currentWeekCountryStatisticsDao,
             activeDatesDao,
-            lazyOf(countryBoundaries), prefs, loginStatusSource
+            lazyOf(countryBoundaries), prefs
         )
         statisticsController.addListener(listener)
     }
@@ -115,8 +106,7 @@ class StatisticsControllerTest {
     }
 
     @Test fun `clear all`() {
-        loginStatusListener.onLoggedOut()
-
+        statisticsController.clear()
         verify(editTypeStatisticsDao).clear()
         verify(countryStatisticsDao).clear()
         verify(currentWeekCountryStatisticsDao).clear()
