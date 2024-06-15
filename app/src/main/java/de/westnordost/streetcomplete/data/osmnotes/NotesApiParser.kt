@@ -1,98 +1,93 @@
-@file:UseSerializers(NoteDateSerializer::class)
-
 package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.User
-import kotlinx.datetime.Instant
+import de.westnordost.streetcomplete.util.ktx.attribute
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
-import kotlinx.datetime.format
 import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.char
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.descriptors.PrimitiveKind
-import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
-import nl.adaptivity.xmlutil.serialization.XML
-import nl.adaptivity.xmlutil.serialization.XmlChildrenName
-import nl.adaptivity.xmlutil.serialization.XmlElement
-import nl.adaptivity.xmlutil.serialization.XmlSerialName
+import kotlinx.serialization.SerializationException
+import nl.adaptivity.xmlutil.EventType.*
+import nl.adaptivity.xmlutil.XmlReader
+import nl.adaptivity.xmlutil.xmlStreaming
 
 class NotesApiParser {
-    private val xml = XML { defaultPolicy { ignoreUnknownChildren() }}
-
-    fun parseNotes(osmXml: String): List<Note> {
-        val osm = xml.decodeFromString<ApiOsm>(osmXml)
-        return osm.notes.map { it.toNote() }
-    }
+    fun parseNotes(osmXml: String): List<Note> =
+        xmlStreaming.newReader(osmXml).parseNotes()
 }
 
-private fun ApiNote.toNote() = Note(
-    position = LatLon(lat, lon),
-    id = id,
-    timestampCreated = dateCreated.toEpochMilliseconds(),
-    timestampClosed = dateClosed?.toEpochMilliseconds(),
-    status = Note.Status.valueOf(status.uppercase()),
-    comments = comments.map { it.toNoteComment() }
-)
+private fun XmlReader.parseNotes(): List<Note> = try {
+    val result = ArrayList<Note>()
 
-private fun ApiNoteComment.toNoteComment() = NoteComment(
-    timestamp = date.toEpochMilliseconds(),
-    action = NoteComment.Action.valueOf(action.uppercase()),
-    text = text,
-    user = if (uid != null && user != null) User(id = uid, displayName = user) else null
-)
+    var note: ApiNote? = null
+    var comment: ApiNoteComment? = null
+    val names = ArrayList<String>()
 
-@Serializable
-private data class ApiOsm(
-    @XmlSerialName("note") val notes: List<ApiNote>
-)
+    forEach { when (it) {
+        START_ELEMENT -> {
+            when (localName) {
+                "note" -> note = ApiNote(LatLon(attribute("lat").toDouble(), attribute("lon").toDouble()))
+                "comment" -> comment = ApiNoteComment()
+            }
+            names.add(localName)
+        }
+        TEXT -> when (names.lastOrNull()) {
+            // note
+            "id" -> note?.id = text.toLong()
+            "date_created" -> note?.timestampCreated = parseTimestamp(text)
+            "date_closed" -> note?.timestampClosed = parseTimestamp(text)
+            "status" -> note?.status = Note.Status.valueOf(text.uppercase())
+            // comment
+            "date" -> comment?.date = parseTimestamp(text)
+            "action" -> comment?.action = NoteComment.Action.valueOf(text.uppercase())
+            "text" -> comment?.text = text
+            "uid" -> comment?.uid = text.toLong()
+            "user" -> comment?.user = text
+        }
+        END_ELEMENT -> {
+            when (localName) {
+                "note" -> {
+                    val n = note!!
+                    result.add(Note(n.position, n.id!!, n.timestampCreated!!, n.timestampClosed, n.status!!, n.comments))
+                }
+                "comment" -> {
+                    val c = comment!!
+                    val cUser = if (c.user != null && c.uid != null) User(c.uid!!, c.user!!) else null
+                    note?.comments?.add(NoteComment(c.date!!, c.action!!, c.text, cUser))
+                }
+            }
+            names.removeLastOrNull()
+        }
+        else -> {}
+    } }
+    result
+} catch (e: Exception) { throw SerializationException(e) }
 
-@Serializable
-@XmlSerialName("note")
 private data class ApiNote(
-    val lon: Double,
-    val lat: Double,
-    @XmlElement val id: Long,
-    @XmlElement @XmlSerialName("date_created") val dateCreated: Instant,
-    @XmlElement @XmlSerialName("date_closed") val dateClosed: Instant?,
-    @XmlElement val status: String,
-    @XmlChildrenName("comment") val comments: List<ApiNoteComment>,
+    val position: LatLon,
+    var id: Long? = null,
+    var timestampCreated: Long? = null,
+    var timestampClosed: Long? = null,
+    var status: Note.Status? = null,
+    val comments: MutableList<NoteComment> = ArrayList(),
 )
 
-@Serializable
-@XmlSerialName("comment")
 private data class ApiNoteComment(
-    @XmlElement val date: Instant,
-    @XmlElement val action: String,
-    @XmlElement val text: String?,
-    @XmlElement val uid: Long?,
-    @XmlElement val user: String?,
+    var date: Long? = null,
+    var action: NoteComment.Action? = null,
+    var text: String? = null,
+    var uid: Long? = null,
+    var user: String? = null,
 )
 
-private object NoteDateSerializer : KSerializer<Instant> {
-    private val dateFormat = DateTimeComponents.Format {
-        date(LocalDate.Formats.ISO)
-        char(' ')
-        time(LocalTime.Formats.ISO)
-        char(' ')
-        timeZoneId()
-    }
-
-    override val descriptor: SerialDescriptor =
-        PrimitiveSerialDescriptor("Instant", PrimitiveKind.STRING)
-
-    override fun deserialize(decoder: Decoder): Instant {
-        return dateFormat.parse(decoder.decodeString()).toInstantUsingOffset()
-    }
-
-    override fun serialize(encoder: Encoder, value: Instant) {
-        encoder.encodeString(value.format(dateFormat))
-    }
+private val dateFormat = DateTimeComponents.Format {
+    date(LocalDate.Formats.ISO)
+    char(' ')
+    time(LocalTime.Formats.ISO)
+    char(' ')
+    timeZoneId()
 }
+
+private fun parseTimestamp(date: String): Long =
+    dateFormat.parse(date).toInstantUsingOffset().toEpochMilliseconds()

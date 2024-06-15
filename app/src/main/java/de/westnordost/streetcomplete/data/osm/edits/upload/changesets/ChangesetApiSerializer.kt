@@ -1,32 +1,29 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
-import nl.adaptivity.xmlutil.serialization.XML
-import nl.adaptivity.xmlutil.serialization.XmlSerialName
+import de.westnordost.streetcomplete.util.ktx.attribute
+import de.westnordost.streetcomplete.util.ktx.endTag
+import de.westnordost.streetcomplete.util.ktx.startTag
+import nl.adaptivity.xmlutil.XmlWriter
+import nl.adaptivity.xmlutil.newWriter
+import nl.adaptivity.xmlutil.xmlStreaming
 
 class ChangesetApiSerializer {
-    private val xml = XML { defaultPolicy { ignoreUnknownChildren() }}
-
     fun serialize(changesetTags: Map<String, String>): String {
-        return xml.encodeToString(changesetTags.toApiOsm())
+        val buffer = StringBuilder()
+        xmlStreaming.newWriter(buffer).serializeChangeset(changesetTags)
+        return buffer.toString()
     }
 }
 
-private fun Map<String, String>.toApiOsm() =
-    ApiOsm(changeset = ApiChangeset(tags = toApiTags()))
-
-private fun Map<String, String>.toApiTags(): List<ApiTag> =
-    map { (k, v) -> ApiTag(k, v) }
-
-@Serializable
-@XmlSerialName("osm")
-private data class ApiOsm(val changeset: ApiChangeset)
-
-@Serializable
-@XmlSerialName("changeset")
-private data class ApiChangeset(val tags: List<ApiTag>)
-
-@Serializable
-@XmlSerialName("tag")
-private data class ApiTag(val k: String, val v: String)
+private fun XmlWriter.serializeChangeset(changesetTags: Map<String, String>) {
+    startTag("osm")
+    startTag("changeset")
+    for ((k, v) in changesetTags) {
+        startTag("tag")
+        attribute("k", k)
+        attribute("v", v)
+        endTag("tag")
+    }
+    endTag("changeset")
+    endTag("osm")
+}

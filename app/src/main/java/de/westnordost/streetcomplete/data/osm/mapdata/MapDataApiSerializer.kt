@@ -1,242 +1,160 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.util.ktx.attribute
+import de.westnordost.streetcomplete.util.ktx.attributeOrNull
+import de.westnordost.streetcomplete.util.ktx.endTag
+import de.westnordost.streetcomplete.util.ktx.startTag
 import kotlinx.datetime.Instant
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import nl.adaptivity.xmlutil.serialization.XML
-import nl.adaptivity.xmlutil.serialization.XmlBefore
-import nl.adaptivity.xmlutil.serialization.XmlChildrenName
-import nl.adaptivity.xmlutil.serialization.XmlPolyChildren
-import nl.adaptivity.xmlutil.serialization.XmlSerialName
-import kotlin.math.max
+import kotlinx.serialization.SerializationException
+import nl.adaptivity.xmlutil.EventType.*
+import nl.adaptivity.xmlutil.XmlReader
+import nl.adaptivity.xmlutil.XmlWriter
+import nl.adaptivity.xmlutil.newWriter
+import nl.adaptivity.xmlutil.xmlStreaming
 
 class MapDataApiSerializer {
-    private val xml = XML { defaultPolicy { ignoreUnknownChildren() } }
-
     fun parseMapData(osmXml: String, ignoreRelationTypes: Set<String?>): MutableMapData =
-        xml.decodeFromString<ApiOsm>(osmXml).toMapData(ignoreRelationTypes)
+        xmlStreaming.newReader(osmXml).parseMapData(ignoreRelationTypes)
 
     fun parseElementUpdates(diffResultXml: String): Map<ElementKey, ElementUpdateAction> =
-        xml.decodeFromString<ApiDiffResult>(diffResultXml).toElementUpdates()
+        xmlStreaming.newReader(diffResultXml).parseElementUpdates()
 
-    fun serializeMapDataChanges(changes: MapDataChanges, changesetId: Long): String =
-        xml.encodeToString(changes.toApiOsmChange(changesetId))
+    fun serializeMapDataChanges(changes: MapDataChanges, changesetId: Long): String {
+        val buffer = StringBuilder()
+        xmlStreaming.newWriter(buffer).serializeMapDataChanges(changes, changesetId)
+        return buffer.toString()
+    }
 }
 
-//region Convert OSM API data structure to our data structure
+private fun XmlReader.parseMapData(ignoreRelationTypes: Set<String?>): MutableMapData = try {
+    val result = MutableMapData()
+    var tags: MutableMap<String, String>? = null
+    var nodes: MutableList<Long> = ArrayList()
+    var members: MutableList<RelationMember> = ArrayList()
+    var id: Long? = null
+    var position: LatLon? = null
+    var version: Int? = null
+    var timestamp: Long? = null
 
-private fun ApiOsm.toMapData(ignoreRelationTypes: Set<String?>) = MutableMapData(
-    nodes = nodes.map { it.toNode() },
-    ways = ways.map { it.toWay() },
-    relations = relations.mapNotNull {
-        if (it.type !in ignoreRelationTypes) it.toRelation() else null
-    },
-).also { it.boundingBox = bounds?.toBoundingBox() }
+    forEach { when (it) {
+        START_ELEMENT -> when (localName) {
+            "tag" -> {
+                if (tags == null) tags = HashMap()
+                tags!![attribute("k")] = attribute("v")
+            }
+            "nd" -> nodes.add(attribute("ref").toLong())
+            "member" -> members.add(RelationMember(
+                type = ElementType.valueOf(attribute("type").uppercase()),
+                ref = attribute("ref").toLong(),
+                role = attribute("role")
+            ))
+            "bounds" -> result.boundingBox = BoundingBox(
+                minLatitude = attribute("minlat").toDouble(),
+                minLongitude = attribute("minlon").toDouble(),
+                maxLatitude = attribute("maxlat").toDouble(),
+                maxLongitude = attribute("maxlon").toDouble()
+            )
+            "node", "way", "relation" -> {
+                tags = null
+                id = attribute("id").toLong()
+                version = attribute("version").toInt()
+                timestamp = Instant.parse(attribute("timestamp")).toEpochMilliseconds()
+                when (localName) {
+                    "node" -> position = LatLon(attribute("lat").toDouble(), attribute("lon").toDouble())
+                    "way" -> nodes = ArrayList()
+                    "relation" -> members = ArrayList()
+                }
+            }
+        }
+        END_ELEMENT -> when (localName) {
+            "node" -> result.add(Node(id!!, position!!, tags.orEmpty(), version!!, timestamp!!))
+            "way" -> result.add(Way(id!!, nodes, tags.orEmpty(), version!!, timestamp!!))
+            "relation" -> if (tags.orEmpty()["type"] !in ignoreRelationTypes) {
+                result.add(Relation(id!!, members, tags.orEmpty(), version!!, timestamp!!))
+            }
+        }
+        else -> {}
+    } }
+    result
+} catch (e: Exception) { throw SerializationException(e) }
 
-private fun ApiNode.toNode() = Node(
-    id = id,
-    position = LatLon(lat, lon),
-    tags = tags.toMap(),
-    version = version,
-    timestampEdited = timestamp.toEpochMilliseconds()
-)
+private fun XmlReader.parseElementUpdates(): Map<ElementKey, ElementUpdateAction> = try {
+    val result = HashMap<ElementKey, ElementUpdateAction>()
+    forEach {
+        if (it == START_ELEMENT) {
+            when (localName) {
+                "node", "way", "relation" -> {
+                    val key = ElementKey(
+                        ElementType.valueOf(localName.uppercase()),
+                        attribute("old_id").toLong()
+                    )
+                    val newId = attributeOrNull("new_id")?.toLong()
+                    val newVersion = attributeOrNull("new_version")?.toInt()
+                    val action =
+                        if (newId != null && newVersion != null) UpdateElement(newId, newVersion)
+                        else DeleteElement
 
-private fun ApiWay.toWay() = Way(
-    id = id,
-    nodeIds = nodes.map { it.ref },
-    tags = tags.toMap(),
-    version = version,
-    timestampEdited = timestamp.toEpochMilliseconds()
-)
+                    result[key] = action
+                }
+            }
+        }
+    }
+    result
+} catch (e: Exception) { throw SerializationException(e) }
 
-private fun ApiRelation.toRelation() = Relation(
-    id = id,
-    members = members.map { it.toRelationMember() },
-    tags = tags.toMap(),
-    version = version,
-    timestampEdited = timestamp.toEpochMilliseconds()
-)
-
-private val ApiRelation.type: String? get() = tags.find { it.k == "type" }?.v
-
-private fun ApiRelationMember.toRelationMember() = RelationMember(
-    type = ElementType.valueOf(type.uppercase()),
-    ref = ref,
-    role = role
-)
-
-private fun List<ApiTag>.toMap(): Map<String, String> = associate { (k, v) -> k to v }
-
-private fun ApiBoundingBox.toBoundingBox() = BoundingBox(
-    minLatitude = minlat,
-    minLongitude = minlon,
-    maxLatitude = maxlat,
-    maxLongitude = maxlon
-)
-
-private fun ApiDiffResult.toElementUpdates(): Map<ElementKey, ElementUpdateAction> {
-    val result = HashMap<ElementKey, ElementUpdateAction>(nodes.size + ways.size + relations.size)
-    result.putAll(nodes.map { it.toDiffElement(ElementType.NODE) })
-    result.putAll(ways.map { it.toDiffElement(ElementType.WAY) })
-    result.putAll(relations.map { it.toDiffElement(ElementType.RELATION) })
-    return result
+private fun XmlWriter.serializeMapDataChanges(changes: MapDataChanges, changesetId: Long) {
+    startTag("osmChange")
+    if (changes.creations.isNotEmpty()) {
+        startTag("create")
+        changes.creations.forEach { serializeElement(it, changesetId) }
+        endTag("create")
+    }
+    if (changes.modifications.isNotEmpty()) {
+        startTag("modify")
+        changes.modifications.forEach { serializeElement(it, changesetId) }
+        endTag("modify")
+    }
+    if (changes.deletions.isNotEmpty()) {
+        startTag("delete")
+        changes.deletions.forEach { serializeElement(it, changesetId) }
+        endTag("delete")
+    }
+    endTag("osmChange")
 }
 
-private fun ApiDiffElement.toDiffElement(type: ElementType): Pair<ElementKey, ElementUpdateAction> {
-    val action =
-        if (newId != null && newVersion != null) UpdateElement(newId, newVersion)
-        else DeleteElement
-    return ElementKey(type, oldId) to action
+private fun XmlWriter.serializeElement(element: Element, changesetId: Long) {
+    startTag(element.type.name.lowercase())
+    attribute("id", element.id.toString())
+    attribute("version", element.version.toString())
+    attribute("changeset", changesetId.toString())
+    attribute("timestamp", Instant.fromEpochMilliseconds(element.timestampEdited).toString())
+    when (element) {
+        is Node -> {
+            attribute("lat", element.position.latitude.toString())
+            attribute("lon", element.position.longitude.toString())
+        }
+        is Way -> {
+            for (node in element.nodeIds) {
+                startTag("nd")
+                attribute("ref", node.toString())
+                endTag("nd")
+            }
+        }
+        is Relation -> {
+            for (member in element.members) {
+                startTag("member")
+                attribute("type", member.type.name.lowercase())
+                attribute("ref", member.ref.toString())
+                attribute("role", member.role)
+                endTag("member")
+            }
+        }
+    }
+    for ((k, v) in element.tags) {
+        startTag("tag")
+        attribute("k", k)
+        attribute("v", v)
+        endTag("tag")
+    }
+    endTag(element.type.name.lowercase())
 }
-
-//endregion
-
-//region Convert our data structure to OSM API data structure
-
-private fun MapDataChanges.toApiOsmChange(changesetId: Long) = ApiOsmChange(
-    create = creations.toApiOsm(changesetId),
-    modify = modifications.toApiOsm(changesetId),
-    delete = deletions.toApiOsm(changesetId)
-)
-
-private fun Collection<Element>.toApiOsm(changesetId: Long): ApiOsm? =
-    if (isNotEmpty()) ApiOsm(
-        nodes = filterIsInstance<Node>().map { it.toApiNode(changesetId) },
-        ways = filterIsInstance<Way>().map { it.toApiWay(changesetId) },
-        relations = filterIsInstance<Relation>().map { it.toApiRelation(changesetId) }
-    ) else null
-
-private fun Node.toApiNode(changesetId: Long) = ApiNode(
-    id = id,
-    changeset = changesetId,
-    version = version,
-    timestamp = Instant.fromEpochMilliseconds(timestampEdited),
-    lat = position.latitude,
-    lon = position.longitude,
-    tags = tags.toApiTags()
-)
-
-private fun Way.toApiWay(changesetId: Long) = ApiWay(
-    id = id,
-    changeset = changesetId,
-    version = version,
-    timestamp = Instant.fromEpochMilliseconds(timestampEdited),
-    tags = tags.toApiTags(),
-    nodes = nodeIds.map { ApiWayNode(it) }
-)
-
-private fun Relation.toApiRelation(changesetId: Long) = ApiRelation(
-    id = id,
-    changeset = changesetId,
-    version = version,
-    timestamp = Instant.fromEpochMilliseconds(timestampEdited),
-    members = members.map { it.toApiRelationMember() },
-    tags = tags.toApiTags()
-)
-
-private fun RelationMember.toApiRelationMember() = ApiRelationMember(
-    type = type.name.lowercase(),
-    ref = ref,
-    role = role
-)
-
-private fun Map<String, String>.toApiTags(): List<ApiTag> = map { (k, v) -> ApiTag(k, v) }
-
-//endregion
-
-//region OSM API data structure
-
-@Serializable
-@XmlSerialName("diffResult")
-private data class ApiDiffResult(
-    @XmlSerialName("node") val nodes: List<ApiDiffElement>,
-    @XmlSerialName("way") val ways: List<ApiDiffElement>,
-    @XmlSerialName("relation") val relations: List<ApiDiffElement>,
-)
-
-@Serializable
-private open class ApiDiffElement(
-    @XmlSerialName("old_id") val oldId: Long,
-    @XmlSerialName("new_id") val newId: Long? = null,
-    @XmlSerialName("new_version") val newVersion: Int? = null,
-)
-
-@Serializable
-@XmlSerialName("osmChange")
-private data class ApiOsmChange(
-    @XmlSerialName("create") val create: ApiOsm? = null,
-    @XmlSerialName("modify") val modify: ApiOsm? = null,
-    @XmlSerialName("delete") val delete: ApiOsm? = null,
-)
-
-@Serializable
-@XmlSerialName("osm")
-private data class ApiOsm(
-    val bounds: ApiBoundingBox? = null,
-    val nodes: List<ApiNode>,
-    val ways: List<ApiWay>,
-    val relations: List<ApiRelation>,
-)
-
-
-@Serializable
-@XmlSerialName("bounds")
-private data class ApiBoundingBox(
-    val minlat: Double,
-    val minlon: Double,
-    val maxlat: Double,
-    val maxlon: Double
-)
-
-@Serializable
-@XmlSerialName("node")
-private data class ApiNode(
-    val id: Long,
-    val version: Int,
-    val changeset: Long? = null,
-    val timestamp: Instant,
-    val lat: Double,
-    val lon: Double,
-    val tags: List<ApiTag> = emptyList(),
-)
-
-@Serializable
-@XmlSerialName("way")
-private data class ApiWay(
-    val id: Long,
-    val version: Int,
-    val changeset: Long? = null,
-    val timestamp: Instant,
-    val nodes: List<ApiWayNode> = emptyList(),
-    val tags: List<ApiTag> = emptyList(),
-)
-
-@Serializable
-@XmlSerialName("nd")
-private data class ApiWayNode(val ref: Long)
-
-@Serializable
-@XmlSerialName("relation")
-private data class ApiRelation(
-    val id: Long,
-    val version: Int,
-    val changeset: Long? = null,
-    val timestamp: Instant,
-    val members: List<ApiRelationMember> = emptyList(),
-    val tags: List<ApiTag> = emptyList(),
-)
-
-@Serializable
-@XmlSerialName("member")
-private data class ApiRelationMember(
-    val type: String,
-    val ref: Long,
-    val role: String,
-)
-
-@Serializable
-@XmlSerialName("tag")
-private data class ApiTag(val k: String, val v: String)
-
-// endregion
