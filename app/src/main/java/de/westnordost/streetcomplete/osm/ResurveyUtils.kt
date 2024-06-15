@@ -61,6 +61,7 @@ fun Tags.updateCheckDateForKey(key: String) {
 fun Tags.setCheckDateForKey(key: String, date: LocalDate) {
     removeCheckDatesForKey(key)
     set("$SURVEY_MARK_KEY:$key", date.toCheckDateString())
+    if (hasCheckDate()) setCheckDate(date)
 }
 
 /** Return whether a check date is set for the given key */
@@ -75,8 +76,12 @@ fun Tags.removeCheckDatesForKey(key: String) {
 /** Set/update solely the check date for the entire item to today, this also removes other less
  *  preferred check date keys for the entire item. */
 fun Tags.updateCheckDate() {
+    setCheckDate(systemTimeNow().toLocalDate())
+}
+
+fun Tags.setCheckDate(date: LocalDate) {
     removeCheckDates()
-    set(SURVEY_MARK_KEY, nowAsCheckDateString())
+    set(SURVEY_MARK_KEY, date.toCheckDateString())
 }
 
 /** Return whether any check dates are set */
