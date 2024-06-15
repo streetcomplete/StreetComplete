@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.moped
 
 enum class AddMopedAccessAnswer {
-    ALLOWED,
+    NO_SIGN,
     DESIGNATED,
     FORBIDDEN
 }

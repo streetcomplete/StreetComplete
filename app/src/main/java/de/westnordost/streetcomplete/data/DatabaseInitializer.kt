@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowT
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 16
+    const val DB_VERSION = 17
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -244,6 +244,9 @@ object DatabaseInitializer {
         }
         if (oldVersion <= 15 && newVersion > 15) {
             db.deleteQuest("AddCrossingType")
+        }
+        if (oldVersion <= 16 && newVersion > 16) {
+            db.renameQuest("AddProhibitedForMoped", "AddMopedAccess")
         }
     }
 }
