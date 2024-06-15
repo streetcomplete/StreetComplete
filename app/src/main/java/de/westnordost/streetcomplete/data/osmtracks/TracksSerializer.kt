@@ -1,55 +1,45 @@
 package de.westnordost.streetcomplete.data.osmtracks
 
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.util.ktx.attribute
+import de.westnordost.streetcomplete.util.ktx.endTag
+import de.westnordost.streetcomplete.util.ktx.startTag
 import kotlinx.datetime.Instant
-import kotlinx.serialization.Serializable
-import nl.adaptivity.xmlutil.serialization.XML
-import nl.adaptivity.xmlutil.serialization.XmlElement
-import nl.adaptivity.xmlutil.serialization.XmlSerialName
+import nl.adaptivity.xmlutil.XmlWriter
+import nl.adaptivity.xmlutil.newWriter
+import nl.adaptivity.xmlutil.xmlStreaming
 
 class TracksSerializer {
     fun serialize(trackpoints: List<Trackpoint>): String {
-        return XML.encodeToString(trackpoints.toGpx())
+        val buffer = StringBuilder()
+        xmlStreaming.newWriter(buffer).serializeToGpx(trackpoints)
+        return buffer.toString()
     }
 }
 
-private fun List<Trackpoint>.toGpx() = Gpx(
-    version = 1.0f,
-    creator = ApplicationConstants.USER_AGENT,
-    tracks = listOf(GpsTrack(listOf(GpsTrackSegment(map { it.toGpsTrackPoint() }))))
-)
-
-private fun Trackpoint.toGpsTrackPoint() = GpsTrackPoint(
-    lat = position.latitude,
-    lon = position.longitude,
-    time = Instant.fromEpochMilliseconds(time),
-    ele = elevation,
-    hdop = accuracy
-)
-
-@Serializable
-@XmlSerialName("gpx", namespace = "http://www.topografix.com/GPX/1/0")
-private data class Gpx(
-    val version: Float,
-    val creator: String,
-    @XmlSerialName("trk") val tracks: List<GpsTrack>,
-)
-
-@Serializable
-private data class GpsTrack(
-    @XmlSerialName("trkseg") val segments: List<GpsTrackSegment>
-)
-
-@Serializable
-private data class GpsTrackSegment(
-    @XmlSerialName("trkpt") val points: List<GpsTrackPoint>
-)
-
-@Serializable
-private data class GpsTrackPoint(
-    val lat: Double,
-    val lon: Double,
-    @XmlElement val time: Instant? = null,
-    @XmlElement val ele: Float? = null,
-    @XmlElement val hdop: Float? = null,
-)
+private fun XmlWriter.serializeToGpx(trackpoints: List<Trackpoint>) {
+    startTag("gpx")
+    attribute("xmlns", "http://www.topografix.com/GPX/1/0")
+    attribute("version", "1.0")
+    attribute("creator", ApplicationConstants.USER_AGENT)
+    startTag("trk")
+    startTag("trkseg")
+    for (trackpoint in trackpoints) {
+        startTag("trkpt")
+        attribute("lat", trackpoint.position.latitude.toString())
+        attribute("lon", trackpoint.position.longitude.toString())
+        startTag("time")
+        text(Instant.fromEpochMilliseconds(trackpoint.time).toString())
+        endTag("time")
+        startTag("ele")
+        text(trackpoint.elevation.toString())
+        endTag("ele")
+        startTag("hdop")
+        text(trackpoint.accuracy.toString())
+        endTag("hdop")
+        endTag("trkpt")
+    }
+    endTag("trkseg")
+    endTag("trk")
+    endTag("gpx")
+}

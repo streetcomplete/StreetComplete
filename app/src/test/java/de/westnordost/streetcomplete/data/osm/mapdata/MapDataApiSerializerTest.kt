@@ -156,7 +156,7 @@ class MapDataApiSerializerTest {
         val mapDataChanges = MapDataChanges(
             creations = nodes + ways,
             modifications = ways + relations,
-            deletions = relations + nodes,
+            deletions = nodes + relations,
         )
 
         assertEquals(

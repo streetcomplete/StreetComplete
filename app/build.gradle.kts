@@ -198,7 +198,7 @@ dependencies {
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("com.charleskorn.kaml:kaml:0.59.0")
-    implementation("io.github.pdvrieze.xmlutil:serialization-android:0.86.3")
+    implementation("io.github.pdvrieze.xmlutil:core-android:0.90.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")

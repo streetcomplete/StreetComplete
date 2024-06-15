@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.data.osmtracks
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.datetime.Instant
-import nl.adaptivity.xmlutil.serialization.XML
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
