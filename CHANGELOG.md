@@ -1,5 +1,13 @@
 # Changelog
 
+## v58.1
+
+- Avoid asking about existence of shop right after asking about its opening hours (#5674)
+- Moped on bike paths: When there is no sign, just tag that and don't infer anything else (#5565)
+- Parcel locker drop-off: Add option for return deliveries only (#5687)
+- Crossing kerb height: Only ask if road has a sidewalk (#5668)
+- Other small improvements (#5594, #5676, ...)
+
 ## v58.0
 
 ### New quests
