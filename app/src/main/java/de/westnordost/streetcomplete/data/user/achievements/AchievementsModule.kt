@@ -232,12 +232,12 @@ val links = listOf(
         R.string.link_openstreetbrowser_description
     ),
     Link(
-        "qwant_maps",
-        "https://map.qwant.com/",
-        "Qwant Maps",
+        "osmapp",
+        "https://osmapp.org/",
+        "OsmAPP",
         LinkCategory.MAPS,
-        R.drawable.ic_link_qwant,
-        R.string.link_qwant_maps_description
+        R.drawable.ic_link_osmapp,
+        R.string.link_osmapp_description
     ),
     Link(
         "organic_maps",
@@ -703,7 +703,7 @@ val achievements = listOf(
         { lvl -> (lvl + 1) * 10 },
         mapOf(
             1 to links("openstreetbrowser"),
-            2 to links("qwant_maps"),
+            2 to links("osmapp"),
             3 to links("organic_maps"),
             4 to links("indoorequal"),
             5 to links("osmand"),
