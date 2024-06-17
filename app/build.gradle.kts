@@ -130,6 +130,7 @@ dependencies {
     implementation("io.insert-koin:koin-core")
     implementation("io.insert-koin:koin-android")
     implementation("io.insert-koin:koin-androidx-workmanager")
+    implementation("io.insert-koin:koin-androidx-compose")
 
     // Android stuff
     implementation("com.google.android.material:material:1.12.0")
@@ -152,6 +153,8 @@ dependencies {
     // Jetpack Compose Previews
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.1")

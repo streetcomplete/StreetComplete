@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.about
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -30,12 +31,12 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 @Composable
 fun ChangelogScreen(
     viewModel: ChangelogViewModel,
-    onClickBack: () -> Unit,
+    onClickBack: () -> Unit
 ) {
     val changelog by viewModel.changelog.collectAsState()
     val context = LocalContext.current
 
-    Column {
+    Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.about_title_changelog)) },
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },

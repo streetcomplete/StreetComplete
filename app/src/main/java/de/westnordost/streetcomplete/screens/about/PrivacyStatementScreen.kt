@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.about
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -18,6 +19,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
+import de.westnordost.streetcomplete.util.html.parseHtml
+import de.westnordost.streetcomplete.util.html.tryParseHtml
 import de.westnordost.streetcomplete.util.ktx.openUri
 
 /** Shows the privacy statement */
@@ -26,7 +29,7 @@ fun PrivacyStatementScreen(
     vectorTileProvider: VectorTileProvider,
     onClickBack: () -> Unit
 ) {
-    Column {
+    Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.about_title_privacy_statement)) },
             navigationIcon = { IconButton(onClick = { onClickBack() }) { BackIcon() } },

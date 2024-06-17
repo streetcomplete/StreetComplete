@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.about.logs
 import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -48,7 +49,7 @@ fun LogsScreen(
         if (listState.isScrolledToEnd) listState.scrollToItem(logs.size)
     }
 
-    Column {
+    Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.about_title_logs, logs.size)) },
             navigationIcon = { IconButton(onClick = { onClickBack() }) { BackIcon() } },

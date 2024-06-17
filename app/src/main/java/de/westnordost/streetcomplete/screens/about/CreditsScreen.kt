@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.screens.about
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.IconButton
@@ -22,21 +22,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.withAnnotation
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.BulletSpan
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.ui.util.toAnnotatedString
-import de.westnordost.streetcomplete.util.html.parseHtml
 import de.westnordost.streetcomplete.util.ktx.openUri
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import java.util.Locale
 
 /** Shows the credits of this app */
@@ -47,7 +41,7 @@ fun CreditsScreen(
 ) {
     val credits by viewModel.credits.collectAsState()
 
-    Column {
+    Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.about_title_authors)) },
             navigationIcon = { IconButton(onClick = { onClickBack() }) { BackIcon() } },
@@ -75,7 +69,7 @@ private fun CreditsSections(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier.verticalScroll(rememberScrollState()),
+        modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(32.dp),
     ) {
         CreditsSection(stringResource(R.string.credits_author_title)) {

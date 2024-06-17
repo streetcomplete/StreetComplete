@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.about
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.IconButton
@@ -35,7 +36,7 @@ fun AboutScreen(
 
     val context = LocalContext.current
 
-    Column {
+    Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.action_about2)) },
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
