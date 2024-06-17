@@ -21,9 +21,14 @@ indent_size = 4
 ktlint_standard_annotation = disabled
 ktlint_standard_argument-list-wrapping = disabled
 ktlint_standard_backing-property-naming = disabled
+ktlint_standard_binary-expression-wrapping = disabled
 ktlint_standard_blank-line-before-declaration = disabled
 ktlint_standard_blank-line-between-when-conditions = disabled
+ktlint_standard_chain-method-continuation = disabled
 ktlint_standard_chain-wrapping = disabled
+ktlint_standard_class-signature = disabled
+ktlint_standard_condition-wrapping = disabled
+ktlint_standard_function-literal = disabled
 ktlint_standard_function-naming = disabled
 ktlint_standard_function-signature = disabled
 ktlint_standard_if-else-wrapping = disabled
@@ -51,11 +56,8 @@ ktlint_standard_trailing-comma-on-declaration-site = disabled
 ktlint_standard_wrapping = disabled
 
 # enable some experimental Ktlint rules
-ktlint_standard_function-expression-body = enabled
-ktlint_standard_function-type-modifier-spacing = enabled
 ktlint_standard_mixed-condition-operators = enabled
 ktlint_standard_kdoc = enabled
-ktlint_standard_multiline-loop = enabled
 ktlint_standard_square-brackets-spacing = enabled
 
 [gradlew]

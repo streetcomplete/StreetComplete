@@ -12,9 +12,7 @@ class StatisticsDownloader(
     private val statisticsParser: StatisticsParser
 ) {
     suspend fun download(osmUserId: Long): Statistics {
-        val response = httpClient.get("$baseUrl?user_id=$osmUserId") {
-            expectSuccess = true
-        }
+        val response = httpClient.get("$baseUrl?user_id=$osmUserId") { expectSuccess = true }
         return statisticsParser.parse(response.body())
     }
 }

@@ -5,15 +5,19 @@ This is a short and high-level overview what to find in which package
   - `download` - Download service, automatic download behavior (strategy), and persist which tiles have been downloaded already
   - `edithistory` - Control of user's edit history, undoing etc.
   - `elementfilter` - Parser and data model for the "Element filter expression" (Overpass-Wizard-like syntax used to filter OSM elements)
+  - `location` - Persistence of user's location
+  - `logs` - Management and persistence of log messages
   - `maptiles` - Downloader and cache for (vector) map tiles of the background map
-  - `meta` - Parsing and data model for country- or locale-specific metadata
   - `messages` - Control of messages shown to the user
+  - `meta` - Parsing and data model for country- or locale-specific metadata
   - `osm` - Management, download, persistence and upload of OSM map data: OSM map data itself, its geometry, quests generated from that and edits made on that data
   - `osmnotes` - Management, download, persistence and upload of OSM notes data: OSM notes data itself, quests generated from that, edits made on that data, attaching and upload of photos
+  - `osmtracks` - User GPS traces and upload to OSM
   - `overlays` - Management and persistence of selected overlay
   - `quest` - Management of quests, automatic upload behavior
   - `sync` - Android intent service and notification for upload / download
   - `upload` - Upload service
+  - `urlconfig` - Configuration of quest presets via a short URL
   - `user` - Management and persistence of user login, user data, statistics, achievements and unlocked links
   - `visiblequests` - Management and persistence of quest type order, enablement and quest presets
 

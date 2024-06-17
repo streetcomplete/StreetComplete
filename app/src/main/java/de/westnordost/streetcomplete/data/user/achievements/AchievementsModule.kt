@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarkings
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
+import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
@@ -64,6 +65,7 @@ private val typeAliases = listOf(
     "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
     "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!,
     "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,
+    "AddProhibitedForMoped"              to AddMopedAccess::class.simpleName!!
 )
 
 /** this is only public so that it can be previewed in compose */
@@ -232,12 +234,12 @@ val links = listOf(
         R.string.link_openstreetbrowser_description
     ),
     Link(
-        "qwant_maps",
-        "https://map.qwant.com/",
-        "Qwant Maps",
+        "osmapp",
+        "https://osmapp.org/",
+        "OsmAPP",
         LinkCategory.MAPS,
-        R.drawable.ic_link_qwant,
-        R.string.link_qwant_maps_description
+        R.drawable.ic_link_osmapp,
+        R.string.link_osmapp_description
     ),
     Link(
         "organic_maps",
@@ -703,7 +705,7 @@ val achievements = listOf(
         { lvl -> (lvl + 1) * 10 },
         mapOf(
             1 to links("openstreetbrowser"),
-            2 to links("qwant_maps"),
+            2 to links("osmapp"),
             3 to links("organic_maps"),
             4 to links("indoorequal"),
             5 to links("osmand"),

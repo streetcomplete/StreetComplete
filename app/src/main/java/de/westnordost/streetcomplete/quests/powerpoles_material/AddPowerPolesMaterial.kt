@@ -39,7 +39,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>() {
     override fun applyAnswerTo(answer: PowerPolesMaterialAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is PowerPolesMaterial) {
             tags["material"] = answer.osmValue
-        } else if(answer is PowerLineAnchoredToBuilding) {
+        } else if (answer is PowerLineAnchoredToBuilding) {
             tags["power"] = "terminal"
         }
     }

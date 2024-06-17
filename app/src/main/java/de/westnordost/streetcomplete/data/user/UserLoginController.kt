@@ -5,15 +5,17 @@ import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
 
-class UserLoginStatusController(
+class UserLoginController(
     private val osmConnection: OsmConnection,
     private val prefs: ObservableSettings,
-) : UserLoginStatusSource {
+) : UserLoginSource {
 
-    private val listeners = Listeners<UserLoginStatusSource.Listener>()
+    private val listeners = Listeners<UserLoginSource.Listener>()
 
-    override val isLoggedIn: Boolean get() =
-        prefs.getStringOrNull(Prefs.OAUTH2_ACCESS_TOKEN) != null
+    override val isLoggedIn: Boolean get() = accessToken != null
+
+    override val accessToken: String? get() =
+        prefs.getStringOrNull(Prefs.OAUTH2_ACCESS_TOKEN)
 
     fun logIn(accessToken: String) {
         prefs.putString(Prefs.OAUTH2_ACCESS_TOKEN, accessToken)
@@ -30,10 +32,10 @@ class UserLoginStatusController(
         listeners.forEach { it.onLoggedOut() }
     }
 
-    override fun addListener(listener: UserLoginStatusSource.Listener) {
+    override fun addListener(listener: UserLoginSource.Listener) {
         listeners.add(listener)
     }
-    override fun removeListener(listener: UserLoginStatusSource.Listener) {
+    override fun removeListener(listener: UserLoginSource.Listener) {
         listeners.remove(listener)
     }
 }

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.Configuration
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -17,7 +16,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.getSystemService
 import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
@@ -26,8 +24,9 @@ import androidx.preference.PreferenceManager
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.AuthorizationException
+import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.download.ConnectionException
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
@@ -40,9 +39,7 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
-import de.westnordost.streetcomplete.data.user.AuthorizationException
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
-import de.westnordost.streetcomplete.data.user.UserUpdater
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
@@ -70,11 +67,10 @@ class MainActivity :
     private val downloadProgressSource: DownloadProgressSource by inject()
     private val uploadProgressSource: UploadProgressSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
-    private val userUpdater: UserUpdater by inject()
     private val elementEditsSource: ElementEditsSource by inject()
     private val noteEditsSource: NoteEditsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    private val userLoginStatusController: UserLoginStatusController by inject()
+    private val userLoginController: UserLoginController by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
     private val prefs: ObservableSettings by inject()
@@ -122,14 +118,11 @@ class MainActivity :
         if (savedInstanceState == null) {
             supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
             val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false)
-            if (!hasShownTutorial && !userLoginStatusController.isLoggedIn) {
+            if (!hasShownTutorial && !userLoginController.isLoggedIn) {
                 supportFragmentManager.commit {
                     setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
                     add(R.id.fragment_container, TutorialFragment())
                 }
-            }
-            if (userLoginStatusController.isLoggedIn && isConnected) {
-                userUpdater.update()
             }
         }
 
@@ -230,7 +223,7 @@ class MainActivity :
 
     private suspend fun ensureLoggedIn() {
         if (!questAutoSyncer.isAllowedByPreference) return
-        if (userLoginStatusController.isLoggedIn) return
+        if (userLoginController.isLoggedIn) return
 
         // new users should not be immediately pestered to login after each change (#1446)
         if (unsyncedChangesCountSource.getCount() < 3 || dontShowRequestAuthorizationAgain) return
@@ -238,9 +231,6 @@ class MainActivity :
         RequestLoginDialog(this).show()
         dontShowRequestAuthorizationAgain = true
     }
-
-    private val isConnected: Boolean
-        get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
 
     /* ------------------------------------- Preferences ---------------------------------------- */
 
@@ -282,7 +272,7 @@ class MainActivity :
                     toast(R.string.upload_server_error, Toast.LENGTH_LONG)
                 } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
-                    userLoginStatusController.logOut()
+                    userLoginController.logOut()
                     RequestLoginDialog(this@MainActivity).show()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity,
@@ -304,7 +294,7 @@ class MainActivity :
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
                 } else if (e is AuthorizationException) {
                     // delete secret in case it failed while already having a token -> token is invalid
-                    userLoginStatusController.logOut()
+                    userLoginController.logOut()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity,
                         R.string.download_error, e)

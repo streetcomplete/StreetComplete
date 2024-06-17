@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
@@ -46,7 +46,7 @@ data class DatesActiveInRange(val datesActive: List<LocalDate>, val range: Int)
 
 class ProfileViewModelImpl(
     private val userDataSource: UserDataSource,
-    private val userLoginStatusController: UserLoginStatusController,
+    private val userLoginController: UserLoginController,
     private val userUpdater: UserUpdater,
     private val statisticsSource: StatisticsSource,
     private val achievementsSource: AchievementsSource,
@@ -68,7 +68,7 @@ class ProfileViewModelImpl(
     override val biggestSolvedCountCurrentWeekCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
 
     override fun logOutUser() {
-        launch { userLoginStatusController.logOut() }
+        launch { userLoginController.logOut() }
     }
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {

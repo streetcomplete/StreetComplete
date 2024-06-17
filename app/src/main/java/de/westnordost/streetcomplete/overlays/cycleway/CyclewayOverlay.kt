@@ -74,7 +74,7 @@ private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.NON_DESIGNATED_ON_FOOTWAY,
     SeparateCycleway.PATH ->
         Color.BLACK
-    
+
     SeparateCycleway.NON_SEGREGATED ->
         Color.CYAN
 
