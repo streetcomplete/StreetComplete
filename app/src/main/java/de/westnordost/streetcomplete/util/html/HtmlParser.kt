@@ -16,6 +16,15 @@ fun parseHtml(string: String): List<HtmlNode> {
     return result
 }
 
+/**
+ * Same as `parseHtml` but on a parsing error, will return a single text node with the string.
+ * */
+fun tryParseHtml(string: String): List<HtmlNode> = try {
+    parseHtml(string)
+} catch (e: HtmlParseException) {
+    listOf(HtmlTextNode(string))
+}
+
 private fun StringWithCursor.parseNodes(): List<HtmlNode> {
     val nodes = ArrayList<HtmlNode>()
     while (!isAtEnd()) {

@@ -11,7 +11,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.util.toAnnotatedString
 import de.westnordost.streetcomplete.util.html.HtmlNode
+import de.westnordost.streetcomplete.util.html.HtmlTextNode
 import de.westnordost.streetcomplete.util.html.parseHtml
+import de.westnordost.streetcomplete.util.html.tryParseHtml
+import de.westnordost.streetcomplete.util.logs.Log
 
 @Composable
 fun HtmlText(
@@ -24,7 +27,7 @@ fun HtmlText(
     onClickLink: (String) -> Unit
 ) {
     HtmlText(
-        parseHtml(html),
+        html = tryParseHtml(html),
         modifier = modifier,
         style = style,
         softWrap = softWrap,
