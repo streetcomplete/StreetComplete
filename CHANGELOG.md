@@ -7,7 +7,7 @@
 - Moped on bike paths: When there is no sign, just tag that and don't infer anything else (#5565)
 - Parcel locker drop-off: Add option for return deliveries only (#5687)
 - Crossing kerb height: Only ask if road has a sidewalk (#5668)
-- Addresses: Bulgaria - recognize common housenumber formats (#5683), by @mnalis
+- Addresses: recognize common housenumber formats in Bulgaria (#5683), by @mnalis
 - Other small improvements (#5594, #5676, ...)
 
 ## v58.0
