@@ -20,6 +20,7 @@
 - _"Is there a sign indicating access for mopeds on this bike path?"_ – asked exclusively in Belgium (#5567), by @PowerPlop
 
 ### Overlay improvements
+
 - Bike paths: Now possible to select that cycling on footway is explicitly allowed or prohibited (#5575, #4913), by @wielandb
 - Places: Entrances are shown to help with orientation (#5497)
 - Things: Advertising totem was not displayed (#5588)

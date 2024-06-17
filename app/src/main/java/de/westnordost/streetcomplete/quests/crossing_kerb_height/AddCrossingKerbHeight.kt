@@ -35,7 +35,7 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
 
        Additionally, driveways usually have no kerbs, as well as any roads that explicitly have no
        sidewalk.
-       */
+     */
     private val excludedWaysFilter by lazy { """
         ways with
           highway and access ~ private|no
