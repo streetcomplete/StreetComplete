@@ -19,7 +19,6 @@ import com.google.zxing.qrcode.QRCodeWriter
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.DialogQrCodeBinding
-import de.westnordost.streetcomplete.screens.settings.quest_selection.toBitmap
 import de.westnordost.streetcomplete.util.ktx.toast
 
 class UrlConfigQRCodeDialog(
