@@ -97,7 +97,6 @@ class ResurveyUtilsTest {
         ), changes)
     }
 
-
     @Test fun `updateWithCheckDate modifies old check date on modifying key`() {
         val builder = Tags(mapOf(
             "key" to "old value",
