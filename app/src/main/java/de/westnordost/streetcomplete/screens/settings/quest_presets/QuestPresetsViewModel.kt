@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings.questselection
+package de.westnordost.streetcomplete.screens.settings.quest_presets
 
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController

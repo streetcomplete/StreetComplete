@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings.questselection
+package de.westnordost.streetcomplete.screens.settings.quest_presets
 
 import android.content.Context
 import android.text.InputFilter

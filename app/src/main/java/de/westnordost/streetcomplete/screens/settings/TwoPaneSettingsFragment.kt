@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.screens.settings
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
 import de.westnordost.streetcomplete.screens.TwoPaneHeaderFragment
-import de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsFragment
-import de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionFragment
+import de.westnordost.streetcomplete.screens.settings.quest_presets.QuestPresetsFragment
+import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionFragment
 
 /** Shows the settings lists and details in a two pane layout. */
 class TwoPaneSettingsFragment : TwoPaneHeaderFragment() {

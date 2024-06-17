@@ -7,13 +7,13 @@
         android:title="@string/pref_category_quests_overlays">
 
         <de.westnordost.streetcomplete.screens.ActivatablePreference
-            android:fragment="de.westnordost.streetcomplete.screens.settings.questselection.QuestPresetsFragment"
+            android:fragment="de.westnordost.streetcomplete.screens.settings.quest_presets.QuestPresetsFragment"
             android:key="quest_presets"
             android:title="@string/action_manage_presets"
             android:widgetLayout="@layout/widget_image_next" />
 
         <de.westnordost.streetcomplete.screens.ActivatablePreference
-            android:fragment="de.westnordost.streetcomplete.screens.settings.questselection.QuestSelectionFragment"
+            android:fragment="de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionFragment"
             android:key="quests"
             android:title="@string/pref_title_quests2"
             android:widgetLayout="@layout/widget_image_next" />

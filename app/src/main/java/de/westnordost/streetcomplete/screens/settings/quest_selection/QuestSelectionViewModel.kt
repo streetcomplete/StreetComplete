@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings.questselection
+package de.westnordost.streetcomplete.screens.settings.quest_selection
 
 import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.ObservableSettings
