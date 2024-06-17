@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Tables -->
-    <dimen name="table_icon_size">64dp</dimen>
-
 
     <dimen name="quest_form_peekHeight">442dp</dimen>
 

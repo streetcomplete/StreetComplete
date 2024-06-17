@@ -32,7 +32,6 @@
     <dimen name="street_side_puzzle_height">112dp</dimen>
 
     <!-- Tables -->
-    <dimen name="table_icon_size">32dp</dimen>
     <dimen name="horizontal_speech_bubble_margin">4dp</dimen>
 
     <!-- button -->

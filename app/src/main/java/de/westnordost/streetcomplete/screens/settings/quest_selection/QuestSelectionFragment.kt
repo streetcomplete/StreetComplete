@@ -29,7 +29,7 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
     private val binding by viewBinding(FragmentQuestSelectionBinding::bind)
     private val viewModel by viewModel<QuestSelectionViewModel>()
 
-    private lateinit var questSelectionAdapter: QuestSelectionAdapter
+    //private lateinit var questSelectionAdapter: QuestSelectionAdapter
 
     override val title: String get() = getString(R.string.pref_title_quests2)
 
@@ -52,8 +52,8 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        questSelectionAdapter = QuestSelectionAdapter(requireContext(), viewModel)
-        questSelectionAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        //questSelectionAdapter = QuestSelectionAdapter(requireContext(), viewModel)
+        //questSelectionAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,10 +63,10 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
 
         binding.questSelectionList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         binding.questSelectionList.layoutManager = LinearLayoutManager(context)
-        binding.questSelectionList.adapter = questSelectionAdapter
+        //binding.questSelectionList.adapter = questSelectionAdapter
 
         observe(viewModel.quests) { quests ->
-            questSelectionAdapter.quests = filterQuests(quests, filter)
+            //questSelectionAdapter.quests = filterQuests(quests, filter)
             updateDisplayedQuestCount()
         }
     }
@@ -78,7 +78,7 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = false
             override fun onQueryTextChange(newText: String?): Boolean {
-                questSelectionAdapter.quests = filterQuests(viewModel.quests.value, newText)
+                //questSelectionAdapter.quests = filterQuests(viewModel.quests.value, newText)
                 updateDisplayedQuestCount()
                 return false
             }
@@ -108,7 +108,7 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
     }
 
     private fun updateDisplayedQuestCount() {
-        val isEmpty = questSelectionAdapter.itemCount == 0
+        val isEmpty = true //questSelectionAdapter.itemCount == 0
         binding.tableHeader.isInvisible = isEmpty
         binding.emptyText.isInvisible = !isEmpty
     }

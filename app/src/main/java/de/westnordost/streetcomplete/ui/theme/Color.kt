@@ -55,6 +55,8 @@ val DarkColors = darkColors(
     onSecondary = Color.White
 )
 
+val Colors.disabled get() = Color(0x66999999)
+
 val Colors.hint @Composable get() =
     if (isLight) Color(0xff666666) else Color(0xff999999)
 

@@ -1,66 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.quest_selection
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import androidx.core.view.isGone
-import androidx.core.view.isInvisible
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
-import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
-import androidx.recyclerview.widget.ItemTouchHelper.DOWN
-import androidx.recyclerview.widget.ItemTouchHelper.UP
-import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.RowQuestSelectionBinding
-import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
-import java.util.Collections
-import java.util.Locale
-
-/** Adapter for the list in which the user can enable and disable quests as well as re-order them */
-class QuestSelectionAdapter(
-    private val context: Context,
-    private val viewModel: QuestSelectionViewModel
-) : RecyclerView.Adapter<QuestSelectionAdapter.QuestSelectionViewHolder>() {
-
-    private val itemTouchHelper by lazy { ItemTouchHelper(TouchHelperCallback()) }
-
-    var quests: List<QuestSelection> = listOf()
-        set(value) {
-            val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
-                override fun getOldListSize() = field.size
-                override fun getNewListSize() = value.size
-                override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-                    field[oldItemPosition].questType == value[newItemPosition].questType
-                override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-                    field[oldItemPosition].selected == value[newItemPosition].selected
-            })
-            field = value.toList()
-            diff.dispatchUpdatesTo(this)
-        }
-
-    override fun getItemCount(): Int = quests.size
-
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-        itemTouchHelper.attachToRecyclerView(recyclerView)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestSelectionViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        return QuestSelectionViewHolder(RowQuestSelectionBinding.inflate(inflater, parent, false))
-    }
-
-    override fun onBindViewHolder(holder: QuestSelectionViewHolder, position: Int) {
-        holder.onBind(quests[position])
-    }
-
-    /** Contains the logic for drag and drop (for reordering) */
+    /** Contains the logic for drag and drop (for reordering)
     private inner class TouchHelperCallback : ItemTouchHelper.Callback() {
         private var draggedFrom = -1
         private var draggedTo = -1
@@ -116,40 +56,10 @@ class QuestSelectionAdapter(
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {}
     }
+     */
 
-    /** View Holder for a single quest type */
-    inner class QuestSelectionViewHolder(private val binding: RowQuestSelectionBinding) :
-        RecyclerView.ViewHolder(binding.root) {
 
-        var item: QuestSelection? = null
-
-        @SuppressLint("ClickableViewAccessibility")
-        fun onBind(item: QuestSelection) {
-            this.item = item
-            binding.questIcon.setImageResource(item.questType.icon)
-            binding.questTitle.text = genericQuestTitle(binding.questTitle.resources, item.questType)
-
-            binding.visibilityCheckBox.isEnabled = item.isInteractionEnabled
-            binding.dragHandle.isInvisible = !item.isInteractionEnabled
-            itemView.setBackgroundResource(if (item.isInteractionEnabled) R.color.background else R.color.greyed_out)
-
-            if (!item.selected) {
-                binding.questIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.greyed_out))
-            } else {
-                binding.questIcon.clearColorFilter()
-            }
-            binding.visibilityCheckBox.isChecked = item.selected
-            binding.questTitle.isEnabled = item.selected
-
-            val isEnabledInCurrentCountry = viewModel.isQuestEnabledInCurrentCountry(item.questType)
-            binding.disabledText.isGone = isEnabledInCurrentCountry
-            if (!isEnabledInCurrentCountry) {
-                val country = viewModel.currentCountry?.let { Locale("", it).displayCountry } ?: "Atlantis"
-                binding.disabledText.text = binding.disabledText.resources.getString(
-                    R.string.questList_disabled_in_country, country
-                )
-            }
-
+/*
             binding.visibilityCheckBox.setOnClickListener {
                 if (!item.selected && item.questType.defaultDisabledMessage != 0) {
                     AlertDialog.Builder(context)
@@ -173,6 +83,4 @@ class QuestSelectionAdapter(
                 }
                 true
             }
-        }
-    }
-}
+    */
