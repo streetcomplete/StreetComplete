@@ -6,10 +6,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores the geometry of elements. Actually, stores nothing, but delegates the work to
  *  WayGeometryDao and RelationDao. Node geometry is never stored separately, but created
  *  from node position. */
+@Mockable
 class ElementGeometryDao(
     private val nodeDao: NodeDao,
     private val wayGeometryDao: WayGeometryDao,

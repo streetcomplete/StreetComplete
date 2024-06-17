@@ -5,7 +5,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.IS_FORWARD
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.Columns.WAY_ID
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 
+@Mockable
 class WayTrafficFlowDao(private val db: Database) {
 
     fun put(wayId: Long, isForward: Boolean) {

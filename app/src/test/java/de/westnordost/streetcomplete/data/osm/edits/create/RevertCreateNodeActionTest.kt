@@ -8,12 +8,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.elementIdProvider
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.rel
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.math.translate
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.every
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -22,19 +24,22 @@ import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
 
 class RevertCreateNodeActionTest {
+    @Mock
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
     @BeforeTest
     fun setUp() {
-        repos = mock()
-        provider = mock()
+        repos = io.mockative.mock(classOf<MapDataRepository>())
+        provider = elementIdProvider()
     }
 
     @Test
     fun `revert add node`() {
         val node = node(123, LatLon(12.0, 34.0), mapOf("amenity" to "atm"), 1)
-        on(repos.getNode(node.id)).thenReturn(node)
+        every { repos.getNode(node.id) }.returns(node)
+        every { repos.getRelationsForNode(node.id) }.returns(listOf())
+        every { repos.getWaysForNode(node.id) }.returns(listOf())
         val data = RevertCreateNodeAction(node, listOf()).createUpdates(repos, provider)
 
         assertTrue(data.creations.isEmpty())
@@ -46,7 +51,7 @@ class RevertCreateNodeActionTest {
 
     @Test
     fun `conflict when node already deleted`() {
-        on(repos.getNode(1)).thenReturn(null)
+        every { repos.getNode(1) }.returns(null)
 
         assertFailsWith<ConflictException> {
             RevertCreateNodeAction(node(1), listOf()).createUpdates(repos, provider)
@@ -57,9 +62,9 @@ class RevertCreateNodeActionTest {
     fun `conflict when node is now member of a relation`() {
         val node = node(1)
 
-        on(repos.getNode(node.id)).thenReturn(node)
-        on(repos.getWaysForNode(1)).thenReturn(emptyList())
-        on(repos.getRelationsForNode(1)).thenReturn(listOf(rel()))
+        every { repos.getNode(node.id) }.returns(node)
+        every { repos.getWaysForNode(1) }.returns(emptyList())
+        every { repos.getRelationsForNode(1) }.returns(listOf(rel()))
 
         assertFailsWith<ConflictException> {
             RevertCreateNodeAction(node, listOf()).createUpdates(repos, provider)
@@ -70,9 +75,9 @@ class RevertCreateNodeActionTest {
     fun `conflict when node is part of more ways than initially`() {
         val node = node(1)
 
-        on(repos.getNode(node.id)).thenReturn(node)
-        on(repos.getWaysForNode(1)).thenReturn(listOf(way(1), way(2), way(3)))
-        on(repos.getRelationsForNode(1)).thenReturn(emptyList())
+        every { repos.getNode(node.id) }.returns(node)
+        every { repos.getWaysForNode(1) }.returns(listOf(way(1), way(2), way(3)))
+        every { repos.getRelationsForNode(1) }.returns(emptyList())
 
         assertFailsWith<ConflictException> {
             RevertCreateNodeAction(node, listOf(1, 2)).createUpdates(repos, provider)
@@ -84,9 +89,9 @@ class RevertCreateNodeActionTest {
         val node = node(1)
         val movedNode = node.copy(position = node.position.translate(10.0, 0.0))
 
-        on(repos.getNode(1)).thenReturn(movedNode)
-        on(repos.getWaysForNode(1)).thenReturn(emptyList())
-        on(repos.getRelationsForNode(1)).thenReturn(emptyList())
+        every { repos.getNode(1) }.returns(movedNode)
+        every { repos.getWaysForNode(1) }.returns(emptyList())
+        every { repos.getRelationsForNode(1) }.returns(emptyList())
 
         assertFailsWith<ConflictException> {
             RevertCreateNodeAction(node).createUpdates(repos, provider)
@@ -97,9 +102,9 @@ class RevertCreateNodeActionTest {
     fun `conflict when tags changed on node at all`() {
         val node = node(1)
 
-        on(repos.getNode(1)).thenReturn(node.copy(tags = mapOf("different" to "tags")))
-        on(repos.getWaysForNode(1)).thenReturn(emptyList())
-        on(repos.getRelationsForNode(1)).thenReturn(emptyList())
+        every { repos.getNode(1) }.returns(node.copy(tags = mapOf("different" to "tags")))
+        every { repos.getWaysForNode(1) }.returns(emptyList())
+        every { repos.getRelationsForNode(1) }.returns(emptyList())
 
         assertFailsWith<ConflictException> {
             RevertCreateNodeAction(node).createUpdates(repos, provider)
@@ -110,9 +115,9 @@ class RevertCreateNodeActionTest {
     fun `no conflict when node is part of less ways than initially`() {
         val node = node(1)
 
-        on(repos.getNode(node.id)).thenReturn(node)
-        on(repos.getWaysForNode(1)).thenReturn(listOf(way(1)))
-        on(repos.getRelationsForNode(1)).thenReturn(emptyList())
+        every { repos.getNode(node.id) }.returns(node)
+        every { repos.getWaysForNode(1) }.returns(listOf(way(1)))
+        every { repos.getRelationsForNode(1) }.returns(emptyList())
 
         RevertCreateNodeAction(node, listOf(1, 2)).createUpdates(repos, provider)
     }
@@ -124,9 +129,9 @@ class RevertCreateNodeActionTest {
         val way1 = way(1, nodes = listOf(1, 2, 3), timestamp = 0)
         val way2 = way(2, nodes = listOf(4, 1, 6), timestamp = 0)
 
-        on(repos.getNode(node.id)).thenReturn(node)
-        on(repos.getWaysForNode(1)).thenReturn(listOf(way1, way2))
-        on(repos.getRelationsForNode(1)).thenReturn(emptyList())
+        every { repos.getNode(node.id) }.returns(node)
+        every { repos.getWaysForNode(1) }.returns(listOf(way1, way2))
+        every { repos.getRelationsForNode(1) }.returns(emptyList())
 
         val data = RevertCreateNodeAction(node, listOf(1, 2, 3)).createUpdates(repos, provider)
 

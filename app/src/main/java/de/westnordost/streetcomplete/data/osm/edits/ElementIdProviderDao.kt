@@ -9,8 +9,10 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProviderTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Assigns new element ids for ElementEditActions that create new elements */
+@Mockable
 class ElementIdProviderDao(private val db: Database) {
 
     fun assign(editId: Long, nodeCount: Int, wayCount: Int, relationCount: Int) {

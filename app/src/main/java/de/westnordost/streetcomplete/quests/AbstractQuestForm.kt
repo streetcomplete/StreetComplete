@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractBottomSheetFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast

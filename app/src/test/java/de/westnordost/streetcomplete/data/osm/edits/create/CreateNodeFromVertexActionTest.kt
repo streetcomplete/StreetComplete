@@ -9,32 +9,36 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.elementIdProvider
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.math.translate
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 internal class CreateNodeFromVertexActionTest {
+    @Mock
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
     @BeforeTest
     fun setUp() {
-        repos = mock()
-        provider = mock()
+        repos = mock(classOf<MapDataRepository>())
+        provider = elementIdProvider()
     }
 
     @Test
     fun `conflict when node position changed`() {
         val n = node()
         val n2 = n.copy(position = n.position.translate(1.0, 0.0)) // moved by 1 meter
-        on(repos.getNode(n.id)).thenReturn(n2)
-        on(repos.getWaysForNode(n.id)).thenReturn(listOf())
+        every { repos.getNode(n.id) }.returns(n2)
+        every { repos.getWaysForNode(n.id) }.returns(listOf())
 
         assertFailsWith<ConflictException> {
             CreateNodeFromVertexAction(n, StringMapChanges(listOf()), listOf())
@@ -45,8 +49,8 @@ internal class CreateNodeFromVertexActionTest {
     @Test
     fun `conflict when node is not part of exactly the same ways as before`() {
         val n = node()
-        on(repos.getNode(n.id)).thenReturn(n)
-        on(repos.getWaysForNode(n.id)).thenReturn(listOf(way(1), way(2)))
+        every { repos.getNode(n.id) }.returns(n)
+        every { repos.getWaysForNode(n.id) }.returns(listOf(way(1), way(2)))
 
         assertFailsWith<ConflictException> {
             CreateNodeFromVertexAction(n, StringMapChanges(listOf()), listOf(1L))
@@ -57,8 +61,8 @@ internal class CreateNodeFromVertexActionTest {
     @Test
     fun `create updates`() {
         val n = node()
-        on(repos.getNode(n.id)).thenReturn(n)
-        on(repos.getWaysForNode(n.id)).thenReturn(listOf(way(1), way(2)))
+        every { repos.getNode(n.id) }.returns(n)
+        every { repos.getWaysForNode(n.id) }.returns(listOf(way(1), way(2)))
 
         val changes = StringMapChanges(listOf(StringMapEntryAdd("a", "b")))
 

@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
+@Mockable
 class LastEditTimeStore(private val prefs: ObservableSettings) {
 
     fun touch() {

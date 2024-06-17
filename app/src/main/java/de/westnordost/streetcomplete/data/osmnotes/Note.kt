@@ -2,9 +2,11 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.User
+import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.serialization.Serializable
 
 @Serializable
+@Mockable
 data class Note(
     val position: LatLon,
     val id: Long,

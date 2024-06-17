@@ -5,8 +5,10 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Co
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.Columns.VISIBILITY
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores which quest types are visible by user selection and which are not */
+@Mockable
 class VisibleQuestTypeDao(private val db: Database) {
 
     fun put(presetId: Long, questTypeName: String, visible: Boolean) {

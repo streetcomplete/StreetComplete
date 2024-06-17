@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.osmapi.user.UserApi
 import de.westnordost.osmapi.user.UserInfo
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respondError
@@ -11,6 +9,10 @@ import io.ktor.client.engine.mock.respondOk
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.utils.io.errors.IOException
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlinx.coroutines.runBlocking
 import java.nio.file.Files
 import kotlin.test.BeforeTest
@@ -24,13 +26,13 @@ class AvatarsDownloaderTest {
         else -> respondOk("Image Content")
     } }
     private val tempFolder = Files.createTempDirectory("images").toFile()
-    private val userApi: UserApi = mock()
+    @Mock private val userApi: UserApi = mock(classOf<UserApi>())
     private val downloader = AvatarsDownloader(HttpClient(mockEngine), userApi, tempFolder)
     private val userInfo = UserInfo(100, "Map Enthusiast 530")
 
     @BeforeTest fun setUp() {
         userInfo.profileImageUrl = "http://example.com/BigImage.png"
-        on(userApi.get(userInfo.id)).thenReturn(userInfo)
+        every { userApi.get(userInfo.id) }.returns(userInfo)
     }
 
     @Test

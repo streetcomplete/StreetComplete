@@ -4,11 +4,14 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.elementIdProvider
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.util.ktx.copy
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -16,19 +19,21 @@ import kotlin.test.assertTrue
 
 class RevertMoveNodeActionTest {
 
+    @Mock
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
-    @BeforeTest fun setUp() {
-        repos = mock()
-        provider = mock()
+    @BeforeTest
+    fun setUp() {
+        repos = mock(classOf<MapDataRepository>())
+        provider = elementIdProvider()
     }
 
     @Test fun unmoveIt() {
         val n = node()
         val p = p(0.0, 1.0)
         val movedNode = n.copy(position = p)
-        on(repos.getNode(n.id)).thenReturn(movedNode)
+        every { repos.getNode(n.id) }.returns(movedNode)
         val updates = RevertMoveNodeAction(n).createUpdates(repos, provider)
         assertTrue(updates.creations.isEmpty())
         assertTrue(updates.deletions.isEmpty())

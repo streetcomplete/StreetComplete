@@ -5,8 +5,10 @@ import android.content.Context
 import android.os.Build
 import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.isPackageInstalled
 
+@Mockable
 class ArSupportChecker(private val context: Context) {
     operator fun invoke(): Boolean = hasArMeasureSupport(context)
 }

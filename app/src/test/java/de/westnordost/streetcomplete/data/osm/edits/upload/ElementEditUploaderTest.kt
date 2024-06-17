@@ -2,78 +2,83 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.any
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
-import org.mockito.ArgumentMatchers.anyBoolean
-import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.doThrow
+import de.westnordost.streetcomplete.testutils.edit
+import de.westnordost.streetcomplete.testutils.elementIdProvider
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
 
 class ElementEditUploaderTest {
 
-    private lateinit var changesetManager: OpenChangesetsManager
-    private lateinit var mapDataApi: MapDataApi
-    private lateinit var mapDataController: MapDataController
+    @Mock private lateinit var changesetManager: OpenChangesetsManager
+    @Mock private lateinit var mapDataApi: MapDataApi
+    @Mock private lateinit var mapDataController: MapDataController
     private lateinit var uploader: ElementEditUploader
 
+    // dummy
+    @Mock val action: ElementEditAction = mock(classOf<ElementEditAction>())
+
     @BeforeTest fun setUp() {
-        changesetManager = mock()
-        mapDataApi = mock()
-        mapDataController = mock()
+        changesetManager = mock(classOf<OpenChangesetsManager>())
+        mapDataApi = mock(classOf<MapDataApi>())
+        mapDataController = mock(classOf<MapDataController>())
 
         uploader = ElementEditUploader(changesetManager, mapDataApi, mapDataController)
     }
 
     @Test
     fun `passes on conflict exception`() {
-        val edit: ElementEdit = mock()
-        val action: ElementEditAction = mock()
-        on(edit.action).thenReturn(action)
-        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
-        on(mapDataApi.uploadChanges(anyLong(), any(), any())).thenThrow(ConflictException())
+        val action: ElementEditAction = mock(classOf<ElementEditAction>())
+        val edit: ElementEdit = edit(action = action)
+        every { changesetManager.getOrCreateChangeset(any(), any(), any(), any()) }.returns(1)
+        every { changesetManager.createChangeset(any(), any(), any()) }.returns(1)
+        every { action.createUpdates(any(), any()) }.returns(MapDataChanges())
+        every { mapDataApi.uploadChanges(any(), any(), any()) }.throws(ConflictException())
 
         assertFailsWith<ConflictException> {
-            uploader.upload(edit, { mock() })
+            uploader.upload(edit, { elementIdProvider() })
         }
     }
 
     @Test
     fun `passes on element conflict exception`() {
-        val edit: ElementEdit = mock()
-        val action: ElementEditAction = mock()
-        on(edit.action).thenReturn(action)
-        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
+        val action: ElementEditAction = mock(classOf<ElementEditAction>())
+        val edit: ElementEdit = edit(action = action)
+        every { action.createUpdates(any(), any()) }.returns(MapDataChanges())
 
-        on(changesetManager.getOrCreateChangeset(any(), any(), any(), anyBoolean())).thenReturn(1)
-        on(changesetManager.createChangeset(any(), any(), any())).thenReturn(1)
-        on(mapDataApi.uploadChanges(anyLong(), any(), any()))
-            .thenThrow(ConflictException())
+        every { changesetManager.getOrCreateChangeset(any(), any(), any(), any()) }.returns(1)
+        every { changesetManager.createChangeset(any(), any(), any()) }.returns(1)
+        every { mapDataApi.uploadChanges(any(), any(), any()) }
+            .throws(ConflictException())
 
         assertFailsWith<ConflictException> {
-            uploader.upload(edit, { mock() })
+            uploader.upload(edit, { elementIdProvider() })
         }
     }
 
     @Test fun `handles changeset conflict exception`() {
-        val edit: ElementEdit = mock()
-        val action: ElementEditAction = mock()
-        on(edit.action).thenReturn(action)
-        on(action.createUpdates(any(), any())).thenReturn(MapDataChanges())
 
-        on(changesetManager.getOrCreateChangeset(any(), any(), any(), anyBoolean())).thenReturn(1)
-        on(changesetManager.createChangeset(any(), any(), any())).thenReturn(1)
-        doThrow(ConflictException()).doAnswer { MapDataUpdates() }
-            .on(mapDataApi).uploadChanges(anyLong(), any(), any())
+        val action: ElementEditAction = mock(classOf<ElementEditAction>())
+        val edit: ElementEdit = edit(action = action)
+        every { action.createUpdates(any(), any()) }.returns(MapDataChanges())
 
-        uploader.upload(edit, { mock() })
+        every { changesetManager.getOrCreateChangeset(any(), any(), any(), any()) }.returns(1)
+        every { changesetManager.createChangeset(any(), any(), any()) }.returns(1)
+        every { mapDataApi.uploadChanges(any(), any(), any()) }.throwsMany(ConflictException(), ConflictException())
+        every { mapDataApi.uploadChanges(any(), any(), any()) }.returns(MapDataUpdates())
+
+        uploader.upload(edit, { elementIdProvider() })
     }
 }

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.testutils
 
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -157,3 +158,5 @@ fun osmQuestKey(
 ) = OsmQuestKey(elementType, elementId, questTypeName)
 
 val QUEST_TYPE = TestQuestTypeA()
+
+fun elementIdProvider() = ElementIdProvider(emptyList())

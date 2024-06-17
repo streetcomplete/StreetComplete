@@ -6,15 +6,19 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryMo
 import de.westnordost.streetcomplete.osm.LengthInMeters
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.testutils.way
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.mock
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class AddRoadWidthTest {
-    private val quest = AddRoadWidth(mock())
+    @Mock private val arCheck: ArSupportChecker = mock(classOf<ArSupportChecker>())
+    private val quest = AddRoadWidth(arCheck)
 
     @Test fun `is applicable to residential roads if speed below 33`() {
         assertTrue(quest.isApplicableTo(way(tags = mapOf(

@@ -10,8 +10,10 @@ import de.westnordost.streetcomplete.data.osm.geometry.WayGeometryTable.Columns.
 import de.westnordost.streetcomplete.data.osm.geometry.WayGeometryTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores the geometry of ways */
+@Mockable
 class WayGeometryDao(
     private val db: Database,
     private val polylinesSerializer: PolylinesSerializer,

@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Provides stable element ids for the creation of new elements */
+@Mockable
 class ElementIdProvider(elementKeys: Collection<ElementKey>) {
     private val nodeIds: MutableList<Long>
     private val wayIds: MutableList<Long>

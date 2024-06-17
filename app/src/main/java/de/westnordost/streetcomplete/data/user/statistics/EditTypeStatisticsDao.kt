@@ -4,8 +4,10 @@ import de.westnordost.streetcomplete.data.CursorPosition
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables.Columns.ELEMENT_EDIT_TYPE
 import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTables.Columns.SUCCEEDED
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores how many edits of which element type the user did */
+@Mockable
 class EditTypeStatisticsDao(private val db: Database, private val name: String) {
 
     fun getTotalAmount(): Int =

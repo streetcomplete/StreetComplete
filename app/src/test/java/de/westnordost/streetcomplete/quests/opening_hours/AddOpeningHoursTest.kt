@@ -6,24 +6,28 @@ import de.westnordost.osm_opening_hours.model.Range
 import de.westnordost.osm_opening_hours.model.Rule
 import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.Weekday
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
-import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
+import io.mockative.Mock
+import io.mockative.classOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class AddOpeningHoursTest {
+    @Mock
+    private val feature: Feature = io.mockative.mock(classOf<Feature>())
 
-    private val questType = AddOpeningHours(mock())
+    private val questType = AddOpeningHours { _ -> feature }
 
     @Test fun `apply description answer`() {
         assertEquals(

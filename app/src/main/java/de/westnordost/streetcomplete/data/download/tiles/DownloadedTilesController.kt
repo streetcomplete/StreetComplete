@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.data.download.tiles
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
+@Mockable
 class DownloadedTilesController(
     private val dao: DownloadedTilesDao
 ) : DownloadedTilesSource {

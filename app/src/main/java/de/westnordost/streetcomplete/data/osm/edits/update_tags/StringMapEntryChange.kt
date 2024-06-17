@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
+import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -15,6 +16,7 @@ sealed class StringMapEntryChange {
 }
 
 @Serializable
+@Mockable
 data class StringMapEntryAdd(override val key: String, val value: String) : StringMapEntryChange() {
 
     override fun toString() = "ADD \"$key\"=\"$value\""
@@ -25,6 +27,7 @@ data class StringMapEntryAdd(override val key: String, val value: String) : Stri
 }
 
 @Serializable
+@Mockable
 data class StringMapEntryModify(override val key: String, val valueBefore: String, val value: String) : StringMapEntryChange() {
 
     override fun toString() = "MODIFY \"$key\"=\"$valueBefore\" -> \"$key\"=\"$value\""
@@ -35,6 +38,7 @@ data class StringMapEntryModify(override val key: String, val valueBefore: Strin
 }
 
 @Serializable
+@Mockable
 data class StringMapEntryDelete(override val key: String, val valueBefore: String) : StringMapEntryChange() {
 
     override fun toString() = "DELETE \"$key\"=\"$valueBefore\""

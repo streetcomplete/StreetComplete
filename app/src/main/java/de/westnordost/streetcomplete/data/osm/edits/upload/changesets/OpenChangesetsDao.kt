@@ -9,8 +9,10 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChange
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.Columns.SOURCE
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Keep track of changesets and the date of the last change that has been made to them  */
+@Mockable
 class OpenChangesetsDao(private val db: Database) {
 
     fun getAll(): Collection<OpenChangeset> =

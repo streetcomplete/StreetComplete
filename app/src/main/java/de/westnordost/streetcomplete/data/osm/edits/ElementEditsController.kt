@@ -5,9 +5,11 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 
+@Mockable
 class ElementEditsController(
     private val editsDB: ElementEditsDao,
     private val editElementsDB: EditElementsDao,

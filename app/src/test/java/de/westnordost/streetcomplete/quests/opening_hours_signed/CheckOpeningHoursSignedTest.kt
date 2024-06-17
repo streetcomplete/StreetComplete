@@ -1,19 +1,24 @@
 package de.westnordost.streetcomplete.quests.opening_hours_signed
 
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.answerAppliedTo
-import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
+import io.mockative.Mock
+import io.mockative.classOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CheckOpeningHoursSignedTest {
-    private val questType = CheckOpeningHoursSigned(mock())
+    @Mock
+    private val feature: Feature = io.mockative.mock(classOf<Feature>())
+
+    private val questType = CheckOpeningHoursSigned { _ -> feature }
 
     @Test fun `is applicable to old place`() {
         assertTrue(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(

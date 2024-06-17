@@ -5,10 +5,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.elementIdProvider
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.way
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -19,18 +23,20 @@ class DeletePoiNodeActionTest {
 
     private val e = node(1, tags = mutableMapOf("amenity" to "atm"), version = 2)
 
+    @Mock
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
-    @BeforeTest fun setUp() {
-        repos = mock()
-        provider = mock()
+    @BeforeTest
+    fun setUp() {
+        repos = mock(classOf<MapDataRepository>())
+        provider = elementIdProvider()
     }
 
     @Test fun `delete free-floating node`() {
-        on(repos.getWaysForNode(1L)).thenReturn(emptyList())
-        on(repos.getRelationsForNode(1L)).thenReturn(emptyList())
-        on(repos.getNode(e.id)).thenReturn(e)
+        every { repos.getWaysForNode(1L) }.returns(emptyList())
+        every { repos.getRelationsForNode(1L) }.returns(emptyList())
+        every { repos.getNode(e.id) }.returns(e)
         val data = DeletePoiNodeAction(e).createUpdates(repos, provider)
         assertTrue(data.modifications.isEmpty())
         assertTrue(data.creations.isEmpty())
@@ -38,9 +44,9 @@ class DeletePoiNodeActionTest {
     }
 
     @Test fun `'delete' vertex`() {
-        on(repos.getWaysForNode(1L)).thenReturn(listOf(mock()))
-        on(repos.getRelationsForNode(1L)).thenReturn(emptyList())
-        on(repos.getNode(e.id)).thenReturn(e)
+        every { repos.getWaysForNode(1L) }.returns(listOf(way()))
+        every { repos.getRelationsForNode(1L) }.returns(emptyList())
+        every { repos.getNode(e.id) }.returns(e)
         val data = DeletePoiNodeAction(e).createUpdates(repos, provider)
         assertTrue(data.deletions.isEmpty())
         assertTrue(data.creations.isEmpty())
@@ -49,7 +55,7 @@ class DeletePoiNodeActionTest {
 
     @Test
     fun `moved element creates conflict`() {
-        on(repos.getNode(e.id)).thenReturn(e.copy(position = p(1.0, 1.0)))
+        every { repos.getNode(e.id) }.returns(e.copy(position = p(1.0, 1.0)))
 
         assertFailsWith<ConflictException> {
             DeletePoiNodeAction(e).createUpdates(repos, provider)

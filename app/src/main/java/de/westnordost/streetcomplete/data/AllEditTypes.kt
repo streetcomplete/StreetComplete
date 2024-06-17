@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.data
 
 import de.westnordost.streetcomplete.data.osm.edits.EditType
+import de.westnordost.streetcomplete.util.Mockable
 
+@Mockable
 class AllEditTypes(
     registries: List<ObjectTypeRegistry<out EditType>>
 ) : AbstractCollection<EditType>() {

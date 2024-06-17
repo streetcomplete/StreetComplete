@@ -5,10 +5,12 @@ import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
 import com.charleskorn.kaml.decodeFromStream
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.util.Mockable
 import java.io.File
 import java.io.SequenceInputStream
 
-class CountryInfos(private val assetManager: AssetManager) {
+@Mockable
+class CountryInfos(private val assetManager: AssetAccess) {
     private val yaml = Yaml(configuration = YamlConfiguration(
         strictMode = false, // ignore unknown properties
     ))

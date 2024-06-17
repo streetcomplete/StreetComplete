@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.download.ConnectionException
+import de.westnordost.streetcomplete.util.Mockable
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.header
@@ -27,6 +28,7 @@ private data class PhotoUploadResponse(
 /** Upload and activate a list of image paths to an instance of the
  * <a href="https://github.com/streetcomplete/sc-photo-service">StreetComplete image hosting service</a>
  */
+@Mockable
 class StreetCompleteImageUploader(
     private val httpClient: HttpClient,
     private val baseUrl: String

@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
+@Mockable
 sealed class Element {
     abstract val id: Long
     abstract val version: Int

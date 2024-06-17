@@ -5,10 +5,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.elementIdProvider
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.util.ktx.copy
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -18,16 +21,18 @@ class RevertDeletePoiNodeActionTest {
 
     private val e = node(1, tags = mutableMapOf("amenity" to "atm"), version = 2)
 
+    @Mock
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
     @BeforeTest
     fun setUp() {
-        repos = mock()
-        provider = mock()
+        repos = mock(classOf<MapDataRepository>())
+        provider = elementIdProvider()
     }
 
     @Test fun `restore deleted element`() {
+        every { repos.getNode(1) }.returns(e.copy(version = 3))
         assertEquals(
             e.copy(
                 version = 3,
@@ -40,7 +45,7 @@ class RevertDeletePoiNodeActionTest {
     }
 
     @Test fun `restore element with cleared tags`() {
-        on(repos.getNode(1)).thenReturn(e.copy(version = 3))
+        every { repos.getNode(1) }.returns(e.copy(version = 3))
         assertEquals(
             e.copy(
                 version = 3,
@@ -54,7 +59,7 @@ class RevertDeletePoiNodeActionTest {
 
     @Test
     fun `conflict if there is already a newer version`() {
-        on(repos.getNode(1)).thenReturn(e.copy(version = 4))
+        every { repos.getNode(1) }.returns(e.copy(version = 4))
 
         assertFailsWith<ConflictException> {
             // version 3 would be the deletion

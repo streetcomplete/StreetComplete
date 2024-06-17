@@ -5,8 +5,10 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTables.Columns.COUNTRY_CODE
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTables.Columns.RANK
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTables.Columns.SUCCEEDED
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores how many quests the user solved in which country */
+@Mockable
 class CountryStatisticsDao(private val db: Database, private val name: String) {
 
     fun getCountryWithBiggestSolvedCount(): CountryStatistics? =

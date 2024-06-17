@@ -3,17 +3,22 @@ package de.westnordost.streetcomplete.osm
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit
-import de.westnordost.streetcomplete.testutils.any
-import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class MaxspeedKtTest {
+    @Mock val countryInfos: CountryInfos = mock(classOf<CountryInfos>())
+
     @Test fun `get maxspeed`() {
         assertEquals(null, getMaxspeedInKmh(mapOf()))
         assertEquals(null, getMaxspeedInKmh(mapOf("unrelated" to "string")))
@@ -40,10 +45,10 @@ class MaxspeedKtTest {
     }
 
     @Test fun `guess maxspeed mph zone`() {
-        val countryInfos: CountryInfos = mock()
-        val countryInfo: CountryInfo = mock()
-        on(countryInfo.speedUnits).thenReturn(listOf(SpeedMeasurementUnit.MILES_PER_HOUR))
-        on(countryInfos.get(any())).thenReturn(countryInfo)
+        val countryInfos: CountryInfos = mock(classOf<CountryInfos>())
+        val countryInfo = CountryInfo(listOf(IncompleteCountryInfo("a", speedUnits = listOf(SpeedMeasurementUnit.MILES_PER_HOUR))))
+
+        every { countryInfos.get(any()) }.returns(countryInfo)
 
         assertEquals(32.18688f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:zone:20"), countryInfos)!!, 0.1f)
         assertEquals(48.28032f, guessMaxspeedInKmh(mapOf("maxspeed:type" to "DE:zone30"), countryInfos)!!, 0.1f)

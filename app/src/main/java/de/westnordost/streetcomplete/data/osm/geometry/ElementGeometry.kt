@@ -2,12 +2,14 @@ package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /** Information on the geometry of a quest  */
 @Serializable
+@Mockable
 sealed class ElementGeometry {
     abstract val center: LatLon
     // the bbox should not be serialized, his is why the bounds cannot be a (computed) property directly

@@ -1,66 +1,69 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import de.westnordost.streetcomplete.testutils.any
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
-import org.mockito.Mockito.verify
+import de.westnordost.streetcomplete.testutils.verifyInvokedExactlyOnce
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class QuestPresetControllerTest {
 
-    private lateinit var questPresetsDao: QuestPresetsDao
-    private lateinit var selectedQuestPresetStore: SelectedQuestPresetStore
+    @Mock private lateinit var questPresetsDao: QuestPresetsDao
+    @Mock private lateinit var selectedQuestPresetStore: SelectedQuestPresetStore
     private lateinit var ctrl: QuestPresetsController
-    private lateinit var listener: QuestPresetsSource.Listener
+    @Mock private lateinit var listener: QuestPresetsSource.Listener
 
     private val preset = QuestPreset(1, "test")
 
     @BeforeTest fun setUp() {
-        questPresetsDao = mock()
-        selectedQuestPresetStore = mock()
+        questPresetsDao = mock(classOf<QuestPresetsDao>())
+        selectedQuestPresetStore = mock(classOf<SelectedQuestPresetStore>())
         ctrl = QuestPresetsController(questPresetsDao, selectedQuestPresetStore)
 
-        listener = mock()
+        listener = mock(classOf<QuestPresetsSource.Listener>())
         ctrl.addListener(listener)
     }
 
     @Test fun get() {
-        on(questPresetsDao.getName(1)).thenReturn("huhu")
-        on(selectedQuestPresetStore.get()).thenReturn(1)
+every { questPresetsDao.getName(1) }.returns("huhu")
+every { selectedQuestPresetStore.get() }.returns(1)
         assertEquals("huhu", ctrl.selectedQuestPresetName)
     }
 
     @Test fun getAll() {
-        on(questPresetsDao.getAll()).thenReturn(listOf(preset))
+every { questPresetsDao.getAll() }.returns(listOf(preset))
         assertEquals(listOf(preset), ctrl.getAll())
     }
 
     @Test fun add() {
-        on(questPresetsDao.add(any())).thenReturn(123)
+every { questPresetsDao.add(any()) }.returns(123)
         ctrl.add("test")
-        verify(questPresetsDao).add("test")
-        verify(listener).onAddedQuestPreset(QuestPreset(123, "test"))
+verifyInvokedExactlyOnce { questPresetsDao.add("test") }
+verifyInvokedExactlyOnce { listener.onAddedQuestPreset(QuestPreset(123, "test")) }
     }
 
     @Test fun delete() {
+        every { selectedQuestPresetStore.get() }.returns(123)
         ctrl.delete(123)
-        verify(questPresetsDao).delete(123)
-        verify(listener).onDeletedQuestPreset(123)
+verifyInvokedExactlyOnce { questPresetsDao.delete(123) }
+verifyInvokedExactlyOnce { listener.onDeletedQuestPreset(123) }
     }
 
     @Test fun `delete current preset switches to preset 0`() {
-        on(ctrl.selectedId).thenReturn(55)
+every { ctrl.selectedId }.returns(55)
         ctrl.delete(55)
-        verify(questPresetsDao).delete(55)
-        verify(listener).onDeletedQuestPreset(55)
-        verify(selectedQuestPresetStore).set(0)
+verifyInvokedExactlyOnce { questPresetsDao.delete(55) }
+verifyInvokedExactlyOnce { listener.onDeletedQuestPreset(55) }
+verifyInvokedExactlyOnce { selectedQuestPresetStore.set(0) }
     }
 
     @Test fun `change current preset`() {
         ctrl.selectedId = 11
-        verify(selectedQuestPresetStore).set(11)
-        verify(listener).onSelectedQuestPresetChanged()
+verifyInvokedExactlyOnce { selectedQuestPresetStore.set(11) }
+verifyInvokedExactlyOnce { listener.onSelectedQuestPresetChanged() }
     }
 }

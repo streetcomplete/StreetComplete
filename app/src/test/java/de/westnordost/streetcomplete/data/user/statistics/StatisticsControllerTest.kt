@@ -4,48 +4,50 @@ import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
-import de.westnordost.streetcomplete.testutils.any
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.verifyInvokedExactlyOnce
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlinx.datetime.LocalDate
-import org.mockito.ArgumentMatchers.anyDouble
-import org.mockito.Mockito.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class StatisticsControllerTest {
 
-    private lateinit var editTypeStatisticsDao: EditTypeStatisticsDao
-    private lateinit var countryStatisticsDao: CountryStatisticsDao
-    private lateinit var currentWeekEditTypeStatisticsDao: EditTypeStatisticsDao
-    private lateinit var currentWeekCountryStatisticsDao: CountryStatisticsDao
-    private lateinit var activeDatesDao: ActiveDatesDao
+    @Mock private lateinit var editTypeStatisticsDao: EditTypeStatisticsDao
+    @Mock private lateinit var countryStatisticsDao: CountryStatisticsDao
+    @Mock private lateinit var currentWeekEditTypeStatisticsDao: EditTypeStatisticsDao
+    @Mock private lateinit var currentWeekCountryStatisticsDao: CountryStatisticsDao
+    @Mock private lateinit var activeDatesDao: ActiveDatesDao
+    // todo: not mockable because it's from a library
     private lateinit var countryBoundaries: CountryBoundaries
-    private lateinit var prefs: ObservableSettings
-    private lateinit var loginStatusSource: UserLoginStatusSource
-    private lateinit var loginStatusListener: UserLoginStatusSource.Listener
+    @Mock private lateinit var prefs: ObservableSettings
+    @Mock private lateinit var loginStatusSource: UserLoginStatusSource
+    @Mock  private lateinit var loginStatusListener: UserLoginStatusSource.Listener
 
     private lateinit var statisticsController: StatisticsController
-    private lateinit var listener: StatisticsSource.Listener
+    @Mock private lateinit var listener: StatisticsSource.Listener
 
     private val questA = "TestQuestTypeA"
     private val questB = "TestQuestTypeB"
 
     @BeforeTest fun setUp() {
-        editTypeStatisticsDao = mock()
-        countryStatisticsDao = mock()
-        currentWeekEditTypeStatisticsDao = mock()
-        currentWeekCountryStatisticsDao = mock()
-        activeDatesDao = mock()
-        countryBoundaries = mock()
-        prefs = mock()
-        listener = mock()
-        loginStatusSource = mock()
+        editTypeStatisticsDao = mock(classOf<EditTypeStatisticsDao>())
+        countryStatisticsDao = mock(classOf<CountryStatisticsDao>())
+        currentWeekEditTypeStatisticsDao = mock(classOf<EditTypeStatisticsDao>())
+        currentWeekCountryStatisticsDao = mock(classOf<CountryStatisticsDao>())
+        activeDatesDao = mock(classOf<ActiveDatesDao>())
+        countryBoundaries = mock(classOf<CountryBoundaries>())
+        prefs = mock(classOf<ObservableSettings>())
+        listener = mock(classOf<StatisticsSource.Listener>())
+        loginStatusSource = mock(classOf<UserLoginStatusSource>())
 
-        on(loginStatusSource.addListener(any())).then { invocation ->
-            loginStatusListener = invocation.getArgument(0)
+        every { loginStatusSource.addListener(any()) }.invokes { arguments ->
+            loginStatusListener = arguments[0] as UserLoginStatusSource.Listener
             Unit
         }
 
@@ -59,7 +61,7 @@ class StatisticsControllerTest {
     }
 
     @Test fun getSolvedCount() {
-        on(editTypeStatisticsDao.getTotalAmount()).thenReturn(5)
+        every { editTypeStatisticsDao.getTotalAmount() }.returns(5)
         assertEquals(
             5,
             statisticsController.getEditCount()
@@ -67,67 +69,67 @@ class StatisticsControllerTest {
     }
 
     @Test fun `adding one`() {
-        on(countryBoundaries.getIds(anyDouble(), anyDouble())).thenReturn(listOf("US-TX", "US", "World"))
+        every { countryBoundaries.getIds(any(), any()) }.returns(listOf("US-TX", "US", "World"))
         statisticsController.addOne(questA, p(0.0, 0.0))
 
-        verify(editTypeStatisticsDao).addOne("TestQuestTypeA")
-        verify(countryStatisticsDao).addOne("US")
-        verify(currentWeekEditTypeStatisticsDao).addOne("TestQuestTypeA")
-        verify(currentWeekCountryStatisticsDao).addOne("US")
-        verify(activeDatesDao).addToday()
-        verify(listener).onAddedOne(questA)
+        verifyInvokedExactlyOnce { editTypeStatisticsDao.addOne("TestQuestTypeA") }
+        verifyInvokedExactlyOnce { countryStatisticsDao.addOne("US") }
+        verifyInvokedExactlyOnce { currentWeekEditTypeStatisticsDao.addOne("TestQuestTypeA") }
+        verifyInvokedExactlyOnce { currentWeekCountryStatisticsDao.addOne("US") }
+        verifyInvokedExactlyOnce { activeDatesDao.addToday() }
+        verifyInvokedExactlyOnce { listener.onAddedOne(questA) }
     }
 
     @Test fun `adding one one day later`() {
-        on(prefs.getInt(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0)).thenReturn(0)
+        every { prefs.getInt(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0) }.returns(0)
 
         statisticsController.addOne(questA, p(0.0, 0.0))
 
-        verify(editTypeStatisticsDao).addOne("TestQuestTypeA")
-        verify(currentWeekEditTypeStatisticsDao).addOne("TestQuestTypeA")
-        verify(activeDatesDao).addToday()
-        verify(listener).onAddedOne(questA)
-        verify(listener).onUpdatedDaysActive()
+        verifyInvokedExactlyOnce { editTypeStatisticsDao.addOne("TestQuestTypeA") }
+        verifyInvokedExactlyOnce { currentWeekEditTypeStatisticsDao.addOne("TestQuestTypeA") }
+        verifyInvokedExactlyOnce { activeDatesDao.addToday() }
+        verifyInvokedExactlyOnce { listener.onAddedOne(questA) }
+        verifyInvokedExactlyOnce { listener.onUpdatedDaysActive() }
     }
 
     @Test fun `subtracting one`() {
-        on(countryBoundaries.getIds(anyDouble(), anyDouble())).thenReturn(listOf("US-TX", "US", "World"))
+        every { countryBoundaries.getIds(any(), any()) }.returns(listOf("US-TX", "US", "World"))
         statisticsController.subtractOne(questA, p(0.0, 0.0))
 
-        verify(editTypeStatisticsDao).subtractOne("TestQuestTypeA")
-        verify(countryStatisticsDao).subtractOne("US")
-        verify(currentWeekEditTypeStatisticsDao).subtractOne("TestQuestTypeA")
-        verify(currentWeekCountryStatisticsDao).subtractOne("US")
-        verify(activeDatesDao).addToday()
-        verify(listener).onSubtractedOne(questA)
+        verifyInvokedExactlyOnce { editTypeStatisticsDao.subtractOne("TestQuestTypeA") }
+        verifyInvokedExactlyOnce { countryStatisticsDao.subtractOne("US") }
+        verifyInvokedExactlyOnce { currentWeekEditTypeStatisticsDao.subtractOne("TestQuestTypeA") }
+        verifyInvokedExactlyOnce { currentWeekCountryStatisticsDao.subtractOne("US") }
+        verifyInvokedExactlyOnce { activeDatesDao.addToday() }
+        verifyInvokedExactlyOnce { listener.onSubtractedOne(questA) }
     }
 
     @Test fun `subtracting one one day later`() {
-        on(prefs.getInt(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0)).thenReturn(0)
+        every { prefs.getInt(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0) }.returns(0)
 
         statisticsController.subtractOne(questA, p(0.0, 0.0))
 
-        verify(editTypeStatisticsDao).subtractOne("TestQuestTypeA")
-        verify(currentWeekEditTypeStatisticsDao).subtractOne("TestQuestTypeA")
-        verify(activeDatesDao).addToday()
-        verify(listener).onSubtractedOne(questA)
-        verify(listener).onUpdatedDaysActive()
+        verifyInvokedExactlyOnce { editTypeStatisticsDao.subtractOne("TestQuestTypeA") }
+        verifyInvokedExactlyOnce { currentWeekEditTypeStatisticsDao.subtractOne("TestQuestTypeA") }
+        verifyInvokedExactlyOnce { activeDatesDao.addToday() }
+        verifyInvokedExactlyOnce { listener.onSubtractedOne(questA) }
+        verifyInvokedExactlyOnce { listener.onUpdatedDaysActive() }
     }
 
     @Test fun `clear all`() {
         loginStatusListener.onLoggedOut()
 
-        verify(editTypeStatisticsDao).clear()
-        verify(countryStatisticsDao).clear()
-        verify(currentWeekCountryStatisticsDao).clear()
-        verify(currentWeekEditTypeStatisticsDao).clear()
-        verify(activeDatesDao).clear()
-        verify(prefs).remove(Prefs.USER_DAYS_ACTIVE)
-        verify(prefs).remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
-        verify(prefs).remove(Prefs.USER_GLOBAL_RANK)
-        verify(prefs).remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
-        verify(prefs).remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
-        verify(listener).onCleared()
+        verifyInvokedExactlyOnce { editTypeStatisticsDao.clear() }
+        verifyInvokedExactlyOnce { countryStatisticsDao.clear() }
+        verifyInvokedExactlyOnce { currentWeekCountryStatisticsDao.clear() }
+        verifyInvokedExactlyOnce { currentWeekEditTypeStatisticsDao.clear() }
+        verifyInvokedExactlyOnce { activeDatesDao.clear() }
+        verifyInvokedExactlyOnce { prefs.remove(Prefs.USER_DAYS_ACTIVE) }
+        verifyInvokedExactlyOnce { prefs.remove(Prefs.IS_SYNCHRONIZING_STATISTICS) }
+        verifyInvokedExactlyOnce { prefs.remove(Prefs.USER_GLOBAL_RANK) }
+        verifyInvokedExactlyOnce { prefs.remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK) }
+        verifyInvokedExactlyOnce { prefs.remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE) }
+        verifyInvokedExactlyOnce { listener.onCleared() }
     }
 
     @Test fun `update all`() {
@@ -159,32 +161,32 @@ class StatisticsControllerTest {
             lastUpdate = 9999999,
             isAnalyzing = false
         ))
-        verify(editTypeStatisticsDao).replaceAll(mapOf(
+        verifyInvokedExactlyOnce { editTypeStatisticsDao.replaceAll(mapOf(
             "TestQuestTypeA" to 123,
             "TestQuestTypeB" to 44
-        ))
-        verify(countryStatisticsDao).replaceAll(listOf(
+        )) }
+        verifyInvokedExactlyOnce { countryStatisticsDao.replaceAll(listOf(
             CountryStatistics("DE", 12, 5),
             CountryStatistics("US", 43, null),
-        ))
-        verify(currentWeekEditTypeStatisticsDao).replaceAll(mapOf(
+        )) }
+        verifyInvokedExactlyOnce { currentWeekEditTypeStatisticsDao.replaceAll(mapOf(
             "TestQuestTypeA" to 321,
             "TestQuestTypeB" to 33
-        ))
-        verify(currentWeekCountryStatisticsDao).replaceAll(listOf(
+        )) }
+        verifyInvokedExactlyOnce { currentWeekCountryStatisticsDao.replaceAll(listOf(
             CountryStatistics("AT", 999, 88),
             CountryStatistics("IT", 99, null),
-        ))
-        verify(activeDatesDao).replaceAll(listOf(
+        )) }
+        verifyInvokedExactlyOnce { activeDatesDao.replaceAll(listOf(
             LocalDate.parse("1999-04-08"),
             LocalDate.parse("1888-01-02")
-        ))
-        verify(prefs).putInt(Prefs.ACTIVE_DATES_RANGE, 12)
-        verify(prefs).putInt(Prefs.USER_DAYS_ACTIVE, 333)
-        verify(prefs).putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, false)
-        verify(prefs).putInt(Prefs.USER_GLOBAL_RANK, 999)
-        verify(prefs).putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, 111)
-        verify(prefs).putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 9999999)
-        verify(listener).onUpdatedAll()
+        )) }
+        verifyInvokedExactlyOnce { prefs.putInt(Prefs.ACTIVE_DATES_RANGE, 12) }
+        verifyInvokedExactlyOnce { prefs.putInt(Prefs.USER_DAYS_ACTIVE, 333) }
+        verifyInvokedExactlyOnce { prefs.putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, false) }
+        verifyInvokedExactlyOnce { prefs.putInt(Prefs.USER_GLOBAL_RANK, 999) }
+        verifyInvokedExactlyOnce { prefs.putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, 111) }
+        verifyInvokedExactlyOnce { prefs.putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 9999999) }
+        verifyInvokedExactlyOnce { listener.onUpdatedAll() }
     }
 }

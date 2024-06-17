@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.io.Buffer
 import kotlinx.io.readByteArray
 import kotlinx.io.readDouble
@@ -18,6 +19,7 @@ import kotlinx.io.writeDouble
  *  ... for every single coordinate that is part of this particular geometry. That's more than 2
  *  times the size as when using this method.
  *  */
+@Mockable
 class PolylinesSerializer {
 
     fun serialize(polylines: List<List<LatLon>>): ByteArray {

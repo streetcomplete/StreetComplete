@@ -3,131 +3,147 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
-import de.westnordost.streetcomplete.testutils.eq
-import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.verifyInvokedExactlyOnce
 import de.westnordost.streetcomplete.testutils.way
-import org.mockito.Mockito.anyCollection
-import org.mockito.Mockito.verify
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.eq
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ElementDaoTest {
-    private lateinit var nodeDao: NodeDao
-    private lateinit var wayDao: WayDao
-    private lateinit var relationDao: RelationDao
-    private lateinit var dao: ElementDao
+    @Mock private lateinit var nodeDao: NodeDao
+    @Mock private lateinit var wayDao: WayDao
+    @Mock private lateinit var relationDao: RelationDao
+    @Mock private lateinit var dao: ElementDao
 
     @BeforeTest fun setUp() {
-        nodeDao = mock()
-        wayDao = mock()
-        relationDao = mock()
+        nodeDao = mock(classOf<NodeDao>())
+        wayDao = mock(classOf<WayDao>())
+        relationDao = mock(classOf<RelationDao>())
         dao = ElementDao(nodeDao, wayDao, relationDao)
     }
 
     @Test fun putNode() {
         val node = node(1)
         dao.put(node)
-        verify(nodeDao).put(node)
+        verifyInvokedExactlyOnce { nodeDao.put(node) }
     }
 
     @Test fun getNode() {
+        every { nodeDao.get(1L) }.returns(node())
         dao.get(NODE, 1L)
-        verify(nodeDao).get(1L)
+        verifyInvokedExactlyOnce { nodeDao.get(1L) }
     }
 
     @Test fun deleteNode() {
+        every { nodeDao.delete(1L) }.returns(true)
         dao.delete(NODE, 1L)
-        verify(nodeDao).delete(1L)
+        verifyInvokedExactlyOnce { nodeDao.delete(1L) }
     }
 
     @Test fun putWay() {
         val way = way()
         dao.put(way)
-        verify(wayDao).put(way)
+        verifyInvokedExactlyOnce { wayDao.put(way) }
     }
 
     @Test fun getWay() {
+        every { wayDao.get(1L) }.returns(way())
         dao.get(WAY, 1L)
-        verify(wayDao).get(1L)
+        verifyInvokedExactlyOnce { wayDao.get(1L) }
     }
 
     @Test fun deleteWay() {
+        every { wayDao.delete(1L) }.returns(true)
         dao.delete(WAY, 1L)
-        verify(wayDao).delete(1L)
+        verifyInvokedExactlyOnce { wayDao.delete(1L) }
     }
 
     @Test fun putRelation() {
         val relation = rel()
         dao.put(relation)
-        verify(relationDao).put(relation)
+        verifyInvokedExactlyOnce { relationDao.put(relation) }
     }
 
     @Test fun getRelation() {
+        every { relationDao.get(1L) }.returns(rel())
         dao.get(RELATION, 1L)
-        verify(relationDao).get(1L)
+        verifyInvokedExactlyOnce { relationDao.get(1L) }
     }
 
     @Test fun deleteRelation() {
+        every { relationDao.delete(1L) }.returns(true)
         dao.delete(RELATION, 1L)
-        verify(relationDao).delete(1L)
+        verifyInvokedExactlyOnce { relationDao.delete(1L) }
     }
 
     @Test fun putAllRelations() {
         dao.putAll(listOf(rel()))
-        verify(relationDao).putAll(anyCollection())
+        verifyInvokedExactlyOnce { relationDao.putAll(any()) }
     }
 
     @Test fun putAllWays() {
         dao.putAll(listOf(way()))
-        verify(wayDao).putAll(anyCollection())
+        verifyInvokedExactlyOnce { wayDao.putAll(any()) }
     }
 
     @Test fun putAllNodes() {
         dao.putAll(listOf(node()))
-        verify(nodeDao).putAll(anyCollection())
+        verifyInvokedExactlyOnce { nodeDao.putAll(any()) }
     }
 
     @Test fun putAllElements() {
         dao.putAll(listOf(node(), way(), rel()))
 
-        verify(nodeDao).putAll(anyCollection())
-        verify(wayDao).putAll(anyCollection())
-        verify(relationDao).putAll(anyCollection())
+        verifyInvokedExactlyOnce { nodeDao.putAll(any()) }
+        verifyInvokedExactlyOnce { wayDao.putAll(any()) }
+        verifyInvokedExactlyOnce { relationDao.putAll(any()) }
     }
 
     @Test fun deleteAllElements() {
+        every { nodeDao.deleteAll(listOf(0L)) }.returns(1)
+        every { wayDao.deleteAll(listOf(0L)) }.returns(1)
+        every { relationDao.deleteAll(listOf(0L)) }.returns(1)
+
         dao.deleteAll(listOf(
             ElementKey(NODE, 0),
             ElementKey(WAY, 0),
             ElementKey(RELATION, 0)
         ))
 
-        verify(nodeDao).deleteAll(listOf(0L))
-        verify(wayDao).deleteAll(listOf(0L))
-        verify(relationDao).deleteAll(listOf(0L))
+        verifyInvokedExactlyOnce { nodeDao.deleteAll(listOf(0L)) }
+        verifyInvokedExactlyOnce { wayDao.deleteAll(listOf(0L)) }
+        verifyInvokedExactlyOnce { relationDao.deleteAll(listOf(0L)) }
     }
 
     @Test fun clear() {
         dao.clear()
-        verify(nodeDao).clear()
-        verify(wayDao).clear()
-        verify(relationDao).clear()
+        verifyInvokedExactlyOnce { nodeDao.clear() }
+        verifyInvokedExactlyOnce { wayDao.clear() }
+        verifyInvokedExactlyOnce { relationDao.clear() }
     }
 
     @Test fun getAllElements() {
+        every { nodeDao.getAll(listOf(0L)) }.returns(listOf(node()))
+        every { wayDao.getAll(listOf(0L)) }.returns(listOf(way()))
+        every { relationDao.getAll(listOf(0L)) }.returns(listOf(rel()))
+
         dao.getAll(listOf(
             ElementKey(NODE, 0),
             ElementKey(WAY, 0),
             ElementKey(RELATION, 0)
         ))
 
-        verify(nodeDao).getAll(listOf(0L))
-        verify(wayDao).getAll(listOf(0L))
-        verify(relationDao).getAll(listOf(0L))
+        verifyInvokedExactlyOnce { nodeDao.getAll(listOf(0L)) }
+        verifyInvokedExactlyOnce { wayDao.getAll(listOf(0L)) }
+        verifyInvokedExactlyOnce { relationDao.getAll(listOf(0L)) }
     }
 
     @Test fun getAllElementsByBbox() {
@@ -138,13 +154,14 @@ class ElementDaoTest {
         val wayIds = ways.map { it.id }
         val relations = listOf(rel(1))
 
-        on(nodeDao.getAll(bbox)).thenReturn(nodes)
-        on(wayDao.getAllForNodes(eq(nodeIds.toSet()))).thenReturn(ways)
-        on(relationDao.getAllForElements(
+        every { nodeDao.getAll(bbox) }.returns(nodes)
+        every { nodeDao.getAll(eq(listOf())) }.returns(listOf())
+        every { wayDao.getAllForNodes(eq(nodeIds.toSet())) }.returns(ways)
+        every { relationDao.getAllForElements(
             nodeIds = eq(nodeIds),
             wayIds = eq(wayIds),
             relationIds = eq(emptyList())
-        )).thenReturn(relations)
+        )}.returns(relations)
         assertEquals(
             nodes + ways + relations,
             dao.getAll(bbox)
@@ -161,14 +178,14 @@ class ElementDaoTest {
         val wayIds = ways.map { it.id }
         val relations = listOf(rel(1))
 
-        on(nodeDao.getAll(bbox)).thenReturn(bboxNodes)
-        on(nodeDao.getAll(outsideBboxNodeIds)).thenReturn(outsideBboxNodes)
-        on(wayDao.getAllForNodes(eq(bboxNodeIds.toSet()))).thenReturn(ways)
-        on(relationDao.getAllForElements(
+        every { nodeDao.getAll(bbox) }.returns(bboxNodes)
+        every { nodeDao.getAll(outsideBboxNodeIds) }.returns(outsideBboxNodes)
+        every { wayDao.getAllForNodes(eq(bboxNodeIds.toSet())) }.returns(ways)
+        every { relationDao.getAllForElements(
             nodeIds = eq(outsideBboxNodeIds + bboxNodeIds),
             wayIds = eq(wayIds),
             relationIds = eq(emptyList())
-        )).thenReturn(relations)
+        )}.returns(relations)
         assertEquals(
             bboxNodes + outsideBboxNodes + ways + relations,
             dao.getAll(bbox)
@@ -181,13 +198,13 @@ class ElementDaoTest {
         val wayIds = listOf<Long>(1, 2)
         val relationIds = listOf<Long>(1)
 
-        on(nodeDao.getAllIds(bbox)).thenReturn(nodeIds)
-        on(wayDao.getAllIdsForNodes(eq(nodeIds))).thenReturn(wayIds)
-        on(relationDao.getAllIdsForElements(
+        every { nodeDao.getAllIds(bbox) }.returns(nodeIds)
+        every { wayDao.getAllIdsForNodes(eq(nodeIds)) }.returns(wayIds)
+        every { relationDao.getAllIdsForElements(
             nodeIds = eq(nodeIds),
             wayIds = eq(wayIds),
             relationIds = eq(emptyList())
-        )).thenReturn(relationIds)
+        )}.returns(relationIds)
         assertEquals(
             nodeIds.map { ElementKey(NODE, it) } +
                 wayIds.map { ElementKey(WAY, it) } +

@@ -1,14 +1,20 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.mock
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class CheckShopExistenceTest {
+    // dummy
+    @Mock private lateinit var feature: Feature
+
     private val questType = CheckShopExistence { element ->
-        if (element.tags["shop"] == "greengrocer") mock() else null
+        if (element.tags["shop"] == "greengrocer") mock(classOf<Feature>()) else null
     }
 
     @Test

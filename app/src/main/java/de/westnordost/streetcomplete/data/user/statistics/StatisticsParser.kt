@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
@@ -22,6 +23,7 @@ private data class StatisticsDTO(
     val isAnalyzing: Boolean,
 )
 
+@Mockable
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
     fun parse(json: String): Statistics =
         with(decodeFromString<StatisticsDTO>(json)) {

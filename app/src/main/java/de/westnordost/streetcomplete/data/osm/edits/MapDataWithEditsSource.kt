@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.intersect
 
@@ -35,6 +36,7 @@ import de.westnordost.streetcomplete.util.math.intersect
  *
  *  This class is threadsafe.
  * */
+@Mockable
 class MapDataWithEditsSource internal constructor(
     private val mapDataController: MapDataController,
     private val elementEditsController: ElementEditsController,

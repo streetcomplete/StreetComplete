@@ -1,16 +1,20 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.mock
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
 class AddMaxPhysicalHeightTest {
-
-    private val questType = AddMaxPhysicalHeight(mock())
+    @Mock
+    private val arSupportChecker: ArSupportChecker = mock(classOf<ArSupportChecker>())
+    private val questType = AddMaxPhysicalHeight(arSupportChecker)
 
     @Test fun `applicable if maxheight is below default`() {
         assertTrue(isApplicableTo(mapOf("maxheight" to "below_default")))

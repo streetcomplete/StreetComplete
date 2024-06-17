@@ -6,11 +6,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.*
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.upload.ConflictException
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.elementIdProvider
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -18,17 +21,18 @@ import kotlin.test.assertFailsWith
 
 class UpdateElementTagsActionTest {
 
+    @Mock
     private lateinit var repos: MapDataRepository
     private lateinit var provider: ElementIdProvider
 
     @BeforeTest fun setUp() {
-        repos = mock()
-        provider = mock()
+        repos = mock(classOf<MapDataRepository>())
+        provider = elementIdProvider()
     }
 
     @Test
     fun `conflict if node moved too much`() {
-        on(repos.get(NODE, 1)).thenReturn(node(1, p(1.0, 0.0)))
+        every { repos.get(NODE, 1) }.returns(node(1, p(1.0, 0.0)))
 
         assertFailsWith<ConflictException> {
             UpdateElementTagsAction(
@@ -41,7 +45,7 @@ class UpdateElementTagsActionTest {
     @Test
     fun `conflict if changes are not applicable`() {
         val w = way(1, listOf(1, 2, 3), mutableMapOf("highway" to "residential"))
-        on(repos.get(WAY, 1)).thenReturn(w)
+        every { repos.get(WAY, 1) }.returns(w)
 
         assertFailsWith<ConflictException> {
             UpdateElementTagsAction(
@@ -53,7 +57,7 @@ class UpdateElementTagsActionTest {
 
     @Test fun `apply changes`() {
         val w = way(1, listOf(1, 2, 3))
-        on(repos.get(WAY, 1)).thenReturn(w)
+        every { repos.get(WAY, 1) }.returns(w)
         val data = UpdateElementTagsAction(
             w,
             StringMapChanges(listOf(StringMapEntryAdd("highway", "living_street")))

@@ -6,8 +6,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
+@Mockable
 class NoteEditsController(
     private val editsDB: NoteEditsDao
 ) : NoteEditsSource {

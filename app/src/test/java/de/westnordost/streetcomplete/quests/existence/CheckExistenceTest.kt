@@ -1,15 +1,22 @@
 package de.westnordost.streetcomplete.quests.existence
 
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.mock
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class CheckExistenceTest {
+    // dummy
+    @Mock
+    private lateinit var feature: Feature
+
     private val questType = CheckExistence { element ->
-        if (element.tags["amenity"] == "telephone") mock() else null
+        if (element.tags["amenity"] == "telephone") mock(classOf<Feature>()) else null
     }
 
     @Test fun `isApplicableTo returns false for known places with recently edited amenity=telephone`() {

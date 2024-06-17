@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.data.visiblequests
 
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.util.Mockable
 
+@Mockable
 class SelectedQuestPresetStore(private val prefs: ObservableSettings) {
 
     fun get(): Long = prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0)

@@ -8,15 +8,19 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
-import de.westnordost.streetcomplete.testutils.any
-import de.westnordost.streetcomplete.testutils.mock
+
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.on
+import de.westnordost.streetcomplete.testutils.verifyInvokedExactlyOnce
+
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.intersect
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
-import org.mockito.Mockito.verify
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -24,6 +28,8 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 internal class SpatialCacheTest {
+
+    @Mock private val nodeDB: NodeDao = mock(classOf<NodeDao>())
 
     @Test fun `update doesn't put if tile doesn't exist`() {
         val node = node(1)
@@ -96,13 +102,13 @@ internal class SpatialCacheTest {
         val node = node(1, LatLon(1.0, 1.0))
         val nodeTile = node.position.enclosingTilePos(16)
         val nodeBBox = nodeTile.asBoundingBox(16)
-        val nodeDB: NodeDao = mock()
-        on(nodeDB.getAll(nodeTile.asBoundingBox(16))).thenReturn(listOf(node))
+        val nodeDB: NodeDao = mock(classOf<NodeDao>())
+        every { nodeDB.getAll(nodeTile.asBoundingBox(16)) }.returns(listOf(node))
         val cache = SpatialCache<Long, Node>(
             16, 4, null, { nodeDB.getAll(it) }, Node::id, Node::position
         )
         assertEquals(listOf(node), cache.get(LatLon(1.0, 1.0).enclosingBoundingBox(0.0)))
-        verify(nodeDB).getAll(nodeBBox)
+        verifyInvokedExactlyOnce { nodeDB.getAll(nodeBBox) }
     }
 
     @Test fun `get returns all the data in the bbox`() {
@@ -145,15 +151,15 @@ internal class SpatialCacheTest {
         assertEquals(2, topHalf.size) // subList with exclusive indexTo is a bit counter-intuitive
         assertEquals(2, bottomHalf.size)
 
-        val nodeDB: NodeDao = mock()
-        on(nodeDB.getAll(any<BoundingBox>())).thenReturn(listOf())
+        val nodeDB: NodeDao = mock(classOf<NodeDao>())
+        every { nodeDB.getAll(any<BoundingBox>()) }.returns(listOf())
         val cache = SpatialCache<Long, Node>(
             16, 4, null, { nodeDB.getAll(it) }, Node::id, Node::position
         )
         cache.get(topHalf.minTileRect()!!.asBoundingBox(16))
-        verify(nodeDB).getAll(topHalf.minTileRect()!!.asBoundingBox(16))
+        verifyInvokedExactlyOnce { nodeDB.getAll(topHalf.minTileRect()!!.asBoundingBox(16)) }
         cache.get(fullBBox)
-        verify(nodeDB).getAll(bottomHalf.minTileRect()!!.asBoundingBox(16))
+        verifyInvokedExactlyOnce { nodeDB.getAll(bottomHalf.minTileRect()!!.asBoundingBox(16)) }
     }
 
     @Test fun `update removes element if moving to non-cached tile`() {

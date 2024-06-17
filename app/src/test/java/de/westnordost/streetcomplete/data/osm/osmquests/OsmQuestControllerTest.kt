@@ -17,20 +17,22 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import de.westnordost.streetcomplete.testutils.any
-import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
-import de.westnordost.streetcomplete.testutils.eq
-import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.note
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.osmQuestKey
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.testutils.verifyInvokedExactlyOnce
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import org.mockito.Mockito.verify
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.eq
+import io.mockative.every
+import io.mockative.matches
+import io.mockative.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -38,27 +40,28 @@ import kotlin.test.assertTrue
 
 class OsmQuestControllerTest {
 
-    private lateinit var db: OsmQuestDao
-    private lateinit var hiddenDB: OsmQuestsHiddenDao
-    private lateinit var mapDataSource: MapDataWithEditsSource
-    private lateinit var notesSource: NotesWithEditsSource
+    @Mock private lateinit var db: OsmQuestDao
+    @Mock private lateinit var hiddenDB: OsmQuestsHiddenDao
+    @Mock private lateinit var mapDataSource: MapDataWithEditsSource
+    @Mock private lateinit var notesSource: NotesWithEditsSource
     private lateinit var questTypeRegistry: QuestTypeRegistry
+    // todo
     private lateinit var countryBoundaries: CountryBoundaries
 
     private lateinit var ctrl: OsmQuestController
-    private lateinit var listener: OsmQuestSource.Listener
-    private lateinit var hideListener: OsmQuestsHiddenSource.Listener
+    @Mock private lateinit var listener: OsmQuestSource.Listener
+    @Mock private lateinit var hideListener: OsmQuestsHiddenSource.Listener
 
     private lateinit var mapDataListener: MapDataWithEditsSource.Listener
     private lateinit var notesListener: NotesWithEditsSource.Listener
 
     @BeforeTest fun setUp() {
-        db = mock()
+        db = mock(classOf<OsmQuestDao>())
 
-        hiddenDB = mock()
-        mapDataSource = mock()
+        hiddenDB = mock(classOf<OsmQuestsHiddenDao>())
+        mapDataSource = mock(classOf<MapDataWithEditsSource>())
 
-        notesSource = mock()
+        notesSource = mock(classOf<NotesWithEditsSource>())
         questTypeRegistry = QuestTypeRegistry(listOf(
             0 to ApplicableQuestType,
             1 to NotApplicableQuestType,
@@ -66,20 +69,20 @@ class OsmQuestControllerTest {
             3 to ApplicableQuestTypeNotInAnyCountry,
             4 to ApplicableQuestType2
         ))
-        countryBoundaries = mock()
+        countryBoundaries = mock(classOf<CountryBoundaries>())
 
-        on(mapDataSource.addListener(any())).then { invocation ->
-            mapDataListener = invocation.getArgument(0)
+        every { mapDataSource.addListener(any()) }.invokes { arguments ->
+            mapDataListener = arguments[0] as MapDataWithEditsSource.Listener
             Unit
         }
 
-        on(notesSource.addListener(any())).then { invocation ->
-            notesListener = invocation.getArgument(0)
+        every { notesSource.addListener(any()) }.invokes { arguments ->
+            notesListener = arguments[0] as NotesWithEditsSource.Listener
             Unit
         }
 
-        listener = mock()
-        hideListener = mock()
+        listener = mock(classOf<OsmQuestSource.Listener>())
+        hideListener = mock(classOf<OsmQuestsHiddenSource.Listener>())
         ctrl = OsmQuestController(db, hiddenDB, mapDataSource, notesSource, questTypeRegistry, lazyOf(countryBoundaries))
         ctrl.addListener(listener)
         ctrl.addListener(hideListener)
@@ -90,8 +93,8 @@ class OsmQuestControllerTest {
         val entry = questEntry(NODE, 1, "ApplicableQuestType")
         val g = pGeom()
 
-        on(db.get(osmQuestKey(NODE, 1, "ApplicableQuestType"))).thenReturn(entry)
-        on(mapDataSource.getGeometry(NODE, 1)).thenReturn(g)
+        every { db.get(osmQuestKey(NODE, 1, "ApplicableQuestType")) }.returns(entry)
+        every { mapDataSource.getGeometry(NODE, 1) }.returns(g)
 
         val expectedQuest = OsmQuest(ApplicableQuestType, NODE, 1, g)
         assertEquals(expectedQuest, ctrl.getVisible(key))
@@ -113,15 +116,15 @@ class OsmQuestControllerTest {
         val hiddenQuests = listOf(OsmQuestKey(NODE, 2, "ApplicableQuestType"))
         val bbox = bbox()
 
-        on(hiddenDB.getAllIds()).thenReturn(hiddenQuests)
-        on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
-        on(db.getAllInBBox(bbox, null)).thenReturn(entries)
-        on(mapDataSource.getGeometries(argThat {
+        every { hiddenDB.getAllIds() }.returns(hiddenQuests)
+        every { notesSource.getAllPositions(any()) }.returns(listOf(notePos))
+        every { db.getAllInBBox(bbox, null) }.returns(entries)
+        every { mapDataSource.getGeometries(matches {
             it.containsExactlyInAnyOrder(listOf(
                 ElementKey(NODE, 1),
                 ElementKey(NODE, 4),
             ))
-        })).thenReturn(listOf(
+        })}.returns(listOf(
             ElementGeometryEntry(NODE, 1, geoms[0])
         ))
 
@@ -138,7 +141,7 @@ class OsmQuestControllerTest {
             ElementPointGeometry(p()),
         )
 
-        on(hiddenDB.getNewerThan(123L)).thenReturn(listOf(
+        every { hiddenDB.getNewerThan(123L) }.returns(listOf(
             // ok!
             OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 1L, "ApplicableQuestType"), 250),
             // unknown quest type
@@ -146,13 +149,13 @@ class OsmQuestControllerTest {
             // no geometry!
             OsmQuestKeyWithTimestamp(OsmQuestKey(NODE, 3L, "ApplicableQuestType"), 250),
         ))
-        on(mapDataSource.getGeometries(argThat {
+        every { mapDataSource.getGeometries(matches {
             it.containsExactlyInAnyOrder(listOf(
                 ElementKey(NODE, 1),
                 ElementKey(NODE, 2),
                 ElementKey(NODE, 3)
             ))
-        })).thenReturn(listOf(
+        })}.returns(listOf(
             ElementGeometryEntry(NODE, 1, geoms[0]),
             ElementGeometryEntry(NODE, 2, geoms[1])
         ))
@@ -166,53 +169,53 @@ class OsmQuestControllerTest {
     }
 
     @Test fun countAll() {
-        on(hiddenDB.countAll()).thenReturn(123L)
+        every { hiddenDB.countAll() }.returns(123L)
         assertEquals(123L, ctrl.countAll())
     }
 
     @Test fun hide() {
         val quest = osmQuest(questType = ApplicableQuestType)
 
-        on(hiddenDB.getTimestamp(eq(quest.key))).thenReturn(555)
-        on(mapDataSource.getGeometry(quest.elementType, quest.elementId)).thenReturn(pGeom())
+        every { hiddenDB.getTimestamp(eq(quest.key)) }.returns(555)
+        every { mapDataSource.getGeometry(quest.elementType, quest.elementId) }.returns(pGeom())
 
         ctrl.hide(quest.key)
 
-        verify(hiddenDB).add(quest.key)
-        verify(hideListener).onHid(eq(OsmQuestHidden(
+        verifyInvokedExactlyOnce { hiddenDB.add(quest.key) }
+        verifyInvokedExactlyOnce { hideListener.onHid(eq(OsmQuestHidden(
             quest.elementType, quest.elementId, quest.type, quest.position, 555
-        )))
-        verify(listener).onUpdated(
+        )))}
+        verifyInvokedExactlyOnce { listener.onUpdated(
             addedQuests = eq(emptyList()),
             deletedQuestKeys = eq(listOf(quest.key))
-        )
+        )}
     }
 
     @Test fun unhide() {
         val quest = osmQuest(questType = ApplicableQuestType)
 
-        on(hiddenDB.delete(quest.key)).thenReturn(true)
-        on(hiddenDB.getTimestamp(eq(quest.key))).thenReturn(555)
-        on(mapDataSource.getGeometry(quest.elementType, quest.elementId)).thenReturn(pGeom())
-        on(db.get(quest.key)).thenReturn(quest)
+        every { hiddenDB.delete(quest.key) }.returns(true)
+        every { hiddenDB.getTimestamp(eq(quest.key)) }.returns(555)
+        every { mapDataSource.getGeometry(quest.elementType, quest.elementId) }.returns(pGeom())
+        every { db.get(quest.key) }.returns(quest)
 
         assertTrue(ctrl.unhide(quest.key))
 
-        verify(hiddenDB).delete(quest.key)
-        verify(hideListener).onUnhid(eq(OsmQuestHidden(
+        verifyInvokedExactlyOnce { hiddenDB.delete(quest.key) }
+        verifyInvokedExactlyOnce { hideListener.onUnhid(eq(OsmQuestHidden(
             quest.elementType, quest.elementId, quest.type, quest.position, 555
-        )))
-        verify(listener).onUpdated(
+        )))}
+        verifyInvokedExactlyOnce { listener.onUpdated(
             addedQuests = eq(listOf(quest)),
             deletedQuestKeys = eq(emptyList())
-        )
+        )}
     }
 
     @Test fun unhideAll() {
-        on(hiddenDB.deleteAll()).thenReturn(2)
+        every { hiddenDB.deleteAll() }.returns(2)
         assertEquals(2, ctrl.unhideAll())
-        verify(listener).onInvalidated()
-        verify(hideListener).onUnhidAll()
+        verifyInvokedExactlyOnce { listener.onInvalidated() }
+        verifyInvokedExactlyOnce { hideListener.onUnhidAll() }
     }
 
     @Test fun `updates quests on notes listener update`() {
@@ -220,7 +223,7 @@ class OsmQuestControllerTest {
 
         notesListener.onUpdated(added = notes, updated = emptyList(), deleted = emptyList())
 
-        verify(listener).onInvalidated()
+        verifyInvokedExactlyOnce { listener.onInvalidated() }
     }
 
     @Test fun `updates quests on map data listener update for deleted elements`() {
@@ -231,7 +234,7 @@ class OsmQuestControllerTest {
         )
 
         val keys = listOf(ElementKey(NODE, 1), ElementKey(NODE, 2))
-        on(db.getAllForElements(eq(keys))).thenReturn(quests)
+        every { db.getAllForElements(eq(keys)) }.returns(quests)
 
         val deleted = listOf(
             ElementKey(NODE, 1),
@@ -242,18 +245,18 @@ class OsmQuestControllerTest {
 
         val expectedDeletedQuestKeys = quests.map { it.key }
 
-        verify(db).deleteAll(argThat { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) })
-        verify(db).putAll(argThat { it.isEmpty() })
-        verify(listener).onUpdated(
+        verifyInvokedExactlyOnce { db.deleteAll(matches { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) }) }
+        verifyInvokedExactlyOnce { db.putAll(matches { it.isEmpty() }) }
+        verifyInvokedExactlyOnce { listener.onUpdated(
             addedQuests = eq(emptyList()),
-            deletedQuestKeys = argThat { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) }
-        )
+            deletedQuestKeys = matches { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) }
+        )}
     }
 
     @Test fun `calls onInvalidated when cleared quests`() {
         mapDataListener.onCleared()
-        verify(db).clear()
-        verify(listener).onInvalidated()
+        verifyInvokedExactlyOnce { db.clear() }
+        verifyInvokedExactlyOnce { listener.onInvalidated() }
     }
 
     @Test fun `updates quests on map data listener update for updated elements`() {
@@ -275,8 +278,8 @@ class OsmQuestControllerTest {
 
         val previousQuests = listOf(existingApplicableQuest, existingNonApplicableQuest)
 
-        on(db.getAllForElements(eq(elements.map { ElementKey(it.type, it.id) }))).thenReturn(previousQuests)
-        on(mapDataSource.getMapDataWithGeometry(any())).thenReturn(mapData)
+        every { db.getAllForElements(eq(elements.map { ElementKey(it.type, it.id) })) }.returns(previousQuests)
+        every { mapDataSource.getMapDataWithGeometry(any()) }.returns(mapData)
 
         mapDataListener.onUpdated(mapData, emptyList())
 
@@ -290,12 +293,12 @@ class OsmQuestControllerTest {
 
         val expectedDeletedQuestKeys = listOf(existingNonApplicableQuest.key)
 
-        verify(db).deleteAll(eq(expectedDeletedQuestKeys))
-        verify(db).putAll(eq(expectedCreatedQuests))
-        verify(listener).onUpdated(
+        verifyInvokedExactlyOnce { db.deleteAll(eq(expectedDeletedQuestKeys)) }
+        verifyInvokedExactlyOnce { db.putAll(eq(expectedCreatedQuests)) }
+        verifyInvokedExactlyOnce { listener.onUpdated(
             addedQuests = eq(expectedCreatedQuests),
             deletedQuestKeys = eq(expectedDeletedQuestKeys)
-        )
+        )}
     }
 
     @Test fun `updates quests on map data listener replace for bbox`() {
@@ -326,11 +329,11 @@ class OsmQuestControllerTest {
 
         val previousQuests = listOf(existingApplicableQuest, existingNonApplicableQuest)
 
-        on(db.getAllInBBox(bbox)).thenReturn(previousQuests)
+        every { db.getAllInBBox(bbox) }.returns(previousQuests)
 
-        on(notesSource.getAllPositions(any())).thenReturn(listOf(notePos))
+        every { notesSource.getAllPositions(any()) }.returns(listOf(notePos))
 
-        on(hiddenDB.getAllIds()).thenReturn(listOf(
+        every { hiddenDB.getAllIds() }.returns(listOf(
             OsmQuestKey(NODE, 3L, "ApplicableQuestType2")
         ))
 
@@ -350,12 +353,12 @@ class OsmQuestControllerTest {
 
         val expectedDeletedQuestKeys = listOf(existingNonApplicableQuest.key)
 
-        verify(db).deleteAll(eq(expectedDeletedQuestKeys))
-        verify(db).putAll(argThat { it.containsExactlyInAnyOrder(expectedCreatedQuests) })
-        verify(listener).onUpdated(
-            addedQuests = argThat { it.containsExactlyInAnyOrder(expectedAddedQuests) },
+        verifyInvokedExactlyOnce { db.deleteAll(eq(expectedDeletedQuestKeys)) }
+        verifyInvokedExactlyOnce { db.putAll(matches { it.containsExactlyInAnyOrder(expectedCreatedQuests) }) }
+        verifyInvokedExactlyOnce { listener.onUpdated(
+            addedQuests = matches { it.containsExactlyInAnyOrder(expectedAddedQuests) },
             deletedQuestKeys = eq(expectedDeletedQuestKeys)
-        )
+        )}
     }
 }
 

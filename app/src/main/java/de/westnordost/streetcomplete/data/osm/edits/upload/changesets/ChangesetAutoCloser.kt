@@ -6,8 +6,10 @@ import androidx.work.ExistingWorkPolicy.REPLACE
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import de.westnordost.streetcomplete.util.Mockable
 import java.util.concurrent.TimeUnit
 
+@Mockable
 class ChangesetAutoCloser(private val context: Context) {
 
     fun enqueue(delayInMilliseconds: Long) {

@@ -3,12 +3,14 @@ package de.westnordost.streetcomplete.data.user.statistics
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable.Columns.DATE
 import de.westnordost.streetcomplete.data.user.statistics.ActiveDaysTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 /** Stores the dates at which the user added edits */
+@Mockable
 class ActiveDatesDao(private val db: Database) {
 
     fun replaceAll(dates: List<LocalDate>) {

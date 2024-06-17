@@ -6,6 +6,8 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("plugin.serialization") version "1.9.22"
+    kotlin("plugin.allopen") version "1.9.22"
+    id("com.google.devtools.ksp") version "1.9.22-1.0.16"
 }
 
 android {
@@ -83,6 +85,19 @@ android {
     namespace = "de.westnordost.streetcomplete"
 }
 
+val taskIsRunningTest = gradle.startParameter.taskNames
+    .any { it == "check" || it.startsWith("test") || it.contains("Test") }
+
+//if (taskIsRunningTest) {
+    allOpen {
+        annotation("de.westnordost.streetcomplete.util.Mockable")
+    }
+//}
+
+// allOpen {
+//     annotation("kotlin.Metadata")
+// }
+
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
     val props = Properties()
@@ -116,6 +131,12 @@ dependencies {
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation(kotlin("test"))
+    testImplementation("io.mockative:mockative:2.2.2")
+    configurations
+        .filter { it.name.startsWith("ksp") && it.name.contains("Test") }
+        .forEach {
+            add(it.name, "io.mockative:mockative-processor:2.2.2")
+        }
 
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation("androidx.test:rules:1.5.0")

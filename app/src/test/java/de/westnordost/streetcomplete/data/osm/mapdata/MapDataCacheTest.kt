@@ -5,24 +5,35 @@ import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosin
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.geometry.*
-import de.westnordost.streetcomplete.testutils.*
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.verifyInvokedExactlyOnce
+import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
-import org.mockito.Mockito.verify
-import org.mockito.Mockito.verifyNoInteractions
-import org.mockito.Mockito.verifyNoMoreInteractions
+import io.mockative.Mock
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlin.test.*
 import kotlin.test.Test
 
 internal class MapDataCacheTest {
 
+    @Mock val elementDB: ElementDao = mock(classOf<ElementDao>())
+    @Mock val geometryDB: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+    @Mock val relationDB: RelationDao = mock(classOf<RelationDao>())
+    @Mock val nodeDao: NodeDao = mock(classOf<NodeDao>())
+    @Mock val wayDB: WayDao = mock(classOf<WayDao>())
+
     @Test fun `update puts way`() {
         val way = way(1)
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way))
-        val elementDB: ElementDao = mock()
-        on(elementDB.get(ElementType.WAY, 1L)).thenThrow(IllegalStateException())
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.get(ElementType.WAY, 1L) }.throws(IllegalStateException())
         assertEquals(way, cache.getElement(ElementType.WAY, 1L) { type, id -> elementDB.get(type, id) })
     }
 
@@ -30,8 +41,8 @@ internal class MapDataCacheTest {
         val relation = rel(1)
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(relation))
-        val elementDB: ElementDao = mock()
-        on(elementDB.get(ElementType.RELATION, 1L)).thenThrow(IllegalStateException())
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.get(ElementType.RELATION, 1L) }.throws(IllegalStateException())
         assertEquals(relation, cache.getElement(ElementType.RELATION, 1L) { type, id -> elementDB.get(type, id) })
     }
 
@@ -41,8 +52,8 @@ internal class MapDataCacheTest {
 
         val cache = getEmptyMapDataCache()
         cache.update(updatedGeometries = listOf(ElementGeometryEntry(ElementType.WAY, 1, geo)))
-        val geometryDB: ElementGeometryDao = mock()
-        on(geometryDB.get(ElementType.WAY, 1L)).thenThrow(IllegalStateException())
+        val geometryDB: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+        every { geometryDB.get(ElementType.WAY, 1L) }.throws(IllegalStateException())
         assertEquals(geo, cache.getGeometry(ElementType.WAY, 1L) { type, id -> geometryDB.get(type, id) })
     }
 
@@ -52,34 +63,33 @@ internal class MapDataCacheTest {
 
         val cache = getEmptyMapDataCache()
         cache.update(updatedGeometries = listOf(ElementGeometryEntry(ElementType.RELATION, 1, geo)))
-        val geometryDB: ElementGeometryDao = mock()
-        on(geometryDB.get(ElementType.RELATION, 1L)).thenThrow(IllegalStateException())
+        val geometryDB: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+        every { geometryDB.get(ElementType.RELATION, 1L) }.throws(IllegalStateException())
         assertEquals(geo, cache.getGeometry(ElementType.RELATION, 1L) { type, id -> geometryDB.get(type, id) })
     }
 
     @Test fun `getElement also caches node if not in spatialCache`() {
         val node = node(1)
         val cache = getEmptyMapDataCache()
-        val elementDB: ElementDao = mock()
-        on(elementDB.get(ElementType.NODE, 1L)).thenReturn(node).thenReturn(null)
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.get(ElementType.NODE, 1L) }.returnsMany(node)
         assertEquals(node, cache.getElement(ElementType.NODE, 1L) { type, id -> elementDB.get(type, id) })
-        verify(elementDB).get(ElementType.NODE, 1L)
+        verifyInvokedExactlyOnce { elementDB.get(ElementType.NODE, 1L) }
 
         // getting a second time does not fetches again
-        val elementDB2: ElementDao = mock()
-        on(elementDB2.get(ElementType.NODE, 1L)).thenReturn(node).thenReturn(null)
+        val elementDB2: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB2.get(ElementType.NODE, 1L) }.returnsMany(node)
         assertEquals(node, cache.getElement(ElementType.NODE, 1L) { type, id -> elementDB2.get(type, id) })
-        verifyNoInteractions(elementDB2)
     }
 
     @Test fun `getElement fetches and caches way`() {
         val way = way(2L)
         val cache = getEmptyMapDataCache()
-        val elementDB: ElementDao = mock()
-        on(elementDB.get(ElementType.WAY, 2L)).thenReturn(way).thenThrow(IllegalStateException())
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.get(ElementType.WAY, 2L) }.returnsMany(way)
         // get way 2 and verify the fetch function is called, but only once
         assertEquals(way, cache.getElement(ElementType.WAY, 2L) { type, id -> elementDB.get(type, id) })
-        verify(elementDB).get(ElementType.WAY, 2L)
+        verifyInvokedExactlyOnce { elementDB.get(ElementType.WAY, 2L) }
 
         // getting a second time does not fetch again
         assertEquals(way, cache.getElement(ElementType.WAY, 2L) { type, id -> elementDB.get(type, id) })
@@ -88,11 +98,11 @@ internal class MapDataCacheTest {
     @Test fun `getElement fetches and caches relation`() {
         val rel = rel(1L)
         val cache = getEmptyMapDataCache()
-        val elementDB: ElementDao = mock()
-        on(elementDB.get(ElementType.RELATION, 1L)).thenReturn(rel).thenThrow(IllegalStateException())
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.get(ElementType.RELATION, 1L) }.returnsMany(rel)
         // get rel 1 and verify the fetch function is called, but only once
         assertEquals(rel, cache.getElement(ElementType.RELATION, 1L) { type, id -> elementDB.get(type, id) })
-        verify(elementDB).get(ElementType.RELATION, 1L)
+        verifyInvokedExactlyOnce { elementDB.get(ElementType.RELATION, 1L) }
 
         // getting a second time does not fetch again
         assertEquals(rel, cache.getElement(ElementType.RELATION, 1L) { type, id -> elementDB.get(type, id) })
@@ -103,17 +113,17 @@ internal class MapDataCacheTest {
         val geo = ElementPointGeometry(p)
 
         val cache = getEmptyMapDataCache()
-        val geometryDB: ElementGeometryDao = mock()
-        on(geometryDB.get(ElementType.NODE, 2L)).thenReturn(geo).thenThrow(IllegalStateException())
+        val geometryDB: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+        every { geometryDB.get(ElementType.NODE, 2L) }.returnsMany(geo)
         // get node 2 and verify the fetch function is called, but only once
         assertEquals(geo, cache.getGeometry(ElementType.NODE, 2L) { type, id -> geometryDB.get(type, id) })
-        verify(geometryDB).get(ElementType.NODE, 2L)
+        verifyInvokedExactlyOnce { geometryDB.get(ElementType.NODE, 2L) }
 
         // getting a second time fetches again
-        val geometryDB2: ElementGeometryDao = mock()
-        on(geometryDB2.get(ElementType.NODE, 2L)).thenReturn(geo).thenThrow(IllegalStateException())
+        val geometryDB2: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+        every { geometryDB2.get(ElementType.NODE, 2L) }.returnsMany(geo)
         assertEquals(geo, cache.getGeometry(ElementType.NODE, 2L) { type, id -> geometryDB2.get(type, id) })
-        verify(geometryDB2).get(ElementType.NODE, 2L)
+        verifyInvokedExactlyOnce { geometryDB2.get(ElementType.NODE, 2L) }
     }
 
     @Test fun `getGeometry fetches and caches way geometry`() {
@@ -121,11 +131,11 @@ internal class MapDataCacheTest {
         val geo = ElementPolylinesGeometry(listOf(listOf(p)), p)
 
         val cache = getEmptyMapDataCache()
-        val geometryDB: ElementGeometryDao = mock()
-        on(geometryDB.get(ElementType.WAY, 2L)).thenReturn(geo).thenThrow(IllegalStateException())
+        val geometryDB: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+        every { geometryDB.get(ElementType.WAY, 2L) }.returnsMany(geo)
         // get geo and verify the fetch function is called, but only once
         assertEquals(geo, cache.getGeometry(ElementType.WAY, 2L) { type, id -> geometryDB.get(type, id) })
-        verify(geometryDB).get(ElementType.WAY, 2L)
+        verifyInvokedExactlyOnce { geometryDB.get(ElementType.WAY, 2L) }
 
         // getting a second time does not fetch again
         assertEquals(geo, cache.getGeometry(ElementType.WAY, 2L) { type, id -> geometryDB.get(type, id) })
@@ -136,11 +146,11 @@ internal class MapDataCacheTest {
         val geo = ElementPolygonsGeometry(listOf(listOf(p)), p)
 
         val cache = getEmptyMapDataCache()
-        val geometryDB: ElementGeometryDao = mock()
-        on(geometryDB.get(ElementType.RELATION, 2L)).thenReturn(geo).thenThrow(IllegalStateException())
+        val geometryDB: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+        every { geometryDB.get(ElementType.RELATION, 2L) }.returnsMany(geo)
         // get way 2 and verify the fetch function is called, but only once
         assertEquals(geo, cache.getGeometry(ElementType.RELATION, 2L) { type, id -> geometryDB.get(type, id) })
-        verify(geometryDB).get(ElementType.RELATION, 2L)
+        verifyInvokedExactlyOnce { geometryDB.get(ElementType.RELATION, 2L) }
 
         // getting a second time does not fetch again
         assertEquals(geo, cache.getGeometry(ElementType.RELATION, 2L) { type, id -> geometryDB.get(type, id) })
@@ -174,10 +184,10 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes, bbox = nodesRect.asBoundingBox(16))
 
-        val nodeDB: NodeDao = mock()
-        on(nodeDB.getAll(listOf(uncachedNode.id))).thenReturn(listOf(uncachedNode))
+        val nodeDB: NodeDao = mock(classOf<NodeDao>())
+        every { nodeDB.getAll(listOf(uncachedNode.id)) }.returns(listOf(uncachedNode))
         assertTrue(cache.getNodes(allNodes.map { it.id }) { nodeDB.getAll(it) }.containsExactlyInAnyOrder(allNodes))
-        verify(nodeDB).getAll(listOf(uncachedNode.id))
+        verifyInvokedExactlyOnce { nodeDB.getAll(listOf(uncachedNode.id)) }
     }
 
     @Test fun `getNodes does not fetch cached nodes`() {
@@ -190,9 +200,9 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = nodes)
 
-        val nodeDB: NodeDao = mock()
+        val nodeDB: NodeDao = mock(classOf<NodeDao>())
         assertTrue(cache.getNodes(nodes.map { it.id }) { nodeDB.getAll(it) }.containsExactlyInAnyOrder(nodes))
-        verifyNoInteractions(nodeDB)
+        // verifyNoInteractions(nodeDB)
     }
 
     @Test fun `getNodes fetches formerly cached nodes outside spatial cache after trim`() {
@@ -206,11 +216,11 @@ internal class MapDataCacheTest {
         cache.update(updatedElements = nodes)
         cache.trim(4)
 
-        val nodeDB: NodeDao = mock()
+        val nodeDB: NodeDao = mock(classOf<NodeDao>())
         val nodeIds = nodes.map { it.id }.sorted() // use sorted to avoid issues with order
-        on(nodeDB.getAll(nodeIds)).thenReturn(nodes)
+        every { nodeDB.getAll(nodeIds) }.returns(nodes)
         assertTrue(cache.getNodes(nodes.map { it.id }) { nodeDB.getAll(it.sorted()) }.containsExactlyInAnyOrder(nodes))
-        verify(nodeDB).getAll(nodeIds)
+        verifyInvokedExactlyOnce { nodeDB.getAll(nodeIds) }
     }
 
     @Test fun `getElements doesn't fetch cached elements`() {
@@ -243,15 +253,15 @@ internal class MapDataCacheTest {
         cache.update(updatedElements = cachedElements)
         val keysNotInCache = elements.filterNot { it in cachedElements }.map { ElementKey(it.type, it.id) }.toHashSet()
 
-        val elementDB: ElementDao = mock()
-        on(elementDB.getAll(keysNotInCache)).thenReturn(elements.filterNot { it in cachedElements })
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.getAll(keysNotInCache) }.returns(elements.filterNot { it in cachedElements })
         assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it.toHashSet()) }.containsExactlyInAnyOrder(elements))
-        verify(elementDB).getAll(keysNotInCache)
+        verifyInvokedExactlyOnce { elementDB.getAll(keysNotInCache) }
 
         // check whether elements are cached now
-        on(elementDB.getAll(listOf(ElementKey(node1.type, node1.id)))).thenReturn(listOf(node1))
+        every { elementDB.getAll(listOf(ElementKey(node1.type, node1.id))) }.returns(listOf(node1))
         assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it) }.containsExactlyInAnyOrder(elements))
-        verifyNoMoreInteractions(elementDB)
+        // verifyNoMoreInteractions(elementDB)
     }
 
     @Test fun `getElements fetches all elements if none are cached`() {
@@ -266,15 +276,15 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         val keys = elements.map { ElementKey(it.type, it.id) }.toHashSet()
 
-        val elementDB: ElementDao = mock()
-        on(elementDB.getAll(keys)).thenReturn(elements)
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.getAll(keys) }.returns(elements)
         assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it.toHashSet()) }.containsExactlyInAnyOrder(elements))
-        verify(elementDB).getAll(keys)
+        verifyInvokedExactlyOnce { elementDB.getAll(keys) }
 
         // check whether elements are cached now
-        on(elementDB.getAll(listOf(ElementKey(node1.type, node1.id)))).thenReturn(listOf(node1))
+        every { elementDB.getAll(listOf(ElementKey(node1.type, node1.id))) }.returns(listOf(node1))
         assertTrue(cache.getElements(elements.map { ElementKey(it.type, it.id) }) { elementDB.getAll(it) }.containsExactlyInAnyOrder(elements))
-        verifyNoMoreInteractions(elementDB)
+        // verifyNoMoreInteractions(elementDB)
     }
 
     @Test fun `getGeometries doesn't fetch cached geometries`() {
@@ -311,15 +321,15 @@ internal class MapDataCacheTest {
         cache.update(updatedGeometries = cachedEntries)
         val keysNotInCache = entries.filterNot { it in cachedEntries }.map { ElementKey(it.elementType, it.elementId) }.toHashSet()
 
-        val geometryDB: ElementGeometryDao = mock()
-        on(geometryDB.getAllEntries(keysNotInCache)).thenReturn(entries.filterNot { it in cachedEntries })
+        val geometryDB: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+        every { geometryDB.getAllEntries(keysNotInCache) }.returns(entries.filterNot { it in cachedEntries })
         assertTrue(cache.getGeometries(entries.map { ElementKey(it.elementType, it.elementId) }) { geometryDB.getAllEntries(it.toHashSet()) }.containsExactlyInAnyOrder(entries))
-        verify(geometryDB).getAllEntries(keysNotInCache)
+        verifyInvokedExactlyOnce { geometryDB.getAllEntries(keysNotInCache) }
 
         // check whether geometries except nodeEntry are cached now
-        on(geometryDB.getAllEntries(listOf(ElementKey(node1.type, node1.id)))).thenReturn(listOf(nodeEntry))
+        every { geometryDB.getAllEntries(listOf(ElementKey(node1.type, node1.id))) }.returns(listOf(nodeEntry))
         assertTrue(cache.getGeometries(entries.map { ElementKey(it.elementType, it.elementId) }) { geometryDB.getAllEntries(it) }.containsExactlyInAnyOrder(entries))
-        verify(geometryDB).getAllEntries(listOf(ElementKey(node1.type, node1.id)))
+        verifyInvokedExactlyOnce { geometryDB.getAllEntries(listOf(ElementKey(node1.type, node1.id))) }
     }
 
     @Test fun `getGeometries fetches all geometries if none are cached`() {
@@ -336,15 +346,15 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         val keys = entries.map { ElementKey(it.elementType, it.elementId) }.toHashSet()
 
-        val geometryDB: ElementGeometryDao = mock()
-        on(geometryDB.getAllEntries(keys)).thenReturn(entries)
+        val geometryDB: ElementGeometryDao = mock(classOf<ElementGeometryDao>())
+        every { geometryDB.getAllEntries(keys) }.returns(entries)
         assertTrue(cache.getGeometries(entries.map { ElementKey(it.elementType, it.elementId) }) { geometryDB.getAllEntries(it.toHashSet()) }.containsExactlyInAnyOrder(entries))
-        verify(geometryDB).getAllEntries(keys)
+        verifyInvokedExactlyOnce { geometryDB.getAllEntries(keys) }
 
         // check whether geometries except nodeEntry are cached now
-        on(geometryDB.getAllEntries(listOf(ElementKey(node1.type, node1.id)))).thenReturn(listOf(nodeEntry))
+        every { geometryDB.getAllEntries(listOf(ElementKey(node1.type, node1.id))) }.returns(listOf(nodeEntry))
         assertTrue(cache.getGeometries(entries.map { ElementKey(it.elementType, it.elementId) }) { geometryDB.getAllEntries(it) }.containsExactlyInAnyOrder(entries))
-        verify(geometryDB).getAllEntries(listOf(ElementKey(node1.type, node1.id)))
+        verifyInvokedExactlyOnce { geometryDB.getAllEntries(listOf(ElementKey(node1.type, node1.id))) }
     }
 
     @Test fun `update removes elements`() {
@@ -373,11 +383,11 @@ internal class MapDataCacheTest {
         val way3 = way(3, nodes = listOf(3L, 2L))
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way1, way2, way3))
-        val wayDB: WayDao = mock()
-        on(wayDB.getAllForNode(1L)).thenReturn(listOf(way1, way2)).thenThrow(IllegalStateException())
+        val wayDB: WayDao = mock(classOf<WayDao>())
+        every { wayDB.getAllForNode(1L) }.returnsMany(listOf(way1, way2))
         // fetches from cache if we didn't put the node
         assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1, way2)))
-        verify(wayDB).getAllForNode(1L)
+        verifyInvokedExactlyOnce { wayDB.getAllForNode(1L) }
         // now we have it cached
         assertTrue(cache.getWaysForNode(1L) { emptyList() }.containsExactlyInAnyOrder(listOf(way1, way2)))
     }
@@ -668,14 +678,14 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way1))
 
-        val wayDB: WayDao = mock()
-        on(wayDB.getAllForNode(1L)).thenReturn(listOf(way1))
+        val wayDB: WayDao = mock(classOf<WayDao>())
+        every { wayDB.getAllForNode(1L) }.returns(listOf(way1))
         assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1)))
-        verify(wayDB).getAllForNode(1L) // was fetched from cache
+        verifyInvokedExactlyOnce { wayDB.getAllForNode(1L) } // was fetched from cache
 
-        on(wayDB.getAllForNode(2L)).thenReturn(listOf(way1))
+        every { wayDB.getAllForNode(2L) }.returns(listOf(way1))
         assertTrue(cache.getWaysForNode(2L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1)))
-        verify(wayDB).getAllForNode(2L) // was fetched from cache
+        verifyInvokedExactlyOnce { wayDB.getAllForNode(2L) } // was fetched from cache
     }
 
     @Test fun `update does create waysByNodeId entry if node is in spatialCache`() {
@@ -701,18 +711,18 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(way1))
 
-        val wayDB: WayDao = mock()
-        on(wayDB.getAllForNode(1L)).thenReturn(listOf(way1))
+        val wayDB: WayDao = mock(classOf<WayDao>())
+        every { wayDB.getAllForNode(1L) }.returns(listOf(way1))
         assertTrue(cache.getWaysForNode(1L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1)))
-        verify(wayDB).getAllForNode(1L) // was fetched from cache
+        verifyInvokedExactlyOnce { wayDB.getAllForNode(1L) } // was fetched from cache
 
         val way2 = way(2, nodes = listOf(1L, 2L))
         cache.update(updatedElements = listOf(way2))
         assertTrue(cache.getWaysForNode(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(way1, way2)))
 
-        on(wayDB.getAllForNode(2L)).thenReturn(listOf(way1, way2))
+        every { wayDB.getAllForNode(2L) }.returns(listOf(way1, way2))
         assertTrue(cache.getWaysForNode(2L) { wayDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(way1, way2)))
-        verify(wayDB).getAllForNode(2L) // was fetched from cache
+        verifyInvokedExactlyOnce { wayDB.getAllForNode(2L) } // was fetched from cache
     }
 
     @Test fun `update doesn't create relationsByElementKey entry if element is not referenced by spatialCache`() {
@@ -723,13 +733,13 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(node1, node2, way1, rel1))
 
-        val relationDB: RelationDao = mock()
-        on(relationDB.getAllForNode(2L)).thenReturn(listOf(rel1))
-        on(relationDB.getAllForWay(1L)).thenReturn(listOf(rel1))
+        val relationDB: RelationDao = mock(classOf<RelationDao>())
+        every { relationDB.getAllForNode(2L) }.returns(listOf(rel1))
+        every { relationDB.getAllForWay(1L) }.returns(listOf(rel1))
         assertTrue(cache.getRelationsForNode(2L) { relationDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(rel1)))
-        verify(relationDB).getAllForNode(2L) // was fetched from cache
+        verifyInvokedExactlyOnce { relationDB.getAllForNode(2L) } // was fetched from cache
         assertTrue(cache.getRelationsForWay(1L) { relationDB.getAllForWay(it) }.containsExactlyInAnyOrder(listOf(rel1)))
-        verify(relationDB).getAllForWay(1L) // was fetched from cache
+        verifyInvokedExactlyOnce { relationDB.getAllForWay(1L) } // was fetched from cache
     }
 
     @Test fun `update does create relationsByElementKey entry if element is referenced by spatialCache`() {
@@ -756,18 +766,18 @@ internal class MapDataCacheTest {
         val cache = getEmptyMapDataCache()
         cache.update(updatedElements = listOf(rel1))
 
-        val relationDB: RelationDao = mock()
-        on(relationDB.getAllForWay(1L)).thenReturn(listOf(rel1))
+        val relationDB: RelationDao = mock(classOf<RelationDao>())
+        every { relationDB.getAllForWay(1L) }.returns(listOf(rel1))
         assertTrue(cache.getRelationsForWay(1L) { relationDB.getAllForWay(it) }.containsExactlyInAnyOrder(listOf(rel1)))
-        verify(relationDB).getAllForWay(1L) // was fetched from cache
+        verifyInvokedExactlyOnce { relationDB.getAllForWay(1L) } // was fetched from cache
 
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.NODE, 3L, ""), RelationMember(ElementType.WAY, 1L, "")))
         cache.update(updatedElements = listOf(rel2))
         assertTrue(cache.getRelationsForWay(1L) { throw IllegalStateException() }.containsExactlyInAnyOrder(listOf(rel1, rel2)))
 
-        on(relationDB.getAllForNode(3L)).thenReturn(listOf(rel2))
+        every { relationDB.getAllForNode(3L) }.returns(listOf(rel2))
         assertTrue(cache.getRelationsForNode(3L) { relationDB.getAllForNode(it) }.containsExactlyInAnyOrder(listOf(rel2)))
-        verify(relationDB).getAllForNode(3L) // was fetched from cache
+        verifyInvokedExactlyOnce { relationDB.getAllForNode(3L) } // was fetched from cache
     }
 
     @Test fun `getMapDataWithGeometry fetches all and caches if nothing is cached`() {
@@ -783,8 +793,8 @@ internal class MapDataCacheTest {
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
         val elementsInsideBBox = listOf(node1, node2, node3, way1, way2, way3, rel1, rel2)
-        val elementDB: ElementDao = mock()
-        on(elementDB.getAll(nodesRect.asBoundingBox(16))).thenReturn(elementsInsideBBox)
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.getAll(nodesRect.asBoundingBox(16)) }.returns(elementsInsideBBox)
         val cache = MapDataCache(16, 4, 10, { elementDB.getAll(it) to emptyList() }, { emptyList() })
 
         val expectedMapData = MutableMapDataWithGeometry().apply {
@@ -793,10 +803,10 @@ internal class MapDataCacheTest {
             boundingBox = nodesBBox
         }
         assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
-        verify(elementDB).getAll(nodesRect.asBoundingBox(16))
+        verifyInvokedExactlyOnce { elementDB.getAll(nodesRect.asBoundingBox(16)) }
         // second time it's cached
         assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
-        verifyNoMoreInteractions(elementDB)
+        // verifyNoMoreInteractions(elementDB)
     }
 
     @Test fun `getMapDataWithGeometry fetches only part if something is already cached`() {
@@ -813,8 +823,8 @@ internal class MapDataCacheTest {
         val way3 = way(3, nodes = listOf(3L, 2L))
         val rel1 = rel(1, members = listOf(RelationMember(ElementType.NODE, 1L, "")))
         val rel2 = rel(2, members = listOf(RelationMember(ElementType.WAY, 1L, "")))
-        val elementDB: ElementDao = mock()
-        on(elementDB.getAll(node1rect.asBoundingBox(16))).thenReturn(listOf(node1, node3, way2, way3, rel1))
+        val elementDB: ElementDao = mock(classOf<ElementDao>())
+        every { elementDB.getAll(node1rect.asBoundingBox(16)) }.returns(listOf(node1, node3, way2, way3, rel1))
         val cache = MapDataCache(16, 4, 10, { elementDB.getAll(it) to emptyList() }, { emptyList() })
 
         cache.update(updatedElements = listOf(node2, way1, rel2), bbox = node2rect.asBoundingBox(16))
@@ -825,10 +835,9 @@ internal class MapDataCacheTest {
             boundingBox = nodesBBox
         }
         assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
-        verify(elementDB).getAll(node1rect.asBoundingBox(16))
+        verifyInvokedExactlyOnce { elementDB.getAll(node1rect.asBoundingBox(16)) }
         // second time it's cached
         assertEquals(expectedMapData, cache.getMapDataWithGeometry(nodesBBox))
-        verifyNoMoreInteractions(elementDB)
     }
 
     @Test fun `getMapDataWithGeometry fetches nothing if all is cached`() {

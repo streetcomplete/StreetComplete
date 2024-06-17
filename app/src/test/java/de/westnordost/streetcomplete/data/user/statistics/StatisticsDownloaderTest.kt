@@ -1,24 +1,28 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respondBadRequest
 import io.ktor.client.engine.mock.respondOk
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.every
+import io.mockative.mock
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
 
 class StatisticsDownloaderTest {
-    private val statisticsParser: StatisticsParser = mock()
+    @Mock
+    private val statisticsParser: StatisticsParser = mock(classOf<StatisticsParser>())
 
     private val validResponseMockEngine = MockEngine { _ -> respondOk("simple response") }
 
     @Test fun `download parses all statistics`() = runBlocking {
         val stats = Statistics(types = listOf(), countries = listOf(), rank = 2, daysActive = 100, currentWeekRank = 50, currentWeekTypes = listOf(), currentWeekCountries = listOf(), activeDates = listOf(), activeDatesRange = 100, isAnalyzing = false, lastUpdate = 10)
-        on(statisticsParser.parse("simple response")).thenReturn(stats)
+        every { statisticsParser.parse("simple response") }.returns(stats)
         assertEquals(stats, StatisticsDownloader(HttpClient(validResponseMockEngine), "", statisticsParser).download(100))
     }
 
@@ -33,6 +37,9 @@ class StatisticsDownloaderTest {
     }
 
     @Test fun `download constructs request URL`() = runBlocking {
+        val stats = Statistics(types = listOf(), countries = listOf(), rank = 2, daysActive = 100, currentWeekRank = 50, currentWeekTypes = listOf(), currentWeekCountries = listOf(), activeDates = listOf(), activeDatesRange = 100, isAnalyzing = false, lastUpdate = 10)
+        every { statisticsParser.parse(any()) }.returns(stats)
+
         StatisticsDownloader(
             HttpClient(validResponseMockEngine),
             "https://example.com/stats/",

@@ -16,9 +16,11 @@ import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSi
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
+import de.westnordost.streetcomplete.util.Mockable
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+@Mockable
 enum class EditTypeAchievement(val id: String) {
     RARE("rare"),
     CAR("car"),

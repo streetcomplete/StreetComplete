@@ -7,12 +7,14 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
 import de.westnordost.streetcomplete.data.upload.ConflictException
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
 import java.util.Locale
 
 /** Manages the creation and reusage of changesets */
+@Mockable
 class OpenChangesetsManager(
     private val mapDataApi: MapDataApi,
     private val openChangesetsDB: OpenChangesetsDao,

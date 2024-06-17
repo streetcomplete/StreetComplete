@@ -15,9 +15,11 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
+@Mockable
 class EditHistoryController(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,

@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.util.Mockable
 
+@Mockable
 class MutableMapDataWithGeometry() : MapDataWithGeometry {
 
     constructor(elements: Iterable<Element>, geometryEntries: Iterable<ElementGeometryEntry>) : this() {

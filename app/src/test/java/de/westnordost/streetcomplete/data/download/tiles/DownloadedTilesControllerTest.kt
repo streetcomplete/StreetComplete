@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.data.download.tiles
 
-import de.westnordost.streetcomplete.testutils.eq
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
-import org.mockito.Mockito.anyLong
-import org.mockito.Mockito.verify
+import de.westnordost.streetcomplete.testutils.verifyInvokedExactlyOnce
+import io.mockative.Mock
+import io.mockative.any
+import io.mockative.classOf
+import io.mockative.eq
+import io.mockative.every
+import io.mockative.mock
+
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -12,13 +15,16 @@ import kotlin.test.assertTrue
 
 class DownloadedTilesControllerTest {
 
-    private lateinit var dao: DownloadedTilesDao
-    private lateinit var listener: DownloadedTilesSource.Listener
-    private lateinit var ctrl: DownloadedTilesController
+    // @Mock
+    // val dao = mock(classOf<DownloadedTilesDao>())
+    // @Mock val listener = mock(classOf<DownloadedTilesSource.Listener>())
+    @Mock private lateinit var dao: DownloadedTilesDao
+    @Mock private lateinit var listener: DownloadedTilesSource.Listener
+    @Mock private lateinit var ctrl: DownloadedTilesController
 
     @BeforeTest fun setUp() {
-        dao = mock()
-        listener = mock()
+        dao = mock(classOf<DownloadedTilesDao>())
+        listener = mock(classOf<DownloadedTilesSource.Listener>())
         ctrl = DownloadedTilesController(dao)
         ctrl.addListener(listener)
     }
@@ -26,44 +32,45 @@ class DownloadedTilesControllerTest {
     @Test fun put() {
         val r = TilesRect(0, 0, 1, 1)
         ctrl.put(r)
-        verify(dao).put(r)
-        verify(listener).onUpdated()
+        verifyInvokedExactlyOnce { dao.put(r) }
+        verifyInvokedExactlyOnce { listener.onUpdated() }
     }
 
     @Test fun clear() {
         ctrl.clear()
-        verify(dao).deleteAll()
-        verify(listener).onUpdated()
+        verifyInvokedExactlyOnce { dao.deleteAll() }
+        verifyInvokedExactlyOnce { listener.onUpdated() }
     }
 
     @Test fun invalidate() {
         val t = TilePos(0, 0)
         ctrl.invalidate(t)
-        verify(dao).updateTimeNewerThan(eq(t), anyLong()) // hm, difficult to test the exact time...
-        verify(listener).onUpdated()
+        verifyInvokedExactlyOnce { dao.updateTimeNewerThan(eq(t), any()) } // hm, difficult to test the exact time...
+        verifyInvokedExactlyOnce { listener.onUpdated() }
     }
 
     @Test fun invalidateAll() {
         ctrl.invalidateAll()
-        verify(dao).updateAllTimesNewerThan(anyLong()) // hm, difficult to test the exact time...
-        verify(listener).onUpdated()
+        verifyInvokedExactlyOnce { dao.updateAllTimesNewerThan(any()) } // hm, difficult to test the exact time...
+        verifyInvokedExactlyOnce { listener.onUpdated() }
     }
 
     @Test fun deleteOlderThan() {
+        every { dao.deleteOlderThan(123) }.returns(1)
         ctrl.deleteOlderThan(123L)
-        verify(dao).deleteOlderThan(123L)
-        verify(listener).onUpdated()
+        verifyInvokedExactlyOnce { dao.deleteOlderThan(123L) }
+        verifyInvokedExactlyOnce { listener.onUpdated() }
     }
 
     @Test fun getAll() {
         val r = listOf(TilePos(0, 1))
-        on(dao.getAll(123)).thenReturn(r)
+        every { dao.getAll(123) }.returns(r)
         assertEquals(r, ctrl.getAll(123))
     }
 
     @Test fun contains() {
         val r = TilesRect(0, 0, 1, 1)
-        on(dao.contains(r, 123L)).thenReturn(true)
+        every { dao.contains(r, 123L) }.returns(true)
         assertTrue(ctrl.contains(r, 123L))
     }
 }
