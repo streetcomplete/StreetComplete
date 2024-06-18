@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Divider
 import androidx.compose.material.IconButton
@@ -48,6 +47,12 @@ import java.util.Locale
         viewModel.currentCountry?.let { Locale("", it).displayCountry } ?: "Atlantis"
     }
 
+    // TODO Compose: reordering items not implemented. Seems to be not possible out of the box in
+    //  Compose, third-party libraries exist (like sh.calvin.reorderable:reorderable), but I didn't
+    //  find how to call viewModel.orderQuest only on drop, i.e end of dragging.
+    //  (quests should be reordered visibly while dragging, but only on drop, function is called and
+    //  quests in viewModel is updated)
+
     Column(Modifier.fillMaxSize()) {
         val presetName = viewModel.selectedQuestPresetName
             ?: stringResource(R.string.quest_presets_default_name)
@@ -77,11 +82,11 @@ import java.util.Locale
                     stickyHeader {
                         QuestSelectionHeader()
                     }
-                    items(
+                    itemsIndexed(
                         items = quests,
-                        key = { it.questType::class }
-                    ) { item ->
-                        Divider()
+                        key = { _, it -> it.questType.name }
+                    ) { index, item ->
+                        if (index != 0) Divider()
                         val isEnabled = viewModel.isQuestEnabledInCurrentCountry(item.questType)
                         QuestSelectionItem(
                             questType = item.questType,

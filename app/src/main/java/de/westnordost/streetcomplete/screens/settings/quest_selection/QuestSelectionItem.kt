@@ -61,18 +61,10 @@ fun QuestSelectionItem(
             .height(IntrinsicSize.Min),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(
-            modifier = Modifier.width(24.dp).fillMaxHeight(),
-            contentAlignment = Alignment.Center
-        ) {
-            if (isInteractionEnabled) {
-                Image(painterResource(R.drawable.ic_drag_vertical), null)
-            }
-        }
         Image(
             painter = painterResource(questType.icon),
             contentDescription = questType.name,
-            modifier = Modifier.size(iconSize),
+            modifier = Modifier.padding(start = 16.dp).size(iconSize),
             colorFilter = iconTint
         )
         Column(
