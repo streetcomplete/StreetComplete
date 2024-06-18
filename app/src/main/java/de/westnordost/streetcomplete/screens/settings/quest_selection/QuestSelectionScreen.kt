@@ -47,11 +47,15 @@ import java.util.Locale
         viewModel.currentCountry?.let { Locale("", it).displayCountry } ?: "Atlantis"
     }
 
+    // TODO Compose: SearchBar only exists for material3, but we use material2
+    //  https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary?hl=en#SearchBar(kotlin.Function0,kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape,androidx.compose.material3.SearchBarColors,androidx.compose.ui.unit.Dp,androidx.compose.ui.unit.Dp,androidx.compose.foundation.layout.WindowInsets,kotlin.Function1)
+
     // TODO Compose: reordering items not implemented. Seems to be not possible out of the box in
     //  Compose, third-party libraries exist (like sh.calvin.reorderable:reorderable), but I didn't
     //  find how to call viewModel.orderQuest only on drop, i.e end of dragging.
     //  (quests should be reordered visibly while dragging, but only on drop, function is called and
     //  quests in viewModel is updated)
+    //  see also https://developer.android.com/jetpack/androidx/compose-roadmap ("Drag and drop in Lazy layouts")
 
     Column(Modifier.fillMaxSize()) {
         val presetName = viewModel.selectedQuestPresetName
@@ -142,4 +146,5 @@ private fun filterQuests(quests: List<QuestSelection>, filter: String?): List<Qu
 private fun questTypeMatchesSearchWords(questType: QuestType, words: List<String>) =
     genericQuestTitle(questType).lowercase().containsAll(words)
     // TODO Compose: no idea how to access English resources in order to also search English words.
-    //               Not really worth investigating until after switching to compose multiplatform
+    //  Not really worth investigating until after switching to compose multiplatform because that
+    //  comes with an own (non-Android-specific) resource management system
