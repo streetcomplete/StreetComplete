@@ -42,7 +42,7 @@ fun QuestSelectionItem(
     isSelected: Boolean,
     onToggleSelection: (isSelected: Boolean) -> Unit,
     isInteractionEnabled: Boolean,
-    currentCountry: String?,
+    displayCountry: String,
     isEnabledInCurrentCountry: Boolean,
     iconSize: Dp,
     modifier: Modifier = Modifier,
@@ -86,7 +86,7 @@ fun QuestSelectionItem(
             )
             if (!isEnabledInCurrentCountry) {
                 Text(
-                    text = stringResource(R.string.questList_disabled_in_country, currentCountry ?: "Atlantis"),
+                    text = stringResource(R.string.questList_disabled_in_country, displayCountry),
                     modifier = Modifier
                         .padding(top = 6.dp)
                         .background(MaterialTheme.colors.surfaceContainer, RoundedCornerShape(4.dp))
@@ -119,7 +119,7 @@ private fun QuestSelectionItemPreview() {
         isSelected = selected.value,
         onToggleSelection = { selected.value = !selected.value },
         isInteractionEnabled = true,
-        currentCountry = "Atlantis",
+        displayCountry = "Atlantis",
         isEnabledInCurrentCountry = false,
         iconSize = 64.dp,
     )

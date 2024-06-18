@@ -12,7 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
-import de.westnordost.streetcomplete.screens.user.CenteredLargeTitleHint
+import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 
 /** Shows the icons for all achieved achievements and opens a dialog to show the details on click. */
 @Composable

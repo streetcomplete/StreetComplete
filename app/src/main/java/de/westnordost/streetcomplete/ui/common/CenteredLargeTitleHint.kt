@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.user
+package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

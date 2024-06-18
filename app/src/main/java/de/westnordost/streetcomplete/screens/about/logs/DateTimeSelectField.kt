@@ -36,7 +36,7 @@ fun DateTimeSelectField(
     OutlinedTextField(
         value = value?.let { dateTimeToString(locale, it) } ?: "",
         onValueChange = { },
-        // TODO Compose modifier.clickable { } does not work
+        // TODO Compose modifier.clickable { } does not work, so, need to click on icon
         modifier = modifier,
         readOnly = true,
         label = label,
