@@ -8,16 +8,20 @@ import de.westnordost.streetcomplete.R
 
 @Composable
 fun BackIcon() {
-    Icon(
-        painter = painterResource(R.drawable.ic_arrow_back_24dp),
-        contentDescription = stringResource(R.string.action_back),
-    )
+    Icon(painterResource(R.drawable.ic_arrow_back_24dp), stringResource(R.string.action_back))
 }
 
 @Composable
 fun ClearIcon() {
-    Icon(
-        painter = painterResource(R.drawable.ic_clear_24dp),
-        contentDescription = stringResource(R.string.action_clear),
-    )
+    Icon(painterResource(R.drawable.ic_clear_24dp), stringResource(R.string.action_clear))
+}
+
+@Composable
+fun MoreIcon() {
+    Icon(painterResource(R.drawable.ic_more_24dp), stringResource(R.string.action_more))
+}
+
+@Composable
+fun SearchIcon() {
+    Icon(painterResource(R.drawable.ic_search_24dp), stringResource(R.string.action_search))
 }

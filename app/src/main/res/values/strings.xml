@@ -300,6 +300,7 @@ Each of you will then see different quests."</string>
 
     <string name="action_back">Back</string>
     <string name="action_clear">Clear</string>
+    <string name="action_more">More</string>
 
     <!-- About screen -->
 
@@ -606,6 +607,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_type">Quest type</string>
 
     <string name="questList_disabled_in_country">Never shown in %s</string>
+    <string name="questList_disabled_by_default">Disabled by default</string>
 
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
 

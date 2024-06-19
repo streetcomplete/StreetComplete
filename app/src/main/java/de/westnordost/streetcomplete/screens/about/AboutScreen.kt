@@ -9,8 +9,10 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.integerResource
@@ -32,7 +34,7 @@ fun AboutScreen(
     onClickLogs: () -> Unit,
     onClickBack: () -> Unit,
 ) {
-    val showDonateDialog = remember { mutableStateOf(false) }
+    var showDonateDialog by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
 
@@ -79,7 +81,7 @@ fun AboutScreen(
 
             PreferenceItem(
                 title = stringResource(R.string.about_title_donate),
-                onClick = { showDonateDialog.value = true },
+                onClick = { showDonateDialog = true },
                 summary = stringResource(R.string.about_summary_donate),
             )
             PreferenceItem(
@@ -130,12 +132,12 @@ fun AboutScreen(
         }
     }
 
-    if (showDonateDialog.value) {
+    if (showDonateDialog) {
         if (BuildConfig.IS_GOOGLE_PLAY) {
-            DonationsGooglePlayDialog { showDonateDialog.value = false }
+            DonationsGooglePlayDialog { showDonateDialog = false }
         } else {
             DonationsDialog(
-                onDismissRequest = { showDonateDialog.value = false },
+                onDismissRequest = { showDonateDialog = false },
                 onClickLink = { context.openUri(it) }
             )
         }

@@ -4,6 +4,7 @@ import androidx.compose.material.Colors
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.graphics.Color
 
 /* Colors as they could be found on (illustrations of) traffic signs. */
@@ -55,27 +56,30 @@ val DarkColors = darkColors(
     onSecondary = Color.White
 )
 
-val Colors.disabled get() = Color(0x66999999)
+val Colors.disabledSurface get() = Color(0x33999999)
 
-val Colors.hint @Composable get() =
+val Colors.disabledText @ReadOnlyComposable @Composable get() =
+    if (isLight) Color(0x99666666) else Color(0x99999999)
+
+val Colors.hint @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xff666666) else Color(0xff999999)
 
-val Colors.surfaceContainer @Composable get() =
+val Colors.surfaceContainer @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xffdddddd) else Color(0xff222222)
 
 // use lighter tones (200) for increased contrast with dark background
 
-val Colors.logVerbose @Composable get() =
+val Colors.logVerbose @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xff666666) else Color(0xff999999)
 
-val Colors.logDebug @Composable get() =
+val Colors.logDebug @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xff2196f3) else Color(0xff90caf9)
 
-val Colors.logInfo @Composable get() =
+val Colors.logInfo @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xff4caf50) else Color(0xffa5d6a7)
 
-val Colors.logWarning @Composable get() =
+val Colors.logWarning @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xffff9800) else Color(0xffffcc80)
 
-val Colors.logError @Composable get() =
+val Colors.logError @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xfff44336) else Color(0xffef9a9a)
