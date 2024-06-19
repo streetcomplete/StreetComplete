@@ -27,7 +27,6 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract val currentCountry: String?
     abstract val quests: StateFlow<List<QuestSelection>>
 
-    abstract fun isQuestEnabledInCurrentCountry(questType: QuestType): Boolean
     abstract fun selectQuest(questType: QuestType, selected: Boolean)
     abstract fun orderQuest(questType: QuestType, toAfter: QuestType)
     abstract fun unselectAllQuests()
@@ -96,15 +95,6 @@ class QuestSelectionViewModelImpl(
         questTypeOrderController.removeListener(questTypeOrderListener)
     }
 
-    override fun isQuestEnabledInCurrentCountry(questType: QuestType): Boolean {
-        if (questType !is OsmElementQuestType<*>) return true
-        return when (val countries = questType.enabledInCountries) {
-            is AllCountries -> true
-            is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
-            is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
-        }
-    }
-
     override fun selectQuest(questType: QuestType, selected: Boolean) {
         launch(IO) {
             visibleQuestTypeController.setVisibility(questType, selected)
@@ -135,8 +125,21 @@ class QuestSelectionViewModelImpl(
             val sortedQuestTypes = questTypeRegistry.toMutableList()
             questTypeOrderController.sort(sortedQuestTypes)
             quests.value = sortedQuestTypes
-                .map { QuestSelection(it, visibleQuestTypeController.isVisible(it)) }
+                .map { QuestSelection(
+                    questType = it,
+                    selected = visibleQuestTypeController.isVisible(it),
+                    enabledInCurrentCountry = isQuestEnabledInCurrentCountry(it)
+                ) }
                 .toMutableList()
+        }
+    }
+
+    private fun isQuestEnabledInCurrentCountry(questType: QuestType): Boolean {
+        if (questType !is OsmElementQuestType<*>) return true
+        return when (val countries = questType.enabledInCountries) {
+            is AllCountries -> true
+            is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
+            is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
         }
     }
 }

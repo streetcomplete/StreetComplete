@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.hint
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 
+/** A large hint text shown in the center. Usually used to describe missing content */
 @Composable
 fun CenteredLargeTitleHint(text: String, modifier: Modifier = Modifier) {
     Box(
