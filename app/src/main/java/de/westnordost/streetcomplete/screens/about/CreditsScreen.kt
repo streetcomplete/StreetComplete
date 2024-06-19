@@ -44,7 +44,7 @@ fun CreditsScreen(
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.about_title_authors)) },
-            navigationIcon = { IconButton(onClick = { onClickBack() }) { BackIcon() } },
+            navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         credits?.let { credits ->
             val context = LocalContext.current

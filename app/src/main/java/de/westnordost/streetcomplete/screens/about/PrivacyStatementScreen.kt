@@ -32,7 +32,7 @@ fun PrivacyStatementScreen(
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
             title = { Text(stringResource(R.string.about_title_privacy_statement)) },
-            navigationIcon = { IconButton(onClick = { onClickBack() }) { BackIcon() } },
+            navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         SelectionContainer {
             val context = LocalContext.current
