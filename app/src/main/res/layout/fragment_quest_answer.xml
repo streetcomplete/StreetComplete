@@ -165,6 +165,16 @@
                                     android:paddingTop="@dimen/quest_form_vertical_padding"
                                     android:paddingBottom="@dimen/quest_form_vertical_padding"/>
 
+                                <androidx.compose.ui.platform.ComposeView
+                                    android:id="@+id/composeView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:paddingStart="@dimen/quest_form_horizontal_padding"
+                                    android:paddingEnd="@dimen/quest_form_horizontal_padding"
+                                    android:paddingTop="@dimen/quest_form_vertical_padding"
+                                    android:paddingBottom="@dimen/quest_form_vertical_padding"/>
+
                                 <com.google.android.flexbox.FlexboxLayout
                                     android:id="@+id/buttonPanel"
                                     android:layout_width="match_parent"

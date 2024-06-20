@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.step_count
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestStepCountBinding
@@ -12,6 +14,11 @@ class AddStepCountForm : AbstractOsmQuestForm<Int>() {
 
     override val contentLayoutResId = R.layout.quest_step_count
     private val binding by contentViewBinding(QuestStepCountBinding::bind)
+
+    override val questForm: @Composable () -> Unit
+        get() = {
+            Text(text = "Hello World")
+        }
 
     private val count get() = binding.countInput.intOrNull ?: 0
 

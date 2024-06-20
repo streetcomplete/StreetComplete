@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.AnyThread
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
@@ -96,6 +98,8 @@ abstract class AbstractQuestForm :
     open val contentLayoutResId: Int? = null
     open val contentPadding = true
 
+    open val questForm: @Composable() (() -> Unit)? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -111,6 +115,7 @@ abstract class AbstractQuestForm :
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentQuestAnswerBinding.inflate(inflater, container, false)
         contentLayoutResId?.let { setContentView(it) }
+        questForm?.let { setComposeContentView() }
         return binding.root
     }
 
@@ -137,6 +142,13 @@ abstract class AbstractQuestForm :
         // no content? -> hide the content container
         if (binding.content.childCount == 0) {
             binding.content.visibility = View.GONE
+        }
+
+        println(binding.composeView.childCount)
+
+        binding.composeView.visibility = when(binding.composeView.childCount) {
+            0 -> View.GONE
+            else -> View.VISIBLE
         }
     }
 
@@ -204,6 +216,21 @@ abstract class AbstractQuestForm :
         updateContentPadding()
         layoutInflater.inflate(resourceId, binding.content)
         return binding.content.getChildAt(0)
+    }
+
+    private fun setComposeContentView(): View {
+        if (binding.composeView.childCount > 0) {
+            binding.composeView.removeAllViews()
+        }
+        binding.composeView.visibility = View.VISIBLE
+        updateContentPadding()
+        binding.composeView.apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                questForm?.let { it() }
+            }
+        }
+        return binding.composeView
     }
 
     protected fun setLocked(locked: Boolean) {
