@@ -4,18 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbarLayout"
-        layout="@layout/toolbar"
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/showQuestFormsScreen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/showQuestFormsList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarLayout"
-        tools:listitem="@layout/row_quest_display" />
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:id="@+id/questFormContainer"
