@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.ui.util.composableContent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment : Fragment() {
 
     private val viewModel by viewModel<QuestSelectionViewModel>()

@@ -26,11 +26,6 @@ fun ExpandableSearchField(
 ) {
     val filterFocusRequester = remember { FocusRequester() }
 
-    fun onClickClear() {
-        if (search.text.isBlank()) onDismiss()
-        else onSearchChange(TextFieldValue())
-    }
-
     LaunchedEffect(expanded) {
         if (expanded) filterFocusRequester.requestFocus()
     }
@@ -40,7 +35,10 @@ fun ExpandableSearchField(
             onValueChange = onSearchChange,
             modifier = modifier.focusRequester(filterFocusRequester),
             leadingIcon = { SearchIcon() },
-            trailingIcon = { IconButton(onClick = ::onClickClear) { ClearIcon() } },
+            trailingIcon = { IconButton(onClick = {
+                if (search.text.isBlank()) onDismiss()
+                else onSearchChange(TextFieldValue())
+            }) { ClearIcon() } },
             singleLine = true,
             colors = colors
         )

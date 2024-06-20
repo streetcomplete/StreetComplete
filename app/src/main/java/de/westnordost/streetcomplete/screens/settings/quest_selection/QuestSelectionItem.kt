@@ -35,6 +35,8 @@ import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.ui.theme.disabledText
 import de.westnordost.streetcomplete.ui.theme.hint
 
+/** Single item the the quest selection list. Shows icon + title, wether it is enabled and whether
+ *  it is disabled by default / disabled in the country one is in */
 @Composable
 fun QuestSelectionItem(
     item: QuestSelection,

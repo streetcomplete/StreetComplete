@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusSt
 import de.westnordost.streetcomplete.ui.common.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 
-/** Quest list */
+/** List of quest types to individually enable or disable or reorder them */
 @Composable
 fun QuestSelectionList(
     items: List<QuestSelection>,

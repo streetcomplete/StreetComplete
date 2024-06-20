@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.settings.quest_selection
 
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -19,7 +18,9 @@ import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import java.util.Locale
 
-@Composable fun QuestSelectionScreen(
+/** Shows a screen in which the user can enable and disable quests as well as re-order them */
+@Composable
+fun QuestSelectionScreen(
     viewModel: QuestSelectionViewModel,
     onClickBack: () -> Unit,
 ) {

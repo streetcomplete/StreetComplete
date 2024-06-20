@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
 import de.westnordost.streetcomplete.ui.common.MoreIcon
 import de.westnordost.streetcomplete.ui.common.SearchIcon
 
-/** Top bar and search field */
+/** Top bar and search field for the quest selection screen */
 @Composable fun QuestSelectionTopAppBar(
     currentPresetName: String,
     onClickBack: () -> Unit,
@@ -43,6 +43,11 @@ import de.westnordost.streetcomplete.ui.common.SearchIcon
     modifier: Modifier = Modifier,
 ) {
     var showSearch by remember { mutableStateOf(false) }
+
+    fun setShowSearch(value: Boolean) {
+        showSearch = value
+        if (!value) onSearchChange(TextFieldValue())
+    }
 
     Surface(
         modifier = modifier,
@@ -57,17 +62,14 @@ import de.westnordost.streetcomplete.ui.common.SearchIcon
                     QuestSelectionTopBarActions(
                         onUnselectAll = onUnselectAll,
                         onReset = onReset,
-                        onClickSearch = { showSearch = !showSearch }
+                        onClickSearch = { setShowSearch(!showSearch) }
                     )
                 },
                 elevation = 0.dp
             )
             ExpandableSearchField(
                 expanded = showSearch,
-                onDismiss = {
-                    showSearch = false
-                    onSearchChange(TextFieldValue())
-                },
+                onDismiss = { setShowSearch(false) },
                 search = search,
                 onSearchChange = onSearchChange,
                 modifier = Modifier
