@@ -23,7 +23,7 @@ fun ConfirmationDialog(
     text: @Composable (() -> Unit)? = null,
     confirmButtonText: String = stringResource(android.R.string.ok),
     cancelButtonText: String = stringResource(android.R.string.cancel),
-    shape : Shape = MaterialTheme . shapes . medium,
+    shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
     properties: DialogProperties = DialogProperties(),

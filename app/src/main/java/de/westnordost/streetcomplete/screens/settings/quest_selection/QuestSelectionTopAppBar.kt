@@ -94,6 +94,8 @@ private fun QuestSelectionTitle(currentPresetName: String) {
         )
         Text(
             text = stringResource(R.string.pref_subtitle_quests_preset_name, currentPresetName),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.body1,
         )
     }

@@ -25,3 +25,8 @@ fun MoreIcon() {
 fun SearchIcon() {
     Icon(painterResource(R.drawable.ic_search_24dp), stringResource(R.string.action_search))
 }
+
+@Composable
+fun CopyIcon() {
+    Icon(painterResource(R.drawable.ic_content_copy_24dp), stringResource(android.R.string.copy))
+}

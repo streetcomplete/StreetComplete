@@ -24,16 +24,16 @@ fun ExpandableSearchField(
     modifier: Modifier = Modifier,
     colors: TextFieldColors = TextFieldDefaults.textFieldColors(),
 ) {
-    val filterFocusRequester = remember { FocusRequester() }
+    val focusRequester = remember { FocusRequester() }
 
     LaunchedEffect(expanded) {
-        if (expanded) filterFocusRequester.requestFocus()
+        if (expanded) focusRequester.requestFocus()
     }
     AnimatedVisibility(visible = expanded, modifier = Modifier.fillMaxWidth()) {
         TextField(
             value = search,
             onValueChange = onSearchChange,
-            modifier = modifier.focusRequester(filterFocusRequester),
+            modifier = modifier.focusRequester(focusRequester),
             leadingIcon = { SearchIcon() },
             trailingIcon = { IconButton(onClick = {
                 if (search.text.isBlank()) onDismiss()
