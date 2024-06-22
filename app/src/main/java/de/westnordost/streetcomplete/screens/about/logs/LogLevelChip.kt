@@ -10,6 +10,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FilterChip
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,9 +22,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogLevel
+import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.logDebug
 import de.westnordost.streetcomplete.ui.theme.logError
 import de.westnordost.streetcomplete.ui.theme.logInfo
@@ -80,8 +83,8 @@ fun LogLevelFilterChip(
         modifier = modifier,
         colors = ChipDefaults.filterChipColors(
             contentColor = logLevel.color,
-            selectedContentColor = MaterialTheme.colors.onPrimary,
-            selectedLeadingIconColor = MaterialTheme.colors.onPrimary,
+            selectedContentColor = MaterialTheme.colors.surface,
+            selectedLeadingIconColor = MaterialTheme.colors.surface,
             selectedBackgroundColor = logLevel.color,
         ),
         leadingIcon = { Icon(painterResource(icon), null) },
@@ -98,12 +101,14 @@ val LogLevel.color: Color @Composable get() = when (this) {
     LogLevel.ERROR -> MaterialTheme.colors.logError
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun LogLevelFilterChipsPreview() {
-    var logLevels by remember { mutableStateOf(LogLevel.entries.toSet()) }
-    LogLevelFilterChips(
-        selectedLogLevels = logLevels,
-        onSelectedLogLevels = { logLevels = it }
-    )
+    AppTheme { Surface {
+        var logLevels by remember { mutableStateOf(LogLevel.entries.toSet()) }
+        LogLevelFilterChips(
+            selectedLogLevels = logLevels,
+            onSelectedLogLevels = { logLevels = it }
+        )
+    } }
 }

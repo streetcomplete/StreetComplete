@@ -2,13 +2,22 @@ package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.isSpecified
+import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.util.toAnnotatedString
 import de.westnordost.streetcomplete.util.html.HtmlNode
 import de.westnordost.streetcomplete.util.html.tryParseHtml
@@ -17,7 +26,8 @@ import de.westnordost.streetcomplete.util.html.tryParseHtml
 fun HtmlText(
     html: String,
     modifier: Modifier = Modifier,
-    style: TextStyle = TextStyle.Default,
+    color: Color = Color.Unspecified,
+    style: TextStyle = LocalTextStyle.current,
     softWrap: Boolean = true,
     overflow: TextOverflow = TextOverflow.Clip,
     maxLines: Int = Int.MAX_VALUE,
@@ -26,6 +36,7 @@ fun HtmlText(
     HtmlText(
         html = tryParseHtml(html),
         modifier = modifier,
+        color = color,
         style = style,
         softWrap = softWrap,
         overflow = overflow,
@@ -39,17 +50,19 @@ fun HtmlText(
 fun HtmlText(
     html: List<HtmlNode>,
     modifier: Modifier = Modifier,
-    style: TextStyle = TextStyle.Default,
+    color: Color = Color.Unspecified,
+    style: TextStyle = LocalTextStyle.current,
     softWrap: Boolean = true,
     overflow: TextOverflow = TextOverflow.Clip,
     maxLines: Int = Int.MAX_VALUE,
     onClickLink: (String) -> Unit
 ) {
     val annotatedString = html.toAnnotatedString()
+    val styleWithColor = style.copy(color = color.takeOrElse { LocalContentColor.current })
     ClickableText(
         text = annotatedString,
         modifier = modifier,
-        style = style,
+        style = styleWithColor,
         softWrap = softWrap,
         overflow = overflow,
         maxLines = maxLines,
@@ -59,10 +72,11 @@ fun HtmlText(
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun HtmlTextPreview() {
-    HtmlText("""normal
+    AppTheme { Surface {
+        HtmlText("""normal
     <b>bold</b>
     <i>italic</i>
     <s>strike</s>
@@ -87,5 +101,6 @@ private fun HtmlTextPreview() {
     <p>Paragraph</p>
     <blockquote>A block quotation is a quotation in a written document that is set off from the main text as a paragraph, or block of text, and typically distinguished visually using indentation.</blockquote>
     """,
-        modifier = Modifier.width(320.dp)) {}
+            modifier = Modifier.width(320.dp)) {}
+    }}
 }
