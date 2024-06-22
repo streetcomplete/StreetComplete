@@ -22,6 +22,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.StreetCompleteApplication
@@ -84,6 +85,9 @@ class DataManagementSettingsFragment :
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences_ee_data_management, false)
         addPreferencesFromResource(R.xml.preferences_ee_data_management)
+
+        if (!BuildConfig.DEBUG && !prefs.getBoolean(Prefs.TEMP_LOGGER, false))
+            findPreference<Preference>("temp_logger")?.isVisible = false
 
         fun importExport(import: Boolean) {
             val lists = listOf(

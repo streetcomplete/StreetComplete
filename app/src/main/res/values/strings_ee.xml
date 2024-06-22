@@ -24,9 +24,13 @@
         Be aware that by enabling expert mode you bear significantly more responsibility for your edits.\n
         Please only enable this setting if you have OSM experience outside StreetComplete and understand what you are doing.
     </string>
+    <!-- no need ot translate, debug only -->
     <string name="pref_read_log_title">Log reader</string>
+    <!-- no need ot translate, debug only -->
     <string name="pref_read_log_save">Save full log to file</string>
+    <!-- no need ot translate, debug only -->
     <string name="pref_read_reverse_button">Reverse</string>
+    <!-- no need ot translate, debug only -->
     <string name="pref_read_filter_hint">Filter…</string>
 
     <!-- notes settings -->
