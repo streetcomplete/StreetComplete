@@ -56,6 +56,7 @@ fun QuestPresetItem(
     var showDeleteDialog by remember { mutableStateOf(false) }
     var showRenameDialog by remember { mutableStateOf(false) }
     var showDuplicateDialog by remember { mutableStateOf(false) }
+    var showShareDialog by remember { mutableStateOf(false) }
 
     val name = item.name.ifEmpty { stringResource(R.string.quest_presets_default_name) }
 
@@ -84,7 +85,7 @@ fun QuestPresetItem(
                 onDismissRequest = { showActionsDropdown = false },
                 onRename = { showRenameDialog = true },
                 onDuplicate = { showDuplicateDialog = true },
-                onShare = { onShare() },
+                onShare = { showShareDialog = true; onShare() },
                 onDelete = { showDeleteDialog = true },
                 item.id == 0L,
             )
@@ -123,6 +124,12 @@ fun QuestPresetItem(
             onConfirmed = onDelete,
             text = { Text(stringResource(R.string.quest_presets_delete_message, name)) },
             confirmButtonText = stringResource(R.string.delete_confirmation),
+        )
+    }
+    if (showShareDialog && item.url != null) {
+        UrlConfigQRCodeDialog(
+            onDismissRequest = { showShareDialog = false },
+            url = item.url
         )
     }
 }

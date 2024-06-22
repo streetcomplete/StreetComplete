@@ -83,7 +83,7 @@ private fun QuestPresetsList(viewModel: QuestPresetsViewModel) {
                         onSelect = { viewModel.select(item.id) },
                         onRename = { viewModel.rename(item.id, it) },
                         onDuplicate = { viewModel.duplicate(item.id, it) },
-                        onShare = { /* TODO */ },
+                        onShare = { viewModel.queryUrlConfig(item.id) },
                         onDelete = { viewModel.delete(item.id) },
                         modifier = Modifier.padding(vertical = 4.dp)
                     )

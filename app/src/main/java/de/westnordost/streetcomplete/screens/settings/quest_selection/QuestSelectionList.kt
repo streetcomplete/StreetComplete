@@ -38,6 +38,9 @@ fun QuestSelectionList(
 
     Column {
         QuestSelectionHeader()
+        // TODO Compose: scrollbars would be nice here (not supported yet by compose)
+        //      When they are available: Check other places too, don't want to add a todo in every
+        //      single place that could have a scrollbar
         LazyColumn {
             itemsIndexed(items, key = { _, it -> it.questType.name }) { index, item ->
                 Column(Modifier.background(MaterialTheme.colors.surface)) {

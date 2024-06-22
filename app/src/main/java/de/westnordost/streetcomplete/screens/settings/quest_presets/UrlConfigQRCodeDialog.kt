@@ -31,8 +31,8 @@ import io.github.alexzhirkevich.qrose.rememberQrCodePainter
 
 @Composable
 fun UrlConfigQRCodeDialog(
-    url: String,
     onDismissRequest: () -> Unit,
+    url: String,
 ) {
     val clipboardManager = LocalClipboardManager.current
 
@@ -87,7 +87,7 @@ fun UrlConfigQRCodeDialog(
 private fun PreviewUrlConfigQRDialog() {
     AppTheme {
         UrlConfigQRCodeDialog(
-            url = "https://streetcomplete.app/s?q=leu43sx0keqh2tz4jprpgewajo1upmgvz&o=8",
+            url = "https://streetcomplete.app/s?q=lesykuk5tsr032wpat165slc0zx1ns7i7",
             onDismissRequest = {}
         )
     }

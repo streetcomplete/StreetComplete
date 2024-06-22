@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
 
@@ -23,10 +24,15 @@ abstract class QuestPresetsViewModel : ViewModel() {
     abstract fun duplicate(presetId: Long, name: String)
     abstract fun delete(presetId: Long)
 
-    abstract suspend fun createUrlConfig(presetId: Long): String
+    abstract fun queryUrlConfig(presetId: Long)
 }
 
-data class QuestPresetSelection(val id: Long, val name: String, val selected: Boolean)
+data class QuestPresetSelection(
+    val id: Long,
+    val name: String,
+    val selected: Boolean,
+    val url: String? = null
+)
 
 class QuestPresetsViewModelImpl(
     private val questPresetsController: QuestPresetsController,
@@ -53,7 +59,9 @@ class QuestPresetsViewModelImpl(
 
         override fun onRenamedQuestPreset(preset: QuestPreset) {
             presets.update { presets ->
-                presets.map { if (it.id == preset.id) it.copy(name = preset.name) else it }
+                presets.map {
+                    if (it.id == preset.id) it.copy(name = preset.name, url = null) else it
+                }
             }
         }
 
@@ -113,7 +121,12 @@ class QuestPresetsViewModelImpl(
         }
     }
 
-    override suspend fun createUrlConfig(presetId: Long): String = withContext(IO) {
-        urlConfigController.create(presetId)
+    override fun queryUrlConfig(presetId: Long) {
+        launch(IO) {
+            val url = urlConfigController.create(presetId)
+            presets.update { presets ->
+                presets.map { if (it.id == presetId) it.copy(url = url) else it }
+            }
+        }
     }
 }
