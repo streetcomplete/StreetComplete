@@ -5,6 +5,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.material.Surface
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.fragment.app.commit
@@ -28,6 +29,7 @@ import de.westnordost.streetcomplete.databinding.FragmentShowQuestFormsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.screens.BaseActivity
+import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.math.translate
 import de.westnordost.streetcomplete.util.viewBinding
@@ -45,12 +47,16 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_show_quest_forms)
 
-        binding.showQuestFormsScreen.content {
-            ShowQuestFormsScreen(
-                quests = viewModel.quests,
-                onClickQuestType = ::onClickQuestType,
-                onClickBack = { finish() }
-            )
+        binding.showQuestFormsScreen.setContent {
+            AppTheme {
+                Surface {
+                    ShowQuestFormsScreen(
+                        quests = viewModel.quests,
+                        onClickQuestType = ::onClickQuestType,
+                        onClickBack = { finish() }
+                    )
+                }
+            }
         }
 
         binding.questFormContainer.setOnClickListener { popQuestForm() }
