@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.urlconfig
 
 import java.math.BigInteger
 
+// TODO java.math.BigInteger could be replaced with https://github.com/ionspin/kotlin-multiplatform-bignum, no rush, though
+
 @JvmInline
 value class Ordinals(private val value: Set<Int>) : Set<Int> by value
 
