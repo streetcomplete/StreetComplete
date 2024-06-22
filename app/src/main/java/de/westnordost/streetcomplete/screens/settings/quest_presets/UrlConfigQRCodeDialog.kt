@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextRange
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.CopyIcon
 import de.westnordost.streetcomplete.ui.theme.AppTheme
+import de.westnordost.streetcomplete.util.ktx.toast
 import io.github.alexzhirkevich.qrose.rememberQrCodePainter
 
 @Composable
@@ -54,6 +56,7 @@ fun UrlConfigQRCodeDialog(
                         .fillMaxWidth()
                         .aspectRatio(1f),
                 )
+                val context = LocalContext.current
                 OutlinedTextField(
                     value = TextFieldValue(url, selection = TextRange(0, url.length)),
                     onValueChange = { /* the text is not changed */ },
@@ -62,21 +65,24 @@ fun UrlConfigQRCodeDialog(
                     trailingIcon = {
                         IconButton(onClick = {
                             clipboardManager.setText(AnnotatedString(url))
-                            // TODO show toast: R.string.urlconfig_url_copied
-                            //  maybe not necessary since Android system already displays it?
+                            // TODO Compose: Need a multiplatform solution for toasts. Either
+                            //  something with Snackbar Host, a third party library like
+                            //  https://github.com/dokar3/compose-sonner or self-made, like e.g.
+                            //  https://github.com/T8RIN/ComposeToast/blob/main/ToastHost.kt
+                            context.toast(R.string.urlconfig_url_copied)
                         }) {
                             CopyIcon()
                         }
                     },
                     readOnly = true,
-                    maxLines = 1
+                    singleLine = true,
                 )
             }
         }
     )
 }
 
-@PreviewLightDark
+@PreviewLightDark // QR code should be on white background, otherwise bad (-:
 @Composable
 private fun PreviewUrlConfigQRDialog() {
     AppTheme {

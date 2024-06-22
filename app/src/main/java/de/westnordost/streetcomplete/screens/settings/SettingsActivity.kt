@@ -10,7 +10,7 @@ class SettingsActivity : FragmentContainerActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            replaceMainFragment(TwoPaneSettingsFragment())
+            replaceMainFragment(SettingsFragment())
         }
     }
 
