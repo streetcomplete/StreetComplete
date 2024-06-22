@@ -63,11 +63,11 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
 
     val layers: List<Layer> = listOf(
         LineLayer("animate-track", "animate-track-source")
-            .withProperties(*commonTrackProperties, lineOpacity(0.6f)),
+            .withProperties(*commonTrackProperties, lineOpacity(0.6f), lineCap(Property.LINE_CAP_ROUND), lineDasharray(arrayOf(0f, 2f))),
         LineLayer("track", "track-source")
-            .withProperties(*commonTrackProperties, lineOpacity(0.6f)),
+            .withProperties(*commonTrackProperties, lineOpacity(0.6f), lineCap(Property.LINE_CAP_ROUND), lineDasharray(arrayOf(0f, 2f))),
         LineLayer("old-track", "old-track-source")
-            .withProperties(*commonTrackProperties, lineOpacity(0.2f))
+            .withProperties(*commonTrackProperties, lineOpacity(0.2f), lineCap(Property.LINE_CAP_ROUND), lineDasharray(arrayOf(0f, 2f)))
     )
 
     init {
