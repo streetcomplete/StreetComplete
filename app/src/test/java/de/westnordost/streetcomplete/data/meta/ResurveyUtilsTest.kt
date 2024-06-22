@@ -84,6 +84,19 @@ class ResurveyUtilsTest {
         ), changes)
     }
 
+    @Test fun `updateWithCheckDate updates general check date`() {
+        val builder = Tags(mapOf("key" to "value", "survey:date" to "1999-01-01"))
+        builder.updateWithCheckDate("key", "value")
+        val changes = builder.create().changes
+
+        assertEquals(setOf(
+            StringMapEntryModify("key", "value", "value"),
+            StringMapEntryAdd("check_date:key", nowAsCheckDateString()),
+            StringMapEntryDelete("survey:date", "1999-01-01"),
+            StringMapEntryAdd("check_date", nowAsCheckDateString()),
+        ), changes)
+    }
+
     @Test fun `updateWithCheckDate modifies old check date on modifying key`() {
         val builder = Tags(mapOf(
             "key" to "old value",

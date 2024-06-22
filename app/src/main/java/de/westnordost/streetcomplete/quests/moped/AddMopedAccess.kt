@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddProhibitedForMoped : OsmFilterQuestType<AddMopedAccessAnswer>() {
+class AddMopedAccess : OsmFilterQuestType<AddMopedAccessAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -16,6 +16,7 @@ class AddProhibitedForMoped : OsmFilterQuestType<AddMopedAccessAnswer>() {
             or highway = footway and bicycle = designated
         )
         and !moped
+        and !moped:signed
         and (motor_vehicle != no or !motor_vehicle)
     """
     override val enabledInCountries = NoCountriesExcept("BE")
@@ -30,16 +31,11 @@ class AddProhibitedForMoped : OsmFilterQuestType<AddMopedAccessAnswer>() {
 
     override fun createForm() = AddMopedAccessForm()
 
-    override fun applyAnswerTo(
-        answer: AddMopedAccessAnswer,
-        tags: Tags,
-        geometry: ElementGeometry,
-        timestampEdited: Long,
-    ) {
-        tags["moped"] = when (answer) {
-            AddMopedAccessAnswer.ALLOWED ->  "yes"
-            AddMopedAccessAnswer.FORBIDDEN ->  "no"
-            AddMopedAccessAnswer.DESIGNATED ->  "designated"
+    override fun applyAnswerTo(answer: AddMopedAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            AddMopedAccessAnswer.NO_SIGN ->  tags["moped:signed"] = "no"
+            AddMopedAccessAnswer.FORBIDDEN ->  tags["moped"] = "no"
+            AddMopedAccessAnswer.DESIGNATED ->  tags["moped"] = "designated"
         }
     }
 }
