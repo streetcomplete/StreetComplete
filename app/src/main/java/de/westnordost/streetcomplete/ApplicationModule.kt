@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete
 
 import android.content.res.AssetManager
 import android.content.res.Resources
+import de.westnordost.streetcomplete.data.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
@@ -15,6 +16,7 @@ val appModule = module {
     factory<AssetManager> { androidContext().assets }
     factory<Resources> { androidContext().resources }
 
+    single { ResurveyIntervalsUpdater(get()) }
     single { CrashReportExceptionHandler(androidContext(), get(), "streetcomplete_errors@westnordost.de", "crashreport.txt") }
     single { DatabaseLogger(get()) }
     single { SoundFx(androidContext()) }

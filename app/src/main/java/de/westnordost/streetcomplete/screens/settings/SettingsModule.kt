@@ -11,8 +11,6 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val settingsModule = module {
-    single { ResurveyIntervalsUpdater(get()) }
-
     viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get()) }
     viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }
     viewModel<QuestPresetsViewModel> { QuestPresetsViewModelImpl(get(), get(), get(), get()) }

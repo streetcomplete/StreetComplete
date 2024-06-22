@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings
+package de.westnordost.streetcomplete.data
 
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.DEFAULT
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.LESS_OFTEN
 import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.MORE_OFTEN
-import de.westnordost.streetcomplete.Prefs.ResurveyIntervals.valueOf
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 
 /** This class is just to access the user's preference about which multiplier for the resurvey
@@ -16,8 +15,8 @@ class ResurveyIntervalsUpdater(private val prefs: ObservableSettings) {
 
     private val settingsListener: SettingsListener
 
-    private val intervalsPreference: Prefs.ResurveyIntervals get() =
-        valueOf(prefs.getString(
+    private val intervalsPreference: Prefs.ResurveyIntervals
+        get() = Prefs.ResurveyIntervals.valueOf(prefs.getString(
             Prefs.RESURVEY_INTERVALS,
             ApplicationConstants.DEFAULT_RESURVEY_INTERVALS
         ))
@@ -30,7 +29,6 @@ class ResurveyIntervalsUpdater(private val prefs: ObservableSettings) {
         settingsListener = prefs.addStringOrNullListener(Prefs.RESURVEY_INTERVALS) { update() }
     }
 }
-
 private val Prefs.ResurveyIntervals.multiplier: Float get() = when (this) {
     LESS_OFTEN -> 2.0f
     DEFAULT -> 1.0f
