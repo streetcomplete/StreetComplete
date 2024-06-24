@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
-import de.westnordost.streetcomplete.ui.common.ConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 
 /** List of quest types to individually enable or disable or reorder them */

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.common
+package de.westnordost.streetcomplete.ui.common.dialogs
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.AlertDialog
@@ -23,6 +23,7 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.window.DialogProperties
 
+/** Dialog with which to input text. OK button is only clickable if text is not blank. */
 @Composable
 fun TextInputDialog(
     onDismissRequest: () -> Unit,

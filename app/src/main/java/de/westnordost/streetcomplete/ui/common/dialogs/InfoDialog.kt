@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.common
+package de.westnordost.streetcomplete.ui.common.dialogs
 
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.MaterialTheme
@@ -12,17 +12,14 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.window.DialogProperties
 
-/** Slight specialization of an alert dialog: AlertDialog with OK and Cancel button. Both buttons
- *  call [onDismissRequest] and the OK button additionally calls [onConfirmed]. */
+/** Slight specialization of an alert dialog: AlertDialog with just an OK button which just also
+ *  calls [onDismissRequest]. */
 @Composable
-fun ConfirmationDialog(
+fun InfoDialog(
     onDismissRequest: () -> Unit,
-    onConfirmed: () -> Unit,
     modifier: Modifier = Modifier,
     title: @Composable (() -> Unit)? = null,
     text: @Composable (() -> Unit)? = null,
-    confirmButtonText: String = stringResource(android.R.string.ok),
-    cancelButtonText: String = stringResource(android.R.string.cancel),
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
@@ -30,11 +27,10 @@ fun ConfirmationDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismissRequest,
-        confirmButton = {
-            TextButton(onClick = { onConfirmed(); onDismissRequest() }) { Text(confirmButtonText) }
-        },
+        confirmButton = { TextButton(onClick = onDismissRequest ) {
+            Text(stringResource(android.R.string.ok))
+        } },
         modifier = modifier,
-        dismissButton = { TextButton(onClick = onDismissRequest) { Text(cancelButtonText) } },
         title = title,
         text = text,
         shape = shape,

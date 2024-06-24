@@ -29,7 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.BackIcon
-import de.westnordost.streetcomplete.ui.common.TextInputDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 
 /** Shows a screen in which the user can select which preset of quest selections he wants to use. */

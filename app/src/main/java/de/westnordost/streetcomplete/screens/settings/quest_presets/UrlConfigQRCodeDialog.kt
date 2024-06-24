@@ -7,11 +7,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.AlertDialog
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,6 +23,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.CopyIcon
+import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.util.ktx.toast
 import io.github.alexzhirkevich.qrose.rememberQrCodePainter
@@ -38,11 +37,8 @@ fun UrlConfigQRCodeDialog(
 
     val qrCode = rememberQrCodePainter(url)
 
-    AlertDialog(
+    InfoDialog(
         onDismissRequest = onDismissRequest,
-        confirmButton = {
-            TextButton(onClick = onDismissRequest) { Text(stringResource(android.R.string.ok)) }
-        },
         title = { Text(stringResource(R.string.quest_presets_share)) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
