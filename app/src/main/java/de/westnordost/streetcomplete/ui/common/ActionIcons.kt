@@ -30,3 +30,13 @@ fun SearchIcon() {
 fun CopyIcon() {
     Icon(painterResource(R.drawable.ic_content_copy_24dp), stringResource(android.R.string.copy))
 }
+
+@Composable
+fun OpenInBrowserIcon() {
+    Icon(painterResource(R.drawable.ic_open_in_browser_24dp), stringResource(R.string.action_open_in_browser))
+}
+
+@Composable
+fun NextScreenIcon() {
+    Icon(painterResource(R.drawable.ic_chevron_next_24dp), null)
+}
