@@ -15,40 +15,40 @@ import org.koin.compose.koinInject
 
     NavHost(
         navController = navController,
-        startDestination = Destination.About,
+        startDestination = AboutDestination.About,
         enterTransition = { slideInHorizontally(initialOffsetX = { +it } ) },
         exitTransition = { slideOutHorizontally(targetOffsetX = { -it } ) },
         popEnterTransition = { slideInHorizontally(initialOffsetX = { -it } ) },
         popExitTransition = { slideOutHorizontally(targetOffsetX = { +it } ) }
     ) {
-        composable(Destination.About) {
+        composable(AboutDestination.About) {
             AboutScreen(
-                onClickChangelog = { navController.navigate(Destination.Changelog, ) },
-                onClickCredits = { navController.navigate(Destination.Credits) },
-                onClickPrivacyStatement = { navController.navigate(Destination.PrivacyStatement) },
-                onClickLogs = { navController.navigate(Destination.Logs) },
+                onClickChangelog = { navController.navigate(AboutDestination.Changelog) },
+                onClickCredits = { navController.navigate(AboutDestination.Credits) },
+                onClickPrivacyStatement = { navController.navigate(AboutDestination.PrivacyStatement) },
+                onClickLogs = { navController.navigate(AboutDestination.Logs) },
                 onClickBack = onClickBack
             )
         }
-        composable(Destination.Changelog) {
+        composable(AboutDestination.Changelog) {
             ChangelogScreen(
                 viewModel = koinViewModel(),
                 onClickBack = { navController.popBackStack() }
             )
         }
-        composable(Destination.Credits) {
+        composable(AboutDestination.Credits) {
             CreditsScreen(
                 viewModel = koinViewModel(),
                 onClickBack = { navController.popBackStack() }
             )
         }
-        composable(Destination.PrivacyStatement) {
+        composable(AboutDestination.PrivacyStatement) {
             PrivacyStatementScreen(
                 vectorTileProvider = koinInject(),
                 onClickBack = { navController.popBackStack() }
             )
         }
-        composable(Destination.Logs) {
+        composable(AboutDestination.Logs) {
             LogsScreen(
                 viewModel = koinViewModel(),
                 onClickBack = { navController.popBackStack() }
@@ -57,7 +57,7 @@ import org.koin.compose.koinInject
     }
 }
 
-private object Destination {
+object AboutDestination {
     const val About = "about"
     const val Credits = "credits"
     const val Changelog = "changelog"
