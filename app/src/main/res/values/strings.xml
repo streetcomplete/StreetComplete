@@ -301,6 +301,7 @@ Each of you will then see different quests."</string>
     <string name="action_back">Back</string>
     <string name="action_clear">Clear</string>
     <string name="action_more">More</string>
+    <string name="action_open_in_browser">Open in browser</string>
 
     <!-- About screen -->
 
@@ -537,7 +538,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_category_display">"Display"</string>
-    <string name="pref_category_quests_overlays">Quests &amp; Overlays</string>
+    <string name="pref_category_quests">Quests</string>
 
     <string name="pref_background_type_select">Select background type</string>
     <string name="background_type_map">Map</string>
@@ -555,11 +556,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
 
-    <string name="pref_title_language_select">Select language</string>
+    <string name="pref_title_language_select2">Language</string>
     <string name="language_default">System default</string>
 
     <string name="pref_title_theme_select">Select theme</string>
-    <string name="theme_automatic">Auto</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system_default">System default</string>
@@ -574,13 +574,13 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
 
     <string name="pref_title_quests2">Quest selection and display order</string>
-    <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
-    <string name="pref_subtitle_quests_preset_name">Preset: %s</string>
+    <string name="pref_subtitle_quests_preset_name">for preset: %s</string>
 
     <string name="delete_confirmation">Delete</string>
     <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
 
     <string name="pref_title_resurvey_intervals">Resurvey intervals</string>
+    <string name="pref_title_resurvey_intervals_summary">How often you want to answer whether things remain the same. </string>
     <string name="resurvey_intervals_less_often">Ask less often</string>
     <string name="resurvey_intervals_default">Default</string>
     <string name="resurvey_intervals_more_often">Ask more often</string>
@@ -597,11 +597,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="action_deselect_all">Deselect all</string>
     <string name="pref_quests_deselect_all">Deselect all quests?</string>
 
-    <string name="action_manage_presets">Manage presets</string>
-
     <string name="action_reset">Reset</string>
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
-
 
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
@@ -613,6 +610,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
 
     <!-- Managing quest presets screen -->
+
+    <string name="action_manage_presets2">Preset</string>
+
+    <string name="action_manage_presets_summary">You can save your quest selection into different presets, e.g. for different occasions (cycling, walking, …)</string>
 
     <string name="quest_presets_preset_add">Add preset</string>
     <string name="quest_presets_preset_name">Preset name</string>

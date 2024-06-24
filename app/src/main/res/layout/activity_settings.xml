@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <androidx.compose.ui.platform.ComposeView
-        android:id="@+id/showQuestFormsScreen"
+        android:id="@+id/navHost"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

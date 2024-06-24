@@ -20,7 +20,6 @@ import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import androidx.preference.PreferenceManager
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -107,7 +106,6 @@ class MainActivity :
 
         lifecycle.addObserver(questAutoSyncer)
         crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
 
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)

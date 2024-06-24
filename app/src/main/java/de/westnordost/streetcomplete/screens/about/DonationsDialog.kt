@@ -27,6 +27,7 @@ fun DonationsDialog(
     onDismissRequest: () -> Unit,
     onClickLink: (String) -> Unit
 ) {
+    // TODO use just dialog, not alertdialog?
     AlertDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = { /* no buttons, click outside to close */ },

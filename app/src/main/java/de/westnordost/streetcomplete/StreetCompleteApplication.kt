@@ -210,6 +210,7 @@ class StreetCompleteApplication : Application() {
     }
 
     private fun updateDefaultTheme() {
+        // TODO treat AUTO!!!
         val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
     }

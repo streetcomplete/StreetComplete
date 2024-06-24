@@ -44,7 +44,7 @@ import de.westnordost.streetcomplete.util.ktx.containsAll
 /** Searchable and clickable quest list as a full screen */
 @Composable
 fun ShowQuestFormsScreen(
-    quests: List<QuestType>,
+    viewModel: ShowQuestFormsViewModel,
     onClickQuestType: (QuestType) -> Unit,
     onClickBack: () -> Unit,
 ) {
@@ -58,7 +58,7 @@ fun ShowQuestFormsScreen(
         )
 
         // see comment in QuestSelectionScreen
-        val filteredQuests = filterQuests(quests, searchText.text)
+        val filteredQuests = filterQuests(viewModel.quests, searchText.text)
 
         if (filteredQuests.isEmpty()) {
             CenteredLargeTitleHint(stringResource(R.string.no_search_results))

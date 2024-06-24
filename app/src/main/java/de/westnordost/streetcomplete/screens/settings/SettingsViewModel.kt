@@ -29,7 +29,6 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val selectableLanguageCodes: StateFlow<List<String>?>
     abstract val selectedQuestPresetName: StateFlow<String?>
     abstract val hiddenQuestCount: StateFlow<Long>
-    abstract val questTypeCount: StateFlow<QuestTypeCount?>
     abstract val tileCacheSize: StateFlow<Int>
 
     abstract fun unhideQuests()
@@ -44,23 +43,14 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val prefs: ObservableSettings
 }
 
-data class QuestTypeCount(val total: Int, val enabled: Int)
-
 class SettingsViewModelImpl(
     override val prefs: ObservableSettings,
     private val resources: Resources,
     private val cleaner: Cleaner,
     private val osmQuestsHiddenController: OsmQuestsHiddenController,
     private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val visibleQuestTypeSource: VisibleQuestTypeSource,
     private val questPresetsSource: QuestPresetsSource,
 ) : SettingsViewModel() {
-
-    private val visibleQuestTypeListener = object : VisibleQuestTypeSource.Listener {
-        override fun onQuestTypeVisibilityChanged(questType: QuestType, visible: Boolean) { updateQuestTypeCount() }
-        override fun onQuestTypeVisibilitiesChanged() { updateQuestTypeCount() }
-    }
 
     private val questPresetsListener = object : QuestPresetsSource.Listener {
         override fun onSelectedQuestPresetChanged() { updateSelectedQuestPreset() }
@@ -82,7 +72,6 @@ class SettingsViewModelImpl(
     }
 
     override val hiddenQuestCount = MutableStateFlow(0L)
-    override val questTypeCount = MutableStateFlow<QuestTypeCount?>(null)
     override val selectedQuestPresetName = MutableStateFlow<String?>(null)
     override val selectableLanguageCodes = MutableStateFlow<List<String>?>(null)
     override val tileCacheSize = MutableStateFlow(prefs.getInt(
@@ -93,7 +82,6 @@ class SettingsViewModelImpl(
     private val listeners = mutableListOf<SettingsListener>()
 
     init {
-        visibleQuestTypeSource.addListener(visibleQuestTypeListener)
         questPresetsSource.addListener(questPresetsListener)
         osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
@@ -105,11 +93,9 @@ class SettingsViewModelImpl(
         updateSelectableLanguageCodes()
         updateHiddenQuests()
         updateSelectedQuestPreset()
-        updateQuestTypeCount()
     }
 
     override fun onCleared() {
-        visibleQuestTypeSource.removeListener(visibleQuestTypeListener)
         questPresetsSource.removeListener(questPresetsListener)
         osmNoteQuestsHiddenController.removeListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.removeListener(osmQuestsHiddenListener)
@@ -145,15 +131,6 @@ class SettingsViewModelImpl(
         launch(IO) {
             hiddenQuestCount.value =
                 osmQuestsHiddenController.countAll() + osmNoteQuestsHiddenController.countAll()
-        }
-    }
-
-    private fun updateQuestTypeCount() {
-        launch(IO) {
-            questTypeCount.value = QuestTypeCount(
-                total = questTypeRegistry.size,
-                enabled = questTypeRegistry.count { visibleQuestTypeSource.isVisible(it) }
-            )
         }
     }
 }

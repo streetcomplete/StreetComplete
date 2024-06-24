@@ -16,13 +16,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.integerResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.ApplicationConstants.COPYRIGHT_YEARS
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.ui.common.NextScreenIcon
+import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
+import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
+import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 
@@ -44,91 +47,95 @@ fun AboutScreen(
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-            PreferenceItem(
-                title = stringResource(R.string.about_title_changelog),
-                onClick = { onClickChangelog() },
-                summary = stringResource(
-                    R.string.about_summary_current_version,
-                    "v" + BuildConfig.VERSION_NAME
-                ),
-                icon = painterResource(R.drawable.ic_chevron_next_24dp)
-            )
-            PreferenceItem(
-                title = stringResource(R.string.about_title_authors),
-                onClick = { onClickCredits() },
-                summary = stringResource(R.string.about_summary_authors, COPYRIGHT_YEARS),
-                icon = painterResource(R.drawable.ic_chevron_next_24dp)
-            )
-            PreferenceItem(
-                title = stringResource(R.string.about_title_license),
-                onClick = { context.openUri("https://www.gnu.org/licenses/gpl-3.0.html") },
-                summary = stringResource(R.string.about_summary_license),
-                icon = painterResource(R.drawable.ic_open_in_browser_24dp),
-            )
-            PreferenceItem(
-                title = stringResource(R.string.about_title_faq),
-                onClick = { context.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
-                icon = painterResource(R.drawable.ic_open_in_browser_24dp),
-            )
-            PreferenceItem(
-                title = stringResource(R.string.about_title_privacy_statement),
-                onClick = { onClickPrivacyStatement() },
-                summary = stringResource(R.string.about_summary_privacy_statement),
-                icon = painterResource(R.drawable.ic_chevron_next_24dp),
-            )
 
-            PreferenceCategoryItem(stringResource(R.string.about_category_contribute))
+            PreferenceCategory(null) {
 
-            PreferenceItem(
-                title = stringResource(R.string.about_title_donate),
-                onClick = { showDonateDialog = true },
-                summary = stringResource(R.string.about_summary_donate),
-            )
-            PreferenceItem(
-                title = stringResource(R.string.about_title_translate),
-                onClick = { context.openUri("https://poeditor.com/join/project/IE4GC127Ki") },
-                summary = stringResource(
-                    R.string.about_description_translate,
-                    Locale.getDefault().displayLanguage,
-                    integerResource(R.integer.translation_completeness)
-                ),
-                icon = painterResource(R.drawable.ic_open_in_browser_24dp),
-            )
-            PreferenceItem(
-                title = stringResource(R.string.about_title_repository),
-                onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete") },
-                summary = stringResource(R.string.about_summary_repository),
-                icon = painterResource(R.drawable.ic_open_in_browser_24dp),
-            )
+                Preference(
+                    name = stringResource(R.string.about_title_changelog),
+                    onClick = { onClickChangelog() },
+                    description = stringResource(
+                        R.string.about_summary_current_version,
+                        "v" + BuildConfig.VERSION_NAME
+                    )
+                ) { NextScreenIcon() }
 
-            PreferenceCategoryItem(stringResource(R.string.about_category_feedback))
+                Preference(
+                    name = stringResource(R.string.about_title_authors),
+                    onClick = { onClickCredits() },
+                    description = stringResource(R.string.about_summary_authors, COPYRIGHT_YEARS),
+                ) { NextScreenIcon() }
 
-            if (context.isInstalledViaGooglePlay()) {
-                PreferenceItem(
-                    title = stringResource(R.string.about_title_rate),
-                    onClick = { context.openGooglePlayStorePage() },
-                    summary = stringResource(R.string.about_summary_rate),
-                    icon = painterResource(R.drawable.ic_open_in_browser_24dp),
-                )
+                Preference(
+                    name = stringResource(R.string.about_title_license),
+                    onClick = { context.openUri("https://www.gnu.org/licenses/gpl-3.0.html") },
+                    description = stringResource(R.string.about_summary_license)
+                ) { OpenInBrowserIcon() }
+
+                Preference(
+                    name = stringResource(R.string.about_title_faq),
+                    onClick = { context.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
+                ) { OpenInBrowserIcon() }
+
+                Preference(
+                    name = stringResource(R.string.about_title_privacy_statement),
+                    onClick = { onClickPrivacyStatement() },
+                    description = stringResource(R.string.about_summary_privacy_statement),
+                ) { NextScreenIcon() }
             }
-            PreferenceItem(
-                title = stringResource(R.string.about_title_report_error),
-                onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
-                summary = stringResource(R.string.about_summary_repository),
-                icon = painterResource(R.drawable.ic_open_in_browser_24dp),
-            )
-            PreferenceItem(
-                title = stringResource(R.string.about_title_feedback),
-                onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
-                summary = stringResource(R.string.about_summary_repository),
-                icon = painterResource(R.drawable.ic_open_in_browser_24dp),
-            )
-            PreferenceItem(
-                title = stringResource(R.string.about_title_show_logs),
-                onClick = { onClickLogs() },
-                summary = stringResource(R.string.about_summary_logs),
-                icon = painterResource(R.drawable.ic_chevron_next_24dp),
-            )
+
+            PreferenceCategory(stringResource(R.string.about_category_contribute)) {
+
+                Preference(
+                    name = stringResource(R.string.about_title_donate),
+                    onClick = { showDonateDialog = true },
+                    description = stringResource(R.string.about_summary_donate),
+                )
+
+                Preference(
+                    name = stringResource(R.string.about_title_translate),
+                    onClick = { context.openUri("https://poeditor.com/join/project/IE4GC127Ki") },
+                    description = stringResource(
+                        R.string.about_description_translate,
+                        Locale.getDefault().displayLanguage,
+                        integerResource(R.integer.translation_completeness)
+                    )
+                ) { OpenInBrowserIcon() }
+
+                Preference(
+                    name = stringResource(R.string.about_title_repository),
+                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete") },
+                    description = stringResource(R.string.about_summary_repository),
+                ) { OpenInBrowserIcon() }
+            }
+
+            PreferenceCategory(stringResource(R.string.about_category_feedback)) {
+
+                if (context.isInstalledViaGooglePlay()) {
+                    Preference(
+                        name = stringResource(R.string.about_title_rate),
+                        onClick = { context.openGooglePlayStorePage() },
+                        description = stringResource(R.string.about_summary_rate)
+                    ) { OpenInBrowserIcon() }
+                }
+
+                Preference(
+                    name = stringResource(R.string.about_title_report_error),
+                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
+                    description = stringResource(R.string.about_summary_repository),
+                ) { OpenInBrowserIcon() }
+
+                Preference(
+                    name = stringResource(R.string.about_title_feedback),
+                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
+                    description = stringResource(R.string.about_summary_repository),
+                ) { OpenInBrowserIcon() }
+
+                Preference(
+                    name = stringResource(R.string.about_title_show_logs),
+                    onClick = { onClickLogs() },
+                    description = stringResource(R.string.about_summary_logs),
+                ) { NextScreenIcon() }
+            }
         }
     }
 
