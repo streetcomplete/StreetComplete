@@ -7,10 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.mapbox.android.gestures.MoveGestureDetector
-import com.russhwolf.settings.ObservableSettings
-import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.R
@@ -50,7 +47,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val mapStateStore: MapStateStore by inject()
-    private val prefs: ObservableSettings by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -64,14 +60,8 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private var mapTileCacheListener: SettingsListener? = null
-
     // Note: offline regions may exceed this limit, but will count against it
     // This means that when offline regions exceed size, no tiles will be cached when panning
-    private val mapTileCacheInBytes get() = prefs.getInt(
-        Prefs.MAP_TILECACHE_IN_MB,
-        ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
-    ).toLong() * 1024 * 1024
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
@@ -90,7 +80,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
         binding.attributionContainer.respectSystemInsets(View::setMargins)
 
-        mapTileCacheListener = prefs.addIntOrNullListener(Prefs.MAP_TILECACHE_IN_MB) { updateOfflineCacheSize() }
         initOfflineCacheSize()
         cleanOldOfflineRegions()
 
@@ -102,14 +91,8 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     }
 
     private fun initOfflineCacheSize() {
-        updateOfflineCacheSize()
-        // set really high tile count limit, we only want to care about size
+        // set really high tile count limit
         OfflineManager.getInstance(requireContext()).setOfflineMapboxTileCountLimit(10000) // very roughly 1000 km²
-    }
-
-    private fun updateOfflineCacheSize() {
-        OfflineManager.getInstance(requireContext())
-            .setMaximumAmbientCacheSize(mapTileCacheInBytes, null)
     }
 
     private fun cleanOldOfflineRegions() {
@@ -154,7 +137,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     override fun onDestroyView() {
         super.onDestroyView()
         map = null
-        mapTileCacheListener?.deactivate()
         binding.map.onDestroy()
     }
 

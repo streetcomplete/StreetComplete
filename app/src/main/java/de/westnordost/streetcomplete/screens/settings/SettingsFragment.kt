@@ -121,11 +121,6 @@ class SettingsFragment : TwoPaneListFragment(), HasTitle {
             pref?.summaryProvider = ListPreference.SimpleSummaryProvider.getInstance()
         }
 
-        observe(viewModel.tileCacheSize) { size ->
-            findPreference<Preference>(Prefs.MAP_TILECACHE_IN_MB)?.summary =
-                getString(R.string.pref_tilecache_size_summary, size)
-        }
-
         listeners += viewModel.prefs.addStringOrNullListener(Prefs.AUTOSYNC) { autosync ->
             val autosyncOrDefault = Prefs.Autosync.valueOf(autosync ?: ApplicationConstants.DEFAULT_AUTOSYNC)
             if (autosyncOrDefault != Prefs.Autosync.ON) {
