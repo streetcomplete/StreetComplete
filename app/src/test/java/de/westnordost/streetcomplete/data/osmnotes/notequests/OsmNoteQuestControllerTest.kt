@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
@@ -28,7 +28,7 @@ class OsmNoteQuestControllerTest {
     private lateinit var noteSource: NotesWithEditsSource
     private lateinit var hiddenDB: NoteQuestsHiddenDao
     private lateinit var userDataSource: UserDataSource
-    private lateinit var userLoginStatusSource: UserLoginStatusSource
+    private lateinit var userLoginSource: UserLoginSource
     private lateinit var prefs: ObservableSettings
 
     private lateinit var ctrl: OsmNoteQuestController
@@ -36,13 +36,13 @@ class OsmNoteQuestControllerTest {
     private lateinit var hideListener: OsmNoteQuestsHiddenSource.Listener
 
     private lateinit var noteUpdatesListener: NotesWithEditsSource.Listener
-    private lateinit var userLoginListener: UserLoginStatusSource.Listener
+    private lateinit var userLoginListener: UserLoginSource.Listener
 
     @BeforeTest fun setUp() {
         noteSource = mock()
         hiddenDB = mock()
         userDataSource = mock()
-        userLoginStatusSource = mock()
+        userLoginSource = mock()
         prefs = mock()
 
         listener = mock()
@@ -53,12 +53,12 @@ class OsmNoteQuestControllerTest {
             Unit
         }
 
-        on(userLoginStatusSource.addListener(any())).then { invocation ->
+        on(userLoginSource.addListener(any())).then { invocation ->
             userLoginListener = invocation.getArgument(0)
             Unit
         }
 
-        ctrl = OsmNoteQuestController(noteSource, hiddenDB, userDataSource, userLoginStatusSource, prefs)
+        ctrl = OsmNoteQuestController(noteSource, hiddenDB, userDataSource, userLoginSource, prefs)
         ctrl.addListener(listener)
         ctrl.addListener(hideListener)
     }

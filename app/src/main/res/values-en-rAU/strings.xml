@@ -43,7 +43,6 @@
     <string name="action_download">"Scan for quests here"</string>
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give an answer"</string>
-    <string name="close">"close"</string>
     <string name="download_error">"Error while scanning for quests"</string>
     <string name="upload_error">"Error while uploading answers"</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
@@ -503,7 +502,6 @@ Partially means that a wheelchair can enter and use the toilet but no handrail o
     <string name="quest_sidewalk_value_yes">"footpath"</string>
     <string name="quest_sidewalk_value_no">"no footpath"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Are pedestrians forbidden to walk on this road here?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"This street was tagged as having no footpath on either side. In the case that there is a footpath after all but it is displayed as a separate way, please answer “footpath”."</string>
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="pref_title_theme_select">"Select theme"</string>
     <string name="theme_automatic">"Auto"</string>

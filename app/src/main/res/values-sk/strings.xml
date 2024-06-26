@@ -43,7 +43,6 @@
     <string name="action_download">"Hľadať úlohy tu"</string>
     <string name="action_upload">"Nahrať odpovede"</string>
     <string name="no_changes">"Nezadali ste odpoveď"</string>
-    <string name="close">"zatvoriť"</string>
     <string name="download_error">"Pri vyhľadávní úloh došlo k chybe"</string>
     <string name="upload_error">"Pri nahrávaní odpovedí nastala chyba"</string>
     <string name="download_area_too_big">"Prosím, ešte priblížte"</string>
@@ -503,7 +502,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_sidewalk_value_yes">"chodník"</string>
     <string name="quest_sidewalk_value_no">"bez chodníka"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Majú chodci zakázané chodiť po tejto ceste?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Táto ulica/cesta bola označená, že nemá chodník na žiadnej strane. Pokiaľ ale chodník má a ten je označený ako samostatná cesta, vyberte prosím odpoveď „chodník“."</string>
     <string name="quest_buildingType_title">"Aký je to typ budovy?"</string>
     <string name="pref_title_theme_select">"Vyberte vzhľad"</string>
     <string name="theme_automatic">"Automaticky"</string>
@@ -1258,8 +1256,6 @@ Presunúť ju teraz?"</string>
     <string name="bicycle_boulevard_is_a">"Je to %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Nieje to %1$s"</string>
     <string name="bicycle_boulevard">"Cyklistický bulvár"</string>
-    <string name="separate_cycleway_no">"Bicyklovanie zakázané"</string>
-    <string name="separate_cycleway_allowed">"Cyklisti povolený"</string>
     <string name="separate_cycleway_no_or_allowed">"Nie je určený pre cyklistov (jazda na bicykli môže byť povolená)"</string>
     <string name="separate_cycleway_non_segregated">"Spoločná cesta"</string>
     <string name="separate_cycleway_segregated">"Oddelená cesta pre cyklistov a chodcov"</string>
@@ -1352,6 +1348,7 @@ Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu z
     <string name="pref_title_quests_restore_hidden_summary">"Počet skrytých úloh: %d"</string>
     <string name="link_every_door_description">"Výkonný editor bodov záujmu pre Android a iOS"</string>
     <string name="link_mapcomplete_description">"Zbierka tematických máp OSM, z ktorých každá zobrazuje a umožňuje upravovať jeden druh prvkov"</string>
+    <string name="link_forum_description">"Potrebujete pomoc? Chcete si prečítať, čo sa deje? Príďte a diskutujte, je to tu nabité aktivitami komunít z celého sveta!"</string>
     <string name="link_calendar_description">"Sú OpenStreetMap podujatia alebo stretnutia komunity blízko teba? (Keď nie, môžeš pridať svoje vlastné!)"</string>
     <string name="link_prettymapp_description">"Vytvorenie pekných viacfarebných plagátov s mapami štvrtí"</string>
     <string name="quest_disable_action">"Zakázať"</string>
@@ -1369,7 +1366,6 @@ Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu z
     <string name="quest_buildingType_tower_description">"hocijaký typ veže"</string>
     <string name="quest_buildingType_under_construction">"Vo výstavbe"</string>
     <string name="overlay_buildings">"Budovy"</string>
-    <string name="quest_pedestrian_crossing_signals">"Musíte tu čakať na semafore, keď chcete prejsť cez cestu?"</string>
     <string name="quest_pedestrian_crossing_markings">"Je tento prechod vyznačený na ceste?"</string>
     <string name="overlay_places">"Miesta"</string>
     <string name="overlay_things">"Veci"</string>
@@ -1377,5 +1373,15 @@ Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu z
     <string name="unknown_object">"Neznámy objekt"</string>
     <string name="quest_leafType_tree_title">"Má tento strom ihličie, alebo listy?"</string>
     <string name="quest_bbq_fuel_gas">"Benzín"</string>
+    <string name="about_description_donate_google_play3">"Ďakujeme, že ste zvážili podporu tejto aplikácie!
+Informácie o prispievaní nájdete na našej webovej stránke, Google Play nám neumožňuje poskytnúť odkaz v rámci aplikácie."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Nie vo vnútri, ale pod strechou"</string>
+    <string name="lit_value_unsupported">"Špecifický povrch, ktorý nie je možné vybrať v tejto aplikácií"</string>
+    <string name="quest_generic_otherAnswers2">"Iné..."</string>
+    <string name="quest_pedestrian_crossing_signals2">"Nachádzajú sa tu semafory, ktoré ukazujú kedy je možné prejsť?"</string>
+    <string name="quest_moped_access_title">"Je tu značka upravujúca prístup mopedov na tento cyklochodník?"</string>
+    <string name="quest_moped_access_allowed">"Nie je tu značka"</string>
+    <string name="quest_moped_access_designated">"Je tu značka, ktorá označuje, že tento cyklochodník je pre mopedy"</string>
+    <string name="quest_moped_access_forbidden">"Je tu značka, ktorá zakazuje mopedy"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Tento typ úlohy je predvolene vypnutý, pretože vjazd mopedov upravuje dopravné značenie na začiatku/konci cyklochodníka."</string>
 </resources>

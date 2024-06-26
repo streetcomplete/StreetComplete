@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/credits_author_title"
-                    android:textAppearance="@style/TextAppearance.Title" />
+                    android:textAppearance="@style/TextAppearance.TitleLarge" />
 
                 <TextView
                     android:id="@+id/authorText"
@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/credits_main_contributors_title"
-                    android:textAppearance="@style/TextAppearance.Title" />
+                    android:textAppearance="@style/TextAppearance.TitleLarge" />
 
                 <LinearLayout
                     android:id="@+id/mainCredits"
@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/credits_projects_contributors_title"
-                    android:textAppearance="@style/TextAppearance.Title" />
+                    android:textAppearance="@style/TextAppearance.TitleLarge" />
 
                 <LinearLayout
                     android:id="@+id/projectsCredits"
@@ -106,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/credits_art_contributors_title"
-                    android:textAppearance="@style/TextAppearance.Title" />
+                    android:textAppearance="@style/TextAppearance.TitleLarge" />
 
                 <LinearLayout
                     android:id="@+id/artCredits"
@@ -128,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/credits_contributors_title"
-                    android:textAppearance="@style/TextAppearance.Title" />
+                    android:textAppearance="@style/TextAppearance.TitleLarge" />
 
                 <LinearLayout
                     android:id="@+id/codeCredits"
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/credits_translations_title"
-                    android:textAppearance="@style/TextAppearance.Title" />
+                    android:textAppearance="@style/TextAppearance.TitleLarge" />
 
                 <LinearLayout
                     android:id="@+id/translationCredits"

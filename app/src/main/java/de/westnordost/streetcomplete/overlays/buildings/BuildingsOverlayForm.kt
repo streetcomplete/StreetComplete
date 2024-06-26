@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.building.toItems
 import de.westnordost.streetcomplete.overlays.AGroupedImageSelectOverlayForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.util.mostCommonWithin
 import de.westnordost.streetcomplete.util.padWith
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
@@ -46,7 +47,7 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
             prefs,
             key = javaClass.simpleName,
             serialize = { it.value!!.name },
-            deserialize = { BuildingType.valueOf(it).asItem() }
+            deserialize = { valueOfOrNull<BuildingType>(it)?.asItem() }
         )
     }
 

@@ -2,3 +2,4 @@
 atmOperators: [Wells Fargo, American Crypto, Bank of America, PNC Bank, Truist, Navy Federal Credit Union, BB&T, SunTrust, Capital One, MetaBank, Citibank, Venco, Chase, Woodforest National Bank, First National Bank, Allpoint, Wachovia, Union Bank, USAA, 'FCTI, Inc.', Euronet, Cardtronics, Blue Eagle Credit Union, Atlantic Union Bank]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Volta, EVgo, Electrify America, Blink, 7-Eleven, eVgo, Libbie Mill, Corporate Research Center, Refuge Inn]
 defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Hub]

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
@@ -13,7 +14,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.findNext
 import de.westnordost.streetcomplete.util.ktx.findPrevious

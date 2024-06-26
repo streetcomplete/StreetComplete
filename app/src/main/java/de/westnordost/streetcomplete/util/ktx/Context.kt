@@ -2,16 +2,13 @@ package de.westnordost.streetcomplete.util.ktx
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.ActivityNotFoundException
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Build
 import android.view.Display
 import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
@@ -20,8 +17,6 @@ import androidx.core.location.LocationManagerCompat
 import androidx.core.net.toUri
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlin.coroutines.resume
 
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text, duration).show()
@@ -46,19 +41,6 @@ val Context.currentDisplay: Display get() =
         display!!
     } else {
         getSystemService<WindowManager>()!!.defaultDisplay
-    }
-
-/** Await a call from a broadcast once and return it */
-suspend fun Context.awaitReceiverCall(intentFilter: IntentFilter): Intent =
-    suspendCancellableCoroutine { continuation ->
-        val receiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                unregisterReceiver(this)
-                continuation.resume(intent)
-            }
-        }
-        registerReceiver(receiver, intentFilter)
-        continuation.invokeOnCancellation { unregisterReceiver(receiver) }
     }
 
 fun Context.sendEmail(email: String, subject: String, text: String? = null) {

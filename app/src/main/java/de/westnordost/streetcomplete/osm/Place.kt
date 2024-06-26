@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 
 /** Return whether this element is a kind of place, regardless whether it is currently vacant or
  *  not */
-fun Element.isPlaceOrDisusedShop(): Boolean =
+fun Element.isPlaceOrDisusedPlace(): Boolean =
     isPlace() || isDisusedPlace()
 
 /** Return whether this element is a kind of disused or vacant place */

@@ -1,5 +1,3 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package de.westnordost.streetcomplete.util.ktx
 
 import kotlinx.datetime.Clock

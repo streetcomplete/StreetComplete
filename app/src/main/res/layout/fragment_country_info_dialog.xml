@@ -100,7 +100,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:textAlignment="gravity"
-                    android:textAppearance="@style/TextAppearance.Title"
+                    android:textAppearance="@style/TextAppearance.TitleLarge"
                     android:textSize="48dp"
                     tools:text="1021" />
 

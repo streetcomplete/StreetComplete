@@ -13,5 +13,6 @@ noStoppingLineStyle: red
 noStoppingSignStyle: sadc
 officialLanguages: [en, zu, xh, af, st, tn, nso, ts]
 orchardProduces: [grape, orange, lemon, lime, apple, avocado, grapefruit, pear, pineapple, peach, chilli_pepper, sweet_pepper, tomato, plum, banana, guava, mango, mangosteen, apricot]
+parcelLockerBrand: [pudo]
 popularSports: [tennis, soccer, bowls, basketball, golf, cricket, netball, field_hockey, rugby]
 postboxesHaveCollectionTimes: true

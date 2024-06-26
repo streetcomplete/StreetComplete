@@ -83,7 +83,7 @@ class NoteEditsController(
         }
 
         if (markSyncedSuccess) {
-            onSyncedEdit(edit)
+            onSyncedEdit(edit.copy(isSynced = true))
         }
     }
 

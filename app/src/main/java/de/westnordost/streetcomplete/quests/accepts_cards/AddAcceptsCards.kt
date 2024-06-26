@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
@@ -17,10 +17,10 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
           amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
           or (shop and shop !~ no|vacant|mall)
         )
-        and !payment:credit_cards and !payment:debit_cards
+        and !payment:credit_cards and !payment:debit_cards and payment:others != no
         and !brand and !wikipedia:brand and !wikidata:brand
         and (!seasonal or seasonal = no)
-        and (name or brand or noname = yes or name:signed = no)
+        and (name or noname = yes or name:signed = no)
         and access !~ private|no
     """
     override val changesetComment = "Survey whether payment with cards is accepted"
@@ -33,7 +33,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cards
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddAcceptsCardsForm()
 

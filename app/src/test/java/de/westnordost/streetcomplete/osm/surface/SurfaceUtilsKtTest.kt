@@ -16,8 +16,8 @@ class SurfaceUtilsKtTest {
     }
 
     @Test fun `high quality tracktype conflicts with poor surface`() {
-        assertTrue(isSurfaceAndTracktypeConflicting("gravel", "grade1"))
-        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("gravel", "grade1"))
+        assertTrue(isSurfaceAndTracktypeConflicting("earth", "grade1"))
+        assertTrue(isSurfaceAndTracktypeCombinationSuspicious("earth", "grade1"))
     }
 
     @Test fun `high quality tracktype fits good surface`() {

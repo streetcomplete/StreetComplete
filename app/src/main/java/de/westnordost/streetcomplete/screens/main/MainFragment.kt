@@ -987,8 +987,7 @@ class MainFragment :
         if (editHistoryFragment != null) {
             childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
-        clearHighlighting()
-        mapFragment?.clearFocus()
+        editHistoryViewModel.select(null)
         mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
         historyBackPressedCallback.isEnabled = false
     }

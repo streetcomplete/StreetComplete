@@ -43,7 +43,6 @@
     <string name="action_download">"Изтегляне на данни тук"</string>
     <string name="action_upload">"Качи отговори"</string>
     <string name="no_changes">"Не отговорихте на нито един въпрос"</string>
-    <string name="close">"затвори"</string>
     <string name="download_error">"Грешка при изтегляне"</string>
     <string name="upload_error">"Грешка при качването на отговори"</string>
     <string name="download_area_too_big">"Моля, мащабирай по-близо"</string>
@@ -501,7 +500,6 @@
     <string name="quest_sidewalk_value_yes">"има тротоар"</string>
     <string name="quest_sidewalk_value_no">"няма тротоар"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Забранено ли е за пешеходци по този път?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Тази улица е маркирана като улица без тротоари. Ако все пак има тротоар, но той е изобразен като отделен път, отговорете на въпроса с \"тротоар\"."</string>
     <string name="quest_buildingType_title">"Какъв вид сграда е това?"</string>
     <string name="pref_title_theme_select">"Избор на тема"</string>
     <string name="theme_automatic">"Автоматично"</string>
@@ -1250,8 +1248,6 @@
     <string name="bicycle_boulevard_is_a">"Това е %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Това не е %1$s"</string>
     <string name="bicycle_boulevard">"Велосипеден булевард"</string>
-    <string name="separate_cycleway_no">"Без колоездене"</string>
-    <string name="separate_cycleway_allowed">"Допускат се велосипедисти"</string>
     <string name="separate_cycleway_no_or_allowed">"Не е предназначено за велосипедисти (колоезденето все пак може да е разрешено)"</string>
     <string name="separate_cycleway_non_segregated">"Път за споделено ползване"</string>
     <string name="separate_cycleway_segregated">"Разделени велосипедни и пешеходни пътеки"</string>
@@ -1362,7 +1358,6 @@
     <string name="quest_buildingType_tower_description">"всякакъв вид кула"</string>
     <string name="quest_buildingType_under_construction">"В строеж"</string>
     <string name="overlay_buildings">"Сгради"</string>
-    <string name="quest_pedestrian_crossing_signals">"Трябва ли да чакате светофар, за да пресечете тук?"</string>
     <string name="quest_pedestrian_crossing_markings">"Този прелез има ли маркировка на земята?"</string>
     <string name="overlay_places">"Места "</string>
     <string name="overlay_things">"Неща"</string>

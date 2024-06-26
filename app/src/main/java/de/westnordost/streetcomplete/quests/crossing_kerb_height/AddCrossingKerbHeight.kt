@@ -31,12 +31,19 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
     /* The quest should not be asked when the kerb situation can theoretically be tagged with
        greater detail, i.e. where the sidewalks are mapped as separate ways and hence there is a
        footway that crosses the road at the highway=crossing node: In that case, it would be
-       possible to put the kerbs at their actual physical locations. */
+       possible to put the kerbs at their actual physical locations.
+
+       Additionally, driveways usually have no kerbs, as well as any roads that explicitly have no
+       sidewalk.
+     */
     private val excludedWaysFilter by lazy { """
         ways with
           highway and access ~ private|no
           or highway ~ footway|path|cycleway
           or highway = service and service = driveway
+          or sidewalk:both ~ none|no
+          or sidewalk ~ none|no
+          or (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
     """.toElementFilterExpression() }
 
     override val changesetComment = "Determine the heights of kerbs at crossings"

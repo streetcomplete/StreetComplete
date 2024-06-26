@@ -80,83 +80,89 @@ class OAuthAuthorizationTest {
         assertFalse(oauth.itsForMe("localboost://oauth"))
     }
 
-    @Test fun `extractAuthorizationCode fails with useful error messages`() {
+    @Test fun `extractAuthorizationCode fails with useful error messages`(): Unit = runBlocking {
+        val oauth = createOAuth()
+        val service = OAuthService(HttpClient(MockEngine { respondOk() }))
+
         // server did not respond correctly with "error"
         assertFailsWith<OAuthConnectionException> {
-            extractAuthorizationCode("localhost://oauth?e=something")
+            service.retrieveAccessToken(oauth, "localhost://oauth?e=something")
         }
 
         try {
-            extractAuthorizationCode("localhost://oauth?error=hey%2Bwhat%27s%2Bup")
+            service.retrieveAccessToken(oauth, "localhost://oauth?error=hey%2Bwhat%27s%2Bup")
         } catch (e: OAuthException) {
             assertEquals("hey what's up", e.message)
         }
 
         try {
-            extractAuthorizationCode("localhost://oauth?error=A%21&error_description=B%21")
+            service.retrieveAccessToken(oauth, "localhost://oauth?error=A%21&error_description=B%21")
         } catch (e: OAuthException) {
             assertEquals("A!: B!", e.message)
         }
 
         try {
-            extractAuthorizationCode("localhost://oauth?error=A%21&error_uri=http%3A%2F%2Fabc.de")
+            service.retrieveAccessToken(oauth, "localhost://oauth?error=A%21&error_uri=http%3A%2F%2Fabc.de")
         } catch (e: OAuthException) {
             assertEquals("A! (see http://abc.de)", e.message)
         }
 
         try {
-            extractAuthorizationCode("localhost://oauth?error=A%21&error_description=B%21&error_uri=http%3A%2F%2Fabc.de")
+            service.retrieveAccessToken(oauth, "localhost://oauth?error=A%21&error_description=B%21&error_uri=http%3A%2F%2Fabc.de")
         } catch (e: OAuthException) {
             assertEquals("A!: B! (see http://abc.de)", e.message)
         }
     }
 
-    @Test fun extractAuthorizationCode() {
+    @Test fun extractAuthorizationCode() = runBlocking {
+        val service = OAuthService(HttpClient(MockEngine { request ->
+            if (request.url.parameters["code"] == "my code") {
+                respondOk("""{
+                    "access_token": "TOKEN",
+                    "token_type": "bearer",
+                    "scope": "A B C"
+                }""")
+            } else {
+                respondError(HttpStatusCode.BadRequest)
+            }
+        }))
+        val oauth = createOAuth()
+
         assertEquals(
-            "my code",
-            extractAuthorizationCode("localhost://oauth?code=my%20code")
+            AccessTokenResponse("TOKEN", listOf("A", "B", "C")),
+            service.retrieveAccessToken(oauth, "localhost://oauth?code=my%20code")
         )
     }
 
-    @Test fun `retrieveAccessToken generates valid access token`() = runBlocking {
-        val service = OAuthService(HttpClient(MockEngine { _ -> respondOk("""{
-            "access_token": "TOKEN",
-            "token_type": "bearer",
-            "scope": "A B C"
-        }""")
-        }))
-
-        val tokenResponse = service.retrieveAccessToken(dummyOAuthAuthorization(), "")
-
-        assertEquals(AccessTokenResponse("TOKEN", listOf("A", "B", "C")), tokenResponse)
-    }
-
     @Test fun `retrieveAccessToken throws OAuthConnectionException with invalid response token_type`(): Unit = runBlocking {
-        val service = OAuthService(HttpClient(MockEngine { _ -> respondOk("""{
+        val service = OAuthService(HttpClient(MockEngine { respondOk("""{
             "access_token": "TOKEN",
             "token_type": "an_unusual_token_type",
             "scope": "A B C"
         }""")
         }))
 
-        val exception = assertFailsWith<OAuthConnectionException> { service.retrieveAccessToken(dummyOAuthAuthorization(), "") }
+        val exception = assertFailsWith<OAuthConnectionException> {
+            service.retrieveAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
+        }
 
-        assertEquals("OAuth 2 token endpoint returned an unknown token type (an_unusual_token_type)", exception.message)
+        assertEquals(
+            "OAuth 2 token endpoint returned an unknown token type (an_unusual_token_type)",
+            exception.message
+        )
     }
 
     @Test fun `retrieveAccessToken throws OAuthException when error response`(): Unit = runBlocking {
-        val service = OAuthService(HttpClient(MockEngine { _ ->
-            respondError(
-                HttpStatusCode.BadRequest, """{
-                    "error": "Missing auth code",
-                    "error_description": "Please specify a code",
-                    "error_uri": "code"
-                }"""
-            )
-        }))
+        val service = OAuthService(HttpClient(MockEngine { respondError(
+            HttpStatusCode.BadRequest, """{
+                "error": "Missing auth code",
+                "error_description": "Please specify a code",
+                "error_uri": "code"
+            }"""
+        ) }))
 
         val exception = assertFailsWith<OAuthException> {
-            service.retrieveAccessToken(dummyOAuthAuthorization(), "")
+            service.retrieveAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
         }
 
         assertEquals("Missing auth code", exception.error)
@@ -166,7 +172,7 @@ class OAuthAuthorizationTest {
     }
 
     @Test fun `retrieveAccessToken generates correct request URL`(): Unit = runBlocking {
-        val mockEngine = MockEngine { _ -> respondOk() }
+        val mockEngine = MockEngine { respondOk() }
         val auth = OAuthAuthorizationParams(
             "",
             "https://www.openstreetmap.org",
@@ -175,7 +181,7 @@ class OAuthAuthorizationTest {
             "scheme://there"
         )
 
-        assertFails { OAuthService(HttpClient(mockEngine)).retrieveAccessToken(auth, "C0D3") }
+        assertFails { OAuthService(HttpClient(mockEngine)).retrieveAccessToken(auth, "scheme://there?code=C0D3") }
 
         val expectedParams = ParametersBuilder()
         expectedParams.append("grant_type", "authorization_code")
@@ -190,9 +196,11 @@ class OAuthAuthorizationTest {
     }
 
     @Test fun `retrieveAccessToken generates request headers`(): Unit = runBlocking {
-        val mockEngine = MockEngine { _ -> respondOk() }
+        val mockEngine = MockEngine { respondOk() }
 
-        assertFails { OAuthService(HttpClient(mockEngine)).retrieveAccessToken(dummyOAuthAuthorization(), "") }
+        assertFails {
+            OAuthService(HttpClient(mockEngine)).retrieveAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
+        }
 
         val expectedHeaders = HeadersBuilder()
         expectedHeaders.append("Content-Type", "application/x-www-form-urlencoded")

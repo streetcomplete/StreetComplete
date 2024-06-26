@@ -30,6 +30,8 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     tags.expandSides("cycleway", "lane", false)
     tags.expandSides("cycleway", "oneway", false)
     tags.expandSides("cycleway", "segregated", false)
+    tags.expandSides("sidewalk", "bicycle", false)
+    tags.expandSides("sidewalk", "bicycle:signed", false)
 
     applyOnewayNotForCyclists(tags)
     left?.applyTo(tags, false, isLeftHandTraffic)
@@ -39,6 +41,8 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     tags.mergeSides("cycleway", "lane")
     tags.mergeSides("cycleway", "oneway")
     tags.mergeSides("cycleway", "segregated")
+    tags.mergeSides("sidewalk", "bicycle")
+    tags.mergeSides("sidewalk", "bicycle:signed")
 
     // update check date
     if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
@@ -104,6 +108,7 @@ private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags) {
 private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Boolean) {
     val side = if (isRight) "right" else "left"
     val cyclewayKey = "cycleway:$side"
+
     when (cycleway) {
         NONE, NONE_NO_ONEWAY -> {
             tags[cyclewayKey] = "no"
@@ -153,6 +158,11 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
         SEPARATE -> {
             tags[cyclewayKey] = "separate"
         }
+        SIDEWALK_OK -> {
+            tags[cyclewayKey] = "no"
+            tags["sidewalk:$side:bicycle"] = "yes"
+            tags["sidewalk:$side:bicycle:signed"] = "yes"
+        }
         else -> {
             throw IllegalArgumentException("Invalid cycleway")
         }
@@ -184,6 +194,15 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
     val touchedSegregatedValue = cycleway in listOf(SIDEWALK_EXPLICIT, TRACK)
     if (!touchedSegregatedValue) {
         tags.remove("$cyclewayKey:segregated")
+    }
+    // no matter what option was chosen, if it's not SIDEWAY_OK, remove that cycling is signed and ok on sidewalk if it's there
+    if (cycleway != SIDEWALK_OK && tags["sidewalk:$side:bicycle"] == "yes" && tags["sidewalk:$side:bicycle:signed"] == "yes") {
+        tags.remove("sidewalk:$side:bicycle")
+        tags.remove("sidewalk:$side:bicycle:signed")
+    }
+    // if anything that is not SIDEWALK_EXPLICIT is chosen, remove sidewalk:<side>:bicycle=designated if it's there
+    if (cycleway != SIDEWALK_EXPLICIT && tags["sidewalk:$side:bicycle"] == "designated") {
+        tags.remove("sidewalk:$side:bicycle")
     }
 }
 

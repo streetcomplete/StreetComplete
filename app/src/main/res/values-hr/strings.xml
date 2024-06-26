@@ -43,7 +43,6 @@
     <string name="action_download">"Traži zadatke ovdje"</string>
     <string name="action_upload">"Pošalji odgovore"</string>
     <string name="no_changes">"Niste odabrali odgovor"</string>
-    <string name="close">"zatvori"</string>
     <string name="download_error">"Greška prilikom traženja zadataka"</string>
     <string name="upload_error">"Greška prilikom slanja odgovora"</string>
     <string name="download_area_too_big">"Molimo da dodatno približite kartu"</string>
@@ -503,7 +502,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_sidewalk_value_yes">"Ima nogostup"</string>
     <string name="quest_sidewalk_value_no">"Nema nogostup"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Je li pješacima zabranjeno hodati cestom ovdje?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ova je ulica označena da nema nogostupa niti s jedne strane. U slučaju da ipak postoji nogostup, ali se prikazuje zasebno, molimo odgovorite “Ima nogostup”."</string>
     <string name="quest_buildingType_title">"O kakvoj je zgradi riječ?"</string>
     <string name="pref_title_theme_select">"Odaberite temu"</string>
     <string name="theme_automatic">"Automatska"</string>
@@ -1265,8 +1263,6 @@ Pomaknuti sada?"</string>
     <string name="bicycle_boulevard_is_a">"To je %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"To nije %1$s"</string>
     <string name="bicycle_boulevard">"Biciklistička avenija"</string>
-    <string name="separate_cycleway_no">"Zabranjeno bicikliranje"</string>
-    <string name="separate_cycleway_allowed">"Bicikliranje je dozvoljeno"</string>
     <string name="separate_cycleway_no_or_allowed">"Nije predviđeno za bicikle (iako je vožnja biciklom možda dopuštena)"</string>
     <string name="separate_cycleway_non_segregated">"Staza za zajedničku upotrebu"</string>
     <string name="separate_cycleway_segregated">"Razdvojena staza za bicikle i pješake"</string>
@@ -1377,7 +1373,6 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="quest_buildingType_tower_description">"bilo koja vrsta tornja"</string>
     <string name="quest_buildingType_under_construction">"U izgradnji"</string>
     <string name="overlay_buildings">"Građevine"</string>
-    <string name="quest_pedestrian_crossing_signals">"Trebaju li pješaci čekati semafor za prelazak ovdje?"</string>
     <string name="quest_pedestrian_crossing_markings">"Ima li ovaj pješački prijelaz iscrtane oznake na cesti (zebra i sl.)?"</string>
     <string name="overlay_places">"Usluge"</string>
     <string name="overlay_things">"Stvari"</string>
@@ -1390,4 +1385,22 @@ Informacije o donacijama možete pronaći na našoj web stranici ili repozitorij
     <string name="quest_isAmenityIndoor_outside_covered">"Nije unutra, ali je natkriveno"</string>
     <string name="lit_value_unsupported">"Specifični status osvijetljenosti koji nije moguće odabrati u ovoj aplikaciji"</string>
     <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Postoje li ovdje semafor koji pokazuji kada treba prijeći cestu?"</string>
+    <string name="quest_moped_access_title">"Postoji li znak koji označava pristup za mopede na ovoj biciklističkoj stazi?"</string>
+    <string name="quest_moped_access_allowed">"Nema znaka"</string>
+    <string name="quest_moped_access_designated">"Postoji znak koji ovu biciklističku stazu namjenjuje za mopede"</string>
+    <string name="quest_moped_access_forbidden">"Postoji znak zabrane vožnje mopedom"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Ova vrsta zadatka je inicijalno onemogućena jer se znakovi dozvole kretanja mopeda nalaze samo na početku/kraju biciklističke staze."</string>
+    <string name="quest_arrow_tutorial">"Strelice na ilustraciji pokazuju smjer kojim teče put na karti na centralnoj  oznaci. Pokušajte rotirati kartu i shvatiti ćete."</string>
+    <string name="info">"Više informacija"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Zabranjeno je."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Dozvoljeno je."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Zapravo, nogostup postoji, ali je na karti prikazan odvojeno."</string>
+    <string name="quest_buildingLevels_hint">"Za zgrade na padini, brojanje katova počinje od razine tla na najnižoj strani.
+
+Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, krovovi s nula katova u potkrovlju nisu nužno ravni, samo nisu dovoljno visoki za cijeli kat."</string>
+    <string name="quest_parcel_locker_brand">"Koja je marka ovog ormarića za pakete?"</string>
+    <string name="quest_parcel_locker_pickup">"Mogu li se ovdje preuzeti paketi?"</string>
+    <string name="quest_parcel_locker_mail_in">"Mogu li se ovdje ostaviti paketi?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Električni vod je spojen na zgradu"</string>
 </resources>

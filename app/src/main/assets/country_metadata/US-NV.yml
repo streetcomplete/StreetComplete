@@ -2,3 +2,4 @@
 atmOperators: [Wells Fargo, Bank of America, Nevada State Bank, U.S. Bank]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Electrify America, Tesla, Unknown, Tesla Motors, Shell Recharge Solutions]
 defaultSpeedLimitHasUrbanOrRural: false
+parcelLockerBrand: [Amazon Hub, Amazon Locker]

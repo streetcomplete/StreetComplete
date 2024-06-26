@@ -43,7 +43,6 @@
     <string name="action_download">"Søk etter oppdrag her"</string>
     <string name="action_upload">"Last opp svar"</string>
     <string name="no_changes">"Du gav ingen svar"</string>
-    <string name="close">"lukk"</string>
     <string name="download_error">"Feil ved søk etter oppdrag"</string>
     <string name="upload_error">"Feil ved opplasting av svar"</string>
     <string name="download_area_too_big">"Zoom lenger inn"</string>
@@ -477,7 +476,6 @@
     <string name="quest_sidewalk_value_yes">"fortau"</string>
     <string name="quest_sidewalk_value_no">"ikkje fortau"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Er det forbode for fotgjengarar å gå på denne vegen her?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Det er registrert at gata verken har fortau på venstre eller høgre side. Viss det likevel finst eit fortau, men det er åtskilt frå gata, svar «fortau»."</string>
     <string name="quest_buildingType_title">"Kva slags bygning er dette?"</string>
     <string name="pref_title_theme_select">"Vel tema"</string>
     <string name="theme_automatic">"Automatisk"</string>

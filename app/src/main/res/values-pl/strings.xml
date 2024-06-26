@@ -43,7 +43,6 @@
     <string name="action_download">"Szukaj zadań w okolicy"</string>
     <string name="action_upload">"Prześlij odpowiedzi"</string>
     <string name="no_changes">"Nie udzielono odpowiedzi"</string>
-    <string name="close">"zamknij"</string>
     <string name="download_error">"Błąd podczas szukania zadań"</string>
     <string name="upload_error">"Błąd podczas przesyłania odpowiedzi"</string>
     <string name="download_area_too_big">"Przybliż bardziej"</string>
@@ -504,7 +503,6 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_sidewalk_value_yes">"chodnik"</string>
     <string name="quest_sidewalk_value_no">"brak chodnika"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Czy piesi mają zakaz poruszania się na tej drodze?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ta ulica jest otagowana jako pozbawiona chodnika po obu stronach. Jeśli jednak chodnik istnieje, ale jest wyświetlany jako samodzielna droga, wypełnij odpowiedź na temat chodnika."</string>
     <string name="quest_buildingType_title">"Jaki to rodzaj budynku?"</string>
     <string name="pref_title_theme_select">"Wybierz motyw"</string>
     <string name="theme_automatic">"Automatyczny"</string>
@@ -1265,8 +1263,6 @@ Przesunąć go teraz?"</string>
     <string name="bicycle_boulevard_is_a">"Jest to %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"To nie jest %1$s"</string>
     <string name="bicycle_boulevard">"Bulwar rowerowy"</string>
-    <string name="separate_cycleway_no">"Brak drogi rowerowej"</string>
-    <string name="separate_cycleway_allowed">"Rowerzyści są dopuszczeni"</string>
     <string name="separate_cycleway_no_or_allowed">"Nieprzeznaczony dla rowerzystów (jazda na rowerze może być nadal dozwolona)"</string>
     <string name="separate_cycleway_non_segregated">"Ścieżka do wspólnego użytku"</string>
     <string name="separate_cycleway_segregated">"Rozdzielona ścieżka dla rowerów i pieszych"</string>
@@ -1377,7 +1373,6 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_buildingType_tower_description">"dowolny rodzaj wieży"</string>
     <string name="quest_buildingType_under_construction">"W trakcie budowy"</string>
     <string name="overlay_buildings">"Budynki"</string>
-    <string name="quest_pedestrian_crossing_signals">"Czy trzeba czekać na sygnalizację świetlną, aby tu przejść?"</string>
     <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na ziemi?"</string>
     <string name="overlay_places">"Miejsca"</string>
     <string name="overlay_things">"Obiekty"</string>

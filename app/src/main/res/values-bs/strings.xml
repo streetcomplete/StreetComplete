@@ -44,7 +44,6 @@
     <string name="action_download">"Traži zadatke ovdje"</string>
     <string name="action_upload">"Uploaduj odgovore"</string>
     <string name="no_changes">"Niste dali nijedan odgovor"</string>
-    <string name="close">"zatvori"</string>
     <string name="download_error">"Greška tokom traženja zadataka"</string>
     <string name="upload_error">"Greška tokom uploadanja odgovora"</string>
     <string name="download_area_too_big">"Molimo da dodatno uvećate"</string>
@@ -507,7 +506,6 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_sidewalk_value_yes">"Ima trotoar"</string>
     <string name="quest_sidewalk_value_no">"Nema trotoar"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Je li pješacima zabranjeno hodati cestom ovdje?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ova je ulica označena da nema trotoara niti s jedne strane. U slučaju da ipak postoji trotoar, ali se prikazuje zasebno, molimo odgovorite \"Ima trotoar\"."</string>
     <string name="quest_buildingType_title">"O kakvoj je zgradi riječ?"</string>
     <string name="pref_title_theme_select">"Odaberite temu"</string>
     <string name="theme_automatic">"Automatska"</string>

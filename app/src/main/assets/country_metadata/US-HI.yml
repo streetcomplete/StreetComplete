@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Bank of Hawaii, First Hawaiian Bank, ATM Pacific]
-chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Hawaiian Electric Company]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.']
 defaultSpeedLimitHasUrbanOrRural: false

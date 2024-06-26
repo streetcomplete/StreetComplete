@@ -43,7 +43,6 @@
     <string name="action_download">"สแกนภารกิจที่นี่"</string>
     <string name="action_upload">"อัปโหลดคำตอบ"</string>
     <string name="no_changes">"คุณยังไม่ได้ให้คำตอบใด ๆ"</string>
-    <string name="close">"ปิด"</string>
     <string name="download_error">"เกิดข้อผิดพลาดขณะสแกนภารกิจ"</string>
     <string name="upload_error">"เกิดข้อผิดพลาดขณะอัปโหลดคำตอบ"</string>
     <string name="download_area_too_big">"โปรดซูมเข้าไปอีก"</string>
@@ -501,7 +500,6 @@
     <string name="quest_sidewalk_value_yes">"ทางเท้า"</string>
     <string name="quest_sidewalk_value_no">"ไม่มีทางเท้า"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"ห้ามคนเดินเท้าบนถนนสายนี้หรือไม่?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"ถนนสายนี้ถูกแท็กว่าไม่มีทางเท้าทั้งสองข้าง ในกรณีที่มีทางเท้าอยู่แต่แสดงเป็นทางที่แยกออกมา ช่วยตอบ \"ทางเท้า\""</string>
     <string name="quest_buildingType_title">"นี่คืออาคารแบบไหน?"</string>
     <string name="pref_title_theme_select">"เลือกชุดตกแต่ง"</string>
     <string name="theme_automatic">"อัตโนมัติ"</string>
@@ -1254,8 +1252,6 @@
     <string name="bicycle_boulevard_is_a">"เป็น%1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"ไม่เป็น%1$s"</string>
     <string name="bicycle_boulevard">"ถนนจักรยาน"</string>
-    <string name="separate_cycleway_no">"ห้ามปั่นจักรยาน"</string>
-    <string name="separate_cycleway_allowed">"อนุญาตให้ปั่นจักรยาน"</string>
     <string name="separate_cycleway_no_or_allowed">"ไม่ได้ระบุสำหรับนักปั่นจักรยาน (การปั่นจักรยานอาจยังได้รับอนุญาต)"</string>
     <string name="separate_cycleway_non_segregated">"เส้นทางใช้ร่วมกัน"</string>
     <string name="separate_cycleway_segregated">"เส้นทางแยกกันสำหรับจักรยานและเดินเท้า"</string>
@@ -1318,6 +1314,8 @@
     <string name="quest_crossing_kerb_height_title">"ความสูงของขอบทางที่ทางข้ามนี้อยู่ที่เท่าไหร่?"</string>
     <string name="quest_maxheight_sign_title">"ป้ายจำกัดความสูงที่แสดงอยู่ที่นี่คืออะไร?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"ป้ายจำกัดความสูงที่แสดงอยู่ด้านล่างของสะพานคืออะไร?"</string>
+    <string name="quest_bbq_fuel_wood">"ไม้"</string>
+    <string name="label_log_newer_than">"จาก"</string>
     <string name="quest_buildingType_under_construction">"อยู่ระหว่างการก่อสร้าง"</string>
     <string name="overlay_buildings">"อาคาร"</string>
     <string name="overlay_places">"สถานที่"</string>

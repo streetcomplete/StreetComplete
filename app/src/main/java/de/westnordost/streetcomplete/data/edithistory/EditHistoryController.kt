@@ -62,7 +62,8 @@ class EditHistoryController(
         osmQuestsHiddenController.addListener(osmQuestHiddenListener)
     }
 
-    fun undo(edit: Edit): Boolean {
+    fun undo(editKey: EditKey): Boolean {
+        val edit = get(editKey) ?: return false
         if (!edit.isUndoable) return false
         return when (edit) {
             is ElementEdit -> elementEditsController.undo(edit)

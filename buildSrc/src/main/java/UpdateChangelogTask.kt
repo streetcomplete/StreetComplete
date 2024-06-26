@@ -21,7 +21,8 @@ open class UpdateChangelogTask : DefaultTask() {
 
         val scriptName = UpdateChangelogTask::class.simpleName
         val comment = "<!-- Do not edit! This file was generated automatically from ${sourceFile.name} via $scriptName -->\n"
-        targetFile.writeText(comment + convertToHtml(sourceFile.readText()))
+        val html = convertToHtml(sourceFile.readText().replace("\r\n", "\n"))
+        targetFile.writeText(comment + html)
     }
 
     private fun convertToHtml(markdown: String): String {

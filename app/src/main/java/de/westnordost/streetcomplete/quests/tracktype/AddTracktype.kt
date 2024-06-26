@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddTracktype : OsmFilterQuestType<Tracktype>() {
@@ -16,7 +16,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
         and (
           !tracktype
           or tracktype != grade1 and tracktype older today -6 years
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and tracktype older today -6 years
+          or surface ~ ${UNPAVED_SURFACES.joinToString("|")} and tracktype older today -6 years
           or tracktype older today -8 years
         )
         and (access !~ private|no or (foot and foot !~ private|no))

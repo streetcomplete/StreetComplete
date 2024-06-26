@@ -9,7 +9,7 @@ enum class SeparateCycleway {
     ALLOWED_ON_FOOTWAY,
     /** Unspecific value: This footway is not designated for cyclists. I.e. it is
      *  either NOT_ALLOWED or ALLOWED_ON_FOOTWAY (or not specified) */
-    NON_DESIGNATED,
+    NON_DESIGNATED_ON_FOOTWAY,
     /** Designated but not segregated from footway mapped on same way */
     NON_SEGREGATED,
     /** Designated and segregated from footway mapped on same way */

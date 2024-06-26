@@ -153,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:textAppearance="@style/TextAppearance.Headline"
+                    android:textAppearance="@style/TextAppearance.HeadlineSmall"
                     android:text="@string/overlays_tutorial_title"/>
 
                 <TextView

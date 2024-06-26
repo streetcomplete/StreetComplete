@@ -43,7 +43,6 @@
     <string name="action_download">"下载此处数据"</string>
     <string name="action_upload">"上传回答"</string>
     <string name="no_changes">"您没有留下任何回答"</string>
-    <string name="close">"关闭"</string>
     <string name="download_error">"下载数据时出现错误"</string>
     <string name="upload_error">"上传回答时出现问题"</string>
     <string name="download_area_too_big">"请进一步放大"</string>
@@ -504,7 +503,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_sidewalk_value_yes">"人行道"</string>
     <string name="quest_sidewalk_value_no">"没有人行道"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"这里的路有禁止行人行走吗？"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"这条街被标记为两侧都没有人行道。如果有人行道，但显示为单独的道路，请回答 \"人行道\"。"</string>
     <string name="quest_buildingType_title">"这栋建筑物的类型是什么?"</string>
     <string name="pref_title_theme_select">"选择主题"</string>
     <string name="theme_automatic">"自动"</string>
@@ -1264,8 +1262,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="bicycle_boulevard_is_a">"它是 %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"它不是 %1$s"</string>
     <string name="bicycle_boulevard">"自行车大道"</string>
-    <string name="separate_cycleway_no">"不能骑车"</string>
-    <string name="separate_cycleway_allowed">"允许骑车"</string>
     <string name="separate_cycleway_no_or_allowed">"未指定给骑车人（仍可骑自行车）"</string>
     <string name="separate_cycleway_non_segregated">"共用道路"</string>
     <string name="separate_cycleway_segregated">"分隔的自行车和步行道"</string>
@@ -1373,7 +1369,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_tower_description">"任何类型的塔"</string>
     <string name="quest_buildingType_under_construction">"建设中"</string>
     <string name="overlay_buildings">"建筑"</string>
-    <string name="quest_pedestrian_crossing_signals">"在这里过马路需要等红绿灯吗？"</string>
     <string name="quest_pedestrian_crossing_markings">"这个十字路口的地面上有标记吗？"</string>
     <string name="overlay_places">"场所"</string>
     <string name="overlay_things">"事物"</string>

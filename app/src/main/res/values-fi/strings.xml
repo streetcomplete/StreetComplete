@@ -43,7 +43,6 @@
     <string name="action_download">"Etsi tehtäviä täältä"</string>
     <string name="action_upload">"Lähetä vastaukset"</string>
     <string name="no_changes">"Jätit lomakkeen tyhjäksi"</string>
-    <string name="close">"sulje"</string>
     <string name="download_error">"Tehtävien etsinnässä tapahtui virhe"</string>
     <string name="upload_error">"Vastausten lähettämisessä tapahtui virhe"</string>
     <string name="download_area_too_big">"Lähennä vielä näkymää"</string>
@@ -503,7 +502,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_sidewalk_value_yes">"Jalkakäytävä"</string>
     <string name="quest_sidewalk_value_no">"Ei jalkakäytävää"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Onko jalankulku kielletty tällä kadulla?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Tämä katu on merkitty kaduksi, jolla ei ole jalkakäytävää kummallakaan puolella. Siinä tapauksessa, että kadulla kuitenkin on jalkakäytävä, mutta se näytetään erillisenä tienä, vastaa \"jalkakäytävä\"."</string>
     <string name="quest_buildingType_title">"Millainen rakennus tämä on?"</string>
     <string name="pref_title_theme_select">"Valitse teema"</string>
     <string name="theme_automatic">"Automaattinen"</string>
@@ -1259,8 +1257,6 @@ Haluatko siirtää nyt?"</string>
     <string name="bicycle_boulevard_is_a">"Se on %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Se ei ole %1$s"</string>
     <string name="bicycle_boulevard">"Pyöräilybaana"</string>
-    <string name="separate_cycleway_no">"Ei pyöräilyä"</string>
-    <string name="separate_cycleway_allowed">"Pyöräilijät sallitaan"</string>
     <string name="separate_cycleway_no_or_allowed">"Ei suunniteltu pyöräilijöille (voi silti olla sallittua)"</string>
     <string name="separate_cycleway_non_segregated">"Yhteiskäyttöinen polku"</string>
     <string name="separate_cycleway_segregated">"Erillinen pyörä- ja jalankulkupolku"</string>
@@ -1361,7 +1357,6 @@ Lisäksi jotkin peitteet sallivat uuden tiedon lisäämisen merkinnän sijaintii
     <string name="quest_buildingType_tower_description">"mikä tahansa torni"</string>
     <string name="quest_buildingType_under_construction">"Rakenteilla"</string>
     <string name="overlay_buildings">"Rakennukset"</string>
-    <string name="quest_pedestrian_crossing_signals">"Pitääkö tässä ylityksessä odottaa valojen vaihtumista?"</string>
     <string name="quest_pedestrian_crossing_markings">"Onko tässä risteyksessä merkintöjä maassa?"</string>
     <string name="overlay_places">"Paikat"</string>
     <string name="overlay_things">"Asiat"</string>

@@ -43,7 +43,6 @@
     <string name="action_download">"ここのデータをダウンロードする"</string>
     <string name="action_upload">"回答をアップロード"</string>
     <string name="no_changes">"フォームを空のままにしました"</string>
-    <string name="close">"閉じる"</string>
     <string name="download_error">"クエストのスキャン中にエラーが発生しました"</string>
     <string name="upload_error">"回答のアップロード中にエラーが発生しました"</string>
     <string name="download_area_too_big">"ズームインしてみてください"</string>
@@ -506,7 +505,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_sidewalk_value_yes">"歩道"</string>
     <string name="quest_sidewalk_value_no">"歩道なし"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"この道路では歩行者の通行が禁止されていますか?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"この道には両脇に歩道が無いとタグ付けされています。もし実際には歩道があるものの別の道として表示されているなら、\"歩道\"と答えてください。"</string>
     <string name="quest_buildingType_title">"これはどんな建物ですか?"</string>
     <string name="pref_title_theme_select">"テーマを選択"</string>
     <string name="theme_automatic">"自動"</string>
@@ -1267,8 +1265,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="bicycle_boulevard_is_a">"%1$s です"</string>
     <string name="bicycle_boulevard_is_not_a">"%1$s ではありません"</string>
     <string name="bicycle_boulevard">"自転車専用道路"</string>
-    <string name="separate_cycleway_no">"サイクリングなし"</string>
-    <string name="separate_cycleway_allowed">"サイクリストは許可されています"</string>
     <string name="separate_cycleway_no_or_allowed">"サイクリストには指定されていません(サイクリングは引き続き許可される場合があります)"</string>
     <string name="separate_cycleway_non_segregated">"歩行者と共用自転車通路"</string>
     <string name="separate_cycleway_segregated">"分離された自転車と歩道"</string>
@@ -1342,6 +1338,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_defibrillator_location_description">"このAEDの設置場所について簡潔に説明してください(例 “スタッフルームの中”)"</string>
     <string name="quest_generalFee_title">"これを使うのにお金を払う必要がありますか。"</string>
     <string name="action_filter">"フィルター"</string>
+    <string name="action_share">"ログを共有"</string>
+    <string name="about_title_show_logs">"ログを閲覧"</string>
     <string name="label_log_newer_than">"から"</string>
     <string name="label_log_older_than">"まで"</string>
     <string name="quest_disable_message_not_installed">"StreetMeasureが(まだ)インストールされていません。"</string>
@@ -1351,9 +1349,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_tower">"塔"</string>
     <string name="quest_buildingType_under_construction">"建設中"</string>
     <string name="overlay_buildings">"建物"</string>
-    <string name="quest_pedestrian_crossing_signals">"ここを横断するのに信号待ちをする必要がありますか。"</string>
     <string name="overlay_places">"場所"</string>
     <string name="overlay_things">"物"</string>
     <string name="quest_leafType_tree_title">"この木には針葉または広葉がついていますか。"</string>
     <string name="quest_bbq_fuel_gas">"ガス"</string>
+    <string name="quest_pedestrian_crossing_signals2">"ここに横断時に確認する信号機はありますか？"</string>
 </resources>

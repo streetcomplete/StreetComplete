@@ -4,7 +4,6 @@ import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -22,18 +21,10 @@ class StatisticsController(
     private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
     private val activeDatesDao: ActiveDatesDao,
     private val countryBoundaries: Lazy<CountryBoundaries>,
-    private val prefs: ObservableSettings,
-    userLoginStatusSource: UserLoginStatusSource
+    private val prefs: ObservableSettings
 ) : StatisticsSource {
 
     private val listeners = Listeners<StatisticsSource.Listener>()
-
-    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
-        override fun onLoggedIn() {}
-        override fun onLoggedOut() {
-            clear()
-        }
-    }
 
     override var rank: Int
         get() = prefs.getInt(Prefs.USER_GLOBAL_RANK, -1)
@@ -71,10 +62,6 @@ class StatisticsController(
         set(value) {
             prefs.putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, value)
         }
-
-    init {
-        userLoginStatusSource.addListener(userLoginStatusListener)
-    }
 
     override fun getEditCount(): Int =
         editTypeStatisticsDao.getTotalAmount()
@@ -158,7 +145,7 @@ class StatisticsController(
         listeners.forEach { it.onUpdatedAll() }
     }
 
-    private fun clear() {
+    fun clear() {
         editTypeStatisticsDao.clear()
         countryStatisticsDao.clear()
         currentWeekEditTypeStatisticsDao.clear()

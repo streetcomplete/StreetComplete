@@ -16,7 +16,7 @@
 
         <item name="alertDialogTheme">@style/Theme.Bubble.Dialog.Alert</item>
         <item name="dialogTheme">@style/Theme.Bubble.Dialog</item>
-        <item name="titleTextAppearance">@style/TextAppearance.Title</item>
+        <item name="titleTextAppearance">@style/TextAppearance.TitleLarge</item>
         <item name="buttonBarStyle">@style/ButtonBar</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -30,6 +30,8 @@
         <item name="android:listPopupWindowStyle">@style/Theme.Bubble.Popup</item>
         <item name="listPopupWindowStyle">@style/Theme.Bubble.Popup</item>
         <item name="preferenceTheme">@style/Theme.Preferences</item>
+
+        <item name="materialButtonStyle">@style/Theme.Button</item>
     </style>
 
     <style name="Theme.Bubble.ToolbarPopup"  parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
@@ -67,6 +69,7 @@
              can be disabled for dialogs - which would be the behavior one (=the developer) would
              expect. -->
         <item name="android:splitMotionEvents">false</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="Theme.Bubble.Dialog.Alert"/>
@@ -80,6 +83,10 @@
     <style name="Theme.CustomDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="android:windowBackground">@color/background_transparent</item>
         <item name="android:windowAnimationStyle">@style/Animation.Dialog.Custom</item>
+    </style>
+
+    <style name="Theme.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="Theme.Button.Alert" parent="Widget.MaterialComponents.Button.TextButton">

@@ -28,20 +28,23 @@ import kotlin.io.encoding.ExperimentalEncodingApi
  * 2. Let user accept or deny the permission request in the browser (or web view). Authorization
  *    endpoint will call the redirect URI (aka callback URI) with parameters in either case.
  * 3. Check if the URI received is matches the OAuthAuthorizationParams instance with itsForMe(uri)
- *    and then extractAuthorizationCode(uri) from that URI
- * 4. OAuthService.retrieveAccessToken(authorizationCode) with the retrieved authorizationCode
+ *    and feed the received uri to OAuthService.retrieveAccessToken(uri)
  */
 class OAuthService(private val httpClient: HttpClient) {
     private val json = Json { ignoreUnknownKeys = true }
 
     /**
-     * Retrieves the access token, using the previously retrieved [authorizationCode]
+     * Retrieves the access token, given the [authorizationResponseUrl]
      *
      * @throws OAuthException if there has been an OAuth authorization error
      * @throws OAuthConnectionException if the server reply is malformed or there is an issue with
      *                                   the connection
      */
-    suspend fun retrieveAccessToken(request: OAuthAuthorizationParams, authorizationCode: String): AccessTokenResponse {
+    suspend fun retrieveAccessToken(
+        request: OAuthAuthorizationParams,
+        authorizationResponseUrl: String
+    ): AccessTokenResponse {
+        val authorizationCode = extractAuthorizationCode(authorizationResponseUrl)
         try {
             val response = httpClient.post(request.accessTokenUrl) {
                 url {
@@ -102,7 +105,7 @@ class OAuthService(private val httpClient: HttpClient) {
      * and required in the OAuth 2.1 draft
      * https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-09
      */
-    public val codeVerifier: String = createRandomAlphanumericString(128)
+    val codeVerifier: String = createRandomAlphanumericString(128)
 
     /**
      * Creates the URL to be opened in the browser or a web view in which the user agrees to
@@ -144,7 +147,7 @@ class OAuthService(private val httpClient: HttpClient) {
  *                        the user did not accept the requested permissions
  * @throws OAuthConnectionException if the server reply is malformed
  */
-public fun extractAuthorizationCode(uri: String): String {
+private fun extractAuthorizationCode(uri: String): String {
     val parameters = Url(uri).parameters
     val authorizationCode = parameters["code"]
     if (authorizationCode != null) return authorizationCode

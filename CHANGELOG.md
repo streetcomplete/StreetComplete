@@ -10,6 +10,62 @@ Display-wise, nothing much *should* change, the map will just look and behave a 
 
 Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #4026, #3417, #3397, #3346, #3275, #3022, #2878, #2711, #2703, #2612, #2571, #2373, #2359, #2358, #2187, #1713, #1684, #1264, #1019, #869, #807, #318, #179, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
 
+## v58.1
+
+- Places overlay, things overlay, ...: Fix crash on displaying features that were incompletely translated to a dialect of a language, by @logan12358
+- Avoid asking about existence of shop right after asking about its opening hours (#5674)
+- Moped on bike paths: When there is no sign, just tag that and don't infer anything else (#5565)
+- Parcel locker drop-off: Add option for return deliveries only (#5687)
+- Crossing kerb height: Only ask if road has a sidewalk (#5668)
+- Addresses: recognize common housenumber formats in Bulgaria (#5683), by @mnalis
+- Other small improvements (#5594, #5676, ...)
+
+## v58.0
+
+### New quests
+
+- _"What’s the brand of this parcel locker?"_ (#5638), by @Arthur-GYT
+- _"Can you pick up parcels here?"_ (#5639), by @Arthur-GYT
+- _"Can you drop off parcels here?"_ (#5639), by @Arthur-GYT
+- _"Is there a sign indicating access for mopeds on this bike path?"_ – asked exclusively in Belgium (#5567), by @PowerPlop
+
+### Overlay improvements
+
+- Bike paths: Now possible to select that cycling on footway is explicitly allowed or prohibited (#5575, #4913), by @wielandb
+- Places: Entrances are shown to help with orientation (#5497)
+- Things: Advertising totem was not displayed (#5588)
+
+### Quest improvements
+
+- Road Surface: Fix it was possible to answer track type and surface for a road in an endless loop (#5650)
+- Max height: Don't ask if it has been specified for forward and backward or individual lanes separately (#5609)
+- Fire hydrant diameter: Now enabled in Hungary (#5617), by @dnet
+- Power pole material: Can now answer with that power line is anchored to building (#5663), by @qugebert
+- Tactile paving: Now enabled in Columbia (#5579)
+- Prohibited for pedestrians: Clarified UI and wording (#5610)
+- Bicycle parking: Add option for just markings on the ground (#5191)
+- Drinking water: Don't ask for intermittent water sources (#5632), by @esilja
+- Other small improvements and fixes (#5631, ...)
+
+### General improvements
+
+- For some quests, there is now an ℹ-button which expands a help text (#5612, #1913)
+- The user profile screen looks a bit different now (#5607)
+- Other small improvements (#5635, #5645, ...), thanks @riQQ
+
+## v57.4
+
+- Fix crash under certain circumstances in bike path overlay (#5604) (regression from #5596)
+
+## v57.3
+
+- Fix UNDO: It didn't actually do anything for edits that were already synced! This critical issue existed since v57.2 (#5600, #5602)
+- Traffic signals: Improve wording (#5591)
+- Max speed: Show warning when inputting implausible slow zone tempo limit (#5592)
+- Payment methods: Don't ask in shops if they have been specified exhaustively already (#5589), by @urbalazs
+- Railway crossings barriers: Don't ask for abandoned railways (#5597)
+- Bike paths overlay: Fix selecting "not designated as bike path" when it was a "path or trail" wouldn't do anything (#5596)
+
 ## v57.2
 
 - Lit overlay: Unsupported current tagging is now indicated as such (#5571)

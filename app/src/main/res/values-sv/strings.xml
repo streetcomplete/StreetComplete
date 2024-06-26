@@ -43,7 +43,6 @@
     <string name="action_download">"Sök efter uppdrag här"</string>
     <string name="action_upload">"Skicka svar"</string>
     <string name="no_changes">"Du lämnade formuläret tomt"</string>
-    <string name="close">"stäng"</string>
     <string name="download_error">"Fel vid sökning av uppdrag"</string>
     <string name="upload_error">"Fel vid sändning av svar"</string>
     <string name="download_area_too_big">"Vänligen zooma in ytterligare"</string>
@@ -503,7 +502,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_sidewalk_value_yes">"trottoar"</string>
     <string name="quest_sidewalk_value_no">"ingen trottoar"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Finns det ett skyltat förbud att gå på den här vägen?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Den här gatan är märkt som att den inte har någon trottoar på endera sida. Om det  trots allt finns en trottoar men den är kartlagd som en separat väg, var god svara \"trottoar\"."</string>
     <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
     <string name="pref_title_theme_select">"Välj tema"</string>
     <string name="theme_automatic">"Automatiskt"</string>
@@ -1265,8 +1263,6 @@ Flytta den?"</string>
     <string name="bicycle_boulevard_is_a">"Det är en %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Det är inte en %1$s"</string>
     <string name="bicycle_boulevard">"Cykelgata"</string>
-    <string name="separate_cycleway_no">"Cykling förbjuden"</string>
-    <string name="separate_cycleway_allowed">"Cykling tillåten"</string>
     <string name="separate_cycleway_no_or_allowed">"Ej lämpad för cyklister (oavsett om cykling är tillåten eller ej)"</string>
     <string name="separate_cycleway_non_segregated">"Gemensam gång- och cykelbana"</string>
     <string name="separate_cycleway_segregated">"Uppdelad gång- och cykelbana"</string>
@@ -1377,7 +1373,6 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="quest_buildingType_tower_description">"alla slags torn"</string>
     <string name="quest_buildingType_under_construction">"Under uppbyggnad"</string>
     <string name="overlay_buildings">"Byggnader"</string>
-    <string name="quest_pedestrian_crossing_signals">"Behöver du vänta på trafiksignal för att korsa här?"</string>
     <string name="quest_pedestrian_crossing_markings">"Har denna korsning markeringar på marken?"</string>
     <string name="overlay_places">"Platser"</string>
     <string name="overlay_things">"Saker"</string>
@@ -1390,4 +1385,22 @@ Du kan hitta information om donationer på vår hemsida, Google Play tillåter o
     <string name="quest_isAmenityIndoor_outside_covered">"Inte inomhus, men tak över"</string>
     <string name="lit_value_unsupported">"Specifik belysningsstatus som ej är valbar i denna app"</string>
     <string name="quest_generic_otherAnswers2">"Eh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Finns det trafiksignaler som visar när man ska korsa här?"</string>
+    <string name="quest_moped_access_title">"Finns det någon skylt som visar huruvida mopeder är tillåtna på denna cykelväg?"</string>
+    <string name="quest_moped_access_allowed">"Det finns ingen skylt"</string>
+    <string name="quest_moped_access_designated">"Det finns en skylt som säger att denna cykelväg är för mopeder"</string>
+    <string name="quest_moped_access_forbidden">"Det finns en skylt som förbjuder mopeder"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Denna typ av uppdrag är inaktiverad som standard eftersom huruvida mopeder är tillåtna visas av en särskild skylt vid början/slutet av en cykelväg."</string>
+    <string name="quest_arrow_tutorial">"Pilarna på bilden pekar i riktningen som vägen på kartans mitt går. Snurra på kartan så förstår du."</string>
+    <string name="info">"Mer information"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Det är förbjudet."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"det är tillåtet."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Faktum är att det finns en trottoar, men den visas separat på kartan."</string>
+    <string name="quest_buildingLevels_hint">"För byggnader i en sluttning börjar våningsnummer räknas från markplan på den lägsta sidan.
+
+En våning räknas som en takvåning när dess fönster finns i taket. Det följer att tak med noll takvåningar inte nödvändigtvis är platt, bara inte tillräckligt högt för en hel våning.
+    "</string>
+    <string name="quest_parcel_locker_brand">"Vad är det för varumärke på detta paketskåp?"</string>
+    <string name="quest_parcel_locker_pickup">"Kan man hämta paket här?"</string>
+    <string name="quest_parcel_locker_mail_in">"Kan man lämna paket här?"</string>
 </resources>

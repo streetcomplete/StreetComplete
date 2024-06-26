@@ -90,9 +90,6 @@
             android:name="de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity"
             android:configChanges="orientation|screenSize|uiMode" />
         <activity
-            android:name="de.westnordost.streetcomplete.screens.settings.debug.ShowLinksActivity"
-            android:configChanges="orientation|screenSize|uiMode" />
-        <activity
             android:name="de.westnordost.streetcomplete.screens.user.UserActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />

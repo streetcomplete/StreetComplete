@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -17,7 +17,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
         ways with highway = steps
          and (!indoor or indoor = no)
          and access !~ private|no
-         and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+         and surface ~ ${PAVED_SURFACES.joinToString("|")}
          and !sac_scale
          and (!conveying or conveying = no)
          and ramp != separate

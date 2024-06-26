@@ -15,14 +15,8 @@ fun parseCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): L
     val isReversedOneway = isReversedOneway(tags)
     val isOneway = isReversedOneway || isForwardOneway
     val isReverseSideRight = isReversedOneway xor isLeftHandTraffic
-
-    // any unambiguous opposite tagging implies oneway:bicycle = no
     val isOpposite = tags["cycleway"]?.startsWith("opposite") == true
     val isOnewayButNotForCyclists = isOneway && isNotOnewayForCyclists(tags, isLeftHandTraffic)
-
-    // opposite tagging implies a oneway. So tagging is not understood if tags seem to contradict each other
-    val isAnyOppositeTagging = tags.filterKeys { it in KNOWN_CYCLEWAY_AND_RELATED_KEYS }.values.any { it.startsWith("opposite") }
-    if (!isOneway && isAnyOppositeTagging) return null
 
     var left: Cycleway? = null
     var right: Cycleway? = null
@@ -94,9 +88,11 @@ private fun parseCyclewayForSide(
     val cycleway = tags[cyclewayKey]
     val cyclewayLane = tags["$cyclewayKey:lane"]
     val isSegregated = tags["$cyclewayKey:segregated"] != "no"
+    val isCyclingOkOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "yes" && tags["sidewalk$sideVal:bicycle:signed"] == "yes"
+    val isCyclingDesignatedOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "designated"
 
     val result = when (cycleway) {
-        "lane", "opposite_lane" -> {
+        "lane" -> {
             when (cyclewayLane) {
                 "exclusive" -> EXCLUSIVE_LANE
                 null ->        UNSPECIFIED_LANE
@@ -118,14 +114,20 @@ private fun parseCyclewayForSide(
                 else        -> UNKNOWN_SHARED_LANE
             }
         }
-        "track", "opposite_track" -> {
+        "track" -> {
             if (isSegregated) TRACK else SIDEWALK_EXPLICIT
         }
         "separate" -> SEPARATE
-        "no", "opposite" -> NONE
-        "share_busway", "opposite_share_busway" -> BUSWAY
+        "no" -> when {
+            isCyclingOkOnSidewalk -> SIDEWALK_OK
+            isCyclingDesignatedOnSidewalk -> SIDEWALK_EXPLICIT
+            else -> NONE
+        }
+        "share_busway" -> BUSWAY
         "shoulder" -> SHOULDER
         // values known to be invalid, ambiguous or obsolete:
+        // deprecated opposite_* tags
+        "opposite_lane", "opposite_track", "opposite", "opposite_share_busway",
         // 1.2% - ambiguous: there are more precise tags
         "yes", "right", "left", "both",
         "on_street", "segregated", "shared", // segregated from, shared with what?
@@ -184,6 +186,8 @@ private fun expandRelevantSidesTags(tags: Map<String, String>): Map<String, Stri
     result.expandSidesTags("cycleway", "lane", true)
     result.expandSidesTags("cycleway", "oneway", true)
     result.expandSidesTags("cycleway", "segregated", true)
+    result.expandSidesTags("sidewalk", "bicycle", true)
+    result.expandSidesTags("sidewalk", "bicycle:signed", true)
     return result
 }
 

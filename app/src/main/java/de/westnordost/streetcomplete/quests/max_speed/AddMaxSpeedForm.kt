@@ -166,8 +166,13 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
     private fun userSelectedUnusualSpeed(): Boolean {
         val speed = getSpeedFromInput() ?: return false
+        val isDividableByFive = speed.toValue() % 5 == 0
         val kmh = speed.toKmh()
-        return kmh > 140 || kmh > 20 && speed.toValue() % 5 != 0 || kmh < 10
+        return when (speedType) {
+            SIGN -> kmh > 140 || kmh > 20 && !isDividableByFive || kmh < 5
+            ZONE -> kmh > 40 || kmh > 20 && !isDividableByFive || kmh < 5
+            else -> false
+        }
     }
 
     private fun switchToAdvisorySpeedLimit() {

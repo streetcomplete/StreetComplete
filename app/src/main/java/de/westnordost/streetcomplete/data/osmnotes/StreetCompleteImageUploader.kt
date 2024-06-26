@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.data.download.ConnectionException
+import de.westnordost.streetcomplete.data.ConnectionException
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.header
@@ -10,6 +10,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import io.ktor.http.defaultForFile
+import io.ktor.http.isSuccess
 import io.ktor.util.cio.readChannel
 import io.ktor.utils.io.errors.IOException
 import kotlinx.serialization.SerialName
@@ -56,7 +57,7 @@ class StreetCompleteImageUploader(
 
                 val status = response.status
                 val body = response.body<String>()
-                if (status == HttpStatusCode.OK) {
+                if (status.isSuccess()) {
                     try {
                         val parsedResponse = json.decodeFromString<PhotoUploadResponse>(body)
                         imageLinks.add(parsedResponse.futureUrl)
@@ -64,7 +65,7 @@ class StreetCompleteImageUploader(
                         throw ImageUploadServerException("Upload Failed: Unexpected response \"$body\"")
                     }
                 } else {
-                    if (status.value / 100 == 5) {
+                    if (status.value in 500..599) {
                         throw ImageUploadServerException("Upload failed: Error code $status, Message: \"$body\"")
                     } else {
                         throw ImageUploadClientException("Upload failed: Error code $status, Message: \"$body\"")
@@ -93,9 +94,9 @@ class StreetCompleteImageUploader(
             if (status == HttpStatusCode.Gone) {
                 // it's gone if the note does not exist anymore. That's okay, it should only fail
                 // if we might want to try again later.
-            } else if (status != HttpStatusCode.OK) {
+            } else if (!status.isSuccess()) {
                 val error = response.body<String>()
-                if (status.value / 100 == 5) {
+                if (status.value in 500..599) {
                     throw ImageUploadServerException("Error code $status, Message: \"$error\"")
                 } else {
                     throw ImageUploadClientException("Error code $status, Message: \"$error\"")

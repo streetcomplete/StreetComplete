@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textAppearance="@style/TextAppearance.Title"
+        android:textAppearance="@style/TextAppearance.TitleLarge"
         android:visibility="invisible"
         android:textColor="@color/hint_text"
         android:text="@string/no_search_results"

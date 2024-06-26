@@ -43,7 +43,6 @@
     <string name="action_download">"Serĉi taskojn ĉi tie"</string>
     <string name="action_upload">"Alŝuti respondojn"</string>
     <string name="no_changes">"Vi ne respondis ion ajn"</string>
-    <string name="close">"fermi"</string>
     <string name="download_error">"Eraro serĉante taskojn"</string>
     <string name="upload_error">"Eraro alŝutante respondojn"</string>
     <string name="download_area_too_big">"Bonvolu alproksimiĝi pli"</string>
@@ -502,7 +501,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_sidewalk_value_yes">"Trotuaro"</string>
     <string name="quest_sidewalk_value_no">"Ne trotuaro"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ĉu piedirantoj malrajtas iri sur ĉi tiu vojo?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Por tiu vojo estas indikita ke ĝi ne havas trotuarojn ĉe ambaŭ flankoj. Se tamen estus trotuaro kiu  aperus kiel aparta vojo, bonvole elektu \"trotuaro\"."</string>
     <string name="quest_buildingType_title">"Kia konstruaĵo estas tiu?"</string>
     <string name="pref_title_theme_select">"Elektu etoson"</string>
     <string name="theme_automatic">"Aŭtomata"</string>
@@ -1237,8 +1235,6 @@ Movu ĝin nun?"</string>
     <string name="bicycle_boulevard_is_a">"Estas %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Ne estas %1$s"</string>
     <string name="bicycle_boulevard">"Bicikla vojo"</string>
-    <string name="separate_cycleway_no">"Biciklado malpermesata"</string>
-    <string name="separate_cycleway_allowed">"Biciklistoj estas permesataj"</string>
     <string name="separate_cycleway_no_or_allowed">"Ne farita por biciklistoj (sed eblas ke oni tamen povu biciklumi)"</string>
     <string name="separate_cycleway_non_segregated">"Sendivida vojo por biciklistoj kaj piedpaŝantoj"</string>
     <string name="separate_cycleway_segregated">"Dividita vojo por biciklistoj kaj piedpaŝantoj"</string>
@@ -1311,7 +1307,6 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="quest_buildingType_tower_description">"ia speco de turo"</string>
     <string name="quest_buildingType_under_construction">"konstruanta"</string>
     <string name="overlay_buildings">"Konstruaĵoj"</string>
-    <string name="quest_pedestrian_crossing_signals">"Ĉu vi devas atenti trafiklumon antaŭ transiri ĉi tie?"</string>
     <string name="quest_pedestrian_crossing_markings">"Ĉu tiu tranirejo estas markita surstrate?"</string>
     <string name="overlay_places">"Lokoj"</string>
     <string name="overlay_things">"Aferoj"</string>

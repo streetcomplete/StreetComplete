@@ -152,6 +152,64 @@ class CyclewayCreatorKtTest {
         )
     }
 
+    @Test fun `apply allowed on sidewalk on one side only`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:right", "no"),
+                StringMapEntryAdd("sidewalk:right:bicycle", "yes"),
+                StringMapEntryAdd("sidewalk:right:bicycle:signed", "yes")
+            ),
+            cycleway(null, SIDEWALK_OK).appliedTo(mapOf())
+        )
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:left", "no"),
+                StringMapEntryAdd("sidewalk:left:bicycle", "yes"),
+                StringMapEntryAdd("sidewalk:left:bicycle:signed", "yes")
+            ),
+            cycleway(SIDEWALK_OK, null).appliedTo(mapOf())
+        )
+    }
+
+    @Test fun `apply allowed on sidewalk to both sides`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:both", "no"),
+                StringMapEntryAdd("sidewalk:both:bicycle", "yes"),
+                StringMapEntryAdd("sidewalk:both:bicycle:signed", "yes")
+            ),
+            cycleway(SIDEWALK_OK, SIDEWALK_OK).appliedTo(mapOf())
+        )
+    }
+
+    @Test fun `apply none to a side where SIDEWALK_OK is set`() {
+        assertEquals(
+            setOf(
+                StringMapEntryModify("cycleway:right", "no", "no"),
+                StringMapEntryDelete("sidewalk:right:bicycle", "yes"),
+                StringMapEntryDelete("sidewalk:right:bicycle:signed", "yes")
+            ),
+            cycleway(null, NONE).appliedTo(mapOf(
+                "cycleway:right" to "no",
+                "sidewalk:right:bicycle" to "yes",
+                "sidewalk:right:bicycle:signed" to "yes"
+            ))
+        )
+    }
+
+    @Test fun `apply none to a side where sidewalk bicycle designated it set`() {
+        assertEquals(
+            setOf(
+                StringMapEntryModify("cycleway:right", "no", "no"),
+                StringMapEntryDelete("sidewalk:right:bicycle", "designated"),
+            ),
+            cycleway(null, NONE).appliedTo(mapOf(
+                "cycleway:right" to "no",
+                "sidewalk:right:bicycle" to "designated",
+            ))
+        )
+    }
+
     @Test fun `apply dual cycle track answer`() {
         assertEquals(
             setOf(

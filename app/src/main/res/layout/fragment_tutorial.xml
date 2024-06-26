@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:gravity="center"
-                        android:textAppearance="@style/TextAppearance.Headline"
+                        android:textAppearance="@style/TextAppearance.HeadlineSmall"
                         android:text="@string/tutorial_welcome_to_osm"/>
 
                     <TextView
@@ -229,7 +229,7 @@
                         android:layout_below="@id/staySafeTextView"
                         android:layout_marginTop="24dp"
                         android:gravity="center"
-                        android:textAppearance="@style/TextAppearance.Headline"
+                        android:textAppearance="@style/TextAppearance.HeadlineSmall"
                         android:text="@string/tutorial_happy_mapping"/>
 
                 </RelativeLayout>

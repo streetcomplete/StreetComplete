@@ -51,10 +51,11 @@ class NoteEditsControllerTest {
         val note = note(1)
 
         ctrl.markSynced(edit, note)
+        val editSynced = edit.copy(isSynced = true)
 
         verify(db).markSynced(3)
         verify(db, never()).updateNoteId(anyLong(), anyLong())
-        verify(listener).onSyncedEdit(edit)
+        verify(listener).onSyncedEdit(editSynced)
     }
 
     @Test fun `synced with new id`() {
@@ -62,10 +63,11 @@ class NoteEditsControllerTest {
         val note = note(123)
 
         ctrl.markSynced(edit, note)
+        val editSynced = edit.copy(isSynced = true)
 
         verify(db).markSynced(3)
         verify(db).updateNoteId(-100L, 123L)
-        verify(listener).onSyncedEdit(edit)
+        verify(listener).onSyncedEdit(editSynced)
     }
 
     @Test fun `update element ids`() {

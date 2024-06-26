@@ -43,7 +43,6 @@
     <string name="action_download">"Unduh data di sini"</string>
     <string name="action_upload">"Unggah jawaban"</string>
     <string name="no_changes">"Kamu tidak menjawab apapun"</string>
-    <string name="close">"tutup"</string>
     <string name="download_error">"Terjadi kesalahan ketika memindai pencarian"</string>
     <string name="upload_error">"Terjadi kesalahan ketika mengunggah jawaban"</string>
     <string name="download_area_too_big">"Harap perbesar lagi"</string>
@@ -507,7 +506,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_sidewalk_value_yes">"trotoar"</string>
     <string name="quest_sidewalk_value_no">"Tidak ada trotoar"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Apa pejalan kaki dilarang melewati jalan ini?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Jalan ini ditandai tidak mempunyai trotoar di kedua sisinya. Apabila ternyata ada trotoar tapi ditampilkan sebagai jalan terpisah, harap jawab \"trotoar\"."</string>
     <string name="quest_buildingType_title">"Bangunan apakah ini?"</string>
     <string name="pref_title_theme_select">"Pilih tema"</string>
     <string name="theme_automatic">"Otomatis"</string>
@@ -1265,8 +1263,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="bicycle_boulevard_is_a">"Ini berupa %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Ini bukan berupa %1$s"</string>
     <string name="bicycle_boulevard">"Bulevar sepeda"</string>
-    <string name="separate_cycleway_no">"Sepeda tidak boleh"</string>
-    <string name="separate_cycleway_allowed">"Pesepeda dibolehkan"</string>
     <string name="separate_cycleway_no_or_allowed">"Tidak dikhususkan untuk pesepeda (bisa saja boleh dilewati)"</string>
     <string name="separate_cycleway_non_segregated">"Jalur bersama"</string>
     <string name="separate_cycleway_segregated">"Jalur sepeda dan pejalan kaki terpisah"</string>
@@ -1327,4 +1323,20 @@ Data yang hilang selalu ditampilkan dengan warna merah."</string>
 
 Selain itu, beberapa overlay memungkinkan Anda menambahkan data baru pada posisi crosshair yang ditampilkan, seperti overlay alamat."</string>
     <string name="quest_crossing_kerb_height_title">"Berapa tinggi trotoar di persimpangan ini?"</string>
+    <string name="quest_maxheight_sign_title">"Berapa batas ketinggian yang ditunjukkan di sini?"</string>
+    <string name="quest_maxheight_sign_below_bridge_title">"Berapa batas ketinggian yang ditunjukkan di bawah jembatan?"</string>
+    <string name="quest_leave_new_note_as_answer">"Dalam hal ini, Anda perlu meninggalkan catatan untuk menjelaskan situasinya."</string>
+    <string name="quest_drinking_water_type_title2">"Apakah air minum tersedia di sini? Jika ya, dari mana sumbernya?"</string>
+    <string name="quest_is_amenity_inside_title">"Apakah ini di dalam bangunan?"</string>
+    <string name="quest_bbq_fuel_wood">"Kayu"</string>
+    <string name="quest_bbq_fuel_electric">"Listrik"</string>
+    <string name="quest_bbq_fuel_charcoal">"Arang"</string>
+    <string name="inside">"di dalam"</string>
+    <string name="outside">"di luar"</string>
+    <string name="quest_defibrillator_location">"Di mana letak defibrilator ini?"</string>
+    <string name="quest_generalFee_title">"Apakah anda harus membayar untuk menggunakan ini?"</string>
+    <string name="link_calendar_description">"apakah ada kegiatan OpenStreetMap atau pertemuan komunitas di dekatmu? (jika tidak, kamu dapat menambahkannya sendiri!)"</string>
+    <string name="quest_disable_action">"Nonaktifkan"</string>
+    <string name="quest_disable_title">"Nonaktifkan tipe pertanyaan ini?"</string>
+    <string name="quest_disable_message_not_installed">"StreetMeasure tidak (belum) terpasang."</string>
 </resources>

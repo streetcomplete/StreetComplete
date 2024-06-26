@@ -1,6 +1,7 @@
 /.gradle
 /.idea/*
 !.idea/codeStyles
+!.idea/icon.svg
 !.idea/ktlint.xml
 /local.properties
 .DS_Store
