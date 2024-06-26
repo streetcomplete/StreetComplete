@@ -57,7 +57,7 @@ object ApplicationConstants {
     const val NOTIFICATIONS_CHANNEL_SYNC = "downloading"
     const val NOTIFICATIONS_ID_SYNC = 1
 
-    const val DEFAULT_MAP_CACHE_SIZE_IN_MB = 50
+    const val DEFAULT_MAP_CACHE_SIZE_IN_MB = 200
     const val DEFAULT_AUTOSYNC = "ON"
     const val DEFAULT_RESURVEY_INTERVALS = "DEFAULT"
 

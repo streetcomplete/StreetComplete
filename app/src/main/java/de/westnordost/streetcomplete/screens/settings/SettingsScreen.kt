@@ -12,7 +12,6 @@ import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -23,8 +22,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.russhwolf.settings.ObservableSettings
-import com.russhwolf.settings.set
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
@@ -54,7 +51,6 @@ fun SettingsScreen(
     val selectedPresetName by viewModel.selectedQuestPresetName.collectAsState()
     val selectableLanguageCodes by viewModel.selectableLanguageCodes.collectAsState()
 
-    val tileCacheSize by viewModel.tileCacheSize.collectAsState()
     val resurveyIntervals by viewModel.resurveyIntervals.collectAsState()
     val showAllNotes by viewModel.showAllNotes.collectAsState()
     val autosync by viewModel.autosync.collectAsState()
@@ -70,7 +66,6 @@ fun SettingsScreen(
     var showLanguageSelect by remember { mutableStateOf(false) }
     var showAutosyncSelect by remember { mutableStateOf(false) }
     var showResurveyIntervalsSelect by remember { mutableStateOf(false) }
-    var showCacheSizeSelect by remember { mutableStateOf(false) }
 
     val presetNameOrDefault = selectedPresetName ?: stringResource(R.string.quest_presets_default_name)
 
@@ -171,13 +166,6 @@ fun SettingsScreen(
                     onClick = { showRestoreHiddenQuestsConfirmation = true },
                     description = stringResource(R.string.pref_title_quests_restore_hidden_summary, hiddenQuestCount)
                 )
-
-                Preference(
-                    name = stringResource(R.string.pref_title_map_cache),
-                    onClick = { showCacheSizeSelect = true }
-                ) {
-                    Text(stringResource(R.string.pref_tilecache_size_summary, tileCacheSize))
-                }
             }
 
             if (BuildConfig.DEBUG) {
@@ -262,9 +250,6 @@ fun SettingsScreen(
             selectedItem = resurveyIntervals,
             getItemName = { stringResource(it.titleResId) }
         )
-    }
-    if (showCacheSizeSelect) {
-        // TODO (slider or number select, 10-250, standard 50)
     }
     if (showLanguageSelect && selectableLanguageCodes != null) {
         // TODO sort languages alphabetically by display name

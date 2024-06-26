@@ -33,7 +33,6 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val hiddenQuestCount: StateFlow<Long>
     abstract val questTypeCount: StateFlow<QuestTypeCount?>
 
-    abstract val tileCacheSize: StateFlow<Int>
     abstract val resurveyIntervals: StateFlow<Prefs.ResurveyIntervals>
     abstract val showAllNotes: StateFlow<Boolean>
     abstract val autosync: StateFlow<Prefs.Autosync>
@@ -45,7 +44,6 @@ abstract class SettingsViewModel : ViewModel() {
 
     abstract fun deleteCache()
 
-    abstract fun setTileCacheSize(value: Int)
     abstract fun setResurveyIntervals(value: Prefs.ResurveyIntervals)
     abstract fun setShowAllNotes(value: Boolean)
     abstract fun setAutosync(value: Prefs.Autosync)
@@ -96,9 +94,6 @@ class SettingsViewModelImpl(
     override val selectedQuestPresetName = MutableStateFlow<String?>(null)
     override val selectableLanguageCodes = MutableStateFlow<List<String>?>(null)
 
-    override val tileCacheSize = MutableStateFlow(
-        prefs.getInt(Prefs.MAP_TILECACHE_IN_MB, ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB)
-    )
     override val resurveyIntervals = MutableStateFlow(
         Prefs.ResurveyIntervals.of(prefs.getStringOrNull(Prefs.RESURVEY_INTERVALS))
     )
@@ -126,9 +121,6 @@ class SettingsViewModelImpl(
         osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
 
-        listeners += prefs.addIntListener(Prefs.MAP_TILECACHE_IN_MB, ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB) {
-            tileCacheSize.value = it
-        }
         listeners += prefs.addStringOrNullListener(Prefs.RESURVEY_INTERVALS) {
             resurveyIntervals.value = Prefs.ResurveyIntervals.of(it)
         }
@@ -165,10 +157,6 @@ class SettingsViewModelImpl(
 
     override fun deleteCache() {
         cleaner.cleanAll()
-    }
-
-    override fun setTileCacheSize(value: Int) {
-        prefs[Prefs.MAP_TILECACHE_IN_MB] = value
     }
 
     override fun setResurveyIntervals(value: Prefs.ResurveyIntervals) {

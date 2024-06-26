@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatDelegate
 /** Constant class to have all the identifiers for shared preferences in one place  */
 object Prefs {
     // application settings
-    const val MAP_TILECACHE_IN_MB = "map.tilecache"
     const val SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes"
     const val AUTOSYNC = "autosync"
     const val KEEP_SCREEN_ON = "display.keepScreenOn"
