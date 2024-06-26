@@ -71,18 +71,35 @@ object Prefs {
     enum class Autosync {
         ON,
         WIFI,
-        OFF
+        OFF;
+
+        companion object {
+            fun of(value: String?): Autosync = if (value == null) ON else valueOf(value)
+        }
     }
 
     enum class Theme(val appCompatNightMode: Int) {
         LIGHT(AppCompatDelegate.MODE_NIGHT_NO),
         DARK(AppCompatDelegate.MODE_NIGHT_YES),
-        SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+        companion object {
+            fun of(value: String?): Theme =
+                // AUTO setting was removed because as of June 2024, 95% of active installs from
+                // google play use an Android where AUTO is deprecated
+                if (value == "AUTO" || value == null) SYSTEM else valueOf(value)
+        }
     }
 
     enum class ResurveyIntervals {
         LESS_OFTEN,
         DEFAULT,
-        MORE_OFTEN
+        MORE_OFTEN;
+
+        companion object {
+            fun of(value: String?): ResurveyIntervals =
+                if (value == null) DEFAULT
+                else valueOf(value)
+        }
     }
 }

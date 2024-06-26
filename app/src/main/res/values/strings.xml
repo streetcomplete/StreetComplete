@@ -309,12 +309,10 @@ Each of you will then see different quests."</string>
 
     <string name="about_title_get_involved">Get Involved</string>
 
-    <string name="about_title_changelog">Version history</string>
-    <string name="about_summary_current_version">"Current version: %s"</string>
+    <string name="about_title_changelog">Version</string>
     <string name="title_whats_new">What’s New?</string>
 
     <string name="about_title_rate">Rate this app</string>
-    <string name="about_summary_rate">on Google Play</string>
 
     <string name="about_title_donate">Donate</string>
     <string name="about_summary_donate">Show your appreciation! ❤️</string>
@@ -324,26 +322,22 @@ Each of you will then see different quests."</string>
     <string name="about_description_donate_google_play3">"Thank you for considering supporting this app!
 You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app."</string>
 
-    <string name="about_title_translate">Help translate this app</string>
+    <string name="about_title_translate">Translate this app</string>
     <string name="about_description_translate">%1$s is translated %2$d%%</string>
 
-    <string name="about_title_privacy_statement">"Privacy statement"</string>
-    <string name="about_summary_privacy_statement">"and data usage"</string>
+    <string name="about_title_privacy_statement">"Privacy"</string>
 
-    <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
+    <string name="about_title_authors">"Authors"</string>
 
-    <string name="about_title_repository">"Project Home"</string>
-    <string name="about_summary_repository">"on GitHub"</string>
+    <string name="about_title_repository">"Project home"</string>
 
     <string name="about_title_faq">"FAQ"</string>
 
     <string name="about_title_report_error">"Report error"</string>
 
-    <string name="about_title_feedback">"Give Feedback"</string>
+    <string name="about_title_feedback">"Give feedback"</string>
 
     <string name="about_title_license">"License"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
 
     <string name="about_category_contribute">Contribute</string>
 
@@ -559,7 +553,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_title_language_select2">Language</string>
     <string name="language_default">System default</string>
 
-    <string name="pref_title_theme_select">Select theme</string>
+    <string name="pref_title_theme_select">Theme</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system_default">System default</string>
@@ -573,17 +567,18 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="restore_confirmation">Restore</string>
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
 
-    <string name="pref_title_quests2">Quest selection and display order</string>
+    <string name="pref_title_quests2">Quest selection and priority</string>
+    <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
     <string name="pref_subtitle_quests_preset_name">for preset: %s</string>
 
     <string name="delete_confirmation">Delete</string>
     <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
 
-    <string name="pref_title_resurvey_intervals">Resurvey intervals</string>
-    <string name="pref_title_resurvey_intervals_summary">How often you want to answer whether things remain the same. </string>
-    <string name="resurvey_intervals_less_often">Ask less often</string>
+    <string name="pref_title_resurvey_intervals">Resurvey frequency</string>
+    <string name="pref_title_resurvey_intervals_summary">How often you are prompted to confirm whether previously mapped data is still correct.</string>
+    <string name="resurvey_intervals_less_often">Less often</string>
     <string name="resurvey_intervals_default">Default</string>
-    <string name="resurvey_intervals_more_often">Ask more often</string>
+    <string name="resurvey_intervals_more_often">More often</string>
 
     <string name="pref_title_delete_cache">Delete cache</string>
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
@@ -611,9 +606,9 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <!-- Managing quest presets screen -->
 
-    <string name="action_manage_presets2">Preset</string>
+    <string name="action_manage_presets">Manage presets</string>
 
-    <string name="action_manage_presets_summary">You can save your quest selection into different presets, e.g. for different occasions (cycling, walking, …)</string>
+    <string name="action_manage_presets_summary">Under which name the quest selection below is saved.</string>
 
     <string name="quest_presets_preset_add">Add preset</string>
     <string name="quest_presets_preset_name">Preset name</string>
@@ -1771,7 +1766,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
     <string name="about_title_logs">Logs (%1$d)</string>
-    <string name="about_summary_logs">for use in error reports</string>
+    <string name="about_summary_logs">For use in error reports.</string>
     <string name="action_filter">Filter</string>
     <string name="action_share">Share logs</string>
     <string name="about_title_show_logs">Show logs</string>

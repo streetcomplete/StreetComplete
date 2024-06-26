@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Checkbox
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -21,9 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -32,8 +31,6 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
-import de.westnordost.streetcomplete.ui.theme.disabledText
-import de.westnordost.streetcomplete.ui.theme.hint
 
 /** Single item the the quest selection list. Shows icon + title, wether it is enabled and whether
  *  it is disabled by default / disabled in the country one is in */
@@ -44,8 +41,7 @@ fun QuestSelectionItem(
     displayCountry: String,
     modifier: Modifier = Modifier
 ) {
-    val iconTint = if (!item.selected) ColorFilter.tint(MaterialTheme.colors.disabledText, BlendMode.DstIn) else null
-    val textColor = if (!item.selected) MaterialTheme.colors.disabledText else Color.Unspecified
+    val alpha = if (!item.selected) ContentAlpha.disabled else ContentAlpha.high
 
     Row(
         modifier = modifier.height(IntrinsicSize.Min),
@@ -54,8 +50,7 @@ fun QuestSelectionItem(
         Image(
             painter = painterResource(item.questType.icon),
             contentDescription = item.questType.name,
-            modifier = Modifier.padding(start = 16.dp).size(48.dp),
-            colorFilter = iconTint
+            modifier = Modifier.padding(start = 16.dp).size(48.dp).alpha(alpha),
         )
         Column(
             modifier = Modifier.padding(start = 16.dp).weight(0.1f),
@@ -63,8 +58,8 @@ fun QuestSelectionItem(
         ) {
             Text(
                 text = genericQuestTitle(item.questType),
+                modifier = Modifier.alpha(alpha),
                 style = MaterialTheme.typography.body1,
-                color = textColor
             )
             if (!item.enabledInCurrentCountry) {
                 DisabledHint(stringResource(R.string.questList_disabled_in_country, displayCountry))
@@ -90,9 +85,9 @@ fun QuestSelectionItem(
 private fun DisabledHint(text: String) {
     Text(
         text = text,
+        modifier = Modifier.alpha(ContentAlpha.medium),
         style = MaterialTheme.typography.body2,
         fontStyle = FontStyle.Italic,
-        color = MaterialTheme.colors.hint
     )
 }
 

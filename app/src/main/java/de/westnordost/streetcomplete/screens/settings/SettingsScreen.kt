@@ -12,6 +12,7 @@ import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -23,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.russhwolf.settings.ObservableSettings
+import com.russhwolf.settings.set
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
@@ -34,6 +36,7 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.ListPickerDialog
 import de.westnordost.streetcomplete.util.ktx.format
 import java.util.Locale
 
@@ -47,14 +50,27 @@ fun SettingsScreen(
     onClickBack: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
+    val questTypeCount by viewModel.questTypeCount.collectAsState()
     val selectedPresetName by viewModel.selectedQuestPresetName.collectAsState()
+    val selectableLanguageCodes by viewModel.selectableLanguageCodes.collectAsState()
+
     val tileCacheSize by viewModel.tileCacheSize.collectAsState()
+    val resurveyIntervals by viewModel.resurveyIntervals.collectAsState()
+    val showAllNotes by viewModel.showAllNotes.collectAsState()
+    val autosync by viewModel.autosync.collectAsState()
+    val theme by viewModel.theme.collectAsState()
+    val keepScreenOn by viewModel.keepScreenOn.collectAsState()
+    val selectedLanguage by viewModel.selectedLanguage.collectAsState()
 
-    var showDeleteCacheDialog by remember { mutableStateOf(false) }
-    var showRestoreHiddenQuestsDialog by remember { mutableStateOf(false) }
-    var showUploadTutorialDialog by remember { mutableStateOf(false) }
+    var showDeleteCacheConfirmation by remember { mutableStateOf(false) }
+    var showRestoreHiddenQuestsConfirmation by remember { mutableStateOf(false) }
+    var showUploadTutorialInfo by remember { mutableStateOf(false) }
 
-    // TODO showuploadtutorialdialog if Prefs.AUTOSYNC != ON
+    var showThemeSelect by remember { mutableStateOf(false) }
+    var showLanguageSelect by remember { mutableStateOf(false) }
+    var showAutosyncSelect by remember { mutableStateOf(false) }
+    var showResurveyIntervalsSelect by remember { mutableStateOf(false) }
+    var showCacheSizeSelect by remember { mutableStateOf(false) }
 
     val presetNameOrDefault = selectedPresetName ?: stringResource(R.string.quest_presets_default_name)
 
@@ -67,7 +83,7 @@ fun SettingsScreen(
             PreferenceCategory(stringResource(R.string.pref_category_quests)) {
 
                 Preference(
-                    name = stringResource(R.string.action_manage_presets2),
+                    name = stringResource(R.string.action_manage_presets),
                     onClick = onClickPresetSelection,
                     description = stringResource(R.string.action_manage_presets_summary)
                 ) {
@@ -78,28 +94,30 @@ fun SettingsScreen(
                 Preference(
                     name = stringResource(R.string.pref_title_quests2),
                     onClick = onClickQuestSelection,
-                    description = stringResource(R.string.pref_subtitle_quests_preset_name, presetNameOrDefault)
+                    description = questTypeCount?.let {
+                        stringResource(R.string.pref_subtitle_quests, it.enabled, it.total)
+                    }
                 ) { NextScreenIcon() }
 
                 Preference(
                     name = stringResource(R.string.pref_title_resurvey_intervals),
-                    onClick = { /*TODO*/ },
+                    onClick = { showResurveyIntervalsSelect = true },
                     description = stringResource(R.string.pref_title_resurvey_intervals_summary)
                 ) {
-                    Text(stringResource(viewModel.prefs.getResurveyIntervals().titleResId))
+                    Text(stringResource(resurveyIntervals.titleResId))
                 }
 
                 Preference(
                     name = stringResource(R.string.pref_title_show_notes_not_phrased_as_questions),
-                    onClick = { /*TODO switch*/ },
+                    onClick = { viewModel.setShowAllNotes(!showAllNotes) },
                     description = stringResource(
-                        if (viewModel.prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)) R.string.pref_summaryOn_show_notes_not_phrased_as_questions
+                        if (showAllNotes) R.string.pref_summaryOn_show_notes_not_phrased_as_questions
                         else R.string.pref_summaryOff_show_notes_not_phrased_as_questions
                     )
                 ) {
                     Switch(
-                        checked = viewModel.prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false),
-                        onCheckedChange =  { /*TODO switch*/ }
+                        checked = showAllNotes,
+                        onCheckedChange =  { viewModel.setShowAllNotes(it) }
                     )
                 }
             }
@@ -107,36 +125,36 @@ fun SettingsScreen(
             PreferenceCategory(stringResource(R.string.pref_category_communication)) {
                 Preference(
                     name = stringResource(R.string.pref_title_sync2),
-                    onClick = { /*TODO select */ }
+                    onClick = { showAutosyncSelect = true }
                 ) {
-                    Text(stringResource(viewModel.prefs.getAutosync().titleResId))
+                    Text(stringResource(autosync.titleResId))
                 }
             }
 
             PreferenceCategory(stringResource(R.string.pref_category_display)) {
 
                 Preference(
-                    name = stringResource(R.string.pref_title_keep_screen_on),
-                    onClick = { /*TODO switch*/ },
+                    name = stringResource(R.string.pref_title_language_select2),
+                    onClick = { showLanguageSelect = true },
                 ) {
-                    Switch(
-                        checked = viewModel.prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false),
-                        onCheckedChange = { /*TODO switch*/ }
-                    )
+                    Text(getLanguageDisplayName(selectedLanguage))
                 }
 
                 Preference(
                     name = stringResource(R.string.pref_title_theme_select),
-                    onClick = { /*TODO theme select*/ },
+                    onClick = { showThemeSelect = true },
                 ) {
-                    Text(stringResource(viewModel.prefs.getTheme().titleResId))
+                    Text(stringResource(theme.titleResId))
                 }
 
                 Preference(
-                    name = stringResource(R.string.pref_title_language_select2),
-                    onClick = { /*TODO language select (better as own screen with search) */ },
+                    name = stringResource(R.string.pref_title_keep_screen_on),
+                    onClick = { viewModel.setKeepScreenOn(!keepScreenOn) },
                 ) {
-                    Text(getLanguageDisplayName(viewModel.prefs.getString(Prefs.LANGUAGE_SELECT, "")))
+                    Switch(
+                        checked = keepScreenOn,
+                        onCheckedChange = { viewModel.setKeepScreenOn(it) }
+                    )
                 }
             }
 
@@ -144,19 +162,19 @@ fun SettingsScreen(
 
                 Preference(
                     name = stringResource(R.string.pref_title_delete_cache),
-                    onClick = { showDeleteCacheDialog = true },
+                    onClick = { showDeleteCacheConfirmation = true },
                     description = stringResource(R.string.pref_title_delete_cache_summary)
                 )
-                // TODO disable if no hidden quests
+
                 Preference(
                     name = stringResource(R.string.pref_title_quests_restore_hidden),
-                    onClick = { showRestoreHiddenQuestsDialog = true },
+                    onClick = { showRestoreHiddenQuestsConfirmation = true },
                     description = stringResource(R.string.pref_title_quests_restore_hidden_summary, hiddenQuestCount)
                 )
 
                 Preference(
                     name = stringResource(R.string.pref_title_map_cache),
-                    onClick = { /* TODO cache size select (slider or number select, 10-250, standard 50) */ }
+                    onClick = { showCacheSizeSelect = true }
                 ) {
                     Text(stringResource(R.string.pref_tilecache_size_summary, tileCacheSize))
                 }
@@ -173,9 +191,9 @@ fun SettingsScreen(
         }
     }
 
-    if (showDeleteCacheDialog) {
+    if (showDeleteCacheConfirmation) {
         ConfirmationDialog(
-            onDismissRequest = { showDeleteCacheDialog = false },
+            onDismissRequest = { showDeleteCacheConfirmation = false },
             onConfirmed = { viewModel.deleteCache() },
             text = {
                 val locale = Locale.getDefault()
@@ -188,17 +206,17 @@ fun SettingsScreen(
             confirmButtonText = stringResource(R.string.delete_confirmation)
         )
     }
-    if (showRestoreHiddenQuestsDialog) {
+    if (showRestoreHiddenQuestsConfirmation) {
         ConfirmationDialog(
-            onDismissRequest = { showRestoreHiddenQuestsDialog = false },
+            onDismissRequest = { showRestoreHiddenQuestsConfirmation = false },
             onConfirmed = { viewModel.unhideQuests() },
             title = { Text(stringResource(R.string.restore_dialog_message)) },
             confirmButtonText = stringResource(R.string.restore_confirmation)
         )
     }
-    if (showUploadTutorialDialog) {
+    if (showUploadTutorialInfo) {
         InfoDialog(
-            onDismissRequest = { showUploadTutorialDialog = false },
+            onDismissRequest = { showUploadTutorialInfo = false },
             text = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon(painterResource(R.drawable.ic_file_upload_48dp), null)
@@ -207,16 +225,59 @@ fun SettingsScreen(
             },
         )
     }
-}
-
-@Composable
-@ReadOnlyComposable
-private fun getLanguageDisplayName(languageTag: String): String {
-    if (languageTag.isEmpty()) return stringResource(R.string.language_default)
-    val locale = Locale.forLanguageTag(languageTag)
-    val name = locale.displayName
-    val nativeName = locale.getDisplayName(locale)
-    return nativeName + if (name != nativeName) " — $name" else ""
+    if (showThemeSelect) {
+        ListPickerDialog(
+            onDismissRequest = { showThemeSelect = false },
+            height = 360.dp,
+            items = Prefs.Theme.entries,
+            onItemSelected = { viewModel.setTheme(it) },
+            title = { Text(stringResource(R.string.pref_title_theme_select)) },
+            selectedItem = theme,
+            getItemName = { stringResource(it.titleResId) }
+        )
+    }
+    if (showAutosyncSelect) {
+        ListPickerDialog(
+            onDismissRequest = { showAutosyncSelect = false },
+            height = 360.dp,
+            items = Prefs.Autosync.entries,
+            onItemSelected = {
+                viewModel.setAutosync(it)
+                if (autosync != Prefs.Autosync.ON) {
+                    showUploadTutorialInfo = true
+                }
+            },
+            title = { Text(stringResource(R.string.pref_title_sync2)) },
+            selectedItem = autosync,
+            getItemName = { stringResource(it.titleResId) }
+        )
+    }
+    if (showResurveyIntervalsSelect) {
+        ListPickerDialog(
+            onDismissRequest = { showResurveyIntervalsSelect = false },
+            height = 360.dp,
+            items = Prefs.ResurveyIntervals.entries,
+            onItemSelected = { viewModel.setResurveyIntervals(it) },
+            title = { Text(stringResource(R.string.pref_title_resurvey_intervals)) },
+            selectedItem = resurveyIntervals,
+            getItemName = { stringResource(it.titleResId) }
+        )
+    }
+    if (showCacheSizeSelect) {
+        // TODO (slider or number select, 10-250, standard 50)
+    }
+    if (showLanguageSelect && selectableLanguageCodes != null) {
+        // TODO sort languages alphabetically by display name
+        ListPickerDialog(
+            onDismissRequest = { showLanguageSelect = false },
+            height = 360.dp,
+            items = selectableLanguageCodes!!,
+            onItemSelected = { viewModel.setSelectedLanguage(it) },
+            title = { Text(stringResource(R.string.pref_title_language_select2)) },
+            selectedItem = selectedLanguage,
+            getItemName = { getLanguageDisplayName(it) }
+        )
+    }
 }
 
 private val Prefs.Autosync.titleResId: Int get() = when (this) {
@@ -237,18 +298,10 @@ private val Prefs.Theme.titleResId: Int get() = when (this) {
     Prefs.Theme.SYSTEM -> R.string.theme_system_default
 }
 
-// TODO move
-
-private fun ObservableSettings.getTheme(): Prefs.Theme {
-    // disregard removed deprecated setting (-> treat as default, i.e. follow system setting)
-    // as of June 2024, 95% of active installs from google play use an Android where AUTO is deprecated
-    val theme = getStringOrNull(Prefs.THEME_SELECT).takeUnless { it == "AUTO" }
-    return theme?.let { Prefs.Theme.valueOf(it) } ?: Prefs.Theme.SYSTEM
+@Composable
+@ReadOnlyComposable
+private fun getLanguageDisplayName(languageTag: String): String {
+    if (languageTag.isEmpty()) return stringResource(R.string.language_default)
+    val locale = Locale.forLanguageTag(languageTag)
+    return locale.getDisplayName(locale)
 }
-
-private fun ObservableSettings.getAutosync(): Prefs.Autosync =
-    getStringOrNull(Prefs.AUTOSYNC)?.let { Prefs.Autosync.valueOf(it) } ?: Prefs.Autosync.ON
-
-private fun ObservableSettings.getResurveyIntervals(): Prefs.ResurveyIntervals =
-    getStringOrNull(Prefs.RESURVEY_INTERVALS)?.let { Prefs.ResurveyIntervals.valueOf(it) }
-        ?: Prefs.ResurveyIntervals.DEFAULT

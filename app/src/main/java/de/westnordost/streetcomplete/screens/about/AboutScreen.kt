@@ -18,7 +18,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.integerResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.ApplicationConstants.COPYRIGHT_YEARS
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.BackIcon
@@ -26,6 +25,7 @@ import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
 import de.westnordost.streetcomplete.ui.common.settings.Preference
+import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 
@@ -53,34 +53,33 @@ fun AboutScreen(
                 Preference(
                     name = stringResource(R.string.about_title_changelog),
                     onClick = { onClickChangelog() },
-                    description = stringResource(
-                        R.string.about_summary_current_version,
-                        "v" + BuildConfig.VERSION_NAME
-                    )
-                ) { NextScreenIcon() }
+                ) {
+                    Text("v" + BuildConfig.VERSION_NAME)
+                    NextScreenIcon()
+                }
 
                 Preference(
                     name = stringResource(R.string.about_title_authors),
                     onClick = { onClickCredits() },
-                    description = stringResource(R.string.about_summary_authors, COPYRIGHT_YEARS),
                 ) { NextScreenIcon() }
 
                 Preference(
                     name = stringResource(R.string.about_title_license),
                     onClick = { context.openUri("https://www.gnu.org/licenses/gpl-3.0.html") },
-                    description = stringResource(R.string.about_summary_license)
-                ) { OpenInBrowserIcon() }
+                ) {
+                    Text("GPLv3")
+                    OpenInBrowserIcon()
+                }
+
+                Preference(
+                    name = stringResource(R.string.about_title_privacy_statement),
+                    onClick = { onClickPrivacyStatement() },
+                ) { NextScreenIcon() }
 
                 Preference(
                     name = stringResource(R.string.about_title_faq),
                     onClick = { context.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
                 ) { OpenInBrowserIcon() }
-
-                Preference(
-                    name = stringResource(R.string.about_title_privacy_statement),
-                    onClick = { onClickPrivacyStatement() },
-                    description = stringResource(R.string.about_summary_privacy_statement),
-                ) { NextScreenIcon() }
             }
 
             PreferenceCategory(stringResource(R.string.about_category_contribute)) {
@@ -104,7 +103,6 @@ fun AboutScreen(
                 Preference(
                     name = stringResource(R.string.about_title_repository),
                     onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete") },
-                    description = stringResource(R.string.about_summary_repository),
                 ) { OpenInBrowserIcon() }
             }
 
@@ -114,20 +112,17 @@ fun AboutScreen(
                     Preference(
                         name = stringResource(R.string.about_title_rate),
                         onClick = { context.openGooglePlayStorePage() },
-                        description = stringResource(R.string.about_summary_rate)
                     ) { OpenInBrowserIcon() }
                 }
 
                 Preference(
                     name = stringResource(R.string.about_title_report_error),
                     onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
-                    description = stringResource(R.string.about_summary_repository),
                 ) { OpenInBrowserIcon() }
 
                 Preference(
                     name = stringResource(R.string.about_title_feedback),
                     onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
-                    description = stringResource(R.string.about_summary_repository),
                 ) { OpenInBrowserIcon() }
 
                 Preference(

@@ -73,11 +73,6 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
             }
         }
 
-        // TODO check if this is actually still necessary with compose
-        listeners += prefs.addStringOrNullListener(Prefs.THEME_SELECT) {
-            ActivityCompat.recreate(this)
-        }
-
         listeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
             ActivityCompat.recreate(this)
         }

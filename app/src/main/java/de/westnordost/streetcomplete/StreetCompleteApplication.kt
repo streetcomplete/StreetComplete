@@ -55,7 +55,6 @@ import de.westnordost.streetcomplete.data.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.AndroidLogger
@@ -210,8 +209,7 @@ class StreetCompleteApplication : Application() {
     }
 
     private fun updateDefaultTheme() {
-        // TODO treat AUTO!!!
-        val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
+        val theme = Prefs.Theme.of(prefs.getStringOrNull(Prefs.THEME_SELECT))
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
     }
 

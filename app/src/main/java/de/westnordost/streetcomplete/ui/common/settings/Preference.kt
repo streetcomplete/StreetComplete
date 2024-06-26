@@ -6,10 +6,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredWidthIn
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
@@ -24,7 +30,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ui.theme.hint
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 
 @Composable
@@ -59,35 +64,51 @@ fun Preference(
     description: String? = null,
     value: @Composable (RowScope.() -> Unit)? = null,
 ) {
-    Row(
+    Column(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onClick() }
+            .heightIn(min = 64.dp)
             .padding(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalArrangement = Arrangement.spacedBy(
+            space = 0.dp,
+            alignment = Alignment.CenterVertically
+        )
     ) {
-        Column(Modifier.weight(2f/3f)) {
-            Text(name)
-            if (description != null) {
-                Text(
-                    text = description,
-                    style = MaterialTheme.typography.body2,
-                    color = MaterialTheme.colors.hint
-                )
-            }
-        }
-        if (value != null) {
-            Row(
-                modifier = Modifier.weight(1f/3f),
-                horizontalArrangement = Arrangement.End
-            ) {
+        Row(
+            modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = name,
+                modifier = Modifier.weight(2/3f)
+            )
+            if (value != null) {
                 CompositionLocalProvider(
                     LocalTextStyle provides LocalTextStyle.current.copy(textAlign = TextAlign.End),
-                    LocalContentColor provides MaterialTheme.colors.hint
+                    LocalContentAlpha provides ContentAlpha.medium
                 ) {
-                    value()
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(
+                            space = 8.dp,
+                            alignment = Alignment.End
+                        ),
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.weight(1/3f)
+                    ) { value() }
                 }
+            }
+        }
+        if (description != null) {
+            CompositionLocalProvider(
+                LocalTextStyle provides MaterialTheme.typography.body2,
+                LocalContentAlpha provides ContentAlpha.medium
+            ) {
+                Text(
+                    text = description,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
             }
         }
     }
@@ -95,25 +116,31 @@ fun Preference(
 
 @Preview
 @Composable
-private fun PreferenceCategoryPreview() {
-    PreferenceCategory("Preference Category") {}
-}
-
-@Preview
-@Composable
-private fun PreferenceItemPreview() {
-    Column {
+private fun PreferencePreview() {
+    PreferenceCategory("Preference Category") {
         Preference(
             name = "Preference",
             onClick = {},
-            description = "GNU"
         )
         Preference(
-            name = "Preference2",
-            onClick = {},
+            name = "Preference with switch",
+            onClick = {}
         ) {
             Switch(checked = true, onCheckedChange = {})
-            Icon(painterResource(R.drawable.ic_question_24dp), null)
+        }
+        Preference(
+            name = "Preference",
+            onClick = {},
+            description = "A long description which may actually be several lines long, so it should wrap."
+        ) {
+            Icon(painterResource(R.drawable.ic_chevron_next_24dp), null)
+        }
+
+        Preference(
+            name = "Long preference name that wraps",
+            onClick = {},
+        ) {
+            Text("Long preference value")
         }
     }
 }

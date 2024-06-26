@@ -41,7 +41,7 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(R.string.action_manage_presets2)) },
+            title = { Text(stringResource(R.string.action_manage_presets)) },
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         Box(Modifier.fillMaxHeight()) {

@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.settings
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
-import androidx.navigation.ActivityNavigator
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -34,7 +33,7 @@ import org.koin.androidx.compose.koinViewModel
                 onClickShowQuestForms = { navController.navigate(SettingsDestination.ShowQuestForms) },
                 onClickPresetSelection = { navController.navigate(SettingsDestination.QuestPresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
-                onClickBack = { navController.popBackStack() }
+                onClickBack = onClickBack
             )
         }
         composable(SettingsDestination.QuestPresets) {
