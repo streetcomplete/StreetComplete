@@ -236,8 +236,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         val firstLabelLayer = "labels-country"
         for (layer in listOfNotNull(
             downloadedAreaMapComponent?.layers,
-            tracksMapComponent?.layers,
             styleableOverlayMapComponent?.layers,
+            tracksMapComponent?.layers,
         ).flatten()) {
             style.addLayerBelow(layer, firstLabelLayer)
         }
