@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegment
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
+import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApiClient
 import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ import kotlinx.coroutines.runBlocking
 import kotlin.math.hypot
 
 class AddSuspectedOneway(
-    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
+    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApiClient,
     private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<SuspectedOnewayAnswer> {
 

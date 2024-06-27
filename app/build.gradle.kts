@@ -102,14 +102,6 @@ repositories {
     mavenCentral()
 }
 
-configurations {
-    all {
-        // it's already included in Android
-        exclude(group = "net.sf.kxml", module = "kxml2")
-        exclude(group = "xmlpull", module = "xmlpull")
-    }
-}
-
 dependencies {
     val mockitoVersion = "3.12.4"
 
@@ -173,8 +165,11 @@ dependencies {
 
     // HTTP Client
     implementation("io.ktor:ktor-client-core:2.3.11")
-    implementation("io.ktor:ktor-client-cio:2.3.11")
+    implementation("io.ktor:ktor-client-android:2.3.11")
     testImplementation("io.ktor:ktor-client-mock:2.3.11")
+    // TODO: as soon as both ktor-client and kotlinx-serialization have been refactored to be based
+    //       on kotlinx-io, revisit sending and receiving xml/json payloads via APIs, currently it
+    //       is all String-based, i.e. no KMP equivalent of InputStream/OutputStream involved
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -201,6 +196,7 @@ dependencies {
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
     implementation("com.charleskorn.kaml:kaml:0.59.0")
+    implementation("io.github.pdvrieze.xmlutil:core-android:0.90.0")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")

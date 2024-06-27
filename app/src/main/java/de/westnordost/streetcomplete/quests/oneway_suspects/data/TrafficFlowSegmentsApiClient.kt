@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.oneway_suspects.data
 
+import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.data.osm.mapdata.toOsmApiString
+import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.expectSuccess
@@ -9,20 +11,16 @@ import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-/** Dao for using this API: https://github.com/streetcomplete/oneway-data-api  */
-class TrafficFlowSegmentsApi(
+/** Api client for using this API: https://github.com/streetcomplete/oneway-data-api  */
+class TrafficFlowSegmentsApiClient(
     private val httpClient: HttpClient,
     private val apiUrl: String
 ) {
-
-    suspend fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
-        val bboxString = listOf(
-            bbox.min.longitude,
-            bbox.min.latitude,
-            bbox.max.longitude,
-            bbox.max.latitude
-        ).joinToString(",") { it.format(7) }
-
+    /** Get traffic flow segments for the given bounding box.
+     *
+     *  @throws ConnectionException on connection or server error */
+    suspend fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> = wrapApiClientExceptions {
+        val bboxString = bbox.toOsmApiString()
         val response = httpClient.get("$apiUrl?bbox=$bboxString") { expectSuccess = true }
         val json = Json { ignoreUnknownKeys = true }
         val segmentsList = json.decodeFromString<TrafficFlowSegmentList>(response.body())

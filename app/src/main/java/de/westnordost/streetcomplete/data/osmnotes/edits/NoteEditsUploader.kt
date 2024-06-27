@@ -2,16 +2,15 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.NotesApi
-import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
+import de.westnordost.streetcomplete.data.osmnotes.PhotoServiceApiClient
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.osmtracks.TracksApi
+import de.westnordost.streetcomplete.data.osmtracks.TracksApiClient
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.util.ktx.truncate
 import de.westnordost.streetcomplete.util.logs.Log
 import io.ktor.http.encodeURLPathPart
 import kotlinx.coroutines.CoroutineName
@@ -26,9 +25,9 @@ class NoteEditsUploader(
     private val noteEditsController: NoteEditsController,
     private val noteController: NoteController,
     private val userDataSource: UserDataSource,
-    private val notesApi: NotesApi,
-    private val tracksApi: TracksApi,
-    private val imageUploader: StreetCompleteImageUploader
+    private val notesApi: NotesApiClient,
+    private val tracksApi: TracksApiClient,
+    private val imageUploader: PhotoServiceApiClient
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -126,12 +125,12 @@ class NoteEditsUploader(
         return ""
     }
 
-    private fun uploadAndGetAttachedTrackText(
+    private suspend fun uploadAndGetAttachedTrackText(
         trackpoints: List<Trackpoint>,
         noteText: String?
     ): String {
         if (trackpoints.isEmpty()) return ""
-        val trackId = tracksApi.create(trackpoints, noteText?.truncate(255))
+        val trackId = tracksApi.create(trackpoints, noteText)
         val encodedUsername = userDataSource.userName!!.encodeURLPathPart()
         return "\n\nGPS Trace: https://www.openstreetmap.org/user/$encodedUsername/traces/$trackId\n"
     }

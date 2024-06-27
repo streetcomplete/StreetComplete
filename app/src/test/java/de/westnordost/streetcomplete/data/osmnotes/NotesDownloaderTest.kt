@@ -14,7 +14,7 @@ import kotlin.test.Test
 
 class NotesDownloaderTest {
     private lateinit var noteController: NoteController
-    private lateinit var notesApi: NotesApi
+    private lateinit var notesApi: NotesApiClient
 
     @BeforeTest fun setUp() {
         noteController = mock()
@@ -25,7 +25,7 @@ class NotesDownloaderTest {
         val note1 = note()
         val bbox = bbox()
 
-        on(notesApi.getAll(any(), anyInt(), anyInt())).thenReturn(listOf(note1))
+        on(notesApi.getAllOpen(any(), anyInt())).thenReturn(listOf(note1))
         val dl = NotesDownloader(notesApi, noteController)
         dl.download(bbox)
 

@@ -12,7 +12,7 @@ val notesModule = module {
     factory { AvatarsInNotesUpdater(get()) }
     factory { NoteDao(get()) }
     factory { NotesDownloader(get(), get()) }
-    factory { StreetCompleteImageUploader(get(), ApplicationConstants.SC_PHOTO_SERVICE_URL) }
+    factory { PhotoServiceApiClient(get(), ApplicationConstants.SC_PHOTO_SERVICE_URL) }
 
     single {
         NoteController(get()).apply {

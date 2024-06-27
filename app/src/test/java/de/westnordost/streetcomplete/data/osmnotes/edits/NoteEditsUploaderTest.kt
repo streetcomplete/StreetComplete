@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
-import de.westnordost.streetcomplete.data.osmnotes.NotesApi
-import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
+import de.westnordost.streetcomplete.data.osmnotes.PhotoServiceApiClient
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.osmtracks.TracksApi
+import de.westnordost.streetcomplete.data.osmtracks.TracksApiClient
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.testutils.any
@@ -29,15 +29,15 @@ class NoteEditsUploaderTest {
 
     private lateinit var noteController: NoteController
     private lateinit var noteEditsController: NoteEditsController
-    private lateinit var notesApi: NotesApi
-    private lateinit var tracksApi: TracksApi
-    private lateinit var imageUploader: StreetCompleteImageUploader
+    private lateinit var notesApi: NotesApiClient
+    private lateinit var tracksApi: TracksApiClient
+    private lateinit var imageUploader: PhotoServiceApiClient
     private lateinit var userDataSource: UserDataSource
 
     private lateinit var uploader: NoteEditsUploader
     private lateinit var listener: OnUploadedChangeListener
 
-    @BeforeTest fun setUp() {
+    @BeforeTest fun setUp(): Unit = runBlocking {
         notesApi = mock()
         noteController = mock()
         noteEditsController = mock()
@@ -63,7 +63,7 @@ class NoteEditsUploaderTest {
         verifyNoInteractions(noteEditsController, noteController, notesApi, imageUploader)
     }
 
-    @Test fun `upload note comment`() {
+    @Test fun `upload note comment`(): Unit = runBlocking {
         val pos = p(1.0, 13.0)
         val edit = noteEdit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(id = 1L)
@@ -80,7 +80,7 @@ class NoteEditsUploaderTest {
         verify(listener)!!.onUploaded("NOTE", pos)
     }
 
-    @Test fun `upload create note`() {
+    @Test fun `upload create note`(): Unit = runBlocking {
         val pos = p(1.0, 13.0)
         val edit = noteEdit(noteId = -5L, action = NoteEditAction.CREATE, text = "abc", pos = pos)
         val note = note(123)
@@ -97,7 +97,7 @@ class NoteEditsUploaderTest {
         verify(listener)!!.onUploaded("NOTE", pos)
     }
 
-    @Test fun `fail uploading note comment because of a conflict`() {
+    @Test fun `fail uploading note comment because of a conflict`(): Unit = runBlocking {
         val pos = p(1.0, 13.0)
         val edit = noteEdit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(1)
@@ -115,7 +115,7 @@ class NoteEditsUploaderTest {
         verify(listener)!!.onDiscarded("NOTE", pos)
     }
 
-    @Test fun `fail uploading note comment because note was deleted`() {
+    @Test fun `fail uploading note comment because note was deleted`(): Unit = runBlocking {
         val pos = p(1.0, 13.0)
         val edit = noteEdit(noteId = 1L, action = NoteEditAction.COMMENT, text = "abc", pos = pos)
         val note = note(1)
@@ -133,7 +133,7 @@ class NoteEditsUploaderTest {
         verify(listener)!!.onDiscarded("NOTE", pos)
     }
 
-    @Test fun `upload several note edits`() {
+    @Test fun `upload several note edits`(): Unit = runBlocking {
         on(noteEditsController.getOldestUnsynced()).thenReturn(noteEdit()).thenReturn(noteEdit()).thenReturn(null)
         on(notesApi.comment(anyLong(), any())).thenReturn(note())
 

@@ -8,16 +8,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 
-/** Takes care of downloading notes and referenced avatar pictures into persistent storage */
+/** Takes care of downloading notes into persistent storage */
 class NotesDownloader(
-    private val notesApi: NotesApi,
+    private val notesApi: NotesApiClient,
     private val noteController: NoteController
 ) {
-    suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
+    suspend fun download(bbox: BoundingBox) {
         val time = nowAsEpochMilliseconds()
 
         val notes = notesApi
-            .getAll(bbox, 10000, 0)
+            .getAllOpen(bbox, 10000)
             // exclude invalid notes (#1338)
             .filter { it.comments.isNotEmpty() }
 
@@ -26,7 +26,7 @@ class NotesDownloader(
 
         yield()
 
-        noteController.putAllForBBox(bbox, notes)
+        withContext(Dispatchers.IO) { noteController.putAllForBBox(bbox, notes) }
     }
 
     companion object {
