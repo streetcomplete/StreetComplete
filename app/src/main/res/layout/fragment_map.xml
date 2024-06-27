@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.mapzen.tangram.MapView
+    <org.maplibre.android.maps.MapView
         android:id="@+id/map"
-        android:name="com.mapzen.tangram.MapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -37,7 +36,7 @@
             android:textSize="12sp"
             android:shadowColor="@color/background"
             android:shadowRadius="6"
-            tools:text="© JawgMaps"
+            android:text="© JawgMaps"
             android:paddingLeft="8dp"
             android:layout_toRightOf="@id/openstreetmapLink"
             tools:ignore="RtlHardcoded,RtlSymmetry" />

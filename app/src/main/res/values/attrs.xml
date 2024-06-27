@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="NumberPickerPreference">
-        <attr name="minValue" format="integer"/>
-        <attr name="maxValue" format="integer"/>
-        <attr name="step" format="integer"/>
-    </declare-styleable>
     <declare-styleable name="LocationStateButton">
         <attr name="tint" format="color" />
         <!-- See LocationState. Assume that for each state that is set to true, any state that is

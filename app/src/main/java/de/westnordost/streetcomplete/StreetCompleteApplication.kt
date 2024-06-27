@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesControll
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
 import de.westnordost.streetcomplete.data.logs.logsModule
+import de.westnordost.streetcomplete.data.map.mapModule
 import de.westnordost.streetcomplete.data.maptiles.maptilesModule
 import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
@@ -48,7 +49,6 @@ import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegm
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
-import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.screens.settings.settingsModule
@@ -64,6 +64,7 @@ import de.westnordost.streetcomplete.util.prefs.preferencesModule
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -71,6 +72,7 @@ import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 class StreetCompleteApplication : Application() {
@@ -111,7 +113,6 @@ class StreetCompleteApplication : Application() {
                 elementEditsModule,
                 elementGeometryModule,
                 mapDataModule,
-                mapModule,
                 mainModule,
                 maptilesModule,
                 metadataModule,
@@ -134,6 +135,8 @@ class StreetCompleteApplication : Application() {
                 arModule,
                 overlaysModule,
                 overlayModule,
+                urlConfigModule,
+                mapModule,
                 urlConfigModule,
                 platformModule
             )
@@ -170,6 +173,7 @@ class StreetCompleteApplication : Application() {
                 onNewVersion()
             }
         }
+        clearTangramCache()
 
         settingsListeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
             updateDefaultLocales()
@@ -231,4 +235,18 @@ class StreetCompleteApplication : Application() {
 
     private val isConnected: Boolean
         get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
+
+    private fun clearTangramCache() {
+        if (prefs.getBoolean(Prefs.CLEARED_TANGRAM_CACHE, false))
+            return
+        val externalCache = externalCacheDir ?: return
+        val tileCache = File(externalCache, "tile_cache")
+        if (!tileCache.exists()) return
+        applicationScope.launch(Dispatchers.IO) {
+            for (file in externalCache.walk()) {
+                file.delete()
+            }
+            prefs.putBoolean(Prefs.CLEARED_TANGRAM_CACHE, true)
+        }
+    }
 }

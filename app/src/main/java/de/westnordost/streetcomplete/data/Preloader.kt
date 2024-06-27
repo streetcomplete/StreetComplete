@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
 /** Initialize certain singleton classes used elsewhere throughout the app in the background */
 class Preloader(
     private val countryBoundaries: Lazy<CountryBoundaries>,
-    private val featuresDictionary: Lazy<FeatureDictionary>
+    private val featuresDictionary: Lazy<FeatureDictionary>,
 ) {
 
     suspend fun preload() {

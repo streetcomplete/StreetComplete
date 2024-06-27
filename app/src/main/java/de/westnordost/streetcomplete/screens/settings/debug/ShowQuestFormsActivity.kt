@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -182,7 +183,7 @@ class ShowQuestFormsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         val f = questType.createForm()
         if (f.arguments == null) f.arguments = bundleOf()
         f.requireArguments().putAll(
-            AbstractQuestForm.createArguments(quest.key, quest.type, geometry, 30.0f, 0.0f)
+            AbstractQuestForm.createArguments(quest.key, quest.type, geometry, 30.0, 0.0)
         )
         f.requireArguments().putAll(AbstractOsmQuestForm.createArguments(element))
         f.hideOsmQuestController = object : HideOsmQuestController {

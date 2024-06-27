@@ -47,9 +47,9 @@ class AddSuspectedOnewayForm : AbstractOsmQuestForm<SuspectedOnewayAnswer>() {
         }
     }
 
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
-        mapRotation = (rotation * 180 / PI).toFloat()
-        binding.onewayIcon.rotation = wayRotation + mapRotation
+    override fun onMapOrientation(rotation: Double, tilt: Double) {
+        mapRotation = rotation.toFloat()
+        binding.onewayIcon.rotation = wayRotation - mapRotation
     }
 
     private fun applyAnswer(answer: Boolean) {

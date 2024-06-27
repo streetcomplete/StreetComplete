@@ -14,8 +14,9 @@ import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
-import de.westnordost.streetcomplete.screens.main.map.getPinIcon
+import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -98,12 +99,13 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         showsGeometryMarkersListener?.clearMarkersForCurrentHighlighting()
         if (level == null) return
         val levels = listOf(SingleLevel(level))
-        for ((element, geometry) in shopElementsAndGeometry) {
-            if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) continue
-            val icon = getPinIcon(featureDictionary, element)
+        val markers = shopElementsAndGeometry.mapNotNull { (element, geometry) ->
+            if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) return@mapNotNull null
+            val icon = getIcon(featureDictionary, element)
             val title = getTitle(element.tags)
-            showsGeometryMarkersListener?.putMarkerForCurrentHighlighting(geometry, icon, title)
+            Marker(geometry, icon, title)
         }
+        showsGeometryMarkersListener?.putMarkersForCurrentHighlighting(markers)
     }
 
     override fun onClickOk() {

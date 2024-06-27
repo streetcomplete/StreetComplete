@@ -86,17 +86,17 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
         }
     }
 
-    @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
-        mapRotation = (rotation * 180 / PI).toFloat()
-        mapTilt = (tilt * 180 / PI).toFloat()
+    @AnyThread override fun onMapOrientation(rotation: Double, tilt: Double) {
+        mapRotation = rotation.toFloat()
+        mapTilt = tilt.toFloat()
         updateStreetOrientation()
     }
 
     private fun updateStreetOrientation() {
         val streetLanesPuzzleBinding = streetLanesPuzzleBinding ?: return
 
-        streetLanesPuzzleBinding.puzzleViewRotateContainer.streetRotation = wayRotation + mapRotation
-        streetLanesPuzzleBinding.littleCompass.root.rotation = mapRotation
+        streetLanesPuzzleBinding.puzzleViewRotateContainer.streetRotation = wayRotation - mapRotation
+        streetLanesPuzzleBinding.littleCompass.root.rotation = -mapRotation
         streetLanesPuzzleBinding.littleCompass.root.rotationX = mapTilt
     }
 

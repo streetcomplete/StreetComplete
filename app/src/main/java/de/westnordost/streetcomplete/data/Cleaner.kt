@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.data
 
-import android.content.Context
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.logs.LogsController
+import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.util.ktx.purge
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -19,12 +18,12 @@ import kotlinx.coroutines.launch
 
 /** Deletes old unused persisted data in the background */
 class Cleaner(
-    private val context: Context,
     private val noteController: NoteController,
     private val mapDataController: MapDataController,
     private val questTypeRegistry: QuestTypeRegistry,
     private val downloadedTilesController: DownloadedTilesController,
-    private val logsController: LogsController
+    private val logsController: LogsController,
+    private val mapTilesDownloader: MapTilesDownloader,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Cleaner") + Dispatchers.IO)
 
@@ -45,7 +44,7 @@ class Cleaner(
     }
 
     fun cleanAll() = scope.launch {
-        context.externalCacheDir?.purge()
+        mapTilesDownloader.clear()
         downloadedTilesController.clear()
         mapDataController.clear()
         noteController.clear()

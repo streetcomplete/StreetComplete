@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings.debug
 
 import androidx.lifecycle.ViewModel
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -14,11 +13,8 @@ abstract class ShowQuestFormsViewModel : ViewModel() {
 
 class ShowQuestFormsViewModelImpl(
     private val questTypeRegistry: QuestTypeRegistry,
-    private val prefs: ObservableSettings,
+    private val mapStateStore: MapStateStore,
 ) : ShowQuestFormsViewModel() {
     override val quests get() = questTypeRegistry
-    override val position get() = LatLon(
-        prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
-        prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
-    )
+    override val position get() = mapStateStore.position
 }

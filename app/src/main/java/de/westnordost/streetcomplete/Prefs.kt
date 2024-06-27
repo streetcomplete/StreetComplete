@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatDelegate
 /** Constant class to have all the identifiers for shared preferences in one place  */
 object Prefs {
     // application settings
-    const val MAP_TILECACHE_IN_MB = "map.tilecache"
     const val SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes"
     const val AUTOSYNC = "autosync"
     const val KEEP_SCREEN_ON = "display.keepScreenOn"
@@ -39,18 +38,11 @@ object Prefs {
     // map state
     const val MAP_LATITUDE = "map.latitude"
     const val MAP_LONGITUDE = "map.longitude"
-    const val MAP_ROTATION = "map.rotation"
-    const val MAP_TILT = "map.tilt"
-    const val MAP_ZOOM = "map.zoom"
+    const val MAP_ROTATION = "map.rotation2"
+    const val MAP_TILT = "map.tilt2"
+    const val MAP_ZOOM = "map.zoom2"
     const val MAP_FOLLOWING = "map.following"
     const val MAP_NAVIGATION_MODE = "map.navigation_mode"
-
-    // tangram
-    const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
-    const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"
-
-    const val ICON_SPRITES_VERSION = "TangramIconsSpriteSheet.version"
-    const val ICON_SPRITES = "TangramIconsSpriteSheet.sprites"
 
     // quest & overlays
     const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
@@ -67,6 +59,9 @@ object Prefs {
     const val USER_LAST_TIMESTAMP_ACTIVE = "last_timestamp_active"
     const val ACTIVE_DATES_RANGE = "active_days_range"
     const val IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics"
+
+    // clean-up after upgrade
+    const val CLEARED_TANGRAM_CACHE = "cleared_tangram_cache"
 
     enum class Autosync {
         ON,

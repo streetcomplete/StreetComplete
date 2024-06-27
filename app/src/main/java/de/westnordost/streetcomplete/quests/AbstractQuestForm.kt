@@ -87,8 +87,8 @@ abstract class AbstractQuestForm :
     override lateinit var questKey: QuestKey
     protected lateinit var questType: QuestType
     protected lateinit var geometry: ElementGeometry private set
-    private var initialMapRotation = 0f
-    private var initialMapTilt = 0f
+    private var initialMapRotation = 0.0
+    private var initialMapTilt = 0.0
 
     private var infoIsExpanded: Boolean = false
 
@@ -103,8 +103,8 @@ abstract class AbstractQuestForm :
         questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
         questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!)!!
         geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
-        initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
-        initialMapTilt = args.getFloat(ARG_MAP_TILT)
+        initialMapRotation = args.getDouble(ARG_MAP_ROTATION)
+        initialMapTilt = args.getDouble(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
     }
 
@@ -241,7 +241,7 @@ abstract class AbstractQuestForm :
 
     protected open fun isFormComplete(): Boolean = false
 
-    @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
+    @AnyThread override fun onMapOrientation(rotation: Double, tilt: Double) {
         // default empty implementation
     }
 
@@ -258,7 +258,7 @@ abstract class AbstractQuestForm :
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(questKey: QuestKey, questType: QuestType, geometry: ElementGeometry, rotation: Float, tilt: Float) = bundleOf(
+        fun createArguments(questKey: QuestKey, questType: QuestType, geometry: ElementGeometry, rotation: Double, tilt: Double) = bundleOf(
             ARG_QUEST_KEY to Json.encodeToString(questKey),
             ARG_GEOMETRY to Json.encodeToString(geometry),
             ARG_QUESTTYPE to questType.name,

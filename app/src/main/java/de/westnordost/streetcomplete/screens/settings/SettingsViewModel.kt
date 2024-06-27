@@ -4,8 +4,6 @@ import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -30,7 +28,6 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val selectedQuestPresetName: StateFlow<String?>
     abstract val hiddenQuestCount: StateFlow<Long>
     abstract val questTypeCount: StateFlow<QuestTypeCount?>
-    abstract val tileCacheSize: StateFlow<Int>
 
     abstract fun unhideQuests()
 
@@ -85,10 +82,6 @@ class SettingsViewModelImpl(
     override val questTypeCount = MutableStateFlow<QuestTypeCount?>(null)
     override val selectedQuestPresetName = MutableStateFlow<String?>(null)
     override val selectableLanguageCodes = MutableStateFlow<List<String>?>(null)
-    override val tileCacheSize = MutableStateFlow(prefs.getInt(
-        Prefs.MAP_TILECACHE_IN_MB,
-        ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
-    ))
 
     private val listeners = mutableListOf<SettingsListener>()
 
@@ -97,10 +90,6 @@ class SettingsViewModelImpl(
         questPresetsSource.addListener(questPresetsListener)
         osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
-
-        listeners += prefs.addIntOrNullListener(Prefs.MAP_TILECACHE_IN_MB) { size ->
-            tileCacheSize.value = size ?: ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
-        }
 
         updateSelectableLanguageCodes()
         updateHiddenQuests()
