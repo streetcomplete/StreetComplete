@@ -391,7 +391,7 @@
     <string name="questList_disabled_in_country">"Никогда не показываются в стране %s"</string>
     <string name="quest_select_hint_most_specific">"Выберите вариант, подходящий наиболее точно:"</string>
     <string name="quest_generic_item_confirmation">"Вы уверены, что не можете дать более точное описание?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Для некоторых квестов загружаются дополнительные данные из прочих источников. В частности, квест \"эта улица односторонняя?\" запрашивает сервис westnordost.de на предмет вероятно односторонних улиц.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Для некоторых квестов загружаются дополнительные данные из прочих источников. В частности, квест «эта улица односторонняя?» запрашивает сервис westnordost.de на предмет вероятно односторонних улиц.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Нет (оставьте заметку)"</string>
     <string name="pref_quests_reset">"Сбросить выбор и приоритет квестов на значения по умолчанию?"</string>
     <string name="quest_generic_item_invalid_value">"Пожалуйста, выберите более конкретное значение."</string>
@@ -699,7 +699,6 @@
     <string name="quest_recycling_type_engine_oil">"Моторное масло"</string>
     <string name="link_photon_description">"Автономное расширение для Nominatim с нечётким поиском и функцией поиска по мере ввода"</string>
     <string name="link_graphhopper_description">"Маршрутизатор с множеством настроек"</string>
-    <string name="link_qwant_maps_description">"Карта с доступными для поиска местами и направлениями"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Для отображения карты, векторные тайлы из %1$s. Ознакомьтесь с &lt;a href=\"%2$s\"&gt;политикой конфиденциальности&lt;/a&gt; для получения дополнительной информации.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсоры"</string>
     <string name="quest_board_type_history">"История"</string>
@@ -1055,7 +1054,7 @@
     <string name="default_disabled_msg_no_ar">"Необходимо ручное измерение для того чтобы решить этот квест потому что измерение с помощью камеры не поддерживается на этом устройстве."</string>
     <string name="quest_cycleway_width_title">"Какова ширина этой велосипедной дорожки?"</string>
     <string name="quest_road_width_title">"Какова ширина этой дороги?"</string>
-    <string name="quest_road_width_explanation">"Ширина проезжей части от бордюра до бордюра: это включает в себя всё, находящееся на поверхности дороги, как парковка на дороге, велосипедная линия, но не включает в себя что-либо за пределами, как велосипедная дорожка и парковка вне дороги."</string>
+    <string name="quest_road_width_explanation">"Ширина проезжей части от бордюра до бордюра: включает в себя все, что находится на поверхности дороги, в том числе парковку на дороге или велосипедные дорожки, но исключает все, что находится за бордюром, например, тротуары, парковки во дворе или прилегающие велосипедные дорожки."</string>
     <string name="quest_sidewalk_answer_none">"Вообще нет дороги"</string>
     <string name="link_osmand_description">"Мобильное приложение для онлайн и оффлайн просмотра карт и навигации
 "</string>
@@ -1391,4 +1390,23 @@
     <string name="quest_moped_access_designated">"Есть знак, обозначающий эту велосипедную дорожку для мопедов."</string>
     <string name="quest_moped_access_forbidden">"Есть знак, запрещающий мопеды"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Этот тип квеста по умолчанию отключен, поскольку доступ к мопеду обозначается только специальными знаками в начале/конце велосипедной дорожки."</string>
+    <string name="quest_arrow_tutorial">"Стрелки на иллюстрации указывают направления, в которых проходит дорога на карте в ее центральной точке.  Попробуйте повернуть карту и у вас все получится."</string>
+    <string name="info">"Больше информации"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Это запрещено."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Это разрешено."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"На самом деле тротуар есть, но на карте он отображается отдельно."</string>
+    <string name="quest_buildingLevels_hint">"Для зданий, расположенных на склоне, отсчет этажей начинается от уровня земли самой низкой стороны.
+
+Этаж в составе крыши считается этажом, если в нём находятся окна.  Следовательно, крыши с нулевым этажом крыши не обязательно плоские, просто недостаточно высокие для всего уровня.
+ ␣␣␣␣"</string>
+    <string name="quest_parcel_locker_brand">"Какой марки этот ящик для хранения посылок?"</string>
+    <string name="quest_parcel_locker_pickup">"Можно ли здесь забирать посылки?"</string>
+    <string name="quest_parcel_locker_mail_in">"Можете ли вы доставить посылки сюда?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Линия электропередачи закреплена на здании"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"нет, но знак разрешает ездить на велосипеде по тротуару"</string>
+    <string name="separate_cycleway_no_signed">"Знак явно запрещает езду на велосипеде"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Пешеходная дорожка, но знак разрешает езду на велосипеде"</string>
+    <string name="quest_bicycle_parking_type_floor">"Специально отведенная зона"</string>
+    <string name="link_osmapp_description">"Карта с различными слоями, на пример для скалолазания или катания на лыжах"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Только для обратной доставки"</string>
 </resources>

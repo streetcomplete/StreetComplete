@@ -692,7 +692,6 @@
     <string name="quest_recycling_type_engine_oil">"روغن موتور"</string>
     <string name="link_photon_description">"یک افزونه مستقل به نام Nominatim ، در برگیرنده جستجوی فازی و جستجو براساس نوشتار شما می باشد."</string>
     <string name="link_graphhopper_description">"یک موتور مسیریابی انعطاف پذیر و بهینه"</string>
-    <string name="link_qwant_maps_description">"نقشه‌ای با مکانها و مسیرهای قابل جستجو"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;برای نمایش نقشه، کاشی‌های نقشه از %1$s بازیابی می‌شوند. برای اطلاعات بیشتر به &lt;ahref=\"%2$s\"&gt;بیانیه حریم خصوصی&lt;/a&gt; مراجعه کنید.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"حامیان مالی"</string>
     <string name="quest_board_type_history">"تاریخچه"</string>
@@ -1402,4 +1401,10 @@
     <string name="quest_parcel_locker_pickup">"آیا می‌توانید بسته‌ها را از اینجا تحویل بگیرید؟"</string>
     <string name="quest_parcel_locker_mail_in">"آیا می‌توانید بسته‌ها را اینجا تحویل دهید؟"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"خط برق به ساختمان متصل است"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"هیچ، اما علامت دوچرخه‌سواری در پیاده‌رو را مجاز می‌کند"</string>
+    <string name="separate_cycleway_no_signed">"یک علامت (تابلو) به صراحت دوچرخه‌سواری را ممنوع می‌کند"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"پیاده‌رو، اما یک تابلو اجازه دوچرخه‌سواری را می‌دهد"</string>
+    <string name="quest_bicycle_parking_type_floor">"ناحیه تعیین شده"</string>
+    <string name="link_osmapp_description">"نقشه‌ای با لایه‌های مختلف، مانند کوهنوردی یا اسکی"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"فقط برای تحویل مرجوعی"</string>
 </resources>

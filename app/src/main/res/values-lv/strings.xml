@@ -694,7 +694,6 @@ līmeņi"</string>
     <string name="quest_recycling_type_engine_oil">"Motoreļļa"</string>
     <string name="link_photon_description">"Standarta Nominatim paplašinājums, kurā ir aptuvenā meklēšana un meklēšana rakstīšanas laikā"</string>
     <string name="link_graphhopper_description">"Elastīgs maršrutēšanas dzinis"</string>
-    <string name="link_qwant_maps_description">"Karte ar meklējamām vietām un virzieniem"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Lai attēlotu karti, vektoru flīzes tiek saņemtas no %1$s. Skatiet viņu &lt;a href=\"%2$s\"&gt;paziņojumu par privātumu&lt;/a&gt;, lai uzzinātu vairāk.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsori"</string>
     <string name="quest_board_type_history">"Vēsture"</string>

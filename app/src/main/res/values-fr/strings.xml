@@ -406,7 +406,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_semi_detached">"Maison jumelée"</string>
     <string name="quest_buildingType_terrace_description">"une ligne de maisons unifamiliales similaires"</string>
     <string name="quest_buildingType_hotel">"Hôtel"</string>
-    <string name="quest_buildingType_dormitory">"Résidence universitaire, foyer"</string>
+    <string name="quest_buildingType_dormitory">"Bâtiment abritant les dortoirs"</string>
     <string name="quest_buildingType_houseboat">"Maison flottante"</string>
     <string name="quest_buildingType_bungalow">"Bâtiment de bungalow"</string>
     <string name="quest_buildingType_static_caravan">"Mobile-home"</string>
@@ -415,7 +415,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_industrial">"Industriel"</string>
     <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garagiste…"</string>
     <string name="quest_buildingType_office">"Bureaux"</string>
-    <string name="quest_buildingType_retail">"Magasin·s"</string>
+    <string name="quest_buildingType_retail">"Bâtiment commercial"</string>
     <string name="quest_buildingType_warehouse">"Entrepôt"</string>
     <string name="quest_buildingType_kiosk">"Bâtiment du kiosque"</string>
     <string name="quest_buildingType_storage_tank">"Réservoir de stockage"</string>
@@ -697,7 +697,6 @@ accomplis"</string>
     <string name="quest_recycling_type_engine_oil">"Huile de moteur"</string>
     <string name="link_photon_description">"Une extension autonome à Nominatim, incluant une recherche approximative et une recherche au fur et à mesure de la frappe"</string>
     <string name="link_graphhopper_description">"Un moteur de recherche d’itinéraire modulable"</string>
-    <string name="link_qwant_maps_description">"Une carte qui permet de chercher des lieux et des itinéraires"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Les tuiles vectorielles utilisées pour afficher la carte sont récupérées depuis %1$s. Lisez leur &lt;a href=\"%2$s\"&gt;politique de confidentialité&lt;/a&gt; pour plus d’informations.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsors"</string>
     <string name="quest_board_type_history">"Histoire"</string>
@@ -765,8 +764,8 @@ accomplis"</string>
     <string name="quest_surface_detailed_answer_impossible_title">"Décrire la surface"</string>
     <string name="open_url">"Ouvrir l’URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
-    <string name="quest_buildingType_historic">"Monument historique"</string>
-    <string name="quest_buildingType_historic_description">"bâtiment à valeur historique, ne présentant pas de fonction civique, religieuse ou commerciale"</string>
+    <string name="quest_buildingType_historic">"Historique"</string>
+    <string name="quest_buildingType_historic_description">"bâtiment à valeur historique, construit dans un but inconnu ou vague"</string>
     <string name="quest_buildingType_abandoned">"Abandonné"</string>
     <string name="quest_buildingType_abandoned_description">"bâtiment inutilisé dont la fonction originelle est inconnue"</string>
     <string name="quest_buildingType_ruins">"Ruines"</string>
@@ -960,7 +959,7 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - plus de deux barrières"</string>
     <string name="pref_title_language_select">"Sélectionner une langue"</string>
     <string name="language_default">"Langue du système"</string>
-    <string name="on_floor">"à l’étage %s :"</string>
+    <string name="on_floor">"à l’étage %s"</string>
     <string name="select_street_parking_orientation">"Sélectionnez l’orientation vers la chaussée :"</string>
     <string name="select_street_parking_position">"Sélectionnez la position :"</string>
     <string name="select_street_parking_no">"Panneau ou marquage au sol ici ?"</string>
@@ -1196,7 +1195,7 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Cette réponse ne correspond pas à ce qui est généralement renseigné sur cette route. Êtes-vous certain que vous répondez pour la bonne route ? Êtes-vous sûr d’avoir parcouru toute la longueur de la route comme il est recommandé ?"</string>
     <string name="quest_recycling_type_pet">"Seulement PET"</string>
     <string name="street_parking_street_width">"Largeur de la rue : %s"</string>
-    <string name="overlay_street_parking">"Parking dans la rue"</string>
+    <string name="overlay_street_parking">"Parking sur voirie"</string>
     <string name="link_ohsomehex_description">"Explorez les données d’OSM à différentes échelles, du plan large jusqu’aux objets individuels, à travers le temps et l’espace"</string>
     <string name="link_opencampingmap_description">"Une carte des terrains de camping"</string>
     <string name="quest_atm_cashin_title">"Est-il possible de déposer de l’argent dans ce distributeur ?"</string>
@@ -1362,7 +1361,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_disable_message_not_installed">"StreetMeasure n’est pas installé"</string>
     <string name="quest_disable_message_not_working">"StreetMeasure n’a pas renvoyé de mesure."</string>
     <string name="quest_disable_message_tape_measure">"Vous pourriez utiliser un mètre ruban à la place, mais c’est un peu plus gênant."</string>
-    <string name="quest_buildingType_outbuilding">"Annexe"</string>
+    <string name="quest_buildingType_outbuilding">"Dépendance"</string>
     <string name="quest_buildingType_outbuilding_description">"bâtiment moins important sur une propriété"</string>
     <string name="quest_buildingType_other_description">"un bâtiment spécifique qui n’est pas sélectionnable dans cette application"</string>
     <string name="quest_buildingType_container">"Conteneur"</string>
@@ -1373,7 +1372,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_buildingType_under_construction">"En cours de construction"</string>
     <string name="overlay_buildings">"Immeubles"</string>
     <string name="quest_pedestrian_crossing_markings">"Est-ce que ce passage piéton est peint sur la chaussée ?"</string>
-    <string name="overlay_places">"Places"</string>
+    <string name="overlay_places">"Lieux"</string>
     <string name="overlay_things">"Objets"</string>
     <string name="disused">"désaffecté"</string>
     <string name="unknown_object">"Objet inconnu"</string>
@@ -1395,7 +1394,18 @@ Vous pouvez trouver des informations sur les dons sur notre site web ou sur la p
     <string name="quest_accessible_for_pedestrians_prohibited">"C’est interdit."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"C’est autorisé."</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Actuellement, il y a un trottoir, mais il est représenté séparément sur la carte."</string>
+    <string name="quest_buildingLevels_hint">"Pour les bâtiments en pente, le décompte des niveaux commence à partir du niveau du sol du côté le plus bas.
+
+Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans le toit. Par conséquent, les toits dont le niveau est nul ne sont pas nécessairement plats, mais ne sont pas assez hauts pour contenir un niveau entier.
+    "</string>
     <string name="quest_parcel_locker_brand">"Quelle est la marque de cette consignes automatiques de colis?"</string>
     <string name="quest_parcel_locker_pickup">"Est-il possible de retirer des colis ici ?"</string>
     <string name="quest_parcel_locker_mail_in">"Est-il possible de déposer des colis ici ?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"La ligne électrique est ancrée au bâtiment"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"aucun, mais un panneau autorise les cyclistes à circuler sur le trottoir"</string>
+    <string name="separate_cycleway_no_signed">"Un panneau interdit explicitement le vélo"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Voie piétonne, mais un panneau autorise la circulation des cyclistes"</string>
+    <string name="quest_bicycle_parking_type_floor">"Zone désignée"</string>
+    <string name="link_osmapp_description">"Une carte avec différentes couches, par exemple pour l'escalade ou le ski"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Seulement pour les livraisons de retour"</string>
 </resources>

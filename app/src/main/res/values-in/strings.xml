@@ -698,7 +698,6 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="quest_recycling_type_engine_oil">"Minyak Mesin"</string>
     <string name="link_photon_description">"Ekstensi tunggal untuk Nominatim, memiliki fitur pencarian fuzi dan cari-sembari-mengetik"</string>
     <string name="link_graphhopper_description">"Mesin perute fleksibel"</string>
-    <string name="link_qwant_maps_description">"Peta dengan tempat dan arah yang bisa dicari"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Untuk menampilkan peta, petak vektor akan diambil dari %1$s. Lihat &lt;a href=\"%2$s\"&gt;pernyataan privasi&lt;/a&gt; mereka untuk lebih lanjut.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsor"</string>
     <string name="quest_board_type_history">"Riwayat"</string>

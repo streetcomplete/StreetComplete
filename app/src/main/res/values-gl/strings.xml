@@ -695,7 +695,6 @@ logros"</string>
     <string name="quest_recycling_type_engine_oil">"Aceite de motor"</string>
     <string name="link_photon_description">"Unha extensión independente para Nominatim, con procura dinámica mentres escribes"</string>
     <string name="link_graphhopper_description">"Un motor de enrutamento flexíbel"</string>
-    <string name="link_qwant_maps_description">"Un mapa con lugares e enderezos que se poden procurar"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Para amosar o mapa, as teselas vectoriais son obtidas de %1$s. Ollar a súa &lt;a href=\"%2$s\"&gt;declaración de privacidade&lt;/a&gt; para máis información.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Padroádegos"</string>
     <string name="quest_board_type_history">"Historia"</string>

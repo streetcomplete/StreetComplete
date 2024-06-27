@@ -83,22 +83,18 @@
     <string name="map_btn_zoom_in">"Acercar"</string>
     <string name="privacy_html">"&lt;p&gt;Vaya, por fin alguien que se preocupa por la privacidad. Pues estupendo, creo que van a ser todo buenas noticias:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Aportaciones directas&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Punto número uno, con esta aplicación estás enviando contribuciones directas y totalmente reales a OpenStreetMap.&lt;br/&gt;
+&lt;p&gt;Punto número uno, con esta aplicación estás enviando contribuciones directas y totalmente reales a OpenStreetMap.&lt;br/&gt;
 Cualquier aporte realizado con esta aplicación se añade directamente al mapa sin ningún intermediario entre aplicación e infraestructura final de OSM.
 &lt;/p&gt;
-&lt;p&gt;
-No se pueden aportar datos anónimos a OpenStreetMap, con lo que cualquier cambio que hagas se hará desde tu propia cuenta de usuario en OSM. Esto significa que tanto la fecha, el contenido, (y por supuesto) la ubicación de tus cambios son visibles para todos en la página de openstreetmap y están enlazados al nombre que pongas en tu cuenta.
+&lt;p&gt;No se pueden aportar datos anónimos a OpenStreetMap, con lo que cualquier cambio que hagas se hará desde tu propia cuenta de usuario en OSM. Esto significa que tanto la fecha, el contenido, (y por supuesto) la ubicación de tus cambios son visibles para todos en la página de openstreetmap y están enlazados al nombre que pongas en tu cuenta.
 &lt;/p&gt;
 
 &lt;b&gt;Ubicación&lt;/b&gt;&lt;br/&gt;
-&lt;p&gt;
-Tu posición no se comparte con nadie, sólo se utiliza para buscar tareas disponibles en la zona y para acercar (y así descargar) el contenido del mapa que rodea tu ubicación.
+&lt;p&gt;Tu posición no se comparte con nadie, sólo se utiliza para buscar tareas disponibles en la zona y para acercar (y así descargar) el contenido del mapa que rodea tu ubicación.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Uso de datos&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Continuando con lo de antes, la aplicación se comunica directamente con la infraestructura de OSM.&lt;br/&gt;
+&lt;p&gt;Continuando con lo de antes, la aplicación se comunica directamente con la infraestructura de OSM.&lt;br/&gt;
 No obstante, antes de subir cualquier cambio, la aplicación comprueba si la versión actual aparece en un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;archivo de texto plano&lt;/a&gt; de mi servidor Web. Esta es una medida preventiva para que versiones antiguas de la aplicación que tengan errores críticos no puedan subir nada y así evitar corromper los datos de OSM.&lt;/p&gt;"</string>
     <string name="autosync_on">"Sí"</string>
     <string name="autosync_only_on_wifi">"Sólo con Wi-Fi"</string>
@@ -390,7 +386,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="questList_disabled_in_country">"Nunca se muestra en %s"</string>
     <string name="quest_select_hint_most_specific">"La opción, cuanto más específica, mejor:"</string>
     <string name="quest_generic_item_confirmation">"¿Seguro que no puedes afinar tu selección algo más?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;En algunas tareas se descargan datos adicionales de terceros. En particular, la búsqueda de calles de sentido único hace peticiones a una API alojada en «westnordost.de», con un listado de posibilidades.&lt;/ p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;En algunas tareas se descargan datos adicionales de terceros. En particular, la búsqueda de calles de sentido único hace peticiones a una API alojada en westnordost.de, con un listado de posibilidades.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (dejar nota)"</string>
     <string name="pref_quests_reset">"¿Quieres establecer el orden de las tareas y su estado a los valores originales?"</string>
     <string name="quest_generic_item_invalid_value">"Elige un valor más específico."</string>
@@ -482,7 +478,7 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_noteDiscussion_closed2">"Cerrado por %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Reabierto por %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Oculto por %1$s, %2$s"</string>
-    <string name="privacy_html_image_upload2">"&lt;p&gt;Las fotos que adjuntes a una nota se suben a mi servidor y se borran en cuestión de días tras su resolución. No se incluye ningún metadato en las fotos subidas.&lt;p&gt;"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;Las fotos que adjuntes a una nota se suben a mi servidor y se borran en cuestión de días tras su resolución. No se incluye ningún metadato en las fotos subidas.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleccionar todo"</string>
     <string name="quest_buildingType_retail_description">"incluyendo edificios para restaurantes, cafés…"</string>
     <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
@@ -693,7 +689,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_recycling_type_engine_oil">"Aceite de motor"</string>
     <string name="link_photon_description">"Una extensión independiente para Nominatim, con búsqueda parcial y dinámica al escribir"</string>
     <string name="link_graphhopper_description">"Un motor de enrutamiento flexible"</string>
-    <string name="link_qwant_maps_description">"Un mapa con lugares de búsqueda y direcciones"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Para poder ver el mapa descargamos teselas vectoriales de %1$s. Mira la &lt;a href=\"%2$s\"&gt;declaración de privacidad&lt;/a&gt; para más información.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
     <string name="quest_board_type_history">"Historia"</string>
@@ -1265,7 +1260,7 @@ También puedes dejar una nota (con foto)."</string>
     <string name="separate_cycleway_path">"Camino o sendero"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubería"</string>
     <string name="measure_info_title">"Trucos para mejorar la precisión"</string>
-    <string name="measure_info_html_description">"&lt;p&gt;A veces, al lanzar ARCore, el software tiene problemas para encontrar el nivel real del suelo. Esto provoca un error de medición que aumenta cuanto más se inclina el teléfono hacia la línea del horizonte.
+    <string name="measure_info_html_description">"&lt;p&gt;A veces, al lanzar ARCore, el software tiene problemas para encontrar el nivel real del suelo. Esto provoca un error de medición que aumenta cuanto más se inclina el teléfono hacia la línea del horizonte.&lt;/p&gt;
 &lt;p&gt;Para minimizar el problema al medir en horizontal marca tanto el punto inicial como el final con la cámara mirando hacia abajo (y veas la flecha blanca desde arriba).&lt;/p&gt;
 &lt;p&gt;Para medir en vertical asegúrate de que el punto de inicio no se mueva ni siga el suelo, esto se consigue grabando desde varios ángulos para fijar su posición.&lt;/p&gt;"</string>
     <string name="privacy_html_arcore">"Esta aplicación utiliza los &lt;a href=\"https://play.google.com/store/apps/details?id=com.google.ar.core\"&gt;Serv. de Google Play para RA&lt;/a&gt; (ARCore), hechos por Google y se rigen por su &lt;a href=\"https://policies.google.com/privacy\"&gt;propia política de privacidad&lt;/a&gt;."</string>
