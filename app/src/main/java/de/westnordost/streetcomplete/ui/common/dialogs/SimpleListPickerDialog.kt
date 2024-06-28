@@ -4,12 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -21,7 +17,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.RadioButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -65,9 +60,15 @@ fun <T> SimpleListPickerDialog(
     var selected by remember { mutableStateOf(selectedItem) }
     val state = rememberLazyListState()
 
+    fun select(item: T) {
+        selected = item
+        onItemSelected(item)
+        onDismissRequest()
+    }
+
     LaunchedEffect(selectedItem) {
         val index = items.indexOf(selectedItem)
-        if (index != -1) state.scrollToItem(index, -state.layoutInfo.viewportSize.height / 2)
+        if (index != -1) state.scrollToItem(index, -state.layoutInfo.viewportSize.height / 3)
     }
 
     Dialog(
@@ -102,11 +103,7 @@ fun <T> SimpleListPickerDialog(
                                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                                 verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier
-                                    .clickable {
-                                        selected = item
-                                        onItemSelected(item)
-                                        onDismissRequest()
-                                    }
+                                    .clickable { select(item) }
                                     .padding(horizontal = 24.dp)
                             ) {
                                 Text(
@@ -116,7 +113,7 @@ fun <T> SimpleListPickerDialog(
                                 )
                                 RadioButton(
                                     selected = selected == item,
-                                    onClick = { selected = item }
+                                    onClick = { select(item) }
                                 )
                             }
                         }
