@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.shoulder
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AStreetSideSelectForm
 import de.westnordost.streetcomplete.util.ktx.shoulderLineStyleResId
@@ -16,7 +15,11 @@ class AddShoulderForm : AStreetSideSelectForm<Boolean, ShoulderSides>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.descriptionLabel).setText(R.string.quest_shoulder_explanation2)
+        // we have actually two hints, so we concatenate them here...
+        setHint(
+            resources.getString(R.string.quest_shoulder_explanation2) + "\n" +
+            resources.getString(R.string.quest_street_side_puzzle_tutorial)
+        )
     }
 
     override fun onClickSide(isRight: Boolean) {

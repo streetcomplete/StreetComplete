@@ -6,17 +6,12 @@ import com.russhwolf.settings.boolean
 import com.russhwolf.settings.float
 import com.russhwolf.settings.int
 import com.russhwolf.settings.long
-import com.russhwolf.settings.nullableInt
 import com.russhwolf.settings.nullableString
 import com.russhwolf.settings.string
 import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_AUTOSYNC
-import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
 import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_RESURVEY_INTERVALS
+import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_THEME
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
-import de.westnordost.streetcomplete.util.ktx.putStringOrNull
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 class Preferences(private val prefs: ObservableSettings) {
     // application settings
@@ -24,7 +19,12 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var theme: Theme
         set(value) { prefs.putString(Prefs.THEME_SELECT, value.name) }
-        get() = prefs.getStringOrNull(Prefs.THEME_SELECT)?.let { Theme.valueOf(it) } ?: getDefaultTheme()
+        get() {
+            val value = prefs.getStringOrNull(Prefs.THEME_SELECT)
+            // AUTO setting was removed because as of June 2024, 95% of active installs from
+            // google play use an Android where AUTO is deprecated
+            return if (value == "AUTO" || value == null) Theme.SYSTEM else Theme.valueOf(value)
+        }
 
     var autosync: Autosync
         set(value) { prefs.putString(Prefs.AUTOSYNC, value.name) }
@@ -32,31 +32,35 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var keepScreenOn: Boolean by prefs.boolean(Prefs.KEEP_SCREEN_ON, false)
 
-    var mapTileCacheSize: Int by prefs.int(Prefs.MAP_TILECACHE_IN_MB, DEFAULT_MAP_CACHE_SIZE_IN_MB)
-
     var resurveyIntervals: ResurveyIntervals
         set(value) { prefs.putString(Prefs.RESURVEY_INTERVALS, value.name) }
         get() = ResurveyIntervals.valueOf(prefs.getString(Prefs.RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS))
 
-    var showNotesNotPhrasedAsQuestions: Boolean by prefs.boolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
+    var showAllNotes: Boolean by prefs.boolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
 
-    fun onLanguageChanged(callback: () -> Unit): SettingsListener =
-        prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) { callback() }
+    fun onLanguageChanged(callback: (String?) -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT, callback)
 
-    fun onThemeChanged(callback: () -> Unit): SettingsListener =
-        prefs.addStringOrNullListener(Prefs.THEME_SELECT) { callback() }
+    fun onThemeChanged(callback: (Theme) -> Unit): SettingsListener =
+        prefs.addStringListener(Prefs.THEME_SELECT, DEFAULT_THEME) {
+            callback(Theme.valueOf(it))
+        }
 
-    fun onAutosyncChanged(callback: () -> Unit): SettingsListener =
-        prefs.addStringListener(Prefs.AUTOSYNC, DEFAULT_AUTOSYNC) { callback() }
+    fun onAutosyncChanged(callback: (Autosync) -> Unit): SettingsListener =
+        prefs.addStringListener(Prefs.AUTOSYNC, DEFAULT_AUTOSYNC) {
+            callback(Autosync.valueOf(it))
+        }
 
-    fun onMapTileCacheSizeChanged(callback: () -> Unit): SettingsListener =
-        prefs.addIntListener(Prefs.MAP_TILECACHE_IN_MB, DEFAULT_MAP_CACHE_SIZE_IN_MB) { callback() }
+    fun onResurveyIntervalsChanged(callback: (ResurveyIntervals) -> Unit): SettingsListener =
+        prefs.addStringListener(Prefs.RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS) {
+            callback(ResurveyIntervals.valueOf(it))
+        }
 
-    fun onResurveyIntervalsChanged(callback: () -> Unit): SettingsListener =
-        prefs.addStringListener(Prefs.RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS) { callback() }
+    fun onAllShowNotesChanged(callback: (Boolean) -> Unit): SettingsListener =
+        prefs.addBooleanListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false, callback)
 
-    fun onShowNotesNotPhrasedAsQuestionsChanged(callback: () -> Unit): SettingsListener =
-        prefs.addBooleanListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false) { callback() }
+    fun onKeepScreenOnChanged(callback: (Boolean) -> Unit): SettingsListener =
+        prefs.addBooleanListener(Prefs.KEEP_SCREEN_ON, false, callback)
 
     // login and user
     var userId: Long by prefs.long(Prefs.OSM_USER_ID, -1)
@@ -126,18 +130,6 @@ class Preferences(private val prefs: ObservableSettings) {
     // default true because if it is not set yet, the first thing that is done is to synchronize it
     var isSynchronizingStatistics: Boolean by prefs.boolean(Prefs.IS_SYNCHRONIZING_STATISTICS, true)
 
-    var lastShownGlobalUserRank: Int? by prefs.nullableInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
-
-    var lastShownGlobalUserRankCurrentWeek: Int? by prefs.nullableInt(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
-
-    var lastShownLocalUserCountryStatistics: CountryStatistics?
-        set(value) { prefs.putStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK, value?.let { Json.encodeToString(it) }) }
-        get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK)?.let { Json.decodeFromString(it) }
-
-    var lastShownLocalUserCountryStatisticsCurrentWeek: CountryStatistics?
-        set(value) { prefs.putStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK, value?.let { Json.encodeToString(it) }) }
-        get() = prefs.getStringOrNull(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK)?.let { Json.decodeFromString(it) }
-
     fun clearUserStatistics() {
         prefs.remove(Prefs.USER_DAYS_ACTIVE)
         prefs.remove(Prefs.ACTIVE_DATES_RANGE)
@@ -145,9 +137,5 @@ class Preferences(private val prefs: ObservableSettings) {
         prefs.remove(Prefs.USER_GLOBAL_RANK)
         prefs.remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
         prefs.remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
-        prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK)
-        prefs.remove(Prefs.LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK)
-        prefs.remove(Prefs.LAST_SHOWN_USER_LOCAL_RANK)
-        prefs.remove(Prefs.LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK)
     }
 }

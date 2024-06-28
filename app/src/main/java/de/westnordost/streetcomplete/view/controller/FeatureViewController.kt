@@ -12,7 +12,7 @@ import androidx.core.text.italic
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.view.presetIconIndex
 
 /** Just displays a OSM feature */
@@ -21,7 +21,7 @@ class FeatureViewController(
     private val textView: TextView,
     private val iconView: ImageView
 ) {
-    private val locales = getLocalesForFeatureDictionary(textView.resources.configuration)
+    private val languages = getLanguagesForFeatureDictionary(textView.resources.configuration)
 
     var countryOrSubdivisionCode: String? = null
 
@@ -66,11 +66,11 @@ class FeatureViewController(
     }
 
     private fun getParentFeature(feature: Feature): Feature? =
-        featureDictionary
-            .byId(feature.id.substringBeforeLast('/'))
-            .inCountry(countryOrSubdivisionCode)
-            .forLocale(*locales)
-            .get()
+        featureDictionary.getById(
+            id = feature.id.substringBeforeLast('/'),
+            languages = languages,
+            country = countryOrSubdivisionCode
+        )
 }
 
 private fun SpannableStringBuilder.appendName(context: Context, feature: Feature, searchText: String?): SpannableStringBuilder {

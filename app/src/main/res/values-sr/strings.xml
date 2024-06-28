@@ -43,7 +43,6 @@
     <string name="action_download">"Тражи задатке овде"</string>
     <string name="action_upload">"Отпремање одговора"</string>
     <string name="no_changes">"Нисте дали ниједан одговор"</string>
-    <string name="close">"затвори"</string>
     <string name="download_error">"Грешка приликом тражења задатака"</string>
     <string name="upload_error">"Грешка приликом слања одговора"</string>
     <string name="download_area_too_big">"Молимо вас да још увеличате"</string>
@@ -226,7 +225,6 @@
     <string name="credits_translations_title">"Преводи"</string>
     <string name="credits_contributors_title">"Сарадници програмери"</string>
     <string name="credits_author_title">"Аутор"</string>
-    <string name="credits_and_more">"и други…"</string>
     <string name="quest_maxspeed_answer_living_street">"То је стамбена улица"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Значи, постоји овакав знак?"</string>
     <string name="quest_orchard_produce_title">"Шта се овде узгаја?"</string>
@@ -499,13 +497,11 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Да ли је овај паркинг за моторе наткривен (пружа ли заштиту од кише)?"</string>
     <string name="default_disabled_msg_maxspeed">"Ова врста задатка је иницијално искључена јер обично морате проверити целу улицу за ограничења брзине, а не само истакнути део. Ово некад може бити прилично напорно да би се решио само један задатак."</string>
     <string name="pref_title_quests_restore_hidden">"Врати скривене задатке"</string>
-    <string name="restore_hidden_success">"Враћено је %d скривених задатака"</string>
     <string name="on_level">"на спрату %s"</string>
     <string name="underground">"под земљом"</string>
     <string name="quest_sidewalk_value_yes">"има тротоар"</string>
     <string name="quest_sidewalk_value_no">"нема тротоар"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Да ли је пешацима забрањено да ходају овим путем?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ова улица је обележена да нема тротоар ни са једне стране. У случају да он ипак постоји, али се приказује одвојено, молимо одговорите „Има тротоар“."</string>
     <string name="quest_buildingType_title">"Каква је ово грађевина?"</string>
     <string name="pref_title_theme_select">"Изаберите тему"</string>
     <string name="theme_automatic">"Аутоматска"</string>
@@ -700,7 +696,6 @@
     <string name="quest_recycling_type_engine_oil">"Моторно уље"</string>
     <string name="link_photon_description">"Независно проширење Nominatima, које користи претрагу непотпуних података и претрагу док куцате"</string>
     <string name="link_graphhopper_description">"Прилагодљива навигација"</string>
-    <string name="link_qwant_maps_description">"Карта са претрагом и навигацијом"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Да би приказали карту, вектори се повлаче са %1$s. За више информација, погледајте њихову &lt;a href=\"%2$s\"&gt;изјаву о приватности&lt;/a&gt;.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонзори"</string>
     <string name="quest_board_type_history">"Историја"</string>
@@ -837,7 +832,6 @@
     <string name="team_mode_active">"Укључен је рад у тиму"</string>
     <string name="team_mode_deactivated">"Искључен је рад у тиму"</string>
     <string name="undo_confirm_title2">"Опозвати следећу промену?"</string>
-    <string name="synced">"Синхронизовано"</string>
     <string name="toast_undo_unavailable">"Ова промена је већ синхронизована и није могућ њен опозив"</string>
     <string name="quest_cycleway_value_separate">"приказано одвојено на карти"</string>
     <string name="created_note_action_title">"Направљена напомена"</string>
@@ -1059,8 +1053,6 @@
     <string name="quest_road_width_title">"Која је ширина пута овде?"</string>
     <string name="quest_road_width_explanation">"Ширина пута од ивичњака до ивичњака: ово обухвата све на површини пута као што су паркинзи на путу или бициклистичке траке, али не не укључује ништа ван тога, као нпр. бициклистичке стазе или паркинге поред пута."</string>
     <string name="quest_sidewalk_answer_none">"Уопште нема тротоара"</string>
-    <string name="about_description_donate_google_play2">"Хвала што желите да подржите ову апликацију!
-Нажалост, због политике Google продавнице, не смемо да прикажемо везу ка донацијама унутар апликације. Штавише, не смемо да ставимо везу ни до нашег главног пројекта."</string>
     <string name="link_osmand_description">"Апликација за мобилни, за преглед карте и навигацију без интернета"</string>
     <string name="link_sunders_description">"Карта камера и опреме за надзор"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Држите близу стрелице, али пазите на саобраћај!"</string>
@@ -1266,8 +1258,6 @@
     <string name="bicycle_boulevard_is_a">"То је %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"То није %1$s"</string>
     <string name="bicycle_boulevard">"Бициклистички булевар"</string>
-    <string name="separate_cycleway_no">"Забрањено за бициклисте"</string>
-    <string name="separate_cycleway_allowed">"Бициклистима је дозвољено"</string>
     <string name="separate_cycleway_no_or_allowed">"Није намењено бициклистима (иако могу да возе туда)"</string>
     <string name="separate_cycleway_non_segregated">"Дељена траса"</string>
     <string name="separate_cycleway_segregated">"Одвојена бициклистичка од пешачке стазе"</string>
@@ -1378,10 +1368,34 @@
     <string name="quest_buildingType_tower_description">"било који торањ"</string>
     <string name="quest_buildingType_under_construction">"У изградњи"</string>
     <string name="overlay_buildings">"Грађевине"</string>
-    <string name="quest_pedestrian_crossing_signals">"Да ли је овде потребно сачекати семафор пре преласка?"</string>
-    <string name="quest_pedestrian_crossing_markings">"Да ли је овај прелаз обележен хоризонталном сигналиацјом?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Да ли је овај прелаз обележен хоризонталном сигнализацијом?"</string>
     <string name="overlay_places">"Места"</string>
     <string name="overlay_things">"Ствари"</string>
     <string name="disused">"некористи се"</string>
     <string name="unknown_object">"Непознати објекат"</string>
+    <string name="quest_leafType_tree_title">"Да ли ово дрво има иглице или лишће?"</string>
+    <string name="quest_bbq_fuel_gas">"Пумпа"</string>
+    <string name="about_description_donate_google_play3">"Хвала вам што разматрате подршку апликацији!
+Информације о донацији можете пронаћи на нашој web локацији или страници пројекта. Google Play нам не дозвољава да поставимо везу унутар апликације."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Није унутра, али је наткривено"</string>
+    <string name="lit_value_unsupported">"Посебан статус расвете није могуће одабрати у апликацији"</string>
+    <string name="quest_generic_otherAnswers2">"Ох…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Постоји ли семафор који показује када је дозвољен прелаз?"</string>
+    <string name="quest_moped_access_title">"Да ли постоји знак којим се дозвољава да мопеди крећу по бициклистичкој стази?"</string>
+    <string name="quest_moped_access_allowed">"Нема знака"</string>
+    <string name="quest_moped_access_designated">"Постављен је знак којим се дозвољава кретање мопеда по бициклистичкој стази"</string>
+    <string name="quest_moped_access_forbidden">"Постављен је знак којим је забрањено кретање мопеда"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Овај задатак је подраз. искључен јер приступ мопедима је назначен специфичним знаковима на само почетку и крају бицикл. стазе."</string>
+    <string name="quest_arrow_tutorial">"На илустрацији, стрелице показују правац кретања пута на карти у централној тачки чиоде. Пробајте да ротирате карту и схватићете."</string>
+    <string name="info">"Још информација"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Забрањено је."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Дозвољено је."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Заправо постоји тротоар, али је приказан одвојено на карти."</string>
+    <string name="quest_buildingLevels_hint">"За зграде на падини, спратови се броје од нивоа земљишта, са најниже стране.
+
+Спратом се сматра и када су прозори у крову. Стога, кровови без спрата нису нужно равни, већ једноставно нису довољно високи да би постојало поткровље.
+␣␣␣␣"</string>
+    <string name="quest_parcel_locker_brand">"Ког је бренда овај пакетомат?"</string>
+    <string name="quest_parcel_locker_pickup">"Да ли је могуће подићи пошиљке овде?"</string>
+    <string name="quest_parcel_locker_mail_in">"Да ли је могуће оставити пошиљке овде?"</string>
 </resources>

@@ -524,7 +524,8 @@
                     "terms": "cabina"
                 },
                 "bottle": {
-                    "label": "Llenado de botellas"
+                    "label": "Llenado de botellas",
+                    "terms": "llenado de botellas,rellenado de botellas"
                 },
                 "boules": {
                     "label": "Tipo"
@@ -556,7 +557,17 @@
                     "label": "Tipo"
                 },
                 "bridge_combo": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "aqueduct": "Acueducto",
+                        "boardwalk": "Paseo marítimo entarimado",
+                        "cantilever": "Puente voladizo",
+                        "covered": "Puente cubierto",
+                        "low_water_crossing": "Cruce de aguas bajas",
+                        "movable": "Puente móvil",
+                        "trestle": "Puente de pilares",
+                        "viaduct": "Viaducto"
+                    }
                 },
                 "building": {
                     "label": "Edificio",
@@ -741,7 +752,8 @@
                     }
                 },
                 "changing_table": {
-                    "label": "Cambiador de pañales"
+                    "label": "Cambiador de pañales",
+                    "terms": "cambiador de pañales,mesa de cambio,mesa para cambiar pañales"
                 },
                 "charge_fee": {
                     "label": "Importe de la tarifa",
@@ -1330,6 +1342,7 @@
                     "options": {
                         "leashed": "Solo con correa",
                         "no": "No permitido",
+                        "unleashed": "No se requieren correas",
                         "yes": "Permitido"
                     },
                     "terms": "animales,mascotas,perros,pastor alemán,dálmata,gato,perrera,protectora"
@@ -1582,6 +1595,9 @@
                     "label": "Tipo",
                     "placeholder": "Predeterminado"
                 },
+                "fortification_type": {
+                    "label": "Tipo de fortificación"
+                },
                 "fountain": {
                     "label": "Tipo"
                 },
@@ -1609,7 +1625,8 @@
                         "e10": "Gasolina E10",
                         "e85": "Gasolina E85",
                         "h70": "Hidrógeno gaseoso (700 bar)",
-                        "lpg": "Gas natural licuado (GLP)",
+                        "lng": "Gas natural licuado (GNL)",
+                        "lpg": "Gas licuado de petróleo (GLP)",
                         "octane_100": "Gasolina (100 octanos)",
                         "octane_80": "Gasolina (80 octanos)",
                         "octane_85": "Gasolina (85 octanos)",
@@ -1920,6 +1937,7 @@
                         "manor": "Casa solariega",
                         "memorial": "Monumento conmemorativo",
                         "milestone": "Mojón",
+                        "millstone": "Piedra de molino",
                         "mine": "Mina",
                         "mine_shaft": "Pozo minero",
                         "monument": "Monumento",
@@ -2072,10 +2090,39 @@
                 },
                 "kerb": {
                     "label": "Bordillo",
+                    "options": {
+                        "flush": {
+                            "description": "Un bordillo rebajado que está al mismo nivel que el área circundante.",
+                            "title": "Al ras"
+                        },
+                        "lowered": {
+                            "description": "Un bordillo rebajado que puede ser usado por usuarios de sillas de ruedas, no más alto que unos pocos centímetros.",
+                            "title": "Rebajado"
+                        },
+                        "no": {
+                            "description": "No hay bordillo en este lugar.",
+                            "title": "No"
+                        },
+                        "raised": {
+                            "description": "Un bordillo elevado que no puede ser usado fácilmente por usuarios de sillas de ruedas, más alto que unos pocos centímetros.",
+                            "title": "Elevado"
+                        },
+                        "rolled": {
+                            "description": "Un bordillo elevado con un borde redondeado que facilita su uso para coches o bicicletas, pero no para sillas de ruedas.",
+                            "title": "Redondeado"
+                        },
+                        "yes": {
+                            "description": "Hay algún tipo de bordillo en este lugar, desconocido si es elevado, rebajado, al ras, etc.",
+                            "title": "Sí"
+                        }
+                    },
                     "terms": "bordillo,borde,cuneta,sardinel,cordón,vereda"
                 },
                 "kerb/height": {
                     "label": "Altura"
+                },
+                "kerb/kerb_barrier": {
+                    "label": "Tipo"
                 },
                 "kitchen": {
                     "label": "Cocina",
@@ -2166,7 +2213,14 @@
                     "terms": "categorías de licencia de conducir,clases de licencia de conducir"
                 },
                 "lifeguard": {
-                    "label": "Socorrista acuático"
+                    "label": "Tipo",
+                    "options": {
+                        "base": "Base de guardavidas",
+                        "tower": "Torre de guardavidas"
+                    }
+                },
+                "lifeguard_check": {
+                    "label": "Guardavidas"
                 },
                 "lift_gate/type": {
                     "label": "Tipo",
@@ -2975,6 +3029,20 @@
                         "forward": "Adelante"
                     }
                 },
+                "railway/switch": {
+                    "label": "Tipo de cambio",
+                    "options": {
+                        "abt": "Cambio Abt",
+                        "default": "Cambio simple",
+                        "double_slip": "Cruce con unión doble",
+                        "single_slip": "Cruce con unión simple",
+                        "three_way": "Cambio con desvío doble simétrico",
+                        "wye": "Cambio con desvío simétrico"
+                    }
+                },
+                "railway/track_ref": {
+                    "label": "Número de vía"
+                },
                 "ramp": {
                     "label": "Rampa empotrada",
                     "options": {
@@ -3035,7 +3103,8 @@
                     "terms": "referencia del departamento de educación,código del ministerio de educación,identificador del departamento de educación"
                 },
                 "ref/isil": {
-                    "label": "Código ISIL"
+                    "label": "Código ISIL",
+                    "terms": "código isil,código de identificación de bibliotecas,código de identificación internacional de bibliotecas"
                 },
                 "ref/linz/place_id-NZ": {
                     "label": "ID de lugar de NZGB",
@@ -3061,6 +3130,10 @@
                 },
                 "ref_platform": {
                     "label": "Número de plataforma"
+                },
+                "ref_rail": {
+                    "label": "Número de línea",
+                    "terms": "número de línea,número de trazado"
                 },
                 "ref_road_number": {
                     "label": "Referencia de la carretera",
@@ -3441,8 +3514,8 @@
                 "side": {
                     "label": "Lado",
                     "options": {
-                        "left": "Izquierda",
-                        "right": "Derecha"
+                        "left": "Izquierda del ciclista",
+                        "right": "Derecha del ciclista"
                     }
                 },
                 "siren/purpose": {
@@ -3575,6 +3648,7 @@
                         "cricket": "Críquet",
                         "curling": "Curling",
                         "cycling": "Ciclismo",
+                        "darts": "Dardos",
                         "disc_golf": "Golf de disco",
                         "dog_racing": "Carreras de perros",
                         "equestrian": "Deportes ecuestres",
@@ -3744,6 +3818,10 @@
                         "valve_group": "Grupo de válvulas"
                     }
                 },
+                "summit/cross": {
+                    "label": "Cruz de cumbre",
+                    "terms": "cruz de cumbre,cruz de montaña,cruz de cima"
+                },
                 "supervised": {
                     "label": "Vigilado",
                     "terms": "supervisado,cuidado,vigilado"
@@ -3827,7 +3905,17 @@
                     }
                 },
                 "swimming_pool": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "kids": "Piscina para niños",
+                        "lazy_river": "Río lento",
+                        "personal": "Personal / Patio",
+                        "plunge": "Buceo",
+                        "spa": "Spa",
+                        "swimming": "Piscina de nado",
+                        "wading": "Chapoteo / Recreación",
+                        "wave_pool": "Piscina de olas"
+                    }
                 },
                 "switch": {
                     "label": "Tipo",
@@ -3931,6 +4019,15 @@
                 "toilets/handwashing": {
                     "label": "Lavado de manos",
                     "terms": "lavado de manos"
+                },
+                "toilets/menstrual_products": {
+                    "label": "Productos menstruales gratuitos disponibles",
+                    "options": {
+                        "limited": "Limitado a algunos puestos",
+                        "no": "No",
+                        "yes": "Sí, en todos los puestos"
+                    },
+                    "terms": "productos higiénicos femeninos sin costo,artículos de higiene menstrual de libre acceso,suministros para la menstruación gratis,higiene femenina,toallas,toallitas,período,productos para el período,tampones"
                 },
                 "toilets/position": {
                     "label": "Posiciones",
@@ -4212,7 +4309,8 @@
                     "terms": "señal de llamada,vhf,very high frequency,muy alta frecuencia"
                 },
                 "via": {
-                    "label": "Vía"
+                    "label": "Vía",
+                    "terms": "vía,via,por"
                 },
                 "video_calls": {
                     "label": "Videollamadas",
@@ -4593,6 +4691,10 @@
                     "name": "Puesto de reparación de bicicletas",
                     "terms": "reparación,estación,puesto,bicicletería,taller,bicicleta,bici,cadena,bomba,inflador"
                 },
+                "amenity/bicycle_wash": {
+                    "name": "Lavado de bicicletas",
+                    "terms": "bicicleta,bicis,lavado bicicletas,lavadero de bicicletas,limpieza bicicletas,estación enjuague bicicletas,ciclismo"
+                },
                 "amenity/biergarten": {
                     "name": "Biergarten (Bar al aire libre)",
                     "terms": "cerveza,bar,terraza,jardín,al aire libre,biergarten"
@@ -4843,6 +4945,10 @@
                     "name": "Urólogo",
                     "terms": "glándulas suprarrenales,vejiga,epidídimo,riñón,pene,próstata,reproductor,escroto,testículos,uretra,uréteres,urología,urinario"
                 },
+                "amenity/dog_toilet": {
+                    "name": "Baño para perros",
+                    "terms": "baño para perros,sanitario para perros,área de deposiciones para perros"
+                },
                 "amenity/dojo": {
                     "name": "Academia de artes marciales",
                     "terms": "dojo,academia,artes marciales,karate,judo,taekwondo,kendo,ninjutsu,kung fu"
@@ -5024,6 +5130,10 @@
                     "name": "Biblioteca",
                     "terms": "biblioteca,archivo,filmoteca,hemeroteca"
                 },
+                "amenity/library_dropoff": {
+                    "name": "Buzón de devolución de libros",
+                    "terms": "buzón de devolución de libros,casillero de devolución de libros,cajón de devolución de libros"
+                },
                 "amenity/loading_dock": {
                     "name": "Muelle de carga",
                     "terms": "puerto,puerta,almacén,almacen,envío,envio,descarga,bahía de carga,bahia"
@@ -5035,6 +5145,10 @@
                 "amenity/love_hotel": {
                     "name": "Hotel para parejas",
                     "terms": "hotel para parejas,parejas,telo,albergue transitorio,hotel alojamiento,motel"
+                },
+                "amenity/luggage_locker": {
+                    "name": "Guardaequipaje",
+                    "terms": "guardaequipaje,consigna de equipaje,depósito de equipaje,guardarropa,equipaje,maletas,valijas,consigna,almacenamiento,viajes"
                 },
                 "amenity/marketplace": {
                     "name": "Mercado",
@@ -5845,7 +5959,7 @@
                 },
                 "barrier/kerb": {
                     "name": "Bordillo",
-                    "terms": "bordillo,borde,cuneta,sardinel,cordón,vereda"
+                    "terms": "bordillo,borde,cuneta,sardinel,cordón,vereda,reborde,orilla,margen,encintado,contén."
                 },
                 "barrier/kerb/flush": {
                     "name": "Bordillo al ras",
@@ -6487,6 +6601,10 @@
                 "emergency/destination": {
                     "name": "Acceso de emergencia como destino"
                 },
+                "emergency/disaster_response": {
+                    "name": "Estación de respuesta a desastres",
+                    "terms": "estación de respuesta a desastres,centro de emergencias,punto de atención a damnificados,unidad de socorro"
+                },
                 "emergency/fire_alarm": {
                     "name": "Alarma anti incendios",
                     "terms": "alarma de incendios,incendios,fuego,bomberos,emergencia,llamada,servicio de emergencias"
@@ -6524,7 +6642,7 @@
                     "terms": "lanchas de socorro,rescate en barco,emergencias,rescate,naufragio,socorro,guardacostas,guardia costera"
                 },
                 "emergency/lifeguard": {
-                    "name": "Socorrista acuático",
+                    "name": "Guardavidas",
                     "terms": "salvavidas,guardavidas,socorrista,rescatista,bañero,bañera"
                 },
                 "emergency/mountain_rescue": {
@@ -6882,7 +7000,7 @@
                     "terms": "ceder el paso,dar el paso,señal,signo,cartel,detención"
                 },
                 "highway/living_street": {
-                    "name": "Calle semipeatonal o residencial",
+                    "name": "Calle semipeatonal o de tránsito mixto",
                     "terms": "calle,residencial,urbanización,calle residencial,semipeatonal,peatonal,zona residencial,zona 30,máxima 20,vía compartida,calle de convivencia,convivencia"
                 },
                 "highway/milestone": {
@@ -7091,6 +7209,10 @@
                 "historic/building": {
                     "name": "Edificio histórico",
                     "terms": "edificio,histórico"
+                },
+                "historic/cannon": {
+                    "name": "Cañón",
+                    "terms": "cañón,artillería,armamento"
                 },
                 "historic/castle": {
                     "name": "Castillo",
@@ -7527,6 +7649,10 @@
                     "name": "Jardín comunitario",
                     "terms": "jardín cooperativo,jardín colectivo,jardín comunitario"
                 },
+                "leisure/garden/kitchen": {
+                    "name": "Huerto",
+                    "terms": "huerto de verduras,huerta de hortalizas,jardín de vegetales,huerta culinaria,huerta del cocinero"
+                },
                 "leisure/garden/residential": {
                     "name": "Jardín residencial",
                     "terms": "jardín trasero,patio trasero,jardín doméstico,jardín delantero,patio delantero"
@@ -7542,6 +7668,10 @@
                 "leisure/horse_riding": {
                     "name": "Centro ecuestre",
                     "terms": "equitación,equino,cabalgar,cabalgatas,caballo,montar,ecuestre,centro ecuestre,instalación ecuestre,hípica,montar a caballo,rancho,finca de caballos,granja de caballos,criadero de caballos,centro hípico,club de equitación,poney club"
+                },
+                "leisure/hot_tub": {
+                    "name": "Bañera de hidromasaje",
+                    "terms": "tina caliente,jacuzzi,bañera de hidromasaje,spa"
                 },
                 "leisure/ice_rink": {
                     "name": "Pista de hielo",
@@ -7934,6 +8064,10 @@
                 "man_made/chimney": {
                     "name": "Chimenea",
                     "terms": "chimenea,fogón,fuego"
+                },
+                "man_made/clarifier": {
+                    "name": "Clarificador de aguas residuales",
+                    "terms": "clarificador de aguas residuales,clarificador de aguas servidas,clarificador de aguas negras"
                 },
                 "man_made/clearcut": {
                     "name": "Bosque talado",
@@ -8440,13 +8574,15 @@
                     "terms": "hoja ancha,caducifolio,madera dura"
                 },
                 "natural/tree/broadleaved/evergreen": {
-                    "name": "Árbol de hoja ancha (perennifolio)"
+                    "name": "Árbol de hoja ancha (perennifolio)",
+                    "terms": "planifolio,latifolio,perenne,perennifolio,madera dura,árbol,hojas"
                 },
                 "natural/tree/needleleaved": {
                     "name": "Árbol de hoja acicular"
                 },
                 "natural/tree/needleleaved/deciduous": {
-                    "name": "Árbol de hoja acicular (caducifolio)"
+                    "name": "Árbol de hoja acicular (caducifolio)",
+                    "terms": "coníferas,hoja caduca,de hoja caduca,decidua,de hoja de aguja,de madera blanda,árbol"
                 },
                 "natural/tree/needleleaved/evergreen": {
                     "name": "Árbol de hoja acicular (perennifolio)",

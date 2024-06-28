@@ -43,7 +43,6 @@
     <string name="action_download">"Szukaj zadań w okolicy"</string>
     <string name="action_upload">"Prześlij odpowiedzi"</string>
     <string name="no_changes">"Nie udzielono odpowiedzi"</string>
-    <string name="close">"zamknij"</string>
     <string name="download_error">"Błąd podczas szukania zadań"</string>
     <string name="upload_error">"Błąd podczas przesyłania odpowiedzi"</string>
     <string name="download_area_too_big">"Przybliż bardziej"</string>
@@ -227,7 +226,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="credits_translations_title">"Tłumaczenia"</string>
     <string name="credits_contributors_title">"Współtwórcy kodu"</string>
     <string name="credits_author_title">"Autor i opiekun projektu"</string>
-    <string name="credits_and_more">"i inni…"</string>
     <string name="quest_maxspeed_answer_living_street">"Jest to droga w strefie zamieszkania"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Czyli jest tu taki znak?"</string>
     <string name="quest_orchard_produce_title">"Co się tutaj uprawia?"</string>
@@ -500,13 +498,11 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_motorcycleParkingCoveredStatus_title">"Czy ten parking dla motocykli jest osłonięty (chroniony przed deszczem)?"</string>
     <string name="default_disabled_msg_maxspeed">"To zadanie jest domyślnie wyłączone, ponieważ zazwyczaj musisz sprawdzić na całej ulicy znaki ograniczenia prędkości, a nie tylko podświetloną sekcję. Czasami może to być więc dość trudna sprawa, aby rozwiązać pojedyncze zadanie."</string>
     <string name="pref_title_quests_restore_hidden">"Przywróć ukryte zadania"</string>
-    <string name="restore_hidden_success">"Przywrócono %d ukrytych zadań"</string>
     <string name="on_level">"na piętrze %s"</string>
     <string name="underground">"pod ziemią"</string>
     <string name="quest_sidewalk_value_yes">"chodnik"</string>
     <string name="quest_sidewalk_value_no">"brak chodnika"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Czy piesi mają zakaz poruszania się na tej drodze?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ta ulica jest otagowana jako pozbawiona chodnika po obu stronach. Jeśli jednak chodnik istnieje, ale jest wyświetlany jako samodzielna droga, wypełnij odpowiedź na temat chodnika."</string>
     <string name="quest_buildingType_title">"Jaki to rodzaj budynku?"</string>
     <string name="pref_title_theme_select">"Wybierz motyw"</string>
     <string name="theme_automatic">"Automatyczny"</string>
@@ -700,7 +696,6 @@ osiągnięć"</string>
     <string name="quest_recycling_type_engine_oil">"Olej silnikowy"</string>
     <string name="link_photon_description">"Wyszukiwarka będąca ulepszoną wersją Nominatim z wsparciem dla podpowiedzi w czasie pisania i z autokorektą"</string>
     <string name="link_graphhopper_description">"Elastyczne wyszukiwanie tras"</string>
-    <string name="link_qwant_maps_description">"Mapa umożliwiająca wyszukiwanie miejsc i tras"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;By wyświetlić mapę przygotowane dane pobierane są z %1$s. Zobacz ich &lt;a href=\"%2$s\"&gt;politykę prywatności&lt;/a&gt; by uzyskać pełne informacje.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorzy"</string>
     <string name="quest_board_type_history">"Historia"</string>
@@ -840,7 +835,6 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="team_mode_active">"Tryb zespołowy aktywny"</string>
     <string name="team_mode_deactivated">"Tryb zespołowy nieaktywny"</string>
     <string name="undo_confirm_title2">"Cofnąć następującą edycję?"</string>
-    <string name="synced">"Zsynchornizowane"</string>
     <string name="toast_undo_unavailable">"Ta edycja jest już zsynchronizowana i nie można jej wycofać"</string>
     <string name="quest_cycleway_value_separate">"Wyświetlone osobno na mapie"</string>
     <string name="created_note_action_title">"Utworzono notatkę"</string>
@@ -1062,8 +1056,6 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_road_width_title">"Jaka jest szerokość tej drogi?"</string>
     <string name="quest_road_width_explanation">"Szerokość jezdni między krawędziami np. krawężnikami, liczona włącznie z pasami do parkowania i rowerowymi, za to bez oddzielonych ścieżek rowerowych, zatoczek parkingowych i chodników."</string>
     <string name="quest_sidewalk_answer_none">"Nie ma chodnika"</string>
-    <string name="about_description_donate_google_play2">"Dziękujemy za zainteresowanie wsparciem naszej aplikacji!
-Ze względu na politykę Sklepu Google Play żadne linki prowadzące do darowizn nie mogą być wyświetlane w aplikacji. Z tego powodu nawet umieszczanie odnośników do strony głównej naszego projektu nie jest dozwolone."</string>
     <string name="link_osmand_description">"Mobilna aplikacja do przeglądania map i navigacji online albo offline"</string>
     <string name="link_sunders_description">"Mapa kamer i sprzętu inwigilacyjnego"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Trzymaj się bliżej strzałki, ale uważaj na pojazdy!"</string>
@@ -1270,8 +1262,6 @@ Przesunąć go teraz?"</string>
     <string name="bicycle_boulevard_is_a">"Jest to %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"To nie jest %1$s"</string>
     <string name="bicycle_boulevard">"Bulwar rowerowy"</string>
-    <string name="separate_cycleway_no">"Brak drogi rowerowej"</string>
-    <string name="separate_cycleway_allowed">"Rowerzyści są dopuszczeni"</string>
     <string name="separate_cycleway_no_or_allowed">"Nieprzeznaczony dla rowerzystów (jazda na rowerze może być nadal dozwolona)"</string>
     <string name="separate_cycleway_non_segregated">"Ścieżka do wspólnego użytku"</string>
     <string name="separate_cycleway_segregated">"Rozdzielona ścieżka dla rowerów i pieszych"</string>
@@ -1382,7 +1372,6 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_buildingType_tower_description">"dowolny rodzaj wieży"</string>
     <string name="quest_buildingType_under_construction">"W trakcie budowy"</string>
     <string name="overlay_buildings">"Budynki"</string>
-    <string name="quest_pedestrian_crossing_signals">"Czy trzeba czekać na sygnalizację świetlną, aby tu przejść?"</string>
     <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na ziemi?"</string>
     <string name="overlay_places">"Miejsca"</string>
     <string name="overlay_things">"Obiekty"</string>

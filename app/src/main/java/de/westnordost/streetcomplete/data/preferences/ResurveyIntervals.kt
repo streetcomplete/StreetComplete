@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.preferences
 
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 
 enum class ResurveyIntervals(val multiplier: Float) {
@@ -11,11 +12,13 @@ enum class ResurveyIntervals(val multiplier: Float) {
 /** This class is just to access the user's preference about which multiplier for the resurvey
  *  intervals to use */
 class ResurveyIntervalsUpdater(private val prefs: Preferences) {
+    private val listener: SettingsListener
+
     fun update() {
         RelativeDate.MULTIPLIER = prefs.resurveyIntervals.multiplier
     }
 
     init {
-        prefs.onResurveyIntervalsChanged(::update)
+        listener = prefs.onResurveyIntervalsChanged { RelativeDate.MULTIPLIER = it.multiplier }
     }
 }

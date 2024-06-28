@@ -182,6 +182,7 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
             lifecycle.removeObserver(it.puzzleView)
         }
 
+        setHint(requireContext().getString(R.string.quest_street_side_puzzle_tutorial))
         val view = setContentView(R.layout.quest_street_lanes_puzzle)
         val streetLanesPuzzleBinding = QuestStreetLanesPuzzleBinding.bind(view)
         this.streetLanesPuzzleBinding = streetLanesPuzzleBinding

@@ -11,7 +11,7 @@ data class LogsFilters(
 ) {
     fun matches(log: LogMessage): Boolean =
         levels.contains(log.level) &&
-        (messageContains == null ||
+        (messageContains.isNullOrEmpty() ||
             log.message.contains(messageContains, ignoreCase = true) ||
             log.tag.contains(messageContains, ignoreCase = true)
         ) &&

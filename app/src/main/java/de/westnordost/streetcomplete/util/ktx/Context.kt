@@ -2,10 +2,8 @@ package de.westnordost.streetcomplete.util.ktx
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.ActivityNotFoundException
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.widget.Toast
@@ -16,8 +14,6 @@ import androidx.core.location.LocationManagerCompat
 import androidx.core.net.toUri
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlin.coroutines.resume
 
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, text, duration).show()
@@ -34,19 +30,6 @@ val Context.isLocationEnabled: Boolean get() = LocationManagerCompat.isLocationE
 val Context.hasLocationPermission: Boolean get() = hasPermission(ACCESS_FINE_LOCATION)
 
 private val Context.locationManager get() = getSystemService<LocationManager>()!!
-
-/** Await a call from a broadcast once and return it */
-suspend fun Context.awaitReceiverCall(intentFilter: IntentFilter): Intent =
-    suspendCancellableCoroutine { continuation ->
-        val receiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) {
-                unregisterReceiver(this)
-                continuation.resume(intent)
-            }
-        }
-        registerReceiver(receiver, intentFilter)
-        continuation.invokeOnCancellation { unregisterReceiver(receiver) }
-    }
 
 fun Context.sendEmail(email: String, subject: String, text: String? = null) {
     val intent = Intent(Intent.ACTION_SENDTO).apply {

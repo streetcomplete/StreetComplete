@@ -45,7 +45,7 @@ fun parseConfigUrl(
             keyValue[0].lowercase() to keyValue[1]
         }
 
-    val name = parameters[PARAM_NAME]?.let { it.decodeURLQueryComponent(plusIsSpace = true) }
+    val name = parameters[PARAM_NAME]?.decodeURLQueryComponent(plusIsSpace = true)
 
     val questTypesString = parameters[PARAM_QUESTS] ?: return null
     val questTypes = stringToQuestTypes(questTypesString, questTypeRegistry) ?: return null

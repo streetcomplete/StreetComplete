@@ -31,13 +31,14 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
     override val icon = R.drawable.ic_quest_bicycle_parking_capacity
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
+    override val hint = R.string.quest_bikeParkingCapacity_hint
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bikeParkingCapacity_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity = bicycle_parking")
 
-    override fun createForm() = AddBikeParkingCapacityForm.create(showClarificationText = true)
+    override fun createForm() = AddBikeParkingCapacityForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("capacity", answer.toString())

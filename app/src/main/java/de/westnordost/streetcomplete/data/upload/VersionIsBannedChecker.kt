@@ -14,9 +14,7 @@ class VersionIsBannedChecker(
 
     suspend fun get(): BannedInfo {
         try {
-            val response = httpClient.get(url) {
-                expectSuccess = true
-            }
+            val response = httpClient.get(url) { expectSuccess = true }
             val bannedVersions = response.body<String>()
             for (bannedVersion in bannedVersions.lines()) {
                 val destructuredVersion = bannedVersion.split("\t")

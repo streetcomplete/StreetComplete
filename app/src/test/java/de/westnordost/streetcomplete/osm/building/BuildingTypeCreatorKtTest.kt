@@ -49,7 +49,7 @@ class BuildingTypeCreatorKtTest {
 
     @Test fun `remove ruins etc`() {
         assertEquals(
-            mapOf("building" to "roof"),
+            mapOf("building" to "roof", "historic" to "yes"),
             ROOF.appliedTo(mapOf(
                 "building" to "residential",
                 "ruins" to "yes",
@@ -60,18 +60,28 @@ class BuildingTypeCreatorKtTest {
         )
 
         assertEquals(
-            mapOf("building" to "residential", "historic" to "yes"),
-            HISTORIC.appliedTo(mapOf(
-                "building" to "residential",
-                "ruins" to "yes",
-                "abandoned" to "yes",
-                "disused" to "yes",
-            ))
-        )
-
-        assertEquals(
             mapOf("building" to "residential"),
             RESIDENTIAL.appliedTo(mapOf("building" to "residential", "ruins" to "yes"))
+        )
+    }
+
+    @Test fun `does not remove historic when retagging historic building`() {
+        assertEquals(
+            mapOf("building" to "residential", "historic" to "yes"),
+            RESIDENTIAL.appliedTo(mapOf(
+                "building" to "yes",
+                "historic" to "yes"
+            ))
+        )
+    }
+
+    @Test fun `set building type to yes when tagging as historic building`() {
+        assertEquals(
+            mapOf("building" to "yes", "historic" to "yes"),
+            HISTORIC.appliedTo(mapOf(
+                "building" to "apartments",
+                "historic" to "no"
+            ))
         )
     }
 
@@ -85,8 +95,8 @@ class BuildingTypeCreatorKtTest {
             SILO.appliedTo(mapOf("man_made" to "silo"))
         )
         assertEquals(
-            mapOf("building" to "hut", "historic" to "yes", "check_date" to nowAsCheckDateString()),
-            HISTORIC.appliedTo(mapOf("building" to "hut", "historic" to "yes"))
+            mapOf("building" to "hut", "abandoned" to "yes", "check_date" to nowAsCheckDateString()),
+            ABANDONED.appliedTo(mapOf("building" to "hut", "abandoned" to "yes"))
         )
     }
 

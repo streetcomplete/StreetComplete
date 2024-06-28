@@ -4,10 +4,10 @@ import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.view.isGone
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ViewStreetSideLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.normalizeDegrees
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
@@ -199,11 +199,17 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         val r = if (isUpsideDown) left else right
 
         if (showSides == Sides.BOTH) {
-            if (l != null) prefs.putString("$lastSelectionPreferencePrefix.left", serializeLastSelection(l.value))
-            else prefs.remove("$lastSelectionPreferencePrefix.left")
+            if (l != null) {
+                prefs.putString("$lastSelectionPreferencePrefix.left", serializeLastSelection(l.value))
+            } else {
+                prefs.remove("$lastSelectionPreferencePrefix.left")
+            }
 
-            if (r != null) prefs.putString("$lastSelectionPreferencePrefix.right", serializeLastSelection(r.value))
-            else prefs.remove("$lastSelectionPreferencePrefix.right")
+            if (r != null) {
+                prefs.putString("$lastSelectionPreferencePrefix.right", serializeLastSelection(r.value))
+            } else {
+                prefs.remove("$lastSelectionPreferencePrefix.right")
+            }
         } else {
             (l ?: r)?.let { prefs.putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value)) }
         }

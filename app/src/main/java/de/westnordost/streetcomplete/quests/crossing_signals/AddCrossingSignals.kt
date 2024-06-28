@@ -35,7 +35,7 @@ class AddCrossingSignals : OsmElementQuestType<Boolean> {
     override val icon = R.drawable.ic_quest_traffic_lights
     override val achievements = listOf(PEDESTRIAN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_signals
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_signals2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter { it.isCrossing() }.asSequence()

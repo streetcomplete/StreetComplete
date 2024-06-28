@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.databinding.QuestLevelBinding
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.level.SingleLevel
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
@@ -55,7 +55,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
 
         val shopsWithLevels = mapData.filter {
-            it.tags["level"] != null && it.isPlaceOrDisusedShop()
+            it.tags["level"] != null && it.isPlaceOrDisusedPlace()
         }
 
         shopElementsAndGeometry = shopsWithLevels.mapNotNull { e ->

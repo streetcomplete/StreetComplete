@@ -59,7 +59,7 @@
                 android:paddingEnd="@dimen/quest_form_horizontal_padding"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:textAppearance="@style/TextAppearance.Title.Hint"/>
+                android:textAppearance="@style/TextAppearance.TitleLarge.Hint"/>
 
         </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
 

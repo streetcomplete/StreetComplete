@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.messages
 
 import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.data.changelog.Changelog
 import de.westnordost.streetcomplete.data.user.UserDataController
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
@@ -14,13 +15,14 @@ class MessagesSource(
     private val userDataController: UserDataController,
     private val achievementsSource: AchievementsSource,
     private val questSelectionHintController: QuestSelectionHintController,
-    private val prefs: Preferences
+    private val prefs: Preferences,
+    private val changelog: Changelog,
 ) {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table*/
 
     interface UpdateListener {
-        fun onNumberOfMessagesUpdated(numberOfMessages: Int)
+        fun onNumberOfMessagesUpdated(messageCount: Int)
     }
     private val listeners = Listeners<UpdateListener>()
 
@@ -75,13 +77,14 @@ class MessagesSource(
         return messages
     }
 
-    fun popNextMessage(): Message? {
+    suspend fun popNextMessage(): Message? {
         val lastVersion = prefs.lastChangelogVersion
         if (BuildConfig.VERSION_NAME != lastVersion) {
             prefs.lastChangelogVersion = BuildConfig.VERSION_NAME
             if (lastVersion != null) {
+                val version = "v$lastVersion"
                 onNumberOfMessagesUpdated()
-                return NewVersionMessage("v$lastVersion")
+                return NewVersionMessage(changelog.getChangelog(version))
             }
         }
 

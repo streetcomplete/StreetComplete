@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.screens.user.profile
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusController
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
@@ -38,25 +39,20 @@ abstract class ProfileViewModel : ViewModel() {
     abstract val biggestSolvedCountCountryStatistics: StateFlow<CountryStatistics?>
     abstract val biggestSolvedCountCurrentWeekCountryStatistics: StateFlow<CountryStatistics?>
 
-    abstract var lastShownGlobalUserRank: Int?
-    abstract var lastShownGlobalUserRankCurrentWeek: Int?
-    abstract var lastShownLocalUserCountryStatistics: CountryStatistics?
-    abstract var lastShownLocalUserCountryStatisticsCurrentWeek: CountryStatistics?
-
     abstract fun logOutUser()
 }
 
+@Immutable
 data class DatesActiveInRange(val datesActive: List<LocalDate>, val range: Int)
 
 class ProfileViewModelImpl(
     private val userDataSource: UserDataSource,
-    private val userLoginStatusController: UserLoginStatusController,
+    private val userLoginController: UserLoginController,
     private val userUpdater: UserUpdater,
     private val statisticsSource: StatisticsSource,
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val avatarsCacheDirectory: File,
-    private val prefs: Preferences
+    private val avatarsCacheDirectory: File
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)
@@ -72,24 +68,8 @@ class ProfileViewModelImpl(
     override val biggestSolvedCountCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
     override val biggestSolvedCountCurrentWeekCountryStatistics = MutableStateFlow<CountryStatistics?>(null)
 
-    override var lastShownGlobalUserRank: Int?
-        set(value) { prefs.lastShownGlobalUserRank = value }
-        get() = prefs.lastShownGlobalUserRank
-
-    override var lastShownGlobalUserRankCurrentWeek: Int?
-        set(value) { prefs.lastShownGlobalUserRankCurrentWeek = value }
-        get() = prefs.lastShownGlobalUserRankCurrentWeek
-
-    override var lastShownLocalUserCountryStatistics: CountryStatistics?
-        set(value) { prefs.lastShownLocalUserCountryStatistics = value }
-        get() = prefs.lastShownLocalUserCountryStatistics
-
-    override var lastShownLocalUserCountryStatisticsCurrentWeek: CountryStatistics?
-        set(value) { prefs.lastShownLocalUserCountryStatisticsCurrentWeek = value }
-        get() = prefs.lastShownLocalUserCountryStatisticsCurrentWeek
-
     override fun logOutUser() {
-        launch { userLoginStatusController.logOut() }
+        launch { userLoginController.logOut() }
     }
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountSource.Listener {

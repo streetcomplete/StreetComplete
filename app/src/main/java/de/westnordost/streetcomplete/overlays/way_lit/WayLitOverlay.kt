@@ -48,8 +48,8 @@ private fun getStyle(element: Element): Style {
 }
 
 private val LitStatus?.color get() = when (this) {
-    LitStatus.YES,
-    LitStatus.UNSUPPORTED ->   Color.LIME
+    LitStatus.YES  ->          Color.LIME
+    LitStatus.UNSUPPORTED ->   Color.GRAY
     LitStatus.NIGHT_AND_DAY -> Color.AQUAMARINE
     LitStatus.AUTOMATIC ->     Color.SKY
     LitStatus.NO ->            Color.BLACK

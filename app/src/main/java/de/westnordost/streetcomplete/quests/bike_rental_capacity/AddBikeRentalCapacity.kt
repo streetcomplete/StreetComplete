@@ -32,7 +32,7 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity = bicycle_rental")
 
-    override fun createForm() = AddBikeParkingCapacityForm.create(showClarificationText = false)
+    override fun createForm() = AddBikeParkingCapacityForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("capacity", answer.toString())

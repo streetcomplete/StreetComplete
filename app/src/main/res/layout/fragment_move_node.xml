@@ -86,7 +86,7 @@
                         android:text="@string/node_moved_not_far_enough"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.Title"
+                        android:textAppearance="@style/TextAppearance.TitleLarge"
                         android:layout_marginBottom="8dp"/>
 
                     <TextView

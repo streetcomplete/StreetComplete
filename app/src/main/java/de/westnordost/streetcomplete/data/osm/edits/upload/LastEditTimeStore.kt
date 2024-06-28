@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.data.preferences.Prefs
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import com.russhwolf.settings.ObservableSettings
 
 class LastEditTimeStore(private val prefs: ObservableSettings) {
 

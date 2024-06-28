@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Wells Fargo, Pay Depot, WSFS, PNC Bank, M&T Bank]
-chargingStationOperators: ['Tesla, Inc.', ChargePoint]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, SemaConnect]
 defaultSpeedLimitHasUrbanOrRural: true

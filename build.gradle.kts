@@ -4,8 +4,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        val kotlinVersion = "1.9.22"
-        classpath("com.android.tools.build:gradle:8.2.2")
+        val kotlinVersion = "2.0.0"
+        classpath("com.android.tools.build:gradle:8.4.1")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
     }
 }
@@ -39,6 +39,15 @@ tasks.register<QLeverCountValueByCountryTask>("updateAtmOperators") {
     targetFile = "$projectDir/res/country_metadata/atmOperators.yml"
     osmTag = "operator"
     sparqlQueryPart = "osmkey:amenity 'atm';"
+    minCount = 2
+    minPercent = 0.1
+}
+
+tasks.register<QLeverCountValueByCountryTask>("updateParcelLockerBrand") {
+    group = "streetcomplete"
+    targetFile = "$projectDir/res/country_metadata/parcelLockerBrand.yml"
+    osmTag = "brand"
+    sparqlQueryPart = "osmkey:amenity 'parcel_locker';"
     minCount = 2
     minPercent = 0.1
 }
@@ -107,6 +116,7 @@ tasks.register("updateStreetCompleteData") {
         "updateChargingStationOperators",
         "updateClothesContainerOperators",
         "updateAtmOperators",
+        "updateParcelLockerBrand",
         "generateQuestList",
         "app:updatePresets",
         "app:updateNsiPresets",

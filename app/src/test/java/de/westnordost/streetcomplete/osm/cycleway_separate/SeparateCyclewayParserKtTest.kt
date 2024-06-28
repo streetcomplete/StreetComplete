@@ -9,6 +9,8 @@ class SeparateCyclewayParserKtTest {
     @Test fun `parse no cycleway at all`() {
         assertEquals(null, parse())
         assertEquals(null, parse("highway" to "residential"))
+        assertEquals(null, parse("highway" to "cycleway", "bicycle" to "no"))
+        assertEquals(null, parse("highway" to "cycleway", "bicycle" to "dismount"))
     }
 
     @Test fun `parse path`() {
@@ -19,26 +21,24 @@ class SeparateCyclewayParserKtTest {
         assertEquals(PATH, parse("highway" to "path", "foot" to "customers", "bicycle" to "destination"))
         assertEquals(PATH, parse("highway" to "path", "bicycle" to "permissive"))
         assertEquals(PATH, parse("highway" to "path", "bicycle" to "private"))
+        assertEquals(PATH, parse("highway" to "cycleway", "bicycle" to "yes"))
+        assertEquals(PATH, parse("highway" to "cycleway", "bicycle" to "yes", "foot" to "no"))
     }
 
     @Test fun `parse not designated for cyclists`() {
-        assertEquals(NON_DESIGNATED, parse("highway" to "footway"))
-        assertEquals(NON_DESIGNATED, parse("highway" to "cycleway", "bicycle" to "yes"))
-        assertEquals(NON_DESIGNATED, parse("highway" to "cycleway", "bicycle" to "yes", "foot" to "no"))
+        assertEquals(NON_DESIGNATED_ON_FOOTWAY, parse("highway" to "footway"))
     }
 
     @Test fun `parse no bicyclists allowed on path`() {
-        assertEquals(NOT_ALLOWED, parse("highway" to "path", "bicycle" to "no"))
-        assertEquals(NOT_ALLOWED, parse("highway" to "footway", "bicycle" to "no"))
-        assertEquals(NOT_ALLOWED, parse("highway" to "cycleway", "bicycle" to "no"))
-        assertEquals(NOT_ALLOWED, parse("highway" to "cycleway", "bicycle" to "dismount"))
+        assertEquals(NOT_ALLOWED, parse("highway" to "path", "bicycle" to "no", "bicycle:signed" to "yes"))
+        assertEquals(NOT_ALLOWED, parse("highway" to "footway", "bicycle" to "no", "bicycle:signed" to "yes"))
     }
 
     @Test fun `parse bicyclists allowed on footway`() {
-        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "yes"))
-        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "destination"))
-        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "yes"))
-        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "permissive"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "yes", "bicycle:signed" to "yes"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "footway", "bicycle" to "destination", "bicycle:signed" to "yes"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "yes", "bicycle:signed" to "yes"))
+        assertEquals(ALLOWED_ON_FOOTWAY, parse("highway" to "path", "foot" to "designated", "bicycle" to "permissive", "bicycle:signed" to "yes"))
     }
 
     @Test fun `parse cyclists on non-segregated path`() {

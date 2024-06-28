@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
@@ -7,7 +8,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 
 /** Used to get visible osm note quests */
@@ -15,7 +16,7 @@ class OsmNoteQuestController(
     private val noteSource: NotesWithEditsSource,
     private val hiddenDB: NoteQuestsHiddenDao,
     private val userDataSource: UserDataSource,
-    private val userLoginStatusSource: UserLoginStatusSource,
+    private val userLoginSource: UserLoginSource,
     private val prefs: Preferences,
 ) : OsmNoteQuestSource, OsmNoteQuestsHiddenController, OsmNoteQuestsHiddenSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -26,7 +27,9 @@ class OsmNoteQuestController(
     private val listeners = Listeners<OsmNoteQuestSource.Listener>()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
-        !prefs.showNotesNotPhrasedAsQuestions
+        !prefs.showAllNotes
+
+    private val settingsListener: SettingsListener
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
@@ -54,7 +57,7 @@ class OsmNoteQuestController(
         }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
+    private val userLoginStatusListener = object : UserLoginSource.Listener {
         override fun onLoggedIn() {
             // notes created by the user in this app or commented on by this user should not be shown
             onInvalidated()
@@ -64,9 +67,9 @@ class OsmNoteQuestController(
 
     init {
         noteSource.addListener(noteUpdatesListener)
-        userLoginStatusSource.addListener(userLoginStatusListener)
+        userLoginSource.addListener(userLoginStatusListener)
         // a lot of notes become visible/invisible if this option is changed
-        prefs.onShowNotesNotPhrasedAsQuestionsChanged { onInvalidated() }
+        settingsListener = prefs.onAllShowNotesChanged { onInvalidated() }
     }
 
     override fun getVisible(questId: Long): OsmNoteQuest? {

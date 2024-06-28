@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [U.S. Bank, Wells Fargo, LibertyX Bitcoin ATM, Coinflip Bitcoin ATM]
+atmOperators: [U.S. Bank, Wells Fargo, LibertyX Bitcoin ATM, BitcoinNW, CoinFlip]
 chargingStationOperators: ['Tesla, Inc.', Electrify America, Volta, ChargePoint]
 clothesContainerOperators: [Eco World]
 defaultSpeedLimitHasUrbanOrRural: false

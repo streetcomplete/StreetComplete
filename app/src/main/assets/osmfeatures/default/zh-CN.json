@@ -279,7 +279,13 @@
                     "options": {
                         "bust": "半身像",
                         "graffiti": "涂鸦 ",
-                        "installation": "装置艺术"
+                        "installation": "装置艺术",
+                        "mosaic": "镶嵌艺术",
+                        "mural": "壁画",
+                        "painting": "绘画",
+                        "relief": "浮雕",
+                        "sculpture": "雕塑",
+                        "statue": "雕像"
                     }
                 },
                 "ascent": {
@@ -287,6 +293,7 @@
                     "terms": "上升总量"
                 },
                 "athletics_pitch": {
+                    "label": "活动",
                     "options": {
                         "hammer_throw": "链球",
                         "high_jump": "跳高",
@@ -302,10 +309,25 @@
                 "attraction": {
                     "label": "类型",
                     "options": {
+                        "alpine_coaster": "高山过山车",
+                        "amusement_ride": "游乐设施",
+                        "animal": "动物圈地",
                         "big_wheel": "摩天轮",
+                        "bumper_car": "碰碰车",
+                        "bungee_jumping": "蹦极",
+                        "carousel": "旋转木马",
+                        "dark_ride": "黑暗骑乘",
+                        "drop_tower": "自由落体",
+                        "kiddie_ride": "儿童游乐设施",
+                        "log_flume": "圆木漂流",
                         "maze": "迷宫",
+                        "pirate_ship": "海盗船游乐设施",
+                        "river_rafting": "峡谷漂流",
+                        "roller_coaster": "过山车",
                         "summer_toboggan": "夏季平底雪橇",
-                        "swing_carousel": "旋转秋千"
+                        "swing_carousel": "旋转秋千",
+                        "train": "观光列车",
+                        "water_slide": "水滑梯"
                     }
                 },
                 "automated": {
@@ -362,7 +384,11 @@
                 "bath/type": {
                     "label": "特色",
                     "options": {
-                        "lake": "湖泊"
+                        "hammam": "土耳其浴",
+                        "hot_spring": "温泉",
+                        "lake": "湖泊",
+                        "onsen": "日式温泉",
+                        "thermal": "温泉浴场"
                     }
                 },
                 "beauty": {
@@ -454,7 +480,19 @@
                 "building": {
                     "label": "建筑物",
                     "options": {
-                        "ruins": "建筑废墟"
+                        "fire_station": "消防局建筑",
+                        "hospital": "医院建筑",
+                        "hotel": "酒店建筑",
+                        "industrial": "工业建筑",
+                        "office": "办公楼",
+                        "public": "公共建筑",
+                        "residential": "住宅建筑",
+                        "retail": "零售建筑",
+                        "roof": "屋顶",
+                        "ruins": "建筑废墟",
+                        "school": "学校建筑",
+                        "service": "服务建筑",
+                        "university": "大学建筑"
                     },
                     "terms": "建筑物,建筑,结构,房子"
                 },
@@ -1081,6 +1119,11 @@
                 },
                 "entrance": {
                     "label": "类型",
+                    "options": {
+                        "emergency": "应急出口",
+                        "entrance": "仅限入口",
+                        "exit": "仅限出口"
+                    },
                     "terms": "类别,类型,种类"
                 },
                 "except": {
@@ -1208,6 +1251,38 @@
                 },
                 "fuel": {
                     "label": "油站"
+                },
+                "fuel/fuel_multi": {
+                    "label": "汽油类别",
+                    "options": {
+                        "GTL_diesel": "GTL 柴油",
+                        "HGV_diesel": "货车柴油",
+                        "LH2": "液态氢",
+                        "adblue": "AdBlue / AUS 32",
+                        "adblue:canister": "AdBlue / AUS 32（罐装）",
+                        "biodiesel": "生物柴油",
+                        "cng": "压缩天然气 (CNG)",
+                        "diesel": "柴油",
+                        "e10": "E10汽油",
+                        "e85": "E85汽油",
+                        "h70": "气态氢（700巴）",
+                        "lng": "液化天然气 (LNG)",
+                        "lpg": "液化石油气 (LPG)",
+                        "octane_100": "汽油（100辛烷值）",
+                        "octane_80": "汽油（80辛烷值）",
+                        "octane_85": "汽油（85辛烷值）",
+                        "octane_87": "汽油（87辛烷值）",
+                        "octane_88": "汽油（88辛烷值）",
+                        "octane_89": "汽油（89辛烷值）",
+                        "octane_90": "汽油（90辛烷值）",
+                        "octane_91": "汽油（91辛烷值）",
+                        "octane_92": "汽油（92辛烷值）",
+                        "octane_93": "汽油（93辛烷值）",
+                        "octane_95": "汽油（95辛烷值）",
+                        "octane_97": "汽油（97辛烷值）",
+                        "octane_98": "汽油（98辛烷值）",
+                        "propane": "丙烷"
+                    }
                 },
                 "gambling": {
                     "label": "游戏"
@@ -1676,9 +1751,6 @@
                 },
                 "liaison": {
                     "label": "类型"
-                },
-                "lifeguard": {
-                    "label": "救生员"
                 },
                 "line_attachment": {
                     "label": "线路附件"

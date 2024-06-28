@@ -43,7 +43,6 @@
     <string name="action_download">"Σάρωση για αναζητήσεις εδώ"</string>
     <string name="action_upload">"Μεταφόρτωση Απαντήσεων"</string>
     <string name="no_changes">"Δεν δώσατε καμία απάντηση"</string>
-    <string name="close">"κλειστά"</string>
     <string name="download_error">"Σφάλμα κατά την σάρωση για αναζητήσεις"</string>
     <string name="upload_error">"Σφάλμα κατά την μεταφόρτωση των απαντήσεων"</string>
     <string name="download_area_too_big">"Παρακαλούμε μεγεθύνετε επιπλέον"</string>
@@ -226,7 +225,6 @@
     <string name="credits_translations_title">"Μεταφράσεις"</string>
     <string name="credits_contributors_title">"Αρθρογράφοι Κώδικα"</string>
     <string name="credits_author_title">"Δημιουργός και συντηρητής"</string>
-    <string name="credits_and_more">"και άλλα άτομα…"</string>
     <string name="quest_maxspeed_answer_living_street">"Είναι δρόμος ήπιας κυκλοφορίας"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Οπότε, υπάρχει ένα σημάδι σαν αυτό;"</string>
     <string name="quest_orchard_produce_title">"Τι καλλιεργείται εδώ;"</string>
@@ -344,7 +342,7 @@
     <string name="create_new_note_description">"Μπορείτε να αφήσετε μια σημείωση για να ενημερώσετε άλλους χαρτογράφους για ένα ζήτημα εδώ. Ρυθμίστε τη θέση της σημείωσης μετακινώντας τον χάρτη:"</string>
     <string name="quest_generic_looks_like_this">"Συνήθως φαίνεται έτσι:"</string>
     <string name="quest_surface_value_metal">"Μέταλο"</string>
-    <string name="quest_cycleway_title2">"Υπάρχει ένας ποδηλατόδρομος εδώ; Τι τύπος;"</string>
+    <string name="quest_cycleway_title2">"Υπάρχει ποδηλατόδρομος εδώ;  Τι τύπος;"</string>
     <string name="quest_bridge_structure_title">"Ποια είναι η κατασκευή αυτής της γέφυρας;"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Ενσύρματο (LAN)"</string>
@@ -405,7 +403,7 @@
     <string name="quest_buildingType_apartments">"Κτίριο διαμερισμάτων"</string>
     <string name="quest_buildingType_detached">"Μονοκατοικία"</string>
     <string name="quest_buildingType_detached_description">"ελεύθερη μονοκατοικία"</string>
-    <string name="quest_buildingType_semi_detached">"Ημιτελής μονοκατοικία"</string>
+    <string name="quest_buildingType_semi_detached">"Ημιανεξάρτητη μονοκατοικία"</string>
     <string name="quest_buildingType_terrace_description">"μια σειρά παρόμοιων μονοκατοικιών"</string>
     <string name="quest_buildingType_hotel">"Κτίριο Ξενοδοχείου"</string>
     <string name="quest_buildingType_dormitory">"Κοιτώνας"</string>
@@ -499,13 +497,11 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"Αυτό το πάρκινγκ μοτοσυκλετών καλύπτεται (προστατεύεται από τη βροχή);"</string>
     <string name="default_disabled_msg_maxspeed">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή συνήθως απαιτείται να ελέγχετε ολόκληρη την οδό για πινακίδες ορίων ταχύτητας και όχι μόνο για το επισημασμένο τμήμα. Αυτό μπορεί μερικές φορές να είναι αρκετό απλά για να λύσει μια μόνο αναζήτηση."</string>
     <string name="pref_title_quests_restore_hidden">"Επαναφορά κρυφών αναζητήσεων"</string>
-    <string name="restore_hidden_success">"Επαναφορά %d κρυφών αναζητήσεων"</string>
     <string name="on_level">"στο επίπεδο %s"</string>
     <string name="underground">"Υπόγειος"</string>
     <string name="quest_sidewalk_value_yes">"πεζοδρόμιο"</string>
     <string name="quest_sidewalk_value_no">"χωρίς πεζοδρόμιο"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Απαγορεύεται οι πεζοί να περπατούν στον δρόμο εδώ;"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Αυτός ο δρόμος χαρακτηρίστηκε ως χωρίς πεζοδρόμιο και στις δύο πλευρές. Στην περίπτωση που υπάρχει πεζοδρόμιο, αλλά εμφανίζεται ξεχωριστά, παρακαλούμε απαντήστε \"πεζοδρόμιο\"."</string>
     <string name="quest_buildingType_title">"Τι είδους κτίριο είναι αυτό;"</string>
     <string name="pref_title_theme_select">"Επιλέξτε θέμα"</string>
     <string name="theme_automatic">"Αυτόματο"</string>
@@ -530,7 +526,7 @@
     <string name="quest_split_way_description">"Αν υπάρχουν διαφορές κατά μήκος της διαδρομής, το πρώτο βήμα είναι να την χωρίσουμε. Μετά από αυτό, η αναζήτηση μπορεί να απαντηθεί ξεχωριστά για κάθε διαχωρισμένο τμήμα. Διαχωρισμός τώρα;"</string>
     <string name="quest_split_way_tutorial">"Χτυπήστε στη διαδρομή για να τη χωρίσετε στο σημείο (σημεία) όπου η απάντηση διαφέρει. Προσπαθήστε να είστε όσο το δυνατόν ακριβέστεροι, μπορείτε να κάνετε μεγέθυνση ως συνήθως."</string>
     <string name="quest_split_way_too_imprecise">"Παρακαλώ μεγεθύνετε κι άλλο"</string>
-    <string name="quest_split_way_many_splits_confirmation_description">"Αυτά είναι μερικά χωρίσματα. Μπορείτε πάντα να χωρίσετε περαιτέρω το δρόμο αργότερα."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Αυτά είναι αρκετά χωρίσματα. Μπορείτε πάντα να χωρίσετε περαιτέρω το δρόμο αργότερα."</string>
     <string name="quest_footwayPartSurface_title">"Ποια είναι η επιφάνεια του πεζόδρομου εδώ;"</string>
     <string name="quest_maxweight_title">"Ποιο είναι το όριο βάρους εδώ;"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Αυτό το βάρος φαίνεται παράλογο. Είστε βέβαιος ότι είναι σωστό;"</string>
@@ -690,7 +686,6 @@
     <string name="quest_recycling_type_engine_oil">"Λάδι μηχανής"</string>
     <string name="link_photon_description">"Μια αυτόνομη επέκταση στο Nominatim, με ασαφή αναζήτηση και αναζήτηση - όπως - εσείς - πληκτρολογείτε"</string>
     <string name="link_graphhopper_description">"Μία ευέλικτη μηχανή δρομολόγησης"</string>
-    <string name="link_qwant_maps_description">"Ένας χάρτης με αναζητήσιμα μέρη και κατευθύνσεις"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Για να εμφανιστεί ο χάρτης, τα διανυσματικά πλακίδια ανακτώνται από το %1$s. Ανατρέξτε στην &lt;a href=\"%2$s\"&gt; δήλωση απορρήτου &lt;/a&gt; για περισσότερες πληροφορίες. &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Χορηγοί"</string>
     <string name="quest_board_type_history">"Ιστορία"</string>
@@ -827,7 +822,6 @@
     <string name="team_mode_active">"Η λειτουργία ομάδας είναι ενεργή"</string>
     <string name="team_mode_deactivated">"Η λειτουργία ομάδας απενεργοποιήθηκε"</string>
     <string name="undo_confirm_title2">"Αναίρεση της ακόλουθης επεξεργασίας;"</string>
-    <string name="synced">"Συγχρονισμένο"</string>
     <string name="toast_undo_unavailable">"Αυτή η επεξεργασία έχει ήδη συγχρονιστεί και δεν μπορεί να αναιρεθεί"</string>
     <string name="quest_cycleway_value_separate">"εμφανίζεται ξεχωριστά στο χάρτη"</string>
     <string name="created_note_action_title">"Δημιουργήθηκε σημείωση"</string>
@@ -1048,8 +1042,6 @@
     <string name="quest_road_width_title">"Ποιο είναι το πλάτος αυτού του δρόμου εδώ;"</string>
     <string name="quest_road_width_explanation">"Το πλάτος του οδοστρώματος από κράσπεδο σε κράσπεδο: Αυτό περιλαμβάνει οτιδήποτε στην επιφάνεια του δρόμου, όπως στάθμευση στο δρόμο ή λωρίδα ποδηλάτων, αλλά αποκλείει οτιδήποτε πέρα από αυτό, όπως μονοπάτι ποδηλάτων ή στάθμευση δίπλα στο οδόστρωμα."</string>
     <string name="quest_sidewalk_answer_none">"Δεν υπάρχει καθόλου πεζοδρόμιο"</string>
-    <string name="about_description_donate_google_play2">"Σας ευχαριστούμε που σκεφτήκατε να υποστηρίξετε αυτήν την εφαρμογή!
-Δυστυχώς, λόγω μιας πολιτικής του Google Play Store, δεν επιτρέπεται να εμφανίζονται εντός της εφαρμογής σύνδεσμοι που οδηγούν σε δωρεές. Σε αυτό το πλαίσιο, δεν επιτρέπεται ακόμη και η σύνδεση με τον κυρίως χώρο του έργου μας."</string>
     <string name="link_osmand_description">"Εφαρμογή για κινητά για online και offline προβολή και πλοήγηση χαρτών"</string>
     <string name="link_sunders_description">"Χάρτης με κάμερες και εξοπλισμό επιτήρησης"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Μείνετε πιο κοντά στο βέλος αλλά προσέξτε την κυκλοφορία!"</string>
@@ -1256,8 +1248,6 @@
     <string name="bicycle_boulevard_is_a">"Είναι %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Δεν είναι %1$s"</string>
     <string name="bicycle_boulevard">"Λεωφόρος ποδηλάτων"</string>
-    <string name="separate_cycleway_no">"Όχι ποδηλασία"</string>
-    <string name="separate_cycleway_allowed">"Επιτρέπονται οι ποδηλάτες"</string>
     <string name="separate_cycleway_no_or_allowed">"Δεν προορίζεται για ποδηλάτες (η ποδηλασία μπορεί να εξακολουθεί να επιτρέπεται)"</string>
     <string name="separate_cycleway_non_segregated">"Διαδρομή κοινής χρήσης"</string>
     <string name="separate_cycleway_segregated">"Ξεχωριστός ποδηλατόδρομος και πεζόδρομος"</string>
@@ -1368,10 +1358,36 @@
     <string name="quest_buildingType_tower_description">"κάθε είδους πύργος"</string>
     <string name="quest_buildingType_under_construction">"Υπό κατασκευή"</string>
     <string name="overlay_buildings">"Κτίρια"</string>
-    <string name="quest_pedestrian_crossing_signals">"Πρέπει να περιμένετε το σήμα κυκλοφορίας για να περάσετε εδώ;"</string>
     <string name="quest_pedestrian_crossing_markings">"Αυτή η διάβαση έχει σημάδια στο έδαφος;"</string>
     <string name="overlay_places">"Μέρη"</string>
     <string name="overlay_things">"Πράγματα"</string>
     <string name="disused">"αχρησιμοποίητο"</string>
     <string name="unknown_object">"Άγνωστο αντικείμενο"</string>
+    <string name="quest_leafType_tree_title">"Αυτό το δέντρο έχει βελόνες ή φύλλα;"</string>
+    <string name="quest_bbq_fuel_gas">"Καύσιμο"</string>
+    <string name="about_description_donate_google_play3">"Σας ευχαριστούμε που σκεφτήκατε να υποστηρίξετε αυτή την εφαρμογή!
+Μπορείτε να βρείτε πληροφορίες για δωρεές στον ιστότοπό μας ή στο Github του έργου, το Google Play δεν μας επιτρέπει να παρέχουμε τον σύνδεσμο μέσα στην εφαρμογή."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Όχι εσωτερικός χώρος, αλλά καλύπτεται"</string>
+    <string name="lit_value_unsupported">"Η κατάσταση φωτισμού δεν είναι επιλέξιμη στην εφαρμογή"</string>
+    <string name="quest_generic_otherAnswers2">"Εμ…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Υπάρχουν σήματα κυκλοφορίας που δείχνουν πότε πρέπει να περάσετε από εδώ;"</string>
+    <string name="quest_moped_access_title">"Υπάρχει πινακίδα που υποδεικνύει πρόσβαση για μοτοποδήλατα σε αυτόν τον ποδηλατόδρομο;"</string>
+    <string name="quest_moped_access_allowed">"Δεν υπάρχει πινακίδα"</string>
+    <string name="quest_moped_access_designated">"Υπάρχει πινακίδα που υποδεικνύει αυτόν τον ποδηλατόδρομο για μοτοποδήλατα"</string>
+    <string name="quest_moped_access_forbidden">"Υπάρχει πινακίδα που απαγορεύει τα μοτοποδήλατα"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή η πρόσβαση στο μοτοποδήλατο υποδεικνύεται μόνο από συγκεκριμένη πινακίδα στην αρχή/στο τέλος ενός ποδηλατόδρομου."</string>
+    <string name="info">"Περισσότερες πληροφορίες"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Είναι απαγορευμένο."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"επιτρέπεται."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Στην πραγματικότητα, υπάρχει πεζοδρόμιο, αλλά εμφανίζεται ξεχωριστά στον χάρτη."</string>
+    <string name="quest_buildingLevels_hint">"Για κτίρια σε κλίση, η μέτρηση επιπέδων ξεκινά από το επίπεδο του εδάφους της χαμηλότερης πλευράς.
+Ένα επίπεδο μετράει ως επίπεδο στέγης όταν τα παράθυρά του βρίσκονται στην οροφή. Ακολούθως, οι στέγες με μηδενικά επίπεδα στέγης δεν είναι απαραίτητα επίπεδες, απλώς δεν είναι αρκετά ψηλές για ένα ολόκληρο επίπεδο."</string>
+    <string name="quest_parcel_locker_brand">"Ποια είναι η μάρκα αυτού του ντουλαπιού δεμάτων;"</string>
+    <string name="quest_parcel_locker_pickup">"Μπορείτε να παραλάβετε δέματα από εδώ;"</string>
+    <string name="quest_parcel_locker_mail_in">"Μπορείτε να αφήσετε δέματα εδώ;"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Το ηλεκτρικό καλώδιο είναι στερεωμένο στο κτίριο"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"κανένας, αλλά μια ταμπέλα επιτρέπει την ποδηλασία στο πεζοδρόμιο"</string>
+    <string name="separate_cycleway_no_signed">"Μια ταμπέλα απαγορεύει ρητά την ποδηλασία"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Πεζόδρομος, αλλά η ποδηλασία επιτρέπεται ρητά απο μια ταμπέλα"</string>
+    <string name="quest_bicycle_parking_type_floor">"Περιοχή Καθορισμένης χρήσης"</string>
 </resources>

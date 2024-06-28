@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Trade Bank of Iraq, صراف TBI, بطاقة ذكية, ميدان رمي تبوك, مصرف التنمية الدولي, سيلفي, ذكية, الوسام, النور, المرتضى, العزي, العبادي, الساحل, اسامة, ابراهيم حقي, NBI]
+atmOperators: [Trade Bank of Iraq, Baghdad, صراف TBI, بطاقة ذكية, ميدان رمي تبوك, مصرف التنمية الدولي, سيلفي, ذكية, الوسام, النور, المرتضى, العزي, العبادي, الساحل, اسامة, ابراهيم حقي, NBI, Kerkuk, Basra]
 chargingStationOperators: [محطة وزن]
 firstDayOfWorkweek: Su
 mobileCountryCode: 418

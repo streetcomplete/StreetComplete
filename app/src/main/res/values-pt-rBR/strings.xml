@@ -43,7 +43,6 @@
     <string name="action_download">"Baixar dados aqui"</string>
     <string name="action_upload">"Enviar respostas"</string>
     <string name="no_changes">"Você não deu uma resposta"</string>
-    <string name="close">"fechar"</string>
     <string name="download_error">"Erro ao procurar por missões"</string>
     <string name="upload_error">"Erro ao enviar respostas"</string>
     <string name="download_area_too_big">"Aproxime mais o zoom"</string>
@@ -226,7 +225,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>
     <string name="credits_author_title">"Autor e mantenedor"</string>
-    <string name="credits_and_more">"e outros…"</string>
     <string name="quest_maxspeed_answer_living_street">"É uma rua compartilhada"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Então, há uma placa como esta?"</string>
     <string name="quest_orchard_produce_title">"O que é cultivado aqui?"</string>
@@ -499,13 +497,11 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_motorcycleParkingCoveredStatus_title">"O estacionamento de motocicletas é coberto (protegido da chuva)?"</string>
     <string name="default_disabled_msg_maxspeed">"Este tipo de missão está desabilitado por padrão porque normalmente é necessário conferir a rua toda por placas de limite de velocidade, não apenas o trecho destacado. Isto às vezes pode ser bastante trabalho para para resolver uma única missão."</string>
     <string name="pref_title_quests_restore_hidden">"Restaurar missões ocultadas"</string>
-    <string name="restore_hidden_success">"Restauradas %d missões ocultadas"</string>
     <string name="on_level">"no nível %s"</string>
     <string name="underground">"subterrâneo"</string>
     <string name="quest_sidewalk_value_yes">"com calçada"</string>
     <string name="quest_sidewalk_value_no">"sem calçada"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Pedestres são proibidos de andar aqui nesta via?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rua foi marcada como não tendo calçadas em nenhum lado. Caso haja uma calçada mas conste como uma via separada, responda “calçada”."</string>
     <string name="quest_buildingType_title">"Que tipo de edificação é esta?"</string>
     <string name="pref_title_theme_select">"Selecione tema"</string>
     <string name="theme_automatic">"Automático"</string>
@@ -701,7 +697,6 @@ conquista"</string>
     <string name="quest_recycling_type_engine_oil">"Óleo de motor"</string>
     <string name="link_photon_description">"Uma extensão autônoma do Nominatim, com pesquisa difusa e pesquisa ao digitar"</string>
     <string name="link_graphhopper_description">"Um mecanismo de roteamento flexível"</string>
-    <string name="link_qwant_maps_description">"Um mapa com locais e direções pesquisáveis"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Para exibir o mapa, os blocos de vetor são recuperados de %1$s. Veja a&lt;a href=\"%2$s\"&gt;privacidade&gt;&lt;/a&gt;para obter mais informações.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
     <string name="quest_board_type_history">"Histórico"</string>
@@ -840,7 +835,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="team_mode_active">"O Modo de equipe está ativo"</string>
     <string name="team_mode_deactivated">"O Modo de equipe desativado"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
-    <string name="synced">"Sincronizado"</string>
     <string name="toast_undo_unavailable">"Esta edição já está sincronizada e não pode ser desfeita"</string>
     <string name="quest_cycleway_value_separate">"exibido separadamente no mapa"</string>
     <string name="created_note_action_title">"Nota criada"</string>
@@ -1062,8 +1056,6 @@ Faça o mesmo para o outro lado, se houver."</string>
     <string name="quest_road_width_title">"Qual é a largura desta estrada aqui?"</string>
     <string name="quest_road_width_explanation">"A largura da estrada de um meio-fio ao outro: isto inclui qualquer coisa na superfície da rua, inclusive estacionamento na própria via ou ciclofaixas, mas exclui qualquer coisa além do meio-fio como calçadas, estacionamento fora da via ou ciclovias próximas."</string>
     <string name="quest_sidewalk_answer_none">"Nada de calçada"</string>
-    <string name="about_description_donate_google_play2">"Obrigado por considerar apoiar este aplicativo!
-Infelizmente, devido a uma política da Google Play Store, nenhum link que leve a doações pode ser exibido no aplicativo. Nesse contexto, nem mesmo o link para a página inicial do nosso projeto é permitido."</string>
     <string name="link_osmand_description">"Aplicativo móvel para visualização e navegação de mapas online e offline"</string>
     <string name="link_sunders_description">"Um mapa de câmeras e equipamentos de vigilância"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Mantenha-se mais perto da seta, mas cuidado com o trânsito!"</string>
@@ -1270,8 +1262,6 @@ Movê-lo agora?"</string>
     <string name="bicycle_boulevard_is_a">"É um %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Não é %1$s"</string>
     <string name="bicycle_boulevard">"Avenida da bicicleta"</string>
-    <string name="separate_cycleway_no">"Sem andar de bicicleta"</string>
-    <string name="separate_cycleway_allowed">"Ciclistas são permitidos"</string>
     <string name="separate_cycleway_no_or_allowed">"Não designado para ciclistas (o ciclismo ainda pode ser permitido)"</string>
     <string name="separate_cycleway_non_segregated">"Caminho de uso compartilhado"</string>
     <string name="separate_cycleway_segregated">"Bicicleta e caminhos separados"</string>
@@ -1383,7 +1373,6 @@ Geralmente indicado por uma placa como esta:"</string>
     <string name="quest_buildingType_tower_description">"qualquer tipo de torre"</string>
     <string name="quest_buildingType_under_construction">"Em contrução"</string>
     <string name="overlay_buildings">"Edifícios"</string>
-    <string name="quest_pedestrian_crossing_signals">"Você tem que esperar um sinal do semáforo  para passar aqui?"</string>
     <string name="quest_pedestrian_crossing_markings">"Esta passagem de pedestres tem marcações no terreno?"</string>
     <string name="overlay_places">"Lugares"</string>
     <string name="overlay_things">"Coisas"</string>

@@ -43,7 +43,6 @@
     <string name="action_download">"สแกนภารกิจที่นี่"</string>
     <string name="action_upload">"อัปโหลดคำตอบ"</string>
     <string name="no_changes">"คุณยังไม่ได้ให้คำตอบใด ๆ"</string>
-    <string name="close">"ปิด"</string>
     <string name="download_error">"เกิดข้อผิดพลาดขณะสแกนภารกิจ"</string>
     <string name="upload_error">"เกิดข้อผิดพลาดขณะอัปโหลดคำตอบ"</string>
     <string name="download_area_too_big">"โปรดซูมเข้าไปอีก"</string>
@@ -224,7 +223,6 @@
     <string name="credits_translations_title">"การแปลภาษา"</string>
     <string name="credits_contributors_title">"ผู้สมทบด้านโค้ด"</string>
     <string name="credits_author_title">"ผู้สร้างและผู้ดูแลรักษา"</string>
-    <string name="credits_and_more">"และอื่น ๆ…"</string>
     <string name="quest_maxspeed_answer_living_street">"เป็น living street"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"แล้วมีป้ายแบบนี้ไหม?"</string>
     <string name="quest_orchard_produce_title">"ปลูกอะไรที่นี่?"</string>
@@ -497,13 +495,11 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"ที่จอดมอเตอร์ไซค์ที่นี่มีหลังคาคลุม (ป้องกันฝน) หรือไม่?"</string>
     <string name="default_disabled_msg_maxspeed">"ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะคุณต้องตรวจสอบถนนทั้งเส้นสำหรับป้ายจำกัดความเร็ว ไม่ใช่แค่ส่วนที่เน้นสีเอาไว้ ซึ่งอาจะเป็นอะไรที่ยากในหนึ่งภารกิจ"</string>
     <string name="pref_title_quests_restore_hidden">"กู้คืนภารกิจที่ซ่อนอยู่"</string>
-    <string name="restore_hidden_success">"กู้คืน %d ภารกิจที่ถูกซ่อน"</string>
     <string name="on_level">"ที่ระดับชั้น %s"</string>
     <string name="underground">"ใต้ดิน"</string>
     <string name="quest_sidewalk_value_yes">"ทางเท้า"</string>
     <string name="quest_sidewalk_value_no">"ไม่มีทางเท้า"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"ห้ามคนเดินเท้าบนถนนสายนี้หรือไม่?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"ถนนสายนี้ถูกแท็กว่าไม่มีทางเท้าทั้งสองข้าง ในกรณีที่มีทางเท้าอยู่แต่แสดงเป็นทางที่แยกออกมา ช่วยตอบ \"ทางเท้า\""</string>
     <string name="quest_buildingType_title">"นี่คืออาคารแบบไหน?"</string>
     <string name="pref_title_theme_select">"เลือกชุดตกแต่ง"</string>
     <string name="theme_automatic">"อัตโนมัติ"</string>
@@ -695,7 +691,6 @@
     <string name="quest_recycling_type_engine_oil">"น้ำมันเครื่อง"</string>
     <string name="link_photon_description">"ส่วนขยายแยกเดี่ยวของ Nominatim ที่รองรับการค้นหาแบบ fuzzy และการค้นหา-ขณะที่-พิมพ์"</string>
     <string name="link_graphhopper_description">"เครื่องมือกำหนดเส้นทางที่ยืดหยุ่น"</string>
-    <string name="link_qwant_maps_description">"แผนที่พร้อมสถานที่ที่สามารถค้นหาได้และเส้นทาง"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;เพื่อแสดงแผนที่ ไทล์เวกเตอร์จะถูกดึงมาจาก %1$s ดู&lt;a href=\"%2$s\"&gt;คำชี้แจงสิทธิ์ส่วนบุคคล&lt;/a&gt;สำหรับข้อมูลเพิ่มเติม&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"ผู้ให้การสนับสนุน"</string>
     <string name="quest_board_type_history">"ประวัติศาสตร์"</string>
@@ -832,7 +827,6 @@
     <string name="team_mode_active">"โหมดทีมทำงานอยู่"</string>
     <string name="team_mode_deactivated">"โหมดทีมปิดใช้งาน"</string>
     <string name="undo_confirm_title2">"ยกเลิกการแก้ไขต่อไปนี้ไหม?"</string>
-    <string name="synced">"ซิงค์แล้ว"</string>
     <string name="toast_undo_unavailable">"การแก้ไขนี้ถูกซิงค์แล้วและจะยกเลิกไม่ได้"</string>
     <string name="quest_cycleway_value_separate">"แสดงแยกต่างหากบนแผนที่"</string>
     <string name="created_note_action_title">"บันทึกที่สร้าง"</string>
@@ -1053,8 +1047,6 @@
     <string name="quest_road_width_title">"ถนนกว้างเท่าไหร่?"</string>
     <string name="quest_road_width_explanation">"ความกว้างของถนนจากขอบถนนถึงขอบถนน: รวมถึงทุกสิ่งที่อยู่บนพื้นผิวถนน เช่น ที่จอดรถริมถนนหรือเลนจักรยาน แต่ไม่รวมสิ่งใดที่อยู่นอกเหนือ เช่น ทางจักรยานเฉพาะหรือที่จอดรถข้างถนน"</string>
     <string name="quest_sidewalk_answer_none">"ไม่มีทางเท้า"</string>
-    <string name="about_description_donate_google_play2">"ขอบคุณที่สนใจสนับสนุนแอปของเรา!
-แต่เสียดายที่ Google Play มีนโยบายไม่อนุญาตให้ใส่ลิงค์สำหรับบริจาคในแอป แม้กระทั่งลิงค์ไปยังเว็บของเราก็ยังไม่ได้เลย"</string>
     <string name="link_osmand_description">"แอพสำหรับแผนที่ออนไลน์และออฟไลน์"</string>
     <string name="link_sunders_description">"แผนที่แสดงกล้องและอุปกรณ์สอดส่องดูแล"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"ขยับเข้าใกล้ลูกศรอีกนิด แต่ระวังรถด้วย!"</string>
@@ -1259,8 +1251,6 @@
     <string name="bicycle_boulevard_is_a">"เป็น%1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"ไม่เป็น%1$s"</string>
     <string name="bicycle_boulevard">"ถนนจักรยาน"</string>
-    <string name="separate_cycleway_no">"ห้ามปั่นจักรยาน"</string>
-    <string name="separate_cycleway_allowed">"อนุญาตให้ปั่นจักรยาน"</string>
     <string name="separate_cycleway_no_or_allowed">"ไม่ได้ระบุสำหรับนักปั่นจักรยาน (การปั่นจักรยานอาจยังได้รับอนุญาต)"</string>
     <string name="separate_cycleway_non_segregated">"เส้นทางใช้ร่วมกัน"</string>
     <string name="separate_cycleway_segregated">"เส้นทางแยกกันสำหรับจักรยานและเดินเท้า"</string>
@@ -1323,4 +1313,10 @@
     <string name="quest_crossing_kerb_height_title">"ความสูงของขอบทางที่ทางข้ามนี้อยู่ที่เท่าไหร่?"</string>
     <string name="quest_maxheight_sign_title">"ป้ายจำกัดความสูงที่แสดงอยู่ที่นี่คืออะไร?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"ป้ายจำกัดความสูงที่แสดงอยู่ด้านล่างของสะพานคืออะไร?"</string>
+    <string name="quest_bbq_fuel_wood">"ไม้"</string>
+    <string name="label_log_newer_than">"จาก"</string>
+    <string name="quest_buildingType_under_construction">"อยู่ระหว่างการก่อสร้าง"</string>
+    <string name="overlay_buildings">"อาคาร"</string>
+    <string name="overlay_places">"สถานที่"</string>
+    <string name="overlay_things">"สิ่งของ"</string>
 </resources>

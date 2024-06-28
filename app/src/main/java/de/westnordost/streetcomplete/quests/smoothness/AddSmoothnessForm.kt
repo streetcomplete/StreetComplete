@@ -8,9 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.asItem
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
@@ -20,8 +18,6 @@ import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
 
 class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
-
-    private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
     override val otherAnswers get() = listOfNotNull(
         AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
@@ -49,9 +45,7 @@ class AddSmoothnessForm : AImageListQuestForm<Smoothness, SmoothnessAnswer>() {
         stringBuilder.replaceEmojiWithImageSpan(context, "🚲", R.drawable.ic_smoothness_city_bike)
         stringBuilder.replaceEmojiWithImageSpan(context, "🚗", R.drawable.ic_smoothness_car)
         stringBuilder.replaceEmojiWithImageSpan(context, "🚙", R.drawable.ic_smoothness_suv)
-
-        binding.descriptionLabel.isGone = false
-        binding.descriptionLabel.text = stringBuilder
+        setHint(stringBuilder)
     }
 
     override val moveFavoritesToFront = false

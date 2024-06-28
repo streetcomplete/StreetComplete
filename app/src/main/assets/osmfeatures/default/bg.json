@@ -1222,6 +1222,17 @@
                 "tourism": {
                     "label": "Вид"
                 },
+                "traffic_calming": {
+                    "options": {
+                        "bump": "Гърбица (остра)",
+                        "choked_table": "Стеснение с пътна табла",
+                        "cushion": "Пътна възглавница",
+                        "hump": "Гърбица (полегата)",
+                        "mini_bumps": "Малки пътни неравности (кабъри)",
+                        "rumble_strip": "Напречна шумна маркировка",
+                        "table": "Пътна табла"
+                    }
+                },
                 "traffic_sign": {
                     "label": "Пътен знак"
                 },
@@ -2875,17 +2886,32 @@
                 "tourism/zoo": {
                     "name": "Зоологическа градина"
                 },
+                "traffic_calming/bump": {
+                    "name": "Гърбица (остра)",
+                    "terms": "изкуствена неравост"
+                },
                 "traffic_calming/chicane": {
                     "name": "Шикан",
                     "terms": "изкуствени кривини на пътя"
                 },
+                "traffic_calming/cushion": {
+                    "name": "Пътна възглавница",
+                    "terms": "изкуствена неравост"
+                },
+                "traffic_calming/hump": {
+                    "name": "Гърбица (полегата)",
+                    "terms": "изкуствена неравост"
+                },
                 "traffic_calming/mini_bumps": {
-                    "name": "Мини неравности за скорост",
+                    "name": "Малки пътни неравности (кабъри)",
                     "terms": "мини бабуни,мини топчета,малки бабуни,малки неравности за скорост"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Шумяща напречна маркировка",
                     "terms": "шумяща маркировка"
+                },
+                "traffic_calming/table": {
+                    "name": "Пътна табла"
                 },
                 "traffic_sign": {
                     "name": "Пътен знак"

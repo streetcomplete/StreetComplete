@@ -15,14 +15,16 @@ import org.koin.dsl.module
 
 val userScreenModule = module {
     factory<ProfileViewModel> { ProfileViewModelImpl(
-        get(), get(), get(), get(), get(), get(), get(named("AvatarsCacheDirectory")), get()
+        get(), get(), get(), get(), get(), get(), get(named("AvatarsCacheDirectory"))
     ) }
 
-    factory<LoginViewModel> { LoginViewModelImpl(get(), get(), get(), get()) }
+    factory<LoginViewModel> { LoginViewModelImpl(get(), get(), get()) }
 
     factory<EditStatisticsViewModel> { EditStatisticsViewModelImpl(get(), get()) }
 
     factory<LinksViewModel> { LinksViewModelImpl(get(), get()) }
 
     factory<AchievementsViewModel> { AchievementsViewModelImpl(get(), get()) }
+
+    factory<UserViewModel> { UserViewModelImpl(get()) }
 }

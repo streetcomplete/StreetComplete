@@ -5,17 +5,7 @@ import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.data.preferences.Preferences
 
 /** Controller that handles user login, logout, auth and updated data */
-class UserDataController(
-    private val prefs: Preferences,
-    private val userLoginStatusSource: UserLoginStatusSource
-) : UserDataSource {
-
-    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
-        override fun onLoggedIn() {}
-        override fun onLoggedOut() {
-            clear()
-        }
-    }
+class UserDataController(private val prefs: Preferences) : UserDataSource {
 
     private val listeners = Listeners<UserDataSource.Listener>()
 
@@ -29,10 +19,6 @@ class UserDataController(
             listeners.forEach { it.onUpdated() }
         }
 
-    init {
-        userLoginStatusSource.addListener(userLoginStatusListener)
-    }
-
     fun setDetails(userDetails: UserDetails) {
         prefs.userId = userDetails.id
         prefs.userName = userDetails.displayName
@@ -40,7 +26,7 @@ class UserDataController(
         listeners.forEach { it.onUpdated() }
     }
 
-    private fun clear() {
+    fun clear() {
         prefs.clearUserData()
         listeners.forEach { it.onUpdated() }
     }

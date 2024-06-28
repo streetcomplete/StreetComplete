@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.GridLayoutManager
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.padWith
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 import org.koin.android.ext.android.inject

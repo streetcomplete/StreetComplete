@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
+import de.westnordost.streetcomplete.util.StringWithCursor
+
 object TestBooleanExpressionParser {
     fun parse(input: String): BooleanExpression<Matcher<String>, String>? {
         val builder = BooleanExpressionBuilder<Matcher<String>, String>()

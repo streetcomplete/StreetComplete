@@ -3,24 +3,24 @@ package de.westnordost.streetcomplete.overlays.cycleway
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
-import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.cycleway_separate.applyTo
 import de.westnordost.streetcomplete.osm.cycleway_separate.asItem
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
 
 class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
 
     override val items: List<DisplayItem<SeparateCycleway>> get() =
-        listOf(PATH, NON_DESIGNATED, NON_SEGREGATED, SEGREGATED, EXCLUSIVE_WITH_SIDEWALK, EXCLUSIVE).map {
+        SeparateCycleway.entries.map {
             it.asItem(countryInfo.isLeftHandTraffic)
         }
 
@@ -41,7 +41,7 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
             prefs,
             key = javaClass.simpleName,
             serialize = { it.value!!.name },
-            deserialize = { SeparateCycleway.valueOf(it).asItem(countryInfo.isLeftHandTraffic) }
+            deserialize = { valueOfOrNull<SeparateCycleway>(it)?.asItem(countryInfo.isLeftHandTraffic) }
         )
     }
 
@@ -74,8 +74,7 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
             prerequisite for it being  displayed as a selectable option due to the reasons stated
             above.
          */
-        currentCycleway = if (cycleway == NOT_ALLOWED || cycleway == ALLOWED_ON_FOOTWAY) NON_DESIGNATED else cycleway
-        selectedItem = currentCycleway?.asItem(countryInfo.isLeftHandTraffic)
+        selectedItem = cycleway?.asItem(countryInfo.isLeftHandTraffic)
     }
 
     override fun hasChanges(): Boolean =

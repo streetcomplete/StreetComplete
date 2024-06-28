@@ -1565,7 +1565,6 @@
                         "e10": "Gasolina E10",
                         "e85": "Gasolina E85",
                         "h70": "Hidrogen Gaseos (700 bar)",
-                        "lpg": "Gas Liquat del Petroli (GLP)",
                         "octane_100": "Gasolina 100 Octans",
                         "octane_80": "Gasolina 80 Octans",
                         "octane_85": "Gasolina 85 Octans",
@@ -2104,9 +2103,6 @@
                 "license_classes": {
                     "label": "Tipus de llicències de conduir",
                     "terms": "autoescola,clases de conduir,carnet de conduir,auto"
-                },
-                "lifeguard": {
-                    "label": "Socorrista"
                 },
                 "lift_gate/type": {
                     "label": "Tipus"
@@ -6482,7 +6478,7 @@
                     "name": "Element fet per l'home (Tipus sense especificar)"
                 },
                 "military/bunker": {
-                    "name": "Bunquer militar"
+                    "name": "Búnquer militar"
                 },
                 "military/checkpoint": {
                     "name": "Punt de control militar"

@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.data.preferences
 
 /** Constant class to have all the identifiers for shared preferences in one place  */
 object Prefs {
-
     // application settings
-    const val MAP_TILECACHE_IN_MB = "map.tilecache"
     const val SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes"
     const val AUTOSYNC = "autosync"
     const val KEEP_SCREEN_ON = "display.keepScreenOn"
@@ -17,6 +15,7 @@ object Prefs {
     const val OSM_USER_NAME = "osm.username"
     const val OSM_UNREAD_MESSAGES = "osm.unread_messages"
     const val OAUTH2_ACCESS_TOKEN = "oauth2.accessToken"
+
     // old keys login keys
     const val OAUTH1_ACCESS_TOKEN = "oauth.accessToken"
     const val OAUTH1_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret"
@@ -30,16 +29,10 @@ object Prefs {
     const val LAST_VERSION = "lastVersion"
     const val LAST_VERSION_DATA = "lastVersion_data"
 
-    // not shown anywhere directly
-    const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset" // TODO
-    const val LAST_EDIT_TIME = "changesets.lastChangeTime" // TODO
-    const val LAST_PICKED_PREFIX = "imageListLastPicked." // TODO
-    const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState" // TODO
-    const val SELECTED_OVERLAY = "selectedOverlay" // TODO
-
     // main screen UI
     const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
     const val HAS_SHOWN_OVERLAYS_TUTORIAL = "hasShownOverlaysTutorial"
+    const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
 
     // map state
     const val MAP_LATITUDE = "map.latitude"
@@ -57,8 +50,13 @@ object Prefs {
     const val ICON_SPRITES_VERSION = "TangramIconsSpriteSheet.version"
     const val ICON_SPRITES = "TangramIconsSpriteSheet.sprites"
 
-    // quest & overlay UI
+    // quest & overlays
+    const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
+    const val SELECTED_OVERLAY = "selectedOverlay"
+    const val LAST_PICKED_PREFIX = "imageListLastPicked."
     const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"
+
+    const val LAST_EDIT_TIME = "changesets.lastChangeTime"
 
     // profile & statistics screen UI
     const val USER_DAYS_ACTIVE = "days_active"
@@ -67,18 +65,12 @@ object Prefs {
     const val USER_LAST_TIMESTAMP_ACTIVE = "last_timestamp_active"
     const val ACTIVE_DATES_RANGE = "active_days_range"
     const val IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics"
-
-    const val LAST_SHOWN_USER_GLOBAL_RANK = "last_shown.user_global_rank"
-    const val LAST_SHOWN_USER_LOCAL_RANK = "last_shown.user_local_rank"
-    const val LAST_SHOWN_USER_GLOBAL_RANK_CURRENT_WEEK = "last_shown.user_global_rank_current_week"
-    const val LAST_SHOWN_USER_LOCAL_RANK_CURRENT_WEEK = "last_shown.user_local_rank_current_week"
 }
 
 enum class Theme {
+    SYSTEM,
     LIGHT,
     DARK,
-    AUTO,
-    SYSTEM
 }
 
 enum class Autosync {
@@ -86,4 +78,3 @@ enum class Autosync {
     WIFI,
     OFF
 }
-

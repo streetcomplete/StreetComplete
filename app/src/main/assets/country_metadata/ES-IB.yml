@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Euronet, Banca March, Caixabank, Banco Santander, Kurant, Euro Automatic Cash, Banco Sabadell, Telebanco 4B, Telebanco, Targobank, BitBase, shitcoins.club, Sa Nostra]
-chargingStationOperators: [MELIB, Feníe Energía]
+atmOperators: [Euronet, Banca March, Caixabank, Banco Santander, Banco Sabadell, Kurant, Euro Automatic Cash, Telebanco 4B, Telebanco, Targobank, BitBase, Shitcoins.club, Sa Nostra]
+chargingStationOperators: [MELIB, eMallorca, Feníe Energía, Endesa]
 clothesContainerOperators: [Caritas]
 officialLanguages: [ca, es]

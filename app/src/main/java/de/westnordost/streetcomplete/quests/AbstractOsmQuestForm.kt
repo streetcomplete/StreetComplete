@@ -14,8 +14,6 @@ import androidx.core.view.children
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
-import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -37,7 +35,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenControlle
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
@@ -45,6 +43,8 @@ import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.add
+import de.westnordost.streetcomplete.view.checkIsSurvey
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -128,12 +128,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun updateButtonPanel() {
-        val answers = assembleOtherAnswers()
-        val otherAnswersItem = if (answers.size == 1) {
-            answers.single()
-        } else {
-            AnswerItem(R.string.quest_generic_otherAnswers) { showOtherAnswers() }
-        }
+        val otherAnswersItem = AnswerItem(R.string.quest_generic_otherAnswers2) { showOtherAnswers() }
         setButtonPanelAnswers(listOf(otherAnswersItem) + buttonPanelAnswers)
     }
 
@@ -258,7 +253,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun replacePlace() {
-        if (element.isPlaceOrDisusedShop()) {
+        if (element.isPlaceOrDisusedPlace()) {
             ShopGoneDialog(
                 requireContext(),
                 element.geometryType,

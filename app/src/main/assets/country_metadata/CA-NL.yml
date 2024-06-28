@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [RBC, Royal Bank, CIBC, Credit Union]
+atmOperators: [RBC, CIBC, Royal Bank, Credit Union]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]

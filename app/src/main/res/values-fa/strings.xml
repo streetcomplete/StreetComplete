@@ -43,7 +43,6 @@
     <string name="action_download">"کاوش جُستارهای اینجا"</string>
     <string name="action_upload">"بارگذاری پاسخ‌ها "</string>
     <string name="no_changes">"شما هیچگونه پاسخی ندادید"</string>
-    <string name="close">"بستن"</string>
     <string name="download_error">"خطا هنگام پویش جُستارها"</string>
     <string name="upload_error">"خطا در زمان بارگذاری پاسخ‌ها"</string>
     <string name="download_area_too_big">"لطفاً بزرگنمایی را بیشتر کنید"</string>
@@ -227,7 +226,6 @@
     <string name="credits_translations_title">"ترجمه‌ها"</string>
     <string name="credits_contributors_title">"مشارکت‌کنندگان در بخش کدنویسی"</string>
     <string name="credits_author_title">"سازنده و نگهدارنده"</string>
-    <string name="credits_and_more">"و دیگران…"</string>
     <string name="quest_maxspeed_answer_living_street">"این یک خیابان محل سکونت است"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"پس، علامتی مانند این وجود دارد؟"</string>
     <string name="quest_orchard_produce_title">"چه چیزی در اینجا به عمل می‌آید؟"</string>
@@ -500,13 +498,11 @@
     <string name="quest_motorcycleParkingCoveredStatus_title">"آیا این پارکینگ موتورسیکلت سرپوشیده است؟ (از باران محافظت می‌شود)"</string>
     <string name="default_disabled_msg_maxspeed">"این نوع جُستار به‌طور پیشفرض غیرفعال است زیرا معمولاً لازم است نه فقط بخش انتخاب‌شده را، بلکه سرتاسر خیابان را برای تابلوهای محدودیت سرعت بررسی کنید. این موضوع گاهی زمان فعالیت زیادی می‌طلبد آن هم برای حل‌کردن فقط یک جُستار."</string>
     <string name="pref_title_quests_restore_hidden">"بازگرداندن جُستارهای پنهان"</string>
-    <string name="restore_hidden_success">"%d جُستار پنهان بازگردانده شد"</string>
     <string name="on_level">"در طبقه %s"</string>
     <string name="underground">"زیر زمین"</string>
     <string name="quest_sidewalk_value_yes">"پیاده‌رو"</string>
     <string name="quest_sidewalk_value_no">"بدون پیاده‌رو"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"آیا پیاده‌روی عابران در این جاده ممنوع است؟"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"این خیابان این‌طور برچسب‌گذاری شده که در هیچ طرف پیاده‌رو ندارد. در صورتی که پیاده‌رو دارد، ولی با خط جداگانه نمایش داده شده، لطفاً پاسخ دهید «پیاده‌رو»."</string>
     <string name="quest_buildingType_title">"نوع این ساختمان چیست؟"</string>
     <string name="pref_title_theme_select">"انتخاب زمینه"</string>
     <string name="theme_automatic">"خودکار"</string>
@@ -696,7 +692,6 @@
     <string name="quest_recycling_type_engine_oil">"روغن موتور"</string>
     <string name="link_photon_description">"یک افزونه مستقل به نام Nominatim ، در برگیرنده جستجوی فازی و جستجو براساس نوشتار شما می باشد."</string>
     <string name="link_graphhopper_description">"یک موتور مسیریابی انعطاف پذیر و بهینه"</string>
-    <string name="link_qwant_maps_description">"نقشه‌ای با مکانها و مسیرهای قابل جستجو"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;برای نمایش نقشه، کاشی‌های نقشه از %1$s بازیابی می‌شوند. برای اطلاعات بیشتر به &lt;ahref=\"%2$s\"&gt;بیانیه حریم خصوصی&lt;/a&gt; مراجعه کنید.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"حامیان مالی"</string>
     <string name="quest_board_type_history">"تاریخچه"</string>
@@ -836,7 +831,6 @@
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی غیرفعال است"</string>
     <string name="undo_confirm_title2">"ویرایش زیر را واگرد می‌کنید؟"</string>
-    <string name="synced">"همگام سازی شده"</string>
     <string name="toast_undo_unavailable">"این ویرایش قبلاً همگام سازی شده است و قابل واگرد نیست"</string>
     <string name="quest_cycleway_value_separate">"جداگانه روی نقشه نمایش داده می‌شود"</string>
     <string name="created_note_action_title">"یادداشت ایجاد شد"</string>
@@ -1060,8 +1054,6 @@
     <string name="quest_road_width_title">"پهنای این جاده در اینجا چقدر است؟"</string>
     <string name="quest_road_width_explanation">"عرض جاده از جدول تا جدول: شامل هر چیزی در سطح خیابان می‌شود مانند جای پارک در خیابان یا خطوط دوچرخه‌سواری؛ اما شامل هر چیزی فراتر از جدول نمی‌شود مانند پیاده‌روها، پارکینگ بیرون از خیابان یا مسیرهای دوچرخه‌سواری در کنار خیابان."</string>
     <string name="quest_sidewalk_answer_none">"اصلا پیاده‌رو ندارد"</string>
-    <string name="about_description_donate_google_play2">"برای پشتیبانی از این برنامه از شما سپاسگزاریم!
-متأسفانه، به دلیل خط‌مشی فروشگاه Google Play، هیچ پیوندی برای کمک مالی در برنامه نمایش داده نمی‌شود. در این زمینه، حتی پیونددادن به صفحهٔ اصلی پروژهٔ ما مجاز نیست."</string>
     <string name="link_osmand_description">"برنامهٔ همراه برای مشاهدهٔ نقشه و ناوبری؛ آنلاین و آفلاین"</string>
     <string name="link_sunders_description">"نقشه دوربین‌ها و تجهیزات نظارتی"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"به جهت‌یاب نزدیک‌تر شوید، اما مراقب عبور و مرور باشید!"</string>
@@ -1268,8 +1260,6 @@
     <string name="bicycle_boulevard_is_a">"این یک %1$s است"</string>
     <string name="bicycle_boulevard_is_not_a">"این %1$s نیست"</string>
     <string name="bicycle_boulevard">"بلوار دوچرخه"</string>
-    <string name="separate_cycleway_no">"دوچرخه سواری ممنوع"</string>
-    <string name="separate_cycleway_allowed">"دوچرخه‌سواران مجاز می‌باشند"</string>
     <string name="separate_cycleway_no_or_allowed">"برای دوچرخه سواری مشخص نشده است (دوچرخه سواری ممکن است همچنان مجاز باشد)"</string>
     <string name="separate_cycleway_non_segregated">"مسیر با استفاده مشترک"</string>
     <string name="separate_cycleway_segregated">"مسیر دوچرخه و پیاده مجزا"</string>
@@ -1380,10 +1370,41 @@
     <string name="quest_buildingType_tower_description">"هر نوع برجی"</string>
     <string name="quest_buildingType_under_construction">"در حال ساخت"</string>
     <string name="overlay_buildings">"ساختمان‌ها"</string>
-    <string name="quest_pedestrian_crossing_signals">"آیا باید منتظر اجازه عبور توسط چراغ راهنمایی و رانندگی بمانید تا از اینجا عبور کنید؟"</string>
     <string name="quest_pedestrian_crossing_markings">"آیا این گذرگاه روی زمین علامت‌گذاری دارد؟"</string>
     <string name="overlay_places">"مکان‌ها"</string>
     <string name="overlay_things">"چیزها"</string>
     <string name="disused">"بلااستفاده/از کار افتاده"</string>
     <string name="unknown_object">"شیء ناشناخته"</string>
+    <string name="quest_leafType_tree_title">"آیا این درخت سوزنی است یا برگ؟"</string>
+    <string name="quest_bbq_fuel_gas">"گاز"</string>
+    <string name="about_description_donate_google_play3">"باتشکر از شما برای حمایت از این برنامه!
+شما می‌توانید اطلاعات کمک مالی را در وب‌سایت یا خانه پروژه ما بیابید، Google Play به ما اجازه نمی‌دهد پیوند را در برنامه ارائه دهیم."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"نه در داخل، بلکه پوشیده شده است"</string>
+    <string name="lit_value_unsupported">"وضعیت روشنایی خاصی که در این برنامه قابل انتخاب نیست"</string>
+    <string name="quest_generic_otherAnswers2">"آه…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"آیا علائم راهنمایی و رانندگی وجود دارد که نشان بدهد چه زمانی باید از اینجا عبور کرد؟"</string>
+    <string name="quest_moped_access_title">"آیا تابلویی وجود دارد که نشان دهنده دسترسی موتورسوارها در این مسیر دوچرخه‌سواری باشد؟"</string>
+    <string name="quest_moped_access_allowed">"هیچ علامتی وجود ندارد"</string>
+    <string name="quest_moped_access_designated">"تابلویی وجود دارد که این مسیر دوچرخه‌سواری را برای موتورسواری مشخص می‌کند"</string>
+    <string name="quest_moped_access_forbidden">"علامتی وجود دارد که موتورسواری را ممنوع می‌کند"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"این نوع جستجو به‌طور پیش‌فرض غیرفعال است، زیرا دسترسی به موتورسیکلت فقط با یک علامت خاص در شروع/پایان یک مسیر دوچرخه‌سواری نشان داده می‌شود."</string>
+    <string name="quest_arrow_tutorial">"فلش‌های تصویر به سمت جهت‌هایی که مسیر روی نقشه در محل پین مرکزی آن اجرا می‌شود، اشاره می‌کند. سعی کنید نقشه را بچرخانید و آن را دریافت خواهید کرد."</string>
+    <string name="info">"اطلاعات بیشتر"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"ممنوع است."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"مجاز است."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"در واقع یک پیاده‌رو وجود دارد اما به طور جداگانه روی نقشه نمایش داده می‌شود."</string>
+    <string name="quest_buildingLevels_hint">"برای ساختمان‌های شیب‌دار، شمارش سطح از سطح زمین پایین‌ترین سمت شروع می‌شود.
+
+یک سطح زمانی که پنجره‌های آن در پشت بام باشد به عنوان سطح مسقف محسوب می‌شود. پس از آن، سقف‌هایی با سطح سقف صفر لزوماً مسطح نیستند، فقط برای کل سطح به اندازه کافی بلند نیستند.
+␣␣␣␣"</string>
+    <string name="quest_parcel_locker_brand">"مارک این بسته‌بندی چیست؟"</string>
+    <string name="quest_parcel_locker_pickup">"آیا می‌توانید بسته‌ها را از اینجا تحویل بگیرید؟"</string>
+    <string name="quest_parcel_locker_mail_in">"آیا می‌توانید بسته‌ها را اینجا تحویل دهید؟"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"خط برق به ساختمان متصل است"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"هیچ، اما علامت دوچرخه‌سواری در پیاده‌رو را مجاز می‌کند"</string>
+    <string name="separate_cycleway_no_signed">"یک علامت (تابلو) به صراحت دوچرخه‌سواری را ممنوع می‌کند"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"پیاده‌رو، اما یک تابلو اجازه دوچرخه‌سواری را می‌دهد"</string>
+    <string name="quest_bicycle_parking_type_floor">"ناحیه تعیین شده"</string>
+    <string name="link_osmapp_description">"نقشه‌ای با لایه‌های مختلف، مانند کوهنوردی یا اسکی"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"فقط برای تحویل مرجوعی"</string>
 </resources>

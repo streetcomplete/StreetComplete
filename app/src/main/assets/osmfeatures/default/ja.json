@@ -524,7 +524,8 @@
                     "terms": "ブース,ブース種別,電話ボックス種別"
                 },
                 "bottle": {
-                    "label": "瓶詰め設備有無"
+                    "label": "水筒への給水",
+                    "terms": "瓶詰め設備有無"
                 },
                 "boules": {
                     "label": "種類"
@@ -556,7 +557,17 @@
                     "label": "種類"
                 },
                 "bridge_combo": {
-                    "label": "橋の種類"
+                    "label": "橋の種類",
+                    "options": {
+                        "aqueduct": "水路橋",
+                        "boardwalk": "木道",
+                        "cantilever": "カンチレバー橋",
+                        "covered": "屋根付橋",
+                        "low_water_crossing": "沈下橋",
+                        "movable": "可動橋",
+                        "trestle": "トレッスル橋",
+                        "viaduct": "高架橋"
+                    }
                 },
                 "building": {
                     "label": "建物",
@@ -1327,6 +1338,7 @@
                     "options": {
                         "leashed": "首紐がある場合に犬を同行可",
                         "no": "犬は同行不可",
+                        "unleashed": "リード不要",
                         "yes": "犬は同行可"
                     },
                     "terms": "犬,ペット,動物"
@@ -1579,6 +1591,9 @@
                     "label": "種類",
                     "placeholder": "デフォルト"
                 },
+                "fortification_type": {
+                    "label": "要塞の種類"
+                },
                 "fountain": {
                     "label": "噴水の種類"
                 },
@@ -1606,7 +1621,8 @@
                         "e10": "E10ガソリン",
                         "e85": "E85ガソリン",
                         "h70": "水素ガス(700bar)",
-                        "lpg": "LPG(液化天然ガス)",
+                        "lng": "LNG(液化天然ガス)",
+                        "lpg": "LPG(液化石油ガス)",
                         "octane_100": "ガソリン(100オクタン)",
                         "octane_80": "ガソリン(80オクタン)",
                         "octane_85": "ガソリン(85オクタン)",
@@ -1917,6 +1933,7 @@
                         "manor": "邸宅",
                         "memorial": "記念碑",
                         "milestone": "マイルストーン",
+                        "millstone": "挽き臼",
                         "mine": "坑道",
                         "mine_shaft": "立坑",
                         "monument": "記念建造物",
@@ -2069,10 +2086,39 @@
                 },
                 "kerb": {
                     "label": "縁石の詳細",
+                    "options": {
+                        "flush": {
+                            "description": "周囲と同じ高さに切り下げられた縁石",
+                            "title": "平坦"
+                        },
+                        "lowered": {
+                            "description": "車椅子が通れるよう高さ数cm程度に切り下げられた縁石",
+                            "title": "切り下げ"
+                        },
+                        "no": {
+                            "description": "この場所には縁石がありません",
+                            "title": "なし"
+                        },
+                        "raised": {
+                            "description": "車椅子が乗り越えられない数cm以上の高さの縁石",
+                            "title": "段差"
+                        },
+                        "rolled": {
+                            "description": "車椅子ではなく自動車や自転車が通りやすいように丸められた縁石",
+                            "title": "丸め"
+                        },
+                        "yes": {
+                            "description": "何らかの縁石があるがその種別がわからない",
+                            "title": "あり"
+                        }
+                    },
                     "terms": "縁石,へり"
                 },
                 "kerb/height": {
                     "label": "縁石の高さ"
+                },
+                "kerb/kerb_barrier": {
+                    "label": "縁石の種類"
                 },
                 "kitchen": {
                     "label": "キッチン",
@@ -2163,7 +2209,14 @@
                     "terms": "運転免許のクラス,運転免許,免許クラス,免許階級"
                 },
                 "lifeguard": {
-                    "label": "ライフガード"
+                    "label": "ライフガードの種類",
+                    "options": {
+                        "base": "監視所",
+                        "tower": "監視塔"
+                    }
+                },
+                "lifeguard_check": {
+                    "label": "ライフガードによる監視"
                 },
                 "lift_gate/type": {
                     "label": "遮断機の種類",
@@ -2968,6 +3021,20 @@
                         "forward": "順方向"
                     }
                 },
+                "railway/switch": {
+                    "label": "分岐器の種類",
+                    "options": {
+                        "abt": "アプトスイッチ",
+                        "default": "片開き分岐",
+                        "double_slip": "両渡り付交差",
+                        "single_slip": "片渡り付交差",
+                        "three_way": "三枝分岐",
+                        "wye": "両開き分岐"
+                    }
+                },
+                "railway/track_ref": {
+                    "label": "線路番号"
+                },
                 "ramp": {
                     "label": "斜路",
                     "options": {
@@ -3028,7 +3095,8 @@
                     "terms": "イギリス教育省の番号"
                 },
                 "ref/isil": {
-                    "label": "ISILコード"
+                    "label": "ISILコード",
+                    "terms": "isilコード,アイシルコード,国際図書館コード"
                 },
                 "ref/linz/place_id-NZ": {
                     "label": "NZGB地名ID",
@@ -3054,6 +3122,10 @@
                 },
                 "ref_platform": {
                     "label": "プラットホーム番号"
+                },
+                "ref_rail": {
+                    "label": "路線記号",
+                    "terms": "路線記号,路線番号"
                 },
                 "ref_road_number": {
                     "label": "道路番号",
@@ -3432,11 +3504,7 @@
                     "terms": "シャワー有無,シャワー"
                 },
                 "side": {
-                    "label": "左右",
-                    "options": {
-                        "left": "左側",
-                        "right": "右側"
-                    }
+                    "label": "左右"
                 },
                 "siren/purpose": {
                     "label": "利用目的"
@@ -3568,6 +3636,7 @@
                         "cricket": "クリケット",
                         "curling": "カーリング",
                         "cycling": "サイクリング",
+                        "darts": "ダーツ",
                         "disc_golf": "ディスクゴルフ",
                         "dog_racing": "ドッグレース",
                         "equestrian": "馬術競技",
@@ -3737,6 +3806,10 @@
                         "valve_group": "開閉器"
                     }
                 },
+                "summit/cross": {
+                    "label": "十字架（山頂）",
+                    "terms": "十字架（山頂）,十字架,歴史的建造物"
+                },
                 "supervised": {
                     "label": "管理人",
                     "terms": "監視,見守り"
@@ -3820,7 +3893,17 @@
                     }
                 },
                 "swimming_pool": {
-                    "label": "種類"
+                    "label": "種類",
+                    "options": {
+                        "kids": "子ども用プール",
+                        "lazy_river": "流れるプール",
+                        "personal": "個人用プール",
+                        "plunge": "飛び込み用プール",
+                        "spa": "温浴プール",
+                        "swimming": "競泳プール",
+                        "wading": "水遊びプール",
+                        "wave_pool": "波のプール"
+                    }
                 },
                 "switch": {
                     "label": "種類",
@@ -3924,6 +4007,15 @@
                 "toilets/handwashing": {
                     "label": "手洗い場",
                     "terms": "手洗い場,手洗い,水道,蛇口"
+                },
+                "toilets/menstrual_products": {
+                    "label": "生理用品の無償提供",
+                    "options": {
+                        "limited": "一部の小部屋",
+                        "no": "なし",
+                        "yes": "全ての小部屋"
+                    },
+                    "terms": "ナプキン,タンポン,サニタリー"
                 },
                 "toilets/position": {
                     "label": "便器の位置",
@@ -4204,7 +4296,8 @@
                     "terms": "vhfチャンネル"
                 },
                 "via": {
-                    "label": "経由"
+                    "label": "経由地",
+                    "terms": "経由"
                 },
                 "video_calls": {
                     "label": "ビデオ",
@@ -4585,6 +4678,10 @@
                     "name": "自転車修理場(公共)",
                     "terms": "修理場,自転車,自転車修理場,自転車修理場(公共),パンク修理,空気入れ"
                 },
+                "amenity/bicycle_wash": {
+                    "name": "自転車洗車場",
+                    "terms": "自転車,洗車"
+                },
                 "amenity/biergarten": {
                     "name": "ビアガーデン",
                     "terms": "ビアガーデン,ビアホール,ビール,酒,飲む,呑む,飲食店,アルコール,お酒"
@@ -4836,6 +4933,10 @@
                     "name": "泌尿器科",
                     "terms": "泌尿器科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
                 },
+                "amenity/dog_toilet": {
+                    "name": "犬用トイレ",
+                    "terms": "トイレ,便所,公衆トイレ,犬,ペット"
+                },
                 "amenity/dojo": {
                     "name": "道場",
                     "terms": "道場,スポーツ,訓練,稽古,練習,習い事,教習,トレーニング,教室,体操,運動,柔道,空手,相撲"
@@ -5017,6 +5118,10 @@
                     "name": "図書館",
                     "terms": "図書館,ライブラリ,ライブラリー,教育,本"
                 },
+                "amenity/library_dropoff": {
+                    "name": "図書返却ポスト",
+                    "terms": "ブックポスト,図書返却ボックス,図書返却箱,返却,図書館"
+                },
                 "amenity/loading_dock": {
                     "name": "出入口（貨物）",
                     "terms": "貨物の搬出入口,貨物搬入口,貨物積出口,荷受,荷出,貨物出口,貨物入口,出口,入口,出入口（貨物）"
@@ -5028,6 +5133,10 @@
                 "amenity/love_hotel": {
                     "name": "ラブホテル",
                     "terms": "ラブホテル,宿,ホテル,休憩,アダルト,宿泊"
+                },
+                "amenity/luggage_locker": {
+                    "name": "コインロッカー",
+                    "terms": "ロッカー,手荷物"
                 },
                 "amenity/marketplace": {
                     "name": "市場",
@@ -7088,6 +7197,10 @@
                     "name": "歴史的建築物",
                     "terms": "歴史的建築物,歴史的家屋,史跡,保存家屋"
                 },
+                "historic/cannon": {
+                    "name": "大砲",
+                    "terms": "キャノン,火砲"
+                },
                 "historic/castle": {
                     "name": "城",
                     "terms": "城,城郭,歴史,城址,城跡,お城"
@@ -7523,6 +7636,10 @@
                     "name": "コミュニティ庭園",
                     "terms": "コミュニティ庭園,コミュニティ・ガーデニング,庭園,共同花壇,花壇"
                 },
+                "leisure/garden/kitchen": {
+                    "name": "家庭菜園",
+                    "terms": "家庭菜園,菜園,キッチンガーデン,ポタジェ"
+                },
                 "leisure/garden/residential": {
                     "name": "庭園（住居内）",
                     "terms": "庭園（住居内）,庭園,庭,住居,住まい"
@@ -7538,6 +7655,10 @@
                 "leisure/horse_riding": {
                     "name": "乗馬施設",
                     "terms": "乗馬施設,馬事公苑,乗馬センター,乗馬クラブ,スポーツ,運動,娯楽,レジャー"
+                },
+                "leisure/hot_tub": {
+                    "name": "浴槽",
+                    "terms": "浴槽,ジャグジー,ジェットバス,スパ"
                 },
                 "leisure/ice_rink": {
                     "name": "アイススケート場",
@@ -7931,6 +8052,10 @@
                     "name": "煙突",
                     "terms": "煙突"
                 },
+                "man_made/clarifier": {
+                    "name": "下水沈殿池（機械化）",
+                    "terms": "沈澄池,沈殿池,最初沈殿池,最終沈殿池,下水沈殿池,汚水沈殿池,下水処理"
+                },
                 "man_made/clearcut": {
                     "name": "皆伐地",
                     "terms": "皆伐,伐採"
@@ -8237,7 +8362,7 @@
                 },
                 "man_made/wastewater_plant": {
                     "name": "下水処理場",
-                    "terms": "下水処理場"
+                    "terms": "下水処理場,終末処理場,浄化センター,水再生センター,水処理センター"
                 },
                 "man_made/water_tap": {
                     "name": "給水栓",
@@ -8507,7 +8632,7 @@
                 },
                 "natural/water/wastewater": {
                     "name": "下水沈殿池",
-                    "terms": "下水沈殿池,下水処理施設,汚水沈殿池"
+                    "terms": "沈砂池,沈殿池,最初沈殿池,最終沈殿池,下水沈殿池,汚水沈殿池,下水処理"
                 },
                 "natural/wetland": {
                     "name": "湿地",

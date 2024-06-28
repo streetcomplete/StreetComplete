@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolylineStyle
@@ -71,8 +71,7 @@ private fun getSeparateCyclewayStyle(element: Element) =
 
 private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.NOT_ALLOWED,
-    SeparateCycleway.ALLOWED_ON_FOOTWAY,
-    SeparateCycleway.NON_DESIGNATED,
+    SeparateCycleway.NON_DESIGNATED_ON_FOOTWAY,
     SeparateCycleway.PATH ->
         Color.BLACK
 
@@ -83,6 +82,8 @@ private fun SeparateCycleway?.getColor() = when (this) {
     SeparateCycleway.EXCLUSIVE,
     SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK ->
         Color.BLUE
+    SeparateCycleway.ALLOWED_ON_FOOTWAY ->
+        Color.AQUAMARINE
 
     null ->
         Color.INVISIBLE
@@ -115,7 +116,8 @@ private val cyclewayTaggingNotExpectedFilter by lazy { """
       or maxspeed <= 20
       or cyclestreet = yes
       or bicycle_road = yes
-      or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
+      or bicycle = no
+      or surface ~ ${UNPAVED_SURFACES.joinToString("|")}
       or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(zone)?:?([1-9]|[1-2][0-9]|30)"
 """.toElementFilterExpression() }
 
@@ -150,7 +152,7 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
         StrokeStyle(Color.LIME, dashed = true)
 
     SIDEWALK_EXPLICIT ->
-        StrokeStyle(Color.CYAN, dashed = true)
+        StrokeStyle(Color.CYAN, dashed = false)
 
     NONE ->
         StrokeStyle(Color.BLACK)
@@ -160,4 +162,6 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
 
     SEPARATE ->
         StrokeStyle(Color.INVISIBLE)
+    SIDEWALK_OK ->
+        StrokeStyle(Color.CYAN, dashed = true)
 }

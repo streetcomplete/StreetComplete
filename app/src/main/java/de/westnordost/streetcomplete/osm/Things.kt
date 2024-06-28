@@ -70,7 +70,7 @@ private val IS_THING_EXPRESSION by lazy {
             "whirlpool",
 
             // public service
-            // "post_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
+            // "post_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916 - which is blocked by https://github.com/westnordost/osmfeatures/issues/23
 
             // facilities & others
             "baking_oven",

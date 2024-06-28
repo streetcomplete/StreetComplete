@@ -19,6 +19,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         )
         and access !~ private|no and indoor != yes
         and !drinking_water and !drinking_water:legal and amenity != drinking_water
+        and (!intermittent or intermittent = no)
         and (!seasonal or seasonal = no)
         and (!disused or disused = no)
         and (!ruins or ruins = no)

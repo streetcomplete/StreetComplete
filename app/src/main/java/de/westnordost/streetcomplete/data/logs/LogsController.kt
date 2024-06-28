@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.logs
 
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.logs.Log
 
 class LogsController(private val logsDao: LogsDao) {
 

@@ -1515,7 +1515,6 @@
                         "e10": "E10 Petrol",
                         "e85": "E85 Petrol",
                         "h70": "Gaseous Hydrogen (700 bar)",
-                        "lpg": "Liquefied Natural Gas (LPG)",
                         "octane_100": "Petrol (100 Octane)",
                         "octane_80": "Petrol (80 Octane)",
                         "octane_85": "Petrol (85 Octane)",
@@ -2008,9 +2007,6 @@
                 },
                 "license_classes": {
                     "label": "Classes of Driver’s Licence"
-                },
-                "lifeguard": {
-                    "label": "Lifeguard"
                 },
                 "lift_gate/type": {
                     "label": "Type",
@@ -3160,11 +3156,7 @@
                     "label": "Showers"
                 },
                 "side": {
-                    "label": "Side",
-                    "options": {
-                        "left": "Left",
-                        "right": "Right"
-                    }
+                    "label": "Side"
                 },
                 "siren/purpose": {
                     "label": "Purpose"
