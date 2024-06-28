@@ -200,6 +200,8 @@ dependencies {
 
     // sharing presets/settings via QR Code
     implementation("io.github.alexzhirkevich:qrose:1.0.1")
+    // for encoding information for the URL configuration (QR code)
+    implementation("com.ionspin.kotlin:bignum:0.3.9")
 
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
