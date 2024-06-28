@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ListPickerDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.util.ktx.format
 import java.util.Locale
 
@@ -214,9 +215,8 @@ fun SettingsScreen(
         )
     }
     if (showThemeSelect) {
-        ListPickerDialog(
+        SimpleListPickerDialog(
             onDismissRequest = { showThemeSelect = false },
-            height = 360.dp,
             items = Prefs.Theme.entries,
             onItemSelected = { viewModel.setTheme(it) },
             title = { Text(stringResource(R.string.pref_title_theme_select)) },
@@ -225,9 +225,8 @@ fun SettingsScreen(
         )
     }
     if (showAutosyncSelect) {
-        ListPickerDialog(
+        SimpleListPickerDialog(
             onDismissRequest = { showAutosyncSelect = false },
-            height = 360.dp,
             items = Prefs.Autosync.entries,
             onItemSelected = {
                 viewModel.setAutosync(it)
@@ -241,9 +240,8 @@ fun SettingsScreen(
         )
     }
     if (showResurveyIntervalsSelect) {
-        ListPickerDialog(
+        SimpleListPickerDialog(
             onDismissRequest = { showResurveyIntervalsSelect = false },
-            height = 360.dp,
             items = Prefs.ResurveyIntervals.entries,
             onItemSelected = { viewModel.setResurveyIntervals(it) },
             title = { Text(stringResource(R.string.pref_title_resurvey_intervals)) },
@@ -253,9 +251,8 @@ fun SettingsScreen(
     }
     if (showLanguageSelect && selectableLanguageCodes != null) {
         // TODO sort languages alphabetically by display name
-        ListPickerDialog(
+        SimpleListPickerDialog(
             onDismissRequest = { showLanguageSelect = false },
-            height = 360.dp,
             items = selectableLanguageCodes!!,
             onItemSelected = { viewModel.setSelectedLanguage(it) },
             title = { Text(stringResource(R.string.pref_title_language_select2)) },

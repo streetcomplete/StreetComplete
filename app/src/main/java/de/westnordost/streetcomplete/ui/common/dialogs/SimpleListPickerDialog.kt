@@ -2,10 +2,13 @@ package de.westnordost.streetcomplete.ui.common.dialogs
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,6 +19,7 @@ import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.RadioButton
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.contentColorFor
@@ -30,15 +34,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 
+/** Similar to ListPickerDialog, but tapping on one item immediately closes the dialog
+ *  (no OK button, no cancel button)
+ *
+ *  This dialog doesn't have the caveat of the ListPickerDialog in that it takes as much width
+ *  as possible */
 @Composable
-fun <T> ListPickerDialog(
+fun <T> SimpleListPickerDialog(
     onDismissRequest: () -> Unit,
     items: List<T>,
     onItemSelected: (T) -> Unit,
@@ -47,7 +57,6 @@ fun <T> ListPickerDialog(
     selectedItem: T? = null,
     getItemName: (@Composable (T) -> String) = { it.toString() },
     width: Dp? = null,
-    height: Dp? = null,
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
@@ -61,76 +70,77 @@ fun <T> ListPickerDialog(
         if (index != -1) state.scrollToItem(index, -state.layoutInfo.viewportSize.height / 2)
     }
 
-    ScrollableAlertDialog(
+    Dialog(
         onDismissRequest = onDismissRequest,
-        modifier = modifier,
-        title = title,
-        content = {
-            CompositionLocalProvider(
-                LocalContentAlpha provides ContentAlpha.high,
-                LocalTextStyle provides MaterialTheme.typography.body1
-            ) {
+        properties = properties
+    ) {
+        Surface(
+            modifier = modifier.conditional(width != null) { width(width!!) },
+            shape = shape,
+            color = backgroundColor,
+            contentColor = contentColor
+        ) {
+            Column(Modifier.padding(vertical = 24.dp)) {
+                if (title != null) {
+                    CompositionLocalProvider(
+                        LocalContentAlpha provides ContentAlpha.high,
+                        LocalTextStyle provides MaterialTheme.typography.subtitle1
+                    ) {
+                        Column(Modifier.padding(start = 24.dp, bottom = 16.dp, end = 24.dp)) {
+                            title()
+                        }
+                    }
+                }
                 if (state.canScrollBackward) Divider()
-                LazyColumn(state = state) {
-                    items(items) { item ->
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .clickable { selected = item }
-                                .padding(horizontal = 24.dp)
-                        ) {
-                            Text(
-                                text = getItemName(item),
-                                style = MaterialTheme.typography.body1,
-                                modifier = Modifier.weight(1f),
-                            )
-                            RadioButton(
-                                selected = selected == item,
-                                onClick = { selected = item }
-                            )
+                CompositionLocalProvider(
+                    LocalContentAlpha provides ContentAlpha.high,
+                    LocalTextStyle provides MaterialTheme.typography.body1
+                ) {
+                    LazyColumn(state = state) {
+                        items(items) { item ->
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                    .clickable {
+                                        selected = item
+                                        onItemSelected(item)
+                                        onDismissRequest()
+                                    }
+                                    .padding(horizontal = 24.dp)
+                            ) {
+                                Text(
+                                    text = getItemName(item),
+                                    style = MaterialTheme.typography.body1,
+                                    modifier = Modifier.weight(1f),
+                                )
+                                RadioButton(
+                                    selected = selected == item,
+                                    onClick = { selected = item }
+                                )
+                            }
                         }
                     }
                 }
                 if (state.canScrollForward) Divider()
             }
-        },
-        buttons = {
-            TextButton(onClick = onDismissRequest) {
-                Text(stringResource(android.R.string.cancel))
-            }
-            TextButton(
-                onClick = {
-                    onDismissRequest()
-                    selected?.let { onItemSelected(it) }
-                },
-                enabled = selected != null,
-            ) {
-                Text(stringResource(android.R.string.ok))
-            }
-        },
-        width = width,
-        height = height,
-        shape = shape,
-        backgroundColor = backgroundColor,
-        contentColor = contentColor,
-        properties = properties
-    )
+        }
+    }
 }
 
 @Preview
 @Composable
-private fun PreviewListPickerDialog() {
+private fun PreviewSimpleListPickerDialog() {
     val items = remember { (0..<5).toList() }
     AppTheme {
-        ListPickerDialog(
+        SimpleListPickerDialog(
             onDismissRequest = {},
             items = items,
             onItemSelected = {},
             title = { Text("Select something") },
             selectedItem = 2,
             getItemName = { "Item $it" },
-            width = 260.dp
+            width = 200.dp
         )
     }
 }
