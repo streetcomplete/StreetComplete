@@ -35,7 +35,12 @@ import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 
-// AlertDialog does not support scrollable content (yet) https://issuetracker.google.com/issues/217151230
+// TODO Compose
+//  AlertDialog does not support scrollable content (yet) https://issuetracker.google.com/issues/217151230
+//  This widget and probably SimpleListPickerDialog can be removed/replaced by a normal AlertDialog
+//  as soon as that ticket is solved (which really is a bug, considering that Material design
+//  AlertDialogs SHOULD be able to have scrollable content because that is actually mentioned as an
+//  example in the Material design guidelines).
 
 /** AlertDialog that can have scrollable content without bugging out and separates the scrollable
  *  content with a divider at the top and bottom.
