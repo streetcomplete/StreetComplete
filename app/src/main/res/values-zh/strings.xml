@@ -694,7 +694,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="link_photon_description">"Nominatim的独立扩展，具有模糊搜索和随用随查的特点
 "</string>
     <string name="link_graphhopper_description">"灵活的路径规划引擎"</string>
-    <string name="link_qwant_maps_description">"具有可搜索地点和方向的地图"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;要显示此地图，从 %1$s 检索矢量图。检视他们的&lt;a href=\"%2$s\"&gt;隐私声明&lt;/a&gt;取得更多资讯。&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"赞助者"</string>
     <string name="quest_board_type_history">"历史"</string>

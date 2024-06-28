@@ -699,7 +699,6 @@
     <string name="quest_recycling_type_engine_oil">"Маторнае масла"</string>
     <string name="link_photon_description">"Аўтаномнае пашырэнне для Nominatim з невыразным пошукам і функцыяй пошуку па меры ўводу"</string>
     <string name="link_graphhopper_description">"Маршрутызатар з мноствам налад"</string>
-    <string name="link_qwant_maps_description">"Мапа з даступнымі для пошуку месцамі і напрамкамі"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Для адлюстравання карты, вектарныя тайлы з %1$s. Азнаёмцеся з палітыкай канфідэнцыйнасці &lt;a href=\"%2$s\"&gt;для атрымання дадатковай інфармацыі.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсары"</string>
     <string name="quest_board_type_history">"Гiсторыя"</string>
@@ -1390,4 +1389,8 @@
     <string name="quest_moped_access_designated">"Ёсць знак, які пазначае гэтую веладарожку для мапедаў"</string>
     <string name="quest_moped_access_forbidden">"Знак забаронены на мапеды"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Гэты тып квэста адключаны па змаўчанні, таму што доступ да мапеда пазначаецца толькі адмысловымі знакамі ў пачатку/канцы веладарожкі."</string>
+    <string name="info">"Больш..."</string>
+    <string name="quest_parcel_locker_pickup">"Тут можна забраць пасылкі?"</string>
+    <string name="quest_parcel_locker_mail_in">"Ці можаце вы пакінуць пасылкі тут?"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Пешаходная дарога, але знак дазваляе рух на ровары"</string>
 </resources>

@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [OTP Bank, MBH Bank, Euronet, CIB Bank, Erste Bank, K&H Bank, UniCredit Bank, K&H, Erste, Raiffeisen Bank, Takarékbank, Euronet Worldwide, Erste Bank Hungary Zrt., MagNet Magyar Közösségi Bank Zrt., Takarékszövetkezet, FHB Bank, OTP, Unicredit Bank, Raiffeisen, K&H Bank Zrt., Duna Takarék, Cashere, Sopron Bank, Raiffeisen Bank Zrt., MBH, ERSTE Bank, Duna Takarék Bank, DT Bank, CoinCash]
-chargingStationOperators: [e-Mobi Elektromobilitás Nonprofit Kft., NKM Mobilitás Kft., MOL Nyrt., ELMŰ, Lidl, E.ON, E-On, Penny Market, 'Tesla, Inc.', Mobiliti, Lidl Magyarország Kereskedelmi Bt., Ionity, e.on, TEA, MVM Mobiliti, Teapont, Penny, Parkl, Nissan, MVM Partner, MVM Mobiliti Kft, Evopro, ALDI, ÉMÁSZ, mobiliti, holtöltsek.hu, evopro, eTank, e-on, e-Mobi, XVIII. kerület, Szekszárd Város Önkormányzata, Shell, Porsche Hungária Kft, NISSAN, LUKOIL Magyarország Kft., Charge Point Austria GmbH, ABB]
+atmOperators: [OTP Bank, MBH Bank, Euronet, CIB Bank, Erste Bank, K&H Bank, UniCredit Bank, K&H, Erste, Raiffeisen Bank, Takarékbank, Euronet Worldwide, Erste Bank Hungary Zrt., MagNet Magyar Közösségi Bank Zrt., Takarékszövetkezet, FHB Bank, OTP, Unicredit Bank, Raiffeisen Bank Zrt., K&H Bank Zrt., Duna Takarék, Cashere, Sopron Bank, Raiffeisen, MBH, ERSTE Bank, Duna Takarék Bank, DT Bank, CoinCash, BlockChange]
+chargingStationOperators: [e-Mobi Elektromobilitás Nonprofit Kft., NKM Mobilitás Kft., MOL Nyrt., ELMŰ, Lidl, E.ON, E-On, Penny Market, 'Tesla, Inc.', Lidl Magyarország Kereskedelmi Bt., Mobiliti, Ionity, e.on, TEA, MVM Mobiliti, Teapont, Penny, Parkl, Nissan, MVM Partner, MVM Mobiliti Kft, Evopro, ALDI, ÉMÁSZ, mobiliti, holtöltsek.hu, evopro, eTank, e-on, e-Mobi, XVIII. kerület, Szekszárd Város Önkormányzata, Shell, Porsche Hungária Kft, NISSAN, LUKOIL Magyarország Kft., Charge Point Austria GmbH, ABB]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: true
@@ -12,7 +12,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 216
 officialLanguages: [hu]
 orchardProduces: [grape, apple, cherry, plum, walnut, apricot, peach, pear, tomato, chilli_pepper, sweet_pepper, strawberry, hazelnut, raspberry, almond, chestnut]
-parcelLockerBrand: [GLS, easybox, Foxpost, Packeta, AlzaBox, Magyar Posta Logisztika (MPL), MPL, FoxPost, DHL, Alzabox]
+parcelLockerBrand: [GLS, easybox, Foxpost, Packeta, AlzaBox, MPL, Magyar Posta Logisztika (MPL), FoxPost, DHL, Alzabox]
 pictogramCycleLaneStyle: yellow
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom

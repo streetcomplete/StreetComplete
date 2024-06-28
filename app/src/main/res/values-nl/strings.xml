@@ -500,7 +500,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="underground">"ondergronds"</string>
     <string name="quest_sidewalk_value_yes">"trottoir"</string>
     <string name="quest_sidewalk_value_no">"geen trottoir"</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">"Is het voor voetgangers verboden om hier te lopen?"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Is het voor voetgangers verboden om op deze weg zonder trottoir te lopen?"</string>
     <string name="quest_buildingType_title">"Wat voor gebouw is dit?"</string>
     <string name="pref_title_theme_select">"Selecteer thema"</string>
     <string name="theme_automatic">"Auto"</string>
@@ -534,7 +534,7 @@ Bijvoorbeeld 1,3 of 2-6."</string>
     <string name="quest_handrail_title">"Heeft deze trap een leuning?"</string>
     <string name="about_summary_current_version">"Huidige versie: %s"</string>
     <string name="quest_ref_answer_noRef">"Geen referentienummer zichtbaar…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"De weg zoals getoond loopt in dezelfde richting als op de kaart op de plaats van het merkteken."</string>
+    <string name="quest_street_side_puzzle_tutorial">"De weg zoals getoond loopt in dezelfde richting als op de kaart op de plaats van het merkteken. Probeer de kaart te draaien en je zult het begrijpen."</string>
     <string name="quest_recycling_materials_title">"Wat kan hier achtergelaten worden voor recycling?"</string>
     <string name="quest_recycling_materials_note">"Als iets anders dan hier aankiesbaar gerecycled kan worden, geef dan een notitie."</string>
     <string name="quest_recycling_type_batteries">"Batterijen"</string>
@@ -691,7 +691,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_recycling_type_engine_oil">"Motorolie"</string>
     <string name="link_photon_description">"Een op zichzelf staande uitbreiding van Nominatim met algemeen zoeken en zoeken terwijl je typt"</string>
     <string name="link_graphhopper_description">"Een aanpasbaar routeersysteem"</string>
-    <string name="link_qwant_maps_description">"Een kaart met doorzoekbare plaatsen en routebeschrijvingen"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Om de kaart weer te geven, worden vectortegels opgehaald uit %1$s. Zie hun &lt;a href=\"%2$s\"&gt;privacy-verklaring&lt;/a&gt; voor meer informatie.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsors"</string>
     <string name="quest_board_type_history">"Geschiedenis"</string>
@@ -1025,7 +1024,7 @@ U kunt ook een notitie achterlaten (met een foto)"</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Stevige ondergrond, heel weinig los grind of zand"</string>
     <string name="quest_barrier_path_intersection">"Hoe wordt dit pad versperd?"</string>
     <string name="quest_barrier_road_intersection">"Hoe wordt deze weg versperd?"</string>
-    <string name="quest_sidewalk_value_separate">"apart getoond op de kaart"</string>
+    <string name="quest_sidewalk_value_separate">"trottoir, maar apart getoond op de kaart"</string>
     <string name="quest_shoulder_value_yes">"vluchtstrook"</string>
     <string name="quest_shoulder_value_no">"geen vluchtstrook"</string>
     <string name="no_camera_permission_warning_title">"Camerarechten"</string>
@@ -1047,7 +1046,7 @@ Doe hetzelfde voor de andere zijde, als aanwezig."</string>
     <string name="default_disabled_msg_no_ar">"Je hebt een meetlint nodig om deze vraag te beantwoorden, omdat meten met de camera niet ondersteund is op dit apparaat."</string>
     <string name="quest_cycleway_width_title">"Hoe breed is dit fietspad hier?"</string>
     <string name="quest_road_width_title">"Hoe breed is deze weg hier?"</string>
-    <string name="quest_road_width_explanation">"De rijbaanbreedte van stoeprand tot stoeprand: dit omvat alles op het straatoppervlak, zoals parkeren op straat of fietspaden op de rijbaan, maar sluit alles daarbuiten uit, zoals fietspaden of parkeren naast de rijbaan."</string>
+    <string name="quest_road_width_explanation">"De rijbaanbreedte van stoeprand tot stoeprand: dit omvat alles op het straatoppervlak, zoals parkeren op straat of fietspaden op de rijbaan, maar sluit alles daarbuiten uit, zoals trottoirs, fietspaden of parkeren naast de rijbaan."</string>
     <string name="quest_sidewalk_answer_none">"Helemaal geen trottoir"</string>
     <string name="link_osmand_description">"Mobiele app voor online en offline kaartweergave en navigatie"</string>
     <string name="link_sunders_description">"Een kaart met camera's en bewakingsapparatuur"</string>
@@ -1093,7 +1092,7 @@ Doe hetzelfde voor de andere zijde, als aanwezig."</string>
     <string name="quest_existence_title2">"Is dit nog steeds hier?"</string>
     <string name="quest_generalFee_title2">"Moet je betalen om hier binnen te komen?"</string>
     <string name="quest_internet_access_title">"Wat voor soort internetverbinding biedt deze plaats?"</string>
-    <string name="quest_level_title2">"Op welk niveaunummer bevindt zich deze plaats?"</string>
+    <string name="quest_level_title2">"Op welke verdieping bevindt zich deze plaats?"</string>
     <string name="quest_lit_title">"Is het hier verlicht?"</string>
     <string name="quest_openingHours_title">"Wat zijn hier de openingstijden?"</string>
     <string name="quest_openingHours_signed_title">"Staan de openingstijden hier aangegeven?"</string>
@@ -1303,8 +1302,8 @@ Nu verplaatsen?"</string>
     <string name="quest_tactilePaving_steps_top">"Alleen bovenaan"</string>
     <string name="quest_tactilePaving_steps_bottom">"Alleen onderaan"</string>
     <string name="overlay_addresses_no_entrance">"Het is geen ingang..."</string>
-    <string name="quest_cycleway_value_sidewalk2">"Gezamelijk padgebruik"</string>
-    <string name="quest_cycleway_value_sidewalk_dual2">"Gezamelijk padgebruik, beide richtingen"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Gedeeld padgebruik"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"Gedeeld padgebruik, beide richtingen"</string>
     <string name="overlays_tutorial_title">"Overlays"</string>
     <string name="overlays_tutorial_intro">"Je hebt een nieuwe manier gevonden om gegevens te bewerken!"</string>
     <string name="overlays_tutorial_display">"Elke overlay toont één soort gegevens, bijvoorbeeld winkels of straatoppervlakken.
@@ -1370,7 +1369,7 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="overlay_things">"Dingen"</string>
     <string name="disused">"Niet meer in gebruik"</string>
     <string name="unknown_object">"Onbekend object"</string>
-    <string name="quest_leafType_tree_title">"Is dit een naaldboom of een loofboom?"</string>
+    <string name="quest_leafType_tree_title">"Heeft deze boom naalden of bladeren?"</string>
     <string name="quest_bbq_fuel_gas">"Gas"</string>
     <string name="about_description_donate_google_play3">"Bedankt dat je overweegt deze app te ondersteunen!
 Je kunt informatie over doneren terugvinden op onze website of Github. Google Play staat ons niet toe de link in de app te tonen."</string>
@@ -1383,4 +1382,23 @@ Je kunt informatie over doneren terugvinden op onze website of Github. Google Pl
     <string name="quest_moped_access_designated">"Er is een bord dat brommers zijn toegestaan op dit fietspad"</string>
     <string name="quest_moped_access_forbidden">"Er is een bord dat brommers verbiedt"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Deze vraag staat standaard uit omdat borden voor toegang voor brommers alleen aan het begin/eind van een fietspad staan."</string>
+    <string name="quest_arrow_tutorial">"De pijlen in het voorbeeld wijzen in de richting waarin de weg loopt op de kaart op de plaats van het merkteken. Probeer de kaart te draaien en je zult het begrijpen."</string>
+    <string name="info">"Meer informatie"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Het is verboden"</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Het is toegestaan"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Er is een trottoir, maar het is apart op de kaart getoond."</string>
+    <string name="quest_buildingLevels_hint">"Voor gebouwen op een helling begint het tellen bij de begane grond van de laagste kant.
+
+Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die niet als verdieping tellen zijn niet noodzakelijk plat, maar alleen maar niet hoog genoeg als verdieping.
+    "</string>
+    <string name="quest_parcel_locker_brand">"Wat is het merk van deze pakketautomaat?"</string>
+    <string name="quest_parcel_locker_pickup">"Kun je hier pakketten ophalen?"</string>
+    <string name="quest_parcel_locker_mail_in">"Kun je hier pakketten versturen?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"De kabel is aan een gebouw verbonden"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"geen, maar een bord laat fietsen op het trottoir toe"</string>
+    <string name="separate_cycleway_no_signed">"Een bord verbiedt fietsen"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Voetpad, maar een bord laat fietsen toe"</string>
+    <string name="quest_bicycle_parking_type_floor">"Gebied bestemd voor fietsparkeren"</string>
+    <string name="link_osmapp_description">"Een kaart met verschillende lagen, zoals voor klimmen of skiën"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Alleen voor retourzendingen"</string>
 </resources>

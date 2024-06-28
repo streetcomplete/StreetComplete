@@ -342,7 +342,7 @@
     <string name="create_new_note_description">"Μπορείτε να αφήσετε μια σημείωση για να ενημερώσετε άλλους χαρτογράφους για ένα ζήτημα εδώ. Ρυθμίστε τη θέση της σημείωσης μετακινώντας τον χάρτη:"</string>
     <string name="quest_generic_looks_like_this">"Συνήθως φαίνεται έτσι:"</string>
     <string name="quest_surface_value_metal">"Μέταλο"</string>
-    <string name="quest_cycleway_title2">"Υπάρχει ένας ποδηλατόδρομος εδώ; Τι τύπος;"</string>
+    <string name="quest_cycleway_title2">"Υπάρχει ποδηλατόδρομος εδώ;  Τι τύπος;"</string>
     <string name="quest_bridge_structure_title">"Ποια είναι η κατασκευή αυτής της γέφυρας;"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Ενσύρματο (LAN)"</string>
@@ -403,7 +403,7 @@
     <string name="quest_buildingType_apartments">"Κτίριο διαμερισμάτων"</string>
     <string name="quest_buildingType_detached">"Μονοκατοικία"</string>
     <string name="quest_buildingType_detached_description">"ελεύθερη μονοκατοικία"</string>
-    <string name="quest_buildingType_semi_detached">"Ημιτελής μονοκατοικία"</string>
+    <string name="quest_buildingType_semi_detached">"Ημιανεξάρτητη μονοκατοικία"</string>
     <string name="quest_buildingType_terrace_description">"μια σειρά παρόμοιων μονοκατοικιών"</string>
     <string name="quest_buildingType_hotel">"Κτίριο Ξενοδοχείου"</string>
     <string name="quest_buildingType_dormitory">"Κοιτώνας"</string>
@@ -526,7 +526,7 @@
     <string name="quest_split_way_description">"Αν υπάρχουν διαφορές κατά μήκος της διαδρομής, το πρώτο βήμα είναι να την χωρίσουμε. Μετά από αυτό, η αναζήτηση μπορεί να απαντηθεί ξεχωριστά για κάθε διαχωρισμένο τμήμα. Διαχωρισμός τώρα;"</string>
     <string name="quest_split_way_tutorial">"Χτυπήστε στη διαδρομή για να τη χωρίσετε στο σημείο (σημεία) όπου η απάντηση διαφέρει. Προσπαθήστε να είστε όσο το δυνατόν ακριβέστεροι, μπορείτε να κάνετε μεγέθυνση ως συνήθως."</string>
     <string name="quest_split_way_too_imprecise">"Παρακαλώ μεγεθύνετε κι άλλο"</string>
-    <string name="quest_split_way_many_splits_confirmation_description">"Αυτά είναι μερικά χωρίσματα. Μπορείτε πάντα να χωρίσετε περαιτέρω το δρόμο αργότερα."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Αυτά είναι αρκετά χωρίσματα. Μπορείτε πάντα να χωρίσετε περαιτέρω το δρόμο αργότερα."</string>
     <string name="quest_footwayPartSurface_title">"Ποια είναι η επιφάνεια του πεζόδρομου εδώ;"</string>
     <string name="quest_maxweight_title">"Ποιο είναι το όριο βάρους εδώ;"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Αυτό το βάρος φαίνεται παράλογο. Είστε βέβαιος ότι είναι σωστό;"</string>
@@ -686,7 +686,6 @@
     <string name="quest_recycling_type_engine_oil">"Λάδι μηχανής"</string>
     <string name="link_photon_description">"Μια αυτόνομη επέκταση στο Nominatim, με ασαφή αναζήτηση και αναζήτηση - όπως - εσείς - πληκτρολογείτε"</string>
     <string name="link_graphhopper_description">"Μία ευέλικτη μηχανή δρομολόγησης"</string>
-    <string name="link_qwant_maps_description">"Ένας χάρτης με αναζητήσιμα μέρη και κατευθύνσεις"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Για να εμφανιστεί ο χάρτης, τα διανυσματικά πλακίδια ανακτώνται από το %1$s. Ανατρέξτε στην &lt;a href=\"%2$s\"&gt; δήλωση απορρήτου &lt;/a&gt; για περισσότερες πληροφορίες. &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Χορηγοί"</string>
     <string name="quest_board_type_history">"Ιστορία"</string>
@@ -1387,4 +1386,8 @@
     <string name="quest_parcel_locker_pickup">"Μπορείτε να παραλάβετε δέματα από εδώ;"</string>
     <string name="quest_parcel_locker_mail_in">"Μπορείτε να αφήσετε δέματα εδώ;"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Το ηλεκτρικό καλώδιο είναι στερεωμένο στο κτίριο"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"κανένας, αλλά μια ταμπέλα επιτρέπει την ποδηλασία στο πεζοδρόμιο"</string>
+    <string name="separate_cycleway_no_signed">"Μια ταμπέλα απαγορεύει ρητά την ποδηλασία"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Πεζόδρομος, αλλά η ποδηλασία επιτρέπεται ρητά απο μια ταμπέλα"</string>
+    <string name="quest_bicycle_parking_type_floor">"Περιοχή Καθορισμένης χρήσης"</string>
 </resources>

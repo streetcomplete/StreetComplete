@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Wells Fargo, Bank of America, Truist, First Citizens Bank, South Carolina Federal Credit Union, Palmetto Citizens Federal Credit Union ATM, Founders Federal Credit Union, United Community Bank, SunTrust, Chase, Western Union, TD Bank, South State Bank, Palmetto Citizens, Greenville Federal Credit Union, Countybank, CPM Federal Credit Union]
+atmOperators: [Wells Fargo, Bank of America, Truist, First Citizens Bank, South Carolina Federal Credit Union, Palmetto Citizens Federal Credit Union ATM, Founders Federal Credit Union, United Community Bank, SunTrust, Chase, Western Union, South State Bank, Palmetto Citizens, Greenville Federal Credit Union, Countybank, CPM Federal Credit Union]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Blink, EVgo, City of Greenville]
 clothesContainerOperators: [There Is Hope, Green Zone]
 defaultSpeedLimitHasUrbanOrRural: true

@@ -59,7 +59,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="map_btn_create_note">Create new note</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map.</string>
-    <string name="create_new_note_hint">Ideally, write the note in the local language, or otherwise in English.</string>
+    <string name="create_new_note_hint">Ideally, write in the local language, or otherwise in English.</string>
 
     <string name="map_btn_create_track">Create new track recording</string>
     <string name="map_btn_stop_track">"Stop recording track"</string>
@@ -476,7 +476,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
-    <string name="link_qwant_maps_description">A map with searchable places and directions</string>
+    <string name="link_osmapp_description">A map with various layers, such as for climbing or skiing</string>
     <string name="link_organic_maps_description">Maps app for travelers, hikers and cyclists that works offline</string>
     <string name="link_osmand_description">Mobile app for online and offline map viewing and navigation</string>
     <string name="link_weeklyosm_description">The weekly news blog about what’s happening in the OpenStreetMap world</string>
@@ -1277,6 +1277,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_parcel_locker_brand">"What’s the brand of this parcel locker?"</string>
     <string name="quest_parcel_locker_pickup">Can you pick up parcels here?</string>
     <string name="quest_parcel_locker_mail_in">Can you drop off parcels here?</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">Only for return deliveries</string>
 
     <string name="quest_parking_access_title2">Who is allowed to park here? Parking may be free or paid.</string>
     <string name="quest_access_yes">Any member of the general public</string>
@@ -1341,7 +1342,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_bbq_fuel_charcoal">Charcoal</string>
     <string name="quest_bbq_fuel_gas">Gas</string>
     <string name="quest_bbq_fuel_not_a_bbq">It’s a fire enclosure</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills.</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">If there is no cooking surface (e.g. grate/plate), it’s a fire enclosure.</string>
 
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>
