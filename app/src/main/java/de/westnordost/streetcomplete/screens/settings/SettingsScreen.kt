@@ -33,7 +33,6 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
-import de.westnordost.streetcomplete.ui.common.dialogs.ListPickerDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.util.ktx.format
 import java.util.Locale
@@ -133,7 +132,10 @@ fun SettingsScreen(
                     name = stringResource(R.string.pref_title_language_select2),
                     onClick = { showLanguageSelect = true },
                 ) {
-                    Text(getLanguageDisplayName(selectedLanguage))
+                    Text(
+                        getLanguageDisplayName(selectedLanguage)
+                            ?: stringResource(R.string.language_default)
+                    )
                 }
 
                 Preference(
@@ -249,15 +251,19 @@ fun SettingsScreen(
             getItemName = { stringResource(it.titleResId) }
         )
     }
-    if (showLanguageSelect && selectableLanguageCodes != null) {
-        // TODO sort languages alphabetically by display name
+    val codes = selectableLanguageCodes
+    if (showLanguageSelect && codes != null) {
+        val namesByCode = remember(codes) { codes.associateWith { getLanguageDisplayName(it) } }
+        val sortedCodes = listOf("") + codes.sortedBy { namesByCode[it]?.lowercase() }
         SimpleListPickerDialog(
             onDismissRequest = { showLanguageSelect = false },
-            items = selectableLanguageCodes!!,
+            items = sortedCodes,
             onItemSelected = { viewModel.setSelectedLanguage(it) },
             title = { Text(stringResource(R.string.pref_title_language_select2)) },
             selectedItem = selectedLanguage,
-            getItemName = { getLanguageDisplayName(it) }
+            getItemName = {
+                getLanguageDisplayName(it) ?: stringResource(R.string.language_default)
+            }
         )
     }
 }
@@ -280,10 +286,8 @@ private val Prefs.Theme.titleResId: Int get() = when (this) {
     Prefs.Theme.SYSTEM -> R.string.theme_system_default
 }
 
-@Composable
-@ReadOnlyComposable
-private fun getLanguageDisplayName(languageTag: String): String {
-    if (languageTag.isEmpty()) return stringResource(R.string.language_default)
+private fun getLanguageDisplayName(languageTag: String): String? {
+    if (languageTag.isEmpty()) return null
     val locale = Locale.forLanguageTag(languageTag)
     return locale.getDisplayName(locale)
 }

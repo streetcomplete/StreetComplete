@@ -58,7 +58,7 @@ fun <T> ListPickerDialog(
 
     LaunchedEffect(selectedItem) {
         val index = items.indexOf(selectedItem)
-        if (index != -1) state.scrollToItem(index, -state.layoutInfo.viewportSize.height / 2)
+        if (index != -1) state.scrollToItem(index, -state.layoutInfo.viewportSize.height / 3)
     }
 
     ScrollableAlertDialog(
