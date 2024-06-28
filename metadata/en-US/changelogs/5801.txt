@@ -1,0 +1,3 @@
+- Fix gps button color in dark mode
+- Add plus and minus buttons to level filter
+- Update translations

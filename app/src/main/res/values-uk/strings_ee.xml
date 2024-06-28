@@ -397,4 +397,8 @@
     <string name="close">Закрити</string>
     <string name="quest_guidepostEle_title">Яка тут висота над рівнем моря?</string>
     <string name="quest_guidepostEle_hint">Не використовуйте дані про висоту за GPS, оскільки вони, як правило, занадто неточні і не надаються в правильній системі відліку висоти.</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">Високі вантажівки можуть проїхати</string>
+    <string name="quest_maxheight_answer_noSign_question">Чи достатньо місця для проїзду навіть найвищих вантажівок (від 4,5 метрів / 15 футів заввишки)?</string>
+    <string name="quest_maxheight_answer_noSign_question_unclear">Невідомо</string>
+    <string name="quest_maxheight_answer_noSign_question_no">Високі вантажівки не проїдуть</string>
 </resources>

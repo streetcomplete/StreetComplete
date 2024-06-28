@@ -30,7 +30,7 @@
     <string name="pref_expert_mode_title">Ekspert-tilstand</string>
     <string name="pref_expert_mode_summary">Aktivér avancerede redigeringsfunktioner</string>
     <string name="pref_save_photos_summary">Gem billeder i fuld størrelse, der er taget under oprettelse af noter, uden at slette EXIF-data</string>
-    <string name="pref_way_direction">Vis retning af ways</string>
+    <string name="pref_way_direction">Vis retning på veje</string>
     <string name="pref_hide_keyboard_title">Skjul tastaturet før oprettelse af note</string>
     <string name="pref_screen_notes">Noter</string>
     <string name="pref_read_log_save">Gem fuld log til fil</string>
@@ -42,7 +42,7 @@
     <string name="pref_import">Importindstillinger</string>
     <string name="pref_update_local_statistics">Opdater statistik ved upload</string>
     <string name="pref_main_menu_switch_presets_title">Skift knap til forudindstilling i hovedmenuen</string>
-    <string name="pref_offset_fix_summary">De findes for at hvide prikker skjules af opgavenåle</string>
+    <string name="pref_offset_fix_summary">De findes, for at hvide prikker skjules af opgavenåle</string>
     <string name="pref_recent_answers_first_min_lines_message">Flyt seneste svar frem forrest, hvis svarformularen har mere end dette antal linjer med billeder</string>
     <string name="pref_custom_title">Indlæs brugerdefineret opgave-fil</string>
     <string name="pref_show_next_quest_summary">Vis yderligere opgaver for samme element straks efter løsning</string>
@@ -195,7 +195,7 @@
     <string name="quest_trail_visibility_good_description">Stien eller den næste markør er altid synlig, men nogle gange skal man lede efter den. Grundlæggende retningssans nødvendig, kort anbefales.</string>
     <string name="quest_trail_visibility_intermediate_description">Stien er for det meste synlig, ingen markører. God retningssans nødvendig, kort påkrævet.</string>
     <string name="quest_trail_visibility_intermediate">Nogenlunde</string>
-    <string name="quest_trail_visibility_bad_description">Stien er nogle gange usynlig, ruten er delvist uden stier, ingen markeringer. Grundlæggende færdigheder i orientering kræves.</string>
+    <string name="quest_trail_visibility_bad_description">Stien er nogle gange usynlig, ruten er delvist uden sti, ingen markeringer. Grundlæggende færdigheder i orientering kræves.</string>
     <string name="quest_trail_visibility_bad">Dårlig</string>
     <string name="quest_mapSize_region">Et større område med f.eks. flere landsbyer</string>
     <string name="quest_viaFerrataScale_two">Grad 2/K2/B - nem</string>
@@ -316,7 +316,7 @@
     <string name="quest_artwork_relief">Relief</string>
     <string name="quest_trail_visibility_horrible">Forfærdelig</string>
     <string name="quest_trail_visibility_no">Ingen synlighed</string>
-    <string name="quest_trail_visibility_no_description">For det meste uden sti, ingen markører. Fremragende orienteringsevner er påkrævet.</string>
+    <string name="quest_trail_visibility_no_description">Mest uden stier, ingen markører. Fremragende orienteringsevner er påkrævet.</string>
     <string name="quest_trail_visibility_horrible_description">Ofte uden sti, ingen markører. Gode orienteringsevner påkrævet.</string>
     <string name="quest_buildingPartColour_title">Hvilken overordnet farve har denne bygningsdel?</string>
     <string name="quest_roofColour_title">Hvilken overordnet farve har denne bygnings tag?</string>
@@ -364,11 +364,11 @@
     <string name="quest_osmose_no_undo">Er du sikker? Det kan ikke gøres om!</string>
     <string name="quest_osmose_select_element">Vælg element</string>
     <string name="quest_custom_quest_osmose_not_found">Post slettet, fjerner opgave</string>
-    <string name="level_filter_hint">Lad det være tomt for at vise ikke-tagget</string>
+    <string name="level_filter_hint">Tom for at vise ikke-tagget</string>
     <string name="quest_custom_quest_remove">Fjern fra liste</string>
     <string name="quest_osmose_hide_type">Ignorér problemer med samme…</string>
     <string name="level_filter_enable">Aktivér etage-filter</string>
-    <string name="quick_switch_map_background">Skift mellem luftfoto- og kortbaggrund</string>
+    <string name="quick_switch_map_background">Skift mellem luftfoto- og kort</string>
     <string name="quick_switch_preset">Skift forudindstilling</string>
     <string name="quest_osmose_title">Osmose-opgave: %s</string>
     <string name="quest_osmose_false_positive">Rapportér falsk positiv</string>
@@ -441,7 +441,7 @@
     <string name="quest_trail_visibility_excellent">Fremragende</string>
     <string name="quest_trail_visibility_excellent_description">Tydelig sti eller markører overalt. Uproblematisk at orientere sig, intet kort nødvendigt.</string>
     <string name="quest_trail_visibility_good">God</string>
-    <string name="quest_trail_visibility_title">Hvad er sporets synlighed på denne vej?</string>
+    <string name="quest_trail_visibility_title">Hvad er synligheden af dette spor?</string>
     <string name="default_disabled_msg_trail_visibility">Denne opgavetype er som standard deaktiveret, fordi vurderingen af sporets synlighed er meget subjektiv og kræver ekspertviden om det anvendte klassificeringssystem.</string>
     <string name="quest_footway_width_title">Hvor bred er gangstien her?</string>
     <string name="quest_destination_add_more">Tilføj en anden destination</string>
@@ -455,7 +455,7 @@
     <string name="quest_buildingType_riding_hall">Ridehal</string>
     <string name="quest_buildingType_digester">Fordøjer (bioreaktor)</string>
     <string name="quest_buildingType_transformer_tower">Transformatortårn</string>
-    <string name="quest_buildingType_transit_shelter">Læskur til transport</string>
+    <string name="quest_buildingType_transit_shelter">Læskur i forbindelse med transport</string>
     <string name="quest_buildingType_elevator">Elevator</string>
     <string name="quest_buildingType_presbytery">Presbyteriansk</string>
     <string name="quest_buildingType_barn">Lade</string>
@@ -492,7 +492,7 @@
     <string name="quest_parking_capacity_disabled_answer_yes">Det er der, men antallet er uklart</string>
     <string name="custom_overlay_filter_message">Klik på nedenstående link for at åbne oplysninger om syntaksen for valg af elementer i en browser. Bemærk, at når du vælger elementer efter alder, kan indstillingen af genundersøgelsesintervallet påvirke resultatet.
 \nAfkrydsningsfelterne erstatter \"nodes, ways with\"-delen.</string>
-    <string name="custom_overlay_color_hint">Lad det være tomt for at vise alle i samme farve</string>
+    <string name="custom_overlay_color_hint">Tom for at vise alle i samme farve</string>
     <string name="restriction_overlay_relation_unsupported">Ikke-understøttet relationstype:
 \n%s</string>
     <string name="restriction_overlay_sign_give_way">Vigepligt</string>
@@ -516,7 +516,7 @@
     <string name="access_width_limit">Bredde</string>
     <string name="quest_settings_building_levels_optional_roof">Tillad at udelade tagetager overalt</string>
     <string name="quest_settings_dot_labels_message">Indstil, hvilke tags der skal bruges til etiketten i en given rækkefølge. En tom streng vil aldrig vise nogen etiketter, \"etiket\" vil vise standard StreetComplete-navnetiketten ved hjælp af navn, mærke, ref, local_ref og operator.</string>
-    <string name="quest_shelter_type_title">Hvilken slags shelter er det?</string>
+    <string name="quest_shelter_type_title">Hvilken slags shelter er dette?</string>
     <string name="quest_parking_capacity_title">Hvor mange biler kan parkere her?</string>
     <string name="quest_parking_capacity_disabled_title">Hvor mange parkeringspladser for handicappede er der her?</string>
     <string name="quest_custom_quest_message">Bruges til at tjekke specifikke foruddefinerede elementer eller placeringer. Du kan også angive tags og tilføje et punkt (node) med dem. For at bruge det skal du indlæse en fil i hovedindstillingsmenuen, der indeholder enten type,id,message (f.eks. NODE,1234,check position) eller latitude,longitude,message. For at tilføje punkter skal du sætte tags i beskeden efter \'addNode\', f.eks. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
@@ -567,4 +567,8 @@
 \nEksempel:
 \n\"surface\" viser surface=asphalt i samme farve og surface=concrete i en anden farve
 \n\".*surface\" ligner, men viser også sidewalk:(left/right/both):surface=asphalt i én farve, og cycleway:(left/right/both):surface=asphalt i en anden farve</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">Høje lastbiler kan køre igennem</string>
+    <string name="quest_maxheight_answer_noSign_question_no">Der er ikke plads til høje lastbiler</string>
+    <string name="quest_maxheight_answer_noSign_question_unclear">Uklart</string>
+    <string name="quest_maxheight_answer_noSign_question">Er der rigeligt med plads til, at selv de højeste lastbiler (mindst ca. 4,5 meter) kan køre igennem?</string>
 </resources>

@@ -567,4 +567,8 @@
     <string name="quest_generalRef_hint">Número o código de referencia</string>
     <string name="quest_generalRef_disabled_msg">Esta búsqueda está desactivada por defecto porque lo que se señaliza varía mucho según la región y el operador. Puede que necesites refinar la selección de elementos para tu zona (por ejemplo :añadir mapas, seleccionar sólo postes guía con hiking=yes, etc.)</string>
     <string name="close">Cerrar</string>
+    <string name="quest_maxheight_answer_noSign_question">¿Hay suficiente espacio para que pasen incluso los camiones más altos (al menos unos 4,5 metros / 15 pies)?</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">Los camiones altos pueden pasar</string>
+    <string name="quest_maxheight_answer_noSign_question_no">Los camiones altos no caben</string>
+    <string name="quest_maxheight_answer_noSign_question_unclear">No está claro</string>
 </resources>

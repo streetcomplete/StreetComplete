@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="pref_hide_notes_title">Hinweise bestimmter Nutzer verstecken</string>
+    <string name="pref_hide_notes_title">Hinweise bestimmter Benutzer ausblenden</string>
     <string name="pref_category_mods">SCEE-Einstellungen</string>
     <string name="pref_screen_notes">Hinweise</string>
     <string name="pref_save_file_error">Fehler beim Speichern der Datei</string>
     <string name="pref_expert_mode_title">Expertenmodus</string>
     <string name="pref_expert_mode_summary">Erweiterte Bearbeitungsmöglichkeiten aktivieren</string>
     <string name="custom_overlay_color_hint">Feld leer lassen, um alles in einer Farbe anzuzeigen</string>
-    <string name="pref_hide_notes_message">Gib Usernamen oder IDs ein, die ignoriert werden sollen</string>
+    <string name="pref_hide_notes_message">Benutzernamen oder IDs eingeben, die ignoriert werden sollen</string>
     <string name="pref_read_filter_hint">Filter…</string>
-    <string name="pref_hide_notes_hint">Verwende Kommas, um Usernamen oder IDs zu trennen</string>
+    <string name="pref_hide_notes_hint">Benutzernamen oder IDs durch Komma trennen</string>
     <string name="pref_show_gpx_button_title">Schaltfläche für GPX-Hinweis anzeigen</string>
     <string name="pref_swap_gpx_note_button">Knöpfe für OSM- und GPX-Hinweise vertauschen</string>
     <string name="pref_hide_keyboard_title">Tastatur vor dem Erstellen eines Hinweises ausblenden</string>
@@ -74,7 +74,7 @@
     <string name="pref_show_next_quest_summary">Weitere Suche nach demselben Element direkt nach dem Lösen anzeigen</string>
     <string name="insert_node">Knoten in Weg einfügen</string>
     <string name="restore_dialog_hint">Du kannst auch manuell auswählen, welche Quests wiederhergestellt werden sollen, indem du lange auf die Schaltfläche „Rückgängig“ drückst.</string>
-    <string name="pref_gpx_track_download">Vom GPX-Track abgedeckter Bereich herunterladen</string>
+    <string name="pref_gpx_track_download">Vom GPX-Track abgedeckten Bereich herunterladen</string>
     <string name="quest_seating_sidewalk">Auf dem Gehsteig</string>
     <string name="quest_osmose_select_element">Element auswählen</string>
     <string name="pref_create_custom_quest_title">Erstellen von benutzerdefinierten Aufgaben erlauben</string>
@@ -122,7 +122,7 @@
 \nEs ist auch möglich, das Problem als falschen Alarm zu melden; dies kann jedoch nicht rückgängig gemacht werden.</string>
     <string name="pref_select_first_edit_summary">Ermöglicht ein schnelleres Rückgängigmachen, bewegt die Kamera aber automatisch</string>
     <string name="default_disabled_msg_poi_recycling">Diese „Suche“ zeigt POIs zum Thema Recycling und Müll als grüne Punkte an. Ein Klick auf den Punkt zeigt Details und weitere Antworten an.</string>
-    <string name="default_disabled_msg_ee">In SCEE hinzugefügte Quests sind standardmäßig immer deaktiviert, da sie nicht immer beantwortet werden können und möglicherweise Kenntnisse des Themas und der Kennzeichnung erfordern.</string>
+    <string name="default_disabled_msg_ee">In SCEE hinzugefügte Aufgaben sind standardmäßig immer deaktiviert, da sie nicht immer beantwortet werden können und möglicherweise Kenntnisse des Themas und der Kennzeichnung erfordern.</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">Alle</string>
     <string name="quest_artwork_graffiti">Graffiti</string>
     <string name="quest_healthcare_speciality_add_more">Weitere Spezialität hinzufügen</string>
@@ -206,10 +206,10 @@
     <string name="pref_use_sd">Externe SD-Karte zum Speichern von Kartenkacheln verwenden</string>
     <string name="quest_seating_roof">Auf einem Dach</string>
     <string name="custom_overlay_filter_info">Details zur Filterung</string>
-    <string name="pref_quest_monitor_download">Daten herunterladen, wenn notwendig\? Dies kann erheblichen Daten- und Akkuverbrauch verursachen und aus Gründen der Akkuschonung von Android möglicherweise nutzlos gemacht werden.</string>
+    <string name="pref_quest_monitor_download">Daten herunterladen, falls erforderlich? Dies kann erheblichen Daten- und Akkuverbrauch verursachen und aus Gründen der Akkuschonung von Android möglicherweise nicht genutzt werden.</string>
     <string name="restriction_overlay_title">Verkehrsbeschränkungen</string>
     <string name="pref_dynamic_quest_creation_title">Quests dynamisch erstellen</string>
-    <string name="pref_use_sd_summary">Wenn Du diese Einstellung änderst, werden die Daten verschoben, was eine Weile dauern kann</string>
+    <string name="pref_use_sd_summary">Wenn du diese Einstellung änderst, werden die Daten verschoben, was eine Weile dauern kann</string>
     <string name="quest_settings_building_levels_optional_roof">Erlaubt überall das Weglassen von Dachebenen</string>
     <string name="hide_button">Ausblenden</string>
     <string name="quest_artwork_stone">Stein</string>
@@ -250,7 +250,7 @@
     <string name="quest_private">Es ist privat</string>
     <string name="outside_downloaded_area_warning">Diese Stelle befindet sich außerhalb des heruntergeladenen Bereichs. Fortfahren\?</string>
     <string name="quest_settings_level_more">Ärzte und viele weitere Knoten in mehrstöckigen Gebäuden</string>
-    <string name="restriction_overlay_show_details">Zeige Relationsdetails</string>
+    <string name="restriction_overlay_show_details">Relationsdetails anzeigen</string>
     <string name="moving">Kacheln verschieben…</string>
     <string name="quest_generic_surface_no">Nur mit Hinweis (Standard)</string>
     <string name="access_length_limit">Länge</string>
@@ -260,7 +260,7 @@
     <string name="quest_railwayPlatformRef_title">Welche Tracknummer ist hier?</string>
     <string name="element_selection_button">Elementauswahl</string>
     <string name="level_filter_enable">Level-Filter aktivieren</string>
-    <string name="quest_settings_level_title">Zeige diesen Quest für:</string>
+    <string name="quest_settings_level_title">Diese Aufgabe anzeigen für:</string>
     <string name="advanced_resurvey_message_date">Anstatt Wiederholungsintervalle zu verwenden, wird über den Schlüssel neu vermessen, wenn das Prüfdatum älter ist als:</string>
     <string name="quest_destination_all_lanes_button">Alle
 \nSpuren</string>
@@ -271,7 +271,7 @@
     <string name="quest_poi_cycling_title">POI: Radfahren</string>
     <string name="default_disabled_msg_poi_camera">Diese „Suche“ zeigt Überwachungsmerkmale als rosa Punkte an. Ein Klick auf den Punkt zeigt Details und weitere Antworten an.</string>
     <string name="pref_day_night_title">Filter für die Tageszeitsuche</string>
-    <string name="manage_access">Zugang (access) verwalten…</string>
+    <string name="manage_access">Zugang verwalten…</string>
     <string name="pref_hide_button_summary">Klicken blendet die Suche vorübergehend aus, langes Klicken blendet sie dauerhaft aus</string>
     <string name="quest_settings_max_steps_length">Maximale Länge der Stufen in Metern für die anzuzeigende Suche</string>
     <string name="create_custom_quest_title_message">Anzuzeigende Nachricht eingeben</string>
@@ -287,10 +287,10 @@
     <string name="show_nearby_quests_all_types">Alle Aufgabentypen anzeigen</string>
     <string name="quest_artwork_land_art">Kunst am Boden</string>
     <string name="access_weight_limit">Gewicht</string>
-    <string name="import_export_presets_select">Wähle Vorlagen zum exportieren</string>
+    <string name="import_export_presets_select">Wähle Vorlagen zum Exportieren</string>
     <string name="pref_gps_interval_title">Aktualisierungsintervall für den GPS-Standort</string>
     <string name="import_presets_overlays_message">Importierte hinzufügen oder bestehende ersetzen? Wenn du „Ersetzen“ wählst, werden alle bereits vorhandenen Einträge entfernt.</string>
-    <string name="add_access">Zugang (access) hinzufügen…</string>
+    <string name="add_access">Zugang hinzufügen…</string>
     <string name="pref_manual_download_cache_summary">Wenn diese Funktion deaktiviert ist, werden die Daten bei einem manuellen Download nicht erneut heruntergeladen, es sei denn, sie sind älter als 12 Stunden</string>
     <string name="custom_overlay_filter_message">Ein Klick auf den unten stehenden Link öffnet Informationen zur Syntax der Elementauswahl in einem Browser. Beachte, dass bei der Auswahl von Elementen nach Alter die Einstellung des Wiedererhebungsintervalls das Ergebnis beeinflussen kann.
 \nDie Kontrollkästchen ersetzen den Teil „Knoten, Wege mit“.</string>
@@ -364,7 +364,7 @@
     <string name="show_nearby_quests_disable">Keine Aufgaben in der Nähe anzeigen</string>
     <string name="quest_crossing_type_zebra">Zebrastreifen</string>
     <string name="quest_buildingPartColour_title">Welche Farbe hat dieses Gebäudeteil\?</string>
-    <string name="pref_way_direction_summary">Zeigt Pfeile auf markierten Zeilen an, wenn eine Aufgabe geöffnet wird. Nützlich z.B. beim Hinzufügen von Einbahnstraßen.</string>
+    <string name="pref_way_direction_summary">Zeigt Pfeile auf markierten Zeilen an, wenn eine Aufgabe geöffnet wird. Nützlich z. B. beim Hinzufügen von Einbahnstraßen.</string>
     <string name="quest_settings_dot_labels_message">Legt fest, welche Tags in der angegebenen Reihenfolge für die Beschriftung verwendet werden sollen. Ein leerer String zeigt keine Beschriftungen an, „label“ zeigt die Standardbeschriftung von StreetComplete mit name, brand, ref, local_ref und operator an.</string>
     <string name="quest_generic_answer_show_edit_tags">Tags anzeigen/bearbeiten</string>
     <string name="quest_poi_camera_title">POI: Kamera</string>
@@ -462,7 +462,7 @@
     <string name="quest_street_cabinet_traffic_monitoring">Verkehrsüberwachung</string>
     <string name="quest_street_cabinet_television">Fernsehen</string>
     <string name="quest_street_cabinet_traffic_control">Verkehrskontrolle</string>
-    <string name="quest_shelter_type_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, weil er nicht leicht zu beantworten ist. Die Art des Unterstandes muss aus Vorschlägen ausgewählt werden, die aus den am häufigsten verwendeten Werten entnommen werden, und diese sind oft nicht leicht zu unterscheiden.</string>
+    <string name="quest_shelter_type_disabled_msg">Diese Aufgabe ist standardmäßig deaktiviert, weil sie nicht leicht zu beantworten ist. Die Art des Unterstandes muss aus Vorschlägen ausgewählt werden, die aus den am häufigsten verwendeten Werten entnommen werden, und diese sind oft nicht leicht zu unterscheiden.</string>
     <string name="quest_street_cabinet_traffic">Verkehr</string>
     <string name="quest_shelter_type_title">Was für eine Art von Unterstand ist das\?</string>
     <string name="quest_shelter_type_picnic_shelter">Überdachte Picknickmöglichkeit</string>
@@ -484,7 +484,7 @@
     <string name="quest_viaFerrataScale_four_description">Steiles Gelände mit durchgehenden Stahlseilen zur Befestigung. Armkraft erforderlich. Künstliche Hilfsmittel (Eisentritte, Haltegriffe) auf den schwierigsten Abschnitten.</string>
     <string name="quest_viaFerrataScale_one_description">Gute natürliche Stufen oder eingehauene Treppen, kurze Leitern oder Eisenstufen. Exponierte Passagen sind mit Seilen, Ketten oder Seilen für Geländer ausgestattet. Erfahrene Bergsteiger haken sich nicht ein.</string>
     <string name="quest_viaFerrataScale_four">Grad 4/K4/D - schwierig</string>
-    <string name="default_disabled_msg_viaFerrataScale">Dieser Questtyp ist standardmäßig deaktiviert, da die Bewertung von Klettersteigen sehr subjektiv ist und Expertenwissen im verwendeten Bewertungssystem und beim Klettern von Klettersteigen erfordert, da dies fortgeschrittene bergsteigerische Fähigkeiten voraussetzt. Da es keine weltweite Skala für die Schwierigkeit von Klettersteigen gibt, wird hier die deutsche Huesler-Skala verwendet.</string>
+    <string name="default_disabled_msg_viaFerrataScale">Dieser Aufgabentyp ist standardmäßig deaktiviert, da die Bewertung von Klettersteigen sehr subjektiv ist und Expertenwissen im verwendeten Bewertungssystem und beim Klettern von Klettersteigen erfordert, da dies fortgeschrittene bergsteigerische Fähigkeiten voraussetzt. Da es keine weltweite Skala für die Schwierigkeit von Klettersteigen gibt, wird hier die deutsche Huesler-Skala verwendet.</string>
     <string name="quest_brewery_is_not_available">Hier wird kein Bier verkauft</string>
     <string name="quest_brewery_is_various">Hier werden viele Biermarken angeboten</string>
     <string name="quest_viaFerrataScale_zero">Grad 0 - keine</string>
@@ -499,7 +499,7 @@
     <string name="quest_trail_visibility_intermediate_description">Weg meist sichtbar, keine Markierungen. Guter Orientierungssinn erforderlich, Karte erforderlich.</string>
     <string name="quest_trail_visibility_title">Wie ist die Sichtbarkeit des Weges\?</string>
     <string name="quest_trail_visibility_excellent_description">Überall eindeutige Wege oder Markierungen. Orientierung unproblematisch, keine Karte erforderlich.</string>
-    <string name="default_disabled_msg_trail_visibility">Dieser Questtyp ist standardmäßig deaktiviert, da die Bewertung der Sichtbarkeit des Weges sehr subjektiv ist und Expertenwissen über das verwendete Bewertungssystem erfordert.</string>
+    <string name="default_disabled_msg_trail_visibility">Dieser Aufgabentyp ist standardmäßig deaktiviert, da die Bewertung der Sichtbarkeit des Weges sehr subjektiv ist und Expertenwissen über das verwendete Bewertungssystem erfordert.</string>
     <string name="quest_trail_visibility_good">Gut</string>
     <string name="quest_trail_visibility_excellent">Exzellent</string>
     <string name="quest_trail_visibility_intermediate">Mittelmäßig</string>
@@ -521,12 +521,12 @@
     <string name="quest_piste_ref_title">Wie lautet die Nummer dieser Piste\?</string>
     <string name="quest_piste_ref_connection">Es ist eine Verbindungspiste</string>
     <string name="quest_mapSize_landscape">Eine ganze Landschaft, meist auf Toposkopen verwendet</string>
-    <string name="quest_mapType_street_description">Eine Karte mit allen Straßen oder Wegen in einem Gebiet. Die Straßen sind größtenteils benannt. Die Winkel, Entfernungen usw. sind genau. Wird z.B. in Touristenbüros für die Übersicht über Unterkünfte verwendet.</string>
+    <string name="quest_mapType_street_description">Eine Karte mit allen Straßen oder Wegen in einem Gebiet. Die Straßen sind größtenteils benannt. Die Winkel, Entfernungen usw. sind genau. Wird z. B. in Touristenbüros für die Übersicht über Unterkünfte verwendet.</string>
     <string name="quest_mapType_toposcope_title">Toposkop</string>
     <string name="quest_mapSize_city">Eine ganze Stadt</string>
     <string name="quest_mapType_scheme_title">Schematisch</string>
     <string name="quest_mapType_toposcope_description">Ein Marker, der an erhöhten Stellen errichtet wird und die Richtung zu bemerkenswerten Landschaftsmerkmalen anzeigt, die von diesem Punkt aus sichtbar sind. Oft in Verbindung mit Aussichtspunkten verwendet.</string>
-    <string name="quest_mapType_scheme_description">Eine Skizzenkarte mit nur wichtigen Wegen und POIs (Points of Interest). Die Winkel, Entfernungen usw. sind nur illustrativ, nicht genau. Wird z.B. von Reisebüros verwendet, um ihre Touren zu erklären.</string>
+    <string name="quest_mapType_scheme_description">Eine Skizzenkarte mit nur wichtigen Wegen und POIs (Points of Interest). Die Winkel, Entfernungen usw. sind nur illustrativ, nicht genau. Wird z. B. von Reisebüros verwendet, um ihre Touren zu erklären.</string>
     <string name="quest_mapType_title">Was für eine Art von Karte ist das\?</string>
     <string name="quest_mapType_street_title">Straßenkarte</string>
     <string name="quest_mapSize_site">Ein Ort, wie zum Beispiel ein Park oder ein Zoo</string>
@@ -548,7 +548,7 @@
     <string name="quest_guidepost_sports_answer_simple_description">Dies ist nur ein einfacher Wegweiser ohne spezifische Sportarten.</string>
     <string name="quest_guidepostEle_hint">Verwende nicht die GPS-Höhe, da diese in der Regel zu ungenau ist und nicht im richtigen Höhenreferenzsystem angegeben wird.</string>
     <string name="quest_guidepostEle_title">Wie hoch ist die Höhe hier?</string>
-    <string name="quest_guidepost_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, weil das, was angegeben wird, je nach Region und Betreiber stark variiert. Möglicherweise musst du die Elementauswahl für dein Gebiet verfeinern (z. B. Karten hinzufügen oder entfernen, nur Elemente mit hiking=yes auswählen usw.)</string>
+    <string name="quest_guidepost_disabled_msg">Diese Aufgabe ist standardmäßig deaktiviert, weil das, was angegeben wird, je nach Region und Betreiber stark variiert. Möglicherweise musst du die Elementauswahl für dein Gebiet verfeinern (z. B. Karten hinzufügen oder entfernen, nur Elemente mit hiking=yes auswählen usw.)</string>
     <string name="quest_guidepost_sports_nordic_walking">Nordic Walking</string>
     <string name="quest_guidepost_sports_bicycle">Radfahren</string>
     <string name="quest_guidepostName_hint">Gekennzeichneter (Orts-)Name dieser Karte oder dieses Wegweisers. Gib hier keine Referenznummer ein.</string>
@@ -560,13 +560,17 @@
     <string name="quest_parking_capacity_disabled_title">Wie viele Behindertenparkplätze gibt es hier?</string>
     <string name="quest_parking_capacity_disabled_answer_yes">Es gibt sie, aber die Anzahl ist unklar</string>
     <string name="quest_parking_orientation_title">In welcher Ausrichtung parken Autos hier?</string>
-    <string name="quest_parking_capacity_hint">Dazu gehören auch Sonderparkplätze wie für Behinderte, Familien, zum Aufladen von Elektrofahrzeugen usw. Blende den Quest aus, wenn die Parkplätze nicht markiert und somit nicht zählbar sind.</string>
+    <string name="quest_parking_capacity_hint">Dazu gehören auch Sonderparkplätze wie für Behinderte, Familien, zum Aufladen von Elektrofahrzeugen usw. Blende die Aufgabe aus, wenn die Parkplätze nicht markiert und somit nicht zählbar sind.</string>
     <string name="quest_parking_capacity_title">Wie viele Autos können hier parken?</string>
-    <string name="quest_parking_capacity_disabled_default_disabled_msg">In SCEE hinzugefügte Quests sind standardmäßig immer deaktiviert, da sie nicht immer beantwortet werden können und möglicherweise Wissen über das Thema und die Kennzeichnung erfordern.
-\nDieser Quest wird nicht gestellt, wenn capacity:disabled=yes gesetzt ist. Wenn du sie auch angeben möchtest, ändere die Elementauswahl von \"and !capacity:disabled\" in \"and (!capacity:disabled or capacity:disabled=yes)\"</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">In SCEE hinzugefügte Aufgaben sind standardmäßig immer deaktiviert, da sie nicht immer beantwortet werden können und möglicherweise Wissen über das Thema und die Kennzeichnung erfordern.
+\nDiese Aufgabe wird nicht gestellt, wenn capacity:disabled=yes gesetzt ist. Wenn du sie auch angeben möchtest, ändere die Elementauswahl von „and !capacity:disabled“ in „and (!capacity:disabled or capacity:disabled=yes)“.</string>
     <string name="quest_subwayEntranceRef_hint">Referenznummer für diesen Eingang:</string>
     <string name="quest_subwayEntranceRef_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, da die Beschilderung je nach Region und Betreiber sehr unterschiedlich ist.</string>
     <string name="quest_generalRef_hint">Referenznummer</string>
-    <string name="quest_generalRef_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, da die Beschilderung je nach Region und Betreiber sehr unterschiedlich ist. Möglicherweise musst du die Auswahl der Elemente für dein Gebiet verfeinern (z.B. Straßenlaternen entfernen, Karten hinzufügen, nur Wegweiser mit hiking=yes auswählen usw.)</string>
+    <string name="quest_generalRef_disabled_msg">Diese Aufgabe ist standardmäßig deaktiviert, da die Beschilderung je nach Region und Betreiber sehr unterschiedlich ist. Möglicherweise musst du die Auswahl der Elemente für dein Gebiet verfeinern (z. B. Straßenlaternen entfernen, Karten hinzufügen, nur Wegweiser mit hiking=yes auswählen usw.)</string>
     <string name="close">Schließen</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">Große Lastwagen passen durch</string>
+    <string name="quest_maxheight_answer_noSign_question_no">Große Lastwagen passen nicht durch</string>
+    <string name="quest_maxheight_answer_noSign_question_unclear">Unsicher</string>
+    <string name="quest_maxheight_answer_noSign_question">Haben selbst die größten Lastwagen (mindestens 4,5 Meter) genügend Platz, um durchzufahren?</string>
 </resources>
