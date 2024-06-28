@@ -15,14 +15,8 @@ fun parseCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): L
     val isReversedOneway = isReversedOneway(tags)
     val isOneway = isReversedOneway || isForwardOneway
     val isReverseSideRight = isReversedOneway xor isLeftHandTraffic
-
-    // any unambiguous opposite tagging implies oneway:bicycle = no
     val isOpposite = tags["cycleway"]?.startsWith("opposite") == true
     val isOnewayButNotForCyclists = isOneway && isNotOnewayForCyclists(tags, isLeftHandTraffic)
-
-    // opposite tagging implies a oneway. So tagging is not understood if tags seem to contradict each other
-    val isAnyOppositeTagging = tags.filterKeys { it in KNOWN_CYCLEWAY_AND_RELATED_KEYS }.values.any { it.startsWith("opposite") }
-    if (!isOneway && isAnyOppositeTagging) return null
 
     var left: Cycleway? = null
     var right: Cycleway? = null
@@ -98,7 +92,7 @@ private fun parseCyclewayForSide(
     val isCyclingDesignatedOnSidewalk = tags["sidewalk$sideVal:bicycle"] == "designated"
 
     val result = when (cycleway) {
-        "lane", "opposite_lane" -> {
+        "lane" -> {
             when (cyclewayLane) {
                 "exclusive" -> EXCLUSIVE_LANE
                 null ->        UNSPECIFIED_LANE
@@ -120,19 +114,20 @@ private fun parseCyclewayForSide(
                 else        -> UNKNOWN_SHARED_LANE
             }
         }
-        "track", "opposite_track" -> {
+        "track" -> {
             if (isSegregated) TRACK else SIDEWALK_EXPLICIT
         }
         "separate" -> SEPARATE
-        "opposite" -> NONE
         "no" -> when {
             isCyclingOkOnSidewalk -> SIDEWALK_OK
             isCyclingDesignatedOnSidewalk -> SIDEWALK_EXPLICIT
             else -> NONE
         }
-        "share_busway", "opposite_share_busway" -> BUSWAY
+        "share_busway" -> BUSWAY
         "shoulder" -> SHOULDER
         // values known to be invalid, ambiguous or obsolete:
+        // deprecated opposite_* tags
+        "opposite_lane", "opposite_track", "opposite", "opposite_share_busway",
         // 1.2% - ambiguous: there are more precise tags
         "yes", "right", "left", "both",
         "on_street", "segregated", "shared", // segregated from, shared with what?

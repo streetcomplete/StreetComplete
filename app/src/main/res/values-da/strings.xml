@@ -19,7 +19,7 @@
     <string name="quest_generic_confirmation_yes">"Ja, jeg er sikker"</string>
     <string name="quest_generic_confirmation_no">"Jeg tjekker"</string>
     <string name="quest_leave_new_note_title">"Efterlad en note i stedet?"</string>
-    <string name="quest_leave_new_note_description">"Du kan efterlade en offentlig note på denne placering, som andre kortlæggere kan kommentere på og forhåbentligt besvare, eller alternativt kan du skjule spørgsmålet (skjules kun for dig selv)"</string>
+    <string name="quest_leave_new_note_description">"Du kan efterlade en offentlig note på denne placering, som andre kortlæggere kan kommentere på og forhåbentligt besvare. Alternativt kan du skjule opgaven (skjules kun for dig selv)"</string>
     <string name="quest_leave_new_note_yes">"Efterlad note"</string>
     <string name="quest_leave_new_note_no">"Skjul det"</string>
     <string name="quest_streetName_title">"Hvad hedder denne vej?"</string>
@@ -403,7 +403,7 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_buildingType_house">"Hus"</string>
     <string name="quest_buildingType_apartments_description">"hus med flere familier, kan have forretninger i stueetagen"</string>
     <string name="quest_buildingType_apartments">"Lejlighedsbygning"</string>
-    <string name="quest_buildingType_detached">"Fritliggende hus"</string>
+    <string name="quest_buildingType_detached">"Parcelhus"</string>
     <string name="quest_buildingType_detached_description">"Fritliggende enfamiliehus"</string>
     <string name="quest_buildingType_semi_detached">"Dobbelthus"</string>
     <string name="quest_buildingType_terrace_description">"en lineær række af ens enfamiliehuse"</string>
@@ -696,7 +696,6 @@ aktiv"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolie"</string>
     <string name="link_photon_description">"Selvstændig udvidelse til Nominatim som indeholder fuzzy søgning og søg-mens-du-taster funktion"</string>
     <string name="link_graphhopper_description">"Et fleksibelt ruteberegningsværktøj"</string>
-    <string name="link_qwant_maps_description">"Et kort til at søge efter steder og ruter"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;For at vise kortet, hentes der vektorfliser fra %1$s. Se deres &lt;a href=\"%2$s\"&gt;fortrolighedserklæring&lt;/a&gt; for mere information.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorer"</string>
     <string name="quest_board_type_history">"Historie"</string>
@@ -930,7 +929,7 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_barrier_type_gate_conversion">"Omdannet til en låge"</string>
     <string name="quest_traffic_calming_type_title">"Hvilken type hastighedsdæmpning er dette?"</string>
     <string name="quest_traffic_calming_type_bump">"Vejbump (lille)"</string>
-    <string name="quest_traffic_calming_type_hump">"Vejbump (større)"</string>
+    <string name="quest_traffic_calming_type_hump">"Cirkelbump (større)"</string>
     <string name="quest_traffic_calming_type_table">"Trapezbump (flad top)"</string>
     <string name="quest_traffic_calming_type_cushion">"Pudebump (brede køretøjer kan passere uden bump)"</string>
     <string name="quest_traffic_calming_type_choker">"Vejen er indsnævret"</string>
@@ -1223,7 +1222,7 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="quest_barrier_bicycle_installation_removable">"Kan fjernes"</string>
     <string name="quest_buildingType_guardhouse">"Vagtbygning"</string>
     <string name="quest_genericRef_title">"Hvilket identifikationsnummer er der her?"</string>
-    <string name="quest_sidewalk_answer_different">"Fortovet er anderledes"</string>
+    <string name="quest_sidewalk_answer_different">"Det er anderledes med fortovet"</string>
     <string name="about_title_get_involved">"Deltag i arbejdet"</string>
     <string name="pref_category_quests_overlays">"Opgaver og overlejringer"</string>
     <string name="quest_presets_rename">"Omdøb"</string>
@@ -1237,7 +1236,7 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="urlconfig_apply_message_overwrite">"Bemærk: Din forudindstilling med samme navn vil blive overskrevet!"</string>
     <string name="urlconfig_switch_hint">"Du kan til enhver tid skifte forudindstillinger i indstillingerne."</string>
     <string name="quest_bicycle_parking_type_two_tier">"Cykelstativ i to niveauer"</string>
-    <string name="user_profile_current_week_title">"Denne uge"</string>
+    <string name="user_profile_current_week_title">"Sidste 7 dage"</string>
     <string name="user_profile_dates_mapped">"Dage, hvor du har været ude og kortlægge"</string>
     <string name="quest_cycleway_value_advisory_lane">"anbefalet cykelsti"</string>
     <string name="urlconfig_scan_qr_code_again2">"Når du har installeret appen, skal du scanne QR-koden igen eller klikke på &lt;a href=\"%s\"&gt;dette link&lt;/a&gt; for at anvende forudindstillingen."</string>
@@ -1333,7 +1332,7 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="outside">"udenfor"</string>
     <string name="quest_recycling_type_food_waste">"Madaffald"</string>
     <string name="quest_defibrillator_location">"Hvor er denne hjertestarter placeret?"</string>
-    <string name="quest_defibrillator_location_description">"Giv en tydelig og kortfattet beskrivelse af dens placering (f.eks. “ved hovedindgangen til biblioteket“)."</string>
+    <string name="quest_defibrillator_location_description">"Lav en utvetydig og kortfattet beskrivelse af dens placering (f.eks. “ved hovedindgangen til biblioteket“)."</string>
     <string name="quest_sanitary_dump_station_title">"Er der en sanitær tømningsstation?"</string>
     <string name="quest_sanitary_dump_station_description">"Facilitet til deponering af menneskeligt affald fra en toilettank i en autocamper, langturslastbil etc. Normalt angivet med et skilt som dette:"</string>
     <string name="quest_generalFee_title">"Skal man betale for brug?"</string>
@@ -1397,8 +1396,14 @@ Du kan finde oplysninger om donationer på vores hjemmeside eller projekthjemmes
 
 En etage tæller som en tagetage, når dets vinduer er i taget. Derfor er tage med nul tagetager ikke nødvendigvis flade, de er bare ikke høje nok til en hel etage.
 ␣␣␣␣"</string>
-    <string name="quest_parcel_locker_brand">"Hvilket firma står bag denne pakkeboks?"</string>
-    <string name="quest_parcel_locker_pickup">"Kan man hente pakker her?"</string>
+    <string name="quest_parcel_locker_brand">"Hvilket firma står for denne pakkeboks?"</string>
+    <string name="quest_parcel_locker_pickup">"Kan man afhente pakker her?"</string>
     <string name="quest_parcel_locker_mail_in">"Kan man aflevere pakker her?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"El-ledning er forankret til bygning"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"ingen, men skilt tillader cykling på fortovet"</string>
+    <string name="separate_cycleway_no_signed">"Et skilt forbyder udtrykkeligt cykling"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Gangsti, men et skilt tillader cykling"</string>
+    <string name="quest_bicycle_parking_type_floor">"Udpeget areal"</string>
+    <string name="link_osmapp_description">"Et kort med forskellige lag, f.eks. til klatring eller skiløb"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Kun til returforsendelser"</string>
 </resources>

@@ -363,7 +363,7 @@
     <string name="questList_disabled_in_country">"Haijaonyeshwa katika %s"</string>
     <string name="quest_select_hint_most_specific">"Chagua moja mahususi zaidi ambayo inafaa:"</string>
     <string name="quest_generic_item_confirmation">"Je, una uhakika kuwa huwezi kubainisha hasa zaidi?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Kwa baadhi ya vipengele, baadhi ya taarifa za ziada kutoka kwa wahusika wengine hupatikanwa. Hasa, swala la njia moja huuliza API, ambayo pia inapangishwa kwenye westnodi.de, kuhusu uwezekano wa wagombea wa njia moja.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Kwa baadhi ya vipengele, baadhi ya taarifa za ziada kutoka kwa wahusika wengine hupatikanwa. Hasa, swala la njia moja huuliza API, ambayo pia inapangishwa kwenye westnordost.de, kuhusu uwezekano wa wagombea wa njia moja.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Hapana (acha dokezo)"</string>
     <string name="pref_quests_reset">"futa vipengele vyote vilivoekwa na kuwezeshwa hapa?"</string>
     <string name="quest_generic_item_invalid_value">"Tafadhali chagua thamani mahususi zaidi."</string>
@@ -659,7 +659,6 @@
     <string name="quest_recycling_type_engine_oil">"Mafuta ya Injini"</string>
     <string name="link_photon_description">"Kiendelezi cha pekee kwa uteuzi, kinachoangazia utafutaji usioeleweka na kutafuta kama unachapa"</string>
     <string name="link_graphhopper_description">"Injini inayoweza kubadilika ya uelekezaji"</string>
-    <string name="link_qwant_maps_description">"Ramani yenye maeneo na maelekezo yanayoweza kutafutwa"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Ili kuonyesha ramani, vigao vya vekta hurejeshwa kutoka %1$s. Tazama &lt;a href=\"%2$s\"&gt;taarifa yao ya faragha&lt;/a&gt; kwa maelezo zaidi.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Wafadhili"</string>
     <string name="quest_board_type_history">"Historia"</string>

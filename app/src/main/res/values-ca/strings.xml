@@ -694,7 +694,6 @@ d'acompliment"</string>
     <string name="quest_recycling_type_engine_oil">"Oli de motor"</string>
     <string name="link_photon_description">"Una extensió independent a Nominatim, que inclou cerques inexactes i cerca mentre teclegeu"</string>
     <string name="link_graphhopper_description">"Un motor de búsqueda flexible"</string>
-    <string name="link_qwant_maps_description">"Un mapa amb llocs cercables i direccions"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Per mostrar el mapa, les rajoles vectorials es recuperen de %1$s. Vegeu la seva &lt;a href=\"%2$s\"&gt;declaració de privadesa&lt;/a&gt; per a més informació.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadors"</string>
     <string name="quest_board_type_history">"Història"</string>
@@ -1366,7 +1365,9 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_disable_action">"Deshabilita"</string>
     <string name="quest_disable_title">"Deshabilita aquest tipus de missió?"</string>
     <string name="quest_disable_message_not_installed">"StreetMeasure no és instal·lat (encara)."</string>
+    <string name="quest_disable_message_not_working">"StreetMeasure no ha retornat una mesura."</string>
     <string name="quest_buildingType_container">"Contenidor"</string>
+    <string name="quest_buildingType_tomb">"Tomba"</string>
     <string name="quest_buildingType_tower">"Torre"</string>
     <string name="quest_buildingType_tower_description">"qualsevol mena de torre"</string>
     <string name="quest_buildingType_under_construction">"En construcció"</string>
@@ -1377,6 +1378,7 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="disused">"en desús"</string>
     <string name="unknown_object">"Objecte desconegut"</string>
     <string name="quest_leafType_tree_title">"Aquest arbre té agulles o fulles amples?"</string>
+    <string name="quest_bbq_fuel_gas">"Gas"</string>
     <string name="about_description_donate_google_play3">"Gràcies per considerar ajudar aquesta aplicació!
 Podeu trobar informació sobre les donacions a la nostra web o al portal del projecte, Google Play no ens permet afegir l'enllaç dins de l'aplicació."</string>
     <string name="quest_generic_otherAnswers2">"Bufa…"</string>
@@ -1390,4 +1392,8 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
 
 Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.
     "</string>
+    <string name="quest_parcel_locker_pickup">"Pots arreplegar paquets aquí?"</string>
+    <string name="quest_parcel_locker_mail_in">"Pots deixar paquets aquí?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"La línia elèctrica està ancorada a l'edifici"</string>
+    <string name="separate_cycleway_no_signed">"Un senyal prohibeix explícitament anar en bicicleta"</string>
 </resources>

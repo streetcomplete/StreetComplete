@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 
 class PlaceKtTest {
 
-    @Test fun `replaceShop removes all previous survey keys`() {
+    @Test fun `replacePlace removes all previous survey keys`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("a", "b"),
@@ -19,7 +19,7 @@ class PlaceKtTest {
                 StringMapEntryDelete("survey:date", "c"),
                 StringMapEntryDelete("survey_date", "d"),
             ),
-            replaceShopApplied(
+            replacePlaceApplied(
                 newTags = mapOf("a" to "b"),
                 oldTags = mapOf(
                     "check_date" to "1",
@@ -33,7 +33,7 @@ class PlaceKtTest {
     }
 
     // see KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED
-    @Test fun `replacePlace removes certain tags connected with the type of shop`() {
+    @Test fun `replacePlace removes certain tags connected with the type of place`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("shop", "ice_cream"),
@@ -46,7 +46,7 @@ class PlaceKtTest {
                 StringMapEntryDelete("tourism", "information"),
                 StringMapEntryDelete("information", "office"),
             ),
-            replaceShopApplied(
+            replacePlaceApplied(
                 newTags = mapOf("shop" to "ice_cream"),
                 oldTags = mapOf(
                     "building" to "yes", // <- should not be cleared
@@ -66,7 +66,7 @@ class PlaceKtTest {
     }
 }
 
-private fun replaceShopApplied(newTags: Map<String, String>, oldTags: Map<String, String>): Set<StringMapEntryChange> {
+private fun replacePlaceApplied(newTags: Map<String, String>, oldTags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(oldTags)
     cb.replacePlace(newTags)
     return cb.create().changes

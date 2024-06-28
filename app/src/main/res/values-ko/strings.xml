@@ -696,7 +696,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_recycling_type_engine_oil">"엔진오일"</string>
     <string name="link_photon_description">"오픈스트리트맵 지물 탐색 엔진 Nominatim의 단독 실행 버전으로, 퍼지 검색과 입력중 검색을 지원합니다"</string>
     <string name="link_graphhopper_description">"유연한 경로 탐색 엔진"</string>
-    <string name="link_qwant_maps_description">"탐색할 수 있는 장소와 방향이 담긴 지도"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;지도를 띄우기 위해 %1$s에서 벡터 타일을 가져옵니다. 자세한 사항은 해당 서비스의 &lt;a href=\"%2$s\"&gt;개인정보 정책&lt;/a&gt;을 참고하세요.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"스폰서"</string>
     <string name="quest_board_type_history">"역사"</string>

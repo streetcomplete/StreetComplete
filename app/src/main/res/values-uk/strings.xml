@@ -692,13 +692,12 @@
     <string name="quest_recycling_type_engine_oil">"Машинне мастило"</string>
     <string name="link_photon_description">"Автономне розширення для Nominatim, що дозволяє робити нечіткий пошук та пошук під час введення"</string>
     <string name="link_graphhopper_description">"Гнучкий механізм маршрутизації"</string>
-    <string name="link_qwant_maps_description">"Мапа із місцями та напрямками для пошуку"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Для показу мапи векторні тайли отримуються з %1$s. Докладнішу інформацію див. в &lt;a href=\"%2$s\"&gt; заяві про конфіденційність &lt;/a&gt;. &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсори"</string>
     <string name="quest_board_type_history">"Історія"</string>
     <string name="quest_board_type_geology">"Геологія"</string>
     <string name="quest_board_type_plants">"Рослини"</string>
-    <string name="quest_board_type_wildlife">"Дика природи"</string>
+    <string name="quest_board_type_wildlife">"Дика природа"</string>
     <string name="quest_board_type_nature">"Природа (кілька тем)"</string>
     <string name="quest_board_type_notice_board">"Це дошка оголошень"</string>
     <string name="quest_board_type_public_transport">"Громадський транспорт"</string>
@@ -1383,4 +1382,23 @@
     <string name="quest_moped_access_designated">"Є знак, який позначає цю велодоріжку для мопедів"</string>
     <string name="quest_moped_access_forbidden">"Стоїть знак, який забороняє рух мопедів"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Цей тип квесту вимкнено за замовчуванням, оскільки доступ для мопедів позначено спеціальними знаками на початку/кінці велодоріжки."</string>
+    <string name="quest_arrow_tutorial">"Стрілки на ілюстрації показують на напрямки, в яких проходить шлях на мапі в центральному місці позначки. Спробуйте повернути мапу, і у вас все вийде."</string>
+    <string name="info">"Більше інформації"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Це заборонено."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Це дозволено."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Тут є тротуар, але на мапі він позначений окремо."</string>
+    <string name="quest_buildingLevels_hint">"Для будівель на схилі підрахунок поверхів починається від наземного поверху з найнижчого боку.
+
+Поверх вважається поверхом даху, якщо його вікна знаходяться в даху. Тому дахи з 0 поверхів не обов’язково є плоскими, просто недостатньо високими щоб вмістити поверх.
+␣␣␣␣"</string>
+    <string name="quest_parcel_locker_brand">"Якого бренду цей поштомат?"</string>
+    <string name="quest_parcel_locker_pickup">"Чи можете ви тут забирати пакунки?"</string>
+    <string name="quest_parcel_locker_mail_in">"Чи можете ви тут залишати пакунки?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Лінія електропередач прикріплена до будівлі"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"немає, але знак дозволяє рух велосипедів на тротуарі"</string>
+    <string name="separate_cycleway_no_signed">"Знак, що забороняє рух велосипеда"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Пішохідна доріжка, але знак дозволяє рух на велосипеді"</string>
+    <string name="quest_bicycle_parking_type_floor">"Виділена зона"</string>
+    <string name="link_osmapp_description">"Мапа з різними шарами, наприклад для скелелазіння чи катання на лижах"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Тільки для повернення пакунків"</string>
 </resources>

@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Τράπεζα Πειραιώς, Euronet, Alpha Bank, Eurobank, Εθνική Τράπεζα, Euronet Worldwide, Εθνική Τράπεζα της Ελλάδος, Bcash, Piraeus Bank, National Bank, Πειραιώς, Εθνική, Attica Bank, ATM, Citibank, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Ethniki Bank, Bank of Chania, Πειραιώς / Piraeus, Piräus Bank, NBG GROUP, NBG, HSBC, Bitcoinmat, Alpha, Τράπεζας Πειραιώς, Τράπεζα Eurobank, Εθνική Τράπεζα | National Bank of Greece, Pyraeus Bank, Pireus Bank, Pireaus Bank, Piraeus bank, Hellenic Post, EuroNet, Cooperative Bank of Dodecanese]
-chargingStationOperators: [ΔΕΗ blue, ΔΕΗ, Protergia, blink, incharge, WATT AND VOLT, 'Tesla, Inc.', Peugeot, Δήμος Αλίμου, nrg incharge, DEI, Chargespot, NRG, Lidl, Joltie, Fortizo, ΔΕΗblue, 'https://mythicalpeloponnese.gr', WATT+VOLT, Evziiin, ChargePoint, Blink, BP]
-clothesContainerOperators: [Recycom, RECYCOM, Texcycle, Δήμος Αθηναίων, Δήμος Κέρκυρας, Δήμος Ζωγράφου]
+atmOperators: [Τράπεζα Πειραιώς, Euronet, Alpha Bank, Eurobank, Εθνική Τράπεζα, Euronet Worldwide, Εθνική Τράπεζα της Ελλάδος, Bcash, Piraeus Bank, National Bank, Attica Bank, Εθνική, ATM, Citibank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Bank of Chania, Πειραιώς / Piraeus, Shitcoins.club, Piräus Bank, NBG GROUP, NBG, HSBC, Ethniki Bank, Bitcoinmat, Alpha, Τράπεζας Πειραιώς, Τράπεζα Eurobank, Εθνική Τράπεζα | National Bank of Greece, Pyraeus Bank, Pireus Bank, Pireaus Bank, Piraeus bank, Hellenic Post, EuroNet, Cooperative Bank of Dodecanese]
+chargingStationOperators: [ΔΕΗ blue, ΔΕΗ, Protergia, nrg incharge, Chargespot, blink, WATT AND VOLT, 'Tesla, Inc.', Peugeot, DEI Blue, Δήμος Αλίμου, DEI, incharge, NRG, Lidl, Joltie, Fortizo, ΔΕΗblue, 'https://mythicalpeloponnese.gr', WATT+VOLT, Evziiin, ChargePoint, Blue, Blink]
+clothesContainerOperators: [Recycom, RECYCOM, Δήμος Αθηναίων, Texcycle, Δήμος Κέρκυρας, Δήμος Ζωγράφου, Δήμος Γαλατσίου]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true

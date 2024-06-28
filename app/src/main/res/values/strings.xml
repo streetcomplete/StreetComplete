@@ -1342,7 +1342,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_bbq_fuel_charcoal">Charcoal</string>
     <string name="quest_bbq_fuel_gas">Gas</string>
     <string name="quest_bbq_fuel_not_a_bbq">It’s a fire enclosure</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills.</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">If there is no cooking surface (e.g. grate/plate), it’s a fire enclosure.</string>
 
     <string name="quest_railway_crossing_barrier_title2">What barriers are used at this railway crossing?</string>
     <string name="quest_railway_crossing_barrier_none2">No barriers</string>

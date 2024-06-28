@@ -691,7 +691,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_recycling_type_engine_oil">"Motorový olej"</string>
     <string name="link_photon_description">"Samostatné rozšírenie pre Nominatim, umožňujúci vyhľadávanie s opravami (fuzzy search) a našepkávaním"</string>
     <string name="link_graphhopper_description">"Flexibilný navigačný engine"</string>
-    <string name="link_qwant_maps_description">"Mapa s vyhľadávaním miest a ciest k cieľu."</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Pre zobrazenie mapy sa musia stiahnuť vektorové dlaždice z %1$s. Pre ďalšie informácie sa pozrite na ich &lt;a href=\"%2$s\"&gt;prehlásenie o ochrane súkromia&lt;/a&gt; .&lt;/p&gt;
 "</string>
     <string name="about_title_sponsors">"Sponzori"</string>
