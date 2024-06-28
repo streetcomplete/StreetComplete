@@ -57,13 +57,12 @@ fun <T> SimpleListPickerDialog(
     contentColor: Color = contentColorFor(backgroundColor),
     properties: DialogProperties = DialogProperties()
 ) {
-    var selected by remember { mutableStateOf(selectedItem) }
+    val selected by remember { mutableStateOf(selectedItem) }
     val state = rememberLazyListState()
 
     fun select(item: T) {
-        selected = item
-        onItemSelected(item)
         onDismissRequest()
+        onItemSelected(item)
     }
 
     LaunchedEffect(selectedItem) {

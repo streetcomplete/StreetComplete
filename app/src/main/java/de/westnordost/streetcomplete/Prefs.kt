@@ -78,9 +78,9 @@ object Prefs {
     }
 
     enum class Theme(val appCompatNightMode: Int) {
+        SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM),
         LIGHT(AppCompatDelegate.MODE_NIGHT_NO),
-        DARK(AppCompatDelegate.MODE_NIGHT_YES),
-        SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        DARK(AppCompatDelegate.MODE_NIGHT_YES);
 
         companion object {
             fun of(value: String?): Theme =
