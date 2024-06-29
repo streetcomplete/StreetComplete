@@ -1,0 +1,65 @@
+package de.westnordost.streetcomplete.quests.barrier_opening
+
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.width.WidthAnswer
+import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+
+class AddBarrierOpening(
+        private val checkArSupport: ArSupportChecker
+    ) : OsmElementQuestType<WidthAnswer> {
+
+    private val nodeFilter by lazy { """
+       nodes with
+         barrier ~ ${GATEWAYS.joinToString( "|")}
+         and (!maxwidth:physical or !source:maxwidth:physical ~ ".*estimat.*")
+         and (!width or source:width ~ ".*estimat.*")
+         and (!maxwidth or source:maxwidth ~ ".*estimat.*")
+    """.toElementFilterExpression() }
+
+    override val changesetComment = "Specify width of opening"
+    override val wikiLink = "Key:barrier"
+ // icon needed
+    override val icon = R.drawable.ic_quest_bicycleway_width
+    override val achievements = listOf(BICYCLIST, CAR, PEDESTRIAN, WHEELCHAIR)
+    override val defaultDisabledMessage: Int
+        get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
+
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_opening_width_gate
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry) =
+        mapData.nodes.filter { nodeFilter.matches(it) }
+
+    override fun isApplicableTo(element: Element) =
+        nodeFilter.matches(element)
+
+    override fun createForm() = AddGateWidthForm()
+
+    override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        val key = if (tags["barrier"] in GATEWAYS) "maxwidth:physical" else "width"
+
+        tags[key] = answer.width.toOsmValue()
+
+        if (answer.isARMeasurement) {
+        tags["source:$key"] = "ARCore"
+        } else {
+        tags.remove("source:$key")
+        }
+
+        // update width:barrier if it is set
+        if (key == "width" && tags.containsKey("maxwidth")) {
+            tags["maxwidth:physical"] = answer.width.toOsmValue()
+        }
+    }
+}
+
+val GATEWAYS = setOf("gate", "entrance", "sliding_gate", "swing_gate", "wicket_gate", "bollard", "block")
