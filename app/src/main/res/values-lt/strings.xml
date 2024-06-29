@@ -695,7 +695,6 @@ dienų"</string>
     <string name="quest_recycling_type_engine_oil">"Variklio alyva"</string>
     <string name="link_photon_description">"Atskiras Nominatim plėtinys, leidžiantis apytikslę paiešką ir paiešką rašant"</string>
     <string name="link_graphhopper_description">"Lankstus maršrutizavimo variklis"</string>
-    <string name="link_qwant_maps_description">"Žemėlapis su ieškomomis vietomis ir kryptimis"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Žemėlapio rodymui kaladėlės atsiunčiamos iš %1$s. Daugiau informacijos rasite jų &lt;a href=\"%2$s\"&gt;privatumo aprašyme&lt;/a&gt;.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Rėmėjai"</string>
     <string name="quest_board_type_history">"Istorija"</string>
@@ -1196,7 +1195,9 @@ Tą patį padarykite ir kitoje pusėje, jei yra."</string>
     <string name="quest_bicycle_incline_title">"Kuria kryptimi takas kyla?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Kitoks vandens fontanas"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vandens fontanas leidžantis mažą vandens srovę"</string>
+    <string name="quest_drinking_water_type_tap">"Vandens čiaupas"</string>
     <string name="quest_drinking_water_type_hand_pump">"Rankinis pumpavimas"</string>
+    <string name="quest_drinking_water_type_spring">"Pavasaris"</string>
     <string name="overlay_addresses">"Adresai"</string>
     <string name="name_label">"Pavadinimas:"</string>
     <string name="unknown_shop_title">"Kitokio pobūdžio vieta"</string>

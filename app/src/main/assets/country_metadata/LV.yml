@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Swedbank, SEB, Citadele, Luminor Bank, Luminor, BluOr Bank]
 centerLineStyle: white
-chargingStationOperators: [CSDD, ChargePoint, Elektrum, e-mobi, Ceļu satiksmes drošības direkcija, 'Tesla, Inc.', CSDD - Ceļu Satiksmes Drošības Direkcija]
+chargingStationOperators: [CSDD, Elektrum, ChargePoint, e-mobi, Ceļu satiksmes drošības direkcija, 'Tesla, Inc.', Energolukss, CSDD - Ceļu Satiksmes Drošības Direkcija, Bolt]
 clothesContainerOperators: [Kuldīgas komunālie pakalpojumi, Eco Baltia Vide, CleanR]
 defaultSpeedLimitHasUrbanOrRural: true
 edgeLineStyle: white
@@ -17,7 +17,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [lv]
 orchardProduces: [apple, blueberry, strawberry, raspberry, pear, plum]
-parcelLockerBrand: [Omniva, Smartpost, DPD, DPD Pickup Station, Latvijas Pasts, Itella, Venipak]
+parcelLockerBrand: [DPD, Omniva, Latvijas Pasts, Venipak, Smartpost, Unisend, DPD Pickup Station, Itella]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom
 slowZoneLabelText: ZONA

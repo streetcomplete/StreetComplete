@@ -697,7 +697,6 @@ postignuća"</string>
     <string name="quest_recycling_type_engine_oil">"Motorno ulje"</string>
     <string name="link_photon_description">"Nezavisno proširenje Nominatima, koje sadrži pretraživanje po nepotpunim uvjetima i pretraživanje dok tipkate"</string>
     <string name="link_graphhopper_description">"Prilagodljiv servis za navigaciju"</string>
-    <string name="link_qwant_maps_description">"Karta sa pretraživanjem i navigacijom"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Kako bi se prikazala karta, vektori se dohvaćaju sa %1$s. Pogledajte njihovu &lt;a href=\"%2$s\"&gt;izjavu o privatnosti&lt;/a&gt; za više informacija.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponzori"</string>
     <string name="quest_board_type_history">"Povijest"</string>
@@ -1403,4 +1402,10 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_parcel_locker_pickup">"Mogu li se ovdje preuzeti paketi?"</string>
     <string name="quest_parcel_locker_mail_in">"Mogu li se ovdje ostaviti paketi?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Električni vod je spojen na zgradu"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"nema, ali znak dopušta vožnju biciklom po nogostupu"</string>
+    <string name="separate_cycleway_no_signed">"Znak eksplicitno zabranjuje vožnju biciklom"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Nogostup, ali znak dopušta vožnju biciklom"</string>
+    <string name="quest_bicycle_parking_type_floor">"Predodređeno područje"</string>
+    <string name="link_osmapp_description">"Karta s različitim slojevima, poput onih za penjanje ili skijanje"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Samo za povratnu dostavu"</string>
 </resources>

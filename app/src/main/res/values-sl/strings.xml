@@ -697,7 +697,6 @@ novoji"</string>
     <string name="quest_recycling_type_engine_oil">"Motorno olje"</string>
     <string name="link_photon_description">"Samostojna razširitev za Nominatim, ki omogoča mehko iskanje (fuzzy search) in iskanje-ko-tipkaš"</string>
     <string name="link_graphhopper_description">"Fleksibilen navigacijski stroj"</string>
-    <string name="link_qwant_maps_description">"Zemljevid, kjer lahko iščeš po krajih in poteh"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Za prikaz zemljevida so vektorske ploščice pridobljene iz %1$s. Oglej sj njihovo &lt;a href=\"%2$s\"&gt;politiko zasebnosti&lt;/a&gt; za več informacij.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponzorji"</string>
     <string name="quest_board_type_history">"Zgodovina"</string>

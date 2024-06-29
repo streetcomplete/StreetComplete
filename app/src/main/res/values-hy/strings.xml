@@ -670,7 +670,6 @@
     <string name="quest_recycling_type_engine_oil">"Շարժիչի յուղ"</string>
     <string name="link_photon_description">"Անկախության ընդլայնում է նոմինատիմի, որում ընդգրկված է Fuzzy որոնում եւ որոնում-որպես-տիպ"</string>
     <string name="link_graphhopper_description">"Flexible կուն երթուղային շարժիչ"</string>
-    <string name="link_qwant_maps_description">"Քարտեզ `որոնելի վայրերով եւ ուղղություններով"</string>
     <string name="privacy_html_tileserver2">"Քարտեզը ցուցադրելու համար վեկտորի սալիկները վերցվում են %1$s. Տեսեք իրենց &lt;a href=\"%2$s\"&gt; Գաղտնիության հայտարարությունը &lt;/a&gt; Լրացուցիչ տեղեկությունների համար: &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Հովանավորներ"</string>
     <string name="quest_board_type_history">"Պատմություն"</string>

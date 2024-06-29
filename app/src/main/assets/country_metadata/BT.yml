@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Bank of Bhutan, Bhutan National Bank, BOB, Druk PNB, BNB, Tashi Bank, PNB, BoB ATM, BoB, Bank Of Bhutan, BNB ATM, BDBL ATM, BDBL]
+atmOperators: [Bank of Bhutan, Bhutan National Bank, BOB, BNB, Tashi Bank, PNB, Druk PNB, BoB ATM, BoB, Bank Of Bhutan, BNB ATM, BDBL ATM, BDBL]
 defaultSpeedLimitHasUrbanOrRural: true
 isLeftHandTraffic: true
 mobileCountryCode: 402

@@ -1,5 +1,5 @@
-Auta parantamaan OpenStreetMapia StreetCompletella! Näin voit osallistua vapaan kartan kehittämiseen helposti.
+Auta parantamaan OpenStreetMapia StreetCompletella!
 
-Sovelluksella löydät puuttuvia ja täydennettäviä tietoja lähiympäristöstäsi. Sovellus näyttää puuttuvat tiedot karttamerkkeinä, ja esittää niistä yksinkertaisesti ratkaistavia kysymyksiä.
+Sovellus löytää puuttuvia karttatietoja lähiympäristöstäsi ja näyttää ne kartalla tehtävinä. Ratkaise tehtävät käymällä paikan päällä ja vastaamalla yksinkertaiseen kysymykseen päivittääksesi karttaa.
 
-Vastauksesi täydentävät OpenStreetMapia omalla nimelläsi. Et tarvitse sovelluksen lisäksi erillistä OpenStreetMap-editoria.
+Syöttämäsi tieto lisätään suoraan OpenStreetMapiin omalla nimelläsi, ilman erillisen muokkausohjelman käyttöä.

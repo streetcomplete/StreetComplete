@@ -659,7 +659,6 @@
     <string name="quest_recycling_type_engine_oil">"Motor­olje"</string>
     <string name="link_photon_description">"Ei frittståande utviding til Nominatim. Støttar omtrentlege søk og kontinuerleg vising av søkjeresultat."</string>
     <string name="link_graphhopper_description">"Ein fleksibel rute­planleggjar"</string>
-    <string name="link_qwant_maps_description">"Eit kart med søkbare stadar og ruter"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;For å visa kartet vert kart­fliser henta frå %1$s. Sjå &lt;a href=\"%2$s\"&gt;personvern­erklæringa der&lt;/a&gt; for meir informasjon.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorar"</string>
     <string name="quest_board_type_history">"Historie"</string>

@@ -696,7 +696,6 @@ osiągnięć"</string>
     <string name="quest_recycling_type_engine_oil">"Olej silnikowy"</string>
     <string name="link_photon_description">"Wyszukiwarka będąca ulepszoną wersją Nominatim z wsparciem dla podpowiedzi w czasie pisania i z autokorektą"</string>
     <string name="link_graphhopper_description">"Elastyczne wyszukiwanie tras"</string>
-    <string name="link_qwant_maps_description">"Mapa umożliwiająca wyszukiwanie miejsc i tras"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;By wyświetlić mapę przygotowane dane pobierane są z %1$s. Zobacz ich &lt;a href=\"%2$s\"&gt;politykę prywatności&lt;/a&gt; by uzyskać pełne informacje.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorzy"</string>
     <string name="quest_board_type_history">"Historia"</string>
