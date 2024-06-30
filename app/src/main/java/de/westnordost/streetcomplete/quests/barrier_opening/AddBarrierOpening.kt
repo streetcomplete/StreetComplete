@@ -20,11 +20,24 @@ class AddBarrierOpening(
 
     private val nodeFilter by lazy { """
        nodes with
-         barrier ~ ${GATEWAYS.joinToString( "|")}
-         and (!maxwidth:physical or !source:maxwidth:physical ~ ".*estimat.*")
+         barrier ~ ${GATEWAYS.joinToString("|")}
+         and (!maxwidth:physical or source:maxwidth_physical ~ ".*estimat.*")
          and (!width or source:width ~ ".*estimat.*")
          and (!maxwidth or source:maxwidth ~ ".*estimat.*")
     """.toElementFilterExpression() }
+
+
+ //   private val wayFilter by lazy { """
+ //       ways with (
+ //         (
+ //       barrier ~ ${GATEWAYS.joinToString( "|")}
+//
+//        and area != yes
+//        and (!width or source:width ~ ".*estimat.*")
+//        and (access !~ private|no or (foot and foot !~ private|no))
+//        and foot != no
+//        and placement != transition
+//    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify width of opening"
     override val wikiLink = "Key:barrier"
