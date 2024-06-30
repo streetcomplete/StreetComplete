@@ -24,20 +24,13 @@ class AddBarrierOpening(
          and (!maxwidth:physical or source:maxwidth_physical ~ ".*estimat.*")
          and (!width or source:width ~ ".*estimat.*")
          and (!maxwidth or source:maxwidth ~ ".*estimat.*")
+         and access !~ private|no|customers|agricultural
     """.toElementFilterExpression() }
 
-
- //   private val wayFilter by lazy { """
- //       ways with (
- //         (
- //       barrier ~ ${GATEWAYS.joinToString( "|")}
-//
-//        and area != yes
-//        and (!width or source:width ~ ".*estimat.*")
-//        and (access !~ private|no or (foot and foot !~ private|no))
-//        and foot != no
-//        and placement != transition
-//    """.toElementFilterExpression() }
+    private val excludedWaysFilter by lazy { """
+        ways with
+          highway and access ~ private|no
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify width of opening"
     override val wikiLink = "Key:barrier"
@@ -49,8 +42,16 @@ class AddBarrierOpening(
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_opening_width_gate
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry) =
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         mapData.nodes.filter { nodeFilter.matches(it) }
+        val excludedWayNodeIds = mapData.ways
+            .filter { excludedWaysFilter.matches(it) }
+            .flatMapTo(HashSet()) { it.nodeIds }
+
+        return mapData.nodes
+            .filter { nodeFilter.matches(it) && it.id !in excludedWayNodeIds }
+    }
+
 
     override fun isApplicableTo(element: Element) =
         nodeFilter.matches(element)
