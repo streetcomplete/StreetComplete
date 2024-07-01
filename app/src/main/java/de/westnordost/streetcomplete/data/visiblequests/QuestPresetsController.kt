@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 
@@ -11,13 +12,14 @@ class QuestPresetsController(
 
     private val listeners = Listeners<QuestPresetsSource.Listener>()
 
+    // must have local reference because the listeners are only a weak reference
+    private val settingsListener: SettingsListener = prefs.onSelectedQuestPresetChanged {
+        onSelectedQuestPresetChanged()
+    }
+
     override var selectedId: Long
         get() = prefs.selectedQuestPreset
-        set(value) {
-            prefs.selectedQuestPreset = value
-            // TODO hmmmm!!!
-            onSelectedQuestPresetChanged()
-        }
+        set(value) { prefs.selectedQuestPreset = value }
 
     override val selectedQuestPresetName: String? get() =
         questPresetsDao.getName(selectedId)

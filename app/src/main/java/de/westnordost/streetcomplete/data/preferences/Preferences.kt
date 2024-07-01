@@ -151,6 +151,12 @@ class Preferences(private val prefs: ObservableSettings) {
     var selectedQuestPreset: Long by prefs.long(SELECTED_QUESTS_PRESET, 0L)
     var selectedOverlayName: String? by prefs.nullableString(SELECTED_OVERLAY)
 
+    fun onSelectedOverlayNameChanged(callback: (String?) -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(SELECTED_OVERLAY, callback)
+
+    fun onSelectedQuestPresetChanged(callback: (Long) -> Unit): SettingsListener =
+        prefs.addLongListener(SELECTED_QUESTS_PRESET, 0L, callback)
+
     var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
 
     // profile & statistics screen UI
