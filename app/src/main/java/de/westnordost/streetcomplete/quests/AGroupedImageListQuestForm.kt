@@ -1,18 +1,15 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.postDelayed
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.mostCommonWithin
-import de.westnordost.streetcomplete.util.padWith
+import de.westnordost.streetcomplete.util.takeFavourites
 import de.westnordost.streetcomplete.view.image_select.GroupableDisplayItem
 import de.westnordost.streetcomplete.view.image_select.GroupedImageSelectAdapter
 import org.koin.android.ext.android.inject
@@ -27,7 +24,7 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     override val defaultExpanded = false
 
@@ -38,28 +35,19 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     /** items to display that are shown on the top. May not be accessed before onCreate */
     protected abstract val topItems: List<GroupableDisplayItem<I>>
 
-    private lateinit var favs: LastPickedValuesStore<GroupableDisplayItem<I>>
-
     private val selectedItem get() = imageSelector.selectedItem
 
     protected open val itemsPerRow = 3
 
     private lateinit var itemsByString: Map<String, GroupableDisplayItem<I>>
 
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.value.toString() },
-            deserialize = { itemsByString[it] }
-        )
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector = GroupedImageSelectAdapter()
-        itemsByString = allItems.mapNotNull { it.items }.flatten().associateBy { it.value.toString() }
+        itemsByString = allItems
+            .mapNotNull { it.items }
+            .flatten()
+            .associateBy { it.value.toString() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -102,7 +90,9 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     }
 
     private fun getInitialItems(): List<GroupableDisplayItem<I>> =
-        favs.get().mostCommonWithin(6, historyCount = 50, first = 1).padWith(topItems).toList()
+        prefs.getLastPicked(this::class.simpleName!!)
+            .map { itemsByString[it] }
+            .takeFavourites(n = 6, history = 50, first = 1, pad = topItems)
 
     override fun onClickOk() {
         val item = selectedItem!!
@@ -122,13 +112,13 @@ abstract class AGroupedImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
                         .setMessage(R.string.quest_generic_item_confirmation)
                         .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                         .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                            favs.add(item)
+                            prefs.addLastPicked(this::class.simpleName!!, item.value.toString())
                             onClickOk(itemValue)
                         }
                         .show()
                 }
             } else {
-                favs.add(item)
+                prefs.addLastPicked(this::class.simpleName!!, item.value.toString())
                 onClickOk(itemValue)
             }
         }

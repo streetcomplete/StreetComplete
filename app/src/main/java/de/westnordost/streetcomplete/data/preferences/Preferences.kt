@@ -38,6 +38,22 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var showAllNotes: Boolean by prefs.boolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
 
+    fun getLastPicked(key: String): List<String> =
+        prefs.getStringOrNull(Prefs.LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
+
+    fun addLastPicked(key: String, value: String, maxValueCount: Int = 100) {
+        addLastPicked(key, listOf(value), maxValueCount)
+    }
+
+    fun addLastPicked(key: String, values: List<String>, maxValueCount: Int = 100) {
+        val lastValues = values + getLastPicked(key)
+        setLastPicked(key, lastValues.take(maxValueCount))
+    }
+
+    private fun setLastPicked(key: String, values: List<String>) {
+        prefs.putString(Prefs.LAST_PICKED_PREFIX + key, values.joinToString(","))
+    }
+
     fun onLanguageChanged(callback: (String?) -> Unit): SettingsListener =
         prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT, callback)
 
