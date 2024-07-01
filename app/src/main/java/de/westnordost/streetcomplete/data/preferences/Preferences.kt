@@ -15,31 +15,31 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 class Preferences(private val prefs: ObservableSettings) {
     // application settings
-    var language: String? by prefs.nullableString(Prefs.LANGUAGE_SELECT)
+    var language: String? by prefs.nullableString(LANGUAGE_SELECT)
 
     var theme: Theme
-        set(value) { prefs.putString(Prefs.THEME_SELECT, value.name) }
+        set(value) { prefs.putString(THEME_SELECT, value.name) }
         get() {
-            val value = prefs.getStringOrNull(Prefs.THEME_SELECT)
+            val value = prefs.getStringOrNull(THEME_SELECT)
             // AUTO setting was removed because as of June 2024, 95% of active installs from
             // google play use an Android where AUTO is deprecated
             return if (value == "AUTO" || value == null) Theme.SYSTEM else Theme.valueOf(value)
         }
 
     var autosync: Autosync
-        set(value) { prefs.putString(Prefs.AUTOSYNC, value.name) }
-        get() = Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, DEFAULT_AUTOSYNC))
+        set(value) { prefs.putString(AUTOSYNC, value.name) }
+        get() = Autosync.valueOf(prefs.getString(AUTOSYNC, DEFAULT_AUTOSYNC))
 
-    var keepScreenOn: Boolean by prefs.boolean(Prefs.KEEP_SCREEN_ON, false)
+    var keepScreenOn: Boolean by prefs.boolean(KEEP_SCREEN_ON, false)
 
     var resurveyIntervals: ResurveyIntervals
-        set(value) { prefs.putString(Prefs.RESURVEY_INTERVALS, value.name) }
-        get() = ResurveyIntervals.valueOf(prefs.getString(Prefs.RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS))
+        set(value) { prefs.putString(RESURVEY_INTERVALS, value.name) }
+        get() = ResurveyIntervals.valueOf(prefs.getString(RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS))
 
-    var showAllNotes: Boolean by prefs.boolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
+    var showAllNotes: Boolean by prefs.boolean(SHOW_ALL_NOTES, false)
 
     fun getLastPicked(key: String): List<String> =
-        prefs.getStringOrNull(Prefs.LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
+        prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
 
     fun addLastPicked(key: String, value: String, maxValueCount: Int = 100) {
         addLastPicked(key, listOf(value), maxValueCount)
@@ -50,108 +50,189 @@ class Preferences(private val prefs: ObservableSettings) {
         setLastPicked(key, lastValues.take(maxValueCount))
     }
 
-    private fun setLastPicked(key: String, values: List<String>) {
-        prefs.putString(Prefs.LAST_PICKED_PREFIX + key, values.joinToString(","))
+    fun setLastPicked(key: String, values: List<String>) {
+        prefs.putString(LAST_PICKED_PREFIX + key, values.joinToString(","))
+    }
+
+    fun setLastPicked(key: String, value: String) {
+        prefs.putString(LAST_PICKED_PREFIX + key, value)
     }
 
     fun onLanguageChanged(callback: (String?) -> Unit): SettingsListener =
-        prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT, callback)
+        prefs.addStringOrNullListener(LANGUAGE_SELECT, callback)
 
     fun onThemeChanged(callback: (Theme) -> Unit): SettingsListener =
-        prefs.addStringListener(Prefs.THEME_SELECT, DEFAULT_THEME) {
+        prefs.addStringListener(THEME_SELECT, DEFAULT_THEME) {
             callback(Theme.valueOf(it))
         }
 
     fun onAutosyncChanged(callback: (Autosync) -> Unit): SettingsListener =
-        prefs.addStringListener(Prefs.AUTOSYNC, DEFAULT_AUTOSYNC) {
+        prefs.addStringListener(AUTOSYNC, DEFAULT_AUTOSYNC) {
             callback(Autosync.valueOf(it))
         }
 
     fun onResurveyIntervalsChanged(callback: (ResurveyIntervals) -> Unit): SettingsListener =
-        prefs.addStringListener(Prefs.RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS) {
+        prefs.addStringListener(RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS) {
             callback(ResurveyIntervals.valueOf(it))
         }
 
     fun onAllShowNotesChanged(callback: (Boolean) -> Unit): SettingsListener =
-        prefs.addBooleanListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false, callback)
+        prefs.addBooleanListener(SHOW_ALL_NOTES, false, callback)
 
     fun onKeepScreenOnChanged(callback: (Boolean) -> Unit): SettingsListener =
-        prefs.addBooleanListener(Prefs.KEEP_SCREEN_ON, false, callback)
+        prefs.addBooleanListener(KEEP_SCREEN_ON, false, callback)
 
     // login and user
-    var userId: Long by prefs.long(Prefs.OSM_USER_ID, -1)
-    var userName: String? by prefs.nullableString(Prefs.OSM_USER_NAME)
-    var userUnreadMessages: Int by prefs.int(Prefs.OSM_UNREAD_MESSAGES, 0)
+    var userId: Long by prefs.long(OSM_USER_ID, -1)
+    var userName: String? by prefs.nullableString(OSM_USER_NAME)
+    var userUnreadMessages: Int by prefs.int(OSM_UNREAD_MESSAGES, 0)
 
-    var oAuth2AccessToken: String? by prefs.nullableString(Prefs.OAUTH2_ACCESS_TOKEN)
-    val hasOAuth1AccessToken: Boolean get() = prefs.hasKey(Prefs.OAUTH1_ACCESS_TOKEN)
+    var oAuth2AccessToken: String? by prefs.nullableString(OAUTH2_ACCESS_TOKEN)
+    val hasOAuth1AccessToken: Boolean get() = prefs.hasKey(OAUTH1_ACCESS_TOKEN)
 
     fun clearUserData() {
-        prefs.remove(Prefs.OSM_USER_ID)
-        prefs.remove(Prefs.OSM_USER_NAME)
-        prefs.remove(Prefs.OSM_UNREAD_MESSAGES)
+        prefs.remove(OSM_USER_ID)
+        prefs.remove(OSM_USER_NAME)
+        prefs.remove(OSM_UNREAD_MESSAGES)
     }
 
     fun removeOAuth1Data() {
-        prefs.remove(Prefs.OAUTH1_ACCESS_TOKEN)
-        prefs.remove(Prefs.OAUTH1_ACCESS_TOKEN_SECRET)
-        prefs.remove(Prefs.OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP)
+        prefs.remove(OAUTH1_ACCESS_TOKEN)
+        prefs.remove(OAUTH1_ACCESS_TOKEN_SECRET)
+        prefs.remove(OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP)
     }
 
     // map state
     var mapPosition: LatLon
         set(value) {
-            prefs.putDouble(Prefs.MAP_LATITUDE, value.latitude)
-            prefs.putDouble(Prefs.MAP_LONGITUDE, value.longitude)
+            prefs.putDouble(MAP_LATITUDE, value.latitude)
+            prefs.putDouble(MAP_LONGITUDE, value.longitude)
         }
         get() = LatLon(
-            latitude = prefs.getDouble(Prefs.MAP_LATITUDE, 0.0),
-            longitude = prefs.getDouble(Prefs.MAP_LONGITUDE, 0.0)
+            latitude = prefs.getDouble(MAP_LATITUDE, 0.0),
+            longitude = prefs.getDouble(MAP_LONGITUDE, 0.0)
         )
-    var mapRotation: Float by prefs.float(Prefs.MAP_ROTATION, 0f)
-    var mapTilt: Float by prefs.float(Prefs.MAP_TILT, 0f)
-    var mapZoom: Float by prefs.float(Prefs.MAP_ZOOM, 0f)
-    var mapIsFollowing: Boolean by prefs.boolean(Prefs.MAP_FOLLOWING, true)
-    var mapIsNavigationMode: Boolean by prefs.boolean(Prefs.MAP_NAVIGATION_MODE, false)
+    var mapRotation: Float by prefs.float(MAP_ROTATION, 0f)
+    var mapTilt: Float by prefs.float(MAP_TILT, 0f)
+    var mapZoom: Float by prefs.float(MAP_ZOOM, 0f)
+    var mapIsFollowing: Boolean by prefs.boolean(MAP_FOLLOWING, true)
+    var mapIsNavigationMode: Boolean by prefs.boolean(MAP_NAVIGATION_MODE, false)
 
     // application version
-    var lastChangelogVersion: String? by prefs.nullableString(Prefs.LAST_VERSION)
-    var lastDataVersion: String? by prefs.nullableString(Prefs.LAST_VERSION_DATA)
+    var lastChangelogVersion: String? by prefs.nullableString(LAST_VERSION)
+    var lastDataVersion: String? by prefs.nullableString(LAST_VERSION_DATA)
 
     // team mode
-    var teamModeSize: Int by prefs.int(Prefs.TEAM_MODE_TEAM_SIZE, -1)
-    var teamModeIndexInTeam: Int by prefs.int(Prefs.TEAM_MODE_INDEX_IN_TEAM, -1)
+    var teamModeSize: Int by prefs.int(TEAM_MODE_TEAM_SIZE, -1)
+    var teamModeIndexInTeam: Int by prefs.int(TEAM_MODE_INDEX_IN_TEAM, -1)
 
     // tangram
-    var pinSpritesVersion: Int by prefs.int(Prefs.PIN_SPRITES_VERSION, 0)
-    var pinSprites: String by prefs.string(Prefs.PIN_SPRITES, "")
+    var pinSpritesVersion: Int by prefs.int(PIN_SPRITES_VERSION, 0)
+    var pinSprites: String by prefs.string(PIN_SPRITES, "")
 
-    var iconSpritesVersion: Int by prefs.int(Prefs.ICON_SPRITES_VERSION, 0)
-    var iconSprites: String by prefs.string(Prefs.ICON_SPRITES, "")
+    var iconSpritesVersion: Int by prefs.int(ICON_SPRITES_VERSION, 0)
+    var iconSprites: String by prefs.string(ICON_SPRITES, "")
 
     // main screen UI
-    var hasShownTutorial: Boolean by prefs.boolean(Prefs.HAS_SHOWN_TUTORIAL, false)
-    var hasShownOverlaysTutorial: Boolean by prefs.boolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, false)
+    var hasShownTutorial: Boolean by prefs.boolean(HAS_SHOWN_TUTORIAL, false)
+    var hasShownOverlaysTutorial: Boolean by prefs.boolean(HAS_SHOWN_OVERLAYS_TUTORIAL, false)
+    var questSelectionHintState: QuestSelectionHintState
+        set(value) { prefs.putString(QUEST_SELECTION_HINT_STATE, value.name) }
+        get() = prefs.getStringOrNull(QUEST_SELECTION_HINT_STATE)?.let { QuestSelectionHintState.valueOf(it) }
+            ?: QuestSelectionHintState.NOT_SHOWN
+
+    fun onQuestSelectionHintStateChanged(callback: (QuestSelectionHintState) -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(QUEST_SELECTION_HINT_STATE) {
+            callback(it?.let { QuestSelectionHintState.valueOf(it) } ?: QuestSelectionHintState.NOT_SHOWN)
+        }
 
     // quest & overlay UI
-    var preferredLanguageForNames: String? by prefs.nullableString(Prefs.PREFERRED_LANGUAGE_FOR_NAMES)
+    var preferredLanguageForNames: String? by prefs.nullableString(PREFERRED_LANGUAGE_FOR_NAMES)
+    var selectedQuestPreset: Long by prefs.long(SELECTED_QUESTS_PRESET, 0L)
+    var selectedOverlayName: String? by prefs.nullableString(SELECTED_OVERLAY)
+
+    var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
 
     // profile & statistics screen UI
-    var userGlobalRank: Int by prefs.int(Prefs.USER_GLOBAL_RANK, -1)
-    var userGlobalRankCurrentWeek: Int by prefs.int(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, -1)
-    var userLastTimestampActive: Long by prefs.long(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0)
-    var userDaysActive: Int by prefs.int(Prefs.USER_DAYS_ACTIVE, 0)
-    var userActiveDatesRange: Int by prefs.int(Prefs.ACTIVE_DATES_RANGE, 100)
+    var userGlobalRank: Int by prefs.int(USER_GLOBAL_RANK, -1)
+    var userGlobalRankCurrentWeek: Int by prefs.int(USER_GLOBAL_RANK_CURRENT_WEEK, -1)
+    var userLastTimestampActive: Long by prefs.long(USER_LAST_TIMESTAMP_ACTIVE, 0)
+    var userDaysActive: Int by prefs.int(USER_DAYS_ACTIVE, 0)
+    var userActiveDatesRange: Int by prefs.int(ACTIVE_DATES_RANGE, 100)
 
     // default true because if it is not set yet, the first thing that is done is to synchronize it
-    var isSynchronizingStatistics: Boolean by prefs.boolean(Prefs.IS_SYNCHRONIZING_STATISTICS, true)
+    var isSynchronizingStatistics: Boolean by prefs.boolean(IS_SYNCHRONIZING_STATISTICS, true)
 
     fun clearUserStatistics() {
-        prefs.remove(Prefs.USER_DAYS_ACTIVE)
-        prefs.remove(Prefs.ACTIVE_DATES_RANGE)
-        prefs.remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
-        prefs.remove(Prefs.USER_GLOBAL_RANK)
-        prefs.remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
-        prefs.remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
+        prefs.remove(USER_DAYS_ACTIVE)
+        prefs.remove(ACTIVE_DATES_RANGE)
+        prefs.remove(IS_SYNCHRONIZING_STATISTICS)
+        prefs.remove(USER_GLOBAL_RANK)
+        prefs.remove(USER_GLOBAL_RANK_CURRENT_WEEK)
+        prefs.remove(USER_LAST_TIMESTAMP_ACTIVE)
+    }
+
+    companion object {
+        // application settings
+        private const val SHOW_ALL_NOTES = "display.nonQuestionNotes"
+        private const val AUTOSYNC = "autosync"
+        private const val KEEP_SCREEN_ON = "display.keepScreenOn"
+        private const val THEME_SELECT = "theme.select"
+        private const val LANGUAGE_SELECT = "language.select"
+        private const val RESURVEY_INTERVALS = "quests.resurveyIntervals"
+
+        // login and user
+        private const val OSM_USER_ID = "osm.userid"
+        private const val OSM_USER_NAME = "osm.username"
+        private const val OSM_UNREAD_MESSAGES = "osm.unread_messages"
+        private const val OAUTH2_ACCESS_TOKEN = "oauth2.accessToken"
+
+        // old keys login keys
+        private const val OAUTH1_ACCESS_TOKEN = "oauth.accessToken"
+        private const val OAUTH1_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret"
+        private const val OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP = "osm.logged_in_after_oauth_fuckup"
+
+        // team mode
+        private const val TEAM_MODE_INDEX_IN_TEAM = "team_mode.index_in_team"
+        private const val TEAM_MODE_TEAM_SIZE = "team_mode.team_size"
+
+        // application version
+        private const val LAST_VERSION = "lastVersion"
+        private const val LAST_VERSION_DATA = "lastVersion_data"
+
+        // main screen UI
+        private const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
+        private const val HAS_SHOWN_OVERLAYS_TUTORIAL = "hasShownOverlaysTutorial"
+        private const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
+
+        // map state
+        private const val MAP_LATITUDE = "map.latitude"
+        private const val MAP_LONGITUDE = "map.longitude"
+        private const val MAP_ROTATION = "map.rotation"
+        private const val MAP_TILT = "map.tilt"
+        private const val MAP_ZOOM = "map.zoom"
+        private const val MAP_FOLLOWING = "map.following"
+        private const val MAP_NAVIGATION_MODE = "map.navigation_mode"
+
+        // tangram
+        private const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
+        private const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"
+        private const val ICON_SPRITES_VERSION = "TangramIconsSpriteSheet.version"
+        private const val ICON_SPRITES = "TangramIconsSpriteSheet.sprites"
+
+        // quest & overlays
+        private const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"
+        private const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
+        private const val SELECTED_OVERLAY = "selectedOverlay"
+        private const val LAST_PICKED_PREFIX = "imageListLastPicked."
+        private const val LAST_EDIT_TIME = "changesets.lastChangeTime"
+
+        // profile & statistics screen UI
+        private const val USER_DAYS_ACTIVE = "days_active"
+        private const val USER_GLOBAL_RANK = "user_global_rank"
+        private const val USER_GLOBAL_RANK_CURRENT_WEEK = "user_global_rank_current_week"
+        private const val USER_LAST_TIMESTAMP_ACTIVE = "last_timestamp_active"
+        private const val ACTIVE_DATES_RANGE = "active_days_range"
+        private const val IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics"
     }
 }

@@ -1,19 +1,21 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 
 /** Controls the ids and names of quest presets */
 class QuestPresetsController(
     private val questPresetsDao: QuestPresetsDao,
-    private val selectedQuestPresetStore: SelectedQuestPresetStore
+    private val prefs: Preferences
 ) : QuestPresetsSource {
 
     private val listeners = Listeners<QuestPresetsSource.Listener>()
 
     override var selectedId: Long
-        get() = selectedQuestPresetStore.get()
+        get() = prefs.selectedQuestPreset
         set(value) {
-            selectedQuestPresetStore.set(value)
+            prefs.selectedQuestPreset = value
+            // TODO hmmmm!!!
             onSelectedQuestPresetChanged()
         }
 
