@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.overlays.way_lit
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.R

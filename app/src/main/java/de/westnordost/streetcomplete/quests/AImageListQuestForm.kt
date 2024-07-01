@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone

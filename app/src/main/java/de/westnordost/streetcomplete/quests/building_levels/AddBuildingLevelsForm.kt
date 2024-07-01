@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
