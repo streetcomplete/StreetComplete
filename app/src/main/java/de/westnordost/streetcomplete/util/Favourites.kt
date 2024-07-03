@@ -4,7 +4,7 @@ package de.westnordost.streetcomplete.util
  * Returns up to [n] distinct items of this sequence which are composed in the following manner:
  *
  * - The first [first] distinct items unless they are `null`
- * - Then, (up to) the [n] most common distinct non-null items found the first [history] items
+ * - Then, (up to) the [n] most common distinct non-null items found in the first [history] items
  * - Finally, append the items in [pad]
  *
  * It is guaranteed that the resulting sequence is not longer than [n] and only consists of non-null
