@@ -12,6 +12,7 @@ enum class ResurveyIntervals(val multiplier: Float) {
 /** This class is just to access the user's preference about which multiplier for the resurvey
  *  intervals to use */
 class ResurveyIntervalsUpdater(private val prefs: Preferences) {
+    // must hold a local reference to the listener because it is a weak reference
     private val listener: SettingsListener
 
     fun update() {
