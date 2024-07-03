@@ -697,7 +697,6 @@ conquista"</string>
     <string name="quest_recycling_type_engine_oil">"Óleo de motor"</string>
     <string name="link_photon_description">"Uma extensão autônoma do Nominatim, com pesquisa difusa e pesquisa ao digitar"</string>
     <string name="link_graphhopper_description">"Um mecanismo de roteamento flexível"</string>
-    <string name="link_qwant_maps_description">"Um mapa com locais e direções pesquisáveis"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Para exibir o mapa, os blocos de vetor são recuperados de %1$s. Veja a&lt;a href=\"%2$s\"&gt;privacidade&gt;&lt;/a&gt;para obter mais informações.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
     <string name="quest_board_type_history">"Histórico"</string>

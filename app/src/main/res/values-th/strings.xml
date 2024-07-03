@@ -691,7 +691,6 @@
     <string name="quest_recycling_type_engine_oil">"น้ำมันเครื่อง"</string>
     <string name="link_photon_description">"ส่วนขยายแยกเดี่ยวของ Nominatim ที่รองรับการค้นหาแบบ fuzzy และการค้นหา-ขณะที่-พิมพ์"</string>
     <string name="link_graphhopper_description">"เครื่องมือกำหนดเส้นทางที่ยืดหยุ่น"</string>
-    <string name="link_qwant_maps_description">"แผนที่พร้อมสถานที่ที่สามารถค้นหาได้และเส้นทาง"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;เพื่อแสดงแผนที่ ไทล์เวกเตอร์จะถูกดึงมาจาก %1$s ดู&lt;a href=\"%2$s\"&gt;คำชี้แจงสิทธิ์ส่วนบุคคล&lt;/a&gt;สำหรับข้อมูลเพิ่มเติม&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"ผู้ให้การสนับสนุน"</string>
     <string name="quest_board_type_history">"ประวัติศาสตร์"</string>

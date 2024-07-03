@@ -692,7 +692,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_recycling_type_engine_oil">"Aceite de motor"</string>
     <string name="link_photon_description">"Una estensión independiente pa Nominatim, con busca parcial y dinámica al escribir"</string>
     <string name="link_graphhopper_description">"Un motor d'enrutamientu flexible"</string>
-    <string name="link_qwant_maps_description">"Un mapa con llugares de busca y direcciones"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Pa poder ver el mapa descargamos teselas vectoriales de %1$s. Mira la &lt;a href=\"%2$s\"&gt;declaración de privacidad&lt;/a&gt; para más información.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
     <string name="quest_board_type_history">"Historia"</string>

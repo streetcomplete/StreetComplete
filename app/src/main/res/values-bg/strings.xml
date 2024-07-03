@@ -686,7 +686,6 @@
     <string name="quest_recycling_type_engine_oil">"Машинно масло"</string>
     <string name="link_photon_description">"Отделно разширение за Nominatim включващо удобно търсене на имена."</string>
     <string name="link_graphhopper_description">"Гъвкава рутираща машина"</string>
-    <string name="link_qwant_maps_description">"Карта с възможност за търсене на места и упътвания"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;За да се изобрази картата се извличат файлове от %1$s. Вижте &lt;a href=\"%2$s\"&gt;декларацията за поверителност&lt;/a&gt; на тази услуга за повече инфо.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Спонсори"</string>
     <string name="quest_board_type_history">"История"</string>

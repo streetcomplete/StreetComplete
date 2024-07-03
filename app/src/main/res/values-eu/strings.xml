@@ -693,7 +693,6 @@ mailak"</string>
     <string name="quest_recycling_type_engine_oil">"Motoreen olioa"</string>
     <string name="link_photon_description">"Nominatim-erako gehigarri autonomoa, bilaketa lauso zein idatzi ahalako bilaketarako"</string>
     <string name="link_graphhopper_description">"Ibilbide motore malgua"</string>
-    <string name="link_qwant_maps_description">"Bilatu daitezkeen toki eta helbideen mapa bat"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Mapa bistaratzeko, lauza bektorialak %1$s-tik berreskuratzen dira. Informazio gehiago lortzeko, ikusi haien &lt;a href=\"%2$s\"&gt; pribatutasun-adierazpena &lt;/a&gt;. &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Babesleak"</string>
     <string name="quest_board_type_history">"Historia"</string>

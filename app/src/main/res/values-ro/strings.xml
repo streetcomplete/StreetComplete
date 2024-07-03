@@ -695,7 +695,6 @@ activitate"</string>
     <string name="quest_recycling_type_engine_oil">"Ulei de motor"</string>
     <string name="link_photon_description">"O extensie autonomă la Nominatim, care include căutare neclară și căutare în timp real"</string>
     <string name="link_graphhopper_description">"Un motor de rutare flexibil"</string>
-    <string name="link_qwant_maps_description">"O hartă cu locații și indicații de căutare"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Pentru a afișa harta, informțiile vectoriale sunt obținute din %1$s. Consultați &lt;a href=\"%2$s\"&gt; declarația de confidențialitate&lt;/a&gt; pentru mai multe informații. &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsori"</string>
     <string name="quest_board_type_history">"Istoric"</string>

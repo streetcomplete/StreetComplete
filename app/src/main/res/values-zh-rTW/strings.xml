@@ -202,8 +202,8 @@
     <string name="quest_wheelchairAccess_limited">"部分可通行"</string>
     <string name="quest_bikeParkingCapacity_hint">"注意單車架兩邊都能夠停放一台單車。"</string>
     <string name="quest_sport_roller_skating">"滾輪溜冰"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，並且裡面的房間是輪椅可通行的狀況。"</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味沒有多過一個步驟，就可以進到場所裡。"</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味不用跨過腳踝高的地方，就可以進到場所裡，並且裡面的房間是輪椅可通行的狀況。"</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味不用跨過腳踝高的地方，就可以進到場所裡。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s 的簡稱縮寫是？"</string>
     <string name="quest_recycling_type_title">"這是哪一種資源回收設施？"</string>
     <string name="recycling_centre">"資源回收中心"</string>
@@ -492,7 +492,7 @@
     <string name="quest_tracktype_grade4">"偏柔性路面"</string>
     <string name="quest_tracktype_grade5">"柔性路面"</string>
     <string name="quest_building_underground_title">"這座建物完全在地面以下嗎？"</string>
-    <string name="quest_wheelchairAccess_limited_description_outside">"部分意味無法在一步動作下過去。"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"部分可通行意味不用跨過腳踝高的地方就能過去。"</string>
     <string name="quest_wheelchairAccess_outside_title">"這個地方輪椅可以進入嗎？"</string>
     <string name="quest_traffic_signals_button_title">"這些紅綠燈是否有按鈕切換綠燈？"</string>
     <string name="quest_motorcycleParkingCapacity_title">"這裡可以停泊多少台機車/電單車？"</string>
@@ -695,7 +695,6 @@
     <string name="quest_recycling_type_engine_oil">"機油"</string>
     <string name="link_photon_description">"標準的Nominatim擴充，包含模糊搜尋和你自訂的搜尋。"</string>
     <string name="link_graphhopper_description">"靈活的導航引擎"</string>
-    <string name="link_qwant_maps_description">"具有可搜尋地點和方向的地圖"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;要顯示此地圖，向量圖磚皆從 %1$s 取得。檢視它們的&lt;a href=\"%2$s\"&gt;隱私聲明&lt;/a&gt;取得更多資訊。&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"贊助者"</string>
     <string name="quest_board_type_history">"歷史"</string>
@@ -1107,7 +1106,7 @@
     <string name="quest_smoking_title2">"這裡是否允許吸菸？"</string>
     <string name="quest_smoothness_title">"這裡的路面材質品質如何？"</string>
     <string name="quest_summit_register_title2">"這裡的山峰有註冊嗎？"</string>
-    <string name="quest_surface_title">"這裡的路面材質是？"</string>
+    <string name="quest_surface_title">"這裡的鋪面材質是？"</string>
     <string name="quest_toiletAvailability_title">"這裡有沒有廁所？"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"這裡的廁所是否有無障礙設施？"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"你確定單車騎士不能在單行道兩個方向都能騎乘嗎？如果有疑問，可以到路尾的指示牌檢查。"</string>
@@ -1398,4 +1397,11 @@
     <string name="quest_parcel_locker_brand">"包裏儲物櫃的品牌？"</string>
     <string name="quest_parcel_locker_pickup">"你能在這裡領取包裹嗎？"</string>
     <string name="quest_parcel_locker_mail_in">"你可以在這裡寄送包裏嗎？"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"輸電線附掛在建築"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"沒有，但標誌允許在人行道騎自行車"</string>
+    <string name="separate_cycleway_no_signed">"標誌特別指明禁止騎自行車"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"人行道，但標誌允許騎自行車"</string>
+    <string name="quest_bicycle_parking_type_floor">"指定區域"</string>
+    <string name="link_osmapp_description">"有多個不同圖層的地圖，例如爬山或是滑雪用途"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"只有給退貨用"</string>
 </resources>

@@ -692,7 +692,6 @@ seviyeleri"</string>
     <string name="quest_recycling_type_engine_oil">"Motor yağı"</string>
     <string name="link_photon_description">"Nominatim için \"fuzzy search\" ve yazarken arama gibi özellikler içeren yalın bir eklenti"</string>
     <string name="link_graphhopper_description">"Esnek bir yolbulucu motoru"</string>
-    <string name="link_qwant_maps_description">"Aranabilir yerler ve yol tarifleri içeren bir harita"</string>
     <string name="about_title_sponsors">"Sponsorlar"</string>
     <string name="quest_board_type_history">"Tarih"</string>
     <string name="quest_board_type_geology">"Jeoloji"</string>

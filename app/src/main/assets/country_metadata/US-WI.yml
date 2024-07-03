@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalValidHousenumberRegex: ^([NSEW][0-9]{1,5}[ -]?){1,2}[A-Z]?$
-atmOperators: [UW Credit Union, U.S. Bank, Chase, BMO, Wells Fargo, Associated Bank, US Bank, North Shore Bank, Cash Depot, Town Bank, PNC Bank, Old National Bank, Metabank, Huntington Bank, Educators Credit Union, BMO Harris]
+atmOperators: [U.S. Bank, UW Credit Union, Chase, BMO, Wells Fargo, Associated Bank, North Shore Bank, Cash Depot, Town Bank, PNC Bank, Old National Bank, Metabank, Huntington Bank, Educators Credit Union, BMO Harris]
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Electrify America, Blink, University of Wisconsin-Stevens Point, Stevens Point Hyundai, Mid-State Technical College, Madison Gas & Electric Company, Barnwood Events]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Hub]

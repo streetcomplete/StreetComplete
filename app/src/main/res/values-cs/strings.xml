@@ -313,7 +313,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_cycleway_value_bus_lane">"na pruhu pro autobusy"</string>
     <string name="quest_leave_new_note_create_image_error">"Nepodařilo se vytvořit fotku"</string>
     <string name="quest_cycleway_value_lane_dual">"cyklopruh, oba směry"</string>
-    <string name="quest_cycleway_value_track_dual">"cyklostezka nebo cháněný pruh, v obou směrech"</string>
+    <string name="quest_cycleway_value_track_dual">"cyklostezka nebo chráněný pruh, v obou směrech"</string>
     <string name="pref_category_advanced">"Pokročilé"</string>
     <string name="quest_enabled">"Povoleno"</string>
     <string name="quest_type">"Druh úkolu"</string>
@@ -700,7 +700,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_recycling_type_engine_oil">"Motorový olej"</string>
     <string name="link_photon_description">"Samostatné rozšíření pro Nominatim, umožňující vyhledávání s opravami (fuzzy search) a našeptáváním"</string>
     <string name="link_graphhopper_description">"Flexibilní navigační engine"</string>
-    <string name="link_qwant_maps_description">"Mapa s vyhledáváním míst a cest k cíli"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Pro zobrazení mapy musí být staženy vektorové dlaždice z %1$s. Pro další informace se podívejte na jejich &lt;a href=\"%2$s\"&gt;prohlášení o ochraně soukromí&lt;/a&gt; .&lt;/p&gt;
 "</string>
     <string name="about_title_sponsors">"Sponzoři"</string>
@@ -1412,4 +1411,6 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="separate_cycleway_no_signed">"Značka výslovně zakazuje jízdu na kole"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Chodník, ale značka povoluje jízdu na kole"</string>
     <string name="quest_bicycle_parking_type_floor">"Určený prostor"</string>
+    <string name="link_osmapp_description">"Mapa s různými vrstvami, například pro lezení nebo lyžování"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Jen pro vracení balíčků"</string>
 </resources>

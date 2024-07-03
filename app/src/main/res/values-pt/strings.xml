@@ -103,7 +103,7 @@ Antes de enviar as suas alterações, a aplicação confirma com &lt;a href=\"ht
     <string name="autosync_on">"Ativado"</string>
     <string name="autosync_only_on_wifi">"Apenas em Wi-Fi"</string>
     <string name="autosync_off">"Desativado"</string>
-    <string name="quest_streetSurface_title">"Que tipo de pavimento tem este trecho de estrada?"</string>
+    <string name="quest_streetSurface_title">"Que pavimento tem esta estrada?"</string>
     <string name="quest_surface_value_paved">"Pavimentado (genérico)"</string>
     <string name="quest_surface_value_unpaved">"Não pavimentado (genérico)"</string>
     <string name="quest_surface_value_ground">"Terra (genérico)"</string>
@@ -200,7 +200,7 @@ Se não existir sinalização ao longo da estrada selecionada, por omissão é a
     <string name="quest_sport_gaelic_games">"Jogos gaélicos"</string>
     <string name="quest_sport_sepak_takraw">"Voleibol de pontapé ou takraw"</string>
     <string name="quest_wheelchairAccess_limited">"Parcialmente"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Note que muitos suportes permitem parquear 1 bicicleta de cada lado, por isso cada um conta como 2 lugares."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note que normalmente pode-se parquear 1 bicicleta de cada lado."</string>
     <string name="quest_sport_roller_skating">"Patins em linha"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que não existe mais do que um pequeno degrau com alguns centímetros para aceder ao local e que a maioria das divisões interiores são acessíveis a cadeira de rodas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialmente significa que não existe mais do que um pequeno degrau para aceder ao local."</string>
@@ -339,7 +339,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
 \"Parcialmente\" significa que uma pessoa de cadeira de rodas pode entrar e usar a casa de banho mas não existe sanita com corrimão e lavatório rebaixado adaptado."</string>
     <string name="map_btn_create_note">"Criar nova nota"</string>
     <string name="create_new_note_unprecise">"Aproxime a visualização para deixar uma nota"</string>
-    <string name="create_new_note_description">"Pode deixar uma nota para informar outros mapeadores que existe um problema aqui. Ajuste a posição da nota movendo o mapa:"</string>
+    <string name="create_new_note_description">"Pode deixar uma nota para informar outros mapeadores que existe um problema aqui. Ajuste a posição da nota movendo o mapa."</string>
     <string name="quest_generic_looks_like_this">"Normalmente tem esta aparência:"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
     <string name="quest_cycleway_title2">"Há uma ciclovia numa via dedicada ou num corredor da estrada aqui? De que tipo?"</string>
@@ -501,7 +501,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="underground">"subterrâneo"</string>
     <string name="quest_sidewalk_value_yes">"com passeio"</string>
     <string name="quest_sidewalk_value_no">"sem passeio"</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">"É proibida a circulação pedestre nesta estrada?"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Os peões estão proibidos de andar nesta estrada sem passeio?"</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é este?"</string>
     <string name="pref_title_theme_select">"Tema"</string>
     <string name="theme_automatic">"Automático"</string>
@@ -536,7 +536,7 @@ Dividir agora?"</string>
     <string name="quest_handrail_title">"Estas escadas têm corrimão?"</string>
     <string name="about_summary_current_version">"Versão atual: %s"</string>
     <string name="quest_ref_answer_noRef">"Não tem nº de referência visível…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"A via na seguinte ilustração tem a mesma orientação que a do mapa no sítio do marcador. Clique nela para escolher o sentido."</string>
+    <string name="quest_street_side_puzzle_tutorial">"A estrada na ilustração tem a mesma orientação do mapa no sítio do marcador. Clique nela para escolher o sentido."</string>
     <string name="quest_recycling_materials_title">"O que pode ser deixado aqui para reciclagem?"</string>
     <string name="quest_recycling_materials_note">"Se algo que não constar na lista puder ser reciclado aqui, deixe antes uma nota."</string>
     <string name="quest_recycling_type_batteries">"Baterias"</string>
@@ -656,8 +656,8 @@ Mantenha-se em segurança: preste atenção ao que se passa em seu redor ao usar
     <string name="achievement_wheelchair_title">"Mobilidade"</string>
     <string name="achievement_wheelchair_solved_X">"Resolveu %d missões que ajudam utilizadores de cadeiras de rodas a deslocarem-se na cidade!"</string>
     <string name="achievement_postman_title">"Carteiro"</string>
-    <string name="achievement_postman_solved_X">"Ajudou a localizar %d moradas!
-Esta informação é necessária não apenas para os carteiros, mas também para quem utilize sistemas de navegação."</string>
+    <string name="achievement_postman_solved_X">"Ajudou a localizar %d endereços e outros elementos postais!
+Estes dados são essenciais não só para o transportador de correio, mas também para qualquer sistema de navegação."</string>
     <string name="achievement_building_title">"Arranha-céus"</string>
     <string name="achievement_building_solved_X">"Resolveu %d missões relacionados com edifícios.
 Note que esta aplicação apenas pergunta pelo número de porta de um edifício só depois de estar definido o seu tipo."</string>
@@ -697,7 +697,6 @@ conquista"</string>
     <string name="quest_recycling_type_engine_oil">"Óleo de motor"</string>
     <string name="link_photon_description">"Uma extensão autónoma do Nominatim, com pesquisa difusa e pesquisa à medida que escreve"</string>
     <string name="link_graphhopper_description">"Um mecanismo de cálculo de percursos flexível"</string>
-    <string name="link_qwant_maps_description">"Um mapa com locais pesquisáveis e direções"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Para mostrar o mapa, os mosaicos vetoriais são obtidos de %1$s. Consulte a &lt;a href=\"%2$s\"&gt;declaração de privacidade&lt;/a&gt; deles para obter mais informações.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
     <string name="quest_board_type_history">"História"</string>
@@ -756,7 +755,7 @@ conquista"</string>
     <string name="achievement_citizen_solved_X">"Resolveu %d missões úteis para o dia-a-dia na cidade!"</string>
     <string name="achievement_outdoors_title">"Ar livre"</string>
     <string name="achievement_outdoors_solved_X">"Resolveu %d missões úteis para entusiastas dos espaços exteriores!"</string>
-    <string name="quest_pedestrian_crossing_island">"Esta passadeira tem uma ilha de refúgio para peões no meio da estrada?"</string>
+    <string name="quest_pedestrian_crossing_island">"Esta passadeira tem uma ilha de refúgio de peões a meio?"</string>
     <string name="quest_generic_answer_noSign">"Não há sinal"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"A rampa para cadeiras de rodas é mostrada de forma separada no mapa?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
@@ -1226,7 +1225,7 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="quest_barrier_bicycle_installation_removable">"Removível"</string>
     <string name="quest_buildingType_guardhouse">"Edifício de porteiro"</string>
     <string name="quest_genericRef_title">"Que número de identificação tem isto?"</string>
-    <string name="quest_sidewalk_answer_different">"A situação do passeio é diferente"</string>
+    <string name="quest_sidewalk_answer_different">"Outra situação. Remover a etiqueta de passeio"</string>
     <string name="about_title_get_involved">"Contribua"</string>
     <string name="pref_category_quests_overlays">"Missões e camadas"</string>
     <string name="quest_presets_rename">"Alterar nome"</string>
@@ -1262,15 +1261,15 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="bicycle_boulevard_is_a">"É %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"Não é %1$s"</string>
     <string name="bicycle_boulevard">"Ciclovia"</string>
-    <string name="separate_cycleway_no_or_allowed">"Não destinado a ciclistas (pode ainda ser permitido andar de bicicleta)"</string>
-    <string name="separate_cycleway_non_segregated">"Via partilhada"</string>
+    <string name="separate_cycleway_no_or_allowed">"Via pedonal, sem sinalização explícita sobre o uso da bicicleta (se é permitido depende da legislação)"</string>
+    <string name="separate_cycleway_non_segregated">"Via para ciclistas e pedestres partilhada"</string>
     <string name="separate_cycleway_segregated">"Via pedonal e de bicicleta separadas"</string>
     <string name="separate_cycleway_exclusive">"Via apenas para ciclistas"</string>
     <string name="separate_cycleway_with_sidewalk">"Apenas para bicicleta com um passeio adjacente ou separado por lancil"</string>
     <string name="cycleway_reverse_direction">"Inverter direção da ciclovia"</string>
     <string name="cycleway_reverse_direction_warning">"É extremamente raro que uma ciclovia siga noutra direção."</string>
     <string name="cycleway_reverse_direction_toast">"Toque no lado que pretende inverter"</string>
-    <string name="separate_cycleway_path">"Caminho ou trilho"</string>
+    <string name="separate_cycleway_path">"Caminho ou trilho (não se destina a ninguém em particular)"</string>
     <string name="quest_fireHydrant_type_pipe">"Tubo"</string>
     <string name="measure_info_title">"Atingir a precisão ideal"</string>
     <string name="measure_info_html_description">"&lt;p&gt;O ARCore por vezes (inicialmente) presume que o solo é um pouco mais baixo ou mais alto do que realmente é. Isto introduz um erro de medição que se torna maior quanto mais se inclina o telemóvel para o horizonte.&lt;/p&gt;
@@ -1337,7 +1336,7 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="quest_defibrillator_location">"Onde se encontra este desfibrilhador?"</string>
     <string name="quest_defibrillator_location_description">"Forneça uma descrição concisa da sua localização (por exemplo, \"na sala do porteiro\")."</string>
     <string name="quest_sanitary_dump_station_title">"Existe aqui uma estação de despejo sanitário?"</string>
-    <string name="quest_sanitary_dump_station_description">"Instalação destinada a depositar os dejetos humanos provenientes de um tanque de retenção da casa de banho de uma autocaravana, camião de longo curso, etc. Normalmente indicado por um sinal como este:"</string>
+    <string name="quest_sanitary_dump_station_description">"Uma estação de despejo sanitário é uma instalação destinada a depositar os dejetos humanos provenientes de um tanque de retenção da casa de banho de uma autocaravana, camião de longo curso, etc. Normalmente indicada por um sinal como este:"</string>
     <string name="quest_generalFee_title">"É necessário pagar para utilizar isto?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"É um local para fogueiras"</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Os locais destinados a fazer fogueira não têm uma superfície de cozedura (por exemplo, grelha/prato), ao contrário dos grelhadores."</string>
@@ -1383,7 +1382,7 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
 Pode encontrar informações sobre donativos no nosso site ou na página inicial do projeto. O Google Play não nos permite fornecer a hiperligação na aplicação."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Não no interior, mas coberto"</string>
     <string name="lit_value_unsupported">"Estado específico de iluminado que não é selecionável nesta aplicação"</string>
-    <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_generic_otherAnswers2">"Outra…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Existem sinais de trânsito que indiquem quando se deve atravessar aqui?"</string>
     <string name="quest_moped_access_title">"Existe algum sinal que indique o acesso de ciclomotores a esta ciclovia?"</string>
     <string name="quest_moped_access_allowed">"Não há qualquer sinal"</string>
@@ -1401,4 +1400,11 @@ Um andar conta como um andar de telhado quando as suas janelas estão no telhado
     <string name="quest_parcel_locker_brand">"Qual é a marca deste cacifo de encomendas?"</string>
     <string name="quest_parcel_locker_pickup">"É possível levantar encomendas aqui?"</string>
     <string name="quest_parcel_locker_mail_in">"É possível deixar encomendas aqui?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"A linha elétrica está ancorada ao edifício"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"nenhum, mas o sinal permite andar de bicicleta no passeio"</string>
+    <string name="separate_cycleway_no_signed">"Um sinal que proíbe explicitamente o uso da bicicleta"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Via pedonal, mas um sinal permite a circulação de bicicletas"</string>
+    <string name="quest_bicycle_parking_type_floor">"Área designada"</string>
+    <string name="link_osmapp_description">"Um mapa com várias camadas, por exemplo, para escalada ou esqui"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Apenas para devoluções"</string>
 </resources>

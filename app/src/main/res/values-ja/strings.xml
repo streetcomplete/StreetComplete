@@ -699,7 +699,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_recycling_type_engine_oil">"エンジン油"</string>
     <string name="link_photon_description">"Nominatimのスタンドアロン拡張機能で、あいまい検索と入力時の検索機能を備えています"</string>
     <string name="link_graphhopper_description">"柔軟なルーティングエンジン"</string>
-    <string name="link_qwant_maps_description">"検索可能な場所と道順を含む地図"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;地図を表示するためにベクタータイルを %1$s から取得します。詳しくは %1$s の &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; を参照してください。&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"スポンサー"</string>
     <string name="quest_board_type_history">"歴史"</string>
