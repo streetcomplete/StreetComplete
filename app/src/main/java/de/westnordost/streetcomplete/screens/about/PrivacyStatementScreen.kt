@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
-import de.westnordost.streetcomplete.util.html.parseHtml
 import de.westnordost.streetcomplete.util.html.tryParseHtml
 import de.westnordost.streetcomplete.util.ktx.openUri
 
