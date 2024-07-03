@@ -140,10 +140,10 @@ class PinsMapComponent(
 
         val properties = feature.properties()
 
-        if (properties.has("point_count")) {
+        if (properties?.has("point_count") == true) {
             zoomToCluster(feature)
         } else {
-            onClickPin(properties.getProperties())
+            onClickPin(properties?.toMap().orEmpty())
         }
         return true
     }
@@ -190,5 +190,5 @@ data class Pin(
     val order: Int = 0
 )
 
-private fun JsonObject.getProperties(): Map<String, String> =
+private fun JsonObject.toMap(): Map<String, String> =
     entrySet().associate { it.key to it.value.asString }

@@ -234,7 +234,7 @@ class StyleableOverlayMapComponent(
             layerIds = arrayOf("overlay-symbols", "overlay-lines", "overlay-lines-dashed", "overlay-fills")
         ).firstOrNull() ?: return false
 
-        val properties = feature.properties()
+        val properties = feature.properties() ?: return false
 
         val elementKey = getElementKey(properties)
         if (elementKey != null) {
