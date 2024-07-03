@@ -12,6 +12,7 @@ class AddParkingType : OsmFilterQuestType<ParkingType>() {
         nodes, ways, relations with
           amenity = parking
           and (!parking or parking = yes)
+          and building !~ garage|garages
     """
     override val changesetComment = "Specify parking types"
     override val wikiLink = "Tag:amenity=parking"
