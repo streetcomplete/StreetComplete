@@ -203,7 +203,7 @@ dependencies {
     implementation("com.charleskorn.kaml:kaml:0.59.0")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.0.0")
+    implementation("org.maplibre.gl:android-sdk:11.0.2-pre0")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")
