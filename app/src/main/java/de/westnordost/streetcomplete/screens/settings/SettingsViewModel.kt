@@ -122,6 +122,7 @@ class SettingsViewModelImpl(
     }
 
     override fun onCleared() {
+        visibleQuestTypeSource.removeListener(visibleQuestTypeListener)
         questPresetsSource.removeListener(questPresetsListener)
         osmNoteQuestsHiddenController.removeListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.removeListener(osmQuestsHiddenListener)
