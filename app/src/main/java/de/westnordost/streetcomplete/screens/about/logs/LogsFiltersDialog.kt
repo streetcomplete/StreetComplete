@@ -48,12 +48,12 @@ fun LogsFiltersDialog(
         onDismissRequest = onDismissRequest,
         confirmButton = {
             TextButton(onClick = { onApplyFilters(getFilters()) }) {
-                Text(stringResource(R.string.action_filter))
+                Text(stringResource(android.R.string.ok))
             }
         },
         dismissButton = {
-            TextButton(onClick = { onApplyFilters(LogsFilters()) }) {
-                Text(stringResource(R.string.action_reset))
+            TextButton(onClick = onDismissRequest) {
+                Text(stringResource(android.R.string.cancel))
             }
         },
         modifier = modifier,
