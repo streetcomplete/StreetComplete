@@ -17,4 +17,10 @@ data class LogsFilters(
         ) &&
         (timestampNewerThan == null || log.timestamp > timestampNewerThan.toEpochMilli()) &&
         (timestampOlderThan == null || log.timestamp < timestampOlderThan.toEpochMilli())
+
+    fun count(): Int =
+        (if (!levels.containsAll(LogLevel.entries.toSet())) 1 else 0) +
+        (if (!messageContains.isNullOrEmpty()) 1 else 0) +
+        (if (timestampNewerThan != null) 1 else 0) +
+        (if (timestampOlderThan != null) 1 else 0)
 }
