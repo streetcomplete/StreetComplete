@@ -66,6 +66,7 @@ class MessagesSource(
             override fun onVisibleQuestsInvalidated() {}
         })
 
+        // must hold a reference because the listener is a weak reference
         settingsListeners += prefs.onQuestSelectionHintStateChanged { onNumberOfMessagesUpdated() }
     }
 
