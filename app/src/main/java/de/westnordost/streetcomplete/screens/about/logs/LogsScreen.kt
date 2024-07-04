@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd
 import de.westnordost.streetcomplete.util.ktx.now
 import kotlinx.datetime.LocalDateTime
@@ -69,10 +70,14 @@ fun LogsScreen(
                 }
             }
         )
-        LazyColumn(state = listState) {
-            itemsIndexed(logs) { index, item ->
-                if (index > 0) Divider()
-                LogsItem(item, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+        if (logs.isEmpty()) {
+            CenteredLargeTitleHint(stringResource(R.string.no_search_results))
+        } else {
+            LazyColumn(state = listState) {
+                itemsIndexed(logs) { index, item ->
+                    if (index > 0) Divider()
+                    LogsItem(item, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+                }
             }
         }
     }
