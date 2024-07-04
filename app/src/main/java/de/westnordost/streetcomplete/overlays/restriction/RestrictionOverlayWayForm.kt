@@ -265,7 +265,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
     override fun isFormComplete(): Boolean {
         val restriction = currentRestriction ?: return false
         if (!hasChanges()) return false
-        if (restriction is WeightRestriction && restriction.weight.isBlank()) return false
+        if (restriction is WeightRestriction && restriction.weight.replace(',', '.').toDoubleOrNull() == null) return false
         return true
     }
 
@@ -273,7 +273,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
         val restriction = currentRestriction ?: return
         when (restriction) {
             is WeightRestriction -> {
-                val input = restriction.weight.toDouble()
+                val input = restriction.weight.replace(',', '.').toDouble()
                 val weight = when (countryInfo.weightLimitUnits[weightUnitSelect?.selectedItemPosition ?: 0]) {
                     WeightMeasurementUnit.SHORT_TON  -> ShortTons(input)
                     WeightMeasurementUnit.POUND      -> ImperialPounds(input.toInt())
