@@ -161,7 +161,7 @@ class StreetCompleteApplication : Application() {
 
         enqueuePeriodicCleanupWork()
 
-        updateDefaultTheme(prefs.theme)
+        updateTheme(prefs.theme)
 
         resurveyIntervalsUpdater.update()
 
@@ -174,7 +174,7 @@ class StreetCompleteApplication : Application() {
         }
 
         settingsListeners += prefs.onLanguageChanged { updateDefaultLocales() }
-        settingsListeners += prefs.onThemeChanged { updateDefaultTheme(it) }
+        settingsListeners += prefs.onThemeChanged { updateTheme(it) }
     }
 
     private fun onNewVersion() {
@@ -205,7 +205,7 @@ class StreetCompleteApplication : Application() {
         setDefaultLocales(getSelectedLocales(prefs))
     }
 
-    private fun updateDefaultTheme(theme: Theme) {
+    private fun updateTheme(theme: Theme) {
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
     }
 
