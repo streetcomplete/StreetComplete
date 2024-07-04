@@ -563,7 +563,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="restore_confirmation">Restore</string>
     <string name="restore_dialog_message">Restore all quests you’ve hidden?</string>
 
-    <string name="pref_title_quests2">Quest selection and priority</string>
+    <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
     <string name="pref_subtitle_quests_preset_name">for preset: %s</string>
 
