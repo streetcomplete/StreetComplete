@@ -81,6 +81,7 @@ private fun LogsController.getLogs(filters: LogsFilters) =
     )
 
 /** List that only returns true on equals if it is compared to the same instance */
+// this is necessary so that Compose recognizes that the view should be updated after list changed
 private class UniqueList<T>(private val list: List<T>) : List<T> by list {
     override fun equals(other: Any?) = this === other
     override fun hashCode() = list.hashCode()
