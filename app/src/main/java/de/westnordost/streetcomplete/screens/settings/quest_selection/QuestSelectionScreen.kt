@@ -52,6 +52,11 @@ fun QuestSelectionScreen(
         // the filtering is not done in the view model because it involves accessing localized
         // resources, which we consider UI (framework) specific data and view models should be
         // free of that.
+        // NOTE: This is very slow though, it involves getting the string resource, lowercasing it
+        //       and comparing to the filter for each quest on each recomposition (e.g. if the
+        //       user scrolls the list by a tiny amount). Unfortunately, getting a stringResource
+        //       (the quest title) is a composable function and composable functions cannot be
+        //       placed in a remember { } lambda, so no idea how to improve this
         val filteredQuests = filterQuests(quests, searchText.text)
 
         if (filteredQuests.isEmpty()) {
