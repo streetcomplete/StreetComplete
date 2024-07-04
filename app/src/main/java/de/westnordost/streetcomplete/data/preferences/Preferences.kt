@@ -8,9 +8,6 @@ import com.russhwolf.settings.int
 import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
 import com.russhwolf.settings.string
-import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_AUTOSYNC
-import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_RESURVEY_INTERVALS
-import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_THEME
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 class Preferences(private val prefs: ObservableSettings) {
@@ -28,13 +25,14 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var autosync: Autosync
         set(value) { prefs.putString(AUTOSYNC, value.name) }
-        get() = Autosync.valueOf(prefs.getString(AUTOSYNC, DEFAULT_AUTOSYNC))
+        get() = prefs.getStringOrNull(AUTOSYNC)?.let { Autosync.valueOf(it) } ?: DEFAULT_AUTOSYNC
 
     var keepScreenOn: Boolean by prefs.boolean(KEEP_SCREEN_ON, false)
 
     var resurveyIntervals: ResurveyIntervals
         set(value) { prefs.putString(RESURVEY_INTERVALS, value.name) }
-        get() = ResurveyIntervals.valueOf(prefs.getString(RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS))
+        get() = prefs.getStringOrNull(RESURVEY_INTERVALS)?.let { ResurveyIntervals.valueOf(it) }
+            ?: DEFAULT_RESURVEY_INTERVALS
 
     var showAllNotes: Boolean by prefs.boolean(SHOW_ALL_NOTES, false)
 
@@ -62,18 +60,18 @@ class Preferences(private val prefs: ObservableSettings) {
         prefs.addStringOrNullListener(LANGUAGE_SELECT, callback)
 
     fun onThemeChanged(callback: (Theme) -> Unit): SettingsListener =
-        prefs.addStringListener(THEME_SELECT, DEFAULT_THEME) {
-            callback(Theme.valueOf(it))
+        prefs.addStringOrNullListener(THEME_SELECT) {
+            callback(it?.let { Theme.valueOf(it) } ?: DEFAULT_THEME)
         }
 
     fun onAutosyncChanged(callback: (Autosync) -> Unit): SettingsListener =
-        prefs.addStringListener(AUTOSYNC, DEFAULT_AUTOSYNC) {
-            callback(Autosync.valueOf(it))
+        prefs.addStringOrNullListener(AUTOSYNC) {
+            callback(it?.let { Autosync.valueOf(it) } ?: DEFAULT_AUTOSYNC)
         }
 
     fun onResurveyIntervalsChanged(callback: (ResurveyIntervals) -> Unit): SettingsListener =
-        prefs.addStringListener(RESURVEY_INTERVALS, DEFAULT_RESURVEY_INTERVALS) {
-            callback(ResurveyIntervals.valueOf(it))
+        prefs.addStringOrNullListener(RESURVEY_INTERVALS) {
+            callback(it?.let { ResurveyIntervals.valueOf(it) } ?: DEFAULT_RESURVEY_INTERVALS)
         }
 
     fun onAllShowNotesChanged(callback: (Boolean) -> Unit): SettingsListener =
@@ -179,6 +177,10 @@ class Preferences(private val prefs: ObservableSettings) {
     }
 
     companion object {
+        private val DEFAULT_AUTOSYNC = Autosync.ON
+        private val DEFAULT_RESURVEY_INTERVALS = ResurveyIntervals.DEFAULT
+        private val DEFAULT_THEME = Theme.SYSTEM
+
         // application settings
         private const val SHOW_ALL_NOTES = "display.nonQuestionNotes"
         private const val AUTOSYNC = "autosync"

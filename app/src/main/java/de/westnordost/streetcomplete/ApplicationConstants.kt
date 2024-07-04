@@ -58,9 +58,6 @@ object ApplicationConstants {
     const val NOTIFICATIONS_ID_SYNC = 1
 
     const val DEFAULT_MAP_CACHE_SIZE_IN_MB = 200
-    const val DEFAULT_AUTOSYNC = "ON"
-    const val DEFAULT_RESURVEY_INTERVALS = "DEFAULT"
-    const val DEFAULT_THEME = "SYSTEM"
 
     const val STREETMEASURE = "de.westnordost.streetmeasure"
 
