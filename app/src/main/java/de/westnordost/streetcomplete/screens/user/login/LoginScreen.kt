@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.LinearProgressIndicator
@@ -39,8 +40,7 @@ import java.util.Locale
 /** Leads user through the OAuth 2 auth flow to login */
 @Composable
 fun LoginScreen(
-    viewModel: LoginViewModel,
-    onClickBack: () -> Unit
+    viewModel: LoginViewModel
 ) {
     val state by viewModel.loginState.collectAsState()
     val unsyncedChangesCount by viewModel.unsyncedChangesCount.collectAsState()
@@ -85,6 +85,14 @@ fun LoginScreen(
                 }
             }
         )
+        LaunchedEffect(state) {
+            webViewNavigator.loadUrl(
+                viewModel.authorizationRequestUrl,
+                additionalHttpHeaders = mapOf(
+                    "Accept-Language" to Locale.getDefault().toLanguageTag()
+                )
+            )
+        }
 
         LaunchedEffect(webViewState.errorsForCurrentRequest) {
             val error = webViewState.errorsForCurrentRequest.firstOrNull()
@@ -101,7 +109,7 @@ fun LoginScreen(
         if (loadingState is LoadingState.Loading) {
             LinearProgressIndicator(
                 progress = loadingState.progress,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(8.dp),
             )
         }
         WebView(
@@ -117,7 +125,7 @@ fun LoginScreen(
             },
         )
     } else if (state is RetrievingAccessToken || state is LoggedIn) {
-        LinearProgressIndicator(Modifier.fillMaxWidth())
+        LinearProgressIndicator(Modifier.fillMaxWidth().height(8.dp))
     }
 }
 

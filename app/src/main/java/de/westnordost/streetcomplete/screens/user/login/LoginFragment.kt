@@ -19,10 +19,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         composableContent {
             Surface {
-                LoginScreen(
-                    viewModel,
-                    { activity?.toast("BACK!!!") }
-                )
+                LoginScreen(viewModel)
             }
         }
 
