@@ -7,8 +7,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.width.WidthAnswer
@@ -36,7 +34,7 @@ class AddBarrierOpening(
     override val wikiLink = "Key:barrier"
  // icon needed
     override val icon = R.drawable.ic_quest_bicycleway_width
-    override val achievements = listOf(BICYCLIST, CAR, PEDESTRIAN, WHEELCHAIR)
+    override val achievements = listOf(BICYCLIST, WHEELCHAIR)
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
@@ -63,11 +61,11 @@ class AddBarrierOpening(
 
         tags[key] = answer.width.toOsmValue()
 
-        if (answer.isARMeasurement) {
-        tags["source:$key"] = "ARCore"
-        } else {
-        tags.remove("source:$key")
-        }
+            if (answer.isARMeasurement) {
+            tags["source:$key"] = "ARCore"
+            } else {
+            tags.remove("source:$key")
+            }
 
         // update width:barrier if it is set
         if (key == "width" && tags.containsKey("maxwidth")) {
@@ -76,4 +74,4 @@ class AddBarrierOpening(
     }
 }
 
-val GATEWAYS = setOf("gate", "entrance", "sliding_gate", "swing_gate", "wicket_gate", "bollard", "block")
+val GATEWAYS = setOf("gate", "entrance", "sliding_gate", "swing_gate", "wicket_gate")
