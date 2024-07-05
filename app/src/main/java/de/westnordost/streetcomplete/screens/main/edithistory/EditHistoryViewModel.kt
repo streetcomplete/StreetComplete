@@ -152,7 +152,6 @@ class EditHistoryViewModelImpl(
 
     override fun updateEdits() {
         launch(IO) {
-            Log.i("test", "all hidden $allHidden")
             edits.value = editHistoryController.getAll(allHidden).sortedByDescending { it.createdTimestamp }
         }
     }
