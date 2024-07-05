@@ -113,6 +113,12 @@ class QuestSelectionFragment : TwoPaneDetailFragment(R.layout.fragment_quest_sel
                 }
                 3 -> {
                     questSelectionAdapter.onlySceeQuests = !questSelectionAdapter.onlySceeQuests
+                    if (questSelectionAdapter.onlySceeQuests){
+                        toolbar.menu.findItem(3).setTitle(R.string.action_all_quests)
+                    } else {
+                        toolbar.menu.findItem(3).setTitle(R.string.action_scee_quests)
+                    }
+
                     true
                 }
                 else -> false
