@@ -59,7 +59,7 @@ class AddBarrierOpening(
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val key = if (tags["barrier"] in GATEWAYS) "maxwidth:physical" else "width"
 
-        tags[key] = answer.width.toOsmValue()
+            tags[key] = answer.width.toOsmValue()
 
             if (answer.isARMeasurement) {
             tags["source:$key"] = "ARCore"
