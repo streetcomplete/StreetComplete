@@ -95,10 +95,11 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
         }
         return trees.filter { tree ->
             tree.toDisplayString() == search
-            || tree.name == search
-            || tree.name.split(" ").any { it.startsWith(search, true) }
-            || tree.localName?.contains(search, true) == true
-        //sorting: genus-only first, then prefer trees with localName
+                || tree.toDisplayString().startsWith(search, true)
+                || tree.name == search
+                || tree.name.split(" ").any { it.startsWith(search, true) }
+                || tree.localName?.contains(search, true) == true
+            //sorting: genus-only first, then prefer trees with localName
         }.sortedBy { it.localName == null }.sortedBy { it.isSpecies }
     }
 
