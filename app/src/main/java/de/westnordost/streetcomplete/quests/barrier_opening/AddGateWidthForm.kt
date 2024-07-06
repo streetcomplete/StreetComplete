@@ -31,9 +31,6 @@ class AddGateWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         super.onViewCreated(view, savedInstanceState)
 
         val isBarrier = element.tags["barrier"] in GATEWAYS
-        val explanation = if (isBarrier) getString(R.string.quest_barrier_opening_width_explanation) else null
-        binding.widthExplanationTextView.isGone = explanation == null
-        binding.widthExplanationTextView.text = explanation
 
         lengthInput = binding.lengthInput.let {
             LengthInputViewController(it.unitSelect, it.metersContainer, it.metersInput, it.feetInchesContainer, it.feetInput, it.inchesInput)
