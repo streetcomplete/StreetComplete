@@ -8,12 +8,12 @@ import androidx.core.content.getSystemService
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
-import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Preloader
 import de.westnordost.streetcomplete.data.allEditTypesModule
+import de.westnordost.streetcomplete.data.changelog.changelogModule
 import de.westnordost.streetcomplete.data.dbModule
 import de.westnordost.streetcomplete.data.download.downloadModule
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
@@ -49,17 +49,18 @@ import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
-import de.westnordost.streetcomplete.screens.settings.ResurveyIntervalsUpdater
+import de.westnordost.streetcomplete.data.preferences.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.getDefaultTheme
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.AndroidLogger
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import de.westnordost.streetcomplete.util.logs.Log
-import de.westnordost.streetcomplete.util.prefs.preferencesModule
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.Theme
+import de.westnordost.streetcomplete.data.preferences.preferencesModule
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -79,7 +80,7 @@ class StreetCompleteApplication : Application() {
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val downloadedTilesController: DownloadedTilesController by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
     private val editHistoryController: EditHistoryController by inject()
     private val userLoginController: UserLoginController by inject()
     private val cacheTrimmer: CacheTrimmer by inject()
@@ -114,6 +115,7 @@ class StreetCompleteApplication : Application() {
                 mainModule,
                 maptilesModule,
                 metadataModule,
+                changelogModule,
                 noteEditsModule,
                 notesModule,
                 messagesModule,
@@ -140,7 +142,7 @@ class StreetCompleteApplication : Application() {
         setLoggerInstances()
 
         // Force logout users who are logged in with OAuth 1.0a, they need to re-authenticate with OAuth 2
-        if (prefs.getStringOrNull(Prefs.OAUTH1_ACCESS_TOKEN) != null) {
+        if (prefs.hasOAuth1AccessToken) {
             userLoginController.logOut()
         }
 
@@ -157,24 +159,20 @@ class StreetCompleteApplication : Application() {
 
         enqueuePeriodicCleanupWork()
 
-        updateDefaultTheme()
+        updateTheme(prefs.theme)
 
         resurveyIntervalsUpdater.update()
 
-        val lastVersion = prefs.getStringOrNull(Prefs.LAST_VERSION_DATA)
+        val lastVersion = prefs.lastDataVersion
         if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.putString(Prefs.LAST_VERSION_DATA, BuildConfig.VERSION_NAME)
+            prefs.lastDataVersion = BuildConfig.VERSION_NAME
             if (lastVersion != null) {
                 onNewVersion()
             }
         }
 
-        settingsListeners += prefs.addStringOrNullListener(Prefs.LANGUAGE_SELECT) {
-            updateDefaultLocales()
-        }
-        settingsListeners += prefs.addStringOrNullListener(Prefs.THEME_SELECT) {
-            updateDefaultTheme()
-        }
+        settingsListeners += prefs.onLanguageChanged { updateDefaultLocales() }
+        settingsListeners += prefs.onThemeChanged { updateTheme(it) }
     }
 
     private fun onNewVersion() {
@@ -205,8 +203,7 @@ class StreetCompleteApplication : Application() {
         setDefaultLocales(getSelectedLocales(prefs))
     }
 
-    private fun updateDefaultTheme() {
-        val theme = Prefs.Theme.valueOf(prefs.getStringOrNull(Prefs.THEME_SELECT) ?: getDefaultTheme())
+    private fun updateTheme(theme: Theme) {
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
     }
 
@@ -229,4 +226,10 @@ class StreetCompleteApplication : Application() {
 
     private val isConnected: Boolean
         get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
+}
+
+private val Theme.appCompatNightMode: Int get() = when (this) {
+    Theme.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
+    Theme.DARK -> AppCompatDelegate.MODE_NIGHT_YES
+    Theme.SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
 }

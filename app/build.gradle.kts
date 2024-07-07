@@ -130,6 +130,7 @@ dependencies {
     implementation("io.insert-koin:koin-core")
     implementation("io.insert-koin:koin-android")
     implementation("io.insert-koin:koin-androidx-workmanager")
+    implementation("io.insert-koin:koin-androidx-compose")
 
     // Android stuff
     implementation("com.google.android.material:material:1.12.0")
@@ -138,7 +139,6 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.8.0")
     implementation("androidx.fragment:fragment-ktx:1.8.1")
-    implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
@@ -148,9 +148,12 @@ dependencies {
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
+    implementation("androidx.activity:activity-compose")
     // Jetpack Compose Previews
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
@@ -200,7 +203,9 @@ dependencies {
     implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // sharing presets/settings via QR Code
-    implementation("com.google.zxing:core:3.5.3")
+    implementation("io.github.alexzhirkevich:qrose:1.0.1")
+    // for encoding information for the URL configuration (QR code)
+    implementation("com.ionspin.kotlin:bignum:0.3.9")
 
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
