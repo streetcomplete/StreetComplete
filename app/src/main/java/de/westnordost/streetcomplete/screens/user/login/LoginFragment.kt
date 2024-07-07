@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import androidx.compose.material.Surface
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.ui.util.composableContent
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(), HasTitle {
+
+    override val title: String get() = getString(R.string.user_login)
 
     private val viewModel by viewModel<LoginViewModel>()
 
