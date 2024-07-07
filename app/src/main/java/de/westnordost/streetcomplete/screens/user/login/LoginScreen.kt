@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.user.login
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,8 +27,8 @@ import com.multiplatform.webview.request.WebRequestInterceptResult
 import com.multiplatform.webview.web.LoadingState
 import com.multiplatform.webview.web.WebView
 import com.multiplatform.webview.web.WebViewNavigator
-import com.multiplatform.webview.web.rememberSaveableWebViewState
 import com.multiplatform.webview.web.rememberWebViewNavigator
+import com.multiplatform.webview.web.rememberWebViewState
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.login.LoginError.CommunicationError
@@ -45,6 +46,7 @@ fun LoginScreen(
     val state by viewModel.loginState.collectAsState()
     val unsyncedChangesCount by viewModel.unsyncedChangesCount.collectAsState()
 
+    // handle error state: just show message once and return to login state
     val context = LocalContext.current
     LaunchedEffect(state) {
         val errorState = state as? LoginError
@@ -53,7 +55,6 @@ fun LoginScreen(
                 RequiredPermissionsNotGranted -> R.string.oauth_failed_permissions
                 CommunicationError -> R.string.oauth_communication_error
             }, Toast.LENGTH_LONG)
-
             viewModel.resetLogin()
         }
     }
@@ -65,13 +66,15 @@ fun LoginScreen(
             modifier = Modifier.fillMaxSize()
         )
     } else if (state is RequestingAuthorization) {
-        val webViewState = rememberSaveableWebViewState(
+        val webViewState = rememberWebViewState(
             url = viewModel.authorizationRequestUrl,
             additionalHttpHeaders = mapOf(
                 "Accept-Language" to Locale.getDefault().toLanguageTag()
             )
         )
+
         val webViewNavigator = rememberWebViewNavigator(
+            // handle authorization url response
             requestInterceptor = object : RequestInterceptor {
                 override fun onInterceptUrlRequest(
                     request: WebRequest,
@@ -85,15 +88,8 @@ fun LoginScreen(
                 }
             }
         )
-        LaunchedEffect(state) {
-            webViewNavigator.loadUrl(
-                viewModel.authorizationRequestUrl,
-                additionalHttpHeaders = mapOf(
-                    "Accept-Language" to Locale.getDefault().toLanguageTag()
-                )
-            )
-        }
 
+        // handle error response
         LaunchedEffect(webViewState.errorsForCurrentRequest) {
             val error = webViewState.errorsForCurrentRequest.firstOrNull()
             if (error != null) {
@@ -105,27 +101,27 @@ fun LoginScreen(
             }
         }
 
-        val loadingState = webViewState.loadingState
-        if (loadingState is LoadingState.Loading) {
-            LinearProgressIndicator(
-                progress = loadingState.progress,
-                modifier = Modifier.fillMaxWidth().height(8.dp),
+        Box(Modifier.fillMaxSize()) {
+            if (webViewState.loadingState is LoadingState.Loading) {
+                LinearProgressIndicator(Modifier.fillMaxWidth())
+            }
+            WebView(
+                state = webViewState,
+                modifier = Modifier.fillMaxSize(),
+                captureBackPresses = true,
+                navigator = webViewNavigator,
+                onCreated = {
+                    val settings = webViewState.webSettings
+                    settings.isJavaScriptEnabled = true
+                    settings.customUserAgentString = ApplicationConstants.USER_AGENT
+                    settings.supportZoom = false
+                },
             )
         }
-        WebView(
-            state = webViewState,
-            modifier = Modifier.fillMaxSize(),
-            captureBackPresses = true,
-            navigator = webViewNavigator,
-            onCreated = {
-                val settings = webViewState.webSettings
-                settings.isJavaScriptEnabled = true
-                settings.customUserAgentString = ApplicationConstants.USER_AGENT
-                settings.supportZoom = false
-            },
-        )
     } else if (state is RetrievingAccessToken || state is LoggedIn) {
-        LinearProgressIndicator(Modifier.fillMaxWidth().height(8.dp))
+        Box(Modifier.fillMaxSize()) {
+            LinearProgressIndicator(Modifier.fillMaxWidth())
+        }
     }
 }
 
@@ -136,7 +132,7 @@ private fun LoginButtonWithText(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.padding(64.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically),
     ) {
@@ -146,7 +142,6 @@ private fun LoginButtonWithText(
                     R.string.unsynced_quests_not_logged_in_description,
                     unsyncedChangesCount
                 ),
-                modifier = Modifier.padding(64.dp),
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colors.hint,
             )

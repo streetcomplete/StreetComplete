@@ -12,6 +12,9 @@ open class FragmentContainerActivity(
     @LayoutRes contentLayoutId: Int = R.layout.activity_fragment_container,
 ) : BaseActivity(contentLayoutId) {
 
+    protected fun getMainFragment(): Fragment? =
+        supportFragmentManager.findFragmentById(R.id.fragment_container)
+
     protected fun replaceMainFragment(
         f: Fragment,
         customOptions: (FragmentTransaction.() -> Unit)? = null,
