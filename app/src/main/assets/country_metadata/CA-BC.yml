@@ -4,4 +4,4 @@ chargingStationOperators: [ChargePoint, FLO, 'Tesla, Inc.', BC Hydro, WesGroup, 
 clothesContainerOperators: [Developmental Disabilities Association, Cerebral Palsy Association of BC, Canadian Diabetes Association, Big Brothers of Greater Vancouver Clothing Donation]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]
-parcelLockerBrand: [Amazon Locker, Amazon Hub]
+parcelLockerBrand: [Amazon Hub, Amazon Locker]

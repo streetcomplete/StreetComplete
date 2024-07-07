@@ -1,19 +1,16 @@
 package de.westnordost.streetcomplete.overlays.cycleway
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
-import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.cycleway_separate.applyTo
 import de.westnordost.streetcomplete.osm.cycleway_separate.asItem
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import org.koin.android.ext.android.inject
@@ -25,26 +22,17 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
             it.asItem(countryInfo.isLeftHandTraffic)
         }
 
-    private val prefs: ObservableSettings by inject()
-    private lateinit var favs: LastPickedValuesStore<DisplayItem<SeparateCycleway>>
+    private val prefs: Preferences by inject()
 
-    override val lastPickedItem: DisplayItem<SeparateCycleway>?
-        get() = favs.get().firstOrNull()
+    override val lastPickedItem: DisplayItem<SeparateCycleway>? get() =
+        prefs.getLastPicked(this::class.simpleName!!)
+            .map { valueOfOrNull<SeparateCycleway>(it)?.asItem(countryInfo.isLeftHandTraffic) }
+            .firstOrNull()
 
     override val itemsPerRow = 1
     override val cellLayoutId = R.layout.cell_labeled_icon_select_right
 
     private var currentCycleway: SeparateCycleway? = null
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.value!!.name },
-            deserialize = { valueOfOrNull<SeparateCycleway>(it)?.asItem(countryInfo.isLeftHandTraffic) }
-        )
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -82,7 +70,7 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
         selectedItem?.value != currentCycleway
 
     override fun onClickOk() {
-        favs.add(selectedItem!!)
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem!!.value!!.name)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         selectedItem!!.value!!.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))

@@ -386,7 +386,7 @@
     <string name="quest_construction_footway_title">"Είναι αυτός ο πεζόδρομος ολοκληρωμένος;"</string>
     <string name="quest_construction_generic_title">"Είναι αυτή η διαδρομή ολοκληρωμένη;"</string>
     <string name="quest_construction_building_title">"Είναι αυτό το κτίριο ολοκληρωμένο;"</string>
-    <string name="questList_disabled_in_country">"Δεν εμφανίζεται ποτέ στην %s"</string>
+    <string name="questList_disabled_in_country">"Δεν εμφανίζεται ποτέ σε %s"</string>
     <string name="quest_select_hint_most_specific">"Επιλέξτε το πιο συγκεκριμένο που ταιριάζει:"</string>
     <string name="quest_generic_item_confirmation">"Είστε σίγουροι ότι δεν μπορείτε να το προσδιορίσετε πιο συγκεκριμένα;"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Για κάποιες αναζητήσεις, κατεβάζονται ορισμένα πρόσθετα δεδομένα από τρίτες ομάδες. Συγκεκριμένα, η αναζήτηση μονόδρομου αιτείται ένα API, το οποίο φιλοξενείται επίσης στο westnordost.de, σχετικό με πιθανούς υποψήφιους για μονόδρομους.&lt;/p&gt;"</string>
@@ -1376,12 +1376,14 @@
     <string name="quest_moped_access_designated">"Υπάρχει πινακίδα που υποδεικνύει αυτόν τον ποδηλατόδρομο για μοτοποδήλατα"</string>
     <string name="quest_moped_access_forbidden">"Υπάρχει πινακίδα που απαγορεύει τα μοτοποδήλατα"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή η πρόσβαση στο μοτοποδήλατο υποδεικνύεται μόνο από συγκεκριμένη πινακίδα στην αρχή/στο τέλος ενός ποδηλατόδρομου."</string>
+    <string name="quest_arrow_tutorial">"Τα βέλη στην εικόνα δείχνουν προς τις κατευθύνσεις με τις οποίες τρέχει η διαδρομή στον χάρτη στην καρφίτσα της κεντρικής του θέσης. Δοκιμάστε να περιστρέψετε τον χάρτη και θα καταλάβετε."</string>
     <string name="info">"Περισσότερες πληροφορίες"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Είναι απαγορευμένο."</string>
-    <string name="quest_accessible_for_pedestrians_allowed">"επιτρέπεται."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Επιτρέπεται."</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Στην πραγματικότητα, υπάρχει πεζοδρόμιο, αλλά εμφανίζεται ξεχωριστά στον χάρτη."</string>
     <string name="quest_buildingLevels_hint">"Για κτίρια σε κλίση, η μέτρηση επιπέδων ξεκινά από το επίπεδο του εδάφους της χαμηλότερης πλευράς.
-Ένα επίπεδο μετράει ως επίπεδο στέγης όταν τα παράθυρά του βρίσκονται στην οροφή. Ακολούθως, οι στέγες με μηδενικά επίπεδα στέγης δεν είναι απαραίτητα επίπεδες, απλώς δεν είναι αρκετά ψηλές για ένα ολόκληρο επίπεδο."</string>
+
+Ένα επίπεδο μετράει ως επίπεδο στέγης όταν τα παράθυρα του βρίσκονται στην οροφή. Ακολούθως, οι στέγες με μηδενικά επίπεδα στέγης δεν είναι απαραίτητα επίπεδες, απλώς δεν είναι αρκετά ψηλές για ένα ολόκληρο επίπεδο."</string>
     <string name="quest_parcel_locker_brand">"Ποια είναι η μάρκα αυτού του ντουλαπιού δεμάτων;"</string>
     <string name="quest_parcel_locker_pickup">"Μπορείτε να παραλάβετε δέματα από εδώ;"</string>
     <string name="quest_parcel_locker_mail_in">"Μπορείτε να αφήσετε δέματα εδώ;"</string>
@@ -1390,4 +1392,6 @@
     <string name="separate_cycleway_no_signed">"Μια ταμπέλα απαγορεύει ρητά την ποδηλασία"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Πεζόδρομος, αλλά η ποδηλασία επιτρέπεται ρητά απο μια ταμπέλα"</string>
     <string name="quest_bicycle_parking_type_floor">"Περιοχή Καθορισμένης χρήσης"</string>
+    <string name="link_osmapp_description">"Ένας χάρτης με διάφορα στρώματα, όπως για αναρρίχηση ή σκι"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Μόνο για παραδόσεις επιστροφής"</string>
 </resources>

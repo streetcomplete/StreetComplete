@@ -1348,6 +1348,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingType_tower">"塔"</string>
     <string name="quest_buildingType_under_construction">"建設中"</string>
     <string name="overlay_buildings">"建物"</string>
+    <string name="quest_pedestrian_crossing_markings">"この横断歩道は地面にマークがありますか？"</string>
     <string name="overlay_places">"場所"</string>
     <string name="overlay_things">"物"</string>
     <string name="quest_leafType_tree_title">"この木には針葉または広葉がついていますか。"</string>

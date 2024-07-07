@@ -389,7 +389,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="questList_disabled_in_country">"Niemals in %s gezeigt"</string>
     <string name="quest_select_hint_most_specific">"Wähle die zutreffendste Art aus:"</string>
     <string name="quest_generic_item_confirmation">"Bist du sicher, dass es nicht genauer bestimmt werden kann?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Bei einigen Quests werden einige zusätzliche Daten von Dritten heruntergeladen. Insbesondere fragt der Oneway-Quest eine API an, die ebenfalls auf westnordost.de gehostet wird, nach möglichen Kandidaten für Einbahnstraßen.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Bei einigen Aufgaben werden einige zusätzliche Daten von Dritten heruntergeladen. Insbesondere fragt die Einweg-Aufgabe eine API an, die ebenfalls auf westnordost.de gehostet wird, nach möglichen Kandidaten für Einbahnstraßen.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nein (Hinweis hinterlassen)"</string>
     <string name="pref_quests_reset">"Sowohl die Aktivierung als auch die Priorität zurücksetzen?"</string>
     <string name="quest_generic_item_invalid_value">"Bitte triff eine genauere Auswahl."</string>
@@ -536,7 +536,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_handrail_title">"Gibt es an dieser Treppe ein Geländer?"</string>
     <string name="about_summary_current_version">"Aktuelle Version: %s"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar …"</string>
-    <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie ihr Mittelpunkt auf der Karte. Versuche, die Karte zu drehen, und du wirst es verstehen."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie ihr Mittelpunkt auf der Karte. Versuche, die Karte zu drehen und du wirst es verstehen."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
     <string name="quest_recycling_materials_note">"Wenn hier etwas recycelt werden kann, das nicht aufgelistet ist, hinterlasse bitte stattdessen einen Hinweis."</string>
     <string name="quest_recycling_type_batteries">"Batterien"</string>

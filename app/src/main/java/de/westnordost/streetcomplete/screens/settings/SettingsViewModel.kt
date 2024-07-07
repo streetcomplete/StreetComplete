@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.settings
 
 import android.content.res.Resources
 import androidx.lifecycle.ViewModel
-import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
@@ -19,6 +18,10 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
+import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
+import de.westnordost.streetcomplete.data.preferences.Theme
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,22 +32,29 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val hiddenQuestCount: StateFlow<Long>
     abstract val questTypeCount: StateFlow<QuestTypeCount?>
 
+    abstract val resurveyIntervals: StateFlow<ResurveyIntervals>
+    abstract val showAllNotes: StateFlow<Boolean>
+    abstract val autosync: StateFlow<Autosync>
+    abstract val theme: StateFlow<Theme>
+    abstract val keepScreenOn: StateFlow<Boolean>
+    abstract val selectedLanguage: StateFlow<String?>
+
     abstract fun unhideQuests()
 
     abstract fun deleteCache()
 
-    /* this direct access should be removed in the mid-term. However, since the
-     * PreferenceFragmentCompat already implicitly accesses the shared preferences to display the
-     * current choice, the ViewModel needs to be adapted anyway later when the view does not
-     * inherit from that construct anymore and include many more StateFlows based off the
-     * Preferences displayed here -  */
-    abstract val prefs: ObservableSettings
+    abstract fun setResurveyIntervals(value: ResurveyIntervals)
+    abstract fun setShowAllNotes(value: Boolean)
+    abstract fun setAutosync(value: Autosync)
+    abstract fun setTheme(value: Theme)
+    abstract fun setKeepScreenOn(value: Boolean)
+    abstract fun setSelectedLanguage(value: String?)
 }
 
 data class QuestTypeCount(val total: Int, val enabled: Int)
 
 class SettingsViewModelImpl(
-    override val prefs: ObservableSettings,
+    private val prefs: Preferences,
     private val resources: Resources,
     private val cleaner: Cleaner,
     private val osmQuestsHiddenController: OsmQuestsHiddenController,
@@ -83,6 +93,13 @@ class SettingsViewModelImpl(
     override val selectedQuestPresetName = MutableStateFlow<String?>(null)
     override val selectableLanguageCodes = MutableStateFlow<List<String>?>(null)
 
+    override val resurveyIntervals = MutableStateFlow(prefs.resurveyIntervals)
+    override val autosync = MutableStateFlow(prefs.autosync)
+    override val theme = MutableStateFlow(prefs.theme)
+    override val showAllNotes = MutableStateFlow(prefs.showAllNotes)
+    override val keepScreenOn = MutableStateFlow(prefs.keepScreenOn)
+    override val selectedLanguage = MutableStateFlow(prefs.language)
+
     private val listeners = mutableListOf<SettingsListener>()
 
     init {
@@ -91,10 +108,17 @@ class SettingsViewModelImpl(
         osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
 
+        listeners += prefs.onResurveyIntervalsChanged { resurveyIntervals.value = it }
+        listeners += prefs.onAutosyncChanged { autosync.value = it }
+        listeners += prefs.onThemeChanged { theme.value = it }
+        listeners += prefs.onAllShowNotesChanged { showAllNotes.value = it }
+        listeners += prefs.onKeepScreenOnChanged { keepScreenOn.value = it }
+        listeners += prefs.onLanguageChanged { selectedLanguage.value = it }
+
+        updateQuestTypeCount()
         updateSelectableLanguageCodes()
         updateHiddenQuests()
         updateSelectedQuestPreset()
-        updateQuestTypeCount()
     }
 
     override fun onCleared() {
@@ -110,6 +134,13 @@ class SettingsViewModelImpl(
     override fun deleteCache() {
         cleaner.cleanAll()
     }
+
+    override fun setResurveyIntervals(value: ResurveyIntervals) { prefs.resurveyIntervals = value }
+    override fun setShowAllNotes(value: Boolean) { prefs.showAllNotes = value }
+    override fun setAutosync(value: Autosync) { prefs.autosync = value }
+    override fun setTheme(value: Theme) { prefs.theme = value }
+    override fun setKeepScreenOn(value: Boolean) { prefs.keepScreenOn = value }
+    override fun setSelectedLanguage(value: String?) { prefs.language = value }
 
     override fun unhideQuests() {
         launch(IO) {

@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
@@ -30,6 +29,8 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
@@ -46,7 +47,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     protected var map : MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
-    private val mapStateStore: MapStateStore by inject()
+    private val prefs: Preferences by inject()
 
     interface Listener {
         /** Called when the map has been completely initialized */
@@ -210,17 +211,17 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     }
 
     private fun loadCameraPosition() = CameraPosition(
-        position = mapStateStore.position,
-        rotation = mapStateStore.rotation,
-        tilt = mapStateStore.tilt,
-        zoom = mapStateStore.zoom
+        position = prefs.mapPosition,
+        rotation = prefs.mapRotation,
+        tilt = prefs.mapTilt,
+        zoom = prefs.mapZoom
     )
 
     private fun saveCameraPosition(camera: CameraPosition) {
-        mapStateStore.position = camera.position
-        mapStateStore.tilt = camera.tilt
-        mapStateStore.rotation = camera.rotation
-        mapStateStore.zoom = camera.zoom
+        prefs.mapRotation = camera.rotation
+        prefs.mapTilt = camera.tilt
+        prefs.mapZoom = camera.zoom
+        prefs.mapPosition = camera.position
     }
 
     /* ------------------------------- Controlling the map -------------------------------------- */

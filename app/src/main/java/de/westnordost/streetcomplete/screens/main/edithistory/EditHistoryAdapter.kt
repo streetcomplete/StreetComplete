@@ -86,7 +86,7 @@ class EditHistoryAdapter(
 
             itemView.setBackgroundColor(
                 itemView.context.resources.getColor(
-                    if (item.edit.isSynced == true) R.color.slightly_greyed_out else R.color.background
+                    if (item.edit.isSynced == true) R.color.background_disabled else R.color.background
                 )
             )
 

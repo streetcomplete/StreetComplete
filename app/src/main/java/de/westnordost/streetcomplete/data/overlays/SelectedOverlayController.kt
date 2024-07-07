@@ -1,30 +1,31 @@
 package de.westnordost.streetcomplete.data.overlays
 
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
+import com.russhwolf.settings.SettingsListener
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.Listeners
 
 class SelectedOverlayController(
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
     private val overlayRegistry: OverlayRegistry
 ) : SelectedOverlaySource {
 
     private val listeners = Listeners<SelectedOverlaySource.Listener>()
 
+    // must have local reference because the listeners are only a weak reference
+    private val settingsListener: SettingsListener = prefs.onSelectedOverlayNameChanged {
+        listeners.forEach { it.onSelectedOverlayChanged() }
+    }
+
     override var selectedOverlay: Overlay?
         set(value) {
-            if (selectedOverlay == value) return
-
             if (value != null && value in overlayRegistry) {
-                prefs.putString(Prefs.SELECTED_OVERLAY, value.name)
+                prefs.selectedOverlayName = value.name
             } else {
-
-                prefs.remove(Prefs.SELECTED_OVERLAY)
+                prefs.selectedOverlayName = null
             }
-            listeners.forEach { it.onSelectedOverlayChanged() }
         }
-        get() = prefs.getStringOrNull(Prefs.SELECTED_OVERLAY)?.let { overlayRegistry.getByName(it) }
+        get() = prefs.selectedOverlayName?.let { overlayRegistry.getByName(it) }
 
     override fun addListener(listener: SelectedOverlaySource.Listener) {
         listeners.add(listener)
