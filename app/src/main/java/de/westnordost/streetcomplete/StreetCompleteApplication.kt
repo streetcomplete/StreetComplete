@@ -44,7 +44,6 @@ import de.westnordost.streetcomplete.data.user.statistics.statisticsModule
 import de.westnordost.streetcomplete.data.user.userModule
 import de.westnordost.streetcomplete.data.visiblequests.questPresetsModule
 import de.westnordost.streetcomplete.overlays.overlaysModule
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.trafficFlowSegmentsModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
@@ -128,7 +127,6 @@ class StreetCompleteApplication : Application() {
                 questsModule,
                 settingsModule,
                 statisticsModule,
-                trafficFlowSegmentsModule,
                 uploadModule,
                 userModule,
                 arModule,

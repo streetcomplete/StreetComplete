@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
-import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.util.Listeners
@@ -422,7 +421,6 @@ class OsmQuestController internal constructor(
  *  all have to wait for that one thread. So, better enqueue the expensive work at the beginning. */
 private val OsmElementQuestType<*>.chonkerIndex: Int get() = when (this) {
     is AddOpeningHours -> 0 // OpeningHoursParser, extensive filter
-    is AddSuspectedOneway -> 0 // Download, IO
     is CheckExistence -> 1 // FeatureDictionary, extensive filter
     is AddHousenumber -> 1 // complex filter
     is AddCycleway -> 2 // complex filter
