@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.user
 
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.data.preferences.Preferences
 
