@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.user
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
