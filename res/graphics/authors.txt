@@ -445,6 +445,15 @@ lit/
     yes.svg
     no.svg
 
+mtb_scale/
+    mtb_scale_0.jpg                 Public Domain     https://wiki.openstreetmap.org/wiki/File:Mtbscale_0_doubletrack.jpg (Anders Fougner)
+    mtb_scale_1.jpg                 Public Domain     https://wiki.openstreetmap.org/wiki/File:Mtbscale_1_path_portait.jpg (Anders Fougner)
+    mtb_scale_2.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S2.jpg (Felix Hartmann)
+    mtb_scale_3.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S3.jpg (Felix Hartmann)
+    mtb_scale_4.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S4.jpg (Felix Hartmann)
+    mtb_scale_5.jpg                 CC-BY-SA 3.0      https://wiki.openstreetmap.org/wiki/File:S5.jpg (Felix Hartmann)
+    mtb_scale_6.jpg                 fair use          https://unsplash.com/photos/EiJQdDI_t_Y (Maja Kochanowska)
+
 pin/
     pin_dot.xcf
     pin.svg
@@ -653,3 +662,9 @@ overlay.svg
 ../../app/src/test/resources/
     hai_phong_street.jpg
     mandalay_market.jpg
+
+../../app/src/main/res/drawable/
+   map_type_topo.jpg                           modified from https://wiki.openstreetmap.org/wiki/File:Tule_Lake_USGS_topo_map.png, License: Public Domain
+   map_type_street.jpg                         Map style: MapOSMatic printable style (c) MapOSMatic developers, Data source: (c) 2023 OpenStreetMap.org and contributors (http://osm.org/copyright)
+   map_type_scheme.jpg                         modified from https://wiki.openstreetmap.org/wiki/File:Tadapani-28-Wanderkarte-2013-gje.jpg, License: CC-BY-SA 4.0
+   map_type_toposcope.jpg                      modified from https://wiki.openstreetmap.org/wiki/File:Melshornet03112006GunnarHeltne.jpg, License: CC-BY-SA 4.0
