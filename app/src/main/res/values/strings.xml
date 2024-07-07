@@ -1186,7 +1186,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_noteDiscussion_hide2">"Hidden by %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
 
-    <string name="quest_oneway_title">"Is this a one-way street?"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
     <string name="quest_oneway2_dir">"Oneway in this direction"</string>
     <string name="quest_oneway2_no_oneway">"Not a oneway"</string>
