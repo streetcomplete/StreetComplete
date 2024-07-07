@@ -401,4 +401,5 @@
     <string name="quest_maxheight_answer_noSign_question">Чи достатньо місця для проїзду навіть найвищих вантажівок (від 4,5 метрів / 15 футів заввишки)?</string>
     <string name="quest_maxheight_answer_noSign_question_unclear">Невідомо</string>
     <string name="quest_maxheight_answer_noSign_question_no">Високі вантажівки не проїдуть</string>
+    <string name="action_all_quests">Показати всі квести</string>
 </resources>

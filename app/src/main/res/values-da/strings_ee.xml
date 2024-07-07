@@ -571,4 +571,5 @@
     <string name="quest_maxheight_answer_noSign_question_no">Der er ikke plads til høje lastbiler</string>
     <string name="quest_maxheight_answer_noSign_question_unclear">Uklart</string>
     <string name="quest_maxheight_answer_noSign_question">Er der rigeligt med plads til, at selv de højeste lastbiler (mindst ca. 4,5 meter) kan køre igennem?</string>
+    <string name="action_all_quests">Vis alle opgaver</string>
 </resources>

@@ -1,0 +1,4 @@
+- Fix crash on upload
+- Change the text in the quest selection menu according to the filter, by @ravenfeld
+- Make auto-complete in tree quest work on every word in name containing spaces, by @ravenfeld
+- Update translations
