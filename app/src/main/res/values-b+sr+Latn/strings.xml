@@ -696,7 +696,6 @@ dani"</string>
     <string name="quest_recycling_type_engine_oil">"Motorno ulje"</string>
     <string name="link_photon_description">"Nezavisno proširenje Nominatima, koje koristi pretragu nepotpunih podataka i pretragu dok kucate"</string>
     <string name="link_graphhopper_description">"Prilagodljiva navigacija"</string>
-    <string name="link_qwant_maps_description">"Karta sa pretragom i navigacijom"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Da bi prikazali kartu, vektori se povlače sa %1$s. Za više informacija, pogledajte njihovu &lt;a href=\"%2$s\"&gt;izjavu o privatnosti&lt;/a&gt;.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponzori"</string>
     <string name="quest_board_type_history">"Istorija"</string>

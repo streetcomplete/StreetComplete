@@ -697,7 +697,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_recycling_type_engine_oil">"Motorno ulje"</string>
     <string name="link_photon_description">"Nezavisno proširenje Nominatima, koje sadrži pretraživanje po nepotpunim uvjetima i pretraživanje dok tipkate"</string>
     <string name="link_graphhopper_description">"Prilagodljiv servis za navigaciju"</string>
-    <string name="link_qwant_maps_description">"Karta sa pretraživanjem i navigacijom"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Kako bi se prikazala karta, vektori se dohvaćaju sa %1$s. Pogledajte njihovu &lt;a href=\"%2$s\"&gt;izjavu o privatnosti&lt;/a&gt; za više informacija.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponzori"</string>
     <string name="quest_board_type_history">"Historija"</string>

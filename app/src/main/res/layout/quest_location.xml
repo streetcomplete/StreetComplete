@@ -9,6 +9,12 @@
     android:text="@string/quest_defibrillator_location_description"
     android:labelFor="@+id/commentInput"/>
 
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/create_new_note_hint"
+    />
+
 <EditText
     android:id="@+id/locationInput"
     android:layout_width="match_parent"

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
@@ -25,15 +25,15 @@ class OpenChangesetsManagerTest {
     private lateinit var openChangesetsDB: OpenChangesetsDao
     private lateinit var changesetAutoCloser: ChangesetAutoCloser
     private lateinit var manager: OpenChangesetsManager
-    private lateinit var lastEditTimeStore: LastEditTimeStore
+    private lateinit var prefs: Preferences
 
     @BeforeTest fun setUp() {
         questType = TestQuestTypeA()
         changesetApiClient = mock()
         openChangesetsDB = mock()
         changesetAutoCloser = mock()
-        lastEditTimeStore = mock()
-        manager = OpenChangesetsManager(changesetApiClient, openChangesetsDB, changesetAutoCloser, lastEditTimeStore)
+        prefs = mock()
+        manager = OpenChangesetsManager(changesetApiClient, openChangesetsDB, changesetAutoCloser, prefs)
     }
 
     @Test fun `create new changeset if none exists`(): Unit = runBlocking {

@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.messages.NewAchievementMessage
 import de.westnordost.streetcomplete.data.messages.NewVersionMessage
 import de.westnordost.streetcomplete.data.messages.OsmUnreadMessagesMessage
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
-import de.westnordost.streetcomplete.screens.about.WhatsNewDialog
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
 import de.westnordost.streetcomplete.ui.util.composableContent
@@ -29,13 +28,22 @@ class MessagesContainerFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = composableContent {
         val message by shownMessage.collectAsState()
 
-        val msg = message
-        if (msg is NewAchievementMessage) {
-            AchievementDialog(
-                msg.achievement,
-                msg.level,
-                onDismissRequest = { shownMessage.value = null }
-            )
+        when (val msg = message) {
+            is NewAchievementMessage -> {
+                AchievementDialog(
+                    msg.achievement,
+                    msg.level,
+                    onDismissRequest = { shownMessage.value = null }
+                )
+            }
+            is NewVersionMessage -> {
+                WhatsNewDialog(
+                    changelog = msg.changelog,
+                    onDismissRequest = { shownMessage.value = null },
+                    onClickLink = { }
+                )
+            }
+            else -> {}
         }
     }
 
@@ -48,13 +56,6 @@ class MessagesContainerFragment : Fragment() {
                     .create(message.unreadMessages)
                     .show(childFragmentManager, null)
             }
-            is NewVersionMessage -> {
-                WhatsNewDialog(ctx, message.sinceVersion)
-                    .show()
-            }
-            is NewAchievementMessage -> {
-                shownMessage.value = message
-            }
             is QuestSelectionHintMessage -> {
                 AlertDialog.Builder(ctx)
                     .setTitle(R.string.quest_selection_hint_title)
@@ -65,6 +66,7 @@ class MessagesContainerFragment : Fragment() {
                     .setNegativeButton(android.R.string.ok, null)
                     .show()
             }
+            else -> {}
         }
     }
 }

@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.edit
@@ -29,7 +29,7 @@ class ElementEditsControllerTest {
     private lateinit var db: ElementEditsDao
     private lateinit var elementsDb: EditElementsDao
     private lateinit var listener: ElementEditsSource.Listener
-    private lateinit var lastEditTimeStore: LastEditTimeStore
+    private lateinit var prefs: Preferences
     private lateinit var idProvider: ElementIdProviderDao
 
     @BeforeTest fun setUp() {
@@ -38,10 +38,10 @@ class ElementEditsControllerTest {
         on(db.markSynced(anyLong())).thenReturn(true)
         elementsDb = mock()
         idProvider = mock()
-        lastEditTimeStore = mock()
+        prefs = mock()
 
         listener = mock()
-        ctrl = ElementEditsController(db, elementsDb, idProvider, lastEditTimeStore)
+        ctrl = ElementEditsController(db, elementsDb, idProvider, prefs)
         ctrl.addListener(listener)
     }
 
@@ -170,7 +170,7 @@ class ElementEditsControllerTest {
         val c = edit.action.newElementsCount
         verify(idProvider).assign(edit.id, c.nodes, c.ways, c.relations)
         verify(listener).onAddedEdit(any())
-        verify(lastEditTimeStore).touch()
+        verify(prefs).lastEditTime = anyLong()
     }
 
     private fun verifyDelete(vararg edits: ElementEdit) {

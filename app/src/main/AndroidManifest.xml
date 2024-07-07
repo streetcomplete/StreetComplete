@@ -45,7 +45,7 @@
         <activity
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.screens.MainActivity"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|screenSize|screenLayout"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -78,6 +78,7 @@
             android:name="de.westnordost.streetcomplete.screens.settings.SettingsActivity"
             android:label="@string/action_settings"
             android:parentActivityName="de.westnordost.streetcomplete.screens.MainActivity"
+            android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
@@ -85,10 +86,10 @@
             </intent-filter>
         </activity>
         <activity android:name="de.westnordost.streetcomplete.screens.FragmentContainerActivity" />
-        <activity android:name="de.westnordost.streetcomplete.screens.about.AboutActivity" />
         <activity
-            android:name="de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsActivity"
-            android:configChanges="orientation|screenSize|uiMode" />
+            android:name="de.westnordost.streetcomplete.screens.about.AboutActivity"
+            android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            />
         <activity
             android:name="de.westnordost.streetcomplete.screens.user.UserActivity"
             android:screenOrientation="portrait"

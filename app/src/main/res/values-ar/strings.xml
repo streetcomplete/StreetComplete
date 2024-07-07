@@ -698,7 +698,6 @@
     <string name="quest_recycling_type_engine_oil">"زيت المحرك"</string>
     <string name="link_photon_description">"امتداد مستقل لـ Nominatim، بما في ذلك البحث التقريبي والبحث أثناء الكتابة"</string>
     <string name="link_graphhopper_description">"محرك توجيه مرن"</string>
-    <string name="link_qwant_maps_description">"خريطة بأماكن واتجاهات يمكن البحث فيها"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; لعرض الخريطة، يتم استرداد الصور المتجانبة من %1$s. راجع &lt;a href=\"%2$s\"&gt;بيان الخصوصية&lt;/a&gt; للحصول على مزيد من المعلومات.&lt;/ p&gt;"</string>
     <string name="about_title_sponsors">"الرعاة"</string>
     <string name="quest_board_type_history">"السجل التاريخي"</string>

@@ -691,7 +691,6 @@
     <string name="quest_recycling_type_engine_oil">"น้ำมันเครื่อง"</string>
     <string name="link_photon_description">"ส่วนขยายแยกเดี่ยวของ Nominatim ที่รองรับการค้นหาแบบ fuzzy และการค้นหา-ขณะที่-พิมพ์"</string>
     <string name="link_graphhopper_description">"เครื่องมือกำหนดเส้นทางที่ยืดหยุ่น"</string>
-    <string name="link_qwant_maps_description">"แผนที่พร้อมสถานที่ที่สามารถค้นหาได้และเส้นทาง"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;เพื่อแสดงแผนที่ ไทล์เวกเตอร์จะถูกดึงมาจาก %1$s ดู&lt;a href=\"%2$s\"&gt;คำชี้แจงสิทธิ์ส่วนบุคคล&lt;/a&gt;สำหรับข้อมูลเพิ่มเติม&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"ผู้ให้การสนับสนุน"</string>
     <string name="quest_board_type_history">"ประวัติศาสตร์"</string>
@@ -1314,10 +1313,22 @@
     <string name="quest_crossing_kerb_height_title">"ความสูงของขอบทางที่ทางข้ามนี้อยู่ที่เท่าไหร่?"</string>
     <string name="quest_maxheight_sign_title">"ป้ายจำกัดความสูงที่แสดงอยู่ที่นี่คืออะไร?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"ป้ายจำกัดความสูงที่แสดงอยู่ด้านล่างของสะพานคืออะไร?"</string>
+    <string name="quest_is_amenity_inside_title">"สิ่งนี้อยู่ด้านในอาคารหรือไม่?"</string>
+    <string name="quest_bbq_fuel_title">"เตาย่างนี้ใช้พลังงานอะไร?"</string>
     <string name="quest_bbq_fuel_wood">"ไม้"</string>
+    <string name="quest_bbq_fuel_electric">"ไฟฟ้า"</string>
+    <string name="quest_bbq_fuel_charcoal">"ถ่าน"</string>
+    <string name="inside">"ด้านใน"</string>
+    <string name="outside">"ด้านนอก"</string>
+    <string name="quest_recycling_type_food_waste">"เศษอาหาร"</string>
+    <string name="quest_generalFee_title">"ต้องจ่ายเงินเพื่อใช้สิ่งนี้หรือไม่?"</string>
     <string name="label_log_newer_than">"จาก"</string>
+    <string name="label_log_older_than">"ถึง"</string>
+    <string name="quest_disable_action">"ปิดใช้งาน"</string>
     <string name="quest_buildingType_under_construction">"อยู่ระหว่างการก่อสร้าง"</string>
     <string name="overlay_buildings">"อาคาร"</string>
     <string name="overlay_places">"สถานที่"</string>
     <string name="overlay_things">"สิ่งของ"</string>
+    <string name="quest_generic_otherAnswers2">"เอ่อ…"</string>
+    <string name="info">"ข้อมูลเพิ่มเติม"</string>
 </resources>

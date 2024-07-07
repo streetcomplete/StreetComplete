@@ -1,14 +1,19 @@
 # Changelog
 
+## v58.2
+- Fixed it was impossible to login with a third party that required 2FA (e.g. Google) (#5724, #5711)
+
 ## v58.1
 
+- Bike paths: Roads previously mapped with [recently deprecated](https://wiki.openstreetmap.org/wiki/Proposal:Deprecate_cycleway%3Dopposite_family) tags for describing bike infrastructure are now marked for re-survey (#5694)
 - Places overlay, things overlay, ...: Fix crash on displaying features that were incompletely translated to a dialect of a language, by @logan12358
 - Avoid asking about existence of shop right after asking about its opening hours (#5674)
 - Moped on bike paths: When there is no sign, just tag that and don't infer anything else (#5565)
 - Parcel locker drop-off: Add option for return deliveries only (#5687)
 - Crossing kerb height: Only ask if road has a sidewalk (#5668)
 - Addresses: recognize common housenumber formats in Bulgaria (#5683), by @mnalis
-- Other small improvements (#5594, #5676, ...)
+- Bus stop ref: Now enabled in Portugal (#5695)
+- Other small improvements (#5594, #5676, #5698, #5710...)
 
 ## v58.0
 

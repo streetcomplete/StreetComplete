@@ -697,7 +697,6 @@ nivåer"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolje"</string>
     <string name="link_photon_description">"En uavhengig utvidelse til Nominatim, som støtter omtrentlige søk og kontinuerlig visning av søkeresultater"</string>
     <string name="link_graphhopper_description">"En fleksibel ruteplanlegger"</string>
-    <string name="link_qwant_maps_description">"Er kart med søknader steder og ruter"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;For å vise kartet blir kart­fliser hentet fra %1$s. Se &lt;a href=\"%2$s\"&gt;personvern­erklæringen deres&lt;/a&gt; for mer informasjon.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorer"</string>
     <string name="quest_board_type_history">"Historie"</string>
@@ -1353,6 +1352,11 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="label_log_message_contains">"Meldingen inneholder"</string>
     <string name="title_logs_filters">"Filtrer meldingene"</string>
     <string name="pref_title_quests_restore_hidden_summary">"Antall skjulte oppdrags: %d"</string>
+    <string name="link_every_door_description">"Kraftig POI-redigeringsverktøy for Android og iOS"</string>
+    <string name="link_mapcomplete_description">"Samling av tematiske OSM-kart som hver for seg viser og lar deg redigere én type egenskap"</string>
+    <string name="link_forum_description">"Trenger du hjelp? Vil du få med deg hva som skjer? Bli med og solialiser deg, det yrer av aktivitet fra lokalsamfunn over hele kloden!"</string>
+    <string name="link_calendar_description">"Er det OpenStreetMap-begivenheter eller -fellesskapsmøter nær deg? (Hvis ikke, har du mulighet til å opprette selv!)"</string>
+    <string name="link_prettymapp_description">"Opprett pene flerfarget kartplakater av nabolag"</string>
     <string name="quest_disable_action">"Deaktiver"</string>
     <string name="quest_disable_title">"Deaktiver denne oppdragstypen?"</string>
     <string name="quest_disable_message_not_installed">"StreetMeasure er ikke installert (enda)."</string>
@@ -1375,6 +1379,27 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="unknown_object">"Ukjent objekt"</string>
     <string name="quest_leafType_tree_title">"Har dette treet nåler eller blader?"</string>
     <string name="quest_bbq_fuel_gas">"Gass"</string>
+    <string name="about_description_donate_google_play3">"Takk for at du vurderer å støtte denne appen! Du kan finne informasjon om donasjon på våre nettsider eller \"project home\", Google Play tillater ikke at vi gir linken inne i appen."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Utendørs, men tildekket"</string>
     <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Er det trafikklys som indikerer når man kan krysse her?"</string>
+    <string name="quest_moped_access_title">"Er det et skilt som indikerer tilgang for mopeder på denne sykkelstien?"</string>
+    <string name="quest_moped_access_allowed">"Det er ikke skilt"</string>
+    <string name="quest_moped_access_designated">"Det er et skilt som betegner dette sykkelfeltet for mopeder"</string>
+    <string name="quest_moped_access_forbidden">"Det er et skilt som forbyr mopeder"</string>
+    <string name="info">"Mer informasjon"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Det er forbudt."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Det er tillatt."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Egentlig, er det et fortau, men det er vist annerledes på kartet."</string>
+    <string name="quest_buildingLevels_hint">"For byggninger i skråning, starter man tellingen fra første etasje på den laveste siden.
+
+En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med null taketasjer nødvendigvis flate, bare ikke høye nok for en hel etasje."</string>
+    <string name="quest_parcel_locker_brand">"Hva er merkevaren på dette pakkeskapet?"</string>
+    <string name="quest_parcel_locker_pickup">"Kan du plukke opp pakker her?"</string>
+    <string name="quest_parcel_locker_mail_in">"Kan du levere pakker her?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Kraftledning er forankret i bygningen"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"ingen, men skilt tillater sykling på fortau "</string>
+    <string name="separate_cycleway_no_signed">"Et skilt spesifikt forbyr sykling"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Gangvei, men et skilt tillater sykling"</string>
+    <string name="quest_bicycle_parking_type_floor">"Utpekt område"</string>
 </resources>

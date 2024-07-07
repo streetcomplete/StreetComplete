@@ -516,7 +516,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_ferry_pedestrian_title">"Does this ferry route transport pedestrians?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Does this ferry route transport motor vehicles?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adding a photo will make the note much more useful."</string>
-    <string name="create_new_note_hint">"Ideally, write the note in the locally spoken language, or otherwise in English."</string>
+    <string name="create_new_note_hint">"Ideally, write in the local language, or otherwise in English."</string>
     <string name="quest_leafType_title">"Do the trees here have needles or leaves?"</string>
     <string name="quest_leaf_type_needles">"Needles"</string>
     <string name="quest_leaf_type_broadleaved">"Leaves"</string>
@@ -697,7 +697,6 @@ levels"</string>
     <string name="quest_recycling_type_engine_oil">"Engine Oil"</string>
     <string name="link_photon_description">"A standalone extension to Nominatim, featuring fuzzy search and search-as-you-type"</string>
     <string name="link_graphhopper_description">"A flexible routing engine"</string>
-    <string name="link_qwant_maps_description">"A map with searchable places and directions"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;To display the map, vector tiles are retrieved from %1$s. See their &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; for more information.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsors"</string>
     <string name="quest_board_type_history">"History"</string>
@@ -1264,15 +1263,15 @@ Move it now?"</string>
     <string name="bicycle_boulevard_is_a">"It’s a %1$s"</string>
     <string name="bicycle_boulevard_is_not_a">"It’s not a %1$s"</string>
     <string name="bicycle_boulevard">"Bicycle boulevard"</string>
-    <string name="separate_cycleway_no_or_allowed">"Not designated for cyclists (cycling may still be allowed)"</string>
-    <string name="separate_cycleway_non_segregated">"Shared-use path"</string>
+    <string name="separate_cycleway_no_or_allowed">"Footway, no explicit sign about cycling (whether it is allowed depends on legislation)"</string>
+    <string name="separate_cycleway_non_segregated">"Designated shared-use path"</string>
     <string name="separate_cycleway_segregated">"Separated bike and foot path"</string>
     <string name="separate_cycleway_exclusive">"Bike-only path"</string>
     <string name="separate_cycleway_with_sidewalk">"Bike-only path with adjacent sidewalk (separated by a kerb)"</string>
     <string name="cycleway_reverse_direction">"Reverse cycleway direction"</string>
     <string name="cycleway_reverse_direction_warning">"That a cycleway goes into the other direction is extremely rare."</string>
     <string name="cycleway_reverse_direction_toast">"Tap which side to reverse"</string>
-    <string name="separate_cycleway_path">"Path or trail"</string>
+    <string name="separate_cycleway_path">"Generic path or trail (Not designated for anyone in particular)"</string>
     <string name="quest_fireHydrant_type_pipe">"Pipe"</string>
     <string name="measure_info_title">"Achieving optimal precision"</string>
     <string name="measure_info_html_description">"&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces a measurement error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;
@@ -1342,7 +1341,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_sanitary_dump_station_description">"A sanitary dump station is a facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:"</string>
     <string name="quest_generalFee_title">"Do you need to pay to use this?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"It’s a fire enclosure"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills."</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"If there is no cooking surface (e.g. grate/plate), it’s a fire enclosure."</string>
     <string name="about_title_logs">"Logs (%1$d)"</string>
     <string name="about_summary_logs">"for use in error reports"</string>
     <string name="action_filter">"Filter"</string>
@@ -1405,4 +1404,10 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_parcel_locker_pickup">"Can you pick up parcels here?"</string>
     <string name="quest_parcel_locker_mail_in">"Can you drop off parcels here?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Power line is anchored to building"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"none, but sign allows cycling on sidewalk"</string>
+    <string name="separate_cycleway_no_signed">"A sign explicitly prohibits cycling"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Footpath, but a sign allows cycling"</string>
+    <string name="quest_bicycle_parking_type_floor">"Designated area"</string>
+    <string name="link_osmapp_description">"A map with various layers, such as for climbing or skiing"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Only for return deliveries"</string>
 </resources>

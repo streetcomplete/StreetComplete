@@ -51,7 +51,7 @@ class AvatarsDownloader(
         try {
             val response = httpClient.get(avatarUrl) { expectSuccess = true }
             response.bodyAsChannel().copyAndClose(avatarFile.writeChannel())
-            Log.d(TAG, "Downloaded file: ${avatarFile.path}")
+            Log.d(TAG, "Downloaded file ${avatarFile.name}")
         } catch (e: Exception) {
             Log.w(TAG, "Unable to download avatar for user id $userId")
         }
