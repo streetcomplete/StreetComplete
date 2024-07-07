@@ -61,7 +61,12 @@ class ElementEditsUploader(
                 // then download will already be running
                 scope.launch {
                     delay(1000)
-                    uploader.upload()
+                    try {
+                        uploader.upload()
+                    } catch (e: Exception) {
+                        Log.i(TAG, "exception when continuing interrupted upload: $e")
+                        throw CancellationException() // not caught by UploadWorker.doWork, but we don't want
+                    }
                 }
                 throw CancellationException() // don't simply break, because otherwise upload will continue with notes
             }
