@@ -186,12 +186,6 @@ class MainActivity :
         return super.dispatchKeyEvent(event)
     }
 
-    public override fun onPause() {
-        super.onPause()
-        val pos = mainFragment?.getCameraPosition()?.position ?: return
-        prefs.mapPosition = pos
-    }
-
     public override fun onStop() {
         super.onStop()
         uploadProgressSource.removeListener(uploadProgressListener)

@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.PointF
-import android.graphics.RectF
 import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
@@ -17,13 +16,13 @@ import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import de.westnordost.streetcomplete.data.map.MapStateStore
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
@@ -69,9 +68,9 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private val mapDataSource: MapDataWithEditsSource by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val downloadedTilesSource: DownloadedTilesSource by inject()
-    private val mapStateStore: MapStateStore by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val recentLocationStore: RecentLocationStore by inject()
+    private val prefs: Preferences by inject()
 
     private lateinit var compass: Compass
     private lateinit var locationManager: FineLocationManager
@@ -570,13 +569,13 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     //region Save and restore state
 
     private fun restoreMapState() {
-        isFollowingPosition = mapStateStore.isFollowingPosition
-        isNavigationMode = mapStateStore.isNavigationMode
+        isFollowingPosition = prefs.mapIsFollowing
+        isNavigationMode = prefs.mapIsNavigationMode
     }
 
     private fun saveMapState() {
-        mapStateStore.isFollowingPosition = isFollowingPosition
-        mapStateStore.isNavigationMode = isNavigationMode
+        prefs.mapIsFollowing = isFollowingPosition
+        prefs.mapIsNavigationMode = isNavigationMode
     }
 
     //endregion

@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesControll
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.editHistoryModule
 import de.westnordost.streetcomplete.data.logs.logsModule
-import de.westnordost.streetcomplete.data.map.mapModule
 import de.westnordost.streetcomplete.data.maptiles.maptilesModule
 import de.westnordost.streetcomplete.data.messages.messagesModule
 import de.westnordost.streetcomplete.data.meta.metadataModule
@@ -136,7 +135,6 @@ class StreetCompleteApplication : Application() {
                 overlaysModule,
                 overlayModule,
                 urlConfigModule,
-                mapModule,
                 urlConfigModule,
                 platformModule
             )
@@ -232,8 +230,7 @@ class StreetCompleteApplication : Application() {
         get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
 
     private fun clearTangramCache() {
-        if (prefs.getBoolean(Prefs.CLEARED_TANGRAM_CACHE, false))
-            return
+        if (prefs.clearedTangramCache) return
         val externalCache = externalCacheDir ?: return
         val tileCache = File(externalCache, "tile_cache")
         if (!tileCache.exists()) return
@@ -241,7 +238,7 @@ class StreetCompleteApplication : Application() {
             for (file in externalCache.walk()) {
                 file.delete()
             }
-            prefs.putBoolean(Prefs.CLEARED_TANGRAM_CACHE, true)
+            prefs.clearedTangramCache = true
         }
     }
 }

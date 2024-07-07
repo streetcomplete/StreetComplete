@@ -8,7 +8,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.screens.about.logs.LogsScreen
 import org.koin.androidx.compose.koinViewModel
-import org.koin.compose.koinInject
 
 @Composable fun AboutNavHost(onClickBack: () -> Unit) {
     val navController = rememberNavController()
@@ -44,7 +43,6 @@ import org.koin.compose.koinInject
         }
         composable(AboutDestination.PrivacyStatement) {
             PrivacyStatementScreen(
-                vectorTileProvider = koinInject(),
                 onClickBack = { navController.popBackStack() }
             )
         }
