@@ -1364,6 +1364,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_outbuilding">"外屋"</string>
     <string name="quest_buildingType_outbuilding_description">"房产上不太重要的建筑物"</string>
     <string name="quest_buildingType_other_description">"在此应用中无法选择的特定建筑物"</string>
+    <string name="quest_buildingType_container">"临时建筑"</string>
+    <string name="quest_buildingType_tent">"帐篷建筑"</string>
+    <string name="quest_buildingType_tomb">"坟冢"</string>
     <string name="quest_buildingType_tower">"塔"</string>
     <string name="quest_buildingType_tower_description">"任何类型的塔"</string>
     <string name="quest_buildingType_under_construction">"建设中"</string>
@@ -1375,4 +1378,34 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="unknown_object">"未知对象"</string>
     <string name="quest_leafType_tree_title">"这棵树有针叶或阔叶吗？"</string>
     <string name="quest_bbq_fuel_gas">"燃气"</string>
+    <string name="about_description_donate_google_play3">"感谢对本APP的支持！
+您可以通过我们的网站或项目主页找到捐赠信息，Google Play商店不允许我们在APP提供直接的链接。"</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"不在室内，但是有覆盖"</string>
+    <string name="lit_value_unsupported">"在此APP中无法选择具体的照明方式"</string>
+    <string name="quest_generic_otherAnswers2">"嗯……"</string>
+    <string name="quest_pedestrian_crossing_signals2">"这里有信号灯表示什么时候通过吗？"</string>
+    <string name="quest_moped_access_title">"这里是否有标志允许轻便摩托车在自行车道上通行？"</string>
+    <string name="quest_moped_access_allowed">"这里没有标志"</string>
+    <string name="quest_moped_access_designated">"这里有允许轻便摩托车通行的标志"</string>
+    <string name="quest_moped_access_forbidden">"这里有禁止轻便摩托车通行的标志"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"不使用预设，因为轻便摩托车从指定的地方驶入并驶出。"</string>
+    <string name="quest_arrow_tutorial">"插图中的箭头指向地图中心点位置的路线。尝试旋转地图，您就会明白。"</string>
+    <string name="info">"更多的信息"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"这是被禁止的。"</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"这是被允许的。"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"事实上，这里有一条人行道，但它在地图上单独被展示出来。"</string>
+    <string name="quest_buildingLevels_hint">"对于位于斜坡上的建筑来说，楼层数从最低侧的地面开始计算。
+
+该楼层的有窗户且在房屋最上端，该楼层算作房屋顶层。因此，屋顶层为零的屋顶不一定是平的，只是高度不足以容纳整个楼层。
+    "</string>
+    <string name="quest_parcel_locker_brand">"这个快递柜是什么品牌的？"</string>
+    <string name="quest_parcel_locker_pickup">"这里可以取件吗？"</string>
+    <string name="quest_parcel_locker_mail_in">"这里可以寄件吗？"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"电缆固定于建筑物上"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"没有，但是有标志允许在人行道上骑行"</string>
+    <string name="separate_cycleway_no_signed">"有标志明确禁止自行车通行"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"步道但是允许自行车通行"</string>
+    <string name="quest_bicycle_parking_type_floor">"划出的区域"</string>
+    <string name="link_osmapp_description">"一个具有多图层，如展示攀岩或滑雪的地图"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"仅用于退货"</string>
 </resources>

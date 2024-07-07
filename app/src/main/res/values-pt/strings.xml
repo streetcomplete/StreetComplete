@@ -115,7 +115,7 @@ Antes de enviar as suas alterações, a aplicação confirma com &lt;a href=\"ht
     <string name="quest_surface_value_grass">"Erva"</string>
     <string name="quest_surface_value_grass_paver">"Blocos cimento ou argamassa permeáveis (com buracos)"</string>
     <string name="quest_surface_value_gravel">"Cascalho"</string>
-    <string name="quest_surface_value_paving_stones">"Blocos de pavimentação (cimento, pedra, tijolo, argamassa…)"</string>
+    <string name="quest_surface_value_paving_stones">"Blocos (cimento, pedra, tijolo, argamassa…)"</string>
     <string name="quest_surface_value_pebblestone">"Seixos"</string>
     <string name="quest_surface_value_sand">"Areia"</string>
     <string name="quest_surface_value_sett">"Paralelos / paralelepípedos"</string>
@@ -516,15 +516,15 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="quest_ferry_pedestrian_title">"Esta rota de ferry transporta passageiros?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Esta rota de ferry transporta veículos a motor?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Se adicionar uma fotografia a sua nota vai ser muito mais útil, clara e fidedigna."</string>
-    <string name="create_new_note_hint">"O ideal é deixar a nota no idioma local ou em inglês."</string>
+    <string name="create_new_note_hint">"O ideal é escrever no idioma local ou como alternativa em inglês."</string>
     <string name="quest_leafType_title">"Esta árvore tem agulhas ou folhas?"</string>
     <string name="quest_leaf_type_needles">"Agulhas"</string>
     <string name="quest_leaf_type_broadleaved">"Folhas"</string>
     <string name="quest_leaf_type_mixed">"Ambas estão presentes"</string>
     <string name="quest_cyclewayPartSurface_title">"Qual é a superfície desta ciclovia aqui?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Varia ao longo do trajeto…"</string>
-    <string name="quest_split_way_description">"Se houver diferenças ao longo da via, o primeiro passo é dividi-la. Depois pode-se responder separadamente para cada trecho da via.
-Dividir agora?"</string>
+    <string name="quest_split_way_description">"Se for diferente ao longo da via, o primeiro passo é dividi-la. Depois disso, a pergunta pode ser respondida para cada parte separadamente.
+Quer dividir agora?"</string>
     <string name="quest_split_way_tutorial">"Toque no ponto da via onde deve ser dividida e onde a resposta é diferente. Tente ser o mais preciso possível, pode fazer zoom como habitualmente"</string>
     <string name="quest_split_way_too_imprecise">"Por favor faça mais zoom"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Há uma série de divisões. Pode sempre dividir a via mais tarde."</string>
@@ -755,7 +755,7 @@ conquista"</string>
     <string name="achievement_citizen_solved_X">"Resolveu %d missões úteis para o dia-a-dia na cidade!"</string>
     <string name="achievement_outdoors_title">"Ar livre"</string>
     <string name="achievement_outdoors_solved_X">"Resolveu %d missões úteis para entusiastas dos espaços exteriores!"</string>
-    <string name="quest_pedestrian_crossing_island">"Esta passadeira tem uma ilha de refúgio de peões a meio?"</string>
+    <string name="quest_pedestrian_crossing_island">"Esta passadeira tem uma ilha de refúgio para peões a meio?"</string>
     <string name="quest_generic_answer_noSign">"Não há sinal"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"A rampa para cadeiras de rodas é mostrada de forma separada no mapa?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
@@ -1086,7 +1086,7 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="quest_airConditioning_title">"Este local tem ar condicionado?"</string>
     <string name="quest_baby_changing_table_title2">"Este local tem mesa para muda de fralda?"</string>
     <string name="quest_busStopBench_title2">"Esta paragem tem assentos?"</string>
-    <string name="quest_busStopBin_title2">"Esta paragem tem algum caixote do lixo?"</string>
+    <string name="quest_busStopBin_title2">"Esta paragem/plataforma tem algum caixote do lixo?"</string>
     <string name="quest_busStopLit_title2">"Esta paragem tem iluminação?"</string>
     <string name="quest_busStopName_title2">"Qual é o nome desta paragem?"</string>
     <string name="quest_busStopRef_title2">"Qual é o número ou código que identifica esta paragem?"</string>
@@ -1225,7 +1225,7 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="quest_barrier_bicycle_installation_removable">"Removível"</string>
     <string name="quest_buildingType_guardhouse">"Edifício de porteiro"</string>
     <string name="quest_genericRef_title">"Que número de identificação tem isto?"</string>
-    <string name="quest_sidewalk_answer_different">"Outra situação. Remover a etiqueta de passeio"</string>
+    <string name="quest_sidewalk_answer_different">"Outra situação. Remover tag de passeio"</string>
     <string name="about_title_get_involved">"Contribua"</string>
     <string name="pref_category_quests_overlays">"Missões e camadas"</string>
     <string name="quest_presets_rename">"Alterar nome"</string>
@@ -1339,7 +1339,7 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="quest_sanitary_dump_station_description">"Uma estação de despejo sanitário é uma instalação destinada a depositar os dejetos humanos provenientes de um tanque de retenção da casa de banho de uma autocaravana, camião de longo curso, etc. Normalmente indicada por um sinal como este:"</string>
     <string name="quest_generalFee_title">"É necessário pagar para utilizar isto?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"É um local para fogueiras"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Os locais destinados a fazer fogueira não têm uma superfície de cozedura (por exemplo, grelha/prato), ao contrário dos grelhadores."</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Se não existir uma superfície de cozedura (por exemplo, grelha/prato), trata-se de um compartimento corta-fogo."</string>
     <string name="about_title_logs">"Relatórios (%1$d)"</string>
     <string name="about_summary_logs">"para utilização em relatórios de erros"</string>
     <string name="action_filter">"Filtro"</string>

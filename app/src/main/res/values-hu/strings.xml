@@ -897,8 +897,8 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_buildingType_grandstand">"Lelátó"</string>
     <string name="action_search">"Keresés"</string>
     <string name="action_manage_presets">"Előre beállított értékek kezelése"</string>
-    <string name="team_mode_team_size_label2">"Hány ember térképezik? Mindenkinek a telefonján azonos értéket adjatok meg."</string>
-    <string name="team_mode_choose_color2">"Ezután mindenkinek kell egy eltérő színt választania. A tied:"</string>
+    <string name="team_mode_team_size_label2">"Hány ember térképezik? Mindenki telefonján azonos értéket adjatok meg."</string>
+    <string name="team_mode_choose_color2">"Ezután mindenkinek választania kell egy eltérő színt. A tied:"</string>
     <string name="link_organic_maps_description">"Offline módon is működő térképalkalmazás utazóknak, túrázóknak és kerékpárosoknak"</string>
     <string name="quest_kerb_height_no">"Egyáltalán nincs járdaszegély"</string>
     <string name="quest_barrier_type_stepover_wooden">"Fa kerítésátjáró"</string>

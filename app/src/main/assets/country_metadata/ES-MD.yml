@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Caixabank, Banco Santander, Bankia, BBVA, Santander, La Caixa, Banco Popular, Banco Sabadell, Weex, ING, Ibercaja, CaixaBank, Bankinter, Telebanco 4B, Unicaja Banco, Euronet Worldwide, Kutxabank, BitBase, shitcoins.club, Servired, IberCaja, Shitcoins.club, Popular, Euro Automatic Cash, Euro 6000, Cajamar, Abanca, Targobank, Sabadell Atlántico, Kurant, Euro automatic cash, Deutsche Bank, Caja Duero, Banca March]
-chargingStationOperators: [Iberdrola, GIC, IBIL, Repsol, 'Tesla, Inc.', EMT, EDP, Lidl, Endesa, Zunder, Serrano Park III, Serrano Park I, PowerDot, Ionity, Emovili, EDP VE, Cepsa, BP, Ayuntamiento de Colmenar Viejo]
+atmOperators: [Caixabank, Banco Santander, Bankia, BBVA, Santander, La Caixa, Banco Popular, Banco Sabadell, Weex, ING, Ibercaja, CaixaBank, Bankinter, Telebanco 4B, Shitcoins.club, Unicaja Banco, Euronet Worldwide, Kutxabank, BitBase, Servired, IberCaja, Popular, Euro Automatic Cash, Euro 6000, Cajamar, Abanca, Targobank, Sabadell Atlántico, Kurant, Euro automatic cash, Deutsche Bank, Caja Duero, Banca March]
+chargingStationOperators: [Iberdrola, GIC, IBIL, Repsol, Endesa, 'Tesla, Inc.', EMT, EDP, Lidl, Zunder, Serrano Park III, Serrano Park I, PowerDot, Ionity, Emovili, EDP VE, Cepsa, BP, Ayuntamiento de Colmenar Viejo]
 clothesContainerOperators: [Fundación Pueblo para Pueblo, Ayuntamiento de Madrid, jóvenesunidos, HUMANA]
 parcelLockerBrand: [Amazon Locker, Amazon Hub, Amazon Hub Locker, CityPaq, Amazon]

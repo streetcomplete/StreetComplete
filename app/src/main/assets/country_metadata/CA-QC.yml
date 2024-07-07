@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Desjardins, Instacoin, Banque Nationale, BMO, RBC, Banque Laurentienne, TD Canada Trust, Banque Scotia, CIBC, Localcoin, Banque Manuvie, RBC Banque Royale, Caisse Desjardins, Banque Royale, Caisse populaire Desjardins, Caisse Populaire Desjardins d'Amos, BMO Banque de Montréal]
 chargingStationOperators: [Circuit électrique, Le Circuit Électrique, FLO, 'Tesla, Inc.', Flo, Circuit Électrique, Le Circuit électrique, Borne de recharge VÉ/EV Charging station, Circuit Electrique, ChargePoint, Le circuit électrique, Le Circuite Électrique, flo, Véloasis, Tesla, Marché Famille Mondor inc., Hydro-Québec]
+clothesContainerOperators: [Centre d'Action Bénévole de la MRC de Coaticook]
 defaultSpeedLimitHasUrbanOrRural: true
 hasBicycleBoulevard: true
 officialLanguages: [fr]

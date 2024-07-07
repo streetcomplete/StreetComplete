@@ -516,7 +516,7 @@ Partially means that a wheelchair can enter and use the toilet, but no handrail 
     <string name="quest_ferry_pedestrian_title">"Does this ferry route transport pedestrians?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Does this ferry route transport motor vehicles?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adding a photo will make the note much more useful."</string>
-    <string name="create_new_note_hint">"Ideally, write the note in the locally spoken language, or otherwise in English."</string>
+    <string name="create_new_note_hint">"Ideally, write in the local language, or otherwise in English."</string>
     <string name="quest_leafType_title">"Do the trees here have needles or leaves?"</string>
     <string name="quest_leaf_type_needles">"Needles"</string>
     <string name="quest_leaf_type_broadleaved">"Leaves"</string>
@@ -1341,7 +1341,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_sanitary_dump_station_description">"A sanitary dump station is a facility for depositing human waste from a toilet holding tank of a motorhome, long haul truck, etc. Usually indicated by a sign like this:"</string>
     <string name="quest_generalFee_title">"Do you need to pay to use this?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"It’s a fire enclosure"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Fire enclosures don’t have a cooking surface (e.g. grate/plate), as opposed to grills."</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"If there is no cooking surface (e.g. grate/plate), it’s a fire enclosure."</string>
     <string name="about_title_logs">"Logs (%1$d)"</string>
     <string name="about_summary_logs">"for use in error reports"</string>
     <string name="action_filter">"Filter"</string>

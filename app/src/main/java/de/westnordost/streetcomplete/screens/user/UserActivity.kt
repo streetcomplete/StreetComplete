@@ -57,7 +57,14 @@ class UserActivity :
         }
 
         observe(viewModel.isLoggedIn) { isLoggedIn ->
-            replaceMainFragmentAnimated(if (isLoggedIn) UserFragment() else LoginFragment())
+            val current = getMainFragment()
+            val replaceFragment = when(isLoggedIn) {
+                true -> current !is UserFragment
+                false -> current !is LoginFragment
+            }
+            if (replaceFragment) {
+                replaceMainFragmentAnimated(if (isLoggedIn) UserFragment() else LoginFragment())
+            }
         }
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)

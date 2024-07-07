@@ -1175,14 +1175,14 @@ Doe hetzelfde voor de andere zijde, als aanwezig."</string>
     <string name="quest_entrance_reference_flat_range_label">"Appartementenreeks:"</string>
     <string name="quest_entrance_reference_flat_range_to">"naar"</string>
     <string name="default_disabled_msg_overlay">"Dit type vraag is standaard uitgeschakeld omdat er al een laag is waarmee het effectiever en efficiënter is om deze gegevens in te voeren en bij te werken."</string>
-    <string name="quest_camp_drinking_water_title">"Is drinkwater hier gratis beschikbaar voor kampeerders?"</string>
+    <string name="quest_camp_drinking_water_title">"Is hier drinkwater beschikbaar voor kampeerders?"</string>
     <string name="quest_camp_shower_title">"Zijn hier douches?"</string>
     <string name="quest_camp_power_supply_title">"Zijn er hier oplaadpunten voor telefoons, laptops e.d.?"</string>
     <string name="quest_camp_type_title">"Wie mag hier kamperen?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Zowel tenten, caravans als campers."</string>
     <string name="quest_camp_type_caravans_only">"Alleen caravans en campers."</string>
     <string name="quest_camp_type_tents_only">"Alleen tenten"</string>
-    <string name="quest_camp_type_backcountry">"Kampeergelegenheid zonder faciliteiten"</string>
+    <string name="quest_camp_type_backcountry">"Wildkamperen (geen faciliteiten)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d."</string>
     <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dit antwoord komt niet overeen met wat er al over deze weg in kaart is gebracht. Weet u zeker dat u over de juiste weg antwoordt? Weet u zeker dat u persoonlijk over de gehele lengte heeft gekeken, zoals altijd nodig is?"</string>
     <string name="quest_recycling_type_pet">"Alleen PET"</string>
@@ -1257,7 +1257,7 @@ Nu verplaatsen?"</string>
     <string name="separate_cycleway_no_or_allowed">"Niet bestemd voor fietsers (fietsen mag misschien nog wel)"</string>
     <string name="separate_cycleway_non_segregated">"Pad voor gedeeld gebruik"</string>
     <string name="separate_cycleway_segregated">"Gescheiden fiets- en voetpad"</string>
-    <string name="separate_cycleway_exclusive">"Pad alleen voor fietsers"</string>
+    <string name="separate_cycleway_exclusive">"Pad alleen voor fietsers (nooit in NL!)"</string>
     <string name="separate_cycleway_with_sidewalk">"Fietspad met aangrenzend trottoir (gescheiden door een stoeprand)"</string>
     <string name="cycleway_reverse_direction">"Wijzig rijrichting fietspad"</string>
     <string name="cycleway_reverse_direction_warning">"Dat een fietspad de andere kant op gaat, komt zelden voor."</string>

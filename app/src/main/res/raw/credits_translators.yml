@@ -52,7 +52,7 @@ cs:
    Vojtik69: 57
    Vladankudlac: 19
 da: 
-   ERyPTION: 32292
+   ERyPTION: 32286
    Dennis Kjær Jensen: 6291
    Soren: 3577
    Leonora: 2712
@@ -65,8 +65,8 @@ da:
    Youri Lima: 13
    Freso: 12
 de: 
-   Flo Edelmann: 17065
-   Mr. Update: 8437
+   Flo Edelmann: 16976
+   Mr. Update: 8529
    mcliquid: 2293
    legofahrrad: 1906
    papojari: 742
@@ -97,8 +97,8 @@ de:
    mrab: 9
    Alexander Romme: 8
 el: 
-   makmar: 41091
-   jimkats: 11640
+   makmar: 40924
+   jimkats: 12081
    Nelli.k.21: 613
    lorrs: 341
    François l'Olonnais: 323
@@ -201,15 +201,15 @@ fa:
    Goudarz Jafari: 29
    Saeed: 13
 fi: 
-   Rik: 12423
+   Rik: 13239
    Jiri Grönroos: 11973
    OpenKartat: 6043
-   Aleksi.klasila: 4755
-   Juhana Uuttu: 3321
+   Aleksi.klasila: 4732
+   Juhana Uuttu: 2912
    Jarmo Sutinen: 2783
-   Jimi Viita-aho: 1177
+   Jimi Viita-aho: 1174
    Harri: 1069
-   Kantele: 1050
+   Kantele: 1020
    Ikx: 596
    Risto: 554
    Toni: 550
@@ -222,7 +222,7 @@ fi:
    Otto: 45
 fr: 
    Florian Stosse: 8291
-   David Chionne: 3980
+   David Chionne: 3898
    rouelibre: 2492
    Binnette: 1706
    Obny: 1266
@@ -290,12 +290,12 @@ he:
    Slava Sukhochev: 3338
    Ilya Kogan: 404
 hr: 
-   Matija Nalis: 49911
+   Matija Nalis: 49927
    Nemanja Bračko: 59
    Mario: 9
 hu: 
-   Zachár Benjámin: 19166
-   Gábor Babos: 12620
+   Zachár Benjámin: 19297
+   Gábor Babos: 12484
    Hungarian_user: 9421
    Erős Pista: 2208
    Meskó Balázs: 1702
@@ -358,7 +358,7 @@ ja:
    ネオ: 611
    Hikari: 459
    ssotoen: 55
-   8177: 31
+   8177: 51
    Morgan: 8
    Ishihara: 3
 ko: 
@@ -405,11 +405,11 @@ nb:
    Borge: 25
    Martin Moen: 13
 nl: 
-   Alert Bouterse: 12643
-   Rhhs: 10041
+   Alert Bouterse: 12619
+   Rhhs: 10122
    Peter: 8151
    Daniel: 3995
-   FritsP: 2766
+   FritsP: 2711
    Richard: 2273
    Olivier: 1228
    Robin: 1027
@@ -441,6 +441,7 @@ pl:
    skepticalknowledge: 1882
    Dominik Danelski: 1861
    Marek-M: 1568
+   janinainfa: 1489
    Saibamen: 1450
    Angielski: 1145
    Michał 'kwiateusz' Kwiatek: 1097
@@ -464,7 +465,7 @@ pl:
    Marek: 39
    Michal: 38
 pt: 
-   Carnum: 41828
+   Carnum: 41823
    NunoCaldeira: 5552
    Rui: 2727
    waldyrious: 2268
@@ -590,7 +591,7 @@ sw:
    SUZA Youth Mappers - Asha Omar, Haitham Alawi, & Hajra Salim: 47648
 th: 
    Mishari: 23649
-   PPNplus: 7410
+   PPNplus: 7562
    Tucking Spearhead: 5190
    Kamthorn: 669
    Theppitak: 439
@@ -644,11 +645,12 @@ zh:
    Almy127: 27
    Minecraftis1st: 9
 zh-TW: 
-   Supaplex: 10434
-   Kagami: 2671
-   Sean Young: 760
-   thomas: 174
-   typebrook: 126
+   Supaplex: 10930
+   Kagami: 2245
+   Sean Young: 733
+   Lepus: 573
+   thomas: 150
+   typebrook: 90
    Sevenwuying: 59
    秉宏: 25
    Edison_lu: 19

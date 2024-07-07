@@ -1,5 +1,8 @@
 # Changelog
 
+## v58.2
+- Fixed it was impossible to login with a third party that required 2FA (e.g. Google) (#5724, #5711)
+
 ## v58.1
 
 - Bike paths: Roads previously mapped with [recently deprecated](https://wiki.openstreetmap.org/wiki/Proposal:Deprecate_cycleway%3Dopposite_family) tags for describing bike infrastructure are now marked for re-survey (#5694)

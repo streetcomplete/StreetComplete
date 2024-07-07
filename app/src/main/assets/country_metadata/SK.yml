@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Slovenská sporiteľňa, VÚB, Tatra banka, ČSOB, Všeobecná úverová banka, Prima banka, UniCredit Bank, Poštová banka, Euronet, Kvakomat, OTP banka, Bitcoinmat.sk, Fio banka, 365.bank, Prima Banka, ATM Point, Raiffeisen banka, wBTCb, 'Tatra banka, a.s.', Shitcoins.club, Bitcoinmat, ATM point, 'VÚB,a.s.', UniCredit Bank Czech Republic and Slovakia, Tatra Banka, Slovenská Sporiteľňa, OTP Banka, OTP Bank]
+atmOperators: [Slovenská sporiteľňa, VÚB, Tatra banka, ČSOB, Všeobecná úverová banka, Prima banka, UniCredit Bank, Poštová banka, Euronet, Kvakomat, OTP banka, Bitcoinmat.sk, 365.bank, Fio banka, Prima Banka, ATM Point, Raiffeisen banka, wBTCb, 'Tatra banka, a.s.', Shitcoins.club, Bitcoinmat, ATM point]
 chargingStationOperators: [GreenWay, ejoin, ZSE, Západoslovenská energetika, nabibajk.sk, Lidl, ZSE Drive, Specialized, Slovnaft, 'Sharengo/4 SALE,s.r.o', Billa, 'Tesla, Inc.', ebajk connect, LEDEOS, ebajkconnect, VSE, Antik Telecom, ABB, 'ejoin, s.r.o.', ebajkonnect, Ledeos, Farmárska reštaurácia, E.ON, BMW T.O.B.]
 clothesContainerOperators: [Ekocharita, EKOCHARITA, HUMANA, 'KOSIT, a.s.', Humana, 'Marius Pedersen,a.s.', Nadácia ECO, ECO textil, TextilEco, FCC Trnava, Ekotextil]
 defaultSpeedLimitHasUrbanOrRural: true

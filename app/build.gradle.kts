@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5801
-        versionName = "58.1"
+        versionCode = 5803
+        versionName = "58.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -154,6 +154,10 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+
+    // multiplatform webview (for login via OAuth)
+    implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.12")
+
     // photos
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 
@@ -236,7 +240,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20240627"
+val nsiVersion = "v6.0.20240702"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v6.7.3"
 

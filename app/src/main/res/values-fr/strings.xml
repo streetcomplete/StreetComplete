@@ -516,7 +516,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_ferry_pedestrian_title">"Cette ligne de ferry transporte-t-elle des piétons ?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Cette ligne de ferry transporte-t-elle des véhicules à moteur ?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"L’ajout d’une photo rendra la note beaucoup plus utile."</string>
-    <string name="create_new_note_hint">"Il est préférable d’écrire la note dans la langue parlée localement ou en anglais."</string>
+    <string name="create_new_note_hint">"Il est préférable d’écrire dans la langue locale ou, à défaut, en anglais."</string>
     <string name="quest_leafType_title">"Les arbres d’ici ont-ils des aiguilles ou des feuilles ?"</string>
     <string name="quest_leaf_type_needles">"Conifères"</string>
     <string name="quest_leaf_type_broadleaved">"Feuillus"</string>
@@ -1406,6 +1406,6 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="separate_cycleway_no_signed">"Un panneau interdit explicitement le vélo"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Voie piétonne, mais un panneau autorise la circulation des cyclistes"</string>
     <string name="quest_bicycle_parking_type_floor">"Zone désignée"</string>
-    <string name="link_osmapp_description">"Une carte avec différentes couches, par exemple pour l'escalade ou le ski"</string>
+    <string name="link_osmapp_description">"Une carte avec différentes couches, par exemple pour l’escalade ou le ski"</string>
     <string name="quest_parcel_locker_mail_in_answer_returns_only">"Seulement pour les livraisons de retour"</string>
 </resources>
