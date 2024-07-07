@@ -1337,7 +1337,7 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="quest_sanitary_dump_station_description">"Facilitet til deponering af menneskeligt affald fra en toilettank i en autocamper, langturslastbil etc. Normalt angivet med et skilt som dette:"</string>
     <string name="quest_generalFee_title">"Skal man betale for brug?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"Det er et bålsted"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Bålsteder har ikke en overflade til madlavning (f.eks. rist/plade), i modsætning til griller."</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Hvis der ikke er nogen overflade til madlavning (f.eks. rist/plade), er det et bålsted."</string>
     <string name="about_title_logs">"Logger (%1$d)"</string>
     <string name="about_summary_logs">"til brug i fejlrapporter"</string>
     <string name="action_filter">"Filtrér"</string>

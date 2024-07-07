@@ -17,7 +17,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [et]
 orchardProduces: [strawberry, apple, raspberry, plum, tomato]
-parcelLockerBrand: [Omniva, DPD, DPD Pickup Station, Smartpost Itella, DHL, UPS, Venipak, DPD Pickup]
+parcelLockerBrand: [Omniva, DPD, DPD Pickup Station, Smartpost Itella, DHL, Venipak, UPS, DPD Pickup]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA

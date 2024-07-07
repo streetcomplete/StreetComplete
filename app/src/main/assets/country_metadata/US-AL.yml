@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Wells Fargo, Regions Bank, Bitstop, First National Bank, Bank Independent, BBVA, SunTrust, Publix, BBVA Compass, Alabama Credit Union]
+atmOperators: [Wells Fargo, Regions Bank, Bitstop, Hometown Bank, First National Bank, Bank Independent, BBVA, SunTrust, Publix, BBVA Compass, Alabama Credit Union]
 chargingStationOperators: ['Tesla, Inc.', Electrify America, ChargePoint, EV Connect, ChargeLab, Blink]
 defaultSpeedLimitHasUrbanOrRural: true
