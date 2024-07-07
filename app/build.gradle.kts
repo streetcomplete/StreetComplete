@@ -175,12 +175,6 @@ dependencies {
     implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
     implementation("de.westnordost:osmfeatures:6.1")
-    // talking with the OSM API
-    implementation("de.westnordost:osmapi-map:3.0")
-    implementation("de.westnordost:osmapi-changesets:3.0")
-    implementation("de.westnordost:osmapi-notes:3.0")
-    implementation("de.westnordost:osmapi-traces:3.1")
-    implementation("de.westnordost:osmapi-user:3.0")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -196,7 +190,7 @@ dependencies {
     // serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("com.charleskorn.kaml:kaml:0.59.0")
-    implementation("io.github.pdvrieze.xmlutil:core-android:0.90.0")
+    implementation("io.github.pdvrieze.xmlutil:core-android:0.90.1")
 
     // map and location
     implementation("com.mapzen.tangram:tangram:0.17.1")
