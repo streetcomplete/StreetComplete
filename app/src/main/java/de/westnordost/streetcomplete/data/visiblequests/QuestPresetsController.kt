@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
@@ -8,9 +7,7 @@ import de.westnordost.streetcomplete.util.Listeners
 /** Controls the ids and names of quest presets */
 class QuestPresetsController(
     private val questPresetsDao: QuestPresetsDao,
-    private val prefs: Preferences
-    private val selectedQuestPresetStore: SelectedQuestPresetStore,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
 ) : QuestPresetsSource {
 
     private val listeners = Listeners<QuestPresetsSource.Listener>()
@@ -46,8 +43,8 @@ class QuestPresetsController(
             selectedId = 0
         }
         questPresetsDao.delete(presetId)
-        val presetSettings = prefs.keys.filter { it.startsWith("${presetId}_qs_") }
-        presetSettings.forEach { prefs.remove(it) }
+        val presetSettings = prefs.prefs.keys.filter { it.startsWith("${presetId}_qs_") }
+        presetSettings.forEach { prefs.prefs.remove(it) }
         onDeletedQuestPreset(presetId)
     }
 

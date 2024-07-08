@@ -28,13 +28,12 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isOneway
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.lanes.LineStyle
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.SearchAdapter
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
-import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.util.takeFavourites
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -258,7 +257,7 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
         if (forward == null && backward == null) return // should never happen
         applyAnswer(forward to backward)
 
-        favs.add(getAllCurrentDestinations())
+        prefs.addLastPicked(javaClass.simpleName, getAllCurrentDestinations().toList())
     }
 
     override fun isFormComplete(): Boolean {
@@ -280,16 +279,6 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
     }
 
     override fun isRejectingClose() = isFormComplete() || binding.destinationInput.text.isNotBlank() || backward?.isEmpty == false || forward?.isEmpty == false
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it },
-            deserialize = { it },
-        )
-    }
 
     private fun finishCurrentDestination() {
         currentDestinations.removeAll { it.isBlank() }
@@ -335,12 +324,8 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
         (suggestions + lastPickedAnswers).distinct()
     }
 
-    private lateinit var favs: LastPickedValuesStore<String>
-
     private val lastPickedAnswers by lazy {
-        favs.get()
-            .mostCommonWithin(target = 20, historyCount = 50, first = 1)
-            .toList()
+        prefs.getLastPicked(javaClass.simpleName).takeFavourites(20, 50, 1)
     }
 }
 

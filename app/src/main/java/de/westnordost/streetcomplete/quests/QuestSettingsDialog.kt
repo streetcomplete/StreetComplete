@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import java.util.regex.PatternSyntaxException
@@ -255,7 +256,7 @@ fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SET
 else
     ""
 
-fun questPrefix(prefs: ObservableSettings) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
+fun questPrefix(prefs: Preferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
     prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
 else
     ""

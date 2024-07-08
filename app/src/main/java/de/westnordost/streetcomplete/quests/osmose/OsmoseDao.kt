@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.CLASS
 import de.westnordost.streetcomplete.quests.osmose.OsmoseTable.Columns.ELEMENTS
@@ -41,7 +42,7 @@ import java.io.IOException
 
 class OsmoseDao(
     private val db: Database,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
 ) : KoinComponent {
     private val client by lazy { OkHttpClient() }
 

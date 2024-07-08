@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.Style
@@ -37,7 +38,7 @@ import de.westnordost.streetcomplete.view.ArrayImageAdapter
 fun showOverlayCustomizer(
     index: Int,
     ctx: Context,
-    prefs: ObservableSettings,
+    prefs: Preferences,
     questTypeRegistry: QuestTypeRegistry,
     onChanged: (Boolean) -> Unit, // true if overlay is currently set custom overlay
     onDeleted: (Boolean) -> Unit, // true if overlay was currently set custom overlay
@@ -225,7 +226,7 @@ fun showOverlayCustomizer(
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(R.string.delete_confirmation) { _, _ ->
                     val isActive = prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0) == index
-                    prefs.keys.forEach { if (it.startsWith("custom_overlay_${index}_")) prefs.remove(it) }
+                    prefs.prefs.keys.forEach { if (it.startsWith("custom_overlay_${index}_")) prefs.prefs.remove(it) }
                     prefs.putString(Prefs.CUSTOM_OVERLAY_INDICES, indices.filterNot { it == index }.joinToString(","))
                     if (isActive)
                         prefs.putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0)
@@ -241,7 +242,7 @@ fun showOverlayCustomizer(
 // title is invalid resId 0
 // name and wikiLink are the overlay index as stored in shared preferences
 // changesetComment is the overlay title
-fun getFakeCustomOverlays(prefs: ObservableSettings, ctx: Context, onlyIfExpertMode: Boolean = true): List<Overlay> {
+fun getFakeCustomOverlays(prefs: Preferences, ctx: Context, onlyIfExpertMode: Boolean = true): List<Overlay> {
     if (onlyIfExpertMode && !prefs.getBoolean(Prefs.EXPERT_MODE, false)) return emptyList()
     return prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").split(",").mapNotNull { index ->
         val i = index.toIntOrNull() ?: return@mapNotNull null

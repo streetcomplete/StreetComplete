@@ -8,9 +8,10 @@ import com.russhwolf.settings.int
 import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
 import com.russhwolf.settings.string
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
-class Preferences(private val prefs: ObservableSettings) {
+class Preferences(val prefs: ObservableSettings) {
     // application settings
     var language: String? by prefs.nullableString(LANGUAGE_SELECT)
 
@@ -35,6 +36,17 @@ class Preferences(private val prefs: ObservableSettings) {
             ?: DEFAULT_RESURVEY_INTERVALS
 
     var showAllNotes: Boolean by prefs.boolean(SHOW_ALL_NOTES, false)
+
+    fun getBoolean(key: String, default: Boolean) = prefs.getBoolean(key, default)
+    fun putBoolean(key: String, value: Boolean) = prefs.putBoolean(key, value)
+    fun getString(key: String, default: String) = prefs.getString(key, default)
+    fun putString(key: String, value: String) = prefs.putString(key, value)
+    fun getLong(key: String, default: Long) = prefs.getLong(key, default)
+    fun getInt(key: String, default: Int) = prefs.getInt(key, default)
+    fun putInt(key: String, value: Int) = prefs.putInt(key, value)
+    fun getFloat(key: String, default: Float) = prefs.getFloat(key, default)
+
+    var expertMode: Boolean by prefs.boolean(Prefs.EXPERT_MODE, false)
 
     fun getLastPicked(key: String): List<String> =
         prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()

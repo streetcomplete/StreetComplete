@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.comment
 import de.westnordost.streetcomplete.testutils.eq
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.mockPrefs3
 import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
@@ -42,7 +43,7 @@ class OsmNoteQuestControllerTest {
         hiddenDB = mock()
         userDataSource = mock()
         userLoginSource = mock()
-        prefs = mock()
+        prefs = mockPrefs3()
 
         listener = mock()
         hideListener = mock()

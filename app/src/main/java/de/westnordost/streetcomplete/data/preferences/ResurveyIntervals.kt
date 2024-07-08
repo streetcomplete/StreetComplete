@@ -4,6 +4,7 @@ import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 
 enum class ResurveyIntervals(val multiplier: Float) {
+    EVEN_LESS_OFTEN(2.0f),
     LESS_OFTEN(2.0f),
     DEFAULT(1.0f),
     MORE_OFTEN(0.5f)

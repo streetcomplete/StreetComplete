@@ -12,8 +12,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.getQuestTypeList
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.ktx.getFeature
@@ -29,8 +27,6 @@ import org.koin.core.qualifier.named
  * quest type for serialization.
  */
 class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, private val ordinalsAndEntries: MutableList<Pair<Int, QuestType>> = initialOrdinalsAndEntries.toMutableList()) : ObjectTypeRegistry<QuestType>(ordinalsAndEntries), KoinComponent {
-    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi by inject()
-    private val trafficFlowDao: WayTrafficFlowDao by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
@@ -45,8 +41,6 @@ class QuestTypeRegistry(initialOrdinalsAndEntries: List<Pair<Int, QuestType>>, p
     fun reload() {
         ordinalsAndEntries.clear()
         ordinalsAndEntries.addAll(getQuestTypeList(
-            trafficFlowSegmentsApi,
-            trafficFlowDao,
             arSupportChecker,
             getCountryInfoByLocation,
             getFeature,

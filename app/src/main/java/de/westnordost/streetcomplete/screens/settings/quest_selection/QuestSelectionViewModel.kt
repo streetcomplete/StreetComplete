@@ -41,8 +41,7 @@ class QuestSelectionViewModelImpl(
     private val visibleQuestTypeController: VisibleQuestTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
     countryBoundaries: Lazy<CountryBoundaries>,
-    prefs: Preferences,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
 ) : QuestSelectionViewModel() {
 
     private val visibleQuestsListener = object : VisibleQuestTypeSource.Listener {
@@ -138,8 +137,6 @@ class QuestSelectionViewModelImpl(
                 if (onlySceeQuests && questTypeRegistry.getOrdinalOf(it)!! < ApplicationConstants.EE_QUEST_OFFSET) null
                 else QuestSelection(it, visibleQuestTypeController.isVisible(it), enabledInCurrentCountry = isQuestEnabledInCurrentCountry(it), prefs)
             }.toMutableList()
-//                    enabledInCurrentCountry = isQuestEnabledInCurrentCountry(it)
-                ) }
         }
     }
 

@@ -45,7 +45,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -86,6 +85,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
+import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -231,7 +232,7 @@ class MainFragment :
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val overlayRegistry: OverlayRegistry by inject()
     private val osmQuestController: OsmQuestController by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
     private val selectedOverlayController: SelectedOverlayController by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
 
@@ -402,7 +403,7 @@ class MainFragment :
         observe(controlsViewModel.starsCount) { count ->
             // only animate if count is positive, for positive feedback
             binding.starsCounterView.setUploadedCount(count, count > 0)
-            val isAutosync = Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC) == Prefs.Autosync.ON
+            val isAutosync = prefs.autosync == Autosync.ON
             binding.starsCounterView.showUnsyncedChangesIndicator = isAutosync && unsyncedChangesCountSource.getCount() != 0
         }
         observe(controlsViewModel.selectedOverlay) { overlay ->

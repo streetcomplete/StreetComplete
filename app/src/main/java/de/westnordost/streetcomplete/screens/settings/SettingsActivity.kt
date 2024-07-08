@@ -29,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.ActivitySettingsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
@@ -114,7 +115,11 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         popQuestForm()
     }
 
-    override fun onQuestHidden(osmQuestKey: OsmQuestKey) {
+    override fun onQuestHidden(questKey: QuestKey) {
+        popQuestForm()
+    }
+
+    override fun onEditTags(element: Element, geometry: ElementGeometry, questKey: QuestKey?, editTypeName: String?) {
         popQuestForm()
     }
 
@@ -143,6 +148,7 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         f.requireArguments().putAll(AbstractOsmQuestForm.createArguments(element))
         f.hideOsmQuestController = object : HideOsmQuestController {
             override fun hide(key: OsmQuestKey) {}
+            override fun tempHide(key: OsmQuestKey) {}
         }
         f.addElementEditsController = object : AddElementEditsController {
             override fun add(
@@ -150,7 +156,8 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
                 geometry: ElementGeometry,
                 source: String,
                 action: ElementEditAction,
-                isNearUserLocation: Boolean
+                isNearUserLocation: Boolean,
+                key: QuestKey?
             ) {
                 when (action) {
                     is DeletePoiNodeAction -> {

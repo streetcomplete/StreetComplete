@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.overlays.PolygonStyle
 import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.StrokeStyle
 import de.westnordost.streetcomplete.util.getNameLabel
@@ -132,5 +133,5 @@ fun getIndexedCustomOverlayPref(pref: String, index: Int) = pref.replace("idx", 
 fun getCurrentCustomOverlayPref(pref: String, prefs: ObservableSettings) = getIndexedCustomOverlayPref(pref, prefs.getInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, 0))
 fun getCustomOverlayIndices(prefs: SharedPreferences) = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")!!
     .split(",").mapNotNull { it.toIntOrNull() }
-fun getCustomOverlayIndices(prefs: ObservableSettings) = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")
+fun getCustomOverlayIndices(prefs: Preferences) = prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0")
     .split(",").mapNotNull { it.toIntOrNull() }

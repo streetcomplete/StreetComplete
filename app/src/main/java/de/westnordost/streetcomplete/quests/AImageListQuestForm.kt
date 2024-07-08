@@ -26,7 +26,6 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
-    private val prefs: Preferences by inject()
     override val defaultExpanded = false
 
     protected open val descriptionResId: Int? = null

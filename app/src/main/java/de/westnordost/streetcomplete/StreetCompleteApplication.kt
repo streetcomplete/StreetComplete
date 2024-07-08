@@ -281,6 +281,6 @@ class StreetCompleteApplication : Application() {
 
 private val Theme.appCompatNightMode: Int get() = when (this) {
     Theme.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
-    Theme.DARK -> AppCompatDelegate.MODE_NIGHT_YES
+    Theme.DARK, Theme.DARK_CONTRAST -> AppCompatDelegate.MODE_NIGHT_YES
     Theme.SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
 }

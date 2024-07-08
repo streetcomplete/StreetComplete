@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -10,10 +9,9 @@ import androidx.core.view.doOnLayout
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestMultiValueBinding
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.util.takeFavourites
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -79,8 +77,8 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
 
     override fun onClickOk() {
         values.removeAll { it.isBlank() }
-        if (values.isNotEmpty()) favs.add(values)
-        if (value.isNotBlank()) favs.add(value)
+        if (values.isNotEmpty()) prefs.addLastPicked(javaClass.simpleName, values.toList())
+        if (value.isNotBlank()) prefs.addLastPicked(javaClass.simpleName, value)
         if (value.isBlank())
             applyAnswer(stringToAnswer(values.joinToString(";")))
         else
@@ -90,16 +88,6 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
     override fun isFormComplete() = (value.isNotBlank() || values.isNotEmpty()) && !value.contains(";")
         && !values.contains(value)
         && (!onlyAllowSuggestions || (values.all { getSuggestions().contains(it) } && (getSuggestions().contains(value) || value.isBlank())))
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it },
-            deserialize = { it },
-        )
-    }
 
     private fun addValue(value: String) {
         val modifiedValue = value.trim()
@@ -115,12 +103,8 @@ abstract class AMultiValueQuestForm<T> : AbstractOsmQuestForm<T>() {
         showSuggestions()
     }
 
-    private lateinit var favs: LastPickedValuesStore<String>
-
     private val lastPickedAnswers by lazy {
-        favs.get()
-            .mostCommonWithin(target = 20, historyCount = 50, first = 1)
-            .toList()
+        prefs.getLastPicked(javaClass.simpleName).takeFavourites(20, 50, 1)
     }
 
     private fun showSuggestions() {

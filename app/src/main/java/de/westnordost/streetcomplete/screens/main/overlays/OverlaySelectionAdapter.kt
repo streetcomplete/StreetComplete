@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -20,7 +21,7 @@ import de.westnordost.streetcomplete.util.showOverlayCustomizer
 /** Adapter for the list in which the user can select which overlay he wants to use */
 class OverlaySelectionAdapter(
     private val overlays: List<Overlay>,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
     private val questTypeRegistry: QuestTypeRegistry,
     ) : BaseAdapter() {
 

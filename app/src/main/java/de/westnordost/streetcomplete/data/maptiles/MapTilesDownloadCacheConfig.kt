@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Environment
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS
 import de.westnordost.streetcomplete.ApplicationConstants.DEFAULT_MAP_CACHE_SIZE_IN_MB
+import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import okhttp3.Cache
 import okhttp3.CacheControl
 import java.io.File
@@ -11,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 /** Configuration for the common cache shared by tangram-es and the map tile ("pre"-)downloader
  *  integrated into the normal map download process */
-class MapTilesDownloadCacheConfig(context: Context) {
+class MapTilesDownloadCacheConfig(context: Context, prefs: Preferences) {
 
     val cacheControl: CacheControl = CacheControl.Builder()
         .maxAge(12, TimeUnit.HOURS)
@@ -28,7 +30,7 @@ class MapTilesDownloadCacheConfig(context: Context) {
     val cache: Cache?
 
     init {
-        val cacheDir = if (prefs.getBoolean(Prefs.PREFER_EXTERNAL_SD, false))
+        val cacheDir = if (prefs.getBoolean(Prefs.PREFER_EXTERNAL_SD, false)) // todo: remove after maplibre
                 context.externalCacheDirs
                     .firstOrNull { Environment.isExternalStorageRemovable(it) } ?: context.externalCacheDir
             else

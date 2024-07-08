@@ -19,8 +19,8 @@ class TangramPinsSpriteSheet(
     private val prefs: Preferences
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
-        val isSpriteSheetCurrent = prefs.pinSpritesVersion == context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt()
-        val isSpriteSheetCurrent = prefs.getInt(Prefs.PIN_SPRITES_VERSION, 0) == lastUpdate
+        val lastUpdate = context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt()
+        val isSpriteSheetCurrent = prefs.pinSpritesVersion == lastUpdate
 
         val spriteSheet = when {
             !isSpriteSheetCurrent -> createSpritesheet()

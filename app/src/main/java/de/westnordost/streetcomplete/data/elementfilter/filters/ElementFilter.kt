@@ -159,6 +159,7 @@ abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : Elem
     }
 
     companion object {
+        // todo: unused, probably should just remove setting
         var resurveyKeys = listOf<String>()
         var resurveyDate: LocalDate? = null
     }

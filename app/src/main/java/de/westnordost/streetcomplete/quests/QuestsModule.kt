@@ -262,8 +262,6 @@ fun questTypeRegistry(
     osmoseDao: OsmoseDao,
     customQuestList: CustomQuestList,
 ) = QuestTypeRegistry(getQuestTypeList(
-    trafficFlowSegmentsApi,
-    trafficFlowDao,
     arSupportChecker,
     getCountryInfoByLocation,
     getFeature,
@@ -272,8 +270,6 @@ fun questTypeRegistry(
 ))
 
 fun getQuestTypeList(
-    trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
-    trafficFlowDao: WayTrafficFlowDao,
     arSupportChecker: ArSupportChecker,
     getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
     getFeature: (Element) -> Feature?,

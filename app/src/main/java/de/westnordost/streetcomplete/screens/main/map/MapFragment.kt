@@ -21,6 +21,7 @@ import com.mapzen.tangram.TouchInput.TapResponder
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloadCacheConfig
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -109,9 +110,9 @@ open class MapFragment :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
-    private val onBackgroundChangedListener = prefs.addStringListener(Prefs.THEME_BACKGROUND, "MAP") {
+    private val onBackgroundChangedListener = prefs.prefs.addStringListener(Prefs.THEME_BACKGROUND, "MAP") {
         sceneMapComponent?.isAerialView =
-            (prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
+            (prefs.prefs.getStringOrNull(Prefs.THEME_BACKGROUND) ?: "MAP") == "AERIAL"
         viewLifecycleScope.launch { sceneMapComponent?.loadScene() }
     }
 

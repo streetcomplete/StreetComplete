@@ -8,7 +8,7 @@
         app:useSimpleSummaryProvider="true"
         android:defaultValue="IGNORE"
         android:entries="@array/pref_entries_day_night"
-        android:entryValues="@array/pref_entriyvalues_day_night"
+        android:entryValues="@array/pref_entryvalues_day_night"
         android:persistent="true" />
 
     <Preference

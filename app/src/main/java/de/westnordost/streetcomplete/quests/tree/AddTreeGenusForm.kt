@@ -12,12 +12,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.QuestNameSuggestionBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.main.map.getTreeGenus
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.SearchAdapter
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.util.takeFavourites
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.IOException
@@ -38,7 +37,7 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
         if (tree == null) {
             binding.nameInput.error = context?.resources?.getText(R.string.quest_tree_error)
         } else {
-            favs.add("${tree.isSpecies}§${tree.name}")
+            prefs.addLastPicked(javaClass.simpleName, "${tree.isSpecies}§${tree.name}")
             applyAnswer(tree)
         }
     }
@@ -103,23 +102,8 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
         }.sortedBy { it.localName == null }.sortedBy { it.isSpecies }
     }
 
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it },
-            deserialize = { it },
-            maxEntries = 25
-        )
-    }
-
-    private lateinit var favs: LastPickedValuesStore<String>
-
     private val lastPickedAnswers by lazy {
-        favs.get()
-            .mostCommonWithin(target = 3, historyCount = 25, first = 1)
-            .toList()
+        prefs.getLastPicked(javaClass.simpleName).takeFavourites(20, 50, 1)
     }
 
     private fun loadTrees(): Set<Tree> {

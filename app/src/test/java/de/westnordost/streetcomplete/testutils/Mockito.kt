@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.testutils
 
 import android.content.SharedPreferences
 import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatcher
 import org.mockito.ArgumentMatchers
@@ -41,5 +42,12 @@ fun mockPrefs2(): ObservableSettings {
     // style above doesn't work for boolean ("Cannot cast java.lang.Boolean to boolean")
     on(prefs.getBoolean(ArgumentMatchers.anyString(), eq(true))).thenAnswer { true }
     on(prefs.getBoolean(ArgumentMatchers.anyString(), eq(false))).thenAnswer { false }
+    return prefs
+}
+
+fun mockPrefs3(): Preferences {
+    val prefs: Preferences = mock()
+    val obs = mockPrefs2()
+    on(prefs.prefs).thenReturn(obs)
     return prefs
 }

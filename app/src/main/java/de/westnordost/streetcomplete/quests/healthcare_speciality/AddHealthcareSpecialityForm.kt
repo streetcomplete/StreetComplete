@@ -13,10 +13,9 @@ import de.westnordost.streetcomplete.quests.AMultiValueQuestForm
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.TagEditor
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
-import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.util.takeFavourites
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 
@@ -79,22 +78,12 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
         }
     })
 
-    private lateinit var favs: LastPickedValuesStore<String>
-
     private val lastPickedAnswers by lazy {
-        favs.get()
-            .mostCommonWithin(target = 12, historyCount = 50, first = 1)
-            .toList()
+        prefs.getLastPicked(javaClass.simpleName).takeFavourites(12, 50, 1)
     }
 
     override fun onAttach(ctx: Context) {
         super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it },
-            deserialize = { it },
-        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -145,7 +134,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
             R.id.leaveNoteRadioButton -> composeNote()
             R.id.replaceRadioButton   -> {
                 applyAnswer(featureCtrl.feature!!.addTags["healthcare:speciality"]!!)
-                favs.add(featureCtrl.feature!!.id)
+                prefs.addLastPicked(javaClass.simpleName, featureCtrl.feature!!.id)
             }
         }
     }

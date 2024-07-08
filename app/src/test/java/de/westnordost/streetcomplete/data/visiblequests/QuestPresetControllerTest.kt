@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.visiblequests
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.mockPrefs3
 import de.westnordost.streetcomplete.testutils.on
 import org.mockito.Mockito.verify
 import kotlin.test.BeforeTest
@@ -20,7 +21,7 @@ class QuestPresetControllerTest {
 
     @BeforeTest fun setUp() {
         questPresetsDao = mock()
-        prefs = mock()
+        prefs = mockPrefs3()
         ctrl = QuestPresetsController(questPresetsDao, prefs)
 
         listener = mock()

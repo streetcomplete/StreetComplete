@@ -5,6 +5,7 @@ import android.content.res.Resources
 import com.mapzen.tangram.SceneUpdate
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.isApril1st
@@ -18,7 +19,7 @@ class SceneMapComponent(
     private val resources: Resources,
     private val ctrl: KtMapController,
     private val vectorTileProvider: VectorTileProvider,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
 ) {
     private var sceneUpdates: MutableList<List<Pair<String, String>>> = mutableListOf()
 

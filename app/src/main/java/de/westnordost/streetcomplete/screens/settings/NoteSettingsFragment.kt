@@ -12,11 +12,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.getRawBlockList
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -31,7 +31,7 @@ import java.util.zip.ZipOutputStream
 
 class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
 
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     override val title: String get() = getString(R.string.pref_screen_notes)
 

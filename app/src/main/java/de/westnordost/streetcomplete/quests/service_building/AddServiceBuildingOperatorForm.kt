@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.quests.service_building
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import de.westnordost.streetcomplete.quests.ANameWithSuggestionsForm
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.util.takeFavourites
 
 class AddServiceBuildingOperatorForm : ANameWithSuggestionsForm<String>() {
 
@@ -13,7 +11,7 @@ class AddServiceBuildingOperatorForm : ANameWithSuggestionsForm<String>() {
     override val suggestions: List<String> get() = (lastPickedAnswers + OPERATORS).distinct()
 
     override fun onClickOk() {
-        favs.add(name!!)
+        prefs.addLastPicked(javaClass.simpleName, name!!)
         applyAnswer(name!!)
     }
 
@@ -22,22 +20,8 @@ class AddServiceBuildingOperatorForm : ANameWithSuggestionsForm<String>() {
         binding.nameInput.showDropDown()
     }
 
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it },
-            deserialize = { it },
-        )
-    }
-
-    private lateinit var favs: LastPickedValuesStore<String>
-
     private val lastPickedAnswers by lazy {
-        favs.get()
-            .mostCommonWithin(target = 50, historyCount = 50, first = 1)
-            .toList()
+        prefs.getLastPicked(javaClass.simpleName).takeFavourites(50, 50, 1)
     }
 }
 

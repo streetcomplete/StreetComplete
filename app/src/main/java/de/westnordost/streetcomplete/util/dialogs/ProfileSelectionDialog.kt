@@ -7,6 +7,7 @@ import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -14,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-fun showProfileSelectionDialog(context: Context, questPresetsController: QuestPresetsController, prefs: ObservableSettings) {
+fun showProfileSelectionDialog(context: Context, questPresetsController: QuestPresetsController, prefs: Preferences) {
     val presets = mutableListOf<QuestPreset>()
     presets.add(QuestPreset(0, context.getString(R.string.quest_presets_default_name)))
     presets.addAll(questPresetsController.getAll())

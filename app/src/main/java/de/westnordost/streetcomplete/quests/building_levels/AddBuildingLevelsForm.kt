@@ -22,7 +22,6 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     override val contentLayoutResId = R.layout.quest_building_levels
     private val binding by contentViewBinding(QuestBuildingLevelsBinding::bind)
 
-    private val prefs: Preferences by inject()
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )

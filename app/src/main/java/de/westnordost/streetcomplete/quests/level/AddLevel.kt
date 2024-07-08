@@ -170,7 +170,9 @@ class AddLevel : OsmElementQuestType<String> {
         AlertDialog.Builder(context)
             .setTitle(R.string.quest_settings_level_title)
             .setNegativeButton(android.R.string.cancel, null)
-            .setItems(R.array.pref_quest_settings_level_quest) { _, i ->
+            .setItems(
+                arrayOf(context.getString(R.string.quest_settings_level_default), context.getString(R.string.quest_settings_level_more))
+            ) { _, i ->
                 if (i == 1) prefs.edit().putBoolean(questPrefix(prefs) + PREF_MORE_LEVELS, true).apply()
                     else prefs.edit().remove(questPrefix(prefs) + PREF_MORE_LEVELS).apply()
                 OsmQuestController.reloadQuestTypes()

@@ -42,7 +42,7 @@ fun AboutScreen(
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(R.string.action_about2)) },
+            title = { Text(stringResource(R.string.action_about2) + " SCEE") },
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
@@ -100,6 +100,16 @@ fun AboutScreen(
                 ) { OpenInBrowserIcon() }
 
                 Preference(
+                    name = stringResource(R.string.about_title_translate) + ": SCEE",
+                    onClick = { context.openUri("https://translate.codeberg.org/projects/scee/") },
+                ) { OpenInBrowserIcon() }
+
+                Preference(
+                    name = stringResource(R.string.about_title_repository),
+                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete") },
+                ) { OpenInBrowserIcon() }
+
+                Preference(
                     name = stringResource(R.string.about_title_repository),
                     onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete") },
                 ) { OpenInBrowserIcon() }
@@ -116,12 +126,12 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(R.string.about_title_report_error),
-                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
+                    onClick = { context.openUri("https://github.com/Helium314/SCEE/issues/") },
                 ) { OpenInBrowserIcon() }
 
                 Preference(
                     name = stringResource(R.string.about_title_feedback),
-                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
+                    onClick = { context.openUri("https://github.com/Helium314/SCEE/discussions/") },
                 ) { OpenInBrowserIcon() }
 
                 Preference(

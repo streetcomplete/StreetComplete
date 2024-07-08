@@ -29,8 +29,10 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
+import org.koin.compose.koinInject
 
 /** Single item the the quest selection list. Shows icon + title, whether it is enabled and whether
  *  it is disabled by default / disabled in the country one is in */
@@ -42,6 +44,7 @@ fun QuestSelectionItem(
     modifier: Modifier = Modifier
 ) {
     val alpha = if (!item.selected) ContentAlpha.disabled else ContentAlpha.high
+    val questTypeRegistry: QuestTypeRegistry = koinInject()
 
     Row(
         modifier = modifier.height(IntrinsicSize.Min),
@@ -50,10 +53,15 @@ fun QuestSelectionItem(
         Image(
             painter = painterResource(item.questType.icon),
             contentDescription = item.questType.name,
-            modifier = Modifier.padding(start = 16.dp).size(48.dp).alpha(alpha),
+            modifier = Modifier
+                .padding(start = 16.dp)
+                .size(48.dp)
+                .alpha(alpha),
         )
         Column(
-            modifier = Modifier.padding(start = 16.dp).weight(0.1f),
+            modifier = Modifier
+                .padding(start = 16.dp)
+                .weight(0.1f),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(
@@ -69,13 +77,15 @@ fun QuestSelectionItem(
             }
         }
         Box(
-            modifier = Modifier.width(64.dp).fillMaxHeight(),
+            modifier = Modifier
+                .width(64.dp)
+                .fillMaxHeight(),
             contentAlignment = Alignment.Center
         ) {
             Checkbox(
                 checked = item.selected,
                 onCheckedChange = onToggleSelection,
-                enabled = item.isInteractionEnabled
+                enabled = item.isInteractionEnabled(questTypeRegistry)
             )
         }
     }
@@ -97,7 +107,7 @@ private fun QuestSelectionItemPreview() {
     var selected by remember { mutableStateOf(true) }
 
     QuestSelectionItem(
-        item = QuestSelection(AddRoadSurface(), selected, false),
+        item = QuestSelection(AddRoadSurface(), selected, false, koinInject()),
         onToggleSelection = { selected = !selected },
         displayCountry = "Atlantis",
     )

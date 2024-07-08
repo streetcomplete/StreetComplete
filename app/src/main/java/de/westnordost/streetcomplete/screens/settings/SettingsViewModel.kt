@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.settings
 import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.SettingsListener
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestController
@@ -40,6 +41,8 @@ abstract class SettingsViewModel : ViewModel() {
     abstract val theme: StateFlow<Theme>
     abstract val keepScreenOn: StateFlow<Boolean>
     abstract val selectedLanguage: StateFlow<String?>
+    abstract val expertMode: StateFlow<Boolean>
+    abstract val prefs: Preferences
 
     abstract fun unhideQuests()
 
@@ -49,6 +52,7 @@ abstract class SettingsViewModel : ViewModel() {
 
     abstract fun setResurveyIntervals(value: ResurveyIntervals)
     abstract fun setShowAllNotes(value: Boolean)
+    abstract fun setExpertMode(value: Boolean)
     abstract fun setAutosync(value: Autosync)
     abstract fun setTheme(value: Theme)
     abstract fun setKeepScreenOn(value: Boolean)
@@ -58,7 +62,7 @@ abstract class SettingsViewModel : ViewModel() {
 data class QuestTypeCount(val total: Int, val enabled: Int)
 
 class SettingsViewModelImpl(
-    private val prefs: Preferences,
+    override val prefs: Preferences,
     private val resources: Resources,
     private val cleaner: Cleaner,
     private val osmQuestsHiddenController: OsmQuestsHiddenController,
@@ -104,6 +108,7 @@ class SettingsViewModelImpl(
     override val showAllNotes = MutableStateFlow(prefs.showAllNotes)
     override val keepScreenOn = MutableStateFlow(prefs.keepScreenOn)
     override val selectedLanguage = MutableStateFlow(prefs.language)
+    override val expertMode = MutableStateFlow(prefs.expertMode)
 
     private val listeners = mutableListOf<SettingsListener>()
 
@@ -113,8 +118,8 @@ class SettingsViewModelImpl(
         osmNoteQuestsHiddenController.addListener(osmNoteQuestsHiddenListener)
         osmQuestsHiddenController.addListener(osmQuestsHiddenListener)
 
-            if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
-                OsmQuestController.reloadQuestTypes()
+        if (prefs.getBoolean(Prefs.DYNAMIC_QUEST_CREATION, false))
+            OsmQuestController.reloadQuestTypes()
         listeners += prefs.onResurveyIntervalsChanged { resurveyIntervals.value = it }
         listeners += prefs.onAutosyncChanged { autosync.value = it }
         listeners += prefs.onThemeChanged { theme.value = it }
@@ -152,6 +157,8 @@ class SettingsViewModelImpl(
     override fun setTheme(value: Theme) { prefs.theme = value }
     override fun setKeepScreenOn(value: Boolean) { prefs.keepScreenOn = value }
     override fun setSelectedLanguage(value: String?) { prefs.language = value }
+
+    override fun setExpertMode(value: Boolean) { prefs.expertMode = value }
 
     override fun unhideQuests() {
         launch(IO) {

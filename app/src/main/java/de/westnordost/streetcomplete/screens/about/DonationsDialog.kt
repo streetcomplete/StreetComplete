@@ -54,19 +54,25 @@ fun DonationPlatformItems(
 ) {
     Column(modifier = modifier) {
         DonationPlatformItem(
-            title = "GitHub Sponsors",
+            title = "Liberapay (Helium314 / SCEE)",
+            icon = R.drawable.ic_liberapay,
+            url = "https://liberapay.com/helium314",
+            onClickLink
+        )
+        DonationPlatformItem(
+            title = "GitHub Sponsors (westnordost)",
             icon = R.drawable.ic_github,
             url = "https://github.com/sponsors/westnordost",
             onClickLink
         )
         DonationPlatformItem(
-            title = "Liberapay",
+            title = "Liberapay (westnordost)",
             icon = R.drawable.ic_liberapay,
             url = "https://liberapay.com/westnordost",
             onClickLink
         )
         DonationPlatformItem(
-            title = "Patreon",
+            title = "Patreon (westnordost)",
             icon = R.drawable.ic_patreon,
             url = "https://patreon.com/westnordost",
             onClickLink

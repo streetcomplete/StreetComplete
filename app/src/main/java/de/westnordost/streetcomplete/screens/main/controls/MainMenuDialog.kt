@@ -10,6 +10,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsController
 import de.westnordost.streetcomplete.databinding.DialogMainMenuBinding
 import de.westnordost.streetcomplete.screens.about.AboutActivity
@@ -25,7 +26,7 @@ class MainMenuDialog(
     onClickDownload: () -> Unit,
     onEnableTeamMode: (Int, Int) -> Unit,
     onDisableTeamMode: () -> Unit,
-    prefs: ObservableSettings,
+    prefs: Preferences,
     questPresetsController: QuestPresetsController,
 ) : AlertDialog(context) {
     init {

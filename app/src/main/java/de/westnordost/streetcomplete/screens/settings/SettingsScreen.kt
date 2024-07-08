@@ -21,9 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
@@ -58,6 +59,7 @@ fun SettingsScreen(
     val theme by viewModel.theme.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
     val selectedLanguage by viewModel.selectedLanguage.collectAsState()
+    val expertMode by viewModel.expertMode.collectAsState()
 
     var showDeleteCacheConfirmation by remember { mutableStateOf(false) }
     var showRestoreHiddenQuestsConfirmation by remember { mutableStateOf(false) }
@@ -67,6 +69,7 @@ fun SettingsScreen(
     var showLanguageSelect by remember { mutableStateOf(false) }
     var showAutosyncSelect by remember { mutableStateOf(false) }
     var showResurveyIntervalsSelect by remember { mutableStateOf(false) }
+    var showExpertModeConfirmation by remember { mutableStateOf(false) }
 
     val presetNameOrDefault = selectedPresetName ?: stringResource(R.string.quest_presets_default_name)
 
@@ -172,6 +175,53 @@ fun SettingsScreen(
                 )
             }
 
+            PreferenceCategory(stringResource(R.string.pref_category_mods)) {
+
+                Preference(
+                    name = stringResource(R.string.pref_expert_mode_title),
+                    onClick = { /* anything? */ },
+                    description = stringResource(R.string.pref_expert_mode_summary)
+                ) {
+                    Switch(
+                        checked = expertMode,
+                        onCheckedChange = {
+                            if (!it) viewModel.setExpertMode(it)
+                            else showExpertModeConfirmation = true
+                        }
+                    )
+                }
+
+                // todo: how to move to settings fragment from here?
+                //  not interested in re-implementing all scee settings in this awful style
+                Preference(
+                    name = stringResource(R.string.pref_screen_ui),
+                    onClick = {  },
+                )
+
+                Preference(
+                    name = stringResource(R.string.pref_screen_display),
+                    onClick = {  },
+                )
+
+                Preference(
+                    name = stringResource(R.string.pref_screen_quests),
+                    onClick = {  },
+                )
+
+                Preference(
+                    name = stringResource(R.string.pref_screen_notes),
+                    onClick = {  },
+                )
+
+                Preference(
+                    name = stringResource(R.string.pref_screen_data_management),
+                    onClick = {  },
+                )
+
+                // todo: debug log reader, gps & network location intervals
+                //  maybe just move to data management settings...
+            }
+
             if (BuildConfig.DEBUG) {
                 PreferenceCategory("Debug") {
                     Preference(
@@ -183,7 +233,26 @@ fun SettingsScreen(
         }
     }
 
+    if (showExpertModeConfirmation) {
+        ConfirmationDialog(
+            onDismissRequest = {
+                viewModel.setExpertMode(false)
+                showExpertModeConfirmation = false
+                               },
+            onConfirmed = { viewModel.setExpertMode(true) },
+            text = { Text(stringResource(R.string.pref_expert_mode_message)) },
+            confirmButtonText = stringResource(R.string.dialog_button_understood)
+        )
+    }
     if (showDeleteCacheConfirmation) {
+        /* todo
+                .setNeutralButton(R.string.delete_confirmation_both) { _, _ ->
+                    viewModel.deleteTiles()
+                    viewModel.deleteCache()
+                }
+                .setPositiveButton(R.string.delete_confirmation_tiles) { _, _ -> viewModel.deleteTiles() }
+                .setNegativeButton(R.string.delete_confirmation_data) { _, _ -> viewModel.deleteCache() }
+         */
         ConfirmationDialog(
             onDismissRequest = { showDeleteCacheConfirmation = false },
             onConfirmed = { viewModel.deleteCache() },
@@ -192,7 +261,7 @@ fun SettingsScreen(
                 Text(stringResource(
                     R.string.delete_cache_dialog_message,
                     (1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)).format(locale, 1),
-                    (1.0 * DELETE_OLD_DATA_AFTER / (24 * 60 * 60 * 1000)).format(locale, 1)
+                    (1.0 * viewModel.prefs.getInt(Prefs.DATA_RETAIN_TIME, ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS)).format(locale, 1)
                 ))
             },
             confirmButtonText = stringResource(R.string.delete_confirmation)
@@ -203,6 +272,7 @@ fun SettingsScreen(
             onDismissRequest = { showRestoreHiddenQuestsConfirmation = false },
             onConfirmed = { viewModel.unhideQuests() },
             title = { Text(stringResource(R.string.restore_dialog_message)) },
+            text = { Text(stringResource(R.string.restore_dialog_hint)) },
             confirmButtonText = stringResource(R.string.restore_confirmation)
         )
     }
@@ -277,6 +347,7 @@ private val Autosync.titleResId: Int get() = when (this) {
 }
 
 private val ResurveyIntervals.titleResId: Int get() = when (this) {
+    ResurveyIntervals.EVEN_LESS_OFTEN -> R.string.resurvey_intervals_even_less_often
     ResurveyIntervals.LESS_OFTEN -> R.string.resurvey_intervals_less_often
     ResurveyIntervals.DEFAULT -> R.string.resurvey_intervals_default
     ResurveyIntervals.MORE_OFTEN -> R.string.resurvey_intervals_more_often
@@ -286,6 +357,7 @@ private val Theme.titleResId: Int get() = when (this) {
     Theme.LIGHT -> R.string.theme_light
     Theme.DARK -> R.string.theme_dark
     Theme.SYSTEM -> R.string.theme_system_default
+    Theme.DARK_CONTRAST -> R.string.theme_dark_contrast
 }
 
 private fun getLanguageDisplayName(languageTag: String): String? {

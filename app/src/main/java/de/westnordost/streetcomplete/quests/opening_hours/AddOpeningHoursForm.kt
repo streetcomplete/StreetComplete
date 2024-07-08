@@ -20,8 +20,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.mostCommonWithin
+import de.westnordost.streetcomplete.util.takeFavourites
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -144,8 +143,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     private fun showInputCommentDialog() {
         val dialogBinding = QuestOpeningHoursCommentBinding.inflate(layoutInflater)
-        val favs = LastPickedValuesStore(prefs, javaClass.simpleName, { it }, { it }, 10)
-        val lastValues = favs.get().mostCommonWithin(target = 3, historyCount = 5, first = 2).toList()
+        val lastValues = prefs.getLastPicked(javaClass.simpleName).takeFavourites(3, 5, 2)
         dialogBinding.commentInput.setAdapter(
             ArrayAdapter(
                 requireContext(),
@@ -159,7 +157,7 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
             .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val txtRaw = dialogBinding.commentInput.text.toString()
-                favs.add(txtRaw)
+                prefs.addLastPicked(javaClass.simpleName, txtRaw)
                 val txt = txtRaw.replace("\"", "").trim()
                 if (txt.isEmpty()) {
                     AlertDialog.Builder(requireContext())

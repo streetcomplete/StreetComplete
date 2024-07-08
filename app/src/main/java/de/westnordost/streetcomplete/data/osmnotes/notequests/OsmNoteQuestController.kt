@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
@@ -36,7 +37,7 @@ class OsmNoteQuestController(
     private val blockedUserNames = hashSetOf<String>()
 
     // store it, or it will get GCed and thus not work
-    private val prefsListener = prefs.addStringListener(Prefs.HIDE_NOTES_BY_USERS, "") {
+    private val prefsListener = prefs.prefs.addStringListener(Prefs.HIDE_NOTES_BY_USERS, "") {
         reloadBlocks()
     }
 
@@ -80,7 +81,6 @@ class OsmNoteQuestController(
         userLoginSource.addListener(userLoginStatusListener)
         // a lot of notes become visible/invisible if this option is changed
         settingsListener = prefs.onAllShowNotesChanged { onInvalidated() }
-    }
         reloadBlocks()
     }
 
@@ -93,6 +93,7 @@ class OsmNoteQuestController(
             if (id == null) blockedUserNames.add(it)
             else blockedUserIds.add(id)
         }
+    }
 
     override fun getVisible(questId: Long): OsmNoteQuest? {
         if (isHidden(questId)) return null
@@ -308,7 +309,7 @@ private val NoteComment.isReply: Boolean get() =
 private fun NoteComment.isFromUser(userId: Long): Boolean =
     user?.id == userId
 
-fun getRawBlockList(prefs: ObservableSettings): List<String> {
+fun getRawBlockList(prefs: Preferences): List<String> {
     return try {
         Json.decodeFromString(prefs.getString(Prefs.HIDE_NOTES_BY_USERS, ""))
     } catch (e: Exception) { // why isn't it showing in the log any more? well, just catch all...

@@ -21,7 +21,6 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
     protected abstract val addLanguageButton: View
     protected abstract val namesList: RecyclerView
-    private val prefs: Preferences by inject()
 
     open val adapterRowLayoutResId = R.layout.row_localizedname
 

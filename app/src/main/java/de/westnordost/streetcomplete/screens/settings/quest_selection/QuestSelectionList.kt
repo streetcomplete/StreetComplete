@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
+import org.koin.compose.koinInject
 
 /** List of quest types to individually enable or disable or reorder them */
 @Composable
@@ -99,9 +100,9 @@ private fun QuestSelectionHeader() {
 private fun PreviewQuestSelectionList() {
     QuestSelectionList(
         items = listOf(
-            QuestSelection(OsmNoteQuestType, true, true),
-            QuestSelection(AddSeating(), false, true),
-            QuestSelection(AddTactilePavingBusStop(), true, false),
+            QuestSelection(OsmNoteQuestType, true, true, koinInject()),
+            QuestSelection(AddSeating(), false, true, koinInject()),
+            QuestSelection(AddTactilePavingBusStop(), true, false, koinInject()),
         ),
         displayCountry = "Atlantis",
         onSelectQuest = { _, _ -> }
