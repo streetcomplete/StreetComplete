@@ -100,7 +100,7 @@ fun AboutScreen(
                 ) { OpenInBrowserIcon() }
 
                 Preference(
-                    name = stringResource(R.string.about_title_translate) + ": SCEE",
+                    name = "SCEE: " + stringResource(R.string.about_title_translate),
                     onClick = { context.openUri("https://translate.codeberg.org/projects/scee/") },
                 ) { OpenInBrowserIcon() }
 
@@ -110,7 +110,7 @@ fun AboutScreen(
                 ) { OpenInBrowserIcon() }
 
                 Preference(
-                    name = stringResource(R.string.about_title_repository),
+                    name = "SCEE " + stringResource(R.string.about_title_repository),
                     onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete") },
                 ) { OpenInBrowserIcon() }
             }

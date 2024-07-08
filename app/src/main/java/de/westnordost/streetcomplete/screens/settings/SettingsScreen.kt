@@ -233,6 +233,8 @@ fun SettingsScreen(
         }
     }
 
+    // todo: not working
+    //  maybe just use the old settings activity and have a separate scee settings screen?
     if (showExpertModeConfirmation) {
         ConfirmationDialog(
             onDismissRequest = {
