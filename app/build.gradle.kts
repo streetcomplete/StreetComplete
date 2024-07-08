@@ -234,6 +234,9 @@ dependencies {
 
     // diff utils for comparing filters modified by quest settings with original
     implementation("io.github.java-diff-utils:java-diff-utils:4.12")
+
+    // parser GPX
+    implementation("com.github.ticofab:android-gpx-parser:2.3.1")
 }
 
 /** Localizations that should be pulled from POEditor */

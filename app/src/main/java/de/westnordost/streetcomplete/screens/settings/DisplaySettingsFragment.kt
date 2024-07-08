@@ -15,26 +15,18 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadWorker
-import de.westnordost.streetcomplete.data.download.tiles.TilePos
-import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
-import de.westnordost.streetcomplete.data.download.tiles.upToTwoMinTileRects
 import de.westnordost.streetcomplete.data.importGpx
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.logs.Log
-import de.westnordost.streetcomplete.util.math.area
-import de.westnordost.streetcomplete.util.math.contains
-import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import io.ticofab.androidgpxparser.parser.GPXParser
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -171,15 +163,22 @@ fun loadGpxTrackPoints(context: Context, complain: Boolean = false): List<LatLon
             context.toast(R.string.pref_gpx_track_loading_error, Toast.LENGTH_LONG)
         return null
     }
-    val gpxPoints = gpxFile.readLines().mapNotNull { line -> // this is a bit slow, but ok
-        val l = line.trim()
-        if (!l.startsWith("<trkpt") && !l.startsWith("<wpt")) return@mapNotNull null
-        val lat = l.substringAfter("lat=\"").substringBefore("\"").toDoubleOrNull()
-        val lon = l.substringAfter("lon=\"").substringBefore("\"").toDoubleOrNull()
-        if (lat == null || lon == null) null
-        else LatLon(lat, lon)
-    }
-    if (gpxPoints.size < 2) {
+
+    val gpxPoints = runCatching {
+        GPXParser().parse(gpxFile.inputStream()).tracks.map { track ->
+            track.trackSegments.map { segment ->
+                segment.trackPoints
+            }
+        }.flatten().flatten()
+            .map { trackPoint ->
+                LatLon(
+                    latitude = trackPoint.latitude,
+                    longitude = trackPoint.longitude
+                )
+            }
+    }.getOrNull()
+
+    if ((gpxPoints?.size ?: 0) < 2) {
         context.toast(R.string.pref_gpx_track_loading_error, Toast.LENGTH_LONG)
         return null
     }
