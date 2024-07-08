@@ -77,6 +77,7 @@ fun SettingsScreen(
         )
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             PreferenceCategory(stringResource(R.string.pref_category_quests)) {
+
                 Preference(
                     name = stringResource(R.string.action_manage_presets),
                     onClick = onClickPresetSelection,
@@ -127,6 +128,7 @@ fun SettingsScreen(
             }
 
             PreferenceCategory(stringResource(R.string.pref_category_display)) {
+
                 Preference(
                     name = stringResource(R.string.pref_title_language_select2),
                     onClick = { showLanguageSelect = true },
@@ -156,6 +158,7 @@ fun SettingsScreen(
             }
 
             PreferenceCategory(stringResource(R.string.pref_category_advanced)) {
+
                 Preference(
                     name = stringResource(R.string.pref_title_delete_cache),
                     onClick = { showDeleteCacheConfirmation = true },
