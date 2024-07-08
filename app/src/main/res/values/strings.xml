@@ -1776,19 +1776,18 @@ Alternatively, you can leave a note (with a photo)."</string>
     <!-- mtb:scale -->
     <string name="overlay_mtb_scale">Mtb scale</string>
     <string name="overlay_mtbScale_zero">"Grade 0"</string>
-    <string name="overlay_mtbScale_zero_description">"Gravel or packed earth. No particular difficulties. Mostly forest and meadow paths (highway=path). Sections with steps, rocks, or roots are not expected. Wide curves, easy to moderate slope. No special skills are needed to ride this."</string>
+    <string name="overlay_mtbScale_zero_description">"Gravel or packed earth. No obstacles, wide curves, moderate slope."</string>
     <string name="overlay_mtbScale_one">"Grade 1"</string>
-    <string name="overlay_mtbScale_one_description">"Smaller obstacles like roots and small stones. Erosion damage may increase difficulty. Soil may be loose in places. Tight turns, but no hairpin turns. Riding requires care and attention, but no special skill. Obstacles can be ridden over."</string>
+    <string name="overlay_mtbScale_one_description">"Small obstacles like roots and stones. Loose soil in places, tight turns."</string>
     <string name="overlay_mtbScale_two">"Grade 2"</string>
-    <string name="overlay_mtbScale_two_description">"Obstacles such as large rocks and stones. Soil is often loose. Steps are expected. Wider hairpin turns, steepness of up to 70%. Requires some advanced riding skills."</string>
+    <string name="overlay_mtbScale_two_description">"Large rocks and steps. Loose soil, wide hairpin turns, steepness up to 70%."</string>
     <string name="overlay_mtbScale_three">"Grade 3"</string>
-    <string name="overlay_mtbScale_three_description">"Many sections with large obstacles such as boulders and large roots. Many hairpin and off-balance turns. Slippery surface and talus sections may be found. The surface may be very slippery. Constant concentration and very good skills needed."</string>
+    <string name="overlay_mtbScale_three_description">"Large boulders and roots, many hairpin turns. Slippery surface."</string>
     <string name="overlay_mtbScale_four">"Grade 4"</string>
-    <string name="overlay_mtbScale_four_description">"Very steep and difficult, with sections having large boulders and roots. Frequent loose debris. Very steep sections with very tight hairpin turns and high steps that will cause the chainring to hit the ground. Some trials techniques will be necessary."</string>
+    <string name="overlay_mtbScale_four_description">"Very steep with large boulders, roots, or tight hairpin turns. High steps, loose debris."</string>
     <string name="overlay_mtbScale_five">"Grade 5"</string>
-    <string name="overlay_mtbScale_five_description">"Very steep and difficult with big boulder fields and debris, and landslides. Speed must be carried for counter-ascents. If at all only short passages are available for accelerating and braking. Fallen trees may make very steep passages even more difficult. Very few Mountainbikers can actually ride at this level."</string>
+    <string name="overlay_mtbScale_five_description">"Very steep, big boulder fields, debris, or landslides. Fallen trees."</string>
     <string name="overlay_mtbScale_six">"Grade 6"</string>
-    <string name="overlay_mtbScale_six_description">"Classify ways with 6 that are not rideable at all for a mtbiker. E.g. Chains or stemples (metal rungs) on a via ferrata or simply unsecured alpine pathes that are not even partly rideable for the very best mtbikers (using trial techniques). Steepness is often >45°.
-If used for single points, then this highlights exceptionally difficult spots. Often spotting is impossible and falling may be lethal."</string>
+    <string name="overlay_mtbScale_six_description">"Not rideable with MTB. Chains, metal rungs, unsecured alpine paths, >45° steepness."</string>
 
 </resources>
