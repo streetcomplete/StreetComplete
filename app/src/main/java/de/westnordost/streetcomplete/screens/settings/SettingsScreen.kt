@@ -112,7 +112,7 @@ fun SettingsScreen(
                 ) {
                     Switch(
                         checked = showAllNotes,
-                        onCheckedChange =  { viewModel.setShowAllNotes(it) }
+                        onCheckedChange = { viewModel.setShowAllNotes(it) }
                     )
                 }
             }
