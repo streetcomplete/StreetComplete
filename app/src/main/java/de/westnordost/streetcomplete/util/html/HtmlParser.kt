@@ -125,14 +125,14 @@ private fun StringWithCursor.fail(message: String): Nothing =
     throw HtmlParseException(cursor, message)
 
 private fun Char.isAlphanumeric(): Boolean =
-    this in 'a'..'z' || this in 'A' .. 'Z' || this in '0' .. '9'
+    this in 'a'..'z' || this in 'A'..'Z' || this in '0'..'9'
 
 private fun String.replaceHtmlEntities(): String =
     replace(entityRegex) { entities[it.value]?.toString() ?: it.value }
 
 // https://developer.mozilla.org/en-US/docs/Glossary/Void_element
 private val voidTags = setOf(
-    "area","base","br","col","embed","hr","img","input","link","meta","param","source","track","wbr"
+    "area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"
 )
 
 private val notAllowedCharactersInUnquotedAttributeValue =

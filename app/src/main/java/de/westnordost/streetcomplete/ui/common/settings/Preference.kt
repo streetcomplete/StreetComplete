@@ -45,7 +45,7 @@ fun PreferenceCategory(
             )
         }
         CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.body1) {
-            Column() {
+            Column {
                 content()
             }
         }
@@ -78,7 +78,7 @@ fun Preference(
         ) {
             Text(
                 text = name,
-                modifier = Modifier.weight(2/3f)
+                modifier = Modifier.weight(2 / 3f)
             )
             if (value != null) {
                 CompositionLocalProvider(
@@ -91,7 +91,7 @@ fun Preference(
                             alignment = Alignment.End
                         ),
                         verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.weight(1/3f)
+                        modifier = Modifier.weight(1 / 3f)
                     ) { value() }
                 }
             }

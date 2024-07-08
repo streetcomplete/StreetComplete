@@ -46,9 +46,7 @@ fun AboutScreen(
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-
             PreferenceCategory(null) {
-
                 Preference(
                     name = stringResource(R.string.about_title_changelog),
                     onClick = { onClickChangelog() },
@@ -82,7 +80,6 @@ fun AboutScreen(
             }
 
             PreferenceCategory(stringResource(R.string.about_category_contribute)) {
-
                 Preference(
                     name = stringResource(R.string.about_title_donate),
                     onClick = { showDonateDialog = true },
@@ -106,7 +103,6 @@ fun AboutScreen(
             }
 
             PreferenceCategory(stringResource(R.string.about_category_feedback)) {
-
                 if (context.isInstalledViaGooglePlay()) {
                     Preference(
                         name = stringResource(R.string.about_title_rate),

@@ -70,7 +70,9 @@ fun LogsFiltersDialog(
                                 ClearIcon()
                             }
                         }
-                    } else null,
+                    } else {
+                        null
+                    },
                     singleLine = true,
                 )
                 DateTimeSelectField(

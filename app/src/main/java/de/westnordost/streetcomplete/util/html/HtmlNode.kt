@@ -6,6 +6,6 @@ data class HtmlElementNode(
     val tag: String,
     val attributes: Map<String, String> = emptyMap(),
     val nodes: List<HtmlNode> = emptyList()
-): HtmlNode
+) : HtmlNode
 
 data class HtmlTextNode(val text: String) : HtmlNode

@@ -58,7 +58,7 @@ class UserActivity :
 
         observe(viewModel.isLoggedIn) { isLoggedIn ->
             val current = getMainFragment()
-            val replaceFragment = when(isLoggedIn) {
+            val replaceFragment = when (isLoggedIn) {
                 true -> current !is UserFragment
                 false -> current !is LoginFragment
             }

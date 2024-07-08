@@ -125,7 +125,11 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     private fun tryDeserializeSelection(str: String): I? =
-        try { deserializeLastSelection(str) } catch (e: Exception) { null }
+        try {
+            deserializeLastSelection(str)
+        } catch (e: Exception) {
+            null
+        }
 
     /* ------------------------------------ rotate view ----------------------------------------- */
 

@@ -108,7 +108,7 @@ class QuestAutoSyncer(
         }
     }
 
-    val isAllowedByPreference: Boolean get() = when(prefs.autosync) {
+    val isAllowedByPreference: Boolean get() = when (prefs.autosync) {
         Autosync.ON -> true
         Autosync.WIFI -> isWifi
         Autosync.OFF -> false
