@@ -8,7 +8,7 @@ import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.databinding.ViewUploadButtonBinding
 
 /** A view that shows an upload-icon, with a counter at the top right and an (upload) progress view
- *  */
+ */
 class UploadButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

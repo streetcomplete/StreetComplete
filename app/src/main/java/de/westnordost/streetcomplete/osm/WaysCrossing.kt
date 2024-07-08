@@ -84,7 +84,7 @@ fun findNodesAtCrossingsOf(barrierWays: Sequence<Way>, movingWays: Sequence<Way>
          * We look for if there is ANY crossing, so all polylines involved are checked:
          * For all barriers going through point X, it is checked if not all passing ways that
          * go through X are on the same side of the barrier-polyline.
-         * */
+         */
         val nodePos = mapData.getNode(nodeId)?.position
         return@retainAll nodePos != null &&
             neighbouringWayPositions.anyCrossesAnyOf(neighbouringBarrierPositions, nodePos)

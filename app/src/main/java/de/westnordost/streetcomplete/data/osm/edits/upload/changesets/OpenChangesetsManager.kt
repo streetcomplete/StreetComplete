@@ -4,9 +4,9 @@ import de.westnordost.streetcomplete.ApplicationConstants.QUESTTYPE_TAG_KEY
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
-import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
@@ -17,7 +17,7 @@ class OpenChangesetsManager(
     private val mapDataApi: MapDataApi,
     private val openChangesetsDB: OpenChangesetsDao,
     private val changesetAutoCloser: ChangesetAutoCloser,
-    private val lastEditTimeStore: LastEditTimeStore
+    private val prefs: Preferences
 ) {
     fun getOrCreateChangeset(
         type: ElementEditType,
@@ -49,7 +49,7 @@ class OpenChangesetsManager(
     }
 
     fun closeOldChangesets() = synchronized(this) {
-        val timePassed = nowAsEpochMilliseconds() - lastEditTimeStore.get()
+        val timePassed = nowAsEpochMilliseconds() - prefs.lastEditTime
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
         for (info in openChangesetsDB.getAll()) {

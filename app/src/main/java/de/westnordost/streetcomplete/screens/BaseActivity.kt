@@ -5,7 +5,7 @@ import android.content.res.Configuration
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.russhwolf.settings.ObservableSettings
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.getSelectedLocale
 import de.westnordost.streetcomplete.util.getSystemLocales
 import de.westnordost.streetcomplete.util.ktx.addedToFront
@@ -18,7 +18,7 @@ open class BaseActivity : AppCompatActivity {
     constructor() : super()
     constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     private var locale: Locale? = null
 

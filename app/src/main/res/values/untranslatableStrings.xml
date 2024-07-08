@@ -38,6 +38,4 @@
     <string name="quest_policeType_type_it_polizia_ferroviaria" translatable="false">Polizia Ferroviaria</string>
 
     <string name="quest_maxspeed_answer_nsl">"National Speed Limit"</string>
-
-    <string name="default_theme">AUTO</string>
 </resources>

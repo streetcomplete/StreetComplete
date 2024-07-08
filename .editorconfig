@@ -39,6 +39,7 @@ ktlint_standard_multiline-if-else = disabled
 ktlint_standard_no-blank-line-in-list = disabled
 ktlint_standard_no-consecutive-comments = disabled
 ktlint_standard_no-empty-first-line-in-class-body = disabled
+ktlint_standard_no-empty-first-line-in-method-block = disabled
 ktlint_standard_no-multi-spaces = disabled
 ktlint_standard_no-single-line-block-comment = disabled
 ktlint_standard_no-wildcard-imports = disabled
@@ -53,6 +54,7 @@ ktlint_standard_statement-wrapping = disabled
 ktlint_standard_string-template-indent = disabled
 ktlint_standard_trailing-comma-on-call-site = disabled
 ktlint_standard_trailing-comma-on-declaration-site = disabled
+ktlint_standard_try-catch-finally-spacing = disabled
 ktlint_standard_wrapping = disabled
 
 # enable some experimental Ktlint rules

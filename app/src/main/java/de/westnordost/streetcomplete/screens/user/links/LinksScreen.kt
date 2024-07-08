@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.user.CenteredLargeTitleHint
+import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.util.ktx.openUri
 
 /** Shows the user's unlocked links */

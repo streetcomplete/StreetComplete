@@ -65,7 +65,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `craft or shop and name`       | `craft or (shop and name)` (`and` has higher precedence) |
  *  | `!(amenity and craft)`         | `!amenity or !craft`                                     |
  *  | `!(amenity or craft)`          | `!amenity and !craft`                                    |
- *  */
+ */
 class ElementFilterExpression(
     internal val elementsTypes: Set<ElementsTypeFilter>,
     internal val elementExprRoot: BooleanExpression<ElementFilter, Element>?

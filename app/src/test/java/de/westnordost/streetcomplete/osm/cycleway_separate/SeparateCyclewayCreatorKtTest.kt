@@ -387,7 +387,7 @@ class SeparateCyclewayCreatorKtTest {
             ))
         )
         assertEquals(
-            setOf(StringMapEntryAdd("segregated", "no"),),
+            setOf(StringMapEntryAdd("segregated", "no")),
             NON_SEGREGATED.appliedTo(mapOf(
                 "highway" to "cycleway",
                 "foot" to "permissive"
@@ -663,7 +663,7 @@ class SeparateCyclewayCreatorKtTest {
 
     @Test fun `apply path changes highway tag`() {
         assertEquals(
-            setOf(StringMapEntryModify("highway", "cycleway", "path"),),
+            setOf(StringMapEntryModify("highway", "cycleway", "path")),
             PATH.appliedTo(mapOf("highway" to "cycleway")),
         )
     }
@@ -693,7 +693,7 @@ class SeparateCyclewayCreatorKtTest {
             ))
         )
         assertEquals(
-            setOf(StringMapEntryModify("highway", "cycleway", "path"),),
+            setOf(StringMapEntryModify("highway", "cycleway", "path")),
             PATH.appliedTo(mapOf(
                 "highway" to "cycleway",
                 "foot" to "destination",
@@ -790,33 +790,34 @@ class SeparateCyclewayCreatorKtTest {
             )
         )
     }
-        @Test
-        fun `apply disallowed adds bicycle signed tag`() {
-            assertTrue(
-                NOT_ALLOWED.appliedTo(
-                    mapOf(
-                        "highway" to "path",
-                    )
-                ).contains(
-                    StringMapEntryAdd("bicycle:signed", "yes")
-                )
-            )
-        }
 
-        @Test
-        fun `apply exclusive with sidewalk sets bicycle signed to yes if its currently no`() {
-            assertTrue(
-                EXCLUSIVE_WITH_SIDEWALK.appliedTo(
-                    mapOf(
-                        "highway" to "cycleway",
-                        "bicycle:signed" to "no",
-                    )
-                ).contains(
-                    StringMapEntryModify("bicycle:signed", "no", "yes")
+    @Test
+    fun `apply disallowed adds bicycle signed tag`() {
+        assertTrue(
+            NOT_ALLOWED.appliedTo(
+                mapOf(
+                    "highway" to "path",
                 )
+            ).contains(
+                StringMapEntryAdd("bicycle:signed", "yes")
             )
-        }
+        )
     }
+
+    @Test
+    fun `apply exclusive with sidewalk sets bicycle signed to yes if its currently no`() {
+        assertTrue(
+            EXCLUSIVE_WITH_SIDEWALK.appliedTo(
+                mapOf(
+                    "highway" to "cycleway",
+                    "bicycle:signed" to "no",
+                )
+            ).contains(
+                StringMapEntryModify("bicycle:signed", "no", "yes")
+            )
+        )
+    }
+}
 
 private fun SeparateCycleway.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)

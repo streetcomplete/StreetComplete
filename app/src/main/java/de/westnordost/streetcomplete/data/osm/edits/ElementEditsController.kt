@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -9,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -18,7 +18,7 @@ class ElementEditsController(
     private val editsDB: ElementEditsDao,
     private val editElementsDB: EditElementsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
-    private val lastEditTimeStore: LastEditTimeStore
+    private val prefs: Preferences
 ) : ElementEditsSource, AddElementEditsController {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
@@ -237,7 +237,7 @@ class ElementEditsController(
     }
 
     private fun onAddedEdit(edit: ElementEdit, key: QuestKey?) {
-        lastEditTimeStore.touch()
+        prefs.lastEditTime = nowAsEpochMilliseconds()
         listeners.forEach { it.onAddedEdit(edit, key) }
     }
 

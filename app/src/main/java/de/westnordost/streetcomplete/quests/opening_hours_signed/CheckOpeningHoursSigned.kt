@@ -75,7 +75,7 @@ class CheckOpeningHoursSigned(
             if (!hasCheckDate) {
                 tags.setCheckDateForKey("opening_hours", Instant.fromEpochMilliseconds(timestampEdited)
                     .toLocalDateTime(TimeZone.currentSystemDefault())
-                .date)
+                    .date)
             }
         } else {
             tags["opening_hours:signed"] = "no"

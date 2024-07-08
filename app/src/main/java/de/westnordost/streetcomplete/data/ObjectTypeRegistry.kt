@@ -4,7 +4,7 @@ package de.westnordost.streetcomplete.data
  *  1. registered and can be recalled by class name
  *  2. or recalled by ordinal
  *  3. or iterated in the order as specified in the constructor
- *  */
+ */
 open class ObjectTypeRegistry<T>(private val ordinalsAndEntries: List<Pair<Int, T & Any>>) : AbstractList<T>() {
 
     protected val byName = hashMapOf<String, T>()

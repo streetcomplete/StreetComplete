@@ -84,7 +84,7 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
      * + Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
      *   is mapped as a separate way OR that is tagged with that the cycleway is separate. If the
      *   cycleway is separate, the sidewalk is too for sure
-    * */
+     */
     private val untaggedRoadsFilter by lazy { """
         ways with
           highway ~ ${prefs.getString(questPrefix(prefs) + PREF_SIDEWALK_HIGHWAY_SELECTION, ROADS_WITH_SIDEWALK.joinToString("|"))}

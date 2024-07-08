@@ -4,8 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.createBitmapWithWhiteBorder
@@ -18,15 +17,15 @@ import kotlin.math.sqrt
  *  the scene updates for tangram to access this sprite sheet  */
 class TangramIconsSpriteSheet(
     private val context: Context,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
     private val icons: Collection<Int>
 ) {
     val sceneUpdates: List<Pair<String, String>> by lazy {
         val lastUpdate = context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt()
-        val isSpriteSheetCurrent = prefs.getInt(Prefs.ICON_SPRITES_VERSION, 0) == lastUpdate
+        val isSpriteSheetCurrent = prefs.iconSpritesVersion == lastUpdate
         val spriteSheet = when {
             !isSpriteSheetCurrent -> createSpritesheet()
-            else -> prefs.getStringOrNull(Prefs.ICON_SPRITES) ?: ""
+            else -> prefs.iconSprites
         }
 
         createSceneUpdates(spriteSheet)
@@ -77,8 +76,8 @@ class TangramIconsSpriteSheet(
 
         val sprites = "{${spriteSheetEntries.joinToString(",")}}"
 
-        prefs.putInt(Prefs.ICON_SPRITES_VERSION, context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt())
-        prefs.putString(Prefs.ICON_SPRITES, sprites)
+        prefs.iconSpritesVersion = context.packageManager.getPackageInfo(context.packageName, 0).lastUpdateTime.toInt()
+        prefs.iconSprites = sprites
 
         return sprites
     }

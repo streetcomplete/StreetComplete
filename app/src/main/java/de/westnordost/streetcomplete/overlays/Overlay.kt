@@ -22,6 +22,6 @@ interface Overlay : ElementEditType {
 
     /** returns the fragment in which the user can view/add the data or null if no form should be
      * displayed for the given [element]. [element] is null for when a new element should be created
-     * */
+     */
     fun createForm(element: Element?): AbstractOverlayForm?
 }

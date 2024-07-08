@@ -145,21 +145,6 @@
         <item name="android:textColor">@color/description_text_next_to_image</item>
     </style>
 
-    <!-- ++++++++++++++++++++++++++++++++++++++ Table ++++++++++++++++++++++++++++++++++++++++++ -->
-
-    <style name="TableHeaderCell">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/accent</item>
-    </style>
-
-    <style name="TableHeader">
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
-        <item name="android:paddingStart">16dp</item>
-    </style>
-
     <!-- +++++++++++++++++++++++++++++++++++ Bottom sheet ++++++++++++++++++++++++++++++++++++++ -->
 
     <style name="BottomSheetButtonBarItem" parent="Widget.MaterialComponents.Button.TextButton.Dialog">

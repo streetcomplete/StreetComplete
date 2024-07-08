@@ -1,16 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.GridLayoutManager
 import de.westnordost.streetcomplete.Prefs
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.padWith
+import de.westnordost.streetcomplete.util.takeFavourites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
 
@@ -28,13 +26,12 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.quest_generic_list
     private val binding by contentViewBinding(QuestGenericListBinding::bind)
 
+    private val prefs: Preferences by inject()
     override val defaultExpanded = false
 
     protected open val descriptionResId: Int? = null
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
-
-    private lateinit var favs: LastPickedValuesStore<DisplayItem<I>>
 
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
@@ -51,16 +48,6 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         super.onCreate(savedInstanceState)
         imageSelector = ImageSelectAdapter(maxSelectableItems)
         itemsByString = items.associateBy { it.value.toString() }
-    }
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.value.toString() },
-            deserialize = { itemsByString[it] }
-        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -95,7 +82,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun onClickOk() {
         val values = imageSelector.selectedItems
         if (values.isNotEmpty()) {
-            favs.add(values)
+            prefs.addLastPicked(this::class.simpleName!!, values.map { it.value.toString() })
             onClickOk(values.map { it.value!! })
         }
     }
@@ -112,7 +99,9 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> =
         if (originalList.size > prefs.getInt(Prefs.FAVS_FIRST_MIN_LINES, 1) * itemsPerRow && moveFavoritesToFront) {
-            favs.get().filterNotNull().padWith(originalList).toList()
+            prefs.getLastPicked(this::class.simpleName!!)
+                .map { itemsByString[it] }
+                .takeFavourites(n = itemsPerRow, history = 50, pad = originalList)
         } else {
             originalList
         }

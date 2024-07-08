@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
-import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
@@ -19,7 +18,7 @@ class OsmNoteQuestController(
     private val hiddenDB: NoteQuestsHiddenDao,
     private val userDataSource: UserDataSource,
     private val userLoginSource: UserLoginSource,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
 ) : OsmNoteQuestSource, OsmNoteQuestsHiddenController, OsmNoteQuestsHiddenSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
@@ -29,7 +28,7 @@ class OsmNoteQuestController(
     private val listeners = Listeners<OsmNoteQuestSource.Listener>()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
-        !prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
+        !prefs.showAllNotes
 
     private val settingsListener: SettingsListener
 
@@ -79,10 +78,9 @@ class OsmNoteQuestController(
     init {
         noteSource.addListener(noteUpdatesListener)
         userLoginSource.addListener(userLoginStatusListener)
-        settingsListener = prefs.addBooleanListener(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false) {
-            // a lot of notes become visible/invisible if this option is changed
-            onInvalidated()
-        }
+        // a lot of notes become visible/invisible if this option is changed
+        settingsListener = prefs.onAllShowNotesChanged { onInvalidated() }
+    }
         reloadBlocks()
     }
 
@@ -95,7 +93,6 @@ class OsmNoteQuestController(
             if (id == null) blockedUserNames.add(it)
             else blockedUserIds.add(id)
         }
-    }
 
     override fun getVisible(questId: Long): OsmNoteQuest? {
         if (isHidden(questId)) return null

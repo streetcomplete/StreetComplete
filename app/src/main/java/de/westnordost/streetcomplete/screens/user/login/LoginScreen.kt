@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -18,6 +18,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -33,7 +34,6 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.login.LoginError.CommunicationError
 import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermissionsNotGranted
-import de.westnordost.streetcomplete.ui.theme.hint
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.toast
 import java.util.Locale
@@ -142,8 +142,8 @@ private fun LoginButtonWithText(
                     R.string.unsynced_quests_not_logged_in_description,
                     unsyncedChangesCount
                 ),
+                modifier = Modifier.alpha(ContentAlpha.medium),
                 style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colors.hint,
             )
         }
         Button(onClick = onClickLogin) {

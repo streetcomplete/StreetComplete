@@ -196,7 +196,7 @@ import kotlin.random.Random
  *  IntelliJ, you can collapse sections of this class that start with "//region" using the little
  *  [-] icon next to it.
  *
- *  */
+ */
 class MainFragment :
     Fragment(R.layout.fragment_main),
     // listeners to child fragments:

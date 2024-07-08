@@ -58,7 +58,7 @@ data class PositionOnCrossingWaySegments(
  *
  *  Additionally, if this point is closer than [snapToVertexDistance] near a vertex of a way, that
  *  vertex is chosen instead, even if it is not closest to this point.
- *   */
+ */
 fun LatLon.getPositionOnWays(
     ways: Collection<Pair<Way, List<LatLon>>>,
     maxDistance: Double,

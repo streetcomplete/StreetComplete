@@ -72,7 +72,7 @@ private val EXPECTED_SURFACES_FOR_TRACKTYPES = mapOf(
  *  some such combinations may be actually valid, so should not be assumed to be always be wrong
  *  but if someone edits surface it is preferable to remove suspicious tracktype and trigger resurvey
  *  see https://github.com/streetcomplete/StreetComplete/issues/5236
- *  */
+ */
 fun isSurfaceAndTracktypeCombinationSuspicious(surface: String, tracktype: String?): Boolean =
     tracktype != null && EXPECTED_SURFACES_FOR_TRACKTYPES[tracktype]?.contains(surface) != true
 

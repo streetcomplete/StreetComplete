@@ -29,7 +29,7 @@ import kotlinx.serialization.Serializable
  *  The original way's first and last node id is passed in order to decide if an updated way is
  *  still compatible with the split action: If the updated way was shortened or extended on either
  *  end, it is not considered compatible anymore
- *  */
+ */
 @Serializable
 data class SplitWayAction(
     val originalWay: Way,
@@ -213,7 +213,7 @@ private fun getUpdatedRelations(
 
 /** Return by which relation member(s) the relation member that referenced the original way should
  *  be replaced. Some relation types have certain special rules for that.
- *  */
+ */
 private fun getRelationMemberReplacements(
     relation: Relation,
     indexOfWayInRelation: Int,
