@@ -41,7 +41,7 @@ import kotlinx.serialization.Serializable
  *    was created. If this changed, e.g. the intersection may have been moved elsewhere, which would
  *    mean that whatever tags we wanted to add to this node might have to go elsewhere too
  *
- *  */
+ */
 @Serializable
 data class CreateNodeFromVertexAction(
     val originalNode: Node,

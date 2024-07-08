@@ -17,7 +17,7 @@ import kotlinx.io.writeDouble
  *
  *  ... for every single coordinate that is part of this particular geometry. That's more than 2
  *  times the size as when using this method.
- *  */
+ */
 class PolylinesSerializer {
 
     fun serialize(polylines: List<List<LatLon>>): ByteArray {

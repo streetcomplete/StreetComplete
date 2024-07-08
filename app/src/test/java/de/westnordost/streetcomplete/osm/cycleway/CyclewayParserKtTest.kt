@@ -1490,7 +1490,7 @@ class CyclewayParserKtTest {
     @Test fun `lane on left side opposite`() {
         assertEquals(
             cycleway(INVALID, null),
-            parse("cycleway:left" to "opposite_lane",)
+            parse("cycleway:left" to "opposite_lane")
         )
     }
 
@@ -1878,7 +1878,7 @@ class CyclewayParserKtTest {
     @Test fun `lane on right side opposite`() {
         assertEquals(
             cycleway(null, INVALID),
-            parse("cycleway:right" to "opposite_lane",)
+            parse("cycleway:right" to "opposite_lane")
         )
     }
 

@@ -27,7 +27,7 @@ import kotlin.math.min
  *  - bottom sheet
  *  - title view that acts like a button to expand/retract the bottom sheet
  *  - close/back button that is only shown when the bottom sheet is fully expanded
- * */
+ */
 abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet {
 
     protected abstract val bottomSheetContainer: SlidingRelativeLayout

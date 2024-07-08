@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
  *
  *  2. if that node is a vertex in a way or has a role in a relation, the node is not deleted but
  *     just "degraded" to be a vertex, i.e. the tags are cleared.
- *  */
+ */
 @Serializable
 data class DeletePoiNodeAction(
     val originalNode: Node

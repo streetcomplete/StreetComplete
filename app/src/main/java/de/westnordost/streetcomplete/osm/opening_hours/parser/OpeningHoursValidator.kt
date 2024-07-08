@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.model.CircularSection
  *  - weekdays, weekday ranges, PH
  *  - "off" rules with exclusively weekdays, weekday ranges, PH
  *  - time spans, open end
- *  */
+ */
 fun OpeningHours.isSupportedOpeningHours(): Boolean =
     rules.all { rule -> rule.isSupportedOpeningHours() } &&
         !containsTimePoints() &&
@@ -102,7 +102,7 @@ internal fun TimesSelector.isSupported(): Boolean = when (this) {
  *  Supported are (plain)
  *  - weekdays, weekday ranges, PH
  *  - time points
- *  */
+ */
 fun OpeningHours.isSupportedCollectionTimes(): Boolean =
     rules.all { rule -> rule.isSupportedCollectionTimes() } &&
     containsTimePoints() &&

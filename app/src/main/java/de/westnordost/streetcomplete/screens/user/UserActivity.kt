@@ -22,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *  of appearance:
  *  The LoginFragment, the UserFragment (which contains the viewpager with more
  *  fragments) and the "fake" dialog QuestTypeInfoFragment.
- * */
+ */
 class UserActivity :
     FragmentContainerActivity(R.layout.activity_user),
     EditStatisticsFragment.Listener {

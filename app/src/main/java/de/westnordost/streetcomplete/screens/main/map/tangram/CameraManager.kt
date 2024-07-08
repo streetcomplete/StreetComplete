@@ -38,7 +38,7 @@ import kotlin.math.min
  *  }
  *
  *  See https://github.com/tangrams/tangram-es/issues/1962
- *  */
+ */
 class CameraManager(private val c: MapController, private val contentResolver: ContentResolver) {
     private val defaultInterpolator = AccelerateDecelerateInterpolator()
     private val doubleTypeEvaluator = DoubleTypeEvaluator()

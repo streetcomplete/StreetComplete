@@ -14,7 +14,7 @@ import com.mapzen.tangram.TouchInput
  *  if the custom responder does return false (= not consume the event).
  *
  *  See https://github.com/tangrams/tangram-es/issues/1960
- *  */
+ */
 class TouchGestureManager(private val c: MapController) {
 
     // the getters actually do not get but _create_ the responders, so we need to keep them as fields

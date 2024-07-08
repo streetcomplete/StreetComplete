@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.util.StringWithCursor
  *  - only the character references (=HTML entities) `&amp;` `&quot;` `&lt;` and `&gt;` are recognized
  *
  *  @throws HtmlParseException
- *  */
+ */
 fun parseHtml(string: String): List<HtmlNode> {
     val cursor = StringWithCursor(string.replace(ignoredElementsRegex, ""))
     val result = cursor.parseNodes()
@@ -18,7 +18,7 @@ fun parseHtml(string: String): List<HtmlNode> {
 
 /**
  * Same as `parseHtml` but on a parsing error, will return a single text node with the string.
- * */
+ */
 fun tryParseHtml(string: String): List<HtmlNode> = try {
     parseHtml(string)
 } catch (e: HtmlParseException) {

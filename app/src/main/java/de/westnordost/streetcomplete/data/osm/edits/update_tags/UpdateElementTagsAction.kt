@@ -19,7 +19,7 @@ import kotlinx.serialization.Serializable
  *  The original element is passed in in order to decide if an updated element is still compatible
  *  with the action: Basically, if the geometry changed significantly, there is a possibility that
  *  the tag update made may not be correct anymore, so that is considered a conflict.
- *  */
+ */
 @Serializable
 data class UpdateElementTagsAction(
     val originalElement: Element,

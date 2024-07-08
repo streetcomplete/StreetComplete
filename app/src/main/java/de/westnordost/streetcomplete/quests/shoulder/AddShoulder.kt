@@ -16,7 +16,7 @@ class AddShoulder : OsmFilterQuestType<ShoulderSides>() {
      * The existence of a parking lane, cycle lane excludes the existence of a shoulder because they
      * are in themselves kind of a shoulder (with a special purpose)
      *
-     * */
+     */
     override val elementFilter = """
         ways with
           (

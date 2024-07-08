@@ -151,5 +151,5 @@ private fun Context.openGooglePlayStorePage() {
 @Preview
 @Composable
 private fun AboutScreenPreview() {
-    AboutScreen({}, {}, {}, {}, {},)
+    AboutScreen({}, {}, {}, {}, {})
 }
