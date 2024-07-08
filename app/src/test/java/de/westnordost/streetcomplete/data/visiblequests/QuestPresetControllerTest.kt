@@ -62,6 +62,6 @@ class QuestPresetControllerTest {
     @Test fun `change current preset`() {
         ctrl.selectedId = 11
         verify(prefs).selectedQuestPreset = 11
-        verify(listener).onSelectedQuestPresetChanged()
+        verify(prefs).onSelectedQuestPresetChanged(any())
     }
 }
