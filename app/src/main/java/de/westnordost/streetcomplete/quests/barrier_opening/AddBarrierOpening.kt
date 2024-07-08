@@ -57,12 +57,8 @@ class AddBarrierOpening(
     override fun createForm() = AddGateWidthForm()
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-               val key = if (tags["barrier"] in GATEWAYS) "maxwidth:physical" else 0
- //       val key = if (tags["barrier"] in GATEWAYS) "maxwidth:physical" else "width"
- //       val key = tags["barrier"] in GATEWAYS
- //           "maxwidth:physical"
 
-        // tags[key] = answer.width.toOsmValue()
+        val key = if (tags["barrier"] in GATEWAYS) "maxwidth:physical" else 0
             tags[key.toString()] = answer.width.toOsmValue()
 
             if (answer.isARMeasurement) {
@@ -71,10 +67,6 @@ class AddBarrierOpening(
             tags.remove("source:$key")
             }
 
-        // update width:barrier if it is set
-        if (key == "width" && tags.containsKey("maxwidth")) {
-            tags["maxwidth:physical"] = answer.width.toOsmValue()
-        }
     }
 }
 
