@@ -790,33 +790,34 @@ class SeparateCyclewayCreatorKtTest {
             )
         )
     }
-        @Test
-        fun `apply disallowed adds bicycle signed tag`() {
-            assertTrue(
-                NOT_ALLOWED.appliedTo(
-                    mapOf(
-                        "highway" to "path",
-                    )
-                ).contains(
-                    StringMapEntryAdd("bicycle:signed", "yes")
-                )
-            )
-        }
 
-        @Test
-        fun `apply exclusive with sidewalk sets bicycle signed to yes if its currently no`() {
-            assertTrue(
-                EXCLUSIVE_WITH_SIDEWALK.appliedTo(
-                    mapOf(
-                        "highway" to "cycleway",
-                        "bicycle:signed" to "no",
-                    )
-                ).contains(
-                    StringMapEntryModify("bicycle:signed", "no", "yes")
+    @Test
+    fun `apply disallowed adds bicycle signed tag`() {
+        assertTrue(
+            NOT_ALLOWED.appliedTo(
+                mapOf(
+                    "highway" to "path",
                 )
+            ).contains(
+                StringMapEntryAdd("bicycle:signed", "yes")
             )
-        }
+        )
     }
+
+    @Test
+    fun `apply exclusive with sidewalk sets bicycle signed to yes if its currently no`() {
+        assertTrue(
+            EXCLUSIVE_WITH_SIDEWALK.appliedTo(
+                mapOf(
+                    "highway" to "cycleway",
+                    "bicycle:signed" to "no",
+                )
+            ).contains(
+                StringMapEntryModify("bicycle:signed", "no", "yes")
+            )
+        )
+    }
+}
 
 private fun SeparateCycleway.appliedTo(tags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)

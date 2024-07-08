@@ -266,8 +266,8 @@ private fun WeekdaysSelector.expandedToNextDay(): WeekdaysSelector {
             // already goes full-circle
             if (start.ordinal == end.ordinal + 1 ||
                 start.ordinal == 0 && end.ordinal == Weekday.entries.size - 1) {
-                    return this
-                }
+                return this
+            }
 
             s = start
             e = end
