@@ -6,8 +6,8 @@ import android.os.Build
 import android.os.LocaleList
 import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
-import de.westnordost.streetcomplete.util.ktx.addedToFront
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.util.ktx.addedToFront
 import java.util.Locale
 
 /** Get the override-locale selected in this app or null if there is no override */

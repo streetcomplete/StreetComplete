@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import kotlinx.datetime.LocalDate
 import org.mockito.ArgumentMatchers.anyDouble
 import org.mockito.Mockito.verify

@@ -4,16 +4,16 @@ import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants.QUEST_COUNT_AT_WHICH_TO_SHOW_QUEST_SELECTION_HINT
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.changelog.Changelog
-import de.westnordost.streetcomplete.data.user.UserDataController
-import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.data.user.achievements.Achievement
-import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
-import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.QuestSelectionHintState
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.user.UserDataController
+import de.westnordost.streetcomplete.data.user.UserDataSource
+import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
+import de.westnordost.streetcomplete.util.Listeners
 
 /** This class is to access user messages, which are basically dialogs that pop up when
  *  clicking on the mail icon, such as "you have a new OSM message in your inbox" etc. */
