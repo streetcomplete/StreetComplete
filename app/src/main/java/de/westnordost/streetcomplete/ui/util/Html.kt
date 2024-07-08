@@ -139,17 +139,11 @@ private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
 }
 
 private fun AnnotatedString.Builder.tryPopAll() {
-    try {
-        pop(0)
-    } catch (_: Exception) {
-    }
+    try { pop(0) } catch (_: Exception) {}
 }
 
 private fun AnnotatedString.Builder.tryPop() {
-    try {
-        pop()
-    } catch (_: Exception) {
-    }
+    try { pop() } catch (_: Exception) {}
 }
 
 private fun HtmlNode.isBlockElement(): Boolean =
