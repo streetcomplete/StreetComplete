@@ -60,7 +60,8 @@ class AddGateWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
 
     override fun onClickOk() {
         val length = lengthInput.length!!
-        val newTags = element.tags + ("width" to length.toMeters().toString())
+    //    val newTags = element.tags + ("width" to length.toMeters().toString())
+        val newTags = element.tags + ("maxwidth:physical" to length.toMeters().toString())
         if (hasDubiousRoadWidth(newTags) != true) {
             applyAnswer(WidthAnswer(length, isARMeasurement))
         } else {

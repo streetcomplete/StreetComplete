@@ -27,7 +27,7 @@ class AddBarrierOpening(
 
     private val excludedWaysFilter by lazy { """
         ways with
-          highway and access ~ private|no
+          highway and access ~ private|no|customers|agricultural
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify width of opening"
@@ -57,9 +57,13 @@ class AddBarrierOpening(
     override fun createForm() = AddGateWidthForm()
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        val key = if (tags["barrier"] in GATEWAYS) "maxwidth:physical" else "width"
+               val key = if (tags["barrier"] in GATEWAYS) "maxwidth:physical" else 0
+ //       val key = if (tags["barrier"] in GATEWAYS) "maxwidth:physical" else "width"
+ //       val key = tags["barrier"] in GATEWAYS
+ //           "maxwidth:physical"
 
-            tags[key] = answer.width.toOsmValue()
+        // tags[key] = answer.width.toOsmValue()
+            tags[key.toString()] = answer.width.toOsmValue()
 
             if (answer.isARMeasurement) {
             tags["source:$key"] = "ARCore"
