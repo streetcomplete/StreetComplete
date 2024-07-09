@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance.HeadlineSmall" parent="TextAppearance.AppCompat.Headline">
+    <style name="TextAppearance.HeadlineSmall" parent="TextAppearance.AppCompat.Headline"><!-- TODO remove -->
         <item name="android:textSize">24sp</item>
     </style>
-    <style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead">
+    <style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead"><!-- TODO remove -->
         <item name="android:textSize">15sp</item>
     </style>
     <style name="TextAppearance.BigBody" parent="TextAppearance.Body">
