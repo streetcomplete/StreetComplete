@@ -30,7 +30,6 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
-import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
@@ -41,6 +40,7 @@ import de.westnordost.streetcomplete.util.ktx.toRGB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.style.sources.Source
 
 /** Takes care of displaying styled map data */
 class StyleableOverlayMapComponent(
@@ -50,12 +50,6 @@ class StyleableOverlayMapComponent(
     private val clickRadius: Float,
     private val onClickElement: (key: ElementKey) -> Unit
 ) {
-
-    private val overlaySource = GeoJsonSource(
-        SOURCE,
-        GeoJsonOptions().withMinZoom(16)
-    )
-
     private val darkenedColors = HashMap<String, String>()
 
     private val isNightMode: Boolean get() {
@@ -209,8 +203,6 @@ class StyleableOverlayMapComponent(
     }
 
     init {
-        overlaySource.isVolatile = true
-        map.style?.addSource(overlaySource)
         map.addOnMapClickListener(::onClick)
     }
 
@@ -224,7 +216,10 @@ class StyleableOverlayMapComponent(
         }
         val features = styledElements.flatMap { it.toFeatures() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
-        withContext(Dispatchers.Main) { overlaySource.setGeoJson(mapLibreFeatures) }
+        withContext(Dispatchers.Main) {
+            removeSourceAndLayers()
+            addSourceAndLayers(mapLibreFeatures)
+        }
     }
 
     private fun onClick(position: LatLng): Boolean {
@@ -364,8 +359,56 @@ class StyleableOverlayMapComponent(
 
     /** Clear map data */
     @UiThread fun clear() {
-        overlaySource.clear()
+        removeSourceAndLayers()
     }
+
+    //region Workaround for Maplibre issue #2410
+
+    private var overlaySource: Source? = null
+    private val layerIndices: MutableList<Pair<Int, Layer>> = ArrayList()
+
+    private fun removeSourceAndLayers() {
+        removePreviousLayers()
+        overlaySource?.let { map.style?.removeSource(it) }
+        overlaySource = null
+    }
+
+    private fun addSourceAndLayers(featureCollection: FeatureCollection) {
+        val style = map.style ?: return
+        val source = GeoJsonSource(
+            SOURCE,
+            GeoJsonOptions().withMinZoom(16)
+        )
+        source.isVolatile = true
+        source.setGeoJson(featureCollection)
+        style.addSource(source)
+        overlaySource = source
+        restorePreviousLayers()
+    }
+
+    private fun restorePreviousLayers() {
+        val style = map.style ?: return
+        for ((index, layer) in layerIndices) {
+            style.addLayerAt(layer, index)
+        }
+        layerIndices.clear()
+    }
+
+    private fun removePreviousLayers() {
+        val style = map.style ?: return
+        for (layer in allLayers) {
+            val index = style.layers.indexOfFirst { it.id == layer.id }
+            if (index != -1) {
+                layerIndices += index to layer
+            }
+        }
+        layerIndices.sortBy { it.first }
+        for (layer in allLayers) {
+            style.removeLayer(layer)
+        }
+    }
+
+    //endregion
 
     companion object {
         private const val SOURCE = "overlay-source"
