@@ -246,6 +246,7 @@ object DatabaseInitializer {
         }
         if (oldVersion <= 17 && newVersion > 17) {
             db.exec("DROP TABLE direction_of_flow;")
+            db.deleteQuest("AddSuspectedOneway")
         }
     }
 }
