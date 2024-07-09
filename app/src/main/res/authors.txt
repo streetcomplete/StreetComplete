@@ -136,6 +136,8 @@ ic_preset_maki-*               CC0-1.0           from https://github.com/mapbox/
 
 ic_preset_temaki-*             CC0 1.0           from https://github.com/ideditor/temaki/tree/main/icons
 
+ic_quest_sac_scale.svg         CC-BY 4.0         Delesign Graphics https://iconscout.com/free-illustration/man-climbing-on-mountain-2061832
+
 kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
 kerb_height_lowered.jpg        CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_lowered_original.jpg)
 kerb_height_flush.jpg          CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_flush_original.jpg)
@@ -230,6 +232,13 @@ ramp_bicycle.jpg               CC0               Mateusz Konieczny
 recycling_centre.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:Forklift_carrying_bail_of_cardboard_for_recycling,_under_a_giant_sign_of_recycling_center.JPG
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
+
+sac_scale_t1.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T1.jpg (Marco Volken)
+sac_scale_t2.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T2.jpg (Marco Volken)
+sac_scale_t3.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T3.jpg (Marco Volken)
+sac_scale_t4.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T4.jpg (Marco Volken)
+sac_scale_t5.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T5.jpg (Marco Volken)
+sac_scale_t6.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T6.jpg (Marco Volken)
 
 shelter_type_public_transpor…  CC-BY 2.0         Janusz Jakubowski https://commons.wikimedia.org/wiki/File:Bus_shelter_in_Warsaw_(25843621920).jpg
 shelter_type_picnic_shelter.…  CC-BY-SA 3.0      B.navez https://wiki.openstreetmap.org/wiki/File:R%C3%A9union_Ma%C3%AFdo_kiosque_pique-nique.JPG
