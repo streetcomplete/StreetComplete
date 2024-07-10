@@ -21,7 +21,7 @@ class AddRoofShape(
           ((building:levels or roof:levels) or (building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}))
           and !roof:shape and !3dr:type and !3dr:roof
           and building
-          and building !~ no|construction
+          and building !~ no|construction|houseboat
           and location != underground
           and ruins != yes
     """.toElementFilterExpression() }
