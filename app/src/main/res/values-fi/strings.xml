@@ -48,7 +48,7 @@
     <string name="download_area_too_big">"Lähennä vielä näkymää"</string>
     <string name="confirmation_cancel_prev_download_title">"Peruuta nykyinen lataus ja lataa sen sijaan täältä?"</string>
     <string name="turn_on_location_request">"Sijainti on pois käytöstä. Haluatko laittaa sen päälle asetuksista?"</string>
-    <string name="no_location_permission_warning">"Sijaintiasi tarvitaan sijaintisi näyttämiseen kartalla, ja tietojen lataamiseen lähiympäristöstäsi."</string>
+    <string name="no_location_permission_warning">"Sijaintilupa tarvitaan sijaintisi näyttämiseen kartalla, ja tietojen lataamiseen lähiympäristöstäsi."</string>
     <string name="about_title_authors">"Tekijät"</string>
     <string name="about_summary_authors">"© %s Tobias Zwick ja avustajat"</string>
     <string name="about_title_repository">"Projektin kotisivu"</string>
@@ -110,7 +110,7 @@ Ennen muutoksien lähettämistä, sovellus tarkistaa &lt;a href=\"https://www.we
     <string name="quest_surface_value_asphalt">"Asfaltti"</string>
     <string name="quest_surface_value_compacted">"Tampattu"</string>
     <string name="quest_surface_value_concrete">"Betoni"</string>
-    <string name="quest_surface_value_dirt">"Maa"</string>
+    <string name="quest_surface_value_dirt">"Maaperä"</string>
     <string name="quest_surface_value_fine_gravel">"Hieno sora"</string>
     <string name="quest_surface_value_grass">"Ruoho"</string>
     <string name="quest_surface_value_grass_paver">"Kivi- &amp; ruohoyhdistelmä"</string>
@@ -217,7 +217,7 @@ Jos koko tien varrella ei ole nopeusrajoitusmerkiä, joka pätee korostettuun ko
 
 Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppäimistöjä, jotka tukevat lukuisia kieliä, ovat Google Gboard, SwiftKey Keyboard ja Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(määrittämätön)"</string>
-    <string name="quest_fireHydrant_type_title">"Minkälainen vesiposti tämä on?"</string>
+    <string name="quest_fireHydrant_type_title">"Minkälainen paloposti tämä on?"</string>
     <string name="quest_fireHydrant_type_pillar">"Pylväs"</string>
     <string name="quest_fireHydrant_type_underground">"Maanalainen"</string>
     <string name="quest_fireHydrant_type_wall">"Seinä"</string>
@@ -340,7 +340,7 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="map_btn_create_note">"Luo uusi ilmoitus"</string>
     <string name="create_new_note_unprecise">"Lähennä näkymää luodaksesi ilmoituksen"</string>
     <string name="create_new_note_description">"Voit jättää ilmoituksen tänne muiden selvitettäväksi. Kohdista sijaintia siirtämällä karttaa."</string>
-    <string name="quest_generic_looks_like_this">"Normaalisti näyttää tältä:"</string>
+    <string name="quest_generic_looks_like_this">"Yleensä näyttää tältä:"</string>
     <string name="quest_surface_value_metal">"Metalli"</string>
     <string name="quest_cycleway_title2">"Onko täällä pyörätietä? Minkä tyyppinen?"</string>
     <string name="quest_bridge_structure_title">"Mikä on tämän sillan rakenne?"</string>
@@ -373,7 +373,7 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_housenumber_multiple_numbers">"Sillä on useampia talonumeroita"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Voit erotella talonnumerot pilkuilla tai välillä. esim. 1,3 tai 2–6"</string>
     <string name="quest_bicycle_parking_type_stand">"Jalusta (pyörän runkoa tukeva)"</string>
-    <string name="quest_bicycle_parking_type_wheelbender">"Perinteinen pyöräteline"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Perinteinen pyöräteline (tukee ainoastaan vannetta)"</string>
     <string name="quest_bicycle_parking_type_shed">"Varastohäkki"</string>
     <string name="quest_bicycle_parking_type_locker">"Lukollinen kaappi"</string>
     <string name="quest_bicycle_parking_type_building">"Rakennus"</string>
@@ -792,20 +792,22 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_parkingType_lane">"Pysäköinti tiellä"</string>
     <string name="quest_tracktype_grade2a">"Kiinteä mutta päällystämätön"</string>
     <string name="quest_tracktype_grade3a">"Enimmäkseen kiinteä"</string>
-    <string name="quest_generic_answer_does_not_exist">"Ei olemassa…"</string>
-    <string name="osm_element_gone_description">"Oletko varma ettei tätä ole, ei edes hieman eri paikassa? Jos et ole varma, jätä ilmoitus."</string>
+    <string name="quest_generic_answer_does_not_exist">"Sitä ei ole olemassa…"</string>
+    <string name="osm_element_gone_description">"Oletko varma ettei sitä ole olemassa, edes hieman eri paikassa? Jos olet epävarma, jätä ilmoitus."</string>
     <string name="osm_element_gone_confirmation">"Sitä ei ole olemassa"</string>
     <string name="leave_note">"Jätä ilmoitus"</string>
     <string name="quest_shop_gone_title">"Mitä täällä on nyt?"</string>
-    <string name="quest_shop_gone_vacant_answer">"Se on tyhjillään"</string>
+    <string name="quest_shop_gone_vacant_answer">"Se on tyhjillään…"</string>
     <string name="quest_shop_gone_replaced_answer">"Siellä on…"</string>
     <string name="quest_shop_gone_replaced_answer_hint">"Kirjoita paikka tänne"</string>
-    <string name="quest_shop_vacant_type_title">"Kauppa on ollut tyhjillään. Mitä siellä on nyt?"</string>
+    <string name="quest_shop_vacant_type_title">"Tämä kauppa on ollut tyhjillään. Mitä siellä on nyt?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Kummallakin puolella on eri määrä kaistoja"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska joillakin alueilla siitä ei ole hyötyä ja joutuisit todennäköisesti menemään paikan sisälle vastataksesi tämäntyyppiseen tehtävään."</string>
     <string name="quest_dietType_explanation_kosher">"Koshertuotteet täytyy valmistaa erikoissääntöjen mukaan, kashrut-järjestöjen antamien todistuksia sääntöjen noudattamisesta."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Ei lainkaan pyöräilytietä"</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Kuten tapana, napauta kuvituksen yhtä laitaa, valitse sopiva vastaus ja tee samoin toiselle laidalle. Huomaa: jotkut tapaukset eivät ole ilmiselviä, kuten yksisuuntainen tie joka sallii polkupyöriä kumpaankin suuntaan!"</string>
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Kuten tapana, napauta kuvituksen yhtä laitaa, valitse sopiva vastaus ja tee samoin toiselle laidalle.
+
+Huomioi kaikki vaihtoehdot: jotkut tapaukset eivät ole ilmiselviä, kuten yksisuuntainen tie joka sallii polkupyöriä kumpaankin suuntaan!"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">"Valitsemassa ettei ole pyörätietä"</string>
     <string name="quest_construction_completed_at_known_date">"Valmistuu päivämäärässä…"</string>
     <string name="quest_construction_completion_date_title">"Milloin se valmistuu?"</string>
@@ -824,7 +826,7 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus."</string>
     <string name="quest_buildingType_fire_station">"Paloasema"</string>
     <string name="quest_recycling_type_beverage_cartons">"Vain juomakartongit"</string>
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Vain muovipullot ja kartongit"</string>
-    <string name="team_mode">"Työryhmätila"</string>
+    <string name="team_mode">"Siirry Työryhmätilaan"</string>
     <string name="team_mode_exit">"Poistu työryhmätilasta"</string>
     <string name="team_mode_description">"Kun kartoitatte samaa aluetta yhtenä ryhmänä, voitte mennä työryhmätilaan ja jakaa tehtävät ryhmän jäsenten kesken.
 Jokainen teistä näkee sitten eri tehtäviä."</string>
@@ -1336,7 +1338,8 @@ Lisäksi jotkin tasot sallivat uuden tiedon lisäämisen tähtäimen osoittamaan
     <string name="quest_sanitary_dump_station_title">"Onko täällä ajokaivo?"</string>
     <string name="quest_sanitary_dump_station_description">"Ajokaivoa käytetään vessajätevesien tyhjennykseen esimerkiksi matkailuauton säiliöistä. Yleensä merkitty tällaisella kyltillä:"</string>
     <string name="quest_generalFee_title">"Onko käyttö maksullista?"</string>
-    <string name="quest_bbq_fuel_not_a_bbq">"Nuotiopaikka"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"Tulentekopaikka"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Jos siinä ei ole kypsennystasoa (kuten ritilää/parilaa), se on tulentekopaikka."</string>
     <string name="about_title_logs">"Lokit (%1$d)"</string>
     <string name="about_summary_logs">"käytettäväksi virheraporteissa"</string>
     <string name="action_filter">"Suodatin"</string>
@@ -1349,6 +1352,7 @@ Lisäksi jotkin tasot sallivat uuden tiedon lisäämisen tähtäimen osoittamaan
     <string name="title_logs_filters">"Suodata viestejä"</string>
     <string name="pref_title_quests_restore_hidden_summary">"Piilotettujen tehtävien määrä: %d"</string>
     <string name="link_every_door_description">"Tehokas POI-muokkain Androidille ja iOS:lle"</string>
+    <string name="link_mapcomplete_description">"Kokoelma OSM-karttoja aihepiireittäin, joista jokainen näyttää ja antaa muokata tietynlaisia asioita"</string>
     <string name="link_forum_description">"Tarvitsetko apua? Haluatko tietää mitä tapahtuu? Tule ja osallistu, täällä on paljon toimintaa yhteistöistä ympäri maailmaa!"</string>
     <string name="link_calendar_description">"Onko OpenStreetMap-tapahtumia tai -tapaamisia lähelläsi? (Jos ei, voit lisätä omasi!)"</string>
     <string name="link_prettymapp_description">"Luo kauniita monivärisiä karttajulisteita naapurustosta"</string>
@@ -1402,5 +1406,6 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="separate_cycleway_no_signed">"Kyltti nimenomaisesti kieltää pyöräilyn"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Jalkakäytävä, mutta kyltti sallii pyöräilyn"</string>
     <string name="quest_bicycle_parking_type_floor">"Pysäköintialue"</string>
+    <string name="link_osmapp_description">"Kartta useanlaisilla kerroksilla, muunmuassa kiipeilyä ja hiihtämistä varten"</string>
     <string name="quest_parcel_locker_mail_in_answer_returns_only">"Vain palautuksia varten"</string>
 </resources>

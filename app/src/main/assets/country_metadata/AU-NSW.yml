@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Commonwealth Bank, Westpac, ANZ, NAB, St.George, Travelex, St George, IMB, RediATM, Newcastle Permanent, Greater Bank, Cashcard, redi, atmx, atmX, Redi ATM, HSBC, Bendigo Bank, rediATM, Regional Australia Bank, Next Payments, Commonwealth, CBA, BOQ, BOC, BCU, Allpoint, ATMx]
+atmOperators: [Commonwealth Bank, Westpac, ANZ, St.George, NAB, Travelex, St George, IMB, RediATM, Newcastle Permanent, Greater Bank, Cashcard, redi, atmx, atmX, Redi ATM, HSBC, Bendigo Bank, rediATM, Regional Australia Bank, Next Payments, Commonwealth, CBA, BOQ, BOC, BCU, Allpoint, ATMx]
 chargingStationOperators: [NRMA, 'Tesla, Inc.', Jolt, Evie Networks, Chargefox, BP Pulse, AmpCharge, Tesla, ChargePoint, ChargeFox]
 clothesContainerOperators: [Dankha Pty Ltd, 1-World Charity Shops]
 defaultSpeedLimitHasUrbanOrRural: true

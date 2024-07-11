@@ -1,36 +1,33 @@
 package de.westnordost.streetcomplete.data.user
 
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmapi.user.UserDetails
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 
 /** Controller that handles user login, logout, auth and updated data */
-class UserDataController(private val prefs: ObservableSettings) : UserDataSource {
+class UserDataController(private val prefs: Preferences) : UserDataSource {
 
     private val listeners = Listeners<UserDataSource.Listener>()
 
-    override val userId: Long get() = prefs.getLong(Prefs.OSM_USER_ID, -1)
-    override val userName: String? get() = prefs.getStringOrNull(Prefs.OSM_USER_NAME)
+    override val userId: Long get() = prefs.userId
+    override val userName: String? get() = prefs.userName
 
     override var unreadMessagesCount: Int
-        get() = prefs.getInt(Prefs.OSM_UNREAD_MESSAGES, 0)
+        get() = prefs.userUnreadMessages
         set(value) {
-            prefs.putInt(Prefs.OSM_UNREAD_MESSAGES, value)
+            prefs.userUnreadMessages = value
             listeners.forEach { it.onUpdated() }
         }
 
     fun setDetails(userDetails: UserDetails) {
-        prefs.putLong(Prefs.OSM_USER_ID, userDetails.id)
-        prefs.putString(Prefs.OSM_USER_NAME, userDetails.displayName)
-        prefs.putInt(Prefs.OSM_UNREAD_MESSAGES, userDetails.unreadMessagesCount)
+        prefs.userId = userDetails.id
+        prefs.userName = userDetails.displayName
+        prefs.userUnreadMessages = userDetails.unreadMessagesCount
         listeners.forEach { it.onUpdated() }
     }
 
     fun clear() {
-        prefs.remove(Prefs.OSM_USER_ID)
-        prefs.remove(Prefs.OSM_USER_NAME)
-        prefs.remove(Prefs.OSM_UNREAD_MESSAGES)
+        prefs.clearUserData()
         listeners.forEach { it.onUpdated() }
     }
 

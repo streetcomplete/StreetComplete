@@ -1340,7 +1340,7 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="quest_sanitary_dump_station_description">"Postrojenje za odlaganje ljudskog otpada iz WC spremnika kampera, kamiona za duge relacije itd. Obično je označeno ovakvim znakom:"</string>
     <string name="quest_generalFee_title">"Trebate li platiti za korištenje ovog?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"To je samo ognjište"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Ognjište nema površinu za kuhanje (npr. rešetku/ploču) kao što je ima roštilj."</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Ako nema površine za kuhanje (npr. rešetka/ploča) kao što je ima roštilj, onda je to ognjište."</string>
     <string name="about_title_logs">"Logovi (%1$d)"</string>
     <string name="about_summary_logs">"za upotrebu u izvješćima o greškama"</string>
     <string name="action_filter">"Filtar"</string>

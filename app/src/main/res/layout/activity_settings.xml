@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/navHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/questFormContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#a000"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <!-- is a RelativeLayout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+        <RelativeLayout
+            android:id="@+id/questForm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

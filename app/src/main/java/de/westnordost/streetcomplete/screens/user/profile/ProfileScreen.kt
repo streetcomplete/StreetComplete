@@ -38,9 +38,9 @@ import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.ui.util.toDp
 import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 

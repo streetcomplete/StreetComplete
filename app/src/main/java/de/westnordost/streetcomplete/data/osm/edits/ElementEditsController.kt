@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
@@ -12,7 +12,7 @@ class ElementEditsController(
     private val editsDB: ElementEditsDao,
     private val editElementsDB: EditElementsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
-    private val lastEditTimeStore: LastEditTimeStore
+    private val prefs: Preferences
 ) : ElementEditsSource, AddElementEditsController {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
@@ -190,7 +190,7 @@ class ElementEditsController(
     }
 
     private fun onAddedEdit(edit: ElementEdit) {
-        lastEditTimeStore.touch()
+        prefs.lastEditTime = nowAsEpochMilliseconds()
         listeners.forEach { it.onAddedEdit(edit) }
     }
 

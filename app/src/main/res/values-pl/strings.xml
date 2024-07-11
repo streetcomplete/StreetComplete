@@ -1377,4 +1377,35 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="overlay_things">"Obiekty"</string>
     <string name="disused">"już nieużywane"</string>
     <string name="unknown_object">"Inny obiekt"</string>
+    <string name="quest_leafType_tree_title">"Czy to drzewo iglaste czy liściaste?"</string>
+    <string name="quest_bbq_fuel_gas">"Gaz"</string>
+    <string name="about_description_donate_google_play3">"Dziękujemy za rozważenie wsparcia tej aplikacji! 
+Informacje o darowiznach można znaleźć na naszej stronie internetowej lub na stronie głównej projektu, ponieważ Google Play nie pozwala nam na udostępnienie linku w aplikacji."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"Nie w środku, ale osłonięte"</string>
+    <string name="lit_value_unsupported">"Stanu nie da się opisać w aplikacji"</string>
+    <string name="quest_generic_otherAnswers2">"Uh..."</string>
+    <string name="quest_pedestrian_crossing_signals2">"Czy są tu światła pokazujące kiedy tu przejść?"</string>
+    <string name="quest_moped_access_title">"Czy tu jest znak wskazujący dostęp motorowerów na tej ścieżce rowerowej?"</string>
+    <string name="quest_moped_access_allowed">"Tu nie ma znaku"</string>
+    <string name="quest_moped_access_designated">"Tu jest znak wyznaczający tą ścieżkę rowerową dla motorowerów"</string>
+    <string name="quest_moped_access_forbidden">"Tu jest znak zakazujący motorowerów"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Ten "</string>
+    <string name="quest_arrow_tutorial">"Strzałki na ilustracji wskazują kierunki, w których przebiega droga na mapie w środkowym położeniu pinezki. Spróbuj obrócić mapę, a ci się uda."</string>
+    <string name="info">"Więcej informacji"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"To jest zabronione."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"To jest dozwolone."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Tu jest chodnik, ale pokazany osobno na mapie."</string>
+    <string name="quest_buildingLevels_hint">"W przypadku budynków na zboczu licznik poziomów zaczyna się od poziomu gruntu najniższej strony. 
+
+Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w związku z tym dachy o zerowych poziomach dachu niekoniecznie są płaskie, po prostu nie są wystarczająco wysokie dla całego poziomu."</string>
+    <string name="quest_parcel_locker_brand">"Jaka jest marka tego paczkomatu?"</string>
+    <string name="quest_parcel_locker_pickup">"Czy można tu odbierać paczki?"</string>
+    <string name="quest_parcel_locker_mail_in">"Czy można tu nadawać paczki?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Linia energetyczna jest przyczepiona do budynku"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"Nie ma, ale znak zezwala na jazdę rowerem na chodniku"</string>
+    <string name="separate_cycleway_no_signed">"Znak wyraźnie zakazuje jazdy na rowerze"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Chodnik, ale znak zezwala na jazdę rowerem"</string>
+    <string name="quest_bicycle_parking_type_floor">"Wyznaczony obszar"</string>
+    <string name="link_osmapp_description">"Mapa z różnymi warstwami takimi jak wspinaczka czy jazda na nartach"</string>
+    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Tylko dla zwrotów dostaw"</string>
 </resources>

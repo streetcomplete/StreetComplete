@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.lifecycle.viewModelScope
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
@@ -14,6 +11,8 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.platform.InternetConnectionState
+import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
@@ -47,7 +46,7 @@ class MainViewModelImpl(
     private val overlayRegistry: OverlayRegistry,
     private val messagesSource: MessagesSource,
     private val teamModeQuestFilter: TeamModeQuestFilter,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
 ) : MainViewModel() {
 
     /* messages */
@@ -81,7 +80,7 @@ class MainViewModelImpl(
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, null)
 
     override val hasShownOverlaysTutorial: Boolean get() =
-        prefs.getBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, false)
+        prefs.hasShownOverlaysTutorial
 
     override fun selectOverlay(overlay: Overlay?) {
         launch(Dispatchers.IO) {
@@ -120,13 +119,10 @@ class MainViewModelImpl(
     /* uploading, downloading */
 
     override val isAutoSync: StateFlow<Boolean> = callbackFlow {
-        send(isAutoSync(prefs.getStringOrNull(Prefs.AUTOSYNC)))
-        val listener = prefs.addStringOrNullListener(Prefs.AUTOSYNC) { trySend(isAutoSync(it)) }
+        send(prefs.autosync == Autosync.ON)
+        val listener = prefs.onAutosyncChanged { trySend(it == Autosync.ON) }
         awaitClose { listener.deactivate() }
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, true)
-
-    private fun isAutoSync(pref: String?): Boolean =
-        Prefs.Autosync.valueOf(pref ?: ApplicationConstants.DEFAULT_AUTOSYNC) == Prefs.Autosync.ON
 
     override val unsyncedEditsCount: StateFlow<Int> = callbackFlow {
         var count = unsyncedChangesCountSource.getCount()

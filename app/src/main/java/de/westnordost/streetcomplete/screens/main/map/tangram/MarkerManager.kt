@@ -19,7 +19,7 @@ import kotlin.coroutines.resume
  *  to recreate the Tangram Markers after the scene has successfully loaded.
  *
  *  See https://github.com/tangrams/tangram-es/issues/1756
- *  */
+ */
 class MarkerManager(private val c: MapController) {
 
     private var markerIdCounter = 0L
@@ -84,7 +84,7 @@ class MarkerManager(private val c: MapController) {
  *
  *  Tangram Markers are invalidated and can't be used anymore on each scene update. This class keeps
  *  the necessary data to automatically reinstantiate them after the scene update is done.
- *  */
+ */
 class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
 
     internal var tangramMarker: com.mapzen.tangram.Marker? = null

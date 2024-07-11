@@ -9,9 +9,6 @@ import android.net.ConnectivityManager
 import androidx.core.content.getSystemService
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
@@ -19,6 +16,8 @@ import de.westnordost.streetcomplete.data.download.strategy.MobileDataAutoDownlo
 import de.westnordost.streetcomplete.data.download.strategy.WifiAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
@@ -45,7 +44,7 @@ class QuestAutoSyncer(
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
     private val userLoginSource: UserLoginSource,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesController: DownloadedTilesController
 ) : DefaultLifecycleObserver {
@@ -109,11 +108,11 @@ class QuestAutoSyncer(
         }
     }
 
-    val isAllowedByPreference: Boolean
-        get() {
-            val p = Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: ApplicationConstants.DEFAULT_AUTOSYNC)
-            return p == Prefs.Autosync.ON || p == Prefs.Autosync.WIFI && isWifi
-        }
+    val isAllowedByPreference: Boolean get() = when (prefs.autosync) {
+        Autosync.ON -> true
+        Autosync.WIFI -> isWifi
+        Autosync.OFF -> false
+    }
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 

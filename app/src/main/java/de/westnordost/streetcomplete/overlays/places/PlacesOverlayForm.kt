@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.GeometryType
-import de.westnordost.streetcomplete.Prefs.PREFERRED_LANGUAGE_FOR_NAMES
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -18,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentOverlayPlacesBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
@@ -49,7 +48,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_places
     private val binding by contentViewBinding(FragmentOverlayPlacesBinding::bind)
 
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     private var originalFeature: Feature? = null
     private var originalNoName: Boolean = false
@@ -123,7 +122,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         val persistedNames = savedInstanceState?.getString(LOCALIZED_NAMES_DATA)?.let { Json.decodeFromString<List<LocalizedName>>(it) }
 
         val selectableLanguages = (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages).distinct().toMutableList()
-        val preferredLanguage = prefs.getStringOrNull(PREFERRED_LANGUAGE_FOR_NAMES)
+        val preferredLanguage = prefs.preferredLanguageForNames
         if (preferredLanguage != null) {
             if (selectableLanguages.remove(preferredLanguage)) {
                 selectableLanguages.add(0, preferredLanguage)
@@ -216,7 +215,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
     override fun onClickOk() {
         val firstLanguage = namesAdapter?.names?.firstOrNull()?.languageTag?.takeIf { it.isNotBlank() }
-        if (firstLanguage != null) prefs.putString(PREFERRED_LANGUAGE_FOR_NAMES, firstLanguage)
+        if (firstLanguage != null) prefs.preferredLanguageForNames = firstLanguage
 
         viewLifecycleScope.launch {
             applyEdit(createEditAction(

@@ -22,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *  of appearance:
  *  The LoginFragment, the UserFragment (which contains the viewpager with more
  *  fragments) and the "fake" dialog QuestTypeInfoFragment.
- * */
+ */
 class UserActivity :
     FragmentContainerActivity(R.layout.activity_user),
     EditStatisticsFragment.Listener {
@@ -57,7 +57,14 @@ class UserActivity :
         }
 
         observe(viewModel.isLoggedIn) { isLoggedIn ->
-            replaceMainFragmentAnimated(if (isLoggedIn) UserFragment() else LoginFragment())
+            val current = getMainFragment()
+            val replaceFragment = when (isLoggedIn) {
+                true -> current !is UserFragment
+                false -> current !is LoginFragment
+            }
+            if (replaceFragment) {
+                replaceMainFragmentAnimated(if (isLoggedIn) UserFragment() else LoginFragment())
+            }
         }
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)

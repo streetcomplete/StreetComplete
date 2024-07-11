@@ -25,11 +25,10 @@ import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTabl
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowTable
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 17
+    const val DB_VERSION = 18
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -95,9 +94,6 @@ object DatabaseInitializer {
         db.exec(UserAchievementsTable.CREATE)
         db.exec(UserLinksTable.CREATE)
         db.exec(ActiveDaysTable.CREATE)
-
-        // quest specific tables
-        db.exec(WayTrafficFlowTable.CREATE)
 
         // logs
         db.exec(LogsTable.CREATE)
@@ -247,6 +243,10 @@ object DatabaseInitializer {
         }
         if (oldVersion <= 16 && newVersion > 16) {
             db.renameQuest("AddProhibitedForMoped", "AddMopedAccess")
+        }
+        if (oldVersion <= 17 && newVersion > 17) {
+            db.exec("DROP TABLE direction_of_flow;")
+            db.deleteQuest("AddSuspectedOneway")
         }
     }
 }

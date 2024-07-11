@@ -20,11 +20,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.GrassGray
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.theme.White
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.ui.util.toDp
 
 @Composable
 fun LaurelWreathBadge(

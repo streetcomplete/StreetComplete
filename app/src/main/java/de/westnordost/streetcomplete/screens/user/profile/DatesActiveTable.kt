@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.theme.surfaceContainer
-import de.westnordost.streetcomplete.ui.util.pxToDp
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate

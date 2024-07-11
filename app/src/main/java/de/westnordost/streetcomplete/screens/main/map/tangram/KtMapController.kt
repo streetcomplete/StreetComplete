@@ -55,7 +55,7 @@ import kotlin.math.pow
  *      <li>Uses suspend functions instead of callbacks (Kotlin coroutines)</li>
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
- *  */
+ */
 class KtMapController(private val c: MapController, contentResolver: ContentResolver) :
     DefaultLifecycleObserver {
 

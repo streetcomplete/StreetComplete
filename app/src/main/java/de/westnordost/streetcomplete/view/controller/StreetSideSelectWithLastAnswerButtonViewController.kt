@@ -4,8 +4,8 @@ import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.view.isGone
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ViewStreetSideLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.view.Image
@@ -23,7 +23,7 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val puzzleView: StreetSideSelectPuzzle,
     private val compassView: View,
     private val lastAnswerButtonBinding: ViewStreetSideLastAnswerButtonBinding,
-    private val prefs: ObservableSettings,
+    private val prefs: Preferences,
     private val lastSelectionPreferencePrefix: String,
     private val serializeLastSelection: (item: I) -> String,
     private val deserializeLastSelection: (str: String) -> I,
@@ -106,33 +106,30 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getStringOrNull("$lastSelectionPreferencePrefix.left")?.let { str ->
-            try {
-                deserializeLastSelection(str)
-            } catch (e: Exception) {
-                null
-            }
-        }
-        lastSelectionRight = prefs.getStringOrNull("$lastSelectionPreferencePrefix.right")?.let { str ->
-            try {
-                deserializeLastSelection(str)
-            } catch (e: Exception) {
-                null
-            }
-        }
-        lastSelectionOneSide = prefs.getStringOrNull("$lastSelectionPreferencePrefix.oneSide")?.let { str ->
-            try {
-                deserializeLastSelection(str)
-            } catch (e: Exception) {
-                null
-            }
-        }
+        lastSelectionLeft = prefs.getLastPicked("$lastSelectionPreferencePrefix.left")
+            .map { tryDeserializeSelection(it) }
+            .firstOrNull()
+
+        lastSelectionRight = prefs.getLastPicked("$lastSelectionPreferencePrefix.right")
+            .map { tryDeserializeSelection(it) }
+            .firstOrNull()
+
+        lastSelectionOneSide = prefs.getLastPicked("$lastSelectionPreferencePrefix.oneSide")
+            .map { tryDeserializeSelection(it) }
+            .firstOrNull()
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }
         puzzleView.setLeftSideImage(defaultPuzzleImageLeft)
         puzzleView.setRightSideImage(defaultPuzzleImageRight)
     }
+
+    private fun tryDeserializeSelection(str: String): I? =
+        try {
+            deserializeLastSelection(str)
+        } catch (e: Exception) {
+            null
+        }
 
     /* ------------------------------------ rotate view ----------------------------------------- */
 
@@ -200,18 +197,20 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
 
         if (showSides == Sides.BOTH) {
             if (l != null) {
-                prefs.putString("$lastSelectionPreferencePrefix.left", serializeLastSelection(l.value))
+                prefs.setLastPicked("$lastSelectionPreferencePrefix.left", serializeLastSelection(l.value))
             } else {
-                prefs.remove("$lastSelectionPreferencePrefix.left")
+                prefs.setLastPicked("$lastSelectionPreferencePrefix.left", "")
             }
 
             if (r != null) {
-                prefs.putString("$lastSelectionPreferencePrefix.right", serializeLastSelection(r.value))
+                prefs.setLastPicked("$lastSelectionPreferencePrefix.right", serializeLastSelection(r.value))
             } else {
-                prefs.remove("$lastSelectionPreferencePrefix.right")
+                prefs.setLastPicked("$lastSelectionPreferencePrefix.right", "")
             }
         } else {
-            (l ?: r)?.let { prefs.putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value)) }
+            (l ?: r)?.let {
+                prefs.setLastPicked("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value))
+            }
         }
     }
 

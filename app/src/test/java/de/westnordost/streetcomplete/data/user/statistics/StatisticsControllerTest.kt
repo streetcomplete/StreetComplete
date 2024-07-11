@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.p
@@ -21,7 +20,8 @@ class StatisticsControllerTest {
     private lateinit var currentWeekCountryStatisticsDao: CountryStatisticsDao
     private lateinit var activeDatesDao: ActiveDatesDao
     private lateinit var countryBoundaries: CountryBoundaries
-    private lateinit var prefs: ObservableSettings
+    private lateinit var prefs: Preferences
+
     private lateinit var statisticsController: StatisticsController
     private lateinit var listener: StatisticsSource.Listener
 
@@ -68,7 +68,7 @@ class StatisticsControllerTest {
     }
 
     @Test fun `adding one one day later`() {
-        on(prefs.getInt(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0)).thenReturn(0)
+        on(prefs.userLastTimestampActive).thenReturn(0)
 
         statisticsController.addOne(questA, p(0.0, 0.0))
 
@@ -92,7 +92,7 @@ class StatisticsControllerTest {
     }
 
     @Test fun `subtracting one one day later`() {
-        on(prefs.getInt(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0)).thenReturn(0)
+        on(prefs.userLastTimestampActive).thenReturn(0)
 
         statisticsController.subtractOne(questA, p(0.0, 0.0))
 
@@ -110,11 +110,7 @@ class StatisticsControllerTest {
         verify(currentWeekCountryStatisticsDao).clear()
         verify(currentWeekEditTypeStatisticsDao).clear()
         verify(activeDatesDao).clear()
-        verify(prefs).remove(Prefs.USER_DAYS_ACTIVE)
-        verify(prefs).remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
-        verify(prefs).remove(Prefs.USER_GLOBAL_RANK)
-        verify(prefs).remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
-        verify(prefs).remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
+        verify(prefs).clearUserStatistics()
         verify(listener).onCleared()
     }
 
@@ -167,12 +163,12 @@ class StatisticsControllerTest {
             LocalDate.parse("1999-04-08"),
             LocalDate.parse("1888-01-02")
         ))
-        verify(prefs).putInt(Prefs.ACTIVE_DATES_RANGE, 12)
-        verify(prefs).putInt(Prefs.USER_DAYS_ACTIVE, 333)
-        verify(prefs).putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, false)
-        verify(prefs).putInt(Prefs.USER_GLOBAL_RANK, 999)
-        verify(prefs).putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, 111)
-        verify(prefs).putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 9999999)
+        verify(prefs).userActiveDatesRange = 12
+        verify(prefs).userDaysActive = 333
+        verify(prefs).isSynchronizingStatistics = false
+        verify(prefs).userGlobalRank = 999
+        verify(prefs).userGlobalRankCurrentWeek = 111
+        verify(prefs).userLastTimestampActive = 9999999
         verify(listener).onUpdatedAll()
     }
 }

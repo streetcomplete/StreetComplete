@@ -1,14 +1,20 @@
 package de.westnordost.streetcomplete.screens.about
 
 import android.os.Bundle
-import de.westnordost.streetcomplete.screens.FragmentContainerActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material.Surface
+import de.westnordost.streetcomplete.screens.BaseActivity
+import de.westnordost.streetcomplete.ui.theme.AppTheme
 
-class AboutActivity : FragmentContainerActivity() {
-
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-            replaceMainFragment(TwoPaneAboutFragment())
+class AboutActivity : BaseActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            AppTheme {
+                Surface {
+                    AboutNavHost(onClickBack = { finish() })
+                }
+            }
         }
     }
 }

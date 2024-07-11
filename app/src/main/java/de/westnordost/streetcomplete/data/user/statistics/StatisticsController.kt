@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -21,47 +20,34 @@ class StatisticsController(
     private val currentWeekCountryStatisticsDao: CountryStatisticsDao,
     private val activeDatesDao: ActiveDatesDao,
     private val countryBoundaries: Lazy<CountryBoundaries>,
-    private val prefs: ObservableSettings
+    private val prefs: Preferences
 ) : StatisticsSource {
 
     private val listeners = Listeners<StatisticsSource.Listener>()
 
     override var rank: Int
-        get() = prefs.getInt(Prefs.USER_GLOBAL_RANK, -1)
-        private set(value) {
-            prefs.putInt(Prefs.USER_GLOBAL_RANK, value)
-        }
+        get() = prefs.userGlobalRank
+        private set(value) { prefs.userGlobalRank = value }
 
     override var daysActive: Int
-        get() = prefs.getInt(Prefs.USER_DAYS_ACTIVE, 0)
-        private set(value) {
-            prefs.putInt(Prefs.USER_DAYS_ACTIVE, value)
-        }
+        get() = prefs.userDaysActive
+        private set(value) { prefs.userDaysActive = value }
 
     override var currentWeekRank: Int
-        get() = prefs.getInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, -1)
-        private set(value) {
-            prefs.putInt(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK, value)
-        }
+        get() = prefs.userGlobalRankCurrentWeek
+        private set(value) { prefs.userGlobalRankCurrentWeek = value }
 
     override var activeDatesRange: Int
-        get() = prefs.getInt(Prefs.ACTIVE_DATES_RANGE, 100)
-        private set(value) {
-            prefs.putInt(Prefs.ACTIVE_DATES_RANGE, value)
-        }
+        get() = prefs.userActiveDatesRange
+        private set(value) { prefs.userActiveDatesRange = value }
 
     override var isSynchronizing: Boolean
-        // default true because if it is not set yet, the first thing that is done is to synchronize it
-        get() = prefs.getBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, true)
-        private set(value) {
-            prefs.putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, value)
-        }
+        get() = prefs.isSynchronizingStatistics
+        private set(value) { prefs.isSynchronizingStatistics = value }
 
     private var lastUpdate: Long
-        get() = prefs.getLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, 0)
-        set(value) {
-            prefs.putLong(Prefs.USER_LAST_TIMESTAMP_ACTIVE, value)
-        }
+        get() = prefs.userLastTimestampActive
+        set(value) { prefs.userLastTimestampActive = value }
 
     override fun getEditCount(): Int =
         editTypeStatisticsDao.getTotalAmount()
@@ -151,12 +137,7 @@ class StatisticsController(
         currentWeekEditTypeStatisticsDao.clear()
         currentWeekCountryStatisticsDao.clear()
         activeDatesDao.clear()
-        prefs.remove(Prefs.USER_DAYS_ACTIVE)
-        prefs.remove(Prefs.ACTIVE_DATES_RANGE)
-        prefs.remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
-        prefs.remove(Prefs.USER_GLOBAL_RANK)
-        prefs.remove(Prefs.USER_GLOBAL_RANK_CURRENT_WEEK)
-        prefs.remove(Prefs.USER_LAST_TIMESTAMP_ACTIVE)
+        prefs.clearUserStatistics()
 
         listeners.forEach { it.onCleared() }
     }

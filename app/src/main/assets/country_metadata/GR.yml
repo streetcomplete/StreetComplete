@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Τράπεζα Πειραιώς, Euronet, Alpha Bank, Eurobank, Εθνική Τράπεζα, Euronet Worldwide, Εθνική Τράπεζα της Ελλάδος, Bcash, Piraeus Bank, National Bank, Attica Bank, Εθνική, ATM, Citibank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Bank of Chania, Πειραιώς / Piraeus, Shitcoins.club, Piräus Bank, NBG GROUP, NBG, HSBC, Ethniki Bank, Bitcoinmat, Alpha, Τράπεζας Πειραιώς, Τράπεζα Eurobank, Εθνική Τράπεζα | National Bank of Greece, Pyraeus Bank, Pireus Bank, Pireaus Bank, Piraeus bank, Hellenic Post, EuroNet, Cooperative Bank of Dodecanese]
+atmOperators: [Τράπεζα Πειραιώς, Euronet, Alpha Bank, Eurobank, Εθνική Τράπεζα, Euronet Worldwide, Piraeus Bank, Bcash, Εθνική Τράπεζα της Ελλάδος, National Bank, Attica Bank, Εθνική, ATM, Citibank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Bank of Chania, Πειραιώς / Piraeus, Shitcoins.club, Piräus Bank, NBG GROUP, NBG, HSBC, Ethniki Bank, Bitcoinmat, Alpha, Τράπεζας Πειραιώς, Τράπεζα Eurobank, Εθνική Τράπεζα | National Bank of Greece, Pyraeus Bank, Pireus Bank, Pireaus Bank, Piraeus bank, Hellenic Post, EuroNet, Cooperative Bank of Dodecanese]
 chargingStationOperators: [ΔΕΗ blue, ΔΕΗ, Protergia, nrg incharge, Chargespot, blink, WATT AND VOLT, 'Tesla, Inc.', Peugeot, DEI Blue, Δήμος Αλίμου, DEI, incharge, NRG, Lidl, Joltie, Fortizo, ΔΕΗblue, 'https://mythicalpeloponnese.gr', WATT+VOLT, Evziiin, ChargePoint, Blue, Blink]
 clothesContainerOperators: [Recycom, RECYCOM, Δήμος Αθηναίων, Texcycle, Δήμος Κέρκυρας, Δήμος Ζωγράφου, Δήμος Γαλατσίου]
 defaultSpeedLimitHasUrbanOrRural: true
@@ -16,7 +16,7 @@ noStoppingLineStyle: yellow
 noStoppingSignStyle: vienna
 officialLanguages: [el]
 orchardProduces: [olive, grape, peach, orange, almond, walnut, tomato, apple, kiwi, apricot, chestnut, pear, fig, lemon, lime, chilli_pepper, sweet_pepper]
-parcelLockerBrand: [BoxNow, Box Now, Skroutz Point, Skroutz]
+parcelLockerBrand: [BoxNow, Box Now, Skroutz, Skroutz Point]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ΠΕΡΙΟΧΗ

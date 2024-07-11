@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.overlays.way_lit
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.lit.LitStatus
 import de.westnordost.streetcomplete.osm.lit.LitStatus.AUTOMATIC
@@ -18,7 +17,6 @@ import de.westnordost.streetcomplete.osm.lit.asItem
 import de.westnordost.streetcomplete.osm.lit.parseLitStatus
 import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
@@ -31,27 +29,18 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
     override val selectableItems: List<DisplayItem<LitStatus>> =
         listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY).map { it.asItem() }
 
-    private val prefs: ObservableSettings by inject()
-    private lateinit var favs: LastPickedValuesStore<DisplayItem<LitStatus>>
+    private val prefs: Preferences by inject()
 
-    override val lastPickedItem: DisplayItem<LitStatus>?
-        get() = favs.get().firstOrNull()
+    override val lastPickedItem: DisplayItem<LitStatus>? get() =
+        prefs.getLastPicked(this::class.simpleName!!)
+            .map { valueOfOrNull<LitStatus>(it)?.asItem() }
+            .firstOrNull()
 
     private var originalLitStatus: LitStatus? = null
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer()
     )
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.value!!.name },
-            deserialize = { valueOfOrNull<LitStatus>(it)?.asItem() }
-        )
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,7 +53,7 @@ class WayLitOverlayForm : AImageSelectOverlayForm<LitStatus>() {
         selectedItem?.value != originalLitStatus
 
     override fun onClickOk() {
-        favs.add(selectedItem!!)
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem!!.value!!.name)
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         selectedItem!!.value!!.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))

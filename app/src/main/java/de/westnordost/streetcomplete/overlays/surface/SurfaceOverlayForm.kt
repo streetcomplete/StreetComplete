@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.overlays.surface
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.changeToSteps
@@ -25,7 +24,6 @@ import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndC
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
@@ -36,10 +34,12 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     override val contentLayoutResId = R.layout.fragment_overlay_surface_select
     private val binding by contentViewBinding(FragmentOverlaySurfaceSelectBinding::bind)
 
-    private val prefs: ObservableSettings by inject()
-    private lateinit var favs: LastPickedValuesStore<Surface>
-    private val lastPickedSurface: Surface?
-        get() = favs.get().firstOrNull()
+    private val prefs: Preferences by inject()
+
+    private val lastPickedSurface: Surface? get() =
+        prefs.getLastPicked(this::class.simpleName!!)
+            .map { valueOfOrNull<Surface>(it) }
+            .firstOrNull()
 
     private lateinit var surfaceCtrl: SurfaceAndNoteViewController
     private lateinit var cyclewaySurfaceCtrl: SurfaceAndNoteViewController
@@ -72,16 +72,6 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
         binding.cyclewaySurfaceContainer.isGone = false
         binding.footwaySurfaceContainer.isGone = false
         binding.lastPickedButton.isGone = true
-    }
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.name },
-            deserialize = { valueOfOrNull<Surface>(it) }
-        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -212,7 +202,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             updateCommonSurfaceFromFootAndCyclewaySurface(changesBuilder)
         } else {
             if (surfaceCtrl.value!!.note == null && surfaceCtrl.value!!.surface != null) {
-                favs.add(surfaceCtrl.value!!.surface!!)
+                prefs.addLastPicked(this::class.simpleName!!, surfaceCtrl.value!!.surface!!.name)
             }
             surfaceCtrl.value!!.applyTo(changesBuilder)
         }

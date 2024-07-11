@@ -20,9 +20,6 @@ import androidx.core.text.parseAsHtml
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import androidx.preference.PreferenceManager
-import com.russhwolf.settings.ObservableSettings
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
@@ -35,6 +32,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
@@ -73,7 +71,7 @@ class MainActivity :
     private val userLoginController: UserLoginController by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
-    private val prefs: ObservableSettings by inject()
+    private val prefs: Preferences by inject()
 
     private var mainFragment: MainFragment? = null
 
@@ -107,7 +105,6 @@ class MainActivity :
 
         lifecycle.addObserver(questAutoSyncer)
         crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
 
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -117,8 +114,7 @@ class MainActivity :
         mainFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as MainFragment?
         if (savedInstanceState == null) {
             supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
-            val hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false)
-            if (!hasShownTutorial && !userLoginController.isLoggedIn) {
+            if (!prefs.hasShownTutorial && !userLoginController.isLoggedIn) {
                 supportFragmentManager.commit {
                     setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
                     add(R.id.fragment_container, TutorialFragment())
@@ -173,7 +169,6 @@ class MainActivity :
         super.onStart()
 
         updateScreenOn()
-
         uploadProgressSource.addListener(uploadProgressListener)
         downloadProgressSource.addListener(downloadProgressListener)
 
@@ -195,8 +190,7 @@ class MainActivity :
     public override fun onPause() {
         super.onPause()
         val pos = mainFragment?.getCameraPosition()?.position ?: return
-        prefs.putDouble(Prefs.MAP_LATITUDE, pos.latitude)
-        prefs.putDouble(Prefs.MAP_LONGITUDE, pos.longitude)
+        prefs.mapPosition = pos
     }
 
     public override fun onStop() {
@@ -232,10 +226,10 @@ class MainActivity :
         dontShowRequestAuthorizationAgain = true
     }
 
-    /* ------------------------------------- Preferences ---------------------------------------- */
+    /* ------------------------------- Preferences listeners ------------------------------------ */
 
     private fun updateScreenOn() {
-        if (prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false)) {
+        if (prefs.keepScreenOn) {
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         } else {
             window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -323,7 +317,7 @@ class MainActivity :
     override fun onTutorialFinished() {
         requestLocation()
 
-        prefs.putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true)
+        prefs.hasShownTutorial = true
         removeTutorialFragment()
     }
 
@@ -353,7 +347,7 @@ class MainActivity :
     /* --------------------------- OverlaysTutorialFragment.Listener ---------------------------- */
 
     override fun onOverlaysTutorialFinished() {
-        prefs.putBoolean(Prefs.HAS_SHOWN_OVERLAYS_TUTORIAL, true)
+        prefs.hasShownOverlaysTutorial = true
         removeTutorialFragment()
     }
 
