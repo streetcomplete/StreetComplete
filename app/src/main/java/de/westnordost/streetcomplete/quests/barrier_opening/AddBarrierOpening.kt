@@ -51,7 +51,7 @@ class AddBarrierOpening(
 
 
     override fun isApplicableTo(element: Element) =
-        nodeFilter.matches(element)
+        if (nodeFilter.matches(element)) null else false
 
     override fun createForm() = AddGateWidthForm()
 
