@@ -32,8 +32,7 @@ class AddBarrierOpening(
 
     override val changesetComment = "Specify width of opening"
     override val wikiLink = "Key:barrier"
- // icon needed
-    override val icon = R.drawable.ic_quest_bicycleway_width
+    override val icon = R.drawable.ic_quest_barrier_opening
     override val achievements = listOf(BICYCLIST, WHEELCHAIR)
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
