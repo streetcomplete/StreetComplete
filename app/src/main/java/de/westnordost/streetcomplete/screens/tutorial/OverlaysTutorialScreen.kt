@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
 import de.westnordost.streetcomplete.ui.common.MapButton
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OverlaysTutorialScreen(
     onFinished: () -> Unit,
@@ -102,6 +101,12 @@ private fun OverlaysTutorialIllustration(
             contentDescription = null,
             modifier = Modifier.fillMaxSize()
         )
+        val painter = mapEditDone(0f) // mapEditHighlighted(0f)
+        Image(
+            painter = painter,
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+        )
 
         Image(
             painter = painterResource(R.drawable.ic_preset_fas_shopping_cart),
@@ -125,7 +130,7 @@ private fun OverlaysTutorialIllustration(
     }
 
     Image(
-        painter = painterResource(R.drawable.paint_roller),
+        painter = paintRoller(1f),
         contentDescription = null,
         modifier = Modifier.rotate(-45f)
     )

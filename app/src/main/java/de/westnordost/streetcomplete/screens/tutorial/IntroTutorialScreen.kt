@@ -3,11 +3,14 @@ package de.westnordost.streetcomplete.screens.tutorial
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -35,9 +38,7 @@ fun IntroTutorialScreen(
         pageCount = 3,
         onFinished = onFinished,
         illustration = { page ->
-            Box(contentAlignment = Alignment.TopStart) {
-                IntroTutorialIllustration(page)
-            }
+            IntroTutorialIllustration(page)
         }
     ) { page ->
         Column(
@@ -57,50 +58,59 @@ fun IntroTutorialScreen(
 private fun IntroTutorialIllustration(
     page: Float
 ) {
-    // TODO animate steps
-
-    Box(Modifier.size(width = 226.dp, height = 222.dp)) {
-        Image(
-            painter = painterResource(R.drawable.logo_osm_map),
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize()
-        )
-        Image(
-            painter = painterResource(R.drawable.logo_osm_map_lighting),
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize()
-        )
-    }
-
-    MapButton(
-        onClick = {},
-        modifier = Modifier.absoluteOffset(x = 200.dp, y = 130.dp)
+    Box(
+        contentAlignment = Alignment.TopStart,
+        modifier = Modifier.width(IntrinsicSize.Min).height(IntrinsicSize.Min)
     ) {
-        Icon(painterResource(R.drawable.ic_location_no_location_24dp), null)
+        // TODO animate steps
+
+        Box(Modifier.size(width = 226.dp, height = 222.dp)) {
+            Image(
+                painter = painterResource(R.drawable.logo_osm_map),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize()
+            )
+            Image(
+                painter = painterResource(R.drawable.logo_osm_map_lighting),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+
+        MapButton(
+            onClick = {},
+            modifier = Modifier.absoluteOffset(x = 200.dp, y = 130.dp)
+        ) {
+            Icon(painterResource(R.drawable.ic_location_no_location_24dp), null)
+        }
+
+        Pin(
+            iconPainter = painterResource(R.drawable.ic_quest_recycling),
+            modifier = Modifier.absoluteOffset(x = 120.dp, y = 60.dp)
+        )
+        Pin(
+            iconPainter = painterResource(R.drawable.ic_quest_street),
+            modifier = Modifier.absoluteOffset(x = 45.dp, y = 110.dp)
+        )
+        Pin(
+            iconPainter = painterResource(R.drawable.ic_quest_traffic_lights),
+            modifier = Modifier.absoluteOffset(x = 0.dp, y = 25.dp)
+        )
+
+        Image(
+            painter = checkmarkCircle(progress = 1f),
+            contentDescription = null,
+            modifier = Modifier.align(Alignment.Center)
+        )
+
+        Image(
+            painter = painterResource(R.drawable.logo_osm_magnifier),
+            contentDescription = null,
+            modifier = Modifier
+                .size(185.dp)
+                .offset(x = 20.dp, y = 16.dp)
+        )
     }
-
-    Pin(
-        iconPainter = painterResource(R.drawable.ic_quest_recycling),
-        modifier = Modifier.absoluteOffset(x = 120.dp, y = 60.dp)
-    )
-    Pin(
-        iconPainter = painterResource(R.drawable.ic_quest_street),
-        modifier = Modifier.absoluteOffset(x = 45.dp, y = 110.dp)
-    )
-    Pin(
-        iconPainter = painterResource(R.drawable.ic_quest_traffic_lights),
-        modifier = Modifier.absoluteOffset(x = 0.dp, y = 25.dp)
-    )
-
-    // TODO checkmark circle
-
-    Image(
-        painter = painterResource(R.drawable.logo_osm_magnifier),
-        contentDescription = null,
-        modifier = Modifier
-            .size(185.dp)
-            .offset(x = 20.dp, y = 16.dp)
-    )
 }
 
 @Composable
