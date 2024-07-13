@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.common
+package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope

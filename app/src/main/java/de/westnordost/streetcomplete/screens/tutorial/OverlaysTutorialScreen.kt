@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
-import de.westnordost.streetcomplete.ui.common.MapButton
+import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 
 @Composable
@@ -86,7 +85,7 @@ private fun OverlaysTutorialStepEditText() {
 
 @Composable
 private fun OverlaysTutorialIllustration(
-    page: Float
+    page: Int
 ) {
     // TODO animate steps
 
@@ -153,7 +152,7 @@ private fun OverlaysTutorialIllustration(
 @Preview
 @Composable
 private fun PreviewOverlaysTutorialIllustration() {
-    OverlaysTutorialIllustration(page = 0f)
+    OverlaysTutorialIllustration(page = 0)
 }
 
 @Preview

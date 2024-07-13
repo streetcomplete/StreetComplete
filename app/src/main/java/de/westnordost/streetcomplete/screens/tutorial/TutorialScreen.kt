@@ -3,8 +3,11 @@ package de.westnordost.streetcomplete.screens.tutorial
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.snapping.SnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,13 +29,12 @@ import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -46,24 +48,21 @@ import kotlinx.coroutines.launch
 fun TutorialScreen(
     pageCount: Int,
     onFinished: () -> Unit,
-    illustration: @Composable (pageAnimated: Float) -> Unit,
+    illustration: @Composable BoxScope.(page: Int) -> Unit,
     pageContent: @Composable (page: Int) -> Unit
 ) {
     val state = rememberPagerState { pageCount }
-    val pageAnimated = remember(state.currentPage, state.currentPageOffsetFraction) {
-        derivedStateOf { state.currentPage + state.currentPageOffsetFraction }
-    }
 
     TutorialScreenLayout(
         illustration = {
-            illustration(pageAnimated.value)
+            illustration(state.currentPage)
         },
         pageContent = {
             HorizontalPager(
                 state = state,
                 modifier = Modifier.width(480.dp),
                 contentPadding = PaddingValues(horizontal = 16.dp),
-                pageSpacing = 32.dp,
+                pageSpacing = 64.dp,
                 pageContent = { page ->
                     Box(
                         Modifier
@@ -96,7 +95,7 @@ fun TutorialScreen(
 @Composable
 private fun TutorialScreenLayout(
     modifier: Modifier = Modifier,
-    illustration: @Composable () -> Unit,
+    illustration: @Composable BoxScope.() -> Unit,
     pageContent: @Composable () -> Unit,
     controls: @Composable () -> Unit,
 ) {
@@ -105,17 +104,17 @@ private fun TutorialScreenLayout(
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(32.dp),
             ) {
                 Box(
-                    modifier = Modifier.weight(0.4f),
+                    modifier = Modifier.fillMaxSize().weight(0.4f).clipToBounds(),
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     illustration()
                 }
                 Box(
                     modifier = Modifier.weight(0.6f),
-                    contentAlignment = Alignment.TopCenter
+                    contentAlignment = Alignment.Center
                 ) {
                     pageContent()
                     Box(Modifier.align(Alignment.BottomCenter)) {
@@ -128,10 +127,10 @@ private fun TutorialScreenLayout(
                 Row(
                     modifier = Modifier.fillMaxSize(),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    horizontalArrangement = Arrangement.spacedBy(32.dp)
                 ) {
                     Box(
-                        modifier = Modifier.weight(0.4f),
+                        modifier = Modifier.fillMaxSize().weight(0.4f).clipToBounds(),
                         contentAlignment = Alignment.CenterEnd
                     ) {
                         illustration()
@@ -152,7 +151,6 @@ private fun TutorialScreenLayout(
                         controls()
                     }
                 }
-
             }
         }
     }
@@ -173,7 +171,12 @@ private fun PagerControls(
     ) {
         Row {
             repeat(state.pageCount) { page ->
-                PagerIndicator(isCurrentPage = state.currentPage == page)
+                PagerIndicator(
+                    isCurrentPage = state.currentPage == page,
+                    onClick = {
+                        coroutineScope.launch { state.animateScrollToPage(page) }
+                    }
+                )
             }
         }
         Button(onClick = {
@@ -191,6 +194,7 @@ private fun PagerControls(
 @Composable
 private fun PagerIndicator(
     isCurrentPage: Boolean,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val alpha by animateFloatAsState(
@@ -202,6 +206,7 @@ private fun PagerIndicator(
             .alpha(alpha)
             .background(color = MaterialTheme.colors.onSurface, shape = CircleShape)
             .size(12.dp)
+            .clickable { onClick() }
     )
 }
 
