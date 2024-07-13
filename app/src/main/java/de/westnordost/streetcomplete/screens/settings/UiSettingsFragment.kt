@@ -3,12 +3,14 @@ package de.westnordost.streetcomplete.screens.settings
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.InputType
+import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.preference.DialogPreference
 import androidx.preference.Preference
@@ -19,6 +21,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
+import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import org.koin.android.ext.android.inject
 
 class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
@@ -26,6 +29,13 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
     private val prefs: ObservableSettings by inject()
 
     override val title: String get() = getString(R.string.pref_screen_ui)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<Toolbar>(R.id.toolbar).apply {
+            setUpToolbarTitleAndIcon(this)
+        }
+    }
 
     @SuppressLint("ResourceType") // for nearby quests... though it could probably be done in a nicer way
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
