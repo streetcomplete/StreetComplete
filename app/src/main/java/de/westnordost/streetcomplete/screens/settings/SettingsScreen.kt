@@ -180,7 +180,10 @@ fun SettingsScreen(
 
                 Preference(
                     name = stringResource(R.string.pref_expert_mode_title),
-                    onClick = { /* anything? */ },
+                    onClick = {
+                        if (expertMode) viewModel.setExpertMode(false)
+                        else showExpertModeConfirmation = true
+                    },
                     description = stringResource(R.string.pref_expert_mode_summary)
                 ) {
                     Switch(
@@ -232,14 +235,9 @@ fun SettingsScreen(
         }
     }
 
-    // todo: not working
-    //  maybe just use the old settings activity and have a separate scee settings screen?
     if (showExpertModeConfirmation) {
         ConfirmationDialog(
-            onDismissRequest = {
-                viewModel.setExpertMode(false)
-                showExpertModeConfirmation = false
-                               },
+            onDismissRequest = { showExpertModeConfirmation = false },
             onConfirmed = { viewModel.setExpertMode(true) },
             text = { Text(stringResource(R.string.pref_expert_mode_message)) },
             confirmButtonText = stringResource(R.string.dialog_button_understood)

@@ -89,6 +89,9 @@ class Preferences(val prefs: ObservableSettings) {
     fun onAllShowNotesChanged(callback: (Boolean) -> Unit): SettingsListener =
         prefs.addBooleanListener(SHOW_ALL_NOTES, false, callback)
 
+    fun onExpertModeChanged(callback: (Boolean) -> Unit): SettingsListener =
+        prefs.addBooleanListener(Prefs.EXPERT_MODE, false, callback)
+
     fun onKeepScreenOnChanged(callback: (Boolean) -> Unit): SettingsListener =
         prefs.addBooleanListener(KEEP_SCREEN_ON, false, callback)
 

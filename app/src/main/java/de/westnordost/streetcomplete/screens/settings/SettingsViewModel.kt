@@ -126,6 +126,7 @@ class SettingsViewModelImpl(
         listeners += prefs.onAllShowNotesChanged { showAllNotes.value = it }
         listeners += prefs.onKeepScreenOnChanged { keepScreenOn.value = it }
         listeners += prefs.onLanguageChanged { selectedLanguage.value = it }
+        listeners += prefs.onExpertModeChanged { expertMode.value = it }
 
         updateQuestTypeCount()
         updateSelectableLanguageCodes()
