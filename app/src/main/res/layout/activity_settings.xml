@@ -10,6 +10,20 @@
         android:layout_height="match_parent" />
 
     <RelativeLayout
+        android:id="@+id/sceeSettingsFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/sceeSettingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/questFormContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

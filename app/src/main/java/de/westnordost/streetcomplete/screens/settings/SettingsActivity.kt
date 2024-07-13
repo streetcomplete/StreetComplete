@@ -66,7 +66,8 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
                     SettingsNavHost(
                         onClickBack = { finish() },
                         onClickShowQuestTypeForDebug = ::onClickQuestType,
-                        startDestination = if (launchQuestSelection) SettingsDestination.QuestSelection else null
+                        startDestination = if (launchQuestSelection) SettingsDestination.QuestSelection else null,
+                        onClickSceeFragment = { loadSceeSettingsFragment(it) }
                     )
                 }
             }
@@ -178,8 +179,24 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         }
     }
 
+    private fun loadSceeSettingsFragment(screenId: Int) {
+        supportFragmentManager.commit {
+            val f = when (screenId) {
+                1 -> UiSettingsFragment()
+                2 -> DisplaySettingsFragment()
+                3 -> QuestsSettingsFragment()
+                4 -> NoteSettingsFragment()
+                else -> DataManagementSettingsFragment()
+            }
+            binding.sceeSettingsFragmentContainer.visibility = View.VISIBLE
+            replace(R.id.sceeSettingsFragment, f)
+            addToBackStack(null)
+        }
+    }
+
     private fun updateContainerVisibility() {
         binding.questFormContainer.isGone = supportFragmentManager.findFragmentById(R.id.questForm) == null
+        binding.sceeSettingsFragmentContainer.isGone = supportFragmentManager.findFragmentById(R.id.sceeSettingsFragment) == null
     }
 
     private fun createMockElementWithGeometry(questType: OsmElementQuestType<*>): Pair<Element, ElementGeometry> {

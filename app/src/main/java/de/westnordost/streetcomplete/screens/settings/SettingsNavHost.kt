@@ -15,7 +15,8 @@ import org.koin.androidx.compose.koinViewModel
 @Composable fun SettingsNavHost(
     onClickBack: () -> Unit,
     onClickShowQuestTypeForDebug: (QuestType) -> Unit,
-    startDestination: String? = null
+    startDestination: String? = null,
+    onClickSceeFragment: (Int) -> Unit
 ) {
     val navController = rememberNavController()
 
@@ -33,7 +34,8 @@ import org.koin.androidx.compose.koinViewModel
                 onClickShowQuestForms = { navController.navigate(SettingsDestination.ShowQuestForms) },
                 onClickPresetSelection = { navController.navigate(SettingsDestination.QuestPresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
-                onClickBack = onClickBack
+                onClickBack = onClickBack,
+                onClickSceeFragment = onClickSceeFragment
             )
         }
         composable(SettingsDestination.QuestPresets) {

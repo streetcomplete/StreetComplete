@@ -47,6 +47,7 @@ fun SettingsScreen(
     onClickPresetSelection: () -> Unit,
     onClickQuestSelection: () -> Unit,
     onClickBack: () -> Unit,
+    onClickSceeFragment: (Int) -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
     val questTypeCount by viewModel.questTypeCount.collectAsState()
@@ -191,31 +192,29 @@ fun SettingsScreen(
                     )
                 }
 
-                // todo: how to move to settings fragment from here?
-                //  not interested in re-implementing all scee settings in this awful style
                 Preference(
                     name = stringResource(R.string.pref_screen_ui),
-                    onClick = {  },
+                    onClick = { onClickSceeFragment(1) },
                 )
 
                 Preference(
                     name = stringResource(R.string.pref_screen_display),
-                    onClick = {  },
+                    onClick = { onClickSceeFragment(2) },
                 )
 
                 Preference(
                     name = stringResource(R.string.pref_screen_quests),
-                    onClick = {  },
+                    onClick = { onClickSceeFragment(3) },
                 )
 
                 Preference(
                     name = stringResource(R.string.pref_screen_notes),
-                    onClick = {  },
+                    onClick = { onClickSceeFragment(4) },
                 )
 
                 Preference(
                     name = stringResource(R.string.pref_screen_data_management),
-                    onClick = {  },
+                    onClick = { onClickSceeFragment(5) },
                 )
 
                 // todo: debug log reader, gps & network location intervals
