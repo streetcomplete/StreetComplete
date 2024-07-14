@@ -4,7 +4,7 @@ package de.westnordost.streetcomplete.quests.boat_rental
 enum class BoatRental(val osmValue: String) {
     CANOE("canoe_rental"),
     KAYAK("kayak_rental"),
-    PEDALBOARD("pedalboard_rental"),
+    PEDALBOAT("pedalboat_rental"),
     MOTORBOAT("motorboat_rental"),
     PADDLEBOARD("standup_paddleboard_rental"),
     SAILBOAT("sailboat_rental"),

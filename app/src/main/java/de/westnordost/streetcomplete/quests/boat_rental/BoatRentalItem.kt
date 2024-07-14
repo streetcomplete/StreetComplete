@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.boat_rental
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.MOTORBOAT
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.HOUSEBOAT
-import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.PEDALBOARD
+import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.PEDALBOAT
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.JETSKI
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.SAILBOAT
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.DINGHY
@@ -17,7 +17,7 @@ fun BoatRental.asItem() = Item(this, iconResId, titleResId)
 private val BoatRental.titleResId: Int get() = when (this) {
     CANOE ->       R.string.quest_boat_rental_canoe
     KAYAK ->       R.string.quest_boat_rental_kayak
-    PEDALBOARD ->  R.string.quest_boat_rental_pedalboard
+    PEDALBOAT ->   R.string.quest_boat_rental_pedalboat
     MOTORBOAT ->   R.string.quest_boat_rental_motorboat
     PADDLEBOARD -> R.string.quest_boat_rental_paddleboard
     SAILBOAT ->    R.string.quest_boat_rental_sailboat
@@ -28,7 +28,7 @@ private val BoatRental.titleResId: Int get() = when (this) {
 private val BoatRental.iconResId: Int get() = when (this) {
     CANOE ->       R.drawable.ic_boat_rental_canoe
     KAYAK ->       R.drawable.ic_boat_rental_kayak
-    PEDALBOARD ->  R.drawable.ic_boat_rental_pedalboard
+    PEDALBOAT ->   R.drawable.ic_boat_rental_pedalboat
     MOTORBOAT ->   R.drawable.ic_boat_rental_motorboat
     PADDLEBOARD -> R.drawable.ic_boat_rental_standup_paddleboard
     SAILBOAT ->    R.drawable.ic_boat_rental_sailboat
