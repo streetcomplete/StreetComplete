@@ -150,7 +150,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
                         .absoluteOffset(80.dp, 40.dp)
                 )
             }
-            if (overlayPaint.value > 0.8f) {
+            if (overlayPaint.value > 0.7f) {
                 Icon(
                     painter = painterResource(R.drawable.ic_preset_maki_fuel),
                     contentDescription = null,
