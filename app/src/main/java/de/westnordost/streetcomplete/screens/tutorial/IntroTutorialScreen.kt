@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.screens.tutorial
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
@@ -21,6 +23,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,7 +42,6 @@ import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import kotlinx.coroutines.launch
 
 /** Shows a short tutorial for first-time users */
 @Composable
@@ -71,18 +73,11 @@ fun IntroTutorialScreen(
 private fun BoxScope.IntroTutorialIllustration(
     page: Int
 ) {
-    val mapTilt = remember { Animatable(0f) }
-    val mapScale = remember { Animatable(1f) }
-    val mapShine = remember { Animatable(1f) }
-
-    LaunchedEffect(page) {
-        val mapSpec = tween<Float>(800)
-        launch { mapTilt.animateTo(if (page == 0) 0f else 50f, mapSpec) }
-        launch { mapScale.animateTo(if (page == 0) 1f else 1.5f, mapSpec) }
-        launch { mapShine.animateTo(if (page == 0) 1f else 0f, mapSpec) }
-    }
-
     Box(contentAlignment = Alignment.TopStart) {
+        val mapTransition = updateTransition(page)
+        val mapTilt by mapTransition.animateFloat({ tween(800) }) { if (it == 0) 0f else 50f }
+        val mapScale by mapTransition.animateFloat({ tween(800) }) { if (it == 0) 1f else 1.5f }
+        val mapShine by mapTransition.animateFloat({ tween(800) }) { if (it == 0) 1f else 0f }
         Box(Modifier.size(width = 226.dp, height = 222.dp)) {
             Image(
                 painter = painterResource(R.drawable.logo_osm_map),
@@ -90,9 +85,9 @@ private fun BoxScope.IntroTutorialIllustration(
                 modifier = Modifier
                     .fillMaxSize()
                     .graphicsLayer {
-                        rotationX = mapTilt.value
-                        scaleX = mapScale.value
-                        scaleY = mapScale.value
+                        rotationX = mapTilt
+                        scaleX = mapScale
+                        scaleY = mapScale
                     }
             )
             Image(
@@ -101,10 +96,10 @@ private fun BoxScope.IntroTutorialIllustration(
                 modifier = Modifier
                     .fillMaxSize()
                     .graphicsLayer {
-                        rotationX = mapTilt.value
-                        scaleX = mapScale.value
-                        scaleY = mapScale.value
-                        alpha = mapShine.value
+                        rotationX = mapTilt
+                        scaleX = mapScale
+                        scaleY = mapScale
+                        alpha = mapShine
                     }
             )
         }
@@ -166,7 +161,9 @@ private fun BoxScope.IntroTutorialIllustration(
         visible = page in 1..2,
         enter = fadeIn(tween(400, 400)),
         exit = fadeOut(tween(400)),
-        modifier = Modifier.align(Alignment.BottomEnd).padding(16.dp)
+        modifier = Modifier
+            .align(Alignment.BottomEnd)
+            .padding(32.dp)
     ) {
         LocationStateButton(
             onClick = {},
