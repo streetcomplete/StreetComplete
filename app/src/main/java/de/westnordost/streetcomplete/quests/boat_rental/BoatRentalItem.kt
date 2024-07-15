@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.HOUSEBOAT
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.PEDALBOAT
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.JETSKI
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.SAILBOAT
-import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.DINGHY
+import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.ROWBOAT
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.KAYAK
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.CANOE
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.PADDLEBOARD
@@ -23,7 +23,7 @@ private val BoatRental.titleResId: Int get() = when (this) {
     SAILBOAT ->    R.string.quest_boat_rental_sailboat
     JETSKI ->      R.string.quest_boat_rental_jetski
     HOUSEBOAT ->   R.string.quest_boat_rental_houseboat
-    DINGHY ->      R.string.quest_boat_rental_dinghy
+    ROWBOAT ->     R.string.quest_boat_rental_rowboat
 }
 private val BoatRental.iconResId: Int get() = when (this) {
     CANOE ->       R.drawable.ic_boat_rental_canoe
@@ -34,5 +34,5 @@ private val BoatRental.iconResId: Int get() = when (this) {
     SAILBOAT ->    R.drawable.ic_boat_rental_sailboat
     JETSKI ->      R.drawable.ic_boat_rental_jetski
     HOUSEBOAT ->   R.drawable.ic_boat_rental_houseboat
-    DINGHY ->      R.drawable.ic_boat_rental_dinghy
+    ROWBOAT ->     R.drawable.ic_boat_rental_rowboat
 }

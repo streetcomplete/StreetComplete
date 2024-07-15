@@ -33,4 +33,4 @@ class AddBoatRental : OsmFilterQuestType<List<BoatRental>>() {
 private val ALL_RENTALS =
     setOf("canoe_rental", "kayak_rental", "pedalboat_rental",
         "motorboat_rental", "standup_paddleboard_rental", "sailboat_rental",
-        "jetski_rental", "houseboat_rental", "dinghy_rental")
+        "jetski_rental", "houseboat_rental", "rowboat_rental")

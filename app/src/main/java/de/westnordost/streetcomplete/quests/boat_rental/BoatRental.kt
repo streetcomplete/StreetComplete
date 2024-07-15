@@ -10,5 +10,5 @@ enum class BoatRental(val osmValue: String) {
     SAILBOAT("sailboat_rental"),
     JETSKI("jetski_rental"),
     HOUSEBOAT("houseboat_rental"),
-    DINGHY("dinghy_rental"),
+    ROWBOAT(rowboat_rental"),
 }

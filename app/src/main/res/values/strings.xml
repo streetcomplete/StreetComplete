@@ -807,7 +807,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_boat_rental_kayak">Kayak</string>
     <string name="quest_boat_rental_canoe">Canoe</string>
     <string name="quest_boat_rental_houseboat">Houseboat</string>
-    <string name="quest_boat_rental_dinghy">Dinghy</string>
+    <string name="quest_boat_rental_rowboat">Rowboat</string>
     <string name="quest_boat_rental_paddleboard">Standup Paddleboard (SUP)</string>
 
     <string name="quest_bollard_type_title">What type of bollard is this?</string>
