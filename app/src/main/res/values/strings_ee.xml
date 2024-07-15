@@ -170,7 +170,9 @@
 
     <!-- other settings -->
     <string name="delete_cache_dialog_message2">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.\nChoose which to remove.</string>
+    <!-- currently not used, might be removed soon -->
     <string name="delete_confirmation_tiles">Map tiles</string>
+    <!-- currently not used, might be removed soon -->
     <string name="delete_confirmation_data">OSM &amp; quest data</string>
     <string name="delete_confirmation_both">Both</string>
     <string name="theme_dark_contrast">Dark (increased contrast)</string>

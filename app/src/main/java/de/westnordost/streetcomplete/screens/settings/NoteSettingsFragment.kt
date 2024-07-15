@@ -40,7 +40,7 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Toolbar>(R.id.toolbar).apply {
+        view.findViewById<Toolbar>(R.id.toolbar)?.apply {
             setUpToolbarTitleAndIcon(this)
         }
     }

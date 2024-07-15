@@ -144,6 +144,7 @@ class SettingsViewModelImpl(
         listeners.clear()
     }
 
+    // todo: no need to keep them separated any more, not going to implement a new dialog to get a third button just for this
     override fun deleteCache() {
         cleaner.cleanData()
     }

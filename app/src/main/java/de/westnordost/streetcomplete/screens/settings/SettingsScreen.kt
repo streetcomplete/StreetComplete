@@ -1,5 +1,14 @@
 package de.westnordost.streetcomplete.screens.settings
 
+import android.content.Context
+import android.os.Build
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,15 +27,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
 import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.ui.common.BackIcon
@@ -36,7 +48,12 @@ import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
+import de.westnordost.streetcomplete.util.TempLogger
+import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.logs.DatabaseLogger
+import de.westnordost.streetcomplete.util.logs.Log
+import org.koin.compose.koinInject
 import java.util.Locale
 
 /** Shows the settings lists */
@@ -73,6 +90,23 @@ fun SettingsScreen(
     var showExpertModeConfirmation by remember { mutableStateOf(false) }
 
     val presetNameOrDefault = selectedPresetName ?: stringResource(R.string.quest_presets_default_name)
+
+    val c = LocalContext.current
+    val databaseLogger: DatabaseLogger = koinInject()
+    val prefs: Preferences = koinInject()
+    var useDebugLogger by remember { mutableStateOf(prefs.getBoolean(Prefs.TEMP_LOGGER, false)) }
+
+    fun useDebugLogger(use: Boolean, prefs: Preferences, databaseLogger: DatabaseLogger) {
+        prefs.putBoolean(Prefs.TEMP_LOGGER, use)
+        useDebugLogger = use
+        if (use) {
+            Log.instances.removeAll { it is DatabaseLogger }
+            Log.instances.add(TempLogger)
+        } else {
+            Log.instances.remove(TempLogger)
+            Log.instances.add(databaseLogger)
+        }
+    }
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
@@ -220,8 +254,22 @@ fun SettingsScreen(
                     onClick = { onClickSceeFragment(5) },
                 )
 
-                // todo: debug log reader, gps & network location intervals
-                //  maybe just move to data management settings...
+                if (BuildConfig.DEBUG) {
+                    Preference(
+                        name = "Debug log reader",
+                        onClick = { showOldLogReader(c) }
+                    )
+
+                    Preference( // todo: initialized in off state
+                        name = "Use temp debug logger",
+                        onClick = { useDebugLogger(!useDebugLogger, prefs, databaseLogger) },
+                    ) {
+                        Switch(
+                            checked = keepScreenOn,
+                            onCheckedChange = { useDebugLogger(it, prefs, databaseLogger) }
+                        )
+                    }
+                }
             }
 
             if (BuildConfig.DEBUG) {
@@ -244,14 +292,6 @@ fun SettingsScreen(
         )
     }
     if (showDeleteCacheConfirmation) {
-        /* todo
-                .setNeutralButton(R.string.delete_confirmation_both) { _, _ ->
-                    viewModel.deleteTiles()
-                    viewModel.deleteCache()
-                }
-                .setPositiveButton(R.string.delete_confirmation_tiles) { _, _ -> viewModel.deleteTiles() }
-                .setNegativeButton(R.string.delete_confirmation_data) { _, _ -> viewModel.deleteCache() }
-         */
         ConfirmationDialog(
             onDismissRequest = { showDeleteCacheConfirmation = false },
             onConfirmed = { viewModel.deleteCache() },
@@ -363,4 +403,68 @@ private fun getLanguageDisplayName(languageTag: String): String? {
     if (languageTag.isEmpty()) return null
     val locale = Locale.forLanguageTag(languageTag)
     return locale.getDisplayName(locale)
+}
+
+private fun showOldLogReader(context: Context) { // todo: repeats lines... is it the logger, or the dialog?
+    var reversed = false
+    var filter = ""
+    var maxLines = 200
+    val log = TextView(context)
+    var lines = TempLogger.getLog().take(maxLines)
+    log.setTextIsSelectable(true)
+    log.text = lines.joinToString("\n")
+    fun reloadText() {
+        val l = TempLogger.getLog()
+        lines = when {
+            filter.isNotBlank() && reversed -> l.asReversed().filter { line -> line.toString().contains(filter, true) }
+            filter.isNotBlank() -> l.filter { line -> line.toString().contains(filter, true) }
+            reversed -> l.asReversed()
+            else -> l
+        }.take(maxLines)
+        log.text = lines.joinToString("\n")
+    }
+    val scrollLog = ScrollView(context).apply {
+        addView(log)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            setOnScrollChangeListener { _, _, _, _, _ ->
+                if (log.bottom <= height + scrollY && lines.size >= maxLines) {
+                    maxLines *= 2
+                    reloadText()
+                }
+            }
+        }
+    }
+    val reverseButton = Button(context)
+    reverseButton.setText(R.string.pref_read_reverse_button)
+    reverseButton.setOnClickListener {
+        reversed = !reversed
+        reloadText()
+        scrollLog.scrollY = 0
+    }
+    val filterView = EditText(context).apply {
+        setHint(R.string.pref_read_filter_hint)
+        doAfterTextChanged {
+            filter = it.toString()
+            val previousCursorPosition = selectionStart
+            reloadText()
+            scrollLog.fullScroll(View.FOCUS_UP)
+            requestFocus() // focus is lost when scrolling it seems
+            setSelection(previousCursorPosition)
+        }
+        setDefaultDialogPadding() // not a dialog, but still suitable
+    }
+    val layout = LinearLayout(context).apply { orientation = LinearLayout.VERTICAL }
+    layout.addView(LinearLayout(context).apply {
+        addView(reverseButton)
+        addView(filterView)
+    }) // put this on top, or layout will need more work to keep this visible
+    layout.addView(scrollLog)
+    val d = AlertDialog.Builder(context)
+        .setTitle(R.string.pref_read_log_title)
+        .setView(layout) // not using default padding to allow longer log lines (looks ugly, but is very convenient)
+        .setPositiveButton(R.string.close, null)
+        .create()
+    d.show()
+    // maximize dialog size, because log lines are long
+    d.window?.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
 }

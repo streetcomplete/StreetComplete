@@ -48,12 +48,10 @@ import de.westnordost.streetcomplete.quests.custom.FILENAME_CUSTOM_QUEST
 import de.westnordost.streetcomplete.quests.osmose.OsmoseDao
 import de.westnordost.streetcomplete.quests.tree.FILENAME_TREES
 import de.westnordost.streetcomplete.screens.HasTitle
-import de.westnordost.streetcomplete.util.TempLogger
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.getFakeCustomOverlays
 import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
@@ -79,7 +77,6 @@ class DataManagementSettingsFragment :
     private val cleaner: Cleaner by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsController: QuestPresetsController by inject()
-    private val databaseLogger: DatabaseLogger by inject()
     private val osmoseDao: OsmoseDao by inject()
     private val externalSourceQuestController: ExternalSourceQuestController by inject()
 
@@ -87,17 +84,14 @@ class DataManagementSettingsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Toolbar>(R.id.toolbar).apply {
+        view.findViewById<Toolbar>(R.id.toolbar)?.apply {
             setUpToolbarTitleAndIcon(this)
         }
     }
-    
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences_ee_data_management, false)
         addPreferencesFromResource(R.xml.preferences_ee_data_management)
-
-        if (!BuildConfig.DEBUG && !prefs.getBoolean(Prefs.TEMP_LOGGER, false))
-            findPreference<Preference>("temp_logger")?.isVisible = false
 
         fun importExport(import: Boolean) {
             val lists = listOf(
@@ -200,13 +194,6 @@ class DataManagementSettingsFragment :
         when (key) {
             Prefs.DATA_RETAIN_TIME -> { lifecycleScope.launch(Dispatchers.IO) { cleaner.cleanOld() } }
             Prefs.PREFER_EXTERNAL_SD -> { moveMapTilesToCurrentLocation() }
-            Prefs.TEMP_LOGGER -> { if (prefs.getBoolean(Prefs.TEMP_LOGGER, false)) {
-                Log.instances.removeAll { it is DatabaseLogger }
-                Log.instances.add(TempLogger)
-            } else {
-                Log.instances.remove(TempLogger)
-                Log.instances.add(databaseLogger)
-            }}
         }
     }
 
