@@ -32,7 +32,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
-import de.westnordost.streetcomplete.ui.ktx.scale
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import kotlinx.coroutines.launch
@@ -103,8 +102,10 @@ private fun BoxScope.IntroTutorialIllustration(
             Modifier
                 .size(width = 226.dp, height = 222.dp)
                 .graphicsLayer {
+                    val scale = 1f + mapZoom.value * 0.5f
+                    scaleX = scale
+                    scaleY = scale
                     rotationX = mapZoom.value * 50f
-                    scale = 1f + mapZoom.value * 0.5f
                 }
         ) {
             Image(
@@ -165,9 +166,11 @@ private fun BoxScope.IntroTutorialIllustration(
                 .size(225.dp)
                 .absolutePadding(left = 15.dp, top = 15.dp)
                 .graphicsLayer {
+                    val scale = 1f + mapZoom.value * 5f
+                    scaleX = scale
+                    scaleY = scale
                     transformOrigin = TransformOrigin(0.67f, 0.33f)
                     alpha = 1f - mapZoom.value
-                    scale = 1f + mapZoom.value * 5f
                 }
         )
     }

@@ -38,8 +38,6 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
-import de.westnordost.streetcomplete.ui.ktx.scale
-import de.westnordost.streetcomplete.ui.ktx.translation
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -122,7 +120,9 @@ private fun BoxScope.OverlaysTutorialIllustration(
             Modifier
                 .size(width = 226.dp, height = 222.dp)
                 .graphicsLayer {
-                    scale = 1f + mapZoom.value
+                    val scale = 1f + mapZoom.value
+                    scaleX = scale
+                    scaleY = scale
                     rotationZ = mapZoom.value * -15f
                     transformOrigin = TransformOrigin(0.25f, 0.75f)
                     translationX = 45f * mapZoom.value * density
@@ -192,7 +192,9 @@ private fun BoxScope.OverlaysTutorialIllustration(
             painter = paintRollerPainter(paintRolling),
             contentDescription = null,
             modifier = Modifier.graphicsLayer {
-                translation = (-128 + paintRollerPosition.value * 256) * density
+                val offset = (-128 + paintRollerPosition.value * 256) * density
+                translationX = offset
+                translationY = offset
                 rotationZ = -45.0f
                 alpha = paintRollerAlpha.value
             }
