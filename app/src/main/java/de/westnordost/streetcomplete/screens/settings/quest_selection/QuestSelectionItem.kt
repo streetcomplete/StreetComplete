@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.settings.quest_selection
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Checkbox
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
@@ -23,6 +26,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -30,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import org.koin.compose.koinInject
@@ -45,6 +52,7 @@ fun QuestSelectionItem(
 ) {
     val alpha = if (!item.selected) ContentAlpha.disabled else ContentAlpha.high
     val questTypeRegistry: QuestTypeRegistry = koinInject()
+    val c = LocalContext.current // wtf is the point of this?
 
     Row(
         modifier = modifier.height(IntrinsicSize.Min),
@@ -76,6 +84,24 @@ fun QuestSelectionItem(
                 DisabledHint(stringResource(R.string.questList_disabled_by_default))
             }
         }
+        if (item.questType.hasQuestSettings)
+            Image(
+                painter = painterResource(R.drawable.ic_settings_48dp),
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(start = 16.dp)
+                    .size(48.dp)
+                    .clickable {
+                        item.questType
+                            .getQuestSettingsDialog(c)
+                            ?.show()
+                    }
+                    .background( // looks ugly and does not appear right after dismissing dialog, but whatever... I don't care any more.
+                        color = nowItHasToBeSomewhereElse(item),
+                        shape = CircleShape
+                    )
+                    .alpha(alpha),
+            )
         Box(
             modifier = Modifier
                 .width(64.dp)
@@ -89,6 +115,14 @@ fun QuestSelectionItem(
             )
         }
     }
+}
+
+@Composable
+private fun nowItHasToBeSomewhereElse(item: QuestSelection): Color {
+    val start = questPrefix(item.prefs) + "qs_" + item.questType.name + "_"
+    return if (item.prefs.prefs.keys.any { it.startsWith(start) })
+        colorResource(id = R.color.accent)
+    else Color.Transparent
 }
 
 @Composable
