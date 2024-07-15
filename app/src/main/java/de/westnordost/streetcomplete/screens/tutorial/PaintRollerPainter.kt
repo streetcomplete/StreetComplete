@@ -40,7 +40,7 @@ fun paintRollerPainter(progress: Float): VectorPainter = rememberVectorPainter(
         fill = SolidColor(Color(0xfffef0c1))
     )
     Group(clipPathData = rollerLintClipPath) {
-        Group(translationY = progress * 9f) {
+        Group(translationY = progress.coerceIn(0f, 1f) * 9f) {
             Path(
                 pathData = rollerLintPath,
                 fill = SolidColor(Color(0xffe2cf90))

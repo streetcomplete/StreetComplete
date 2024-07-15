@@ -17,7 +17,7 @@ import kotlin.math.cos
 
 @Composable
 fun overlayPainter(progress: Float): VectorPainter = rememberMapOverlayPainter {
-    val translate = -(1f - progress) * 317f
+    val translate = -(1f - progress.coerceIn(0f, 1f)) * 317f
     Group(
         clipPathData = clipPath,
         translationX = translate,
@@ -71,9 +71,9 @@ fun overlayEditDonePainter(progress: Float): VectorPainter = rememberMapOverlayP
         pathData = way2Path,
         strokeLineJoin = StrokeJoin.Round,
         strokeLineCap = StrokeCap.Round,
-        strokeLineWidth = 8 + (1 - progress) * 16,
+        strokeLineWidth = 8 + (1 - progress.coerceIn(0f, 1f)) * 16,
         stroke = SolidColor(Color(0xff10C1B8)),
-        strokeAlpha = progress
+        strokeAlpha = progress.coerceIn(0f, 1f)
     )
 }
 
