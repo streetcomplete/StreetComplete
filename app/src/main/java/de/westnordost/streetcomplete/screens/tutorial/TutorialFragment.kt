@@ -23,5 +23,4 @@ class TutorialFragment : Fragment() {
                 )
             }
         }
-
 }

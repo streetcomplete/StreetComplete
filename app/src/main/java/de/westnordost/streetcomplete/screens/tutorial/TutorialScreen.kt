@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.snapping.SnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
@@ -52,6 +53,12 @@ fun TutorialScreen(
     pageContent: @Composable (page: Int) -> Unit
 ) {
     val state = rememberPagerState { pageCount }
+    val coroutineScope = rememberCoroutineScope()
+    BackHandler(state.currentPage > 0) {
+        coroutineScope.launch {
+            state.animateScrollToPage(state.currentPage - 1)
+        }
+    }
 
     TutorialScreenLayout(
         illustration = {
@@ -88,7 +95,8 @@ fun TutorialScreen(
                     )
                     .padding(bottom = 16.dp)
             )
-        }
+        },
+        modifier = Modifier.safeDrawingPadding()
     )
 }
 
@@ -107,7 +115,10 @@ private fun TutorialScreenLayout(
                 verticalArrangement = Arrangement.spacedBy(32.dp),
             ) {
                 Box(
-                    modifier = Modifier.fillMaxSize().weight(0.4f).clipToBounds(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .weight(0.4f)
+                        .clipToBounds(),
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     illustration()
@@ -130,7 +141,10 @@ private fun TutorialScreenLayout(
                     horizontalArrangement = Arrangement.spacedBy(32.dp)
                 ) {
                     Box(
-                        modifier = Modifier.fillMaxSize().weight(0.4f).clipToBounds(),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .weight(0.4f)
+                            .clipToBounds(),
                         contentAlignment = Alignment.CenterEnd
                     ) {
                         illustration()
@@ -147,7 +161,10 @@ private fun TutorialScreenLayout(
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Spacer(Modifier.weight(0.4f))
-                    Box(Modifier.weight(0.6f).align(Alignment.Bottom)) {
+                    Box(
+                        Modifier
+                            .weight(0.6f)
+                            .align(Alignment.Bottom)) {
                         controls()
                     }
                 }

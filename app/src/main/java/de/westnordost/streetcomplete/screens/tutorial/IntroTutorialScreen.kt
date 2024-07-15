@@ -1,20 +1,12 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.core.updateTransition
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
-import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -23,10 +15,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
@@ -40,8 +32,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
+import de.westnordost.streetcomplete.ui.ktx.scale
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import kotlinx.coroutines.launch
 
 /** Shows a short tutorial for first-time users */
 @Composable
@@ -73,115 +67,116 @@ fun IntroTutorialScreen(
 private fun BoxScope.IntroTutorialIllustration(
     page: Int
 ) {
+    val mapZoom = remember { Animatable(0f) }
+    val button = remember { Animatable(0f) }
+    val pin1 = remember { Animatable(0f) }
+    val pin2 = remember { Animatable(0f) }
+    val pin3 = remember { Animatable(0f) }
+    val checkmark = remember { Animatable(0f) }
+
+    LaunchedEffect(page) {
+        // map is zoomed in and magnifier is zoomed out and faded out on page > 0
+        launch { mapZoom.animateTo(if (page == 0) 0f else 1f, tween(800)) }
+
+        // show button on page 1 and 2 (appear with delay)
+        if (page in 1..2) {
+            launch { button.animateTo(1f, tween(400, 400)) }
+        } else {
+            launch { button.animateTo(0f, tween(400)) }
+        }
+
+        // drop pins on page 2
+        launch { pin1.animateTo(if (page == 2) 1f else 0f, tween(400, 400)) }
+        launch { pin2.animateTo(if (page == 2) 1f else 0f, tween(400, 600)) }
+        launch { pin3.animateTo(if (page == 2) 1f else 0f, tween(400, 800)) }
+
+        // checkmark on page 3
+        if (page == 3) {
+            checkmark.animateTo(1f, tween(1200, 1200))
+        } else {
+            checkmark.animateTo(0f, tween(400))
+        }
+    }
+
     Box(contentAlignment = Alignment.TopStart) {
-        val mapTransition = updateTransition(page)
-        val mapTilt by mapTransition.animateFloat({ tween(800) }) { if (it == 0) 0f else 50f }
-        val mapScale by mapTransition.animateFloat({ tween(800) }) { if (it == 0) 1f else 1.5f }
-        val mapShine by mapTransition.animateFloat({ tween(800) }) { if (it == 0) 1f else 0f }
-        Box(Modifier.size(width = 226.dp, height = 222.dp)) {
+        Box(
+            Modifier
+                .size(width = 226.dp, height = 222.dp)
+                .graphicsLayer {
+                    rotationX = mapZoom.value * 50f
+                    scale = 1f + mapZoom.value * 0.5f
+                }
+        ) {
             Image(
                 painter = painterResource(R.drawable.logo_osm_map),
                 contentDescription = null,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .graphicsLayer {
-                        rotationX = mapTilt
-                        scaleX = mapScale
-                        scaleY = mapScale
-                    }
+                modifier = Modifier.fillMaxSize()
             )
             Image(
                 painter = painterResource(R.drawable.logo_osm_map_lighting),
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxSize()
-                    .graphicsLayer {
-                        rotationX = mapTilt
-                        scaleX = mapScale
-                        scaleY = mapScale
-                        alpha = mapShine
-                    }
+                    .alpha(1f - mapZoom.value)
             )
         }
 
-        AnimatedVisibility(
-            visible = page == 2,
-            enter = slideInVertically(tween(400, 400)) + fadeIn(tween(400, 400)),
-            exit = fadeOut(tween(400))
-        ) {
-            Pin(
-                iconPainter = painterResource(R.drawable.ic_quest_traffic_lights),
-                modifier = Modifier.absolutePadding(left = 0.dp, top = 25.dp)
-            )
-        }
-        AnimatedVisibility(
-            visible = page == 2,
-            enter = slideInVertically(tween(400, 600)) + fadeIn(tween(400, 600)),
-            exit = fadeOut(tween(400))
-        ) {
-            Pin(
-                iconPainter = painterResource(R.drawable.ic_quest_street),
-                modifier = Modifier.absolutePadding(left = 45.dp, top = 110.dp)
-            )
-        }
-        AnimatedVisibility(
-            visible = page == 2,
-            enter = slideInVertically(tween(400, 800)) + fadeIn(tween(400, 800)),
-            exit = fadeOut(tween(400))
-        ) {
-            Pin(
-                iconPainter = painterResource(R.drawable.ic_quest_recycling),
-                modifier = Modifier.absolutePadding(left = 160.dp, top = 70.dp)
-            )
-        }
+        val pinDropHeight = 200.dp
+        Pin(
+            iconPainter = painterResource(R.drawable.ic_quest_traffic_lights),
+            modifier = Modifier
+                .absolutePadding(left = 0.dp, top = 25.dp)
+                .graphicsLayer {
+                    alpha = pin1.value
+                    translationY = -(1f - pin1.value) * pinDropHeight.toPx()
+                }
+        )
+        Pin(
+            iconPainter = painterResource(R.drawable.ic_quest_street),
+            modifier = Modifier
+                .absolutePadding(left = 45.dp, top = 110.dp)
+                .graphicsLayer {
+                    alpha = pin2.value
+                    translationY = -(1f - pin2.value) * pinDropHeight.toPx()
+                }
+        )
+        Pin(
+            iconPainter = painterResource(R.drawable.ic_quest_recycling),
+            modifier = Modifier
+                .absolutePadding(left = 160.dp, top = 70.dp)
+                .graphicsLayer {
+                    alpha = pin3.value
+                    translationY = -(1f - pin3.value) * pinDropHeight.toPx()
+                }
+        )
 
-        val zoomScale = 6f
-        val magnifierOrigin = TransformOrigin(0.67f, 0.33f)
-        val magnifierAnimSpec = tween<Float>(800)
-        AnimatedVisibility(
-            visible = page == 0,
-            exit =
-                scaleOut(magnifierAnimSpec, zoomScale, magnifierOrigin) +
-                fadeOut(magnifierAnimSpec),
-            enter =
-                scaleIn(magnifierAnimSpec, zoomScale, magnifierOrigin) +
-                fadeIn(magnifierAnimSpec)
-        ) {
-            Image(
-                painter = painterResource(R.drawable.logo_osm_magnifier),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(225.dp)
-                    .absolutePadding(left = 15.dp, top = 15.dp)
-            )
-        }
-    }
-
-    AnimatedVisibility(
-        visible = page in 1..2,
-        enter = fadeIn(tween(400, 400)),
-        exit = fadeOut(tween(400)),
-        modifier = Modifier
-            .align(Alignment.BottomEnd)
-            .padding(32.dp)
-    ) {
         LocationStateButton(
             onClick = {},
             state = if (page == 1) LocationState.SEARCHING else LocationState.UPDATING,
+            modifier = Modifier
+                .absoluteOffset(150.dp, 150.dp)
+                .alpha(button.value)
+        )
+
+        Image(
+            painter = painterResource(R.drawable.logo_osm_magnifier),
+            contentDescription = null,
+            modifier = Modifier
+                .size(225.dp)
+                .absolutePadding(left = 15.dp, top = 15.dp)
+                .graphicsLayer {
+                    transformOrigin = TransformOrigin(0.67f, 0.33f)
+                    alpha = 1f - mapZoom.value
+                    scale = 1f + mapZoom.value * 5f
+                }
         )
     }
 
-    if (page == 3) {
-        val checkmarkProgress = remember { Animatable(0f) }
-        LaunchedEffect(page) {
-            checkmarkProgress.animateTo(1f, tween(800, 400, LinearEasing))
-        }
-        Image(
-            painter = checkmarkCircle(progress = checkmarkProgress.value),
-            contentDescription = null,
-            modifier = Modifier.align(Alignment.Center)
-        )
-    }
+    Image(
+        painter = checkmarkCirclePainter(checkmark.value),
+        contentDescription = null,
+        modifier = Modifier.align(Alignment.Center)
+    )
 }
 
 @Composable

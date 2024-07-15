@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.util.svgPath
 
 @Composable
-fun paintRoller(progress: Float): VectorPainter = rememberVectorPainter(
+fun paintRollerPainter(progress: Float): VectorPainter = rememberVectorPainter(
     defaultWidth = 234.dp,
     defaultHeight = 234.dp,
     viewportWidth = 26f,
