@@ -16,7 +16,6 @@ import androidx.core.text.HtmlCompat
 import androidx.core.widget.doAfterTextChanged
 import com.github.difflib.text.DiffRow.Tag
 import com.github.difflib.text.DiffRowGenerator
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.ParseException
@@ -252,12 +251,12 @@ fun getLabelSources(defaultValue: String, questType: OsmFilterQuestType<*>, pref
 private fun getPrefixedLabelSourcePref(questType: OsmElementQuestType<*>, prefs: SharedPreferences) = "${questPrefix(prefs)}qs_${questType.name}_label_sources"
 
 fun questPrefix(prefs: SharedPreferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
-    prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
+    prefs.getLong(Preferences.SELECTED_QUESTS_PRESET, 0).toString() + "_"
 else
     ""
 
 fun questPrefix(prefs: Preferences) = if (prefs.getBoolean(Prefs.QUEST_SETTINGS_PER_PRESET, false))
-    prefs.getLong(Prefs.SELECTED_QUESTS_PRESET, 0).toString() + "_"
+    prefs.getLong(Preferences.SELECTED_QUESTS_PRESET, 0).toString() + "_"
 else
     ""
 

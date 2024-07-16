@@ -522,7 +522,7 @@ class DataManagementSettingsFragment :
                 // remove all per-preset quest settings for proper replace
                 prefs.all.keys.filter { qsRegex.containsMatchIn(it) }.forEach { remove(it) }
                 // set selected preset to default, because previously selected may not exist any more
-                putLong(Prefs.SELECTED_QUESTS_PRESET, 0)
+                putLong(Preferences.SELECTED_QUESTS_PRESET, 0)
             }
         }
         readToSettings(questSettingsLines)
@@ -599,7 +599,7 @@ class DataManagementSettingsFragment :
         val settings = prefs.all.filterKeys {
             !it.contains("TangramPinsSpriteSheet") // this is huge and gets generated if missing anyway
                 && !it.contains("TangramIconsSpriteSheet") // this is huge and gets generated if missing anyway
-                && it != Prefs.OAUTH2_ACCESS_TOKEN // login
+                && it != Preferences.OAUTH2_ACCESS_TOKEN // login
                 && !it.contains("osm.") // login data
                 && !it.matches(perPresetQuestSetting) // per-preset quest settings should be stored with presets, because preset id is never guaranteed to match
                 && !it.startsWith("custom_overlay") // custom overlays are exported separately

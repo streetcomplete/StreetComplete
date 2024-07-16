@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.res.Configuration
 import android.content.res.Resources
 import com.mapzen.tangram.SceneUpdate
-import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import de.westnordost.streetcomplete.util.ktx.isApril1st
@@ -92,8 +92,8 @@ class SceneMapComponent(
     private fun getSceneFilePath(): String {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"))
-        val isHighContrastNightMode = theme == Prefs.Theme.DARK_CONTRAST
+        val theme = Theme.valueOf(prefs.getString(Preferences.THEME_SELECT, "AUTO"))
+        val isHighContrastNightMode = theme == Theme.DARK_CONTRAST
         val offsetFix = if (prefs.getBoolean(Prefs.OFFSET_FIX, false)) "-offset-fix" else ""
         val noSatelliteLabel = if (prefs.getBoolean(Prefs.NO_SATELLITE_LABEL, false)) "-no-label" else ""
         val april1 = if (isApril1st() && !isHighContrastNightMode && offsetFix.isNotEmpty() && noSatelliteLabel.isNotEmpty()) "wonky-" else ""

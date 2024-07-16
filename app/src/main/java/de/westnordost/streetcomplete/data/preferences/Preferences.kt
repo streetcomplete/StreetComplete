@@ -200,7 +200,7 @@ class Preferences(val prefs: ObservableSettings) {
         private const val SHOW_ALL_NOTES = "display.nonQuestionNotes"
         private const val AUTOSYNC = "autosync"
         private const val KEEP_SCREEN_ON = "display.keepScreenOn"
-        private const val THEME_SELECT = "theme.select"
+        const val THEME_SELECT = "theme.select"
         private const val LANGUAGE_SELECT = "language.select"
         private const val RESURVEY_INTERVALS = "quests.resurveyIntervals"
 
@@ -208,7 +208,7 @@ class Preferences(val prefs: ObservableSettings) {
         private const val OSM_USER_ID = "osm.userid"
         private const val OSM_USER_NAME = "osm.username"
         private const val OSM_UNREAD_MESSAGES = "osm.unread_messages"
-        private const val OAUTH2_ACCESS_TOKEN = "oauth2.accessToken"
+        const val OAUTH2_ACCESS_TOKEN = "oauth2.accessToken"
 
         // old keys login keys
         private const val OAUTH1_ACCESS_TOKEN = "oauth.accessToken"
@@ -245,7 +245,7 @@ class Preferences(val prefs: ObservableSettings) {
 
         // quest & overlays
         private const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"
-        private const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
+        const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
         private const val SELECTED_OVERLAY = "selectedOverlay"
         private const val LAST_PICKED_PREFIX = "imageListLastPicked."
         private const val LAST_EDIT_TIME = "changesets.lastChangeTime"

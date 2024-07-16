@@ -1,15 +1,7 @@
 package de.westnordost.streetcomplete
 
-import androidx.appcompat.app.AppCompatDelegate
-
-/** Constant class to have all the identifiers for shared preferences in one place  */
+/** Constant class to have all the identifiers for SCEE shared preferences in one place  */
 object Prefs {
-    // todo: don't use these any more
-    const val THEME_SELECT = "theme.select"
-    const val OAUTH2_ACCESS_TOKEN = "oauth2.accessToken"
-    const val SELECTED_QUESTS_PRESET = "selectedQuestsPreset"
-
-    // modified
     const val VOLUME_ZOOM = "volume_button_zoom"
     const val SHOW_3D_BUILDINGS = "3d_buildings"
     const val QUEST_GEOMETRIES = "quest_geometries"
@@ -74,28 +66,6 @@ object Prefs {
     const val DISABLE_NAVIGATION_MODE = "disable_navigation_mode"
     const val TEMP_LOGGER = "temp_logger"
     const val THEME_BACKGROUND = "theme.background_type"
-
-    // todo: don't use the stuff below?
-    enum class Autosync {
-        ON,
-        WIFI,
-        OFF
-    }
-
-    enum class Theme(val appCompatNightMode: Int) {
-        LIGHT(AppCompatDelegate.MODE_NIGHT_NO),
-        DARK(AppCompatDelegate.MODE_NIGHT_YES),
-        DARK_CONTRAST(AppCompatDelegate.MODE_NIGHT_YES),
-        AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
-        SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-    }
-
-    enum class ResurveyIntervals {
-        EVEN_LESS_OFTEN,
-        LESS_OFTEN,
-        DEFAULT,
-        MORE_OFTEN,
-    }
 
     enum class DayNightBehavior {
         IGNORE,

@@ -59,7 +59,6 @@ import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
-import de.westnordost.streetcomplete.screens.settings.DataManagementSettingsFragment
 import de.westnordost.streetcomplete.screens.settings.LAST_KNOWN_DB_VERSION
 import de.westnordost.streetcomplete.screens.settings.oldQuestNames
 import de.westnordost.streetcomplete.screens.settings.renameUpdatedQuests
