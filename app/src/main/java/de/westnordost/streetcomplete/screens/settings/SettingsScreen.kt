@@ -260,12 +260,12 @@ fun SettingsScreen(
                         onClick = { showOldLogReader(c) }
                     )
 
-                    Preference( // todo: initialized in off state
+                    Preference(
                         name = "Use temp debug logger",
                         onClick = { useDebugLogger(!useDebugLogger, prefs, databaseLogger) },
                     ) {
                         Switch(
-                            checked = keepScreenOn,
+                            checked = useDebugLogger,
                             onCheckedChange = { useDebugLogger(it, prefs, databaseLogger) }
                         )
                     }
