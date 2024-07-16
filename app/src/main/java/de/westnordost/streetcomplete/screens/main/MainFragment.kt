@@ -78,6 +78,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationA
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
+import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuDialog
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
@@ -668,7 +669,7 @@ class MainFragment :
 
     @SuppressLint("MissingPermission")
     private fun onLocationIsEnabled() {
-        binding.gpsTrackingButton.state = LocationStateButton.State.SEARCHING
+        binding.gpsTrackingButton.state = LocationState.SEARCHING
         mapFragment!!.startPositionTracking()
 
         setIsFollowingPosition(wasFollowingPosition ?: true)
@@ -677,8 +678,8 @@ class MainFragment :
 
     private fun onLocationIsDisabled() {
         binding.gpsTrackingButton.state = when {
-            requireContext().hasLocationPermission -> LocationStateButton.State.ALLOWED
-            else -> LocationStateButton.State.DENIED
+            requireContext().hasLocationPermission -> LocationState.ALLOWED
+            else -> LocationState.DENIED
         }
         binding.gpsTrackingButton.isNavigation = false
         binding.locationPointerPin.visibility = View.GONE
@@ -688,7 +689,7 @@ class MainFragment :
 
     private fun onLocationChanged(location: Location) {
         viewLifecycleScope.launch {
-            binding.gpsTrackingButton.state = LocationStateButton.State.UPDATING
+            binding.gpsTrackingButton.state = LocationState.UPDATING
             updateLocationPointerPin()
         }
     }
