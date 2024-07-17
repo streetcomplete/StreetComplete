@@ -52,6 +52,6 @@ fun LazyAchievementsGrid(
 private fun PreviewLazyAchievementsGrid() {
     LazyAchievementsGrid(
         achievements = achievements.map { it to (1..20).random() },
-        onClickAchievement = { achievement, level ->  }
+        onClickAchievement = { achievement, level -> }
     )
 }

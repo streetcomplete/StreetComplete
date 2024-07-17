@@ -20,7 +20,7 @@ class ElementEditUploader(
     /** Apply the given change to the given element and upload it
      *
      *  @throws ConflictException if element has been changed server-side in an incompatible way
-     *  */
+     */
     suspend fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
         val remoteChanges by lazy { edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider()) }
         val localChanges by lazy { edit.action.createUpdates(mapDataController, getIdProvider()) }

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.user
 
-import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.util.Listeners
 
 /** Controller that handles user login, logout, auth and updated data */
 class UserDataController(private val prefs: Preferences) : UserDataSource {

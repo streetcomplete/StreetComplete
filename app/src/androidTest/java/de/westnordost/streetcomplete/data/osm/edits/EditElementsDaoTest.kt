@@ -53,7 +53,7 @@ class EditElementsDaoTest : ApplicationDbTestCase() {
         )
 
         assertEquals(
-            listOf(ElementKey(ElementType.NODE, 0), ElementKey(ElementType.WAY, 1),),
+            listOf(ElementKey(ElementType.NODE, 0), ElementKey(ElementType.WAY, 1)),
             dao.get(7)
         )
 

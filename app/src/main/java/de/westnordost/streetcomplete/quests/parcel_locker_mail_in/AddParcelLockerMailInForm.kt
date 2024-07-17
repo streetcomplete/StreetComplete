@@ -11,7 +11,7 @@ class AddParcelLockerMailInForm : AbstractOsmQuestForm<ParcelLockerMailIn>() {
     )
 
     override val otherAnswers get() = listOf(
-        AnswerItem(R.string.quest_wheelchairAccessPat_noToilet) {
+        AnswerItem(R.string.quest_parcel_locker_mail_in_answer_returns_only) {
             applyAnswer(ParcelLockerMailIn.RETURNS_ONLY)
         }
     )

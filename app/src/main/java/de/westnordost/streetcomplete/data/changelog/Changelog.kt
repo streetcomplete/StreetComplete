@@ -14,7 +14,7 @@ class Changelog(private val resources: Resources) {
     /** Return the app's changelog, sorted descending by version.
      *
      *  @param sinceVersion optionally only return the changes since the given version
-     *  */
+     */
     suspend fun getChangelog(sinceVersion: String? = null): Map<String, List<HtmlNode>> {
         val text = withContext(Dispatchers.IO) { resources.getRawTextFile(R.raw.changelog) }
         val html = withContext(Dispatchers.Default) { parseHtml(text) }

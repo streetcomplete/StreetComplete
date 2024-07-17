@@ -10,8 +10,8 @@ import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
-import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

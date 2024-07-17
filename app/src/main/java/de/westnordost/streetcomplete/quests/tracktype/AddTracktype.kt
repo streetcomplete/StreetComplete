@@ -20,6 +20,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
           or tracktype older today -8 years
         )
         and (access !~ private|no or (foot and foot !~ private|no))
+        and !bridge
     """
     // ~paved tracks are less likely to change the surface type
     override val changesetComment = "Specify tracktypes"

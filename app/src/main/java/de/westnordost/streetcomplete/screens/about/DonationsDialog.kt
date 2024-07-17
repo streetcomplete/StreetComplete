@@ -98,7 +98,7 @@ fun DonationPlatformItem(
 @Preview
 @Composable
 private fun DonationsDialogPreview() {
-    DonationsDialog({},{})
+    DonationsDialog({}, {})
 }
 
 @Preview

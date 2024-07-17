@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
  *  2. ask for location to be turned on
  *
  *  Reports back via a local broadcast with the intent RequireLocation.REQUEST_LOCATION_PERMISSION_RESULT
- * */
+ */
 class LocationRequestFragment : Fragment() {
 
     private val requestPermission = registerForActivityResult(
