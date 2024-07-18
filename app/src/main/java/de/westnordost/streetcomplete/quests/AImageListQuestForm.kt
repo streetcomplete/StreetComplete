@@ -60,7 +60,10 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.list.layoutManager = GridLayoutManager(activity, itemsPerRow)
         binding.list.isNestedScrollingEnabled = false
 
-        binding.selectHintLabel.setText(if (maxSelectableItems == 1) R.string.quest_roofShape_select_one else R.string.quest_select_hint)
+        binding.selectHintLabel.setText(
+            if (maxSelectableItems == 1) R.string.quest_roofShape_select_one
+            else R.string.quest_multiselect_hint
+        )
 
         imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
             override fun onIndexSelected(index: Int) {
