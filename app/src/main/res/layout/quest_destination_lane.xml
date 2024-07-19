@@ -12,10 +12,9 @@
         android:layout_marginHorizontal="8dp"
         android:layout_width="72dp"
         android:layout_height="72dp" />
-
+<!-- re-add ic_checkmark_circle -->
     <ImageView
         android:id="@+id/check"
-        android:src="@drawable/ic_checkmark_circle"
         android:visibility="gone"
         app:layout_constraintRight_toRightOf="@id/lane"
         app:layout_constraintBottom_toBottomOf="@id/lane"

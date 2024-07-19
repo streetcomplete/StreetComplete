@@ -58,7 +58,10 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         binding.list.layoutManager = GridLayoutManager(activity, itemsPerRow)
         binding.list.isNestedScrollingEnabled = false
 
-        binding.selectHintLabel.setText(if (maxSelectableItems == 1) R.string.quest_roofShape_select_one else R.string.quest_select_hint)
+        binding.selectHintLabel.setText(
+            if (maxSelectableItems == 1) R.string.quest_roofShape_select_one
+            else R.string.quest_multiselect_hint
+        )
 
         imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
             override fun onIndexSelected(index: Int) {
@@ -96,14 +99,16 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
-    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> =
+    private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
         if (originalList.size > prefs.getInt(Prefs.FAVS_FIRST_MIN_LINES, 1) * itemsPerRow && moveFavoritesToFront) {
-            prefs.getLastPicked(this::class.simpleName!!)
+            val favourites = prefs.getLastPicked(this::class.simpleName!!)
                 .map { itemsByString[it] }
-                .takeFavourites(n = itemsPerRow, history = 50, pad = originalList)
+                .takeFavourites(n = itemsPerRow, history = 50)
+            return (favourites + originalList).distinct()
         } else {
-            originalList
+            return originalList
         }
+    }
 
     companion object {
         private const val SELECTED_INDICES = "selected_indices"

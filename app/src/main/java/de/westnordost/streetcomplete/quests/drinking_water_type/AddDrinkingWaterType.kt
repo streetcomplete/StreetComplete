@@ -16,6 +16,7 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
             or
             (disused:amenity = drinking_water and !amenity and older today -1 years)
         )
+        and (!intermittent or intermittent = no)
         and (!seasonal or seasonal = no)
         and !man_made and !natural and !fountain and !pump
     """
