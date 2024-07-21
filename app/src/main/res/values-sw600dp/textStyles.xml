@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextAppearance.HeadlineSmall" parent="TextAppearance.AppCompat.Headline">
-        <item name="android:textSize">30sp</item>
-    </style>
-    <style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead">
-        <item name="android:textSize">20sp</item>
-    </style>
     <style name="TextAppearance.BigBody" parent="TextAppearance.Body">
         <item name="android:textSize">24sp</item>
         <item name="android:fontFamily">sans-serif</item>
