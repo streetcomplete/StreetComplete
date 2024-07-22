@@ -194,7 +194,7 @@ class StyleableOverlayMapComponent(
                 iconHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
                 iconHaloWidth(2.5f),
                 textOptional(true),
-                iconAllowOverlap(step(zoom(), literal(false), stop(19, true))),
+                iconAllowOverlap(true),
                 textAllowOverlap(step(zoom(), literal(false), stop(21, true))),
                 symbolZOrder(Property.SYMBOL_Z_ORDER_SOURCE),
             ),
