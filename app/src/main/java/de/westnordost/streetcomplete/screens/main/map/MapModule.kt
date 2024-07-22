@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.iconResId
 import de.westnordost.streetcomplete.view.presetIconIndex
@@ -30,7 +31,7 @@ val mapModule = module {
         TangramIconsSpriteSheet(
             get(),
             get(),
-            presetIconIndex.values + BuildingType.values().mapNotNull { it.iconResId }
+            presetIconIndex.values + BuildingType.values().mapNotNull { it.iconResId } + R.drawable.ic_address_dot
         )
     }
 }
