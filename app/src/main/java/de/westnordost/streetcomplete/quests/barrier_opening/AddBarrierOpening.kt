@@ -40,7 +40,6 @@ class AddBarrierOpening(
     override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_opening_width_gate
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        mapData.nodes.filter { nodeFilter.matches(it) }
         val excludedWayNodeIds = mapData.ways
             .filter { excludedWaysFilter.matches(it) }
             .flatMapTo(HashSet()) { it.nodeIds }
@@ -50,7 +49,7 @@ class AddBarrierOpening(
     }
 
     override fun isApplicableTo(element: Element) =
-        nodeFilter.matches(element)
+        if (nodeFilter.matches(element)) null else false
 
     override fun createForm() = AddGateWidthForm()
 
