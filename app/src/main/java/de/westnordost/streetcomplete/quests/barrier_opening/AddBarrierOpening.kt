@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.width.AddWidthForm
 import de.westnordost.streetcomplete.quests.width.WidthAnswer
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
@@ -50,8 +51,8 @@ class AddBarrierOpening(
 
     override fun isApplicableTo(element: Element) =
         if (nodeFilter.matches(element)) null else false
-
-    override fun createForm() = AddGateWidthForm()
+    
+    override fun createForm() = AddWidthForm()
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
 

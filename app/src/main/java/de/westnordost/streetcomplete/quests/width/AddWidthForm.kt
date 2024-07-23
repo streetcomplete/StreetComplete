@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
+import de.westnordost.streetcomplete.quests.barrier_opening.GATEWAYS
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.view.controller.LengthInputViewController
 import org.koin.android.ext.android.inject
@@ -32,6 +33,7 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
 
         val isRoad = element.tags["highway"] in ALL_ROADS
         val explanation = if (isRoad) getString(R.string.quest_road_width_explanation) else null
+        val isBarrier = element.tags["barrier"] in GATEWAYS
         binding.widthExplanationTextView.isGone = explanation == null
         binding.widthExplanationTextView.text = explanation
 
@@ -42,6 +44,8 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         lengthInput.isCompactMode = true
         lengthInput.maxFeetDigits = if (isRoad) 3 else 2
         lengthInput.maxMeterDigits = Pair(if (isRoad) 2 else 1, 2)
+        lengthInput.maxFeetDigits = if (isBarrier) 3 else 2
+        lengthInput.maxMeterDigits = Pair(if (isBarrier) 2 else 1, 2)
         lengthInput.selectableUnits = countryInfo.lengthUnits
         lengthInput.onInputChanged = {
             isARMeasurement = false
