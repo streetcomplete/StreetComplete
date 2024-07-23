@@ -24,9 +24,9 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val compassView: View,
     private val lastAnswerButtonBinding: ViewStreetSideLastAnswerButtonBinding,
     private val prefs: Preferences,
-    private val lastSelectionPreferencePrefix: String,
-    private val serializeLastSelection: (item: I) -> String,
-    private val deserializeLastSelection: (str: String) -> I,
+    private val prefKey: String,
+    private val serializeSelection: (item: I) -> String,
+    private val deserializeSelection: (str: String) -> I,
     private val asStreetSideItem: (item: I, isRight: Boolean) -> StreetSideDisplayItem<I>
 ) {
     /** Callback when the user makes a selection */
@@ -106,17 +106,9 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getLastPicked("$lastSelectionPreferencePrefix.left")
-            .map { tryDeserializeSelection(it) }
-            .firstOrNull()
-
-        lastSelectionRight = prefs.getLastPicked("$lastSelectionPreferencePrefix.right")
-            .map { tryDeserializeSelection(it) }
-            .firstOrNull()
-
-        lastSelectionOneSide = prefs.getLastPicked("$lastSelectionPreferencePrefix.oneSide")
-            .map { tryDeserializeSelection(it) }
-            .firstOrNull()
+        lastSelectionLeft = prefs.getLastPickedLeft(prefKey)?.let { tryDeserializeSelection(it) }
+        lastSelectionRight = prefs.getLastPickedRight(prefKey)?.let { tryDeserializeSelection(it) }
+        lastSelectionOneSide = prefs.getLastPickedOneSide(prefKey)?.let { tryDeserializeSelection(it) }
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }
@@ -126,7 +118,7 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
 
     private fun tryDeserializeSelection(str: String): I? =
         try {
-            deserializeLastSelection(str)
+            deserializeSelection(str)
         } catch (e: Exception) {
             null
         }
@@ -196,21 +188,10 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         val r = if (isUpsideDown) left else right
 
         if (showSides == Sides.BOTH) {
-            if (l != null) {
-                prefs.setLastPicked("$lastSelectionPreferencePrefix.left", serializeLastSelection(l.value))
-            } else {
-                prefs.setLastPicked("$lastSelectionPreferencePrefix.left", "")
-            }
-
-            if (r != null) {
-                prefs.setLastPicked("$lastSelectionPreferencePrefix.right", serializeLastSelection(r.value))
-            } else {
-                prefs.setLastPicked("$lastSelectionPreferencePrefix.right", "")
-            }
+            prefs.setLastPickedLeft(prefKey, l?.value?.let { serializeSelection(it) })
+            prefs.setLastPickedRight(prefKey, r?.value?.let { serializeSelection(it) })
         } else {
-            (l ?: r)?.let {
-                prefs.setLastPicked("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value))
-            }
+            prefs.setLastPickedOneSide(prefKey, (l ?: r)?.value?.let { serializeSelection(it) })
         }
     }
 
