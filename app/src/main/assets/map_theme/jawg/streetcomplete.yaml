@@ -262,29 +262,9 @@ layers:
     # styled map data shown in overlays
     streetcomplete_map_data:
         data: { source: streetcomplete_map_data }
-        # if the icons do not collide, it will get too busy
-        point-collide:
-            filter: { icon: true, $zoom: { min: 18, max: 19.999 } }
-            draw:
-                map_data-icons:
-                    interactive: true
-                    priority: 1
-                    collide: true
-                    size: 34px
-                    sprite: function() { return feature.icon }
-                    text:
-                        anchor: [right]
-                        optional: true
-                        text_source: text
-                        max_lines: 2
-                        font:
-                            family: global.text_font_family
-                            fill: global.text_fill_color
-                            size: global.text_size
-                            stroke: { color: global.text_stroke_color, width: 4px }
         # same as above but with collide=false, at ~max zoom
         point-no-collide:
-            filter: { icon: true, $zoom: { min: 20 } }
+            filter: { icon: true, $zoom: { min: 18 } }
             draw:
                 map_data-icons:
                     interactive: true
