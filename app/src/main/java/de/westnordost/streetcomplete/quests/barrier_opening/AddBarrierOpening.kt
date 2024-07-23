@@ -18,17 +18,17 @@ class AddBarrierOpening(
     ) : OsmElementQuestType<WidthAnswer> {
 
     private val nodeFilter by lazy { """
-       nodes with
-         barrier ~ ${GATEWAYS.joinToString("|")}
-         and (!maxwidth:physical or source:maxwidth_physical ~ ".*estimat.*")
-         and (!width or source:width ~ ".*estimat.*")
-         and (!maxwidth or source:maxwidth ~ ".*estimat.*")
-         and access !~ private|no|customers|agricultural
-    """.toElementFilterExpression() }
+        nodes with
+            barrier ~ gate|entrance|sliding_gate|swing_gate|wicket_gate
+            and (!maxwidth:physical or source:maxwidth_physical ~ ".*estimat.*")
+            and (!width or source:width ~ ".*estimat.*")
+            and (!maxwidth or source:maxwidth ~ ".*estimat.*")
+            and access !~ private|no|customers|agricultural
+        """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
         ways with
-          highway and access ~ private|no|customers|agricultural
+            highway and access ~ private|no|customers|agricultural
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify width of opening"
@@ -61,12 +61,10 @@ class AddBarrierOpening(
         tags[key] = answer.width.toOsmValue()
 
         if (answer.isARMeasurement) {
-        tags["source:$key"] = "ARCore"
+            tags["source:$key"] = "ARCore"
         } else {
-        tags.remove("source:$key")
+            tags.remove("source:$key")
         }
 
     }
 }
-
-val GATEWAYS = setOf("gate", "entrance", "sliding_gate", "swing_gate", "wicket_gate")
