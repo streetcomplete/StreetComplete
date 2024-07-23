@@ -51,12 +51,12 @@ class AddBarrierOpening(
 
     override fun isApplicableTo(element: Element) =
         if (nodeFilter.matches(element)) null else false
-    
+
     override fun createForm() = AddWidthForm()
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
 
-    val key = "maxwidth:physical"
+        val key = "maxwidth:physical"
 
         tags[key] = answer.width.toOsmValue()
 
