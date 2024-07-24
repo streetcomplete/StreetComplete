@@ -14,8 +14,8 @@ import de.westnordost.streetcomplete.quests.width.WidthAnswer
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
 class AddBarrierOpening(
-        private val checkArSupport: ArSupportChecker
-    ) : OsmElementQuestType<WidthAnswer> {
+    private val checkArSupport: ArSupportChecker
+) : OsmElementQuestType<WidthAnswer> {
 
     private val nodeFilter by lazy { """
         nodes with
