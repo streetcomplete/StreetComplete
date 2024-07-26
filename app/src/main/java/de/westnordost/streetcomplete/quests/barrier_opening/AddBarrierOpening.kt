@@ -33,7 +33,7 @@ class AddBarrierOpening(
 
     override val changesetComment = "Specify width of opening"
     override val wikiLink = "Key:barrier"
-    override val icon = R.drawable.ic_quest_barrier_opening
+    override val icon = R.drawable.ic_quest_wheelchair_width
     override val achievements = listOf(BICYCLIST, WHEELCHAIR)
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
@@ -55,7 +55,6 @@ class AddBarrierOpening(
     override fun createForm() = AddWidthForm()
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-
         val key = "maxwidth:physical"
 
         tags[key] = answer.width.toOsmValue()
@@ -65,6 +64,5 @@ class AddBarrierOpening(
         } else {
             tags.remove("source:$key")
         }
-
     }
 }
