@@ -10,6 +10,7 @@ import com.russhwolf.settings.nullableString
 import com.russhwolf.settings.string
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.ktx.putStringOrNull
 
 class Preferences(val prefs: ObservableSettings) {
     // application settings
@@ -47,26 +48,6 @@ class Preferences(val prefs: ObservableSettings) {
     fun getFloat(key: String, default: Float) = prefs.getFloat(key, default)
 
     var expertMode: Boolean by prefs.boolean(Prefs.EXPERT_MODE, false)
-
-    fun getLastPicked(key: String): List<String> =
-        prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
-
-    fun addLastPicked(key: String, value: String, maxValueCount: Int = 100) {
-        addLastPicked(key, listOf(value), maxValueCount)
-    }
-
-    fun addLastPicked(key: String, values: List<String>, maxValueCount: Int = 100) {
-        val lastValues = values + getLastPicked(key)
-        setLastPicked(key, lastValues.take(maxValueCount))
-    }
-
-    fun setLastPicked(key: String, values: List<String>) {
-        prefs.putString(LAST_PICKED_PREFIX + key, values.joinToString(","))
-    }
-
-    fun setLastPicked(key: String, value: String) {
-        prefs.putString(LAST_PICKED_PREFIX + key, value)
-    }
 
     fun onLanguageChanged(callback: (String?) -> Unit): SettingsListener =
         prefs.addStringOrNullListener(LANGUAGE_SELECT, callback)
@@ -171,6 +152,46 @@ class Preferences(val prefs: ObservableSettings) {
         prefs.addLongListener(SELECTED_QUESTS_PRESET, 0L, callback)
 
     var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
+
+    fun getLastPicked(key: String): List<String> =
+        prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
+
+    fun addLastPicked(key: String, value: String, maxValueCount: Int = 100) {
+        addLastPicked(key, listOf(value), maxValueCount)
+    }
+
+    fun addLastPicked(key: String, values: List<String>, maxValueCount: Int = 100) {
+        val lastValues = values + getLastPicked(key)
+        setLastPicked(key, lastValues.take(maxValueCount))
+    }
+
+    fun setLastPicked(key: String, values: List<String>) {
+        prefs.putString(LAST_PICKED_PREFIX + key, values.joinToString(","))
+    }
+
+    fun getLastPickedLeft(key: String): String? =
+        prefs.getStringOrNull(getLastPickedSideKey(key, "left"))
+
+    fun setLastPickedLeft(key: String, value: String?) {
+        prefs.putStringOrNull(getLastPickedSideKey(key, "left"), value)
+    }
+
+    fun getLastPickedRight(key: String): String? =
+        prefs.getStringOrNull(getLastPickedSideKey(key, "right"))
+
+    fun setLastPickedRight(key: String, value: String?) {
+        prefs.putStringOrNull(getLastPickedSideKey(key, "right"), value)
+    }
+
+    fun getLastPickedOneSide(key: String): String? =
+        prefs.getStringOrNull(getLastPickedSideKey(key, "oneSide"))
+
+    fun setLastPickedOneSide(key: String, value: String?) {
+        prefs.putStringOrNull(getLastPickedSideKey(key, "oneSide"), value)
+    }
+
+    private fun getLastPickedSideKey(key: String, side: String): String =
+        "$LAST_PICKED_PREFIX$key.$side"
 
     // profile & statistics screen UI
     var userGlobalRank: Int by prefs.int(USER_GLOBAL_RANK, -1)

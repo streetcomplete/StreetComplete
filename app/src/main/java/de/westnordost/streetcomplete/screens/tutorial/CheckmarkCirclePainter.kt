@@ -21,13 +21,13 @@ fun checkmarkCirclePainter(progress: Float): VectorPainter = rememberVectorPaint
         pathData = circlePath,
         strokeLineWidth = 12f,
         stroke = SolidColor(LeafGreen),
-        trimPathEnd = (progress * 3f/2).coerceIn(0f, 1f)
+        trimPathEnd = (progress * 3f / 2).coerceIn(0f, 1f)
     )
     Path(
         pathData = checkmarkPath,
         strokeLineWidth = 12f,
         stroke = SolidColor(LeafGreen),
-        trimPathEnd = ((progress - 2f/3) * 3f).coerceIn(0f, 1f)
+        trimPathEnd = ((progress - 2f / 3) * 3f).coerceIn(0f, 1f)
     )
 }
 

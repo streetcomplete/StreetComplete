@@ -36,8 +36,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
+import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -251,7 +251,6 @@ private fun OverlaysTutorialStepEditText() {
         textAlign = TextAlign.Center,
     )
 }
-
 
 @PreviewScreenSizes
 @Composable
