@@ -359,6 +359,7 @@ layers:
     # styled map data shown in overlays
     streetcomplete_map_data:
         # same as above but with collide=false, at ~max zoom
+        data: { source: streetcomplete_map_data }
         point-no-collide:
             filter: { icon: true, $zoom: { min: 18 } }
             draw:
