@@ -55,6 +55,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.StreetCompleteApplication
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
@@ -988,7 +989,7 @@ class MainFragment :
     private fun onClickDownload() {
         if (controlsViewModel.isConnected) {
             val downloadBbox = getDownloadArea() ?: return
-            if (controlsViewModel.isUserInitiatedDownloadInProgress) {
+            if (controlsViewModel.isUserInitiatedDownloadInProgress || DownloadWorker.downloading || DownloadWorker.enqueuedDownloads.isNotEmpty()) {
                 context?.let {
                     AlertDialog.Builder(it)
                         .setMessage(R.string.confirmation_cancel_prev_download_title)
