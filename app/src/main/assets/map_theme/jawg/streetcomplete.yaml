@@ -358,8 +358,6 @@ layers:
                     join: round
     # styled map data shown in overlays
     streetcomplete_map_data:
-        data: { source: streetcomplete_map_data }
-                    color: function() { return feature.color }
         # same as above but with collide=false, at ~max zoom
         point-no-collide:
             filter: { icon: true, $zoom: { min: 18 } }
