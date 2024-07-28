@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.sac_scale
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.edit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -83,6 +84,9 @@ class AddSacScale : OsmElementQuestType<SacScale> {
             }
             .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ ->
                 prefs.edit().putBoolean(PREF_SAC_SCALE_WITHOUT_RELATION, false).apply()
+            }
+            .setNeutralButton(R.string.quest_settings_reset) { _, _ ->
+                prefs.edit { remove(PREF_SAC_SCALE_WITHOUT_RELATION) }
             }
             .create()
 
