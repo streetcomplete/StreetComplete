@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
-import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -174,17 +173,6 @@ class MainActivity :
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(hasLocationPermission && isLocationEnabled)
-    }
-
-    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        val mainFragment = mainFragment
-        if (event.keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
-            if (event.action == KeyEvent.ACTION_UP) {
-                mainFragment.onClickMainMenu()
-            }
-            return true
-        }
-        return super.dispatchKeyEvent(event)
     }
 
     public override fun onPause() {
