@@ -28,6 +28,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -60,44 +61,46 @@ fun TutorialScreen(
         }
     }
 
-    TutorialScreenLayout(
-        illustration = {
-            illustration(state.currentPage)
-        },
-        pageContent = {
-            HorizontalPager(
-                state = state,
-                modifier = Modifier.width(480.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp),
-                pageSpacing = 64.dp,
-                pageContent = { page ->
-                    Box(
-                        Modifier
-                            .verticalScroll(rememberScrollState())
-                            .padding(bottom = 96.dp)
-                    ) {
-                        pageContent(page)
+    Surface(Modifier.fillMaxSize()) {
+        TutorialScreenLayout(
+            illustration = {
+                illustration(state.currentPage)
+            },
+            pageContent = {
+                HorizontalPager(
+                    state = state,
+                    modifier = Modifier.width(480.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp),
+                    pageSpacing = 64.dp,
+                    pageContent = { page ->
+                        Box(
+                            Modifier
+                                .verticalScroll(rememberScrollState())
+                                .padding(bottom = 96.dp)
+                        ) {
+                            pageContent(page)
+                        }
                     }
-                }
-            )
-        },
-        controls = {
-            PagerControls(
-                state = state,
-                onLastPageFinished = onFinished,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        Brush.verticalGradient(
-                            .0f to Color.Transparent,
-                            .5f to MaterialTheme.colors.surface
+                )
+            },
+            controls = {
+                PagerControls(
+                    state = state,
+                    onLastPageFinished = onFinished,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            Brush.verticalGradient(
+                                .0f to Color.Transparent,
+                                .5f to MaterialTheme.colors.surface
+                            )
                         )
-                    )
-                    .padding(bottom = 16.dp)
-            )
-        },
-        modifier = Modifier.safeDrawingPadding()
-    )
+                        .padding(bottom = 16.dp)
+                )
+            },
+            modifier = Modifier.safeDrawingPadding()
+        )
+    }
 }
 
 @Composable
