@@ -212,7 +212,6 @@ private fun BoxScope.OverlaysTutorialIllustration(
                 Icon(
                     painter = painterResource(R.drawable.ic_overlay_black_24dp),
                     contentDescription = null,
-                    tint = Color.Black
                 )
             }
         }
