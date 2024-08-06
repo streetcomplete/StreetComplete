@@ -22,14 +22,14 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.ListPopupWindow
 import androidx.appcompat.widget.PopupMenu
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
-import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -79,7 +79,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAwar
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
-import de.westnordost.streetcomplete.screens.main.controls.MainMenuDialog
+import de.westnordost.streetcomplete.screens.main.controls.MapControls
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
@@ -89,7 +89,7 @@ import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getPinIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionAdapter
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
@@ -99,8 +99,6 @@ import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.observe
-import de.westnordost.streetcomplete.util.ktx.popIn
-import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -197,8 +195,6 @@ class MainFragment :
 
     interface Listener {
         fun onMapInitialized()
-        fun onClickShowMessage(message: Message)
-        fun onShowOverlaysTutorial()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -234,23 +230,31 @@ class MainFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.controls.content {
+            val hasEdits by remember {
+                derivedStateOf { editHistoryViewModel.editItems.value.isNotEmpty() }
+            }
+
+            MapControls(
+                viewModel = controlsViewModel,
+                hasEdits = hasEdits,
+                onClickZoomIn = ::onClickZoomIn,
+                onClickZoomOut = ::onClickZoomOut,
+                onClickCompass = ::onClickCompassButton,
+                onClickLocation = ::onClickTrackingButton,
+                onClickCreate = ::onClickCreateButton,
+                onClickStopTrackRecording = ::onClickTracksStop,
+                onClickUndo = ::onClickUndoButton,
+                onClickDownload = ::onClickDownload,
+                onClickUpload = ::onClickUploadButton,
+                onExplainedNeedForLocationPermission = ::requestLocation
+            )
+        }
+
         binding.mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
 
         binding.locationPointerPin.setOnClickListener { onClickLocationPointer() }
-
-        binding.compassView.setOnClickListener { onClickCompassButton() }
-        binding.gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
-        binding.stopTracksButton.setOnClickListener { onClickTracksStop() }
-        binding.zoomInButton.setOnClickListener { onClickZoomIn() }
-        binding.zoomOutButton.setOnClickListener { onClickZoomOut() }
-        binding.createButton.setOnClickListener { onClickCreateButton() }
-        binding.uploadButton.setOnClickListener { onClickUploadButton() }
-        binding.undoButton.setOnClickListener { onClickUndoButton() }
-        binding.messagesButton.setOnClickListener { onClickMessagesButton() }
-        binding.starsCounterView.setOnClickListener { onClickAnswersCounterView() }
-        binding.overlaysButton.setOnClickListener { onClickOverlaysButton() }
-        binding.mainMenuButton.setOnClickListener { onClickMainMenu() }
 
         updateOffsetWithOpenBottomSheet()
 
@@ -261,54 +265,7 @@ class MainFragment :
             .addCallback(viewLifecycleOwner, sheetBackPressedCallback)
         sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
 
-        observe(controlsViewModel.isAutoSync) { isAutoSync ->
-            binding.uploadButton.isGone = isAutoSync
-        }
-        observe(controlsViewModel.unsyncedEditsCount) { count ->
-            binding.uploadButton.uploadableCount = count
-        }
-        observe(controlsViewModel.isUploading) { isUploadInProgress ->
-            binding.uploadButton.isEnabled = !isUploadInProgress
-            // Don't allow undoing while uploading. Should prevent race conditions.
-            // (Undoing quest while also uploading it at the same time)
-            binding.undoButton.isEnabled = !isUploadInProgress
-        }
-        observe(controlsViewModel.messagesCount) { messagesCount ->
-            binding.messagesButton.messagesCount = messagesCount
-            binding.messagesButton.isGone = messagesCount <= 0
-        }
-        observe(controlsViewModel.isUploadingOrDownloading) { isUploadingOrDownloading ->
-            binding.starsCounterView.showProgress = isUploadingOrDownloading
-        }
-        observe(controlsViewModel.isShowingStarsCurrentWeek) { isShowingCurrentWeek ->
-            binding.starsCounterView.showLabel = isShowingCurrentWeek
-        }
-        observe(controlsViewModel.starsCount) { count ->
-            // only animate if count is positive, for positive feedback
-            binding.starsCounterView.setUploadedCount(count, count > 0)
-        }
-        observe(controlsViewModel.selectedOverlay) { overlay ->
-            val iconRes = overlay?.icon ?: R.drawable.ic_overlay_black_24dp
-            binding.overlaysButton.setImageResource(iconRes)
-        }
-        observe(controlsViewModel.isTeamMode) { isTeamMode ->
-            if (isTeamMode) {
-                // always show this toast on start to remind user that it is still on
-                context?.toast(R.string.team_mode_active)
-                binding.teamModeColorCircle.popIn()
-                binding.teamModeColorCircle.setIndexInTeam(controlsViewModel.indexInTeam)
-            } else {
-                // show this only once when turning it off
-                if (controlsViewModel.teamModeChanged) context?.toast(R.string.team_mode_deactivated)
-                binding.teamModeColorCircle.popOut()
-            }
-            controlsViewModel.teamModeChanged = false
-        }
-        observe(controlsViewModel.selectedOverlay) { overlay ->
-            val isCreateNodeEnabled = overlay?.isCreateNodeEnabled == true
-            binding.createButton.isGone = !isCreateNodeEnabled
-            binding.crosshairView.isGone = !isCreateNodeEnabled
-
+        observe(controlsViewModel.selectedOverlay) {
             val f = bottomSheetFragment
             if (f is IsShowingElement) {
                 closeBottomSheet()
@@ -316,7 +273,6 @@ class MainFragment :
         }
         observe(editHistoryViewModel.editItems) { editItems ->
             if (editItems.isEmpty()) closeEditHistorySidebar()
-            binding.undoButton.isGone = editItems.isEmpty()
         }
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit == null) {
@@ -344,12 +300,6 @@ class MainFragment :
         if (bottomSheetFragment != null) {
             mapFragment.adjustToOffsets(previousOffset, mapOffsetWithOpenBottomSheet)
         }
-        binding.crosshairView.setPadding(
-            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
-            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
-        )
         updateLocationPointerPin()
     }
 
@@ -387,23 +337,20 @@ class MainFragment :
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
-        binding.gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
-        binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
-        binding.stopTracksButton.isVisible = mapFragment?.isRecordingTracks ?: false
+        controlsViewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
+        controlsViewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
+        controlsViewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
+        controlsViewModel.mapZoom.value = mapFragment?.cameraPosition?.zoom ?: 18f
         updateLocationPointerPin()
-        mapFragment?.cameraPosition?.zoom?.let { updateCreateButtonEnablement(it) }
         listener?.onMapInitialized()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
-        binding.compassView.rotation = (180 * rotation / PI).toFloat()
-        binding.compassView.rotationX = (180 * tilt / PI).toFloat()
-
-        val margin = 2 * PI / 180
-        binding.compassView.isInvisible = abs(rotation) < margin && tilt < margin
+        controlsViewModel.mapRotation.value = (180 * rotation / PI).toFloat()
+        controlsViewModel.mapTilt.value = (180 * tilt / PI).toFloat()
+        controlsViewModel.mapZoom.value = zoom
 
         updateLocationPointerPin()
-        updateCreateButtonEnablement(zoom)
 
         val f = bottomSheetFragment
         if (f is IsMapOrientationAware) f.onMapOrientation(rotation, tilt)
@@ -668,7 +615,7 @@ class MainFragment :
 
     @SuppressLint("MissingPermission")
     private fun onLocationIsEnabled() {
-        binding.gpsTrackingButton.state = LocationState.SEARCHING
+        controlsViewModel.locationState.value = LocationState.SEARCHING
         mapFragment!!.startPositionTracking()
 
         setIsFollowingPosition(wasFollowingPosition ?: true)
@@ -676,11 +623,11 @@ class MainFragment :
     }
 
     private fun onLocationIsDisabled() {
-        binding.gpsTrackingButton.state = when {
+        controlsViewModel.locationState.value = when {
             requireContext().hasLocationPermission -> LocationState.ALLOWED
             else -> LocationState.DENIED
         }
-        binding.gpsTrackingButton.isNavigation = false
+        controlsViewModel.isNavigationMode.value = false
         binding.locationPointerPin.visibility = View.GONE
         mapFragment!!.clearPositionTracking()
         locationManager.removeUpdates()
@@ -688,7 +635,7 @@ class MainFragment :
 
     private fun onLocationChanged(location: Location) {
         viewLifecycleScope.launch {
-            binding.gpsTrackingButton.state = LocationState.UPDATING
+            controlsViewModel.locationState.value = LocationState.UPDATING
             updateLocationPointerPin()
         }
     }
@@ -696,16 +643,6 @@ class MainFragment :
     //endregion
 
     //region Buttons - Functionality for the buttons in the main view
-
-    fun onClickMainMenu() {
-        MainMenuDialog(
-            requireContext(),
-            if (controlsViewModel.isTeamMode.value) controlsViewModel.indexInTeam else null,
-            this::onClickDownload,
-            controlsViewModel::enableTeamMode,
-            controlsViewModel::disableTeamMode
-        ).show()
-    }
 
     private fun onClickDownload() {
         if (controlsViewModel.isConnected) {
@@ -738,7 +675,6 @@ class MainFragment :
 
     private fun onClickTracksStop() {
         // hide the track information
-        binding.stopTracksButton.isVisible = false
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
@@ -759,27 +695,6 @@ class MainFragment :
 
     private fun onClickUndoButton() {
         showEditHistorySidebar()
-    }
-
-    private fun onClickMessagesButton() {
-        viewLifecycleScope.launch {
-            val message = controlsViewModel.popMessage()
-            if (message != null) {
-                listener?.onClickShowMessage(message)
-            }
-        }
-    }
-
-    private fun onClickAnswersCounterView() {
-        controlsViewModel.toggleShowingCurrentWeek()
-    }
-
-    private fun onClickOverlaysButton() {
-        if (!controlsViewModel.hasShownOverlaysTutorial) {
-            showOverlaysTutorial()
-        } else {
-            showOverlaysMenu()
-        }
     }
 
     private fun onClickCompassButton() {
@@ -803,7 +718,7 @@ class MainFragment :
         val mapFragment = mapFragment ?: return
 
         when {
-            !binding.gpsTrackingButton.state.isEnabled -> {
+            !controlsViewModel.locationState.value.isEnabled -> {
                 requestLocation()
             }
             !mapFragment.isFollowingPosition -> {
@@ -823,14 +738,10 @@ class MainFragment :
         showOverlayFormForNewElement()
     }
 
-    private fun updateCreateButtonEnablement(zoom: Float) {
-        binding.createButton.isEnabled = zoom >= 18f
-    }
-
     private fun setIsNavigationMode(navigation: Boolean) {
         val mapFragment = mapFragment ?: return
         mapFragment.isNavigationMode = navigation
-        binding.gpsTrackingButton.isNavigation = navigation
+        controlsViewModel.isNavigationMode.value = navigation
         // always re-center position because navigation mode shifts the center position
         mapFragment.centerCurrentPositionIfFollowing()
     }
@@ -838,26 +749,8 @@ class MainFragment :
     private fun setIsFollowingPosition(follow: Boolean) {
         val mapFragment = mapFragment ?: return
         mapFragment.isFollowingPosition = follow
-        binding.gpsTrackingButton.isActivated = follow
+        controlsViewModel.isFollowingPosition.value = follow
         if (follow) mapFragment.centerCurrentPositionIfFollowing()
-    }
-
-    private fun showOverlaysTutorial() {
-        listener?.onShowOverlaysTutorial()
-    }
-
-    private fun showOverlaysMenu() {
-        val adapter = OverlaySelectionAdapter(controlsViewModel.overlays)
-        val popupWindow = ListPopupWindow(requireContext())
-
-        popupWindow.setAdapter(adapter)
-        popupWindow.setOnItemClickListener { _, _, position, _ ->
-            controlsViewModel.selectOverlay(adapter.getItem(position))
-            popupWindow.dismiss()
-        }
-        popupWindow.anchorView = binding.overlaysButton
-        popupWindow.width = resources.dpToPx(240).toInt()
-        popupWindow.show()
     }
 
     private fun getDownloadArea(): BoundingBox? {
@@ -944,7 +837,6 @@ class MainFragment :
     private fun onClickCreateTrack() {
         val mapFragment = mapFragment ?: return
         mapFragment.startPositionTrackRecording()
-        binding.stopTracksButton.isVisible = true
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */
@@ -1249,13 +1141,10 @@ class MainFragment :
         img.setImageResource(iconResId)
         root.addView(img)
 
-        val isAutoSync = controlsViewModel.isAutoSync.value
-        val answerTarget = if (isAutoSync) binding.starsCounterView else binding.uploadButton
-        flingQuestMarkerTo(img, answerTarget) { root.removeView(img) }
+        flingQuestMarker(img) { root.removeView(img) }
     }
 
-    private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
-        val targetPos = target.getLocationInWindow().toPointF()
+    private fun flingQuestMarker(quest: View, onFinished: () -> Unit) {
         quest.animate()
             .scaleX(1.6f).scaleY(1.6f)
             .setInterpolator(OvershootInterpolator(8f))
@@ -1264,7 +1153,7 @@ class MainFragment :
                 quest.animate()
                     .scaleX(0.2f).scaleY(0.2f)
                     .alpha(0.8f)
-                    .x(targetPos.x).y(targetPos.y)
+                    .x(0f).y(0f)
                     .setDuration(250)
                     .setInterpolator(AccelerateInterpolator())
                     .withEndAction(onFinished)

@@ -55,8 +55,6 @@ fun AchievementDialog(
         onDismissRequest = onDismissRequest,
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
-        val interactionSource = remember { MutableInteractionSource() }
-
         if (isNew) {
             AnimatedTadaShine()
         }
@@ -65,7 +63,10 @@ fun AchievementDialog(
             modifier = Modifier
                 .fillMaxSize()
                 // dismiss when clicking wherever - no ripple effect
-                .clickable(interactionSource, null) { onDismissRequest() },
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null
+                ) { onDismissRequest() },
             contentAlignment = Alignment.Center
         ) {
             ContentWithIconPortraitOrLandscape(modifier.padding(16.dp)) { isLandscape, iconSize ->

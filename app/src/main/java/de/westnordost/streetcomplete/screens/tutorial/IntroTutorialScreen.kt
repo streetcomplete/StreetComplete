@@ -15,7 +15,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -39,14 +43,23 @@ import kotlinx.coroutines.launch
 /** Shows a short tutorial for first-time users */
 @Composable
 fun IntroTutorialScreen(
+    onDismissRequest: () -> Unit,
+    onExplainedNeedForLocationPermission: () -> Unit,
     onFinished: () -> Unit,
 ) {
     TutorialScreen(
         pageCount = 4,
+        onDismissRequest = onDismissRequest,
         onFinished = onFinished,
+        onPageChanged = { page ->
+            if (page == 2) {
+                onExplainedNeedForLocationPermission()
+            }
+        },
         illustration = { page ->
             IntroTutorialIllustration(page)
-        }
+        },
+        dismissOnBackPress = false,
     ) { page ->
         Column(
             modifier = Modifier.fillMaxSize(1f),
@@ -240,5 +253,5 @@ private fun IntroTutorialStep3Text() {
 @PreviewScreenSizes
 @Composable
 private fun PreviewIntroTutorialScreen() {
-    IntroTutorialScreen {}
+    IntroTutorialScreen({},{},{})
 }

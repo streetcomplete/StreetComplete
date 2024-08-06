@@ -19,8 +19,10 @@ import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,6 +53,12 @@ class MainViewModelImpl(
 
     /* messages */
 
+    override var hasShownTutorial: Boolean
+        get() = prefs.hasShownTutorial
+        set(value) { prefs.hasShownTutorial = value }
+
+    /* messages */
+
     override val messagesCount: StateFlow<Int> = callbackFlow {
         send(messagesSource.getNumberOfMessages())
         val listener = object : MessagesSource.UpdateListener {
@@ -58,11 +66,10 @@ class MainViewModelImpl(
         }
         messagesSource.addListener(listener)
         awaitClose { messagesSource.removeListener(listener) }
-    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
+    }.stateIn(viewModelScope + IO, SharingStarted.Eagerly, 0)
 
-    override suspend fun popMessage(): Message? = withContext(Dispatchers.IO) {
-        messagesSource.popNextMessage()
-    }
+    override suspend fun popMessage(): Message? =
+        withContext(IO) { messagesSource.popNextMessage() }
 
     /* overlays */
 
@@ -79,11 +86,12 @@ class MainViewModelImpl(
         awaitClose { selectedOverlayController.removeListener(listener) }
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, null)
 
-    override val hasShownOverlaysTutorial: Boolean get() =
-        prefs.hasShownOverlaysTutorial
+    override var hasShownOverlaysTutorial: Boolean
+        get() = prefs.hasShownOverlaysTutorial
+        set(value) { prefs.hasShownOverlaysTutorial = value }
 
     override fun selectOverlay(overlay: Overlay?) {
-        launch(Dispatchers.IO) {
+        launch(IO) {
             selectedOverlayController.selectedOverlay = overlay
         }
     }
@@ -92,17 +100,15 @@ class MainViewModelImpl(
 
     override val isTeamMode = MutableStateFlow(teamModeQuestFilter.isEnabled)
 
-    override val indexInTeam: Int
-        get() = teamModeQuestFilter.indexInTeam
-
     override var teamModeChanged: Boolean = false
+    override val indexInTeam = MutableStateFlow(teamModeQuestFilter.indexInTeam)
 
     override fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
-        launch(Dispatchers.IO) { teamModeQuestFilter.enableTeamMode(teamSize, indexInTeam) }
+        launch(IO) { teamModeQuestFilter.enableTeamMode(teamSize, indexInTeam) }
     }
 
     override fun disableTeamMode() {
-        launch(Dispatchers.IO) { teamModeQuestFilter.disableTeamMode() }
+        launch(IO) { teamModeQuestFilter.disableTeamMode() }
     }
 
     override fun download(bbox: BoundingBox) {
@@ -113,6 +119,7 @@ class MainViewModelImpl(
         override fun onTeamModeChanged(enabled: Boolean) {
             teamModeChanged = true
             isTeamMode.value = enabled
+            indexInTeam.value = teamModeQuestFilter.indexInTeam
         }
     }
 
@@ -244,6 +251,16 @@ class MainViewModelImpl(
         val syncedEdits = if (isShowingStarsCurrentWeek) editCountCurrentWeek else editCount
         syncedEdits + unsyncedEdits
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
+
+    override val locationState = MutableStateFlow(LocationState.ENABLED)
+    override val mapZoom = MutableStateFlow(18f)
+    override val mapRotation = MutableStateFlow(0f)
+    override val mapTilt = MutableStateFlow(0f)
+
+    override val isFollowingPosition = MutableStateFlow(false)
+    override val isNavigationMode = MutableStateFlow(false)
+
+    override val isRecordingTracks = MutableStateFlow(false)
 
     // ---------------------------------------------------------------------------------------
 

@@ -39,9 +39,6 @@ import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.screens.main.MainFragment
-import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFragment
-import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
-import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
@@ -55,9 +52,7 @@ import org.koin.android.ext.android.inject
 
 class MainActivity :
     BaseActivity(),
-    MainFragment.Listener,
-    TutorialFragment.Listener,
-    OverlaysTutorialFragment.Listener {
+    MainFragment.Listener {
 
     private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val questAutoSyncer: QuestAutoSyncer by inject()
@@ -111,15 +106,6 @@ class MainActivity :
         setContentView(R.layout.activity_main)
 
         mainFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as MainFragment?
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
-            if (!prefs.hasShownTutorial && !userLoginController.isLoggedIn) {
-                supportFragmentManager.commit {
-                    setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                    add(R.id.fragment_container, TutorialFragment())
-                }
-            }
-        }
 
         elementEditsSource.addListener(elementEditsListener)
         noteEditsSource.addListener(noteEditsListener)
@@ -197,10 +183,6 @@ class MainActivity :
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         findViewById<View>(R.id.main).requestLayout()
-        // recreate the MessagesContainerFragment because it should load a new layout, see #2330
-        supportFragmentManager.commit {
-            replace(R.id.messages_container_fragment, MessagesContainerFragment())
-        }
     }
 
     private suspend fun ensureLoggedIn() {
@@ -285,58 +267,10 @@ class MainActivity :
         }
     }
 
-    /* --------------------------------- MessagesButtonFragment.Listener ------------------------ */
-
-    override fun onClickShowMessage(message: Message) {
-        messagesContainerFragment?.showMessage(message)
-    }
-
-    private val messagesContainerFragment get() =
-        supportFragmentManager.findFragmentById(R.id.messages_container_fragment) as? MessagesContainerFragment
-
     /* --------------------------------- MainFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
         handleGeoUri()
-    }
-
-    /* ------------------------------- TutorialFragment.Listener -------------------------------- */
-
-    override fun onTutorialFinished() {
-        requestLocation()
-
-        prefs.hasShownTutorial = true
-        removeTutorialFragment()
-    }
-
-    private fun requestLocation() {
-        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
-    }
-
-    private fun removeTutorialFragment() {
-        val tutorialFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        if (tutorialFragment != null) {
-            supportFragmentManager.commit {
-                setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-                remove(tutorialFragment)
-            }
-        }
-    }
-
-    /* ---------------------------- OverlaysButtonFragment.Listener ----------------------------- */
-
-    override fun onShowOverlaysTutorial() {
-        supportFragmentManager.commit {
-            setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-            add(R.id.fragment_container, OverlaysTutorialFragment())
-        }
-    }
-
-    /* --------------------------- OverlaysTutorialFragment.Listener ---------------------------- */
-
-    override fun onOverlaysTutorialFinished() {
-        prefs.hasShownOverlaysTutorial = true
-        removeTutorialFragment()
     }
 
     /* ------------------------------------ Location listener ----------------------------------- */
@@ -350,8 +284,6 @@ class MainActivity :
     }
 
     companion object {
-        private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
-
         // per application start settings
         private var dontShowRequestAuthorizationAgain = false
     }

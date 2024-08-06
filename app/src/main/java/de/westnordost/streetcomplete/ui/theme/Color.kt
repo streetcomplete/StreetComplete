@@ -19,18 +19,20 @@ val TrafficGrayA = Color(0xff8e9291)
 val TrafficGrayB = Color(0xff4f5250)
 
 /* Colors for the teams in team mode.  */
-val Team0 = Color(0xfff44336)
-val Team1 = Color(0xff529add)
-val Team2 = Color(0xffffdd55)
-val Team3 = Color(0xffca72e2)
-val Team4 = Color(0xff9bbe55)
-val Team5 = Color(0xfff4900c)
-val Team6 = Color(0xff9aa0ad)
-val Team7 = Color(0xff6390a0)
-val Team8 = Color(0xffa07a43)
-val Team9 = Color(0xff494EAD)
-val Team10 = Color(0xffAA335D)
-val Team11 = Color(0xff655555)
+val TeamColors = arrayOf(
+    Color(0xfff44336),
+    Color(0xff529add),
+    Color(0xffffdd55),
+    Color(0xffca72e2),
+    Color(0xff9bbe55),
+    Color(0xfff4900c),
+    Color(0xff9aa0ad),
+    Color(0xff6390a0),
+    Color(0xffa07a43),
+    Color(0xff494EAD),
+    Color(0xffAA335D),
+    Color(0xff655555),
+)
 
 val White = Color(0xffffffff)
 
