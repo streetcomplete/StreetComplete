@@ -4,9 +4,14 @@ import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.screens.main.controls.LocationState
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 abstract class MainViewModel : ViewModel() {
+    /* intro */
+    abstract var hasShownTutorial: Boolean
+
     /* messages */
     abstract val messagesCount: StateFlow<Int>
     abstract suspend fun popMessage(): Message?
@@ -15,14 +20,14 @@ abstract class MainViewModel : ViewModel() {
     abstract val selectedOverlay: StateFlow<Overlay?>
     abstract val overlays: List<Overlay>
 
-    abstract val hasShownOverlaysTutorial: Boolean
+    abstract var hasShownOverlaysTutorial: Boolean
 
     abstract fun selectOverlay(overlay: Overlay?)
 
     /* team mode */
     abstract val isTeamMode: StateFlow<Boolean>
     abstract var teamModeChanged: Boolean
-    abstract val indexInTeam: Int
+    abstract val indexInTeam: StateFlow<Int>
     abstract fun enableTeamMode(teamSize: Int, indexInTeam: Int)
     abstract fun disableTeamMode()
 
@@ -44,4 +49,17 @@ abstract class MainViewModel : ViewModel() {
     abstract val starsCount: StateFlow<Int>
     abstract val isShowingStarsCurrentWeek: StateFlow<Boolean>
     abstract fun toggleShowingCurrentWeek()
+
+    /* map */
+    // NOTE: currently filled from MainFragment (communication to compose view), i.e. the source of
+    //       truth is actually the MapFragment
+    abstract val locationState: MutableStateFlow<LocationState>
+    abstract val mapZoom: MutableStateFlow<Float>
+    abstract val mapRotation: MutableStateFlow<Float>
+    abstract val mapTilt: MutableStateFlow<Float>
+
+    abstract val isFollowingPosition: MutableStateFlow<Boolean>
+    abstract val isNavigationMode: MutableStateFlow<Boolean>
+
+    abstract val isRecordingTracks: MutableStateFlow<Boolean>
 }

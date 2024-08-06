@@ -31,6 +31,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -49,16 +52,26 @@ import kotlinx.coroutines.launch
 @Composable
 fun TutorialScreen(
     pageCount: Int,
+    onDismissRequest: () -> Unit,
     onFinished: () -> Unit,
+    onPageChanged: suspend (page: Int) -> Unit = {},
+    dismissOnBackPress: Boolean = true,
     illustration: @Composable BoxScope.(page: Int) -> Unit,
-    pageContent: @Composable (page: Int) -> Unit
+    pageContent: @Composable (page: Int) -> Unit,
 ) {
     val state = rememberPagerState { pageCount }
     val coroutineScope = rememberCoroutineScope()
-    BackHandler(state.currentPage > 0) {
-        coroutineScope.launch {
-            state.animateScrollToPage(state.currentPage - 1)
+    BackHandler(state.currentPage > 0 || dismissOnBackPress) {
+        if (state.currentPage > 0) {
+            coroutineScope.launch {
+                state.animateScrollToPage(state.currentPage - 1)
+            }
+        } else {
+            onDismissRequest()
         }
+    }
+    LaunchedEffect(state.currentPage) {
+        onPageChanged(state.currentPage)
     }
 
     Surface(Modifier.fillMaxSize()) {
@@ -86,7 +99,10 @@ fun TutorialScreen(
             controls = {
                 PagerControls(
                     state = state,
-                    onLastPageFinished = onFinished,
+                    onLastPageFinished = {
+                        onDismissRequest()
+                        onFinished()
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(

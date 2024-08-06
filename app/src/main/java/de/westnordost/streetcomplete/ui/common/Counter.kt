@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.SizeTransform
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
@@ -37,6 +40,7 @@ import androidx.compose.ui.unit.sp
 fun Counter(
     count: Int,
     modifier: Modifier = Modifier,
+    clip: Boolean = false,
     color: Color = Color.Unspecified,
     fontSize: TextUnit = TextUnit.Unspecified,
     fontStyle: FontStyle? = null,
@@ -60,11 +64,12 @@ fun Counter(
                 AnimatedContent(
                     targetState = digit,
                     transitionSpec = {
-                        if (count > oldCount) {
-                            slideInVertically { -it } togetherWith slideOutVertically { it }
+                        val contentTransform = if (count > oldCount) {
+                            slideInVertically { -it } + fadeIn() togetherWith slideOutVertically { it } + fadeOut()
                         } else {
-                            slideInVertically { it } togetherWith slideOutVertically { -it }
+                            slideInVertically { it } + fadeIn() togetherWith slideOutVertically { -it } + fadeOut()
                         }
+                        contentTransform.using(SizeTransform(clip))
                     },
                     label = "CounterAnimation$index"
                 ) {
