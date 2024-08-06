@@ -6,32 +6,39 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 
+/** Small floating button on top of the map */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun MapButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    content: @Composable() (BoxScope.() -> Unit)
+    color: Color = MaterialTheme.colors.surface,
+    contentColor: Color = contentColorFor(color),
+    content: @Composable (BoxScope.() -> Unit),
 ) {
     Surface(
         onClick = onClick,
-        modifier = modifier,
+        modifier = modifier.padding(6.dp),
         enabled = enabled,
         shape = CircleShape,
-        color = Color.White,
+        color = color,
+        contentColor = contentColor,
         elevation = 4.dp
     ) {
-        Box(Modifier.padding(16.dp), content = content)
+        Box(modifier = Modifier.padding(12.dp), content = content)
     }
 }
 
