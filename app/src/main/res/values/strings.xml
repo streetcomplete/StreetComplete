@@ -53,6 +53,10 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
     <string name="action_upload">"Upload answers"</string>
 
+    <string name="action_messages">"Show messages"</string>
+
+    <string name="action_create_new_poi">"Create new"</string>
+
     <string name="action_open_location">Open location in another app</string>
     <string name="map_application_missing">No other map application installed</string>
 
