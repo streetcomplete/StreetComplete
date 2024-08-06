@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,8 +54,9 @@ fun StarsCounter(
                 modifier = Modifier.padding(8.dp)
             )
         }
-        Column {
-            AnimatedVisibility (isCurrentWeek) {
+
+        if (isCurrentWeek) {
+            Column {
                 Text(
                     text = stringResource(R.string.user_profile_current_week_title),
                     fontWeight = FontWeight.Bold,
@@ -59,7 +64,14 @@ fun StarsCounter(
                     maxLines = 1,
                     style = MaterialTheme.typography.body2.copy(shadow = textShadow),
                 )
+                Counter(
+                    count = count,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    style = MaterialTheme.typography.body1.copy(shadow = textShadow),
+                )
             }
+        } else {
             Counter(
                 count = count,
                 fontWeight = FontWeight.Bold,
