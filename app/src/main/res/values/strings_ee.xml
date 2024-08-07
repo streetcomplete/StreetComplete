@@ -691,5 +691,6 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="quest_sacScale_six">"T6 - difficult alpine hiking"</string>
     <string name="quest_sacScale_six_description">"Severe exposure. Difficult craggy terrain. Glaciers with high risk of sliding."</string>
 
-
+    <!-- surface -->
+    <string name="quest_surface_value_chipseal">"Chipseal"</string>
 </resources>

@@ -81,7 +81,7 @@ val Smoothness.titleResId get() = when (this) {
 }
 
 fun Smoothness.getDescriptionResId(surface: String): Int? = when (surface) {
-    "asphalt", "concrete", "concrete:plates" -> pavedDescriptionResId
+    "asphalt", "chipseal", "concrete", "concrete:plates" -> pavedDescriptionResId
     "sett" -> settDescriptionResId
     "paving_stones" -> pavingStonesDescriptionResId
     "compacted", "gravel", "fine_gravel" -> compactedOrGravelDescriptionResId
@@ -96,7 +96,7 @@ private val Smoothness.descriptionResIdFallback: Int? get() = when (this) {
 }
 
 fun Smoothness.getImageResId(surface: String): Int? = when (surface) {
-    "asphalt" -> asphaltImageResId
+    "asphalt", "chipseal" -> asphaltImageResId
     "concrete", "concrete:plates" -> concreteImageResId
     "sett" -> settImageResId
     "paving_stones" -> pavingStonesImageResId
