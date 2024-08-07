@@ -543,6 +543,10 @@ For nodes within ways, the node will remain and tags will be removed.
 When there are doubts on the question itself (terms used, etc.), how to answer or how to find the answer, more information can be provided via info button text & images.
 Examples for such info button would be explanation of what is halal, what is [tactile paving](app/src/main/java/de/westnordost/streetcomplete/quests/tactile_paving/AddTactilePavingBusStop.kt#L33-L38), what is a sanitary dump station, when a level counts as a roof level and when as a normal level, explanation of the street side puzzle UI, etc.
 
+Instructions for answering the quest should instead be directly visible either in the quest title or a label on the form always shown with the answers. For example, when asked for the name of a road, a label instructs the user to expand abbreviated road names. When asked about whether a restaurant offers vegetarian options, it is clarified that one should only answer "yes" if these are proper options (not just a salad or whatever).
+
+For doubts on how to answer specific situations, like e.g. when asked for the opening hours of a shop that doesn't seem to exist anymore or asked about the house number of a building that instead has a house name, it is better to provide such answer through the "Uh..." menu, see [Designing the form](#designing-the-form).
+
 ## Per-country quest behaviour modification
 
 While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibrationForm.kt](app/src/main/java/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibrationForm.kt) for example usage.
