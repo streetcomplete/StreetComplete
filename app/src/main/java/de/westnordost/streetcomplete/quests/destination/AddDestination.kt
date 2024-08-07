@@ -138,7 +138,15 @@ class AddDestination : OsmElementQuestType<Pair<DestinationLanes?, DestinationLa
 
                     // ignore if we would need to turn by more than 115°
                     // we want the bearing when leaving from nodeId on otherWay
-                    val otherWayBearings = otherWay.getAllowedBearingStartingAt(nodeId, mapData)
+                    val otherWayBearings = try {
+                        otherWay.getAllowedBearingStartingAt(nodeId, mapData)
+                    } catch (e: NullPointerException) {
+                        // node not in mapData
+                        // for some reason this sometimes happens on uploading a split way action
+                        // but why only ever for this quest? missing data should affect others too
+                        // data issue? cache issue? another scee "optimization" issue?
+                        emptyList()
+                    }
                     if (wayBearings.any { b -> otherWayBearings.any { abs(normalizeDegrees(b - it, -180.0)) < 115 } })
                         otherAvailableWays.add(otherWay)
                 }
