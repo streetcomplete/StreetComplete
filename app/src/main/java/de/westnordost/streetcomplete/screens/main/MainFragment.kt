@@ -21,6 +21,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -228,9 +229,8 @@ class MainFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.controls.content {
-            val hasEdits by remember {
-                derivedStateOf { editHistoryViewModel.editItems.value.isNotEmpty() }
-            }
+            val editItems by editHistoryViewModel.editItems.collectAsState()
+            val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
 
             MapControls(
                 viewModel = controlsViewModel,
