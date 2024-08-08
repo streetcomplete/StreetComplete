@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.screens.settings.quest_presets
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
+import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -67,7 +67,7 @@ fun QuestPresetDropdownMenu(
 private fun TextWithIcon(text: String, painter: Painter, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(painter, text)
