@@ -567,6 +567,22 @@
     <string name="quest_maxheight_answer_noSign_question_yes">Tall trucks can pass through</string>
     <string name="quest_maxheight_answer_noSign_question_no">"Tall trucks don’t fit"</string>
     <string name="quest_maxheight_answer_noSign_question_unclear">"Unclear"</string>
+    <!-- quest crossing marking -->
+    <string name="pref_quest_pedestrian_crossing_markings_extended">Enable extension of \"Does this crossing have markings on the ground?\", allows you to define the style of crossing markings</string>
+    <string name="quest_crossing_marking_value_no">No</string>
+    <string name="quest_crossing_marking_value_zebra">Zebra</string>
+    <string name="quest_crossing_marking_value_lines">Lines</string>
+    <string name="quest_crossing_marking_value_ladder">Ladder</string>
+    <string name="quest_crossing_marking_value_dashes">Dashes</string>
+    <string name="quest_crossing_marking_value_dots">Dots</string>
+    <string name="quest_crossing_marking_value_surface">Surface</string>
+    <string name="quest_crossing_marking_value_ladder_skewed">Ladder skewed</string>
+    <string name="quest_crossing_marking_value_zebra_paired">Zebra paired</string>
+    <string name="quest_crossing_marking_value_zebra_bicolour">Zebra bicolour</string>
+    <string name="quest_crossing_marking_value_zebra_double">Zebra double</string>
+    <string name="quest_crossing_marking_value_ladder_paired">Ladder paired</string>
+    <string name="quest_crossing_marking_value_zebra_dots">Zebra + dots</string>
+    <string name="quest_crossing_marking_value_pictograms">Pictograms</string>
 
     <string name="quest_generalRef_hint">Reference number or code</string>
     <string name="quest_generalRef_disabled_msg">This quest is disabled by default because what is signed strongly varies by region and operator. You may need to refine the element selection for your area (e.g. remove street lamps, add maps, only select guideposts with hiking=yes, etc.)</string>

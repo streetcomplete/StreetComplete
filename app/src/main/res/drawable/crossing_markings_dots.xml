@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/crossing_markings_part_road"/>
+    <item android:drawable="@drawable/crossing_markings_part_dots"/>
+    <item android:drawable="@drawable/crossing_markings_part_sides"/>
+</layer-list>

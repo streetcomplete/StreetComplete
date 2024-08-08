@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="128dp"
+    android:viewportWidth="600"
+    android:viewportHeight="600">
+
+    <path
+        android:name="berms"
+        android:fillColor="#cbad9f"
+        android:pathData="M0,0 h29 v600 h-29 Z M571,0 h29 v600 h-29 Z"/>
+
+    <path
+        android:name="sidewalks"
+        android:fillColor="#cccccc"
+        android:pathData="M31,0 h88 v600 h-88 Z M481,0 h88 v600 h-88 Z"/>
+
+    <path
+        android:name="strokes"
+        android:fillColor="#000000"
+        android:pathData="M29,0 h2 v600 h-2 Z M119,0 h2 v600 h-2 Z M479,0 h2 v600 h-2 Z M569,0 h2 v600 h-2 Z"/>
+</vector>

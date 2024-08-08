@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/crossing_markings_part_road"/>
+
+    <item>
+        <vector
+            android:width="128dp"
+            android:height="128dp"
+            android:viewportWidth="600"
+            android:viewportHeight="600">
+
+            <path
+                android:name="dashes"
+                android:fillColor="#ffffff"
+                android:pathData="M140,200 h50 v20 h-50 Z m89,0 h50 v20 h-50 Z m89,0 h50 v20 h-50 Z m89,0 h50 v20 h-50 Z M140,380 h50 v20 h-50 Z m89,0 h50 v20 h-50 Z m89,0 h50 v20 h-50 Z m89,0 h50 v20 h-50 Z" />
+        </vector>
+    </item>
+
+    <item android:drawable="@drawable/crossing_markings_part_sides"/>
+</layer-list>

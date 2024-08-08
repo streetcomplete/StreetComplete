@@ -67,6 +67,21 @@ car_wash_automated.jpg         CC-BY-SA 3.0      Michiel1972 https://commons.wik
 car_wash_self_service.jpg      CC-BY-SA 4.0      Jacek Halicki https://commons.wikimedia.org/wiki/File:2015_K%C5%82odzko,_ul._Dusznicka,_myjnia_samochodowa_02.jpg
 car_wash_service.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:US_Navy_110831-N-NT881-079_Sailors_assigned_to_the_guided-missile_submarine_USS_Ohio_(SSGN_726)_and_Navy_Operational_Support_Center_Cincinnati_part.jpg
 
+crossing_markings_no.jpg       CC0               https://wiki.openstreetmap.org/wiki/File:Crossing_without_markings.png (StenSoft)
+crossing_markings_zebra.jpg    CC0               https://wiki.openstreetmap.org/wiki/File:Markings_zebra.png (Popbal)
+crossing_markings_lines.jpg    CC0               https://wiki.openstreetmap.org/wiki/File:Markings_lines.png (Popball)
+crossing_markings_ladder.jpg   CC0               https://wiki.openstreetmap.org/wiki/File:Markings_ladder.png (Popball)
+crossing_markings_dashes.jpg   CC0               https://wiki.openstreetmap.org/wiki/File:Markings_dashes.png (Popball)
+crossing_markings_dots.jpg     CC0               https://wiki.openstreetmap.org/wiki/File:Markings_dots.png (Popball)
+crossing_markings_surface.jpg  CC0               https://wiki.openstreetmap.org/wiki/File:Surface_crossing_markings.png (Popball)
+crossing_markings_ladder_skew… CC0               https://wiki.openstreetmap.org/wiki/File:Markings_adder_skewed.png (Popball)
+crossing_markings_zebra_paire… CC0               https://wiki.openstreetmap.org/wiki/File:Markings_adder_skewed.png (Popball)
+crossing_markings_zebra_bicol… CC0               https://wiki.openstreetmap.org/wiki/File:Markings_zebra_bicolour.png (Popball)
+crossing_markings_zebra_doubl… CC0               https://wiki.openstreetmap.org/wiki/File:Crossing_markings_zebra_double.png (Popball)
+crossing_markings_ladder_pair… CC0               https://wiki.openstreetmap.org/wiki/File:Paired_ladder.png (Popball)
+crossing_markings_zebra_dots.… CC0               Alexis Lecanu
+crossing_markings_pictograms.… CC0               https://wiki.openstreetmap.org/wiki/File:400px-Crossing_markings_pictogram.png (Kaligrafy)
+
 drinking_water_type_jet_water… CC-BY-SA 3.0      crop of image by Sulfur https://commons.wikimedia.org/wiki/File:Bubbler.jpg
 drinking_water_type_generic... CC-BY-SA 4.0      crop of image by Basotxerri https://commons.wikimedia.org/wiki/File:Bielerh%C3%B6he_-_Barbarakapelle_-_Brunnen_01.jpg
 drinking_water_type_bottle_re… CC-BY-SA 4.0      crop of image by Fantaglobe11 https://commons.wikimedia.org/wiki/File:Station_Alkmaar_watertappunt.jpg
