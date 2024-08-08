@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.overlays.Overlay
+import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 
 /** Dropdown menu for selecting an overlay */
 @Composable
@@ -40,7 +40,7 @@ fun OverlaySelectionDropdownMenu(
         for (overlay in overlays) {
             DropdownMenuItem(onClick = { onDismissRequest(); onSelect(overlay) }) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Image(
