@@ -16,7 +16,6 @@ import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.parseAsHtml
-import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.streetcomplete.R
@@ -24,7 +23,6 @@ import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
-import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
