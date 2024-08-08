@@ -27,6 +27,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -40,11 +41,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ui.ktx.conditional
 import kotlinx.coroutines.launch
 
 /** Generic multiple-page tutorial screen */
@@ -56,6 +59,7 @@ fun TutorialScreen(
     onFinished: () -> Unit,
     onPageChanged: suspend (page: Int) -> Unit = {},
     dismissOnBackPress: Boolean = true,
+    nextIsEnabled: (page: Int) -> Boolean = { true },
     illustration: @Composable BoxScope.(page: Int) -> Unit,
     pageContent: @Composable (page: Int) -> Unit,
 ) {
@@ -85,6 +89,7 @@ fun TutorialScreen(
                     modifier = Modifier.width(480.dp),
                     contentPadding = PaddingValues(horizontal = 16.dp),
                     pageSpacing = 64.dp,
+                    userScrollEnabled = false,
                     pageContent = { page ->
                         Box(
                             Modifier
@@ -99,6 +104,7 @@ fun TutorialScreen(
             controls = {
                 PagerControls(
                     state = state,
+                    nextIsEnabled = nextIsEnabled,
                     onLastPageFinished = {
                         onDismissRequest()
                         onFinished()
@@ -196,32 +202,44 @@ private fun TutorialScreenLayout(
 @Composable
 private fun PagerControls(
     state: PagerState,
+    nextIsEnabled: (page: Int) -> Boolean,
     onLastPageFinished: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val coroutineScope = rememberCoroutineScope()
+
+    fun onClickNext() {
+        if (state.isOnLastPage()) {
+            onLastPageFinished()
+        } else {
+            coroutineScope.launch { state.animateScrollToPage(state.currentPage + 1) }
+        }
+    }
+
+    fun onClickPager(page: Int) {
+        coroutineScope.launch { state.animateScrollToPage(page) }
+    }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier
     ) {
         Row {
+            var enabled = true
             repeat(state.pageCount) { page ->
                 PagerIndicator(
                     isCurrentPage = state.currentPage == page,
-                    onClick = {
-                        coroutineScope.launch { state.animateScrollToPage(page) }
-                    }
+                    enabled = enabled,
+                    onClick = { onClickPager(page) }
                 )
+                enabled = enabled && nextIsEnabled(page)
             }
         }
-        Button(onClick = {
-            if (state.isOnLastPage()) {
-                onLastPageFinished()
-            } else {
-                coroutineScope.launch { state.animateScrollToPage(state.currentPage + 1) }
-            }
-        }) {
+        Button(
+            onClick = ::onClickNext,
+            enabled = nextIsEnabled(state.currentPage)
+        ) {
             Text(stringResource(if (state.isOnLastPage()) R.string.letsgo else R.string.next))
         }
     }
@@ -230,19 +248,21 @@ private fun PagerControls(
 @Composable
 private fun PagerIndicator(
     isCurrentPage: Boolean,
+    enabled: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val alpha by animateFloatAsState(
-        if (isCurrentPage) ContentAlpha.high else ContentAlpha.disabled
-    )
+    val scale by animateFloatAsState(if (isCurrentPage) 1f else 0.5f)
+    val alpha = if (enabled) ContentAlpha.high else ContentAlpha.disabled
+
     Box(
         modifier
-            .padding(4.dp)
+            .conditional(enabled) { clickable { onClick() } }
             .alpha(alpha)
+            .padding(4.dp)
+            .scale(scale)
+            .size(14.dp)
             .background(color = MaterialTheme.colors.onSurface, shape = CircleShape)
-            .size(12.dp)
-            .clickable { onClick() }
     )
 }
 

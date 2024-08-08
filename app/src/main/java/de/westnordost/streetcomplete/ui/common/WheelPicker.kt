@@ -128,7 +128,7 @@ fun <T> WheelPicker(
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .scale(if (index == state.selectedItemIndex) 1f else 0.9f)
+                    .scale(if (index == state.selectedItemIndex) 1f else 0.85f)
                     .pointerInput(index) {
                         detectTapGestures {
                             scope.launch { state.animateScrollToItem(index) }
@@ -184,7 +184,7 @@ private fun Modifier.fadingEdges(selectedItemHeight: Dp): Modifier {
 @Composable
 private fun Modifier.pickerIndicator(selectedItemHeight: Dp): Modifier {
     val density = LocalDensity.current.density
-    val color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+    val color = MaterialTheme.colors.onSurface
 
     return drawWithContent {
         drawContent()

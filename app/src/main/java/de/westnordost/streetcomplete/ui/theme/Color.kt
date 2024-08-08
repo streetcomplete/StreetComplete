@@ -22,7 +22,7 @@ val TrafficGrayB = Color(0xff4f5250)
 val TeamColors = arrayOf(
     Color(0xfff44336),
     Color(0xff529add),
-    Color(0xffffdd55),
+    Color(0xFFFBC02D),
     Color(0xffca72e2),
     Color(0xff9bbe55),
     Color(0xfff4900c),
