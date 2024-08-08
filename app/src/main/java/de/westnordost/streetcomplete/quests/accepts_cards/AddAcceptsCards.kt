@@ -20,6 +20,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
         and !payment:credit_cards and !payment:debit_cards and payment:others != no
         and !brand and !wikipedia:brand and !wikidata:brand
         and (!seasonal or seasonal = no)
+        and (!fee or fee != no)
         and (name or noname = yes or name:signed = no)
         and access !~ private|no
     """

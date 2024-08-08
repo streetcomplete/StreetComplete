@@ -12,6 +12,6 @@ enum class LocationState {
     SEARCHING,
     /** receiving location updates */
     UPDATING;
-    
+
     val isEnabled: Boolean get() = ordinal >= ENABLED.ordinal
 }
