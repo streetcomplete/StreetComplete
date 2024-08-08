@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetA
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiSerializer
 import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiParser
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiSerializer
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiParser
@@ -19,7 +20,7 @@ private const val OSM_API_URL = "https://api.openstreetmap.org/api/0.6/"
 val osmApiModule = module {
     factory { Cleaner(get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
-    factory { MapDataApiClient(get(), OSM_API_URL, get(), get()) }
+    factory { MapDataApiClient(get(), OSM_API_URL, get(), get(), get()) }
     factory { NotesApiClient(get(), OSM_API_URL, get(), get()) }
     factory { TracksApiClient(get(), OSM_API_URL, get(), get()) }
     factory { UserApiClient(get(), OSM_API_URL, get(), get()) }
@@ -30,6 +31,7 @@ val osmApiModule = module {
     factory { UserApiParser() }
     factory { NotesApiParser() }
     factory { TracksSerializer() }
+    factory { MapDataApiParser() }
     factory { MapDataApiSerializer() }
     factory { ChangesetApiSerializer() }
 

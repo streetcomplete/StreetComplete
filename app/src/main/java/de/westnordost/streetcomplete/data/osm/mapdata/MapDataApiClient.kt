@@ -22,6 +22,7 @@ class MapDataApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,
     private val userLoginSource: UserLoginSource,
+    private val parser: MapDataApiParser,
     private val serializer: MapDataApiSerializer,
 ) {
 
@@ -54,7 +55,7 @@ class MapDataApiClient(
                 setBody(serializer.serializeMapDataChanges(changes, changesetId))
                 expectSuccess = true
             }
-            val updates = serializer.parseElementUpdates(response.body<String>())
+            val updates = parser.parseElementUpdates(response.body<String>())
             val changedElements = changes.creations + changes.modifications + changes.deletions
             return createMapDataUpdates(changedElements, updates, ignoreRelationTypes)
         } catch (e: ClientRequestException) {
@@ -100,7 +101,7 @@ class MapDataApiClient(
                 parameter("bbox", bounds.toOsmApiString())
                 expectSuccess = true
             }
-            return serializer.parseMapData(response.body(), ignoreRelationTypes)
+            return parser.parseMapData(response.body(), ignoreRelationTypes)
         } catch (e: ClientRequestException) {
             if (e.response.status == HttpStatusCode.BadRequest) {
                 throw QueryTooBigException(e.message, e)
@@ -186,7 +187,7 @@ class MapDataApiClient(
     private suspend fun getMapDataOrNull(query: String): MapData? = wrapApiClientExceptions {
         try {
             val response = httpClient.get(baseUrl + query) { expectSuccess = true }
-            return serializer.parseMapData(response.body(), emptySet())
+            return parser.parseMapData(response.body(), emptySet())
         } catch (e: ClientRequestException) {
             when (e.response.status) {
                 HttpStatusCode.Gone, HttpStatusCode.NotFound -> return null
