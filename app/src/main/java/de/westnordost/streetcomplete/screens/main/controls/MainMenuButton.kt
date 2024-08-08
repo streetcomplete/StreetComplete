@@ -23,7 +23,6 @@ fun MainMenuButton(
                 index = indexInTeam,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(6.dp)
                     .size(22.dp)
             )
         }

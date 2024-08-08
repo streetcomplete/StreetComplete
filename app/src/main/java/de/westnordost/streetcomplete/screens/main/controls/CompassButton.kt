@@ -26,7 +26,7 @@ fun CompassButton(
 ) {
     Surface(
         onClick = onClick,
-        modifier = modifier.padding(6.dp),
+        modifier = modifier,
         shape = CircleShape,
         elevation = 4.dp
     ) {

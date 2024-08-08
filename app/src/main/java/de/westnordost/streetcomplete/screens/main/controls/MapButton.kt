@@ -4,6 +4,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonColors
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -25,17 +28,18 @@ fun MapButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    color: Color = MaterialTheme.colors.surface,
-    contentColor: Color = contentColorFor(color),
+    colors: ButtonColors = ButtonDefaults.buttonColors(
+        backgroundColor = MaterialTheme.colors.surface,
+    ),
     content: @Composable (BoxScope.() -> Unit),
 ) {
     Surface(
         onClick = onClick,
-        modifier = modifier.padding(6.dp),
+        modifier = modifier,
         enabled = enabled,
         shape = CircleShape,
-        color = color,
-        contentColor = contentColor,
+        color = colors.backgroundColor(enabled).value,
+        contentColor = colors.contentColor(enabled).value,
         elevation = 4.dp
     ) {
         Box(modifier = Modifier.padding(12.dp), content = content)

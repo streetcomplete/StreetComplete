@@ -83,5 +83,5 @@ fun StopRecordingIcon() {
 
 @Composable
 fun LargeCreateIcon() {
-    Icon(painterResource(R.drawable.ic_add_48dp), stringResource(R.string.action_create_new_poi))
+    Icon(painterResource(R.drawable.ic_crosshair_32dp), stringResource(R.string.action_create_new_poi))
 }

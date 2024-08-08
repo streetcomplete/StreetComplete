@@ -4,10 +4,9 @@ import android.content.Intent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,9 +14,8 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.size
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -31,11 +29,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
@@ -43,22 +39,16 @@ import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
-import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionButton
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
-import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircle
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
 import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
-import de.westnordost.streetcomplete.ui.common.Counter
 import de.westnordost.streetcomplete.ui.common.LargeCreateIcon
-import de.westnordost.streetcomplete.ui.common.MenuIcon
-import de.westnordost.streetcomplete.ui.common.MessagesIcon
 import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
 import de.westnordost.streetcomplete.ui.common.UndoIcon
-import de.westnordost.streetcomplete.ui.common.UploadIcon
 import de.westnordost.streetcomplete.ui.common.ZoomInIcon
 import de.westnordost.streetcomplete.ui.common.ZoomOutIcon
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -183,7 +173,10 @@ fun MapControls(
             )
 
             // top controls
-            Row(Modifier.align(Alignment.TopEnd)) {
+            Row(
+                modifier = Modifier.align(Alignment.TopEnd).padding(4.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 if (messagesCount > 0) {
                     MessagesButton(
                         onClick = ::onClickMessages,
@@ -217,7 +210,10 @@ fun MapControls(
             }
 
             // bottom-right controls
-            Column(Modifier.align(Alignment.BottomEnd)) {
+            Column(
+                modifier = Modifier.align(Alignment.BottomEnd).padding(4.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 val isCompassVisible = abs(mapRotation) >= 1f || abs(mapTilt) >= 1f
                 AnimatedVisibility(
                     visible = isCompassVisible,
@@ -245,22 +241,27 @@ fun MapControls(
             if (selectedOverlay?.isCreateNodeEnabled == true) {
                 MapButton(
                     onClick = onClickCreate,
-                    modifier = Modifier.align(BiasAlignment(0.25f, 1f)),
+                    modifier = Modifier.align(BiasAlignment(0.333f, 1f)).padding(4.dp),
                     enabled = isCreateButtonEnabled,
-                    color = MaterialTheme.colors.secondaryVariant,
-                    contentColor = Color.White,
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = MaterialTheme.colors.secondaryVariant,
+                    ),
                 ) {
                     LargeCreateIcon()
                 }
             }
 
             // bottom-left controls
-            Column(Modifier.align(Alignment.BottomStart)) {
+            Column(
+                modifier = Modifier.align(Alignment.BottomStart).padding(4.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 if (isRecordingTracks) {
                     MapButton(
                         onClick = onClickStopTrackRecording,
-                        color = MaterialTheme.colors.secondaryVariant,
-                        contentColor = Color.White
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = MaterialTheme.colors.secondaryVariant,
+                        ),
                     ) {
                         StopRecordingIcon()
                     }

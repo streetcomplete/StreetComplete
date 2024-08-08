@@ -33,8 +33,7 @@ fun BoxScope.MapButtonNotification(
         Box(
             modifier = modifier
                 .align(Alignment.TopEnd)
-                .padding(6.dp)
-                .background(MaterialTheme.colors.secondary, RoundedCornerShape(12.dp))
+                .background(MaterialTheme.colors.secondaryVariant, RoundedCornerShape(12.dp))
                 .padding(vertical = 2.dp, horizontal = 6.dp),
             contentAlignment = Alignment.Center,
             content = content

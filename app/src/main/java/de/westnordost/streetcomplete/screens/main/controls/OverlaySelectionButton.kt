@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.overlays
+package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -24,7 +24,7 @@ fun OverlaySelectionButton(
 ) {
     Surface(
         onClick = onClick,
-        modifier = modifier.padding(6.dp),
+        modifier = modifier,
         shape = CircleShape,
         elevation = 4.dp
     ) {
