@@ -526,6 +526,7 @@
     <!-- additional strings for quests available in StreetComplete -->
     <string name="quest_surface_value_metal_grid">Metal grid</string>
     <string name="quest_surface_value_stepping_stones">Stepping stones</string>
+    <string name="quest_surface_value_chipseal">"Chipseal"</string>
     <string name="quest_buildingType_presbytery">Presbytery</string>
     <string name="quest_buildingType_barn">Barn</string>
     <string name="quest_buildingType_cowshed">Cowshed</string>
@@ -606,6 +607,23 @@
 
     <!-- parking orientation quest -->
     <string name="quest_parking_orientation_title">In what orientation do cars park here?</string>
+
+    <!-- sac scale -->
+    <string name="pref_quest_sac_scale_without_relation">Search all paths even those who are not in a hiking relation</string>
+    <string name="quest_sacScale_title">"What is the SAC Scale of this path?"</string>
+    <string name="default_disabled_msg_sacScale">"This quest type is disabled by default because the sac scale of path is highly subjective and needs expert knowledge in the used grading system and. As there is no "world wide scale" for path difficulty, the SAC Mountain and Alpine Hiking Scale is used here."</string>
+    <string name="quest_sacScale_one">"T1 - hiking"</string>
+    <string name="quest_sacScale_one_description">"Terrain level or slightly inclined; no risk of falling with appropriate behaviour."</string>
+    <string name="quest_sacScale_two">"T2 - mountain hiking"</string>
+    <string name="quest_sacScale_two_description">"Terrain is steep in places and may pose fall hazards."</string>
+    <string name="quest_sacScale_three">"T3 - demanding mountain hiking"</string>
+    <string name="quest_sacScale_three_description">"Portions of the route exposed with danger of falling. Trail may have unmarked portions and cross fields of loose scree or talus."</string>
+    <string name="quest_sacScale_four">"T4 - alpine hiking"</string>
+    <string name="quest_sacScale_four_description">"Terrain already quite exposed, including steep grassy pitches, talus slopes, easy snowfields, or snow-free glacier crossings."</string>
+    <string name="quest_sacScale_five">"T5 - demanding alpine hiking"</string>
+    <string name="quest_sacScale_five_description">"Exposed and demanding terrain. May include steep rock scrambles, glaciers and snowfields with risk of sliding."</string>
+    <string name="quest_sacScale_six">"T6 - difficult alpine hiking"</string>
+    <string name="quest_sacScale_six_description">"Severe exposure. Difficult craggy terrain. Glaciers with high risk of sliding."</string>
 
     <!-- new overlays -->
 
@@ -689,24 +707,4 @@ Out of the box SCEE is configured to behave very similar to StreetComplete.</str
     <string name="outside_downloaded_area_warning">This position is outside the downloaded area. Continue?</string>
     <!-- actually there are still SC translations available, as only the main string has been removed from SC. -->
     <string name="close">Close</string>
-
-    <!-- sac scale -->
-    <string name="pref_quest_sac_scale_without_relation">Search all paths even those who are not in a hiking relation</string>
-    <string name="quest_sacScale_title">"What is the SAC Scale of this path?"</string>
-    <string name="default_disabled_msg_sacScale">"This quest type is disabled by default because the sac scale of path is highly subjective and needs expert knowledge in the used grading system and. As there is no "world wide scale" for path difficulty, the SAC Mountain and Alpine Hiking Scale is used here."</string>
-    <string name="quest_sacScale_one">"T1 - hiking"</string>
-    <string name="quest_sacScale_one_description">"Terrain level or slightly inclined; no risk of falling with appropriate behaviour."</string>
-    <string name="quest_sacScale_two">"T2 - mountain hiking"</string>
-    <string name="quest_sacScale_two_description">"Terrain is steep in places and may pose fall hazards."</string>
-    <string name="quest_sacScale_three">"T3 - demanding mountain hiking"</string>
-    <string name="quest_sacScale_three_description">"Portions of the route exposed with danger of falling. Trail may have unmarked portions and cross fields of loose scree or talus."</string>
-    <string name="quest_sacScale_four">"T4 - alpine hiking"</string>
-    <string name="quest_sacScale_four_description">"Terrain already quite exposed, including steep grassy pitches, talus slopes, easy snowfields, or snow-free glacier crossings."</string>
-    <string name="quest_sacScale_five">"T5 - demanding alpine hiking"</string>
-    <string name="quest_sacScale_five_description">"Exposed and demanding terrain. May include steep rock scrambles, glaciers and snowfields with risk of sliding."</string>
-    <string name="quest_sacScale_six">"T6 - difficult alpine hiking"</string>
-    <string name="quest_sacScale_six_description">"Severe exposure. Difficult craggy terrain. Glaciers with high risk of sliding."</string>
-
-    <!-- surface -->
-    <string name="quest_surface_value_chipseal">"Chipseal"</string>
 </resources>
