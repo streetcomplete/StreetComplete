@@ -28,13 +28,13 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
 import de.westnordost.streetcomplete.data.preferences.Theme
-import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
-import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleListPickerDialog
+import de.westnordost.streetcomplete.ui.common.settings.Preference
+import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
 import de.westnordost.streetcomplete.util.ktx.format
 import java.util.Locale
 
@@ -113,7 +113,7 @@ fun SettingsScreen(
                 ) {
                     Switch(
                         checked = showAllNotes,
-                        onCheckedChange =  { viewModel.setShowAllNotes(it) }
+                        onCheckedChange = { viewModel.setShowAllNotes(it) }
                     )
                 }
             }
@@ -233,7 +233,7 @@ fun SettingsScreen(
             items = Autosync.entries,
             onItemSelected = {
                 viewModel.setAutosync(it)
-                if (autosync != Autosync.ON) {
+                if (it != Autosync.ON) {
                     showUploadTutorialInfo = true
                 }
             },

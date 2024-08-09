@@ -11,6 +11,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
+import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
+import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -18,10 +22,6 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeSource
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.streetcomplete.data.preferences.Autosync
-import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
-import de.westnordost.streetcomplete.data.preferences.Theme
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

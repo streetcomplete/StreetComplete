@@ -34,7 +34,7 @@ import de.westnordost.streetcomplete.util.math.intersect
 /** Source for map data. It combines the original data downloaded with the edits made.
  *
  *  This class is threadsafe.
- * */
+ */
 class MapDataWithEditsSource internal constructor(
     private val mapDataController: MapDataController,
     private val elementEditsController: ElementEditsController,

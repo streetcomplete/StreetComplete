@@ -72,6 +72,7 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         }
 
         listeners += prefs.onLanguageChanged { ActivityCompat.recreate(this) }
+        listeners += prefs.onThemeChanged { ActivityCompat.recreate(this) }
     }
 
     override fun onDestroy() {

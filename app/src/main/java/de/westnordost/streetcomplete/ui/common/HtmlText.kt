@@ -5,16 +5,13 @@ import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.isSpecified
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.AppTheme
@@ -102,5 +99,5 @@ private fun HtmlTextPreview() {
     <blockquote>A block quotation is a quotation in a written document that is set off from the main text as a paragraph, or block of text, and typically distinguished visually using indentation.</blockquote>
     """,
             modifier = Modifier.width(320.dp)) {}
-    }}
+    } }
 }

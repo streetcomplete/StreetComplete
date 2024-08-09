@@ -117,5 +117,4 @@ class HtmlParserKtTest {
     }
 }
 
-
 private fun parse(string: String) = parseHtml(string)

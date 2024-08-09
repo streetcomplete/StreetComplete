@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentOverlayPlacesBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
@@ -32,7 +33,6 @@ import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.getLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog

@@ -7,17 +7,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.logs.LogLevel
 import de.westnordost.streetcomplete.data.logs.LogMessage
-import de.westnordost.streetcomplete.ui.theme.logDebug
-import de.westnordost.streetcomplete.ui.theme.logError
-import de.westnordost.streetcomplete.ui.theme.logInfo
-import de.westnordost.streetcomplete.ui.theme.logVerbose
-import de.westnordost.streetcomplete.ui.theme.logWarning
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime

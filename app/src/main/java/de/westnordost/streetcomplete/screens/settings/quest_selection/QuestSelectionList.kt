@@ -104,6 +104,6 @@ private fun PreviewQuestSelectionList() {
             QuestSelection(AddTactilePavingBusStop(), true, false),
         ),
         displayCountry = "Atlantis",
-        onSelectQuest = { _,_ -> }
+        onSelectQuest = { _, _ -> }
     )
 }

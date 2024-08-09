@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 /** Tells its listeners changes to whether the location is available, i.e. being updated. The
  *  location is available if there is both a GPS (or other location provider) fix and the user
  *  granted this application location permission.
- *  */
+ */
 class LocationAvailabilityReceiver(private val context: Context) {
 
     private val listeners = mutableSetOf<(Boolean) -> Unit>()

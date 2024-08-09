@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.text.util.Linkify
-import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -32,6 +31,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadServerException
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
@@ -48,7 +48,6 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.parseGeoUri
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -173,17 +172,6 @@ class MainActivity :
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
         updateLocationAvailability(isLocationAvailable)
-    }
-
-    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        val mainFragment = mainFragment
-        if (event.keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
-            if (event.action == KeyEvent.ACTION_UP) {
-                mainFragment.onClickMainMenu()
-            }
-            return true
-        }
-        return super.dispatchKeyEvent(event)
     }
 
     public override fun onStop() {

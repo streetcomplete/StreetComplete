@@ -93,6 +93,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <!-- As in: "select any of the pictures below that fit" -->
+    <string name="quest_multiselect_hint">"Select all that apply:"</string>
     <string name="quest_select_hint">"Select:"</string>
     <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Show more…"</string>
@@ -327,7 +328,7 @@ You can find donation information on our website or project home, Google Play do
 
     <string name="about_title_privacy_statement">"Privacy"</string>
 
-    <string name="about_title_authors">"Authors"</string>
+    <string name="about_title_authors">"Credits"</string>
 
     <string name="about_title_repository">"Project home"</string>
 
@@ -376,7 +377,7 @@ This app directly communicates with OSM servers.&lt;br/&gt;
 Before uploading your changes, the app checks with a &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; on my server to ensure that this version of the app has not been banned from uploading changes. This is a precautionary measure to be able to block versions of the app that turn out to have critical bugs from uploading corrupted data to OSM.&lt;/p&gt;"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;To display the map, vector tiles are retrieved from %1$s. See their &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; for more information.&lt;/p&gt;"</string>
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
-    <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded. In particular, the oneway quest queries an API, also hosted on westnordost.de, about likely candidates for oneways.&lt;/p&gt;</string>
+    <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded.&lt;/p&gt;</string>
     <string name="privacy_html_statistics">&lt;p&gt;The data shown in your profile is aggregated from your publicly available contribution history to OpenStreetMap and then hosted on my server.&lt;/p&gt;</string>
     <string name="privacy_html_arcore">This application runs on &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href="https://policies.google.com/privacy"&gt;Google Privacy Policy&lt;/a&gt;.</string>
 
@@ -1775,5 +1776,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
+    <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
 
 </resources>

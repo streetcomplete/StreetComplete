@@ -693,7 +693,7 @@ private fun angularDistanceToArc(φ1: Double, λ1: Double, φ2: Double, λ2: Dou
 }
 
 /** Returns the signed area of a triangle spanning between the north pole and the two given points.
- * */
+ */
 private fun polarTriangleArea(φ1: Double, λ1: Double, φ2: Double, λ2: Double): Double {
     val tanφ1 = tan((PI / 2 - φ1) / 2)
     val tanφ2 = tan((PI / 2 - φ2) / 2)

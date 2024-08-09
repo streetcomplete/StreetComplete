@@ -39,7 +39,6 @@ fun PrivacyStatementScreen(
                     tryParseHtml(stringResource(R.string.privacy_html)) +
                     tryParseHtml(stringResource(R.string.privacy_html_tileserver2, "JawgMaps", "https://www.jawg.io/en/confidentiality/")) +
                     tryParseHtml(stringResource(R.string.privacy_html_statistics)) +
-                    tryParseHtml(stringResource(R.string.privacy_html_third_party_quest_sources)) +
                     tryParseHtml(stringResource(R.string.privacy_html_image_upload2)),
                 modifier = Modifier
                     .fillMaxWidth()

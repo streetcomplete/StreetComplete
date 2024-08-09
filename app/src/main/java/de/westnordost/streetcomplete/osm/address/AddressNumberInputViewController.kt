@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.view.controller.SwitchKeyboardButtonViewCon
  *  - conscription number with optional street (=orientation) number (as used in Czechia, Slovakia)
  *
  *  Which "mode" is being used depends on which inputs are not null.
- *  */
+ */
 class AddressNumberInputViewController(
     activity: Activity,
     private val houseNumberInput: EditText?,

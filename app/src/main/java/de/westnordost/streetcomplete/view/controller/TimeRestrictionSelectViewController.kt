@@ -19,7 +19,7 @@ import java.util.Locale
  *  I.e. the user can input...
  *  1. whether it applies all the time, only at specific times or always except at specific times
  *  2. specify the times like opening hours
- *  */
+ */
 class TimeRestrictionSelectViewController(
     private val timeRestrictionsSelect: Spinner,
     private val timesList: RecyclerView,

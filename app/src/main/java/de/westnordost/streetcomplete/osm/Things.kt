@@ -30,7 +30,7 @@ fun Element.isDisusedThing(): Boolean =
  *             exists. This policy exists in order to reduce effort to maintain this list, i.e. we
  *             don't want to check, weigh and balance requests in parallel to iD maintainers (in
  *             terms of notability, it being unambiguous, consensus etc.)
- *  */
+ */
 private val IS_THING_EXPRESSION by lazy {
     val tags = mapOf(
         "aeroway" to listOf(

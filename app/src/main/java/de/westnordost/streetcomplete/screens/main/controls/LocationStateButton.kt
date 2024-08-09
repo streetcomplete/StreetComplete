@@ -23,12 +23,12 @@ class LocationStateButton @JvmOverloads constructor(
     defStyle: Int = 0
 ) : AppCompatImageButton(context, attrs, defStyle) {
 
-    var state: State
-        get() = _state ?: State.DENIED
+    var state: LocationState
+        get() = _state ?: LocationState.DENIED
         set(value) { _state = value }
 
     // this is necessary because state is accessed before it is initialized (in constructor of super)
-    private var _state: State? = null
+    private var _state: LocationState? = null
         set(value) {
             if (field != value) {
                 field = value
@@ -55,12 +55,12 @@ class LocationStateButton @JvmOverloads constructor(
         a.recycle()
     }
 
-    private fun determineStateFrom(a: TypedArray): State = when {
-        a.getBoolean(R.styleable.LocationStateButton_state_updating, false) ->  State.UPDATING
-        a.getBoolean(R.styleable.LocationStateButton_state_searching, false) -> State.SEARCHING
-        a.getBoolean(R.styleable.LocationStateButton_state_enabled, false) ->   State.ENABLED
-        a.getBoolean(R.styleable.LocationStateButton_state_allowed, false) ->   State.ALLOWED
-        else -> State.DENIED
+    private fun determineStateFrom(a: TypedArray): LocationState = when {
+        a.getBoolean(R.styleable.LocationStateButton_state_updating, false) ->  LocationState.UPDATING
+        a.getBoolean(R.styleable.LocationStateButton_state_searching, false) -> LocationState.SEARCHING
+        a.getBoolean(R.styleable.LocationStateButton_state_enabled, false) ->   LocationState.ENABLED
+        a.getBoolean(R.styleable.LocationStateButton_state_allowed, false) ->   LocationState.ALLOWED
+        else -> LocationState.DENIED
     }
 
     override fun drawableStateChanged() {
@@ -103,18 +103,7 @@ class LocationStateButton @JvmOverloads constructor(
         }
     }
 
-    enum class State {
-        DENIED, // user declined to give this app access to location
-        ALLOWED, // user allowed this app to access location (but location disabled)
-        ENABLED, // location service is turned on (but no location request active)
-        SEARCHING, // requested location updates and waiting for first fix
-        UPDATING;
-
-        // receiving location updates
-        val isEnabled: Boolean get() = ordinal >= ENABLED.ordinal
-    }
-
-    private val State.styleableAttributes: List<Int> get() =
+    private val LocationState.styleableAttributes: List<Int> get() =
         listOf(
             R.attr.state_allowed,
             R.attr.state_enabled,

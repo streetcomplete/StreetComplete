@@ -54,10 +54,6 @@
     <dimen name="quest_statistics_country_icon_height">220dp</dimen>
     <dimen name="quest_statistics_country_icon_offset">120dp</dimen>
 
-    <!-- tutorial screen -->
-
-    <dimen name="tutorial_textbox_width">320dp</dimen>
-
     <!-- forms -->
 
     <!-- text size for extra large input fields, i.e.  inputs that should fill about the whole form

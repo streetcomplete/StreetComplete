@@ -13,6 +13,7 @@ import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentMapBinding
 import de.westnordost.streetcomplete.screens.main.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
@@ -30,7 +31,6 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay

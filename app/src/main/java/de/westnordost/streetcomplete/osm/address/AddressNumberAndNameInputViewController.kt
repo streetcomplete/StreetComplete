@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
  *  [toggleAddressNumberButton], respectively. By default, the [houseNameInput] is retracted, i.e.
  *  not visible while [addressNumberContainer] is visible. Each input is expanded automatically if
  *  there is any text inside and cannot be retracted as long as there is any text inside.
- *  */
+ */
 class AddressNumberAndNameInputViewController(
     private val toggleHouseNameButton: TextView?,
     private val houseNameInput: EditText,

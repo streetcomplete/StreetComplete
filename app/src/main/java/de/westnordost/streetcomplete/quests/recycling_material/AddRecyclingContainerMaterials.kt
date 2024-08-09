@@ -33,7 +33,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.nodes.filter { isApplicableTo(it) }
+        mapData.filter { isApplicableTo(it) }
 
     override fun isApplicableTo(element: Element): Boolean =
         /* Only recycling containers that do either not have any recycling:* tag yet or
@@ -47,7 +47,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override fun createForm() = AddRecyclingContainerMaterialsForm()
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = recycling")
+        getMapData().filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
 
     override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is RecyclingMaterials) {

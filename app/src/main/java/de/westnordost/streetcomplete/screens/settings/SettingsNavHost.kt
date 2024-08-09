@@ -22,10 +22,10 @@ import org.koin.androidx.compose.koinViewModel
     NavHost(
         navController = navController,
         startDestination = startDestination ?: SettingsDestination.Settings,
-        enterTransition = { slideInHorizontally(initialOffsetX = { +it } ) },
-        exitTransition = { slideOutHorizontally(targetOffsetX = { -it } ) },
-        popEnterTransition = { slideInHorizontally(initialOffsetX = { -it } ) },
-        popExitTransition = { slideOutHorizontally(targetOffsetX = { +it } ) }
+        enterTransition = { slideInHorizontally(initialOffsetX = { +it }) },
+        exitTransition = { slideOutHorizontally(targetOffsetX = { -it }) },
+        popEnterTransition = { slideInHorizontally(initialOffsetX = { -it }) },
+        popExitTransition = { slideOutHorizontally(targetOffsetX = { +it }) }
     ) {
         composable(SettingsDestination.Settings) {
             SettingsScreen(
