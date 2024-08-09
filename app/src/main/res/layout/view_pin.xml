@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="RtlHardcoded,RtlSymmetry">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pin_shadow"
+        android:paddingRight="10dp"
+        android:paddingBottom="71dp"
+        tools:ignore="RtlSymmetry"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dp"
+        app:srcCompat="@drawable/pin"
+        tools:ignore="RtlSymmetry"/>
+
+    <ImageView
+        android:id="@+id/pinIconView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_quest_create_note" />
+
+</RelativeLayout>

@@ -212,7 +212,7 @@ dependencies {
     implementation("com.charleskorn.kaml:kaml:0.59.0")
 
     // map and location
-    implementation("com.mapzen.tangram:tangram:0.17.1")
+    implementation("org.maplibre.gl:android-sdk:11.0.2-pre0")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")
@@ -300,16 +300,17 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
 }
 
-tasks.register<UpdateMapStyleTask>("updateMapStyle") {
-    group = "streetcomplete"
-    targetDir = "$projectDir/src/main/assets/map_theme/jawg"
-    mapStyleBranch = "jawg"
-}
-
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = "$rootDir/CHANGELOG.md"
     targetFile = "$projectDir/src/main/res/raw/changelog.html"
+}
+
+tasks.register<UpdateMapStyleTask>("updateMapStyle") {
+    group = "streetcomplete"
+    targetDir = "$projectDir/src/main/assets/map_theme"
+    apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
+    mapStyleBranch = "master"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {

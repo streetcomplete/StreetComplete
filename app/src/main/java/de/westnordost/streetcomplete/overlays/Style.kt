@@ -21,17 +21,20 @@ data class StrokeStyle(
 )
 
 data class PolygonStyle(
-    /** argb value as hex value, e.g. "#66ff00" */
+    /** rgb value as hex value, e.g. "#66ff00" */
     val color: String,
-    /** icon name to show on the point */
-    val icon: String? = null,
+    /** icon id to show on the point */
+    val icon: Int? = null,
     /** label to show in the center of the area */
     val label: String? = null,
+    /** whether and how much to extrude this area */
+    val height: Float? = null,
+    val minHeight: Float? = null,
 ) : Style
 
 data class PointStyle(
-    /** icon name to show on the point */
-    val icon: String?,
+    /** icon id to show on the point */
+    val icon: Int?,
     /** label to show on the point */
     val label: String? = null,
 ) : Style

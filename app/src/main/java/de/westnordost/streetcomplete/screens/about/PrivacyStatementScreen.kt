@@ -17,7 +17,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.tryParseHtml
@@ -26,7 +25,6 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 /** Shows the privacy statement */
 @Composable
 fun PrivacyStatementScreen(
-    vectorTileProvider: VectorTileProvider,
     onClickBack: () -> Unit
 ) {
     Column(Modifier.fillMaxSize()) {
@@ -39,7 +37,7 @@ fun PrivacyStatementScreen(
             HtmlText(
                 html =
                     tryParseHtml(stringResource(R.string.privacy_html)) +
-                    tryParseHtml(stringResource(R.string.privacy_html_tileserver2, vectorTileProvider.title, vectorTileProvider.privacyStatementLink)) +
+                    tryParseHtml(stringResource(R.string.privacy_html_tileserver2, "JawgMaps", "https://www.jawg.io/en/confidentiality/")) +
                     tryParseHtml(stringResource(R.string.privacy_html_statistics)) +
                     tryParseHtml(stringResource(R.string.privacy_html_image_upload2)),
                 modifier = Modifier
