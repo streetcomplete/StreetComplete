@@ -192,13 +192,13 @@ class MapDataApiClientTest {
     }
 
     private fun client(userLoginSource: UserLoginSource) =
-        MapDataApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, MapDataApiSerializer())
+        MapDataApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, MapDataApiParser(), MapDataApiSerializer())
 
     private fun changesetClient(userLoginSource: UserLoginSource) =
         ChangesetApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, ChangesetApiSerializer())
 
     private val liveClient =
-        MapDataApiClient(HttpClient(), "https://api.openstreetmap.org/api/0.6/", anonymous, MapDataApiSerializer())
+        MapDataApiClient(HttpClient(), "https://api.openstreetmap.org/api/0.6/", anonymous, MapDataApiParser(), MapDataApiSerializer())
 
     // some elements that should exist on the live API
 
