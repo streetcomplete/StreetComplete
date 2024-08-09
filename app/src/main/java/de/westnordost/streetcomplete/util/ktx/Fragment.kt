@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.util.ktx
 
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -35,6 +36,7 @@ fun Fragment.setUpToolbarTitleAndIcon(toolbar: Toolbar) {
     }
 
     toolbar.navigationIcon = backIcon
+    toolbar.isGone = false
 }
 
 fun <T> Fragment.observe(flow: SharedFlow<T>, collector: FlowCollector<T>) {

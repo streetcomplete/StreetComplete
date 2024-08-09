@@ -84,7 +84,7 @@ class DataManagementSettingsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Toolbar>(R.id.toolbar)?.apply {
+        view.rootView.findViewById<Toolbar>(R.id.toolbar)?.apply {
             setUpToolbarTitleAndIcon(this)
         }
     }

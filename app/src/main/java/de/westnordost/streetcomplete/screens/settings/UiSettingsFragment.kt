@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.settings
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -32,7 +33,7 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Toolbar>(R.id.toolbar)?.apply {
+        view.rootView.findViewById<Toolbar>(R.id.toolbar)?.apply {
             setUpToolbarTitleAndIcon(this)
         }
     }
