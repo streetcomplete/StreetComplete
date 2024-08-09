@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.data.user
 
-import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 
 class UserLoginController(
-    private val osmConnection: OsmConnection,
     private val prefs: Preferences,
 ) : UserLoginSource {
 
@@ -18,14 +16,12 @@ class UserLoginController(
 
     fun logIn(accessToken: String) {
         prefs.oAuth2AccessToken = accessToken
-        osmConnection.oAuthAccessToken = accessToken
         listeners.forEach { it.onLoggedIn() }
     }
 
     fun logOut() {
         prefs.oAuth2AccessToken = null
         prefs.removeOAuth1Data()
-        osmConnection.oAuthAccessToken = null
         listeners.forEach { it.onLoggedOut() }
     }
 

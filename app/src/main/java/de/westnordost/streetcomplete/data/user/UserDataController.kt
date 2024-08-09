@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user
 
-import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 
@@ -19,10 +18,10 @@ class UserDataController(private val prefs: Preferences) : UserDataSource {
             listeners.forEach { it.onUpdated() }
         }
 
-    fun setDetails(userDetails: UserDetails) {
+    fun setDetails(userDetails: UserInfo) {
         prefs.userId = userDetails.id
         prefs.userName = userDetails.displayName
-        prefs.userUnreadMessages = userDetails.unreadMessagesCount
+        userDetails.unreadMessagesCount?.let { prefs.userUnreadMessages }
         listeners.forEach { it.onUpdated() }
     }
 
