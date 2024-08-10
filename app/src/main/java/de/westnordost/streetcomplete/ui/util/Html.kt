@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.util
 
-import android.annotation.SuppressLint
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -28,34 +27,51 @@ import de.westnordost.streetcomplete.util.html.HtmlTextNode
 
 @Composable
 fun List<HtmlNode>.toAnnotatedString(): AnnotatedString {
-    val builder = AnnotatedString.Builder()
-    builder.append(this)
-    return builder.toAnnotatedString()
+    val textStyle = LocalTextStyle.current
+    val textMeasurer = rememberTextMeasurer()
+    val bulletWidthPx = remember(textStyle, textMeasurer) {
+        textMeasurer.measure(text = bullet, style = textStyle).size.width
+    }
+    val bulletWidth = bulletWidthPx.pxToSp()
+    val linkColor = MaterialTheme.colors.secondary
+
+    val result = remember(this, bulletWidth, linkColor) {
+        val builder = AnnotatedString.Builder()
+        builder.append(this, bulletWidth, linkColor)
+        builder.toAnnotatedString()
+    }
+    return result
 }
 
-@SuppressLint("ComposableNaming")
-@Composable
-private fun AnnotatedString.Builder.append(nodes: List<HtmlNode>) {
+private fun AnnotatedString.Builder.append(
+    nodes: List<HtmlNode>,
+    bulletWidth: TextUnit,
+    linkColor: Color
+) {
     nodes.forEachIndexed { i, node ->
         val nextNode = nodes.getOrNull(i + 1)
         // ignore blank elements before block elements
         if (nextNode?.isBlockElement() != true || !node.isBlankText()) {
-            append(node)
+            append(node, bulletWidth, linkColor)
         }
     }
 }
 
-@SuppressLint("ComposableNaming")
-@Composable
-private fun AnnotatedString.Builder.append(node: HtmlNode) {
-    if (node is HtmlElementNode) append(node)
+private fun AnnotatedString.Builder.append(
+    node: HtmlNode,
+    bulletWidth: TextUnit,
+    linkColor: Color
+) {
+    if (node is HtmlElementNode) append(node, bulletWidth, linkColor)
     else if (node is HtmlTextNode) append(node.text)
 }
 
-@SuppressLint("ComposableNaming")
 @OptIn(ExperimentalTextApi::class)
-@Composable
-private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
+private fun AnnotatedString.Builder.append(
+    element: HtmlElementNode,
+    bulletWidth: TextUnit,
+    linkColor: Color,
+) {
     if (element.tag == "br") {
         append('\n')
         return
@@ -69,15 +85,9 @@ private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
             ParagraphStyle(textIndent = TextIndent(indent.sp, indent.sp))
         }
         "li" -> {
-            val textStyle = LocalTextStyle.current
-            val textMeasurer = rememberTextMeasurer()
-            val bulletWidth = remember(textStyle, textMeasurer) {
-                textMeasurer.measure(text = bullet, style = textStyle).size.width
-            }
-            val bulletWidthSp = bulletWidth.pxToSp()
             ParagraphStyle(
                 textIndent = TextIndent(
-                    firstLine = (indent - bulletWidthSp.value).sp,
+                    firstLine = (indent - bulletWidth.value).sp,
                     restLine = indent.sp
                 )
             )
@@ -119,10 +129,8 @@ private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
             SpanStyle(background = Color.Yellow)
         "span" ->
             SpanStyle()
-        "a" -> {
-            val linkColor = MaterialTheme.colors.secondary
+        "a" ->
             SpanStyle(textDecoration = TextDecoration.Underline, color = linkColor)
-        }
         else -> null
     }
     if (span != null) pushStyle(span)
@@ -131,7 +139,7 @@ private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
     if (paragraph != null) append('\n')
     if (element.tag == "li") append(bullet)
 
-    append(element.nodes)
+    append(element.nodes, bulletWidth, linkColor)
 
     if (element.tag == "a") tryPop()
     if (span != null) tryPop()
