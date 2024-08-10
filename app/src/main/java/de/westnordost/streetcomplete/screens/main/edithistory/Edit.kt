@@ -1,10 +1,15 @@
-package de.westnordost.streetcomplete.data.edithistory
+package de.westnordost.streetcomplete.screens.main.edithistory
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
@@ -37,3 +42,30 @@ val Edit.overlayIcon: Int get() = when (this) {
     is OsmQuestHidden -> R.drawable.ic_undo_visibility
     else -> 0
 }
+
+@Composable
+@ReadOnlyComposable
+fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
+    is ElementEdit -> {
+        if (type is OsmElementQuestType<*>) {
+            stringResource(type.getTitle(elementTags.orEmpty()))
+        } else {
+            stringResource(type.title)
+        }
+    }
+    is NoteEdit -> {
+        stringResource(when (action) {
+            CREATE -> R.string.created_note_action_title
+            COMMENT -> R.string.commented_note_action_title
+        })
+    }
+    is OsmQuestHidden -> {
+        stringResource(questType.getTitle(elementTags.orEmpty()))
+    }
+    is OsmNoteQuestHidden -> {
+        stringResource(R.string.quest_noteDiscussion_title)
+    }
+    else -> throw IllegalArgumentException()
+}
+
+// TODO use not-generic quest-title (with titleArgs)? - otherwise need fallback like in UndoDialog

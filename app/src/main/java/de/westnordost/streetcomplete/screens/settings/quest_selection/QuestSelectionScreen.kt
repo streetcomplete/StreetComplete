@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
+import de.westnordost.streetcomplete.quests.genericQuestTitle
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import java.util.Locale

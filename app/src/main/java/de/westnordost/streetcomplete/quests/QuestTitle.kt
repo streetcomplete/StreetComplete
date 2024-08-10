@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.settings
+package de.westnordost.streetcomplete.quests
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable

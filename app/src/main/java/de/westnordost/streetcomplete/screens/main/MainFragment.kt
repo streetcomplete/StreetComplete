@@ -38,7 +38,6 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -81,6 +80,7 @@ import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.MapControls
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
+import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MapFragment
@@ -229,8 +229,8 @@ class MainFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.controls.content {
-            val editItems by editHistoryViewModel.editItems.collectAsState()
-            val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
+            val edits by editHistoryViewModel.edits.collectAsState()
+            val hasEdits by remember { derivedStateOf { edits.isNotEmpty() } }
 
             MapControls(
                 viewModel = controlsViewModel,
@@ -268,8 +268,8 @@ class MainFragment :
                 closeBottomSheet()
             }
         }
-        observe(editHistoryViewModel.editItems) { editItems ->
-            if (editItems.isEmpty()) closeEditHistorySidebar()
+        observe(editHistoryViewModel.edits) { edits ->
+            if (edits.isEmpty()) closeEditHistorySidebar()
         }
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit == null) {

@@ -3,21 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_alignParentLeft="true"
-    android:background="@color/background"
-    android:elevation="@dimen/speech_bubble_elevation"
+    android:clipToPadding="false"
     tools:ignore="RtlHardcoded">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/editHistoryList"
-        android:layout_width="80dp"
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/editHistorySidebar"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:paddingBottom="22dp"
-        android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:reverseLayout="true"
-        android:orientation="vertical"
-        tools:listitem="@layout/row_edit_item" />
+        android:clipToPadding="false" />
 
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>

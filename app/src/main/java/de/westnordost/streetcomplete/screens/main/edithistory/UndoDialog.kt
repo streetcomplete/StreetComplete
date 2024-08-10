@@ -14,8 +14,6 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
-import de.westnordost.streetcomplete.data.edithistory.icon
-import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeFromVertexAction
@@ -37,6 +35,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
@@ -183,8 +182,8 @@ private fun StringMapEntryChange.toLinkedTagString(): String =
     })
 
 private fun linkedTagString(key: String, value: String): String {
-    val escapedKey = Html.escapeHtml(key)
-    val escapedValue = Html.escapeHtml(value)
+    val escapedKey = key.replaceHtmlEntities()
+    val escapedValue = value.replaceHtmlEntities()
     val keyLink = "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$escapedKey\">$escapedKey</a>"
     return "$keyLink = $escapedValue"
 }

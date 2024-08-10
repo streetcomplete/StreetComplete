@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
@@ -15,19 +14,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
-import kotlinx.datetime.Instant
 
 abstract class EditHistoryViewModel : ViewModel() {
-    abstract val editItems: StateFlow<List<EditItem>>
+    abstract val edits: StateFlow<List<Edit>>
     abstract val selectedEdit: StateFlow<Edit?>
 
     abstract suspend fun getEditElement(edit: Edit): Element?
@@ -39,40 +33,15 @@ abstract class EditHistoryViewModel : ViewModel() {
     abstract val featureDictionaryLazy: Lazy<FeatureDictionary>
 }
 
-data class EditItem(
-    val edit: Edit,
-    val showDate: Boolean,
-    val showTime: Boolean,
-    val isSelected: Boolean
-)
-
 class EditHistoryViewModelImpl(
     private val mapDataSource: MapDataWithEditsSource,
     private val editHistoryController: EditHistoryController,
     override val featureDictionaryLazy: Lazy<FeatureDictionary>,
 ) : EditHistoryViewModel() {
 
-    private val edits = MutableStateFlow<List<Edit>>(emptyList())
+    override val edits = MutableStateFlow<List<Edit>>(emptyList())
 
     override val selectedEdit = MutableStateFlow<Edit?>(null)
-
-    override val editItems = combine(edits, selectedEdit) { edits, selection ->
-        edits.mapIndexed { index, edit ->
-            val editAbove = if (index < edits.indices.last) edits[index + 1] else null
-
-            val editDateTime = Instant.fromEpochMilliseconds(edit.createdTimestamp).toLocalDateTime()
-            val editAboveDateTime = editAbove?.let { Instant.fromEpochMilliseconds(it.createdTimestamp).toLocalDateTime() }
-            val sameDate = editDateTime.date == editAboveDateTime?.date
-            val sameTime = editDateTime.time.hour == editAboveDateTime?.time?.hour &&
-                           editDateTime.time.minute == editAboveDateTime.time.minute
-
-            EditItem(edit,
-                showDate = !sameDate,
-                showTime = !sameTime || !sameDate,
-                isSelected = selection?.key == edit.key
-            )
-        }
-    }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     override suspend fun getEditElement(edit: Edit): Element? {
         val key = edit.primaryElementKey ?: return null
@@ -103,7 +72,7 @@ class EditHistoryViewModelImpl(
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(added: Edit) {
             edits.update { edits ->
-                var insertIndex = edits.indexOfFirst { it.createdTimestamp < added.createdTimestamp }
+                var insertIndex = edits.indexOfLast { it.createdTimestamp > added.createdTimestamp }
                 if (insertIndex == -1) insertIndex = edits.size
                 edits.toMutableList().also { it.add(insertIndex, added) }
             }
@@ -114,7 +83,7 @@ class EditHistoryViewModelImpl(
                 selectedEdit.value = synced
             }
             edits.update { edits ->
-                val editIndex = edits.indexOfFirst { it.key == synced.key }
+                val editIndex = edits.indexOfLast { it.key == synced.key }
                 if (editIndex != -1) {
                     edits.toMutableList().also { it[editIndex] = synced }
                 } else {
@@ -149,7 +118,7 @@ class EditHistoryViewModelImpl(
 
     private fun updateEdits() {
         launch(IO) {
-            edits.value = editHistoryController.getAll().sortedByDescending { it.createdTimestamp }
+            edits.value = editHistoryController.getAll().sortedBy { it.createdTimestamp }
         }
     }
 }
