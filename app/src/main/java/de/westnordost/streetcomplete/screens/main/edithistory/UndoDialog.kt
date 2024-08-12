@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.edithistory
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Html
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +32,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
-import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
+import de.westnordost.streetcomplete.quests.getTitle
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -42,7 +41,6 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setHtml
 import de.westnordost.streetcomplete.view.setText
-import java.util.MissingFormatArgumentException
 
 class UndoDialog(
     context: Context,
@@ -81,7 +79,7 @@ class UndoDialog(
     private fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
             if (type is QuestType) {
-                getQuestTitle(type, element?.tags.orEmpty())
+                context.resources.getString(type.getTitle(element?.tags.orEmpty()))
             } else {
                 context.resources.getText(type.title)
             }
@@ -93,7 +91,7 @@ class UndoDialog(
             })
         }
         is OsmQuestHidden -> {
-            getQuestTitle(questType, element?.tags.orEmpty())
+            context.resources.getString(questType.getTitle(element?.tags.orEmpty()))
         }
         is OsmNoteQuestHidden -> {
             context.resources.getText(R.string.quest_noteDiscussion_title)
@@ -124,18 +122,6 @@ class UndoDialog(
         is OsmNoteQuestHidden -> createTextView(ResText(R.string.hid_action_description))
         else -> throw IllegalArgumentException()
     }
-
-    private fun getQuestTitle(questType: QuestType, tags: Map<String, String>): CharSequence =
-        try {
-            context.resources.getHtmlQuestTitle(questType, tags)
-        } catch (e: MissingFormatArgumentException) {
-            /* The exception happens when the number of format strings in the quest title
-             * differs from what can be "filled" by getHtmlQuestTitle. When does this happen?
-             * It happens the element is null or otherwise is not at all what is expected by
-             * that quest type.
-             * So, this is the fallback for that case */
-            context.resources.getString(questType.title, *Array(10) { "…" })
-        }
 
     private fun createTextView(text: Text?): TextView {
         val txt = TextView(context)

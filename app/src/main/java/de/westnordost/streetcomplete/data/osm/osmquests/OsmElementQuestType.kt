@@ -62,10 +62,6 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  specified [tags] */
     fun getTitle(tags: Map<String, String>): Int
 
-    /** the replacement string(s) to fill the string templates included in the selected string id
-     *  as specified in [getTitle], if any */
-    fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf()
-
     /** All elements within the given map data that are applicable to this quest type, i.e. for
      *  which a quest of this type should be created.
      *

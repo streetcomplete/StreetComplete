@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.quests.getTitle
 
 val Edit.icon: Int get() = when (this) {
     is ElementEdit -> type.icon
@@ -47,7 +49,7 @@ val Edit.overlayIcon: Int get() = when (this) {
 @ReadOnlyComposable
 fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
     is ElementEdit -> {
-        if (type is OsmElementQuestType<*>) {
+        if (type is QuestType) {
             stringResource(type.getTitle(elementTags.orEmpty()))
         } else {
             stringResource(type.title)
