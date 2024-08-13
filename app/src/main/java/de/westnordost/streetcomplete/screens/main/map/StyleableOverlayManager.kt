@@ -58,7 +58,10 @@ class StyleableOverlayManager(
             when {
                 isNullNow -> hide()
                 wasNull ->   show()
-                else ->      invalidate()
+                else ->      {
+                    clear()
+                    invalidate()
+                }
             }
         }
 
