@@ -337,6 +337,8 @@ You can find donation information on our website or project home, Google Play do
 
     <string name="about_title_faq">"FAQ"</string>
 
+    <string name="about_title_intro">"Show introduction"</string>
+
     <string name="about_title_report_error">"Report error"</string>
 
     <string name="about_title_feedback">"Give feedback"</string>
@@ -345,6 +347,7 @@ You can find donation information on our website or project home, Google Play do
 
     <string name="about_category_contribute">Contribute</string>
 
+    <string name="about_category_help">Help</string>
 
     <!-- Credits screen -->
 

@@ -47,13 +47,14 @@ import kotlinx.coroutines.launch
 @Composable
 fun OverlaysTutorialScreen(
     onDismissRequest: () -> Unit,
-    onFinished: () -> Unit,
+    onFinished: () -> Unit = {},
+    dismissOnBackPress: Boolean = true,
 ) {
     TutorialScreen(
         pageCount = 3,
         onDismissRequest = onDismissRequest,
         onFinished = onFinished,
-        dismissOnBackPress = true,
+        dismissOnBackPress = dismissOnBackPress,
         illustration = { page ->
             OverlaysTutorialIllustration(page)
         },

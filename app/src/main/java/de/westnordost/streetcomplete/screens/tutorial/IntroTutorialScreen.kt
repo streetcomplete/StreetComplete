@@ -44,8 +44,9 @@ import kotlinx.coroutines.launch
 @Composable
 fun IntroTutorialScreen(
     onDismissRequest: () -> Unit,
-    onExplainedNeedForLocationPermission: () -> Unit,
-    onFinished: () -> Unit,
+    onExplainedNeedForLocationPermission: () -> Unit = {},
+    onFinished: () -> Unit = {},
+    dismissOnBackPress: Boolean = false,
 ) {
     TutorialScreen(
         pageCount = 4,
@@ -59,7 +60,7 @@ fun IntroTutorialScreen(
         illustration = { page ->
             IntroTutorialIllustration(page)
         },
-        dismissOnBackPress = false,
+        dismissOnBackPress = dismissOnBackPress,
     ) { page ->
         Column(
             modifier = Modifier.fillMaxSize(1f),
