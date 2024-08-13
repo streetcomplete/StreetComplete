@@ -42,7 +42,7 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.PositionOnWay
@@ -135,7 +135,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         }
 
         if (element != null) {
-            setTitleHintLabel(getNameAndLocationLabel(
+            setTitleHintLabel(getNameAndLocationSpanned(
                 element, resources, featureDictionary,
                 showHouseNumber = false
             ))

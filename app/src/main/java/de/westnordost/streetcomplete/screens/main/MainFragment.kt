@@ -21,10 +21,6 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toRectF
@@ -78,7 +74,6 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.MapControls
-import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.LocationAwareMapFragment
@@ -186,9 +181,6 @@ class MainFragment :
     private val bottomSheetFragment: Fragment? get() =
         childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
 
-    private val editHistoryFragment: EditHistoryFragment? get() =
-        childFragmentManagerOrNull?.findFragmentByTag(EDIT_HISTORY) as? EditHistoryFragment
-
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
 
     interface Listener {
@@ -197,12 +189,6 @@ class MainFragment :
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
-
-    private val historyBackPressedCallback = object : OnBackPressedCallback(false) {
-        override fun handleOnBackPressed() {
-            closeEditHistorySidebar()
-        }
-    }
 
     private val sheetBackPressedCallback = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() {
@@ -229,19 +215,15 @@ class MainFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.controls.content {
-            val editItems by editHistoryViewModel.editItems.collectAsState()
-            val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
-
             MapControls(
                 viewModel = controlsViewModel,
-                hasEdits = hasEdits,
+                editHistoryViewModel = editHistoryViewModel,
                 onClickZoomIn = ::onClickZoomIn,
                 onClickZoomOut = ::onClickZoomOut,
                 onClickCompass = ::onClickCompassButton,
                 onClickLocation = ::onClickTrackingButton,
                 onClickCreate = ::onClickCreateButton,
                 onClickStopTrackRecording = ::onClickTracksStop,
-                onClickUndo = ::onClickUndoButton,
                 onClickDownload = ::onClickDownload,
                 onClickUpload = ::onClickUploadButton,
                 onExplainedNeedForLocationPermission = ::requestLocation
@@ -256,9 +238,6 @@ class MainFragment :
         updateOffsetWithOpenBottomSheet()
 
         requireActivity().onBackPressedDispatcher
-            .addCallback(viewLifecycleOwner, historyBackPressedCallback)
-        historyBackPressedCallback.isEnabled = editHistoryFragment != null
-        requireActivity().onBackPressedDispatcher
             .addCallback(viewLifecycleOwner, sheetBackPressedCallback)
         sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
 
@@ -267,9 +246,6 @@ class MainFragment :
             if (f is IsShowingElement) {
                 closeBottomSheet()
             }
-        }
-        observe(editHistoryViewModel.editItems) { editItems ->
-            if (editItems.isEmpty()) closeEditHistorySidebar()
         }
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit == null) {
@@ -281,6 +257,14 @@ class MainFragment :
                 mapFragment?.highlightGeometry(geometry)
                 mapFragment?.highlightPins(edit.icon, listOf(edit.position))
                 mapFragment?.hideOverlay()
+            }
+        }
+        observe(editHistoryViewModel.isShowingSidebar) { isShowingSidebar ->
+            if (!isShowingSidebar) {
+                mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
+            } else {
+                mapFragment?.hideOverlay()
+                mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
             }
         }
     }
@@ -368,7 +352,7 @@ class MainFragment :
     override fun onLongPress(x: Float, y: Float) {
         val point = PointF(x, y)
         val position = mapFragment?.getPositionAt(point) ?: return
-        if (bottomSheetFragment != null || editHistoryFragment != null) return
+        if (bottomSheetFragment != null || editHistoryViewModel.isShowingSidebar.value) return
 
         binding.contextMenuView.translationX = x
         binding.contextMenuView.translationY = y
@@ -404,8 +388,8 @@ class MainFragment :
             if (!f.onClickMapAt(position, clickAreaSizeInMeters)) {
                 f.onClickClose { closeBottomSheet() }
             }
-        } else if (editHistoryFragment != null) {
-            closeEditHistorySidebar()
+        } else if (editHistoryViewModel.isShowingSidebar.value) {
+            editHistoryViewModel.hideSidebar()
         }
     }
 
@@ -690,10 +674,6 @@ class MainFragment :
         }
     }
 
-    private fun onClickUndoButton() {
-        showEditHistorySidebar()
-    }
-
     private fun onClickCompassButton() {
         // Clicking the compass button will always rotate the map back to north and remove tilt
         val mapFragment = mapFragment ?: return
@@ -876,35 +856,6 @@ class MainFragment :
 
     private fun onClickLocationPointer() {
         setIsFollowingPosition(true)
-    }
-
-    //endregion
-
-    //region Edit History Sidebar
-
-    private fun showEditHistorySidebar() {
-        val appearAnim = R.animator.edit_history_sidebar_appear
-        val disappearAnim = R.animator.edit_history_sidebar_disappear
-        if (editHistoryFragment != null) {
-            childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        }
-        childFragmentManager.commit(true) {
-            setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
-            add(R.id.edit_history_container, EditHistoryFragment(), EDIT_HISTORY)
-            addToBackStack(EDIT_HISTORY)
-        }
-        mapFragment?.hideOverlay()
-        mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
-        historyBackPressedCallback.isEnabled = true
-    }
-
-    private fun closeEditHistorySidebar() {
-        if (editHistoryFragment != null) {
-            childFragmentManager.popBackStack(EDIT_HISTORY, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        }
-        editHistoryViewModel.select(null)
-        mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
-        historyBackPressedCallback.isEnabled = false
     }
 
     //endregion
@@ -1176,7 +1127,6 @@ class MainFragment :
 
     companion object {
         private const val BOTTOM_SHEET = "bottom_sheet"
-        private const val EDIT_HISTORY = "edit_history"
 
         private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
     }

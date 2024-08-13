@@ -4,16 +4,22 @@ import android.content.Intent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -29,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -38,6 +45,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.MainViewModel
+import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
+import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
@@ -51,6 +60,7 @@ import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.common.ZoomInIcon
 import de.westnordost.streetcomplete.ui.common.ZoomOutIcon
+import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
 import kotlin.math.abs
@@ -64,14 +74,13 @@ import kotlin.math.abs
 @Composable
 fun MapControls(
     viewModel: MainViewModel,
-    hasEdits: Boolean,
+    editHistoryViewModel: EditHistoryViewModel,
     onClickZoomIn: () -> Unit,
     onClickZoomOut: () -> Unit,
     onClickCompass: () -> Unit,
     onClickLocation: () -> Unit,
     onClickCreate: () -> Unit,
     onClickStopTrackRecording: () -> Unit,
-    onClickUndo: () -> Unit,
     onClickDownload: () -> Unit,
     onClickUpload: () -> Unit,
     onExplainedNeedForLocationPermission: () -> Unit,
@@ -106,6 +115,10 @@ fun MapControls(
     val mapRotation by viewModel.mapRotation.collectAsState()
     val mapTilt by viewModel.mapTilt.collectAsState()
 
+    val editItems by editHistoryViewModel.editItems.collectAsState()
+    val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
+    val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
+
     val isCreateButtonEnabled by remember { derivedStateOf { mapZoom >= 18f } }
 
     var showOverlaysDropdown by remember { mutableStateOf(false) }
@@ -114,6 +127,7 @@ fun MapControls(
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
+    val showEditHistorySidebar by editHistoryViewModel.isShowingSidebar.collectAsState()
 
     fun onClickOverlays() {
         if (viewModel.hasShownOverlaysTutorial) {
@@ -147,8 +161,7 @@ fun MapControls(
         }
     }
 
-    // the layout of the buttons is not mirrored for different text directions
-    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+    Box {
         if (selectedOverlay?.isCreateNodeEnabled == true) {
             Crosshair()
         }
@@ -174,7 +187,9 @@ fun MapControls(
 
             // top controls
             Row(
-                modifier = Modifier.align(Alignment.TopEnd).padding(4.dp),
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(4.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 if (messagesCount > 0) {
@@ -211,7 +226,9 @@ fun MapControls(
 
             // bottom-right controls
             Column(
-                modifier = Modifier.align(Alignment.BottomEnd).padding(4.dp),
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(4.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 val isCompassVisible = abs(mapRotation) >= 1f || abs(mapTilt) >= 1f
@@ -241,7 +258,9 @@ fun MapControls(
             if (selectedOverlay?.isCreateNodeEnabled == true) {
                 MapButton(
                     onClick = onClickCreate,
-                    modifier = Modifier.align(BiasAlignment(0.333f, 1f)).padding(4.dp),
+                    modifier = Modifier
+                        .align(BiasAlignment(0.333f, 1f))
+                        .padding(4.dp),
                     enabled = isCreateButtonEnabled,
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = MaterialTheme.colors.secondaryVariant,
@@ -253,7 +272,9 @@ fun MapControls(
 
             // bottom-left controls
             Column(
-                modifier = Modifier.align(Alignment.BottomStart).padding(4.dp),
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(4.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 if (isRecordingTracks) {
@@ -269,7 +290,7 @@ fun MapControls(
 
                 if (hasEdits) {
                     MapButton(
-                        onClick = onClickUndo,
+                        onClick = { editHistoryViewModel.showSidebar() },
                         // Don't allow undoing while uploading. Should prevent race conditions.
                         // (Undoing quest while also uploading it at the same time)
                         enabled = !isUploadingOrDownloading,
@@ -278,6 +299,23 @@ fun MapControls(
                     }
                 }
             }
+        }
+
+        val dir = LocalLayoutDirection.current.dir
+        AnimatedVisibility(
+            visible = showEditHistorySidebar,
+            enter = fadeIn() + slideInHorizontally(initialOffsetX = { -it / 2 * dir }),
+            exit = fadeOut() + slideOutHorizontally(targetOffsetX = { -it / 2 * dir }),
+        ) {
+            EditHistorySidebar(
+                editItems = editItems,
+                selectedEdit = selectedEdit,
+                onSelectEdit = { editHistoryViewModel.select(it.key) },
+                onUndoEdit = { editHistoryViewModel.undo(it.key) },
+                onDismissRequest = { editHistoryViewModel.hideSidebar() },
+                featureDictionaryLazy = editHistoryViewModel.featureDictionaryLazy,
+                getEditElement = editHistoryViewModel::getEditElement,
+            )
         }
     }
 
@@ -314,14 +352,14 @@ fun MapControls(
         )
     }
 
-    AnimatedScreenVisibility(showOverlaysTutorial,) {
+    AnimatedScreenVisibility(showOverlaysTutorial) {
         OverlaysTutorialScreen(
             onDismissRequest = { showOverlaysTutorial = false },
             onFinished = { viewModel.hasShownOverlaysTutorial = true }
         )
     }
 
-    AnimatedScreenVisibility(showIntroTutorial,) {
+    AnimatedScreenVisibility(showIntroTutorial) {
         IntroTutorialScreen(
             onDismissRequest = { showIntroTutorial = false },
             onExplainedNeedForLocationPermission = onExplainedNeedForLocationPermission,

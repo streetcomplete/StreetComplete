@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -119,7 +119,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         super.onViewCreated(view, savedInstanceState)
 
         setTitle(getString(osmElementQuestType.getTitle(element.tags)))
-        setTitleHintLabel(getNameAndLocationLabel(element, resources, featureDictionary))
+        setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
     }
 
     override fun onStart() {
@@ -237,7 +237,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     protected fun composeNote() {
 
         val questTitle = englishResources.getString(osmElementQuestType.getTitle(element.tags))
-        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary)
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "Unable to answer \"$questTitle\""
         } else {

@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.quests.LocalizedNameAdapter
 import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
-import de.westnordost.streetcomplete.util.getLocationLabel
+import de.westnordost.streetcomplete.util.getLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.AdapterDataChangedWatcher
@@ -97,7 +97,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         super.onViewCreated(view, savedInstanceState)
 
         // title hint label with name is a duplication, it is displayed in the UI already
-        setTitleHintLabel(element?.tags?.let { getLocationLabel(it, resources) })
+        setTitleHintLabel(element?.tags?.let { getLocationSpanned(it, resources) })
         setMarkerIcon(R.drawable.ic_quest_shop)
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)

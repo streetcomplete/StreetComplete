@@ -39,6 +39,13 @@ abstract class EditHistoryViewModel : ViewModel() {
     abstract fun undo(editKey: EditKey)
 
     abstract val featureDictionaryLazy: Lazy<FeatureDictionary>
+
+    /* edit sidebar */
+    // TODO could maybe be just a boolean in the composable when there's no communication between
+    //      compose <-> fragment communication necessary anymore
+    abstract fun showSidebar()
+    abstract fun hideSidebar()
+    abstract val isShowingSidebar: StateFlow<Boolean>
 }
 
 data class EditItem(
@@ -88,6 +95,19 @@ class EditHistoryViewModelImpl(
         }
     }
 
+    override fun showSidebar() {
+        selectedEdit.value = edits.value.lastOrNull()
+        isShowingSidebar.value = true
+    }
+
+    override fun hideSidebar() {
+        selectedEdit.value = null
+        isShowingSidebar.value = false
+    }
+
+    override val isShowingSidebar = MutableStateFlow<Boolean>(false)
+
+
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(added: Edit) {
             edits.update { edits ->
@@ -119,6 +139,7 @@ class EditHistoryViewModelImpl(
             edits.update { edits ->
                 edits.filter { it.key !in deletedKeys }
             }
+            if (edits.value.isEmpty()) hideSidebar()
         }
 
         override fun onInvalidated() {
@@ -138,6 +159,7 @@ class EditHistoryViewModelImpl(
     private fun updateEdits() {
         launch(IO) {
             edits.value = editHistoryController.getAll().sortedBy { it.createdTimestamp }
+            if (edits.value.isEmpty()) hideSidebar()
         }
     }
 

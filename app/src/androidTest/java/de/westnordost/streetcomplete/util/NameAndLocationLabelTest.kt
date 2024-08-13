@@ -117,14 +117,14 @@ class NameAndLocationLabelTest {
     }
 
     private fun getQuestLabelForNode(tags: Map<String, String>): String? =
-        getNameAndLocationLabel(
+        getNameAndLocationSpanned(
             Node(0, LatLon(0.0, 0.0), tags),
             englishResources,
             featureDictionary
         )?.toString()
 
     private fun getQuestLabelForWay(tags: Map<String, String>): String? =
-        getNameAndLocationLabel(
+        getNameAndLocationSpanned(
             Way(0, listOf(), tags),
             englishResources,
             featureDictionary
