@@ -229,8 +229,8 @@ class MainFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.controls.content {
-            val edits by editHistoryViewModel.edits.collectAsState()
-            val hasEdits by remember { derivedStateOf { edits.isNotEmpty() } }
+            val editItems by editHistoryViewModel.editItems.collectAsState()
+            val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
 
             MapControls(
                 viewModel = controlsViewModel,
@@ -268,8 +268,8 @@ class MainFragment :
                 closeBottomSheet()
             }
         }
-        observe(editHistoryViewModel.edits) { edits ->
-            if (edits.isEmpty()) closeEditHistorySidebar()
+        observe(editHistoryViewModel.editItems) { editItems ->
+            if (editItems.isEmpty()) closeEditHistorySidebar()
         }
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit == null) {

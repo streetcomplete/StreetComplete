@@ -26,11 +26,11 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.editHistorySidebar.content {
-            val edits by viewModel.edits.collectAsState()
+            val editItems by viewModel.editItems.collectAsState()
             val selectedEdit by viewModel.selectedEdit.collectAsState()
 
             EditHistorySidebar(
-                edits = edits,
+                editItems = editItems,
                 selectedEdit = selectedEdit,
                 onSelectEdit = { viewModel.select(it.key) },
                 onUndoEdit = { onUndo(it) }
@@ -38,7 +38,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
         }
 
         // on opening, always select the first item
-        viewModel.select(viewModel.edits.value.lastOrNull()?.key)
+        viewModel.select(viewModel.editItems.value.lastOrNull()?.edit?.key)
     }
 
     private fun onUndo(edit: Edit) {

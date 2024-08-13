@@ -21,6 +21,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -35,17 +36,23 @@ import java.text.DateFormat
  *  the most recent edit at the bottom. The list always scrolls to the currently selected edit. */
 @Composable
 fun EditHistorySidebar(
-    edits: List<Edit>,
+    editItems: List<EditItem>,
     selectedEdit: Edit?,
     onSelectEdit: (Edit) -> Unit,
     onUndoEdit: (Edit) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val state = rememberLazyListState()
+    val selectedIndex = remember(selectedEdit) {
+        if (selectedEdit != null) editItems
+            .indexOfLast { it.edit == selectedEdit }
+            .takeUnless { it < 0 }
+        else null
+    }
+
+    val state = rememberLazyListState(initialFirstVisibleItemIndex = selectedIndex ?: editItems.lastIndex)
 
     LaunchedEffect(selectedEdit) {
-        val index = edits.indexOf(selectedEdit)
-        if (index != -1) state.animateScrollToItem(index)
+        if (selectedIndex != null) state.animateScrollToItem(selectedIndex)
     }
 
     Surface(
@@ -62,28 +69,19 @@ fun EditHistorySidebar(
             verticalArrangement = Arrangement.Bottom,
             contentPadding = insets
         ) {
-            var currentDateTime: LocalDateTime? = null
-            items(edits) { edit ->
-                /* We do not use sticky headers for the dates/times because this doesn't play well
-                   with window insets and we'd rather need two levels of sticky headers
-                   (1. date, 2. time) which is not directly supported (compose 1.6) */
-                val instant = Instant.fromEpochMilliseconds(edit.createdTimestamp)
-                val dateTime = instant.toLocalDateTime()
-                val showDate = dateTime.date != currentDateTime?.date
-                val showTime = dateTime.hour != currentDateTime?.hour || dateTime.minute != currentDateTime?.minute
-                currentDateTime = dateTime
+            items(editItems) { editItem ->
 
                 Column {
                     DateTimeHeader(
-                        timestamp = edit.createdTimestamp,
-                        showDate = showDate,
-                        showTime = showTime
+                        timestamp = editItem.edit.createdTimestamp,
+                        showDate = editItem.showDate,
+                        showTime = editItem.showTime
                     )
                     EditHistoryItem(
-                        selected = selectedEdit == edit,
-                        onSelect = { onSelectEdit(edit) },
-                        onUndo = { onUndoEdit(edit) },
-                        edit = edit,
+                        selected = selectedEdit == editItem.edit,
+                        onSelect = { onSelectEdit(editItem.edit) },
+                        onUndo = { onUndoEdit(editItem.edit) },
+                        edit = editItem.edit,
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
@@ -105,18 +103,18 @@ private fun DateTimeHeader(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier,
         ) {
+            // divider to demarcate time boundary
             if (showDate || showTime) {
                 Divider()
             }
             if (showDate) {
+                // locale-dependent, e.g. 13/8/24
                 Text(DateFormat.getDateInstance(DateFormat.SHORT).format(timestamp))
             }
             if (showTime) {
+                // locale-dependent, e.g. 12:30 PM
                 Text(DateFormat.getTimeInstance(DateFormat.SHORT).format(timestamp))
             }
         }
     }
 }
-
-// TODO for initial selection, don't animate
-// TODO selection animation?
