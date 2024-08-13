@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.multiplatform.webview.request.RequestInterceptor
 import com.multiplatform.webview.request.WebRequest
@@ -142,6 +143,7 @@ private fun LoginButtonWithText(
                     R.string.unsynced_quests_not_logged_in_description,
                     unsyncedChangesCount
                 ),
+                textAlign = TextAlign.Center,
                 modifier = Modifier.alpha(ContentAlpha.medium),
                 style = MaterialTheme.typography.titleLarge,
             )
