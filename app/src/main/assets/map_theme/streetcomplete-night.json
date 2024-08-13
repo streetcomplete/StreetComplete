@@ -11,7 +11,7 @@
   },
   "transition": { "duration": 300, "delay": 0 },
   "light": { "intensity": 0.2 },
-  "glyphs": "https://api.jawg.io/glyphs/{fontstack}/{range}.pbf",
+  "glyphs": "asset://map_theme/glyphs/{fontstack}/{range}.pbf",
   "sprite": "https://streetcomplete.app/map-jawg/sprites",
   "layers": [
     { "id": "background", "type": "background", "paint": {"background-color": "#2e2e48"}},
