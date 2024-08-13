@@ -69,5 +69,3 @@ fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
     }
     else -> throw IllegalArgumentException()
 }
-
-// TODO use not-generic quest-title (with titleArgs)? - otherwise need fallback like in UndoDialog

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -26,6 +29,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
+import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 
 /** One item in the edit history sidebar list. Selectable and when selected, an undo button is
@@ -53,25 +57,18 @@ fun EditHistoryItem(
                 onClick = onSelect
             ),
     ) {
-        Box(Modifier
-            .size(56.dp)
-            .padding(4.dp)
+        Box(
+            Modifier
+                .size(56.dp)
+                .padding(4.dp)
         ) {
             EditImage(edit)
-            if (selected) {
-                val undoButtonColor = ButtonDefaults.buttonColors(
-                    backgroundColor = MaterialTheme.colors.surface
-                )
-                Surface(
-                    onClick = onUndo,
-                    modifier = Modifier.align(Alignment.Center),
-                    shape = CircleShape,
-                    color = undoButtonColor.backgroundColor(edit.isUndoable).value,
-                    contentColor = undoButtonColor.contentColor(edit.isUndoable).value,
-                    elevation = 4.dp
-                ) {
-                    Box(Modifier.padding(8.dp)) { UndoIcon() }
-                }
+            AnimatedVisibility(
+                visible = selected,
+                enter = fadeIn(),
+                exit = fadeOut()
+            ) {
+                MapButton(onClick = onUndo, contentPadding = 8.dp) { UndoIcon() }
             }
         }
     }

@@ -1,12 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -15,28 +11,26 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.ui.common.OverlaysIcon
 
 /** Overlay selection button that shows the icon of the currently selected overlay */
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun OverlaySelectionButton(
     onClick: () -> Unit,
     overlay: Overlay?,
     modifier: Modifier = Modifier
 ) {
-    Surface(
+    val icon = overlay?.icon
+    MapButton(
         onClick = onClick,
         modifier = modifier,
-        shape = CircleShape,
-        elevation = 4.dp
+        contentPadding = if (icon != null) 6.dp else 12.dp
     ) {
-        val icon = overlay?.icon
         if (icon != null) {
             Image(
                 painter = painterResource(icon),
                 contentDescription = overlay.name,
-                modifier = Modifier.padding(6.dp).size(36.dp)
+                modifier = Modifier.size(36.dp)
             )
         } else {
-            Box(Modifier.padding(12.dp)) { OverlaysIcon() }
+            OverlaysIcon()
         }
     }
 }
