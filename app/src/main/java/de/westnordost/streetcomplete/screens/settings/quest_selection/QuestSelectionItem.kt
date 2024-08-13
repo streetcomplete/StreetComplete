@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Checkbox
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -84,9 +85,9 @@ fun QuestSelectionItem(
 private fun DisabledHint(text: String) {
     Text(
         text = text,
-        modifier = Modifier.alpha(ContentAlpha.medium),
         style = MaterialTheme.typography.body2,
         fontStyle = FontStyle.Italic,
+        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
     )
 }
 

@@ -10,13 +10,13 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -56,7 +56,7 @@ fun UndoDialog(
                 Text(
                     text = DateFormat.getTimeInstance(DateFormat.SHORT).format(edit.createdTimestamp),
                     style = MaterialTheme.typography.body2,
-                    modifier = Modifier.alpha(ContentAlpha.medium)
+                    color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                 )
                 Row(horizontalArrangement = Arrangement.spacedBy(24.dp)) {
                     EditImage(
@@ -66,7 +66,8 @@ fun UndoDialog(
                     Column {
                         Text(
                             text = edit.getTitle(element?.tags),
-                            style = MaterialTheme.typography.body1
+                            style = MaterialTheme.typography.body1,
+                            color = LocalContentColor.current.copy(alpha = ContentAlpha.high),
                         )
                         if (edit is ElementEdit && element != null) {
                             val nameAndLocation = remember(element, context.resources) {
@@ -77,7 +78,7 @@ fun UndoDialog(
                                 Text(
                                     text = nameAndLocation.toAnnotatedString(),
                                     style = MaterialTheme.typography.body1,
-                                    modifier = Modifier.alpha(ContentAlpha.medium)
+                                    color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                                 )
                             }
                         }

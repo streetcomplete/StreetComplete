@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -144,7 +145,7 @@ private fun LoginButtonWithText(
                     unsyncedChangesCount
                 ),
                 textAlign = TextAlign.Center,
-                modifier = Modifier.alpha(ContentAlpha.medium),
+                color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                 style = MaterialTheme.typography.titleLarge,
             )
         }
