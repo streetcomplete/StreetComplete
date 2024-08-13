@@ -74,6 +74,8 @@ class PinsMapComponent(
                 iconImage("cluster-circle"),
                 iconSize(sum(literal(0.5f), division(log2(get("point_count")), literal(10f)))),
                 textField(get("point_count")),
+                textFont(arrayOf("Roboto Regular")),
+                textOffset(arrayOf(0f, 0.1f)),
                 textSize(sum(literal(15f), division(log2(get("point_count")), literal(1.5f)))),
                 iconAllowOverlap(true),
                 textAllowOverlap(true),

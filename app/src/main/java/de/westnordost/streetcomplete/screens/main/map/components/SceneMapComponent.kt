@@ -65,6 +65,7 @@ class SceneMapComponent(
         val language = Locale.getDefault().language
         nameLayers.forEach { layer ->
             style.getLayerAs<SymbolLayer>(layer)?.setProperties(
+                textFont(arrayOf("Roboto Regular")),
                 textField(localizedName(language))
             )
         }

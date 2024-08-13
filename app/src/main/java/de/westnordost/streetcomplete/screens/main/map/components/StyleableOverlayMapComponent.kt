@@ -184,6 +184,7 @@ class StyleableOverlayMapComponent(
             .withProperties(
                 iconImage(get("icon")),
                 textField(get("label")),
+                textFont(arrayOf("Roboto Regular")),
                 textAnchor(Property.TEXT_ANCHOR_TOP),
                 textOffset(switchCase(has("icon"), literal(arrayOf(0f, 1f)), literal(arrayOf(0f, 0f)))),
                 textSize(16 * context.resources.configuration.fontScale),

@@ -69,7 +69,7 @@ class GeometryMarkersMapComponent(
                 textOffset(arrayOf(0f, 1f)),
                 textSize(16 * context.resources.configuration.fontScale),
                 textColor("#D140D0"),
-                textFont(arrayOf("Roboto Bold", "Noto Bold")),
+                textFont(arrayOf("Roboto Bold")),
                 textOptional(true)
             )
     )
