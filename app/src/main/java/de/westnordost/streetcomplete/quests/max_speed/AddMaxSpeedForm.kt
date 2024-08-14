@@ -57,7 +57,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
         val highwayTag = element.tags["highway"]!!
 
-        val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(highwayTag)
+        val couldBeSlowZone = countryInfo.hasSlowZone && ROADS_WHERE_SLOW_ZONE_IS_POSSIBLE.contains(highwayTag)
         binding.zone.isGone = !couldBeSlowZone
 
         val couldBeLivingStreet = countryInfo.hasLivingStreet && MAYBE_LIVING_STREET.contains(highwayTag)
@@ -71,9 +71,9 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
     override fun onClickOk() {
         if (speedType == NO_SIGN) {
-            val couldBeSlowZone = countryInfo.hasSlowZone && POSSIBLY_SLOWZONE_ROADS.contains(element.tags["highway"])
+            val slowZoneLikely = countryInfo.hasSlowZone && element.tags["highway"] == "residential"
 
-            if (couldBeSlowZone) {
+            if (slowZoneLikely) {
                 confirmNoSignSlowZone { determineImplicitMaxspeedType() }
             } else {
                 confirmNoSign { determineImplicitMaxspeedType() }
@@ -319,10 +319,11 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     }
 
     companion object {
-        private val POSSIBLY_SLOWZONE_ROADS = listOf(
-            "residential",
-            "unclassified",
-            "tertiary", // #1133
+        // i.e. where to offer the option to select it. See also #5771, 1133
+        // - sometimes also main roads have that sign
+        private val ROADS_WHERE_SLOW_ZONE_IS_POSSIBLE = listOf(
+            "residential", "unclassified",
+            "tertiary", "tertiary_link", "secondary", "secondary_link", "primary", "primary_link"
         )
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
         private val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("motorway", "living_street")
