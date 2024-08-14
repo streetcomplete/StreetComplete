@@ -10,6 +10,11 @@ Display-wise, nothing much *should* change, the map will just look and behave a 
 
 Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #4026, #3417, #3397, #3346, #3275, #3022, #2878, #2711, #2703, #2612, #2571, #2373, #2359, #2358, #2187, #1713, #1684, #1264, #1019, #869, #807, #318, #179, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
 
+### General improvements
+
+- Redesigned the settings screens, about screens and tutorial screens
+- minor improvements for right-to-left localization (Arabic, Hebrew, Farsi)
+
 ### New Quests
 
 - _"What is the width of the opening here?"_, asked for gates etc. (#5713) by @Nick-Tallguy
@@ -30,9 +35,6 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 - Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
 - Other small improvements (#5740, ...)
 
-### General improvements
-
-- minor improvements for right-to-left localization (Arabic, Hebrew, Farsi)
 
 ## v58.2
 - Fixed it was impossible to login with a third party that required 2FA (e.g. Google) (#5724, #5711)
