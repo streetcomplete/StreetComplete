@@ -1,91 +1,97 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.content.Context
 import android.content.res.Configuration
-import android.content.res.Resources
-import com.mapzen.tangram.SceneUpdate
-import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
-import de.westnordost.streetcomplete.util.ktx.isApril1st
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
+import android.provider.Settings
+import androidx.annotation.UiThread
+import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitSetStyle
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
+import org.maplibre.android.style.expressions.Expression
+import org.maplibre.android.style.expressions.Expression.*
+import org.maplibre.android.style.layers.PropertyFactory.*
+import org.maplibre.android.style.layers.SymbolLayer
+import org.maplibre.android.style.layers.TransitionOptions
 import java.util.Locale
 
-/** Takes care of loading the base map with the right parameters (localization, api key, night mode
- *  etc, custom scene updates, etc ...) */
+/** Takes care of loading the base map with the right parameters (localization, night mode, style
+ *  updates etc... */
 class SceneMapComponent(
-    private val resources: Resources,
-    private val ctrl: KtMapController,
-    private val vectorTileProvider: VectorTileProvider
+    private val context: Context,
+    private val map: MapLibreMap,
 ) {
-    private var sceneUpdates: MutableList<List<Pair<String, String>>> = mutableListOf()
-
-    private var loadedSceneFilePath: String? = null
-    private var loadedSceneUpdates: List<String>? = null
-
-    var isAerialView: Boolean = false
-        set(value) {
-            field = value
-            aerialViewChanged = true
-        }
-    private var aerialViewChanged: Boolean = false
-
-    private val mutex = Mutex()
-
-    /** Add the given scene updates. They will overwrite previous scene updates with the same keys.
-     *
-     *  It does NOT reload the scene, you need to call loadScene yourself to reload. Why? Because
-     *  you might want to bundle scene updates before you triggere a (re)load of the scene. */
-    fun addSceneUpdates(updates: List<Pair<String, String>>) {
-        sceneUpdates.add(updates)
-    }
-
-    /** Remove the given scene updates */
-    fun removeSceneUpdates(updates: List<Pair<String, String>>) {
-        val idx = sceneUpdates.indexOfLast { updates == it }
-        if (idx != -1) sceneUpdates.removeAt(idx)
-    }
-
-    /** (Re)load the scene.
-     *
-     *  Should be called again if the locale changed, the system font size changed, the UI mode
-     *  (=night mode) changed or a custom scene update changed
-     *
-     *  The scene will not actually be reloaded if everything stayed the same. */
-    suspend fun loadScene() = mutex.withLock {
-        val sceneFilePath = getSceneFilePath()
-        val sceneUpdates = getAllSceneUpdates()
-        val strSceneUpdates = sceneUpdates.map { it.toString() }
-        if (loadedSceneFilePath == sceneFilePath
-            && loadedSceneUpdates == strSceneUpdates
-            && !aerialViewChanged
-        ) {
-            return
-        }
-        ctrl.loadSceneFile(sceneFilePath, sceneUpdates)
-        loadedSceneFilePath = sceneFilePath
-        loadedSceneUpdates = sceneUpdates.map { it.toString() }
-        aerialViewChanged = false
-    }
-
-    private fun getAllSceneUpdates(): List<SceneUpdate> =
-        getBaseSceneUpdates() + sceneUpdates.flatten().map { SceneUpdate(it.first, it.second) }
-
-    private fun getBaseSceneUpdates(): List<SceneUpdate> = listOf(
-        SceneUpdate("global.language", Locale.getDefault().language),
-        SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
-        SceneUpdate("global.api_key", vectorTileProvider.apiKey),
-        SceneUpdate("global.language_script", Locale.getDefault().script)
-    )
-
-    private fun getSceneFilePath(): String {
-        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+    /** Load the scene */
+    suspend fun loadStyle(): Style {
+        val currentNightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val april1 = if (isApril1st()) "wonky-" else ""
-        val scene = april1 + when {
-            isAerialView -> "scene-satellite.yaml"
-            isNightMode -> "scene-dark.yaml"
-            else -> "scene-light.yaml"
-        }
-        return "${vectorTileProvider.sceneFilePath}/$scene"
+        val mapFile =
+            if (isNightMode) "map_theme/streetcomplete-night.json"
+            else "map_theme/streetcomplete.json"
+
+        val styleJsonString = context.resources.assets.open(mapFile)
+            .bufferedReader()
+            .use { it.readText() }
+
+        val styleBuilder = Style.Builder().fromJson(styleJsonString)
+        val style = map.awaitSetStyle(styleBuilder)
+        withContext(Dispatchers.Main) { updateStyle() }
+        return style
     }
+
+    /** Updates part of the style depending on the user settings:
+     *  Language, animator duration scale, font scale */
+    @UiThread fun updateStyle() {
+        val style = map.style ?: return
+
+        // apply global animator duration scale
+        val animatorDurationScale = Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
+        style.transition = TransitionOptions(
+            (300 * animatorDurationScale).toLong(),
+            0,
+            true
+        )
+
+        // apply localization
+        val nameLayers = listOf(
+            "labels-country",
+            "labels-localities",
+            "labels-road",
+            "labels-rivers",
+            "labels-streams",
+        )
+
+        val language = Locale.getDefault().language
+        nameLayers.forEach { layer ->
+            style.getLayerAs<SymbolLayer>(layer)?.setProperties(
+                textFont(arrayOf("Roboto Regular")),
+                textField(localizedName(language))
+            )
+        }
+
+        // apply Android font scaling
+        val textLayers = nameLayers + listOf(
+            "labels-housenumbers"
+        )
+
+        textLayers.forEach { layer ->
+            style.getLayerAs<SymbolLayer>(layer)?.setProperties(
+                textSize(16 * context.resources.configuration.fontScale)
+            )
+        }
+    }
+}
+
+private fun localizedName(language: String): Expression {
+    // as defined in https://www.jawg.io/docs/apidocs/maps/streets-v2/
+    val localizedName = listOf("name_$language", "name_ltn")
+    val getLocalizedName = coalesce(*localizedName.map { get(it) }.toTypedArray())
+    return switchCase(
+        // localized name set and different as main name: show both
+        all(toBool(getLocalizedName), neq(get("name"), getLocalizedName)),
+            concat(get("name"), literal("\n"), getLocalizedName),
+        // otherwise just show the name
+        get("name"),
+    )
 }

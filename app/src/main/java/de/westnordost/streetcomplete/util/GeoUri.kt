@@ -16,12 +16,12 @@ fun parseGeoUri(uri: Uri): GeoLocation? {
     if (longitude < -180 || longitude > +180) return null
 
     // zoom is optional. If it is invalid, we treat it the same as if it is not there
-    val zoom = match.groupValues[3].toFloatOrNull()
+    val zoom = match.groupValues[3].toDoubleOrNull()
 
     return GeoLocation(latitude, longitude, zoom)
 }
 
-fun buildGeoUri(latitude: Double, longitude: Double, zoom: Float? = null): Uri {
+fun buildGeoUri(latitude: Double, longitude: Double, zoom: Double? = null): Uri {
     val z = if (zoom != null) "?z=$zoom" else ""
     val lat = latitude.format(5)
     val lon = longitude.format(5)
@@ -32,5 +32,5 @@ fun buildGeoUri(latitude: Double, longitude: Double, zoom: Float? = null): Uri {
 data class GeoLocation(
     val latitude: Double,
     val longitude: Double,
-    val zoom: Float?
+    val zoom: Double?
 )

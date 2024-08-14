@@ -116,6 +116,7 @@
             android:elevation="4dp"
             android:padding="14dp"
             app:srcCompat="@drawable/ic_compass_needle_48dp"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@+id/mainMenuButton"
             app:layout_constraintRight_toRightOf="parent" />
 

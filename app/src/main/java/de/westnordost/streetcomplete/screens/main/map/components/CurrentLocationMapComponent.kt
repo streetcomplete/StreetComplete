@@ -1,174 +1,186 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
+import android.animation.TypeEvaluator
+import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.PointF
 import android.location.Location
-import com.mapzen.tangram.MapController
+import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.annotation.UiThread
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import com.google.gson.JsonObject
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
+import org.maplibre.android.style.expressions.Expression.*
+import org.maplibre.android.style.layers.Layer
+import org.maplibre.android.style.layers.Property
+import org.maplibre.android.style.layers.PropertyFactory.*
+import org.maplibre.android.style.layers.SymbolLayer
+import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
-import de.westnordost.streetcomplete.screens.main.map.tangram.Marker
-import de.westnordost.streetcomplete.util.ktx.getBitmapDrawable
+import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import de.westnordost.streetcomplete.util.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toLatLon
-import de.westnordost.streetcomplete.util.math.EARTH_CIRCUMFERENCE
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.pow
+import de.westnordost.streetcomplete.util.math.normalizeLongitude
+import org.maplibre.android.style.layers.CircleLayer
+import org.maplibre.geojson.Feature
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
-class CurrentLocationMapComponent(ctx: Context, private val ctrl: KtMapController) {
+class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap)
+    : DefaultLifecycleObserver {
 
-    // markers showing the user's location, direction and accuracy of location
-    private val locationMarker: Marker
-    private val accuracyMarker: Marker
-    private val directionMarker: Marker
-
-    private val directionMarkerSize: PointF
+    private val locationSource = GeoJsonSource(SOURCE)
+    private val animation = ValueAnimator()
 
     /** Whether the whole thing is visible. True by default. It is only visible if both this flag
      *  is true and location is not null. */
     var isVisible: Boolean = true
-        set(value) {
+        @UiThread set(value) {
             if (field == value) return
             field = value
             if (!value) hide() else show()
         }
 
-    /** The location of the GPS location dot on the map. Null if none (yet) */
-    var location: Location? = null
-        set(value) {
+    /** The location the GPS location dot on the map should be animated to */
+    var targetLocation: Location? = null
+        @UiThread set(value) {
             if (field == value) return
             field = value
-            updateLocation()
+            val location = this.location
+            if (location == null || value == null) {
+                this.location = value
+                update()
+            } else  {
+                animation.setObjectValues(Location(location), value)
+                animation.setEvaluator(locationTypeEvaluator)
+                animation.start()
+            }
         }
+
+    /** The location of the GPS location dot on the map (animated) */
+    var location: Location? = null
+        private set
+
+    private val locationTypeEvaluator = object : TypeEvaluator<Location> {
+        override fun evaluate(fraction: Float, s: Location, e: Location): Location {
+            val l = location ?: return s
+            l.accuracy = s.accuracy + (e.accuracy - s.accuracy) * fraction
+            l.latitude = s.latitude + (e.latitude - s.latitude) * fraction
+            l.longitude = normalizeLongitude(s.longitude + (e.longitude - s.longitude) * fraction)
+            return l
+        }
+    }
 
     /** The view rotation angle in degrees. Null if not set (yet) */
     var rotation: Double? = null
-        set(value) {
+        @UiThread set(value) {
             if (field == value) return
             field = value
-            updateDirection()
+            update()
         }
 
-    /** Tell this component the current map zoom. Why does it need to know this at all? It doesn't,
-     *  but it needs to know when it changed. There is no specific event for that. Whenever the
-     *  zoom changed, the marker showing the accuracy must be updated because the accuracy's marker
-     *  size is calculated programmatically using the current zoom. */
-    var currentMapZoom: Float? = null
-        set(value) {
-            if (field == value) return
-            field = value
-            updateAccuracy()
-        }
+    val layers: List<Layer> = listOfNotNull(
+        CircleLayer("accuracy", SOURCE)
+            .withProperties(
+                circleColor(context.resources.getColor(R.color.location_dot)),
+                circleOpacity(0.15f),
+                circleRadius(inMeters(get("radius"))),
+                circleStrokeColor(context.resources.getColor(R.color.location_dot)),
+                circleStrokeWidth(1.0f),
+                circleStrokeOpacity(0.5f),
+                circlePitchAlignment(Property.CIRCLE_PITCH_ALIGNMENT_MAP)
+            ),
+        SymbolLayer("direction", SOURCE)
+            .withFilter(has("rotation"))
+            .withProperties(
+                iconImage("directionImg"),
+                iconAllowOverlap(true),
+                iconIgnorePlacement(true),
+                iconRotate(get("rotation")),
+                iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
+            ),
+        SymbolLayer("location-shadow", SOURCE)
+            .withProperties(
+                iconImage("shadowImg"),
+                iconAllowOverlap(true),
+                iconIgnorePlacement(true),
+                iconPitchAlignment(Property.ICON_PITCH_ALIGNMENT_MAP)
+            ),
+        CircleLayer("location", SOURCE)
+            .withProperties(
+                circleColor(context.resources.getColor(R.color.location_dot)),
+                circleRadius(8.0f),
+                circleStrokeWidth(2.0f),
+                circleStrokeColor("#fff"),
+                circlePitchAlignment(Property.CIRCLE_PITCH_ALIGNMENT_MAP)
+            ),
+        if (isApril1st()) {
+            SymbolLayer("location-nyan", SOURCE)
+                .withProperties(
+                    iconImage("nyanImg"),
+                    iconSize(2.0f),
+                    iconAllowOverlap(true),
+                    iconIgnorePlacement(true)
+                )
+        } else null
+    )
 
     init {
-        val dotImg = ctx.resources.getBitmapDrawable(if (isApril1st()) R.drawable.location_nyan else R.drawable.location_dot)
-        val dotSize = PointF(
-            ctx.resources.pxToDp(dotImg.bitmap.width),
-            ctx.resources.pxToDp(dotImg.bitmap.height)
-        )
+        animation.duration = 600L
+        animation.interpolator = AccelerateDecelerateInterpolator()
+        animation.addUpdateListener { update() }
 
-        val directionImg = ctx.resources.getBitmapDrawable(R.drawable.location_direction)
-        directionMarkerSize = PointF(
-            ctx.resources.pxToDp(directionImg.bitmap.width),
-            ctx.resources.pxToDp(directionImg.bitmap.height)
-        )
-
-        val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)
-
-        locationMarker = ctrl.addMarker().also {
-            it.setStylingFromString("""
-            {
-                style: 'points',
-                color: 'white',
-                size: [${dotSize.x}px, ${dotSize.y}px],
-                order: 2000,
-                flat: true,
-                collide: false
-            }
-            """.trimIndent())
-            it.setDrawable(dotImg)
-            it.setDrawOrder(3)
+        if (!isApril1st()) {
+            mapStyle.addImage("directionImg", context.getDrawable(R.drawable.location_view_direction)!!)
+            mapStyle.addImage("shadowImg", context.getDrawable(R.drawable.location_shadow)!!)
+        } else {
+            mapStyle.addImage("nyanImg", context.getDrawable(R.drawable.location_nyan)!!)
         }
 
-        directionMarker = ctrl.addMarker().also {
-            it.setDrawable(directionImg)
-            it.setDrawOrder(2)
-        }
-        accuracyMarker = ctrl.addMarker().also {
-            it.setDrawable(accuracyImg)
-            it.setDrawOrder(1)
-        }
+        locationSource.isVolatile = true
+        mapStyle.addSource(locationSource)
+    }
+
+    override fun onPause(owner: LifecycleOwner) {
+        animation.pause()
+    }
+
+    override fun onResume(owner: LifecycleOwner) {
+        animation.resume()
+    }
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        animation.cancel()
     }
 
     private fun hide() {
-        locationMarker.isVisible = false
-        accuracyMarker.isVisible = false
-        directionMarker.isVisible = false
+        locationSource.clear()
     }
 
     private fun show() {
-        updateLocation()
-        updateDirection()
+        update()
     }
 
     /** Update the GPS position shown on the map */
-    private fun updateLocation() {
+    private fun update() {
         if (!isVisible) return
-        val pos = location?.toLatLon() ?: return
-
-        accuracyMarker.isVisible = true
-        accuracyMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
-        locationMarker.isVisible = true
-        locationMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
-        directionMarker.isVisible = rotation != null
-        directionMarker.setPointEased(pos, 600, MapController.EaseType.CUBIC)
-
-        updateAccuracy()
-    }
-
-    /** Update the circle that shows the GPS accuracy on the map */
-    private fun updateAccuracy() {
-        if (!isVisible) return
-        val location = location ?: return
-
-        val size = location.accuracy * pixelsPerMeter(location.latitude, ctrl.cameraPosition.zoom)
-        accuracyMarker.setStylingFromString("""
-        {
-            style: 'points',
-            color: 'white',
-            size: ${size}px,
-            order: 2000,
-            flat: true,
-            collide: false
+        val location = location
+        if (location == null) {
+            locationSource.clear()
+            return
         }
-        """)
+        val p = JsonObject()
+        p.addProperty("radius", location.accuracy)
+        rotation?.let { p.addProperty("rotation", it) }
+        map.style?.getLayerAs<CircleLayer>("accuracy")?.setProperties(
+            circleRadius(inMeters(get("radius"), location.latitude))
+        )
+        locationSource.setGeoJson(Feature.fromGeometry(location.toLatLon().toPoint(), p))
     }
 
-    /** Update the marker that shows the direction in which the smartphone is held */
-    private fun updateDirection() {
-        if (!isVisible) return
-        // no sense to display direction if there is no location yet
-        if (rotation == null || location == null) return
-
-        directionMarker.isVisible = true
-        directionMarker.setStylingFromString("""
-        {
-            style: 'points',
-            color: '#cc536dfe',
-            size: [${directionMarkerSize.x}px, ${directionMarkerSize.y}px],
-            order: 2000,
-            collide: false,
-            flat: true,
-            angle: $rotation
-        }
-        """)
-    }
-
-    private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {
-        val numberOfTiles = (2.0).pow(zoom.toDouble())
-        val metersPerTile = cos(latitude * PI / 180.0) * EARTH_CIRCUMFERENCE / numberOfTiles
-        return 256 / metersPerTile
+    companion object {
+        private const val SOURCE = "location-source"
     }
 }
