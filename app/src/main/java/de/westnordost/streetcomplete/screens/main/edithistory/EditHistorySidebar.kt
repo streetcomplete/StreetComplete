@@ -47,6 +47,8 @@ import de.westnordost.streetcomplete.ui.ktx.isItemAtIndexFullyVisible
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.text.DateFormat
 
 /** Shows the edit history in a sidebar. The edit history is grouped by time and date, ordered by
@@ -124,7 +126,10 @@ fun EditHistorySidebar(
                 bottom = insets.calculateBottomPadding() + 22.dp // to align with undo button
             )
         ) {
-            items(editItems) { editItem ->
+            items(
+                items = editItems,
+                key = { Json.encodeToString(it.edit.key) }
+            ) { editItem ->
                 Column {
                     DateTimeHeader(
                         timestamp = editItem.edit.createdTimestamp,
