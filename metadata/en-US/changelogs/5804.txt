@@ -1,0 +1,10 @@
+- Warning: next version may not work on some old phones
+- New icon, by @westnordost
+- Add title fragment in settings, by @ravenfeld
+- Extend crossing markings quest (adjust it in quest settings), by @ravenfeld and @StenSoft
+- Add chipseal to surfaces, by @ravenfeld
+- Add SAC scale quest, by @ravenfeld
+- Improve compatibility when importing GPX tracks for display, by @ravenfeld
+- Crash fixes (thanks to various users for the reports)
+- Update translations
+- Other minor fixes/improvements

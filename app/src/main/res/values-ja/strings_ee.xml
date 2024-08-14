@@ -54,8 +54,8 @@
     <string name="pref_auto_download_title">自動ダウンロード</string>
     <string name="pref_auto_download_summary">付近の領域内のデータを自動的にダウンロードします</string>
     <string name="pref_manual_download_cache_title">常にデータを再ダウンロード</string>
-    <string name="pref_export">出力設定</string>
-    <string name="pref_import">取り込み設定</string>
+    <string name="pref_export">設定を出力</string>
+    <string name="pref_import">設定を取り込み</string>
     <string name="import_export_presets">プリセット</string>
     <string name="import_export_presets_select">出力するプリセットを選択</string>
     <string name="import_export_settings">他のアプリ設定</string>
@@ -134,14 +134,14 @@
     <string name="quest_guidepost_sports_note">記載されている項目の範囲に含まれていなければ、代わりにメモを残してください。</string>
     <string name="quest_guidepost_sports_answer_simple">それは単純な道標です</string>
     <string name="quest_guidepost_sports_answer_simple_description">これは特定のスポーツを対象にしない、単純なただの道標です。</string>
-    <string name="quest_guidepost_sports_hiking">ハイキング</string>
+    <string name="quest_guidepost_sports_hiking">登山/ハイキング</string>
     <string name="quest_guidepost_sports_bicycle">自転車/サイクリング</string>
     <string name="quest_guidepost_sports_climbing">登攀/クライミング</string>
     <string name="quest_guidepost_sports_horse">乗馬</string>
     <string name="quest_guidepost_sports_ski">雪滑/スキー</string>
     <string name="quest_guidepost_sports_inline_skating">インラインスケート/ローラースケート</string>
     <string name="quest_guidepost_sports_running">走る/ランニング</string>
-    <string name="quest_guidepost_sports_winter_hiking">冬季ハイキング</string>
+    <string name="quest_guidepost_sports_winter_hiking">冬季登山/冬季ハイキング</string>
     <string name="quest_poi_seating_title">POI: 座席</string>
     <string name="quest_poi_cycling_title">POI: 自転車</string>
     <string name="default_disabled_msg_poi_bike">この「クエスト」は、自転車関連のPOIを紫色の点で表示します。点をクリックすると、詳細や他の回答が表示されます。</string>
@@ -192,7 +192,7 @@
     <string name="pref_way_direction_summary">クエストを開くときに、強調された線の上に矢印を表示します。例えば、一方通行を追加するときに役立ちます。</string>
     <string name="pref_hide_keyboard_title">メモ作成前にキーボードを非表示</string>
     <string name="pref_hide_button_title">非表示ボタンを表示</string>
-    <string name="pref_select_first_edit_summary">敏速に元に戻せますが、カメラは自動的に動きます</string>
+    <string name="pref_select_first_edit_summary">敏速に元に戻せますが、表示範囲は自動的に動きます</string>
     <string name="pref_create_custom_quest_summary">…メモを残す代わりに。これは、地図上に表示される端末内に保存されたメモとして使用でます。任意クエストを有効にする必要があります。</string>
     <string name="pref_gpx_track_download">GPX経路が存在する領域をダウンロード</string>
     <string name="pref_hide_keyboard_summary">(位置の確認を可能にするため、)実際に作成されたメモを開く前にキーボードを非表示にする</string>
@@ -262,7 +262,7 @@
     <string name="pref_trees_title">木構造のクエストファイルを読み込み</string>
     <string name="pref_hide_overlay_quests">オーバーレイ固有のクエストを非表示にする</string>
     <string name="theme_dark_contrast">暗(明暗差が増加)</string>
-    <string name="resurvey_intervals_even_less_often">質問の頻度を更に少なく</string>
+    <string name="resurvey_intervals_even_less_often">質問頻度を更に減らす</string>
     <string name="quest_settings_what_to_edit">何を設定しますか?</string>
     <string name="quest_settings_sidewalk_cycleway_distance_message">これより低いクエストが表示されなくなる、独立した道の最小距離を設定</string>
     <string name="quest_settings_sidewalk_distance_button">距離</string>
@@ -309,7 +309,7 @@
     <string name="quest_buildingPartColour_title">この建物の部分は概して何色ですか?</string>
     <string name="quest_roofColour_title">この建物の屋根は概して何色ですか?</string>
     <string name="quest_mapType_title">これは何の種類の地図ですか?</string>
-    <string name="quest_mapType_topo_description">例えば歴史地図やハイキング地図など、地形図を背景とした地図です。地図には等高線があります。</string>
+    <string name="quest_mapType_topo_description">例えば歴史地図や登山・ハイキング地図など、地形図を背景とした地図です。地図には等高線があります。</string>
     <string name="quest_mapType_street_description">区域内の全ての通りや道が書かれた地図です。通りにはほとんど名前があります。角度や距離などが正確に書かれています。観光案内所で宿泊施設地図などに使われています。</string>
     <string name="quest_mapType_topo_title">地形</string>
     <string name="quest_mapType_street_title">通り</string>
@@ -451,7 +451,7 @@
     <string name="quest_building_entrance_parking">駐車場入口</string>
     <string name="quest_generic_answer_show_edit_tags">タグを表示または編集</string>
     <string name="quest_building_demolished">破壊または取り壊された(輪郭線は見えている)</string>
-    <string name="quest_private">非公開</string>
+    <string name="quest_private">非公開です</string>
     <string name="quest_name_brand">ブランド名があります…</string>
     <string name="quest_maxheight_answer_noSign_question">この場所には高いトラック(少なくとも4.5メートル / 15フィート)が通る余裕がありますか?</string>
     <string name="quest_maxheight_answer_noSign_question_yes">大型トラックが通れる</string>
@@ -509,4 +509,15 @@
     <string name="restriction_overlay_sign_stop">停止</string>
     <string name="restriction_overlay_signed_switch">標識や道路標示がある</string>
     <string name="create_relation_action_description">…とのリレーションを作成しました</string>
+    <string name="action_all_quests">全てのクエストを表示</string>
+    <string name="quest_seating_beach">浜、海辺</string>
+    <string name="quest_poi_traffic_title">POI: 交通%s</string>
+    <string name="quest_seating_parklet">縁石の横、またはかつて駐車場があった場所(パークレット)</string>
+    <string name="quest_seating_pedestrian_zone">歩行者空間(歩行者天国、歩行者専用道路)内</string>
+    <string name="quest_seating_street">街路区域内</string>
+    <string name="quest_seating_sidewalk">車道脇の歩道上</string>
+    <string name="quest_seating_roof">屋根の上</string>
+    <string name="quest_seating_garden">庭園空間内</string>
+    <string name="quest_construction_value">「construction=…」を定めるか、分からない場合は空のままにします</string>
+    <string name="quest_construction">…の日時まで建設中です</string>
 </resources>

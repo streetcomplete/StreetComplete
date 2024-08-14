@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="pref_hide_notes_title">Skjul noter fra bestemte brugere</string>
-    <string name="pref_show_gpx_button_title">Vis GPX-note-knap</string>
+    <string name="pref_hide_notes_title">Skjul bemærkninger fra bestemte brugere</string>
+    <string name="pref_show_gpx_button_title">Vis GPX-bemærkning-knap</string>
     <string name="pref_save_file_error">Fejl ved lagring af fil</string>
-    <string name="pref_swap_gpx_note_button">Byt om på OSM- og GPX-noteknapperne</string>
+    <string name="pref_swap_gpx_note_button">Byt om på OSM- og GPX-bemærkningsknapperne</string>
     <string name="pref_create_custom_quest_title">Gør det muligt at oprette brugerdefinerede opgaver</string>
     <string name="pref_read_log_title">Log-læser</string>
     <string name="pref_3d_buildings_title">Vis 3D-bygninger</string>
-    <string name="pref_save_gpx">Hent GPX-noter og vedhæftede fotos og spor</string>
-    <string name="pref_save_photos_title">Gem fotos, der bruges til noter</string>
+    <string name="pref_save_gpx">Hent GPX-bemærkninger og vedhæftede fotos og spor</string>
+    <string name="pref_save_photos_title">Gem fotos, der bruges til bemærkninger</string>
     <string name="pref_hide_notes_hint">Brug komma til at adskille brugernavne eller ID\'er</string>
-    <string name="pref_hide_keyboard_summary">Skjuler tastaturet, når det er åbent, før noten faktisk er oprettet (for at gøre det muligt at se positionen igen)</string>
+    <string name="pref_hide_keyboard_summary">Skjuler tastaturet, når det er åbent, før bemærkningen faktisk er oprettet (for at gøre det muligt at se positionen igen)</string>
     <string name="pref_category_mods">SCEE indstillinger</string>
-    <string name="pref_create_custom_quest_summary">…som alternativ til at efterlade en note. Dette kan bruges som en lokalt gemt note, der er synlig på kortet. Bemærk, at du skal aktivere brugerdefinerede opgaver.</string>
+    <string name="pref_create_custom_quest_summary">…som alternativ til at efterlade en bemærkning. Dette kan bruges som en lokalt gemt bemærkning, der er synlig på kortet. Bemærk, at du skal aktivere brugerdefinerede opgaver.</string>
     <string name="pref_files_not_found">Ingen filer fundet</string>
     <string name="pref_get_photos_title">Hent billeder i fuld størrelse</string>
     <string name="pref_quest_geometries_summary">Fremhæv veje (ways) og områder, der har opgaver</string>
     <string name="pref_quest_geometries_title">Vis geometrier for opgaver</string>
-    <string name="pref_expert_mode_message">Dette vil gøre det muligt at bruge opgaver tilføjet i SCEE, og mulighed for at 
-\n <li>redigere rå tags</li> 
-\n <li>flytte punkter der er en del af veje eller relationer</li> 
-\n <li>slette ethvert fritflydende punkt</li> 
-\n <li>redigere elementer, der skal blokeres af en note</li> 
-\n <li>tilføje fritflydende punkter overalt</li> 
-\n <li>ændre elementvalg for opgaver</li> 
-\n 
-\n \u0020Det er stadig mindre, end hvad de fleste andre editorer tillader, men uforsigtig brug kan resultere i beskadigelse af data på måder, som ikke er mulige i StreetComplete. Vær opmærksom på, at du ved at aktivere eksperttilstand bærer et betydeligt større ansvar for dine redigeringer. 
+    <string name="pref_expert_mode_message">Dette vil gøre det muligt at bruge opgaver tilføjet i SCEE, og mulighed for at \u0020
+\n <li>redigere rå tags</li> \u0020
+\n <li>flytte punkter der er en del af veje eller relationer</li> \u0020
+\n <li>slette ethvert fritflydende punkt</li> \u0020
+\n <li>redigere elementer, der skal blokeres af en bemærkning</li> \u0020
+\n <li>tilføje fritflydende punkter overalt</li> \u0020
+\n <li>ændre elementvalg for opgaver</li> \u0020
+\n \u0020
+\n \u0020Det er stadig mindre, end hvad de fleste andre editorer tillader, men uforsigtig brug kan resultere i beskadigelse af data på måder, som ikke er mulige i StreetComplete. Vær opmærksom på, at du ved at aktivere eksperttilstand bærer et betydeligt større ansvar for dine redigeringer. \u0020
 \n \u0020Aktivér kun denne indstilling, hvis du har erfaring med OSM uden for StreetComplete og ved, hvad du gør. \u0020</string>
     <string name="pref_expert_mode_title">Ekspert-tilstand</string>
     <string name="pref_expert_mode_summary">Aktivér avancerede redigeringsfunktioner</string>
-    <string name="pref_save_photos_summary">Gem billeder i fuld størrelse, der er taget under oprettelse af noter, uden at slette EXIF-data</string>
+    <string name="pref_save_photos_summary">Gem billeder i fuld størrelse, der er taget under oprettelse af bemærkninger, uden at slette EXIF-data</string>
     <string name="pref_way_direction">Vis retning på veje</string>
-    <string name="pref_hide_keyboard_title">Skjul tastaturet før oprettelse af note</string>
-    <string name="pref_screen_notes">Noter</string>
+    <string name="pref_hide_keyboard_title">Skjul tastaturet før oprettelse af bemærkning</string>
+    <string name="pref_screen_notes">Bemærkninger</string>
     <string name="pref_read_log_save">Gem fuld log til fil</string>
     <string name="pref_way_direction_summary">Viser pile på fremhævede linjer, når du åbner en opgave. F.eks. nyttigt når du tilføjer ensretning.</string>
-    <string name="pref_show_gpx_button_summary">I modsætning til OSM-noter vil tilføjelse af en GPX-note ikke skjule nogen opgaver på det pågældende sted</string>
+    <string name="pref_show_gpx_button_summary">I modsætning til OSM-bemærkninger vil tilføjelse af en GPX-bemærkning ikke skjule nogen opgaver på det pågældende sted</string>
     <string name="pref_hide_notes_message">Indtast brugernavne eller ID\'er, der skal ignoreres</string>
     <string name="pref_manual_download_cache_title">Download altid data igen</string>
     <string name="pref_delete_old_data_after_summary">%d dage</string>
@@ -243,7 +243,7 @@
     <string name="quest_healthcare_speciality_switch_ui">Skift brugergrænseflade</string>
     <string name="tag_editor_last_edited">Senest redigeret: %s</string>
     <string name="quest_guidepost_sports_title">Hvilken sport er denne vejviser beregnet til?</string>
-    <string name="quest_guidepost_sports_note">Hvis der er noget, der ikke er dækket af de anførte funktioner/faciliteter, bedes du skrive en note i stedet.</string>
+    <string name="quest_guidepost_sports_note">Hvis der er noget, der ikke er dækket af de anførte funktioner/faciliteter, bedes du skrive en bemærkning i stedet.</string>
     <string name="quest_guidepost_sports_answer_simple">Det er bare en simpel vejviser</string>
     <string name="quest_guidepost_sports_answer_simple_description">Dette er bare en simpel vejledning uden specifik sport.</string>
     <string name="quest_guidepost_sports_hiking">Vandring</string>
@@ -395,14 +395,14 @@
     <string name="dialog_button_understood">Forstået</string>
     <string name="manage_access">Administrer adgang…</string>
     <string name="move_node_message_external_source_addition">Bemærk, at positionen for denne opgave ikke nødvendigvis flytter sig med punktet.</string>
-    <string name="close_note_checkbox">Luk noten (gør kun dette, hvis du rent faktisk løser noten!)</string>
+    <string name="close_note_checkbox">Luk bemærkningen (gør kun dette, hvis du rent faktisk løser bemærkningen!)</string>
     <string name="quest_brewery_title">Hvilke ølmærker serveres her?</string>
     <string name="quest_viaFerrataScale_zero">"Grad 0 -  ingen"</string>
     <string name="quest_viaFerrataScale_one">Grad 1/K1/A - meget let</string>
     <string name="quest_viaFerrataScale_zero_description">Lav sværhedsgrad; terrænet varierer fra fladt til stejlt; nogle udsatte sektioner. Sikret med kabler, kæder eller korte stiger. Kræver godt fodfæste; fint for de usportslige. Ferrata-sæt er valgfrit for de fleste.</string>
     <string name="quest_viaFerrataScale_title">Hvad er Via Ferrata-skalaen for denne ferrata?</string>
     <string name="quest_generic_surface_button">Generisk overflade-svar</string>
-    <string name="quest_generic_surface_yes">Tillad uden note</string>
+    <string name="quest_generic_surface_yes">Tillad uden bemærkning</string>
     <string name="level_filter">Etage-filter</string>
     <string name="quest_settings_osmose_level_title">Vælg alvorlighedsniveauer for problemer, der skal downloades og vises</string>
     <string name="quest_settings_osmose_level_high">Højt</string>
@@ -436,8 +436,8 @@
     <string name="level_filter_message">Indtast etageværdi, eller filtrer ved hjælp af &gt; og &lt;. Brug * til at matche alle elementer, der indeholder en tilladt etagenøgle</string>
     <string name="quest_mapSize_title">Hvilket område er dækket af dette kort?</string>
     <string name="restriction_overlay_relation_incomplete">Begrænsningsrelationen er ufuldstændig, download af det omkringliggende område er påkrævet</string>
-    <string name="quest_generic_surface_message">Tillad generiske overfladesvar uden at kræve en note?</string>
-    <string name="quest_generic_surface_no">Kun med note (standard)</string>
+    <string name="quest_generic_surface_message">Tillad generiske overfladesvar uden at kræve en bemærkning?</string>
+    <string name="quest_generic_surface_no">Kun med bemærkning (standard)</string>
     <string name="quest_trail_visibility_excellent">Fremragende</string>
     <string name="quest_trail_visibility_excellent_description">Tydelig sti eller markører overalt. Uproblematisk at orientere sig, intet kort nødvendigt.</string>
     <string name="quest_trail_visibility_good">God</string>
@@ -544,13 +544,13 @@
     <string name="quest_building_entrance_parking">Indgang til parkering</string>
     <string name="quest_mapSize_landscape">Et helt landskab, mest brugt på retningsskiver</string>
     <string name="quest_healthcare_speciality_title">Hvilke sundhedsspecialer har dette sted?</string>
-    <string name="quest_tree_error">Ikke genkendt. Prøv at indtaste træets slægt, art eller engelske navn. Ellers kan du overveje at efterlade en note.</string>
+    <string name="quest_tree_error">Ikke genkendt. Prøv at indtaste træets slægt, art eller engelske navn. Ellers kan du overveje at efterlade en bemærkning.</string>
     <string name="quest_piste_difficulty_advanced">Øvet</string>
-    <string name="tutorial_info_fork_message"><b>SCEE</b>
-\n
-\n Dette er en modificeret version af StreetComplete. Den er beregnet til erfarne brugere med avanceret viden om OSM. Den giver dig mere kontrol, men også et større <i>ansvar</i>.
-\n Det gælder især muligheden for at redigere rå tags og slette punkter, men også for ændring af elementvalg til opgaver. Opgaver tilføjet i SCEE <i>kan måske ikke besvares</i> i alle tilfælde og er deaktiveret som standard. Skjul dem, hvis du ikke kan svare på dem, og <i>lav ikke en masse noter</i>.
-\n
+    <string name="tutorial_info_fork_message"><b>SCEE</b> 
+\n \u0020
+\n Dette er en modificeret version af StreetComplete. Den er beregnet til erfarne brugere med avanceret viden om OSM. Den giver dig mere kontrol, men også et større <i>ansvar</i>. \u0020
+\n Det gælder især muligheden for at redigere rå tags og slette punkter, men også for ændring af elementvalg til opgaver. Opgaver tilføjet i SCEE <i>kan måske ikke besvares</i> i alle tilfælde og er deaktiveret som standard. Skjul dem, hvis du ikke kan svare på dem, og <i>lav ikke en masse bemærkninger</i>. \u0020
+\n \u0020
 \n Som udgangspunkt er SCEE konfigureret til at opføre sig meget ligesom StreetComplete.</string>
     <string name="default_disabled_msg_viaFerrataScale">Denne opgavetype er som standard deaktiveret, fordi vurderingen af via ferrata-ruter er meget subjektiv og kræver ekspertviden om det anvendte klassificeringssystem og om klatring af via ferrata, da det kræver avancerede bjergbestigningsevner. Da der ikke findes en verdensomspændende skala for via ferratas sværhedsgrad, bruges den tyske Huesler-skala her.</string>
     <string name="quest_viaFerrataScale_four_description">Stejlt terræn med gennemgående stålkabler til fastgørelse. Kræver styrke i armene. Kunstige hjælpemidler (jerntrin, håndtag) på de sværeste strækninger.</string>
@@ -572,4 +572,35 @@
     <string name="quest_maxheight_answer_noSign_question_unclear">Uklart</string>
     <string name="quest_maxheight_answer_noSign_question">Er der rigeligt med plads til, at selv de højeste lastbiler (mindst ca. 4,5 meter) kan køre igennem?</string>
     <string name="action_all_quests">Vis alle opgaver</string>
+    <string name="default_disabled_msg_sacScale">Denne opgavetype er som standard deaktiveret, fordi Sac-skalaværdien for stier er meget subjektiv og kræver ekspertviden om det anvendte klassificeringssystem. Da der ikke findes en verdensomspændende skala for stiers sværhedsgrad, bruges SAC\'s skala for bjerg- og alpinvandring her.</string>
+    <string name="quest_sacScale_six_description">Meget udsat. Vanskeligt, klippefyldt terræn. Gletsjere med stor risiko for glide.</string>
+    <string name="pref_quest_sac_scale_without_relation">Søg alle stier, selv dem, der ikke er i en vandrerelation</string>
+    <string name="quest_sacScale_title">Hvad er SAC-skalaværdien for denne sti?</string>
+    <string name="quest_sacScale_one">T1 - vandring</string>
+    <string name="quest_sacScale_one_description">Terrænet er plant eller let skrånende; ingen risiko for at falde, hvis man opfører sig fornuftigt.</string>
+    <string name="quest_sacScale_two">T2 - bjergvandring</string>
+    <string name="quest_sacScale_two_description">Terrænet er stedvis stejlt og kan udgøre en faldrisiko.</string>
+    <string name="quest_sacScale_three">T3 - krævende bjergvandring</string>
+    <string name="quest_sacScale_three_description">Dele af ruten er udsat med fare for at falde. Stien kan have umarkerede dele og krydse felter med løse sten eller talus.</string>
+    <string name="quest_sacScale_four">T4 - alpin vandring</string>
+    <string name="quest_sacScale_four_description">Terrænet er i forvejen ret udsat, inklusive stejle græsklædte skråninger, talusskråninger, lette snefelter eller snefri gletsjerkrydsninger.</string>
+    <string name="quest_sacScale_five">T5 - krævende alpinvandring</string>
+    <string name="quest_sacScale_five_description">Udsat og krævende terræn. Kan omfatte stejle klippeblokke, hvor man skal bruge hænderne til støtte, samt gletsjere og snefelter med risiko for at glide.</string>
+    <string name="quest_sacScale_six">T6 - svær alpinvandring</string>
+    <string name="quest_crossing_marking_value_no">Nej</string>
+    <string name="quest_crossing_marking_value_zebra">Zebra-striber</string>
+    <string name="quest_crossing_marking_value_lines">Linjer</string>
+    <string name="quest_crossing_marking_value_ladder">Stige</string>
+    <string name="quest_crossing_marking_value_dots">Prikker</string>
+    <string name="quest_crossing_marking_value_surface">Overflade</string>
+    <string name="quest_crossing_marking_value_ladder_skewed">Stige skæv</string>
+    <string name="quest_crossing_marking_value_zebra_paired">Zebra i par</string>
+    <string name="quest_crossing_marking_value_zebra_bicolour">Zebra tofarvet</string>
+    <string name="quest_crossing_marking_value_zebra_double">Zebra dobbelt</string>
+    <string name="quest_crossing_marking_value_ladder_paired">Stige i par</string>
+    <string name="quest_crossing_marking_value_zebra_dots">Zebra + prikker</string>
+    <string name="quest_crossing_marking_value_pictograms">Piktogrammer</string>
+    <string name="pref_quest_pedestrian_crossing_markings_extended">Aktiver udvidelse af \"Er der markeringer på jorden ved denne overgang?\", så du kan angive stilen på overgangens markeringer</string>
+    <string name="quest_surface_value_chipseal">Overfladebehandling (Chipseal)</string>
+    <string name="quest_crossing_marking_value_dashes">Striber</string>
 </resources>

@@ -571,4 +571,20 @@
     <string name="quest_maxheight_answer_noSign_question_yes">Los camiones altos pueden pasar</string>
     <string name="quest_maxheight_answer_noSign_question_no">Los camiones altos no caben</string>
     <string name="quest_maxheight_answer_noSign_question_unclear">No está claro</string>
+    <string name="action_all_quests">Ver todas las tareas</string>
+    <string name="pref_quest_sac_scale_without_relation">Busca en todos las rutas, incluso en las que no están relacionados con el senderismo</string>
+    <string name="quest_sacScale_title">¿Cuál es la escala SAC de este camino?</string>
+    <string name="default_disabled_msg_sacScale">Este tipo de búsqueda está deshabilitado por defecto porque la escala sac de sendero es altamente subjetiva y necesita un conocimiento experto en el sistema de clasificación utilizado y. Como no existe una escala mundial para la dificultad de los senderos, aquí se utiliza la Escala de Senderismo de Montaña y Alpino del SAC.</string>
+    <string name="quest_sacScale_one">T1 - Senderismo</string>
+    <string name="quest_sacScale_one_description">Terreno llano o ligeramente inclinado; sin riesgo de caída con un comportamiento adecuado.</string>
+    <string name="quest_sacScale_two">T2 - senderismo de montaña</string>
+    <string name="quest_sacScale_two_description">El terreno es escarpado en algunos lugares y puede plantear riesgos de caída.</string>
+    <string name="quest_sacScale_three">T3 - senderismo de montaña exigente</string>
+    <string name="quest_sacScale_three_description">Partes de la ruta expuestas con peligro de caída. El sendero puede tener tramos sin señalizar y cruzar campos de pedregal o talud suelto.</string>
+    <string name="quest_sacScale_four">T4 - alpinismo</string>
+    <string name="quest_sacScale_four_description">Terreno ya bastante expuesto, incluyendo pendientes empinadas de hierba, laderas de talud, campos de nieve fáciles o cruces de glaciares sin nieve.</string>
+    <string name="quest_sacScale_five">T5 - senderismo alpino exigente</string>
+    <string name="quest_sacScale_five_description">Terreno expuesto y exigente. Puede incluir trepadas por rocas escarpadas, glaciares y campos de nieve con riesgo de deslizamiento.</string>
+    <string name="quest_sacScale_six">T6 - Senderismo alpino difícil</string>
+    <string name="quest_sacScale_six_description">Exposición severa. Terreno escarpado difícil. Glaciares con alto riesgo de deslizamiento.</string>
 </resources>
