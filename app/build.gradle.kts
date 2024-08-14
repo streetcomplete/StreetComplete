@@ -144,9 +144,9 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2024.05.00")
-    implementation("androidx.compose:compose-bom:2024.06.00")
-    androidTestImplementation("androidx.compose:compose-bom:2024.06.00")
+    val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
     implementation("androidx.activity:activity-compose")
     // Jetpack Compose Previews

@@ -15,5 +15,5 @@ dependencies {
 
 plugins {
     `kotlin-dsl`
-    kotlin("plugin.serialization") version "1.5.0"
+    kotlin("plugin.serialization") version "2.0.0"
 }
