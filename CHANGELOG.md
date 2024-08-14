@@ -2,7 +2,7 @@
 
 ## v59.0-alpha1
 
-### 🗺️ MapLibre (#3123), by @Helium314 and me
+### 🗺️ MapLibre (#5693), by @Helium314 and me
 
 Migrated from the map renderer tangram-es to [MapLibre](https://maplibre.org/). The former has effectively been unmaintained for quite a few years and does not support modern iOS, this solves some long-standing display and crash issues.
 
