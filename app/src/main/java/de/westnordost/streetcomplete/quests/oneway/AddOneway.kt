@@ -24,7 +24,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     /** find only those roads eligible for asking for oneway */
     private val elementFilter by lazy { """
-        ways with highway ~ living_street|residential|service|tertiary|unclassified
+        ways with highway ~ living_street|residential|service|tertiary|unclassified|busway
          and width <= 4 and (!lanes or lanes <= 1)
          and !oneway and area != yes and junction != roundabout
          and (access !~ private|no or (foot and foot !~ private|no))
