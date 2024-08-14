@@ -25,11 +25,7 @@ class AddressOverlay(
     override val hidesQuestTypes = setOf(AddHousenumber::class.simpleName!!)
     override val isCreateNodeEnabled = true
 
-    override val sceneUpdates = listOf(
-        "layers.housenumber-labels.enabled" to "false",
-        "layers.buildings.draw.buildings-style.extrude" to "false",
-        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
-    )
+    override val hidesLayers = listOf("labels-housenumbers")
 
     private val noAddressesOnBuildings = setOf(
         "IT" // https://github.com/streetcomplete/StreetComplete/issues/4801
@@ -42,7 +38,11 @@ class AddressOverlay(
                   addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
                   or entrance
             """)
-            .map { it to PointStyle(icon = null, label = getShortHouseNumber(it.tags) ?: "◽") } + // or ▫
+            .map {
+                val label = getShortHouseNumber(it.tags) // or ▫
+                val icon = if (label != null) R.drawable.ic_address_dot else null
+                it to PointStyle(icon = icon, label = label ?: "◽")
+            } +
         mapData
             .filter("ways, relations with building")
             .filter {
@@ -50,7 +50,12 @@ class AddressOverlay(
                 val country = getCountryCodeByLocation(center)
                 country !in noAddressesOnBuildings
             }
-            .map { it to PolygonStyle(Color.INVISIBLE, label = getShortHouseNumber(it.tags)) }
+            .map {
+                val label = getShortHouseNumber(it.tags)
+                val color = if (label != null) Color.BLUE else Color.INVISIBLE
+                it to PolygonStyle(color = color, label = label)
+            }
 
     override fun createForm(element: Element?) = AddressOverlayForm()
 }
+

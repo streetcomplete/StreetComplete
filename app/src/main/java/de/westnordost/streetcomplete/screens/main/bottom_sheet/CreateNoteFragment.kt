@@ -145,7 +145,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
             return
         }
 
-        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
+        val createNoteMarker = binding.markerCreateLayout.pin.root
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
