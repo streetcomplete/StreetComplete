@@ -21,7 +21,8 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 
 ### Removed Quests
 
-- Asking _"Is this a one-way street?"_, based on processed data from Grab (#5725)
+- Asking _"Is this a one-way street?"_, based on processed data from ImproveOSM because Grab is shutting it down (#5725)
+- Asking _"Can you pick up parcels here?"_ and _"Can you drop off parcels here?"_ because it turns out that it is often not surveyable and the answer is always the same for one brand of parcel lockers (#5763)
 
 ### Quest & Overlay Improvements
 
