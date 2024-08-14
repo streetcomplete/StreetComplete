@@ -40,7 +40,7 @@ class AddressOverlay(
             """)
             .map {
                 val label = getShortHouseNumber(it.tags) // or ▫
-                val icon = if (label != null) "ic_address_dot" else null
+                val icon = if (label != null) R.drawable.ic_address_dot else null
                 it to PointStyle(icon = icon, label = label ?: "◽")
             } +
         mapData

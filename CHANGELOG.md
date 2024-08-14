@@ -24,9 +24,13 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 - Asking _"Is this a one-way street?"_, based on processed data from ImproveOSM because Grab is shutting it down (#5725)
 - Asking _"Can you pick up parcels here?"_ and _"Can you drop off parcels here?"_ because it turns out that it is often not surveyable and the answer is always the same for one brand of parcel lockers (#5763)
 
-### Quest & Overlay Improvements
+### Overlay Improvements
 
+- Addresses: Presence of housenumbers is now highlighted in blue (#5748)
 - allow hiding notes that block editing with an overlay (#5703)
+
+### Quest Improvements
+
 - Recycling containers: Also ask for containers that have been mapped as an area (#5735)
 - Recycling containers: Also highlight nearby waste containers and bins (#5754)
 - Accepting cards: Don't ask for places that explicitly require no fee (#5772), by @HolgerJeromin
