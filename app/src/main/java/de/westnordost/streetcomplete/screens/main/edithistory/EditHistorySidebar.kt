@@ -43,6 +43,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.ui.ktx.isItemAtIndexFullyVisible
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
@@ -80,7 +81,10 @@ fun EditHistorySidebar(
     }
     val state = rememberLazyListState(initialFirstVisibleItemIndex = selectedIndex ?: editItems.lastIndex)
     LaunchedEffect(selectedEdit) {
-        if (selectedIndex != null) state.animateScrollToItem(selectedIndex)
+        // except for first scroll, only scroll if not fully visible
+        if (selectedIndex != null && !state.isItemAtIndexFullyVisible(selectedIndex)) {
+            state.animateScrollToItem(selectedIndex)
+        }
     }
 
     // close on back
