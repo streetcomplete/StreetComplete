@@ -121,6 +121,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="on_floor">on floor %s</string>
     <!-- as in: “Where is the metro station?” - “It is underground” -->
     <string name="underground">underground</string>
+    <string name="bridge">on bridge</string>
     <string name="at_housename">house name %s</string>
     <string name="at_housenumber">house number %s</string>
     <!-- as in: “Where is the ATM?” - “It is inside” -->

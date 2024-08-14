@@ -38,7 +38,7 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 - Track type: Don't ask for track type on bridges (#5731), by @kmpoppe
 - Building levels, roof shapes: Also ask for houseboats (#5737), by @HolgerJeromin
 - Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
-- Other small improvements (#5740, ...)
+- Other small improvements (#5740, #5792, ...)
 
 
 ## v58.2
