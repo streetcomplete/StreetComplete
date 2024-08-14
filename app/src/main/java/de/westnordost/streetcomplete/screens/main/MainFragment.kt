@@ -54,6 +54,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -171,6 +173,7 @@ class MainFragment :
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
+    private val noteQuestsHiddenSource: OsmNoteQuestsHiddenSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
@@ -1089,6 +1092,7 @@ class MainFragment :
             notesSource
                 .getAll(BoundingBox(center, center).enlargedBy(1.2))
                 .firstOrNull { it.position.truncateTo5Decimals() == center.truncateTo5Decimals() }
+                ?.takeIf { noteQuestsHiddenSource.getHidden(it.id) == null }
         }
         if (note != null) {
             showQuestDetails(OsmNoteQuest(note.id, note.position))

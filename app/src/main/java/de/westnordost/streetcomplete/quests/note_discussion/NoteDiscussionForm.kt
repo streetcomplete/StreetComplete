@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.User
@@ -51,7 +52,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
     private val noteSource: NotesWithEditsSource by inject()
     private val noteEditsController: NoteEditsController by inject()
-    private val osmNoteQuestController: OsmNoteQuestController by inject()
+    private val osmNoteQuestsHiddenController: OsmNoteQuestsHiddenController by inject()
     private val avatarsCacheDir: File by inject(named("AvatarsCacheDirectory"))
 
     private val attachPhotoFragment get() =
@@ -72,7 +73,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val alreadyHidden = osmNoteQuestController.getVisible(noteId) == null
+        val alreadyHidden = osmNoteQuestsHiddenController.getHidden(noteId) != null
         setButtonPanelAnswers(listOf(
             if (alreadyHidden) {
                 AnswerItem(R.string.short_no_answer_on_button) { closeQuest() }
@@ -122,7 +123,7 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
     private fun hideQuest() {
         viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { osmNoteQuestController.hide(noteId) }
+            withContext(Dispatchers.IO) { osmNoteQuestsHiddenController.hide(noteId) }
         }
     }
 
