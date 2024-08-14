@@ -12,7 +12,7 @@
   "transition": { "duration": 300, "delay": 0 },
   "light": { "intensity": 0.2 },
   "glyphs": "asset://map_theme/glyphs/{fontstack}/{range}.pbf",
-  "sprite": "https://streetcomplete.app/map-jawg/sprites",
+  "sprite": "asset://map_theme/sprites",
   "layers": [
     { "id": "background", "type": "background", "paint": {"background-color": "#2e2e48"}},
     { "id": "landuse-town", "source": "jawg-streets", "source-layer": "landuse", "minzoom": 11.0, "filter": ["!", ["in", ["get", "class"], ["literal", ["pitch", "park", "grass", "cemetery", "wood", "scrub", "national_park"]]]], "type": "fill", "paint": { "fill-color": "#3d364e", "fill-opacity": ["interpolate", ["exponential", 2], ["zoom"], 11.0, 0.0, 12.0, 1.0]} },
