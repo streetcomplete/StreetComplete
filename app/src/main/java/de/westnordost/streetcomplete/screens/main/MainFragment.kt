@@ -249,7 +249,7 @@ class MainFragment :
         }
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit == null) {
-                mapFragment?.endFocus()
+                mapFragment?.clearFocus()
                 mapFragment?.clearHighlighting()
             } else {
                 val geometry = editHistoryViewModel.getEditGeometry(edit)
