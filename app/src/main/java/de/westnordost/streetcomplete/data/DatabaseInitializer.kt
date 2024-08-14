@@ -251,6 +251,7 @@ object DatabaseInitializer {
         if (oldVersion <= 18 && newVersion > 18) {
             db.deleteQuest("AddParcelLockerMailIn")
             db.deleteQuest("AddParcelLockerPickup")
+            db.deleteQuest("AddShoulder")
         }
     }
 }
