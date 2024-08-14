@@ -1,6 +1,6 @@
 # Changelog
 
-## vNext
+## v59.0-alpha1
 
 ### 🗺️ MapLibre (#3123), by @Helium314 and me
 
