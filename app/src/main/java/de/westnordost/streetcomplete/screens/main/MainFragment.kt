@@ -221,7 +221,7 @@ class MainFragment :
                 onClickZoomIn = ::onClickZoomIn,
                 onClickZoomOut = ::onClickZoomOut,
                 onClickCompass = ::onClickCompassButton,
-                onClickLocation = ::onClickTrackingButton,
+                onClickLocation = ::onClickLocationButton,
                 onClickCreate = ::onClickCreateButton,
                 onClickStopTrackRecording = ::onClickTracksStop,
                 onClickDownload = ::onClickDownload,
@@ -691,7 +691,7 @@ class MainFragment :
         }
     }
 
-    private fun onClickTrackingButton() {
+    private fun onClickLocationButton() {
         val mapFragment = mapFragment ?: return
 
         when {
