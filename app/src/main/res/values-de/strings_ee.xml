@@ -63,7 +63,6 @@
     <string name="quest_custom_quest_message">Verwende es, um spezifische vordefinierte Elemente oder Standorte zu überprüfen. Du kannst auch Tags spezifizieren und einen Knoten damit hinzufügen. Um es zu verwenden, lade eine Datei im Hauptmenü der Einstellungen, die entweder Typ, ID, Nachricht (z. B. NODE,1234,Position überprüfen) oder Breitengrad, Längengrad, Nachricht enthält. Für das Hinzufügen von Knoten gib die Tags in der Nachricht nach „addNode“ an, z. B. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_artwork_mural">Wandgemälde</string>
     <string name="pref_recent_answers_first_min_lines_message">Verschiebe aktuelle Antworten nach vorne, wenn das Antwortformular der Aufgabe mehr als so viele Zeilen mit Bildern enthält</string>
-    <string name="delete_confirmation_both">Beides</string>
     <string name="pref_network_interval_title">Aktualisierungsintervall für den Netzwerkstandort</string>
     <string name="pref_custom_title">Benutzerdefinierte Aufgabendatei laden</string>
     <string name="quest_benchMaterial_concrete">Beton</string>
@@ -91,7 +90,6 @@
     <string name="import_presets_overlays_add">Hinzufügen</string>
     <string name="quest_railwayPlatformRef_message">Welches Tag soll für Tracks verwendet werden, die von dieser Plattform aus zugänglich sind\? Laut OSM-Wiki könnte local_ref vorzuziehen sein, aber die tatsächliche Verwendung ist meist ref.</string>
     <string name="pref_trees_title">Baumaufgabendatei laden</string>
-    <string name="delete_confirmation_data">OSM- und Aufgabendaten</string>
     <string name="pref_save_gpx">GPX-Hinweise und angehängte Fotos und Tracks aufrufen</string>
     <string name="quest_artwork_relief">Relief</string>
     <string name="move_node_of_other_relation">Dieser Knoten ist Teil der folgenden Relationen, die keine Multipolygone sind: %s</string>
@@ -102,14 +100,10 @@
     <string name="quest_traffic_stuff_raised">Es ist ein erhöhter Übergang</string>
     <string name="custom_overlay_add_button">Neue Benutzerdefinition</string>
     <string name="pref_hide_overlay_quests">Overlay-spezifische Aufgaben ausblenden</string>
-    <string name="delete_cache_dialog_message2">Alle heruntergeladenen Kartendaten einschließlich Aufgaben löschen?
-\nDie Daten werden alle %1$s Tage aktualisiert, und ungenutzte Daten werden automatisch nach %2$s Tagen gelöscht.
-\nWähle aus, was entfernt werden soll.</string>
     <string name="default_disabled_msg_poi_other">Diese „Aufgabe“ zeigt verschiedene POIs wie Hydranten, Aussichtspunkte oder Toiletten als gelbe Punkte an. Ein Klick auf den Punkt zeigt Details und weitere Antworten an.</string>
     <string name="day_night_priority">Priorität von Aufgaben erhöhen, die für die aktuelle Tageszeit geeignet sind</string>
     <string name="quest_destination_add_more">Weiteres Ziel hinzufügen</string>
     <string name="quest_settings_fixme_title">Zu ignorierende FixMe-Werte auswählen</string>
-    <string name="delete_confirmation_tiles">Kartenkacheln</string>
     <string name="restriction_overlay_only_for">Nur für: %s</string>
     <string name="pref_hide_keyboard_summary">Blendet die Tastatur aus, wenn sie geöffnet ist, bevor der Hinweis tatsächlich erstellt wird (um eine erneute Ansicht der Position zu ermöglichen)</string>
     <string name="quest_disabled_msg_railway_platform_ref">Beachte, dass im Wiki nicht ganz klar ist, welches Tag am besten zu verwenden ist und es daher dem Benutzer überlassen bleibt. Wähle zwischen „ref“ (Standard) und „local_ref“ in den Aufgabeneinstellungen.
@@ -203,13 +197,11 @@
     <string name="quest_seating_beach">An einem Strand</string>
     <string name="pref_advanced_resurvey_summary">Neuvermessung für ausgewählte Tags erzwingen</string>
     <string name="default_disabled_msg_poi_traffic">Diese „Aufgabe“ zeigt verkehrsbezogene POIs als hellblaue Punkte an. Ein Klick auf den Punkt zeigt Details und weitere Antworten an.</string>
-    <string name="pref_use_sd">Externe SD-Karte zum Speichern von Kartenkacheln verwenden</string>
     <string name="quest_seating_roof">Auf einem Dach</string>
     <string name="custom_overlay_filter_info">Details zur Filterung</string>
     <string name="pref_quest_monitor_download">Daten herunterladen, falls erforderlich? Dies kann erheblichen Daten- und Akkuverbrauch verursachen und aus Gründen der Akkuschonung von Android möglicherweise nicht genutzt werden.</string>
     <string name="restriction_overlay_title">Verkehrsbeschränkungen</string>
     <string name="pref_dynamic_quest_creation_title">Aufgaben dynamisch erstellen</string>
-    <string name="pref_use_sd_summary">Wenn du diese Einstellung änderst, werden die Daten verschoben, was eine Weile dauern kann</string>
     <string name="quest_settings_building_levels_optional_roof">Erlaubt überall das Weglassen von Dachebenen</string>
     <string name="hide_button">Ausblenden</string>
     <string name="quest_artwork_stone">Stein</string>
@@ -251,7 +243,6 @@
     <string name="outside_downloaded_area_warning">Diese Stelle befindet sich außerhalb des heruntergeladenen Bereichs. Fortfahren\?</string>
     <string name="quest_settings_level_more">Ärzte und viele weitere Knoten in mehrstöckigen Gebäuden</string>
     <string name="restriction_overlay_show_details">Relationsdetails anzeigen</string>
-    <string name="moving">Kacheln verschieben…</string>
     <string name="quest_generic_surface_no">Nur mit Hinweis (Standard)</string>
     <string name="access_length_limit">Länge</string>
     <string name="quest_seating_garden">In einer Gartenanlage</string>
@@ -347,7 +338,6 @@
     <string name="quest_buildingType_riding_hall">Reithalle</string>
     <string name="pref_search_more_languages_title">Suchfunktionen in mehreren Sprachen</string>
     <string name="time_limited_from">Von</string>
-    <string name="pref_gpx_track_download_too_big">Downloadbereich zu groß, bitte manuell herunterladen</string>
     <string name="pref_caps_word_name_input">Großschreibung aller Wörter bei der Eingabe von Namen</string>
     <string name="quest_osmose_false_positive">Falsch-positiv melden</string>
     <string name="quest_settings_osmose_level_high">Hoch</string>

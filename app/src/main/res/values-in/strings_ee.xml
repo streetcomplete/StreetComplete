@@ -66,7 +66,6 @@
     <string name="pref_import">Impor pengaturan</string>
     <string name="import_export_presets">Prasetel</string>
     <string name="import_export_custom_overlays_select">Pilih hamparan untuk mengekspor</string>
-    <string name="pref_gpx_track_download_too_big">Area yang diunduh terlalu besar, silakan unduh secara manual</string>
     <string name="pref_update_local_statistics">Perbarui statistik pada unggahan</string>
     <string name="import_presets_overlays_replace">Ganti</string>
     <string name="import_error">Kesalahan impor</string>
@@ -87,9 +86,6 @@
     <string name="import_error_db_version">Kesalahan impor: versi yang tidak diketahui</string>
     <string name="pref_delete_old_data_after">Hapus data lama setelah</string>
     <string name="pref_delete_old_data_after_message">Hapus data OSM yang telah diunduh setelah lebih dari beberapa hari</string>
-    <string name="pref_use_sd">Gunakan kartu SD eksternal untuk menyimpan ubin peta</string>
-    <string name="pref_use_sd_summary">Mengubah pengaturan ini akan memindahkan data, yang mungkin memerlukan waktu beberapa saat</string>
-    <string name="moving">Memindahkan ubin…</string>
     <string name="pref_trees_title">Muat file pencarian pohon</string>
     <string name="pref_custom_title">Muat file pencarian kustom</string>
     <string name="tree_custom_quest_import">Berikan</string>

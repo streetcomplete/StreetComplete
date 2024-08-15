@@ -25,9 +25,6 @@
     <string name="action_scee_quests">Visa bara SCEE-uppdrag</string>
     <string name="pref_delete_old_data_after_message">Ta bort nedladdad OSM-data om äldre än så här många dagar</string>
     <string name="pref_interval_summary">%d sekunder</string>
-    <string name="delete_cache_dialog_message2">Ta bort all nedladdad kartdata, inklusive uppdrag?
-\nData uppdateras efter %1$s dagar och oanvänd data tas bort automatiskt efter %2$s dagar.
-\nVälj vad som ska tas bort.</string>
     <string name="show_nearby_quests_all_types">Visa alla typer av uppdrag</string>
     <string name="quest_destination_all_lanes_button">Alla
 \nkörfält</string>
@@ -64,8 +61,6 @@
     <string name="pref_screen_data_management">Datahantering</string>
     <string name="import_export_presets">Förinställningar</string>
     <string name="import_export_presets_select">Välj förinställningar att exportera</string>
-    <string name="delete_confirmation_both">Båda</string>
-    <string name="delete_confirmation_data">OSM- och uppdragsdata</string>
     <string name="theme_dark_contrast">Mörkt (ökad kontrast)</string>
     <string name="pref_gps_interval_title">Uppdateringsintervall för GPS-plats</string>
     <string name="pref_network_interval_title">Uppdateringsintervall för nätverksplats</string>
@@ -206,9 +201,6 @@
     <string name="import_error">Fel vid import</string>
     <string name="import_error_db_version">Fel vid import: okänd version</string>
     <string name="export_warning_db_version">Varning: databasversion okänd, import kanske inte fungerar. Vänligen be om att appen uppdateras.</string>
-    <string name="pref_use_sd">Använd externt SD-kort för att lagra kartrutor</string>
-    <string name="pref_use_sd_summary">Ändring av denna inställning kommer att flytta denna data, vilket kommer att ta ett tag</string>
-    <string name="moving">Flyttar rutor…</string>
     <string name="pref_show_nearby_quests_summary">Gör det möjligt att byta till uppdrag i närheten när ett uppdragsformulär visas</string>
     <string name="pref_search_more_languages_title">Sök efter funktioner på flera språk</string>
     <string name="pref_search_more_languages_summary">Funktionssök visar resultat i alla system- och lokalt språk</string>
@@ -225,7 +217,6 @@
     <string name="pref_dynamic_quest_creation_title">Skapa uppdrag dynamiskt</string>
     <string name="pref_quest_monitor_title">Skicka aviseringar om uppdrag i närheten</string>
     <string name="pref_quest_monitor_summary">Övervakar plats när appen är i bakgrunden, förutom om den har lagts i bakgrunden genom att använda bakåtknappen</string>
-    <string name="delete_confirmation_tiles">Kartrutor</string>
     <string name="tree_custom_quest_import_export_message">Hämta närvarande använd fil eller tillhandahåll en ny? Se motsvarande meddelande vid aktivering av uppdraget för detaljer.</string>
     <string name="tree_custom_quest_import">Tillhandahåll</string>
     <string name="tree_custom_quest_export">Hämta</string>

@@ -69,8 +69,6 @@
     <string name="pref_volume_zoom_summary">Zoom ved hjælp af lydstyrkeknapperne</string>
     <string name="pref_auto_download_title">Auto download</string>
     <string name="pref_show_solved_animation">Vis animation efter løsning af en opgave</string>
-    <string name="pref_use_sd">Brug eksternt SD-kort til lagring af kortfliser</string>
-    <string name="pref_use_sd_summary">Hvis du ændrer denne indstilling, flyttes dataene, hvilket kan tage et stykke tid</string>
     <string name="pref_gpx_track_loading_error">Fejl ved indlæsning af GPX-sporfil</string>
     <string name="pref_show_quick_settings_title">Vis knappen til hurtige indstillinger</string>
     <string name="pref_show_nearby_quests_title">Vis opgaver i nærheden</string>
@@ -82,7 +80,6 @@
     <string name="show_nearby_quests_visible">Vis kun aktiverede opgavetyper</string>
     <string name="pref_volume_zoom_title">Zoom med lydstyrkeknap</string>
     <string name="pref_tile_source_hide_labels">Skjul etiketter</string>
-    <string name="moving">Flytter fliser…</string>
     <string name="pref_select_first_edit_title">Vælg første redigering ved åbning af historik</string>
     <string name="pref_hide_button_summary">Klik skjuler opgave midlertidigt, langt klik skjuler permanent</string>
     <string name="pref_recent_answers_first_min_lines">Flyt de seneste svar frem forrest</string>
@@ -97,7 +94,6 @@
     <string name="pref_screen_data_management">Datahåndtering</string>
     <string name="pref_export">Eksportindstillinger</string>
     <string name="pref_search_more_languages_title">Søgemuligheder på flere sprog</string>
-    <string name="pref_gpx_track_download_too_big">Download-området er for stort, download venligst manuelt</string>
     <string name="pref_caps_word_name_input">Skriv alle ord med stort, når du indtaster navne</string>
     <string name="pref_auto_download_summary">Download automatisk data i det nærliggende område</string>
     <string name="tree_custom_quest_import">Opret</string>
@@ -129,15 +125,9 @@
     <string name="quest_settings_reset">Nulstil</string>
     <string name="quest_monitor_gps">Anmod aktivt om GPS-placeringer\?</string>
     <string name="quest_settings_per_preset_rescan">For at kunne anvende alle ændrede opgave-indstillinger korrekt, er det nødvendigt at scanne efter opgaver igen.</string>
-    <string name="delete_confirmation_both">Begge</string>
     <string name="pref_network_interval_title">Interval for opdatering af netværksplacering</string>
     <string name="restore_dialog_hint">Du kan også manuelt vælge, hvilke opgaver der skal gendannes, ved at trykke længe på fortryd-knappen.</string>
-    <string name="delete_confirmation_data">OSM &amp; opgavedata</string>
     <string name="pref_hide_overlay_quests">Skjul overlejrings-specifikke opgaver</string>
-    <string name="delete_cache_dialog_message2">Slet alle downloadede kortdata, inklusive opgaver?
-\nData genopfriskes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
-\nVælg, hvad du vil fjerne.</string>
-    <string name="delete_confirmation_tiles">Kortfliser</string>
     <string name="theme_dark_contrast">Mørk (øget kontrast)</string>
     <string name="pref_quest_monitor_summary">Overvåger placering, når appen er i baggrunden, undtagen hvis den er i baggrunden ved hjælp af tilbage-knappen</string>
     <string name="quest_settings_element_selection">Indstil elementer, der er kvalificerede til denne opgave. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Klik her</a> for at åbne info om syntaksen for elementvalg i en browser.</string>
@@ -546,7 +536,7 @@
     <string name="quest_healthcare_speciality_title">Hvilke sundhedsspecialer har dette sted?</string>
     <string name="quest_tree_error">Ikke genkendt. Prøv at indtaste træets slægt, art eller engelske navn. Ellers kan du overveje at efterlade en bemærkning.</string>
     <string name="quest_piste_difficulty_advanced">Øvet</string>
-    <string name="tutorial_info_fork_message"><b>SCEE</b> 
+    <string name="tutorial_info_fork_message"><b>SCEE</b>
 \n \u0020
 \n Dette er en modificeret version af StreetComplete. Den er beregnet til erfarne brugere med avanceret viden om OSM. Den giver dig mere kontrol, men også et større <i>ansvar</i>. \u0020
 \n Det gælder især muligheden for at redigere rå tags og slette punkter, men også for ændring af elementvalg til opgaver. Opgaver tilføjet i SCEE <i>kan måske ikke besvares</i> i alle tilfælde og er deaktiveret som standard. Skjul dem, hvis du ikke kan svare på dem, og <i>lav ikke en masse bemærkninger</i>. \u0020

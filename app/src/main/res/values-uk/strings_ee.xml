@@ -49,7 +49,6 @@
     <string name="pref_screen_display">Відображати</string>
     <string name="pref_way_direction_summary">Відображати стрілки на виділених лініях при відкритті квесту. Корисно, наприклад, при додаванні односторонніх шляхів.</string>
     <string name="pref_offset_fix_summary">Вони існують для того, щоб білі крапки були приховані значками квестів</string>
-    <string name="pref_gpx_track_download_too_big">Занадто велика область завантаження, будь ласка, завантажте вручну</string>
     <string name="pref_caps_word_name_input">При введенні назв усі слова писати з великої літери</string>
     <string name="pref_show_nearby_quests_summary">Дозволяє перемикатися між сусідніми квестами, коли показано форму квесту</string>
     <string name="quick_switch_preset">Перемикач заготовок</string>
@@ -78,16 +77,11 @@
     <string name="pref_quest_monitor_title">Сповіщати про квести поблизу</string>
     <string name="pref_quest_monitor_summary">Відстежує місцезнаходження, коли програма перебуває у фоновому режимі, за винятком випадків, коли її вимкнено за допомогою кнопки «Назад»</string>
     <string name="quest_monitor_permission_warning">Для відстеження квестів поблизу потрібен дозвіл на визачення місцезнаходження у фоні</string>
-    <string name="delete_cache_dialog_message2">Видалити всі завантажені дані мапи, включно з квестами\?
-\nДані оновлюються через %1$s днів, а невикористані дані автоматично видаляються через %2$s днів.
-\nВиберіть, які дані видалити.</string>
-    <string name="delete_confirmation_tiles">Плитки мапи</string>
     <string name="day_night_priority">Підвищити пріоритет квестів, придатних для поточного часу доби</string>
     <string name="day_night_visibility">Не показувати квести, які не підходять для поточного часу доби</string>
     <string name="pref_quest_settings_preset_title">Попередньо встановлені налаштування квесту</string>
     <string name="level_filter">Фільтр рівня</string>
     <string name="quest_order_reverse">Зворотний порядок квестів</string>
-    <string name="pref_use_sd_summary">Зміна цього параметра призведе до переміщення даних, що може зайняти деякий час</string>
     <string name="tree_custom_quest_import_export_message">Отримати поточний файл або надати новий\? Перевірте відповідне повідомлення про увімкнення квесту для отримання детальної інформації.</string>
     <string name="tree_custom_quest_export">Отримати</string>
     <string name="pref_tree_custom_quest_summary">Детальніше див. у повідомленні при ввімкненні квесту</string>
@@ -101,8 +95,6 @@
     <string name="pref_delete_old_data_after">Видалити старі дані після</string>
     <string name="pref_delete_old_data_after_message">Видаліть завантажені дані OSM, якщо вони старіші за вказану кількість днів</string>
     <string name="pref_delete_old_data_after_summary">%d днів</string>
-    <string name="pref_use_sd">Використовуйте зовнішню SD-карту для зберігання тайлів мапи</string>
-    <string name="moving">Переміщення тайлів…</string>
     <string name="pref_custom_title">Завантажити власний файл квесту</string>
     <string name="pref_tile_source_title">Джерело тайлів для супутникових / аерофотознімків</string>
     <string name="pref_tile_source_message">URL-адреса тайлу повинна містити {x}, {y} та {z}</string>
@@ -143,8 +135,6 @@
     <string name="import_export_presets_select">Виберіть заготовки для експорту</string>
     <string name="quest_monitor_search_radius_text">Встановити радіус пошуку квестів поблизу. Зауважте, що квести з дещо більшою відстанню також можуть бути знайдені. Локації з точністю нижче цього значення ігноруються.</string>
     <string name="quest_monitor_active_request">Активний запит місцезнаходжень збільшує витрату заряду акумулятора. Якщо ви не запитуєте місця розташування активно, місця розташування, запитані іншими програмами, все одно будуть використовуватися.</string>
-    <string name="delete_confirmation_data">Дані OSM та квестів</string>
-    <string name="delete_confirmation_both">Обидва</string>
     <string name="restore_dialog_hint">Ви також можете вручну вибрати, які квести відновити, затиснувши кнопку скасування.</string>
     <string name="quest_settings_reset">Скидання</string>
     <string name="quest_settings_element_selection">Встановіть елементи, що підходять для цього квесту.<a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Натисніть тут</a>, щоб відкрити інформацію про синтаксис виділення елементів у браузері.</string>
@@ -159,15 +149,15 @@
     <string name="quest_settings_osmose_level_title">Виберіть рівень важливості проблеми для завантаження та відображення</string>
     <string name="quest_settings_osmose_level_medium">Середній</string>
     <string name="quest_settings_fixme_title">Виберіть значення «Виправити» для ігнорування</string>
-    <string name="pref_expert_mode_message">Це дозволить використовувати квести, додані у SCEE, та способи 
-\n <li>редагування необроблених тегів</li> 
-\n <li>переміщення точок, які є частиною ліній або відношень</li> 
-\n <li>видалення будь-якої вільно плаваючої точки</li> 
-\n <li>редагування елементів, які мають бути заблоковані приміткою</li> 
-\n <li>додавання вільно плаваючих точок у будь-якому місці</li> 
-\n <li>зміна вибору елементів квестів</li> 
-\n 
-\n Це все ще менше, ніж дозволяє більшість інших редакторів, але необережне використання може призвести до пошкодження даних у спосіб, який неможливий у StreetComplete. Майте на увазі, що увімкнувши експертний режим, ви несете значно більшу відповідальність за свої правки. 
+    <string name="pref_expert_mode_message">Це дозволить використовувати квести, додані у SCEE, та способи
+\n <li>редагування необроблених тегів</li>
+\n <li>переміщення точок, які є частиною ліній або відношень</li>
+\n <li>видалення будь-якої вільно плаваючої точки</li>
+\n <li>редагування елементів, які мають бути заблоковані приміткою</li>
+\n <li>додавання вільно плаваючих точок у будь-якому місці</li>
+\n <li>зміна вибору елементів квестів</li>
+\n
+\n Це все ще менше, ніж дозволяє більшість інших редакторів, але необережне використання може призвести до пошкодження даних у спосіб, який неможливий у StreetComplete. Майте на увазі, що увімкнувши експертний режим, ви несете значно більшу відповідальність за свої правки.
 \n Будь ласка, вмикайте цей параметр лише якщо ви маєте досвід роботи з OSM поза StreetComplete і розумієте, що ви робите. \u0020</string>
     <string name="quest_osmose_settings_items">Змінити типи елементів для ігнорування</string>
     <string name="quest_settings_building_levels_optional_roof">Дозволяти не використовувати рівні даху скрізь</string>

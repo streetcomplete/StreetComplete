@@ -47,7 +47,6 @@
     <string name="pref_hide_button_title">Mostrar botón ocultar</string>
     <string name="pref_recent_answers_first_min_lines_summary">Si el formulario tiene más de %d línea(s)</string>
     <string name="pref_gpx_track_download">Área de descarga cubierta por pista GPX</string>
-    <string name="pref_gpx_track_download_too_big">Área de descarga demasiado grande, descargue manualmente</string>
     <string name="pref_select_first_edit_title">Seleccione la primera edición en el historial de apertura</string>
     <string name="show_nearby_quests_all_types">Mostrar todos los tipos de tareas</string>
     <string name="pref_search_more_languages_title">Funciones de búsqueda en más idiomas</string>
@@ -73,7 +72,6 @@
     <string name="import_error_db_version">Error de importación: versión desconocida</string>
     <string name="pref_delete_old_data_after_message">Eliminar los datos OSM descargados si tienen más de esta antigüedad de días</string>
     <string name="pref_delete_old_data_after_summary">%d días</string>
-    <string name="pref_use_sd">Usar una tarjeta SD externa para almacenar mosaicos de mapas</string>
     <string name="pref_screen_quests">Tareas</string>
     <string name="pref_advanced_resurvey_summary">Forzar repregunta para las etiquetas seleccionadas</string>
     <string name="advanced_resurvey_title">Establecer fecha y claves de repregunta</string>
@@ -82,8 +80,6 @@
     <string name="advanced_resurvey_message_date">En lugar de usar intervalos de repregunta, vuelva a preguntar las claves anteriores si la fecha de verificación es anterior a:</string>
     <string name="advanced_resurvey_hint_date">Usar formato: YYY-MM-DD</string>
     <string name="pref_dynamic_quest_creation_summary">Las tareas se crean al cargar el área vista. Algo lento, pero aplica inmediatamente la configuración de tareas modificada.</string>
-    <string name="pref_use_sd_summary">Cambiar este ajuste moverá los datos, lo que puede llevar un tiempo</string>
-    <string name="moving">Moviendo teselas …</string>
     <string name="pref_trees_title">Cargar archivo de tarea de árbol</string>
     <string name="pref_custom_title">Cargar archivo de tarea personalizado</string>
     <string name="tree_custom_quest_import">Proporcionar</string>
@@ -93,17 +89,14 @@
     <string name="export_warning_db_version">Advertencia: la versión de la base de datos es desconocida, es posible que la importación no funcione. Solicite que se actualice la aplicación.</string>
     <string name="tree_custom_quest_export">Obtener</string>
     <string name="pref_quest_settings_preset_title">Configuraciones de tareas predeterminadas</string>
-    <string name="delete_confirmation_data">OSM y datos de tareas</string>
     <string name="pref_quest_monitor_title">Notificar sobre tareas cercanas</string>
     <string name="pref_quest_monitor_summary">Supervisa la ubicación cuando la aplicación está en segundo plano, excepto si está en segundo plano con el botón Atrás</string>
     <string name="quest_monitor_gps">¿Solicitar activamente ubicaciones de GPS\?</string>
     <string name="quest_monitor_net">¿Solicitar activamente ubicaciones de red\?</string>
     <string name="quest_monitor_active_request">La solicitud activa de ubicaciones aumentará el uso de la batería. Cuando no solicite ubicaciones activamente, se seguirán utilizando las ubicaciones solicitadas por otras aplicaciones.</string>
     <string name="pref_quest_monitor_download">¿Descargar datos si es necesario\? Esto puede consumir considerablemente datos y batería, y Android puede inutilizarlo por razones de ahorro de batería.</string>
-    <string name="delete_confirmation_tiles">Telesas de mapa</string>
     <string name="quest_settings_sidewalk_distance_button">Distancia</string>
     <string name="element_selection_button">Selección de elementos</string>
-    <string name="delete_confirmation_both">Ambos</string>
     <string name="quest_settings_reset">Reiniciar</string>
     <string name="quest_settings_osmose_level_high">Alto</string>
     <string name="quest_settings_osmose_level_medium">Medio</string>
@@ -360,9 +353,6 @@
     <string name="restriction_overlay_relation_incomplete">La relación de restricción está incompleta, se requiere la descarga del área circundante</string>
     <string name="show_nearby_quests_distance">Mostrar tareas dentro de esta distancia (limitado a 10 metros)</string>
     <string name="import_presets_overlays_message">¿Añadir importado o reemplazar el existente\? Si elige reemplazar, se eliminarán todos los existentes actualmente.</string>
-    <string name="delete_cache_dialog_message2">¿Eliminar todos los datos de mapas descargados, incluidas las tareas\?
-\nLos datos se actualizan después de %1$s días y los datos no utilizados se eliminan automáticamente después de %2$s días.
-\nElija cuál eliminar.</string>
     <string name="level_filter_message">Ingrese el valor del nivel o filtre usando &gt; y &lt;. Utilice * para hacer coincidir todos los elementos que contengan una clave de nivel permitida</string>
     <string name="quest_osmose_message">Estas tareas se descargan del servicio Osmose e indican posibles problemas con los datos de OSM. La descarga solo ocurre si se selecciona al menos un nivel de gravedad en la configuración de la tarea.
 \n El mensaje de Osmose se muestra con la tarea, cualquier edición informa que el problema se resolvió.

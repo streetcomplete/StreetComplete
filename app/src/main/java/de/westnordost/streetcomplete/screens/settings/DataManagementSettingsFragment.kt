@@ -193,7 +193,6 @@ class DataManagementSettingsFragment :
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         when (key) {
             Prefs.DATA_RETAIN_TIME -> { lifecycleScope.launch(Dispatchers.IO) { cleaner.cleanOld() } }
-            Prefs.PREFER_EXTERNAL_SD -> { moveMapTilesToCurrentLocation() }
         }
     }
 
@@ -738,60 +737,6 @@ class DataManagementSettingsFragment :
         } catch (e: Exception) {
             return false
         }
-    }
-
-    private fun restartApp() {
-        // exitProcess does actually restart with the activity below, which should always be MainActivity.
-        // No idea how to come back to SettingsFragment automatically, or why it actually DOES
-        //  return to SettingsFragment when calling this from onActivityResult (settings import)
-        exitProcess(0)
-    }
-
-    private fun moveMapTilesToCurrentLocation() {
-        val sd = requireContext().externalCacheDirs
-            .firstOrNull { Environment.isExternalStorageRemovable(it) } ?: return
-        val default = requireContext().externalCacheDir ?: return
-        val sdCache = File(sd, "tile_cache")
-        val defaultCache = File(default, "tile_cache")
-
-        // move to preferred storage
-        val sdPreferred = prefs.getBoolean(Prefs.PREFER_EXTERNAL_SD, false)
-        var d: AlertDialog? = null
-        val target = if (sdPreferred) sdCache else defaultCache
-        val source = if (sdPreferred) defaultCache else sdCache
-        if (!source.exists()) return
-        target.mkdirs()
-        val moveJob = lifecycleScope.launch(Dispatchers.IO) {
-            // copyRecursively would be easier, but crashes with FileNotFoundException (even if I tell it to skip in that case, wtf?)
-            val files = source.listFiles() ?: return@launch
-            val size = files.size
-            var i = 0
-            for (f in files) {
-                i++
-                if (!f.exists() || f.isDirectory) continue
-                val dstFile = File(target, f.toRelativeString(source))
-                if (!coroutineContext.isActive) break
-                if (i % 100 == 0)
-                    activity?.runOnUiThread { d?.setMessage("$i / $size") }
-                if (dstFile.exists()) continue
-                try {
-                    f.inputStream().use { input -> dstFile.outputStream().use { input.copyTo(it) } }
-                    dstFile.setLastModified(f.lastModified())
-                } catch (e: IOException) {
-                    continue
-                }
-            }
-            yield() // don't delete if moving was canceled
-            kotlin.runCatching { source.deleteRecursively() }
-            d?.dismiss()
-            restartApp() // necessary for really changing cache directory
-        }
-        d = AlertDialog.Builder(requireContext())
-            .setTitle(R.string.moving)
-            .setMessage("0 / ?")
-            .setNegativeButton(android.R.string.cancel) { _,_ -> moveJob.cancel() }
-            .setCancelable(false)
-            .show()
     }
 }
 

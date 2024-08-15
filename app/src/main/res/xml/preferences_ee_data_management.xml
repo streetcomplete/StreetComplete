@@ -35,13 +35,6 @@
         android:negativeButtonText="@android:string/cancel" />
 
     <SwitchPreference
-        android:key="prefer_external_sd"
-        android:title="@string/pref_use_sd"
-        android:summary="@string/pref_use_sd_summary"
-        android:defaultValue="false"
-        android:persistent="true" />
-
-    <SwitchPreference
         android:key="update_local_statistics"
         android:title="@string/pref_update_local_statistics"
         android:summary="@string/pref_update_local_statistics_summary"

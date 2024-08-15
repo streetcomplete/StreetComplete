@@ -126,10 +126,9 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
     * Capitalize words when entering names
     * Zoom using volume buttons
   * Display settings
-    * Disable 3D buildings (currently not available as 3D buildings are disabled in general with since the MapLibre switch)
+    * Disable 3D buildings (currently not available, as 3D buildings are disabled in general with since the MapLibre switch)
     * Show arrows indicating direction of highlighted way
     * Highlight geometries for nearby quests
-    * Put pin on exact location of a quest
     * Disable quest solved animation
     * Provide GPX track and have it always shown on the map
   * Quest settings
@@ -151,7 +150,6 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
     * Disable always downloading map data on manual download, even if data is fresh
     * Choose tile URL for aerial imagery
     * Set data retention time
-    * Store map tiles on SD card
     * Disable local statistics updates (hides achievement messages)
     * Import / export
       * Custom overlays

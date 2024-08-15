@@ -139,6 +139,7 @@ class LevelFilter internal constructor(private val prefs: ObservableSettings) : 
             val tempOverlay = overlayController?.selectedOverlay
             if (tempOverlay != null) {
                 // reload overlay (if enabled), also triggers quest reload
+                overlayController.selectedOverlay = null
                 overlayController.selectedOverlay = tempOverlay
             } else {
                 visibleQuestTypeController.setVisibilities(emptyMap()) // trigger reload

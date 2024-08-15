@@ -22,7 +22,6 @@
 \n Berre skru på dette viss du har anna erfaring frå OSM utanom StreetComplete og veit kva du gjer. </string>
     <string name="pref_expert_mode_title">Ekspertmodus</string>
     <string name="pref_expert_mode_summary">Slå på avansert redigering</string>
-    <string name="pref_gpx_track_download_too_big">Nedlastningsarealet er for stort, last ned manuelt istaden</string>
     <string name="pref_hide_keyboard_title">Skjul tastaturet før oppretting av node</string>
     <string name="pref_screen_notes">Merknadar</string>
     <string name="pref_read_log_save">Lagra heile loggen til ei fil</string>

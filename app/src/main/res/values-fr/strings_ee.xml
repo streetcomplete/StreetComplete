@@ -50,19 +50,14 @@
     <string name="pref_tile_source_title">Source du serveur de tuile (images satellites ou cartes)</string>
     <string name="pref_tile_source_message">L\'adresse doit contenir {x}, {y} et {z}</string>
     <string name="pref_tile_source_hide_labels">Cacher les libellés</string>
-    <string name="pref_use_sd_summary">Changer ce paramètre transférera les données. Cela peut prendre un peu de temps suivant le volume de donnée</string>
-    <string name="moving">Transfert des tuiles.…</string>
     <string name="import_export_custom_overlays">Surcouche personnalisée</string>
     <string name="show_nearby_quests_even_hidden">Afficher les quêtes de tous types et cachées</string>
     <string name="show_nearby_quests_distance">Afficher les quêtes dans un rayon (limitée à 10 mètres)</string>
     <string name="action_scee_quests">Montrer seulement les quêtes SCEE</string>
     <string name="advanced_resurvey_title">Définir les dates et tags de revérification</string>
-    <string name="delete_confirmation_data">OSM et données des quêtes</string>
-    <string name="delete_confirmation_both">Les deux</string>
     <string name="theme_dark_contrast">Sombre (augmente le contraste)</string>
     <string name="pref_interval_message">Intervalle de mise à jour en secondes</string>
     <string name="pref_quest_monitor_title">Notifier des quêtes à proximité</string>
-    <string name="delete_confirmation_tiles">Tuiles</string>
     <string name="quest_settings_reset">Réinitialiser</string>
     <string name="quest_settings_sidewalk_distance_button">Distance</string>
     <string name="resurvey_intervals_even_less_often">Demander encore moins souvent</string>
@@ -98,7 +93,6 @@
     <string name="quest_artwork_fountain">Fontaine</string>
     <string name="quest_artwork_statue">Statue</string>
     <string name="quest_seating_street">Dans une zone de rue</string>
-    <string name="pref_gpx_track_download_too_big">Zone a télécharger trop importante, veuillez télécharger manuellement</string>
     <string name="quest_healthcare_speciality_add_more">Ajouter une autre spécialité</string>
     <string name="quest_artwork_architecture">Architecture</string>
     <string name="quest_artwork_mosaic">Mosaïque</string>
@@ -181,7 +175,6 @@
     <string name="pref_save_photos_summary">Stocker les versions en taille réelle des photos prises lors de la création de notes, sans effacer les données EXIF</string>
     <string name="move_node_message_external_source_addition">Notez que la position de cette quête peut ne pas se déplacer avec le nœud.</string>
     <string name="pref_create_custom_quest_summary">...au lieu de laisser une note. Cela peut être utilisé comme une note stockée localement et visible sur la carte. Notez que vous devez également activer les quêtes personnalisées.</string>
-    <string name="pref_use_sd">Utiliser une carte SD externe pour stocker les tuiles des cartes</string>
     <string name="advanced_resurvey_hint_date">Format utilisé : AAAA-MM-JJ</string>
     <string name="quest_service_building_operator_title">Qui est le gestionnaire de ce bâtiment de service \?</string>
     <string name="quest_monitor_gps">Activer la localisation GPS continue \?</string>
@@ -217,9 +210,6 @@
     <string name="day_night_ignore">Ignorer le moment de la journée</string>
     <string name="day_night_priority">Augmenter la priorité des quêtes en fonction du moment actuel de la journée</string>
     <string name="day_night_visibility">Ne pas afficher les quêtes inadaptées au moment actuel de la journée</string>
-    <string name="delete_cache_dialog_message2">Supprimer toutes les données téléchargées des cartes, y compris les quêtes \?
-\nLes données sont actualisées tous les %1$s jours et les données inutilisées sont supprimées automatiquement après %2$s jours.
-\nChoisissez ce que vous souhaitez supprimer.</string>
     <string name="quest_settings_eligible_highways">Définissez les chemins concernés par cette quête, en les séparant par des virgules</string>
     <string name="quest_settings_sidewalk_cycleway_distance_message">Définir la distance minimale entre les chemins distincts ; si elle est inférieure, la quête ne sera pas affichée</string>
     <string name="pref_gps_interval_title">Intervalle de mise à jour de la localisation GPS</string>

@@ -25,7 +25,6 @@
     <string name="quest_custom_quest_message">用于检查特定的预先定义元素或位置。您还可以指定标签，并将其添加到节点中。要使用它，请在主设置菜单中加载一个文件，其中包含类型、ID、消息（例如：NODE,1234,检查位置）或经度、纬度、信息。添加节点时，将消息中的标签放在 \"addNode \"之后，例如 addNode amenity=restaurant, wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_artwork_mural">壁画</string>
     <string name="pref_recent_answers_first_min_lines_message">如果任务回答表格的图像行数超过此数，则将近期的答案排列至最前</string>
-    <string name="delete_confirmation_both">全部</string>
     <string name="pref_network_interval_title">网络位置更新间隔</string>
     <string name="pref_custom_title">加载自定义任务文件</string>
     <string name="quest_benchMaterial_concrete">水泥</string>
@@ -53,7 +52,6 @@
     <string name="import_presets_overlays_add">添加</string>
     <string name="quest_railwayPlatformRef_message">该站台可使用的轨道应使用哪个标签？根据 OSM wiki，local_ref 可能更合适，但实际使用中大多是 ref。</string>
     <string name="pref_trees_title">加载任务树文件</string>
-    <string name="delete_confirmation_data">OSM 和任务数据</string>
     <string name="pref_save_gpx">获取 GPX 注记以及附加的照片和轨迹</string>
     <string name="quest_artwork_relief">浮雕</string>
     <string name="pref_save_photos_title">保存用于注记的照片</string>
@@ -63,17 +61,13 @@
     <string name="pref_hide_notes_hint">使用英文逗号分隔用户名或 ID</string>
     <string name="quest_traffic_stuff_raised">这是个加高的路口</string>
     <string name="pref_hide_overlay_quests">隐藏特定覆盖层任务</string>
-    <string name="delete_cache_dialog_message2">删除所有已下载的地图数据，包括任务？ 
-\n数据会在 %1$s 天后刷新，未使用的数据会在 %2$s 天后自动删除。 
-\n选择将要删除的数据。</string>
     <string name="default_disabled_msg_poi_other">这个“任务”将消防栓、观景点或厕所等杂项兴趣点显示为黄点。点击圆点可显示详细信息和其他回答。</string>
     <string name="day_night_priority">提高适合当前日间任务的优先级</string>
     <string name="quest_settings_fixme_title">选择要忽略的 fixme 值</string>
-    <string name="delete_confirmation_tiles">地图瓦片</string>
     <string name="pref_hide_keyboard_summary">在注记被实际创建之前隐藏将要打开的键盘（以便重新查看位置）</string>
     <string name="quest_settings_resurvey_all_opening_hours_message">重新调查所有开放时间，包括 SCEE 无法理解的值？您可能需要使用标签编辑器输入正确的值。</string>
     <string name="quest_service_building_type_reservoir">储水容器</string>
-    <string name="quest_osmose_message">这些任务是从 Osmose 服务下载的，以表示 OSM 数据的潜在问题。只有在任务设置中选择了至少一个严重等级时，才会下载。 
+    <string name="quest_osmose_message">这些任务是从 Osmose 服务下载的，以表示 OSM 数据的潜在问题。只有在任务设置中选择了至少一个严重等级时，才会下载。
 \n Osmose 消息会与任务一起显示，任何编辑都会将问题报告为已解决。
 \n 也有可能将问题报告为误报；这是无法撤销的。</string>
     <string name="pref_select_first_edit_summary">允许快速撤销，但相机会自动移动</string>
@@ -135,11 +129,9 @@
     <string name="quest_seating_beach">在海滩</string>
     <string name="pref_advanced_resurvey_summary">强制重新调查所选标签</string>
     <string name="default_disabled_msg_poi_traffic">该“任务”以浅蓝色圆点显示与交通相关的兴趣点。点击圆点可显示详细信息和其他回答。</string>
-    <string name="pref_use_sd">使用外置 SD 卡存储地图图块</string>
     <string name="quest_seating_roof">屋顶上</string>
     <string name="pref_quest_monitor_download">在必要时下载数据？这可能会大幅消耗数据和电池，而且 Android 可能会出于省电原因而使其失去作用。</string>
     <string name="pref_dynamic_quest_creation_title">动态创建任务</string>
-    <string name="pref_use_sd_summary">更改此设置将转移数据，可能需要一段时间</string>
     <string name="quest_settings_building_levels_optional_roof">允许省略任何地方的屋顶层</string>
     <string name="quest_artwork_stone">石头/碑</string>
     <string name="advanced_resurvey_message_keys">如果没有检查日期的键值，请务必重新调查这些键值。在回答相关任务时会添加检查日期</string>
@@ -170,7 +162,6 @@
     <string name="pref_tile_source_hide_labels">隐藏标签</string>
     <string name="quest_healthcare_speciality_disabled_message">该任务需要 healthcare:speciality 标签的相关知识。如果不了解这些知识，任务可能将难以回答。</string>
     <string name="quest_settings_level_more">多层建筑内的医生和更多节点</string>
-    <string name="moving">正在移动图块…</string>
     <string name="quest_generic_surface_no">仅有注记（默认）</string>
     <string name="quest_seating_garden">在花园区域</string>
     <string name="pref_get_photos_title">获取全尺寸照片</string>
@@ -243,7 +234,6 @@
     <string name="quest_generic_surface_message">允许通用的表面答案而不需要注记？</string>
     <string name="pref_save_photos_summary">存储创建注记时拍摄的全尺寸照片，而不清除 EXIF 数据</string>
     <string name="pref_search_more_languages_title">以更多语言提供搜索功能</string>
-    <string name="pref_gpx_track_download_too_big">下载区域过大，请手动下载</string>
     <string name="pref_caps_word_name_input">输入名称时所有单词的首字母大写</string>
     <string name="quest_osmose_false_positive">报告误报</string>
     <string name="quest_settings_osmose_level_high">高</string>
@@ -400,7 +390,7 @@
     <string name="restriction_overlay_signed_switch">存在标志或道路标记</string>
     <string name="restriction_overlay_select_way">点击地图上的下一条路径。它需要一个与当前路径共享的末端节点。如有必要，请将其拆分。</string>
     <string name="restriction_overlay_sign_give_way">让路</string>
-    <string name="tutorial_info_fork_message"><b>SCEE</b> 
+    <string name="tutorial_info_fork_message"><b>SCEE</b>
 \n
 \n这是 StreetComplete 的修改版本。它适用于具有 OSM 进阶知识，经验丰富的用户。它为您提供更多控制权，同时也将承载更多<i>责任</i>。
 \n这尤其适用于编辑原始标签和删除节点的可能性，也适用于修改任务的元素选择。在 SCEE 中添加的任务，在所有情况下<i>可能都无法回答</i>，并且默认情况下处于禁用状态。，如果您无法回答，请隐藏它们。同时请<i>不要滥发注记</i>。

@@ -29,7 +29,6 @@
     <string name="pref_gpx_track_provide">GPXファイルを選択</string>
     <string name="pref_gpx_track_loading_error">GPX経路ファイルを読み込み中にエラー</string>
     <string name="pref_gpx_track_enable">GPX経路を表示</string>
-    <string name="pref_gpx_track_download_too_big">ダウンロード領域が大きすぎるため、手動でダウンロードしてください</string>
     <string name="pref_quest_geometries_summary">クエストが持つウェイと領域を強調します</string>
     <string name="pref_volume_zoom_title">音量ボタンで拡大</string>
     <string name="pref_volume_zoom_summary">拡大に音量ボタンを使用します</string>
@@ -64,14 +63,12 @@
     <string name="pref_delete_old_data_after">後に古いデータを削除する</string>
     <string name="pref_delete_old_data_after_message">ダウンロードしてからこの日数が経過したOSMデータを削除します</string>
     <string name="pref_delete_old_data_after_summary">%d 日</string>
-    <string name="pref_use_sd">地図タイル保存用に外部のSDカードを使用</string>
     <string name="import_export_hidden_quests">非表示のクエスト</string>
     <string name="pref_overlay_quick_selector_title">オーバーレイの敏速な選択器を表示</string>
     <string name="import_export_custom_overlays">任意オーバーレイ</string>
     <string name="import_export_custom_overlays_select">出力するオーバーレイを選択</string>
     <string name="import_presets_overlays_add">追加</string>
     <string name="import_presets_overlays_replace">置き換え</string>
-    <string name="moving">タイルを移動中…</string>
     <string name="tree_custom_quest_import">提供</string>
     <string name="tree_custom_quest_export">入手</string>
     <string name="pref_tile_source_title">人工衛星等空中写真用のタイル発信源</string>
@@ -98,7 +95,6 @@
     <string name="quest_monitor_gps">活発にGPS位置情報を要求しますか?</string>
     <string name="quest_monitor_net">活発にネットワーク位置情報を要求しますか?</string>
     <string name="pref_quest_monitor_download">必要に応じてデータをダウンロードしますか?　これは転送量と電池を激しく消費する可能性があり、電池を節約するためにAndroidによって使用できなくなる状態にされる可能性があります。</string>
-    <string name="delete_confirmation_both">双方</string>
     <string name="pref_gps_interval_title">GPS位置情報を更新する間隔</string>
     <string name="pref_network_interval_title">ネットワーク位置情報を更新する間隔</string>
     <string name="pref_interval_summary">%d 秒</string>
@@ -215,7 +211,6 @@
     <string name="pref_disable_navigation_mode_summary">地図を傾けて自動回転させる方式を無効化する</string>
     <string name="pref_custom_title">任意クエストのファイルを読み込み</string>
     <string name="export_warning_db_version">警告: データベースの版は未知であり、取り込みは機能しません。アプリを更新するよう要求してください。</string>
-    <string name="pref_use_sd_summary">この設定を変更すると、時間が掛かり得るデータの移動を行います</string>
     <string name="tree_custom_quest_import_export_message">現在使用したファイルを入手、または新規ファイルを提供しますか?　詳細を確認するには、一致するクエストでメッセージを有効化してください。</string>
     <string name="quest_monitor_active_request">活発に位置情報を要求すると、電池の消費が増えます。活発に位置情報を要求していない場合でも、他のアプリによって要求された位置情報は使用されるままです。</string>
     <string name="action_scee_quests">SCEEのみのクエストを表示</string>
@@ -229,11 +224,6 @@
     <string name="advanced_resurvey_message_keys">確認日時キーがない場合、これらのキーを常に再調査します。確認日時は関連したクエストに回答すると、常に追加されます</string>
     <string name="day_night_visibility">現在の昼間に不適なクエストを表示しない</string>
     <string name="pref_quest_settings_preset_summary">有効なとき、クエスト設定は現在のクエストのプリセットのみに効果があります</string>
-    <string name="delete_cache_dialog_message2">クエストを含む、全てのダウンロードされた地図データを削除しますか?
-\nデータは %1$s 日後に更新され、未使用のデータは %2$s 日後に自動的に削除されます。
-\nどれを削除するか選択してください。</string>
-    <string name="delete_confirmation_tiles">地図タイル</string>
-    <string name="delete_confirmation_data">OSMとクエストのデータ</string>
     <string name="quest_settings_element_selection">このクエストに適格な要素を設定します。ブラウザ内で要素選抜表記法についての情報を開くには、<a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">ここをクリック</a>してください。</string>
     <string name="default_disabled_msg_poi_camera">この「クエスト」では、監視地物を桃色の点で表示します。点をクリックすると、詳細や他の回答が表示されます。</string>
     <string name="quest_service_building_type_substation">変電設備</string>

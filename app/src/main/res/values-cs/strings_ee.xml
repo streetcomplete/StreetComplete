@@ -23,7 +23,6 @@
     <string name="pref_gpx_track_provide">Vybrat GPX soubor</string>
     <string name="pref_gpx_track_enable">Zobrazit GPX trasu</string>
     <string name="pref_gpx_track_download">Stáhnout oblast pokrývající GPX trasu</string>
-    <string name="pref_gpx_track_download_too_big">Oblast na stažení je moc velká, prosím, stáhněte ji ručně</string>
     <string name="pref_read_log_save">Uložit celý záznam do souboru</string>
     <string name="pref_save_photos_summary">Ukládat původní verze obrázků pořízených při vytváření poznámek, včetně EXIF dat</string>
     <string name="pref_get_photos_title">Získat plné verze obrázků</string>
@@ -56,7 +55,6 @@
     <string name="show_nearby_quests_even_hidden">Zobrazit všechny, i skryté úkoly</string>
     <string name="pref_search_more_languages_title">Vyhledávst úkoly ve více jazycích</string>
     <string name="import_error">Chyba při importu</string>
-    <string name="pref_use_sd">Použít externí SD kartu na ukládání mapových dat</string>
     <string name="tree_custom_quest_import_export_message">Získat momentálně používaný soubor nebo nahrát nový?</string>
     <string name="tree_custom_quest_import">Nahrát</string>
     <string name="tree_custom_quest_export">Získat</string>
@@ -65,7 +63,6 @@
     <string name="pref_delete_old_data_after">Smazat data starší než</string>
     <string name="pref_delete_old_data_after_message">Smazat stažené OSM data pokud jsou starší než tolik dní</string>
     <string name="pref_delete_old_data_after_summary">%d dní</string>
-    <string name="moving">Přesouvání dlaždic…</string>
     <string name="pref_tile_source_message">URL adresa musí obsahovat {x}, {y} a {z}</string>
     <string name="pref_tile_source_hide_labels">Skrýt popisky</string>
     <string name="pref_tree_custom_quest_summary">Zobrazte si zprávu při zapínání úkolu pro více informací</string>
@@ -253,6 +250,5 @@
     <string name="pref_create_custom_quest_summary">...jako alternativa k ponechání poznámky. Toto lze použít jako lokálně uložená poznámka viditelná na mapě. Budete k tomu muset povolit vlastní úkoly.</string>
     <string name="pref_hide_button_summary">Kliknutí skryje úkol dočasně, dlouhé stisknutí ho skryje trvale</string>
     <string name="pref_manual_download_cache_title">Vždy stahovat nová data</string>
-    <string name="pref_use_sd_summary">Změna tohoto nastavení přesune data, to může nějakou chvíli trvat</string>
     <string name="pref_update_local_statistics_summary">Vypnutí zrychlí nahrávání ale zastaví zprávy o úspěších</string>
 </resources>

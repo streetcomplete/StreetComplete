@@ -34,7 +34,6 @@
     <string name="pref_gpx_track_enable">Показывать трек GPX</string>
     <string name="pref_gpx_track_loading_error">Ошибка загрузки трека GPX из файла</string>
     <string name="pref_gpx_track_download">Загрузить зону вдоль трека GPX</string>
-    <string name="pref_gpx_track_download_too_big">Зона загрузки слишком велика, пожалуйста, загрузите вручную</string>
     <string name="pref_screen_ui">Интерфейс</string>
     <string name="pref_volume_zoom_title">Масштаб кнопками громкости</string>
     <string name="pref_volume_zoom_summary">Менять масштаб кнопками громкости</string>
@@ -56,7 +55,6 @@
     <string name="show_nearby_quests_distance">Показывать квесты не далее, чем (предел 10 метров)</string>
     <string name="pref_search_more_languages_title">Искать объекты на других языках</string>
     <string name="pref_screen_data_management">Управление данными</string>
-    <string name="moving">Перемещение участков…</string>
     <string name="pref_dynamic_quest_creation_summary">Квесты формируются при загрузке отображаемой области. Не быстро, зато сразу же отражаются изменения настроек квестов.</string>
     <string name="pref_dynamic_quest_creation_title">Формировать квесты динамически</string>
     <string name="pref_network_interval_title">Частота замера положения по сетям связи</string>
@@ -120,8 +118,6 @@
     <string name="pref_delete_old_data_after">Удалять старые данные через</string>
     <string name="pref_delete_old_data_after_message">Удалять скачанные данные OSM, старше, чем столько дней</string>
     <string name="pref_delete_old_data_after_summary">%d дня(-ей)</string>
-    <string name="pref_use_sd">Хранить участки карт на внешней карте SD</string>
-    <string name="pref_use_sd_summary">Изменение этой настройки перемещает данные, что потребует некоторого времени</string>
     <string name="pref_tile_source_title">Источник участков для спутниковых/аэрофото снимков</string>
     <string name="pref_trees_title">Загрузить файл дерева квестов</string>
     <string name="tree_custom_quest_import">Передать</string>
@@ -137,9 +133,6 @@
     <string name="day_night_ignore">Не использовать</string>
     <string name="day_night_visibility">Скрывать квесты, не соответствующие времени суток</string>
     <string name="pref_quest_settings_preset_title">Настройки квестов для предустановок</string>
-    <string name="delete_confirmation_tiles">Участки карт</string>
-    <string name="delete_confirmation_data">Данные квестов и OSM</string>
-    <string name="delete_confirmation_both">Всё</string>
     <string name="theme_dark_contrast">Тёмная (контрастная)</string>
     <string name="resurvey_intervals_even_less_often">Спрашивать ещё реже</string>
     <string name="pref_gps_interval_title">Частота замера положения по ГНСС</string>
@@ -279,9 +272,6 @@
     <string name="quest_monitor_permission_warning">Требуется разрешение на определение местоположения в фоне для отслеживания квестов неподалёку</string>
     <string name="quest_monitor_search_radius_text">Укажите радиус поиска квестов неподалёку. Знайте, что могут быть найдены и квесты чуть дальше. Местоположения с погрешностью позиционирования больше этого значения отбрасываются.</string>
     <string name="pref_quest_monitor_download">Подгружать данные по необходимости\? Значительно повысит расход трафика и заряда, и может не работать из-за политик энергосбережения в Android.</string>
-    <string name="delete_cache_dialog_message2">Стереть все скачанные данные карт, а также квестов\?
-\nДанные автоматически обновляются через %1$s дня(-ей), а неиспользуемые данные — через %2$s дня(-ей).
-\nВыберите, что стереть.</string>
     <string name="quest_settings_element_selection">Укажите подходящие для этого квеста элементы. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection"> Нажмите</a>, чтобы открыть сведения о правилах выбора элементов в браузере.</string>
     <string name="quest_generic_surface_message">Не требовать заметку для ответов о покрытии без конкретики\?</string>
     <string name="quest_settings_osmose_level_title">Выберите степень критичности для скачивания и показа</string>

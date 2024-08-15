@@ -89,7 +89,6 @@
 \n \u0020Toto je stále menej ako ponúka väčšina editorov, ale nepozornosť môže viesť k poškodzovaniu dát tak, ako to v StreetComplete možné nie je. Maj na pamäti, že povolením režimu pre expertov budeš oveľa viac zodpovedný za svoje úpravy.
 \n \u0020Prosím povoľ toto nastavenie len keď máš skúsenosti s OSM mimo \u0020StreetComplete a vieš čo robíš. \u0020</string>
     <string name="pref_show_solved_animation_summary">Toto taktiež upravuje zvuk splnenia úlohy</string>
-    <string name="pref_gpx_track_download_too_big">Sťahovaná oblasť je príliš veľká, prosím stiahni ju manuálne</string>
     <string name="pref_disable_navigation_mode_summary">Zakáže mód, ktorý automaticky nakláňa a rotuje mapu</string>
     <string name="pref_auto_download_summary">Automaticky stiahne dáta v okolí</string>
     <string name="import_presets_overlays_message">Pridať importované, alebo nahradiť existujúce? Pokiaľ si vyberieš nahradiť, tak všetky aktuálne budú vymazané.</string>
@@ -101,9 +100,6 @@
     <string name="pref_delete_old_data_after">Vymaž staré údaje po</string>
     <string name="pref_delete_old_data_after_message">Vymaž stiahnuté OSM dáta, pokiaľ sú staršie ako tento počet dní</string>
     <string name="pref_delete_old_data_after_summary">%d dňoch</string>
-    <string name="pref_use_sd">Použi SD kartu na ukladanie mapových podkladov</string>
-    <string name="pref_use_sd_summary">Zmena týchto nastavení presúva dáta, toto môže chvíľu trvať</string>
-    <string name="moving">Presúvanie podkladov…</string>
     <string name="day_night_visibility">Nezobrazovať úlohy nevhodné pre aktuálnu časť dňa</string>
     <string name="day_night_priority">Zvýšiť prioritu úloh vhodných pre daný čas dňa</string>
     <string name="pref_trees_title">Načítaj strom úloh zo súboru</string>
