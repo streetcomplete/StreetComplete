@@ -165,7 +165,7 @@ class StyleableOverlayManager(
             createStyledElementsByKey(overlay, mapData).forEach { (key, styledElement) ->
                 mapDataInView[key] = styledElement
             }
-            mapDataInView.values
+            mapDataInView.values.toList()
         }
         mapComponent.set(styledElements)
     }
@@ -198,7 +198,7 @@ class StyleableOverlayManager(
 
             if (!hasChanges) return
 
-            mapDataInView.values
+            mapDataInView.values.toList()
         }
         mapComponent.set(styledElements)
     }
