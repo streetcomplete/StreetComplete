@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
+<!-- not possible with mapLibre
     <SwitchPreference
         android:key="3d_buildings"
         android:title="@string/pref_3d_buildings_title"
         android:defaultValue="true"
         android:persistent="true" />
-
+-->
     <SwitchPreference
         android:key="show_way_direction"
         android:title="@string/pref_way_direction"

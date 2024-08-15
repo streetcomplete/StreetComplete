@@ -54,6 +54,7 @@
 
     <!-- display settings -->
     <string name="pref_screen_display">Display</string>
+    <!-- currently pref_3d_buildings_title is unused, as 3D buildings are disabled with MapLibre due to looking bad -->
     <string name="pref_3d_buildings_title">Show 3D buildings</string>
     <string name="pref_way_direction">Show direction of ways</string>
     <string name="pref_way_direction_summary">Displays arrows on highlighted lines when opening a quest. Useful e.g. when adding oneway.</string>
