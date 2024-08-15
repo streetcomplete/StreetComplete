@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.ContentResolver
 import android.content.Context
+import android.content.res.Configuration
 import androidx.annotation.UiThread
 import androidx.core.graphics.Insets
 import com.google.gson.JsonObject
@@ -42,7 +43,9 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.style.expressions.Expression
 import org.maplibre.android.style.expressions.Expression.any
+import org.maplibre.android.style.expressions.Expression.has
 import org.maplibre.android.style.expressions.Expression.log2
 import org.maplibre.android.style.layers.FillLayer
 import org.maplibre.android.style.layers.LineLayer
@@ -69,7 +72,13 @@ class PinsMapComponent(
             .withClusterRadius(55)
     )
 
+    // separate sources because this should not count towards clustering
     private val pinsGeometrySource = GeoJsonSource(GEOMETRY_SOURCE)
+    private val pinDotsSource = GeoJsonSource(DOT_SOURCE)
+    private val isNightMode: Boolean get() {
+        val currentNightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
+    }
 
     val layers: List<Layer> = listOf(
         LineLayer("pins-geometry-lines-layer", GEOMETRY_SOURCE)
@@ -85,6 +94,34 @@ class PinsMapComponent(
             .withProperties(
                 fillColor("#0092D1"),
                 fillOpacity(0.2f)
+            ),
+        CircleLayer("pin-quest-dot-layer", DOT_SOURCE)
+            .withFilter(all(gt(zoom(), CLUSTER_MAX_ZOOM)))
+            .withProperties(
+                circleColor(get("dot-color")),
+                circleStrokeOpacity(0.4f),
+                circleStrokeColor("#aaaaaa"),
+                circleRadius(7.5f),
+                circleStrokeWidth(1f),
+                circleSortKey(get("dot-order"))
+            ),
+        SymbolLayer("pin-dot-label-layer", DOT_SOURCE)
+            .withFilter(all(
+                gt(zoom(), CLUSTER_MAX_ZOOM),
+                has("label")
+            ))
+            .withProperties(
+                textField(get("label")),
+                textFont(arrayOf("Roboto Regular")),
+                textSize(16 * context.resources.configuration.fontScale),
+                textColor(if (isNightMode) "#ccf" else "#124"),
+                textHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
+                textAnchor(Property.TEXT_ANCHOR_TOP),
+                textOffset(arrayOf(0f, 0.5f)),
+                textHaloWidth(2.5f),
+                textOptional(true),
+                textAllowOverlap(Expression.step(zoom(), literal(false), Expression.stop(21, true))),
+                symbolSortKey(get("dot-order")),
             ),
         SymbolLayer("pin-cluster-layer", SOURCE)
             .withFilter(all(
@@ -137,9 +174,11 @@ class PinsMapComponent(
     init {
         pinsSource.isVolatile = true
         pinsGeometrySource.isVolatile = true
+        pinDotsSource.isVolatile = true
         map.style?.addImageAsync("cluster-circle", context.getDrawable(R.drawable.pin_circle)!!)
         map.style?.addSource(pinsSource)
         map.style?.addSource(pinsGeometrySource)
+        map.style?.addSource(pinDotsSource)
         map.addOnMapClickListener(::onClick)
     }
 
@@ -147,12 +186,15 @@ class PinsMapComponent(
     suspend fun set(pins: Collection<Pin>) {
         val icons = pins.map { it.icon }
         mapImages.addOnce(icons) { createPinBitmap(context, it) to false }
-        val features = pins.map { it.toFeature() }
+        val features = pins.mapNotNull { it.toFeature() }
+        val dots = pins.mapNotNull { it.toDot() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         val geoFeatures = createGeometryFeatures(pins)
+        val dotFeatures = FeatureCollection.fromFeatures(dots)
         withContext(Dispatchers.Main) {
             pinsSource.setGeoJson(mapLibreFeatures)
             pinsGeometrySource.setGeoJson(geoFeatures)
+            pinDotsSource.setGeoJson(dotFeatures)
         }
     }
 
@@ -165,7 +207,7 @@ class PinsMapComponent(
         val feature = map.queryRenderedFeatures(
             coordinates = map.projection.toScreenLocation(position),
             radius = clickRadius,
-            layerIds = arrayOf("pins-layer", "pin-cluster-layer")
+            layerIds = arrayOf("pins-layer", "pin-cluster-layer", "pin-quest-dot-layer")
         ).firstOrNull() ?: return false
 
         val properties = feature.properties()
@@ -199,7 +241,8 @@ class PinsMapComponent(
         }
     }
 
-    private fun Pin.toFeature(): Feature {
+    private fun Pin.toFeature(): Feature? {
+        if (color != null) return null
         val p = JsonObject()
         p.addProperty("icon-image", context.resources.getResourceEntryName(icon))
         p.addProperty("icon-order", order)
@@ -207,14 +250,25 @@ class PinsMapComponent(
         return Feature.fromGeometry(position.toPoint(), p)
     }
 
+    private fun Pin.toDot(): Feature? {
+        if (color == null) return null
+        val p = JsonObject()
+        p.addProperty("dot-order", order)
+        p.addProperty("dot-color", color)
+        properties.forEach { p.addProperty(it.first, it.second) }
+        return Feature.fromGeometry(position.toPoint(), p)
+    }
+
     private fun createGeometryFeatures(pins: Collection<Pin>): FeatureCollection? {
-        val geometries = pins.mapNotNull { it.geometry }.takeIf { it.isNotEmpty() }?.toHashSet() ?: return null
+        val geometries = pins.mapNotNull { if (it.color == null) it.geometry else null }
+            .takeIf { it.isNotEmpty() }?.toHashSet() ?: return null
         return FeatureCollection.fromFeatures(geometries.map { Feature.fromGeometry(it.toMapLibreGeometry()) })
     }
 
     companion object {
         private const val SOURCE = "pins-source"
         private const val GEOMETRY_SOURCE = "pins-geometry-source"
+        private const val DOT_SOURCE = "pins-dot-source"
         private const val CLUSTER_MAX_ZOOM = 16
     }
 }
