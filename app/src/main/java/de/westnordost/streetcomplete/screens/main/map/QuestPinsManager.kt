@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.content.res.Resources
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import org.maplibre.android.maps.MapLibreMap
@@ -29,6 +28,7 @@ import de.westnordost.streetcomplete.quests.show_poi.ShowBusiness
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.isDay
 import de.westnordost.streetcomplete.util.math.contains
@@ -38,10 +38,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
@@ -167,7 +167,7 @@ class QuestPinsManager(
         val displayedArea = withContext(Dispatchers.Main) { map.screenAreaToBoundingBox() }
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
-        if (tilesRect.size > 32) return false
+        if (tilesRect.size > 32) return
         val isNewRect = lastDisplayedRect?.contains(tilesRect) != true
         if (!isNewRect) return
 
@@ -237,7 +237,7 @@ class QuestPinsManager(
         questTypeOrderSource.sort(sortedQuestTypes)
         // move specific quest types to front if set by preference
         val moveToFront = if (Prefs.DayNightBehavior.valueOf(prefs.getString(Prefs.DAY_NIGHT_BEHAVIOR, "IGNORE")) == Prefs.DayNightBehavior.PRIORITY)
-            if (isDay(ctrl.cameraPosition.position))
+            if (map.cameraPosition.target?.toLatLon()?.let { isDay(it) } != false)
                 sortedQuestTypes.filter { it.dayNightCycle == DayNightCycle.ONLY_DAY }
             else
                 sortedQuestTypes.filter { it.dayNightCycle == DayNightCycle.ONLY_NIGHT }
@@ -258,15 +258,15 @@ class QuestPinsManager(
 
     private fun createQuestPins(quest: Quest): List<Pin> {
         val color = quest.type.dotColor
-        val order = synchronized(questTypeOrders) { questTypeOrders[quest.type] ?: 0 }
         val label = if (color != null && quest is OsmQuest) getLabel(quest) else null
-        return quest.markerLocations.map { Pin(it, quest.type.icon, props, order) } // todo: below is old, also the label is old
-        val props = if (label == null) quest.key.toProperties() else (quest.key.toProperties() + ("label" to label))
-
         val geometry = if (quest.geometry !is ElementPointGeometry && prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) && color == null)
-            quest.geometry
-        else null
-        val pins = quest.markerLocations.map { Pin(it, iconName, props, importance, geometry, color) }
+                quest.geometry
+            else null
+
+        val props = if (label == null) quest.key.toProperties() else (quest.key.toProperties() + ("label" to label))
+        val order = synchronized(questTypeOrders) { questTypeOrders[quest.type] ?: 0 }
+
+        val pins = quest.markerLocations.map { Pin(it, quest.type.icon, props, order, geometry, color) }
         // storing importance in the quest requires the VisibleQuestsSource.cache to be invalidated on order change!
         // or what we do: clear quest.pins if the order changed
         quest.pins = pins

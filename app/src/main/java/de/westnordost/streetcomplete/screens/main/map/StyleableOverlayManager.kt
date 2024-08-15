@@ -3,10 +3,8 @@ package de.westnordost.streetcomplete.screens.main.map
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import org.maplibre.android.maps.MapLibreMap
-import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
-import de.westnordost.streetcomplete.data.download.tiles.minTileRect
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -28,11 +26,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 /** Manages the layer of styled map data in the map view:
  *  Gets told by the MainMapFragment when a new area is in view and independently pulls the map
@@ -47,13 +44,17 @@ class StyleableOverlayManager(
 
     // last displayed rect of (zoom 16) tiles
     private var lastDisplayedRect: TilesRect? = null
+    // map data in current view: key -> [pin, ...]
+    private val mapDataInView: MutableMap<ElementKey, StyledElement> = mutableMapOf()
     private val mapDataInViewMutex = Mutex()
 
     private val mapDataSourceMutex = Mutex()
 
-    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
 
     private var updateJob: Job? = null
+
+    /* todo: either re-introduce this cache (if clear performance benefit), or kick it (if noticeable improvement, maybe do sth like that for SC?)
     private val m = Mutex()
 
     // cache recent queries in some sort of crappy chaotic spatial cache
@@ -121,10 +122,10 @@ class StyleableOverlayManager(
         if (cache.size > 16) cache.keys.remove(cache.keys.first())
         return data.values
     }
-
+*/
     private var overlay: Overlay? = null
         set(value) {
-            // always reload, even if the overlay is the same
+            if (field == value) return
             val wasNull = field == null
             val isNullNow = value == null
             field = value
@@ -155,8 +156,8 @@ class StyleableOverlayManager(
                         // and reload if ways are updated, because without knowing the relation it will not be highlighted
                         && (updated.any { it is Relation || it.tags["highway"] in ALL_ROADS } || deleted.any { it.type == ElementType.RELATION })) {
                     lastDisplayedRect?.let {
-                        cache.clear()
-                        onNewTilesRect(it)
+                        //cache.clear() todo: remove when removing cache
+                        setStyledElements(it.asBoundingBox(TILES_ZOOM))
                     }
                 }
             }
@@ -230,7 +231,7 @@ class StyleableOverlayManager(
     }
 
     private fun clear() {
-        runBlocking { m.withLock { cache.clear() } }
+        //runBlocking { m.withLock { cache.clear() } }
         lastDisplayedRect = null
         viewLifecycleScope.launch {
             mapDataInViewMutex.withLock { mapDataInView.clear() }
@@ -238,7 +239,7 @@ class StyleableOverlayManager(
         }
     }
 
-    private suspend fun setStyledElements(bbox: BoundingBox) { // todo: was removed in SCEE
+    private suspend fun setStyledElements(bbox: BoundingBox) {
         val mapData = mapDataSourceMutex.withLock {
             withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
         }
@@ -246,6 +247,7 @@ class StyleableOverlayManager(
             val overlay = overlay ?: return
             mapDataInView.clear()
             createStyledElementsByKey(overlay, mapData).forEach { (key, styledElement) ->
+                if (!levelFilter.levelAllowed(styledElement.element)) return@forEach
                 mapDataInView[key] = styledElement
             }
             mapDataInView.values
@@ -253,7 +255,8 @@ class StyleableOverlayManager(
         mapComponent.set(styledElements)
     }
 
-    private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) { // todo: here the cache was used, but now the new function is called
+    // todo: when using cache, this here was not called iirc
+    private suspend fun updateStyledElements(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
         val styledElements = mapDataInViewMutex.withLock {
             val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
             var hasChanges = false
@@ -271,7 +274,7 @@ class StyleableOverlayManager(
             }
             // elements that are either newly displayed or which were updated
             styledElementsByKey.forEach { (key, styledElement) ->
-                if (displayedBBox.intersect(styledElement.geometry.getBounds())) {
+                if (displayedBBox.intersect(styledElement.geometry.getBounds()) && levelFilter.levelAllowed(styledElement.element)) {
                     mapDataInView[key] = styledElement
                     hasChanges = true
                 } else {

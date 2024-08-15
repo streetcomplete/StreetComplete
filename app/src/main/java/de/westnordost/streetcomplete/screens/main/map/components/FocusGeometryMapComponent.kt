@@ -9,6 +9,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import androidx.lifecycle.LifecycleOwner
+import com.google.gson.JsonObject
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.FillLayer
@@ -28,6 +29,8 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
+import org.maplibre.geojson.Feature
+import org.maplibre.geojson.FeatureCollection
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -37,7 +40,7 @@ import kotlin.math.roundToInt
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
-class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapLibreMap)
+class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapLibreMap, private val prefs: ObservableSettings)
     : DefaultLifecycleObserver {
 
     private val focusedGeometrySource = GeoJsonSource(SOURCE)
@@ -104,12 +107,14 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
 
     // as above, but shows more than 1 geometry
     fun showGeometries(geometries: Collection<ElementGeometry>) {
-        geometryLayer.setFeatures(geometries.map {
+        val geoFeatures = geometries.map {
             if (it is ElementPolylinesGeometry && prefs.getBoolean(Prefs.SHOW_WAY_DIRECTION, false))
-                it.toTangramGeometry(mapOf("arrows" to "yes"))
-            else
-                it.toTangramGeometry()
-        }.flatten())
+                Feature.fromGeometry(it.toMapLibreGeometry(), JsonObject().apply { addProperty("arrows", "yes") })
+            else Feature.fromGeometry(it.toMapLibreGeometry())
+        }
+        focusedGeometrySource.setGeoJson(FeatureCollection.fromFeatures(geoFeatures))
+        val animatorDurationScale = Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
+        if (animatorDurationScale > 0f) animation.start()
     }
 
     private fun animateGeometry() {

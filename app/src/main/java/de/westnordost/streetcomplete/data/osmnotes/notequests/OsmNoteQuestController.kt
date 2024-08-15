@@ -127,7 +127,7 @@ class OsmNoteQuestController(
         onUpdated(deletedQuestIds = listOf(questId))
     }
 
-    fun tempHide(questId: Long) {
+    override fun tempHide(questId: Long) {
         onUpdated(deletedQuestIds = listOf(questId))
     }
 

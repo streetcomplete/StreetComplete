@@ -27,7 +27,7 @@ class AddHealthcareSpecialityForm : AMultiValueQuestForm<String>() {
     override val otherAnswers get() = if (TagEditor.showingTagEditor) emptyList() else listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
         val f = MedicalSpecialityTypeForm()
         if (f.arguments == null) f.arguments = bundleOf()
-        val args = createArguments(questKey, questType, geometry, 0f, 0f)
+        val args = createArguments(questKey, questType, geometry, 0.0, 0.0)
         f.requireArguments().putAll(args)
         val osmArgs = createArguments(element)
         f.requireArguments().putAll(osmArgs)
@@ -67,7 +67,7 @@ class MedicalSpecialityTypeForm : AbstractOsmQuestForm<String>() {
     override val otherAnswers = if (TagEditor.showingTagEditor) emptyList() else listOf(AnswerItem(R.string.quest_healthcare_speciality_switch_ui) {
         val f = AddHealthcareSpecialityForm()
         if (f.arguments == null) f.arguments = bundleOf()
-        val args = createArguments(questKey, questType, geometry, 0f, 0f)
+        val args = createArguments(questKey, questType, geometry, 0.0, 0.0)
         f.requireArguments().putAll(args)
         val osmArgs = createArguments(element)
         f.requireArguments().putAll(osmArgs)

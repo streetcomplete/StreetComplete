@@ -203,14 +203,3 @@ val BuildingType.iconResId: Int get() = when (this) {
     ELEVATOR ->        R.drawable.ic_building_bridge
     CONSTRUCTION ->    R.drawable.ic_building_construction
 }
-    TRANSIT_SHELTER -> "ic_building_transportation"
-    PRESBYTERY ->      "ic_religion_christian"
-    BARN ->            "ic_building_barn"
-    COWSHED ->         "ic_building_barn"
-    STABLE ->          "ic_building_barn"
-    STY ->             "ic_building_barn"
-    TRANSFORMER_TOWER -> "ic_building_service"
-    RIDING_HALL ->     "ic_sport_equestrian"
-    SPORTS_HALL ->     "ic_sport_volleyball"
-    DIGESTER ->        "ic_building_storage_tank"
-    ELEVATOR ->        "ic_building_bridge"

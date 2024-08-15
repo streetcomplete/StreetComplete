@@ -21,11 +21,11 @@ class CustomQuest(private val customQuestList: CustomQuestList) : ExternalSource
 
     override val source: String = "custom"
 
-    override fun download(bbox: BoundingBox) = getQuests(bbox)
+    override suspend fun download(bbox: BoundingBox) = getQuests(bbox)
 
     override var downloadEnabled = true // it's not actually a download, so no need to ever disable
 
-    override fun upload() { customQuestList.deleteSolved() }
+    override suspend fun upload() { customQuestList.deleteSolved() }
 
     override fun getQuests(bbox: BoundingBox): Collection<ExternalSourceQuest> = customQuestList.get(bbox)
 

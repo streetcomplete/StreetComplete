@@ -10,6 +10,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.core.content.getSystemService
 import androidx.core.graphics.Insets
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
@@ -41,6 +42,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
+import de.westnordost.streetcomplete.screens.settings.loadGpxTrackPoints
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
@@ -56,6 +58,8 @@ import org.koin.android.ext.android.inject
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.visibility
+import org.maplibre.geojson.LineString
+import org.maplibre.geojson.Point
 import kotlin.math.PI
 
 /** This is the map shown in the main view. It manages a map that shows the quest pins, quest
@@ -67,7 +71,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val editHistorySource: EditHistorySource by inject()
     private val mapDataSource: MapDataWithEditsSource by inject()
-    private val prefs: ObservableSettings by inject()
     private val selectedOverlaySource: SelectedOverlaySource by inject()
     private val downloadedTilesSource: DownloadedTilesSource by inject()
     private val levelFilter: LevelFilter by inject()
@@ -210,7 +213,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
         pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, fingerRadius, ::onClickPin)
-        geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
+        geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map, prefs.prefs)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 
         styleableOverlayMapComponent = StyleableOverlayMapComponent(context, map, mapImages!!, fingerRadius, ::onClickElement)
@@ -261,18 +264,18 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         restoreMapState()
         centerCurrentPositionIfFollowing()
 
-        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, visibleQuestsSource)
+        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, visibleQuestsSource, prefs.prefs, mapDataSource, selectedOverlaySource)
         questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
 
         editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource)
-        editHistoryPinsManager!!.isVisible = pinMode == PinMode.EDITS
+        editHistoryPinsManager!!.isVisible = if (pinMode == PinMode.EDITS) 1 else 0 // todo...
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
 
-        styleableOverlayManager = StyleableOverlayManager(map, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource)
+        styleableOverlayManager = StyleableOverlayManager(map, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource, levelFilter)
         viewLifecycleOwner.lifecycle.addObserver(styleableOverlayManager!!)
 
-        downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource)
+        downloadedAreaManager = DownloadedAreaManager(downloadedAreaMapComponent!!, downloadedTilesSource, prefs.prefs)
         viewLifecycleOwner.lifecycle.addObserver(downloadedAreaManager!!)
 
         onSelectedOverlayChanged()
@@ -307,14 +310,14 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     //endregion
     fun loadGpxTrack() {
-        gpxLayer?.visible = false
+/*        gpxLayer?.visible = false
         if (!prefs.getBoolean(Prefs.SHOW_GPX_TRACK, false)) return
         val gpxPoints = loadGpxTrackPoints(requireContext()) ?: return
 
-        val tangramPolyline = Polyline(gpxPoints.map { it.toLngLat() }, null)
+        val line = LineString.fromLngLats(gpxPoints.map { Point.fromLngLat(it.longitude, it.latitude) })
         gpxLayer?.visible = true
-        gpxLayer?.setFeatures(listOf(tangramPolyline))
-    }
+        gpxLayer?.setFeatures(line)
+*/    }
 
 
     //region Tracking GPS, Rotation, location availability, pin mode, click ...
@@ -380,18 +383,19 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         /* both managers use the same resource (PinsMapComponent), so the newly visible manager
            may only be activated after the old has been deactivated
          */
+        // todo: re-introduce PinMode.HIDDEN_QUESTS or make visibility boolean again
         when (pinMode) {
             PinMode.QUESTS -> {
-                editHistoryPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = 0
                 questPinsManager?.isVisible = true
             }
             PinMode.EDITS -> {
                 questPinsManager?.isVisible = false
-                editHistoryPinsManager?.isVisible = true
+                editHistoryPinsManager?.isVisible = 1
             }
             else -> {
                 questPinsManager?.isVisible = false
-                editHistoryPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = 0
             }
         }
     }
@@ -493,13 +497,13 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         viewLifecycleScope.launch(Dispatchers.Default) {
             geometryMarkersMapComponent?.putAll(markers)
         }
+    }
+
     fun reverseQuests() {
         questPinsManager?.reverseQuestOrder()
     }
 
     fun isOrderReversed() = questPinsManager?.reversedOrder
-
-    }
 
     @UiThread override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
         geometryMarkersMapComponent?.delete(geometry)
@@ -522,9 +526,10 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     fun stopPositionTracking() {
         locationMapComponent?.isVisible = false
         locationManager.removeUpdates()
-            PinMode.HIDDEN_QUESTS -> {
-                questPinsManager?.isVisible = false
-                editHistoryPinsManager?.isVisible = 2
+        // todo: re-implement or remove
+//            PinMode.HIDDEN_QUESTS -> {
+//                questPinsManager?.isVisible = false
+//                editHistoryPinsManager?.isVisible = 2
     }
 
     fun clearPositionTracking() {

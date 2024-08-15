@@ -6,6 +6,8 @@ interface OsmNoteQuestsHiddenController : OsmNoteQuestsHiddenSource {
     /** Mark the note quest as hidden by user interaction */
     fun hide(questId: Long)
 
+    fun tempHide(questId: Long)
+
     /** Un-hides a specific hidden quest by user interaction */
     fun unhide(questId: Long): Boolean
 

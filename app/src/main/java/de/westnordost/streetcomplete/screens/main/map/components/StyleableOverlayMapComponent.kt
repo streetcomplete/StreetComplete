@@ -284,7 +284,6 @@ class StyleableOverlayMapComponent(
                 } else null
 
                 listOfNotNull(f, point)
-                    }
             }
             is PolylineStyle -> {
                 val line = geometry.toMapLibreGeometry()
@@ -403,5 +402,5 @@ private fun Style.getIcon(): Int? = when(this) {
     is PolylineStyle -> null
 }
 
-// same as in roads.yaml
+// same as in streetcomplete.json
 private val privateWays = hashSetOf("no", "private", "destination", "customers", "delivery", "agricultural", "forestry", "emergency")

@@ -82,7 +82,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
             )
           )
     """.toElementFilterExpression()
-    private var mapRotation = 0f
+    private var mapRotation = 0.0
 
     private var data: MapDataWithGeometry? = null
     private var direction: Direction? = null
@@ -194,14 +194,14 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
             binding.directionContainer.isGone = true
             return
         }
-        val wayRotation = getWayRotation().toFloat()
+        val wayRotation = getWayRotation()
         binding.directionText.isVisible = true
         binding.directionContainer.isVisible = true
         binding.directionContainer.removeAllViews()
         binding.directionContainer.addView(ImageView(requireContext()).apply {
             // forward
             val drawable = RotatedCircleDrawable(context.getDrawable(R.drawable.ic_oneway_yes)!!)
-            drawable.rotation = mapRotation + wayRotation
+            drawable.rotation = (mapRotation + wayRotation).toFloat()
             setImageDrawable(drawable)
             if (direction == Direction.FORWARD)
                 setColorFilter(ContextCompat.getColor(requireContext(), R.color.accent))
@@ -216,7 +216,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
         binding.directionContainer.addView(ImageView(requireContext()).apply {
             // backward
             val drawable = RotatedCircleDrawable(context.getDrawable(R.drawable.ic_oneway_yes_reverse)!!)
-            drawable.rotation = mapRotation + wayRotation
+            drawable.rotation = (mapRotation + wayRotation).toFloat()
             setImageDrawable(drawable)
             if (direction == Direction.BACKWARD)
                 setColorFilter(ContextCompat.getColor(requireContext(), R.color.accent))
@@ -304,7 +304,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
         outState.putInt(SELECTED_INDEX, items.indexOfFirst { it.value == type })
     }
 
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
+    override fun onMapOrientation(rotation: Double, tilt: Double) {
         mapRotation = rotation
     }
 

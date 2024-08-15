@@ -21,10 +21,7 @@ import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign
 import de.westnordost.streetcomplete.quests.max_weight.osmKey
 import de.westnordost.streetcomplete.util.ktx.containsAnyKey
-import de.westnordost.streetcomplete.util.ktx.darken
 import de.westnordost.streetcomplete.util.ktx.isArea
-import de.westnordost.streetcomplete.util.ktx.toARGBString
-import de.westnordost.streetcomplete.util.ktx.toRGBString
 
 class RestrictionOverlay : Overlay {
     // show restriction icons? will need to add property for rotation / angle
@@ -62,6 +59,7 @@ class RestrictionOverlay : Overlay {
     //  merge any 2 restrictions?
     //  always take a "first" one?
     //  sth else, like dashed way?
+    @OptIn(ExperimentalStdlibApi::class)
     private fun getWayStyle(way: Way, restrictionsByWayMemberId: Map<Long, List<Relation>>): Style? {
         // don't allow selecting areas
         if (way.isArea()) return null
@@ -81,7 +79,7 @@ class RestrictionOverlay : Overlay {
             if (colors.first() == colors.last())
                 colors.first()
             else
-                toARGBString(ColorUtils.blendARGB(parseColor(colors.first()), parseColor(colors.last()), 0.5f))
+                ColorUtils.blendARGB(parseColor(colors.first()), parseColor(colors.last()), 0.5f).toHexString()
         } else
             relations.first().getColor(way.id)
         return PolylineStyle(StrokeStyle(color))
@@ -90,8 +88,8 @@ class RestrictionOverlay : Overlay {
     private fun getNodeStyle(node: Node): Style? {
         val highway = node.tags["highway"] ?: return null
         val icon = when (highway) {
-            "stop" -> "ic_restriction_stop"
-            "give_way" -> "ic_restriction_give_way"
+            "stop" -> R.drawable.ic_restriction_stop
+            "give_way" -> R.drawable.ic_restriction_give_way
             else -> return null
         }
         return PointStyle(icon)
@@ -141,7 +139,9 @@ val turnRestrictionTypes = linkedSetOf(
     "only_straight_on",
 )
 
-private val maxWeightKeys = MaxWeightSign.values().map { it.osmKey }.toTypedArray()
+private val maxWeightKeys = MaxWeightSign.entries.map { it.osmKey }.toTypedArray()
 
-private val darkerGold = toRGBString(darken(parseColor(Color.GOLD), 0.75f))
-private val darkerOrange = toRGBString(darken(parseColor(Color.ORANGE), 0.75f))
+@OptIn(ExperimentalStdlibApi::class)
+private val darkerGold = ColorUtils.blendARGB(parseColor(Color.GOLD), parseColor(Color.BLACK), 0.75f).toHexString()
+@OptIn(ExperimentalStdlibApi::class)
+private val darkerOrange = ColorUtils.blendARGB(parseColor(Color.ORANGE), parseColor(Color.BLACK), 0.75f).toHexString()

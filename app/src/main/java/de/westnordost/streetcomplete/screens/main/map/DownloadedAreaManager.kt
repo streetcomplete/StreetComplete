@@ -47,9 +47,9 @@ class DownloadedAreaManager(
 
     private fun update() {
         viewLifecycleScope.launch {
-            val tiles = withContext(Dispatchers.IO) { downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER) }
+            val deleteOldDataAfter = prefs.getInt(Prefs.DATA_RETAIN_TIME, ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS) * 24L * 60 * 60 * 1000
+            val tiles = withContext(Dispatchers.IO) { downloadedTilesSource.getAll(deleteOldDataAfter) }
             mapComponent.set(tiles)
-                mapComponent.set(downloadedTilesSource.getAll(deleteOldDataAfter))
         }
     }
 }

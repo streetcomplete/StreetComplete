@@ -52,6 +52,7 @@ import de.westnordost.streetcomplete.quests.max_weight.getLayoutResourceId
 import de.westnordost.streetcomplete.quests.max_weight.osmKey
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.createBitmap
@@ -155,7 +156,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
             field = value
             val tags = (currentRestriction as? TurnRestriction)?.relation?.tags ?: emptyMap()
             val icon = getIconForTurnRestriction(tags.getShortRestrictionValue() ?: "")
-            value?.let { mapFragment?.putMarkerForCurrentHighlighting(ElementPointGeometry(it.first), icon, null, null, it.second) }
+            value?.let { mapFragment?.putMarkersForCurrentHighlighting(listOf(Marker(ElementPointGeometry(it.first), icon, null, null, it.second))) }
         }
 
     // enabled when adding turn restriction, cannot be disabled
@@ -340,7 +341,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
             when (it.value) {
                 RestrictionType.TURN -> turnRestrictionSelectionMode = true
                 RestrictionType.WEIGHT -> {
-                    val items = MaxWeightSign.values().mapNotNull { sign ->
+                    val items = MaxWeightSign.entries.mapNotNull { sign ->
                         if (originalRestrictions.any { it is WeightRestriction && it.sign == sign })
                                 null
                             else sign.asItem(layoutInflater, countryInfo.countryCode)
@@ -746,7 +747,7 @@ private enum class RestrictionType { TURN, WEIGHT }
 
 private fun getWeightRestrictions(way: Way): List<WeightRestriction> {
     val restrictions = mutableListOf<WeightRestriction>()
-    for (sign in MaxWeightSign.values()) {
+    for (sign in MaxWeightSign.entries) {
         val key = if (way.tags.containsKey(sign.osmKey)) sign.osmKey
             else way.tags.keys.firstOrNull { it == "${sign.osmKey}:conditional" } ?: continue
         val weight = way.tags[key]!!

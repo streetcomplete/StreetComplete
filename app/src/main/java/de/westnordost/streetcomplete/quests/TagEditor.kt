@@ -329,8 +329,8 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
     private fun showQuest(quest: OsmQuest) {
         val f = quest.type.createForm()
         if (f.arguments == null) f.arguments = bundleOf()
-        val initialMapRotation = arguments?.getFloat(ARG_MAP_ROTATION) ?: 0f
-        val initialMapTilt = arguments?.getFloat(ARG_MAP_TILT) ?: 0f
+        val initialMapRotation = arguments?.getDouble(ARG_MAP_ROTATION) ?: 0.0
+        val initialMapTilt = arguments?.getDouble(ARG_MAP_TILT) ?: 0.0
         val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, initialMapRotation, initialMapTilt)
         f.requireArguments().putAll(args)
         val osmArgs = AbstractOsmQuestForm.createArguments(element)
@@ -469,7 +469,7 @@ open class TagEditor : Fragment(), IsCloseableBottomSheet {
         private const val ARG_QUEST_KEY = "quest_key"
         private const val ARG_EDIT_TYPE_NAME = "edit_type_name"
 
-        fun createArguments(element: Element, geometry: ElementGeometry, rotation: Float?, tilt: Float?, questKey: QuestKey? = null, editTypeName: String? = null) = bundleOf(
+        fun createArguments(element: Element, geometry: ElementGeometry, rotation: Double?, tilt: Double?, questKey: QuestKey? = null, editTypeName: String? = null) = bundleOf(
             ARG_ELEMENT to Json.encodeToString(element),
             ARG_GEOMETRY to Json.encodeToString(geometry),
             ARG_MAP_ROTATION to rotation,

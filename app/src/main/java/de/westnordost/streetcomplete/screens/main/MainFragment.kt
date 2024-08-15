@@ -10,8 +10,6 @@ import android.graphics.Color
 import android.graphics.PointF
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
-import android.graphics.Rect
-import android.graphics.RectF
 import android.graphics.drawable.LayerDrawable
 import android.location.Location
 import android.os.Bundle
@@ -35,7 +33,6 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.Insets
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
-import androidx.core.graphics.toRectF
 import androidx.core.os.ConfigurationCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -80,7 +77,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuest
@@ -146,7 +142,6 @@ import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
-import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -273,7 +268,8 @@ class MainFragment :
 
     private val historyBackPressedCallback = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() {
-            mapFragment?.endFocus(0L)
+//            mapFragment?.endFocus(0L) // todo: test, maybe re-introduce it
+            mapFragment?.endFocus()
             closeEditHistorySidebar()
         }
     }
@@ -470,8 +466,6 @@ class MainFragment :
             View.VISIBLE
         else
             View.GONE
-        if (mapFragment?.isMapInitialized == true)
-            mapFragment?.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
         if (DisplaySettingsFragment.gpx_track_changed) {
             mapFragment?.loadGpxTrack()
             DisplaySettingsFragment.gpx_track_changed = false
@@ -609,7 +603,6 @@ class MainFragment :
         binding.gpsTrackingButton.isNavigation = mapFragment?.isNavigationMode ?: false
         binding.stopTracksButton.isVisible = mapFragment?.isRecordingTracks ?: false
         updateLocationPointerPin()
-        mapFragment?.show3DBuildings = prefs.getBoolean(Prefs.SHOW_3D_BUILDINGS, true)
         mapFragment?.cameraPosition?.zoom?.let { updateCreateButtonEnablement(it) }
         listener?.onMapInitialized()
     }
@@ -1248,7 +1241,7 @@ class MainFragment :
     }
 
     private fun onClickAddPoi(pos: LatLon) {
-        if ((mapFragment?.cameraPosition?.zoom ?: 0f) < ApplicationConstants.NOTE_MIN_ZOOM) {
+        if ((mapFragment?.cameraPosition?.zoom ?: 0.0) < ApplicationConstants.NOTE_MIN_ZOOM) {
             context?.toast(R.string.create_new_note_unprecise)
             return
         }
@@ -1294,24 +1287,25 @@ class MainFragment :
                 data.filter { filter.matches(it) }
             }
 
-            for (e in elements) {
+            putMarkersForCurrentHighlighting(elements.mapNotNull { e ->
                 // include only elements that fit with the currently active level filter
-                if (!levelFilter.levelAllowed(e)) continue
+                if (!levelFilter.levelAllowed(e)) return@mapNotNull null
 
-                val geometry = data.getGeometry(e.type, e.id) ?: continue
-                val icon = getPinIcon(featureDictionary.value, e)
+                val geometry = data.getGeometry(e.type, e.id) ?: return@mapNotNull null
+                val icon = getIcon(featureDictionary.value, e)
                 val title = getTitle(e.tags)
-                putMarkerForCurrentHighlighting(geometry, icon, title)
-            }
+                Marker(geometry, icon, title)
+            })
         }
         offsetPos(pos)
     }
 
     fun offsetPos(pos: LatLon) {
-        val mapFragment = mapFragment ?: return
+        // todo: how to replace?
+/*        val mapFragment = mapFragment ?: return
         mapFragment.show3DBuildings = false
         val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
-        mapFragment.updateCameraPosition { position = offsetPos }
+        mapFragment.updateCameraPosition { position = offsetPos }*/
     }
 
     private fun onClickCreateTrack() {
@@ -1379,7 +1373,8 @@ class MainFragment :
             addToBackStack(EDIT_HISTORY)
         }
         mapFragment?.hideOverlay()
-        mapFragment?.pinMode = if (allHidden) MainMapFragment.PinMode.HIDDEN_QUESTS else MainMapFragment.PinMode.EDITS
+        // todo: re-introduce or remove this mode
+        mapFragment?.pinMode = /*if (allHidden) MainMapFragment.PinMode.HIDDEN_QUESTS else*/ MainMapFragment.PinMode.EDITS
         historyBackPressedCallback.isEnabled = true
     }
 
@@ -1473,7 +1468,6 @@ class MainFragment :
         if (overlay is CustomOverlay) {
             val pos = camera?.position ?: return
             showInBottomSheet(CreatePoiFragment.createWithPrefill(prefs.getString(Prefs.CUSTOM_OVERLAY_IDX_FILTER, "")!!.substringAfter("with "), pos))
-            mapFragment.show3DBuildings = false
             return
         }
 
@@ -1583,7 +1577,7 @@ class MainFragment :
 
         viewLifecycleScope.launch(Dispatchers.IO) {
             val markers = mergeMarkersAtSamePosition(highlightedElementMarkers.await(), otherQuestMarkers.await())
-            markers.forEach { mapFragment.putMarkerForCurrentHighlighting(it.geometry, it.drawableResId, it.title, it.color) }
+            mapFragment.putMarkersForCurrentHighlighting(markers)
         }
     }
 
@@ -1633,7 +1627,7 @@ class MainFragment :
         if (elements == emptySequence<Element>()) return emptyList()
         val levels = element?.let { parseLevelsOrNull(it.tags) }
         val localLanguages = ConfigurationCompat.getLocales(resources.configuration).toList().map { it.language }
-        for (e in elements) {
+        elements.mapNotNull { e ->
             // don't highlight "this" element
             if (element == e) return@mapNotNull null
             // include only elements with the same (=intersecting) level, if any
@@ -1646,18 +1640,17 @@ class MainFragment :
             val icon = getIcon(featureDictionary.value, e)
             val title = getTitle(e.tags, localLanguages)
             Marker(geometry, icon, title)
-            }.toList()
+        }.toList()
 
-            return markers // this is old, below is new
-            //withContext(Dispatchers.Main) { putMarkersForCurrentHighlighting(markers) }
-        }
+        return markers
+    }
 
     private fun showOtherQuests(quest: Quest): List<Marker> {
         if (prefs.getInt(Prefs.SHOW_NEARBY_QUESTS, 0) == 0) return emptyList()
 
         // Quests should be grouped by element key, so non-OsmQuests need some kind of fake key
         fun Quest.thatKey() = if (this is OsmQuest) ElementKey(elementType, elementId)
-            else ElementKey(ElementType.values()[abs(key.hashCode() % 3)], -abs(7 * key.hashCode()).toLong())
+            else ElementKey(ElementType.entries[abs(key.hashCode() % 3)], -abs(7 * key.hashCode()).toLong())
 
         val markers = mutableListOf<Marker>()
 

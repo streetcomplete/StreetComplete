@@ -47,7 +47,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     protected var map : MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
-            if (sceneMapComponent?.isAerialView == true) return
 
     private val prefs: Preferences by inject()
 
@@ -102,7 +101,8 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         // the offline manager is only available together with the map, i.e. not from the CleanerWorker
         lifecycleScope.launch {
             delay(30000) // cleaning is low priority, do it once startup is done
-            val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
+            val retainTime = prefs.getInt(Prefs.DATA_RETAIN_TIME, ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS)
+            val oldDataTimestamp = nowAsEpochMilliseconds() - retainTime
             OfflineManager.getInstance(requireContext()).deleteRegionsOlderThan(oldDataTimestamp)
         }
     }
@@ -141,7 +141,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         super.onDestroyView()
         map = null
         binding.map.onDestroy()
-        onBackgroundChangedListener.deactivate()
     }
 
     override fun onLowMemory() {

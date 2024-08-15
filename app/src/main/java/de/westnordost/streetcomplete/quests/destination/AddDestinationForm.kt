@@ -240,7 +240,7 @@ class AddDestinationForm : AbstractOsmQuestForm<Pair<DestinationLanes?, Destinat
     }
 
     @AnyThread
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
+    override fun onMapOrientation(rotation: Double, tilt: Double) {
         val mapRotation = (rotation * 180 / PI).toFloat()
         val mapTilt = (tilt * 180 / PI).toFloat()
 

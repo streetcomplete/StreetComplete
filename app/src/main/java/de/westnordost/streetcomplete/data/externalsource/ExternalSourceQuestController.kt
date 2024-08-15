@@ -85,7 +85,7 @@ class ExternalSourceQuestController(
     }
 
     /** calls [upload] for each [ExternalSourceQuestType], thus may take long */
-    fun upload() = questTypes.forEach { it.upload() }
+    suspend fun upload() = questTypes.forEach { it.upload() }
 
     fun invalidate() = questListeners.forEach { it.onInvalidate() }
 

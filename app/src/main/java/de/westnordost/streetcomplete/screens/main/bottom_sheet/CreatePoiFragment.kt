@@ -69,13 +69,13 @@ class CreatePoiFragment : TagEditor() {
             prefs.putString(Prefs.CREATE_POI_RECENT_FEATURE_IDS, recentFeatureIds.takeLast(25).joinToString("§"))
         }
 
-        binding.markerCreateLayout.createNoteIconView.setImageResource(R.drawable.ic_add_poi)
+        binding.markerCreateLayout.pin.pinIconView.setImageResource(R.drawable.ic_add_poi)
         binding.markerCreateLayout.root.visibility = View.VISIBLE
 
     }
 
     override suspend fun applyEdit() {
-        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
+        val createNoteMarker = binding.markerCreateLayout.pin.pinIconView // todo: is it the correct view?
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return

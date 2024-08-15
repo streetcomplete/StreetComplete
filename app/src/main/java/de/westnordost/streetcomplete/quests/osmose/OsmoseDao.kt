@@ -34,8 +34,13 @@ import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.get
+import io.ktor.client.request.header
+import io.ktor.client.request.request
+import io.ktor.client.request.url
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.IOException
@@ -44,7 +49,7 @@ class OsmoseDao(
     private val db: Database,
     private val prefs: Preferences,
 ) : KoinComponent {
-    private val client by lazy { OkHttpClient() }
+    private val client by lazy { HttpClient() }
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
@@ -74,7 +79,7 @@ class OsmoseDao(
         )
     }
 
-    fun download(bbox: BoundingBox): List<ExternalSourceQuest> {
+    suspend fun download(bbox: BoundingBox): List<ExternalSourceQuest> {
         // https://osmose.openstreetmap.fr/api/0.3/issues.csv?zoom=18&item=xxxx&level=1&limit=500&bbox=16.412324309349064%2C48.18403988244578%2C16.41940534114838%2C48.1871908341706
         // replace bbox
         val csvUrl = "https://osmose.openstreetmap.fr/api/0.3/issues.csv"
@@ -82,23 +87,23 @@ class OsmoseDao(
         val level = prefs.getString(questPrefix(prefs) + PREF_OSMOSE_LEVEL, "")
         if (level.isEmpty()) return emptyList()
         val url = "$csvUrl?zoom=$zoom&item=xxxx&level=$level&limit=500&bbox=${bbox.min.longitude}%2C${bbox.min.latitude}%2C${bbox.max.longitude}%2C${bbox.max.latitude}"
-        val request = Request.Builder()
-            .url(url)
-            .header("User-Agent", USER_AGENT)
+        val requestBuilder = HttpRequestBuilder()
+        requestBuilder.url(url)
+        requestBuilder.header("User-Agent", USER_AGENT)
         if (prefs.getBoolean(PREF_OSMOSE_APP_LANGUAGE, false)) {
             val locale = getSelectedLocales(prefs)[0]
             if (locale != null)
-                request.header("Accept-Language", locale.toString())
+                requestBuilder.header("Accept-Language", locale.toString())
         }
         Log.d(TAG, "downloading for bbox: $bbox using request $url")
         val issues = mutableListOf<OsmoseIssue>()
         try {
-            val response = client.newCall(request.build()).execute()
-            val body = response.body() ?: return emptyList()
+            val response = client.get(requestBuilder)
+            val body: String = response.body() ?: return emptyList()
             // drop first, it's just column names
             // drop last, it's an empty line
             // trim each line because there was some additional newline in logs (maybe windows line endings?)
-            val bodylines = body.string().split("\n").drop(1).dropLast(1)
+            val bodylines = body.split("\n").drop(1).dropLast(1)
             Log.d(TAG, "got ${bodylines.size} problems")
 
             val downloadTimestamp = nowAsEpochMilliseconds()
@@ -157,13 +162,15 @@ class OsmoseDao(
                 // same area limitation as AddForestLeafType
                 .takeIf { ((it.geometry as? ElementPolygonsGeometry)?.polygons?.measuredMultiPolygonArea() ?: 0.0) < 10000 }
 
-    fun reportChange(uuid: String, falsePositive: Boolean) {
+    suspend fun reportChange(uuid: String, falsePositive: Boolean) {
         val url = "https://osmose.openstreetmap.fr/api/0.3/issue/$uuid/" +
             if (falsePositive) "false"
             else "done"
-        val request = Request.Builder().header("User-Agent", USER_AGENT).url(url).build()
+        val requestBuilder = HttpRequestBuilder()
+        requestBuilder.header("User-Agent", USER_AGENT)
+        requestBuilder.url(url)
         try {
-            client.newCall(request).execute()
+            client.get(requestBuilder)
             db.delete(NAME, where = "$UUID = '$uuid'")
         } catch (e: IOException) {
             // just do nothing, so it's later tried again (hopefully...)
@@ -172,7 +179,7 @@ class OsmoseDao(
     }
 
     // no need to report done here, as each "done" should be connected to an element edit
-    fun reportFalsePositives() {
+    suspend fun reportFalsePositives() {
         try {
             db.query(NAME, where = "$ANSWERED = 1") {
                 Pair(it.getString(UUID), it.getInt(ANSWERED) == 1)
@@ -186,13 +193,15 @@ class OsmoseDao(
     }
 
     // assume it exists if it's unclear
-    fun doesIssueStillExist(uuid: String): Boolean {
+    suspend fun doesIssueStillExist(uuid: String): Boolean {
         val url = "https://osmose.openstreetmap.fr/api/0.3/issue/$uuid"
-        val request = Request.Builder().header("User-Agent", USER_AGENT).url(url).build()
+        val requestBuilder = HttpRequestBuilder()
+        requestBuilder.header("User-Agent", USER_AGENT)
+        requestBuilder.url(url)
         return try {
-            val r = client.newCall(request).execute()
-            val body = r.body()?.string() // r.body() may be called only once, the second time will crash
-            if (body?.contains("not a valid uuid") == true || body?.contains("not present in database") == true) {
+            val r = client.get(requestBuilder)
+            val body: String = r.body()
+            if (body.contains("not a valid uuid") || body.contains("not present in database")) {
                 db.delete(NAME, where = "$UUID = '$uuid'")
                 false
             } else true

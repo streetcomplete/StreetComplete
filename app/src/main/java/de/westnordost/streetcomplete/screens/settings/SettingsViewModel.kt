@@ -48,8 +48,6 @@ abstract class SettingsViewModel : ViewModel() {
 
     abstract fun deleteCache()
 
-    abstract fun deleteTiles()
-
     abstract fun setResurveyIntervals(value: ResurveyIntervals)
     abstract fun setShowAllNotes(value: Boolean)
     abstract fun setExpertMode(value: Boolean)
@@ -144,13 +142,8 @@ class SettingsViewModelImpl(
         listeners.clear()
     }
 
-    // todo: no need to keep them separated any more, not going to implement a new dialog to get a third button just for this
     override fun deleteCache() {
-        cleaner.cleanData()
-    }
-
-    override fun deleteTiles() {
-        cleaner.cleanTiles()
+        cleaner.cleanAll()
     }
 
     override fun setResurveyIntervals(value: ResurveyIntervals) { prefs.resurveyIntervals = value }

@@ -21,7 +21,6 @@ import java.util.Locale
 class SceneMapComponent(
     private val context: Context,
     private val map: MapLibreMap,
-    private val prefs: Preferences,
 ) {
     /** Load the scene */
     suspend fun loadStyle(): Style {

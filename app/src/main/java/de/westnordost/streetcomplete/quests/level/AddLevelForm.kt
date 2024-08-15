@@ -58,7 +58,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         val shopsWithLevels = if (prefs.getBoolean(PREF_MORE_LEVELS, false))
                 mapData.filter { e ->
                     e.tags["level"] != null
-                        && (e.isPlaceOrDisusedPlace() || getPinIcon(featureDictionary, e) != null)
+                        && (e.isPlaceOrDisusedPlace() || getIcon(featureDictionary, e) != null)
                 }
             else
                 mapData.filter {

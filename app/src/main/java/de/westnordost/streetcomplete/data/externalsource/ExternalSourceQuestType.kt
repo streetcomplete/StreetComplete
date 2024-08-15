@@ -44,7 +44,7 @@ interface ExternalSourceQuestType : QuestType, ElementEditType {
      *
      *  Download will only happen if [downloadEnabled] is true.
      */
-    fun download(bbox: BoundingBox): Collection<ExternalSourceQuest>
+    suspend fun download(bbox: BoundingBox): Collection<ExternalSourceQuest>
 
     /**
      *  Upload changes to the server. Uploaded quests should not be created again on [download].
@@ -52,7 +52,7 @@ interface ExternalSourceQuestType : QuestType, ElementEditType {
      *  uploading this edit, and [onSyncedEdit] will be called after, if there is a connected ElementEdit.
      *  [upload] is called only after all elementEdits.
      */
-    fun upload()
+    suspend fun upload()
 
     /** Return all quests inside the given [bbox]. This should be fast and not require internet access. */
     fun getQuests(bbox: BoundingBox): Collection<ExternalSourceQuest>

@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
+import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.arrayOfNotNull
@@ -119,9 +120,9 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
         }
 
         val showsGeometryMarkersListener = parentFragment as? ShowsGeometryMarkers ?: activity as? ShowsGeometryMarkers ?: return
-        elementsAndGeometry.forEach {
-            showsGeometryMarkersListener.putMarkerForCurrentHighlighting(it.second, null, "${it.first.type} ${it.first.id}")
-        }
+        showsGeometryMarkersListener.putMarkersForCurrentHighlighting(elementsAndGeometry.map {
+            Marker(it.second, null, "${it.first.type} ${it.first.id}")
+        })
     }
 
     override val otherAnswers: List<AnswerItem> by lazy { listOfNotNull(

@@ -45,10 +45,6 @@ fun String.toRGB(): RGB {
 
     return RGB(rgb[0], rgb[1], rgb[2])
 }
-fun toRGBString(color: Int): String =
-    "#" + color.red.toString(16).padStart(2, '0') +
-        color.green.toString(16).padStart(2, '0') +
-        color.blue.toString(16).padStart(2, '0')
 
 data class HSV(val hue: Float, val saturation: Float, val value: Float) {
 
