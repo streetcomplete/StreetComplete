@@ -1604,7 +1604,6 @@ class MainFragment :
             else -> return emptyList()
         }
         var mapData: MapDataWithGeometry? = null
-        val markers = mutableListOf<Marker>()
 
         fun getMapData(): MapDataWithGeometry {
             val data = mapDataWithEditsSource.getMapDataWithGeometry(bbox)
@@ -1627,7 +1626,7 @@ class MainFragment :
         if (elements == emptySequence<Element>()) return emptyList()
         val levels = element?.let { parseLevelsOrNull(it.tags) }
         val localLanguages = ConfigurationCompat.getLocales(resources.configuration).toList().map { it.language }
-        elements.mapNotNull { e ->
+        return elements.mapNotNull { e ->
             // don't highlight "this" element
             if (element == e) return@mapNotNull null
             // include only elements with the same (=intersecting) level, if any
@@ -1641,8 +1640,6 @@ class MainFragment :
             val title = getTitle(e.tags, localLanguages)
             Marker(geometry, icon, title)
         }.toList()
-
-        return markers
     }
 
     private fun showOtherQuests(quest: Quest): List<Marker> {

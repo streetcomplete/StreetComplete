@@ -47,28 +47,28 @@ class GeometryMarkersMapComponent(
         FillLayer("geo-fill", SOURCE)
             .withFilter(isArea())
             .withProperties(
-                fillColor("#D140D0"),
+                fillColor(get("color")),
                 fillOpacity(0.3f)
             ),
         LineLayer("geo-lines", SOURCE)
             // both polygon and line
             .withProperties(
                 lineWidth(10f),
-                lineColor("#D140D0"),
+                lineColor(get("color")),
                 lineOpacity(0.5f),
                 lineCap(Property.LINE_CAP_ROUND)
             ),
         SymbolLayer("geo-symbols", SOURCE)
             .withFilter(isPoint())
             .withProperties(
-                iconColor("#D140D0"),
+                iconColor(get("color")),
                 iconImage(get("icon")),
                 iconAllowOverlap(true),
                 textField(get("label")),
                 textAnchor(Property.TEXT_ANCHOR_TOP),
                 textOffset(arrayOf(0f, 1f)),
                 textSize(16 * context.resources.configuration.fontScale),
-                textColor("#D140D0"),
+                textColor(get("color")),
                 textFont(arrayOf("Roboto Bold")),
                 textOptional(true)
             )
@@ -111,8 +111,10 @@ class GeometryMarkersMapComponent(
     }
 }
 
+@OptIn(ExperimentalStdlibApi::class)
 private fun Marker.toFeatures(resources: Resources): List<Feature> {
     val features = ArrayList<Feature>(3)
+    val color = "#${color?.toHexString()?.takeLast(6) ?: "D140D0"}"
     // point marker or any marker with title or icon
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = JsonObject()
@@ -121,12 +123,13 @@ private fun Marker.toFeatures(resources: Resources): List<Feature> {
         if (title != null) {
             p.addProperty("label", title)
         }
+        p.addProperty("color", color)
         features.add(Feature.fromGeometry(geometry.center.toPoint(), p))
     }
 
     // polygon / polylines marker(s)
     if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-        features.add(Feature.fromGeometry(geometry.toMapLibreGeometry()))
+        features.add(Feature.fromGeometry(geometry.toMapLibreGeometry(), JsonObject().apply { addProperty("color", color) }))
     }
     return features
 }
