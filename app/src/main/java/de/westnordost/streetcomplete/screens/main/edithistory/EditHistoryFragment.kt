@@ -25,7 +25,9 @@ class EditHistoryFragment(private val allHidden: Boolean = false) : Fragment(R.l
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var selectFirst = StreetCompleteApplication.preferences.getBoolean(Prefs.SELECT_FIRST_EDIT, true)
         if (viewModel.allHidden != allHidden) {
+            selectFirst = false // updateEdits is running in background, and will not be finished on selecting the first edit
             viewModel.allHidden = allHidden
             viewModel.updateEdits()
         }
@@ -39,7 +41,7 @@ class EditHistoryFragment(private val allHidden: Boolean = false) : Fragment(R.l
         binding.editHistoryList.adapter = adapter
 
         // on opening, always select the first item (if setting allows)
-        if (StreetCompleteApplication.preferences.getBoolean(Prefs.SELECT_FIRST_EDIT, true))
+        if (selectFirst)
             viewModel.select(viewModel.editItems.value.firstOrNull()?.edit?.key)
 
         observe(viewModel.editItems) { editItems ->

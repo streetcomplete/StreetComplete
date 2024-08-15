@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -90,10 +91,11 @@ class EditHistoryPinsManager(
         properties.toEditKey()
 
     private fun updatePins() {
-        if (isVisible != 0) return
+        if (isVisible == 0) return
         viewLifecycleScope.launch {
-            val edits = withContext(Dispatchers.IO) { editHistorySource.getAll() }
+            val edits = withContext(Dispatchers.IO) { editHistorySource.getAll(isVisible == 2) }
             val pins = createEditPins(edits)
+            Log.i("test", "e pins $pins")
             pinsMapComponent.set(pins)
         }
     }

@@ -143,7 +143,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             if (valueChanged) onUpdatedNavigationMode()
         }
 
-    enum class PinMode { NONE, QUESTS, EDITS }
+    enum class PinMode { NONE, QUESTS, EDITS, HIDDEN_QUESTS }
     var pinMode: PinMode = PinMode.QUESTS
         set(value) {
             if (field == value) return
@@ -276,7 +276,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
 
         editHistoryPinsManager = EditHistoryPinsManager(pinsMapComponent!!, editHistorySource)
-        editHistoryPinsManager!!.isVisible = if (pinMode == PinMode.EDITS) 1 else 0 // todo...
+        editHistoryPinsManager!!.isVisible = when (pinMode) {
+            PinMode.EDITS -> 1
+            PinMode.HIDDEN_QUESTS -> 2
+            else -> 0
+        }
         viewLifecycleOwner.lifecycle.addObserver(editHistoryPinsManager!!)
 
         styleableOverlayManager = StyleableOverlayManager(map, styleableOverlayMapComponent!!, mapDataSource, selectedOverlaySource, levelFilter)
@@ -342,7 +346,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             PinMode.QUESTS -> {
                 questPinsManager?.getQuestKey(properties)?.let { listener?.onClickedQuest(it) }
             }
-            PinMode.EDITS -> {
+            PinMode.EDITS, PinMode.HIDDEN_QUESTS -> {
                 editHistoryPinsManager?.getEditKey(properties)?.let { listener?.onClickedEdit(it) }
             }
             PinMode.NONE -> {}
@@ -398,7 +402,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         /* both managers use the same resource (PinsMapComponent), so the newly visible manager
            may only be activated after the old has been deactivated
          */
-        // todo: re-introduce PinMode.HIDDEN_QUESTS or make visibility boolean again
         when (pinMode) {
             PinMode.QUESTS -> {
                 editHistoryPinsManager?.isVisible = 0
@@ -407,6 +410,10 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             PinMode.EDITS -> {
                 questPinsManager?.isVisible = false
                 editHistoryPinsManager?.isVisible = 1
+            }
+            PinMode.HIDDEN_QUESTS -> {
+                questPinsManager?.isVisible = false
+                editHistoryPinsManager?.isVisible = 2
             }
             else -> {
                 questPinsManager?.isVisible = false
@@ -541,10 +548,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     fun stopPositionTracking() {
         locationMapComponent?.isVisible = false
         locationManager.removeUpdates()
-        // todo: re-implement or remove
-//            PinMode.HIDDEN_QUESTS -> {
-//                questPinsManager?.isVisible = false
-//                editHistoryPinsManager?.isVisible = 2
     }
 
     fun clearPositionTracking() {
