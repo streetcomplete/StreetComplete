@@ -542,7 +542,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     @SuppressLint("MissingPermission")
     fun startPositionTracking() {
         locationMapComponent?.isVisible = true
-        locationManager.requestUpdates(0, 5000, 1f)
+        locationManager.requestUpdates(prefs.prefs.getInt(Prefs.GPS_INTERVAL, 0) * 1000L, prefs.prefs.getInt(Prefs.NETWORK_INTERVAL, 5) * 1000L, 1f)
     }
 
     fun stopPositionTracking() {
