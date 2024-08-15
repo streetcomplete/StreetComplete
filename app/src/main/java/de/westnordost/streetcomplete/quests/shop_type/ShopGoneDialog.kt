@@ -8,20 +8,22 @@ import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.DialogShopGoneBinding
 import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.getDisusedPlaceTags
 import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 
 class ShopGoneDialog(
     context: Context,
-    private val geometryType: GeometryType?,
+    private val element: Element,
     private val countryCode: String?,
     private val featureDictionary: FeatureDictionary,
     private val onSelectedFeature: (Map<String, String>) -> Unit,
@@ -52,10 +54,10 @@ class ShopGoneDialog(
             SearchFeaturesDialog(
                 context,
                 featureDictionary,
-                geometryType,
+                element.geometryType,
                 countryCode,
                 featureCtrl.feature?.name,
-                ::filterOnlyShops,
+                ::filterOnlyPlaces,
                 ::onSelectedFeature,
                 POPULAR_PLACE_FEATURE_IDS,
                 true
@@ -74,7 +76,7 @@ class ShopGoneDialog(
         updateOkButtonEnablement()
     }
 
-    private fun filterOnlyShops(feature: Feature): Boolean {
+    private fun filterOnlyPlaces(feature: Feature): Boolean {
         val fakeElement = Node(-1L, LatLon(0.0, 0.0), feature.tags, 0)
         return fakeElement.isPlace()
     }
@@ -89,7 +91,7 @@ class ShopGoneDialog(
         // to override the default OK=dismiss() behavior
         getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             when (selectedRadioButtonId) {
-                R.id.vacantRadioButton ->    onSelectedFeature(mapOf("disused:shop" to "yes"))
+                R.id.vacantRadioButton ->    onSelectedFeature(getDisusedPlaceTags(element.tags))
                 R.id.replaceRadioButton ->   onSelectedFeature(featureCtrl.feature!!.addTags)
                 R.id.leaveNoteRadioButton -> onLeaveNote()
             }
