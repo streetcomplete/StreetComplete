@@ -256,7 +256,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         if (element.isPlaceOrDisusedPlace()) {
             ShopGoneDialog(
                 requireContext(),
-                element.geometryType,
+                element,
                 countryOrSubdivisionCode,
                 featureDictionary,
                 onSelectedFeature = this::onShopReplacementSelected,
