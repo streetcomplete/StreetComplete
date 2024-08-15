@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5803
-        versionName = "58.2"
+        versionCode = 5900
+        versionName = "59.0-alpha1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -137,14 +137,14 @@ dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.8.0")
-    implementation("androidx.fragment:fragment-ktx:1.8.1")
+    implementation("androidx.annotation:annotation:1.8.2")
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2024.05.00")
+    val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
@@ -155,11 +155,11 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
 
     // multiplatform webview (for login via OAuth)
-    implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.12")
+    implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.20")
 
     // photos
     implementation("androidx.exifinterface:exifinterface:1.3.7")
@@ -170,18 +170,18 @@ dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.4.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.5.1")
 
     // Date/time
     api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
 
     // scheduling background jobs
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
 
     // HTTP Client
-    implementation("io.ktor:ktor-client-core:2.3.11")
-    implementation("io.ktor:ktor-client-cio:2.3.11")
-    testImplementation("io.ktor:ktor-client-mock:2.3.11")
+    implementation("io.ktor:ktor-client-core:2.3.12")
+    implementation("io.ktor:ktor-client-cio:2.3.12")
+    testImplementation("io.ktor:ktor-client-mock:2.3.12")
 
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
@@ -205,14 +205,14 @@ dependencies {
     // sharing presets/settings via QR Code
     implementation("io.github.alexzhirkevich:qrose:1.0.1")
     // for encoding information for the URL configuration (QR code)
-    implementation("com.ionspin.kotlin:bignum:0.3.9")
+    implementation("com.ionspin.kotlin:bignum:0.3.10")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
-    implementation("com.charleskorn.kaml:kaml:0.59.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
+    implementation("com.charleskorn.kaml:kaml:0.60.0")
 
     // map and location
-    implementation("com.mapzen.tangram:tangram:0.17.1")
+    implementation("org.maplibre.gl:android-sdk:11.1.0")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")
@@ -300,16 +300,17 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     targetFiles = { "$projectDir/src/main/res/values-$it/translation_info.xml" }
 }
 
-tasks.register<UpdateMapStyleTask>("updateMapStyle") {
-    group = "streetcomplete"
-    targetDir = "$projectDir/src/main/assets/map_theme/jawg"
-    mapStyleBranch = "jawg"
-}
-
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = "$rootDir/CHANGELOG.md"
     targetFile = "$projectDir/src/main/res/raw/changelog.html"
+}
+
+tasks.register<UpdateMapStyleTask>("updateMapStyle") {
+    group = "streetcomplete"
+    targetDir = "$projectDir/src/main/assets/map_theme"
+    apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
+    mapStyleBranch = "master"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {

@@ -139,7 +139,7 @@ class SettingsActivity : BaseActivity(), AbstractOsmQuestForm.Listener {
         val f = questType.createForm()
         if (f.arguments == null) f.arguments = bundleOf()
         f.requireArguments().putAll(
-            AbstractQuestForm.createArguments(quest.key, quest.type, geometry, 30.0f, 0.0f)
+            AbstractQuestForm.createArguments(quest.key, quest.type, geometry, 30.0, 0.0)
         )
         f.requireArguments().putAll(AbstractOsmQuestForm.createArguments(element))
         f.hideOsmQuestController = object : HideOsmQuestController {

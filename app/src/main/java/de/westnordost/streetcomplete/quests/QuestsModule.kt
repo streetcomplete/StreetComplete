@@ -111,8 +111,6 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
 import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerBrand
-import de.westnordost.streetcomplete.quests.parcel_locker_mail_in.AddParcelLockerMailIn
-import de.westnordost.streetcomplete.quests.parcel_locker_pickup.AddParcelLockerPickup
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
@@ -382,8 +380,6 @@ fun questTypeRegistry(
     74 to AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
     167 to AddParcelLockerBrand(),
-    168 to AddParcelLockerPickup(),
-    169 to AddParcelLockerMailIn(),
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     75 to AddHousenumber(),
@@ -494,10 +490,6 @@ fun questTypeRegistry(
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
-
-    // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
-    // see https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185
-    // 139 to AddShoulder(), // needs minimal thinking
 
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),

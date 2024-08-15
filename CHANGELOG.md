@@ -1,5 +1,46 @@
 # Changelog
 
+## v59.0-alpha1
+
+### 🗺️ MapLibre (#5693), by @Helium314 and me
+
+Migrated from the map renderer tangram-es to [MapLibre](https://maplibre.org/). The former has effectively been unmaintained for quite a few years and does not support modern iOS, this solves some long-standing display and crash issues.
+
+Display-wise, nothing much *should* change, the map will just look and behave a little different.
+
+Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4830, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #4026, #3417, #3397, #3346, #3275, #3022, #2878, #2711, #2703, #2612, #2571, #2373, #2359, #2358, #2187, #1713, #1684, #1264, #1019, #869, #807, #318, #179, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
+
+### General improvements
+
+- Redesigned the settings screens, about screens and tutorial screens
+- minor improvements for right-to-left localization (Arabic, Hebrew, Farsi)
+
+### New Quests
+
+- _"What is the width of the opening here?"_, asked for gates etc. (#5713) by @Nick-Tallguy
+
+### Removed Quests
+
+- Asking _"Is this a one-way street?"_, based on processed data from ImproveOSM because Grab is shutting it down (#5725)
+- Asking _"Can you pick up parcels here?"_ and _"Can you drop off parcels here?"_ because it turns out that it is often not surveyable and the answer is always the same for one brand of parcel lockers (#5763)
+
+### Overlay Improvements
+
+- Addresses: Presence of housenumbers is now highlighted in blue (#5748)
+- allow hiding notes that block editing with an overlay (#5703)
+
+### Quest Improvements
+
+- Recycling containers: Also ask for containers that have been mapped as an area (#5735)
+- Recycling containers: Also highlight nearby waste containers and bins (#5754)
+- Accepting cards: Don't ask for places that explicitly require no fee (#5772), by @HolgerJeromin
+- Drinking water: Don't ask for intermittent water sources (#5750), by @mnalis
+- Track type: Don't ask for track type on bridges (#5731), by @kmpoppe
+- Building levels, roof shapes: Also ask for houseboats (#5737), by @HolgerJeromin
+- Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
+- Other small improvements (#5740, #5792, ...)
+
+
 ## v58.2
 - Fixed it was impossible to login with a third party that required 2FA (e.g. Google) (#5724, #5711)
 
@@ -159,7 +200,7 @@ Sponsored by [SUSE Open Source Community Citizens (OSCC)](https://www.suse.com/e
 
 ### New Quests
 
-- _"Is there a sanitary dump station?"_ asked for caravan sites (#5363), by @qugebert, (#5407) thanks @sun-geo
+- _Is there a sanitary dump station?_ asked for caravan sites (#5363), by @qugebert, (#5407) thanks @sun-geo
 
 ### Quest Enhancements and Fixes
 
@@ -186,9 +227,9 @@ Sponsored by [SUSE Open Source Community Citizens (OSCC)](https://www.suse.com/e
 
 ### New Quests
 
-- _"What is this grill powered by?"_ for bbq places (#5211), by @qugebert
-- _"Is this inside a building?"_ for small amenities such as parcel lockers, vending machines, defibrillators, ... (#5278), by @qugebert
-- _"Where is this defibrillator located?"_ (#2146, #5328), by @qugebert
+- _What is this grill powered by?_ for bbq places (#5211), by @qugebert
+- _Is this inside a building?_ for small amenities such as parcel lockers, vending machines, defibrillators, ... (#5278), by @qugebert
+- _Where is this defibrillator located?_ (#2146, #5328), by @qugebert
 
 ### Quest Enhancements
 
@@ -236,7 +277,7 @@ Sponsored by [SUSE Open Source Community Citizens (OSCC)](https://www.suse.com/e
 
 ### New Quests
 
-- _"What’s the height of the curbs at this crossing?"_ (asked even if the curbs have been mapped separately, too) (#5104)
+- _What’s the height of the curbs at this crossing?_ (asked even if the curbs have been mapped separately, too) (#5104)
 
 ### Quest Enhancements
 
@@ -301,8 +342,8 @@ To avoid an awkward mix of properly localized and English texts all over the app
 
 ### New Quests
 
-- _"Which customers visit this hairdresser?"_ (#4833, #4909), by @mnalis
-- _"Is there tactile paving at the top and bottom of these steps?"_ (#3534, #5003), by @arrival-spring
+- _Which customers visit this hairdresser?_ (#4833, #4909), by @mnalis
+- _Is there tactile paving at the top and bottom of these steps?_ (#3534, #5003), by @arrival-spring
 
 ### General Enhancements
 
@@ -341,7 +382,7 @@ Now you can comprehensively map and verify surfaces mapped for roads and paths (
 
 ### New Quests
 
-- _"Is this still here?"_, asked for shops every 2 years (#4232, #4843), by @matkoniecz
+- _Is this still here?_, asked for shops every 2 years (#4232, #4843), by @matkoniecz
 
 ### Enhancements & Fixes
 
@@ -536,11 +577,11 @@ The app is now more responsive during normal use thanks to extensive caching and
 
 #### New Quests
 
-- _"How is drinking water provided here?"_ (#4423, #4390), by @matkoniecz
-- _"Which direction leads upwards here?"_, asked for mountainbike tracks (#4385), by @matkoniecz
-- _"What’s the identification number here?"_, asked for emergency access points (#4384, #4386), by @mcliquid
-- _"What’s the identification number here?"_, asked for fire hydrants (#3059, #4440), by @mcliquid
-- _"Can this cycle barrier be opened?"_ (#4293, #4406), by @mnalis
+- _How is drinking water provided here?_ (#4423, #4390), by @matkoniecz
+- _Which direction leads upwards here?_, asked for mountainbike tracks (#4385), by @matkoniecz
+- _What’s the identification number here?_, asked for emergency access points (#4384, #4386), by @mcliquid
+- _What’s the identification number here?_, asked for fire hydrants (#3059, #4440), by @mcliquid
+- _Can this cycle barrier be opened?_ (#4293, #4406), by @mnalis
 
 #### Enhanced Quests
 
@@ -584,7 +625,7 @@ Comprehensively record the physical parking situation along the streets in your 
 
 ### New Quests
 
-- _"Can you deposit cash at this ATM?"_ (#4292, #4333), by @mnalis
+- _Can you deposit cash at this ATM?_ (#4292, #4333), by @mnalis
 
 ### Other enhancements
 
@@ -613,10 +654,10 @@ Comprehensively record the physical parking situation along the streets in your 
 
 Asked for campsites (#4213), by @mnalis:
 
-- _"Who may camp here?"_
-- _"Are there showers here?"_
-- _"Is drinking water available here?"_
-- _"Is there any power supply here?"_
+- _Who may camp here?_
+- _Are there showers here?_
+- _Is drinking water available here?_
+- _Is there any power supply here?_
 
 ### Disabled Quests
 
@@ -679,9 +720,9 @@ For now, there are only overlays for _street lighting_ and for _sidewalks_, more
 
 ### New Quests
 
-- _"What kind of memorial is this?"_ (#4102, #1572), by @matkoniecz, thanks @kmpoppe, @naposm, @FloEdelmann, @mnalis
-- _"Is there a summit cross here?"_ (#4111, #4095), by @FloEdelmann
-- _"What is signed at this entrance?"_ (#4066, #3064), by @matkoniecz
+- _What kind of memorial is this?_ (#4102, #1572), by @matkoniecz, thanks @kmpoppe, @naposm, @FloEdelmann, @mnalis
+- _Is there a summit cross here?_ (#4111, #4095), by @FloEdelmann
+- _What is signed at this entrance?_ (#4066, #3064), by @matkoniecz
 
 ### Enhancements and Fixes
 
@@ -710,11 +751,11 @@ Note that the track can only be recorded while the app is in foreground. So, it 
 
 ### New Quests
 
-- _"What type of bicycle rental is this?"_ (#3995, #4010), by @FloEdelmann
-- _"How many rental bike spaces are here?"_ (#2129, #4008), by @FloEdelmann
-- _"Are bicycle repair services offered here?"_, disabled by default (#4012, #4038), by @matkoniecz
-- _"Are second-hand bicycles sold here?"_, disabled by default (#4012, #4038), by @matkoniecz
-- _"What kind of building entrance is this?"_ (#3941, #3949), by @matkoniecz
+- _What type of bicycle rental is this?_ (#3995, #4010), by @FloEdelmann
+- _How many rental bike spaces are here?_ (#2129, #4008), by @FloEdelmann
+- _Are bicycle repair services offered here?_, disabled by default (#4012, #4038), by @matkoniecz
+- _Are second-hand bicycles sold here?, disabled by default_ (#4012, #4038), by @matkoniecz
+- _What kind of building entrance is this?_ (#3941, #3949), by @matkoniecz
 
 ### Enhancements and Fixes
 
@@ -745,10 +786,10 @@ Sorry, I fucked something up. You need to log in again. 🙇‍ Don't worry, you
 
 ### New Quests
 
-- _"How many steps are here?"_, asked for stiles (#3932, #3141), by @matkoniecz
-- _"Is there a working bicycle pump available for everyone here?"_, asked for bicycle shops etc. (#3934, #3053), by @mnalis
-- _"Is there an air compressor available here?"_, asked for fuel stations (#3934, #3053), by @mnalis
-- _"Are credit or debit cards accepted here?"_, disabled by default (#3953), by @matkoniecz
+- _How many steps are here?_, asked for stiles (#3932, #3141), by @matkoniecz
+- _Is there a working bicycle pump available for everyone here?_, asked for bicycle shops etc. (#3934, #3053), by @mnalis
+- _Is there an air compressor available here?_, asked for fuel stations (#3934, #3053), by @mnalis
+- _Are credit or debit cards accepted here?_, disabled by default (#3953), by @matkoniecz
 
 ### Other Enhancements and Fixes
 
@@ -772,9 +813,9 @@ Sorry, I fucked something up. You need to log in again. 🙇‍ Don't worry, you
 
 ### New Quests
 
-- _"Is smoking allowed anywhere in this place?"_ (#539, #3784, #3856, #3865), by @mnalis
-- _"What is the surface of the sidewalk here?"_ (#1593, #3735), by @arrival-spring
-- _"What kind of seating does this place have?"_ (#1176, #3758, #3911), thanks @fatal69100
+- _Is smoking allowed anywhere in this place?_ (#539, #3784, #3856, #3865), by @mnalis
+- _What is the surface of the sidewalk here?_ (#1593, #3735), by @arrival-spring
+- _What kind of seating does this place have?_ (#1176, #3758, #3911), thanks @fatal69100
 
 ### Quest enhancements
 
@@ -816,9 +857,9 @@ Measuring with AR is only supported [on certain devices](https://developers.goog
 
 ### New Quests
 
-- _"What’s the width of this cycleway here?"_ (#698)
-- _"What’s the width of this road here?"_
-- _"What is the height limit here?"_
+- _What’s the width of this cycleway here?_ (#698)
+- _What’s the width of this road here?_
+- _What is the height limit here?_
 
 ### Quest enhancements
 
@@ -851,10 +892,10 @@ Google Play / F-Droid will not update to the next major version v41 automaticall
 
 ### New Quests
 
-- _"How does this road cross the barrier here?"_ (#3372, #3515), by @matkoniecz
-- _"Can you pump gas yourself at this fuel station?"_ (#2822, #1827), by @naposm
-- _"Does this place have air conditioning?"_ (#3641, #3127), by @coolultra1
-- _"Are the opening hours signed for this place?"_, asked at intervals for places that have previously been tagged as having no signed opening hours (#3682, #3130)
+- _How does this road cross the barrier here?_ (#3372, #3515), by @matkoniecz
+- _Can you pump gas yourself at this fuel station?_ (#2822, #1827), by @naposm
+- _Does this place have air conditioning?_ (#3641, #3127), by @coolultra1
+- _Are the opening hours signed for this place?_, asked at intervals for places that have previously been tagged as having no signed opening hours (#3682, #3130)
 
 ### Quest enhancements
 
@@ -881,10 +922,10 @@ Google Play / F-Droid will not update to the next major version v41 automaticall
 
 ### New Quests
 
-- _"Does this road have a shoulder?"_ (#2444, #3613)
-- _"What is the surface quality of this road here?"_ (#3617, #3257, #1630, #3633), special thanks to @Helium314 but also to @FloEdelmann, @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more  
+- _Does this road have a shoulder?_ (#2444, #3613)
+- _What is the surface quality of this road here?_ (#3617, #3257, #1630, #3633), special thanks to @Helium314 but also to @FloEdelmann, @mcliquid, @NicoHood, @rhhsm, @mnalis, @1ec5 and many more  
   It is disabled by default, enable it in the settings to try it out!
-- _"Where is this fire hydrant located?"_ (#3368), by @thefeiter
+- _Where is this fire hydrant located?_ (#3368), by @thefeiter
 
 ### Other enhancements
 
@@ -924,8 +965,8 @@ Google Play / F-Droid will not update to the next major version v41 automaticall
 
 ### New Quests
 
-- _"What type of bicycle barrier is this?"_ (#3361, #3487), by @matkoniecz
-- _"On which level is ... located?"_ (#1487, #3509)
+- _What type of bicycle barrier is this?_ (#3361, #3487), by @matkoniecz
+- _On which level is ... located?_ (#1487, #3509)
 
 ### Quest Enhancements
 
@@ -963,8 +1004,8 @@ Fix a common crash issue when opening certain quests (#3504, #3506, #3510, #3511
 
 ### New Quests
 
-- _"What diameter is on this fire hydrant’s sign?"_ (#3342), by @thefeiter
-- _"What type of traffic calming is this?"_ (#2742, #3380), by @matkoniecz
+- _What diameter is on this fire hydrant’s sign?_ (#3342), by @thefeiter
+- _What type of traffic calming is this?_ (#2742, #3380), by @matkoniecz
 
 ### Quest Enhancements
 
@@ -1013,8 +1054,8 @@ Furthermore, the only thing the compass button now does is to rotate the view ba
 
 ### New Quests
 
-- _"Is this picnic table covered (protected from rain)?"_ (#3311, #3142), by @FloEdelmann
-- _"Does ... offer halal products?"_ (#2990, #3331), by @SMUsamaShah
+- _Is this picnic table covered (protected from rain)?_ (#3311, #3142), by @FloEdelmann
+- _Does ... offer halal products?_ (#2990, #3331), by @SMUsamaShah
 
 ### Quest Enhancements
 
@@ -1093,7 +1134,7 @@ Fix crash on entering quest selection screen
 
 ### New Quests
 
-- _"Are there curbs where this way meets this road here? What kind?"_ (#398, #2999)
+- _Are there curbs where this way meets this road here? What kind?_ (#398, #2999)
 
 ### Enhancements
 
@@ -1155,9 +1196,9 @@ Fix crash on entering quest selection screen
 
 ### New Quests
 
-- _"What type of surveillance camera is this?"_ (#87, #299, #2856), by @Helium314, thanks @Binnette
-- _"Does this bus stop have a waste basket?"_ (#2760, #2898), by @FloEdelmann
-- _"What type of bollard is this?"_ (#2128, #2915), by @FloEdelmann, thanks @RubenKelevra
+- _What type of surveillance camera is this?_ (#87, #299, #2856), by @Helium314, thanks @Binnette
+- _Does this bus stop have a waste basket?_ (#2760, #2898), by @FloEdelmann
+- _What type of bollard is this?_ (#2128, #2915), by @FloEdelmann, thanks @RubenKelevra
 
 ### Quest Enhancements
 
@@ -1224,12 +1265,12 @@ Special thanks to @FloEdelmann for helping with the refactor.
 
 ### New Quests
 
-- _"Is this sport field lit?"_ (#2639, #2737), by @eginhard
-- _"What type of barrier is this?"_ (#2739, #2753), by @matkoniecz
-- _"What type of stile is this?"_ (#2749, #2766), by @matkoniecz
-- _"What type of shop is this?"_ (#2391, #2759), by @matkoniecz
-- Italy only: _"Which type of police station is this?"_ (#2456, #2675), by @naposm
-- _"Is this bus stop lit?"_ (#2383, #2846), by @TurnrDev
+- _Is this sport field lit?_ (#2639, #2737), by @eginhard
+- _What type of barrier is this?_ (#2739, #2753), by @matkoniecz
+- _What type of stile is this?_ (#2749, #2766), by @matkoniecz
+- _What type of shop is this?_ (#2391, #2759), by @matkoniecz
+- Italy only: _Which type of police station is this?_ (#2456, #2675), by @naposm
+- _Is this bus stop lit?_ (#2383, #2846), by @TurnrDev
 
 ### Quest Enhancements
 
@@ -1241,8 +1282,8 @@ Special thanks to @FloEdelmann for helping with the refactor.
 - Enhance maxspeed collection for the United Kingdom (#2745, #2748, #2750, #2811), by @arrival-spring
 - Periodically ask for the existence of BBQ spots, ticket validators, emergency life rings and emergency phones (#2679), thanks @arrival-spring
 - Also ask for the surface of service roads as long as they are not driveways (#2783)
-- Don't remove the `check_date` tag if it is already tagged, instead, update it (#2861, #2883)
-- Don't tag `foot=use_sidepath` on the road if there is a separate sidewalk (#2895)
+- Don't remove the check_date tag if it is already tagged, instead, update it (#2861, #2883)
+- Don't tag foot=use_sidepath on the road if there is a separate sidewalk (#2895)
 
 ### Other Enhancements
 
@@ -1328,7 +1369,7 @@ It also works for groups of up to twelve people, but maybe wait with that until 
 
 ### New quests
 
-- 👑 _"What is the royal cypher on this postbox?"_, only in the UK (#2563, #2583), by @arrival-spring
+- 👑 _What is the royal cypher on this postbox?_, only in the UK (#2563, #2583), by @arrival-spring
 
 ### Enhanced Quests
 
@@ -1358,9 +1399,9 @@ Did you already [take the survey](https://osmf.limequery.org/281662) of the Open
 
 ### New Quests
 
-- _"Is the water potable here?"_ (#549, #2509), by @FloEdelmann
-- _"Do you have to pay to park a bike here?"_ (#2507, #2517), by @FloEdelmann
-- _"Is it restricted who may park a bike here?"_ (#2496, #2517), by @FloEdelmann
+- _Is the water potable here?_ (#549, #2509), by @FloEdelmann
+- _Do you have to pay to park a bike here?_ (#2507, #2517), by @FloEdelmann
+- _Is it restricted who may park a bike here?_ (#2496, #2517), by @FloEdelmann
 
 ### Enhanced Quests
 
@@ -1411,8 +1452,8 @@ To download not at your current GPS location but somewhere else, just pan and zo
 
 ### New Quests
 
-- _"What surface does this sport field have?"_ (#1170, #2377), by @matkoniecz
-- _"Does ... offer kosher products?"_ (#639, #2244), disabled by default, by @matkoniecz
+- _What surface does this sport field have?_ (#1170, #2377), by @matkoniecz
+- _Does ... offer kosher products?_ (#639, #2244), disabled by default, by @matkoniecz
 
 ### Enhanced Quests
 
@@ -1458,8 +1499,8 @@ This update is devoted to checking whether things still exist the way they are m
 
 ### New Quests
 
-- _"This shop has been vacant. What's here now?"_
-- _"Is this still here?"_ (#2074), asked periodically for benches, telephones, post boxes etc.
+- _This shop has been vacant. What's here now?_
+- _Is this still here?_ (#2074), asked periodically for benches, telephones, post boxes etc.
 
 ### Enhanced Quests
 
@@ -1467,7 +1508,7 @@ This update is devoted to checking whether things still exist the way they are m
 - Tracktypes: Better wording and pictures (#2294)
 - Parking type: Added lane and off-street parking (#2346)
 - Ask for roof shape even if roof levels is 0 - but only in countries where flat roofs are not the norm (#1929)
-- Kerb quests: Tag `barrier=kerb` if it is missing (#2348, #2393)
+- Kerb quests: Tag barrier=kerb if it is missing (#2348, #2393)
 - Do not ask for the bench backrest if the bench type is already recorded (#2365)
 - Lanes quest: Move "differs for each side" option to main UI (#2350)
 - Other small enhancements (#2382)
@@ -1503,16 +1544,16 @@ This update is devoted to checking whether things still exist the way they are m
 
 ### New Quests
 
-- _"Is there tactile paving on this curb here?"_ (#1305, #2183), by @matkoniecz
-- _"What is the height of this curb?"_ (#1305, #2183), by @matkoniecz
-- _"How many lanes for cars does this road have?"_ (#856, #2269, #2305, #2299 ...)
+- _Is there tactile paving on this curb here?_ (#1305, #2183), by @matkoniecz
+- _What is the height of this curb?_ (#1305, #2183), by @matkoniecz
+- _How many lanes for cars does this road have?_ (#856, #2269, #2305, #2299 ...)
 
 ### Enhanced Quests
 
 - Ask for the max height also below bridges (#1882, #2234)
 - Building type: fix wrong name for a silo (#2303)
 - Surface: Add "rock" as an answer option (#2298)
-- Cycleway resurvey: Interpret a road with `oneway:bicycle=no` to have no cycleway unless it is tagged explicitly (#2310)
+- Cycleway resurvey: Interpret a road with oneway:bicycle=no to have no cycleway unless it is tagged explicitly (#2310)
 - A few minor enhancements (#2280, #2276, #2221, #2160, #2315, ...)
 
 ## v26.2
@@ -1537,7 +1578,7 @@ Reworked it completely. Quest download is now substantially faster and the pins 
 
 ### New Quests
 
-- _"How many cars can be charged at this charging station at the same time?"_ (#900, #2242)
+- _How many cars can be charged at this charging station at the same time?_ (#900, #2242)
 
 ### Enhanced Quests
 
@@ -1557,12 +1598,12 @@ Reworked it completely. Quest download is now substantially faster and the pins 
 
 ### New Quests
 
-- _"What is the reference number of this bus stop?"_ (#2126)
-- _"Do these steps have a ramp? What kind?"_ (#2036, #2168)
-- _"Does this pedestrian crossing have an island?"_ (#1961, #2030), by @kmpoppe
-- _"What's the name of the bank for this ATM?"_ (#203)
-- _"Who is the operator of this charging station?"_ (#911)
-- _"Who accepts donations for this clothing bin?"_ (#570)
+- _What is the reference number of this bus stop?_ (#2126)
+- _Do these steps have a ramp? What kind?_ (#2036, #2168)
+- _Does this pedestrian crossing have an island?_ (#1961, #2030), by @kmpoppe
+- _What's the name of the bank for this ATM?_ (#203)
+- _Who is the operator of this charging station?_ (#911)
+- _Who accepts donations for this clothing bin?_ (#570)
 
 ### Enhanced Quests
 
@@ -1600,10 +1641,10 @@ Good News! StreetComplete received a grant from the [German Federal Ministry of 
 
 ### New Quests
 
-- _"Is this a one-way street? In which direction?"_ (#1982, #2122)
-- _"Do these traffic lights have a tactile indication for blind people for when it's safe to cross?"_ (#1330, #2127)
-- _"Which direction leads upwards for these steps?"_ (#1817)
-- _"How may steps are here?"_ (#875)
+- _Is this a one-way street? In which direction?_ (#1982, #2122)
+- _Do these traffic lights have a tactile indication for blind people for when it's safe to cross?_ (#1330, #2127)
+- _Which direction leads upwards for these steps?_ (#1817)
+- _How may steps are here?_ (#875)
 
 ### Enhanced Quests
 
@@ -1629,9 +1670,9 @@ This feature has been sponsored by the OpenStreetMap Foundation (OSMF) as part o
 
 ### New Quests
 
-- _"Is there a summit register at this peak?"_ (#561, #2065) by @matkoniecz
-- _"Is this defibrillator (AED) inside a building?"_ (#2068) by @matkoniecz
-- _"Does this bus stop have a bench?"_ (#1079, #2073) by @matkoniecz
+- _Is there a summit register at this peak?_ (#561, #2065) by @matkoniecz
+- _Is this defibrillator (AED) inside a building?_ (#2068) by @matkoniecz
+- _Does this bus stop have a bench?_ (#1079, #2073) by @matkoniecz
 
 ### Enhanced Quests
 
@@ -1680,8 +1721,8 @@ Same as v22.1 only removing once all local data subject to a possible data corru
 
 ### New and enhanced Quests
 
-- Board Type: _"What is the topic of this information board?"_ (#1226, #1920), by @matkoniecz
-- Detailed Road Surface: _"What specific surface does the road ... have here?"_ (#279, #1915), by @matkoniecz
+- Board Type: _What is the topic of this information board?_ (#1226, #1920), by @matkoniecz
+- Detailed Road Surface: _What specific surface does the road ... have here?_ (#279, #1915), by @matkoniecz
 - Street Names: Allow to specify the romanized/international name of a street name in another script, such as Greek (#1765)
 - Sidewalks: Add answer that the sidewalk is already displayed separately on the map (#1958, #1925), by @matkoniecz
 - Handrails: Do not ask for private stairways (#1976)
@@ -2357,7 +2398,7 @@ Asturian by Víctor Suárez
 
 ### Quests
 
-- **new** Railway crossing: _"How is this railway crossing protected?"_
+- **new** Railway crossing: _How is this railway crossing protected?_
 - Redesign note discussion quest (new: avatars displayed also) to make it look like a chat
 - Surface and building type quest: When tapping to expand a category, the view scrolls down to show the expanded items
 - Cycleway quest: Exclude motorroads
@@ -2380,8 +2421,8 @@ Prepare for map server maintenance. After that, the shown map will be current an
 
 ### New Quests
 
-- Playground access: _"Is this playground publicly accessible?"_ (#1134) by @matkoniecz
-- Max height: _"What is the height limit of this tunnel/parking entrance/height restrictor?"_ (#960, #399, #421, #447) by @ENT8R
+- Playground access: _Is this playground publicly accessible?_ (#1134) by @matkoniecz
+- Max height: _What is the height limit of this tunnel/parking entrance/height restrictor?_ (#960, #399, #421, #447) by @ENT8R
 - Cycleway segregation: _"How are the footway and cycleway laid out here?"_ (#527, #1135) by @matkoniecz
 
 ### Enhanced Quests
@@ -2481,7 +2522,7 @@ Otherwise identical to v5.1.
 ### New Quests
 
 - Bicycle parking type: _"What is the type of this bicycle parking?"_ (#923) by @matkoniecz
-- Bus stop names: _"What is the name of this bus stop?"_ (#986 / #551) by @PanierAvide
+- Bus stop names: _"What is the name of this bus stop?_" (#986 / #551) by @PanierAvide
 - Postbox collection times: _"What are the collection times of this postbox?"_ (#85)
 - Construction Site complete: _"Is this road completed?"_ and _"Is this building completed?"_ (#920) by @matkoniecz
 
@@ -2580,7 +2621,7 @@ Otherwise identical to v5.1.
 - Improve street surface quest UI (#76)
 - Clearer wording for pedestrian streets (#862) by @ENT8R
 - Add "metal" as answer option (#568)
-- tag either `sett` or `unhewn_cobblestone`, not `cobblestone`
+- tag either sett or unhewn_cobblestone, not cobblestone
 
 #### Road name quest
 
@@ -2662,7 +2703,7 @@ A pretty long list for a bugfix update! To be honest, I squeezed in some tiny fe
 - fix crash when inputting certain values for cycleways (#740)
 - fix rare crash when rotating the map while specifying the cycleway
 - don't display the quest for Android <4.4 users (#713)
-- always tag `oneway:bicycle=no` for oneways with bicycle infrastructure for contraflow direction (#717)
+- always tag oneway:bicycle=no for oneways with bicycle infrastructure for contraflow direction (#717)
 - for oneways in contraflow, replace "sharrows" option with option to state that a oneway road is not oneway for cyclists (but has still no dedicated cycleway) (#717)
 - show compass needle in cycleway form (#723)
 - limit cycleway quests to a few countries which are likely to have any bicycle infrastructure (#749)
@@ -2820,7 +2861,7 @@ minor bugfix update: bugfixes, updated translations
 
 ## v0.10
 
-fixed #108: `opening_hours` used wrong separator
+fixed #108: opening_hours used wrong separator
 
 ## v0.9
 

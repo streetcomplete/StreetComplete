@@ -1,12 +1,5 @@
 -dontobfuscate
 
-# tangram start ------------------------------------------------------------------------------------
-
-# let's just keep everything
--keep class com.mapzen.tangram.** { *; }
--keep class com.mapzen.tangram.* { *; }
-# tangram end --------------------------------------------------------------------------------------
-
 # Lifecycle
 -keep public class androidx.lifecycle.* {
     public protected *;

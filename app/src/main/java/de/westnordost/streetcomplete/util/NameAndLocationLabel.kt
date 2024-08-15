@@ -155,6 +155,10 @@ fun getLevelLabel(tags: Map<String, String>, resources: Resources): String? {
     if (tags["tunnel"] == "yes" || tags["tunnel"] == "culvert" || tags["location"] == "underground") {
         return resources.getString(R.string.underground)
     }
+    val bridge = tags["bridge"]
+    if (bridge != null && bridge != "no") {
+        return resources.getString(R.string.bridge)
+    }
     return null
 }
 

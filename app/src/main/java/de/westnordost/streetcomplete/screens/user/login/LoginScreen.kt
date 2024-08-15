@@ -117,7 +117,7 @@ fun LoginScreen(
                     settings.isJavaScriptEnabled = true
                     settings.customUserAgentString = ApplicationConstants.USER_AGENT
                     settings.supportZoom = false
-                },
+                } as () -> Unit,
             )
         }
     } else if (state is RetrievingAccessToken || state is LoggedIn) {
