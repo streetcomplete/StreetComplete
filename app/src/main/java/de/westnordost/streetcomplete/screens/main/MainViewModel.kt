@@ -54,9 +54,9 @@ abstract class MainViewModel : ViewModel() {
     // NOTE: currently filled from MainFragment (communication to compose view), i.e. the source of
     //       truth is actually the MapFragment
     abstract val locationState: MutableStateFlow<LocationState>
-    abstract val mapZoom: MutableStateFlow<Float>
-    abstract val mapRotation: MutableStateFlow<Float>
-    abstract val mapTilt: MutableStateFlow<Float>
+    abstract val mapZoom: MutableStateFlow<Double>
+    abstract val mapRotation: MutableStateFlow<Double>
+    abstract val mapTilt: MutableStateFlow<Double>
 
     abstract val isFollowingPosition: MutableStateFlow<Boolean>
     abstract val isNavigationMode: MutableStateFlow<Boolean>

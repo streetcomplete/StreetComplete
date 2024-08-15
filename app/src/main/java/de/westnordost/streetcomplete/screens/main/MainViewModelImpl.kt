@@ -253,9 +253,9 @@ class MainViewModelImpl(
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
 
     override val locationState = MutableStateFlow(LocationState.ENABLED)
-    override val mapZoom = MutableStateFlow(18f)
-    override val mapRotation = MutableStateFlow(0f)
-    override val mapTilt = MutableStateFlow(0f)
+    override val mapZoom = MutableStateFlow(18.0)
+    override val mapRotation = MutableStateFlow(0.0)
+    override val mapTilt = MutableStateFlow(0.0)
 
     override val isFollowingPosition = MutableStateFlow(false)
     override val isNavigationMode = MutableStateFlow(false)

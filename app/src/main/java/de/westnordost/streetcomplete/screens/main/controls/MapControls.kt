@@ -231,7 +231,7 @@ fun MapControls(
                     .padding(4.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                val isCompassVisible = abs(mapRotation) >= 1f || abs(mapTilt) >= 1f
+                val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
                 AnimatedVisibility(
                     visible = isCompassVisible,
                     enter = fadeIn(),
@@ -240,8 +240,8 @@ fun MapControls(
                     CompassButton(
                         onClick = onClickCompass,
                         modifier = Modifier.graphicsLayer(
-                            rotationZ = mapRotation,
-                            rotationX = mapTilt
+                            rotationZ = mapRotation.toFloat(),
+                            rotationX = mapTilt.toFloat()
                         )
                     )
                 }
