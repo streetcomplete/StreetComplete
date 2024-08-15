@@ -12,7 +12,7 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 
 ### General improvements
 
-- Redesigned the settings screens, about screens and tutorial screens
+- Redesigned the settings screens, about screens and tutorial screens (#5719)
 - minor improvements for right-to-left localization (Arabic, Hebrew, Farsi)
 
 ### New Quests
@@ -42,7 +42,8 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 - Building levels, roof shapes: Also ask for houseboats (#5737), by @HolgerJeromin
 - Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
 - Clothing container operators: Allow answering that there's no information on the container (#5764)
-- Other small improvements (#5740, #5792, #5548...)
+- Check existence: Don't ask if something else on the same place has just been checked (#5729)
+- Other small improvements (#5740, #5792, #5548, #5776, ...), thanks @mnalis
 
 
 ## v58.2
