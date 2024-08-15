@@ -95,16 +95,6 @@ class PinsMapComponent(
                 fillColor("#0092D1"),
                 fillOpacity(0.2f)
             ),
-        CircleLayer("pin-quest-dot-layer", DOT_SOURCE)
-            .withFilter(all(gt(zoom(), CLUSTER_MAX_ZOOM)))
-            .withProperties(
-                circleColor(get("dot-color")),
-                circleStrokeOpacity(0.4f),
-                circleStrokeColor("#aaaaaa"),
-                circleRadius(7.5f),
-                circleStrokeWidth(1f),
-                circleSortKey(get("dot-order"))
-            ),
         SymbolLayer("pin-dot-label-layer", DOT_SOURCE)
             .withFilter(all(
                 gt(zoom(), CLUSTER_MAX_ZOOM),
@@ -149,8 +139,18 @@ class PinsMapComponent(
                 circleStrokeColor("#aaaaaa"),
                 circleRadius(4f),
                 circleStrokeWidth(1f),
-                circleTranslate(arrayOf(0f, -6f)), // so that it hides behind the pin
+                circleTranslate(arrayOf(0f, -5f)), // so that it hides behind the pin
                 circleTranslateAnchor(Property.CIRCLE_TRANSLATE_ANCHOR_VIEWPORT),
+            ),
+        CircleLayer("pin-quest-dot-layer", DOT_SOURCE)
+            .withFilter(all(gt(zoom(), CLUSTER_MAX_ZOOM)))
+            .withProperties(
+                circleColor(get("dot-color")),
+                circleStrokeOpacity(0.4f),
+                circleStrokeColor("#aaaaaa"),
+                circleRadius(9f),
+                circleStrokeWidth(1f),
+                circleSortKey(get("dot-order"))
             ),
         SymbolLayer("pins-layer", SOURCE)
             .withFilter(gt(zoom(), CLUSTER_MAX_ZOOM))
