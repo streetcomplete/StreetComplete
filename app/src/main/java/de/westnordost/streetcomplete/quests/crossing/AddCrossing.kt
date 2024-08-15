@@ -17,7 +17,7 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
 
     private val roadsFilter by lazy { """
         ways with
-          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
+          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|busway
           and area != yes
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }

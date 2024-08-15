@@ -18,7 +18,7 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
         ways with (
           highway ~ ${listOf(
             "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "residential", "living_street", "pedestrian", "track",
+            "unclassified", "residential", "living_street", "pedestrian", "track", "busway",
             ).joinToString("|")
           }
           or highway = service and service !~ driveway|slipway

@@ -110,7 +110,7 @@ private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): 
 
 private val cyclewayTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ track|living_street|pedestrian|service|motorway_link|motorway
+      highway ~ track|living_street|pedestrian|service|motorway_link|motorway|busway
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 20

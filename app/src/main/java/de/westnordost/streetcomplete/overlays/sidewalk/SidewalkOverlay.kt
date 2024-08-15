@@ -96,7 +96,7 @@ private fun getSidewalkStyle(element: Element): PolylineStyle {
 
 private val sidewalkTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ living_street|pedestrian|service|motorway_link
+      highway ~ living_street|pedestrian|service|motorway_link|busway
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 10
