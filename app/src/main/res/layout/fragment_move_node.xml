@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:background="#999">
 
     <ImageView
         android:id="@+id/arrowView"
@@ -13,32 +14,20 @@
         app:tint="@color/accent"/>
 
     <RelativeLayout
+        android:id="@+id/centeredMarkerLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/quest_form_topOffset"
+        android:paddingBottom="@dimen/quest_form_bottomOffset"
+        android:paddingLeft="@dimen/quest_form_leftOffset"
+        android:paddingRight="@dimen/quest_form_rightOffset"
         android:layout_centerInParent="true"
         tools:ignore="RtlHardcoded,RtlSymmetry,UselessParent">
 
-        <RelativeLayout
-            android:id="@+id/moveNodeMarker"
+        <include layout="@layout/view_pin"
+            android:id="@+id/pin"
             android:layout_width="wrap_content"
-            android:layout_height="128dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="16dp"
-                app:srcCompat="@drawable/pin"
-                tools:ignore="RtlSymmetry"/>
-
-            <ImageView
-                android:id="@+id/moveNodeIconView"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="7dp"
-                android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/ic_quest_create_note" />
-
-        </RelativeLayout>
+            android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 

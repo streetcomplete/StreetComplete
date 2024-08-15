@@ -6,6 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
+import android.os.Build
+import android.view.Display
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
@@ -29,7 +32,16 @@ fun Context.hasPermission(permission: String): Boolean =
 val Context.isLocationEnabled: Boolean get() = LocationManagerCompat.isLocationEnabled(locationManager)
 val Context.hasLocationPermission: Boolean get() = hasPermission(ACCESS_FINE_LOCATION)
 
+val Context.isLocationAvailable: Boolean get() = hasLocationPermission && isLocationEnabled
+
 private val Context.locationManager get() = getSystemService<LocationManager>()!!
+
+val Context.currentDisplay: Display get() =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        display!!
+    } else {
+        getSystemService<WindowManager>()!!.defaultDisplay
+    }
 
 fun Context.sendEmail(email: String, subject: String, text: String? = null) {
     val intent = Intent(Intent.ACTION_SENDTO).apply {

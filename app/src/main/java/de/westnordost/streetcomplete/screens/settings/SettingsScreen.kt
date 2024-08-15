@@ -342,7 +342,7 @@ fun SettingsScreen(
             items = Autosync.entries,
             onItemSelected = {
                 viewModel.setAutosync(it)
-                if (autosync != Autosync.ON) {
+                if (it != Autosync.ON) {
                     showUploadTutorialInfo = true
                 }
             },

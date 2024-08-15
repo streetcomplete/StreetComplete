@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import android.content.res.Resources
-import android.graphics.RectF
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import org.maplibre.android.maps.MapLibreMap
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -27,7 +28,7 @@ import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
 import de.westnordost.streetcomplete.quests.show_poi.ShowBusiness
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
+import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.isDay
 import de.westnordost.streetcomplete.util.math.contains
@@ -38,22 +39,18 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlin.coroutines.coroutineContext
-import kotlin.math.abs
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
  *  for the bbox surrounding the area from database and holds it in memory. */
 class QuestPinsManager(
-    private val ctrl: KtMapController,
+    private val map: MapLibreMap,
     private val pinsMapComponent: PinsMapComponent,
     private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val resources: Resources,
     private val visibleQuestsSource: VisibleQuestsSource,
     private val prefs: ObservableSettings,
     private val mapDataSource: MapDataWithEditsSource,
@@ -68,11 +65,14 @@ class QuestPinsManager(
     private val questsInView: MutableMap<QuestKey, List<Pin>> = hashMapOf()
     var reversedOrder = false
         private set
+    private val questsInViewMutex = Mutex()
 
-    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private val visibleQuestsSourceMutex = Mutex()
+
+    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO) // todo: remove?
 
     private var updateJob: Job? = null
-    private val m = Mutex()
+    private val m = Mutex() // todo: remove?
 
     /** Switch visibility of quest pins layer */
     var isVisible: Boolean = false
@@ -140,86 +140,90 @@ class QuestPinsManager(
     }
 
     private fun invalidate() {
-        // avoid calling clear, as this will just look like flickering pins
-        synchronized(questsInView) { questsInView.clear() }
         lastDisplayedRect = null
-        // still call clear if no re-draw is triggered
-        if (!onNewScreenPosition()) clear()
+        onNewScreenPosition()
     }
 
     private fun clear() {
-        synchronized(questsInView) { questsInView.clear() }
         lastDisplayedRect = null
-        viewLifecycleScope.launch { pinsMapComponent.clear() }
+        viewLifecycleScope.launch {
+            questsInViewMutex.withLock { questsInView.clear() }
+            withContext(Dispatchers.Main) { pinsMapComponent.clear() }
+        }
     }
 
     fun getQuestKey(properties: Map<String, String>): QuestKey? =
         properties.toQuestKey()
 
-    // return whether onNewTilesRect is called, for less flashing invalidate
-    fun onNewScreenPosition(): Boolean {
-        if (!isStarted || !isVisible) return false
-        val zoom = ctrl.cameraPosition.zoom
+    fun onNewScreenPosition() {
+        if (!isStarted || !isVisible) return
+        viewLifecycleScope.launch { updateCurrentScreenArea() }
+    }
+
+    private suspend fun updateCurrentScreenArea() {
         // require zoom >= 14, which is the lowest zoom level where quests are shown
-        if (zoom < 14) return false
-        val displayedArea = ctrl.screenAreaToBoundingBox(RectF()) ?: return false
+        val zoom = map.cameraPosition.zoom
+        if (zoom < 14) return
+        val displayedArea = withContext(Dispatchers.Main) { map.screenAreaToBoundingBox() }
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
         if (tilesRect.size > 32) return false
-        if (lastDisplayedRect?.contains(tilesRect) != true) {
-            lastDisplayedRect = tilesRect
-            onNewTilesRect(tilesRect)
-            return true
-        }
-        return false
-    }
+        val isNewRect = lastDisplayedRect?.contains(tilesRect) != true
+        if (!isNewRect) return
 
-    private fun onNewTilesRect(tilesRect: TilesRect) {
-        val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
+        lastDisplayedRect = tilesRect
+        /* Imagine you are panning the map fast, many different tiles come into and vanish from view
+           again quickly. Suppose, that fetching the data from DB takes longer than panning through
+           and out of a tile - we would end up with a long queue of DB fetches (and subsequent
+           map updates) of which the data is discarded immediately after because it is out of view
+           again.
+           So, what we do here is to discard each such update except the last one. All jobs started
+           in potentially quick succession have to wait at for the DB fetch to complete and will
+           stop when they have been cancelled in the meantime. The same with if they have been
+           cancelled just after the DB fetch etc. (The coroutine can be cancelled at every place
+           where you see that arrow with that green squiggle in the IDE)
+           */
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
-            while (m.isLocked) { delay(50) }
-            if (!coroutineContext.isActive) return@launch
-            val quests = m.withLock { visibleQuestsSource.getAllVisible(bbox) }
-            setQuestPins(quests)
+            val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
+            setQuestPins(bbox)
         }
     }
 
-    private suspend fun setQuestPins(quests: List<Quest>) {
-        val bbox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
-        val pins = synchronized(questsInView) {
-            // remove only quests without visible pins, because
-            //  now newQuests are only quests we might not have had in questsInView
-            //  we don't want to remove quests for long ways only because the center is not visible
-            questsInView.values.removeAll { pins -> pins.none { bbox?.contains(it.position) != false } }
-            quests.forEach { questsInView[it.key] = it.pins ?: createQuestPins(it) }
+    private suspend fun setQuestPins(bbox: BoundingBox) {
+        val quests = visibleQuestsSourceMutex.withLock {
+            withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
+        }
+        val pins = questsInViewMutex.withLock {
+            questsInView.clear()
+            quests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }
-        synchronized(pinsMapComponent) {
-            if (coroutineContext.isActive) {
-                pinsMapComponent.set(pins)
-                ctrl.requestRender()
-            }
-        }
+        pinsMapComponent.set(pins)
     }
 
     private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
-        val addedInView = added.filter { displayedBBox?.contains(it.position) != false }
-        var deletedAny = false
-        val pins = synchronized(questsInView) {
-            addedInView.forEach { questsInView[it.key] = createQuestPins(it) }
-            removed.forEach { if (questsInView.remove(it) != null) deletedAny = true }
-            questsInView.values.flatten()
-        }
-        if (deletedAny || addedInView.isNotEmpty()) {
-            synchronized(pinsMapComponent) {
-                if (coroutineContext.isActive) {
-                    pinsMapComponent.set(pins)
-                    ctrl.requestRender()
+        val pins = questsInViewMutex.withLock {
+            val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
+            var hasChanges = false
+
+            removed.forEach {
+                if (questsInView.remove(it) != null) hasChanges = true
+            }
+            added.forEach {
+                if (displayedBBox.contains(it.position)) {
+                    questsInView[it.key] = createQuestPins(it)
+                    hasChanges = true
+                } else {
+                    if (questsInView.remove(it.key) != null) hasChanges = true
                 }
             }
+
+            if (!hasChanges) return
+
+            questsInView.values.flatten()
         }
+        pinsMapComponent.set(pins)
     }
 
     fun reverseQuestOrder() {
@@ -253,10 +257,10 @@ class QuestPinsManager(
     }
 
     private fun createQuestPins(quest: Quest): List<Pin> {
-        val iconName = resources.getResourceEntryName(quest.type.icon).intern()
         val color = quest.type.dotColor
-        val importance = getQuestImportance(quest)
+        val order = synchronized(questTypeOrders) { questTypeOrders[quest.type] ?: 0 }
         val label = if (color != null && quest is OsmQuest) getLabel(quest) else null
+        return quest.markerLocations.map { Pin(it, quest.type.icon, props, order) } // todo: below is old, also the label is old
         val props = if (label == null) quest.key.toProperties() else (quest.key.toProperties() + ("label" to label))
 
         val geometry = if (quest.geometry !is ElementPointGeometry && prefs.getBoolean(Prefs.QUEST_GEOMETRIES, false) && color == null)
@@ -277,20 +281,6 @@ class QuestPinsManager(
         return labelSources.firstNotNullOfOrNull {
             if (it == "label") getNameLabel(tags) else tags[it]
         }
-    }
-
-    /** returns values from 0 to 100000, the higher the number, the more important */
-    private fun getQuestImportance(quest: Quest): Int = synchronized(questTypeOrders) {
-        val questTypeOrder = questTypeOrders[quest.type] ?: 0
-        val freeValuesForEachQuest = 100000 / questTypeOrders.size
-        /*
-            position is used to add values unique to each quest to make ordering consistent
-            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int
-            note that quest.position.hashCode() can be negative and hopefullyUniqueValueForQuest
-            should be positive to ensure that it will not change quest order
-         */
-        val hopefullyUniqueValueForQuest = (abs(quest.position.hashCode())) % freeValuesForEachQuest
-        return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }
 
     private fun reinitializeQuestTypeOrders() {
@@ -340,7 +330,7 @@ private fun Map<String, String>.toQuestKey(): QuestKey? = when (get(MARKER_QUEST
         OsmNoteQuestKey(getValue(MARKER_NOTE_ID).toLong())
     QUEST_GROUP_OSM ->
         OsmQuestKey(
-            getValue(MARKER_ELEMENT_TYPE).let { ElementType.valueOf(it) },
+            ElementType.valueOf(getValue(MARKER_ELEMENT_TYPE)),
             getValue(MARKER_ELEMENT_ID).toLong(),
             getValue(MARKER_QUEST_TYPE)
         )

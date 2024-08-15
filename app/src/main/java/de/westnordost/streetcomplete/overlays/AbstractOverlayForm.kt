@@ -154,8 +154,8 @@ abstract class AbstractOverlayForm :
     protected val geometry: ElementGeometry
         get() = _geometry ?: ElementPointGeometry(getDefaultMarkerPosition()!!)
 
-    private var initialMapRotation = 0f
-    private var initialMapTilt = 0f
+    private var initialMapRotation = 0.0
+    private var initialMapTilt = 0.0
     override val elementKey: ElementKey? get() = element?.key
 
     protected val metersPerPixel: Double? get() = listener?.metersPerPixel
@@ -202,8 +202,8 @@ abstract class AbstractOverlayForm :
         element = args.getString(ARG_ELEMENT)?.let { Json.decodeFromString(it) }
         _geometry = (savedInstanceState?.getString(ARG_GEOMETRY) ?: args.getString(ARG_GEOMETRY))
             ?.let { Json.decodeFromString(it) }
-        initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
-        initialMapTilt = args.getFloat(ARG_MAP_TILT)
+        initialMapRotation = args.getDouble(ARG_MAP_ROTATION)
+        initialMapTilt = args.getDouble(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
 
         /* deliberately did not copy the mobile-country-code hack from AbstractQuestForm because
@@ -220,7 +220,7 @@ abstract class AbstractOverlayForm :
         super.onViewCreated(view, savedInstanceState)
 
         setMarkerVisibility(_geometry == null)
-        binding.createMarker.doOnLayout { setMarkerPosition(null) }
+        binding.pin.root.doOnLayout { setMarkerPosition(null) }
         binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
@@ -267,7 +267,7 @@ abstract class AbstractOverlayForm :
         }
     }
 
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
+    override fun onMapOrientation(rotation: Double, tilt: Double) {
         // default empty implementation
     }
 
@@ -324,11 +324,11 @@ abstract class AbstractOverlayForm :
     }
 
     protected fun setMarkerIcon(iconResId: Int) {
-        binding.createMarkerIconView.setImageResource(iconResId)
+        binding.pin.pinIconView.setImageResource(iconResId)
     }
 
     protected fun setMarkerVisibility(isVisible: Boolean) {
-        binding.createMarker.isInvisible = !isVisible
+        binding.pin.root.isInvisible = !isVisible
     }
 
     protected fun setMarkerPosition(position: LatLon?) {
@@ -337,8 +337,8 @@ abstract class AbstractOverlayForm :
         } else {
             listener?.getPointOf(position)
         } ?: return
-        binding.createMarker.x = point.x - binding.createMarker.width / 2
-        binding.createMarker.y = point.y - binding.createMarker.height
+        binding.pin.root.x = point.x - binding.pin.root.width / 2
+        binding.pin.root.y = point.y - binding.pin.root.height / 2
     }
 
     private fun updateContentPadding() {
@@ -597,7 +597,7 @@ abstract class AbstractOverlayForm :
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(overlay: Overlay, element: Element?, geometry: ElementGeometry?, rotation: Float, tilt: Float) = bundleOf(
+        fun createArguments(overlay: Overlay, element: Element?, geometry: ElementGeometry?, rotation: Double, tilt: Double) = bundleOf(
             ARG_ELEMENT to element?.let { Json.encodeToString(it) },
             ARG_GEOMETRY to geometry?.let { Json.encodeToString(it) },
             ARG_OVERLAY to overlay.name,

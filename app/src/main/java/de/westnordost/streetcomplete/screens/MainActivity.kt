@@ -49,8 +49,7 @@ import de.westnordost.streetcomplete.screens.main.messages.MessagesContainerFrag
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialFragment
 import de.westnordost.streetcomplete.screens.tutorial.TutorialFragment
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
-import de.westnordost.streetcomplete.util.ktx.isLocationEnabled
+import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
@@ -168,7 +167,7 @@ class MainActivity :
         val data = intent.data ?: return
         if ("geo" != data.scheme) return
         val geo = parseGeoUri(data) ?: return
-        val zoom = if (geo.zoom == null || geo.zoom < 14) 18f else geo.zoom
+        val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
         val pos = LatLon(geo.latitude, geo.longitude)
         mainFragment?.setCameraPosition(pos, zoom)
     }
@@ -181,7 +180,7 @@ class MainActivity :
         downloadProgressSource.addListener(downloadProgressListener)
 
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
-        updateLocationAvailability(hasLocationPermission && isLocationEnabled)
+        updateLocationAvailability(isLocationAvailable)
 
         // try to stop quest monitor more often than it seems necessary, because sometime android
         // is slow to react, e.g. when quickly switching between SC and other app
@@ -220,12 +219,6 @@ class MainActivity :
             return true
         }
         return super.dispatchKeyEvent(event)
-    }
-
-    public override fun onPause() {
-        super.onPause()
-        val pos = mainFragment?.getCameraPosition()?.position ?: return
-        prefs.mapPosition = pos
     }
 
     public override fun onStop() {

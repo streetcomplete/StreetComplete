@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.preferences
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import com.russhwolf.settings.boolean
+import com.russhwolf.settings.double
 import com.russhwolf.settings.float
 import com.russhwolf.settings.int
 import com.russhwolf.settings.long
@@ -106,11 +107,13 @@ class Preferences(val prefs: ObservableSettings) {
             latitude = prefs.getDouble(MAP_LATITUDE, 0.0),
             longitude = prefs.getDouble(MAP_LONGITUDE, 0.0)
         )
-    var mapRotation: Float by prefs.float(MAP_ROTATION, 0f)
-    var mapTilt: Float by prefs.float(MAP_TILT, 0f)
-    var mapZoom: Float by prefs.float(MAP_ZOOM, 0f)
+    var mapRotation: Double by prefs.double(MAP_ROTATION, 0.0)
+    var mapTilt: Double by prefs.double(MAP_TILT, 0.0)
+    var mapZoom: Double by prefs.double(MAP_ZOOM, 0.0)
     var mapIsFollowing: Boolean by prefs.boolean(MAP_FOLLOWING, true)
     var mapIsNavigationMode: Boolean by prefs.boolean(MAP_NAVIGATION_MODE, false)
+
+    var clearedTangramCache: Boolean by prefs.boolean(CLEARED_TANGRAM_CACHE, false)
 
     // application version
     var lastChangelogVersion: String? by prefs.nullableString(LAST_VERSION)
@@ -119,13 +122,6 @@ class Preferences(val prefs: ObservableSettings) {
     // team mode
     var teamModeSize: Int by prefs.int(TEAM_MODE_TEAM_SIZE, -1)
     var teamModeIndexInTeam: Int by prefs.int(TEAM_MODE_INDEX_IN_TEAM, -1)
-
-    // tangram
-    var pinSpritesVersion: Int by prefs.int(PIN_SPRITES_VERSION, 0)
-    var pinSprites: String by prefs.string(PIN_SPRITES, "")
-
-    var iconSpritesVersion: Int by prefs.int(ICON_SPRITES_VERSION, 0)
-    var iconSprites: String by prefs.string(ICON_SPRITES, "")
 
     // main screen UI
     var hasShownTutorial: Boolean by prefs.boolean(HAS_SHOWN_TUTORIAL, false)
@@ -252,17 +248,14 @@ class Preferences(val prefs: ObservableSettings) {
         // map state
         private const val MAP_LATITUDE = "map.latitude"
         private const val MAP_LONGITUDE = "map.longitude"
-        private const val MAP_ROTATION = "map.rotation"
-        private const val MAP_TILT = "map.tilt"
-        private const val MAP_ZOOM = "map.zoom"
+        private const val MAP_ROTATION = "map.rotation2"
+        private const val MAP_TILT = "map.tilt2"
+        private const val MAP_ZOOM = "map.zoom2"
         private const val MAP_FOLLOWING = "map.following"
         private const val MAP_NAVIGATION_MODE = "map.navigation_mode"
 
-        // tangram
-        private const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
-        private const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"
-        private const val ICON_SPRITES_VERSION = "TangramIconsSpriteSheet.version"
-        private const val ICON_SPRITES = "TangramIconsSpriteSheet.sprites"
+        // clean-up after upgrade
+        private const val CLEARED_TANGRAM_CACHE = "cleared_tangram_cache"
 
         // quest & overlays
         private const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"

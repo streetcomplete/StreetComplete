@@ -57,7 +57,6 @@ import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
-import de.westnordost.streetcomplete.screens.main.map.mapModule
 import de.westnordost.streetcomplete.screens.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.LAST_KNOWN_DB_VERSION
 import de.westnordost.streetcomplete.screens.settings.oldQuestNames
@@ -74,6 +73,7 @@ import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.setDefaultLocales
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -81,6 +81,7 @@ import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 class StreetCompleteApplication : Application() {
@@ -125,7 +126,6 @@ class StreetCompleteApplication : Application() {
                 elementEditsModule,
                 elementGeometryModule,
                 mapDataModule,
-                mapModule,
                 mainModule,
                 maptilesModule,
                 metadataModule,
@@ -148,6 +148,7 @@ class StreetCompleteApplication : Application() {
                 arModule,
                 overlaysModule,
                 overlayModule,
+                urlConfigModule,
                 urlConfigModule,
                 platformModule,
                 externalSourceModule,
@@ -205,6 +206,7 @@ class StreetCompleteApplication : Application() {
             }
             e.apply()
         }
+        clearTangramCache()
         settingsListeners += prefs.onLanguageChanged { updateDefaultLocales() }
         settingsListeners += prefs.onThemeChanged { updateTheme(it) }
     }
@@ -276,6 +278,19 @@ class StreetCompleteApplication : Application() {
 
     private val isConnected: Boolean
         get() = getSystemService<ConnectivityManager>()?.activeNetworkInfo?.isConnected == true
+
+    private fun clearTangramCache() {
+        if (prefs.clearedTangramCache) return
+        val externalCache = externalCacheDir ?: return
+        val tileCache = File(externalCache, "tile_cache")
+        if (!tileCache.exists()) return
+        applicationScope.launch(Dispatchers.IO) {
+            for (file in externalCache.walk()) {
+                file.delete()
+            }
+            prefs.clearedTangramCache = true
+        }
+    }
 }
 
 private val Theme.appCompatNightMode: Int get() = when (this) {

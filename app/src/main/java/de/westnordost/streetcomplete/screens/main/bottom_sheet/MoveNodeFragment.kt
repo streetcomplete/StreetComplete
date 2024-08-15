@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import android.content.res.Configuration
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
@@ -30,6 +32,7 @@ import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitFeetInch
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
+import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -104,7 +107,7 @@ class MoveNodeFragment :
 
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
-        binding.moveNodeIconView.setImageResource(editType.icon)
+        binding.pin.pinIconView.setImageResource(editType.icon)
         binding.mapButton.setOnClickListener { toggleBackground() }
         updateMapButtonText()
 
@@ -119,6 +122,22 @@ class MoveNodeFragment :
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
+
+        // to lay out the arrow drawable correctly, view must have been layouted first
+        viewLifecycleOwner.lifecycleScope.launch {
+            view.awaitLayout()
+            updateArrowDrawable()
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.centeredMarkerLayout.setPadding(
+            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        )
     }
 
     private fun toggleBackground() {
@@ -138,7 +157,7 @@ class MoveNodeFragment :
     }
 
     private fun getMarkerScreenPosition(): PointF {
-        val moveNodeMarker = binding.moveNodeMarker
+        val moveNodeMarker = binding.pin.root
         val screenPos = moveNodeMarker.getLocationInWindow()
         screenPos.offset(moveNodeMarker.width / 2, moveNodeMarker.height / 2)
         return screenPos.toPointF()

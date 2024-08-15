@@ -7,22 +7,21 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
-import de.westnordost.streetcomplete.screens.main.map.tangram.KtMapController
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DownloadedAreaManager(
-    private val ctrl: KtMapController,
     private val mapComponent: DownloadedAreaMapComponent,
     private val downloadedTilesSource: DownloadedTilesSource,
     private val prefs: ObservableSettings,
 ) : DefaultLifecycleObserver {
 
     private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
-    private var hasUpdated: Boolean = false
 
     private val downloadedTilesListener = object : DownloadedTilesSource.Listener {
         override fun onUpdated() {
@@ -48,19 +47,9 @@ class DownloadedAreaManager(
 
     private fun update() {
         viewLifecycleScope.launch {
-            if (ctrl.cameraPosition.zoom <= 8) {
-                hasUpdated = false
-            } else {
-                val deleteOldDataAfter = prefs.getInt(Prefs.DATA_RETAIN_TIME, ApplicationConstants.DELETE_OLD_DATA_AFTER_DAYS) * 24L * 60 * 60 * 1000
+            val tiles = withContext(Dispatchers.IO) { downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER) }
+            mapComponent.set(tiles)
                 mapComponent.set(downloadedTilesSource.getAll(deleteOldDataAfter))
-                hasUpdated = true
-            }
         }
-    }
-
-    fun onNewScreenPosition() {
-        // workaround for tangram bug that if the polygon is set while the zoom is ~ below zoom 6
-        // no holes (= the downloaded areas) will be shown
-        if (!hasUpdated) update()
     }
 }
