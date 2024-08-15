@@ -352,6 +352,7 @@ class SeparateCyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("bicycle", "designated"),
                 StringMapEntryAdd("segregated", "no"),
+                StringMapEntryModify("foot", "yes", "designated")
             ),
             NON_SEGREGATED.appliedTo(mapOf(
                 "highway" to "footway",
@@ -374,23 +375,6 @@ class SeparateCyclewayCreatorKtTest {
             NON_SEGREGATED.appliedTo(mapOf(
                 "highway" to "cycleway",
                 "bicycle" to "yes"
-            ))
-        )
-    }
-
-    @Test fun `apply non-segregated does not re-tag any yes-like value`() {
-        assertEquals(
-            setOf(StringMapEntryAdd("segregated", "no")),
-            NON_SEGREGATED.appliedTo(mapOf(
-                "highway" to "cycleway",
-                "foot" to "yes"
-            ))
-        )
-        assertEquals(
-            setOf(StringMapEntryAdd("segregated", "no")),
-            NON_SEGREGATED.appliedTo(mapOf(
-                "highway" to "cycleway",
-                "foot" to "permissive"
             ))
         )
     }

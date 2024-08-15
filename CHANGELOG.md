@@ -8,7 +8,7 @@ Migrated from the map renderer tangram-es to [MapLibre](https://maplibre.org/). 
 
 Display-wise, nothing much *should* change, the map will just look and behave a little different.
 
-Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #4026, #3417, #3397, #3346, #3275, #3022, #2878, #2711, #2703, #2612, #2571, #2373, #2359, #2358, #2187, #1713, #1684, #1264, #1019, #869, #807, #318, #179, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
+Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4830, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #4026, #3417, #3397, #3346, #3275, #3022, #2878, #2711, #2703, #2612, #2571, #2373, #2359, #2358, #2187, #1713, #1684, #1264, #1019, #869, #807, #318, #179, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
 
 ### General improvements
 
@@ -27,10 +27,13 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 ### Overlay Improvements
 
 - Addresses: Presence of housenumbers is now highlighted in blue (#5748)
+- Bike paths, Sidewalks: Highlight less situations as missing (#5716, #5722)
+- Bike paths: When selecting "designated shared-use path", always mark it as designated for pedestrians, too (#5742)
 - allow hiding notes that block editing with an overlay (#5703)
 
 ### Quest Improvements
 
+- Ask many road-related quests also for busways (#5749)
 - Recycling containers: Also ask for containers that have been mapped as an area (#5735)
 - Recycling containers: Also highlight nearby waste containers and bins (#5754)
 - Accepting cards: Don't ask for places that explicitly require no fee (#5772), by @HolgerJeromin
@@ -38,7 +41,7 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 - Track type: Don't ask for track type on bridges (#5731), by @kmpoppe
 - Building levels, roof shapes: Also ask for houseboats (#5737), by @HolgerJeromin
 - Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
-- Other small improvements (#5740, ...)
+- Other small improvements (#5740, #5792, ...)
 
 
 ## v58.2
