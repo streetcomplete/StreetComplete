@@ -29,6 +29,8 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
+import org.maplibre.android.style.expressions.Expression.has
+import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import kotlin.math.abs
@@ -65,6 +67,17 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
                 lineOpacity(0.7f),
                 lineCap(Property.LINE_CAP_ROUND)
             ),
+        SymbolLayer("focus-geo-arrows", SOURCE)
+            .withFilter(has("arrows"))
+            .withProperties(
+                iconColor("#D14000"),
+                iconOpacity(0.7f),
+                symbolPlacement(Property.SYMBOL_PLACEMENT_LINE),
+                iconAllowOverlap(true),
+                iconIgnorePlacement(true),
+                iconImage("oneway-arrow"),
+                iconRotate(90f)
+            ),
         CircleLayer("focus-geo-circle", SOURCE)
             .withFilter(isPoint())
             .withProperties(
@@ -100,7 +113,10 @@ class FocusGeometryMapComponent(private val contentResolver: ContentResolver, pr
 
     /** Show the given geometry. Previously shown geometry is replaced. */
     @UiThread fun showGeometry(geometry: ElementGeometry) {
-        focusedGeometrySource.setGeoJson(geometry.toMapLibreGeometry())
+        if (geometry is ElementPolylinesGeometry && prefs.getBoolean(Prefs.SHOW_WAY_DIRECTION, false)) {
+            val feature = Feature.fromGeometry(geometry.toMapLibreGeometry(), JsonObject().apply { addProperty("arrows", "yes") })
+            focusedGeometrySource.setGeoJson(feature)
+        } else focusedGeometrySource.setGeoJson(geometry.toMapLibreGeometry())
         val animatorDurationScale = Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
         if (animatorDurationScale > 0f) animation.start()
     }
