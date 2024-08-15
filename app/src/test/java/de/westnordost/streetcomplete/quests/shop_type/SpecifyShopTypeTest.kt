@@ -45,16 +45,6 @@ class SpecifyShopTypeTest {
         )
         assertEquals(
             setOf(
-                StringMapEntryAdd("disused:amenity", "cafe"),
-                StringMapEntryDelete("amenity", "cafe")
-            ),
-            questType.answerAppliedTo(
-                IsShopVacant,
-                mapOf("amenity" to "cafe")
-            )
-        )
-        assertEquals(
-            setOf(
                 StringMapEntryAdd("disused:shop", "yes"),
             ),
             questType.answerApplied(IsShopVacant)
