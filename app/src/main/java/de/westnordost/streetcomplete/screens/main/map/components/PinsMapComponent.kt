@@ -31,8 +31,11 @@ import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
 import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -41,6 +44,8 @@ import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.style.expressions.Expression.any
 import org.maplibre.android.style.expressions.Expression.log2
+import org.maplibre.android.style.layers.FillLayer
+import org.maplibre.android.style.layers.LineLayer
 import org.maplibre.android.style.sources.GeoJsonOptions
 import org.maplibre.geojson.Point
 import kotlin.math.abs
@@ -64,7 +69,23 @@ class PinsMapComponent(
             .withClusterRadius(55)
     )
 
+    private val pinsGeometrySource = GeoJsonSource(GEOMETRY_SOURCE)
+
     val layers: List<Layer> = listOf(
+        LineLayer("pins-geometry-lines-layer", GEOMETRY_SOURCE)
+            .withFilter(all(isLine(), gte(zoom(), 16f)))
+            .withProperties(
+                lineColor("#0092D1"),
+                lineOpacity(0.4f),
+                lineWidth(10f),
+                lineCap(Property.LINE_CAP_ROUND)
+            ),
+        FillLayer("pins-geometry-fill-layer", GEOMETRY_SOURCE)
+            .withFilter(all(isArea(), gte(zoom(), 17f)))
+            .withProperties(
+                fillColor("#0092D1"),
+                fillOpacity(0.2f)
+            ),
         SymbolLayer("pin-cluster-layer", SOURCE)
             .withFilter(all(
                 gte(zoom(), 14f),
@@ -115,8 +136,10 @@ class PinsMapComponent(
 
     init {
         pinsSource.isVolatile = true
+        pinsGeometrySource.isVolatile = true
         map.style?.addImageAsync("cluster-circle", context.getDrawable(R.drawable.pin_circle)!!)
         map.style?.addSource(pinsSource)
+        map.style?.addSource(pinsGeometrySource)
         map.addOnMapClickListener(::onClick)
     }
 
@@ -126,7 +149,11 @@ class PinsMapComponent(
         mapImages.addOnce(icons) { createPinBitmap(context, it) to false }
         val features = pins.map { it.toFeature() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
-        withContext(Dispatchers.Main) { pinsSource.setGeoJson(mapLibreFeatures) }
+        val geoFeatures = createGeometryFeatures(pins)
+        withContext(Dispatchers.Main) {
+            pinsSource.setGeoJson(mapLibreFeatures)
+            pinsGeometrySource.setGeoJson(geoFeatures)
+        }
     }
 
     /** Clear pins */
@@ -180,8 +207,14 @@ class PinsMapComponent(
         return Feature.fromGeometry(position.toPoint(), p)
     }
 
+    private fun createGeometryFeatures(pins: Collection<Pin>): FeatureCollection? {
+        val geometries = pins.mapNotNull { it.geometry }.takeIf { it.isNotEmpty() }?.toHashSet() ?: return null
+        return FeatureCollection.fromFeatures(geometries.map { Feature.fromGeometry(it.toMapLibreGeometry()) })
+    }
+
     companion object {
         private const val SOURCE = "pins-source"
+        private const val GEOMETRY_SOURCE = "pins-geometry-source"
         private const val CLUSTER_MAX_ZOOM = 16
     }
 }
