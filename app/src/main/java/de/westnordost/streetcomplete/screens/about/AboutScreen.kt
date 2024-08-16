@@ -77,6 +77,13 @@ fun AboutScreen(
                     name = stringResource(R.string.about_title_privacy_statement),
                     onClick = { onClickPrivacyStatement() },
                 ) { NextScreenIcon() }
+            }
+
+            PreferenceCategory(stringResource(R.string.about_category_help)) {
+                Preference(
+                    name = stringResource(R.string.about_title_intro),
+                    onClick = { showIntroTutorial = true },
+                )
 
 
             }

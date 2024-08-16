@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.databinding.FragmentOverlayPlacesBinding
 import de.westnordost.streetcomplete.osm.LocalizedName
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyTo
+import de.westnordost.streetcomplete.osm.getDisusedPlaceTags
 import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.parseLocalizedNames
@@ -295,7 +296,11 @@ private suspend fun createEditAction(
         }
 
     if (doReplaceShop) {
-        tagChanges.replacePlace(newFeature.addTags)
+        if (isVacant) {
+            tagChanges.replacePlace(getDisusedPlaceTags(element?.tags))
+        } else {
+            tagChanges.replacePlace(newFeature.addTags)
+        }
     } else {
         for ((key, value) in previousFeature?.removeTags.orEmpty()) {
             tagChanges.remove(key)

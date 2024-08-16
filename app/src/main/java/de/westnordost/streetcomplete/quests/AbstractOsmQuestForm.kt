@@ -39,7 +39,6 @@ import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
-import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.add
@@ -257,7 +256,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         if (element.isPlaceOrDisusedPlace()) {
             ShopGoneDialog(
                 requireContext(),
-                element.geometryType,
+                element,
                 countryOrSubdivisionCode,
                 featureDictionary,
                 onSelectedFeature = this::onShopReplacementSelected,

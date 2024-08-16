@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun SeparateCycleway.applyTo(tags: Tags) {
     val isCycleway = tags["highway"] == "cycleway"
+    val isFootway = tags["highway"] == "footway"
 
     // tag bicycle=*, foot=* and retag highway=* if necessary
     when (this) {
@@ -54,8 +55,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             if (!isCycleway || tags.containsKey("bicycle")) {
                 tags["bicycle"] = "designated"
             }
-            // do not retag highway=cycleway + foot=yes
-            if ((isCycleway || tags.containsKey("foot")) && tags["foot"] !in yesButNotDesignated) {
+            if (!isFootway || tags.containsKey("foot")) {
                 tags["foot"] = "designated"
             }
         }

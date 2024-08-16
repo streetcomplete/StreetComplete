@@ -272,5 +272,5 @@ private fun OverlaysTutorialStepEditText() {
 @PreviewScreenSizes
 @Composable
 private fun PreviewOverlaysTutorialScreen() {
-    OverlaysTutorialScreen({},{})
+    OverlaysTutorialScreen({}, {})
 }

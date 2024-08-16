@@ -12,7 +12,7 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 
 ### General improvements
 
-- Redesigned the settings screens, about screens and tutorial screens
+- Redesigned the settings screens, about screens and tutorial screens (#5719)
 - minor improvements for right-to-left localization (Arabic, Hebrew, Farsi)
 
 ### New Quests
@@ -27,10 +27,13 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 ### Overlay Improvements
 
 - Addresses: Presence of housenumbers is now highlighted in blue (#5748)
+- Bike paths, Sidewalks: Highlight less situations as missing (#5716, #5722)
+- Bike paths: When selecting "designated shared-use path", always mark it as designated for pedestrians, too (#5742)
 - allow hiding notes that block editing with an overlay (#5703)
 
 ### Quest Improvements
 
+- Ask many road-related quests also for busways (#5749)
 - Recycling containers: Also ask for containers that have been mapped as an area (#5735)
 - Recycling containers: Also highlight nearby waste containers and bins (#5754)
 - Accepting cards: Don't ask for places that explicitly require no fee (#5772), by @HolgerJeromin
@@ -38,7 +41,9 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 - Track type: Don't ask for track type on bridges (#5731), by @kmpoppe
 - Building levels, roof shapes: Also ask for houseboats (#5737), by @HolgerJeromin
 - Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
-- Other small improvements (#5740, #5792, ...)
+- Clothing container operators: Allow answering that there's no information on the container (#5764)
+- Check existence: Don't ask if something else on the same place has just been checked (#5729)
+- Other small improvements (#5740, #5792, #5548, #5776, ...), thanks @mnalis
 
 
 ## v58.2

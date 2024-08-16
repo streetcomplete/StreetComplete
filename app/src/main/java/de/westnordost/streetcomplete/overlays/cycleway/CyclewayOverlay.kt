@@ -92,25 +92,18 @@ private fun SeparateCycleway?.getColor() = when (this) {
 private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
     val cycleways = parseCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
     val isBicycleBoulevard = parseBicycleBoulevard(element.tags) == BicycleBoulevard.YES
-
-    // not set but on road that usually has no cycleway or it is private -> do not highlight as missing
-    val isNoCyclewayExpected =
-        cycleways == null && (cyclewayTaggingNotExpected(element) || isPrivateOnFoot(element))
+    val isNoCyclewayExpected = lazy { cyclewayTaggingNotExpected(element) || isPrivateOnFoot(element) }
 
     return PolylineStyle(
-        stroke = when {
-            isBicycleBoulevard ->   StrokeStyle(Color.GOLD, dashed = true)
-            isNoCyclewayExpected -> StrokeStyle(Color.INVISIBLE)
-            else ->                 null
-        },
-        strokeLeft = if (isNoCyclewayExpected) null else cycleways?.left?.cycleway.getStyle(countryInfo),
-        strokeRight = if (isNoCyclewayExpected) null else cycleways?.right?.cycleway.getStyle(countryInfo)
+        stroke = if (isBicycleBoulevard) StrokeStyle(Color.GOLD, dashed = true) else null,
+        strokeLeft = cycleways?.left?.cycleway.getStyle(countryInfo, isNoCyclewayExpected),
+        strokeRight = cycleways?.right?.cycleway.getStyle(countryInfo, isNoCyclewayExpected)
     )
 }
 
 private val cyclewayTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ track|living_street|pedestrian|service|motorway_link|motorway
+      highway ~ track|living_street|pedestrian|service|motorway_link|motorway|busway
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 20
@@ -124,7 +117,10 @@ private val cyclewayTaggingNotExpectedFilter by lazy { """
 private fun cyclewayTaggingNotExpected(element: Element) =
     cyclewayTaggingNotExpectedFilter.matches(element)
 
-private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
+private fun Cycleway?.getStyle(
+    countryInfo: CountryInfo,
+    isNoCyclewayExpected: Lazy<Boolean>,
+): StrokeStyle = when (this) {
     TRACK ->
         StrokeStyle(Color.BLUE)
 
@@ -145,9 +141,6 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
     PICTOGRAMS ->
         StrokeStyle(Color.ORANGE, dashed = true)
 
-    UNKNOWN, INVALID, null, UNKNOWN_LANE, UNKNOWN_SHARED_LANE ->
-        StrokeStyle(Color.DATA_REQUESTED)
-
     BUSWAY ->
         StrokeStyle(Color.LIME, dashed = true)
 
@@ -162,6 +155,13 @@ private fun Cycleway?.getStyle(countryInfo: CountryInfo) = when (this) {
 
     SEPARATE ->
         StrokeStyle(Color.INVISIBLE)
+
     SIDEWALK_OK ->
         StrokeStyle(Color.CYAN, dashed = true)
+
+    UNKNOWN, INVALID, UNKNOWN_LANE, UNKNOWN_SHARED_LANE ->
+        StrokeStyle(Color.DATA_REQUESTED)
+
+    null ->
+         StrokeStyle(if (isNoCyclewayExpected.value) Color.INVISIBLE else Color.DATA_REQUESTED)
 }

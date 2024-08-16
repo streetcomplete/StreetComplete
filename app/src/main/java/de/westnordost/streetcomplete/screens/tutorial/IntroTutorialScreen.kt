@@ -254,5 +254,5 @@ private fun IntroTutorialStep3Text() {
 @PreviewScreenSizes
 @Composable
 private fun PreviewIntroTutorialScreen() {
-    IntroTutorialScreen({},{},{})
+    IntroTutorialScreen({}, {}, {})
 }

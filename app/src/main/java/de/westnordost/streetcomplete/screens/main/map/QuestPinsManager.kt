@@ -177,7 +177,19 @@ class QuestPinsManager(
             withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
         }
         val pins = questsInViewMutex.withLock {
-            questsInView.clear()
+            /* Usually, we would call questsInView.clear() here. However,
+               quests have only a single position, but may have multiple pins (see
+               Quest::markerLocations), e.g. at the start and end of a long road. A pin of a quest
+               whose center is outside the current view may hence be within the current view. Quest
+               pins like these should not disappear when panning the map.
+               Therefore, remove all quests that are not in view anymore that  ...
+              */
+            questsInView.entries.removeAll { (_, pins) ->
+                // only have one pin (pin position = quest position)
+                pins.size == 1 ||
+                // or has no pins in the current view
+                pins.none { it.position in bbox }
+            }
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }

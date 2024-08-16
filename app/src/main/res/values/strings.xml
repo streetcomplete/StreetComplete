@@ -964,7 +964,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_camp_drinking_water_title">Is drinking water freely available to campers here?</string>
     <string name="quest_camp_shower_title">Are there showers here?</string>
-    <string name="quest_camp_power_supply_title">Is there any way for customers to charge their phone, laptop etc. here?</string>
+    <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
+    <string name="quest_camp_power_supply_hint">This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc.</string>
     <string name="quest_camp_type_title">Who may camp here?</string>
     <string name="quest_camp_type_tents_and_caravans">Both tents and motor homes, travel trailers, …</string>
     <string name="quest_camp_type_caravans_only">Only motor homes, travel trailers, …</string>
@@ -1775,5 +1776,6 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
     <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
+    <string name="quest_barrier_opening_width_bollard">What is the widest gap one can pass through here?</string>
 
 </resources>
