@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
+import androidx.core.graphics.Insets
 import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
@@ -42,6 +43,7 @@ import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -148,15 +150,16 @@ class InsertNodeFragment :
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
-        val offsetRect = Rect( // slightly lower position of marker than usual
+        val insets = Insets.of( // slightly lower position of marker than usual
             resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset) / 2
-        ).toRectF()
-        // todo: update camera position
-//        mapFragment?.getPositionThatCentersPosition(pos, offsetRect)
-//            ?.let { mapFragment?.updateCameraPosition { position = it } }
+        )
+        mapFragment?.updateCameraPosition(300) {
+            position = pos
+            padding = insets.toPadding()
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

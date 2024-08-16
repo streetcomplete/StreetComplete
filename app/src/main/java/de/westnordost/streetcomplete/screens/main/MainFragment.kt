@@ -1126,7 +1126,7 @@ class MainFragment :
 
         popupWindow.setAdapter(adapter)
         popupWindow.setOnItemClickListener { _, _, position, _ ->
-//            controlsViewModel.selectOverlay(adapter.getItem(position)) would be nice to do it like this, but not improtant right now
+//            controlsViewModel.selectOverlay(adapter.getItem(position)) would be nice to do it like this, but not important right now
             var selectedOverlay = adapter.getItem(position)
             if (selectedOverlay?.title == 0) {
                 prefs.putInt(Prefs.CUSTOM_OVERLAY_SELECTED_INDEX, selectedOverlay.wikiLink!!.toInt())
@@ -1137,6 +1137,7 @@ class MainFragment :
                 val newIdx = if (prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").isBlank()) 0
                 else getCustomOverlayIndices(prefs).max() + 1
                 showOverlayCustomizer(newIdx, requireContext(), prefs, questTypeRegistry, {
+                    selectedOverlayController.selectedOverlay = null
                     selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
                 }, {
                     // do nothing if deleted (should not be possible)
@@ -1301,11 +1302,10 @@ class MainFragment :
     }
 
     fun offsetPos(pos: LatLon) {
-        // todo: how to replace?
-/*        val mapFragment = mapFragment ?: return
-        mapFragment.show3DBuildings = false
-        val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
-        mapFragment.updateCameraPosition { position = offsetPos }*/
+        mapFragment?.updateCameraPosition(300) {
+            position = pos
+            padding = getQuestFormInsets().toPadding()
+        }
     }
 
     private fun onClickCreateTrack() {

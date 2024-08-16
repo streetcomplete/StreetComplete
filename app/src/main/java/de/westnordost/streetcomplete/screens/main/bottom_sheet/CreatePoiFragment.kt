@@ -71,11 +71,10 @@ class CreatePoiFragment : TagEditor() {
 
         binding.markerCreateLayout.pin.pinIconView.setImageResource(R.drawable.ic_add_poi)
         binding.markerCreateLayout.root.visibility = View.VISIBLE
-
     }
 
     override suspend fun applyEdit() {
-        val createNoteMarker = binding.markerCreateLayout.pin.pinIconView // todo: is it the correct view?
+        val createNoteMarker = binding.markerCreateLayout.pin.root
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return
