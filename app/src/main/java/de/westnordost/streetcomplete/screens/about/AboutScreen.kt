@@ -85,15 +85,6 @@ fun AboutScreen(
                     onClick = { showIntroTutorial = true },
                 )
 
-
-            }
-
-            PreferenceCategory(stringResource(R.string.about_category_help)) {
-                Preference(
-                    name = stringResource(R.string.about_title_intro),
-                    onClick = { showIntroTutorial = true },
-                )
-
                 Preference(
                     name = stringResource(R.string.about_title_faq),
                     onClick = { context.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
