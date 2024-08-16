@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
 
+/** Boring dialog that tells the user that he can turn off some boring quests in the setting. */
 @Composable
 fun QuestSelectionHintDialog(
     onDismissRequest: () -> Unit,

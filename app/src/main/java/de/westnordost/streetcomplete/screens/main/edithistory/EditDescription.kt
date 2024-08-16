@@ -41,12 +41,11 @@ fun EditDescription(
                     Text(stringResource(R.string.deleted_poi_action_description), modifier)
                 is SplitWayAction ->
                     Text(stringResource(R.string.split_way_action_description), modifier)
-                is CreateNodeAction -> {
+                is CreateNodeAction ->
                     Column(modifier) {
                         Text(stringResource(R.string.create_node_action_description))
                         TagList(edit.action.tags)
                     }
-                }
                 is CreateNodeFromVertexAction ->
                     TagUpdatesList(edit.action.changes.changes, modifier)
                 is MoveNodeAction ->

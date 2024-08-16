@@ -131,6 +131,8 @@ fun EditHistorySidebar(
         ) {
             items(
                 items = editItems,
+                // NOTE: unfortunately, keys must be parcelable on Android. I wonder how they solved
+                //       that in Compose multiplatform
                 key = { Json.encodeToString(it.edit.key) }
             ) { editItem ->
                 Column {

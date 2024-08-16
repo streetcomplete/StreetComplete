@@ -31,7 +31,6 @@ import de.westnordost.streetcomplete.ui.common.UndoIcon
 
 /** One item in the edit history sidebar list. Selectable and when selected, an undo button is
  *  clickable. */
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun EditHistoryItem(
     selected: Boolean,
