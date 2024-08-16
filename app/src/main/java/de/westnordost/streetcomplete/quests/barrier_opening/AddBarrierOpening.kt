@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.barrier_opening
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.R.string.quest_barrier_opening_width_bollard
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
