@@ -333,6 +333,19 @@ class StyleableOverlayMapComponent(
                     Feature.fromGeometry(line, p2)
                 }
 
+                // looks similar to "normal" private dashes, but doesn't have round line cap
+                val private = style.stroke.let {
+                    if (it != null && it.color != INVISIBLE && !it.dashed && element.tags["highway"] != null && element.tags["access"] in privateWays) {
+                        val p2 = p.deepCopy()
+                        p2.addProperty("width", width * 0.5f)
+                        p2.addProperty("color", getDarkenedColor(it.color))
+                        p2.addProperty("dashed", true)
+                        Feature.fromGeometry(line, p2)
+                    } else {
+                        null
+                    }
+                }
+
                 val label = if (style.label != null) {
                     Feature.fromGeometry(
                         geometry.center.toPoint(),
@@ -340,7 +353,7 @@ class StyleableOverlayMapComponent(
                     )
                 } else null
 
-                listOfNotNull(left, right, center, label)
+                listOfNotNull(left, right, center, label, private)
             }
         }
     }
