@@ -22,7 +22,7 @@ Functionality added in SCEE is considerably less tested than what you might be u
 
 F-Droid releases of SCEE make use of reproducible builds, so releases on F-Droid and GitHub are signed with the same keys. This means you can switch between GitHub and F-Droid releases anytime without needing to uninstall first.
 
-__F-Droid anti-feature__ _non-free network_: SCEE uses map tiles provided by [jawg](https://www.jawg.io), and optionally [aerial / satellite imagery](https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer) by [Esri](https://www.esri.com).
+__F-Droid anti-feature__ _non-free network_: SCEE uses map tiles provided by [jawg](https://www.jawg.io), and optionally [aerial / satellite imagery](https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer) by [Esri](https://www.esri.com) (currently disabled).
 
 ## Translations
 Translations for strings added in SCEE can be done [using Weblate](https://translate.codeberg.org/projects/scee/).
@@ -88,7 +88,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
 * Turn restriction overlay
 * Settings
   * Additional darker dark theme
-  * Background map can be changed to aerial / satellite imagery
+  * Background map can be changed to aerial / satellite imagery (currently disabled)
   * Separate deletion of quest and map tile cache
   * Adjust location update intervals
   * Log reader (not a setting, but it's in the menu)
@@ -148,7 +148,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
   * Data management settings
     * Disable auto-download
     * Disable always downloading map data on manual download, even if data is fresh
-    * Choose tile URL for aerial imagery
+    * Choose tile URL for aerial imagery (currently disabled)
     * Set data retention time
     * Disable local statistics updates (hides achievement messages)
     * Import / export

@@ -15,6 +15,7 @@ import androidx.core.graphics.Insets
 import androidx.core.graphics.toRectF
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
@@ -132,6 +133,7 @@ class InsertNodeFragment :
 
         binding.undoButton.isInvisible = true
         binding.okButton.isInvisible = !isFormComplete
+        binding.mapButton.isGone = true // todo: remove when re-adding raster tiles
         binding.mapButton.setOnClickListener { toggleBackground() }
         updateMapButtonText()
 

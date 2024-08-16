@@ -9,6 +9,7 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.russhwolf.settings.ObservableSettings
@@ -108,6 +109,7 @@ class MoveNodeFragment :
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
         binding.pin.pinIconView.setImageResource(editType.icon)
+        binding.mapButton.isGone = true // todo: remove when re-adding raster tiles
         binding.mapButton.setOnClickListener { toggleBackground() }
         updateMapButtonText()
 
