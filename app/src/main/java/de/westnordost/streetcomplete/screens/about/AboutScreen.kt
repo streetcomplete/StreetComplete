@@ -20,6 +20,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
+import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
@@ -37,6 +39,7 @@ fun AboutScreen(
     onClickBack: () -> Unit,
 ) {
     var showDonateDialog by remember { mutableStateOf(false) }
+    var showIntroTutorial by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
 
@@ -74,11 +77,29 @@ fun AboutScreen(
                     name = stringResource(R.string.about_title_privacy_statement),
                     onClick = { onClickPrivacyStatement() },
                 ) { NextScreenIcon() }
+            }
+
+            PreferenceCategory(stringResource(R.string.about_category_help)) {
+                Preference(
+                    name = stringResource(R.string.about_title_intro),
+                    onClick = { showIntroTutorial = true },
+                )
 
                 Preference(
                     name = stringResource(R.string.about_title_faq),
                     onClick = { context.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
                 ) { OpenInBrowserIcon() }
+
+                Preference(
+                    name = stringResource(R.string.about_title_report_error),
+                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
+                ) { OpenInBrowserIcon() }
+
+                Preference(
+                    name = stringResource(R.string.about_title_show_logs),
+                    onClick = { onClickLogs() },
+                    description = stringResource(R.string.about_summary_logs),
+                ) { NextScreenIcon() }
             }
 
             PreferenceCategory(stringResource(R.string.about_category_contribute)) {
@@ -115,20 +136,9 @@ fun AboutScreen(
                 }
 
                 Preference(
-                    name = stringResource(R.string.about_title_report_error),
-                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
-                ) { OpenInBrowserIcon() }
-
-                Preference(
                     name = stringResource(R.string.about_title_feedback),
                     onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
                 ) { OpenInBrowserIcon() }
-
-                Preference(
-                    name = stringResource(R.string.about_title_show_logs),
-                    onClick = { onClickLogs() },
-                    description = stringResource(R.string.about_summary_logs),
-                ) { NextScreenIcon() }
             }
         }
     }
@@ -142,6 +152,13 @@ fun AboutScreen(
                 onClickLink = { context.openUri(it) }
             )
         }
+    }
+
+    AnimatedScreenVisibility(showIntroTutorial) {
+        IntroTutorialScreen(
+            onDismissRequest = { showIntroTutorial = false },
+            dismissOnBackPress = true
+        )
     }
 }
 
