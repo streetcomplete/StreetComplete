@@ -177,7 +177,7 @@ class QuestPinsManager(
             withContext(Dispatchers.IO) { visibleQuestsSource.getAllVisible(bbox) }
         }
         val pins = questsInViewMutex.withLock {
-            questsInView.clear()
+            questsInView.entries.removeAll { it.value.size == 1 || it.value.none { it.position in bbox } }
             quests.forEach { questsInView[it.key] = createQuestPins(it) }
             questsInView.values.flatten()
         }
