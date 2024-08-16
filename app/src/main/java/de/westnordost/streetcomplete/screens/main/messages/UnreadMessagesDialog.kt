@@ -45,14 +45,14 @@ fun UnreadMessagesDialog(
     onClickOpenMessages: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    // TODO soundFx.play(R.raw.sliding_envelope)
-
     val density = LocalDensity.current.density
     val envelope = remember { Animatable(-1f) }
     val envelopeOpen = remember { Animatable(0f) }
     val content = remember { Animatable(0f) }
 
     LaunchedEffect(unreadMessageCount) {
+        // TODO soundFx.play(R.raw.sliding_envelope) - should be provided via composition locals
+        //      but that only becomes convenient if there are not entry points to compose all over the place
         envelope.animateTo(0f, tween(600))
         delay(150)
         launch { envelopeOpen.animateTo(1f, tween(300)) }

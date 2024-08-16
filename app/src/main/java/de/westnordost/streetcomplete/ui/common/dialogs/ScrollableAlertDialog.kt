@@ -112,23 +112,21 @@ fun ScrollableAlertDialog(
 private fun PreviewScrollableAlertDialog() {
     val loremIpsum = remember { LoremIpsum(200).values.first() }
     val scrollState = rememberScrollState()
-    AppTheme {
-        ScrollableAlertDialog(
-            onDismissRequest = {},
-            title = { Text("Title") },
-            content = {
-                Text(
-                    text = loremIpsum,
-                    modifier = Modifier
-                        .padding(horizontal = 24.dp)
-                        .verticalScroll(scrollState)
-                )
-            },
-            buttons = {
-                TextButton(onClick = {}) { Text("Cancel") }
-                TextButton(onClick = {}) { Text("OK") }
-            },
-            width = 260.dp
-        )
-    }
+    ScrollableAlertDialog(
+        onDismissRequest = {},
+        title = { Text("Title") },
+        content = {
+            Text(
+                text = loremIpsum,
+                modifier = Modifier
+                    .padding(horizontal = 24.dp)
+                    .verticalScroll(scrollState)
+            )
+        },
+        buttons = {
+            TextButton(onClick = {}) { Text("Cancel") }
+            TextButton(onClick = {}) { Text("OK") }
+        },
+        width = 260.dp
+    )
 }

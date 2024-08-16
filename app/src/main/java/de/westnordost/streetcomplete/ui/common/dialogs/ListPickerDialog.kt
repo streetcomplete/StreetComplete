@@ -122,15 +122,13 @@ fun <T> ListPickerDialog(
 @Composable
 private fun PreviewListPickerDialog() {
     val items = remember { (0..<5).toList() }
-    AppTheme {
-        ListPickerDialog(
-            onDismissRequest = {},
-            items = items,
-            onItemSelected = {},
-            title = { Text("Select something") },
-            selectedItem = 2,
-            getItemName = { "Item $it" },
-            width = 260.dp
-        )
-    }
+    ListPickerDialog(
+        onDismissRequest = {},
+        items = items,
+        onItemSelected = {},
+        title = { Text("Select something") },
+        selectedItem = 2,
+        getItemName = { "Item $it" },
+        width = 260.dp
+    )
 }
