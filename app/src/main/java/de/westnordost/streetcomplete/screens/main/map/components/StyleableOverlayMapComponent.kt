@@ -191,8 +191,8 @@ class StyleableOverlayMapComponent(
                 textColor(if (isNightMode) "#ccf" else "#124"),
                 textHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
                 textHaloWidth(2.5f),
-                iconColor(if (isNightMode) "#ccf" else "#124"),
-                iconHaloColor(if (isNightMode) "#2e2e48" else "#fff"),
+                iconColor(get("icon-color")),
+                iconHaloColor(get("icon-halo-color")),
                 iconHaloWidth(2.5f),
                 textOptional(true),
                 iconAllowOverlap(true),
@@ -252,6 +252,10 @@ class StyleableOverlayMapComponent(
             is PointStyle -> {
                 if (style.icon != null) {
                     p.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+                    val color = style.color ?: if (isNightMode) "#ccf" else "#124"
+                    p.addProperty("icon-color", color)
+                    val haloColor = style.color?.let { getDarkenedColor(it) } ?: if (isNightMode) "#2e2e48" else "#fff"
+                    p.addProperty("icon-halo-color", getDarkenedColor(haloColor))
                 }
                 if (style.label != null) p.addProperty("label", style.label)
 

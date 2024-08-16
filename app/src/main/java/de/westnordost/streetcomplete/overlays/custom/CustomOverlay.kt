@@ -109,7 +109,9 @@ private fun getStyle(element: Element, colorKeySelector: Regex?, dashFilter: Ele
 
 
     return when {
-        element is Node -> PointStyle(R.drawable.ic_custom_overlay_node, getNameLabel(element.tags), color)
+//        element is Node -> PointStyle(R.drawable.ic_custom_overlay_node, getNameLabel(element.tags), color)
+        // MapLibre can only use colors with sdf icons, not with normal images
+        element is Node -> PointStyle(R.drawable.ic_preset_maki_circle, getNameLabel(element.tags), color)
         element.isArea() -> PolygonStyle(color, label = getNameLabel(element.tags))
         // no labels for lines, because this often leads to duplicate labels e.g. for roads
         leftColor.isNotEmpty() || rightColor.isNotEmpty() -> PolylineStyle(
