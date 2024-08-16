@@ -90,6 +90,10 @@ class WheelPickerState(selectedItemIndex: Int = 0) : ScrollableState {
     }
 }
 
+/** A WheelPicker aka NumberPicker (in Android). Presents the selectable [items] on a draggable
+ *  vertical wheel, the item displayed in the center is selected.
+ *  [visibleAdjacentItems] determines how many adjacent items to the one that is selected should
+ *  be displayed. */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun <T> WheelPicker(

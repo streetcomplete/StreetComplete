@@ -36,6 +36,10 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
+/** A text that animates changes to the number displayed like a mechanical  tally counter
+ *  (https://en.wikipedia.org/wiki/Tally_counter).
+ *  If [clip] is true, the fading numbers displayed above and below the actual count during
+ *  animation are clipped (like they would be with a mechanical tally counter). */
 @Composable
 fun Counter(
     count: Int,
