@@ -114,7 +114,7 @@ private fun FiltersCounter(count: Int, modifier: Modifier = Modifier) {
         modifier = modifier
             .size(16.dp)
             .background(
-                color = MaterialTheme.colors.secondaryVariant,
+                color = MaterialTheme.colors.secondary,
                 shape = CircleShape
             ),
         textAlign = TextAlign.Center,
