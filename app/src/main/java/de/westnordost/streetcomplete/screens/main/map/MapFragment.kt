@@ -177,7 +177,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
             true
         }
 
-        val sceneMapComponent = SceneMapComponent(requireContext(), map)
+        val sceneMapComponent = SceneMapComponent(requireContext(), map, prefs)
         val style = sceneMapComponent.loadStyle()
         this.sceneMapComponent = sceneMapComponent
 

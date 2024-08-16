@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.res.Configuration
 import android.provider.Settings
 import androidx.annotation.UiThread
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitSetStyle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -21,14 +23,17 @@ import java.util.Locale
 class SceneMapComponent(
     private val context: Context,
     private val map: MapLibreMap,
+    private val prefs: Preferences,
 ) {
     /** Load the scene */
     suspend fun loadStyle(): Style {
         val currentNightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        val mapFile =
-            if (isNightMode) "map_theme/streetcomplete-night.json"
-            else "map_theme/streetcomplete.json"
+        val mapFile = when {
+            prefs.theme == Theme.DARK_CONTRAST -> "map_theme/streetcomplete-dark_contrast.json"
+            isNightMode -> "map_theme/streetcomplete-night.json"
+            else -> "map_theme/streetcomplete.json"
+        }
 
         val styleJsonString = context.resources.assets.open(mapFile)
             .bufferedReader()

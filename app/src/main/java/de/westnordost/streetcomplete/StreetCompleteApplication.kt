@@ -249,6 +249,9 @@ class StreetCompleteApplication : Application() {
     }
 
     private fun updateTheme(theme: Theme) {
+        if (theme == Theme.DARK_CONTRAST || theme == Theme.DARK)
+            // night mode off to trigger reload (maybe there is a way to do it without this, but at least ir works...)
+            AppCompatDelegate.setDefaultNightMode(Theme.LIGHT.appCompatNightMode)
         AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
     }
 
