@@ -34,7 +34,6 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
@@ -135,7 +134,7 @@ private fun QuestList(
                         modifier = Modifier.size(32.dp),
                     )
                     Text(
-                        text = genericQuestTitle(item),
+                        text = stringResource(item.title),
                         style = MaterialTheme.typography.body1
                     )
                 }
@@ -152,6 +151,6 @@ private fun filterQuests(quests: List<QuestType>, filter: String): List<QuestTyp
         quests
     } else {
         val wordList = words.split(' ')
-        quests.filter { genericQuestTitle(it).lowercase().containsAll(wordList) }
+        quests.filter { stringResource(it.title).lowercase().containsAll(wordList) }
     }
 }

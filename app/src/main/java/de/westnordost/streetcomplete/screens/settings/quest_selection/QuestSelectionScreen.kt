@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import java.util.Locale
@@ -81,6 +80,6 @@ private fun filterQuests(quests: List<QuestSelection>, filter: String): List<Que
         quests
     } else {
         val wordList = words.split(' ')
-        quests.filter { genericQuestTitle(it.questType).lowercase().containsAll(wordList) }
+        quests.filter { stringResource(it.questType.title).lowercase().containsAll(wordList) }
     }
 }
