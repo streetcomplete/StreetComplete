@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.teammode
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -11,9 +9,6 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -21,13 +16,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,7 +32,7 @@ import de.westnordost.streetcomplete.ui.common.rememberWheelPickerState
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.theme.TeamColors
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
-import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.theme.selectionBackground
 
 /** Wizard which enables team mode */
 @Composable
@@ -148,7 +140,7 @@ private fun TeamModeColorSelect(
                     .clickable { onSelectedIndex(index) }
                     .conditional(selectedIndex == index) {
                         background(
-                            color = MaterialTheme.colors.secondary.copy(alpha = 0.67f),
+                            color = MaterialTheme.colors.selectionBackground,
                             shape = MaterialTheme.shapes.small
                         )
                     }
