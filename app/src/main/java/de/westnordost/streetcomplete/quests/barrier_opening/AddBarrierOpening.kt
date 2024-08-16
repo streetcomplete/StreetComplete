@@ -39,11 +39,8 @@ class AddBarrierOpening(
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags["barrier"] == "bollard")
-        {
-            quest_barrier_opening_width_bollard
-        } else if (tags["barrier"] == "block") {
-        quest_barrier_opening_width_bollard
+        if (tags["barrier"] == "bollard" || tags["barrier"] == "block") {
+            R.string.quest_barrier_opening_width_bollard
         } else {
             R.string.quest_barrier_opening_width_gate
         }
