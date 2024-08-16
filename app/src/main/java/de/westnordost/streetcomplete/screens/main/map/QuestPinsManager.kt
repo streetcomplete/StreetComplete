@@ -178,7 +178,7 @@ class QuestPinsManager(
         }
         val pins = questsInViewMutex.withLock {
             /* Usually, we would call questsInView.clear() here. However,
-               wuests have only a single position, but may have multiple pins (see
+               quests have only a single position, but may have multiple pins (see
                Quest::markerLocations), e.g. at the start and end of a long road. A pin of a quest
                whose center is outside the current view may hence be within the current view. Quest
                pins like these should not disappear when panning the map.
