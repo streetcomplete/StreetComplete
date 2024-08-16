@@ -168,6 +168,7 @@ import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -555,6 +556,7 @@ class MainFragment :
                             viewLifecycleScope.launch(Dispatchers.IO) {
                                 if (isCurrentCustomOverlay && selectedOverlaySource.selectedOverlay is CustomOverlay) {
                                     selectedOverlaySource.selectedOverlay = null
+                                    delay(100) // need a rather long delay for this to work...
                                     selectedOverlaySource.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
                                 }
                                 reloadOverlaySelector()
@@ -1137,8 +1139,11 @@ class MainFragment :
                 val newIdx = if (prefs.getString(Prefs.CUSTOM_OVERLAY_INDICES, "0").isBlank()) 0
                 else getCustomOverlayIndices(prefs).max() + 1
                 showOverlayCustomizer(newIdx, requireContext(), prefs, questTypeRegistry, {
-                    selectedOverlayController.selectedOverlay = null
-                    selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
+                    viewLifecycleScope.launch(Dispatchers.IO) {
+                        selectedOverlayController.selectedOverlay = null
+                        delay(100) // need a rather long delay for this to work...
+                        selectedOverlayController.selectedOverlay = overlayRegistry.getByName(CustomOverlay::class.simpleName!!)
+                    }
                 }, {
                     // do nothing if deleted (should not be possible)
                 })
