@@ -36,6 +36,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
@@ -111,8 +112,10 @@ fun EditHistorySidebar(
         modifier = modifier
             .padding(end = insets.calculateEndPadding(dir))
             .fillMaxHeight()
-            .consumeWindowInsets(insets),
-        elevation = 16.dp,
+            .consumeWindowInsets(insets)
+            .shadow(16.dp),
+        // not using surface's elevation here because we don't want it to change its background
+        // color to gray in dark mode
     ) {
         LazyColumn(
             modifier = Modifier
