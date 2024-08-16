@@ -19,7 +19,9 @@ class OverlaysTutorialFragment : Fragment() {
         composableContent {
             Surface {
                 OverlaysTutorialScreen(
-                    onFinished = { listener?.onOverlaysTutorialFinished() }
+                    onDismissRequest = {},
+                    onFinished = { listener?.onOverlaysTutorialFinished() },
+                    dismissOnBackPress = false
                 )
             }
         }

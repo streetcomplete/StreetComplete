@@ -44,11 +44,15 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun OverlaysTutorialScreen(
-    onFinished: () -> Unit,
+    onDismissRequest: () -> Unit,
+    onFinished: () -> Unit = {},
+    dismissOnBackPress: Boolean = true,
 ) {
     TutorialScreen(
         pageCount = 3,
+        onDismissRequest = onDismissRequest,
         onFinished = onFinished,
+        dismissOnBackPress = dismissOnBackPress,
         illustration = { page ->
             OverlaysTutorialIllustration(page)
         },
@@ -255,5 +259,5 @@ private fun OverlaysTutorialStepEditText() {
 @PreviewScreenSizes
 @Composable
 private fun PreviewOverlaysTutorialScreen() {
-    OverlaysTutorialScreen {}
+    OverlaysTutorialScreen({}, {})
 }
