@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.data.user.oauth
 
+import de.westnordost.streetcomplete.data.ConnectionException
+import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.expectSuccess
+import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
@@ -10,6 +15,8 @@ import io.ktor.http.URLParserException
 import io.ktor.http.Url
 import io.ktor.http.contentType
 import io.ktor.http.decodeURLQueryComponent
+import io.ktor.http.isSuccess
+import io.ktor.http.parameters
 import io.ktor.http.takeFrom
 import io.ktor.utils.io.errors.IOException
 import kotlinx.serialization.Serializable
@@ -21,6 +28,8 @@ import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
 /**
+ * Client to get the access token as the third and final step of the OAuth authorization flow.
+ *
  * Authorization flow:
  *
  * 1. Generate and store a OAuthAuthorizationParams instance and open the authorizationRequestUrl
@@ -30,50 +39,42 @@ import kotlin.io.encoding.ExperimentalEncodingApi
  * 3. Check if the URI received is matches the OAuthAuthorizationParams instance with itsForMe(uri)
  *    and feed the received uri to OAuthService.retrieveAccessToken(uri)
  */
-class OAuthService(private val httpClient: HttpClient) {
+class OAuthApiClient(private val httpClient: HttpClient) {
     private val json = Json { ignoreUnknownKeys = true }
 
     /**
      * Retrieves the access token, given the [authorizationResponseUrl]
      *
      * @throws OAuthException if there has been an OAuth authorization error
-     * @throws OAuthConnectionException if the server reply is malformed or there is an issue with
-     *                                   the connection
+     * @throws ConnectionException if the server reply is malformed or there is an issue with
+     *                             the connection
      */
-    suspend fun retrieveAccessToken(
+    suspend fun getAccessToken(
         request: OAuthAuthorizationParams,
         authorizationResponseUrl: String
-    ): AccessTokenResponse {
-        val authorizationCode = extractAuthorizationCode(authorizationResponseUrl)
+    ): AccessTokenResponse = wrapApiClientExceptions {
         try {
             val response = httpClient.post(request.accessTokenUrl) {
-                url {
-                    parameters.append("grant_type", "authorization_code")
-                    parameters.append("client_id", request.clientId)
-                    parameters.append("code", authorizationCode)
-                    parameters.append("redirect_uri", request.redirectUri)
-                    parameters.append("code_verifier", request.codeVerifier)
-                }
                 contentType(ContentType.Application.FormUrlEncoded)
+                parameter("grant_type", "authorization_code")
+                parameter("client_id", request.clientId)
+                parameter("code", extractAuthorizationCode(authorizationResponseUrl))
+                parameter("redirect_uri", request.redirectUri)
+                parameter("code_verifier", request.codeVerifier)
+                expectSuccess = true
             }
-
-            if (response.status != HttpStatusCode.OK) {
-                val errorResponse = json.decodeFromString<ErrorResponseJson>(response.body())
+            val accessTokenResponse = json.decodeFromString<AccessTokenResponseJson>(response.body())
+            if (accessTokenResponse.token_type.lowercase() != "bearer") {
+                throw ConnectionException("OAuth 2 token endpoint returned an unknown token type (${accessTokenResponse.token_type})")
+            }
+            return AccessTokenResponse(accessTokenResponse.access_token, accessTokenResponse.scope?.split(" "))
+        } catch (e: ClientRequestException) {
+            if (e.response.status == HttpStatusCode.BadRequest) {
+                val errorResponse = json.decodeFromString<ErrorResponseJson>(e.response.body())
                 throw OAuthException(errorResponse.error, errorResponse.error_description, errorResponse.error_uri)
             } else {
-                val accessTokenResponse = json.decodeFromString<AccessTokenResponseJson>(response.body())
-                if (accessTokenResponse.token_type.lowercase() != "bearer") {
-                    throw OAuthConnectionException("OAuth 2 token endpoint returned an unknown token type (${accessTokenResponse.token_type})")
-                }
-                return AccessTokenResponse(accessTokenResponse.access_token, accessTokenResponse.scope?.split(" "))
+                throw e
             }
-            // if OSM server does not return valid JSON, it is the server's fault, hence
-        } catch (e: SerializationException) {
-            throw OAuthConnectionException("OAuth 2 token endpoint did not return a valid response", e)
-        } catch (e: IllegalArgumentException) {
-            throw OAuthConnectionException("OAuth 2 token endpoint did not return a valid response", e)
-        } catch (e: IOException) {
-            throw OAuthConnectionException(cause = e)
         }
     }
 }
@@ -145,7 +146,7 @@ class OAuthService(private val httpClient: HttpClient) {
  *
  * @throws OAuthException if the URI does not contain the authorization code, e.g.
  *                        the user did not accept the requested permissions
- * @throws OAuthConnectionException if the server reply is malformed
+ * @throws ConnectionException if the server reply is malformed
  */
 private fun extractAuthorizationCode(uri: String): String {
     val parameters = Url(uri).parameters
@@ -153,7 +154,7 @@ private fun extractAuthorizationCode(uri: String): String {
     if (authorizationCode != null) return authorizationCode
 
     val error = parameters["error"]
-        ?: throw OAuthConnectionException("OAuth 2 authorization endpoint did not return a valid error response: $uri")
+        ?: throw ConnectionException("OAuth 2 authorization endpoint did not return a valid error response: $uri")
 
     throw OAuthException(
         error.decodeURLQueryComponent(plusIsSpace = true),

@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
@@ -31,7 +31,7 @@ class ElementEditsUploaderTest {
     private lateinit var mapDataController: MapDataController
     private lateinit var noteEditsController: NoteEditsController
     private lateinit var singleUploader: ElementEditUploader
-    private lateinit var mapDataApi: MapDataApi
+    private lateinit var mapDataApi: MapDataApiClient
     private lateinit var statisticsController: StatisticsController
 
     private lateinit var uploader: ElementEditsUploader
