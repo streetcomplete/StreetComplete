@@ -240,7 +240,7 @@ fun MapControls(
                     CompassButton(
                         onClick = onClickCompass,
                         modifier = Modifier.graphicsLayer(
-                            rotationZ = mapRotation.toFloat(),
+                            rotationZ = -mapRotation.toFloat(),
                             rotationX = mapTilt.toFloat()
                         )
                     )
