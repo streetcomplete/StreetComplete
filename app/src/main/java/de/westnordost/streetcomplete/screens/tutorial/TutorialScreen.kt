@@ -72,6 +72,7 @@ fun TutorialScreen(
                     modifier = Modifier.width(480.dp),
                     contentPadding = PaddingValues(horizontal = 16.dp),
                     pageSpacing = 64.dp,
+                    userScrollEnabled = false,
                     pageContent = { page ->
                         Box(
                             Modifier
