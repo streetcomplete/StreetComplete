@@ -36,7 +36,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
@@ -74,7 +74,7 @@ class UndoDialog(
         binding.titleText.text = edit.getTitle()
         if (edit is ElementEdit) {
             binding.titleHintText.text = element?.let {
-                getNameAndLocationLabel(it, context.resources, featureDictionaryLazy.value)
+                getNameAndLocationSpanned(it, context.resources, featureDictionaryLazy.value)
             }
         }
     }
