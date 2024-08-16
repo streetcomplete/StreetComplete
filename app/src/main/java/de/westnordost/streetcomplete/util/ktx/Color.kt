@@ -35,10 +35,14 @@ data class RGB(val red: UByte, val green: UByte, val blue: UByte) {
         "#" + red.toHexString() + green.toHexString() + blue.toHexString()
 }
 
+@OptIn(ExperimentalStdlibApi::class)
+fun Int.toHexColor(withAlpha: Boolean = false) = if (withAlpha)
+    "#${toHexString()}" else "#${toHexString().takeLast(6)}"
+
 /** Creates RGB from string in the form "#rrggbb" */
 @OptIn(ExperimentalStdlibApi::class, ExperimentalUnsignedTypes::class)
 fun String.toRGB(): RGB {
-    require(length == 7 || length == 9)
+    require(length == 7 || length == 9) { "bad color string: $this" }
     require(get(0) == '#')
 
     val rgb = substring(1).hexToUByteArray()

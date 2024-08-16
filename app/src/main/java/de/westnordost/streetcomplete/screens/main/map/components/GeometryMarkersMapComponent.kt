@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.util.ktx.toHexColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -64,6 +65,7 @@ class GeometryMarkersMapComponent(
                 iconColor(get("color")),
                 iconImage(get("icon")),
                 iconAllowOverlap(true),
+                iconRotate(get("rotation")),
                 textField(get("label")),
                 textAnchor(Property.TEXT_ANCHOR_TOP),
                 textOffset(arrayOf(0f, 1f)),
@@ -111,10 +113,9 @@ class GeometryMarkersMapComponent(
     }
 }
 
-@OptIn(ExperimentalStdlibApi::class)
 private fun Marker.toFeatures(resources: Resources): List<Feature> {
     val features = ArrayList<Feature>(3)
-    val color = "#${color?.toHexString()?.takeLast(6) ?: "D140D0"}"
+    val color = color?.toHexColor() ?: "#D140D0"
     // point marker or any marker with title or icon
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = JsonObject()
@@ -124,6 +125,7 @@ private fun Marker.toFeatures(resources: Resources): List<Feature> {
             p.addProperty("label", title)
         }
         p.addProperty("color", color)
+        p.addProperty("rotation", rotation?.toFloat() ?: 0.0f)
         features.add(Feature.fromGeometry(geometry.center.toPoint(), p))
     }
 
