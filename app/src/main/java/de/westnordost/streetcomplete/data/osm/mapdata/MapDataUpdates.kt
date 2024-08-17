@@ -24,7 +24,9 @@ fun createMapDataUpdates(
     val idUpdates = mutableListOf<ElementIdUpdate>()
 
     for (element in elements) {
-        if (element is Relation && element.tags["type"] in ignoreRelationTypes) continue
+        if (element is Relation
+            && (element.tags["type"] in ignoreRelationTypes && (element.members.size > 100 || element.tags["route"] !in allowRouteTypes))
+            ) continue
 
         val newElement = element.update(updates)
         if (newElement == null) {
