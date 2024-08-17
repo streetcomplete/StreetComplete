@@ -227,7 +227,6 @@ class MainFragment :
             )
         }
 
-        binding.mapControls.respectSystemInsets(View::setMargins)
         view.respectSystemInsets { windowInsets = it }
 
         binding.locationPointerPin.setOnClickListener { onClickLocationPointer() }
