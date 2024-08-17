@@ -632,6 +632,7 @@ class MainFragment :
 
     private fun onClickTracksStop() {
         // hide the track information
+        controlsViewModel.isRecordingTracks.value = false
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
@@ -788,6 +789,7 @@ class MainFragment :
     private fun onClickCreateTrack() {
         val mapFragment = mapFragment ?: return
         mapFragment.startPositionTrackRecording()
+        controlsViewModel.isRecordingTracks.value = true
     }
 
     // ---------------------------------- Location Pointer Pin  --------------------------------- */
