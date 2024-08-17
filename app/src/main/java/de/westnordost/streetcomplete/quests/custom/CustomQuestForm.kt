@@ -57,7 +57,7 @@ class CustomQuestForm : AbstractExternalSourceQuestForm() {
         val text = entry.text
 
         if (text.contains("addNode")) {
-            setTitle(resources.getString(R.string.quest_custom_quest_title, text.substringBefore("addNode")))
+            setTitle(resources.getString(R.string.quest_custom_quest_title) + " ${text.substringBefore("addNode")}")
             val tags = text.substringAfter("addNode").replace(",", "\n").toTags()
             tagsText = tags.map { "${it.key}=${it.value}" }.joinToString("\n")
             pos = entry.position ?: entry.elementKey?.let { mapDataSource.getGeometry(it.type, it.id)?.center }
@@ -67,6 +67,6 @@ class CustomQuestForm : AbstractExternalSourceQuestForm() {
             }
             setTitleHintLabel(getString(R.string.quest_custom_quest_add_node_text, "\n$tagsText"))
         } else
-            setTitle(resources.getString(R.string.quest_custom_quest_title, text))
+            setTitle(resources.getString(R.string.quest_custom_quest_title) + " $text")
     }
 }

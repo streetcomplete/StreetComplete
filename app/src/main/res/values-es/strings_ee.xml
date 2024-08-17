@@ -129,7 +129,7 @@
     <string name="quest_order_normal">Volver al orden de tarea normal</string>
     <string name="level_filter_title">Elija claves para comprobar</string>
     <string name="level_filter_enable">Habilitar filtro de nivel</string>
-    <string name="quest_osmose_title">Tareas Osmose: %s</string>
+    <string name="quest_osmose_title">Tareas Osmose:</string>
     <string name="quest_osmose_settings_items">Modificar tipos de elementos para ignorar</string>
     <string name="level_filter_hint">Dejar vacío para mostrar no etiquetado</string>
     <string name="quest_osmose_false_positive">Reportar falso positivo</string>
@@ -150,7 +150,7 @@
     <string name="quest_osmose_hide_type">Ignorar problemas con el mismo…</string>
     <string name="quest_osmose_delete_this_issue">Eliminar este problema localmente</string>
     <string name="quest_custom_quest_osmose_not_found">Entrada eliminada, eliminando tarea</string>
-    <string name="quest_custom_quest_title">Tarea personalizada: %s</string>
+    <string name="quest_custom_quest_title">Tarea personalizada:</string>
     <string name="quest_custom_quest_remove">Eliminar de la lista</string>
     <string name="quest_custom_quest_add_node_text">Puedes añadir un nodo con: %s</string>
     <string name="quest_poi_seating_title">POI: Asientos</string>
@@ -176,13 +176,13 @@
     <string name="quest_artwork_fountain">Fuente</string>
     <string name="quest_poi_misc_title">POI: Variados</string>
     <string name="default_disabled_msg_poi_other">Esta \"tarea\" muestra varios PDI como hidrantes, miradores o baños como puntos amarillos. Haga clic en el punto para mostrar detalles y otras respuestas.</string>
-    <string name="quest_poi_recycling_title">POI: Reciclaje %s</string>
-    <string name="quest_poi_traffic_title">POI: Tráfico %s</string>
+    <string name="quest_poi_recycling_title">POI: Reciclaje</string>
+    <string name="quest_poi_traffic_title">POI: Tráfico</string>
     <string name="default_disabled_msg_poi_traffic">Esta \"tarea\" muestra los puntos de interés relacionados con el tráfico como puntos de color azul claro. Haga clic en el punto para mostrar detalles y otras respuestas.</string>
     <string name="default_disabled_msg_poi_vacant">Esta \"tarea\" muestra las tiendas vacías como puntos grises. Haga clic en el punto para mostrar detalles y otras respuestas.</string>
     <string name="quest_poi_vacant_title">POI: Lugar vacío</string>
     <string name="quest_traffic_stuff_raised">Es un cruce elevado</string>
-    <string name="quest_service_building_type_title">¿Qué tipo de edificio de servicios es este %s\?</string>
+    <string name="quest_service_building_type_title">¿Qué tipo de edificio de servicios es este\?</string>
     <string name="quest_service_building_type_pressure">Regulación de presión de gas</string>
     <string name="quest_service_building_type_reservoir">Depósito de agua</string>
     <string name="quest_service_building_type_well">Pozo de agua</string>
@@ -378,8 +378,8 @@
     <string name="quest_settings_fixme_title">Seleccionar valores fixme a ignorar</string>
     <string name="quest_settings_dot_labels_message">Establezca qué etiquetas deben usarse para la etiqueta, en el orden dado. Una cadena vacía nunca mostrará ninguna etiqueta, \"label\" mostrará la etiqueta de nombre predeterminada de StreetComplete usando el nombre, la marca, la referencia, la referencia local y el operador.</string>
     <string name="quest_settings_what_to_edit">¿Qué configurar\?</string>
-    <string name="quest_poi_vending_title">POI: Máquina expendedora %s</string>
-    <string name="quest_fixme_title">Corrigeme: %1$s</string>
+    <string name="quest_poi_vending_title">POI: Máquina expendedora</string>
+    <string name="quest_fixme_title">Corrigeme:</string>
     <string name="default_disabled_msg_poi_fixme">Esta \"tarea\" muestra FixMes como puntos rojos (con excepciones predeterminadas de \'sí\' y \'continuar\'). Haga clic en el punto para mostrar detalles y otras respuestas.</string>
     <string name="quest_fixme_remove">Eliminar este fixme</string>
     <string name="quest_railwayPlatformRef_abc">ABC</string>
@@ -472,7 +472,7 @@
     <string name="quest_viaFerrataScale_two">Grado 2/K2/B - fácil</string>
     <string name="quest_shelter_type_lean_to">Cobertizo</string>
     <string name="quest_street_cabinet_transport_management">Gestión del transporte</string>
-    <string name="quest_street_cabinet_type_title">¿Qué clase de armario callejero es este%s\?</string>
+    <string name="quest_street_cabinet_type_title">¿Qué clase de armario callejero es este\?</string>
     <string name="quest_viaFerrataScale_one">Grado 1/K1/A - muy fácil</string>
     <string name="quest_viaFerrataScale_three_description">Un poco de escalada técnica, pero nada que requiera brazos particularmente fuertes. Se requiere set de vía ferrata.</string>
     <string name="quest_viaFerrataScale_six">Nivel 6/K6/F - extremadamente difícil</string>

@@ -17,8 +17,6 @@ class CustomQuest(private val customQuestList: CustomQuestList) : ExternalSource
 
     override fun getTitle(tags: Map<String, String>): Int = R.string.quest_custom_quest_title
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf("")
-
     override val source: String = "custom"
 
     override suspend fun download(bbox: BoundingBox) = getQuests(bbox)

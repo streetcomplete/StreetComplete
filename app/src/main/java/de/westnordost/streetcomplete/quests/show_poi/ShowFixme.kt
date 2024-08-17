@@ -26,9 +26,6 @@ class ShowFixme : OsmFilterQuestType<Boolean>() {
 
     override fun createForm() = ShowFixmeAnswerForm()
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String>
-        = arrayOf((tags["fixme"] ?: tags["FIXME"]).toString())
-
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (!answer) {
             tags.remove("fixme")

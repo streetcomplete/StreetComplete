@@ -33,7 +33,6 @@ import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.quests.getQuestTitle
 import de.westnordost.streetcomplete.screens.MainActivity
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -63,7 +62,7 @@ class NearbyQuestMonitor : Service(), LocationListener, KoinComponent {
         NotificationCompat.Builder(this, FOUND_CHANNEL_ID)
             .setSmallIcon(R.mipmap.ic_notification)
             .setContentTitle(getString(R.string.quest_monitor_found, size))
-            .setContentText(resources.getQuestTitle(closest.type, emptyMap()))
+            .setContentText(resources.getString(closest.type.title))
             .setContentIntent(intent(closest.position))
             .setCategory(NotificationCompat.CATEGORY_ALARM)
             .build()

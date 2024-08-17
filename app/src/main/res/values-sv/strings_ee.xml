@@ -97,7 +97,7 @@
     <string name="quest_mapSize_title">Vilket område täcker denna karta?</string>
     <string name="quest_mapType_title">Vilken typ av karta är detta?</string>
     <string name="quest_outdoor_seating_name_title">Vilken typ av utomhussittplatser har det här stället?</string>
-    <string name="quest_osmose_title">Osmose-uppdrag: %s</string>
+    <string name="quest_osmose_title">Osmose-uppdrag:</string>
     <string name="pref_screen_quests">Uppdrag</string>
     <string name="advanced_resurvey_hint_date">Använd formatet: ÅÅÅÅ-MM-DD</string>
     <string name="quest_osmose_no_undo">Är du säker? Detta kan inte ångras!</string>
@@ -156,7 +156,7 @@
 \n \u0020Vänligen aktivera denna inställning bara om du har OSM-erfarenhet utanför StreetComplete och vet vad du håller på med. \u0020</string>
     <string name="pref_dynamic_quest_creation_summary">Uppdrag skapas när det visade området laddas. Något långsamt, men tillämpar omedelbart ändrade uppdragsinställningar.</string>
     <string name="quest_fixme_remove">Tag bort denna fixme</string>
-    <string name="quest_service_building_type_title">Vilken typ av servicebyggnad är detta%s?</string>
+    <string name="quest_service_building_type_title">Vilken typ av servicebyggnad är detta?</string>
     <string name="day_night_visibility">Visa inte uppdrag olämpliga för nuvarande tid på dygnet</string>
     <string name="pref_update_local_statistics_summary">Inaktivering snabbar på uppladdning och stoppar meddelanden om prestationer</string>
     <string name="quest_service_building_type_well">Vattenbrunn</string>
@@ -252,7 +252,7 @@
     <string name="quest_generic_surface_button">Allmänna typer av underlag som svar</string>
     <string name="element_selection_button">Val av element</string>
     <string name="quest_settings_leaf_type_single_tree_message">Fråga om lövtyp även för enskilda träd?</string>
-    <string name="quest_custom_quest_title">Anpassat uppdrag: %s</string>
+    <string name="quest_custom_quest_title">Anpassat uppdrag:</string>
     <string name="quest_guidepost_sports_horse">Hästridning</string>
     <string name="quest_is_pharmacy_dispensing_title">Kan alla receptbelagda läkemedel hämtas här?</string>
     <string name="quest_piste_lit_title">Är pisten upplyst här?</string>
@@ -269,11 +269,11 @@
     <string name="quest_utility_gas">Gas</string>
     <string name="quest_utility_sewerage">Avlopp</string>
     <string name="quest_utility_telecom">Telekommunikation</string>
-    <string name="quest_fixme_title">FixMe: %1$s</string>
+    <string name="quest_fixme_title">FixMe:</string>
     <string name="quest_service_building_type_plant">Kraftverk</string>
     <string name="quest_service_building_type_reservoir">Vattenreservoar</string>
     <string name="quest_service_building_railway">Järnväg</string>
-    <string name="quest_street_cabinet_type_title">Vilken typ av gatuskåp är detta%s?</string>
+    <string name="quest_street_cabinet_type_title">Vilken typ av gatuskåp är detta?</string>
     <string name="quest_street_cabinet_traffic">Trafik</string>
     <string name="quest_street_cabinet_street_lighting">Gatubelysning</string>
     <string name="quest_seating_parklet">Brevid trottoarkanten, eller där det brukade vara parkering</string>
@@ -351,9 +351,9 @@
     <string name="quest_poi_has_atm_title">POI: Har bankomat</string>
     <string name="quest_poi_misc_title">POI: Blandat</string>
     <string name="default_disabled_msg_poi_other">Detta \"uppdrag\" visar blandade POI:er som vattenposter, utsiktsplatser och toaletter som gula prickar. Klicka på pricken för att visa detaljer och andra svar.</string>
-    <string name="quest_poi_recycling_title">POI: Återvinning av %s</string>
+    <string name="quest_poi_recycling_title">POI: Återvinning av</string>
     <string name="default_disabled_msg_poi_recycling">Detta \"uppdrag\" visar återvinnings- och avfallsrelaterade POI:er som gröna prickar. Klicka på pricken för att visa detaljer och andra svar.</string>
-    <string name="quest_poi_traffic_title">POI: Trafik %s</string>
+    <string name="quest_poi_traffic_title">POI: Trafik</string>
     <string name="quest_poi_vacant_title">POI: Tom plats</string>
     <string name="default_disabled_msg_poi_vacant">Detta \"uppdrag\" visar tomma butikslokaler som gråa prickar. Klicka på pricken för att visa detaljer och andra svar.</string>
     <string name="quest_street_cabinet_traffic_control">Trafikkontroll</string>

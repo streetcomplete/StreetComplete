@@ -70,8 +70,8 @@
     <string name="action_scee_quests">Zobrazit pouze úkoly SCEE</string>
     <string name="quest_settings_reset">Resetovat</string>
     <string name="quest_settings_eligible_highways">Nastavte silnice vhodné pro tento úkol, oddělené čárkou</string>
-    <string name="quest_osmose_title">Úkol Osmose: %s</string>
-    <string name="quest_custom_quest_title">Vlastní úkol: %s</string>
+    <string name="quest_osmose_title">Úkol Osmose:</string>
+    <string name="quest_custom_quest_title">Vlastní úkol:</string>
     <string name="quest_custom_quest_remove">Odstranit ze seznamu</string>
     <string name="quest_custom_quest_add_node">Přidat uzel/bod (node)</string>
     <string name="quest_benchMaterial_title">Z čeho je toto vyrobeno?</string>
@@ -96,7 +96,7 @@
     <string name="quest_utility_gas">Plyn</string>
     <string name="quest_utility_sewerage">Odpadní vody</string>
     <string name="quest_utility_telecom">Telekomunikace</string>
-    <string name="quest_service_building_type_title">Jaký druh servisní budovy je toto %s?</string>
+    <string name="quest_service_building_type_title">Jaký druh servisní budovy je toto?</string>
     <string name="quest_service_building_type_substation">Elektrická stanice</string>
     <string name="quest_service_building_type_minor_substation">Malá elektrická stanice</string>
     <string name="quest_service_building_type_plant">Elektrárna</string>
@@ -235,7 +235,7 @@
     <string name="import_error_db_version">Chyba při importu: neznámá verze</string>
     <string name="quick_switch_map_background">Přepnout mezi satelitním a normálním pozadím</string>
     <string name="quest_service_building_railway">Železnice</string>
-    <string name="quest_street_cabinet_type_title">Jaký druh pouliční skříňky je toto %s?</string>
+    <string name="quest_street_cabinet_type_title">Jaký druh pouliční skříňky je toto?</string>
     <string name="quest_trail_visibility_title">Jaká je viditelnost této cesty?</string>
     <string name="quest_trail_visibility_good_description">Cesta nebo další značka jsou vždy viditelné, ale někdy je třeba je hledat. Mapa je doporučena.</string>
     <string name="quest_trail_visibility_no_description">Většinou žádná cesta, žádné značky. Nutné výborné orientační schopnosti.</string>

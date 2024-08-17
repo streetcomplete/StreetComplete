@@ -26,15 +26,6 @@ class ShowRecycling : OsmFilterQuestType<Boolean>() {
     override fun getTitle(tags: Map<String, String>) =
         R.string.quest_poi_recycling_title
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String>
-        = arrayOf(if (!tags["recycling_type"].isNullOrBlank())
-            tags.mapNotNull {
-                if (it.value == "yes" && it.key.startsWith("recycling:"))
-                    it.key.substringAfter("recycling:")
-                else null
-            }.sorted().joinToString(", ")
-        else "")
-
     override fun createForm() = ShowRecyclingAnswerForm()
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

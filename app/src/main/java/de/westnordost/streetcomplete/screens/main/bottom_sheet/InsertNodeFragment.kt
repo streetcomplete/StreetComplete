@@ -45,7 +45,7 @@ import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -360,7 +360,7 @@ class InsertNodeFragment :
     }
 
     private fun getElementText(element: Element): CharSequence {
-        val title = getNameAndLocationLabel(element, resources, featureDictionary.value, false)
+        val title = getNameAndLocationSpanned(element, resources, featureDictionary.value, false)
         return title ?: "${element.type} ${element.id}"
     }
 

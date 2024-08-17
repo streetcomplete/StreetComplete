@@ -18,7 +18,7 @@
     <string name="pref_offset_fix_summary">它们的存在使得白点被任务图钉隐藏起来</string>
     <string name="quest_settings_reset">重新设置</string>
     <string name="quest_monitor_gps">主动请求 GPS 定位？</string>
-    <string name="quest_poi_recycling_title">兴趣点：清洁回收 %s</string>
+    <string name="quest_poi_recycling_title">兴趣点：清洁回收</string>
     <string name="pref_show_gpx_button_title">显示 GPX 注释按钮</string>
     <string name="quest_settings_per_preset_rescan">为了正确应用所有更改的任务设置，有必要重新扫描任务。</string>
     <string name="quest_seating_street">在街道区域</string>
@@ -86,10 +86,10 @@
     <string name="quest_artwork_installation">装置艺术</string>
     <string name="import_error">导入出错</string>
     <string name="import_export_presets">预设</string>
-    <string name="quest_fixme_title">修复我：%1$s</string>
+    <string name="quest_fixme_title">修复我:</string>
     <string name="quest_custom_quest_add_node">添加节点</string>
     <string name="quest_service_building_operator_title">谁是这座服务性建筑的运营商？</string>
-    <string name="quest_osmose_title">Osmose 任务： %s</string>
+    <string name="quest_osmose_title">Osmose 任务： </string>
     <string name="pref_create_custom_quest_summary">...作为留下注记的替代方法。这可以用作本地存储的笔记，使其在地图上可见。前提是您需要启用自定义任务。</string>
     <string name="pref_show_nearby_quests_summary">当显示任务表单时，允许切换附近的任务</string>
     <string name="import_export_hidden_quests">隐藏任务</string>
@@ -99,7 +99,7 @@
     <string name="show_nearby_quests_distance">显示该距离内的任务（限制为 10 米）</string>
     <string name="pref_quest_monitor_summary">应用在后台运行时监测位置，使用返回按钮的后台运行时除外</string>
     <string name="quest_seating_parklet">挨着路缘，或曾经停车的地方</string>
-    <string name="quest_poi_traffic_title">兴趣点：交通 %s</string>
+    <string name="quest_poi_traffic_title">兴趣点：交通</string>
     <string name="quest_settings_element_selection">设置符合本任务条件的元素。<a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">单击此处</a>可在浏览器中打开有关元素选择语法的信息。</string>
     <string name="pref_offset_fix_title">移除任务标记偏移</string>
     <string name="pref_tree_custom_quest_summary">有关详情，请参阅启用任务时的信息</string>
@@ -116,7 +116,7 @@
     <string name="quest_settings_sidewalk_distance_button">距离</string>
     <string name="import_presets_overlays_replace">替换</string>
     <string name="show_nearby_quests_even_hidden">显示所有类型和隐藏任务</string>
-    <string name="quest_custom_quest_title">自定义任务：%s</string>
+    <string name="quest_custom_quest_title">自定义任务</string>
     <string name="pref_volume_zoom_summary">使用音量按钮进行缩放</string>
     <string name="pref_auto_download_title">自动下载</string>
     <string name="quest_service_building_type_substation">变电站/所</string>
@@ -156,7 +156,7 @@
     <string name="show_nearby_quests_visible">只显示已启用的任务类型</string>
     <string name="quest_seating_terrace">在露天平台</string>
     <string name="quest_poi_misc_title">兴趣点：杂项</string>
-    <string name="quest_poi_vending_title">兴趣点：出售 %s</string>
+    <string name="quest_poi_vending_title">兴趣点：出售</string>
     <string name="quest_artwork_architecture">建筑结构</string>
     <string name="pref_volume_zoom_title">音量按钮缩放</string>
     <string name="pref_tile_source_hide_labels">隐藏标签</string>
@@ -220,7 +220,7 @@
     <string name="quest_settings_resurvey_all_opening_hours_no">默认</string>
     <string name="pref_screen_data_management">数据管理</string>
     <string name="quest_settings_highlight_changes_button">突出显示变化</string>
-    <string name="quest_service_building_type_title">这是哪一种服务用建筑 %s\?</string>
+    <string name="quest_service_building_type_title">这是哪一种服务用建筑\?</string>
     <string name="resurvey_intervals_even_less_often">更少询问</string>
     <string name="advanced_resurvey_hint_keys">用英文逗号分隔多个键值</string>
     <string name="default_disabled_msg_poi_business">该“任务”将商店、餐馆、医生和类似的兴趣点显示为橙色圆点。点击圆点可显示详细信息和其他回答。</string>

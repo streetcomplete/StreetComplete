@@ -230,7 +230,7 @@
     <!-- new quests -->
 
     <!-- osmose quest -->
-    <string name="quest_osmose_title">Osmose quest: %s</string>
+    <string name="quest_osmose_title">Osmose quest:</string>
     <string name="quest_osmose_false_positive">Report false positive</string>
     <string name="quest_osmose_message">These quests are downloaded from Osmose service and indicate potential problems with OSM data. Download only happens if at least one severity level is selected in quest settings.\n
         The Osmose message is displayed with the quest, any edit reports the issue as solved.\n
@@ -247,7 +247,7 @@
     <string name="quest_custom_quest_osmose_not_found">Entry deleted, removing quest</string>
 
     <!-- custom quest (also uses osmose string above) -->
-    <string name="quest_custom_quest_title">Custom quest: %s</string>
+    <string name="quest_custom_quest_title">Custom quest:</string>
     <string name="quest_custom_quest_message">Use for checking specific pre-defined elements or locations. You can also specify tags and add a node with them. To use it, load a file in the main settings menu, containing either \`type,id,message\` (e.g. NODE,1234,check position) or \`latitude,longitude,message\`. For adding nodes, put the tags in the message after \'addNode\', e.g. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_custom_quest_remove">Remove from list</string>
     <string name="quest_custom_quest_add_node">Add node</string>
@@ -296,19 +296,19 @@
     <string name="default_disabled_msg_poi_business">This \"quest\" shows shop, restaurants, doctors and similar POIs as orange dots. Click the dot to show details and other answers.</string>
     <string name="quest_poi_camera_title">POI: Camera</string>
     <string name="default_disabled_msg_poi_camera">This \"quest\" shows surveillance features as pink dots. Click the dot to show details and other answers.</string>
-    <string name="quest_poi_vending_title">POI: Vending %s</string>
+    <string name="quest_poi_vending_title">POI: Vending</string>
     <string name="quest_poi_machine_title">POI: Machine</string>
     <string name="quest_poi_has_atm_title">POI: Has ATM</string>
     <string name="default_disabled_msg_poi_machine">This \"quest\" shows POIs like ATMs, phones or vending machines as blue dots. Click the dot to show details and other answers.</string>
     <string name="quest_poi_misc_title">POI: Miscellaneous</string>
     <string name="default_disabled_msg_poi_other">This \"quest\" shows miscellaneous POIs like hydrants, viewpoints or toilets as yellow dots. Click the dot to show details and other answers.</string>
-    <string name="quest_poi_recycling_title">POI: Recycling %s</string>
+    <string name="quest_poi_recycling_title">POI: Recycling</string>
     <string name="default_disabled_msg_poi_recycling">This \"quest\" shows recycling/garbage related POIs as green dots. Click the dot to show details and other answers.</string>
-    <string name="quest_poi_traffic_title">POI: Traffic %s</string>
+    <string name="quest_poi_traffic_title">POI: Traffic</string>
     <string name="default_disabled_msg_poi_traffic">This \"quest\" shows traffic-related POIs as light blue dots. Click the dot to show details and other answers.</string>
     <string name="quest_poi_vacant_title">POI: Vacant Place</string>
     <string name="default_disabled_msg_poi_vacant">This \"quest\" shows vacant shops as grey dots. Click the dot to show details and other answers.</string>
-    <string name="quest_fixme_title">FixMe: %1$s</string>
+    <string name="quest_fixme_title">FixMe:</string>
     <string name="default_disabled_msg_poi_fixme">This \"quest\" shows FixMes as red dots (with default exceptions of \'yes\' and \'continue\'). Click the dot to show details and other answers.</string>
     <string name="quest_fixme_remove">Remove this fixme</string>
     <string name="quest_traffic_stuff_raised">It’s a raised crossing</string>
@@ -326,7 +326,7 @@
     <string name="quest_utility_telecom">Telecommunication</string>
 
     <!-- service building type -->
-    <string name="quest_service_building_type_title">What kind of service building is this%s?</string>
+    <string name="quest_service_building_type_title">What kind of service building is this?</string>
     <string name="quest_service_building_type_substation">Electrical substation</string>
     <string name="quest_service_building_type_substation_description">Substations that mainly relates to regional distribution networks</string>
     <string name="quest_service_building_type_minor_substation">Small electrical substation</string>
@@ -373,7 +373,7 @@
     <string name="quest_service_building_other">Other service building</string>
 
     <!-- street cabinet type -->
-    <string name="quest_street_cabinet_type_title">What kind of street cabinet is this%s?</string>
+    <string name="quest_street_cabinet_type_title">What kind of street cabinet is this?</string>
     <string name="quest_street_cabinet_traffic">Traffic</string>
     <string name="quest_street_cabinet_postal_service">Postal Service</string>
     <string name="quest_street_cabinet_traffic_control">Traffic Control</string>

@@ -54,7 +54,7 @@
     <string name="quest_settings_reset">Zurücksetzen</string>
     <string name="quest_monitor_gps">Aktiv nach GPS-Standorten fragen?</string>
     <string name="create_poi">POI hinzufügen</string>
-    <string name="quest_poi_recycling_title">POI: Recycling %s</string>
+    <string name="quest_poi_recycling_title">POI: Recycling</string>
     <string name="restriction_overlay_signed_switch">Es gibt ein Schild oder eine Straßenmarkierung</string>
     <string name="move_node_with_geometry">Das Verschieben dieses Knotens verändert die Geometrie der folgenden Wege oder Multipolygonbeziehungen: %s.
 \nBeachte, dass alle Änderungen nicht sofort auf der Hintergrundkarte sichtbar sind.</string>
@@ -135,11 +135,11 @@
     <string name="import_error">Fehler beim Importieren</string>
     <string name="import_export_presets">Vorlagen</string>
     <string name="quest_destination_title">Welche Richtungen sind für diese Straße ausgeschildert\?</string>
-    <string name="quest_fixme_title">FixMe: %1$s</string>
+    <string name="quest_fixme_title">FixMe:</string>
     <string name="quest_custom_quest_add_node">Knoten hinzufügen</string>
     <string name="custom_overlay_color_info">Details zur Farbgebung</string>
     <string name="quest_service_building_operator_title">Wer ist der Betreiber dieses Servicegebäudes\?</string>
-    <string name="quest_osmose_title">Osmose-Aufgabe: %s</string>
+    <string name="quest_osmose_title">Osmose-Aufgabe:</string>
     <string name="quest_wheelchair_description_answer">Beschreibung hinzufügen</string>
     <string name="pref_create_custom_quest_summary">… als Alternative zum Hinterlassen eines Hinweises. Diese kann als lokal gespeicherter, auf der Karte sichtbarer Hinweis verwendet werden. Beachte, dass du die benutzerdefinierten Aufgaben aktivieren musst.</string>
     <string name="pref_show_nearby_quests_summary">Ermöglicht das Umschalten zwischen nahe gelegenen Aufgaben, wenn ein Aufgabenformular angezeigt wird</string>
@@ -153,7 +153,7 @@
     <string name="quest_seating_parklet">Neben dem Bordstein oder dort, wo früher geparkt wurde</string>
     <string name="quest_buildingType_stable">Pferdestall</string>
     <string name="restriction_overlay_sign_stop">Halt</string>
-    <string name="quest_poi_traffic_title">POI: Verkehr %s</string>
+    <string name="quest_poi_traffic_title">POI: Verkehr</string>
     <string name="quest_settings_element_selection">Lege die für diese Aufgabe berechtigten Elemente fest. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Klicke hier</a>, um Informationen zur Syntax der Elementauswahl in einem Browser anzuzeigen.</string>
     <string name="pref_offset_fix_title">Offsets der Aufgabenmarker entfernen</string>
     <string name="close_note_checkbox">Schließe den Hinweis (mach das nur, wenn du den Hinweis tatsächlich löst!)</string>
@@ -183,7 +183,7 @@
 \n Standardmäßig ist SCEE so konfiguriert, dass es sich sehr ähnlich wie StreetComplete verhält.</string>
     <string name="import_presets_overlays_replace">Ersetzen</string>
     <string name="show_nearby_quests_even_hidden">Alle Typen und versteckte Aufgaben anzeigen</string>
-    <string name="quest_custom_quest_title">Benutzerdefinierte Aufgabe: %s</string>
+    <string name="quest_custom_quest_title">Benutzerdefinierte Aufgabe:</string>
     <string name="quest_buildingType_sports_hall">Sporthalle</string>
     <string name="pref_volume_zoom_summary">Zoomen mit Lautstärketasten</string>
     <string name="quest_service_building_type_substation">Umspannwerk</string>
@@ -231,7 +231,7 @@
     <string name="show_nearby_quests_visible">Nur aktivierte Aufgabentypen anzeigen</string>
     <string name="quest_seating_terrace">Auf einer Terrasse</string>
     <string name="quest_poi_misc_title">POI: Sonstiges</string>
-    <string name="quest_poi_vending_title">POI: Verkaufsautomaten %s</string>
+    <string name="quest_poi_vending_title">POI: Verkaufsautomaten</string>
     <string name="quest_artwork_architecture">Architektur</string>
     <string name="restriction_overlay_sign_give_way">Vorfahrt gewähren</string>
     <string name="pref_volume_zoom_title">Lautstärkeregler-Zoom</string>
@@ -324,7 +324,7 @@
     <string name="quest_settings_resurvey_all_opening_hours_no">Standard</string>
     <string name="pref_screen_data_management">Datenverwaltung</string>
     <string name="quest_settings_highlight_changes_button">Änderungen hervorheben</string>
-    <string name="quest_service_building_type_title">Was für eine Art von Servicegebäude ist das%s?</string>
+    <string name="quest_service_building_type_title">Was für eine Art von Servicegebäude ist das?</string>
     <string name="resurvey_intervals_even_less_often">Noch seltener fragen</string>
     <string name="advanced_resurvey_hint_keys">Mehrere Schlüssel durch Komma trennen</string>
     <string name="default_disabled_msg_poi_business">Diese „Aufgabe“ zeigt Geschäfte, Restaurants, Ärzte und ähnliche POIs als orangefarbene Punkte an. Ein Klick auf den Punkt zeigt Details und weitere Antworten an.</string>
@@ -464,7 +464,7 @@
     <string name="quest_shelter_type_sun_shelter">Sonnenschutz</string>
     <string name="quest_shelter_type_lean_to">Offene Schutzhütte</string>
     <string name="quest_street_cabinet_transport_management">Transportmanagement</string>
-    <string name="quest_street_cabinet_type_title">Was für eine Art Straßenschrank ist das%s\?</string>
+    <string name="quest_street_cabinet_type_title">Was für eine Art Straßenschrank ist das\?</string>
     <string name="quest_viaFerrataScale_three_description">Einige technische Klettereien, aber nichts, was besonders starke Arme erfordert. Klettersteigset erforderlich.</string>
     <string name="quest_viaFerrataScale_six">Grad 6/K6/F - extrem schwierig</string>
     <string name="quest_viaFerrataScale_six_description">Lange, spärlich gesicherte turnerische Strecken, die echte Ausdauer erfordern. Kletterschuhe können nützlich sein. Zusätzliche Sicherung durch Seil oder Sicherung empfohlen</string>

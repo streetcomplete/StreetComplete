@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestCont
 import de.westnordost.streetcomplete.data.externalsource.ExternalSourceQuestType
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -69,7 +69,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
         otherQuestController.getVisible(questKey as ExternalSourceQuestKey)?.elementKey?.let { key ->
             element = mapDataSource.get(key.type, key.id)
         }
-        element?.let { setTitleHintLabel(getNameAndLocationLabel(it, resources, featureDictionary.value)) }
+        element?.let { setTitleHintLabel(getNameAndLocationSpanned(it, resources, featureDictionary.value)) }
     }
 
     override fun onStart() {
@@ -169,7 +169,7 @@ abstract class AbstractExternalSourceQuestForm : AbstractQuestForm(), IsShowingQ
     }
 
     protected fun composeNote() {
-        val questTitle = resources.getQuestTitle(externalQuestType, element?.tags ?: emptyMap())
+        val questTitle = resources.getString(externalQuestType.title)
         val actualTitle = getCurrentTitle()
         val show = if (actualTitle.startsWith(questTitle)) actualTitle
             else "$questTitle / $actualTitle" // both may contain relevant information

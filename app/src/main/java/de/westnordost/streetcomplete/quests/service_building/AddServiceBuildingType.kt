@@ -25,11 +25,6 @@ class AddServiceBuildingType : OsmFilterQuestType<ServiceBuildingType>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_service_building_type_title
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> {
-        val operator = tags["operator"]?.let { " ($it)" } ?: ""
-        return arrayOf(operator)
-    }
-
     override fun createForm() = AddServiceBuildingTypeForm()
 
     override fun applyAnswerTo(answer: ServiceBuildingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

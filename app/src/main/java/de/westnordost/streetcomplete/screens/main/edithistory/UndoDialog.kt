@@ -105,7 +105,7 @@ class UndoDialog(
             context.resources.getText(R.string.quest_noteDiscussion_title)
         }
         is ExternalSourceQuestHidden -> {
-            getQuestTitle(questType, emptyMap())
+            context.resources.getString(questType.title)
         }
         else -> throw IllegalArgumentException()
     }

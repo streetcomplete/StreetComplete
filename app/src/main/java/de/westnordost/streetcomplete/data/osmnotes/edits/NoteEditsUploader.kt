@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes.edits
 
-import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
@@ -97,8 +96,7 @@ class NoteEditsUploader(
                 noteEditsController.markImagesActivated(note.id)
             }
             deleteImages(edit.imagePaths)
-        } catch (e: Exception) {
-            if (e !is ConflictException && e !is OsmNotFoundException) throw e
+        } catch (e: ConflictException) {
             Log.d(TAG,
                 "Dropped a ${edit.action.name} to ${edit.noteId}" +
                 " at ${edit.position.latitude}, ${edit.position.longitude}: ${e.message}"

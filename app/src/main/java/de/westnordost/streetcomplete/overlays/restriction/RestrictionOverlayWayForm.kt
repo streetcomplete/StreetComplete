@@ -53,7 +53,6 @@ import de.westnordost.streetcomplete.quests.max_weight.osmKey
 import de.westnordost.streetcomplete.screens.main.MainFragment
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.Marker
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -65,6 +64,7 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.finalBearingTo
 import de.westnordost.streetcomplete.util.dialogs.showAddConditionalDialog
 import de.westnordost.streetcomplete.util.dialogs.showOtherConditionalDialog
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.view.ArrayImageAdapter
 import de.westnordost.streetcomplete.view.DrawableImage
 import de.westnordost.streetcomplete.view.ResImage
@@ -680,7 +680,7 @@ class RestrictionOverlayWayForm : AbstractOverlayForm() {
         val tagsText = tags.entries.sortedBy { it.key }.joinToString("\n") { "${it.key} = ${it.value}" }
         val membersText = members.joinToString("\n") { member ->
             val element = mapDataSource.get(member.type, member.ref)!!
-            val memberDetails = getNameAndLocationLabel(element, resources, featureDictionary, false)
+            val memberDetails = getNameAndLocationSpanned(element, resources, featureDictionary, false)
                 ?.let { "${element.key}: $it" } ?: element.key.toString()
             "${member.role}: $memberDetails"
         }

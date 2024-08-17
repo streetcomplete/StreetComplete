@@ -99,7 +99,7 @@ class OsmoseForm : AbstractExternalSourceQuestForm() {
             questController.delete(questKey as ExternalSourceQuestKey)
             return
         }
-        setTitle(resources.getString(R.string.quest_osmose_title, issue.title))
+        setTitle(resources.getString(R.string.quest_osmose_title) + " ${issue.title}")
         binding.description.text = resources.getString(R.string.quest_osmose_message_for_element, "${issue.item}/${issue.itemClass}", issue.subtitle)
 
         if (issue.elements.size > 1) viewLifecycleScope.launch { highlightElements() }

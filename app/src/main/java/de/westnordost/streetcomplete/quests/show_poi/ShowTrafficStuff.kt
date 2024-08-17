@@ -31,18 +31,7 @@ class ShowTrafficStuff : OsmFilterQuestType<Boolean>() {
     override val defaultDisabledMessage = R.string.default_disabled_msg_poi_traffic
     override val dotLabelSources = getLabelSources( "", this, prefs)
 
-    override fun getTitle(tags: Map<String, String>) =
-        R.string.quest_poi_traffic_title
-
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> {
-        val args = if ((!tags["crossing"].isNullOrBlank() && !tags["traffic_calming"].isNullOrBlank())
-                        || tags["type"] == "restriction"
-                        || tags["highway"] == "elevator")
-            tags.entries.toString()
-        else
-            ""
-        return arrayOf(args)
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_poi_traffic_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(filter)

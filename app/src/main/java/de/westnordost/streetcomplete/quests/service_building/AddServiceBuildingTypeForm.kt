@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.service_building
 
 import android.os.Bundle
+import android.view.View
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestForm
 
 class AddServiceBuildingTypeForm : AGroupedImageListQuestForm<ServiceBuildingType, ServiceBuildingType>() {
@@ -22,6 +24,11 @@ class AddServiceBuildingTypeForm : AGroupedImageListQuestForm<ServiceBuildingTyp
         super.onCreate(savedInstanceState)
         imageSelector.groupCellLayoutId = R.layout.cell_labeled_icon_select_with_description_group
         imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_with_description
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        element.tags["operator"]?.let { setTitle(resources.getString((questType as OsmElementQuestType<*>).getTitle(element.tags)) + " ($it)") }
     }
 
     override fun onClickOk(value: ServiceBuildingType) {

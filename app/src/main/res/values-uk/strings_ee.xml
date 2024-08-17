@@ -163,7 +163,7 @@
     <string name="quest_settings_building_levels_optional_roof">Дозволяти не використовувати рівні даху скрізь</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">Усі</string>
     <string name="quest_settings_resurvey_all_opening_hours_no">За замовчуванням</string>
-    <string name="quest_custom_quest_title">Свій квест: %s</string>
+    <string name="quest_custom_quest_title">Свій квест:</string>
     <string name="quest_settings_resurvey_all_opening_hours_message">Повторно переглянути всі години роботи, включно зі значеннями, які не розуміє SCEE\? Можливо, вам доведеться скористатися редактором тегів, щоб ввести правильні значення.</string>
     <string name="quest_osmose_false_positive">Повідомити про хибне спрацювання</string>
     <string name="quest_osmose_message_for_element">Тип елементу %1$s: %2$s</string>
@@ -188,7 +188,7 @@
     <string name="pref_screen_ui">Інтерфейс</string>
     <string name="quest_settings_highlight_changes_button">Виділити зміни</string>
     <string name="quest_order_normal">Звичайний порядок квестів</string>
-    <string name="quest_osmose_title">Квест з Osmose: %s</string>
+    <string name="quest_osmose_title">Квест з Osmose:</string>
     <string name="quest_osmose_message">Ці квести завантажуються з сервісу Osmose і вказують на потенційні проблеми з даними OSM. Завантаження відбувається тільки якщо в налаштуваннях квесту вибрано хоча б один рівень важливості.
 \n Повідомлення Osmose відображається разом із квестом, будь-яке редагування повідомляє про проблему як вирішену.
 \n Також можна повідомити про проблему як про хибнопозитивну; це не можна скасувати.</string>
@@ -206,7 +206,7 @@
     <string name="restriction_overlay_other_restrictions">Інші обмеження цього шляху:</string>
     <string name="add_access">Додати доступ…</string>
     <string name="quest_benchMaterial_metal">Метал</string>
-    <string name="quest_poi_recycling_title">POI: Переробка відходів %s</string>
+    <string name="quest_poi_recycling_title">POI: Переробка відходів</string>
     <string name="quest_custom_quest_message">Використовується для перевірки певних заздалегідь визначених елементів або місць. Ви також можете вказати теги і додати точку з ними. Для використання завантажте файл у головному меню налаштувань, що містить або type,id,message (наприклад, NODE,1234,check position), або latitude,longitude,message. Для додавання точок, додайте теги у повідомлення після «addNode», наприклад, addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="quest_benchMaterial_concrete">Бетон</string>
     <string name="quest_benchMaterial_plastic">Пластик</string>
@@ -222,7 +222,7 @@
     <string name="pref_disable_navigation_mode_summary">Вимкнути режим нахилу та автоматичного повороту мапи</string>
     <string name="quest_poi_seating_title">POI: Місця для сидіння</string>
     <string name="quest_poi_misc_title">POI: Різне</string>
-    <string name="quest_poi_vending_title">POI: Торгові точки %s</string>
+    <string name="quest_poi_vending_title">POI: Торгові точки</string>
     <string name="quest_benchMaterial_title">З чого це зроблено\?</string>
     <string name="quest_poi_cycling_title">POI: Велосипед</string>
     <string name="default_disabled_msg_poi_camera">У цьому «квесті» системи спостереження позначені рожевими крапками. Натисніть на крапку, щоб побачити деталі та інші відповіді.</string>
@@ -270,12 +270,12 @@
     <string name="create_custom_quest_button">Створити свій квест</string>
     <string name="fork_about_title_repository">Сторінка проєкту SCEE</string>
     <string name="quest_artwork_installation">Інсталяція</string>
-    <string name="quest_fixme_title">Виправити: %1$s</string>
+    <string name="quest_fixme_title">Виправити:</string>
     <string name="quest_service_building_operator_title">Якій організації належить ця службова будівля\?</string>
     <string name="quest_wheelchair_description_answer">Додати опис</string>
     <string name="quest_artwork_statue">Статуя</string>
     <string name="restriction_overlay_sign_stop">Стоп</string>
-    <string name="quest_poi_traffic_title">POI: Дорожній рух %s</string>
+    <string name="quest_poi_traffic_title">POI: Дорожній рух</string>
     <string name="quest_healthcare_speciality_switch_ui">Перемкнути інтерфейс</string>
     <string name="quest_wheelchair_description_no_language">мову не вказано</string>
     <string name="quest_seating_beach">На пляжі</string>
@@ -296,7 +296,7 @@
     <string name="quest_construction_value">Вкажіть «construction=…» або залиште порожнім, якщо невідомо</string>
     <string name="quest_artwork_title">Що це за твір мистецтва\?</string>
     <string name="restriction_overlay_sign_stop_all_way">Рух без зупинки заборонено</string>
-    <string name="quest_service_building_type_title">Якого типу ця службова будівля %s\?</string>
+    <string name="quest_service_building_type_title">Якого типу ця службова будівля\?</string>
     <string name="quest_artwork_painting">Малюнок</string>
     <string name="quest_cuisine_title">Страви якої кухні пропонують у цьому закладі\? Використовуйте пропоновані теги OSM!</string>
     <string name="quest_artwork_mosaic">Мозаїка</string>

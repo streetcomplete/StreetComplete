@@ -86,7 +86,7 @@
     <string name="quest_benchMaterial_plastic">Plastique</string>
     <string name="quest_benchMaterial_brick">Briques</string>
     <string name="quest_poi_misc_title">POI : Divers</string>
-    <string name="quest_fixme_title">FixMe : %1$s</string>
+    <string name="quest_fixme_title">FixMe :</string>
     <string name="default_disabled_msg_poi_business">Cette \"quête\" montre les commerces, restaurants, docteurs,... avec des points orange. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
     <string name="quest_poi_camera_title">POI : Caméra de surveillance</string>
     <string name="default_disabled_msg_poi_fixme">Cette \"quête\" affiche les éléments avec un tag fixme avec un point rouge (en dehors des valeurs \'yes\' et \'continue\'). Cliquez sur le point pour afficher les détails et les réponses possibles.</string>
@@ -234,7 +234,7 @@
     <string name="quest_settings_building_levels_mandatory_roof">Exiger de préciser le nombre de niveaux du toit dans la plupart des pays (par défaut)</string>
     <string name="quest_order_normal">Retour à l\'ordre normal des quêtes</string>
     <string name="level_filter_hint">Laisser vide pour indiquer qu\'il n\'y a pas d\'attribut</string>
-    <string name="quest_osmose_title">Quête Osmose : %s</string>
+    <string name="quest_osmose_title">Quête Osmose :</string>
     <string name="quest_osmose_message_for_element">Type d\'élément %1$s : %2$s</string>
     <string name="quest_osmose_settings_items">Modifier les types d\'éléments à ignorer</string>
     <string name="quest_osmose_select_element">Sélectionner l\'élément</string>
@@ -246,10 +246,10 @@
     <string name="quest_poi_seating_title">POI : Places assises</string>
     <string name="quest_poi_business_title">POI : Entreprises</string>
     <string name="quest_poi_has_atm_title">POI : Dispose d\'un DAB</string>
-    <string name="quest_poi_recycling_title">POI : Recyclage %s</string>
+    <string name="quest_poi_recycling_title">POI : Recyclage</string>
     <string name="quest_poi_vacant_title">POI : Emplacement vacant</string>
     <string name="quest_traffic_stuff_raised">C\'est un passage surélevé</string>
-    <string name="quest_service_building_type_title">Quel type de bâtiment de service est-ce %s \?</string>
+    <string name="quest_service_building_type_title">Quel type de bâtiment de service est-ce\?</string>
     <string name="quest_service_building_type_pressure">Sous-station de distribution de gaz</string>
     <string name="quest_recycling_excrement_bag_dispenser">Il dispose d\'un distributeur de sacs à excréments</string>
     <string name="quest_tree_error">Non reconnu. Essayez de saisir le genre, l\'espèce ou le nom anglais de l\'arbre. Sinon, laissez une note.</string>
@@ -291,10 +291,10 @@
     <string name="quest_settings_dot_labels_message">Définir les attributs à utiliser dans l\'ordre donné pour la désignation. Une chaîne vide n\'affichera aucune désignation, \"label\" affichera l\'étiquette par défaut du nom de StreetComplete en utilisant name, brand, ref, local_ref et operator.</string>
     <string name="pref_quest_geometries_title">Afficher en surbrillance les chemins et zone avec une quête</string>
     <string name="quest_settings_element_selection">Définir les éléments utilisé dans cette quête. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Cliquez ici</a> pour obtenir plus d\'informations dans un navigateur sur la syntaxe de sélection des éléments.</string>
-    <string name="quest_custom_quest_title">Quête personnalisée : %s</string>
+    <string name="quest_custom_quest_title">Quête personnalisée :</string>
     <string name="pref_show_solved_animation_summary">Cela permet également de contrôler le son lors de la résolution de la quête</string>
     <string name="quest_settings_level_more">Médecins et beaucoup d\'autres nœuds à l\'intérieur des bâtiments à plusieurs niveaux</string>
-    <string name="quest_poi_traffic_title">POI : Circulation %s</string>
+    <string name="quest_poi_traffic_title">POI : Circulation</string>
     <string name="import_export_settings">Autres paramètres de l\'application</string>
     <string name="quest_monitor_error">Impossible de démarrer la surveillance, problème potentiel d\'autorisation</string>
     <string name="pref_manual_download_cache_summary">Si cette option est désactivée, seul les données de plus de 12 heures seront retéléchargées lors d\'un téléchargement manuel</string>
@@ -337,7 +337,7 @@
     <string name="quest_osmose_message">Ces quêtes sont téléchargées à partir du service Osmose et signalent les problèmes potentiels avec les données OSM. Le téléchargement n\'a lieu que si au moins un niveau de gravité est sélectionné dans les paramètres de la quête.
 \nLe message d\'Osmose est affiché avec la quête, toute modification de tag signale l\'erreur comme résolu.
 \nIl est également possible de signaler le problème comme étant un faux positif, attention ceci ne peut pas être annulé par la suite.</string>
-    <string name="quest_poi_vending_title">POI : Distributeurs automatiques %s</string>
+    <string name="quest_poi_vending_title">POI : Distributeurs automatiques</string>
     <string name="quest_poi_machine_title">POI : Distributeur automatique</string>
     <string name="default_disabled_msg_poi_machine">Cette \"quête\" montre les points d\'intérêt (POI) distributeurs de billets ou automatiques avec des points bleus. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
     <string name="default_disabled_msg_poi_other">Cette \"quête\" montre divers points d\'intérêt (POI) comme les bornes d\'incendie, les points de vue ou les toilettes avec des points jaune. Cliquez sur le point pour afficher les détails et les autres réponses.</string>
@@ -516,7 +516,7 @@
     <string name="quest_service_building_monitoring_station">Station de surveillance</string>
     <string name="quest_service_building_monitoring_station_description">Il existe une très grande variété de \"stations de surveillance\".
 \nCela va de la surveillance du niveau des rivières ( Limnimètre), à celui de la marée ( Marégraphe), à celle du niveau du bruit, de la pollution atmosphérique, ou encore des signaux du positionnement par satellite (GPS) jusqu\'aux stations météorologiques ( Station météorologique). Cette balise ne se réfère pas aux objets utilisés pour \"surveiller\"</string>
-    <string name="quest_street_cabinet_type_title">Quel genre d\'armoire de rue est ce%s ?</string>
+    <string name="quest_street_cabinet_type_title">Quel genre d\'armoire de rue est ce ?</string>
     <string name="quest_street_cabinet_traffic_control">Armoire protéger les automates de signalisation</string>
     <string name="quest_street_cabinet_postal_service">Armoire destinée à stocker le courrier en attente de distribution</string>
     <string name="quest_street_cabinet_traffic_monitoring">Armoire en charge du comptage des véhicules</string>

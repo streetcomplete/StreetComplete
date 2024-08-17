@@ -115,7 +115,7 @@
     <string name="quest_osmose_delete_this_issue">端末内でこの問題を削除</string>
     <string name="quest_osmose_no_undo">本当によろしいですか?　これは取り消せません!</string>
     <string name="quest_osmose_select_element">要素を選択</string>
-    <string name="quest_custom_quest_title">任意クエスト: %s</string>
+    <string name="quest_custom_quest_title">任意クエスト:</string>
     <string name="quest_custom_quest_remove">一覧から削除</string>
     <string name="quest_custom_quest_add_node">ノードを追加</string>
     <string name="quest_custom_quest_add_node_text">右を付けてノードを追加できます: %s</string>
@@ -149,7 +149,7 @@
     <string name="default_disabled_msg_poi_recycling">この「クエスト」は、リサイクルや廃棄物関連のPOIを緑の点で表示します。点をクリックすると、詳細や他の回答が表示されます。</string>
     <string name="default_disabled_msg_poi_traffic">この「クエスト」は、交通関連のPOIを水色の点で表示します。点をクリックすると、詳細や他の回答が表示されます。</string>
     <string name="quest_poi_vacant_title">POI: 空き物件</string>
-    <string name="quest_fixme_title">要修正: %1$s</string>
+    <string name="quest_fixme_title">要修正:</string>
     <string name="quest_fixme_remove">この要修正を削除</string>
     <string name="quest_utility_power">電気</string>
     <string name="quest_service_building_type_substation_description">主に地域配電網に関連する変電所です</string>
@@ -228,7 +228,7 @@
     <string name="default_disabled_msg_poi_camera">この「クエスト」では、監視地物を桃色の点で表示します。点をクリックすると、詳細や他の回答が表示されます。</string>
     <string name="quest_service_building_type_substation">変電設備</string>
     <string name="quest_service_building_type_minor_substation_description">配電網の最下流にある小さな変電設備です</string>
-    <string name="quest_osmose_title">Osmoseのクエスト: %s</string>
+    <string name="quest_osmose_title">Osmoseのクエスト:</string>
     <string name="quest_guidepost_sports_mtb">山地用自転車/マウンテンバイク</string>
     <string name="quest_custom_quest_message">予め定義された特定の要素や場所を確認するために使用します。タグを指定してノードを追加することもできます。使用するには、主設定メニューで、　種別,id,メッセージ(例: NODE,1234,確認位置）　または　緯度,経度,メッセージ　のいずれかを含むファイルを読み込みます。ノードを追加する場合は、「addNode」の後にタグをメッセージに記述します。例: addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="default_disabled_msg_poi_fixme">この「クエスト」では、fixmeが赤い点で表示されます(規定の例外は「はい」と「続行」)。点をクリックすると、詳細と他の回答が表示されます。</string>
@@ -388,11 +388,10 @@
     <string name="level_filter_enable">段階抄出を有効化</string>
     <string name="quest_poi_machine_title">POI: 機械</string>
     <string name="quest_poi_has_atm_title">POI: ATM有</string>
-    <string name="quest_poi_vending_title">POI: %s販売</string>
-    <string name="quest_poi_recycling_title">POI: %s再生利用</string>
+    <string name="quest_poi_vending_title">POI: 販売</string>
+    <string name="quest_poi_recycling_title">POI: 再生利用</string>
     <string name="quest_utility_water">水</string>
     <string name="quest_utility_gas">ガス</string>
-    <string name="quest_service_building_type_title">この%sは、何の種類の仕事をする建物ですか?</string>
     <string name="quest_service_building_heating">熱供給</string>
     <string name="quest_service_building_heating_description">熱を移送して供給するための建物で、産業および家庭内消費者へ向けて分配します(地域熱供給)</string>
     <string name="quest_service_building_type_pressure">ガス整圧所/ガバナステーション</string>
@@ -405,7 +404,6 @@
     <string name="quest_service_building_railway_wash">鉄道洗車場</string>
     <string name="quest_service_building_railway_wash_description">列車を洗浄する施設がある建物です(日本では大抵、鉄道車両基地の一部)</string>
     <string name="quest_street_cabinet_waste">廃棄物</string>
-    <string name="quest_street_cabinet_type_title">この%sは、何の種類のストリートキャビネットですか?</string>
     <string name="quest_artwork_title">これは何の種類の芸術作品ですか?</string>
     <string name="quest_street_cabinet_traffic">交通</string>
     <string name="quest_street_cabinet_traffic_control">交通制御</string>
@@ -501,7 +499,7 @@
     <string name="create_relation_action_description">…とのリレーションを作成しました</string>
     <string name="action_all_quests">全てのクエストを表示</string>
     <string name="quest_seating_beach">浜、海辺</string>
-    <string name="quest_poi_traffic_title">POI: 交通%s</string>
+    <string name="quest_poi_traffic_title">POI: 交通</string>
     <string name="quest_seating_parklet">縁石の横、またはかつて駐車場があった場所(パークレット)</string>
     <string name="quest_seating_pedestrian_zone">歩行者空間(歩行者天国、歩行者専用道路)内</string>
     <string name="quest_seating_street">街路区域内</string>

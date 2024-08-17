@@ -154,12 +154,12 @@
     <string name="quest_order_reverse">Обратный порядок квестов</string>
     <string name="quick_switch_map_background">Смена фона: карта/аэрофото</string>
     <string name="quick_switch_preset">Смена предустановки</string>
-    <string name="quest_osmose_title">Квест из Osmose: %s</string>
+    <string name="quest_osmose_title">Квест из Osmose:</string>
     <string name="quest_osmose_false_positive">Сообщать о ложных</string>
     <string name="quest_osmose_message_for_element">Элемент типа %1$s: %2$s</string>
     <string name="quest_osmose_remove_checked">Убрать</string>
     <string name="quest_osmose_no_undo">Уверенны\? Это действие не обратимо!</string>
-    <string name="quest_custom_quest_title">Свои квесты: %s</string>
+    <string name="quest_custom_quest_title">Свои квесты:</string>
     <string name="quest_custom_quest_osmose_not_found">Запись удалена, убираем квест</string>
     <string name="quest_osmose_delete_this_issue">Скрыть проблему локально</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">Всех</string>
@@ -168,7 +168,7 @@
     <string name="quest_seating_sidewalk">На тротуаре</string>
     <string name="quest_seating_street">На улице</string>
     <string name="quest_osmose_select_element">Выбрать элемент</string>
-    <string name="quest_fixme_title">Исправить: %1$s</string>
+    <string name="quest_fixme_title">Исправить:</string>
     <string name="quest_service_building_type_substation">Подстанция (ПС, ТП, РП)</string>
     <string name="quest_service_building_type_well">Водяная скважина</string>
     <string name="quest_benchMaterial_wood">Дерево</string>
@@ -189,10 +189,10 @@
     <string name="quest_poi_cycling_title">Места: велосипед</string>
     <string name="quest_poi_business_title">Места: торговля</string>
     <string name="quest_poi_camera_title">Места: камеры</string>
-    <string name="quest_poi_vending_title">Места: торговые %s</string>
+    <string name="quest_poi_vending_title">Места: торговые</string>
     <string name="quest_poi_has_atm_title">Места: есть банкомат</string>
     <string name="quest_poi_misc_title">Места: прочие</string>
-    <string name="quest_poi_recycling_title">Места: переработка %s</string>
+    <string name="quest_poi_recycling_title">Места: переработка</string>
     <string name="quest_poi_vacant_title">Места: свободные</string>
     <string name="quest_service_building_type_pressure">Газораспределительная станция (ГРС)</string>
     <string name="quest_service_building_type_reservoir">Ёмкость</string>
@@ -266,7 +266,7 @@
     <string name="restore_dialog_hint">Долгим удержанием кнопки Отмена можно вручную указать какие из квестов восстановить.</string>
     <string name="quest_artwork_fountain">Фонтан</string>
     <string name="quest_fixme_remove">Снять тег fixme</string>
-    <string name="quest_service_building_type_title">Какого типа эта служебная постройка %s\?</string>
+    <string name="quest_service_building_type_title">Какого типа эта служебная постройка\?</string>
     <string name="default_disabled_msg_poi_fixme">Этот \"квест\" покажет теги Исправить красными кружками (кроме значений \"yes\" и \"continue\" по умолчанию). Нажатие на кружок покажет подробности и другие ответы.</string>
     <string name="pref_custom_title">Загрузить файл своих квестов</string>
     <string name="quest_monitor_permission_warning">Требуется разрешение на определение местоположения в фоне для отслеживания квестов неподалёку</string>
@@ -291,7 +291,7 @@
     <string name="quest_settings_resurvey_all_opening_hours_message">Обследовать повторно все часы работы, даже те значения, что не ясны SCEE\? Возможно придётся воспользоваться редактором тегов для ввода верных значений.</string>
     <string name="quest_settings_dot_labels_message">Указать какие теги применять для надписей и в каком порядке. Пустая строка скроет все надписи, \"label\" покажет именование StreetComplete по умолчанию с надписью из name, brand, ref, local_ref и operator.</string>
     <string name="quest_poi_machine_title">Места: автоматы</string>
-    <string name="quest_poi_traffic_title">Места: дорожное движение %s</string>
+    <string name="quest_poi_traffic_title">Места: дорожное движение</string>
     <string name="quest_outdoor_seating_name_title">Какой здесь тип сидячих мест снаружи\?</string>
     <string name="quest_seating_parklet">Вдоль бордюра или на месте парковки</string>
     <string name="quest_settings_level_title">Показать этот квест для:</string>
@@ -439,7 +439,7 @@
     <string name="quest_service_building_monitoring_station">Станция мониторинга</string>
     <string name="quest_service_building_monitoring_station_description">Станция, расположенная в собственном здании, которая следит за чем-то</string>
     <string name="quest_service_building_other">Другое служебное здание</string>
-    <string name="quest_street_cabinet_type_title">Что это за уличный шкаф, %s?</string>
+    <string name="quest_street_cabinet_type_title">Что это за уличный шкаф?</string>
     <string name="quest_street_cabinet_postal_service">Почтовая служба</string>
     <string name="quest_street_cabinet_traffic_control">Контроль дорожного движения</string>
     <string name="quest_shelter_type_sun_shelter">Укрытие от солнца</string>

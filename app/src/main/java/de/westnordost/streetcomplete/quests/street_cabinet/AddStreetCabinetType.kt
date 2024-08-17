@@ -23,11 +23,6 @@ class AddStreetCabinetType : OsmFilterQuestType<StreetCabinetType>() {
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_street_cabinet_type_title
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> {
-        val operator = tags["operator"]?.let { " ($it)" } ?: ""
-        return arrayOf(operator)
-    }
-
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
             nodes, ways with

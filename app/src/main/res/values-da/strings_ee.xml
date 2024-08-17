@@ -160,7 +160,7 @@
     <string name="quest_poi_seating_title">IP: Siddepladser</string>
     <string name="quest_fixme_remove">Fjern dette Retmig</string>
     <string name="quest_poi_camera_title">IP: Kamera</string>
-    <string name="quest_poi_vending_title">IP: Automat %s</string>
+    <string name="quest_poi_vending_title">IP: Automat</string>
     <string name="quest_piste_ref_connection">Det er en piste-forbindelse</string>
     <string name="quest_service_building_type_traction_substation_description">Elektrisk transformatorstation, der konverterer strøm til at forsyne jernbaner, sporvogne eller trolleybusser med kørestrøm</string>
     <string name="quest_service_building_type_switchgear">Koblingsanlæg</string>
@@ -252,7 +252,7 @@
     <string name="quest_traffic_stuff_raised">Det er en forhøjet overgang</string>
     <string name="quest_utility_sewerage">Kloakering</string>
     <string name="quest_utility_telecom">Telekommunikation</string>
-    <string name="quest_service_building_type_title">Hvilken slags servicebygning er dette %s?</string>
+    <string name="quest_service_building_type_title">Hvilken slags servicebygning er dette?</string>
     <string name="quest_service_building_type_substation">Elektrisk transformerstation</string>
     <string name="quest_service_building_type_substation_description">Understationer, der hovedsageligt er relateret til regionale distributionsnetværk</string>
     <string name="quest_service_building_type_industrial_substation">Industriel elektrisk transformerstation</string>
@@ -272,7 +272,7 @@
     <string name="quest_service_building_railway_engine_shed">Jernbanes lokomotivskur</string>
     <string name="quest_service_building_ventilation_description">Lodret konstruktion, der tillader luftudskiftning for ikke-jernbaneinfrastruktur</string>
     <string name="quest_service_building_monitoring_station_description">En station placeret i egen bygning, der overvåger noget</string>
-    <string name="quest_street_cabinet_type_title">Hvilken slags gadeskab er dette %s?</string>
+    <string name="quest_street_cabinet_type_title">Hvilken slags gadeskab er dette?</string>
     <string name="quest_street_cabinet_traffic">Trafik</string>
     <string name="quest_street_cabinet_postal_service">Postvæsen</string>
     <string name="quest_street_cabinet_traffic_control">Trafikstyring</string>
@@ -360,7 +360,7 @@
     <string name="level_filter_enable">Aktivér etage-filter</string>
     <string name="quick_switch_map_background">Skift mellem luftfoto- og kort</string>
     <string name="quick_switch_preset">Skift forudindstilling</string>
-    <string name="quest_osmose_title">Osmose-opgave: %s</string>
+    <string name="quest_osmose_title">Osmose-opgave:</string>
     <string name="quest_osmose_false_positive">Rapportér falsk positiv</string>
     <string name="quest_osmose_message">Disse opgaver downloades fra Osmose-tjenesten og indikerer potentielle problemer med OSM-data. Download sker kun, hvis der er valgt mindst én alvorlighedsgrad i opgave-indstillingerne.
 \n Osmose-meddelelsen vises sammen med opgaven, og enhver redigering rapporterer problemet som løst..
@@ -368,11 +368,11 @@
     <string name="quest_poi_misc_title">IP: Diverse</string>
     <string name="default_disabled_msg_poi_recycling">Denne \"opgave\" viser genbrugs-/affaldsrelaterede interessepunkter som grønne prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
     <string name="default_disabled_msg_poi_traffic">Denne \"opgave\" viser trafikrelaterede interessepunkter som lyseblå prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
-    <string name="quest_fixme_title">Retmig: %1$s</string>
-    <string name="quest_poi_recycling_title">IP: Genbrug %s</string>
+    <string name="quest_fixme_title">Retmig:</string>
+    <string name="quest_poi_recycling_title">IP: Genbrug</string>
     <string name="default_disabled_msg_poi_other">Denne \"opgave\" viser forskellige interessepunkter som brandhaner, udsigtspunkter eller toiletter som gule prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
     <string name="quest_poi_vacant_title">IP: Tomt sted</string>
-    <string name="quest_poi_traffic_title">IP: Trafik %s</string>
+    <string name="quest_poi_traffic_title">IP: Trafik</string>
     <string name="default_disabled_msg_poi_machine">Denne \"opgave\" viser interessepunkter som pengeautomater, telefoner eller automater som blå prikker. Klik på prikken for at få vist detaljer og andre svar.</string>
     <string name="restriction_overlay_direction_text">Gælder for kørselsretning:</string>
     <string name="restriction_overlay_other_restrictions">Andre restriktioner på denne vej:</string>
@@ -410,7 +410,7 @@
     <string name="quest_settings_leaf_type_single_tree_no">Kun for linjer og områder</string>
     <string name="quest_order_reverse">Omvendt rækkefølge af opgaver</string>
     <string name="quest_order_normal">Tilbage til normal opgave-rækkefølge</string>
-    <string name="quest_custom_quest_title">Brugerdefineret opgave: %s</string>
+    <string name="quest_custom_quest_title">Brugerdefineret opgave:</string>
     <string name="quest_settings_fixme_title">Vælg Retmig-værdier, der skal ignoreres</string>
     <string name="level_filter_title">Vælg nøgler (keys), der skal kontrolleres</string>
     <string name="quest_custom_quest_add_node">Tilføj punkt</string>

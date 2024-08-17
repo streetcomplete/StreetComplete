@@ -42,11 +42,6 @@ class AddPisteDifficulty : OsmElementQuestType<PisteDifficulty> {
         return mapData.filter("ways, relations with piste:type")
     }
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> {
-        val name = (tags["piste:name"] ?: tags["piste:ref"] ?: tags["ref"])?.let { " ($it)" } ?: ""
-        return arrayOf(name)
-    }
-
     override fun createForm() = AddPisteDifficultyForm()
 
     override fun applyAnswerTo(answer: PisteDifficulty, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

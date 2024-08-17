@@ -33,14 +33,7 @@ class ShowMachine : OsmFilterQuestType<Boolean>() {
         else
             R.string.quest_poi_machine_title
 
-    override fun getTitleArgs(tags: Map<String, String>): Array<String> {
-        return if (tags["amenity"].equals("vending_machine"))
-            arrayOf(tags["vending"] ?: tags.entries.toString())
-        else
-            arrayOf("<no vending tag>")
-    }
-
-    override fun createForm() = NoAnswerFragment()
+    override fun createForm() = ShowMachineAnswerForm()
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter(filter)
