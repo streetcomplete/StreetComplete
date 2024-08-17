@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Checkbox
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -38,7 +39,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.quests.questPrefix
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
-import de.westnordost.streetcomplete.screens.settings.genericQuestTitle
 import org.koin.compose.koinInject
 
 /** Single item the the quest selection list. Shows icon + title, whether it is enabled and whether
@@ -73,7 +73,7 @@ fun QuestSelectionItem(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(
-                text = genericQuestTitle(item.questType),
+                text = stringResource(item.questType.title),
                 modifier = Modifier.alpha(alpha),
                 style = MaterialTheme.typography.body1,
             )
@@ -129,9 +129,9 @@ private fun nowItHasToBeSomewhereElse(item: QuestSelection): Color {
 private fun DisabledHint(text: String) {
     Text(
         text = text,
-        modifier = Modifier.alpha(ContentAlpha.medium),
         style = MaterialTheme.typography.body2,
         fontStyle = FontStyle.Italic,
+        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
     )
 }
 

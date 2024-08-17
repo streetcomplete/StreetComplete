@@ -51,8 +51,8 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
             tags.remove("amenity")
         when (answer) {
             is IsShopVacant -> {
+                tags["disused:shop"] = tags["shop"] ?: "yes"
                 tags.remove("shop")
-                tags["disused:shop"] = "yes"
             }
             is ShopType -> {
                 tags.remove("disused:shop")

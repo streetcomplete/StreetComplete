@@ -14,7 +14,7 @@ class AddMaxWeight : OsmFilterQuestType<MaxWeightAnswer>() {
 
     override val elementFilter = """
         ways with
-         highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
+         highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
          and bridge and bridge != no
          and service != driveway
          and !maxweight and maxweight:signed != no

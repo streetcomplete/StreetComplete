@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.util
 
 import android.content.res.Resources
 import android.text.Html
+import android.text.Spanned
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
@@ -10,12 +11,20 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import java.util.Locale
 
-fun getNameAndLocationLabel(
+fun getNameAndLocationSpanned(
     element: Element,
     resources: Resources,
     featureDictionary: FeatureDictionary?,
     showHouseNumber: Boolean? = null
-): CharSequence? {
+): Spanned? =
+    getNameAndLocationHtml(element, resources, featureDictionary, showHouseNumber)?.parseAsHtml()
+
+fun getNameAndLocationHtml(
+    element: Element,
+    resources: Resources,
+    featureDictionary: FeatureDictionary?,
+    showHouseNumber: Boolean? = null
+): String? {
     val languages = getLanguagesForFeatureDictionary(resources.configuration)
     val feature = featureDictionary
         ?.getFeature(element, languages)
@@ -50,18 +59,18 @@ fun getNameAndLocationLabel(
         location ?: nameAndFeatureName
     }
 
-    return label?.parseAsHtml()
+    return label
 }
 
 /** Returns a text that describes its location, e.g. "house number 123 - on floor 5" */
-fun getLocationLabel(
+fun getLocationSpanned(
     tags: Map<String, String>,
     resources: Resources,
     showHouseNumber: Boolean? = null
-): CharSequence? =
+): Spanned? =
     getLocationHtml(tags, resources, showHouseNumber)?.parseAsHtml()
 
-private fun getLocationHtml(
+fun getLocationHtml(
     tags: Map<String, String>,
     resources: Resources,
     showHouseNumber: Boolean? = null
@@ -146,11 +155,15 @@ fun getLevelLabel(tags: Map<String, String>, resources: Resources): String? {
     if (tags["tunnel"] == "yes" || tags["tunnel"] == "culvert" || tags["location"] == "underground") {
         return resources.getString(R.string.underground)
     }
+    val bridge = tags["bridge"]
+    if (bridge != null && bridge != "no") {
+        return resources.getString(R.string.bridge)
+    }
     return null
 }
 
 /** Returns a text that describes the house number, e.g. "house number 123" */
-fun getHouseNumberLabel(tags: Map<String, String>, resources: Resources): CharSequence? =
+fun getHouseNumberSpanned(tags: Map<String, String>, resources: Resources): Spanned? =
     getHouseNumberHtml(tags, resources)?.parseAsHtml()
 
 private fun getHouseNumberHtml(tags: Map<String, String>, resources: Resources): String? {

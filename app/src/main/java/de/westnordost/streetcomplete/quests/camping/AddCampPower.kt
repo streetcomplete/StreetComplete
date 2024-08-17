@@ -27,6 +27,8 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
     override val icon = R.drawable.ic_quest_camp_power
     override val achievements = listOf(OUTDOORS)
 
+    override val hint = R.string.quest_camp_power_supply_hint
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_power_supply_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

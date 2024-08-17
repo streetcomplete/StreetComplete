@@ -39,14 +39,24 @@ import kotlinx.coroutines.launch
 /** Shows a short tutorial for first-time users */
 @Composable
 fun IntroTutorialScreen(
-    onFinished: () -> Unit,
+    onDismissRequest: () -> Unit,
+    onExplainedNeedForLocationPermission: () -> Unit = {},
+    onFinished: () -> Unit = {},
+    dismissOnBackPress: Boolean = false,
 ) {
     TutorialScreen(
         pageCount = 5,
+        onDismissRequest = onDismissRequest,
         onFinished = onFinished,
+        onPageChanged = { page ->
+            if (page == 2) {
+                onExplainedNeedForLocationPermission()
+            }
+        },
         illustration = { page ->
             IntroTutorialIllustration(page)
-        }
+        },
+        dismissOnBackPress = dismissOnBackPress,
     ) { page ->
         Column(
             modifier = Modifier.fillMaxSize(1f),
@@ -249,5 +259,5 @@ private fun IntroTutorialStep4Text() {
 @PreviewScreenSizes
 @Composable
 private fun PreviewIntroTutorialScreen() {
-    IntroTutorialScreen {}
+    IntroTutorialScreen({}, {}, {})
 }

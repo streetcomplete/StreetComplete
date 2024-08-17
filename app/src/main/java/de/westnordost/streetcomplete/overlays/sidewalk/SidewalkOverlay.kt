@@ -79,24 +79,19 @@ private fun getFootwayStyle(element: Element): PolylineStyle {
 }
 
 private fun getSidewalkStyle(element: Element): PolylineStyle {
-    val sidewalkSides = parseSidewalkSides(element.tags)
-    // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
-    if (sidewalkSides == null) {
-        if (sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element)) {
-            return PolylineStyle(StrokeStyle(Color.INVISIBLE))
-        }
-    }
+    val sidewalks = parseSidewalkSides(element.tags)
+    val isNoSidewalkExpected = lazy { sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element) }
 
     return PolylineStyle(
         stroke = null,
-        strokeLeft = sidewalkSides?.left.style,
-        strokeRight = sidewalkSides?.right.style
+        strokeLeft = sidewalks?.left.getStyle(isNoSidewalkExpected),
+        strokeRight = sidewalks?.right.getStyle(isNoSidewalkExpected)
     )
 }
 
 private val sidewalkTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ living_street|pedestrian|service|motorway_link
+      highway ~ living_street|pedestrian|service|motorway_link|busway
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 10
@@ -108,9 +103,10 @@ private val sidewalkTaggingNotExpectedFilter by lazy { """
 private fun sidewalkTaggingNotExpected(element: Element) =
     sidewalkTaggingNotExpectedFilter.matches(element)
 
-private val Sidewalk?.style get() = StrokeStyle(when (this) {
-    Sidewalk.YES           -> Color.SKY
-    Sidewalk.NO            -> Color.BLACK
-    Sidewalk.SEPARATE      -> Color.INVISIBLE
-    Sidewalk.INVALID, null -> Color.DATA_REQUESTED
+private fun Sidewalk?.getStyle(isNoSidewalkExpected: Lazy<Boolean>) = StrokeStyle(when (this) {
+    Sidewalk.YES ->      Color.SKY
+    Sidewalk.NO ->       Color.BLACK
+    Sidewalk.SEPARATE -> Color.INVISIBLE
+    Sidewalk.INVALID  -> Color.DATA_REQUESTED
+    null ->              if (isNoSidewalkExpected.value) Color.INVISIBLE else Color.DATA_REQUESTED
 })

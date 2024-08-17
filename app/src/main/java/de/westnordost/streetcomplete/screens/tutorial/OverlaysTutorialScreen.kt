@@ -20,6 +20,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -44,11 +45,15 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun OverlaysTutorialScreen(
-    onFinished: () -> Unit,
+    onDismissRequest: () -> Unit,
+    onFinished: () -> Unit = {},
+    dismissOnBackPress: Boolean = true,
 ) {
     TutorialScreen(
         pageCount = 3,
+        onDismissRequest = onDismissRequest,
         onFinished = onFinished,
+        dismissOnBackPress = dismissOnBackPress,
         illustration = { page ->
             OverlaysTutorialIllustration(page)
         },
@@ -80,17 +85,28 @@ private fun BoxScope.OverlaysTutorialIllustration(
     val mapZoom = remember { Animatable(0f) }
     var showSelection by remember { mutableStateOf(ShowEdit.No) }
     val showEdit = remember { Animatable(0f) }
+
+    var oldPage by remember { mutableIntStateOf(page) }
+
     LaunchedEffect(page) {
         // button only visible on page 0
         launch { button.animateTo(if (page == 0) 0f else 1f, tween(450)) }
 
         // paint roller rolls from the top left to the bottom right
-        if (page == 1) {
+        if (page == 1 && oldPage < 1) {
             launch {
                 paintRollerAlpha.animateTo(1f, tween(300, 300))
                 paintRollerAlpha.animateTo(0f, tween(300, 450))
             }
             launch { paintRollerPosition.animateTo(1f, tween(900, 300, LinearEasing)) }
+        } else if (oldPage == 1 && page < 1) {
+            // reverse paint-roller when going back
+            launch {
+                paintRollerAlpha.animateTo(1f, tween(300, 0))
+                paintRollerAlpha.animateTo(0f, tween(300, 450))
+            }
+            paintRollerPosition.snapTo(1f)
+            launch { paintRollerPosition.animateTo(0f, tween(900, 150, LinearEasing)) }
         } else {
             launch { paintRollerAlpha.animateTo(0f, tween(300)) }
             launch { paintRollerPosition.animateTo(0f, tween(300, 300)) }
@@ -99,7 +115,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
         if (page > 0) {
             launch { overlayPaint.animateTo(1f, tween(900, 600, LinearEasing)) }
         } else {
-            launch { overlayPaint.animateTo(0f, tween(600)) }
+            launch { overlayPaint.animateTo(0f, tween(900)) }
         }
         // map zooms in on page 2, shows selection etc.
         if (page == 2) {
@@ -113,6 +129,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
             showEdit.animateTo(0f, tween(300))
             mapZoom.animateTo(0f, tween(900))
         }
+        oldPage = page
     }
 
     Box(contentAlignment = Alignment.TopStart) {
@@ -212,7 +229,6 @@ private fun BoxScope.OverlaysTutorialIllustration(
                 Icon(
                     painter = painterResource(R.drawable.ic_overlay_black_24dp),
                     contentDescription = null,
-                    tint = Color.Black
                 )
             }
         }
@@ -255,5 +271,5 @@ private fun OverlaysTutorialStepEditText() {
 @PreviewScreenSizes
 @Composable
 private fun PreviewOverlaysTutorialScreen() {
-    OverlaysTutorialScreen {}
+    OverlaysTutorialScreen({}, {})
 }

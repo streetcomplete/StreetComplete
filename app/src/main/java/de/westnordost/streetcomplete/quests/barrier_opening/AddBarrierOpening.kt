@@ -19,7 +19,7 @@ class AddBarrierOpening(
 
     private val nodeFilter by lazy { """
         nodes with
-            barrier ~ gate|entrance|sliding_gate|swing_gate|wicket_gate
+            barrier ~ gate|entrance|sliding_gate|swing_gate|wicket_gate|bollard|block
             and (!maxwidth:physical or source:maxwidth_physical ~ ".*estimat.*")
             and (!width or source:width ~ ".*estimat.*")
             and (!maxwidth or source:maxwidth ~ ".*estimat.*")
@@ -38,7 +38,12 @@ class AddBarrierOpening(
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_opening_width_gate
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags["barrier"] == "bollard" || tags["barrier"] == "block") {
+            R.string.quest_barrier_opening_width_bollard
+        } else {
+            R.string.quest_barrier_opening_width_gate
+        }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

@@ -202,6 +202,25 @@ private val IS_PLACE_EXPRESSION by lazy {
     """.toElementFilterExpression()
 }
 
+/** Get tags to denote the element with the given [tags] as disused */
+fun getDisusedPlaceTags(tags: Map<String, String>?): Map<String, String> {
+    val (key, value) = tags?.entries?.find { it.key in placeTypeKeys }?.toPair() ?: ("shop" to "yes")
+    return mapOf("disused:$key" to value)
+}
+
+private val placeTypeKeys = setOf(
+    "amenity",
+    "club",
+    "craft",
+    "emergency",
+    "healthcare",
+    "leisure",
+    "office",
+    "military",
+    "shop",
+    "tourism"
+)
+
 /** Expression to see if an element is some kind of vacant shop */
 private val IS_VACANT_PLACE_EXPRESSION = """
     nodes, ways, relations with

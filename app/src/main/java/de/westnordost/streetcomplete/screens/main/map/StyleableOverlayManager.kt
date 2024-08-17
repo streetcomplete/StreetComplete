@@ -250,7 +250,7 @@ class StyleableOverlayManager(
                 if (!levelFilter.levelAllowed(styledElement.element)) return@forEach
                 mapDataInView[key] = styledElement
             }
-            mapDataInView.values
+            mapDataInView.values.toList()
         }
         mapComponent.set(styledElements)
     }
@@ -284,7 +284,7 @@ class StyleableOverlayManager(
 
             if (!hasChanges) return
 
-            mapDataInView.values
+            mapDataInView.values.toList()
         }
         mapComponent.set(styledElements)
     }

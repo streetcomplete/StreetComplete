@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.building.asItem
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.toItems
 import de.westnordost.streetcomplete.overlays.AGroupedImageSelectOverlayForm
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.util.takeFavourites
 import org.koin.android.ext.android.inject
@@ -44,7 +44,7 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
         originalBuilding = createBuildingType(element!!.tags)
         selectedItem = originalBuilding?.asItem()
 
-        setTitleHintLabel(getNameAndLocationLabel(element!!, resources, null, true))
+        setTitleHintLabel(getNameAndLocationSpanned(element!!, resources, null, true))
     }
 
     override fun hasChanges(): Boolean =

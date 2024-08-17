@@ -19,7 +19,9 @@ class TutorialFragment : Fragment() {
         composableContent {
             Surface {
                 IntroTutorialScreen(
-                    onFinished = { listener?.onTutorialFinished() }
+                    onDismissRequest = {},
+                    onFinished = { listener?.onTutorialFinished() },
+                    dismissOnBackPress = false,
                 )
             }
         }

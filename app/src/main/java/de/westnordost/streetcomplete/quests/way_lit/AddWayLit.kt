@@ -66,7 +66,9 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     }
 
     companion object {
-        private val LIT_RESIDENTIAL_ROADS = arrayOf("residential", "living_street", "pedestrian")
+        private val LIT_RESIDENTIAL_ROADS = arrayOf(
+            "residential", "living_street", "pedestrian", "busway"
+        )
 
         private val LIT_NON_RESIDENTIAL_ROADS = arrayOf(
             "motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link",

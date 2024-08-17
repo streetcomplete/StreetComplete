@@ -88,7 +88,7 @@ private val ROAD_NARROWERS = setOf("choker", "chicane", "choked_table")
 
 private val ROAD_SELECTION = """
               (
-                highway ~ trunk|primary|secondary|tertiary|unclassified|residential
+                highway ~ trunk|primary|secondary|tertiary|unclassified|residential|busway
                 and (lane_markings = no or lanes < 2)
               ) or (
                 highway = residential

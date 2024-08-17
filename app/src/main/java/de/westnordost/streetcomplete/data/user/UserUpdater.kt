@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.data.user
 
-import de.westnordost.osmapi.user.UserApi
 import de.westnordost.streetcomplete.data.osmnotes.AvatarsDownloader
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
-import de.westnordost.streetcomplete.data.user.statistics.StatisticsDownloader
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsApiClient
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineScope
@@ -12,9 +11,9 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 class UserUpdater(
-    private val userApi: UserApi,
+    private val userApi: UserApiClient,
     private val avatarsDownloader: AvatarsDownloader,
-    private val statisticsDownloader: StatisticsDownloader,
+    private val statisticsApiClient: StatisticsApiClient,
     private val userDataController: UserDataController,
     private val statisticsController: StatisticsController,
     private val userLoginSource: UserLoginSource
@@ -67,7 +66,7 @@ class UserUpdater(
 
     private fun updateStatistics(userId: Long) = coroutineScope.launch(Dispatchers.IO) {
         try {
-            val statistics = statisticsDownloader.download(userId)
+            val statistics = statisticsApiClient.get(userId)
             statisticsController.updateAll(statistics)
         } catch (e: Exception) {
             Log.w(TAG, "Unable to download statistics", e)

@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.DummyFeature
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
@@ -87,7 +87,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
         super.onViewCreated(view, savedInstanceState)
 
         // title hint label with name is a duplication, it is displayed in the UI already
-        setTitleHintLabel(element?.let { getNameAndLocationLabel(it, resources, null) })
+        setTitleHintLabel(element?.let { getNameAndLocationSpanned(it, resources, null) })
         setMarkerIcon(R.drawable.ic_quest_dot)
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)

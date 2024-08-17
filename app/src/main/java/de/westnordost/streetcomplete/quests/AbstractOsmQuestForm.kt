@@ -48,11 +48,10 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.quests.custom.CustomQuestList
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.util.AccessManagerDialog
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.accessKeys
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.containsAnyKey
-import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -147,8 +146,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(resources.getHtmlQuestTitle(osmElementQuestType, element.tags))
-        setTitleHintLabel(getNameAndLocationLabel(element, resources, featureDictionary))
+        setTitle(getString(osmElementQuestType.getTitle(element.tags)))
+        setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
 
         if (!TagEditor.showingTagEditor && prefs.getBoolean(Prefs.SHOW_HIDE_BUTTON, false)) {
             floatingBottomView2.popIn()
@@ -309,8 +308,9 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun composeNote() {
-        val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
-        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+
+        val questTitle = englishResources.getString(osmElementQuestType.getTitle(element.tags))
+        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary)
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "Unable to answer \"$questTitle\""
         } else {
@@ -337,7 +337,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         if (element.isPlaceOrDisusedPlace()) {
             ShopGoneDialog(
                 requireContext(),
-                element.geometryType,
+                element,
                 countryOrSubdivisionCode,
                 featureDictionary,
                 onSelectedFeature = { onShopReplacementSelected(it, extra) },
@@ -484,7 +484,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         val l = listener // form is closed after adding the edit, so the listener may already be null when called
         withContext(Dispatchers.IO) {
             if (action is UpdateElementTagsAction && !action.changes.isValid()) {
-                val questTitle = englishResources.getQuestTitle(osmElementQuestType, element.tags)
+                val questTitle = englishResources.getString(osmElementQuestType.getTitle(element.tags))
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
                 noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
             } else {

@@ -37,7 +37,7 @@ class CheckShopExistence(
           and (name or brand or noname = yes or name:signed = no)
     """).toElementFilterExpression() }
 
-    override val changesetComment = "Survey if places (shops and other shop-like) still exist"
+    override val changesetComment = "Survey if places still exist"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.ic_quest_check_shop
     override val achievements = listOf(CITIZEN)

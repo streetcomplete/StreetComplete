@@ -60,8 +60,8 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationA
 import de.westnordost.streetcomplete.util.AccessManagerDialog
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.accessKeys
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.containsAnyKey
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.ktx.isSplittable
@@ -231,7 +231,7 @@ abstract class AbstractOverlayForm :
         binding.speechbubbleContentContainer.clipToOutline = true
 
         setTitleHintLabel(
-            element?.let { getNameAndLocationLabel(it, resources, featureDictionary) }
+            element?.let { getNameAndLocationSpanned(it, resources, featureDictionary) }
         )
 
         binding.moreButton.setOnClickListener {
@@ -542,7 +542,7 @@ abstract class AbstractOverlayForm :
 
     protected fun composeNote(element: Element) {
         val overlayTitle = englishResources.getString(overlay.title)
-        val hintLabel = getNameAndLocationLabel(element, englishResources, featureDictionary)
+        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary)
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "In context of overlay \"$overlayTitle\""
         } else {

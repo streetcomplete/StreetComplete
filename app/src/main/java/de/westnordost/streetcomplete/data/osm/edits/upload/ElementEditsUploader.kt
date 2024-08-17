@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapData
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApi
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapData
@@ -41,7 +41,7 @@ class ElementEditsUploader(
     private val noteEditsController: NoteEditsController,
     private val mapDataController: MapDataController,
     private val singleUploader: ElementEditUploader,
-    private val mapDataApi: MapDataApi,
+    private val mapDataApi: MapDataApiClient,
     private val statisticsController: StatisticsController,
     private val downloader: Downloader,
     private val externalSourceQuestController: ExternalSourceQuestController,
@@ -130,12 +130,10 @@ class ElementEditsUploader(
     }
 
     private suspend fun fetchElementComplete(elementType: ElementType, elementId: Long): MapData? =
-        withContext(Dispatchers.IO) {
-            when (elementType) {
-                ElementType.NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
-                ElementType.WAY -> mapDataApi.getWayComplete(elementId)
-                ElementType.RELATION -> mapDataApi.getRelationComplete(elementId)
-            }
+        when (elementType) {
+            ElementType.NODE -> mapDataApi.getNode(elementId)?.let { MutableMapData(listOf(it)) }
+            ElementType.WAY -> mapDataApi.getWayComplete(elementId)
+            ElementType.RELATION -> mapDataApi.getRelationComplete(elementId)
         }
 
     companion object {
