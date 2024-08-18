@@ -79,7 +79,7 @@ class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
     ) {
         tags["crossing:markings"] = answer.osmValue
         if (isCrossingMarkingExtended) {
-            tags.updateCheckDateForKey("check_date:crossing")
+            tags.updateCheckDateForKey("crossing")
         }
         /* We only tag yes/no, however, in countries where depending on the kind of marking,
          * different traffic rules apply, it makes sense to ask which marking it is. But to know
