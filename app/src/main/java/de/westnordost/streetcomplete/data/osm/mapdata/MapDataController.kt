@@ -166,6 +166,7 @@ class MapDataController internal constructor(
                 elementDB.putAll(elements)
             }
             cache.noTrimMinus(bbox)
+            Log.i(TAG, "Persisted ${elements.size} and deleted ${deletedKeys.size} elements and geometries")
         }
     }
 
