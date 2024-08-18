@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.withResumed
 import com.mapbox.android.gestures.MoveGestureDetector
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -51,12 +51,13 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val prefs: Preferences by inject()
 
+    private var started = true
+    private var styleNeedsReload = false
+
     private val themeChangeListener: SettingsListener = prefs.prefs.addStringListener(Prefs.THEME_BACKGROUND, "MAP") {
-        viewLifecycleScope.launch {
-            val map = map ?: return@launch
-            val sceneMapComponent = sceneMapComponent ?: return@launch
-            onMapStyleLoaded(map, sceneMapComponent.loadStyle())
-        }
+        if (started)
+            viewLifecycleScope.launch { reloadStyle() }
+        else styleNeedsReload = true
     }
 
     interface Listener {
@@ -127,8 +128,10 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     override fun onStart() {
         super.onStart()
+        started = true
         // sceneMapComponent might actually be null if map style not initialized yet
-        sceneMapComponent?.updateStyle()
+        if (styleNeedsReload) viewLifecycleScope.launch { reloadStyle() }
+        else sceneMapComponent?.updateStyle()
     }
 
     override fun onResume() {
@@ -143,6 +146,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     override fun onStop() {
         super.onStop()
+        started = false
         saveMapState()
     }
 
@@ -196,6 +200,13 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         onMapStyleLoaded(map, style)
 
         listener?.onMapInitialized()
+    }
+
+    @UiThread
+    private suspend fun reloadStyle() {
+        val map = map ?: return
+        val sceneMapComponent = sceneMapComponent ?: return
+        onMapStyleLoaded(map, sceneMapComponent.loadStyle())
     }
 
     /* ----------------------------- Overridable map callbacks --------------------------------- */

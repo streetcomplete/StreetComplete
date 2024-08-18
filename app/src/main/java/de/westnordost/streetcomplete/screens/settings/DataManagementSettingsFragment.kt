@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -15,7 +14,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SwitchCompat
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
@@ -23,7 +21,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
-import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.StreetCompleteApplication
@@ -54,16 +51,13 @@ import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.yield
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import java.io.BufferedWriter
 import java.io.File
 import java.io.IOException
-import kotlin.system.exitProcess
 
 class DataManagementSettingsFragment :
     PreferenceFragmentCompat(),
@@ -182,6 +176,11 @@ class DataManagementSettingsFragment :
                         putString(Prefs.RASTER_TILE_URL, urlText.text.toString())
                         putBoolean(Prefs.NO_SATELLITE_LABEL, hideLabelsSwitch.isChecked)
                     }
+
+                    // trigger the listener in MapFragment (if it exists)
+                    val map = prefs.getString(Prefs.THEME_BACKGROUND, "MAP")
+                    prefs.edit().putString(Prefs.THEME_BACKGROUND, if (map == "MAP") "AERIAL" else "MAP").apply()
+                    prefs.edit().putString(Prefs.THEME_BACKGROUND, map).apply()
                 }
                 .create()
             d.show()
