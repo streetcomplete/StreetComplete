@@ -18,9 +18,9 @@ class MapImages(private val resources: Resources, private val style: Style) {
         if (id !in images) {
             val name = resources.getResourceEntryName(id)
             val (bitmap, sdf) = createBitmap(id)
+            withContext(Dispatchers.Main) { style.addImage(name, bitmap, sdf) }
             images.add(id)
             Log.v("MapImages", "Loaded 1 image")
-            withContext(Dispatchers.Main) { style.addImage(name, bitmap, sdf) }
         }
     }
 
@@ -38,13 +38,13 @@ class MapImages(private val resources: Resources, private val style: Style) {
         val sdfImages = data.filter { it.sdf }.associateTo(HashMap()) { it.name to it.bitmap }
         val nonSdfImages = data.filterNot { it.sdf }.associateTo(HashMap()) { it.name to it.bitmap }
 
-        images.addAll(loadIds)
-        Log.v("MapImages", "Loaded ${loadIds.size} images")
-
         withContext(Dispatchers.Main) {
             if (nonSdfImages.isNotEmpty()) style.addImages(nonSdfImages, false)
             if (sdfImages.isNotEmpty()) style.addImages(sdfImages, true)
         }
+
+        images.addAll(loadIds)
+        Log.v("MapImages", "Loaded ${loadIds.size} images")
     }
 
     private data class ImageWithMetadata(val name: String, val bitmap: Bitmap, val sdf: Boolean)
