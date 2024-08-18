@@ -56,7 +56,15 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val themeChangeListener: SettingsListener = prefs.prefs.addStringListener(Prefs.THEME_BACKGROUND, "MAP") {
         if (started)
-            viewLifecycleScope.launch { reloadStyle() }
+            viewLifecycleScope.launch {
+                if (it == "AERIAL")
+                    // crappy workaround for a bug: when switching to raster background, the raster tile in current view is invisible
+                    // so we zoom out and in again and hope the tile is loaded
+                    updateCameraPosition { zoomBy = -1.0}
+                reloadStyle()
+                if (it == "AERIAL")
+                    updateCameraPosition { zoomBy = 1.0}
+            }
         else styleNeedsReload = true
     }
 

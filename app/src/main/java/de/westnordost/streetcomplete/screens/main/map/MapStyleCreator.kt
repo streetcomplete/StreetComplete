@@ -642,7 +642,8 @@ private fun partBeforeLayers(name: String, accessToken: String, rasterSource: St
     ${if (rasterSource == null) "}" else """    },
     "raster-source": {
       "type": "raster",
-      "tiles": ["$rasterSource"]
+      "tiles": ["$rasterSource"],
+      "maxzoom": 16
     }"""}
   },
   "transition": { "duration": 300, "delay": 0 },
