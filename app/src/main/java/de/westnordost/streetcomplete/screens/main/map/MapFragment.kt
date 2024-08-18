@@ -140,6 +140,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         // sceneMapComponent might actually be null if map style not initialized yet
         if (styleNeedsReload) viewLifecycleScope.launch { reloadStyle() }
         else sceneMapComponent?.updateStyle()
+        styleNeedsReload = false
     }
 
     override fun onResume() {

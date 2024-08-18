@@ -198,7 +198,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     private fun setupComponents(context: Context, map: MapLibreMap, style: Style) {
         val fingerRadius = context.resources.dpToPx(CLICK_AREA_SIZE_IN_DP / 2)
 
-        mapImages = MapImages(context.resources, style)
+        mapImages = MapImages(context.resources, map)
 
         geometryMarkersMapComponent = GeometryMarkersMapComponent(context, map, mapImages!!)
 

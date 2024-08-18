@@ -7,10 +7,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import java.lang.System.currentTimeMillis
 
-class MapImages(private val resources: Resources, private val style: Style) {
+class MapImages(private val resources: Resources, private val map: MapLibreMap) {
     private val images = HashSet<Int>()
     private val mutex = Mutex()
 
@@ -20,7 +21,7 @@ class MapImages(private val resources: Resources, private val style: Style) {
             val (bitmap, sdf) = createBitmap(id)
             images.add(id)
             Log.v("MapImages", "Loaded 1 image")
-            withContext(Dispatchers.Main) { style.addImage(name, bitmap, sdf) }
+            withContext(Dispatchers.Main) { map.style?.addImage(name, bitmap, sdf) }
         }
     }
 
@@ -42,8 +43,8 @@ class MapImages(private val resources: Resources, private val style: Style) {
         Log.v("MapImages", "Loaded ${loadIds.size} images")
 
         withContext(Dispatchers.Main) {
-            if (nonSdfImages.isNotEmpty()) style.addImages(nonSdfImages, false)
-            if (sdfImages.isNotEmpty()) style.addImages(sdfImages, true)
+            if (nonSdfImages.isNotEmpty()) map.style?.addImages(nonSdfImages, false)
+            if (sdfImages.isNotEmpty()) map.style?.addImages(sdfImages, true)
         }
     }
 
