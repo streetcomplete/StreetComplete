@@ -6,24 +6,21 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -35,11 +32,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
@@ -61,6 +57,7 @@ import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.common.ZoomInIcon
 import de.westnordost.streetcomplete.ui.common.ZoomOutIcon
 import de.westnordost.streetcomplete.ui.ktx.dir
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
 import kotlin.math.abs
@@ -79,6 +76,7 @@ fun MapControls(
     onClickZoomOut: () -> Unit,
     onClickCompass: () -> Unit,
     onClickLocation: () -> Unit,
+    onClickLocationPointer: () -> Unit,
     onClickCreate: () -> Unit,
     onClickStopTrackRecording: () -> Unit,
     onClickDownload: () -> Unit,
@@ -111,15 +109,14 @@ fun MapControls(
     val isFollowingPosition by viewModel.isFollowingPosition.collectAsState()
     val isRecordingTracks by viewModel.isRecordingTracks.collectAsState()
 
-    val mapZoom by viewModel.mapZoom.collectAsState()
-    val mapRotation by viewModel.mapRotation.collectAsState()
-    val mapTilt by viewModel.mapTilt.collectAsState()
+    val mapCamera by viewModel.mapCamera.collectAsState()
+    val intersectionPoint by viewModel.intersectionPoint.collectAsState()
 
     val editItems by editHistoryViewModel.editItems.collectAsState()
     val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
     val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
 
-    val isCreateButtonEnabled by remember { derivedStateOf { mapZoom >= 18f } }
+    val isCreateButtonEnabled by remember { derivedStateOf { (mapCamera?.zoom ?: 0.0) >= 18.0 } }
 
     var showOverlaysDropdown by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
@@ -128,6 +125,9 @@ fun MapControls(
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     val showEditHistorySidebar by editHistoryViewModel.isShowingSidebar.collectAsState()
+
+    val mapRotation = mapCamera?.rotation ?: 0.0
+    val mapTilt = mapCamera?.tilt ?: 0.0
 
     fun onClickOverlays() {
         if (viewModel.hasShownOverlaysTutorial) {
@@ -165,6 +165,19 @@ fun MapControls(
         if (selectedOverlay?.isCreateNodeEnabled == true) {
             Crosshair()
         }
+
+        val intersection = intersectionPoint
+        if (intersection != null) {
+            val rotation = intersection.angle - mapRotation
+            PointerPinButton(
+                onClick = onClickLocationPointer,
+                rotate = rotation.toFloat(),
+                modifier = Modifier
+                    .safeDrawingPadding()
+                    .absoluteOffset(x = intersection.x.pxToDp(), y = intersection.y.pxToDp()),
+            ) { Image(painterResource(R.drawable.location_dot_small), null) }
+        }
+
         Box(
             modifier
                 .fillMaxSize()

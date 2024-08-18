@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
@@ -253,9 +254,8 @@ class MainViewModelImpl(
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
 
     override val locationState = MutableStateFlow(LocationState.ENABLED)
-    override val mapZoom = MutableStateFlow(18.0)
-    override val mapRotation = MutableStateFlow(0.0)
-    override val mapTilt = MutableStateFlow(0.0)
+    override val mapCamera = MutableStateFlow<CameraPosition?>(null)
+    override val intersectionPoint = MutableStateFlow<IntersectionPoint?>(null)
 
     override val isFollowingPosition = MutableStateFlow(false)
     override val isNavigationMode = MutableStateFlow(false)

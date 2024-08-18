@@ -20,9 +20,7 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.graphics.Insets
-import androidx.core.graphics.minus
 import androidx.core.os.bundleOf
-import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -92,7 +90,6 @@ import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
-import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
@@ -114,8 +111,6 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.random.Random
 
@@ -219,6 +214,7 @@ class MainFragment :
                 onClickZoomOut = ::onClickZoomOut,
                 onClickCompass = ::onClickCompassButton,
                 onClickLocation = ::onClickLocationButton,
+                onClickLocationPointer = ::onClickLocationPointer,
                 onClickCreate = ::onClickCreateButton,
                 onClickStopTrackRecording = ::onClickTracksStop,
                 onClickDownload = ::onClickDownload,
@@ -228,8 +224,6 @@ class MainFragment :
         }
 
         view.respectSystemInsets { windowInsets = it }
-
-        binding.locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
         requireActivity().onBackPressedDispatcher
             .addCallback(viewLifecycleOwner, sheetBackPressedCallback)
@@ -307,21 +301,19 @@ class MainFragment :
         controlsViewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
         controlsViewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
         controlsViewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
-        controlsViewModel.mapZoom.value = mapFragment?.cameraPosition?.zoom ?: 18.0
+        controlsViewModel.mapCamera.value = mapFragment?.cameraPosition
         updateLocationPointerPin()
         listener?.onMapInitialized()
     }
 
-    override fun onMapIsChanging(position: LatLon, rotation: Double, tilt: Double, zoom: Double) {
-        controlsViewModel.mapRotation.value = rotation
-        controlsViewModel.mapTilt.value = tilt
-        controlsViewModel.mapZoom.value = zoom
+    override fun onMapIsChanging(camera: CameraPosition) {
+        controlsViewModel.mapCamera.value = camera
 
         updateLocationPointerPin()
 
         val f = bottomSheetFragment
-        if (f is IsMapOrientationAware) f.onMapOrientation(rotation, tilt)
-        if (f is IsMapPositionAware) f.onMapMoved(position)
+        if (f is IsMapOrientationAware) f.onMapOrientation(camera.rotation, camera.tilt)
+        if (f is IsMapPositionAware) f.onMapMoved(camera.position)
     }
 
     override fun onPanBegin() {
@@ -585,7 +577,7 @@ class MainFragment :
             else -> LocationState.DENIED
         }
         controlsViewModel.isNavigationMode.value = false
-        binding.locationPointerPin.visibility = View.GONE
+        controlsViewModel.intersectionPoint.value = null
         mapFragment!!.clearPositionTracking()
         locationManager.removeUpdates()
     }
@@ -795,39 +787,22 @@ class MainFragment :
     // ---------------------------------- Location Pointer Pin  --------------------------------- */
 
     private fun updateLocationPointerPin() {
-        val mapFragment = mapFragment ?: return
-        val camera = mapFragment.cameraPosition ?: return
-        val position = camera.position
-        val rotation = camera.rotation
+        controlsViewModel.intersectionPoint.value = calculateLocationPointerIntersection()
+    }
 
-        val location = mapFragment.displayedLocation
-        if (location == null) {
-            binding.locationPointerPin.visibility = View.GONE
-            return
-        }
-        val displayedPosition = LatLon(location.latitude, location.longitude)
-
-        var target = mapFragment.getPointOf(displayedPosition) ?: return
-        windowInsets?.let {
-            target -= PointF(it.left.toFloat(), it.top.toFloat())
-        }
-        val intersection = findClosestIntersection(binding.mapControls, target)
-        if (intersection != null) {
-            val intersectionPosition = mapFragment.getPositionAt(intersection)
-            binding.locationPointerPin.isGone = intersectionPosition == null
-            if (intersectionPosition != null) {
-                val angleAtIntersection = position.initialBearingTo(intersectionPosition)
-                binding.locationPointerPin.pinRotation = (angleAtIntersection + rotation).toFloat()
-
-                val a = (angleAtIntersection + rotation) * PI / 180f
-                val offsetX = (sin(a) / 2.0 + 0.5) * binding.locationPointerPin.width
-                val offsetY = (-cos(a) / 2.0 + 0.5) * binding.locationPointerPin.height
-                binding.locationPointerPin.x = intersection.x - offsetX.toFloat()
-                binding.locationPointerPin.y = intersection.y - offsetY.toFloat()
-            }
-        } else {
-            binding.locationPointerPin.visibility = View.GONE
-        }
+    private fun calculateLocationPointerIntersection(): IntersectionPoint? {
+        val mapFragment = mapFragment ?: return null
+        val camera = mapFragment.cameraPosition ?: return null
+        val displayedPosition = mapFragment.displayedLocation?.toLatLon() ?: return null
+        val target = mapFragment.getPointOf(displayedPosition) ?: return null
+        val intersection = findClosestIntersection(binding.controls, target) ?: return null
+        val intersectionPosition = mapFragment.getPositionAt(intersection) ?: return null
+        val angleAtIntersection = camera.position.initialBearingTo(intersectionPosition)
+        return IntersectionPoint(
+            x = intersection.x,
+            y = intersection.y,
+            angle = angleAtIntersection
+        )
     }
 
     private fun onClickLocationPointer() {
