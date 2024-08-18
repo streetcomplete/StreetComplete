@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestGenericListBinding
+import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.takeFavourites
 import de.westnordost.streetcomplete.view.image_select.DisplayItem
 import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
@@ -103,7 +104,7 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
         if (originalList.size > prefs.getInt(Prefs.FAVS_FIRST_MIN_LINES, 1) * itemsPerRow && moveFavoritesToFront) {
             val favourites = prefs.getLastPicked(this::class.simpleName!!)
                 .map { itemsByString[it] }
-                .takeFavourites(n = itemsPerRow, history = 50)
+                .takeFavourites(n = itemsPerRow, history = 50, first = 2)
             return (favourites + originalList).distinct()
         } else {
             return originalList

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.content.res.Resources
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.edithistory.Edit
@@ -23,7 +22,6 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.ExternalSourceQuestKey
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
-import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -95,7 +93,6 @@ class EditHistoryPinsManager(
         viewLifecycleScope.launch {
             val edits = withContext(Dispatchers.IO) { editHistorySource.getAll(isVisible == 2) }
             val pins = createEditPins(edits)
-            Log.i("test", "e pins $pins")
             pinsMapComponent.set(pins)
         }
     }
