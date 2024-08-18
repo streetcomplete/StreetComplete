@@ -182,7 +182,6 @@ class DataManagementSettingsFragment :
                         putString(Prefs.RASTER_TILE_URL, urlText.text.toString())
                         putBoolean(Prefs.NO_SATELLITE_LABEL, hideLabelsSwitch.isChecked)
                     }
-                    activity?.let { ActivityCompat.recreate(it) } // need to reload scene
                 }
                 .create()
             d.show()
