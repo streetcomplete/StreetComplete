@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -56,12 +57,13 @@ abstract class MainViewModel : ViewModel() {
     // NOTE: currently filled from MainFragment (communication to compose view), i.e. the source of
     //       truth is actually the MapFragment
     abstract val locationState: MutableStateFlow<LocationState>
-    abstract val mapZoom: MutableStateFlow<Double>
-    abstract val mapRotation: MutableStateFlow<Double>
-    abstract val mapTilt: MutableStateFlow<Double>
+    abstract val mapCamera: MutableStateFlow<CameraPosition?>
+    abstract val intersectionPoint: MutableStateFlow<IntersectionPoint?>
 
     abstract val isFollowingPosition: MutableStateFlow<Boolean>
     abstract val isNavigationMode: MutableStateFlow<Boolean>
 
     abstract val isRecordingTracks: MutableStateFlow<Boolean>
 }
+
+data class IntersectionPoint(val x: Float, val y: Float, val angle: Double)
