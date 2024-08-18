@@ -109,7 +109,6 @@ class MoveNodeFragment :
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
         binding.pin.pinIconView.setImageResource(editType.icon)
-        binding.mapButton.isGone = true // todo: remove when re-adding raster tiles
         binding.mapButton.setOnClickListener { toggleBackground() }
         updateMapButtonText()
 

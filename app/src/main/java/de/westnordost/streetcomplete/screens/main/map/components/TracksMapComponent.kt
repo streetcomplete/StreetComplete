@@ -43,6 +43,8 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
     private val trackSource = GeoJsonSource("track-source")
     private val oldTrackSource = GeoJsonSource("old-track-source")
 
+    private val gpxSource = GeoJsonSource("gpx-source")
+
     private data class Track(val trackpoints: MutableList<LatLon>, val isRecording: Boolean)
     private var track: Track = Track(ArrayList(), false)
     private var oldTracks: MutableList<MutableList<LatLon>> = arrayListOf()
@@ -67,7 +69,14 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
         LineLayer("track", "track-source")
             .withProperties(*commonTrackProperties, lineOpacity(0.6f), lineCap(Property.LINE_CAP_ROUND), lineDasharray(arrayOf(0f, 2f))),
         LineLayer("old-track", "old-track-source")
-            .withProperties(*commonTrackProperties, lineOpacity(0.2f), lineCap(Property.LINE_CAP_ROUND), lineDasharray(arrayOf(0f, 2f)))
+            .withProperties(*commonTrackProperties, lineOpacity(0.2f), lineCap(Property.LINE_CAP_ROUND), lineDasharray(arrayOf(0f, 2f))),
+        LineLayer("gpx-layer", "gpx-source")
+            .withProperties(
+                lineColor("#53fe70"),
+                lineOpacity(0.25f),
+                lineWidth(5f),
+                lineCap(Property.LINE_CAP_ROUND)
+            )
     )
 
     init {
@@ -87,6 +96,7 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
         map.style?.addSource(trackAnimationSource)
         map.style?.addSource(trackSource)
         map.style?.addSource(oldTrackSource)
+        map.style?.addSource(gpxSource)
     }
 
     override fun onPause(owner: LifecycleOwner) {
@@ -140,6 +150,11 @@ class TracksMapComponent(context: Context, mapStyle: Style, private val map: Map
         trackSource.clear()
         oldTrackSource.clear()
         trackAnimationSource.clear()
+    }
+
+    @UiThread fun setGpxTrack(gpxPoints: List<LatLon>) {
+        val line = LineString.fromLngLats(gpxPoints.map { Point.fromLngLat(it.longitude, it.latitude) })
+        gpxSource.setGeoJson(line)
     }
 
     private fun updateAnimatedTrack(progress: Float) {

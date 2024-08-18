@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.mapbox.android.gestures.MoveGestureDetector
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
 import org.maplibre.android.maps.MapLibreMap
@@ -31,7 +32,6 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
@@ -49,6 +49,14 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val prefs: Preferences by inject()
+
+    private val themeChangeListener: SettingsListener = prefs.prefs.addStringListener(Prefs.THEME_BACKGROUND, "MAP") {
+        viewLifecycleScope.launch {
+            val map = map ?: return@launch
+            val sceneMapComponent = sceneMapComponent ?: return@launch
+            onMapStyleLoaded(map, sceneMapComponent.loadStyle())
+        }
+    }
 
     interface Listener {
         /** Called when the map has been completely initialized */

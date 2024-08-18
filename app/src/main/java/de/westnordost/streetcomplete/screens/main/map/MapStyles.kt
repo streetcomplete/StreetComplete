@@ -86,3 +86,32 @@ val themeDarkContrast = MapColors(
     hillshadeShadow = "hsl(240, 80%, 0%)",
     onewayArrow = "#ccf"
 )
+
+val rasterBackground = MapColors(
+    earth = "rgba(0,0,0,0)",
+    water = "rgba(0,0,0,0)",
+    waterShore = "rgba(170,187,238,0.4)",
+    green = "rgba(0,0,0,0)",
+    forest = "rgba(0,0,0,0)",
+    town = "rgba(0,0,0,0)",
+    building = "rgba(204,214,238,0.2)",
+    buildingOutline = "rgba(185,195,217,0.4)",
+    pointBarrier = "#888",
+    adminBoundary = "#e39",
+    railway = "rgba(153,153,170,0.5)",
+    aeroway = "#fff",
+    path = "rgba(255,170,136,0.2)",
+    road = "rgba(255,255,255,0.2)",
+    roadOutline = "rgba(204,170,153,0.5)",
+    pedestrian = "rgba(255,170,136,0.2)",
+    motorway = "rgba(255,255,255,0.2)",
+    motorwayOutline = "rgba(204,170,153,0.5)",
+    text = "#124",
+    textOutline = "#fff",
+    textWater = "#fff",
+    textWaterOutline = "#349",
+    privateOverlay = "rgba(243,218,205,0.5)",
+    hillshadeLight = "hsl(220, 100%, 95%)",
+    hillshadeShadow = "hsl(18, 100%, 40%)",
+    onewayArrow = "#888",
+)

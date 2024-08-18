@@ -125,7 +125,6 @@ class SplitWayFragment :
 
         binding.undoButton.isInvisible = !hasChanges
         binding.okButton.isInvisible = !isFormComplete
-        binding.mapButton.isGone = true // todo: remove when re-adding raster tiles
         binding.mapButton.setOnClickListener { toggleBackground() }
         updateMapButtonText()
 

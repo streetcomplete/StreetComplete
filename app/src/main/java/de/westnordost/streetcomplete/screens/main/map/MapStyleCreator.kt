@@ -208,7 +208,7 @@ private data class Text(
     ).joinToString()
 }
 
-fun createMapStyle(name: String, accessToken: String, languages: List<String>, colors: MapColors): String {
+fun createMapStyle(name: String, accessToken: String, languages: List<String>, colors: MapColors, rasterSource: String? = null): String {
 
     val pathWidth = listOf(14.0 to 0.5, 16.0 to 1.0, 24.0 to 256.0)  // ~1m
 
@@ -441,12 +441,12 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
 
         Layer("water-areas",
             src = "water",
-            filter = listOf(de.westnordost.streetcomplete.screens.main.map.Structure.None.filter),
+            filter = listOf(Structure.None.filter),
             paint = Fill(colors.water)
         ),
         Layer("water-shore-lines",
             src = "water",
-            filter = listOf(de.westnordost.streetcomplete.screens.main.map.Structure.None.filter),
+            filter = listOf(Structure.None.filter),
             minZoom = 15.0,
             paint = Line(
                 color = colors.waterShore,
@@ -528,7 +528,7 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
 
         Layer("water-areas-bridge",
             src = "water",
-            filter = listOf(de.westnordost.streetcomplete.screens.main.map.Structure.Bridge.filter),
+            filter = listOf(Structure.Bridge.filter),
             paint = Fill(colors.water)
         ),
         rivers.toLayer(Structure.Bridge),
@@ -606,24 +606,23 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
         /*
         // I don't know, kind of does not look good. Maybe it would look better if roofs were rendered?
 
-        de.westnordost.streetcomplete.screens.main.map.Layer("buildings-extrude",
+        Layer("buildings-extrude",
             src = "building",
-            filter = listOf(de.westnordost.streetcomplete.screens.main.map.tagIs("extrude", true)),
+            filter = listOf(tagIs("extrude", true)),
             minZoom = 15.0,
             maxZoom = 19.0,
-            paint = de.westnordost.streetcomplete.screens.main.map.FillExtrusion(
+            paint = FillExtrusion(
                 color = colors.building,
                 base = """["get", "min_height"]""",
                 height = """["get", "height"]""",
-                opacity = de.westnordost.streetcomplete.screens.main.map.byZoom(15, 0, 16, 0.8, 18, 0.8, 19, 0),
+                opacity = byZoom(15, 0, 16, 0.8, 18, 0.8, 19, 0),
             )
         ),
 
          */
     )
 
-    return """${partBeforeLayers(name, accessToken)}
-  "layers": [
+    return """${partBeforeLayers(name, accessToken, rasterSource)}
     { "id": "background", "type": "background", "paint": {"background-color": "${colors.earth}"}},
     ${layers.joinToString(",\n    ") { it.toJson() }}
   ]
@@ -631,7 +630,7 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
 """
 }
 
-private fun partBeforeLayers(name: String, accessToken: String) = """{
+private fun partBeforeLayers(name: String, accessToken: String, rasterSource: String?) = """{
   "version": 8,
   "name": "$name",
   "sources": {
@@ -640,12 +639,17 @@ private fun partBeforeLayers(name: String, accessToken: String) = """{
       "tiles": ["https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=$accessToken"],
       "attribution": "<a href='https://www.openstreetmap.org/copyright' title='OpenStreetMap is open data licensed under ODbL' target='_blank' class='osm-attrib'>&copy; OSM contributors</a> | <a href='https://jawg.io?utm_medium=map&utm_source=attribution' title='Tiles Courtesy of Jawg Maps' target='_blank' class='jawg-attrib'>&copy; <b>Jawg</b>Maps</a>",
       "maxzoom": 16
-    }
+    ${if (rasterSource == null) "}" else """    },
+    "raster-source": {
+      "type": "raster",
+      "tiles": ["$rasterSource"]
+    }"""}
   },
   "transition": { "duration": 300, "delay": 0 },
   "light": { "intensity": 0.2 },
   "glyphs": "asset://map_theme/glyphs/{fontstack}/{range}.pbf",
-  "sprite": "asset://map_theme/sprites","""
+  "sprite": "asset://map_theme/sprites",
+  "layers": [${if (rasterSource == null) "" else "\n"+"""{ "id": "raster-layer", "source": "raster-source", "type": "raster" },"""}"""
 
 data class Waterway(
     val id: String,

@@ -54,16 +54,8 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.maplibre.android.geometry.LatLng
-import org.maplibre.android.style.layers.LineLayer
 import org.maplibre.android.style.layers.Property
-import org.maplibre.android.style.layers.PropertyFactory.lineCap
-import org.maplibre.android.style.layers.PropertyFactory.lineColor
-import org.maplibre.android.style.layers.PropertyFactory.lineOpacity
-import org.maplibre.android.style.layers.PropertyFactory.lineWidth
 import org.maplibre.android.style.layers.PropertyFactory.visibility
-import org.maplibre.android.style.sources.GeoJsonSource
-import org.maplibre.geojson.LineString
-import org.maplibre.geojson.Point
 import kotlin.math.PI
 
 /** This is the map shown in the main view. It manages a map that shows the quest pins, quest
@@ -226,8 +218,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
         selectedPinsMapComponent = SelectedPinsMapComponent(context, map, mapImages!!)
         viewLifecycleOwner.lifecycle.addObserver(selectedPinsMapComponent!!)
-
-        map.style?.addSource(gpxSource)
     }
 
     private fun setupLayers(style: Style) {
@@ -249,7 +239,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             downloadedAreaMapComponent?.layers,
             styleableOverlayMapComponent?.layers,
             tracksMapComponent?.layers,
-            listOf(gpxLayer),
         ).flatten()) {
             style.addLayerBelow(layer, firstLabelLayer)
         }
@@ -320,22 +309,11 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     //endregion
-    private val gpxLayer = LineLayer("gpx-layer", "gpx-source")
-        .withProperties(
-            lineColor("#53fe70"),
-            lineOpacity(0.25f),
-            lineWidth(5f),
-            lineCap(Property.LINE_CAP_ROUND)
-        )
-    private val gpxSource = GeoJsonSource("gpx-source")
     fun loadGpxTrack() {
-        gpxLayer.setProperties(visibility(Property.NONE))
-        if (!prefs.getBoolean(Prefs.SHOW_GPX_TRACK, false)) return
-        val gpxPoints = loadGpxTrackPoints(requireContext()) ?: return
-
-        val line = LineString.fromLngLats(gpxPoints.map { Point.fromLngLat(it.longitude, it.latitude) })
-        gpxLayer.setProperties(visibility(Property.VISIBLE))
-        gpxSource.setGeoJson(line)
+        val gpxPoints = if (prefs.getBoolean(Prefs.SHOW_GPX_TRACK, false))
+            loadGpxTrackPoints(requireContext()) ?: emptyList()
+        else emptyList()
+        tracksMapComponent?.setGpxTrack(gpxPoints)
     }
 
 
