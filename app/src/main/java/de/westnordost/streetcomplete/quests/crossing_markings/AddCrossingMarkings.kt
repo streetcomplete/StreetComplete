@@ -13,19 +13,15 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
-private const val PREF_CROSSING_MARKING_EXTENDED = "quest_pedestrian_crossing_markings_extended"
-
 class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
 
-    private val crossingFilter
-        get() =
-            """
+    private val crossingFilter by lazy { """
         nodes with
           highway = crossing
           and foot != no
           and $crossingMarkingExpression
           and (!crossing:signals or crossing:signals = no)
-    """.toElementFilterExpression()
+    """.toElementFilterExpression() }
 
     /* only looking for crossings that have no crossing=* at all set because if the crossing was
      * - if it had markings, it would be tagged with "marked","zebra" or "uncontrolled"
@@ -34,13 +30,11 @@ class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
      *   it would be spammy to ask about markings because the answer would almost always be "yes".
      *   Might differ per country, research necessary. */
 
-    private val excludedWaysFilter by lazy {
-        """
+    private val excludedWaysFilter by lazy { """
         ways with
           highway and access ~ private|no
           or highway = service and service = driveway
-    """.toElementFilterExpression()
-    }
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify type or existence of pedestrian crossing markings"
     override val wikiLink = "Key:crossing:markings"
@@ -65,26 +59,14 @@ class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
         if (!crossingFilter.matches(element)) false else null
 
     override fun createForm() =
-        if (isCrossingMarkingExtended) {
+        if (prefs.getBoolean(PREF_CROSSING_MARKING_EXTENDED, false)) {
             AddCrossingMarkingsForm()
         } else {
             AddCrossingMarkingsYesNoForm()
         }
 
-    override fun applyAnswerTo(
-        answer: CrossingMarkings,
-        tags: Tags,
-        geometry: ElementGeometry,
-        timestampEdited: Long
-    ) {
+    override fun applyAnswerTo(answer: CrossingMarkings, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["crossing:markings"] = answer.osmValue
-        if (isCrossingMarkingExtended) {
-            tags.updateCheckDateForKey("crossing")
-        }
-        /* We only tag yes/no, however, in countries where depending on the kind of marking,
-         * different traffic rules apply, it makes sense to ask which marking it is. But to know
-         * which kinds exist per country needs research. (Whose results should be added to the
-         * wiki page for crossing:markings first) */
     }
 
     override val hasQuestSettings: Boolean = true
@@ -100,20 +82,11 @@ class AddCrossingMarkings : OsmElementQuestType<CrossingMarkings> {
             }
             .create()
 
-    private val isCrossingMarkingExtended
-        get() = prefs.getBoolean(PREF_CROSSING_MARKING_EXTENDED, false)
-
-    private val crossingMarkingExpression: String
-        get() =
-            if (isCrossingMarkingExtended) {
-                """
-                    ( !crossing:markings or crossing:markings=yes )
-                """.trimIndent()
-            } else {
-                """
-                    !crossing:markings
-                    and (!crossing or crossing = island )
-                """.trimIndent()
-            }
-
+    private val crossingMarkingExpression = if (prefs.getBoolean(PREF_CROSSING_MARKING_EXTENDED, false)) {
+        "( !crossing:markings or crossing:markings=yes )"
+    } else {
+        "!crossing:markings and (!crossing or crossing = island )"
+    }
 }
+
+private const val PREF_CROSSING_MARKING_EXTENDED = "qs_AddCrossingMarkings_extended"
