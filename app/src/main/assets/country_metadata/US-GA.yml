@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Bank of America, Wells Fargo, Publix, PNC Bank, Truist, SunTrust, Synovus, United Community Bank, Athena Bitcoin, Chase, iTHINK Financial, BB&T, Regions Bank, Ameris Bank, USAA, Fifth Third Bank, Delta Community Credit Union, Bank OZK, Western Union, Presto!, LGE Community Credit Union, Community Bank of the South, Allpoint, SRP Federal Credit Union, RockItCoin, Georgia's Own Credit Union, First Citizens Bank, Associated Credit Union]
+atmOperators: [Bank of America, Wells Fargo, Publix, PNC Bank, Truist, SunTrust, Synovus, United Community Bank, Athena Bitcoin, Chase, iTHINK Financial, Regions Bank, BB&T, Ameris Bank, USAA, Fifth Third Bank, Delta Community Credit Union, Bank OZK, Western Union, Presto!, LGE Community Credit Union, Community Bank of the South, Allpoint, SRP Federal Credit Union, RockItCoin, Georgia's Own Credit Union, First Citizens Bank, Associated Credit Union]
 chargingStationOperators: [Electrify America, ChargePoint, 'Tesla, Inc.', Georgia Power, Volta, Tesla, eVgo, Blink, Whole Foods, NRG Energy, Middle Georgia State University, Georgia College, EVgo, Cobb EMC, City of Thomasville]
 clothesContainerOperators: [Green Zone Recycling]
 defaultSpeedLimitHasUrbanOrRural: true

@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
-atmOperators: [Шпаркасе, Охридска Банка, Стопанска Банка АД - Скопје, УНИБанка, Шпаркасе Банка Македонија АД Скопје, Комерцијална банка, Halkbank, НЛБ - Тутунска Банка, Stopanska Banka, NLB, Уни Банка, ТТК банка, Стопанска Банка, Комерцијална Банка АД Скопје, Sparkasse, ProCredit Bank]
+atmOperators: [Шпаркасе, Охридска Банка, Стопанска Банка АД - Скопје, УНИБанка, Комерцијална банка, Шпаркасе Банка Македонија АД Скопје, NLB, Halkbank, НЛБ - Тутунска Банка, Stopanska Banka, Уни Банка, ТТК банка, Стопанска Банка, Комерцијална Банка АД Скопје, Sparkasse, НЛБ Тутунска Банка, ProCredit Bank]
 chargingStationOperators: [EVN]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true

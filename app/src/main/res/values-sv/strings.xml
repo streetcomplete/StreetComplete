@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Godkännandet misslyckades: alla listade behörigheter måste tillåtas"</string>
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visning"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Utrymme i megabyte som reserveras på extern lagring för att cacha kartdelar"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Visa alla anteckningar"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Visar även anteckningar som inte är ställda som frågor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorerar anteckningar som inte är ställda som frågor"</string>
-    <string name="pref_title_map_cache">"Storlek på kartcache"</string>
     <string name="map_btn_gps_tracking">"Följ mig"</string>
     <string name="map_attribution_osm">"© OpenStreetMaps bidragsgivare"</string>
     <string name="quest_generic_otherAnswers">"Andra svar…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Plats är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Platsbehörighet behövs för att visa din position på kartan och ladda ner data i din närhet."</string>
     <string name="about_title_authors">"Tack till"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick och bidragsgivare"</string>
     <string name="about_title_repository">"Projektets hem"</string>
-    <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapportera fel"</string>
     <string name="about_title_feedback">"Ge återkoppling"</string>
     <string name="about_title_license">"Licens"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du är nedkopplad"</string>
     <string name="confirmation_authorize_now">"Du måste ge programmet tillåtelse att använda ditt OpenStreetMap-konto för att publicera dina svar. Vill du ge tillåtelse nu?"</string>
     <string name="not_authorized">"Inte godkänd"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Den förbinder bara två vägar"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Något annat (lämna anteckning)"</string>
     <string name="about_title_privacy_statement">"Sekretesspolicy"</string>
-    <string name="about_summary_privacy_statement">"och dataanvändning"</string>
     <string name="quest_openingHours_public_holidays">"Allmänna helgdagar"</string>
     <string name="quest_openingHours_public_holidays_short">"Röda dagar"</string>
     <string name="quest_openingHours_open_end">"Ingen fast stängningstid"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Zooma ut"</string>
     <string name="map_btn_zoom_in">"Zooma in"</string>
     <string name="privacy_html">"&lt;p&gt;Härligt, någon som bryr sig om sekretess! Jag tror att jag bara har goda nyheter till dig:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direkta bidrag&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Direkta bidrag&lt;/h2&gt;
 &lt;p&gt;
 Först och främst är du införstådd med att du med den här appen gör du faktiska och direkta bidrag till OpenStreetMap (OSM).&lt;br/&gt;
 Allt du bidrar i den här appen läggs direkt till på kartan, det finns ingen tredje part mellan appen och OSM-infrastrukturen.
@@ -91,12 +84,12 @@ Allt du bidrar i den här appen läggs direkt till på kartan, det finns ingen t
 Att redigera OpenStreetMap anonymt är inte möjligt. Alla ändringar du gör med ditt OSM-användarkonto (inklusive datum och plats) kan kopplas till ditt konto och visas offentligt på webbplatsen openstreetmap.org. Eftersom StreetComplete bygger på att man ger sig ut och kartlägger kommer detta att avslöja var och när du använt appen.
 &lt;/p&gt;
 
-&lt;b&gt;Plats&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Plats&lt;/h2&gt;
 &lt;p&gt;
 Appen delar inte din GPS-position med någon. Den används för att automatiskt ladda ner data omkring dig och positionera kartan till din plats.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Dataanvändning&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Dataanvändning&lt;/h2&gt;
 &lt;p&gt;
 Denna app kommunicerar direkt med OSM-infrastruktur.&lt;br/&gt;
 Innan appen laddar upp dina ändringar så kollar den en &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;enkel textfil&lt;/a&gt; på min server för att säkerställa att denna version av appen inte har förbjudits att ladda upp ändringar. Detta är en försiktighetsåtgärd för att kunna blockera versioner av appen som visat sig ha kritiska fel från att ladda upp korrupt data till OSM.&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@ Innan appen laddar upp dina ändringar så kollar den en &lt;a href=\"https://ww
     <string name="quest_surface_value_wood">"Trä"</string>
     <string name="quest_sidewalk_title">"Finns det en trottoar längs den här gatan?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Var ligger den här gatan?"</string>
-    <string name="quest_oneway_title">"Är det här en enkelriktad gata?"</string>
     <string name="quest_address_title">"Vad har den här byggnaden för husnummer?"</string>
     <string name="store_listing_short_description">"Kartläggningsapp för OpenStreetMap"</string>
     <string name="store_listing_full_description">"Bidra till att förbättra OpenStreetMap med StreetComplete!
@@ -389,7 +381,7 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="questList_disabled_in_country">"Visas aldrig i %s"</string>
     <string name="quest_select_hint_most_specific">"Välj det mest detaljerade svaret som passar:"</string>
     <string name="quest_generic_item_confirmation">"Är du säker på att du inte kan svara mer specifikt?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;För några uppdrag kommer tilläggsdata från tredje part att hämtas. Sökningen efter uppdrag om enkelriktade gator använder ett API på westnordost.de för att hitta kandidater för enkelriktad körning.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;För några uppdrag kommer tilläggsdata från tredje part att hämtas.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nej (lämna anteckning)"</string>
     <string name="pref_quests_reset">"Vill du nollställa både uppdrag och ordningsföljd?"</string>
     <string name="quest_generic_item_invalid_value">"Var god lämna ett mer specifikt svar."</string>
@@ -504,7 +496,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Är det förbjudet för fotgängare att gå på denna väg utan trottoar här?"</string>
     <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
     <string name="pref_title_theme_select">"Välj tema"</string>
-    <string name="theme_automatic">"Automatiskt"</string>
     <string name="theme_light">"Ljust"</string>
     <string name="theme_dark">"Mörkt"</string>
     <string name="theme_system_default">"Systemstandard"</string>
@@ -534,7 +525,6 @@ Dela den nu?"</string>
     <string name="quest_maxweight_answer_other_sign">"Skylten ser annorlunda ut…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vill du lämna en anteckning? En anteckning med ett foto gör att andra kartläggare kan ta hand om det."</string>
     <string name="quest_handrail_title">"Har trappan ett räcke?"</string>
-    <string name="about_summary_current_version">"Aktuell version: %s"</string>
     <string name="quest_ref_answer_noRef">"Inget nummer eller kod syns…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Vägen i illustrationen är roterad likadant som på kartan på stiftets plats."</string>
     <string name="quest_recycling_materials_title">"Vad kan lämnas här för återvinning?"</string>
@@ -559,7 +549,6 @@ Dela den nu?"</string>
     <string name="about_title_changelog">"Versionshistorik"</string>
     <string name="title_whats_new">"Vad är nytt?"</string>
     <string name="about_title_rate">"Betygsätt denna app"</string>
-    <string name="about_summary_rate">"på Google Play"</string>
     <string name="about_title_donate">"Donera"</string>
     <string name="about_summary_donate">"Visa din uppskattning! ❤️"</string>
     <string name="about_description_donate">"Tack för att du överväger att stödja den här appen! För att se aktuella donationer och donera själv, tryck på respektive plattform:"</string>
@@ -958,7 +947,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_barrier_bicycle_type_single">"Passage mellan två grindar"</string>
     <string name="quest_barrier_bicycle_type_double">"Labyrintfålla - en grind på varje sida"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Labyrintfålla - tre eller fler grindar"</string>
-    <string name="pref_title_language_select">"Välj språk"</string>
     <string name="language_default">"Systemstandard"</string>
     <string name="on_floor">"på våning %s:"</string>
     <string name="select_street_parking_orientation">"Välj orientering mot väg:"</string>
@@ -983,7 +971,6 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
 
 Du kan också lämna en anteckning (med bild)."</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
-    <string name="quest_shoulder_title">"Har den här vägen en vägren?"</string>
     <string name="quest_fireHydrant_position_title">"Var ligger denna brandpost?"</string>
     <string name="quest_fireHydrant_position_green">"I gräset eller jorden"</string>
     <string name="quest_fireHydrant_position_lane">"På vägen"</string>
@@ -1034,8 +1021,6 @@ Du kan också lämna en anteckning (med bild)."</string>
     <string name="quest_barrier_path_intersection">"Hur korsar stigen hindret här?"</string>
     <string name="quest_barrier_road_intersection">"Hur korsar vägen hindret här?"</string>
     <string name="quest_sidewalk_value_separate">"trottoar, men visas separat på kartan"</string>
-    <string name="quest_shoulder_value_yes">"vägren"</string>
-    <string name="quest_shoulder_value_no">"ingen vägren"</string>
     <string name="no_camera_permission_warning_title">"Kamerabehörighet"</string>
     <string name="no_camera_permission_warning">"Behörigheten krävs för att kunna mäta avstånd med kameran."</string>
     <string name="ar_core_error_sdk_too_old">"Appen är för gammal, försök att uppdatera."</string>
@@ -1126,7 +1111,6 @@ Gör detta för varje sida som finns."</string>
     <string name="quest_barrier_type_gate_any_size">"Grind, valfri storlek"</string>
     <string name="quest_air_pump_compressor_title">"Finns det tryckluft (en kompressor) tillgängligt här?"</string>
     <string name="quest_step_count_stile_hint">"Bara antalet steg som krävs för att nå toppen. Om det är olika antal på vardera sida, ange det högsta."</string>
-    <string name="quest_shoulder_explanation2">"En vägren är den del av vägen som inte utgör själva körbanan och som kan användas i nödsituation, av långsamtgående fordon, cyklister, m.m. Den är oftast belagd, men behöver inte vara det. Både smala och breda vägrenar förekommer."</string>
     <string name="quest_cycleway_value_none_and_oneway">"ingen, förbjudet att cykla i den här riktningen"</string>
     <string name="map_btn_create_track">"Skapa ny spårinspelning"</string>
     <string name="map_btn_stop_track">"Stoppa spårinspelning"</string>
@@ -1228,7 +1212,6 @@ Gör detta för varje sida som finns."</string>
     <string name="quest_genericRef_title">"Vad har detta för referensnummer?"</string>
     <string name="quest_sidewalk_answer_different">"Trottoarerna skiljer sig"</string>
     <string name="about_title_get_involved">"Hjälp till"</string>
-    <string name="pref_category_quests_overlays">"Uppdrag &amp; extralager"</string>
     <string name="quest_presets_rename">"Byt namn"</string>
     <string name="quest_presets_share">"Dela"</string>
     <string name="quest_presets_delete">"Radera"</string>
@@ -1384,7 +1367,7 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
 Du kan hitta information om donationer på vår hemsida, Google Play tillåter oss inte att länka dit i appen."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Inte inomhus, men tak över"</string>
     <string name="lit_value_unsupported">"Specifik belysningsstatus som ej är valbar i denna app"</string>
-    <string name="quest_generic_otherAnswers2">"Eh…"</string>
+    <string name="quest_generic_otherAnswers2">"Va…?"</string>
     <string name="quest_pedestrian_crossing_signals2">"Finns det trafiksignaler som visar när man ska korsa här?"</string>
     <string name="quest_moped_access_title">"Finns det någon skylt som visar huruvida mopeder är tillåtna på denna cykelväg?"</string>
     <string name="quest_moped_access_allowed">"Det finns ingen skylt"</string>
@@ -1401,11 +1384,22 @@ Du kan hitta information om donationer på vår hemsida, Google Play tillåter o
 En våning räknas som en takvåning när dess fönster finns i taket. Det följer att tak med noll takvåningar inte nödvändigtvis är platt, bara inte tillräckligt högt för en hel våning.
     "</string>
     <string name="quest_parcel_locker_brand">"Vad är det för varumärke på detta paketskåp?"</string>
-    <string name="quest_parcel_locker_pickup">"Kan man hämta paket här?"</string>
-    <string name="quest_parcel_locker_mail_in">"Kan man lämna paket här?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Kraftledningen är fastsatt i byggnaden"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"ingen, men en skylt tillåter cykling på trottoaren"</string>
     <string name="separate_cycleway_no_signed">"En skylt förbjuder uttryckligen cykling"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Gångväg, men en skylt tillåter cykling"</string>
     <string name="quest_bicycle_parking_type_floor">"Markerad yta"</string>
+    <string name="link_osmapp_description">"En karta med flera olika lager som t.ex. klättring eller skidåkning"</string>
+    <string name="action_back">"Bakåt"</string>
+    <string name="action_clear">"Rensa"</string>
+    <string name="action_more">"Mer"</string>
+    <string name="action_open_in_browser">"Öppna i webbläsare"</string>
+    <string name="about_category_contribute">"Bidra"</string>
+    <string name="pref_category_quests">"Uppdrag"</string>
+    <string name="pref_title_language_select2">"Språk"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Hur ofta du blir ombedd att bekräfta att saker som redan finns på kartan stämmer."</string>
+    <string name="questList_disabled_by_default">"Av som standard"</string>
+    <string name="action_manage_presets_summary">"Namn som uppdragen nedan ska sparas som."</string>
+    <string name="quest_multiselect_hint">"Välj alla som stämmer:"</string>
+    <string name="quest_barrier_opening_width_gate">"Hur bred är öppningen här?"</string>
 </resources>

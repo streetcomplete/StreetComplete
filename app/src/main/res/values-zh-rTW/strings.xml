@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"驗證失敗：所有列出的請求都須許可"</string>
     <string name="pref_category_communication">"通訊"</string>
     <string name="pref_category_display">"顯示"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"MB為單位的空間保留用來暫存地圖圖磚"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"顯示所有註記"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"也顯示非問題格式的註記"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"忽略非問題格式的註記"</string>
-    <string name="pref_title_map_cache">"地圖快取大小"</string>
     <string name="map_btn_gps_tracking">"跟隨我"</string>
     <string name="map_attribution_osm">"© 開放街圖貢獻者"</string>
     <string name="quest_generic_otherAnswers">"其他回答…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"定位已關閉。到設定中開啟它？"</string>
     <string name="no_location_permission_warning">"你的位置會被用在下載身邊的資料上"</string>
     <string name="about_title_authors">"作者"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick 和貢獻者"</string>
     <string name="about_title_repository">"原始碼倉儲"</string>
-    <string name="about_summary_repository">"GitHub 上"</string>
     <string name="about_title_report_error">"回報錯誤"</string>
     <string name="about_title_feedback">"給予回饋"</string>
     <string name="about_title_license">"授權"</string>
-    <string name="about_summary_license">"GNU 公用授權"</string>
     <string name="offline">"你處於離線狀態"</string>
     <string name="confirmation_authorize_now">"你需要驗證你的開放街圖使用者帳號來套用你的回答。現在驗證嗎？"</string>
     <string name="not_authorized">"沒有驗證"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"它只連接兩條道路"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"其他（留下註記）"</string>
     <string name="about_title_privacy_statement">"隱私聲明"</string>
-    <string name="about_summary_privacy_statement">"和資料使用量"</string>
     <string name="quest_openingHours_public_holidays">"國定假日"</string>
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
     <string name="quest_openingHours_open_end">"開放/關閉"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"縮近"</string>
     <string name="map_btn_zoom_in">"縮遠"</string>
     <string name="privacy_html">"&lt;p&gt;喔，有些人在意隱私，這樣很好！ 我想我只有好消息可告訴你：&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;直接貢獻&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;直接貢獻&lt;/h2&gt;
 &lt;p&gt;
 首先，透過此app，你可直接向開放街圖做出貢獻。&lt;br/&gt;
 你在此app上所有貢獻會直接加到地圖上，和開放街圖設施之間不會有任何第三方管道。
@@ -91,12 +84,12 @@
 開放街圖是不允許匿名編輯，所以你任何編輯都是藉由你的開放街圖帳號。這表示日期、內容和你改動後產生的間接地理資訊，都會公開於開放街圖網站並標示你的帳號。
 &lt;/p&gt;
 
-&lt;b&gt;定位&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;定位&lt;/h2&gt;
 &lt;p&gt;
 這個app不會分享給其他人你的GPS位置，你的定位只用在自動下載你附近的資料，以及定位地圖到你所在位置。
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;資料使用&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;資料使用&lt;/h2&gt;
 &lt;p&gt;
 在上傳你的變更之前，此app會在我的伺服器上確認 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;簡單的文字檔&lt;/a&gt; 來確認app是否被封鎖而無法上傳任何變更。這是一個防護措施，如果app的版本變更後有嚴重的錯誤出現，開放街圖的資料不受汙染。&lt;br/&gt;
 &lt;/p&gt;"</string>
@@ -122,7 +115,6 @@
     <string name="quest_surface_value_wood">"木頭"</string>
     <string name="quest_sidewalk_title">"這條道路有人行道嗎?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此條街道位在?"</string>
-    <string name="quest_oneway_title">"這條是單行道嗎?"</string>
     <string name="quest_address_title">"此棟建築物的門牌號碼是?"</string>
     <string name="store_listing_short_description">"開放街圖 調測APP"</string>
     <string name="store_listing_full_description">"使用 StreetComplete 改善開放街圖的圖資！
@@ -390,7 +382,7 @@
     <string name="questList_disabled_in_country">"不顯示 %s"</string>
     <string name="quest_select_hint_most_specific">"選擇最適當的選項："</string>
     <string name="quest_generic_item_confirmation">"你確定無法留下更精確的描述嗎？"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;對一些任務來說，需要從第三方下載額外的資料。通常來說，單行道任務需要連線 API，同樣放在 westnordost.de，儲存可能的單行道。&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;對一些任務來說，需要從第三方下載額外的資料&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"無（留下註記）"</string>
     <string name="pref_quests_reset">"將任務啟用和訂單重置為預先值嗎？"</string>
     <string name="quest_generic_item_invalid_value">"請選擇更精確的數值。"</string>
@@ -435,7 +427,7 @@
     <string name="quest_buildingType_college">"學院建築"</string>
     <string name="quest_buildingType_hospital">"醫院建築"</string>
     <string name="quest_buildingType_stadium">"體育場"</string>
-    <string name="quest_buildingType_train_station">"列車站建築"</string>
+    <string name="quest_buildingType_train_station">"火車站建築"</string>
     <string name="quest_buildingType_transportation">"大眾運輸建築"</string>
     <string name="quest_buildingType_university">"大專院校建築"</string>
     <string name="quest_buildingType_government">"政府建築"</string>
@@ -506,7 +498,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"這條道路禁止行人通行嗎？"</string>
     <string name="quest_buildingType_title">"這棟建築物的種類是?"</string>
     <string name="pref_title_theme_select">"選擇主題"</string>
-    <string name="theme_automatic">"自動"</string>
     <string name="theme_light">"光亮"</string>
     <string name="theme_dark">"黑暗"</string>
     <string name="theme_system_default">"系統預設"</string>
@@ -535,7 +526,6 @@
     <string name="quest_maxweight_answer_other_sign">"看來是不同的標誌…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下有照片的註解，能夠讓其他圖客接手處理。"</string>
     <string name="quest_handrail_title">"這條階梯有扶手嗎？"</string>
-    <string name="about_summary_current_version">"目前版本：%s"</string>
     <string name="quest_ref_answer_noRef">"看不到編號…"</string>
     <string name="quest_street_side_puzzle_tutorial">"插圖中的道路與大頭針位置處的地圖相同方式旋轉…"</string>
     <string name="quest_recycling_materials_title">"這裡能拿過去那些回收物品？"</string>
@@ -560,7 +550,6 @@
     <string name="about_title_changelog">"版本歷史"</string>
     <string name="title_whats_new">"最新功能？"</string>
     <string name="about_title_rate">"評價此應用程式"</string>
-    <string name="about_summary_rate">"在GooglePlay上"</string>
     <string name="about_title_donate">"捐獻"</string>
     <string name="about_summary_donate">"顯示您的贊助！ ❤️"</string>
     <string name="about_description_donate">"感謝您考慮支援此應用程式！ 要檢視目前的捐款和你的捐獻，在相關的平台上點擊："</string>
@@ -955,7 +944,6 @@
     <string name="quest_barrier_bicycle_type_single">"兩個障礙物間的通道"</string>
     <string name="quest_barrier_bicycle_type_double">"雙急轉彎 - 每邊的障礙物"</string>
     <string name="quest_barrier_bicycle_type_multiple">"雙急轉彎 - 超過兩個障礙物"</string>
-    <string name="pref_title_language_select">"選擇語言"</string>
     <string name="language_default">"系統預設"</string>
     <string name="on_floor">"在 %s 樓"</string>
     <string name="select_street_parking_orientation">"道路選擇朝向的方向："</string>
@@ -980,7 +968,6 @@
 
 或者，你可以留註解 (拍照片)"</string>
     <string name="quest_address_house_number_label">"門牌號碼："</string>
-    <string name="quest_shoulder_title">"這條道路有路肩故障車道嗎？"</string>
     <string name="quest_fireHydrant_position_title">"消防栓的位置在那裡呢？"</string>
     <string name="quest_fireHydrant_position_green">"在草地、泥土地或是灌木叢中"</string>
     <string name="quest_fireHydrant_position_lane">"在道路上"</string>
@@ -1031,8 +1018,6 @@
     <string name="quest_barrier_path_intersection">"這條路徑怎麼在這裡穿越障礙物？"</string>
     <string name="quest_barrier_road_intersection">"這條道路怎麼在這裡穿越障礙物？"</string>
     <string name="quest_sidewalk_value_separate">"在地圖上分開顯示"</string>
-    <string name="quest_shoulder_value_yes">"有路肩"</string>
-    <string name="quest_shoulder_value_no">"無路肩"</string>
     <string name="no_camera_permission_warning_title">"相機權限"</string>
     <string name="no_camera_permission_warning">"這權限是為了能拍照，用鏡頭來測量距離"</string>
     <string name="ar_core_error_sdk_too_old">"這個 app 太舊了，請試著更新。"</string>
@@ -1123,7 +1108,6 @@
     <string name="quest_barrier_type_gate_any_size">"閘門，任何大小"</string>
     <string name="quest_air_pump_compressor_title">"這裡有空氣壓縮機嗎？"</string>
     <string name="quest_step_count_stile_hint">"只是到頂部的階梯數，如果兩邊計算不同的話，請取比較大的數字。"</string>
-    <string name="quest_shoulder_explanation2">"路肩或是緊急車道標示緊急停車車道。這個區域設計為路肩，未必整條都有鋪面，而且要停車可能不夠寬，或是停下來會阻礙交通。"</string>
     <string name="quest_cycleway_value_none_and_oneway">"沒有，這個方向不允許騎單車"</string>
     <string name="map_btn_create_track">"新增錄製軌跡"</string>
     <string name="map_btn_stop_track">"停止記錄軌跡"</string>
@@ -1225,7 +1209,6 @@
     <string name="quest_genericRef_title">"這裡的編號是多少？"</string>
     <string name="quest_sidewalk_answer_different">"人行道路狀況不同"</string>
     <string name="about_title_get_involved">"參與其中"</string>
-    <string name="pref_category_quests_overlays">"任務與套疊"</string>
     <string name="quest_presets_rename">"重新命名"</string>
     <string name="quest_presets_share">"分享"</string>
     <string name="quest_presets_delete">"刪除"</string>
@@ -1397,13 +1380,10 @@
 有天花板的屋頂如果有窗戶算是一層樓。再來屋頂是零樓層不意味著平的，只是沒有足夠一整層的高度。
 ␣␣␣␣"</string>
     <string name="quest_parcel_locker_brand">"包裏儲物櫃的品牌？"</string>
-    <string name="quest_parcel_locker_pickup">"你能在這裡領取包裹嗎？"</string>
-    <string name="quest_parcel_locker_mail_in">"你可以在這裡寄送包裏嗎？"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"輸電線附掛在建築"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"沒有，但標誌允許在人行道騎自行車"</string>
     <string name="separate_cycleway_no_signed">"標誌特別指明禁止騎自行車"</string>
     <string name="separate_cycleway_footway_allowed_sign">"人行道，但標誌允許騎自行車"</string>
     <string name="quest_bicycle_parking_type_floor">"指定區域"</string>
     <string name="link_osmapp_description">"有多個不同圖層的地圖，例如爬山或是滑雪用途"</string>
-    <string name="quest_parcel_locker_mail_in_answer_returns_only">"只有給退貨用"</string>
 </resources>

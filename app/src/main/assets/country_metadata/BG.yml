@@ -1,9 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [international]
 additionalValidHousenumberRegex: ((бл\.\s?)?\p{N}{1,4}[\s-]?\p{InCyrillic}?)|((\p{N}{1,4}-){0,2}\p{N}{1,4})
-atmOperators: [УниКредит Булбанк, Банка ДСК, Първа инвестиционна банка, Обединена Българска Банка, Централна Кооперативна Банка, Пощенска банка, Обединена Българска Банка*, Euronet, Raiffeisenbank, Shitcoins.club, Общинска банка, Allianz, Централна кооперативна Банка, ОББ*, ОББ, Инвестбанк, International Asset Bank, EasyPay, DigitalAssist, БАКБ, UniCredit Bulbank, Piraeus Bank, KBC Group, CryptoDesk]
-chargingStationOperators: [Столичен електротранспорт, ОП „Общински паркинги и синя зона“ - Варна, Kaufland, Столичен автотранспорт, Община Варна, Eldrive, Renault, ProCredit Bank, Evpoint]
-clothesContainerOperators: [TexCycle, БЧК, TEXAID Bulgaria, M-Texx]
+atmOperators: [Банка ДСК, УниКредит Булбанк, Първа инвестиционна банка, Обединена Българска Банка, Централна Кооперативна Банка, Пощенска банка, Обединена Българска Банка*, Euronet, Raiffeisenbank, Shitcoins.club, Общинска банка, Allianz, ОББ*, Централна кооперативна Банка, Инвестбанк, International Asset Bank, ОББ, EasyPay, DigitalAssist, БАКБ, UniCredit Bulbank, Piraeus Bank, KBC Group, CryptoDesk]
+chargingStationOperators: [Столичен електротранспорт, ОП „Общински паркинги и синя зона“ - Варна, Kaufland, Eldrive, Столичен автотранспорт, Община Варна, Renault, ProCredit Bank, Evpoint]
+clothesContainerOperators: [TexCycle, БЧК, M-Texx, TEXAID Bulgaria]
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -14,7 +14,7 @@ noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [bg]
 orchardProduces: [grape, cherry, plum, walnut, tomato, apple, chilli_pepper, sweet_pepper, peach, apricot, raspberry, hazelnut, almond, strawberry, pear, blueberry]
-parcelLockerBrand: [easybox, BoxNow, Еконт, Speedy, Box Now]
+parcelLockerBrand: [easybox, Еконт, BoxNow, Box Now, Speedy]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ЗОНА

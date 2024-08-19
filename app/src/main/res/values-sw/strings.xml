@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Uidhinishaji haukufaulu: Ruhusa zote zilizoorodheshwa zinahitaji kutolewa"</string>
     <string name="pref_category_communication">"Mawasiliano"</string>
     <string name="pref_category_display">"Mnyesha"</string>
-    <string name="pref_tilecache_size_summary">"%d Megabati"</string>
-    <string name="pref_tilecache_size_message">"Nafasi iliyohifadhiwa katika megabaiti kwenye hifadhi ya nje kwa kuweka akiba ya sehemu ya ramani"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Onyesha vidokezo vyote"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Pia kuonyesha maelezo ambayo hayajaandikwa kama maswali"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Kupuuza madokezo ambayo hayajaekwa kama maswali"</string>
-    <string name="pref_title_map_cache">"Ukubwa wa akiba ya ramani"</string>
     <string name="map_btn_gps_tracking">"Nifuate"</string>
     <string name="map_attribution_osm">"© Wachangiaji wa OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Majibu mengine…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Sehemu ya kuonesha Eneo Imezimwa, Fungua mipangilio kuiwasha"</string>
     <string name="no_location_permission_warning">"Ruhusa ya kuoneshea sehemu inahitajika kuonesha sehemu uliopo katika ramani na fanya jitihada ya kutafuta eneo lililo karibu nawe"</string>
     <string name="about_title_authors">"Huduma ya kuhifadhia taarifa wakati wa kutafuta eneo mtandaoni"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick na wachangiaji"</string>
     <string name="about_title_repository">"Mradi wa Nyumbani"</string>
-    <string name="about_summary_repository">"kwenye GitHub"</string>
     <string name="about_title_report_error">"Hitilafu katika ripoti"</string>
     <string name="about_title_feedback">"Toa mrejesho"</string>
     <string name="about_title_license">"Leseni"</string>
-    <string name="about_summary_license">"Leseni ya Jumla ya GNU"</string>
     <string name="offline">"Hauko mtandaoni"</string>
     <string name="confirmation_authorize_now">"Unahitaji kuidhinisha na akaunti yako ya mtumiaji wa OSM ili kuchapisha majibu yako. Ungependa kuidhinisha sasa?"</string>
     <string name="not_authorized">"Haijaidhinishwa"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Inaunganisha barabara mbili tu"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Kitu kingine (acha dokezo)"</string>
     <string name="about_title_privacy_statement">"Taarifa ya faragha"</string>
-    <string name="about_summary_privacy_statement">"na matumizi ya data"</string>
     <string name="quest_openingHours_public_holidays">"Likizo ya umma"</string>
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
     <string name="quest_openingHours_open_end">"Fungua mwishoni"</string>
@@ -81,7 +74,22 @@
     <string name="quest_roofShape_answer_many">"Ina maumbo kadhaa tofauti"</string>
     <string name="map_btn_zoom_out">"Kuza zaid"</string>
     <string name="map_btn_zoom_in">"Punguza kukuza"</string>
-    <string name="privacy_html">"&lt;p&gt;Ah, mtu anayejali kuhusu faragha, mzuri! Nadhani nina habari njema tu kwako:&lt;/p&gt; &lt;p&gt;&lt;b&gt;Michango ya Moja kwa Moja&lt;/b&gt;&lt;/p&gt; &lt;p&gt; Kwanza kabisa, elewa kuwa ukitumia programu hii, unatoa michango halisi na ya moja kwa moja kwa OpenStreetMap (OSM).&lt;br/&gt; Chochote unachochangia katika programu hii huongezwa moja kwa moja kwenye ramani, hakuna mhusika mwingine kati ya programu na miundombinu ya OSM. &lt;/p&gt; &lt;p&gt; Kuhariri OpenStreetMap bila kujulikana haiwezekani. Mabadiliko yoyote unayofanya (na tarehe na eneo lake) yanahusishwa na akaunti yako ya mtumiaji wa OSM na yanaonekana hadharani kwenye tovuti ya openstreetmap.org. Kwa sababu StreetComplete inapaswa kutumika kwa uchunguzi wa tovuti pekee, hii inaonyesha ni wapi na lini umetumia programu. &lt;/p&gt; &lt;b&gt;Mahali&lt;/b&gt;&lt;br/&gt; &lt;p&gt; Programu haishiriki eneo lako la GPS na mtu yeyote. Inatumika kuchanganua na kupakua mapambano kiotomatiki karibu nawe, na kuweka ramani katika eneo lako. &lt;/p&gt; &lt;p&gt;&lt;b&gt;Matumizi ya Data&lt;/b&gt;&lt;/p&gt; &lt;p&gt; Programu hii huwasiliana moja kwa moja na seva za OSM.&lt;br/&gt; Kabla ya kupakia mabadiliko yako, programu hukagua na &lt;a href=\" https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;faili rahisi ya maandishi&lt;/a&gt; kwenye seva yangu ili kuhakikisha kuwa toleo hili la programu halijapigwa marufuku kupakia mabadiliko. Hii ni hatua ya tahadhari ili kuweza kuzuia matoleo ya programu ambayo yana hitilafu kuu za kupakia data mbovu kwenye OSM.&lt;/p&gt;"</string>
+    <string name="privacy_html">"&lt;p&gt;Ah, mtu anayejali kuhusu faragha, mzuri! Nadhani nina habari njema tu kwako:&lt;/p&gt;
+&lt;h2&gt;Michango ya Moja kwa Moja&lt;/h2&gt;
+&lt;p&gt;
+Kwanza kabisa, elewa kuwa ukitumia programu hii, unatoa michango halisi na ya moja kwa moja kwa OpenStreetMap (OSM).&lt;br/&gt;
+Chochote unachochangia katika programu hii huongezwa moja kwa moja kwenye ramani, hakuna mhusika mwingine kati ya programu na miundombinu ya OSM. 
+&lt;/p&gt;
+&lt;p&gt;Kuhariri OpenStreetMap bila kujulikana haiwezekani. Mabadiliko yoyote unayofanya (na tarehe na eneo lake) yanahusishwa na akaunti yako ya mtumiaji wa OSM na yanaonekana hadharani kwenye tovuti ya openstreetmap.org. Kwa sababu StreetComplete inapaswa kutumika kwa uchunguzi wa tovuti pekee, hii inaonyesha ni wapi na lini umetumia programu.&lt;/p&gt;
+&lt;h2&gt;Mahali&lt;/h2&gt;
+&lt;p&gt;
+Programu haishiriki eneo lako la GPS na mtu yeyote. Inatumika kuchanganua na kupakua mapambano kiotomatiki karibu nawe, na kuweka ramani katika eneo lako.
+&lt;/p&gt;
+&lt;h2&gt;Matumizi ya Data&lt;/h2&gt;
+&lt;p&gt;
+Programu hii huwasiliana moja kwa moja na seva za OSM.&lt;br/&gt;
+Kabla ya kupakia mabadiliko yako, programu hukagua na &lt;a href=\" https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;faili rahisi ya maandishi&lt;/a&gt; kwenye seva yangu ili kuhakikisha kuwa toleo hili la programu halijapigwa marufuku kupakia mabadiliko. Hii ni hatua ya tahadhari ili kuweza kuzuia matoleo ya programu ambayo yana hitilafu kuu za kupakia data mbovu kwenye OSM.
+&lt;/p&gt;"</string>
     <string name="autosync_on">"Washa"</string>
     <string name="autosync_only_on_wifi">"Kwenye Wi-Fi pekee"</string>
     <string name="autosync_off">"Imezimwa"</string>
@@ -104,7 +112,6 @@
     <string name="quest_surface_value_wood">"Mbao"</string>
     <string name="quest_sidewalk_title">"Je, mtaa huu una kivuko?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Mtaa huu uko wapi?"</string>
-    <string name="quest_oneway_title">"Je, hii ni barabara ya njia moja?"</string>
     <string name="quest_address_title">"Namba ya nyumba ya jengo hili ni ngapi?"</string>
     <string name="store_listing_short_description">"Programu ya upimaji wa OpenStreetMap"</string>
     <string name="store_listing_full_description">"Saidia kuboresha OpenStreetMap ukitumia StreetComplete! Programu hii hupata taarifa za ramani inayokosekana katika eneo lako na kuionyesha kwenye ramani kama baada ya kuitafuta. Tatua kila unachokifanya kwa kutembelea eneo kwenye tovuti na kujibu swali rahisi kueka ramani ya kisasa. Maelezo unayoweka huongezwa moja kwa moja kwenye OpenStreetMap kwa jina lako, bila hitaji la kutumia mhariri mwengine."</string>
@@ -363,7 +370,7 @@
     <string name="questList_disabled_in_country">"Haijaonyeshwa katika %s"</string>
     <string name="quest_select_hint_most_specific">"Chagua moja mahususi zaidi ambayo inafaa:"</string>
     <string name="quest_generic_item_confirmation">"Je, una uhakika kuwa huwezi kubainisha hasa zaidi?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Kwa baadhi ya vipengele, baadhi ya taarifa za ziada kutoka kwa wahusika wengine hupatikanwa. Hasa, swala la njia moja huuliza API, ambayo pia inapangishwa kwenye westnordost.de, kuhusu uwezekano wa wagombea wa njia moja.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Kwa baadhi ya vipengele, baadhi ya taarifa za ziada kutoka kwa wahusika wengine hupatikanwa. &lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Hapana (acha dokezo)"</string>
     <string name="pref_quests_reset">"futa vipengele vyote vilivoekwa na kuwezeshwa hapa?"</string>
     <string name="quest_generic_item_invalid_value">"Tafadhali chagua thamani mahususi zaidi."</string>
@@ -478,7 +485,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Je, watembea kwa miguu hawaruhusiwi kutembea kwenye barabara hii hapa?"</string>
     <string name="quest_buildingType_title">"Jengo hili ni la aina gani?"</string>
     <string name="pref_title_theme_select">"Chagua mandhari"</string>
-    <string name="theme_automatic">"Otomatiki"</string>
     <string name="theme_light">"Mwanga"</string>
     <string name="theme_dark">"Giza"</string>
     <string name="theme_system_default">"Chaguo-msingi la mfumo"</string>
@@ -507,7 +513,6 @@
     <string name="quest_maxweight_answer_other_sign">"Aiama inaonekana tofauti..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Je, ungependa kuacha dokezo? Ujumbe ulio na picha utawawezesha wachora ramani wengine kuitunza."</string>
     <string name="quest_handrail_title">"Je, ngazi hizi zina sehemu ya kukamatia?"</string>
-    <string name="about_summary_current_version">"Toleo la sasa: %s"</string>
     <string name="quest_ref_answer_noRef">"Hakuna nambari au geresho linaloonekana.."</string>
     <string name="quest_street_side_puzzle_tutorial">"Barabara iliyo katika kielelezo imezunguka sawa na kituo chake kwenye ramani."</string>
     <string name="quest_recycling_materials_title">"Ni nini kinachoweza kuachwa hapa kwa kuchakata tena?"</string>
@@ -532,7 +537,6 @@
     <string name="about_title_changelog">"toleo la historia"</string>
     <string name="title_whats_new">"kuna mpya gani?"</string>
     <string name="about_title_rate">"Kadiria programu hii"</string>
-    <string name="about_summary_rate">"kwenye Google Play"</string>
     <string name="about_title_donate">"Changia"</string>
     <string name="about_summary_donate">"Onyesha shukrani yako! ❤️"</string>
     <string name="about_description_donate">"Asante kwa kuzingatia kusaidia programu hii! Ili kuona michango ya sasa na kujitolea, gusa jukwaa husika:"</string>
@@ -914,7 +918,6 @@
     <string name="quest_barrier_bicycle_type_single">"Njia baina ya vikwazo"</string>
     <string name="quest_barrier_bicycle_type_double">"udanganyifu - kizuizi kila upande"</string>
     <string name="quest_barrier_bicycle_type_multiple">"udanganyifu - zaidi ya vikwazo viwili"</string>
-    <string name="pref_title_language_select">"Chagua lugha"</string>
     <string name="language_default">"Chaguomsingi la mfumo"</string>
     <string name="on_floor">"kwenye sakafu %s"</string>
     <string name="select_street_parking_orientation">"Chagua mwelekeo kuelekea barabarani:"</string>
@@ -937,7 +940,6 @@
     <string name="street_parking_no_other_reasons">"Hakuna ishara wazi / maegesho ya vombo haiwezekani"</string>
     <string name="street_parking_conditional_restrictions_hint">"Iwapo inawezekana kabisa kuegesha au kusimama hapa, tafadhali elezea jins gan i wale wote ambao wanaweza kuegesha hapa wanaweza kufanya hivyo. Ni vigezo vipi vinavyotumika hasa vinaweza kubainishwa baadaye."</string>
     <string name="quest_address_house_number_label">"Nambari ya nyumba:"</string>
-    <string name="quest_shoulder_title">"Je, barabara hii ina egesho la dharura kwa vyombo vya moto?"</string>
     <string name="quest_fireHydrant_position_title">"Je, wapi bomba kuu la maji la kuzimia moto linapatikana?"</string>
     <string name="quest_fireHydrant_position_green">"Katika nyasi, uchafu au vichaka"</string>
     <string name="quest_fireHydrant_position_lane">"Njiani"</string>
@@ -988,8 +990,6 @@
     <string name="quest_barrier_path_intersection">"Njia hii inavuka vipi kizuizi hapa?"</string>
     <string name="quest_barrier_road_intersection">"Je, barabara hii inavuka vipi kizuizi hapa?"</string>
     <string name="quest_sidewalk_value_separate">"Njia ya kando ya barabara, lakini inaoneswa vipande vipande katika ramani"</string>
-    <string name="quest_shoulder_value_yes">"Sehemu ya maegesho ya dharura"</string>
-    <string name="quest_shoulder_value_no">"Hakuna sehemu ya maegesho ya dharura"</string>
     <string name="no_camera_permission_warning_title">"Ruhusa ya kamera"</string>
     <string name="no_camera_permission_warning">"Ruhusa inahitajika ili kupiga picha na kupima umbali kwa kamera."</string>
     <string name="ar_core_error_sdk_too_old">"Programu hii ni ya zamani sana, ifanye iendane na wakati."</string>
@@ -1079,7 +1079,6 @@
     <string name="quest_barrier_type_gate_any_size">"Mlango, saizi yoyote"</string>
     <string name="quest_air_pump_compressor_title">"je kuna mkandamizoo wa hewa unaopatikana hapa//?"</string>
     <string name="quest_step_count_stile_hint">"Idadi tu ya hatua za kufikia kilele. Ikiwa hesabu ya hatua inatofautiana kwa kila upande, toa nambari ya juu zaidi."</string>
-    <string name="quest_shoulder_explanation2">"Njia ya bega au ya kuvunjika ni njia ya kusimama ya dharura iliyo wazi. Eneo lililoteuliwa kama bega si lazima liwekwe lami juu ya upana wake wote na si lazima liwe pana vya kutosha kwa gari kusimama kabisa kwenye njia ya trafiki."</string>
     <string name="quest_cycleway_value_none_and_oneway">"hakuna, hakuna baiskeli inayoruhusiwa katika mwelekeo huu"</string>
     <string name="map_btn_create_track">"Unda rekodi mpya ya wimbo"</string>
     <string name="map_btn_stop_track">"Acha kurekodi wimbo"</string>
@@ -1181,7 +1180,6 @@
     <string name="quest_genericRef_title">"Ni ipi namba ya utambulisho hapa?"</string>
     <string name="quest_sidewalk_answer_different">"Hali ya barabara ya kando ni tofauti"</string>
     <string name="about_title_get_involved">"Jihusishe"</string>
-    <string name="pref_category_quests_overlays">"Tukio na kufunika"</string>
     <string name="quest_presets_rename">"Badili jina"</string>
     <string name="quest_presets_share">"Sambaza"</string>
     <string name="quest_presets_delete">"Futa"</string>

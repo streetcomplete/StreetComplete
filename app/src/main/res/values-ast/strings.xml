@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Falló l'autorización: has de conceder tolos permisos de la llista"</string>
     <string name="pref_category_communication">"Conexón"</string>
     <string name="pref_category_display">"Pantalla"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Espaciu en megabytes acutáu nel almacenamientu esternu pa guardar caché de les teseles del mapa"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Ver toles notes"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Muéstrense tamién les notes non redactaes como preguntes"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Inórense les notes non redactaes como preguntes"</string>
-    <string name="pref_title_map_cache">"Tamañu de la caché del mapa"</string>
     <string name="map_btn_gps_tracking">"Síguime"</string>
     <string name="map_attribution_osm">"© Collaboradores d'OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Otres respuestes…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"L'allugamientu ta desactiváu. ¿Quies abrir la configuración p'activalu?"</string>
     <string name="no_location_permission_warning">"Precísase saber el to allugamientu pa buscar xeres na redolada."</string>
     <string name="about_title_authors">"Creitos"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick y collaboradores"</string>
     <string name="about_title_repository">"Depósitu de códigu"</string>
-    <string name="about_summary_repository">"en GitHub"</string>
     <string name="about_title_report_error">"Informar d'error"</string>
     <string name="about_title_feedback">"La to opinión"</string>
     <string name="about_title_license">"Llicencia"</string>
-    <string name="about_summary_license">"Llicencia Pública Xeneral de GNU"</string>
     <string name="offline">"Nun hai conexón"</string>
     <string name="confirmation_authorize_now">"Pa publicar les respuestes has d'aniciar sesión cola to cuenta d'usuariu d'OSM. ¿Quies facelo agora?"</string>
     <string name="not_authorized">"Ensin autorización"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Namás une dos víes"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Otra cosa (dexar nota)"</string>
     <string name="about_title_privacy_statement">"Declaración de privacidá"</string>
-    <string name="about_summary_privacy_statement">"y usu de datos"</string>
     <string name="quest_openingHours_public_holidays">"Díes festivos"</string>
     <string name="quest_openingHours_public_holidays_short">"Festivos"</string>
     <string name="quest_openingHours_open_end">"Hora de pieslle flexible"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Allexar"</string>
     <string name="map_btn_zoom_in">"Acercar"</string>
     <string name="privacy_html">"&lt;p&gt;Coime, por fin dalguién a quien-y esmolez la privacidá. Cuido que van ser too bones noticies:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Contribuciones directes&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Contribuciones directes&lt;/h2&gt;
 &lt;p&gt;
 Puntu númberu unu, con esta aplicación tas unviando contribuciones directes y reales a OpenStreetMap.&lt;br/&gt;
 Cualquier contribución fecha con esta aplicación amiéstase directamente al mapa ensin nengún intermediariu ente l'aplicación y la infraestructura d'OSM.
@@ -91,12 +84,12 @@ Cualquier contribución fecha con esta aplicación amiéstase directamente al ma
 Nun se puede contribuyir de manera anónima a OpenStreetMap, colo que cualquier cambéu que faigas va ser cola to cuenta d'usuariu/a n'OSM, polo que van apaecer públicamente col to nome na Web.
 &lt;/p&gt;
 
-&lt;b&gt;Allugamientu&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Allugamientu&lt;/h2&gt;
 &lt;p&gt;
 La to posición nun se comparte con naide, namás s'emplega pa buscar xeres disponibles na zona.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Usu de datos&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Usu de datos&lt;/h2&gt;
 &lt;p&gt;
 Sicasí, primero de facer cualquier cambéu l'aplicación comprueba si la versión actual apaez nun &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;archivu de testu planu&lt;/a&gt; del mio sirvidor. Esta ye una midida preventiva pa poder torgar xubíes en versiones de l'aplicación que tengan errores críticos y puedan corromper los datos n'OSM.&lt;br/&gt;
 &lt;/p&gt;"</string>
@@ -122,7 +115,6 @@ Sicasí, primero de facer cualquier cambéu l'aplicación comprueba si la versi�
     <string name="quest_surface_value_wood">"Madera"</string>
     <string name="quest_sidewalk_title">"¿La cai tien cera?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"¿Ónde ta la cai?"</string>
-    <string name="quest_oneway_title">"¿Ye una cai de sentíu únicu?"</string>
     <string name="quest_address_title">"¿Cuál ye'l númberu de puerta del edificiu?"</string>
     <string name="store_listing_short_description">"Aplicación de mapéu pa OpenStreetMap"</string>
     <string name="store_listing_full_description">"¡Ayuda a ameyorar OpenStreetMap con StreetComplete!
@@ -389,7 +381,7 @@ Por casu: 1,3 o 2–6."</string>
     <string name="questList_disabled_in_country">"Nunca se muestra en %s"</string>
     <string name="quest_select_hint_most_specific">"Selecciona'l que más s'afaye:"</string>
     <string name="quest_generic_item_confirmation">"¿Seguro que nun puedes dar información más específica?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; En dalgunes xeres, descárguense datos adicionales de terceros. En particular, la busca de cais de sentíu únicu consulta una API, que ta agospiada en westnordost.de, con una llista de posibilidaes. &lt;/ p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;En dalgunes xeres, descárguense datos adicionales de terceros.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Non (dexar una nota)"</string>
     <string name="pref_quests_reset">"¿Quies que l'orde de les xeres y l'estáu vuelvan a los valores orixinales?"</string>
     <string name="quest_generic_item_invalid_value">"Por favor, selecciona un valor más específicu."</string>
@@ -504,7 +496,6 @@ Por casu: 1,3 o 2–6."</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"¿Ta prohibío que los peatones circulen per esti tramu de carretera?"</string>
     <string name="quest_buildingType_title">"¿Qué tipu d'edificiu ye esti?"</string>
     <string name="pref_title_theme_select">"Tema de colores"</string>
-    <string name="theme_automatic">"Automático"</string>
     <string name="theme_light">"Claro"</string>
     <string name="theme_dark">"Escuro"</string>
     <string name="theme_system_default">"Colores"</string>
@@ -533,7 +524,6 @@ Por casu: 1,3 o 2–6."</string>
     <string name="quest_maxweight_answer_other_sign">"La señal paez diferente…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"¿Gustaríate dexar una nota? Una nota con una foto va permitir qu'otres persones s'encarguen d'ello."</string>
     <string name="quest_handrail_title">"¿Estes escaleres tienen barandiella?"</string>
-    <string name="about_summary_current_version">"Versión actual: %s"</string>
     <string name="quest_ref_answer_noRef">"Nun veo nengún númberu de referencia…"</string>
     <string name="quest_street_side_puzzle_tutorial">"La versión ampliada de la vía que ves abaxo siempre tien la mesma orientación que'l tramu marcáu nel mapa."</string>
     <string name="quest_recycling_materials_title">"¿Qué tipu de basura se puede reclicar equí?"</string>
@@ -558,7 +548,6 @@ Por casu: 1,3 o 2–6."</string>
     <string name="about_title_changelog">"Historia de versiones"</string>
     <string name="title_whats_new">"¿Qué novedaes hai?"</string>
     <string name="about_title_rate">"Valora l'aplicación"</string>
-    <string name="about_summary_rate">"en Google Play"</string>
     <string name="about_title_donate">"Donar"</string>
     <string name="about_summary_donate">"¡Agradezlo! ❤️"</string>
     <string name="about_description_donate">"¡Gracies por pensar en donar daqué! Pa ver les donaciones actuales o facer el to donativu calca na plataforma que t'interese:"</string>
@@ -879,7 +868,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_barrier_type_gate_any_size">"Puerta, cualquier tamañu"</string>
     <string name="quest_air_pump_compressor_title">"¿Hai un puntu con aire comprimío?"</string>
     <string name="quest_step_count_stile_hint">"Númberu de pasos hasta la parte más alta, si hai más d'un llau que d'otru pon el llau que más tenga."</string>
-    <string name="quest_shoulder_explanation2">"Un arcén ye una espaciu pensáu pa paraes d'emerxencia. Puede que nun tea del too pavimentao o que nun tenga anchor abondo pa qu'un vehículu enteru salga de la calzada."</string>
     <string name="quest_cycleway_value_none_and_oneway">"nun hai nada, y nun se puede dir en bici nesta dirección"</string>
     <string name="map_btn_create_track">"Empezar una traza GPS nueva"</string>
     <string name="map_btn_stop_track">"Parar la grabación de la traza GPS"</string>
@@ -981,7 +969,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_genericRef_title">"¿Cuál ye'l númberu d'identificación?"</string>
     <string name="quest_sidewalk_answer_different">"Ye diferente pa la cera"</string>
     <string name="about_title_get_involved">"Involúcrate"</string>
-    <string name="pref_category_quests_overlays">"Xeres &amp; Superposiciones"</string>
     <string name="quest_presets_rename">"Renomar"</string>
     <string name="quest_presets_share">"Compartir"</string>
     <string name="quest_presets_delete">"Borrar"</string>

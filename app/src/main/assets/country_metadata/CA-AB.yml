@@ -4,4 +4,4 @@ chargingStationOperators: ['Tesla, Inc.', FLO, ChargePoint, Shell]
 clothesContainerOperators: [Diabetes Canada]
 defaultSpeedLimitHasUrbanOrRural: true
 officialLanguages: [en]
-parcelLockerBrand: [Canada Post]
+parcelLockerBrand: [Canada Post, Amazon Hub]

@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"ההרשאה נכשלה: חייב להסכים לכל ההרשאות המבוקשות"</string>
     <string name="pref_category_communication">"תקשורת"</string>
     <string name="pref_category_display">"תצוגה"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"מקום שמור באחסון חיצוני לאריחי המפה"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"הצג את כל ההערות"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"מציג גם הערות שאינן מנוסחות כשאלות"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"להתעלם מהערות שאינן מנוסחות כשאלות"</string>
-    <string name="pref_title_map_cache">"גודל מטמון של המפה"</string>
     <string name="map_btn_gps_tracking">"עקוב אחריי"</string>
     <string name="map_attribution_osm">"©תורמי OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"תשובות אחרות…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"שירות המיקום כבוי. פתח הגדרות כדי להדליק אותו?"</string>
     <string name="no_location_permission_warning">"הרשאה למיקום שלך נחוצה כדי להציג את מיקומך על המפה ולחפש משימות בסביבתך."</string>
     <string name="about_title_authors">"משתתפים"</string>
-    <string name="about_summary_authors">"© %s  טוביאס צוויק ואחרים"</string>
     <string name="about_title_repository">"קוד מקור"</string>
-    <string name="about_summary_repository">"ב-GitHub"</string>
     <string name="about_title_report_error">"דווח על תקלה"</string>
     <string name="about_title_feedback">"מתן משוב"</string>
     <string name="about_title_license">"רישיון"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"אין חיבור לאינטרנט"</string>
     <string name="confirmation_authorize_now">"כדי להעלות את התשובות שלך יש צורך להתחבר למשתמש OSM שלך. להתחבר עכשיו?"</string>
     <string name="not_authorized">"לא מורשה"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"הוא רק מחבר שני כבישים"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"משהו אחר (השאר הערה)"</string>
     <string name="about_title_privacy_statement">"הצהרת פרטיות"</string>
-    <string name="about_summary_privacy_statement">"ושימוש בנתונים"</string>
     <string name="quest_openingHours_public_holidays">"חגים ומועדים"</string>
     <string name="quest_openingHours_public_holidays_short">"חגים"</string>
     <string name="quest_openingHours_open_end">"יכול להסגר מאוחר יותר"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"התרחק"</string>
     <string name="map_btn_zoom_in">"התקרב"</string>
     <string name="privacy_html">"&lt;p&gt;או, מישהו/י שאיכפת לו/ה מפרטיות, נחמד! יש לי רק חדשות טובות עבורך:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;תרומות ישירות&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;תרומות ישירות&lt;/h2&gt;
 &lt;p&gt;
 ראשית כל, יש להבין בעם האפליקציה הזו, יוצרים תרומות אמיתיות וישירות לטובת OpenStreetMap.&lt;br/&gt;
 כל תרומה שתיעשה באפליקציה זו נוספת ישירות למפה, אין גורם צד ג' בדרך בין האפליקציה לבין תשתיות OSM.
@@ -91,11 +84,11 @@
 עריכה אנונימית של OpenStreetMap אינה אפשרית. כל שינוי שנעשה (והתאריך והמיקום שלו) מיוחסים לחשבון ה-OSM שלך וניתנים לצפייה באופן פומבי באתר האינטרנט openstreetmap.org. היות וב-StreetComplete יש להשתמש רק לסקירה במקום, זה מגלה איפה ומתי השתמשת באפליקציה.
 &lt;/p&gt;
 
-&lt;b&gt;מיקום&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;מיקום&lt;/h2/&gt;
 &lt;p&gt;
 האפליקציה אינה משתפת את מיקום ה-GPS שלך עם אף אחד.המיקום משמש כדי לסרוק באופן אוטומטי באזור שלך כדי למצוא משימות וכדי למקד (וכך להוריד) את המפה  סביב מיקומך.&lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;שימוש במידע&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;שימוש במידע&lt;/h2&gt;
 &lt;p&gt;
 כפי שהוזכר, האפליקציה מתקשרת ישירות עם תשתיות OSM.&lt;br/&gt;
 אולם, לפני האלעת השינויים שלך, האפליקציה בודקת ב&lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;קובץ טקסט פשוט&lt;/a&gt;  בשרת שלי האם היא נחסמה מלהעלות שינויים. זה צעד מניעה שנועד לאפשר לשמור גרסאות של האפליקציה אשר יתגלה שיש בהן באגים קריטיים שעלולים לשבש מידע ב-OSM.
@@ -122,7 +115,6 @@
     <string name="quest_surface_value_wood">"עץ"</string>
     <string name="quest_sidewalk_title">"האם יש מדרכה ברחוב הזה?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"איפה הרחוב הזה?"</string>
-    <string name="quest_oneway_title">"האם זה כביש חד סטרי?"</string>
     <string name="quest_address_title">"מה הוא המספר של המבנה הזה?"</string>
     <string name="store_listing_short_description">"אפליקציית סקירה של OpenStreetMap"</string>
     <string name="store_listing_full_description">"עזרו לשפר את OpenStreetMap עם StreetComplete!
@@ -493,7 +485,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"האם אסור להולכי רגל לצעוד בכביש כאן?"</string>
     <string name="quest_buildingType_title">"איזה סוג של מבנה זה?"</string>
     <string name="pref_title_theme_select">"בחירת נושא"</string>
-    <string name="theme_automatic">"אוטומטי"</string>
     <string name="theme_light">"בהיר"</string>
     <string name="theme_dark">"כהה"</string>
     <string name="theme_system_default">"ברירת המחדל של המערכת"</string>
@@ -522,7 +513,6 @@
     <string name="quest_maxweight_answer_other_sign">"התמרור נראה שונה..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"האם תרצה/י להשאיר הערה? הערה בתוך תמונה מאפשרת לממפים אחרים לטפל בה."</string>
     <string name="quest_handrail_title">"האם למדרגות אלו יש מעקה?"</string>
-    <string name="about_summary_current_version">"גרסה נוכחית: %s"</string>
     <string name="quest_ref_answer_noRef">"לא נראה שיש מספר או קוד..."</string>
     <string name="quest_street_side_puzzle_tutorial">"הכביש באיור מוצג בכיוון זהה לכיוון שלו במפה."</string>
     <string name="quest_recycling_materials_title">"מה ניתן להשאיר כאן למחזור?"</string>
@@ -547,7 +537,6 @@
     <string name="about_title_changelog">"היסטוריית גרסאות"</string>
     <string name="title_whats_new">"מה חדש?"</string>
     <string name="about_title_rate">"דרג/י אפליקציה זו"</string>
-    <string name="about_summary_rate">"בגוגל פליי"</string>
     <string name="about_title_donate">"תרומה"</string>
     <string name="about_summary_donate">"הרא/י את הערכתך! ❤️"</string>
     <string name="about_description_donate">"תודה שאת/ה שוקל/ת לתמוך באפליקציה זו! כדי לראות את התרומות הנוכחיות ולתרום בעצמך, לחצ/י על הפלטפורמה המתאימה:"</string>
@@ -884,7 +873,6 @@
     <string name="quest_access_customers">"כל מבקרי מיקום מסוים (לדוגמה לקוחות בלבד)"</string>
     <string name="quest_access_private">"רק בעל(י) רשות"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"האם זמני האיסוף של תיבת דואר זו עדיין נכונים?"</string>
-    <string name="pref_title_language_select">"בחירת שפה"</string>
     <string name="language_default">"ברירת המחדל של המערכת"</string>
     <string name="on_floor">"בקומה %s"</string>
     <string name="select_street_parking_orientation">"נא לבחור כיוון ביחס לכביש:"</string>
@@ -909,7 +897,6 @@
 
 לחלופין, ניתן להשאיר הערה (עם תמונה)."</string>
     <string name="quest_address_house_number_label">"מספר בית:"</string>
-    <string name="quest_shoulder_title">"האם לכביש זה יש שול?"</string>
     <string name="quest_fireHydrant_position_title">"היכן ממקום ברז כיבוי אש זה?"</string>
     <string name="quest_fireHydrant_position_green">"בדשא או אדמה"</string>
     <string name="quest_fireHydrant_position_lane">"על הכביש"</string>
@@ -952,8 +939,6 @@
     <string name="quest_barrier_path_intersection">"איך הנתיב הזה חוצה את המחסום כאן?"</string>
     <string name="quest_barrier_road_intersection">"איך הכביש הזה חוצה את המחסום כאן?"</string>
     <string name="quest_sidewalk_value_separate">"מדרכה, אבל מוצגת בנפרד על המפה"</string>
-    <string name="quest_shoulder_value_yes">"שול"</string>
-    <string name="quest_shoulder_value_no">"ללא שול"</string>
     <string name="no_camera_permission_warning_title">"הרשאות מצלמה"</string>
     <string name="no_camera_permission_warning">"הרשאה זו נדרשת על מנת למדוד מרחקים עם המצלמה."</string>
     <string name="ar_core_error_sdk_too_old">"גרסת יישום זה ישנה מידי, נא לנסות לעדכן."</string>

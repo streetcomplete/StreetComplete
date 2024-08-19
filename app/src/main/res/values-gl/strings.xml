@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"A autorización fallou: tes que fornecer tódolos permisos"</string>
     <string name="pref_category_communication">"Conexión"</string>
     <string name="pref_category_display">"Visualización"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Espazo en MB reservado na almacenaxe externa para garda-la caché das teselas do mapa"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Amosar tódalas notas"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Amósanse tamén as notas non formuladas como cuestións"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Desbótanse as notas non formuladas como cuestións"</string>
-    <string name="pref_title_map_cache">"Tamaño da caché do mapa"</string>
     <string name="map_btn_gps_tracking">"Sígueme"</string>
     <string name="map_attribution_osm">"© contribuíntes do OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Outras respostas…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"A ubicación non está activada. Desexas ir ós axustes para activala agora?"</string>
     <string name="no_location_permission_warning">"Precísase a túa ubicación para mostrar a túa posición no mapa e para procurar tarefas preto de ti."</string>
     <string name="about_title_authors">"Cretos"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick e os contribuíntes"</string>
     <string name="about_title_repository">"Repositorio do código"</string>
-    <string name="about_summary_repository">"no GitHub"</string>
     <string name="about_title_report_error">"Notificar erros"</string>
     <string name="about_title_feedback">"Dános a túa opinión"</string>
     <string name="about_title_license">"Licenza"</string>
-    <string name="about_summary_license">"Pública Xeral do GNU (GPL)"</string>
     <string name="offline">"Non hai conexión á Internet"</string>
     <string name="confirmation_authorize_now">"Precisas iniciar sesión coa túa conta de usuario do OSM para poder envia-las túas respostas. Desexas facelo agora?"</string>
     <string name="not_authorized">"Sen autorización"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Só enlaza dúas estradas"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Outra cousa (deixar nota)"</string>
     <string name="about_title_privacy_statement">"Declaración da privacidade"</string>
-    <string name="about_summary_privacy_statement">"e emprego dos datos"</string>
     <string name="quest_openingHours_public_holidays">"festivos"</string>
     <string name="quest_openingHours_public_holidays_short">"festivos"</string>
     <string name="quest_openingHours_open_end">"Hora do peche flexíbel"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Achegar"</string>
     <string name="privacy_html">"&lt;p&gt;Vaites, por fin alguén que se preocupa pola privacidade! Semella que daquí en adiante van ser todo boas novas:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Contribución directas&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Contribución directas&lt;/h2&gt;
 &lt;p&gt;
 Punto número un, con esta aplicación estás a enviar contribucións directas e totalmente reais ó OpenStreetMap.&lt;br/&gt;
 Calquera contribución realizada con esta aplicación engádese de xeito directo ó mapa sen ningún intermediario entre a aplicación e a infraestrutura do OSM.
@@ -91,12 +84,12 @@ Calquera contribución realizada con esta aplicación engádese de xeito directo
 Non se poden contribuír datos de xeito anónimo ó OpenStreetMap, polo que calquera mudanza que fagas (xunto coa súa data e localización) será atribuida á túa conta de usuario do OSM e visible ao público na páxina web de openstreetmap.org. Dado que StreetComplete se debería usar só para traballo de campo, isto revela onde e cando utilizaches a app.
 &lt;/p&gt;
 
-&lt;b&gt;Localización&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Localización&lt;/h2&gt;
 &lt;p&gt;
 A túa localización GPS non se comparte con ninguén, só se emprega para procurar automaticamente tarefas dispoñíbeis na túa zona e para centrar (e descargar) o mapa arredor da túa posición.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Emprego dos datos&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Emprego dos datos&lt;/h2&gt;
 &lt;p&gt;
 Proseguendo co de antes, a aplicación comunícase de xeito directo coa infraestrutura do OSM.&lt;br/&gt;
 Porén, antes de subir as túas mudanzas, a aplicación comproba, mediante un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ficheiro de texto plano&lt;/a&gt; no meu servidor, se a versión actual ten prohibida a subida de mudanzas. Esta é unha medida preventiva para poder restrinxi-las subidas nas versións da aplicación que teñan erros graves e poidan corrompe-los datos no OSM.&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@ Porén, antes de subir as túas mudanzas, a aplicación comproba, mediante un &l
     <string name="quest_surface_value_wood">"Madeira"</string>
     <string name="quest_sidewalk_title">"Esta rúa ten beirarrúa?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde está a rúa?"</string>
-    <string name="quest_oneway_title">"É unha rúa cun só sentido?"</string>
     <string name="quest_address_title">"Cal é o número da porta deste edificio?"</string>
     <string name="store_listing_short_description">"Aplicación de cartografado para o OpenStreetMap"</string>
     <string name="store_listing_full_description">"Axuda a mellora-lo OpenStreetMap co StreetComplete!
@@ -389,7 +381,7 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="questList_disabled_in_country">"Nunca se amosa en %s"</string>
     <string name="quest_select_hint_most_specific">"Escolle o máis preciso que encaixe:"</string>
     <string name="quest_generic_item_confirmation">"Estás na certeza de que non podes determinalo máis específicamente?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Nalgunhas misións descarréganse datos adicionais de terceiros. No particular, a misión das rúas dun só sentido consulta unha API, que está aloxada tamén en westnordost.de, sobre posíbeis rúas dun só sentido.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Nalgunhas misións descarréganse datos adicionais de terceiros.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Non (deixar nota)"</string>
     <string name="pref_quests_reset">"Restabelece-la activación de procuras e a orde ós valores predeterminados?"</string>
     <string name="quest_generic_item_invalid_value">"Por favor, escolle un valor máis preciso."</string>
@@ -504,7 +496,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Os peóns teñen prohibido camiñar por esta estrada?"</string>
     <string name="quest_buildingType_title">"Que tipo de edificio é?"</string>
     <string name="pref_title_theme_select">"Escolle a aparencia"</string>
-    <string name="theme_automatic">"Automático"</string>
     <string name="theme_light">"Claro"</string>
     <string name="theme_dark">"Escuro"</string>
     <string name="theme_system_default">"Tema do sistema"</string>
@@ -534,7 +525,6 @@ Queres dividila agora?"</string>
     <string name="quest_maxweight_answer_other_sign">"O sinal semella diferente…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Gustaríache deixar unha nota? Unha nota cunha foto permitirá que outros cartógrafos se ocupen disto."</string>
     <string name="quest_handrail_title">"Estas escaleiras teñen pasamáns?"</string>
-    <string name="about_summary_current_version">"Versión actual: %s"</string>
     <string name="quest_ref_answer_noRef">"Ningún número de referencia visíbel…"</string>
     <string name="quest_street_side_puzzle_tutorial">"A estrada da ilustración está orientada do mesmo xeito que no mapa na localización do marcador."</string>
     <string name="quest_recycling_materials_title">"Que se pode depositar para reciclar aquí?"</string>
@@ -559,7 +549,6 @@ Queres dividila agora?"</string>
     <string name="about_title_changelog">"Histórico de versións"</string>
     <string name="title_whats_new">"Que hai novo?"</string>
     <string name="about_title_rate">"Valora esta aplicación"</string>
-    <string name="about_summary_rate">"na Google Play"</string>
     <string name="about_title_donate">"Doar"</string>
     <string name="about_summary_donate">"Amosa o teu agradecemento! ❤️"</string>
     <string name="about_description_donate">"Grazas por apoiar esta aplicación! Para ollar as doazóns actuais e doar ti mesmo, preme na plataforma correspondente:"</string>
@@ -953,7 +942,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="quest_barrier_bicycle_type_single">"Pasaxe entre barreiras"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane: barreira en ambos lados"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane: máis de dúas barreiras"</string>
-    <string name="pref_title_language_select">"Elexir idioma"</string>
     <string name="language_default">"Por defecto no sistema"</string>
     <string name="on_floor">"na planta %s"</string>
     <string name="select_street_parking_orientation">"Elixe orientación respecto da estrada:"</string>
@@ -975,7 +963,6 @@ Os datos actualízanse após %1$s días e os datos non utilizados elimínanse de
     <string name="street_parking_conditional_restrictions">"Estacionamento / Parada restrinxida"</string>
     <string name="street_parking_no_other_reasons">"Sen señais/non posible aparcar"</string>
     <string name="quest_address_house_number_label">"Número da casa:"</string>
-    <string name="quest_shoulder_title">"Esta estrada ten beiravía?"</string>
     <string name="quest_fireHydrant_position_title">"Onde está a toma de auga para incendios?"</string>
     <string name="quest_fireHydrant_position_green">"Na herba ou terra"</string>
     <string name="quest_fireHydrant_position_lane">"Na estrada"</string>

@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [中国银行, 中国邮政储蓄银行, 中国建设银行, 中国工商银行, 交通银行, ICBC, Bank of China, 江苏银行, 中国民生银行, 中国光大银行, 中信银行, ABC, 浦发银行, 中国农业银行, 上海浦东发展银行, China Construction Bank]
+atmOperators: [中国银行, 中国邮政储蓄银行, 中国工商银行, 中国建设银行, 交通银行, ICBC, Bank of China, 江苏银行, 中国民生银行, 中国光大银行, 中信银行, ABC, 浦发银行, 中国农业银行, 上海浦东发展银行, China Construction Bank]
 chargingStationOperators: [国家电网有限公司, 特来电, 依威能源, 易充网]
 parcelLockerBrand: [丰巢]
