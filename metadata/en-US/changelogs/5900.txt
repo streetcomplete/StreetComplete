@@ -1,0 +1,3 @@
+- Warning: this version may not work on some old phones, see https://github.com/maplibre/maplibre-native/issues/2206
+- fix issues with recent optional change of crossing markings quest, by @mcliquid
+- removed the 3D buildings setting, as now buildings are always 2D except in building overlay
