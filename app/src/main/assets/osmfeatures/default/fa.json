@@ -176,12 +176,16 @@
                         "subdistrict": "زیرمنطقه",
                         "subdistrict!vn": "بخش / کومون / Townlet",
                         "suburb": "حومه شهر",
+                        "suburb!jp": "تحت مراقبت (Cities designated by government ordinance of Japan)",
                         "unit": "واحد"
                     },
                     "terms": "آدرس، نشانی"
                 },
                 "admin_level": {
                     "label": "سطح حکومتی (Admin Level)"
+                },
+                "advertising": {
+                    "label": "نوع"
                 },
                 "aerialway": {
                     "label": "نوع"
@@ -245,12 +249,18 @@
                 "archaeological_site": {
                     "label": "نوع",
                     "options": {
+                        "baths": "استخر شنای سرپوشیده",
                         "city": "شهر تاریخی",
+                        "crannog": "کرنگ (مسکن)",
                         "enclosure": "محفظه",
+                        "fortification": "سنگر بندی",
+                        "hut_circle": "دایره کلبه",
+                        "megalith": "خرسنگ",
                         "necropolis": "گورستان / شهر اموات",
                         "petroglyph": "سنگ تراشی/حکاکی روی سنگ",
                         "roman_circus": "سیرک رومی",
-                        "roman_villa": "ویلای رومی"
+                        "roman_villa": "ویلای رومی",
+                        "tumulus": "گورپشته"
                     }
                 },
                 "architect": {
@@ -263,10 +273,30 @@
                     "label": "هنرمند"
                 },
                 "artwork_type": {
-                    "label": "نوع"
+                    "label": "نوع",
+                    "options": {
+                        "bust": "سردیس",
+                        "graffiti": "دیوارنگاری",
+                        "installation": "هنر چیدمان",
+                        "mosaic": "معرق‌کاری",
+                        "mural": "نقاشی دیواری",
+                        "painting": "نقاشی",
+                        "relief": "نقش‌برجسته",
+                        "sculpture": "مجسمه‌سازی",
+                        "statue": "تندیس"
+                    }
                 },
                 "ascent": {
                     "label": "صعود کل"
+                },
+                "athletics_pitch": {
+                    "label": "رخداد",
+                    "options": {
+                        "discus_throw": "پرتاب دیسک",
+                        "hammer_throw": "پرتاب چکش",
+                        "high_jump": "پرش ارتفاع",
+                        "javelin_throw": "زوبین"
+                    }
                 },
                 "atm": {
                     "label": "دستگاه خودپرداز"
@@ -640,7 +670,6 @@
                         "cake": "کیک",
                         "chicken": "مرغ، جوجه",
                         "chinese": "چینی",
-                        "chocolate": "شکلات",
                         "coffee_shop": "کافی شاپ",
                         "dessert": "دسر",
                         "donut": "دونات",
@@ -1633,6 +1662,12 @@
                     "label": "تلفن",
                     "placeholder": "+۹۸ ۲۱ ۳۳۳۳ ۴۵۶۷",
                     "terms": "شماره تلفن"
+                },
+                "picnic_table": {
+                    "label": "میز نیمکتی"
+                },
+                "pipeline": {
+                    "label": "نوع"
                 },
                 "piste/difficulty": {
                     "label": "سختی",

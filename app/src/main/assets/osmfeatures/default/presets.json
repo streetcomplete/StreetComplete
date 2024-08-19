@@ -22,8 +22,7 @@
             "direction_vertex"
         ],
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "*"
@@ -172,7 +171,8 @@
             "manufacturer"
         ],
         "geometry": [
-            "point"
+            "point",
+            "vertex"
         ],
         "tags": {
             "marker": "*"
@@ -2160,8 +2160,7 @@
             "direction_vertex"
         ],
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "rumble_strip"
@@ -2173,8 +2172,7 @@
             "traffic_calming": "mini_bumps"
         },
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "fields": [
             "surface",
@@ -2187,8 +2185,7 @@
             "surface"
         ],
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "island"
@@ -2201,8 +2198,7 @@
             "direction_vertex"
         ],
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "hump"
@@ -2215,8 +2211,7 @@
             "direction_vertex"
         ],
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "dip"
@@ -2229,8 +2224,7 @@
             "direction_vertex"
         ],
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "cushion"
@@ -2243,9 +2237,7 @@
             "direction_vertex"
         ],
         "geometry": [
-            "vertex",
-            "line",
-            "area"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "choker"
@@ -2258,9 +2250,7 @@
             "direction_vertex"
         ],
         "geometry": [
-            "vertex",
-            "line",
-            "area"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "chicane"
@@ -2273,8 +2263,7 @@
             "direction_vertex"
         ],
         "geometry": [
-            "vertex",
-            "line"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "bump"
@@ -2287,9 +2276,7 @@
             "{traffic_calming}"
         ],
         "geometry": [
-            "vertex",
-            "line",
-            "area"
+            "vertex"
         ],
         "tags": {
             "traffic_calming": "yes"
@@ -2958,7 +2945,8 @@
             "operator",
             "colour",
             "material",
-            "ele_node"
+            "ele_node",
+            "activity"
         ],
         "geometry": [
             "point",
@@ -3077,7 +3065,8 @@
     "tourism/information/board/welcome_sign": {
         "icon": "maki-embassy",
         "geometry": [
-            "point"
+            "point",
+            "vertex"
         ],
         "tags": {
             "tourism": "information",
@@ -4111,7 +4100,7 @@
         }
     },
     "shop/mall": {
-        "icon": "maki-shop",
+        "icon": "temaki-shopping_mall",
         "geometry": [
             "point",
             "area"
@@ -5292,6 +5281,31 @@
             "self_service": "yes"
         }
     },
+    "shop/hairdresser/barber": {
+        "icon": "temaki-beauty_salon",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "fields": [
+            "name",
+            "operator",
+            "address",
+            "building_area_yes",
+            "opening_hours",
+            "payment_multi",
+            "phone",
+            "gender_simple"
+        ],
+        "tags": {
+            "shop": "hairdresser",
+            "hairdresser": "barber"
+        },
+        "reference": {
+            "key": "hairdresser",
+            "value": "barber"
+        }
+    },
     "shop/erotic/lgbtq": {
         "icon": "maki-shop",
         "geometry": [
@@ -6017,7 +6031,7 @@
         "searchable": false
     },
     "railway/station": {
-        "icon": "temaki-train",
+        "icon": "temaki-board_train",
         "fields": [
             "{public_transport/station}"
         ],
@@ -6360,7 +6374,7 @@
         }
     },
     "public_transport/station_tram": {
-        "icon": "temaki-tram",
+        "icon": "temaki-board_tram",
         "fields": [
             "{public_transport/station}"
         ],
@@ -6403,7 +6417,7 @@
         }
     },
     "public_transport/station_train": {
-        "icon": "temaki-train",
+        "icon": "temaki-board_train",
         "fields": [
             "{public_transport/station}"
         ],
@@ -6430,7 +6444,7 @@
         }
     },
     "public_transport/station_subway": {
-        "icon": "temaki-subway",
+        "icon": "temaki-board_subway",
         "fields": [
             "{public_transport/station}"
         ],
@@ -6439,6 +6453,7 @@
         ],
         "geometry": [
             "point",
+            "vertex",
             "area"
         ],
         "tags": {
@@ -6457,7 +6472,7 @@
         }
     },
     "public_transport/station_monorail": {
-        "icon": "temaki-monorail",
+        "icon": "temaki-board_monorail",
         "fields": [
             "{public_transport/station}"
         ],
@@ -6466,6 +6481,7 @@
         ],
         "geometry": [
             "point",
+            "vertex",
             "area"
         ],
         "tags": {
@@ -6483,7 +6499,7 @@
         }
     },
     "public_transport/station_light_rail": {
-        "icon": "temaki-light_rail",
+        "icon": "temaki-board_light_rail",
         "fields": [
             "{public_transport/station}"
         ],
@@ -6492,6 +6508,7 @@
         ],
         "geometry": [
             "point",
+            "vertex",
             "area"
         ],
         "tags": {
@@ -6510,7 +6527,7 @@
         }
     },
     "public_transport/station_ferry": {
-        "icon": "temaki-ferry",
+        "icon": "temaki-board_ferry",
         "fields": [
             "{public_transport/station}"
         ],
@@ -6537,7 +6554,7 @@
         }
     },
     "public_transport/station_bus": {
-        "icon": "temaki-bus",
+        "icon": "temaki-board_bus",
         "fields": [
             "{public_transport/station}"
         ],
@@ -8108,7 +8125,7 @@
         }
     },
     "playground/hopscotch": {
-        "icon": "maki-playground",
+        "icon": "roentgen-hopscotch",
         "geometry": [
             "point",
             "line",
@@ -8420,6 +8437,18 @@
         },
         "searchable": false
     },
+    "piste/take_off": {
+        "icon": "temaki-ski_jumping",
+        "fields": [
+            "height"
+        ],
+        "geometry": [
+            "vertex"
+        ],
+        "tags": {
+            "piste:takeoff": "yes"
+        }
+    },
     "piste/sleigh": {
         "icon": "fas-sleigh",
         "fields": [
@@ -8472,6 +8501,23 @@
         ],
         "tags": {
             "piste:type": "skitour"
+        }
+    },
+    "piste/ski_jump": {
+        "icon": "temaki-ski_jumping",
+        "fields": [
+            "name",
+            "piste/type",
+            "ref",
+            "oneway_yes",
+            "lit"
+        ],
+        "geometry": [
+            "line",
+            "area"
+        ],
+        "tags": {
+            "piste:type": "ski_jump"
         }
     },
     "piste/piste": {
@@ -9523,6 +9569,20 @@
             "natural": "spring"
         }
     },
+    "natural/sinkhole": {
+        "icon": "temaki-trench",
+        "fields": [
+            "name"
+        ],
+        "geometry": [
+            "point",
+            "vertex",
+            "area"
+        ],
+        "tags": {
+            "natural": "sinkhole"
+        }
+    },
     "natural/shrub": {
         "icon": "temaki-shrub",
         "fields": [
@@ -9746,8 +9806,7 @@
         "geometry": [
             "point",
             "vertex",
-            "line",
-            "area"
+            "line"
         ],
         "tags": {
             "natural": "cliff"
@@ -10798,6 +10857,23 @@
             "man_made": "storage_tank"
         }
     },
+    "man_made/ski_jump": {
+        "icon": "temaki-ski_jumping",
+        "fields": [
+            "name",
+            "operator"
+        ],
+        "moreFields": [
+            "building"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "man_made": "ski_jump"
+        }
+    },
     "man_made/silo": {
         "icon": "temaki-silo",
         "fields": [
@@ -11019,6 +11095,7 @@
         "icon": "temaki-mineshaft_cage",
         "geometry": [
             "point",
+            "vertex",
             "area"
         ],
         "fields": [
@@ -11202,10 +11279,53 @@
             "self_service"
         ],
         "geometry": [
-            "point"
+            "point",
+            "vertex"
         ],
         "tags": {
             "man_made": "fuel_pump"
+        }
+    },
+    "man_made/footwear_decontamination-AU-NZ": {
+        "icon": "temaki-footwear_decontamination",
+        "fields": [
+            "operator",
+            "capacity"
+        ],
+        "moreFields": [
+            "{@templates/poi}",
+            "covered"
+        ],
+        "geometry": [
+            "point",
+            "vertex",
+            "area"
+        ],
+        "tags": {
+            "man_made": "footwear_decontamination"
+        },
+        "locationSet": {
+            "include": [
+                "AU",
+                "NZ"
+            ]
+        }
+    },
+    "man_made/flare": {
+        "icon": "temaki-chimney",
+        "fields": [
+            "height"
+        ],
+        "moreFields": [
+            "ref",
+            "visibility"
+        ],
+        "geometry": [
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "man_made": "flare"
         }
     },
     "man_made/flagpole": {
@@ -12485,13 +12605,13 @@
         "fields": [
             "name",
             "operator",
-            "playground/theme",
             "surface",
             "access_simple",
             "min_age",
             "max_age"
         ],
         "moreFields": [
+            "playground/theme",
             "blind",
             "dog",
             "gnis/feature_id-US",
@@ -13191,6 +13311,25 @@
             "leisure": "beach_resort"
         }
     },
+    "leisure/bathing_place": {
+        "icon": "maki-water",
+        "fields": [
+            "name",
+            "access_simple",
+            "informal",
+            "shower",
+            "toilets",
+            "drinking_water_available",
+            "picnic_table"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "leisure": "bathing_place"
+        }
+    },
     "leisure/bandstand": {
         "icon": "fas-music",
         "fields": [
@@ -13490,6 +13629,21 @@
         "reference": {
             "key": "sport",
             "value": "shooting"
+        }
+    },
+    "leisure/sports_centre/karting": {
+        "icon": "fas-flag-checkered",
+        "geometry": [
+            "area",
+            "point"
+        ],
+        "tags": {
+            "leisure": "sports_centre",
+            "sport": "karting"
+        },
+        "reference": {
+            "key": "sport",
+            "value": "karting"
         }
     },
     "leisure/sports_centre/horse_racing": {
@@ -14307,12 +14461,26 @@
         "geometry": [
             "area"
         ],
+        "fields": [
+            "name",
+            "garden/type",
+            "operator",
+            "operator/type"
+        ],
+        "moreFields": [
+            "{@templates/contact}",
+            "access_simple",
+            "charge_fee",
+            "fee",
+            "gnis/feature_id-US",
+            "payment_multi_fee"
+        ],
         "tags": {
             "leisure": "garden",
-            "garden:type": "kitchen"
+            "garden:style": "kitchen"
         },
         "reference": {
-            "key": "garden:type"
+            "key": "garden:style"
         }
     },
     "leisure/garden/community": {
@@ -14406,7 +14574,7 @@
         }
     },
     "leisure/fitness_station/rings": {
-        "icon": "maki-pitch",
+        "icon": "roentgen-rings",
         "geometry": [
             "point",
             "area"
@@ -14486,7 +14654,7 @@
         }
     },
     "leisure/fitness_station/horizontal_ladder": {
-        "icon": "maki-pitch",
+        "icon": "roentgen-horizontal_ladder",
         "geometry": [
             "point",
             "area"
@@ -16625,6 +16793,7 @@
             "parking/side/parking",
             "parking/side/orientation",
             "smoothness",
+            "traffic_calming_road",
             "trolley_wire",
             "width"
         ],
@@ -16796,6 +16965,7 @@
             "parking/side/orientation",
             "smoothness",
             "toll",
+            "traffic_calming_road",
             "trolley_wire",
             "width"
         ],
@@ -17106,6 +17276,33 @@
         ],
         "tags": {
             "highway": "living_street"
+        }
+    },
+    "highway/ladder": {
+        "icon": "temaki-crossing_markings-ladder",
+        "fields": [
+            "name",
+            "incline_steps",
+            "access_simple",
+            "handrail",
+            "step_count",
+            "material",
+            "width",
+            "height"
+        ],
+        "moreFields": [
+            "covered_no",
+            "level_semi",
+            "lit",
+            "oneway",
+            "ref"
+        ],
+        "geometry": [
+            "vertex",
+            "line"
+        ],
+        "tags": {
+            "highway": "ladder"
         }
     },
     "highway/give_way": {
@@ -18686,7 +18883,7 @@
         }
     },
     "golf/tee": {
-        "icon": "maki-golf",
+        "icon": "roentgen-golf_tee",
         "fields": [
             "tee",
             "surface"
@@ -19396,6 +19593,28 @@
         },
         "searchable": false,
         "matchScore": 0.01
+    },
+    "emergency/fire_hydrant/underground": {
+        "icon": "temaki-fire_hydrant_underground",
+        "geometry": [
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "emergency": "fire_hydrant",
+            "fire_hydrant:type": "underground"
+        }
+    },
+    "emergency/fire_hydrant/pillar": {
+        "icon": "temaki-fire_hydrant",
+        "geometry": [
+            "point",
+            "vertex"
+        ],
+        "tags": {
+            "emergency": "fire_hydrant",
+            "fire_hydrant:type": "pillar"
+        }
     },
     "disused/shop": {
         "icon": "fas-store-alt-slash",
@@ -21235,7 +21454,7 @@
         }
     },
     "barrier/kerb": {
-        "icon": "temaki-kerb-raised",
+        "icon": "temaki-kerb-unspecified",
         "fields": [
             "kerb/kerb_barrier",
             "tactile_paving",
@@ -22038,6 +22257,14 @@
             "area:highway": "footway"
         }
     },
+    "area/highway/traffic_island": {
+        "geometry": [
+            "area"
+        ],
+        "tags": {
+            "area:highway": "traffic_island"
+        }
+    },
     "amenity/weighbridge": {
         "icon": "fas-weight",
         "fields": [
@@ -22405,7 +22632,8 @@
             "support"
         ],
         "geometry": [
-            "point"
+            "point",
+            "vertex"
         ],
         "tags": {
             "amenity": "ticket_validator"
@@ -22486,6 +22714,25 @@
         ],
         "tags": {
             "amenity": "taxi"
+        }
+    },
+    "amenity/swingerclub": {
+        "icon": "maki-heart",
+        "fields": [
+            "{amenity/nightclub}",
+            "smoking"
+        ],
+        "moreFields": [
+            "{@templates/poi}",
+            "air_conditioning",
+            "fee"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "swingerclub"
         }
     },
     "amenity/studio": {
@@ -22749,6 +22996,7 @@
             "highchair",
             "microbrewery",
             "min_age",
+            "organic",
             "outdoor_seating",
             "reservation",
             "smoking",
@@ -22941,7 +23189,7 @@
         }
     },
     "amenity/public_bath": {
-        "icon": "maki-water",
+        "icon": "fas-water-ladder",
         "fields": [
             "name",
             "bath/type",
@@ -23364,7 +23612,8 @@
             "ref",
             "access_simple",
             "address",
-            "level"
+            "level",
+            "maxheight"
         ],
         "geometry": [
             "vertex"
@@ -23954,6 +24203,7 @@
             "diet_multi",
             "drive_through",
             "opening_hours/drive_through",
+            "organic",
             "takeaway",
             "fhrs/id-GB",
             "website/menu"
@@ -24190,7 +24440,7 @@
         }
     },
     "amenity/food_court": {
-        "icon": "maki-restaurant",
+        "icon": "roentgen-food_court",
         "fields": [
             "name",
             "operator",
@@ -24263,6 +24513,7 @@
             "capacity",
             "delivery",
             "highchair",
+            "organic",
             "outdoor_seating",
             "smoking",
             "takeaway",
@@ -24644,6 +24895,7 @@
     "amenity/community_centre": {
         "icon": "maki-town-hall",
         "fields": [
+            "community_centre",
             "name",
             "operator",
             "operator/type",
@@ -24985,6 +25237,7 @@
             "drive_through",
             "highchair",
             "min_age",
+            "organic",
             "reservation",
             "smoking",
             "takeaway",
@@ -25221,11 +25474,12 @@
         "icon": "temaki-bench",
         "fields": [
             "backrest",
+            "armrest",
             "material",
-            "seats",
-            "colour"
+            "seats"
         ],
         "moreFields": [
+            "colour",
             "access_simple",
             "direction",
             "height",
@@ -27376,6 +27630,21 @@
             "value": "donut"
         }
     },
+    "amenity/fast_food/chinese": {
+        "icon": "maki-restaurant-noodle",
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "fast_food",
+            "cuisine": "chinese"
+        },
+        "reference": {
+            "key": "cuisine",
+            "value": "chinese"
+        }
+    },
     "amenity/fast_food/chicken": {
         "icon": "fas-drumstick-bite",
         "geometry": [
@@ -28014,6 +28283,13 @@
     },
     "amenity/community_centre/youth_centre": {
         "icon": "maki-town-hall",
+        "fields": [
+            "community_centre",
+            "{amenity/community_centre}"
+        ],
+        "moreFields": [
+            "{amenity/community_centre}"
+        ],
         "geometry": [
             "point",
             "area"
@@ -28021,10 +28297,65 @@
         "tags": {
             "amenity": "community_centre",
             "community_centre": "youth_centre"
+        },
+        "reference": {
+            "key": "community_centre",
+            "value": "youth_centre"
+        }
+    },
+    "amenity/community_centre/village_hall": {
+        "icon": "maki-town-hall",
+        "fields": [
+            "community_centre",
+            "{amenity/community_centre}"
+        ],
+        "moreFields": [
+            "{amenity/community_centre}"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "community_centre",
+            "community_centre": "village_hall"
+        },
+        "reference": {
+            "key": "community_centre",
+            "value": "village_hall"
+        }
+    },
+    "amenity/community_centre/parish_hall": {
+        "icon": "maki-town-hall",
+        "fields": [
+            "community_centre",
+            "{amenity/community_centre}"
+        ],
+        "moreFields": [
+            "{amenity/community_centre}"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "community_centre",
+            "community_centre": "parish_hall"
+        },
+        "reference": {
+            "key": "community_centre",
+            "value": "parish_hall"
         }
     },
     "amenity/community_centre/lgbtq": {
         "icon": "maki-town-hall",
+        "fields": [
+            "community_centre",
+            "{amenity/community_centre}"
+        ],
+        "moreFields": [
+            "{amenity/community_centre}"
+        ],
         "geometry": [
             "point",
             "area"
@@ -28037,6 +28368,95 @@
             "amenity": "community_centre",
             "lgbtq": "primary",
             "community_centre:for": "lgbtq"
+        }
+    },
+    "amenity/community_centre/family_centre": {
+        "icon": "maki-town-hall",
+        "fields": [
+            "community_centre",
+            "{amenity/community_centre}"
+        ],
+        "moreFields": [
+            "{amenity/community_centre}"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "community_centre",
+            "community_centre": "family_centre"
+        },
+        "reference": {
+            "key": "community_centre",
+            "value": "family_centre"
+        }
+    },
+    "amenity/community_centre/cultural_centre": {
+        "icon": "maki-town-hall",
+        "fields": [
+            "community_centre",
+            "{amenity/community_centre}"
+        ],
+        "moreFields": [
+            "{amenity/community_centre}"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "community_centre",
+            "community_centre": "cultural_centre"
+        },
+        "reference": {
+            "key": "community_centre",
+            "value": "cultural_centre"
+        }
+    },
+    "amenity/community_centre/community_hall": {
+        "icon": "maki-town-hall",
+        "fields": [
+            "community_centre",
+            "{amenity/community_centre}"
+        ],
+        "moreFields": [
+            "{amenity/community_centre}"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "community_centre",
+            "community_centre": "community_hall"
+        },
+        "reference": {
+            "key": "community_centre",
+            "value": "community_hall"
+        }
+    },
+    "amenity/community_centre/club_home": {
+        "icon": "maki-town-hall",
+        "fields": [
+            "community_centre",
+            "club",
+            "{amenity/community_centre}"
+        ],
+        "moreFields": [
+            "{amenity/community_centre}"
+        ],
+        "geometry": [
+            "point",
+            "area"
+        ],
+        "tags": {
+            "amenity": "community_centre",
+            "community_centre": "club_home"
+        },
+        "reference": {
+            "key": "community_centre",
+            "value": "club_home"
         }
     },
     "amenity/clock/sundial": {
@@ -28374,6 +28794,7 @@
             "ref",
             "operator",
             "surface",
+            "maxweight",
             "lit"
         ],
         "moreFields": [
@@ -28690,7 +29111,7 @@
         }
     },
     "advertising/column": {
-        "icon": "temaki-storage_tank",
+        "icon": "roentgen-advertising_column",
         "fields": [
             "{advertising}"
         ],

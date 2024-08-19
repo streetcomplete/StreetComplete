@@ -234,6 +234,10 @@
                     "label": "空調有無",
                     "terms": "空調,エアコン,冷暖房"
                 },
+                "alt_name": {
+                    "label": "別名",
+                    "terms": "別名,代替名,別称,異称"
+                },
                 "amenity": {
                     "label": "種類"
                 },
@@ -270,6 +274,14 @@
                 },
                 "area/highway": {
                     "label": "道路の種類"
+                },
+                "armrest": {
+                    "label": "肘掛け",
+                    "options": {
+                        "no": "肘掛けなし",
+                        "undefined": "不明",
+                        "yes": "1つ以上の肘掛け"
+                    }
                 },
                 "artist": {
                     "label": "アーティスト"
@@ -752,12 +764,13 @@
                     }
                 },
                 "changing_table": {
-                    "label": "オムツ交換台有無"
+                    "label": "おむつ交換台",
+                    "terms": "オムツ交換台,おむつ替え台,オムツ替え台"
                 },
                 "charge_fee": {
                     "label": "料金",
                     "placeholder": "1 EUR, 5 USD, 10 JPY…",
-                    "terms": "オムツ替え台,オムツ交換台"
+                    "terms": "利用料,使用料,入場料"
                 },
                 "charge_toll": {
                     "label": "通行料金",
@@ -825,6 +838,18 @@
                     "label": "通信回線の種類",
                     "terms": "通信塔の種類,通信"
                 },
+                "community_centre": {
+                    "label": "コミュニティセンターの種類",
+                    "options": {
+                        "club_home": "親睦団体の施設",
+                        "community_hall": "集会所",
+                        "cultural_centre": "文化活動施設",
+                        "family_centre": "親子活動施設",
+                        "parish_hall": "信徒集会所",
+                        "village_hall": "農村集会所",
+                        "youth_centre": "児童館・青年館"
+                    }
+                },
                 "connectivity": {
                     "label": "接続状況"
                 },
@@ -868,6 +893,9 @@
                 "conveying_escalator": {
                     "label": "エスカレーター"
                 },
+                "count": {
+                    "label": "地物の数"
+                },
                 "country": {
                     "label": "国"
                 },
@@ -904,7 +932,7 @@
                         "carpet_layer": "畳・カーペット工事店",
                         "caterer": "仕出し料理店",
                         "chimney_sweeper": "煙突掃除人",
-                        "cleaning": "クリーニング・サービス",
+                        "cleaning": "清掃サービス",
                         "clockmaker": "時計製造所",
                         "confectionery": "菓子屋（製造・販売）",
                         "distillery": "蒸留所",
@@ -1049,23 +1077,46 @@
                 "cuisine": {
                     "label": "料理",
                     "options": {
+                        "african": "アフリカ料理",
                         "american": "アメリカ料理",
+                        "arab": "アラブ料理",
+                        "argentinian": "アルゼンチン料理",
                         "asian": "アジア料理",
+                        "bagel": "ベーグル",
+                        "balkan": "バルカン料理",
+                        "barbecue": "バーベキュー",
+                        "bavarian": "バイエルン料理",
+                        "beef_bowl": "牛丼",
+                        "bistro": "ビストロ",
+                        "brazilian": "ブラジル料理",
+                        "breakfast": "朝食",
+                        "brunch": "ブランチ",
                         "bubble_tea": "タピオカティー",
                         "burger": "ハンバーガー",
                         "cake": "ケーキ",
+                        "caribbean": "カリブ料理",
                         "chicken": "チキン",
                         "chinese": "中華料理",
-                        "chocolate": "チョコレート",
                         "coffee_shop": "コーヒー店",
+                        "crepe": "クレープ",
+                        "curry": "カレー",
                         "dessert": "デザート",
+                        "diner": "ダイナー",
                         "donut": "ドーナツ",
+                        "european": "ヨーロッパ料理",
                         "filipino": "フィリピン料理",
+                        "fine_dining": "高級料理店",
                         "fish": "魚料理",
+                        "fish_and_chips": "フィッシュ&チップス",
                         "french": "フランス料理",
+                        "fries": "フレンチフライ",
+                        "friture": "フリッツ",
+                        "frozen_yogurt": "フローズンヨーグルト",
                         "georgian": "ジョージア料理",
                         "german": "ドイツ料理",
                         "greek": "ギリシア料理",
+                        "grill": "グリル",
+                        "hawaiian": "ハワイ料理",
                         "hot_dog": "ホットドッグ",
                         "ice_cream": "アイスクリーム",
                         "indian": "インド料理",
@@ -1077,27 +1128,44 @@
                         "korean": "韓国料理",
                         "lebanese": "レバノン料理",
                         "malaysian": "マレーシア料理",
+                        "mediterranean": "地中海料理",
                         "mexican": "メキシコ料理",
+                        "middle_eastern": "中東料理",
+                        "moroccan": "モロッコ料理",
+                        "noodle": "麺",
+                        "oriental": "アジア料理",
                         "pancake": "パンケーキ",
                         "pasta": "パスタ",
+                        "pastry": "ペイストリー",
+                        "persian": "ペルシャ料理",
                         "peruvian": "ペルー料理",
                         "pizza": "ピザ",
                         "polish": "ポーランド料理",
                         "portuguese": "ポルトガル料理",
+                        "ramen": "ラーメン",
                         "regional": "郷土料理",
                         "russian": "ロシア料理",
                         "salad": "サラダ",
                         "sandwich": "サンドイッチ",
+                        "sausage": "ソーセージ",
                         "seafood": "海鮮料理",
+                        "shawarma": "回転グリル肉",
+                        "soba": "蕎麦",
+                        "soup": "スープ",
                         "spanish": "スペイン料理",
                         "steak_house": "ステーキハウス",
                         "sushi": "寿司",
                         "taiwanese": "台湾料理",
+                        "tapas": "タパス",
+                        "tea": "茶",
                         "tex-mex": "テキサス風メキシコ料理",
                         "thai": "タイ料理",
                         "turkish": "トルコ料理",
+                        "udon": "うどん",
                         "ukrainian": "ウクライナ料理",
-                        "vietnamese": "ベトナム料理"
+                        "vietnamese": "ベトナム料理",
+                        "western": "西洋料理",
+                        "wings": "鶏手羽"
                     },
                     "terms": "料理,食事,飲食"
                 },
@@ -1619,6 +1687,7 @@
                         "cng": "CNG (圧縮天然ガス)",
                         "diesel": "ディーゼル (軽油)",
                         "e10": "E10ガソリン",
+                        "e5": "E5ガソリン",
                         "e85": "E85ガソリン",
                         "h70": "水素ガス(700bar)",
                         "lng": "LNG(液化天然ガス)",
@@ -2237,6 +2306,10 @@
                     "label": "照明",
                     "terms": "街灯,灯り,ランプ,照明"
                 },
+                "loc_name": {
+                    "label": "現地名",
+                    "terms": "通称"
+                },
                 "location": {
                     "label": "位置",
                     "terms": "位置,配置,地下,水面下,地上"
@@ -2324,7 +2397,7 @@
                         "marble": "大理石",
                         "metal": "金属",
                         "plastic": "プラスチック",
-                        "reinforced_conrete": "鉄筋コンクリート",
+                        "reinforced_concrete": "鉄筋コンクリート",
                         "rock": "岩",
                         "sand": "砂",
                         "sandstone": "砂岩",
@@ -2388,6 +2461,7 @@
                         "blue_plaque": "ブルー・プラーク ",
                         "bust": "胸像",
                         "cross": "十字塔",
+                        "ghost_bike": "ゴーストバイク",
                         "obelisk": "オベリスク",
                         "plaque": "記念額",
                         "sculpture": "彫刻",
@@ -2397,6 +2471,10 @@
                         "stone": "石碑",
                         "war_memorial": "戦争記念碑"
                     }
+                },
+                "memorial/addr": {
+                    "label": "最寄りの住所",
+                    "terms": "最寄りの住所"
                 },
                 "message": {
                     "label": "広告内容",
@@ -2500,6 +2578,10 @@
                     "label": "名称",
                     "placeholder": "固有の名称 (「畑」などの一般名詞は入れない)",
                     "terms": "名前,ネーム"
+                },
+                "nat_name": {
+                    "label": "国内名",
+                    "terms": "国内名"
                 },
                 "natural": {
                     "label": "自然"
@@ -2616,6 +2698,10 @@
                         "water_utility": "水回り工事店"
                     }
                 },
+                "official_name": {
+                    "label": "公式名称",
+                    "terms": "正式名,完全名,法定名"
+                },
                 "oneway": {
                     "label": "一方通行",
                     "options": {
@@ -2655,6 +2741,7 @@
                 },
                 "opening_hours/drive_through": {
                     "label": "ドライブスルー営業時間",
+                    "placeholder": "通常の営業時間と同じ",
                     "terms": "ドライブスルー営業時間"
                 },
                 "operator": {
@@ -2904,7 +2991,8 @@
                         "hike": "ハイク",
                         "ice_skate": "アイススケート",
                         "nordic": "ノルディック",
-                        "playground": "児童公園",
+                        "playground": "雪遊び場",
+                        "ski_jump": "スキージャンプ台",
                         "skitour": "スキーツアー",
                         "sled": "小型そり",
                         "sleigh": "そり",
@@ -2944,7 +3032,8 @@
                     "label": "種類"
                 },
                 "playground/theme": {
-                    "label": "テーマ"
+                    "label": "テーマ",
+                    "terms": "テーマ,主題,モチーフ"
                 },
                 "plots": {
                     "label": "小区画",
@@ -3151,6 +3240,10 @@
                 "ref_taxiway": {
                     "label": "誘導路名",
                     "placeholder": "例： A5"
+                },
+                "reg_name": {
+                    "label": "地域的名称",
+                    "terms": "地域名"
                 },
                 "relation": {
                     "label": "種類"
@@ -3499,12 +3592,20 @@
                 "shop": {
                     "label": "店舗の種類"
                 },
+                "short_name": {
+                    "label": "略称",
+                    "terms": "省略名,短縮名"
+                },
                 "shower": {
                     "label": "シャワー有無",
                     "terms": "シャワー有無,シャワー"
                 },
                 "side": {
-                    "label": "左右"
+                    "label": "左右",
+                    "options": {
+                        "left": "左側",
+                        "right": "右側"
+                    }
                 },
                 "siren/purpose": {
                     "label": "利用目的"
@@ -3664,6 +3765,7 @@
                         "scuba_diving": "スクーバダイビング",
                         "shooting": "射撃",
                         "skateboard": "スケートボード",
+                        "ski_jumping": "スキージャンプ",
                         "skiing": "スキー",
                         "soccer": "サッカー",
                         "softball": "ソフトボール",
@@ -3816,27 +3918,33 @@
                 },
                 "support": {
                     "label": "設置場所･支持素材",
-                    "terms": "橋脚,橋桁,橋台,橋,支柱形態（橋）,支柱"
+                    "terms": "支柱"
                 },
                 "surface": {
                     "label": "表面の材質",
                     "options": {
                         "artificial_turf": "人工芝",
                         "asphalt": "アスファルト",
+                        "clay": "クレイ",
                         "compacted": "砕石舗装",
                         "concrete": "コンクリート",
+                        "concrete:lanes": "コンクリート板（2列）",
+                        "concrete:plates": "コンクリート板",
                         "dirt": "土",
                         "fine_gravel": "細かい砂利",
                         "grass": "芝生",
+                        "grass_paver": "グラスペイバー",
                         "gravel": "砕石",
                         "ground": "地面",
                         "metal": "金属",
                         "mud": "泥",
                         "paved": "舗装",
                         "paving_stones": "敷石（レンガ・ブロック）",
+                        "pebblestone": "玉石",
                         "salt": "塩",
                         "sand": "砂地",
                         "sett": "石畳",
+                        "tartan": "タータン",
                         "unhewn_cobblestone": "丸石敷き",
                         "unpaved": "未舗装",
                         "wood": "木材",
@@ -4098,6 +4206,10 @@
                         "rumble_strip": "ランブルストリップ",
                         "table": "台形ハンプ（凸部）"
                     }
+                },
+                "traffic_calming_road": {
+                    "label": "交通静穏化設備",
+                    "terms": "交通静穏化"
                 },
                 "traffic_sign": {
                     "label": "交通標識"
@@ -4534,7 +4646,7 @@
                 },
                 "aerialway/pylon": {
                     "name": "索道用支柱",
-                    "terms": "索道用支柱,パイロン,柱"
+                    "terms": "索道用支柱,支柱,パイロン,柱"
                 },
                 "aerialway/rope_tow": {
                     "name": "ロープタウリフト",
@@ -4560,7 +4672,7 @@
                     "terms": "駐機場,エプロン"
                 },
                 "aeroway/gate": {
-                    "name": "空港ゲート",
+                    "name": "搭乗口",
                     "terms": "空港ゲート"
                 },
                 "aeroway/hangar": {
@@ -4781,9 +4893,33 @@
                     "name": "コミュニティセンター",
                     "terms": "公民館,市民センター,市民活動,コミュニティセンター,集会所,自治会館,町内会館,区民センター,地区センター"
                 },
+                "amenity/community_centre/club_home": {
+                    "name": "親睦団体の施設",
+                    "terms": "親睦団体の施設,クラブ,倶楽部"
+                },
+                "amenity/community_centre/community_hall": {
+                    "name": "集会所",
+                    "terms": "集会所"
+                },
+                "amenity/community_centre/cultural_centre": {
+                    "name": "文化活動施設",
+                    "terms": "文化活動施設,公民館"
+                },
+                "amenity/community_centre/family_centre": {
+                    "name": "親子活動施設",
+                    "terms": "親子活動施設"
+                },
                 "amenity/community_centre/lgbtq": {
                     "name": "LGBTQ+なコミュニティセンター",
                     "terms": "lgbtq+なコミュニティセンター,コミュニティセンター,lgbt,ゲイ,レズビアン,トランスジェンダー,レインボー"
+                },
+                "amenity/community_centre/parish_hall": {
+                    "name": "信徒集会所",
+                    "terms": "信徒集会所,会館,集会所"
+                },
+                "amenity/community_centre/village_hall": {
+                    "name": "農村集会所",
+                    "terms": "農村集会所,集会所"
                 },
                 "amenity/community_centre/youth_centre": {
                     "name": "青少年センター",
@@ -4987,6 +5123,10 @@
                 "amenity/fast_food/chicken": {
                     "name": "ファストフード・チキン",
                     "terms": "ファストフード,チキン,フライドチキン,鳥,鶏,飲食店,食事,食べる,料理,ランチ"
+                },
+                "amenity/fast_food/chinese": {
+                    "name": "ファスト中華",
+                    "terms": "ファスト中華,中華ファストフード"
                 },
                 "amenity/fast_food/donut": {
                     "name": "ファストフード・ドーナツ",
@@ -5557,6 +5697,10 @@
                     "name": "映画スタジオ",
                     "terms": "映画スタジオ,フィルムスタジオ,スタジオ"
                 },
+                "amenity/swingerclub": {
+                    "name": "セックスクラブ",
+                    "terms": "セックスクラブ,スインガークラブ"
+                },
                 "amenity/taxi": {
                     "name": "タクシー乗り場",
                     "terms": "タクシー乗り場,タクシー"
@@ -5776,6 +5920,10 @@
                 "area/highway": {
                     "name": "道路（エリア）",
                     "terms": "道路（エリア）,道路,道路エリア"
+                },
+                "area/highway/traffic_island": {
+                    "name": "交通島（エリア）",
+                    "terms": "交通島（エリア）,交通島,交通島エリア"
                 },
                 "attraction": {
                     "name": "アトラクションの種類"
@@ -6044,12 +6192,12 @@
                     "terms": "危険地域,危険地帯,有害区域,有害地域,立入禁止区域,立入制限区域"
                 },
                 "bridge/support": {
-                    "name": "支柱形態（橋）",
-                    "terms": "橋脚,橋桁,橋台,橋,支柱形態（橋）,支柱"
+                    "name": "橋台・橋脚",
+                    "terms": "橋脚,支柱,橋台,橋桁,橋"
                 },
                 "bridge/support/pier": {
                     "name": "橋脚",
-                    "terms": "橋脚,橋桁,橋台"
+                    "terms": "橋脚,支柱,橋台,橋桁,橋"
                 },
                 "building": {
                     "name": "建物全般",
@@ -6379,8 +6527,8 @@
                     "terms": "煙突掃除人,職人,工房,住宅,住宅設備"
                 },
                 "craft/cleaning": {
-                    "name": "Cleaning Service",
-                    "terms": "cleaning service"
+                    "name": "清掃サービス",
+                    "terms": "クリーニング・サービス"
                 },
                 "craft/clockmaker": {
                     "name": "時計製造所",
@@ -6592,6 +6740,10 @@
                 "emergency/destination": {
                     "name": "行き先に用事がある緊急車両, 救命"
                 },
+                "emergency/disaster_response": {
+                    "name": "防災組織の拠点",
+                    "terms": "消防屯所,消防団,水防団,自主防災組織,防災"
+                },
                 "emergency/fire_alarm": {
                     "name": "火災報知機",
                     "terms": "火災通報ボックス,火災通報装置,火災報知機,火事,消防,火災報知器,報知器,報知機"
@@ -6607,6 +6759,14 @@
                 "emergency/fire_hydrant": {
                     "name": "消火栓/消防水利",
                     "terms": "消火栓,消防,消防水利,救命,緊急,火災,道路,歩道"
+                },
+                "emergency/fire_hydrant/pillar": {
+                    "name": "地上式消火栓",
+                    "terms": "柱状消火栓,消火栓"
+                },
+                "emergency/fire_hydrant/underground": {
+                    "name": "地下式消火栓",
+                    "terms": "消火栓"
                 },
                 "emergency/fire_service_inlet": {
                     "name": "消防用送水口",
@@ -6625,8 +6785,8 @@
                     "terms": "救命浮き輪,ライフブイ,救命浮環,救命浮標"
                 },
                 "emergency/lifeboat_station": {
-                    "name": "救命ボートステーション",
-                    "terms": "救命ボートステーション,救命ボート,救急,ボート"
+                    "name": "水難救助の拠点",
+                    "terms": "水難救助隊,海難,救急"
                 },
                 "emergency/lifeguard": {
                     "name": "ライフガード",
@@ -6985,6 +7145,10 @@
                 "highway/give_way": {
                     "name": "ゆずれ標識（前方優先道路）",
                     "terms": "ゆずれ,譲れ,前方優先道路,道路設備,標識,道路標識,道路"
+                },
+                "highway/ladder": {
+                    "name": "はしご",
+                    "terms": "梯子"
                 },
                 "highway/living_street": {
                     "name": "Living Street (日本では使用しない)",
@@ -7520,6 +7684,10 @@
                     "name": "野外音楽堂",
                     "terms": "バンドスタンド,演奏台,演奏,音楽,楽団,野外音楽堂"
                 },
+                "leisure/bathing_place": {
+                    "name": "水浴び場",
+                    "terms": "水浴び場"
+                },
                 "leisure/beach_resort": {
                     "name": "ビーチリゾート",
                     "terms": "ビーチリゾート,行楽地,観光,保養,レジャー,娯楽,リゾート,海辺,砂浜"
@@ -7923,6 +8091,10 @@
                     "name": "競馬場",
                     "terms": "競馬コース,馬場"
                 },
+                "leisure/sports_centre/karting": {
+                    "name": "カート競技場",
+                    "terms": "カート競技場,ゴーカート,レーシングカート"
+                },
                 "leisure/sports_centre/shooting": {
                     "name": "射撃競技用施設",
                     "terms": "射撃クラブ,射撃練習場"
@@ -8104,6 +8276,14 @@
                     "name": "旗竿",
                     "terms": "旗竿"
                 },
+                "man_made/flare": {
+                    "name": "ガスフレア",
+                    "terms": "ガスフレア,余剰ガス,ガス燃焼塔"
+                },
+                "man_made/footwear_decontamination-AU-NZ": {
+                    "name": "靴底除染施設",
+                    "terms": "靴底除染施設,消毒マット,デコンタミネーション"
+                },
                 "man_made/fuel_pump": {
                     "name": "給油機",
                     "terms": "計量器,燃料,ガソリン,プロパン,液化ガス,軽油,ディーゼル,lng,天然ガス"
@@ -8247,6 +8427,10 @@
                 "man_made/silo": {
                     "name": "サイロ",
                     "terms": "サイロ,貯蔵タンク"
+                },
+                "man_made/ski_jump": {
+                    "name": "スタートタワー",
+                    "terms": "スタートタワー,インランタワー,アプローチ,スキージャンプ台,ジャンプ台"
                 },
                 "man_made/storage_tank": {
                     "name": "貯蔵タンク",
@@ -8538,6 +8722,10 @@
                     "name": "低木",
                     "terms": "低木,藪,ヤブ,木,樹木"
                 },
+                "natural/sinkhole": {
+                    "name": "シンクホール",
+                    "terms": "シンクホール,ドリーネ,陥没"
+                },
                 "natural/spring": {
                     "name": "泉",
                     "terms": "泉,湧水"
@@ -8562,13 +8750,15 @@
                     "terms": "広葉樹,落葉樹"
                 },
                 "natural/tree/broadleaved/evergreen": {
-                    "name": "常緑広葉樹"
+                    "name": "常緑広葉樹",
+                    "terms": "広葉樹,常緑樹"
                 },
                 "natural/tree/needleleaved": {
                     "name": "針葉樹"
                 },
                 "natural/tree/needleleaved/deciduous": {
-                    "name": "落葉針葉樹"
+                    "name": "落葉針葉樹",
+                    "terms": "針葉樹,落葉樹"
                 },
                 "natural/tree/needleleaved/evergreen": {
                     "name": "常緑針葉樹",
@@ -8940,6 +9130,10 @@
                     "name": "スキーコースの種類",
                     "terms": "スキーコースの種類,スキーコース"
                 },
+                "piste/ski_jump": {
+                    "name": "スキージャンプ台",
+                    "terms": "スキージャンプ台,ジャンプ台,シャンツェ,スキージャンプ競技場"
+                },
                 "piste/skitour": {
                     "name": "スキーツアー",
                     "terms": "スキーツアー,スキーコース"
@@ -8951,6 +9145,10 @@
                 "piste/sleigh": {
                     "name": "そり（中型）",
                     "terms": "そり,橇,スキーコース,そり（中型）,中型そり"
+                },
+                "piste/take_off": {
+                    "name": "カンテ",
+                    "terms": "カンテ,踏切台,踏み切り台,ジャンプ台,スキージャンプ"
                 },
                 "place": {
                     "name": "地名"
@@ -9566,7 +9764,7 @@
                 },
                 "roller_coaster/support": {
                     "name": "ローラーコースターの支柱",
-                    "terms": "ローラーコースター,ジェットコースター"
+                    "terms": "ローラーコースターの支柱,支柱,ローラーコースター,ジェットコースター"
                 },
                 "roller_coaster/track": {
                     "name": "ローラーコースターのトラック",
@@ -9935,7 +10133,11 @@
                 },
                 "shop/hairdresser": {
                     "name": "理美容店",
-                    "terms": "理容店,床屋,美容室,美容院,散髪屋,理髪店,ヘアー,ヘアーサロン,カット,パーマ"
+                    "terms": "理容店,床屋,美容室,美容院,散髪屋,理髪店,髪結い,ヘアー,ヘアーサロン,カット,パーマ"
+                },
+                "shop/hairdresser/barber": {
+                    "name": "理容店",
+                    "terms": "理容店,理髪店,床屋,散髪屋"
                 },
                 "shop/hairdresser_supply": {
                     "name": "理容用品店",
@@ -10375,7 +10577,7 @@
                 },
                 "tourism/attraction": {
                     "name": "観光地",
-                    "terms": "観光名所,見どころ,アトラクション,見もの,名所,旧跡,名勝,観光地"
+                    "terms": "観光名所,見どころ,アトラクション,見もの,名所,旧跡,名勝,観光地,観光"
                 },
                 "tourism/camp_pitch": {
                     "name": "キャンプ区画(キャンプ場内)",
@@ -10407,11 +10609,11 @@
                 },
                 "tourism/guest_house": {
                     "name": "民宿",
-                    "terms": "民宿,ゲストハウス,宿,ホテル,民泊,宿泊"
+                    "terms": "民宿,ペンション,ゲストハウス,宿,ホテル,民泊,宿泊"
                 },
                 "tourism/hostel": {
                     "name": "簡易宿泊所",
-                    "terms": "簡易宿泊所,ホステル,宿,ホテル,ユースホステル,カプセルホテル,カプセル,宿泊"
+                    "terms": "簡易宿泊所,ホステル,宿,ホテル,ユースホステル,カプセルホテル,カプセル,ゲストハウス,宿泊"
                 },
                 "tourism/hotel": {
                     "name": "ホテル",

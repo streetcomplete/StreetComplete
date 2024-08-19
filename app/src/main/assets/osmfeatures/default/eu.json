@@ -147,6 +147,7 @@
                         "block_number": "Blokearen zenbakia",
                         "block_number!jp": "Bloke Zenb.",
                         "city": "Hiria",
+                        "city!cn": "Hiria/Prefektura/Liga",
                         "city!jp": "Hiri/Herri/Herrixka/Tokioko auzo berezia",
                         "city!vn": "Hiri/Herri",
                         "conscriptionnumber": "123",
@@ -266,7 +267,13 @@
                     "label": "Artista"
                 },
                 "artwork_type": {
-                    "label": "Mota"
+                    "label": "Mota",
+                    "options": {
+                        "mural": "Murala (muralen)",
+                        "painting": "Pintura",
+                        "relief": "Erliebea",
+                        "sculpture": "Eskultura"
+                    }
                 },
                 "atm": {
                     "label": "Kutxazain automatikoa"
@@ -553,7 +560,6 @@
                     "options": {
                         "burger": "Hanburgesa",
                         "chicken": "Oilaskoa",
-                        "chocolate": "Txokolatea",
                         "fish": "Arraina",
                         "french": "Frantsesa",
                         "german": "Alemana",

@@ -412,6 +412,12 @@
                         "shed": "Zárt fészer"
                     }
                 },
+                "bicycle_road": {
+                    "options": {
+                        "undefined": "Nem",
+                        "yes": "Igen"
+                    }
+                },
                 "bin": {
                     "label": "Szemeteskosár",
                     "terms": "kuka,szemétkosár,szemetes,papírkosár,szemetes zsák,szemétgyűjtő"
@@ -903,7 +909,6 @@
                         "cake": "sütemény",
                         "chicken": "csirke",
                         "chinese": "kínai",
-                        "chocolate": "csokoládé",
                         "coffee_shop": "coffee shop",
                         "dessert": "desszert",
                         "donut": "fánk",
@@ -1954,7 +1959,6 @@
                         "marble": "Márvány",
                         "metal": "Fém",
                         "plastic": "Műanyag",
-                        "reinforced_conrete": "Vasbeton",
                         "rock": "Szikla",
                         "sand": "Homok",
                         "sandstone": "Homokkő",
@@ -2221,14 +2225,16 @@
                         "american_express": "American Express",
                         "app": "Mobilalkalmazás",
                         "apple_pay": "Apple Pay",
+                        "cards": "Bankkártya",
                         "cash": "Készpénz",
                         "cheque": "Csekk",
                         "coins": "Pénzérme",
                         "contactless": "Érintésmentes fizetés",
                         "credit_cards": "Hitelkártya",
                         "cryptocurrencies": "Kriptovaluta",
-                        "debit_cards": "Hitelkártya",
+                        "debit_cards": "Betéti kártya",
                         "diners_club": "Diners Club",
+                        "discover_card": "Discover",
                         "ep_easycard": "悠遊卡EasyCard",
                         "ep_geldkarte": "GeldKarte",
                         "ep_ipass": "iPASS一卡通",
@@ -4419,8 +4425,8 @@
                     "name": "Kenyérautomata"
                 },
                 "amenity/vending_machine/cigarettes": {
-                    "name": "Cigerettaautomata",
-                    "terms": "cigerettaautomata,cigiautomata,dohányautomata"
+                    "name": "Cigarettaautomata",
+                    "terms": "cigarettaautomata,cigiautomata,dohányautomata"
                 },
                 "amenity/vending_machine/coffee": {
                     "name": "Kávéautomata"
