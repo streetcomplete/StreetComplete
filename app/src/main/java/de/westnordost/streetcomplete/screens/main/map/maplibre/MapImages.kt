@@ -29,6 +29,7 @@ class MapImages(private val resources: Resources, private val style: Style) {
         createBitmap: (id: Int) -> Pair<Bitmap, Boolean>
     ) = mutex.withLock {
         val loadIds = ids.filter { it !in images }.toSet()
+        if (loadIds.isEmpty()) return@withLock
 
         val data = loadIds.map {
             val (bitmap, sdf) = createBitmap(it)
