@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.Context
-import androidx.annotation.UiThread
 import androidx.core.graphics.drawable.toBitmap
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.style.layers.FillLayer

@@ -8,7 +8,6 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.maplibre.android.maps.Style
-import java.lang.System.currentTimeMillis
 
 class MapImages(private val resources: Resources, private val style: Style) {
     private val images = HashSet<Int>()

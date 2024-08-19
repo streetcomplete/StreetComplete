@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.view.dialogs.ValuePickerDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import kotlin.math.PI
 
 class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 

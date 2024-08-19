@@ -11,7 +11,6 @@ import android.view.Surface
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.util.math.normalizeRadians
 import java.lang.Math.toRadians
 import kotlin.math.PI

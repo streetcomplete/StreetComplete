@@ -4,11 +4,9 @@ import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import com.russhwolf.settings.boolean
 import com.russhwolf.settings.double
-import com.russhwolf.settings.float
 import com.russhwolf.settings.int
 import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
-import com.russhwolf.settings.string
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.putStringOrNull
 

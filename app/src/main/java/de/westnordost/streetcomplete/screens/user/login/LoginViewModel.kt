@@ -18,7 +18,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.withContext
 
 abstract class LoginViewModel : ViewModel() {
     abstract val unsyncedChangesCount: StateFlow<Int>

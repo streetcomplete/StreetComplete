@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setImage
-import kotlin.math.PI
 import kotlin.math.absoluteValue
 
 /** View controller that manages a street side select puzzle and accompanying last answer button
