@@ -47,7 +47,6 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setHtml
 import de.westnordost.streetcomplete.view.setText
-import java.util.MissingFormatArgumentException
 
 class UndoDialog(
     context: Context,

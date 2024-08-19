@@ -1,4 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Wells Fargo, Zions Bank, U.S. Bank, Mountain America Credit Union, America First Credit Union, Wells Fargo Bank, USU Credit Union, US Bank, Chase]
+atmOperators: [Wells Fargo, Zions Bank, U.S. Bank, Mountain America Credit Union, America First Credit Union, USU Credit Union, Chase]
 chargingStationOperators: [ChargePoint, 'Tesla, Inc.', brand=ChargePoint, Electrify America, brand=Tesla, Utah State University]
 defaultSpeedLimitHasUrbanOrRural: true

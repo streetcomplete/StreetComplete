@@ -54,8 +54,8 @@ fun convertToSdf(
 
 // 2D Euclidean squared distance transform by Felzenszwalb & Huttenlocher https://cs.brown.edu/~pff/papers/dt-final.pdf
 private fun edt(data: DoubleArray, width: Int, height: Int, f: DoubleArray, v: IntArray, z: DoubleArray) {
-    for (x in 0 ..< width)  edt1d(data, x, width, height, f, v, z)
-    for (y in 0 ..< height) edt1d(data, y * width, 1, width, f, v, z)
+    for (x in 0..<width)  edt1d(data, x, width, height, f, v, z)
+    for (y in 0..<height) edt1d(data, y * width, 1, width, f, v, z)
 }
 
 // 1D squared distance transform
@@ -66,7 +66,7 @@ private fun edt1d(grid: DoubleArray, offset: Int, stride: Int, length: Int, f: D
     f[0] = grid[offset]
 
     var k = 0
-    for (q in 1 ..< length) {
+    for (q in 1..<length) {
         f[q] = grid[offset + q * stride]
         val q2 = q * q
         var s: Double
@@ -82,7 +82,7 @@ private fun edt1d(grid: DoubleArray, offset: Int, stride: Int, length: Int, f: D
     }
 
     k = 0
-    for (q in 0 ..< length) {
+    for (q in 0..<length) {
         while (z[k + 1] < q) k++
         val r = v[k]
         val qr = q - r

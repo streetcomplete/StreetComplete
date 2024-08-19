@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"A hitelesítés sikertelen,: az összes felsorolt engedélyt meg kell adni"</string>
     <string name="pref_category_communication">"Kommunikáció"</string>
     <string name="pref_category_display">"Megjelenítés"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"A külső tárolón a térképcsempék gyorsítótárának fenntartott hely megabájtban"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Összes megjegyzés megjelenítése"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Jelenjenek meg a nem kérdésként megfogalmazott megjegyzések is"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"A nem kérdésként megfogalmazott megjegyzések figyelmen kívül hagyása"</string>
-    <string name="pref_title_map_cache">"Térképgyorsítótár mérete"</string>
     <string name="map_btn_gps_tracking">"Kövess"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-közreműködők"</string>
     <string name="quest_generic_otherAnswers">"További válaszok…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Helyzetmeghatározás kikapcsolva. Bekapcsolod most?"</string>
     <string name="no_location_permission_warning">"Szükség van a pozíciódra a környéked kérdéseinek lekéréséhez."</string>
     <string name="about_title_authors">"Szerzők"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick és a közreműködők"</string>
     <string name="about_title_repository">"Források"</string>
-    <string name="about_summary_repository">"a GitHubon"</string>
     <string name="about_title_report_error">"Hiba bejelentése"</string>
     <string name="about_title_feedback">"Visszajelzés küldése"</string>
     <string name="about_title_license">"Licenc"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Offline vagy"</string>
     <string name="confirmation_authorize_now">"Válaszaid közzétételéhez azonosítanod kell magad az OSM-fiókoddal. Hitelesíted most?"</string>
     <string name="not_authorized">"Nem hitelesített"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Csak összeköt két utat"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Valami más (leírom megjegyzésben)"</string>
     <string name="about_title_privacy_statement">"Adatvédelmi nyilatkozat"</string>
-    <string name="about_summary_privacy_statement">"és adatfelhasználás"</string>
     <string name="quest_openingHours_public_holidays">"Nemzeti ünnepek"</string>
     <string name="quest_openingHours_public_holidays_short">"NÜ"</string>
     <string name="quest_openingHours_open_end">"rugalmas zárás"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Kicsinyítés"</string>
     <string name="map_btn_zoom_in">"Nagyítás"</string>
     <string name="privacy_html">"&lt;p&gt;Juhú, végre valakit érdekel az adatvédelem, remek! Szerintem csupa jó híreim vannak számodra:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Közvetlen közreműködések&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Közvetlen közreműködések&lt;/h2&gt;
 &lt;p&gt;
 Először is, fontos megérteni, hogy a módosításaid valóban és közvetlenül megjelennek az OpenStreetMapben.&lt;br&gt;
 Az alkalmazásban megadott összes módosítás közvetlenül hozzáadódik a térképhez, nincs harmadik fél az alkalmazás és az OSM infrastruktúra között.
@@ -91,12 +84,12 @@ Az alkalmazásban megadott összes módosítás közvetlenül hozzáadódik a t�
 Az OpenStreetMapet nem lehet névtelenül szerkeszteni, tehát minden módosítást az OSM-fiókoddal végzel. Ez azt jelenti, hogy a módosításaid időpontja, tartalma és így közvetve a helyszíne is a fiókodhoz köthető és ezeket bárki láthatja az OpenStreetMap honlapján.
 &lt;/p&gt;
 
-&lt;b&gt;Helymeghatározás&lt;/b&gt;&lt;br&gt;
+&lt;h2&gt;Helymeghatározás&lt;/h2&gt;
 &lt;p&gt;
 Az alkalmazás senkivel sem osztja meg a helyzetedet. Kizárólag arra használja, hogy automatikusan beolvassa a környezetedben lévő kérdéseket, vagyis a környékeden lévő térképre összpontosítson (és azt letöltse).
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Adathasználat&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Adathasználat&lt;/h2&gt;
 &lt;p&gt;
 Ahogy említettük, az alkalmazás közvetlenül kommunikál az OSM infrastruktúrával.
 A módosításaid feltöltése előtt azonban az alkalmazás először leellenőrzi egy &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;egyszerű szövegfájl&lt;/a&gt; alapján a szerveremen, hogy nincs-e letiltva számára a módosítások feltöltése. Ez egy óvintézkedés, amely kiszűri az alkalmazás azon verzióit, amelyekben olyan súlyos programhibák vannak, amelyek potenciálisan károsíthatnák az OSM adatait.&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@ A módosításaid feltöltése előtt azonban az alkalmazás először leellenő
     <string name="quest_surface_value_wood">"Fa"</string>
     <string name="quest_sidewalk_title">"Van járda ebben az utcában?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hol található ez az utca?"</string>
-    <string name="quest_oneway_title">"Ez egyirányú utca?"</string>
     <string name="quest_address_title">"Mi a házszáma ennek az épületnek?"</string>
     <string name="store_listing_short_description">"OpenStreetMap-felmérő alkalmazás"</string>
     <string name="store_listing_full_description">"Segítsd fejleszteni az OpenStreetMapet a StreetComplete-tel!
@@ -389,7 +381,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="questList_disabled_in_country">"Soha nem jelenik meg itt: %s"</string>
     <string name="quest_select_hint_most_specific">"Válaszd ki a leginkább rá jellemzőt:"</string>
     <string name="quest_generic_item_confirmation">"Biztos, hogy nem tudod pontosabban meghatározni?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Egyes kérdésekhez más, harmadik féltől származó adatok is letöltésre kerülnek. Különösen az egyirányú utcák lekérése egy (szintén a westnordost.de kiszolgálóján lévő) API-n keresztül zajlik.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Egyes kérdésekhez más, harmadik féltől származó adatok is letöltésre kerülnek.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nincs (megjegyzés írása)"</string>
     <string name="pref_quests_reset">"Alaphelyzetbe állítod az engedélyezett kérdéstípusokat és a sorrendet is?"</string>
     <string name="quest_generic_item_invalid_value">"Kérjük, válassz konkrétabb értéket."</string>
@@ -504,7 +496,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_accessible_for_pedestrians_title_prohibited">"A gyalogosok ki vannak tiltva ebből az utcából?"</string>
     <string name="quest_buildingType_title">"Ez milyen épület?"</string>
     <string name="pref_title_theme_select">"Téma kiválasztása"</string>
-    <string name="theme_automatic">"Automatikus"</string>
     <string name="theme_light">"Világos"</string>
     <string name="theme_dark">"Sötét"</string>
     <string name="theme_system_default">"Rendszer alapértelmezett"</string>
@@ -533,7 +524,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_maxweight_answer_other_sign">"A tábla máshogy néz ki…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Szeretnél megjegyzést hagyni? Egy megjegyzés és egy hozzá csatolt fénykép lehetővé teszi a többi szerkesztőnek, hogy megoldják."</string>
     <string name="quest_handrail_title">"Ez a lépcső rendelkezik korláttal?"</string>
-    <string name="about_summary_current_version">"Jelenlegi verzió: %s"</string>
     <string name="quest_ref_answer_noRef">"Nem látható azonosító szám…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Az ábrán látható út ugyanúgy van elforgatva, mint a térképen a jelölő helyén. "</string>
     <string name="quest_recycling_materials_title">"Miket lehet itthagyni újrahasznosításra?"</string>
@@ -558,7 +548,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="about_title_changelog">"Verziótörténet"</string>
     <string name="title_whats_new">"Újdonságok"</string>
     <string name="about_title_rate">"Értékeld az alkalmazást"</string>
-    <string name="about_summary_rate">"a Google Play-en"</string>
     <string name="about_title_donate">"Támogatás"</string>
     <string name="about_summary_donate">"Fejezd ki az elismerésedet! ❤️"</string>
     <string name="about_description_donate">"Köszönjük, hogy az alkalmazás támogatására készülsz! A jelenlegi támogatások megtekintéséhez és a támogatáshoz koppints a megfelelő platformra:"</string>
@@ -950,7 +939,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_barrier_bicycle_type_single">"Átjáró két akadály között"</string>
     <string name="quest_barrier_bicycle_type_double">"S-kanyar mindkét oldalon akadállyal"</string>
     <string name="quest_barrier_bicycle_type_multiple">"S-kanyar legalább három akadállyal"</string>
-    <string name="pref_title_language_select">"Nyelv kiválasztása"</string>
     <string name="language_default">"Rendszer alapértelmezett"</string>
     <string name="on_floor">"%s. emeleten:"</string>
     <string name="select_street_parking_orientation">"Az úttesthez viszonyított irányultság kiválasztása:"</string>
@@ -975,7 +963,6 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
 
 Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_address_house_number_label">"Házszám:"</string>
-    <string name="quest_shoulder_title">"Van leállósáv ezen az úton?"</string>
     <string name="quest_fireHydrant_position_title">"Hol található ez a tűzcsap?"</string>
     <string name="quest_fireHydrant_position_green">"Füvön vagy földön"</string>
     <string name="quest_fireHydrant_position_lane">"Úttesten"</string>
@@ -1026,8 +1013,6 @@ Másik megoldásként írhatsz egy megjegyzést (fényképpel)."</string>
     <string name="quest_barrier_path_intersection">"Hogyan keresztezi itt ez az ösvény az akadályt?"</string>
     <string name="quest_barrier_road_intersection">"Hogyan keresztezi itt ez az út az akadályt?"</string>
     <string name="quest_sidewalk_value_separate">"gyalogjárda, a térképen külön szerepel"</string>
-    <string name="quest_shoulder_value_yes">"leállósáv"</string>
-    <string name="quest_shoulder_value_no">"nincs leállíósáv"</string>
     <string name="no_camera_permission_warning_title">"Kamera engedély"</string>
     <string name="no_camera_permission_warning">"Az engedély szükséges a kiterjesztett valósággal történő távolságméréshez."</string>
     <string name="ar_core_error_sdk_too_old">"Az alkalmazás túl régi, próbáld meg frissíteni."</string>
@@ -1118,7 +1103,6 @@ Tedd meg a másiknál is, ha van olyan."</string>
     <string name="quest_barrier_type_gate_any_size">"Kapu (mérettől függetlenül)"</string>
     <string name="quest_air_pump_compressor_title">"Van itt légkompresszor?"</string>
     <string name="quest_step_count_stile_hint">"Csak a csúcsra vezető lépések száma. Ha a lépések száma oldalanként eltér, adjuk meg a nagyobb számot."</string>
-    <string name="quest_shoulder_explanation2">"A leállósáv egy egyértelműen kijelölt vészmegállósáv. A leállósávként kijelölt terület nem feltétlenül teljes szélességében burkolt, és nem feltétlenül elég széles ahhoz, hogy egy autó teljesen meg tudjon állni a forgalmi sávban."</string>
     <string name="quest_cycleway_value_none_and_oneway">"kerékpározás nincs megengedve ebbe az irányba"</string>
     <string name="map_btn_create_track">"Új nyomvonal felvétele"</string>
     <string name="map_btn_stop_track">"Nyomvonal felvétel vége"</string>
@@ -1220,7 +1204,6 @@ Tedd meg a másiknál is, ha van olyan."</string>
     <string name="quest_genericRef_title">"Mi az azonosítószáma?"</string>
     <string name="quest_sidewalk_answer_different">"A járdák helyzete eltérő"</string>
     <string name="about_title_get_involved">"Kapcsolódj be"</string>
-    <string name="pref_category_quests_overlays">"Kérdések és kiemelések"</string>
     <string name="quest_presets_rename">"Átnevezés"</string>
     <string name="quest_presets_share">"Megosztás"</string>
     <string name="quest_presets_delete">"Törlés"</string>
@@ -1392,13 +1375,10 @@ Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőol
 
 Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla tetőszintű tetők nem feltétlenül laposak, csak nem elég magasak egy teljes szinthez."</string>
     <string name="quest_parcel_locker_brand">"Mi a csomagmegőrző márkája?"</string>
-    <string name="quest_parcel_locker_pickup">"Lehet itt csomagot átvenni?"</string>
-    <string name="quest_parcel_locker_mail_in">"Lehet itt csomagot beadni?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Az elektromos vezeték az épülethez van rögzítve"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"nincs, de a járdán szabad kerékpározni"</string>
     <string name="separate_cycleway_no_signed">"Tábla tiltja a kerékpározást"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Gyalogút, de a tábla engedélyezi a kerékpározást"</string>
     <string name="quest_bicycle_parking_type_floor">"Kijelölt terület"</string>
     <string name="link_osmapp_description">"Egy térkép különféle rétegekkel, például hegymászáshoz vagy síeléshez"</string>
-    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Csak visszaküldésre"</string>
 </resources>

@@ -234,6 +234,10 @@
                     "label": "Klimatyzacja",
                     "terms": "klimatyzacja,chłodzenie"
                 },
+                "alt_name": {
+                    "label": "Nazwa alternatywna",
+                    "terms": "nazwa alternatywna"
+                },
                 "amenity": {
                     "label": "Rodzaj"
                 },
@@ -270,6 +274,14 @@
                 },
                 "area/highway": {
                     "label": "Rodzaj"
+                },
+                "armrest": {
+                    "label": "Podłokietniki",
+                    "options": {
+                        "no": "Brak",
+                        "undefined": "Nieokreślone",
+                        "yes": "Jeden lub więcej"
+                    }
                 },
                 "artist": {
                     "label": "Artysta"
@@ -826,6 +838,18 @@
                     "label": "Rodzaje komunikacji",
                     "terms": "rodzaje komunikacji,rodzaj komunikacji,rodzaje transmisji,rodzaj transmisji,transmisja"
                 },
+                "community_centre": {
+                    "label": "Rodzaj",
+                    "options": {
+                        "club_home": "Świetlica klubowa",
+                        "community_hall": "Świetlica (nieokreślona)",
+                        "cultural_centre": "Centrum kultury",
+                        "family_centre": "Centrum dla rodzin",
+                        "parish_hall": "Dom parafialny / Sala parafialna",
+                        "village_hall": "Świetlica wiejska",
+                        "youth_centre": "Ośrodek młodzieżowy"
+                    }
+                },
                 "connectivity": {
                     "label": "Łączność"
                 },
@@ -1053,23 +1077,46 @@
                 "cuisine": {
                     "label": "Kuchnia",
                     "options": {
+                        "african": "Afrykańska",
                         "american": "Amerykańska",
+                        "arab": "Arabska",
+                        "argentinian": "Argentyńska",
                         "asian": "Azjatycka",
+                        "bagel": "Bajgle",
+                        "balkan": "Bałkańska",
+                        "barbecue": "Grillowa (barbecue)",
+                        "bavarian": "Bawarska",
+                        "beef_bowl": "Gyūdon",
+                        "bistro": "Bistro",
+                        "brazilian": "Brazylijska",
+                        "breakfast": "Śniadaniowa",
+                        "brunch": "Brunche",
                         "bubble_tea": "Bubble Tea",
                         "burger": "Burgery",
                         "cake": "Ciasta",
+                        "caribbean": "Karaibska",
                         "chicken": "Kurczaki",
                         "chinese": "Chińska",
-                        "chocolate": "Czekolada",
                         "coffee_shop": "Kawy",
+                        "crepe": "Naleśniki",
+                        "curry": "Curry",
                         "dessert": "Desery",
+                        "diner": "Diner",
                         "donut": "Pączki / Donuty",
+                        "european": "Europejska",
                         "filipino": "Filipińska",
+                        "fine_dining": "Fine dining",
                         "fish": "Ryby",
+                        "fish_and_chips": "Ryba z frytkami",
                         "french": "Francuska",
+                        "fries": "Frytki",
+                        "friture": "Friterie",
+                        "frozen_yogurt": "Mrożony jogurt",
                         "georgian": "Gruzińska",
                         "german": "Niemiecka",
                         "greek": "Grecka",
+                        "grill": "Grillowa (rożen)",
+                        "hawaiian": "Hawajska",
                         "hot_dog": "Hot dogi",
                         "ice_cream": "Lody",
                         "indian": "Indyjska",
@@ -1081,27 +1128,44 @@
                         "korean": "Koreańska",
                         "lebanese": "Libańska",
                         "malaysian": "Malezyjska",
+                        "mediterranean": "Śródziemnomorska",
                         "mexican": "Meksykańska",
+                        "middle_eastern": "Bliskowschodnia",
+                        "moroccan": "Marokańska",
+                        "noodle": "Makarony",
+                        "oriental": "Orientalna",
                         "pancake": "Naleśniki (amerykańskie)",
                         "pasta": "Makarony",
+                        "pastry": "Ciasta / ciastka",
+                        "persian": "Perska",
                         "peruvian": "Peruwiańska",
                         "pizza": "Pizza",
                         "polish": "Polska",
                         "portuguese": "Portugalska",
+                        "ramen": "Ramen",
                         "regional": "Regionalna",
                         "russian": "Rosyjska",
                         "salad": "Sałatki",
                         "sandwich": "Kanapki",
+                        "sausage": "Kiełbaski",
                         "seafood": "Owoce morza",
+                        "shawarma": "Szawarma",
+                        "soba": "Soba",
+                        "soup": "Zupy",
                         "spanish": "Hiszpańska",
                         "steak_house": "Steki",
                         "sushi": "Sushi",
                         "taiwanese": "Tajwańska",
+                        "tapas": "Tapas",
+                        "tea": "Herbaty",
                         "tex-mex": "Tex-Mex",
                         "thai": "Tajska",
                         "turkish": "Turecka",
+                        "udon": "Udon",
                         "ukrainian": "Ukraińska",
-                        "vietnamese": "Wietnamska"
+                        "vietnamese": "Wietnamska",
+                        "western": "Zachodnia",
+                        "wings": "Skrzydełka kurczaka"
                     },
                     "terms": "kuchnia,rodzaj dań,rodzaj restauracji,rodzaj baru,pochodzenie"
                 },
@@ -1623,6 +1687,7 @@
                         "cng": "Sprężony gaz ziemny (CNG)",
                         "diesel": "Olej napędowy",
                         "e10": "Paliwo z etanolem (E10)",
+                        "e5": "Paliwo z etanolem (E5)",
                         "e85": "Paliwo z etanolem (E85)",
                         "h70": "Wodór gazowy (700 bar)",
                         "lng": "Skroplony gaz ziemny (LNG)",
@@ -1926,7 +1991,7 @@
                     "options": {
                         "archaeological_site": "Stanowisko archeologiczne",
                         "bomb_crater": "Krater po bombie",
-                        "boundary_stone": "Kamień graniczny",
+                        "boundary_stone": "Historyczny kamień graniczny",
                         "building": "Budynek",
                         "castle": "Zamek / Warownia / Pałac",
                         "charcoal_pile": "Mielerz",
@@ -2241,6 +2306,10 @@
                     "label": "Oświetlenie",
                     "terms": "oświetlenie,światło"
                 },
+                "loc_name": {
+                    "label": "Nazwa lokalna",
+                    "terms": "nazwa lokalna,nazwa miejscowa,nazwa środowiskowa"
+                },
                 "location": {
                     "label": "Położenie",
                     "terms": "położenie,lokalizacja,lokacja,miejsce"
@@ -2328,7 +2397,7 @@
                         "marble": "Marmur",
                         "metal": "Metal",
                         "plastic": "Plastik",
-                        "reinforced_conrete": "Beton zbrojony",
+                        "reinforced_concrete": "Żelbet",
                         "rock": "Skała",
                         "sand": "Piach",
                         "sandstone": "Piaskowiec",
@@ -2392,6 +2461,7 @@
                         "blue_plaque": "Niebieska tablica",
                         "bust": "Popiersie",
                         "cross": "Krzyż",
+                        "ghost_bike": "Duch roweru",
                         "obelisk": "Obelisk",
                         "plaque": "Tablica pamiątkowa",
                         "sculpture": "Rzeźba",
@@ -2509,6 +2579,10 @@
                     "placeholder": "Powszechna nazwa własna (tylko jeśli istnieje)",
                     "terms": "nazwa"
                 },
+                "nat_name": {
+                    "label": "Nazwa narodowa",
+                    "terms": "nazwa narodowa"
+                },
                 "natural": {
                     "label": "Natura"
                 },
@@ -2623,6 +2697,10 @@
                         "union": "Związek zawodowy",
                         "water_utility": "Biuro wodociągowe"
                     }
+                },
+                "official_name": {
+                    "label": "Nazwa oficjalna",
+                    "terms": "nazwa oficjalna"
                 },
                 "oneway": {
                     "label": "Jednokierunkowa",
@@ -2914,6 +2992,7 @@
                         "ice_skate": "Łyżwiarska (na lodzie)",
                         "nordic": "Biegowa",
                         "playground": "Narciarski plac zabaw",
+                        "ski_jump": "Skocznia narciarska",
                         "skitour": "Skiturowa",
                         "sled": "Tor saneczkowy",
                         "sleigh": "Dla zaprzęgów z saniami lub skuterów śnieżnych",
@@ -2953,7 +3032,8 @@
                     "label": "Rodzaj"
                 },
                 "playground/theme": {
-                    "label": "Motyw"
+                    "label": "Motyw",
+                    "terms": "motyw,tematyka"
                 },
                 "plots": {
                     "label": "Działki",
@@ -3160,6 +3240,10 @@
                 "ref_taxiway": {
                     "label": "Oznaczenie drogi kołowania",
                     "placeholder": "np. A5"
+                },
+                "reg_name": {
+                    "label": "Nazwa regionalna",
+                    "terms": "nazwa regionalna"
                 },
                 "relation": {
                     "label": "Rodzaj"
@@ -3508,6 +3592,10 @@
                 "shop": {
                     "label": "Rodzaj"
                 },
+                "short_name": {
+                    "label": "Nazwa skrócona",
+                    "terms": "nazwa skrócona,nazwa krótka,skrót,akronim"
+                },
                 "shower": {
                     "label": "Prysznice",
                     "terms": "prysznice"
@@ -3677,6 +3765,7 @@
                         "scuba_diving": "Nurkowanie z butlą",
                         "shooting": "Strzelectwo",
                         "skateboard": "Skateboarding",
+                        "ski_jumping": "Skoki narciarskie",
                         "skiing": "Narciarstwo",
                         "soccer": "Piłka nożna",
                         "softball": "Softball",
@@ -3836,20 +3925,26 @@
                     "options": {
                         "artificial_turf": "Sztuczna trawa",
                         "asphalt": "Asfalt",
+                        "clay": "Mączka ceglana",
                         "compacted": "Ubity tłuczeń",
                         "concrete": "Beton",
+                        "concrete:lanes": "Płyty betonowe (pasy pod koła)",
+                        "concrete:plates": "Płyty betonowe (na całej szerokości)",
                         "dirt": "Ziemia / Gleba / Pył",
                         "fine_gravel": "Drobny żwir",
                         "grass": "Trawa",
+                        "grass_paver": "Płyty ażurowe",
                         "gravel": "Żwir",
                         "ground": "Gruntowa (ogólnie)",
                         "metal": "Metal",
                         "mud": "Trwałe błoto",
                         "paved": "Utwardzona (ogólnie)",
                         "paving_stones": "Kostka / Płyty chodnikowe",
+                        "pebblestone": "Otoczaki",
                         "salt": "Sól",
                         "sand": "Piasek",
                         "sett": "Kostka kamienna / Bruk",
+                        "tartan": "Tartan",
                         "unhewn_cobblestone": "Kocie łby",
                         "unpaved": "Nieutwardzona (ogólnie)",
                         "wood": "Drewno",
@@ -4111,6 +4206,10 @@
                         "rumble_strip": "Linia wibracyjna",
                         "table": "Wyniesienie jezdni"
                     }
+                },
+                "traffic_calming_road": {
+                    "label": "Urządzenia uspokojenia ruchu",
+                    "terms": "urządzenia uspokojenia ruchu"
                 },
                 "traffic_sign": {
                     "label": "Znak drogowy"
@@ -4795,15 +4894,39 @@
                 },
                 "amenity/community_centre": {
                     "name": "Centrum społecznościowe",
-                    "terms": "centrum społecznościowe,centrum społeczności,świetlica wiejska"
+                    "terms": "centrum społecznościowe,centrum społeczności,ośrodek kultury,centrum kultury,dom kultury,świetlica wiejska,świetlica środowiskowa,świetlica"
+                },
+                "amenity/community_centre/club_home": {
+                    "name": "Świetlica klubowa",
+                    "terms": "świetlica klubowa,świetlica stowarzyszenia"
+                },
+                "amenity/community_centre/community_hall": {
+                    "name": "Świetlica (sala spotkań społeczności)",
+                    "terms": "świetlica,sala spotkań,sala zebrań"
+                },
+                "amenity/community_centre/cultural_centre": {
+                    "name": "Ośrodek kultury",
+                    "terms": "ośrodek kultury,centrum kultury"
+                },
+                "amenity/community_centre/family_centre": {
+                    "name": "Centrum dla rodzin",
+                    "terms": "centrum dla rodzin"
                 },
                 "amenity/community_centre/lgbtq": {
                     "name": "Centrum społeczności LGBTQ+",
                     "terms": "centrum społeczności lgbtq+,lgbt,gejów,lesbijek"
                 },
+                "amenity/community_centre/parish_hall": {
+                    "name": "Dom parafialny / Sala parafialna",
+                    "terms": "dom parafialny,sala parafialna"
+                },
+                "amenity/community_centre/village_hall": {
+                    "name": "Świetlica wiejska",
+                    "terms": "świetlica wiejska"
+                },
                 "amenity/community_centre/youth_centre": {
-                    "name": "Centrum młodzieżowe",
-                    "terms": "centrum młodzieżowe,ośrodek młodzieżowy"
+                    "name": "Ośrodek młodzieżowy",
+                    "terms": "ośrodek młodzieżowy,centrum młodzieżowe"
                 },
                 "amenity/compressed_air": {
                     "name": "Kompresor",
@@ -5007,6 +5130,10 @@
                 "amenity/fast_food/chicken": {
                     "name": "Bar z kurczakiem",
                     "terms": "bar z kurczakiem,kurczak z rożna"
+                },
+                "amenity/fast_food/chinese": {
+                    "name": "Bar chiński",
+                    "terms": "bar chiński"
                 },
                 "amenity/fast_food/donut": {
                     "name": "Sklep z donutami",
@@ -5581,6 +5708,10 @@
                     "name": "Studio filmowe",
                     "terms": "studio filmowe,wytwórnia filmowa,wytwórnia filmów,produkcja filmowa,produkcja filmów"
                 },
+                "amenity/swingerclub": {
+                    "name": "Klub swingersów",
+                    "terms": "klub swingersów"
+                },
                 "amenity/taxi": {
                     "name": "Postój taksówek",
                     "terms": "postój taksówek,taksówka,taxi"
@@ -5803,6 +5934,10 @@
                 "area/highway": {
                     "name": "Obszar drogi",
                     "terms": "obszar drogi,powierzchnia drogi,nawierzchnia,ulica"
+                },
+                "area/highway/traffic_island": {
+                    "name": "Wysepka drogowa",
+                    "terms": "wysepka drogowa,wysepka uspokajająca ruch,wysepka,wyspa"
                 },
                 "attraction": {
                     "name": "Atrakcja"
@@ -6651,8 +6786,16 @@
                     "terms": "wąż strażacki,wąż pożarniczy,wąż pożarowy"
                 },
                 "emergency/fire_hydrant": {
-                    "name": "Hydrant przeciwpożarowy",
-                    "terms": "hydrant przeciwpożarowy"
+                    "name": "Hydrant",
+                    "terms": "hydrant"
+                },
+                "emergency/fire_hydrant/pillar": {
+                    "name": "Hydrant nadziemny",
+                    "terms": "hydrant nadziemny"
+                },
+                "emergency/fire_hydrant/underground": {
+                    "name": "Hydrant podziemny",
+                    "terms": "hydrant podziemny"
                 },
                 "emergency/fire_service_inlet": {
                     "name": "Przyłącze instalacji gaśniczej",
@@ -6995,7 +7138,7 @@
                     "terms": "rampa ratunkowa,rampa awaryjnego hamowania,rampa awaryjna dla ciężarówek"
                 },
                 "highway/footway": {
-                    "name": "Ścieżka dla pieszych",
+                    "name": "Chodnik/ścieżka dla pieszych",
                     "terms": "ścieżka dla pieszych,bulwar,ścieżka,deptak,szlak,chodzenie"
                 },
                 "highway/footway/access_aisle": {
@@ -7026,7 +7169,7 @@
                     "name": "Nieformalna ścieżka dla pieszych"
                 },
                 "highway/footway/sidewalk": {
-                    "name": "Chodnik",
+                    "name": "Chodnik przy jezdni",
                     "terms": "chodnik,chodnik wzdłuż drogi,chodnik przy jezdni"
                 },
                 "highway/footway/traffic_island": {
@@ -7036,6 +7179,10 @@
                 "highway/give_way": {
                     "name": "Znak \"ustąp pierwszeństwa\"",
                     "terms": "znak ustąp pierwszeństwa przejazdu,a-7,a7"
+                },
+                "highway/ladder": {
+                    "name": "Drabinka",
+                    "terms": "drabinka,drabina"
                 },
                 "highway/living_street": {
                     "name": "Droga w strefie zamieszkania",
@@ -7066,7 +7213,7 @@
                     "terms": "mijanka"
                 },
                 "highway/path": {
-                    "name": "Ścieżka (nieokreślona)",
+                    "name": "Ścieżka",
                     "terms": "ścieżka,droga,dróżka"
                 },
                 "highway/path/boardwalk": {
@@ -7244,7 +7391,7 @@
                 },
                 "historic/boundary_stone": {
                     "name": "Kamień graniczny",
-                    "terms": "kamień graniczny"
+                    "terms": "historyczny kamień graniczny"
                 },
                 "historic/building": {
                     "name": "Budynek zabytkowy",
@@ -7429,7 +7576,7 @@
                     "terms": "trawnik,trawa,trawy,skwer,klomb,zieleń"
                 },
                 "landuse/greenfield": {
-                    "name": "Teren niezabudowany",
+                    "name": "Teren pod zabudowę",
                     "terms": "teren niezabudowany,teren pod budowę,budowa"
                 },
                 "landuse/greenhouse_horticulture": {
@@ -7572,6 +7719,10 @@
                 "leisure/bandstand": {
                     "name": "Estrada",
                     "terms": "estrada,scena,arena,podium,występy,amfiteatr,muszla koncertowa,trybuna,trybuny"
+                },
+                "leisure/bathing_place": {
+                    "name": "Kąpielisko",
+                    "terms": "kąpielisko"
                 },
                 "leisure/beach_resort": {
                     "name": "Ośrodek plażowy",
@@ -7987,6 +8138,11 @@
                     "terms": "tor wyścigów konnych,hipodrom",
                     "aliases": "Hipodrom"
                 },
+                "leisure/sports_centre/karting": {
+                    "name": "Ośrodek kartingowy",
+                    "terms": "ośrodek kartingowy,centrum kartingowe,ośrodek gokartowy,centrum gokartowe,gokarty",
+                    "aliases": "Ośrodek gokartowy"
+                },
                 "leisure/sports_centre/shooting": {
                     "name": "Strzelnica (ośrodek sportowy)",
                     "terms": "strzelnica"
@@ -8004,7 +8160,7 @@
                     "terms": "stadion"
                 },
                 "leisure/swimming_area": {
-                    "name": "Kąpielisko",
+                    "name": "Kąpielisko (obszar wodny)",
                     "terms": "kąpielisko"
                 },
                 "leisure/swimming_pool": {
@@ -8169,6 +8325,14 @@
                     "name": "Maszt flagowy",
                     "terms": "maszt flagowy,flaga"
                 },
+                "man_made/flare": {
+                    "name": "Pochodnia gazowa",
+                    "terms": "pochodnia gazowa,flara gazowa"
+                },
+                "man_made/footwear_decontamination-AU-NZ": {
+                    "name": "Punkt dekontaminacji obuwia",
+                    "terms": "punkt dekontaminacji obuwia,stacja dekontaminacji obuwia,punkt odkażania obuwia,stacja odkażania obuwia,punkt dezynfekcji obuwia,stacja dezynfekcji obuwia"
+                },
                 "man_made/fuel_pump": {
                     "name": "Dystrybutor paliwa",
                     "terms": "dystrybutor paliwa"
@@ -8318,6 +8482,10 @@
                     "terms": "silos wieżowy,silos zbożowy,elewator,zboże,kukurydza,pszenica",
                     "aliases": "Elewator"
                 },
+                "man_made/ski_jump": {
+                    "name": "Skocznia narciarska (konstrukcja)",
+                    "terms": "skocznia narciarska"
+                },
                 "man_made/storage_tank": {
                     "name": "Zbiornik",
                     "terms": "zbiornik,cysterna",
@@ -8329,7 +8497,7 @@
                 },
                 "man_made/street_cabinet": {
                     "name": "Skrzynka elektryczna",
-                    "terms": "skrzynka elektryczna,szafka elektryczna,szafka uliczna,rozdzielnica elektryczna"
+                    "terms": "skrzynka elektryczna,szafka elektryczna,szafka uliczna,rozdzielnica elektryczna,szafka instalacyjna,bzbwi"
                 },
                 "man_made/street_cabinet/postal_service": {
                     "name": "Skrzynka dla listonosza",
@@ -8611,6 +8779,10 @@
                     "name": "Krzew",
                     "terms": "krzew"
                 },
+                "natural/sinkhole": {
+                    "name": "Lej krasowy",
+                    "terms": "lej krasowy,lejek krasowy,werteb,wertep"
+                },
                 "natural/spring": {
                     "name": "Źródło",
                     "terms": "źródło,młaka"
@@ -8636,13 +8808,15 @@
                     "terms": "drzewo liściaste gubiące liście,drzewo liściaste sezonowe"
                 },
                 "natural/tree/broadleaved/evergreen": {
-                    "name": "Drzewo liściaste (zimozielone)"
+                    "name": "Drzewo liściaste (zimozielone)",
+                    "terms": "drzewo liściaste zimozielone,drzewo liściaste wiecznie zielone"
                 },
                 "natural/tree/needleleaved": {
                     "name": "Drzewo iglaste"
                 },
                 "natural/tree/needleleaved/deciduous": {
-                    "name": "Drzewo iglaste (gubiące igły)"
+                    "name": "Drzewo iglaste (gubiące igły)",
+                    "terms": "drzewo iglaste gubiące igły,drzewo iglaste sezonowe"
                 },
                 "natural/tree/needleleaved/evergreen": {
                     "name": "Drzewo iglaste (zimozielone)",
@@ -9016,6 +9190,10 @@
                     "name": "Szlak sportów zimowych",
                     "terms": "szlaki sportów zimowych,trasa sportów zimowych,narty,klasyczne,przełajowe,downhill,alpejskie,snowboard,wycieczki narciarskie,sanki,saneczki,sanie,kulig,skijöring,husky,koń,zimowa wspinaczka,rakiety śniegowe,lód,łyżwiarstwo"
                 },
+                "piste/ski_jump": {
+                    "name": "Skocznia narciarska (najazd/zeskok)",
+                    "terms": "skocznia narciarska,najazd,zeskok"
+                },
                 "piste/skitour": {
                     "name": "Trasa skiturowa",
                     "terms": "trasa skiturowa,szlak skiturowy,skitury,narty,wycieczki narciarskie,przełajowe,trasa narciarska"
@@ -9027,6 +9205,10 @@
                 "piste/sleigh": {
                     "name": "Trasa do kuligów",
                     "terms": "trasa do kuligów,narty,trasa narciarska,narciarstwo,sanki,saneczki,sanie,skijöring,husky,koń"
+                },
+                "piste/take_off": {
+                    "name": "Próg skoczni narciarskiej",
+                    "terms": "próg skoczni narciarskiej"
                 },
                 "place": {
                     "name": "Miejsce"
@@ -10019,6 +10201,10 @@
                     "name": "Fryzjer",
                     "terms": "fryzjer,fryzjernia,salon fryzjerski,zakład fryzjerski,barber"
                 },
+                "shop/hairdresser/barber": {
+                    "name": "Barber",
+                    "terms": "barber,fryzjer męski,cyrulik,golibroda,balwierz,balbierz,barbierz"
+                },
                 "shop/hairdresser_supply": {
                     "name": "Sklep z artykułami fryzjerskimi",
                     "terms": "sklep z artykułami fryzjerskimi,artykuły fryzjerskie,szampony,odżywki,nożyczki,maszynki do włosów,suszarki do włosów,prostownice,lokówki,szczotki,farby do włosów,fryzjer"
@@ -10610,7 +10796,7 @@
                 },
                 "traffic_calming/island": {
                     "name": "Wysepka uspokajająca ruch",
-                    "terms": "wysepka uspokajająca ruch,wysepka,wysepka drogowa,wyspa,spowalniająca,spowolnienie,zwalniająca,zwężenie"
+                    "terms": "wysepka uspokajająca ruch,wysepka drogowa,wysepka,wyspa,spowalniająca,spowolnienie,zwalniająca,zwężenie"
                 },
                 "traffic_calming/mini_bumps": {
                     "name": "Progi zwalniające punktowe",

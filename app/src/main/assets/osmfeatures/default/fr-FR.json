@@ -5,6 +5,9 @@
                 "category-path": {
                     "name": "Chemins"
                 },
+                "category-playground": {
+                    "name": "Modules de jeux pour enfants"
+                },
                 "category-road_major": {
                     "name": "Routes Majeures"
                 },
@@ -43,6 +46,11 @@
                 "aerialway/duration": {
                     "label": "Durée (minutes)"
                 },
+                "beauty": {
+                    "options": {
+                        "spa": "Spa (sauna / hammam / bain bouillonnant)"
+                    }
+                },
                 "blind": {
                     "options": {
                         "limited": "Limité",
@@ -78,6 +86,18 @@
                 },
                 "amenity/recycling/container/green_waste": {
                     "name": "Benne pour déchets verts"
+                },
+                "landuse/recreation_ground": {
+                    "name": "Terrain de loisirs"
+                },
+                "leisure/playground": {
+                    "name": "Aire de jeux pour enfants"
+                },
+                "playground": {
+                    "name": "Module de jeux pour enfants"
+                },
+                "playground/zipwire": {
+                    "name": "Tyrolienne (jeu)"
                 },
                 "waterway/river": {
                     "name": "Rivière"

@@ -241,6 +241,7 @@
                     "label": "Til dyr"
                 },
                 "archaeological_site": {
+                    "label": "Type",
                     "options": {
                         "baths": "Bade",
                         "city": "Historisk by",
@@ -284,15 +285,18 @@
                 "athletics_pitch": {
                     "label": "Begivenhed",
                     "options": {
+                        "discus_throw": "Diskos",
                         "hammer_throw": "Hammerkast",
                         "high_jump": "Højdespring",
                         "javelin_throw": "Spydkast",
                         "long_jump": "Længdespring",
                         "pole_vault": "Stangspring",
+                        "shot_put": "Kuglestød",
                         "triple_jump": "Trespring"
                     }
                 },
                 "athletics_track": {
+                    "label": "Begivenhed",
                     "options": {
                         "javelin_throw": "Spydkast",
                         "long_jump": "Længdespring",
@@ -322,6 +326,7 @@
                         "pirate_ship": "Piratskib",
                         "river_rafting": "Flod-rafting",
                         "roller_coaster": "Rutchebane",
+                        "swing_carousel": "Svingkarrusel",
                         "train": "Turisttog",
                         "water_slide": "Vandrutsjebane"
                     }
@@ -342,8 +347,8 @@
                     "label": "Babysæde"
                 },
                 "backcountry": {
-                    "label": "Primitiv overnatning",
-                    "terms": "overnatning,primitiv,telt,bivuak,natur"
+                    "label": "Afsidesliggende",
+                    "terms": "afsidesliggende,primitiv overnatning,primitiv,telt,bivuak,natur,lejrplads,shelter"
                 },
                 "backrest": {
                     "label": "Ryglæn"
@@ -373,6 +378,7 @@
                         "lift_gate": "Bomled",
                         "retaining_wall": "Støttemur",
                         "stile": "Stente",
+                        "swing_gate": "Svingbom",
                         "toll_booth": "Betalingsanlæg",
                         "turnstile": "Drejekors",
                         "wall": "Mur"
@@ -388,7 +394,9 @@
                 "basin": {
                     "label": "Type",
                     "options": {
-                        "evaporation": "Fordampning"
+                        "detention": "Tørt regnvandsbassin",
+                        "evaporation": "Fordampning",
+                        "retention": "Vådt regnvandsbassin"
                     }
                 },
                 "bath/open_air": {
@@ -400,7 +408,9 @@
                 "bath/type": {
                     "label": "Specialitet",
                     "options": {
-                        "lake": "Sø"
+                        "hot_spring": "Varm kilde",
+                        "lake": "Sø",
+                        "thermal": "Termisk bad"
                     }
                 },
                 "beauty": {
@@ -440,7 +450,7 @@
                 },
                 "bin": {
                     "label": "Affaldscontainer",
-                    "terms": "affaldscontainer,affaldsbeholder,skraldecontainer"
+                    "terms": "affaldscontainer,affaldsbeholder,skraldecontainer,molok"
                 },
                 "blind": {
                     "label": "Adgang for blinde",
@@ -484,6 +494,9 @@
                         "rising": "Hævepullert"
                     }
                 },
+                "books": {
+                    "label": "Typen af bøger"
+                },
                 "booth": {
                     "label": "Begge"
                 },
@@ -503,6 +516,9 @@
                     "label": "Varemærke",
                     "terms": "mærke,varemærke,kæde"
                 },
+                "brewery": {
+                    "label": "Solgte ølmærker"
+                },
                 "bridge": {
                     "label": "Type",
                     "placeholder": "Standard"
@@ -514,29 +530,75 @@
                     "label": "Type"
                 },
                 "bridge_combo": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "aqueduct": "Akvædukt",
+                        "boardwalk": "Plankebro",
+                        "cantilever": "Cantileverbro",
+                        "covered": "Overdækket bro",
+                        "movable": "Bevægelig bro",
+                        "viaduct": "Viadukt"
+                    }
                 },
                 "building": {
                     "label": "Bygning",
                     "options": {
                         "allotment_house": "Kolonihavehus",
+                        "apartments": "Lejlighedskompleks",
                         "barn": "Lade",
+                        "boathouse": "Bådehus",
+                        "cabin": "Hytte",
+                        "cathedral": "Katedralbygning",
+                        "chapel": "Kapelbygning",
+                        "church": "Kirkebygning",
+                        "civic": "Civil-bygning",
                         "college": "Bygning til videregående uddannelse",
                         "commercial": "Erhvervsbyggeri",
                         "construction": "Bygning under opførsel",
                         "cowshed": "Kostald",
+                        "detached": "Parcelhus",
+                        "dormitory": "Kollegium",
                         "farm": "Stuehus",
                         "farm_auxiliary": "Landbrugsbygning",
+                        "fire_station": "Brandstationsbygning",
+                        "garages": "Garager",
                         "grandstand": "Tribune",
+                        "greenhouse": "Drivhus",
+                        "hangar": "Hangar-bygning",
+                        "hospital": "Hospitalsbygning",
+                        "hotel": "Hotelbygning",
+                        "house": "Hus",
                         "houseboat": "Husbåd",
+                        "hut": "Hytte",
+                        "industrial": "Industriel-bygning",
+                        "kindergarten": "Vuggestue-/børnehavebygning",
+                        "manufacture": "Industriel produktionsbygning",
+                        "mosque": "Moske-bygning",
                         "office": "Kontorbygning",
+                        "outbuilding": "Udhus",
                         "public": "Offentlig bygning",
+                        "residential": "Boligbyggeri",
+                        "retail": "Butiksbygning",
+                        "roof": "Tag",
+                        "ruins": "Bygningsruiner",
                         "school": "Skolebygning",
+                        "semidetached_house": "Dobbelthus",
                         "shed": "Skur",
                         "stable": "Hestestald",
-                        "sty": "Grisestald"
+                        "stadium": "Stadion-bygning",
+                        "static_caravan": "Faststående campingvogn",
+                        "sty": "Grisestald",
+                        "synagogue": "Synagoge-bygning",
+                        "temple": "Tempelbygning",
+                        "terrace": "Rækkehuse",
+                        "train_station": "Jernbanestationsbygning",
+                        "university": "Universitetsbygning",
+                        "warehouse": "Varehus"
                     },
                     "terms": "bygning,hus,bebyggelse"
+                },
+                "building/colour": {
+                    "label": "Facadefarve"
                 },
                 "building/flats": {
                     "label": "Boligenheder",
@@ -663,7 +725,21 @@
                 "clothes": {
                     "label": "Beklædning",
                     "options": {
-                        "children": "Børnetøj"
+                        "babies": "Babytøj",
+                        "children": "Børnetøj",
+                        "fur": "Pelsbeklædning",
+                        "hats": "Hatte",
+                        "maternity": "Ventetøj",
+                        "men": "Herretøj",
+                        "motorcycle": "Motorcykeltøj",
+                        "socks": "Sokker",
+                        "sports": "Sportstøj",
+                        "suits": "Jakkesæt",
+                        "swimwear": "Badetøj",
+                        "underwear": "Undertøj",
+                        "wedding": "Bryllupstøj",
+                        "women": "Dametøj",
+                        "workwear": "Arbejdstøj"
                     },
                     "terms": "klæder,beklædning,påklædning"
                 },
@@ -674,7 +750,12 @@
                     "label": "Indsamlingstidspunkter"
                 },
                 "collector": {
-                    "label": "Samleobjekter"
+                    "label": "Samleobjekter",
+                    "options": {
+                        "coins": "Mønter",
+                        "comics": "Tegneserier",
+                        "stamps": "Frimærker"
+                    }
                 },
                 "colour": {
                     "label": "Farve",
@@ -696,11 +777,17 @@
                 "consulate": {
                     "label": "Type",
                     "options": {
-                        "consular_office": "Kontor for konsulære tjenester"
+                        "consular_office": "Kontor for konsulære tjenester",
+                        "honorary_consul": "Honorær konsul",
+                        "residence": "En konsuls officielle bopæl",
+                        "yes": "Konsulat"
                     }
                 },
                 "consulting": {
                     "label": "Ekspertise"
+                },
+                "contact/facebook": {
+                    "label": "Facebook-brugernavn eller URL"
                 },
                 "contact/webcam": {
                     "label": "Webcam-URL",
@@ -744,11 +831,36 @@
                 "craft": {
                     "label": "Type",
                     "options": {
+                        "basket_maker": "Kurvemager",
+                        "beekeeper": "Biavler",
+                        "blacksmith": "Smed",
+                        "boatbuilder": "Bådebygger",
+                        "bookbinder": "Bogbinder",
                         "brewery": "Bryggeri",
+                        "builder": "Bygmester",
+                        "carpenter": "Tømrer",
+                        "carpet_layer": "Tæppelægger",
+                        "chimney_sweeper": "Skorstensfejer",
+                        "distillery": "Destilleri",
+                        "electrician": "Elektriker",
+                        "floorer": "Gulvlægger",
+                        "handicraft": "Håndarbejde",
+                        "jeweller": "Juveler",
                         "locksmith": "Låsesmed",
                         "oil_mill": "Oliemølle",
+                        "painter": "Maler",
+                        "photographer": "Fotograf",
+                        "plasterer": "Gipsarbejder",
+                        "plumber": "Blikkenslager",
                         "pottery": "Keramiker",
-                        "stonemason": "Stenhugger"
+                        "roofer": "Tagdækker",
+                        "saddler": "Sadelmager",
+                        "sailmaker": "Sejlmager",
+                        "shoemaker": "Skomager",
+                        "signmaker": "Skiltemager",
+                        "stonemason": "Stenhugger",
+                        "tailor": "Skrædder",
+                        "watchmaker": "Urmager"
                     }
                 },
                 "crane/type": {
@@ -818,7 +930,15 @@
                     "label": "Lys"
                 },
                 "crossing/markings": {
-                    "label": "Markering af fodgængerovergang"
+                    "label": "Markering af fodgængerovergang",
+                    "options": {
+                        "no": "Ikke markeret",
+                        "pictograms": "Malede piktogrammer",
+                        "surface": "Kun overfladebehandling",
+                        "yes": "Markeret på en eller anden måde",
+                        "zebra": "Langsgående bjælker",
+                        "zebra:bicolour": "Langsgående bjælker med skiftende farver"
+                    }
                 },
                 "crossing_raised": {
                     "label": "Hævet",
@@ -830,20 +950,36 @@
                 "cuisine": {
                     "label": "Kogekunsttype",
                     "options": {
+                        "african": "Afrikansk",
                         "american": "Amerikansk",
+                        "arab": "Arabisk",
+                        "argentinian": "Argentinsk",
                         "asian": "Asiatisk",
+                        "bagel": "Bagel",
+                        "balkan": "Balkan",
+                        "barbecue": "Barbecue",
+                        "bavarian": "Bayersk",
+                        "brazilian": "Brasiliansk",
+                        "breakfast": "Morgenmad",
+                        "brunch": "Brunch",
                         "burger": "Burger",
                         "cake": "Kage",
+                        "caribbean": "Caribisk",
                         "chicken": "Kylling",
                         "chinese": "Kinesisk",
-                        "chocolate": "Chokolade",
                         "coffee_shop": "Kaffebar",
                         "dessert": "Dessert",
                         "donut": "Donut",
+                        "european": "Europæisk",
+                        "filipino": "Filippinsk",
+                        "fine_dining": "Finere madlavning",
                         "fish": "Fisk",
                         "french": "Fransk",
+                        "fries": "Pomfritter",
+                        "georgian": "Georgisk",
                         "german": "Tysk",
                         "greek": "Græsk",
+                        "hawaiian": "Hawaiiansk",
                         "hot_dog": "Hot Dog",
                         "ice_cream": "Is",
                         "indian": "Indisk",
@@ -854,18 +990,30 @@
                         "korean": "Koreansk",
                         "lebanese": "Lebanesisk",
                         "malaysian": "Malaysisk",
+                        "mediterranean": "Middelhavsområdet",
                         "mexican": "Mexikansk",
+                        "middle_eastern": "Mellemøstlig",
+                        "moroccan": "Marokkansk",
+                        "noodle": "Nudler",
+                        "oriental": "Orientalsk",
+                        "pancake": "Pandekage",
+                        "pastry": "Bagværk",
                         "polish": "Polsk",
                         "portuguese": "Portugisisk",
                         "russian": "Russisk",
                         "salad": "Salat",
+                        "sausage": "Pølse",
                         "seafood": "Fisk og skaldyr",
+                        "soup": "Suppe",
                         "spanish": "Spansk",
                         "steak_house": "Bøfhus",
                         "taiwanese": "Taiwanesisk",
+                        "tea": "Te",
                         "thai": "Thailandsk",
                         "turkish": "Tyrkisk",
-                        "vietnamese": "Vietnamesisk"
+                        "ukrainian": "Ukrainsk",
+                        "vietnamese": "Vietnamesisk",
+                        "western": "Vestlig"
                     },
                     "terms": "mad,retter,køkkener"
                 },
@@ -923,6 +1071,9 @@
                 },
                 "dance/style": {
                     "label": "Dansestil"
+                },
+                "dance/teaching": {
+                    "label": "Tilbyder danseundervisning"
                 },
                 "date": {
                     "label": "Dato"
@@ -999,8 +1150,13 @@
                 "diplomatic": {
                     "label": "Type",
                     "options": {
+                        "consulate": "Konsulat",
+                        "embassy": "Ambassade",
                         "liaison": "Forbindelseskontor"
                     }
+                },
+                "diplomatic/services": {
+                    "label": "Serviceydelser"
                 },
                 "direction": {
                     "label": "Retning (grader med uret)",
@@ -1056,18 +1212,30 @@
                     "label": "Type"
                 },
                 "dock": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "drydock": "Tørdok",
+                        "floating": "Flydende tørdok"
+                    }
                 },
                 "dog": {
                     "label": "Hunde",
                     "options": {
                         "leashed": "Kun i snor",
                         "no": "Ikke tilladt",
+                        "unleashed": "Hundesnor ikke påkrævet",
                         "yes": "Tilladt"
-                    }
+                    },
+                    "terms": "hund,køter,hvalp,gadekryds,slædehund,jagthund,hyrdehund,fårehund,familiehund"
                 },
                 "door": {
                     "label": "Dør"
+                },
+                "door/height": {
+                    "label": "Dørhøjde (meter)"
+                },
+                "door/width": {
+                    "label": "Dørbredde (meter)"
                 },
                 "door_type": {
                     "label": "Type"
@@ -1140,6 +1308,12 @@
                 },
                 "except": {
                     "label": "Undtagelser"
+                },
+                "expected_rcn_route_relations": {
+                    "label": "Tilstødende cykelknudepunkter"
+                },
+                "expected_rwn_route_relations": {
+                    "label": "Tilstødende vandreknudepunkter"
                 },
                 "faces": {
                     "label": "Synlige flader"
@@ -1237,6 +1411,9 @@
                     "label": "Oversvømmelsesrisiko",
                     "terms": "oversvømmelse,vand,storm"
                 },
+                "footrest": {
+                    "label": "Fodstøtte"
+                },
                 "ford": {
                     "label": "Type",
                     "placeholder": "Standard"
@@ -1300,6 +1477,7 @@
                 "generator/method": {
                     "label": "Metode",
                     "options": {
+                        "thermal": "Solvarme",
                         "wind_turbine": "Vindturbine"
                     }
                 },
@@ -1536,6 +1714,9 @@
                 "hot_water": {
                     "label": "Varmt vand"
                 },
+                "house": {
+                    "label": "Hustype"
+                },
                 "iata": {
                     "label": "IATA lufthavnskode"
                 },
@@ -1617,6 +1798,29 @@
                 },
                 "kerb": {
                     "label": "Kantsten",
+                    "options": {
+                        "flush": {
+                            "description": "En nedsænket kantsten, der er i niveau med det omkringliggende område."
+                        },
+                        "lowered": {
+                            "description": "En nedsænket kantsten, som kan bruges af kørestolsbrugere, ikke højere end et par centimeter.",
+                            "title": "Sænket"
+                        },
+                        "no": {
+                            "description": "Der er ingen kantsten på dette sted.",
+                            "title": "Nej"
+                        },
+                        "raised": {
+                            "description": "En hævet kantsten, der er mere end et par centimeter høj, og som er vanskelig at bruge for kørestolsbrugere.",
+                            "title": "Hævet"
+                        },
+                        "rolled": {
+                            "description": "En hævet kantsten med en afrundet kant, som gør den lettere at bruge for biler eller cykler, men ikke for kørestole."
+                        },
+                        "yes": {
+                            "title": "Ja"
+                        }
+                    },
                     "terms": "kantsten,fortovskant"
                 },
                 "kerb/height": {
@@ -1689,6 +1893,20 @@
                 "liaison": {
                     "label": "Type"
                 },
+                "license_classes": {
+                    "label": "Kørekortkategorier",
+                    "terms": "kørekortkategorier,førerrettigheder"
+                },
+                "lifeguard": {
+                    "label": "Type",
+                    "options": {
+                        "base": "Livredderbase",
+                        "tower": "Livreddertårn"
+                    }
+                },
+                "lifeguard_check": {
+                    "label": "Livredder"
+                },
                 "lit": {
                     "label": "Gadebelysning"
                 },
@@ -1698,7 +1916,8 @@
                 "location_pool": {
                     "options": {
                         "indoor": "Indendørs",
-                        "outdoor": "Udendørs"
+                        "outdoor": "Udendørs",
+                        "roof": "Tag"
                     }
                 },
                 "lock": {
@@ -1732,7 +1951,12 @@
                     "terms": "gadefoto,gade,street,street view"
                 },
                 "marker": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "aerial": {
+                            "description": "Designet til at være synlig fra luften."
+                        }
+                    }
                 },
                 "material": {
                     "label": "Materiale",
@@ -1747,7 +1971,6 @@
                         "limestone": "Kalksten",
                         "marble": "Marmor",
                         "plastic": "Plastik",
-                        "reinforced_conrete": "Armeret beton",
                         "rock": "Sten",
                         "sandstone": "Sandsten",
                         "soil": "Jord",
@@ -1786,6 +2009,10 @@
                 "maxweight": {
                     "label": "Vægtgrænse"
                 },
+                "maxwidth": {
+                    "label": "Breddebegrænsning",
+                    "terms": "breddebegrænsning,breddegrænse"
+                },
                 "memorial": {
                     "label": "Type",
                     "options": {
@@ -1797,8 +2024,25 @@
                         "war_memorial": "Krigsmindesmærke"
                     }
                 },
+                "memorial/addr": {
+                    "label": "Adresse på nærmeste bygning"
+                },
+                "message": {
+                    "label": "Besked",
+                    "terms": "besked,meddelelse"
+                },
                 "microbrewery": {
-                    "label": "Mikrobryggeri"
+                    "label": "Mikrobryggeri",
+                    "terms": "mikrobryggeri,minibryggeri,specialbryggeri"
+                },
+                "military_service": {
+                    "options": {
+                        "air_force": "Luftvåben",
+                        "army": "Hær",
+                        "coast_guard": "Kystvagt",
+                        "marines": "Marineinfanteriet",
+                        "navy": "Flåde"
+                    }
                 },
                 "mimics": {
                     "label": "Efterligner",
@@ -1806,6 +2050,9 @@
                 },
                 "min_age": {
                     "label": "Minimumsalder"
+                },
+                "min_height": {
+                    "label": "Højde på bund (meter)"
                 },
                 "minspeed": {
                     "label": "Minimumshastighed",
@@ -1844,6 +2091,13 @@
                 },
                 "mtb/scale/imba": {
                     "label": "Sværhedsgrad for IMBA-spor",
+                    "options": {
+                        "0": "⚪ Nemmest (hvid cirkel)",
+                        "1": "🟢 Nem (grøn cirkel)",
+                        "2": "🟦 Mellem (blå firkant)",
+                        "3": "◆ Svær (sort diamant)",
+                        "4": "◆◆ Ekstremt svær (dobbelt sort diamant)"
+                    },
                     "placeholder": "Nemt, medium, svært"
                 },
                 "mtb/scale/uphill": {
@@ -1914,21 +2168,41 @@
                     "label": "Bemærkning"
                 },
                 "nudism": {
+                    "label": "Nudisme",
                     "options": {
+                        "customary": "Kutyme",
                         "designated": "Beregnet til netop dette formål",
-                        "permissive": "Generel tilladelse givet"
-                    }
+                        "no": "Forbudt",
+                        "obligatory": "Obligatorisk",
+                        "permissive": "Generel tilladelse givet",
+                        "yes": "Tilladt"
+                    },
+                    "terms": "nudisme,nøgenhed,afklædthed,nøgenbadning,naturisme"
                 },
                 "office": {
                     "label": "Type",
                     "options": {
                         "accountant": "Regnskabskontor",
+                        "adoption_agency": "Adoptionsbureau",
                         "advertising_agency": "Reklamebureau",
                         "architect": "Arkitektkontor",
+                        "association": "Kontor for nonprofitorganisation",
+                        "charity": "Velgørenhedskontor",
+                        "company": "Virksomhedskontor",
+                        "construction_company": "Kontor for byggefirma",
+                        "consulting": "Konsulentkontor",
+                        "courier": "Kurérkontor",
+                        "coworking": "Kontorfællesskab",
+                        "diplomatic": "Diplomatisk kontor",
+                        "educational_institution": "Uddannelsesinstitution",
+                        "employment_agency": "Arbejdsformidling",
                         "engineer": "Ingeniørkontor",
                         "government": "Regeringskontor",
                         "graphic_design": "Kontor for grafisk design",
+                        "moving_company": "Flyttefirmakontor",
+                        "property_management": "Kontor for ejendomsforvaltning",
                         "religion": "Religiøst kontor",
+                        "security": "Vagtkontor",
                         "surveyor": "Landinspektørs kontor",
                         "union": "Fagforeningskontor"
                     }
@@ -2101,6 +2375,21 @@
                         "skating": "Skøjteløb"
                     }
                 },
+                "piste/grooming_downhill": {
+                    "options": {
+                        "backcountry": "Offpiste - ingen præparering"
+                    }
+                },
+                "piste/grooming_hike": {
+                    "options": {
+                        "backcountry": "Offpiste - snesko"
+                    }
+                },
+                "piste/grooming_nordic": {
+                    "options": {
+                        "backcountry": "Offpiste, ingen præparering"
+                    }
+                },
                 "piste/type": {
                     "label": "Type",
                     "options": {
@@ -2120,7 +2409,7 @@
                     "label": "Type"
                 },
                 "plant": {
-                    "label": "Kraftværk"
+                    "label": "Plante"
                 },
                 "plant/method": {
                     "label": "Fremstillingsmetode"
@@ -2167,6 +2456,11 @@
                 "post": {
                     "label": "Leveringsadresse"
                 },
+                "post_box/type": {
+                    "options": {
+                        "pillar": "Fritstående kasse"
+                    }
+                },
                 "power": {
                     "label": "Type"
                 },
@@ -2211,6 +2505,9 @@
                 },
                 "ramp": {
                     "label": "Indbygget rampe"
+                },
+                "rcn_ref": {
+                    "label": "Cykelkode"
                 },
                 "recycling_accepts": {
                     "label": "Accepterer",
@@ -2320,6 +2617,9 @@
                 "restrictions": {
                     "label": "Svingbegrænsninger"
                 },
+                "roof/colour": {
+                    "label": "Tagfarve"
+                },
                 "room": {
                     "label": "Type"
                 },
@@ -2335,8 +2635,14 @@
                 "route_master": {
                     "label": "Type"
                 },
+                "royal_cypher-GB": {
+                    "label": "Kongeligt monogram"
+                },
                 "ruins": {
                     "label": "Type"
+                },
+                "rwn_ref": {
+                    "label": "Vandrekode"
                 },
                 "sac_scale": {
                     "label": "Sværhedsgrad for vandrere",
@@ -2426,9 +2732,16 @@
                     "label": "Kategori"
                 },
                 "seamark/rescue_station/category": {
+                    "label": "Redningsudstyr",
                     "options": {
                         "aircraft": "Luftfartøj",
-                        "lifeboat_on_mooring": "Redningsbåd (ved en fortøjning)"
+                        "first_aid": "Førstehjælp",
+                        "lifeboat": "Redningsbåd (på land)",
+                        "lifeboat_on_mooring": "Redningsbåd (ved en fortøjning)",
+                        "refuge_intertidal": "Tilflugtssted ved tidevand",
+                        "refuge_shipwrecked": "Tilflugtssted for skibbrudne",
+                        "seaplane": "Vandflyver",
+                        "tug": "Bjærgningsfartøj"
                     }
                 },
                 "seamark/type": {
@@ -2470,7 +2783,8 @@
                     }
                 },
                 "service/bicycle": {
-                    "label": "Cykeltjenesteydelser"
+                    "label": "Cykeltjenesteydelser",
+                    "terms": "cykeltjenesteydelser,cykelservicer"
                 },
                 "service/vehicle": {
                     "label": "Faciliteter"
@@ -2494,8 +2808,23 @@
                 "shelter_type": {
                     "label": "Type"
                 },
+                "shoes": {
+                    "label": "Sko"
+                },
                 "shop": {
                     "label": "Type"
+                },
+                "shower": {
+                    "label": "Brusere"
+                },
+                "side": {
+                    "options": {
+                        "left": "Venstre for cyklist",
+                        "right": "Højre for cyklist"
+                    }
+                },
+                "siren/purpose": {
+                    "label": "Formål"
                 },
                 "siren/type": {
                     "label": "Type",
@@ -2537,12 +2866,34 @@
                     "label": "SMS"
                 },
                 "social_facility": {
-                    "label": "Type"
+                    "label": "Type",
+                    "options": {
+                        "ambulatory_care": "Ambulant pleje",
+                        "day_care": "Dagpleje",
+                        "food_bank": "Fødevarebank",
+                        "nursing_home": "Plejehjem",
+                        "shelter": "Herberg"
+                    }
                 },
                 "social_facility_for": {
                     "label": "Serviceret gruppe",
                     "options": {
-                        "mental_health": "Mennesker med mentale helbredsproblemer"
+                        "abused": "Ofre for misbrug",
+                        "child": "Børn",
+                        "dementia": "Personer, der lider af demens",
+                        "disabled": "Personer med funktionsnedsættelser",
+                        "diseased": "Personer, der lider af en sygdom",
+                        "displaced": "Personer fordrevet af katastrofer eller konflikter",
+                        "drug_addicted": "Stofmisbruger",
+                        "homeless": "Hjemløse",
+                        "juvenile": "Unge",
+                        "mental_health": "Mennesker med mentale helbredsproblemer",
+                        "migrant": "Migranter",
+                        "orphan": "Forældreløse",
+                        "refugee": "Flygtninge",
+                        "senior": "Ældre",
+                        "terminally_ill": "Personer med en uhelbredelig sygdom",
+                        "unemployed": "Personer uden arbejde"
                     }
                 },
                 "source": {
@@ -2564,12 +2915,35 @@
                 "sport": {
                     "label": "Sportsgren",
                     "options": {
+                        "10pin": "Ti-kegle-bowling",
+                        "9pin": "Ni-kegle-bowling",
+                        "american_football": "Amerikansk fodbold",
+                        "athletics": "Atletik",
+                        "billiards": "Billard",
                         "canoe": "Kanosejlads",
+                        "chess": "Skak",
+                        "climbing": "Klatring",
+                        "cycling": "Cykling",
+                        "dog_racing": "Hundevæddeløb",
+                        "equestrian": "Hestesport",
+                        "fitness": "Fitness-træning",
+                        "gymnastics": "Gymnastik",
+                        "handball": "Håndbold",
+                        "horse_racing": "Hestevæddeløb",
+                        "ice_hockey": "Ishockey",
+                        "ice_skating": "Skøjteløb",
                         "karting": "Gokart",
                         "motor": "Motorsport",
+                        "multi": "Uspecificeret anden sport",
+                        "orienteering": "Orienteringsløb",
                         "running": "Løb",
+                        "scuba_diving": "Dykning",
+                        "shooting": "Skydning",
+                        "skiing": "Skiløb",
                         "soccer": "Fodbold",
-                        "speedway": "Motorcykel Speedway"
+                        "speedway": "Motorcykel Speedway",
+                        "swimming": "Svømning",
+                        "table_tennis": "Bordtennis"
                     }
                 },
                 "stars": {
@@ -2636,7 +3010,13 @@
                 "substance": {
                     "label": "Væske",
                     "options": {
-                        "gas": "Naturgas"
+                        "fuel": "Brændstof",
+                        "gas": "Naturgas",
+                        "hot_water": "Varmt vand",
+                        "oil": "Råolie",
+                        "rainwater": "Regnvand",
+                        "sewage": "Spildevand",
+                        "water": "Drikkevand"
                     }
                 },
                 "substation": {
@@ -2655,17 +3035,18 @@
                         "asphalt": "Asfalt",
                         "compacted": "Pakket",
                         "concrete": "Beton",
-                        "dirt": "Ubehandlet",
+                        "dirt": "Jord",
+                        "fine_gravel": "Fint grus",
                         "grass": "Græs",
                         "gravel": "Grus",
-                        "ground": "Jord, ubehandlet overflade",
+                        "ground": "Ubehandlet overflade",
                         "mud": "Vedvarende mudret",
-                        "paved": "Med belægning",
+                        "paved": "Med fast belægning",
                         "paving_stones": "Belægningssten",
                         "sand": "Sand",
                         "sett": "Brosten",
                         "unhewn_cobblestone": "Pigsten (uforarbejdede natursten)",
-                        "unpaved": "Uden belægning",
+                        "unpaved": "Uden fast belægning",
                         "wood": "Træ",
                         "woodchips": "Træflis"
                     }
@@ -2691,6 +3072,11 @@
                     "label": "Formål",
                     "options": {
                         "both": "Begge"
+                    }
+                },
+                "survey_point/structure": {
+                    "options": {
+                        "cairn": "Varde"
                     }
                 },
                 "swimming_pool": {
@@ -2720,6 +3106,20 @@
                 "target": {
                     "label": "Mål"
                 },
+                "taxi_vehicle": {
+                    "label": "Køretøjstype",
+                    "options": {
+                        "motorcar": {
+                            "description": "Almindelig bil (underforstået standard)"
+                        },
+                        "motorcycle": {
+                            "title": "Motorcykel"
+                        }
+                    }
+                },
+                "tee": {
+                    "label": "Tee farve/type"
+                },
                 "telecom": {
                     "label": "Type"
                 },
@@ -2733,7 +3133,8 @@
                     "label": "Til"
                 },
                 "toilets": {
-                    "label": "Toiletter"
+                    "label": "Toiletter",
+                    "terms": "toiletter,wc,badeværelser,lokummer"
                 },
                 "toilets/disposal": {
                     "label": "Funktionsmåde",
@@ -2748,10 +3149,12 @@
                     "label": "Håndvask"
                 },
                 "toilets/wheelchair": {
+                    "label": "Handicaptoilet",
                     "options": {
                         "no": "Nej",
                         "yes": "Ja"
-                    }
+                    },
+                    "terms": "handicaptoilet,kørestolsvenligt toilet"
                 },
                 "toll": {
                     "label": "Afgift"
@@ -2789,9 +3192,22 @@
                 "traffic_calming": {
                     "label": "Type",
                     "options": {
+                        "bump": "Vejbump",
+                        "chicane": "Trafikchikane",
+                        "choked_table": "Indsnævret trapezbump",
+                        "choker": "Vejindsnævring",
+                        "cushion": "Pudebump",
                         "dip": "Fordybning",
-                        "double_dip": "Dobbelt fordybning"
+                        "double_dip": "Dobbelt fordybning",
+                        "hump": "Cirkelbump",
+                        "island": "Helleanlæg",
+                        "mini_bumps": "Pukkelbump",
+                        "rumble_strip": "Rumlestribe",
+                        "table": "Trapezbump"
                     }
+                },
+                "traffic_calming_road": {
+                    "label": "Trafikdæmpning"
                 },
                 "traffic_sign": {
                     "label": "Trafikskilt"
@@ -2809,6 +3225,9 @@
                 },
                 "traffic_signals/arrow": {
                     "label": "Taktil pil"
+                },
+                "traffic_signals/countdown": {
+                    "label": "Nedtællingsur"
                 },
                 "traffic_signals/direction": {
                     "label": "Retning påvirket",
@@ -2830,10 +3249,14 @@
                         },
                         "no": "Nej",
                         "walk": {
+                            "description": "Der er kun et signal, når det er tilladt at gå",
                             "title": "Gå-signal"
                         },
                         "yes": "Ja"
                     }
+                },
+                "traffic_signals/vibration": {
+                    "label": "Vibration"
                 },
                 "trail_visibility": {
                     "label": "Synlighed af spor",
@@ -2886,8 +3309,12 @@
                 },
                 "utility": {
                     "options": {
+                        "gas": "Gas",
                         "oil": "Olie",
-                        "sewerage": "Spildevand"
+                        "power": "Strøm",
+                        "sewerage": "Spildevand",
+                        "street_lighting": "Gadebelysning",
+                        "water": "Vand"
                     }
                 },
                 "valve": {
@@ -2907,7 +3334,29 @@
                     }
                 },
                 "vending": {
-                    "label": "Varetyper"
+                    "label": "Varetyper",
+                    "options": {
+                        "bicycle_tube": "Cykelslanger",
+                        "bread": "Brød",
+                        "cigarettes": "Cigaretter",
+                        "coffee": "Kaffe",
+                        "condoms": "Kondomer",
+                        "drinks": "Drikkevarer",
+                        "eggs": "Æg",
+                        "electronics": "Elektronik",
+                        "feminine_hygiene": "Hygiejneprodukter til kvinder",
+                        "food": "Mad",
+                        "fuel": "Brændstof",
+                        "ice_cream": "Is",
+                        "ice_cubes": "Isterninger",
+                        "milk": "Mælk",
+                        "newspapers": "Aviser",
+                        "parking_tickets": "Parkeringsbilletter",
+                        "public_transport_tickets": "Billetter til offentlig transport",
+                        "stamps": "Frimærker",
+                        "sweets": "Slik og søde sager",
+                        "water": "Drikkevand"
+                    }
                 },
                 "video_calls": {
                     "label": "Videoopkald"
@@ -2949,7 +3398,10 @@
                 "waste": {
                     "label": "Affald",
                     "options": {
-                        "organic": "Organisk affald"
+                        "cigarettes": "Cigaretter",
+                        "dog_excrement": "Hundeekskrementer",
+                        "organic": "Organisk affald",
+                        "trash": "Skrald"
                     }
                 },
                 "water": {
@@ -2961,7 +3413,11 @@
                 "water_source": {
                     "label": "Vandkilde",
                     "options": {
-                        "stream": "Vandløb"
+                        "main": "Vandfordelingsrør",
+                        "pond": "Dam",
+                        "river": "Flod",
+                        "stream": "Vandløb",
+                        "water_tank": "Vandtank"
                     }
                 },
                 "water_tank/volume": {
@@ -3020,6 +3476,7 @@
                 "windings/auto": {
                     "options": {
                         "no": "Nej",
+                        "undefined": "Antages at være Nej",
                         "yes": "Ja"
                     }
                 },
@@ -3119,6 +3576,9 @@
                     "name": "Helikopterlandingsplads",
                     "terms": "helipad,helikopterlandingsplads"
                 },
+                "aeroway/holding_position": {
+                    "name": "Holdeposition for fly"
+                },
                 "aeroway/jet_bridge": {
                     "name": "Flypassagerbro",
                     "terms": "flypassagerbro,passagerbro,jetway,ankomstbro,landgangsbro"
@@ -3174,6 +3634,10 @@
                     "name": "Pengeautomat",
                     "terms": "hæveautomat,kontantautomat"
                 },
+                "amenity/baking_oven": {
+                    "name": "Bageovn",
+                    "terms": "bageovn,ovn"
+                },
                 "amenity/bank": {
                     "name": "Bank",
                     "terms": "bank,pengeinstitut,sparekasse,andelskasse"
@@ -3184,7 +3648,7 @@
                 },
                 "amenity/bbq": {
                     "name": "Barbecue/Grill",
-                    "terms": "barbecue/grill"
+                    "terms": "barbecue/grill,grill,bål,ildsted,ovn"
                 },
                 "amenity/bench": {
                     "name": "Bænk",
@@ -3199,8 +3663,8 @@
                     "terms": "cykelgarage,cykelparkering,cykelskur,cykelrum"
                 },
                 "amenity/bicycle_parking/lockers": {
-                    "name": "Aflåst cykelparkering",
-                    "terms": "lås,sikker,cykel,parkering"
+                    "name": "Cykelskabe",
+                    "terms": "cykelskabe,aflåst cykelparkering,sikker,cykel,cykelparkering"
                 },
                 "amenity/bicycle_parking/shed": {
                     "name": "Cykelskur",
@@ -3213,6 +3677,9 @@
                 "amenity/bicycle_repair_station": {
                     "name": "Cykelreparationsværktøj",
                     "terms": "cykelreparationsværktøj"
+                },
+                "amenity/bicycle_wash": {
+                    "name": "Cykelvask"
                 },
                 "amenity/binoculars": {
                     "name": "Fastmonteret kikkert",
@@ -3243,7 +3710,7 @@
                 },
                 "amenity/car_pooling": {
                     "name": "Samkørselsstation",
-                    "terms": "delebil,samkørsel,mødested,gomore,ride share"
+                    "terms": "delebil,samkørsel,mødested,gomore,ride share,blafferstoppested"
                 },
                 "amenity/car_rental": {
                     "name": "Biludlejning",
@@ -3263,7 +3730,7 @@
                 },
                 "amenity/charging_station": {
                     "name": "Ladestation",
-                    "terms": "ladestation,opladerstation,elbilopladerstation"
+                    "terms": "ladestation,opladerstation,elbilopladerstation,opladning"
                 },
                 "amenity/childcare": {
                     "name": "Dagpleje/Vuggestue",
@@ -3280,6 +3747,9 @@
                 "amenity/clinic/abortion": {
                     "name": "Abortklinik",
                     "terms": "abort,fosteruddrivelse,provokeret abort,foster"
+                },
+                "amenity/clinic/dialysis": {
+                    "name": "Dialysecenter"
                 },
                 "amenity/clinic/fertility": {
                     "name": "Fertilitetsklinik",
@@ -3337,18 +3807,80 @@
                     "name": "Læge",
                     "terms": "læge,doktor"
                 },
+                "amenity/doctors/allergology": {
+                    "name": "Allergolog"
+                },
+                "amenity/doctors/cardiology": {
+                    "name": "Hjertelæge",
+                    "terms": "hjertelæge,kardiolog"
+                },
                 "amenity/doctors/child_psychiatry": {
                     "name": "Børne- og Ungepsykiater"
                 },
+                "amenity/doctors/dermatology": {
+                    "name": "Hudlæge",
+                    "terms": "hudlæge,dermatolog"
+                },
+                "amenity/doctors/gastroenterology": {
+                    "name": "Gastroenterologist"
+                },
+                "amenity/doctors/general": {
+                    "name": "Praktiserende læge"
+                },
+                "amenity/doctors/gynaecology": {
+                    "name": "Obstetriker/Gynækolog"
+                },
+                "amenity/doctors/haematology": {
+                    "name": "Hæmatolog"
+                },
+                "amenity/doctors/neurology": {
+                    "name": "Neurolog"
+                },
+                "amenity/doctors/neurosurgery": {
+                    "name": "Neurokirurg"
+                },
+                "amenity/doctors/oncology": {
+                    "name": "Onkolog"
+                },
+                "amenity/doctors/ophthalmology": {
+                    "name": "Øjenlæge"
+                },
+                "amenity/doctors/orthopaedics": {
+                    "name": "Ortopædkirurg"
+                },
+                "amenity/doctors/paediatrics": {
+                    "name": "Børnelæge"
+                },
                 "amenity/doctors/plastic_surgery": {
                     "name": "Plastikkirurg"
+                },
+                "amenity/doctors/podiatry": {
+                    "name": "Fodlæge",
+                    "terms": "fodlæge,fodterapeut"
+                },
+                "amenity/doctors/psychiatrist": {
+                    "name": "Psykiater"
+                },
+                "amenity/doctors/pulmonology": {
+                    "name": "Lungelæge",
+                    "terms": "lungelæge,lungemediciner"
                 },
                 "amenity/doctors/radiology": {
                     "name": "Radiolog",
                     "terms": "radiolog,røntgenlæge"
                 },
+                "amenity/doctors/rheumatology": {
+                    "name": "Reumatolog",
+                    "terms": "reumatolog,gigtlæge"
+                },
                 "amenity/doctors/trauma": {
                     "name": "Traumekirurg"
+                },
+                "amenity/doctors/urology": {
+                    "name": "Urolog"
+                },
+                "amenity/dog_toilet": {
+                    "name": "Hundetoilet"
                 },
                 "amenity/dojo": {
                     "name": "Dojo/Kampsportsakademi",
@@ -3430,8 +3962,12 @@
                     "name": "Tankstation",
                     "terms": "tankstation,benzinstation"
                 },
+                "amenity/gambling": {
+                    "name": "Spillehal"
+                },
                 "amenity/give_box": {
-                    "terms": "givebox,bytteboxen,byttebixen,reuse"
+                    "name": "Bytteboks",
+                    "terms": "bytteboks,givebox,bytteboxen,byttebixen,reuse,byt,gratis,genbrug,donationsboks"
                 },
                 "amenity/grave_yard": {
                     "name": "Kirkegård",
@@ -3440,6 +3976,10 @@
                 "amenity/grit_bin": {
                     "name": "Vejsaltkasse",
                     "terms": "vejsaltkasse,saltkasse"
+                },
+                "amenity/hookah_lounge": {
+                    "name": "Vandpibesalon",
+                    "terms": "vandpibesalon,vandpibebar"
                 },
                 "amenity/hospital": {
                     "name": "Hospitalsområde",
@@ -3457,9 +3997,16 @@
                     "name": "Internetcafe",
                     "terms": "internetcafe"
                 },
+                "amenity/karaoke_box": {
+                    "name": "Karaokebar",
+                    "terms": "karaokebar,karaoke box"
+                },
                 "amenity/kindergarten": {
                     "name": "Børnehave/vuggestue-grund",
                     "terms": "børnehave,vuggestue,pasning,børnepasning,børn,institution"
+                },
+                "amenity/kneipp_water_cure": {
+                    "name": "Kneipp-facilitet"
                 },
                 "amenity/language_school": {
                     "name": "Sprogskole",
@@ -3469,8 +4016,19 @@
                     "name": "Vaskehus",
                     "terms": "vaskehus,lavoir"
                 },
+                "amenity/letter_box": {
+                    "name": "Privat postkasse",
+                    "terms": "privat postkasse,postkasse,brevindkast,brevsprække"
+                },
                 "amenity/library": {
                     "name": "Bibliotek"
+                },
+                "amenity/library_dropoff": {
+                    "name": "Afleveringsboks til bøger",
+                    "terms": "afleveringsboks til bøger,bogboks,bogaflevering"
+                },
+                "amenity/loading_dock": {
+                    "name": "Læsserampe"
                 },
                 "amenity/lounger": {
                     "name": "Liggestol",
@@ -3480,6 +4038,10 @@
                     "name": "Kærlighedshotel",
                     "terms": "kærlighed,romantik,samvær"
                 },
+                "amenity/luggage_locker": {
+                    "name": "Bagageboks",
+                    "terms": "bagageboks,bagageskab,bagageopbevaring"
+                },
                 "amenity/marketplace": {
                     "name": "Markedsplads",
                     "terms": "markedsplads"
@@ -3487,6 +4049,9 @@
                 "amenity/monastery": {
                     "name": "Kloster-område",
                     "terms": "kloster,nonne,katedral,kapel,kirke,gud,bøn"
+                },
+                "amenity/money_transfer": {
+                    "name": "Pengeoverførselsstation"
                 },
                 "amenity/mortuary": {
                     "name": "Lighus",
@@ -3506,6 +4071,9 @@
                 "amenity/nightclub": {
                     "name": "Natklub",
                     "terms": "natklub,natclub"
+                },
+                "amenity/nightclub/lgbtq": {
+                    "name": "LGBTQ+ natklub"
                 },
                 "amenity/nursing_home": {
                     "name": "Plejehjem"
@@ -3575,6 +4143,12 @@
                     "name": "Hindu-tempel",
                     "terms": "tempel,hindu"
                 },
+                "amenity/place_of_worship/jewish": {
+                    "name": "Jødisk synagoge"
+                },
+                "amenity/place_of_worship/muslim": {
+                    "name": "Muslimsk moské"
+                },
                 "amenity/place_of_worship/shinto": {
                     "name": "Shinto-tempel",
                     "terms": "tempel,shinto,shin,kami"
@@ -3596,7 +4170,8 @@
                     "terms": "politistation,politi"
                 },
                 "amenity/post_box": {
-                    "name": "Postkasse"
+                    "name": "Postkasse",
+                    "terms": "postkasse,postboks,brevkasse,brevsprække"
                 },
                 "amenity/post_depot": {
                     "name": "Postsorteringsfacilitet",
@@ -3645,6 +4220,10 @@
                 "amenity/recycling_centre": {
                     "name": "Genbrugsplads",
                     "terms": "genbrugsplads"
+                },
+                "amenity/recycling_container": {
+                    "name": "Genbrugscontainer",
+                    "terms": "genbrugscontainer,genbrugsbeholder,affaldsbeholder,affaldscontainer,container,affaldsø,molok"
                 },
                 "amenity/refugee_site": {
                     "name": "Flygtningelejr"
@@ -3696,6 +4275,9 @@
                 "amenity/restaurant/seafood": {
                     "name": "Fiskerestaurant"
                 },
+                "amenity/restaurant/spanish": {
+                    "name": "Spansk restaurant"
+                },
                 "amenity/restaurant/steakhouse": {
                     "name": "Steakhouse",
                     "terms": "bøfhus"
@@ -3709,6 +4291,9 @@
                 "amenity/restaurant/turkish": {
                     "name": "Tyrkisk restaurant"
                 },
+                "amenity/restaurant/ukrainian": {
+                    "name": "Ukrainsk restaurant"
+                },
                 "amenity/restaurant/vietnamese": {
                     "name": "Vietnamesisk restaurant"
                 },
@@ -3717,28 +4302,28 @@
                     "terms": "tørcloset,toilet,kloak,affald,lort,kemisk toilet,closet,campingvogn,autocamper,campingtoilet,camping"
                 },
                 "amenity/school": {
-                    "name": "Skolegrund",
+                    "name": "Skoleområde",
                     "terms": "skoleområde,skolegrund,gymnasie,gymnasium"
                 },
                 "amenity/shelter": {
-                    "name": "Læsted",
-                    "terms": "shelter,bivuak,hytte,læ,ly,læskur,skur,halvtag"
+                    "name": "Læskur",
+                    "terms": "shelter,bivuak,hytte,læ,ly,læskur,skur,halvtag,lejr"
                 },
                 "amenity/shelter/gazebo": {
                     "name": "Lysthus",
-                    "terms": "skovtur,læskur,skur"
+                    "terms": "lysthus,læskur,skur,madpakkehus"
                 },
                 "amenity/shelter/lean_to": {
-                    "name": "Åbent overnatningsshelter",
-                    "terms": "åbent overnatningsshelter,shelter,bivuak,overnatning,lejrplads,shelterplads"
+                    "name": "Shelter",
+                    "terms": "shelter,åbent overnatningsshelter,overnatning,lejrplads,shelterplads,bivuak,læskur,hytte,vindskjul"
                 },
                 "amenity/shelter/picnic_shelter": {
                     "name": "Madpakkehus",
-                    "terms": "picnic,hytte,læ,ly,udflugt,skovtur,mad,madpakke,frokost,bord,bænk"
+                    "terms": "picnic,hytte,læ,ly,udflugt,skovtur,mad,madpakke,frokost,bord,bænk,bålhytte,bålhus"
                 },
                 "amenity/shelter/public_transport": {
                     "name": "Venteskur",
-                    "terms": "bus,tog,transport,offentlig,vente,læskur,læ,ly,halvtag"
+                    "terms": "venteskur,bus,tog,transport,offentlig,vente,læskur,læ,ly,halvtag"
                 },
                 "amenity/shower": {
                     "name": "Brusebad",
@@ -3747,6 +4332,9 @@
                 "amenity/smoking_area": {
                     "name": "Rygeområde",
                     "terms": "rygning,tobak,røg"
+                },
+                "amenity/social_centre": {
+                    "name": "Socialcenter"
                 },
                 "amenity/social_facility": {
                     "name": "Sociale faciliteter",
@@ -3776,6 +4364,9 @@
                     "name": "Plejehjem",
                     "terms": "plejehjem,alderdomshjem"
                 },
+                "amenity/stripclub": {
+                    "name": "Stripklub"
+                },
                 "amenity/studio": {
                     "name": "Studie",
                     "terms": "studie"
@@ -3794,6 +4385,9 @@
                 },
                 "amenity/taxi": {
                     "name": "Taxiholdeplads"
+                },
+                "amenity/taxi/cycle_rickshaw": {
+                    "name": "Cykel-rickshaw-stativ"
                 },
                 "amenity/telephone": {
                     "name": "Telefon",
@@ -3819,6 +4413,10 @@
                     "name": "Latrin",
                     "terms": "latrin,tørkloset,kloset,multtoilet,das"
                 },
+                "amenity/toilets/portable": {
+                    "name": "Mobiltoilet",
+                    "terms": "mobiltoilet,festivaltoilet,toiletvogn,wc"
+                },
                 "amenity/townhall": {
                     "name": "Rådhus",
                     "terms": "rådhus,kommunerådhus"
@@ -3837,6 +4435,10 @@
                 "amenity/university": {
                     "name": "Universitetsområde",
                     "terms": "universitetsområde"
+                },
+                "amenity/vacuum_cleaner": {
+                    "name": "Støvsugerstation",
+                    "terms": "støvsugerstation,rengøringsstation,støvsugning"
                 },
                 "amenity/vehicle_inspection": {
                     "name": "Bilinspektion",
@@ -3888,6 +4490,9 @@
                     "name": "Madautomat",
                     "terms": "mad,fødevare,automat"
                 },
+                "amenity/vending_machine/food/snacks": {
+                    "name": "Snack-automat"
+                },
                 "amenity/vending_machine/ice_cream": {
                     "name": "Isautomat",
                     "terms": "is,ispind"
@@ -3911,6 +4516,9 @@
                 "amenity/vending_machine/stamps": {
                     "name": "Frimærkeautomat"
                 },
+                "amenity/vending_machine/sweets": {
+                    "name": "Slikautomat"
+                },
                 "amenity/veterinary": {
                     "name": "Dyrlæge",
                     "terms": "dyrlæge,veterinærdyrlæge"
@@ -3919,21 +4527,25 @@
                     "name": "Affaldsspand til hundeekskrementer",
                     "terms": "lort,hund,ekskrement"
                 },
-                "amenity/waste_disposal": {
+                "amenity/waste_basket": {
                     "name": "Skraldespand",
-                    "terms": "skraldespand"
+                    "terms": "skraldespand,affaldsspand,affaldsbeholder,skraldebøtte,pedalspand,affaldskurv,papirkurv"
+                },
+                "amenity/waste_disposal": {
+                    "name": "Affaldscontainer",
+                    "terms": "affaldscontainer,skraldecontainer,affaldsø"
                 },
                 "amenity/waste_transfer_station": {
-                    "name": "Affaldsstation",
-                    "terms": "affaldsstation,omlasteplads"
+                    "name": "Affaldscentral",
+                    "terms": "affaldscentral,affaldsstation,omlasteplads,losseplads,skrald"
                 },
                 "amenity/water_point": {
                     "name": "Tankning af drikkevand",
                     "terms": "vand,drik,drikke,drikkevand,campingvogn,autocamper,campist"
                 },
                 "amenity/watering_place": {
-                    "name": "Dyrevandtrug",
-                    "terms": "dyrevandtrug,vandtrug,drikke,dyr,drik,vanding"
+                    "name": "Dyrevanding",
+                    "terms": "dyrevanding,vandtrug,vandingssted,drikkekop"
                 },
                 "amenity/weighbridge": {
                     "name": "Brovægt",
@@ -3949,6 +4561,9 @@
                 },
                 "area/highway": {
                     "name": "Vejområde"
+                },
+                "attraction": {
+                    "name": "Attraktion"
                 },
                 "attraction/amusement_ride": {
                     "name": "Forlystelse",
@@ -4070,6 +4685,9 @@
                     "name": "Hæk",
                     "terms": "hæk,hegn"
                 },
+                "barrier/height_restrictor": {
+                    "name": "Højdebegrænser"
+                },
                 "barrier/jersey_barrier": {
                     "name": "Betongris",
                     "terms": "betongris,betonklods,påkørselsværn,truckværn,påkørselsbeskyttelse"
@@ -4102,6 +4720,12 @@
                     "name": "Bombarriere",
                     "terms": "bombarriere,bom,barriere,afspærring,blokering"
                 },
+                "barrier/motorcycle_barrier": {
+                    "name": "Motorcykel-barriere"
+                },
+                "barrier/planter": {
+                    "name": "Plantekasse (Barriere)"
+                },
                 "barrier/retaining_wall": {
                     "name": "Støttemur",
                     "terms": "støttemur"
@@ -4129,6 +4753,10 @@
                 "barrier/wall": {
                     "name": "Mur"
                 },
+                "barrier/wall/noise_barrier": {
+                    "name": "Støjafskærmning",
+                    "terms": "støjafskærmning,støjbarriere,støjskærm,støjvold,støjdæmpning,lyddæmpning"
+                },
                 "barrier/wicket_gate": {
                     "name": "Portlåge",
                     "terms": "portlåge,portled,låge,port"
@@ -4142,6 +4770,12 @@
                 "boundary/administrative": {
                     "name": "Administrativ grænse",
                     "terms": "administrativ grænse"
+                },
+                "boundary/hazard": {
+                    "name": "Farligt område"
+                },
+                "bridge/support": {
+                    "name": "Brostøtte"
                 },
                 "bridge/support/pier": {
                     "name": "Bropille"
@@ -4208,7 +4842,7 @@
                 },
                 "building/detached": {
                     "name": "Parcelhus",
-                    "terms": "parcelhus,familieparcelhus"
+                    "terms": "parcelhus,familieparcelhus,villa,hus,enfamilieshus"
                 },
                 "building/dormitory": {
                     "name": "Kollegie",
@@ -4224,6 +4858,9 @@
                 "building/farm_auxiliary": {
                     "name": "Landbrugsbygning",
                     "terms": "landbrug,stald,kylling,grisesti,landmand"
+                },
+                "building/fire_station": {
+                    "name": "Brandstationsbygning"
                 },
                 "building/garage": {
                     "name": "Garage",
@@ -4255,6 +4892,9 @@
                 "building/house": {
                     "name": "Hus",
                     "terms": "hus,parcelhus"
+                },
+                "building/house/terraced": {
+                    "name": "Byhus"
                 },
                 "building/houseboat": {
                     "name": "Husbåd"
@@ -4304,8 +4944,8 @@
                     "terms": "skolebygning,gymnasiebygning"
                 },
                 "building/semidetached_house": {
-                    "name": "Rækkehus",
-                    "terms": "rækkehus"
+                    "name": "Dobbelthus",
+                    "terms": "dobbelthus,tofamiliershus,hus"
                 },
                 "building/service": {
                     "name": "Maskinhus",
@@ -4334,6 +4974,10 @@
                 "building/temple": {
                     "name": "Tempelbygning",
                     "terms": "tempel,bygning"
+                },
+                "building/terrace": {
+                    "name": "Rækkehuse",
+                    "terms": "rækkehuse,kædehus,kædevilla,rækkehusbebyggelse,byhuse"
                 },
                 "building/train_station": {
                     "name": "Togstationsbygning"
@@ -4585,6 +5229,9 @@
                 "disc_golf/basket": {
                     "name": "Diskgolf-kurv"
                 },
+                "disc_golf/hole": {
+                    "name": "Disc golf-hul"
+                },
                 "disused/amenity": {
                     "name": "Nedlagt facilitet"
                 },
@@ -4617,6 +5264,10 @@
                 },
                 "emergency/destination": {
                     "name": "Udrykningskørsel destination"
+                },
+                "emergency/fire_alarm": {
+                    "name": "Tilkaldeboks til brandalarm",
+                    "terms": "tilkaldeboks til brandalarm,brandalarm"
                 },
                 "emergency/fire_extinguisher": {
                     "name": "Brandslukker",
@@ -4719,6 +5370,9 @@
                     "name": "Tee Box",
                     "terms": "tee box"
                 },
+                "golf/water_hazard": {
+                    "name": "Vandforhindring"
+                },
                 "healthcare": {
                     "name": "Sundhedsfacilitet",
                     "terms": "sundhed,klinik,sygdom,kirurgi"
@@ -4803,6 +5457,10 @@
                 "highway/bus_stop": {
                     "name": "Busstoppested"
                 },
+                "highway/busway": {
+                    "name": "Busgade",
+                    "terms": "busgade,busbane"
+                },
                 "highway/construction": {
                     "name": "Vej under etablering",
                     "terms": "vej under etablering,vejarbejde,vej under opførsel"
@@ -4818,7 +5476,8 @@
                     "name": "Fodgængerovergang med lyssignal"
                 },
                 "highway/crossing/uncontrolled": {
-                    "name": "Markeret overgang"
+                    "name": "Markeret overgang",
+                    "terms": "markeret overgang,markeret fodgængerovergang"
                 },
                 "highway/crossing/unmarked": {
                     "name": "Umarkeret fodgængerovergang",
@@ -4833,18 +5492,27 @@
                     "terms": "gang,fodgænger,sti,gå,fortov,cykel,cyklist"
                 },
                 "highway/cycleway/crossing": {
-                    "name": "Cykelfelt"
+                    "name": "Cykelkryds"
                 },
                 "highway/cycleway/crossing/bicycle_foot": {
                     "name": "Cykel & fodgængerfelt",
                     "terms": "cykel,fodgænger,felt,cykel og fodgænger,cyklist,cyklist og fodgænger,cykling"
                 },
+                "highway/cycleway/crossing/traffic_signals": {
+                    "name": "Cykelkryds med trafiksignaler",
+                    "terms": "cykelkryds med trafiksignaler,cykelovergang med trafiksignaler,cykelfelt med trafiksignaler"
+                },
                 "highway/cycleway/crossing/uncontrolled": {
-                    "name": "Markeret cykelovergang"
+                    "name": "Markeret cykelkryds",
+                    "terms": "markeret cykelkryds,markeret cykelovergang,markeret cykelfelt"
                 },
                 "highway/cycleway/crossing/unmarked": {
-                    "name": "Umarkeret cykelfelt",
-                    "terms": "felt,overgang,cykel,cyklist,passage,umarkeret"
+                    "name": "Umarkeret cykelkryds",
+                    "terms": "umarkeret cykelkryds,felt,overgang,cykel,cyklist,passage,umarkeret cykelovergang"
+                },
+                "highway/cyclist_waiting_aid": {
+                    "name": "Fodhviler til cyklister",
+                    "terms": "fodhviler til cyklister,fodstøtte til cyklister,gelænder til cyklister"
                 },
                 "highway/elevator": {
                     "name": "Elevator",
@@ -4890,6 +5558,9 @@
                 "highway/footway/crossing/unmarked": {
                     "name": "Umarkeret overgang"
                 },
+                "highway/footway/informal": {
+                    "name": "Trampesti"
+                },
                 "highway/footway/sidewalk": {
                     "name": "Fortov",
                     "terms": "fodgænger,flise"
@@ -4897,6 +5568,9 @@
                 "highway/give_way": {
                     "name": "Vigepligtsmarkering",
                     "terms": "vigepligtsmarkering,vigepligtstavle,hajtænder,advarselsskilt,stopskilt"
+                },
+                "highway/ladder": {
+                    "name": "Stige"
                 },
                 "highway/living_street": {
                     "name": "Stillevej",
@@ -4933,8 +5607,13 @@
                     "name": "Plankebro",
                     "terms": "plankebro,boardwalk,gangbro"
                 },
+                "highway/path/informal": {
+                    "name": "Trampesti",
+                    "terms": "trampesti,sti,spor,gangsti,vandresti,marksti,fåresti"
+                },
                 "highway/pedestrian_area": {
-                    "name": "Gågade areal"
+                    "name": "Gågade areal",
+                    "terms": "gågade areal,gågade,bilfri"
                 },
                 "highway/pedestrian_line": {
                     "name": "Gågade"
@@ -4949,6 +5628,9 @@
                 },
                 "highway/raceway": {
                     "name": "Motorsport racerbane"
+                },
+                "highway/raceway/karting": {
+                    "name": "Gokart-bane"
                 },
                 "highway/residential": {
                     "name": "Villavej",
@@ -4995,7 +5677,7 @@
                     "terms": "parkeringsvej"
                 },
                 "highway/service_area": {
-                    "name": "Serviceområde med belægning"
+                    "name": "Serviceområde med fast belægning"
                 },
                 "highway/services": {
                     "name": "Serviceområde",
@@ -5078,6 +5760,9 @@
                 "historic/building": {
                     "name": "Historisk bygning",
                     "terms": "historie,bygning"
+                },
+                "historic/cannon": {
+                    "name": "Kanon"
                 },
                 "historic/castle": {
                     "name": "Slot",
@@ -5389,7 +6074,7 @@
                 },
                 "leisure/firepit": {
                     "name": "Bålsted",
-                    "terms": "lejrbål,bål,ild"
+                    "terms": "lejrbål,bål,ild,ildsted"
                 },
                 "leisure/fishing": {
                     "name": "Fiskeplads"
@@ -5404,11 +6089,28 @@
                 },
                 "leisure/fitness_station": {
                     "name": "Udendørs fitnessplads",
-                    "terms": "udendørs fitnessplads,naturfitnessplads"
+                    "terms": "udendørs fitnessplads,naturfitnessplads,træningsplads,styrketræning"
+                },
+                "leisure/fitness_station/balance_beam": {
+                    "name": "Balancebom til træning"
+                },
+                "leisure/fitness_station/box": {
+                    "name": "Træningsboks"
+                },
+                "leisure/fitness_station/horizontal_bar": {
+                    "name": "Horisontal træningsstang"
+                },
+                "leisure/fitness_station/rings": {
+                    "name": "Træningsringe",
+                    "terms": "træningsringe,ringe til træning"
                 },
                 "leisure/fitness_station/sign": {
                     "name": "Skilt med træningsinstruktioner",
                     "terms": "motion,fitness,redskab,instruktion,skilt"
+                },
+                "leisure/fitness_station/stairs": {
+                    "name": "Motionstrapper",
+                    "terms": "motionstrapper,træningstrapper"
                 },
                 "leisure/garden": {
                     "name": "Have",
@@ -5436,6 +6138,10 @@
                 "leisure/horse_riding": {
                     "name": "Ridecenter"
                 },
+                "leisure/hot_tub": {
+                    "name": "Spabad",
+                    "terms": "spabad,hot tub,vildmarksbad,udespa,spa"
+                },
                 "leisure/ice_rink": {
                     "name": "Skøjtebane",
                     "terms": "skøjtebane"
@@ -5447,6 +6153,10 @@
                 "leisure/marina": {
                     "name": "Lystbådehavn",
                     "terms": "lystbådehavn,marina"
+                },
+                "leisure/marina_no_facilities": {
+                    "name": "Lystbådepladser",
+                    "terms": "lystbådepladser,yachtpladser,kajpladser"
                 },
                 "leisure/miniature_golf": {
                     "name": "Minigolf",
@@ -5469,11 +6179,12 @@
                     "terms": "bord- og bænkesæt,picnic,bord,picnicbord,madpakkebord,frokost,skovtur,mad,madpakke,bænk,udflugt"
                 },
                 "leisure/picnic_table/chess": {
-                    "name": "Skakbord"
+                    "name": "Skakbord",
+                    "terms": "skakbord,skakbræt"
                 },
                 "leisure/pitch": {
                     "name": "Sportsbane",
-                    "terms": "sportsbane,sportsområde"
+                    "terms": "sportsbane,sportsområde,boldbane,bane,håndboldbane,fodboldbane,tennisbane,basketballbane,skateboard,ridebane"
                 },
                 "leisure/pitch/american_football": {
                     "name": "Amerikansk fodboldbane",
@@ -5482,6 +6193,9 @@
                 "leisure/pitch/archery": {
                     "name": "Bueskydningsbane"
                 },
+                "leisure/pitch/athletics": {
+                    "name": "Atletikbane"
+                },
                 "leisure/pitch/athletics/hammer_throw": {
                     "name": "Hammerkast-ring / sektor",
                     "terms": "hammerkast-ring / sektor,hammerkast"
@@ -5489,6 +6203,12 @@
                 "leisure/pitch/athletics/high_jump": {
                     "name": "Højdespringsgrav",
                     "terms": "højdespringsgrav,højdespring"
+                },
+                "leisure/pitch/athletics/javelin_throw": {
+                    "name": "Spydkast-sektor"
+                },
+                "leisure/pitch/athletics/long_jump": {
+                    "name": "Længdespringsgrav"
                 },
                 "leisure/pitch/athletics/triple_jump": {
                     "name": "Trespringsgrav"
@@ -5520,7 +6240,8 @@
                     "terms": "bowling græsplæne,keglebane"
                 },
                 "leisure/pitch/chess": {
-                    "name": "Kæmpemæssigt skakbræt"
+                    "name": "Kæmpe skakbræt",
+                    "terms": "kæmpe skakbræt,gigantskak,haveskak,kæmpeskak,megaskak"
                 },
                 "leisure/pitch/cricket": {
                     "name": "Cricketbane",
@@ -5541,6 +6262,12 @@
                     "name": "Padelbane",
                     "terms": "padelbane,padelanlæg"
                 },
+                "leisure/pitch/paintball": {
+                    "name": "Paintball-bane"
+                },
+                "leisure/pitch/pickleball": {
+                    "name": "Pickleball-bane"
+                },
                 "leisure/pitch/rugby_league": {
                     "name": "Rugby station",
                     "terms": "rugby station"
@@ -5559,6 +6286,9 @@
                 "leisure/pitch/soccer": {
                     "name": "Fodboldbane",
                     "terms": "fodboldbane"
+                },
+                "leisure/pitch/table_soccer": {
+                    "name": "Foosball-bord"
                 },
                 "leisure/pitch/table_tennis": {
                     "name": "Bordtennis",
@@ -5607,6 +6337,10 @@
                 "leisure/sports_centre/horse_racing": {
                     "name": "Hestevæddeløbsbane"
                 },
+                "leisure/sports_centre/shooting": {
+                    "name": "Skydebaneanlæg",
+                    "terms": "skydebaneanlæg,skydebane"
+                },
                 "leisure/sports_centre/swimming": {
                     "name": "Swimmingpool",
                     "terms": "swimmingpool,svømmepool"
@@ -5630,6 +6364,9 @@
                 "leisure/track": {
                     "name": "Løbsbane (Ej motorsport)",
                     "terms": "løbsbane (ej motorsport)"
+                },
+                "leisure/track/athletics": {
+                    "name": "Løbebane til atletik"
                 },
                 "leisure/track/athletics/running": {
                     "name": "Løbebane"
@@ -5695,16 +6432,22 @@
                     "terms": "tæppeophæng,tæppebøjle"
                 },
                 "man_made/charge_point": {
-                    "name": "Ladestation til elbiler",
-                    "terms": "ladestation til elbiler,ladestander til elbiler,opladningsstation til elbiler"
+                    "name": "Ladestander til elkøretøjer",
+                    "terms": "ladestander til elkøretøjer,ladepunkt,ladeboks,ladestation,opladning"
                 },
                 "man_made/chimney": {
                     "name": "Skorsten",
                     "terms": "skorsten"
                 },
+                "man_made/clarifier": {
+                    "name": "Rensning af spildevand"
+                },
                 "man_made/clearcut": {
                     "name": "Rydning",
                     "terms": "ryddet skov"
+                },
+                "man_made/compass_rose": {
+                    "name": "Kompasrose"
                 },
                 "man_made/courtyard": {
                     "name": "Gårdhave"
@@ -5748,6 +6491,10 @@
                 },
                 "man_made/groyne": {
                     "name": "Høfde"
+                },
+                "man_made/insect_hotel": {
+                    "name": "Insekthotel",
+                    "terms": "insekthotel,bihotel,sommerfuglehotel"
                 },
                 "man_made/lighthouse": {
                     "name": "Fyr (navigation)",
@@ -5825,8 +6572,12 @@
                     "name": "Rørledning",
                     "terms": "rørledning"
                 },
+                "man_made/pipeline/underground": {
+                    "name": "Underjordisk rørledning"
+                },
                 "man_made/planter": {
-                    "name": "Plantekasse"
+                    "name": "Plantekasse",
+                    "terms": "plantekasse,blomsterkasse"
                 },
                 "man_made/pumping_station": {
                     "name": "Pumpestation",
@@ -5838,6 +6589,10 @@
                 },
                 "man_made/reservoir_covered": {
                     "name": "Overdækket reservoir"
+                },
+                "man_made/satellite_dish": {
+                    "name": "Parabolantenne",
+                    "terms": "parabolantenne,satellitparabol"
                 },
                 "man_made/silo": {
                     "name": "Silo",
@@ -5855,6 +6610,13 @@
                     "name": "Gadeskab",
                     "terms": "el,forsyning,gas,tv,signal,kabel,teknik,tele"
                 },
+                "man_made/street_cabinet/postal_service": {
+                    "name": "Postdepotskab",
+                    "terms": "postdepotskab,brevdepot,postdepot,postdepotkasse"
+                },
+                "man_made/street_cabinet/waste": {
+                    "name": "Skab til privat affaldsindsamling"
+                },
                 "man_made/surveillance": {
                     "name": "Overvågning",
                     "terms": "overvågning,monitorering,videoovervågning,politikontrol,politiopsyn,politiovervågning,færdselskontrol,aflytning"
@@ -5865,6 +6627,15 @@
                 "man_made/survey_point": {
                     "name": "Geografisk fikspunkt",
                     "terms": "geografisk fikspunkt,højdefikspunkt,geografisk punkt,gi-punkt,postament"
+                },
+                "man_made/telescope": {
+                    "name": "Teleskop"
+                },
+                "man_made/telescope/optical": {
+                    "name": "Optisk teleskop"
+                },
+                "man_made/telescope/radio": {
+                    "name": "Radioteleskop"
                 },
                 "man_made/tower": {
                     "name": "Tårn",
@@ -5896,6 +6667,9 @@
                 "man_made/tunnel": {
                     "name": "Tunnelkompleks",
                     "terms": "tunnel,kompleks,boring,passage,underjordisk"
+                },
+                "man_made/utility_pole": {
+                    "name": "Forsyningsmast"
                 },
                 "man_made/video_wall": {
                     "name": "Digital skærm",
@@ -6058,6 +6832,9 @@
                 "natural/shrub": {
                     "name": "Busk"
                 },
+                "natural/sinkhole": {
+                    "name": "Jordfaldshul"
+                },
                 "natural/spring": {
                     "name": "Kilde (vand)",
                     "terms": "kilde (vand),kildeudspring"
@@ -6081,6 +6858,12 @@
                 },
                 "natural/tree/broadleaved/evergreen": {
                     "name": "Løvtræ (stedsegrøn)"
+                },
+                "natural/tree/needleleaved": {
+                    "name": "Nåletræ"
+                },
+                "natural/tree/needleleaved/deciduous": {
+                    "name": "Nåletræ (løvfældende)"
                 },
                 "natural/tree/needleleaved/evergreen": {
                     "name": "Nåletræ (stedsegrøn)"
@@ -6173,6 +6956,10 @@
                     "name": "Naturskov",
                     "terms": "skov,træ,træer,natur,urørt,jungle"
                 },
+                "network/type/node_network-DE-NL-BE-LU": {
+                    "name": "Knudepunkt for rekreative netværk",
+                    "terms": "knudepunkt for rekreative netværk,netværksknudepunkt,rekreativt netværksknudepunkt,knudepunkt"
+                },
                 "noexit/yes": {
                     "name": "Ingen udvej",
                     "terms": "ingen udvej"
@@ -6255,6 +7042,9 @@
                     "name": "Finanskontor",
                     "terms": "finanskontor"
                 },
+                "office/financial_advisor": {
+                    "name": "Finansiel rådgiver"
+                },
                 "office/forestry": {
                     "name": "Skovbrugskontor",
                     "terms": "skovbrug,landmand,landbrug,skovløber,skovarbejder"
@@ -6328,6 +7118,10 @@
                     "name": "Privatdetektivkontor",
                     "terms": "detektiv,undersøger,undersøgelse,efterforskning,efterforsker"
                 },
+                "office/property_management": {
+                    "name": "Ejendomsadministration / udlejningskontor",
+                    "terms": "ejendomsadministration,ejendomsforvaltning"
+                },
                 "office/religion": {
                     "name": "Religiøst kontor",
                     "terms": "kirkekontor,sognegård,religion,kirke,kirkelig,åndelig"
@@ -6335,6 +7129,10 @@
                 "office/research": {
                     "name": "Forskning",
                     "terms": "forskning"
+                },
+                "office/security": {
+                    "name": "Vagtkontor",
+                    "terms": "vagtkontor,sikkerhedskontor,security-kontor,sikkerhedsvagtkontor"
                 },
                 "office/surveyor": {
                     "name": "Landinspektørs kontor"
@@ -6367,6 +7165,9 @@
                 "piste/downhill": {
                     "name": "Alpinbakke",
                     "terms": "ski,alpin,downhill,bakke,piste,vintersport,snowboard"
+                },
+                "piste/hike": {
+                    "name": "Snesko-/vintervandresti"
                 },
                 "piste/sled": {
                     "name": "Kælkebakke",
@@ -6436,15 +7237,25 @@
                     "name": "Klatrevæg til leg"
                 },
                 "playground/cushion": {
-                    "name": "Hoppepude"
+                    "name": "Hoppepude",
+                    "terms": "hoppepude,hoppeborg"
+                },
+                "playground/hopscotch": {
+                    "name": "Hinkebane"
                 },
                 "playground/map": {
                     "name": "Malet kort over legeplads",
                     "terms": "malet kort over legeplads,legepladskort,legepladsoversigt"
                 },
+                "playground/playhouse": {
+                    "name": "Legehus"
+                },
                 "playground/roundabout": {
                     "name": "Legekarrusel",
                     "terms": "legekarrusel,karrusel,spinner"
+                },
+                "playground/sandpit": {
+                    "name": "Sandkasse"
                 },
                 "playground/seesaw": {
                     "name": "Vippe"
@@ -6455,6 +7266,10 @@
                 },
                 "playground/swing": {
                     "name": "Gynge"
+                },
+                "playground/teenshelter": {
+                    "name": "Læskur på legeplads",
+                    "terms": "læskur på legeplads,legehus"
                 },
                 "playground/trampoline": {
                     "name": "Trampolin"
@@ -6686,6 +7501,10 @@
                 "railway/platform": {
                     "name": "Togperron"
                 },
+                "railway/preserved": {
+                    "name": "Historisk jernbanespor",
+                    "terms": "historisk jernbanespor,jernbane,skinner"
+                },
                 "railway/rail": {
                     "name": "Togspor"
                 },
@@ -6816,7 +7635,7 @@
                 },
                 "shop/bicycle": {
                     "name": "Cykelhandler",
-                    "terms": "cykelforretning,cykelbutik,cykelsmed"
+                    "terms": "cykelforretning,cykelbutik,cykelsmed,cykelmekaniker,cykelværksted"
                 },
                 "shop/boat": {
                     "name": "Bådforhandler",
@@ -6964,6 +7783,9 @@
                     "name": "E-cigaretbutik",
                     "terms": "e-cigaretbutik,e-cigaretforretning"
                 },
+                "shop/electrical": {
+                    "name": "Elektronikbutik"
+                },
                 "shop/electronics": {
                     "name": "Elektronikbutik",
                     "terms": "elektronikbutik"
@@ -7013,6 +7835,9 @@
                 "shop/furniture": {
                     "name": "Møbelforhandler",
                     "terms": "møbelbutik,møbelhandler,møbelforretning,stol,sofa,bord"
+                },
+                "shop/games": {
+                    "name": "Brætspilsbutik"
                 },
                 "shop/garden_centre": {
                     "name": "Havecenter",
@@ -7116,7 +7941,7 @@
                 },
                 "shop/massage": {
                     "name": "Massagebutik",
-                    "terms": "massagebutik"
+                    "terms": "massagebutik,massør"
                 },
                 "shop/medical_supply": {
                     "name": "Håndkøbsmedicinforhandler",
@@ -7220,6 +8045,10 @@
                 "shop/repair": {
                     "name": "Reparationsværksted",
                     "terms": "reparationsværksted,værksted"
+                },
+                "shop/rice": {
+                    "name": "Risbutik",
+                    "terms": "risbutik,rishandler"
                 },
                 "shop/scuba_diving": {
                     "name": "Dykkerudstyrsbutik",
@@ -7351,6 +8180,9 @@
                     "name": "Våbenbutik",
                     "terms": "våbenbutik,våbenforretning,bøssemager"
                 },
+                "shop/wholesale": {
+                    "name": "Engrosbutik"
+                },
                 "shop/wigs": {
                     "name": "Parykbutik"
                 },
@@ -7406,14 +8238,16 @@
                     "terms": "turistattraktion,seværdighed"
                 },
                 "tourism/camp_pitch": {
-                    "name": "Lejrplads"
+                    "name": "Standplads",
+                    "terms": "standplads,lejrplads,teltplads,campingplads,autocamperplads"
                 },
                 "tourism/camp_site": {
                     "name": "Campingplads",
                     "terms": "campingplads,lejrplads,teltplads"
                 },
                 "tourism/camp_site/backcountry": {
-                    "name": "Afsides campingområde"
+                    "name": "Afsides campingområde",
+                    "terms": "afsides campingområde,primitiv overnatningsplads,frit teltningsområde,lejrplads,teltplads,shelterplads,primitiv camping"
                 },
                 "tourism/camp_site/group_only": {
                     "name": "Campingområde for grupper",
@@ -7432,7 +8266,7 @@
                 },
                 "tourism/guest_house": {
                     "name": "Gæstehus",
-                    "terms": "gæstehus,bed&breakfast,b&b"
+                    "terms": "gæstehus,bed&breakfast,b&b,b & b,bed,breakfast,hotel,overnatning,seng,sove,værelse"
                 },
                 "tourism/hostel": {
                     "name": "Vandrerhjem",
@@ -7440,7 +8274,7 @@
                 },
                 "tourism/hotel": {
                     "name": "Hotel",
-                    "terms": "hotel"
+                    "terms": "hotel,overnatning,seng,sove,værelse"
                 },
                 "tourism/information": {
                     "name": "Information",
@@ -7449,6 +8283,9 @@
                 "tourism/information/board": {
                     "name": "Informationstavle",
                     "terms": "informationstavle"
+                },
+                "tourism/information/board/welcome_sign": {
+                    "name": "Velkomstskilt"
                 },
                 "tourism/information/guidepost": {
                     "name": "Rutemarkering",
@@ -7529,23 +8366,31 @@
                     "terms": "vejindsnævring"
                 },
                 "traffic_calming/cushion": {
-                    "name": "Fartbump",
-                    "terms": "fartbump"
+                    "name": "Pudebump",
+                    "terms": "pudebump,vejbump,hastighedsbump,fartbump,bump"
                 },
                 "traffic_calming/dip": {
-                    "name": "Vejbump",
-                    "terms": "vejbump"
+                    "name": "Fordybning",
+                    "terms": "fordybning,vejbump,fartbump,hastighedsbump,bump"
                 },
                 "traffic_calming/hump": {
-                    "name": "Fartbumprampe",
-                    "terms": "fartbumprampe"
+                    "name": "Cirkelbump",
+                    "terms": "cirkelbump,vejbump,hastighedsbump,fartbump,bump"
+                },
+                "traffic_calming/island": {
+                    "name": "Helleanlæg"
+                },
+                "traffic_calming/mini_bumps": {
+                    "name": "Pukkelbump",
+                    "terms": "pukkelbump,mariehøns,vejbump,fartbump,hastighedsbump,bump"
                 },
                 "traffic_calming/rumble_strip": {
                     "name": "Rumlestriber",
-                    "terms": "rumlestriber,rumleriller"
+                    "terms": "rumlestriber,rumleriller,bump,vejbump,fartbump"
                 },
                 "traffic_calming/table": {
-                    "name": "Hastighedsbump"
+                    "name": "Trapezbump",
+                    "terms": "trapezbump,vejbump,hastighedsbump,fartbump,bump,plateaubump"
                 },
                 "traffic_calming/yes": {
                     "name": "Trafikdæmpning (uspecificeret type)"
@@ -7650,9 +8495,16 @@
                     "name": "Elledningsnet",
                     "terms": "elledningsnet"
                 },
+                "type/route/railway": {
+                    "name": "Jernbanerute"
+                },
                 "type/route/road": {
                     "name": "Vejrute",
                     "terms": "vejrute"
+                },
+                "type/route/subway": {
+                    "name": "Metro-rute",
+                    "terms": "metro-rute,undergrundsrute"
                 },
                 "type/route/train": {
                     "name": "Togrute",
@@ -7680,6 +8532,9 @@
                 "waterway/canal": {
                     "name": "Kanal",
                     "terms": "kanal"
+                },
+                "waterway/canal/lock": {
+                    "name": "Slusekanal"
                 },
                 "waterway/dam": {
                     "name": "Dæmning",

@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Није успела потврда идентитета: Потребно је одобрити сва побројана права"</string>
     <string name="pref_category_communication">"Комуникација"</string>
     <string name="pref_category_display">"Приказ"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Простор (у MB) који је резервисан на спољном складишту како би се кеширале сличице карте"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Прикажи све напомене"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Приказују се и напомене које нису срочене као питања"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Занемарују се напомене које нису срочене као питања"</string>
-    <string name="pref_title_map_cache">"Величина кеша карте"</string>
     <string name="map_btn_gps_tracking">"Прати ме"</string>
     <string name="map_attribution_osm">"© OpenStreetMap сарадници"</string>
     <string name="quest_generic_otherAnswers">"Други одговори…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Локација је искључена. Да отворим Поставке како би је укључили?"</string>
     <string name="no_location_permission_warning">"Неопходна је дозвола приступа вашој локацији како би се тражили задаци у вашој непосредној близини."</string>
     <string name="about_title_authors">"Заслуге"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick и сарадници"</string>
     <string name="about_title_repository">"Страница пројекта"</string>
-    <string name="about_summary_repository">"на GitHub"</string>
     <string name="about_title_report_error">"Пријавите грешку"</string>
     <string name="about_title_feedback">"Оставите повратне информације"</string>
     <string name="about_title_license">"Лиценца"</string>
-    <string name="about_summary_license">"GNU општа јавна лиценца"</string>
     <string name="offline">"Нисте на интернету"</string>
     <string name="confirmation_authorize_now">"Морате се пријавити вашим OSM налогом да би објавили ваше одговоре. Потврди идентитет?"</string>
     <string name="not_authorized">"Није потврђен идентитет"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Само повезује два пута"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Нешто друго (оставите напомену)"</string>
     <string name="about_title_privacy_statement">"Изјава о приватности"</string>
-    <string name="about_summary_privacy_statement">"и употреби података"</string>
     <string name="quest_openingHours_public_holidays">"Државним празницима"</string>
     <string name="quest_openingHours_public_holidays_short">"Празник"</string>
     <string name="quest_openingHours_open_end">"флексибилан крај"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Умањи"</string>
     <string name="map_btn_zoom_in">"Увеличај"</string>
     <string name="privacy_html">"&lt;p&gt;Напокон неко ко брине о приватности! Мислим да имамо само добре вести за вас:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Директан допринос&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Директан допринос&lt;/h2&gt;
 &lt;p&gt;
 Пре свега, треба да знате да овом апликацијом чините директан допринос OpenStreetMap картама.&lt;br/&gt;
 Шта год да директно додате на карту путем ове апликације, нема посредника између апликације и OSM инфраструктуре.
@@ -91,12 +84,12 @@
 Анонимни допринос на OpenStreetMap није могућ. Све промене које направите (као и њихов датум и локација) су повезани са вашим OSM корисничким налогом и јавно видљиве на openstreetmap.org локацији. Пошто се StreetComplete користи само на терену, овим се открива где и када сте користили апликацију.
 &lt;/p&gt;
 
-&lt;b&gt;Локација&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Локација&lt;/h2&gt;
 &lt;p&gt;
 Апликација не дели вашу GPS локацију ни са ким. Користи се за аутоматско проналажење задатака у вашој непосредној близини и да вам фокусира (и тиме и преузима) карту око ваше локације.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Употреба података&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Употреба података&lt;/h2&gt;
 &lt;p&gt;
 Како је већ напоменуто, апликација комуницира са OSM инфраструктуром.&lt;br/&gt;
 Међутим, пре отпремања ваших промена, апликација проверава &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;једноставну текстуалну датотеку&lt;/a&gt; на мом серверу да ли је забрањено отпремање неких промена. Ово је мера предострожности да бисте могли да задржите верзије апликације за које се испостави да имају критичне грешке од евентуалног скрнављења OSM података.&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@
     <string name="quest_surface_value_wood">"Дрво"</string>
     <string name="quest_sidewalk_title">"Да ли ова улица има тротоар?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где је ова улица?"</string>
-    <string name="quest_oneway_title">"Да ли је ово једносмерна улица?"</string>
     <string name="quest_address_title">"Који је кућни број овог објекта?"</string>
     <string name="store_listing_short_description">"Апликација за рад са OpenStreetMap-ама"</string>
     <string name="store_listing_full_description">"Унапредите OpenStreetMap-е уз StreetComplete!
@@ -389,7 +381,7 @@
     <string name="questList_disabled_in_country">"Никад се не приказује у %s"</string>
     <string name="quest_select_hint_most_specific">"Одаберите најпрецизнији одговор:"</string>
     <string name="quest_generic_item_confirmation">"Да ли сте сигурни да не можете прецизније одредити?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;За неке задатке се преузимају додатни подаци трећих страна. Конкретно, задатак једносмерне улице користи API, који је такође смештен на westnordost.de, о потенцијалним кандидатима за једносмерне улице.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;За неке задатке се преузимају додатни подаци трећих страна.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Не (остави напомену)"</string>
     <string name="pref_quests_reset">"Желите да вратите редослед и омогућеност задатака у почетно стање?"</string>
     <string name="quest_generic_item_invalid_value">"Молимо одаберите прецизнију вредност."</string>
@@ -504,7 +496,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Да ли је пешацима забрањено да ходају овим путем?"</string>
     <string name="quest_buildingType_title">"Каква је ово грађевина?"</string>
     <string name="pref_title_theme_select">"Изаберите тему"</string>
-    <string name="theme_automatic">"Аутоматска"</string>
     <string name="theme_light">"Светла"</string>
     <string name="theme_dark">"Тамна"</string>
     <string name="theme_system_default">"Системска"</string>
@@ -534,7 +525,6 @@
     <string name="quest_maxweight_answer_other_sign">"Знак изгледа другачије…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Желите ли да оставите напомену? Напомена са фотографијом ће омогућити другима да се побрину за њу."</string>
     <string name="quest_handrail_title">"Да ли ове степенице имају рукохват?"</string>
-    <string name="about_summary_current_version">"Тренутна верзија: %s"</string>
     <string name="quest_ref_answer_noRef">"Не види се референтни број…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Пут на илустрацији се ротира исто као и карта на означеном месту."</string>
     <string name="quest_recycling_materials_title">"Шта се овде може оставити за рециклажу?"</string>
@@ -559,7 +549,6 @@
     <string name="about_title_changelog">"Историја верзија"</string>
     <string name="title_whats_new">"Шта је ново?"</string>
     <string name="about_title_rate">"Оцените ову апликацију"</string>
-    <string name="about_summary_rate">"на Google Play продавници"</string>
     <string name="about_title_donate">"Донирајте"</string>
     <string name="about_summary_donate">"Покажите вашу захвалност! ❤️"</string>
     <string name="about_description_donate">"Хвала што размишљате да подржите овај програм! Да видите тренутне донације или да и ви донирате, додирните одговарајућу платформу:"</string>
@@ -954,7 +943,6 @@
     <string name="quest_barrier_bicycle_type_single">"Пролаз између две препреке"</string>
     <string name="quest_barrier_bicycle_type_double">"Намерно скретање (шикана) – препрека са обе стране"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Намерно скретање (шикана) – више од две препреке"</string>
-    <string name="pref_title_language_select">"Одаберите језик"</string>
     <string name="language_default">"Исти као уређај"</string>
     <string name="on_floor">"на спрату %s"</string>
     <string name="select_street_parking_orientation">"Одаберите смер у односу на пут"</string>
@@ -979,7 +967,6 @@
 
 Или, можете оставити напомену (са фотографијом)"</string>
     <string name="quest_address_house_number_label">"Кућни број:"</string>
-    <string name="quest_shoulder_title">"Да ли овај пут има зауставну траку?"</string>
     <string name="quest_fireHydrant_position_title">"Где се овај хидрант налази?"</string>
     <string name="quest_fireHydrant_position_green">"На трави или земљи"</string>
     <string name="quest_fireHydrant_position_lane">"На путу"</string>
@@ -1030,8 +1017,6 @@
     <string name="quest_barrier_path_intersection">"Како ова путања пресеца ову препреку овде?"</string>
     <string name="quest_barrier_road_intersection">"Како овај пут пресеца ову препреку овде?"</string>
     <string name="quest_sidewalk_value_separate">"приказано одвојено на карти"</string>
-    <string name="quest_shoulder_value_yes">"зауставна трака"</string>
-    <string name="quest_shoulder_value_no">"нема зауставне траке"</string>
     <string name="no_camera_permission_warning_title">"Дозволе за камеру"</string>
     <string name="no_camera_permission_warning">"Да бисте сликали фотографије и мерили раздаљине су потребне дозволе за камеру."</string>
     <string name="ar_core_error_sdk_too_old">"Апликација је престара, ажурирајте је."</string>
@@ -1122,7 +1107,6 @@
     <string name="quest_barrier_type_gate_any_size">"Капија, није важна висина"</string>
     <string name="quest_air_pump_compressor_title">"Да ли овде постоји компресор за ваздух?"</string>
     <string name="quest_step_count_stile_hint">"Број степеника да бисте стигли до врха. Уколико се број разликује у сваком од смерова, унесите већи."</string>
-    <string name="quest_shoulder_explanation2">"Зауставна трака је јасно обележена трака за заустављање у случају нужде. Област коју представља зауставна трака не мора нужно бити у потпуности асфалтирана, као ни то да мора бити довољно широка да стане читаво возило у траку."</string>
     <string name="quest_cycleway_value_none_and_oneway">"не постоји, бицикли нису дозвољени у овом смеру"</string>
     <string name="map_btn_create_track">"Направи нови снимак путање"</string>
     <string name="map_btn_stop_track">"Заустави снимање путање"</string>
@@ -1224,7 +1208,6 @@
     <string name="quest_genericRef_title">"Који је овде идентификациони број?"</string>
     <string name="quest_sidewalk_answer_different">"Стање са пешачким је другачије"</string>
     <string name="about_title_get_involved">"Укључите се"</string>
-    <string name="pref_category_quests_overlays">"Задаци и подлоге"</string>
     <string name="quest_presets_rename">"Преименуј"</string>
     <string name="quest_presets_share">"Подели"</string>
     <string name="quest_presets_delete">"Избриши"</string>
@@ -1385,7 +1368,7 @@
     <string name="quest_moped_access_allowed">"Нема знака"</string>
     <string name="quest_moped_access_designated">"Постављен је знак којим се дозвољава кретање мопеда по бициклистичкој стази"</string>
     <string name="quest_moped_access_forbidden">"Постављен је знак којим је забрањено кретање мопеда"</string>
-    <string name="default_disabled_msg_visible_sign_moped">"Овај задатак је подраз. искључен јер приступ мопедима је назначен специфичним знаковима на само почетку и крају бицикл. стазе."</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Овај задатак је подраз. искључен јер приступ мопедима је назначен специфичним знаковима само на почетку и крају бицикл. стазе."</string>
     <string name="quest_arrow_tutorial">"На илустрацији, стрелице показују правац кретања пута на карти у централној тачки чиоде. Пробајте да ротирате карту и схватићете."</string>
     <string name="info">"Још информација"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Забрањено је."</string>
@@ -1396,6 +1379,20 @@
 Спратом се сматра и када су прозори у крову. Стога, кровови без спрата нису нужно равни, већ једноставно нису довољно високи да би постојало поткровље.
 ␣␣␣␣"</string>
     <string name="quest_parcel_locker_brand">"Ког је бренда овај пакетомат?"</string>
-    <string name="quest_parcel_locker_pickup">"Да ли је могуће подићи пошиљке овде?"</string>
-    <string name="quest_parcel_locker_mail_in">"Да ли је могуће оставити пошиљке овде?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Електрични вод је прикачен на зграду"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"нема, али је знаком дозвољена вожња бицикла по тротоару"</string>
+    <string name="separate_cycleway_no_signed">"Знак изричито забрањује вожњу бицикла"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Тротоар, али је знаком дозвољена вожња бицикла"</string>
+    <string name="quest_bicycle_parking_type_floor">"Наменска површина"</string>
+    <string name="link_osmapp_description">"Карта различитих подлога, попут оних за пењање или скијање"</string>
+    <string name="action_back">"Назад"</string>
+    <string name="action_clear">"Поништи"</string>
+    <string name="action_more">"Још"</string>
+    <string name="action_open_in_browser">"Отворите у прегледачу"</string>
+    <string name="about_category_contribute">"Допринос"</string>
+    <string name="pref_category_quests">"Задаци"</string>
+    <string name="pref_title_language_select2">"Језик"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Колико често да се од вас тражи потврда да ли су претходно уети подаци још увек тачни."</string>
+    <string name="questList_disabled_by_default">"Подразумевано је искључено"</string>
+    <string name="action_manage_presets_summary">"Под којим именом је сачувана доленаведена група задатака."</string>
 </resources>

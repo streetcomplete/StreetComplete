@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osmtracks
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.AuthorizationException
+import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
 import de.westnordost.streetcomplete.util.ktx.truncate

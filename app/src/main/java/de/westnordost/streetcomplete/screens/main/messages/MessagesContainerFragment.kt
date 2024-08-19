@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
 import de.westnordost.streetcomplete.ui.util.composableContent
+import de.westnordost.streetcomplete.util.ktx.openUri
 import kotlinx.coroutines.flow.MutableStateFlow
 
 /** A fragment that contains any fragments that would show messages.
@@ -40,7 +41,7 @@ class MessagesContainerFragment : Fragment() {
                 WhatsNewDialog(
                     changelog = msg.changelog,
                     onDismissRequest = { shownMessage.value = null },
-                    onClickLink = { }
+                    onClickLink = { context?.openUri(it) }
                 )
             }
             else -> {}

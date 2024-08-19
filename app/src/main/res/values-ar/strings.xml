@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"فشل التصريح: جميع الصلاحيات المدرجة بحاجة للتأكيد"</string>
     <string name="pref_category_communication">"تواصل"</string>
     <string name="pref_category_display">"العرض"</string>
-    <string name="pref_tilecache_size_summary">"%d ميغابايت"</string>
-    <string name="pref_tilecache_size_message">"المساحة بالميغابايت المحجوزة على الذاكرة الخارجية من أجل التخزين المؤقت للخرائط"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"اظهار جميع الملاحظات"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"ايضاً عرض الملاحظات الغير مصاغة كأسئلة"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"تجاهل الملاحظات الغير مصاغة كأسئلة"</string>
-    <string name="pref_title_map_cache">"مساحة التخزين المؤقت للخرائط"</string>
     <string name="map_btn_gps_tracking">"تابعني"</string>
     <string name="map_attribution_osm">"الحقوق محفوظة لمساهمي خريطة الشارع المفتوحة"</string>
     <string name="quest_generic_otherAnswers">"إجابات أخرى…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"خدمة تحديد الموقع متعطلة، فتح الإعدادات لتشغيل تحديد موقعك الحالي؟"</string>
     <string name="no_location_permission_warning">"موقعك الحالي مطلوب للمسح بحثا عن أسئلة في منطقتك والمناطق المجاورة."</string>
     <string name="about_title_authors">"فريق العمل"</string>
-    <string name="about_summary_authors">"© %s توبيز زويك والمساهمين الآخرين"</string>
     <string name="about_title_repository">"صفحة المشروع الرئيسية"</string>
-    <string name="about_summary_repository">"على GitHub"</string>
     <string name="about_title_report_error">"الإبلاغ عن خطأ"</string>
     <string name="about_title_feedback">"ترك تعليق على البرنامج"</string>
     <string name="about_title_license">"الرخصة"</string>
-    <string name="about_summary_license">"رخصة جنو العمومية العامة"</string>
     <string name="offline">"أنت غير متصل بالإنترنت"</string>
     <string name="confirmation_authorize_now">"أنت بحاجة للدخول باستخدام حسابك على موقع خريطة الشارع المفتوحة لنشر إجاباتك. الدخول الآن؟"</string>
     <string name="not_authorized">"ليس لديك الإذن بالدخول"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"إنها وصلة بين طريقين"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"شيء آخر (ترك ملاحظة)"</string>
     <string name="about_title_privacy_statement">"بيان الخصوصية"</string>
-    <string name="about_summary_privacy_statement">"واستخدام البيانات"</string>
     <string name="quest_openingHours_public_holidays">"الإجازات رسمية"</string>
     <string name="quest_openingHours_public_holidays_short">"الأجازات الرسمية"</string>
     <string name="quest_openingHours_open_end">"الفتح والإغلاق"</string>
@@ -83,7 +76,7 @@
     <string name="map_btn_zoom_out">"تصغير"</string>
     <string name="map_btn_zoom_in">"تكبير"</string>
     <string name="privacy_html">"&lt;p&gt;أها، شخص ما مهتم بالخصوصية، رائع! أعتقد أن لدي أخبارًا جيدة بالنسبة لك:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;المساهمة المباشرة&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;المساهمة المباشرة&lt;/h2&gt;
 &lt;p&gt;
 أولا، ينبغي عليك أن تدرك أنه مع هذا التطبيق، يمكنك تقديم مساهمات فعلية ومباشرة على موقع &lt;OpenStreetMap&gt;.&lt;br/&gt;
 أي شيء تساهم به في هذا التطبيق تتم إضافته مباشرة إلى الخرائط، لا يوجد طرف ثالث ضمن هذا التطبيق والبنية الأساسية لموقع OpenStreetMap.
@@ -92,12 +85,12 @@
 التحرير في OpenStreetMap بشكل مجهول الهوية غير ممكن، لذلك سيتم إجراء أية تغييرات تقوم بها باستخدام حسابك الخاص على موقع OSM. وهذا يعني أن التاريخ والمحتوى وموقع التغييرات سيكون مرئيًا بشكل عام على موقع ويب OpenStreetMap ومنسوبة إلى حسابك.
 &lt;/p&gt;
 
-&lt;b&gt;تحديد الموقع&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;تحديد الموقع&lt;/h2&gt;
 &lt;p&gt;
 لا يقوم التطبيق بمشاركة موقعك الحالي مع أي أحد. إنه يستخدم موقعك للبحث تلقائيا عن الأسئلة حول موقعك الحالي وتنزيلها وتنزيل الخريطة في موقعك الحالي.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;استخدام البيانات&lt;/b/&gt;&lt;p&gt;
+&lt;h2&gt;استخدام البيانات&lt;/h2&gt;
 &lt;p&gt;
 كما ذكرنا، يتواصل التطبيق مباشرة مع البنية التحتية OSM.
 &lt;br/&gt;
@@ -124,7 +117,6 @@
     <string name="quest_surface_value_wood">"خشب"</string>
     <string name="quest_sidewalk_title">"هل يحتوي هذا الشارع على رصيف جانبي؟"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"أين يقع هذا الشارع؟"</string>
-    <string name="quest_oneway_title">"هل هذا شارع باتجاه واحد؟"</string>
     <string name="quest_address_title">"ما هو رقم المنزل لهذا المبنى؟"</string>
     <string name="store_listing_short_description">"تطبيق مساح الأراضي لمشروع الخرائط المفتوحة OpenStreetMap"</string>
     <string name="store_listing_full_description">"ساعد في تحسين خرائط OpenStreetMap مع تطبيق StreetComplete!
@@ -392,7 +384,7 @@
     <string name="questList_disabled_in_country">"لم يظهر في %s"</string>
     <string name="quest_select_hint_most_specific">"اختر الإجابة الأكثر دقة:"</string>
     <string name="quest_generic_item_confirmation">"هل أنت متأكد من أنك لا تستطيع التحديد بدقة أكبر؟"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; بالنسبة لبعض الاستعلامات، يتم تنزيل بعض البيانات الإضافية من جهات خارجية. على وجه الخصوص، تستخدم الاستعلامات ذات الاتجاه الواحد إلى واجهة برمجة التطبيقات (الموجودة أيضًا في westnordost.de) على الطرق المرشحة المحتملة للطرق ذات الاتجاه الواحد. &lt;/ p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; بالنسبة لبعض الاستعلامات، يتم تنزيل بعض البيانات الإضافية من جهات خارجية.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"لا (اترك ملاحظة)"</string>
     <string name="pref_quests_reset">"هل تريد إعادة تعيين الترتيب وتمكين حالة جميع أنواع المهام إلى الوضع الافتراضي؟"</string>
     <string name="quest_generic_item_invalid_value">"حدد قيمة أكثر دقة"</string>
@@ -507,7 +499,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"هل يُمنع المشاة من السير على هذا الطريق في هذا المكان؟"</string>
     <string name="quest_buildingType_title">"ما هو نوع هذا المبنى؟"</string>
     <string name="pref_title_theme_select">"حدد السمة"</string>
-    <string name="theme_automatic">"تلقائي"</string>
     <string name="theme_light">"ضوء - واضح"</string>
     <string name="theme_dark">"داكن"</string>
     <string name="theme_system_default">"النظام الافتراضي"</string>
@@ -537,7 +528,6 @@
     <string name="quest_maxweight_answer_other_sign">"اللافتة تبدو مختلفة …"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"هل تود ترك ملاحظة؟ ستسمح ملاحظة مع صورة لرسامي الخرائط الآخرين بالعناية بها."</string>
     <string name="quest_handrail_title">"هل هذه السلالم لها درابزين؟"</string>
-    <string name="about_summary_current_version">"الإصدار الحالي: %s"</string>
     <string name="quest_ref_answer_noRef">"لا يوجد رقم مرجعي مرئي …"</string>
     <string name="quest_street_side_puzzle_tutorial">"يستدير الطريق في الرسم التوضيحي في نفس الاتجاه الموجود على الخريطة عند نقطة التحديد."</string>
     <string name="quest_recycling_materials_title">"ما الذي يمكن تركه هنا لإعادة التدوير؟"</string>
@@ -562,7 +552,6 @@
     <string name="about_title_changelog">"السجل التاريخي للإصدار"</string>
     <string name="title_whats_new">"ما الجديد ؟"</string>
     <string name="about_title_rate">"قيم هذا التطبيق"</string>
-    <string name="about_summary_rate">"على متجر قوقل بلي"</string>
     <string name="about_title_donate">"التبرع"</string>
     <string name="about_summary_donate">"أظهر تقديرك! ❤️"</string>
     <string name="about_description_donate">"شكرًا لك على التفكير في دعم هذا التطبيق! لمعرفة التبرعات الحالية وللتبرع بنفسك، اضغط على المنصة المعنية:"</string>
@@ -957,7 +946,6 @@
     <string name="quest_barrier_bicycle_type_single">"ممر بين الحواجز"</string>
     <string name="quest_barrier_bicycle_type_double">"منعطف صناعي - حاجز على كل جانب"</string>
     <string name="quest_barrier_bicycle_type_multiple">"منعطف صناعي - أكثر من حاجزين"</string>
-    <string name="pref_title_language_select">"اختيار اللغة"</string>
     <string name="language_default">"حسب إعدادات النظام الافتراضية"</string>
     <string name="on_floor">"على الدور %s
 "</string>
@@ -984,7 +972,6 @@
 
 كما يمكنك ترك ملاحظة بدلاً من ذلك (مع صورة)."</string>
     <string name="quest_address_house_number_label">"رقم المنزل:"</string>
-    <string name="quest_shoulder_title">"هل هذا الطريق به كتف أو مسار طوارئ؟"</string>
     <string name="quest_fireHydrant_position_title">"أين يقع صنبور الحريق هذا؟"</string>
     <string name="quest_fireHydrant_position_green">"في العشب أو التراب"</string>
     <string name="quest_fireHydrant_position_lane">"على الطريق"</string>
@@ -1036,8 +1023,6 @@
     <string name="quest_barrier_path_intersection">"كيف يقطع هذا المسار الحاجز الذي هنا؟"</string>
     <string name="quest_barrier_road_intersection">"كيف يقطع هذا الطريق الحاجزالذي هنا؟"</string>
     <string name="quest_sidewalk_value_separate">"الرصيف ، ولكن يتم عرضها بشكل منفصل على الخريطة"</string>
-    <string name="quest_shoulder_value_yes">"كتف"</string>
-    <string name="quest_shoulder_value_no">"لا يوجد كتف"</string>
     <string name="no_camera_permission_warning_title">"إذن استخدام الكاميرا"</string>
     <string name="no_camera_permission_warning">"لابد من وجود إذن وذلك لالتقاط الصور وقياس المسافات بالكاميرا."</string>
     <string name="ar_core_error_sdk_too_old">"هذا التطبيق قديم جدًا ، حاول التحديث."</string>
@@ -1128,7 +1113,6 @@
     <string name="quest_barrier_type_gate_any_size">"البوابة بأي حجم"</string>
     <string name="quest_air_pump_compressor_title">"هل يوجد منفاخ هواء متوفر هنا؟"</string>
     <string name="quest_step_count_stile_hint">"فقط عدد من درج السلم للوصول إلى القمة، إذا اختلف عدد درجات السلم من كل جانب، فضع الرقم الأعلى."</string>
-    <string name="quest_shoulder_explanation2">"مسار الكتف هو مسار توقف طوارئ محددة بوضوح، والمنطقة المحددة على أنها الكتف ليست بالضرورة مرصوفة بكامل عرضها وليست بالضرورة واسعة بما يكفي لإيقاف السيارة تمامًا عن مسار المرور."</string>
     <string name="quest_cycleway_value_none_and_oneway">"لا شيء، ممنوع ركوب الدراجات في هذا الاتجاه"</string>
     <string name="map_btn_create_track">"إنشاء تسجيل مسار جديد"</string>
     <string name="map_btn_stop_track">"إيقاف تسجيل المسار"</string>
@@ -1231,7 +1215,6 @@
     <string name="quest_genericRef_title">"ما هو رقم التعريف هنا؟"</string>
     <string name="quest_sidewalk_answer_different">"وضع الرصيف مختلف"</string>
     <string name="about_title_get_involved">"شارك"</string>
-    <string name="pref_category_quests_overlays">"المهام والتراكبات"</string>
     <string name="quest_presets_rename">"إعادة تسمية"</string>
     <string name="quest_presets_share">"يشارك"</string>
     <string name="quest_presets_delete">"حذف"</string>

@@ -44,26 +44,26 @@ inline fun <T> wrapApiClientExceptions(block: () -> T): T =
     }
 
 /** The server responded with an unhandled error code */
-class ApiClientException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ApiClientException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)
 
 /** An error occurred while trying to communicate with an API over the internet. Either the
  *  connection with the API cannot be established, the server replies with a server error (5xx),
  *  request timeout (408) or it responds with an unexpected response, i.e. an error occurs while
  *  parsing the response. */
-class ConnectionException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ConnectionException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)
 
 /** While posting an update to an API over the internet, the API reports that our data is based on
  *  outdated data */
-class ConflictException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class ConflictException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)
 
 /** When a query made on an API over an internet would (probably) return a too large result */
-class QueryTooBigException (message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class QueryTooBigException (message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)
 
 /** An error that indicates that the user either does not have the necessary authorization or
  *  authentication to execute an action through an API over the internet. */
-class AuthorizationException(message: String? = null, cause: Throwable? = null)
-    : RuntimeException(message, cause)
+class AuthorizationException(message: String? = null, cause: Throwable? = null) :
+    RuntimeException(message, cause)

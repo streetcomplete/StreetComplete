@@ -9,27 +9,27 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonObject
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.util.ktx.isApril1st
+import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.expressions.Expression.*
+import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.Layer
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
-import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.util.ktx.isApril1st
-import de.westnordost.streetcomplete.util.ktx.toLatLon
-import de.westnordost.streetcomplete.util.math.normalizeLongitude
-import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.geojson.Feature
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
-class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap)
-    : DefaultLifecycleObserver {
+class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap) :
+    DefaultLifecycleObserver {
 
     private val locationSource = GeoJsonSource(SOURCE)
     private val animation = ValueAnimator()
@@ -124,7 +124,9 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
                     iconAllowOverlap(true),
                     iconIgnorePlacement(true)
                 )
-        } else null
+        } else {
+            null
+        }
     )
 
     init {

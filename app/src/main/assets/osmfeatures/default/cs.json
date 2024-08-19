@@ -1053,23 +1053,46 @@
                 "cuisine": {
                     "label": "Kuchyně",
                     "options": {
+                        "african": "Africká",
                         "american": "Americká",
+                        "arab": "Arabská",
+                        "argentinian": "Argentinská",
                         "asian": "Asijská",
+                        "bagel": "Bagel",
+                        "balkan": "Balkánská",
+                        "barbecue": "Gril",
+                        "bavarian": "Barorská",
+                        "beef_bowl": "Gyūdon",
+                        "bistro": "Bistro",
+                        "brazilian": "Brazilská",
+                        "breakfast": "Snídaně",
+                        "brunch": "Pozdní snídaně",
                         "bubble_tea": "Perlivý čaj",
                         "burger": "Burger",
                         "cake": "Koláče",
+                        "caribbean": "Karibská",
                         "chicken": "Kuřecí",
                         "chinese": "Čínská",
-                        "chocolate": "Čokoláda",
                         "coffee_shop": "Kavárna",
+                        "crepe": "Krep",
+                        "curry": "Kari",
                         "dessert": "Dezerty",
+                        "diner": "Večeře",
                         "donut": "Donuty",
+                        "european": "Evropská",
                         "filipino": "Filipínská",
+                        "fine_dining": "Dobré jídlo",
                         "fish": "Ryba",
+                        "fish_and_chips": "Ryby a hranolky",
                         "french": "Francouzská",
+                        "fries": "Hranolky",
+                        "friture": "Friterie",
+                        "frozen_yogurt": "Mražený jogurt",
                         "georgian": "Gruzínská",
                         "german": "Německá",
                         "greek": "Řecká",
+                        "grill": "Bar a gril",
+                        "hawaiian": "Havajská",
                         "hot_dog": "Párek v rohlíku",
                         "ice_cream": "Zmrzlina",
                         "indian": "Indická",
@@ -1081,27 +1104,44 @@
                         "korean": "Korejská",
                         "lebanese": "Libanonská",
                         "malaysian": "Malajská",
+                        "mediterranean": "Středozemní",
                         "mexican": "Mexická",
+                        "middle_eastern": "Blízkovýchodní",
+                        "moroccan": "Marocká",
+                        "noodle": "Nudle",
+                        "oriental": "Orientální",
                         "pancake": "Lívance",
                         "pasta": "Těstoviny",
+                        "pastry": "Pečivo",
+                        "persian": "Perská",
                         "peruvian": "Peruánská",
                         "pizza": "Pizza",
                         "polish": "Polská",
                         "portuguese": "Portugalská",
+                        "ramen": "Ramen",
                         "regional": "Místní",
                         "russian": "Ruská",
                         "salad": "Saláty",
                         "sandwich": "Sendvič",
+                        "sausage": "Párky",
                         "seafood": "Mořské plody",
+                        "shawarma": "Šavarma",
+                        "soba": "Soba",
+                        "soup": "Polévka",
                         "spanish": "Španělská",
                         "steak_house": "Steaková restaurace",
                         "sushi": "Suši",
                         "taiwanese": "Tchajwanská",
+                        "tapas": "Tapas",
+                        "tea": "Čaj",
                         "tex-mex": "Tex-Mex",
                         "thai": "Thajská",
                         "turkish": "Turecká",
+                        "udon": "Udon",
                         "ukrainian": "Ukrajinská",
-                        "vietnamese": "Vietnamská"
+                        "vietnamese": "Vietnamská",
+                        "western": "Západní",
+                        "wings": "Kuřecí křídla"
                     },
                     "terms": "strava,druhy jídel"
                 },
@@ -1623,6 +1663,7 @@
                         "cng": "Stlačený zemní plyn (CNG)",
                         "diesel": "Nafta",
                         "e10": "Benzín E10",
+                        "e5": "Benzín E5",
                         "e85": "Benzín E85",
                         "h70": "Plynný vodík (700 barů)",
                         "lng": "Zkapalněný zemní plyn (LNG)",
@@ -2328,7 +2369,6 @@
                         "marble": "Mramor",
                         "metal": "Kov",
                         "plastic": "Plast",
-                        "reinforced_conrete": "Železobeton",
                         "rock": "Skála",
                         "sand": "Písek",
                         "sandstone": "Pískovec",
@@ -2952,7 +2992,8 @@
                     "label": "Typ"
                 },
                 "playground/theme": {
-                    "label": "Motiv"
+                    "label": "Motiv",
+                    "terms": "vzhled,téma,pozadí"
                 },
                 "plots": {
                     "label": "Počet zahrádek",
@@ -4078,7 +4119,7 @@
                     "label": "Typ"
                 },
                 "townhall/type": {
-                    "label": "Typ"
+                    "label": "Typ radnice/obecního úřadu"
                 },
                 "tracktype": {
                     "label": "Klasifikace povrchu",
@@ -4110,6 +4151,10 @@
                         "rumble_strip": "Opticko-akustická brzda",
                         "table": "Zvýšená plocha pro zpomalení"
                     }
+                },
+                "traffic_calming_road": {
+                    "label": "Zklidňování dopravy",
+                    "terms": "hrbol,šikana,tlumič,polštář,zvýšená plocha,hrb,dunivý pás,pomalu,rychlost,dopravní ostrůvek"
                 },
                 "traffic_sign": {
                     "label": "Dopravní značka"
@@ -5191,7 +5236,7 @@
                 },
                 "amenity/parcel_locker": {
                     "name": "Schránka na zásilky",
-                    "terms": "automatizovaná poštovní schránka,odevzdání,skříňka,pošta,balicí stanice,balík,vyzvednutí"
+                    "terms": "automatizovaná poštovní schránka,odevzdání,skříňka,pošta,balicí stanice,balík,vyzvednutí,balíkomat,balikomat"
                 },
                 "amenity/parking": {
                     "name": "Parkoviště",
@@ -5737,8 +5782,8 @@
                     "terms": "autobus,vlak,trajekt,železnice,jízdenka,doprava"
                 },
                 "amenity/vending_machine/stamps": {
-                    "name": "Poštovní automat",
-                    "terms": "pošta,poštovné,razítko"
+                    "name": "Automat na balíky",
+                    "terms": "automat na postovni znamky,výdejní automat na poštovní známky,vydejni automat na postovni znamky,poštovní známky,postovni znamky"
                 },
                 "amenity/vending_machine/sweets": {
                     "name": "Prodejní automat na cukrovinky",
@@ -5787,6 +5832,10 @@
                 "area/highway": {
                     "name": "Plocha silnice",
                     "terms": "area:highway,okraj chodníku,oblast dálnice,tvar dálnice,chodník,tvar silnice,ulice"
+                },
+                "area/highway/traffic_island": {
+                    "name": "Plocha dopravního ostrůvku",
+                    "terms": "pomocný ostrůvek,dopravní ostrůvek"
                 },
                 "attraction": {
                     "name": "Atrakce"
@@ -6602,6 +6651,10 @@
                 "emergency/destination": {
                     "name": "Vjezd záchranným vozidlům jen do místa"
                 },
+                "emergency/disaster_response": {
+                    "name": "Stanice reakce na katastrofy",
+                    "terms": "civilní obrana,civilní ochrana,zvládání katastrof,krizové řízení,ses"
+                },
                 "emergency/fire_alarm": {
                     "name": "Ohlašovna požárů",
                     "terms": "požární poplach,hlášení požáru,požární hlásič,hoří"
@@ -6617,6 +6670,14 @@
                 "emergency/fire_hydrant": {
                     "name": "Požární hydrant",
                     "terms": "požární hydrant,hasičský hydrant,pumpa"
+                },
+                "emergency/fire_hydrant/pillar": {
+                    "name": "Sloupek požárního hydrantu",
+                    "terms": "požární zátka,sloupkový hydrant"
+                },
+                "emergency/fire_hydrant/underground": {
+                    "name": "Podzemní požární hydrant",
+                    "terms": "požární zátka,studna na požární vodu,podzemní hydrant"
                 },
                 "emergency/fire_service_inlet": {
                     "name": "Přípojka hasičského sboru",
@@ -6992,6 +7053,9 @@
                     "name": "Značka Dej přednost",
                     "terms": "dej přednost v jízdě,dej přednost,značka přednosti v jízdě,vedlejší silnice,vedlejší ulice"
                 },
+                "highway/ladder": {
+                    "name": "Žebřík"
+                },
                 "highway/living_street": {
                     "name": "Obytná zóna",
                     "terms": "obytná zóna,obytná ulice"
@@ -7201,6 +7265,10 @@
                 },
                 "historic/building": {
                     "name": "Historická budova"
+                },
+                "historic/cannon": {
+                    "name": "Dělo",
+                    "terms": "kanon,kanón"
                 },
                 "historic/castle": {
                     "name": "Hrad, zámek",
@@ -7635,6 +7703,10 @@
                     "name": "Komunitní zahrada",
                     "terms": "společná zahrada,zahrada,komunita,spravovaná komunitou,skupinou,sousedská zahrada"
                 },
+                "leisure/garden/kitchen": {
+                    "name": "Zeleninová zahrada",
+                    "terms": "kuchyňská zahrada,bramborová zahrada,kulinářská zahrada,zahrada na jídlo,kuchařská zahrada"
+                },
                 "leisure/garden/residential": {
                     "name": "Obytná zahrada",
                     "terms": "zadní zahrada,dvorek,domácí zahrada,předzahrádka,přední dvůr"
@@ -7650,6 +7722,10 @@
                 "leisure/horse_riding": {
                     "name": "Jezdecké centrum",
                     "terms": "jezdecký areál,jezdecký,koňská farma,koňský park,koňský ranč,jezdecké centrum,areál jízdy na koni,jízda na koních,koňské stáje,areál jezdectví,stáje"
+                },
+                "leisure/hot_tub": {
+                    "name": "Vířivka",
+                    "terms": "usspa,lázně"
                 },
                 "leisure/ice_rink": {
                     "name": "Kluziště",
@@ -8035,6 +8111,10 @@
                     "name": "Komín",
                     "terms": "komín,kouř,dým"
                 },
+                "man_made/clarifier": {
+                    "name": "Čistič odpadních vod",
+                    "terms": "sedimentační nádrž,čistička,čistička odpadních vod"
+                },
                 "man_made/clearcut": {
                     "name": "Paseka",
                     "terms": "řez,les,řezivo,strom,dřevo"
@@ -8079,6 +8159,10 @@
                 "man_made/flagpole": {
                     "name": "Vlajka",
                     "terms": "prapor,vlajka,stožár,vlajkový stožár"
+                },
+                "man_made/flare": {
+                    "name": "Fléra",
+                    "terms": "plynový komín,plyn,olej,oheň,hořet"
                 },
                 "man_made/fuel_pump": {
                     "name": "Čerpací stanice",
@@ -8327,7 +8411,8 @@
                     "terms": "vrt,výkop,šachta,podzemní chodba,podchod"
                 },
                 "man_made/utility_pole": {
-                    "name": "Stožár"
+                    "name": "Stožár",
+                    "terms": "sloup technické infrastruktury,infrastruktura,sloup,technická infrastruktura"
                 },
                 "man_made/video_wall": {
                     "name": "Digitální obrazovka",
@@ -8511,6 +8596,10 @@
                     "name": "Keř",
                     "terms": "keř,křoví,nízká dřevina,větve,větev,křovina,křoviny,rostlina,nízký strom,kleč"
                 },
+                "natural/sinkhole": {
+                    "name": "Závrt",
+                    "terms": "cenote,propadliště,dolina,závrtový,dolík,hadí díra,údolí,vlaštovčí díra"
+                },
                 "natural/spring": {
                     "name": "Pramen",
                     "terms": "pramen,vodní pramen,studánka,studna"
@@ -8535,13 +8624,15 @@
                     "terms": "listí,listnatý,opadavý,tvrdé dřevo"
                 },
                 "natural/tree/broadleaved/evergreen": {
-                    "name": "Listnatý strom (stálezelený)"
+                    "name": "Listnatý strom (stálezelený)",
+                    "terms": "listí,listnatý,stálezelený,tvrdé dřevo,strom"
                 },
                 "natural/tree/needleleaved": {
                     "name": "Jehličnatý strom"
                 },
                 "natural/tree/needleleaved/deciduous": {
-                    "name": "Jehličnatý strom (opadavý)"
+                    "name": "Jehličnatý strom (opadavý)",
+                    "terms": "jehličnan,listí,jehličnatý,měkké dřevo,strom"
                 },
                 "natural/tree/needleleaved/evergreen": {
                     "name": "Jehličnatý strom (stálezelený)",
@@ -9072,7 +9163,8 @@
                     "name": "Tyč na tetherball"
                 },
                 "playground/trampoline": {
-                    "name": "Trampolína"
+                    "name": "Trampolína",
+                    "terms": "trampolina"
                 },
                 "playground/tunnel_tube": {
                     "name": "Hrací tunel"

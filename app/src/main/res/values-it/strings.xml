@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Autorizzazione negata: devi concedere tutti i permessi in elenco"</string>
     <string name="pref_category_communication">"Comunicazione"</string>
     <string name="pref_category_display">"Schermo"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Spazio in megabyte utilizzato sulla memoria esterna per salvare in cache i tasselli della mappa"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostra tutte le note"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Visualizza anche le note non presentate come domande"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignora le note non presentate come domande"</string>
-    <string name="pref_title_map_cache">"Dimensioni della cache per la mappa"</string>
     <string name="map_btn_gps_tracking">"Seguimi"</string>
     <string name="map_attribution_osm">"© Contributori di OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Altre risposte …"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"La geolocalizzazione è spenta. Aprire le Impostazioni per abilitarla?"</string>
     <string name="no_location_permission_warning">"L'accesso alla tua posizione è necessario per cercare le missioni vicine a te."</string>
     <string name="about_title_authors">"Ringraziamenti"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick e contributori"</string>
     <string name="about_title_repository">"Pagina del Progetto"</string>
-    <string name="about_summary_repository">"su GitHub"</string>
     <string name="about_title_report_error">"Segnala errore"</string>
     <string name="about_title_feedback">"Invia un suggerimento"</string>
     <string name="about_title_license">"Licenza"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Sei offline"</string>
     <string name="confirmation_authorize_now">"È necessaria l'autorizzazione per pubblicare le tue risposte su OSM con il tuo account. Vuoi farlo ora?"</string>
     <string name="not_authorized">"Non si è autorizzati"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"È solo un collegamento tra due strade"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Qualcos'altro (lascia una nota)"</string>
     <string name="about_title_privacy_statement">"Informativa sulla privacy"</string>
-    <string name="about_summary_privacy_statement">"e uso dei dati"</string>
     <string name="quest_openingHours_public_holidays">"Feste pubbliche"</string>
     <string name="quest_openingHours_public_holidays_short">"Giorni festivi"</string>
     <string name="quest_openingHours_open_end">"fine apertura"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Rimpicciolisci"</string>
     <string name="map_btn_zoom_in">"Ingrandisci"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, qualcuno che s'interessa della privacy, che bello! Ecco una carrellata di buone notizie (spero):&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Contributi diretti&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Contributi diretti&lt;/h2&gt;
 &lt;p&gt;
 Prima di tutto, va detto che con questa applicazione si danno contributi effettivi e diretti a OpenStreetMap (OSM).&lt;br/&gt;
 Qualsiasi contributo con questa applicazione viene direttamente aggiunto alla mappa, non vi è alcun intermediario fra l’app e l’infrastruttura di OSM.
@@ -91,12 +84,12 @@ Qualsiasi contributo con questa applicazione viene direttamente aggiunto alla ma
 La modifica anonima in OpenStreetMap non è possibile. Tutte le modifiche apportate (con relative data e posizione) sono attribuite al tuo account utente OSM e visibili pubblicamente sul sito web openstreetmap.org. Siccome StreetComplete andrebbe usata soltanto per perlustrazioni sul posto, dalla modifica traspariscono ora e luogo dell'utilizzo dell'app.
 &lt;/p&gt;
 
-&lt;b&gt;Posizione&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Posizione&lt;/h2&gt;
 &lt;p&gt;
 Quest'app non condivide la tua posizione GPS con nessuno. Essa viene utilizzata solo per cercare e scaricare automaticamente le missioni nei tuoi dintorni e per centrare la mappa dove ti trovi. 
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt; Utilizzo dei Dati&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Utilizzo dei Dati&lt;/h2&gt;
 &lt;p&gt;
 L’app comunica direttamente con l’infrastruttura OSM.&lt;br /&gt;
 Prima di caricare le modifiche, l’app fa una verifica su un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;semplice file di testo&lt;/a&gt; nel mio server per assicurarsi che alla tua versione dell'app non sia stato proibito il caricamento delle modifiche. Si tratta di una misura precauzionale che impedisce alle versioni dell'app contenenti bug critici di caricare dati danneggiati in OSM.&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@ Prima di caricare le modifiche, l’app fa una verifica su un &lt;a href=\"https
     <string name="quest_surface_value_wood">"Legno"</string>
     <string name="quest_sidewalk_title">"Questa strada ha un marciapiede?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Dove si trova questa strada?"</string>
-    <string name="quest_oneway_title">"Si tratta di una strada a senso unico?"</string>
     <string name="quest_address_title">"Qual è il numero civico di questo edificio?"</string>
     <string name="store_listing_short_description">"app di raccolta dati per OpenStreetMap"</string>
     <string name="store_listing_full_description">"Aiuta a migliorare OpenStreetMap con StreetComplete!
@@ -225,7 +217,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="credits_translations_title">"Traduzioni"</string>
     <string name="credits_contributors_title">"Contributori al codice"</string>
     <string name="credits_author_title">"Autore e manutentore"</string>
-    <string name="quest_maxspeed_answer_living_street">"È una via ad uso sociale (living street)"</string>
+    <string name="quest_maxspeed_answer_living_street">"È una strada a uso sociale (living street)"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Quindi è presente un cartello come questo?"</string>
     <string name="quest_orchard_produce_title">"Cosa viene coltivato qui?"</string>
     <string name="produce_grapes">"Uva"</string>
@@ -384,12 +376,12 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_construction_road_title">"Questa strada è stata completata?"</string>
     <string name="quest_construction_cycleway_title">"Questa pista ciclabile è stata completata?"</string>
     <string name="quest_construction_footway_title">"Questo passaggio pedonale è stato completato?"</string>
-    <string name="quest_construction_generic_title">"Questa via è stata ultimata?"</string>
+    <string name="quest_construction_generic_title">"Questo percorso è ultimato?"</string>
     <string name="quest_construction_building_title">"Questo edificio è stato completato?"</string>
     <string name="questList_disabled_in_country">"Mai mostrato in %s"</string>
     <string name="quest_select_hint_most_specific">"Scegli quello che è più pertinente:"</string>
     <string name="quest_generic_item_confirmation">"Sei sicuro di non poterlo determinare più specificatamente?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Per alcune missioni, potrebbero venire scaricati ulteriori dati da terzi. In particolare, la missione dei sensi unici richiede un’API, anch’essa ospitata su westnordost.de, per i candidati probabili alle strade a senso unico.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Per alcune missioni, potrebbero venire scaricati ulteriori dati da terzi.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (lascia una nota)"</string>
     <string name="pref_quests_reset">"Reimpostare sia le missioni abilitate che l’ordine al valore predefinito?"</string>
     <string name="quest_generic_item_invalid_value">"Selezionare un valore più specifico."</string>
@@ -504,7 +496,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ai pedoni è vietato camminare su questa strada?"</string>
     <string name="quest_buildingType_title">"Che tipo di edificio è questo?"</string>
     <string name="pref_title_theme_select">"Seleziona tema"</string>
-    <string name="theme_automatic">"Automatico"</string>
     <string name="theme_light">"Chiaro"</string>
     <string name="theme_dark">"Scuro"</string>
     <string name="theme_system_default">"Predefinito di sistema"</string>
@@ -534,7 +525,6 @@ Suddividere ora?"</string>
     <string name="quest_maxweight_answer_other_sign">"Il segnale sembra differente…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vuoi lasciare una nota? Una nota con foto allegata permetterà ad altri mappatori di occuparsene."</string>
     <string name="quest_handrail_title">"Queste scale hanno un corrimano?"</string>
-    <string name="about_summary_current_version">"Versione corrente: %s"</string>
     <string name="quest_ref_answer_noRef">"Nessun numero o codice visibile…"</string>
     <string name="quest_street_side_puzzle_tutorial">"La strada nell'illustrazione è ruotata come appare al suo centro nella mappa."</string>
     <string name="quest_recycling_materials_title">"Cosa può essere lasciato qui per la raccolta differenziata?"</string>
@@ -559,7 +549,6 @@ Suddividere ora?"</string>
     <string name="about_title_changelog">"Cronologia"</string>
     <string name="title_whats_new">"Cosa c'è di nuovo?"</string>
     <string name="about_title_rate">"Valuta questa app"</string>
-    <string name="about_summary_rate">"su Google Play"</string>
     <string name="about_title_donate">"Dona"</string>
     <string name="about_summary_donate">"Mostra il tuo apprezzamento! ❤️"</string>
     <string name="about_description_donate">"Grazie per aver dato sostegno a questo progetto! Per vedere le donazioni attuali e per donare tu stesso, premi sul nome delle rispettive piattaforme:"</string>
@@ -756,7 +745,7 @@ riconoscimento"</string>
     <string name="achievement_outdoors_solved_X">"Hai svolto %d missioni utili per chi ama stare all'aria aperta!"</string>
     <string name="quest_pedestrian_crossing_island">"Questo attraversamento pedonale ha un'isola di traffico?"</string>
     <string name="quest_generic_answer_noSign">"Non c'è alcun cartello"</string>
-    <string name="quest_steps_ramp_separate_wheelchair">"La rampa per la sedia a rotelle è visualizzata sulla mappa come una via separata?"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"La rampa per la sedia a rotelle è visualizzata sulla mappa come un percorso separato?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separata"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"non separata"</string>
     <string name="pref_title_sync2">"Carica risposte automaticamente"</string>
@@ -954,7 +943,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
     <string name="quest_barrier_bicycle_type_single">"Passaggio tra barriere"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - barriere su ogni lato"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - più di due barriere"</string>
-    <string name="pref_title_language_select">"Seleziona lingua"</string>
     <string name="language_default">"Predefinito di sistema"</string>
     <string name="on_floor">"al piano %s"</string>
     <string name="select_street_parking_orientation">"Seleziona l'orientamento rispetto alla strada:"</string>
@@ -979,7 +967,6 @@ I dati vengono aggiornati dopo %1$s giorni e i dati inutilizzati vengono cancell
 
 Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_address_house_number_label">"Numero civico:"</string>
-    <string name="quest_shoulder_title">"Questa strada ha una banchina?"</string>
     <string name="quest_fireHydrant_position_title">"Dove si trova l'idrante?"</string>
     <string name="quest_fireHydrant_position_green">"Sull'erba o sulla terra"</string>
     <string name="quest_fireHydrant_position_lane">"Sulla strada"</string>
@@ -1030,8 +1017,6 @@ Altrimenti puoi lasciare una nota (con una foto)."</string>
     <string name="quest_barrier_path_intersection">"In che modo questo percorso attraversa la barriera?"</string>
     <string name="quest_barrier_road_intersection">"In che modo questa strada attraversa la barriera?"</string>
     <string name="quest_sidewalk_value_separate">"marciapiede, ma mostrato separatamente sulla mappa"</string>
-    <string name="quest_shoulder_value_yes">"banchina"</string>
-    <string name="quest_shoulder_value_no">"nessuna banchina"</string>
     <string name="no_camera_permission_warning_title">"Permessi della fotocamera"</string>
     <string name="no_camera_permission_warning">"I permessi sono necessari per poter misurare le distanze con la realtà aumentata."</string>
     <string name="ar_core_error_sdk_too_old">"Questa app è di una versione troppo vecchia, prova ad aggiornarla."</string>
@@ -1122,7 +1107,6 @@ Fai la stessa cosa per l'altro lato, se presente."</string>
     <string name="quest_barrier_type_gate_any_size">"Porta, ogni dimensione"</string>
     <string name="quest_air_pump_compressor_title">"C'è qui un compressore d'aria disponibile?"</string>
     <string name="quest_step_count_stile_hint">"Solo il numero di gradini per raggiungere la cima. Se i gradini differiscono per lato, fornire il numero maggiore."</string>
-    <string name="quest_shoulder_explanation2">"Una banchina o corsia di emergenza è una corsia chiaramente marcata per arrestare il veicolo in caso di emergenza. L’area della banchina potrebbe non essere asfaltata per tutta la sua larghezza o nemmeno essere larga a sufficienza per permettere ad un veicolo di fermarsi al di fuori della corsia transitabile."</string>
     <string name="quest_cycleway_value_none_and_oneway">"nessuna, i ciclisti non possono andare in questa direzione"</string>
     <string name="map_btn_create_track">"Inizia la registrazione di una nuova traccia"</string>
     <string name="map_btn_stop_track">"Ferma la registrazione della traccia"</string>
@@ -1224,7 +1208,6 @@ Fai la stessa cosa per l'altro lato, se presente."</string>
     <string name="quest_genericRef_title">"Qual è il numero di identificazione qua?"</string>
     <string name="quest_sidewalk_answer_different">"La situazione del marciapiede è diversa"</string>
     <string name="about_title_get_involved">"Partecipa"</string>
-    <string name="pref_category_quests_overlays">"Compiti &amp; Sovraimpressioni"</string>
     <string name="quest_presets_rename">"Rinomina"</string>
     <string name="quest_presets_share">"Condividi"</string>
     <string name="quest_presets_delete">"Elimina"</string>
@@ -1396,6 +1379,17 @@ Troverai le informazioni sulle donazioni sul nostro sito o sulla home del proget
 Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tetto con 0 piani non è necessariamente piatto, ma non sufficientemente alto per un intero piano.
     "</string>
     <string name="quest_parcel_locker_brand">"Di che marca è questo punto pacchi?"</string>
-    <string name="quest_parcel_locker_pickup">"Puoi ritirare pacchi qui?"</string>
-    <string name="quest_parcel_locker_mail_in">"Puoi lasciare pacchi qui?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"La linea elettrica è attaccata all'edificio"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"nessuno, ma un cartello permette il transito ciclabile sul marciapiede"</string>
+    <string name="separate_cycleway_no_signed">"Un cartello proibisce esplicitamente le bicilette"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Percorso pedonale, ma un cartello permette le biciclette"</string>
+    <string name="quest_bicycle_parking_type_floor">"Area dedicata"</string>
+    <string name="link_osmapp_description">"Mappa con diversi livelli, dall'arrampicata agli sci"</string>
+    <string name="action_back">"Indietro"</string>
+    <string name="action_clear">"Pulisci"</string>
+    <string name="action_more">"Altro"</string>
+    <string name="action_open_in_browser">"Apri nel browser"</string>
+    <string name="about_category_contribute">"Contribuisci"</string>
+    <string name="pref_category_quests">"Missioni"</string>
+    <string name="pref_title_language_select2">"Lingua"</string>
 </resources>

@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 447083
-  linesOfInterfaceMarkupChanged: 149510
-  assetFilesChanged: 2083
+  linesOfCodeChanged: 477573
+  linesOfInterfaceMarkupChanged: 151900
+  assetFilesChanged: 2130
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
   linesOfCodeChanged: 22170
@@ -10,13 +10,13 @@
   assetFilesChanged: 636
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 21004
+  linesOfCodeChanged: 21076
   linesOfInterfaceMarkupChanged: 3698
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
-  linesOfCodeChanged: 12207
-  linesOfInterfaceMarkupChanged: 1182
+  linesOfCodeChanged: 18554
+  linesOfInterfaceMarkupChanged: 1205
   assetFilesChanged: 70
 - name: "ENT8R"
   githubUsername: "ENT8R"
@@ -25,7 +25,8 @@
   assetFilesChanged: 399
 - name: "Adrian Clay"
   githubUsername: "adrianclay"
-  linesOfCodeChanged: 5262
+  linesOfCodeChanged: 5539
+  linesOfInterfaceMarkupChanged: 21
   assetFilesChanged: 4
 - name: "arrival-spring"
   githubUsername: "arrival-spring"
@@ -34,7 +35,7 @@
   assetFilesChanged: 7
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3295
+  linesOfCodeChanged: 3299
   linesOfInterfaceMarkupChanged: 488
   assetFilesChanged: 70
 - name: "Krzysztof Zbudniewek"
@@ -118,6 +119,11 @@
   linesOfCodeChanged: 286
   linesOfInterfaceMarkupChanged: 442
   assetFilesChanged: 8
+- name: "Kai Michael Poppe"
+  githubUsername: "kmpoppe"
+  linesOfCodeChanged: 264
+  linesOfInterfaceMarkupChanged: 203
+  assetFilesChanged: 44
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230
@@ -125,11 +131,6 @@
   githubUsername: "errolpais"
   linesOfCodeChanged: 227
   linesOfInterfaceMarkupChanged: 90
-- name: "Kai Michael Poppe"
-  githubUsername: "kmpoppe"
-  linesOfCodeChanged: 200
-  linesOfInterfaceMarkupChanged: 203
-  assetFilesChanged: 44
 - name: "Filip Czaplicki"
   githubUsername: "starsep"
   linesOfCodeChanged: 190
@@ -145,9 +146,11 @@
   linesOfCodeChanged: 149
   assetFilesChanged: 4
 - name: "sdirollo"
+  githubUsername: "sdrll"
   linesOfCodeChanged: 147
   linesOfInterfaceMarkupChanged: 139
 - name: "Arthur-GYT"
+  githubUsername: "Arthur-GYT"
   linesOfCodeChanged: 130
   linesOfInterfaceMarkupChanged: 191
   assetFilesChanged: 4
@@ -176,6 +179,11 @@
   githubUsername: "Dosenpfand"
   linesOfCodeChanged: 91
   assetFilesChanged: 54
+- name: "Nick Allen (OSM = Tallguy)"
+  githubUsername: "Nick-Tallguy"
+  linesOfCodeChanged: 83
+  linesOfInterfaceMarkupChanged: 88
+  assetFilesChanged: 1
 - name: "Map3428"
   githubUsername: "Map3428"
   linesOfCodeChanged: 78
@@ -225,28 +233,28 @@
 - name: "Nils Rokita"
   githubUsername: "Akasch"
   linesOfCodeChanged: 16
-- name: "tiptoptom"
-  linesOfCodeChanged: 13
 - name: "Finn"
   githubUsername: "catdogmat"
   linesOfCodeChanged: 13
+- name: "tiptoptom"
+  linesOfCodeChanged: 13
+- name: "Holger Jeromin"
+  githubUsername: "HolgerJeromin"
+  linesOfCodeChanged: 11
+  assetFilesChanged: 4
 - name: "Grzegorz Olędzki"
   githubUsername: "mccartney"
   linesOfCodeChanged: 10
-- name: "klemens"
-  linesOfCodeChanged: 8
 - name: "Ben Wiederhake"
   githubUsername: "BenWiederhake"
+  linesOfCodeChanged: 8
+- name: "klemens"
   linesOfCodeChanged: 8
 - name: "Aidan Pieper"
   linesOfCodeChanged: 7
 - name: "ferdinand0101"
   githubUsername: "Giselle-MS"
   linesOfCodeChanged: 7
-- name: "Holger Jeromin"
-  githubUsername: "HolgerJeromin"
-  linesOfCodeChanged: 6
-  assetFilesChanged: 4
 - name: "CTJoriginal"
   githubUsername: "CTJoriginal"
   linesOfCodeChanged: 6
@@ -269,14 +277,14 @@
   githubUsername: "sams96"
   linesOfCodeChanged: 5
   assetFilesChanged: 4
+- name: "Balázs Úr"
+  githubUsername: "urbalazs"
+  linesOfCodeChanged: 4
 - name: "Julien Lepiller"
   linesOfCodeChanged: 4
 - name: "cyclingcat"
   linesOfCodeChanged: 4
 - name: "MegaArthur"
-  linesOfCodeChanged: 4
-- name: "Balázs Úr"
-  githubUsername: "urbalazs"
   linesOfCodeChanged: 4
 - name: "Brian Sperlongano"
   githubUsername: "ZeLonewolf"
@@ -293,7 +301,8 @@
 - name: "Guillaume Rischard"
   githubUsername: "grischard"
   linesOfCodeChanged: 3
-- name: "gileri"
+- name: "mpol"
+  githubUsername: "mpol"
   linesOfCodeChanged: 2
 - name: "András Veres-Szentkirályi"
   githubUsername: "dnet"
@@ -301,6 +310,8 @@
   linesOfInterfaceMarkupChanged: 82
 - name: "sun-geo"
   githubUsername: "sun-geo"
+  linesOfCodeChanged: 2
+- name: "gileri"
   linesOfCodeChanged: 2
 - name: "Benoit Maggi"
   githubUsername: "bmaggi"

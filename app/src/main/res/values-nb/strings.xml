@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Godkjennelsen mislyktes: Du må godkjenne alle de oppgitte tillatelsene"</string>
     <string name="pref_category_communication">"Kommunikasjon"</string>
     <string name="pref_category_display">"Skjerm"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Diskplass i megabyte avsatt til mellomlagring av kartfliser"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Vis alle merknader"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Viser også merknader som ikke er formulert som spørsmål"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorerer merknader som ikke er formulert som spørsmål"</string>
-    <string name="pref_title_map_cache">"Kart-mellomlagrings plass"</string>
     <string name="map_btn_gps_tracking">"Følg meg"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-bidragsyterne"</string>
     <string name="quest_generic_otherAnswers">"Andre svar …"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Posisjonsdeling er av. Gå til innstillinger og skru det på nå?"</string>
     <string name="no_location_permission_warning">"Posisjonen din trengs for å vise den på kartet, og for å lete etter oppdrag i nærheten."</string>
     <string name="about_title_authors">"Bidragsytere"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick og bidragsytere"</string>
     <string name="about_title_repository">"Kodelager"</string>
-    <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapporter feil"</string>
     <string name="about_title_feedback">"Gi tilbakemelding"</string>
     <string name="about_title_license">"Lisens"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du er frakoblet"</string>
     <string name="confirmation_authorize_now">"Du må logge inn med OSM-kontoen din for å kunne publisere endringene dine. Logg inn nå?"</string>
     <string name="not_authorized">"Ikke godkjent"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Den kobler bare sammen to veier"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noe annet (legg igjen merknad)"</string>
     <string name="about_title_privacy_statement">"Personvernerklæring"</string>
-    <string name="about_summary_privacy_statement">"og databruk"</string>
     <string name="quest_openingHours_public_holidays">"Offentlige høytidsdager"</string>
     <string name="quest_openingHours_public_holidays_short">"Helligdager"</string>
     <string name="quest_openingHours_open_end">"Ingen fast stengetid"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Forminsk"</string>
     <string name="map_btn_zoom_in">"Forstørr"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, så flott med noen som bryr seg om personvern! Jeg tror jeg bare har gode nyheter til deg:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Direkte bidrag&lt;/h2&gt;
 &lt;p&gt;
 Merk først at du med denne appen gir faktiske, direkte bidrag til OpenStreetMap (OSM).&lt;br/&gt;
 Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mellom appen og OSM-infrastrukturen.
@@ -91,12 +84,12 @@ Alt du bidrar med blir lagt direkte til kartet, det er ikke noen tredjepart mell
 Det er ikke mulig å redigere OpenStreetMap anonymt. Alle endringene dine (med tidspunkt og sted) blir gjort med OSM-brukerkontoen din og er synlig for alle på openstreetmap.org. Fordi StreetComplete kun bør brukes når du er på stedet, vil dette avsløre hvor og når du har brukt appen.
 &lt;/p&gt;
 
-&lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Posisjon&lt;/h2&gt;
 &lt;p&gt;
 Appen deler ikke GPS-posisjonen din med noen. Den blir bare brukt til å automatisk søke opp oppdrag og laste ned kartet der du er, og vise din posisjon på kartet.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Databruk&lt;/h2&gt;
 &lt;p&gt;
 Appen kommuniserer direkte med OSM-infrastrukturen.&lt;br/&gt;
 Før endringene dine lastes opp sjekkes versjonen av denne appen mot en &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;tekstfil&lt;/a&gt; på webserveren min for å forsikre at den ikke har blitt blokkert fra å laste opp endringer. Dette er en «føre var»-funksjon for å hindre at versjoner av appen som har kristiske feil kan komme til å ødelegge OSM-data.&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@ Før endringene dine lastes opp sjekkes versjonen av denne appen mot en &lt;a hr
     <string name="quest_surface_value_wood">"Tre"</string>
     <string name="quest_sidewalk_title">"Er det et fortau langs denne veien?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hvor er denne veien?"</string>
-    <string name="quest_oneway_title">"Er denne veien enveiskjørt?"</string>
     <string name="quest_address_title">"Hvilket husnummer har denne bygningen?"</string>
     <string name="store_listing_short_description">"Kartleggingsapp for OpenStreetMap"</string>
     <string name="store_listing_full_description">"Hjelp til med å forbedre OpenStreetMap med StreetComplete!
@@ -389,7 +381,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="questList_disabled_in_country">"Vis aldri i %s"</string>
     <string name="quest_select_hint_most_specific">"Velg det mest spesifikke som passer:"</string>
     <string name="quest_generic_item_confirmation">"Er du sikker på at det ikke kan fastsettes mer presist?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For noen oppdrag blir tilleggsdata lastet ned fra tredjeparter. Søket etter oppdrag om enveiskjørte veier bruker et API på westnordost.de for å finne kandidater for enveiskjøring.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For noen oppdrag blir tilleggsdata lastet ned fra tredjeparter.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ingen (lag en merknad)"</string>
     <string name="pref_quests_reset">"Nullstille både hvilke oppdag som vises og rekkefølgen?"</string>
     <string name="quest_generic_item_invalid_value">"Velg en mer spesifikk verdi."</string>
@@ -504,7 +496,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Er det forbudt å gå på denne veien her?"</string>
     <string name="quest_buildingType_title">"Hva slags bygning er dette?"</string>
     <string name="pref_title_theme_select">"Velg modus"</string>
-    <string name="theme_automatic">"Auto"</string>
     <string name="theme_light">"Lyst"</string>
     <string name="theme_dark">"Mørkt"</string>
     <string name="theme_system_default">"Systemvalgt"</string>
@@ -534,7 +525,6 @@ Vil du dele opp nå?"</string>
     <string name="quest_maxweight_answer_other_sign">"Skiltet ser annerledes ut…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vil du legge til en merknad? En merknad med foto gjør at andre kartleggere kan løse problemet."</string>
     <string name="quest_handrail_title">"Har trappen rekkverk?"</string>
-    <string name="about_summary_current_version">"Gjeldene versjon: %s"</string>
     <string name="quest_ref_answer_noRef">"Mangler synlig referansenummer…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Veien på illustrasjonen er rotert likt som på kartet der markøren er plassert."</string>
     <string name="quest_recycling_materials_title">"Hva kan leveres til resirkulering her?"</string>
@@ -559,7 +549,6 @@ Vil du dele opp nå?"</string>
     <string name="about_title_changelog">"Versjonslogg"</string>
     <string name="title_whats_new">"Hva er nytt?"</string>
     <string name="about_title_rate">"Vurder denne appen"</string>
-    <string name="about_summary_rate">"på Google Play"</string>
     <string name="about_title_donate">"Gi pengegave"</string>
     <string name="about_summary_donate">"Vis din takknemlighet! ❤️"</string>
     <string name="about_description_donate">"Takk for at du vurderer å støtte denne appen! For å se tidligere pengegaver eller gi en gave selv, trykk på en plattform:"</string>
@@ -957,7 +946,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_barrier_bicycle_type_single">"Passasje mellom to barrierer"</string>
     <string name="quest_barrier_bicycle_type_double">"Innsnevring på begge sider"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Innsnevring med mer enn to barrierer"</string>
-    <string name="pref_title_language_select">"Velg språk"</string>
     <string name="language_default">"Systemvalgt"</string>
     <string name="on_floor">"i etasje %s"</string>
     <string name="select_street_parking_orientation">"Velg orientering i forhold til veien:"</string>
@@ -982,7 +970,6 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
 
 Alternativt, lag en merknad (med bilde)."</string>
     <string name="quest_address_house_number_label">"Husnummer:"</string>
-    <string name="quest_shoulder_title">"Har denne veien en veiskulder?"</string>
     <string name="quest_fireHydrant_position_title">"Hvor står denne brannhydranten?"</string>
     <string name="quest_fireHydrant_position_green">"På gress eller jord"</string>
     <string name="quest_fireHydrant_position_lane">"I veibanen"</string>
@@ -1033,8 +1020,6 @@ Alternativt, lag en merknad (med bilde)."</string>
     <string name="quest_barrier_path_intersection">"Hvordan krysser denne stien barrieren her?"</string>
     <string name="quest_barrier_road_intersection">"Hvordan krysser denne veien barrieren her?"</string>
     <string name="quest_sidewalk_value_separate">"vises separat på kartet"</string>
-    <string name="quest_shoulder_value_yes">"veiskulder"</string>
-    <string name="quest_shoulder_value_no">"ingen veiskulder"</string>
     <string name="no_camera_permission_warning_title">"Kameratillatelse"</string>
     <string name="no_camera_permission_warning">"Tillatelsen er nødvendig for å kunne ta bilder og for å måle avstand med kameraet."</string>
     <string name="ar_core_error_sdk_too_old">"Appen er utdatert, prøv å oppdatere."</string>
@@ -1125,7 +1110,6 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_barrier_type_gate_any_size">"Port, alle størrelser"</string>
     <string name="quest_air_pump_compressor_title">"Er det en luftkompressor tilgjenglig her?"</string>
     <string name="quest_step_count_stile_hint">"Antall trinn for å nå toppen. Hvis det er ulikt antall trinn på hver side, oppgi det høyeste antallet."</string>
-    <string name="quest_shoulder_explanation2">"Veiskulder eller sammenbruddsfelt er tydelig markerte nødstoppfelt. Området som er avsatt til veiskulder er ikke nødvendigvis belagt i full bredde og er ikke nødvendigvis bred nok til at en bil kan stå helt utenfor det trafikkerte feltet."</string>
     <string name="quest_cycleway_value_none_and_oneway">"Ingen, sykling denne retningen er ikke tillatt"</string>
     <string name="map_btn_create_track">"Lag et nytt sporopptak"</string>
     <string name="map_btn_stop_track">"Avslutt opptak av spor"</string>
@@ -1227,7 +1211,6 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_genericRef_title">"Hva er identifikasjonsnummeret her?"</string>
     <string name="quest_sidewalk_answer_different">"Fortauet er endret"</string>
     <string name="about_title_get_involved">"Bidra"</string>
-    <string name="pref_category_quests_overlays">"Oppdrag og lag"</string>
     <string name="quest_presets_rename">"Nytt navn"</string>
     <string name="quest_presets_share">"Del"</string>
     <string name="quest_presets_delete">"Slett"</string>
@@ -1395,8 +1378,6 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
 
 En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med null taketasjer nødvendigvis flate, bare ikke høye nok for en hel etasje."</string>
     <string name="quest_parcel_locker_brand">"Hva er merkevaren på dette pakkeskapet?"</string>
-    <string name="quest_parcel_locker_pickup">"Kan du plukke opp pakker her?"</string>
-    <string name="quest_parcel_locker_mail_in">"Kan du levere pakker her?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Kraftledning er forankret i bygningen"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"ingen, men skilt tillater sykling på fortau "</string>
     <string name="separate_cycleway_no_signed">"Et skilt spesifikt forbyr sykling"</string>

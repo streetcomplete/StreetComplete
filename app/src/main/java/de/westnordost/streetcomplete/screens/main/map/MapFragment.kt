@@ -11,8 +11,6 @@ import com.mapbox.android.gestures.MoveGestureDetector
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Prefs
-import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -39,6 +37,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.maplibre.android.MapLibre
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
 import org.maplibre.android.offline.OfflineManager
 
 /** Manages a map that remembers its last location */
@@ -46,7 +46,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    protected var map : MapLibreMap? = null
+    protected var map: MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val prefs: Preferences by inject()

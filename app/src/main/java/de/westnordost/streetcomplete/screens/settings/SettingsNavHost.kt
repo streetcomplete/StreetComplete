@@ -23,6 +23,10 @@ import org.koin.androidx.compose.koinViewModel
     val navController = rememberNavController()
     val dir = LocalLayoutDirection.current.dir
 
+    fun goBack() {
+        if (!navController.popBackStack()) onClickBack()
+    }
+
     NavHost(
         navController = navController,
         startDestination = startDestination ?: SettingsDestination.Settings,
@@ -37,27 +41,27 @@ import org.koin.androidx.compose.koinViewModel
                 onClickShowQuestForms = { navController.navigate(SettingsDestination.ShowQuestForms) },
                 onClickPresetSelection = { navController.navigate(SettingsDestination.QuestPresets) },
                 onClickQuestSelection = { navController.navigate(SettingsDestination.QuestSelection) },
-                onClickBack = onClickBack,
+                onClickBack = ::goBack,
                 onClickSceeFragment = onClickSceeFragment
             )
         }
         composable(SettingsDestination.QuestPresets) {
             QuestPresetsScreen(
                 viewModel = koinViewModel(),
-                onClickBack = { navController.popBackStack() }
+                onClickBack = ::goBack
             )
         }
         composable(SettingsDestination.QuestSelection) {
             QuestSelectionScreen(
                 viewModel = koinViewModel(),
-                onClickBack = { navController.popBackStack() }
+                onClickBack = ::goBack
             )
         }
         composable(SettingsDestination.ShowQuestForms) {
             ShowQuestFormsScreen(
                 viewModel = koinViewModel(),
                 onClickQuestType = onClickShowQuestTypeForDebug,
-                onClickBack = { navController.popBackStack() },
+                onClickBack = ::goBack,
             )
         }
     }

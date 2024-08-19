@@ -546,7 +546,7 @@ fun createMapStyle(name: String, accessToken: String, languages: List<String>, c
                 color = colors.onewayArrow,
                 padding = 5,
                 placement = "line",
-                spacing = byZoom(17.0 to 200.0, 24.0 to 12800.0),
+                spacing = byZoom(17.0 to 200.0, 24.0 to 25600.0),
                 rotate = 90,
                 rotationAlignment = "map"
             )

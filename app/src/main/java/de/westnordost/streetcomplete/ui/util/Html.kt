@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.util
 
-import android.annotation.SuppressLint
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable

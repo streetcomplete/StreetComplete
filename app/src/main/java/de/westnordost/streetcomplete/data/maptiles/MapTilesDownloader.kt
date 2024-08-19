@@ -1,14 +1,9 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import android.content.Context
-import org.maplibre.android.geometry.LatLngBounds
-import org.maplibre.android.offline.OfflineManager
-import org.maplibre.android.offline.OfflineTilePyramidRegionDefinition
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitCreateOfflineRegion
-import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitDelete
 import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitDownload
-import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitGetOfflineRegions
 import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitResetDatabase
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLng
 import de.westnordost.streetcomplete.util.ktx.format
@@ -17,6 +12,9 @@ import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.android.MapLibre
+import org.maplibre.android.geometry.LatLngBounds
+import org.maplibre.android.offline.OfflineManager
+import org.maplibre.android.offline.OfflineTilePyramidRegionDefinition
 
 class MapTilesDownloader(private val context: Context) {
 

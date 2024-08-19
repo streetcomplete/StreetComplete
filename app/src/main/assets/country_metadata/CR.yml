@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [BAC Credomatic, BCR, Banco Popular, Banco Nacional de Costa Rica, Banco de Costa Rica, Banco Nacional, Edenia, Scotiabank, Davivienda, Cajero BCR, Banco de Costa Rica (BCR), Banco De Costa Rica, ATH]
+atmOperators: [BAC Credomatic, BCR, Banco Popular, Banco Nacional de Costa Rica, Banco Nacional, Banco de Costa Rica, Edenia, Scotiabank, Davivienda, Cajero BCR, Banco De Costa Rica, ATH]
 centerLineStyle: yellow
 chargingStationOperators: [ICE, Estación de Recarga, JASEC, Coopesantos, CNFL]
 defaultSpeedLimitHasUrbanOrRural: true

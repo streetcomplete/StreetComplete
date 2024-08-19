@@ -142,10 +142,10 @@ import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
+import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
-import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.setPadding
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -247,6 +247,7 @@ class MainFragment :
 
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
+    private var selectedOverlay: Overlay? = null
 
     private var windowInsets: Insets? = null
 
@@ -417,6 +418,13 @@ class MainFragment :
             } else
                 overlay?.icon ?: R.drawable.ic_overlay_black_24dp
             binding.overlaysButton.setImageResource(iconRes)
+            if (selectedOverlay != overlay) {
+                val f = bottomSheetFragment
+                if (f is IsShowingElement) {
+                    closeBottomSheet()
+                }
+            }
+            selectedOverlay = overlay
             reloadOverlaySelector()
         }
         observe(controlsViewModel.isTeamMode) { isTeamMode ->
@@ -436,11 +444,6 @@ class MainFragment :
             val isCreateNodeEnabled = overlay?.isCreateNodeEnabled == true
             binding.createButton.isGone = !isCreateNodeEnabled
             binding.crosshairView.isGone = !isCreateNodeEnabled
-
-            val f = bottomSheetFragment
-            if (f is IsShowingElement) {
-                closeBottomSheet()
-            }
         }
         observe(editHistoryViewModel.editItems) { editItems ->
             if (editItems.isEmpty()) closeEditHistorySidebar()

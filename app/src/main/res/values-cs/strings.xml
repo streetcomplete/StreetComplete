@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Autorizace se nezdařila: Všechna uvedená oprávnění musí být udělena"</string>
     <string name="pref_category_communication">"Komunikace"</string>
     <string name="pref_category_display">"Zobrazení"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Místo v megabytech vyčleněné na externím úložišti sloužící jako mezipaměť pro mapové dlaždice"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Zobrazit všechny poznámky"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Zobrazují se všechny poznámky z mapy OSM (i takové, které nejsou ve formě úkolu)"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Poznámky z mapy OSM, které nejsou k dispozici ve formě úkolu, jsou skryté"</string>
-    <string name="pref_title_map_cache">"Velikost mezipaměti pro mapu"</string>
     <string name="map_btn_gps_tracking">"Sledovat mě"</string>
     <string name="map_attribution_osm">"© přispěvatelé OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Další odpovědi…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Určování polohy je vypnuté. Chcete přejít na nastavení, abyste ho mohli zapnout?"</string>
     <string name="no_location_permission_warning">"Pro zobrazení vaší pozice v mapě a hledání úkolů ve vašem okolí je potřeba oprávnění ke zjišťování polohy."</string>
     <string name="about_title_authors">"Autoři"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick a přispěvatelé"</string>
     <string name="about_title_repository">"Zdrojový kód"</string>
-    <string name="about_summary_repository">"Na GitHubu"</string>
     <string name="about_title_report_error">"Nahlásit chybu"</string>
     <string name="about_title_feedback">"Poslat zpětnou vazbu"</string>
     <string name="about_title_license">"Licence"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Nejste připojeni"</string>
     <string name="confirmation_authorize_now">"Pro odeslání odpovědí je nutné udělit přístup aplikaci StreetComplete k vašemu účtu na OpenStreetMap. Chcete udělit přístup nyní?"</string>
     <string name="not_authorized">"Neautorizováno"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Jen to spojuje dvě ulice"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Něco jiného (napište do poznámky)"</string>
     <string name="about_title_privacy_statement">"Prohlášení o ochraně soukromí"</string>
-    <string name="about_summary_privacy_statement">"a použití dat"</string>
     <string name="quest_openingHours_public_holidays">"Státní svátky"</string>
     <string name="quest_openingHours_public_holidays_short">"St. sv."</string>
     <string name="quest_openingHours_open_end">"do odchodu posledního návštěvníka"</string>
@@ -82,24 +75,24 @@
     <string name="map_btn_zoom_out">"Oddálit"</string>
     <string name="map_btn_zoom_in">"Přiblížit"</string>
     <string name="privacy_html">"&lt;p&gt;Á, někdo, kdo se zajímá o soukromí, paráda! Myslím, že pro vás máme jen dobré zprávy:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Přímé přispívání&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Přímé přispívání&lt;/h2&gt;
 &lt;p&gt;
 Nejdříve musíte vědět, že pomocí této aplikace skutečně a přímo přispíváte do OpenStreetMap (OSM).&lt;br/&gt;
 Cokoliv, čím pomocí této aplikace přispějete, bude přímo přidáno do mapy bez toho, aby byla mezi aplikací a OSM nějaká třetí strana.
 &lt;/p&gt;
 &lt;p&gt;
-OpenStreetMap nelze upravovat anonymně, proto jsou všechny vaše změny provedené s vaším uživatelským účtem na OSM. To znamená, že datum, obsah a poloha vašich změn jsou veřejně viditelné na webu openstreetmap.org a propojené s vaším účtem.
+OpenStreetMap nelze upravovat anonymně. Všechny změny, které provádíte (a jejich datum/čas a místo) jsou přiřazeny k vašemu účtu OSM a veřejně viditelné na webu openstreetmap.org. Protože by se aplikace StreetComplete měla používat jen k průzkumu na místě, odkrývá to, kde a kdy jste používali aplikaci.
 &lt;/p&gt;
 
-&lt;b&gt;Poloha&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Poloha&lt;/h2&gt;
 &lt;p&gt;
-Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro automatické vyhledávání „úkolů“ ve vašem okolí a pro vycentrování mapy (a její stahování) na základě vaší polohy. 
+Aplikace s nikým nesdílí vaši GPS polohu. Používá se jen pro automatické stahování dat pro vaše okolí a pro vycentrování mapy na základě vaší polohy. 
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Použití dat&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Použití dat&lt;/h2&gt;
 &lt;p&gt;
 Tato aplikace komunikuje přímo se servery OSM.&lt;br/&gt;
-Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového souboru&lt;/a&gt; na mém serveru, jestli jí nebylo zakázáno nahrávání změn. To je preventivní opatření zabraňující verzím aplikace, ve kterých by mohly být kritické chyby, aby poškodily OSM data.
+Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového souboru&lt;/a&gt; na mém serveru, jestli jí nebylo zakázáno nahrávání změn. To je preventivní opatření zabraňující verzím aplikace, ve kterých by mohly být kritické chyby, aby poškodily data OSM.
 &lt;/p&gt;"</string>
     <string name="autosync_on">"Zapnuto"</string>
     <string name="autosync_only_on_wifi">"Jen přes Wi-Fi"</string>
@@ -123,7 +116,6 @@ Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href
     <string name="quest_surface_value_wood">"Dřevo"</string>
     <string name="quest_sidewalk_title">"Je na této cestě chodník?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je tato silnice?"</string>
-    <string name="quest_oneway_title">"Je to jednosměrka?"</string>
     <string name="quest_address_title">"Jaké číslo má tato budova?"</string>
     <string name="store_listing_short_description">"Aplikace pro OpenStreetMap topografy v češtině"</string>
     <string name="store_listing_full_description">"Se StreetComplete můžete pomoci vylepšit mapové podklady OpenStreetMap!
@@ -393,7 +385,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="questList_disabled_in_country">"Nezobrazuje se v %s"</string>
     <string name="quest_select_hint_most_specific">"Vyberte nejvíce odpovídající možnost:"</string>
     <string name="quest_generic_item_confirmation">"Opravdu ji nemůžete určit konkrétněji?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pro některé úkoly se stahují i další data ze třetích stran. Např. úkol týkající se jednosměrek se dotazuje rozhraní API, uloženého na westnordost.de, na pravděpodobné kandidáty na jednosměrky.&lt;/p&gt;
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pro některé úkoly se stahují i další data od třetích stran.&lt;/p&gt;
 "</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ne (napsat poznámku)"</string>
     <string name="pref_quests_reset">"Resetovat povolení úkolů a vrátit jejich pořadí na výchozí nastavení?"</string>
@@ -510,7 +502,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Mají tu chodci zakázáno chodit po této cestě?"</string>
     <string name="quest_buildingType_title">"Jakého druhu je tato stavba?"</string>
     <string name="pref_title_theme_select">"Vyberte vzhled"</string>
-    <string name="theme_automatic">"Automaticky"</string>
     <string name="theme_light">"Světlý"</string>
     <string name="theme_dark">"Tmavý"</string>
     <string name="theme_system_default">"Výchozí vzhled systému"</string>
@@ -523,10 +514,10 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_ferry_motor_vehicle_title">"Převáží motorová vozidla?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Přidáním fotografie uděláte poznámku mnohem užitečnější."</string>
     <string name="create_new_note_hint">"Nejlepší je napsat poznámku v jazyku, kterým se tu mluví, nebo jinak v angličtině."</string>
-    <string name="quest_leafType_title">"Jsou tu jehličnaté nebo listnaté stromy?"</string>
-    <string name="quest_leaf_type_needles">"Jehličnany"</string>
-    <string name="quest_leaf_type_broadleaved">"Listnáče"</string>
-    <string name="quest_leaf_type_mixed">"Jsou tu oba"</string>
+    <string name="quest_leafType_title">"Mají tyto stromy jehličí nebo listy?"</string>
+    <string name="quest_leaf_type_needles">"Jehličí"</string>
+    <string name="quest_leaf_type_broadleaved">"Listy"</string>
+    <string name="quest_leaf_type_mixed">"Je tu obojí"</string>
     <string name="quest_cyclewayPartSurface_title">"Jaký je povrch této cyklostezky?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"V různých částech různý…"</string>
     <string name="quest_split_way_description">"Pokud má cesta v různých částech různé vlastnosti, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části.
@@ -540,7 +531,6 @@ Chcete cestu rozdělit?"</string>
     <string name="quest_maxweight_answer_other_sign">"Značka vypadá jinak…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Chcete tu nechat poznámku? Poznámka s fotografií umožní dalším mapujícím, aby ji vyřešili."</string>
     <string name="quest_handrail_title">"Mají tyto schody zábradlí?"</string>
-    <string name="about_summary_current_version">"Aktuální verze: %s"</string>
     <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Cesta na ilustraci je otočená stejně jako na mapě v místě označení."</string>
     <string name="quest_recycling_materials_title">"Co tu lze recyklovat?"</string>
@@ -565,7 +555,6 @@ Chcete cestu rozdělit?"</string>
     <string name="about_title_changelog">"Historie verzí"</string>
     <string name="title_whats_new">"Co je nového?"</string>
     <string name="about_title_rate">"Ohodnotit tuto aplikaci"</string>
-    <string name="about_summary_rate">"na Google Play"</string>
     <string name="about_title_donate">"Přispět"</string>
     <string name="about_summary_donate">"Ukažte své uznání! ❤️
 "</string>
@@ -960,7 +949,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
     <string name="quest_barrier_bicycle_type_single">"Průjezd mezi dvěma překážkami"</string>
     <string name="quest_barrier_bicycle_type_double">"Šikana – překážka na každé straně"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Šikana – více než dvě překážky"</string>
-    <string name="pref_title_language_select">"Vyberte jazyk"</string>
     <string name="language_default">"Jazyk systému
 "</string>
     <string name="on_floor">"ve %s patře:"</string>
@@ -986,7 +974,6 @@ Data jsou obnovena po %1$s dnech a nepoužitá data jsou smazána automaticky po
 
 Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_address_house_number_label">"Číslo domu:"</string>
-    <string name="quest_shoulder_title">"Má tato cesta odstavný pruh?"</string>
     <string name="quest_fireHydrant_position_title">"Kde je tento požární hydrant umístěn?"</string>
     <string name="quest_fireHydrant_position_green">"V trávě nebo hlíně"</string>
     <string name="quest_fireHydrant_position_lane">"Na cestě"</string>
@@ -1037,8 +1024,6 @@ Také můžete napsat poznámku (s fotografií)"</string>
     <string name="quest_barrier_path_intersection">"Jak tu tato stezka/chodník překračuje překážku?"</string>
     <string name="quest_barrier_road_intersection">"Jak tu tato cesta překračuje překážku?"</string>
     <string name="quest_sidewalk_value_separate">"zobrazen samostatně na mapě"</string>
-    <string name="quest_shoulder_value_yes">"odstavný pruh"</string>
-    <string name="quest_shoulder_value_no">"bez odstavného pruhu"</string>
     <string name="no_camera_permission_warning_title">"Oprávnění fotoaparátu"</string>
     <string name="no_camera_permission_warning">"Oprávnění je nutné, aby bylo možné měřit vzdálenosti pomocí rozšířené reality."</string>
     <string name="ar_core_error_sdk_too_old">"Tato aplikace je příliš stará, zkuste ji aktualizovat."</string>
@@ -1129,7 +1114,6 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna."</string>
     <string name="quest_barrier_type_gate_any_size">"Brána, jakákoliv velikost"</string>
     <string name="quest_air_pump_compressor_title">"Je tu k dispozici kompresor?"</string>
     <string name="quest_step_count_stile_hint">"Počet schodů k dosažení vrcholu. Pokud je počet schodů na každé straně jiný, uveďte vyšší číslo."</string>
-    <string name="quest_shoulder_explanation2">"Odstavný pruh je jasně vymezený pruh pro nouzové zastavení. Oblast označená jako odstavný pruh nemusí být zpevněná v celé své šířce a nemusí být ani dost široká na to, aby auto zastavilo úplně mimo jízdní pruh."</string>
     <string name="quest_cycleway_value_none_and_oneway">"není, v tomto směru není jízda na kole povolena"</string>
     <string name="map_btn_create_track">"Vytvořit novou nahrávku trasy"</string>
     <string name="map_btn_stop_track">"Ukončit nahrávání trasy"</string>
@@ -1147,7 +1131,7 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna."</string>
     <string name="quest_bicycle_shop_second_hand_no_bicycles">"Neprodávají se tu žádná kola"</string>
     <string name="quest_building_entrance_title">"Jaký je to vchod do budovy?"</string>
     <string name="quest_building_entrance_main">"Hlavní vchod do veřejné budovy"</string>
-    <string name="quest_building_entrance_staircase">"Vchod se schody (např. obytný dům)"</string>
+    <string name="quest_building_entrance_staircase">"Vchod na schodiště (např. obytný dům)"</string>
     <string name="quest_building_entrance_service">"Služební vchod"</string>
     <string name="quest_building_entrance_exit">"Pouze východ"</string>
     <string name="quest_building_entrance_emergency_exit">"Pouze nouzový východ"</string>
@@ -1231,7 +1215,6 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna."</string>
     <string name="quest_genericRef_title">"Jaké je tu identifikační číslo?"</string>
     <string name="quest_sidewalk_answer_different">"Situace s chodníky je jiná"</string>
     <string name="about_title_get_involved">"Zapojte se"</string>
-    <string name="pref_category_quests_overlays">"Úkoly a překryvné vrstvy"</string>
     <string name="quest_presets_rename">"Přejmenovat"</string>
     <string name="quest_presets_share">"Sdílet"</string>
     <string name="quest_presets_delete">"Smazat"</string>
@@ -1404,13 +1387,22 @@ Informace o dárcovství najdete na našem webu nebo na stránce projektu, Googl
 Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Tedy střechy s nulovým počtem podlaží nemusejí být ploché, stačí, že nejsou dost vysoké pro celé podlaží.
     "</string>
     <string name="quest_parcel_locker_brand">"Jaká je značka tohoto boxu na balíčky?"</string>
-    <string name="quest_parcel_locker_pickup">"Můžete si tu vyzvedávat balíčky?"</string>
-    <string name="quest_parcel_locker_mail_in">"Můžete sem vkládat balíčky k odeslání?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Elektrické vedení je zakončeno na budově"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"není, ale značka povoluje jízdu po chodníku"</string>
     <string name="separate_cycleway_no_signed">"Značka výslovně zakazuje jízdu na kole"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Chodník, ale značka povoluje jízdu na kole"</string>
     <string name="quest_bicycle_parking_type_floor">"Určený prostor"</string>
     <string name="link_osmapp_description">"Mapa s různými vrstvami, například pro lezení nebo lyžování"</string>
-    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Jen pro vracení balíčků"</string>
+    <string name="action_back">"Zpět"</string>
+    <string name="action_clear">"Vymazat"</string>
+    <string name="action_more">"Více"</string>
+    <string name="action_open_in_browser">"Otevřít v prohlížeči"</string>
+    <string name="about_category_contribute">"Přispět"</string>
+    <string name="pref_category_quests">"Úkoly"</string>
+    <string name="pref_title_language_select2">"Jazyk"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Jak často budete dotazováni na potvrzení, zda jsou dříve vložené údaje stále správné."</string>
+    <string name="questList_disabled_by_default">"Ve výchozím stavu zakázáno"</string>
+    <string name="action_manage_presets_summary">"Pod jakým názvem se níže uvedený výběr úkolů uloží."</string>
+    <string name="quest_multiselect_hint">"Vyberte vše, co vyhovuje:"</string>
+    <string name="quest_barrier_opening_width_gate">"Jaká je tu šířka v otevřeném stavu?"</string>
 </resources>

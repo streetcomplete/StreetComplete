@@ -13,9 +13,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
 import io.ktor.http.defaultForFile
-import io.ktor.http.isSuccess
 import io.ktor.util.cio.readChannel
-import io.ktor.utils.io.errors.IOException
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json

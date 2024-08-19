@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [Česká spořitelna, ČSOB, Komerční banka, Euronet, Fio banka, MONETA Money Bank, Raiffeisenbank, Air Bank, UniCredit Bank, 'MONETA Money Bank, a.s.', Pharro, Moneta, KB, GE Money Bank, Bitcoinmat.sk, 'Česká spořitelna, a.s.', Moneta Money Bank, AirBank, 'Komerční banka, a.s.', 'Československá obchodní banka, a. s.', Kvakomat, Air bank, Česká spořitelna a.s., GE Money, Airbank, Komerční Banka, Fio, Coinemic, Citibank, Česká Spořitelna, Oberbank, Poštovní spořitelna, Moneta Bank, ČS, Travelex, Komeční banka, Komerční banka a.s., CSOB, 'Česká spořitelna, a. s.', mBank, airbank, air bank, Bitcoinmat]
-chargingStationOperators: [ČEZ, PRE, E.ON, Teplárny Brno, Lidl, EON, MOL, EVMAPA, 'Tesla, Inc.', Innogy, Ionity, beskolo, 'Pražská energetika, a.s.', LEDEOS, Bauhaus, 'ČEZ, a. s..', Kaufland, Česká spořitelna, 'ČEZ, a. s.', firemni nabijecka, evmapa.cz, Tesla, Město Rakovník, MOL (CCS/CHAdeMO/Mennekes), Billa, ČEZ (CCS/CHAdeMO/Mennekes), VŠB, UCED, TS Opava, Pre, Pražská energetika, PRE distribuce, Město Dačice, Kraj Vysočina, InChaNet, FutureGo, EVSELECT s.r.o., EVSELECT, ChargeUp]
-clothesContainerOperators: [Kloktex, KLOK.TEX, Textileco, Diakonie Broumov, KlokTex, Klok-Tex, TextilEco, Služby města Český Krumlov s.r.o., Obec Tuchlovice, recyklujemetextil.cz, potex, Marius Pedersen a.s., Helptex, Čistá Plzeň s.r.o., www.kloktex.cz, Textil Eco, SAKO, Potex, POTEX, Obec Drnovice, Diecezni charita Plzen, Diecezni charita, 'Diakonie Broumov, sociální družstvo', Český červený kříž, helptex.cz, TS Zlín, Sova, Město Veltrusy, Dětské krizové centrum, Diecezni charita Brno, Charita Česká republika]
+atmOperators: [Česká spořitelna, ČSOB, Komerční banka, Euronet, Fio banka, MONETA Money Bank, Raiffeisenbank, Air Bank, UniCredit Bank, 'MONETA Money Bank, a.s.', Pharro, Moneta, KB, GE Money Bank, Bitcoinmat.sk, 'Česká spořitelna, a.s.', Moneta Money Bank, AirBank, 'Komerční banka, a.s.', Česká spořitelna a.s., 'Československá obchodní banka, a. s.', Kvakomat, Air bank, Airbank, Komerční Banka, Fio, Coinemic, Citibank, Oberbank, GE Money, Česká Spořitelna, Poštovní spořitelna, ČS, Travelex, Komerční banka a.s., CSOB, 'Česká spořitelna, a. s.', mBank, airbank, air bank, Moneta Bank, Komeční banka, Bitcoinmat]
+chargingStationOperators: [ČEZ, PRE, E.ON, Teplárny Brno, Lidl, EON, MOL, EVMAPA, 'Tesla, Inc.', Ionity, Innogy, beskolo, 'Pražská energetika, a.s.', LEDEOS, Bauhaus, 'ČEZ, a. s..', Pražská energetika, Kaufland, Česká spořitelna, 'ČEZ, a. s.', firemni nabijecka, evmapa.cz, Tesla, Město Rakovník, MOL (CCS/CHAdeMO/Mennekes), Billa, ČEZ (CCS/CHAdeMO/Mennekes), VŠB, UCED, TS Opava, Pre, PRE distribuce, Město Dačice, Kraj Vysočina, InChaNet, FutureGo, EVSELECT s.r.o., EVSELECT, ChargeUp]
+clothesContainerOperators: [Kloktex, KLOK.TEX, Textileco, Diakonie Broumov, TextilEco, Služby města Český Krumlov s.r.o., KlokTex, Klok-Tex, Obec Tuchlovice, Helptex, recyklujemetextil.cz, potex, Marius Pedersen a.s., Čistá Plzeň s.r.o., www.kloktex.cz, Textil Eco, SAKO, Potex, POTEX, Obec Drnovice, Diecezni charita Plzen, Diecezni charita, 'Diakonie Broumov, sociální družstvo', Český červený kříž, helptex.cz, TS Zlín, Sova, Město Veltrusy, Dětské krizové centrum, Diecezni charita Brno, Charita Česká republika]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
@@ -15,7 +15,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 230
 officialLanguages: [cs]
 orchardProduces: [grape, apple, hop, plum, cherry, apricot, pear, strawberry, peach, chilli_pepper, sweet_pepper, tomato, walnut, raspberry]
-parcelLockerBrand: [Packeta, AlzaBox, Penguin Box, PPL, GLS, DPD, WE|DO, PPL Box, DPD Pickup Station]
+parcelLockerBrand: [Packeta, AlzaBox, Penguin Box, PPL, GLS, OX.Point, DPD Pickup Station, DPD, PPL Box]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true

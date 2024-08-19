@@ -93,6 +93,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- As in: "select ONE of the pictures below" -->
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <!-- As in: "select any of the pictures below that fit" -->
+    <string name="quest_multiselect_hint">"Select all that apply:"</string>
     <string name="quest_select_hint">"Select:"</string>
     <!-- As in: "show more of those pictures to select an answer from -->
     <string name="quest_roofShape_show_more">"Show more…"</string>
@@ -120,6 +121,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="on_floor">on floor %s</string>
     <!-- as in: “Where is the metro station?” - “It is underground” -->
     <string name="underground">underground</string>
+    <string name="bridge">on bridge</string>
     <string name="at_housename">house name %s</string>
     <string name="at_housenumber">house number %s</string>
     <!-- as in: “Where is the ATM?” - “It is inside” -->
@@ -296,6 +298,12 @@ Each of you will then see different quests."</string>
     <string name="crash_compose_email">"Compose email"</string>
     <string name="no_email_client">"You have no email client installed."</string>
 
+    <!-- Generic buttons -->
+
+    <string name="action_back">Back</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_more">More</string>
+    <string name="action_open_in_browser">Open in browser</string>
 
     <!-- About screen -->
 
@@ -303,12 +311,10 @@ Each of you will then see different quests."</string>
 
     <string name="about_title_get_involved">Get Involved</string>
 
-    <string name="about_title_changelog">Version history</string>
-    <string name="about_summary_current_version">"Current version: %s"</string>
+    <string name="about_title_changelog">Version</string>
     <string name="title_whats_new">What’s New?</string>
 
     <string name="about_title_rate">Rate this app</string>
-    <string name="about_summary_rate">on Google Play</string>
 
     <string name="about_title_donate">Donate</string>
     <string name="about_summary_donate">Show your appreciation! ❤️</string>
@@ -318,27 +324,28 @@ Each of you will then see different quests."</string>
     <string name="about_description_donate_google_play3">"Thank you for considering supporting this app!
 You can find donation information on our website or project home, Google Play does not allow us to provide the link within the app."</string>
 
-    <string name="about_title_translate">Help translate this app</string>
+    <string name="about_title_translate">Translate this app</string>
     <string name="about_description_translate">%1$s is translated %2$d%%</string>
 
-    <string name="about_title_privacy_statement">"Privacy statement"</string>
-    <string name="about_summary_privacy_statement">"and data usage"</string>
+    <string name="about_title_privacy_statement">"Privacy"</string>
 
     <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick and contributors"</string>
 
-    <string name="about_title_repository">"Project Home"</string>
-    <string name="about_summary_repository">"on GitHub"</string>
+    <string name="about_title_repository">"Project home"</string>
 
     <string name="about_title_faq">"FAQ"</string>
 
+    <string name="about_title_intro">"Show introduction"</string>
+
     <string name="about_title_report_error">"Report error"</string>
 
-    <string name="about_title_feedback">"Give Feedback"</string>
+    <string name="about_title_feedback">"Give feedback"</string>
 
     <string name="about_title_license">"License"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
 
+    <string name="about_category_contribute">Contribute</string>
+
+    <string name="about_category_help">Help</string>
 
     <!-- Credits screen -->
 
@@ -354,7 +361,7 @@ You can find donation information on our website or project home, Google Play do
     <!-- Privacy screen -->
 
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Direct Contributions&lt;/h2&gt;
 &lt;p&gt;
 First off, understand that with this app, you make actual and direct contributions to OpenStreetMap (OSM).&lt;br/&gt;
 Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
@@ -363,20 +370,33 @@ Anything you contribute in this app is directly added to the map, there is no th
 Editing OpenStreetMap anonymously is not possible. Any changes you make (and their date and location) are attributed to your OSM user account and publicly visible on the openstreetmap.org website. Because StreetComplete should only be used for on-site survey, this reveals where and when you have used the app.
 &lt;/p&gt;
 
-&lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Location&lt;/h2&gt;
 &lt;p&gt;
 The app does not share your GPS location with anyone. It is used to automatically download data around you, and position the map at your location.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Data Usage&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Data Usage&lt;/h2&gt;
 &lt;p&gt;
 This app directly communicates with OSM servers.&lt;br/&gt;
 Before uploading your changes, the app checks with a &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; on my server to ensure that this version of the app has not been banned from uploading changes. This is a precautionary measure to be able to block versions of the app that turn out to have critical bugs from uploading corrupted data to OSM.&lt;/p&gt;"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;To display the map, vector tiles are retrieved from %1$s. See their &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; for more information.&lt;/p&gt;"</string>
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
-    <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded. In particular, the oneway quest queries an API, also hosted on westnordost.de, about likely candidates for oneways.&lt;/p&gt;</string>
+    <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded.&lt;/p&gt;</string>
     <string name="privacy_html_statistics">&lt;p&gt;The data shown in your profile is aggregated from your publicly available contribution history to OpenStreetMap and then hosted on my server.&lt;/p&gt;</string>
     <string name="privacy_html_arcore">This application runs on &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Google Play Services for AR&lt;/a&gt; (ARCore), which is provided by Google and governed by the &lt;a href="https://policies.google.com/privacy"&gt;Google Privacy Policy&lt;/a&gt;.</string>
+
+    <!-- Logs screen -->
+
+    <string name="about_title_logs">Logs (%1$d)</string>
+    <string name="about_summary_logs">For use in error reports.</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_share">Share logs</string>
+    <string name="about_title_show_logs">Show logs</string>
+    <string name="label_log_level">Log level</string>
+    <string name="label_log_newer_than">From</string>
+    <string name="label_log_older_than">To</string>
+    <string name="label_log_message_contains">Message contains</string>
+    <string name="title_logs_filters">Filter messages</string>
 
     <!-- User screen -->
 
@@ -530,7 +550,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_category_display">"Display"</string>
-    <string name="pref_category_quests_overlays">Quests &amp; Overlays</string>
+    <string name="pref_category_quests">Quests</string>
 
     <string name="pref_background_type_select">Select background type</string>
     <string name="background_type_map">Map</string>
@@ -544,15 +564,10 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="autosync_off">"Off"</string>
     <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the toolbar that looks like this.</string>
 
-    <string name="pref_title_map_cache">"Map cache size"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
-
-    <string name="pref_title_language_select">Select language</string>
+    <string name="pref_title_language_select2">Language</string>
     <string name="language_default">System default</string>
 
-    <string name="pref_title_theme_select">Select theme</string>
-    <string name="theme_automatic">Auto</string>
+    <string name="pref_title_theme_select">Theme</string>
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system_default">System default</string>
@@ -568,15 +583,16 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
 
     <string name="pref_title_quests2">Quest selection and display order</string>
     <string name="pref_subtitle_quests">%1$d of %2$d enabled</string>
-    <string name="pref_subtitle_quests_preset_name">Preset: %s</string>
+    <string name="pref_subtitle_quests_preset_name">for preset: %s</string>
 
     <string name="delete_confirmation">Delete</string>
     <string name="delete_cache_dialog_message">Delete all downloaded map data, including quests?\nData is refreshed after %1$s days and unused data is deleted after %2$s days automatically.</string>
 
-    <string name="pref_title_resurvey_intervals">Resurvey intervals</string>
-    <string name="resurvey_intervals_less_often">Ask less often</string>
+    <string name="pref_title_resurvey_intervals">Resurvey frequency</string>
+    <string name="pref_title_resurvey_intervals_summary">How often you are prompted to confirm whether previously mapped data is still correct.</string>
+    <string name="resurvey_intervals_less_often">Less often</string>
     <string name="resurvey_intervals_default">Default</string>
-    <string name="resurvey_intervals_more_often">Ask more often</string>
+    <string name="resurvey_intervals_more_often">More often</string>
 
     <string name="pref_title_delete_cache">Delete cache</string>
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
@@ -590,21 +606,23 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="action_deselect_all">Deselect all</string>
     <string name="pref_quests_deselect_all">Deselect all quests?</string>
 
-    <string name="action_manage_presets">Manage presets</string>
-
     <string name="action_reset">Reset</string>
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
-
 
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
 
     <string name="questList_disabled_in_country">Never shown in %s</string>
+    <string name="questList_disabled_by_default">Disabled by default</string>
 
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
 
 
     <!-- Managing quest presets screen -->
+
+    <string name="action_manage_presets">Manage presets</string>
+
+    <string name="action_manage_presets_summary">Under which name the quest selection below is saved.</string>
 
     <string name="quest_presets_preset_add">Add preset</string>
     <string name="quest_presets_preset_name">Preset name</string>
@@ -943,7 +961,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_camp_drinking_water_title">Is drinking water freely available to campers here?</string>
     <string name="quest_camp_shower_title">Are there showers here?</string>
-    <string name="quest_camp_power_supply_title">Is there any way for customers to charge their phone, laptop etc. here?</string>
+    <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
+    <string name="quest_camp_power_supply_hint">This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc.</string>
     <string name="quest_camp_type_title">Who may camp here?</string>
     <string name="quest_camp_type_tents_and_caravans">Both tents and motor homes, travel trailers, …</string>
     <string name="quest_camp_type_caravans_only">Only motor homes, travel trailers, …</string>
@@ -1084,6 +1103,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_internet_access_no">No connection</string>
 
     <string name="quest_is_amenity_inside_title">Is this inside a building?</string>
+    <string name="quest_isAmenityIndoor_outside_covered">Not inside, but covered</string>
+
     <string name="quest_defibrillator_location">Where is this defibrillator located?</string>
     <string name="quest_defibrillator_location_description">"Please provide a concise description of its position (e.g. “in the porter’s lounge”)."</string>
 
@@ -1186,7 +1207,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_noteDiscussion_hide2">"Hidden by %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
 
-    <string name="quest_oneway_title">"Is this a one-way street?"</string>
     <string name="quest_oneway2_title">"Is this a one-way street? In which direction?"</string>
     <string name="quest_oneway2_dir">"Oneway in this direction"</string>
     <string name="quest_oneway2_no_oneway">"Not a oneway"</string>
@@ -1275,9 +1295,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="produce_tung_nuts">Tung nuts</string>
 
     <string name="quest_parcel_locker_brand">"What’s the brand of this parcel locker?"</string>
-    <string name="quest_parcel_locker_pickup">Can you pick up parcels here?</string>
-    <string name="quest_parcel_locker_mail_in">Can you drop off parcels here?</string>
-    <string name="quest_parcel_locker_mail_in_answer_returns_only">Only for return deliveries</string>
 
     <string name="quest_parking_access_title2">Who is allowed to park here? Parking may be free or paid.</string>
     <string name="quest_access_yes">Any member of the general public</string>
@@ -1423,12 +1440,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
-
-
-    <string name="quest_shoulder_title">"Does this road have a shoulder or breakdown lane?"</string>
-    <string name="quest_shoulder_explanation2">"A shoulder or breakdown lane is a clearly marked emergency stopping lane. The area designated as the shoulder is not necessarily paved over its entire width and not necessarily wide enough for a car to stop completely off the traffic lane."</string>
-    <string name="quest_shoulder_value_yes">shoulder</string>
-    <string name="quest_shoulder_value_no">no shoulder</string>
 
     <string name="quest_sidewalk_surface_title">"What’s the surface of the sidewalk here?"</string>
 
@@ -1761,16 +1772,7 @@ Alternatively, you can leave a note (with a photo)."</string>
     <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Curb extension + traffic island</string>
     <string name="lane_narrowing_traffic_calming_none">No narrowed lane here</string>
-    <string name="about_title_logs">Logs (%1$d)</string>
-    <string name="about_summary_logs">for use in error reports</string>
-    <string name="action_filter">Filter</string>
-    <string name="action_share">Share logs</string>
-    <string name="about_title_show_logs">Show logs</string>
-    <string name="label_log_level">Log level</string>
-    <string name="label_log_newer_than">From</string>
-    <string name="label_log_older_than">To</string>
-    <string name="label_log_message_contains">Message contains</string>
-    <string name="title_logs_filters">Filter messages</string>
-    <string name="quest_isAmenityIndoor_outside_covered">Not inside, but covered</string>
+    <string name="quest_barrier_opening_width_gate">What is the width of the opening here?</string>
+    <string name="quest_barrier_opening_width_bollard">What is the widest gap one can pass through here?</string>
 
 </resources>

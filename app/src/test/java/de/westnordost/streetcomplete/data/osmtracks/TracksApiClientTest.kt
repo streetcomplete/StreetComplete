@@ -45,4 +45,3 @@ class TracksApiClientTest {
     private fun client(userLoginSource: UserLoginSource) =
         TracksApiClient(HttpClient(), OsmDevApi.URL, userLoginSource, TracksSerializer())
 }
-

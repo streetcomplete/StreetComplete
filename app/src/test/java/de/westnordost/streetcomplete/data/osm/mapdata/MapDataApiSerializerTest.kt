@@ -34,5 +34,4 @@ class MapDataApiSerializerTest {
             MapDataApiSerializer().serializeMapDataChanges(mapDataChanges, 1234L)
         )
     }
-
 }

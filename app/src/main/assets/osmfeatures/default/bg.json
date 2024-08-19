@@ -388,7 +388,6 @@
                         "burger": "Бургери",
                         "chicken": "Пиле",
                         "chinese": "Китайско",
-                        "chocolate": "Шоколад",
                         "coffee_shop": "Кафене",
                         "donut": "Донати",
                         "fish": "Риба",
@@ -2025,7 +2024,7 @@
                     "name": "Исторически форт"
                 },
                 "historic/memorial": {
-                    "name": "Мемориална плоча"
+                    "name": "Мемориал"
                 },
                 "historic/monument": {
                     "name": "Паметник"

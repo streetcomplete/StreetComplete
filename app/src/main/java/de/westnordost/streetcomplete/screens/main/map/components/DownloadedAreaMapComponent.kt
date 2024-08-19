@@ -1,13 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map.components
 
 import android.content.Context
-import androidx.annotation.UiThread
 import androidx.core.graphics.drawable.toBitmap
-import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.style.layers.FillLayer
-import org.maplibre.android.style.layers.Layer
-import org.maplibre.android.style.layers.PropertyFactory.*
-import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
@@ -16,6 +10,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.style.layers.FillLayer
+import org.maplibre.android.style.layers.Layer
+import org.maplibre.android.style.layers.PropertyFactory.*
+import org.maplibre.android.style.sources.GeoJsonSource
 import org.maplibre.geojson.Polygon
 
 class DownloadedAreaMapComponent(private val context: Context, private val map: MapLibreMap) {

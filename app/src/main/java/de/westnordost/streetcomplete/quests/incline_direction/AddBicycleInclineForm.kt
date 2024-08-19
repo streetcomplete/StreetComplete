@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
-import kotlin.math.PI
 
 class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>() {
     override val otherAnswers = listOf(

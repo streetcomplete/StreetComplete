@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import org.maplibre.android.maps.MapLibreMap
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
@@ -42,6 +41,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import org.maplibre.android.maps.MapLibreMap
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
@@ -182,7 +182,7 @@ class QuestPinsManager(
            stop when they have been cancelled in the meantime. The same with if they have been
            cancelled just after the DB fetch etc. (The coroutine can be cancelled at every place
            where you see that arrow with that green squiggle in the IDE)
-           */
+         */
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
             val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
@@ -201,7 +201,7 @@ class QuestPinsManager(
                whose center is outside the current view may hence be within the current view. Quest
                pins like these should not disappear when panning the map.
                Therefore, remove all quests that are not in view anymore that  ...
-              */
+             */
             questsInView.entries.removeAll { (_, pins) ->
                 // only have one pin (pin position = quest position)
                 pins.size == 1 ||

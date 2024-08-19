@@ -228,6 +228,10 @@
                     "label": "Ar condicionado",
                     "terms": "ar condicionado,ar fresco,ar quente,ac,ventilação,frescura"
                 },
+                "alt_name": {
+                    "label": "Nome alternativo",
+                    "terms": "alias,aka,secundário,opcional,alternativa,conhecido"
+                },
                 "amenity": {
                     "label": "Tipo"
                 },
@@ -264,6 +268,14 @@
                 },
                 "area/highway": {
                     "label": "Tipo"
+                },
+                "armrest": {
+                    "label": "Apoio de braço",
+                    "options": {
+                        "no": "Sem apoio de braço",
+                        "undefined": "Desconhecido",
+                        "yes": "Um ou mais apoios"
+                    }
                 },
                 "artist": {
                     "label": "Artista"
@@ -744,7 +756,8 @@
                     }
                 },
                 "changing_table": {
-                    "label": "Mesa para troca de fraldas"
+                    "label": "Mesa para troca de fraldas",
+                    "terms": "mesa,fraldário,fraldas,bebé,trocar"
                 },
                 "charge_fee": {
                     "label": "Taxa",
@@ -816,6 +829,9 @@
                 "communication_multi": {
                     "label": "Tipos de comunicações",
                     "terms": "comunicações,comunicação"
+                },
+                "community_centre": {
+                    "label": "Tipo"
                 },
                 "connectivity": {
                     "label": "Ligação"
@@ -1044,23 +1060,43 @@
                 "cuisine": {
                     "label": "Tipos de culinária",
                     "options": {
+                        "african": "Africana",
                         "american": "Americana",
+                        "arab": "Árabe",
+                        "argentinian": "Argentina",
                         "asian": "Asiática",
+                        "bagel": "Bagel",
+                        "balkan": "Balcãs",
+                        "barbecue": "Churrasco",
+                        "bavarian": "Bávara",
+                        "beef_bowl": "Gyūdon",
+                        "bistro": "Bistrô",
+                        "brazilian": "Brasileira",
+                        "breakfast": "Pequeno-almoço",
+                        "brunch": "Brunch",
                         "bubble_tea": "Chá de bolhas",
                         "burger": "Hambúrguer",
                         "cake": "Bolos",
+                        "caribbean": "Caribenha",
                         "chicken": "Frango",
                         "chinese": "Chinesa",
-                        "chocolate": "Chocolate",
                         "coffee_shop": "Serve café",
+                        "crepe": "Crepes",
+                        "curry": "Caril",
                         "dessert": "Sobremesas",
+                        "diner": "Diner",
                         "donut": "Donuts",
+                        "european": "Europeia",
                         "filipino": "Filipina",
                         "fish": "Peixe",
+                        "fish_and_chips": "Peixe e batatas fritas",
                         "french": "Francesa",
+                        "fries": "Batatas fritas",
+                        "frozen_yogurt": "Iogurte gelado",
                         "georgian": "Georgiana",
                         "german": "Alemã",
                         "greek": "Grega",
+                        "hawaiian": "Havaiana",
                         "hot_dog": "Cachorros-quentes",
                         "ice_cream": "Gelados",
                         "indian": "Indiana",
@@ -1072,27 +1108,44 @@
                         "korean": "Coreana",
                         "lebanese": "Libanesa",
                         "malaysian": "Malaia",
+                        "mediterranean": "Mediterrânica",
                         "mexican": "Mexicana",
+                        "middle_eastern": "Médio Oriente",
+                        "moroccan": "Marroquina",
+                        "noodle": "Noodles",
+                        "oriental": "Oriental",
                         "pancake": "Panquecas",
                         "pasta": "Massas",
+                        "pastry": "Pastelaria",
+                        "persian": "Persa",
                         "peruvian": "Peruana",
                         "pizza": "Piza",
                         "polish": "Polaca",
                         "portuguese": "Portuguesa",
+                        "ramen": "Ramen",
                         "regional": "Regional",
                         "russian": "Russa",
                         "salad": "Saladas",
                         "sandwich": "Sanduíches",
+                        "sausage": "Salsichas",
                         "seafood": "Marisco",
+                        "shawarma": "Xauarma",
+                        "soba": "Soba",
+                        "soup": "Sopas",
                         "spanish": "Espanhola",
                         "steak_house": "Steakhouse",
                         "sushi": "Sushi",
                         "taiwanese": "Taiwanesa",
+                        "tapas": "Tapas",
+                        "tea": "Chá",
                         "tex-mex": "Tex-Mex",
                         "thai": "Tailandesa",
                         "turkish": "Turca",
+                        "udon": "Udon",
                         "ukrainian": "Ucraniana",
-                        "vietnamese": "Vietnamita"
+                        "vietnamese": "Vietnamita",
+                        "western": "Ocidental",
+                        "wings": "Asas de frango"
                     },
                     "terms": "gastronomias,pratos,tipos de comida,culinárias"
                 },
@@ -1605,6 +1658,7 @@
                         "cng": "Gás natural comprimido (GNC)",
                         "diesel": "Diesel",
                         "e10": "E10",
+                        "e5": "E5",
                         "e85": "E85",
                         "h70": "Hidrogénio gasoso (700 bar)",
                         "lng": "Gás Natural Liquefeito (GNL)",
@@ -2100,6 +2154,9 @@
                 "kerb/height": {
                     "label": "Altura"
                 },
+                "kerb/kerb_barrier": {
+                    "label": "Tipo"
+                },
                 "kitchen": {
                     "label": "Cozinha",
                     "terms": "cozinha,cozinhar"
@@ -2217,6 +2274,10 @@
                     "label": "Iluminação",
                     "terms": "iluminado,luz,candeeiros"
                 },
+                "loc_name": {
+                    "label": "Nome local",
+                    "terms": "coloquial,comum,informal,alcunha,regional"
+                },
                 "location": {
                     "label": "Localização",
                     "terms": "localização"
@@ -2304,7 +2365,7 @@
                         "marble": "Mármore",
                         "metal": "Metal",
                         "plastic": "Plástico",
-                        "reinforced_conrete": "Betão armado",
+                        "reinforced_concrete": "Betão reforçado",
                         "rock": "Rocha",
                         "sand": "Areia",
                         "sandstone": "Arenito",
@@ -2485,6 +2546,10 @@
                     "placeholder": "Nome comum (caso exista)",
                     "terms": "nome,definição,título,denominação"
                 },
+                "nat_name": {
+                    "label": "Nome nacional",
+                    "terms": "país,nação,alternativo"
+                },
                 "natural": {
                     "label": "Natural"
                 },
@@ -2599,6 +2664,10 @@
                         "union": "Sindicato",
                         "water_utility": "Fornecedor de água"
                     }
+                },
+                "official_name": {
+                    "label": "Nome oficial",
+                    "terms": "legal,official,formal,registo,registado,legalizado"
                 },
                 "oneway": {
                     "label": "Sentido único?",
@@ -2929,7 +2998,8 @@
                     "label": "Tipo"
                 },
                 "playground/theme": {
-                    "label": "Tema"
+                    "label": "Tema",
+                    "terms": "tema,assunto,âmbito"
                 },
                 "plots": {
                     "label": "Lotes",
@@ -3120,6 +3190,10 @@
                 "ref_taxiway": {
                     "label": "Nome da pista de circulação",
                     "placeholder": "por exemplo: A5"
+                },
+                "reg_name": {
+                    "label": "Nome regional",
+                    "terms": "regional,região"
                 },
                 "relation": {
                     "label": "Tipo"
@@ -3454,6 +3528,10 @@
                 "shop": {
                     "label": "Tipo"
                 },
+                "short_name": {
+                    "label": "Nome abreviado",
+                    "terms": "abreviação,acrónimo,sigla,curto,reduzido"
+                },
                 "shower": {
                     "label": "Chuveiros",
                     "terms": "banhos,água,chuveiro,duche"
@@ -3781,8 +3859,11 @@
                     "options": {
                         "artificial_turf": "Relvado artificial",
                         "asphalt": "Asfalto",
+                        "clay": "Barro",
                         "compacted": "Compactada",
                         "concrete": "Betão",
+                        "concrete:lanes": "Vias de betão",
+                        "concrete:plates": "Placas de betão",
                         "dirt": "Terra",
                         "fine_gravel": "Gravilha fina",
                         "grass": "Relva",
@@ -3792,9 +3873,11 @@
                         "mud": "Lama (de modo persistente)",
                         "paved": "Pavimentada",
                         "paving_stones": "Pavimento ladrilhado",
+                        "pebblestone": "Seixos",
                         "salt": "Sal",
                         "sand": "Areia",
                         "sett": "Calçada (paralelos regulares)",
+                        "tartan": "Tartã",
                         "unhewn_cobblestone": "Calçada (pedra irregular/arredondada)",
                         "unpaved": "Não pavimentada",
                         "wood": "Madeira",
@@ -4054,6 +4137,10 @@
                         "rumble_strip": "Banda cromática",
                         "table": "Lomba de topo plano"
                     }
+                },
+                "traffic_calming_road": {
+                    "label": "Acalmia de trânsito",
+                    "terms": "lomba,lombada,chicana,trânsito,velocidade,redução,redutor,bump,chicane,choker,cushion,flat top,hump,rumble strip,slow,speed,table,traffic island'"
                 },
                 "traffic_sign": {
                     "label": "Sinal de trânsito"
@@ -5495,6 +5582,10 @@
                     "name": "Estúdio de cinema",
                     "terms": "estúdios,cinema,sétima arte,filme,filmes"
                 },
+                "amenity/swingerclub": {
+                    "name": "Clube de swing",
+                    "terms": "swing,clube,sexo,swinger,adultos"
+                },
                 "amenity/taxi": {
                     "name": "Praça de táxis",
                     "terms": "paragem de táxis,táxi,taxi"
@@ -5713,6 +5804,10 @@
                 "area/highway": {
                     "name": "Estrada (área)",
                     "terms": "rodovia,pavimento,área de pavimento,formato da estrada,área da estrada"
+                },
+                "area/highway/traffic_island": {
+                    "name": "Ilha rodoviária",
+                    "terms": "refúgio,island,traffic,highway,estrada,separador,divisor,divisão,separação"
                 },
                 "attraction": {
                     "name": "Atração turística"
@@ -6518,13 +6613,17 @@
                 },
                 "emergency/defibrillator": {
                     "name": "Desfibrilhador",
-                    "terms": "defibrillator,desfibrilador,desfibrilhação,desfibrilação"
+                    "terms": "defibrillator,desfibrilador,desfibrilhação,desfibrilação,dae,aed"
                 },
                 "emergency/designated": {
                     "name": "Acesso de emergência indicado"
                 },
                 "emergency/destination": {
                     "name": "Acesso de emergência, destino"
+                },
+                "emergency/disaster_response": {
+                    "name": "Centro de proteção civil",
+                    "terms": "catástrofes,calamidades,desastres,proteção,socorro,protecção,acidentes"
                 },
                 "emergency/fire_alarm": {
                     "name": "Caixa de alarme de incêndio",
@@ -6541,6 +6640,14 @@
                 "emergency/fire_hydrant": {
                     "name": "Boca de incêndio",
                     "terms": "hidrante,marco de água,marco de incêndio,fogo,chamas,extintor,hydrant,fire,incêndio,labaredas,bombeiros"
+                },
+                "emergency/fire_hydrant/pillar": {
+                    "name": "Hidrante pilar",
+                    "terms": "incêndio,incêndios,boca de,hydrant,fogo,fogos,bombeiros,água,mangueira,emergência"
+                },
+                "emergency/fire_hydrant/underground": {
+                    "name": "Hidrante subterrâneo",
+                    "terms": "incêndio,incêndios,boca de,hydrant,fogo,fogos,bombeiros,água,mangueira,emergência,subsolo,debaixo de terra"
                 },
                 "emergency/fire_service_inlet": {
                     "name": "Válvula para bombeiros",
@@ -6867,7 +6974,7 @@
                 },
                 "highway/emergency_bay": {
                     "name": "Paragem de emergência",
-                    "terms": "emergency stopping place,berma para paragem de emergência,faixa para paragem de emergência,local para paragem de emergência,local de paragem de emergência,acostamento de parada de emergência,acostamento para parada de emergência"
+                    "terms": "emergency,paragem,berma,refúgio,faixa,acostamento,parada,stopping"
                 },
                 "highway/escape": {
                     "name": "Escapatória",
@@ -6912,6 +7019,10 @@
                 "highway/give_way": {
                     "name": "Sinal de cedência de passagem",
                     "terms": "perda de prioridade,cedencia,cedência,prioridade,triângulo"
+                },
+                "highway/ladder": {
+                    "name": "Escada",
+                    "terms": "escadote,ladder"
                 },
                 "highway/living_street": {
                     "name": "Zona de coexistência",
@@ -7042,8 +7153,8 @@
                     "terms": "velocidade,radar,placa,trânsito,luminoso,speed,sinalização,eletrónico,eletrônico,eletronico,excesso"
                 },
                 "highway/steps": {
-                    "name": "Escadas",
-                    "terms": "escadaria,degraus"
+                    "name": "Escadaria",
+                    "terms": "escadas,degraus"
                 },
                 "highway/steps/conveying": {
                     "name": "Escada rolante",
@@ -7843,6 +7954,10 @@
                     "name": "Hipódromo",
                     "terms": "equestre,equino,cavalos,cavalo,corridas,racing,race,apostas,hipismo"
                 },
+                "leisure/sports_centre/karting": {
+                    "name": "Kartódromo",
+                    "terms": "karting,karts,go kart,corridas,desporto,motorizado,motor,automobilismo,racing,desportivo,complexo,centro"
+                },
                 "leisure/sports_centre/shooting": {
                     "name": "Centro desportivo de tiro ao alvo",
                     "terms": "tiro,disparo,alvo,treino,disparar,armas,campo de tiro,estande"
@@ -8022,6 +8137,14 @@
                 "man_made/flagpole": {
                     "name": "Mastro de bandeira",
                     "terms": "estandarte,bandeira"
+                },
+                "man_made/flare": {
+                    "name": "Torre do queimador de tocha",
+                    "terms": "gás,flare,stack,fogo,chama,burn,queima,queimar,gasoduto,combustão"
+                },
+                "man_made/footwear_decontamination-AU-NZ": {
+                    "name": "Ponto de descontaminação de calçado",
+                    "terms": "footwear,sapatos,ténis,limpeza,estação,posto,pés,descontaminar,botas"
                 },
                 "man_made/fuel_pump": {
                     "name": "Bomba de combustível",
@@ -8457,6 +8580,10 @@
                     "name": "Arbusto",
                     "terms": "mato,vegetação,planta lenhosa"
                 },
+                "natural/sinkhole": {
+                    "name": "Dolina",
+                    "terms": "depressão,buraco,sumidouro,cenote,sinkhole"
+                },
                 "natural/spring": {
                     "name": "Nascente de água",
                     "terms": "nascente,água,nasce,fonte,potável"
@@ -8481,13 +8608,15 @@
                     "terms": "árvore,caduca,decídua,decidua,deciduous,caducifólio,caducifólia"
                 },
                 "natural/tree/broadleaved/evergreen": {
-                    "name": "Árvore de folha larga perene"
+                    "name": "Árvore de folha larga perene",
+                    "terms": "folhas,largas,evergreen,perene,sempre-verde,perenal,perenifólio,perenifólia,folhagem,broadleaf,broadleaved,copa"
                 },
                 "natural/tree/needleleaved": {
                     "name": "Árvore de folha acicular"
                 },
                 "natural/tree/needleleaved/deciduous": {
-                    "name": "Árvore de folha acicular caduca"
+                    "name": "Árvore de folha acicular caduca",
+                    "terms": "folhas,folhagem,needleleaved,needle,copa,decíduo,caduco,decídua,caduca,caducifólia,caducifólio,agulhas"
                 },
                 "natural/tree/needleleaved/evergreen": {
                     "name": "Árvore de folha acicular perene",
@@ -9843,6 +9972,10 @@
                 "shop/hairdresser": {
                     "name": "Cabeleireiro(a)",
                     "terms": "hairdresser,cabeleireira,cabeleireiro,salão,barbeiro,barbearia,cabelo,corte,barba,bigode"
+                },
+                "shop/hairdresser/barber": {
+                    "name": "Barbeiro",
+                    "terms": "barber,barba,bigode,moustache,barbear,cabelos,cabeleireiro,corte,pera,pêra,shave,patilhas"
                 },
                 "shop/hairdresser_supply": {
                     "name": "Loja de acessórios de cabeleireiro",
