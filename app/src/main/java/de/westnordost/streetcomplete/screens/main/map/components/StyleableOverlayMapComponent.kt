@@ -280,8 +280,10 @@ class StyleableOverlayMapComponent(
                         pp.addProperty("icon", context.resources.getResourceEntryName(style.icon))
                     }
                     if (style.label != null) pp.addProperty("label", style.label)
-                    Feature.fromGeometry(geometry.center.toPoint(),pp)
-                } else null
+                    Feature.fromGeometry(geometry.center.toPoint(), pp)
+                } else {
+                    null
+                }
 
                 listOfNotNull(f, point)
             }
@@ -334,7 +336,9 @@ class StyleableOverlayMapComponent(
                         geometry.center.toPoint(),
                         JsonObject().apply { addProperty("label", style.label) }
                     )
-                } else null
+                } else {
+                    null
+                }
 
                 listOfNotNull(left, right, center, label)
             }
@@ -396,7 +400,7 @@ private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway
 private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
 
-private fun Style.getIcon(): Int? = when(this) {
+private fun Style.getIcon(): Int? = when (this) {
     is PointStyle -> icon
     is PolygonStyle -> icon
     is PolylineStyle -> null

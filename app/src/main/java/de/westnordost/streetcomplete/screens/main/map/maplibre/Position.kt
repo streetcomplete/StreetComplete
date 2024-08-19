@@ -51,7 +51,6 @@ fun ElementGeometry.toMapLibreGeometry(): Geometry = when (this) {
 fun ElementPointGeometry.toMapLibreGeometry(): Point =
     Point.fromLngLat(center.longitude, center.latitude)
 
-
 fun ElementPolylinesGeometry.toMapLibreGeometry(): Geometry =
     if (polylines.size == 1) {
         LineString.fromLngLats(polylines.single().map { it.toPoint() })

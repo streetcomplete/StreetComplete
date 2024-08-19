@@ -163,7 +163,7 @@ class QuestPinsManager(
            stop when they have been cancelled in the meantime. The same with if they have been
            cancelled just after the DB fetch etc. (The coroutine can be cancelled at every place
            where you see that arrow with that green squiggle in the IDE)
-           */
+         */
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
             val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
@@ -182,7 +182,7 @@ class QuestPinsManager(
                whose center is outside the current view may hence be within the current view. Quest
                pins like these should not disappear when panning the map.
                Therefore, remove all quests that are not in view anymore that  ...
-              */
+             */
             questsInView.entries.removeAll { (_, pins) ->
                 // only have one pin (pin position = quest position)
                 pins.size == 1 ||

@@ -38,10 +38,10 @@ open class UpdateMapStyleTask : DefaultTask() {
 private fun String.normalizeLineEndings() = this.replace("\r\n", "\n")
 
 private fun String.replaceAccessToken(apiKey: String): String =
-    replace(Regex("\\?access-token=[0-9A-Za-z+/=]*"),"?access-token=$apiKey")
+    replace(Regex("\\?access-token=[0-9A-Za-z+/=]*"), "?access-token=$apiKey")
 
 private fun String.replaceGlyphs(): String =
-    replace(Regex("https://api.jawg.io/glyphs"),"asset://map_theme/glyphs")
+    replace(Regex("https://api.jawg.io/glyphs"), "asset://map_theme/glyphs")
 
 private fun String.replaceSprites(): String =
-    replace(Regex("https://streetcomplete.app/map-jawg/sprites"),"asset://map_theme/sprites")
+    replace(Regex("https://streetcomplete.app/map-jawg/sprites"), "asset://map_theme/sprites")

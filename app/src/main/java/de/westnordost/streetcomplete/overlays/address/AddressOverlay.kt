@@ -58,4 +58,3 @@ class AddressOverlay(
 
     override fun createForm(element: Element?) = AddressOverlayForm()
 }
-

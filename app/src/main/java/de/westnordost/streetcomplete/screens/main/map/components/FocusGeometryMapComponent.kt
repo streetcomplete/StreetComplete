@@ -34,8 +34,8 @@ import kotlin.math.sin
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
-class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapLibreMap)
-    : DefaultLifecycleObserver {
+class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapLibreMap) :
+    DefaultLifecycleObserver {
 
     private val focusedGeometrySource = GeoJsonSource(SOURCE)
 

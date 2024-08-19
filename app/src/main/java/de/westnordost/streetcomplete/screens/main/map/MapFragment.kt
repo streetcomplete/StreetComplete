@@ -43,7 +43,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    protected var map : MapLibreMap? = null
+    protected var map: MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val prefs: Preferences by inject()

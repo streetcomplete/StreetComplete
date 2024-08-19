@@ -28,8 +28,8 @@ import org.maplibre.android.style.sources.GeoJsonSource
 import org.maplibre.geojson.Feature
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
-class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap)
-    : DefaultLifecycleObserver {
+class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap) :
+    DefaultLifecycleObserver {
 
     private val locationSource = GeoJsonSource(SOURCE)
     private val animation = ValueAnimator()
@@ -124,7 +124,9 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
                     iconAllowOverlap(true),
                     iconIgnorePlacement(true)
                 )
-        } else null
+        } else {
+            null
+        }
     )
 
     init {

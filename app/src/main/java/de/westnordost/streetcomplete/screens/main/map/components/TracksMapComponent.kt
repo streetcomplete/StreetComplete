@@ -27,8 +27,8 @@ import org.maplibre.geojson.Point
 import kotlin.math.max
 
 /** Takes care of showing the path(s) walked on the map */
-class TracksMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap)
-    : DefaultLifecycleObserver {
+class TracksMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap) :
+    DefaultLifecycleObserver {
     /* There are two sources simply as a performance optimization: If there are thousands of
        trackpoints, we don't want to update (=copy) the thousands of points each time a new
        trackpoint is added. Instead, we only update a list of 100 trackpoints each time a new

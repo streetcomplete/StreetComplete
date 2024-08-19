@@ -49,7 +49,6 @@ class ElementEditUploaderTest {
         }
     }
 
-
     @Test fun `handles changeset conflict exception`(): Unit = runBlocking {
         val edit: ElementEdit = mock()
         val action: ElementEditAction = mock()

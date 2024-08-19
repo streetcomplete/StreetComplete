@@ -62,7 +62,6 @@ suspend fun OfflineRegion.awaitDelete(): Unit = suspendCoroutine { cont ->
     })
 }
 
-
 suspend fun OfflineRegion.awaitDownload(): OfflineRegionStatus = suspendCoroutine { cont ->
     var observing = true
 

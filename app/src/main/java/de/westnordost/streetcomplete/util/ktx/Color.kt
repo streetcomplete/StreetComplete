@@ -49,9 +49,9 @@ fun String.toRGB(): RGB {
 data class HSV(val hue: Float, val saturation: Float, val value: Float) {
 
     init {
-        require(hue in 0f .. 360f) { "hue must be between 0..360 but was $hue" }
-        require(saturation in 0f .. 1f) { "saturation must be between 0..1 but was $saturation" }
-        require(value in 0f .. 1f) { "value must be between 0..1 but was $value" }
+        require(hue in 0f..360f) { "hue must be between 0..360 but was $hue" }
+        require(saturation in 0f..1f) { "saturation must be between 0..1 but was $saturation" }
+        require(value in 0f..1f) { "value must be between 0..1 but was $value" }
     }
 
     /** return as RGB */
