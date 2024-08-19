@@ -1170,7 +1170,7 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="default_disabled_msg_overlay">"Diese Aufgabe ist standardmäßig deaktiviert, da es bereits ein Overlay gibt, mit dem die Eingabe und Aktualisierung dieser Daten effektiver und effizienter ist."</string>
     <string name="quest_camp_drinking_water_title">"Ist Trinkwasser für Camper hier frei verfügbar?"</string>
     <string name="quest_camp_shower_title">"Gibt es hier Duschen?"</string>
-    <string name="quest_camp_power_supply_title">"Gibt es eine Möglichkeit für Kunden, ihr Telefon, ihren Laptop usw. hier aufzuladen?"</string>
+    <string name="quest_camp_power_supply_title">"Gibt es hier für Gäste nutzbare Steckdosen?"</string>
     <string name="quest_camp_type_title">"Wer darf hier campen?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Sowohl Zelte als auch Wohnmobile, Wohnwagen …"</string>
     <string name="quest_camp_type_caravans_only">"Nur Wohnmobile, Wohnwagen …"</string>
@@ -1402,4 +1402,9 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="action_manage_presets_summary">"Unter diesem Namen wird die unten stehende Aufgabenauswahl gespeichert."</string>
     <string name="quest_multiselect_hint">"Alles Zutreffende auswählen:"</string>
     <string name="quest_barrier_opening_width_gate">"Wie breit ist die Öffnung hier?"</string>
+    <string name="bridge">"auf Brücke"</string>
+    <string name="about_title_intro">"Einführung zeigen"</string>
+    <string name="about_category_help">"Hilfe"</string>
+    <string name="quest_camp_power_supply_hint">"Das könnten Steckdosen direkt im Campingbereich sein, Steckdosen in einem für Gäste zugänglichen Betriebsgebäude sein, eine dedizierte Ladestation für Telefone, Laptops, usw. sein"</string>
+    <string name="quest_barrier_opening_width_bollard">"Was ist die breiteste Lücke durch die man hier durchkommt?"</string>
 </resources>
