@@ -213,11 +213,11 @@ dependencies {
 
     // faster sqlite library (additional capabilities like R*-tree or json1 not used)
     // writing 25% faster, reading 5% faster than Android 9 built-in sqlite (tested with 3.36.0)
-    implementation("com.github.requery:sqlite-android:3.43.0")
-    implementation("androidx.sqlite:sqlite:2.3.0")
+    implementation("com.github.requery:sqlite-android:3.45.0")
+    implementation("androidx.sqlite:sqlite:2.4.0")
 
     // fast json (de)serialization used for database read and write
-    implementation("com.squareup.moshi:moshi:1.15.0")
+    implementation("com.squareup.moshi:moshi:1.15.1")
 
     // sunset-sunrise parser for lit quests
     implementation("com.luckycatlabs:SunriseSunsetCalculator:1.2")
@@ -225,7 +225,7 @@ dependencies {
     // diff utils for comparing filters modified by quest settings with original
     implementation("io.github.java-diff-utils:java-diff-utils:4.12")
 
-    // parser GPX
+    // parser for user-supplied GPX tracks
     implementation("com.github.ticofab:android-gpx-parser:2.3.1")
 }
 
