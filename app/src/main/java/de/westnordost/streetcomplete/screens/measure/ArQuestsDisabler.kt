@@ -10,7 +10,8 @@ class ArQuestsDisabler(
     private val arQuestNames = listOf(
         "AddMaxPhysicalHeight",
         "AddRoadWidth",
-        "AddCyclewayWidth"
+        "AddCyclewayWidth",
+        "AddBarrierOpening",
     )
 
     fun hideAllArQuests() {
