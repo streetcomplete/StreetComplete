@@ -11,8 +11,6 @@ import androidx.annotation.UiThread
 import androidx.core.content.getSystemService
 import androidx.core.graphics.Insets
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
-import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
@@ -51,6 +49,8 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.visibility
 import kotlin.math.PI
@@ -560,7 +560,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             centerCurrentPositionIfFollowing()
         }
     }
-
 
     //endregion
 
