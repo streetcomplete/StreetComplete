@@ -21,7 +21,7 @@ class AddBarrierOpening(
         nodes with
             (
                 barrier ~ gate|entrance|sliding_gate|swing_gate|wicket_gate|bollard|block
-                or cycle_barrier ~ single|diagonal
+                or barrier = cycle_barrier and cycle_barrier ~ single|diagonal
             )
             and (!maxwidth:physical or source:maxwidth_physical ~ ".*estimat.*")
             and (!width or source:width ~ ".*estimat.*")
