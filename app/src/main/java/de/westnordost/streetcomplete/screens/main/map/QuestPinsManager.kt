@@ -140,6 +140,7 @@ class QuestPinsManager(
     }
 
     private fun invalidate() {
+        viewLifecycleScope.launch { questsInViewMutex.withLock { questsInView.clear() } }
         lastDisplayedRect = null
         onNewScreenPosition()
     }
