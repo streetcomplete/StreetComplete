@@ -87,7 +87,7 @@ class MapDataWithEditsSource internal constructor(
                  *   * No new elements are being added
                  */
                 val deletedIsUnchanged = deletedElements.containsAll(deleted)
-                val hasUnknownElement = updated.any { it.key !in updatedElements }
+                val hasNewElements = updated.any { it.key !in updatedElements }
                 val elementsThatMightHaveChangedByKey = updated.mapNotNull { element ->
                     val key = element.key
                     if (element.isEqualExceptVersionAndTimestamp(updatedElements[key])) {
