@@ -1,11 +1,26 @@
 package de.westnordost.streetcomplete.screens.main.teammode
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.CubicBezierEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -14,31 +29,47 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
+import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.tutorial.TutorialScreen
+import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.WheelPicker
 import de.westnordost.streetcomplete.ui.common.WheelPickerState
 import de.westnordost.streetcomplete.ui.common.rememberWheelPickerState
 import de.westnordost.streetcomplete.ui.ktx.conditional
+import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.TeamColors
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.selectionBackground
+import kotlinx.coroutines.delay
 
 /** Wizard which enables team mode */
 @Composable
 fun TeamModeWizard(
     onDismissRequest: () -> Unit,
     onFinished: (teamSize: Int, indexInTeam: Int) -> Unit,
+    allQuestIconIds: List<Int>,
 ) {
     val teamSizes = remember { (2..TeamColors.size).toList() }
     val teamSizeState = rememberWheelPickerState()
@@ -55,7 +86,17 @@ fun TeamModeWizard(
             else true
         },
         illustration = { page ->
-            // TODO add illustration
+            AnimatedContent(
+                targetState = page,
+                transitionSpec = { fadeIn(tween(600)) togetherWith fadeOut(tween(600)) }
+            ) { p ->
+                when (p) {
+                    0 -> SplitQuestsIllustration(allQuestIconIds = allQuestIconIds)
+                    1 -> TeamSizeIllustration(teamSize = teamSize, selectedIndex = -1)
+                    2 -> TeamSizeIllustration(teamSize = teamSize, selectedIndex = indexInTeam)
+                }
+            }
+
         }
     ) { page ->
         Column(
@@ -151,11 +192,128 @@ private fun TeamModeColorSelect(
     }
 }
 
-@Preview
+
+@Composable
+private fun SplitQuestsIllustration(
+    allQuestIconIds: List<Int>
+) {
+    val padding = remember { Animatable(0f) }
+    val divider = remember { Animatable(0f) }
+    LaunchedEffect(allQuestIconIds) {
+        delay(1000)
+        padding.animateTo(1f, tween(1000))
+        divider.animateTo(1f, tween(500))
+    }
+
+    val arrangement = Arrangement.spacedBy((-48 + 64 * padding.value).dp)
+    val dividerColor = MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
+    val dividerWidth = 4.dp.toPx()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .drawBehind {
+                drawLine(
+                    color = dividerColor,
+                    start = Offset(center.x, 0f),
+                    end = Offset(center.x, size.height * divider.value),
+                    strokeWidth = dividerWidth,
+                )
+                drawLine(
+                    color = dividerColor,
+                    start = Offset(0f, center.y),
+                    end = Offset(size.width * divider.value, center.y),
+                    strokeWidth = dividerWidth,
+                )
+            },
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = arrangement
+    ) {
+        Row(
+            modifier = Modifier.weight(1f),
+            horizontalArrangement = arrangement
+        ) {
+            QuestPile(allQuestIconIds, Modifier.weight(1f))
+            QuestPile(allQuestIconIds, Modifier.weight(1f))
+        }
+        Row(
+            modifier = Modifier.weight(1f),
+            horizontalArrangement = arrangement
+        ) {
+            QuestPile(allQuestIconIds, Modifier.weight(1f))
+            QuestPile(allQuestIconIds, Modifier.weight(1f))
+        }
+    }
+}
+
+@Composable
+private fun QuestPile(
+    allQuestIconIds: List<Int>,
+    modifier: Modifier = Modifier,
+) {
+    BubblePile(
+        count = 15,
+        allIconsIds = allQuestIconIds,
+        bubbleSize = 50.dp,
+        modifier = modifier
+    )
+}
+
+@Composable
+private fun BoxScope.TeamSizeIllustration(teamSize: Int, selectedIndex: Int) {
+    for (i in hands.indices) {
+        val isSelected = selectedIndex == i
+        AnimatedVisibility(
+            visible = i < teamSize,
+            modifier = Modifier
+                .matchParentSize()
+                .zIndex(if (isSelected) 1f else 0f)
+                .scale(if (isSelected) 1.25f else 1f),
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            val colorFilter = if (selectedIndex >= 0 && !isSelected) {
+                ColorFilter.colorMatrix(ColorMatrix().also { it.setToSaturation(0.0f) })
+            } else {
+                null
+            }
+            Image(
+                painter = painterResource(hands[i]),
+                contentDescription = null,
+                colorFilter = colorFilter,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+    }
+}
+
+private val hands = listOf(
+    R.drawable.team_size_1,
+    R.drawable.team_size_2,
+    R.drawable.team_size_3,
+    R.drawable.team_size_4,
+    R.drawable.team_size_5,
+    R.drawable.team_size_6,
+    R.drawable.team_size_7,
+    R.drawable.team_size_8,
+    R.drawable.team_size_9,
+    R.drawable.team_size_10,
+    R.drawable.team_size_11,
+    R.drawable.team_size_12,
+)
+
+@PreviewScreenSizes
 @Composable
 private fun PreviewTeamModeWizard() {
     TeamModeWizard(
         onDismissRequest = { },
-        onFinished = { _, _ -> }
+        onFinished = { _, _ -> },
+        allQuestIconIds = listOf(
+            R.drawable.ic_quest_bicycle_parking,
+            R.drawable.ic_quest_building,
+            R.drawable.ic_quest_drinking_water,
+            R.drawable.ic_quest_notes,
+            R.drawable.ic_quest_street_surface,
+            R.drawable.ic_quest_wheelchair,
+        )
     )
 }
