@@ -254,7 +254,7 @@ class StyleableOverlayMapComponent(
                     p.addProperty("icon", context.resources.getResourceEntryName(style.icon))
                     val color = style.color ?: if (isNightMode) "#ccf" else "#124"
                     p.addProperty("icon-color", color)
-                    val haloColor = style.color?.let { getDarkenedColor(it) } ?: if (isNightMode) "#2e2e48" else "#fff"
+                    val haloColor = style.color?.let { getDarkenedColor(it) } ?: if (isNightMode) "#2e2e48" else "#ffffff"
                     p.addProperty("icon-halo-color", getDarkenedColor(haloColor))
                 }
                 if (style.label != null) p.addProperty("label", style.label)
