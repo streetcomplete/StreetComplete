@@ -84,9 +84,7 @@ class MapDataWithEditsSource internal constructor(
                  *  * The modified versions of all elements in updated are the same before and after
                  *    rebuildLocalChanges, except for the timestamp (expected to have few ms
                  *    difference) and version (never updated locally).
-                 * However, we do want to callOnUpdated if an updated element does not have an associated
-                 * modification, because in that case we cannot know whether the updated version is changed
-                 * compared to the previous version.
+                 *   * No new elements are being added
                  */
                 val deletedIsUnchanged = deletedElements.containsAll(deleted)
                 val hasUnknownElement = updated.any { it.key !in updatedElements }
