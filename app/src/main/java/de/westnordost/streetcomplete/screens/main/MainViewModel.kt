@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,6 +16,7 @@ abstract class MainViewModel : ViewModel() {
     /* messages */
     abstract val messagesCount: StateFlow<Int>
     abstract suspend fun popMessage(): Message?
+    abstract val questTypes: List<QuestType>
 
     /* overlays */
     abstract val selectedOverlay: StateFlow<Overlay?>

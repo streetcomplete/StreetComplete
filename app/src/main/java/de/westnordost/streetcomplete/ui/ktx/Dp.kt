@@ -36,3 +36,9 @@ fun TextUnit.toDp() = with(LocalDensity.current) {
 fun Dp.dpToSp() = with(LocalDensity.current) {
     this@dpToSp.toSp()
 }
+
+@Composable
+@ReadOnlyComposable
+fun Dp.toPx() = with(LocalDensity.current) {
+    this@toPx.toPx()
+}

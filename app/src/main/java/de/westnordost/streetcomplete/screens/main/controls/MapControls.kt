@@ -320,9 +320,11 @@ fun MapControls(
     }
 
     shownMessage?.let { message ->
+        val questIcons = remember { viewModel.questTypes.map { it.icon } }
         MessageDialog(
             message = message,
-            onDismissRequest = { shownMessage = null }
+            onDismissRequest = { shownMessage = null },
+            allQuestIconIds = questIcons
         )
     }
 

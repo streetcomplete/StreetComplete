@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.platform.InternetConnectionState
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.user.UserLoginSource
@@ -45,6 +47,7 @@ class MainViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val internetConnectionState: InternetConnectionState,
     private val selectedOverlayController: SelectedOverlayController,
+    private val questTypeRegistry: QuestTypeRegistry,
     private val overlayRegistry: OverlayRegistry,
     private val messagesSource: MessagesSource,
     private val teamModeQuestFilter: TeamModeQuestFilter,
@@ -70,6 +73,8 @@ class MainViewModelImpl(
 
     override suspend fun popMessage(): Message? =
         withContext(IO) { messagesSource.popNextMessage() }
+
+    override val questTypes: List<QuestType> get() = questTypeRegistry
 
     /* overlays */
 

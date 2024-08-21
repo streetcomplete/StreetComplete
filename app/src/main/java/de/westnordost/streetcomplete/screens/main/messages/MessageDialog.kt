@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 @Composable
 fun MessageDialog(
     message: Message,
+    allQuestIconIds: List<Int>,
     onDismissRequest: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -39,7 +40,8 @@ fun MessageDialog(
                 onDismissRequest = onDismissRequest,
                 onClickOpenSettings = {
                     context.startActivity(SettingsActivity.createLaunchQuestSettingsIntent(context))
-                }
+                },
+                allQuestIconIds = allQuestIconIds
             )
         }
         is OsmUnreadMessagesMessage -> {

@@ -23,6 +23,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
@@ -94,6 +95,7 @@ fun UnreadMessagesDialog(
                         alpha = 0.4f + c * 0.6f
                         translationY = (140f * (1f - c)) * density
                     }
+                    .shadow(24.dp)
                 )
             }
         }

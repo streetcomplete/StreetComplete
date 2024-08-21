@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.edithistory
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -33,6 +34,7 @@ import java.text.DateFormat
 
 /** Confirmation dialog for undoing an edit.
  *  Shows details about an edit - time, icon, title, location and what was changed */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun UndoDialog(
     edit: Edit,
