@@ -142,7 +142,7 @@ private fun CompactMenuButton(
         modifier = modifier
             .fillMaxWidth()
             .clickable { onClick() }
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         icon()
