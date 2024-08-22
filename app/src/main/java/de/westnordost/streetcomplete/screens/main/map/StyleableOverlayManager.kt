@@ -133,7 +133,7 @@ class StyleableOverlayManager(
         val displayedArea = withContext(Dispatchers.Main) { map.screenAreaToBoundingBox() }
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
-        if (tilesRect.size > 16) return
+        if (tilesRect.size > 32) return
         val isNewRect = lastDisplayedRect?.contains(tilesRect) != true
         if (!isNewRect) return
 
