@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ui.common.dialogs
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -37,6 +38,7 @@ import de.westnordost.streetcomplete.ui.theme.AppTheme
 /** List picker dialog with OK and cancel button that expands to its maximum possible size in both
  *  directions, scrollable.
  *  (See explanation in ScrollableAlertDialog why it expands to the maximum possible size)*/
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun <T> ListPickerDialog(
     onDismissRequest: () -> Unit,
