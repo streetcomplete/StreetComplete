@@ -5,6 +5,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -48,6 +49,7 @@ import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
@@ -86,17 +88,16 @@ fun TeamModeWizard(
             else true
         },
         illustration = { page ->
+            val selectedIndex = if (page > 1) indexInTeam else -1
             AnimatedContent(
-                targetState = page,
+                targetState = page > 0,
                 transitionSpec = { fadeIn(tween(600)) togetherWith fadeOut(tween(600)) }
-            ) { p ->
-                when (p) {
-                    0 -> SplitQuestsIllustration(allQuestIconIds = allQuestIconIds)
-                    1 -> TeamSizeIllustration(teamSize = teamSize, selectedIndex = -1)
-                    2 -> TeamSizeIllustration(teamSize = teamSize, selectedIndex = indexInTeam)
+            ) {
+                when (it) {
+                    false -> SplitQuestsIllustration(allQuestIconIds = allQuestIconIds)
+                    true -> TeamSizeIllustration(teamSize = teamSize, selectedIndex = selectedIndex)
                 }
             }
-
         }
     ) { page ->
         Column(
@@ -192,7 +193,6 @@ private fun TeamModeColorSelect(
     }
 }
 
-
 @Composable
 private fun SplitQuestsIllustration(
     allQuestIconIds: List<Int>
@@ -259,23 +259,22 @@ private fun QuestPile(
 }
 
 @Composable
-private fun BoxScope.TeamSizeIllustration(teamSize: Int, selectedIndex: Int) {
+private fun TeamSizeIllustration(teamSize: Int, selectedIndex: Int) {
     for (i in hands.indices) {
+        val hasSelection = selectedIndex >= 0
         val isSelected = selectedIndex == i
+        val animatedSelected by animateFloatAsState(if (isSelected) 1f else 0f)
+
         AnimatedVisibility(
             visible = i < teamSize,
             modifier = Modifier
-                .matchParentSize()
+                .fillMaxSize()
                 .zIndex(if (isSelected) 1f else 0f)
-                .scale(if (isSelected) 1.25f else 1f),
+                .scale(1f + animatedSelected * 0.5f),
             enter = fadeIn(),
             exit = fadeOut()
         ) {
-            val colorFilter = if (selectedIndex >= 0 && !isSelected) {
-                ColorFilter.colorMatrix(ColorMatrix().also { it.setToSaturation(0.0f) })
-            } else {
-                null
-            }
+            val colorFilter = if (hasSelection) ColorFilter.saturation(animatedSelected) else null
             Image(
                 painter = painterResource(hands[i]),
                 contentDescription = null,
@@ -285,6 +284,9 @@ private fun BoxScope.TeamSizeIllustration(teamSize: Int, selectedIndex: Int) {
         }
     }
 }
+
+private fun ColorFilter.Companion.saturation(sat: Float) =
+    colorMatrix(ColorMatrix().also { it.setToSaturation(sat) })
 
 private val hands = listOf(
     R.drawable.team_size_1,
@@ -301,7 +303,7 @@ private val hands = listOf(
     R.drawable.team_size_12,
 )
 
-@PreviewScreenSizes
+@Preview
 @Composable
 private fun PreviewTeamModeWizard() {
     TeamModeWizard(
