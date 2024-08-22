@@ -530,9 +530,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         updateCameraPosition(600) {
             if (isNavigationMode) {
                 val bearing = getTrackBearing(tracks.last())
-                if (bearing != null) {
-                    rotation = -(bearing * PI / 180.0)
-                }
+                if (bearing != null) rotation = bearing
                 tilt = 60.0
             }
 
