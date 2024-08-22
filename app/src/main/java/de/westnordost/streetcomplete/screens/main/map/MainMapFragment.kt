@@ -204,7 +204,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
-        pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, fingerRadius, ::onClickPin)
+        pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, ::onClickPin)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 
