@@ -20,7 +20,10 @@ class AddBarrierOpening(
 
     private val nodeFilter by lazy { """
         nodes with
-            barrier ~ gate|entrance|sliding_gate|swing_gate|wicket_gate|bollard|block
+            (
+                barrier ~ gate|entrance|sliding_gate|swing_gate|wicket_gate|bollard|block
+                or barrier = cycle_barrier and cycle_barrier ~ single|diagonal
+            )
             and (!maxwidth:physical or source:maxwidth_physical ~ ".*estimat.*")
             and (!width or source:width ~ ".*estimat.*")
             and (!maxwidth or source:maxwidth ~ ".*estimat.*")
@@ -42,7 +45,7 @@ class AddBarrierOpening(
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags["barrier"] == "bollard" || tags["barrier"] == "block") {
+        if (tags["barrier"] == "bollard" || tags["barrier"] == "block" || tags["cycle_barrier"] == "diagonal") {
             R.string.quest_barrier_opening_width_bollard
         } else {
             R.string.quest_barrier_opening_width_gate
