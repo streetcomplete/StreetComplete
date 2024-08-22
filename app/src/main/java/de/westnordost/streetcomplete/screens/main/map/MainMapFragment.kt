@@ -341,7 +341,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     private fun onCompassRotationChanged(rot: Float, tilt: Float) {
-        locationMapComponent?.rotation = rot * 180 / PI
+        locationMapComponent?.rotation = (rot * 180 / PI) + (map?.camera?.rotation ?: 0.0)
     }
 
     private fun onLocationChanged(location: Location) {
