@@ -51,8 +51,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
   * Highlight obstacles along the way for smoothness quests
   * Open settings when pressing menu key in main menu dialog
   * Allow switching to aerial view while adding or moving a node
-  * Some potential performance improvements
-* New quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest
+* New quests that are not eligible for StreetComplete, usually because some answers cannot be tagged, or because not everyone has the required knowledge to answer the quest. These quests can only be enabled when expert mode is on.
   * Material of benches and picnic tables
   * Phone number and website
   * Cuisine
@@ -89,9 +88,7 @@ SCEE asks for two more permissions than StreetComplete: `ACCESS_BACKGROUND_LOCAT
 * Settings
   * Additional darker dark theme
   * Background map can be changed to aerial / satellite imagery
-  * Separate deletion of quest and map tile cache
   * Adjust location update intervals
-  * Log reader (not a setting, but it's in the menu)
   * Expert mode that enables capabilities, some of which can be dangerous when used by inexperienced OSM contributors
     * Directly edit tags, with suggestions from iD and last used values
     * Add nodes everywhere, either free-floating or as part of a way
