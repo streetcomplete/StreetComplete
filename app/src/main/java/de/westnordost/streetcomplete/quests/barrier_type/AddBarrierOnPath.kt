@@ -24,7 +24,8 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
 
     private val pathsFilter by lazy { """
         ways with
-          (highway ~ ${ALL_PATHS.joinToString("|")} and area != yes)
+          highway ~ ${ALL_PATHS.joinToString("|")}
+          and area != yes
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 

@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.width.AddWidthForm
 import de.westnordost.streetcomplete.quests.width.WidthAnswer
@@ -26,9 +27,11 @@ class AddBarrierOpening(
             and access !~ private|no|customers|agricultural
         """.toElementFilterExpression() }
 
-    private val excludedWaysFilter by lazy { """
+    private val waysFilter by lazy { """
         ways with
-            highway and access ~ private|no|customers|agricultural
+            highway
+            and area != yes
+            and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify width of opening"
@@ -46,12 +49,12 @@ class AddBarrierOpening(
         }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
-        val excludedWayNodeIds = mapData.ways
-            .filter { excludedWaysFilter.matches(it) }
+        val wayNodeIds = mapData.ways
+            .filter { waysFilter.matches(it) }
             .flatMapTo(HashSet()) { it.nodeIds }
 
         return mapData.nodes
-            .filter { nodeFilter.matches(it) && it.id !in excludedWayNodeIds }
+            .filter { it.id in wayNodeIds && nodeFilter.matches(it) }
     }
 
     override fun isApplicableTo(element: Element) =
