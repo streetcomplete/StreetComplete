@@ -33,7 +33,6 @@ import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.hasPermission
-import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -54,7 +53,7 @@ class QuestsSettingsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.rootView.findViewById<Toolbar>(R.id.toolbar)?.apply {
-            setUpToolbarTitleAndIcon(this)
+//            setUpToolbarTitleAndIcon(this)
         }
     }
 

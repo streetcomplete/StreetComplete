@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
-import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
@@ -62,7 +61,6 @@ class PinsMapComponent(
     private val contentResolver: ContentResolver,
     private val map: MapLibreMap,
     private val mapImages: MapImages,
-    private val clickRadius: Float,
     private val onClickPin: (properties: Map<String, String>) -> Unit
 ) {
     private val pinsSource = GeoJsonSource(SOURCE,
@@ -205,9 +203,8 @@ class PinsMapComponent(
 
     private fun onClick(position: LatLng): Boolean {
         val feature = map.queryRenderedFeatures(
-            coordinates = map.projection.toScreenLocation(position),
-            radius = clickRadius,
-            layerIds = arrayOf("pins-layer", "pin-cluster-layer", "pin-quest-dot-layer")
+            map.projection.toScreenLocation(position),
+            *arrayOf("pins-layer", "pin-cluster-layer", "pin-quest-dot-layer")
         ).firstOrNull() ?: return false
 
         val properties = feature.properties()

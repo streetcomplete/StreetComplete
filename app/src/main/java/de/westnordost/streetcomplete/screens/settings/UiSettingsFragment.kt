@@ -22,7 +22,6 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
-import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import org.koin.android.ext.android.inject
 
 class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
@@ -34,7 +33,7 @@ class UiSettingsFragment : PreferenceFragmentCompat(), HasTitle {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.rootView.findViewById<Toolbar>(R.id.toolbar)?.apply {
-            setUpToolbarTitleAndIcon(this)
+//            setUpToolbarTitleAndIcon(this)
         }
     }
 

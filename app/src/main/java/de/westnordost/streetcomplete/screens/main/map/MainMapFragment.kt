@@ -208,7 +208,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
-        pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, fingerRadius, ::onClickPin)
+        pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, ::onClickPin)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map, prefs.prefs)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 
@@ -357,7 +357,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     private fun onCompassRotationChanged(rot: Float, tilt: Float) {
-        locationMapComponent?.rotation = rot * 180 / PI
+        locationMapComponent?.rotation = (rot * 180 / PI) - (map?.camera?.rotation ?: 0.0)
     }
 
     private fun onLocationChanged(location: Location) {
@@ -560,9 +560,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         updateCameraPosition(600) {
             if (isNavigationMode) {
                 val bearing = getTrackBearing(tracks.last())
-                if (bearing != null) {
-                    rotation = -(bearing * PI / 180.0)
-                }
+                if (bearing != null) rotation = bearing
                 tilt = 60.0
             }
 
