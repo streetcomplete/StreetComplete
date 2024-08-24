@@ -61,6 +61,8 @@ class CrashReportExceptionHandler(
         if (hasCrashReport()) {
             val reportText = readCrashReportFromFile()
             deleteCrashReport()
+            if (reportText?.contains("streetcomplete") != true && reportText?.contains("maplibre") == true)
+                return // dont ask to report that maplibre crash, it's wasting too much time
             askUserToSendErrorReport(activityCtx, R.string.crash_title, reportText)
         }
     }
