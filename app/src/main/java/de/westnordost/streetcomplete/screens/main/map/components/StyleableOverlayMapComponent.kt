@@ -4,19 +4,6 @@ import android.content.Context
 import android.content.res.Configuration
 import androidx.annotation.UiThread
 import com.google.gson.JsonObject
-import org.maplibre.geojson.Feature
-import org.maplibre.geojson.FeatureCollection
-import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.style.expressions.Expression.*
-import org.maplibre.android.style.layers.FillExtrusionLayer
-import org.maplibre.android.style.layers.FillLayer
-import org.maplibre.android.style.layers.Layer
-import org.maplibre.android.style.layers.LineLayer
-import org.maplibre.android.style.layers.Property
-import org.maplibre.android.style.layers.PropertyFactory.*
-import org.maplibre.android.style.layers.SymbolLayer
-import org.maplibre.android.style.sources.GeoJsonOptions
-import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -29,8 +16,8 @@ import de.westnordost.streetcomplete.overlays.PolylineStyle
 import de.westnordost.streetcomplete.overlays.Style
 import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
-import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isLine
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
@@ -41,6 +28,19 @@ import de.westnordost.streetcomplete.util.ktx.toRGB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.style.expressions.Expression.*
+import org.maplibre.android.style.layers.FillExtrusionLayer
+import org.maplibre.android.style.layers.FillLayer
+import org.maplibre.android.style.layers.Layer
+import org.maplibre.android.style.layers.LineLayer
+import org.maplibre.android.style.layers.Property
+import org.maplibre.android.style.layers.PropertyFactory.*
+import org.maplibre.android.style.layers.SymbolLayer
+import org.maplibre.android.style.sources.GeoJsonOptions
+import org.maplibre.android.style.sources.GeoJsonSource
+import org.maplibre.geojson.Feature
+import org.maplibre.geojson.FeatureCollection
 
 /** Takes care of displaying styled map data */
 class StyleableOverlayMapComponent(
@@ -280,8 +280,10 @@ class StyleableOverlayMapComponent(
                         pp.addProperty("icon", context.resources.getResourceEntryName(style.icon))
                     }
                     if (style.label != null) pp.addProperty("label", style.label)
-                    Feature.fromGeometry(geometry.center.toPoint(),pp)
-                } else null
+                    Feature.fromGeometry(geometry.center.toPoint(), pp)
+                } else {
+                    null
+                }
 
                 listOfNotNull(f, point)
             }
@@ -334,7 +336,9 @@ class StyleableOverlayMapComponent(
                         geometry.center.toPoint(),
                         JsonObject().apply { addProperty("label", style.label) }
                     )
-                } else null
+                } else {
+                    null
+                }
 
                 listOfNotNull(left, right, center, label)
             }
@@ -396,7 +400,7 @@ private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway
 private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
 
-private fun Style.getIcon(): Int? = when(this) {
+private fun Style.getIcon(): Int? = when (this) {
     is PointStyle -> icon
     is PolygonStyle -> icon
     is PolylineStyle -> null

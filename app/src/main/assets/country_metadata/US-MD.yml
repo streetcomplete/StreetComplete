@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Bank of America, M&T Bank, American Crypto, Wells Fargo, PNC Bank, Chase, Truist, State Employees Credit Union, SunTrust, Fulton Bank, Navy Federal Credit Union, Capital One, Johns Hopkins Federal Credit Union, Freedom Federal Credit Union, APGFCU]
-chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Volta, Blink, EVgo, BGE, Shell Recharge Solutions, EVSmart, eVgo, Electric Vehicle Institute, Electrify America, greenlots, Tesla Motors, NRG Energy, SemaCharge, EVCS, EV Institute, BWI Airport]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Volta, Blink, EVgo, BGE, Shell Recharge Solutions, EVSmart, eVgo, Electric Vehicle Institute, Electrify America, EVCS, greenlots, Tesla Motors, NRG Energy, SemaCharge, EV Institute, BWI Airport]
 clothesContainerOperators: [Planet Aid, JJ Recycling]
 defaultSpeedLimitHasUrbanOrRural: true
 noStoppingLineStyle: yellow on curb

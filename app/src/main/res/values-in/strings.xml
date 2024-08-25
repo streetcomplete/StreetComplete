@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Autorisasi gagal: Semua izin yang ada pada daftar harus diberikan"</string>
     <string name="pref_category_communication">"Komunikasi"</string>
     <string name="pref_category_display">"Tampilan"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Ruang penyimpanan eksternal (dalam megabita) untuk menyimpan petak peta"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tampilkan semua catatan"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Tampilkan juga catatan yang bukan pertanyaan"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Mengabaikan catatan yang bukan pertanyaan"</string>
-    <string name="pref_title_map_cache">"Ukuran cache peta"</string>
     <string name="map_btn_gps_tracking">"Ikuti saya"</string>
     <string name="map_attribution_osm">"© Kontributor OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Jawaban lainnya…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Lokasi nonaktif. Buka pengaturan untuk mengaktifkan?"</string>
     <string name="no_location_permission_warning">"Izin lokasi dibutuhkan untuk menampilkan posisi kamu di peta dan memindai pencarian di sekitarmu."</string>
     <string name="about_title_authors">"Kredit"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick dan kontributor"</string>
     <string name="about_title_repository">"Beranda Proyek"</string>
-    <string name="about_summary_repository">"di GitHub"</string>
     <string name="about_title_report_error">"Laporkan kesalahan"</string>
     <string name="about_title_feedback">"Beri Tanggapan"</string>
     <string name="about_title_license">"Lisensi"</string>
-    <string name="about_summary_license">"Lisensi Publik Umum GNU"</string>
     <string name="offline">"Kamu sedang luring"</string>
     <string name="confirmation_authorize_now">"Kamu perlu memberi otorisasi pada akun OSM kamu untuk mengunggah jawaban. Otorisasi sekarang?"</string>
     <string name="not_authorized">"Belum diotorisasi"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Ini hanya menghubungkan dua jalan"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Lainnya (tinggalkan catatan)"</string>
     <string name="about_title_privacy_statement">"Pernyataan privasi"</string>
-    <string name="about_summary_privacy_statement">"dan penggunaan data"</string>
     <string name="quest_openingHours_public_holidays">"Hari libur nasional"</string>
     <string name="quest_openingHours_public_holidays_short">"Libur Nasional"</string>
     <string name="quest_openingHours_open_end">"Buka tutup"</string>
@@ -83,7 +76,7 @@ semisal \"sesuai janji\". Jika tidak ada tandanya bukan berarti tidak ada jam bu
     <string name="map_btn_zoom_out">"Perkecil"</string>
     <string name="map_btn_zoom_in">"Perbesar"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, seseorang yang peduli dengan privasi, keren! Aku punya hanya berita baik untuk kamu:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Kontribusi Langsung&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Kontribusi Langsung&lt;/h2&gt;
 &lt;p&gt;
 Pertama, pahami bahwa dengan aplikasi ini, kamu membuat kontribusi langsung dan benar ke OpenStreetMap.&lt;br/&gt;
 Semua yang kamu kontribusikan di aplikasi ini langsung ditambahkan ke peta, tak ada pihak ketiga di antara aplikasi dan infrastruktur OSM.
@@ -92,12 +85,12 @@ Semua yang kamu kontribusikan di aplikasi ini langsung ditambahkan ke peta, tak 
 Menyunting OpenStreetMap secara anonim tidak dapat dilakukan. Semua perubahan yang kamu buat (serta tanggal dan lokasinya) diatribusikan ke akun pengguna OSM kamu dan terlihat pada situs web openstreetmap.org. Karena StreetComplete hanya digunakan untuk survey di tempat, ini menunjukkan di mana dan kapan kamu menggunakan aplikasinya.
 &lt;/p&gt;
 
-&lt;b&gt;Lokasi&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Lokasi&lt;/h2&gt;
 &lt;p&gt;
 Aplikasi ini tidak membagikan lokasi GPS kamu ke siapapun. GPS digunakan untuk memindai pencarian secara otomatis di sekitar daerah kamu dan untuk menampilkan (dan mengunduh) peta di sekitar lokasi kamu.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Penggunaan Data&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Penggunaan Data&lt;/h2&gt;
 &lt;p&gt;
 Seperti yang telah disebutkan, aplikasi ini berkomunikasi langsung dengan infrastruktur OSM.&lt;br/&gt;
 Namun, sebelum perubahan kamu diunggah, aplikasi diperiksa dengan &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;berkas teks sederhana&lt;/a&gt; pada server saya apakah aplikasi sudah dilarang untuk mengunggah perubahan apapun. Ini adalah langkah pencegahan untuk menjaga versi aplikasi yang ternyata memiliki bug kritis yang mungkin dapat merusak data OSM.&lt;/p&gt;
@@ -124,7 +117,6 @@ Namun, sebelum perubahan kamu diunggah, aplikasi diperiksa dengan &lt;a href=\"h
     <string name="quest_surface_value_wood">"Kayu"</string>
     <string name="quest_sidewalk_title">"Apa jalan ini memiliki trotoar?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Jalan ini ada di mana?"</string>
-    <string name="quest_oneway_title">"Apakah ini jalan satu arah?"</string>
     <string name="quest_address_title">"Nomor berapa bangunan ini?"</string>
     <string name="store_listing_short_description">"Aplikasi surveyor OpenStreetMap"</string>
     <string name="store_listing_full_description">"Bantu memperbaiki OpenStreetMap dengan StreetComplete!
@@ -392,7 +384,7 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_select_hint_most_specific">"Pilih yang paling spesifik dan mendekati:"</string>
     <string name="quest_generic_item_confirmation">"Apa kamu yakin tidak dapat menentukan yang lebih spesifik?"</string>
     <string name="privacy_html_third_party_quest_sources">"
-&lt;p&gt;Untuk sebagian pencarian, beberapa data tambahan dari pihak ketiga turut diunduh. Khususnya, pencarian satu arah sebagai API, juga dihost di westnordost.de, tentang kandidat yang mungkin untuk jalan satu arah&lt;/p&gt;
+&lt;p&gt;Untuk sebagian pencarian, beberapa data tambahan dari pihak ketiga turut diunduh.&lt;/p&gt;
 "</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Tidak (tinggalkan catatan)"</string>
     <string name="pref_quests_reset">"Reset pengaktifan pencarian dan urutan seperti semula?"</string>
@@ -508,7 +500,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Apa pejalan kaki dilarang melewati jalan ini?"</string>
     <string name="quest_buildingType_title">"Bangunan apakah ini?"</string>
     <string name="pref_title_theme_select">"Pilih tema"</string>
-    <string name="theme_automatic">"Otomatis"</string>
     <string name="theme_light">"Terang"</string>
     <string name="theme_dark">"Gelap"</string>
     <string name="theme_system_default">"Default Sistem"</string>
@@ -538,7 +529,6 @@ Pisah sekarang?"</string>
     <string name="quest_maxweight_answer_other_sign">"Tanda terlihat berbeda…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Apakah kamu ingin meninggalkan catatan? Catatan dengan foto akan memudahkan pemeta lain menyelesaikannya."</string>
     <string name="quest_handrail_title">"Apa tangga ini punya susur tangan?"</string>
-    <string name="about_summary_current_version">"Versi sekarang: %s"</string>
     <string name="quest_ref_answer_noRef">"Tak ada nomor referensi yang terlihat…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Jalan dalam ilustrasi diputar sama seperti pada peta di lokasi pin."</string>
     <string name="quest_recycling_materials_title">"Apa yang tersisa di sini untuk didaur ulang?"</string>
@@ -563,7 +553,6 @@ Pisah sekarang?"</string>
     <string name="about_title_changelog">"Sejarah versi"</string>
     <string name="title_whats_new">"Apa yang baru?"</string>
     <string name="about_title_rate">"Beri aplikasi rating"</string>
-    <string name="about_summary_rate">"di Google Play"</string>
     <string name="about_title_donate">"Donasi"</string>
     <string name="about_summary_donate">"Beri apresiasimu! ❤️"</string>
     <string name="about_description_donate">"Terima kasih sudah memilih untuk mendukung aplikasi ini! Untuk melihat donasi sekarang dan donasimu sendiri, tekan di platform yang sesuai"</string>
@@ -959,7 +948,6 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
     <string name="quest_barrier_bicycle_type_single">"Melewati antar penghalang"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - penghalang di setiap sisi"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - lebih dari dua penghalang"</string>
-    <string name="pref_title_language_select">"Pilih bahasa"</string>
     <string name="language_default">"Default Sistem"</string>
     <string name="on_floor">"pada lantai %s"</string>
     <string name="select_street_parking_orientation">"Pilih arah menuju jalan:"</string>
@@ -984,7 +972,6 @@ Data disegarkan setelah %1$s hari dan data yang tidak digunakan dihapus setelah 
 
 Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_address_house_number_label">"Nomor rumah:"</string>
-    <string name="quest_shoulder_title">"Apa jalan ini memiliki bahu jalan?"</string>
     <string name="quest_fireHydrant_position_title">"Di mana letak hidran kebakaran ini?"</string>
     <string name="quest_fireHydrant_position_green">"Di rumput, lumpur, atau semak"</string>
     <string name="quest_fireHydrant_position_lane">"Pada jalan"</string>
@@ -1035,8 +1022,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_barrier_path_intersection">"Bagaimana jalan ini bisa melewati penghalang di sini?"</string>
     <string name="quest_barrier_road_intersection">"Bagaimana jalan ini bisa melewati penghalang di sini?"</string>
     <string name="quest_sidewalk_value_separate">"ditampilkan terpisah pada peta"</string>
-    <string name="quest_shoulder_value_yes">"bahu jalan"</string>
-    <string name="quest_shoulder_value_no">"tidak ada bahu jalan"</string>
     <string name="no_camera_permission_warning_title">"Izin kamera"</string>
     <string name="no_camera_permission_warning">"Izin kamera dibutuhkan untuk mengambil gambar dan untuk mengukur jarak dengan kamera."</string>
     <string name="ar_core_error_sdk_too_old">"Aplikasi ini terlalu lama, coba perbarui."</string>
@@ -1126,7 +1111,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_barrier_type_gate_any_size">"Gerbang, ukuran apa pun"</string>
     <string name="quest_air_pump_compressor_title">"Apakah ada kompresor udara yang tersedia di sini?"</string>
     <string name="quest_step_count_stile_hint">"Hanya jumlah anak tangga untuk mencapai puncaknya. Apabila jumlahnya berbeda pada salah satu arah, masukkan angka yang lebih tinggi."</string>
-    <string name="quest_shoulder_explanation2">"Jalur bahu jalan atau jalur rusak adalah jalur berhenti darurat yang ditandai dengan jelas. Area yang diperuntukkan sebagai bahu jalan belum tentu seluruh lebarnya diaspal dan belum tentu cukup lebar sehingga mobil dapat berhenti sepenuhnya di luar jalur lalu lintas."</string>
     <string name="quest_cycleway_value_none_and_oneway">"Tidak ada, pesepada dilarang melewati jalur ini"</string>
     <string name="map_btn_create_track">"Buat rekaman trek baru"</string>
     <string name="map_btn_stop_track">"Berhenti merekam trek"</string>
@@ -1228,7 +1212,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_genericRef_title">"Berapa nomor identifikasi di sini?"</string>
     <string name="quest_sidewalk_answer_different">"Situasi trotoar berbeda"</string>
     <string name="about_title_get_involved">"Terlibat"</string>
-    <string name="pref_category_quests_overlays">"Misi &amp; Hamparan"</string>
     <string name="quest_presets_rename">"Ubah nama"</string>
     <string name="quest_presets_share">"Bagikan"</string>
     <string name="quest_presets_delete">"Hapus"</string>

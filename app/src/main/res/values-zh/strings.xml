@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"验证失败：需要授予所有列出的权限"</string>
     <string name="pref_category_communication">"通讯"</string>
     <string name="pref_category_display">"显示"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"在外部存储上保留用于缓存地图切片的空间（以兆字节为单位）"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"显示所有注记（note）"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"包括非问题形式的注记（note）"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"忽略非问题形式的注记（note）"</string>
-    <string name="pref_title_map_cache">"地图缓存大小"</string>
     <string name="map_btn_gps_tracking">"跟随我的位置"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 贡献者"</string>
     <string name="quest_generic_otherAnswers">"其他答案…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"位置已关闭。现在到设定中开启它吗？"</string>
     <string name="no_location_permission_warning">"需要获得定位许可，以便在地图上显示您的位置并下载您附近的数据。"</string>
     <string name="about_title_authors">"作者"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick 和贡献者们"</string>
     <string name="about_title_repository">"项目主页"</string>
-    <string name="about_summary_repository">"在GitHub"</string>
     <string name="about_title_report_error">"报告错误"</string>
     <string name="about_title_feedback">"提供反馈"</string>
     <string name="about_title_license">"许可证"</string>
-    <string name="about_summary_license">"GNU 通用公共许可证"</string>
     <string name="offline">"您正处于离线状态"</string>
     <string name="confirmation_authorize_now">"需要验证您的 OpenStreetMap 用户帐户以便发布回答。要现在验证吗？"</string>
     <string name="not_authorized">"未认证"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"它只连接两条道路"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"其它（留下笔记）"</string>
     <string name="about_title_privacy_statement">"隐私声明"</string>
-    <string name="about_summary_privacy_statement">"与数据使用"</string>
     <string name="quest_openingHours_public_holidays">"公共假期"</string>
     <string name="quest_openingHours_public_holidays_short">"公共假期（PH）"</string>
     <string name="quest_openingHours_open_end">"开放/关闭"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"缩小"</string>
     <string name="map_btn_zoom_in">"放大"</string>
     <string name="privacy_html">"&lt;p&gt;您很在意隐私？非常好！ 我们只有好消息可以告诉你：&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;数据传输&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;数据传输&lt;/h2&gt;
 &lt;p&gt;
 首先，通过此APP，您可以帮助完善 OpenStreetMap。&lt;br/&gt;
 您在此APP上所提交的所有数据，均将被直接添加至 OpenStreetMap，此 APP 和 OpenStreetMap 之间不会有任何第三方介入。
@@ -91,12 +84,12 @@
 OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号。您在此 APP 中作出的数据贡献都会在 OpenStreetMap 上公开。
 &lt;/p&gt;
 
-&lt;b&gt;定位讯息&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;定位讯息&lt;/h2&gt;
 &lt;p&gt;
 您的定位讯息仅用于搜寻附近的任务。不用担心，我们不会将您的定位讯息传至第三方。
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;资料使用&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;资料使用&lt;/h2&gt;
 &lt;p&gt;
 上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，这样一来，如果 APP 的版本更变后有严重的错误出现，OpenStreetMap 的资料不会受污染。&lt;br/&gt;
 &lt;/p&gt;"</string>
@@ -122,7 +115,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_surface_value_wood">"木制路面"</string>
     <string name="quest_sidewalk_title">"这条街有人行道吗?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"这条街道在哪里？"</string>
-    <string name="quest_oneway_title">"这是条单行道吗？"</string>
     <string name="quest_address_title">"此栋建筑物的门牌号码是?"</string>
     <string name="store_listing_short_description">"OpenStreetMap 调查应用"</string>
     <string name="store_listing_full_description">"使用 StreetComplete 来改善 OpenStreetMap！
@@ -390,7 +382,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="questList_disabled_in_country">"从不在 %s 显示"</string>
     <string name="quest_select_hint_most_specific">"选择最合适的一项："</string>
     <string name="quest_generic_item_confirmation">"您确定无法更具体地确定吗？"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;对于某些任务，将下载第三方的某些附加数据。尤其是单行道任务会查询一个 API，该 API 也托管在 westnordost.de 上，以了解可能的单行道候选者。&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;对于某些任务，将下载第三方的某些附加数据。&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"无（留下笔记）"</string>
     <string name="pref_quests_reset">"将任务启用和顺序都重置为默认值吗？"</string>
     <string name="quest_generic_item_invalid_value">"请选择更具体的数值。"</string>
@@ -505,7 +497,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_accessible_for_pedestrians_title_prohibited">"这里的路有禁止行人行走吗？"</string>
     <string name="quest_buildingType_title">"这栋建筑物的类型是什么?"</string>
     <string name="pref_title_theme_select">"选择主题"</string>
-    <string name="theme_automatic">"自动"</string>
     <string name="theme_light">"亮色"</string>
     <string name="theme_dark">"暗色"</string>
     <string name="theme_system_default">"跟随系统预设"</string>
@@ -535,7 +526,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_maxweight_answer_other_sign">"标志看起来不太对"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"您想留条笔记吗？附有照片的笔记可以允许其他地图绘制者帮忙处理。"</string>
     <string name="quest_handrail_title">"楼梯有扶手吗？"</string>
-    <string name="about_summary_current_version">"当前版本：%s"</string>
     <string name="quest_ref_answer_noRef">"看不到数字或代码"</string>
     <string name="quest_street_side_puzzle_tutorial">"图示中的道路旋转角度与地图上的中心相同。"</string>
     <string name="quest_recycling_materials_title">"这里可以回收哪些资源？"</string>
@@ -560,7 +550,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="about_title_changelog">"版本历史"</string>
     <string name="title_whats_new">"更新了什么？"</string>
     <string name="about_title_rate">"为本应用打分"</string>
-    <string name="about_summary_rate">"在 Google Play"</string>
     <string name="about_title_donate">"捐赠"</string>
     <string name="about_summary_donate">"展示您对本应用的喜爱！"</string>
     <string name="about_description_donate">"感谢您考虑支持此应用，点击下列平台可以看到当前捐赠额且可自行捐赠"</string>
@@ -954,7 +943,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_barrier_bicycle_type_single">"屏障之间的通道"</string>
     <string name="quest_barrier_bicycle_type_double">"减速弯道 - 每边各一个障碍物"</string>
     <string name="quest_barrier_bicycle_type_multiple">"减速弯道 - 两个以上的障碍物"</string>
-    <string name="pref_title_language_select">"选择语言"</string>
     <string name="language_default">"系统预设值"</string>
     <string name="on_floor">"在楼层 %s:"</string>
     <string name="select_street_parking_orientation">"选择朝向道路的方向："</string>
@@ -980,7 +968,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
 或者，你也可以留下一条注记（可附照片）。"</string>
     <string name="quest_address_house_number_label">"门牌号："</string>
-    <string name="quest_shoulder_title">"这条路有路肩或故障车道吗？"</string>
     <string name="quest_fireHydrant_position_title">"消防栓位于哪里？"</string>
     <string name="quest_fireHydrant_position_green">"在草地或泥土或灌木丛中"</string>
     <string name="quest_fireHydrant_position_lane">"在马路上"</string>
@@ -1032,8 +1019,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_barrier_path_intersection">"这条小道是如何跨越这里的障碍的？"</string>
     <string name="quest_barrier_road_intersection">"这条道路是如何跨越这里的障碍的？"</string>
     <string name="quest_sidewalk_value_separate">"人行道，但在地图上分别单独显示"</string>
-    <string name="quest_shoulder_value_yes">"路肩"</string>
-    <string name="quest_shoulder_value_no">"没有路肩"</string>
     <string name="no_camera_permission_warning_title">"相机权限"</string>
     <string name="no_camera_permission_warning">"为了能够用增强现实技术测量距离，该许可是必要的。"</string>
     <string name="ar_core_error_sdk_too_old">"应用过于老旧，请尝试升级。"</string>
@@ -1124,7 +1109,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_barrier_type_gate_any_size">"门，任何大小"</string>
     <string name="quest_air_pump_compressor_title">"这里有空气压缩机可用吗？"</string>
     <string name="quest_step_count_stile_hint">"只是到达顶部的步数。如果两边的步数不一样，就填较高的步数。"</string>
-    <string name="quest_shoulder_explanation2">"路肩是一个明确划定的紧急停车道。被指定为路肩的区域不一定在整个宽度上铺设，也不一定宽到足以让汽车完全停在交通车道之外。"</string>
     <string name="quest_cycleway_value_none_and_oneway">"没有，这个方向不允许骑自行车"</string>
     <string name="map_btn_create_track">"创建新轨迹录制"</string>
     <string name="map_btn_stop_track">"停止录制轨迹"</string>
@@ -1226,7 +1210,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_genericRef_title">"这里的识别号码是什么？"</string>
     <string name="quest_sidewalk_answer_different">"人行道的位置与实际不符"</string>
     <string name="about_title_get_involved">"参与其中"</string>
-    <string name="pref_category_quests_overlays">"任务和叠加层"</string>
     <string name="quest_presets_rename">"重命名"</string>
     <string name="quest_presets_share">"分享"</string>
     <string name="quest_presets_delete">"删除"</string>
@@ -1399,13 +1382,10 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 该楼层的有窗户且在房屋最上端，该楼层算作房屋顶层。因此，屋顶层为零的屋顶不一定是平的，只是高度不足以容纳整个楼层。
     "</string>
     <string name="quest_parcel_locker_brand">"这个快递柜是什么品牌的？"</string>
-    <string name="quest_parcel_locker_pickup">"这里可以取件吗？"</string>
-    <string name="quest_parcel_locker_mail_in">"这里可以寄件吗？"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"电缆固定于建筑物上"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"没有，但是有标志允许在人行道上骑行"</string>
     <string name="separate_cycleway_no_signed">"有标志明确禁止自行车通行"</string>
     <string name="separate_cycleway_footway_allowed_sign">"步道但是允许自行车通行"</string>
     <string name="quest_bicycle_parking_type_floor">"划出的区域"</string>
     <string name="link_osmapp_description">"一个具有多图层，如展示攀岩或滑雪的地图"</string>
-    <string name="quest_parcel_locker_mail_in_answer_returns_only">"仅用于退货"</string>
 </resources>

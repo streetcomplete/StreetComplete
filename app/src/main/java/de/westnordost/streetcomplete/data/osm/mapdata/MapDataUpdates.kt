@@ -57,9 +57,8 @@ private fun Element.update(updates: Map<ElementKey, ElementUpdateAction>): Eleme
     }
 }
 
-private fun Node.update(update: UpdateElement?): Node {
-    return if (update != null) copy(id = update.newId, version = update.newVersion) else this
-}
+private fun Node.update(update: UpdateElement?): Node =
+    if (update != null) copy(id = update.newId, version = update.newVersion) else this
 
 private fun Way.update(update: UpdateElement?, updates: Map<ElementKey, ElementUpdateAction>): Way {
     val newNodeIds = nodeIds.mapNotNull { nodeId ->

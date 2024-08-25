@@ -276,6 +276,12 @@
                     "label": "إجمالي الصعود",
                     "terms": "إجمالي الصعود"
                 },
+                "athletics_pitch": {
+                    "label": "حدث",
+                    "options": {
+                        "discus_throw": "نقاش"
+                    }
+                },
                 "atm": {
                     "label": "ماكينة صرافة آلية"
                 },
@@ -308,7 +314,10 @@
                     "label": "بار"
                 },
                 "barrier": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "gate": "بوابة"
+                    }
                 },
                 "barrier_planter": {
                     "label": "حاجز",
@@ -635,7 +644,10 @@
                     }
                 },
                 "craft": {
-                    "label": "النوع"
+                    "label": "النوع",
+                    "options": {
+                        "clockmaker": "ساعاتي"
+                    }
                 },
                 "crane/type": {
                     "label": "نوع الرافعة",
@@ -741,7 +753,6 @@
                         "cake": "كيك",
                         "chicken": "دجاج",
                         "chinese": "صيني",
-                        "chocolate": "شوكولاتة",
                         "coffee_shop": "مقهى",
                         "dessert": "حلويات بعد الطعام",
                         "donut": "دونات",
@@ -1347,7 +1358,15 @@
                     }
                 },
                 "healthcare/speciality": {
-                    "label": "التخصصات"
+                    "label": "التخصصات",
+                    "options": {
+                        "surgery": "جراحة عامة",
+                        "systemic": "علاج نظامي",
+                        "traditional_chinese_medicine": "طب صيني تقليدي",
+                        "transplant": "جراحة زراعة الأعضاء",
+                        "trauma": "جراحة الصدمة",
+                        "tropical": "الطب الاستوائي"
+                    }
                 },
                 "heating": {
                     "label": "تدفئة"
@@ -8052,6 +8071,9 @@
                 "shop/nutrition_supplements": {
                     "name": "متجر المكملات الغذائية",
                     "terms": "متجر المكملات الغذائية، مكملات غذائية"
+                },
+                "shop/nuts": {
+                    "name": "متجر المكسرات"
                 },
                 "shop/optician": {
                     "name": "متجر نظارات",

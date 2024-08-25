@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Komercijalna banka, Поштанска штедионица, Eurobank, Raiffeisen bank, Mobi banka, Halkbank, Erste Bank, Banca Intesa, UniCredit Bank, OTP banka, Addiko Bank, AIK banka, MoneyGet, ОТП, Банка Поштанска штедионица, Telenor, Payten, OTP Banka, Intesa, Bankomat, Banka Intesa, AIK Banka]
+atmOperators: [Komercijalna banka, Поштанска штедионица, Eurobank, Raiffeisen bank, Mobi banka, Halkbank, OTP banka, Erste Bank, Banca Intesa, UniCredit Bank, Addiko Bank, AIK banka, MoneyGet, Poštanska štedionica, ОТП, Банка Поштанска штедионица, Telenor, Payten, OTP Banka, Intesa Sanpaolo, Intesa, Bankomat, Banka Intesa, AIK Banka]
 chargingStationOperators: [Газпром, 'Tesla, Inc.']
 defaultSpeedLimitHasUrbanOrRural: true
 hasDailyAlternateSideParkingSign: true

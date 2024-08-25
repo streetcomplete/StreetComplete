@@ -6,16 +6,28 @@ import androidx.annotation.UiThread
 import androidx.core.graphics.Insets
 import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.R
-import org.maplibre.geojson.Feature
-import org.maplibre.geojson.FeatureCollection
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
+import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.style.expressions.Expression.all
+import org.maplibre.android.style.expressions.Expression.any
 import org.maplibre.android.style.expressions.Expression.division
-import org.maplibre.android.style.expressions.Expression.gte
-import org.maplibre.android.style.expressions.Expression.lte
-import org.maplibre.android.style.expressions.Expression.gt
 import org.maplibre.android.style.expressions.Expression.get
+import org.maplibre.android.style.expressions.Expression.gt
+import org.maplibre.android.style.expressions.Expression.gte
 import org.maplibre.android.style.expressions.Expression.literal
+import org.maplibre.android.style.expressions.Expression.log2
+import org.maplibre.android.style.expressions.Expression.lte
 import org.maplibre.android.style.expressions.Expression.sum
 import org.maplibre.android.style.expressions.Expression.toNumber
 import org.maplibre.android.style.expressions.Expression.zoom
@@ -24,23 +36,10 @@ import org.maplibre.android.style.layers.Layer
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
-import org.maplibre.android.style.sources.GeoJsonSource
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
-import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
-import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
-import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
-import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
-import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
-import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import org.maplibre.android.geometry.LatLng
-import org.maplibre.android.style.expressions.Expression.any
-import org.maplibre.android.style.expressions.Expression.log2
 import org.maplibre.android.style.sources.GeoJsonOptions
+import org.maplibre.android.style.sources.GeoJsonSource
+import org.maplibre.geojson.Feature
+import org.maplibre.geojson.FeatureCollection
 import org.maplibre.geojson.Point
 import kotlin.math.abs
 import kotlin.math.max
@@ -53,7 +52,6 @@ class PinsMapComponent(
     private val contentResolver: ContentResolver,
     private val map: MapLibreMap,
     private val mapImages: MapImages,
-    private val clickRadius: Float,
     private val onClickPin: (properties: Map<String, String>) -> Unit
 ) {
     private val pinsSource = GeoJsonSource(SOURCE,
@@ -135,9 +133,8 @@ class PinsMapComponent(
 
     private fun onClick(position: LatLng): Boolean {
         val feature = map.queryRenderedFeatures(
-            coordinates = map.projection.toScreenLocation(position),
-            radius = clickRadius,
-            layerIds = arrayOf("pins-layer", "pin-cluster-layer")
+            map.projection.toScreenLocation(position),
+            *arrayOf("pins-layer", "pin-cluster-layer")
         ).firstOrNull() ?: return false
 
         val properties = feature.properties()

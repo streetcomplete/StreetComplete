@@ -1,3 +1,127 @@
 {
-    "fa-IR": {}
+    "fa-IR": {
+        "presets": {
+            "categories": {
+                "category-barrier": {
+                    "name": "موانع"
+                },
+                "category-building": {
+                    "name": "عارضه‌های ساختمانی"
+                },
+                "category-landuse": {
+                    "name": "عارضه از نوع کاربری زمین"
+                },
+                "category-natural": {
+                    "name": "عارضه‌های طبیعی"
+                },
+                "category-path": {
+                    "name": "راهچه‌ها"
+                },
+                "category-playground": {
+                    "name": "وسایل زمین بازی"
+                },
+                "category-rail": {
+                    "name": "ریل‌ها"
+                },
+                "category-restriction": {
+                    "name": "عارضه‌های محدودساز"
+                },
+                "category-road_major": {
+                    "name": "جاده‌های اصلی"
+                },
+                "category-road_minor": {
+                    "name": "جاده‌های فرعی"
+                },
+                "category-road_service": {
+                    "name": "جاده‌های خدماتی"
+                },
+                "category-route": {
+                    "name": "عارضه‌های مربوط به مسیر"
+                },
+                "category-utility": {
+                    "name": "عارضه‌های تاسیساتی"
+                },
+                "category-water": {
+                    "name": "پهنه‌های آبی"
+                },
+                "category-waterway": {
+                    "name": "آبراه‌ها"
+                }
+            },
+            "fields": {
+                "access": {
+                    "label": "دسترسی مجاز",
+                    "options": {
+                        "destination": {
+                            "title": "مقصد"
+                        },
+                        "no": {
+                            "title": "ممنوع"
+                        },
+                        "private": {
+                            "title": "خصوصی"
+                        },
+                        "unknown": {
+                            "title": "نامشخص"
+                        },
+                        "yes": {
+                            "title": "مجاز"
+                        }
+                    },
+                    "placeholder": "مشخص نشده",
+                    "types": {
+                        "access": "همه",
+                        "bicycle": "دوچرخه‌ها",
+                        "foot": "پیاده",
+                        "horse": "اسب‌ها",
+                        "motor_vehicle": "وسایل نقلیه موتوری"
+                    }
+                },
+                "access_aisle": {
+                    "label": "نوع"
+                },
+                "building": {
+                    "options": {
+                        "mosque": "ساختمان مسجد"
+                    }
+                },
+                "office": {
+                    "options": {
+                        "newspaper": "دفتر روزنامه"
+                    }
+                },
+                "vending": {
+                    "options": {
+                        "newspapers": "روزنامه"
+                    }
+                }
+            },
+            "presets": {
+                "amenity/place_of_worship/muslim": {
+                    "name": "مسجد مسلمانان"
+                },
+                "building/mosque": {
+                    "name": "ساختمان مسجد"
+                },
+                "man_made/fuel_pump": {
+                    "name": "پمپ گاز"
+                },
+                "office/newspaper": {
+                    "name": "دفتر روزنامه"
+                },
+                "shop/books": {
+                    "name": "کتاب‌فروشی"
+                },
+                "shop/health_food": {
+                    "name": "فروشگاه غذای سالم"
+                },
+                "shop/newsagent": {
+                    "name": "روزنامه‌فروشی"
+                },
+                "shop/nuts": {
+                    "name": "فروشگاه آجیل و خشکبار"
+                }
+            }
+        }
+    }
 }

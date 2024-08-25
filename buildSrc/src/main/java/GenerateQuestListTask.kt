@@ -107,7 +107,9 @@ open class GenerateQuestListTask : DefaultTask() {
             return stringResourceNames
         }
 
-        return stringResourceNames.filter { it.contains("title") }
+        val filteredStringResourceNames = stringResourceNames.filter { it.contains("title") }
+
+        return if (filteredStringResourceNames.isEmpty()) stringResourceNames else filteredStringResourceNames
     }
 
     private fun getRepoQuestWikiOrder(questName: String, questions: List<String>): Int {

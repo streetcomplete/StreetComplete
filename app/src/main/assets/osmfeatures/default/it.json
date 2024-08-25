@@ -515,6 +515,9 @@
                         "rising": "Paletto a scomparsa"
                     }
                 },
+                "books": {
+                    "label": "Tipologia di Libri"
+                },
                 "booth": {
                     "label": "Cabina",
                     "terms": "cabina,sport,mezzo di trasporto,seggiovia"
@@ -548,7 +551,11 @@
                     "label": "Tipo"
                 },
                 "bridge_combo": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "aqueduct": "Acquedotto",
+                        "viaduct": "Viadotto"
+                    }
                 },
                 "building": {
                     "label": "Edificio",
@@ -593,8 +600,8 @@
                         "outbuilding": "Dependance",
                         "pavilion": "Padiglione",
                         "public": "Edificio pubblico",
-                        "residential": "Residenziale",
-                        "retail": "Edificio per il commercio al dettaglio",
+                        "residential": "Edificio residenziale",
+                        "retail": "Edificio per negozi",
                         "roof": "Tettoia",
                         "ruins": "Rovine di un edificio",
                         "school": "Scuola",
@@ -1036,7 +1043,6 @@
                         "cake": "Torte",
                         "chicken": "Pollo",
                         "chinese": "Cinese",
-                        "chocolate": "Cioccolato",
                         "coffee_shop": "Caffetteria",
                         "dessert": "Dolci",
                         "donut": "Ciambelle",
@@ -1722,13 +1728,13 @@
                         "community_health_worker": "Operatore Sanitario Comunitario",
                         "counselling": "Centro di consulenza",
                         "dentist": "Dentista",
-                        "dialysis": "Centro Dialisi",
+                        "dialysis": "Centro dialisi",
                         "doctor": "Medico di base",
                         "hospice": "Ospizio",
                         "hospital": "Ospedale",
                         "laboratory": "Laboratorio medico",
                         "midwife": "Clinica prenatale",
-                        "nurse": "Infermiera ",
+                        "nurse": "Infermiera",
                         "occupational_therapist": "Medico del lavoro",
                         "optometrist": "Oculista",
                         "pharmacy": "Farmacia",
@@ -1786,7 +1792,7 @@
                         "hypnosis": "Ipnosi",
                         "infectious_diseases": "Malattie infettive",
                         "intensive": "Terapia intensiva",
-                        "internal": "Medicina alternativa",
+                        "internal": "Medicina interna",
                         "naturopathy": "Naturopatia",
                         "neonatology": "Neonatologia",
                         "nephrology": "Nefrologia",
@@ -1881,12 +1887,12 @@
                         "memorial": "Memoriale",
                         "milestone": "Pietra miliare",
                         "mine": "Miniera",
-                        "mine_shaft": "Il mio pozzo",
+                        "mine_shaft": "Tunnel verticale",
                         "monument": "Monumento",
                         "pillory": "Gogna storica",
                         "railway": "Linea ferroviaria",
                         "ruins": "Rovine",
-                        "shieling": "Scudo",
+                        "shieling": "Alpeggio",
                         "tomb": "Tomba",
                         "wayside_cross": "Croce a bordo strada",
                         "wayside_shrine": "Edicola votiva",
@@ -1966,7 +1972,7 @@
                 },
                 "indoor": {
                     "label": "Al chiuso",
-                    "terms": "all'interno,in un lluogo chiuso"
+                    "terms": "all'interno,in un luogo chiuso"
                 },
                 "indoor_type": {
                     "label": "Tipo"
@@ -2032,15 +2038,18 @@
                 "kerb/height": {
                     "label": "Altezza"
                 },
+                "kerb/kerb_barrier": {
+                    "label": "Tipologia"
+                },
                 "kitchen": {
                     "label": "Cucina"
                 },
                 "kneipp_water_cure_multi": {
                     "label": "Tipi di vasca",
                     "options": {
-                        "arm": "Bacino del braccio",
-                        "face": "Bacino del viso",
-                        "foot": "Bacino del piede"
+                        "arm": "Vasca per braccia",
+                        "face": "Vasca per viso",
+                        "foot": "Vasca per piedi"
                     }
                 },
                 "label": {
@@ -2193,7 +2202,7 @@
                         },
                         "post": {
                             "description": "Indicatore rialzato montato su un piccolo palo o palo.",
-                            "title": "Inviare"
+                            "title": "Palo"
                         },
                         "stone": {
                             "description": "Marcature direttamente incise o dipinte su una pietra.",
@@ -2218,7 +2227,6 @@
                         "marble": "Marmo",
                         "metal": "Metallo",
                         "plastic": "Plastica",
-                        "reinforced_conrete": "Cemento rinforzato",
                         "rock": "Roccia",
                         "sand": "Sabbia",
                         "sandstone": "Arenaria",
@@ -2477,7 +2485,7 @@
                         "religion": "Ufficio religioso",
                         "research": "Istituto di Ricerca",
                         "security": "Ufficio della vigilanza",
-                        "surveyor": "Ufficio di supervisione",
+                        "surveyor": "Ufficio di un geometra",
                         "tax_advisor": "Centro assistenza fiscale",
                         "telecommunication": "Ufficio di telecomunicazioni",
                         "therapist": "Studio psichiatrico",
@@ -2581,10 +2589,11 @@
                 "parking/side/orientation": {
                     "label": "Orientamento al parcheggio",
                     "options": {
-                        "diagonal": "A lisca di pesce angolo (~45°)",
+                        "diagonal": "A lisca di pesce (~45°)",
                         "parallel": "Parallelo alla strada",
-                        "perpendicular": "A pettine angolo (~90°)"
+                        "perpendicular": "A pettine (~90°)"
                     },
+                    "terms": "oerientamento,parcheggio,parallelo,perpendicolare,pettine,lisca",
                     "types": {
                         "parking:left:orientation": "Lato sinistro",
                         "parking:right:orientation": "Lato destro"
@@ -3046,6 +3055,13 @@
                 "restrictions": {
                     "label": "Obblighi di svolta"
                 },
+                "roller_coaster/track": {
+                    "options": {
+                        "maintenance": {
+                            "title": "Manutenzione"
+                        }
+                    }
+                },
                 "roof/colour": {
                     "label": "Colore del tetto"
                 },
@@ -3067,6 +3083,11 @@
                 },
                 "route_master": {
                     "label": "Tipo"
+                },
+                "royal_cypher-GB": {
+                    "options": {
+                        "scottish_crown": "Corona di Scozia"
+                    }
                 },
                 "ruins": {
                     "label": "Tipo"
@@ -3321,7 +3342,7 @@
                     "options": {
                         "ambulatory_care": "Assistenza ambulatoriale",
                         "assisted_living": "Residenza assistita",
-                        "day_care": "Asilo nido",
+                        "day_care": "Centro diurno",
                         "food_bank": "Banca del cibo",
                         "group_home": "Casa di gruppo",
                         "nursing_home": "Casa di riposo",
@@ -3399,12 +3420,13 @@
                         "cricket": "Cricket",
                         "curling": "Curling",
                         "cycling": "Ciclismo",
-                        "disc_golf": "Disco Golf",
+                        "darts": "Freccette",
+                        "disc_golf": "Disc golf",
                         "dog_racing": "Corse di cani",
-                        "equestrian": "Sport Equestri",
+                        "equestrian": "Sport equestri",
                         "fitness": "Allenamento fisico",
                         "free_flying": "Parapendio / Deltaplano",
-                        "futsal": "Futsal",
+                        "futsal": "Calcio a 5",
                         "gaelic_games": "Giochi gaelici",
                         "golf": "Golf",
                         "gymnastics": "Ginnastica",
@@ -3639,7 +3661,10 @@
                     }
                 },
                 "swimming_pool": {
-                    "label": "Tipo"
+                    "label": "Tipo",
+                    "options": {
+                        "kids": "Piscina per Bambini"
+                    }
                 },
                 "switch": {
                     "label": "Tipo",
@@ -4101,7 +4126,7 @@
                 },
                 "website/menu": {
                     "label": "Collegamento al menù",
-                    "placeholder": "https://example.com"
+                    "placeholder": "https://esempio.it"
                 },
                 "wetland": {
                     "label": "Tipo",
@@ -4468,7 +4493,7 @@
                     "terms": "clinica abortiva,clinica per l’aborto,ospedale per l’aborto,centro per l’aborto,centro abortivo"
                 },
                 "amenity/clinic/dialysis": {
-                    "name": "Centro Dialisi",
+                    "name": "Centro dialisi",
                     "terms": "dialisi renale,clinica di dialisi"
                 },
                 "amenity/clinic/fertility": {
@@ -4543,7 +4568,7 @@
                     "terms": "psichiatria infantile,psichiatria pediatrica"
                 },
                 "amenity/doctors/dermatology": {
-                    "name": "Dermatologa",
+                    "name": "Dermatologo",
                     "terms": "dermatologia,capelli,unghie,pelle"
                 },
                 "amenity/doctors/gastroenterology": {
@@ -4611,8 +4636,8 @@
                     "terms": "caviglia,piedi,piede,gamba,gambe,podologia"
                 },
                 "amenity/doctors/proctology": {
-                    "name": "Chirurgo colorettale",
-                    "terms": "assman,chirurgia colorettale,proctologia"
+                    "name": "Chirurgo colo-rettale",
+                    "terms": "chirurgia colo-rettale,colon,retto,proctologia"
                 },
                 "amenity/doctors/psychiatrist": {
                     "name": "Psichiatra",
@@ -4630,7 +4655,7 @@
                     "name": "Reumatologo"
                 },
                 "amenity/doctors/surgery": {
-                    "name": "Chirurgo Generale"
+                    "name": "Chirurgo generale"
                 },
                 "amenity/doctors/trauma": {
                     "name": "Chirurgo traumatologo"
@@ -5003,7 +5028,8 @@
                     "name": "Riciclaggio"
                 },
                 "amenity/recycling/container/electrical_items": {
-                    "name": "Cassonetto per la raccolta di RAEE"
+                    "name": "Cassonetto per la raccolta di RAEE",
+                    "terms": "raee"
                 },
                 "amenity/recycling/container/green_waste": {
                     "name": "Contenitore dei rifiuti naturali"
@@ -5013,7 +5039,8 @@
                     "terms": "centro riciclo"
                 },
                 "amenity/recycling_container": {
-                    "name": "Cestino per raccolta differenziata"
+                    "name": "Bidone per raccolta differenziata",
+                    "terms": "riciclo,cassonetto,differenziata,bottiglie,vestiti,abiti,carta,cartone,lattine"
                 },
                 "amenity/refugee_site": {
                     "name": "Campo profughi"
@@ -5032,6 +5059,9 @@
                 "amenity/restaurant/asian": {
                     "name": "Ristorante asiatico",
                     "terms": "bar,colazione,caffè,mensa,drivein,grigliata,pranzo,tavolo,cinese,giapponese,tailandese,wok,kaiten,sushi"
+                },
+                "amenity/restaurant/barbecue": {
+                    "name": "Ristorante con Griglia"
                 },
                 "amenity/restaurant/chinese": {
                     "name": "Ristorante cinese",
@@ -5283,7 +5313,7 @@
                 },
                 "amenity/vending_machine/drinks": {
                     "name": "Distributore automatico di bevande",
-                    "terms": "distributore automatico,macchinetta,bevande,bottiglie,bottigliette"
+                    "terms": "distributore automatico,macchinetta,bevande,bottiglie,bottigliette,bibite"
                 },
                 "amenity/vending_machine/eggs": {
                     "name": "Macchina di vendita delle uova",
@@ -5636,6 +5666,10 @@
                     "name": "Condominio",
                     "terms": "appartamenti,condomini,palazzi,palazzoni,casermoni,case popolari,abitazioni,case,edilizia popolare,peep,iacp,terreno,lotto,terreno condominiale,area condominiale"
                 },
+                "building/bakehouse": {
+                    "name": "Forno",
+                    "aliases": "Fornace\nFornaio"
+                },
                 "building/barn": {
                     "name": "Fienile",
                     "terms": "granaio,basso servizio,tesa"
@@ -5909,7 +5943,7 @@
                     "terms": "libri,riparazione"
                 },
                 "craft/brewery": {
-                    "name": "Birrificio Artigianale"
+                    "name": "Birrificio artigianale"
                 },
                 "craft/carpenter": {
                     "name": "Carpentiere",
@@ -6104,7 +6138,8 @@
                     "name": "Elemento ferroviario in disuso"
                 },
                 "disused/shop": {
-                    "name": "Negozio in disuso"
+                    "name": "Negozio in Disuso",
+                    "aliases": "Negozio Chiuso\nNegozio Sfitto"
                 },
                 "embankment": {
                     "name": "Terrapieno"
@@ -6896,6 +6931,9 @@
                 "landuse/military/base/navy": {
                     "name": "Base navale"
                 },
+                "landuse/military/danger_area": {
+                    "name": "Zona Militare Pericolosa"
+                },
                 "landuse/military/obstacle_course": {
                     "name": "Percorso ad ostacoli militare"
                 },
@@ -6946,15 +6984,15 @@
                     "name": "Parcheggio per roulotte"
                 },
                 "landuse/retail": {
-                    "name": "Area di vendita al dettaglio",
-                    "terms": "commerciale"
+                    "name": "Area di negozi",
+                    "terms": "negozi,vendita al dettaglio,vendita"
                 },
                 "landuse/salt_pond": {
                     "name": "Stagno di evaporazione del sale"
                 },
                 "landuse/vineyard": {
                     "name": "Vigneto",
-                    "terms": "vigna"
+                    "terms": "vigna,vino,filari,viti"
                 },
                 "landuse/winter_sports": {
                     "name": "Area sport invernali",
@@ -7288,6 +7326,9 @@
                     "name": "Palestra di arrampicata",
                     "terms": "arrampicata,alpinismo,calarsi,corda,corde,cordata,roccia,rock wall,parete,palestra da roccia"
                 },
+                "leisure/sports_centre/climbing_adventure": {
+                    "name": "Parco Avventura"
+                },
                 "leisure/sports_centre/shooting": {
                     "name": "Poligono di tiro"
                 },
@@ -7560,7 +7601,8 @@
                     "terms": "telecamera,vigilanza"
                 },
                 "man_made/surveillance/camera": {
-                    "name": "Telecamera di sorveglianza"
+                    "name": "Telecamera di sorveglianza",
+                    "terms": "videosorveglianza,telecamera di sicurezza"
                 },
                 "man_made/survey_point": {
                     "name": "Punto geodetico",
@@ -7991,7 +8033,7 @@
                 },
                 "office/estate_agent": {
                     "name": "Agenzia immobiliare",
-                    "terms": "agenzia immobiliare,immobiliare"
+                    "terms": "agenzia immobiliare,immobiliare,affitti,vendita di case"
                 },
                 "office/financial": {
                     "name": "Ufficio finanziario",
@@ -8081,7 +8123,8 @@
                     "terms": "ufficio di guardie giurate private"
                 },
                 "office/surveyor": {
-                    "name": "Ufficio di supervisione"
+                    "name": "Ufficio di un geometra",
+                    "terms": "geometra,studio,geometri,valutazione,danni,rischio,particella,catasto,catastale,edilizia"
                 },
                 "office/tax_advisor": {
                     "name": "Centro assistenza fiscale"
@@ -8697,7 +8740,8 @@
                 },
                 "shop/beauty/nails": {
                     "name": "Onicotecnica",
-                    "terms": "unghie,salone per unghie,manicure,pedicure"
+                    "terms": "unghie,salone per unghie,manicure,pedicure",
+                    "aliases": "Cura delle Unghie\nManicure"
                 },
                 "shop/beauty/tanning": {
                     "name": "Centro abbronzatura",
@@ -8744,7 +8788,8 @@
                     "terms": "negozio di candele"
                 },
                 "shop/cannabis": {
-                    "name": "Negozio di cannabis"
+                    "name": "Negozio di cannabis",
+                    "terms": "marijuana,fumo"
                 },
                 "shop/car": {
                     "name": "Concessionario",
@@ -9236,7 +9281,8 @@
                     "terms": "te,té,tè,teieria"
                 },
                 "shop/telecommunication": {
-                    "name": "Negozio al dettaglio di Telefonia"
+                    "name": "Negozio di telefonia",
+                    "terms": "telefonia,telefono,mobile"
                 },
                 "shop/ticket": {
                     "name": "Biglietteria",
@@ -9270,10 +9316,11 @@
                 },
                 "shop/tyres": {
                     "name": "Gommista",
-                    "terms": "negozio pneumatici"
+                    "terms": "negozio pneumatici,copertoni,ruote"
                 },
                 "shop/vacant": {
-                    "name": "Negozio vuoto"
+                    "name": "Negozio vuoto",
+                    "terms": "chiuso,vacante"
                 },
                 "shop/vacuum_cleaner": {
                     "name": "Negozio di aspirapolveri",
@@ -9402,7 +9449,7 @@
                     "terms": "opere d'arte,quadri,sculture,galleria,foto,fotografia,fotografie,dipinti,arte,artistica,esibizione,mostra"
                 },
                 "tourism/guest_house": {
-                    "name": "Bed & Breakfast",
+                    "name": "Affittacamere",
                     "terms": "b&b,bed,breakfast,colazione,notte,nottata,agriturismo,sistemazione,alloggio,camera,dormire"
                 },
                 "tourism/hostel": {

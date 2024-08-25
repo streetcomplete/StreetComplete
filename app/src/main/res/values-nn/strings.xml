@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Mislukka godkjenning: Du må godkjenna alle dei oppgjevne løyva"</string>
     <string name="pref_category_communication">"Kommunikasjon"</string>
     <string name="pref_category_display">"Skjerm"</string>
-    <string name="pref_tilecache_size_summary">"%d MiB"</string>
-    <string name="pref_tilecache_size_message">"Megabyte diskplass sett av til mellomlagring av kartfliser"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Vis alle merknadar"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Viser òg merknadar som ikkje er formulerte som spørsmål"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Hoppar over merknadar som ikkje er formulerte som spørsmål"</string>
-    <string name="pref_title_map_cache">"Diskbruk for kartmellomlager"</string>
     <string name="map_btn_gps_tracking">"Følg meg"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-bidragsytarane"</string>
     <string name="quest_generic_otherAnswers">"Andre svar …"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Posisjonsinnhenting er slått av. Ønskjer du å endra innstillingane og slå det på no?"</string>
     <string name="no_location_permission_warning">"Programmet treng løyve til å lesa posisjonen din for å kunna visa kor du er på kartet og til å søkja opp oppdrag i nærleiken."</string>
     <string name="about_title_authors">"Bidragsytarar"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick og andre bidragsytarar"</string>
     <string name="about_title_repository">"Prosjekt-heimeside"</string>
-    <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Meld frå om feil"</string>
     <string name="about_title_feedback">"Gje tilbakemelding"</string>
     <string name="about_title_license">"Lisensvilkår"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du er fråkopla"</string>
     <string name="confirmation_authorize_now">"Du må gje programmet løyve til å bruka OpenStreetMap-kontoen din for å kunna senda inn endringane dine. Vil du gje løyve no?"</string>
     <string name="not_authorized">"Ikkje godkjend"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Han koplar berre saman to vegar"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noko anna (legg att ein merknad)"</string>
     <string name="about_title_privacy_statement">"Personvernerklæring"</string>
-    <string name="about_summary_privacy_statement">"og databruk"</string>
     <string name="quest_openingHours_public_holidays">"Offentlege fridagar"</string>
     <string name="quest_openingHours_public_holidays_short">"OF"</string>
     <string name="quest_openingHours_open_end">"Ikkje fast stengjetid"</string>
@@ -81,7 +74,23 @@
     <string name="quest_roofShape_answer_many">"Det har fleire ulike former"</string>
     <string name="map_btn_zoom_out">"Zoom ut"</string>
     <string name="map_btn_zoom_in">"Zoom inn"</string>
-    <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Merk først at du med denne appen gjev faktiske, direkte bidrag til OpenStreetMap (OSM).&lt;br/&gt;Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredjepart mellom appen og OSM-infrastrukturen.&lt;/p&gt;&lt;p&gt;Det er ikkje mogleg å redigera OpenStreetMap anonymt. Alle endringane du gjer (og informasjon om tidspunkt og posisjon), vert knytte til OSM-brukarkontoen din og vert synlege for alle på openstreetmap.org. Sidan du berre skal bruka StreetComplete til å registrera data frå staden der du er, vil dette òg indirekte visa når og kor du har brukt appen.&lt;/p&gt;&lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;&lt;p&gt;Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å automatisk søkja opp og lasta ned oppdrag rundt deg, og til å visa kartet der du er.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp endringane dine, sjekkar han via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ei enkel tekstfil&lt;/a&gt; på vevtenaren min at han ikkje er utestengd frå å lasta opp endringar. Dette er ein «føre var»-funksjon for å hindra at versjonar av appen som har kritiske feil, kan lasta opp ugyldige data til OSM.&lt;br/&gt;"</string>
+    <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;
+&lt;h2&gt;Direkte bidrag&lt;/h2&gt;
+&lt;p&gt;
+Merk først at du med denne appen gjev faktiske, direkte bidrag til OpenStreetMap (OSM).&lt;br/&gt;
+Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredjepart mellom appen og OSM-infrastrukturen.
+&lt;/p&gt;
+&lt;p&gt;
+Det er ikkje mogleg å redigera OpenStreetMap anonymt. Alle endringane du gjer (og informasjon om tidspunkt og posisjon), vert knytte til OSM-brukarkontoen din og vert synlege for alle på openstreetmap.org. Sidan du berre skal bruka StreetComplete til å registrera data frå staden der du er, vil dette òg indirekte visa når og kor du har brukt appen.
+&lt;/p&gt;
+&lt;h2&gt;Posisjon&lt;/h2&gt;
+&lt;p&gt;
+Appen delar ikkje GPS-posisjonen din med nokon. Han vert berre brukt til å automatisk søkja opp og lasta ned oppdrag rundt deg, og til å visa kartet der du er.
+&lt;/p&gt;
+&lt;h2&gt;Databruk&lt;/h2&gt;
+&lt;p&gt;
+Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp endringane dine, sjekkar han via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ei enkel tekstfil&lt;/a&gt; på vevtenaren min at han ikkje er utestengd frå å lasta opp endringar. Dette er ein «føre var»-funksjon for å hindra at versjonar av appen som har kritiske feil, kan lasta opp ugyldige data til OSM.
+&lt;/p&gt;"</string>
     <string name="autosync_on">"På"</string>
     <string name="autosync_only_on_wifi">"Berre på Wi-Fi"</string>
     <string name="autosync_off">"Av"</string>
@@ -104,7 +113,6 @@
     <string name="quest_surface_value_wood">"Tredekke"</string>
     <string name="quest_sidewalk_title">"Har denne gata fortau?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kor er denne gata?"</string>
-    <string name="quest_oneway_title">"Er dette ei einvegskøyrd gate?"</string>
     <string name="quest_address_title">"Kva er husnummeret til denne bygningen?"</string>
     <string name="store_listing_short_description">"Kartleggingsapp for OpenStreetMap"</string>
     <string name="store_listing_full_description">"Gjer dugnads­kartet OpenStreetMap betre med StreetComplete! Denne appen leitar opp manglande kart­opplysningar i nærleiken av deg og viser desse som «oppdrag» på kartet. Du kan løysa oppdraga, og såleis forbetra kart­grunnlaget, ved å gå til den tilhøyrande staden og svara på eit enkelt spørsmål i appen. Informasjonen frå svara dine vert send direkte til OpenStreetMap i ditt namn, utan at du treng bruka noko eksternt redigerings­program."</string>
@@ -363,7 +371,7 @@
     <string name="questList_disabled_in_country">"Vert aldri vist i %s"</string>
     <string name="quest_select_hint_most_specific">"Vel det mest spesifikke som passar:"</string>
     <string name="quest_generic_item_confirmation">"Er du sikker på at du ikkje kan fastsetja det meir presist?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For nokre oppdrag vert tilleggsdata frå tredjepartar lasta ned. Søket etter oppdrag om einvegskøyrde gater brukar eit API på westnordost.de for å finna kandidatar for einvegskøyring.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For nokre oppdrag vert tilleggsdata frå tredjepartar lasta ned.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nei (legg att ein merknad)"</string>
     <string name="pref_quests_reset">"Vil du nullstilla både type oppdrag og rekkjefølgje?"</string>
     <string name="quest_generic_item_invalid_value">"Vel ein meir spesifikk verdi."</string>
@@ -478,7 +486,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Er det forbode for fotgjengarar å gå på denne vegen her?"</string>
     <string name="quest_buildingType_title">"Kva slags bygning er dette?"</string>
     <string name="pref_title_theme_select">"Vel tema"</string>
-    <string name="theme_automatic">"Automatisk"</string>
     <string name="theme_light">"Lyst"</string>
     <string name="theme_dark">"Mørkt"</string>
     <string name="theme_system_default">"Systemstandard"</string>
@@ -507,7 +514,6 @@
     <string name="quest_maxweight_answer_other_sign">"Skilet ser annleis ut …"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vil du leggja att ein merknad? Ein merknad med foto gjer at andre kart­leggjarar kan løysa problemet."</string>
     <string name="quest_handrail_title">"Har denne trappa rekkverk?"</string>
-    <string name="about_summary_current_version">"Gjeldande versjon: %s"</string>
     <string name="quest_ref_answer_noRef">"Manglar synleg referansenummer …"</string>
     <string name="quest_street_side_puzzle_tutorial">"Vegen i illustrasjonen er orientert likt som den på kartet på staden der oppdrags­merket vert vist."</string>
     <string name="quest_recycling_materials_title">"Kva kan du levera til resirkulering her?"</string>
@@ -532,7 +538,6 @@
     <string name="about_title_changelog">"Versjonlogg"</string>
     <string name="title_whats_new">"Nytt i denne utgåva"</string>
     <string name="about_title_rate">"Vurder denne appen"</string>
-    <string name="about_summary_rate">"på Google Play"</string>
     <string name="about_title_donate">"Gje pengegåve"</string>
     <string name="about_summary_donate">"Vis di takksemd! ❤️"</string>
     <string name="about_description_donate">"Takk for at du vurderer å støtta denne appen! For å sjå tidlegare pengegåver eller gje ei gåve sjølv, trykk på ei plattform:"</string>
@@ -896,7 +901,6 @@
     <string name="quest_access_private">"Berre individ med løyve"</string>
     <string name="quest_postboxCollectionTimes_resurvey_title">"Er desse tømmetida framleis rett?"</string>
     <string name="quest_bicycle_barrier_type_title">"Kva sykkelbarriere er dette?"</string>
-    <string name="pref_title_language_select">"Vel språk"</string>
     <string name="language_default">"Systemstandard"</string>
     <string name="on_floor">"i etasje %s"</string>
     <string name="select_street_parking_position">"Vel orientering:"</string>
@@ -926,8 +930,6 @@
     <string name="default_disabled_msg_difficult_and_time_consuming">"Denne oppdragstypen vert som standard ikkje vist, då det er tid­krevjande eller vanskeleg å finna svar på spørsmålet. Berre slå på denne oppdrags­typen dersom du er spesielt interessert i registrering av denne typen data."</string>
     <string name="quest_barrier_path_intersection">"Korleis kryssar stien sperra her?"</string>
     <string name="quest_barrier_road_intersection">"Korleis kryssar vegen sperra her?"</string>
-    <string name="quest_shoulder_value_yes">"Vegskulder"</string>
-    <string name="quest_shoulder_value_no">"Inga vegskulder"</string>
     <string name="no_camera_permission_warning_title">"Kameraløyve"</string>
     <string name="no_camera_permission_warning">"Appen treng løyvet for å ta foto og måla avstandar med kameraet."</string>
     <string name="ar_core_error_sdk_too_old">"Appen er for gammal. Prøv å oppdatera."</string>

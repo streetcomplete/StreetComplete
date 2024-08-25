@@ -7,28 +7,28 @@ import androidx.annotation.UiThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonObject
-import org.maplibre.geojson.Feature
-import org.maplibre.geojson.FeatureCollection
-import org.maplibre.geojson.LineString
-import org.maplibre.geojson.Point
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.util.ktx.isApril1st
+import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
 import org.maplibre.android.style.expressions.Expression.*
 import org.maplibre.android.style.layers.Layer
 import org.maplibre.android.style.layers.LineLayer
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.sources.GeoJsonSource
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
-import de.westnordost.streetcomplete.util.ktx.isApril1st
-import de.westnordost.streetcomplete.util.math.normalizeLongitude
-import org.maplibre.android.maps.Style
+import org.maplibre.geojson.Feature
+import org.maplibre.geojson.FeatureCollection
+import org.maplibre.geojson.LineString
+import org.maplibre.geojson.Point
 import kotlin.math.max
 
 /** Takes care of showing the path(s) walked on the map */
-class TracksMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap)
-    : DefaultLifecycleObserver {
+class TracksMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap) :
+    DefaultLifecycleObserver {
     /* There are two sources simply as a performance optimization: If there are thousands of
        trackpoints, we don't want to update (=copy) the thousands of points each time a new
        trackpoint is added. Instead, we only update a list of 100 trackpoints each time a new

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.user
 
 import de.westnordost.streetcomplete.data.osmnotes.AvatarsDownloader
-import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsApiClient
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineScope

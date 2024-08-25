@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.settings.quest_presets
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.DropdownMenu
-import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -14,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 
 /** The dropdown menu that shows when tapping on the more button */
 @Composable

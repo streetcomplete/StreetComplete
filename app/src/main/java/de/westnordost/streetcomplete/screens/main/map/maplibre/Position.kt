@@ -1,16 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map.maplibre
 
-import org.maplibre.geojson.FeatureCollection
-import org.maplibre.geojson.Geometry
-import org.maplibre.geojson.LineString
-import org.maplibre.geojson.MultiLineString
-import org.maplibre.geojson.MultiPolygon
-import org.maplibre.geojson.Point
-import org.maplibre.geojson.Polygon
-import org.maplibre.android.geometry.LatLng
-import org.maplibre.android.geometry.LatLngBounds
-import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.style.sources.GeoJsonSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -20,6 +9,17 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.isInPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import de.westnordost.streetcomplete.util.math.measuredArea
+import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.geometry.LatLngBounds
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.style.sources.GeoJsonSource
+import org.maplibre.geojson.FeatureCollection
+import org.maplibre.geojson.Geometry
+import org.maplibre.geojson.LineString
+import org.maplibre.geojson.MultiLineString
+import org.maplibre.geojson.MultiPolygon
+import org.maplibre.geojson.Point
+import org.maplibre.geojson.Polygon
 
 fun MapLibreMap.getMetersPerPixel(): Double? =
     cameraPosition.target?.latitude?.let { projection.getMetersPerPixelAtLatitude(it) }
@@ -50,7 +50,6 @@ fun ElementGeometry.toMapLibreGeometry(): Geometry = when (this) {
 
 fun ElementPointGeometry.toMapLibreGeometry(): Point =
     Point.fromLngLat(center.longitude, center.latitude)
-
 
 fun ElementPolylinesGeometry.toMapLibreGeometry(): Geometry =
     if (polylines.size == 1) {

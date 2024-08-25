@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [BCR, Banca Transilvania, BRD, Raiffeisen Bank, Euronet, CEC Bank, ING, UniCredit Bank, Alpha Bank, Shitcoins.club, Raiffeisen, OTP Bank, Bancpost, bitpm, First Bank, ING România, CEC, BT, ATM Bancpost, Garanti Bank, ATM RZB, Unicredit Bank, UniCredit Bank SA, Raiffeisenbank, RZB, Piraeus Bank, GarantiBank, Garanti Bankası, Credit Europe Bank, Citibank, Banca Românească, Banca Comercială Română SA, ATM Unicredit Bank, ATM Dezinstalat, Vista Bank, Raifeissen Bank, ProCredit Bank, Garanti, FirstBank, CEC bank, Bitcoin Romania, Alpha, ATM Piraeus Bank, ATM Alpha Bank]
-chargingStationOperators: [Renovatio e-charge, Lidl, Enel X, Kaufland, STPT, 'Tesla, Inc.', E.ON, Enel, Polyfazer, Eldrive, Rompetrol, EVconnect, Plugpoint, McDonald's, IKEA, Flow, ElMotion, EV Connect Romania]
+atmOperators: [BCR, Banca Transilvania, BRD, Raiffeisen Bank, Euronet, CEC Bank, ING, UniCredit Bank, Alpha Bank, Shitcoins.club, Raiffeisen, Bitcoin Romania, OTP Bank, Bancpost, bitpm, First Bank, ING România, CEC, BT, ATM Bancpost, Garanti Bank, Unicredit Bank, ATM RZB, UniCredit Bank SA, Raiffeisenbank, RZB, Piraeus Bank, GarantiBank, Garanti Bankası, Credit Europe Bank, Citibank, Banca Românească, Banca Comercială Română SA, ATM Unicredit Bank, ATM Dezinstalat, Vista Bank, Raifeissen Bank, ProCredit Bank, Garanti, FirstBank, CEC bank, Alpha, ATM Piraeus Bank, ATM Alpha Bank]
+chargingStationOperators: [Lidl, Renovatio e-charge, Enel X, Kaufland, STPT, 'Tesla, Inc.', E.ON, Enel, Eldrive, Polyfazer, Rompetrol, EVconnect, Plugpoint, McDonald's, IKEA, Flow, ElMotion, EV Connect Romania]
 clothesContainerOperators: [Containere Textile, Caritas]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true
@@ -11,7 +11,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 226
 officialLanguages: [ro]
 orchardProduces: [grape, plum, apple, tomato, chilli_pepper, sweet_pepper, strawberry, pear, cherry, apricot, walnut, peach, hazelnut, blueberry, hop, raspberry]
-parcelLockerBrand: [easybox, FANbox, GLS, Ship & Go, EasyBox, DPD Pickup Station, Sameday Easybox, Cargus]
+parcelLockerBrand: [easybox, FANbox, GLS, Ship & Go, Sameday Easybox, EasyBox, DPD Pickup Station, Cargus]
 popularSports: [soccer, tennis, basketball, handball]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom

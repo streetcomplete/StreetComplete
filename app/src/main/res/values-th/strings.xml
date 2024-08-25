@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"ตรวจสอบสิทธิ์ไม่ผ่าน: จำเป็นต้องได้รับอนุญาตสิทธิ์ทุกข้อในรายการ"</string>
     <string name="pref_category_communication">"การสื่อสาร"</string>
     <string name="pref_category_display">"แสดงผล"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"เนื้อที่ที่สำรองไว้ในแหล่งเก็บข้อมูลภายนอกในหน่วยเมกะไบต์สำหรับเก็บแคชชิ้นส่วนแผนที่"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"แสดงหมายเหตุทั้งหมด"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"แสดงหมายเหตุที่ไม่ได้เป็นคำถามด้วย"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"ไม่ต้องแสดงหมายเหตุที่ไม่ได้เป็นคำถาม"</string>
-    <string name="pref_title_map_cache">"ขนาดแคชของแผนที่"</string>
     <string name="map_btn_gps_tracking">"ติดตามฉัน"</string>
     <string name="map_attribution_osm">"© ผู้ร่วมสมทบ OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"คำตอบอื่น ๆ…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"การตั้งค่าตำแหน่งที่ตั้งปิดอยู่ เข้าไปเปิดในการตั้งค่าตอนนี้เลยไหม?"</string>
     <string name="no_location_permission_warning">"ต้องใช้ตำแหน่งของคุณเพื่อสแกนภารกิจในบริเวณของคุณ"</string>
     <string name="about_title_authors">"เครดิต"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick และผู้มีส่วนร่วม"</string>
     <string name="about_title_repository">"ที่เก็บโค้ดต้นฉบับ"</string>
-    <string name="about_summary_repository">"บน GitHub"</string>
     <string name="about_title_report_error">"รายงานข้อผิดพลาด"</string>
     <string name="about_title_feedback">"ให้ข้อเสนอแนะ"</string>
     <string name="about_title_license">"สัญญาอนุญาต"</string>
-    <string name="about_summary_license">"สัญญาอนุญาตสาธารณะทั่วไปของ GNU"</string>
     <string name="offline">"คุณออฟไลน์อยู่"</string>
     <string name="confirmation_authorize_now">"คุณต้องให้อนุญาตบัญชี OSM ของคุณเพื่อที่จะเผยแพร่คำตอบ อนุญาตตอนนี้?"</string>
     <string name="not_authorized">"ไม่ได้รับอนุญาต"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"มันแค่เชื่อมถนนสองเส้น"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"อื่น ๆ (ใส่หมายเหตุ)"</string>
     <string name="about_title_privacy_statement">"ประกาศความเป็นส่วนตัว"</string>
-    <string name="about_summary_privacy_statement">"และการใช้ข้อมูล"</string>
     <string name="quest_openingHours_public_holidays">"วันหยุดนักขัตฤกษ์"</string>
     <string name="quest_openingHours_public_holidays_short">"วันหยุด"</string>
     <string name="quest_openingHours_open_end">"ปลายเปิด"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"ซูมออก"</string>
     <string name="map_btn_zoom_in">"ซูมเข้า"</string>
     <string name="privacy_html">"&lt;p&gt;อ่า คนที่ใส่ใจเรื่องความเป็นส่วนตัว เยี่ยมเลย! ฉันคิดว่าฉันมีแต่ข่าวดีสำหรับคุณ:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;การสมทบโดยตรง&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;การสมทบโดยตรง&lt;/h2&gt;
 &lt;p&gt;
 ก่อนอื่น ให้เข้าใจว่าด้วยแอปนี้ คุณมีส่วนสมทบข้อมูลต่อ OpenStreetMap โดยตรง&lt;br/&gt;
 ทุกสิ่งที่คุณสมทบในแอปนี้จะถูกเพิ่มลงในแผนที่โดยตรง ไม่มีบุคคลที่สามอยู่ระหว่างแอปและโครงสร้างพื้นฐาน OSM
@@ -91,12 +84,12 @@
 การแก้ไข OpenStreetMap โดยไม่เปิดเผยตัวตนนั้นเป็นไปไม่ได้ ดังนั้นการเปลี่ยนแปลงใดๆ ที่คุณทำจะเกิดขึ้นกับบัญชีผู้ใช้ OSM ของคุณ ซึ่งหมายความว่าวันที่ เนื้อหา และตำแหน่งของการเปลี่ยนแปลงโดยนัยจะปรากฏต่อสาธารณะบนเว็บไซต์ openstreetmap และมาจากบัญชีของคุณ
 &lt;/p&gt;
 
-&lt;b&gt;ตำแหน่งที่ตั้ง&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;ตำแหน่งที่ตั้ง&lt;/h2&gt;
 &lt;p&gt;
 แอพจะไม่แชร์ตำแหน่ง GPS ของคุณกับใคร มันถูกใช้เพื่อสแกนหาภารกิจรอบ ๆ พื้นที่ของคุณโดยอัตโนมัติและเพื่อโฟกัส (และดาวน์โหลด) แผนที่รอบ ๆ ตำแหน่งของคุณ
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;การใช้ข้อมูล&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;การใช้ข้อมูล&lt;/h2&gt;
 &lt;p&gt;
 ดังที่กล่าวไว้ แอปจะสื่อสารโดยตรงกับโครงสร้างพื้นฐาน OSM&lt;br/&gt;
 อย่างไรก็ตาม ก่อนอัปโหลดการเปลี่ยนแปลงของคุณ แอปจะตรวจสอบกับ&lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ไฟล์ข้อความธรรมดา&lt;/a&gt;บนเซิร์ฟเวอร์ของฉันว่าถูกแบนจากอัปโหลดการเปลี่ยนแปลงใด ๆ หรือไม่ นี่เป็นมาตรการป้องกันไว้ก่อนเพื่อไม่ให้เวอร์ชันของแอปที่มีข้อบกพร่องที่สำคัญสร้างความเสียหายให้ข้อมูล OSM&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@
     <string name="quest_surface_value_wood">"ไม้"</string>
     <string name="quest_sidewalk_title">"ถนนสายนี้มีทางเดินทางเท้าไหม"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ถนนเส้นนนี้อยู่ไหน"</string>
-    <string name="quest_oneway_title">"ถนนเส้นนี้รถวิ่งได้ทางเดียวหรือไม่"</string>
     <string name="quest_address_title">"อาคารนี้มีบ้านเลขที่เท่าไหร่?"</string>
     <string name="store_listing_short_description">"แอปผู้สำรวจข้อมูลใน OpenStreetMap"</string>
     <string name="store_listing_full_description">"ช่วยปรับปรุงแผนที่ OpenStreetMap ด้วย StreetComplete!
@@ -387,7 +379,7 @@
     <string name="questList_disabled_in_country">"ไม่แสดงใน %s"</string>
     <string name="quest_select_hint_most_specific">"เลือกอันที่เหมาะสมที่เจาะจงที่สุด:"</string>
     <string name="quest_generic_item_confirmation">"คุณแน่ใจหรือว่าไม่สามารถระบุได้เฉพาะเจาะจงมากขึ้น?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;สำหรับบางภารกิจ จะมีการดาวน์โหลดข้อมูลเพิ่มเติมจากบุคคลที่สาม โดยเฉพาะอย่างยิ่ง ภารกิจทางเดียวจะค้นหา API ซึ่งโฮสต์บน westnordost.de ด้วย เกี่ยวกับตัวเลือกที่มีแนวโน้มจะเป็นทางเดียว&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;สำหรับบางภารกิจ จะมีการดาวน์โหลดข้อมูลเพิ่มเติมจากบุคคลที่สาม&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"ไม่ (ใส่หมายเหตุ)"</string>
     <string name="pref_quests_reset">"รีเซ็ตทั้งการเปิดใช้งานภารกิจและลำดับเป็นค่าเริ่มต้น?"</string>
     <string name="quest_generic_item_invalid_value">"โปรดเลือกค่าที่เจาะจงกว่านี้"</string>
@@ -502,7 +494,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"ห้ามคนเดินเท้าบนถนนสายนี้หรือไม่?"</string>
     <string name="quest_buildingType_title">"นี่คืออาคารแบบไหน?"</string>
     <string name="pref_title_theme_select">"เลือกชุดตกแต่ง"</string>
-    <string name="theme_automatic">"อัตโนมัติ"</string>
     <string name="theme_light">"สว่าง"</string>
     <string name="theme_dark">"มืด"</string>
     <string name="theme_system_default">"ค่าเริ่มต้นของระบบ"</string>
@@ -532,7 +523,6 @@
     <string name="quest_maxweight_answer_other_sign">"ป้ายดูแตกต่าง…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"คุณต้องการที่จะสร้างหมายเหตุหรือเปล่า? หมายเหตุพร้อมรูปถ่ายจะช่วยให้ผู้ทำแผนที่รายอื่นมาช่วยดูแลได้"</string>
     <string name="quest_handrail_title">"ขั้นบันไดตรงนี้มีราวจับหรือไม่?"</string>
-    <string name="about_summary_current_version">"เวอร์ชั่นปัจจุบัน: %s"</string>
     <string name="quest_ref_answer_noRef">"ไม่เห็นหมายเลขอ้างอิง…"</string>
     <string name="quest_street_side_puzzle_tutorial">"ถนนในภาพได้หมุนไปในทิศทางเดียวกันกับแผนที่ตรงตำแหน่งหมุด"</string>
     <string name="quest_recycling_materials_title">"ที่นี่สามารถรับอะไรเพื่อรีไซเคิลได้บ้าง?"</string>
@@ -557,7 +547,6 @@
     <string name="about_title_changelog">"ประวัติเวอร์ชั่น"</string>
     <string name="title_whats_new">"มีอะไรใหม่?"</string>
     <string name="about_title_rate">"ให้คะแนนแอปนี้"</string>
-    <string name="about_summary_rate">"บน Google Play"</string>
     <string name="about_title_donate">"บริจาค"</string>
     <string name="about_summary_donate">"แสดงความขอบคุณ ❤️"</string>
     <string name="about_description_donate">"ขอบคุณที่พิจารณาสนับสนุนแอปนี้ ถ้าจะดูรายการการบริจาคปัจจุบันและบริจาคเอง ให้กดตรงแพลตฟอร์มที่เกี่ยวข้อง:"</string>
@@ -949,7 +938,6 @@
     <string name="quest_barrier_bicycle_type_single">"ช่องแคบ ๆ ระหว่างรั้ว"</string>
     <string name="quest_barrier_bicycle_type_double">"ซิกแซก มีรั้วสองชั้น"</string>
     <string name="quest_barrier_bicycle_type_multiple">"ซิกแซก มีรั้วมากกว่าสองชั้น"</string>
-    <string name="pref_title_language_select">"เลือกภาษา"</string>
     <string name="language_default">"ค่าเริ่มต้นของระบบ"</string>
     <string name="on_floor">"บนชั้น %s"</string>
     <string name="select_street_parking_orientation">"เลือกทิศทางไปยังถนน:"</string>
@@ -974,7 +962,6 @@
 
 หรือสร้างโน๊ตไว้ (อาจจะแนบรูปด้วย)"</string>
     <string name="quest_address_house_number_label">"บ้านเลขที่:"</string>
-    <string name="quest_shoulder_title">"ถนนเส้นนี้มีไหล่ทางรึเปล่า?"</string>
     <string name="quest_fireHydrant_position_title">"หัวจ่ายน้ำดับเพลิงตั้งอยู่ตรงไหน?"</string>
     <string name="quest_fireHydrant_position_green">"อยู่บนหญ้าหรือดิน"</string>
     <string name="quest_fireHydrant_position_lane">"อยู่บนถนน"</string>
@@ -1025,8 +1012,6 @@
     <string name="quest_barrier_path_intersection">"เส้นทางข้ามสิ่งกีดขวางอย่างไร?"</string>
     <string name="quest_barrier_road_intersection">"ถนนข้ามสิ่งกีดขวางอย่างไร?"</string>
     <string name="quest_sidewalk_value_separate">"แสดงแยกต่างหากในแผนที่"</string>
-    <string name="quest_shoulder_value_yes">"มีไหล่ทาง"</string>
-    <string name="quest_shoulder_value_no">"ไม่มีไหล่ทาง"</string>
     <string name="no_camera_permission_warning_title">"สิทธิ์เข้าถึงกล้อง"</string>
     <string name="no_camera_permission_warning">"สิทธิ์เข้าถึงกล้องจำเป็นต่อการถ่ายรูป และการวัดระยะด้วยกล้อง"</string>
     <string name="ar_core_error_sdk_too_old">"อัพเดตแอพเถอะ เวอร์ชันเก่าแล้วนะ"</string>
@@ -1116,7 +1101,6 @@
     <string name="quest_barrier_type_gate_any_size">"ประตู"</string>
     <string name="quest_air_pump_compressor_title">"มีเครื่องอัดอากาศรึเปล่า?"</string>
     <string name="quest_step_count_stile_hint">"จำนวนขั้นบันได ถ้าสองฝั่งไม่เท่ากันให้ใส่เลขที่มากกว่า"</string>
-    <string name="quest_shoulder_explanation2">"ไหล่ทางเป็นช่องทางหยุดฉุกเฉินที่กำหนดไว้อย่างชัดเจน พื้นที่ที่กำหนดเป็นไหล่ทางไม่จำเป็นต้องลาดยางทั้งพื้นที่ และไม่จำเป็นต้องกว้างพอที่รถทั้งคันจะจอดได้"</string>
     <string name="quest_cycleway_value_none_and_oneway">"ไม่มี ไม่อนุญาตให้ปั่นจักรยานในทิศทางนี้"</string>
     <string name="map_btn_create_track">"สร้างการบันทึกเส้นทางใหม่"</string>
     <string name="map_btn_stop_track">"หยุดการบันทึกเส้นทาง"</string>
@@ -1218,7 +1202,6 @@
     <string name="quest_genericRef_title">"เลขประจำตัวที่นี่คืออะไร?"</string>
     <string name="quest_sidewalk_answer_different">"สถานการณ์ทางเดินข้างทางแตกต่างกัน"</string>
     <string name="about_title_get_involved">"มีส่วนเกี่ยวข้อง"</string>
-    <string name="pref_category_quests_overlays">"ภารกิจและภาพซ้อนทับ"</string>
     <string name="quest_presets_rename">"เปลี่ยนชื่อ"</string>
     <string name="quest_presets_share">"แชร์"</string>
     <string name="quest_presets_delete">"ลบ"</string>

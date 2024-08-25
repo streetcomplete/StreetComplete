@@ -253,7 +253,14 @@
                     "label": "Vrsta"
                 },
                 "building": {
-                    "label": "Zgradba"
+                    "label": "Zgradba",
+                    "options": {
+                        "detached": "Samostojna hiša",
+                        "greenhouse": "Rastlinjak",
+                        "house": "Hiša",
+                        "terrace": "Vrstne hiše",
+                        "warehouse": "Skladišče"
+                    }
                 },
                 "building/levels": {
                     "placeholder": "2, 4, 6..."
@@ -486,7 +493,10 @@
                     "label": "Vrsta"
                 },
                 "entrance": {
-                    "label": "Vrsta"
+                    "label": "Vrsta",
+                    "options": {
+                        "home": "Zasebna hiša ali stanovanje"
+                    }
                 },
                 "except": {
                     "label": "Izjeme"
@@ -592,6 +602,9 @@
                     "options": {
                         "horse_riding": "Da"
                     }
+                },
+                "house": {
+                    "label": "Vrsta hiše"
                 },
                 "incline": {
                     "label": "Naklon"
@@ -1931,6 +1944,9 @@
                     "name": "Hiša",
                     "terms": "stanovanjska hiša"
                 },
+                "building/house/terraced": {
+                    "name": "Vrstna hiša"
+                },
                 "building/hut": {
                     "name": "Koča",
                     "terms": "dom,lovska koča"
@@ -1969,6 +1985,9 @@
                 "building/stable": {
                     "name": "Hlev",
                     "terms": "štala"
+                },
+                "building/terrace": {
+                    "name": "Niz vrstnih hiš"
                 },
                 "building/university": {
                     "name": "Univerzitetna stavba",
@@ -2291,6 +2310,9 @@
                 "highway/pedestrian_area": {
                     "name": "Cona za pešce"
                 },
+                "highway/pedestrian_line": {
+                    "name": "Ulica namenjena pešcem"
+                },
                 "highway/primary": {
                     "name": "Glavna cesta",
                     "terms": "glavna cesta,primarna cesta"
@@ -2481,6 +2503,9 @@
                 "landuse/industrial": {
                     "name": "Industrijsko področje",
                     "terms": "industrijska cona,industrijsko območje"
+                },
+                "landuse/industrial/slaughterhouse": {
+                    "name": "Klavnica"
                 },
                 "landuse/landfill": {
                     "name": "Smetišče",
@@ -2848,6 +2873,30 @@
                 "natural/tree": {
                     "name": "Drevo",
                     "terms": "drevje"
+                },
+                "natural/tree/broadleaved": {
+                    "name": "Listavec"
+                },
+                "natural/tree/broadleaved/deciduous": {
+                    "name": "Listavec (nezimzelen)"
+                },
+                "natural/tree/broadleaved/evergreen": {
+                    "name": "Listavec (zimzelen)"
+                },
+                "natural/tree/needleleaved": {
+                    "name": "Iglavec"
+                },
+                "natural/tree/needleleaved/deciduous": {
+                    "name": "Iglavec (nezimzelen)"
+                },
+                "natural/tree/needleleaved/evergreen": {
+                    "name": "Iglavec (zimzelen)"
+                },
+                "natural/tree_row": {
+                    "terms": "drevored"
+                },
+                "natural/tree_stump": {
+                    "name": "Štor"
                 },
                 "natural/volcano": {
                     "name": "Vulkan",
@@ -3422,7 +3471,7 @@
                 },
                 "tourism/guest_house": {
                     "name": "Penzion",
-                    "terms": "prenočišče,hrana"
+                    "terms": "prenočišče,hrana,hiša za goste"
                 },
                 "tourism/hostel": {
                     "name": "Hostel",

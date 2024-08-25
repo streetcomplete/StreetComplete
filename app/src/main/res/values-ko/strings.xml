@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"인증 실패: 목록에 있는 모든 권한을 허가해야 합니다"</string>
     <string name="pref_category_communication">"통신"</string>
     <string name="pref_category_display">"화면"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"맵 타일 캐시를 위해 위해 외부 저장소에 예약된 메가바이트 단위 공간"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"모든 참고 보기"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"질문이 아닌 참고 표시"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"질문이 아닌 참고 무시"</string>
-    <string name="pref_title_map_cache">"지도 캐시 크기"</string>
     <string name="map_btn_gps_tracking">"사용자 추적"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 기여자"</string>
     <string name="quest_generic_otherAnswers">"다른 답변…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"이 어플의 위치 권한이 비활성화되어 있습니다. 설정 화면으로 이동하시겠습니까?"</string>
     <string name="no_location_permission_warning">"당신의 위치를 지도에 표시하고 주변에 있는 과제를 찾으려면 위치 권한이 필요합니다."</string>
     <string name="about_title_authors">"제작자"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick와 기여자들"</string>
     <string name="about_title_repository">"프로젝트 홈"</string>
-    <string name="about_summary_repository">"GitHub으로 열기"</string>
     <string name="about_title_report_error">"오류 보고"</string>
     <string name="about_title_feedback">"피드백"</string>
     <string name="about_title_license">"라이선스"</string>
-    <string name="about_summary_license">"GNU 일반 공중 사용권"</string>
     <string name="offline">"현재 오프라인 상태입니다"</string>
     <string name="confirmation_authorize_now">"답변을 올리려면 OSM 계정을 로그인해야 합니다. 지금 로그인하시겠습니까?"</string>
     <string name="not_authorized">"로그인이 안됨"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"두 도로를 연결하는 역할만 함"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"기타 (참고 남기기)"</string>
     <string name="about_title_privacy_statement">"개인정보 보호방침"</string>
-    <string name="about_summary_privacy_statement">"및 데이터 사용처"</string>
     <string name="quest_openingHours_public_holidays">"공휴일"</string>
     <string name="quest_openingHours_public_holidays_short">"공휴일"</string>
     <string name="quest_openingHours_open_end">"운영시간"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"축소"</string>
     <string name="map_btn_zoom_in">"확대"</string>
     <string name="privacy_html">"&lt;p&gt;아, 개인정보 보호에 관심이 많으시군요! 걱정하지 않으셔도 될 것 같습니다:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;직접 기여&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;직접 기여&lt;/h2&gt;
 &lt;p&gt;
 일단, StreetComplete를 이용하면 오픈스트리트맵(OSM)에 직접적으로 기여하게 됩니다.&lt;br/&gt;
 이 앱로 기여한 모든 것들이 바로 오픈스트리트맵에 추가되며, 이 앱과 OSM 사이에 제3자가 개입하지 않습니다.
@@ -91,12 +84,12 @@
 오픈스트리트맵을 익명으로 편집하는 것은 불가능하며, 따라서 오픈스트리트맵에 기여하려면 계정이 필요합니다. 즉, 수정 시각, 수정 내용, 그리고 간접적으로 수정 위치가 OSM 웹사이트에 공개되며, 여러분의 계정과 연결됩니다.
 &lt;/p&gt;
 
-&lt;b&gt;위치&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;위치&lt;/h2&gt;
 &lt;p&gt;
 이 앱은 GPS 위치 정보를 어느 누구에게도 공유하지 않습니다. 위치정보는 오로지 여러분의 위치를 알아 그 주변에 있는 과제를 탐색하기 위해서만 이용합니다.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;인터넷 이용&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;인터넷 이용&lt;/h2&gt;
 &lt;p&gt;
 위에서 설명한 대로, 이 앱은 OSM 서버와 직접적으로 통신합니다.&lt;br/&gt;
 그러나, 앱이 변경 내역을 업로드하기 전에, 현재 버전으로 지도를 수정해서는 안 되는지 확인하기 위해 StreetComplete 서버에 있는 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;간단한 텍스트 파일&lt;/a&gt;을 확인합니다. 이는 치명적인 버그가 있는 앱 버전이 OSM의 정보를 오염시키지 않기 위한 예방 차원의 조치입니다.&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@
     <string name="quest_surface_value_wood">"목재"</string>
     <string name="quest_sidewalk_title">"이 도로에 인도가 있나요?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"이 도로는 어디에 있나요?"</string>
-    <string name="quest_oneway_title">"일방통행 도로인가요?"</string>
     <string name="quest_address_title">"이 건물의 건물번호는 무엇인가요?"</string>
     <string name="store_listing_short_description">"OpenStreetMap 설문조사 앱"</string>
     <string name="store_listing_full_description">"StreetComplete로 OpenStreetMap을 개선하는 데 도움을 주세요!
@@ -389,7 +381,7 @@
     <string name="questList_disabled_in_country">"%s에서 수행 불가"</string>
     <string name="quest_select_hint_most_specific">"가장 정확한 답변을 선택해 주세요:"</string>
     <string name="quest_generic_item_confirmation">"더 구체적인 선택지가 없습니까?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;일부 과제에서는 제3자 서비스에서 추가 정보를 가져오기도 합니다. 특히 일방통행로 과제에서는 westnordost.de의 API를 호출해서 일방통행로일 가능성이 높은 후보를 가져옵니다.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;일부 과제에서는 제3자 서비스에서 추가 정보를 가져오기도 합니다.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"아니오 (참고 남기기)"</string>
     <string name="pref_quests_reset">"과제 활성화 여부를 초기화하고 기본값으로 되돌리시겠습니까?"</string>
     <string name="quest_generic_item_invalid_value">"더 구체적인 값을 선택해 주세요."</string>
@@ -504,7 +496,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"이 도로에 보행자 통행이 금지되어 있나요?"</string>
     <string name="quest_buildingType_title">"무슨 건물인가요?"</string>
     <string name="pref_title_theme_select">"테마 선택"</string>
-    <string name="theme_automatic">"자동"</string>
     <string name="theme_light">"밝음"</string>
     <string name="theme_dark">"어두움"</string>
     <string name="theme_system_default">"시스템 기본값"</string>
@@ -534,7 +525,6 @@
     <string name="quest_maxweight_answer_other_sign">"표지판이 다르게 생김…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"참고를 남기고 싶으신가요? 사진과 함께 참고를 남기면 다른 매퍼가 이를 대신 처리해 줄 수 있습니다."</string>
     <string name="quest_handrail_title">"이 계단에 난간이 있나요?"</string>
-    <string name="about_summary_current_version">"현재 버전: %s"</string>
     <string name="quest_ref_answer_noRef">"참조 번호가 보이지 않음…"</string>
     <string name="quest_street_side_puzzle_tutorial">"아래 그림의 회전 방향은 위 지도의 핀 부분에서와 같습니다."</string>
     <string name="quest_recycling_materials_title">"이 분리수거함에 무엇을 넣을 수 있나요?"</string>
@@ -559,7 +549,6 @@
     <string name="about_title_changelog">"버전 역사"</string>
     <string name="title_whats_new">"새로운 기능"</string>
     <string name="about_title_rate">"이 앱 평가하기"</string>
-    <string name="about_summary_rate">"구글 플레이에서"</string>
     <string name="about_title_donate">"기부하기"</string>
     <string name="about_summary_donate">"감사하는 마음을 보여주세요! ❤️"</string>
     <string name="about_description_donate">"이 앱을 지원하기로 결정해 주셔서 감사합니다! 기부 현황을 보거나 기부하고 싶으시다면, 원하시는 플랫폼을 터치해 주세요:"</string>
@@ -954,7 +943,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_barrier_bicycle_type_single">"두 방벽 사이의 통로"</string>
     <string name="quest_barrier_bicycle_type_double">"시케인 - 양쪽에 방벽이 있음"</string>
     <string name="quest_barrier_bicycle_type_multiple">"시케인 - 방벽이 세 개 이상 있음"</string>
-    <string name="pref_title_language_select">"언어 선택"</string>
     <string name="language_default">"시스템 기본값"</string>
     <string name="on_floor">"%s이(가) 위치한 층수:"</string>
     <string name="select_street_parking_orientation">"도로에서 볼 때의 주차 방향을 선택하세요:"</string>
@@ -979,7 +967,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 
 아니면, (사진과 함께) 참고를 남길 수도 있습니다."</string>
     <string name="quest_address_house_number_label">"건물번호:"</string>
-    <string name="quest_shoulder_title">"이 도로에 갓길이 있나요?"</string>
     <string name="quest_fireHydrant_position_title">"소화전이 어디에 위치해 있나요?"</string>
     <string name="quest_fireHydrant_position_green">"잔디 또는 흙"</string>
     <string name="quest_fireHydrant_position_lane">"길가"</string>
@@ -1030,8 +1017,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_barrier_path_intersection">"이 길은 여기에서 어떤 장벽을 거치나요?"</string>
     <string name="quest_barrier_road_intersection">"이 도로는 여기에서 어떤 장벽을 거치나요?"</string>
     <string name="quest_sidewalk_value_separate">"지도에 별도로 표시됨"</string>
-    <string name="quest_shoulder_value_yes">"갓길 있음"</string>
-    <string name="quest_shoulder_value_no">"갓길 없음"</string>
     <string name="no_camera_permission_warning_title">"카메라 권한 필요"</string>
     <string name="no_camera_permission_warning">"사진을 찍고 카메라로 거리 측정을 위해서는 권한이 필요합니다."</string>
     <string name="ar_core_error_sdk_too_old">"이 앱은 너무 오래되었습니다, 업데이트하세요."</string>
@@ -1122,7 +1107,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_barrier_type_gate_any_size">"문, 크기 무관"</string>
     <string name="quest_air_pump_compressor_title">"이곳에 사용할 수 있는 공기 펌프가 있나요?"</string>
     <string name="quest_step_count_stile_hint">"정상까지 도달하는 계단 수입니다. 양쪽이 다른 경우 더 높은 숫자를 지정합니다."</string>
-    <string name="quest_shoulder_explanation2">"갓길 또는 고장 차선은 명확하게 표시된 긴급 정차 차선입니다. 갓길로 지정된 구역은 반드시 전체 폭이 포장되어 있는 것은 아니며, 차가 차선에서 완전히 정차할 수 있을 만큼 넓지 않을 수도 있습니다."</string>
     <string name="quest_cycleway_value_none_and_oneway">"없음, 이 방향으로 자전거 통행 금지"</string>
     <string name="map_btn_create_track">"새 경로 기록 생성"</string>
     <string name="map_btn_stop_track">"경로 기록 정지"</string>
@@ -1224,7 +1208,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_genericRef_title">"이 소화전의 관리번호가 무엇인가요?"</string>
     <string name="quest_sidewalk_answer_different">"보도 상황이 다릅니다"</string>
     <string name="about_title_get_involved">"참여하기"</string>
-    <string name="pref_category_quests_overlays">"과제와 오버레이"</string>
     <string name="quest_presets_rename">"이름 바꾸기"</string>
     <string name="quest_presets_share">"공유"</string>
     <string name="quest_presets_delete">"제거"</string>
@@ -1397,6 +1380,4 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 층은 창문이 지붕에 있을 때 지붕 층으로 간주됩니다. 그 결과, 지붕 층이 0인 지붕은 반드시 평평하지는 않지만 전체 층에 충분히 높지는 않습니다.
 ␣␣␣␣"</string>
     <string name="quest_parcel_locker_brand">"이 소포 보관함의 브랜드는 무엇인가요?"</string>
-    <string name="quest_parcel_locker_pickup">"여기서 소포를 찾을 수 있나요?"</string>
-    <string name="quest_parcel_locker_mail_in">"소포를 여기에 넣을 수 있나요?"</string>
 </resources>

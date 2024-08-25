@@ -11,8 +11,6 @@ import androidx.annotation.UiThread
 import androidx.core.content.getSystemService
 import androidx.core.graphics.Insets
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
-import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
@@ -38,8 +36,6 @@ import de.westnordost.streetcomplete.screens.main.map.components.TracksMapCompon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
-import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
-import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -54,6 +50,8 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.visibility
 import kotlin.math.PI
@@ -207,7 +205,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         tracksMapComponent = TracksMapComponent(context, style, map)
         viewLifecycleOwner.lifecycle.addObserver(tracksMapComponent!!)
 
-        pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, fingerRadius, ::onClickPin)
+        pinsMapComponent = PinsMapComponent(context, context.contentResolver, map, mapImages!!, ::onClickPin)
         geometryMapComponent = FocusGeometryMapComponent(context.contentResolver, map)
         viewLifecycleOwner.lifecycle.addObserver(geometryMapComponent!!)
 
@@ -344,7 +342,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     }
 
     private fun onCompassRotationChanged(rot: Float, tilt: Float) {
-        locationMapComponent?.rotation = rot * 180 / PI
+        locationMapComponent?.rotation = (rot * 180 / PI) - (map?.camera?.rotation ?: 0.0)
     }
 
     private fun onLocationChanged(location: Location) {
@@ -533,9 +531,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         updateCameraPosition(600) {
             if (isNavigationMode) {
                 val bearing = getTrackBearing(tracks.last())
-                if (bearing != null) {
-                    rotation = -(bearing * PI / 180.0)
-                }
+                if (bearing != null) rotation = bearing
                 tilt = 60.0
             }
 
@@ -563,7 +559,6 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
             centerCurrentPositionIfFollowing()
         }
     }
-
 
     //endregion
 

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.content.res.Resources
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.edithistory.Edit

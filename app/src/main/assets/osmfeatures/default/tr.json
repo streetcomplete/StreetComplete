@@ -72,7 +72,7 @@
                             "title": "Araçtan inmek"
                         },
                         "no": {
-                            "description": "Kamuoyuna erişime izin verilmedi.",
+                            "description": "Kamunun erişimine izin verilmedi.",
                             "title": "Yasak"
                         },
                         "permissive": {
@@ -1009,7 +1009,6 @@
                         "cake": "Cake",
                         "chicken": "Tavuk",
                         "chinese": "Çinli",
-                        "chocolate": "Chocolate",
                         "coffee_shop": "Kahve Dükkanı",
                         "dessert": "Dessert",
                         "donut": "Donut",
@@ -2056,7 +2055,6 @@
                         "marble": "Marble",
                         "metal": "Metal",
                         "plastic": "Plastic",
-                        "reinforced_conrete": "Reinforced Concrete",
                         "rock": "Rock",
                         "sand": "Sand",
                         "sandstone": "Sandstone",
@@ -7269,8 +7267,8 @@
                     "name": "Çalı"
                 },
                 "natural/spring": {
-                    "name": "Memba",
-                    "terms": "memba,kaynak"
+                    "name": "Kaynak",
+                    "terms": "göze,kaynak"
                 },
                 "natural/stone": {
                     "name": "Bağlı Olmayan Taş / Aşınmış Kaya Parçaları"

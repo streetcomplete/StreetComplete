@@ -18,25 +18,6 @@ val Fragment.childFragmentManagerOrNull: FragmentManager? get() =
 
 val Fragment.viewLifecycleScope get() = viewLifecycleOwner.lifecycleScope
 
-fun Fragment.setUpToolbarTitleAndIcon(toolbar: Toolbar) {
-    if (this is HasTitle) {
-        toolbar.title = title
-        toolbar.subtitle = subtitle
-    }
-
-    val typedArray =
-        toolbar.context.obtainStyledAttributes(intArrayOf(androidx.appcompat.R.attr.homeAsUpIndicator))
-    val attributeResourceId = typedArray.getResourceId(0, 0)
-    val backIcon = toolbar.context.getDrawable(attributeResourceId)
-    typedArray.recycle()
-
-    toolbar.setNavigationOnClickListener {
-        requireActivity().onBackPressedDispatcher.onBackPressed()
-    }
-
-    toolbar.navigationIcon = backIcon
-}
-
 fun <T> Fragment.observe(flow: SharedFlow<T>, collector: FlowCollector<T>) {
     viewLifecycleOwner.lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {

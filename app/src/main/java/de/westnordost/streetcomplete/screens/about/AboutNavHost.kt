@@ -15,6 +15,10 @@ import org.koin.androidx.compose.koinViewModel
     val navController = rememberNavController()
     val dir = LocalLayoutDirection.current.dir
 
+    fun goBack() {
+        if (!navController.popBackStack()) onClickBack()
+    }
+
     NavHost(
         navController = navController,
         startDestination = AboutDestination.About,
@@ -29,30 +33,30 @@ import org.koin.androidx.compose.koinViewModel
                 onClickCredits = { navController.navigate(AboutDestination.Credits) },
                 onClickPrivacyStatement = { navController.navigate(AboutDestination.PrivacyStatement) },
                 onClickLogs = { navController.navigate(AboutDestination.Logs) },
-                onClickBack = onClickBack
+                onClickBack = ::goBack
             )
         }
         composable(AboutDestination.Changelog) {
             ChangelogScreen(
                 viewModel = koinViewModel(),
-                onClickBack = { navController.popBackStack() }
+                onClickBack = ::goBack
             )
         }
         composable(AboutDestination.Credits) {
             CreditsScreen(
                 viewModel = koinViewModel(),
-                onClickBack = { navController.popBackStack() }
+                onClickBack = ::goBack
             )
         }
         composable(AboutDestination.PrivacyStatement) {
             PrivacyStatementScreen(
-                onClickBack = { navController.popBackStack() }
+                onClickBack = ::goBack
             )
         }
         composable(AboutDestination.Logs) {
             LogsScreen(
                 viewModel = koinViewModel(),
-                onClickBack = { navController.popBackStack() }
+                onClickBack = ::goBack
             )
         }
     }

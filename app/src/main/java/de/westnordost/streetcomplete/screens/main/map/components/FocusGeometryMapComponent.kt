@@ -7,6 +7,16 @@ import androidx.annotation.UiThread
 import androidx.core.graphics.Insets
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
+import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
+import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
+import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
+import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
+import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.FillLayer
@@ -15,27 +25,17 @@ import org.maplibre.android.style.layers.LineLayer
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.sources.GeoJsonSource
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
-import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
-import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
-import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
-import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
-import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
-import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
-import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
-import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.math.sin
 import kotlin.math.roundToInt
+import kotlin.math.sin
 
 /** Display element geometry and enables focussing on given geometry. I.e. to highlight the geometry
  *  of the element a selected quest refers to. Also zooms to the element in question so that it is
  *  contained in the screen area */
-class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapLibreMap)
-    : DefaultLifecycleObserver {
+class FocusGeometryMapComponent(private val contentResolver: ContentResolver, private val map: MapLibreMap) :
+    DefaultLifecycleObserver {
 
     private val focusedGeometrySource = GeoJsonSource(SOURCE)
 

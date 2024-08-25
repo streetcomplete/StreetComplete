@@ -262,7 +262,6 @@
                 },
                 "cuisine": {
                     "options": {
-                        "chocolate": "Sjokolade",
                         "fish": "Fisk",
                         "french": "Fransk",
                         "georgian": "Georgisk",

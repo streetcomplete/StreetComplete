@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Yetkilendirme başarısız: İstenen bütün izinlerin verilmesi gerekiyor"</string>
     <string name="pref_category_communication">"İletişim"</string>
     <string name="pref_category_display">"Görüntü"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Harita döşemelerini önbelleğe almak için harici depolamaya ayrılan megabayt alan"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tüm notları göster"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Soru olarak ifade edilmeyen notlar da gösteriliyor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Soru şeklinde ifade edilmeyen notlar yoksayılıyor"</string>
-    <string name="pref_title_map_cache">"Harita önbellek boyutu"</string>
     <string name="map_btn_gps_tracking">"Beni takip et"</string>
     <string name="map_attribution_osm">"© OpenStreetMap katkıcıları"</string>
     <string name="quest_generic_otherAnswers">"Diğer cevaplar…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Konum kapalı. Açmak için Ayarlar'a gidilsin mi?"</string>
     <string name="no_location_permission_warning">"Çevrenizdeki görevleri taramak ve haritada konumunuzu göstermek için izniniz gerekiyor."</string>
     <string name="about_title_authors">"Emeği geçenler"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick ve katkıda bulunan kişiler"</string>
     <string name="about_title_repository">"Projenin Ana Sayfası"</string>
-    <string name="about_summary_repository">"GitHub'da"</string>
     <string name="about_title_report_error">"Hata bildir"</string>
     <string name="about_title_feedback">"Geri bildirim ver"</string>
     <string name="about_title_license">"Lisans"</string>
-    <string name="about_summary_license">"GNU Genel Kamu Lisansı"</string>
     <string name="offline">"Çevrimdışısınız"</string>
     <string name="confirmation_authorize_now">"Yanıtlarınızı yayınlamak için OSM kullanıcı hesabınızda yetki vermeniz gerekir.  Şimdi yetkilendirilsin mi?"</string>
     <string name="not_authorized">"Yetkilendirilmedi"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Sadece iki yolu birbirine bağlıyor"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Başka bir şey (not bırak)"</string>
     <string name="about_title_privacy_statement">"Gizlilik beyanı"</string>
-    <string name="about_summary_privacy_statement">"ve veri kullanımı"</string>
     <string name="quest_openingHours_public_holidays">"Resmi tatiller"</string>
     <string name="quest_openingHours_public_holidays_short">"RT"</string>
     <string name="quest_openingHours_open_end">"kapanış saati"</string>
@@ -81,25 +74,25 @@
     <string name="quest_roofShape_answer_many">"Birkaç farklı şekli var"</string>
     <string name="map_btn_zoom_out">"Uzaklaştır"</string>
     <string name="map_btn_zoom_in">"Yakınlaştır"</string>
-    <string name="privacy_html">"&lt;P&gt; Ah, gizlilikle ilgilenen biri, hoş! Sanırım sana iyi haberlerim var: &lt;/p&gt;
-&lt;P&gt; &lt;b&gt; Doğrudan Katkılar &lt;/b&gt; &lt;/p&gt;
-&lt;P&gt;
+    <string name="privacy_html">"&lt;p&gt; Ah, gizlilikle ilgilenen biri, hoş! Sanırım sana iyi haberlerim var: &lt;/p&gt;
+&lt;h2&gt;Doğrudan Katkılar&lt;/h2&gt;
+&lt;Pp&gt;
 İlk önce, bu uygulamanın OpenStreetMap'e gerçek ve doğrudan katkıda bulunduğunu anlayın. &lt;br/&gt;
 Bu uygulamaya katkıda bulunmanız gereken herhangi bir şey doğrudan haritaya eklenir; uygulama ve OSM altyapısı arasında üçüncü taraf yok.
-&lt;/P&gt;
-&lt;P&gt;
+&lt;/p&gt;
+&lt;p&gt;
 OpenStreetMap'i anonim olarak düzenlemek mümkün değildir, bu nedenle yaptığınız değişiklikler OSM kullanıcı hesabınızla yapılır. Bu, değişikliklerin tarih, içerik ve dolaylı olarak yerinin openstreetmap web sitesinde herkese görünür olduğu ve hesabınıza atfedilebileceği anlamına gelir.
-&lt;/P&gt;
+&lt;/p&gt;
 
-&lt;B&gt; Yer &lt;/b&gt; &lt;br/&gt;
-&lt;P&gt;
+&lt;h2&gt;Yer&lt;/h2&gt;
+&lt;p&gt;
 Konumunuz yalnızca etrafınızdaki görevleri otomatik olarak taramak için kullanılır. Endişelenmenize gerek yok, uygulama konumunuzu kendisi için saklar.
-&lt;/ P&gt;
+&lt;/p&gt;
 
-&lt;P&gt; &lt;b&gt; Veri Kullanımı &lt;/b&gt; &lt;/p&gt;
-&lt;P&gt;
+&lt;h2&gt;Veri Kullanımı&lt;/h2&gt;
+&lt;p&gt;
 Bahsedildiği gibi, uygulama OSM altyapısıyla doğrudan iletişim kuruyor. Bununla birlikte, değişikliklerinizi yüklemeden önce uygulama, sunucudaki &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; basit bir metin dosyası &lt;/a&gt; ile yasaklanmış olup olmadığı kontrol eder. Herhangi bir değişiklik yüklüyor. Bu, kritik hataların OSM verilerini muhtemelen bozmasına neden olan uygulamaların sürümlerini muhafaza edebilmek için ihtiyati bir önlemdir. &lt;br/&gt;
-&lt;/P&gt;"</string>
+&lt;/p&gt;"</string>
     <string name="autosync_on">"Açık"</string>
     <string name="autosync_only_on_wifi">"Sadece Wifi'de"</string>
     <string name="autosync_off">"Kapalı"</string>
@@ -122,7 +115,6 @@ Bahsedildiği gibi, uygulama OSM altyapısıyla doğrudan iletişim kuruyor. Bun
     <string name="quest_surface_value_wood">"Ahşap"</string>
     <string name="quest_sidewalk_title">"Bu yolda kaldırım var mı?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Bu sokak nerde?"</string>
-    <string name="quest_oneway_title">"Bu sokak tek yön mü?"</string>
     <string name="quest_address_title">"Bu binanın kapı numarası ney?"</string>
     <string name="store_listing_short_description">"OpenStreetMap anketör uygulaması."</string>
     <string name="store_listing_full_description">"StreetComplete ile OpenStreetMap'ın geliştirilmesine yardımcı olun!
@@ -390,7 +382,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="questList_disabled_in_country">"Asla %s olarak gösterme"</string>
     <string name="quest_select_hint_most_specific">"En uygun olanı seçin:"</string>
     <string name="quest_generic_item_confirmation">"Daha spesifik olarak belirleyemediğinizden emin misiniz?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Bazı görevler için, üçüncü partilerden daha fazla veri indirilir. Özellikle, tek yönlü görevler API'a tek yönlülerin adaylarının neler olabileceğini bilmek için istek gönderdiği zaman.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Bazı görevler için, üçüncü partilerden daha fazla veri indirilir.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Hayır (not bırak)"</string>
     <string name="pref_quests_reset">"Görevin sırasını ve açık kapalı durumunu sıfırla?"</string>
     <string name="quest_generic_item_invalid_value">"Lütfen daha spesifik bir değer seçin."</string>
@@ -505,7 +497,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Yayaların bu yolda yürümesi yasak mı?"</string>
     <string name="quest_buildingType_title">"Bu nasıl bir bina?"</string>
     <string name="pref_title_theme_select">"Tema seçin"</string>
-    <string name="theme_automatic">"Otomatik"</string>
     <string name="theme_light">"Aydınlık"</string>
     <string name="theme_dark">"Koyu"</string>
     <string name="theme_system_default">"Varsayılan"</string>
@@ -534,7 +525,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_maxweight_answer_other_sign">"İşaret farklı görünüyor…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Not bırakmak ister misiniz?  Fotoğraflı bir not, diğer haritacıların onu görmesini sağlar."</string>
     <string name="quest_handrail_title">"Bu basamaklarda parmaklık var mı?"</string>
-    <string name="about_summary_current_version">"Mevcut sürüm:%s"</string>
     <string name="quest_ref_answer_noRef">"Görünen referans numarası yok…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Gösterideki yol, aynı haritadaki merkezi gibi döndürüldü."</string>
     <string name="quest_recycling_materials_title">"Buraya geri dönüşüm için neler bırakılabilir?"</string>
@@ -559,7 +549,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="about_title_changelog">"Sürüm geçmişi"</string>
     <string name="title_whats_new">"Neler yeni?"</string>
     <string name="about_title_rate">"Bu uygulamayı oyla"</string>
-    <string name="about_summary_rate">"Google Play'de"</string>
     <string name="about_title_donate">"Bağış yap"</string>
     <string name="about_summary_donate">"Minnettarlığınızı gösterin! ❤️"</string>
     <string name="about_description_donate">"Uygulamamızı desteklemeyi düşündüğünüz için teşekkür ederiz! Mevcut bağışları görmek ve bağışyapmak için ilgili platforma dokunun:"</string>
@@ -867,7 +856,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_access_yes">"Toplumun herhangi bir bireyi"</string>
     <string name="quest_bicycle_barrier_type_title">"Bu ne tür bir bisiklet engeli?"</string>
     <string name="quest_barrier_bicycle_type_diagonal">"Patikaya göre çapraz"</string>
-    <string name="pref_title_language_select">"Dil seç"</string>
     <string name="language_default">"Sistem varsayılanı"</string>
     <string name="select_street_parking_orientation">"Yola göre duruş açısını seç"</string>
     <string name="select_street_parking_position">"Pozisyon seç"</string>
@@ -876,7 +864,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="street_parking_diagonal">"Çapraz"</string>
     <string name="street_parking_on_street">"Sokak üstü"</string>
     <string name="quest_address_house_number_label">"Ev numarası"</string>
-    <string name="quest_shoulder_title">"Bu yolun bir emniyet şeridi var mı?"</string>
     <string name="quest_fireHydrant_position_title">"Bu yangın musluğu nerede?"</string>
     <string name="quest_fireHydrant_position_green">"Çimen, toprak ya da çalılıkta"</string>
     <string name="quest_fireHydrant_position_lane">"Yol üzerinde"</string>

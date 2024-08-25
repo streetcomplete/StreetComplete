@@ -399,11 +399,11 @@
                     "placeholder": "50, 100, 200..."
                 },
                 "capacity/disabled_parking": {
-                    "label": "Espazos dispoñibles",
+                    "label": "Prazas para mobilidade reducida",
                     "placeholder": "1, 2, 3..."
                 },
                 "capacity_parking": {
-                    "label": "Espazos totais",
+                    "label": "Prazas totais",
                     "placeholder": "10, 20, 30..."
                 },
                 "capacity_volume": {

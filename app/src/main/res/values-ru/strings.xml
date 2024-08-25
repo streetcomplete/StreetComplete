@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Авторизация не удалась: должны быть предоставлены все указанные разрешения"</string>
     <string name="pref_category_communication">"Связь"</string>
     <string name="pref_category_display">"Вид"</string>
-    <string name="pref_tilecache_size_summary">"%d МБ"</string>
-    <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе в мегабайтах"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показать все заметки"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Также показывать заметки, сформулированные не как вопросы"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Скрывать заметки без вопросов"</string>
-    <string name="pref_title_map_cache">"Размер кэша карты"</string>
     <string name="map_btn_gps_tracking">"Следовать за мной"</string>
     <string name="map_attribution_osm">"© Участники OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Другие варианты…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Определение местоположения выключено. Перейти в настройки, чтобы включить?"</string>
     <string name="no_location_permission_warning">"Местоположение нужно для отображения вашей позиции и поиска квестов поблизости."</string>
     <string name="about_title_authors">"Участники"</string>
-    <string name="about_summary_authors">"© %s Тобиас Цвик и другие"</string>
     <string name="about_title_repository">"Сайт проекта"</string>
-    <string name="about_summary_repository">"на GitHub"</string>
     <string name="about_title_report_error">"Сообщить об ошибке"</string>
     <string name="about_title_feedback">"Отправить отзыв"</string>
     <string name="about_title_license">"Лицензия"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Нет подключения к Интернету"</string>
     <string name="confirmation_authorize_now">"Для того, чтобы ваши ответы были переданы в базу данных OSM, необходимо войти в свою учётную запись в OSM. Сделать это сейчас?"</string>
     <string name="not_authorized">"Не авторизовано"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Это просто соединение двух дорог"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Что-то ещё (оставить заметку)"</string>
     <string name="about_title_privacy_statement">"Заявление о конфиденциальности"</string>
-    <string name="about_summary_privacy_statement">"и использование данных"</string>
     <string name="quest_openingHours_public_holidays">"Праздничные дни"</string>
     <string name="quest_openingHours_public_holidays_short">"праздники"</string>
     <string name="quest_openingHours_open_end">"может закрыться и позже"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Отдалить"</string>
     <string name="map_btn_zoom_in">"Приблизить"</string>
     <string name="privacy_html">"&lt;p&gt;Ага, кто-то заботится о конфиденциальности, отлично! У меня для вас только хорошие новости:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Непосредственное внесение вклада&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Непосредственное внесение вклада&lt;/h2&gt;
 &lt;p&gt;
 Прежде всего, с помощью этого приложения вы отправляете все улучшения и заметки в OpenStreetMap напрямую.&lt;br/&gt;
 Все данные добавляются прямо на карту, между этим приложением и инфраструктурой OSM нет посредников.
@@ -91,12 +84,12 @@
 Анонимное редактирование OpenStreetMap невозможно, поэтому для отправки изменений из этого приложения необходим аккаунт в OSM. Это значит, что дата ваших правок, их содержание и местоположение видны всем на сайте openstreetmap.org и связаны с вашим аккаунтом.
 &lt;/p&gt;
 
-&lt;b&gt;Местоположение&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Местоположение&lt;/h2&gt;
 &lt;p&gt;
 Ваше местоположение используется только для автоматического поиска квестов поблизости (и их загрузки). Приложение никуда его не передаёт.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Использование данных&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Использование данных&lt;/h2&gt;
 &lt;p&gt;
 Как уже было сказано, приложение использует инфраструктуру OSM напрямую.&lt;br/&gt;
 Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможной порчи данных OSM версиями приложения, в которых обнаружены критические ошибки.
@@ -123,7 +116,6 @@
     <string name="quest_surface_value_wood">"Дерево"</string>
     <string name="quest_sidewalk_title">"На этой улице есть тротуар?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
-    <string name="quest_oneway_title">"Это односторонняя улица?"</string>
     <string name="quest_address_title">"Какой номер дома у этого здания?"</string>
     <string name="store_listing_short_description">"Приложение-топограф для OpenStreetMap"</string>
     <string name="store_listing_full_description">"Помогите улучшить OpenStreetMap вместе с StreetComplete!
@@ -391,7 +383,7 @@
     <string name="questList_disabled_in_country">"Никогда не показываются в стране %s"</string>
     <string name="quest_select_hint_most_specific">"Выберите вариант, подходящий наиболее точно:"</string>
     <string name="quest_generic_item_confirmation">"Вы уверены, что не можете дать более точное описание?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Для некоторых квестов загружаются дополнительные данные из прочих источников. В частности, квест «эта улица односторонняя?» запрашивает сервис westnordost.de на предмет вероятно односторонних улиц.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Для некоторых квестов загружаются дополнительные данные из прочих источников.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Нет (оставьте заметку)"</string>
     <string name="pref_quests_reset">"Сбросить выбор и приоритет квестов на значения по умолчанию?"</string>
     <string name="quest_generic_item_invalid_value">"Пожалуйста, выберите более конкретное значение."</string>
@@ -506,7 +498,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Запрещается ли пешеходам ходить по этой дороге?"</string>
     <string name="quest_buildingType_title">"Какого типа это здание?"</string>
     <string name="pref_title_theme_select">"Выбор темы"</string>
-    <string name="theme_automatic">"Автоматически"</string>
     <string name="theme_light">"Светлая"</string>
     <string name="theme_dark">"Тёмная"</string>
     <string name="theme_system_default">"Согласно настройкам системы"</string>
@@ -536,7 +527,6 @@
     <string name="quest_maxweight_answer_other_sign">"Знак выглядит иначе…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Хотите оставить заметку? Заметка с фотографией позволит другим картографам позаботиться об этом."</string>
     <string name="quest_handrail_title">"Есть ли у этой лестницы поручень?"</string>
-    <string name="about_summary_current_version">"Текущая версия: %s"</string>
     <string name="quest_ref_answer_noRef">"Номер не виден…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Изображённая дорога повернута так же, как и дорога в месте метки на карте."</string>
     <string name="quest_recycling_materials_title">"Что здесь можно оставить на переработку?"</string>
@@ -561,7 +551,6 @@
     <string name="about_title_changelog">"История версий"</string>
     <string name="title_whats_new">"Что нового?"</string>
     <string name="about_title_rate">"Оцените это приложение"</string>
-    <string name="about_summary_rate">"на Google Play"</string>
     <string name="about_title_donate">"Поддержать"</string>
     <string name="about_summary_donate">"Выразите свою признательность! ❤️"</string>
     <string name="about_description_donate">"Спасибо, что решили поддержать это приложение! Чтобы увидеть текущие пожертвования и внести свои, выберите подходящую платформу:"</string>
@@ -957,7 +946,6 @@
     <string name="quest_barrier_bicycle_type_single">"Проход между двумя барьерами"</string>
     <string name="quest_barrier_bicycle_type_double">"Шикана - барьер на каждой стороне"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Шикана - больше двух барьеров"</string>
-    <string name="pref_title_language_select">"Выбор языка"</string>
     <string name="language_default">"Системный по умолчанию"</string>
     <string name="on_floor">"на этаже %s:"</string>
     <string name="select_street_parking_orientation">"Выберите ориентацию по отношению к проезжей части:"</string>
@@ -982,7 +970,6 @@
 
 В качестве альтернативы вы можете оставить заметку (с фотографией)."</string>
     <string name="quest_address_house_number_label">"Номер дома:"</string>
-    <string name="quest_shoulder_title">"У этой дороги есть обочина?"</string>
     <string name="quest_fireHydrant_position_title">"Где находится этот пожарный гидрант?"</string>
     <string name="quest_fireHydrant_position_green">"В траве или грунте"</string>
     <string name="quest_fireHydrant_position_lane">"На проезжей части"</string>
@@ -1033,8 +1020,6 @@
     <string name="quest_barrier_path_intersection">"Как этот путь пересекает здесь барьер?"</string>
     <string name="quest_barrier_road_intersection">"Как эта дорога пересекает здесь барьер?"</string>
     <string name="quest_sidewalk_value_separate">"показано отдельно на карте"</string>
-    <string name="quest_shoulder_value_yes">"обочина"</string>
-    <string name="quest_shoulder_value_no">"нет обочины"</string>
     <string name="no_camera_permission_warning_title">"Необходимо разрешение на использование камеры"</string>
     <string name="no_camera_permission_warning">"Разрешение нужно для того, чтобы делать картинки и для измерения дистанции с помощью камеры."</string>
     <string name="ar_core_error_sdk_too_old">"Это приложение устарело, попробуйте обновить."</string>
@@ -1127,7 +1112,6 @@
     <string name="quest_barrier_type_gate_any_size">"Ворота, любой размер"</string>
     <string name="quest_air_pump_compressor_title">"Здесь есть воздушный компрессор?"</string>
     <string name="quest_step_count_stile_hint">"Количество ступеней до вершины. Если количество различается с разных сторон, укажите большее число."</string>
-    <string name="quest_shoulder_explanation2">"Обочиной является элемент дороги, примыкающий непосредственно к проезжей части на одном уровне с ней, выделенный с помощью разметки или конструктивно. Обочина не обязательно покрыта асфальтом по всей своей ширине и не всегда достаточно широка для остановки машины полностью не на основной полосе."</string>
     <string name="quest_cycleway_value_none_and_oneway">"нет, велодвижение в этом направлении запрещено"</string>
     <string name="map_btn_create_track">"Записать новый маршрут"</string>
     <string name="map_btn_stop_track">"Остановить запись маршрута"</string>
@@ -1229,7 +1213,6 @@
     <string name="quest_genericRef_title">"Какой здесь идентификационный номер?"</string>
     <string name="quest_sidewalk_answer_different">"Здесь другая ситуация с тротуарами"</string>
     <string name="about_title_get_involved">"Принять участие"</string>
-    <string name="pref_category_quests_overlays">"Квесты и оверлеи"</string>
     <string name="quest_presets_rename">"Переименовать"</string>
     <string name="quest_presets_share">"Поделиться"</string>
     <string name="quest_presets_delete">"Удалить"</string>
@@ -1400,13 +1383,15 @@
 Этаж в составе крыши считается этажом, если в нём находятся окна.  Следовательно, крыши с нулевым этажом крыши не обязательно плоские, просто недостаточно высокие для всего уровня.
  ␣␣␣␣"</string>
     <string name="quest_parcel_locker_brand">"Какой марки этот ящик для хранения посылок?"</string>
-    <string name="quest_parcel_locker_pickup">"Можно ли здесь забирать посылки?"</string>
-    <string name="quest_parcel_locker_mail_in">"Можете ли вы доставить посылки сюда?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Линия электропередачи закреплена на здании"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"нет, но знак разрешает ездить на велосипеде по тротуару"</string>
     <string name="separate_cycleway_no_signed">"Знак явно запрещает езду на велосипеде"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Пешеходная дорожка, но знак разрешает езду на велосипеде"</string>
     <string name="quest_bicycle_parking_type_floor">"Специально отведенная зона"</string>
     <string name="link_osmapp_description">"Карта с различными слоями, на пример для скалолазания или катания на лыжах"</string>
-    <string name="quest_parcel_locker_mail_in_answer_returns_only">"Только для обратной доставки"</string>
+    <string name="action_back">"Назад"</string>
+    <string name="action_more">"Ещё"</string>
+    <string name="action_open_in_browser">"Открыть в браузере"</string>
+    <string name="pref_category_quests">"Квесты"</string>
+    <string name="pref_title_language_select2">"Язык"</string>
 </resources>

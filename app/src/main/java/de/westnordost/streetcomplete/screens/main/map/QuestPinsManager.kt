@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import android.content.res.Resources
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -30,6 +28,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import org.maplibre.android.maps.MapLibreMap
 
 /** Manages the layer of quest pins in the map view:
  *  Gets told by the QuestsMapFragment when a new area is in view and independently pulls the quests
@@ -149,7 +148,7 @@ class QuestPinsManager(
         val displayedArea = withContext(Dispatchers.Main) { map.screenAreaToBoundingBox() }
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
-        if (tilesRect.size > 16) return
+        if (tilesRect.size > 32) return
         val isNewRect = lastDisplayedRect?.contains(tilesRect) != true
         if (!isNewRect) return
 
@@ -164,7 +163,7 @@ class QuestPinsManager(
            stop when they have been cancelled in the meantime. The same with if they have been
            cancelled just after the DB fetch etc. (The coroutine can be cancelled at every place
            where you see that arrow with that green squiggle in the IDE)
-           */
+         */
         updateJob?.cancel()
         updateJob = viewLifecycleScope.launch {
             val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
@@ -183,7 +182,7 @@ class QuestPinsManager(
                whose center is outside the current view may hence be within the current view. Quest
                pins like these should not disappear when panning the map.
                Therefore, remove all quests that are not in view anymore that  ...
-              */
+             */
             questsInView.entries.removeAll { (_, pins) ->
                 // only have one pin (pin position = quest position)
                 pins.size == 1 ||

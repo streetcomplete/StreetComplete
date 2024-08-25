@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banistmo, Banco General, Scotiabank, Global, CryptoDiggers, Banco Nacional de Panama, Banco Nacional]
+atmOperators: [Banistmo, Banco General, Paralla, CryptoDiggers, Scotiabank, Global, Caja de Ahorros, Banco Nacional de Panama, Banco Nacional]
 centerLineStyle: yellow
 chargingStationOperators: [Evergo]
 defaultSpeedLimitHasUrbanOrRural: true

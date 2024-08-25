@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"認証に失敗しました: 表示されたすべての権限を許可する必要があります"</string>
     <string name="pref_category_communication">"通信"</string>
     <string name="pref_category_display">"表示"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"マップタイルをキャッシュするために外部ストレージに確保する容量（MB）"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"すべてのメモを表示する"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"質問形式でないメモも表示する"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"質問形式でないメモを無視する"</string>
-    <string name="pref_title_map_cache">"マップキャッシュサイズ"</string>
     <string name="map_btn_gps_tracking">"フォローしてください"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 貢献者"</string>
     <string name="quest_generic_otherAnswers">"他の回答…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"位置情報がオフです。 設定に移動して今すぐオンにしますか?"</string>
     <string name="no_location_permission_warning">"マップにあなたの位置を表示して付近のクエストをスキャンするには、位置情報の許可が必要です。"</string>
     <string name="about_title_authors">"作者"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick と貢献者"</string>
     <string name="about_title_repository">"ソースリポジトリ"</string>
-    <string name="about_summary_repository">"GitHub で開く"</string>
     <string name="about_title_report_error">"エラーを報告する"</string>
     <string name="about_title_feedback">"フィードバックする"</string>
     <string name="about_title_license">"ライセンス"</string>
-    <string name="about_summary_license">"GNU 一般公衆利用許諾"</string>
     <string name="offline">"オフラインです"</string>
     <string name="confirmation_authorize_now">"あなたの回答を公開するには OSM ユーザーアカウントで認証する必要があります。 今すぐ認証しますか?"</string>
     <string name="not_authorized">"認証されていません"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"2 つの道路を結ぶだけです"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"他の何か (メモを残す)"</string>
     <string name="about_title_privacy_statement">"プライバシーに関する声明"</string>
-    <string name="about_summary_privacy_statement">"とデータの使用"</string>
     <string name="quest_openingHours_public_holidays">"祝日"</string>
     <string name="quest_openingHours_public_holidays_short">"祝日"</string>
     <string name="quest_openingHours_open_end">"無期限"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"ズームアウト"</string>
     <string name="map_btn_zoom_in">"ズームイン"</string>
     <string name="privacy_html">"&lt;p&gt;プライバシーを気にする人は、素敵です! あなたに良いニュースしかないと思います:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;直接の貢献&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;直接の貢献&lt;/h2&gt;
 &lt;p&gt;
 まず、このアプリで OpenStreetMap に実際に、直接貢献していることを理解してください。&lt;br/&gt;
 このアプリであなたが提供するものはすべて地図に直接追加され、アプリと OSM インフラストラクチャーの間にサードパーティは存在しません
@@ -91,12 +84,12 @@
 OpenStreetMap を匿名で編集することはできないため、変更は OSM ユーザーアカウントで行います。これは、日付、コンテンツ、および暗黙的に変更した場所が openstreetmap.org ウェブサイトに公開され、あなたのアカウントに帰属することを意味します。
 &lt;/p&gt;
 
-&lt;b&gt;位置情報&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;位置情報&lt;/h2&gt;
 &lt;p&gt;
 このアプリはあなたの位置情報を他の人とシェアすることはありません。あなたの位置情報は、あなたの周辺のクエストを自動的にスキャンするためにのみ使用されます。
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;データの使用&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;データの使用&lt;/h2&gt;
 &lt;p&gt;
 このアプリは OSM インフラストラクチャと直接通信します。
 ただし、変更をアップロードする前に、アプリは私たちのサーバー上で &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データを壊滅させる可能性のある重大なバグのあるバージョンのアプリを保護するための予防措置です。
@@ -124,7 +117,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_surface_value_wood">"木"</string>
     <string name="quest_sidewalk_title">"この通りに歩道がありますか?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"この通りはどこにありますか?"</string>
-    <string name="quest_oneway_title">"これは一方通行路ですか?"</string>
     <string name="quest_address_title">"この建物の住居表示は何ですか?"</string>
     <string name="store_listing_short_description">"OpenStreetMap 検査アプリ"</string>
     <string name="store_listing_full_description">"StreetComplete で OpenStreetMap の改善を手伝ってください!
@@ -392,7 +384,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="questList_disabled_in_country">"%s では非表示"</string>
     <string name="quest_select_hint_most_specific">"最も近いものを選択してください："</string>
     <string name="quest_generic_item_confirmation">"もっと具体的に判断できないのですか?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;一部のクエストではサードパーティから追加のデータをダウンロードします。特に一方通行のクエストでは westnordost.de にホストされているAPIに一方通行の候補を問い合わせます。&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;一部のクエストではサードパーティから追加のデータをダウンロードします。&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"いいえ（メモを残す）"</string>
     <string name="pref_quests_reset">"クエストの有効/無効と表示順を既定値にリセットしますか？"</string>
     <string name="quest_generic_item_invalid_value">"より具体的な値を選択してください。"</string>
@@ -507,7 +499,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_accessible_for_pedestrians_title_prohibited">"この道路では歩行者の通行が禁止されていますか?"</string>
     <string name="quest_buildingType_title">"これはどんな建物ですか?"</string>
     <string name="pref_title_theme_select">"テーマを選択"</string>
-    <string name="theme_automatic">"自動"</string>
     <string name="theme_light">"ライト"</string>
     <string name="theme_dark">"ダーク"</string>
     <string name="theme_system_default">"システム既定値"</string>
@@ -537,7 +528,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxweight_answer_other_sign">"違う標識です…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"メモを残しますか？写真付きのメモを残せば、他のマッパーが対処する助けになります。"</string>
     <string name="quest_handrail_title">"この階段に手すりはありますか?"</string>
-    <string name="about_summary_current_version">"現在のバージョン: %s"</string>
     <string name="quest_ref_answer_noRef">"番号は見当たらない…"</string>
     <string name="quest_street_side_puzzle_tutorial">"この図に示される道路はピンの位置での地図上の向きと同じように回転されています。"</string>
     <string name="quest_recycling_materials_title">"ここに出せばリサイクルできるものは何ですか？"</string>
@@ -562,7 +552,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="about_title_changelog">"バージョン履歴"</string>
     <string name="title_whats_new">"新着情報"</string>
     <string name="about_title_rate">"アプリを評価する"</string>
-    <string name="about_summary_rate">"Google Playで"</string>
     <string name="about_title_donate">"寄付"</string>
     <string name="about_summary_donate">"感謝の気持ちを伝えましょう!❤️"</string>
     <string name="about_description_donate">"アプリの支援を検討してくださりありがとうございます! 現在の寄付を確認したり、寄付をするには各プラットフォームをタップしてください:"</string>
@@ -959,7 +948,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_barrier_bicycle_type_single">"障壁間の通過"</string>
     <string name="quest_barrier_bicycle_type_double">"シケイン - 両側のバリア"</string>
     <string name="quest_barrier_bicycle_type_multiple">"シケイン - 2つ以上の障壁"</string>
-    <string name="pref_title_language_select">"言語を選択"</string>
     <string name="language_default">"システム既定値"</string>
     <string name="on_floor">"フロア %s"</string>
     <string name="select_street_parking_orientation">"車道に面する方向を選択して下さい："</string>
@@ -984,7 +972,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
 または、(写真付きで)メモを残すこともできます。"</string>
     <string name="quest_address_house_number_label">"家屋番号："</string>
-    <string name="quest_shoulder_title">"この道路には路肩車線や故障車線がありますか?"</string>
     <string name="quest_fireHydrant_position_title">"この消火栓はどこにありますか?"</string>
     <string name="quest_fireHydrant_position_green">"草、土または低木で"</string>
     <string name="quest_fireHydrant_position_lane">"車道で"</string>
@@ -1035,8 +1022,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_barrier_path_intersection">"この道はここでどのように障壁を越えますか?"</string>
     <string name="quest_barrier_road_intersection">"この道はここでどのように障壁を越えますか?"</string>
     <string name="quest_sidewalk_value_separate">"歩道ですが、地図上には別々に表示されます"</string>
-    <string name="quest_shoulder_value_yes">"路肩"</string>
-    <string name="quest_shoulder_value_no">"路肩なし"</string>
     <string name="no_camera_permission_warning_title">"カメラの権限"</string>
     <string name="no_camera_permission_warning">"カメラで距離を測るにはカメラの権限が必要です。"</string>
     <string name="ar_core_error_sdk_too_old">"このアプリは古くなっているため、更新してください。"</string>
@@ -1127,7 +1112,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_barrier_type_gate_any_size">"ゲート、任意のサイズ"</string>
     <string name="quest_air_pump_compressor_title">"ここはエアーコンプレッサーが使用できますか？"</string>
     <string name="quest_step_count_stile_hint">"頂上に到達するための階段数だけです。段数が道の両側で異なる場合は、大きい方の数値を指定します。"</string>
-    <string name="quest_shoulder_explanation2">"路肩または故障車線は、明確にマークされた緊急停止車線です。路肩として指定された領域は、必ずしも全幅にわたって舗装されているとは限らず、車線から完全に外れて停止するのに十分な幅があるとは限らない。"</string>
     <string name="quest_cycleway_value_none_and_oneway">"この向きでの自転車走行は禁止されている"</string>
     <string name="map_btn_create_track">"新しい移動記録を作成"</string>
     <string name="map_btn_stop_track">"移動記録を停止"</string>
@@ -1229,7 +1213,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_genericRef_title">"ここでの識別番号は何ですか?"</string>
     <string name="quest_sidewalk_answer_different">"歩道の状況が違う"</string>
     <string name="about_title_get_involved">"参加する"</string>
-    <string name="pref_category_quests_overlays">"クエストとオーバーレイ"</string>
     <string name="quest_presets_rename">"名前変更"</string>
     <string name="quest_presets_share">"共有"</string>
     <string name="quest_presets_delete">"削除"</string>
@@ -1336,13 +1319,20 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_defibrillator_location">"このAEDはどこに設置されていますか？"</string>
     <string name="quest_defibrillator_location_description">"このAEDの設置場所について簡潔に説明してください(例 “スタッフルームの中”)"</string>
     <string name="quest_generalFee_title">"これを使うのにお金を払う必要がありますか。"</string>
+    <string name="about_summary_logs">"エラー報告で使用する"</string>
     <string name="action_filter">"フィルター"</string>
     <string name="action_share">"ログを共有"</string>
     <string name="about_title_show_logs">"ログを閲覧"</string>
     <string name="label_log_newer_than">"から"</string>
     <string name="label_log_older_than">"まで"</string>
+    <string name="pref_title_quests_restore_hidden_summary">"非表示にしたクエストの数: %d"</string>
+    <string name="link_every_door_description">"AndroidおよびiOS用のパワフルなPOIエディター"</string>
+    <string name="quest_disable_action">"無効にする"</string>
+    <string name="quest_disable_title">"このクエストタイプを無効にしますか？"</string>
     <string name="quest_disable_message_not_installed">"StreetMeasureが(まだ)インストールされていません。"</string>
+    <string name="quest_buildingType_outbuilding">"離れ家"</string>
     <string name="quest_buildingType_outbuilding_description">"物件における重要度の低い建物"</string>
+    <string name="quest_buildingType_container">"コンテナ"</string>
     <string name="quest_buildingType_tent">"テント"</string>
     <string name="quest_buildingType_tomb">"墓石"</string>
     <string name="quest_buildingType_tower">"塔"</string>
@@ -1351,6 +1341,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_pedestrian_crossing_markings">"この横断歩道は地面にマークがありますか？"</string>
     <string name="overlay_places">"場所"</string>
     <string name="overlay_things">"物"</string>
+    <string name="disused">"使われていない"</string>
+    <string name="unknown_object">"不明なオブジェクト"</string>
     <string name="quest_leafType_tree_title">"この木には針葉または広葉がついていますか。"</string>
     <string name="quest_bbq_fuel_gas">"ガス"</string>
     <string name="quest_pedestrian_crossing_signals2">"ここに横断時に確認する信号機はありますか？"</string>

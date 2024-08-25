@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 advisoryCycleLaneStyle: white dashes
-atmOperators: [NLB, NKBM, Nova KBM, Abanka, NovaKBM, SKB, Gorenjska banka, Euronet, Intesa Sanpaolo, Delavska hranilnica, NKBM d.d., Addiko Bank, Banka Koper, ABanka, UniCredit Bank, Shitcoins.club, SKB Banka, Gorenjska Banka, NLB d. d., Deželna Banka Slovenije, Banka Celje, ABANKA, shitcoins.club, Sparkasse, Nova ljubljanska banka, Nova Ljubljanska banka d.d., Nova Ljubljanska Banka, NKMB, Intesa Sanpaolo Bank, Hypo Alpe-Adria-Bank d.d., Bitnik, ATM, A banka]
+atmOperators: [NLB, NKBM, Nova KBM, Abanka, NovaKBM, SKB, Gorenjska banka, Euronet, Intesa Sanpaolo, Delavska hranilnica, NKBM d.d., Addiko Bank, Banka Koper, ABanka, UniCredit Bank, Shitcoins.club, SKB Banka, Gorenjska Banka, NLB d. d., Deželna Banka Slovenije, Banka Celje, ABANKA, shitcoins.club, Sparkasse, Nova ljubljanska banka, Nova Ljubljanska banka d.d., Nova Ljubljanska Banka, NKMB, Intesa Sanpaolo Bank, Hypo Alpe-Adria-Bank d.d., DBS, Bitnik, ATM, A banka]
 chargingStationOperators: [SODO, Petrol, Ionity, Gremo na elektriko, Elektro Ljubljana, Lidl, Elektro Maribor, Elektro Ljubljana d.d., unknovn, 'Tesla, Inc.', Shell Recharge Solutions, Mega M d.o.o., EM, elektro Celje, dravske elektrarne maribor, Renault, Postojna, Petrol d.d., Občina Ajdovščina, Iskratel, Gremo na Elektriko, Energija Plus d.o.o., Elektro Gorenjska, Abat2Go]
 clothesContainerOperators: [Humana]
 defaultSpeedLimitHasUrbanOrRural: true

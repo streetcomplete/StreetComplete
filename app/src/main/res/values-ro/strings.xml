@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Autorizare eșuată: Trebuie acordate toate permisiunile listate"</string>
     <string name="pref_category_communication">"Comunicare"</string>
     <string name="pref_category_display">"Afișaj"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Spațiul în megaocteți rezervat pe unitatea de stocare externă pentru cache-ul de hartă"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Arată toate notele"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Se afișează inclusiv notele neformulate ca întrebări"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Se ignoră notele care nu sunt formulate ca întrebări"</string>
-    <string name="pref_title_map_cache">"Dimensiune cache hartă"</string>
     <string name="map_btn_gps_tracking">"Urmărește-mă"</string>
     <string name="map_attribution_osm">"© colaboratorii OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Alte răspunsuri…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Localizarea este oprită. Deschideți setările pentru a o activa acum?"</string>
     <string name="no_location_permission_warning">"Activarea locației este necesară pentru a  putea căuta misiuni noi în aproprierea dumneavoastră."</string>
     <string name="about_title_authors">"Autori"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick și contributorii"</string>
     <string name="about_title_repository">"Pagina Proiectului"</string>
-    <string name="about_summary_repository">"pe GitHub"</string>
     <string name="about_title_report_error">"Raportează eroare"</string>
     <string name="about_title_feedback">"Oferă feedback"</string>
     <string name="about_title_license">"Licență"</string>
-    <string name="about_summary_license">"GNU Licență publică generală"</string>
     <string name="offline">"Nu sunteți conectat"</string>
     <string name="confirmation_authorize_now">"Publicarea răspunsurilor necesită autorizarea folosind contul de utilizator OSM. Confirmați ?"</string>
     <string name="not_authorized">"Neautorizat"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Doar face conexiunea între două drumuri"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Altceva (lăsați un comentariu)"</string>
     <string name="about_title_privacy_statement">"Declarație de confidențialitate"</string>
-    <string name="about_summary_privacy_statement">"și folosirea datelor"</string>
     <string name="quest_openingHours_public_holidays">"Sărbători legale"</string>
     <string name="quest_openingHours_public_holidays_short">"Sărbători legale"</string>
     <string name="quest_openingHours_open_end">"până la ultimul client"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Micșorează"</string>
     <string name="map_btn_zoom_in">"Mărește"</string>
     <string name="privacy_html">"&lt;p&gt; Ah, cineva căruia îi pasă de intimitate, drăguț! Cred că am doar vești bune pentru tine: &lt;/p&gt;
-&lt;p&gt; &lt;b&gt; Contribuții directe &lt;/b&gt; &lt;/p&gt;
+&lt;h2&gt;Contribuții directe&lt;/h2&gt;
 &lt;p&gt;
 În primul rând, înțelegeți că prin această aplicație, aduceți contribuții reale și directe la OpenStreetMap. &lt;br/&gt;
 Orice contribuiți în această aplicație este adăugat direct pe hartă, nu există o terță parte între aplicație și infrastructura OSM.
@@ -90,12 +83,12 @@ Orice contribuiți în această aplicație este adăugat direct pe hartă, nu ex
 &lt;p&gt;
 Editarea anonimă a OpenStreetMap nu este posibilă. Orice modificare pe care o faceți (incluzând data și locația ei) este atribuită contului dumneavoastră de utilizator OSM și este vizibilă public pe site-ul openstreetmap.org. Pentru că aplicația StreetComplete ar trebui folosită doar la fața locului, aceasta dezvăluie unde și când ați folosit aplicația.&lt;/p&gt;
 
-&lt;b&gt; Locația &lt;/b&gt; &lt;br/&gt;
+&lt;h2&gt;Locația&lt;/h2&gt;
 &lt;p&gt;
 Aplicația nu trimite nimănui coordonatele dumneavoastră GPS. Ele sunt  folosite doar pentru a descărca date din jurul dumneavoastră, cât și pentru a poziționa harta la locația dumneavoastră.
 &lt;/p&gt;
 
-&lt;p&gt; &lt;b&gt; Utilizarea datelor&lt;/b&gt; &lt;/p&gt;
+&lt;h2&gt;Utilizarea datelor&lt;/h2&gt;
 &lt;p&gt;
 Această aplicație comunică direct cu serverele OSM.&lt;br/&gt;
 Înainte de a trimite modificările dumneavoastră, ea verifică un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simplu fișier text&lt;/a&gt; de pe serverul meu pentru a se asigura că versiunea curentă a aplicației nu a fost blocată de la trimiterea modificărilor. Aceasta e o măsură de precauție pentru a putea bloca versiuni ce au erori critice, împieducându-le să trimită date corupte către OSM.
@@ -122,7 +115,6 @@ Această aplicație comunică direct cu serverele OSM.&lt;br/&gt;
     <string name="quest_surface_value_wood">"Lemn"</string>
     <string name="quest_sidewalk_title">"Are strada trotuar?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Unde este această stradă?"</string>
-    <string name="quest_oneway_title">"Este o stradă cu sens unic?"</string>
     <string name="quest_address_title">"Ce număr administrativ are clădirea?"</string>
     <string name="store_listing_short_description">"Aplicația topografică OpenStreetMap"</string>
     <string name="store_listing_full_description">"Ajutați la îmbunătățirea OpenStreetMap cu StreetComplete!
@@ -389,7 +381,7 @@ Parțial înseamnă că o persoană cu scaun cu rotile poate intra și folosi to
     <string name="questList_disabled_in_country">"Niciodată arătat în %s"</string>
     <string name="quest_select_hint_most_specific">"Selectați ce se potrivește cel mai bine:"</string>
     <string name="quest_generic_item_confirmation">"Sigur nu puteți afla mai exact?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Pentru unele misiuni, sunt descărcate unele date suplimentare de la terți. În special, pentru misiunea \"Sens unic\" se apelează o interfață găzduită pe westnordost.de, despre candidații probabili pentru sensuri unice.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pentru unele misiuni, sunt descărcate unele date suplimentare de la terți.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"No (lasă o notă)"</string>
     <string name="pref_quests_reset">"Resetați la valorile implicite atât tipurile de misiuni activate, cât și ordinea lor?"</string>
     <string name="quest_generic_item_invalid_value">"Selectați o valoare mai exactă."</string>
@@ -505,7 +497,6 @@ la parter"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Le este interzis accesul pietonilor pe acest drum?"</string>
     <string name="quest_buildingType_title">"Ce fel de clădire este?"</string>
     <string name="pref_title_theme_select">"Selectează tema de culori"</string>
-    <string name="theme_automatic">"Automată"</string>
     <string name="theme_light">"Luminoasă"</string>
     <string name="theme_dark">"Întunecată"</string>
     <string name="theme_system_default">"Cea folosită de sistem"</string>
@@ -535,7 +526,6 @@ la parter"</string>
     <string name="quest_maxweight_answer_other_sign">"Indicatorul arată diferit…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Doriți să lăsați o notă? O notă cu o fotografie va permite altor cartografi să se ocupe de ea."</string>
     <string name="quest_handrail_title">"Au scările o balustradă?"</string>
-    <string name="about_summary_current_version">"Versiunea curentă: %s"</string>
     <string name="quest_ref_answer_noRef">"Nici un număr de referință vizibil …"</string>
     <string name="quest_street_side_puzzle_tutorial">"Drumul din imagine este orientat la fel ca pe hartă, la locația indicată."</string>
     <string name="quest_recycling_materials_title">"Ce poate fi lăsat aici pentru reciclare?"</string>
@@ -560,7 +550,6 @@ la parter"</string>
     <string name="about_title_changelog">"Istoricul versiunilor"</string>
     <string name="title_whats_new">"Ce este nou?"</string>
     <string name="about_title_rate">"Dați o notă aplicației"</string>
-    <string name="about_summary_rate">"în Google Play"</string>
     <string name="about_title_donate">"Donează"</string>
     <string name="about_summary_donate">"Arătați-vă aprecierea! ❤️"</string>
     <string name="about_description_donate">"Vă mulțumim că ați luat în considerare sprijinirea acestei aplicații! Pentru a vedea donațiile curente și pentru dona, atingeți platforma respectivă:"</string>
@@ -953,7 +942,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_barrier_bicycle_type_single">"Pasaj între două bariere"</string>
     <string name="quest_barrier_bicycle_type_double">"Șicană - barieră de fiecare parte"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Șicană - mai mult de două bariere"</string>
-    <string name="pref_title_language_select">"Selectează limba"</string>
     <string name="language_default">"Setarea implicită a sistemului"</string>
     <string name="on_floor">"la etajul %s"</string>
     <string name="select_street_parking_orientation">"Selectați orientarea față de drum:"</string>
@@ -978,7 +966,6 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
 
 Alternativ, puteți lăsa o notă (cu fotografie)."</string>
     <string name="quest_address_house_number_label">"Numărul casei:"</string>
-    <string name="quest_shoulder_title">"Are drumul o bandă de urgență?"</string>
     <string name="quest_fireHydrant_position_title">"Unde se află hidrantul?"</string>
     <string name="quest_fireHydrant_position_green">"În iarbă, murdărie sau arbuști"</string>
     <string name="quest_fireHydrant_position_lane">"Pe stradă"</string>
@@ -1029,8 +1016,6 @@ Alternativ, puteți lăsa o notă (cu fotografie)."</string>
     <string name="quest_barrier_path_intersection">"Cum se intersectează calea cu bariera?"</string>
     <string name="quest_barrier_road_intersection">"Cum se intersectează drumul cu bariera?"</string>
     <string name="quest_sidewalk_value_separate">"trotuar, dar afișat separat pe hartă"</string>
-    <string name="quest_shoulder_value_yes">"bandă de urgență"</string>
-    <string name="quest_shoulder_value_no">"nicio bandă de urgență"</string>
     <string name="no_camera_permission_warning_title">"Permisiune pentru cameră"</string>
     <string name="no_camera_permission_warning">"Permisiunea este necesară pentru a măsura distanțe folosind camera."</string>
     <string name="ar_core_error_sdk_too_old">"Aplicația este prea veche, încercați s-o actualizați."</string>
@@ -1121,7 +1106,6 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă."</stri
     <string name="quest_barrier_type_gate_any_size">"Poartă, orice dimensiune"</string>
     <string name="quest_air_pump_compressor_title">"Este disponibil un compresor de aer?"</string>
     <string name="quest_step_count_stile_hint">"Doar numărul de trepte pentru a ajunge la capăt. Dacă numărul de trepte diferă de pe o parte pe alta, introduceți numărul mai mare."</string>
-    <string name="quest_shoulder_explanation2">"O bandă de urgență este o bandă specială de oprire în caz de urgențe. Zona nu este neapărat pavată pe toată lățimea ei și nu este neapărat suficient de lată pentru a permite oprirea mașinii complet în afara carosabilului."</string>
     <string name="quest_cycleway_value_none_and_oneway">"niciuna, ciclismul nu este permis în această direcție"</string>
     <string name="map_btn_create_track">"Înregistrează traseu nou"</string>
     <string name="map_btn_stop_track">"Oprește înregistrarea traseului"</string>
@@ -1223,7 +1207,6 @@ Faceți același lucru și pentru partea cealaltă, dacă este prezentă."</stri
     <string name="quest_genericRef_title">"Care este numărul de identificare de aici?"</string>
     <string name="quest_sidewalk_answer_different">"Situația trotuarului este diferită"</string>
     <string name="about_title_get_involved">"Implicați-vă"</string>
-    <string name="pref_category_quests_overlays">"Misiuni și overlay-uri"</string>
     <string name="quest_presets_rename">"Redenumește"</string>
     <string name="quest_presets_share">"Distribuie"</string>
     <string name="quest_presets_delete">"Șterge"</string>

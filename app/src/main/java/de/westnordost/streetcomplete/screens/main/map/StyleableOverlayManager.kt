@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -26,6 +25,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import org.maplibre.android.maps.MapLibreMap
 
 /** Manages the layer of styled map data in the map view:
  *  Gets told by the MainMapFragment when a new area is in view and independently pulls the map
@@ -133,7 +133,7 @@ class StyleableOverlayManager(
         val displayedArea = withContext(Dispatchers.Main) { map.screenAreaToBoundingBox() }
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
-        if (tilesRect.size > 16) return
+        if (tilesRect.size > 32) return
         val isNewRect = lastDisplayedRect?.contains(tilesRect) != true
         if (!isNewRect) return
 

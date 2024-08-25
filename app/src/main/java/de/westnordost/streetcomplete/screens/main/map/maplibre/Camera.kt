@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.screens.main.map.maplibre
 import android.content.ContentResolver
 import android.provider.Settings
 import androidx.core.graphics.Insets
-import org.maplibre.android.camera.CameraUpdateFactory
-import org.maplibre.android.maps.MapLibreMap
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import org.maplibre.android.camera.CameraUpdateFactory
+import org.maplibre.android.maps.MapLibreMap
 
 fun MapLibreMap.getEnclosingCamera(geometry: ElementGeometry, insets: Insets): CameraPosition? =
     getCameraForGeometry(

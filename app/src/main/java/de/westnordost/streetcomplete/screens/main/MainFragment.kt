@@ -20,6 +20,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.compose.ui.geometry.Offset
 import androidx.core.graphics.Insets
+import androidx.core.graphics.minus
+import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -88,8 +90,13 @@ import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
+import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
+import de.westnordost.streetcomplete.util.ktx.popIn
+import de.westnordost.streetcomplete.util.ktx.popOut
+import de.westnordost.streetcomplete.util.ktx.setMargins
+import de.westnordost.streetcomplete.util.ktx.setPadding
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
@@ -166,6 +173,7 @@ class MainFragment :
 
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
+    private var selectedOverlay: Overlay? = null
 
     private var windowInsets: Insets? = null
 
@@ -228,12 +236,6 @@ class MainFragment :
             .addCallback(viewLifecycleOwner, sheetBackPressedCallback)
         sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
 
-        observe(controlsViewModel.selectedOverlay) {
-            val f = bottomSheetFragment
-            if (f is IsShowingElement) {
-                closeBottomSheet()
-            }
-        }
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit == null) {
                 mapFragment?.clearFocus()

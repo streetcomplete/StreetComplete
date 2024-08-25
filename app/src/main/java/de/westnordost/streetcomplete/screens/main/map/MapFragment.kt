@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.mapbox.android.gestures.MoveGestureDetector
 import de.westnordost.streetcomplete.ApplicationConstants
-import org.maplibre.android.maps.MapLibreMap
-import org.maplibre.android.maps.Style
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -30,13 +28,14 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.maplibre.android.MapLibre
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.Style
 import org.maplibre.android.offline.OfflineManager
 
 /** Manages a map that remembers its last location */
@@ -44,7 +43,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val binding by viewBinding(FragmentMapBinding::bind)
 
-    protected var map : MapLibreMap? = null
+    protected var map: MapLibreMap? = null
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val prefs: Preferences by inject()

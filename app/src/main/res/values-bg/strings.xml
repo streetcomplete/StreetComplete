@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Оторизацията не беше успешна: Нужно е да дадете всички искани разрешения"</string>
     <string name="pref_category_communication">"Комуникация"</string>
     <string name="pref_category_display">"Екран"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Размер на паметта в мегабайти запазена като кеш за картата"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показване на всички бележки"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Включено - показват се и бележки, които не са въпроси"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Изключено - Не се показват бележки, които не са въпроси"</string>
-    <string name="pref_title_map_cache">"Размер на кеша на картата"</string>
     <string name="map_btn_gps_tracking">"Следвай ме"</string>
     <string name="map_attribution_osm">"© Сътрудници на OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Други отговори"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Местоположението е изключено. Да се отворят ли Настройки, за включване?"</string>
     <string name="no_location_permission_warning">"Местоположението ви е нужно за изобразяване на вашето място и за сваляне на данни в близост."</string>
     <string name="about_title_authors">"Автор(и)"</string>
-    <string name="about_summary_authors">"© %s Тобиас Цвик и сътрудници"</string>
     <string name="about_title_repository">"Страница на проекта"</string>
-    <string name="about_summary_repository">"в GitHub"</string>
     <string name="about_title_report_error">"Докладвай грешка"</string>
-    <string name="about_title_feedback">"Дай обратна връзка"</string>
+    <string name="about_title_feedback">"Обратна връзка"</string>
     <string name="about_title_license">"Лиценз"</string>
-    <string name="about_summary_license">"Общ Публичен Лиценз на ГНУ"</string>
     <string name="offline">"Вие сте офлайн"</string>
     <string name="confirmation_authorize_now">"Трябва да влезете с вашия OSM профил за да публикувате отговорите. Влизане сега?"</string>
     <string name="not_authorized">"Няма разрешение"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Просто свързва два пътя"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Друго (оставете бележка)"</string>
     <string name="about_title_privacy_statement">"Декларация за поверителност"</string>
-    <string name="about_summary_privacy_statement">"и използване на данни"</string>
     <string name="quest_openingHours_public_holidays">"Почивни дни"</string>
     <string name="quest_openingHours_public_holidays_short">"ПД"</string>
     <string name="quest_openingHours_open_end">"няма определен край"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Отдалечи се"</string>
     <string name="map_btn_zoom_in">"Приближи се"</string>
     <string name="privacy_html">"&lt;p&gt; А, някой, който се грижи за поверителността, браво! Мисля, че имам само добри новини за вас: &lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Приноси&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Приноси&lt;/h2&gt;
 &lt;p&gt;
 Първо, разберете, че с това приложение правите действителни и директни приноси към OpenStreetMap.&lt;br/&gt;
 Всичко, което допринесете в това приложение, се добавя директно към картата, няма трета страна между приложението и OSM инфраструктурата.
@@ -91,12 +84,12 @@
 Редактирането на OpenStreetMap анонимно не е възможно, така че всякакви промени които правите, се правят с вашия потребителски акаунт в OSM. Това означава, че датата, съдържанието и по подразбиране местоположението на вашите промени са видими публично на уеб сайта на Openstreetmap и могат да бъдат свързани с вашия акаунт.
 &lt;/p&gt;
 
-&lt;b&gt;Местоположение&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Местоположение&lt;/h2&gt;
 &lt;p&gt;
 Приложението не споделя вашето GPS местоположение с никого. Използва се само за автоматично сканиране на задачи около вашия район и за изтегляне на картата около вашето местоположение.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Използване на данни&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Използване на данни&lt;/h2&gt;
 &lt;p&gt;
 Както споменахме, приложението директно комуникира с OSM инфраструктура.&lt;br/&gt;
 Преди обаче да качи промените ви, приложението проверява с &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; обикновен текстов файл &lt;/a&gt; на моя сървър дали версията има разрешение за качване на промени. Това е предпазна мярка, с цел версии на приложението с критични грешки да не повредят базата данни на OSM.&lt;/p&gt;"</string>
@@ -122,7 +115,6 @@
     <string name="quest_surface_value_wood">"Дърво"</string>
     <string name="quest_sidewalk_title">"Тази улица има ли тротоари?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Къде е тази улица?"</string>
-    <string name="quest_oneway_title">"Това еднопосочен път ли е?"</string>
     <string name="quest_address_title">"Тази сграда какъв номер има?"</string>
     <string name="store_listing_short_description">"Приложение за подобряване на OpenStreetMap"</string>
     <string name="store_listing_full_description">"Помогнете за подобряване на OpenStreetMap със StreetComplete!
@@ -387,7 +379,7 @@
     <string name="questList_disabled_in_country">"Да не се показва в %s"</string>
     <string name="quest_select_hint_most_specific">"Изберете най-подходящото:"</string>
     <string name="quest_generic_item_confirmation">"Сигурни ли сте, че не можете да го определите по-точно?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;За някои задачи се изтеглят данни и от други сървъри. Например за еднопосочните улици се теглят и данни съхранявани на westnordost.de.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;За някои задачи се изтеглят данни и от други сървъри.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Не (оставете бележка)"</string>
     <string name="pref_quests_reset">"Възстановяване на оригиналните настройки?"</string>
     <string name="quest_generic_item_invalid_value">"Моля, изберете по-специфична стойност."</string>
@@ -502,7 +494,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Забранено ли е за пешеходци по този път?"</string>
     <string name="quest_buildingType_title">"Какъв вид сграда е това?"</string>
     <string name="pref_title_theme_select">"Избор на тема"</string>
-    <string name="theme_automatic">"Автоматично"</string>
     <string name="theme_light">"Светла"</string>
     <string name="theme_dark">"Тъмна"</string>
     <string name="theme_system_default">"По подразбиране"</string>
@@ -531,7 +522,6 @@
     <string name="quest_maxweight_answer_other_sign">"Знакът изглежда различно…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Ще оставите ли бележка? Бележка със снимка ще помогне на други картографи да се погрижат за това."</string>
     <string name="quest_handrail_title">"Тези стъпала имат ли перила?"</string>
-    <string name="about_summary_current_version">"Текуща версия: %s"</string>
     <string name="quest_ref_answer_noRef">"Не се вижда номер…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Пътят на картинката е завъртян по същия начин по който е на картата."</string>
     <string name="quest_recycling_materials_title">"Какво може да се изхвърля тук?"</string>
@@ -556,7 +546,6 @@
     <string name="about_title_changelog">"История на версиите"</string>
     <string name="title_whats_new">"Какво ново?"</string>
     <string name="about_title_rate">"Оценете това приложение"</string>
-    <string name="about_summary_rate">"в Google Play"</string>
     <string name="about_title_donate">"Подкрепете"</string>
     <string name="about_summary_donate">"Покажете вашата съпричастност! ❤️"</string>
     <string name="about_description_donate">"Благодарим ви, че подкрепяте това приложение! За да видите последните дарители, а също и да дарите, ако желаете, отворете някоя от посочените платформи:"</string>
@@ -942,7 +931,6 @@
     <string name="quest_barrier_bicycle_type_single">"Преминаване през две бариери"</string>
     <string name="quest_barrier_bicycle_type_double">"Шикан - бариери от двете страни"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Шикан - повече от 2 бариери"</string>
-    <string name="pref_title_language_select">"Изберете език"</string>
     <string name="language_default">"По подразбиране от системата"</string>
     <string name="on_floor">"на етаж %s:"</string>
     <string name="select_street_parking_orientation">"Изберете ориентацията спрямо пътното платно:"</string>
@@ -967,7 +955,6 @@
 
 Разбира се, можете да оставите бележка придружена със снимка."</string>
     <string name="quest_address_house_number_label">"Номер на къща:"</string>
-    <string name="quest_shoulder_title">"Този път има ли аварийна лента?"</string>
     <string name="quest_fireHydrant_position_title">"Къде се намира този пожарен кран?"</string>
     <string name="quest_fireHydrant_position_green">"В тревни площи"</string>
     <string name="quest_fireHydrant_position_lane">"На пътното платно"</string>
@@ -1018,8 +1005,6 @@
     <string name="quest_barrier_path_intersection">"Как тази пътека пресича бариерата?"</string>
     <string name="quest_barrier_road_intersection">"Как този път пресича тази бариера?"</string>
     <string name="quest_sidewalk_value_separate">"показани са отделно на картата"</string>
-    <string name="quest_shoulder_value_yes">"аварийна лента"</string>
-    <string name="quest_shoulder_value_no">"без аварийна лента"</string>
     <string name="no_camera_permission_warning_title">"Разрешение за камерата"</string>
     <string name="no_camera_permission_warning">"Разрешението е необходимо за снимки и за измервания с камерата."</string>
     <string name="ar_core_error_sdk_too_old">"Това приложение трябва да бъде актуализирано"</string>
@@ -1110,7 +1095,6 @@
     <string name="quest_barrier_type_gate_any_size">"Порта, без значение от размера"</string>
     <string name="quest_air_pump_compressor_title">"Има ли въздушен компресор тук?"</string>
     <string name="quest_step_count_stile_hint">"Брой стъпала до върха. Ако е различен от другата страна въведете по-големия брой."</string>
-    <string name="quest_shoulder_explanation2">"Аварийна лента, която е обозначена. Не е задължително да е асфалтирана или да е широка колкото нормална пътна лента."</string>
     <string name="quest_cycleway_value_none_and_oneway">"Няма, не е разрешено с велосипед в тази посока"</string>
     <string name="map_btn_create_track">"Нов запис на маршрут"</string>
     <string name="map_btn_stop_track">"Край на записа"</string>
@@ -1212,7 +1196,6 @@
     <string name="quest_genericRef_title">"Какъв е идентификационният номер тук?"</string>
     <string name="quest_sidewalk_answer_different">"Ситуацията с тротоара е различна"</string>
     <string name="about_title_get_involved">"Включете се"</string>
-    <string name="pref_category_quests_overlays">"Мисии и наслагвания"</string>
     <string name="quest_presets_rename">"Преименуване"</string>
     <string name="quest_presets_share">"Споделяне"</string>
     <string name="quest_presets_delete">"Изтриване"</string>
@@ -1348,13 +1331,13 @@
     <string name="quest_disable_message_not_working">"StreetMeasure не върна измерване."</string>
     <string name="quest_disable_message_tape_measure">"Вместо това можете да използвате рулетка, но в крайна сметка това може да е малко неудобно."</string>
     <string name="quest_buildingType_outbuilding">"Стопанска постройка"</string>
-    <string name="quest_buildingType_outbuilding_description">"по-малко важна сграда в имот"</string>
-    <string name="quest_buildingType_other_description">"конкретна сграда, която не може да се избира в това приложение"</string>
+    <string name="quest_buildingType_outbuilding_description">"маловажна сграда в имот"</string>
+    <string name="quest_buildingType_other_description">"специфична сграда, неприсъстваща в това приложение"</string>
     <string name="quest_buildingType_container">"Контейнер"</string>
     <string name="quest_buildingType_tent">"Палатка"</string>
     <string name="quest_buildingType_tomb">"Гробница"</string>
     <string name="quest_buildingType_tower">"Кула"</string>
-    <string name="quest_buildingType_tower_description">"всякакъв вид кула"</string>
+    <string name="quest_buildingType_tower_description">"кула произволен тип"</string>
     <string name="quest_buildingType_under_construction">"В строеж"</string>
     <string name="overlay_buildings">"Сгради"</string>
     <string name="quest_pedestrian_crossing_markings">"Този прелез има ли маркировка на земята?"</string>
@@ -1369,4 +1352,38 @@
     <string name="quest_isAmenityIndoor_outside_covered">"Не е вътре, но покрито"</string>
     <string name="lit_value_unsupported">"Конкретен статус за осветеност, който не може да бъде избран в това приложение"</string>
     <string name="quest_generic_otherAnswers2">"Хм…"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Има ли тук светофaри показващи кога да пресичате?"</string>
+    <string name="quest_moped_access_title">"Има ли знак указващ достъп за мотопеди на тази велосипедна пътека?"</string>
+    <string name="quest_moped_access_allowed">"Няма знак"</string>
+    <string name="quest_moped_access_designated">"Има знак обозначаващ тази велосипедна пътека достъпна  за мотопеди."</string>
+    <string name="quest_moped_access_forbidden">"Има знак забраняващ мопедите"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Този тип задача по подразбиране е изключен, тъй като достъпът на мотопеди се обозначава само със специални знаци в началото и края на велосипедната пътека."</string>
+    <string name="quest_arrow_tutorial">"Стрелките на илюстрациите показват направления, в които преминава пътя на картата в нейната централна точка.  Опитайте да обърнете картата и у вас всичко ще се получи."</string>
+    <string name="info">"Повече информация"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"Това е забранено."</string>
+    <string name="quest_accessible_for_pedestrians_allowed">"Това е разрешено."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Има тротоар, но на картата е изобразен отделно."</string>
+    <string name="quest_buildingLevels_hint">"За сгради под наклон, отчитането на нивата започва от нивото на земята на най-ниската страна.
+
+Едно ниво се счита за ниво на покрива, когато прозорците му са в покрива. Впоследствие покривите с нулеви нива на покрива не са непременно плоски, просто не са достатъчно високи за цяло ниво.
+    "</string>
+    <string name="quest_parcel_locker_brand">"Коя компания поддържа това шкафче за пратки?"</string>
+    <string name="quest_powerPolesMaterial_is_terminal">"Електропроводът е анкериран към сградата"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"няма, но знакът позволява карането на велосипед по тротоара"</string>
+    <string name="separate_cycleway_no_signed">"Има знак изрично забраняващ велосипеди"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Пешеходна пътека, но има знак позволяващ велосипеди"</string>
+    <string name="quest_bicycle_parking_type_floor">"Специално определена зона"</string>
+    <string name="link_osmapp_description">"Карта с различни слоеве, като например за катерене или ски"</string>
+    <string name="action_back">"Назад"</string>
+    <string name="action_clear">"Изчистване"</string>
+    <string name="action_more">"Още"</string>
+    <string name="action_open_in_browser">"Отваряне в браузър"</string>
+    <string name="about_category_contribute">"Приноси"</string>
+    <string name="pref_category_quests">"Задачи"</string>
+    <string name="pref_title_language_select2">"Език"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Колко често да получавате подкана да потвърдите дали картографираните преди това данни са все още актуални."</string>
+    <string name="questList_disabled_by_default">"Деактивирано по подразбиране"</string>
+    <string name="action_manage_presets_summary">"Под чието име е запазен изборът на мисия по-долу."</string>
+    <string name="quest_multiselect_hint">"Изберете всички приложими:"</string>
+    <string name="quest_barrier_opening_width_gate">"Каква е ширината на отвора тук?"</string>
 </resources>

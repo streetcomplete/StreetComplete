@@ -14,10 +14,11 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 
 - Redesigned the settings screens, about screens and tutorial screens (#5719)
 - minor improvements for right-to-left localization (Arabic, Hebrew, Farsi)
+- fix rare crash issues (#5804)
 
 ### New Quests
 
-- _"What is the width of the opening here?"_, asked for gates etc. (#5713) by @Nick-Tallguy
+- _"What is the width of the opening here?"_, asked for gates etc. (#5713, #5800) by @Nick-Tallguy
 
 ### Removed Quests
 

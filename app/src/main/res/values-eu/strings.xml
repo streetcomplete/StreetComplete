@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Baimenak huts egin du: Zerrendako baimen guztiak eman behar dira"</string>
     <string name="pref_category_communication">"Komunikazioa"</string>
     <string name="pref_category_display">"Pantaila"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Maparen lauzak kanpo-biltegian gordetzeko espazioa megabytetan"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Erakutsi ohar guztiak"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Galdera forma ez dituzten oharrak erakusten ere"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Galdera forma ez dituzten oharrak ez ikuso"</string>
-    <string name="pref_title_map_cache">"Maparen katxearen tamaina"</string>
     <string name="map_btn_gps_tracking">"Jarraitu nazazu"</string>
     <string name="map_attribution_osm">"© OpenStreetMap laguntzaileak"</string>
     <string name="quest_generic_otherAnswers">"Beste erantzunak…"</string>
@@ -50,13 +47,10 @@
     <string name="turn_on_location_request">"Kokapena itzalita dago. Ezarpenak ireki orain pizteko?"</string>
     <string name="no_location_permission_warning">"Zure kokalekua behar da inguruko erronkak bilatzeko."</string>
     <string name="about_title_authors">"Kredituak"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick eta beste"</string>
     <string name="about_title_repository">"Iturburu-kodearen biltegia"</string>
-    <string name="about_summary_repository">"GitHub-en"</string>
     <string name="about_title_report_error">"Jakinarazi errorea"</string>
     <string name="about_title_feedback">"Egin iruzkina"</string>
     <string name="about_title_license">"Lizentzia"</string>
-    <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Deskonektatuta zaude"</string>
     <string name="confirmation_authorize_now">"Zure OSM erabiltzaile-kontua baimendu behar duzu zure erantzunak argitaratzeko. Baimendu orain?"</string>
     <string name="not_authorized">"Baimenik gabe"</string>
@@ -66,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"bi errepide lotzen ditu besterik gabe"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Beste zerbait (Utzi oharra)"</string>
     <string name="about_title_privacy_statement">"Pribatutasun adierazpena"</string>
-    <string name="about_summary_privacy_statement">"eta datuen erabilera"</string>
     <string name="quest_openingHours_public_holidays">"Jai egunak"</string>
     <string name="quest_openingHours_public_holidays_short">"JE"</string>
     <string name="quest_openingHours_open_end">"Ixteko ordu zehatzik gabe"</string>
@@ -82,7 +75,7 @@
     <string name="map_btn_zoom_out">"Urrundu zooma"</string>
     <string name="map_btn_zoom_in">"Hurbildu zooma"</string>
     <string name="privacy_html">"Pribatutasunaz arduratzen den norbait, ondo! Berri onak ditut zuretzat: &lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Ekarpen zuzenak&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Ekarpen zuzenak&lt;/h2&gt;
 &lt;p&gt;
 Hasteko, ulertu aplikazio honekin egiazko ekarpen zuzenak egiten dituzula OpenStreetMap-en.&lt;br/&gt;
 Aplikazio honetan egiten dituzun ekarpenak zuzenean mapara gehituko dira, ez dago inor zu eta OSM azpiegituraren artean.
@@ -91,12 +84,12 @@ Aplikazio honetan egiten dituzun ekarpenak zuzenean mapara gehituko dira, ez dag
 Ezin da OpenStreetMap era anonimoan editatu, OSMra egiten dituzu aldaketa guztiak zure kontuarekin egiten dira. Honek esan nahi du data, edukia eta kokaleku inplizitua OpenStreetMap webgunean ikusgai daudela zure kontuari lotuta.
 &lt;/p&gt;
 
-&lt;b&gt;Kokalekua&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Kokalekua&lt;/h2&gt;
 &lt;p&gt;
 Kokalekua inguruko erronkak automatikoki bilatzeko erabiltzen da, aplikazioak ez dio inori esaten.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Datuen erabilera&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Datuen erabilera&lt;/h2&gt;
 &lt;p&gt;
 Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;testu soileko fitxategi&lt;/a&gt; batean aldaketak igotzea debekatu zaion egiaztatzen du. Hau badaezpadako neurri bat da arazo larriak dituztelako OSM datuak zapuzteko arriskua duten bertsioak kanpo uzteko. &lt;br/&gt;
 &lt;/p&gt;"</string>
@@ -122,7 +115,6 @@ Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=
     <string name="quest_surface_value_wood">"Egurra"</string>
     <string name="quest_sidewalk_title">"Espaloia al dago kale honetan?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Non dago kale hau?"</string>
-    <string name="quest_oneway_title">"Norabide bakarreko kalea da?"</string>
     <string name="quest_address_title">"Zein da eraikin honen zenbakia?"</string>
     <string name="store_listing_short_description">"OpenStreetMap ikuskatze aplikazioa"</string>
     <string name="store_listing_full_description">"Lagundu OpenStreetMap osatzen StreetComplete erabilita!
@@ -388,7 +380,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="questList_disabled_in_country">"Ez erakutsi inoiz %s(e)n"</string>
     <string name="quest_select_hint_most_specific">"Hautatu bat datorren aukera zehatzena:"</string>
     <string name="quest_generic_item_confirmation">"Ziur ez duzula gehiago zehaztu nahi?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Erronka batzuetarako, hirugarrengoen datu gehigarriak deskargatzen da. Hain zuzen, norabide bakarraren erronkarako, bide bakarrekoak izateko aukera handiena duten bideak zeintzu diren westnordost.de helbidean ostatatutako API bati galdetzen zaio&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Erronka batzuetarako, hirugarrengoen datu gehigarriak deskargatzen da.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ez (laga ohar bat)"</string>
     <string name="pref_quests_reset">"Leheneratu gaitutako erronkak eta hauen ordena lehenetsitakora?"</string>
     <string name="quest_generic_item_invalid_value">"Aukeratu balio zehatzago bat."</string>
@@ -503,7 +495,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Oinezkoek debekatuta al dute bide honetan ibiltzea?"</string>
     <string name="quest_buildingType_title">"Ze motako eraikina da hau?"</string>
     <string name="pref_title_theme_select">"Hautatu azala"</string>
-    <string name="theme_automatic">"Automatikoa"</string>
     <string name="theme_light">"Argia"</string>
     <string name="theme_dark">"Iluna"</string>
     <string name="theme_system_default">"Sisteman lehenetsia"</string>
@@ -532,7 +523,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_maxweight_answer_other_sign">"Seinalea desberdina dirudi…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Ohar bat utzi nahi duzu? Argazkia daraman ohar batek beste mapa egileei gaiari heltzen lagunduko die."</string>
     <string name="quest_handrail_title">"Eskailera hauek heldulekua daukate?"</string>
-    <string name="about_summary_current_version">"Oraingo bertsioa: %s"</string>
     <string name="quest_ref_answer_noRef">"Ez dago erreferentzia zenbakirik ikusgai…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Irudiko kalea biratuta dago mapan ikurraren kokapenean"</string>
     <string name="quest_recycling_materials_title">"Zer utzi daiteke hemen birziklatzeko?"</string>
@@ -557,7 +547,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="about_title_changelog">"Bertsioen historiala"</string>
     <string name="title_whats_new">"Zer dago berri?"</string>
     <string name="about_title_rate">"Baloratu aplikazio hau"</string>
-    <string name="about_summary_rate">"Google Play dendan"</string>
     <string name="about_title_donate">"Dohaintza"</string>
     <string name="about_summary_donate">"Erakutsi zure babesa! ❤️"</string>
     <string name="about_description_donate">"Eskerrik asko aplikazio hau babestea hausnartzeagatik! Oraingo dohaintzak ikusteko eta zurea egiteko, sakatu dagokion plataforman:"</string>
@@ -953,7 +942,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
     <string name="quest_barrier_bicycle_type_single">"Bi hesiren arteko pasabidea"</string>
     <string name="quest_barrier_bicycle_type_double">"Chicane - hesia bi aldeetan"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Chicane - bi hesi baino gehiago"</string>
-    <string name="pref_title_language_select">"Hautatu hizkuntza"</string>
     <string name="language_default">"Sistemarena"</string>
     <string name="on_floor">"%s solairuan:"</string>
     <string name="select_street_parking_orientation">"Hautatu errepideren noranzkoa:"</string>
@@ -978,7 +966,6 @@ Ikus itzazu aukera posible guztiak: batzuetan ez da oso argia, adibidez errepide
 
 Bestela, ohar bat utz dezakezu (argazki batekin)."</string>
     <string name="quest_address_house_number_label">"Etxeko zenbakia:"</string>
-    <string name="quest_shoulder_title">"Errepide honek ba du bazterbiderik?"</string>
     <string name="quest_fireHydrant_position_title">"Non dago suteetako ur-hargune hori?"</string>
     <string name="quest_fireHydrant_position_green">"Belar edo lurrean"</string>
     <string name="quest_fireHydrant_position_lane">"Errepidean"</string>
@@ -1031,8 +1018,6 @@ harguneak"</string>
     <string name="quest_barrier_path_intersection">"Nola zeharkatzen du bide honek hemengo langa?"</string>
     <string name="quest_barrier_road_intersection">"Nola zeharkatzen du bide honek hemengo langa?"</string>
     <string name="quest_sidewalk_value_separate">"mapan bereizita agertzen da"</string>
-    <string name="quest_shoulder_value_yes">"bidebazterra"</string>
-    <string name="quest_shoulder_value_no">"bidebazterrik ez"</string>
     <string name="no_camera_permission_warning_title">"Kameraren baimena"</string>
     <string name="no_camera_permission_warning">"Baimena behar da argazkiak atera ahal izateko eta kamerarekin distantziak neurtzeko."</string>
     <string name="ar_core_error_sdk_too_old">"Aplikazio hau zaharregia da, saiatu eguneratzen."</string>
@@ -1123,8 +1108,6 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="quest_barrier_type_gate_any_size">"Atea, edozein tamainakoa"</string>
     <string name="quest_air_pump_compressor_title">"Ba al dago aire konpresorerik hemen?"</string>
     <string name="quest_step_count_stile_hint">"Gora iristeko urrats kopurua besterik ez. Pausoen zenbaketa alde bakoitzean desberdina bada, eman zenbaki altuena."</string>
-    <string name="quest_shoulder_explanation2">"Bazterbidea argi markatutako larrialdi-geldialdietarako erreia da. Bazterbide gisa izendatutako eremua ez da zertan zolatuta egon bere zabalera osoan eta ez da zertan kotxe bat zirkulazio-erreitik kanpo guztiz gelditzeko adinako zabalera.
-"</string>
     <string name="quest_cycleway_value_none_and_oneway">"bat ere ez, norabide honetan bizikletaz ibiltzea debekatuta dago"</string>
     <string name="map_btn_create_track">"Sortu arrasto grabazio berria"</string>
     <string name="map_btn_stop_track">"Gelditu arrastoaren grabazioa"</string>
@@ -1226,7 +1209,6 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="quest_genericRef_title">"Zein da hemengo identifikazio-zenbakia?"</string>
     <string name="quest_sidewalk_answer_different">"Espaloiaren egoera ezberdina da"</string>
     <string name="about_title_get_involved">"Parte hartu"</string>
-    <string name="pref_category_quests_overlays">"Bilaketak eta gainjartzeak"</string>
     <string name="quest_presets_rename">"Aldatu izena"</string>
     <string name="quest_presets_share">"Partekatu"</string>
     <string name="quest_presets_delete">"Ezabatu"</string>

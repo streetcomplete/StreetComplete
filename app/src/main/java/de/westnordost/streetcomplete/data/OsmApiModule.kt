@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data
 
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiClient
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiSerializer
-import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiParser
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiSerializer
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NotesApiClient
 import de.westnordost.streetcomplete.data.osmnotes.NotesApiParser
 import de.westnordost.streetcomplete.data.osmtracks.TracksApiClient
 import de.westnordost.streetcomplete.data.osmtracks.TracksSerializer
+import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.data.user.UserApiParser
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
