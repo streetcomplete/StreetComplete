@@ -25,6 +25,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -32,7 +33,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
@@ -43,6 +48,7 @@ import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
+import de.westnordost.streetcomplete.screens.main.findClosestIntersection
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
@@ -60,6 +66,7 @@ import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
+import kotlin.math.PI
 import kotlin.math.abs
 
 // NOTE: this will eventually grow into something that should be renamed to MainScreen, i.e.
@@ -110,7 +117,7 @@ fun MapControls(
     val isRecordingTracks by viewModel.isRecordingTracks.collectAsState()
 
     val mapCamera by viewModel.mapCamera.collectAsState()
-    val intersectionPoint by viewModel.intersectionPoint.collectAsState()
+    val displayedPosition by viewModel.displayedPosition.collectAsState()
 
     val editItems by editHistoryViewModel.editItems.collectAsState()
     val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
@@ -166,15 +173,22 @@ fun MapControls(
             Crosshair()
         }
 
-        val intersection = intersectionPoint
+        val pointerPinRects = remember { mutableStateMapOf<String, Rect>() }
+        val intersection = remember(displayedPosition, pointerPinRects) {
+            findClosestIntersection(
+                origin = pointerPinRects["frame"]?.center,
+                target = displayedPosition,
+                rects = pointerPinRects.values
+            )
+        }
+
         if (intersection != null) {
-            val rotation = intersection.angle - mapRotation
+            val (offset, angle) = intersection
+            val rotation = angle * 180 / PI - mapRotation
             PointerPinButton(
                 onClick = onClickLocationPointer,
                 rotate = rotation.toFloat(),
-                modifier = Modifier
-                    .safeDrawingPadding()
-                    .absoluteOffset(x = intersection.x.pxToDp(), y = intersection.y.pxToDp()),
+                modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
             ) { Image(painterResource(R.drawable.location_dot_small), null) }
         }
 
@@ -182,27 +196,34 @@ fun MapControls(
             modifier
                 .fillMaxSize()
                 .safeDrawingPadding()
+                .onGloballyPositioned { pointerPinRects["frame"] = it.boundsInRoot() }
                 .padding(bottom = 22.dp)
         ) {
-            // stars counter
-            StarsCounter(
-                count = starsCount,
-                modifier = Modifier
-                    .defaultMinSize(minWidth = 96.dp)
-                    .align(Alignment.TopStart)
-                    .clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = null
-                    ) { viewModel.toggleShowingCurrentWeek() },
-                isCurrentWeek = isShowingStarsCurrentWeek,
-                showProgress = isUploadingOrDownloading
-            )
+            // top-start controls
+            Box(modifier = Modifier
+                .align(Alignment.TopStart)
+                .onGloballyPositioned { pointerPinRects["top-start"] = it.boundsInRoot() }
+            ) {
+                // stars counter
+                StarsCounter(
+                    count = starsCount,
+                    modifier = Modifier
+                        .defaultMinSize(minWidth = 96.dp)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null
+                        ) { viewModel.toggleShowingCurrentWeek() },
+                    isCurrentWeek = isShowingStarsCurrentWeek,
+                    showProgress = isUploadingOrDownloading
+                )
+            }
 
-            // top controls
+            // top-end controls
             Row(
                 modifier = Modifier
                     .align(Alignment.TopEnd)
-                    .padding(4.dp),
+                    .padding(4.dp)
+                    .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 if (messagesCount > 0) {
@@ -237,11 +258,12 @@ fun MapControls(
                 )
             }
 
-            // bottom-right controls
+            // bottom-end controls
             Column(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(4.dp),
+                    .padding(4.dp)
+                    .onGloballyPositioned { pointerPinRects["bottom-end"] = it.boundsInRoot() },
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
@@ -283,11 +305,12 @@ fun MapControls(
                 }
             }
 
-            // bottom-left controls
+            // bottom-start controls
             Column(
                 modifier = Modifier
                     .align(Alignment.BottomStart)
-                    .padding(4.dp),
+                    .padding(4.dp)
+                    .onGloballyPositioned { pointerPinRects["bottom-start"] = it.boundsInRoot() },
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 if (isRecordingTracks) {

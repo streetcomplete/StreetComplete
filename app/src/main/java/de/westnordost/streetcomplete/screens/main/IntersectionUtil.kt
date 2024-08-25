@@ -1,79 +1,57 @@
 package de.westnordost.streetcomplete.screens.main
 
-import android.graphics.PointF
-import android.view.View
-import android.view.ViewGroup
-import androidx.core.view.children
-import androidx.core.view.isVisible
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import kotlin.math.PI
+import kotlin.math.atan2
 
-/** Given an imaginary line drawn from the center of the given [viewGroup] and the [target], returns
- *  the point where the line either intersects with the bounds of the [viewGroup] or the bounds of
- *  any of its direct children, whichever is closer to the center. It returns null if there is no
- *  intersection (i.e. the [target] is within the bounds of [viewGroup] and not within the bounds
- *  of any of its direct children) */
-fun findClosestIntersection(viewGroup: ViewGroup, target: PointF): PointF? {
-    val w = viewGroup.width.toFloat()
-    val h = viewGroup.height.toFloat()
-    val ox = w / 2
-    val oy = h / 2
-    val tx = target.x
-    val ty = target.y
+data class Intersection(val position: Offset, val angle: Double)
 
+/** Given an imaginary line drawn from [origin] to [target], returns the point and angle at which
+ *  the line intersects with the bounds closest to [origin] of the [rects]. It returns null if there
+ *  is no intersection */
+fun findClosestIntersection(
+    origin: Offset?,
+    target: Offset?,
+    rects: Iterable<Rect>,
+): Intersection? {
+    val o = origin ?: return null
+    val t = target ?: return null
+
+    var minA = Float.MAX_VALUE
+
+    for (rect in rects) {
+        val a = intersectionWithRect(rect, o, t)
+        if (a < minA) minA = a
+    }
+    if (minA > 1f) return null
+
+    return Intersection(
+        position = Offset(o.x + (t.x - o.x) * minA, o.y + (t.y - o.y) * minA),
+        angle = atan2(t.y - o.y, t.x - o.x) + PI / 2
+    )
+}
+
+/** First intersection of line drawn from [o] to [t] with rect [r] or Float.MAX_VALUE if none */
+private fun intersectionWithRect(r: Rect, o: Offset, t: Offset): Float {
     var minA = Float.MAX_VALUE
     var a: Float
 
     // left side
-    a = intersectionWithVerticalSegment(ox, oy, tx, ty, 0f, 0f, h)
+    a = intersectionWithVerticalSegment(o.x, o.y, t.x, t.y, r.left, r.top, r.height)
     if (a < minA) minA = a
     // right side
-    a = intersectionWithVerticalSegment(ox, oy, tx, ty, w, 0f, h)
+    a = intersectionWithVerticalSegment(o.x, o.y, t.x, t.y, r.right, r.top, r.height)
     if (a < minA) minA = a
     // top side
-    a = intersectionWithHorizontalSegment(ox, oy, tx, ty, 0f, 0f, w)
+    a = intersectionWithHorizontalSegment(o.x, o.y, t.x, t.y, r.left, r.top, r.width)
     if (a < minA) minA = a
     // bottom side
-    a = intersectionWithHorizontalSegment(ox, oy, tx, ty, 0f, h, w)
+    a = intersectionWithHorizontalSegment(o.x, o.y, t.x, t.y, r.left, r.bottom, r.width)
     if (a < minA) minA = a
 
-    for (child in viewGroup.children) {
-        if (!isReallyVisible(child)) continue
-        val t = child.top.toFloat()
-        val b = child.bottom.toFloat()
-        val r = child.right.toFloat()
-        val l = child.left.toFloat()
-        // left side
-        if (l > ox && l < w) {
-            a = intersectionWithVerticalSegment(ox, oy, tx, ty, l, t, b - t)
-            if (a < minA) minA = a
-        }
-        // right side
-        if (r > 0 && r < ox) {
-            a = intersectionWithVerticalSegment(ox, oy, tx, ty, r, t, b - t)
-            if (a < minA) minA = a
-        }
-        // top side
-        if (t > oy && t < h) {
-            a = intersectionWithHorizontalSegment(ox, oy, tx, ty, l, t, r - l)
-            if (a < minA) minA = a
-        }
-        // bottom side
-        if (b > 0 && b < oy) {
-            a = intersectionWithHorizontalSegment(ox, oy, tx, ty, l, b, r - l)
-            if (a < minA) minA = a
-        }
-    }
-
-    return if (minA <= 1f) PointF(ox + (tx - ox) * minA, oy + (ty - oy) * minA) else null
+    return minA
 }
-
-// A visible ViewGroup with no visible children is (probably) not actually visible
-// This assumption isn't 100% necessarily correct, since the ViewGroup *could* itself be opaque;
-// if there's a bug with the pointer pin not showing when it should, check here first.
-private fun isReallyVisible(view: View): Boolean =
-    view.isVisible && when (view) {
-        is ViewGroup -> view.children.any(::isReallyVisible)
-        else -> true
-    }
 
 /** Intersection of line segment going from P to Q with vertical line starting at V and given
  *  length. Returns the f for P+f*(Q-P) or MAX_VALUE if no intersection found. */

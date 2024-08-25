@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
+import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -58,12 +59,10 @@ abstract class MainViewModel : ViewModel() {
     //       truth is actually the MapFragment
     abstract val locationState: MutableStateFlow<LocationState>
     abstract val mapCamera: MutableStateFlow<CameraPosition?>
-    abstract val intersectionPoint: MutableStateFlow<IntersectionPoint?>
+    abstract val displayedPosition: MutableStateFlow<Offset?>
 
     abstract val isFollowingPosition: MutableStateFlow<Boolean>
     abstract val isNavigationMode: MutableStateFlow<Boolean>
 
     abstract val isRecordingTracks: MutableStateFlow<Boolean>
 }
-
-data class IntersectionPoint(val x: Float, val y: Float, val angle: Double)

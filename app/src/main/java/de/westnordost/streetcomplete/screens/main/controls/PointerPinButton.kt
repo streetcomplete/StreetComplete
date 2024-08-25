@@ -37,7 +37,9 @@ import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
-/** A view for the pointer pin that ought to be displayed at the edge of the screen.
+/** A view for the pointer pin that ought to be displayed at the edge of the screen. The upper left
+ *  corner is always the the position at which it is pointing to, i.e. it will be drawn outside of
+ *  its bounds when pointing to the right.
  *  [rotate] rotates the pin. As opposed to normal rotation, the content always stays upright */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

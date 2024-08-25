@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
@@ -19,6 +18,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.compose.ui.geometry.Offset
 import androidx.core.graphics.Insets
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -100,7 +100,6 @@ import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
-import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
@@ -259,13 +258,6 @@ class MainFragment :
         }
     }
 
-    @UiThread
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        updateLocationPointerPin()
-    }
-
     override fun onStart() {
         super.onStart()
         visibleQuestsSource.addListener(this)
@@ -302,14 +294,13 @@ class MainFragment :
         controlsViewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
         controlsViewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
         controlsViewModel.mapCamera.value = mapFragment?.cameraPosition
-        updateLocationPointerPin()
+        updateDisplayedPosition()
         listener?.onMapInitialized()
     }
 
     override fun onMapIsChanging(camera: CameraPosition) {
         controlsViewModel.mapCamera.value = camera
-
-        updateLocationPointerPin()
+        updateDisplayedPosition()
 
         val f = bottomSheetFragment
         if (f is IsMapOrientationAware) f.onMapOrientation(camera.rotation, camera.tilt)
@@ -371,7 +362,17 @@ class MainFragment :
     }
 
     override fun onDisplayedLocationDidChange() {
-        updateLocationPointerPin()
+        updateDisplayedPosition()
+    }
+
+    private fun updateDisplayedPosition() {
+        controlsViewModel.displayedPosition.value = getDisplayedPoint()?.let { Offset(it.x, it.y) }
+    }
+
+    private fun getDisplayedPoint(): PointF? {
+        val mapFragment = mapFragment ?: return null
+        val displayedPosition = mapFragment.displayedLocation?.toLatLon() ?: return null
+        return mapFragment.getPointOf(displayedPosition)
     }
 
     //endregion
@@ -577,16 +578,13 @@ class MainFragment :
             else -> LocationState.DENIED
         }
         controlsViewModel.isNavigationMode.value = false
-        controlsViewModel.intersectionPoint.value = null
+        controlsViewModel.displayedPosition.value = null
         mapFragment!!.clearPositionTracking()
         locationManager.removeUpdates()
     }
 
     private fun onLocationChanged(location: Location) {
-        viewLifecycleScope.launch {
-            controlsViewModel.locationState.value = LocationState.UPDATING
-            updateLocationPointerPin()
-        }
+        controlsViewModel.locationState.value = LocationState.UPDATING
     }
 
     //endregion
@@ -674,6 +672,10 @@ class MainFragment :
                 setIsNavigationMode(!mapFragment.isNavigationMode)
             }
         }
+    }
+
+    private fun onClickLocationPointer() {
+        setIsFollowingPosition(true)
     }
 
     private fun requestLocation() {
@@ -782,31 +784,6 @@ class MainFragment :
         val mapFragment = mapFragment ?: return
         mapFragment.startPositionTrackRecording()
         controlsViewModel.isRecordingTracks.value = true
-    }
-
-    // ---------------------------------- Location Pointer Pin  --------------------------------- */
-
-    private fun updateLocationPointerPin() {
-        controlsViewModel.intersectionPoint.value = calculateLocationPointerIntersection()
-    }
-
-    private fun calculateLocationPointerIntersection(): IntersectionPoint? {
-        val mapFragment = mapFragment ?: return null
-        val camera = mapFragment.cameraPosition ?: return null
-        val displayedPosition = mapFragment.displayedLocation?.toLatLon() ?: return null
-        val target = mapFragment.getPointOf(displayedPosition) ?: return null
-        val intersection = findClosestIntersection(binding.controls, target) ?: return null
-        val intersectionPosition = mapFragment.getPositionAt(intersection) ?: return null
-        val angleAtIntersection = camera.position.initialBearingTo(intersectionPosition)
-        return IntersectionPoint(
-            x = intersection.x,
-            y = intersection.y,
-            angle = angleAtIntersection
-        )
-    }
-
-    private fun onClickLocationPointer() {
-        setIsFollowingPosition(true)
     }
 
     //endregion
