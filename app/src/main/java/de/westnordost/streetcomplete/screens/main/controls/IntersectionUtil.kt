@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main
+package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
