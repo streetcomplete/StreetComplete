@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
+import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -260,7 +261,7 @@ class MainViewModelImpl(
 
     override val locationState = MutableStateFlow(LocationState.ENABLED)
     override val mapCamera = MutableStateFlow<CameraPosition?>(null)
-    override val intersectionPoint = MutableStateFlow<IntersectionPoint?>(null)
+    override val displayedPosition = MutableStateFlow<Offset?>(null)
 
     override val isFollowingPosition = MutableStateFlow(false)
     override val isNavigationMode = MutableStateFlow(false)
