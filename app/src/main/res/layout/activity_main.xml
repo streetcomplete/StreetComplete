@@ -6,9 +6,29 @@
     tools:context=".screens.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map_fragment"
-        android:name="de.westnordost.streetcomplete.screens.main.MainFragment"
+        android:id="@+id/mapFragment"
+        android:name="de.westnordost.streetcomplete.screens.main.map.MainMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_map"
+        />
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:id="@+id/contextMenuView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:ignore="MissingConstraints" />
+
+    <!-- is a RelativeLayout so that the child layout can, if it is not matching parent, use layout_alignParent* -->
+    <RelativeLayout
+        android:id="@+id/map_bottom_sheet_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false" />
 
  </RelativeLayout >

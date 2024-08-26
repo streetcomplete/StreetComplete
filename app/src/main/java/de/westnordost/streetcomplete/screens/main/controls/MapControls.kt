@@ -68,7 +68,7 @@ import kotlin.math.PI
 import kotlin.math.abs
 
 // NOTE: this will eventually grow into something that should be renamed to MainScreen, i.e.
-//       replacing MainFragment completely. For now, it is mostly only the controls and dialogs
+//       replacing MainActivity completely. For now, it is mostly only the controls and dialogs
 //       and dropdowns triggered by that. But since this is big, we should take care to put any
 //       elements that can meaningfully be put into an own composable in another file
 
