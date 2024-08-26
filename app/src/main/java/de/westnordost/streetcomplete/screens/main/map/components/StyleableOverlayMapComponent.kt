@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.overlays.Color.INVISIBLE
 import de.westnordost.streetcomplete.overlays.PointStyle
 import de.westnordost.streetcomplete.overlays.PolygonStyle
@@ -255,7 +254,7 @@ class StyleableOverlayMapComponent(
                     val color = style.color ?: if (isNightMode) "#ccf" else "#124"
                     p.addProperty("icon-color", color)
                     val haloColor = style.color?.let { getDarkenedColor(it) } ?: if (isNightMode) "#2e2e48" else "#ffffff"
-                    p.addProperty("icon-halo-color", getDarkenedColor(haloColor))
+                    p.addProperty("icon-halo-color", haloColor)
                 }
                 if (style.label != null) p.addProperty("label", style.label)
 
