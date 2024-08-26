@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
@@ -16,6 +15,10 @@ import kotlinx.coroutines.launch
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.channels.Channel
+import kotlin.coroutines.EmptyCoroutineContext
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
 class MapDataController internal constructor(
@@ -26,7 +29,6 @@ class MapDataController internal constructor(
     private val geometryDB: ElementGeometryDao,
     private val elementGeometryCreator: ElementGeometryCreator,
     private val createdElementsController: CreatedElementsController,
-    private val downloadController: DownloadController,
 ) : MapDataRepository {
 
     /* Must be a singleton because there is a listener that should respond to a change in the
@@ -59,8 +61,13 @@ class MapDataController internal constructor(
         },
         { nodeDB.getAll(it) },
     )
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-    private var dbJob: Job? = null // we rely on this job never being canceled (which should not be possible unless explicitly calling cancel)
+
+    // the previous job + join thing might have been cancelled sometimes, so try something different
+    // todo: if this doesn't help, consider dropping the background update (app is not working on slow S4 Mini anyway...)
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO + NonCancellable)
+    private val channel = Channel<Job>(Channel.UNLIMITED).apply {
+        scope.launch { for (j in this@apply) j.join() }
+    }
 
     /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
      *  downloaded) */
@@ -96,12 +103,7 @@ class MapDataController internal constructor(
         cache.noTrimPlus(mapData.boundingBox!!) // quest creation can trigger trim, so we need to set noTrim here
         onReplacedForBBox(bbox, mapDataWithGeometry)
 
-        val oldDbJob = dbJob
-        dbJob = scope.launch {
-            // can't set persisting to show notification, so let's hope the system doesn't kill the app...
-            // no idea how aggressive Android is for such things
-            // or maybe we could not use the background stuff when app is in background, so the worker is still running
-            oldDbJob?.join()
+        val job = scope.launch(EmptyCoroutineContext, CoroutineStart.LAZY) {
             synchronized(this@MapDataController) {
                 elementDB.deleteAll(oldElementKeys)
                 geometryDB.deleteAll(oldElementKeys)
@@ -114,6 +116,7 @@ class MapDataController internal constructor(
                 " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
             )
         }
+        channel.trySend(job)
     }
 
     /** incorporate the [mapDataUpdates] (data has been updated after upload) */
@@ -154,11 +157,7 @@ class MapDataController internal constructor(
         cache.noTrimPlus(bbox) // quest creation can trigger trim, so we need to set noTrim here
         onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
 
-        val oldDbJob = dbJob
-        dbJob = scope.launch {
-            // the background job here is mostly so that a running dbJob (slow persist) doesn't block updateAll
-            oldDbJob?.join()
-            // no need to set persisting, as this is only few elements at a time
+        val job = scope.launch(EmptyCoroutineContext, CoroutineStart.LAZY) {
             synchronized(this@MapDataController) {
                 elementDB.deleteAll(deletedKeys)
                 geometryDB.deleteAll(deletedKeys)
@@ -168,6 +167,7 @@ class MapDataController internal constructor(
             cache.noTrimMinus(bbox)
             Log.i(TAG, "Persisted ${elements.size} and deleted ${deletedKeys.size} elements and geometries")
         }
+        channel.trySend(job)
     }
 
     /** Create ElementGeometryEntries for [elements] using [mapData] to supply the necessary geometry */
