@@ -253,7 +253,7 @@ class StyleableOverlayMapComponent(
                     p.addProperty("icon", context.resources.getResourceEntryName(style.icon))
                     val color = style.color ?: if (isNightMode) "#ccf" else "#124"
                     p.addProperty("icon-color", color)
-                    val haloColor = style.color?.let { getDarkenedColor(it) } ?: if (isNightMode) "#2e2e48" else "#ffffff"
+                    val haloColor = style.color?.let { getDarkenedColor(it) } ?: if (isNightMode) "#2e2e48" else "#fff"
                     p.addProperty("icon-halo-color", haloColor)
                 }
                 if (style.label != null) p.addProperty("label", style.label)
@@ -281,6 +281,10 @@ class StyleableOverlayMapComponent(
                     val pp = getElementKeyProperties(element.key)
                     if (style.icon != null) {
                         pp.addProperty("icon", context.resources.getResourceEntryName(style.icon))
+                        val color = if (isNightMode) "#ccf" else "#124"
+                        pp.addProperty("icon-color", color)
+                        val haloColor = if (isNightMode) "#2e2e48" else "#fff"
+                        pp.addProperty("icon-halo-color", haloColor)
                     }
                     if (style.label != null) pp.addProperty("label", style.label)
                     Feature.fromGeometry(geometry.center.toPoint(), pp)
