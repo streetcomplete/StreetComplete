@@ -765,7 +765,7 @@ class MainActivity :
     @SuppressLint("MissingPermission")
     private fun onLocationIsEnabled() {
         controlsViewModel.locationState.value = LocationState.SEARCHING
-        mapFragment!!.startPositionTracking()
+        mapFragment?.startPositionTracking()
         questAutoSyncer.startPositionTracking()
 
         setIsFollowingPosition(wasFollowingPosition ?: true)
@@ -779,7 +779,7 @@ class MainActivity :
         }
         controlsViewModel.isNavigationMode.value = false
         controlsViewModel.displayedPosition.value = null
-        mapFragment!!.clearPositionTracking()
+        mapFragment?.clearPositionTracking()
         questAutoSyncer.stopPositionTracking()
         locationManager.removeUpdates()
     }
