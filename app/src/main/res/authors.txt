@@ -43,6 +43,7 @@ bench_stone.jpg                CC-BY-SA 3.0      Andrew Butko https://commons.wi
 
 bicycle_parking_type_buildi... CC-BY-SA 3.0      Visitor7 https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
 bicycle_parking_type_locker... CC-BY-SA 3.0      Rept0n1x https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
+bicycle_parking_type_safel...  CC0 1.0           RogerWiki https://commons.wikimedia.org/wiki/File:Fahrradst%C3%A4nder_mit_Anlehnb%C3%BCgel_2.jpg
 bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      Tabl-trai https://commons.wikimedia.org/wiki/File:Parking_v%C3%A9los_s%C3%A9curis%C3%A9_gare_des_Martres_2015-08-20.JPG
 bicycle_parking_type_stand.jpg CC0               Mateusz Konieczny https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
 bicycle_parking_type_wheelb... CC-BY-SA 4.0      Joxemai https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG

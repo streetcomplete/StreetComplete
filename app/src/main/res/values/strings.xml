@@ -761,6 +761,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
     <string name="quest_bicycle_parking_type_stand">Stand (supports bicycle frame)</string>
     <string name="quest_bicycle_parking_type_wheelbender">Wheelbender (supports wheel only)</string>
+    <string name="quest_bicycle_parking_type_safeloops">Safe Loops (supports wheel and frame)</string>
     <string name="quest_bicycle_parking_type_shed">Shed</string>
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
