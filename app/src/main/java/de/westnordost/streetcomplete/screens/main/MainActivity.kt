@@ -251,8 +251,6 @@ class MainActivity :
             }
         }
 
-        handleUri()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -312,6 +310,14 @@ class MainActivity :
         updateLocationAvailability(isLocationAvailable)
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        if (intent == null) return
+        if (intent.action != Intent.ACTION_VIEW) return
+        val data = intent.data?.toString() ?: return
+        controlsViewModel.setUri(data)
+    }
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         findViewById<View>(R.id.main).requestLayout()
@@ -338,11 +344,6 @@ class MainActivity :
 
     //endregion
 
-    private fun handleUri() {
-        if (intent.action != Intent.ACTION_VIEW) return
-        val data = intent.data?.toString() ?: return
-        controlsViewModel.setUri(data)
-    }
 
     // TODO move to viewmodel
     private suspend fun ensureLoggedIn() {
