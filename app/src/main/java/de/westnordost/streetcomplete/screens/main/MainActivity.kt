@@ -174,8 +174,6 @@ class MainActivity :
     private val noteEditsSource: NoteEditsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
     private val userLoginSource: UserLoginSource by inject()
-    private val urlConfigController: UrlConfigController by inject()
-    private val questPresetsSource: QuestPresetsSource by inject()
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
@@ -253,7 +251,7 @@ class MainActivity :
             }
         }
 
-        handleUrlConfig()
+        handleUri()
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -340,45 +338,13 @@ class MainActivity :
 
     //endregion
 
-    private fun handleUrlConfig() {
+    private fun handleUri() {
         if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data?.toString() ?: return
-        val config = urlConfigController.parse(data) ?: return
-
-        val alreadyExists = config.presetName == null || questPresetsSource.getByName(config.presetName) != null
-        val name = config.presetName ?: getString(R.string.quest_presets_default_name)
-
-        val htmlName = "<i>" + Html.escapeHtml(name) + "</i>"
-        val text = StringBuilder()
-        text.append(getString(R.string.urlconfig_apply_message, htmlName))
-        text.append("<br><br>")
-        if (alreadyExists) {
-            text.append("<b>" + getString(R.string.urlconfig_apply_message_overwrite) + "</b>")
-            text.append("<br><br>")
-        } else {
-            text.append(getString(R.string.urlconfig_switch_hint))
-        }
-
-        AlertDialog.Builder(this)
-            .setTitle(R.string.urlconfig_apply_title)
-            .setMessage(text.toString().parseAsHtml())
-            .setPositiveButton(android.R.string.ok) { _, _ -> urlConfigController.apply(config) }
-            .setNegativeButton(android.R.string.cancel) { _, _ -> }
-            .show()
+        controlsViewModel.setUri(data)
     }
 
-    private fun handleGeoUri() {
-        if (intent.action != Intent.ACTION_VIEW) return
-        val data = intent.data?.toString() ?: return
-        val geo = parseGeoUri(data) ?: return
-        val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
-        val pos = LatLon(geo.latitude, geo.longitude)
-
-        setIsFollowingPosition(false)
-        setIsNavigationMode(false)
-        mapFragment?.setInitialCameraPosition(CameraPosition(pos, 0.0, 0.0, zoom))
-    }
-
+    // TODO move to viewmodel
     private suspend fun ensureLoggedIn() {
         if (!questAutoSyncer.isAllowedByPreference) return
         if (userLoginSource.isLoggedIn) return
@@ -410,7 +376,6 @@ class MainActivity :
         controlsViewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
         controlsViewModel.mapCamera.value = mapFragment?.cameraPosition
         updateDisplayedPosition()
-        handleGeoUri()
     }
 
     override fun onMapIsChanging(camera: CameraPosition) {
@@ -612,6 +577,7 @@ class MainActivity :
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
+    //TODO put what bottom sheet is open in viewmodel?
     @AnyThread
     override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
         lifecycleScope.launch {
@@ -678,6 +644,7 @@ class MainActivity :
 
     //region Location - Request location and update location status
 
+    // TODO could go into viewmodel?
     private fun updateLocationAvailability(isAvailable: Boolean) {
         if (isAvailable) {
             onLocationIsEnabled()
@@ -1123,6 +1090,7 @@ class MainActivity :
 
     //region Animation - Animation(s) for when a quest is solved
 
+    // TODO move plop animation to compose
     private fun showQuestSolvedAnimation(iconResId: Int, position: LatLon) {
         val offset = binding.root.getLocationInWindow()
         val startPos = mapFragment?.getPointOf(position) ?: return

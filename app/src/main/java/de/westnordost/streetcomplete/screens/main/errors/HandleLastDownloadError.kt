@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.util.ktx.toast
 /** Depending on the type of error, either display or conditionally offer to report the last
  *  occurred error during download */
 @Composable
-fun LastDownloadError(
+fun HandleLastDownloadError(
     lastError: Exception,
     onReportError: (error: Exception) -> Unit
 ) {

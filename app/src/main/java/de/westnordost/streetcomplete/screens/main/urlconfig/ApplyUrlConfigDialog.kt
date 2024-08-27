@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main
+package de.westnordost.streetcomplete.screens.main.urlconfig
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

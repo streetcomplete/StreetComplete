@@ -49,12 +49,13 @@ import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.RequestLoginDialog
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
-import de.westnordost.streetcomplete.screens.main.errors.LastCrash
-import de.westnordost.streetcomplete.screens.main.errors.LastDownloadError
-import de.westnordost.streetcomplete.screens.main.errors.LastUploadError
+import de.westnordost.streetcomplete.screens.main.errors.HandleLastCrash
+import de.westnordost.streetcomplete.screens.main.errors.HandleLastDownloadError
+import de.westnordost.streetcomplete.screens.main.errors.HandleLastUploadError
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
+import de.westnordost.streetcomplete.screens.main.urlconfig.HandleUrlConfig
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
@@ -115,6 +116,7 @@ fun MapControls(
     val isLoggedIn by viewModel.isLoggedIn.collectAsState()
     val isUploadingOrDownloading by viewModel.isUploadingOrDownloading.collectAsState()
 
+    val urlConfig by viewModel.urlConfig.collectAsState()
     val lastCrashReport by viewModel.lastCrashReport.collectAsState()
     val lastDownloadError by viewModel.lastDownloadError.collectAsState()
     val lastUploadError by viewModel.lastUploadError.collectAsState()
@@ -395,15 +397,23 @@ fun MapControls(
         )
     }
 
+    urlConfig?.let { config ->
+        HandleUrlConfig(
+            urlConfig = config.urlConfig,
+            presetNameAlreadyExists = config.alreadyExists,
+            onApplyUrlConfig = { viewModel.applyUrlConfig(config.urlConfig) }
+        )
+    }
     lastDownloadError?.let { error ->
-        LastDownloadError(lastError = error, onReportError = ::sendErrorReport)
+        HandleLastDownloadError(lastError = error, onReportError = ::sendErrorReport)
     }
     lastUploadError?.let { error ->
-        LastUploadError(lastError = error, onReportError = ::sendErrorReport)
+        HandleLastUploadError(lastError = error, onReportError = ::sendErrorReport)
     }
     lastCrashReport?.let { report ->
-        LastCrash(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
+        HandleLastCrash(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
     }
+
 
     if (showLoginDialog) {
         RequestLoginDialog(
@@ -415,6 +425,7 @@ fun MapControls(
             }
         )
     }
+
 
     AnimatedScreenVisibility(showTeamModeWizard) {
         val questIcons = remember { viewModel.questTypes.map { it.icon } }

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.R
 
 /** Offer to report the last occurred crash */
 @Composable
-fun LastCrash(
+fun HandleLastCrash(
     lastReport: String,
     onReport: (errorReport: String) -> Unit
 ) {

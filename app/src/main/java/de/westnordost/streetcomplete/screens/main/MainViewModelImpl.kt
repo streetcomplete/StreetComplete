@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.MessagesSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
@@ -18,14 +19,18 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
+import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
+import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.launch
+import de.westnordost.streetcomplete.util.parseGeoUri
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -41,6 +46,8 @@ import kotlinx.coroutines.withContext
 
 class MainViewModelImpl(
     private val crashReportExceptionHandler: CrashReportExceptionHandler,
+    private val urlConfigController: UrlConfigController,
+    private val questPresetsSource: QuestPresetsSource,
     private val uploadController: UploadController,
     private val uploadProgressSource: UploadProgressSource,
     private val downloadController: DownloadController,
@@ -80,6 +87,39 @@ class MainViewModelImpl(
 
     override suspend fun createErrorReport(error: Exception) = withContext(IO) {
         crashReportExceptionHandler.createErrorReport(error)
+    }
+
+    /* start parameters */
+    override fun setUri(uri: String) {
+        launch {
+            urlConfig.value = parseShownUrlConfig(uri)
+
+            val geo = parseGeoUri(uri)
+            if (geo != null) {
+                val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
+                val pos = LatLon(geo.latitude, geo.longitude)
+
+                isFollowingPosition.value = false
+                isNavigationMode.value = false
+                mapCamera.value = CameraPosition(pos, 0.0, 0.0, zoom)
+            }
+        }
+    }
+
+    private suspend fun parseShownUrlConfig(uri: String): ShownUrlConfig? {
+        val config = urlConfigController.parse(uri) ?: return null
+        val alreadyExists = withContext(IO) {
+            config.presetName == null || questPresetsSource.getByName(config.presetName) != null
+        }
+        return ShownUrlConfig(urlConfig = config, alreadyExists = alreadyExists)
+    }
+
+    override val urlConfig = MutableStateFlow<ShownUrlConfig?>(null)
+
+    override fun applyUrlConfig(config: UrlConfig) {
+        launch(IO) {
+            urlConfigController.apply(config)
+        }
     }
 
     /* intro */
