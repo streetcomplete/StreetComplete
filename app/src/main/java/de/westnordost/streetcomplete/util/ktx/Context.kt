@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationManagerCompat
 import androidx.core.net.toUri
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
@@ -43,11 +42,11 @@ val Context.currentDisplay: Display get() =
         getSystemService<WindowManager>()!!.defaultDisplay
     }
 
-fun Context.sendEmail(email: String, subject: String, text: String? = null) {
+fun Context.sendEmail(to: String, subject: String, text: String? = null) {
     val intent = Intent(Intent.ACTION_SENDTO).apply {
         data = "mailto:".toUri()
-        putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
-        putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " " + subject)
+        putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
+        putExtra(Intent.EXTRA_SUBJECT, subject)
         if (text != null) {
             putExtra(Intent.EXTRA_TEXT, text)
         }

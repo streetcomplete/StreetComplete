@@ -12,6 +12,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 abstract class MainViewModel : ViewModel() {
+    /* error handling */
+    abstract val lastCrashReport: StateFlow<String?>
+    abstract suspend fun popCrashReport(): String?
+
     /* intro */
     abstract var hasShownTutorial: Boolean
 
@@ -48,6 +52,9 @@ abstract class MainViewModel : ViewModel() {
 
     abstract fun upload()
     abstract fun download(bbox: BoundingBox)
+
+    abstract val lastDownloadError: StateFlow<Exception?>
+    abstract val lastUploadError: StateFlow<Exception?>
 
     /* stars */
     abstract val starsCount: StateFlow<Int>

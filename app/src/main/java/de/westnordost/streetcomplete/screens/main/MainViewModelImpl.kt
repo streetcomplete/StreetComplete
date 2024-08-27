@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.awaitClose
@@ -39,6 +40,7 @@ import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 
 class MainViewModelImpl(
+    private val crashReportExceptionHandler: CrashReportExceptionHandler,
     private val uploadController: UploadController,
     private val uploadProgressSource: UploadProgressSource,
     private val downloadController: DownloadController,
@@ -55,7 +57,13 @@ class MainViewModelImpl(
     private val prefs: Preferences,
 ) : MainViewModel() {
 
-    /* messages */
+    /* error handling */
+    override val lastCrashReport = MutableStateFlow<String?>(null)
+    override suspend fun popCrashReport(): String? = withContext(IO) {
+        crashReportExceptionHandler.popCrashReport()
+    }
+
+    /* intro */
 
     override var hasShownTutorial: Boolean
         get() = prefs.hasShownTutorial
@@ -157,7 +165,7 @@ class MainViewModelImpl(
         awaitClose { uploadProgressSource.removeListener(listener) }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, uploadProgressSource.isUploadInProgress)
 
-    private val isDownloading: StateFlow<Boolean> = callbackFlow<Boolean> {
+    private val isDownloading: StateFlow<Boolean> = callbackFlow {
         val listener = object : DownloadProgressSource.Listener {
             override fun onStarted() { trySend(true) }
             override fun onFinished() { trySend(false) }
@@ -188,6 +196,24 @@ class MainViewModelImpl(
     override fun upload() {
         uploadController.upload(isUserInitiated = true)
     }
+
+    override val lastDownloadError: StateFlow<Exception?> = callbackFlow {
+        val listener = object : DownloadProgressSource.Listener {
+            override fun onStarted() { trySend(null) }
+            override fun onError(e: Exception) { trySend(e) }
+        }
+        downloadProgressSource.addListener(listener)
+        awaitClose { downloadProgressSource.removeListener(listener) }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    override val lastUploadError: StateFlow<Exception?> = callbackFlow {
+        val listener = object : UploadProgressSource.Listener {
+            override fun onStarted() { trySend(null) }
+            override fun onError(e: Exception) {  trySend(e) }
+        }
+        uploadProgressSource.addListener(listener)
+        awaitClose { uploadProgressSource.removeListener(listener) }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     /* stars */
 
@@ -270,6 +296,9 @@ class MainViewModelImpl(
     // ---------------------------------------------------------------------------------------
 
     init {
+        launch(IO) {
+            lastCrashReport.value = crashReportExceptionHandler.popCrashReport()
+        }
         teamModeQuestFilter.addListener(teamModeListener)
     }
 

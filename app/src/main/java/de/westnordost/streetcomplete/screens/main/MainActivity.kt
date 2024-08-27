@@ -12,14 +12,11 @@ import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
 import android.text.Html
-import android.text.method.LinkMovementMethod
-import android.text.util.Linkify
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.OvershootInterpolator
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.SystemBarStyle
@@ -42,10 +39,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.AuthorizationException
-import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
@@ -75,10 +69,7 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.data.upload.UploadProgressSource
-import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
-import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
@@ -112,7 +103,6 @@ import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -178,10 +168,7 @@ class MainActivity :
     // rest
     ShowsGeometryMarkers
 {
-    private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
     private val questAutoSyncer: QuestAutoSyncer by inject()
-    private val downloadProgressSource: DownloadProgressSource by inject()
-    private val uploadProgressSource: UploadProgressSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val elementEditsSource: ElementEditsSource by inject()
     private val noteEditsSource: NoteEditsSource by inject()
@@ -254,7 +241,6 @@ class MainActivity :
         supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
 
         lifecycle.addObserver(questAutoSyncer)
-        crashReportExceptionHandler.askUserToSendCrashReportIfExists(this)
 
         elementEditsSource.addListener(elementEditsListener)
         noteEditsSource.addListener(noteEditsListener)
@@ -321,8 +307,6 @@ class MainActivity :
 
         updateScreenOn()
 
-        uploadProgressSource.addListener(uploadProgressListener)
-        downloadProgressSource.addListener(downloadProgressListener)
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
         locationAvailabilityReceiver.addListener(::updateLocationAvailability)
@@ -338,8 +322,6 @@ class MainActivity :
     override fun onStop() {
         super.onStop()
 
-        uploadProgressSource.removeListener(uploadProgressListener)
-        downloadProgressSource.removeListener(downloadProgressListener)
         visibleQuestsSource.removeListener(this)
         mapDataWithEditsSource.removeListener(this)
         locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
@@ -415,64 +397,6 @@ class MainActivity :
             window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         } else {
             window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        }
-    }
-
-    /* ------------------------------ Upload progress listener ---------------------------------- */
-
-    private val uploadProgressListener = object : UploadProgressSource.Listener {
-        @AnyThread
-        override fun onError(e: Exception) {
-            runOnUiThread {
-                if (e is VersionBannedException) {
-                    var message = getString(R.string.version_banned_message)
-                    if (e.banReason != null) {
-                        message += "\n\n\n${e.banReason}"
-                    }
-                    val dialog = AlertDialog.Builder(this@MainActivity)
-                        .setMessage(message)
-                        .setPositiveButton(android.R.string.ok, null)
-                        .create()
-                    dialog.show()
-
-                    // Makes links in the alert dialog clickable
-                    val messageView = dialog.findViewById<View>(android.R.id.message)
-                    if (messageView is TextView) {
-                        messageView.movementMethod = LinkMovementMethod.getInstance()
-                        Linkify.addLinks(messageView, Linkify.WEB_URLS)
-                    }
-                } else if (e is ConnectionException) {
-                    /* A network connection error or server error is not the fault of this app.
-                       Nothing we can do about it, so it does not make sense to send an error
-                       report. Just notify the user. */
-                    toast(R.string.upload_server_error, Toast.LENGTH_LONG)
-                } else if (e is AuthorizationException) {
-                    RequestLoginDialog(this@MainActivity).show()
-                } else {
-                    crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity,
-                        R.string.upload_error, e)
-                }
-            }
-        }
-    }
-
-    /* ----------------------------- Download Progress listener  -------------------------------- */
-
-    private val downloadProgressListener = object : DownloadProgressSource.Listener {
-        @AnyThread
-        override fun onError(e: Exception) {
-            runOnUiThread {
-                // A network connection error is not the fault of this app. Nothing we can do about
-                // it, so it does not make sense to send an error report. Just notify the user.
-                if (e is ConnectionException) {
-                    toast(R.string.download_server_error, Toast.LENGTH_LONG)
-                } else if (e is AuthorizationException) {
-                    // nothing
-                } else {
-                    crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity,
-                        R.string.download_error, e)
-                }
-            }
         }
     }
 
