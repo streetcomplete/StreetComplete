@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
