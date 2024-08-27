@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.ktx.launch
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -91,7 +90,7 @@ class MainViewModelImpl(
         }
         selectedOverlayController.addListener(listener)
         awaitClose { selectedOverlayController.removeListener(listener) }
-    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, null)
+    }.stateIn(viewModelScope + IO, SharingStarted.Eagerly, null)
 
     override var hasShownOverlaysTutorial: Boolean
         get() = prefs.hasShownOverlaysTutorial
@@ -136,7 +135,7 @@ class MainViewModelImpl(
         send(prefs.autosync == Autosync.ON)
         val listener = prefs.onAutosyncChanged { trySend(it == Autosync.ON) }
         awaitClose { listener.deactivate() }
-    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, true)
+    }.stateIn(viewModelScope + IO, SharingStarted.Eagerly, true)
 
     override val unsyncedEditsCount: StateFlow<Int> = callbackFlow {
         var count = unsyncedChangesCountSource.getCount()
@@ -147,7 +146,7 @@ class MainViewModelImpl(
         }
         unsyncedChangesCountSource.addListener(listener)
         awaitClose { unsyncedChangesCountSource.removeListener(listener) }
-    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
+    }.stateIn(viewModelScope + IO, SharingStarted.Eagerly, 0)
 
     override val isUploading: StateFlow<Boolean> = callbackFlow {
         val listener = object : UploadProgressSource.Listener {
@@ -257,7 +256,7 @@ class MainViewModelImpl(
         val unsyncedEdits = if (isAutoSync) solvedEditsCount else 0
         val syncedEdits = if (isShowingStarsCurrentWeek) editCountCurrentWeek else editCount
         syncedEdits + unsyncedEdits
-    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
+    }.stateIn(viewModelScope + IO, SharingStarted.Eagerly, 0)
 
     override val locationState = MutableStateFlow(LocationState.ENABLED)
     override val mapCamera = MutableStateFlow<CameraPosition?>(null)

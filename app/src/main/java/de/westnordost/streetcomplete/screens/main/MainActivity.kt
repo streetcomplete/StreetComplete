@@ -206,7 +206,6 @@ class MainActivity :
 
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
-    private var selectedOverlay: Overlay? = null
 
     private var mapFragment: MainMapFragment? = null
 
@@ -797,15 +796,13 @@ class MainActivity :
         if (controlsViewModel.isConnected) {
             val downloadBbox = getDownloadArea() ?: return
             if (controlsViewModel.isUserInitiatedDownloadInProgress) {
-                let {
-                    AlertDialog.Builder(it)
-                        .setMessage(R.string.confirmation_cancel_prev_download_title)
-                        .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
-                            controlsViewModel.download(downloadBbox)
-                        }
-                        .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
-                        .show()
-                }
+                AlertDialog.Builder(this)
+                    .setMessage(R.string.confirmation_cancel_prev_download_title)
+                    .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
+                        controlsViewModel.download(downloadBbox)
+                    }
+                    .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
+                    .show()
             } else {
                 controlsViewModel.download(downloadBbox)
             }
@@ -889,16 +886,14 @@ class MainActivity :
     }
 
     private fun setIsNavigationMode(navigation: Boolean) {
-        val mapFragment = mapFragment ?: return
-        mapFragment.isNavigationMode = navigation
+        mapFragment?.isNavigationMode = navigation
         controlsViewModel.isNavigationMode.value = navigation
     }
 
     private fun setIsFollowingPosition(follow: Boolean) {
-        val mapFragment = mapFragment ?: return
-        mapFragment.isFollowingPosition = follow
+        mapFragment?.isFollowingPosition = follow
         controlsViewModel.isFollowingPosition.value = follow
-        if (follow) mapFragment.centerCurrentPositionIfFollowing()
+        if (follow) mapFragment?.centerCurrentPositionIfFollowing()
     }
 
     private fun getDownloadArea(): BoundingBox? {
@@ -972,17 +967,15 @@ class MainActivity :
     }
 
     private fun composeNote(pos: LatLon, hasGpxAttached: Boolean = false) {
-        val mapFragment = mapFragment ?: return
         showInBottomSheet(CreateNoteFragment.create(hasGpxAttached))
-        mapFragment.updateCameraPosition(300) {
+        mapFragment?.updateCameraPosition(300) {
             position = pos
             padding = getQuestFormInsets().toPadding()
         }
     }
 
     private fun onClickCreateTrack() {
-        val mapFragment = mapFragment ?: return
-        mapFragment.startPositionTrackRecording()
+        mapFragment?.startPositionTrackRecording()
         controlsViewModel.isRecordingTracks.value = true
     }
 
