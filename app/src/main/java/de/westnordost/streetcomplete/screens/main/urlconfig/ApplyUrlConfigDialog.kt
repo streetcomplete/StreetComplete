@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 
+/** Dialog that asks user for confirmation whether he wants to apply a preset with the given name */
 @Composable
 fun ApplyUrlConfigDialog(
     onDismissRequest: () -> Unit,

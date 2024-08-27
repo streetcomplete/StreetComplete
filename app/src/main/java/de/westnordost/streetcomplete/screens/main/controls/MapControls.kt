@@ -401,7 +401,7 @@ fun MapControls(
         HandleUrlConfig(
             urlConfig = config.urlConfig,
             presetNameAlreadyExists = config.alreadyExists,
-            onApplyUrlConfig = { viewModel.applyUrlConfig(config.urlConfig) }
+            onApplyUrlConfig = { viewModel.applyUrlConfig(it) }
         )
     }
     lastDownloadError?.let { error ->

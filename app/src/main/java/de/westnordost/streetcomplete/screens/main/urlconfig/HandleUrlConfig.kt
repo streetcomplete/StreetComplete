@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 
+/** Offer to apply the given url config */
 @Composable
 fun HandleUrlConfig(
     urlConfig: UrlConfig,
