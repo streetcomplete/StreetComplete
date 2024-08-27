@@ -359,8 +359,8 @@ class MainActivity :
 
     private fun handleUrlConfig() {
         if (intent.action != Intent.ACTION_VIEW) return
-        val data = intent.data ?: return
-        val config = urlConfigController.parse(data.toString()) ?: return
+        val data = intent.data?.toString() ?: return
+        val config = urlConfigController.parse(data) ?: return
 
         val alreadyExists = config.presetName == null || questPresetsSource.getByName(config.presetName) != null
         val name = config.presetName ?: getString(R.string.quest_presets_default_name)
@@ -386,8 +386,7 @@ class MainActivity :
 
     private fun handleGeoUri() {
         if (intent.action != Intent.ACTION_VIEW) return
-        val data = intent.data ?: return
-        if ("geo" != data.scheme) return
+        val data = intent.data?.toString() ?: return
         val geo = parseGeoUri(data) ?: return
         val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
         val pos = LatLon(geo.latitude, geo.longitude)
@@ -949,7 +948,7 @@ class MainActivity :
         val zoom = mapFragment?.cameraPosition?.zoom
         val uri = buildGeoUri(pos.latitude, pos.longitude, zoom)
 
-        val intent = Intent(Intent.ACTION_VIEW, uri)
+        val intent = Intent(Intent.ACTION_VIEW, uri.toUri())
         val otherMapAppInstalled = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
             .any { !it.activityInfo.packageName.equals(packageName) }
         if (otherMapAppInstalled) {
