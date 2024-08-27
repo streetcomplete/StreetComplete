@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationManagerCompat
 import androidx.core.net.toUri
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 
 fun Context.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
@@ -58,6 +59,12 @@ fun Context.sendEmail(to: String, subject: String, text: String? = null) {
         toast(R.string.no_email_client)
     }
 }
+
+fun Context.sendErrorReportEmail(errorReport: String) = sendEmail(
+    to = ApplicationConstants.ERROR_REPORTS_EMAIL,
+    subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
+    text = "Describe how to reproduce it here:\n\n\n\n$errorReport"
+)
 
 fun Context.openUri(uri: String): Boolean =
     try {

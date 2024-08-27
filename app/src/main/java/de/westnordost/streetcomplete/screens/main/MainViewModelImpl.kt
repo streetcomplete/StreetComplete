@@ -59,8 +59,27 @@ class MainViewModelImpl(
 
     /* error handling */
     override val lastCrashReport = MutableStateFlow<String?>(null)
-    override suspend fun popCrashReport(): String? = withContext(IO) {
-        crashReportExceptionHandler.popCrashReport()
+
+    override val lastDownloadError: StateFlow<Exception?> = callbackFlow {
+        val listener = object : DownloadProgressSource.Listener {
+            override fun onStarted() { trySend(null) }
+            override fun onError(e: Exception) { trySend(e) }
+        }
+        downloadProgressSource.addListener(listener)
+        awaitClose { downloadProgressSource.removeListener(listener) }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    override val lastUploadError: StateFlow<Exception?> = callbackFlow {
+        val listener = object : UploadProgressSource.Listener {
+            override fun onStarted() { trySend(null) }
+            override fun onError(e: Exception) {  trySend(e) }
+        }
+        uploadProgressSource.addListener(listener)
+        awaitClose { uploadProgressSource.removeListener(listener) }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
+
+    override suspend fun createErrorReport(error: Exception) = withContext(IO) {
+        crashReportExceptionHandler.createErrorReport(error)
     }
 
     /* intro */
@@ -196,24 +215,6 @@ class MainViewModelImpl(
     override fun upload() {
         uploadController.upload(isUserInitiated = true)
     }
-
-    override val lastDownloadError: StateFlow<Exception?> = callbackFlow {
-        val listener = object : DownloadProgressSource.Listener {
-            override fun onStarted() { trySend(null) }
-            override fun onError(e: Exception) { trySend(e) }
-        }
-        downloadProgressSource.addListener(listener)
-        awaitClose { downloadProgressSource.removeListener(listener) }
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
-
-    override val lastUploadError: StateFlow<Exception?> = callbackFlow {
-        val listener = object : UploadProgressSource.Listener {
-            override fun onStarted() { trySend(null) }
-            override fun onError(e: Exception) {  trySend(e) }
-        }
-        uploadProgressSource.addListener(listener)
-        awaitClose { uploadProgressSource.removeListener(listener) }
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     /* stars */
 

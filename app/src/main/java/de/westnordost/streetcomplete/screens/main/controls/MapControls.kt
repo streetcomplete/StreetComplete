@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
 import android.content.Intent
-import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -41,20 +40,18 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.AuthorizationException
-import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.messages.Message
-import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.screens.about.AboutActivity
+import de.westnordost.streetcomplete.screens.main.MainMenuDialog
 import de.westnordost.streetcomplete.screens.main.MainViewModel
-import de.westnordost.streetcomplete.screens.main.SendErrorReportDialog
-import de.westnordost.streetcomplete.screens.main.VersionBannedDialog
+import de.westnordost.streetcomplete.screens.main.RequestLoginDialog
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
+import de.westnordost.streetcomplete.screens.main.errors.LastCrash
+import de.westnordost.streetcomplete.screens.main.errors.LastDownloadError
+import de.westnordost.streetcomplete.screens.main.errors.LastUploadError
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
@@ -70,7 +67,7 @@ import de.westnordost.streetcomplete.ui.common.ZoomInIcon
 import de.westnordost.streetcomplete.ui.common.ZoomOutIcon
 import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
-import de.westnordost.streetcomplete.util.ktx.sendEmail
+import de.westnordost.streetcomplete.util.ktx.sendErrorReportEmail
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
 import kotlin.math.PI
@@ -141,10 +138,8 @@ fun MapControls(
     var showIntroTutorial by remember { mutableStateOf(false) }
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
-    var showUploadErrorDialog by remember { mutableStateOf(false) }
-    var showDownloadErrorDialog by remember { mutableStateOf(false) }
-    var showErrorDialog by remember { mutableStateOf(false) }
-    var shownVersionBanned by remember { mutableStateOf<String?>(null) }
+    var showLoginDialog by remember { mutableStateOf(false) }
+
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     val showEditHistorySidebar by editHistoryViewModel.isShowingSidebar.collectAsState()
 
@@ -165,19 +160,10 @@ fun MapControls(
         }
     }
 
-    fun sendErrorReportEmail(errorReport: String?) {
-        if (errorReport == null) return
-        context.sendEmail(
-            to = ApplicationConstants.ERROR_REPORTS_EMAIL,
-            subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
-            text = "Describe how to reproduce it here:\n\n\n\n$errorReport"
-        )
-    }
-
-    fun sendErrorReportEmail(error: Exception?) {
-        if (error == null) return
+    fun sendErrorReport(error: Exception) {
         coroutineScope.launch {
-            sendErrorReportEmail(viewModel.popCrashReport())
+            val report = viewModel.createErrorReport(error)
+            context.sendErrorReportEmail(report)
         }
     }
 
@@ -196,43 +182,6 @@ fun MapControls(
         else if (viewModel.teamModeChanged) {
             context.toast(R.string.team_mode_deactivated)
             viewModel.teamModeChanged = false
-        }
-    }
-
-    LaunchedEffect(lastCrashReport) {
-        if (lastCrashReport != null) showErrorDialog = true
-    }
-
-    LaunchedEffect(lastDownloadError) {
-        when (lastDownloadError) {
-            null -> {}
-            is ConnectionException -> {
-                context.toast(R.string.download_server_error, Toast.LENGTH_LONG)
-            }
-            is AuthorizationException -> {
-                context.toast(R.string.auth_error, Toast.LENGTH_LONG)
-            }
-            else -> {
-                showDownloadErrorDialog = true
-            }
-        }
-    }
-
-    LaunchedEffect(lastUploadError) {
-        when (val e = lastUploadError) {
-            null -> {}
-            is VersionBannedException -> {
-                shownVersionBanned = e.banReason
-            }
-            is ConnectionException -> {
-                context.toast(R.string.upload_server_error, Toast.LENGTH_LONG)
-            }
-            is AuthorizationException -> {
-                context.toast(R.string.auth_error, Toast.LENGTH_LONG)
-            }
-            else -> {
-                showUploadErrorDialog = true
-            }
         }
     }
 
@@ -446,35 +395,24 @@ fun MapControls(
         )
     }
 
-
-    if (shownVersionBanned != null) {
-        VersionBannedDialog(
-            onDismissRequest = { shownVersionBanned = null },
-            reason = shownVersionBanned
-        )
+    lastDownloadError?.let { error ->
+        LastDownloadError(lastError = error, onReportError = ::sendErrorReport)
+    }
+    lastUploadError?.let { error ->
+        LastUploadError(lastError = error, onReportError = ::sendErrorReport)
+    }
+    lastCrashReport?.let { report ->
+        LastCrash(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
     }
 
-    if (showUploadErrorDialog) {
-        SendErrorReportDialog(
-            onDismissRequest = { showUploadErrorDialog = false },
-            onConfirmed = { sendErrorReportEmail(lastUploadError) },
-            title = stringResource(R.string.upload_error)
-        )
-    }
-
-    if (showDownloadErrorDialog) {
-        SendErrorReportDialog(
-            onDismissRequest = { showDownloadErrorDialog = false },
-            onConfirmed = { sendErrorReportEmail(lastDownloadError) },
-            title = stringResource(R.string.download_error)
-        )
-    }
-
-    if (showErrorDialog) {
-        SendErrorReportDialog(
-            onDismissRequest = { showErrorDialog = false },
-            onConfirmed = { sendErrorReportEmail(lastCrashReport) },
-            title = stringResource(R.string.crash_title)
+    if (showLoginDialog) {
+        RequestLoginDialog(
+            onDismissRequest = { showLoginDialog = false },
+            onConfirmed = {
+                val intent = Intent(context, UserActivity::class.java)
+                intent.putExtra(UserActivity.EXTRA_LAUNCH_AUTH, true)
+                context.startActivity(intent)
+            }
         )
     }
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main
+package de.westnordost.streetcomplete.screens.main.errors
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
