@@ -31,6 +31,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.compose.ui.geometry.Offset
 import androidx.core.graphics.Insets
+import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.core.text.parseAsHtml
 import androidx.fragment.app.Fragment
@@ -78,6 +79,7 @@ import de.westnordost.streetcomplete.data.upload.UploadProgressSource
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.UserLoginController
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
@@ -184,7 +186,7 @@ class MainActivity :
     private val elementEditsSource: ElementEditsSource by inject()
     private val noteEditsSource: NoteEditsSource by inject()
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    private val userLoginController: UserLoginController by inject()
+    private val userLoginSource: UserLoginSource by inject()
     private val urlConfigController: UrlConfigController by inject()
     private val questPresetsSource: QuestPresetsSource by inject()
     private val prefs: Preferences by inject()
@@ -398,7 +400,7 @@ class MainActivity :
 
     private suspend fun ensureLoggedIn() {
         if (!questAutoSyncer.isAllowedByPreference) return
-        if (userLoginController.isLoggedIn) return
+        if (userLoginSource.isLoggedIn) return
 
         // new users should not be immediately pestered to login after each change (#1446)
         if (unsyncedChangesCountSource.getCount() < 3 || dontShowRequestAuthorizationAgain) return
@@ -446,8 +448,6 @@ class MainActivity :
                        report. Just notify the user. */
                     toast(R.string.upload_server_error, Toast.LENGTH_LONG)
                 } else if (e is AuthorizationException) {
-                    // delete secret in case it failed while already having a token -> token is invalid
-                    userLoginController.logOut()
                     RequestLoginDialog(this@MainActivity).show()
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity,
@@ -468,8 +468,7 @@ class MainActivity :
                 if (e is ConnectionException) {
                     toast(R.string.download_server_error, Toast.LENGTH_LONG)
                 } else if (e is AuthorizationException) {
-                    // delete secret in case it failed while already having a token -> token is invalid
-                    userLoginController.logOut()
+                    // nothing
                 } else {
                     crashReportExceptionHandler.askUserToSendErrorReport(this@MainActivity,
                         R.string.download_error, e)
