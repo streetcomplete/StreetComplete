@@ -1393,4 +1393,9 @@
     <string name="action_manage_presets_summary">"Під яким іменем зберігається вибраний нижче квест."</string>
     <string name="quest_multiselect_hint">"Виберіть все, що підходить:"</string>
     <string name="quest_barrier_opening_width_gate">"Яка тут ширина проходу?"</string>
+    <string name="bridge">"на мосту"</string>
+    <string name="about_title_intro">"Показати вступ"</string>
+    <string name="about_category_help">"Справка"</string>
+    <string name="quest_camp_power_supply_hint">"Це можуть бути розетки безпосередньо на території табору, розетки в службовій будівлі, доступній для гостей, спеціальна станція для зарядки телефонів, ноутбуків тощо."</string>
+    <string name="quest_barrier_opening_width_bollard">"Яка найширша щілина, через яку тут можна пройти?"</string>
 </resources>

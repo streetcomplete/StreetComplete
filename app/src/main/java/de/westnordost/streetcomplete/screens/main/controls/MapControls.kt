@@ -133,7 +133,7 @@ fun MapControls(
     val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
     val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
 
-    val isCreateButtonEnabled by remember { derivedStateOf { (mapCamera?.zoom ?: 0.0) >= 18.0 } }
+    val isCreateButtonEnabled by remember { derivedStateOf { (mapCamera?.zoom ?: 0.0) >= 17.0 } }
 
     var showOverlaysDropdown by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }

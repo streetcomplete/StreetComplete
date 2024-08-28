@@ -4,7 +4,7 @@
 AR:
   - Municipalidad de Posadas # 2
 AT:
-  - Humana # 127
+  - Humana # 128
   - Caritas # 39
   - Kolping # 32
   - Holding Graz # 25
@@ -18,14 +18,15 @@ AT:
   - Linz AG Abfall # 7
   - Wiener Rotes Kreuz # 6
   - Graz Holding # 6
+  - WAMS # 4
   - Stadt Wien / Kolping # 4
   - GABL # 4
   - humana # 3
-  - WAMS # 3
   - Verein Humana # 3
   - Pongauer ArbeitsProjekt # 3
   - Öpula # 2
   - Verein Wams # 2
+  - Textil Verwertung GmbH # 2
   - Stadtbetriebe Steyr # 2
   - Stadt Graz # 2
   - PAP # 2
@@ -35,7 +36,7 @@ AU-NSW:
   - Dankha Pty Ltd # 3
   - 1-World Charity Shops # 3
 BE-BRU:
-  - Les Petits Riens - Spullenhulp # 85
+  - Les Petits Riens - Spullenhulp # 86
   - Oxfam # 19
   - Terre # 14
   - Bruxelles-Propreté - Net Brussel # 4
@@ -46,16 +47,16 @@ BE-VLG:
   - Wereld Missie Hulp # 64
   - Limburg.net # 38
   - Limburg.Net # 36
+  - De Kringwinkel # 26
   - Vlaams Internationaal Centrum # 25
-  - De Kringwinkel # 25
-  - Vlaams Inzamelcentrum Textiel # 21
+  - Vlaams Inzamelcentrum Textiel # 22
   - Curitas n.v. # 18
   - V.H.S. Europ # 17
   - Curitas # 15
-  - Kringwinkel # 10
+  - Kringwinkel # 11
   - IVIO # 10
   - WMH # 8
-  - IVAREM # 7
+  - IVAREM # 8
   - Caritas n.v. # 7
   - ivio # 5
   - Oxfam # 5
@@ -74,26 +75,26 @@ BE-VLG:
   - De Bremberg # 2
   - Curitas N.V. # 2
 BE-WAL:
-  - Terre # 51
+  - Terre # 54
   - IDELUX-Environnement # 23
   - Terre ASBL # 16
-  - Oxfam # 10
+  - Oxfam # 11
   - Terre asbl # 6
   - Les Petits Riens # 6
   - Oxfam-Solidarité # 5
   - Les Petits Riens - Spullenhulp # 5
+  - Caritas n.v. # 5
   - ASBL Terre # 4
   - A.S.B.L. La Chaîne du Cœur # 4
-  - Caritas n.v. # 3
   - Les Petits Riens-Spullenhulp # 2
   - Curitas # 2
   - BEP # 2
   - ASBL la chaîne du cœur # 2
 BG:
-  - TexCycle # 50
+  - TexCycle # 52
   - БЧК # 30
+  - TEXAID Bulgaria # 16
   - M-Texx # 12
-  - TEXAID Bulgaria # 11
 BY:
   - ЖКХ г. Пинска # 4
 CA-AB:
@@ -113,17 +114,18 @@ CH:
   - Texaid # 142
   - Tell-Tex # 20
   - ERZ # 18
-  - Contex # 15
+  - Contex # 16
+  - ZAKU # 15
   - Ville de Geneve # 14
   - Coop # 7
   - Stadt Dietikon # 6
   - coop # 5
   - TexAid # 4
+  - TEXAID # 4
   - Schweizerisches Rotes Kreuz # 4
   - Schweizer Berghilfe # 4
   - Einwohnergemeinde Küttigen # 4
   - Caritas # 4
-  - TEXAID # 3
   - SOLIDAY Schweiz # 3
   - Lidl # 3
   - Croix-Rouge fribourgeoise # 3
@@ -134,6 +136,7 @@ CH:
   - Textura # 2
   - Stadt Luzern # 2
   - Stadt Bülach # 2
+  - Schweizerischer Blindenbund # 2
   - Habitants # 2
   - Gemeinde Zollikofen # 2
   - Gemeinde Wettingen # 2
@@ -144,12 +147,13 @@ CH:
 CZ:
   - Kloktex # 76
   - KLOK.TEX # 22
-  - Textileco # 14
   - Diakonie Broumov # 13
-  - TextilEco # 7
+  - Textileco # 11
+  - TextilEco # 8
   - Služby města Český Krumlov s.r.o. # 7
   - KlokTex # 7
   - Klok-Tex # 7
+  - TextilEco a.s. # 6
   - Obec Tuchlovice # 5
   - Helptex # 5
   - recyklujemetextil.cz # 4
@@ -174,64 +178,64 @@ CZ:
   - Diecezni charita Brno # 2
   - Charita Česká republika # 2
 DE:
-  - Deutsches Rotes Kreuz # 1062
+  - Deutsches Rotes Kreuz # 1074
   - Loop # 352
-  - Malteser # 301
-  - Aktion Hoffnung # 218
-  - DRK # 205
-  - Humana # 194
-  - Kolping # 136
+  - Malteser # 303
+  - Aktion Hoffnung # 219
+  - DRK # 206
+  - Humana # 195
+  - Kolping # 137
   - Abfallwirtschaftsgesellschaft Wuppertal # 135
   - ALBA Braunschweig GmbH # 111
-  - Baliz Textilwerke # 101
-  - Bayerisches Rotes Kreuz # 95
-  - TEXAID Deutschland # 93
+  - Baliz Textilwerke # 100
+  - Bayerisches Rotes Kreuz # 97
+  - TEXAID Deutschland # 96
+  - Abfallwirtschaftsbetrieb München # 96
   - Deutsches Rotes Kreuz e.V. # 93
   - GEB # 82
-  - Stadt Karlsruhe # 79
-  - TEXAID # 71
+  - Stadt Karlsruhe # 80
+  - TEXAID # 70
   - SOEX Recycling Germany GmbH # 69
   - USB Bochum # 68
-  - Abfallwirtschaftsbetrieb München # 67
-  - HUMANA Kleidersammlung GmbH # 65
+  - HUMANA Kleidersammlung GmbH # 66
   - Malteser Hilfsdienst e.V. # 64
   - TEXAID Collection GmbH # 63
   - FWS # 62
   - AWISTA # 62
   - AHE;Deutsches Rotes Kreuz # 62
   - Texaid # 58
+  - AWO # 58
   - GSAK # 57
-  - AWO # 56
   - REMONDIS # 54
   - Malteser Hilfsdienst # 54
-  - Eurocycle GmbH # 53
-  - HUMANA # 52
-  - SOEX # 49
+  - Eurocycle GmbH # 54
+  - HUMANA # 53
   - AWB Köln # 49
+  - AWB # 49
+  - SOEX # 48
   - Arbeiter-Samariter-Bund # 48
-  - AWB # 48
   - Zweckverband für Abfallwirtschaft Kempten # 46
+  - Rhenus Logistics # 45
+  - Lorenz Wittmann GmbH # 45
   - Technische Betriebe Velbert AöR # 44
-  - Rhenus Logistics # 44
-  - Lorenz Wittmann GmbH # 44
   - S.K.C. Textilrecycling KG # 40
-  - Wittmann # 37
+  - Wittmann # 38
+  - AHE # 38
   - East-West Textilrecycling Kursun # 37
-  - AHE # 37
   - Göttinger Entsorgungsbetriebe # 36
+  - ZKE # 35
   - CityGreenPoint # 35
   - AWG # 35
   - ABV Kreis Viersen # 35
-  - ZKE # 34
   - Vorwerker Diakonie # 34
-  - bonnorange AöR # 33
+  - Landkreis Prignitz # 32
   - GAK Textilrecycling GmbH # 32
   - hoelp # 31
-  - Landkreis Prignitz # 29
-  - FWS Altkleider Container Service # 29
+  - bonnorange AöR # 31
+  - FWS Altkleider Container Service # 31
   - Humana Kleidersammlung GmbH # 26
   - GOA # 26
-  - Däsa Wiederverwertungs GmbH # 25
+  - Däsa Wiederverwertungs GmbH # 26
   - Darbo Recycling # 24
   - Awista # 24
   - Stadt Kamp-Lintfort # 23
@@ -255,49 +259,49 @@ DE:
   - Diakoniewerk Essen # 17
   - DESWOS # 17
   - BreEnt GmbH # 17
+  - aktion hoffnung # 16
+  - Versero GmbH # 16
   - Grotex Recycling GmbH # 16
+  - Die Johanniter # 16
   - Bethel # 16
-  - BRK # 16
   - ASB # 16
   - ABV Kreis Viersen, Stadt Viersen # 16
-  - aktion hoffnung # 15
   - Wirtschaftsbetriebe Duisburg # 15
-  - Versero GmbH # 15
   - Stadtreinigung Leipzig # 15
   - Stadt Stuttgart # 15
   - S.K.C. # 15
-  - Die Johanniter # 15
   - Diakonie # 15
+  - BRK # 15
   - Aktion Friedensdorf # 15
   - Aktex Rohstoff-Recycling Nord # 15
   - Abfall- und Wertstofflogistik Neuss GmbH (AWL) # 15
   - Technische Betriebe Remscheid;AWISTA LOGISTIK # 14
   - Remondis # 14
   - Gemeinde Bedburg-Hau # 14
+  - City Green Point Deutschland GmbH # 14
   - AWISTA GmbH # 14
   - Stadtwerke Brühl # 13
   - DRK Kreisverband Bonn e.V. # 13
-  - City Green Point Deutschland GmbH # 13
   - unknown # 12
   - Rotes Kreuz # 12
   - Kleine Patienten in Not e.V. # 12
   - K + K Textilrecycling GmbH # 12
   - Deutsches Rotes Kreuz Kreisverband Saarbrücken e.V. # 12
+  - DLRG # 12
   - CityGreenPoint Deutschland GmbH # 12
   - Caritas # 12
   - Isevtex # 11
+  - Hezex Textilverwertung GmbH # 11
   - Faircollect # 11
   - EAD # 11
-  - DLRG # 11
-  - Brotex # 11
   - BTV Lohsa # 11
   - AWS # 11
   - illegal # 10
   - Toruntex GmbH # 10
   - Sammelbüro Uetze # 10
   - Maltheser Hilfsdienst # 10
-  - Hezex Textilverwertung GmbH # 10
   - Entsorgung Herne # 10
+  - Brotex # 10
   - TEXAID Collection # 9
   - Stadtreinigungs-, Transport- und Baubetrieb Lüdenscheid # 9
   - S.K.C # 9
@@ -305,9 +309,9 @@ DE:
   - Baliz # 9
   - Abfallwirtschaft Landkreis Böblingen # 9
 DK:
-  - Røde Kors # 24
+  - Røde Kors # 26
   - Red Barnet # 11
-  - Dansk Røde Kors # 9
+  - Dansk Røde Kors # 10
   - Frelsens Hær # 5
   - Folkekirkens Nødhjælp # 4
   - Red Cross # 3
@@ -316,10 +320,12 @@ DK:
   - Red barnet # 2
   - Københavns Kommune # 2
   - Folkekirkens nødhjælp # 2
+  - Blå Kors # 2
 EE:
   - Riidepunkt # 4
   - Tallinna Jäätmekeskus # 2
   - TJT # 2
+  - Riidepunkt MTÜ # 2
 ES-AN:
   - Madre Coraje # 146
   - Humana # 4
@@ -379,18 +385,18 @@ FI:
   - Pelastusarmeija # 2
   - Emmy # 2
 FR:
-  - Le Relais # 1441
-  - Toulouse Métropole # 204
+  - Le Relais # 1454
+  - Toulouse Métropole # 202
   - Le relais # 72
   - Le Foyer Notre-Dame des Sans-Abri # 66
   - écotextile # 39
   - SITCOM - Côte sud des Landes # 36
-  - Chrysalide # 35
+  - Chrysalide # 36
   - AMOS # 32
   - Actifrip # 27
   - Écotextile # 25
-  - La Chiffo # 23
-  - Apivet # 23
+  - La Chiffo # 25
+  - Apivet # 25
   - www.lerelais.org # 22
   - Solidarité Textiles # 20
   - Tremplin # 19
@@ -467,7 +473,7 @@ FR:
   - Association d'aide aux enfants atteints de leucemie # 3
   - Abi29 # 3
 GB-ENG:
-  - The Salvation Army # 67
+  - The Salvation Army # 68
   - Salvation Army # 45
   - TRAID # 29
   - The Fire Fighters Charity # 24
@@ -484,9 +490,9 @@ GB-ENG:
   - Traid # 5
   - Rushcliffe Borough Council # 5
   - College for International Co-operation and Development # 5
+  - The Firefighters Charity # 4
   - South Norfolk Council # 4
   - Wilcox # 3
-  - The Firefighters Charity # 3
   - Tesco # 3
   - Surrey Heath Borough Council # 3
   - Sainsbury's # 3
@@ -525,6 +531,7 @@ GB-NIR:
 GB-SCT:
   - The Salvation Army # 5
   - Salvation Army # 4
+  - The Fire Fighters Charity # 2
   - Fife Council # 2
 GE:
   - Emmaus Geo # 5
@@ -537,6 +544,8 @@ GR:
   - Δήμος Κέρκυρας # 6
   - Δήμος Ζωγράφου # 6
   - Δήμος Γαλατσίου # 2
+HU:
+  - Textrade Kft. # 2
 IE:
   - Clothes Pod # 6
   - Cancer Fund for Children # 5
@@ -560,6 +569,7 @@ IT:
   - Caritas # 14
   - AMIU # 9
   - Aamps # 7
+  - Veritas # 6
   - Amsa # 6
   - Cooperativa Sociale Lavoro e Solidarietà # 5
   - Consac # 5
@@ -567,7 +577,6 @@ IT:
   - Umanitaria Padana onlus # 4
   - HERA # 4
   - Exodus # 4
-  - Veritas # 3
   - Profiltek # 3
   - Hera # 3
   - HUMANA # 3
@@ -585,7 +594,7 @@ IT-36:
   - Caritas Diocesana # 4
   - Caritas # 3
 IT-82:
-  - Cannone srl # 99
+  - Cannone srl # 96
   - Cannone # 5
 JE:
   - Government of Jersey # 3
@@ -599,8 +608,8 @@ LV:
   - CleanR # 4
 NL:
   - Avalex # 54
-  - Sympany # 29
-  - Leger des Heils # 24
+  - Sympany # 30
+  - Leger des Heils # 25
   - gemeente Zoetermeer # 21
   - ROVA # 16
   - Den Haag # 15
@@ -630,6 +639,7 @@ NL:
   - Gemeente Tilburg # 2
   - Gemeente Rotterdam # 2
   - DAR nv # 2
+  - Circulus # 2
   - Bim Bam # 2
   - Avri # 2
   - 2switch # 2
@@ -650,7 +660,7 @@ NO:
 NZ:
   - Child Cancer Foundation # 2
 PL:
-  - Polski Czerwony Krzyż # 394
+  - Polski Czerwony Krzyż # 403
   - Fundacja z Sercem # 43
   - Fundacja Eco Textil # 32
   - Fundacja Uśmiechu # 19
@@ -670,7 +680,6 @@ PL:
   - Zachodniopomorskie Towarzystwo Przyjaciół Dzieci # 2
   - Polski czerwony Krzyż # 2
   - Polski Czerwony krzyż # 2
-  - PCK # 2
   - Fundacja ECO TEXTIL # 2
   - F.H. Tesso # 2
 PT:
@@ -699,6 +708,7 @@ RU:
   - Лепта # 7
   - Перемолка # 6
   - Второе дыхание # 4
+  - ООО "ЛАУТ РЕСАЙКЛИНГ" # 3
   - Спасибо # 2
 SE:
   - Human Bridge # 13
@@ -710,7 +720,7 @@ SE:
 SI:
   - Humana # 6
 SK:
-  - Ekocharita # 35
+  - Ekocharita # 36
   - EKOCHARITA # 19
   - HUMANA # 17
   - KOSIT, a.s. # 16

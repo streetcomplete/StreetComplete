@@ -53,7 +53,7 @@ cs:
    Beavel: 37
    Vladankudlac: 19
 da: 
-   ERyPTION: 31586
+   ERyPTION: 31846
    Dennis Kjær Jensen: 5707
    Soren: 3393
    Leonora: 2496
@@ -66,15 +66,15 @@ da:
    Youri Lima: 13
    Freso: 12
 de: 
-   Flo Edelmann: 16495
+   Flo Edelmann: 16723
    Mr. Update: 7658
-   mcliquid: 2440
+   mcliquid: 2356
    legofahrrad: 1906
    Pixelcode: 1738
    papojari: 742
    Mopshase12: 451
    Lenni: 427
-   Gncsimm: 292
+   Gncsimm: 237
    Sebastianthein: 174
    Wielandbreitfeld: 166
    Tobias Preuss: 157
@@ -98,7 +98,7 @@ de:
    Alexander Romme: 8
 el: 
    makmar: 40237
-   jimkats: 12230
+   jimkats: 12516
    Nelli.k.21: 613
    lorrs: 341
    François l'Olonnais: 323
@@ -122,7 +122,7 @@ en-GB:
    arrival-spring: 2682
    Peter Newman: 2580
    Andi Chandler: 1799
-   legofahrrad: 1313
+   legofahrrad: 1242
    Jay Turner: 992
    Andrew: 488
    Chris Lane: 310
@@ -193,7 +193,7 @@ eu:
    Egoitz: 42
 fa: 
    Mohammad Mehdi Maliki: 16778
-   ARA2020: 14552
+   ARA2020: 14558
    Iman: 11791
    Ahmad: 675
    Mohammed: 497
@@ -203,11 +203,11 @@ fa:
    Goudarz Jafari: 29
    Saeed: 13
 fi: 
-   Rik: 17312
+   Rik: 17563
    Jiri Grönroos: 9570
    OpenKartat: 5434
    Aleksi.klasila: 4478
-   Jarmo Sutinen: 2682
+   Jarmo Sutinen: 2612
    Juhana Uuttu: 2569
    Harri: 1069
    Jimi Viita-aho: 1067
@@ -292,7 +292,7 @@ he:
    Slava Sukhochev: 3226
    Ilya Kogan: 390
 hr: 
-   Matija Nalis: 47891
+   Matija Nalis: 48118
    Nemanja Bračko: 59
    Mario: 9
 hu: 
@@ -323,7 +323,7 @@ id:
    Wijayaa16d: 355
    Suryamudti0128: 17
 it: 
-   Mannivu: 16356
+   Mannivu: 16307
    Marco: 9622
    napo: 6220
    mircozorzo: 3057
@@ -334,14 +334,14 @@ it:
    naposm: 771
    frafra: 589
    Dario: 584
-   Dizro: 488
    NonnEmilia: 480
    Livio: 472
    albertopasqualetto: 459
+   Dizro: 422
    Giacomo Longo: 395
+   Massimo: 341
    Maurizio: 315
    Simone Saviolo: 232
-   Massimo: 170
    hakuchi: 166
    pino: 161
    Martino: 122
@@ -627,11 +627,11 @@ uk:
    slayzex: 1713
    zimirrrr: 1028
    Github: 810
+   mike140: 634
    ANT Berezhnyi: 577
    Asdfpoiu: 546
    Sergiy Kozyr: 432
    Mihajlo0743: 403
-   mike140: 391
    BrightOne: 250
    Андрей: 247
    Victor: 132

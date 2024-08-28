@@ -1398,4 +1398,5 @@
     <string name="quest_multiselect_hint">"همه مواردی را که صدق می‌کند انتخاب کنید:"</string>
     <string name="quest_barrier_opening_width_gate">"عرض افتتاحیه در اینجا چقدر است؟"</string>
     <string name="bridge">"روی پل"</string>
+    <string name="about_category_help">"راهنما"</string>
 </resources>

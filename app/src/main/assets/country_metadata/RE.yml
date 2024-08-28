@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [La Banque Postale, Crédit Agricole, BFC, La Poste, BNP Paribas, Société Générale, CA, Bred, BRED]
+atmOperators: [La Banque Postale, Crédit Agricole, BFC, La Poste, BNP Paribas, Société Générale, Crédit agricole, CA, Bred, BRED]
 chargingStationOperators: [Freshmile SAS, Renault, Leclerc]
 clothesContainerOperators: [TiTang Recup]
 officialLanguages: [fr]
