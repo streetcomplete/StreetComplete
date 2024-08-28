@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AnswerItem
 
 class AddTreeLeafTypeForm : AImageListQuestForm<TreeLeafType, TreeLeafType>() {
 
@@ -10,4 +12,10 @@ class AddTreeLeafTypeForm : AImageListQuestForm<TreeLeafType, TreeLeafType>() {
     override fun onClickOk(selectedItems: List<TreeLeafType>) {
         applyAnswer(selectedItems.single())
     }
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_leafType_tree_is_just_a_stump) {
+            applyAnswer(NotTreeButStump, true)
+        },
+    )
 }

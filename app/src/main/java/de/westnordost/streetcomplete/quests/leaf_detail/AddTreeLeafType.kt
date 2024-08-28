@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddTreeLeafType : OsmFilterQuestType<TreeLeafType>() {
+class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>() {
     override val elementFilter = """
         nodes with
           natural = tree
@@ -31,7 +31,10 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafType>() {
 
     override fun createForm() = AddTreeLeafTypeForm()
 
-    override fun applyAnswerTo(answer: TreeLeafType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["leaf_type"] = answer.osmValue
+    override fun applyAnswerTo(answer: TreeLeafTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is TreeLeafType -> tags["leaf_type"] = answer.osmValue
+            NotTreeButStump -> tags["natural"] = "tree_stump"
+        }
     }
 }
