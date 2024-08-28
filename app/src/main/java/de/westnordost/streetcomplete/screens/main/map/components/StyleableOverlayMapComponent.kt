@@ -183,6 +183,7 @@ class StyleableOverlayMapComponent(
             ))
             .withProperties(
                 iconImage(get("icon")),
+                iconSize(interpolate(linear(), zoom(), stop(17, 0.5f), stop(19, 1f))),
                 textField(get("label")),
                 textFont(arrayOf("Roboto Regular")),
                 textAnchor(Property.TEXT_ANCHOR_TOP),

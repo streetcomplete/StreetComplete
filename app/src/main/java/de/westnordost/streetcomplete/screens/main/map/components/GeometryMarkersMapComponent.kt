@@ -63,6 +63,7 @@ class GeometryMarkersMapComponent(
             .withProperties(
                 iconColor("#D140D0"),
                 iconImage(get("icon")),
+                iconSize(interpolate(linear(), zoom(), stop(17, 0.5f), stop(19, 1f))),
                 iconAllowOverlap(true),
                 textField(get("label")),
                 textAnchor(Property.TEXT_ANCHOR_TOP),
