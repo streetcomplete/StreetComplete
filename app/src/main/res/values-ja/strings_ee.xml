@@ -507,4 +507,18 @@
     <string name="quest_seating_garden">庭園空間内</string>
     <string name="quest_construction_value">「construction=…」を定めるか、分からない場合は空のままにします</string>
     <string name="quest_construction">…の日時まで建設中です</string>
+    <string name="quest_crossing_marking_value_no">なし</string>
+    <string name="quest_crossing_marking_value_ladder_skewed">段が斜めの梯子</string>
+    <string name="quest_surface_value_chipseal">チップシール</string>
+    <string name="quest_crossing_marking_value_zebra_paired">二連の縞模様</string>
+    <string name="quest_crossing_marking_value_zebra">縞模様</string>
+    <string name="quest_crossing_marking_value_dashes">破線</string>
+    <string name="quest_crossing_marking_value_dots">点線</string>
+    <string name="quest_crossing_marking_value_zebra_bicolour">二色の縞模様</string>
+    <string name="quest_crossing_marking_value_zebra_double">二重の縞模様</string>
+    <string name="quest_crossing_marking_value_ladder_paired">二連段の梯子</string>
+    <string name="quest_crossing_marking_value_ladder">梯子</string>
+    <string name="quest_crossing_marking_value_zebra_dots">縞模様と点線</string>
+    <string name="quest_crossing_marking_value_pictograms">ピクトグラム(絵文字)</string>
+    <string name="quest_crossing_marking_value_lines">横断歩道外側に隣接する線</string>
 </resources>

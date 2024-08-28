@@ -576,4 +576,9 @@
     <string name="quest_sacScale_five_description">Terreno expuesto y exigente. Puede incluir trepadas por rocas escarpadas, glaciares y campos de nieve con riesgo de deslizamiento.</string>
     <string name="quest_sacScale_six">T6 - Senderismo alpino difícil</string>
     <string name="quest_sacScale_six_description">Exposición severa. Terreno escarpado difícil. Glaciares con alto riesgo de deslizamiento.</string>
+    <string name="pref_quest_pedestrian_crossing_markings_extended">Habilitar la extensión de \"¿Este cruce tiene marcas en el suelo?\", permite definir el estilo de las marcas del cruce</string>
+    <string name="quest_surface_value_chipseal">Chipseal</string>
+    <string name="quest_crossing_marking_value_no">No</string>
+    <string name="quest_crossing_marking_value_zebra">Cebra</string>
+    <string name="quest_crossing_marking_value_lines">Líneas</string>
 </resources>

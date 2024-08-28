@@ -391,4 +391,5 @@
     <string name="quest_maxheight_answer_noSign_question_unclear">Невідомо</string>
     <string name="quest_maxheight_answer_noSign_question_no">Високі вантажівки не проїдуть</string>
     <string name="action_all_quests">Показати всі квести</string>
+    <string name="quest_outdoor_seating_name_title">Які місця на вулиці є в цьому закладі?</string>
 </resources>
