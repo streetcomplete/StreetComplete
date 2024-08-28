@@ -6,7 +6,7 @@
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Anzeige"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Alle Hinweise anzeigen"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Hinweise trotzdem anzeigen"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Hinweise anzeigen"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Hinweise ignorieren"</string>
     <string name="map_btn_gps_tracking">"Mir folgen"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-Mitwirkende"</string>
@@ -498,7 +498,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="pref_title_theme_select">"Design"</string>
     <string name="theme_light">"Hell"</string>
     <string name="theme_dark">"Dunkel"</string>
-    <string name="theme_system_default">"Systemvorgabe"</string>
+    <string name="theme_system_default">"System­vorgabe"</string>
     <string name="action_open_location">"Standort in einer anderen App öffnen"</string>
     <string name="map_application_missing">"Keine andere Kartenanwendung installiert"</string>
     <string name="label_housenumber">"Hausnummer"</string>
@@ -947,7 +947,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_barrier_bicycle_type_single">"Durchgang zwischen Barrieren"</string>
     <string name="quest_barrier_bicycle_type_double">"Schikane – Barriere auf beiden Seiten"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Schikane – mehr als zwei Barrieren"</string>
-    <string name="language_default">"Systemvorgabe"</string>
+    <string name="language_default">"System­vorgabe"</string>
     <string name="on_floor">"in Stockwerk %s"</string>
     <string name="select_street_parking_orientation">"Wähle die Ausrichtung zur Fahrbahn:"</string>
     <string name="select_street_parking_position">"Wähle Position:"</string>
@@ -1405,6 +1405,6 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="bridge">"auf Brücke"</string>
     <string name="about_title_intro">"Einführung zeigen"</string>
     <string name="about_category_help">"Hilfe"</string>
-    <string name="quest_camp_power_supply_hint">"Das könnten Steckdosen direkt im Campingbereich sein, Steckdosen in einem für Gäste zugänglichen Betriebsgebäude sein, eine dedizierte Ladestation für Telefone, Laptops, usw. sein"</string>
-    <string name="quest_barrier_opening_width_bollard">"Was ist die breiteste Lücke durch die man hier durchkommt?"</string>
+    <string name="quest_camp_power_supply_hint">"Das könnten Steckdosen direkt im Campingbereich sein, Steckdosen in einem für Gäste zugänglichen Betriebsgebäude, eine dedizierte Ladestation für Telefone, Laptops, usw."</string>
+    <string name="quest_barrier_opening_width_bollard">"Was ist die breiteste Lücke, durch die man hier durchkommt?"</string>
 </resources>

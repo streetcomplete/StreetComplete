@@ -124,7 +124,7 @@ Questa app trova dati da verificare e da completare vicino a te e li mostra su u
 Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo nome senza aver bisogno di utilizzare un altro editor."</string>
     <string name="quest_name_answer_noName">"Non ha un nome…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Confermi la mancanza di un nome?"</string>
-    <string name="quest_name_noName_confirmation_positive">"Confermo. Nessun nome"</string>
+    <string name="quest_name_noName_confirmation_positive">"Confermo, nessun nome"</string>
     <string name="quest_openingHours_add_times">"Aggiungi orari di apertura"</string>
     <string name="crash_message">"Inviare segnalazione dell'errore allo sviluppatore?"</string>
     <string name="crash_title">"Oh no, l'ultima volta StreetComplete è crashato!"</string>
@@ -1363,7 +1363,7 @@ Troverai le informazioni sulle donazioni sul nostro sito o sulla home del proget
     <string name="quest_isAmenityIndoor_outside_covered">"Non dentro, ma coperto"</string>
     <string name="lit_value_unsupported">"Tipo di illuminazione non selezionabile in questa app"</string>
     <string name="quest_generic_otherAnswers2">"Uh…"</string>
-    <string name="quest_pedestrian_crossing_signals2">"Ci sono segnali del traffico che indicano quando attraversare qui?"</string>
+    <string name="quest_pedestrian_crossing_signals2">"Ci sono semafori che indicano quando attraversare qui?"</string>
     <string name="quest_moped_access_title">"C'è un cartello che indica l'accesso ai ciclomotori su questo percorso ciclabile?"</string>
     <string name="quest_moped_access_allowed">"Non c'è alcun cartello"</string>
     <string name="quest_moped_access_designated">"C'è un cartello che indica questo percorso ciclabile per i ciclomotori"</string>
@@ -1381,7 +1381,7 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_parcel_locker_brand">"Di che marca è questo punto pacchi?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"La linea elettrica è attaccata all'edificio"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"nessuno, ma un cartello permette il transito ciclabile sul marciapiede"</string>
-    <string name="separate_cycleway_no_signed">"Un cartello proibisce esplicitamente le bicilette"</string>
+    <string name="separate_cycleway_no_signed">"Un cartello proibisce esplicitamente le biciclette"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Percorso pedonale, ma un cartello permette le biciclette"</string>
     <string name="quest_bicycle_parking_type_floor">"Area dedicata"</string>
     <string name="link_osmapp_description">"Mappa con diversi livelli, dall'arrampicata agli sci"</string>
@@ -1392,4 +1392,6 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="about_category_contribute">"Contribuisci"</string>
     <string name="pref_category_quests">"Missioni"</string>
     <string name="pref_title_language_select2">"Lingua"</string>
+    <string name="questList_disabled_by_default">"Disabilitato per impostazione predefinita"</string>
+    <string name="about_category_help">"Aiuto"</string>
 </resources>

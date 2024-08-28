@@ -1169,7 +1169,7 @@ Tee sama toiselle puolelle mikäli tarpeellista."</string>
     <string name="default_disabled_msg_overlay">"Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska tarjolla on taso, jota käyttämällä tähän liittyvää tietoa on mahdollista syöttää ja päivittää tehokkaammalla tavalla."</string>
     <string name="quest_camp_drinking_water_title">"Onko juomavesi ilmaista leiriytyjille täällä?"</string>
     <string name="quest_camp_shower_title">"Onko täällä suihkuja?"</string>
-    <string name="quest_camp_power_supply_title">"Voivatko asiakkaat ladata heidän puhelimiaan, tietokoneita jne täällä?"</string>
+    <string name="quest_camp_power_supply_title">"Onko täällä pistorasioita vieraille?"</string>
     <string name="quest_camp_type_title">"Kuka saa leiriytyä täällä?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Sekä teltat että matkailuautot, matkailuvaunut, ..."</string>
     <string name="quest_camp_type_caravans_only">"Vain matkailuautot, matkailuvaunut, ..."</string>
@@ -1402,4 +1402,8 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="quest_multiselect_hint">"Valitse kaikki sopivat:"</string>
     <string name="quest_barrier_opening_width_gate">"Kuinka leveä avautuma tässä on?"</string>
     <string name="bridge">"sillan päällä"</string>
+    <string name="about_title_intro">"Näytä esittely"</string>
+    <string name="about_category_help">"Apua"</string>
+    <string name="quest_camp_power_supply_hint">"Se voisi olla pistorasia leirintäalueella, pistorasioita vieraiden käytettävissä olevassa huoltorakennuksessa, latausasema puhelimille, kannettaville, jne."</string>
+    <string name="quest_barrier_opening_width_bollard">"Mikä on levein väli josta voi kulkea läpi?"</string>
 </resources>

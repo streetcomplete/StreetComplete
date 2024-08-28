@@ -190,6 +190,8 @@ val presetIconIndex = mapOf(
     "fas-weight" to R.drawable.ic_preset_fas_weight,
     "fas-wifi" to R.drawable.ic_preset_fas_wifi,
     "fas-wine-bottle" to R.drawable.ic_preset_fas_wine_bottle,
+    "iD-restriction-no-u-turn" to R.drawable.ic_preset_id_restriction_no_u_turn,
+    "iD-restriction-only-u-turn" to R.drawable.ic_preset_id_restriction_only_u_turn,
     "maki-aerialway" to R.drawable.ic_preset_maki_aerialway,
     "maki-airport" to R.drawable.ic_preset_maki_airport,
     "maki-alcohol-shop" to R.drawable.ic_preset_maki_alcohol_shop,

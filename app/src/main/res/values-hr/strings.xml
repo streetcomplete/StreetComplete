@@ -1401,4 +1401,8 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_multiselect_hint">"Odaberite sve primjenjivo:"</string>
     <string name="quest_barrier_opening_width_gate">"Kolika je ovdje širina otvora?"</string>
     <string name="bridge">"na mostu"</string>
+    <string name="about_title_intro">"Prikaži uvod"</string>
+    <string name="about_category_help">"Pomoć"</string>
+    <string name="quest_camp_power_supply_hint">"To mogu biti utičnice izravno na parcelama kampa, utičnice u dijeljenom prostoru dostupne gostima, namjenska punionica za telefone i prijenosna računala itd."</string>
+    <string name="quest_barrier_opening_width_bollard">"Koji je najširi prolaz kroz koji se ovdje može proći?"</string>
 </resources>
