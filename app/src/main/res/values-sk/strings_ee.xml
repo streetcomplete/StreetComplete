@@ -36,7 +36,6 @@
     <string name="pref_way_direction_summary">Zobraz šípky na zvýraznených čiarach pri otváraní úlohy. Nápomocné napr. pri pridávaní jednosmerky.</string>
     <string name="pref_quest_geometries_title">Zobraz geometriu úloh</string>
     <string name="pref_quest_geometries_summary">Zvýrazní čiary a plochy, ktoré majú úlohu</string>
-    <string name="pref_offset_fix_title">Skry offset označenia úloh</string>
     <string name="pref_offset_fix_summary">Zobrazí biele bodky pri základe označenia úloh</string>
     <string name="pref_show_solved_animation">Zobraz animáciu pri splnení úlohy</string>
     <string name="pref_gpx_track_title">Zobraz GPX záznamy zo súboru</string>

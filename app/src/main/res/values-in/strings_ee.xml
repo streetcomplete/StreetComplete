@@ -78,7 +78,6 @@
     <string name="pref_way_direction">Perlihatkan arah jalan</string>
     <string name="pref_quest_geometries_title">Tampilkan geometri pencarian</string>
     <string name="pref_quest_geometries_summary">Sorot jalan dan area yang memiliki pencarian</string>
-    <string name="pref_offset_fix_title">Hapus offset penanda pencarian</string>
     <string name="pref_offset_fix_summary">Offset ini ada sehingga titik-titik putih disembunyikan oleh pin pencarian</string>
     <string name="pref_show_solved_animation">Tampilkan animasi setelah menyelesaikan pencarian</string>
     <string name="pref_show_solved_animation_summary">Animasi ini juga mengontrol suara yang dipecahkan dalam pencarian</string>

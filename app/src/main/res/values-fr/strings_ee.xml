@@ -189,7 +189,6 @@
     <string name="quick_switch_map_background">Basculer entre la carte satellite et le plan</string>
     <string name="pref_way_direction_summary">Affiche des flèches sur les lignes en surbrillance lors de l\'ouverture d\'une quête. Utile par exemple lors de l\'ajout d\'une voie à sens unique.</string>
     <string name="pref_quest_geometries_summary">Affiche en surbrillance les chemins et zones pour lesquels il existe une quête</string>
-    <string name="pref_offset_fix_title">Supprimer le décalage sur les marqueurs de quête</string>
     <string name="pref_offset_fix_summary">Ils existent pour que les points blancs soient cachés par les icônes de quêtes</string>
     <string name="pref_swap_gpx_note_button">Inverser les boutons de notes OSM et GPX</string>
     <string name="pref_hide_button_summary">Un clic masque temporairement la quête, un clic long la masque définitivement</string>

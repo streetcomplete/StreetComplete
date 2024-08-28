@@ -60,7 +60,6 @@
     <string name="pref_show_nearby_quests_summary">Gør det muligt at skifte mellem nærliggende opgaver, når der vises en opgaveformular</string>
     <string name="import_export_hidden_quests">Skjulte opgaver</string>
     <string name="show_nearby_quests_distance">Vis opgaver inden for denne afstand (begrænset til 10 meter)</string>
-    <string name="pref_offset_fix_title">Fjern forskydninger af opgavemarkører</string>
     <string name="pref_tree_custom_quest_summary">Se meddelelsen ved aktivering af opgave for detaljer</string>
     <string name="pref_advanced_resurvey_title">Avanceret genundersøgelse</string>
     <string name="export_warning_db_version">Advarsel: databaseversion ukendt, import fungerer muligvis ikke. Bed om at få appen opdateret.</string>

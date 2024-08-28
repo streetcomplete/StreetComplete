@@ -21,14 +21,13 @@
         android:defaultValue="false"
         android:persistent="true" />
 
-<!-- not necessary any more
     <SwitchPreference
         android:key="offset_fix"
-        android:title="@string/pref_offset_fix_title"
+        android:title="@string/pref_offset_fix_title2"
         android:summary="@string/pref_offset_fix_summary"
         android:defaultValue="false"
         android:persistent="true" />
--->
+
     <SwitchPreference
         android:key="show_solved_animation"
         android:title="@string/pref_show_solved_animation"

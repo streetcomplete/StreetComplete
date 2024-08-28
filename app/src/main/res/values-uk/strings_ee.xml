@@ -26,7 +26,6 @@
     <string name="pref_way_direction">Показати напрямок ліній</string>
     <string name="pref_quest_geometries_title">Відображати геометрію квесту</string>
     <string name="pref_quest_geometries_summary">Виділити шляхи та зони, де є квести</string>
-    <string name="pref_offset_fix_title">Видалити зміщення маркерів квесту</string>
     <string name="pref_show_solved_animation">Показувати анімацію після розв\'язання квесту</string>
     <string name="pref_show_solved_animation_summary">Це також керує звуком під час виконання квесту</string>
     <string name="pref_gpx_track_title">Відображення GPX-треку з файлу</string>

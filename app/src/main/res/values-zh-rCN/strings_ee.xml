@@ -101,7 +101,6 @@
     <string name="quest_seating_parklet">挨着路缘，或曾经停车的地方</string>
     <string name="quest_poi_traffic_title">兴趣点：交通</string>
     <string name="quest_settings_element_selection">设置符合本任务条件的元素。<a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">单击此处</a>可在浏览器中打开有关元素选择语法的信息。</string>
-    <string name="pref_offset_fix_title">移除任务标记偏移</string>
     <string name="pref_tree_custom_quest_summary">有关详情，请参阅启用任务时的信息</string>
     <string name="quest_healthcare_speciality_switch_ui">切换用户界面</string>
     <string name="quest_osmose_remove_checked">移除</string>

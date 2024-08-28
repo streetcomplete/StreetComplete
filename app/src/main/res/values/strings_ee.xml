@@ -60,9 +60,8 @@
     <string name="pref_way_direction_summary">Displays arrows on highlighted lines when opening a quest. Useful e.g. when adding oneway.</string>
     <string name="pref_quest_geometries_title">Display quest geometries</string>
     <string name="pref_quest_geometries_summary">Highlight ways and areas that have quests</string>
-    <!-- looks like this setting is not necessary with MapLibre -->
-<!--    <string name="pref_offset_fix_title">Remove quest marker offsets</string>
-    <string name="pref_offset_fix_summary">They exist so white dots are hidden by quest pins</string> -->
+    <string name="pref_offset_fix_title2">Remove offsets for white dots</string>
+    <string name="pref_offset_fix_summary">They exist so white dots are hidden by quest pins</string>
     <string name="pref_show_solved_animation">Show animation after solving a quest</string>
     <string name="pref_show_solved_animation_summary">This also controls the quest-solved sound</string>
     <string name="pref_gpx_track_title">Display GPX track from file</string>

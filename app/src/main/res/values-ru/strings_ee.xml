@@ -26,7 +26,6 @@
     <string name="pref_way_direction">Показывать направление линий</string>
     <string name="pref_way_direction_summary">Рисовать стрелки на выделенных линиях при открытии квеста. Полезно при добавлении улиц с односторонним движением.</string>
     <string name="pref_quest_geometries_summary">Выделять линии и площадки с квестами</string>
-    <string name="pref_offset_fix_title">Убрать сдвиг метки квеста</string>
     <string name="pref_show_solved_animation">Показывать анимацию после решения квеста</string>
     <string name="pref_show_solved_animation_summary">Также влияет на звук решения квеста</string>
     <string name="pref_gpx_track_title">Показывать трек GPX из файла</string>

@@ -145,6 +145,13 @@ class DisplaySettingsFragment :
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
         if (key == Prefs.QUEST_GEOMETRIES)
             visibleQuestTypeController.onQuestTypeVisibilitiesChanged()
+        if (key == Prefs.OFFSET_FIX) {
+            // trigger map update
+            val old = prefs.getString(Prefs.THEME_BACKGROUND, "MAP")
+            val new = if (old == "MAP") "AERIAL" else "MAP"
+            sharedPreferences.edit().putString(Prefs.THEME_BACKGROUND, new).commit()
+            prefs.putString(Prefs.THEME_BACKGROUND, old)
+        }
     }
 
     override fun onResume() {

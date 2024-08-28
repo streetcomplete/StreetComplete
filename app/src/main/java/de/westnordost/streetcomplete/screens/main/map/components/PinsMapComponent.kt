@@ -6,9 +6,11 @@ import android.content.res.Configuration
 import androidx.annotation.UiThread
 import androidx.core.graphics.Insets
 import com.google.gson.JsonObject
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -66,6 +68,7 @@ class PinsMapComponent(
     private val contentResolver: ContentResolver,
     private val map: MapLibreMap,
     private val mapImages: MapImages,
+    private val prefs: Preferences,
     private val onClickPin: (properties: Map<String, String>) -> Unit
 ) {
     private val pinsSource = GeoJsonSource(SOURCE,
@@ -144,7 +147,7 @@ class PinsMapComponent(
                 circleStrokeColor("#aaaaaa"),
                 circleRadius(6f),
                 circleStrokeWidth(1f),
-                circleTranslate(arrayOf(0f, -8f)), // so that it hides behind the pin
+                circleTranslate(arrayOf(0f, if (prefs.prefs.getBoolean(Prefs.OFFSET_FIX, false)) 0f else -8f)), // so that it hides behind the pin
                 circleTranslateAnchor(Property.CIRCLE_TRANSLATE_ANCHOR_VIEWPORT),
             ),
         CircleLayer("pin-quest-dot-layer", DOT_SOURCE)

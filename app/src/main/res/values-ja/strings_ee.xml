@@ -245,7 +245,6 @@
     <string name="quest_service_building_monitoring_station_description">自分が所有する建物内にあり、何かを監視する施設です</string>
     <string name="quest_service_building_internet_exchange_description">インターネット回線加入者を電気通信サービス機器に接続する場所です</string>
     <string name="quest_shelter_type_disabled_msg">回答が容易ではないため、初期設定ではこのクエストは無効化されています。避難所の種類は最もよく使用される値から取得され、大抵、区別が容易でない提案から選択しなければなりません。</string>
-    <string name="pref_offset_fix_title">クエスト印の代替を削除</string>
     <string name="pref_offset_fix_summary">それらはクエスト留針によって非表示にされ、白い点で存在します</string>
     <string name="pref_screen_ui">利用者接触部</string>
     <string name="pref_select_first_edit_title">最初の編集で、開いた履歴を選択</string>

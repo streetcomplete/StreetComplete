@@ -155,7 +155,6 @@
     <string name="restriction_overlay_sign_stop">Halt</string>
     <string name="quest_poi_traffic_title">POI: Verkehr</string>
     <string name="quest_settings_element_selection">Lege die für diese Aufgabe berechtigten Elemente fest. <a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">Klicke hier</a>, um Informationen zur Syntax der Elementauswahl in einem Browser anzuzeigen.</string>
-    <string name="pref_offset_fix_title">Offsets der Aufgabenmarker entfernen</string>
     <string name="close_note_checkbox">Schließe den Hinweis (mach das nur, wenn du den Hinweis tatsächlich löst!)</string>
     <string name="quest_lanes_answer_noLanes_known_count">Keine Markierungen, offensichtliche Anzahl von Fahrspuren</string>
     <string name="quest_buildingType_barn">Scheune</string>

@@ -370,7 +370,6 @@
     <string name="access_manager_message">Elija etiquetas de acceso. Recuerde etiquetar solo el acceso firmado y evite la etiqueta genérica de \"acceso\" si es posible</string>
     <string name="quest_custom_quest_message">Úselo para verificar elementos o ubicaciones predefinidos específicos. También puede especificar etiquetas y agregar un nodo con ellas. Para usarlo, cargue un archivo en el menú de configuración principal, que contenga tipo, id, mensaje (por ejemplo, NODO, 1234, posición de verificación) o latitud, longitud, mensaje. Para agregar nodos, coloque las etiquetas en el mensaje después de \'addNode\', p. addNode amenity=restaurant,wheelchair=no,diet:vegetarian=yes</string>
     <string name="pref_read_reverse_button">Invertir</string>
-    <string name="pref_offset_fix_title">Eliminar el desplazamiento en los marcadores de tarea</string>
     <string name="pref_day_night_title">Filtro de tareas diurnas</string>
     <string name="day_night_priority">Aumenta la prioridad de las tareas adecuadas para la hora del día actual</string>
     <string name="day_night_visibility">No mostrar tareas inadecuadas para la hora del día actual</string>
