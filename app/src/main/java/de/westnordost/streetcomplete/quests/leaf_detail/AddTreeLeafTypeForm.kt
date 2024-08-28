@@ -4,7 +4,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 
-class AddTreeLeafTypeForm : AImageListQuestForm<TreeLeafType, TreeLeafType>() {
+class AddTreeLeafTypeForm :
+    AImageListQuestForm<TreeLeafType, TreeLeafTypeAnswer>() {
 
     override val items = TreeLeafType.entries.map { it.asItem() }
     override val itemsPerRow = 2
