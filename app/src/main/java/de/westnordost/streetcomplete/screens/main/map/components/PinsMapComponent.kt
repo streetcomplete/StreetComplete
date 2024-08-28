@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -154,8 +155,7 @@ class PinsMapComponent(
             .withFilter(all(gt(zoom(), CLUSTER_MAX_ZOOM)))
             .withProperties(
                 circleColor(get("dot-color")),
-                circleStrokeOpacity(0.4f),
-                circleStrokeColor("#aaaaaa"),
+                circleStrokeColor(if (prefs.theme == Theme.LIGHT) "#666666" else "#333333"),
                 circleRadius(8f),
                 circleStrokeWidth(1f),
                 circleSortKey(get("dot-order"))
