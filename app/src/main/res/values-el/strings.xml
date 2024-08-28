@@ -1387,4 +1387,8 @@
     <string name="quest_multiselect_hint">"Επιλέξτε όλα όσα ισχύουν:"</string>
     <string name="quest_barrier_opening_width_gate">"Ποιο είναι το πλάτος του ανοίγματος εδώ;"</string>
     <string name="bridge">"σε γέφυρα"</string>
+    <string name="about_title_intro">"Εμφάνιση εισαγωγής"</string>
+    <string name="about_category_help">"Βοήθεια"</string>
+    <string name="quest_camp_power_supply_hint">"Αυτό θα μπορούσε να είναι πρίζες απευθείας στους χώρους κατασκήνωσης, πρίζες σε ένα κτίριο υπηρεσιών προσβάσιμο από επισκέπτες, ένας ειδικός σταθμός φόρτισης για τηλέφωνα, φορητούς υπολογιστές κ.λπ."</string>
+    <string name="quest_barrier_opening_width_bollard">"Ποιο είναι το μεγαλύτερο κενό που μπορεί να περάσει κανείς εδώ;"</string>
 </resources>

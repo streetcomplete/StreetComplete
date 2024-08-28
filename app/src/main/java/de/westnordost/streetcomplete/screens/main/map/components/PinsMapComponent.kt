@@ -34,9 +34,12 @@ import org.maplibre.android.style.expressions.Expression.division
 import org.maplibre.android.style.expressions.Expression.get
 import org.maplibre.android.style.expressions.Expression.gt
 import org.maplibre.android.style.expressions.Expression.gte
+import org.maplibre.android.style.expressions.Expression.interpolate
+import org.maplibre.android.style.expressions.Expression.linear
 import org.maplibre.android.style.expressions.Expression.literal
 import org.maplibre.android.style.expressions.Expression.log2
 import org.maplibre.android.style.expressions.Expression.lte
+import org.maplibre.android.style.expressions.Expression.stop
 import org.maplibre.android.style.expressions.Expression.sum
 import org.maplibre.android.style.layers.FillLayer
 import org.maplibre.android.style.layers.LineLayer
@@ -117,7 +120,7 @@ class PinsMapComponent(
             ),
         SymbolLayer("pin-cluster-layer", SOURCE)
             .withFilter(all(
-                gte(zoom(), 14f),
+                gte(zoom(), 13f),
                 lte(zoom(), CLUSTER_MAX_ZOOM),
                 gt(toNumber(get("point_count")), 1)
             ))
@@ -139,9 +142,9 @@ class PinsMapComponent(
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("#aaaaaa"),
-                circleRadius(4f),
+                circleRadius(6f),
                 circleStrokeWidth(1f),
-                circleTranslate(arrayOf(0f, -5f)), // so that it hides behind the pin
+                circleTranslate(arrayOf(0f, -8f)), // so that it hides behind the pin
                 circleTranslateAnchor(Property.CIRCLE_TRANSLATE_ANCHOR_VIEWPORT),
             ),
         CircleLayer("pin-quest-dot-layer", DOT_SOURCE)
@@ -150,7 +153,7 @@ class PinsMapComponent(
                 circleColor(get("dot-color")),
                 circleStrokeOpacity(0.4f),
                 circleStrokeColor("#aaaaaa"),
-                circleRadius(9f),
+                circleRadius(8f),
                 circleStrokeWidth(1f),
                 circleSortKey(get("dot-order"))
             ),
@@ -158,9 +161,14 @@ class PinsMapComponent(
             .withFilter(gt(zoom(), CLUSTER_MAX_ZOOM))
             .withProperties(
                 iconImage(get("icon-image")),
+                // constant icon size because click area would become a bit too small and more
+                // importantly, dynamic size per zoom + collision doesn't work together well, it
+                // results in a lot of flickering.
                 iconSize(1f),
+
                 // better would be arrayOf(-2.5f, 0f, -7f, 2.5f) or something like that, but setting
-                // different paddings per side is not supported by MapLibre Native yet
+                // different paddings per side is not supported by MapLibre Native yet. See
+                // https://github.com/maplibre/maplibre-native/issues/2368
                 iconPadding(-2f),
                 iconOffset(listOf(-4.5f, -34.5f).toTypedArray()),
                 symbolSortKey(get("icon-order")),
@@ -271,7 +279,7 @@ class PinsMapComponent(
         private const val SOURCE = "pins-source"
         private const val GEOMETRY_SOURCE = "pins-geometry-source"
         private const val DOT_SOURCE = "pins-dot-source"
-        private const val CLUSTER_MAX_ZOOM = 16
+        private const val CLUSTER_MAX_ZOOM = 14
     }
 }
 

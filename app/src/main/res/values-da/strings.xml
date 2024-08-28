@@ -1399,4 +1399,8 @@ En etage tæller som en tagetage, når dets vinduer er i taget. Derfor er tage m
     <string name="quest_multiselect_hint">"Vælg alle, der gælder:"</string>
     <string name="quest_barrier_opening_width_gate">"Hvor bred er åbningen her?"</string>
     <string name="bridge">"på bro"</string>
+    <string name="about_title_intro">"Vis introduktion"</string>
+    <string name="about_category_help">"Hjælp"</string>
+    <string name="quest_camp_power_supply_hint">"Det kan være stikkontakter ved den enkelte standplads, stikkontakter i en servicebygning, som gæsterne har adgang til, en særlig ladestation til telefoner, bærbare computere osv."</string>
+    <string name="quest_barrier_opening_width_bollard">"Hvor bred er den største åbning, man kan passere igennem her?"</string>
 </resources>

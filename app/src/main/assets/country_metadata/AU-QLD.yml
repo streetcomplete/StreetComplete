@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Westpac, Commonwealth Bank, ANZ, NAB, BOQ, Suncorp, Bendigo Bank, rediATM, Heritage Bank, ATMx, atmx, St.George, Precinct, DC ATM, Armaguard, nab, armaguard, United ATM, Suncorp Bank, RediATM, National Australia Bank, Bendigo, Bank of Queensland]
-chargingStationOperators: [Yurika, Evie Networks, 'Tesla, Inc.', Chargefox, AmpCharge]
+chargingStationOperators: [Yurika, Evie Networks, 'Tesla, Inc.', Brisbane Airport Corporation, Chargefox, AmpCharge]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Australia Post, Amazon Hub]

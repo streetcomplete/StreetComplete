@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5901
-        versionName = "59.0-alpha1.1"
+        versionCode = 5902
+        versionName = "59.0-alpha2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -203,7 +203,7 @@ dependencies {
     implementation("io.github.pdvrieze.xmlutil:core:0.90.1")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.1.0")
+    implementation("org.maplibre.gl:android-sdk:11.2.0")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")
@@ -239,7 +239,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20240813"
+val nsiVersion = "v6.0.20240826"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v6.8.1"
 

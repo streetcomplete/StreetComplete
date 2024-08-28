@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, Banco de Bogotá, A Toda Hora S.A. (Red Aval), ATH, Banco Agrario, Colpatria, Banco Popular, Banco de Bogota, Banco Caja Social, Servibanca S.A., Citibank, AV Villas, Athena Bitcoin, servibanca, Scotiabank, Grupo Aval, Banco AV Villas, Av Villas, ServiBanca, Caja Social, BanColombia, davivienda, bancolombia, banco popular, Grupo AVAL, Cajero Bancolombia, Banco Agrario de Colombia, BANCOLOMBIA, polv, cespo, cajero Bancolombia, cajero BBVA, caja social, banco de bogota, banco agrario, ath, VIA baloto, Servivanca, Red Aval, DAVIVIENDA, Cryptocoinex, Casa Kennedy, Cajero Bancolombia - Universidad del Norte, Cajero, CAJERO BANCO POPULAR, BancoBogota, Banco Popular Cajero, Banco Pichincha, Banco Davivienda, Banco Colombia, Banco Bogotá, Bacolombia, A Toda Hora (ATH) S.A.]
 centerLineStyle: yellow
-chargingStationOperators: [Codensa, Terpel, parqueadero]
+chargingStationOperators: [Terpel, Codensa, parqueadero, ChargePoint]
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 732
 noEntrySignStyle: no entre

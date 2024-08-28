@@ -1170,7 +1170,7 @@ Do the same for the other side if present."</string>
     <string name="default_disabled_msg_overlay">"This quest type is disabled by default because there is already an overlay with which it is more effective and efficient to enter and update this data."</string>
     <string name="quest_camp_drinking_water_title">"Is drinking water freely available to campers here?"</string>
     <string name="quest_camp_shower_title">"Are there showers here?"</string>
-    <string name="quest_camp_power_supply_title">"Is there any way for customers to charge their phone, laptop etc. here?"</string>
+    <string name="quest_camp_power_supply_title">"Are there any power outlets available for guests?"</string>
     <string name="quest_camp_type_title">"Who may camp here?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Both tents and motor homes, caravans, …"</string>
     <string name="quest_camp_type_caravans_only">"Only motor homes, caravans, …"</string>
@@ -1402,4 +1402,9 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="action_manage_presets_summary">"Under which name the quest selection below is saved."</string>
     <string name="quest_multiselect_hint">"Select all that apply:"</string>
     <string name="quest_barrier_opening_width_gate">"What is the width of the opening here?"</string>
+    <string name="bridge">"on bridge"</string>
+    <string name="about_title_intro">"Show introduction"</string>
+    <string name="about_category_help">"Help"</string>
+    <string name="quest_camp_power_supply_hint">"This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc."</string>
+    <string name="quest_barrier_opening_width_bollard">"What is the widest gap one can pass through here?"</string>
 </resources>

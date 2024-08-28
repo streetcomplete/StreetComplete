@@ -2,7 +2,7 @@
 additionalStreetsignLanguages: [ru]
 atmOperators: [Swedbank, SEB, Luminor | LHV, LHV | Luminor, LHV, Luminor, LHV;Luminor, LHV; Luminor, brand=Swedbank, Nordea, brand=LHV, Sampo/Nordea, LHV/Luminor, LHV / Luminor, Euronet]
 chargingStationOperators: [Enefit Volt, ABB, Eesti Energia AS, Eleport, Elmo, Enefit VOLT, Enefit, ELMO, Alexela, ABB AS, eleport, Ionity, Elelevi]
-clothesContainerOperators: [Riidepunkt, Tallinna Jäätmekeskus, TJT]
+clothesContainerOperators: [Riidepunkt, Tallinna Jäätmekeskus, TJT, Riidepunkt MTÜ]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
@@ -17,7 +17,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [et]
 orchardProduces: [strawberry, apple, raspberry, plum, tomato]
-parcelLockerBrand: [Omniva, DPD Pickup Station, DPD, Venipak, Smartpost Itella, DHL, UPS, DPD Pickup]
+parcelLockerBrand: [Omniva, DPD Pickup Station, DPD, Venipak, Smartpost Itella, DHL, UPS, Smartpost]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ALA

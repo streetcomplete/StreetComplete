@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [ja-Latn]
 advisorySpeedLimitSignStyle: white
-atmOperators: [ゆうちょ銀行, セブン銀行, みずほ銀行, 三菱UFJ銀行, 三井住友銀行, 鹿児島銀行, イオン銀行, りそな銀行, 横浜銀行, JAバンク, 七十七銀行, 北洋銀行, 京都銀行, 秋田銀行, 北海道銀行, 埼玉りそな銀行, 三菱東京UFJ銀行, イーネット, 千葉銀行, 北都銀行, JA, ローソン銀行, 七十七銀行/77Bank, 仙台銀行, 東京スター銀行, 武蔵野銀行, 京都中央信用金庫, みちのく銀行, 滋賀銀行, 京葉銀行, プロミス, アイフル, 東北労働金庫, 百十四銀行, 八十二銀行, 三井住友銀行／SMBC, 東邦銀行, 但陽信用金庫, 仙台銀行/SendaiBank, アコム, 広島銀行, 常陽銀行, 但馬銀行, きらぼし銀行, 青森銀行, 荘内銀行, 南都銀行, 但馬信用金庫, 中国銀行, レイク, セブン銀行/SevenBank, 静岡銀行, 西武信用金庫, 日高信用金庫, 徳島銀行, 多摩信用金庫, 群馬銀行, 紀陽銀行, 福岡銀行, 池田泉州銀行, 岩手銀行, 山形銀行, 十六銀行, 北おおさか信用金庫, 京都信用金庫, 三菱UFJ, スルガ銀行, イオン銀行/AeonBank, ろうきん, きらやか銀行, きのくに信用金庫, Seven Bank, 関西みらい銀行, 足利銀行, 東北労金, 大垣共立銀行, Community Bank, 高知信用金庫, 青い森信用金庫, 阿波銀行, 川崎信用金庫, 南都銀行／Nanto Bank, 千葉興業銀行, 北海道労働金庫, 北日本銀行, 京都北都信用金庫, View, MUFG, JP Bank]
+atmOperators: [ゆうちょ銀行, セブン銀行, みずほ銀行, 三菱UFJ銀行, 三井住友銀行, 鹿児島銀行, イオン銀行, りそな銀行, 横浜銀行, JAバンク, 七十七銀行, 北洋銀行, 京都銀行, 秋田銀行, 北海道銀行, 埼玉りそな銀行, 三菱東京UFJ銀行, 千葉銀行, イーネット, 北都銀行, JA, ローソン銀行, 七十七銀行/77Bank, 仙台銀行, 東京スター銀行, 武蔵野銀行, 京都中央信用金庫, みちのく銀行, 滋賀銀行, 京葉銀行, プロミス, アイフル, 東北労働金庫, 百十四銀行, 八十二銀行, 三井住友銀行／SMBC, 東邦銀行, 但陽信用金庫, 仙台銀行/SendaiBank, アコム, 広島銀行, 常陽銀行, 但馬銀行, きらぼし銀行, 青森銀行, 荘内銀行, 南都銀行, 但馬信用金庫, 中国銀行, レイク, セブン銀行/SevenBank, 静岡銀行, 西武信用金庫, 福岡銀行, 日高信用金庫, 徳島銀行, 多摩信用金庫, 群馬銀行, 紀陽銀行, 池田泉州銀行, 岩手銀行, 山形銀行, 北おおさか信用金庫, 京都信用金庫, 三菱UFJ, スルガ銀行, イオン銀行/AeonBank, ろうきん, きらやか銀行, きのくに信用金庫, Seven Bank, 関西みらい銀行, 足利銀行, 東北労金, 大垣共立銀行, 十六銀行, Community Bank, 高知信用金庫, 青い森信用金庫, 阿波銀行, 川崎信用金庫, 南都銀行／Nanto Bank, 千葉興業銀行, 北海道労働金庫, 北日本銀行, 京都北都信用金庫, View, MUFG, JP Bank]
 centerLineStyle: white
 chargingStationOperators: [東光高岳, EV Quick, 浜松日産, Nissan, 金沢彩の庭ホテル, イオンモール久御山, Tesla Motors Inc.]
 defaultSpeedLimitHasUrbanOrRural: false
@@ -14,7 +14,7 @@ noParkingLineStyle: dashed yellow on curb
 noStoppingLineStyle: yellow on curb
 officialLanguages: [ja]
 orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomato, peach, strawberry, cherry, chilli_pepper, sweet_pepper, plum, orange, kiwi]
-parcelLockerBrand: [Amazon Hub ロッカー, プドー, Amazon Locker, PUDOステーション, はこぽす, PUDO, Tajimingo, amazon, Amazon Hub Locker]
+parcelLockerBrand: [Amazon Hub ロッカー, プドー, PUDOステーション, Amazon Locker, はこぽす, PUDO, Tajimingo, amazon, Amazon Hub Locker]
 popularReligions: [shinto, buddhist, animist]
 popularSports: [tennis, baseball]
 postboxesHaveCollectionTimes: true

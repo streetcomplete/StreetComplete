@@ -1,5 +1,26 @@
 # Changelog
 
+## v59.0-alpha2
+
+### Fixes
+- Fix common crash on startup (#5829)
+- Fix some icons were missing in things & places overlays (#5832)
+- Fix rotation of view direction cone (#5821, #5834)
+- Fix barrier opening width should only be asked for barriers that are vertices of ways (#5830)
+- Workaround building color didn't change immediately when selecting another type (#2746)
+- Fix element is now updated correctly on conflict during upload (#5818), by @Helium314
+- Fix only enable OK button for separate bike paths in bike path overlay after changes have been made (#5819)
+- Fix links in the "What's New" dialog didn't work (#5814)
+
+### Improvements
+- Scale icons on low zoom a bit, cluster pin later (#5848, #5835)
+- Load quests on lower zoom levels, too (#5823)
+- Make it easier to tap elements on overlay when there are quests around (#5827)
+- Charging stations: Skip private ones (#5842), by @mnalis
+- Traffic signals vibration: Disable in Bulgaria (#5846)
+- Barrier opening: Ask for certain cycle barriers, too (#5823), by @mnalis
+- Barrier opening: Also disable this quest when disabling all width-measurement quests
+
 ## v59.0-alpha1
 
 ### 🗺️ MapLibre (#5693), by @Helium314 and me
