@@ -305,7 +305,7 @@ class RestrictionOverlayNodeForm : AbstractOverlayForm(), IsMapPositionAware, Is
     }
 
     override fun onMapOrientation(rotation: Double, tilt: Double) {
-        mapRotation = rotation
+        mapRotation = -rotation
     }
 
     private fun getWayRotation(): Double {
