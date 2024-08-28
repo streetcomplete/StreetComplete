@@ -202,7 +202,7 @@ dependencies {
     implementation("io.github.pdvrieze.xmlutil:core:0.90.1")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.1.0")
+    implementation("org.maplibre.gl:android-sdk:11.2.0")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")
