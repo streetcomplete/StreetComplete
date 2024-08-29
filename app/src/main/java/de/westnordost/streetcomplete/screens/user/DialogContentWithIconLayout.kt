@@ -57,7 +57,10 @@ fun DialogContentWithIconLayout(
                     horizontalArrangement = Arrangement.spacedBy(24.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Box(Modifier.size(iconSize)) { icon() }
+                    Box(
+                        modifier = Modifier.size(iconSize),
+                        contentAlignment = Alignment.CenterEnd
+                    ) { icon() }
                     content(true)
                 }
             } else {
@@ -66,7 +69,10 @@ fun DialogContentWithIconLayout(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Box(Modifier.size(iconSize)) { icon() }
+                    Box(
+                        modifier = Modifier.size(iconSize),
+                        contentAlignment = Alignment.BottomCenter
+                    ) { icon() }
                     content(false)
                 }
             }

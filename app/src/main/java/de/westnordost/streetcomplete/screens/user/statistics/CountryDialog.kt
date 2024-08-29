@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.user.statistics
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -14,9 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,9 +30,8 @@ import java.util.Locale
 
 /** Shows the details for a certain country as a dialog. */
 @Composable
-fun CountryInfoDialog(
+fun CountryDialog(
     countryCode: String,
-    count: Int,
     rank: Int?,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
@@ -53,14 +49,10 @@ fun CountryInfoDialog(
             contentAlignment = Alignment.Center
         ) {
             DialogContentWithIconLayout(
-                icon = {
-                    val flagPainter = flagPainterResource(countryCode)
-                    if (flagPainter != null) Image(flagPainter, null, Modifier.fillMaxSize())
-                },
+                icon = { Flag(countryCode) },
                 content = { isLandscape ->
                     CountryInfoDetails(
                         countryCode = countryCode,
-                        count = count,
                         rank = rank,
                         isLandscape = isLandscape
                     )
@@ -72,17 +64,8 @@ fun CountryInfoDialog(
 }
 
 @Composable
-private fun flagPainterResource(countryCode: String): Painter? {
-    val context = LocalContext.current
-    val lowerCaseCountryCode = countryCode.lowercase().replace('-', '_')
-    val id = context.resources.getIdentifier("ic_flag_$lowerCaseCountryCode", "drawable", context.packageName)
-    return if (id != 0) painterResource(id) else null
-}
-
-@Composable
 private fun CountryInfoDetails(
     countryCode: String,
-    count: Int,
     rank: Int?,
     isLandscape: Boolean,
     modifier: Modifier = Modifier,
@@ -95,9 +78,7 @@ private fun CountryInfoDetails(
         horizontalAlignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        AnimatingBigStarCount(totalCount = count)
-
-        if (rank != null && rank < 500 && count > 50) {
+        if (rank != null) {
             Text(stringResource(R.string.user_statistics_country_rank, rank, countryLocale.displayCountry))
         }
 
@@ -121,9 +102,8 @@ private fun CountryInfoDetails(
 @PreviewLightDark
 @Composable
 private fun PreviewCountryInfoDialog() {
-    CountryInfoDialog(
+    CountryDialog(
         countryCode = "PH",
-        count = 999,
         rank = 99,
         onDismissRequest = {}
     )

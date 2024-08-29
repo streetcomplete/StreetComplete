@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -36,9 +38,8 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 
 /** Shows the details for a certain quest type in a custom dialog. */
 @Composable
-fun EditTypeInfoDialog(
+fun EditTypeDialog(
     editType: EditType,
-    count: Int,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -55,12 +56,15 @@ fun EditTypeInfoDialog(
         ) {
             DialogContentWithIconLayout(
                 icon = {
-                    Image(painterResource(editType.icon), null, Modifier.fillMaxSize())
+                    Image(
+                        painter = painterResource(editType.icon),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize().shadow(elevation = 4.dp, CircleShape)
+                    )
                 },
                 content = { isLandscape ->
                     EditTypeDetails(
                         editType = editType,
-                        count = count,
                         isLandscape = isLandscape
                     )
                 },
@@ -73,7 +77,6 @@ fun EditTypeInfoDialog(
 @Composable
 private fun EditTypeDetails(
     editType: EditType,
-    count: Int,
     isLandscape: Boolean,
     modifier: Modifier = Modifier,
 ) {
@@ -88,8 +91,6 @@ private fun EditTypeDetails(
             style = MaterialTheme.typography.headlineSmall,
             textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
         )
-
-        AnimatingBigStarCount(totalCount = count)
 
         editType.wikiLink?.let { wikiLink ->
             OutlinedButton(
@@ -110,9 +111,8 @@ private fun EditTypeDetails(
 @PreviewLightDark
 @Composable
 private fun PreviewEditTypeInfoDialog() {
-    EditTypeInfoDialog(
+    EditTypeDialog(
         editType = AddRecyclingType(),
-        count = 999,
         onDismissRequest = {}
     )
 }

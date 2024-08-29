@@ -15,7 +15,7 @@ class EditStatisticsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         composableContent {
             Surface {
-                // TODO
+                EditStatisticsScreen(viewModel)
             }
         }
 }

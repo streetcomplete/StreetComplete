@@ -6,15 +6,15 @@ import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.ktx.launch
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 abstract class EditStatisticsViewModel : ViewModel() {
     abstract val hasEdits: StateFlow<Boolean>
     abstract val isSynchronizingStatistics: StateFlow<Boolean>
-    abstract val countryStatistics: StateFlow<Collection<CountryStatistics>?>
-    abstract val editTypeStatistics: StateFlow<Collection<EditTypeObjStatistics>?>
+    abstract val countryStatistics: StateFlow<List<CountryStatistics>?>
+    abstract val editTypeStatistics: StateFlow<List<EditTypeObjStatistics>?>
 
     abstract fun queryCountryStatistics()
     abstract fun queryEditTypeStatistics()
@@ -29,31 +29,34 @@ class EditStatisticsViewModelImpl(
 
     override val hasEdits = MutableStateFlow(true)
     override val isSynchronizingStatistics = MutableStateFlow(statisticsSource.isSynchronizing)
-    override val countryStatistics = MutableStateFlow<Collection<CountryStatistics>?>(null)
-    override val editTypeStatistics = MutableStateFlow<Collection<EditTypeObjStatistics>?>(null)
+    override val countryStatistics = MutableStateFlow<List<CountryStatistics>?>(null)
+    override val editTypeStatistics = MutableStateFlow<List<EditTypeObjStatistics>?>(null)
 
     // no updating of data implemented (because actually not needed. Not possible to add edits
     // while in this screen)
 
     init {
-        launch(Dispatchers.IO) { hasEdits.value = statisticsSource.getEditCount() > 0 }
+        launch(IO) { hasEdits.value = statisticsSource.getEditCount() > 0 }
     }
 
     override fun queryCountryStatistics() {
         if (countryStatistics.value == null) {
-            launch(Dispatchers.IO) { countryStatistics.value = statisticsSource.getCountryStatistics() }
+            launch(IO) {
+                countryStatistics.value = statisticsSource.getCountryStatistics().sortedByDescending { it.count }
+            }
         }
     }
 
     override fun queryEditTypeStatistics() {
         if (editTypeStatistics.value == null) {
-            launch(Dispatchers.IO) { editTypeStatistics.value = getEditTypeStatistics() }
+            launch(IO) {
+                editTypeStatistics.value = statisticsSource.getEditTypeStatistics()
+                    .mapNotNull {
+                        val editType = allEditTypes.getByName(it.type) ?: return@mapNotNull null
+                        EditTypeObjStatistics(editType, it.count)
+                    }
+                    .sortedByDescending { it.count }
+            }
         }
     }
-
-    private fun getEditTypeStatistics(): Collection<EditTypeObjStatistics> =
-        statisticsSource.getEditTypeStatistics().mapNotNull {
-            val editType = allEditTypes.getByName(it.type) ?: return@mapNotNull null
-            EditTypeObjStatistics(editType, it.count)
-        }
 }
