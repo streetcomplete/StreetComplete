@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -28,9 +29,11 @@ import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
+import de.westnordost.streetcomplete.ui.ktx.dpToSp
 import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 
+/** Shows the details for a certain country as a dialog. */
 @Composable
 fun CountryInfoDialog(
     countryCode: String,
@@ -53,7 +56,8 @@ fun CountryInfoDialog(
         ) {
             DialogContentWithIconLayout(
                 icon = {
-                    Image(flagPainterResource(countryCode), null, Modifier.fillMaxSize())
+                    val flagPainter = flagPainterResource(countryCode)
+                    if (flagPainter != null) Image(flagPainter, null, Modifier.fillMaxSize())
                 },
                 content = { isLandscape ->
                     CountryInfoDetails(
@@ -70,11 +74,11 @@ fun CountryInfoDialog(
 }
 
 @Composable
-private fun flagPainterResource(countryCode: String): Painter {
+private fun flagPainterResource(countryCode: String): Painter? {
     val context = LocalContext.current
     val lowerCaseCountryCode = countryCode.lowercase().replace('-', '_')
     val id = context.resources.getIdentifier("ic_flag_$lowerCaseCountryCode", "drawable", context.packageName)
-    return painterResource(id)
+    return if (id != 0) painterResource(id) else null
 }
 
 @Composable
