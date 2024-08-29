@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -29,7 +28,6 @@ import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
-import de.westnordost.streetcomplete.ui.ktx.dpToSp
 import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 
