@@ -53,10 +53,11 @@ fun LoginScreen(
     LaunchedEffect(state) {
         val errorState = state as? LoginError
         if (errorState != null) {
-            context.toast(when (errorState) {
+            val errorMessage = when (errorState) {
                 RequiredPermissionsNotGranted -> R.string.oauth_failed_permissions
                 CommunicationError -> R.string.oauth_communication_error
-            }, Toast.LENGTH_LONG)
+            }
+            context.toast(errorMessage, Toast.LENGTH_LONG)
             viewModel.resetLogin()
         }
     }
