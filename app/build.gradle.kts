@@ -35,14 +35,17 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5901
-        versionName = "59.0-alpha2"
+        versionCode = 5902
+        versionName = "59.0-alpha3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         all {
-            isMinifyEnabled = true
+            ndk {
+                debugSymbolLevel = "FULL"
+            }
+            isMinifyEnabled = false // TODO reenable
             isShrinkResources = false
             // don't use proguard-android-optimize.txt, it is too aggressive, it is more trouble than it is worth
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
