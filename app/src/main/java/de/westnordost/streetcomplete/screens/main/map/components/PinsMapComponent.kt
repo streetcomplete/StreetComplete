@@ -25,12 +25,9 @@ import org.maplibre.android.style.expressions.Expression.division
 import org.maplibre.android.style.expressions.Expression.get
 import org.maplibre.android.style.expressions.Expression.gt
 import org.maplibre.android.style.expressions.Expression.gte
-import org.maplibre.android.style.expressions.Expression.interpolate
-import org.maplibre.android.style.expressions.Expression.linear
 import org.maplibre.android.style.expressions.Expression.literal
 import org.maplibre.android.style.expressions.Expression.log2
 import org.maplibre.android.style.expressions.Expression.lte
-import org.maplibre.android.style.expressions.Expression.stop
 import org.maplibre.android.style.expressions.Expression.sum
 import org.maplibre.android.style.expressions.Expression.toNumber
 import org.maplibre.android.style.expressions.Expression.zoom

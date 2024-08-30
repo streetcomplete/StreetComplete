@@ -9,8 +9,6 @@ import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.iconResId
-import de.westnordost.streetcomplete.osm.estimateBuildingHeight
-import de.westnordost.streetcomplete.osm.estimateMinBuildingHeight
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.PolygonStyle
@@ -58,16 +56,16 @@ class BuildingsOverlay : Overlay {
             val color = building?.color
                 ?: if (isBuildingTypeMissing(element.tags)) Color.DATA_REQUESTED else Color.INVISIBLE
 
-            //val height = estimateBuildingHeight(element.tags)
-            //val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
+            // val height = estimateBuildingHeight(element.tags)
+            // val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
 
             element to PolygonStyle(
                 color = color,
                 icon = building?.iconResId,
                 // TODO MapLibre: 3D buildings are disabled until
                 //      https://github.com/maplibre/maplibre-native/issues/2746 is fixed
-                //height = height,
-                //minHeight = minHeight
+                // height = height,
+                // minHeight = minHeight
             )
         }
 

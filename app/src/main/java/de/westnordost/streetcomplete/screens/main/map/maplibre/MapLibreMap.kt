@@ -21,7 +21,7 @@ fun MapLibreMap.queryRenderedFeatures(
     var result = queryRenderedFeatures(coordinates, *layerIds)
     if (result.isNotEmpty()) return result
     // then, try with small radius....
-    result = queryRenderedFeatures(coordinates.expandBy(radius/2), *layerIds)
+    result = queryRenderedFeatures(coordinates.expandBy(radius / 2), *layerIds)
     if (result.isNotEmpty()) return result
 
     return queryRenderedFeatures(coordinates.expandBy(radius), *layerIds)
