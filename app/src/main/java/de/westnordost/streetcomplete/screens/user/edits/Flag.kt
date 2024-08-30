@@ -13,6 +13,7 @@ import androidx.compose.ui.BiasAbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.painter.Painter
@@ -20,6 +21,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.ktx.innerBorder
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 
 /** Flag image with a thin border around it so that a white flag color can be distinguished from the
@@ -30,18 +32,12 @@ fun Flag(
     modifier: Modifier = Modifier,
 ) {
     val painter = flagPainterResource(countryCode) ?: return
-    val stroke = 1.dp
     val color = MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
     Image(
         painter = painter,
         contentDescription = countryCode,
-        modifier = modifier.drawWithContent {
-            drawContent()
-            // add stroke so that white flags are visible
-            inset((stroke.toPx()/2).coerceAtLeast(1f)) {
-                drawRect(color, style = Stroke(stroke.toPx()))
-            }
-        })
+        modifier = modifier.innerBorder(1.dp, color)
+    )
 }
 
 /** Circular flag image with a thin border around it so that a white flag color can be distinguished
@@ -53,7 +49,6 @@ fun CircularFlag(
     flagAlignment: FlagAlignment = FlagAlignment.Center
 ) {
     val painter = flagPainterResource(countryCode) ?: return
-    val stroke = 1.dp
     val color = MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
 
     Image(
@@ -63,8 +58,7 @@ fun CircularFlag(
         contentScale = flagAlignment.contentScale,
         modifier = modifier
             .size(painter.intrinsicSize.minDimension.toInt().pxToDp())
-            .border(stroke, color, CircleShape)
-            .padding(stroke)
+            .innerBorder(1.dp, color, CircleShape)
             .clip(CircleShape)
     )
 }
