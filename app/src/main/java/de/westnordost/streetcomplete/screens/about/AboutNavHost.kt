@@ -11,7 +11,8 @@ import de.westnordost.streetcomplete.screens.about.logs.LogsScreen
 import de.westnordost.streetcomplete.ui.ktx.dir
 import org.koin.androidx.compose.koinViewModel
 
-@Composable fun AboutNavHost(onClickBack: () -> Unit) {
+@Composable
+fun AboutNavHost(onClickBack: () -> Unit) {
     val navController = rememberNavController()
     val dir = LocalLayoutDirection.current.dir
 

@@ -1,10 +1,13 @@
-package de.westnordost.streetcomplete.screens.user.statistics
+package de.westnordost.streetcomplete.screens.user.edits
 
+import android.content.res.Resources
 import androidx.lifecycle.ViewModel
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
+import de.westnordost.streetcomplete.util.ktx.getYamlStringMap
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,11 +16,14 @@ import kotlinx.coroutines.flow.StateFlow
 abstract class EditStatisticsViewModel : ViewModel() {
     abstract val hasEdits: StateFlow<Boolean>
     abstract val isSynchronizingStatistics: StateFlow<Boolean>
+
     abstract val countryStatistics: StateFlow<List<CountryStatistics>?>
     abstract val editTypeStatistics: StateFlow<List<EditTypeObjStatistics>?>
 
     abstract fun queryCountryStatistics()
     abstract fun queryEditTypeStatistics()
+
+    abstract val flagAlignments: StateFlow<Map<String, FlagAlignment>?>
 }
 
 data class EditTypeObjStatistics(val type: EditType, val count: Int)
@@ -25,18 +31,35 @@ data class EditTypeObjStatistics(val type: EditType, val count: Int)
 class EditStatisticsViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val allEditTypes: AllEditTypes,
+    private val resources: Resources,
 ) : EditStatisticsViewModel() {
 
     override val hasEdits = MutableStateFlow(true)
     override val isSynchronizingStatistics = MutableStateFlow(statisticsSource.isSynchronizing)
     override val countryStatistics = MutableStateFlow<List<CountryStatistics>?>(null)
     override val editTypeStatistics = MutableStateFlow<List<EditTypeObjStatistics>?>(null)
+    override val flagAlignments = MutableStateFlow<Map<String, FlagAlignment>?>(null)
 
     // no updating of data implemented (because actually not needed. Not possible to add edits
     // while in this screen)
 
     init {
         launch(IO) { hasEdits.value = statisticsSource.getEditCount() > 0 }
+        launch(IO) {
+            flagAlignments.value = resources
+                .getYamlStringMap(R.raw.flag_alignments)
+                .mapValues {
+                    when (it.value) {
+                        "left" ->         FlagAlignment.Left
+                        "center-left" ->  FlagAlignment.CenterLeft
+                        "center" ->       FlagAlignment.Center
+                        "center-right" -> FlagAlignment.CenterRight
+                        "right" ->        FlagAlignment.Right
+                        "stretch" ->      FlagAlignment.Stretch
+                        else ->           throw IllegalArgumentException()
+                    }
+                }
+        }
     }
 
     override fun queryCountryStatistics() {

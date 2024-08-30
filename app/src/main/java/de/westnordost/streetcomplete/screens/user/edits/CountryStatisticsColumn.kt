@@ -1,6 +1,5 @@
-package de.westnordost.streetcomplete.screens.user.statistics
+package de.westnordost.streetcomplete.screens.user.edits
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -12,30 +11,31 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 
-/** Simple bar diagram of solved quests by quest type */
+/** Simple bar diagram of solved quests by country */
 @Composable
-fun EditTypeStatisticsColumn(
-    editTypeObjStatistics: List<EditTypeObjStatistics>,
+fun CountryStatisticsColumn(
+    countryStatistics: List<CountryStatistics>,
+    flagAlignments: Map<String, FlagAlignment>,
     modifier: Modifier = Modifier,
 ) {
-    var showInfo by remember { mutableStateOf<EditTypeObjStatistics?>(null) }
+    var showInfo by remember { mutableStateOf<CountryStatistics?>(null) }
 
     // list is sorted by largest count descending
-    val maxCount = editTypeObjStatistics.firstOrNull()?.count ?: 0
+    val maxCount = countryStatistics.firstOrNull()?.count ?: 0
     LazyColumn(modifier) {
         items(
-            items = editTypeObjStatistics,
-            key = { it.type.name }
+            items = countryStatistics,
+            key = { it.countryCode }
         ) { item ->
             StatisticsRow(
                 title = {
-                    Image(
-                        painter = painterResource(item.type.icon),
-                        contentDescription = null,
+                    CircularFlag(
+                        countryCode = item.countryCode,
+                        flagAlignment = flagAlignments[item.countryCode] ?: FlagAlignment.Center,
                         modifier = Modifier.size(48.dp)
                     )
                 },
@@ -48,9 +48,11 @@ fun EditTypeStatisticsColumn(
             )
         }
     }
+
     showInfo?.let {
-        EditTypeDialog(
-            editType = it.type,
+        CountryDialog(
+            countryCode = it.countryCode,
+            rank = it.rank,
             onDismissRequest = { showInfo = null }
         )
     }

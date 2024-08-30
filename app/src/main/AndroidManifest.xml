@@ -85,15 +85,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="de.westnordost.streetcomplete.screens.FragmentContainerActivity" />
         <activity
             android:name="de.westnordost.streetcomplete.screens.about.AboutActivity"
+            android:label="@string/action_about2"
+            android:parentActivityName="de.westnordost.streetcomplete.screens.MainActivity"
             android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             />
         <activity
             android:name="de.westnordost.streetcomplete.screens.user.UserActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            android:label="@string/user_profile"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName="de.westnordost.streetcomplete.screens.MainActivity"
+            android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            />
         <!-- For WorkManager -->
         <service
             android:name="androidx.work.impl.foreground.SystemForegroundService"

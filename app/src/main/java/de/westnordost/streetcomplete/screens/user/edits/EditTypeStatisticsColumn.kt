@@ -1,7 +1,7 @@
-package de.westnordost.streetcomplete.screens.user.statistics
+package de.westnordost.streetcomplete.screens.user.edits
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,35 +11,33 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 
-/** Simple bar diagram of solved quests by country */
+/** Simple bar diagram of solved quests by quest type */
 @Composable
-fun CountryStatisticsColumn(
-    countryStatistics: List<CountryStatistics>,
+fun EditTypeStatisticsColumn(
+    editTypeObjStatistics: List<EditTypeObjStatistics>,
     modifier: Modifier = Modifier,
 ) {
-    var showInfo by remember { mutableStateOf<CountryStatistics?>(null) }
+    var showInfo by remember { mutableStateOf<EditTypeObjStatistics?>(null) }
 
     // list is sorted by largest count descending
-    val maxCount = countryStatistics.firstOrNull()?.count ?: 0
+    val maxCount = editTypeObjStatistics.firstOrNull()?.count ?: 0
     LazyColumn(modifier) {
         items(
-            items = countryStatistics,
-            key = { it.countryCode }
+            items = editTypeObjStatistics,
+            key = { it.type.name }
         ) { item ->
             StatisticsRow(
                 title = {
-                    Box(
-                        modifier = Modifier.size(width = 80.dp, height = 54.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Flag(item.countryCode)
-                    }
+                    Image(
+                        painter = painterResource(item.type.icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(48.dp)
+                    )
                 },
                 count = item.count,
                 maxCount = maxCount,
@@ -50,11 +48,9 @@ fun CountryStatisticsColumn(
             )
         }
     }
-
     showInfo?.let {
-        CountryDialog(
-            countryCode = it.countryCode,
-            rank = it.rank,
+        EditTypeDialog(
+            editType = it.type,
             onDismissRequest = { showInfo = null }
         )
     }

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.user.statistics
+package de.westnordost.streetcomplete.screens.user.edits
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
