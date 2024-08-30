@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.user.edits
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.AppBarDefaults
@@ -52,7 +53,8 @@ fun EditStatisticsScreen(
 
             HorizontalPager(
                 state = pagerState,
-                userScrollEnabled = false
+                userScrollEnabled = false,
+                modifier = Modifier.weight(1f)
             ) { p ->
                 when (EditStatisticsTab.entries[p]) {
                     EditStatisticsTab.ByType -> {
