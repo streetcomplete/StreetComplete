@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.user.edits
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,20 +16,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
+import de.westnordost.streetcomplete.ui.theme.LeafGreen
 
 /** Simple bar chart of solved quests by quest type */
 @Composable
 fun EditTypeStatisticsColumn(
-    editTypeObjStatistics: List<EditTypeObjStatistics>,
+    statistics: List<CompleteEditTypeStatistics>,
     modifier: Modifier = Modifier,
 ) {
-    var showInfo by remember { mutableStateOf<EditTypeObjStatistics?>(null) }
+    var showInfo by remember { mutableStateOf<CompleteEditTypeStatistics?>(null) }
 
     // list is sorted by largest count descending
-    val maxCount = editTypeObjStatistics.firstOrNull()?.count ?: 0
-    LazyColumn(modifier) {
+    val maxCount = statistics.firstOrNull()?.count ?: 0
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(top = 16.dp)
+    ) {
         items(
-            items = editTypeObjStatistics,
+            items = statistics,
             key = { it.type.name }
         ) { item ->
             BarChartRow(
@@ -40,11 +45,13 @@ fun EditTypeStatisticsColumn(
                     )
                 },
                 count = item.count,
+                countNew = item.countCurrentWeek,
                 maxCount = maxCount,
                 modifier = Modifier
                     .clickable { showInfo = item }
-                    .padding(8.dp),
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
                 color = GrassGreen,
+                colorNew = LeafGreen
             )
         }
     }

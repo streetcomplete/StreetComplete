@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.user.edits
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.AppBarDefaults
@@ -62,7 +61,7 @@ fun EditStatisticsScreen(
                         LaunchedEffect(Unit) { viewModel.queryEditTypeStatistics() }
                         val statistics = editTypeStatistics
                         if (statistics != null) {
-                            EditTypeStatisticsColumn(editTypeObjStatistics = statistics)
+                            EditTypeStatisticsColumn(statistics = statistics)
                         }
                     }
                     EditStatisticsTab.ByCountry -> {
@@ -71,7 +70,7 @@ fun EditStatisticsScreen(
                         val alignments = flagAlignments
                         if (statistics != null && alignments != null) {
                             CountryStatisticsColumn(
-                                countryStatistics = statistics,
+                                statistics = statistics,
                                 flagAlignments = alignments
                             )
                         }

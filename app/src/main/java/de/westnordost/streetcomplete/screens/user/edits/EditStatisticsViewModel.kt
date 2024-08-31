@@ -17,8 +17,8 @@ abstract class EditStatisticsViewModel : ViewModel() {
     abstract val hasEdits: StateFlow<Boolean>
     abstract val isSynchronizingStatistics: StateFlow<Boolean>
 
-    abstract val countryStatistics: StateFlow<List<CountryStatistics>?>
-    abstract val editTypeStatistics: StateFlow<List<EditTypeObjStatistics>?>
+    abstract val countryStatistics: StateFlow<List<CompleteCountryStatistics>?>
+    abstract val editTypeStatistics: StateFlow<List<CompleteEditTypeStatistics>?>
 
     abstract fun queryCountryStatistics()
     abstract fun queryEditTypeStatistics()
@@ -26,7 +26,18 @@ abstract class EditStatisticsViewModel : ViewModel() {
     abstract val flagAlignments: StateFlow<Map<String, FlagAlignment>?>
 }
 
-data class EditTypeObjStatistics(val type: EditType, val count: Int)
+data class CompleteEditTypeStatistics(
+    val type: EditType,
+    val count: Int,
+    val countCurrentWeek: Int
+)
+data class CompleteCountryStatistics(
+    val countryCode: String,
+    val count: Int,
+    val rank: Int?,
+    val countCurrentWeek: Int,
+    val rankCurrentWeek: Int?,
+)
 
 class EditStatisticsViewModelImpl(
     private val statisticsSource: StatisticsSource,
@@ -36,8 +47,8 @@ class EditStatisticsViewModelImpl(
 
     override val hasEdits = MutableStateFlow(true)
     override val isSynchronizingStatistics = MutableStateFlow(statisticsSource.isSynchronizing)
-    override val countryStatistics = MutableStateFlow<List<CountryStatistics>?>(null)
-    override val editTypeStatistics = MutableStateFlow<List<EditTypeObjStatistics>?>(null)
+    override val countryStatistics = MutableStateFlow<List<CompleteCountryStatistics>?>(null)
+    override val editTypeStatistics = MutableStateFlow<List<CompleteEditTypeStatistics>?>(null)
     override val flagAlignments = MutableStateFlow<Map<String, FlagAlignment>?>(null)
 
     // no updating of data implemented (because actually not needed. Not possible to add edits
@@ -65,7 +76,24 @@ class EditStatisticsViewModelImpl(
     override fun queryCountryStatistics() {
         if (countryStatistics.value == null) {
             launch(IO) {
-                countryStatistics.value = statisticsSource.getCountryStatistics().sortedByDescending { it.count }
+                val statistics = statisticsSource.getCountryStatistics()
+                    .associate { it.countryCode to it }
+
+                val statisticsCurrentWeek = statisticsSource.getCurrentWeekCountryStatistics()
+                    .associate { it.countryCode to it }
+
+                countryStatistics.value = statistics
+                    .map { (countryCode, stats) ->
+                        val statsCurrentWeek = statisticsCurrentWeek[countryCode]
+                        CompleteCountryStatistics(
+                            countryCode,
+                            stats.count,
+                            stats.rank,
+                            statsCurrentWeek?.count ?: 0,
+                            statsCurrentWeek?.rank
+                        )
+                    }
+                    .sortedByDescending { it.count }
             }
         }
     }
@@ -73,10 +101,17 @@ class EditStatisticsViewModelImpl(
     override fun queryEditTypeStatistics() {
         if (editTypeStatistics.value == null) {
             launch(IO) {
-                editTypeStatistics.value = statisticsSource.getEditTypeStatistics()
-                    .mapNotNull {
-                        val editType = allEditTypes.getByName(it.type) ?: return@mapNotNull null
-                        EditTypeObjStatistics(editType, it.count)
+                val statistics = statisticsSource.getEditTypeStatistics()
+                    .associate { it.type to it.count }
+
+                val statisticsCurrentWeek = statisticsSource.getCurrentWeekEditTypeStatistics()
+                    .associate { it.type to it.count }
+
+                editTypeStatistics.value = statistics
+                    .mapNotNull { (type, count) ->
+                        val editType = allEditTypes.getByName(type) ?: return@mapNotNull null
+                        val countCurrentWeek = statisticsCurrentWeek[type] ?: 0
+                        CompleteEditTypeStatistics(editType, count, countCurrentWeek)
                     }
                     .sortedByDescending { it.count }
             }

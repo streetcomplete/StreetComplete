@@ -3,9 +3,14 @@ package de.westnordost.streetcomplete.screens.user.edits
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -26,18 +31,20 @@ import de.westnordost.streetcomplete.ui.ktx.pxToDp
 /** Bar chart row that shows a title, the count and the bar in the selected color */
 @Composable
 fun BarChartRow(
-    title: @Composable () -> Unit,
+    title: @Composable BoxScope.() -> Unit,
     count: Int,
+    countNew: Int,
     maxCount: Int,
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colors.primary,
+    colorNew: Color = MaterialTheme.colors.primaryVariant,
 ) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        title()
+        Box { title() }
         BoxWithConstraints(Modifier.weight(1f)) {
             val textMeasurer = rememberTextMeasurer(1)
             val textStyle = MaterialTheme.typography.body1
@@ -49,16 +56,32 @@ fun BarChartRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Spacer(Modifier
-                    .width(barWidth)
-                    .height(32.dp)
-                    .background(color, RoundedCornerShape(
+                Box(
+                    modifier = Modifier
+                        .width(barWidth)
+                        .height(32.dp),
+                    contentAlignment = Alignment.CenterEnd
+                ) {
+                    val barShape = RoundedCornerShape(
                         topStart = 2.dp,
                         bottomStart = 2.dp,
                         topEnd = 8.dp,
                         bottomEnd = 8.dp
-                    ))
-                )
+                    )
+                    val newFraction = countNew.toFloat() / count
+                    Spacer(
+                        Modifier
+                            .fillMaxSize()
+                            .background(color, barShape)
+                    )
+                    Spacer(
+                        Modifier
+                            .fillMaxWidth(newFraction)
+                            .fillMaxHeight()
+                            .background(colorNew, barShape)
+                    )
+                }
+
                 Text(
                     text = count.toString(),
                     style = textStyle,
@@ -80,7 +103,8 @@ private fun PreviewStatisticsRow() {
                 modifier = Modifier.size(48.dp)
             )
         },
-        count = 10000,
-        maxCount = 10000
+        count = 68,
+        countNew = 12,
+        maxCount = 100
     )
 }

@@ -411,6 +411,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="unsynced_quests_description">plus %d not yet published changes.</string>
     <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
 
+    <string name="user_profile_all_time_title">Overall</string>
+
     <string name="user_profile_global_rank">Global\nrank</string>
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
@@ -431,7 +433,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
     <string name="quests_empty">You published no edits yet</string>
 
-    <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
+    <string name="user_statistics_country_rank2">Rank in %s</string>
     <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>
     <string name="user_statistics_quest_wiki_link">Documentation</string>
 
