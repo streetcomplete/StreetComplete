@@ -78,7 +78,7 @@ private fun QuestPresetsList(viewModel: QuestPresetsViewModel) {
             itemsIndexed(presets, key = { _, it -> it.id }) { index, item ->
                 Column {
                     if (index > 0) Divider()
-                    QuestPresetItem(
+                    QuestPresetRow(
                         item = item,
                         onSelect = { viewModel.select(item.id) },
                         onRename = { viewModel.rename(item.id, it) },

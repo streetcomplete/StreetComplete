@@ -30,10 +30,10 @@ fun LazyGroupedLinksColumn(
                 span = { GridItemSpan(maxLineSpan) },
                 contentType = category::class
             ) {
-                LinkCategoryItem(category)
+                LinkCategoryRow(category)
             }
             items(links, contentType = { it::class }) { link ->
-                LinkItem(link, onClickLink)
+                LinkRow(link, onClickLink)
             }
         }
     }
@@ -48,7 +48,7 @@ fun LazyLinksColumn(
 ) {
     LazyLinksGrid(modifier, contentPadding = contentPadding) {
         items(links) { link ->
-            LinkItem(link, onClickLink)
+            LinkRow(link, onClickLink)
         }
     }
 }

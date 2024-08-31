@@ -45,7 +45,7 @@ fun QuestSelectionList(
             itemsIndexed(items, key = { _, it -> it.questType.name }) { index, item ->
                 Column(Modifier.background(MaterialTheme.colors.surface)) {
                     if (index > 0) Divider()
-                    QuestSelectionItem(
+                    QuestSelectionRow(
                         item = item,
                         onToggleSelection = { isSelected ->
                             // when enabling quest that is disabled by default, require confirmation

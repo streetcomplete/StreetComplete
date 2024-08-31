@@ -17,7 +17,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 @Composable
-fun LogsItem(
+fun LogsRow(
     log: LogMessage,
     modifier: Modifier = Modifier,
 ) {
@@ -46,8 +46,8 @@ fun LogsItem(
 
 @Preview
 @Composable
-private fun LogsItemPreview() {
-    LogsItem(LogMessage(
+private fun LogsRowPreview() {
+    LogsRow(LogMessage(
         level = LogLevel.DEBUG,
         tag = "Test",
         message = "Aspernatur rerum aperiam id error laborum possimus rerum",

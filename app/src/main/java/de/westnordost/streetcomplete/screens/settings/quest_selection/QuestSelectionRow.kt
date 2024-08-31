@@ -35,7 +35,7 @@ import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 /** Single item the the quest selection list. Shows icon + title, whether it is enabled and whether
  *  it is disabled by default / disabled in the country one is in */
 @Composable
-fun QuestSelectionItem(
+fun QuestSelectionRow(
     item: QuestSelection,
     onToggleSelection: (isSelected: Boolean) -> Unit,
     displayCountry: String,
@@ -93,10 +93,10 @@ private fun DisabledHint(text: String) {
 
 @Preview
 @Composable
-private fun QuestSelectionItemPreview() {
+private fun QuestSelectionRowPreview() {
     var selected by remember { mutableStateOf(true) }
 
-    QuestSelectionItem(
+    QuestSelectionRow(
         item = QuestSelection(AddRoadSurface(), selected, false),
         onToggleSelection = { selected = !selected },
         displayCountry = "Atlantis",
