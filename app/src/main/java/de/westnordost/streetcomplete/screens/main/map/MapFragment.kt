@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBound
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLng
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
@@ -154,13 +155,11 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         map.uiSettings.flingThreshold = 250
         map.uiSettings.flingAnimationBaseTime = 500
         map.uiSettings.isDisableRotateWhenScaling = true
+        // workaround for https://github.com/maplibre/maplibre-native/issues/2792
+        map.gesturesManager.moveGestureDetector.moveThreshold = resources.dpToPx(5f)
 
         map.addOnMoveListener(object : MapLibreMap.OnMoveListener {
-            override fun onMoveBegin(detector: MoveGestureDetector) {
-                // tapping also calls onMoveBegin, but with integer x and y, and with historySize 0
-                if (detector.currentEvent.historySize != 0) // crappy workaround for deciding whether it's a tap or a move
-                    listener?.onPanBegin()
-            }
+            override fun onMoveBegin(detector: MoveGestureDetector) { listener?.onPanBegin() }
             override fun onMove(detector: MoveGestureDetector) {}
             override fun onMoveEnd(detector: MoveGestureDetector) {}
         })
