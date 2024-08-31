@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
 import android.content.Intent
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -132,8 +133,6 @@ fun MapControls(
     val editItems by editHistoryViewModel.editItems.collectAsState()
     val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
     val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
-
-    val isCreateButtonEnabled by remember { derivedStateOf { (mapCamera?.zoom ?: 0.0) >= 17.0 } }
 
     var showOverlaysDropdown by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
@@ -311,11 +310,16 @@ fun MapControls(
 
             if (selectedOverlay?.isCreateNodeEnabled == true) {
                 MapButton(
-                    onClick = onClickCreate,
+                    onClick = {
+                        if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
+                            onClickCreate()
+                        } else {
+                            context.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
+                        }
+                    },
                     modifier = Modifier
                         .align(BiasAlignment(0.333f, 1f))
                         .padding(4.dp),
-                    enabled = isCreateButtonEnabled,
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = MaterialTheme.colors.secondaryVariant,
                     ),
