@@ -102,6 +102,7 @@ private fun CountryInfoDetails(
                     label = stringResource(R.string.user_profile_all_time_title),
                     value = "#$rank",
                     progress = getLocalRankProgress(rank),
+                    modifier = Modifier.weight(1f),
                     animationDelay = 0
                 )
             }
@@ -110,6 +111,7 @@ private fun CountryInfoDetails(
                     label = stringResource(R.string.user_profile_current_week_title),
                     value = "#$rankCurrentWeek",
                     progress = getLocalRankCurrentWeekProgress(rankCurrentWeek),
+                    modifier = Modifier.weight(1f),
                     animationDelay = 500
                 )
             }
@@ -135,7 +137,7 @@ private fun CountryInfoDetails(
 @PreviewScreenSizes
 @PreviewLightDark
 @Composable
-private fun PreviewCountryInfoDialog() {
+private fun PreviewCountryDialog() {
     CountryDialog(
         countryCode = "PH",
         rank = 99,

@@ -113,7 +113,7 @@ private fun EditTypeDetails(
 @PreviewScreenSizes
 @PreviewLightDark
 @Composable
-private fun PreviewEditTypeInfoDialog() {
+private fun PreviewEditTypeDialog() {
     EditTypeDialog(
         editType = AddRecyclingType(),
         onDismissRequest = {}
