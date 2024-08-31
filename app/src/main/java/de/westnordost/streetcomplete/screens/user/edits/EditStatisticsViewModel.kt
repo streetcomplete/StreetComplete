@@ -77,10 +77,10 @@ class EditStatisticsViewModelImpl(
         if (countryStatistics.value == null) {
             launch(IO) {
                 val statistics = statisticsSource.getCountryStatistics()
-                    .associate { it.countryCode to it }
+                    .associateBy { it.countryCode }
 
                 val statisticsCurrentWeek = statisticsSource.getCurrentWeekCountryStatistics()
-                    .associate { it.countryCode to it }
+                    .associateBy { it.countryCode }
 
                 countryStatistics.value = statistics
                     .map { (countryCode, stats) ->
