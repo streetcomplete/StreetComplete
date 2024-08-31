@@ -7,14 +7,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -39,40 +43,14 @@ fun UserScreen(
     onClickBack: () -> Unit,
 ) {
     Column(Modifier.fillMaxSize()) {
-        TopAppBar(
-            title = { Text(stringResource(R.string.user_profile)) },
-            navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
-        )
-
-        val scope = rememberCoroutineScope()
         val pagerState = rememberPagerState(pageCount = { UserTab.entries.size })
-        val page = pagerState.targetPage
-
-        BoxWithConstraints {
-            TabRow(
-                selectedTabIndex = page,
-                modifier = Modifier.shadow(AppBarDefaults.TopAppBarElevation)
-            ) {
-                for (tab in UserTab.entries) {
-                    val icon = painterResource(tab.iconId)
-                    val text = stringResource(tab.textId)
-                    val index = tab.ordinal
-                    val showText = min(maxWidth, maxHeight) >= 600.dp
-                    Tab(
-                        selected = page == index,
-                        onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
-                        icon = { Icon(icon, text) },
-                        text = if (showText) {{ Text(text) }} else null
-                    )
-                }
-            }
-        }
-
+        UserScreenTopAppBar(
+            onClickBack = onClickBack,
+            pagerState = pagerState
+        )
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
+            modifier = Modifier.fillMaxWidth().weight(1f)
         ) { p ->
             when (UserTab.entries[p]) {
                 UserTab.Profile -> {
@@ -86,6 +64,48 @@ fun UserScreen(
                 }
                 UserTab.Links -> {
                     LinksScreen(viewModel = koinViewModel())
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun UserScreenTopAppBar(
+    onClickBack: () -> Unit,
+    pagerState: PagerState,
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        modifier = modifier,
+        color = MaterialTheme.colors.primarySurface,
+        elevation = AppBarDefaults.TopAppBarElevation,
+    ) {
+        Column {
+            TopAppBar(
+                title = { Text(stringResource(R.string.user_profile)) },
+                navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
+                elevation = 0.dp
+            )
+
+            val scope = rememberCoroutineScope()
+            val page = pagerState.targetPage
+
+            BoxWithConstraints {
+                TabRow(selectedTabIndex = page) {
+                    for (tab in UserTab.entries) {
+                        val icon = painterResource(tab.iconId)
+                        val text = stringResource(tab.textId)
+                        val index = tab.ordinal
+                        val showText = min(maxWidth, maxHeight) >= 600.dp
+                        Tab(
+                            selected = page == index,
+                            onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
+                            icon = { Icon(icon, text) },
+                            text = if (showText) { { Text(text) } } else null
+                        )
+                    }
                 }
             }
         }
