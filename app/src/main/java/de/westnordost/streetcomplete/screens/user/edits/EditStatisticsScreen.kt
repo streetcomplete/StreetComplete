@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import kotlinx.coroutines.launch
 
+/** Shows the user's edit statistics, alternatively either grouped by edit type or by country */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun EditStatisticsScreen(
@@ -59,7 +60,10 @@ fun EditStatisticsScreen(
                 when (EditStatisticsTab.entries[p]) {
                     EditStatisticsTab.ByType -> {
                         LaunchedEffect(Unit) { viewModel.queryEditTypeStatistics() }
-                        editTypeStatistics?.let { EditTypeStatisticsColumn(editTypeObjStatistics = it) }
+                        val statistics = editTypeStatistics
+                        if (statistics != null) {
+                            EditTypeStatisticsColumn(editTypeObjStatistics = statistics)
+                        }
                     }
                     EditStatisticsTab.ByCountry -> {
                         LaunchedEffect(Unit) { viewModel.queryCountryStatistics() }

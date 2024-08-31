@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 
-/** Simple bar diagram of solved quests by country */
+/** Simple bar chart of solved quests by country */
 @Composable
 fun CountryStatisticsColumn(
     countryStatistics: List<CountryStatistics>,
@@ -31,7 +31,7 @@ fun CountryStatisticsColumn(
             items = countryStatistics,
             key = { it.countryCode }
         ) { item ->
-            StatisticsRow(
+            BarChartRow(
                 title = {
                     CircularFlag(
                         countryCode = item.countryCode,

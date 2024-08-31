@@ -16,7 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 
-/** Simple bar diagram of solved quests by quest type */
+/** Simple bar chart of solved quests by quest type */
 @Composable
 fun EditTypeStatisticsColumn(
     editTypeObjStatistics: List<EditTypeObjStatistics>,
@@ -31,7 +31,7 @@ fun EditTypeStatisticsColumn(
             items = editTypeObjStatistics,
             key = { it.type.name }
         ) { item ->
-            StatisticsRow(
+            BarChartRow(
                 title = {
                     Image(
                         painter = painterResource(item.type.icon),

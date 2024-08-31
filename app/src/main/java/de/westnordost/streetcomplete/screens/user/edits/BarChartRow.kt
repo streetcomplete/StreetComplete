@@ -23,8 +23,9 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 
+/** Bar chart row that shows a title, the count and the bar in the selected color */
 @Composable
-fun StatisticsRow(
+fun BarChartRow(
     title: @Composable () -> Unit,
     count: Int,
     maxCount: Int,
@@ -43,7 +44,6 @@ fun StatisticsRow(
             val textSize = textMeasurer.measure(count.toString(), textStyle).size
             val availableBarWidth = maxWidth - textSize.width.pxToDp() - 8.dp
             val barWidth = (availableBarWidth * count / maxCount)
-            val barHeight = textSize.height.pxToDp() + 4.dp
 
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -51,7 +51,7 @@ fun StatisticsRow(
             ) {
                 Spacer(Modifier
                     .width(barWidth)
-                    .height(barHeight)
+                    .height(32.dp)
                     .background(color, RoundedCornerShape(
                         topStart = 2.dp,
                         bottomStart = 2.dp,
@@ -72,7 +72,7 @@ fun StatisticsRow(
 @Preview
 @Composable
 private fun PreviewStatisticsRow() {
-    StatisticsRow(
+    BarChartRow(
         title = {
             Image(
                 painter = painterResource(R.drawable.ic_building_allotment_house),
