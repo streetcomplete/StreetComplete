@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.screens.user.login.LoginViewModel
 import de.westnordost.streetcomplete.screens.user.login.LoginViewModelImpl
 import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModel
 import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModelImpl
-import de.westnordost.streetcomplete.screens.user.statistics.EditStatisticsViewModel
-import de.westnordost.streetcomplete.screens.user.statistics.EditStatisticsViewModelImpl
+import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsViewModel
+import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsViewModelImpl
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -20,7 +20,7 @@ val userScreenModule = module {
 
     factory<LoginViewModel> { LoginViewModelImpl(get(), get(), get()) }
 
-    factory<EditStatisticsViewModel> { EditStatisticsViewModelImpl(get(), get()) }
+    factory<EditStatisticsViewModel> { EditStatisticsViewModelImpl(get(), get(), get()) }
 
     factory<LinksViewModel> { LinksViewModelImpl(get(), get()) }
 

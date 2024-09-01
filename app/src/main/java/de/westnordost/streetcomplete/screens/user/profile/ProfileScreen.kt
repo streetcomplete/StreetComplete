@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,6 +24,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -66,7 +68,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
 
     Column(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -126,6 +128,11 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         Divider()
 
         // Statistics
+
+        Text(
+            text = stringResource(R.string.user_profile_all_time_title),
+            style = MaterialTheme.typography.titleLarge
+        )
 
         var delay = 0
 
@@ -190,13 +197,11 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
 }
 
 @Composable
-private fun LocalRankBadge(rank: Int, countryCode: String?, delay: Int) {
+private fun LocalRankBadge(rank: Int, countryCode: String, delay: Int) {
     LaurelWreathBadge(
         label = getLocalRankText(countryCode),
         value = "#$rank",
-        // 2024-05: rank 850 is about top 50% of users (~20 edits), rank 200 top 5% (~1500 edits)
-        //          in Italy, which is the top 5 country in terms of contributions
-        progress = getRankProgress(rank, maxProgressAtRank = 200, minProgressAtRank = 850),
+        progress = getLocalRankProgress(rank),
         animationDelay = delay
     )
 }
@@ -206,8 +211,7 @@ private fun RankBadge(rank: Int, delay: Int) {
     LaurelWreathBadge(
         label = stringResource(R.string.user_profile_global_rank),
         value = "#$rank",
-        // 2024-05: rank 5000 is about top 50% of users (~200 edits), rank 1500 top 5% (~5000 edits)
-        progress = getRankProgress(rank, maxProgressAtRank = 1500, minProgressAtRank = 5000),
+        progress = getRankProgress(rank),
         animationDelay = delay
     )
 }
@@ -233,13 +237,11 @@ private fun AchievementLevelsBadge(levels: Int, delay: Int) {
 }
 
 @Composable
-private fun LocalRankCurrentWeekBadge(rank: Int, countryCode: String?, delay: Int) {
+private fun LocalRankCurrentWeekBadge(rank: Int, countryCode: String, delay: Int) {
     LaurelWreathBadge(
         label = getLocalRankText(countryCode),
         value = "#$rank",
-        // 2024-05: rank 50 is about top 50% of users (~20 edits), rank 10 top 10% (~250 edits)
-        //          in Italy, which is the top 5 country in terms of contributions
-        progress = getRankProgress(rank, maxProgressAtRank = 10, minProgressAtRank = 50),
+        progress = getLocalRankCurrentWeekProgress(rank),
         animationDelay = delay
     )
 }
@@ -249,11 +251,11 @@ private fun RankCurrentWeekBadge(rank: Int, delay: Int) {
     LaurelWreathBadge(
         label = stringResource(R.string.user_profile_global_rank),
         value = "#$rank",
-        // 2024-05: rank 370 is about top 50% of users (~20 edits), rank 100 top 5% (~300 edits)
-        progress = getRankProgress(rank, maxProgressAtRank = 100, minProgressAtRank = 370),
+        progress = getRankCurrentWeekProgress(rank),
         animationDelay = delay
     )
 }
+
 
 @Composable
 private fun StarCount(count: Int) {
@@ -273,16 +275,11 @@ private fun StarCount(count: Int) {
     }
 }
 
+@Composable @ReadOnlyComposable
+private fun getLocalRankText(countryCode: String): String =
+    stringResource(R.string.user_profile_local_rank, Locale("", countryCode).displayCountry)
+
 private fun getAvatarPainter(filename: String?): Painter? =
     filename?.let { BitmapFactory.decodeFile(it) }?.asImageBitmap()?.let { BitmapPainter(it) }
 
 private fun getAnimationDelay(step: Int) = step * 500
-
-@Composable
-private fun getLocalRankText(countryCode: String?): String =
-    stringResource(R.string.user_profile_local_rank, Locale("", countryCode ?: "").displayCountry)
-
-/** Translate the user's actual rank to a value from 0 (bad) to 1 (the best) */
-private fun getRankProgress(rank: Int, maxProgressAtRank: Int, minProgressAtRank: Int): Float =
-    ((minProgressAtRank - rank).toFloat() / (minProgressAtRank - maxProgressAtRank))
-        .coerceIn(0f, 1f)

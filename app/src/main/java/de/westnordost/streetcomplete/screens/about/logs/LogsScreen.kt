@@ -89,7 +89,7 @@ fun LogsScreen(
             LazyColumn(state = listState) {
                 itemsIndexed(logs) { index, item ->
                     if (index > 0) Divider()
-                    LogsItem(item, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+                    LogsRow(item, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
                 }
             }
         }

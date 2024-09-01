@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -36,6 +37,7 @@ import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.achievements
+import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.screens.user.links.LazyLinksColumn
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
@@ -68,61 +70,19 @@ fun AchievementDialog(
                 .clickable(interactionSource, null) { onDismissRequest() },
             contentAlignment = Alignment.Center
         ) {
-            ContentWithIconPortraitOrLandscape(modifier.padding(16.dp)) { isLandscape, iconSize ->
-                AchievementIcon(achievement.icon, level, Modifier.size(iconSize))
-                AchievementDetails(
-                    achievement, level,
-                    horizontalAlignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally,
-                    showLinks = isNew
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun ContentWithIconPortraitOrLandscape(
-    modifier: Modifier = Modifier,
-    content: @Composable (isLandscape: Boolean, iconSize: Dp) -> Unit
-) {
-    // in landscape layout, dialog would become too tall to fit
-    BoxWithConstraints(modifier) {
-        val isLandscape = maxWidth > maxHeight
-
-        // scale down icon to fit small devices
-        val iconSize = (min(maxWidth, maxHeight) * 0.67f).coerceAtMost(320.dp)
-
-        val backgroundPadding =
-            if (isLandscape) PaddingValues(start = iconSize * 0.75f)
-            else PaddingValues(top = iconSize * 0.75f)
-
-        val dialogModifier = modifier
-            .backgroundWithPadding(
-                color = MaterialTheme.colors.surface,
-                padding = backgroundPadding,
-                shape = MaterialTheme.shapes.medium
+            DialogContentWithIconLayout(
+                icon = {
+                    AchievementIcon(achievement.icon, level)
+                },
+                content = { isLandscape ->
+                    AchievementDetails(
+                        achievement, level,
+                        isLandscape = isLandscape,
+                        showLinks = isNew
+                    )
+                },
+                modifier = modifier.padding(16.dp)
             )
-            .padding(24.dp)
-
-        val contentColor = contentColorFor(MaterialTheme.colors.surface)
-        CompositionLocalProvider(LocalContentColor provides contentColor) {
-            if (isLandscape) {
-                Row(
-                    modifier = dialogModifier.width(maxWidth.coerceAtMost(720.dp)),
-                    horizontalArrangement = Arrangement.spacedBy(24.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    content(true, iconSize)
-                }
-            } else {
-                Column(
-                    modifier = dialogModifier,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    content(false, iconSize)
-                }
-            }
         }
     }
 }
@@ -132,17 +92,18 @@ private fun AchievementDetails(
     achievement: Achievement,
     level: Int,
     modifier: Modifier = Modifier,
-    horizontalAlignment: Alignment.Horizontal,
+    isLandscape: Boolean,
     showLinks: Boolean,
 ) {
     Column(
         modifier = modifier,
-        horizontalAlignment = horizontalAlignment
+        horizontalAlignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally,
     ) {
         Text(
             text = stringResource(achievement.title),
             modifier = Modifier.padding(bottom = 16.dp),
             style = MaterialTheme.typography.headlineSmall,
+            textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
         )
         val description = achievement.description
         if (description != null) {

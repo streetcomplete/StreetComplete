@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 
 @Composable
-fun QuestPresetItem(
+fun QuestPresetRow(
     item: QuestPresetSelection,
     onSelect: () -> Unit,
     onRename: (name: String) -> Unit,
@@ -120,8 +120,8 @@ fun QuestPresetItem(
 
 @Preview
 @Composable
-private fun PreviewQuestPresetItem() {
-    QuestPresetItem(
+private fun PreviewQuestPresetRow() {
+    QuestPresetRow(
         item = QuestPresetSelection(1L, "A quest preset name", false),
         onSelect = {},
         onRename = {},

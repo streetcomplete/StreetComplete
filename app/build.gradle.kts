@@ -188,9 +188,6 @@ dependencies {
     implementation("me.grantland:autofittextview:0.2.1")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
 
-    // box2d view
-    implementation("org.jbox2d:jbox2d-library:2.2.1.1")
-
     // sharing presets/settings via QR Code
     implementation("io.github.alexzhirkevich:qrose:1.0.1")
     // for encoding information for the URL configuration (QR code)
