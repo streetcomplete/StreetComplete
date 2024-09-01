@@ -665,7 +665,6 @@
     <string name="credits_projects_contributors_title">"پروژه‌های ساخته شده برای StreetComplete"</string>
     <string name="credits_main_contributors_title">"مشارکت‌کنندگان اصلی"</string>
     <string name="stats_are_syncing">"آمار شما همچنان در حال همگام سازی است. بعداً این صفحه را بررسی کنید."</string>
-    <string name="user_statistics_country_rank">"رتبه‌بندی در %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"نقشه‌برداری پویا %s"</string>
     <string name="user_statistics_filter_by_country">"براساس کشور"</string>
     <string name="user_statistics_filter_by_quest_type">"براساس نوع جُستار"</string>

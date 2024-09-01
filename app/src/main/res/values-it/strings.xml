@@ -668,7 +668,6 @@ Questa app chiede il numero civico di un edificio solo dopo che è stato determi
     <string name="credits_projects_contributors_title">"Progetti creati per StreetComplete"</string>
     <string name="credits_main_contributors_title">"Contributori principali"</string>
     <string name="stats_are_syncing">"Le tue statistiche si stanno sincronizzando. Controlla più tardi."</string>
-    <string name="user_statistics_country_rank">"Posizione in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portale di mappatura %s"</string>
     <string name="user_statistics_filter_by_country">"per nazione"</string>
     <string name="user_statistics_filter_by_quest_type">"per tipo di missione"</string>

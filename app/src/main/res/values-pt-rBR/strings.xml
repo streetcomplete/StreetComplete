@@ -668,7 +668,6 @@ Observe que este aplicativo solicita o número da casa de uma edificação apena
     <string name="credits_projects_contributors_title">"Projetos feitos para o StreetComplete"</string>
     <string name="credits_main_contributors_title">"Principais colaboradores"</string>
     <string name="stats_are_syncing">"Suas estatísticas ainda estão sendo sincronizadas. Verifique mais tarde."</string>
-    <string name="user_statistics_country_rank">"Rank em %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de mapeamento %s"</string>
     <string name="user_statistics_filter_by_country">"por país"</string>
     <string name="user_statistics_filter_by_quest_type">"por tipo"</string>

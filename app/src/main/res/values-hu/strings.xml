@@ -665,7 +665,6 @@ Ez az app csak akkor kérdezi meg egy épület házszámát, ha a típusa már m
     <string name="credits_projects_contributors_title">"StreetComplete-hez felhasznált projektek"</string>
     <string name="credits_main_contributors_title">"Fő közreműködők"</string>
     <string name="stats_are_syncing">"A statisztikáid még frissítés alatt állnak. Nézz vissza később."</string>
-    <string name="user_statistics_country_rank">"%2$si helyezés: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Térképportál %s"</string>
     <string name="user_statistics_filter_by_country">"ország szerint"</string>
     <string name="user_statistics_filter_by_quest_type">"kérdéstípus szerint"</string>

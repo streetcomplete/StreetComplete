@@ -668,7 +668,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="credits_projects_contributors_title">"Projekti izrađeni za StreetComplete"</string>
     <string name="credits_main_contributors_title">"Glavni suradnici"</string>
     <string name="stats_are_syncing">"Vaša se statistika još uvijek sinkronizira. Provjerite ovaj ekran kasnije."</string>
-    <string name="user_statistics_country_rank">"Rang u %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartografski portal %s"</string>
     <string name="user_statistics_filter_by_country">"po zemljama"</string>
     <string name="user_statistics_filter_by_quest_type">"po vrsti"</string>
@@ -1405,4 +1404,7 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="about_category_help">"Pomoć"</string>
     <string name="quest_camp_power_supply_hint">"To mogu biti utičnice izravno na parcelama kampa, utičnice u dijeljenom prostoru dostupne gostima, namjenska punionica za telefone i prijenosna računala itd."</string>
     <string name="quest_barrier_opening_width_bollard">"Koji je najširi prolaz kroz koji se ovdje može proći?"</string>
+    <string name="user_profile_all_time_title">"Sveukupno"</string>
+    <string name="user_statistics_country_rank2">"Rang u %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Ostao je samo panj"</string>
 </resources>

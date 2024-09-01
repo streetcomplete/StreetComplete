@@ -667,7 +667,6 @@ Tingueu en compte que aquesta aplicació només pregunta pel número de l'edific
     <string name="credits_projects_contributors_title">"Projectes fets per a StreetComplete"</string>
     <string name="credits_main_contributors_title">"Contribuïdors principals"</string>
     <string name="stats_are_syncing">"Les vostres estadístiques encara s'estan sincronitzant. Comproveu aquesta pantalla més tard."</string>
-    <string name="user_statistics_country_rank">"Rang a %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mapejant Portal %s"</string>
     <string name="user_statistics_filter_by_country">"per país"</string>
     <string name="user_statistics_filter_by_quest_type">"per tipus de missió"</string>

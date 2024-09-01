@@ -666,7 +666,6 @@
     <string name="credits_projects_contributors_title">"Проєкти, створені для StreetComplete"</string>
     <string name="credits_main_contributors_title">"Основні співавтори"</string>
     <string name="stats_are_syncing">"Ваша статистика все ще синхронізується. Перевірте цей екран пізніше."</string>
-    <string name="user_statistics_country_rank">"Рейтинг у %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографічний портал %s"</string>
     <string name="user_statistics_filter_by_country">"за країною"</string>
     <string name="user_statistics_filter_by_quest_type">"за типом квесту"</string>

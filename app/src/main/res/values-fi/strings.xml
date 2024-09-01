@@ -668,7 +668,6 @@ Huomioi, että sovellus kysyy talonumeroa vasta talotyypin määrittelyn jälkee
     <string name="credits_projects_contributors_title">"StreetCompletelle tehdyt projektit"</string>
     <string name="credits_main_contributors_title">"Pääasialliset tekijät"</string>
     <string name="stats_are_syncing">"Tilastosi synkronointi on kesken. Tarkista myöhemmin tilanne."</string>
-    <string name="user_statistics_country_rank">"%2$s-sija: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartoitusportaali %s"</string>
     <string name="user_statistics_filter_by_country">"maittain"</string>
     <string name="user_statistics_filter_by_quest_type">"tehtävittäin"</string>
@@ -1406,4 +1405,7 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="about_category_help">"Apua"</string>
     <string name="quest_camp_power_supply_hint">"Se voisi olla pistorasia leirintäalueella, pistorasioita vieraiden käytettävissä olevassa huoltorakennuksessa, latausasema puhelimille, kannettaville, jne."</string>
     <string name="quest_barrier_opening_width_bollard">"Mikä on levein väli josta voi kulkea läpi?"</string>
+    <string name="user_profile_all_time_title">"Kokonaissijoitus"</string>
+    <string name="user_statistics_country_rank2">"%s-sijoitus"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Se on pelkkä puunkanto"</string>
 </resources>

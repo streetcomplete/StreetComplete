@@ -666,9 +666,8 @@ Pats galvenais, atcerieties ievērot drošību: apzinieties savu apkārtni un ne
     <string name="credits_projects_contributors_title">"Projekti, kas ir veidoti StreetComplete lietotnei"</string>
     <string name="credits_main_contributors_title">"Galvenie veidotāji"</string>
     <string name="stats_are_syncing">"Jūsu statistika vēl tiek sinhronizēta. Lūdzu, apskatiet šo ekrānu vēlāk."</string>
-    <string name="user_statistics_country_rank">"Rangs %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartēšanas portāls %s"</string>
-    <string name="user_statistics_filter_by_country">"pēc valts"</string>
+    <string name="user_statistics_filter_by_country">"pēc valsts"</string>
     <string name="user_statistics_filter_by_quest_type">"pēc veida"</string>
     <string name="user_profile_global_rank">"Globālais rangs"</string>
     <string name="user_profile_local_rank">"Rangs valstī

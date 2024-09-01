@@ -668,7 +668,6 @@ Note that this app asks for the house number of a building only after its type h
     <string name="credits_projects_contributors_title">"Projects made for StreetComplete"</string>
     <string name="credits_main_contributors_title">"Main contributors"</string>
     <string name="stats_are_syncing">"Your statistics are still syncing. Check this screen later."</string>
-    <string name="user_statistics_country_rank">"Rank in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mapping Portal %s"</string>
     <string name="user_statistics_filter_by_country">"by country"</string>
     <string name="user_statistics_filter_by_quest_type">"by type"</string>

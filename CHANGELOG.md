@@ -1,5 +1,12 @@
 # Changelog
 
+## v59.0-alpha4
+- Some statistics in the user profile screen look different now (#5855)
+- Fix follow-me mode didn't always turn off on moving map (#5824)
+- Make it easier to hit the right line in overlays (#5849)
+- Tree leaf type: User can answer that it is now a tree stump (#5853), by @mnalis
+- Barrier opening: Allow inputting widths of above 9.99 meters (#5865)
+
 ## v59.0-alpha2
 
 ### Fixes

@@ -667,7 +667,6 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="credits_projects_contributors_title">"Projektai sukurti StreetComplete"</string>
     <string name="credits_main_contributors_title">"Pagrindiniai talkininkai"</string>
     <string name="stats_are_syncing">"Jūsų statistika vis dar atnaujinama. Grįžkite čia vėliau."</string>
-    <string name="user_statistics_country_rank">"Vieta %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Žymėjimo portalas %s"</string>
     <string name="user_statistics_filter_by_country">"pagal šalį"</string>
     <string name="user_statistics_filter_by_quest_type">"pagal užduoties tipą"</string>

@@ -641,7 +641,6 @@
     <string name="credits_projects_contributors_title">"Ծրագրեր, որոնք արվել են փողոցային մասնաճյուղի համար"</string>
     <string name="credits_main_contributors_title">"Հիմնական ներդրողներ"</string>
     <string name="stats_are_syncing">"Ձեր վիճակագրությունը դեռ համաժամեցվում է: Ստուգեք այս էկրանը ավելի ուշ:"</string>
-    <string name="user_statistics_country_rank">"Վարկանիշը %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Քարտեզագրում պորտալ %s"</string>
     <string name="user_statistics_filter_by_country">"ըստ երկրի"</string>
     <string name="user_statistics_filter_by_quest_type">"ըստ որոնման տեսակի"</string>

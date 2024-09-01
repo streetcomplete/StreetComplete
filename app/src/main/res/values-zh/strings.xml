@@ -668,7 +668,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="credits_projects_contributors_title">"为StreetComplete制作的项目"</string>
     <string name="credits_main_contributors_title">"主要贡献者"</string>
     <string name="stats_are_syncing">"你的统计数据还在同步。请稍后再查看。"</string>
-    <string name="user_statistics_country_rank">"在%2$s排行: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"绘图传送门 %s"</string>
     <string name="user_statistics_filter_by_country">"依据国家"</string>
     <string name="user_statistics_filter_by_quest_type">"依据任务类型"</string>

@@ -661,7 +661,6 @@
     <string name="credits_projects_contributors_title">"Έργα που έγιναν για το StreetComplete"</string>
     <string name="credits_main_contributors_title">"Κύριοι συνεισφέροντες"</string>
     <string name="stats_are_syncing">"Τα στατιστικά σας συγχρονίζονται ακόμη. Ελέγξτε αυτήν την οθόνη αργότερα."</string>
-    <string name="user_statistics_country_rank">"Κατάταξη σε %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Πύλη Χαρτογράφησης %s"</string>
     <string name="user_statistics_filter_by_country">"ανά χώρα"</string>
     <string name="user_statistics_filter_by_quest_type">"ανά τύπο αναζήτησης"</string>
@@ -735,7 +734,7 @@
     <string name="achievement_outdoors_solved_X">"Λύσατε %d αναζητήσεις που είναι χρήσιμες για άτομα της υπαίθρου!"</string>
     <string name="quest_pedestrian_crossing_island">"Έχει νησίδα αυτή η διάβαση πεζών;"</string>
     <string name="quest_generic_answer_noSign">"Δεν υπάρχει πινακίδα"</string>
-    <string name="quest_steps_ramp_separate_wheelchair">"Η ράμπα αναπηρικού αμαξίδιου εμφανίζεται ως ξεχωριστή διαδρομή στον χάρτη;"</string>
+    <string name="quest_steps_ramp_separate_wheelchair">"Η ράμπα αναπηρικού αμαξίδιου εμφανίζεται ως ξεχωριστή γραμμή στον χάρτη;"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"ξεχωριστή"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"όχι ξεχωριστή"</string>
     <string name="pref_title_sync2">"Ανεβάστε αυτόματα απαντήσεις"</string>
@@ -1124,7 +1123,7 @@
     <string name="quest_air_pump_bicycle_shop_title">"Υπάρχει δημόσια αντλία ποδηλάτου εδώ (όταν είναι ανοιχτά);"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Υπάρχει λειτουργική αντλία ποδηλάτου εδώ;"</string>
     <string name="action_overlays">"Επικαλύψεις"</string>
-    <string name="split_way">"Διαίρεση διαδρομής"</string>
+    <string name="split_way">"Διαχωρισμός διαδρομής"</string>
     <string name="quest_memorialType_title">"Τι είδους μνημείο είναι αυτό;"</string>
     <string name="quest_memorialType_statue">"Άγαλμα"</string>
     <string name="quest_memorialType_bust">"Προτομή"</string>
@@ -1239,7 +1238,7 @@
     <string name="cycleway_reverse_direction">"Αντίστροφη κατεύθυνση ποδηλατόδρομου"</string>
     <string name="cycleway_reverse_direction_warning">"Το ότι ένας ποδηλατόδρομος πηγαίνει προς την άλλη κατεύθυνση είναι εξαιρετικά σπάνιο."</string>
     <string name="cycleway_reverse_direction_toast">"Πατήστε σε ποια πλευρά θέλετε να αντιστρέψετε"</string>
-    <string name="separate_cycleway_path">"Διαδρομή ή μονοπάτι"</string>
+    <string name="separate_cycleway_path">"Διαδρομή ή μονοπάτι (γενικό)"</string>
     <string name="quest_fireHydrant_type_pipe">"σωλήνα"</string>
     <string name="measure_info_title">"Επίτευξη βέλτιστης ακρίβειας"</string>
     <string name="measure_info_html_description">"&lt;p&gt;Το ARCore μερικές φορές (αρχικά) υποθέτει ότι το έδαφος είναι λίγο χαμηλότερο ή υψηλότερο από ό,τι στην πραγματικά είναι. Αυτό εισάγει ένα σφάλμα μέτρησης που γίνεται μεγαλύτερο όσο περισσότερο γέρνετε το τηλέφωνό σας προς τον ορίζοντα.&lt;/p&gt;
@@ -1391,4 +1390,7 @@
     <string name="about_category_help">"Βοήθεια"</string>
     <string name="quest_camp_power_supply_hint">"Αυτό θα μπορούσε να είναι πρίζες απευθείας στους χώρους κατασκήνωσης, πρίζες σε ένα κτίριο υπηρεσιών προσβάσιμο από επισκέπτες, ένας ειδικός σταθμός φόρτισης για τηλέφωνα, φορητούς υπολογιστές κ.λπ."</string>
     <string name="quest_barrier_opening_width_bollard">"Ποιο είναι το μεγαλύτερο κενό που μπορεί να περάσει κανείς εδώ;"</string>
+    <string name="user_profile_all_time_title">"Συνολικά"</string>
+    <string name="user_statistics_country_rank2">"Κατάταξη σε %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Είναι απλά ένας κομμένος κορμός δέντρου"</string>
 </resources>

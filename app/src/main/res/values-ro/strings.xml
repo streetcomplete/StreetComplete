@@ -667,7 +667,6 @@ Rețineți că această aplicație solicită numărul unei clădiri numai după 
     <string name="credits_projects_contributors_title">"Proiecte realizate pentru StreetComplete"</string>
     <string name="credits_main_contributors_title">"Principalii colaboratori"</string>
     <string name="stats_are_syncing">"Statisticile încă se sincronizează. Verificați acest ecran mai târziu."</string>
-    <string name="user_statistics_country_rank">"Rang în %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de cartografiere %s"</string>
     <string name="user_statistics_filter_by_country">"după țară"</string>
     <string name="user_statistics_filter_by_quest_type">"după tipul de misiune"</string>

@@ -666,7 +666,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="credits_projects_contributors_title">"Projecten gemaakt voor StreetComplete"</string>
     <string name="credits_main_contributors_title">"Belangrijkste bijdragers"</string>
     <string name="stats_are_syncing">"Je statistieken worden nog gesynchroniseerd. Probeer het later opnieuw."</string>
-    <string name="user_statistics_country_rank">"Rang in %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Mappers portaal %s"</string>
     <string name="user_statistics_filter_by_country">"per land"</string>
     <string name="user_statistics_filter_by_quest_type">"per vraagtype"</string>
@@ -1394,4 +1393,8 @@ Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die ni
     <string name="quest_multiselect_hint">"Selecteer alles van toepassing:"</string>
     <string name="quest_barrier_opening_width_gate">"Hoe breed is de opening hier?"</string>
     <string name="bridge">"op de brug"</string>
+    <string name="about_title_intro">"Laat introductie zien"</string>
+    <string name="about_category_help">"Help"</string>
+    <string name="quest_camp_power_supply_hint">"Denk hierbij aan stopcontacten direct bij de kampeerplaatsen, stopcontacten in een servicegebouw dat toegankelijk is voor gasten, of een speciaal oplaadstation voor telefoons, laptops, etc."</string>
+    <string name="quest_barrier_opening_width_bollard">"Wat is de breedste doorgang die je hier kunt passeren?"</string>
 </resources>
