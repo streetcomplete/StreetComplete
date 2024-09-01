@@ -17,11 +17,17 @@ fun MapLibreMap.queryRenderedFeatures(
     radius: Float,
     vararg layerIds: String
 ): List<Feature> {
-    val searchArea = RectF(
-        coordinates.x - radius,
-        coordinates.y - radius,
-        coordinates.x + radius,
-        coordinates.y + radius
-    )
-    return queryRenderedFeatures(searchArea, *layerIds)
+    // first try without radius. If nothing found, only then expand search area
+    var result = queryRenderedFeatures(coordinates, *layerIds)
+    if (result.isNotEmpty()) return result
+    // then, try with small radius....
+    result = queryRenderedFeatures(coordinates.expandBy(radius / 2), *layerIds)
+    if (result.isNotEmpty()) return result
+
+    return queryRenderedFeatures(coordinates.expandBy(radius), *layerIds)
+
+    // this is kind of a workaround. We'd need is this function implemented in MapLibre proper. See
+    // https://github.com/maplibre/maplibre-native/issues/2781
 }
+
+private fun PointF.expandBy(a: Float) = RectF(x - a, y - a, x + a, y + a)

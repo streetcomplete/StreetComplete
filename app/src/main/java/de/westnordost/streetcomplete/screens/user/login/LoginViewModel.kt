@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.user.OAUTH2_REQUESTED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_REQUIRED_SCOPES
 import de.westnordost.streetcomplete.data.user.OAUTH2_TOKEN_URL
 import de.westnordost.streetcomplete.data.user.UserLoginController
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
 import de.westnordost.streetcomplete.data.user.oauth.OAuthAuthorizationParams
 import de.westnordost.streetcomplete.data.user.oauth.OAuthException
@@ -70,10 +71,20 @@ class LoginViewModelImpl(
         OAUTH2_REDIRECT_URI
     )
 
+    private val loginStatusListener = object : UserLoginSource.Listener {
+        override fun onLoggedIn() { loginState.value = LoggedIn }
+        override fun onLoggedOut() { loginState.value = LoggedOut }
+    }
+
     init {
         launch(Dispatchers.IO) {
             unsyncedChangesCount.update { unsyncedChangesCountSource.getCount() }
         }
+        userLoginController.addListener(loginStatusListener)
+    }
+
+    override fun onCleared() {
+        userLoginController.removeListener(loginStatusListener)
     }
 
     override fun startLogin() {
@@ -118,7 +129,6 @@ class LoginViewModelImpl(
     }
 
     private suspend fun login(accessToken: String) {
-        loginState.value = LoggedIn
         userLoginController.logIn(accessToken)
     }
 

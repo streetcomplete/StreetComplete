@@ -613,7 +613,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         private const val MIN_TRACK_ACCURACY = 20f
         private const val MAX_TIME_BETWEEN_LOCATIONS = 60L * 1000 // 1 minute
 
-        private const val CLICK_AREA_SIZE_IN_DP = 24
+        private const val CLICK_AREA_SIZE_IN_DP = 28
     }
 }
 

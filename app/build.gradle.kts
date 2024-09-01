@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5902
-        versionName = "59.0-alpha2"
+        versionCode = 5903
+        versionName = "59.0-alpha3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -188,9 +188,6 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.1.0")
     implementation("me.grantland:autofittextview:0.2.1")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
-
-    // box2d view
-    implementation("org.jbox2d:jbox2d-library:2.2.1.1")
 
     // sharing presets/settings via QR Code
     implementation("io.github.alexzhirkevich:qrose:1.0.1")

@@ -24,8 +24,9 @@ import de.westnordost.streetcomplete.data.user.achievements.LinkCategory
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 
+/** Display a single link category from the link collection */
 @Composable
-fun LinkCategoryItem(category: LinkCategory, modifier: Modifier = Modifier) {
+fun LinkCategoryRow(category: LinkCategory, modifier: Modifier = Modifier) {
     Column {
         Spacer(modifier = modifier.padding(top = 8.dp))
         Text(stringResource(category.title), style = MaterialTheme.typography.titleLarge)
@@ -49,8 +50,9 @@ private val LinkCategory.description: Int get() = when (this) {
     LinkCategory.GOODIES -> R.string.link_category_goodies_description
 }
 
+/** Display a single link from the link collection */
 @Composable
-fun LinkItem(link: Link, onClickLink: (url: String) -> Unit, modifier: Modifier = Modifier) {
+fun LinkRow(link: Link, onClickLink: (url: String) -> Unit, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .clickable { onClickLink(link.url) }
@@ -74,14 +76,14 @@ fun LinkItem(link: Link, onClickLink: (url: String) -> Unit, modifier: Modifier 
 
 @Preview
 @Composable
-private fun LinkCategoryItemPreview() {
-    LinkCategoryItem(LinkCategory.GOODIES)
+private fun LinkCategoryRowPreview() {
+    LinkCategoryRow(LinkCategory.GOODIES)
 }
 
 @Preview
 @Composable
-private fun LinkItemPreview() {
-    LinkItem(Link(
+private fun LinkRowPreview() {
+    LinkRow(Link(
         "wiki",
         "https://wiki.openstreetmap.org",
         "OpenStreetMap Wiki",

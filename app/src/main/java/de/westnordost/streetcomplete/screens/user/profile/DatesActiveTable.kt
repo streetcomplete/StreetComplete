@@ -61,7 +61,7 @@ fun DatesActiveTable(
         val months = symbols.shortMonths
 
         val weekdayColumnWidth = weekdays.maxOf { textMeasurer.measure(it, textStyle).size.width }.pxToDp()
-        val textHeight = textMeasurer.measure(months[0]).size.height.pxToDp()
+        val textHeight = textMeasurer.measure(months[0], textStyle).size.height.pxToDp()
 
         // stretch 100% width and determine available box size and then the height from that
         val cellSize = (maxWidth - weekdayColumnWidth - cellPadding * 2) / horizontalCells - cellPadding
