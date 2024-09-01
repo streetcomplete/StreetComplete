@@ -29,6 +29,7 @@ enum class Surface(val osmValue: String?) {
     ARTIFICIAL_TURF("artificial_turf"),
     TARTAN("tartan"),
     STEPPING_STONES("stepping_stones"),
+    CHIPSEAL("chipseal"),
 
     // generic surfaces
     PAVED("paved"),
@@ -37,7 +38,6 @@ enum class Surface(val osmValue: String?) {
 
     // extra values, handled as synonyms (not selectable)
     EARTH("earth"), // synonym of "dirt"
-    CHIPSEAL("chipseal"), // subtype/synonym of asphalt
     METAL_GRID("metal_grid"), // more specific than "metal"
 
     // these values ideally would be removed from OpenStreetMap, but while they remain
@@ -63,8 +63,8 @@ val SELECTABLE_PITCH_SURFACES = listOf(
 
 val SELECTABLE_WAY_SURFACES = listOf(
     // paved surfaces
-    ASPHALT, CHIPSEAL, PAVING_STONES, CONCRETE, CONCRETE_PLATES, CONCRETE_LANES,
-    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER, WOOD, METAL, METAL_GRID,
+    ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_PLATES, CONCRETE_LANES,
+    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER, WOOD, METAL, METAL_GRID, CHIPSEAL,
     // unpaved surfaces
     COMPACTED, FINE_GRAVEL, GRAVEL, PEBBLES, WOODCHIPS, STEPPING_STONES,
     // ground surfaces
