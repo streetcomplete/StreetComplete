@@ -13,7 +13,6 @@ fun getRankCurrentWeekProgress(rank: Int): Float =
     // 2024-05: rank 370 is about top 50% of users (~20 edits), rank 100 top 5% (~300 edits)
     getRankProgress(rank, maxProgressAtRank = 100, minProgressAtRank = 370)
 
-
 fun getLocalRankCurrentWeekProgress(rank: Int): Float =
     // 2024-05: rank 50 is about top 50% of users (~20 edits), rank 10 top 10% (~250 edits)
     //          in Italy, which is the top 5 country in terms of contributions

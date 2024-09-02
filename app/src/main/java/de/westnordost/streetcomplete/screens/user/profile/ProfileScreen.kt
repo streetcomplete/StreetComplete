@@ -256,7 +256,6 @@ private fun RankCurrentWeekBadge(rank: Int, delay: Int) {
     )
 }
 
-
 @Composable
 private fun StarCount(count: Int) {
     Row(
