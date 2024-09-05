@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.tree
 
-class Tree(val name: String, val isSpecies: Boolean, val localName: String?) {
+sealed interface TreeAnswer
+
+class Tree(val name: String, val isSpecies: Boolean, val localName: String?): TreeAnswer {
 
     // should be equal if name and isSpecies are the same, don't care about localName
     override fun hashCode(): Int {
@@ -22,3 +24,5 @@ class Tree(val name: String, val isSpecies: Boolean, val localName: String?) {
         if (localName != null) "$name ($localName)"
         else name
 }
+
+data object NotTreeButStump : TreeAnswer

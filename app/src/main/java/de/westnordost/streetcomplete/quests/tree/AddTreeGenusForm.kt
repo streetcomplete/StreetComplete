@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.databinding.QuestNameSuggestionBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.screens.main.map.getTreeGenus
 import de.westnordost.streetcomplete.util.SearchAdapter
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -24,7 +25,7 @@ import java.text.Normalizer
 import java.util.Locale
 import java.util.regex.Pattern
 
-class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
+class AddTreeGenusForm : AbstractOsmQuestForm<TreeAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_name_suggestion
     private val binding by contentViewBinding(QuestNameSuggestionBinding::bind)
@@ -45,6 +46,12 @@ class AddTreeGenusForm : AbstractOsmQuestForm<Tree>() {
     override fun isFormComplete(): Boolean {
         return name.isNotEmpty()
     }
+
+    override val otherAnswers = listOf(
+        AnswerItem(R.string.quest_leafType_tree_is_just_a_stump) {
+            applyAnswer(NotTreeButStump, true)
+        },
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

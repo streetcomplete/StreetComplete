@@ -16,7 +16,7 @@ class AddTreeLeafTypeForm :
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_leafType_tree_is_just_a_stump) {
-            applyAnswer(NotTreeButStump)
+            applyAnswer(NotTreeButStump, true)
         },
     )
 }
