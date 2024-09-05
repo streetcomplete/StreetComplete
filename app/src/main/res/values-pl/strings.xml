@@ -1354,7 +1354,7 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_buildingType_tower_description">"dowolny rodzaj wieży"</string>
     <string name="quest_buildingType_under_construction">"W trakcie budowy"</string>
     <string name="overlay_buildings">"Budynki"</string>
-    <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na ziemi?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Czy to przejście ma oznaczenia, które przecinają jezdnię?"</string>
     <string name="overlay_places">"Miejsca"</string>
     <string name="overlay_things">"Obiekty"</string>
     <string name="disused">"już nieużywane"</string>

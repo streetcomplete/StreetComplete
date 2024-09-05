@@ -1355,7 +1355,7 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="quest_buildingType_tower_description">"jede Art von Turm"</string>
     <string name="quest_buildingType_under_construction">"Im Bau befindlich"</string>
     <string name="overlay_buildings">"Gebäude"</string>
-    <string name="quest_pedestrian_crossing_markings">"Gibt es bei diesem Fußgängerüberweg Markierungen auf dem Boden?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Gibt es bei diesem Überweg Markierungen, die die Fahrbahn queren?"</string>
     <string name="overlay_places">"Orte"</string>
     <string name="overlay_things">"Dinge"</string>
     <string name="disused">"stillgelegt"</string>

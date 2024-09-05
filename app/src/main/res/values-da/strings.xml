@@ -1351,7 +1351,7 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="quest_buildingType_tower_description">"enhver form for tårn"</string>
     <string name="quest_buildingType_under_construction">"Under opførelse"</string>
     <string name="overlay_buildings">"Bygninger"</string>
-    <string name="quest_pedestrian_crossing_markings">"Er der markeringer på jorden ved denne overgang?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Er der markeringer, der går på tværs af vejbanen ved denne overgang?"</string>
     <string name="overlay_places">"Steder"</string>
     <string name="overlay_things">"Ting"</string>
     <string name="disused">"ikke længere i brug"</string>

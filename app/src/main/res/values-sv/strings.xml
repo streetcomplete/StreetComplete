@@ -1355,7 +1355,7 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="quest_buildingType_tower_description">"alla slags torn"</string>
     <string name="quest_buildingType_under_construction">"Under uppbyggnad"</string>
     <string name="overlay_buildings">"Byggnader"</string>
-    <string name="quest_pedestrian_crossing_markings">"Har denna korsning markeringar på marken?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Har denna korsning markeringar som går över vägbanan?"</string>
     <string name="overlay_places">"Platser"</string>
     <string name="overlay_things">"Saker"</string>
     <string name="disused">"inte längre använd"</string>
