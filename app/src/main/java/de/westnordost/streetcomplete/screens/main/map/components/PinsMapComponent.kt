@@ -86,7 +86,7 @@ class PinsMapComponent(
             .withProperties(
                 circleColor("white"),
                 circleStrokeColor("#aaaaaa"),
-                circleRadius(6f),
+                circleRadius(5f),
                 circleStrokeWidth(1f),
                 circleTranslate(arrayOf(0f, -8f)), // so that it hides behind the pin
                 circleTranslateAnchor(Property.CIRCLE_TRANSLATE_ANCHOR_VIEWPORT),
