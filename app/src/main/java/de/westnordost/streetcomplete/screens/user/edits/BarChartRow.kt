@@ -33,11 +33,9 @@ import de.westnordost.streetcomplete.ui.ktx.pxToDp
 fun BarChartRow(
     title: @Composable BoxScope.() -> Unit,
     count: Int,
-    countNew: Int,
     maxCount: Int,
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colors.primary,
-    colorNew: Color = MaterialTheme.colors.primaryVariant,
 ) {
     Row(
         modifier = modifier,
@@ -62,23 +60,9 @@ fun BarChartRow(
                         .height(32.dp),
                     contentAlignment = Alignment.CenterEnd
                 ) {
-                    val barShape = RoundedCornerShape(
-                        topStart = 2.dp,
-                        bottomStart = 2.dp,
-                        topEnd = 8.dp,
-                        bottomEnd = 8.dp
-                    )
-                    val newFraction = countNew.toFloat() / count
-                    Spacer(
-                        Modifier
-                            .fillMaxSize()
-                            .background(color, barShape)
-                    )
-                    Spacer(
-                        Modifier
-                            .fillMaxWidth(newFraction)
-                            .fillMaxHeight()
-                            .background(colorNew, barShape)
+                    Spacer(Modifier
+                        .fillMaxSize()
+                        .background(color, RoundedCornerShape(2.dp, 8.dp, 8.dp, 2.dp))
                     )
                 }
 
@@ -104,7 +88,6 @@ private fun PreviewStatisticsRow() {
             )
         },
         count = 68,
-        countNew = 12,
         maxCount = 100
     )
 }

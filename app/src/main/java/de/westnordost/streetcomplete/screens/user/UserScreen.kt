@@ -21,6 +21,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -49,7 +50,8 @@ fun UserScreen(
         )
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.fillMaxWidth().weight(1f)
+            modifier = Modifier.fillMaxWidth().weight(1f),
+            verticalAlignment = Alignment.Top,
         ) { p ->
             when (UserTab.entries[p]) {
                 UserTab.Profile -> {

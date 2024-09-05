@@ -13,17 +13,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
 import de.westnordost.streetcomplete.ui.theme.LeafGreen
 
 /** Simple bar chart of solved quests by country */
 @Composable
 fun CountryStatisticsColumn(
-    statistics: List<CompleteCountryStatistics>,
+    statistics: List<CountryStatistics>,
     flagAlignments: Map<String, FlagAlignment>,
+    isCurrentWeek: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    var showInfo by remember { mutableStateOf<CompleteCountryStatistics?>(null) }
+    var showInfo by remember { mutableStateOf<CountryStatistics?>(null) }
 
     // list is sorted by largest count descending
     val maxCount = statistics.firstOrNull()?.count ?: 0
@@ -31,10 +33,7 @@ fun CountryStatisticsColumn(
         modifier = modifier,
         contentPadding = PaddingValues(top = 16.dp)
     ) {
-        items(
-            items = statistics,
-            key = { it.countryCode }
-        ) { item ->
+        items(statistics) { item ->
             BarChartRow(
                 title = {
                     CircularFlag(
@@ -44,22 +43,20 @@ fun CountryStatisticsColumn(
                     )
                 },
                 count = item.count,
-                countNew = item.countCurrentWeek,
                 maxCount = maxCount,
                 modifier = Modifier
                     .clickable { showInfo = item }
                     .padding(horizontal = 16.dp, vertical = 4.dp),
                 color = GrassGreen,
-                colorNew = LeafGreen
             )
         }
     }
 
-    showInfo?.let {
+    showInfo?.let { country ->
         CountryDialog(
-            countryCode = it.countryCode,
-            rank = it.rank,
-            rankCurrentWeek = it.rankCurrentWeek,
+            countryCode = country.countryCode,
+            rank = country.rank,
+            isCurrentWeek = isCurrentWeek,
             onDismissRequest = { showInfo = null }
         )
     }

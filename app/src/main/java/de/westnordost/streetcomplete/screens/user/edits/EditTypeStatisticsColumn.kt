@@ -16,15 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.GrassGreen
-import de.westnordost.streetcomplete.ui.theme.LeafGreen
 
 /** Simple bar chart of solved quests by quest type */
 @Composable
 fun EditTypeStatisticsColumn(
-    statistics: List<CompleteEditTypeStatistics>,
+    statistics: List<EditTypeStatistics>,
     modifier: Modifier = Modifier,
 ) {
-    var showInfo by remember { mutableStateOf<CompleteEditTypeStatistics?>(null) }
+    var showInfo by remember { mutableStateOf<EditTypeStatistics?>(null) }
 
     // list is sorted by largest count descending
     val maxCount = statistics.firstOrNull()?.count ?: 0
@@ -32,10 +31,7 @@ fun EditTypeStatisticsColumn(
         modifier = modifier,
         contentPadding = PaddingValues(top = 16.dp)
     ) {
-        items(
-            items = statistics,
-            key = { it.type.name }
-        ) { item ->
+        items(statistics) { item ->
             BarChartRow(
                 title = {
                     Image(
@@ -45,13 +41,11 @@ fun EditTypeStatisticsColumn(
                     )
                 },
                 count = item.count,
-                countNew = item.countCurrentWeek,
                 maxCount = maxCount,
                 modifier = Modifier
                     .clickable { showInfo = item }
                     .padding(horizontal = 16.dp, vertical = 4.dp),
                 color = GrassGreen,
-                colorNew = LeafGreen
             )
         }
     }
