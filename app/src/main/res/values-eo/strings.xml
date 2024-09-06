@@ -663,7 +663,6 @@ Rimarku, ke ĉi tiu aplikaĵo petas la domnumeron de konstruaĵo nur post kiam �
     <string name="credits_projects_contributors_title">"Projektoj faritaj por StreetComplete"</string>
     <string name="credits_main_contributors_title">"Ĉefaj kontribuantoj"</string>
     <string name="stats_are_syncing">"Viaj statistikoj ankoraŭ sinkronigas. Kontrolu ĉi tiun ekranon poste."</string>
-    <string name="user_statistics_country_rank">"Rango en %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portalo de Mapado %s"</string>
     <string name="user_statistics_filter_by_country">"per lando"</string>
     <string name="user_statistics_filter_by_quest_type">"laŭ taskospeco"</string>
@@ -1315,7 +1314,7 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="quest_buildingType_tower_description">"ia speco de turo"</string>
     <string name="quest_buildingType_under_construction">"konstruanta"</string>
     <string name="overlay_buildings">"Konstruaĵoj"</string>
-    <string name="quest_pedestrian_crossing_markings">"Ĉu tiu transirejo estas markita surstrate?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Ĉu ĉi tiu transirejo havas markojn trans la vojon?"</string>
     <string name="overlay_places">"Lokoj"</string>
     <string name="overlay_things">"Aferoj"</string>
     <string name="disused">"malzorgata"</string>

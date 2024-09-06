@@ -668,7 +668,6 @@ Upoštevaj da ta aplikacija vpraša po hišni številki šele takrat, ko je tip 
     <string name="credits_projects_contributors_title">"Projekti narejeni za StreetComplete"</string>
     <string name="credits_main_contributors_title">"Glavni prispevalci"</string>
     <string name="stats_are_syncing">"Tvoja statistika se še vedno sinhronizira. Preveri ta zaslon pozneje."</string>
-    <string name="user_statistics_country_rank">"Mesto v %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal za kartografijo %s"</string>
     <string name="user_statistics_filter_by_country">"po državi"</string>
     <string name="user_statistics_filter_by_quest_type">"po tipu"</string>
@@ -1354,7 +1353,7 @@ Poleg tega ti nekatere prekrivne plasti omogočajo dodajanje novih podatkov na p
     <string name="quest_buildingType_tower_description">"katerakoli vrsta stolpa"</string>
     <string name="quest_buildingType_under_construction">"Se še gradi"</string>
     <string name="overlay_buildings">"Stavbe"</string>
-    <string name="quest_pedestrian_crossing_markings">"Ali ima ta prehod na tleh oznake?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Ali ima ta prehod oznake, ki prečkajo vozišče?"</string>
     <string name="overlay_places">"Krajii"</string>
     <string name="overlay_things">"Stvari"</string>
     <string name="disused">"neuporabljen"</string>

@@ -650,7 +650,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="credits_projects_contributors_title">"Prosjekt laga for StreetComplete"</string>
     <string name="credits_main_contributors_title">"Hovud­bidragsytarar"</string>
     <string name="stats_are_syncing">"Synkroniserer statistikken. Kom tilbake seinare."</string>
-    <string name="user_statistics_country_rank">"Rangering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartleggingsportal %s"</string>
     <string name="user_statistics_filter_by_country">"etter land"</string>
     <string name="user_statistics_filter_by_quest_type">"etter type oppdrag"</string>

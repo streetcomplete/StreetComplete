@@ -665,7 +665,6 @@
     <string name="credits_projects_contributors_title">"โปรเจ็กต์ที่ถูกสร้างสำหรับ StreetComplete"</string>
     <string name="credits_main_contributors_title">"ผู้สมทบหลัก"</string>
     <string name="stats_are_syncing">"สถิติของคุณกำลังซิงค์อยู่ โปรดมาที่หน้าจอนี้อีกครั้งในภายหลัง"</string>
-    <string name="user_statistics_country_rank">"อันดับที่ %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"พอร์ทัลของแผนที่ %s"</string>
     <string name="user_statistics_filter_by_country">"ตามประเทศ"</string>
     <string name="user_statistics_filter_by_quest_type">"ตามภารกิจ"</string>

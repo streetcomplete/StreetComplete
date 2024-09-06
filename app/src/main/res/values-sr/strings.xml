@@ -668,7 +668,6 @@
     <string name="credits_projects_contributors_title">"Пројекти направљени за StreetComplete"</string>
     <string name="credits_main_contributors_title">"Главни сарадници"</string>
     <string name="stats_are_syncing">"Ваша статистика се још увек синхронизује. Проверите овај екран касније."</string>
-    <string name="user_statistics_country_rank">"Ранг у %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографски портал %s"</string>
     <string name="user_statistics_filter_by_country">"по земљама"</string>
     <string name="user_statistics_filter_by_quest_type">"по врсти задатка"</string>
@@ -1351,7 +1350,7 @@
     <string name="quest_buildingType_tower_description">"било који торањ"</string>
     <string name="quest_buildingType_under_construction">"У изградњи"</string>
     <string name="overlay_buildings">"Грађевине"</string>
-    <string name="quest_pedestrian_crossing_markings">"Да ли је овај прелаз обележен хоризонталном сигнализацијом?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Да ли овај прелаз има ознаке преко коловоза?"</string>
     <string name="overlay_places">"Места"</string>
     <string name="overlay_things">"Ствари"</string>
     <string name="disused">"некористи се"</string>

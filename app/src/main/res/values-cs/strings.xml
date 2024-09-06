@@ -674,7 +674,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="credits_projects_contributors_title">"Projekty pro StreetComplete"</string>
     <string name="credits_main_contributors_title">"Hlavní přispěvatelé"</string>
     <string name="stats_are_syncing">"Vaše statistiky se stále synchronizují. Vraťte se sem později."</string>
-    <string name="user_statistics_country_rank">"Pořadí v %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"OSM Wiki %s"</string>
     <string name="user_statistics_filter_by_country">"podle země"</string>
     <string name="user_statistics_filter_by_quest_type">"podle úkolu"</string>
@@ -1359,7 +1358,7 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="quest_buildingType_tower_description">"jakýkoli typ věže"</string>
     <string name="quest_buildingType_under_construction">"Ve výstavbě"</string>
     <string name="overlay_buildings">"Budovy"</string>
-    <string name="quest_pedestrian_crossing_markings">"Má tento přechod značení na zemi?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Má tento přechod značení, které překračuje vozovku?"</string>
     <string name="overlay_places">"Místa"</string>
     <string name="overlay_things">"Věci"</string>
     <string name="disused">"nepoužíváno"</string>

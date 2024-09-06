@@ -533,7 +533,7 @@ fun getQuestTypeList(
     162 to AddSanitaryDumpStation(),
 
     // toilets
-    118 to AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
+    118 to AddToiletAvailability(), // shown in OsmAnd descriptions
     119 to AddToiletsFee(), // used by OsmAnd in the object description
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description
     121 to AddWheelchairAccessToiletsPart(),

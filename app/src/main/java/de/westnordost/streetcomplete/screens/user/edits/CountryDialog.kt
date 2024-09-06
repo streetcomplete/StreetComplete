@@ -42,7 +42,7 @@ import java.util.Locale
 fun CountryDialog(
     countryCode: String,
     rank: Int?,
-    rankCurrentWeek: Int?,
+    isCurrentWeek: Boolean,
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -64,7 +64,7 @@ fun CountryDialog(
                     CountryInfoDetails(
                         countryCode = countryCode,
                         rank = rank,
-                        rankCurrentWeek = rankCurrentWeek,
+                        isCurrentWeek = isCurrentWeek,
                         isLandscape = isLandscape
                     )
                 },
@@ -78,7 +78,7 @@ fun CountryDialog(
 private fun CountryInfoDetails(
     countryCode: String,
     rank: Int?,
-    rankCurrentWeek: Int?,
+    isCurrentWeek: Boolean,
     isLandscape: Boolean,
     modifier: Modifier = Modifier,
 ) {
@@ -90,31 +90,26 @@ private fun CountryInfoDetails(
         horizontalAlignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text(
-            text = stringResource(R.string.user_statistics_country_rank2, Locale("", countryCode).displayCountry),
-            style = MaterialTheme.typography.headlineSmall,
-            textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
-        )
+        if (rank != null) {
+            Text(
+                text = stringResource(R.string.user_statistics_country_rank2, Locale("", countryCode).displayCountry),
+                style = MaterialTheme.typography.headlineSmall,
+                textAlign = if (isLandscape) TextAlign.Start else TextAlign.Center
+            )
 
-        Row(horizontalArrangement = Arrangement.Center) {
-            if (rank != null) {
-                LaurelWreathBadge(
-                    label = stringResource(R.string.user_profile_all_time_title),
-                    value = "#$rank",
-                    progress = getLocalRankProgress(rank),
-                    modifier = Modifier.weight(1f),
-                    animationDelay = 0
-                )
-            }
-            if (rankCurrentWeek != null) {
-                LaurelWreathBadge(
-                    label = stringResource(R.string.user_profile_current_week_title),
-                    value = "#$rankCurrentWeek",
-                    progress = getLocalRankCurrentWeekProgress(rankCurrentWeek),
-                    modifier = Modifier.weight(1f),
-                    animationDelay = 500
-                )
-            }
+            val label = stringResource(
+                if (isCurrentWeek) R.string.user_profile_current_week_title
+                else R.string.user_profile_all_time_title
+            )
+            val progress =
+                if (isCurrentWeek) getLocalRankCurrentWeekProgress(rank)
+                else getLocalRankProgress(rank)
+
+            LaurelWreathBadge(
+                label = label,
+                value = "#$rank",
+                progress = progress
+            )
         }
 
         OutlinedButton(
@@ -141,7 +136,7 @@ private fun PreviewCountryDialog() {
     CountryDialog(
         countryCode = "PH",
         rank = 99,
-        rankCurrentWeek = 12,
+        isCurrentWeek = false,
         onDismissRequest = {}
     )
 }

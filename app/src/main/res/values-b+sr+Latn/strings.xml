@@ -668,7 +668,6 @@ Imajte na umu da ovaj program pita za kućni broj tek nakon što se odredi tip g
     <string name="credits_projects_contributors_title">"Projekti napravljeni za StreetComplete"</string>
     <string name="credits_main_contributors_title">"Glavni saradnici"</string>
     <string name="stats_are_syncing">"Vaša statistika se još uvek sinhronizuje. Proverite ovaj ekran kasnije."</string>
-    <string name="user_statistics_country_rank">"Rang u %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartografski portal %s"</string>
     <string name="user_statistics_filter_by_country">"po zemljama"</string>
     <string name="user_statistics_filter_by_quest_type">"po vrsti zadatka"</string>
@@ -1351,7 +1350,7 @@ Pored toga, neki slojevi na karti vam pružaju mogućnost dodavanja novih podata
     <string name="quest_buildingType_tower_description">"bilo koji toranj"</string>
     <string name="quest_buildingType_under_construction">"U izgradnji"</string>
     <string name="overlay_buildings">"Građevine"</string>
-    <string name="quest_pedestrian_crossing_markings">"Da li je ovaj prelaz obeležen horizontalnom signalizacijom?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Da li ovaj prelaz ima oznake preko kolovoza?"</string>
     <string name="overlay_places">"Mesta"</string>
     <string name="overlay_things">"Stvari"</string>
     <string name="disused">"nekoristi se"</string>

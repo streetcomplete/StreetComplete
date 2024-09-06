@@ -671,7 +671,6 @@
     <string name="credits_projects_contributors_title">"المشاريع المعدة لـ StreetComplete"</string>
     <string name="credits_main_contributors_title">"المساهمون الرئيسيون"</string>
     <string name="stats_are_syncing">"لا تزال إحصاءاتك قيد المزامنة. تحقق من هذه الشاشة لاحقًا."</string>
-    <string name="user_statistics_country_rank">"الترتيب في %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"بوابة الخريطة %s"</string>
     <string name="user_statistics_filter_by_country">"حسب البلد"</string>
     <string name="user_statistics_filter_by_quest_type">"حسب نوع المهمة"</string>
@@ -1359,7 +1358,7 @@
     <string name="quest_buildingType_tower_description">"أي نوع من الأبراج"</string>
     <string name="quest_buildingType_under_construction">"تحت الإنشاء"</string>
     <string name="overlay_buildings">"مباني"</string>
-    <string name="quest_pedestrian_crossing_markings">"هل توجد علامات على الأرض لمعبر المشاة هذا؟"</string>
+    <string name="quest_pedestrian_crossing_markings">"هل يحتوي هذا المعبر على علامات عبر الطريق؟"</string>
     <string name="overlay_places">"أماكن"</string>
     <string name="overlay_things">"أشياء"</string>
     <string name="disused">"غير مستخدمة"</string>

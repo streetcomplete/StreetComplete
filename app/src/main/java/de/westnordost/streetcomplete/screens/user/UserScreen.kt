@@ -21,17 +21,17 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsScreen
+import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsScreen
 import de.westnordost.streetcomplete.screens.user.links.LinksScreen
 import de.westnordost.streetcomplete.screens.user.profile.ProfileScreen
-import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsScreen
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -50,7 +50,8 @@ fun UserScreen(
         )
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.fillMaxWidth().weight(1f)
+            modifier = Modifier.fillMaxWidth().weight(1f),
+            verticalAlignment = Alignment.Top,
         ) { p ->
             when (UserTab.entries[p]) {
                 UserTab.Profile -> {
@@ -103,7 +104,11 @@ private fun UserScreenTopAppBar(
                             selected = page == index,
                             onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
                             icon = { Icon(icon, text) },
-                            text = if (showText) { { Text(text) } } else null
+                            text = if (showText) {
+                                { Text(text) }
+                            } else {
+                                null
+                            }
                         )
                     }
                 }

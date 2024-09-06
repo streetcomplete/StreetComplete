@@ -668,7 +668,6 @@ Notez que StreetComplete vous demandera les numéros de rues après avoir indiqu
     <string name="credits_projects_contributors_title">"Autres projets réalisés dans le cadre de StreetComplete"</string>
     <string name="credits_main_contributors_title">"Contributeurs principaux"</string>
     <string name="stats_are_syncing">"Vos statistiques sont en train de se synchroniser. Vérifiez cette page plus tard."</string>
-    <string name="user_statistics_country_rank">"Classement (%2$s) : %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portail cartographique %s"</string>
     <string name="user_statistics_filter_by_country">"par pays"</string>
     <string name="user_statistics_filter_by_quest_type">"par type"</string>
@@ -1354,7 +1353,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_buildingType_tower_description">"Tout type de tour"</string>
     <string name="quest_buildingType_under_construction">"En cours de construction"</string>
     <string name="overlay_buildings">"Immeubles"</string>
-    <string name="quest_pedestrian_crossing_markings">"Est-ce que ce passage piéton est peint sur la chaussée ?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Cette traversée a-t-elle des marquages qui traversent la chaussée?"</string>
     <string name="overlay_places">"Lieux"</string>
     <string name="overlay_things">"Objets"</string>
     <string name="disused">"désaffecté"</string>

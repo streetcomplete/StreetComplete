@@ -668,7 +668,6 @@ Observera att appen ber om husnummer för en byggnad först efter att dess typ h
     <string name="credits_projects_contributors_title">"Projekt som gjorts för StreetComplete"</string>
     <string name="credits_main_contributors_title">"Huvudsakliga bidragsgivare"</string>
     <string name="stats_are_syncing">"Din statistik synkroniseras fortfarande. Kontrollera denna skärm senare."</string>
-    <string name="user_statistics_country_rank">"Rang i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartläggningsportal %s"</string>
     <string name="user_statistics_filter_by_country">"efter land"</string>
     <string name="user_statistics_filter_by_quest_type">"efter uppdragstyp"</string>
@@ -1356,7 +1355,7 @@ Vissa extralager låter dig också lägga till ny data på hårkorsets position,
     <string name="quest_buildingType_tower_description">"alla slags torn"</string>
     <string name="quest_buildingType_under_construction">"Under uppbyggnad"</string>
     <string name="overlay_buildings">"Byggnader"</string>
-    <string name="quest_pedestrian_crossing_markings">"Har denna korsning markeringar på marken?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Har denna korsning markeringar som går över vägbanan?"</string>
     <string name="overlay_places">"Platser"</string>
     <string name="overlay_things">"Saker"</string>
     <string name="disused">"inte längre använd"</string>

@@ -666,7 +666,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="credits_projects_contributors_title">"Proyectos fechos pa StreetComplete"</string>
     <string name="credits_main_contributors_title">"Collaboradores principales"</string>
     <string name="stats_are_syncing">"Les tos estadístiques tán sincronizándose, vuelvi más tarde."</string>
-    <string name="user_statistics_country_rank">"Clasificación en %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de mapeo %s"</string>
     <string name="user_statistics_filter_by_country">"por país"</string>
     <string name="user_statistics_filter_by_quest_type">"por tipu"</string>
@@ -1112,7 +1111,7 @@ Dalgunes capes tamién permiten añader datos que falten al traviés del marcado
     <string name="quest_buildingType_tower_description">"forma de torre"</string>
     <string name="quest_buildingType_under_construction">"En construcción"</string>
     <string name="overlay_buildings">"Edificios"</string>
-    <string name="quest_pedestrian_crossing_markings">"¿Esti cruce ta marcáu?"</string>
+    <string name="quest_pedestrian_crossing_markings">"¿Tien esti pasu marques que crucen la calzada?"</string>
     <string name="overlay_places">"Sitios"</string>
     <string name="overlay_things">"Coses"</string>
     <string name="disused">"en desusu"</string>

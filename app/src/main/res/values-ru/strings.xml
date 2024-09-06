@@ -670,7 +670,6 @@
     <string name="credits_projects_contributors_title">"Проекты, сделанные для StreetComplete"</string>
     <string name="credits_main_contributors_title">"Основные участники"</string>
     <string name="stats_are_syncing">"Ваша статистика синхронизируется. Проверьте её здесь позднее."</string>
-    <string name="user_statistics_country_rank">"Рейтинг в %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Картографический портал %s"</string>
     <string name="user_statistics_filter_by_country">"по стране"</string>
     <string name="user_statistics_filter_by_quest_type">"по типу квеста"</string>
@@ -1355,7 +1354,7 @@
     <string name="quest_buildingType_tower_description">"любая башня"</string>
     <string name="quest_buildingType_under_construction">"Строящийся"</string>
     <string name="overlay_buildings">"Здания"</string>
-    <string name="quest_pedestrian_crossing_markings">"Есть ли на этом переходе разметка на земле?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Есть ли на этом переходе разметка, которая пересекает проезжую часть?"</string>
     <string name="overlay_places">"Места"</string>
     <string name="overlay_things">"Вещи"</string>
     <string name="disused">"не использующийся"</string>
