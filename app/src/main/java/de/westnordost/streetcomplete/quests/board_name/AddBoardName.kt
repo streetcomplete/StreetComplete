@@ -32,7 +32,7 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>() {
     override fun applyAnswerTo(answer: BoardNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoBoardName -> {
-                tags["name:signed"] = "no"
+                tags["noname"] = "yes"
             }
             is BoardName -> {
                 answer.localizedNames.applyTo(tags)
