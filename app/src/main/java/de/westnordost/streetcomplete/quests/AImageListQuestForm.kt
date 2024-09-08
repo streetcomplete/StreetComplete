@@ -101,10 +101,10 @@ abstract class AImageListQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
 
     private fun moveFavouritesToFront(originalList: List<DisplayItem<I>>): List<DisplayItem<I>> {
-        if (originalList.size > prefs.getInt(Prefs.FAVS_FIRST_MIN_LINES, 1) * itemsPerRow && moveFavoritesToFront) {
+        if (originalList.size > prefs.getInt(Prefs.FAVS_FIRST_MIN_LINES, 1) * 2 * itemsPerRow && moveFavoritesToFront) {
             val favourites = prefs.getLastPicked(this::class.simpleName!!)
                 .map { itemsByString[it] }
-                .takeFavourites(n = itemsPerRow, history = 50, first = 2)
+                .takeFavourites(n = 2 * itemsPerRow, history = 50, first = 2)
             return (favourites + originalList).distinct()
         } else {
             return originalList
