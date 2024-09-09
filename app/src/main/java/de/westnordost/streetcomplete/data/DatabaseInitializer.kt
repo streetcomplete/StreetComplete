@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTabl
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeTable
+import de.westnordost.streetcomplete.util.logs.Log
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
@@ -127,7 +128,7 @@ object DatabaseInitializer {
             db.exec("DROP TABLE $oldName;")
         }
         if (oldVersion <= 3 && newVersion > 3) {
-            db.exec("DROP TABLE new_achievements")
+            db.exec("DROP TABLE IF EXISTS new_achievements")
         }
         if (oldVersion <= 4 && newVersion > 4) {
             db.exec(NodeTable.SPATIAL_INDEX_CREATE)
@@ -177,7 +178,7 @@ object DatabaseInitializer {
             db.exec("DROP TABLE $oldGeometryTableName;")
         }
         if (oldVersion <= 5 && newVersion > 5) {
-            db.exec("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.TRACK} text DEFAULT '[]' NOT NULL")
+            db.tryExec("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.TRACK} text DEFAULT '[]' NOT NULL")
         }
         if (oldVersion <= 6 && newVersion > 6) {
             db.exec(EditTypeStatisticsTables.create(EditTypeStatisticsTables.NAME_CURRENT_WEEK))
@@ -231,9 +232,9 @@ object DatabaseInitializer {
             db.exec("DELETE FROM ${DownloadedTilesTable.NAME};")
         }
         if (oldVersion <= 13 && newVersion > 13) {
-            db.exec("ALTER TABLE ${ElementEditsTable.NAME} ADD COLUMN ${ElementEditsTable.Columns.IS_NEAR_USER_LOCATION} int DEFAULT 1 NOT NULL")
-            db.exec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LATITUDE} double DEFAULT 0 NOT NULL")
-            db.exec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LONGITUDE} double DEFAULT 0 NOT NULL")
+            db.tryExec("ALTER TABLE ${ElementEditsTable.NAME} ADD COLUMN ${ElementEditsTable.Columns.IS_NEAR_USER_LOCATION} int DEFAULT 1 NOT NULL")
+            db.tryExec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LATITUDE} double DEFAULT 0 NOT NULL")
+            db.tryExec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LONGITUDE} double DEFAULT 0 NOT NULL")
         }
         if (oldVersion <= 14 && newVersion > 14) {
             db.renameOverlay("ShopsOverlay", "PlacesOverlay")
@@ -245,7 +246,7 @@ object DatabaseInitializer {
             db.renameQuest("AddProhibitedForMoped", "AddMopedAccess")
         }
         if (oldVersion <= 17 && newVersion > 17) {
-            db.exec("DROP TABLE direction_of_flow;")
+            db.exec("DROP TABLE IF EXISTS direction_of_flow;")
             db.deleteQuest("AddSuspectedOneway")
         }
         if (oldVersion <= 18 && newVersion > 18) {
@@ -254,6 +255,19 @@ object DatabaseInitializer {
             db.deleteQuest("AddShoulder")
         }
     }
+}
+
+/* E.g. when upgrading directly from a version below 10, it will create the ElementEditsTable
+   directly in the latest schema because we use the constant from EditElementsTable.CREATE to create
+   it.
+   But then, the upgrade step to version 13 would fail, because at that point, this table already
+   has the "is_near" column.
+   So, we don't really care about that and a "IF NOT EXISTS" syntax is not supported for the
+   ALTER TABLE statement. */
+private fun Database.tryExec(sql: String, args: Array<Any>? = null) = try {
+    exec(sql, args)
+} catch (e: Exception) {
+    Log.w("DatabaseInitializer", e.message ?: "Query failed: $sql")
 }
 
 private fun Database.deleteQuest(name: String) {
