@@ -130,7 +130,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.8.2")
-    implementation("androidx.fragment:fragment-ktx:1.8.2")
+    implementation("androidx.fragment:fragment-ktx:1.8.3")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
@@ -145,10 +145,10 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.navigation:navigation-compose:2.8.0")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
 
     // multiplatform webview (for login via OAuth)
     implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.20")
