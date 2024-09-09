@@ -13,7 +13,7 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>() {
     override val elementFilter = """
         nodes, ways, relations with
         (
-          tourism=information and information=board
+          tourism = information and information = board
           and board_type != notice
           and !board:title
         )
