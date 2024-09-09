@@ -1354,7 +1354,7 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_buildingType_tower_description">"qualsevol mena de torre"</string>
     <string name="quest_buildingType_under_construction">"En construcció"</string>
     <string name="overlay_buildings">"Edificis"</string>
-    <string name="quest_pedestrian_crossing_markings">"Aquest encreuament té marques que travessen la calçada?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Aquest encreuament té marques a terra?"</string>
     <string name="overlay_places">"Llocs"</string>
     <string name="overlay_things">"Coses"</string>
     <string name="disused">"en desús"</string>

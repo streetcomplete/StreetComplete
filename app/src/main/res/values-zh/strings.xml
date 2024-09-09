@@ -1353,7 +1353,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_buildingType_tower_description">"任何类型的塔"</string>
     <string name="quest_buildingType_under_construction">"建设中"</string>
     <string name="overlay_buildings">"建筑"</string>
-    <string name="quest_pedestrian_crossing_markings">"这个穿越道有横跨车道的标记吗？"</string>
+    <string name="quest_pedestrian_crossing_markings">"这个十字路口的地面上有标记吗？"</string>
     <string name="overlay_places">"场所"</string>
     <string name="overlay_things">"事物"</string>
     <string name="disused">"废弃"</string>

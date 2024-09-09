@@ -1354,7 +1354,7 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_buildingType_tower_description">"dowolny rodzaj wieży"</string>
     <string name="quest_buildingType_under_construction">"W trakcie budowy"</string>
     <string name="overlay_buildings">"Budynki"</string>
-    <string name="quest_pedestrian_crossing_markings">"Czy to przejście ma oznaczenia, które przecinają jezdnię?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na ziemi?"</string>
     <string name="overlay_places">"Miejsca"</string>
     <string name="overlay_things">"Obiekty"</string>
     <string name="disused">"już nieużywane"</string>
@@ -1391,6 +1391,7 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="action_clear">"Wyczyść"</string>
     <string name="action_more">"Więcej"</string>
     <string name="action_open_in_browser">"Otwórz w przeglądarce"</string>
+    <string name="about_category_contribute">"Wsparcie"</string>
     <string name="pref_category_quests">"Zadania"</string>
     <string name="pref_title_language_select2">"Język"</string>
     <string name="pref_title_resurvey_intervals_summary">"Jak często jesteś pytany w celu potwierdzenia czy poprzednio zmapowane dane są nadal poprawne."</string>
@@ -1401,4 +1402,8 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="bridge">"Na moście"</string>
     <string name="about_title_intro">"Pokaż wstęp"</string>
     <string name="about_category_help">"Pomoc"</string>
+    <string name="quest_camp_power_supply_hint">"Mogą to być gniazdka znajdujące się bezpośrednio na polu namiotowym, gniazdka zlokalizowane w budynkach usługowych dostępnych dla gości, lub dedykowane stacje ładowania telefonów, laptopów itp."</string>
+    <string name="quest_barrier_opening_width_bollard">"Jaka jest najszersza luka, którą można się tędy przedostać?"</string>
+    <string name="user_statistics_country_rank2">"Ranga w %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"To tylko pień drzewa"</string>
 </resources>

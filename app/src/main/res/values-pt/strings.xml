@@ -1353,7 +1353,7 @@ Além disso, algumas camadas, como a camada de endereços, permitem adicionar no
     <string name="quest_buildingType_tower_description">"qualquer tipo de torre"</string>
     <string name="quest_buildingType_under_construction">"Em construção"</string>
     <string name="overlay_buildings">"Edifícios"</string>
-    <string name="quest_pedestrian_crossing_markings">"Este atravessamento tem marcas que atravessam a estrada?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Este atravessamento de peões tem marcas na estrada?"</string>
     <string name="overlay_places">"Locais"</string>
     <string name="overlay_things">"Coisas"</string>
     <string name="disused">"não utilizado"</string>

@@ -1351,7 +1351,7 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_buildingType_tower_description">"다른 종류의 타워"</string>
     <string name="quest_buildingType_under_construction">"공사중"</string>
     <string name="overlay_buildings">"건물"</string>
-    <string name="quest_pedestrian_crossing_markings">"이 횡단보도에는 도로를 가로지르는 표식이 있나요?"</string>
+    <string name="quest_pedestrian_crossing_markings">"이 횡단보도는 지면에 표식이 있나요?"</string>
     <string name="overlay_places">"장소"</string>
     <string name="overlay_things">"사물"</string>
     <string name="disused">"사용하지 않는"</string>

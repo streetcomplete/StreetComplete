@@ -1354,7 +1354,7 @@ Lisäksi jotkin tasot sallivat uuden tiedon lisäämisen tähtäimen osoittamaan
     <string name="quest_buildingType_tower_description">"mikä tahansa torni"</string>
     <string name="quest_buildingType_under_construction">"Rakenteilla"</string>
     <string name="overlay_buildings">"Rakennukset"</string>
-    <string name="quest_pedestrian_crossing_markings">"Onko tässä risteyksessä tiemerkintöjä, jotka kulkevat ajoradan poikki?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Onko tässä risteyksessä merkintöjä maassa?"</string>
     <string name="overlay_places">"Paikat"</string>
     <string name="overlay_things">"Asiat"</string>
     <string name="disused">"Käyttämättä"</string>

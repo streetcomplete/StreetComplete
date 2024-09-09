@@ -1347,7 +1347,7 @@ Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását i
     <string name="quest_buildingType_tower_description">"bármilyen torony"</string>
     <string name="quest_buildingType_under_construction">"Építés alatt"</string>
     <string name="overlay_buildings">"Épületek"</string>
-    <string name="quest_pedestrian_crossing_markings">"Az átkelőhely jelölve van az úttesten keresztül?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Az átkelőhely jelölve van az útburkolaton?"</string>
     <string name="overlay_places">"Helyek"</string>
     <string name="overlay_things">"Dolgok"</string>
     <string name="disused">"használaton kívül"</string>

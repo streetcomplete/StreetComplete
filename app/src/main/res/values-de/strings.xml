@@ -1355,7 +1355,7 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="quest_buildingType_tower_description">"jede Art von Turm"</string>
     <string name="quest_buildingType_under_construction">"Im Bau befindlich"</string>
     <string name="overlay_buildings">"Gebäude"</string>
-    <string name="quest_pedestrian_crossing_markings">"Gibt es bei diesem Überweg Markierungen, die die Fahrbahn queren?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Gibt es bei diesem Fußgängerüberweg Markierungen auf dem Boden?"</string>
     <string name="overlay_places">"Orte"</string>
     <string name="overlay_things">"Dinge"</string>
     <string name="disused">"stillgelegt"</string>
@@ -1407,6 +1407,7 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="quest_camp_power_supply_hint">"Das könnten Steckdosen direkt im Campingbereich sein, Steckdosen in einem für Gäste zugänglichen Betriebsgebäude, eine dedizierte Ladestation für Telefone, Laptops, usw."</string>
     <string name="quest_barrier_opening_width_bollard">"Was ist die breiteste Lücke, durch die man hier durchkommt?"</string>
     <string name="user_profile_all_time_title">"Gesamt"</string>
-    <string name="user_statistics_country_rank2">"Rank in %s"</string>
+    <string name="user_statistics_country_rank2">"Rang in %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Es ist bloß ein Baumstumpf"</string>
+    <string name="quest_board_name_title">"Womit ist diese Tafel betitelt?"</string>
 </resources>

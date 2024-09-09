@@ -1351,7 +1351,7 @@
     <string name="quest_buildingType_tower_description">"任何高塔"</string>
     <string name="quest_buildingType_under_construction">"施工中"</string>
     <string name="overlay_buildings">"建築"</string>
-    <string name="quest_pedestrian_crossing_markings">"這個穿越道有橫跨車道的標記嗎？"</string>
+    <string name="quest_pedestrian_crossing_markings">"這個穿越道有路面標記嗎？"</string>
     <string name="overlay_places">"地方"</string>
     <string name="overlay_things">"東西"</string>
     <string name="disused">"棄用"</string>

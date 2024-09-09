@@ -1340,7 +1340,7 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="quest_buildingType_tower_description">"edificaciones con forma de torre"</string>
     <string name="quest_buildingType_under_construction">"En construcción"</string>
     <string name="overlay_buildings">"Edificios"</string>
-    <string name="quest_pedestrian_crossing_markings">"¿Este cruce tiene marcas que cruzan la calzada?"</string>
+    <string name="quest_pedestrian_crossing_markings">"¿Este cruce está demarcado?"</string>
     <string name="overlay_places">"Lugares"</string>
     <string name="overlay_things">"Cosas"</string>
     <string name="disused">"en desuso"</string>

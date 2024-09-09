@@ -1347,7 +1347,7 @@ Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu z
     <string name="quest_buildingType_tower_description">"hocijaký typ veže"</string>
     <string name="quest_buildingType_under_construction">"Vo výstavbe"</string>
     <string name="overlay_buildings">"Budovy"</string>
-    <string name="quest_pedestrian_crossing_markings">"Je tento prechod vyznačený cez cestu?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Je tento prechod vyznačený na ceste?"</string>
     <string name="overlay_places">"Miesta"</string>
     <string name="overlay_things">"Veci"</string>
     <string name="disused">"nepoužívané"</string>

@@ -1353,7 +1353,7 @@
     <string name="quest_buildingType_tower_description">"любая вежа"</string>
     <string name="quest_buildingType_under_construction">"будуецца"</string>
     <string name="overlay_buildings">"Будынкі"</string>
-    <string name="quest_pedestrian_crossing_markings">"Ці ёсць на гэтым пераходзе разметка, якая перасякае праезную частку?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Ці ёсць на гэтым пераходзе разметка?"</string>
     <string name="overlay_places">"Месцы"</string>
     <string name="overlay_things">"Рэчы"</string>
     <string name="disused">"не выкарыстоўваецца"</string>
