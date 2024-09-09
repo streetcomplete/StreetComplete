@@ -793,6 +793,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_air_pump_bicycle_repair_station_title">Is there a working bicycle pump here?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
 
+    <string name="quest_board_name_title">"What’s the title of this information board?"</string>
+
     <string name="quest_board_type_title">What’s the topic of this information board?</string>
     <string name="quest_board_type_history">History</string>
     <string name="quest_board_type_geology">Geology</string>
