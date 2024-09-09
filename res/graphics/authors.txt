@@ -281,6 +281,7 @@ quest/
     car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
     car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
     caravan.svg
+    caravan_site.svg                 CC0 - SVG Repo
     card.svg
     cash.svg
     check.svg

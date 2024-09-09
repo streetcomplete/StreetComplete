@@ -483,6 +483,23 @@
     <string name="quest_viaFerrataScale_six">"Grade 6/K6/F - extremely difficult"</string>
     <string name="quest_viaFerrataScale_six_description">"Long sparsely secured gymnastic circuits that require real stamina. Climbing shoes may be useful. Additional security to be provided by rope or belaying (recommended)"</string>
 
+    <!-- caravan site type -->
+    <string name="quest_caravanSiteType_title">"Where is this caravan site located?"</string>
+    <string name="default_disabled_msg_caravanSiteType">"This quest type is disabled by default because the classification and use of the tag is not commonly used."</string>
+    <string name="quest_caravanSiteType_village">"Village - a stopover near a small village."</string>
+    <string name="quest_caravanSiteType_town">"Town - a stopover near a bigger town."</string>
+    <string name="quest_caravanSiteType_river">"River - the site is located directly on the river."</string>
+    <string name="quest_caravanSiteType_lake">"Lake - the site is located directly on the lake."</string>
+    <string name="quest_caravanSiteType_parking_lot">"Parking Lot - directly on a parking lot"</string>
+    <string name="quest_caravanSiteType_harbour">"Harbor - at a harbor or marina."</string>
+    <string name="quest_caravanSiteType_winery">"Winery - staying at a winery, often right next to wineyards."</string>
+    <string name="quest_caravanSiteType_camp_site">"Camp site - a separate motorhome stopover at a campsite."</string>
+    <string name="quest_caravanSiteType_museum">"Museum - located at a museum, exhibition or similar."</string>
+    <string name="quest_caravanSiteType_restaurant">"Restaurant - at a restaurant or cafe, often on the parking lot."</string>
+    <string name="quest_caravanSiteType_farm">"Farm - staying at a farm."</string>
+    <string name="quest_caravanSiteType_beach">"Beach - next to a beach or by the sea."</string>
+    <string name="quest_caravanSiteType_supermarket">"Supermarket - on the parking lot of a supermarket."</string>
+
     <!-- other -->
     <string name="quest_contact_phone">What is the phone number of this place?</string>
     <string name="quest_contact_website">What is the website of this place?</string>
