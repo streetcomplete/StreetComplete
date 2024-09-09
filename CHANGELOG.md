@@ -35,8 +35,6 @@ Most of it is behind the scenes, but what's visible is the completely redone UI 
 - Barrier opening: Allow inputting widths of above 9.99 meters (#5865)
 - Charging stations: Skip private ones (#5842), by @mnalis
 - Traffic signals vibration: Disable in Bulgaria (#5846)
-- Barrier opening: Ask for certain cycle barriers, too (#5823), by @mnalis
-- Barrier opening: Also disable this quest when disabling all width-measurement quests
 - Ask many road-related quests also for busways (#5749)
 - Recycling containers: Also ask for containers that have been mapped as an area (#5735)
 - Recycling containers: Also highlight nearby waste containers and bins (#5754)
