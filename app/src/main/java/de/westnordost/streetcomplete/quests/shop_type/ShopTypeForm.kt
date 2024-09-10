@@ -50,14 +50,6 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 POPULAR_PLACE_FEATURE_IDS,
             ).show()
         }
-        initStateFromTags()
-    }
-
-    private fun initStateFromTags() {
-        val objectNote = element.tags["note"]
-        if (objectNote != null) {
-            this.setHint(getString(R.string.note_for_object) + " " + objectNote)
-        }
     }
 
     private fun filterOnlyShops(feature: Feature): Boolean {

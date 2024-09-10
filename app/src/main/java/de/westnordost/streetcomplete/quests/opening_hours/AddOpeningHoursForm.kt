@@ -114,10 +114,6 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     private fun initStateFromTags() {
         val oh = element.tags["opening_hours"]
-        val objectNote = element.tags["note"]
-        if (objectNote != null) {
-            this.setHint(getString(R.string.note_for_object) + " " + objectNote)
-        }
         val rows = oh?.toOpeningHoursOrNull(lenient = true)?.toOpeningHoursRows()
         if (rows != null) {
             openingHoursAdapter.rows = rows.toMutableList()

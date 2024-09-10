@@ -95,10 +95,6 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
 
     private fun initStateFromTags() {
         val ct = element.tags["collection_times"]
-        val objectNote = element.tags["note"]
-        if (objectNote != null) {
-            this.setHint(getString(R.string.note_for_object) + " " + objectNote)
-        }
         val rows = ct?.toOpeningHoursOrNull(lenient = true)?.toCollectionTimesRows()
         if (rows != null) {
             collectionTimesAdapter.collectionTimesRows = rows.toMutableList()
