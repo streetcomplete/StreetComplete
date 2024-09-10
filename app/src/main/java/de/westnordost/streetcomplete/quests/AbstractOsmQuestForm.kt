@@ -119,6 +119,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
         setTitle(getString(osmElementQuestType.getTitle(element.tags)))
         setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
+        val objNote = element.tags["note"]
+        if (objNote != null) {
+            setObjNote(objNote)
+        }
     }
 
     override fun onStart() {

@@ -72,6 +72,19 @@
                             android:textAppearance="@style/TextAppearance.TitleLarge.Hint"
                             android:visibility="gone"/>
 
+                        <TextView
+                            android:id="@+id/titleNoteLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.TitleLarge.Bold"
+                            android:visibility="gone"/>
+							
+                        <TextView
+                            android:id="@+id/noteLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.TitleLarge.Italic"
+                            android:visibility="gone"/>							
                     </LinearLayout>
 
                     <ImageView
