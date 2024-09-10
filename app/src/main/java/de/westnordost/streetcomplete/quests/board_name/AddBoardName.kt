@@ -21,7 +21,7 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>() {
 
     override val changesetComment = "Determine information board names"
     override val wikiLink = "Tag:information=board"
-    override val icon = R.drawable.ic_quest_board_name
+    override val icon = R.drawable.ic_quest_label
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_board_name_title
