@@ -23,11 +23,19 @@ class AddPostboxRefForm : AbstractOsmQuestForm<PostboxRefAnswer>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initStateFromTags()
         binding.refInput.doAfterTextChanged { checkIsFormComplete() }
     }
 
     override fun onClickOk() {
         applyAnswer(PostboxRef(ref!!))
+    }
+
+    private fun initStateFromTags() {
+        val objectNote = element.tags["note"]
+        if (objectNote != null) {
+            this.setHint(getString(R.string.note_for_object) + " " + objectNote)
+        }
     }
 
     private fun confirmNoRef() {

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests.place_name
 
+import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.QuestLocalizednameBinding
@@ -18,7 +20,17 @@ class AddPlaceNameForm : AAddLocalizedNameForm<PlaceNameAnswer>() {
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_placeName_no_name_answer) { confirmNoName() }
     )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initStateFromTags()
+    }
 
+    private fun initStateFromTags() {
+        val objectNote = element.tags["note"]
+        if (objectNote != null) {
+            this.setHint(getString(R.string.note_for_object) + " " + objectNote)
+        }
+    }
     override fun onClickOk(names: List<LocalizedName>) {
         applyAnswer(PlaceName(names))
     }
