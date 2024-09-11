@@ -72,19 +72,6 @@
                             android:textAppearance="@style/TextAppearance.TitleLarge.Hint"
                             android:visibility="gone"/>
 
-                        <TextView
-                            android:id="@+id/titleNoteLabel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.TitleLarge.Bold"
-                            android:visibility="gone"/>
-							
-                        <TextView
-                            android:id="@+id/noteLabel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.TitleLarge.Italic"
-                            android:visibility="gone"/>							
                     </LinearLayout>
 
                     <ImageView
@@ -132,6 +119,58 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollViewNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+				android:visibility="gone"
+                android:elevation="@dimen/speech_bubble_elevation">
+
+				<LinearLayout
+					android:id="@+id/speechbubbleNoteContainer"
+					android:background="@drawable/speech_bubble_none"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="vertical"
+					android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
+					android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
+					android:layout_marginBottom="4dp"
+					android:showDividers="middle"
+					android:paddingStart="22dp"
+					android:paddingEnd="22dp"
+					android:paddingTop="16dp"
+					android:paddingBottom="16dp"
+					android:divider="@drawable/space_16dp"
+					android:elevation="@dimen/speech_bubble_elevation">
+
+						<LinearLayout
+							android:id="@+id/noteArea"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:orientation="vertical"
+							android:showDividers="middle">
+
+								<TextView
+									android:id="@+id/titleNoteLabel"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:textAppearance="@style/TextAppearance.TitleLarge.Bold" />
+
+								<TextView
+									android:id="@+id/noteLabel"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:textAppearance="@style/TextAppearance.TitleLarge.Italic" />
+
+						</LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
 
             <!-- Necessary because even if the bottom sheet is already expanded, the content might
                  be still too large to fit onto the screen without scrolling (it often is) -->

@@ -153,7 +153,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead.</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
     <string name="leave_note">Leave note</string>
-    <string name="note_for_object">\nAnother mapper wrote:</string>
+    <string name="note_for_object">Another person noted:</string>
 
     <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
     <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each part separately.\nSplit it now?</string>

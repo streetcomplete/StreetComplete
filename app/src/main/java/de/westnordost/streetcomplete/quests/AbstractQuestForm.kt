@@ -189,8 +189,7 @@ abstract class AbstractQuestForm :
     }
 
     private fun decideObjNoteVisible() {
-        binding.titleNoteLabel.isGone = binding.titleNoteLabel.text == null
-        binding.noteLabel.isGone = binding.noteLabel.text == null
+        binding.scrollViewNote.isGone = binding.titleNoteLabel.text == null
     }
 
     private fun toggleInfoArea() {
