@@ -254,13 +254,14 @@ abstract class AbstractOverlayForm :
 
     protected fun setObjNote(text: CharSequence?) {
         binding.noteLabel.text = text
-        val noteBubbleLayout = (binding.titleHintLabelContainer.layoutParams as? RelativeLayout.LayoutParams)
-        noteBubbleLayout?.removeRule(RelativeLayout.ABOVE)
-        if (binding.noteLabel.text == null) {
-            noteBubbleLayout?.addRule(RelativeLayout.ABOVE, binding.speechbubbleContentContainer.id)
-        } else {
-            noteBubbleLayout?.addRule(RelativeLayout.ABOVE, binding.speechbubbleNoteContainer.id)
-        }
+        val titleHintLayout = (binding.titleHintLabelContainer.layoutParams as? RelativeLayout.LayoutParams)
+        titleHintLayout?.removeRule(RelativeLayout.ABOVE)
+        titleHintLayout?.addRule(RelativeLayout.ABOVE,
+            if (binding.noteLabel.text.isEmpty())
+                binding.speechbubbleContentContainer.id
+            else
+                binding.speechbubbleNoteContainer.id
+        )
         binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
     }
 
