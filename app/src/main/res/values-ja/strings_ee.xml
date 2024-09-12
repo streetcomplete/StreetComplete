@@ -409,8 +409,8 @@
     <string name="quest_street_cabinet_traffic_monitoring">交通監視</string>
     <string name="quest_street_cabinet_transport_management">(公共)交通機関管理</string>
     <string name="quest_street_cabinet_television">テレビ</string>
-    <string name="quest_artwork_sculpture">彫刻</string>
-    <string name="quest_artwork_statue">彫像・塑像</string>
+    <string name="quest_artwork_sculpture">オブジェ/(像ではない)彫刻</string>
+    <string name="quest_artwork_statue">(胸像ではない)彫像・塑像</string>
     <string name="quest_artwork_mural">壁画</string>
     <string name="quest_artwork_graffiti">グラフィティ/エアロゾールアート</string>
     <string name="quest_artwork_installation">場所や空間全体を作品として体験させる芸術</string>

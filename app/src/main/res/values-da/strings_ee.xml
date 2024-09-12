@@ -592,4 +592,25 @@
     <string name="pref_quest_pedestrian_crossing_markings_extended">Aktiver udvidelse af \"Er der markeringer på jorden ved denne overgang?\", så du kan angive stilen på overgangens markeringer</string>
     <string name="quest_surface_value_chipseal">Overfladebehandling (Chipseal)</string>
     <string name="quest_crossing_marking_value_dashes">Striber</string>
+    <string name="pref_offset_fix_title2">Fjern forskydninger af hvide prikker</string>
+    <string name="quest_caravanSiteType_museum">Museum - placeret ved et museum, en udstilling eller lignende.</string>
+    <string name="quest_caravanSiteType_supermarket">Supermarked - på parkeringspladsen ved et supermarked.</string>
+    <string name="quest_caravanSiteType_title">Hvor ligger denne autocamperplads?</string>
+    <string name="default_disabled_msg_caravanSiteType">Denne opgavetype er som standard deaktiveret, fordi klassifikationen og brugen af tagget ikke er almindeligt anvendt.</string>
+    <string name="quest_caravanSiteType_village">Landsby - en holdeplads nær en mindre landsby.</string>
+    <string name="quest_caravanSiteType_town">By - en holdeplads nær en større by.</string>
+    <string name="quest_caravanSiteType_lake">Sø - stedet ligger lige ned til søen.</string>
+    <string name="quest_caravanSiteType_river">Flod - stedet ligger lige ned til floden.</string>
+    <string name="quest_caravanSiteType_parking_lot">Parkeringsplads - direkte på en parkeringsplads.</string>
+    <string name="quest_caravanSiteType_harbour">Havn - i en havn eller marina.</string>
+    <string name="quest_caravanSiteType_winery">Vingård - ophold på en vingård, ofte lige ved siden af vinmarker.</string>
+    <string name="quest_caravanSiteType_camp_site">Campingplads - et særskilt holdested for autocampere på en campingplads.</string>
+    <string name="quest_caravanSiteType_restaurant">Restaurant - ved en restaurant eller café, ofte på parkeringspladsen.</string>
+    <string name="quest_caravanSiteType_farm">Gård - ophold på en gård.</string>
+    <string name="quest_caravanSiteType_beach">Strand - ved en strand eller ved havet.</string>
+    <string name="quest_valves_title">Hvilke typer ventiler er tilgængelige her?</string>
+    <string name="quest_valves_disabled_msg">Denne opgave er som standard deaktiveret, fordi den kræver en meget nøje inspektion af de tilgængelige ventiler.</string>
+    <string name="quest_valves_sclaverand">SV: Racerventil / Presta / Fransk ventil</string>
+    <string name="quest_valves_dunlop">DV/NV: Dunlop / Woods</string>
+    <string name="quest_valves_schrader">AV: Schrader / Auto-ventil</string>
 </resources>

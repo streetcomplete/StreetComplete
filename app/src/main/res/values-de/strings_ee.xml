@@ -594,4 +594,20 @@
     <string name="quest_crossing_marking_value_zebra">Zebrastreifen</string>
     <string name="quest_crossing_marking_value_zebra_double">Zebrastreifen doppelt</string>
     <string name="pref_quest_pedestrian_crossing_markings_extended">Erweiterung „Gibt es bei diesem Fußgängerüberweg Markierungen auf dem Boden?“ aktivieren, sodass du die Art der Überquerungsmarkierungen definieren kannst</string>
+    <string name="pref_offset_fix_title2">Versatz für weiße Punkte entfernen</string>
+    <string name="default_disabled_msg_caravanSiteType">Dieser Quest-Typ ist standardmäßig deaktiviert, da die Klassifizierung und Verwendung des Tags nicht häufig vorkommt.</string>
+    <string name="quest_caravanSiteType_camp_site">Campingplatz - ein separater Wohnmobilstellplatz auf einem Campingplatz.</string>
+    <string name="quest_caravanSiteType_supermarket">Supermarkt - auf dem Parkplatz eines Supermarktes.</string>
+    <string name="quest_caravanSiteType_title">Wo befindet sich dieser Wohnmobilstellplatz?</string>
+    <string name="quest_caravanSiteType_village">Village - ein Stellplatz in der Nähe eines kleinen Dorfes.</string>
+    <string name="quest_caravanSiteType_town">Stadt - ein Stellplatz in der Nähe einer größeren Stadt.</string>
+    <string name="quest_caravanSiteType_river">Fluss - der Stellplatz liegt direkt am Fluss.</string>
+    <string name="quest_caravanSiteType_lake">See - der Stellplatz liegt direkt am See.</string>
+    <string name="quest_caravanSiteType_parking_lot">Parkplatz - direkt auf einem Parkplatz.</string>
+    <string name="quest_caravanSiteType_harbour">Hafen - an einem Hafen oder Jachthafen.</string>
+    <string name="quest_caravanSiteType_winery">Weingut - Stellplatz auf einem Weingut, oft direkt neben den Weinbergen.</string>
+    <string name="quest_caravanSiteType_museum">Museum - befindet sich neben einem Museum, einer Ausstellung oder ähnlichem.</string>
+    <string name="quest_caravanSiteType_restaurant">Restaurant - an einem Restaurant oder Cafe, oft auf dem Parkplatz.</string>
+    <string name="quest_caravanSiteType_farm">Bauernhof - Stellplatz auf einem Bauernhof.</string>
+    <string name="quest_caravanSiteType_beach">Strand - in der Nähe eines Strandes oder am Meer.</string>
 </resources>

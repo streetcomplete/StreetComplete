@@ -1,0 +1,10 @@
+- add safe loops as bicycle parking type, by @mcliquid
+- fix icon color in overlays
+- allow copying crash report text
+- re-add "remove dot offset" setting
+- fix rotation of icons in restriciton overlay form
+- use the new icon in F-Droid, by @mnalis
+- add "Tree is stump" answer to tree species quest, by @mnalis
+- minor fixes / improvements
+- add caravan site type quest, by @mcliquid
+- add bicycle valves quest, by @mcliquid
