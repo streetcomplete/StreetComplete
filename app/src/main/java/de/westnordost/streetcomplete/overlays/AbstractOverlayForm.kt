@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
@@ -202,6 +203,7 @@ abstract class AbstractOverlayForm :
         setTitleHintLabel(
             element?.let { getNameAndLocationSpanned(it, resources, featureDictionary) }
         )
+        setObjNote(element?.tags?.get("note"))
 
         binding.moreButton.setOnClickListener {
             showOtherAnswers()
@@ -248,6 +250,18 @@ abstract class AbstractOverlayForm :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    protected fun setObjNote(text: CharSequence?) {
+        binding.noteLabel.text = text
+        val noteBubbleLayout = (binding.speechbubbleNoteContainer.layoutParams as? RelativeLayout.LayoutParams)
+        noteBubbleLayout?.removeRule(RelativeLayout.ABOVE)
+        if (binding.titleHintLabel.text == null) {
+            noteBubbleLayout?.addRule(RelativeLayout.ABOVE, binding.speechbubbleContentContainer.id)
+        } else {
+            noteBubbleLayout?.addRule(RelativeLayout.ABOVE, binding.titleHintLabelContainer.id)
+        }
+        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
     }
 
     /* --------------------------------- IsCloseableBottomSheet  ------------------------------- */
@@ -347,7 +361,7 @@ abstract class AbstractOverlayForm :
     protected abstract fun onClickOk()
 
     protected inline fun <reified T : ViewBinding> contentViewBinding(
-        noinline viewBinder: (View) -> T
+        noinline viewBinder: (View) -> T,
     ) = FragmentViewBindingPropertyDelegate(this, viewBinder, R.id.content)
 
     /* -------------------------------------- ...-Button -----------------------------------------*/
