@@ -171,11 +171,8 @@ abstract class AbstractQuestForm :
     }
 
     protected fun setObjNote(text: CharSequence?) {
-        binding.titleNoteLabel.isGone = text == null
-        binding.titleNoteLabel.text = getString(R.string.note_for_object)
-        binding.noteLabel.isGone = text == null
         binding.noteLabel.text = text
-        decideObjNoteVisible()
+        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
     }
     protected fun setHintImages(images: List<Drawable>) {
         binding.infoPictures.isGone = images.isEmpty()
@@ -187,10 +184,6 @@ abstract class AbstractQuestForm :
             binding.infoPictures.addView(imageView)
         }
         updateInfoButtonVisibility()
-    }
-
-    private fun decideObjNoteVisible() {
-        binding.speechbubbleNoteContainer.isGone = binding.titleNoteLabel.text == null
     }
 
     private fun toggleInfoArea() {

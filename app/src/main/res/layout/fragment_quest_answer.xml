@@ -150,7 +150,8 @@
                         android:id="@+id/titleNoteLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.TitleMedium" />
+                        android:textAppearance="@style/TextAppearance.TitleMedium"
+                        android:text="@string/note_for_object" />
 
                     <TextView
                         android:id="@+id/noteLabel"
