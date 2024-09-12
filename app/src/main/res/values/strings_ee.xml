@@ -407,6 +407,14 @@
     <string name="quest_shelter_type_field_shelter">Field shelter</string>
     <string name="quest_shelter_type_rock_shelter">Rock shelter</string>
 
+    <!-- valves (air compressor or bicycle pump) -->
+    <string name="quest_valves_title">What types of valves are available here?</string>
+    <string name="quest_valves_disabled_msg">This quest is disabled by default because it requires a very close inspection of the available valves.</string>
+    <string name="quest_valves_sclaverand">SV: Sclaverand / Presta / French valve</string>
+    <string name="quest_valves_dunlop">DV/NV: Dunlop / Woods</string>
+    <string name="quest_valves_schrader">AV: Schrader / Car valve</string>
+    <string name="quest_valves_regina">RV: Regina / Italian</string>
+
     <!-- artwork type -->
     <string name="quest_artwork_title">What kind of artwork is this?</string>
     <string name="quest_artwork_sculpture">Sculpture</string>
