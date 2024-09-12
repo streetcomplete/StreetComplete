@@ -1355,7 +1355,7 @@ Geralmente indicado por uma placa como esta:"</string>
     <string name="quest_buildingType_tower_description">"qualquer tipo de torre"</string>
     <string name="quest_buildingType_under_construction">"Em contrução"</string>
     <string name="overlay_buildings">"Edifícios"</string>
-    <string name="quest_pedestrian_crossing_markings">"Esta passagem de pedestres tem marcações atravessando a via?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Esta passagem de pedestres tem marcações no terreno?"</string>
     <string name="overlay_places">"Lugares"</string>
     <string name="overlay_things">"Coisas"</string>
     <string name="disused">"não está mais em uso"</string>

@@ -1,34 +1,8 @@
 # Changelog
 
-## v59.0-alpha4
-- Some statistics in the user profile screen look different now (#5855)
-- Fix follow-me mode didn't always turn off on moving map (#5824)
-- Make it easier to hit the right line in overlays (#5849)
-- Tree leaf type: User can answer that it is now a tree stump (#5853), by @mnalis
-- Barrier opening: Allow inputting widths of above 9.99 meters (#5865)
+## v59.0-beta1
 
-## v59.0-alpha2
-
-### Fixes
-- Fix common crash on startup (#5829)
-- Fix some icons were missing in things & places overlays (#5832)
-- Fix rotation of view direction cone (#5821, #5834)
-- Fix barrier opening width should only be asked for barriers that are vertices of ways (#5830)
-- Workaround building color didn't change immediately when selecting another type (#2746)
-- Fix element is now updated correctly on conflict during upload (#5818), by @Helium314
-- Fix only enable OK button for separate bike paths in bike path overlay after changes have been made (#5819)
-- Fix links in the "What's New" dialog didn't work (#5814)
-
-### Improvements
-- Scale icons on low zoom a bit, cluster pin later (#5848, #5835)
-- Load quests on lower zoom levels, too (#5823)
-- Make it easier to tap elements on overlay when there are quests around (#5827)
-- Charging stations: Skip private ones (#5842), by @mnalis
-- Traffic signals vibration: Disable in Bulgaria (#5846)
-- Barrier opening: Ask for certain cycle barriers, too (#5823), by @mnalis
-- Barrier opening: Also disable this quest when disabling all width-measurement quests
-
-## v59.0-alpha1
+Oh! Again such a monster update!
 
 ### 🗺️ MapLibre (#5693), by @Helium314 and me
 
@@ -38,30 +12,29 @@ Display-wise, nothing much *should* change, the map will just look and behave a 
 
 Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4830, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #4026, #3417, #3397, #3346, #3275, #3022, #2878, #2711, #2703, #2612, #2571, #2373, #2359, #2358, #2187, #1713, #1684, #1264, #1019, #869, #807, #318, #179, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
 
-### General improvements
+### 🍏 iOS progress
 
-- Redesigned the settings screens, about screens and tutorial screens (#5719)
-- minor improvements for right-to-left localization (Arabic, Hebrew, Farsi)
-- fix rare crash issues (#5804)
+In case you wondered what happened since I [announced to work on an iOS version of the app](https://www.openstreetmap.org/user/westnordost/diary/403704). I've taken some big steps forward, see [this progress update](https://github.com/streetcomplete/StreetComplete/issues/5421#issuecomment-2332402123) for more info.
+Most of it is behind the scenes, but what's visible is the completely redone UI for the settings screens, about screens, statistics screens and tutorial screens (#5719, #5855). Of course, it looks mostly the same now, as it should.
 
 ### New Quests
-
+- _"What’s the title of this information board?"_, (#5882, #5871), by @mnalis
 - _"What is the width of the opening here?"_, asked for gates etc. (#5713, #5800) by @Nick-Tallguy
 
 ### Removed Quests
-
 - Asking _"Is this a one-way street?"_, based on processed data from ImproveOSM because Grab is shutting it down (#5725)
 - Asking _"Can you pick up parcels here?"_ and _"Can you drop off parcels here?"_ because it turns out that it is often not surveyable and the answer is always the same for one brand of parcel lockers (#5763)
 
-### Overlay Improvements
-
-- Addresses: Presence of housenumbers is now highlighted in blue (#5748)
-- Bike paths, Sidewalks: Highlight less situations as missing (#5716, #5722)
-- Bike paths: When selecting "designated shared-use path", always mark it as designated for pedestrians, too (#5742)
-- allow hiding notes that block editing with an overlay (#5703)
+### Fixes
+- Fix element is now updated correctly on conflict during upload (#5818), by @Helium314
+- Fix only enable OK button for separate bike paths in bike path overlay after changes have been made (#5819)
+- Fix rare crash issues (#5804, #5873)
 
 ### Quest Improvements
-
+- Tree leaf type: User can answer that it is now a tree stump (#5853), by @mnalis
+- Barrier opening: Allow inputting widths of above 9.99 meters (#5865)
+- Charging stations: Skip private ones (#5842), by @mnalis
+- Traffic signals vibration: Disable in Bulgaria (#5846)
 - Ask many road-related quests also for busways (#5749)
 - Recycling containers: Also ask for containers that have been mapped as an area (#5735)
 - Recycling containers: Also highlight nearby waste containers and bins (#5754)
@@ -72,8 +45,13 @@ Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #50
 - Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
 - Clothing container operators: Allow answering that there's no information on the container (#5764)
 - Check existence: Don't ask if something else on the same place has just been checked (#5729)
-- Other small improvements (#5740, #5792, #5548, #5776, ...), thanks @mnalis
+- Other small improvements (#5740, #5792, #5548, #5776, #5877, #5880, #5879, #5874...), thanks @mnalis, @RubenKelevra
 
+### Overlay Improvements
+- Addresses: Presence of housenumbers is now highlighted in blue (#5748)
+- Bike paths, Sidewalks: Highlight less situations as missing (#5716, #5722)
+- Bike paths: When selecting "designated shared-use path", always mark it as designated for pedestrians, too (#5742)
+- allow hiding notes that block editing with an overlay (#5703)
 
 ## v58.2
 - Fixed it was impossible to login with a third party that required 2FA (e.g. Google) (#5724, #5711)

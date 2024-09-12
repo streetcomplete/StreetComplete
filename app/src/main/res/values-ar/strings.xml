@@ -1358,7 +1358,7 @@
     <string name="quest_buildingType_tower_description">"أي نوع من الأبراج"</string>
     <string name="quest_buildingType_under_construction">"تحت الإنشاء"</string>
     <string name="overlay_buildings">"مباني"</string>
-    <string name="quest_pedestrian_crossing_markings">"هل يحتوي هذا المعبر على علامات عبر الطريق؟"</string>
+    <string name="quest_pedestrian_crossing_markings">"هل توجد علامات على الأرض لمعبر المشاة هذا؟"</string>
     <string name="overlay_places">"أماكن"</string>
     <string name="overlay_things">"أشياء"</string>
     <string name="disused">"غير مستخدمة"</string>

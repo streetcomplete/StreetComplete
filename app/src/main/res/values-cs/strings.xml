@@ -1358,7 +1358,7 @@ Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici 
     <string name="quest_buildingType_tower_description">"jakýkoli typ věže"</string>
     <string name="quest_buildingType_under_construction">"Ve výstavbě"</string>
     <string name="overlay_buildings">"Budovy"</string>
-    <string name="quest_pedestrian_crossing_markings">"Má tento přechod značení, které překračuje vozovku?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Má tento přechod značení na zemi?"</string>
     <string name="overlay_places">"Místa"</string>
     <string name="overlay_things">"Věci"</string>
     <string name="disused">"nepoužíváno"</string>

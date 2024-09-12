@@ -1353,7 +1353,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_buildingType_tower_description">"Tout type de tour"</string>
     <string name="quest_buildingType_under_construction">"En cours de construction"</string>
     <string name="overlay_buildings">"Immeubles"</string>
-    <string name="quest_pedestrian_crossing_markings">"Cette traversée a-t-elle des marquages qui traversent la chaussée?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Est-ce que ce passage piéton est peint sur la chaussée ?"</string>
     <string name="overlay_places">"Lieux"</string>
     <string name="overlay_things">"Objets"</string>
     <string name="disused">"désaffecté"</string>

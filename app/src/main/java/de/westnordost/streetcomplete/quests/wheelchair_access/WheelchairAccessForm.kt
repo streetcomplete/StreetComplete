@@ -19,8 +19,8 @@ open class WheelchairAccessForm : AbstractOsmQuestForm<WheelchairAccess>() {
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO.apply { updatedDescriptions = descriptions }) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES.apply { updatedDescriptions = descriptions }) },
         AnswerItem(R.string.quest_wheelchairAccess_limited) { applyAnswer(LIMITED.apply { updatedDescriptions = descriptions }) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES.apply { updatedDescriptions = descriptions }) },
     )
 
     private val descriptions = mutableMapOf<String, String>()

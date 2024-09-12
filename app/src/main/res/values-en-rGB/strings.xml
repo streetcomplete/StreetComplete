@@ -1355,7 +1355,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_buildingType_tower_description">"any kind of tower"</string>
     <string name="quest_buildingType_under_construction">"Under construction"</string>
     <string name="overlay_buildings">"Buildings"</string>
-    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings across the roadway?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
     <string name="overlay_places">"Places"</string>
     <string name="overlay_things">"Things"</string>
     <string name="disused">"disused"</string>

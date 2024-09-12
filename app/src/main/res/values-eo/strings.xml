@@ -1314,7 +1314,7 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="quest_buildingType_tower_description">"ia speco de turo"</string>
     <string name="quest_buildingType_under_construction">"konstruanta"</string>
     <string name="overlay_buildings">"Konstruaĵoj"</string>
-    <string name="quest_pedestrian_crossing_markings">"Ĉu ĉi tiu transirejo havas markojn trans la vojon?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Ĉu tiu transirejo estas markita surstrate?"</string>
     <string name="overlay_places">"Lokoj"</string>
     <string name="overlay_things">"Aferoj"</string>
     <string name="disused">"malzorgata"</string>

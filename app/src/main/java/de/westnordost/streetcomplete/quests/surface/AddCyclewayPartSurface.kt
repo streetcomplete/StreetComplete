@@ -19,7 +19,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<SurfaceAndNote>() {
           or (highway = bridleway and bicycle ~ designated|yes)
         )
         and segregated = yes
-        and !sidewalk
+        and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
         and (
           !cycleway:surface
           or cycleway:surface older today -8 years

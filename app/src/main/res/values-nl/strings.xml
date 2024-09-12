@@ -1346,7 +1346,7 @@ Bovendien kun je met sommige overlays nieuwe gegevens toevoegen op de positie va
     <string name="quest_buildingType_tower_description">"Iedere soort toren"</string>
     <string name="quest_buildingType_under_construction">"In aanbouw"</string>
     <string name="overlay_buildings">"Gebouwen"</string>
-    <string name="quest_pedestrian_crossing_markings">"Heeft deze oversteekplaats markeringen die de rijbaan oversteken?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Heeft deze oversteekplaats markeringen op de grond?"</string>
     <string name="overlay_places">"Plaatsen"</string>
     <string name="overlay_things">"Dingen"</string>
     <string name="disused">"Niet meer in gebruik"</string>

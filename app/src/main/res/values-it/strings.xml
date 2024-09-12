@@ -1350,7 +1350,7 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="quest_buildingType_tower_description">"qualsiasi tipo di torre"</string>
     <string name="quest_buildingType_under_construction">"In costruzione"</string>
     <string name="overlay_buildings">"Edifici"</string>
-    <string name="quest_pedestrian_crossing_markings">"Questo attraversamento ha segnaletica orizzontale attraverso la carreggiata?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Questo attraversamento ha della segnaletica orizzontale?"</string>
     <string name="overlay_places">"Luoghi"</string>
     <string name="overlay_things">"Oggetti"</string>
     <string name="disused">"inutilizzato"</string>

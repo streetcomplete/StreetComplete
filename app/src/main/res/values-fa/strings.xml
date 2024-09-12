@@ -1350,7 +1350,7 @@
     <string name="quest_buildingType_tower_description">"هر نوع برجی"</string>
     <string name="quest_buildingType_under_construction">"در حال ساخت"</string>
     <string name="overlay_buildings">"ساختمان‌ها"</string>
-    <string name="quest_pedestrian_crossing_markings">"آیا این گذرگاه خط‌کشی‌هایی که از روی جاده عبور می‌کنند دارد؟"</string>
+    <string name="quest_pedestrian_crossing_markings">"آیا این گذرگاه روی زمین علامت‌گذاری دارد؟"</string>
     <string name="overlay_places">"مکان‌ها"</string>
     <string name="overlay_things">"چیزها"</string>
     <string name="disused">"بلااستفاده/از کار افتاده"</string>

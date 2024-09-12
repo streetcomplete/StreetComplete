@@ -1354,7 +1354,7 @@
     <string name="quest_buildingType_tower_description">"любая башня"</string>
     <string name="quest_buildingType_under_construction">"Строящийся"</string>
     <string name="overlay_buildings">"Здания"</string>
-    <string name="quest_pedestrian_crossing_markings">"Есть ли на этом переходе разметка, которая пересекает проезжую часть?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Есть ли на этом переходе разметка на земле?"</string>
     <string name="overlay_places">"Места"</string>
     <string name="overlay_things">"Вещи"</string>
     <string name="disused">"не использующийся"</string>

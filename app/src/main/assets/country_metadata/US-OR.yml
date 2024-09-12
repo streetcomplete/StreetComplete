@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Wells Fargo, U.S. Bank, Chase, Bank of America, Umpqua Bank, OnPoint, Citibank, RockItCoin, KeyBank, First Tech Federal Credit Union, First Community Credit Union, Embold Credit Union, Allpoint, Worldwide, Well Fargo, Union Bank, US Bank, Oregon State Credit Union, OCCU, Northwest Community Credit Union, InRoads Credit Union, CoinFlip, BitcoinNW]
+atmOperators: [Wells Fargo, U.S. Bank, Chase, Bank of America, Umpqua Bank, OnPoint, Citibank, RockItCoin, KeyBank, First Tech Federal Credit Union, First Community Credit Union, Embold Credit Union, Allpoint, Well Fargo, Union Bank, US Bank, Oregon State Credit Union, OCCU, Northwest Community Credit Union, InRoads Credit Union, CoinFlip, BitcoinNW]
 chargingStationOperators: [ChargePoint, Blink, 'Tesla, Inc.', Electrify America, Volta, EVCS, Portland General Electric, EVgo, Chargepoint, Rivian, FLO, AeroVironment, eVgo, OpConnect, Holiday Inn Express & Suites Portland Airport - Cascade Station, Church Extension Plan]
 clothesContainerOperators: [Gemtext, Gaia Movement USA]
 defaultSpeedLimitHasUrbanOrRural: true

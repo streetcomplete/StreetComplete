@@ -1338,7 +1338,7 @@
     <string name="quest_buildingType_tower_description">"кула произволен тип"</string>
     <string name="quest_buildingType_under_construction">"В строеж"</string>
     <string name="overlay_buildings">"Сгради"</string>
-    <string name="quest_pedestrian_crossing_markings">"Има ли този пешеходен преход маркировка, която преминава през пътното платно?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Този прелез има ли маркировка на земята?"</string>
     <string name="overlay_places">"Места "</string>
     <string name="overlay_things">"Неща"</string>
     <string name="disused">"изоставено"</string>

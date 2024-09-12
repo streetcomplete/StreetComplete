@@ -580,10 +580,9 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     private fun onUpdatedNavigationMode() {
         if (!isNavigationMode) {
-            updateCameraPosition(300) {
-                rotation = 0.0
-                tilt = 0.0
-            }
+            // don't reset the rotation to 0 here, because this behavior is useful (#5886)
+            // (users can always reset it by tapping on the compass)
+            updateCameraPosition(300) { tilt = 0.0 }
         } else {
             centerCurrentPositionIfFollowing()
         }

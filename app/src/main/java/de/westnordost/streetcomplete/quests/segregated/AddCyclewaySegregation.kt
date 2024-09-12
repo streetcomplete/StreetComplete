@@ -27,7 +27,7 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
         )
         and surface ~ ${PAVED_SURFACES.joinToString("|")}
         and area != yes
-        and !sidewalk
+        and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
         and !segregated
         and ~path|footway|cycleway !~ link
     """
