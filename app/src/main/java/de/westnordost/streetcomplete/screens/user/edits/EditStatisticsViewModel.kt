@@ -31,7 +31,7 @@ abstract class EditStatisticsViewModel : ViewModel() {
     abstract val flagAlignments: StateFlow<Map<String, FlagAlignment>?>
 }
 
-data class EditTypeStatistics(val type: EditType, val count: Int, )
+data class EditTypeStatistics(val type: EditType, val count: Int)
 
 class EditStatisticsViewModelImpl(
     private val statisticsSource: StatisticsSource,
