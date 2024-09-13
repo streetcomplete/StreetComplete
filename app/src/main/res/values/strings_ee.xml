@@ -500,7 +500,7 @@
     <string name="quest_caravanSiteType_lake">"Lake - the site is located directly on the lake."</string>
     <string name="quest_caravanSiteType_parking_lot">"Parking Lot - directly on a parking lot."</string>
     <string name="quest_caravanSiteType_harbour">"Harbor - at a harbor or marina."</string>
-    <string name="quest_caravanSiteType_winery">"Winery - staying at a winery, often right next to wineyards."</string>
+    <string name="quest_caravanSiteType_winery">"Winery - staying at a winery, often right next to vineyards."</string>
     <string name="quest_caravanSiteType_camp_site">"Camp site - a separate motorhome stopover at a campsite."</string>
     <string name="quest_caravanSiteType_museum">"Museum - located at a museum, exhibition or similar."</string>
     <string name="quest_caravanSiteType_restaurant">"Restaurant - at a restaurant or cafe, often on the parking lot."</string>
