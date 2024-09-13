@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.UrlAnnotation
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -66,7 +66,6 @@ private fun AnnotatedString.Builder.append(
     else if (node is HtmlTextNode) append(node.text)
 }
 
-@OptIn(ExperimentalTextApi::class)
 private fun AnnotatedString.Builder.append(
     element: HtmlElementNode,
     bulletWidth: TextUnit,
@@ -129,12 +128,13 @@ private fun AnnotatedString.Builder.append(
             SpanStyle(background = Color.Yellow)
         "span" ->
             SpanStyle()
-        "a" ->
-            SpanStyle(textDecoration = TextDecoration.Underline, color = linkColor)
         else -> null
     }
     if (span != null) pushStyle(span)
-    if (element.tag == "a") pushUrlAnnotation(UrlAnnotation(element.attributes["href"].orEmpty()))
+    if (element.tag == "a") {
+        val url = element.attributes["href"].orEmpty()
+        pushLink(LinkAnnotation.Url(url)) // TODO style...
+    }
 
     if (paragraph != null) append('\n')
     if (element.tag == "li") append(bullet)

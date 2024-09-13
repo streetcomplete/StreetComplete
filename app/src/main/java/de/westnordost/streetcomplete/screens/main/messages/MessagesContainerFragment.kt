@@ -41,7 +41,6 @@ class MessagesContainerFragment : Fragment() {
                 WhatsNewDialog(
                     changelog = msg.changelog,
                     onDismissRequest = { shownMessage.value = null },
-                    onClickLink = { context?.openUri(it) }
                 )
             }
             else -> {}

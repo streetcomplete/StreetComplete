@@ -13,14 +13,12 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.tryParseHtml
-import de.westnordost.streetcomplete.util.ktx.openUri
 
 /** Shows the privacy statement */
 @Composable
@@ -33,7 +31,6 @@ fun PrivacyStatementScreen(
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         SelectionContainer {
-            val context = LocalContext.current
             HtmlText(
                 html =
                     tryParseHtml(stringResource(R.string.privacy_html)) +
@@ -45,7 +42,6 @@ fun PrivacyStatementScreen(
                     .verticalScroll(rememberScrollState())
                     .padding(16.dp),
                 style = MaterialTheme.typography.body2,
-                onClickLink = { context.openUri(it) }
             )
         }
     }

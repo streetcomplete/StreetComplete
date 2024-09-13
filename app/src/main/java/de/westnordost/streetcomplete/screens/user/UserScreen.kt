@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.screens.user
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -37,7 +35,6 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 /** Shows the tabs with the user profile, user statistics, achievements and links */
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun UserScreen(
     onClickBack: () -> Unit,
@@ -71,7 +68,6 @@ fun UserScreen(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun UserScreenTopAppBar(
     onClickBack: () -> Unit,

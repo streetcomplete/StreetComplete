@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.tutorial
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -34,7 +33,6 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
 /** Generic multiple-page tutorial screen */
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TutorialScreen(
     pageCount: Int,

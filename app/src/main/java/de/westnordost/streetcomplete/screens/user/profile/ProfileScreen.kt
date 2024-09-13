@@ -32,7 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.coerceAtMost
@@ -42,7 +42,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
@@ -110,9 +109,9 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            val context = LocalContext.current
+            val uriHandler = LocalUriHandler.current
             Button(onClick = {
-                context.openUri("https://www.openstreetmap.org/user/" + viewModel.userName.value)
+                uriHandler.openUri("https://www.openstreetmap.org/user/" + viewModel.userName.value)
             }) {
                 Icon(painterResource(R.drawable.ic_open_in_browser_24dp), null)
                 Spacer(Modifier.width(8.dp))

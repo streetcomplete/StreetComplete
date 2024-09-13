@@ -22,8 +22,6 @@ fun LazyAchievementsGrid(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
-    // TODO Compose: revisit animate-in of list items when androidx.compose.animation 1.7 is stable
-    // probably Modifier.animateItem or Modifier.animateEnterExit
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 144.dp),
         modifier = modifier,

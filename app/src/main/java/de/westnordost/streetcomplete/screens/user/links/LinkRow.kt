@@ -14,6 +14,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -52,10 +53,11 @@ private val LinkCategory.description: Int get() = when (this) {
 
 /** Display a single link from the link collection */
 @Composable
-fun LinkRow(link: Link, onClickLink: (url: String) -> Unit, modifier: Modifier = Modifier) {
+fun LinkRow(link: Link, modifier: Modifier = Modifier) {
+    val uriHandler = LocalUriHandler.current
     Row(
         modifier = modifier
-            .clickable { onClickLink(link.url) }
+            .clickable { uriHandler.openUri(link.url) }
             .padding(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
@@ -90,5 +92,5 @@ private fun LinkRowPreview() {
         LinkCategory.INTRO,
         R.drawable.ic_link_wiki,
         R.string.link_wiki_description
-    ), {})
+    ))
 }

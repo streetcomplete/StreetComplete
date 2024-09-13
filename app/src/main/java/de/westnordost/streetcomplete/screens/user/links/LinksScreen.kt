@@ -6,12 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
-import de.westnordost.streetcomplete.util.ktx.openUri
 
 /** Shows the user's unlocked links */
 @Composable
@@ -22,10 +20,8 @@ fun LinksScreen(viewModel: LinksViewModel) {
     val allLinks = links
     if (allLinks != null) {
         if (allLinks.isNotEmpty()) {
-            val context = LocalContext.current
             LazyGroupedLinksColumn(
                 allLinks = allLinks,
-                onClickLink = { context.openUri(it) },
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp)
             )

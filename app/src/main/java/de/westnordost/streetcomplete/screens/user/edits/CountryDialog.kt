@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.user.edits
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,10 +12,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
@@ -33,7 +31,6 @@ import de.westnordost.streetcomplete.screens.user.profile.getLocalRankCurrentWee
 import de.westnordost.streetcomplete.screens.user.profile.getLocalRankProgress
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
-import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 
 /** Shows the details for a certain country as a dialog. */
@@ -54,7 +51,7 @@ fun CountryDialog(
             modifier = Modifier
                 .fillMaxSize()
                 // dismiss when clicking wherever - no ripple effect
-                .clickable(remember { MutableInteractionSource() }, null) { onDismissRequest() },
+                .clickable(null, null) { onDismissRequest() },
             contentAlignment = Alignment.Center
         ) {
             DialogContentWithIconLayout(
@@ -81,7 +78,7 @@ private fun CountryInfoDetails(
     isLandscape: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    val context = LocalContext.current
+    val uriHandler = LocalUriHandler.current
     val countryLocale = Locale("", countryCode)
 
     Column(
@@ -114,7 +111,7 @@ private fun CountryInfoDetails(
         OutlinedButton(
             onClick = {
                 val britishCountryName = countryLocale.getDisplayCountry(Locale.UK)
-                context.openUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
+                uriHandler.openUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
             }
         ) {
             OpenInBrowserIcon()
