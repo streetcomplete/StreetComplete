@@ -70,7 +70,9 @@ class DisplaySettingsFragment :
             setText(R.string.pref_gpx_track_provide)
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
-                type = "application/octet-stream" // allows too many files, but application/gpx+xml doesn't work
+                // actually the type should be application/gpx+xml, but often doesn't work
+                // for some phones only application/octet-stream works, for others it doesn't, so just allow everything
+                type = "*/*"
             }
             setOnClickListener {
                 d?.dismiss()
