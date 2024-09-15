@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 data class ElementEdit(
     /** (row) id of the edit. 0 if not inserted into DB yet */
-    var id: Long,
+    var id: Long = 0,
 
     /** edit type associated with the edit. This is used to sort this edit into a changeset
      *  associated with the quest type. A changeset gets its comment from the quest type */
@@ -21,10 +21,10 @@ data class ElementEdit(
     val source: String,
 
     /** timestamp when this edit was made. Used to order the edits in a queue */
-    override val createdTimestamp: Long,
+    override val createdTimestamp: Long = System.currentTimeMillis(),
 
     /** whether this edit has been uploaded already */
-    override val isSynced: Boolean,
+    override val isSynced: Boolean = false,
 
     /** The action to perform */
     val action: ElementEditAction,

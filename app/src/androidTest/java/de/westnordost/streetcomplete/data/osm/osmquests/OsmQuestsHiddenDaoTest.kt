@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
@@ -45,7 +44,7 @@ class OsmQuestsHiddenDaoTest : ApplicationDbTestCase() {
         )
         dao.add(keys[0])
         delay(200)
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
         dao.add(keys[1])
         val result = dao.getNewerThan(time - 100).single()
         assertEquals(keys[1], result.osmQuestKey)

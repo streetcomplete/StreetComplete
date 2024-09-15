@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action that moves a node. */
@@ -41,7 +40,7 @@ data class MoveNodeAction(
 
         return MapDataChanges(modifications = listOf(node.copy(
             position = position,
-            timestampEdited = nowAsEpochMilliseconds()
+            timestampEdited = System.currentTimeMillis()
         )))
     }
 

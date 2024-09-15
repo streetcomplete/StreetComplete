@@ -10,8 +10,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.TIMESTAM
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NODES
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -31,7 +29,7 @@ class WayDao(private val db: Database) {
         if (ways.isEmpty()) return
         val idsString = ways.joinToString(",") { it.id.toString() }
 
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
 
         db.transaction {
             db.delete(NAME_NODES, "$ID IN ($idsString)")

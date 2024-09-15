@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
 import kotlinx.coroutines.Dispatchers.IO
@@ -46,7 +45,7 @@ class OpenChangesetsManager(
     }
 
     suspend fun closeOldChangesets() {
-        val timePassed = nowAsEpochMilliseconds() - prefs.lastEditTime
+        val timePassed = System.currentTimeMillis() - prefs.lastEditTime
         if (timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return
 
         val openChangesets = withContext(IO) { openChangesetsDB.getAll() }

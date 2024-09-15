@@ -29,8 +29,6 @@ fun isApril1st(): Boolean {
     return now.dayOfMonth == 1 && now.month == Month.APRIL
 }
 
-fun nowAsEpochMilliseconds(): Long = systemTimeNow().toEpochMilliseconds()
-
 fun systemTimeNow(): Instant = Clock.System.now()
 
 fun LocalDateTime.Companion.now(): LocalDateTime =

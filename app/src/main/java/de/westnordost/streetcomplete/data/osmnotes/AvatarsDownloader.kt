@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.user.UserApiClient
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.expectSuccess
@@ -25,14 +24,14 @@ class AvatarsDownloader(
             return
         }
 
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
         for (userId in userIds) {
             val avatarUrl = getProfileImageUrl(userId)
             if (avatarUrl != null) {
                 download(userId, avatarUrl)
             }
         }
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Downloaded ${userIds.size} avatar images in ${seconds.format(1)}s")
     }
 

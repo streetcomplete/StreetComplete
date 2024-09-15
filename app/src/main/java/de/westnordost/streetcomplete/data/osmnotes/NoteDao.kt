@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -34,16 +33,17 @@ class NoteDao(private val db: Database) {
 
         db.replaceMany(NAME,
             arrayOf(ID, LATITUDE, LONGITUDE, STATUS, CREATED, CLOSED, COMMENTS, LAST_SYNC),
-            notes.map { arrayOf(
-                it.id,
-                it.position.latitude,
-                it.position.longitude,
-                it.status.name,
-                it.timestampCreated,
-                it.timestampClosed,
-                Json.encodeToString(it.comments),
-                nowAsEpochMilliseconds()
-            ) }
+            notes.map {
+                arrayOf(
+                    it.id,
+                    it.position.latitude,
+                    it.position.longitude,
+                    it.status.name,
+                    it.timestampCreated,
+                    it.timestampClosed,
+                    Json.encodeToString(it.comments),
+                    System.currentTimeMillis()
+                ) }
         )
     }
 
@@ -89,7 +89,7 @@ class NoteDao(private val db: Database) {
         CREATED to timestampCreated,
         CLOSED to timestampClosed,
         COMMENTS to Json.encodeToString(comments),
-        LAST_SYNC to nowAsEpochMilliseconds()
+        LAST_SYNC to System.currentTimeMillis()
     )
 
     private fun CursorPosition.toNote() = Note(

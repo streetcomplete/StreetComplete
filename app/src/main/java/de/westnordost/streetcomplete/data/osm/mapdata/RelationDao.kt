@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.TYP
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBERS
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -32,7 +31,7 @@ class RelationDao(private val db: Database) {
         if (relations.isEmpty()) return
         val idsString = relations.joinToString(",") { it.id.toString() }
 
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
 
         db.transaction {
             db.delete(NAME_MEMBERS, "$ID IN ($idsString)")

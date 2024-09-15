@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action reverts moving a node. */
@@ -33,7 +32,7 @@ data class RevertMoveNodeAction(
 
         return MapDataChanges(modifications = listOf(currentNode.copy(
             position = originalNode.position,
-            timestampEdited = nowAsEpochMilliseconds()
+            timestampEdited = System.currentTimeMillis()
         )))
     }
 }

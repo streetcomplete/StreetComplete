@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -79,7 +78,7 @@ abstract class AVariableRadiusStrategy(
     /** return if data in the given tiles rect that hasn't been downloaded yet */
     private suspend fun hasMissingDataFor(tilesRect: TilesRect): Boolean {
         val dataExpirationTime = ApplicationConstants.REFRESH_DATA_AFTER
-        val ignoreOlderThan = max(0, nowAsEpochMilliseconds() - dataExpirationTime)
+        val ignoreOlderThan = max(0, System.currentTimeMillis() - dataExpirationTime)
         return withContext(Dispatchers.IO) { !downloadedTilesSource.contains(tilesRect, ignoreOlderThan) }
     }
 

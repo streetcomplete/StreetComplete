@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 
 /** Controller to access element data and its geometry and handle updates to it (from OSM API) */
@@ -55,7 +54,7 @@ class MapDataController internal constructor(
     /** update element data with [mapData] in the given [bbox] (fresh data from the OSM API has been
      *  downloaded) */
     fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
 
         val oldElementKeys: Set<ElementKey>
         val geometryEntries: Collection<ElementGeometryEntry>
@@ -82,9 +81,10 @@ class MapDataController internal constructor(
             elementDB.putAll(mapData)
         }
 
-        Log.i(TAG,
+        Log.i(
+            TAG,
             "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
-            " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
+                " in ${((System.currentTimeMillis() - time) / 1000.0).format(1)}s"
         )
 
         val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometryEntries)

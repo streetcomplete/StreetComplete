@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.logs.LogLevel
 import de.westnordost.streetcomplete.data.logs.LogLevel.*
 import de.westnordost.streetcomplete.data.logs.LogMessage
 import de.westnordost.streetcomplete.data.logs.LogsController
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,13 +35,14 @@ class DatabaseLogger(private val logsController: LogsController) : Logger {
 
     private fun log(level: LogLevel, tag: String, message: String, exception: Throwable? = null) {
         coroutineScope.launch {
-            logsController.add(LogMessage(
-                level = level,
-                tag = tag,
-                message = message,
-                error = exception?.toString(),
-                timestamp = nowAsEpochMilliseconds()
-            ))
+            logsController.add(
+                LogMessage(
+                    level = level,
+                    tag = tag,
+                    message = message,
+                    error = exception?.toString(),
+                    timestamp = System.currentTimeMillis()
+                ))
         }
     }
 }

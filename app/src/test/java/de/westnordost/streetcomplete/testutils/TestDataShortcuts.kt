@@ -27,7 +27,6 @@ import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.data.user.User
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 fun p(lat: Double = 0.0, lon: Double = 0.0) = LatLon(lat, lon)
 
@@ -37,7 +36,7 @@ fun node(
     tags: Map<String, String> = emptyMap(),
     version: Int = 1,
     timestamp: Long? = null
-) = Node(id, pos, tags, version, timestamp ?: nowAsEpochMilliseconds())
+) = Node(id, pos, tags, version, timestamp ?: System.currentTimeMillis())
 
 fun way(
     id: Long = 1,
@@ -45,7 +44,7 @@ fun way(
     tags: Map<String, String> = emptyMap(),
     version: Int = 1,
     timestamp: Long? = null
-) = Way(id, nodes, tags, version, timestamp ?: nowAsEpochMilliseconds())
+) = Way(id, nodes, tags, version, timestamp ?: System.currentTimeMillis())
 
 fun rel(
     id: Long = 1,
@@ -53,7 +52,7 @@ fun rel(
     tags: Map<String, String> = emptyMap(),
     version: Int = 1,
     timestamp: Long? = null
-) = Relation(id, members.toMutableList(), tags, version, timestamp ?: nowAsEpochMilliseconds())
+) = Relation(id, members.toMutableList(), tags, version, timestamp ?: System.currentTimeMillis())
 
 fun member(
     type: ElementType = ElementType.NODE,

@@ -28,7 +28,6 @@ import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.createBitmap
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -162,8 +161,8 @@ class NoteDiscussionForm : AbstractQuestForm() {
         }
 
         override fun onBind(with: NoteComment) {
-            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, nowAsEpochMilliseconds(), MINUTE_IN_MILLIS)
-            val userName = if (with.user != null) with.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
+            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, System.currentTimeMillis(), MINUTE_IN_MILLIS)
+            val userName = with.user?.displayName ?: getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = with.action.actionResourceId
             val hasNoteAction = commentActionResourceId != 0

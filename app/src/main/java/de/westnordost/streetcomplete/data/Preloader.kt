@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -17,7 +16,7 @@ class Preloader(
 ) {
 
     suspend fun preload() {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
         coroutineScope {
             // country boundaries are necessary latest for when a quest is opened or on a download
             launch { preloadCountryBoundaries() }
@@ -26,20 +25,20 @@ class Preloader(
             launch { preloadFeatureDictionary() }
         }
 
-        Log.i(TAG, "Preloading data took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
+        Log.i(TAG, "Preloading data took ${((System.currentTimeMillis() - time) / 1000.0).format(1)}s")
     }
 
     private suspend fun preloadFeatureDictionary() = withContext(Dispatchers.IO) {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
         featuresDictionary.value
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Loaded features dictionary in ${seconds.format(1)}s")
     }
 
     private suspend fun preloadCountryBoundaries() = withContext(Dispatchers.IO) {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
         countryBoundaries.value
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Loaded country boundaries in ${seconds.format(1)}s")
     }
 

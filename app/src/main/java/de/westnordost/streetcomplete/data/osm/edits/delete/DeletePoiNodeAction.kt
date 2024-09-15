@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action that deletes a POI node.
@@ -57,7 +56,7 @@ data class DeletePoiNodeAction(
             // if it is a vertex in a way or has a role in a relation: just clear the tags then
             val emptyNode = currentNode.copy(
                 tags = emptyMap(),
-                timestampEdited = nowAsEpochMilliseconds()
+                timestampEdited = System.currentTimeMillis()
             )
             MapDataChanges(modifications = listOf(emptyNode))
         }

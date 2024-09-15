@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.getIds
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.logs.Log
@@ -145,7 +144,7 @@ class StatisticsController(
     private fun updateDaysActive() {
         val today = systemTimeNow().toLocalDate()
         val lastUpdateDate = Instant.fromEpochMilliseconds(lastUpdate).toLocalDate()
-        lastUpdate = nowAsEpochMilliseconds()
+        lastUpdate = System.currentTimeMillis()
         activeDatesDao.addToday()
         if (today > lastUpdateDate) {
             daysActive++

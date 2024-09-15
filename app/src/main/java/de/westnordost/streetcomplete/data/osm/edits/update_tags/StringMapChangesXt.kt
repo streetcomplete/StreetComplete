@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.edits.update_tags
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.util.ktx.copy
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 fun Element.changesApplied(changes: StringMapChanges): Element {
     val tags = tags.toMutableMap()
@@ -26,6 +25,6 @@ fun Element.changesApplied(changes: StringMapChanges): Element {
     }
     return this.copy(
         tags = tags,
-        timestampEdited = nowAsEpochMilliseconds()
+        timestampEdited = System.currentTimeMillis()
     )
 }

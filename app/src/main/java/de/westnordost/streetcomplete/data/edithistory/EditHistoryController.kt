@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 /** All edits done by the user in one place: Edits made on notes, on map data, hidings of quests */
 class EditHistoryController(
@@ -86,7 +85,7 @@ class EditHistoryController(
     }
 
     override fun getAll(): List<Edit> {
-        val maxAge = nowAsEpochMilliseconds() - MAX_UNDO_HISTORY_AGE
+        val maxAge = System.currentTimeMillis() - MAX_UNDO_HISTORY_AGE
 
         val result = ArrayList<Edit>()
         result += elementEditsController.getAll().filter { it.action !is IsRevertAction }

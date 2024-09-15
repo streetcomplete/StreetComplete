@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.ktx.equalsInOsm
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action that creates a node and optionally inserts it as a vertex into the given way(s) */
@@ -66,7 +65,7 @@ data class CreateNodeAction(
             val nodeIds = way.nodeIds.toMutableList()
             nodeIds.add(node1Index + 1, newNode.id)
 
-            editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = nowAsEpochMilliseconds()))
+            editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = System.currentTimeMillis()))
         }
 
         return MapDataChanges(creations = listOf(newNode), modifications = editedWays)
@@ -76,7 +75,7 @@ data class CreateNodeAction(
         RevertCreateNodeAction(createNode(idProvider), insertIntoWays.map { it.wayId })
 
     private fun createNode(idProvider: ElementIdProvider) =
-        Node(idProvider.nextNodeId(), position, tags, 1, nowAsEpochMilliseconds())
+        Node(idProvider.nextNodeId(), position, tags, 1, System.currentTimeMillis())
 }
 
 /** Inserting the node into the given [wayId] in between the nodes at the given positions

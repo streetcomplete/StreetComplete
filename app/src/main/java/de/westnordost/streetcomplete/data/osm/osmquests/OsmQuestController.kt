@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.intersects
 import de.westnordost.streetcomplete.util.ktx.isInAny
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.truncateTo5Decimals
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.contains
@@ -68,7 +67,7 @@ class OsmQuestController internal constructor(
          *  OSM elements are updated, so the quests that reference that element need to be updated
          *  as well. */
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            val time = nowAsEpochMilliseconds()
+            val time = System.currentTimeMillis()
 
             val deferredQuests = mutableListOf<Deferred<OsmQuest?>>()
 
@@ -88,7 +87,7 @@ class OsmQuestController internal constructor(
                 // quests that refer to elements that have been deleted shall be deleted
                 val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
-                val millis = nowAsEpochMilliseconds() - time
+                val millis = System.currentTimeMillis() - time
                 Log.i(TAG, "Created ${quests.size} quests for ${updated.size} updated elements in ${millis}ms")
 
                 obsoleteQuestKeys = getObsoleteQuestKeys(quests, previousQuests, deleteQuestKeys)
@@ -138,7 +137,7 @@ class OsmQuestController internal constructor(
         mapDataWithGeometry: MapDataWithGeometry,
         questTypes: Collection<OsmElementQuestType<*>>,
     ): Collection<OsmQuest> {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
 
         val countryBoundaries = countryBoundaries.value
 
@@ -156,7 +155,7 @@ class OsmQuestController internal constructor(
                     Log.d(TAG, "$questTypeName: Skipped because it is disabled for this country")
                     emptyList()
                 } else {
-                    val questTime = nowAsEpochMilliseconds()
+                    val questTime = System.currentTimeMillis()
                     var questCount = 0
                     val mapDataToUse = if (questType is OsmFilterQuestType && !questType.filter.mayEvaluateToTrueWithNoTags) {
                         onlyElementsWithTags
@@ -171,7 +170,7 @@ class OsmQuestController internal constructor(
                         questCount++
                     }
 
-                    val questSeconds = nowAsEpochMilliseconds() - questTime
+                    val questSeconds = System.currentTimeMillis() - questTime
                     Log.d(TAG, "$questTypeName: Found $questCount quests in ${questSeconds}ms")
                     questsForType
                 }
@@ -179,7 +178,7 @@ class OsmQuestController internal constructor(
         }
         val quests = runBlocking { deferredQuests.awaitAll().flatten() }
 
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Created ${quests.size} quests for bbox in ${seconds.format(1)}s")
 
         return quests
@@ -229,12 +228,12 @@ class OsmQuestController internal constructor(
     }
 
     private fun updateQuests(questsNow: Collection<OsmQuest>, obsoleteQuestKeys: Collection<OsmQuestKey>) {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
 
         db.deleteAll(obsoleteQuestKeys)
         db.putAll(questsNow)
 
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Persisted ${questsNow.size} new and removed ${obsoleteQuestKeys.size} already resolved quests in ${seconds.format(1)}s")
     }
 

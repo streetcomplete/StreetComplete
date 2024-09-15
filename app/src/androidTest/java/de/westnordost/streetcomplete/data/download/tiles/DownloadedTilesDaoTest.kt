@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.download.tiles
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -29,7 +28,7 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
 
     @Test fun putGetOld() {
         dao.put(r(5, 8, 5, 8))
-        val then = nowAsEpochMilliseconds() + 1000
+        val then = System.currentTimeMillis() + 1000
         assertFalse(dao.contains(r(5, 8, 5, 8), then))
         assertTrue(dao.getAll(then).isEmpty())
     }
@@ -38,7 +37,7 @@ class DownloadedTilesDaoTest : ApplicationDbTestCase() {
         dao.put(r(0, 0, 1, 3))
         Thread.sleep(2000)
         dao.put(r(2, 0, 5, 5))
-        val before = nowAsEpochMilliseconds() - 1000
+        val before = System.currentTimeMillis() - 1000
         assertFalse(dao.contains(r(0, 0, 2, 2), before))
         assertEquals(24, dao.getAll(before).size)
     }

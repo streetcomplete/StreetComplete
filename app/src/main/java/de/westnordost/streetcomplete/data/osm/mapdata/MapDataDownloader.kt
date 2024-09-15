@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.QueryTooBigException
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.Dispatchers
@@ -16,12 +15,12 @@ class MapDataDownloader(
     private val mapDataController: MapDataController
 ) {
     suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
 
         val expandedBBox = bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
         val mapData = getMapAndHandleTooBigQuery(expandedBBox)
 
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Downloaded ${mapData.nodes.size} nodes, ${mapData.ways.size} ways and ${mapData.relations.size} relations in ${seconds.format(1)}s")
 
         yield()

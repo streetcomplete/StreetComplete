@@ -56,7 +56,6 @@ import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocales
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.AndroidLogger
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import de.westnordost.streetcomplete.util.logs.Log
@@ -153,7 +152,7 @@ class StreetCompleteApplication : Application() {
 
         applicationScope.launch {
             preloader.preload()
-            editHistoryController.deleteSyncedOlderThan(nowAsEpochMilliseconds() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
+            editHistoryController.deleteSyncedOlderThan(System.currentTimeMillis() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
         }
 
         if (isConnected) userUpdater.update()

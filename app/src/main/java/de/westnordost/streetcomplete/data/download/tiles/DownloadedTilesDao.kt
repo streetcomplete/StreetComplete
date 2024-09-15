@@ -5,16 +5,16 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.Co
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.Columns.X
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.Columns.Y
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable.NAME
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 /** Keeps info in which areas things have been downloaded already in a tile grid */
 class DownloadedTilesDao(private val db: Database) {
 
     /** Persist that the given tile range has been downloaded (now) */
     fun put(tilesRect: TilesRect) {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
         val tiles = tilesRect.asTilePosSequence()
-        db.replaceMany(NAME,
+        db.replaceMany(
+            NAME,
             columnNames = arrayOf(X, Y, DATE),
             valuesList = tiles.map { arrayOf<Any?>(it.x, it.y, time) }.asIterable()
         )

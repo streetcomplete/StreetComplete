@@ -4,7 +4,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 
 /** Manages access to the notes storage */
@@ -25,7 +24,7 @@ class NoteController(
 
     /** Replace all notes in the given bounding box with the given notes */
     fun putAllForBBox(bbox: BoundingBox, notes: Collection<Note>) {
-        val time = nowAsEpochMilliseconds()
+        val time = System.currentTimeMillis()
 
         val oldNotesById = mutableMapOf<Long, Note>()
         val addedNotes = mutableListOf<Note>()
@@ -46,7 +45,7 @@ class NoteController(
             dao.deleteAll(oldNotesById.keys)
         }
 
-        val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+        val seconds = (System.currentTimeMillis() - time) / 1000.0
         Log.i(TAG, "Persisted ${addedNotes.size} and deleted ${oldNotesById.size} notes in ${seconds.format(1)}s")
 
         onUpdated(added = addedNotes, updated = updatedNotes, deleted = oldNotesById.keys)

@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitDownload
 import de.westnordost.streetcomplete.screens.main.map.maplibre.awaitResetDatabase
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLng
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -41,12 +40,13 @@ class MapTilesDownloader(private val context: Context) {
 
         // store timestamp as metadata for deleting areas older than
         // (could also be done directly from the long)
-        val metadata = nowAsEpochMilliseconds().toString().toByteArray(Charsets.UTF_8)
+        val metadata = System.currentTimeMillis().toString().toByteArray(Charsets.UTF_8)
         try {
-            val offlineRegion = OfflineManager.getInstance(context).awaitCreateOfflineRegion(regionDefinition, metadata)
-            val time = nowAsEpochMilliseconds()
+            val offlineRegion = OfflineManager.getInstance(context)
+                .awaitCreateOfflineRegion(regionDefinition, metadata)
+            val time = System.currentTimeMillis()
             val status = offlineRegion.awaitDownload()
-            val seconds = (nowAsEpochMilliseconds() - time) / 1000.0
+            val seconds = (System.currentTimeMillis() - time) / 1000.0
             Log.i(TAG, "Downloaded ${status.completedTileCount} tiles (${status.completedTileSize / 1000}kB) in ${seconds.format(1)}s")
             // note that the numbers include tiles that were already on device
             //  no idea how to check which tiles were really downloaded (other than in android log for MapLibre)

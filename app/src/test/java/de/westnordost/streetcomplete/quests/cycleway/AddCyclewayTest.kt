@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -56,10 +55,12 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway that is not old enough`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "track"
-        ), timestamp = nowAsEpochMilliseconds())
+        val way = way(
+            1L, listOf(1, 2, 3), mapOf(
+                "highway" to "primary",
+                "cycleway" to "track"
+            ), timestamp = System.currentTimeMillis()
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
@@ -67,11 +68,13 @@ class AddCyclewayTest {
     }
 
     @Test fun `applicable to road with cycleway that is old enough`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "track",
-            "check_date:cycleway" to "2001-01-01"
-        ), timestamp = nowAsEpochMilliseconds())
+        val way = way(
+            1L, listOf(1, 2, 3), mapOf(
+                "highway" to "primary",
+                "cycleway" to "track",
+                "check_date:cycleway" to "2001-01-01"
+            ), timestamp = System.currentTimeMillis()
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
@@ -79,11 +82,13 @@ class AddCyclewayTest {
     }
 
     @Test fun `not applicable to road with cycleway that is old enough but has unknown cycleway tagging`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "primary",
-            "cycleway" to "whatsthis",
-            "check_date:cycleway" to "2001-01-01"
-        ), timestamp = nowAsEpochMilliseconds())
+        val way = way(
+            1L, listOf(1, 2, 3), mapOf(
+                "highway" to "primary",
+                "cycleway" to "whatsthis",
+                "check_date:cycleway" to "2001-01-01"
+            ), timestamp = System.currentTimeMillis()
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)

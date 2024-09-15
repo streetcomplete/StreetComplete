@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.way
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -72,12 +71,14 @@ class AddCyclewayPartSurfaceTest {
     }
 
     @Test fun `applicable to old enough cycleway with surface`() {
-        val way = way(1L, listOf(1, 2, 3), mapOf(
-            "highway" to "cycleway",
-            "segregated" to "yes",
-            "cycleway:surface" to "asphalt",
-            "check_date:cycleway:surface" to "2001-01-01"
-        ), timestamp = nowAsEpochMilliseconds())
+        val way = way(
+            1L, listOf(1, 2, 3), mapOf(
+                "highway" to "cycleway",
+                "segregated" to "yes",
+                "cycleway:surface" to "asphalt",
+                "check_date:cycleway:surface" to "2001-01-01"
+            ), timestamp = System.currentTimeMillis()
+        )
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)

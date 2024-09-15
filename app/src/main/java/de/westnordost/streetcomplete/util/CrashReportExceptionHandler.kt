@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.logs.format
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.sendEmail
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.Dispatchers
@@ -139,7 +138,7 @@ class CrashReportExceptionHandler(
 
     private fun readLogFromDatabase(): String {
         val newLogTimestamp =
-            nowAsEpochMilliseconds() - ApplicationConstants.DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER
+            System.currentTimeMillis() - ApplicationConstants.DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER
 
         return logsController
             .getLogs(newerThan = newLogTimestamp)

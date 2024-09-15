@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLng
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.dpToPx
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.openUri
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -100,7 +99,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         // the offline manager is only available together with the map, i.e. not from the CleanerWorker
         lifecycleScope.launch {
             delay(30000) // cleaning is low priority, do it once startup is done
-            val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
+            val oldDataTimestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_OLD_DATA_AFTER
             OfflineManager.getInstance(requireContext()).deleteRegionsOlderThan(oldDataTimestamp)
         }
     }

@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.verify
 import kotlin.test.BeforeTest
@@ -53,7 +52,8 @@ class ElementEditsControllerTest {
 
         ctrl.add(QUEST_TYPE, pGeom(), "test", action, true)
 
-        verifyAdd(ElementEdit(0, QUEST_TYPE, pGeom(), "test", nowAsEpochMilliseconds(), false, action, true))
+        verifyAdd(ElementEdit(type = QUEST_TYPE, originalGeometry = pGeom(), source = "test",
+            action = action, isNearUserLocation = true))
     }
 
     @Test fun markSyncFailed() {

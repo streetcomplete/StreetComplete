@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.existence
 
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -18,7 +17,7 @@ class CheckExistenceTest {
                 node(
                     tags = mapOf(
                         "amenity" to "telephone",
-                    ), timestamp = nowAsEpochMilliseconds()
+                    ), timestamp = System.currentTimeMillis()
                 )
             )
         )
@@ -31,7 +30,7 @@ class CheckExistenceTest {
                 node(
                     tags = mapOf(
                         "amenity" to "telephone",
-                    ), timestamp = nowAsEpochMilliseconds() - millisecondsFor800Days
+                    ), timestamp = System.currentTimeMillis() - millisecondsFor800Days
                 )
             )
         )

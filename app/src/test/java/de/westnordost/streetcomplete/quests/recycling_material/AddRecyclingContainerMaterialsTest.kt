@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.PLASTIC_PACKAGING
 import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.SHOES
 import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -46,25 +45,29 @@ class AddRecyclingContainerMaterialsTest {
 
     @Test fun `applicable to container with old recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            node(tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container",
-                "check_date:recycling" to "2001-01-01",
-                "recycling:plastic_packaging" to "yes",
-                "recycling:something_else" to "no"
-            ), timestamp = nowAsEpochMilliseconds())
+            node(
+                tags = mapOf(
+                    "amenity" to "recycling",
+                    "recycling_type" to "container",
+                    "check_date:recycling" to "2001-01-01",
+                    "recycling:plastic_packaging" to "yes",
+                    "recycling:something_else" to "no"
+                ), timestamp = System.currentTimeMillis()
+            )
         ))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
     }
 
     @Test fun `not applicable to container with old but unknown recycling materials`() {
         val mapData = TestMapDataWithGeometry(listOf(
-            node(tags = mapOf(
-                "amenity" to "recycling",
-                "recycling_type" to "container",
-                "check_date:recycling" to "2001-01-01",
-                "recycling:something_else" to "yes"
-            ), timestamp = nowAsEpochMilliseconds())
+            node(
+                tags = mapOf(
+                    "amenity" to "recycling",
+                    "recycling_type" to "container",
+                    "check_date:recycling" to "2001-01-01",
+                    "recycling:something_else" to "yes"
+                ), timestamp = System.currentTimeMillis()
+            )
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }

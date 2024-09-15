@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -76,13 +75,13 @@ class NodeDaoTest : ApplicationDbTestCase() {
 
     @Test fun getUnusedAndOldIds() {
         dao.putAll(listOf(nd(1L), nd(2L), nd(3L)))
-        val unusedIds = dao.getIdsOlderThan(nowAsEpochMilliseconds() + 10)
+        val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10)
         assertTrue(unusedIds.containsExactlyInAnyOrder(listOf(1L, 2L, 3L)))
     }
 
     @Test fun getUnusedAndOldIdsButAtMostX() {
         dao.putAll(listOf(nd(1L), nd(2L), nd(3L)))
-        val unusedIds = dao.getIdsOlderThan(nowAsEpochMilliseconds() + 10, 2)
+        val unusedIds = dao.getIdsOlderThan(System.currentTimeMillis() + 10, 2)
         assertEquals(2, unusedIds.size)
     }
 

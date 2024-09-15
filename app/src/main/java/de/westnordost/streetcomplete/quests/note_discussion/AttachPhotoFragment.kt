@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.databinding.FragmentAttachPhotoBinding
 import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.viewBinding
@@ -122,7 +121,7 @@ class AttachPhotoFragment : Fragment(R.layout.fragment_attach_photo) {
 
 private fun createImageFile(context: Context): File {
     val directory = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-    val imageFileName = "photo_" + nowAsEpochMilliseconds() + ".jpg"
+    val imageFileName = "photo_" + System.currentTimeMillis() + ".jpg"
     val file = File(directory, imageFileName)
     if (!file.createNewFile()) throw IOException("Photo file with exactly the same name already exists")
     return file

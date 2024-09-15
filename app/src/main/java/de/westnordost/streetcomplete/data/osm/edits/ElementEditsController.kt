@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 
 class ElementEditsController(
@@ -30,7 +29,8 @@ class ElementEditsController(
         isNearUserLocation: Boolean
     ) {
         Log.d(TAG, "Add ${type.name} for ${action.elementKeys.joinToString()}")
-        add(ElementEdit(0, type, geometry, source, nowAsEpochMilliseconds(), false, action, isNearUserLocation))
+        add(ElementEdit(type = type, originalGeometry = geometry, source = source, action = action,
+            isNearUserLocation = isNearUserLocation))
     }
 
     override fun get(id: Long): ElementEdit? =
@@ -117,7 +117,7 @@ class ElementEditsController(
             // need to delete the original edit from history because this should not be undoable anymore
             delete(edit)
             // ... and add a new revert to the queue
-            add(ElementEdit(0, edit.type, edit.originalGeometry, edit.source, nowAsEpochMilliseconds(), false, reverted, edit.isNearUserLocation))
+            add(edit.copy(id = 0, createdTimestamp = System.currentTimeMillis(), isSynced = false, action = reverted))
         } else {
             // not uploaded yet
             Log.d(TAG, "Undo ${edit.type.name} for ${edit.action.elementKeys.joinToString()}")
@@ -190,7 +190,7 @@ class ElementEditsController(
     }
 
     private fun onAddedEdit(edit: ElementEdit) {
-        prefs.lastEditTime = nowAsEpochMilliseconds()
+        prefs.lastEditTime = System.currentTimeMillis()
         listeners.forEach { it.onAddedEdit(edit) }
     }
 

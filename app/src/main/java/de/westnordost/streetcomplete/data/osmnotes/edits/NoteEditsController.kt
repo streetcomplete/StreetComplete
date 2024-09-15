@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 class NoteEditsController(
     private val editsDB: NoteEditsDao
@@ -31,7 +30,7 @@ class NoteEditsController(
             action,
             text,
             imagePaths,
-            nowAsEpochMilliseconds(),
+            System.currentTimeMillis(),
             false,
             imagePaths.isNotEmpty(),
             track,

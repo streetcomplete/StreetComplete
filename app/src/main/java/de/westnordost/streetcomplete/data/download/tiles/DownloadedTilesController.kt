@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.download.tiles
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 class DownloadedTilesController(
     private val dao: DownloadedTilesDao
@@ -42,7 +41,7 @@ class DownloadedTilesController(
     }
 
     private fun getOldTime() =
-        nowAsEpochMilliseconds() - ApplicationConstants.REFRESH_DATA_AFTER - 1
+        System.currentTimeMillis() - ApplicationConstants.REFRESH_DATA_AFTER - 1
 
     override fun addListener(listener: DownloadedTilesSource.Listener) {
         listeners.add(listener)

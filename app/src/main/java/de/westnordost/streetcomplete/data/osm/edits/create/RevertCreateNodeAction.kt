@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
 /** Action reverts creation of a (free-floating) node.
@@ -64,7 +63,7 @@ data class RevertCreateNodeAction(
 
             val nodeIds = way.nodeIds.filter { it != currentNode.id }
 
-            editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = nowAsEpochMilliseconds()))
+            editedWays.add(way.copy(nodeIds = nodeIds, timestampEdited = System.currentTimeMillis()))
         }
 
         return MapDataChanges(modifications = editedWays, deletions = listOf(currentNode))
