@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
@@ -116,7 +117,7 @@ class AddOpeningHours(
           or barrier
           or amenity ~ toilets|bicycle_rental
         )
-        and opening_hours:signed != no
+        and (opening_hours:signed != no or (opening_hours:signed = no and opening_hours:signed older today -1 years))
     """).toElementFilterExpression() }
 
     override val changesetComment = "Survey opening hours"
@@ -166,7 +167,7 @@ class AddOpeningHours(
     override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is NoOpeningHoursSign) {
             tags["opening_hours:signed"] = "no"
-            tags.updateCheckDateForKey("opening_hours")
+            tags.updateCheckDateForKey("opening_hours:signed")
             // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
         } else {
             val openingHoursString = when (answer) {
@@ -178,6 +179,7 @@ class AddOpeningHours(
             tags.updateWithCheckDate("opening_hours", openingHoursString)
             if (tags["opening_hours:signed"] == "no") {
                 tags.remove("opening_hours:signed")
+                tags.removeCheckDatesForKey("opening_hours:signed")
             }
         }
         tags.remove("opening_hours:covid19")

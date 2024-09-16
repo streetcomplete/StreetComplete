@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
@@ -27,7 +28,7 @@ class CheckOpeningHoursSigned(
         nodes, ways with
           opening_hours:signed = no
           and (
-            $hasOldOpeningHoursCheckDateFilter
+            $hasOldOpeningHoursSignedCheckDateFilter
             or older today -1 years
           )
           and access !~ private|no
@@ -37,8 +38,8 @@ class CheckOpeningHoursSigned(
           )
     """.toElementFilterExpression() }
 
-    private val hasOldOpeningHoursCheckDateFilter: String get() =
-        getLastCheckDateKeys("opening_hours").joinToString("\nor ") {
+    private val hasOldOpeningHoursSignedCheckDateFilter: String get() =
+        getLastCheckDateKeys("opening_hours:signed").joinToString("\nor ") {
             "$it < today -1 years"
         }
 
@@ -64,6 +65,7 @@ class CheckOpeningHoursSigned(
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer) {
             tags.remove("opening_hours:signed")
+            tags.removeCheckDatesForKey("opening_hours:signed")
             /* it is now signed: we set the check date for the opening hours to the previous edit
                timestamp because this or an older date is the date the opening hours were last
                checked. This is set so that the app will ask about the (signed) opening hours in
@@ -80,7 +82,7 @@ class CheckOpeningHoursSigned(
         } else {
             tags["opening_hours:signed"] = "no"
             // still unsigned: just set the check date to now, user was on-site
-            tags.updateCheckDateForKey("opening_hours")
+            tags.updateCheckDateForKey("opening_hours:signed")
         }
     }
 
