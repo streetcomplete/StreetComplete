@@ -6,10 +6,12 @@ import de.westnordost.osm_opening_hours.model.Range
 import de.westnordost.osm_opening_hours.model.Rule
 import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.Weekday
+import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.toCheckDate
+import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.mock
@@ -61,7 +63,7 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("opening_hours:signed", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
+                StringMapEntryAdd("check_date:opening_hours:signed", nowAsCheckDateString())
             ),
             questType.answerApplied(NoOpeningHoursSign)
         )
@@ -71,7 +73,7 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("opening_hours:signed", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
+                StringMapEntryAdd("check_date:opening_hours:signed", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 NoOpeningHoursSign,
@@ -84,7 +86,7 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("opening_hours:signed", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
+                StringMapEntryAdd("check_date:opening_hours:signed", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(NoOpeningHoursSign, mapOf("opening_hours" to "24/7"))
         )
@@ -279,14 +281,27 @@ class AddOpeningHoursTest {
         )))
     }
 
-    @Test fun `isApplicableTo returns false if the opening hours are not signed`() {
+    @Test fun `isApplicableTo returns false if the opening hours are not signed and signed check date is 1 year old`() {
         assertFalse(questType.isApplicableTo(node(
             tags = mapOf(
                 "shop" to "supermarket",
                 "name" to "Supi",
-                "opening_hours:signed" to "no"
+                "opening_hours:signed" to "no",
+                "check_date:opening_hours:signed" to RelativeDate(-365f).date.toCheckDateString()
             ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+            timestamp = RelativeDate(-365f).date.toCheckDateString().toCheckDate()?.toEpochMilli()
+        )))
+    }
+
+    @Test fun `isApplicableTo returns true if the opening hours are not signed and signed check date is older than 1 year`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours:signed" to "no",
+                "check_date:opening_hours:signed" to RelativeDate(-420f).date.toCheckDateString()
+            ),
+            timestamp = RelativeDate(-365f).date.toCheckDateString().toCheckDate()?.toEpochMilli()
         )))
     }
 
