@@ -1,6 +1,6 @@
 # Changelog
 
-## v59.0-beta1
+## v59.0
 
 Oh! Again such a monster update!
 
@@ -45,6 +45,7 @@ Most of it is behind the scenes, but what's visible is the completely redone UI 
 - Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
 - Clothing container operators: Allow answering that there's no information on the container (#5764)
 - Check existence: Don't ask if something else on the same place has just been checked (#5729)
+- Access restriction for pedestrians: Disabled in United Kingdom (#4998)
 - Other small improvements (#5740, #5792, #5548, #5776, #5877, #5880, #5879, #5874...), thanks @mnalis, @RubenKelevra
 
 ### Overlay Improvements
