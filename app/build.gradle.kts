@@ -150,6 +150,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
 
+    // reorderable lists (raw Compose API is pretty complicated)
+    implementation("sh.calvin.reorderable:reorderable:2.4.0-beta01")
+
     // multiplatform webview (for login via OAuth)
     implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.20")
 
