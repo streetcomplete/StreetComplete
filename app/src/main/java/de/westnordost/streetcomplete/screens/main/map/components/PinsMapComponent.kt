@@ -77,6 +77,9 @@ class PinsMapComponent(
                 textSize(sum(literal(15f), division(log2(get("point_count")), literal(1.5f)))),
                 iconAllowOverlap(true),
                 textAllowOverlap(true),
+                iconIgnorePlacement(true),
+                textIgnorePlacement(true),
+                symbolSortKey(50f)
             ),
         CircleLayer("pin-dot-layer", SOURCE)
             .withFilter(any(
@@ -90,6 +93,9 @@ class PinsMapComponent(
                 circleStrokeWidth(1f),
                 circleTranslate(arrayOf(0f, -8f)), // so that it hides behind the pin
                 circleTranslateAnchor(Property.CIRCLE_TRANSLATE_ANCHOR_VIEWPORT),
+                symbolSortKey(40f),
+                iconAllowOverlap(true),
+                iconIgnorePlacement(true),
             ),
         SymbolLayer("pins-layer", SOURCE)
             .withFilter(gt(zoom(), CLUSTER_MAX_ZOOM))
@@ -105,6 +111,8 @@ class PinsMapComponent(
                 // https://github.com/maplibre/maplibre-native/issues/2368
                 iconPadding(-2f),
                 iconOffset(listOf(-4.5f, -34.5f).toTypedArray()),
+                iconAllowOverlap(false),
+                iconIgnorePlacement(false),
                 symbolSortKey(get("icon-order")),
             )
     )
@@ -176,7 +184,7 @@ class PinsMapComponent(
     private fun Pin.toFeature(): Feature {
         val p = JsonObject()
         p.addProperty("icon-image", context.resources.getResourceEntryName(icon))
-        p.addProperty("icon-order", order)
+        p.addProperty("icon-order", order + 50)
         properties.forEach { p.addProperty(it.first, it.second) }
         return Feature.fromGeometry(position.toPoint(), p)
     }
