@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.screens.settings.quest_presets.QuestPresets
 import de.westnordost.streetcomplete.screens.settings.quest_presets.QuestPresetsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModelImpl
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
