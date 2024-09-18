@@ -310,9 +310,8 @@ class MainActivity :
         updateLocationAvailability(isLocationAvailable)
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        if (intent == null) return
         if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data?.toString() ?: return
         controlsViewModel.setUri(data)

@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
-import de.westnordost.streetcomplete.util.ktx.openUri
 
 @Composable
 fun EditDescription(
@@ -66,11 +65,9 @@ private fun TagList(
     tags: Map<String, String>,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
     HtmlText(
         html = tags.toHtml(),
         modifier = modifier,
-        onClickLink = { context.openUri(it) }
     )
 }
 
@@ -79,11 +76,9 @@ private fun TagUpdatesList(
     changes: Collection<StringMapEntryChange>,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
     HtmlText(
         html = changes.toHtml(),
         modifier = modifier,
-        onClickLink = { context.openUri(it) }
     )
 }
 

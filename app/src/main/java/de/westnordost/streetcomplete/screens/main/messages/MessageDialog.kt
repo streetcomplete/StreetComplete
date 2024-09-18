@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.messages
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.NewAchievementMessage
 import de.westnordost.streetcomplete.data.messages.NewVersionMessage
@@ -9,7 +10,6 @@ import de.westnordost.streetcomplete.data.messages.OsmUnreadMessagesMessage
 import de.westnordost.streetcomplete.data.messages.QuestSelectionHintMessage
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
-import de.westnordost.streetcomplete.util.ktx.openUri
 
 /** Dialog that shows a Message */
 @Composable
@@ -18,7 +18,7 @@ fun MessageDialog(
     allQuestIconIds: List<Int>,
     onDismissRequest: () -> Unit,
 ) {
-    val context = LocalContext.current
+
 
     when (message) {
         is NewAchievementMessage -> {
@@ -32,10 +32,10 @@ fun MessageDialog(
             WhatsNewDialog(
                 changelog = message.changelog,
                 onDismissRequest = onDismissRequest,
-                onClickLink = { context.openUri(it) }
             )
         }
         is QuestSelectionHintMessage -> {
+            val context = LocalContext.current
             QuestSelectionHintDialog(
                 onDismissRequest = onDismissRequest,
                 onClickOpenSettings = {
@@ -45,10 +45,13 @@ fun MessageDialog(
             )
         }
         is OsmUnreadMessagesMessage -> {
+            val uriHandler = LocalUriHandler.current
             UnreadMessagesDialog(
                 unreadMessageCount = message.unreadMessages,
                 onDismissRequest = onDismissRequest,
-                onClickOpenMessages = { context.openUri("https://www.openstreetmap.org/messages/inbox") }
+                onClickOpenMessages = {
+                    uriHandler.openUri("https://www.openstreetmap.org/messages/inbox")
+                }
             )
         }
     }
