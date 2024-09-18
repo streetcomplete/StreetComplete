@@ -10,21 +10,22 @@ import de.westnordost.streetcomplete.screens.user.login.LoginViewModel
 import de.westnordost.streetcomplete.screens.user.login.LoginViewModelImpl
 import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModel
 import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModelImpl
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val userScreenModule = module {
-    factory<ProfileViewModel> { ProfileViewModelImpl(
+    viewModel<ProfileViewModel> { ProfileViewModelImpl(
         get(), get(), get(), get(), get(), get(), get(named("AvatarsCacheDirectory"))
     ) }
 
-    factory<LoginViewModel> { LoginViewModelImpl(get(), get(), get()) }
+    viewModel<LoginViewModel> { LoginViewModelImpl(get(), get(), get()) }
 
-    factory<EditStatisticsViewModel> { EditStatisticsViewModelImpl(get(), get(), get()) }
+    viewModel<EditStatisticsViewModel> { EditStatisticsViewModelImpl(get(), get(), get()) }
 
-    factory<LinksViewModel> { LinksViewModelImpl(get(), get()) }
+    viewModel<LinksViewModel> { LinksViewModelImpl(get(), get()) }
 
-    factory<AchievementsViewModel> { AchievementsViewModelImpl(get(), get()) }
+    viewModel<AchievementsViewModel> { AchievementsViewModelImpl(get(), get()) }
 
-    factory<UserViewModel> { UserViewModelImpl(get()) }
+    viewModel<UserViewModel> { UserViewModelImpl(get()) }
 }
