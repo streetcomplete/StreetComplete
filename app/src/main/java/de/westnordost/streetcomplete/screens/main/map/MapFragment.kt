@@ -157,6 +157,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         map.uiSettings.isDisableRotateWhenScaling = true
         // workaround for https://github.com/maplibre/maplibre-native/issues/2792
         map.gesturesManager.moveGestureDetector.moveThreshold = resources.dpToPx(5f)
+        map.gesturesManager.rotateGestureDetector.angleThreshold = 1.5f
 
         map.addOnMoveListener(object : MapLibreMap.OnMoveListener {
             override fun onMoveBegin(detector: MoveGestureDetector) { listener?.onPanBegin() }
