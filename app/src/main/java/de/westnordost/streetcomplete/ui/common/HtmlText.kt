@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -23,24 +25,24 @@ fun HtmlText(
     html: String,
     modifier: Modifier = Modifier,
     style: TextStyle = LocalTextStyle.current,
-    onTextLayout: ((TextLayoutResult) -> Unit)? = null,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-    color: ColorProducer? = null,
+    inlineContent: Map<String, InlineTextContent> = mapOf(),
+    onTextLayout: (TextLayoutResult) -> Unit = {},
 ) {
     val htmlNodes = remember(html) { tryParseHtml(html) }
     HtmlText(
         html = htmlNodes,
         modifier = modifier,
         style = style,
-        onTextLayout = onTextLayout,
         overflow = overflow,
         softWrap = softWrap,
         maxLines = maxLines,
         minLines = minLines,
-        color = color,
+        inlineContent = inlineContent,
+        onTextLayout = onTextLayout,
     )
 }
 
@@ -49,24 +51,24 @@ fun HtmlText(
     html: List<HtmlNode>,
     modifier: Modifier = Modifier,
     style: TextStyle = LocalTextStyle.current,
-    onTextLayout: ((TextLayoutResult) -> Unit)? = null,
     overflow: TextOverflow = TextOverflow.Clip,
     softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-    color: ColorProducer? = null,
+    inlineContent: Map<String, InlineTextContent> = mapOf(),
+    onTextLayout: (TextLayoutResult) -> Unit = {},
 ) {
     val annotatedString = html.toAnnotatedString()
-    BasicText(
+    Text(
         text = annotatedString,
         modifier = modifier,
         style = style,
-        onTextLayout = onTextLayout,
         overflow = overflow,
         softWrap = softWrap,
         maxLines = maxLines,
         minLines = minLines,
-        color = color,
+        inlineContent = inlineContent,
+        onTextLayout = onTextLayout,
     )
 }
 
