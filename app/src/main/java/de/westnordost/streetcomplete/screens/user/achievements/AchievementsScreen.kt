@@ -41,7 +41,7 @@ fun AchievementsScreen(viewModel: AchievementsViewModel) {
             ))
         }
     }
-    
+
     showAchievement?.let { (achievement, level) ->
         AchievementDialog(
             achievement, level,
