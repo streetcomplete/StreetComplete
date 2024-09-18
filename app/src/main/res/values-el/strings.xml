@@ -1393,4 +1393,5 @@
     <string name="user_profile_all_time_title">"Συνολικά"</string>
     <string name="user_statistics_country_rank2">"Κατάταξη σε %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Είναι απλά ένας κομμένος κορμός δέντρου"</string>
+    <string name="quest_board_name_title">"Ποιος είναι ο τίτλος αυτού του πίνακα πληροφοριών;"</string>
 </resources>

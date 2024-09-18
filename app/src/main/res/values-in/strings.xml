@@ -1314,8 +1314,12 @@ Selain itu, beberapa overlay memungkinkan Anda menambahkan data baru pada posisi
     <string name="quest_bbq_fuel_charcoal">"Arang"</string>
     <string name="inside">"di dalam"</string>
     <string name="outside">"di luar"</string>
+    <string name="quest_recycling_type_food_waste">"Sisa makanan"</string>
     <string name="quest_defibrillator_location">"Di mana letak defibrilator ini?"</string>
     <string name="quest_generalFee_title">"Apakah anda harus membayar untuk menggunakan ini?"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="label_log_newer_than">"Dari"</string>
+    <string name="label_log_older_than">"Sampai"</string>
     <string name="link_calendar_description">"apakah ada kegiatan OpenStreetMap atau pertemuan komunitas di dekatmu? (jika tidak, kamu dapat menambahkannya sendiri!)"</string>
     <string name="quest_disable_action">"Nonaktifkan"</string>
     <string name="quest_disable_title">"Nonaktifkan tipe pertanyaan ini?"</string>

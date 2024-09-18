@@ -1407,4 +1407,5 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="user_profile_all_time_title">"Sveukupno"</string>
     <string name="user_statistics_country_rank2">"Rang u %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Ostao je samo panj"</string>
+    <string name="quest_board_name_title">"Koji je naziv ove informativne ploče?"</string>
 </resources>

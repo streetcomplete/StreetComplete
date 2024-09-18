@@ -1,7 +1,7 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 481755
-  linesOfInterfaceMarkupChanged: 152671
+  linesOfCodeChanged: 482184
+  linesOfInterfaceMarkupChanged: 152674
   assetFilesChanged: 2130
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
@@ -10,8 +10,8 @@
   assetFilesChanged: 636
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 21363
-  linesOfInterfaceMarkupChanged: 3698
+  linesOfCodeChanged: 21398
+  linesOfInterfaceMarkupChanged: 3733
   assetFilesChanged: 152
 - name: "Helium314"
   githubUsername: "Helium314"
@@ -50,7 +50,7 @@
   linesOfCodeChanged: 2078
 - name: "Isira Seneviratne"
   githubUsername: "Isira-Seneviratne"
-  linesOfCodeChanged: 2058
+  linesOfCodeChanged: 2060
 - name: "sumanabhi"
   githubUsername: "sumanabhi"
   linesOfCodeChanged: 2014

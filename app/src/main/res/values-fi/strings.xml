@@ -1303,7 +1303,7 @@ Puuttuvat tiedot näytetään aina punaisella värillä."</string>
     <string name="overlays_tutorial_edit">"Napauta mitä tahansa korostettua tietoa katsoaksesi sitä tarkemmin tai muokataksesi sitä. Voit myös jakaa kulkuväyliä tai ilmoittaa havainnoista, kuten tehtävien kanssa.
 
 Lisäksi jotkin tasot sallivat uuden tiedon lisäämisen tähtäimen osoittamaan sijaintiin, kuten osoitteet-tasossa."</string>
-    <string name="quest_crossing_kerb_height_title">"Mikä on kadun reunojen korkeus tässä risteyksessä?"</string>
+    <string name="quest_crossing_kerb_height_title">"Mikä on reunakiveyksen korkeus tässä tienylityspaikassa?"</string>
     <string name="quest_maxheight_sign_title">"Mikä korkeusrajoitus tässä on?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Mikä korkeusrajoitus sillan alapuolella on?"</string>
     <string name="quest_leave_new_note_as_answer">"Tässä tapauksessa sinun pitää jättää viesti, jossa selität tilanteen."</string>
@@ -1354,7 +1354,7 @@ Lisäksi jotkin tasot sallivat uuden tiedon lisäämisen tähtäimen osoittamaan
     <string name="quest_buildingType_tower_description">"mikä tahansa torni"</string>
     <string name="quest_buildingType_under_construction">"Rakenteilla"</string>
     <string name="overlay_buildings">"Rakennukset"</string>
-    <string name="quest_pedestrian_crossing_markings">"Onko tässä risteyksessä merkintöjä maassa?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Onko tässä tienylityspaikassa merkintöjä, jotka kulkevat tien poikki?"</string>
     <string name="overlay_places">"Paikat"</string>
     <string name="overlay_things">"Asiat"</string>
     <string name="disused">"Käyttämättä"</string>
@@ -1408,4 +1408,5 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="user_profile_all_time_title">"Kokonaissijoitus"</string>
     <string name="user_statistics_country_rank2">"%s-sijoitus"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Se on pelkkä puunkanto"</string>
+    <string name="quest_board_name_title">"Mikä on tämän infotaulun otsikko?"</string>
 </resources>

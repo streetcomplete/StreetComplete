@@ -1168,7 +1168,7 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="default_disabled_msg_overlay">"Este tipo de missão está desativada de origem porque já existe uma camada com a qual é mais eficaz e eficiente introduzir e atualizar estes dados."</string>
     <string name="quest_camp_drinking_water_title">"Está disponível aqui água potável para os campistas?"</string>
     <string name="quest_camp_shower_title">"Existem aqui chuveiros?"</string>
-    <string name="quest_camp_power_supply_title">"Existe alguma forma dos clientes carregarem o telemóvel, o computador portátil, etc. aqui?"</string>
+    <string name="quest_camp_power_supply_title">"Existem tomadas elétricas disponíveis para os hóspedes?"</string>
     <string name="quest_camp_type_title">"Quem pode acampar aqui?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Tendas, caravanas, autocaravanas…"</string>
     <string name="quest_camp_type_caravans_only">"Apenas caravanas, autocaravanas…"</string>
@@ -1398,4 +1398,13 @@ Um andar conta como um andar de telhado quando as suas janelas estão no telhado
     <string name="action_manage_presets_summary">"Com que nome é guardada a seleção de missões abaixo."</string>
     <string name="quest_multiselect_hint">"Selecione tudo o que for aplicável:"</string>
     <string name="quest_barrier_opening_width_gate">"Qual é a largura da abertura aqui?"</string>
+    <string name="bridge">"na ponte"</string>
+    <string name="about_title_intro">"Mostrar introdução"</string>
+    <string name="about_category_help">"Ajuda"</string>
+    <string name="quest_camp_power_supply_hint">"Poderão ser tomadas junto às parcelas do acampamento, tomadas num edifício de serviço acessível aos hóspedes, uma estação de carregamento específica para telemóveis, computadores portáteis, etc."</string>
+    <string name="quest_barrier_opening_width_bollard">"Qual é a abertura mais larga que se pode atravessar aqui?"</string>
+    <string name="user_profile_all_time_title">"Global"</string>
+    <string name="user_statistics_country_rank2">"Posição em %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"É apenas um cepo de árvore"</string>
+    <string name="quest_board_name_title">"Qual é o título deste painel de informações?"</string>
 </resources>

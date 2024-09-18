@@ -1389,8 +1389,10 @@
     <string name="quest_bicycle_parking_type_floor">"Специально отведенная зона"</string>
     <string name="link_osmapp_description">"Карта с различными слоями, на пример для скалолазания или катания на лыжах"</string>
     <string name="action_back">"Назад"</string>
+    <string name="action_clear">"Очистить"</string>
     <string name="action_more">"Ещё"</string>
     <string name="action_open_in_browser">"Открыть в браузере"</string>
     <string name="pref_category_quests">"Квесты"</string>
     <string name="pref_title_language_select2">"Язык"</string>
+    <string name="questList_disabled_by_default">"Выключено по умолчанию"</string>
 </resources>
