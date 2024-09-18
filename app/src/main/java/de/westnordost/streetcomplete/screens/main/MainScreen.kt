@@ -205,16 +205,6 @@ fun MainScreen(
             )
         }
 
-        if (intersection != null) {
-            val (offset, angle) = intersection
-            val rotation = angle * 180 / PI - mapRotation
-            PointerPinButton(
-                onClick = onClickLocationPointer,
-                rotate = rotation.toFloat(),
-                modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
-            ) { Image(painterResource(R.drawable.location_dot_small), null) }
-        }
-
         Column(Modifier
             .fillMaxSize()
             .safeDrawingPadding()
@@ -371,6 +361,17 @@ fun MainScreen(
 
             MapAttribution(Modifier.padding(8.dp))
         }
+
+        if (intersection != null) {
+            val (offset, angle) = intersection
+            val rotation = angle * 180 / PI - mapRotation
+            PointerPinButton(
+                onClick = onClickLocationPointer,
+                rotate = rotation.toFloat(),
+                modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
+            ) { Image(painterResource(R.drawable.location_dot_small), null) }
+        }
+
 
         val dir = LocalLayoutDirection.current.dir
         AnimatedVisibility(
