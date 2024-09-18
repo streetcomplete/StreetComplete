@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.controls
+package de.westnordost.streetcomplete.screens.main
 
 import android.content.Intent
 import android.widget.Toast
@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material.ButtonDefaults
@@ -45,9 +46,18 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.about.AboutActivity
-import de.westnordost.streetcomplete.screens.main.MainMenuDialog
-import de.westnordost.streetcomplete.screens.main.MainViewModel
-import de.westnordost.streetcomplete.screens.main.RequestLoginDialog
+import de.westnordost.streetcomplete.screens.main.controls.CompassButton
+import de.westnordost.streetcomplete.screens.main.controls.Crosshair
+import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
+import de.westnordost.streetcomplete.screens.main.controls.MainMenuButton
+import de.westnordost.streetcomplete.screens.main.controls.MapAttribution
+import de.westnordost.streetcomplete.screens.main.controls.MapButton
+import de.westnordost.streetcomplete.screens.main.controls.MessagesButton
+import de.westnordost.streetcomplete.screens.main.controls.OverlaySelectionButton
+import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
+import de.westnordost.streetcomplete.screens.main.controls.StarsCounter
+import de.westnordost.streetcomplete.screens.main.controls.UploadButton
+import de.westnordost.streetcomplete.screens.main.controls.findClosestIntersection
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.errors.HandleLastCrash
@@ -75,14 +85,10 @@ import kotlinx.coroutines.launch
 import kotlin.math.PI
 import kotlin.math.abs
 
-// NOTE: this will eventually grow into something that should be renamed to MainScreen, i.e.
-//       replacing MainActivity completely. For now, it is mostly only the controls and dialogs
-//       and dropdowns triggered by that. But since this is big, we should take care to put any
-//       elements that can meaningfully be put into an own composable in another file
 
 /** Map controls shown on top of the map. */
 @Composable
-fun MapControls(
+fun MainScreen(
     viewModel: MainViewModel,
     editHistoryViewModel: EditHistoryViewModel,
     onClickZoomIn: () -> Unit,
@@ -140,7 +146,6 @@ fun MapControls(
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var showLoginDialog by remember { mutableStateOf(false) }
-
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     val showEditHistorySidebar by editHistoryViewModel.isShowingSidebar.collectAsState()
 
@@ -186,7 +191,7 @@ fun MapControls(
         }
     }
 
-    Box {
+    Box(modifier) {
         if (selectedOverlay?.isCreateNodeEnabled == true) {
             Crosshair()
         }
@@ -210,154 +215,161 @@ fun MapControls(
             ) { Image(painterResource(R.drawable.location_dot_small), null) }
         }
 
-        Box(
-            modifier
-                .fillMaxSize()
-                .safeDrawingPadding()
-                .onGloballyPositioned { pointerPinRects["frame"] = it.boundsInRoot() }
-                .padding(bottom = 22.dp)
+        Column(Modifier
+            .fillMaxSize()
+            .safeDrawingPadding()
+            .onGloballyPositioned { pointerPinRects["frame"] = it.boundsInRoot() }
         ) {
-            // top-start controls
-            Box(modifier = Modifier
-                .align(Alignment.TopStart)
-                .onGloballyPositioned { pointerPinRects["top-start"] = it.boundsInRoot() }
+            Box(Modifier
+                .fillMaxWidth()
+                .weight(1f)
             ) {
-                // stars counter
-                StarsCounter(
-                    count = starsCount,
-                    modifier = Modifier
-                        .defaultMinSize(minWidth = 96.dp)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null
-                        ) { viewModel.toggleShowingCurrentWeek() },
-                    isCurrentWeek = isShowingStarsCurrentWeek,
-                    showProgress = isUploadingOrDownloading
-                )
-            }
-
-            // top-end controls
-            Row(
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(4.dp)
-                    .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                if (messagesCount > 0) {
-                    MessagesButton(
-                        onClick = ::onClickMessages,
-                        messagesCount = messagesCount
-                    )
-                }
-                if (!isAutoSync) {
-                    UploadButton(
-                        onClick = onClickUpload,
-                        unsyncedEditsCount = unsyncedEditsCount,
-                        enabled = !isUploadingOrDownloading
-                    )
-                }
-                Box {
-                    OverlaySelectionButton(
-                        onClick = ::onClickOverlays,
-                        overlay = selectedOverlay
-                    )
-                    OverlaySelectionDropdownMenu(
-                        expanded = showOverlaysDropdown,
-                        onDismissRequest = { showOverlaysDropdown = false },
-                        overlays = viewModel.overlays,
-                        onSelect = { viewModel.selectOverlay(it) }
-                    )
-                }
-
-                MainMenuButton(
-                    onClick = { showMainMenuDialog = true },
-                    indexInTeam = if (isTeamMode) indexInTeam else null
-                )
-            }
-
-            // bottom-end controls
-            Column(
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(4.dp)
-                    .onGloballyPositioned { pointerPinRects["bottom-end"] = it.boundsInRoot() },
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
-                AnimatedVisibility(
-                    visible = isCompassVisible,
-                    enter = fadeIn(),
-                    exit = fadeOut()
+                // top-start controls
+                Box(Modifier
+                    .align(Alignment.TopStart)
+                    .onGloballyPositioned { pointerPinRects["top-start"] = it.boundsInRoot() }
                 ) {
-                    CompassButton(
-                        onClick = onClickCompass,
-                        modifier = Modifier.graphicsLayer(
-                            rotationZ = -mapRotation.toFloat(),
-                            rotationX = mapTilt.toFloat()
+                    // stars counter
+                    StarsCounter(
+                        count = starsCount,
+                        modifier = Modifier
+                            .defaultMinSize(minWidth = 96.dp)
+                            .clickable(
+                                interactionSource = remember { MutableInteractionSource() },
+                                indication = null
+                            ) { viewModel.toggleShowingCurrentWeek() },
+                        isCurrentWeek = isShowingStarsCurrentWeek,
+                        showProgress = isUploadingOrDownloading
+                    )
+                }
+
+                // top-end controls
+                Row(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(4.dp)
+                        .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    if (messagesCount > 0) {
+                        MessagesButton(
+                            onClick = ::onClickMessages,
+                            messagesCount = messagesCount
                         )
+                    }
+                    if (!isAutoSync) {
+                        UploadButton(
+                            onClick = onClickUpload,
+                            unsyncedEditsCount = unsyncedEditsCount,
+                            enabled = !isUploadingOrDownloading
+                        )
+                    }
+                    Box {
+                        OverlaySelectionButton(
+                            onClick = ::onClickOverlays,
+                            overlay = selectedOverlay
+                        )
+                        OverlaySelectionDropdownMenu(
+                            expanded = showOverlaysDropdown,
+                            onDismissRequest = { showOverlaysDropdown = false },
+                            overlays = viewModel.overlays,
+                            onSelect = { viewModel.selectOverlay(it) }
+                        )
+                    }
+
+                    MainMenuButton(
+                        onClick = { showMainMenuDialog = true },
+                        indexInTeam = if (isTeamMode) indexInTeam else null
                     )
                 }
-                MapButton(onClick = onClickZoomIn) { ZoomInIcon() }
-                MapButton(onClick = onClickZoomOut) { ZoomOutIcon() }
-                LocationStateButton(
-                    onClick = onClickLocation,
-                    state = locationState,
-                    isNavigationMode = isNavigationMode,
-                    isFollowing = isFollowingPosition,
-                )
-            }
 
-            if (selectedOverlay?.isCreateNodeEnabled == true) {
-                MapButton(
-                    onClick = {
-                        if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
-                            onClickCreate()
-                        } else {
-                            context.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
-                        }
-                    },
+                // bottom-end controls
+                Column(
                     modifier = Modifier
-                        .align(BiasAlignment(0.333f, 1f))
-                        .padding(4.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = MaterialTheme.colors.secondaryVariant,
-                    ),
+                        .align(Alignment.BottomEnd)
+                        .padding(4.dp)
+                        .onGloballyPositioned { pointerPinRects["bottom-end"] = it.boundsInRoot() },
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    LargeCreateIcon()
+                    val isCompassVisible = abs(mapRotation) >= 1.0 || abs(mapTilt) >= 1.0
+                    AnimatedVisibility(
+                        visible = isCompassVisible,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        CompassButton(
+                            onClick = onClickCompass,
+                            modifier = Modifier.graphicsLayer(
+                                rotationZ = -mapRotation.toFloat(),
+                                rotationX = mapTilt.toFloat()
+                            )
+                        )
+                    }
+                    MapButton(onClick = onClickZoomIn) { ZoomInIcon() }
+                    MapButton(onClick = onClickZoomOut) { ZoomOutIcon() }
+                    LocationStateButton(
+                        onClick = onClickLocation,
+                        state = locationState,
+                        isNavigationMode = isNavigationMode,
+                        isFollowing = isFollowingPosition,
+                    )
                 }
-            }
 
-            // bottom-start controls
-            Column(
-                modifier = Modifier
-                    .align(Alignment.BottomStart)
-                    .padding(4.dp)
-                    .onGloballyPositioned { pointerPinRects["bottom-start"] = it.boundsInRoot() },
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                if (isRecordingTracks) {
+                if (selectedOverlay?.isCreateNodeEnabled == true) {
                     MapButton(
-                        onClick = onClickStopTrackRecording,
+                        onClick = {
+                            if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
+                                onClickCreate()
+                            } else {
+                                context.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
+                            }
+                        },
+                        modifier = Modifier
+                            .align(BiasAlignment(0.333f, 1f))
+                            .padding(4.dp),
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = MaterialTheme.colors.secondaryVariant,
                         ),
                     ) {
-                        StopRecordingIcon()
+                        LargeCreateIcon()
                     }
                 }
 
-                if (hasEdits) {
-                    MapButton(
-                        onClick = { editHistoryViewModel.showSidebar() },
-                        // Don't allow undoing while uploading. Should prevent race conditions.
-                        // (Undoing quest while also uploading it at the same time)
-                        enabled = !isUploadingOrDownloading,
-                    ) {
-                        UndoIcon()
+                // bottom-start controls
+                Column(
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(4.dp)
+                        .onGloballyPositioned {
+                            pointerPinRects["bottom-start"] = it.boundsInRoot()
+                        },
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    if (isRecordingTracks) {
+                        MapButton(
+                            onClick = onClickStopTrackRecording,
+                            colors = ButtonDefaults.buttonColors(
+                                backgroundColor = MaterialTheme.colors.secondaryVariant,
+                            ),
+                        ) {
+                            StopRecordingIcon()
+                        }
+                    }
+
+                    if (hasEdits) {
+                        MapButton(
+                            onClick = { editHistoryViewModel.showSidebar() },
+                            // Don't allow undoing while uploading. Should prevent race conditions.
+                            // (Undoing quest while also uploading it at the same time)
+                            enabled = !isUploadingOrDownloading,
+                        ) {
+                            UndoIcon()
+                        }
                     }
                 }
             }
+
+            MapAttribution(Modifier.padding(8.dp))
         }
 
         val dir = LocalLayoutDirection.current.dir

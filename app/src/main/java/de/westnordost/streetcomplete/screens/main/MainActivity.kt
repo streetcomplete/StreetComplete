@@ -11,7 +11,6 @@ import android.graphics.Color
 import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
-import android.text.Html
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -30,7 +29,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.core.graphics.Insets
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
-import androidx.core.text.parseAsHtml
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -69,9 +67,7 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
-import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
@@ -92,7 +88,6 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAwar
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
-import de.westnordost.streetcomplete.screens.main.controls.MapControls
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
@@ -120,7 +115,6 @@ import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
-import de.westnordost.streetcomplete.util.parseGeoUri
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -255,7 +249,7 @@ class MainActivity :
         setContentView(binding.root)
 
         binding.controls.content {
-            MapControls(
+            MainScreen(
                 viewModel = controlsViewModel,
                 editHistoryViewModel = editHistoryViewModel,
                 onClickZoomIn = ::onClickZoomIn,

@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -25,11 +24,8 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.util.ktx.openUri
-import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
-import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -76,11 +72,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         binding.map.onCreate(savedInstanceState)
         binding.map.foreground = view.context.getDrawable(R.color.background)
 
-        binding.openstreetmapLink.setOnClickListener { showOpenUrlDialog("https://www.openstreetmap.org/copyright") }
-        binding.mapTileProviderLink.setOnClickListener { showOpenUrlDialog("https://www.jawg.io") }
-
-        binding.attributionContainer.respectSystemInsets(View::setMargins)
-
         initOfflineCacheSize()
         cleanOldOfflineRegions()
 
@@ -103,15 +94,6 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
             val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
             OfflineManager.getInstance(requireContext()).deleteRegionsOlderThan(oldDataTimestamp)
         }
-    }
-
-    private fun showOpenUrlDialog(url: String) {
-        AlertDialog.Builder(requireContext())
-            .setTitle(R.string.open_url)
-            .setMessage(url)
-            .setPositiveButton(android.R.string.ok) { _, _ -> openUri(url) }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
     }
 
     override fun onStart() {

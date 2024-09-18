@@ -54,7 +54,6 @@
 
     <color name="pressed">#ddd</color>
 
-    <color name="attribution_text">#444</color>
 
     <!-- for fading out images -->
     <color name="fade_out">#fff</color>
