@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Euro Automatic Cash, Unicaja Banco, Banco Santander, Santander, Liberbank, Euronet]
-chargingStationOperators: [Gesvican, Iberdrola, Viesgo, Urbener, Repsol, Endesa, Wenea, Zunder, EDP, Paradores, Lupa, IBIL]
+chargingStationOperators: [Gesvican, Iberdrola, Viesgo, Urbener, Repsol, Endesa, Wenea, Zunder, EDP, Paradores, Lupa, IBIL, Electromaps]
+parcelLockerBrand: [Amazon Locker, Amazon Hub]

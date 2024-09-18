@@ -671,7 +671,6 @@
     <string name="credits_projects_contributors_title">"المشاريع المعدة لـ StreetComplete"</string>
     <string name="credits_main_contributors_title">"المساهمون الرئيسيون"</string>
     <string name="stats_are_syncing">"لا تزال إحصاءاتك قيد المزامنة. تحقق من هذه الشاشة لاحقًا."</string>
-    <string name="user_statistics_country_rank">"الترتيب في %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"بوابة الخريطة %s"</string>
     <string name="user_statistics_filter_by_country">"حسب البلد"</string>
     <string name="user_statistics_filter_by_quest_type">"حسب نوع المهمة"</string>

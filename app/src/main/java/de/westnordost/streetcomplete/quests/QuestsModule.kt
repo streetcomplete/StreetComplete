@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.quests.bike_rental_capacity.AddBikeRentalCa
 import de.westnordost.streetcomplete.quests.bike_rental_type.AddBikeRentalType
 import de.westnordost.streetcomplete.quests.bike_shop.AddBikeRepairAvailability
 import de.westnordost.streetcomplete.quests.bike_shop.AddSecondHandBicycleAvailability
+import de.westnordost.streetcomplete.quests.board_name.AddBoardName
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
@@ -340,6 +341,7 @@ fun questTypeRegistry(
     155 to AddGritBinSeasonal(),
 
     50 to AddBoardType(),
+    171 to AddBoardName(),
 
     51 to AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
     52 to AddBarrierOnPath(),
@@ -461,7 +463,7 @@ fun questTypeRegistry(
     162 to AddSanitaryDumpStation(),
 
     // toilets
-    118 to AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
+    118 to AddToiletAvailability(), // shown in OsmAnd descriptions
     119 to AddToiletsFee(), // used by OsmAnd in the object description
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description
     121 to AddWheelchairAccessToiletsPart(),

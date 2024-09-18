@@ -121,7 +121,7 @@ private fun QuestList(
 ) {
     LazyColumn(modifier) {
         itemsIndexed(items, key = { _, it -> it.name }) { index, item ->
-            Column(Modifier.clickable(onClick = { onClickQuestType(item) })) {
+            Column(Modifier.clickable { onClickQuestType(item) }) {
                 if (index > 0) Divider()
                 Row(
                     modifier = Modifier.padding(8.dp),

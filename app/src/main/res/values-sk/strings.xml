@@ -666,7 +666,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="credits_projects_contributors_title">"Projekty pre StreetComplete"</string>
     <string name="credits_main_contributors_title">"Hlavní prispievatelia"</string>
     <string name="stats_are_syncing">"Vaše štatistiky sa stále synchronizujú. Vráťte sa sem neskôr."</string>
-    <string name="user_statistics_country_rank">"Poradie v %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"OSM Wiki %s"</string>
     <string name="user_statistics_filter_by_country">"podľa krajiny"</string>
     <string name="user_statistics_filter_by_quest_type">"podľa úlohy"</string>

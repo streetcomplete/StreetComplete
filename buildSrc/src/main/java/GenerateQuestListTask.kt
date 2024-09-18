@@ -78,12 +78,17 @@ open class GenerateQuestListTask : DefaultTask() {
         val questFileContent = file.readText()
 
         val questions = getQuestTitleStringNames(questName, questFileContent).map { strings[it]!! }
-        val wikiOrder = getRepoQuestWikiOrder(questName, questions)
-        val title = if (wikiOrder > -1) wikiQuests[wikiOrder].question else questions.last()
-
         val icon = getQuestIcon(questName, questFileContent)
 
-        return RepoQuest(questName, file, icon, title, defaultPriority, wikiOrder)
+        val repoQuest = RepoQuest(questName, file, icon, questions, defaultPriority)
+
+        val wikiOrder = getRepoQuestWikiOrder(repoQuest)
+        if (wikiOrder > -1) {
+            repoQuest.wikiOrder = wikiOrder
+            repoQuest.title = wikiQuests[wikiOrder].question
+        }
+
+        return repoQuest
     }
 
     private fun getQuestFile(questName: String, questFiles: List<File>): File {
@@ -112,13 +117,20 @@ open class GenerateQuestListTask : DefaultTask() {
         return if (filteredStringResourceNames.isEmpty()) stringResourceNames else filteredStringResourceNames
     }
 
-    private fun getRepoQuestWikiOrder(questName: String, questions: List<String>): Int {
+    private fun getRepoQuestWikiOrder(repoQuest: RepoQuest): Int {
         // first choose the one with an icon description containing the quest name
-        val wikiOrder = wikiQuests.indexOfFirst { it.icon.contains(Regex("\\b$questName\\b")) }
+        var wikiOrder = wikiQuests.indexOfFirst { it.icon.contains(Regex("\\b${repoQuest.name}\\b")) }
+        if (wikiOrder > -1) return wikiOrder
+
+        // then choose the one with a matching title and package name
+        wikiOrder = wikiQuests.indexOfFirst {
+            repoQuest.questions.contains(it.question) &&
+            it.packageName == repoQuest.file.parentFile.name
+        }
         if (wikiOrder > -1) return wikiOrder
 
         // if not found, choose the one with a matching title
-        return wikiQuests.indexOfFirst { questions.contains(it.question) }
+        return wikiQuests.indexOfFirst { repoQuest.questions.contains(it.question) }
     }
 
     private fun getQuestIcon(questName: String, questFileContent: String): File {
@@ -201,9 +213,10 @@ private data class RepoQuest(
     val name: String,
     val file: File,
     val icon: File,
-    val title: String,
+    val questions: List<String>,
     val defaultPriority: Int,
-    val wikiOrder: Int,
+    var title: String = questions.last(),
+    var wikiOrder: Int = -1,
 ) {
     val packageName: String get() =
         if (name == noteQuestName) {
@@ -233,7 +246,7 @@ private class WikiQuest(rowCells: List<String>, rowIndex: Int) {
     private val notes: String
     private val issueNumber: String?
     private val prNumber: String?
-    private val packageName: String?
+    val packageName: String?
 
     init {
         val rowCellContents = rowCells.map {

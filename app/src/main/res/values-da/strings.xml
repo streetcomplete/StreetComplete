@@ -670,7 +670,6 @@ Bemærk, at denne app kun spørger efter en bygnings husnummer, når dens bygnin
     <string name="credits_projects_contributors_title">"Projekter lavet for StreetComplete"</string>
     <string name="credits_main_contributors_title">"Hovedbidragsydere"</string>
     <string name="stats_are_syncing">"Dine statistikker synkroniserer stadigvæk. Tjek denne side senere."</string>
-    <string name="user_statistics_country_rank">"Rangering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kortlægningsportal %s"</string>
     <string name="user_statistics_filter_by_country">"efter land"</string>
     <string name="user_statistics_filter_by_quest_type">"efter opgavetype"</string>
@@ -1403,4 +1402,8 @@ En etage tæller som en tagetage, når dets vinduer er i taget. Derfor er tage m
     <string name="about_category_help">"Hjælp"</string>
     <string name="quest_camp_power_supply_hint">"Det kan være stikkontakter ved den enkelte standplads, stikkontakter i en servicebygning, som gæsterne har adgang til, en særlig ladestation til telefoner, bærbare computere osv."</string>
     <string name="quest_barrier_opening_width_bollard">"Hvor bred er den største åbning, man kan passere igennem her?"</string>
+    <string name="user_profile_all_time_title">"Samlet"</string>
+    <string name="user_statistics_country_rank2">"Rang i %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Det er bare en træstub"</string>
+    <string name="quest_board_name_title">"Hvad er titlen på denne informationstavle?"</string>
 </resources>

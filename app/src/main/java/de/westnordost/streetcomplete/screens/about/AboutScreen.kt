@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.integerResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +28,6 @@ import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
-import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 
 @Composable
@@ -42,6 +42,7 @@ fun AboutScreen(
     var showIntroTutorial by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
+    val uriHandler = LocalUriHandler.current
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
@@ -67,7 +68,7 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(R.string.about_title_license),
-                    onClick = { context.openUri("https://www.gnu.org/licenses/gpl-3.0.html") },
+                    onClick = { uriHandler.openUri("https://www.gnu.org/licenses/gpl-3.0.html") },
                 ) {
                     Text("GPLv3")
                     OpenInBrowserIcon()
@@ -87,12 +88,12 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(R.string.about_title_faq),
-                    onClick = { context.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
+                    onClick = { uriHandler.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
                 ) { OpenInBrowserIcon() }
 
                 Preference(
                     name = stringResource(R.string.about_title_report_error),
-                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
+                    onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
                 ) { OpenInBrowserIcon() }
 
                 Preference(
@@ -112,7 +113,7 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(R.string.about_title_translate),
-                    onClick = { context.openUri("https://poeditor.com/join/project/IE4GC127Ki") },
+                    onClick = { uriHandler.openUri("https://poeditor.com/join/project/IE4GC127Ki") },
                     description = stringResource(
                         R.string.about_description_translate,
                         Locale.getDefault().displayLanguage,
@@ -122,7 +123,7 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(R.string.about_title_repository),
-                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete") },
+                    onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete") },
                 ) { OpenInBrowserIcon() }
             }
 
@@ -131,13 +132,13 @@ fun AboutScreen(
                 if (context.isInstalledViaGooglePlay()) {
                     Preference(
                         name = stringResource(R.string.about_title_rate),
-                        onClick = { context.openGooglePlayStorePage() },
+                        onClick = { uriHandler.openUri("market://details?id=${context.packageName}") },
                     ) { OpenInBrowserIcon() }
                 }
 
                 Preference(
                     name = stringResource(R.string.about_title_feedback),
-                    onClick = { context.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
+                    onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
                 ) { OpenInBrowserIcon() }
             }
         }
@@ -149,7 +150,7 @@ fun AboutScreen(
         } else {
             DonationsDialog(
                 onDismissRequest = { showDonateDialog = false },
-                onClickLink = { context.openUri(it) }
+                onClickLink = { uriHandler.openUri(it) }
             )
         }
     }
@@ -164,10 +165,6 @@ fun AboutScreen(
 
 private fun Context.isInstalledViaGooglePlay(): Boolean =
     applicationContext.packageManager.getInstallerPackageName(applicationContext.packageName) == "com.android.vending"
-
-private fun Context.openGooglePlayStorePage() {
-    openUri("market://details?id=$packageName")
-}
 
 @Preview
 @Composable

@@ -669,7 +669,6 @@ Zauważ, że aplikacja pyta o numer domu dopiero po określeniu rodzaju budynku.
     <string name="credits_projects_contributors_title">"Projekty wykonane dla StreetComplete"</string>
     <string name="credits_main_contributors_title">"Główni współtwórcy"</string>
     <string name="stats_are_syncing">"Twoje statystyki są w trakcie synchronizacji. Sprawdź ten ekran później."</string>
-    <string name="user_statistics_country_rank">"%2$s - pozycja %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal %s"</string>
     <string name="user_statistics_filter_by_country">"Według państwa"</string>
     <string name="user_statistics_filter_by_quest_type">"Według typu zadania"</string>
@@ -1388,4 +1387,23 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="separate_cycleway_footway_allowed_sign">"Chodnik, ale znak zezwala na jazdę rowerem"</string>
     <string name="quest_bicycle_parking_type_floor">"Wyznaczony obszar"</string>
     <string name="link_osmapp_description">"Mapa z różnymi warstwami takimi jak wspinaczka czy jazda na nartach"</string>
+    <string name="action_back">"Cofnij"</string>
+    <string name="action_clear">"Wyczyść"</string>
+    <string name="action_more">"Więcej"</string>
+    <string name="action_open_in_browser">"Otwórz w przeglądarce"</string>
+    <string name="about_category_contribute">"Wsparcie"</string>
+    <string name="pref_category_quests">"Zadania"</string>
+    <string name="pref_title_language_select2">"Język"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Jak często jesteś pytany w celu potwierdzenia czy poprzednio zmapowane dane są nadal poprawne."</string>
+    <string name="questList_disabled_by_default">"Domyślnie wyłączone"</string>
+    <string name="action_manage_presets_summary">"Pod jaką nazwą zapisany jest wybór zadań poniżej."</string>
+    <string name="quest_multiselect_hint">"Wybierz wszystkie, które mają zastosowanie:"</string>
+    <string name="quest_barrier_opening_width_gate">"Jaka jest szerokość otwarcia tutaj?"</string>
+    <string name="bridge">"Na moście"</string>
+    <string name="about_title_intro">"Pokaż wstęp"</string>
+    <string name="about_category_help">"Pomoc"</string>
+    <string name="quest_camp_power_supply_hint">"Mogą to być gniazdka znajdujące się bezpośrednio na polu namiotowym, gniazdka zlokalizowane w budynkach usługowych dostępnych dla gości, lub dedykowane stacje ładowania telefonów, laptopów itp."</string>
+    <string name="quest_barrier_opening_width_bollard">"Jaka jest najszersza luka, którą można się tędy przedostać?"</string>
+    <string name="user_statistics_country_rank2">"Ranga w %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"To tylko pień drzewa"</string>
 </resources>

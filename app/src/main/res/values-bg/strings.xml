@@ -660,8 +660,6 @@
     <string name="credits_projects_contributors_title">"Проекти направени за StreetComplete"</string>
     <string name="credits_main_contributors_title">"Основни програмисти"</string>
     <string name="stats_are_syncing">"Вашите данни все още се синхронизират. Проверете тук по-късно."</string>
-    <string name="user_statistics_country_rank">"Позиция в %2$s: %1$d
-"</string>
     <string name="user_statistics_country_wiki_link">"Портал за карти %s"</string>
     <string name="user_statistics_filter_by_country">"по държава"</string>
     <string name="user_statistics_filter_by_quest_type">"по типове задачи"</string>

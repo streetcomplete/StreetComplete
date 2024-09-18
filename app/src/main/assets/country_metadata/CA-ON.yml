@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [RBC, CIBC, BMO, TD Canada Trust, Scotiabank, Instacoin, TD, Alterna Savings, HODL Digital Services, generic, PC Financial, Walmart Financial, Alterna Bank, Alterna, Meridian Credit Union, Bitcoin Well, President's Choice Financial, Localcoin, HSBC, Frisco ATMs, Elliot and Gabriela, Canadian Imperial Bank of Commerce]
+atmOperators: [RBC, CIBC, BMO, TD Canada Trust, Scotiabank, TD, Instacoin, Alterna Savings, HODL Digital Services, generic, PC Financial, Walmart Financial, Alterna Bank, Alterna, Meridian Credit Union, Bitcoin Well, President's Choice Financial, Localcoin, HSBC, Frisco ATMs, Elliot and Gabriela, Canadian Imperial Bank of Commerce]
 chargingStationOperators: [FLO, 'Tesla, Inc.', ChargePoint, Petro-Canada, Ivy, Expressway Ford, Town of Orangeville, Tim Hortons, Fairway Plaza, City of Kitchener, University of Waterloo, Sun Country, Shell Recharge Solutions, Scotiabank, Rio-Can, Electrify Canada, City of Stratford, Circuit électrique, Cadillac Fairview, CIGI, Bingemans, Bank of Nova Scotia]
 clothesContainerOperators: [City of Markham, Canadian Diabetes]
 defaultSpeedLimitHasUrbanOrRural: true

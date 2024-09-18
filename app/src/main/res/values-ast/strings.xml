@@ -666,7 +666,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="credits_projects_contributors_title">"Proyectos fechos pa StreetComplete"</string>
     <string name="credits_main_contributors_title">"Collaboradores principales"</string>
     <string name="stats_are_syncing">"Les tos estadístiques tán sincronizándose, vuelvi más tarde."</string>
-    <string name="user_statistics_country_rank">"Clasificación en %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal de mapeo %s"</string>
     <string name="user_statistics_filter_by_country">"por país"</string>
     <string name="user_statistics_filter_by_quest_type">"por tipu"</string>

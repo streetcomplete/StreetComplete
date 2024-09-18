@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.IconButton
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -36,6 +38,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.screens.user.login.LoginError.CommunicationError
 import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermissionsNotGranted
+import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.toast
 import java.util.Locale
@@ -43,86 +46,100 @@ import java.util.Locale
 /** Leads user through the OAuth 2 auth flow to login */
 @Composable
 fun LoginScreen(
-    viewModel: LoginViewModel
+    viewModel: LoginViewModel,
+    launchAuth: Boolean,
+    onClickBack: () -> Unit
 ) {
     val state by viewModel.loginState.collectAsState()
     val unsyncedChangesCount by viewModel.unsyncedChangesCount.collectAsState()
+
+    LaunchedEffect(launchAuth) {
+        if (launchAuth) viewModel.startLogin()
+    }
 
     // handle error state: just show message once and return to login state
     val context = LocalContext.current
     LaunchedEffect(state) {
         val errorState = state as? LoginError
         if (errorState != null) {
-            context.toast(when (errorState) {
+            val errorMessage = when (errorState) {
                 RequiredPermissionsNotGranted -> R.string.oauth_failed_permissions
                 CommunicationError -> R.string.oauth_communication_error
-            }, Toast.LENGTH_LONG)
+            }
+            context.toast(errorMessage, Toast.LENGTH_LONG)
             viewModel.resetLogin()
         }
     }
 
-    if (state is LoggedOut) {
-        LoginButtonWithText(
-            unsyncedChangesCount = unsyncedChangesCount,
-            onClickLogin = { viewModel.startLogin() },
-            modifier = Modifier.fillMaxSize()
-        )
-    } else if (state is RequestingAuthorization) {
-        val webViewState = rememberWebViewState(
-            url = viewModel.authorizationRequestUrl,
-            additionalHttpHeaders = mapOf(
-                "Accept-Language" to Locale.getDefault().toLanguageTag()
-            )
+    Column(Modifier.fillMaxSize()) {
+        TopAppBar(
+            title = { Text(stringResource(R.string.user_login)) },
+            navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
 
-        val webViewNavigator = rememberWebViewNavigator(
-            // handle authorization url response
-            requestInterceptor = object : RequestInterceptor {
-                override fun onInterceptUrlRequest(
-                    request: WebRequest,
-                    navigator: WebViewNavigator
-                ): WebRequestInterceptResult {
-                    if (viewModel.isAuthorizationResponseUrl(request.url)) {
-                        viewModel.finishAuthorization(request.url)
-                        return WebRequestInterceptResult.Reject
+        if (state is LoggedOut) {
+            LoginButtonWithText(
+                unsyncedChangesCount = unsyncedChangesCount,
+                onClickLogin = { viewModel.startLogin() },
+                modifier = Modifier.fillMaxSize()
+            )
+        } else if (state is RequestingAuthorization) {
+            val webViewState = rememberWebViewState(
+                url = viewModel.authorizationRequestUrl,
+                additionalHttpHeaders = mapOf(
+                    "Accept-Language" to Locale.getDefault().toLanguageTag()
+                )
+            )
+
+            val webViewNavigator = rememberWebViewNavigator(
+                // handle authorization url response
+                requestInterceptor = object : RequestInterceptor {
+                    override fun onInterceptUrlRequest(
+                        request: WebRequest,
+                        navigator: WebViewNavigator
+                    ): WebRequestInterceptResult {
+                        if (viewModel.isAuthorizationResponseUrl(request.url)) {
+                            viewModel.finishAuthorization(request.url)
+                            return WebRequestInterceptResult.Reject
+                        }
+                        return WebRequestInterceptResult.Allow
                     }
-                    return WebRequestInterceptResult.Allow
+                }
+            )
+
+            // handle error response
+            LaunchedEffect(webViewState.errorsForCurrentRequest) {
+                val error = webViewState.errorsForCurrentRequest.firstOrNull()
+                if (error != null) {
+                    viewModel.failAuthorization(
+                        url = webViewState.lastLoadedUrl.toString(),
+                        errorCode = error.code,
+                        description = error.description
+                    )
                 }
             }
-        )
 
-        // handle error response
-        LaunchedEffect(webViewState.errorsForCurrentRequest) {
-            val error = webViewState.errorsForCurrentRequest.firstOrNull()
-            if (error != null) {
-                viewModel.failAuthorization(
-                    url = webViewState.lastLoadedUrl.toString(),
-                    errorCode = error.code,
-                    description = error.description
+            Box(Modifier.fillMaxSize()) {
+                if (webViewState.loadingState is LoadingState.Loading) {
+                    LinearProgressIndicator(Modifier.fillMaxWidth())
+                }
+                WebView(
+                    state = webViewState,
+                    modifier = Modifier.fillMaxSize(),
+                    captureBackPresses = true,
+                    navigator = webViewNavigator,
+                    onCreated = {
+                        val settings = webViewState.webSettings
+                        settings.isJavaScriptEnabled = true
+                        settings.customUserAgentString = ApplicationConstants.USER_AGENT
+                        settings.supportZoom = false
+                    } as () -> Unit,
                 )
             }
-        }
-
-        Box(Modifier.fillMaxSize()) {
-            if (webViewState.loadingState is LoadingState.Loading) {
+        } else if (state is RetrievingAccessToken || state is LoggedIn) {
+            Box(Modifier.fillMaxSize()) {
                 LinearProgressIndicator(Modifier.fillMaxWidth())
             }
-            WebView(
-                state = webViewState,
-                modifier = Modifier.fillMaxSize(),
-                captureBackPresses = true,
-                navigator = webViewNavigator,
-                onCreated = {
-                    val settings = webViewState.webSettings
-                    settings.isJavaScriptEnabled = true
-                    settings.customUserAgentString = ApplicationConstants.USER_AGENT
-                    settings.supportZoom = false
-                } as () -> Unit,
-            )
-        }
-    } else if (state is RetrievingAccessToken || state is LoggedIn) {
-        Box(Modifier.fillMaxSize()) {
-            LinearProgressIndicator(Modifier.fillMaxWidth())
         }
     }
 }

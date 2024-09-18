@@ -551,10 +551,9 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
 
     private fun onUpdatedNavigationMode() {
         if (!isNavigationMode) {
-            updateCameraPosition(300) {
-                rotation = 0.0
-                tilt = 0.0
-            }
+            // don't reset the rotation to 0 here, because this behavior is useful (#5886)
+            // (users can always reset it by tapping on the compass)
+            updateCameraPosition(300) { tilt = 0.0 }
         } else {
             centerCurrentPositionIfFollowing()
         }
@@ -584,7 +583,7 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         private const val MIN_TRACK_ACCURACY = 20f
         private const val MAX_TIME_BETWEEN_LOCATIONS = 60L * 1000 // 1 minute
 
-        private const val CLICK_AREA_SIZE_IN_DP = 24
+        private const val CLICK_AREA_SIZE_IN_DP = 28
     }
 }
 

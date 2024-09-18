@@ -668,7 +668,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="credits_projects_contributors_title">"StreetComplete를 지원하는 프로젝트"</string>
     <string name="credits_main_contributors_title">"주요 기여자"</string>
     <string name="stats_are_syncing">"통계를 동기화하는 중입니다. 잠시 후에 확인하세요."</string>
-    <string name="user_statistics_country_rank">"%2$s에서의 순위: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"지도 제작 포털 %s"</string>
     <string name="user_statistics_filter_by_country">"국가별"</string>
     <string name="user_statistics_filter_by_quest_type">"과제 유형별"</string>

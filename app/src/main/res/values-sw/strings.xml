@@ -649,7 +649,6 @@ Kabla ya kupakia mabadiliko yako, programu hukagua na &lt;a href=\" https://www.
     <string name="credits_projects_contributors_title">"Miradi iliyotengenezwa kwa StreetComplete"</string>
     <string name="credits_main_contributors_title">"Wachangiaji wakuu"</string>
     <string name="stats_are_syncing">"Takwimu zako bado zinasawazishwa. Angalia skrini hii baadaye."</string>
-    <string name="user_statistics_country_rank">"Panga katika %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Tovuti ya Ramani %s"</string>
     <string name="user_statistics_filter_by_country">"kwa nchi"</string>
     <string name="user_statistics_filter_by_quest_type">"kwa aina"</string>

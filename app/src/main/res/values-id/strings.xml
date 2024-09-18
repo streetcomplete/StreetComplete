@@ -673,7 +673,6 @@ Harap ingat bahwa aplikasi ini menanyakan nomor rumah pada bangunan setelah jeni
     <string name="credits_projects_contributors_title">"Proyek dibuat untuk StreetComplete"</string>
     <string name="credits_main_contributors_title">"Kontributor utama"</string>
     <string name="stats_are_syncing">"Statisikmu masih sinkronisasi. Cek lagi nanti"</string>
-    <string name="user_statistics_country_rank">"Peringkat %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Portal pemetaan %s"</string>
     <string name="user_statistics_filter_by_country">"berdasarkan negara"</string>
     <string name="user_statistics_filter_by_quest_type">"berdasarkan tipe pencarian"</string>
@@ -1315,8 +1314,12 @@ Selain itu, beberapa overlay memungkinkan Anda menambahkan data baru pada posisi
     <string name="quest_bbq_fuel_charcoal">"Arang"</string>
     <string name="inside">"di dalam"</string>
     <string name="outside">"di luar"</string>
+    <string name="quest_recycling_type_food_waste">"Sisa makanan"</string>
     <string name="quest_defibrillator_location">"Di mana letak defibrilator ini?"</string>
     <string name="quest_generalFee_title">"Apakah anda harus membayar untuk menggunakan ini?"</string>
+    <string name="action_filter">"Filter"</string>
+    <string name="label_log_newer_than">"Dari"</string>
+    <string name="label_log_older_than">"Sampai"</string>
     <string name="link_calendar_description">"apakah ada kegiatan OpenStreetMap atau pertemuan komunitas di dekatmu? (jika tidak, kamu dapat menambahkannya sendiri!)"</string>
     <string name="quest_disable_action">"Nonaktifkan"</string>
     <string name="quest_disable_title">"Nonaktifkan tipe pertanyaan ini?"</string>

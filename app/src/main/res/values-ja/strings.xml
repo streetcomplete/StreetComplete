@@ -670,7 +670,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="credits_projects_contributors_title">"StreetCompleteのために作成されたプロジェクト"</string>
     <string name="credits_main_contributors_title">"主な貢献者"</string>
     <string name="stats_are_syncing">"翻訳状況はまだ同期中です。Check this screen later."</string>
-    <string name="user_statistics_country_rank">"%2$s内のランク:%1$d"</string>
     <string name="user_statistics_country_wiki_link">"マッピング ポータル %s"</string>
     <string name="user_statistics_filter_by_country">"国別"</string>
     <string name="user_statistics_filter_by_quest_type">"タイプ別"</string>

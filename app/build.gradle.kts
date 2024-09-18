@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5901
-        versionName = "59.0-alpha2"
+        versionCode = 5905
+        versionName = "59.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -112,13 +112,13 @@ dependencies {
     testImplementation("org.mockito:mockito-inline:$mockitoVersion")
     testImplementation(kotlin("test"))
 
-    androidTestImplementation("androidx.test:runner:1.6.1")
+    androidTestImplementation("androidx.test:runner:1.6.2")
     androidTestImplementation("androidx.test:rules:1.6.1")
     androidTestImplementation("org.mockito:mockito-android:$mockitoVersion")
     androidTestImplementation(kotlin("test"))
 
     // dependency injection
-    implementation(platform("io.insert-koin:koin-bom:3.5.6"))
+    implementation(platform("io.insert-koin:koin-bom:4.0.0"))
     implementation("io.insert-koin:koin-core")
     implementation("io.insert-koin:koin-android")
     implementation("io.insert-koin:koin-androidx-workmanager")
@@ -130,13 +130,13 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.annotation:annotation:1.8.2")
-    implementation("androidx.fragment:fragment-ktx:1.8.2")
+    implementation("androidx.fragment:fragment-ktx:1.8.3")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
+    val composeBom = platform("androidx.compose:compose-bom:2024.09.01")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
@@ -145,10 +145,13 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.navigation:navigation-compose:2.8.0")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
+
+    // reorderable lists (raw Compose API is pretty complicated)
+    implementation("sh.calvin.reorderable:reorderable:2.4.0-beta01")
 
     // multiplatform webview (for login via OAuth)
     implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.20")
@@ -157,15 +160,15 @@ dependencies {
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 
     // settings
-    implementation("com.russhwolf:multiplatform-settings:1.1.1")
+    implementation("com.russhwolf:multiplatform-settings:1.2.0")
 
     // Kotlin
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.5.4")
 
     // Date/time
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
+    api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
 
     // scheduling background jobs
     implementation("androidx.work:work-runtime-ktx:2.9.1")
@@ -188,21 +191,18 @@ dependencies {
     implementation("me.grantland:autofittextview:0.2.1")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
 
-    // box2d view
-    implementation("org.jbox2d:jbox2d-library:2.2.1.1")
-
     // sharing presets/settings via QR Code
     implementation("io.github.alexzhirkevich:qrose:1.0.1")
     // for encoding information for the URL configuration (QR code)
     implementation("com.ionspin.kotlin:bignum:0.3.10")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.2")
     implementation("com.charleskorn.kaml:kaml:0.61.0")
     implementation("io.github.pdvrieze.xmlutil:core:0.90.1")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.2.0")
+    implementation("org.maplibre.gl:android-sdk:11.4.0")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")
@@ -221,7 +221,7 @@ val bcp47ExportLanguages = setOf(
 )
 
 // see https://github.com/osmlab/name-suggestion-index/tags for latest version
-val nsiVersion = "v6.0.20240826"
+val nsiVersion = "v6.0.20240909"
 // see https://github.com/openstreetmap/id-tagging-schema/releases for latest version
 val presetsVersion = "v6.8.1"
 

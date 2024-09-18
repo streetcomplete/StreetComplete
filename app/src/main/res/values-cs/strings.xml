@@ -674,7 +674,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="credits_projects_contributors_title">"Projekty pro StreetComplete"</string>
     <string name="credits_main_contributors_title">"Hlavní přispěvatelé"</string>
     <string name="stats_are_syncing">"Vaše statistiky se stále synchronizují. Vraťte se sem později."</string>
-    <string name="user_statistics_country_rank">"Pořadí v %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"OSM Wiki %s"</string>
     <string name="user_statistics_filter_by_country">"podle země"</string>
     <string name="user_statistics_filter_by_quest_type">"podle úkolu"</string>

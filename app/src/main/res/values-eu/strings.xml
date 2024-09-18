@@ -664,7 +664,6 @@ Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean j
     <string name="credits_projects_contributors_title">"StreetComplete-rentzat egindako proiektuak"</string>
     <string name="credits_main_contributors_title">"Laguntzaile nagusiak"</string>
     <string name="stats_are_syncing">"Zure estatistikak oraindik eguneratzen ari gara. Etorri geroxeago ikustera."</string>
-    <string name="user_statistics_country_rank">"Sailkatu hemen %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"%s ataria mapeatzen"</string>
     <string name="user_statistics_filter_by_country">"herrialdeka"</string>
     <string name="user_statistics_filter_by_quest_type">"galdera motaren arabera"</string>

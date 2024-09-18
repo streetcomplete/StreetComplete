@@ -411,6 +411,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="unsynced_quests_description">plus %d not yet published changes.</string>
     <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
 
+    <string name="user_profile_all_time_title">Overall</string>
+
     <string name="user_profile_global_rank">Global\nrank</string>
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
@@ -431,7 +433,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
     <string name="quests_empty">You published no edits yet</string>
 
-    <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
+    <string name="user_statistics_country_rank2">Rank in %s</string>
     <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>
     <string name="user_statistics_quest_wiki_link">Documentation</string>
 
@@ -791,6 +793,8 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_air_pump_bicycle_repair_station_title">Is there a working bicycle pump here?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
 
+    <string name="quest_board_name_title">"What’s the title of this information board?"</string>
+
     <string name="quest_board_type_title">What’s the topic of this information board?</string>
     <string name="quest_board_type_history">History</string>
     <string name="quest_board_type_geology">Geology</string>
@@ -1132,6 +1136,7 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_leaf_type_broadleaved">Leaves</string>
     <string name="quest_leaf_type_mixed">Both are present</string>
     <string name="quest_leafType_tree_title">Does this tree have needles or leaves?</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"It’s just a tree stump"</string>
 
     <string name="quest_level_title2">On which level number is this place located?</string>
 
@@ -1324,7 +1329,7 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_pedestrian_crossing_island">"Does this crossing have an island?"</string>
 
-    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings across the roadway?"</string>
 
     <string name="quest_amenityCover_title">Is this covered (protected from rain)?</string>
 

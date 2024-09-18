@@ -648,7 +648,6 @@
     <string name="credits_projects_contributors_title">"פרויקטים שנעשו עבור StreetComplete"</string>
     <string name="credits_main_contributors_title">"תורמים/ות עיקריים"</string>
     <string name="stats_are_syncing">"נתוני הסטטיסטיקה שלך עדיין מסתנכרנים. נא לבדוק מסך זה במועד מאוחר יותר."</string>
-    <string name="user_statistics_country_rank">"דירוג ב-%2$s: %1$d"</string>
     <string name="user_statistics_filter_by_country">"לפי מדינה"</string>
     <string name="user_statistics_filter_by_quest_type">"לפי סוג משימה"</string>
     <string name="user_profile_days_active">"ימי

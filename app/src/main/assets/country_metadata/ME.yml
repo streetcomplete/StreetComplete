@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [MoneyGet, NLB, Euronet Worldwide, CKB, Erste Bank, Prva Banka CG, Euronet, NLB Banka, Hipotekarna banka, Addiko Bank, Erste, Crnogorska Komercijalna Banka, CKB Banka, Atlas Banka, Prva Banka]
+atmOperators: [MoneyGet, NLB, Euronet Worldwide, CKB, Prva Banka CG, Erste Bank, Euronet, Hipotekarna banka, NLB Banka, Addiko Bank, Erste, Crnogorska Komercijalna Banka, CKB Banka, Atlas Banka, Prva Banka, Lovćen Banka, ERSTE Bank]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

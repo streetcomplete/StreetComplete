@@ -668,7 +668,6 @@ Merk at appen bare ber om husnummeret etter at hustypen er angitt."</string>
     <string name="credits_projects_contributors_title">"Prosjekter laget for StreetComplete"</string>
     <string name="credits_main_contributors_title">"Hovedbidragsyter"</string>
     <string name="stats_are_syncing">"Synkroniserer statistikken. Kom tilbake senere."</string>
-    <string name="user_statistics_country_rank">"Plassering i %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartleggingsportal %s"</string>
     <string name="user_statistics_filter_by_country">"pr land"</string>
     <string name="user_statistics_filter_by_quest_type">"pr oppdragstype"</string>

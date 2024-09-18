@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Euronet, Caja Rural, Caixabank, Unicaja, Santander, BBVA, Unicaja Banco, Shitcoins.club, Banco Santander, BitBase, La Caixa, Cajamar, Banco Sabadell, ING, Cajasol, Cash Zone, CajaSur, CaixaBank, Telebanco 4B, Deutsche Bank, Cajasur, Caja Rural Granada, Bankia, Banco Popular, cajamar, Targobank, SabadellSolbank, Caja Rural de Granada, Caixa Bank, Bankinter, Banco de Andalucía, Banca March]
-chargingStationOperators: [Iberdrola, Endesa, Repsol, 'Tesla, Inc.', Wenea, Mercadona, Eranovum, BP, Ionity, Zunder, SMASSA, Porsche, EDP, Shell, Carrefour, Ayuntamiento de Huelva, ALDI]
+atmOperators: [Euronet, Caja Rural, Caixabank, Unicaja, Santander, Banco Santander, BBVA, Shitcoins.club, Unicaja Banco, BitBase, La Caixa, Cajamar, Banco Sabadell, ING, Cajasol, Cash Zone, CajaSur, CaixaBank, Telebanco 4B, Deutsche Bank, Cajasur, Caja Rural Granada, Bankia, Banco Popular, cajamar, Targobank, SabadellSolbank, Caja Rural de Granada, Caixa Bank, Bankinter, Banco de Andalucía, Banca March]
+chargingStationOperators: [Iberdrola, Endesa, Repsol, 'Tesla, Inc.', Wenea, Mercadona, Eranovum, BP, Ionity, Zunder, SMASSA, Porsche, EDP, Shell, Eurocharge, Carrefour, Ayuntamiento de Huelva, ALDI]
 clothesContainerOperators: [Madre Coraje, Humana, Madre coraje, Inagra, Cáritas]
 parcelLockerBrand: [Amazon Locker, Amazon Hub Locker, Amazon Hub, CityPaq]

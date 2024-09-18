@@ -670,7 +670,6 @@
     <string name="credits_projects_contributors_title">"為了貢獻StreetComplete的專案"</string>
     <string name="credits_main_contributors_title">"主要的貢獻者"</string>
     <string name="stats_are_syncing">"你的統計依然同步中，請晚點檢查這個畫面。"</string>
-    <string name="user_statistics_country_rank">"在 %2$s：排名 %1$d"</string>
     <string name="user_statistics_country_wiki_link">"繪製導航 %s"</string>
     <string name="user_statistics_filter_by_country">"依國家"</string>
     <string name="user_statistics_filter_by_quest_type">"依任務類型"</string>
