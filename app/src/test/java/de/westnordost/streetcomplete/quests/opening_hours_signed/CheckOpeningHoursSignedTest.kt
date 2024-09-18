@@ -32,7 +32,7 @@ class CheckOpeningHoursSignedTest {
     @Test fun `is applicable to place with old check_date`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "name" to "XYZ",
-            "check_date:opening_hours" to "2020-12-12",
+            "check_date:opening_hours:signed" to "2020-12-12",
             "opening_hours:signed" to "no"
         ))))
     }
@@ -40,7 +40,7 @@ class CheckOpeningHoursSignedTest {
     @Test fun `is not applicable to place with new check_date`() {
         assertFalse(questType.isApplicableTo(node(tags = mapOf(
             "name" to "XYZ",
-            "check_date:opening_hours" to nowAsCheckDateString(),
+            "check_date:opening_hours:signed" to nowAsCheckDateString(),
             "opening_hours:signed" to "no"
         ))))
     }
@@ -109,13 +109,17 @@ class CheckOpeningHoursSignedTest {
 
     @Test fun `apply yes answer with prior check date and existing opening hours`() {
         assertEquals(
-            setOf(StringMapEntryDelete("opening_hours:signed", "no")),
+            setOf(
+                StringMapEntryDelete("opening_hours:signed", "no"),
+                StringMapEntryDelete("check_date:opening_hours:signed", "2020-03-04"),
+                StringMapEntryAdd("check_date:opening_hours", "1970-01-01")
+            ),
             questType.answerAppliedTo(
                 true,
                 mapOf(
                     "opening_hours" to "\"oh\"",
                     "opening_hours:signed" to "no",
-                    "check_date:opening_hours" to "2020-03-04"
+                    "check_date:opening_hours:signed" to "2020-03-04"
                 ),
             )
         )
@@ -125,7 +129,7 @@ class CheckOpeningHoursSignedTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("opening_hours:signed", "no", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:opening_hours:signed", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 false,
@@ -138,13 +142,13 @@ class CheckOpeningHoursSignedTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("opening_hours:signed", "no", "no"),
-                StringMapEntryModify("check_date:opening_hours", "2020-03-04", nowAsCheckDateString()),
+                StringMapEntryModify("check_date:opening_hours:signed", "2020-03-04", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 false,
                 mapOf(
                     "opening_hours:signed" to "no",
-                    "check_date:opening_hours" to "2020-03-04"
+                    "check_date:opening_hours:signed" to "2020-03-04"
                 )
             )
         )
@@ -154,7 +158,7 @@ class CheckOpeningHoursSignedTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("opening_hours:signed", "no", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:opening_hours:signed", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 false,
@@ -170,14 +174,14 @@ class CheckOpeningHoursSignedTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("opening_hours:signed", "no", "no"),
-                StringMapEntryModify("check_date:opening_hours", "2020-03-04", nowAsCheckDateString()),
+                StringMapEntryModify("check_date:opening_hours:signed", "2020-03-04", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 false,
                 mapOf(
                     "opening_hours" to "Mo 10:00-12:00",
                     "opening_hours:signed" to "no",
-                    "check_date:opening_hours" to "2020-03-04"
+                    "check_date:opening_hours:signed" to "2020-03-04"
                 )
             )
         )
