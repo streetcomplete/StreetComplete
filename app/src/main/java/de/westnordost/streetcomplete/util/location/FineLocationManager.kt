@@ -6,6 +6,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.location.LocationManager.GPS_PROVIDER
 import android.location.LocationManager.NETWORK_PROVIDER
+import android.os.CancellationSignal
 import android.os.Looper
 import android.os.SystemClock
 import androidx.annotation.RequiresPermission
@@ -13,7 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.location.LocationListenerCompat
 import androidx.core.location.LocationManagerCompat
-import androidx.core.os.CancellationSignal
 import androidx.core.util.Consumer
 import de.westnordost.streetcomplete.util.ktx.elapsedDuration
 import kotlin.time.Duration.Companion.nanoseconds

@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material.LocalContentColor
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.takeOrElse
-import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.graphics.ColorProducer
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -24,51 +24,52 @@ import de.westnordost.streetcomplete.util.html.tryParseHtml
 fun HtmlText(
     html: String,
     modifier: Modifier = Modifier,
-    color: Color = Color.Unspecified,
     style: TextStyle = LocalTextStyle.current,
-    softWrap: Boolean = true,
     overflow: TextOverflow = TextOverflow.Clip,
+    softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
-    onClickLink: (String) -> Unit
+    minLines: Int = 1,
+    inlineContent: Map<String, InlineTextContent> = mapOf(),
+    onTextLayout: (TextLayoutResult) -> Unit = {},
 ) {
     val htmlNodes = remember(html) { tryParseHtml(html) }
     HtmlText(
         html = htmlNodes,
         modifier = modifier,
-        color = color,
         style = style,
-        softWrap = softWrap,
         overflow = overflow,
+        softWrap = softWrap,
         maxLines = maxLines,
-        onClickLink = onClickLink
+        minLines = minLines,
+        inlineContent = inlineContent,
+        onTextLayout = onTextLayout,
     )
 }
 
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun HtmlText(
     html: List<HtmlNode>,
     modifier: Modifier = Modifier,
-    color: Color = Color.Unspecified,
     style: TextStyle = LocalTextStyle.current,
-    softWrap: Boolean = true,
     overflow: TextOverflow = TextOverflow.Clip,
+    softWrap: Boolean = true,
     maxLines: Int = Int.MAX_VALUE,
-    onClickLink: (String) -> Unit
+    minLines: Int = 1,
+    inlineContent: Map<String, InlineTextContent> = mapOf(),
+    onTextLayout: (TextLayoutResult) -> Unit = {},
 ) {
     val annotatedString = html.toAnnotatedString()
-    val styleWithColor = style.copy(color = color.takeOrElse { LocalContentColor.current })
-    ClickableText(
+    Text(
         text = annotatedString,
         modifier = modifier,
-        style = styleWithColor,
-        softWrap = softWrap,
+        style = style,
         overflow = overflow,
+        softWrap = softWrap,
         maxLines = maxLines,
-    ) { offset ->
-        val link = annotatedString.getUrlAnnotations(offset, offset).firstOrNull()?.item?.url
-        if (link != null) { onClickLink(link) }
-    }
+        minLines = minLines,
+        inlineContent = inlineContent,
+        onTextLayout = onTextLayout,
+    )
 }
 
 @PreviewLightDark
@@ -100,6 +101,6 @@ private fun HtmlTextPreview() {
     <p>Paragraph</p>
     <blockquote>A block quotation is a quotation in a written document that is set off from the main text as a paragraph, or block of text, and typically distinguished visually using indentation.</blockquote>
     """,
-            modifier = Modifier.width(320.dp)) {}
+            modifier = Modifier.width(320.dp))
     } }
 }

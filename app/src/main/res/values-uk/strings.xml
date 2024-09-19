@@ -1397,4 +1397,8 @@
     <string name="about_category_help">"Справка"</string>
     <string name="quest_camp_power_supply_hint">"Це можуть бути розетки безпосередньо на території табору, розетки в службовій будівлі, доступній для гостей, спеціальна станція для зарядки телефонів, ноутбуків тощо."</string>
     <string name="quest_barrier_opening_width_bollard">"Яка найширша щілина, через яку тут можна пройти?"</string>
+    <string name="user_profile_all_time_title">"Загалом"</string>
+    <string name="user_statistics_country_rank2">"Місце в %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Це просто пень"</string>
+    <string name="quest_board_name_title">"Яка назва цієї інформаційної дошки?"</string>
 </resources>

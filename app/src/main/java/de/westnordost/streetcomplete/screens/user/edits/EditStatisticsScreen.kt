@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.user.edits
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -29,7 +28,6 @@ import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import kotlinx.coroutines.launch
 
 /** Shows the user's edit statistics, alternatively either grouped by edit type or by country */
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun EditStatisticsScreen(
     viewModel: EditStatisticsViewModel

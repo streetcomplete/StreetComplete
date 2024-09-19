@@ -1386,4 +1386,21 @@
     <string name="separate_cycleway_footway_allowed_sign">"Пешаходная дарога, але знак дазваляе рух на ровары"</string>
     <string name="quest_bicycle_parking_type_floor">"Выдзеленая тэрыторыя"</string>
     <string name="link_osmapp_description">"Карта з рознымі пластамі, напрыклад для скалалажання або катання на лыжах"</string>
+    <string name="action_back">"Назад"</string>
+    <string name="action_clear">"Ачысцiць"</string>
+    <string name="action_more">"Больш"</string>
+    <string name="action_open_in_browser">"Адчынiць у браузеры"</string>
+    <string name="about_category_contribute">"Унесці свой уклад"</string>
+    <string name="pref_category_quests">"Квэсты"</string>
+    <string name="pref_title_language_select2">"Мова"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Як часта вам будзе прапанавана пацвердзіць, ці правільныя раней адлюстраваныя дадзеныя."</string>
+    <string name="questList_disabled_by_default">"Па змаўчанні адключана"</string>
+    <string name="quest_multiselect_hint">"Выберыце ўсе варыянты:"</string>
+    <string name="bridge">"на мосце"</string>
+    <string name="about_title_intro">"Паказаць увядзенне"</string>
+    <string name="about_category_help">"Дапамога"</string>
+    <string name="quest_barrier_opening_width_bollard">"Якая большая шырыня праходу тут?"</string>
+    <string name="user_profile_all_time_title">"Агулам"</string>
+    <string name="user_statistics_country_rank2">"Рэйтынг у %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Гэта проста пень"</string>
 </resources>

@@ -743,7 +743,7 @@ Erfolge"</string>
     <string name="achievement_citizen_solved_X">"Du hast %d Aufgaben gelöst, die nützlich für den Alltag in der Stadt sind!"</string>
     <string name="achievement_outdoors_title">"In der freien Natur"</string>
     <string name="achievement_outdoors_solved_X">"Du hast %d Aufgaben gelöst, die nützlich für Menschen in der freien Natur sind!"</string>
-    <string name="quest_pedestrian_crossing_island">"Gibt es bei diesem Fußgängerüberweg eine Verkehrsinsel?"</string>
+    <string name="quest_pedestrian_crossing_island">"Gibt es bei dieser Überquerung eine Verkehrsinsel?"</string>
     <string name="quest_generic_answer_noSign">"Da ist kein Schild"</string>
     <string name="quest_steps_ramp_separate_wheelchair">"Wird die Rampe für Rollstühle auf der Karte als separater Weg angezeigt?"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Ja, separat"</string>
@@ -793,7 +793,7 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis."</string
     <string name="quest_shop_vacant_type_title">"Dieser Laden stand leer. Was ist jetzt hier?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Jede Seite hat unterschiedliche Anzahl von Fahrstreifen"</string>
     <string name="default_disabled_msg_go_inside_regional_warning">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er in manchen Regionen nicht sinnvoll ist und du wahrscheinlich den Ort betreten musst, um die Aufgabe lösen zu können."</string>
-    <string name="quest_dietType_explanation_kosher">"Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungs-Agenturen diese Produkte überprüfen."</string>
+    <string name="quest_dietType_explanation_kosher">"Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungsagenturen diese Produkte überprüfen."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Kein Radweg vorhanden"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Wie üblich, tippe auf eine Seite des Bildes, wähle die passende Antwort und wiederhole dies für die andere Seite.
 
@@ -915,7 +915,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_generic_hasFeature_optional">"Optional"</string>
     <string name="quest_buildingType_bridge">"Verbindungsbrücke zwischen Gebäuden"</string>
     <string name="quest_laundrySelfService_title2">"Bietet diese Wäscherei Selbstbedienung an?"</string>
-    <string name="quest_dietType_explanation_halal">"Halale Produkte werden nach den muslimischen Speisegesetzen hergestellt, wobei spezielle Halal-Zertifizierungs-Agenturen diese Produkte überprüfen."</string>
+    <string name="quest_dietType_explanation_halal">"Halale Produkte werden nach den muslimischen Speisegesetzen hergestellt, wobei spezielle Halal-Zertifizierungsagenturen diese Produkte überprüfen."</string>
     <string name="quest_generic_answer_is_actually_steps">"Das ist eine Treppe"</string>
     <string name="quest_barrier_type_passage_conversion">"Durch Mauer-/Zaun-Durchgang ersetzt"</string>
     <string name="quest_barrier_type_gate_conversion">"Durch Tor ersetzt"</string>
@@ -1304,7 +1304,7 @@ Fehlende Daten sind immer rot eingefärbt."</string>
     <string name="overlays_tutorial_edit">"Tippe auf hervorgehobene Daten, um sie anzuzeigen oder zu bearbeiten. Du kannst auch Wege aufteilen oder Hinweise geben, wie bei Aufgaben.
 
 Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Position des Fadenkreuzes, beispielsweise das Adressen-Overlay."</string>
-    <string name="quest_crossing_kerb_height_title">"Wie hoch sind die Bordsteine an dieser Kreuzung?"</string>
+    <string name="quest_crossing_kerb_height_title">"Wie hoch sind die Bordsteine an dieser Überquerung?"</string>
     <string name="quest_maxheight_sign_title">"Welche Durchfahrtshöhe ist hier angegeben?"</string>
     <string name="quest_maxheight_sign_below_bridge_title">"Welche Durchfahrtshöhe ist unter der Brücke angegeben?"</string>
     <string name="quest_leave_new_note_as_answer">"Hinterlasse in diesem Fall einen Hinweis, in dem du die Situation beschreibst."</string>
@@ -1355,7 +1355,7 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
     <string name="quest_buildingType_tower_description">"jede Art von Turm"</string>
     <string name="quest_buildingType_under_construction">"Im Bau befindlich"</string>
     <string name="overlay_buildings">"Gebäude"</string>
-    <string name="quest_pedestrian_crossing_markings">"Gibt es bei diesem Fußgängerüberweg Markierungen auf dem Boden?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Gibt es bei dieser Überquerung Markierungen auf der Fahrbahn?"</string>
     <string name="overlay_places">"Orte"</string>
     <string name="overlay_things">"Dinge"</string>
     <string name="disused">"stillgelegt"</string>
@@ -1366,7 +1366,7 @@ Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Positi
 Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden. Google Play erlaubt uns nicht, sie direkt aus der App heraus zu verlinken."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Nicht drinnen, aber überdacht"</string>
     <string name="lit_value_unsupported">"Spezifischer Beleuchtungsstatus, der in dieser App nicht wählbar ist"</string>
-    <string name="quest_generic_otherAnswers2">"Äh…"</string>
+    <string name="quest_generic_otherAnswers2">"Äh …"</string>
     <string name="quest_pedestrian_crossing_signals2">"Ist hier eine Ampel, die zeigt, wann man die Straße überqueren kann?"</string>
     <string name="quest_moped_access_title">"Gibt es ein Schild, das den Zugang für Mopeds auf diesem Radweg kennzeichnet?"</string>
     <string name="quest_moped_access_allowed">"Es gibt kein Schild"</string>
@@ -1404,10 +1404,10 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="bridge">"auf Brücke"</string>
     <string name="about_title_intro">"Einführung zeigen"</string>
     <string name="about_category_help">"Hilfe"</string>
-    <string name="quest_camp_power_supply_hint">"Das könnten Steckdosen direkt im Campingbereich sein, Steckdosen in einem für Gäste zugänglichen Betriebsgebäude, eine dedizierte Ladestation für Telefone, Laptops, usw."</string>
+    <string name="quest_camp_power_supply_hint">"Das könnten Steckdosen direkt im Campingbereich sein, Steckdosen in einem für Gäste zugänglichen Betriebsgebäude, eine dedizierte Ladestation für Telefone, Laptops usw."</string>
     <string name="quest_barrier_opening_width_bollard">"Was ist die breiteste Lücke, durch die man hier durchkommt?"</string>
     <string name="user_profile_all_time_title">"Gesamt"</string>
     <string name="user_statistics_country_rank2">"Rang in %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Es ist bloß ein Baumstumpf"</string>
-    <string name="quest_board_name_title">"Womit ist diese Tafel betitelt?"</string>
+    <string name="quest_board_name_title">"Wie lautet der Titel dieser Informationstafel?"</string>
 </resources>

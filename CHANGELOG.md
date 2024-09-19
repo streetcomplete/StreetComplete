@@ -1,6 +1,6 @@
 # Changelog
 
-## v59.0-beta1
+## v59.0
 
 Oh! Again such a monster update!
 
@@ -34,7 +34,6 @@ Most of it is behind the scenes, but what's visible is the completely redone UI 
 - Tree leaf type: User can answer that it is now a tree stump (#5853), by @mnalis
 - Barrier opening: Allow inputting widths of above 9.99 meters (#5865)
 - Charging stations: Skip private ones (#5842), by @mnalis
-- Traffic signals vibration: Disable in Bulgaria (#5846)
 - Ask many road-related quests also for busways (#5749)
 - Recycling containers: Also ask for containers that have been mapped as an area (#5735)
 - Recycling containers: Also highlight nearby waste containers and bins (#5754)
@@ -42,9 +41,11 @@ Most of it is behind the scenes, but what's visible is the completely redone UI 
 - Drinking water: Don't ask for intermittent water sources (#5750), by @mnalis
 - Track type: Don't ask for track type on bridges (#5731), by @kmpoppe
 - Building levels, roof shapes: Also ask for houseboats (#5737), by @HolgerJeromin
-- Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
 - Clothing container operators: Allow answering that there's no information on the container (#5764)
 - Check existence: Don't ask if something else on the same place has just been checked (#5729)
+- Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
+- Traffic signals vibration: Disabled in Bulgaria (#5846)
+- Access restriction for pedestrians: Disabled in United Kingdom (#4998)
 - Other small improvements (#5740, #5792, #5548, #5776, #5877, #5880, #5879, #5874...), thanks @mnalis, @RubenKelevra
 
 ### Overlay Improvements

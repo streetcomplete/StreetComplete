@@ -1391,6 +1391,18 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="about_category_contribute">"Contribuisci"</string>
     <string name="pref_category_quests">"Missioni"</string>
     <string name="pref_title_language_select2">"Lingua"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Quanto spesso vengono mostrate conferme per confermare dati mappati in precedenza."</string>
     <string name="questList_disabled_by_default">"Disabilitato per impostazione predefinita"</string>
+    <string name="action_manage_presets_summary">"Nome con cui viene salvata la selezione di compiti."</string>
+    <string name="quest_multiselect_hint">"Seleziona tutte le risposte pertinenti:"</string>
+    <string name="quest_barrier_opening_width_gate">"Qual è la larghezza di questa apertura?"</string>
+    <string name="bridge">"sul ponte"</string>
+    <string name="about_title_intro">"Mostra introduzione"</string>
     <string name="about_category_help">"Aiuto"</string>
+    <string name="quest_camp_power_supply_hint">"Potrebbero essere prese ai campi sportivi, negli edifici disponibili ai clienti, una stazione dedicata alla ricarica di telefoni, portatili, ecc."</string>
+    <string name="quest_barrier_opening_width_bollard">"Qual è lo spazio massimo di passaggio qui?"</string>
+    <string name="user_profile_all_time_title">"Generale"</string>
+    <string name="user_statistics_country_rank2">"Posizione in %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"È solo un ceppo d'albero"</string>
+    <string name="quest_board_name_title">"Qual è il titolo di questo pannello informativo?"</string>
 </resources>

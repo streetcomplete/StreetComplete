@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Checkbox
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -58,18 +60,18 @@ fun QuestSelectionRow(
         modifier = modifier.height(IntrinsicSize.Min),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        if (item.isInteractionEnabled(questTypeRegistry)) {
+            Icon(painterResource(R.drawable.ic_drag_vertical), "Reorder")
+        } else {
+            Spacer(Modifier.size(24.dp))
+        }
         Image(
             painter = painterResource(item.questType.icon),
             contentDescription = item.questType.name,
-            modifier = Modifier
-                .padding(start = 16.dp)
-                .size(48.dp)
-                .alpha(alpha),
+            modifier = Modifier.size(48.dp).alpha(alpha),
         )
         Column(
-            modifier = Modifier
-                .padding(start = 16.dp)
-                .weight(0.1f),
+            modifier = Modifier.padding(start = 16.dp).weight(0.1f),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(

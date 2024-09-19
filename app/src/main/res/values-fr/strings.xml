@@ -1387,4 +1387,22 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="separate_cycleway_footway_allowed_sign">"Voie piétonne, mais un panneau autorise la circulation des cyclistes"</string>
     <string name="quest_bicycle_parking_type_floor">"Zone désignée"</string>
     <string name="link_osmapp_description">"Une carte avec différentes couches, par exemple pour l’escalade ou le ski"</string>
+    <string name="action_back">"Retour"</string>
+    <string name="action_more">"Plus"</string>
+    <string name="action_open_in_browser">"Ouvrir dans le navigateur"</string>
+    <string name="about_category_contribute">"Contribuer"</string>
+    <string name="pref_category_quests">"Quêtes"</string>
+    <string name="pref_title_language_select2">"Langue"</string>
+    <string name="pref_title_resurvey_intervals_summary">"A quelle fréquence vous sera demandé de confirmer la véracité d'une information déjà connue."</string>
+    <string name="questList_disabled_by_default">"Affiché par défaut"</string>
+    <string name="action_manage_presets_summary">"Sous quel nom est enregistré la sélection de quête ci-dessous."</string>
+    <string name="quest_multiselect_hint">"Sélectionner tous ceux qui correspondent :"</string>
+    <string name="quest_barrier_opening_width_gate">"Quelle est la largeur de l'ouverture ?"</string>
+    <string name="about_title_intro">"Voir l'introduction"</string>
+    <string name="about_category_help">"Aide"</string>
+    <string name="quest_camp_power_supply_hint">"Il peut s'agir de prises directement sur les emplacements du camping, de prises dans un bâtiment commun accessible aux clients, d'une borne de recharge dédiée pour téléphones, ordinateurs portables, etc."</string>
+    <string name="quest_barrier_opening_width_bollard">"Quelle est la largeur du passage ?"</string>
+    <string name="user_profile_all_time_title">"Global"</string>
+    <string name="user_statistics_country_rank2">"Rang en %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"C'est une souche"</string>
 </resources>

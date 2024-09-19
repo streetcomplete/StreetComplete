@@ -20,7 +20,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -30,7 +29,6 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.BulletSpan
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.util.ktx.openUri
 import java.util.Locale
 
 /** Shows the credits of this app */
@@ -47,11 +45,9 @@ fun CreditsScreen(
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         credits?.let { credits ->
-            val context = LocalContext.current
             SelectionContainer {
                 CreditsSections(
                     credits = credits,
-                    onClickLink = { context.openUri(it) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .verticalScroll(rememberScrollState())
@@ -65,7 +61,6 @@ fun CreditsScreen(
 @Composable
 private fun CreditsSections(
     credits: Credits,
-    onClickLink: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -76,41 +71,29 @@ private fun CreditsSections(
             HtmlText(
                 html = credits.mainContributors.first().toTextWithLink(),
                 style = TextStyle(fontWeight = FontWeight.Bold),
-                onClickLink = onClickLink
             )
         }
         CreditsSection(stringResource(R.string.credits_main_contributors_title)) {
             for (contributor in credits.mainContributors.drop(1)) {
-                BulletSpan {
-                    HtmlText(contributor.toTextWithLink(), onClickLink = onClickLink)
-                }
+                BulletSpan { HtmlText(contributor.toTextWithLink()) }
             }
         }
         CreditsSection(stringResource(R.string.credits_projects_contributors_title)) {
             for (contributor in credits.projectsContributors) {
-                BulletSpan {
-                    HtmlText(contributor, onClickLink = onClickLink)
-                }
+                BulletSpan { HtmlText(contributor) }
             }
         }
         CreditsSection(stringResource(R.string.credits_art_contributors_title)) {
             for (contributor in credits.artContributors) {
-                BulletSpan {
-                    HtmlText(contributor, onClickLink = onClickLink)
-                }
+                BulletSpan { HtmlText(contributor) }
             }
         }
         CreditsSection(stringResource(R.string.credits_contributors_title)) {
             for (contributor in credits.codeContributors) {
-                BulletSpan {
-                    HtmlText(contributor.toTextWithLink(), onClickLink = onClickLink)
-                }
+                BulletSpan { HtmlText(contributor.toTextWithLink()) }
             }
             BulletSpan { Text("…") }
-            HtmlText(
-                html = stringResource(R.string.credits_contributors),
-                onClickLink = onClickLink
-            )
+            HtmlText(stringResource(R.string.credits_contributors))
         }
         CreditsSection(stringResource(R.string.credits_translations_title)) {
             val translatorsByDisplayLanguage = credits.translators

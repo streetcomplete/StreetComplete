@@ -1355,7 +1355,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="quest_buildingType_tower_description">"any kind of tower"</string>
     <string name="quest_buildingType_under_construction">"Under construction"</string>
     <string name="overlay_buildings">"Buildings"</string>
-    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings on the ground?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Does this crossing have markings across the carriageway?"</string>
     <string name="overlay_places">"Places"</string>
     <string name="overlay_things">"Things"</string>
     <string name="disused">"disused"</string>
@@ -1406,4 +1406,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="about_category_help">"Help"</string>
     <string name="quest_camp_power_supply_hint">"This could be outlets directly at the camp pitches, outlets in a service building accessible by guests, a dedicated charging station for phones, laptops, etc."</string>
     <string name="quest_barrier_opening_width_bollard">"What is the widest gap one can pass through here?"</string>
+    <string name="user_profile_all_time_title">"Overall"</string>
+    <string name="user_statistics_country_rank2">"Rank in %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"It’s just a tree stump"</string>
+    <string name="quest_board_name_title">"What’s the title of this information board?"</string>
 </resources>

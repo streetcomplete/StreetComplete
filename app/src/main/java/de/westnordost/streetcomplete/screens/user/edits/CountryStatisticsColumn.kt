@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.user.edits
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -7,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,6 +29,11 @@ fun CountryStatisticsColumn(
 ) {
     var showInfo by remember { mutableStateOf<CountryStatistics?>(null) }
 
+    val countUpAnim = remember(statistics) { Animatable(0f) }
+    LaunchedEffect(statistics) {
+        countUpAnim.animateTo(1f, tween(2000))
+    }
+
     // list is sorted by largest count descending
     val maxCount = statistics.firstOrNull()?.count ?: 0
     LazyColumn(
@@ -41,7 +49,7 @@ fun CountryStatisticsColumn(
                         modifier = Modifier.size(48.dp)
                     )
                 },
-                count = item.count,
+                count = item.count * countUpAnim.value,
                 maxCount = maxCount,
                 modifier = Modifier
                     .clickable { showInfo = item }
