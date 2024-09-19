@@ -121,7 +121,7 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 
 ### Dependencies
 
-* [Tangram-ES](https://github.com/tangrams/tangram-es/) map rendering
+* [MapLibre Native](https://github.com/maplibre/maplibre-native/) for map rendering
 * [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
 * [countrymetadata](https://github.com/streetcomplete/countrymetadata) for info about various countries (left/right hand driving etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
