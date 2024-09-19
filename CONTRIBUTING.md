@@ -58,7 +58,7 @@ If you experience problems, crashes or a quest is not clear to you, feel free to
 
 StreetComplete depends on some projects for the app. Try to report them in the appropriate place.
 
-* **Map style issues** should be reported in a [separate repository](https://github.com/ENT8R/streetcomplete-mapstyle).
+* **Map style issues** should be reported in a [separate repository](https://github.com/streetcomplete/maplibre-streetcomplete-style).
 Examples of such issues are missing elements on the map, display errors on the map, etc. As a rule of thumb, you can report everything that happens "behind" the quest icon markers there.
 
 Note that this app has other dependencies. For reporting issues in these, you have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or if it is an issue with Tangram-ES or another project.
@@ -128,7 +128,7 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name. Data for it is provided by:
   * [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - In StreetComplete it powers display of feature type, object classification in shop overlay and more
   * [Name suggestion index](https://github.com/osmlab/name-suggestion-index) - it allows to search POI types also by brand names
-* [streetcomplete-mapstyle](https://github.com/streetcomplete/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
+* [streetcomplete-mapstyle](https://github.com/streetcomplete/maplibre-streetcomplete-style)
 
 ### Created for StreetComplete
 
