@@ -54,7 +54,7 @@
     <string name="pref_auto_download_summary">付近の領域内のデータを自動的にダウンロードします</string>
     <string name="pref_manual_download_cache_title">常にデータを再ダウンロード</string>
     <string name="pref_export">設定を出力</string>
-    <string name="pref_import">設定を取り込み</string>
+    <string name="pref_import">設定を取り込む</string>
     <string name="import_export_presets">プリセット</string>
     <string name="import_export_presets_select">出力するプリセットを選択</string>
     <string name="import_export_settings">他のアプリ設定</string>
@@ -354,7 +354,7 @@
     <string name="close_note_checkbox">メモを閉じる(メモが確実に解決する場合に、これを行ってください!)</string>
     <string name="closed_note_action_title">あなたはそれを閉じました</string>
     <string name="quest_trail_visibility_good_description">道や次の印は見失うことが少ないですが、ときどき探す必要があることもあります。地図持参が推奨され、基本的な方向感覚が必要です。</string>
-    <string name="default_disabled_msg_roofColour">大抵、屋根の色は道路から容易には見ることができないため、このクエスト種別は初期設定では無効化されています。このクエスト種別はまた、時間が掛かります。大抵の事例において、自宅にて空中写真からマッピングする方が容易かつより効率的です。</string>
+    <string name="default_disabled_msg_roofColour">大抵、屋根の色は道路から容易には見ることができないため、初期設定ではこのクエスト種別は無効化されています。このクエスト種別はまた、時間が掛かります。大抵の事例において、自宅にて空中写真からマッピングする方が容易かつより効率的です。</string>
     <string name="quest_trail_visibility_title">この道のトレイル(ハイキング道)の見つけやすさは何ですか?</string>
     <string name="quest_trail_visibility_intermediate_description">大抵の所では道が判別できます。地図と、しっかりした方向感覚が必要です。</string>
     <string name="quest_mapType_scheme_description">重要な道やPOI(関心地点)のみが書かれた絵地図です。角度や距離などは純粋に説明的であり、正確ではありません(非一般図)。例えば旅行会社が旅程を説明する場合などに使います。</string>
@@ -364,7 +364,7 @@
     <string name="quest_guidepostEle_title">ここの標高はいくつですか?</string>
     <string name="quest_guidepostEle_hint">GPSの高さは通常、不正確すぎて正しい高度照会システムで提供されないため、使用しないでください。</string>
     <string name="quest_healthcare_speciality_disabled_message">このクエストは healthcare:speciality タグについての知識が必要です。この知識をご存知でない場合は、クエストは酷く難題になる可能性があります。</string>
-    <string name="default_disabled_msg_trail_visibility">トレイル(ハイキング道)の見つけやすさの評価は非常に主観的であり、使用される等級付け体系の専門知識を必要とするため、このクエスト種別は初期設定で無効化されています。</string>
+    <string name="default_disabled_msg_trail_visibility">トレイル(ハイキング道)の見つけやすさの評価は非常に主観的であり、使用される等級付け体系の専門知識を必要とするため、初期設定ではこのクエスト種別は無効化されています。</string>
     <string name="quest_guidepostName_hint">この地図または道標やガイドポストの記された(場所)の名前です。ここには参照番号を入力しないでください。</string>
     <string name="quest_tree_disabled_msg">回答が容易ではないため、初期設定ではこのクエストは無効化されています。種と属は、最もよく使用される値から取得される提案から選択する必要があります。検索可能な名前を持つ種の独自の一覧から候補を提供するには、 &lt;species&gt; (&lt;name&gt;) を含むファイルをデータ管理設定メニュー内に提供します。</string>
     <string name="quest_guidepost_disabled_msg">このクエストは、記される内容が地域や管理者によって大きく異なるため、初期設定では無効化されています。地域用の要素選択で絞り込む必要があるかもしれません(例:地図を追加または削除する、hiking=yesで要素のみを選択するなど)</string>
@@ -521,4 +521,13 @@
     <string name="quest_crossing_marking_value_zebra_dots">縞模様と点線</string>
     <string name="quest_crossing_marking_value_pictograms">ピクトグラム(絵文字)</string>
     <string name="quest_crossing_marking_value_lines">横断歩道外側に隣接する線</string>
+    <string name="default_disabled_msg_caravanSiteType">分類方法とタグ使用方法は千差万別なため、初期設定ではこのクエストは無効化されています。</string>
+    <string name="quest_valves_disabled_msg">利用可能なバルブの調査には、かなり近寄らなければならないため、初期設定ではこのクエスト種別は無効化されています。</string>
+    <string name="quest_valves_dunlop">DV/NV: 英式/ダンロップ(Dunlop)/ウッズ(Woods) バルブ</string>
+    <string name="quest_valves_sclaverand">SV: 仏式/プレスタ(Presta)/スクラベラン(Sclaverand) バルブ</string>
+    <string name="quest_valves_schrader">AV: 米式/アメリカン/シュレーダー(Schrader)/自動車用 バルブ</string>
+    <string name="quest_valves_regina">RV: レジーナ(Regina)/イタリア向け</string>
+    <string name="quest_valves_title">ここで利用できるバルブ(空気弁)の種類は何ですか?</string>
+    <string name="quest_service_building_type_title">これは何の種類の仕事をする建物ですか?</string>
+    <string name="quest_street_cabinet_type_title">これは何の種類のストリートキャビネットですか?</string>
 </resources>

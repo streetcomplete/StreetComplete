@@ -607,7 +607,13 @@
     <string name="quest_caravanSiteType_harbour">Hafen - an einem Hafen oder Jachthafen.</string>
     <string name="quest_caravanSiteType_winery">Weingut - Stellplatz auf einem Weingut, oft direkt neben den Weinbergen.</string>
     <string name="quest_caravanSiteType_museum">Museum - befindet sich neben einem Museum, einer Ausstellung oder ähnlichem.</string>
-    <string name="quest_caravanSiteType_restaurant">Restaurant - an einem Restaurant oder Cafe, oft auf dem Parkplatz.</string>
+    <string name="quest_caravanSiteType_restaurant">Restaurant - an einem Restaurant oder Café, oft auf dem Parkplatz.</string>
     <string name="quest_caravanSiteType_farm">Bauernhof - Stellplatz auf einem Bauernhof.</string>
     <string name="quest_caravanSiteType_beach">Strand - in der Nähe eines Strandes oder am Meer.</string>
+    <string name="quest_valves_title">Welche Arten von Ventilen gibt es hier?</string>
+    <string name="quest_valves_sclaverand">SV: Sclaverand / Presta / Französisches Ventil</string>
+    <string name="quest_valves_disabled_msg">Dieser Quest ist standardmäßig deaktiviert, da er eine sehr genaue Prüfung der verfügbaren Ventile erfordert.</string>
+    <string name="quest_valves_dunlop">DV/NV: Dunlop / Woods</string>
+    <string name="quest_valves_schrader">AV: Schrader / Autoventil</string>
+    <string name="quest_valves_regina">RV: Regina / Italienisches Ventil</string>
 </resources>

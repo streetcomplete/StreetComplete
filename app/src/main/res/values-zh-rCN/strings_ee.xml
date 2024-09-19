@@ -70,7 +70,7 @@
     <string name="quest_osmose_message">这些任务是从 Osmose 服务下载的，以表示 OSM 数据的潜在问题。只有在任务设置中选择了至少一个严重等级时，才会下载。
 \n Osmose 消息会与任务一起显示，任何编辑都会将问题报告为已解决。
 \n 也有可能将问题报告为误报；这是无法撤销的。</string>
-    <string name="pref_select_first_edit_summary">允许快速撤销，但相机会自动移动</string>
+    <string name="pref_select_first_edit_summary">允许快速撤销，但摄像头会自动移动</string>
     <string name="default_disabled_msg_poi_recycling">该“任务”以绿点显示与回收/垃圾相关的兴趣点。点击圆点可显示详细信息和其他回答。</string>
     <string name="default_disabled_msg_ee">在 SCEE 中添加的任务默认情况下都是禁用的，因为这些任务不总是能回答，而且可能需要相关主题和标签的知识。</string>
     <string name="quest_settings_resurvey_all_opening_hours_yes">所有</string>
@@ -115,7 +115,7 @@
     <string name="quest_settings_sidewalk_distance_button">距离</string>
     <string name="import_presets_overlays_replace">替换</string>
     <string name="show_nearby_quests_even_hidden">显示所有类型和隐藏任务</string>
-    <string name="quest_custom_quest_title">自定义任务</string>
+    <string name="quest_custom_quest_title">自定义任务：</string>
     <string name="pref_volume_zoom_summary">使用音量按钮进行缩放</string>
     <string name="pref_auto_download_title">自动下载</string>
     <string name="quest_service_building_type_substation">变电站/所</string>
@@ -198,16 +198,16 @@
     <string name="quest_osmose_message_for_element">项目类型 %1$s: %2$s</string>
     <string name="pref_read_reverse_button">反转</string>
     <string name="pref_delete_old_data_after_message">如果下载的 OSM 数据超过此天数，则将其删除</string>
-    <string name="pref_expert_mode_message">这将允许在 SCEE 中使用添加的任务，以及
-\n <li>编辑原始标签</li>
-\n <li>移动属于路径或关系的节点</li>
-\n <li>删除任意自由浮动的节点</li>
-\n <li>编辑应由注释屏蔽的要素</li>
-\n <li>在任何地方添加自由浮动节点</li>
-\n <li>改变任务的要素选择</li>
-\n
-\n 这仍然小于大多数其他编辑器所允许的范围，但不当使用可能会导致损坏数据，而这在 StreetComplete 中是可以避免的。请注意，启用专家模式后，您需要为自己的编辑显著承担更多责任。
-\n请在当您拥有除 StreetComplete 之外的 OSM 经验并了解自己在做什么时，再启用此设置。 </string>
+    <string name="pref_expert_mode_message">这将允许在 SCEE 中使用添加的任务，以及 
+\n <li>编辑原始标签</li> 
+\n <li>移动属于路径或关系的节点</li> 
+\n <li>删除任意自由浮动的节点</li> 
+\n <li>编辑应由注释屏蔽的要素</li> 
+\n <li>在任何地方添加自由浮动节点</li> 
+\n <li>改变任务的要素选择</li> 
+\n 
+\n 这仍然小于大多数其他编辑器所允许的范围，但不当使用可能会导致损坏数据，而这在 StreetComplete 中是可以避免的。请注意，启用专家模式后，您需要为自己的编辑显著承担更多责任。 
+\n请在当您拥有除 StreetComplete 之外的 OSM 经验并了解自己在做什么时，再启用此设置。 \u0020</string>
     <string name="quest_is_pharmacy_dispensing_title">这家药房是否配发所有处方药？</string>
     <string name="import_error_db_version">导入错误：未知版本</string>
     <string name="pref_interval_summary">%d 秒</string>
@@ -278,7 +278,7 @@
     <string name="quest_artwork_sculpture">雕塑</string>
     <string name="quest_tree_genus_title">这棵树的属或种是什么？</string>
     <string name="quest_poi_has_atm_title">兴趣点：有自动取款机</string>
-    <string name="pref_show_gpx_button_summary">与 OSM 的笔记相反，添加 GPX 将不会隐藏受影响位置的任何任务</string>
+    <string name="pref_show_gpx_button_summary">与 OSM 注释相反，添加 GPX 注释将不会隐藏受影响位置的任何任务</string>
     <string name="pref_hide_notes_message">输入要忽略的用户名或 ID</string>
     <string name="quest_cuisine_add_more">添加其它菜系</string>
     <string name="pref_read_filter_hint">过滤…</string>
@@ -401,7 +401,7 @@
     <string name="move_node_of_other_relation">该节点是以下非多边形关系的一部分： %s</string>
     <string name="add_access">添加通行限制……</string>
     <string name="access_weight_limit">重量</string>
-    <string name="create_relation_action_description">您与……建立了关系</string>
+    <string name="create_relation_action_description">您已建立了关系，与 …</string>
     <string name="custom_overlay_filter_message">单击下面的链接可在浏览器中打开有关元素选择语法的信息。请注意，按年份选择元素时，重新调查间隔设置可能会影响结果。
 \n复选框取代了“节点、路径”部分。</string>
     <string name="quest_construction_value">设置 \"construction=...\"，如果未知则留空</string>
@@ -429,4 +429,188 @@
     <string name="quest_service_building_oil_pumping_station">油泵站</string>
     <string name="quest_service_building_type_pressure_description">建筑物内的燃气调压站负责减小附近消费者的燃气压力</string>
     <string name="quest_service_building_heating_description">向工业和家庭消费者输送和分配热能的建筑（区域供热）</string>
+    <string name="quest_service_building_railway_engine_shed">铁路机车棚</string>
+    <string name="quest_service_building_monitoring_station">监测站</string>
+    <string name="quest_service_building_other">其他服务大楼</string>
+    <string name="pref_offset_fix_title2">移除白点的偏移</string>
+    <string name="quest_service_building_type_substation_description">主要与区域配电网相关的变电站</string>
+    <string name="quest_service_building_type_minor_substation">小型变电站</string>
+    <string name="quest_service_building_type_minor_substation_description">配电网中最低变电级别的小型变电站</string>
+    <string name="quest_service_building_type_industrial_substation">工业变电站</string>
+    <string name="quest_service_building_type_industrial_substation_description">致力于工业或重型商业活动供给</string>
+    <string name="quest_service_building_type_traction_substation_description">将电力转换为牵引电流，为铁路、有轨电车或无轨电车供电的变电站</string>
+    <string name="quest_service_building_type_switchgear">配电装置</string>
+    <string name="quest_service_building_railway_wash">铁路洗车站</string>
+    <string name="quest_service_building_ventilation_description">允许非铁路基础设施进行空气交换的垂直设施</string>
+    <string name="quest_service_building_monitoring_station_description">位于自己的建筑物内监测某事物的站点</string>
+    <string name="quest_service_building_type_switchgear_description">电力系统的控制装置</string>
+    <string name="quest_service_building_railway_signal_box_description">用于控制铁路运营的固定铁路系统</string>
+    <string name="quest_service_building_railway_engine_shed_description">保护机车和铁路车辆免受环境影响的棚屋</string>
+    <string name="quest_service_building_railway_signal_box">铁路信号箱</string>
+    <string name="quest_service_building_railway_wash_description">列车清洗设施所在的建筑</string>
+    <string name="quest_service_building_ventilation">通风井</string>
+    <string name="quest_street_cabinet_traffic_monitoring">交通监控</string>
+    <string name="quest_shelter_type_basic_hut">基本小屋</string>
+    <string name="quest_buildingType_transformer_tower">变电塔</string>
+    <string name="quest_footway_width_title">这里的人行道有多宽？</string>
+    <string name="quest_street_cabinet_type_title">这是什么路边柜？</string>
+    <string name="quest_street_cabinet_traffic">交通</string>
+    <string name="quest_street_cabinet_postal_service">邮政服务</string>
+    <string name="quest_street_cabinet_traffic_control">交通管制</string>
+    <string name="quest_street_cabinet_waste">废弃物</string>
+    <string name="quest_street_cabinet_television">电视机</string>
+    <string name="quest_street_cabinet_street_lighting">街道照明</string>
+    <string name="quest_shelter_type_is_weather_shelter">这是一个通用的避风港</string>
+    <string name="quest_shelter_type_public_transport">公共交通</string>
+    <string name="quest_shelter_type_picnic_shelter">野餐棚</string>
+    <string name="quest_shelter_type_gazebo">凉亭</string>
+    <string name="quest_shelter_type_lean_to">披屋</string>
+    <string name="quest_shelter_type_sun_shelter">遮阳棚</string>
+    <string name="quest_shelter_type_rock_shelter">岩石掩体</string>
+    <string name="quest_shelter_type_field_shelter">野外掩体</string>
+    <string name="quest_mapSize_title">这张地图覆盖了哪些区域？</string>
+    <string name="quest_mapSize_landscape">整个景观，主要用于地形观测</string>
+    <string name="quest_mapType_toposcope_description">竖立在高处的标记，用于指示从该点可见的著名景观特征的方向。通常与视点一起使用。</string>
+    <string name="quest_viaFerrataScale_zero">0 级 — 无</string>
+    <string name="quest_viaFerrataScale_one">1/K1/A 级 — 非常简单</string>
+    <string name="quest_crossing_marking_value_zebra_bicolour">双色斑马线</string>
+    <string name="quest_crossing_marking_value_ladder_skewed">梯形线倾斜</string>
+    <string name="quest_piste_difficulty_extreme">极限</string>
+    <string name="quest_shelter_type_title">这是什么样的住所？</string>
+    <string name="quest_trail_visibility_no">无可见性</string>
+    <string name="quest_buildingType_riding_hall">马术馆</string>
+    <string name="quest_mapType_title">这是什么样的地图？</string>
+    <string name="quest_mapType_topo_title">地形</string>
+    <string name="quest_mapType_street_title">街道</string>
+    <string name="quest_mapType_scheme_title">示意图</string>
+    <string name="quest_viaFerrataScale_two">2/K2/B 级 — 简单</string>
+    <string name="quest_viaFerrataScale_three">3/K3/C 级 — 中等</string>
+    <string name="quest_viaFerrataScale_four">4/K4/D 级 — 困难</string>
+    <string name="quest_viaFerrataScale_one_description">良好的天然台阶或凿成的楼梯、短梯或铁梯。露天通道的扶手栏杆装有缆绳、铁链或绳索。有经验的登山者可以不需要铁索攀岩设备。</string>
+    <string name="quest_viaFerrataScale_two_description">陡峭或垂直的通道都安装有梯子或铁梯。即使在不太困难的地形，钢缆和铁链也能确保攀爬者的安全。强烈建议使用铁索攀岩设备。</string>
+    <string name="quest_viaFerrataScale_three_description">有些攀爬技术，但不需要特别强壮的臂力。必须配备铁索攀岩设备。</string>
+    <string name="quest_viaFerrataScale_four_description">地势陡峭，有连续的钢缆连接。需要臂力。在最难的路段有人工辅助设施（铁梯、扶手）。</string>
+    <string name="quest_guidepostName_hint">此地图或路标的签名（位置）名称。请勿在此处输入参考编号。</string>
+    <string name="quest_guidepost_disabled_msg">此任务默认禁用，因为强烈签名的内容因地区和运营商而异。您可能需要优化您所在地区的元素选择（例如添加或删除地图、仅选择 hiking=yes 的元素等）</string>
+    <string name="quest_guidepostName_title">这里叫什么名字？</string>
+    <string name="quest_guidepostEle_title">这里的海拔是多少？</string>
+    <string name="quest_guidepostEle_hint">请勿使用 GPS 高度，因为它通常太不准确并且没有在正确的高度参考系中提供。</string>
+    <string name="quest_guidepostRef_hint">此地图或路标的参考编号，而非标示路线的参考编号。</string>
+    <string name="quest_trail_visibility_excellent">极好</string>
+    <string name="quest_trail_visibility_good">好</string>
+    <string name="quest_brewery_title">这里供应哪些品牌的啤酒？</string>
+    <string name="quest_mapSize_city">整个城市</string>
+    <string name="quest_mapSize_region">更大的区域，例如多个村庄</string>
+    <string name="quest_mapSize_site">一个场所，例如公园或动物园</string>
+    <string name="quest_viaFerrataScale_six_description">需要真正耐力的长距离稀疏的体操赛道。攀岩鞋可能有用。可使用绳索或安全带提供额外安全保障（推荐）</string>
+    <string name="quest_viaFerrataScale_title">这种铁索攀岩的难度等级是多少？</string>
+    <string name="quest_barrier_height_title">这道屏障有多高？</string>
+    <string name="quest_piste_difficulty_easy">简单</string>
+    <string name="quest_caravanSiteType_village">村庄 — 较小村庄附近的中途停留地。</string>
+    <string name="close">关闭</string>
+    <string name="quest_caravanSiteType_title">这个大篷车营地位于何处？</string>
+    <string name="quest_caravanSiteType_town">城镇 — 较大城镇附近的中途停留地。</string>
+    <string name="default_disabled_msg_caravanSiteType">此任务类型默认禁用，因为标签的分类和使用并不常用。</string>
+    <string name="quest_caravanSiteType_river">河流 — 该地点直接位于河流边上。</string>
+    <string name="quest_caravanSiteType_lake">湖泊 — 该场地直接位于湖边。</string>
+    <string name="quest_caravanSiteType_supermarket">超市 — 在超市的停车场上。</string>
+    <string name="quest_crossing_marking_value_pictograms">象形图</string>
+    <string name="quest_generalRef_hint">参考编号或代码</string>
+    <string name="quest_generalRef_disabled_msg">此任务默认禁用，因为签名内容因地区和运营商而异。您可能需要优化您所在地区的元素选择（例如，移除路灯、添加地图、仅选择 hiking=yes 的路标等。）</string>
+    <string name="quest_valves_sclaverand">SV：法式气门嘴/法式嘴</string>
+    <string name="quest_valves_dunlop">DV/NV：英式气门嘴/英式嘴</string>
+    <string name="quest_valves_schrader">AV：美式气门嘴/美式嘴</string>
+    <string name="quest_valves_regina">RV：意式气门嘴/意式嘴</string>
+    <string name="quest_trail_visibility_title">此路线的路径可见性如何？</string>
+    <string name="quest_trail_visibility_excellent_description">到处都有明确的路径或标记。方向没有问题，不需要地图。</string>
+    <string name="quest_trail_visibility_intermediate">中等</string>
+    <string name="quest_trail_visibility_intermediate_description">路径基本可见，无标记。需要良好的方向感，需要地图。</string>
+    <string name="quest_trail_visibility_bad">差</string>
+    <string name="quest_trail_visibility_bad_description">有时看不到路径，部分路线无路径，没有标记。需要基本定位技能。</string>
+    <string name="quest_trail_visibility_horrible">极差</string>
+    <string name="quest_trail_visibility_horrible_description">通常没有路径，没有标记。需要高级定位技能。</string>
+    <string name="quest_trail_visibility_no_description">大多是无路可走，没有标记。需要极好的定位技能。</string>
+    <string name="quest_mapType_toposcope_title">地形测量仪</string>
+    <string name="quest_mapType_scheme_description">仅标有重要路线和 POI 的草图地图。角度、距离等仅供参考，并不准确。例如，旅行社用它来解释他们的旅游行程。</string>
+    <string name="quest_viaFerrataScale_zero_description">难度较低；地势从平坦到陡峭不等；部分路段裸露在外。用缆绳、铁链或简易梯子固定。要求脚步稳健；不爱运动的人也可以。对于大多数人铁索攀岩设备是可选的。</string>
+    <string name="quest_viaFerrataScale_five">5/K5/E 级 — 非常困难</string>
+    <string name="quest_viaFerrataScale_six">6/K6/F 级 — 极其困难</string>
+    <string name="quest_caravanSiteType_parking_lot">停车场 — 直接位于停车场上。</string>
+    <string name="quest_caravanSiteType_harbour">港口 — 在港口或码头。</string>
+    <string name="quest_caravanSiteType_camp_site">露营地 — 露营地的单独房车停留点。</string>
+    <string name="quest_caravanSiteType_museum">博物馆 — 位于博物馆、展览馆或类似场所。</string>
+    <string name="quest_caravanSiteType_restaurant">餐厅 — 在餐厅或咖啡馆，通常在停车场。</string>
+    <string name="quest_caravanSiteType_farm">农场 — 停留在农场。</string>
+    <string name="quest_caravanSiteType_beach">海滩 — 海滩旁边或海边。</string>
+    <string name="quest_brewery_add_more">添加另一家啤酒厂</string>
+    <string name="quest_brewery_is_various">这里供应多种品牌的啤酒</string>
+    <string name="quest_brewery_is_not_available">这里不卖啤酒</string>
+    <string name="quest_crossing_marking_value_zebra_double">双层斑马线</string>
+    <string name="quest_crossing_marking_value_ladder_paired">梯形线配对</string>
+    <string name="quest_crossing_marking_value_zebra_dots">斑马线 + 点</string>
+    <string name="quest_piste_difficulty_intermediate">中级</string>
+    <string name="quest_parking_orientation_title">这里的汽车以什么方向停放？</string>
+    <string name="quest_maxheight_answer_noSign_question_yes">高大的卡车可以通过</string>
+    <string name="quest_maxheight_answer_noSign_question_no">高大的卡车不适合</string>
+    <string name="quest_maxheight_answer_noSign_question_unclear">不清楚</string>
+    <string name="quest_piste_difficulty_title">这条滑雪道的难度如何？</string>
+    <string name="quest_piste_difficulty_expert">专家</string>
+    <string name="quest_piste_difficulty_freeride">自由滑雪</string>
+    <string name="quest_parking_capacity_title">这里可以停放多少辆车？</string>
+    <string name="quest_parking_capacity_hint">这还包括特殊空间，例如残疾人专用空间、家庭专用空间、充电空间等。如果停车位没有标记，则隐藏任务，因此不可计算</string>
+    <string name="quest_parking_capacity_disabled_title">这里有多少个残疾人停车位？</string>
+    <string name="quest_parking_capacity_disabled_answer_yes">有，但是数量不清楚</string>
+    <string name="quest_piste_difficulty_novice">初级</string>
+    <string name="quest_caravanSiteType_winery">酿酒厂 — 停留在酿酒厂，通常就在葡萄园旁边。</string>
+    <string name="quest_sacScale_title">此路径的 SAC 规模是多少？</string>
+    <string name="quest_sacScale_one">T1 — 徒步</string>
+    <string name="quest_sacScale_one_description">地形水平或略微倾斜；只要行为得当，就不会有跌倒的风险。</string>
+    <string name="quest_sacScale_four_description">地形已经相当险峻，包括陡峭的草坡、滑石斜坡、易雪的雪地或无雪的冰川穿越点。</string>
+    <string name="quest_sacScale_two_description">有些地方地形陡峭，可能会造成跌倒危险。</string>
+    <string name="quest_sacScale_four">T4 — 高山徒步</string>
+    <string name="quest_sacScale_two">T2 — 山地徒步</string>
+    <string name="quest_sacScale_three">T3 — 高难度山地徒步</string>
+    <string name="quest_sacScale_three_description">部分路段险峻，有跌倒危险。步道可能有未标记的路段和松散碎石或岩堆的交叉区域。</string>
+    <string name="quest_sacScale_six">T6 — 艰难的高山徒步</string>
+    <string name="quest_sacScale_five_description">地势险峻，地形复杂。可能包括陡峭的攀岩、冰川和雪原，有滑倒的危险。</string>
+    <string name="quest_sacScale_five">T5 — 高难度高山徒步</string>
+    <string name="quest_sacScale_six_description">极为险峻。崎岖险峻的地形。冰川滑坡风险高。</string>
+    <string name="quest_shelter_type_disabled_msg">此任务默认禁用，因为不太容易回答。必须从建议中选择住所类型，这些建议取最常用的，通常不容易区分。</string>
+    <string name="quest_valves_disabled_msg">此任务默认禁用，因为它需要对可用气门嘴进行非常仔细的检查。</string>
+    <string name="quest_valves_title">这里有哪些类型的阀门？</string>
+    <string name="quest_trail_visibility_good_description">路径或下一个标记始终可见，但有时必须搜索。需要基本的方向感，建议使用地图。</string>
+    <string name="pref_quest_sac_scale_without_relation">搜索所有路径，即使是那些与徒步旅行无关的路径</string>
+    <string name="default_disabled_msg_sacScale">此任务类型默认禁用，因为路径的 SAC 等级非常主观，需要对所用分级系统有专业知识。由于没有世界通用的路径难度等级，因此这里使用 SAC 山地和高山徒步等级。</string>
+    <string name="quest_mapType_topo_description">具有地形背景的地图，例如历史地图或徒步地图。地图包含等高线。</string>
+    <string name="quest_mapType_street_description">标有某个地区所有街道或道路的地图。大部分街道都有名称。角度、距离等信息准确无误。例如，在旅游局用于住宿概览。</string>
+    <string name="quest_viaFerrataScale_five_description">路途遥远，持续艰苦，非常费力。裸露的地形可能只有安全缆绳，而这些缆绳只保留在不可能穿越的地方。适合经验丰富的登山者。</string>
+    <string name="quest_buildingType_presbytery">教堂</string>
+    <string name="quest_crossing_type_raised">高架人行横道</string>
+    <string name="quest_piste_difficulty_advanced">高级</string>
+    <string name="quest_parking_capacity_disabled_default_disabled_msg">SCEE 中添加的任务默认始终处于禁用状态，因为它们可能并不总是可回答的，并且可能需要了解主题和标记。
+\n如果设置了 capacity:disabled=yes，则不会询问此任务。如果您也想指定它们，请将元素选择从“and !capacity:disabled”更改为“and (!capacity:disabled or capacity:disabled=yes)”</string>
+    <string name="quest_maxheight_answer_noSign_question">即使最高的卡车（至少约 4.5 米/15 英尺）是否有足够的空间可以轻松通过？</string>
+    <string name="custom_overlay_color_message">选择要从中获取颜色的键。接受正则表达式并使用匹配的标签来获取颜色。颜色来自所有匹配键的键和值。如果匹配的键包含：left/right/both，它将用于为道路的两侧着色，但不为中心线着色。如果没有匹配，颜色始终为红色，表示缺少数据。正则表达式知识对于此功能非常有帮助。
+\n如果表达式不是正则表达式，请在编辑标签时以“!”开头以重点值开头。
+\n
+\n示例：
+\n“surface”以相同颜色显示 surface=asphalt，以不同颜色显示 surface=concrete
+\n“.*surface”类似，但也以一种颜色显示 sidewalk:(left/right/both):surface=asphalt，以另一种颜色显示 cycleway:(left/right/both):surface=asphalt</string>
+    <string name="quest_surface_value_chipseal">碎石封层</string>
+    <string name="quest_buildingType_barn">谷仓</string>
+    <string name="quest_buildingType_cowshed">牛棚</string>
+    <string name="quest_buildingType_stable">马厩</string>
+    <string name="quest_buildingType_sty">猪圈</string>
+    <string name="quest_buildingType_digester">消化池（生物反应器）</string>
+    <string name="quest_buildingType_transit_shelter">交通候车亭</string>
+    <string name="pref_quest_pedestrian_crossing_markings_extended">启用“此十字路口在地面上有标记吗？”的扩展，允许您定义十字路口标记的样式</string>
+    <string name="quest_crossing_marking_value_no">否</string>
+    <string name="quest_crossing_marking_value_dashes">短线</string>
+    <string name="quest_crossing_marking_value_dots">点</string>
+    <string name="quest_crossing_marking_value_surface">表面</string>
+    <string name="quest_crossing_marking_value_zebra_paired">斑马线配对</string>
+    <string name="quest_crossing_marking_value_zebra">斑马线</string>
+    <string name="quest_crossing_marking_value_lines">线条</string>
+    <string name="quest_crossing_marking_value_ladder">梯形线</string>
+    <string name="quest_street_cabinet_transport_management">运输管理</string>
 </resources>

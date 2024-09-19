@@ -593,4 +593,25 @@
     <string name="quest_crossing_marking_value_zebra_dots">Zebra + points</string>
     <string name="quest_crossing_marking_value_pictograms">Pictogrammes</string>
     <string name="quest_crossing_marking_value_ladder_skewed">Échelle asymétrique</string>
+    <string name="quest_caravanSiteType_parking_lot">Parking - directement sur un parking.</string>
+    <string name="quest_caravanSiteType_title">Où se trouve cet emplacement pour caravanes ?</string>
+    <string name="default_disabled_msg_caravanSiteType">Ce type de quête est désactivé par défaut car la classification et l\'utilisation de la balise ne sont pas courantes.</string>
+    <string name="quest_caravanSiteType_town">Ville - une escale à proximité d\'une grande ville.</string>
+    <string name="quest_valves_disabled_msg">Cette quête est désactivée par défaut car elle nécessite une inspection très minutieuse des valves disponibles.</string>
+    <string name="quest_valves_dunlop">DV/NV: Dunlop / Woods</string>
+    <string name="quest_valves_schrader">AV: Schrader / valve de voiture</string>
+    <string name="quest_valves_regina">RV: Regina / valve italienne</string>
+    <string name="quest_valves_sclaverand">SV: Sclaverand / Presta / valve francaise</string>
+    <string name="quest_caravanSiteType_river">Rivière - le site est situé directement sur la rivière.</string>
+    <string name="quest_caravanSiteType_lake">Lac - le site est situé directement sur le lac.</string>
+    <string name="quest_caravanSiteType_harbour">Port - dans un port ou une marina.</string>
+    <string name="quest_caravanSiteType_winery">Domaine viticole - séjourner dans un domaine viticole, souvent à proximité immédiate des vignobles.</string>
+    <string name="quest_caravanSiteType_camp_site">Camping - une halte séparée du camping-car dans un camping.</string>
+    <string name="quest_caravanSiteType_museum">Musée - situé dans un musée, une exposition ou un lieu similaire.</string>
+    <string name="quest_caravanSiteType_farm">Ferme - séjourner dans une ferme.</string>
+    <string name="quest_caravanSiteType_beach">Plage - près d\'une plage ou au bord de la mer.</string>
+    <string name="quest_caravanSiteType_supermarket">Supermarché - sur le parking d\'un supermarché.</string>
+    <string name="quest_caravanSiteType_village">Village - une étape à proximité d\'un petit village.</string>
+    <string name="quest_valves_title">Quels types de valves est disponibles ici ?</string>
+    <string name="quest_caravanSiteType_restaurant">Restaurant - dans un restaurant ou un café, souvent sur le parking.</string>
 </resources>
