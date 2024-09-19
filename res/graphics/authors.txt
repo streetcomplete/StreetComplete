@@ -372,6 +372,7 @@ quest/
     restaurant_vegetarian.svg        parts taken from Twemoji: U+1F37D and U+1F955
     road_construction.svg
     roof_shape.svg
+    sauna.svg                        modified by mcliquid based on Geozeisig CC0 1.0 from https://wiki.openstreetmap.org/wiki/File:Sauna-14.svg
     seating.svg
     shelter_type.svg                 modified from https://wiki.openstreetmap.org/wiki/File:Shelter-14.svg
     shower.svg

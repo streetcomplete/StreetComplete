@@ -219,6 +219,7 @@ import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSi
 import de.westnordost.streetcomplete.quests.trail_visibility.AddTrailVisibility
 import de.westnordost.streetcomplete.quests.tree.AddTreeGenus
 import de.westnordost.streetcomplete.quests.sac_scale.AddSacScale
+import de.westnordost.streetcomplete.quests.sauna_availability.AddSaunaAvailability
 import de.westnordost.streetcomplete.quests.valves.AddValves
 import de.westnordost.streetcomplete.quests.via_ferrata_scale.AddViaFerrataScale
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
@@ -633,6 +634,7 @@ fun getQuestTypeList(
     EE_QUEST_OFFSET + 46 to AddDisabledParkingCapacity(),
     EE_QUEST_OFFSET + 47 to AddParkingOrientation(),
     EE_QUEST_OFFSET + 50 to AddCaravanSiteType(),
+    EE_QUEST_OFFSET + 52 to AddSaunaAvailability(),
     EE_QUEST_OFFSET + 10 to OsmoseQuest(osmoseDao),
     EE_QUEST_OFFSET + 11 to CustomQuest(customQuestList),
     // POI quests

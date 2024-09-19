@@ -322,6 +322,9 @@
     <string name="quest_utility_sewerage">Sewerage</string>
     <string name="quest_utility_telecom">Telecommunication</string>
 
+    <!-- sauna availability quest -->
+    <string name="quest_saunaAvailability_title">Is there a sauna here?</string>
+
     <!-- service building type -->
     <string name="quest_service_building_type_title">What kind of service building is this?</string>
     <string name="quest_service_building_type_substation">Electrical substation</string>
