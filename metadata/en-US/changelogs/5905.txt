@@ -1,0 +1,9 @@
+- fix issue with extension of crossing markings quest
+- fix crash when user had manually enabled auto theme
+- add safe loops and saddle holder to bicycle parking quest
+- use new icon in F-Droid
+- add "Tree is stump" answer to tree species quest
+- add quests for caravan site type, bicycle valves, sauna
+- allow copying crash report text
+- add vertical divider in feature search dialog
+- minor fixes / improvements
