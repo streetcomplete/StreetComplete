@@ -543,6 +543,8 @@
     <string name="quest_barrier_height_title">"How tall is this barrier?"</string>
 
     <!-- additional strings for quests available in StreetComplete -->
+    <string name="quest_bicycle_parking_type_safeloops">Safe Loops (supports wheel and frame)</string>
+    <string name="quest_bicycle_parking_type_saddleholder">Saddle holder</string>
     <string name="quest_surface_value_metal_grid">Metal grid</string>
     <string name="quest_surface_value_stepping_stones">Stepping stones</string>
     <string name="quest_surface_value_chipseal">"Chipseal"</string>
