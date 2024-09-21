@@ -59,10 +59,13 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     private val bridgeFilter by lazy { """
         ways with (
-            highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-            or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
-          ) and (
-            bridge and bridge != no
+            (
+              highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+              or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
+            )
+            and bridge and bridge != no
+          ) or (
+            building = roof
             or man_made = pipeline and location = overhead
           )
           and layer
@@ -88,6 +91,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
             && tags["covered"] == null
             && tags["man_made"] != "pipeline"
             && tags["railway"] != "level_crossing"
+            && tags["building"] != "roof"
         // only the "below the bridge" situation may need some context
         return when {
             isBelowBridge -> R.string.quest_maxheight_sign_below_bridge_title
