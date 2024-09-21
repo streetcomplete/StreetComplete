@@ -284,6 +284,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "name_?[1-9]?(:.*)?", ".*_name_?[1-9]?(:.*)?", "noname", "branch(:.*)?", "brand(:.*)?",
     "not:brand(:.*)?", "network(:wikidata)?", "operator(:.*)?", "operator_type", "ref",
     "ref:vatin", "designation", "SEP:CLAVEESC", "identifier", "ref:FR:SIRET", "ref:FR:SIREN",
+    "ref:FR:NAF",
     // contacts
     "contact_person", "contact(:.*)?", "phone(:.*)?", "phone_?[1-9]?", "emergency:phone",
     "emergency_telephone_code",
