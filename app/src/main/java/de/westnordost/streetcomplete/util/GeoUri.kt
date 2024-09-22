@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.util
 
-import android.net.Uri
-import androidx.core.net.toUri
 import de.westnordost.streetcomplete.util.ktx.format
 
-fun parseGeoUri(uri: Uri): GeoLocation? {
-    if (uri.scheme != "geo") return null
+fun parseGeoUri(uri: String): GeoLocation? {
+    if (!uri.startsWith("geo:")) return null
 
     val geoUriRegex = Regex("(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?")
-    val match = geoUriRegex.matchEntire(uri.schemeSpecificPart) ?: return null
+    val match = geoUriRegex.matchEntire(uri.substringAfter("geo:")) ?: return null
 
     val latitude = match.groupValues[1].toDoubleOrNull() ?: return null
     if (latitude < -90 || latitude > +90) return null
@@ -21,12 +19,11 @@ fun parseGeoUri(uri: Uri): GeoLocation? {
     return GeoLocation(latitude, longitude, zoom)
 }
 
-fun buildGeoUri(latitude: Double, longitude: Double, zoom: Double? = null): Uri {
+fun buildGeoUri(latitude: Double, longitude: Double, zoom: Double? = null): String {
     val z = if (zoom != null) "?z=$zoom" else ""
     val lat = latitude.format(5)
     val lon = longitude.format(5)
-    val geoUri = "geo:$lat,$lon$z"
-    return geoUri.toUri()
+    return "geo:$lat,$lon$z"
 }
 
 data class GeoLocation(

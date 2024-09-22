@@ -43,11 +43,11 @@ val Context.currentDisplay: Display get() =
         getSystemService<WindowManager>()!!.defaultDisplay
     }
 
-fun Context.sendEmail(email: String, subject: String, text: String? = null) {
+fun Context.sendEmail(to: String, subject: String, text: String? = null) {
     val intent = Intent(Intent.ACTION_SENDTO).apply {
         data = "mailto:".toUri()
-        putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
-        putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " " + subject)
+        putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
+        putExtra(Intent.EXTRA_SUBJECT, subject)
         if (text != null) {
             putExtra(Intent.EXTRA_TEXT, text)
         }
@@ -59,6 +59,12 @@ fun Context.sendEmail(email: String, subject: String, text: String? = null) {
         toast(R.string.no_email_client)
     }
 }
+
+fun Context.sendErrorReportEmail(errorReport: String) = sendEmail(
+    to = ApplicationConstants.ERROR_REPORTS_EMAIL,
+    subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
+    text = "Describe how to reproduce it here:\n\n\n\n$errorReport"
+)
 
 fun Context.openUri(uri: String): Boolean =
     try {
