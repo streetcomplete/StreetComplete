@@ -84,20 +84,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     override val icon = R.drawable.ic_quest_max_height
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val isBelowBridge = tags["amenity"] != "parking_entrance"
-            && tags["barrier"] != "height_restrictor"
-            && tags["tunnel"] == null
-            && tags["covered"] == null
-            && tags["man_made"] != "pipeline"
-            && tags["railway"] != "level_crossing"
-            && tags["building"] != "roof"
-        // only the "below the bridge" situation may need some context
-        return when {
-            isBelowBridge -> R.string.quest_maxheight_sign_below_bridge_title
-            else          -> R.string.quest_maxheight_sign_title
-        }
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_maxheight_sign_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // amenity = parking_entrance nodes etc. only if they are a vertex in a road
