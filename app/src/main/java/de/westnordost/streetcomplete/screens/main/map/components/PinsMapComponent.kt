@@ -106,11 +106,8 @@ class PinsMapComponent(
                 // results in a lot of flickering.
                 iconSize(1f),
 
-                // better would be arrayOf(-2.5f, 0f, -7f, 2.5f) or something like that, but setting
-                // different paddings per side is not supported by MapLibre Native yet. See
-                // https://github.com/maplibre/maplibre-native/issues/2368
-                iconPadding(-2f),
-                iconOffset(listOf(-4.5f, -34.5f).toTypedArray()),
+                iconPadding(arrayOf(-2.5f, 0f, -7f, 2.5f)),
+                iconOffset(arrayOf(-4.5f, -34.5f)),
                 iconAllowOverlap(false),
                 iconIgnorePlacement(false),
                 symbolSortKey(get("icon-order")),
