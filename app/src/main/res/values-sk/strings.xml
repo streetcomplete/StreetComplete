@@ -1298,7 +1298,6 @@ Chýbajúce údaje sú vždy zobrazené červenou farbou."</string>
 Okrem toho niektoré prekrytia umožňujú pridávať nové údaje na pozíciu zobrazeného kríža, ako napríklad prekrytie adries."</string>
     <string name="quest_crossing_kerb_height_title">"Aký vysoký je obrubník na tejto križovatke?"</string>
     <string name="quest_maxheight_sign_title">"Aký výškový limit je tu uvedený?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Aký výškový limit je uvedený pod mostom?"</string>
     <string name="quest_leave_new_note_as_answer">"V takom prípade musíte zanechať poznámku, v ktorej vysvetlíte situáciu."</string>
     <string name="quest_drinking_water_type_title2">"Je tu k dispozícii pitná voda? Ak áno, aký je jej zdroj?"</string>
     <string name="quest_is_amenity_inside_title">"Je to vo vnútri budovy?"</string>

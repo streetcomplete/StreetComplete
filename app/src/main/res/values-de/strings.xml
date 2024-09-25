@@ -1306,7 +1306,6 @@ Fehlende Daten sind immer rot eingefärbt."</string>
 Einige Overlays ermöglichen außerdem das Hinzufügen neuer Daten an der Position des Fadenkreuzes, beispielsweise das Adressen-Overlay."</string>
     <string name="quest_crossing_kerb_height_title">"Wie hoch sind die Bordsteine an dieser Überquerung?"</string>
     <string name="quest_maxheight_sign_title">"Welche Durchfahrtshöhe ist hier angegeben?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Welche Durchfahrtshöhe ist unter der Brücke angegeben?"</string>
     <string name="quest_leave_new_note_as_answer">"Hinterlasse in diesem Fall einen Hinweis, in dem du die Situation beschreibst."</string>
     <string name="quest_drinking_water_type_title2">"Gibt es hier Trinkwasser? Wenn ja, aus welcher Quelle?"</string>
     <string name="quest_is_amenity_inside_title">"Ist das in einem Gebäude?"</string>

@@ -81,7 +81,7 @@ Ensimmäiseksi, on ymmärrettävä, että olet tekemässä oikeita ja suoria tä
 Kaikki mitä lisäät tässä sovelluksessa lisätään suoraan kartalle, sovelluksen ja OSM-infrastruktuurin välissä ei ole mitään kolmansia osapuolia.
 &lt;/p&gt;
 &lt;p&gt;
-OpenStreetMapin muokkaaminen anonyymisti ei ole mahdollista. Kaikki muokkaukset (ja niiden päivämäärä ja sijainti) osoitetaan sinun OSM käyttäjätilillesi, ja näytetään julkisesti openstreetmap.org sivulla. Koska StreetCompletea kuuluu käyttää paikan päällä tapahtuvaan kartoitukseen, tämä paljastaa missä ja milloin olet käyttänyt sovellusta.
+OpenStreetMapin muokkaaminen anonyymisti ei ole mahdollista. Kaikki muokkaukset (ja niiden päivämäärä ja sijainti) osoitetaan sinun OSM-käyttäjätilillesi, ja näytetään julkisesti openstreetmap.org-sivulla. Koska StreetCompletea kuuluu käyttää paikan päällä tapahtuvaan kartoitukseen, tämä paljastaa missä ja milloin olet käyttänyt sovellusta.
 &lt;/p&gt;
 
 &lt;h2&gt;Sijainti&lt;/h2&gt;
@@ -91,8 +91,8 @@ Sovellus ei jaa GPS-sijaintiasi kenellekään. Sitä käytetään ympäristöss�
 
 &lt;h2&gt;Datan käyttö&lt;/h2&gt;
 &lt;p&gt;
-Sovellus kommunikoi suoraan OSM-palvelimien kanssa.&lt;br/&gt;
-Ennen muutoksien lähettämistä, sovellus tarkistaa &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;yksinkertaisella tekstitiedostolla&lt;/a&gt; minun palvelimellani, että muutoksien lähettäminen ei ole estetty kyseisellä sovellusversiolla . Tämän varmuustoimenpiteen avulla voidaan estää sovellusversiota, joista löydetään vakavia virheitä, lähettämästä vioittunutta dataa OSM palvelimille.&lt;/p&gt;"</string>
+Sovellus kommunikoi suoraan OSM-palvelinten kanssa.&lt;br/&gt;
+Ennen muutoksien lähettämistä sovellus tarkistaa &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;yksinkertaisella tekstitiedostolla&lt;/a&gt; minun palvelimellani, että muutoksien lähettäminen ei ole estetty kyseisellä sovellusversiolla . Tämän varmuustoimenpiteen avulla voidaan estää sovellusversiota, joista löydetään vakavia virheitä, lähettämästä vioittunutta dataa OSM-palvelimille.&lt;/p&gt;"</string>
     <string name="autosync_on">"Päällä"</string>
     <string name="autosync_only_on_wifi">"Vain Wi-Fi"</string>
     <string name="autosync_off">"Pois päältä"</string>
@@ -1305,7 +1305,6 @@ Puuttuvat tiedot näytetään aina punaisella värillä."</string>
 Lisäksi jotkin tasot sallivat uuden tiedon lisäämisen tähtäimen osoittamaan sijaintiin, kuten osoitteet-tasossa."</string>
     <string name="quest_crossing_kerb_height_title">"Mikä on reunakiveyksen korkeus tässä tienylityspaikassa?"</string>
     <string name="quest_maxheight_sign_title">"Mikä korkeusrajoitus tässä on?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Mikä korkeusrajoitus sillan alapuolella on?"</string>
     <string name="quest_leave_new_note_as_answer">"Tässä tapauksessa sinun pitää jättää viesti, jossa selität tilanteen."</string>
     <string name="quest_drinking_water_type_title2">"Onko täällä tarjolla juomavettä? Jos on, mistä se on peräisin?"</string>
     <string name="quest_is_amenity_inside_title">"Onko tämä rakennuksen sisällä?"</string>

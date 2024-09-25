@@ -1294,7 +1294,6 @@
 นอกจากนี้ ภาพซ้อนทับบางแบบยังช่วยให้คุณเพิ่มข้อมูลใหม่ที่ตำแหน่งของเป้าเล็งที่แสดงได้ เช่น ภาพซ้อนทับที่อยู่"</string>
     <string name="quest_crossing_kerb_height_title">"ความสูงของขอบทางที่ทางข้ามนี้อยู่ที่เท่าไหร่?"</string>
     <string name="quest_maxheight_sign_title">"ป้ายจำกัดความสูงที่แสดงอยู่ที่นี่คืออะไร?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"ป้ายจำกัดความสูงที่แสดงอยู่ด้านล่างของสะพานคืออะไร?"</string>
     <string name="quest_is_amenity_inside_title">"สิ่งนี้อยู่ด้านในอาคารหรือไม่?"</string>
     <string name="quest_bbq_fuel_title">"เตาย่างนี้ใช้พลังงานอะไร?"</string>
     <string name="quest_bbq_fuel_wood">"ไม้"</string>

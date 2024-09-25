@@ -1305,7 +1305,6 @@ Brakujące dane są zawsze wyświetlane na czerwono."</string>
 Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczonym punkcie, na przykład warstwa sklepów."</string>
     <string name="quest_crossing_kerb_height_title">"Jaka jest wysokość krawężników na tym przejściu?"</string>
     <string name="quest_maxheight_sign_title">"Jakie jest ograniczenie wysokości tutaj?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Jakie jest ograniczenie wysokości pod mostem?"</string>
     <string name="quest_leave_new_note_as_answer">"W takim przypadku musisz zostawić notatkę, w której wyjaśnisz sytuację."</string>
     <string name="quest_drinking_water_type_title2">"Czy woda pitna jest tu dostępna? Jeśli tak jakie jest jej źródło?"</string>
     <string name="quest_is_amenity_inside_title">"Czy jest to w środku budynku?"</string>

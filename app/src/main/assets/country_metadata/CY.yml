@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Euronet, Bank of Cyprus, Hellenic Bank, Türkiye İş Bankası, Ziraat Bankası, JCC, İş Bankası, Near East Bank, Garanti Bankası, Türk Bankası, Bankamatik, İktisat Bank, Ziraat, Türkiye İş Bankası Bankamatik, Türk Bankasi, Turk Bankasi, Société Générale, Halkbank, Garanti]
+atmOperators: [Euronet, Bank of Cyprus, Hellenic Bank, Türkiye İş Bankası, Ziraat Bankası, JCC, İş Bankası, Near East Bank, Garanti Bankası, Türk Bankası, Bankamatik, İktisat Bank, Ziraat, Türkiye İş Bankası Bankamatik, Türk Bankasi, Turk Bankasi, Société Générale, Koopbank, Halkbank, Garanti]
 chargingStationOperators: [EAC, Lidl]
 clothesContainerOperators: [Red Cross]
 defaultSpeedLimitHasUrbanOrRural: true

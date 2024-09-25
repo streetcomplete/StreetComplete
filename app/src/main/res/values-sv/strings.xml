@@ -1306,7 +1306,6 @@ Saknad data visas alltid i rött."</string>
 Vissa extralager låter dig också lägga till ny data på hårkorsets position, t.ex. lägga till saknade adresser."</string>
     <string name="quest_crossing_kerb_height_title">"Hur höga är kanterna i den här korsningen?"</string>
     <string name="quest_maxheight_sign_title">"Vilken maxhöjd är skyltad här?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Vilken maxhöjd är skyltad under bron?"</string>
     <string name="quest_leave_new_note_as_answer">"I så fall behöver du lämna en anteckning som förklarar det hela."</string>
     <string name="quest_drinking_water_type_title2">"Finns det drickvatten här? Vilken källa?"</string>
     <string name="quest_is_amenity_inside_title">"Är det här inuti en byggnad?"</string>
@@ -1409,4 +1408,5 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="user_profile_all_time_title">"Totalt"</string>
     <string name="user_statistics_country_rank2">"Rang i %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Det är bara en trästubbe"</string>
+    <string name="quest_board_name_title">"Vad har den här informationstavlan för rubrik?"</string>
 </resources>

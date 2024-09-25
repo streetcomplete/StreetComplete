@@ -1304,7 +1304,6 @@ Podatki so označeni z različnimi barvami, kar ti omogoča dober preged nad že
 Poleg tega ti nekatere prekrivne plasti omogočajo dodajanje novih podatkov na položaj, prikazan s križem, kot npr. plast z naslovi."</string>
     <string name="quest_crossing_kerb_height_title">"Kakšna je višina robnikov pri tem prehodu?"</string>
     <string name="quest_maxheight_sign_title">"Kakšna je tukaj označena omejitev višine?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Kakšna je pod mostom označena omejitev višine?"</string>
     <string name="quest_leave_new_note_as_answer">"V tem primeru morate pustiti opombo z opisom situacije."</string>
     <string name="quest_drinking_water_type_title2">"Je tu na voljo pitna voda? Če je, kakšen je njen vir?"</string>
     <string name="quest_is_amenity_inside_title">"Je v notranjosti stavbe?"</string>

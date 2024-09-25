@@ -1301,7 +1301,6 @@
 به‌علاوه، برخی از پوشش‌ها به شما امکان می‌دهند داده‌های جدیدی را در موقعیت یک خط تیره نمایش داده شده اضافه کنید، مانند همپوشانی آدرس‌ها."</string>
     <string name="quest_crossing_kerb_height_title">"ارتفاع حاشیه‌های این گذرگاه چقدر است؟"</string>
     <string name="quest_maxheight_sign_title">"چه محدودیت ارتفاعی در اینجا مشخص شده است؟"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"چه محدودیت ارتفاعی در زیر پل مشخص شده است؟"</string>
     <string name="quest_leave_new_note_as_answer">"در این مورد، باید یادداشتی بگذارید که در آن شرایط موقعیت را توضیح دهید."</string>
     <string name="quest_drinking_water_type_title2">"آیا در اینجا آب آشامیدنی در دسترس است؟ اگر بله، منبع آن چیست؟"</string>
     <string name="quest_is_amenity_inside_title">"آیا این مورد داخل ساختمان است؟"</string>

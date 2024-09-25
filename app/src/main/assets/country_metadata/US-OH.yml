@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [American Crypto, PNC Bank, Fifth Third Bank, Huntington Bank, KeyBank, Chase, Huntington, U.S. Bank, Citizens Bank, PNC, First United Bank, Bank of America, Athena Bitcoin, The Huntington National Bank, The Community Bank, First National Bank, First Financial Bank, Coinhub, Charter One, Ohio University Credit Union, Glass City Federal Credit Union, First-Knox National Bank, Cardtronics]
+atmOperators: [American Crypto, PNC Bank, Fifth Third Bank, Huntington Bank, KeyBank, Chase, Huntington, U.S. Bank, Citizens Bank, PNC, First United Bank, Bank of America, Athena Bitcoin, The Huntington National Bank, The Community Bank, First National Bank, First Financial Bank, Coinhub, Charter One, Ohio University Credit Union, Glass City Federal Credit Union, First-Knox National Bank, Fifth Third, Cardtronics]
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Electrify America, Tesla Motors, Shell, Bowling Green State University, Kent State University, latitude apartments, Wickliffe City School District, University of Cincinnati, Miami University, Easton Town Center]
 clothesContainerOperators: [Planet Aid, Paralyzed Veterans of America]
 defaultSpeedLimitHasUrbanOrRural: true

@@ -1304,7 +1304,6 @@ Os dados em falta são sempre apresentados a vermelho."</string>
 Além disso, algumas camadas, como a camada de endereços, permitem adicionar novos dados na posição da mira."</string>
     <string name="quest_crossing_kerb_height_title">"Qual é a altura dos passeios neste cruzamento?"</string>
     <string name="quest_maxheight_sign_title">"Qual é o limite de altura indicado aqui?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Qual é o limite de altura por baixo da ponte indicado aqui?"</string>
     <string name="quest_leave_new_note_as_answer">"Neste caso, é necessário que deixe uma nota a explicar a situação."</string>
     <string name="quest_drinking_water_type_title2">"Existe aqui água potável? Se sim, qual é a sua origem?"</string>
     <string name="quest_is_amenity_inside_title">"Isto está dentro de um edifício?"</string>

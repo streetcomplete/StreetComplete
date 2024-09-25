@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banco24Horas, Banco do Brasil, Bradesco, Banco 24 Horas, Caixa Econômica Federal, Itaú Unibanco, Banrisul, Banco 24 horas, Banco24horas, 24 Horas, Saque e Pague, Santander, Banco 24H, Tecnologia Bancária S.A., Banco 24h, Banco 24Horas, BRB, Sicredi, Multibanco, Sicoob, 24 horas, Banese, banco24horas, Banco Santander, TecBan, Shitcoins Club, Banco24h, Banco24H, Viacredi, Shitcoins.club, Caixa 24 Horas, Banco24, Banco 24h., Banco 24, banco 24h, HSBC, Dinho, Caixa 24h, Banestes, Banco 24Hrs, Banco 24 horas., 24horas, 24H]
+atmOperators: [Banco24Horas, Banco do Brasil, Bradesco, Banco 24 Horas, Caixa Econômica Federal, Itaú Unibanco, Banrisul, Banco 24 horas, Banco24horas, 24 Horas, Saque e Pague, Santander, Banco 24H, Tecnologia Bancária S.A., Banco 24h, Banco 24Horas, BRB, Sicredi, Multibanco, Sicoob, Banco Santander, 24 horas, Banese, banco24horas, TecBan, Shitcoins Club, Banco24h, Banco24H, Viacredi, Shitcoins.club, Caixa 24h, Caixa 24 Horas, Banco24, Banco 24h., Banco 24, banco 24h, HSBC, Dinho, Banestes, Banco 24Hrs, Banco 24 horas., 24horas, 24H]
 centerLineStyle: yellow
 chargingStationOperators: [Ipiranga, Sat, Petrobras, CPFL, ABB, Taurus, Shell, Petrobrás, Ferreira Costa, EDP, Copel, BR]
 defaultSpeedLimitHasUrbanOrRural: true

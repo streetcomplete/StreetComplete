@@ -1305,7 +1305,6 @@ Manglende data vises alltid i rødt."</string>
 I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset vises, for eksempel adressekartlaget."</string>
     <string name="quest_crossing_kerb_height_title">"Hvor høye er fortauskantene ved denne overgangen?"</string>
     <string name="quest_maxheight_sign_title">"Hva er maksimal høyde her?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Hva er maksimal høyde under broen?"</string>
     <string name="quest_leave_new_note_as_answer">"I så fall må du lage en merknad hvor du forklarer situasjonen."</string>
     <string name="quest_drinking_water_type_title2">"Er drikkevann tilgjengelig her? I så fall, hva slags kilde?"</string>
     <string name="quest_is_amenity_inside_title">"Er dette inni en bygning?"</string>

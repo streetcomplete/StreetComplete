@@ -1298,7 +1298,6 @@ A hiányzó adatok mindig pirossal vannak kiemelve."</string>
 Ezenkívül egyes rétegek, például a cím réteg, új adatok hozzáadását is lehetővé teszik, a célkereszt pozíciójában."</string>
     <string name="quest_crossing_kerb_height_title">"Milyen magas a járdaszegély ennél a kereszteződésnél?"</string>
     <string name="quest_maxheight_sign_title">"Mekkora magassági korlátozás van jelezve?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Milyen magassági korlátozás van jelezve a híd alatt?"</string>
     <string name="quest_leave_new_note_as_answer">"Ebben az esetben üzenetet kell hagynod, amelyben elmagyarázod a helyzetet."</string>
     <string name="quest_drinking_water_type_title2">"Van itt ivóvíz? Ha igen, mi a forrása?"</string>
     <string name="quest_is_amenity_inside_title">"Egy épületen belül van?"</string>
@@ -1380,4 +1379,12 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="separate_cycleway_footway_allowed_sign">"Gyalogút, de a tábla engedélyezi a kerékpározást"</string>
     <string name="quest_bicycle_parking_type_floor">"Kijelölt terület"</string>
     <string name="link_osmapp_description">"Egy térkép különféle rétegekkel, például hegymászáshoz vagy síeléshez"</string>
+    <string name="action_back">"Vissza"</string>
+    <string name="action_clear">"Törlés"</string>
+    <string name="action_more">"Tovább"</string>
+    <string name="action_open_in_browser">"Megnyitás böngészőben"</string>
+    <string name="pref_title_language_select2">"Nyelv"</string>
+    <string name="questList_disabled_by_default">"Alapból kikapcsolva"</string>
+    <string name="about_title_intro">"Bevezető mutatása"</string>
+    <string name="about_category_help">"Súgó"</string>
 </resources>

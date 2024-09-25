@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [ko-Latn]
 advisorySpeedLimitSignStyle: white
-atmOperators: [신한은행, 우리은행, KB국민은행, 하나은행, NH농협은행, IBK기업은행, 농협, 국민은행, 광주은행, 농협은행, 부산은행, 기업은행, KEB, KB, Citibank, 경남은행, Woori Bank, Lotte, IBK, Hana Bank]
+atmOperators: [신한은행, 우리은행, KB국민은행, 하나은행, NH농협은행, 농협, IBK기업은행, 국민은행, 광주은행, 농협은행, 부산은행, 기업은행, KEB, KB, Citibank, 경남은행, Woori Bank, Lotte, IBK, Hana Bank]
 centerLineStyle: yellow
 chargingStationOperators: [Tesla, 'Tesla, Inc.', 환경부, (주)신세계아이앤씨, 이마트 광교점(야외1층 주차장), SK일렉링크, SK V1 모터스, 성균관대학교 자연과학캠퍼스, 대영채비, 경기도 체육회관, 한전 KDN 경기지역본부, 한국전력, 수원벤처밸리2, 경기전력관리처, 경기도경제과학진흥원, 환경부(한국자동차환경협회), 현대자동차, 한국전기안전공사 경기지역본부, 중부지방국세청, 이마트 서수원점, 율면실내체육관, 영화동행정복지센터, 영통구청, 숭실대학교, 수원컨벤션센터, 수원종합운동장, 수원유통센터, 수원시청, 수원시 이마트TR(수원점), 수원시 도이치오토월드, 수원도시공사, 수원 현대하우징(주)커낼파크오피스텔, 수도권기상청 전기차충전소, 세류역 환승주차장, 롯데마트 권선점, 동남보건대학교, 권선구청, 광교테크노프라자, 고등동 행정복지센터, 경기도인재개발원, 경기도교통연수원, (주) SK일렉링크]
 defaultSpeedLimitHasUrbanOrRural: true

@@ -1289,7 +1289,6 @@
 Освен това някои наслагвания ви позволяват да добавяте нови данни на позицията на показан мерник, като например наслагването на адреси."</string>
     <string name="quest_crossing_kerb_height_title">"Каква е височината на бордюрите на това пресичане?"</string>
     <string name="quest_maxheight_sign_title">"Какво ограничение на височината е посочено тук?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Каква граница на височината е посочена под моста?"</string>
     <string name="quest_leave_new_note_as_answer">"В този случай трябва да оставите бележка, в която да обясните ситуацията."</string>
     <string name="quest_drinking_water_type_title2">"Тук има ли питейна вода? Ако е така, какъв е източникът му?"</string>
     <string name="quest_is_amenity_inside_title">"Това вътре в сграда ли е?"</string>

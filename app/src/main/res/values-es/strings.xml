@@ -1291,7 +1291,6 @@ Los datos se resaltan en diferentes colores para brindarte una buena visión gen
 Algunas capas también permiten meter datos que faltan a través del marcador con forma de punto de mira, como la capa de «direcciones»."</string>
     <string name="quest_crossing_kerb_height_title">"¿Cuál es la altura de los bordillos en este cruce?"</string>
     <string name="quest_maxheight_sign_title">"¿Cuál es el límite de altura máxima de este sitio?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"¿Cuál es límite de altura indicado para circular bajo el puente?"</string>
     <string name="quest_leave_new_note_as_answer">"Si es así tendrás que dejar una nota explicando la situación."</string>
     <string name="quest_drinking_water_type_title2">"¿Aquí hay agua potable? ¿Cuál es su origen?"</string>
     <string name="quest_is_amenity_inside_title">"¿Esto está dentro de algún edificio?"</string>

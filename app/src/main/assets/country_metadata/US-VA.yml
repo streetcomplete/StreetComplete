@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Wells Fargo, American Crypto, Bank of America, Truist, PNC Bank, Navy Federal Credit Union, Capital One, SunTrust, BB&T, MetaBank, Citibank, Venco, Chase, Woodforest National Bank, First National Bank, Allpoint, Wachovia, United Bank, Union Bank, USAA, 'FCTI, Inc.', Euronet, Cardtronics, Blue Eagle Credit Union, Atlantic Union Bank]
-chargingStationOperators: ['Tesla, Inc.', ChargePoint, Volta, EVgo, Electrify America, Blink, 7-Eleven, eVgo, Libbie Mill, Corporate Research Center, Shell Recharge Solutions, Refuge Inn]
+chargingStationOperators: ['Tesla, Inc.', ChargePoint, Volta, EVgo, Electrify America, Blink, 7-Eleven, eVgo, Libbie Mill, Greenspot, Corporate Research Center, Shell Recharge Solutions, Refuge Inn]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Hub]
