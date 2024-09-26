@@ -1592,14 +1592,14 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
     <string name="quest_surface_value_ground">"Ground (generic)"</string>
     <string name="quest_surface_value_asphalt">"Asphalt"</string>
-    <string name="quest_surface_value_compacted">"Compacted"</string>
+    <string name="quest_surface_value_compacted">"Compacted gravel"</string>
     <string name="quest_surface_value_concrete">"Concrete"</string>
     <string name="quest_surface_value_dirt">"Dirt"</string>
     <string name="quest_surface_value_mud">"Persistent mud"</string>
     <string name="quest_surface_value_fine_gravel">"Fine gravel"</string>
     <string name="quest_surface_value_grass">"Grass"</string>
     <string name="quest_surface_value_grass_paver">"Grass paver"</string>
-    <string name="quest_surface_value_gravel">"Gravel"</string>
+    <string name="quest_surface_value_gravel">"Coarse gravel"</string>
     <string name="quest_surface_value_paving_stones">"Paving stones"</string>
     <string name="quest_surface_value_pebblestone">"Pebbles"</string>
     <string name="quest_surface_value_sand">"Sand"</string>
