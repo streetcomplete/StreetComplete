@@ -36,8 +36,8 @@ class CustomQuestForm : AbstractExternalSourceQuestForm() {
                 AnswerItem(R.string.quest_custom_quest_add_node) {
                     val f = CreatePoiFragment.createWithPrefill(t, p, questKey)
                     parentFragmentManager.commit {
-                        add(id, f, null)
-                        addToBackStack(null)
+                        replace(id, f, "bottom_sheet")
+                        addToBackStack("bottom_sheet")
                     }
                     (parentFragment as? MainFragment)?.offsetPos(p)
                 }
