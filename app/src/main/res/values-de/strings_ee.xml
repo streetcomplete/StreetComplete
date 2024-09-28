@@ -215,7 +215,7 @@
     <string name="pref_show_nearby_quests_title">Aufgaben in der Nähe anzeigen</string>
     <string name="pref_disable_navigation_mode_summary">Deaktiviert den Modus zum Kippen und automatischen Drehen der Karte</string>
     <string name="quest_poi_seating_title">POI: Sitzgelegenheiten</string>
-    <string name="quest_seating_veranda">Auf einer Veranda</string>
+    <string name="quest_seating_veranda">Auf einer Veranda (überdacht, kann leicht erhöht sein)</string>
     <string name="pref_quest_settings_preset_summary">Wenn diese Option aktiviert ist, gelten die Aufgabeneinstellungen nur für die aktuelle Voreinstellung der Aufgabe</string>
     <string name="pref_overlay_quick_selector_title">Overlay-Schnellauswahl anzeigen</string>
     <string name="pref_gpx_track_enable">GPX-Track anzeigen</string>
@@ -228,7 +228,7 @@
     <string name="pref_show_next_quest_title">Nächste Aufgabe sofort anzeigen</string>
     <string name="quest_settings_building_levels_mandatory_roof">In den meisten Ländern ist die Eingabe von Dachebenen erforderlich (Standard)</string>
     <string name="show_nearby_quests_visible">Nur aktivierte Aufgabentypen anzeigen</string>
-    <string name="quest_seating_terrace">Auf einer Terrasse</string>
+    <string name="quest_seating_terrace">Auf einer Terrasse (nicht überdacht, nicht im Innenhof)</string>
     <string name="quest_poi_misc_title">POI: Sonstiges</string>
     <string name="quest_poi_vending_title">POI: Verkaufsautomaten</string>
     <string name="quest_artwork_architecture">Architektur</string>
@@ -369,13 +369,13 @@
     <string name="advanced_resurvey_hint_date">Format verwenden: YYYY-MM-DD</string>
     <string name="pref_tile_source_title">Kachelquelle für Satelliten-/Luftbilder</string>
     <string name="quest_seating_pedestrian_zone">In einer Fußgängerzone</string>
-    <string name="quest_seating_balcony">Auf einem Balkon</string>
+    <string name="quest_seating_balcony">Auf einem Balkon (nicht im Erdgeschoss)</string>
     <string name="tag_editor_duplicate_key">Änderung des Zweitschlüssels %s ignorieren</string>
     <string name="quest_monitor_permission_warning">Damit der Monitor für die nahe gelegene Aufgabe funktioniert, ist eine Genehmigung für den Hintergrundstandort erforderlich</string>
     <string name="pref_update_local_statistics_summary">Deaktivierung beschleunigt den Upload und stoppt Erfolgsmeldungen</string>
     <string name="quest_outdoor_seating_name_title">Welche Art von Außenbestuhlung gibt es hier\?</string>
     <string name="access_manager_button_add">Hinzufügen</string>
-    <string name="quest_seating_patio">In einem Innenhof</string>
+    <string name="quest_seating_patio">In einem Innenhof (nicht überdacht)</string>
     <string name="pref_disable_navigation_mode_title">Navigationsmodus deaktivieren</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Bedingung entfernen</string>
     <string name="quest_name_brand">Es hat einen Markennamen…</string>
@@ -616,4 +616,7 @@
     <string name="quest_valves_dunlop">DV/NV: Dunlop / Woods</string>
     <string name="quest_valves_schrader">AV: Schrader / Autoventil</string>
     <string name="quest_valves_regina">RV: Regina / Italienisches Ventil</string>
+    <string name="quest_saunaAvailability_title">Gibe es hier eine Sauna?</string>
+    <string name="quest_bicycle_parking_type_saddleholder">Sattelhalter</string>
+    <string name="quest_bicycle_parking_type_safeloops">Vorderrad-Rahmen-Halter (sichert Felge und Rahmen)</string>
 </resources>

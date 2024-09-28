@@ -125,7 +125,7 @@
     <string name="quest_shelter_type_picnic_shelter">Piknik</string>
     <string name="quest_shelter_type_gazebo">Altán</string>
     <string name="quest_shelter_type_sun_shelter">Sluneční přístřešek</string>
-    <string name="quest_seating_patio">Veranda (nezastřešená)</string>
+    <string name="quest_seating_patio">Na terase (nezastřešené, na nádvoří)</string>
     <string name="quest_buildingColour_title">Jakou má budova celkově barvu?</string>
     <string name="quest_buildingPartColour_title">Jakou má tato část budovy celkově barvu?</string>
     <string name="quest_artwork_title">Co je toto za umělecké dílo?</string>
@@ -251,4 +251,77 @@
     <string name="pref_hide_button_summary">Kliknutí skryje úkol dočasně, dlouhé stisknutí ho skryje trvale</string>
     <string name="pref_manual_download_cache_title">Vždy stahovat nová data</string>
     <string name="pref_update_local_statistics_summary">Vypnutí zrychlí nahrávání ale zastaví zprávy o úspěších</string>
+    <string name="pref_offset_fix_title2">Odstranit odsazení bílých teček</string>
+    <string name="pref_show_nearby_quests_summary">Umožní přepínat mezi okolními úkoly když je úkol zobrazen</string>
+    <string name="show_nearby_quests_distance">Zobrazit úkoly v dosahu této vzdálenosti (omezeno na 10 metrů)</string>
+    <string name="pref_search_more_languages_summary">Vyhledávání zobrazí výsledky ve všech systémových a lokálních jazycích</string>
+    <string name="pref_overlay_quick_selector_title">Zobrazit rychlé vybírání prekryvných vrstev</string>
+    <string name="pref_create_node_show_keyboard_title">Automaticky zobrazit klávesnici při přidávání bodu</string>
+    <string name="import_export_custom_overlays_select">Vyberte překryvné vrstvy na export</string>
+    <string name="pref_custom_title">Načíst soubor s vlastními úkoly</string>
+    <string name="pref_advanced_resurvey_summary">Vynutit opakování průzkumu pro vybrané tagy</string>
+    <string name="advanced_resurvey_hint_keys">Oddělte více klíčů pomocí čárky</string>
+    <string name="advanced_resurvey_hint_date">Použijte formát YYYY-MM-DD</string>
+    <string name="pref_day_night_title">Filtr úkolů dle denní doby</string>
+    <string name="day_night_ignore">Ignorovat denní dobu</string>
+    <string name="day_night_priority">Zvýšit prioritu úkolů vhodných pro momentální denní dobu</string>
+    <string name="day_night_visibility">Nezobrazovat úkoly nevhodné pro momentální denní dobu</string>
+    <string name="pref_quest_monitor_title">Upozornit na úkoly v okolí</string>
+    <string name="pref_quest_monitor_summary">Sledovat polohu, když je aplikace v pozadí, vyjma toho, když je ukončena tlačítkem zpět</string>
+    <string name="pref_expert_mode_message">Toto vám umožní zobrazit úkoly přidané v SCEE a způsoby
+\n<li>přímé úpravy tagů</li>
+\n<li>přesouvat body které jsou součástí cest nebo relací</li>
+\n<li>mazat libovolné volné body</li>
+\n<li>uprovovat prvky, které měly být blokovány poznámkou</li>
+\n<li>přidávat volné body kamkoliv</li>
+\n<li>měnit výběr prvků u úkolů</li>
+\n
+\nTo je stále méně než co vám umožní jiné editory, ale při nepozornosti může dojít k rozbití dat způsoby, kterými to ve StreetComplete nejde. Prosím dbejte na to, že zapnutím pokročilého režimu na vás padá mnohem větší zodpovědnost za vaše změny.
+\n
+\nProsím, zapněte toto nastavení pouze pokud máte s OSM zkušenost i mimo StreetComplete a uvědomujete si, co děláte. \u0020</string>
+    <string name="import_export_custom_overlays">Vlastní překryvné vrstvy</string>
+    <string name="pref_advanced_resurvey_title">Pokročilý opakovaný průzkum</string>
+    <string name="quest_settings_sidewalk_distance_button">Vzdálenost</string>
+    <string name="quest_settings_what_to_edit">Co nastavit?</string>
+    <string name="quest_generic_surface_button">Odpovědi s obecnými povrchy</string>
+    <string name="quest_generic_surface_message">Povolit odpovědi s obecnými povrchy bez vyžadování poznámky?</string>
+    <string name="quest_settings_osmose_level_high">Vysoká</string>
+    <string name="quest_settings_osmose_level_medium">Střední</string>
+    <string name="quest_settings_osmose_level_low">Malá</string>
+    <string name="quest_settings_fixme_title">Vyberte které fixme hodnoty ignorovat</string>
+    <string name="element_selection_button">Výběr prvků</string>
+    <string name="quest_settings_highlight_changes_button">Zvýraznit změny</string>
+    <string name="quest_order_normal">Zpět na normální řazení úkolů</string>
+    <string name="quest_settings_leaf_type_single_tree_no">Pouze u těch zaznačených cestou nebo oblastí</string>
+    <string name="quest_order_reverse">Obrátit pořadí úkolů</string>
+    <string name="quest_settings_leaf_type_single_tree_yes">Ano</string>
+    <string name="quick_switch_preset">Přepnout předvolbu</string>
+    <string name="quest_osmose_false_positive">Nahlásit falešně pozitivní</string>
+    <string name="quest_service_building_sewerage_description">Zařízení související se sběrem, přenosem nebo zpracováním odpadní vody</string>
+    <string name="quest_service_building_monitoring_station">Pozorovací stanice</string>
+    <string name="quest_service_building_other">Jiná servisní budova</string>
+    <string name="quest_seating_terrace">Na terase (nezastřešené, NE na nádvoří)</string>
+    <string name="pref_hide_keyboard_summary">Skryje klávesnici než je poznámka doopravdy vytvořena (umožní ověření pozice)</string>
+    <string name="quest_monitor_net">Aktivně se dožadovat pozice získané na bázi připojení k síti?</string>
+    <string name="quest_monitor_active_request">Aktivní dožadování se pozice zvýší využití baterky.</string>
+    <string name="pref_hide_overlay_quests">Skrýt úkoly specifické pro překryvnou vrstvu</string>
+    <string name="theme_dark_contrast">Tmavý (zvýšený kontrast)</string>
+    <string name="quest_monitor_gps">Aktivně se dožadovat GPS pozice?</string>
+    <string name="quest_service_building_type_reservoir_description">Umělá vodní nádrž zadržující pitnou vodu</string>
+    <string name="quest_service_building_type_pump_description">Zařízení obsahující pumpy na přečerpávání vody z jednoho místa na druhé</string>
+    <string name="quest_service_building_telecom_exchange">Telekomunikační ústředna</string>
+    <string name="quest_service_building_telecom_exchange_description">Místo kde se uživatelé pevné linky připojují k telekomunikační službě</string>
+    <string name="pref_recent_answers_first_min_lines">Přesunout nedávné odpovědi dopředu</string>
+    <string name="pref_caps_word_name_input">Zvětšit první písmeno u všech slov při zadávání jmen</string>
+    <string name="pref_recent_answers_first_min_lines_message">Přesunout nedávné odpovědi dopředu pokud formulář úkolu obsahuje více než tento počet řad obrázků</string>
+    <string name="quest_monitor_permission_warning">Pro upozornění na okolní úkoly je vyžadováno oprávnění k poloze na pozadí</string>
+    <string name="quest_monitor_search_radius_text">Nastavte vzdálenost ve které hledat úkoly v okolí. Mějte na vědomí že úkoly s lehce větší vzdálenosti mohou být také nalezeny. Lokace s horší přesností než je zadaná hodnota budou ignorovány.</string>
+    <string name="quest_settings_leaf_type_single_tree_message">Ptát se na typ list i u jednotlivých stromů?</string>
+    <string name="quest_service_building_railway_ventilation_shaft">Železniční ventilace</string>
+    <string name="advanced_resurvey_message_keys">Vždy prozkoumat tyto klíče, pokud není uvedeno datum poslední kontroly. Datum poslední kontroly bude vždy přidáno při zodpovězení souvisejících úkolů</string>
+    <string name="quest_settings_osmose_level_title">Vyberte úroveň závažnosti problému, které se budou stahovat a zobrazovat</string>
+    <string name="quest_settings_per_preset_rescan">Pro správné aplikování všech změněných nastavení úkolů je třeba znovu vyžádat úkoly.</string>
+    <string name="quest_service_building_railway_wash">Myčka železničních vozů</string>
+    <string name="quest_generic_surface_yes">Povolit bez vyžadování poznámky</string>
+    <string name="quest_generic_surface_no">Pouze s poznámkou (základní)</string>
 </resources>

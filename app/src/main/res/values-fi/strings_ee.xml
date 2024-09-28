@@ -61,4 +61,5 @@
     <string name="pref_caps_word_name_input">Isot alkukirjaimet joka sanassa nimiä syöttäessä</string>
     <string name="quest_shelter_type_title">Minkälainen katos tämä on?</string>
     <string name="quest_shelter_type_disabled_msg">Tämä tehtävä on oletusarvoisesti pois käytöstä, koska siihen ei ole helppo vastata. Katoksen tyyppi täytyy valita ehdotuksista, jotka on otettu yleisimmistä vastauksista, ja ne on usein vaikea erottaa toisistaan.</string>
+    <string name="quest_saunaAvailability_title">Onko täällä sauna?</string>
 </resources>

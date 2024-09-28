@@ -176,7 +176,7 @@
     <string name="quest_service_building_railway_wash_description">En bygning, hvor der findes et vaskeanlæg til tog</string>
     <string name="quest_service_building_ventilation">Ventilationsskakt</string>
     <string name="quest_seating_pedestrian_zone">I et fodgængerområde</string>
-    <string name="quest_seating_veranda">På en veranda</string>
+    <string name="quest_seating_veranda">På en veranda (under tag, kan være en smule hævet over jorden)</string>
     <string name="quest_artwork_bust">Buste</string>
     <string name="quest_artwork_stone">Sten</string>
     <string name="quest_artwork_fountain">Fontæne</string>
@@ -281,9 +281,9 @@
     <string name="quest_street_cabinet_street_lighting">Gadebelysning</string>
     <string name="quest_seating_street">I et gadeareal</string>
     <string name="quest_seating_sidewalk">På fortovet</string>
-    <string name="quest_seating_patio">I en patio/indre gård</string>
-    <string name="quest_seating_terrace">På en terrasse</string>
-    <string name="quest_seating_balcony">På en balkon</string>
+    <string name="quest_seating_patio">I en patio (uden tag, indre gård)</string>
+    <string name="quest_seating_terrace">På en terrasse (uden tag, ikke indre gård)</string>
+    <string name="quest_seating_balcony">På en balkon (ikke i stueetage)</string>
     <string name="quest_seating_roof">På et tag</string>
     <string name="quest_seating_garden">I et haveområde</string>
     <string name="quest_seating_beach">Ved en strand</string>
@@ -614,4 +614,7 @@
     <string name="quest_valves_dunlop">DV/NV: Dunlop / Woods</string>
     <string name="quest_valves_schrader">AV: Schrader / Auto-ventil</string>
     <string name="quest_valves_regina">RV: Regina / Italiensk</string>
+    <string name="quest_saunaAvailability_title">Er der en sauna her?</string>
+    <string name="quest_bicycle_parking_type_safeloops">Hjul- og låsebøjle (støtter hjul og ramme)</string>
+    <string name="quest_bicycle_parking_type_saddleholder">Sadelholder</string>
 </resources>

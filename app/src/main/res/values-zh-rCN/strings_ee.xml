@@ -98,7 +98,7 @@
     <string name="quest_artwork_statue">雕像</string>
     <string name="show_nearby_quests_distance">显示该距离内的任务（限制为 10 米）</string>
     <string name="pref_quest_monitor_summary">应用在后台运行时监测位置，使用返回按钮的后台运行时除外</string>
-    <string name="quest_seating_parklet">挨着路缘，或曾经停车的地方</string>
+    <string name="quest_seating_parklet">路边，或曾经停车的地方</string>
     <string name="quest_poi_traffic_title">兴趣点：交通</string>
     <string name="quest_settings_element_selection">设置符合本任务条件的元素。<a href="https://github.com/Helium314/SCEE/blob/modified/CONTRIBUTING_A_NEW_QUEST.md#element-selection">单击此处</a>可在浏览器中打开有关元素选择语法的信息。</string>
     <string name="pref_tree_custom_quest_summary">有关详情，请参阅启用任务时的信息</string>
@@ -153,7 +153,7 @@
     <string name="pref_show_next_quest_title">立即显示下一个任务</string>
     <string name="quest_settings_building_levels_mandatory_roof">要求在大多数国家计入屋顶楼层（默认值）</string>
     <string name="show_nearby_quests_visible">只显示已启用的任务类型</string>
-    <string name="quest_seating_terrace">在露天平台</string>
+    <string name="quest_seating_terrace">在露台上（无屋顶，非庭院）</string>
     <string name="quest_poi_misc_title">兴趣点：杂项</string>
     <string name="quest_poi_vending_title">兴趣点：出售</string>
     <string name="quest_artwork_architecture">建筑结构</string>
@@ -266,11 +266,11 @@
     <string name="advanced_resurvey_hint_date">使用格式：YYYY-MM-DD</string>
     <string name="pref_tile_source_title">卫星/空中图像的瓦片来源</string>
     <string name="quest_seating_pedestrian_zone">在步行区</string>
-    <string name="quest_seating_balcony">在阳台上</string>
+    <string name="quest_seating_balcony">在阳台上（不在一楼）</string>
     <string name="quest_monitor_permission_warning">附近的任务监测需要后台位置权限才能工作</string>
     <string name="pref_update_local_statistics_summary">禁用可加速上传并停止成就信息</string>
     <string name="quest_outdoor_seating_name_title">这里是哪类露天座位？</string>
-    <string name="quest_seating_patio">在庭院里</string>
+    <string name="quest_seating_patio">在庭院里（无屋顶，庭院）</string>
     <string name="pref_create_node_show_keyboard_title">添加节点时自动显示键盘</string>
     <string name="pref_disable_navigation_mode_title">禁用导航模式</string>
     <string name="pref_screen_display">显示</string>
@@ -376,7 +376,7 @@
     <string name="quest_generic_answer_show_edit_tags">显示/编辑标签</string>
     <string name="quest_barrier_locked_title">这道屏障（通常）是锁着的吗？</string>
     <string name="quest_guidepost_sports_answer_simple_description">这只是个简单的路标，不含具体的运动项目。</string>
-    <string name="quest_seating_veranda">阳台/门廊上</string>
+    <string name="quest_seating_veranda">在阳台/门廊上（有屋顶，可以略高于地面）</string>
     <string name="quest_disabled_msg_railway_platform_ref">请注意，维基中并没有明确说明使用哪个标签最好，因此要由用户自己决定。请在任务设置中选择 \"ref\"（默认）或 \"local_ref\"。
 \n 如果一个站台上有两条轨道，则使用分号分隔开数值，例如：2;3</string>
     <string name="custom_overlay_highlight_missing">高亮显示缺少的数据</string>
@@ -613,4 +613,7 @@
     <string name="quest_crossing_marking_value_lines">线条</string>
     <string name="quest_crossing_marking_value_ladder">梯形线</string>
     <string name="quest_street_cabinet_transport_management">运输管理</string>
+    <string name="quest_bicycle_parking_type_saddleholder">自行车鞍座</string>
+    <string name="quest_saunaAvailability_title">这里有桑拿吗？</string>
+    <string name="quest_bicycle_parking_type_safeloops">停车架（支撑车轮和车架）</string>
 </resources>

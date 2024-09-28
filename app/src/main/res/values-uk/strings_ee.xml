@@ -283,9 +283,9 @@
     <string name="hide_button">Приховати</string>
     <string name="quest_artwork_stone">Камінь</string>
     <string name="quest_artwork_bust">Погруддя</string>
-    <string name="quest_seating_veranda">На веранді/ґанку</string>
+    <string name="quest_seating_veranda">На веранді/ґанку (крита, може бути трохи над землею)</string>
     <string name="quest_artwork_fountain">Фонтан</string>
-    <string name="quest_seating_terrace">На терасі</string>
+    <string name="quest_seating_terrace">На терасі (без даху, не внутрішній двір)</string>
     <string name="quest_artwork_architecture">Архітектура</string>
     <string name="restriction_overlay_sign_give_way">Дати дорогу</string>
     <string name="quest_monitor_found">%d квестів поблизу, найближче:</string>
@@ -300,8 +300,8 @@
     <string name="quest_cuisine_title">Страви якої кухні пропонують у цьому закладі\? Використовуйте пропоновані теги OSM!</string>
     <string name="quest_artwork_mosaic">Мозаїка</string>
     <string name="quest_seating_pedestrian_zone">У пішохідній зоні</string>
-    <string name="quest_seating_balcony">На балконі</string>
-    <string name="quest_seating_patio">У дворику</string>
+    <string name="quest_seating_balcony">На балконі (не на першому поверсі)</string>
+    <string name="quest_seating_patio">У дворику (без даху, внутрішній двір)</string>
     <string name="restriction_overlay_remove_conditional_restrictions">Скинути умови</string>
     <string name="quest_artwork_sculpture">Скульптура</string>
     <string name="custom_overlay_delete">Справді видалити %s\?</string>
@@ -392,4 +392,5 @@
     <string name="quest_maxheight_answer_noSign_question_no">Високі вантажівки не проїдуть</string>
     <string name="action_all_quests">Показати всі квести</string>
     <string name="quest_outdoor_seating_name_title">Які місця на вулиці є в цьому закладі?</string>
+    <string name="quest_saunaAvailability_title">Чи є тут сауна?</string>
 </resources>

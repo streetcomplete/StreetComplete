@@ -614,4 +614,7 @@
     <string name="quest_caravanSiteType_village">Village - une étape à proximité d\'un petit village.</string>
     <string name="quest_valves_title">Quels types de valves est disponibles ici ?</string>
     <string name="quest_caravanSiteType_restaurant">Restaurant - dans un restaurant ou un café, souvent sur le parking.</string>
+    <string name="quest_saunaAvailability_title">Y a-t-il un sauna ici ?</string>
+    <string name="quest_bicycle_parking_type_saddleholder">Porte-selle</string>
+    <string name="quest_bicycle_parking_type_safeloops">Boucles de sécurité (supportent la roue et le cadre)</string>
 </resources>

@@ -1,0 +1,3 @@
+- ask ref for golf holes, by @FloEdelmann (#665)
+- improve text for outdoor seating type, by @vfosnar (#662)
+- fix adding node in custom quest (#664)
