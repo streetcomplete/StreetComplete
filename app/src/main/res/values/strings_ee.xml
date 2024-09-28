@@ -388,10 +388,10 @@
     <string name="quest_seating_pedestrian_zone">In a pedestrian zone</string>
     <string name="quest_seating_street">In a street area</string>
     <string name="quest_seating_sidewalk">On the sidewalk</string>
-    <string name="quest_seating_patio">In a patio</string>
-    <string name="quest_seating_terrace">On a terrace</string>
-    <string name="quest_seating_balcony">On a balcony</string>
-    <string name="quest_seating_veranda">On a veranda/porch </string>
+    <string name="quest_seating_patio">In a patio (unroofed, courtyard)</string>
+    <string name="quest_seating_terrace">On a terrace (unroofed, not courtyard)</string>
+    <string name="quest_seating_balcony">On a balcony (not on the ground floor)</string>
+    <string name="quest_seating_veranda">On a veranda/porch (roofed, can be slightly above ground)</string>
     <string name="quest_seating_roof">On a roof</string>
     <string name="quest_seating_garden">In a garden area</string>
     <string name="quest_seating_beach">At a beach</string>
