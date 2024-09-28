@@ -19,6 +19,7 @@ class AddGeneralRef : OsmFilterQuestType<GeneralRefAnswer>() {
             or building = service and power = substation
             or man_made = street_cabinet
             or highway = street_lamp
+            or golf = hole
           )
           and !ref
           and noref != yes
