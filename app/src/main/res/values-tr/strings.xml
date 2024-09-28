@@ -9,11 +9,11 @@
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Soru olarak ifade edilmeyen notlar da gösteriliyor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Soru şeklinde ifade edilmeyen notlar yoksayılıyor"</string>
     <string name="map_btn_gps_tracking">"Beni takip et"</string>
-    <string name="map_attribution_osm">"© OpenStreetMap katkıcıları"</string>
+    <string name="map_attribution_osm">"© OpenStreetMap'e katkıda bulunanlar"</string>
     <string name="quest_generic_otherAnswers">"Diğer cevaplar…"</string>
     <string name="quest_generic_answer_notApplicable">"Söyleyemem…"</string>
     <string name="quest_generic_confirmation_title">"Emin misin?"</string>
-    <string name="quest_generic_confirmation_yes">"Evet eminim"</string>
+    <string name="quest_generic_confirmation_yes">"Evet, eminim"</string>
     <string name="quest_generic_confirmation_no">"Kontrol edeceğim"</string>
     <string name="quest_leave_new_note_title">"Bunun yerine bir not bırak?"</string>
     <string name="quest_leave_new_note_description">"Bu konumda diğer haritacıların çözmesi için bir not bırakabilirsin ya da bu görevi kendin için gizleyebilirsin"</string>

@@ -1309,7 +1309,6 @@
 بالإضافة لذلك، بعض التراكبات تسمح لك بإضافة بيانات جديدة في موقع علامة التقاطع، مثل تراكبات العناوين."</string>
     <string name="quest_crossing_kerb_height_title">"ما هو ارتفاع الرصيف في هذا التقاطع؟"</string>
     <string name="quest_maxheight_sign_title">"ما هو حد الارتفاع المحدد هنا؟"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"ما هو حد الارتفاع المحدد تحت هذا الجسر؟"</string>
     <string name="quest_leave_new_note_as_answer">"في هذه الحالة، ستحتاج لترك ملاحظة تشرح فيها الوضع."</string>
     <string name="quest_drinking_water_type_title2">"أيوجد ماء للشرب هنا؟ إذا كان كذلك، فما هو المصدر؟"</string>
     <string name="quest_is_amenity_inside_title">"هل هذا داخل مبنى؟"</string>

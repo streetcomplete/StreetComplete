@@ -1291,7 +1291,6 @@
 Επιπλέον, ορισμένες επικαλύψεις σας επιτρέπουν να προσθέτετε νέα δεδομένα στη θέση ενός εμφανιζόμενου στόχαστρου, όπως η επικάλυψη διευθύνσεων."</string>
     <string name="quest_crossing_kerb_height_title">"Ποιό είναι το ύψος των κρασπέδων σε αυτήν τη διάβαση;"</string>
     <string name="quest_maxheight_sign_title">"Ποιο όριο ύψους αναφέρεται εδώ;"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Ποιο όριο ύψους αναφέρεται κάτω από τη γέφυρα;"</string>
     <string name="quest_leave_new_note_as_answer">"Σε αυτή την περίπτωση, θα πρέπει να αφήσετε ένα σημείωμα στο οποίο εξηγείτε την κατάσταση."</string>
     <string name="quest_drinking_water_type_title2">"Υπάρχει πόσιμο νερό εδώ; Αν ναι, ποια είναι η πηγή του;"</string>
     <string name="quest_is_amenity_inside_title">"Είναι αυτό μέσα σε κτίριο;"</string>

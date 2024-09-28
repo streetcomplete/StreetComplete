@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banco Estado, Banco de Chile, Banco Santander, Santander, BCI, Redbanc, Scotiabank, BancoEstado, Banco Falabella, Itaú Corpbanca, Caja Vecina, Shitcoins.club, Transbank, Servipag, RedBanc, REDBANC, Copec, Citibank, Banco Estado / Caja Vecina]
+atmOperators: [Banco Estado, Banco de Chile, Banco Santander, BCI, Santander, Redbanc, Scotiabank, BancoEstado, Banco Falabella, Itaú Corpbanca, Caja Vecina, Shitcoins.club, Transbank, Servipag, RedBanc, REDBANC, Copec, Citibank, Banco Estado / Caja Vecina]
 centerLineStyle: white
 chargingStationOperators: [Copec, Enel X, CGE, Enel, Copec Voltex, Shell]
 defaultSpeedLimitHasUrbanOrRural: true

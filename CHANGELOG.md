@@ -1,5 +1,13 @@
 # Changelog
 
+## v59.1
+
+- Crash issue on subsequent app starts was maybe fixed in MapLibre (#5850)
+- Fix dark mode in sections of the about screen and what's new dialog (#5906)
+- Fix location pointer pin wasn't rotated correctly when map was rotated (#5919)
+- Improve map gesture detection (#5908)
+- Signed Maxheight: Also ask for roads below roofs, such as at fuel stations (#5915, #5915), by @RubenKelevra
+
 ## v59.0
 
 Oh! Again such a monster update!

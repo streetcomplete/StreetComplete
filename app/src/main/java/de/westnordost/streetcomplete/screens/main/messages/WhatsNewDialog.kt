@@ -26,13 +26,11 @@ fun WhatsNewDialog(
         modifier = modifier,
         title = { Text(stringResource(R.string.title_whats_new)) },
         content = {
-            Divider()
             ChangelogList(
                 changelog = changelog,
                 paddingValues = PaddingValues(vertical = 16.dp),
                 modifier = Modifier.padding(horizontal = 24.dp)
             )
-            Divider()
         },
         buttons = {
             TextButton(onClick = onDismissRequest) {

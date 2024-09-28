@@ -6,12 +6,12 @@ AM:
   - Onex # 2
   - OmniCDEK # 2
 AT:
-  - Myflexbox # 79
+  - Myflexbox # 90
   - Amazon Hub # 72
-  - Post Abholstation # 46
-  - MYFLEXBOX # 16
+  - Post Abholstation # 50
+  - MYFLEXBOX # 17
   - Amazon Locker # 14
-  - Tamburi # 11
+  - Tamburi # 12
   - DHL Packstation # 4
   - Amazon # 3
   - GLS # 2
@@ -30,14 +30,14 @@ AU-TAS:
   - Australia Post # 5
   - Amazon Hub # 2
 AU-VIC:
-  - Australia Post # 50
+  - Australia Post # 51
   - Amazon Hub # 6
 AU-WA:
   - Australia Post # 7
 AX:
   - Åland Post # 4
 BE-VLG:
-  - bpost # 14
+  - bpost # 16
   - bpost Pakjesautomaat # 5
   - Bpost # 3
 BE-WAL:
@@ -45,9 +45,9 @@ BE-WAL:
   - Mondial Relay # 5
   - Bpost # 3
 BG:
-  - easybox # 61
+  - easybox # 64
+  - Box Now # 35
   - Еконт # 32
-  - Box Now # 29
   - BoxNow # 28
   - Speedy # 21
 BY:
@@ -75,29 +75,32 @@ CN-GD:
 CN-JS:
   - 丰巢 # 4
   - 蜂巢 # 2
+CN-LN:
+  - 丰巢 # 12
 CN-SH:
-  - 丰巢 # 8
+  - 丰巢 # 17
 CN-ZJ:
   - 丰巢 # 3
 CZ:
-  - Packeta # 4360
-  - AlzaBox # 1209
-  - Penguin Box # 72
-  - PPL # 72
-  - GLS # 48
+  - Packeta # 4361
+  - AlzaBox # 1212
+  - Penguin Box # 75
+  - PPL # 75
+  - GLS # 53
   - OX.Point # 20
-  - DPD Pickup Station # 15
+  - DPD Pickup Station # 16
   - PPL Box # 7
+  - DPD # 6
   - Allegro One Box # 6
 DE:
-  - DHL Packstation # 7820
-  - Amazon Locker # 498
-  - Amazon Hub # 458
+  - DHL Packstation # 7870
+  - Amazon Locker # 510
+  - Amazon Hub # 460
   - Packstation # 87
   - Amazon Hub Locker # 69
-  - DHL # 57
-  - DHL Poststation # 33
-  - Myflexbox # 31
+  - DHL # 63
+  - DHL Poststation # 36
+  - Myflexbox # 34
   - DHL Paketbox # 19
   - Amazon # 13
 DK:
@@ -107,14 +110,15 @@ DK:
   - Instabox # 3
   - instabox # 2
 EE:
-  - Omniva # 82
-  - DPD Pickup Station # 22
+  - Omniva # 86
+  - DPD Pickup Station # 25
   - DPD # 16
-  - Venipak # 10
+  - Venipak # 12
   - Smartpost Itella # 6
-  - DHL # 5
+  - DHL # 6
   - UPS # 3
   - Smartpost # 3
+  - Unisend # 2
 ES-AN:
   - Amazon Locker # 18
   - Amazon Hub Locker # 10
@@ -131,13 +135,13 @@ ES-CL:
   - InPost # 2
   - Amazon # 2
 ES-CT:
-  - Amazon Locker # 11
+  - Amazon Locker # 14
   - Amazon Hub # 11
   - CityPaq # 6
   - InPost # 3
   - BonÀrea # 2
 ES-GA:
-  - Amazon Hub # 4
+  - Amazon Hub # 5
   - Amazon Hub Locker # 3
   - Amazon Locker # 2
 ES-MC:
@@ -155,30 +159,30 @@ ES-PV:
   - Amazon Hub # 7
   - CityPaq # 5
 ES-VC:
-  - Amazon Locker # 10
+  - Amazon Locker # 11
   - Amazon Hub # 7
   - CityPaq # 4
 FI:
   - Smartpost # 26
+  - Posti # 26
   - Postin automaatti # 25
-  - Posti # 24
-  - Budbee Box # 7
+  - Budbee # 10
   - Pakettipiste # 6
-  - Budbee # 5
+  - Budbee Box # 6
   - PostNord # 3
   - iBoxen # 2
   - Smartmile # 2
   - Matkahuolto # 2
 FR:
-  - Amazon Hub # 429
-  - Mondial Relay # 401
-  - Amazon Locker # 278
-  - Pickup Station # 156
+  - Amazon Hub # 431
+  - Mondial Relay # 415
+  - Amazon Locker # 283
+  - Pickup Station # 159
   - Amazon # 18
-  - Pickup # 13
-  - La Poste # 12
+  - Pickup # 15
+  - La Poste # 14
+  - Vinted Go # 10
   - Amazon Hub Locker # 9
-  - Vinted Go # 8
   - Parcel Pending # 6
   - Decathlon # 6
   - Vinted # 5
@@ -190,17 +194,16 @@ FR:
   - GLS;Relais colis;UPS # 2
   - Colissimo # 2
   - Chronopost # 2
-  - Box Colis Mobile # 2
 GB-ENG:
-  - InPost # 561
-  - Amazon Hub # 355
-  - Amazon Locker # 241
+  - InPost # 575
+  - Amazon Hub # 357
+  - Amazon Locker # 244
   - Amazon Hub Locker # 82
   - Locker InPost # 66
-  - Amazon # 22
-  - Yeep # 20
+  - Amazon # 25
+  - Yeep # 21
   - Evri # 15
-  - DPD Pickup Station # 6
+  - DPD Pickup Station # 8
   - DPD # 4
   - Inpost UK Ltd # 3
   - inpost # 2
@@ -208,8 +211,8 @@ GB-ENG:
   - Growing Communities # 2
   - ASDA # 2
 GB-SCT:
-  - InPost # 38
-  - Amazon Hub # 33
+  - InPost # 39
+  - Amazon Hub # 34
   - Amazon Locker # 13
   - Locker InPost # 4
   - Amazon Hub Locker # 2
@@ -227,32 +230,33 @@ GR:
 HK:
   - 順豐速運 SF Express # 2
 HR:
-  - Paket24 # 45
-  - GLS # 36
+  - Paket24 # 46
+  - GLS # 39
   - BoxNow # 13
-  - Box Now # 10
+  - Box Now # 11
+  - DPD Pickup Station # 2
   - DHL # 2
 HU:
-  - GLS # 1406
-  - easybox # 716
-  - Foxpost # 707
-  - Packeta # 181
-  - AlzaBox # 77
-  - MPL # 65
+  - GLS # 1410
+  - easybox # 721
+  - Foxpost # 713
+  - Packeta # 190
+  - AlzaBox # 78
+  - MPL # 66
   - Magyar Posta Logisztika (MPL) # 61
-  - FoxPost # 18
+  - FoxPost # 19
   - DHL # 9
   - Alzabox # 4
 ID-JW:
+  - Paxel # 4
   - PopBox # 3
-  - Paxel # 3
 IS:
   - Pósturinn # 3
 IT:
-  - Amazon Hub # 175
-  - Amazon Locker # 149
+  - Amazon Hub # 178
+  - Amazon Locker # 156
   - InPost # 84
-  - Amazon Hub Locker # 38
+  - Amazon Hub Locker # 36
   - PuntoPoste # 10
   - Locker InPost # 9
   - Amazon # 6
@@ -265,13 +269,13 @@ IT-36:
   - InPost # 2
   - Amazon # 2
 IT-82:
-  - InPost # 11
+  - InPost # 12
   - Amazon Locker # 11
   - Amazon Hub # 11
-  - Locker InPost # 3
+  - Locker InPost # 2
 JP:
-  - Amazon Hub ロッカー # 105
-  - プドー # 80
+  - Amazon Hub ロッカー # 106
+  - プドー # 81
   - PUDOステーション # 15
   - Amazon Locker # 15
   - はこぽす # 6
@@ -282,14 +286,14 @@ JP:
 KZ:
   - Қазпошта # 2
 LT:
-  - Omniva # 58
-  - Venipak # 22
-  - LP Express # 22
+  - Omniva # 59
+  - Venipak # 23
+  - LP Express # 23
   - DPD # 20
-  - DPD Pickup Station # 12
+  - DPD Pickup Station # 13
   - uDrop # 10
+  - Smartpost # 6
   - OMNIVA # 5
-  - Smartpost # 4
   - Lietuvos Paštas # 4
   - Omniva paštomatas # 2
   - LP express paštomatas # 2
@@ -298,9 +302,9 @@ LU:
   - POST Luxembourg # 47
 LV:
   - DPD # 161
-  - Omniva # 122
-  - Latvijas Pasts # 88
-  - Venipak # 57
+  - Omniva # 126
+  - Latvijas Pasts # 90
+  - Venipak # 59
   - Smartpost # 22
   - Unisend # 21
   - DPD Pickup Station # 17
@@ -310,11 +314,11 @@ MD:
 MX:
   - Amazon Hub # 4
 NL:
-  - PostNL # 52
-  - DHL # 28
+  - PostNL # 54
+  - DHL # 31
   - de Buren # 10
+  - Budbee # 7
   - DHL Packstation # 6
-  - Budbee # 6
   - Hub # 4
   - DHL Parcelstation # 3
   - Service Apotheek # 2
@@ -324,28 +328,28 @@ NO:
   - PostNord # 4
   - Pakkeboks # 3
 PL:
-  - Paczkomat InPost # 13688
-  - Allegro One Box # 1284
-  - Orlen Paczka # 990
-  - DPD Pickup Station # 757
-  - DHL Pop Box # 306
-  - Appkomat InPost # 183
+  - Paczkomat InPost # 13760
+  - Allegro One Box # 1305
+  - Orlen Paczka # 1014
+  - DPD Pickup Station # 780
+  - DHL Pop Box # 327
+  - Appkomat InPost # 188
   - AliExpress # 85
-  - DPD # 66
+  - DPD # 67
+  - Pocztex # 49
+  - DHL # 46
   - Allegro # 46
-  - Pocztex # 44
-  - DHL # 44
-  - DHL POP BOX # 40
-  - InPost # 36
-  - Lodówkomat InPost # 22
+  - InPost # 41
+  - DHL POP BOX # 41
+  - Lodówkomat InPost # 23
   - Orlen # 21
   - Pocztex Automat # 20
 PT:
   - Locky CTT # 5
   - Locky # 3
 RO:
-  - easybox # 633
-  - FANbox # 86
+  - easybox # 640
+  - FANbox # 87
   - GLS # 37
   - Ship & Go # 13
   - Sameday Easybox # 6
@@ -357,16 +361,16 @@ RS:
 RS-VO:
   - Поштин пакетомат # 6
 RU:
-  - Ozon Box # 100
-  - PickPoint # 90
-  - Ozon box # 65
-  - Почта России # 64
-  - 5post # 63
-  - Халва # 44
-  - ОмниСДЭК # 44
+  - Ozon Box # 110
+  - PickPoint # 94
+  - 5post # 68
+  - Почта России # 67
+  - Ozon box # 57
+  - Халва # 45
+  - ОмниСДЭК # 45
   - Яндекс.Маркет # 37
   - Cainiao # 29
-  - Ozon # 26
+  - Ozon # 27
   - СберЛогистика # 20
   - СДЭК # 13
   - 5Post # 9
@@ -376,6 +380,7 @@ RU:
   - Утконос # 4
   - fivepost.ru # 3
   - Wildberries # 3
+  - QIWI # 2
   - OZON # 2
   - InPost # 2
   - Aliexpress # 2
@@ -386,28 +391,28 @@ RU-ME:
   - Ozon # 2
 RU-TA:
   - Ozon box # 48
-  - Почта России # 33
-  - Ozon Box # 30
+  - Почта России # 34
+  - Ozon Box # 32
   - Cainiao # 30
   - Яндекс.Маркет # 21
   - Сберлогистика # 20
   - 5post # 15
-  - Халва # 10
+  - Халва # 11
+  - Fivepost # 6
   - PickPoint # 5
-  - Fivepost # 5
   - ОмниСДЭК # 4
   - Ozon # 2
 SE:
-  - Instabox # 74
+  - Instabox # 77
   - Budbee # 18
-  - PostNord # 14
+  - PostNord # 16
   - Postnord # 8
-  - iBoxen # 3
+  - iBoxen # 4
   - Paketbox # 3
   - Bring # 3
   - PostNord Paketbox # 2
 SG:
-  - Pick # 11
+  - Pick # 12
   - POPStation # 5
 SI:
   - GLS # 102
@@ -415,11 +420,11 @@ SI:
   - DPD # 8
   - Pošta Slovenije # 2
 SK:
-  - Packeta # 378
-  - AlzaBox # 281
-  - BalíkoBOX # 84
-  - GLS # 43
-  - GLS Balíkomat # 37
+  - Packeta # 379
+  - AlzaBox # 287
+  - BalíkoBOX # 93
+  - GLS # 70
+  - GLS Balíkomat # 38
   - Z-BOX # 13
   - Penguin Box # 3
   - Dr. Max # 2
@@ -431,7 +436,7 @@ TR:
 TW:
   - i郵箱 # 2404
 UA:
-  - Нова Пошта # 381
+  - Нова Пошта # 385
   - Нова пошта # 26
   - Meest # 22
   - Rozetka # 17
@@ -440,13 +445,13 @@ US-AZ:
   - Amazon Locker # 8
   - Amazon Hub # 8
 US-CA:
-  - Amazon Hub # 40
+  - Amazon Hub # 41
   - Amazon Locker # 15
   - Amazon Hub Locker # 7
   - USPS # 2
 US-CO:
   - Amazon Locker # 6
-  - Amazon Hub # 4
+  - Amazon Hub # 5
 US-DC:
   - Amazon Hub # 2
 US-FL:
@@ -499,11 +504,11 @@ US-TN:
 US-TX:
   - Amazon Hub Locker # 13
   - Amazon Hub # 8
-  - Amazon Locker # 5
+  - Amazon Locker # 6
 US-VA:
   - Amazon Hub # 11
 US-WA:
-  - Amazon Hub # 32
+  - Amazon Hub # 33
   - Amazon Locker # 14
   - Amazon # 4
 US-WI:

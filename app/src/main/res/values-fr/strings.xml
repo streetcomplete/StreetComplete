@@ -1304,7 +1304,6 @@ Les données manquantes sont toujours affichées en rouge."</string>
 De plus, certaines surcouches vous permettent d’ajouter de nouvelles données à la position d’un réticule affiché, comme la surcouche des adresses."</string>
     <string name="quest_crossing_kerb_height_title">"Quelle est la hauteur des bordures à ce croisement ?"</string>
     <string name="quest_maxheight_sign_title">"Quelle limite de hauteur est indiquée ici ?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Quelle limite de hauteur est indiquée en dessous de ce pont ?"</string>
     <string name="quest_leave_new_note_as_answer">"Dans ce cas, vous devez laisser une note dans laquelle vous expliquez la situation."</string>
     <string name="quest_drinking_water_type_title2">"L’eau potable est-elle disponible ici ? Si oui, quelle est sa source ?"</string>
     <string name="quest_is_amenity_inside_title">"Est-ce à l’intérieur d’un bâtiment ?"</string>
@@ -1393,16 +1392,16 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="about_category_contribute">"Contribuer"</string>
     <string name="pref_category_quests">"Quêtes"</string>
     <string name="pref_title_language_select2">"Langue"</string>
-    <string name="pref_title_resurvey_intervals_summary">"A quelle fréquence vous sera demandé de confirmer la véracité d'une information déjà connue."</string>
+    <string name="pref_title_resurvey_intervals_summary">"A quelle fréquence vous sera demandé de confirmer la véracité d’une information déjà connue."</string>
     <string name="questList_disabled_by_default">"Affiché par défaut"</string>
     <string name="action_manage_presets_summary">"Sous quel nom est enregistré la sélection de quête ci-dessous."</string>
     <string name="quest_multiselect_hint">"Sélectionner tous ceux qui correspondent :"</string>
-    <string name="quest_barrier_opening_width_gate">"Quelle est la largeur de l'ouverture ?"</string>
-    <string name="about_title_intro">"Voir l'introduction"</string>
+    <string name="quest_barrier_opening_width_gate">"Quelle est la largeur de l’ouverture ?"</string>
+    <string name="about_title_intro">"Voir l’introduction"</string>
     <string name="about_category_help">"Aide"</string>
-    <string name="quest_camp_power_supply_hint">"Il peut s'agir de prises directement sur les emplacements du camping, de prises dans un bâtiment commun accessible aux clients, d'une borne de recharge dédiée pour téléphones, ordinateurs portables, etc."</string>
+    <string name="quest_camp_power_supply_hint">"Il peut s’agir de prises directement sur les emplacements du camping, de prises dans un bâtiment commun accessible aux clients, d’une borne de recharge dédiée pour téléphones, ordinateurs portables, etc."</string>
     <string name="quest_barrier_opening_width_bollard">"Quelle est la largeur du passage ?"</string>
     <string name="user_profile_all_time_title">"Global"</string>
     <string name="user_statistics_country_rank2">"Rang en %s"</string>
-    <string name="quest_leafType_tree_is_just_a_stump">"C'est une souche"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"C’est une souche"</string>
 </resources>

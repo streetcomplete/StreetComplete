@@ -1312,7 +1312,6 @@ Les dades que falten sempre es mostren en vermell."</string>
 A més, algunes superposicions us permeten afegir dades noves a la posició d'un punt de mira mostrat, com ara la superposició d'adreces."</string>
     <string name="quest_crossing_kerb_height_title">"Quina és l'alçada dels vorals en aquest pas?"</string>
     <string name="quest_maxheight_sign_title">"Quin límit d'alçada s'indica aquí?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Quin límit d'alçada s'indica a sota del pont?"</string>
     <string name="quest_leave_new_note_as_answer">"En aquest cas, cal deixar una nota on expliqui la situació."</string>
     <string name="quest_drinking_water_type_title2">"Hi ha aigua potable aquí? Si és així, quina és la seva font?"</string>
     <string name="quest_is_amenity_inside_title">"Això és dins d'un edifici?"</string>
@@ -1349,6 +1348,7 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_disable_message_not_installed">"StreetMeasure no és instal·lat (encara)."</string>
     <string name="quest_disable_message_not_working">"StreetMeasure no ha retornat una mesura."</string>
     <string name="quest_buildingType_container">"Contenidor"</string>
+    <string name="quest_buildingType_tent">"Tenda de campanya"</string>
     <string name="quest_buildingType_tomb">"Tomba"</string>
     <string name="quest_buildingType_tower">"Torre"</string>
     <string name="quest_buildingType_tower_description">"qualsevol mena de torre"</string>
@@ -1376,4 +1376,11 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     "</string>
     <string name="quest_powerPolesMaterial_is_terminal">"La línia elèctrica està ancorada a l'edifici"</string>
     <string name="separate_cycleway_no_signed">"Un senyal prohibeix explícitament anar en bicicleta"</string>
+    <string name="action_clear">"Netejar"</string>
+    <string name="action_open_in_browser">"Obrir al navegador"</string>
+    <string name="about_category_contribute">"Contribuir"</string>
+    <string name="pref_title_language_select2">"Idioma"</string>
+    <string name="about_category_help">"Ajuda"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"És només una soca d'arbre"</string>
+    <string name="quest_board_name_title">"Quin és el títol d'aquest tauler informatiu?"</string>
 </resources>

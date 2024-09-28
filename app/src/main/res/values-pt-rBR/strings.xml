@@ -1305,7 +1305,6 @@ Os dados ausentes são sempre mostrados em vermelho."</string>
 Além disso, algumas sobreposições permitem adicionar novos dados na posição de uma mira exibida, como a sobreposição de endereços."</string>
     <string name="quest_crossing_kerb_height_title">"Qual é a altura do meio-fio neste cruzamento?"</string>
     <string name="quest_maxheight_sign_title">"Qual limite é a altura máxima indicada aqui?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Qual limite de altura máximo indicado abaixo da ponte?"</string>
     <string name="quest_leave_new_note_as_answer">"Nesse caso, você precisa deixar uma nota explicando a situação."</string>
     <string name="quest_drinking_water_type_title2">"Há água potável aqui? Se sim, qual é a sua origem?"</string>
     <string name="quest_is_amenity_inside_title">"Isso está em um prédio?"</string>

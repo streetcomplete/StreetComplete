@@ -1302,7 +1302,6 @@ Manglende data vises altid med rødt."</string>
 Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på positionen for et vist trådkors, som f.eks. adresseoverlejringen."</string>
     <string name="quest_crossing_kerb_height_title">"Hvad er højden på kantstenene ved denne overgang?"</string>
     <string name="quest_maxheight_sign_title">"Hvilken højdegrænse angives her?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Hvilken højdegrænse er angivet under broen?"</string>
     <string name="quest_leave_new_note_as_answer">"I så fald skal du efterlade en bemærkning, hvor du forklarer situationen."</string>
     <string name="quest_drinking_water_type_title2">"Er der adgang til drikkevand her? Hvis ja, hvad er så kilden?"</string>
     <string name="quest_is_amenity_inside_title">"Er dette inde i en bygning?"</string>

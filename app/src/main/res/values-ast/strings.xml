@@ -1062,7 +1062,6 @@ Los datos resáltense en diferentes colores pa brindate una bona visión xeneral
 Dalgunes capes tamién permiten añader datos que falten al traviés del marcador con forma de puntu de mira, como la capa de «direcciones». "</string>
     <string name="quest_crossing_kerb_height_title">"¿Cuála ye l'altura de los bordiyos nesti cruce?"</string>
     <string name="quest_maxheight_sign_title">"¿Cuála ye l'altura máxima equí?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"¿Cuála ye l'altura máxima pa circular baxo la ponte?"</string>
     <string name="quest_leave_new_note_as_answer">"Nesi casu, has dexar una nota esplicando la situación."</string>
     <string name="quest_drinking_water_type_title2">"¿Hai agua potable? ¿Cuál ye l'orixe?"</string>
     <string name="quest_is_amenity_inside_title">"¿Esto ta dientro de dalgún edificiu?"</string>

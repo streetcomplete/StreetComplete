@@ -1304,7 +1304,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 データがない箇所は赤で表示されます。"</string>
     <string name="quest_crossing_kerb_height_title">"この横断歩道の、歩道と車道の間の段差の高さはどのくらいですか？"</string>
     <string name="quest_maxheight_sign_title">"高さ制限はどのくらいですか?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"橋の下の高さ制限はどのくらいですか？"</string>
     <string name="quest_leave_new_note_as_answer">"この場合、状況がわかるようにメモを残す必要があります。"</string>
     <string name="quest_drinking_water_type_title2">"飲用水はありますか？ある場合、その出所はどこですか？"</string>
     <string name="quest_is_amenity_inside_title">"これは建物の中ですか？"</string>

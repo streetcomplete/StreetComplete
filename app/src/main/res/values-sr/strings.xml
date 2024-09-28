@@ -1301,7 +1301,6 @@
 Поред тога, неки слојеви на карти вам пружају могућност додавања нових података на позицији показивача, као што то пружа слој адреса."</string>
     <string name="quest_crossing_kerb_height_title">"Колико је висок ивичњак на овом прелазу?"</string>
     <string name="quest_maxheight_sign_title">"Која максимална висина је овде наведена?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Која максимална висина је наведена испод моста?"</string>
     <string name="quest_leave_new_note_as_answer">"У том случају, треба да оставите напомену у којој објашњавате ситуацију."</string>
     <string name="quest_drinking_water_type_title2">"Да ли овде има воде за пиће? Ако има, каквог типа је извор?"</string>
     <string name="quest_is_amenity_inside_title">"Да ли је унутар изграђеног објекта?"</string>

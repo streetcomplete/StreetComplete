@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [UZCARD;HUMO, Хорезмский региональный офис банковских услуг, Mikrokreditbank, KAPITAL BANK, Центр банковских услуг "Тахиатош", Каракалпакский региональный офис банковских услуг, Xalq Bank, UZCARD;HUMO - O'ZSANOATQURILISHBANK, UZCARD;HUMO - AGROBANK, Hamkorbank, Garant bank, Xalq banki, Xalq bank, VISA;MIR;UZCARD;HUMO - KAPITAL BANK, UZCARD;HUMO - XALQBANK, UZCARD;HUMO - TURON BANK, UZCARD;HUMO - INFINBANK, UZCARD;HUMO - HAMKORBANK, NBU, InFinBank, INFINBANK, HUMO, Biznesni rivojlantirish banki, Asakabank, Agrobank]
+atmOperators: [UZCARD;HUMO, Хорезмский региональный офис банковских услуг, Mikrokreditbank, KAPITAL BANK, Центр банковских услуг "Тахиатош", Каракалпакский региональный офис банковских услуг, Xalq Bank, UZCARD;HUMO - O'ZSANOATQURILISHBANK, UZCARD;HUMO - AGROBANK, Garant bank, Xalq banki, Xalq bank, VISA;MIR;UZCARD;HUMO - KAPITAL BANK, UZCARD;HUMO - XALQBANK, UZCARD;HUMO - TURON BANK, UZCARD;HUMO - INFINBANK, UZCARD;HUMO - HAMKORBANK, NBU, InFinBank, INFINBANK, Hamkorbank, HUMO, Biznesni rivojlantirish banki, Asakabank]
 chargingStationOperators: [OOO "TOK BOR"]
 officialLanguages: [kaa, uz, ru]
 parcelLockerBrand: [LockerPost]

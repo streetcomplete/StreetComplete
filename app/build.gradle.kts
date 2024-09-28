@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5905
-        versionName = "59.0"
+        versionCode = 5906
+        versionName = "59.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -198,12 +198,12 @@ dependencies {
     implementation("com.ionspin.kotlin:bignum:0.3.10")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("com.charleskorn.kaml:kaml:0.61.0")
     implementation("io.github.pdvrieze.xmlutil:core:0.90.1")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.4.0")
+    implementation("org.maplibre.gl:android-sdk:11.5.0")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")

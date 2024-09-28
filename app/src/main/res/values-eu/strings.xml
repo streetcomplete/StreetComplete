@@ -1303,7 +1303,6 @@ Falta diren datuak gorriz agertzen dira beti."</string>
 Gainera, geruza batzuek datu berriak gehitzeko aukera ematen dute bistaratzen den gurutze-puntu baten posizioan, hala nola helbideen geruza."</string>
     <string name="quest_crossing_kerb_height_title">"Zein da bidegurutze honen ertzetako altuera?"</string>
     <string name="quest_maxheight_sign_title">"Zein altuera-muga adierazten da hemen?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Zein altuera muga adierazten da zubiaren azpian?"</string>
     <string name="quest_leave_new_note_as_answer">"Kasu honetan, egoera azaltzen duen ohar bat utzi beharko duzu."</string>
     <string name="quest_drinking_water_type_title2">"Edateko ura eskuragarri dago hemen? Hala bada, zein da bere jatorria?"</string>
     <string name="quest_is_amenity_inside_title">"Eraikin baten barruan dago hau?"</string>

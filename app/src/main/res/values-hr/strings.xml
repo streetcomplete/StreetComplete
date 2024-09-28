@@ -1305,7 +1305,6 @@ Podaci koji nedostaju uvijek su prikazani crvenom bojom."</string>
 Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikazanog križića, kao npr. Nadsloj \"Adrese\"."</string>
     <string name="quest_crossing_kerb_height_title">"Koliko je visok rubnik na ovom prijelazu?"</string>
     <string name="quest_maxheight_sign_title">"Koje je ograničenje visine ovdje naznačeno?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Koje je ograničenje visine naznačeno ispod mosta?"</string>
     <string name="quest_leave_new_note_as_answer">"U tom slučaju, trebate ostaviti bilješku u kojoj objašnjavate situaciju."</string>
     <string name="quest_drinking_water_type_title2">"Ima li ovdje pitke vode? Ako ima, koji je njezin izvor?"</string>
     <string name="quest_is_amenity_inside_title">"Je li ovo unutar zgrade?"</string>
