@@ -398,6 +398,7 @@ quest/
     summit_cross.svg                based on peak.svg which is (c) 2020 Mateusz Konieczny and Tobias Zwick (CC-BY-SA 4.0), with cross added by Flo Edelmann (so also CC-BY-SA 4.0)
     surveillance.svg
     surveillance_camera.svg
+    swimming_pool.svg               modified by mcliquid based on Kocio CC0 1.0 from https://wiki.openstreetmap.org/wiki/File:Swimming-16.svg
     tent.svg
     toilets.svg
     toilet_fee.svg

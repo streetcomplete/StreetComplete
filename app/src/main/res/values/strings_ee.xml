@@ -325,6 +325,13 @@
     <!-- sauna availability quest -->
     <string name="quest_saunaAvailability_title">Is there a sauna here?</string>
 
+    <!-- swimming pool availability quest -->
+    <string name="quest_swimmingPoolAvailability_title">Is there a swimming pool here?</string>
+    <string name="quest_swimming_pool_indoor_and_outdoor">Both (indoor and outdoor)</string>
+    <string name="quest_swimming_pool_indoor_only">Only indoor</string>
+    <string name="quest_swimming_pool_outdoor_only">Only outdoor</string>
+    <string name="quest_swimming_pool_no">No swimming pool</string>
+
     <!-- service building type -->
     <string name="quest_service_building_type_title">What kind of service building is this?</string>
     <string name="quest_service_building_type_substation">Electrical substation</string>
