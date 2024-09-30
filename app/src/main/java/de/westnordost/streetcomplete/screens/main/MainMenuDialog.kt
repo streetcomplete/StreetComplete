@@ -80,7 +80,7 @@ fun MainMenuDialog(
                 Divider()
                 CompactMenuButton(
                     onClick = { onDismissRequest(); onClickDownload() },
-                    icon = { Icon(painterResource(R.drawable.ic_search_24dp), null) },
+                    icon = { Icon(painterResource(R.drawable.ic_file_download_24dp), null) },
                     text = stringResource(R.string.action_download),
                 )
                 if (indexInTeam == null) {
