@@ -466,6 +466,8 @@ The [rescaling script](https://github.com/matkoniecz/rescaling_for_android) may 
 
 Please make sure that the images do not take too much disk space. On StretComplete images, JPEG quality of 60% usually looks exactly the same as 80% (or 90%) while being noticeably smaller, and sometimes reducing it down to even 20% will not degrade quality visibly! Play with settings to see which is the smallest size which does not degrade image quality visibly.
 
+There are online tools like [squoosh](https://squoosh.app/) which allow for quick visual comparison if you prefer that.
+
 After adding a photo, remember to update [the credits file](app/src/main/res/authors.txt) (different to the one for icons).
 
 ## Resurvey
