@@ -1276,8 +1276,9 @@ Jetzt verschieben?"</string>
     <string name="overlay_path_surface_segregated">"Aufspalten in getrennten Rad- und Gehweg"</string>
     <string name="quest_crossing_title2">"Ist hier ein Fußgängerüberweg?"</string>
     <string name="quest_crossing_yes">"Ja (der Bordstein ist z. B. abgesenkt oder es gibt Markierungen)"</string>
-    <string name="quest_crossing_no">"Nein, aber man kann hier trotzdem rüber"</string>
+    <string name="quest_crossing_no">"Nein, aber es gibt eine informelle Überquerungsmöglichkeit (z. B. einen Trampelpfad)"</string>
     <string name="quest_crossing_prohibited">"Nein, das Überqueren ist hier verboten oder unmöglich"</string>
+    <string name="quest_crossing_hint">Informelle Überquerungsmöglichkeit können so aussehen:</string>
     <string name="quest_hairdresser_title">"Wer sind die Kunden dieses Friseurs?"</string>
     <string name="quest_hairdresser_male_and_female">"Alle"</string>
     <string name="quest_hairdresser_female_only">"Frauen"</string>
