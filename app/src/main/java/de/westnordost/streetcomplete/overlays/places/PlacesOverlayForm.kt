@@ -43,6 +43,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
+import de.westnordost.streetcomplete.util.logs.Log
 
 class PlacesOverlayForm : AbstractOverlayForm() {
 
@@ -287,6 +288,8 @@ private suspend fun createEditAction(
         || wasVacant && hasChangedFeature
         // it's vacant now
         || isVacant
+
+    Log.w("NSI dbg", "shouldNotReplaceShop=${shouldNotReplaceShop} shouldAlwaysReplaceShop=${shouldAlwaysReplaceShop} isVacant=${isVacant} wasVacant=${wasVacant} hasChangedNames=${hasChangedNames} hasChangedFeatureType=${hasChangedFeatureType} hasChangedFeature=${hasChangedFeature} hasAddedNames=${hasAddedNames} isFeatureWithName=${isFeatureWithName} wasFeatureWithName=${wasFeatureWithName} newFeatureType=${newFeatureType} previousFeatureType=${previousFeatureType} previousNames=${previousNames} newNames=${newNames}")
 
     val doReplaceShop =
         if (shouldNotReplaceShop) {
