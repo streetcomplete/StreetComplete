@@ -123,4 +123,32 @@ class NotesApiParserTest {
 
         assertEquals(notes, NotesApiParser().parseNotes(xml))
     }
+
+    @Test fun `parse note with XML entity refs`() {
+        val xml = """
+        <osm>
+          <note lon="0.0689357" lat="51.5085707">
+            <id>1</id>
+            <date_created>2024-06-06 12:47:50 UTC</date_created>
+            <status>open</status>
+            <comments>
+              <comment>
+                <date>2024-06-06 12:47:50 UTC</date>
+                <uid>1234</uid>
+                <user>dude &amp; &lt;dudette&gt;</user>
+                <user_url>https://api.openstreetmap.org/user/dude</user_url>
+                <action>opened</action>
+                <text>I opened it &amp; &quot;nothing&quot; broke!</text>
+                <html><p>Some</p><p>text</p></html>
+              </comment>
+            </comments>
+          </note>
+        </osm>
+        """.trimIndent()
+
+        val comment = NotesApiParser().parseNotes(xml)[0].comments[0]
+
+        assertEquals("dude & <dudette>", comment.user?.displayName)
+        assertEquals("I opened it & \"nothing\" broke!", comment.text)
+    }
 }
