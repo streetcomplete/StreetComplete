@@ -336,7 +336,7 @@ Keep similar style to existing ones and the app in general. Note that the backgr
 
 Once the quest icon is ready:
 
-- when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo)
+- when using Inkscape, save as "Optimized SVG" to remove unnecessary cruft or use another tool for that, like [svgo](https://github.com/svg/svgo) or online [SVGOMG](https://svgomg.net/)
 - Put SVG into [`res/graphics/quest`](res/graphics/quest) folder
   - SVG is a standard format editable in various software, unlike internal Android Studio XML that will be produced in the next steps.
 - Open Android Studio
