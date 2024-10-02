@@ -270,9 +270,11 @@ private suspend fun createEditAction(
     val isVacant = newFeature.id == "shop/vacant"
 
     val shouldNotReplaceShop =
+        // if NSI added e.g. wikidata details, but neither names nor types changed (see #5940)
+        !hasChangedNames && !hasChangedFeatureType
         // only a name was added (name was missing before; user wouldn't be able to answer
         // if the place changed or not anyway, so rather keep previous information)
-        hasAddedNames && !hasChangedFeature
+        || hasAddedNames && !hasChangedFeature
         // previously: only the feature was changed, the non-empty name did not change
         // - see #5195
         // place has been added, nothing to replace
