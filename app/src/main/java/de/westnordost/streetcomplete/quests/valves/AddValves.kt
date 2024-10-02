@@ -24,6 +24,7 @@ class AddValves : OsmFilterQuestType<List<Valves>>() {
     override val icon = R.drawable.ic_quest_valve
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
+    override val defaultDisabledMessage = R.string.default_disabled_msg_ee
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_valves_title
 
