@@ -464,7 +464,7 @@ Each of these folders should hold the same image resized to a different resoluti
 
 The [rescaling script](https://github.com/matkoniecz/rescaling_for_android) may be useful, but you can also do this manually with Gimp or similar software.
 
-Please make sure that the images do not take too much disk space. Most useful way to do that is by lowering JPEG quality, which can make images noticeably smaller. Useful range is usually between 20% and 85%. Play with settings to see which is the smallest size which does not degrade image quality visibly.
+Please make sure that the images do not take too much disk space. Most useful way to do that is by lowering JPEG quality, which can make images noticeably smaller. Play with settings to see which is the smallest size which does not degrade image quality visibly.
 
 [GIMP](https://gimp.org/) allows such previews while saving JPG files, and there are also online tools like [squoosh](https://squoosh.app/) which allow for quick visual comparison if you prefer that.
 
