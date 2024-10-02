@@ -3,18 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="quick_settings"
         android:title="@string/pref_show_quick_settings_title"
         android:defaultValue="false"
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="overlay_quick_selector"
         android:title="@string/pref_overlay_quick_selector_title"
         android:defaultValue="false"
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="show_next_quest_immediately"
         android:title="@string/pref_show_next_quest_title"
         android:summary="@string/pref_show_next_quest_summary"
@@ -22,11 +25,13 @@
         android:persistent="true" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="show_nearby_quests"
         android:title="@string/pref_show_nearby_quests_title"
         android:summary="@string/pref_show_nearby_quests_summary" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="show_hide_button"
         android:title="@string/pref_hide_button_title"
         android:summary="@string/pref_hide_button_summary"
@@ -34,12 +39,14 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="create_node_show_keyboard"
         android:title="@string/pref_create_node_show_keyboard_title"
         android:defaultValue="true"
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="select_first_edit"
         android:title="@string/pref_select_first_edit_title"
         android:summary="@string/pref_select_first_edit_summary"
@@ -47,6 +54,7 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="search_more_languages"
         android:title="@string/pref_search_more_languages_title"
         android:summary="@string/pref_search_more_languages_summary"
@@ -54,6 +62,7 @@
         android:persistent="true" />
 
     <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
+        app:iconSpaceReserved="false"
         android:key="favs_first_min_lines"
         android:title="@string/pref_recent_answers_first_min_lines"
         android:summary="@string/pref_recent_answers_first_min_lines_summary"
@@ -68,6 +77,7 @@
         android:negativeButtonText="@android:string/cancel" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="disable_navigation_mode"
         android:title="@string/pref_disable_navigation_mode_title"
         android:summary="@string/pref_disable_navigation_mode_summary"
@@ -75,24 +85,28 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="main_menu_full_grid"
         android:title="@string/pref_main_menu_grid"
         android:defaultValue="false"
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="main_menu_switch_presets"
         android:title="@string/pref_main_menu_switch_presets_title"
         android:defaultValue="false"
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="caps_word_name_input"
         android:title="@string/pref_caps_word_name_input"
         android:defaultValue="false"
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="volume_button_zoom"
         android:title="@string/pref_volume_zoom_title"
         android:summary="@string/pref_volume_zoom_summary"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <!-- not possible with mapLibre
     <SwitchPreference
         android:key="3d_buildings"
@@ -8,6 +9,7 @@
         android:persistent="true" />
 -->
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="show_way_direction"
         android:title="@string/pref_way_direction"
         android:summary="@string/pref_way_direction_summary"
@@ -15,6 +17,7 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="quest_geometries"
         android:title="@string/pref_quest_geometries_title"
         android:summary="@string/pref_quest_geometries_summary"
@@ -22,6 +25,7 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="offset_fix"
         android:title="@string/pref_offset_fix_title2"
         android:summary="@string/pref_offset_fix_summary"
@@ -29,6 +33,7 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="show_solved_animation"
         android:title="@string/pref_show_solved_animation"
         android:summary="@string/pref_show_solved_animation_summary"
@@ -36,6 +41,7 @@
         android:persistent="true" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="display_gpx_track"
         android:title="@string/pref_gpx_track_title" />
 

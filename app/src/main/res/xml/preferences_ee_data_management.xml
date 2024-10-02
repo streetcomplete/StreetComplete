@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="auto_download"
         android:title="@string/pref_auto_download_title"
         android:summary="@string/pref_auto_download_summary"
@@ -10,6 +11,7 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="manual_download_override_cache"
         android:title="@string/pref_manual_download_cache_title"
         android:summary="@string/pref_manual_download_cache_summary"
@@ -17,10 +19,12 @@
         android:persistent="true" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="raster_tile_url"
         android:title="@string/pref_tile_source_title" />
 
     <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
+        app:iconSpaceReserved="false"
         android:key="data_retain_time"
         android:title="@string/pref_delete_old_data_after"
         android:summary="@string/pref_delete_old_data_after_summary"
@@ -35,6 +39,7 @@
         android:negativeButtonText="@android:string/cancel" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="update_local_statistics"
         android:title="@string/pref_update_local_statistics"
         android:summary="@string/pref_update_local_statistics_summary"
@@ -42,6 +47,7 @@
         android:persistent="true" />
 
     <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
+        app:iconSpaceReserved="false"
         android:key="gps_interval"
         android:title="@string/pref_gps_interval_title"
         android:summary="@string/pref_interval_summary"
@@ -56,6 +62,7 @@
         android:negativeButtonText="@android:string/cancel" />
 
     <de.westnordost.streetcomplete.screens.settings.NumberPickerPreference
+        app:iconSpaceReserved="false"
         android:key="network_interval"
         android:title="@string/pref_network_interval_title"
         android:summary="@string/pref_interval_summary"
@@ -70,20 +77,24 @@
         android:negativeButtonText="@android:string/cancel" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="trees"
         android:title="@string/pref_trees_title"
         android:summary="@string/pref_tree_custom_quest_summary" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="custom_quest"
         android:title="@string/pref_custom_title"
         android:summary="@string/pref_tree_custom_quest_summary" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="export"
         android:title="@string/pref_export" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="import"
         android:title="@string/pref_import" />
 

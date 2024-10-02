@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeController
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setViewWithDefaultPadding
+import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.toast
 import io.ticofab.androidgpxparser.parser.GPXParser
 import kotlinx.coroutines.GlobalScope
@@ -49,7 +50,7 @@ class DisplaySettingsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.rootView.findViewById<Toolbar>(R.id.toolbar)?.apply {
-//            setUpToolbarTitleAndIcon(this)
+            setUpToolbarTitleAndIcon(this)
         }
     }
 

@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.getRawBlockList
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.screens.HasTitle
 import de.westnordost.streetcomplete.util.dialogs.setDefaultDialogPadding
+import de.westnordost.streetcomplete.util.ktx.setUpToolbarTitleAndIcon
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -40,7 +41,7 @@ class NoteSettingsFragment : PreferenceFragmentCompat(), HasTitle {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.rootView.findViewById<Toolbar>(R.id.toolbar)?.apply {
-//            setUpToolbarTitleAndIcon(this)
+            setUpToolbarTitleAndIcon(this)
         }
     }
 

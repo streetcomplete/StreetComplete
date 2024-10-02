@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="gpx_button"
         android:title="@string/pref_show_gpx_button_title"
         android:summary="@string/pref_show_gpx_button_summary"
@@ -9,12 +11,14 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="swap_gpx_note_buttons"
         android:title="@string/pref_swap_gpx_note_button"
         android:defaultValue="false"
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="hide_keyboard_for_note"
         android:title="@string/pref_hide_keyboard_title"
         android:summary="@string/pref_hide_keyboard_summary"
@@ -22,6 +26,7 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="create_external_quests"
         android:title="@string/pref_create_custom_quest_title"
         android:summary="@string/pref_create_custom_quest_summary"
@@ -29,6 +34,7 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="save_photos"
         android:title="@string/pref_save_photos_title"
         android:summary="@string/pref_save_photos_summary"
@@ -36,14 +42,17 @@
         android:persistent="true" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="hide_notes_by2"
         android:title="@string/pref_hide_notes_title" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="get_gpx_notes"
         android:title="@string/pref_save_gpx" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="get_photos"
         android:title="@string/pref_get_photos_title" />
 

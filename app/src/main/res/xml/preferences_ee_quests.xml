@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListPreference
+        app:iconSpaceReserved="false"
         android:key="day_night_behavior"
         android:title="@string/pref_day_night_title"
         app:useSimpleSummaryProvider="true"
@@ -12,11 +13,13 @@
         android:persistent="true" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="advanced_resurvey"
         android:title="@string/pref_advanced_resurvey_title"
         android:summary="@string/pref_advanced_resurvey_summary" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="quest_settings_per_preset"
         android:title="@string/pref_quest_settings_preset_title"
         android:summary="@string/pref_quest_settings_preset_summary"
@@ -24,6 +27,7 @@
         android:persistent="true" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="dynamic_quest_creation"
         android:title="@string/pref_dynamic_quest_creation_title"
         android:summary="@string/pref_dynamic_quest_creation_summary"
@@ -31,11 +35,13 @@
         android:persistent="true" />
 
     <Preference
+        app:iconSpaceReserved="false"
         android:key="quest_monitor"
         android:title="@string/pref_quest_monitor_title"
         android:summary="@string/pref_quest_monitor_summary" />
 
     <SwitchPreference
+        app:iconSpaceReserved="false"
         android:key="hide_overlay_quests"
         android:title="@string/pref_hide_overlay_quests"
         android:defaultValue="true"

@@ -93,7 +93,7 @@
     </style>
 
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="tint">?attr/colorControlNormal</item>
+        <item name="tint">@android:color/white</item>
     </style>
 
 </resources>
