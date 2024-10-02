@@ -1,6 +1,6 @@
 Do you have an idea for a new overlay? Read this!
 
-First of all, the same general limitations and guidelines as for quests apply, see the [quest guidelines](QUEST_GUIDELINES.md). Additionally, data is only eligible for an overlay if:
+First of all, the same general limitations and guidelines as for quests apply, see the [quest guidelines](QUEST_GUIDELINES.md) — with the exception of *"💤 No spam"*, *"🤔 No unanswerable quests"* and *"💵 Valuable Surveyors"* which either don't apply, or have lower importance than in quests. Additionally, data is only eligible for an overlay if:
 
 ### Overlay guidelines
 - 🕸️ **Contextual only**: Overlays should only be used to display data that only makes sense in relation to neighbouring data, e.g. data in a network (such as cycleways, speed limits, ...) or data that depends (to a degree) how surrounding data is tagged (such as road smoothness, lit status, ...).
