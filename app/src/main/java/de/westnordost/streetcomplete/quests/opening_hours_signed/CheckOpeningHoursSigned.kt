@@ -28,6 +28,8 @@ class CheckOpeningHoursSigned(
         nodes, ways with
           opening_hours:signed = no
           and (
+            $hasOldOpeningHoursCheckDateFilter
+            or
             $hasOldOpeningHoursSignedCheckDateFilter
             or older today -1 years
           )
@@ -37,6 +39,11 @@ class CheckOpeningHoursSigned(
             or amenity ~ recycling|toilets|bicycle_rental|charging_station or leisure = park or barrier
           )
     """.toElementFilterExpression() }
+
+    private val hasOldOpeningHoursCheckDateFilter: String get() =
+        getLastCheckDateKeys("opening_hours").joinToString("\nor ") {
+            "$it < today -1 years"
+        }
 
     private val hasOldOpeningHoursSignedCheckDateFilter: String get() =
         getLastCheckDateKeys("opening_hours:signed").joinToString("\nor ") {

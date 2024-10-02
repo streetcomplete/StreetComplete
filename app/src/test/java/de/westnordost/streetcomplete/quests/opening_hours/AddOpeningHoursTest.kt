@@ -293,6 +293,42 @@ class AddOpeningHoursTest {
         )))
     }
 
+    @Test fun `isApplicableTo returns false if the opening hours check date is older than 1 year, while they are not signed and signed check date is less than 1 year old`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours:signed" to "no",
+                "check_date:opening_hours" to RelativeDate(-420f).date.toCheckDateString(),
+                "check_date:opening_hours:signed" to RelativeDate(-180f).date.toCheckDateString()
+            ),
+            timestamp = RelativeDate(-365f).date.toCheckDateString().toCheckDate()?.toEpochMilli()
+        )))
+    }
+
+    @Test fun `isApplicableTo returns false if the opening hours check date is older than 1 year, while they are not signed and no signed check date exists`() {
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours:signed" to "no",
+                "check_date:opening_hours" to RelativeDate(-420f).date.toCheckDateString(),
+            ),
+            timestamp = RelativeDate(-365f).date.toCheckDateString().toCheckDate()?.toEpochMilli()
+        )))
+    }
+
+    @Test fun `isApplicableTo returns true if the last edit is older than 1 year and no check dates exists`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "supermarket",
+                "name" to "Supi",
+                "opening_hours:signed" to "no"
+            ),
+            timestamp = RelativeDate(-420f).date.toCheckDateString().toCheckDate()?.toEpochMilli()
+        )))
+    }
+
     @Test fun `isApplicableTo returns true if the opening hours are not signed and signed check date is older than 1 year`() {
         assertTrue(questType.isApplicableTo(node(
             tags = mapOf(

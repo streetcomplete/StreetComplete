@@ -4,9 +4,11 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
+import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -66,6 +68,16 @@ class CheckOpeningHoursSignedTest {
             "opening_hours" to "Mo 10:00-12:00",
             "opening_hours:signed" to "yes"
         ))))
+    }
+    @Test fun `is applicable if the opening hours not signed and only check date for OH exists`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf(
+                "name" to "rundumdieuhr kiosk",
+                "opening_hours:signed" to "no",
+                "check_date:opening_hours" to "2021-03-01"
+            ),
+            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+        )))
     }
 
     @Test fun `apply yes answer with no prior check date`() {
