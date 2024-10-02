@@ -261,6 +261,7 @@ private suspend fun createEditAction(
     val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
     val hasChangedNames = previousNames != newNames
     val hasChangedFeature = newFeature != previousFeature
+    val hasChangedFeatureType = previousFeature?.id?.substringBeforeLast("/") != newFeature.id.substringBeforeLast("/")
     val isFeatureWithName = newFeature.addTags.get("name") != null
     val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
     val wasVacant = element != null && element.isDisusedPlace()
@@ -276,7 +277,7 @@ private suspend fun createEditAction(
         || element == null
     val shouldAlwaysReplaceShop =
         // the feature is or was a brand feature (i.e. overwrites the name)
-        isFeatureWithName || wasFeatureWithName
+        (isFeatureWithName || wasFeatureWithName) && hasChangedFeatureType
         // was vacant before but not anymore (-> cleans up any previous tags that may be
         // associated with the old place)
         || wasVacant && hasChangedFeature
