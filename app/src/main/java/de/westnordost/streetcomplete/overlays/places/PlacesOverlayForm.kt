@@ -260,7 +260,7 @@ private suspend fun createEditAction(
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
     val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
-    val hasChangedNames = previousNames != newNames
+    var hasChangedNames = previousNames != newNames
     val hasChangedFeature = newFeature != previousFeature
     val newFeatureType = if (newFeature.isSuggestion) newFeature.id.substringBeforeLast("/") else newFeature.id
     val previousFeatureType = if (previousFeature?.isSuggestion == true) previousFeature?.id?.substringBeforeLast("/") else previousFeature?.id
@@ -269,6 +269,12 @@ private suspend fun createEditAction(
     val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
+
+    if (newFeature.isSuggestion) {
+        // selecting NSI preset will always return empty newNames, even if NSI does set new name=* tag
+        Log.w("NSI dbg2", "org.hasChangedNames=${hasChangedNames}")
+        hasChangedNames = listOf(LocalizedName("", newFeature.addTags.get("name").orEmpty())) != previousNames
+    }
 
     val shouldNotReplaceShop =
         // if NSI added e.g. wikidata details, but neither names nor types changed (see #5940)
@@ -289,7 +295,7 @@ private suspend fun createEditAction(
         // it's vacant now
         || isVacant
 
-    Log.w("NSI dbg", "shouldNotReplaceShop=${shouldNotReplaceShop} shouldAlwaysReplaceShop=${shouldAlwaysReplaceShop} isVacant=${isVacant} wasVacant=${wasVacant} hasChangedNames=${hasChangedNames} hasChangedFeatureType=${hasChangedFeatureType} hasChangedFeature=${hasChangedFeature} hasAddedNames=${hasAddedNames} isFeatureWithName=${isFeatureWithName} wasFeatureWithName=${wasFeatureWithName} newFeatureType=${newFeatureType} previousFeatureType=${previousFeatureType} previousNames=${previousNames} newNames=${newNames}")
+    Log.w("NSI dbg", "shouldNotReplaceShop=${shouldNotReplaceShop} shouldAlwaysReplaceShop=${shouldAlwaysReplaceShop} isVacant=${isVacant} wasVacant=${wasVacant} hasChangedNames=${hasChangedNames} hasChangedFeatureType=${hasChangedFeatureType} hasChangedFeature=${hasChangedFeature} hasAddedNames=${hasAddedNames} isFeatureWithName=${isFeatureWithName} wasFeatureWithName=${wasFeatureWithName} newFeatureType=${newFeatureType} previousFeatureType=${previousFeatureType} previousNames=${previousNames} newNames=${newNames} newTagName=" + newFeature.addTags.get("name") +" previousTagName=" + previousFeature?.addTags?.get("name") + " newTagsLocalizedName=" + listOf(LocalizedName("", newFeature.addTags.get("name").orEmpty())))
 
     val doReplaceShop =
         if (shouldNotReplaceShop) {
