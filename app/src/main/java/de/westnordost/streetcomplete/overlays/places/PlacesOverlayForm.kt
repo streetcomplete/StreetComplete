@@ -43,7 +43,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
-import de.westnordost.streetcomplete.util.logs.Log
 
 class PlacesOverlayForm : AbstractOverlayForm() {
 
@@ -272,7 +271,6 @@ private suspend fun createEditAction(
 
     if (newFeature.isSuggestion) {
         // selecting NSI preset will always return empty newNames, even if NSI does set new name=* tag
-        Log.w("NSI dbg2", "org.hasChangedNames=${hasChangedNames}")
         hasChangedNames = listOf(LocalizedName("", newFeature.addTags.get("name").orEmpty())) != previousNames
     }
 
@@ -294,8 +292,6 @@ private suspend fun createEditAction(
         || wasVacant && hasChangedFeature
         // it's vacant now
         || isVacant
-
-    Log.w("NSI dbg", "shouldNotReplaceShop=${shouldNotReplaceShop} shouldAlwaysReplaceShop=${shouldAlwaysReplaceShop} isVacant=${isVacant} wasVacant=${wasVacant} hasChangedNames=${hasChangedNames} hasChangedFeatureType=${hasChangedFeatureType} hasChangedFeature=${hasChangedFeature} hasAddedNames=${hasAddedNames} isFeatureWithName=${isFeatureWithName} wasFeatureWithName=${wasFeatureWithName} newFeatureType=${newFeatureType} previousFeatureType=${previousFeatureType} previousNames=${previousNames} newNames=${newNames} newTagName=" + newFeature.addTags.get("name") +" previousTagName=" + previousFeature?.addTags?.get("name") + " newTagsLocalizedName=" + listOf(LocalizedName("", newFeature.addTags.get("name").orEmpty())))
 
     val doReplaceShop =
         if (shouldNotReplaceShop) {
