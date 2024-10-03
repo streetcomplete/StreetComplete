@@ -12,8 +12,8 @@ class AddCrossingForm : AListQuestForm<CrossingAnswer>() {
     private val mapDataSource: MapDataWithEditsSource by inject()
 
     override val items = listOf(
-        TextItem(YES, R.string.quest_crossing_yes2),
-        TextItem(INFORMAL, R.string.quest_crossing_no2),
+        TextItem(YES, R.string.quest_crossing_yes),
+        TextItem(INFORMAL, R.string.quest_crossing_no),
         TextItem(PROHIBITED, R.string.quest_crossing_prohibited),
     )
     /*
