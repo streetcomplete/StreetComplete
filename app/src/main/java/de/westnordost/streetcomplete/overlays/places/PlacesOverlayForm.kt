@@ -246,6 +246,9 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 }
 
+/** return the id of the feature, without any brand stuff */
+private val Feature.featureId get() = if (isSuggestion) id.substringBeforeLast("/") else id
+
 private suspend fun createEditAction(
     element: Element?,
     geometry: ElementGeometry,
@@ -261,8 +264,8 @@ private suspend fun createEditAction(
     val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
     var hasChangedNames = previousNames != newNames
     val hasChangedFeature = newFeature != previousFeature
-    val newFeatureType = if (newFeature.isSuggestion) newFeature.id.substringBeforeLast("/") else newFeature.id
-    val previousFeatureType = if (previousFeature?.isSuggestion == true) previousFeature?.id?.substringBeforeLast("/") else previousFeature?.id
+    val newFeatureType = newFeature.featureId
+    val previousFeatureType = previousFeature?.featureId
     val hasChangedFeatureType = previousFeatureType != newFeatureType
     val isFeatureWithName = newFeature.addTags.get("name") != null
     val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
