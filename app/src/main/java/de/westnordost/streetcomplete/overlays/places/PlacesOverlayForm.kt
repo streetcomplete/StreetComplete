@@ -274,7 +274,7 @@ private suspend fun createEditAction(
 
     if (newFeature.isSuggestion) {
         // selecting NSI preset will always return empty newNames, even if NSI does set new name=* tag
-        hasChangedNames = listOf(LocalizedName("", newFeature.addTags.get("name").orEmpty())) != previousNames
+        hasChangedNames = parseLocalizedNames(newFeature.addTags) != previousNames
     }
 
     val shouldNotReplaceShop =
