@@ -998,8 +998,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_crossing_kerb_height_title">What’s the height of the curbs at this crossing?</string>
 
     <string name="quest_crossing_title2">Is there a crossing here?</string>
-    <string name="quest_crossing_yes">Yes (e.g. the curb is lowered here or there are markings)</string>
-    <string name="quest_crossing_no">No, but there is an informal crossing (e.g. informal trail)</string>
+    <string name="quest_crossing_yes2">Yes, intended as crossing</string>
+    <string name="quest_crossing_no2">Not intended as crossing, still possible to cross (e.g. informal trails)</string>
     <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
     <string name="quest_crossing_hint">Informal crossings usually look like this:</string>
 
