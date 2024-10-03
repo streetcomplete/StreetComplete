@@ -82,6 +82,7 @@ boat_rental/
     jetski.svg                  Australian Water Safety Council, License: PD
     kayak.svg                   Australian Water Safety Council, License: PD
     motorboat.svg               modified images from Australian Water Safety Council, License: PD
+    pedalboat.svg               
     rowboat.svg                 mashup of different images from Australian Water Safety Council, License: PD
     sailboard.svg               Australian Water Safety Council, License: PD
     sailboat.svg                Australian Water Safety Council, License: PD
