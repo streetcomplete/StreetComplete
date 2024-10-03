@@ -1,5 +1,12 @@
 # Changelog
 
+## v59.2
+
+- Fix notes that contained a "&" weren't showing correctly (#5938)
+- Show remarks from other mappers in all quest and overlay forms (#5794, #5889), by @kmpoppe
+- Clarify some wordings (#5927, #5936), thanks @schra
+- Places overlay: Various small improvements (#5926, #5940, #5944), by @mnalis
+
 ## v59.1
 
 - Crash issue on subsequent app starts was maybe fixed in MapLibre (#5850)
