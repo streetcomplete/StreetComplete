@@ -168,6 +168,7 @@ class AddOpeningHours(
         if (answer is NoOpeningHoursSign) {
             tags["opening_hours:signed"] = "no"
             tags.updateCheckDateForKey("opening_hours:signed")
+            tags.removeCheckDatesForKey("opening_hours")
             // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
         } else {
             val openingHoursString = when (answer) {
