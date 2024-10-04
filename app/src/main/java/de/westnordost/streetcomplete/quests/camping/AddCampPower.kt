@@ -17,7 +17,7 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
-          tourism ~ camp_site|caravan_site and (
+          tourism ~ camp_site|caravan_site|alpine_hut and (
             !power_supply
             or power_supply older today -4 years and power_supply ~ yes|no
           )
