@@ -2,10 +2,13 @@
 
 ## v59.2
 
+- Second try: Crash issue on subsequent app starts is maybe fixed in MapLibre (#5850)
 - Fix notes that contained a "&" weren't showing correctly (#5938)
+- added Argentinian Spanish by Ignacio L'Episcopo
 - Show remarks from other mappers in all quest and overlay forms (#5794, #5889), by @kmpoppe
 - Clarify some wordings (#5927, #5936), thanks @schra
 - Places overlay: Various small improvements (#5926, #5940, #5944), by @mnalis
+- Power supply: Also ask for alpine huts (#5943)
 
 ## v59.1
 

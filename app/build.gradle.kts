@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5906
-        versionName = "59.1"
+        versionCode = 5907
+        versionName = "59.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -202,7 +202,7 @@ dependencies {
     implementation("io.github.pdvrieze.xmlutil:core:0.90.1")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.5.0")
+    implementation("org.maplibre.gl:android-sdk:11.5.1")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")

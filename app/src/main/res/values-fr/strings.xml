@@ -194,7 +194,7 @@ S’il n’y a pas de panneau applicable à ce tronçon le long de la voie, les 
     <string name="quest_wheelchairAccess_limited">"En partie"</string>
     <string name="quest_bikeParkingCapacity_hint">"Notez que la plupart des arceaux peuvent accueillir un vélo de chaque côté."</string>
     <string name="quest_sport_roller_skating">"Patin à roulettes"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"« En partie » signifie qu’il n’y a qu’une seule marche pour accéder au lieu et que la plupart des pièces à l’intérieur sont accessibles en fauteuil roulant."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"« En partie » signifie qu’il n’y a pas plus d'une marche pour accéder au lieu et que la plupart des pièces à l’intérieur sont accessibles en fauteuil roulant."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"« En partie » signifie qu’il n’y a qu’une seule marche pour y accéder."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation dans le nom %s ?"</string>
     <string name="quest_recycling_type_title">"De quel type d’installation de recyclage s’agit-il ?"</string>
@@ -1397,6 +1397,7 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="action_manage_presets_summary">"Sous quel nom est enregistré la sélection de quête ci-dessous."</string>
     <string name="quest_multiselect_hint">"Sélectionner tous ceux qui correspondent :"</string>
     <string name="quest_barrier_opening_width_gate">"Quelle est la largeur de l’ouverture ?"</string>
+    <string name="bridge">"sur le pont"</string>
     <string name="about_title_intro">"Voir l’introduction"</string>
     <string name="about_category_help">"Aide"</string>
     <string name="quest_camp_power_supply_hint">"Il peut s’agir de prises directement sur les emplacements du camping, de prises dans un bâtiment commun accessible aux clients, d’une borne de recharge dédiée pour téléphones, ordinateurs portables, etc."</string>
@@ -1404,4 +1405,5 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="user_profile_all_time_title">"Global"</string>
     <string name="user_statistics_country_rank2">"Rang en %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"C’est une souche"</string>
+    <string name="quest_board_name_title">"Quel est le titre de ce panneau d'information ?"</string>
 </resources>

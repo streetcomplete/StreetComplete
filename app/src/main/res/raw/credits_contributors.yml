@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 482274
-  linesOfInterfaceMarkupChanged: 152677
-  assetFilesChanged: 2130
+  linesOfCodeChanged: 482362
+  linesOfInterfaceMarkupChanged: 152680
+  assetFilesChanged: 2145
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
   linesOfCodeChanged: 22172
@@ -30,7 +30,7 @@
   assetFilesChanged: 4
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3422
+  linesOfCodeChanged: 3512
   linesOfInterfaceMarkupChanged: 523
   assetFilesChanged: 70
 - name: "arrival-spring"
@@ -114,16 +114,16 @@
   linesOfCodeChanged: 344
   linesOfInterfaceMarkupChanged: 1956
   assetFilesChanged: 56
+- name: "Kai Michael Poppe"
+  githubUsername: "kmpoppe"
+  linesOfCodeChanged: 291
+  linesOfInterfaceMarkupChanged: 297
+  assetFilesChanged: 44
 - name: "mcliquid"
   githubUsername: "mcliquid"
   linesOfCodeChanged: 286
   linesOfInterfaceMarkupChanged: 442
   assetFilesChanged: 8
-- name: "Kai Michael Poppe"
-  githubUsername: "kmpoppe"
-  linesOfCodeChanged: 268
-  linesOfInterfaceMarkupChanged: 203
-  assetFilesChanged: 44
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230
@@ -228,6 +228,10 @@
 - name: "Jeroen Hoek"
   githubUsername: "jdhoek"
   linesOfCodeChanged: 17
+- name: "André Schröder"
+  githubUsername: "schra"
+  linesOfCodeChanged: 16
+  assetFilesChanged: 4
 - name: "typebrook"
   linesOfCodeChanged: 16
 - name: "Nils Rokita"

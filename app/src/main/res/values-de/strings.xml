@@ -101,7 +101,7 @@ Bevor deine Änderungen hochgeladen werden, überprüft die App mithilfe &lt;a h
     <string name="quest_surface_value_unpaved">"Unbefestigt (allgemein)"</string>
     <string name="quest_surface_value_ground">"Naturbelassen (allgemein)"</string>
     <string name="quest_surface_value_asphalt">"Asphalt"</string>
-    <string name="quest_surface_value_compacted">"Verdichtet"</string>
+    <string name="quest_surface_value_compacted">"Verdichteter Splitt"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Erde"</string>
     <string name="quest_surface_value_fine_gravel">"Feiner Splitt"</string>
@@ -766,7 +766,8 @@ Erfolge"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Hat eine gemeinsame Linksabbiegerspur für beide Richtungen"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Ist das korrekt?"</string>
     <string name="quest_maxheight_below_bridge_title">"Was ist die Durchfahrtshöhe unter dieser Brücke?"</string>
-    <string name="quest_maxheight_split_way_hint">"Wenn die Maximalhöhe nicht für die gesamte Strecke zutrifft, erwäge, mit „%s“ zu antworten."</string>
+    <string name="quest_maxheight_split_way_hint">"Diese Frage wird auch für Straßen gestellt, die unter Brücken, Dächern, usw. verlaufen.
+Wenn die Maximalhöhe nicht für die gesamte Strecke zutrifft, erwäge, mit „%s“ zu antworten."</string>
     <string name="quest_tactile_paving_kerb_title">"Hat dieser Bordstein eine taktile Pflasterung für Blinde?"</string>
     <string name="quest_kerb_height_title">"Wie hoch ist dieser Bordstein?"</string>
     <string name="quest_kerb_height_flush">"bildet eine Ebene mit der Fahrbahn"</string>
@@ -1275,8 +1276,8 @@ Jetzt verschieben?"</string>
     <string name="overlay_surface">"Oberflächen"</string>
     <string name="overlay_path_surface_segregated">"Aufspalten in getrennten Rad- und Gehweg"</string>
     <string name="quest_crossing_title2">"Ist hier ein Fußgängerüberweg?"</string>
-    <string name="quest_crossing_yes">"Ja (der Bordstein ist z. B. abgesenkt oder es gibt Markierungen)"</string>
-    <string name="quest_crossing_no">"Nein, aber man kann hier trotzdem rüber"</string>
+    <string name="quest_crossing_yes">"Ja, als Überweg vorgesehen"</string>
+    <string name="quest_crossing_no">"Nicht als Überweg vorgesehen, trotzdem kann man hier rüber (z.B. Trampelpfade)"</string>
     <string name="quest_crossing_prohibited">"Nein, das Überqueren ist hier verboten oder unmöglich"</string>
     <string name="quest_hairdresser_title">"Wer sind die Kunden dieses Friseurs?"</string>
     <string name="quest_hairdresser_male_and_female">"Alle"</string>
@@ -1379,8 +1380,7 @@ Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden.
     <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Es gibt zwar einen Gehweg, aber er wird auf der Karte separat angezeigt."</string>
     <string name="quest_buildingLevels_hint">"Bei Gebäuden in Hanglage beginnt die Zählung der Stockwerke mit dem Bodenniveau der untersten Ebene.
 
-Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer mit null Dachebenen sind also nicht unbedingt flach, sondern nur nicht hoch genug für eine ganze Ebene.
-    "</string>
+Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer mit null Dachebenen sind also nicht unbedingt flach, sondern nur nicht hoch genug für eine ganze Ebene."</string>
     <string name="quest_parcel_locker_brand">"Was ist die Marke dieser Packstation?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Stromleitung ist am Gebäude befestigt"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"Keiner, aber ein Schild erlaubt Radfahren auf dem Bürgersteig"</string>
@@ -1409,4 +1409,6 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="user_statistics_country_rank2">"Rang in %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Es ist bloß ein Baumstumpf"</string>
     <string name="quest_board_name_title">"Wie lautet der Titel dieser Informationstafel?"</string>
+    <string name="quest_crossing_hint">"Ein Trampelpfad, der eine Straße kreuzt:"</string>
+    <string name="note_for_object">"Jemand merkte an:"</string>
 </resources>
