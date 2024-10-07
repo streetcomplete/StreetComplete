@@ -321,3 +321,6 @@ vibrating_button_i... (MCC234) CC0               CJ Malone
 vibrating_button_i... (MCC505) CC0               https://commons.wikimedia.org/wiki/File:An_Australian_pedestrian_crossing_button.jpg (James Cridland)
 
 informal_crossing.jpg          CC-SA 2.0         https://wiki.openstreetmap.org/wiki/File:West_Highland_Way_crossing_road_-_geograph.org.uk_-_3986498_(cropped).jpg
+
+crossing_marking_zebra.jpg     CC0               https://wiki.openstreetmap.org/wiki/File:Zebrastreifen.jpg
+crossing_marking_dots.jpg      CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Pelican_between_King_George_Rec_and_Cosham_Park_-_geograph.org.uk_-_729204.jpg

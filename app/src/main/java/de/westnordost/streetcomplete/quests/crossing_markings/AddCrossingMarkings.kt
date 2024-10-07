@@ -40,6 +40,12 @@ class AddCrossingMarkings : OsmElementQuestType<Boolean> {
     override val icon = R.drawable.ic_quest_pedestrian_crossing
     override val achievements = listOf(PEDESTRIAN)
 
+    override val hint =  R.string.quest_pedestrian_crossing_markings_hint
+    override val hintImages = listOf(
+        R.drawable.crossing_marking_zebra,
+        R.drawable.crossing_marking_dots,
+    )
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_markings
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
