@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -175,6 +176,10 @@ abstract class AbstractQuestForm :
         updateInfoButtonVisibility()
     }
 
+    protected fun setObjNote(text: CharSequence?) {
+        binding.noteLabel.text = text
+        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
+    }
     protected fun setHintImages(images: List<Drawable>) {
         binding.infoPictures.isGone = images.isEmpty()
         binding.infoPictures.removeAllViews()

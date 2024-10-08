@@ -120,6 +120,55 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:id="@+id/speechbubbleNoteContainer"
+                android:background="@drawable/speech_bubble_none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
+                android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
+                android:layout_marginBottom="4dp"
+                android:showDividers="middle"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:divider="@drawable/space_16dp"
+                android:elevation="@dimen/speech_bubble_elevation"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/noteArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/titleNoteLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.TitleMedium"
+                        android:text="@string/note_for_object" />
+
+                    <TextView
+                        android:id="@+id/noteLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Body"
+                        android:textStyle="italic"
+                        android:textColor="@color/hint_text"
+                        android:autoLink="web"
+                        android:textIsSelectable="true" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
             <!-- Necessary because even if the bottom sheet is already expanded, the content might
                  be still too large to fit onto the screen without scrolling (it often is) -->
             <androidx.core.widget.NestedScrollView

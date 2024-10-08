@@ -30,9 +30,10 @@ bs:
    msrep: 127
 ca: 
    Pau Nofuentes Sendra: 19567
-   jmaspons: 11596
-   Joan Montané: 9814
-   Josep: 1914
+   jmaspons: 11382
+   Joan Montané: 9800
+   Xavizard Knight: 3708
+   Josep: 1837
    el_libre: 1375
    Ruben Moreno Romero: 1034
    JOAQUIN: 936
@@ -53,7 +54,7 @@ cs:
    Beavel: 37
    Vladankudlac: 19
 da: 
-   ERyPTION: 31882
+   ERyPTION: 31941
    Dennis Kjær Jensen: 5685
    Soren: 3393
    Leonora: 2496
@@ -66,9 +67,9 @@ da:
    Youri Lima: 13
    Freso: 12
 de: 
-   Flo Edelmann: 16635
+   Flo Edelmann: 16480
    Mr. Update: 8166
-   mcliquid: 2356
+   mcliquid: 2067
    legofahrrad: 1906
    Pixelcode: 1738
    papojari: 742
@@ -157,16 +158,17 @@ eo:
    Michal Matúšov: 14
    Voltinus: 6
 es: 
-   Swyter: 35466
-   sanchi: 6869
+   Swyter: 34137
+   sanchi: 6610
+   Ignacio L'Episcopo: 2258
    jimmy: 1499
    Hugoren Martinako: 1286
-   bletroca: 701
-   Jose Luis Infante: 631
-   Roboe: 591
+   Jose Luis Infante: 611
    Víctor Suárez: 590
+   Roboe: 563
+   bletroca: 538
    Gabrieljgaleano: 316
-   Javi: 305
+   Javi: 263
    jaimeMF: 211
    Renzo: 209
    10992: 182
@@ -180,6 +182,8 @@ es:
    rugk: 30
    Adolfo Jayme Barrientos: 24
    Manu: 11
+es-AR: 
+   Ignacio L'Episcopo: 52919
 eu: 
    Osoitz: 16611
    alexgabi: 15068
@@ -204,14 +208,14 @@ fa:
    Goudarz Jafari: 29
    Saeed: 13
 fi: 
-   Rik: 16353
-   Jiri Grönroos: 10893
-   OpenKartat: 5434
-   Aleksi.klasila: 4436
+   Rik: 16973
+   Jiri Grönroos: 10762
+   OpenKartat: 5380
+   Aleksi.klasila: 4261
    Jarmo Sutinen: 2612
-   Juhana Uuttu: 2554
+   Juhana Uuttu: 2546
    Harri: 1069
-   Jimi Viita-aho: 1067
+   Jimi Viita-aho: 1063
    Kantele: 711
    Ikx: 596
    Risto: 554
@@ -247,6 +251,7 @@ fr:
    Jean-Baptiste Holcroft: 286
    yahn_f: 237
    Greg: 228
+   Papapoulp: 216
    gendy54: 206
    Jamie Nadeau: 195
    Rodolphe: 189
@@ -293,7 +298,7 @@ he:
    Slava Sukhochev: 3226
    Ilya Kogan: 390
 hr: 
-   Matija Nalis: 48125
+   Matija Nalis: 48302
    Nemanja Bračko: 59
    Mario: 9
 hu: 
@@ -398,7 +403,7 @@ nb:
    Simen Heggestøyl: 1628
    Syver: 1551
    Halvor: 1403
-   Trond Kjetil Bremnes: 844
+   Trond Kjetil Bremnes: 1331
    10992: 822
    Mathias Haugsbø: 727
    Patchie: 192
@@ -471,7 +476,7 @@ pl:
    Michal: 38
    psokol: 24
 pt: 
-   Carnum: 40481
+   Carnum: 40619
    NunoCaldeira: 5520
    Rui: 2644
    waldyrious: 1919

@@ -153,6 +153,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead.</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
     <string name="leave_note">Leave note</string>
+    <string name="note_for_object">Another person noted:</string>
 
     <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
     <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each part separately.\nSplit it now?</string>
@@ -998,9 +999,10 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_crossing_kerb_height_title">What’s the height of the curbs at this crossing?</string>
 
     <string name="quest_crossing_title2">Is there a crossing here?</string>
-    <string name="quest_crossing_yes">Yes (e.g. the curb is lowered here or there are markings)</string>
-    <string name="quest_crossing_no">No, but crossing is possible</string>
+    <string name="quest_crossing_yes">Yes, intended as crossing</string>
+    <string name="quest_crossing_no">Not intended as crossing, still possible to cross (e.g. informal trails)</string>
     <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
+    <string name="quest_crossing_hint">An informal trail crossing a road:</string>
 
     <string name="quest_cycleway_title2">"Is there a bicycle lane or path here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>

@@ -22,7 +22,7 @@ private fun XmlReader.parseNotes(): List<Note> = try {
 
     var note: ApiNote? = null
     var comment: ApiNoteComment? = null
-    val names = ArrayList<String>()
+    var string = ""
 
     forEach { when (it) {
         START_ELEMENT -> {
@@ -30,34 +30,37 @@ private fun XmlReader.parseNotes(): List<Note> = try {
                 "note" -> note = ApiNote(LatLon(attribute("lat").toDouble(), attribute("lon").toDouble()))
                 "comment" -> comment = ApiNoteComment()
             }
-            names.add(localName)
+            string = ""
         }
-        TEXT -> when (names.lastOrNull()) {
+        // regarding IGNORABLE_WHITESPACE: https://github.com/pdvrieze/xmlutil/issues/241
+        TEXT, ENTITY_REF, CDSECT, IGNORABLE_WHITESPACE -> {
+            string += text
+        }
+        END_ELEMENT -> when (localName) {
+            // in note
+            "id" -> note?.id = string.toLong()
+            "date_created" -> note?.timestampCreated = parseTimestamp(string)
+            "date_closed" -> note?.timestampClosed = parseTimestamp(string)
+            "status" -> note?.status = Note.Status.valueOf(string.uppercase())
+
+            // in comment
+            "date" -> comment?.date = parseTimestamp(string)
+            "action" -> comment?.action = NoteComment.Action.valueOf(string.uppercase())
+            "text" -> comment?.text = string
+            "uid" -> comment?.uid = string.toLong()
+            "user" -> comment?.user = string
+
             // note
-            "id" -> note?.id = text.toLong()
-            "date_created" -> note?.timestampCreated = parseTimestamp(text)
-            "date_closed" -> note?.timestampClosed = parseTimestamp(text)
-            "status" -> note?.status = Note.Status.valueOf(text.uppercase())
-            // comment
-            "date" -> comment?.date = parseTimestamp(text)
-            "action" -> comment?.action = NoteComment.Action.valueOf(text.uppercase())
-            "text" -> comment?.text = text
-            "uid" -> comment?.uid = text.toLong()
-            "user" -> comment?.user = text
-        }
-        END_ELEMENT -> {
-            when (localName) {
-                "note" -> {
-                    val n = note!!
-                    result.add(Note(n.position, n.id!!, n.timestampCreated!!, n.timestampClosed, n.status!!, n.comments))
-                }
-                "comment" -> {
-                    val c = comment!!
-                    val cUser = if (c.user != null && c.uid != null) User(c.uid!!, c.user!!) else null
-                    note?.comments?.add(NoteComment(c.date!!, c.action!!, c.text, cUser))
-                }
+            "note" -> {
+                val n = note!!
+                result.add(Note(n.position, n.id!!, n.timestampCreated!!, n.timestampClosed, n.status!!, n.comments))
             }
-            names.removeLastOrNull()
+            // comment
+            "comment" -> {
+                val c = comment!!
+                val cUser = if (c.user != null && c.uid != null) User(c.uid!!, c.user!!) else null
+                note?.comments?.add(NoteComment(c.date!!, c.action!!, c.text, cUser))
+            }
         }
         else -> {}
     } }

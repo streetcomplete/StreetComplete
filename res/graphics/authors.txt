@@ -46,6 +46,19 @@ app icon/
 assembly point/
     assembly_point.svg          Epop, License: Public domain; https://commons.wikimedia.org/wiki/File:E011.svg
 
+boat_rental/
+    canoe.svg                   mashup of different images from Australian Water Safety Council, License: PD
+    houseboat.svg               parts taken from Twemoji: U+26F4
+    jetski.svg                  Australian Water Safety Council, License: PD
+    kayak.svg                   Australian Water Safety Council, License: PD
+    motorboat.svg               modified images from Australian Water Safety Council, License: PD
+    pedalboat.svg               
+    rowboat.svg                 mashup of different images from Australian Water Safety Council, License: PD
+    sailboard.svg               Australian Water Safety Council, License: PD
+    sailboat.svg                Australian Water Safety Council, License: PD
+    standup_paddleboard.svg     Australian Water Safety Council, License: PD
+    surfboard.svg               Australian Water Safety Council, License: PD
+
 bridge structure/
     arch.svg                    Jay Turner, License: CC0 1.0
     beam.svg                    Jay Turner, License: CC0 1.0

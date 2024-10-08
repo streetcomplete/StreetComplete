@@ -376,6 +376,7 @@ vibrating_button_illustrati... CC-BY 4.0         Tobias Zwick
 vibrating_button_i... (MCC234) CC0               CJ Malone
 vibrating_button_i... (MCC505) CC0               https://commons.wikimedia.org/wiki/File:An_Australian_pedestrian_crossing_button.jpg (James Cridland)
 
+informal_crossing.jpg          CC-SA 2.0         https://wiki.openstreetmap.org/wiki/File:West_Highland_Way_crossing_road_-_geograph.org.uk_-_3986498_(cropped).jpg
 ic_quest_tree.xml              Public Domain     https://commons.wikimedia.org/wiki/File:Broccoli-tree.svg (Dvortygirl)
 ic_quest_website.xml           Public Domain     https://commons.wikimedia.org/wiki/File:Web_(89510)_-_The_Noun_Project.svg
 

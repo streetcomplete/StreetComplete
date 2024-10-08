@@ -766,7 +766,7 @@ conquista"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Tem 1 via de trânsito para virar à esquerda em cada sentido"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Está correto?"</string>
     <string name="quest_maxheight_below_bridge_title">"Qual é o limite de altura por baixo da ponte?"</string>
-    <string name="quest_maxheight_split_way_hint">"Se não se aplicar a toda a via, pode responder \"%s\"."</string>
+    <string name="quest_maxheight_split_way_hint">"Esta pergunta também é feita para estradas que passam por baixo de pontes, telhados, tubos suspensos, etc./nAlém disso, se não se aplicar a toda a secção destacada, considere responder “%s”."</string>
     <string name="quest_tactile_paving_kerb_title">"Este lancil tem pavimento tátil?"</string>
     <string name="quest_kerb_height_title">"Qual é a altura deste lancil?"</string>
     <string name="quest_kerb_height_flush">"Mesmo nível da superfície da estrada"</string>

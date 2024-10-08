@@ -17,7 +17,7 @@
     <string name="quest_generic_confirmation_yes">"Sí, n'estic segur"</string>
     <string name="quest_generic_confirmation_no">"Ho comprovaré"</string>
     <string name="quest_leave_new_note_title">"Alternativament, vols deixar una nota?"</string>
-    <string name="quest_leave_new_note_description">"Podeu deixar una nota pública en aquesta ubicació que altres mapadors podran comentar i eventualment resoldre o alternativament amaga la missió només per a tu"</string>
+    <string name="quest_leave_new_note_description">"Podeu deixar una nota pública en aquesta ubicació que altres mapadors podran comentar i eventualment resoldre o alternativament pots amagar la missió només per a tu"</string>
     <string name="quest_leave_new_note_yes">"Deixeu una nota"</string>
     <string name="quest_leave_new_note_no">"No, només amaga-la"</string>
     <string name="quest_streetName_title">"Quin nom té aquesta via?"</string>
@@ -78,7 +78,7 @@
     <string name="privacy_html">"&lt;p&gt;Ah, algú que es preocupa per la privadesa, bé! Crec que només us tinc bones notícies:&lt;/p&gt;
 &lt;h2&gt;Contribucions directes&lt;/h2&gt;
 &lt;p&gt;
-En primer lloc, tingueu present que amb aquesta aplicació feu aportacions efectives i directes a l'OpenStreetMap.&lt;br/&gt;
+En primer lloc, tingueu present que amb aquesta aplicació feu aportacions efectives i directes a l'OpenStreetMap (OSM).&lt;br/&gt;
 Qualsevol cosa que contribuïu amb aquesta aplicació s'afegeix directament al mapa, no hi ha un tercer entre l'aplicació i la infraestructura de l'OSM.
 &lt;/p&gt;
 &lt;p&gt;
@@ -87,7 +87,7 @@ L'edició anònima de l'OpenStreetMap no és possible, de manera que qualsevol c
 
 &lt;h2&gt;Geolocalització&lt;/h2&gt;
 &lt;p&gt;
-L'aplicació no comparteix la vostra ubicació amb ningú. S'utilitza per a cercar automàticament missions que teniu a prop i per centrar (i per tant descarregar) el mapa al voltant de la vostra ubicació.
+L'aplicació no comparteix la vostra ubicació amb ningú. Sols s'utilitza per a cercar automàticament missions que teniu a prop i per centrar (i per tant descarregar) el mapa al voltant de la vostra ubicació.
 &lt;/p&gt;
 
 &lt;h2&gt;Ús de dades&lt;/h2&gt;
@@ -95,7 +95,7 @@ L'aplicació no comparteix la vostra ubicació amb ningú. S'utilitza per a cerc
 Com s'ha dit, l'aplicació es comunica directament amb la infraestructura d'OSM.&lt;\br&gt;
 No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fitxer de text pla&lt;/a&gt; en el meu servidor si té prohibit de pujar canvis. Aquesta és una mesura de precaució per a poder evitar que versions de l'aplicació que resultin tenir errors crítics puguin malmetre les dades de l'OSM.&lt;/p&gt;"</string>
     <string name="autosync_on">"Activat"</string>
-    <string name="autosync_only_on_wifi">"Només per Wifi"</string>
+    <string name="autosync_only_on_wifi">"Només Wi-Fi"</string>
     <string name="autosync_off">"Desactivat"</string>
     <string name="quest_streetSurface_title">"Quin tipus de superfície té aquest tram de via?"</string>
     <string name="quest_surface_value_paved">"Pavimentat (genèric)"</string>
@@ -526,7 +526,7 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_maxweight_unsupported_sign_request_photo">"Voleu deixar una nota? Una nota amb una fotografia permetrà a altres cartògrafs de fer-se'n càrrec."</string>
     <string name="quest_handrail_title">"Aquestes escales tenen barana?"</string>
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat."</string>
+    <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat. Prova de girar el mapa i ho entendràs millor."</string>
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
     <string name="quest_recycling_materials_note">"Si hi ha res que s'hi pot reciclar, diferent del que es pot seleccionar, aleshores deixeu una nota."</string>
     <string name="quest_recycling_type_batteries">"Bateries"</string>
@@ -763,7 +763,7 @@ d'acompliment"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Té un carril de gir esquerre de doble sentit"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"És això correcte?"</string>
     <string name="quest_maxheight_below_bridge_title">"Quin és el límit d'alçària sota el pont?"</string>
-    <string name="quest_maxheight_split_way_hint">"Si no s'aplica a tota la via, considereu respondre \"%s\"."</string>
+    <string name="quest_maxheight_split_way_hint">"Aquesta pregunta també s'aplica per a vies que pasen per sota de ponts, teulades, etc. Si no s'aplica a tota la via, considereu respondre \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Hi ha paviment tàctil en aquesta vorera aquí?"</string>
     <string name="quest_kerb_height_title">"Quina alçada té aquesta vorera?"</string>
     <string name="quest_kerb_height_flush">"El mateix nivell que la superfície de la via"</string>
@@ -1327,6 +1327,8 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_sanitary_dump_station_title">"Hi ha un abocador sanitari?"</string>
     <string name="quest_sanitary_dump_station_description">"Instal·lació per dipositar els residus humans d'un vàter d'una autocaravana, camió de llarg recorregut, etc. Normalment s'indica amb un senyal com aquest:"</string>
     <string name="quest_generalFee_title">"Cal pagar per utilitzar-lo?"</string>
+    <string name="quest_bbq_fuel_not_a_bbq">"És una foguera"</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Si no hi ha cap superfície per a cuinar (per exemple: no hi ha cap placa ni cap grill), aleshores és una foguera."</string>
     <string name="about_title_logs">"Registres (%1$d)"</string>
     <string name="about_summary_logs">"per utilitzar-los en informes d'errors"</string>
     <string name="action_filter">"Filtre"</string>
@@ -1347,6 +1349,10 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_disable_title">"Deshabilita aquest tipus de missió?"</string>
     <string name="quest_disable_message_not_installed">"StreetMeasure no és instal·lat (encara)."</string>
     <string name="quest_disable_message_not_working">"StreetMeasure no ha retornat una mesura."</string>
+    <string name="quest_disable_message_tape_measure">"També podries usar una cinta mètrica, però això podria ser força engorrós."</string>
+    <string name="quest_buildingType_outbuilding">"Edifici menor"</string>
+    <string name="quest_buildingType_outbuilding_description">"Edifici menor o de menys importància dins d'una propietat"</string>
+    <string name="quest_buildingType_other_description">"Un tipus d'edifici no disponible en aquesta aplicació"</string>
     <string name="quest_buildingType_container">"Contenidor"</string>
     <string name="quest_buildingType_tent">"Tenda de campanya"</string>
     <string name="quest_buildingType_tomb">"Tomba"</string>
@@ -1363,9 +1369,16 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_bbq_fuel_gas">"Gas"</string>
     <string name="about_description_donate_google_play3">"Gràcies per considerar ajudar aquesta aplicació!
 Podeu trobar informació sobre les donacions a la nostra web o al portal del projecte, Google Play no ens permet afegir l'enllaç dins de l'aplicació."</string>
+    <string name="quest_isAmenityIndoor_outside_covered">"No és interior, però està cobert"</string>
+    <string name="lit_value_unsupported">"Un tipus d'il·luminació no disponible en aquesta aplicació"</string>
     <string name="quest_generic_otherAnswers2">"Bufa…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Hi ha senyals de trànsit que indiquen quan creuar aquí?"</string>
+    <string name="quest_moped_access_title">"Hi ha senyals de trànsit que indiquen si els ciclomotors poden circular per aquest carril bici?"</string>
     <string name="quest_moped_access_allowed">"No hi ha cap senyal"</string>
+    <string name="quest_moped_access_designated">"Hi ha un senyal que permet la circulació de ciclomotors per aquest carril bici"</string>
+    <string name="quest_moped_access_forbidden">"Hi ha un senyal que prohibeix la circulació de ciclomotors"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Aquest grup de missions està desactivat per defecte perquè l'accés de ciclomotors sols s'especifica en senyals al principi o al final del carril bici."</string>
+    <string name="quest_arrow_tutorial">"Les fletxes estan orientades cap a les dues direccions dol via sortint des del punt central dol missió. Prova de girar el mapa i ho entendràs millor."</string>
     <string name="info">"Més informació"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"És prohibit."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"és permès."</string>
@@ -1374,13 +1387,32 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
 
 Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.
     "</string>
+    <string name="quest_parcel_locker_brand">"De quina marca és aquest armari de paquets?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"La línia elèctrica està ancorada a l'edifici"</string>
+    <string name="quest_cycleway_value_sidewalk_ok">"Cap, però una senyal permet als ciclistes usar la vorera"</string>
     <string name="separate_cycleway_no_signed">"Un senyal prohibeix explícitament anar en bicicleta"</string>
+    <string name="separate_cycleway_footway_allowed_sign">"Vorera per a vianants, però un senyal permet als ciclistes circular-hi"</string>
+    <string name="quest_bicycle_parking_type_floor">"Àrea designada"</string>
+    <string name="link_osmapp_description">"Un mapa amb diverses capes per a activats com escalada o esports d'esquí"</string>
+    <string name="action_back">"Enrere"</string>
     <string name="action_clear">"Netejar"</string>
+    <string name="action_more">"Més"</string>
     <string name="action_open_in_browser">"Obrir al navegador"</string>
     <string name="about_category_contribute">"Contribuir"</string>
+    <string name="pref_category_quests">"Missions"</string>
     <string name="pref_title_language_select2">"Idioma"</string>
+    <string name="pref_title_resurvey_intervals_summary">"Com de sovint apareixen preguntes per confirmar si dades prèviament introduïdes continuen sent correctes o no."</string>
+    <string name="questList_disabled_by_default">"Desactivat per defecte"</string>
+    <string name="action_manage_presets_summary">"El nom amb el qual vols guardar aquesta selecció de missions."</string>
+    <string name="quest_multiselect_hint">"Selecciona totes les opcions correctes:"</string>
+    <string name="quest_barrier_opening_width_gate">"Quina és l'amplada de l'obertura dol barrera aquí?"</string>
+    <string name="bridge">"En un pont"</string>
+    <string name="about_title_intro">"Mostrar introducció"</string>
     <string name="about_category_help">"Ajuda"</string>
+    <string name="quest_camp_power_supply_hint">"Poden ser endolls disponibles en càmpings, en una zona de servei perquè els clients els usin, zones específiques per a la recàrrega d'aparells electrònics (com telèfens mòbils, ordinadors portàtils), etc."</string>
+    <string name="quest_barrier_opening_width_bollard">"Quin és el forat més gran pel qual es pot passar per aquí?"</string>
+    <string name="user_profile_all_time_title">"En general"</string>
+    <string name="user_statistics_country_rank2">"Rang en %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"És només una soca d'arbre"</string>
     <string name="quest_board_name_title">"Quin és el títol d'aquest tauler informatiu?"</string>
 </resources>

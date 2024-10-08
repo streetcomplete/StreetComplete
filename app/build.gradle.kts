@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete.expert"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5906
-        versionName = "59.1"
+        versionCode = 5907
+        versionName = "59.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -203,7 +203,7 @@ dependencies {
     implementation("io.github.pdvrieze.xmlutil:core:0.90.1")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.5.0")
+    implementation("org.maplibre.gl:android-sdk:11.5.1")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")
@@ -232,7 +232,7 @@ dependencies {
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
     "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
-    "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
+    "en", "en-AU", "en-GB", "eo", "es", "es-AR", "eu", "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
     "zh", "zh-CN", "zh-HK", "zh-TW"

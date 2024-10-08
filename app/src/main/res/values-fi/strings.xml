@@ -101,13 +101,13 @@ Ennen muutoksien lähettämistä sovellus tarkistaa &lt;a href=\"https://www.wes
     <string name="quest_surface_value_unpaved">"Päällystämätön (yleinen)"</string>
     <string name="quest_surface_value_ground">"Maa (yleinen)"</string>
     <string name="quest_surface_value_asphalt">"Asfaltti"</string>
-    <string name="quest_surface_value_compacted">"Tampattu"</string>
+    <string name="quest_surface_value_compacted">"Pakkautunut sora"</string>
     <string name="quest_surface_value_concrete">"Betoni"</string>
     <string name="quest_surface_value_dirt">"Maaperä"</string>
     <string name="quest_surface_value_fine_gravel">"Hieno sora"</string>
     <string name="quest_surface_value_grass">"Ruoho"</string>
     <string name="quest_surface_value_grass_paver">"Kivi- &amp; ruohoyhdistelmä"</string>
-    <string name="quest_surface_value_gravel">"Sora"</string>
+    <string name="quest_surface_value_gravel">"Karkea sora"</string>
     <string name="quest_surface_value_paving_stones">"Kivilaatta"</string>
     <string name="quest_surface_value_pebblestone">"Sileitä kiviä"</string>
     <string name="quest_surface_value_sand">"Hiekka"</string>
@@ -766,7 +766,7 @@ taso"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Siinä on kaksisuuntainen kaista vasemmalle"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Onko tämä oikein?"</string>
     <string name="quest_maxheight_below_bridge_title">"Mikä on korkeusrajoitus sillan alla?"</string>
-    <string name="quest_maxheight_split_way_hint">"Jos tämä ei koske koko tietä, harkitse vastaamaan \"%s\""</string>
+    <string name="quest_maxheight_split_way_hint">"Tämä kysymys kysytään myös teiltä, jotka kulkevat sillan, katon, ylimenevien putkien jne. alta. Lisäksi, jos se ei koske koko korostettua osuutta, harkitse vastaamaan \"%s\"."</string>
     <string name="quest_tactile_paving_kerb_title">"Onko täällä jalkakäytävässä kosketuspäällysteitä?"</string>
     <string name="quest_kerb_height_title">"Mikä on tämän reunakivetyksen korkeus?"</string>
     <string name="quest_kerb_height_flush">"Tienpinnan kanssa samalla tasolla"</string>
@@ -993,15 +993,15 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa)."</string>
     <string name="quest_smoothness_description_intermediate_paved">"Tavallisen karkea pinta, isommat välit, matalia uria, kuoppia tai muita vaurioita"</string>
     <string name="quest_smoothness_description_intermediate_paving_stones">"Laajempia rakoja, mahdollisesti siirtyneitä tai vaurioituneita kiviä"</string>
     <string name="quest_smoothness_description_intermediate_sett">"Litteät kivet tai neliömäiset reunat, matalat tai kapeat raot"</string>
-    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Hienoa soraa, matalia kuoppia tai kuoppia"</string>
+    <string name="quest_smoothness_description_intermediate_compacted_gravel">"Hienoa soraa, matalia töyssyjä tai kuoppia"</string>
     <string name="quest_smoothness_description_bad_paved">"Isoja aukkoja, kuoppia, uraa, murentunutta päällystettä tai muita vaurioita"</string>
     <string name="quest_smoothness_description_bad_paving_stones">"Siirtyneitä kiviä, suuria rakoja tai muita vaurioita"</string>
     <string name="quest_smoothness_description_bad_sett">"Kuluneita kiviä tai epäsäännölliset muodot, suuret raot tai vauriot"</string>
-    <string name="quest_smoothness_description_bad_compacted_gravel">"Hieman suurempaa soraa, kuoppia tai uria"</string>
+    <string name="quest_smoothness_description_bad_compacted_gravel">"Hieman suurempaa soraa, töyssyjä, uria tai kuoppia"</string>
     <string name="quest_smoothness_description_very_bad_paved">"Syviä kuoppia, uria tai muita vaarallisia vaurioita"</string>
     <string name="quest_smoothness_description_very_bad_sett">"Suuret raot, siirtyneet, puuttuvat tai epäsäännöllisen muotoiset kivet tai vaarallisia vaurioita"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"Puuttuvia tai rikkinäisiä kiviä, välit tai muuten vaarallisia"</string>
-    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Joitakin suuria kiviä, syviä kuoppia, kuoppia, uraa, eroosiota tai muita vaarallisia vaurioita"</string>
+    <string name="quest_smoothness_description_very_bad_compacted_gravel">"Joitakin suuria kiviä, syviä kuoppia, töyssyjä, uria, eroosiota tai muita vaarallisia vaurioita"</string>
     <string name="quest_smoothness_description_horrible">"Oikeastaan käytettävissä vain maastoajoneuvoilla tai jalan"</string>
     <string name="quest_smoothness_description_very_horrible">"Oikeastaan käytettävissä vain erikoismaastoajoneuvoilla tai jalan"</string>
     <string name="quest_smoothness_description_impassable">"Ei sovellu ajoneuvoille, ainoastaan jalankulkijoille"</string>
@@ -1274,8 +1274,8 @@ Haluatko siirtää nyt?"</string>
     <string name="overlay_surface">"Pinnat"</string>
     <string name="overlay_path_surface_segregated">"Jaa pyöräily- ja kävelyosuuksiin"</string>
     <string name="quest_crossing_title2">"Onko tässä tienylityspaikka?"</string>
-    <string name="quest_crossing_yes">"Kyllä (esim. reunakiveys on madallutettu tai tiessä on merkinnät)"</string>
-    <string name="quest_crossing_no">"Ei, mutta ylittäminen on mahdollista"</string>
+    <string name="quest_crossing_yes">"Kyllä, tarkoitettu tienylitykseen"</string>
+    <string name="quest_crossing_no">"Ei tarkoitettu ylityspaikaksi, mutta ylittäminen on mahdollista (esim. epäviralliset reitit)"</string>
     <string name="quest_crossing_prohibited">"Ei, ylittäminen on kielletty tai mahdotonta"</string>
     <string name="quest_hairdresser_title">"Kenelle tämä kampaamo on tarkoitettu?"</string>
     <string name="quest_hairdresser_male_and_female">"Kaikille"</string>
@@ -1304,7 +1304,7 @@ Puuttuvat tiedot näytetään aina punaisella värillä."</string>
 
 Lisäksi jotkin tasot sallivat uuden tiedon lisäämisen tähtäimen osoittamaan sijaintiin, kuten osoitteet-tasossa."</string>
     <string name="quest_crossing_kerb_height_title">"Mikä on reunakiveyksen korkeus tässä tienylityspaikassa?"</string>
-    <string name="quest_maxheight_sign_title">"Mikä korkeusrajoitus tässä on?"</string>
+    <string name="quest_maxheight_sign_title">"Mikä on ilmoitettu korkeusrajoitus täällä?"</string>
     <string name="quest_leave_new_note_as_answer">"Tässä tapauksessa sinun pitää jättää viesti, jossa selität tilanteen."</string>
     <string name="quest_drinking_water_type_title2">"Onko täällä tarjolla juomavettä? Jos on, mistä se on peräisin?"</string>
     <string name="quest_is_amenity_inside_title">"Onko tämä rakennuksen sisällä?"</string>
@@ -1408,4 +1408,6 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="user_statistics_country_rank2">"%s-sijoitus"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Se on pelkkä puunkanto"</string>
     <string name="quest_board_name_title">"Mikä on tämän infotaulun otsikko?"</string>
+    <string name="quest_crossing_hint">"Tien yli kulkeva epävirallinen reitti:"</string>
+    <string name="note_for_object">"Merkintä toiselta henkilöltä:"</string>
 </resources>
