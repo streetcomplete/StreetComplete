@@ -1362,12 +1362,14 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="quest_bbq_fuel_gas">"Gass"</string>
     <string name="about_description_donate_google_play3">"Takk for at du vurderer å støtte denne appen! Du kan finne informasjon om donasjon på våre nettsider eller \"project home\", Google Play tillater ikke at vi gir linken inne i appen."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Utendørs, men tildekket"</string>
+    <string name="lit_value_unsupported">"Spesiell belysningsstatus som ikke kan velges i denne appen"</string>
     <string name="quest_generic_otherAnswers2">"Uh…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Er det trafikklys som indikerer når man kan krysse her?"</string>
     <string name="quest_moped_access_title">"Er det et skilt som indikerer tilgang for mopeder på denne sykkelstien?"</string>
     <string name="quest_moped_access_allowed">"Det er ikke skilt"</string>
     <string name="quest_moped_access_designated">"Det er et skilt som betegner dette sykkelfeltet for mopeder"</string>
     <string name="quest_moped_access_forbidden">"Det er et skilt som forbyr mopeder"</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Denne oppgavetypen er deaktivert som standard siden mopedtilgang kun er markert ved et spesielt skilt på starten/slutten av sykkelfeltet."</string>
     <string name="info">"Mer informasjon"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Det er forbudt."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Det er tillatt."</string>
@@ -1381,4 +1383,22 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="separate_cycleway_no_signed">"Et skilt spesifikt forbyr sykling"</string>
     <string name="separate_cycleway_footway_allowed_sign">"Gangvei, men et skilt tillater sykling"</string>
     <string name="quest_bicycle_parking_type_floor">"Utpekt område"</string>
+    <string name="link_osmapp_description">"Et kart med ulike lag for bruk til for eksempel klatring eller ski"</string>
+    <string name="action_back">"Tilbake"</string>
+    <string name="action_clear">"Rydd opp"</string>
+    <string name="action_more">"Mer"</string>
+    <string name="action_open_in_browser">"Åpne i nettleser"</string>
+    <string name="about_category_contribute">"Bidra"</string>
+    <string name="pref_category_quests">"Oppdrag"</string>
+    <string name="pref_title_language_select2">"Språk"</string>
+    <string name="questList_disabled_by_default">"Avslått som standard"</string>
+    <string name="quest_multiselect_hint">"Velg alle som stemmer:"</string>
+    <string name="quest_barrier_opening_width_gate">"Hvor stor er åpningens bredde her?"</string>
+    <string name="bridge">"på bro"</string>
+    <string name="about_title_intro">"Vis introduksjon"</string>
+    <string name="about_category_help">"Hjelp"</string>
+    <string name="quest_barrier_opening_width_bollard">"Hvor bred er den største åpningen her?"</string>
+    <string name="user_profile_all_time_title">"Totalt"</string>
+    <string name="user_statistics_country_rank2">"Rangering i %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Kun en stubbe"</string>
 </resources>
