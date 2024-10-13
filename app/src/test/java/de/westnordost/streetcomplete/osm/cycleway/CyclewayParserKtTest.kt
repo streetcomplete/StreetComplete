@@ -2343,6 +2343,75 @@ class CyclewayParserKtTest {
             )
         )
     }
+
+    @Test fun `right side sidewalk ok in both directions`() {
+        assertEquals(
+            cycleway(null, SIDEWALK_OK to BOTH),
+            parse(
+                "sidewalk:right:bicycle" to "yes",
+                "sidewalk:right:bicycle:signed" to "yes",
+                "sidewalk:right:oneway:bicycle" to "no",
+                "cycleway:right" to "no"
+            )
+        )
+    }
+
+    @Test fun `left side sidewalk ok in both directions`() {
+        assertEquals(
+            cycleway(SIDEWALK_OK to BOTH, null),
+            parse(
+                "sidewalk:left:bicycle" to "yes",
+                "sidewalk:left:bicycle:signed" to "yes",
+                "sidewalk:left:oneway:bicycle" to "no",
+                "cycleway:left" to "no"
+            )
+        )
+    }
+
+    @Test fun `both sides sidewalk ok in both directions`() {
+        assertEquals(
+            cycleway(SIDEWALK_OK to BOTH, SIDEWALK_OK to BOTH),
+            parse(
+                "sidewalk:both:bicycle" to "yes",
+                "sidewalk:both:bicycle:signed" to "yes",
+                "sidewalk:both:oneway:bicycle" to "no",
+                "cycleway:both" to "no"
+            )
+        )
+    }
+
+    @Test fun `right side sidewalk ok in both directions but missing signed yes leads to none`() {
+        assertEquals(
+            cycleway(null, NONE),
+            parse(
+                "sidewalk:right:bicycle" to "yes",
+                "sidewalk:right:oneway:bicycle" to "no",
+                "cycleway:right" to "no"
+            )
+        )
+    }
+
+    @Test fun `left side sidewalk ok in both directions but missing signed yes leads to none`() {
+        assertEquals(
+            cycleway(NONE, null),
+            parse(
+                "sidewalk:left:bicycle" to "yes",
+                "sidewalk:left:oneway:bicycle" to "no",
+                "cycleway:left" to "no"
+            )
+        )
+    }
+
+    @Test fun `both sides sidewalk ok in both directions but missing signed yes leads to none`() {
+        assertEquals(
+            cycleway(NONE, NONE),
+            parse(
+                "sidewalk:both:bicycle" to "yes",
+                "sidewalk:both:oneway:bicycle" to "no",
+                "cycleway:both" to "no"
+            )
+        )
+    }
 }
 
 private fun cycleway(left: Pair<Cycleway, Direction>?, right: Pair<Cycleway, Direction>?) =
