@@ -5,8 +5,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.Direction
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Direction.*
+import de.westnordost.streetcomplete.osm.Direction.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import kotlin.test.Test
 import kotlin.test.assertEquals
