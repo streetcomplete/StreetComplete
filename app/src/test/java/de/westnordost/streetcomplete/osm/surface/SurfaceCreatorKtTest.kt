@@ -45,42 +45,6 @@ class SurfaceCreatorKtTest {
         )
     }
 
-    @Test fun `remove mismatching tracktype`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("surface", "asphalt"),
-                StringMapEntryDelete("tracktype", "grade5"),
-                StringMapEntryDelete("check_date:tracktype", "2011-11-11"),
-            ),
-            SurfaceAndNote(Surface.ASPHALT).appliedTo(mapOf(
-                "tracktype" to "grade5",
-                "check_date:tracktype" to "2011-11-11"
-            ))
-        )
-    }
-
-    @Test fun `remove mismatching tracktype not done with prefix`() {
-        assertEquals(
-            setOf(StringMapEntryAdd("footway:surface", "asphalt")),
-            SurfaceAndNote(Surface.ASPHALT).appliedTo(mapOf(
-                "tracktype" to "grade5",
-                "check_date:tracktype" to "2011-11-11"
-            ), "footway")
-        )
-    }
-
-    @Test fun `keep matching tracktype`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("surface", "asphalt")
-            ),
-            SurfaceAndNote(Surface.ASPHALT).appliedTo(mapOf(
-                "highway" to "residential",
-                "tracktype" to "grade1"
-            ))
-        )
-    }
-
     @Test fun `remove associated tags when surface changed`() {
         assertEquals(
             setOf(

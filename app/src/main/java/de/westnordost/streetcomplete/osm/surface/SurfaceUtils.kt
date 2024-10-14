@@ -109,6 +109,8 @@ fun getKeysAssociatedWithSurface(prefix: String = ""): Set<String> =
         "${prefix}smoothness",
         "${prefix}smoothness:date",
         "source:${prefix}smoothness",
+        "${prefix}tracktype", // it's at least *potentially* associated, see #5951
+        "source:${prefix}tracktype",
         "${prefix}paving_stones:shape",
         "${prefix}paving_stones:pattern",
         "${prefix}paving_stones:length",
