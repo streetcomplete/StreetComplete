@@ -12,12 +12,11 @@ import de.westnordost.streetcomplete.osm.bicycle_boulevard.applyTo
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.parseBicycleBoulevard
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
-import de.westnordost.streetcomplete.osm.cycleway.Direction
+import de.westnordost.streetcomplete.osm.Direction
 import de.westnordost.streetcomplete.osm.cycleway.LeftAndRightCycleway
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.asDialogItem
 import de.westnordost.streetcomplete.osm.cycleway.asStreetSideItem
-import de.westnordost.streetcomplete.osm.cycleway.getDefault
 import de.westnordost.streetcomplete.osm.cycleway.getSelectableCycleways
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues

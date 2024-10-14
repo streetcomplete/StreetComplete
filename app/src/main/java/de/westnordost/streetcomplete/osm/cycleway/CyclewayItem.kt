@@ -7,7 +7,7 @@ import androidx.appcompat.graphics.drawable.DrawableWrapperCompat
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Direction.*
+import de.westnordost.streetcomplete.osm.Direction.*
 import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneMirroredResId
 import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneResId
 import de.westnordost.streetcomplete.util.ktx.dualCycleLaneMirroredResId
