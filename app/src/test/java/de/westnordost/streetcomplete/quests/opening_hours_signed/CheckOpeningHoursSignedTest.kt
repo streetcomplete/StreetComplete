@@ -4,9 +4,11 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
+import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.quests.answerAppliedTo
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -32,7 +34,7 @@ class CheckOpeningHoursSignedTest {
     @Test fun `is applicable to place with old check_date`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "name" to "XYZ",
-            "check_date:opening_hours" to "2020-12-12",
+            "check_date:opening_hours:signed" to "2020-12-12",
             "opening_hours:signed" to "no"
         ))))
     }
@@ -40,7 +42,7 @@ class CheckOpeningHoursSignedTest {
     @Test fun `is not applicable to place with new check_date`() {
         assertFalse(questType.isApplicableTo(node(tags = mapOf(
             "name" to "XYZ",
-            "check_date:opening_hours" to nowAsCheckDateString(),
+            "check_date:opening_hours:signed" to nowAsCheckDateString(),
             "opening_hours:signed" to "no"
         ))))
     }
@@ -66,6 +68,16 @@ class CheckOpeningHoursSignedTest {
             "opening_hours" to "Mo 10:00-12:00",
             "opening_hours:signed" to "yes"
         ))))
+    }
+    @Test fun `is applicable if the opening hours not signed and only check date for OH exists`() {
+        assertTrue(questType.isApplicableTo(node(
+            tags = mapOf(
+                "name" to "rundumdieuhr kiosk",
+                "opening_hours:signed" to "no",
+                "check_date:opening_hours" to "2021-03-01"
+            ),
+            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
+        )))
     }
 
     @Test fun `apply yes answer with no prior check date`() {
@@ -109,13 +121,17 @@ class CheckOpeningHoursSignedTest {
 
     @Test fun `apply yes answer with prior check date and existing opening hours`() {
         assertEquals(
-            setOf(StringMapEntryDelete("opening_hours:signed", "no")),
+            setOf(
+                StringMapEntryDelete("opening_hours:signed", "no"),
+                StringMapEntryDelete("check_date:opening_hours:signed", "2020-03-04"),
+                StringMapEntryAdd("check_date:opening_hours", "1970-01-01")
+            ),
             questType.answerAppliedTo(
                 true,
                 mapOf(
                     "opening_hours" to "\"oh\"",
                     "opening_hours:signed" to "no",
-                    "check_date:opening_hours" to "2020-03-04"
+                    "check_date:opening_hours:signed" to "2020-03-04"
                 ),
             )
         )
@@ -125,7 +141,7 @@ class CheckOpeningHoursSignedTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("opening_hours:signed", "no", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:opening_hours:signed", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 false,
@@ -138,13 +154,13 @@ class CheckOpeningHoursSignedTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("opening_hours:signed", "no", "no"),
-                StringMapEntryModify("check_date:opening_hours", "2020-03-04", nowAsCheckDateString()),
+                StringMapEntryModify("check_date:opening_hours:signed", "2020-03-04", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 false,
                 mapOf(
                     "opening_hours:signed" to "no",
-                    "check_date:opening_hours" to "2020-03-04"
+                    "check_date:opening_hours:signed" to "2020-03-04"
                 )
             )
         )
@@ -154,7 +170,7 @@ class CheckOpeningHoursSignedTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("opening_hours:signed", "no", "no"),
-                StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString()),
+                StringMapEntryAdd("check_date:opening_hours:signed", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 false,
@@ -170,14 +186,14 @@ class CheckOpeningHoursSignedTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("opening_hours:signed", "no", "no"),
-                StringMapEntryModify("check_date:opening_hours", "2020-03-04", nowAsCheckDateString()),
+                StringMapEntryModify("check_date:opening_hours:signed", "2020-03-04", nowAsCheckDateString()),
             ),
             questType.answerAppliedTo(
                 false,
                 mapOf(
                     "opening_hours" to "Mo 10:00-12:00",
                     "opening_hours:signed" to "no",
-                    "check_date:opening_hours" to "2020-03-04"
+                    "check_date:opening_hours:signed" to "2020-03-04"
                 )
             )
         )
