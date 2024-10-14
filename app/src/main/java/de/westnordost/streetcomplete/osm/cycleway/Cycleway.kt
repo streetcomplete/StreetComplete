@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.osm.Direction
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Direction.*
+import de.westnordost.streetcomplete.osm.Direction.*
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
@@ -65,19 +66,6 @@ fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
     cycleway.isSelectable(countryInfo) &&
     // only allow dual track, dual lanes and "dual" sidewalk (not dual pictograms or something)
     (direction != BOTH || cycleway in listOf(TRACK, UNSPECIFIED_LANE, EXCLUSIVE_LANE, SIDEWALK_EXPLICIT))
-
-@Serializable
-enum class Direction {
-    FORWARD,
-    BACKWARD,
-    BOTH;
-
-    fun reverse(): Direction = when (this) {
-        FORWARD -> BACKWARD
-        BACKWARD -> FORWARD
-        BOTH -> BOTH
-    }
-}
 
 @Serializable
 enum class Cycleway {
@@ -218,10 +206,6 @@ fun getSelectableCycleways(
     }
     return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways
 }
-
-/** Return the default direction of a cycleway if nothing is specified */
-fun Direction.Companion.getDefault(isRightSide: Boolean, isLeftHandTraffic: Boolean): Direction =
-    if (isRightSide xor isLeftHandTraffic) FORWARD else BACKWARD
 
 val CyclewayAndDirection.estimatedWidth: Float get() = when (cycleway) {
     EXCLUSIVE_LANE -> 1.5f
