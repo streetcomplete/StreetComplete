@@ -65,7 +65,7 @@ data class CyclewayAndDirection(val cycleway: Cycleway, val direction: Direction
 fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
     cycleway.isSelectable(countryInfo) &&
     // only allow dual track, dual lanes and "dual" sidewalk (not dual pictograms or something)
-    (direction != BOTH || cycleway in listOf(TRACK, UNSPECIFIED_LANE, EXCLUSIVE_LANE, SIDEWALK_EXPLICIT))
+    (direction != BOTH || cycleway in listOf(TRACK, UNSPECIFIED_LANE, EXCLUSIVE_LANE, SIDEWALK_EXPLICIT, SIDEWALK_OK))
 
 @Serializable
 enum class Cycleway {
@@ -183,7 +183,8 @@ fun getSelectableCycleways(
     val dualCycleways = listOf(
         CyclewayAndDirection(if (countryInfo.hasAdvisoryCycleLane) EXCLUSIVE_LANE else UNSPECIFIED_LANE, BOTH),
         CyclewayAndDirection(TRACK, BOTH),
-        CyclewayAndDirection(SIDEWALK_EXPLICIT, BOTH)
+        CyclewayAndDirection(SIDEWALK_EXPLICIT, BOTH),
+        CyclewayAndDirection(SIDEWALK_OK, BOTH)
     )
 
     // no need to distinguish between advisory and exclusive lane where the concept of exclusive
