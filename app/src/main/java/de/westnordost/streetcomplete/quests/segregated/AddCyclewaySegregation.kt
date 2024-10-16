@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation.*
 
 class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
@@ -25,9 +25,9 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
             and bicycle !~ private|no
             )
         )
-        and surface ~ ${ANYTHING_PAVED.joinToString("|")}
+        and surface ~ ${PAVED_SURFACES.joinToString("|")}
         and area != yes
-        and !sidewalk
+        and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
         and !segregated
         and ~path|footway|cycleway !~ link
     """

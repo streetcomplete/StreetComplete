@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.overlays.address.AddressOverlay
 import de.westnordost.streetcomplete.overlays.buildings.BuildingsOverlay
 import de.westnordost.streetcomplete.overlays.cycleway.CyclewayOverlay
-import de.westnordost.streetcomplete.overlays.shops.ShopsOverlay
+import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
 import de.westnordost.streetcomplete.overlays.sidewalk.SidewalkOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
@@ -56,7 +56,7 @@ fun overlaysRegistry(
     5 to CyclewayOverlay(getCountryInfoByLocation),
     2 to StreetParkingOverlay(),
     3 to AddressOverlay(getCountryCodeByLocation),
-    4 to ShopsOverlay(getFeature),
+    4 to PlacesOverlay(getFeature),
     8 to ThingsOverlay(getFeature),
     7 to BuildingsOverlay(),
 ))

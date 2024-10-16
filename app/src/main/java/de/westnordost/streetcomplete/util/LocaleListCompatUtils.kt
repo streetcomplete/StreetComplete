@@ -6,14 +6,13 @@ import android.os.Build
 import android.os.LocaleList
 import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
-import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.ktx.addedToFront
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import java.util.Locale
 
 /** Get the override-locale selected in this app or null if there is no override */
 fun getSelectedLocale(prefs: Preferences): Locale? {
-    val languageTag = prefs.getStringOrNull(Prefs.LANGUAGE_SELECT) ?: ""
+    val languageTag = prefs.language ?: ""
     return if (languageTag.isEmpty()) null else Locale.forLanguageTag(languageTag)
 }
 
@@ -43,4 +42,5 @@ fun setDefaultLocales(locales: LocaleListCompat) {
 }
 
 /** Get Android system locale(s) */
-fun getSystemLocales() = ConfigurationCompat.getLocales(Resources.getSystem().configuration)
+fun getSystemLocales(): LocaleListCompat =
+    ConfigurationCompat.getLocales(Resources.getSystem().configuration)

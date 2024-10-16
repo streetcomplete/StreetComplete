@@ -62,6 +62,7 @@ class CheckExistence(
             or amenity = recycling and recycling_type = container
             or amenity = toilets
             or amenity = drinking_water
+            or man_made = planter
           )
           and (${lastChecked(6.0)})
         ) or (

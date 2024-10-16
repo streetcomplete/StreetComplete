@@ -14,11 +14,9 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
-import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.icon
 import de.westnordost.streetcomplete.data.edithistory.overlayIcon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
-import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeFromVertexAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
@@ -37,38 +35,24 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
-import de.westnordost.streetcomplete.quests.getHtmlQuestTitle
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.quests.getTitle
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setHtml
 import de.westnordost.streetcomplete.view.setText
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-import org.koin.core.qualifier.named
-import java.util.MissingFormatArgumentException
 
 class UndoDialog(
     context: Context,
     private val edit: Edit,
-) : AlertDialog(context), KoinComponent {
-
-    private val mapDataSource: MapDataWithEditsSource by inject()
-    private val editHistoryController: EditHistoryController by inject()
-    private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
-
-    private val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
+    private val element: Element?,
+    private val featureDictionaryLazy: Lazy<FeatureDictionary>,
+    private val onUndo: (edit: Edit) -> Unit,
+) : AlertDialog(context) {
 
     private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
-
-    private val scope = CoroutineScope(Dispatchers.Main)
 
     init {
         binding.icon.setImageResource(edit.icon)
@@ -80,38 +64,24 @@ class UndoDialog(
 
         setTitle(R.string.undo_confirm_title2)
         setView(binding.root)
-        setButton(BUTTON_POSITIVE, context.getText(R.string.undo_confirm_positive), null) { _, _ ->
-            scope.launch(Dispatchers.IO) { editHistoryController.undo(edit) }
-        }
+        setButton(BUTTON_POSITIVE, context.getText(R.string.undo_confirm_positive), null) { _, _ -> onUndo(edit) }
         setButton(BUTTON_NEGATIVE, context.getText(R.string.undo_confirm_negative), null, null)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        scope.launch {
-            binding.titleText.text = edit.getTitle()
-            if (edit is ElementEdit) {
-                binding.titleHintText.text = edit.getPrimaryElement()?.let {
-                    getNameAndLocationLabel(it, context.resources, featureDictionary)
-                }
+        binding.titleText.text = edit.getTitle()
+        if (edit is ElementEdit) {
+            binding.titleHintText.text = element?.let {
+                getNameAndLocationSpanned(it, context.resources, featureDictionaryLazy.value)
             }
         }
     }
 
-    override fun dismiss() {
-        super.dismiss()
-        scope.cancel()
-    }
-
-    private suspend fun ElementEdit.getPrimaryElement(): Element? {
-        val key = action.elementKeys.firstOrNull() ?: return null
-        return withContext(Dispatchers.IO) { mapDataSource.get(key.type, key.id) }
-    }
-
-    private suspend fun Edit.getTitle(): CharSequence = when (this) {
+    private fun Edit.getTitle(): CharSequence = when (this) {
         is ElementEdit -> {
             if (type is QuestType) {
-                getQuestTitle(type, getPrimaryElement()?.tags.orEmpty())
+                context.resources.getString(type.getTitle(element?.tags.orEmpty()))
             } else {
                 context.resources.getText(type.title)
             }
@@ -123,8 +93,7 @@ class UndoDialog(
             })
         }
         is OsmQuestHidden -> {
-            val element = withContext(Dispatchers.IO) { mapDataSource.get(elementType, elementId) }
-            getQuestTitle(questType, element?.tags.orEmpty())
+            context.resources.getString(questType.getTitle(element?.tags.orEmpty()))
         }
         is OsmNoteQuestHidden -> {
             context.resources.getText(R.string.quest_noteDiscussion_title)
@@ -155,18 +124,6 @@ class UndoDialog(
         is OsmNoteQuestHidden -> createTextView(ResText(R.string.hid_action_description))
         else -> throw IllegalArgumentException()
     }
-
-    private fun getQuestTitle(questType: QuestType, tags: Map<String, String>): CharSequence =
-        try {
-            context.resources.getHtmlQuestTitle(questType, tags)
-        } catch (e: MissingFormatArgumentException) {
-            /* The exception happens when the number of format strings in the quest title
-             * differs from what can be "filled" by getHtmlQuestTitle. When does this happen?
-             * It happens the element is null or otherwise is not at all what is expected by
-             * that quest type.
-             * So, this is the fallback for that case */
-            context.resources.getString(questType.title, *Array(10) { "…" })
-        }
 
     private fun createTextView(text: Text?): TextView {
         val txt = TextView(context)

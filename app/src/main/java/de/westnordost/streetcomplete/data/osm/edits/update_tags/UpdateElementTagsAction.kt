@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.update_tags
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
@@ -8,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.copy
 import kotlinx.serialization.Serializable
 
@@ -19,7 +19,7 @@ import kotlinx.serialization.Serializable
  *  The original element is passed in in order to decide if an updated element is still compatible
  *  with the action: Basically, if the geometry changed significantly, there is a possibility that
  *  the tag update made may not be correct anymore, so that is considered a conflict.
- *  */
+ */
 @Serializable
 data class UpdateElementTagsAction(
     val originalElement: Element,

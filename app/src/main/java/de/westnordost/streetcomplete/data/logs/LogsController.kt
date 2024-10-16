@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.logs
 
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.logs.Log
 
 class LogsController(private val logsDao: LogsDao) {
 
@@ -17,20 +16,15 @@ class LogsController(private val logsDao: LogsDao) {
         messageContains: String? = null,
         newerThan: Long? = null,
         olderThan: Long? = null,
-    ): List<LogMessage> {
-        return logsDao.getAll(
-            levels = levels,
-            messageContains = messageContains,
-            newerThan = newerThan,
-            olderThan = olderThan,
-        )
-    }
+    ): List<LogMessage> =
+        logsDao.getAll(levels, messageContains, newerThan, olderThan)
 
     fun deleteOlderThan(timestamp: Long) {
-        val deletedCount = logsDao.deleteOlderThan(timestamp)
-        if (deletedCount > 0) {
-            Log.v(TAG, "Deleted $deletedCount old log messages")
-        }
+        logsDao.deleteOlderThan(timestamp)
+    }
+
+    fun clear() {
+        logsDao.clear()
     }
 
     fun add(message: LogMessage) {
@@ -48,9 +42,5 @@ class LogsController(private val logsDao: LogsDao) {
 
     private fun onAdded(message: LogMessage) {
         listeners.forEach { it.onAdded(message) }
-    }
-
-    companion object {
-        private const val TAG = "LogsController"
     }
 }

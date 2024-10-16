@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data
 import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import kotlinx.coroutines.runBlocking
 
 class CleanerWorker(
     private val cleaner: Cleaner,
@@ -11,7 +12,7 @@ class CleanerWorker(
 ) : Worker(context, workerParams) {
 
     override fun doWork(): Result {
-        cleaner.clean()
+        runBlocking { cleaner.cleanOld().join() }
         return Result.success()
     }
 }

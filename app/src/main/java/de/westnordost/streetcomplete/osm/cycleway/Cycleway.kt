@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.osm.Direction
+import de.westnordost.streetcomplete.osm.Direction.*
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
@@ -34,7 +35,7 @@ fun LeftAndRightCycleway.wasNoOnewayForCyclistsButNowItIs(tags: Map<String, Stri
  *  is null because it is possible that the undefined side has a track in the contra-flow direction
  *  (e.g. either a normal track on the left side or a dual-track on the right side) */
 fun LeftAndRightCycleway.isNotOnewayForCyclistsNow(tags: Map<String, String>): Boolean? {
-    val onewayDir = when  {
+    val onewayDir = when {
         isForwardOneway(tags) -> FORWARD
         isReversedOneway(tags) -> BACKWARD
         else -> return true
@@ -64,20 +65,7 @@ data class CyclewayAndDirection(val cycleway: Cycleway, val direction: Direction
 fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
     cycleway.isSelectable(countryInfo) &&
     // only allow dual track, dual lanes and "dual" sidewalk (not dual pictograms or something)
-    (direction != BOTH || cycleway in listOf(TRACK, UNSPECIFIED_LANE, EXCLUSIVE_LANE, SIDEWALK_EXPLICIT))
-
-@Serializable
-enum class Direction {
-    FORWARD,
-    BACKWARD,
-    BOTH;
-
-    fun reverse(): Direction = when (this) {
-        FORWARD -> BACKWARD
-        BACKWARD -> FORWARD
-        BOTH -> BOTH
-    }
-}
+    (direction != BOTH || cycleway in listOf(TRACK, UNSPECIFIED_LANE, EXCLUSIVE_LANE, SIDEWALK_EXPLICIT, SIDEWALK_OK))
 
 @Serializable
 enum class Cycleway {
@@ -113,9 +101,8 @@ enum class Cycleway {
     /** cyclists explicitly ought to share the sidewalk with pedestrians, i.e. the cycle track is
      *  not segregated from the sidewalk */
     SIDEWALK_EXPLICIT,
-    // the following not anymore, see #2276
     // no cycleway, but cyclists are allowed on sidewalk
-    // SIDEWALK_OK,
+    SIDEWALK_OK,
 
     /** no cycle track or lane */
     NONE,
@@ -190,12 +177,14 @@ fun getSelectableCycleways(
         PICTOGRAMS,
         BUSWAY,
         SIDEWALK_EXPLICIT,
+        SIDEWALK_OK,
         SHOULDER
     )
     val dualCycleways = listOf(
         CyclewayAndDirection(if (countryInfo.hasAdvisoryCycleLane) EXCLUSIVE_LANE else UNSPECIFIED_LANE, BOTH),
         CyclewayAndDirection(TRACK, BOTH),
-        CyclewayAndDirection(SIDEWALK_EXPLICIT, BOTH)
+        CyclewayAndDirection(SIDEWALK_EXPLICIT, BOTH),
+        CyclewayAndDirection(SIDEWALK_OK, BOTH)
     )
 
     // no need to distinguish between advisory and exclusive lane where the concept of exclusive
@@ -218,10 +207,6 @@ fun getSelectableCycleways(
     }
     return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways
 }
-
-/** Return the default direction of a cycleway if nothing is specified */
-fun Direction.Companion.getDefault(isRightSide: Boolean, isLeftHandTraffic: Boolean): Direction =
-    if (isRightSide xor isLeftHandTraffic) FORWARD else BACKWARD
 
 val CyclewayAndDirection.estimatedWidth: Float get() = when (cycleway) {
     EXCLUSIVE_LANE -> 1.5f

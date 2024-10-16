@@ -14,7 +14,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     // Only roads with 'complete' sidewalk tagging (at least one side has sidewalk, other side specified)
     override val elementFilter = """
         ways with
-            highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|living_street
+            highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|living_street|busway
             and area != yes
             and (
                 sidewalk ~ both|left|right or
@@ -32,6 +32,8 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override val icon = R.drawable.ic_quest_sidewalk_surface
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR)
     override val defaultDisabledMessage = R.string.default_disabled_msg_difficult_and_time_consuming
+
+    override val hint = R.string.quest_street_side_puzzle_tutorial
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_surface_title
 

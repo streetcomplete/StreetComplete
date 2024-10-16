@@ -14,7 +14,7 @@ val IS_AREA_EXPRESSION = """
 
 private fun isAreaExpressionFragment(prefix: String? = null): String {
     val p = if (prefix != null) "$prefix:" else ""
-    /* roughly sorted by occurrence count */
+    // roughly sorted by occurrence count
     return """
         ${p}building
         or ${p}landuse

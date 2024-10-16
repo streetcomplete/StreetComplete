@@ -1,13 +1,5 @@
 -dontobfuscate
 
-# tangram start ------------------------------------------------------------------------------------
-
-# let's just keep everything
--keep class com.mapzen.tangram.** { *; }
--keep class com.mapzen.tangram.* { *; }
-
-# tangram end --------------------------------------------------------------------------------------
-
 # Lifecycle
 -keep public class androidx.lifecycle.* {
     public protected *;
@@ -37,6 +29,9 @@
 -keepclasseswithmembers class kotlinx.serialization.json.** {
     kotlinx.serialization.KSerializer serializer(...);
 }
+
+# ktor client, see https://youtrack.jetbrains.com/issue/KTOR-5528
+-dontwarn org.slf4j.impl.StaticLoggerBinder
 
 # Change here com.yourcompany.yourpackage
 -keep,includedescriptorclasses class de.westnordost.streetcomplete.**$$serializer { *; }

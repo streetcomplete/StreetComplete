@@ -38,9 +38,8 @@ class GroupedImageListPickerDialog<T>(
 
         val layoutManager = GridLayoutManager(context, columns)
         layoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return if (adapter.items[position].isGroup) layoutManager.spanCount else 1
-            }
+            override fun getSpanSize(position: Int): Int =
+                if (adapter.items[position].isGroup) layoutManager.spanCount else 1
         }
         recyclerView.layoutManager = GridLayoutManager(context, columns)
         recyclerView.setPadding(horizontalMargin, verticalMargin, horizontalMargin, verticalMargin)

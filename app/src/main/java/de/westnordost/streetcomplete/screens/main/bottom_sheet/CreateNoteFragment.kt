@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
+import de.westnordost.streetcomplete.util.ktx.isKeyboardOpen
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
@@ -50,7 +51,6 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override val bottomSheetTitle get() = bottomSheetBinding.speechBubbleTitleContainer
     override val bottomSheetContent get() = bottomSheetBinding.speechbubbleContentContainer
     override val floatingBottomView get() = bottomSheetBinding.okButton
-    override val backButton get() = bottomSheetBinding.closeButton
     override val okButton get() = bottomSheetBinding.okButton
     override val okButtonContainer get() = bottomSheetBinding.okButtonContainer
 
@@ -140,9 +140,12 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override fun onComposedNote(text: String, imagePaths: List<String>) {
         /* pressing once on "OK" should first only close the keyboard, so that the user can review
            the position of the note he placed */
-        if (contentBinding.noteInput.hideKeyboard() == true) return
+        if (contentBinding.noteInput.isKeyboardOpen) {
+            contentBinding.noteInput.hideKeyboard()
+            return
+        }
 
-        val createNoteMarker = binding.markerCreateLayout.createNoteMarker
+        val createNoteMarker = binding.markerCreateLayout.pin.root
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
         val position = listener?.getMapPositionAt(screenPos.toPointF()) ?: return

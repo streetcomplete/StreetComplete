@@ -8,6 +8,7 @@ import android.graphics.PixelFormat
 import android.graphics.PointF
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.minus
+import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.translate
 import kotlin.math.PI
 import kotlin.math.atan2
@@ -30,7 +31,7 @@ class ArrowDrawable(private val resources: Resources) : Drawable() {
 
     private val paint = Paint().also {
         it.isAntiAlias = true
-        it.strokeWidth = 6 * resources.displayMetrics.density
+        it.strokeWidth = resources.dpToPx(6)
         it.strokeCap = Paint.Cap.ROUND
     }
 
@@ -50,7 +51,7 @@ class ArrowDrawable(private val resources: Resources) : Drawable() {
 
         canvas.drawLine(start.x, start.y, end.x, end.y, paint)
         // draw arrow
-        val arrowHeadSize = 14 * resources.displayMetrics.density
+        val arrowHeadSize = resources.dpToPx(14)
         val arrowHeadLineEnd1 = end.translate(arrowHeadSize, angle + PI * 3 / 4)
         val arrowHeardLineEnd2 = end.translate(arrowHeadSize, angle - PI * 3 / 4)
         canvas.drawLine(end.x, end.y, arrowHeadLineEnd1.x, arrowHeadLineEnd1.y, paint)

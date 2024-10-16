@@ -1,6 +1,0 @@
-<resources>
-
-    <dimen name="links_item_margin">12dp</dimen>
-    <dimen name="achievements_item_margin">24dp</dimen>
-
-</resources>

@@ -24,7 +24,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     /** find only those roads eligible for asking for oneway */
     private val elementFilter by lazy { """
-        ways with highway ~ living_street|residential|service|tertiary|unclassified
+        ways with highway ~ living_street|residential|service|tertiary|unclassified|busway
          and width <= 4 and (!lanes or lanes <= 1)
          and !oneway and area != yes and junction != roundabout
          and (access !~ private|no or (foot and foot !~ private|no))
@@ -35,6 +35,8 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
+
+    override val hint = R.string.quest_arrow_tutorial
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title
 
@@ -54,10 +56,11 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
         }
 
         return onewayCandidates.filter {
-            /* ways that are simply at the border of the download bounding box are treated as if
-               they are dead ends. This is fine though, because it only leads to this quest not
-               showing up for those streets (which is better than the other way round)
-            */
+            /*
+                ways that are simply at the border of the download bounding box are treated as if
+                they are dead ends. This is fine though, because it only leads to this quest not
+                showing up for those streets (which is better than the other way round)
+             */
             // check if the way has connections to other roads at both ends
             (connectionCountByNodeIds[it.nodeIds.first()] ?: 0) > 1 &&
             (connectionCountByNodeIds[it.nodeIds.last()] ?: 0) > 1

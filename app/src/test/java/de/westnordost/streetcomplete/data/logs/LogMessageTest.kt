@@ -27,7 +27,7 @@ class LogMessageTest {
             1000 * 60 * 30
         )
         val m2 = LogMessage(
-            LogLevel.ERROR,
+            LogLevel.WARNING,
             "TAG",
             "test message",
             "error",
@@ -35,8 +35,8 @@ class LogMessageTest {
         )
 
         assertEquals(
-            "1970-01-01T00:30: [TAG] test message error\n" +
-                "1970-01-01T01:00: [TAG] test message error",
+            "1970-01-01T00:30: E [TAG] test message error\n" +
+                "1970-01-01T01:00: W [TAG] test message error",
             listOf(m1, m2).format(tz = TimeZone.UTC)
         )
     }

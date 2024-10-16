@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
@@ -15,7 +16,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.argThat
 import de.westnordost.streetcomplete.testutils.bbox
@@ -1216,6 +1216,29 @@ class MapDataWithEditsSourceTest {
         val updatedMapData = MutableMapDataWithGeometry(
             elements = listOf(ndModifiedMoved, ndModified4),
             geometryEntries = listOf(pModifiedMoved, pModified4)
+        )
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        verify(listener).onUpdated(eq(updatedMapData), eq(emptyList()))
+    }
+
+    @Test
+    fun `does call onUpdated when updated element is not in local changes`() {
+        val nd = node(1, p(0.1, 0.0))
+        val ndModified = node(1, p(0.3, 0.0))
+        val nd2 = node(2, p(0.5, 0.4))
+        val p2 = ElementGeometryEntry(NODE, 2, pGeom(0.5, 0.4))
+
+        originalElementsAre(nd, nd2)
+        mapDataChangesAre(modifications = listOf(ndModified))
+
+        val s = create()
+        val listener = mock<MapDataWithEditsSource.Listener>()
+        s.addListener(listener)
+
+        val updatedMapData = MutableMapDataWithGeometry(
+            elements = listOf(nd2),
+            geometryEntries = listOf(p2)
         )
         mapDataListener.onUpdated(updatedMapData, emptyList())
 

@@ -77,14 +77,13 @@ class AndroidDatabase(private val db: SQLiteDatabase) : Database {
         table: String,
         values: Collection<Pair<String, Any?>>,
         conflictAlgorithm: ConflictAlgorithm?
-    ): Long {
-        return db.insertWithOnConflict(
+    ): Long =
+        db.insertWithOnConflict(
             table,
             null,
             values.toContentValues(),
             conflictAlgorithm.toConstant()
         )
-    }
 
     override fun insertMany(
         table: String,
@@ -119,24 +118,21 @@ class AndroidDatabase(private val db: SQLiteDatabase) : Database {
         where: String?,
         args: Array<Any>?,
         conflictAlgorithm: ConflictAlgorithm?
-    ): Int {
-        return db.updateWithOnConflict(
+    ): Int =
+        db.updateWithOnConflict(
             table,
             values.toContentValues(),
             where,
             args?.primitivesArrayToStringArray(),
             conflictAlgorithm.toConstant()
         )
-    }
 
     override fun delete(table: String, where: String?, args: Array<Any>?): Int {
         val strArgs = args?.primitivesArrayToStringArray()
         return db.delete(table, where, strArgs)
     }
 
-    override fun <T> transaction(block: () -> T): T {
-        return db.transaction { block() }
-    }
+    override fun <T> transaction(block: () -> T): T = db.transaction { block() }
 }
 
 private fun Array<Any>.primitivesArrayToStringArray() = Array(size) { i ->

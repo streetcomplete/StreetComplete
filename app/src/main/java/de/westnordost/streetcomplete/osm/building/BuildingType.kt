@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.osm.building
 enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     UNSUPPORTED     (null, null),
 
-    HISTORIC        ("historic", "yes"),
     ABANDONED       ("abandoned", "yes"),
     RUINS           ("ruins", "yes"),
 
@@ -79,6 +78,9 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     CIVIC           ("building", "civic"),
     RELIGIOUS       ("building", "religious"),
 
+    // historic is back here because if a building is tagged as e.g. building=civic + historic=yes
+    // the building type parsed should rather be "civic building" than "historic building"
+    HISTORIC        ("historic", "yes"),
     CONSTRUCTION    ("building", "construction");
 
     companion object {
@@ -98,7 +100,7 @@ enum class BuildingType(val osmKey: String?, val osmValue: String?) {
             ("building" to "cottage") to BUNGALOW, // not documented
             ("building" to "ger") to TENT, // a Mongolian tent
             ("building" to "stilt_house") to HOUSE,
-            ("building" to "terrace_house") to HOUSE,  // not documented, auto-changing to house would be a loss of information
+            ("building" to "terrace_house") to HOUSE, // not documented, auto-changing to house would be a loss of information
             ("building" to "trullo") to HUT,
             ("building" to "pajaru") to HUT, // not documented, but similar to trullo https://it.wikipedia.org/wiki/Pajaru
 

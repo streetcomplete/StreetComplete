@@ -91,7 +91,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
                 is Relation -> building.getMultipolygonNodeIds(mapData).toSet()
                 else -> emptyList()
             }
-            val buildingEntrances =  buildingsWayNodeIds.mapNotNull { mapData.getNode(it) }
+            val buildingEntrances = buildingsWayNodeIds.mapNotNull { mapData.getNode(it) }
                 .filter { entrancesFilter.matches(it) }
             if (buildingEntrances.count() < 2) continue
             result.addAll(buildingEntrances.filter { noEntranceRefFilter.matches(it) && it.id !in excludedWayNodeIds })

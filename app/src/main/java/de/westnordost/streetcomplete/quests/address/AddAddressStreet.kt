@@ -57,7 +57,7 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
         return addressesWithoutStreet
     }
 
-    /* cannot be determined because of the associated street relations */
+    // cannot be determined because of the associated street relations
     override fun isApplicableTo(element: Element): Boolean? =
         if (!filter.matches(element)) false else null
 
@@ -75,6 +75,5 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
     }
 }
 
-private fun Relation.contains(elementType: ElementType, elementId: Long): Boolean {
-    return members.any { it.type == elementType && it.ref == elementId }
-}
+private fun Relation.contains(elementType: ElementType, elementId: Long): Boolean =
+    members.any { it.type == elementType && it.ref == elementId }

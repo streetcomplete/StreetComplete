@@ -64,6 +64,14 @@ class LogsDaoTest : ApplicationDbTestCase() {
 
         assertEquals(listOf(m2), dao.getAll(newerThan = 1))
     }
+
+    @Test fun clear() {
+        dao.add(createMessage("1", timestamp = 1))
+        dao.add(createMessage("2", timestamp = 2))
+
+        assertEquals(2, dao.clear())
+        assertEquals(0, dao.getAll().size)
+    }
 }
 
 private fun createMessage(

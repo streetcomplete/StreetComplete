@@ -31,8 +31,8 @@ class EditElementsDaoTest : ApplicationDbTestCase() {
         ))
 
         dao.put(7, listOf(
-            ElementKey(ElementType.NODE, 0),  // referring to same element
-            ElementKey(ElementType.WAY, 1),  // but also another
+            ElementKey(ElementType.NODE, 0), // referring to same element
+            ElementKey(ElementType.WAY, 1), // but also another
         ))
 
         dao.put(3, listOf(
@@ -53,7 +53,7 @@ class EditElementsDaoTest : ApplicationDbTestCase() {
         )
 
         assertEquals(
-            listOf(ElementKey(ElementType.NODE, 0), ElementKey(ElementType.WAY, 1),),
+            listOf(ElementKey(ElementType.NODE, 0), ElementKey(ElementType.WAY, 1)),
             dao.get(7)
         )
 

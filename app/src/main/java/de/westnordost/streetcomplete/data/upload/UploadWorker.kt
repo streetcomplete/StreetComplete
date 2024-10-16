@@ -32,14 +32,13 @@ class UploadWorker(
         }
     }
 
-    override suspend fun doWork(): Result {
-        return try {
+    override suspend fun doWork(): Result =
+        try {
             uploader.upload()
             Result.success()
         } catch (e: Exception) {
             Result.failure()
         }
-    }
 
     companion object {
         fun createWorkRequest(isUserInitiated: Boolean): OneTimeWorkRequest {

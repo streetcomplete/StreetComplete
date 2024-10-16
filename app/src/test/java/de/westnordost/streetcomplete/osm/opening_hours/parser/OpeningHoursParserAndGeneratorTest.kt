@@ -198,13 +198,11 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Mo-Fr 08:00-10:00; We off") // off rules do not collide
     }
 
-    private fun parseAndGenerate(oh: String): String? {
-        return oh.toOpeningHoursOrNull(lenient = true)?.toOpeningHoursRows()?.toOpeningHours()?.toString()
-    }
+    private fun parseAndGenerate(oh: String): String? =
+        oh.toOpeningHoursOrNull(lenient = true)?.toOpeningHoursRows()?.toOpeningHours()?.toString()
 
-    private fun parse(oh: String): List<OpeningHoursRow>? {
-        return oh.toOpeningHoursOrNull(lenient = true)?.toOpeningHoursRows()
-    }
+    private fun parse(oh: String): List<OpeningHoursRow>? =
+        oh.toOpeningHoursOrNull(lenient = true)?.toOpeningHoursRows()
 
     private fun reject(oh: String) {
         assertNull(parse(oh))
@@ -357,13 +355,11 @@ class CollectionTimesParserAndGeneratorTest {
         accept("Mo-Fr,Su,PH 09:00, Mo-Fr,Su,PH 21:00", "Su-Fr,PH 09:00,21:00")
     }
 
-    private fun parseAndGenerate(oh: String): String? {
-        return oh.toOpeningHoursOrNull(lenient = true)?.toCollectionTimesRows()?.toOpeningHours()?.toString()
-    }
+    private fun parseAndGenerate(oh: String): String? =
+        oh.toOpeningHoursOrNull(lenient = true)?.toCollectionTimesRows()?.toOpeningHours()?.toString()
 
-    private fun parse(oh: String): List<CollectionTimesRow>? {
-        return oh.toOpeningHoursOrNull(lenient = true)?.toCollectionTimesRows()
-    }
+    private fun parse(oh: String): List<CollectionTimesRow>? =
+        oh.toOpeningHoursOrNull(lenient = true)?.toCollectionTimesRows()
 
     private fun reject(oh: String) {
         assertNull(parse(oh))

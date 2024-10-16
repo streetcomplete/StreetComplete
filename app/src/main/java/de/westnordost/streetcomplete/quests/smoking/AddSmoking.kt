@@ -7,20 +7,20 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     /*
-     - some places are eligible as we assume they probably have seating (unless
-       they are explicitly marked as having no seating at all):
-       (like bar, cafe, restaurant...)
-     - some places are eligible as their definition includes seating even if they
-       don't have any other explicit tags (like outdoor_seating)
-     - some places are eligible even if they don't have any seating (like nightclub)
-     - some places are eligible only if they are explicitly marked to have seating
-       as otherwise we assume they don't provide seating (like bakery, wine shop...)
-    */
+        - some places are eligible as we assume they probably have seating (unless
+          they are explicitly marked as having no seating at all):
+          (like bar, cafe, restaurant...)
+        - some places are eligible as their definition includes seating even if they
+          don't have any other explicit tags (like outdoor_seating)
+        - some places are eligible even if they don't have any seating (like nightclub)
+        - some places are eligible only if they are explicitly marked to have seating
+          as otherwise we assume they don't provide seating (like bakery, wine shop...)
+     */
     override val elementFilter = """
          nodes, ways with
          (
@@ -48,7 +48,7 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_smoking_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = SmokingAllowedForm()
 

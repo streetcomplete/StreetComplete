@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.urlconfig
 
-import java.math.BigInteger
+import com.ionspin.kotlin.bignum.integer.BigInteger
 
 @JvmInline
 value class Ordinals(private val value: Set<Int>) : Set<Int> by value
@@ -18,14 +18,21 @@ fun BooleanArray.toOrdinals(): Ordinals {
 
 fun BooleanArray.toBigInteger(): BigInteger {
     val str = joinToString(separator = "") { if (it) "1" else "0" }
-    if (str.isEmpty()) return 0.toBigInteger()
-    // reversed because Java uses big endian, but we want small endian
-    return BigInteger(str.reversed(), 2)
+    if (str.isEmpty()) return BigInteger.ZERO
+    // reversed because we want small endian rather than big endian
+    return BigInteger.parseString(str.reversed(), 2)
 }
 
 fun BigInteger.toBooleanArray(): BooleanArray {
-    // reversed because Java uses big endian, but we want small endian
+    // reversed because we want small endian rather than big endian
     val str = toString(2).reversed()
     if (str == "0") return booleanArrayOf()
     return str.map { it == '1' }.toBooleanArray()
 }
+
+fun String.toBigIntegerOrNull(radix: Int): BigInteger? =
+    try {
+        BigInteger.parseString(this, radix)
+    } catch (e: Exception) {
+        null
+    }

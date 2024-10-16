@@ -135,21 +135,19 @@ class ElementGeometryCreator {
     private fun getRelationMemberWaysNodePositions(
         relation: Relation,
         wayGeometries: Map<Long, List<LatLon>>
-    ): List<List<LatLon>> {
-        return relation.members
+    ): List<List<LatLon>> =
+        relation.members
             .filter { it.type == ElementType.WAY }
             .mapNotNull { getValidNodePositions(wayGeometries[it.ref]) }
-    }
 
     private fun getRelationMemberWaysNodePositions(
         relation: Relation,
         withRole: String,
         wayGeometries: Map<Long, List<LatLon>>
-    ): List<List<LatLon>> {
-        return relation.members
+    ): List<List<LatLon>> =
+        relation.members
             .filter { it.type == ElementType.WAY && it.role == withRole }
             .mapNotNull { getValidNodePositions(wayGeometries[it.ref]) }
-    }
 
     private fun getValidNodePositions(wayGeometry: List<LatLon>?): List<LatLon>? {
         if (wayGeometry == null) return null

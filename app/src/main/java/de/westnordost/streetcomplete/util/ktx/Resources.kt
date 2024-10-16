@@ -5,6 +5,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
+import androidx.core.util.TypedValueCompat
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.decodeFromStream
 import de.westnordost.streetcomplete.view.DrawableImage
@@ -30,3 +31,15 @@ fun Resources.getDrawable(image: Image): Drawable = when (image) {
     is ResImage -> getDrawable(image.resId)
     is DrawableImage -> image.drawable
 }
+
+/** return the number of density independent pixels for the given pixels */
+fun Resources.pxToDp(px: Number): Float = TypedValueCompat.pxToDp(px.toFloat(), displayMetrics)
+
+/** return the number of pixels for the given density independent pixels */
+fun Resources.dpToPx(dp: Number): Float = TypedValueCompat.dpToPx(dp.toFloat(), displayMetrics)
+
+/** return the number of pixels for the given scalable pixels */
+fun Resources.spToPx(sp: Number): Float = TypedValueCompat.spToPx(sp.toFloat(), displayMetrics)
+
+/** return the number of scalable pixels for the given pixels */
+fun Resources.pxToSp(px: Number): Float = TypedValueCompat.pxToSp(px.toFloat(), displayMetrics)

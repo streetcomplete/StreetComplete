@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.quests.foot
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.HAS_SEPARATE_SIDEWALK
-import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.IS_LIVING_STREET
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.NO
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.YES
 
@@ -38,7 +38,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
         "and motorroad != yes " +
         "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified " +
         // road probably not developed enough to issue a prohibition for pedestrians
-        "and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})" +
+        "and (surface ~ ${PAVED_SURFACES.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})" +
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
         "and ( oneway ~ yes|-1 or bridge = yes or tunnel = yes or bicycle ~ no|use_sidepath )"
 
@@ -46,6 +46,9 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     override val wikiLink = "Key:foot"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val achievements = listOf(PEDESTRIAN)
+    override val enabledInCountries = AllCountriesExcept(
+        "GB" // see https://community.openstreetmap.org/t/poll-should-streetcomplete-disable-the-are-pedestrians-forbidden-to-walk-on-this-road-without-sidewalk-here-quest-in-the-uk/118387
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 
@@ -63,7 +66,6 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
                 tags.remove("sidewalk:left")
                 tags.remove("sidewalk:right")
             }
-            IS_LIVING_STREET -> tags["highway"] = "living_street"
         }
     }
 }

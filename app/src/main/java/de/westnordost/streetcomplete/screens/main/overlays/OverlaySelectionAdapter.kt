@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.core.graphics.drawable.updateBounds
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.overlays.Overlay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
@@ -26,9 +27,10 @@ class OverlaySelectionAdapter(private val overlays: List<Overlay>) : BaseAdapter
         val textView = view as TextView
         textView.setText(overlay?.title ?: R.string.overlay_none)
         val icon = context.getDrawable(overlay?.icon ?: R.drawable.space_24dp)
-        icon?.setBounds(0, 0, context.dpToPx(38).toInt(), context.dpToPx(38).toInt())
+        val bound = context.resources.dpToPx(38).toInt()
+        icon?.updateBounds(right = bound, bottom = bound)
         textView.setCompoundDrawables(icon, null, null, null)
-        textView.compoundDrawablePadding = context.dpToPx(8).toInt()
+        textView.compoundDrawablePadding = context.resources.dpToPx(8).toInt()
         return textView
     }
 }

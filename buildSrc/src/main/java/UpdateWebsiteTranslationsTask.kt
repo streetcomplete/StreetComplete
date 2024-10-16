@@ -6,7 +6,7 @@ import org.gradle.api.tasks.TaskAction
 import java.io.File
 
 /** Export the strings used on the streetcomplete.app website to the target directory as JSON files
- *  */
+ */
 open class UpdateWebsiteTranslationsTask : DefaultTask() {
 
     @get:Input var projectId: String? = null

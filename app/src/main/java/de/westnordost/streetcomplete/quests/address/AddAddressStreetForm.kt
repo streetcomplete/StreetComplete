@@ -7,12 +7,13 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.databinding.ViewStreetOrPlaceNameInputBinding
+import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameViewController
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import org.koin.android.ext.android.inject
 
 class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
@@ -39,7 +40,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitleHintLabel(getNameAndLocationLabel(
+        setTitleHintLabel(getNameAndLocationSpanned(
             element, resources, featureDictionary,
             showHouseNumber = true
         ))
@@ -68,13 +69,13 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         outState.putBoolean(IS_PLACE_NAME, isShowingPlaceName)
     }
 
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        return streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
-    }
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean =
+        streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
 
     override fun onClickOk() {
-        lastWasPlaceName = isShowingPlaceName
-        applyAnswer(streetOrPlaceCtrl.streetOrPlaceName!!)
+        val streetOrPlaceName = streetOrPlaceCtrl.streetOrPlaceName!!
+        lastWasPlaceName = streetOrPlaceName is PlaceName
+        applyAnswer(streetOrPlaceName)
     }
 
     override fun isFormComplete(): Boolean =

@@ -186,7 +186,7 @@ private fun TimesSelector.hasVariableTime(): Boolean = when (this) {
 
 private fun MonthsOrDateSelector.hasYear(): Boolean = when (this) {
     is Date -> hasYear()
-    is DateRange -> start.hasYear()  || end.hasYear()
+    is DateRange -> start.hasYear() || end.hasYear()
     is DatesInMonth -> year != null
     is MonthRange -> year != null
     is SingleMonth -> year != null

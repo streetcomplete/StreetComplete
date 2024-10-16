@@ -28,7 +28,6 @@ interface StatisticsSource {
     /** Number of days the active days range has */
     val activeDatesRange: Int
 
-    /** Return the total amount of quests solved*/
     /** Users' global rank in the last 7 days. If <= 0, it's not set yet */
     val currentWeekRank: Int
 

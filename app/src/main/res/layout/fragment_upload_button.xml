@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<de.westnordost.streetcomplete.screens.main.controls.UploadButton
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/uploadButton"
-    android:layout_width="@dimen/map_button_size"
-    android:layout_height="@dimen/map_button_size"
-    android:contentDescription="@string/action_upload"
-    style="@style/RoundWhiteButton"
-    />

@@ -68,7 +68,7 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
         speechbubbleContentContainer.visibility = View.VISIBLE
         speechbubbleContentContainer.scaleX = 0.8f
         speechbubbleContentContainer.scaleY = 0.8f
-        speechbubbleContentContainer.translationY = ctx.dpToPx(140)
+        speechbubbleContentContainer.translationY = ctx.resources.dpToPx(140)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             (mailOpenImageView.drawable as? AnimatedVectorDrawable)?.reset()
@@ -77,8 +77,8 @@ class OsmUnreadMessagesFragment : DialogFragment(R.layout.fragment_unread_osm_me
         binding.mailContainer.rotation = -40f
         binding.mailContainer.rotationY = -45f
         binding.mailContainer.alpha = 0.2f
-        binding.mailContainer.translationX = ctx.dpToPx(-400)
-        binding.mailContainer.translationY = ctx.dpToPx(60)
+        binding.mailContainer.translationX = ctx.resources.dpToPx(-400)
+        binding.mailContainer.translationY = ctx.resources.dpToPx(60)
         binding.mailContainer.animate().run {
             duration = 400
             startDelay = 200

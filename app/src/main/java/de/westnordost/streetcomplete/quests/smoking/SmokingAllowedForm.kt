@@ -18,7 +18,7 @@ class SmokingAllowedForm : AListQuestForm<SmokingAllowed>() {
         val noOutdoorSmoking =
             tags["outdoor_seating"] == "no" &&
             tags["amenity"] != "nightclub" && tags["amenity"] != "stripclub" && tags["amenity"] != "pub"
-            /* nightclubs etc. might have outside smoking areas even when there is no seating outside */
+            // nightclubs etc. might have outside smoking areas even when there is no seating outside
 
         return listOfNotNull(
             TextItem(NO, R.string.quest_smoking_no),

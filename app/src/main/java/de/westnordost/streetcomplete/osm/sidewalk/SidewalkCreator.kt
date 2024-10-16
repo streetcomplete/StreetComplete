@@ -9,16 +9,17 @@ import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun LeftAndRightSidewalk.applyTo(tags: Tags) {
     if (left == null && right == null) return
-    /* for being able to modify only one side (e.g. `left` is null while `right` is not null),
-       first the conflated and merged sidewalk values (sidewalk=both and sidewalk:both=yes etc.)
-       need to be separated.
-       So even if there is an invalid value such as sidewalk=narrow but only the right side
-       is modified to "yes" while the left side is not touched, it means that in the end, the
-       invalid value must still be in the end result, like this:
-       - sidewalk:left=narrow
-       - sidewalk:right=yes
-       First separating the values and then later conflating them again, if possible, solves this.
-    */
+    /*
+        for being able to modify only one side (e.g. `left` is null while `right` is not null),
+        first the conflated and merged sidewalk values (sidewalk=both and sidewalk:both=yes etc.)
+        need to be separated.
+        So even if there is an invalid value such as sidewalk=narrow but only the right side
+        is modified to "yes" while the left side is not touched, it means that in the end, the
+        invalid value must still be in the end result, like this:
+        - sidewalk:left=narrow
+        - sidewalk:right=yes
+        First separating the values and then later conflating them again, if possible, solves this.
+     */
 
     /* NOT expanding the bare tag, because the bare tag follows a different schema
        E.g. sidewalk=both  !=  sidewalk:left=both + sidewalk:right=both
@@ -26,7 +27,7 @@ fun LeftAndRightSidewalk.applyTo(tags: Tags) {
     tags.expandSides("sidewalk", includeBareTag = false)
     tags.separateConflatedSidewalk()
 
-    if (left != null)  tags["sidewalk:left"] = left.osmValue
+    if (left != null) tags["sidewalk:left"] = left.osmValue
     if (right != null) tags["sidewalk:right"] = right.osmValue
 
     // use shortcut syntax if possible, preferred by community according to usage numbers on taginfo

@@ -17,7 +17,7 @@
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:background="#3666"
-        tools:src="@drawable/ic_cycleway_lane"/>
+        tools:src="@drawable/ic_cycleway_lane_white"/>
 
     <TextView
         android:id="@+id/textView"

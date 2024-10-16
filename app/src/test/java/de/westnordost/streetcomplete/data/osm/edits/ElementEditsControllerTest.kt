@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.edits.upload.LastEditTimeStore
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.edit
@@ -29,7 +29,7 @@ class ElementEditsControllerTest {
     private lateinit var db: ElementEditsDao
     private lateinit var elementsDb: EditElementsDao
     private lateinit var listener: ElementEditsSource.Listener
-    private lateinit var lastEditTimeStore: LastEditTimeStore
+    private lateinit var prefs: Preferences
     private lateinit var idProvider: ElementIdProviderDao
 
     @BeforeTest fun setUp() {
@@ -38,10 +38,10 @@ class ElementEditsControllerTest {
         on(db.markSynced(anyLong())).thenReturn(true)
         elementsDb = mock()
         idProvider = mock()
-        lastEditTimeStore = mock()
+        prefs = mock()
 
         listener = mock()
-        ctrl = ElementEditsController(db, elementsDb, idProvider, lastEditTimeStore)
+        ctrl = ElementEditsController(db, elementsDb, idProvider, prefs)
         ctrl.addListener(listener)
     }
 
@@ -93,6 +93,7 @@ class ElementEditsControllerTest {
         on(elementsDb.getAllByElement(NODE, -8)).thenReturn(listOf())
 
         ctrl.markSynced(edit0, updates)
+        val edit0Synced = edit0.copy(isSynced = true)
 
         // as explained above, edit 9 is get-put and its element keys updated
         val edit1New = edit1.copy(action = edit1ActionNew)
@@ -100,9 +101,9 @@ class ElementEditsControllerTest {
         verify(elementsDb).delete(edit1New.id)
         verify(elementsDb).put(edit1New.id, edit1New.action.elementKeys)
 
-        verify(db).markSynced(edit0.id)
+        verify(db).markSynced(edit0Synced.id)
         verify(idProvider).updateIds(updates.idUpdates)
-        verify(listener).onSyncedEdit(edit0)
+        verify(listener).onSyncedEdit(edit0Synced)
     }
 
     @Test fun `undo unsynced`() {
@@ -169,7 +170,7 @@ class ElementEditsControllerTest {
         val c = edit.action.newElementsCount
         verify(idProvider).assign(edit.id, c.nodes, c.ways, c.relations)
         verify(listener).onAddedEdit(any())
-        verify(lastEditTimeStore).touch()
+        verify(prefs).lastEditTime = anyLong()
     }
 
     private fun verifyDelete(vararg edits: ElementEdit) {

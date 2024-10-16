@@ -1,43 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:showDividers="middle"
-    android:divider="@drawable/button_bar_divider">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/descriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/quest_street_side_puzzle_tutorial"
-        android:labelFor="@+id/nameInput"
-        android:paddingStart="@dimen/quest_form_horizontal_padding"
-        android:paddingEnd="@dimen/quest_form_horizontal_padding"
-        android:paddingTop="@dimen/quest_form_vertical_padding"
-        android:paddingBottom="@dimen/quest_form_vertical_padding"
-        />
-    <RelativeLayout
+    <de.westnordost.streetcomplete.quests.lanes.StreetSideSelectRotateContainer
+        android:id="@+id/puzzleViewRotateContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/street_side_puzzle_height">
 
-        <de.westnordost.streetcomplete.quests.lanes.StreetSideSelectRotateContainer
-            android:id="@+id/puzzleViewRotateContainer"
+        <de.westnordost.streetcomplete.quests.lanes.LanesSelectPuzzle
+            android:id="@+id/puzzleView"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/street_side_puzzle_height">
+            android:layout_height="match_parent" />
 
-            <de.westnordost.streetcomplete.quests.lanes.LanesSelectPuzzle
-                android:id="@+id/puzzleView"
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+    </de.westnordost.streetcomplete.quests.lanes.StreetSideSelectRotateContainer>
 
-        </de.westnordost.streetcomplete.quests.lanes.StreetSideSelectRotateContainer>
-
-        <!-- note the other compass in fragment_main -->
-        <include
-            android:id="@+id/littleCompass"
-            layout="@layout/view_little_compass"/>
-    </RelativeLayout>
-</LinearLayout>
+    <!-- note the other compass in fragment_main -->
+    <include
+        android:id="@+id/littleCompass"
+        layout="@layout/view_little_compass"/>
+</RelativeLayout>

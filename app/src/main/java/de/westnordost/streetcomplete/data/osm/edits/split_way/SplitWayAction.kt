@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.split_way
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.NewElementsCount
@@ -13,7 +14,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.findNext
 import de.westnordost.streetcomplete.util.ktx.findPrevious
@@ -30,7 +30,7 @@ import kotlinx.serialization.Serializable
  *  The original way's first and last node id is passed in order to decide if an updated way is
  *  still compatible with the split action: If the updated way was shortened or extended on either
  *  end, it is not considered compatible anymore
- *  */
+ */
 @Serializable
 data class SplitWayAction(
     val originalWay: Way,
@@ -214,7 +214,7 @@ private fun getUpdatedRelations(
 
 /** Return by which relation member(s) the relation member that referenced the original way should
  *  be replaced. Some relation types have certain special rules for that.
- *  */
+ */
 private fun getRelationMemberReplacements(
     relation: Relation,
     indexOfWayInRelation: Int,

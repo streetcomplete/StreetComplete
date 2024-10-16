@@ -5,13 +5,9 @@
     <string name="oauth_failed_permissions">"Autorizacija nije uspješna: moraju se dodijeliti sve navedene dozvole"</string>
     <string name="pref_category_communication">"Komunikacija"</string>
     <string name="pref_category_display">"Prikaz"</string>
-    <string name="pref_tilecache_size_summary">"%d MB
-"</string>
-    <string name="pref_tilecache_size_message">"Prostor rezervisan (u megabajtima) na vanjskoj memoriji za predmemorijsko čuvanje mape"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Prikaži sve bilješke"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Prikaži sve bilješke koje nisu frazirane kao pitanja"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoriši bilješke koje nisu frazirane kao pitanja"</string>
-    <string name="pref_title_map_cache">"Veličina predmemorijske mape"</string>
     <string name="map_btn_gps_tracking">"Prati me"</string>
     <string name="map_attribution_osm">"© OpenStreetMap volonteri"</string>
     <string name="quest_generic_otherAnswers">"Drugi odgovori"</string>
@@ -44,7 +40,6 @@
     <string name="action_download">"Traži zadatke ovdje"</string>
     <string name="action_upload">"Uploaduj odgovore"</string>
     <string name="no_changes">"Niste dali nijedan odgovor"</string>
-    <string name="close">"zatvori"</string>
     <string name="download_error">"Greška tokom traženja zadataka"</string>
     <string name="upload_error">"Greška tokom uploadanja odgovora"</string>
     <string name="download_area_too_big">"Molimo da dodatno uvećate"</string>
@@ -52,13 +47,10 @@
     <string name="turn_on_location_request">"Lokacija je isključena. Želite li otvoriti postavke i sada je uključiti?"</string>
     <string name="no_location_permission_warning">"Vaša lokacija je potrebna za pronalaženje zadataka u vašoj blizini"</string>
     <string name="about_title_authors">"Zasluge"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick i volonteri"</string>
     <string name="about_title_repository">"Repozitorij izvora"</string>
-    <string name="about_summary_repository">"na GitHubu"</string>
     <string name="about_title_report_error">"Prijavi grešku"</string>
     <string name="about_title_feedback">"Pošalji svoju povratnu informaciju"</string>
     <string name="about_title_license">"Licenca"</string>
-    <string name="about_summary_license">"GNU Opća javna licenca"</string>
     <string name="offline">"Vi ste offline"</string>
     <string name="confirmation_authorize_now">"Morate se prijaviti sa svojim OSM korisničkim računom kako bi objavili svoje odgovore. Autorizirati sada?"</string>
     <string name="not_authorized">"Nije autorizirano"</string>
@@ -68,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"Samo povezuje dva puta"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Nešto drugo (ostavi bilješku)"</string>
     <string name="about_title_privacy_statement">"Politika privatnosti"</string>
-    <string name="about_summary_privacy_statement">"i korištenje podataka"</string>
     <string name="quest_openingHours_public_holidays">"Državni praznici"</string>
     <string name="quest_openingHours_public_holidays_short">"Praznik"</string>
     <string name="quest_openingHours_open_end">"otvoreni kraj"</string>
@@ -84,7 +75,7 @@
     <string name="map_btn_zoom_out">"Smanji"</string>
     <string name="map_btn_zoom_in">"Povećaj"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, neko kome je stalo do privatnosti, lijepo! Mislim da za vas imam samo dobre vijesti:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direktni doprinosi&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Direktni doprinosi&lt;/h2&gt;
 &lt;p&gt;
 Prvo, shvatite da s ovom aplikacijom dajete stvarne i direktne doprinose OpenStreetMapu.&lt;br/&gt;
 Sve što napravite u ovoj aplikaciji direktno se dodaje na kartu; između aplikacije i OSM infrastrukture ne postoji treća strana.
@@ -93,12 +84,12 @@ Sve što napravite u ovoj aplikaciji direktno se dodaje na kartu; između aplika
 Anonimno uređivanje OpenStreetMapa nije moguće, pa se sve promjene koje napravite rade s vašim korisničkim računom OSM-a. To znači da su datum, sadržaj i (implicitno) lokacija vaših promjena javno vidljivi na openstreetmap web stranici i povezani s vašim računom.
 &lt;/p&gt;
 
-&lt;b&gt;Lokacija&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Lokacija&lt;/h2&gt;
 &lt;p&gt;
 Aplikacija ne dijeli vašu GPS lokaciju ni s kim. Lokacija se koristi za automatsko skeniranje zadataka oko vašeg područja i za fokusiranje (i time preuzimanje) karte oko vaše lokacije.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Upotreba podataka&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Upotreba podataka&lt;/h2&gt;
 &lt;p&gt;
 Kao što je spomenuto, aplikacija direktno komunicira s OSM infrastrukturom.&lt;br/&gt;
 Međutim, prije slanja promjena, aplikacija provjerava &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednostavnom tekstualnom datotekom&lt;/a&gt; na mom serveru je li joj zabranjeno slati bilo kakve izmjene. Ovo je mjera predostrožnosti kako bi se mogle blokirati verzije aplikacije za koje se ispostavilo da imaju kritične programske pogreške, kako ne bi oštetile OSM podatke.&lt;/p&gt;"</string>
@@ -124,7 +115,6 @@ Međutim, prije slanja promjena, aplikacija provjerava &lt;a href=\"https://www.
     <string name="quest_surface_value_wood">"Drvo"</string>
     <string name="quest_sidewalk_title">"Ima li ova ulica trotoar?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Gdje se nalazi ova ulica?"</string>
-    <string name="quest_oneway_title">"Je li ovo jednosmjerna ulica?"</string>
     <string name="quest_address_title">"Koji je kućni broj ove zgrade?"</string>
     <string name="store_listing_short_description">"Aplikacija za mapiranje OpenStreetMapa"</string>
     <string name="store_listing_full_description">"Pomozite poboljšati OpenStreetMap pomoću StreetCompletea!
@@ -227,7 +217,6 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="credits_translations_title">"Prijevodi"</string>
     <string name="credits_contributors_title">"Programerski suradnici"</string>
     <string name="credits_author_title">"Autor i održavatelj"</string>
-    <string name="credits_and_more">"i drugi…"</string>
     <string name="quest_maxspeed_answer_living_street">"To je područje smirenog prometa"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Dakle, postoji znak poput ovog?"</string>
     <string name="quest_orchard_produce_title">"Što se ovdje uzgaja?"</string>
@@ -393,7 +382,7 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="questList_disabled_in_country">"Nikad se ne pokazuje u %s"</string>
     <string name="quest_select_hint_most_specific">"Odaberite najprecizniji odgovor:"</string>
     <string name="quest_generic_item_confirmation">"Jeste li sigurni da to ne možete preciznije odrediti?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Za neke zadatke preuzimaju se neki dodatni podaci trećih strana. Konkretno, zadatak za jednosmjerne ceste koristi API (također smješten na westnordost.de) o vjerojatnim kandidatima za jednosmjerne ceste.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Za neke zadatke preuzimaju se neki dodatni podaci trećih strana.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ne (ostavi bilješku)"</string>
     <string name="pref_quests_reset">"Želite li vratiti u početno stanje poredak i status omogućenosti svih vrsta zadataka?"</string>
     <string name="quest_generic_item_invalid_value">"Molim, odabirete precizniju vrijednost."</string>
@@ -503,16 +492,13 @@ Na primjer 1,3 ili 2–6."</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Je li ovo parkiralište za motocikle natkriveno (zaštićeno od kiše)?"</string>
     <string name="default_disabled_msg_maxspeed">"Ova je vrsta zadatka inicijalno onemogućena jer biste obično morali proći cijelu ulicu da provjerite ima li igdje znakova ograničenja brzine, a ne samo u istaknutom dijelu. To ponekad može biti prilično naporno da bi se riješio jedan zadatak."</string>
     <string name="pref_title_quests_restore_hidden">"Vrati skrivene zadatke"</string>
-    <string name="restore_hidden_success">"Vraćeno je %d skrivenih zadataka"</string>
     <string name="on_level">"na katu %s"</string>
     <string name="underground">"ispod površine"</string>
     <string name="quest_sidewalk_value_yes">"Ima trotoar"</string>
     <string name="quest_sidewalk_value_no">"Nema trotoar"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Je li pješacima zabranjeno hodati cestom ovdje?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ova je ulica označena da nema trotoara niti s jedne strane. U slučaju da ipak postoji trotoar, ali se prikazuje zasebno, molimo odgovorite \"Ima trotoar\"."</string>
     <string name="quest_buildingType_title">"O kakvoj je zgradi riječ?"</string>
     <string name="pref_title_theme_select">"Odaberite temu"</string>
-    <string name="theme_automatic">"Automatska"</string>
     <string name="theme_light">"Svjetla"</string>
     <string name="theme_dark">"Tamna"</string>
     <string name="theme_system_default">"Ista kao i sustav"</string>
@@ -542,7 +528,6 @@ Razdvojiti put sada?"</string>
     <string name="quest_maxweight_answer_other_sign">"Znak izgleda drugačije …"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Želite li ostaviti bilješku? Bilješka s fotografijom omogućit će ostalim kartografima da se pobrinu za nju."</string>
     <string name="quest_handrail_title">"Imaju li ove stepenice ogradu?"</string>
-    <string name="about_summary_current_version">"Trenutna verzija: %s"</string>
     <string name="quest_ref_answer_noRef">"Nema vidljivog referentnog broja…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Cesta na ilustraciji rotirana je isto kao na karti na mjestu pina."</string>
     <string name="quest_recycling_materials_title">"Što se sve ovdje može ostaviti za recikliranje?"</string>
@@ -567,7 +552,6 @@ Razdvojiti put sada?"</string>
     <string name="about_title_changelog">"Historija verzija"</string>
     <string name="title_whats_new">"Šta ima novo?"</string>
     <string name="about_title_rate">"Ocijenite ovu aplikaciju"</string>
-    <string name="about_summary_rate">"na Trgovina Playu"</string>
     <string name="about_title_donate">"Donirajte"</string>
     <string name="about_summary_donate">"Pokažite svoju zahvalnost! ❤️"</string>
     <string name="about_description_donate">"Zahvaljujemo što razmišljate o tome da podržite ovu aplikaciju! Da biste vidjeli trenutne donacije kao i sami donirali, dotaknite odgovarajuću platformu:"</string>
@@ -687,7 +671,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="credits_projects_contributors_title">"Projekti izrađeni za StreetComplete"</string>
     <string name="credits_main_contributors_title">"Glavni suradnici"</string>
     <string name="stats_are_syncing">"Vaša se statistika još uvijek sinkronizira. Provjerite ovaj ekran kasnije."</string>
-    <string name="user_statistics_country_rank">"Rang u %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Kartografski portal %s"</string>
     <string name="user_statistics_filter_by_country">"po zemljama"</string>
     <string name="user_statistics_filter_by_quest_type">"po vrsti zadatka"</string>
@@ -701,7 +684,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="quest_recycling_type_engine_oil">"Motorno ulje"</string>
     <string name="link_photon_description">"Nezavisno proširenje Nominatima, koje sadrži pretraživanje po nepotpunim uvjetima i pretraživanje dok tipkate"</string>
     <string name="link_graphhopper_description">"Prilagodljiv servis za navigaciju"</string>
-    <string name="link_qwant_maps_description">"Karta sa pretraživanjem i navigacijom"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Kako bi se prikazala karta, vektori se dohvaćaju sa %1$s. Pogledajte njihovu &lt;a href=\"%2$s\"&gt;izjavu o privatnosti&lt;/a&gt; za više informacija.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponzori"</string>
     <string name="quest_board_type_history">"Historija"</string>
@@ -838,7 +820,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku."</st
     <string name="team_mode_active">"Timski način rada je aktivan"</string>
     <string name="team_mode_deactivated">"Timski način rada je deaktiviran"</string>
     <string name="undo_confirm_title2">"Poništi ovo uređivanje?"</string>
-    <string name="synced">"Poslano"</string>
     <string name="toast_undo_unavailable">"Ova izmjena je već poslana i ne može se poništiti"</string>
     <string name="quest_cycleway_value_separate">"prikazan odvojeno na karti"</string>
     <string name="created_note_action_title">"Napravljena bilješka"</string>
@@ -961,7 +942,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
     <string name="quest_barrier_bicycle_type_single">"Prolaz između dvije barijere"</string>
     <string name="quest_barrier_bicycle_type_double">"Namjerne krivulje (šikana) - barijera sa svake strane"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Namjerne krivulje (šikana) - više od dvije barijere"</string>
-    <string name="pref_title_language_select">"Odaberite jezik"</string>
     <string name="language_default">"Isti kao i sustav"</string>
     <string name="on_floor">"na katu %s:"</string>
     <string name="select_street_parking_orientation">"Odaberite orijentaciju u odnosu na mjesto:"</string>
@@ -986,7 +966,6 @@ Podaci se automatski osvježavaju nakon %1$s dana, a nekorišteni podaci se bri�
 
 Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
     <string name="quest_address_house_number_label">"Kućni broj:"</string>
-    <string name="quest_shoulder_title">"Ima li ova cesta zaustavnu traku?"</string>
     <string name="quest_fireHydrant_position_title">"Gdje se nalazi ovaj vatrogasni hidrant?"</string>
     <string name="quest_fireHydrant_position_green">"U travi ili zemlji"</string>
     <string name="quest_fireHydrant_position_lane">"Na cesti"</string>
@@ -1037,8 +1016,6 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)"</string>
     <string name="quest_barrier_path_intersection">"Kako put ovdje prolazi kroz barijeru?"</string>
     <string name="quest_barrier_road_intersection">"Kako cesta ovdje prolazi kroz barijeru?"</string>
     <string name="quest_sidewalk_value_separate">"prikazano odvojeno na karti"</string>
-    <string name="quest_shoulder_value_yes">"zaustavna traka"</string>
-    <string name="quest_shoulder_value_no">"bez zaustavne trake"</string>
     <string name="no_camera_permission_warning_title">"Dozvola korištenja kamere"</string>
     <string name="no_camera_permission_warning">"Pristup je neophodan da biste mogli mjeriti udaljenosti s proširenom stvarnošću."</string>
     <string name="ar_core_error_sdk_too_old">"Ova je aplikacija prestara, pokušajte je ažurirati."</string>
@@ -1060,8 +1037,6 @@ Učinite isto za drugu stranu ako je prikazana na ekranu."</string>
     <string name="quest_road_width_title">"Kolika je širina ove ceste?"</string>
     <string name="quest_road_width_explanation">"Širina cesta od rubnika do rubnika: ovo uključuje sve na površini ulice poput parkinga na ulici ili biciklističkih traka, ali isključuje sve izvan nje, poput biciklističkih staza ili parkinga pored cesta."</string>
     <string name="quest_sidewalk_answer_none">"Uopće nema nogostupa"</string>
-    <string name="about_description_donate_google_play2">"Zahvaljujemo što razmišljate o tome da tražite ovu aplikaciju!
-Nažalost, zbog pravila Google Trgovine Play, poveznice na donacije ne smiju biti prikazane u aplikacijama. U tom kontekstu, čak niti direktna poveznica na našu internetsku stranicu nije dopuštena ovdje."</string>
     <string name="link_osmand_description">"Mobilna aplikacija za navigaciju i pregled karte (online i offline)"</string>
     <string name="link_sunders_description">"Karta nadzornih kamera"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Držite se bliže strelici, ali pripazite na promet!"</string>

@@ -8,13 +8,12 @@ sealed class RegexOrSet {
     companion object {
         private val anyRegexStuffExceptPipe = Regex("[.\\[\\]{}()<>*+-=!?^$]")
 
-        fun from(string: String): RegexOrSet {
-            return if (!string.contains(anyRegexStuffExceptPipe)) {
+        fun from(string: String): RegexOrSet =
+            if (!string.contains(anyRegexStuffExceptPipe)) {
                 SetRegex(string.split('|').toSet())
             } else {
                 RealRegex(string.toRegex())
             }
-        }
     }
 }
 

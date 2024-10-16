@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.MAXSPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_PAVED
+import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 
 class AddRoadWidth(
@@ -28,7 +28,7 @@ class AddRoadWidth(
     private val wayFilter by lazy { """
         ways with (
           (
-            highway ~ trunk|primary|secondary|tertiary|unclassified|residential
+            highway ~ trunk|primary|secondary|tertiary|unclassified|residential|busway
             and (lane_markings = no or lanes < 2)
           ) or (
             highway = residential
@@ -44,7 +44,8 @@ class AddRoadWidth(
         )
         and area != yes
         and (!width or source:width ~ ".*estimat.*")
-        and (surface ~ ${ANYTHING_PAVED.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
+        and (traffic_calming !~ ${ROAD_NARROWERS.joinToString("|")} or !maxwidth or source:maxwidth ~".*estimat.*")
+        and (surface ~ ${PAVED_SURFACES.joinToString("|")} or highway ~ ${ROADS_ASSUMED_TO_BE_PAVED.joinToString("|")})
         and (access !~ private|no or (foot and foot !~ private|no))
         and foot != no
         and placement != transition

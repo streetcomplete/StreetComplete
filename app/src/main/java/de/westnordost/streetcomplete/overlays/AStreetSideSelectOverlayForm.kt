@@ -2,12 +2,11 @@ package de.westnordost.streetcomplete.overlays
 
 import android.os.Bundle
 import android.view.View
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentOverlayStreetSidePuzzleWithLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.controller.StreetSideDisplayItem
 import de.westnordost.streetcomplete.view.controller.StreetSideSelectWithLastAnswerButtonViewController
@@ -34,7 +33,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
             binding.littleCompass.root,
             binding.lastAnswerButton,
             prefs,
-            Prefs.LAST_PICKED_PREFIX + javaClass.simpleName,
+            javaClass.simpleName,
             ::serialize,
             ::deserialize,
             ::asStreetSideItem
@@ -59,7 +58,7 @@ abstract class AStreetSideSelectOverlayForm<I> : AbstractOverlayForm() {
         }
     }
 
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
+    override fun onMapOrientation(rotation: Double, tilt: Double) {
         streetSideSelect.onMapOrientation(rotation, tilt)
     }
 

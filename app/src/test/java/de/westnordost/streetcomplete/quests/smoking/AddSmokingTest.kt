@@ -50,7 +50,7 @@ class AddSmokingTest {
         ))))
     }
 
-    /* we assume that seating is not present if not indicated for bakery and similar */
+    // we assume that seating is not present if not indicated for bakery and similar
     @Test fun `not applicable to bakery without indicated seating`() {
         assertFalse(questType.isApplicableTo(node(tags = mapOf(
             "shop" to "bakery",
@@ -105,7 +105,7 @@ class AddSmokingTest {
         ))))
     }
 
-    /* nighclubs etc. may have outdoor smoking areas even if no seating is present */
+    // nighclubs etc. may have outdoor smoking areas even if no seating is present
     @Test fun `applicable to nightclub without any seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "nightclub",
@@ -120,7 +120,7 @@ class AddSmokingTest {
         ))))
     }
 
-    /* we assume that seating is present if not indicated for cafe and similar */
+    // we assume that seating is present if not indicated for cafe and similar
     @Test fun `applicable to cafe without indicated seating`() {
         assertTrue(questType.isApplicableTo(node(tags = mapOf(
             "amenity" to "cafe",

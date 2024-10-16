@@ -8,18 +8,16 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.containsAll
-import de.westnordost.streetcomplete.util.ktx.toYesNo
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
 class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
-    OsmElementQuestType<Boolean> {
+    OsmElementQuestType<IsAmenityIndoorAnswer> {
 
     private val nodesFilter by lazy { """
         nodes with
@@ -30,6 +28,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
           )
           and access !~ private|no
           and !indoor and !location and !level and !level:ref
+          and covered != yes
     """.toElementFilterExpression() }
 
     /* small POIs that tend to be always attached to walls (and where the location is very useful
@@ -77,7 +76,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
             buildings.any { building ->
                 val buildingGeometry = buildingGeometriesById[building.id]
 
-                if (buildingGeometry != null  && buildingGeometry.getBounds().contains(it.position)) {
+                if (buildingGeometry != null && buildingGeometry.getBounds().contains(it.position)) {
                     it.position.isInMultipolygon(buildingGeometry.polygons)
                 } else {
                     false
@@ -102,9 +101,13 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
         return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
 
-    override fun createForm() = YesNoQuestForm()
+    override fun createForm() = IsAmenityIndoorForm()
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["indoor"] = answer.toYesNo()
+    override fun applyAnswerTo(answer: IsAmenityIndoorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            IsAmenityIndoorAnswer.INDOOR -> tags["indoor"] = "yes"
+            IsAmenityIndoorAnswer.OUTDOOR -> tags["indoor"] = "no"
+            IsAmenityIndoorAnswer.COVERED -> tags["covered"] = "yes"
+        }
     }
 }

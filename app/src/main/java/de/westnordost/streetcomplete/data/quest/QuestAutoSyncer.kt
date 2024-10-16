@@ -9,7 +9,6 @@ import android.net.ConnectivityManager
 import androidx.core.content.getSystemService
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
@@ -17,14 +16,15 @@ import de.westnordost.streetcomplete.data.download.strategy.MobileDataAutoDownlo
 import de.westnordost.streetcomplete.data.download.strategy.WifiAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.preferences.Autosync
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.logs.Log
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -43,7 +43,7 @@ class QuestAutoSyncer(
     private val context: Context,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
-    private val userLoginStatusSource: UserLoginStatusSource,
+    private val userLoginSource: UserLoginSource,
     private val prefs: Preferences,
     private val teamModeQuestFilter: TeamModeQuestFilter,
     private val downloadedTilesController: DownloadedTilesController
@@ -90,7 +90,7 @@ class QuestAutoSyncer(
         }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
+    private val userLoginStatusListener = object : UserLoginSource.Listener {
         override fun onLoggedIn() {
             triggerAutoUpload()
         }
@@ -108,18 +108,18 @@ class QuestAutoSyncer(
         }
     }
 
-    val isAllowedByPreference: Boolean
-        get() {
-            val p = Prefs.Autosync.valueOf(prefs.getStringOrNull(Prefs.AUTOSYNC) ?: "ON")
-            return p == Prefs.Autosync.ON || p == Prefs.Autosync.WIFI && isWifi
-        }
+    val isAllowedByPreference: Boolean get() = when (prefs.autosync) {
+        Autosync.ON -> true
+        Autosync.WIFI -> isWifi
+        Autosync.OFF -> false
+    }
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
     override fun onCreate(owner: LifecycleOwner) {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addListener(downloadProgressListener)
-        userLoginStatusSource.addListener(userLoginStatusListener)
+        userLoginSource.addListener(userLoginStatusListener)
         teamModeQuestFilter.addListener(teamModeChangeListener)
     }
 
@@ -140,7 +140,7 @@ class QuestAutoSyncer(
     override fun onDestroy(owner: LifecycleOwner) {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeListener(downloadProgressListener)
-        userLoginStatusSource.removeListener(userLoginStatusListener)
+        userLoginSource.removeListener(userLoginStatusListener)
         teamModeQuestFilter.removeListener(teamModeChangeListener)
         coroutineScope.coroutineContext.cancelChildren()
     }
@@ -181,7 +181,7 @@ class QuestAutoSyncer(
     private fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
         if (!isConnected) return
-        if (!userLoginStatusSource.isLoggedIn) return
+        if (!userLoginSource.isLoggedIn) return
 
         coroutineScope.launch {
             try {

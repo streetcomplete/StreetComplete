@@ -50,9 +50,8 @@ fun Vector3d.initialBearingTo(o: Vector3d): Double {
 }
 
 /** Returns the final bearing from one point to another */
-fun Vector3d.finalBearingTo(o: Vector3d): Double {
-    return normalizeRadians(o.initialBearingTo(this) + PI, 0.0)
-}
+fun Vector3d.finalBearingTo(o: Vector3d): Double =
+    normalizeRadians(o.initialBearingTo(this) + PI, 0.0)
 
 fun arcIntersection(a: Vector3d, b: Vector3d, p: Vector3d, q: Vector3d): Vector3d? {
     if (a == b || p == q) return null

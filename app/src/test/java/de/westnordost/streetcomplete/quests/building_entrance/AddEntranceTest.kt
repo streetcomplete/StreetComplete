@@ -9,12 +9,12 @@ import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class AddBuildingEntranceTest {
+class AddEntranceTest {
 
     private val questType = AddEntrance()
 
-    private fun generalTestDataWithWayThroughBuilding(tagsOnWayThroughBuilding: Map<String, String>): TestMapDataWithGeometry {
-        return TestMapDataWithGeometry(
+    private fun generalTestDataWithWayThroughBuilding(tagsOnWayThroughBuilding: Map<String, String>): TestMapDataWithGeometry =
+        TestMapDataWithGeometry(
             listOf(
                 node(1),
                 node(2),
@@ -30,7 +30,6 @@ class AddBuildingEntranceTest {
                 )),
             ),
         )
-    }
 
     @Test
     fun `applicable to cases where corridor through building is mapped`() {

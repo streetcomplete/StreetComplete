@@ -12,6 +12,5 @@ fun <T> OsmElementQuestType<T>.answerAppliedTo(answer: T, tags: Map<String, Stri
     return cb.create().changes
 }
 
-fun <T> OsmElementQuestType<T>.answerApplied(answer: T): Set<StringMapEntryChange> {
-    return answerAppliedTo(answer, emptyMap())
-}
+fun <T> OsmElementQuestType<T>.answerApplied(answer: T): Set<StringMapEntryChange> =
+    answerAppliedTo(answer, emptyMap())

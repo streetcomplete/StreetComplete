@@ -22,12 +22,11 @@ data class LogMessage(
     }
 }
 
-fun Iterable<LogMessage>.format(tz: TimeZone = TimeZone.currentSystemDefault()): String {
-    return joinToString("\n") {
-        val timestamp = Instant.fromEpochMilliseconds(it.timestamp)
+fun Iterable<LogMessage>.format(tz: TimeZone = TimeZone.currentSystemDefault()): String =
+    joinToString("\n") { logMessage ->
+        val timestamp = Instant.fromEpochMilliseconds(logMessage.timestamp)
             .toLocalDateTime(tz)
             .toString()
-
-        "$timestamp: $it"
+        val logLevel = logMessage.level.toChar()
+        "$timestamp: $logLevel $logMessage"
     }
-}

@@ -38,44 +38,46 @@ fun List<OpeningHoursRow>.toOpeningHours(): OpeningHours {
     var currentWds: WeekdaysAndHolidays? = null
     var currentTimeSpans: MutableList<TimeSpansSelector> = mutableListOf()
 
-    for (row in this) when (row) {
-        is OpeningMonthsRow -> {
-            // new rule if we were constructing one
-            if (currentWds != null) {
-                rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
-                currentWds = null
-                currentTimeSpans = mutableListOf()
-            }
-
-            currentMonths = row.months.toMonthsSelectors()
-        }
-        is OpeningWeekdaysRow -> {
-            val wds =
-                if (!row.weekdays.isSelectionEmpty()) {
-                    row.weekdays.toWeekdaysAndHolidays()
-                } else {
-                    WeekdaysAndHolidays(null, null)
+    for (row in this) {
+        when (row) {
+            is OpeningMonthsRow -> {
+                // new rule if we were constructing one
+                if (currentWds != null) {
+                    rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
+                    currentWds = null
+                    currentTimeSpans = mutableListOf()
                 }
 
-            // new weekdays -> new rule
-            if (currentWds != null && wds != currentWds) {
-                rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
-                currentTimeSpans = mutableListOf()
+                currentMonths = row.months.toMonthsSelectors()
             }
+            is OpeningWeekdaysRow -> {
+                val wds =
+                    if (!row.weekdays.isSelectionEmpty()) {
+                        row.weekdays.toWeekdaysAndHolidays()
+                    } else {
+                        WeekdaysAndHolidays(null, null)
+                    }
 
-            currentTimeSpans.add(row.timeRange.toTimeSpansSelector())
-            currentWds = wds
-        }
-        is OffDaysRow -> {
-            // new rule if we were constructing one
-            if (currentWds != null) {
-                rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
-                currentWds = null
-                currentTimeSpans = mutableListOf()
+                // new weekdays -> new rule
+                if (currentWds != null && wds != currentWds) {
+                    rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
+                    currentTimeSpans = mutableListOf()
+                }
+
+                currentTimeSpans.add(row.timeRange.toTimeSpansSelector())
+                currentWds = wds
             }
+            is OffDaysRow -> {
+                // new rule if we were constructing one
+                if (currentWds != null) {
+                    rules.add(createRule(currentMonths, currentWds, currentTimeSpans))
+                    currentWds = null
+                    currentTimeSpans = mutableListOf()
+                }
 
-            val wds = row.weekdays.toWeekdaysAndHolidays()
-            rules.add(createRule(currentMonths, wds, null, RuleType.Off))
+                val wds = row.weekdays.toWeekdaysAndHolidays()
+                rules.add(createRule(currentMonths, wds, null, RuleType.Off))
+            }
         }
     }
     if (currentWds != null) {
@@ -123,13 +125,13 @@ private fun List<Rule>.asNonColliding(): List<Rule> =
         this
     } else {
         map { rule ->
-        // "off" rules stay non-additive
-        if (rule.ruleType == RuleType.Off) {
-            rule
-        } else {
-            rule.copy(ruleOperator = RuleOperator.Additional)
+            // "off" rules stay non-additive
+            if (rule.ruleType == RuleType.Off) {
+                rule
+            } else {
+                rule.copy(ruleOperator = RuleOperator.Additional)
+            }
         }
-    }
     }
 
 private fun createRule(

@@ -53,6 +53,6 @@ val SURFACES_FOR_SMOOTHNESS = listOf(
 private val ROADS_TO_ASK_SMOOTHNESS_FOR = arrayOf(
     // "trunk","trunk_link","motorway","motorway_link", // too much, motorways are almost by definition smooth asphalt (or concrete)
     "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-    "unclassified", "residential", "living_street", "pedestrian", "track",
-    // "service", // this is too much, and the information value is very low
+    "unclassified", "residential", "living_street", "pedestrian", "track", "busway",
+    // "service", // this is too much (e.g. includes driveways), and the information value is very low
 )

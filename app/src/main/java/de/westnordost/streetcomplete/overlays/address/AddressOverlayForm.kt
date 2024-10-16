@@ -42,7 +42,7 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.quests.road_name.RoadNameSuggestionsSource
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
-import de.westnordost.streetcomplete.util.getNameAndLocationLabel
+import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.PositionOnWay
@@ -135,7 +135,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         }
 
         if (element != null) {
-            setTitleHintLabel(getNameAndLocationLabel(
+            setTitleHintLabel(getNameAndLocationSpanned(
                 element, resources, featureDictionary,
                 showHouseNumber = false
             ))
@@ -207,8 +207,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     private fun checkCurrentCursorPosition() {
         val buildings = buildings ?: return
         val metersPerPixel = metersPerPixel ?: return
-        val maxDistance = metersPerPixel * requireContext().dpToPx(12)
-        val snapToVertexDistance = metersPerPixel * requireContext().dpToPx(8)
+        val maxDistance = metersPerPixel * resources.dpToPx(12)
+        val snapToVertexDistance = metersPerPixel * resources.dpToPx(8)
         positionOnWay = geometry.center.getPositionOnWays(buildings, maxDistance, snapToVertexDistance)
     }
 
@@ -259,9 +259,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         outState.putBoolean(ADD_ENTRANCE, addEntrance)
     }
 
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        return streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
-    }
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean =
+        streetOrPlaceCtrl.selectStreetAt(position, clickAreaSizeInMeters)
 
     override fun hasChanges(): Boolean =
         numberOrNameInputCtrl.addressNumber != addressNumber

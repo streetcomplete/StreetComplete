@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.delete
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
@@ -9,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.Serializable
 
@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
  *
  *  2. if that node is a vertex in a way or has a role in a relation, the node is not deleted but
  *     just "degraded" to be a vertex, i.e. the tags are cleared.
- *  */
+ */
 @Serializable
 data class DeletePoiNodeAction(
     val originalNode: Node
@@ -46,15 +46,15 @@ data class DeletePoiNodeAction(
             throw ConflictException("Element geometry changed substantially")
         }
 
-        // delete free-floating node
-        return if (
-            mapDataRepository.getWaysForNode(currentNode.id).isEmpty()
-            && mapDataRepository.getRelationsForNode(currentNode.id).isEmpty()
-        ) {
+        val isInWayOrRelation =
+            mapDataRepository.getWaysForNode(currentNode.id).isNotEmpty()
+            || mapDataRepository.getRelationsForNode(currentNode.id).isNotEmpty()
+
+        return if (!isInWayOrRelation) {
+            // delete free-floating node
             MapDataChanges(deletions = listOf(currentNode))
-        }
-        // if it is a vertex in a way or has a role in a relation: just clear the tags then
-        else {
+        } else {
+            // if it is a vertex in a way or has a role in a relation: just clear the tags then
             val emptyNode = currentNode.copy(
                 tags = emptyMap(),
                 timestampEdited = nowAsEpochMilliseconds()

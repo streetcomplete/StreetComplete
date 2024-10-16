@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.util.Listeners
 
@@ -11,8 +10,7 @@ class AchievementsController(
     private val statisticsSource: StatisticsSource,
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val overlayRegistry: OverlayRegistry,
+    private val allEditTypes: AllEditTypes,
     private val allAchievements: List<Achievement>,
     allLinks: List<Link>
 ) : AchievementsSource {
@@ -151,21 +149,18 @@ class AchievementsController(
         return level - 1
     }
 
-    private fun getAchievedPoints(achievement: Achievement): Int {
-        return when (achievement.condition) {
+    private fun getAchievedPoints(achievement: Achievement): Int =
+        when (achievement.condition) {
             is EditsOfTypeCount -> statisticsSource.getEditCount(getEditTypesContributingToAchievement(achievement.id))
             is TotalEditCount -> statisticsSource.getEditCount()
             is DaysActive -> statisticsSource.daysActive
         }
-    }
 
     private fun isContributingToAchievement(editType: String, achievementId: String): Boolean =
-        (questTypeRegistry.getByName(editType) ?: overlayRegistry.getByName(editType))
-            ?.achievements?.anyHasId(achievementId) == true
+        allEditTypes.getByName(editType)?.achievements?.anyHasId(achievementId) == true
 
     private fun getEditTypesContributingToAchievement(achievementId: String): List<String> =
-        questTypeRegistry.filter { it.achievements.anyHasId(achievementId) }.map { it.name } +
-        overlayRegistry.filter { it.achievements.anyHasId(achievementId) }.map { it.name }
+        allEditTypes.filter { it.achievements.anyHasId(achievementId) }.map { it.name }
 }
 
 private fun List<EditTypeAchievement>.anyHasId(achievementId: String) = any { it.id == achievementId }

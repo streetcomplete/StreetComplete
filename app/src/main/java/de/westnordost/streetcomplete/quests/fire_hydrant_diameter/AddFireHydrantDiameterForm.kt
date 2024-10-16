@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -9,14 +8,13 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isGone
 import androidx.core.widget.doAfterTextChanged
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.INCH
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameterMeasurementUnit.MILLIMETER
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
 import de.westnordost.streetcomplete.util.ktx.intOrNull
-import de.westnordost.streetcomplete.util.mostCommonWithin
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import de.westnordost.streetcomplete.util.takeFavourites
 import org.koin.android.ext.android.inject
 
 class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswer>() {
@@ -34,22 +32,9 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
     private val diameterValue get() = diameterInput.intOrNull ?: 0
 
     private val lastPickedAnswers by lazy {
-        favs.get()
-            .mostCommonWithin(target = 5, historyCount = 15, first = 1)
-            .sorted()
-            .toList()
-    }
-
-    private lateinit var favs: LastPickedValuesStore<Int>
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.toString() },
-            deserialize = { it.toInt() }
-        )
+        prefs.getLastPicked(this::class.simpleName!!)
+            .map { it.toInt() }
+            .takeFavourites(n = 5, history = 15, first = 1)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,11 +61,11 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
 
         if (isUnusualDiameter(diameter)) {
             confirmUnusualInput(diameter.unit) {
-                favs.add(diameterValue)
+                prefs.addLastPicked(this::class.simpleName!!, diameterValue.toString())
                 applyAnswer(diameter)
             }
         } else {
-            favs.add(diameterValue)
+            prefs.addLastPicked(this::class.simpleName!!, diameterValue.toString())
             applyAnswer(diameter)
         }
     }
@@ -142,6 +127,7 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
 
 private fun getHydrantDiameterSignLayoutResId(countryCode: String): Int = when (countryCode) {
     "DE", "BE", "LU", "AT" -> R.layout.quest_fire_hydrant_diameter_sign_de
+    "HU" -> R.layout.quest_fire_hydrant_diameter_sign_hu
     "FI" -> R.layout.quest_fire_hydrant_diameter_sign_fi
     "NL" -> R.layout.quest_fire_hydrant_diameter_sign_nl
     "PL" -> R.layout.quest_fire_hydrant_diameter_sign_pl

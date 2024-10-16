@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.isImplicitMaxSpeedButNotSlowZone
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 
 class AddCycleway(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
@@ -72,6 +72,8 @@ class AddCycleway(
         "US-AZ", "US-TX"
     )
 
+    override val hint = R.string.quest_street_side_puzzle_tutorial
+
     override fun getTitle(tags: Map<String, String>) = when {
         parseCyclewaySides(tags, false) != null -> R.string.quest_cycleway_resurvey_title
         else -> R.string.quest_cycleway_title2
@@ -116,7 +118,7 @@ class AddCycleway(
 // streets that may have cycleway tagging
 private val roadsFilter by lazy { """
     ways with
-      highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+      highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|busway
       and area != yes
       and motorroad != yes
       and expressway != yes
@@ -146,7 +148,7 @@ private val untaggedRoadsFilter by lazy { """
         or maxspeed > 20
         or $isImplicitMaxSpeedButNotSlowZone
       )
-      and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+      and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
       and ~bicycle|bicycle:backward|bicycle:forward !~ use_sidepath
       and sidewalk != separate
 """.toElementFilterExpression() }

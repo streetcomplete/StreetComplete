@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlace
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.replacePlace
 import de.westnordost.streetcomplete.osm.updateCheckDate
 
@@ -39,7 +39,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
           )
     """.toElementFilterExpression() }
 
-    override val changesetComment = "Survey if vacant shops are still vacant"
+    override val changesetComment = "Survey if vacant places are still vacant"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.ic_quest_check_shop
     override val achievements = listOf(CITIZEN)
@@ -58,7 +58,7 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
         !element.isPlace()
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = ShopTypeForm()
 

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.create
 
+import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.IsActionRevertable
@@ -13,7 +14,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.upload.ConflictException
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import kotlinx.serialization.Serializable
 
@@ -41,7 +41,7 @@ import kotlinx.serialization.Serializable
  *    was created. If this changed, e.g. the intersection may have been moved elsewhere, which would
  *    mean that whatever tags we wanted to add to this node might have to go elsewhere too
  *
- *  */
+ */
 @Serializable
 data class CreateNodeFromVertexAction(
     val originalNode: Node,

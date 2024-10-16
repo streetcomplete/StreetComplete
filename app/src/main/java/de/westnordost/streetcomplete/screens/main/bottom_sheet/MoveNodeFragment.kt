@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import android.content.res.Configuration
 import android.graphics.PointF
 import android.os.Bundle
 import android.view.View
@@ -9,11 +10,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.location.RecentLocationStore
-import de.westnordost.streetcomplete.data.location.checkIsSurvey
-import de.westnordost.streetcomplete.data.location.confirmIsSurvey
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.getByLocation
@@ -25,14 +26,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
-import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.databinding.FragmentMoveNodeBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitFeetInch
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
+import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -41,6 +40,8 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.view.checkIsSurvey
+import de.westnordost.streetcomplete.view.confirmIsSurvey
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
@@ -55,8 +56,7 @@ class MoveNodeFragment :
     private val binding by viewBinding(FragmentMoveNodeBinding::bind)
 
     private val elementEditsController: ElementEditsController by inject()
-    private val questTypeRegistry: QuestTypeRegistry by inject()
-    private val overlayRegistry: OverlayRegistry by inject()
+    private val allEditTypes: AllEditTypes by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val countryInfos: CountryInfos by inject()
     private val recentLocationStore: RecentLocationStore by inject()
@@ -83,8 +83,7 @@ class MoveNodeFragment :
         super.onCreate(savedInstanceState)
         val args = requireArguments()
         node = Json.decodeFromString(args.getString(ARG_NODE)!!)
-        editType = questTypeRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!) as? OsmElementQuestType<*>
-            ?: overlayRegistry.getByName(args.getString(ARG_QUEST_TYPE)!!)!!
+        editType = allEditTypes.getByName(args.getString(ARG_QUEST_TYPE)!!) as ElementEditType
 
         val isFeetAndInch = countryInfos.getByLocation(
             countryBoundaries.value,
@@ -105,7 +104,7 @@ class MoveNodeFragment :
 
         binding.okButton.setOnClickListener { onClickOk() }
         binding.cancelButton.setOnClickListener { activity?.onBackPressed() }
-        binding.moveNodeIconView.setImageResource(editType.icon)
+        binding.pin.pinIconView.setImageResource(editType.icon)
 
         val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
         val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
@@ -118,18 +117,33 @@ class MoveNodeFragment :
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
+
+        // to lay out the arrow drawable correctly, view must have been layouted first
+        viewLifecycleOwner.lifecycleScope.launch {
+            view.awaitLayout()
+            updateArrowDrawable()
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        binding.centeredMarkerLayout.setPadding(
+            resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_topOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+            resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+        )
     }
 
     private fun getMarkerScreenPosition(): PointF {
-        val moveNodeMarker = binding.moveNodeMarker
+        val moveNodeMarker = binding.pin.root
         val screenPos = moveNodeMarker.getLocationInWindow()
         screenPos.offset(moveNodeMarker.width / 2, moveNodeMarker.height / 2)
         return screenPos.toPointF()
     }
 
-    private fun getMarkerPosition(): LatLon? {
-        return listener?.getMapPositionAt(getMarkerScreenPosition())
-    }
+    private fun getMarkerPosition(): LatLon? =
+        listener?.getMapPositionAt(getMarkerScreenPosition())
 
     private fun onClickOk() {
         val position = getMarkerPosition() ?: return

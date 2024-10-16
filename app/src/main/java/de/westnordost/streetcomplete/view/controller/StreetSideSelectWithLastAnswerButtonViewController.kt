@@ -5,16 +5,15 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ViewStreetSideLastAnswerButtonBinding
 import de.westnordost.streetcomplete.util.math.normalizeDegrees
-import de.westnordost.streetcomplete.util.prefs.Preferences
 import de.westnordost.streetcomplete.view.Image
 import de.westnordost.streetcomplete.view.ResImage
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setImage
-import kotlin.math.PI
 import kotlin.math.absoluteValue
 
 /** View controller that manages a street side select puzzle and accompanying last answer button
@@ -24,9 +23,9 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     private val compassView: View,
     private val lastAnswerButtonBinding: ViewStreetSideLastAnswerButtonBinding,
     private val prefs: Preferences,
-    private val lastSelectionPreferencePrefix: String,
-    private val serializeLastSelection: (item: I) -> String,
-    private val deserializeLastSelection: (str: String) -> I,
+    private val prefKey: String,
+    private val serializeSelection: (item: I) -> String,
+    private val deserializeSelection: (str: String) -> I,
     private val asStreetSideItem: (item: I, isRight: Boolean) -> StreetSideDisplayItem<I>
 ) {
     /** Callback when the user makes a selection */
@@ -106,27 +105,9 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
     }
 
     init {
-        lastSelectionLeft = prefs.getStringOrNull("$lastSelectionPreferencePrefix.left")?.let { str ->
-            try {
-                deserializeLastSelection(str)
-            } catch (e: Exception) {
-                null
-            }
-        }
-        lastSelectionRight = prefs.getStringOrNull("$lastSelectionPreferencePrefix.right")?.let { str ->
-            try {
-                deserializeLastSelection(str)
-            } catch (e: Exception) {
-                null
-            }
-        }
-        lastSelectionOneSide = prefs.getStringOrNull("$lastSelectionPreferencePrefix.oneSide")?.let { str ->
-            try {
-                deserializeLastSelection(str)
-            } catch (e: Exception) {
-                null
-            }
-        }
+        lastSelectionLeft = prefs.getLastPickedLeft(prefKey)?.let { tryDeserializeSelection(it) }
+        lastSelectionRight = prefs.getLastPickedRight(prefKey)?.let { tryDeserializeSelection(it) }
+        lastSelectionOneSide = prefs.getLastPickedOneSide(prefKey)?.let { tryDeserializeSelection(it) }
 
         puzzleView.onClickSideListener = { isRight -> onClickSide?.invoke(isRight) }
         lastAnswerButtonBinding.root.setOnClickListener { applyLastSelection() }
@@ -134,12 +115,19 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         puzzleView.setRightSideImage(defaultPuzzleImageRight)
     }
 
+    private fun tryDeserializeSelection(str: String): I? =
+        try {
+            deserializeSelection(str)
+        } catch (e: Exception) {
+            null
+        }
+
     /* ------------------------------------ rotate view ----------------------------------------- */
 
-    fun onMapOrientation(rotation: Float, tilt: Float) {
-        puzzleView.streetRotation = offsetPuzzleRotation + (180 * rotation / PI).toFloat()
-        compassView.rotation = (180 * rotation / PI).toFloat()
-        compassView.rotationX = (180 * tilt / PI).toFloat()
+    fun onMapOrientation(rotation: Double, tilt: Double) {
+        puzzleView.streetRotation = offsetPuzzleRotation - rotation.toFloat()
+        compassView.rotation = -rotation.toFloat()
+        compassView.rotationX = tilt.toFloat()
     }
 
     /* ------------------------------------------------------------------------------------------ */
@@ -199,10 +187,10 @@ class StreetSideSelectWithLastAnswerButtonViewController<I>(
         val r = if (isUpsideDown) left else right
 
         if (showSides == Sides.BOTH) {
-            prefs.putString("$lastSelectionPreferencePrefix.left", l?.let { serializeLastSelection(it.value) })
-            prefs.putString("$lastSelectionPreferencePrefix.right", r?.let { serializeLastSelection(it.value) })
+            prefs.setLastPickedLeft(prefKey, l?.value?.let { serializeSelection(it) })
+            prefs.setLastPickedRight(prefKey, r?.value?.let { serializeSelection(it) })
         } else {
-            (l ?: r)?.let { prefs.putString("$lastSelectionPreferencePrefix.oneSide", serializeLastSelection(it.value)) }
+            prefs.setLastPickedOneSide(prefKey, (l ?: r)?.value?.let { serializeSelection(it) })
         }
     }
 

@@ -77,6 +77,32 @@ class AddRoadWidthTest {
         ))))
     }
 
+    @Test fun `is applicable to road with choker`() {
+        assertTrue(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "DE:zone30",
+            "highway" to "residential",
+            "surface" to "asphalt",
+            "traffic_calming" to "choker"
+        ))))
+    }
+
+    @Test fun `is not applicable to road with choker and maxwidth`() {
+        assertFalse(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "DE:zone30",
+            "highway" to "residential",
+            "surface" to "asphalt",
+            "traffic_calming" to "choker",
+            "maxwidth" to "3"
+        ))))
+        assertFalse(quest.isApplicableTo(way(tags = mapOf(
+            "maxspeed" to "DE:zone30",
+            "highway" to "residential",
+            "surface" to "asphalt",
+            "traffic_calming" to "choker",
+            "width" to "3"
+        ))))
+    }
+
     @Test fun `apply to street`() {
         assertEquals(
             setOf(StringMapEntryAdd("width", "3")),

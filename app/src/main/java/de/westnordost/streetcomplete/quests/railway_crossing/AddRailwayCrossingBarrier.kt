@@ -26,6 +26,7 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
     private val excludedWaysFilter by lazy { """
         ways with
           highway and access ~ private|no
+          or abandoned:railway
           or railway ~ tram|abandoned|disused
           or railway and embedded = yes
     """.toElementFilterExpression() }

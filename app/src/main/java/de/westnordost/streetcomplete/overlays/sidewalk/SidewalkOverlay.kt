@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.Color
 import de.westnordost.streetcomplete.overlays.Overlay
@@ -79,38 +79,34 @@ private fun getFootwayStyle(element: Element): PolylineStyle {
 }
 
 private fun getSidewalkStyle(element: Element): PolylineStyle {
-    val sidewalkSides = parseSidewalkSides(element.tags)
-    // not set but on road that usually has no sidewalk or it is private -> do not highlight as missing
-    if (sidewalkSides == null) {
-        if (sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element)) {
-            return PolylineStyle(StrokeStyle(Color.INVISIBLE))
-        }
-    }
+    val sidewalks = parseSidewalkSides(element.tags)
+    val isNoSidewalkExpected = lazy { sidewalkTaggingNotExpected(element) || isPrivateOnFoot(element) }
 
     return PolylineStyle(
         stroke = null,
-        strokeLeft = sidewalkSides?.left.style,
-        strokeRight = sidewalkSides?.right.style
+        strokeLeft = sidewalks?.left.getStyle(isNoSidewalkExpected),
+        strokeRight = sidewalks?.right.getStyle(isNoSidewalkExpected)
     )
 }
 
 private val sidewalkTaggingNotExpectedFilter by lazy { """
     ways with
-      highway ~ living_street|pedestrian|service|motorway_link
+      highway ~ living_street|pedestrian|service|motorway_link|busway
       or motorroad = yes
       or expressway = yes
       or maxspeed <= 10
       or maxspeed = walk
-      or surface ~ ${ANYTHING_UNPAVED.joinToString("|")}
+      or surface ~ ${UNPAVED_SURFACES.joinToString("|")}
       or ~"${(MAXSPEED_TYPE_KEYS + "maxspeed").joinToString("|")}" ~ ".*:(zone)?:?([1-9]|10)"
 """.toElementFilterExpression() }
 
 private fun sidewalkTaggingNotExpected(element: Element) =
     sidewalkTaggingNotExpectedFilter.matches(element)
 
-private val Sidewalk?.style get() = StrokeStyle(when (this) {
-    Sidewalk.YES           -> Color.SKY
-    Sidewalk.NO            -> Color.BLACK
-    Sidewalk.SEPARATE      -> Color.INVISIBLE
-    Sidewalk.INVALID, null -> Color.DATA_REQUESTED
+private fun Sidewalk?.getStyle(isNoSidewalkExpected: Lazy<Boolean>) = StrokeStyle(when (this) {
+    Sidewalk.YES ->      Color.SKY
+    Sidewalk.NO ->       Color.BLACK
+    Sidewalk.SEPARATE -> Color.INVISIBLE
+    Sidewalk.INVALID  -> Color.DATA_REQUESTED
+    null ->              if (isNoSidewalkExpected.value) Color.INVISIBLE else Color.DATA_REQUESTED
 })

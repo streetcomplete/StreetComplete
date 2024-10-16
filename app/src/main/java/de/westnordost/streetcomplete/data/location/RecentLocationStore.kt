@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data.location
 
 import android.location.Location
+import de.westnordost.streetcomplete.util.ktx.elapsedDuration
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.math.flatDistanceTo
-import kotlin.math.abs
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
 
 class RecentLocationStore {
     private val recentLocations = ArrayDeque<Location>()
@@ -17,7 +19,7 @@ class RecentLocationStore {
                 previousLocation = it
                 return@filter true
             }
-            if (abs(it.elapsedRealtimeNanos - loc.elapsedRealtimeNanos) > LOCATION_MIN_TIME_DIFFERENCE_NANOS
+            if ((it.elapsedDuration - loc.elapsedDuration).absoluteValue > LOCATION_MIN_TIME_DIFFERENCE
                 && loc.toLatLon().flatDistanceTo(it.toLatLon()) >= MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY / 2
             ) {
                 previousLocation = it
@@ -30,13 +32,33 @@ class RecentLocationStore {
 
     fun add(location: Location) = synchronized(recentLocations) {
         while (recentLocations.isNotEmpty()
-            && recentLocations.first().elapsedRealtimeNanos <= location.elapsedRealtimeNanos - LOCATION_STORE_TIME_NANOS
+            && recentLocations.first().elapsedDuration <= location.elapsedDuration - LOCATION_STORE_TIME
         ) {
             recentLocations.removeFirst()
         }
         recentLocations.add(location)
     }
-}
 
-private const val LOCATION_STORE_TIME_NANOS = 600 * 1000 * 1000 * 1000L // 10 min
-private const val LOCATION_MIN_TIME_DIFFERENCE_NANOS = 5 * 1000 * 1000 * 1000L // 5 sec
+    companion object {
+        /*
+        Considerations for choosing these values:
+
+        - users should be encouraged to *really* go right there and check even if they think they
+          see it from afar already
+
+        - just having walked by something should though still count as survey though. (It might be
+          inappropriate or awkward to stop and flip out the smartphone directly there)
+
+        - GPS position might not be updated right after they fetched it out of their pocket, but GPS
+          position should be reset to "unknown" (instead of "wrong") when switching back to the app
+
+        - the distance is the minimum distance between the quest geometry (i.e. a road) and the line
+          between the user's position when he opened the quest form and the position when he pressed
+          "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
+         */
+        const val MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80f // m
+
+        private val LOCATION_STORE_TIME = 10.minutes
+        private val LOCATION_MIN_TIME_DIFFERENCE = 5.seconds
+    }
+}

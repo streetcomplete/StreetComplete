@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.overlays.places.PlacesOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
@@ -8,6 +9,7 @@ import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarkings
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
+import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
@@ -41,7 +43,7 @@ val achievementsModule = module {
     factory { UserLinksDao(get()) }
 
     single<AchievementsSource> { get<AchievementsController>() }
-    single { AchievementsController(get(), get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
+    single { AchievementsController(get(), get(), get(), get(), get(named("Achievements")), get(named("Links"))) }
 }
 
 // list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)
@@ -61,10 +63,13 @@ private val typeAliases = listOf(
     "CyclewayOverlay"                    to AddCycleway::class.simpleName!!,
     "BuildingsOverlay"                   to AddBuildingType::class.simpleName!!,
     "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
-    "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!
+    "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!,
+    "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,
+    "AddProhibitedForMoped"              to AddMopedAccess::class.simpleName!!
 )
 
-private val links = listOf(
+/** this is only public so that it can be previewed in compose */
+val links = listOf(
 
     /* ---------------------------------------- Intro ----------------------------------------*/
     Link(
@@ -229,12 +234,12 @@ private val links = listOf(
         R.string.link_openstreetbrowser_description
     ),
     Link(
-        "qwant_maps",
-        "https://www.qwant.com/maps/",
-        "Qwant Maps",
+        "osmapp",
+        "https://osmapp.org/",
+        "OsmAPP",
         LinkCategory.MAPS,
-        R.drawable.ic_link_qwant,
-        R.string.link_qwant_maps_description
+        R.drawable.ic_link_osmapp,
+        R.string.link_osmapp_description
     ),
     Link(
         "organic_maps",
@@ -441,7 +446,7 @@ private val links = listOf(
         R.drawable.ic_link_osmlab,
         R.string.link_show_me_the_way_description
     ),
-    Link( // TODO map does not show since Nov 2023
+    Link(
         "osm-haiku",
         "https://satellitestud.io/osm-haiku/app",
         "OpenStreetMap Haiku",
@@ -487,13 +492,14 @@ private val links = listOf(
         "Prettymapp",
         LinkCategory.GOODIES,
         R.drawable.ic_link_prettymapp,
-        R.string.link_opencampingmap_description
+        R.string.link_prettymapp_description
     )
 )
 
 private val linksById = links.associateBy { it.id }
 
-private val achievements = listOf(
+/** this is only public so that it can be previewed in compose */
+val achievements = listOf(
 
     Achievement(
         "first_edit",
@@ -699,7 +705,7 @@ private val achievements = listOf(
         { lvl -> (lvl + 1) * 10 },
         mapOf(
             1 to links("openstreetbrowser"),
-            2 to links("qwant_maps"),
+            2 to links("osmapp"),
             3 to links("organic_maps"),
             4 to links("indoorequal"),
             5 to links("osmand"),

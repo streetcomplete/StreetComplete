@@ -38,8 +38,13 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
     override val icon = R.drawable.ic_quest_blind_traffic_lights
     override val achievements = listOf(BLIND)
     override val enabledInCountries = AllCountriesExcept(
+        "BG", // see https://github.com/streetcomplete/StreetComplete/issues/5846
+        "FI", // see https://github.com/streetcomplete/StreetComplete/issues/5791
         "RU" // see https://github.com/streetcomplete/StreetComplete/issues/4021
     )
+
+    override val hint = R.string.quest_traffic_signals_vibrate_description
+    override val hintImages = listOf(R.drawable.vibrating_button_illustration)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_vibrate_title
 

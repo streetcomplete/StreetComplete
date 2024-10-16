@@ -42,9 +42,11 @@ class AddStepCountStile : OsmElementQuestType<Int> {
     override val icon = R.drawable.ic_quest_steps_count_brown
     override val achievements = listOf(OUTDOORS)
 
+    override val hint = R.string.quest_step_count_stile_hint
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title
 
-    override fun createForm() = AddStepCountForm.create(R.string.quest_step_count_stile_hint)
+    override fun createForm() = AddStepCountForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["step_count"] = answer.toString()

@@ -1,19 +1,162 @@
 # Changelog
 
-## v57.0-beta2
+## v59.2
 
-- Use new method to upload and download data as mandated by Google Play policy. Be sure to report
-  any issues related to this. On Android 13 and above, there's no notification for continuing to 
-  sync in the background anymore. (#5492)
-- A few small fixes, thanks @matkoniecz
+- Second try: Crash issue on subsequent app starts is maybe fixed in MapLibre (#5850)
+- Fix notes that contained a "&" weren't showing correctly (#5938)
+- added Argentinian Spanish by Ignacio L'Episcopo
+- Show remarks from other mappers in all quest and overlay forms (#5794, #5889), by @kmpoppe
+- Clarify some wordings (#5927, #5936), thanks @schra
+- Places overlay: Various small improvements (#5926, #5940, #5944), by @mnalis
+- Power supply: Also ask for alpine huts (#5943)
 
+## v59.1
 
-## v57.0-beta1
+- Crash issue on subsequent app starts was maybe fixed in MapLibre (#5850)
+- Fix dark mode in sections of the about screen and what's new dialog (#5906)
+- Fix location pointer pin wasn't rotated correctly when map was rotated (#5919)
+- Improve map gesture detection (#5908)
+- Signed Maxheight: Also ask for roads below roofs, such as at fuel stations (#5915, #5915), by @RubenKelevra
+
+## v59.0
+
+Oh! Again such a monster update!
+
+### 🗺️ MapLibre (#5693), by @Helium314 and me
+
+Migrated from the map renderer tangram-es to [MapLibre](https://maplibre.org/). The former has effectively been unmaintained for quite a few years and does not support modern iOS, this solves some long-standing display and crash issues.
+
+Display-wise, nothing much *should* change, the map will just look and behave a little different.
+
+Issues solved by the migration are #5601, #5241, #5216, #5161, #5146, #5137, #5048, #5027, #5006, #4844, #4830, #4556, #4554, #4550, #4542, #4522, #4277, #4259, #4026, #3417, #3397, #3346, #3275, #3022, #2878, #2711, #2703, #2612, #2571, #2373, #2359, #2358, #2187, #1713, #1684, #1264, #1019, #869, #807, #318, #179, [mapstyle#119](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/119), [mapstyle#56](https://github.com/streetcomplete/streetcomplete-mapstyle/issues/56)... maybe more. Thanks to @riQQ for this list.
+
+### 🍏 iOS progress
+
+In case you wondered what happened since I [announced to work on an iOS version of the app](https://www.openstreetmap.org/user/westnordost/diary/403704). I've taken some big steps forward, see [this progress update](https://github.com/streetcomplete/StreetComplete/issues/5421#issuecomment-2332402123) for more info.
+Most of it is behind the scenes, but what's visible is the completely redone UI for the settings screens, about screens, statistics screens and tutorial screens (#5719, #5855). Of course, it looks mostly the same now, as it should.
+
+### New Quests
+- _"What’s the title of this information board?"_, (#5882, #5871), by @mnalis
+- _"What is the width of the opening here?"_, asked for gates etc. (#5713, #5800) by @Nick-Tallguy
+
+### Removed Quests
+- Asking _"Is this a one-way street?"_, based on processed data from ImproveOSM because Grab is shutting it down (#5725)
+- Asking _"Can you pick up parcels here?"_ and _"Can you drop off parcels here?"_ because it turns out that it is often not surveyable and the answer is always the same for one brand of parcel lockers (#5763)
+
+### Fixes
+- Fix element is now updated correctly on conflict during upload (#5818), by @Helium314
+- Fix only enable OK button for separate bike paths in bike path overlay after changes have been made (#5819)
+- Fix rare crash issues (#5804, #5873)
+
+### Quest Improvements
+- Tree leaf type: User can answer that it is now a tree stump (#5853), by @mnalis
+- Barrier opening: Allow inputting widths of above 9.99 meters (#5865)
+- Charging stations: Skip private ones (#5842), by @mnalis
+- Ask many road-related quests also for busways (#5749)
+- Recycling containers: Also ask for containers that have been mapped as an area (#5735)
+- Recycling containers: Also highlight nearby waste containers and bins (#5754)
+- Accepting cards: Don't ask for places that explicitly require no fee (#5772), by @HolgerJeromin
+- Drinking water: Don't ask for intermittent water sources (#5750), by @mnalis
+- Track type: Don't ask for track type on bridges (#5731), by @kmpoppe
+- Building levels, roof shapes: Also ask for houseboats (#5737), by @HolgerJeromin
+- Clothing container operators: Allow answering that there's no information on the container (#5764)
+- Check existence: Don't ask if something else on the same place has just been checked (#5729)
+- Traffic signals vibration: Disabled in Finland (#5795), by @mnalis
+- Traffic signals vibration: Disabled in Bulgaria (#5846)
+- Access restriction for pedestrians: Disabled in United Kingdom (#4998)
+- Other small improvements (#5740, #5792, #5548, #5776, #5877, #5880, #5879, #5874...), thanks @mnalis, @RubenKelevra
+
+### Overlay Improvements
+- Addresses: Presence of housenumbers is now highlighted in blue (#5748)
+- Bike paths, Sidewalks: Highlight less situations as missing (#5716, #5722)
+- Bike paths: When selecting "designated shared-use path", always mark it as designated for pedestrians, too (#5742)
+- allow hiding notes that block editing with an overlay (#5703)
+
+## v58.2
+- Fixed it was impossible to login with a third party that required 2FA (e.g. Google) (#5724, #5711)
+
+## v58.1
+
+- Bike paths: Roads previously mapped with [recently deprecated](https://wiki.openstreetmap.org/wiki/Proposal:Deprecate_cycleway%3Dopposite_family) tags for describing bike infrastructure are now marked for re-survey (#5694)
+- Places overlay, things overlay, ...: Fix crash on displaying features that were incompletely translated to a dialect of a language, by @logan12358
+- Avoid asking about existence of shop right after asking about its opening hours (#5674)
+- Moped on bike paths: When there is no sign, just tag that and don't infer anything else (#5565)
+- Parcel locker drop-off: Add option for return deliveries only (#5687)
+- Crossing kerb height: Only ask if road has a sidewalk (#5668)
+- Addresses: recognize common housenumber formats in Bulgaria (#5683), by @mnalis
+- Bus stop ref: Now enabled in Portugal (#5695)
+- Other small improvements (#5594, #5676, #5698, #5710...)
+
+## v58.0
+
+### New quests
+
+- _"What’s the brand of this parcel locker?"_ (#5638), by @Arthur-GYT
+- _"Can you pick up parcels here?"_ (#5639), by @Arthur-GYT
+- _"Can you drop off parcels here?"_ (#5639), by @Arthur-GYT
+- _"Is there a sign indicating access for mopeds on this bike path?"_ – asked exclusively in Belgium (#5567), by @PowerPlop
+
+### Overlay improvements
+
+- Bike paths: Now possible to select that cycling on footway is explicitly allowed or prohibited (#5575, #4913), by @wielandb
+- Places: Entrances are shown to help with orientation (#5497)
+- Things: Advertising totem was not displayed (#5588)
+
+### Quest improvements
+
+- Road Surface: Fix it was possible to answer track type and surface for a road in an endless loop (#5650)
+- Max height: Don't ask if it has been specified for forward and backward or individual lanes separately (#5609)
+- Fire hydrant diameter: Now enabled in Hungary (#5617), by @dnet
+- Power pole material: Can now answer with that power line is anchored to building (#5663), by @qugebert
+- Tactile paving: Now enabled in Columbia (#5579)
+- Prohibited for pedestrians: Clarified UI and wording (#5610)
+- Bicycle parking: Add option for just markings on the ground (#5191)
+- Drinking water: Don't ask for intermittent water sources (#5632), by @esilja
+- Other small improvements and fixes (#5631, ...)
+
+### General improvements
+
+- For some quests, there is now an ℹ-button which expands a help text (#5612, #1913)
+- The user profile screen looks a bit different now (#5607)
+- Other small improvements (#5635, #5645, ...), thanks @riQQ
+
+## v57.4
+
+- Fix crash under certain circumstances in bike path overlay (#5604) (regression from #5596)
+
+## v57.3
+
+- Fix UNDO: It didn't actually do anything for edits that were already synced! This critical issue existed since v57.2 (#5600, #5602)
+- Traffic signals: Improve wording (#5591)
+- Max speed: Show warning when inputting implausible slow zone tempo limit (#5592)
+- Payment methods: Don't ask in shops if they have been specified exhaustively already (#5589), by @urbalazs
+- Railway crossings barriers: Don't ask for abandoned railways (#5597)
+- Bike paths overlay: Fix selecting "not designated as bike path" when it was a "path or trail" wouldn't do anything (#5596)
+
+## v57.2
+
+- Lit overlay: Unsupported current tagging is now indicated as such (#5571)
+- Building overlay: Selecting a specific building type for a historic building does now not remove its property as historic (#5547)
+- Fix max width for road narrowing traffic calmings were not answerable if mapped as a way (#5569, #5578), by @mnalis
+- Fix regression in v57.1 that may lead to issues displaying the current GPS location (#5516)
+- Fix the feature name label was slightly wrong for a few map features (#5549)
+- Fix description of Prettymapp (#5570), by @FloEdelmann
+- Other small improvements (#5533, #5558, #5559, #5525, #5573), thanks @matkoniecz, @burrscurr
+
+## v57.1
+
+- fixed crash on startup if you recently solved a crossing quest (#5522)
+- fixed that you could e.g. add a POI in an overlay twice if you tap OK fast enough (#5523)
+
+## v57.0
+
+Take cover! For you don't want to be squashed by this m-m-mega phat update, or do you?
 
 ### Buildings Overlay (#5461)
 
 The new Buildings overlay now lets you comprehensively view and edit building types all around town,
 color-coded for your convenience!
+Conversely, the building type quest is disabled by default now as it was really spammy, don't you think?
 
 (You'll be amazed and/or appalled how many buildings are currently actually tagged wrong or imprecise! 😅)
 
@@ -35,15 +178,18 @@ you map places that are not shops - like hotels, hospitals, schools and so forth
 - Measuring widths and heights: [StreetMeasure](https://play.google.com/store/apps/details?id=de.westnordost.streetmeasure) doesn't work for you? In that case you'll be offered to quickly disable these AR measurement quests now (#4849)
 - Max Height: Don't prompt to estimate height when there is no sign (#5458)
 - Opening Hours: Also ask for places whose already set opening hours likely contain mistakes (#5463)
-- Building Type: disabled by default now, because we have an overlay now and it was really spammy, don't you think?
+- BBQ fuel: Add "gas" answer (#5495), by @k-yle
+- Steps: Don't ask about ramps and tactile paving for hiking steps, by @matkoniecz
 - Fire Hydrant Diameter: Disable for Austria again (#5470)
 
 ### Other
 
+- Fix a (shockingly common) crash (#5498)
 - Fix issues with doing edits while data is being downloaded (#4258)
 - Add some interesting links as achievement rewards (#5466)
 - Translation to Amharic has been disabled, it was not maintained for over a year
-- Other small enhancements, performance and wording improvements (#5468, #5154, #5474...), thanks @Jean-BaptisteC
+- Use new method to upload and download data as mandated by Google Play policy. On Android 13 and above, there's no notification for continuing to sync in the background anymore. (#5492)
+- Other small enhancements, performance and wording improvements (#5468, #5154, #5474...), thanks @Jean-BaptisteC, @matkoniecz, @FloEdelmann
 
 ## v56.1
 

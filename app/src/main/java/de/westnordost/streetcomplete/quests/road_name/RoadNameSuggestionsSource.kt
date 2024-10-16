@@ -48,9 +48,8 @@ class RoadNameSuggestionsSource(
         return result.entries.sortedBy { it.value }.map { it.key }
     }
 
-    private fun Way.isRoadWithName(): Boolean {
-        return tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
-    }
+    private fun Way.isRoadWithName(): Boolean =
+        tags.containsKey("name") && tags["highway"] in ALL_ROADS_AND_PATHS
 
     companion object {
         private val ALL_ROADS_AND_PATHS = ALL_ROADS + ALL_PATHS

@@ -6,10 +6,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES_FOR_TRACKTYPES
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.applyTo
 
 class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
@@ -18,14 +18,14 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
         ways with (
           highway ~ ${listOf(
             "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "residential", "living_street", "pedestrian", "track",
+            "unclassified", "residential", "living_street", "pedestrian", "track", "busway",
             ).joinToString("|")
           }
           or highway = service and service !~ driveway|slipway
         )
         and (
           !surface
-          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -6 years
+          or surface ~ ${UNPAVED_SURFACES.joinToString("|")} and surface older today -6 years
           or surface older today -12 years
           or (
             surface ~ paved|unpaved|${INVALID_SURFACES.joinToString("|")}
@@ -36,14 +36,12 @@ class AddRoadSurface : OsmFilterQuestType<SurfaceAndNote>() {
             and !surface:lanes:backward
             and !surface:lanes:both_ways
           )
-          ${INVALID_SURFACES_FOR_TRACKTYPES.map{tracktypeConflictClause(it)}.joinToString("\n")}
+          ${INVALID_SURFACES_FOR_TRACKTYPES.entries.joinToString("\n") { (tracktype, surfaces) ->
+              "or tracktype = $tracktype and surface ~ ${surfaces.joinToString("|")}"
+          }}
         )
         and (access !~ private|no or (foot and foot !~ private|no))
     """
-
-    private fun tracktypeConflictClause(conflictEntry: Map.Entry<String, Set<String>>): String {
-        return "          or tracktype = " + conflictEntry.key + " and surface ~ ${conflictEntry.value.joinToString("|")}"
-    }
 
     override val changesetComment = "Specify road surfaces"
     override val wikiLink = "Key:surface"

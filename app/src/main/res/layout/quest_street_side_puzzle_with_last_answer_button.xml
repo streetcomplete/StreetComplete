@@ -1,42 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@drawable/button_bar_divider"
-    android:orientation="vertical"
-    android:showDividers="middle">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/descriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:labelFor="@+id/nameInput"
-        android:paddingStart="@dimen/quest_form_horizontal_padding"
-        android:paddingTop="@dimen/quest_form_vertical_padding"
-        android:paddingEnd="@dimen/quest_form_horizontal_padding"
-        android:paddingBottom="@dimen/quest_form_vertical_padding"
-        android:text="@string/quest_street_side_puzzle_tutorial" />
-
-    <RelativeLayout
+    <de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
+        android:id="@+id/puzzleView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/street_side_puzzle_height"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
 
-        <de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
-            android:id="@+id/puzzleView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/street_side_puzzle_height"
-            android:clipChildren="false"
-            android:clipToPadding="false" />
+    <!-- note the other compass in fragment_main -->
+    <include
+        android:id="@+id/littleCompass"
+        layout="@layout/view_little_compass" />
 
-        <!-- note the other compass in fragment_main -->
-        <include
-            android:id="@+id/littleCompass"
-            layout="@layout/view_little_compass" />
+    <include
+        android:id="@+id/lastAnswerButton"
+        layout="@layout/view_street_side_last_answer_button"/>
 
-        <include
-            android:id="@+id/lastAnswerButton"
-            layout="@layout/view_street_side_last_answer_button"/>
-
-    </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

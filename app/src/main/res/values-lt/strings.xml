@@ -5,12 +5,9 @@
     <string name="oauth_failed_permissions">"Autorizacija nepavyko: turi būti suteikti visi išvardinti leidimai"</string>
     <string name="pref_category_communication">"Ryšys"</string>
     <string name="pref_category_display">"Vaizdas"</string>
-    <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Vieta megabaitais, rezervuota išorinėje laikmenoje žemėlapio kaladėlių podėliui"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Rodyti visas pastabas"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Į tas, kurios nėra suformuluotos kaip klausimai"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoruojant tas, kurios nėra suformuluotos kaip klausimai"</string>
-    <string name="pref_title_map_cache">"Žemėlapio podėlio dydis"</string>
     <string name="map_btn_gps_tracking">"Sekti mane"</string>
     <string name="map_attribution_osm">"© OpenStreetMap talkininkai"</string>
     <string name="quest_generic_otherAnswers">"Kiti atsakymai…"</string>
@@ -43,7 +40,6 @@
     <string name="action_download">"Ieškoti užduočių čia"</string>
     <string name="action_upload">"Nusiųsti atsakymus"</string>
     <string name="no_changes">"Jūs palikote formą tuščią"</string>
-    <string name="close">"uždaryti"</string>
     <string name="download_error">"Klaida ieškant užduočių"</string>
     <string name="upload_error">"Klaida nusiunčiant atsakymus"</string>
     <string name="download_area_too_big">"Prašome labiau priartinti"</string>
@@ -51,13 +47,10 @@
     <string name="turn_on_location_request">"Vietovės aptikimas išjungtas. Eiti į nustatymus ir įjungti dabar?"</string>
     <string name="no_location_permission_warning">"Jūsų vietos reikia tam, kad būtų galima ieškoti užduočių šalia jūsų."</string>
     <string name="about_title_authors">"Autoriai"</string>
-    <string name="about_summary_authors">"© %s Tobias Zwick ir talkininkai"</string>
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>
-    <string name="about_summary_repository">"GitHub'e"</string>
     <string name="about_title_report_error">"Pranešti apie klaidą"</string>
     <string name="about_title_feedback">"Rašyti atsiliepimą"</string>
     <string name="about_title_license">"Licencija"</string>
-    <string name="about_summary_license">"GNU General Public LIcense"</string>
     <string name="offline">"Jūs atsijungę"</string>
     <string name="confirmation_authorize_now">"Jūs turite autorizuoti savo OSM naudotojo paskyrą, kad galėtumėte pateikti savo atsakymus. Autorizuoti dabar?"</string>
     <string name="not_authorized">"Neautorizuota"</string>
@@ -67,7 +60,6 @@
     <string name="quest_streetName_answer_noProperStreet_link">"jis tiesios sujungia dvi gatves"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Kažkas kitas (palikti pastabą)"</string>
     <string name="about_title_privacy_statement">"Privatumas"</string>
-    <string name="about_summary_privacy_statement">"ir duomenų naudojimas"</string>
     <string name="quest_openingHours_public_holidays">"Valstybinės šventės"</string>
     <string name="quest_openingHours_public_holidays_short">"VŠ"</string>
     <string name="quest_openingHours_open_end">"užsidarymas pagal situaciją"</string>
@@ -83,7 +75,7 @@
     <string name="map_btn_zoom_out">"Nutolinti"</string>
     <string name="map_btn_zoom_in">"Priartinti"</string>
     <string name="privacy_html">"&lt;p&gt;O, kažkam įdomus ir privatumas, puiku! Manau turiu jums tik geras naujienas:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Tiesioginė pagalba&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Tiesioginė pagalba&lt;/h2&gt;
 &lt;p&gt;
 Visų pirmą supraskite, kad su šia aplikacija jūs realiai pildote OpenStreetMap.&lt;br/&gt;
 Bet kas, ką siunčiate šia programa automatiškai patenka į žemėlapį, nėra jokios trečiosios šalies tarp aplikacijos ir OSM infrastruktūros.
@@ -92,12 +84,12 @@ Bet kas, ką siunčiate šia programa automatiškai patenka į žemėlapį, nėr
 OpenStreetMap keisti anonimiškai negalima, taigi bet kokie pakeitimai daromi jūsų OSM naudotojo paskyra. Tai reiškia, kad data, turinys ir spėjama jūsų pakeitimų pozicija matoma viešai openstreetmap svetainėje ir ji susieta su jūsų paskyra.
 &lt;/p&gt;
 
-&lt;b&gt;Vieta&lt;/b&gt;&lt;br/&gt;
+&lt;h2&gt;Vieta&lt;/h2&gt;
 &lt;p&gt;
 Jūsų vieta naudojama tik automatinei užduočių aplink jus paieškai. Nesijaudinkite, aplikacija jūsų vietos niekam neatiduoda.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Duomenų naudojimas&lt;/b&gt;&lt;/p&gt;
+&lt;h2&gt;Duomenų naudojimas&lt;/h2&gt;
 &lt;p&gt;
 Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;paprastą tekstinį failą&lt;/a&gt; mano serveryje, kurio pagalba patikrina, ar jai nėra uždrausta įkelti pakeitimus. Tai atsargos priemonė, kad jei paaiškėja, kad kažkuri aplikacijos versija turi kritinių klaidų, jai nebūtų leista gadinti OSM duomenų.&lt;br/&gt;
 &lt;/p&gt;
@@ -124,7 +116,6 @@ Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. 
     <string name="quest_surface_value_wood">"Medis"</string>
     <string name="quest_sidewalk_title">"Ar ši gatvė turi šaligatvį?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kur yra ši gatvė?"</string>
-    <string name="quest_oneway_title">"Ar tai vienpusis kelias?"</string>
     <string name="quest_address_title">"Koks šio pastato namo numeris?"</string>
     <string name="store_listing_short_description">"OpenStreetMap matininko aplikacija"</string>
     <string name="store_listing_full_description">"Padėkite tobulinti OpenStreetMap su StreetComplete!
@@ -227,7 +218,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="credits_translations_title">"Vertimai"</string>
     <string name="credits_contributors_title">"Kodo talkininkai"</string>
     <string name="credits_author_title">"Autorius ir prižiūrėtojas"</string>
-    <string name="credits_and_more">"ir daugiau …"</string>
     <string name="quest_maxspeed_answer_living_street">"Tai gyvenamoji zona"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Taigi yra toks kelio ženklas?"</string>
     <string name="quest_orchard_produce_title">"Kas čia auginama?"</string>
@@ -392,7 +382,7 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="questList_disabled_in_country">"Niekada nerodoma %s"</string>
     <string name="quest_select_hint_most_specific">"Parinkite tiksliausiai tinkančią:"</string>
     <string name="quest_generic_item_confirmation">"Ar tikrai negalite tiksliau nustatyti?"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Kai kurioms užduotims, šiek tiek papildomų duomenų atsiunčiama iš trečiųjų šalių. Pavyzdžiui vienpusio eismo užklausų API, taip pat esanti westnordost.de, gauna informaciją apie galimus vienpusius kelius.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Kai kurioms užduotims, šiek tiek papildomų duomenų atsiunčiama iš trečiųjų šalių.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ne (palikti pastabą)"</string>
     <string name="pref_quests_reset">"Atstatyti į pradinę būseną užduočių įjungimą ir rikiuotę?"</string>
     <string name="quest_generic_item_invalid_value">"Prašome parinkti tikslesnę reikšmę."</string>
@@ -500,16 +490,13 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ar ši motociklų stovėjimo vieta dengta (apsaugota nuo lietaus)?"</string>
     <string name="default_disabled_msg_maxspeed">"Šis užduočių tipas išjungtas, nes jūsų paprastai prašoma patikrinti apribojimus visoje gatvėje, ne tik pažymėtoje vietoje. Gali būti labai sunku išspręsti net vieną užduotį."</string>
     <string name="pref_title_quests_restore_hidden">"Atstatyti paslėptas užduotis"</string>
-    <string name="restore_hidden_success">"Atstatytos %d paslėptos užduotys"</string>
     <string name="on_level">"lygyje %s"</string>
     <string name="underground">"po žeme"</string>
     <string name="quest_sidewalk_value_yes">"šaligatvis"</string>
     <string name="quest_sidewalk_value_no">"nėra šaligatvio"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ar pėstiesiems draudžiama eiti šiuo keliu?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ši gatvė pažymėta kaip neturinti šaligatvio nei vienoje pusėje. Jei visgi yra šaligatvis, bet jis rodomas kaip atskiras kelias, atsakykite „šaligatvis“."</string>
     <string name="quest_buildingType_title">"Kokio tipo šis pastatas?"</string>
     <string name="pref_title_theme_select">"Parinkite temą"</string>
-    <string name="theme_automatic">"Automatinė"</string>
     <string name="theme_light">"Šviesi"</string>
     <string name="theme_dark">"Tamsi"</string>
     <string name="theme_system_default">"Sistemos numatytoji"</string>
@@ -538,7 +525,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_maxweight_answer_other_sign">"Ženklas atrodo kitaip…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Ar norėtumėte palikti pastabą? Pastaba su nuotrauka padės kitiems žymėtojams tuo pasirūpinti."</string>
     <string name="quest_handrail_title">"Ar šie laiptai turi turėklą?"</string>
-    <string name="about_summary_current_version">"Dabartinė versija: %s"</string>
     <string name="quest_ref_answer_noRef">"Nematyti jokio numerio…"</string>
     <string name="quest_street_side_puzzle_tutorial">"Kelias iliustracijoje pasuktas taip pat kaip žemėlapyje žymeklio pozicijoje."</string>
     <string name="quest_recycling_materials_title">"Ką čia galima palikti perdirbimui?"</string>
@@ -563,7 +549,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="about_title_changelog">"Versijos istorija"</string>
     <string name="title_whats_new">"Kas naujo?"</string>
     <string name="about_title_rate">"Įvertinkite šią aplikaciją"</string>
-    <string name="about_summary_rate">"Google Play"</string>
     <string name="about_title_donate">"Paremkite"</string>
     <string name="about_summary_donate">"Parodykite vertinimą! ❤️"</string>
     <string name="about_description_donate">"Ačiū, kad galvojate paremti šią aplikaciją. Norėdami peržiūrėti dabartinę paramą ir paremti, spauskite atitinkamą platformą:"</string>
@@ -682,7 +667,6 @@ Pastebėtina, kad ši aplikacija klausia namo numerio tik po to, kai nustatytas 
     <string name="credits_projects_contributors_title">"Projektai sukurti StreetComplete"</string>
     <string name="credits_main_contributors_title">"Pagrindiniai talkininkai"</string>
     <string name="stats_are_syncing">"Jūsų statistika vis dar atnaujinama. Grįžkite čia vėliau."</string>
-    <string name="user_statistics_country_rank">"Vieta %2$s: %1$d"</string>
     <string name="user_statistics_country_wiki_link">"Žymėjimo portalas %s"</string>
     <string name="user_statistics_filter_by_country">"pagal šalį"</string>
     <string name="user_statistics_filter_by_quest_type">"pagal užduoties tipą"</string>
@@ -699,7 +683,6 @@ dienų"</string>
     <string name="quest_recycling_type_engine_oil">"Variklio alyva"</string>
     <string name="link_photon_description">"Atskiras Nominatim plėtinys, leidžiantis apytikslę paiešką ir paiešką rašant"</string>
     <string name="link_graphhopper_description">"Lankstus maršrutizavimo variklis"</string>
-    <string name="link_qwant_maps_description">"Žemėlapis su ieškomomis vietomis ir kryptimis"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Žemėlapio rodymui kaladėlės atsiunčiamos iš %1$s. Daugiau informacijos rasite jų &lt;a href=\"%2$s\"&gt;privatumo aprašyme&lt;/a&gt;.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Rėmėjai"</string>
     <string name="quest_board_type_history">"Istorija"</string>
@@ -838,7 +821,6 @@ Atkreipkite dėmesį į visas galimas parinktis: kai kurie atvejai nėra akivaiz
     <string name="team_mode_active">"įjungtas komandinis režimas"</string>
     <string name="team_mode_deactivated">"komandinis režimas išjungtas"</string>
     <string name="undo_confirm_title2">"Atšaukti šį redagavimą?"</string>
-    <string name="synced">"Sinchronizuota"</string>
     <string name="toast_undo_unavailable">"Šis redagavimas jau sinchronizuotas ir negali būti atšauktas"</string>
     <string name="quest_cycleway_value_separate">"žemėlapyje rodomi atskirai."</string>
     <string name="created_note_action_title">"Sukurta pastaba"</string>
@@ -961,7 +943,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_barrier_bicycle_type_single">"Perėjimas tarp kliūčių"</string>
     <string name="quest_barrier_bicycle_type_double">"\"Chicane\" - barjerai iš abiejų pusių"</string>
     <string name="quest_barrier_bicycle_type_multiple">"Šikana - daugiau nei du barjerai"</string>
-    <string name="pref_title_language_select">"Pasirinkite kalbą"</string>
     <string name="language_default">"Sistemos numatytieji nustatymai"</string>
     <string name="on_floor">"ant grindų %s"</string>
     <string name="select_street_parking_orientation">"Pasirinkite orientaciją į važiuojamąją dalį:"</string>
@@ -986,7 +967,6 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
 
 Arba galite palikti pastabą (su nuotrauka)."</string>
     <string name="quest_address_house_number_label">"Namo numeris:"</string>
-    <string name="quest_shoulder_title">"Ar šiame kelyje yra kelkraštis arba avarinė juosta?"</string>
     <string name="quest_fireHydrant_position_title">"Kur yra šis priešgaisrinis hidrantas?"</string>
     <string name="quest_fireHydrant_position_green">"Žolėje, purve ar krūmuose"</string>
     <string name="quest_fireHydrant_position_lane">"Kelyje"</string>
@@ -1037,8 +1017,6 @@ Arba galite palikti pastabą (su nuotrauka)."</string>
     <string name="quest_barrier_path_intersection">"Kaip šis kelias čia kerta užtvarą?"</string>
     <string name="quest_barrier_road_intersection">"Kaip šis kelias čia kerta užtvarą?"</string>
     <string name="quest_sidewalk_value_separate">"šaligatvis, bet žemėlapyje rodomas atskirai"</string>
-    <string name="quest_shoulder_value_yes">"petys"</string>
-    <string name="quest_shoulder_value_no">"nėra peties"</string>
     <string name="no_camera_permission_warning_title">"Fotoaparato leidimas"</string>
     <string name="no_camera_permission_warning">"Leidimas reikalingas norint fotografuoti ir matuoti atstumus fotoaparatu."</string>
     <string name="ar_core_error_sdk_too_old">"Ši programa yra per sena, pabandykite ją atnaujinti."</string>
@@ -1060,8 +1038,6 @@ Tą patį padarykite ir kitoje pusėje, jei yra."</string>
     <string name="quest_road_width_title">"Kokio pločio čia kelias?"</string>
     <string name="quest_road_width_explanation">"Kelio važiuojamosios dalies plotis nuo šaligatvio bortelio iki šaligatvio bortelio: Tai apima viską, kas yra gatvės paviršiuje, įskaitant gatvės automobilių stovėjimo aikšteles ar dviračių takus, tačiau neapima visko, kas yra už šaligatvio bortelio, pavyzdžiui, šaligatvių, automobilių stovėjimo aikštelių už gatvės ribų ar gretimų dviračių takų."</string>
     <string name="quest_sidewalk_answer_none">"Nėra šaligatvio"</string>
-    <string name="about_description_donate_google_play2">"Dėkojame, kad svarstote galimybę paremti šią programą!
-Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti nuorodų, vedančių į aukas. Atsižvelgiant į tai, net nuorodos į mūsų projekto namus neleidžiamos."</string>
     <string name="link_osmand_description">"Mobilioji programėlė žemėlapių peržiūrai ir navigacijai internetu ir neprisijungus"</string>
     <string name="link_sunders_description">"Kamerų ir stebėjimo įrangos žemėlapis"</string>
     <string name="ar_core_tracking_error_no_plane_hit">"Laikykitės arčiau rodyklės, bet saugokitės eismo!"</string>
@@ -1131,7 +1107,6 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="quest_barrier_type_gate_any_size">"Bet kokio dydžio vartai"</string>
     <string name="quest_air_pump_compressor_title">"Ar čia yra oro kompresorius?"</string>
     <string name="quest_step_count_stile_hint">"Tik tiek, kiek žingsnių reikia nueiti iki viršūnės. Jei žingsnių skaičius abiejose pusėse skiriasi, nurodykite didesnį skaičių."</string>
-    <string name="quest_shoulder_explanation2">"Šaligatvis arba avarinė juosta yra aiškiai pažymėta avarinio sustojimo juosta. Šaligatviu vadinamas plotas nebūtinai turi būti asfaltuotas per visą plotį ir nebūtinai pakankamai platus, kad automobilis galėtų visiškai sustoti už eismo juostos ribų."</string>
     <string name="quest_cycleway_value_none_and_oneway">"nėra, šia kryptimi važiuoti dviračiu draudžiama"</string>
     <string name="map_btn_create_track">"Sukurti naują įrašymo takelį"</string>
     <string name="map_btn_stop_track">"Sustabdyti įrašymo takelį"</string>
@@ -1203,7 +1178,9 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="quest_bicycle_incline_title">"Kuria kryptimi takas kyla?"</string>
     <string name="quest_drinking_water_type_generic_water_fountain">"Kitoks vandens fontanas"</string>
     <string name="quest_drinking_water_type_jet_water_fountain">"Vandens fontanas leidžantis mažą vandens srovę"</string>
+    <string name="quest_drinking_water_type_tap">"Vandens čiaupas"</string>
     <string name="quest_drinking_water_type_hand_pump">"Rankinis pumpavimas"</string>
+    <string name="quest_drinking_water_type_spring">"Pavasaris"</string>
     <string name="overlay_addresses">"Adresai"</string>
     <string name="name_label">"Pavadinimas:"</string>
     <string name="unknown_shop_title">"Kitokio pobūdžio vieta"</string>
@@ -1222,7 +1199,6 @@ Deja, dėl \"Google Play\" parduotuvės politikos programėlėje negalima rodyti
     <string name="node_moved_too_far">"Pastumtas per toli. Rekomenduojame palikti pastabą"</string>
     <string name="quest_placeName_no_name_answer">"Čia nėra pavadinimo ženklo"</string>
     <string name="overlay_cycleway">"Dviračių takai"</string>
-    <string name="separate_cycleway_allowed">"Dviratininkai yra leidžiami"</string>
     <string name="separate_cycleway_no_or_allowed">"Nepritaikyta dviratininkams (dviratininkai vistiek gali buti leidžiami)"</string>
     <string name="separate_cycleway_non_segregated">"Bendro naudojimo kelias"</string>
     <string name="separate_cycleway_segregated">"Atskiras pėsčiųjų ir dviratininkų kelias"</string>

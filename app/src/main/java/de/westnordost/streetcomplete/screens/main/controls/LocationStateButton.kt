@@ -4,13 +4,15 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.graphics.drawable.Animatable
-import android.os.Parcel
+import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.View
-import androidx.annotation.Keep
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.core.os.bundleOf
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.util.ktx.parcelable
+import de.westnordost.streetcomplete.util.ktx.serializable
 
 /**
  * An image button which shows the current location state
@@ -21,12 +23,12 @@ class LocationStateButton @JvmOverloads constructor(
     defStyle: Int = 0
 ) : AppCompatImageButton(context, attrs, defStyle) {
 
-    var state: State
-        get() = _state ?: State.DENIED
+    var state: LocationState
+        get() = _state ?: LocationState.DENIED
         set(value) { _state = value }
 
     // this is necessary because state is accessed before it is initialized (in constructor of super)
-    private var _state: State? = null
+    private var _state: LocationState? = null
         set(value) {
             if (field != value) {
                 field = value
@@ -53,12 +55,12 @@ class LocationStateButton @JvmOverloads constructor(
         a.recycle()
     }
 
-    private fun determineStateFrom(a: TypedArray): State = when {
-        a.getBoolean(R.styleable.LocationStateButton_state_updating, false) ->  State.UPDATING
-        a.getBoolean(R.styleable.LocationStateButton_state_searching, false) -> State.SEARCHING
-        a.getBoolean(R.styleable.LocationStateButton_state_enabled, false) ->   State.ENABLED
-        a.getBoolean(R.styleable.LocationStateButton_state_allowed, false) ->   State.ALLOWED
-        else -> State.DENIED
+    private fun determineStateFrom(a: TypedArray): LocationState = when {
+        a.getBoolean(R.styleable.LocationStateButton_state_updating, false) ->  LocationState.UPDATING
+        a.getBoolean(R.styleable.LocationStateButton_state_searching, false) -> LocationState.SEARCHING
+        a.getBoolean(R.styleable.LocationStateButton_state_enabled, false) ->   LocationState.ENABLED
+        a.getBoolean(R.styleable.LocationStateButton_state_allowed, false) ->   LocationState.ALLOWED
+        else -> LocationState.DENIED
     }
 
     override fun drawableStateChanged() {
@@ -84,68 +86,35 @@ class LocationStateButton @JvmOverloads constructor(
         return drawableState
     }
 
-    public override fun onSaveInstanceState(): Parcelable {
-        val superState = super.onSaveInstanceState()
-        val ss = SavedState(superState)
-        ss.state = state
-        ss.activated = isActivated
-        ss.navigation = isNavigation
-        return ss
-    }
+    override fun onSaveInstanceState() = bundleOf(
+        KEY_SUPER_STATE to super.onSaveInstanceState(),
+        KEY_STATE to state,
+        KEY_IS_ACTIVATED to isActivated,
+        KEY_IS_NAVIGATION to isNavigation,
+    )
 
-    public override fun onRestoreInstanceState(s: Parcelable) {
-        val ss = s as SavedState
-        super.onRestoreInstanceState(ss.superState)
-        state = ss.state
-        isActivated = ss.activated
-        isNavigation = ss.navigation
-        requestLayout()
-    }
-
-    internal class SavedState : BaseSavedState {
-        var state: State = State.DENIED
-        var activated = false
-        var navigation = false
-
-        constructor(superState: Parcelable?) : super(superState)
-        constructor(parcel: Parcel) : super(parcel) {
-            state = State.valueOf(parcel.readString()!!)
-            activated = parcel.readInt() == 1
-            navigation = parcel.readInt() == 1
-        }
-
-        override fun writeToParcel(out: Parcel, flags: Int) {
-            super.writeToParcel(out, flags)
-            out.writeString(state.name)
-            out.writeInt(if (activated) 1 else 0)
-            out.writeInt(if (navigation) 1 else 0)
-        }
-
-        companion object {
-            @JvmField @Keep
-            val CREATOR = object : Parcelable.Creator<SavedState> {
-                override fun createFromParcel(parcel: Parcel) = SavedState(parcel)
-                override fun newArray(size: Int) = arrayOfNulls<SavedState>(size)
-            }
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        if (state is Bundle) {
+            super.onRestoreInstanceState(state.parcelable(KEY_SUPER_STATE))
+            this.state = state.serializable(KEY_STATE)!!
+            isActivated = state.getBoolean(KEY_IS_ACTIVATED)
+            isNavigation = state.getBoolean(KEY_IS_NAVIGATION)
+            requestLayout()
         }
     }
 
-    enum class State {
-        DENIED, // user declined to give this app access to location
-        ALLOWED, // user allowed this app to access location (but location disabled)
-        ENABLED, // location service is turned on (but no location request active)
-        SEARCHING, // requested location updates and waiting for first fix
-        UPDATING;
-
-        // receiving location updates
-        val isEnabled: Boolean get() = ordinal >= ENABLED.ordinal
-    }
-
-    private val State.styleableAttributes: List<Int> get() =
+    private val LocationState.styleableAttributes: List<Int> get() =
         listOf(
             R.attr.state_allowed,
             R.attr.state_enabled,
             R.attr.state_searching,
             R.attr.state_updating
         ).subList(0, ordinal)
+
+    companion object {
+        private const val KEY_SUPER_STATE = "superState"
+        private const val KEY_STATE = "state"
+        private const val KEY_IS_ACTIVATED = "isActivated"
+        private const val KEY_IS_NAVIGATION = "isNavigation"
+    }
 }

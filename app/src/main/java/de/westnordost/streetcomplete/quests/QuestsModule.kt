@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation.AddBicycleBarrierInstallation
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.AddBicycleBarrierType
+import de.westnordost.streetcomplete.quests.barrier_opening.AddBarrierOpening
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
@@ -38,6 +39,7 @@ import de.westnordost.streetcomplete.quests.bike_rental_capacity.AddBikeRentalCa
 import de.westnordost.streetcomplete.quests.bike_rental_type.AddBikeRentalType
 import de.westnordost.streetcomplete.quests.bike_shop.AddBikeRepairAvailability
 import de.westnordost.streetcomplete.quests.bike_shop.AddSecondHandBicycleAvailability
+import de.westnordost.streetcomplete.quests.board_name.AddBoardName
 import de.westnordost.streetcomplete.quests.board_type.AddBoardType
 import de.westnordost.streetcomplete.quests.bollard_type.AddBollardType
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure
@@ -95,21 +97,21 @@ import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
+import de.westnordost.streetcomplete.quests.leaf_detail.AddTreeLeafType
 import de.westnordost.streetcomplete.quests.level.AddLevel
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
 import de.westnordost.streetcomplete.quests.memorial_type.AddMemorialType
+import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
-import de.westnordost.streetcomplete.quests.oneway_suspects.AddSuspectedOneway
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.TrafficFlowSegmentsApi
-import de.westnordost.streetcomplete.quests.oneway_suspects.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
+import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerBrand
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
@@ -182,12 +184,9 @@ import org.koin.dsl.module
 
 val questsModule = module {
     factory { RoadNameSuggestionsSource(get()) }
-    factory { WayTrafficFlowDao(get()) }
 
     single {
         questTypeRegistry(
-            get(),
-            get(),
             get(),
             { location ->
                 val countryInfos = get<CountryInfos>()
@@ -202,44 +201,42 @@ val questsModule = module {
 }
 
 fun questTypeRegistry(
-    trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
-    trafficFlowDao: WayTrafficFlowDao,
     arSupportChecker: ArSupportChecker,
     getCountryInfoByLocation: (LatLon) -> CountryInfo,
     getFeature: (Element) -> Feature?,
 ) = QuestTypeRegistry(listOf(
 
-    /* The quest types are primarily sorted by how easy they can be solved:
-    1. quests that are solvable from a distance or while passing by (fast)
-    2. quests that require to be right in front of it (e.g. because it is small, you need to
-      look for it or read text)
-    3. quests that require some exploration or walking around to check (e.g. walking down the
-      whole road to find the cycleway is the same along the whole way)
-    4. quests that require to go inside, i.e. deviate from your walking route by a lot just
-      to solve the quest
-    5. quests that come in heaps (are spammy) come last: e.g. building type etc.
+    /*
+        The quest types are primarily sorted by how easy they can be solved:
+        1. quests that are solvable from a distance or while passing by (fast)
+        2. quests that require to be right in front of it (e.g. because it is small, you need to
+          look for it or read text)
+        3. quests that require some exploration or walking around to check (e.g. walking down the
+          whole road to find the cycleway is the same along the whole way)
+        4. quests that require to go inside, i.e. deviate from your walking route by a lot just
+          to solve the quest
+        5. quests that come in heaps (are spammy) come last: e.g. building type etc.
 
-    The ordering within this primary sort order shall be whatever is faster so solve first:
+        The ordering within this primary sort order shall be whatever is faster so solve first:
 
-    a. Yes/No quests, easy selections first,
-    b. number and text inputs later,
-    c. complex inputs (opening hours, ...) last. Quests that e.g. often require the way to be
-      split up first are in effect also slow to answer
+        a. Yes/No quests, easy selections first,
+        b. number and text inputs later,
+        c. complex inputs (opening hours, ...) last. Quests that e.g. often require the way to be
+          split up first are in effect also slow to answer
 
-    The order can be watered down somewhat if it means that quests that usually apply to the
-    same elements are in direct succession because we want to avoid that users are half-done
-    answering all the quests for one element and then can't solve the last anymore because it
-    is visually obscured by another quest.
+        The order can be watered down somewhat if it means that quests that usually apply to the
+        same elements are in direct succession because we want to avoid that users are half-done
+        answering all the quests for one element and then can't solve the last anymore because it
+        is visually obscured by another quest.
 
-    Finally, importance of the quest can still play a factor, but only secondarily.
+        Finally, importance of the quest can still play a factor, but only secondarily.
 
-    ---
+        ---
 
-    Each quest is assigned an ordinal. This is used for serialization and is thus never changed,
-    even if the quest's order is changed or new quests are added somewhere in the middle. Each new
-    quest always gets a new sequential ordinal.
-
-    */
+        Each quest is assigned an ordinal. This is used for serialization and is thus never changed,
+        even if the quest's order is changed or new quests are added somewhere in the middle. Each new
+        quest always gets a new sequential ordinal.
+     */
 
     /* always first: notes - they mark a mistake in the data so potentially every quest for that
     element is based on wrong data while the note is not resolved */
@@ -309,12 +306,14 @@ fun questTypeRegistry(
     35 to AddRecyclingContainerMaterials(),
 
     // kerbs
-    36 to AddKerbHeight(), /* deliberately before AddTactilePavingKerb:
-            * - Also should be visible while waiting to cross
-            * - Some people are not interpreting flush or lowered kerb as a kerb on their own,
-            * and would be confused about asking about tactile status on kerb without kerb
-            * but with this quest first they are OK with such interpretation
-            */
+    36 to AddKerbHeight(),
+    /*
+        AddKerbHeight is deliberately before AddTactilePavingKerb:
+        - Also should be visible while waiting to cross
+        - Some people are not interpreting flush or lowered kerb as a kerb on their own,
+          and would be confused about asking about tactile status on kerb without kerb
+          but with this quest first they are OK with such interpretation
+     */
     37 to AddTactilePavingKerb(), // Paving can be completed while waiting to cross
 
     // crossing quests: A little later because they are not all solvable from a distance
@@ -342,6 +341,7 @@ fun questTypeRegistry(
     155 to AddGritBinSeasonal(),
 
     50 to AddBoardType(),
+    171 to AddBoardName(),
 
     51 to AddBarrierType(), // basically any more detailed rendering and routing: OSM Carto, mapy.cz, OSMand for start
     52 to AddBarrierOnPath(),
@@ -381,6 +381,8 @@ fun questTypeRegistry(
     73 to AddBikeRentalCapacity(), // less ambiguous than bike parking
     74 to AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
 
+    167 to AddParcelLockerBrand(),
+
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     75 to AddHousenumber(),
     76 to AddAddressStreet(),
@@ -416,10 +418,11 @@ fun questTypeRegistry(
     95 to AddMaxPhysicalHeight(arSupportChecker), // same as above, best if it appears right after (if enabled)
     96 to AddRoadName(),
     97 to AddOneway(),
-    98 to AddSuspectedOneway(trafficFlowSegmentsApi, trafficFlowDao),
 
     99 to AddEntrance(),
     100 to AddEntranceReference(),
+
+    166 to AddMopedAccess(),
 
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
@@ -434,6 +437,7 @@ fun questTypeRegistry(
     105 to AddSummitCross(), // summit markings are not necessarily directly at the peak, need to look around
     106 to AddSummitRegister(), // register is harder to find than cross
 
+    165 to AddTreeLeafType(), // may need to get close in trickier cases
     107 to AddForestLeafType(), // need to walk around in the highlighted section
 
     108 to AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
@@ -459,7 +463,7 @@ fun questTypeRegistry(
     162 to AddSanitaryDumpStation(),
 
     // toilets
-    118 to AddToiletAvailability(), // OSM Carto, shown in OsmAnd descriptions
+    118 to AddToiletAvailability(), // shown in OsmAnd descriptions
     119 to AddToiletsFee(), // used by OsmAnd in the object description
     120 to AddBabyChangingTable(), // used by OsmAnd in the object description
     121 to AddWheelchairAccessToiletsPart(),
@@ -489,13 +493,10 @@ fun questTypeRegistry(
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
-    // disabled completely because definition is too fuzzy/broad to be useful and easy to answer,
-    // see https://community.openstreetmap.org/t/shoulder-tag-is-confusing/5185
-    // 139 to AddShoulder(), // needs minimal thinking
-
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),
     142 to AddPathSmoothness(),
+    170 to AddBarrierOpening(arSupportChecker),
 
     // footways
     143 to AddPathSurface(), // used by OSM Carto, BRouter, OsmAnd, OSRM, graphhopper...

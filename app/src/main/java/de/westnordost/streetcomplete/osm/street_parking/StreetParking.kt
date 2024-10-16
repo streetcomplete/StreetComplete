@@ -8,13 +8,13 @@ data class LeftAndRightStreetParking(val left: StreetParking?, val right: Street
 
 @Serializable sealed class StreetParking
 
-@Serializable object NoStreetParking : StreetParking()
+@Serializable data object NoStreetParking : StreetParking()
 /** When an unknown/unsupported value has been used */
-@Serializable object UnknownStreetParking : StreetParking()
+@Serializable data object UnknownStreetParking : StreetParking()
 /** When not both parking orientation and position have been specified*/
-@Serializable object IncompleteStreetParking : StreetParking()
+@Serializable data object IncompleteStreetParking : StreetParking()
 /** There is street parking, but it is mapped as separate geometry */
-@Serializable object StreetParkingSeparate : StreetParking()
+@Serializable data object StreetParkingSeparate : StreetParking()
 
 @Serializable data class StreetParkingPositionAndOrientation(
     val orientation: ParkingOrientation,

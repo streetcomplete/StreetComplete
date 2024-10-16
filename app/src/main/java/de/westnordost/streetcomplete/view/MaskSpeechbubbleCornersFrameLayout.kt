@@ -17,7 +17,7 @@ class MaskSpeechbubbleCornersFrameLayout @JvmOverloads constructor(
 
     override fun dispatchDraw(canvas: Canvas) {
         val path = Path()
-        val corner = context.dpToPx(10).toInt()
+        val corner = resources.dpToPx(10).toInt()
         path.addRoundRect(
             RectF(0f, 0f, canvas.width.toFloat(), canvas.height.toFloat()),
             corner.toFloat(),

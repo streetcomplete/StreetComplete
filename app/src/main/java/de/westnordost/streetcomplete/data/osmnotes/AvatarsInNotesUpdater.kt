@@ -1,4 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
+import kotlinx.coroutines.runBlocking
 
 class AvatarsInNotesUpdater(private val downloader: AvatarsDownloader) :
     NoteController.Listener {
@@ -7,7 +8,7 @@ class AvatarsInNotesUpdater(private val downloader: AvatarsDownloader) :
         if (added.isEmpty() && updated.isEmpty()) return
 
         val noteCommentUserIds = (added + updated).flatMap { it.userIds }.toSet()
-        downloader.download(noteCommentUserIds)
+        runBlocking { downloader.download(noteCommentUserIds) }
     }
 
     override fun onCleared() {}

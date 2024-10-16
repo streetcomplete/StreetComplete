@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
  *  [isApplicableTo] methods for which OSM elements a quest of this type should be created.
  *  Quest types that do not require complex filters that depend on the geometry of surrounding
  *  elements subclass [OsmFilterQuestType][de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType]
- *  */
+ */
 interface OsmElementQuestType<T> : QuestType, ElementEditType {
 
     /** In which countries the quest should be shown. By default, in all countries.
@@ -53,7 +53,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     /** Whether the user should be able to replace this element with another preset. Only
      *  elements that are expected to be some kind of shop/amenity should be replaceable this way,
      *  i.e. anything that when it's gone, there is a vacant shop then.
-     *  */
+     */
     val isReplacePlaceEnabled: Boolean get() = false
 
     override val title: Int get() = getTitle(emptyMap())
@@ -61,10 +61,6 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     /** the string resource used to display the quest's question for when the element has the
      *  specified [tags] */
     fun getTitle(tags: Map<String, String>): Int
-
-    /** the replacement string(s) to fill the string templates included in the selected string id
-     *  as specified in [getTitle], if any */
-    fun getTitleArgs(tags: Map<String, String>): Array<String> = arrayOf()
 
     /** All elements within the given map data that are applicable to this quest type, i.e. for
      *  which a quest of this type should be created.

@@ -4,7 +4,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ElementKey(val type: ElementType, val id: Long)
+data class ElementKey(val type: ElementType, val id: Long) {
+    override fun toString() = "${type.name}#$id"
+}
 
 val Element.key get() = ElementKey(type, id)
 

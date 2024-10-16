@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.AnyThread
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -30,7 +32,6 @@ import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setText
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
@@ -59,7 +60,6 @@ abstract class AbstractQuestForm :
     override val bottomSheetTitle get() = binding.speechBubbleTitleContainer
     override val bottomSheetContent get() = binding.speechbubbleContentContainer
     override val floatingBottomView get() = binding.okButtonContainer
-    override val backButton get() = binding.closeButton
     protected val scrollView: NestedScrollView get() = binding.scrollView
 
     private var startedOnce = false
@@ -87,8 +87,10 @@ abstract class AbstractQuestForm :
     override lateinit var questKey: QuestKey
     protected lateinit var questType: QuestType
     protected lateinit var geometry: ElementGeometry private set
-    private var initialMapRotation = 0f
-    private var initialMapTilt = 0f
+    private var initialMapRotation = 0.0
+    private var initialMapTilt = 0.0
+
+    private var infoIsExpanded: Boolean = false
 
     // overridable by child classes
     open val contentLayoutResId: Int? = null
@@ -101,8 +103,8 @@ abstract class AbstractQuestForm :
         questKey = Json.decodeFromString(args.getString(ARG_QUEST_KEY)!!)
         questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!)!!
         geometry = Json.decodeFromString(args.getString(ARG_GEOMETRY)!!)
-        initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
-        initialMapTilt = args.getFloat(ARG_MAP_TILT)
+        initialMapRotation = args.getDouble(ARG_MAP_ROTATION)
+        initialMapTilt = args.getDouble(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
     }
 
@@ -117,6 +119,8 @@ abstract class AbstractQuestForm :
 
         setTitle(resources.getString(questType.title))
         setTitleHintLabel(null)
+        setHint(questType.hint?.let { resources.getString(it) })
+        setHintImages(questType.hintImages.mapNotNull { requireContext().getDrawable(it) })
 
         binding.okButton.setOnClickListener {
             if (!isFormComplete()) {
@@ -125,6 +129,10 @@ abstract class AbstractQuestForm :
                 onClickOk()
             }
         }
+
+        infoIsExpanded = false
+        binding.infoButton.setOnClickListener { toggleInfoArea() }
+        binding.infoArea.setOnClickListener { toggleInfoArea() }
 
         // no content? -> hide the content container
         if (binding.content.childCount == 0) {
@@ -153,6 +161,42 @@ abstract class AbstractQuestForm :
     protected fun setTitleHintLabel(text: CharSequence?) {
         binding.titleHintLabel.isGone = text == null
         binding.titleHintLabel.text = text
+    }
+
+    protected fun setHint(text: CharSequence?) {
+        binding.infoText.isGone = text == null
+        binding.infoText.text = text
+        updateInfoButtonVisibility()
+    }
+
+    protected fun setObjNote(text: CharSequence?) {
+        binding.noteLabel.text = text
+        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
+    }
+    protected fun setHintImages(images: List<Drawable>) {
+        binding.infoPictures.isGone = images.isEmpty()
+        binding.infoPictures.removeAllViews()
+        for (image in images) {
+            val imageView = ImageView(requireContext())
+            imageView.setImageDrawable(image)
+            imageView.scaleType
+            binding.infoPictures.addView(imageView)
+        }
+        updateInfoButtonVisibility()
+    }
+
+    private fun toggleInfoArea() {
+        infoIsExpanded = !infoIsExpanded
+        binding.infoButton.setImageResource(
+            if (infoIsExpanded) R.drawable.ic_info_filled_24dp
+            else R.drawable.ic_info_outline_24dp
+        )
+        binding.infoButton.isActivated = infoIsExpanded
+        binding.infoArea.isGone = !infoIsExpanded
+    }
+
+    private fun updateInfoButtonVisibility() {
+        binding.infoButton.isGone = binding.infoText.isGone && binding.infoPictures.isGone
     }
 
     /** Inflate given layout resource id into the content view and return the inflated view */
@@ -201,7 +245,7 @@ abstract class AbstractQuestForm :
 
     protected open fun isFormComplete(): Boolean = false
 
-    @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
+    @AnyThread override fun onMapOrientation(rotation: Double, tilt: Double) {
         // default empty implementation
     }
 
@@ -218,7 +262,7 @@ abstract class AbstractQuestForm :
         private const val ARG_MAP_ROTATION = "map_rotation"
         private const val ARG_MAP_TILT = "map_tilt"
 
-        fun createArguments(questKey: QuestKey, questType: QuestType, geometry: ElementGeometry, rotation: Float, tilt: Float) = bundleOf(
+        fun createArguments(questKey: QuestKey, questType: QuestType, geometry: ElementGeometry, rotation: Double, tilt: Double) = bundleOf(
             ARG_QUEST_KEY to Json.encodeToString(questKey),
             ARG_GEOMETRY to Json.encodeToString(geometry),
             ARG_QUESTTYPE to questType.name,

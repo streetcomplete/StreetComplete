@@ -62,7 +62,8 @@ class EditHistoryController(
         osmQuestsHiddenController.addListener(osmQuestHiddenListener)
     }
 
-    fun undo(edit: Edit): Boolean {
+    fun undo(editKey: EditKey): Boolean {
+        val edit = get(editKey) ?: return false
         if (!edit.isUndoable) return false
         return when (edit) {
             is ElementEdit -> elementEditsController.undo(edit)
@@ -83,11 +84,6 @@ class EditHistoryController(
         is OsmNoteQuestHiddenKey -> osmNoteQuestsHiddenController.getHidden(key.osmNoteQuestKey.noteId)
         is OsmQuestHiddenKey -> osmQuestsHiddenController.getHidden(key.osmQuestKey)
     }
-
-    override fun getMostRecentUndoable(): Edit? =
-        // this could be optimized later by not querying all. Though, the amount that is queried
-        // from database should never be that big anyway...
-        getAll().firstOrNull { it.isUndoable }
 
     override fun getAll(): List<Edit> {
         val maxAge = nowAsEpochMilliseconds() - MAX_UNDO_HISTORY_AGE

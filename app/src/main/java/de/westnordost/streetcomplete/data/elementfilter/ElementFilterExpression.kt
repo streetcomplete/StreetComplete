@@ -42,7 +42,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `shop !~ car|boat`             | doesn't have a tag whose key is `shop` and value matches the regex `car|boat` |
  *  | `~shop|craft ~ car|boat`       | has a tag whose key matches `shop|craft` and value matches `car|boat` (both regexes) |
  *  | `~shop|craft !~ car|boat`      | doesn't have a tag whose key matches `shop|craft` and value matches `car|boat` (both regexes) |
- *  | `foo < 3.3`                    | has a tag with key `foo` whose value is smaller than 2.5<br/>`<`,`<=`,`>=`,`>` work likewise |
+ *  | `foo < 2.5`                    | has a tag with key `foo` whose value is smaller than 2.5<br/>`<`,`<=`,`>=`,`>` work likewise |
  *  | `foo < 3.3ft`                  | same as above but value is smaller than 3.3 feet (~1 meter)<br/>This works for other units as well (mph, st, lbs, yds...) |
  *  | `foo < 3'4"`                   | same as above but value is smaller than 3 feet, 4 inches (~1 meter)           |
  *  | `foo < 2012-10-01`             | same as above but value is a date older than Oct 1st 2012                     |
@@ -65,12 +65,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `craft or shop and name`       | `craft or (shop and name)` (`and` has higher precedence) |
  *  | `!(amenity and craft)`         | `!amenity or !craft`                                     |
  *  | `!(amenity or craft)`          | `!amenity and !craft`                                    |
- *  */
+ */
 class ElementFilterExpression(
     internal val elementsTypes: Set<ElementsTypeFilter>,
     internal val elementExprRoot: BooleanExpression<ElementFilter, Element>?
 ) {
-    /* Performance improvement: Allows to skip early on elements that have no tags at all */
+    // Performance improvement: Allows to skip early on elements that have no tags at all
     val mayEvaluateToTrueWithNoTags = elementExprRoot?.mayEvaluateToTrueWithNoTags ?: true
 
     /** returns whether the given element is found through (=matches) this expression */

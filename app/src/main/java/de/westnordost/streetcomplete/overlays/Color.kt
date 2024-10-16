@@ -21,7 +21,7 @@ package de.westnordost.streetcomplete.overlays
  *
  *   Also, it has been made so that black and crimson stand out, because these two are reserved in
  *   all overlays as having a special meaning
- *  */
+ */
 object Color {
     // colors with reserved meanings
     const val INVISIBLE = "#00000000" // "mapped separately" / "not relevant"

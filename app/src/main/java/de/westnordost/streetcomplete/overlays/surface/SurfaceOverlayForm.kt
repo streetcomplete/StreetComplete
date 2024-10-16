@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.overlays.surface
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
@@ -9,6 +8,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.changeToSteps
@@ -24,10 +24,9 @@ import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndC
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
-import de.westnordost.streetcomplete.util.LastPickedValuesStore
-import de.westnordost.streetcomplete.util.getLocalesForFeatureDictionary
+import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
-import de.westnordost.streetcomplete.util.prefs.Preferences
+import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
 import de.westnordost.streetcomplete.view.setImage
 import org.koin.android.ext.android.inject
 
@@ -36,9 +35,11 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     private val binding by contentViewBinding(FragmentOverlaySurfaceSelectBinding::bind)
 
     private val prefs: Preferences by inject()
-    private lateinit var favs: LastPickedValuesStore<Surface>
-    private val lastPickedSurface: Surface?
-        get() = favs.get().firstOrNull()
+
+    private val lastPickedSurface: Surface? get() =
+        prefs.getLastPicked(this::class.simpleName!!)
+            .map { valueOfOrNull<Surface>(it) }
+            .firstOrNull()
 
     private lateinit var surfaceCtrl: SurfaceAndNoteViewController
     private lateinit var cyclewaySurfaceCtrl: SurfaceAndNoteViewController
@@ -71,16 +72,6 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
         binding.cyclewaySurfaceContainer.isGone = false
         binding.footwaySurfaceContainer.isGone = false
         binding.lastPickedButton.isGone = true
-    }
-
-    override fun onAttach(ctx: Context) {
-        super.onAttach(ctx)
-        favs = LastPickedValuesStore(
-            prefs,
-            key = javaClass.simpleName,
-            serialize = { it.name },
-            deserialize = { Surface.valueOf(it) }
-        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -141,9 +132,11 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             switchToFootwayCyclewaySurfaceLayout()
         }
 
-        val locales = getLocalesForFeatureDictionary(resources.configuration)
-        binding.cyclewaySurfaceLabel.text = featureDictionary.byId("highway/cycleway").forLocale(*locales).get()?.name
-        binding.footwaySurfaceLabel.text = featureDictionary.byId("highway/footway").forLocale(*locales).get()?.name
+        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        binding.cyclewaySurfaceLabel.text =
+            featureDictionary.getById("highway/cycleway", languages = languages)?.name
+        binding.footwaySurfaceLabel.text =
+            featureDictionary.getById("highway/footway", languages = languages)?.name
 
         checkIsFormComplete()
     }
@@ -209,7 +202,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             updateCommonSurfaceFromFootAndCyclewaySurface(changesBuilder)
         } else {
             if (surfaceCtrl.value!!.note == null && surfaceCtrl.value!!.surface != null) {
-                favs.add(surfaceCtrl.value!!.surface!!)
+                prefs.addLastPicked(this::class.simpleName!!, surfaceCtrl.value!!.surface!!.name)
             }
             surfaceCtrl.value!!.applyTo(changesBuilder)
         }
@@ -220,28 +213,28 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     private fun createSegregatedAnswer(): AnswerItem? =
         if (isSegregatedLayout) {
             /*
-            No option to switch back to single surface. Removing info about separate cycleway is
-            too complicated.
+                No option to switch back to single surface. Removing info about separate cycleway is
+                too complicated.
 
-            Typically it requires editing not only surface info but also an access info as it
-            happens in cases where bicycle access is gone. May require also removal of
-            cycleway=separate, bicycle=use_sidepath from the road.
+                Typically it requires editing not only surface info but also an access info as it
+                happens in cases where bicycle access is gone. May require also removal of
+                cycleway=separate, bicycle=use_sidepath from the road.
 
-            And in cases where there is a segregated cycleway with the same surface as footway
-            then StreetComplete will anyway ask for cycleway:surface and footway:surface.
+                And in cases where there is a segregated cycleway with the same surface as footway
+                then StreetComplete will anyway ask for cycleway:surface and footway:surface.
 
-            Fortunately need for this change are really rare. Notes can be left as usual.
-            */
+                Fortunately need for this change are really rare. Notes can be left as usual.
+             */
             null
         } else if (isBothFootAndBicycleTraffic(element!!)) {
             /*
-            Only where bicycle access is already present because adding bicycle access typically
-            requires adding proper access tags, interconnections with roads and often also other
-            geometry changes.
+                Only where bicycle access is already present because adding bicycle access typically
+                requires adding proper access tags, interconnections with roads and often also other
+                geometry changes.
 
-            In case where path is not clearly marked as carrying both foot and bicycle traffic
-            mapper can leave a note
-            */
+                In case where path is not clearly marked as carrying both foot and bicycle traffic
+                mapper can leave a note
+             */
             AnswerItem(R.string.overlay_path_surface_segregated) {
                 // reset previous data
                 surfaceCtrl.value = originalSurface

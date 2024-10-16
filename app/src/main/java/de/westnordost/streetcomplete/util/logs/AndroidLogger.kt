@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.util.logs
 
 import android.util.Log
 
-class AndroidLogger() : Logger {
+class AndroidLogger : Logger {
     override fun v(tag: String, message: String) {
         Log.v(tag, message)
     }

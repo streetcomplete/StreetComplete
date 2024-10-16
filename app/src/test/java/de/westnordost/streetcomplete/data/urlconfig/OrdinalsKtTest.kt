@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.urlconfig
 
+import com.ionspin.kotlin.bignum.integer.BigInteger
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
@@ -42,17 +43,17 @@ internal class OrdinalsKtTest {
 
     @Test fun `boolean array to big integer`() {
         assertEquals(
-            0.toBigInteger(),
+            BigInteger.fromInt(0),
             booleanArrayOf().toBigInteger()
         )
 
         assertEquals(
-            4.toBigInteger(),
+            BigInteger.fromInt(4),
             booleanArrayOf(0, 0, 1).toBigInteger()
         )
 
         assertEquals(
-            4.toBigInteger(),
+            BigInteger.fromInt(4),
             booleanArrayOf(0, 0, 1, 0).toBigInteger()
         )
     }
@@ -60,17 +61,17 @@ internal class OrdinalsKtTest {
     @Test fun `big integer to boolean array`() {
         assertContentEquals(
             booleanArrayOf(),
-            0.toBigInteger().toBooleanArray()
+            BigInteger.fromInt(0).toBooleanArray()
         )
 
         assertContentEquals(
             booleanArrayOf(0, 0, 1),
-            4.toBigInteger().toBooleanArray()
+            BigInteger.fromInt(4).toBooleanArray()
         )
 
         assertContentEquals(
             booleanArrayOf(0, 0, 1, 0, 1),
-            20.toBigInteger().toBooleanArray()
+            BigInteger.fromInt(20).toBooleanArray()
         )
     }
 }

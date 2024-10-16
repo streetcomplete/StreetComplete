@@ -57,7 +57,7 @@ class StreetOrPlaceNameViewController(
         }
         get() = when (spinnerSelection) {
             STREET -> streetNameInputCtrl.streetName?.let { StreetName(it) }
-            PLACE ->  placeNameInput.nonBlankTextOrNull?.let { PlaceName(it) }
+            PLACE -> placeNameInput.nonBlankTextOrNull?.let { PlaceName(it) }
         }
 
     private var spinnerSelection: StreetOrPlace

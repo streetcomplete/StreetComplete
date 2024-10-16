@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
-import de.westnordost.streetcomplete.osm.surface.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 
 class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     override val changesetComment = "Specify whether roads have sidewalks"
@@ -33,6 +33,8 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
               and foot !~ no|private
               and access !~ no|private
         """)
+
+    override val hint = R.string.quest_street_side_puzzle_tutorial
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
@@ -55,14 +57,14 @@ private val roadsFilter by lazy { """
     ways with
       (
         (
-          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|busway
           and motorroad != yes
           and expressway != yes
           and foot != no
         )
         or
         (
-          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service
+          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|busway
           and (foot ~ yes|designated or bicycle ~ yes|designated)
         )
       )
@@ -79,13 +81,13 @@ private val roadsFilter by lazy { """
  * + Also, anything explicitly tagged as no pedestrians or explicitly tagged that the sidewalk
  *   is mapped as a separate way OR that is tagged with that the cycleway is separate. If the
  *   cycleway is separate, the sidewalk is too for sure
-* */
+ */
 private val untaggedRoadsFilter by lazy { """
     ways with
       highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
       and !sidewalk and !sidewalk:both and !sidewalk:left and !sidewalk:right
       and (!maxspeed or maxspeed > 9 or maxspeed ~ [A-Z].*)
-      and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
+      and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
       and (
         lit = yes
         or highway = residential

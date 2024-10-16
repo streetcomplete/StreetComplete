@@ -22,22 +22,22 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )
-        and !maxheight and !maxheight:signed and !maxheight:physical
+        and $noMaxHeight
     """.toElementFilterExpression() }
 
     private val roadsWithoutMaxHeightFilter by lazy { """
         ways with
         (
-          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
+          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road|busway
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
-        and !maxheight and !maxheight:signed and !maxheight:physical
+        and $noMaxHeight
     """.toElementFilterExpression() }
 
     private val railwayCrossingsFilter by lazy { """
         nodes with
           railway = level_crossing
-          and !maxheight and !maxheight:signed and !maxheight:physical
+          and $noMaxHeight
     """.toElementFilterExpression() }
 
     private val electrifiedRailwaysFilter by lazy { """
@@ -59,33 +59,32 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     private val bridgeFilter by lazy { """
         ways with (
-            highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-            or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
-          ) and (
-            bridge and bridge != no
+            (
+              highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+              or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
+            )
+            and bridge and bridge != no
+          ) or (
+            building = roof
             or man_made = pipeline and location = overhead
           )
           and layer
     """.toElementFilterExpression() }
+
+    private val noMaxHeight = """
+        !maxheight
+        and !maxheight:signed
+        and !maxheight:physical
+        and (!maxheight:forward or !maxheight:backward)
+        and !maxheight:lanes
+    """
 
     override val changesetComment = "Specify maximum heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val isBelowBridge = tags["amenity"] != "parking_entrance"
-            && tags["barrier"] != "height_restrictor"
-            && tags["tunnel"] == null
-            && tags["covered"] == null
-            && tags["man_made"] != "pipeline"
-            && tags["railway"] != "level_crossing"
-        // only the "below the bridge" situation may need some context
-        return when {
-            isBelowBridge -> R.string.quest_maxheight_sign_below_bridge_title
-            else          -> R.string.quest_maxheight_sign_title
-        }
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_maxheight_sign_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // amenity = parking_entrance nodes etc. only if they are a vertex in a road

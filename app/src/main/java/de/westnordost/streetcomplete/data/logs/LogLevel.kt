@@ -9,3 +9,11 @@ enum class LogLevel {
     WARNING,
     ERROR
 }
+
+fun LogLevel.toChar(): Char = when (this) {
+    VERBOSE -> 'V'
+    DEBUG -> 'D'
+    INFO -> 'I'
+    WARNING -> 'W'
+    ERROR -> 'E'
+}

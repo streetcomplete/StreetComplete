@@ -30,6 +30,8 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
+    override val hint = R.string.quest_determineRecyclingGlass_description_any_glass
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_glass_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

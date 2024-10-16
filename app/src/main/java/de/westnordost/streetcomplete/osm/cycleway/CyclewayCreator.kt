@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import de.westnordost.streetcomplete.osm.Direction
+import de.westnordost.streetcomplete.osm.Direction.*
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.expandSides
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
@@ -30,6 +31,9 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     tags.expandSides("cycleway", "lane", false)
     tags.expandSides("cycleway", "oneway", false)
     tags.expandSides("cycleway", "segregated", false)
+    tags.expandSides("sidewalk", "bicycle", false)
+    tags.expandSides("sidewalk", "bicycle:signed", false)
+    tags.expandSides("sidewalk", "oneway:bicycle", false)
 
     applyOnewayNotForCyclists(tags)
     left?.applyTo(tags, false, isLeftHandTraffic)
@@ -39,6 +43,9 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     tags.mergeSides("cycleway", "lane")
     tags.mergeSides("cycleway", "oneway")
     tags.mergeSides("cycleway", "segregated")
+    tags.mergeSides("sidewalk", "bicycle")
+    tags.mergeSides("sidewalk", "bicycle:signed")
+    tags.mergeSides("sidewalk", "oneway:bicycle")
 
     // update check date
     if (!tags.hasChanges || tags.hasCheckDateForKey("cycleway")) {
@@ -53,7 +60,7 @@ fun LeftAndRightCycleway.applyTo(tags: Tags, isLeftHandTraffic: Boolean) {
     ).applyTo(tags)
 }
 
-/* bare cycleway tags are interpreted differently for oneways */
+// bare cycleway tags are interpreted differently for oneways
 private fun expandBareTags(tags: Tags, isLeftHandTraffic: Boolean) {
     val cycleway = tags["cycleway"] ?: return
     // i.e. they are only expanded into one side. Which side depends on country, direction of oneway
@@ -104,6 +111,7 @@ private fun LeftAndRightCycleway.applyOnewayNotForCyclists(tags: Tags) {
 private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHandTraffic: Boolean) {
     val side = if (isRight) "right" else "left"
     val cyclewayKey = "cycleway:$side"
+
     when (cycleway) {
         NONE, NONE_NO_ONEWAY -> {
             tags[cyclewayKey] = "no"
@@ -153,6 +161,11 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
         SEPARATE -> {
             tags[cyclewayKey] = "separate"
         }
+        SIDEWALK_OK -> {
+            tags[cyclewayKey] = "no"
+            tags["sidewalk:$side:bicycle"] = "yes"
+            tags["sidewalk:$side:bicycle:signed"] = "yes"
+        }
         else -> {
             throw IllegalArgumentException("Invalid cycleway")
         }
@@ -171,7 +184,11 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
         val isDefaultDirection = defaultDirection == direction
         val isInContraflowOfOneway = isInContraflowOfOneway(tags, direction)
         if (!isDefaultDirection || isInContraflowOfOneway || tags.containsKey("$cyclewayKey:oneway")) {
-            tags["$cyclewayKey:oneway"] = direction.onewayValue
+            if (cycleway == SIDEWALK_OK) {
+                tags["sidewalk:$side:oneway:bicycle"] = direction.onewayValue
+            } else {
+                tags["$cyclewayKey:oneway"] = direction.onewayValue
+            }
         }
     }
 
@@ -184,6 +201,18 @@ private fun CyclewayAndDirection.applyTo(tags: Tags, isRight: Boolean, isLeftHan
     val touchedSegregatedValue = cycleway in listOf(SIDEWALK_EXPLICIT, TRACK)
     if (!touchedSegregatedValue) {
         tags.remove("$cyclewayKey:segregated")
+    }
+    // no matter what option was chosen, if it's not SIDEWALK_OK, remove that cycling is signed and ok on sidewalk if it's there
+    if (cycleway != SIDEWALK_OK && tags["sidewalk:$side:bicycle"] == "yes" && tags["sidewalk:$side:bicycle:signed"] == "yes") {
+        tags.remove("sidewalk:$side:bicycle")
+        tags.remove("sidewalk:$side:bicycle:signed")
+    }
+    if (direction != BOTH && tags["sidewalk:$side:oneway:bicycle"] == "no") {
+        tags.remove("sidewalk:$side:oneway:bicycle")
+    }
+    // if anything that is not SIDEWALK_EXPLICIT is chosen, remove sidewalk:<side>:bicycle=designated if it's there
+    if (cycleway != SIDEWALK_EXPLICIT && tags["sidewalk:$side:bicycle"] == "designated") {
+        tags.remove("sidewalk:$side:bicycle")
     }
 }
 

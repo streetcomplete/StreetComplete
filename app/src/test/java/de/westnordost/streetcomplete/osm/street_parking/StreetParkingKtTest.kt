@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.osm.street_parking
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class StreetParkingTest {
+class StreetParkingKtTest {
     @Test fun validOrNullValues() {
         for (invalidParking in listOf(IncompleteStreetParking, UnknownStreetParking)) {
             assertEquals(

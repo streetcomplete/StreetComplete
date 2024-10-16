@@ -91,7 +91,7 @@ class PointerPinView @JvmOverloads constructor(
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val desiredSize = context.dpToPx(DEFAULT_SIZE).toInt()
+        val desiredSize = resources.dpToPx(DEFAULT_SIZE).toInt()
         val width = reconcileSize(desiredSize, widthMeasureSpec)
         val height = reconcileSize(desiredSize, heightMeasureSpec)
         setMeasuredDimension(width, height)

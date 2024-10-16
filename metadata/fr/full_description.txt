@@ -2,4 +2,4 @@ Aidez à améliorer OpenStreetMap avec StreetComplete !
 
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L’information liée à chaque marqueur peut être complétée en répondant à une question simple.
 
-Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap, à votre nom, sans qu’il soit nécessaire d’utiliser un autre éditeur de carte.
+Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap, avec votre compte OSM, sans qu’il soit nécessaire d’utiliser un autre éditeur de carte.

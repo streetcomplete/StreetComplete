@@ -36,16 +36,20 @@ barrier_bicycle_installation_r… CC0               LEGOFAHRRAD https://commons.
 
 bicycle_parking_type_buildi... CC-BY-SA 3.0      Visitor7 https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
 bicycle_parking_type_locker... CC-BY-SA 3.0      Rept0n1x https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
+bicycle_parking_type_safel...  CC0 1.0           RogerWiki https://commons.wikimedia.org/wiki/File:Fahrradst%C3%A4nder_mit_Anlehnb%C3%BCgel_2.jpg
 bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      Tabl-trai https://commons.wikimedia.org/wiki/File:Parking_v%C3%A9los_s%C3%A9curis%C3%A9_gare_des_Martres_2015-08-20.JPG
 bicycle_parking_type_stand.jpg CC0               Mateusz Konieczny https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
 bicycle_parking_type_wheelb... CC-BY-SA 4.0      Joxemai https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
 bicycle_parking_type_handle... CC-BY-SA 4.0      Hiddewie https://commons.wikimedia.org/wiki/File:Bicycle_parking_handlebar_holder.jpg
 bicycle_parking_type_two_ti... CC0               Bukk https://commons.wikimedia.org/wiki/File:Double_stack_bike_stand.jpg
+bicycle_parking_type_floor     CC0               Nakaner https://wiki.openstreetmap.org/wiki/File:Fahrradparkplatz_mit_Schild_und_ohne_Buegel.jpg
 
 bicycle_rental_docking_stat... CC-BY-SA 3.0      Siyuwj https://commons.wikimedia.org/wiki/File:Bicycle_rental_site_of_Tiangongyuan_Station.JPG
 bicycle_rental_dropoff_poin... CC-BY-SA 4.0      Alexander Migl https://commons.wikimedia.org/wiki/File:Stuttgart-Vaihingen_Train_Station_Mobility_Hub_IMG_5767.jpg
 bicycle_rental_human.jpg       CC-BY-SA 2.0      TijsB https://commons.wikimedia.org/wiki/File:Tel_Aviv-_bike_rental_(5889990605).jpg
 bicycle_rental_shop_with_re... CC-BY-SA 2.0      Darb02 https://commons.wikimedia.org/wiki/File:Rydjor_Bike_Shop_and_Antique_Bike_Museum.jpg
+
+bicycleway_moped.svg           PD                Ionutneagu https://www.svgrepo.com/download/490323/scooter-2.svg
 
 bollard_fixed.jpg              CC-BY-SA 4.0      Matija Nalis https://github.com/streetcomplete/StreetComplete/issues/3657#issuecomment-1020666101
 bollard_flexible.jpg           CC0               Ruben Kelevra https://commons.wikimedia.org/wiki/File:Flexible_bollard.jpg
@@ -270,22 +274,22 @@ surface_concrete_very_bad.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/w
 surface_gravel_bad.jpg         CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Gravel_-_bad.jpg (Supaplex030)
 surface_gravel_intermediate... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Compacted_-_intermediate.jpg (Supaplex030)
 surface_gravel_very_bad.jpg    CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Mountain_path_with_large_gravel.jpg (Andre Thum)
-surface_paving_stones_bad.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_bad.jpg (Supaplex030)
+surface_paving_stones_bad.jpg  CC0 1.0           https://wiki.openstreetmap.org/wiki/File:20230418_142605c.jpg (Rhhsmits)
 surface_paving_stones_excel... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Footway_with_very_smooth_paving.jpg (mcliquid)
 surface_paving_stones_good.jpg CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Paving_stones_-_good.jpg (Supaplex030)
 surface_paving_stones_inter... Public Domain     https://wiki.openstreetmap.org/wiki/File:Damaged_and_loose_paving_stones.jpg (helium314)
 surface_paving_stones_very_... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Broken_up_sidewalk_near_the_shore_of_the_St._Lawrence_River_near_Aultsville,_Ontario.jpg (Aultsville)
 surface_sett_bad.jpg           CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_-_bad.jpg (Supaplex030)
-surface_sett_good.jpg          CC0              https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_flattened_stones_and_very_shallow_gaps.jpg (NicoHood)
+surface_sett_good.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_flattened_stones_and_very_shallow_gaps.jpg (NicoHood)
 surface_sett_intermediate.jpg  CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Sett_paving_with_mostly_square_but_rough_stones.jpg (Andre Thum)
 surface_sett_very_bad.jpg      Public Domain     https://wiki.openstreetmap.org/wiki/File:Very_bad_sett.jpg (Westnordost)
 surface_unpaved_horrible.jpg   CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Smoothness_horrible.jpg (rhhsm)
 surface_unpaved_impassable.jpg Public Domain     https://drive.google.com/file/d/1yZXynVd07IWQPKpBbrlbABzfKHkG9X7R/view?usp=sharing (Tobias Zwick)
 surface_unpaved_very_horrib... CC-BY-SA 4.0      https://wiki.openstreetmap.org/wiki/File:Very_horrible_ruts.jpg (Preslav)
 
-tactile_paving_illustration... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Trajet_Ouigo,_train_low-cost_(SNCF,France)_(10072029534).jpg (jean-louis Zimmermann)
-                               CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Accessibilit%C3%A9_handicap%C3%A9s%2C_aire_autoroute_(Meyrargues%2CFR13)_(10493532264).jpg (jean-louis Zimmermann)
-                               CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bande_podotactile_clout%C3%A9e%2C_rue_Saint_Florent_(ORANGE%2CFR84)_(10473021344).jpg (jean-louis Zimmermann)
+tactile_paving1.jpg            CC-0 1.0          https://commons.wikimedia.org/wiki/File:Tactile_paving_in_China_2.jpg
+tactile_paving2.jpg            CC-0 1.0          https://commons.wikimedia.org/wiki/File:Tactile_paving_in_a_Mass_Rapid_Transit_station_in_Singapore_-_20131105.jpg
+tactile_paving3.jpg            CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bande_podotactile_clout%C3%A9e%2C_rue_Saint_Florent_(ORANGE%2CFR84)_(10473021344).jpg
 
 traffic_calming_bump.jpg       Public Domain     Goldfinger https://commons.wikimedia.org/wiki/File%3ALe%C5%BEe%C4%87i%5Fpolicajac%5F016%2Ejpg
 traffic_calming_chicane.jpg    CC-BY-SA 2.0      Richard Drdul https://commons.wikimedia.org/wiki/File:One-lane_chicane_1.jpg
@@ -316,3 +320,5 @@ tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/
 vibrating_button_illustrati... CC-BY 4.0         Tobias Zwick
 vibrating_button_i... (MCC234) CC0               CJ Malone
 vibrating_button_i... (MCC505) CC0               https://commons.wikimedia.org/wiki/File:An_Australian_pedestrian_crossing_button.jpg (James Cridland)
+
+informal_crossing.jpg          CC-SA 2.0         https://wiki.openstreetmap.org/wiki/File:West_Highland_Way_crossing_road_-_geograph.org.uk_-_3986498_(cropped).jpg

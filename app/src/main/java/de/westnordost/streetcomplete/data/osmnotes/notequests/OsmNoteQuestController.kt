@@ -1,12 +1,14 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
+import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.UserDataSource
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 
 /** Used to get visible osm note quests */
@@ -14,8 +16,8 @@ class OsmNoteQuestController(
     private val noteSource: NotesWithEditsSource,
     private val hiddenDB: NoteQuestsHiddenDao,
     private val userDataSource: UserDataSource,
-    private val userLoginStatusSource: UserLoginStatusSource,
-    private val notesPreferences: NotesPreferences,
+    private val userLoginSource: UserLoginSource,
+    private val prefs: Preferences,
 ) : OsmNoteQuestSource, OsmNoteQuestsHiddenController, OsmNoteQuestsHiddenSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      *  database table */
@@ -25,7 +27,9 @@ class OsmNoteQuestController(
     private val listeners = Listeners<OsmNoteQuestSource.Listener>()
 
     private val showOnlyNotesPhrasedAsQuestions: Boolean get() =
-        notesPreferences.showOnlyNotesPhrasedAsQuestions
+        !prefs.showAllNotes
+
+    private val settingsListener: SettingsListener
 
     private val noteUpdatesListener = object : NotesWithEditsSource.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
@@ -53,7 +57,7 @@ class OsmNoteQuestController(
         }
     }
 
-    private val userLoginStatusListener = object : UserLoginStatusSource.Listener {
+    private val userLoginStatusListener = object : UserLoginSource.Listener {
         override fun onLoggedIn() {
             // notes created by the user in this app or commented on by this user should not be shown
             onInvalidated()
@@ -61,17 +65,11 @@ class OsmNoteQuestController(
         override fun onLoggedOut() {}
     }
 
-    private val notesPreferencesListener = object : NotesPreferences.Listener {
-        override fun onNotesPreferencesChanged() {
-            // a lot of notes become visible/invisible if this option is changed
-            onInvalidated()
-        }
-    }
-
     init {
         noteSource.addListener(noteUpdatesListener)
-        userLoginStatusSource.addListener(userLoginStatusListener)
-        notesPreferences.listener = notesPreferencesListener
+        userLoginSource.addListener(userLoginStatusListener)
+        // a lot of notes become visible/invisible if this option is changed
+        settingsListener = prefs.onAllShowNotesChanged { onInvalidated() }
     }
 
     override fun getVisible(questId: Long): OsmNoteQuest? {
@@ -79,9 +77,8 @@ class OsmNoteQuestController(
         return noteSource.get(questId)?.let { createQuestForNote(it) }
     }
 
-    override fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> {
-        return createQuestsForNotes(noteSource.getAll(bbox))
-    }
+    override fun getAllVisibleInBBox(bbox: BoundingBox): List<OsmNoteQuest> =
+        createQuestsForNotes(noteSource.getAll(bbox))
 
     private fun createQuestsForNotes(notes: Collection<Note>): List<OsmNoteQuest> {
         val blockedNoteIds = getHiddenIds()
@@ -199,21 +196,22 @@ private fun Note.shouldShowAsQuest(
     // don't show notes hidden by user
     if (id in blockedNoteIds) return false
 
-    /* don't show notes where user replied last unless he wrote a survey required marker */
+    // don't show notes where user replied last unless he wrote a survey required marker
     if (comments.last().isReplyFromUser(userId)
         && !comments.last().containsSurveyRequiredMarker()
     ) {
         return false
     }
 
-    /* newly created notes by user should not be shown if it was both created in this app and has no
-       replies yet */
+    // newly created notes by user should not be shown if it was both created in this app and has no replies yet
     if (probablyCreatedByUserInThisApp(userId) && !hasReplies) return false
 
-    /* many notes are created to report problems on the map that cannot be resolved
-     * through an on-site survey.
-     * Likely, if something is posed as a question, the reporter expects someone to
-     * answer/comment on it, possibly an information on-site is missing, so let's only show these */
+    /*
+        many notes are created to report problems on the map that cannot be resolved
+        through an on-site survey.
+        Likely, if something is posed as a question, the reporter expects someone to
+        answer/comment on it, possibly an information on-site is missing, so let's only show these
+     */
     if (showOnlyNotesPhrasedAsQuestions
         && !probablyContainsQuestion()
         && !containsSurveyRequiredMarker()
@@ -225,23 +223,26 @@ private fun Note.shouldShowAsQuest(
 }
 
 private fun Note.probablyContainsQuestion(): Boolean {
-    /* from left to right (if smartass IntelliJ wouldn't mess up left-to-right):
-       - latin question mark
-       - greek question mark (a different character than semikolon, though same appearance)
-       - semikolon (often used instead of proper greek question mark)
-       - mirrored question mark (used in script written from right to left, like Arabic)
-       - armenian question mark
-       - ethopian question mark
-       - full width question mark (often used in modern Chinese / Japanese)
-       (Source: https://en.wikipedia.org/wiki/Question_mark)
-
-        NOTE: some languages, like Thai, do not use any question mark, so this would be more
-        difficult to determine.
-   */
-    val questionMarksAroundTheWorld = "[?;;؟՞፧？]"
+    /**
+     * Source: https://en.wikipedia.org/wiki/Question_mark
+     *
+     * NOTE: some languages, like Thai, do not use any question mark, so this would be more
+     * difficult to determine.
+     */
+    val questionMarksAroundTheWorld = listOf(
+        "?", // Latin question mark
+        ";", // Greek question mark (a different character than semicolon, though same appearance)
+        ";", // semicolon (often used instead of proper greek question mark)
+        "؟", // mirrored question mark (used in script written from right to left, like Arabic)
+        "՞", // Armenian question mark
+        "፧", // Ethiopian question mark
+        "꘏", // Vai question mark
+        "？", // full width question mark (often used in modern Chinese / Japanese)
+    )
+    val questionMarkPattern = ".*[${questionMarksAroundTheWorld.joinToString("")}].*"
 
     val text = comments.firstOrNull()?.text
-    return text?.matches(Regex(".*$questionMarksAroundTheWorld.*", RegexOption.DOT_MATCHES_ALL)) ?: false
+    return text?.matches(questionMarkPattern.toRegex(RegexOption.DOT_MATCHES_ALL)) ?: false
 }
 
 private fun Note.containsSurveyRequiredMarker(): Boolean =

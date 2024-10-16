@@ -14,7 +14,7 @@ val statisticsModule = module {
 
     factory { ActiveDatesDao(get()) }
 
-    factory { StatisticsDownloader(STATISTICS_BACKEND_URL, get()) }
+    factory { StatisticsApiClient(get(), STATISTICS_BACKEND_URL, get()) }
     factory { StatisticsParser(get(named("TypeAliases"))) }
 
     single<StatisticsSource> { get<StatisticsController>() }
@@ -26,6 +26,5 @@ val statisticsModule = module {
         activeDatesDao = get(),
         countryBoundaries = get(named("CountryBoundariesLazy")),
         prefs = get(),
-        userLoginStatusSource = get()
     ) }
 }

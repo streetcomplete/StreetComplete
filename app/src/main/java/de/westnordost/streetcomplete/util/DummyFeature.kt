@@ -5,27 +5,23 @@ import de.westnordost.osmfeatures.GeometryType
 import java.util.Locale
 
 data class DummyFeature(
-    private val id: String,
-    private val name: String,
-    private val icon: String,
-    private val addTags: Map<String, String>
+    override val id: String,
+    override val name: String,
+    override val icon: String?,
+    override val tags: Map<String, String>
 ) : Feature {
-    override fun getId() = id
-    override fun getTags() = addTags
-    override fun getGeometry() = listOf(GeometryType.POINT, GeometryType.AREA)
-    override fun getName() = name
-    override fun getIcon() = icon
-    override fun getImageURL() = null
-    override fun getNames() = listOf(name)
-    override fun getTerms() = emptyList<String>()
-    override fun getIncludeCountryCodes() = emptyList<String>()
-    override fun getExcludeCountryCodes() = emptyList<String>()
-    override fun isSearchable() = false
-    override fun getMatchScore() = 1.0
-    override fun getAddTags() = addTags
-    override fun getRemoveTags() = emptyMap<String, String>()
-    override fun getCanonicalNames() = emptyList<String>()
-    override fun getCanonicalTerms() = emptyList<String>()
-    override fun isSuggestion() = false
-    override fun getLocale(): Locale = Locale.getDefault()
+    override val geometry = listOf(GeometryType.POINT, GeometryType.AREA)
+    override val imageURL = null
+    override val names = listOf(name)
+    override val terms = emptyList<String>()
+    override val includeCountryCodes = emptyList<String>()
+    override val excludeCountryCodes = emptyList<String>()
+    override val isSearchable = false
+    override val matchScore = 1.0f
+    override val addTags = tags
+    override val removeTags = emptyMap<String, String>()
+    override val canonicalNames = emptyList<String>()
+    override val canonicalTerms = emptyList<String>()
+    override val isSuggestion = false
+    override val language: String? = Locale.getDefault().toLanguageTag()
 }

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
@@ -24,10 +25,9 @@ class AchievementsControllerTest {
     private lateinit var userAchievementsDao: UserAchievementsDao
     private lateinit var userLinksDao: UserLinksDao
     private lateinit var statisticsSource: StatisticsSource
+    private lateinit var allEditTypes: AllEditTypes
     private var allLinks: List<Link> = listOf()
     private var allAchievements: List<Achievement> = listOf()
-    private lateinit var questTypeRegistry: QuestTypeRegistry
-    private lateinit var overlayRegistry: OverlayRegistry
 
     private lateinit var statisticsListener: StatisticsSource.Listener
     private lateinit var listener: AchievementsSource.Listener
@@ -37,8 +37,10 @@ class AchievementsControllerTest {
         on(userAchievementsDao.getAll()).thenReturn(mapOf())
         userLinksDao = mock()
         statisticsSource = mock()
-        questTypeRegistry = QuestTypeRegistry(listOf(0 to QuestOne, 1 to QuestTwo))
-        overlayRegistry = OverlayRegistry(listOf(0 to OverlayOne))
+        allEditTypes = AllEditTypes(listOf(
+            QuestTypeRegistry(listOf(0 to QuestOne, 1 to QuestTwo)),
+            OverlayRegistry(listOf(0 to OverlayOne)),
+        ))
 
         listener = mock()
 
@@ -54,7 +56,7 @@ class AchievementsControllerTest {
     private fun createAchievementsController(): AchievementsController =
         AchievementsController(
             statisticsSource, userAchievementsDao, userLinksDao,
-            questTypeRegistry, overlayRegistry, allAchievements, allLinks
+            allEditTypes, allAchievements, allLinks
         ).also { it.addListener(listener) }
 
     @Test fun `unlocks DaysActive achievement`() {

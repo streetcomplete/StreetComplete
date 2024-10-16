@@ -31,7 +31,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         )
         and ~path|footway|cycleway|bridleway !~ link
     """
-    /* ~paved ways are less likely to change the surface type */
+    // ~paved ways are less likely to change the surface type
 
     override val changesetComment = "Specify path surfaces"
     override val wikiLink = "Key:surface"

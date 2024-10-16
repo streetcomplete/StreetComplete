@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedShop
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
@@ -28,7 +28,7 @@ class CheckOpeningHoursSigned(
           opening_hours:signed = no
           and (
             $hasOldOpeningHoursCheckDateFilter
-            or older today -1 years
+            or older today -2 years
           )
           and access !~ private|no
           and (
@@ -39,7 +39,7 @@ class CheckOpeningHoursSigned(
 
     private val hasOldOpeningHoursCheckDateFilter: String get() =
         getLastCheckDateKeys("opening_hours").joinToString("\nor ") {
-            "$it < today -1 years"
+            "$it < today -2 years"
         }
 
     override val changesetComment = "Survey whether opening hours are signed"
@@ -57,7 +57,7 @@ class CheckOpeningHoursSigned(
         filter.matches(element) && hasName(element)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedShop() }
+        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = YesNoQuestForm()
 
@@ -75,11 +75,11 @@ class CheckOpeningHoursSigned(
             if (!hasCheckDate) {
                 tags.setCheckDateForKey("opening_hours", Instant.fromEpochMilliseconds(timestampEdited)
                     .toLocalDateTime(TimeZone.currentSystemDefault())
-                .date)
+                    .date)
             }
         } else {
             tags["opening_hours:signed"] = "no"
-            /* still unsigned: just set the check date to now, user was on-site */
+            // still unsigned: just set the check date to now, user was on-site
             tags.updateCheckDateForKey("opening_hours")
         }
     }

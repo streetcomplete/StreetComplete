@@ -1,33 +1,31 @@
 package de.westnordost.streetcomplete.data.upload
 
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.osm.edits.upload.ElementEditsUploader
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsUploader
-import de.westnordost.streetcomplete.data.user.AuthorizationException
-import de.westnordost.streetcomplete.data.user.UserLoginStatusSource
+import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
 
 class Uploader(
     private val noteEditsUploader: NoteEditsUploader,
     private val elementEditsUploader: ElementEditsUploader,
     private val downloadedTilesController: DownloadedTilesController,
-    private val userLoginStatusSource: UserLoginStatusSource,
+    private val userLoginSource: UserLoginSource,
     private val versionIsBannedChecker: VersionIsBannedChecker,
     private val mutex: Mutex
 ) : UploadProgressSource {
 
     private val listeners = Listeners<UploadProgressSource.Listener>()
 
-    private val bannedInfo by lazy { versionIsBannedChecker.get() }
+    private lateinit var bannedInfo: BannedInfo
 
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {
@@ -52,13 +50,17 @@ class Uploader(
         try {
             isUploadInProgress = true
             listeners.forEach { it.onStarted() }
-            val banned = withContext(Dispatchers.IO) { bannedInfo }
+
+            if (!::bannedInfo.isInitialized) {
+                bannedInfo = versionIsBannedChecker.get()
+            }
+            val banned = bannedInfo
             if (banned is IsBanned) {
                 throw VersionBannedException(banned.reason)
             }
 
             // let's fail early in case of no authorization
-            if (!userLoginStatusSource.isLoggedIn) {
+            if (!userLoginSource.isLoggedIn) {
                 throw AuthorizationException("User is not authorized")
             }
 

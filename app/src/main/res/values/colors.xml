@@ -18,14 +18,9 @@
 
     <color name="location_dot">#536dfe</color>
     <color name="quest_selection_frame">#bbFF5722</color>
-    <color name="location_accuracy_fill">#22536dfe</color>
-    <color name="location_accuracy_stroke">#88536dfe</color>
 
     <color name="background">#fff</color>
     <color name="background_transparent">#0fff</color>
-
-    <color name="indicator_dot">#888</color>
-    <color name="indicator_dot_selected">@color/accent</color>
 
     <color name="hint_text">#666</color>
     <color name="label_text_below_image">#000</color>
@@ -38,8 +33,7 @@
 
     <color name="button_white">#fff</color>
 
-    <color name="greyed_out">#66999999</color>
-    <color name="slightly_greyed_out">#33999999</color>
+    <color name="background_disabled">#33999999</color>
 
     <color name="dialog_shadow">#99000000</color>
 
@@ -61,7 +55,6 @@
 
     <color name="pressed">#ddd</color>
 
-    <color name="disabled_notice">#66999999</color>
     <color name="attribution_text">#444</color>
 
     <color name="team_0">#f44336</color>
@@ -79,14 +72,6 @@
     <color name="team_9">#494EAD</color>
     <color name="team_10">#AA335D</color>
     <color name="team_11">#655555</color>
-
-    <color name="log_verbose">#666</color>
-    <color name="log_debug">#2196f3</color>
-    <color name="log_info">#4caf50</color>
-    <color name="log_warning">#ff9800</color>
-    <color name="log_error">#f44336</color>
-
-    <color name="star_of_david">#22f</color>
 
     <!-- for fading out images -->
     <color name="fade_out">#fff</color>

@@ -1,5 +1,3 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package de.westnordost.streetcomplete.util.ktx
 
 import kotlinx.datetime.Clock
@@ -21,7 +19,10 @@ fun LocalDate.toInstant(): Instant =
 fun LocalDate.toEpochMilli(): Long = this.toInstant().toEpochMilliseconds()
 
 fun Instant.toLocalDate(): LocalDate =
-    this.toLocalDateTime(TimeZone.currentSystemDefault()).date
+    this.toLocalDateTime().date
+
+fun Instant.toLocalDateTime(): LocalDateTime =
+    this.toLocalDateTime(TimeZone.currentSystemDefault())
 
 fun isApril1st(): Boolean {
     val now = systemTimeNow().toLocalDate()

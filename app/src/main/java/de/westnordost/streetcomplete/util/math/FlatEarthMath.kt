@@ -8,11 +8,11 @@ import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.sqrt
 
-/** Calculate stuff assuming an (almost) flat Earth. The main exception from assuming a completely
- *  flat earth is use of cos(lat) to take into account decreasing longitude distance at
- *  high latitudes.
- *  Optimized for performance with precision within 1 m of spherical functions for up to
- *  0.03° difference between points (several km at common latitudes). */
+/* Calculate stuff assuming an (almost) flat Earth. The main exception from assuming a completely
+ * flat earth is use of cos(lat) to take into account decreasing longitude distance at
+ * high latitudes.
+ * Optimized for performance with precision within 1 m of spherical functions for up to
+ * 0.03° difference between points (several km at common latitudes). */
 
 // ~5 times faster than spherical version
 /** Returns the approximate distance from this point to the other point.
