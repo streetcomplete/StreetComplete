@@ -45,6 +45,7 @@ class NameAndLocationLabelTest {
         )))
     }
 
+    // https://github.com/streetcomplete/StreetComplete/issues/2640
     @Test fun postBox() {
         assertEquals("Deutsche Post (Mail Drop Box)", getQuestLabelForNode(mapOf(
             "amenity" to "post_box",
