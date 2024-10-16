@@ -184,6 +184,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
             cyclewaySurfaceCtrl.value?.isComplete == true
             && footwaySurfaceCtrl.value?.isComplete == true
         } else {
+            // TODO but in case of generic surface, it IS complete if surface:lanes is specified (and this thing is a road, with lanes)
             surfaceCtrl.value?.isComplete == true
         }
 

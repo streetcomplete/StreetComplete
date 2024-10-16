@@ -67,9 +67,8 @@ val Surface.color get() = when (this) {
 }
 
 fun SurfaceAndNote?.getColor(element: Element): String =
-    if (hasSurfaceLanes(element.tags)) {
-        Color.BLACK // same as other complex surfaces, e.g. surface=unpaved with surface:note=*
-    } else if (this?.isComplete != true) {
+    // TODO but in case of generic surface, it IS complete if surface:lanes is specified (and this thing is a road, with lanes)
+    if (this?.isComplete != true) {
         // not set but indoor, private or just a "virtual" link -> do not highlight as missing
         if (isIndoor(element.tags) || isPrivateOnFoot(element) || isLink(element.tags)) {
             Color.INVISIBLE

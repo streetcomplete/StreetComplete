@@ -87,6 +87,7 @@ class SurfaceAndNoteViewController(
     }
 
     private fun updateNoteVisibility() {
+        // TODO note input should actually not be visible if generic surface but surface:lanes on road...
         noteInput.isGone = noteInput.nonBlankTextOrNull == null && selectedSurfaceItem?.value?.shouldBeDescribed != true
     }
 
