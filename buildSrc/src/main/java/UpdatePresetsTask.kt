@@ -24,9 +24,9 @@ open class UpdatePresetsTask : DefaultTask() {
         val exportLanguages = languageCodes?.map { Locale(Locale.forLanguageTag(it).language) }
         val version = version ?: return
 
-        // copy the presets.json 1:1
+        // copy and reduce the presets.json
         val presetsFile = File("$targetDir/presets.json")
-        presetsFile.writeText(fetchPresets(version))
+        presetsFile.writeText(fetchAndReducePresets(version))
 
         // download each language
         val localizationMetadataList = fetchLocalizationMetadata()
@@ -52,9 +52,30 @@ open class UpdatePresetsTask : DefaultTask() {
     }
 
     /** Fetch iD presets */
-    private fun fetchPresets(version: String): String {
+    private fun fetchAndReducePresets(version: String): String {
         val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/$version/dist/presets.json"
-        return URL(presetsUrl).readText()
+        val json = Parser.default().parse(URL(presetsUrl).openStream()) as JsonObject
+        // remove unused presets
+        json.entries.removeAll { (key, value) ->
+            // we don't need them templates
+            key.startsWith("@templates")
+            // remove presets specific to certain countries (these are very likely just tweaks
+            // which fields are displayed etc), see https://github.com/ideditor/schema-builder/issues/94#issuecomment-2416796047
+            || (value as JsonObject).obj("locationSet")?.array<String>("include") != null
+        }
+        // strip unused fields
+        for (value in json.values) {
+            val preset = value as JsonObject
+            preset.remove("fields")
+            preset.remove("moreFields")
+            preset.remove("reference")
+            // after the locationSet->include presets are removed (see above), what remains are
+            // locationSet->exclude presets (preset available in all countries except X). These
+            // are usually the counterpart of the tweaks made for different countries, so with the
+            // tweaks removed, the locationSet->exclude field can be removed, too
+            preset.remove("locationSet")
+        }
+        return json.toJsonString(prettyPrint = true)
     }
 
     /** Fetch relevant meta-infos for localizations from iD */
