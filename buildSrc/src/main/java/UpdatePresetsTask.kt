@@ -38,7 +38,7 @@ open class UpdatePresetsTask : DefaultTask() {
             val javaLanguageTag = locale.toLanguageTag()
             println(javaLanguageTag)
 
-            val presetsLocalization = fetchPresetsLocalizations(localizationMetadata)
+            val presetsLocalization = fetchAndReducePresetsLocalizations(localizationMetadata)
             File("$targetDir/$javaLanguageTag.json").writeText(presetsLocalization)
         }
 
@@ -95,10 +95,19 @@ open class UpdatePresetsTask : DefaultTask() {
         }
     }
 
-    /** Download and pick the localization for only the presets from iD localizations
-     *  (the iD localizations contain everything, such as localizations of iD UI etc)*/
-    private fun fetchPresetsLocalizations(localization: LocalizationMetadata): String =
-        URL(localization.downloadUrl).openStream().bufferedReader().use { it.readText() }.unescapeUnicode()
+    /** Download and pick the localization for only the preset features because the other things
+     *  are not used (currently) */
+    private fun fetchAndReducePresetsLocalizations(localization: LocalizationMetadata): String {
+        val json = Parser.default().parse(URL(localization.downloadUrl).openStream()) as JsonObject
+        for (value in json.values) {
+            val language = value as JsonObject
+            val presets = language.obj("presets")
+            // translations of preset categories and preset fields not used, so let's delete them
+            presets?.remove("categories")
+            presets?.remove("fields")
+        }
+        return json.toJsonString(prettyPrint = true).unescapeUnicode()
+    }
 }
 
 private data class LocalizationMetadata(val locale: Locale, val downloadUrl: String)
