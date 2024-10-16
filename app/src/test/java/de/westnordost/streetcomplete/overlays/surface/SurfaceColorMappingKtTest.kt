@@ -45,13 +45,16 @@ class SurfaceColorMappingKtTest {
         assertEquals(Color.BLACK, parseSurfaceAndNote(road.tags).getColor(road))
     }
 
-    @Test fun `return black for complex forward surface lanes`() {
-        val road = way(tags = mapOf("surface:lanes:forward" to "asphalt"))
-        assertEquals(Color.BLACK, parseSurfaceAndNote(road.tags).getColor(road))
+    @Test fun `return missing-data color for only complex surface lanes`() {
+        val road = way(tags = mapOf("surface:lanes:forward" to "asphalt|concrete"))
+        assertEquals(Color.DATA_REQUESTED, parseSurfaceAndNote(road.tags).getColor(road))
     }
 
     @Test fun `return black for complex surface lanes`() {
-        val road = way(tags = mapOf("surface:lanes" to "concrete|asphalt|asphalt"))
+        val road = way(tags = mapOf(
+            "surface:lanes" to "concrete|asphalt|asphalt",
+            "surface" to "paved"
+        ))
         assertEquals(Color.BLACK, parseSurfaceAndNote(road.tags).getColor(road))
     }
 
