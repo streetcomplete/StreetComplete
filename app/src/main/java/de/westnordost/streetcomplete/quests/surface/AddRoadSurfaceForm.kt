@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeCombinationSuspicious
 import de.westnordost.streetcomplete.osm.surface.hasSurfaceLanes
-import de.westnordost.streetcomplete.osm.surface.isSurfaceAndTracktypeConflicting
 import de.westnordost.streetcomplete.osm.surface.toItems
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 
