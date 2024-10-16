@@ -44,7 +44,7 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter { it.isCrossing() }.asSequence()
 
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (element is Node && element.tags.isEmpty()) null else false
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {

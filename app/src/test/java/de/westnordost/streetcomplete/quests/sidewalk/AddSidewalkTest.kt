@@ -20,7 +20,7 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(road))
+        assertEquals(false, questType.isApplicableTo(road,))
     }
 
     @Test fun `applicable to road with missing sidewalk`() {
@@ -30,7 +30,7 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road,))
     }
 
     @Test fun `applicable to road with incomplete sidewalk tagging`() {
@@ -40,7 +40,7 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road,))
     }
 
     @Test fun `applicable to road with invalid sidewalk tagging`() {
@@ -61,7 +61,7 @@ class AddSidewalkTest {
         mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road,))
     }
 
     @Test fun `applicable to road with overloaded sidewalk tagging`() {
@@ -83,7 +83,7 @@ class AddSidewalkTest {
         mapData.wayGeometriesById[2L] = ElementPolylinesGeometry(listOf(listOf(p3, p4)), p3)
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road,))
     }
 
     @Test fun `not applicable to motorways`() {
@@ -92,7 +92,7 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(road))
+        assertEquals(false, questType.isApplicableTo(road,))
     }
 
     @Test fun `applicable to motorways marked as legally accessible to pedestrians`() {
@@ -102,7 +102,7 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road,))
     }
 
     @Test fun `applicable to motorways marked as legally accessible to pedestrians and with tagged speed limit`() {
@@ -113,7 +113,7 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road,))
     }
 
     @Test fun `not applicable to road with very low speed limit`() {
@@ -123,7 +123,7 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(road))
+        assertEquals(false, questType.isApplicableTo(road,))
     }
 
     @Test fun `applicable to road with implicit speed limit`() {
@@ -133,7 +133,7 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road,))
     }
 
     @Test fun `applicable to road with urban speed limit`() {
@@ -143,6 +143,6 @@ class AddSidewalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(road))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(road))
+        assertTrue(questType.isApplicableTo(road,))
     }
 }

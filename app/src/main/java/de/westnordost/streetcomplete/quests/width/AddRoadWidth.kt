@@ -63,7 +63,7 @@ class AddRoadWidth(
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
 
-    override fun isApplicableTo(element: Element) =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) =
         nodeFilter.matches(element) || wayFilter.matches(element)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

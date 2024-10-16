@@ -49,7 +49,7 @@ class AddCrossingSignals : OsmElementQuestType<Boolean> {
             .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
     override fun createForm() = YesNoQuestForm()

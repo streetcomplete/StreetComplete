@@ -71,7 +71,7 @@ class AddMaxPhysicalHeight(
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
 
-    override fun isApplicableTo(element: Element): Boolean =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean =
         nodeFilter.matches(element) || wayFilter.matches(element)
 
     override fun createForm() = AddMaxPhysicalHeightForm()

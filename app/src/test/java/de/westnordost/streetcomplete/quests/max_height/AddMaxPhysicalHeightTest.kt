@@ -51,12 +51,16 @@ class AddMaxPhysicalHeightTest {
 
     private fun isApplicableTo(tags: Map<String, String>): Boolean {
         // since the node and way filter is so similar, it makes sense to always test both
-        val nodes = questType.isApplicableTo(node(
-            tags = mapOf("barrier" to "height_restrictor") + tags
-        ))
-        val ways = questType.isApplicableTo(way(
-            tags = mapOf("highway" to "service") + tags
-        ))
+        val nodes = questType.isApplicableTo(
+            node(
+                tags = mapOf("barrier" to "height_restrictor") + tags
+            ),
+        )
+        val ways = questType.isApplicableTo(
+            way(
+                tags = mapOf("highway" to "service") + tags
+            ),
+        )
         if (nodes != ways) {
             fail("Result of isApplicableTo is not the same for nodes and ways")
         }

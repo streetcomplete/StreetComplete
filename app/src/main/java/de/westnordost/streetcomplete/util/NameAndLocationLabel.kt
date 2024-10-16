@@ -15,19 +15,21 @@ fun getNameAndLocationSpanned(
     element: Element,
     resources: Resources,
     featureDictionary: FeatureDictionary?,
+    country: String?,
     showHouseNumber: Boolean? = null
 ): Spanned? =
-    getNameAndLocationHtml(element, resources, featureDictionary, showHouseNumber)?.parseAsHtml()
+    getNameAndLocationHtml(element, resources, featureDictionary, country, showHouseNumber)?.parseAsHtml()
 
 fun getNameAndLocationHtml(
     element: Element,
     resources: Resources,
     featureDictionary: FeatureDictionary?,
+    country: String?,
     showHouseNumber: Boolean? = null
 ): String? {
     val languages = getLanguagesForFeatureDictionary(resources.configuration)
     val feature = featureDictionary
-        ?.getFeature(element, languages)
+        ?.getFeature(element, country, languages)
         ?.name
         ?.withNonBreakingSpaces()
         ?.inItalics()

@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -16,7 +17,7 @@ import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
+class AddIsAmenityIndoor(private val getFeature: (Element, LatLon?) -> Feature?) :
     OsmElementQuestType<IsAmenityIndoorAnswer> {
 
     private val nodesFilter by lazy { """
@@ -53,7 +54,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return listOf()
-        val nodes = mapData.nodes.filter { nodesFilter.matches(it) && getFeature(it) != null }
+        val nodes = mapData.nodes.filter { nodesFilter.matches(it) && getFeature(it, it.position) != null }
         val buildings = mapData.filter { buildingFilter.matches(it) }.toMutableList()
 
         val buildingGeometriesById = buildings.associate {
@@ -87,8 +88,8 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
         return result
     }
 
-    override fun isApplicableTo(element: Element) =
-        if (nodesFilter.matches(element) && getFeature(element) != null) {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) =
+        if (nodesFilter.matches(element) && getFeature(element, geometry.center) != null) {
             if (nodesOnWalls.matches(element)) true else null
         } else {
             false
@@ -97,8 +98,10 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
-        val feature = getFeature(element) ?: return emptySequence()
-        return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
+        val mapData = getMapData()
+        val position = mapData.getGeometry(element.type, element.id)?.center
+        val feature = getFeature(element, position) ?: return emptySequence()
+        return mapData.filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
 
     override fun createForm() = IsAmenityIndoorForm()

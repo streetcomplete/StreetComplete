@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -367,23 +368,23 @@ private fun questEntry(
 ): OsmQuestDaoEntry = BasicOsmQuestDaoEntry(elementType, elementId, questTypeName, position)
 
 private object ApplicableQuestType : TestQuestTypeA() {
-    override fun isApplicableTo(element: Element) = true
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) = true
 }
 
 private object ApplicableQuestType2 : TestQuestTypeA() {
-    override fun isApplicableTo(element: Element) = true
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) = true
 }
 
 private object ApplicableQuestTypeNotInAnyCountry : TestQuestTypeA() {
-    override fun isApplicableTo(element: Element) = true
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) = true
     override val enabledInCountries: Countries get() = NoCountriesExcept()
 }
 
 private object NotApplicableQuestType : TestQuestTypeA() {
-    override fun isApplicableTo(element: Element) = false
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) = false
 }
 
 private object ComplexQuestTypeApplicableToNode42 : TestQuestTypeA() {
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? = null
     override fun getApplicableElements(mapData: MapDataWithGeometry) = listOf(node(42))
 }

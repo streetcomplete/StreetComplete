@@ -9,8 +9,10 @@ import de.westnordost.streetcomplete.util.getShortHouseNumber
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.view.presetIconIndex
 
-@DrawableRes fun getIcon(featureDictionary: FeatureDictionary, element: Element): Int? {
-    val icon = featureDictionary.getFeature(element)?.let { presetIconIndex[it.icon] }
+@DrawableRes fun getIcon(
+    featureDictionary: FeatureDictionary, country: String?, element: Element
+): Int? {
+    val icon = featureDictionary.getFeature(element, country)?.let { presetIconIndex[it.icon] }
     if (icon != null) return icon
 
     if (getShortHouseNumber(element.tags) != null && getNameLabel(element.tags) == null) {

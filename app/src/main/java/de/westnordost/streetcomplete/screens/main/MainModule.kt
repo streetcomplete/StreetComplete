@@ -16,5 +16,10 @@ val mainModule = module {
         get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()
     ) }
 
-    viewModel<EditHistoryViewModel> { EditHistoryViewModelImpl(get(), get(), get(named("FeatureDictionaryLazy"))) }
+    viewModel<EditHistoryViewModel> { EditHistoryViewModelImpl(
+        get(),
+        get(),
+        get(named("FeatureDictionaryLazy")),
+        get(named("CountryBoundariesLazy")))
+    }
 }

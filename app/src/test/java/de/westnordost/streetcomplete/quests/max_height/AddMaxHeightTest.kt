@@ -29,7 +29,7 @@ class AddMaxHeightTest {
         val mapData = TestMapDataWithGeometry(listOf(road, parkingEntrance))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(parkingEntrance))
+        assertNull(questType.isApplicableTo(parkingEntrance,))
     }
 
     @Test fun `not applicable to parking entrance node that is not vertex of a road`() {
@@ -44,7 +44,7 @@ class AddMaxHeightTest {
         val mapData = TestMapDataWithGeometry(listOf(footway, parkingEntrance))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(parkingEntrance))
+        assertNull(questType.isApplicableTo(parkingEntrance,))
     }
 
     @Test fun `applicable to railway crossing node that is a vertex of an electrified railway`() {
@@ -57,7 +57,7 @@ class AddMaxHeightTest {
         val mapData = TestMapDataWithGeometry(listOf(railway, crossing))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(crossing))
+        assertNull(questType.isApplicableTo(crossing,))
     }
 
     @Test fun `not applicable to railway crossing node that is a vertex of a normal railway`() {
@@ -67,7 +67,7 @@ class AddMaxHeightTest {
         val mapData = TestMapDataWithGeometry(listOf(railway, crossing))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(crossing))
+        assertNull(questType.isApplicableTo(crossing,))
     }
 
     @Test fun `applicable to road below bridge`() {

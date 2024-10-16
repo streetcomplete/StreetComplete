@@ -66,9 +66,12 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+        mapData.filter { element ->
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@filter false
+            isApplicableTo(element, geometry)
+        }
 
-    override fun isApplicableTo(element: Element): Boolean {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean {
         if (!filter.matches(element)) return false
         val tags = element.tags
         // no collection_times yet -> new survey

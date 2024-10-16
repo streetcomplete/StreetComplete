@@ -47,9 +47,12 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_shop_vacant_type_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+        mapData.filter { element ->
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@filter false
+            isApplicableTo(element, geometry)
+        }
 
-    override fun isApplicableTo(element: Element): Boolean =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean =
         element.isDisusedPlace() &&
         filter.matches(element) &&
         /* elements tagged like "shop=ice_cream + disused:amenity=bank" should not appear as quests.

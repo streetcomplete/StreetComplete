@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
@@ -14,7 +15,7 @@ import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAmenityCover(
-    private val getFeature: (Element) -> Feature?
+    private val getFeature: (Element, LatLon?) -> Feature?
 ) : OsmElementQuestType<Boolean> {
 
     private val nodesFilter by lazy { """
@@ -34,16 +35,21 @@ class AddAmenityCover(
     override fun getTitle(tags: Map<String, String>) = R.string.quest_amenityCover_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+        mapData.filter { element ->
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@filter false
+            isApplicableTo(element, geometry)
+        }
 
-    override fun isApplicableTo(element: Element) =
-        nodesFilter.matches(element) && getFeature(element) != null
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) =
+        nodesFilter.matches(element) && getFeature(element, geometry.center) != null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
-        val feature = getFeature(element) ?: return emptySequence()
-        return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
+        val mapData = getMapData()
+        val position = mapData.getGeometry(element.type, element.id)?.center
+        val feature = getFeature(element, position) ?: return emptySequence()
+        return mapData.filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
 
     override fun createForm() = YesNoQuestForm()

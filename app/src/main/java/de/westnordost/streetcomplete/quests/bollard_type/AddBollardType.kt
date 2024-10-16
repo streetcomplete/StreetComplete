@@ -43,7 +43,7 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
             .filter { bollardNodeFilter.matches(it) && it.id in wayNodeIds }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (!bollardNodeFilter.matches(element)) false else null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

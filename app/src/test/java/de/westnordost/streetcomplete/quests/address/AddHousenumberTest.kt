@@ -30,7 +30,7 @@ class AddHousenumberTest {
         val building = way(1L, NODES1, mapOf("building" to "yes"))
         val mapData = createMapData(mapOf(building to POSITIONS1))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(building))
+        assertEquals(false, questType.isApplicableTo(building,))
     }
 
     @Test fun `does not create quest for building with address`() {
@@ -40,7 +40,7 @@ class AddHousenumberTest {
         ))
         val mapData = createMapData(mapOf(building to POSITIONS1))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(building))
+        assertEquals(false, questType.isApplicableTo(building,))
     }
 
     @Test fun `does create quest for building without address`() {
@@ -49,7 +49,7 @@ class AddHousenumberTest {
         ))
         val mapData = createMapData(mapOf(building to POSITIONS1))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(building))
+        assertNull(questType.isApplicableTo(building,))
     }
 
     @Test fun `does not create quest for building with address node on outline`() {
@@ -64,7 +64,7 @@ class AddHousenumberTest {
             addr to ElementPointGeometry(P2)
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(building))
+        assertNull(questType.isApplicableTo(building,))
     }
 
     @Test fun `does not create quest for building that is part of a relation with an address`() {
@@ -81,7 +81,7 @@ class AddHousenumberTest {
             relationWithAddr to ElementPointGeometry(P2)
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(building))
+        assertNull(questType.isApplicableTo(building,))
     }
 
     @Test fun `does not create quest for building that is inside an area with an address`() {
@@ -97,7 +97,7 @@ class AddHousenumberTest {
             areaWithAddr to POSITIONS2,
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(building))
+        assertNull(questType.isApplicableTo(building,))
     }
 
     @Test fun `does not create quest for building that is inside an area with an address on its outline`() {
@@ -127,7 +127,7 @@ class AddHousenumberTest {
             addr to ElementPointGeometry(PC),
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(building))
+        assertNull(questType.isApplicableTo(building,))
     }
 
     @Test fun `does not create quest for building that intersects bounding box`() {
@@ -138,7 +138,7 @@ class AddHousenumberTest {
             building to ElementPolygonsGeometry(listOf(listOf(P1, P2, PO, P4, P1)), PC)
         ))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(building))
+        assertNull(questType.isApplicableTo(building,))
     }
 
     @Test fun `apply house number answer`() {

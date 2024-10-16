@@ -33,9 +33,12 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+        mapData.filter { element ->
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@filter false
+            isApplicableTo(element, geometry)
+        }
 
-    override fun isApplicableTo(element: Element): Boolean =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean =
         /* Only recycling containers that do either not have any recycling:* tag yet or
          * haven't been touched for 2 years and are exclusively recycling types selectable in
          * StreetComplete. */

@@ -135,7 +135,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
             waysBelowBridgesWithoutHeight
     }
 
-    override fun isApplicableTo(element: Element): Boolean? {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? {
         if (roadsWithoutMaxHeightFilter.matches(element)) {
             if (tunnelFilter.matches(element)) return true
             // if it is a way but not a tunnel, we cannot determine whether it is applicable (=

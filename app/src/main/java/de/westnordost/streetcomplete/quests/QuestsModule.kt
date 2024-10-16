@@ -179,6 +179,7 @@ import de.westnordost.streetcomplete.quests.width.AddCyclewayWidth
 import de.westnordost.streetcomplete.quests.width.AddRoadWidth
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.ktx.getFeature
+import de.westnordost.streetcomplete.util.ktx.getIds
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -193,8 +194,11 @@ val questsModule = module {
                 val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
                 countryInfos.getByLocation(countryBoundaries, location.longitude, location.latitude)
             },
-            { element ->
-                get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(element)
+            { element, location ->
+                val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
+                val featureDictionary = get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value
+                val country = location?.let { countryBoundaries.getIds(it).firstOrNull() }
+                featureDictionary.getFeature(element, country)
             }
         )
     }
@@ -203,7 +207,7 @@ val questsModule = module {
 fun questTypeRegistry(
     arSupportChecker: ArSupportChecker,
     getCountryInfoByLocation: (LatLon) -> CountryInfo,
-    getFeature: (Element) -> Feature?,
+    getFeature: (Element, LatLon?) -> Feature?,
 ) = QuestTypeRegistry(listOf(
 
     /*

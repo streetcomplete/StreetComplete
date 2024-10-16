@@ -136,7 +136,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
         if (element != null) {
             setTitleHintLabel(getNameAndLocationSpanned(
-                element, resources, featureDictionary,
+                element, resources, featureDictionary, countryOrSubdivisionCode,
                 showHouseNumber = false
             ))
         }

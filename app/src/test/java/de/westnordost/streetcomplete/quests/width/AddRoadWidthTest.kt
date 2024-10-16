@@ -17,90 +17,118 @@ class AddRoadWidthTest {
     private val quest = AddRoadWidth(mock())
 
     @Test fun `is applicable to residential roads if speed below 33`() {
-        assertTrue(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "DE:zone30",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertTrue(quest.isApplicableTo(way(tags = mapOf(
-            "source:maxspeed" to "DE:zone30",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertTrue(quest.isApplicableTo(way(tags = mapOf(
-            "source:maxspeed" to "DE:20",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertTrue(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "32",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertTrue(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "20 mph",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertTrue(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "walk",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
+        assertTrue(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "DE:zone30",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertTrue(quest.isApplicableTo(
+            way(tags = mapOf(
+                "source:maxspeed" to "DE:zone30",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertTrue(quest.isApplicableTo(
+            way(tags = mapOf(
+                "source:maxspeed" to "DE:20",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertTrue(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "32",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertTrue(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "20 mph",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertTrue(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "walk",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
     }
 
     @Test fun `is not applicable to residential roads if speed is 33 or more`() {
-        assertFalse(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "DE:urban",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertFalse(quest.isApplicableTo(way(tags = mapOf(
-            "source:maxspeed" to "DE:urban",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertFalse(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "33",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertFalse(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "30 mph",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
-        assertFalse(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "variable",
-            "highway" to "residential",
-            "surface" to "asphalt"
-        ))))
+        assertFalse(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "DE:urban",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertFalse(quest.isApplicableTo(
+            way(tags = mapOf(
+                "source:maxspeed" to "DE:urban",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertFalse(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "33",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertFalse(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "30 mph",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
+        assertFalse(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "variable",
+                "highway" to "residential",
+                "surface" to "asphalt"
+            )),
+        ))
     }
 
     @Test fun `is applicable to road with choker`() {
-        assertTrue(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "DE:zone30",
-            "highway" to "residential",
-            "surface" to "asphalt",
-            "traffic_calming" to "choker"
-        ))))
+        assertTrue(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "DE:zone30",
+                "highway" to "residential",
+                "surface" to "asphalt",
+                "traffic_calming" to "choker"
+            )),
+        ))
     }
 
     @Test fun `is not applicable to road with choker and maxwidth`() {
-        assertFalse(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "DE:zone30",
-            "highway" to "residential",
-            "surface" to "asphalt",
-            "traffic_calming" to "choker",
-            "maxwidth" to "3"
-        ))))
-        assertFalse(quest.isApplicableTo(way(tags = mapOf(
-            "maxspeed" to "DE:zone30",
-            "highway" to "residential",
-            "surface" to "asphalt",
-            "traffic_calming" to "choker",
-            "width" to "3"
-        ))))
+        assertFalse(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "DE:zone30",
+                "highway" to "residential",
+                "surface" to "asphalt",
+                "traffic_calming" to "choker",
+                "maxwidth" to "3"
+            )),
+        ))
+        assertFalse(quest.isApplicableTo(
+            way(tags = mapOf(
+                "maxspeed" to "DE:zone30",
+                "highway" to "residential",
+                "surface" to "asphalt",
+                "traffic_calming" to "choker",
+                "width" to "3"
+            )),
+        ))
     }
 
     @Test fun `apply to street`() {

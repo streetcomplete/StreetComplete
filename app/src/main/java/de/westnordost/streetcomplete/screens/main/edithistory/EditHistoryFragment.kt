@@ -50,6 +50,7 @@ class EditHistoryFragment : Fragment(R.layout.fragment_edit_history_list) {
                         editItem.edit,
                         element,
                         viewModel.featureDictionaryLazy,
+                        viewModel.countryBoundariesLazy,
                         { viewModel.undo(it.key) }
                     ).show()
                 }

@@ -12,11 +12,13 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 open class TestQuestTypeA : OsmElementQuestType<String> {
 
     override fun getTitle(tags: Map<String, String>) = 0
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? = null
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
     override fun createForm(): AbstractOsmQuestForm<String> = object : AbstractOsmQuestForm<String>() {}
     override val changesetComment = "test me"
-    override fun getApplicableElements(mapData: MapDataWithGeometry) = mapData.filter { isApplicableTo(it) == true }
+    override fun getApplicableElements(mapData: MapDataWithGeometry) = mapData.filter { isApplicableTo(
+        it,
+    ) == true }
     override val wikiLink: String? = null
     override val icon = 0
     override val achievements = emptyList<EditTypeAchievement>()

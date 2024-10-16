@@ -118,7 +118,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         super.onViewCreated(view, savedInstanceState)
 
         setTitle(getString(osmElementQuestType.getTitle(element.tags)))
-        setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
+        setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary, countryOrSubdivisionCode))
         setObjNote(element.tags["note"])
     }
 
@@ -237,7 +237,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     protected fun composeNote() {
 
         val questTitle = englishResources.getString(osmElementQuestType.getTitle(element.tags))
-        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary)
+        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary, countryOrSubdivisionCode)
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "Unable to answer \"$questTitle\""
         } else {

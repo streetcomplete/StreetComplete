@@ -30,6 +30,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
@@ -93,6 +94,7 @@ import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.buildGeoUri
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.util.ktx.dpToPx
+import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
@@ -171,6 +173,7 @@ class MainFragment :
     private val noteQuestsHiddenSource: OsmNoteQuestsHiddenSource by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
+    private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val soundFx: SoundFx by inject()
 
     private lateinit var locationManager: FineLocationManager
@@ -1184,7 +1187,8 @@ class MainFragment :
                 if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: return@mapNotNull null
-                val icon = getIcon(featureDictionary.value, e)
+                val country = countryBoundaries.value.getIds(geometry.center).firstOrNull()
+                val icon = getIcon(featureDictionary.value, country, e)
                 val title = getTitle(e.tags)
                 Marker(geometry, icon, title)
             }.toList()

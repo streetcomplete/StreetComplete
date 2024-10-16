@@ -81,7 +81,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * The implications of returning null here is that the quest controller needs to fetch a
      * bounding box around the given element (from the database) to determine it is applicable or
      * not (this is slow). */
-    fun isApplicableTo(element: Element): Boolean?
+    fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean?
 
     /** Elements that should be highlighted on the map alongside the selected one because they
      *  provide context for the given element. For example, nearby benches should be shown when

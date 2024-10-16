@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -13,7 +14,7 @@ import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 
 class AddPlaceName(
-    private val getFeature: (Element) -> Feature?
+    private val getFeature: (Element, LatLon?) -> Feature?
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
@@ -119,10 +120,13 @@ class AddPlaceName(
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+        mapData.filter { element ->
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@filter false
+            isApplicableTo(element, geometry)
+        }
 
-    override fun isApplicableTo(element: Element): Boolean =
-        filter.matches(element) && getFeature(element) != null
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean =
+        filter.matches(element) && getFeature(element, geometry.center) != null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }

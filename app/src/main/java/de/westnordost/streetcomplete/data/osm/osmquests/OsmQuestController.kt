@@ -195,7 +195,7 @@ class OsmQuestController internal constructor(
 
         return questTypes.map { questType ->
             scope.async {
-                var appliesToElement = questType.isApplicableTo(element)
+                var appliesToElement = questType.isApplicableTo(element, geometry)
                 if (appliesToElement == null) {
                     Log.d(TAG, "${questType.name} requires surrounding map data to determine applicability to ${element.type.name}#${element.id}")
                     val mapData = withContext(Dispatchers.IO) { lazyMapData }

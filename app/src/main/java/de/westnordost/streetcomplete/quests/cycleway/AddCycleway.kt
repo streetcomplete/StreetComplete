@@ -92,7 +92,7 @@ class AddCycleway(
         return roadsWithMissingCycleway + oldRoadsWithKnownCycleways
     }
 
-    override fun isApplicableTo(element: Element): Boolean? {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? {
         if (!roadsFilter.matches(element)) return false
         if (untaggedRoadsFilter.matches(element)) return true
         return element.hasOldInvalidOrAmbiguousCyclewayTags(null)

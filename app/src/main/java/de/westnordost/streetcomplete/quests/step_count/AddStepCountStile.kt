@@ -34,7 +34,7 @@ class AddStepCountStile : OsmElementQuestType<Int> {
             .filter { stileNodeFilter.matches(it) && it.id !in excludedWayNodeIds }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (!stileNodeFilter.matches(element)) false else null
 
     override val changesetComment = "Specify stiles step count"

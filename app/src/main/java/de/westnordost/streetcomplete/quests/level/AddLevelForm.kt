@@ -101,7 +101,7 @@ class AddLevelForm : AbstractOsmQuestForm<String>() {
         val levels = listOf(SingleLevel(level))
         val markers = shopElementsAndGeometry.mapNotNull { (element, geometry) ->
             if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) return@mapNotNull null
-            val icon = getIcon(featureDictionary, element)
+            val icon = getIcon(featureDictionary, countryOrSubdivisionCode, element)
             val title = getTitle(element.tags)
             Marker(geometry, icon, title)
         }

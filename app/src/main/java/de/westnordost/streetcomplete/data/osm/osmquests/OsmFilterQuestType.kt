@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -17,5 +18,5 @@ abstract class OsmFilterQuestType<T> : OsmElementQuestType<T> {
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter(elementFilter).asIterable()
 
-    override fun isApplicableTo(element: Element) = filter.matches(element)
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) = filter.matches(element)
 }

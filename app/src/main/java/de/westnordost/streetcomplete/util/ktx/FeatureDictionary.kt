@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 
 fun FeatureDictionary.getFeature(
     element: Element,
+    country: String?,
     languages: List<String?>? = null,
 ): Feature? {
     // only if geometry is not a node because at this point we cannot tell apart points vs vertices
@@ -15,6 +16,7 @@ fun FeatureDictionary.getFeature(
     val features = getByTags(
         tags = element.tags,
         languages = languages,
+        country = country,
         geometry = geometryType,
         isSuggestion = false // no brands
     )

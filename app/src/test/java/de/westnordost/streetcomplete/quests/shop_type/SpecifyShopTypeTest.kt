@@ -15,19 +15,19 @@ class SpecifyShopTypeTest {
 
     @Test fun `is applicable to undefined shop`() {
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("shop" to "yes"))
+            node(tags = mapOf("shop" to "yes")),
         ))
     }
 
     @Test fun `is not applicable when shop=yes is used as a property`() {
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("amenity" to "fuel", "shop" to "yes"))
+            node(tags = mapOf("amenity" to "fuel", "shop" to "yes")),
         ))
     }
 
     @Test fun `is not applicable when other primary tags are present`() {
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("power" to "plant", "shop" to "yes"))
+            node(tags = mapOf("power" to "plant", "shop" to "yes")),
         ))
     }
 

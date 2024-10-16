@@ -201,7 +201,7 @@ abstract class AbstractOverlayForm :
         binding.speechbubbleContentContainer.clipToOutline = true
 
         setTitleHintLabel(
-            element?.let { getNameAndLocationSpanned(it, resources, featureDictionary) }
+            element?.let { getNameAndLocationSpanned(it, resources, featureDictionary, countryOrSubdivisionCode) }
         )
         setObjNote(element?.tags?.get("note"))
 
@@ -415,7 +415,7 @@ abstract class AbstractOverlayForm :
 
     protected fun composeNote(element: Element) {
         val overlayTitle = englishResources.getString(overlay.title)
-        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary)
+        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary, countryOrSubdivisionCode)
         val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
             "In context of overlay \"$overlayTitle\""
         } else {

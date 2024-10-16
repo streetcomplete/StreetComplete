@@ -18,7 +18,7 @@ class AddRailwayCrossingBarrierTest {
         val node = node(tags = mapOf("plumps" to "didumps"))
         val mapData = TestMapDataWithGeometry(listOf(node))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(node))
+        assertEquals(false, questType.isApplicableTo(node,))
     }
 
     @Test fun `applicable to crossing`() {
@@ -26,22 +26,22 @@ class AddRailwayCrossingBarrierTest {
         val crossing2 = node(2, tags = mapOf("railway" to "level_crossing"))
         val mapData = TestMapDataWithGeometry(listOf(crossing, crossing2))
         assertEquals(2, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(crossing))
-        assertNull(questType.isApplicableTo(crossing2))
+        assertNull(questType.isApplicableTo(crossing,))
+        assertNull(questType.isApplicableTo(crossing2,))
     }
 
     @Test fun `not applicable to crossing with crossing barrier`() {
         val crossing = node(tags = mapOf("railway" to "level_crossing", "crossing:barrier" to "yes"))
         val mapData = TestMapDataWithGeometry(listOf(crossing))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(crossing))
+        assertEquals(false, questType.isApplicableTo(crossing,))
     }
 
     @Test fun `not applicable to crossing with crossing chicane`() {
         val crossing = node(tags = mapOf("railway" to "level_crossing", "crossing:chicane" to "yes"))
         val mapData = TestMapDataWithGeometry(listOf(crossing))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(crossing))
+        assertEquals(false, questType.isApplicableTo(crossing,))
     }
 
     @Test fun `not applicable to crossing with private road`() {

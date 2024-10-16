@@ -14,28 +14,28 @@ class CheckShopTypeTest {
 
     @Test fun `is applicable to vacant shop`() {
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("shop" to "vacant"), timestamp = 100)
+            node(tags = mapOf("shop" to "vacant"), timestamp = 100),
         ))
     }
 
     @Test fun `is applicable to disused shop`() {
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("disused:shop" to "yes"), timestamp = 100)
+            node(tags = mapOf("disused:shop" to "yes"), timestamp = 100),
         ))
     }
 
     @Test fun `is applicable to disused specific amenity`() {
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("disused:amenity" to "bar"), timestamp = 100)
+            node(tags = mapOf("disused:amenity" to "bar"), timestamp = 100),
         ))
     }
 
     @Test fun `is not applicable to other disused amenity`() {
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("disused:amenity" to "telephone"), timestamp = 100)
+            node(tags = mapOf("disused:amenity" to "telephone"), timestamp = 100),
         ))
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("disused:amenity" to "yes"), timestamp = 100)
+            node(tags = mapOf("disused:amenity" to "yes"), timestamp = 100),
         ))
     }
 
@@ -45,7 +45,7 @@ class CheckShopTypeTest {
             node(
                 tags = mapOf("disused:shop" to "yes", "shop" to "something new already"),
                 timestamp = 100
-            )
+            ),
         ))
     }
 
@@ -54,7 +54,7 @@ class CheckShopTypeTest {
             node(
                 tags = mapOf("disused:shop" to "yes", "shop" to "mall"),
                 timestamp = 100
-            )
+            ),
         ))
     }
 
@@ -63,7 +63,7 @@ class CheckShopTypeTest {
             node(
                 tags = mapOf("disused:shop" to "yes", "amenity" to "clothing_bank"),
                 timestamp = 100
-            )
+            ),
         ))
     }
 

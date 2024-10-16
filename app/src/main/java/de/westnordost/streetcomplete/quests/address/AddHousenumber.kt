@@ -132,7 +132,7 @@ class AddHousenumber : OsmElementQuestType<HouseNumberAnswer> {
         return buildings
     }
 
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (!buildingsWithMissingAddressFilter.matches(element)) false else null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

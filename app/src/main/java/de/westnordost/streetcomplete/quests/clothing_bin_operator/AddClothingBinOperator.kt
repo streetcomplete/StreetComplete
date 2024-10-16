@@ -34,7 +34,7 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { filter.matches(it) && it.tags.hasNoOtherRecyclingTags() }
 
-    override fun isApplicableTo(element: Element): Boolean =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean =
         filter.matches(element) && element.tags.hasNoOtherRecyclingTags()
 
     private fun Map<String, String>.hasNoOtherRecyclingTags(): Boolean =

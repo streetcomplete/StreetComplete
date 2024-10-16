@@ -31,7 +31,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(way)!!)
+        assertTrue(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `not applicable to road with cycleway=separate`() {
@@ -43,7 +43,7 @@ class AddCyclewayTest {
             val mapData = TestMapDataWithGeometry(listOf(way))
 
             assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-            assertFalse(questType.isApplicableTo(way)!!)
+            assertFalse(questType.isApplicableTo(way,)!!)
         }
     }
 
@@ -52,7 +52,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertFalse(questType.isApplicableTo(way)!!)
+        assertFalse(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `not applicable to road with cycleway that is not old enough`() {
@@ -63,7 +63,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertFalse(questType.isApplicableTo(way)!!)
+        assertFalse(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `applicable to road with cycleway that is old enough`() {
@@ -75,7 +75,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(way)!!)
+        assertTrue(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `not applicable to road with cycleway that is old enough but has unknown cycleway tagging`() {
@@ -87,7 +87,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertFalse(questType.isApplicableTo(way)!!)
+        assertFalse(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `applicable to road with cycleway that is tagged with an invalid value`() {
@@ -98,7 +98,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(way)!!)
+        assertTrue(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `not applicable to road with cycleway that is tagged with an unknown + invalid value`() {
@@ -110,7 +110,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertFalse(questType.isApplicableTo(way)!!)
+        assertFalse(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `applicable to road with ambiguous cycleway value`() {
@@ -121,7 +121,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(way)!!)
+        assertTrue(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `not applicable to road with ambiguous + unknown cycleway value`() {
@@ -133,7 +133,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertFalse(questType.isApplicableTo(way)!!)
+        assertFalse(questType.isApplicableTo(way,)!!)
     }
 
     @Test fun `applicable to road with ambiguous cycle lane not in Belgium`() {
@@ -148,7 +148,7 @@ class AddCyclewayTest {
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium
-        assertNull(questType.isApplicableTo(way))
+        assertNull(questType.isApplicableTo(way,))
     }
 
     @Test fun `unspecified cycle lane is not ambiguous in Belgium`() {
@@ -163,7 +163,7 @@ class AddCyclewayTest {
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium
-        assertNull(questType.isApplicableTo(way))
+        assertNull(questType.isApplicableTo(way,))
     }
 
     @Test
@@ -178,7 +178,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(residentialWayIn30Zone))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertFalse(questType.isApplicableTo(residentialWayIn30Zone)!!)
+        assertFalse(questType.isApplicableTo(residentialWayIn30Zone,)!!)
     }
 
     @Test
@@ -192,7 +192,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(residentialWayInBuiltUpAreaWithMaxspeed30))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(residentialWayInBuiltUpAreaWithMaxspeed30)!!)
+        assertTrue(questType.isApplicableTo(residentialWayInBuiltUpAreaWithMaxspeed30,)!!)
     }
 
     @Test
@@ -206,7 +206,7 @@ class AddCyclewayTest {
         val mapData = TestMapDataWithGeometry(listOf(residentialWayIn30Zone))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertFalse(questType.isApplicableTo(residentialWayIn30Zone)!!)
+        assertFalse(questType.isApplicableTo(residentialWayIn30Zone,)!!)
     }
 
     @Test
@@ -220,6 +220,6 @@ class AddCyclewayTest {
 
         // a residential way with maxspeed=30 and no other maxspeed tags is assumed to be in a max-speed 30 zone
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertFalse(questType.isApplicableTo(residentialWayWithMaxspeed30)!!)
+        assertFalse(questType.isApplicableTo(residentialWayWithMaxspeed30,)!!)
     }
 }

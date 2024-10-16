@@ -44,7 +44,7 @@ class BuildingsOverlayForm : AGroupedImageSelectOverlayForm<BuildingType>() {
         originalBuilding = createBuildingType(element!!.tags)
         selectedItem = originalBuilding?.asItem()
 
-        setTitleHintLabel(getNameAndLocationSpanned(element!!, resources, null, true))
+        setTitleHintLabel(getNameAndLocationSpanned(element!!, resources, null, null, true))
     }
 
     override fun hasChanges(): Boolean =

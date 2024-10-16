@@ -75,7 +75,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceAnswer> {
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter { it.tags.containsKey("entrance") }.asSequence()
 
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (!entrancesFilter.matches(element)) false else null
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {

@@ -59,7 +59,7 @@ class AddBarrierOpening(
             .filter { it.id in wayNodeIds && nodeFilter.matches(it) }
     }
 
-    override fun isApplicableTo(element: Element) =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) =
         if (nodeFilter.matches(element)) null else false
 
     override fun createForm() = AddWidthForm()

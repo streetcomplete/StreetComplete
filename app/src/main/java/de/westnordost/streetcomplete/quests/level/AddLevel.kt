@@ -104,7 +104,7 @@ class AddLevel : OsmElementQuestType<String> {
         return result
     }
 
-    override fun isApplicableTo(element: Element): Boolean? {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? {
         if (!filter.matches(element) || !element.isPlace()) return false
         // for shops with no level, we actually need to look at geometry in order to find if it is
         // contained within any multi-level mall

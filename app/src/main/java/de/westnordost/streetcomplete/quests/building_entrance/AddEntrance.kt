@@ -71,7 +71,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
         }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (!withoutEntranceFilter.matches(element) || element !is Node || !element.couldBeAnEntrance()) false else null
 
     override fun createForm() = AddEntranceForm()

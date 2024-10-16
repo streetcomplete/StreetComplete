@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -18,7 +19,7 @@ import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 class AddOpeningHours(
-    private val getFeature: (Element) -> Feature?
+    private val getFeature: (Element, LatLon?) -> Feature?
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
@@ -139,12 +140,15 @@ class AddOpeningHours(
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+        mapData.filter { element ->
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@filter false
+            isApplicableTo(element, geometry)
+        }
 
-    override fun isApplicableTo(element: Element): Boolean {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean {
         if (!filter.matches(element)) return false
         // only show places that can be named somehow
-        if (!hasName(element)) return false
+        if (!hasName(element, geometry.center)) return false
         // no opening_hours yet -> new survey
         val ohStr = element.tags["opening_hours"] ?: return true
         /* don't show if it was recently checked (actually already checked by filter, but it is a
@@ -183,10 +187,12 @@ class AddOpeningHours(
         tags.remove("opening_hours:covid19")
     }
 
-    private fun hasName(element: Element) = hasProperName(element.tags) || hasFeatureName(element)
+    private fun hasName(element: Element, position: LatLon) =
+        hasProperName(element.tags) || hasFeatureName(element, position)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
+    private fun hasFeatureName(element: Element, position: LatLon) =
+        getFeature(element, position)?.name != null
 }

@@ -202,103 +202,117 @@ class AddOpeningHoursTest {
     }
 
     @Test fun `isApplicableTo returns false for unknown places`() {
-        assertFalse(questType.isApplicableTo(node(
-            tags = mapOf("whatisthis" to "something")
-        )))
+        assertFalse(questType.isApplicableTo(
+            node(
+                tags = mapOf("whatisthis" to "something")
+            ),
+        ))
     }
 
     @Test fun `isApplicableTo returns true for known places`() {
-        assertTrue(questType.isApplicableTo(node(
-            tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
-        )))
+        assertTrue(questType.isApplicableTo(
+            node(
+                tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen")
+            ),
+        ))
     }
 
     @Test fun `isApplicableTo returns false for known places with recently edited opening hours`() {
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds())
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds()),
         ))
     }
 
     @Test fun `isApplicableTo returns true for known places with old opening hours`() {
         val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days)
+            node(tags = mapOf("shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days),
         ))
     }
 
     @Test fun `isApplicableTo returns false for closed shops with old opening hours`() {
         val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("nonexisting:shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days)
+            node(tags = mapOf("nonexisting:shop" to "sports", "name" to "Atze's Angelladen", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days),
         ))
     }
 
     @Test fun `isApplicableTo returns true for parks with old opening hours`() {
         val milisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
         assertTrue(questType.isApplicableTo(
-            node(tags = mapOf("leisure" to "park", "name" to "Trolololo", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days)
+            node(tags = mapOf("leisure" to "park", "name" to "Trolololo", "opening_hours" to "Mo-Fr 10:00-20:00"), timestamp = nowAsEpochMilliseconds() - milisecondsFor400Days),
         ))
     }
 
     @Test fun `isApplicableTo returns false for toilets without opening hours`() {
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("amenity" to "toilets"), timestamp = nowAsEpochMilliseconds())
+            node(tags = mapOf("amenity" to "toilets"), timestamp = nowAsEpochMilliseconds()),
         ))
     }
 
     @Test fun `isApplicableTo returns true if the opening hours cannot be parsed`() {
-        assertTrue(questType.isApplicableTo(node(
-            tags = mapOf(
-                "shop" to "supermarket",
-                "name" to "Supi",
-                "opening_hours" to "maybe open maybe closed who knows"
+        assertTrue(questType.isApplicableTo(
+            node(
+                tags = mapOf(
+                    "shop" to "supermarket",
+                    "name" to "Supi",
+                    "opening_hours" to "maybe open maybe closed who knows"
+                ),
+                timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
             ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
-        )))
+        ))
     }
 
     @Test fun `isApplicableTo returns true if the opening hours collide with themselves`() {
-        assertTrue(questType.isApplicableTo(node(
-            tags = mapOf(
-                "shop" to "supermarket",
-                "name" to "Supi",
-                "opening_hours" to "Mo-Fr 18:00-20:00; We 08:00-12:00"
+        assertTrue(questType.isApplicableTo(
+            node(
+                tags = mapOf(
+                    "shop" to "supermarket",
+                    "name" to "Supi",
+                    "opening_hours" to "Mo-Fr 18:00-20:00; We 08:00-12:00"
+                ),
+                timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
             ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
-        )))
+        ))
     }
 
     @Test fun `isApplicableTo returns false if the opening hours are not supported`() {
-        assertFalse(questType.isApplicableTo(node(
-            tags = mapOf(
-                "shop" to "supermarket",
-                "name" to "Supi",
-                "opening_hours" to "1998 Mo-Fr 18:00-20:00"
+        assertFalse(questType.isApplicableTo(
+            node(
+                tags = mapOf(
+                    "shop" to "supermarket",
+                    "name" to "Supi",
+                    "opening_hours" to "1998 Mo-Fr 18:00-20:00"
+                ),
+                timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
             ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
-        )))
+        ))
     }
 
     @Test fun `isApplicableTo returns false if the opening hours are not signed`() {
-        assertFalse(questType.isApplicableTo(node(
-            tags = mapOf(
-                "shop" to "supermarket",
-                "name" to "Supi",
-                "opening_hours:signed" to "no"
+        assertFalse(questType.isApplicableTo(
+            node(
+                tags = mapOf(
+                    "shop" to "supermarket",
+                    "name" to "Supi",
+                    "opening_hours:signed" to "no"
+                ),
+                timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
             ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
-        )))
+        ))
     }
 
     @Test fun `isApplicableTo returns false if the opening hours are not signed, even if there are actually some set`() {
-        assertFalse(questType.isApplicableTo(node(
-            tags = mapOf(
-                "shop" to "supermarket",
-                "name" to "Supi",
-                "opening_hours" to "24/7",
-                "opening_hours:signed" to "no"
+        assertFalse(questType.isApplicableTo(
+            node(
+                tags = mapOf(
+                    "shop" to "supermarket",
+                    "name" to "Supi",
+                    "opening_hours" to "24/7",
+                    "opening_hours:signed" to "no"
+                ),
+                timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
             ),
-            timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
-        )))
+        ))
     }
 }

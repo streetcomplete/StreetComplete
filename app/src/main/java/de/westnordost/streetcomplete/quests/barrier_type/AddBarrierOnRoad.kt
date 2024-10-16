@@ -38,7 +38,7 @@ class AddBarrierOnRoad : OsmElementQuestType<BarrierType> {
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         detectWayBarrierIntersection(mapData, barrierFilter, pathsFilter)
 
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (element !is Node || element.tags.isNotEmpty()) false else null
 
     override fun createForm() = AddBarrierTypeForm()

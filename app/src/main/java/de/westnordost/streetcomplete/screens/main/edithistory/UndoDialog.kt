@@ -11,6 +11,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
@@ -37,6 +38,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.databinding.DialogUndoBinding
 import de.westnordost.streetcomplete.quests.getTitle
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
+import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
@@ -49,6 +51,7 @@ class UndoDialog(
     private val edit: Edit,
     private val element: Element?,
     private val featureDictionaryLazy: Lazy<FeatureDictionary>,
+    private val countryBoundariesLazy: Lazy<CountryBoundaries>,
     private val onUndo: (edit: Edit) -> Unit,
 ) : AlertDialog(context) {
 
@@ -72,8 +75,9 @@ class UndoDialog(
         super.onCreate(savedInstanceState)
         binding.titleText.text = edit.getTitle()
         if (edit is ElementEdit) {
+            val country = countryBoundariesLazy.value.getIds(edit.position).firstOrNull()
             binding.titleHintText.text = element?.let {
-                getNameAndLocationSpanned(it, context.resources, featureDictionaryLazy.value)
+                getNameAndLocationSpanned(it, context.resources, featureDictionaryLazy.value, country)
             }
         }
     }

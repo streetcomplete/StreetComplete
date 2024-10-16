@@ -58,7 +58,7 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
     }
 
     // cannot be determined because of the associated street relations
-    override fun isApplicableTo(element: Element): Boolean? =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? =
         if (!filter.matches(element)) false else null
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =

@@ -40,7 +40,7 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
             }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? {
         // we don't want to show overly long things
         if (!tagFilter.matches(element)) return false
         return null

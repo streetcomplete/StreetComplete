@@ -72,7 +72,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean> {
         }
     }
 
-    override fun isApplicableTo(element: Element) = when {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry) = when {
         !filter.matches(element) -> false
         element.tags["summit:cross"] == "yes" || element.tags.containsKey("summit:register") -> true
         else -> null

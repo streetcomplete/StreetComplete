@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -15,7 +16,7 @@ import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateCheckDate
 
 class CheckShopExistence(
-    private val getFeature: (Element) -> Feature?
+    private val getFeature: (Element, LatLon?) -> Feature?
 ) : OsmElementQuestType<Unit> {
     // opening hours quest acts as a de facto checker of shop existence, but some people disabled it.
     // separate from CheckExistence as very old shop with opening hours should show
@@ -45,12 +46,15 @@ class CheckShopExistence(
     override fun getTitle(tags: Map<String, String>) = R.string.quest_existence_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+        mapData.filter { element ->
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@filter false
+            isApplicableTo(element, geometry)
+        }
 
-    override fun isApplicableTo(element: Element): Boolean =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean =
         filter.matches(element) &&
         element.isPlace() &&
-        hasName(element)
+        hasName(element, geometry.center)
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
@@ -61,10 +65,12 @@ class CheckShopExistence(
         tags.updateCheckDate()
     }
 
-    private fun hasName(element: Element) = hasProperName(element.tags) || hasFeatureName(element)
+    private fun hasName(element: Element, position: LatLon) =
+        hasProperName(element.tags) || hasFeatureName(element, position)
 
     private fun hasProperName(tags: Map<String, String>): Boolean =
         tags.containsKey("name") || tags.containsKey("brand")
 
-    private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
+    private fun hasFeatureName(element: Element, position: LatLon) =
+        getFeature(element, position)?.name != null
 }

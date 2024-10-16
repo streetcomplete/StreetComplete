@@ -87,7 +87,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
         super.onViewCreated(view, savedInstanceState)
 
         // title hint label with name is a duplication, it is displayed in the UI already
-        setTitleHintLabel(element?.let { getNameAndLocationSpanned(it, resources, null) })
+        setTitleHintLabel(element?.let { getNameAndLocationSpanned(it, resources, null, null) })
         setMarkerIcon(R.drawable.ic_quest_dot)
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)

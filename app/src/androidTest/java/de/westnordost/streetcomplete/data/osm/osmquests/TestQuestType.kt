@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 
 open class TestQuestType : OsmElementQuestType<String> {
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? = null
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
     override val icon = 0
     override fun createForm(): AbstractOsmQuestForm<String> = object : AbstractOsmQuestForm<String>() {}

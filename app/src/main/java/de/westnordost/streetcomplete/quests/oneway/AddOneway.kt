@@ -67,7 +67,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
         }
     }
 
-    override fun isApplicableTo(element: Element): Boolean? {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? {
         if (!isOnewayRoadCandidate(element)) return false
         /* return null because oneway candidate roads must also be connected on both ends with other
            roads for which we'd need to look at surrounding geometry */

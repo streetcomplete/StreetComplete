@@ -44,7 +44,7 @@ class AddRoofShape(
             )
         }
 
-    override fun isApplicableTo(element: Element): Boolean? {
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean? {
         if (!filter.matches(element)) return false
         /* if it has 0 roof levels, or the roof levels aren't specified,
            the quest should only be shown in certain countries. But whether

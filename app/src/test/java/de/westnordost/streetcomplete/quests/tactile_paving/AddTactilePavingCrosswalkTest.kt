@@ -14,14 +14,14 @@ class AddTactilePavingCrosswalkTest {
         val node = node(tags = mapOf("nub" to "dub"))
         val mapData = TestMapDataWithGeometry(listOf(node))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertEquals(false, questType.isApplicableTo(node))
+        assertEquals(false, questType.isApplicableTo(node,))
     }
 
     @Test fun `applicable to crossing`() {
         val crossing = node(tags = mapOf("highway" to "crossing"))
         val mapData = TestMapDataWithGeometry(listOf(crossing))
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(crossing))
+        assertNull(questType.isApplicableTo(crossing,))
     }
 
     @Test fun `not applicable to crossing with private road`() {
@@ -32,6 +32,6 @@ class AddTactilePavingCrosswalkTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(crossing, privateRoad))
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
-        assertNull(questType.isApplicableTo(crossing))
+        assertNull(questType.isApplicableTo(crossing,))
     }
 }

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.overlays.places
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -18,7 +19,7 @@ import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.view.presetIconIndex
 
-class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
+class PlacesOverlay(private val getFeature: (Element, LatLon?) -> Feature?) : Overlay {
 
     override val title = R.string.overlay_places
     override val icon = R.drawable.ic_quest_shop
@@ -37,7 +38,8 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
             .asSequence()
             .filter { it.isPlaceOrDisusedPlace() }
             .map { element ->
-                val feature = getFeature(element)
+                val position = mapData.getGeometry(element.type, element.id)?.center
+                val feature = getFeature(element, position)
 
                 val icon = feature?.icon?.let { presetIconIndex[it] } ?: R.drawable.ic_preset_maki_shop
                 val label = getNameLabel(element.tags)

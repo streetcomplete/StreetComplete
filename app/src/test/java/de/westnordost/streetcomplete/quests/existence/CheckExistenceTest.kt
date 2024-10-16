@@ -19,7 +19,7 @@ class CheckExistenceTest {
                     tags = mapOf(
                         "amenity" to "telephone",
                     ), timestamp = nowAsEpochMilliseconds()
-                )
+                ),
             )
         )
     }
@@ -32,7 +32,7 @@ class CheckExistenceTest {
                     tags = mapOf(
                         "amenity" to "telephone",
                     ), timestamp = nowAsEpochMilliseconds() - millisecondsFor800Days
-                )
+                ),
             )
         )
     }

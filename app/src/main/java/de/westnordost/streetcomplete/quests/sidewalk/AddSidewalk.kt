@@ -39,9 +39,12 @@ class AddSidewalk : OsmElementQuestType<LeftAndRightSidewalk> {
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
+        mapData.filter { element ->
+            val geometry = mapData.getGeometry(element.type, element.id) ?: return@filter false
+            isApplicableTo(element, geometry)
+        }
 
-    override fun isApplicableTo(element: Element): Boolean =
+    override fun isApplicableTo(element: Element, geometry: ElementGeometry): Boolean =
         roadsFilter.matches(element)
         && (untaggedRoadsFilter.matches(element) || element.hasInvalidOrIncompleteSidewalkTags())
 

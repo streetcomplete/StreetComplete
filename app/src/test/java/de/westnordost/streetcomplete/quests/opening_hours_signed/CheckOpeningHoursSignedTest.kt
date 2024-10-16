@@ -16,56 +16,70 @@ class CheckOpeningHoursSignedTest {
     private val questType = CheckOpeningHoursSigned(mock())
 
     @Test fun `is applicable to old place`() {
-        assertTrue(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(
-            "name" to "XYZ",
-            "opening_hours:signed" to "no"
-        ))))
+        assertTrue(questType.isApplicableTo(
+            node(timestamp = 0, tags = mapOf(
+                "name" to "XYZ",
+                "opening_hours:signed" to "no"
+            )),
+        ))
     }
 
     @Test fun `is not applicable to new place`() {
-        assertFalse(questType.isApplicableTo(node(tags = mapOf(
-            "name" to "XYZ",
-            "opening_hours:signed" to "no"
-        ))))
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf(
+                "name" to "XYZ",
+                "opening_hours:signed" to "no"
+            )),
+        ))
     }
 
     @Test fun `is applicable to place with old check_date`() {
-        assertTrue(questType.isApplicableTo(node(tags = mapOf(
-            "name" to "XYZ",
-            "check_date:opening_hours" to "2020-12-12",
-            "opening_hours:signed" to "no"
-        ))))
+        assertTrue(questType.isApplicableTo(
+            node(tags = mapOf(
+                "name" to "XYZ",
+                "check_date:opening_hours" to "2020-12-12",
+                "opening_hours:signed" to "no"
+            )),
+        ))
     }
 
     @Test fun `is not applicable to place with new check_date`() {
-        assertFalse(questType.isApplicableTo(node(tags = mapOf(
-            "name" to "XYZ",
-            "check_date:opening_hours" to nowAsCheckDateString(),
-            "opening_hours:signed" to "no"
-        ))))
+        assertFalse(questType.isApplicableTo(
+            node(tags = mapOf(
+                "name" to "XYZ",
+                "check_date:opening_hours" to nowAsCheckDateString(),
+                "opening_hours:signed" to "no"
+            )),
+        ))
     }
 
     @Test fun `is applicable to old place with existing opening hours via other means`() {
-        assertTrue(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(
-            "name" to "XYZ",
-            "opening_hours" to "24/7",
-            "opening_hours:signed" to "no"
-        ))))
+        assertTrue(questType.isApplicableTo(
+            node(timestamp = 0, tags = mapOf(
+                "name" to "XYZ",
+                "opening_hours" to "24/7",
+                "opening_hours:signed" to "no"
+            )),
+        ))
     }
 
     @Test fun `is not applicable to old place with signed hours`() {
-        assertFalse(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(
-            "name" to "XYZ",
-            "opening_hours:signed" to "yes"
-        ))))
+        assertFalse(questType.isApplicableTo(
+            node(timestamp = 0, tags = mapOf(
+                "name" to "XYZ",
+                "opening_hours:signed" to "yes"
+            )),
+        ))
     }
 
     @Test fun `is not applicable to old place with signed hours with hours specified`() {
-        assertFalse(questType.isApplicableTo(node(timestamp = 0, tags = mapOf(
-            "name" to "XYZ",
-            "opening_hours" to "Mo 10:00-12:00",
-            "opening_hours:signed" to "yes"
-        ))))
+        assertFalse(questType.isApplicableTo(
+            node(timestamp = 0, tags = mapOf(
+                "name" to "XYZ",
+                "opening_hours" to "Mo 10:00-12:00",
+                "opening_hours:signed" to "yes"
+            )),
+        ))
     }
 
     @Test fun `apply yes answer with no prior check date`() {

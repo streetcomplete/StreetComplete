@@ -82,7 +82,7 @@ class AddFootwayPartSurfaceTest {
         val mapData = TestMapDataWithGeometry(listOf(way))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
-        assertTrue(questType.isApplicableTo(way))
+        assertTrue(questType.isApplicableTo(way,))
     }
 
     @Test fun `apply asphalt surface`() {
@@ -110,10 +110,10 @@ class AddFootwayPartSurfaceTest {
     }
 
     private fun assertIsApplicable(vararg pairs: Pair<String, String>) {
-        assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
+        assertTrue(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs)),))
     }
 
     private fun assertIsNotApplicable(vararg pairs: Pair<String, String>) {
-        assertFalse(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs))))
+        assertFalse(questType.isApplicableTo(way(nodes = listOf(1, 2, 3), tags = mapOf(*pairs)),))
     }
 }
