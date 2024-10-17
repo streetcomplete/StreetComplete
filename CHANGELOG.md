@@ -3,7 +3,7 @@
 ## vNext
 
 - Bike parking type: Add "safe loops" as selectable option (#5774), by @mcliquid
-- Bike paths: Cycling on sidewalk is allowed in both directions selectable (#5888, #5931), by @wielandb
+- Bike paths: Add "cycling on sidewalk is allowed in both directions" as selectable option (#5888, #5931), by @wielandb
 - Bike paths overlay: Don't show the inner side of roundabouts etc. as missing, even if there's no data (#5959)
 - Things overlay: Mailboxes and street cabinets are now selectable (#4916, #5970)
 - Other small quest improvements, thanks @matkoniecz
