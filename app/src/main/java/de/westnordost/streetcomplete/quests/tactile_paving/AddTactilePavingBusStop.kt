@@ -20,8 +20,8 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
         and (
           !tactile_paving
           or tactile_paving = unknown
-          or tactile_paving = no and tactile_paving older today -4 years
-          or tactile_paving = yes and tactile_paving older today -8 years
+          or tactile_paving = no and tactile_paving older today -8 years
+          or tactile_paving = yes and tactile_paving older today -12 years
         )
     """
     override val changesetComment = "Specify whether public transport stops have tactile paving"
