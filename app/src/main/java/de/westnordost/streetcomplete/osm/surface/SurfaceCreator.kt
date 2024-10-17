@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
 /** Apply the surface and note to the given [tags], with optional [prefix], e.g. "footway" for
@@ -16,15 +15,9 @@ fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: 
     val key = "${pre}surface"
     val previousOsmValue = tags[key]
 
-    val shouldRemoveTracktype = prefix == null && isSurfaceAndTracktypeConflicting(osmValue, tags["tracktype"])
-    if (shouldRemoveTracktype) {
-        tags.remove("tracktype")
-        tags.removeCheckDatesForKey("tracktype")
-    }
-
-    // remove smoothness (etc) tags if surface was changed
-    // or surface can be treated as outdated
-    if ((previousOsmValue != null && previousOsmValue != osmValue) || shouldRemoveTracktype) {
+    // remove smoothness, tracktype (etc), i.e. tags that are (potentially) associated with a given
+    // surface type, as they can potentially be incorrect now that the surface changed (see #5951)
+    if (previousOsmValue != osmValue) {
         getKeysAssociatedWithSurface(pre).forEach { tags.remove(it) }
     }
 
