@@ -24,7 +24,8 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
           and (
             !kerb
             or kerb ~ yes|unknown
-            or kerb !~ no|rolled and kerb older today -8 years
+            or kerb = raised and kerb older today -8 years
+            or kerb !~ no|rolled and kerb older today -12 years
           )
     """.toElementFilterExpression() }
 

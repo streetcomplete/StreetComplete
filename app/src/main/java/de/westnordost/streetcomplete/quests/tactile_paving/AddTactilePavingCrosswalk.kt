@@ -22,8 +22,8 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
           and (
             !tactile_paving
             or tactile_paving = unknown
-            or tactile_paving ~ no|incorrect and tactile_paving older today -4 years
-            or tactile_paving = yes and tactile_paving older today -8 years
+            or tactile_paving ~ no|partial|incorrect and tactile_paving older today -8 years
+            or tactile_paving = yes and tactile_paving older today -12 years
           )
     """.toElementFilterExpression() }
 

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm
 
-import de.westnordost.streetcomplete.osm.cycleway.Direction
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
