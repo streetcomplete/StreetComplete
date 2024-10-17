@@ -228,6 +228,7 @@ recycling_container_undergr... CC0               https://commons.wikimedia.org/w
 sliding_envelope.wav           CC0               https://freesound.org/people/MTJohnson/sounds/444431/
 snip.wav                       CC0               https://freesound.org/people/Godowan/sounds/240473/
 
+surface_acrylic.jpg            CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tennis_Court_Phoenix.jpg (NWSPhoenix)
 surface_asphalt.jpg            Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
 surface_cobblestone.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bad_Radkersburg_Murgasse_IMG_0583.jpg (E.mil.mil)
 surface_compacted.jpg          CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Dirt_road_in_countryside.jpg (Ian Munroe)
@@ -245,8 +246,8 @@ surface_paved.jpg              CC0               https://www.goodfreephotos.com/
 surface_paving_stones.jpg      CC-BY-SA 4.0      Tobias Zwick with modifications by Mateusz Konieczny
 surface_rock.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Rock_Trail_Surface_at_Patapsco_Valley_State_Park.jpg
 surface_tennis_clay.jpg        CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Rafael_Nadal%2C_2011_Roland_Garros_(3).jpg (Yann Caradec)
-surface_artificial_turf.jpg    CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Meltingout.jpg
-surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:200_metres_track_running_start_line.jpg (Santeri Viinamäki)
+surface_artificial_turf.jpg    CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Artificial_turf.jpg
+surface_tartan.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:4_%C3%97_100_metres_relay_start_line.jpg (Santeri Viinamäki)
 surface_paved_area.jpg         CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-27_13_01_48_View_across_Parkway_Avenue_(Mercer_County_Route_634)_near_the_Delaware_and_Bound_Brook_Railroad_underpass,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
 surface_unpaved_area.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Art_earthwork_landscape_sculpture_Woodland_Trust_Theydon_Bois_Essex_08.JPG (Acabashi)
 surface_ground_area.jpg        CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bend_It_Like_Beckham_(3734770583).jpg (Danumurthi Mahendra)

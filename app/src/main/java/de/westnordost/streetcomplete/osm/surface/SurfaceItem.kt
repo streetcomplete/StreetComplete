@@ -48,7 +48,8 @@ val Surface.titleResId: Int get() = when (this) {
     ROCK -> R.string.quest_surface_value_rock
     CLAY -> R.string.quest_surface_value_clay
     ARTIFICIAL_TURF -> R.string.quest_surface_value_artificial_turf
-    TARTAN -> R.string.quest_surface_value_tartan
+    RUBBER, TARTAN -> R.string.quest_surface_value_rubber
+    ACRYLIC, HARD -> R.string.quest_surface_value_acrylic
     PAVED -> R.string.quest_surface_value_paved
     UNPAVED -> R.string.quest_surface_value_unpaved
     GROUND -> R.string.quest_surface_value_ground
@@ -78,7 +79,8 @@ val Surface.iconResId: Int get() = when (this) {
     ROCK -> R.drawable.surface_rock
     CLAY -> R.drawable.surface_tennis_clay
     ARTIFICIAL_TURF -> R.drawable.surface_artificial_turf
-    TARTAN -> R.drawable.surface_tartan
+    RUBBER, TARTAN -> R.drawable.surface_tartan
+    ACRYLIC, HARD -> R.drawable.surface_acrylic
     PAVED -> R.drawable.surface_paved_area
     UNPAVED -> R.drawable.surface_unpaved_area
     GROUND -> R.drawable.surface_ground_area

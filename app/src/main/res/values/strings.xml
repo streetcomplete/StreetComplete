@@ -1617,7 +1617,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_unhewn_cobblestone">Unhewn cobblestone</string>
     <string name="quest_surface_value_clay">Clay</string>
     <string name="quest_surface_value_artificial_turf">Artificial turf</string>
-    <string name="quest_surface_value_tartan">Tartan</string>
+    <string name="quest_surface_value_rubber">Rubber granules</string>
+    <string name="quest_surface_value_acrylic">Synthetic resin</string>
     <string name="quest_surface_detailed_answer_impossible">Multiple surfaces…</string>
     <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the “Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer.</string>
     <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example “sandy with patches of cobblestone”. The text length is limited to 255 characters.</string>
