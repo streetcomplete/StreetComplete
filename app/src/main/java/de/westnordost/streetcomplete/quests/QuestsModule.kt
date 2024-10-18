@@ -124,6 +124,7 @@ import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
 import de.westnordost.streetcomplete.quests.postbox_royal_cypher.AddPostboxRoyalCypher
+import de.westnordost.streetcomplete.quests.power_attachment.AddPowerAttachment
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
@@ -288,7 +289,8 @@ fun questTypeRegistry(
 
     26 to AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
     27 to AddReligionToWaysideShrine(),
-
+	
+    164 to AddPowerAttachment()
     28 to AddPowerPolesMaterial(),
 
     29 to AddIsBuildingUnderground(), // should be before AddHousenumber to avoid asking for underground buildings
