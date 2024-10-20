@@ -27,22 +27,15 @@ class AddProhibitedForPedestriansTest {
         )
     }
 
-    @Test fun `apply separate sidewalk answer`() {
-        assertEquals(
-            setOf(StringMapEntryAdd("sidewalk:both", "separate")),
-            questType.answerApplied(HAS_SEPARATE_SIDEWALK)
-        )
-    }
-
-    @Test fun `remove wrong sidewalk tagging`() {
+    @Test fun `apply actually sidewalk answer clears all sidewalk tagging`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("sidewalk:both", "yes", "separate"),
+                StringMapEntryDelete("sidewalk:both", "yes"),
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
                 StringMapEntryDelete("sidewalk", "both"),
             ),
-            questType.answerAppliedTo(HAS_SEPARATE_SIDEWALK, mapOf(
+            questType.answerAppliedTo(ACTUALLY_HAS_SIDEWALK, mapOf(
                 "sidewalk" to "both",
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "yes",
