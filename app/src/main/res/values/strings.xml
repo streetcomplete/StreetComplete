@@ -1015,8 +1015,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_cycleway_value_advisory_lane">advisory bicycle lane</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="quest_cycleway_value_separate">displayed separately on the map</string>
-    <string name="quest_cycleway_value_sidewalk2">shared-use path</string>
-    <string name="quest_cycleway_value_sidewalk_dual2">shared-use path, both directions</string>
+    <string name="quest_cycleway_value_sidewalk2">shared-use sidewalk</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">shared-use sidewalk, both directions</string>
     <string name="quest_cycleway_value_lane_dual">bicycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">sidepath or protected bicycle lane, both directions</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
