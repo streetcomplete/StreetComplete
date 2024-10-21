@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.quests.power_attachment
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.powerpoles_material.PowerAttachment.SUSPENSION
-import de.westnordost.streetcomplete.quests.powerpoles_material.PowerAttachment.ANCHOR
-import de.westnordost.streetcomplete.quests.powerpoles_material.PowerAttachment.PIN
+import de.westnordost.streetcomplete.quests.power_attachment.PowerAttachment.*
 import de.westnordost.streetcomplete.view.image_select.Item
 
 fun PowerAttachment.asItem() = Item(this, iconResId, titleResId)
