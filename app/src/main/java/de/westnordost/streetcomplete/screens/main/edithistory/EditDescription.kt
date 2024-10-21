@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
 
+/** Shows what an edit changed. */
 @Composable
 fun EditDescription(
     edit: Edit,
@@ -60,6 +61,7 @@ fun EditDescription(
     }
 }
 
+/** Shows a list of OSM tags in a bullet list */
 @Composable
 private fun TagList(
     tags: Map<String, String>,
@@ -71,6 +73,7 @@ private fun TagList(
     )
 }
 
+/** Shows a list of changes to OSM tags in a bullet list */
 @Composable
 private fun TagUpdatesList(
     changes: Collection<StringMapEntryChange>,
