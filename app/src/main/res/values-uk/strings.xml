@@ -1297,7 +1297,6 @@
 Заразом, деякі шари дозволяють додавати нові дані в позицію екранної хрестовини, наприклад шар адрес."</string>
     <string name="quest_crossing_kerb_height_title">"Яка висота бордюрів на цьому переході?"</string>
     <string name="quest_maxheight_sign_title">"Яке обмеження висоти вказане тут?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Яке обмеження висоти вказане під мостом?"</string>
     <string name="quest_leave_new_note_as_answer">"У цьому випадку треба залишити нотатку з поясненням ситуації."</string>
     <string name="quest_drinking_water_type_title2">"Чи є тут питна вода? Якщо є, яке її джерело?"</string>
     <string name="quest_is_amenity_inside_title">"Це всередині будівлі?"</string>

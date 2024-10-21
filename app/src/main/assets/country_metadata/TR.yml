@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Türkiye İş Bankası, Akbank, Ziraat Bankası, Yapı Kredi, Garanti Bankası, Denizbank, Halkbank, Vakıfbank, QNB Finansbank, TEB, ING, HSBC, İş Bankası, PTT, Şekerbank, Akbank ATM, Ziraat Bankası ATM, Kuveyt Türk, DenizBank, Vakıfbank ATM, Garanti, Deniz Bank, Ziraat, Garanti BBVA, Finansbank, Bankamatik, Halkbank ATM, İş Bankası ATM, Ziraat Bankasi, VakıfBank, Garanti Bankası ATM, VakifBank, Türkiye İş Bankası Bankamatik, ING Bank, Halk Bankası, AKBANK, Yapı Kredi Bankası, Yapı Kredi ATM, YapiKredi, Türkiye Finans, T.C. Ziraat Bankası, Shitcoins.club, Garanti BBVA ATM, AkBank, İş Bank, Ziraat Katılım, Yapi Kredi, Türkiye Bankasi, QNB Finansbank ATM, Ptt, Odeabank, Denizbank ATM, BBVA]
+atmOperators: [Türkiye İş Bankası, Akbank, Ziraat Bankası, Yapı Kredi, Garanti Bankası, Denizbank, Halkbank, QNB Finansbank, Vakıfbank, TEB, ING, HSBC, İş Bankası, PTT, Şekerbank, Akbank ATM, Ziraat Bankası ATM, Kuveyt Türk, DenizBank, Vakıfbank ATM, Garanti, Ziraat, Garanti BBVA, Deniz Bank, Finansbank, Bankamatik, Halkbank ATM, İş Bankası ATM, Ziraat Bankasi, VakıfBank, Garanti Bankası ATM, VakifBank, Türkiye İş Bankası Bankamatik, Halk Bankası, AKBANK, Yapı Kredi Bankası, Yapı Kredi ATM, YapiKredi, Türkiye Finans, ING Bank, T.C. Ziraat Bankası, Shitcoins.club, Garanti BBVA ATM, AkBank, İş Bank, Ziraat Katılım, Yapi Kredi, Türkiye Bankasi, QNB Finansbank ATM, Ptt, Odeabank, Denizbank ATM]
 chargingStationOperators: [SHARZ, ZES, Astor Enerji, VOLTRUN, 'Tesla, Inc.', Sharz, Eşarj, TOGG, EŞARJ, Renault, zes, Trugo, WAT Mobilite]
-clothesContainerOperators: [Maltepe Belediyesi, Ümraniye Belediyesi, Ortaca Belediyesi, Kızılay]
+clothesContainerOperators: [Maltepe Belediyesi, Ümraniye Belediyesi, Ortaca Belediyesi, Çerkezköy Belediyesi, Kızılay]
 defaultSpeedLimitHasUrbanOrRural: true
 hasLivingStreet: true
 livingStreetSignStyle: vienna

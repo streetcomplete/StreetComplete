@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en, international]
-atmOperators: [ICBC, 中国银行, 中国建设银行, 中国工商银行, 上海银行, 中国邮政储蓄银行, SPD Bank, 交通银行BCM ATM, 交通银行, 中国工商银行ICBC ATM, 中国农业银行, 上海浦东发展银行, 工商银行, 中国光大银行]
+atmOperators: [ICBC, 中国银行, 中国建设银行, 中国工商银行, 上海银行, 交通银行, 中国邮政储蓄银行, SPD Bank, 交通银行BCM ATM, 中国工商银行ICBC ATM, 中国农业银行, 上海浦东发展银行, 工商银行, 中国光大银行]
 chargingStationOperators: ['Tesla, Inc.', 上海依威能源科技有限公司]
 parcelLockerBrand: [丰巢]

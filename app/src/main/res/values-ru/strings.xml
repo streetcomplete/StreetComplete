@@ -1305,7 +1305,6 @@
  Кроме того, некоторые наложения позволяют добавлять новые данные в место отображаемого перекрестия, например адреса."</string>
     <string name="quest_crossing_kerb_height_title">"Какова высота бордюров на этом переходе?"</string>
     <string name="quest_maxheight_sign_title">"Какое ограничение по высоте здесь указано?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Какое ограничение по высоте указано под мостом?"</string>
     <string name="quest_leave_new_note_as_answer">"В этом случае вам нужно оставить заметку, в которой вы объясните ситуацию."</string>
     <string name="quest_drinking_water_type_title2">"Есть ли здесь питьевая вода? Если да, то каков её источник?"</string>
     <string name="quest_is_amenity_inside_title">"Это внутри здания?"</string>

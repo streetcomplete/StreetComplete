@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [مصرف الراجحي, البنك الأهلي السعودي, بنك الرياض, مصرف الإنماء, البنك السعودي البريطاني, البنك العربي الوطني, بنك البلاد, الراجحي, بنك الجزيرة, SABB, Al Rajhi Bank, صراف الراجحي, Bank Al-Bilad, بنك الراجحي, البنك السعودي للاستثمار, البنك السعودي الفرنسي, NCB, صراف الأهلي, البنك الأهلي التجاري, الأهلي, Bank AlJazira, Alahli NCB, Al Rajhi, مصرف الانماء, صراف العربي, صراف الرياض, سامبا, البنك العربي, البنك الاهلي, الإنماء, Alinma Bank, صرافة بنك الرياض, صراف ساب, صراف بنك الراجحي, صراف الجزيرة, صراف الاهلي, بنك الأهلي, البنك الاول, البنك الأول, الاهلي, Saudi Hollandi Bank, Samba, SAMBA, SAB, Riyadh Bank, Alrajhi Bank, Alinma ATM, Albilad, Alarabi Bank, Al Rayhi Bank, Al Rajhi ATM]
+atmOperators: [مصرف الراجحي, البنك الأهلي السعودي, بنك الرياض, مصرف الإنماء, البنك السعودي البريطاني, البنك العربي الوطني, بنك البلاد, الراجحي, بنك الجزيرة, Al Rajhi Bank, صراف الراجحي, SABB, Bank Al-Bilad, بنك الراجحي, البنك السعودي للاستثمار, البنك السعودي الفرنسي, صراف الأهلي, البنك الأهلي التجاري, الأهلي, NCB, Bank AlJazira, Alahli NCB, Al Rajhi, مصرف الانماء, صراف العربي, صراف الرياض, سامبا, البنك العربي, البنك الاهلي, الإنماء, Alinma Bank, صرافة بنك الرياض, صراف ساب, صراف بنك الراجحي, صراف الجزيرة, صراف الاهلي, بنك الأهلي, البنك الاول, البنك الأول, الاهلي, Saudi Hollandi Bank, Samba, SAMBA, SAB, Riyadh Bank, Alrajhi Bank, Alinma ATM, Albilad, Alarabi Bank, Al Rayhi Bank, Al Rajhi ATM]
 centerLineStyle: yellow
-chargingStationOperators: [Electromin Limited Company]
+chargingStationOperators: [Electromin]
 defaultSpeedLimitHasUrbanOrRural: true
 firstDayOfWorkweek: Su
 mobileCountryCode: 420

@@ -19,7 +19,10 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>() {
          and bicycle_parking !~ floor|informal
          and (
            !capacity
-           or bicycle_parking ~ stands|wall_loops and capacity older today -4 years
+           or (
+             bicycle_parking ~ stands|wall_loops|safe_loops|handlebar_holder
+             and capacity older today -4 years
+           )
          )
     """
     /* Bike capacity may change more often for stands and wheelbenders as adding or

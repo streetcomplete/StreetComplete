@@ -169,6 +169,10 @@ abstract class AbstractQuestForm :
         updateInfoButtonVisibility()
     }
 
+    protected fun setObjNote(text: CharSequence?) {
+        binding.noteLabel.text = text
+        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
+    }
     protected fun setHintImages(images: List<Drawable>) {
         binding.infoPictures.isGone = images.isEmpty()
         binding.infoPictures.removeAllViews()

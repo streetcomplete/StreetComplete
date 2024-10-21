@@ -70,7 +70,7 @@ private val IS_THING_EXPRESSION by lazy {
             "whirlpool",
 
             // public service
-            // "post_box", - blocked by https://github.com/streetcomplete/StreetComplete/issues/4916 - which is blocked by https://github.com/westnordost/osmfeatures/issues/23
+            "post_box",
 
             // facilities & others
             "baking_oven",
@@ -86,7 +86,7 @@ private val IS_THING_EXPRESSION by lazy {
             "give_box",
             "karaoke_box",
             "kitchen", // usually an amenity within campsites etc, i.e. like shower, toilets, ...
-            // "letter_box", - see "post_box", but also, it would be very spammy to comprehensively map this
+            // "letter_box", - it would be very spammy to comprehensively map this
             "library_dropoff",
             "locker",
             "lounger",
@@ -205,7 +205,7 @@ private val IS_THING_EXPRESSION by lazy {
             "planter",
             "snow_cannon",
             "stele",
-            // "street_cabinet", - blocked; see note at amenity=post_box, most are included by dedicated filter below
+            "street_cabinet",
             "surveillance",
             // "survey_point" - this can be very very small -> verifiability issue
             //                  danger that mapper deletes it because he can't find it
@@ -241,7 +241,6 @@ private val IS_THING_EXPRESSION by lazy {
         or attraction
         or boundary = marker
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
-        or man_made = street_cabinet and street_cabinet != postal_service
         or playground
         or public_transport = platform and (
           bus = yes
@@ -254,20 +253,19 @@ private val IS_THING_EXPRESSION by lazy {
 }
 
 val POPULAR_THING_FEATURE_IDS = listOf(
-    "natural/tree/broadleaved",    // 4.0 M
-    "highway/street_lamp",         // 4.0 M
-    "amenity/bench",               // 2.4 M
-    "emergency/fire_hydrant",      // 2.0 M
+    "natural/tree/broadleaved",    // 4.8 M
+    "highway/street_lamp",         // 4.3 M
+    "amenity/bench",               // 2.6 M
+    "emergency/fire_hydrant",      // 2.1 M
 
-    "amenity/waste_basket",        // 0.7 M
-    "amenity/bicycle_parking",     // 0.6 M
+    "amenity/waste_basket",        // 0.9 M
+    "amenity/bicycle_parking",     // 0.7 M
     "amenity/shelter",             // 0.5 M
 
     "amenity/recycling_container", // 0.4 M
     "amenity/toilets",             // 0.4 M
 
-    // "amenity/post_box",         // 0.4 M
-    // blocked by https://github.com/streetcomplete/StreetComplete/issues/4916
+    "amenity/post_box",            // 0.4 M
 
     // More:
 

@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Caixabank, Ibercaja, Caja Rural, Unicaja Banco, Santander, BanCaixa, Banco Santander, Caja Duero, BBVA, Shitcoins.club, ING, Caja España, Banco Sabadell, Unicaja, La Caixa, Caja Rural de Soria, BitBase, Bankia]
+atmOperators: [Caixabank, Unicaja Banco, Ibercaja, Caja Rural, Santander, BanCaixa, Banco Santander, Caja Duero, BBVA, Shitcoins.club, ING, Banco Sabadell, Unicaja, La Caixa, Caja Rural de Soria, Caja España, BitBase, Bankia]
 chargingStationOperators: [Iberdrola, Zunder, Repsol, Endesa, Wenea, 'Tesla, Inc.', Ionity, BMW, Iberdrola Clientes SAU, Feníe Energía, Senae Energy, IBIL, EDP, Parkmusa, Iberdrola SAU, Fenie Energía, Cargacoches, Bridgestone, BP, Acciona Energía, Acciona]
 clothesContainerOperators: [Porsiete, Cáritas, Fundación Lesmes, Caritas, Por Siete, Cáritas Diocesana]
 parcelLockerBrand: [Amazon Hub, Amazon Locker, InPost, Amazon]

@@ -1306,7 +1306,6 @@ Missing data is always shown in red."</string>
 Additionally, some overlays allow you to add new data at the position of a displayed crosshair, such as the addresses overlay."</string>
     <string name="quest_crossing_kerb_height_title">"What’s the height of the kerbs at this crossing?"</string>
     <string name="quest_maxheight_sign_title">"What height limit is indicated here?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"What height limit is indicated below the bridge?"</string>
     <string name="quest_leave_new_note_as_answer">"In this case, you need to leave a note in which you explain the situation."</string>
     <string name="quest_drinking_water_type_title2">"Is drinking water available here? If so, what is its source?"</string>
     <string name="quest_is_amenity_inside_title">"Is this inside a building?"</string>

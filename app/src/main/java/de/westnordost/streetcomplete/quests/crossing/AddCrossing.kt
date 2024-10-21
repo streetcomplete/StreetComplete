@@ -34,6 +34,11 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
     override val icon = R.drawable.ic_quest_pedestrian
     override val achievements = listOf(PEDESTRIAN)
 
+    override val hint =  R.string.quest_crossing_hint
+    override val hintImages = listOf(
+        R.drawable.informal_crossing,
+    )
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
@@ -70,7 +75,7 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
     override fun applyAnswerTo(answer: CrossingAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             YES -> tags["highway"] = "crossing"
-            NO -> tags["crossing"] = "informal"
+            INFORMAL -> tags["crossing"] = "informal"
             PROHIBITED -> tags["crossing"] = "no"
         }
     }

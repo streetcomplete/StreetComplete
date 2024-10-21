@@ -1301,7 +1301,6 @@ I dati sono evidenziati in colori differenti per dare un'idea generale di cosa �
 Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del bersaglio, come il livello \"Indirizzi\"."</string>
     <string name="quest_crossing_kerb_height_title">"Qual è l'altezza del cordolo a questo attraversamento?"</string>
     <string name="quest_maxheight_sign_title">"Quale limite di altezza è indicato qui?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Quale limite di altezza è indicato sotto questo ponte?"</string>
     <string name="quest_leave_new_note_as_answer">"In questo caso, devi lasciare una nota per spiegare la situazione."</string>
     <string name="quest_drinking_water_type_title2">"C'è dell'acqua potabile qui? Se sì, qual è la fonte?"</string>
     <string name="quest_is_amenity_inside_title">"È all'interno di un edificio?"</string>

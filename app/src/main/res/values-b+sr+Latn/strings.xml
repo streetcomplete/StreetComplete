@@ -1301,7 +1301,6 @@ Podaci koji nedostaju se uvek obeležavaju crvenom bojom."</string>
 Pored toga, neki slojevi na karti vam pružaju mogućnost dodavanja novih podataka na poziciji pokazivača, kao što to pruža sloj adresa."</string>
     <string name="quest_crossing_kerb_height_title">"Koliko je visok ivičnjak na ovom prelazu?"</string>
     <string name="quest_maxheight_sign_title">"Koja maksimalna visina je ovde navedena?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Koja maksimalna visina je navedena ispod mosta?"</string>
     <string name="quest_leave_new_note_as_answer">"U tom slučaju, treba da ostavite napomenu u kojoj objašnjavate situaciju."</string>
     <string name="quest_drinking_water_type_title2">"Da li ovde ima vode za piće? Ako ima, kakvog tipa je izvor?"</string>
     <string name="quest_is_amenity_inside_title">"Da li je unutar izgrađenog objekta?"</string>

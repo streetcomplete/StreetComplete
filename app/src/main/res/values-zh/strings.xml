@@ -1304,7 +1304,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 此外，有些叠加功能允许您在显示的十字线位置添加新数据，例如地址叠加。"</string>
     <string name="quest_crossing_kerb_height_title">"这个路口的路缘高度是多少？"</string>
     <string name="quest_maxheight_sign_title">"这里标示的高度限制是什么？"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"桥下方标示的高度限制是多少？"</string>
     <string name="quest_leave_new_note_as_answer">"在此情形下，您需要留下一条注记来说明情况。"</string>
     <string name="quest_drinking_water_type_title2">"这里有饮用水吗？如果有，其来源是什么？"</string>
     <string name="quest_is_amenity_inside_title">"这是在建筑物内部吗？"</string>

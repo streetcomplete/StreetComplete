@@ -28,7 +28,7 @@ class CheckOpeningHoursSigned(
           opening_hours:signed = no
           and (
             $hasOldOpeningHoursCheckDateFilter
-            or older today -1 years
+            or older today -2 years
           )
           and access !~ private|no
           and (
@@ -39,7 +39,7 @@ class CheckOpeningHoursSigned(
 
     private val hasOldOpeningHoursCheckDateFilter: String get() =
         getLastCheckDateKeys("opening_hours").joinToString("\nor ") {
-            "$it < today -1 years"
+            "$it < today -2 years"
         }
 
     override val changesetComment = "Survey whether opening hours are signed"

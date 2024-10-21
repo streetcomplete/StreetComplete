@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Bank of America, Santander, Citizens Bank, TD Bank, Chase, Cambridge Savings Bank, Florence Savings Bank, Shrewsbury Federal Credit Union, Rockland Trust, MIT Federal Credit Union, Eastern Bank, Digital Credit Union]
-chargingStationOperators: [ChargePoint, 'Tesla, Inc.', EVgo, Electrify America, Guardian Energy Management Solutions, Volta, Tesla Motors, National Grid, Blink, AmpUp, ABB]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', EVgo, Electrify America, Guardian Energy Management Solutions, Volta, National Grid, Blink, AmpUp, ABB]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Hub]

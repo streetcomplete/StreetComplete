@@ -1304,7 +1304,6 @@
 Акрамя таго, некаторыя накладкі дазваляюць дадаваць новыя даныя ў месцы паказанага крыжыка, напрыклад, накладанне адрасоў."</string>
     <string name="quest_crossing_kerb_height_title">"Якая вышыня бардзюраў у гэтым месцы?"</string>
     <string name="quest_maxheight_sign_title">"Якая мяжа вышыні тут пазначана?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Якое абмежаванне вышыні пазначана пад мостам?"</string>
     <string name="quest_leave_new_note_as_answer">"У гэтым выпадку трэба пакінуць нататку, у якой растлумачыць сітуацыю."</string>
     <string name="quest_drinking_water_type_title2">"Тут ёсць пітная вада? Калі так, то ў якім выглядзе?"</string>
     <string name="quest_is_amenity_inside_title">"Гэта ўнутры будынка?"</string>

@@ -35,8 +35,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 21
         targetSdk = 34
-        versionCode = 5905
-        versionName = "59.0"
+        versionCode = 5907
+        versionName = "59.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -105,7 +105,7 @@ repositories {
 dependencies {
     val mockitoVersion = "3.12.4"
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.2")
 
     // tests
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
@@ -129,14 +129,14 @@ dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.annotation:annotation:1.8.2")
-    implementation("androidx.fragment:fragment-ktx:1.8.3")
+    implementation("androidx.annotation:annotation:1.9.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.4")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2024.09.01")
+    val composeBom = platform("androidx.compose:compose-bom:2024.09.02")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
@@ -145,13 +145,13 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
-    implementation("androidx.navigation:navigation-compose:2.8.0")
+    implementation("androidx.navigation:navigation-compose:2.8.1")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.5")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
     // reorderable lists (raw Compose API is pretty complicated)
-    implementation("sh.calvin.reorderable:reorderable:2.4.0-beta01")
+    implementation("sh.calvin.reorderable:reorderable:2.4.0")
 
     // multiplatform webview (for login via OAuth)
     implementation("io.github.kevinnzou:compose-webview-multiplatform-android:1.9.20")
@@ -184,7 +184,7 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation("de.westnordost:countryboundaries:2.1")
     // finding a name for a feature without a name tag
-    implementation("de.westnordost:osmfeatures:6.1")
+    implementation("de.westnordost:osmfeatures:6.2")
 
     // widgets
     implementation("androidx.viewpager2:viewpager2:1.1.0")
@@ -197,12 +197,12 @@ dependencies {
     implementation("com.ionspin.kotlin:bignum:0.3.10")
 
     // serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("com.charleskorn.kaml:kaml:0.61.0")
-    implementation("io.github.pdvrieze.xmlutil:core:0.90.1")
+    implementation("io.github.pdvrieze.xmlutil:core:0.90.2")
 
     // map and location
-    implementation("org.maplibre.gl:android-sdk:11.4.0")
+    implementation("org.maplibre.gl:android-sdk:11.5.1")
 
     // opening hours parser
     implementation("de.westnordost:osm-opening-hours:0.1.0")
@@ -214,7 +214,7 @@ dependencies {
 /** Localizations that should be pulled from POEditor */
 val bcp47ExportLanguages = setOf(
     "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
-    "en", "en-AU", "en-GB", "eo", "es", "eu", "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
+    "en", "en-AU", "en-GB", "eo", "es", "es-AR", "eu", "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "lt", "lv", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
     "zh", "zh-CN", "zh-HK", "zh-TW"

@@ -1301,7 +1301,6 @@ Datele lipsă sunt mereu arătate cu roșu."</string>
 În plus, unele overlay-uri vă permit să adăugați date noi în poziția indicată, cum ar fi overlay-ul pentru adrese."</string>
     <string name="quest_crossing_kerb_height_title">"Care este înălțimea bordurilor trecerii?"</string>
     <string name="quest_maxheight_sign_title">"Ce limită de înălțime este indicată aici?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"Ce limită de înălțime este indicată sub pod?"</string>
     <string name="quest_leave_new_note_as_answer">"În acest caz trebuie să lăsați o notă în care explicați situația."</string>
     <string name="quest_drinking_water_type_title2">"Este apă potabilă disponibilă aici? Dacă da, care este sursa ei?"</string>
     <string name="quest_is_amenity_inside_title">"Este în interiorul unei clădiri?"</string>

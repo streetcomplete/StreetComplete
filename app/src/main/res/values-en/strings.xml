@@ -153,6 +153,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <string name="osm_element_gone_description">"Are you sure that it does not exist, not even at a slightly different location? If you’re not sure, leave a note instead.</string>
     <string name="osm_element_gone_confirmation">It does not exist</string>
     <string name="leave_note">Leave note</string>
+    <string name="note_for_object">Another person noted:</string>
 
     <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
     <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each part separately.\nSplit it now?</string>
@@ -838,8 +839,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
     <string name="quest_buildingLevels_hint">"For buildings on a slope, the level count starts from the ground level of the lowest side.
 
-A level counts as a roof level when its windows are in the roof. Subsequently, roofs with zero roof levels are not necessarily flat, just not tall enough for an entire level.
-    "</string>
+A level counts as a roof level when its windows are in the roof. Subsequently, roofs with zero roof levels are not necessarily flat, just not tall enough for an entire level."</string>
 
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
@@ -999,9 +999,10 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_crossing_kerb_height_title">What’s the height of the curbs at this crossing?</string>
 
     <string name="quest_crossing_title2">Is there a crossing here?</string>
-    <string name="quest_crossing_yes">Yes (e.g. the curb is lowered here or there are markings)</string>
-    <string name="quest_crossing_no">No, but crossing is possible</string>
+    <string name="quest_crossing_yes">Yes, intended as crossing</string>
+    <string name="quest_crossing_no">Not intended as crossing, still possible to cross (e.g. informal trails)</string>
     <string name="quest_crossing_prohibited">No, crossing is prohibited or impossible</string>
+    <string name="quest_crossing_hint">An informal trail crossing a road:</string>
 
     <string name="quest_cycleway_title2">"Is there a bicycle lane or path here? What type?"</string>
     <string name="quest_cycleway_resurvey_title">"Is this still the cycling situation here?"</string>
@@ -1145,9 +1146,8 @@ If any lanes are reserved for buses, please leave a note instead."</string>
     <string name="quest_maxheight_title">"What’s the height limit here?"</string>
     <string name="quest_maxheight_below_bridge_title">What’s the height limit below the bridge?</string>
     <string name="quest_maxheight_sign_title">"What height limit is indicated here?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">What height limit is indicated below the bridge?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
-    <string name="quest_maxheight_split_way_hint">If it doesn’t apply for the whole way, consider answering “%s”.</string>
+    <string name="quest_maxheight_split_way_hint">This question is also asked for roads that run under bridges, roofs, overhead pipes etc.\nAlso, if it doesn’t apply for the whole highlighted section, consider answering “%s”.</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
 
     <string name="quest_maxspeed_title_short2">"What’s the speed limit for this street?"</string>
@@ -1594,14 +1594,14 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
     <string name="quest_surface_value_ground">"Ground (generic)"</string>
     <string name="quest_surface_value_asphalt">"Asphalt"</string>
-    <string name="quest_surface_value_compacted">"Compacted"</string>
+    <string name="quest_surface_value_compacted">"Compacted gravel"</string>
     <string name="quest_surface_value_concrete">"Concrete"</string>
     <string name="quest_surface_value_dirt">"Dirt"</string>
     <string name="quest_surface_value_mud">"Persistent mud"</string>
     <string name="quest_surface_value_fine_gravel">"Fine gravel"</string>
     <string name="quest_surface_value_grass">"Grass"</string>
     <string name="quest_surface_value_grass_paver">"Grass paver"</string>
-    <string name="quest_surface_value_gravel">"Gravel"</string>
+    <string name="quest_surface_value_gravel">"Coarse gravel"</string>
     <string name="quest_surface_value_paving_stones">"Paving stones"</string>
     <string name="quest_surface_value_pebblestone">"Pebbles"</string>
     <string name="quest_surface_value_sand">"Sand"</string>

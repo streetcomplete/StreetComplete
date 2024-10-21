@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Otto, Nosto, Suomen Automatia Oy, Otto., Automatia Pankkiautomaatit Oy, Forex, OttoPlus, Osuuspankki, TalletusOtto, Loomis Automatia Oy, Nordea, Nokas CMS Oy, OTTO, Bittimaatti, atm, Otto-pankkiautomaatti, Otto-automaatti, Nosto-automaatti, Nokas, Loomis, Automatia, Aktia]
-chargingStationOperators: [VIRTA, Virta, Recharge, 'Tesla, Inc.', Ionity, Helen, Lidl, K-Lataus, Fortum Charge & Drive, Fortum, ABC, Asikkalan kunta, eParking, Recharge Finland Oy, Plugit, Liikennevirta Oy, KSSe, ABC Lataus, Motonet, HOK-Elanto, S-ryhmä, K-lataus, Kotkan energia, Helen Oy, Väre, PlugIt, Fortum Charge&Drive, k-lataus, Virtapiste, Virta Global Charging Station, Tokmanni, Tesla, Recharge Infra, Plugit Finland Oy, Lapland Hotels, Kymen Seudun Osuuskauppa, Korttelilataus, Juustoportti, Helsingin Energia, Charge&Drive, Alva, ABC-lataus, ABC latauspiste, ABB]
+atmOperators: [Otto, Nosto, Suomen Automatia Oy, Otto., Automatia Pankkiautomaatit Oy, Forex, OttoPlus, Osuuspankki, TalletusOtto, Loomis Automatia Oy, Nordea, Nokas CMS Oy, Automatia, OTTO, Bittimaatti, atm, Otto-pankkiautomaatti, Otto-automaatti, Nosto-automaatti, Nokas, Loomis, Aktia]
+chargingStationOperators: [VIRTA, Virta, Recharge, K-Lataus, 'Tesla, Inc.', Ionity, Helen, Lidl, Fortum Charge & Drive, ABC, Fortum, Asikkalan kunta, eParking, Recharge Finland Oy, Plugit, Liikennevirta Oy, KSSe, ABC Lataus, S-ryhmä, Motonet, K-lataus, HOK-Elanto, Kotkan energia, Helen Oy, Väre, Recharge Infra, PlugIt, Fortum Charge&Drive, Virtapiste, Virta Global Charging Station, Tokmanni, Tesla, Plugit Finland Oy, Lapland Hotels, Kymen Seudun Osuuskauppa, Korttelilataus, Juustoportti, Helsingin Energia, Charge&Drive, Alva, ABC-lataus, ABC latauspiste, ABB]
 clothesContainerOperators: [UFF, Rinki, HSY, Suomen Pakkauskierrätys RINKI Oy, Recci, Fida, Rinki-ekopiste, Rinki Oy, Suomen Pakkauskierrätys Rinki Oy, Rosk'n roll, Auringonnousu, Rinkiin, Pelastusarmeija, Emmy]
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white dashes
@@ -15,6 +15,6 @@ mobileCountryCode: 244
 noEntrySignStyle: yellow
 officialLanguages: [fi, sv]
 orchardProduces: [strawberry, apple, raspberry, blueberry, tomato, pear, chilli_pepper, sweet_pepper]
-parcelLockerBrand: [Smartpost, Postin automaatti, Posti, Budbee Box, Pakettipiste, Budbee, PostNord, iBoxen, Smartmile, Matkahuolto]
+parcelLockerBrand: [Smartpost, Posti, Postin automaatti, Budbee, Pakettipiste, Budbee Box, PostNord, iBoxen, Smartmile, Matkahuolto]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]
 postboxesHaveCollectionTimes: true

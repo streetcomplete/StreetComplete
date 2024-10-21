@@ -1,5 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Lloyds Bank, Barclays, NatWest, Tesco, Tesco Bank, Santander, Halifax, HSBC UK, Sainsbury's Bank, RBS, Cashzone, Nationwide, Cash Zone, TSB, CashZone, The Co-operative Bank, Post Office, Note Machine, Morrisons, Link, HSBC, Co-operative]
+atmOperators: [Lloyds Bank, Barclays, NatWest, Tesco, Tesco Bank, Santander, Halifax, HSBC UK, Sainsbury's Bank, Cash Zone, RBS, Cashzone, Nationwide, TSB, CashZone, The Co-operative Bank, Post Office, Note Machine, Morrisons, Link, HSBC, Co-operative]
 chargingStationOperators: [Pod Point, 'Tesla, Inc.', Osprey, Gridserve, Swarco, Osprey Charging, GeniePoint, InstaVolt, Clenergy, National Trust, Dragon Charging, Connected Kerb, BP Pulse, Instavolt, ChargePoint, Tesco, Swansea Council, Pembrokeshire County Council, Ensto, Ceredigion County Council, Cardiff Capital Region, ALDI]
+clothesContainerOperators: [Salvation Army]
 officialLanguages: [en, cy]
 parcelLockerBrand: [InPost, Amazon Locker, Amazon Hub]

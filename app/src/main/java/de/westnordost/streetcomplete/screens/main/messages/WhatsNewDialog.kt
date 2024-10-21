@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.messages
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -28,13 +27,11 @@ fun WhatsNewDialog(
         modifier = modifier,
         title = { Text(stringResource(R.string.title_whats_new)) },
         content = {
-            Divider()
             ChangelogList(
                 changelog = changelog,
                 paddingValues = PaddingValues(vertical = 16.dp),
                 modifier = Modifier.padding(horizontal = 24.dp)
             )
-            Divider()
         },
         buttons = {
             TextButton(onClick = onDismissRequest) {

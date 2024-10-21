@@ -1302,7 +1302,6 @@
 除此之外，有些套疊允許你在所在位置的十字符號加新資料，例如地址套疊。"</string>
     <string name="quest_crossing_kerb_height_title">"這個道路交叉口的路緣多高？"</string>
     <string name="quest_maxheight_sign_title">"這邊的高度限制是多少？"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"橋樑下的高度限制是多少？"</string>
     <string name="quest_leave_new_note_as_answer">"在這個狀況下，你需要留註解來解釋。"</string>
     <string name="quest_drinking_water_type_title2">"這裡有飲用水嗎？如果有的話，飲用水的來源是？"</string>
     <string name="quest_is_amenity_inside_title">"這在建築內嗎？"</string>

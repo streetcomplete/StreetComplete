@@ -1302,7 +1302,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
 또한 일부 오버레이를 사용하면 주소 오버레이와 같이 표시된 십자형 위치에 새 데이터를 추가할 수 있습니다."</string>
     <string name="quest_crossing_kerb_height_title">"이 횡단보도의 연석은 어느 정도 높이인가요?"</string>
     <string name="quest_maxheight_sign_title">"이곳에 나타난 높이 제한이 몇인가요?"</string>
-    <string name="quest_maxheight_sign_below_bridge_title">"이 교량의 높이 제한이 얼마인가요?"</string>
     <string name="quest_leave_new_note_as_answer">"이 경우 상황을 설명하는 메모를 남겨야 합니다."</string>
     <string name="quest_drinking_water_type_title2">"여기 마실 물이 있나요? 있다면 어떤 종류인가요?"</string>
     <string name="quest_is_amenity_inside_title">"이게 건물 안에 있나요?"</string>

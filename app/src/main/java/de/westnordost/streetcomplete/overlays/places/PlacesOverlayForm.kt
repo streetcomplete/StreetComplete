@@ -246,6 +246,9 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 }
 
+/** return the id of the feature, without any brand stuff */
+private val Feature.featureId get() = if (isSuggestion) id.substringBeforeLast("/") else id
+
 private suspend fun createEditAction(
     element: Element?,
     geometry: ElementGeometry,
@@ -259,24 +262,32 @@ private suspend fun createEditAction(
     val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
     val hasAddedNames = previousNames.isEmpty() && newNames.isNotEmpty()
-    val hasChangedNames = previousNames != newNames
+    var hasChangedNames = previousNames != newNames
     val hasChangedFeature = newFeature != previousFeature
+    val hasChangedFeatureType = previousFeature?.featureId != newFeature.featureId
     val isFeatureWithName = newFeature.addTags.get("name") != null
     val wasFeatureWithName = previousFeature?.addTags?.get("name") != null
     val wasVacant = element != null && element.isDisusedPlace()
     val isVacant = newFeature.id == "shop/vacant"
 
+    if (newFeature.isSuggestion) {
+        // selecting NSI preset will always return empty newNames, even if NSI does set new name=* tag
+        hasChangedNames = parseLocalizedNames(newFeature.addTags) != previousNames
+    }
+
     val shouldNotReplaceShop =
+        // if NSI added e.g. wikidata details, but neither names nor types changed (see #5940)
+        !hasChangedNames && !hasChangedFeatureType
         // only a name was added (name was missing before; user wouldn't be able to answer
         // if the place changed or not anyway, so rather keep previous information)
-        hasAddedNames && !hasChangedFeature
+        || hasAddedNames && !hasChangedFeature
         // previously: only the feature was changed, the non-empty name did not change
         // - see #5195
         // place has been added, nothing to replace
         || element == null
     val shouldAlwaysReplaceShop =
-        // the feature is or was a brand feature (i.e. overwrites the name)
-        isFeatureWithName || wasFeatureWithName
+        // the feature is or was a brand feature (i.e. overwrites the name) and the type has changed
+        (isFeatureWithName || wasFeatureWithName) && hasChangedFeatureType
         // was vacant before but not anymore (-> cleans up any previous tags that may be
         // associated with the old place)
         || wasVacant && hasChangedFeature

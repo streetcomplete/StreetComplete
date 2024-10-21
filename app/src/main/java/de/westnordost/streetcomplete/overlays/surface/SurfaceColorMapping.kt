@@ -61,7 +61,7 @@ val Surface.color get() = when (this) {
     UNKNOWN,
     PAVED, UNPAVED, // overriden in getColor of note is note is not present
     // not encountered in normal situations, get the same as surface with surface:note
-    CLAY, ARTIFICIAL_TURF, TARTAN
+    CLAY, ARTIFICIAL_TURF, TARTAN, RUBBER, ACRYLIC, HARD
                        -> Color.BLACK
 }
 
