@@ -60,11 +60,14 @@ class SurfaceCreatorKtTest {
         )
     }
 
-    @Test fun `don't remove tracktype when surface category didn't change`() {
+    @Test fun `don't remove tracktype when surface was added`() {
         assertEquals(
             setOf(StringMapEntryAdd("surface", "asphalt")),
             SurfaceAndNote(Surface.ASPHALT).appliedTo(mapOf("tracktype" to "grade5",))
         )
+    }
+
+    @Test fun `don't remove tracktype when surface category didn't change`() {
         assertEquals(
             setOf(StringMapEntryModify("surface", "concrete", "asphalt")),
             SurfaceAndNote(Surface.ASPHALT).appliedTo(mapOf(
