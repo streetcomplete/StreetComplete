@@ -18,11 +18,9 @@ fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: 
 
     if (previousOsmValue != null && previousOsmValue != osmValue) {
         // category of surface changed -> likely that tracktype is not correct anymore
-        if (parseSurfaceCategory(osmValue) != parseSurfaceCategory(previousOsmValue)) {
-            if (prefix == null) {
-                tags.remove("tracktype")
-                tags.removeCheckDatesForKey("tracktype")
-            }
+        if (prefix == null && parseSurfaceCategory(osmValue) != parseSurfaceCategory(previousOsmValue)) {
+            tags.remove("tracktype")
+            tags.removeCheckDatesForKey("tracktype")
         }
         // on change need to remove keys associated with (old) surface
         getKeysAssociatedWithSurface(pre).forEach { tags.remove(it) }
