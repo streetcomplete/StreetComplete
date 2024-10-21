@@ -364,7 +364,7 @@ fun MainScreen(
 
         if (intersection != null) {
             val (offset, angle) = intersection
-            val rotation = angle * 180 / PI - mapRotation
+            val rotation = angle * 180 / PI
             PointerPinButton(
                 onClick = onClickLocationPointer,
                 rotate = rotation.toFloat(),
