@@ -18,8 +18,6 @@ fun MessageDialog(
     allQuestIconIds: List<Int>,
     onDismissRequest: () -> Unit,
 ) {
-
-
     when (message) {
         is NewAchievementMessage -> {
             AchievementDialog(

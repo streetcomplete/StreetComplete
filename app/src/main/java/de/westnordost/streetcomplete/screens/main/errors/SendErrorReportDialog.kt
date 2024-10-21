@@ -7,6 +7,7 @@ import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 
+/** Dialog that asks user to send a crash report to the developer */
 @Composable
 fun SendErrorReportDialog(
     onDismissRequest: () -> Unit,
