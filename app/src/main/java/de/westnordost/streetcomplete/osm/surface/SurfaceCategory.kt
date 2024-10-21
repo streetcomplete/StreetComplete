@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.osm.surface
 
 import de.westnordost.streetcomplete.osm.surface.SurfaceCategory.*
 
-enum class SurfaceCategory
-{
+enum class SurfaceCategory {
     PAVED,
     UNPAVED,
     NATURAL,
