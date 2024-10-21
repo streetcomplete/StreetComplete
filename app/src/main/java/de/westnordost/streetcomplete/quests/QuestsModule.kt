@@ -290,7 +290,7 @@ fun questTypeRegistry(
     26 to AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
     27 to AddReligionToWaysideShrine(),
 	
-    164 to AddPowerAttachment()
+    172 to AddPowerAttachment(),
     28 to AddPowerPolesMaterial(),
 
     29 to AddIsBuildingUnderground(), // should be before AddHousenumber to avoid asking for underground buildings
