@@ -16,15 +16,15 @@ fun SurfaceAndNote.applyTo(tags: Tags, prefix: String? = null, updateCheckDate: 
     val key = "${pre}surface"
     val previousOsmValue = tags[key]
 
-    val shouldRemoveTracktype = prefix == null && isSurfaceAndTracktypeConflicting(osmValue, tags["tracktype"])
-    if (shouldRemoveTracktype) {
-        tags.remove("tracktype")
-        tags.removeCheckDatesForKey("tracktype")
-    }
-
-    // remove smoothness (etc) tags if surface was changed
-    // or surface can be treated as outdated
-    if ((previousOsmValue != null && previousOsmValue != osmValue) || shouldRemoveTracktype) {
+    if (previousOsmValue != null && previousOsmValue != osmValue) {
+        // category of surface changed -> likely that tracktype is not correct anymore
+        if (parseSurfaceCategory(osmValue) != parseSurfaceCategory(previousOsmValue)) {
+            if (prefix == null) {
+                tags.remove("tracktype")
+                tags.removeCheckDatesForKey("tracktype")
+            }
+        }
+        // on change need to remove keys associated with (old) surface
         getKeysAssociatedWithSurface(pre).forEach { tags.remove(it) }
     }
 
