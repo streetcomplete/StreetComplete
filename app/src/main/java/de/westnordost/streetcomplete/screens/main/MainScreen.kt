@@ -60,13 +60,13 @@ import de.westnordost.streetcomplete.screens.main.controls.UploadButton
 import de.westnordost.streetcomplete.screens.main.controls.findClosestIntersection
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
-import de.westnordost.streetcomplete.screens.main.errors.HandleLastCrash
-import de.westnordost.streetcomplete.screens.main.errors.HandleLastDownloadError
-import de.westnordost.streetcomplete.screens.main.errors.HandleLastUploadError
+import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
+import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
+import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
-import de.westnordost.streetcomplete.screens.main.urlconfig.HandleUrlConfig
+import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
@@ -415,20 +415,20 @@ fun MainScreen(
     }
 
     urlConfig?.let { config ->
-        HandleUrlConfig(
+        ApplyUrlConfigEffect(
             urlConfig = config.urlConfig,
             presetNameAlreadyExists = config.alreadyExists,
             onApplyUrlConfig = { viewModel.applyUrlConfig(it) }
         )
     }
     lastDownloadError?.let { error ->
-        HandleLastDownloadError(lastError = error, onReportError = ::sendErrorReport)
+        LastDownloadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
     }
     lastUploadError?.let { error ->
-        HandleLastUploadError(lastError = error, onReportError = ::sendErrorReport)
+        LastUploadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
     }
     lastCrashReport?.let { report ->
-        HandleLastCrash(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
+        LastCrashEffect(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
     }
 
 

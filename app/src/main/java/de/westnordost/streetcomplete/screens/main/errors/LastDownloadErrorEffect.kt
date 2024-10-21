@@ -12,50 +12,38 @@ import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
-import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.util.ktx.toast
 
 /** Depending on the type of error, either display or conditionally offer to report the last
- *  occurred error during upload */
+ *  occurred error during download */
 @Composable
-fun HandleLastUploadError(
+fun LastDownloadErrorEffect(
     lastError: Exception,
     onReportError: (error: Exception) -> Unit
 ) {
     val context = LocalContext.current
 
-    var showUploadErrorDialog by remember { mutableStateOf(false) }
-    var shownVersionBanned by remember { mutableStateOf<String?>(null) }
+    var showDownloadErrorDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(lastError) {
         when (lastError) {
-            is VersionBannedException -> {
-                shownVersionBanned = lastError.banReason
-            }
             is ConnectionException -> {
-                context.toast(R.string.upload_server_error, Toast.LENGTH_LONG)
+                context.toast(R.string.download_server_error, Toast.LENGTH_LONG)
             }
             is AuthorizationException -> {
                 context.toast(R.string.auth_error, Toast.LENGTH_LONG)
             }
             else -> {
-                showUploadErrorDialog = true
+                showDownloadErrorDialog = true
             }
         }
     }
 
-    if (shownVersionBanned != null) {
-        VersionBannedDialog(
-            onDismissRequest = { shownVersionBanned = null },
-            reason = shownVersionBanned
-        )
-    }
-
-    if (showUploadErrorDialog) {
+    if (showDownloadErrorDialog) {
         SendErrorReportDialog(
-            onDismissRequest = { showUploadErrorDialog = false },
+            onDismissRequest = { showDownloadErrorDialog = false },
             onConfirmed = { onReportError(lastError) },
-            title = stringResource(R.string.upload_error)
+            title = stringResource(R.string.download_error)
         )
     }
 }

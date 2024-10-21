@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
 
 /** Offer to apply the given url config */
 @Composable
-fun HandleUrlConfig(
+fun ApplyUrlConfigEffect(
     urlConfig: UrlConfig,
     presetNameAlreadyExists: Boolean,
     onApplyUrlConfig: (urlConfig: UrlConfig) -> Unit
