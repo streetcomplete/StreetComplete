@@ -527,7 +527,7 @@ class MainActivity :
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
-    //TODO put what bottom sheet is open in viewmodel?
+    //TODO #5799 put what bottom sheet is open in viewmodel?
     @AnyThread
     override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<QuestKey>) {
         lifecycleScope.launch {
@@ -594,7 +594,7 @@ class MainActivity :
 
     //region Location - Request location and update location status
 
-    // TODO could go into viewmodel?
+    // TODO #5799 could go into viewmodel?
     private fun updateLocationAvailability(isAvailable: Boolean) {
         if (isAvailable) {
             onLocationIsEnabled()
@@ -1028,7 +1028,7 @@ class MainActivity :
 
     //region Animation - Animation(s) for when a quest is solved
 
-    // TODO move plop animation to compose
+    // TODO #5799 move plop animation to compose
     private fun showQuestSolvedAnimation(iconResId: Int, position: LatLon) {
         val offset = binding.root.getLocationInWindow()
         val startPos = mapFragment?.getPointOf(position) ?: return
