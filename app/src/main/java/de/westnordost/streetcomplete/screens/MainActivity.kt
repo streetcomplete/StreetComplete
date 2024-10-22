@@ -162,6 +162,23 @@ class MainActivity :
         mainFragment?.setCameraPosition(pos, zoom)
     }
 
+    private fun handleGpxUri() {
+        if (intent.action !in listOf(Intent.ACTION_SEND, Intent.ACTION_VIEW)) return
+        if (intent.data != null) {
+            val data = intent.data!!
+            if (data.scheme != "content") return
+            if (intent.type in listOf("application/gpx+xml", "application/xml+gpx")
+                || (intent.type == "application/octet-stream" && data.path?.endsWith(".gpx") == true)
+            ) {
+                mainFragment?.importTrack(data)
+            }
+        } else if (intent.clipData != null) {
+            if (intent.type in listOf("application/gpx+xml", "application/xml+gpx")) {
+                mainFragment?.importTrack(intent.clipData!!.getItemAt(0).uri)
+            }
+        }
+    }
+
     public override fun onStart() {
         super.onStart()
 
@@ -290,6 +307,7 @@ class MainActivity :
 
     override fun onMapInitialized() {
         handleGeoUri()
+        handleGpxUri()
     }
 
     /* ------------------------------- TutorialFragment.Listener -------------------------------- */
