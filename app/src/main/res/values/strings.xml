@@ -1356,7 +1356,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_powerAttachment_title">How is this power line attached?</string>
     <string name="quest_powerAttachment_suspension">Supported from above</string>
     <string name="quest_powerAttachment_anchor">Fixed horizontally</string>
-    <string name="quest_powerAttachment_pin">Supported from under</string>
+    <string name="quest_powerAttachment_pin">Supported from below</string>
 
     <!-- I.e. which material. Pole as in "power pole" or "utility pole" -->
     <string name="quest_powerPolesMaterial_title">What’s this pole made of?</string>
