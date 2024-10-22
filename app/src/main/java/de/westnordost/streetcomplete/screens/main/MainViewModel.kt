@@ -60,6 +60,9 @@ abstract class MainViewModel : ViewModel() {
     abstract val isLoggedIn: StateFlow<Boolean>
     abstract val isConnected: Boolean
 
+    abstract val isRequestingLogin: StateFlow<Boolean>
+    abstract fun finishRequestingLogin()
+
     abstract fun upload()
     abstract fun download(bbox: BoundingBox)
 

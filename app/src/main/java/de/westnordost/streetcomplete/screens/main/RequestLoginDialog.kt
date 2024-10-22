@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 
+/** Shows a dialog that asks the user to login */
 @Composable
 fun RequestLoginDialog(
     onDismissRequest: () -> Unit,

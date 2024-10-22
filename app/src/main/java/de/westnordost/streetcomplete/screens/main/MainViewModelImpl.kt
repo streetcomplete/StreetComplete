@@ -7,8 +7,12 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.MessagesSource
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
+import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
@@ -61,6 +65,8 @@ class MainViewModelImpl(
     private val overlayRegistry: OverlayRegistry,
     private val messagesSource: MessagesSource,
     private val teamModeQuestFilter: TeamModeQuestFilter,
+    private val elementEditsSource: ElementEditsSource,
+    private val noteEditsSource: NoteEditsSource,
     private val prefs: Preferences,
 ) : MainViewModel() {
 
@@ -172,7 +178,6 @@ class MainViewModelImpl(
     /* team mode */
 
     override val isTeamMode = MutableStateFlow(teamModeQuestFilter.isEnabled)
-
     override var teamModeChanged: Boolean = false
     override val indexInTeam = MutableStateFlow(teamModeQuestFilter.indexInTeam)
 
@@ -253,8 +258,45 @@ class MainViewModelImpl(
     override val isConnected: Boolean get() = internetConnectionState.isConnected
 
     override fun upload() {
-        uploadController.upload(isUserInitiated = true)
+        if (isLoggedIn.value) {
+            uploadController.upload(isUserInitiated = true)
+        } else {
+            isRequestingLogin.value = true
+        }
     }
+
+    private val elementEditsListener = object : ElementEditsSource.Listener {
+        override fun onAddedEdit(edit: ElementEdit) { launch { ensureLoggedIn() } }
+        override fun onSyncedEdit(edit: ElementEdit) {}
+        override fun onDeletedEdits(edits: List<ElementEdit>) {}
+    }
+
+    private val noteEditsListener = object : NoteEditsSource.Listener {
+        override fun onAddedEdit(edit: NoteEdit) { launch { ensureLoggedIn() } }
+        override fun onSyncedEdit(edit: NoteEdit) {}
+        override fun onDeletedEdits(edits: List<NoteEdit>) {}
+    }
+
+    private suspend fun ensureLoggedIn() {
+        if (
+            internetConnectionState.isConnected &&
+            !userLoginSource.isLoggedIn &&
+            prefs.autosync != Autosync.OFF &&
+            // new users should not be immediately pestered to login after each change (#1446)
+            unsyncedChangesCountSource.getCount() >= 3 &&
+            !alreadyRequestedLogin
+        ) {
+            isRequestingLogin.value = true
+            alreadyRequestedLogin = true
+        }
+    }
+
+    override val isRequestingLogin = MutableStateFlow(false)
+    override fun finishRequestingLogin() {
+        isRequestingLogin.value = false
+    }
+
+    private var alreadyRequestedLogin = false
 
     /* stars */
 
@@ -341,9 +383,13 @@ class MainViewModelImpl(
             lastCrashReport.value = crashReportExceptionHandler.popCrashReport()
         }
         teamModeQuestFilter.addListener(teamModeListener)
+        elementEditsSource.addListener(elementEditsListener)
+        noteEditsSource.addListener(noteEditsListener)
     }
 
     override fun onCleared() {
         teamModeQuestFilter.removeListener(teamModeListener)
+        elementEditsSource.removeListener(elementEditsListener)
+        noteEditsSource.removeListener(noteEditsListener)
     }
 }

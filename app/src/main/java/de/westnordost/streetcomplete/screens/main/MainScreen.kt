@@ -99,7 +99,6 @@ fun MainScreen(
     onClickCreate: () -> Unit,
     onClickStopTrackRecording: () -> Unit,
     onClickDownload: () -> Unit,
-    onClickUpload: () -> Unit,
     onExplainedNeedForLocationPermission: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -140,12 +139,13 @@ fun MainScreen(
     val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
     val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
 
+    val isRequestingLogin by viewModel.isRequestingLogin.collectAsState()
+
     var showOverlaysDropdown by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
     var showIntroTutorial by remember { mutableStateOf(false) }
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
-    var showLoginDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     val showEditHistorySidebar by editHistoryViewModel.isShowingSidebar.collectAsState()
 
@@ -163,6 +163,14 @@ fun MainScreen(
     fun onClickMessages() {
         coroutineScope.launch {
             shownMessage = viewModel.popMessage()
+        }
+    }
+
+    fun onClickUpload() {
+        if (viewModel.isConnected) {
+            viewModel.upload()
+        } else {
+            context.toast(R.string.offline)
         }
     }
 
@@ -249,7 +257,7 @@ fun MainScreen(
                     }
                     if (!isAutoSync) {
                         UploadButton(
-                            onClick = onClickUpload,
+                            onClick = ::onClickUpload,
                             unsyncedEditsCount = unsyncedEditsCount,
                             enabled = !isUploadingOrDownloading
                         )
@@ -372,7 +380,6 @@ fun MainScreen(
             ) { Image(painterResource(R.drawable.location_dot_small), null) }
         }
 
-
         val dir = LocalLayoutDirection.current.dir
         AnimatedVisibility(
             visible = showEditHistorySidebar,
@@ -431,10 +438,9 @@ fun MainScreen(
         LastCrashEffect(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
     }
 
-
-    if (showLoginDialog) {
+    if (isRequestingLogin) {
         RequestLoginDialog(
-            onDismissRequest = { showLoginDialog = false },
+            onDismissRequest = { viewModel.finishRequestingLogin() },
             onConfirmed = {
                 val intent = Intent(context, UserActivity::class.java)
                 intent.putExtra(UserActivity.EXTRA_LAUNCH_AUTH, true)
@@ -442,7 +448,6 @@ fun MainScreen(
             }
         )
     }
-
 
     AnimatedScreenVisibility(showTeamModeWizard) {
         val questIcons = remember { viewModel.questTypes.map { it.icon } }

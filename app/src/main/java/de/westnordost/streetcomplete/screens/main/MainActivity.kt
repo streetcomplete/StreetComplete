@@ -37,12 +37,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
@@ -54,8 +51,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsHiddenSource
@@ -67,7 +62,6 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
-import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
@@ -115,7 +109,6 @@ import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
-import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -164,10 +157,6 @@ class MainActivity :
 {
     private val questAutoSyncer: QuestAutoSyncer by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
-    private val elementEditsSource: ElementEditsSource by inject()
-    private val noteEditsSource: NoteEditsSource by inject()
-    private val unsyncedChangesCountSource: UnsyncedChangesCountSource by inject()
-    private val userLoginSource: UserLoginSource by inject()
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
@@ -207,17 +196,6 @@ class MainActivity :
         }
     }
 
-    private val elementEditsListener = object : ElementEditsSource.Listener {
-        override fun onAddedEdit(edit: ElementEdit) { lifecycleScope.launch { ensureLoggedIn() } }
-        override fun onSyncedEdit(edit: ElementEdit) {}
-        override fun onDeletedEdits(edits: List<ElementEdit>) {}
-    }
-
-    private val noteEditsListener = object : NoteEditsSource.Listener {
-        override fun onAddedEdit(edit: NoteEdit) { lifecycleScope.launch { ensureLoggedIn() } }
-        override fun onSyncedEdit(edit: NoteEdit) {}
-        override fun onDeletedEdits(edits: List<NoteEdit>) {}
-    }
 
     //region Lifecycle - Android Lifecycle Callbacks
 
@@ -233,9 +211,6 @@ class MainActivity :
         supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
 
         lifecycle.addObserver(questAutoSyncer)
-
-        elementEditsSource.addListener(elementEditsListener)
-        noteEditsSource.addListener(noteEditsListener)
 
         locationManager = FineLocationManager(this, this::onLocationChanged)
 
@@ -260,7 +235,6 @@ class MainActivity :
                 onClickCreate = ::onClickCreateButton,
                 onClickStopTrackRecording = ::onClickTracksStop,
                 onClickDownload = ::onClickDownload,
-                onClickUpload = ::onClickUploadButton,
                 onExplainedNeedForLocationPermission = ::requestLocation
             )
         }
@@ -329,26 +303,8 @@ class MainActivity :
         locationManager.removeUpdates()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        elementEditsSource.removeListener(elementEditsListener)
-        noteEditsSource.removeListener(noteEditsListener)
-    }
-
     //endregion
 
-
-    // TODO move to viewmodel
-    private suspend fun ensureLoggedIn() {
-        if (!questAutoSyncer.isAllowedByPreference) return
-        if (userLoginSource.isLoggedIn) return
-
-        // new users should not be immediately pestered to login after each change (#1446)
-        if (unsyncedChangesCountSource.getCount() < 3 || dontShowRequestAuthorizationAgain) return
-
-        RequestLoginDialog(this).show()
-        dontShowRequestAuthorizationAgain = true
-    }
 
     /* ------------------------------- Preferences listeners ------------------------------------ */
 
@@ -713,18 +669,6 @@ class MainActivity :
         composeNote(pos, true)
     }
 
-    private fun onClickUploadButton() {
-        if (controlsViewModel.isConnected) {
-            if (controlsViewModel.isLoggedIn.value) {
-                controlsViewModel.upload()
-            } else {
-                let { RequestLoginDialog(it).show() }
-            }
-        } else {
-            toast(R.string.offline)
-        }
-    }
-
     private fun onClickCompassButton() {
         // Clicking the compass button will always rotate the map back to north and remove tilt
         val mapFragment = mapFragment ?: return
@@ -1069,7 +1013,7 @@ class MainActivity :
         return f is IsShowingQuestDetails && f.questKey == questKey
     }
 
-    private fun getCrosshairPoint(): PointF? {
+    private fun getCrosshairPoint(): PointF {
         val view = binding.root
         val left = resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset)
         val right = resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset)
@@ -1133,8 +1077,5 @@ class MainActivity :
         private const val BOTTOM_SHEET = "bottom_sheet"
 
         private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
-
-        // per application start settings
-        private var dontShowRequestAuthorizationAgain = false
     }
 }
