@@ -35,7 +35,7 @@ class AddRoadSurface : OsmFilterQuestType<Surface>() {
           or surface ~ ${UNPAVED_SURFACES.joinToString("|")} and surface older today -6 years
           or surface older today -12 years
           ${INVALID_SURFACES_FOR_TRACKTYPES.entries.joinToString("\n") { (tracktype, surfaces) ->
-              "or tracktype = $tracktype and surface ~ ${surfaces.joinToString("|")} "
+              "or tracktype = $tracktype and surface ~ ${surfaces.joinToString("|")}"
           }}
         )
         and (access !~ private|no or (foot and foot !~ private|no))
