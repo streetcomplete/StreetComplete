@@ -48,7 +48,7 @@ class AddRoadSurfaceTest {
         )
     }
 
-    @Test fun `not applicable to generic surface with check date`() {
+    @Test fun `not applicable to generic surface with recent check date`() {
         assertIsNotApplicable(
             "highway" to "residential",
             "surface" to "unpaved",
