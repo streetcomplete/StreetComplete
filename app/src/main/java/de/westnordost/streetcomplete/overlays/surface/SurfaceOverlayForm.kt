@@ -54,17 +54,17 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     private var selectedSurface: Surface? = null
         set(value) {
             field = value
-            updatedSelectedCell(binding.main, value)
+            updateSelectedCell(binding.main, value)
         }
     private var selectedFootwaySurface: Surface? = null
         set(value) {
             field = value
-            updatedSelectedCell(binding.footway, value)
+            updateSelectedCell(binding.footway, value)
         }
     private var selectedCyclewaySurface: Surface? = null
         set(value) {
             field = value
-            updatedSelectedCell(binding.cycleway, value)
+            updateSelectedCell(binding.cycleway, value)
         }
 
     private val cellLayoutId: Int = R.layout.cell_labeled_image_select
@@ -104,7 +104,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     }
 
 
-    private fun updatedSelectedCell(cellBinding: ViewImageSelectBinding, item: Surface?) {
+    private fun updateSelectedCell(cellBinding: ViewImageSelectBinding, item: Surface?) {
         cellBinding.selectTextView.isGone = item != null
         cellBinding.selectedCellView.isGone = item == null
         if (item != null) {
