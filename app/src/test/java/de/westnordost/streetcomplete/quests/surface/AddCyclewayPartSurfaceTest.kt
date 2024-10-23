@@ -44,6 +44,10 @@ class AddCyclewayPartSurfaceTest {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "sidewalk" to "yes")
     }
 
+    @Test fun `applicable to cycleway with invalid surface`() {
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "cobblestone")
+    }
+
     @Test fun `applicable to cycleway with unspecific surface without note`() {
         assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved")
         assertIsApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes", "cycleway:surface" to "unpaved")

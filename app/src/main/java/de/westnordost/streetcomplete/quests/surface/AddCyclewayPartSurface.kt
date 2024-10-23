@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
@@ -22,6 +23,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<Surface>() {
         and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
         and (
           !cycleway:surface
+          or cycleway:surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
             cycleway:surface ~ paved|unpaved
             and !cycleway:surface:note
