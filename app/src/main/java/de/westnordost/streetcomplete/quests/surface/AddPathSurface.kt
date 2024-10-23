@@ -22,16 +22,17 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
         and (!indoor or indoor = no)
         and (
           !surface
-          or surface older today -8 years
+          or surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
-            surface ~ paved|unpaved|${INVALID_SURFACES.joinToString("|")}
+            surface ~ paved|unpaved
             and !surface:note
             and !note:surface
+            and !check_date:surface
           )
+          or surface older today -8 years
         )
         and ~path|footway|cycleway|bridleway !~ link
     """
-    // ~paved ways are less likely to change the surface type
 
     override val changesetComment = "Specify path surfaces"
     override val wikiLink = "Key:surface"
