@@ -1,183 +1,51 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
-import android.content.Context
-import android.os.Bundle
-import android.text.Html
-import android.text.format.DateUtils
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
-import de.westnordost.streetcomplete.data.edithistory.icon
-import de.westnordost.streetcomplete.data.edithistory.overlayIcon
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
-import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeFromVertexAction
-import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
-import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
-import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.databinding.DialogUndoBinding
-import de.westnordost.streetcomplete.quests.getTitle
-import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import de.westnordost.streetcomplete.view.CharSequenceText
-import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.Text
-import de.westnordost.streetcomplete.view.setHtml
-import de.westnordost.streetcomplete.view.setText
+import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 
-class UndoDialog(
-    context: Context,
-    private val edit: Edit,
-    private val element: Element?,
-    private val featureDictionaryLazy: Lazy<FeatureDictionary>,
-    private val onUndo: (edit: Edit) -> Unit,
-) : AlertDialog(context) {
-
-    private val binding = DialogUndoBinding.inflate(LayoutInflater.from(context))
-
-    init {
-        binding.icon.setImageResource(edit.icon)
-        val overlayResId = edit.overlayIcon
-        if (overlayResId != 0) binding.overlayIcon.setImageResource(overlayResId)
-        binding.createdTimeText.text =
-            DateUtils.getRelativeTimeSpanString(edit.createdTimestamp, nowAsEpochMilliseconds(), DateUtils.MINUTE_IN_MILLIS)
-        binding.descriptionContainer.addView(edit.descriptionView)
-
-        setTitle(R.string.undo_confirm_title2)
-        setView(binding.root)
-        setButton(BUTTON_POSITIVE, context.getText(R.string.undo_confirm_positive), null) { _, _ -> onUndo(edit) }
-        setButton(BUTTON_NEGATIVE, context.getText(R.string.undo_confirm_negative), null, null)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding.titleText.text = edit.getTitle()
-        if (edit is ElementEdit) {
-            binding.titleHintText.text = element?.let {
-                getNameAndLocationSpanned(it, context.resources, featureDictionaryLazy.value)
+/** Confirmation dialog for undoing an edit. Shows details about an edit */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun UndoDialog(
+    edit: Edit,
+    element: Element?,
+    featureDictionaryLazy: Lazy<FeatureDictionary>,
+    onDismissRequest: () -> Unit,
+    onConfirmed: () -> Unit,
+) {
+    ScrollableAlertDialog(
+        onDismissRequest = onDismissRequest,
+        title = { Text(stringResource(R.string.undo_confirm_title2)) },
+        content = {
+            Box(Modifier
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 24.dp, vertical = 16.dp)
+            ) {
+                EditDetails(edit, element, featureDictionaryLazy)
             }
-        }
-    }
-
-    private fun Edit.getTitle(): CharSequence = when (this) {
-        is ElementEdit -> {
-            if (type is QuestType) {
-                context.resources.getString(type.getTitle(element?.tags.orEmpty()))
-            } else {
-                context.resources.getText(type.title)
+        },
+        buttons = {
+            TextButton(onClick = onDismissRequest) {
+                Text(stringResource(R.string.undo_confirm_negative))
             }
-        }
-        is NoteEdit -> {
-            context.resources.getText(when (action) {
-                CREATE -> R.string.created_note_action_title
-                COMMENT -> R.string.commented_note_action_title
-            })
-        }
-        is OsmQuestHidden -> {
-            context.resources.getString(questType.getTitle(element?.tags.orEmpty()))
-        }
-        is OsmNoteQuestHidden -> {
-            context.resources.getText(R.string.quest_noteDiscussion_title)
-        }
-        else -> throw IllegalArgumentException()
-    }
-
-    private val Edit.descriptionView: View get() = when (this) {
-        is ElementEdit -> {
-            when (action) {
-                is UpdateElementTagsAction ->
-                    createListOfTagUpdates(action.changes.changes)
-                is DeletePoiNodeAction ->
-                    createTextView(ResText(R.string.deleted_poi_action_description))
-                is SplitWayAction ->
-                    createTextView(ResText(R.string.split_way_action_description))
-                is CreateNodeAction ->
-                    createCreateNodeDescriptionView(action.tags)
-                is CreateNodeFromVertexAction ->
-                    createListOfTagUpdates(action.changes.changes)
-                is MoveNodeAction ->
-                    createTextView(ResText(R.string.move_node_action_description))
-                else -> throw IllegalArgumentException()
+            TextButton(onClick = { onConfirmed(); onDismissRequest() }) {
+                Text(stringResource(R.string.undo_confirm_positive))
             }
-        }
-        is NoteEdit -> createTextView(text?.let { CharSequenceText(it) })
-        is OsmQuestHidden -> createTextView(ResText(R.string.hid_action_description))
-        is OsmNoteQuestHidden -> createTextView(ResText(R.string.hid_action_description))
-        else -> throw IllegalArgumentException()
-    }
-
-    private fun createTextView(text: Text?): TextView {
-        val txt = TextView(context)
-        txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        txt.setText(text)
-        txt.setTextIsSelectable(true)
-        return txt
-    }
-
-    private fun createListOfTagUpdates(changes: Collection<StringMapEntryChange>): TextView {
-        val txt = TextView(context)
-        txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-
-        txt.setHtml(changes.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { change ->
-           "<li>" +
-           context.resources.getString(
-               change.titleResId,
-               "<tt>" + change.toLinkedTagString() + "</tt>"
-           ) +
-           "</li>"
-        })
-        return txt
-    }
-
-    private fun createCreateNodeDescriptionView(tags: Map<String, String>): TextView {
-        val txt = TextView(context)
-        txt.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-
-        txt.setHtml(
-            context.resources.getString(R.string.create_node_action_description) +
-            tags.entries.joinToString(separator = "", prefix = "<ul>", postfix = "</ul>") { (key, value) ->
-                "<li><tt>" + linkedTagString(key, value) + "</tt></li>"
-            }
-        )
-        return txt
-    }
-}
-
-private fun StringMapEntryChange.toLinkedTagString(): String =
-    linkedTagString(key, when (this) {
-        is StringMapEntryAdd -> value
-        is StringMapEntryModify -> value
-        is StringMapEntryDelete -> valueBefore
-    })
-
-private fun linkedTagString(key: String, value: String): String {
-    val escapedKey = Html.escapeHtml(key)
-    val escapedValue = Html.escapeHtml(value)
-    val keyLink = "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$escapedKey\">$escapedKey</a>"
-    return "$keyLink = $escapedValue"
-}
-
-private val StringMapEntryChange.titleResId: Int get() = when (this) {
-    is StringMapEntryAdd -> R.string.added_tag_action_title
-    is StringMapEntryModify -> R.string.changed_tag_action_title
-    is StringMapEntryDelete -> R.string.removed_tag_action_title
+        },
+        height = 360.dp
+    )
 }

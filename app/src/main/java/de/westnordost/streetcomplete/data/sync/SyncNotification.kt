@@ -12,7 +12,7 @@ import androidx.core.app.PendingIntentCompat
 import de.westnordost.streetcomplete.ApplicationConstants.NAME
 import de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.MainActivity
+import de.westnordost.streetcomplete.screens.main.MainActivity
 
 /** Creates the notification for syncing in the Android notifications area. Used both by the upload
  *  and by the download service. */

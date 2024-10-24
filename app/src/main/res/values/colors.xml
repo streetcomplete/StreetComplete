@@ -17,7 +17,6 @@
     <color name="selection_frame">#bbff6600</color>
 
     <color name="location_dot">#536dfe</color>
-    <color name="quest_selection_frame">#bbFF5722</color>
 
     <color name="background">#fff</color>
     <color name="background_transparent">#0fff</color>
@@ -55,23 +54,6 @@
 
     <color name="pressed">#ddd</color>
 
-    <color name="attribution_text">#444</color>
-
-    <color name="team_0">#f44336</color>
-    <color name="team_1">#529add</color>
-    <color name="team_2">#ffdd55</color>
-
-    <color name="team_3">#ca72e2</color>
-    <color name="team_4">#9bbe55</color>
-    <color name="team_5">#f4900c</color>
-
-    <color name="team_6">#9aa0ad</color>
-    <color name="team_7">#6390a0</color>
-    <color name="team_8">#a07a43</color>
-
-    <color name="team_9">#494EAD</color>
-    <color name="team_10">#AA335D</color>
-    <color name="team_11">#655555</color>
 
     <!-- for fading out images -->
     <color name="fade_out">#fff</color>

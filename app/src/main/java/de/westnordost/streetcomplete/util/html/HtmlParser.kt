@@ -127,7 +127,7 @@ private fun StringWithCursor.fail(message: String): Nothing =
 private fun Char.isAlphanumeric(): Boolean =
     this in 'a'..'z' || this in 'A'..'Z' || this in '0'..'9'
 
-private fun String.replaceHtmlEntities(): String =
+fun String.replaceHtmlEntities(): String =
     replace(entityRegex) { entities[it.value]?.toString() ?: it.value }
 
 // https://developer.mozilla.org/en-US/docs/Glossary/Void_element

@@ -1,29 +1,22 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import android.content.Context
-import android.util.AttributeSet
-import android.view.LayoutInflater
-import android.widget.RelativeLayout
-import androidx.core.view.isInvisible
-import de.westnordost.streetcomplete.databinding.ViewMessagesButtonBinding
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import de.westnordost.streetcomplete.ui.common.MessagesIcon
 
-/** View that shows a messages-button with a little counter at the top right */
-class MessagesButton @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr) {
-
-    private val binding = ViewMessagesButtonBinding.inflate(LayoutInflater.from(context), this)
-
-    var messagesCount: Int = 0
-        set(value) {
-            field = value
-            binding.textView.text = value.toString()
-            binding.textView.isInvisible = value == 0
+@Composable
+fun MessagesButton(
+    onClick: () -> Unit,
+    messagesCount: Int,
+    modifier: Modifier = Modifier,
+) {
+    Box(modifier) {
+        MapButton(onClick = onClick) { MessagesIcon() }
+        MapButtonNotification {
+            Text(messagesCount.toString(), textAlign = TextAlign.Center)
         }
-
-    init {
-        clipToPadding = false
     }
 }
