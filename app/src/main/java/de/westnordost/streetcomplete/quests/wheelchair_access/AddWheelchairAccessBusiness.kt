@@ -89,7 +89,9 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
             "craft" to arrayOf(
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-                "electronics_repair", "key_cutter", "stonemason",
+                "electronics_repair", "key_cutter", "stonemason", "bookbinder",
+                "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+                "locksmith",  "window_construction",
 
                 // name & wheelchair
                 "winery"
