@@ -880,7 +880,6 @@ class CyclewayCreatorKtTest {
             ))
         )
     }
-
 }
 
 private fun LeftAndRightCycleway.appliedTo(tags: Map<String, String>, isLeftHandTraffic: Boolean = false): Set<StringMapEntryChange> {
