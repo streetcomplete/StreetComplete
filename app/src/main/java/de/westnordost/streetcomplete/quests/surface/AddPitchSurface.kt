@@ -5,10 +5,11 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
+import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
 
-class AddPitchSurface : OsmFilterQuestType<SurfaceAndNote>() {
+class AddPitchSurface : OsmFilterQuestType<Surface>() {
     private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
         // #2377
         "multi", "soccer", "tennis", "basketball", "equestrian", "athletics", "volleyball",
@@ -32,12 +33,14 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAndNote>() {
          and (athletics !~ high_jump|pole_vault)
          and (
           !surface
-          or surface older today -12 years
+          or surface ~ ${INVALID_SURFACES.joinToString("|")}
           or (
-           surface ~ paved|unpaved
-           and !surface:note
-           and !note:surface
+            surface ~ paved|unpaved
+            and !surface:note
+            and !note:surface
+            and !check_date:surface
           )
+          or surface older today -12 years
         )
     """
 
@@ -50,7 +53,7 @@ class AddPitchSurface : OsmFilterQuestType<SurfaceAndNote>() {
 
     override fun createForm() = AddPitchSurfaceForm()
 
-    override fun applyAnswerTo(answer: SurfaceAndNote, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Surface, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)
     }
 }

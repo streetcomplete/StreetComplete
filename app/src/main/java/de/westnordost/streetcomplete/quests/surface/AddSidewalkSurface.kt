@@ -14,18 +14,18 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     // Only roads with 'complete' sidewalk tagging (at least one side has sidewalk, other side specified)
     override val elementFilter = """
         ways with
-            highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|living_street|busway
-            and area != yes
-            and (
-                sidewalk ~ both|left|right or
-                sidewalk:both = yes or
-                (sidewalk:left = yes and sidewalk:right ~ yes|no|separate) or
-                (sidewalk:right = yes and sidewalk:left ~ yes|no|separate)
-            )
-            and (
-                !sidewalk:both:surface and !sidewalk:left:surface and !sidewalk:right:surface
-                or sidewalk:surface older today -8 years
-            )
+          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|living_street|busway
+          and area != yes
+          and (
+            sidewalk ~ both|left|right
+            or sidewalk:both = yes
+            or (sidewalk:left = yes and sidewalk:right ~ yes|no|separate)
+            or (sidewalk:right = yes and sidewalk:left ~ yes|no|separate)
+          )
+          and (
+            !sidewalk:both:surface and !sidewalk:left:surface and !sidewalk:right:surface
+            or sidewalk:surface older today -8 years
+          )
     """
     override val changesetComment = "Specify sidewalk surfaces"
     override val wikiLink = "Key:sidewalk"

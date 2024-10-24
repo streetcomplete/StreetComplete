@@ -63,8 +63,7 @@ class SurfaceUtilsKtTest {
     @Test fun `update foot and cycleway with common paved surface`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("surface", "paved"),
-                StringMapEntryModify("surface:note", "asphalt but also paving stones", "asphalt but also paving stones"),
+                StringMapEntryAdd("surface", "paved")
             ),
             appliedCommonSurfaceFromFootAndCyclewaySurface(mapOf(
                 "footway:surface" to "asphalt",

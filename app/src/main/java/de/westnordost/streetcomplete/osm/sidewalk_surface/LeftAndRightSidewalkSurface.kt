@@ -1,8 +1,5 @@
 package de.westnordost.streetcomplete.osm.sidewalk_surface
 
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
+import de.westnordost.streetcomplete.osm.surface.Surface
 
-data class LeftAndRightSidewalkSurface(
-    val left: SurfaceAndNote?,
-    val right: SurfaceAndNote?,
-)
+data class LeftAndRightSidewalkSurface(val left: Surface?, val right: Surface?)

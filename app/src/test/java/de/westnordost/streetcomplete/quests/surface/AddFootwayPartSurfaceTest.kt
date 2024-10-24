@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
@@ -45,14 +45,31 @@ class AddFootwayPartSurfaceTest {
         assertIsNotApplicable("highway" to "footway", "segregated" to "yes", "sidewalk" to "yes")
     }
 
+    @Test fun `applicable to footway with invalid surface`() {
+        assertIsApplicable("highway" to "footway", "segregated" to "yes", "footway:surface" to "cobblestone")
+    }
+
     @Test fun `applicable to footway with unspecific surface without note`() {
         assertIsApplicable("highway" to "footway", "segregated" to "yes", "footway:surface" to "paved")
         assertIsApplicable("highway" to "path", "foot" to "designated", "segregated" to "yes", "footway:surface" to "unpaved")
     }
 
     @Test fun `not applicable to footway with unspecific surface and note`() {
-        assertIsNotApplicable("highway" to "footway", "segregated" to "yes", "footway:surface" to "paved", "footway:surface:note" to "it's complicated")
-        assertIsNotApplicable("highway" to "path", "foot" to "designated", "segregated" to "yes", "footway:surface" to "unpaved", "note:footway:surface" to "it's complicated")
+        assertIsNotApplicable(
+            "highway" to "footway",
+            "segregated" to "yes",
+            "footway:surface" to "paved",
+            "footway:surface:note" to "it's complicated"
+        )
+    }
+
+    @Test fun `not applicable to footway with unspecific surface and recent check date`() {
+        assertIsNotApplicable(
+            "highway" to "footway",
+            "segregated" to "yes",
+            "footway:surface" to "unpaved",
+            "check_date:footway:surface" to nowAsCheckDateString()
+        )
     }
 
     @Test fun `not applicable to private footways`() {
@@ -88,7 +105,7 @@ class AddFootwayPartSurfaceTest {
     @Test fun `apply asphalt surface`() {
         assertEquals(
             setOf(StringMapEntryAdd("footway:surface", "asphalt")),
-            questType.answerApplied(SurfaceAndNote(Surface.ASPHALT))
+            questType.answerApplied(Surface.ASPHALT)
         )
     }
 
@@ -99,7 +116,7 @@ class AddFootwayPartSurfaceTest {
                 StringMapEntryModify("surface", "paving_stones", "concrete")
             ),
             questType.answerAppliedTo(
-                SurfaceAndNote(Surface.CONCRETE),
+                Surface.CONCRETE,
                 mapOf(
                     "surface" to "paving_stones",
                     "footway:surface" to "paving_stones",

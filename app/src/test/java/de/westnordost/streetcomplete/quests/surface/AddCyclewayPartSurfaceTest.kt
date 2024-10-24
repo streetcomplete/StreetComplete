@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
@@ -44,14 +44,31 @@ class AddCyclewayPartSurfaceTest {
         assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "sidewalk" to "yes")
     }
 
+    @Test fun `applicable to cycleway with invalid surface`() {
+        assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "cobblestone")
+    }
+
     @Test fun `applicable to cycleway with unspecific surface without note`() {
         assertIsApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved")
         assertIsApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes", "cycleway:surface" to "unpaved")
     }
 
     @Test fun `not applicable to cycleway with unspecific surface and note`() {
-        assertIsNotApplicable("highway" to "cycleway", "segregated" to "yes", "cycleway:surface" to "paved", "cycleway:surface:note" to "it's complicated")
-        assertIsNotApplicable("highway" to "path", "bicycle" to "designated", "segregated" to "yes", "cycleway:surface" to "unpaved", "note:cycleway:surface" to "it's complicated")
+        assertIsNotApplicable(
+            "highway" to "cycleway",
+            "segregated" to "yes",
+            "cycleway:surface" to "paved",
+            "cycleway:surface:note" to "it's complicated"
+        )
+    }
+
+    @Test fun `not applicable to cycleway with unspecific surface and recent check date`() {
+        assertIsNotApplicable(
+            "highway" to "cycleway",
+            "segregated" to "yes",
+            "cycleway:surface" to "unpaved",
+            "check_date:cycleway:surface" to nowAsCheckDateString()
+        )
     }
 
     @Test fun `not applicable to private cycleways`() {
@@ -87,7 +104,7 @@ class AddCyclewayPartSurfaceTest {
     @Test fun `apply asphalt surface`() {
         assertEquals(
             setOf(StringMapEntryAdd("cycleway:surface", "asphalt")),
-            questType.answerApplied(SurfaceAndNote(Surface.ASPHALT))
+            questType.answerApplied(Surface.ASPHALT)
         )
     }
 
@@ -98,7 +115,7 @@ class AddCyclewayPartSurfaceTest {
                 StringMapEntryModify("surface", "paving_stones", "concrete")
             ),
             questType.answerAppliedTo(
-                SurfaceAndNote(Surface.CONCRETE),
+                Surface.CONCRETE,
                 mapOf(
                     "surface" to "paving_stones",
                     "footway:surface" to "concrete",

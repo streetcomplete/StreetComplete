@@ -10,10 +10,9 @@
 
     <include
         android:id="@+id/main"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_max="220dp"
-        layout="@layout/view_image_select_plus_text"
+        layout="@layout/view_image_select"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +45,7 @@
             android:id="@+id/cycleway"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/view_image_select_plus_text" />
+            layout="@layout/view_image_select" />
 
     </LinearLayout>
 
@@ -78,7 +77,7 @@
             android:id="@+id/footway"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/view_image_select_plus_text" />
+            layout="@layout/view_image_select" />
     </LinearLayout>
 
     <ImageView
