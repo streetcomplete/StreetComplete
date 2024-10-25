@@ -107,7 +107,7 @@ class MainViewModelImpl(
 
                 isFollowingPosition.value = false
                 isNavigationMode.value = false
-                mapCamera.value = CameraPosition(pos, 0.0, 0.0, zoom)
+                geoUri.value = CameraPosition(pos, 0.0, 0.0, zoom)
             }
         }
     }
@@ -127,6 +127,8 @@ class MainViewModelImpl(
             urlConfigController.apply(config)
         }
     }
+
+    override val geoUri = MutableStateFlow<CameraPosition?>(null)
 
     /* intro */
 

@@ -46,6 +46,7 @@
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.screens.main.MainActivity"
             android:configChanges="orientation|screenSize|screenLayout"
+            android:launchMode="singleTop"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

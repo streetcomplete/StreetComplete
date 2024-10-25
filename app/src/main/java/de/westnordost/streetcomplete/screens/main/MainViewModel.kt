@@ -25,6 +25,7 @@ abstract class MainViewModel : ViewModel() {
 
     abstract val urlConfig: StateFlow<ShownUrlConfig?>
     abstract fun applyUrlConfig(config: UrlConfig)
+    abstract val geoUri: StateFlow<CameraPosition?>
 
     /* intro */
     abstract var hasShownTutorial: Boolean

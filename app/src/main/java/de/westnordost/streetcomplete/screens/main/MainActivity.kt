@@ -265,6 +265,11 @@ class MainActivity :
                 mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
             }
         }
+        observe(controlsViewModel.geoUri) { geoUri ->
+            if (geoUri != null) {
+                mapFragment?.setInitialCameraPosition(geoUri)
+            }
+        }
     }
 
     override fun onStart() {
@@ -322,6 +327,7 @@ class MainActivity :
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
+        controlsViewModel.geoUri.value?.let { mapFragment?.setInitialCameraPosition(it) }
         controlsViewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
         controlsViewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
         controlsViewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
