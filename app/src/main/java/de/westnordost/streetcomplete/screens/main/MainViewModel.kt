@@ -32,7 +32,7 @@ abstract class MainViewModel : ViewModel() {
     /* messages */
     abstract val messagesCount: StateFlow<Int>
     abstract suspend fun popMessage(): Message?
-    abstract val questTypes: List<QuestType>
+    abstract val allQuestTypes: List<QuestType>
 
     /* overlays */
     abstract val selectedOverlay: StateFlow<Overlay?>

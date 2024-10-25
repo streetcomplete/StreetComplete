@@ -399,7 +399,7 @@ fun MainScreen(
     }
 
     shownMessage?.let { message ->
-        val questIcons = remember { viewModel.questTypes.map { it.icon } }
+        val questIcons = remember { viewModel.allQuestTypes.map { it.icon } }
         MessageDialog(
             message = message,
             onDismissRequest = { shownMessage = null },
@@ -450,7 +450,7 @@ fun MainScreen(
     }
 
     AnimatedScreenVisibility(showTeamModeWizard) {
-        val questIcons = remember { viewModel.questTypes.map { it.icon } }
+        val questIcons = remember { viewModel.allQuestTypes.map { it.icon } }
         TeamModeWizard(
             onDismissRequest = { showTeamModeWizard = false },
             onFinished = { teamSize, indexInTeam ->

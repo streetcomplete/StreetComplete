@@ -148,7 +148,7 @@ class MainViewModelImpl(
     override suspend fun popMessage(): Message? =
         withContext(IO) { messagesSource.popNextMessage() }
 
-    override val questTypes: List<QuestType> get() = questTypeRegistry
+    override val allQuestTypes: List<QuestType> get() = questTypeRegistry
 
     /* overlays */
 
