@@ -89,6 +89,7 @@ import de.westnordost.streetcomplete.screens.main.map.MapFragment
 import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
+import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.ui.util.content
@@ -998,7 +999,7 @@ class MainActivity :
 
                 val geometry = mapData?.getGeometry(e.type, e.id) ?: return@mapNotNull null
                 val icon = getIcon(featureDictionary.value, e)
-                val title = de.westnordost.streetcomplete.screens.main.map.getTitle(e.tags)
+                val title = getTitle(e.tags)
                 Marker(geometry, icon, title)
             }.toList()
 
