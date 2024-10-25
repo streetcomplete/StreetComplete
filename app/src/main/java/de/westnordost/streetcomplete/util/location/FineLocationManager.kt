@@ -14,8 +14,6 @@ import androidx.core.content.getSystemService
 import androidx.core.location.LocationListenerCompat
 import androidx.core.location.LocationManagerCompat
 import androidx.core.util.Consumer
-import de.westnordost.streetcomplete.util.ktx.elapsedDuration
-import kotlin.time.Duration.Companion.minutes
 
 /** Convenience wrapper around the location manager with easier API, making use of both the GPS
  *  and Network provider */
