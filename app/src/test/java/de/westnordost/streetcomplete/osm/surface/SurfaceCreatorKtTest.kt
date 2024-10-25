@@ -46,39 +46,46 @@ class SurfaceCreatorKtTest {
         )
     }
 
-    @Test fun `remove mismatching tracktype`() {
+    @Test fun `remove tracktype when surface category changed`() {
         assertEquals(
             setOf(
-                StringMapEntryAdd("surface", "asphalt"),
+                StringMapEntryModify("surface", "compacted", "asphalt"),
                 StringMapEntryDelete("tracktype", "grade5"),
                 StringMapEntryDelete("check_date:tracktype", "2011-11-11"),
             ),
             ASPHALT.appliedTo(mapOf(
+                "surface" to "compacted",
                 "tracktype" to "grade5",
                 "check_date:tracktype" to "2011-11-11"
+            ))
+        )
+    }
+
+    @Test fun `don't remove tracktype when surface was added`() {
+        assertEquals(
+            setOf(StringMapEntryAdd("surface", "asphalt")),
+            ASPHALT.appliedTo(mapOf("tracktype" to "grade5",))
+        )
+    }
+
+    @Test fun `don't remove tracktype when surface category didn't change`() {
+        assertEquals(
+            setOf(StringMapEntryModify("surface", "concrete", "asphalt")),
+            ASPHALT.appliedTo(mapOf(
+                "surface" to "concrete",
+                "tracktype" to "grade5",
             ))
         )
     }
 
     @Test fun `remove mismatching tracktype not done with prefix`() {
         assertEquals(
-            setOf(StringMapEntryAdd("footway:surface", "asphalt")),
+            setOf(StringMapEntryModify("footway:surface", "compacted", "asphalt")),
             ASPHALT.appliedTo(mapOf(
+                "footway:surface" to "compacted",
                 "tracktype" to "grade5",
                 "check_date:tracktype" to "2011-11-11"
             ), "footway")
-        )
-    }
-
-    @Test fun `keep matching tracktype`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("surface", "asphalt")
-            ),
-            ASPHALT.appliedTo(mapOf(
-                "highway" to "residential",
-                "tracktype" to "grade1"
-            ))
         )
     }
 
