@@ -795,7 +795,6 @@ Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals
     <string name="quest_construction_completion_date_title">"Wanneer zal dit gereed zijn?"</string>
     <string name="quest_surface_value_clay">"Gravel"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgras"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Moet je hier betalen om je fiets te parkeren?"</string>
     <string name="quest_buildingType_house_description2">"niet-vrijstaande eengezinswoning, bijvoorbeeld een rijtjeshuis"</string>
     <string name="quest_drinking_water_potable_signed">"Veilig om te drinken (aangegeven)"</string>

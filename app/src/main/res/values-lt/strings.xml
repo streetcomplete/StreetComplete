@@ -801,7 +801,6 @@ Atkreipkite dėmesį į visas galimas parinktis: kai kurie atvejai nėra akivaiz
     <string name="quest_construction_completion_date_title">"Kada bus užbaigtos?"</string>
     <string name="quest_surface_value_clay">"Molis"</string>
     <string name="quest_surface_value_artificial_turf">"Dirbtinė žolė"</string>
-    <string name="quest_surface_value_tartan">"Languotas"</string>
     <string name="quest_bicycle_parking_fee_title">"Ar reikia mokėti už dviračių Parkavimas?"</string>
     <string name="quest_buildingType_house_description2">"neatskirtas vieno buto namas, t.y. vienos eilės namas"</string>
     <string name="quest_drinking_water_potable_signed">"Saugu gerti (pažymėta)"</string>

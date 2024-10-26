@@ -516,11 +516,11 @@ Hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det hoved
     <string name="quest_leaf_type_mixed">"Begge er til stede"</string>
     <string name="quest_cyclewayPartSurface_title">"Hvilken overflade er der på denne cykelsti?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Det er forskelligt undervejs…"</string>
-    <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele vejen. Derefter kan opgaven besvares for hver del enkeltvis.
+    <string name="quest_split_way_description">"Hvis det er forskelligt undervejs, er det første trin at opdele linjestrengen. Derefter kan opgaven besvares for hver del enkeltvis.
 Opdel den nu?"</string>
-    <string name="quest_split_way_tutorial">"Tryk på vejen for at dele den på det eller de punkter, hvor svaret er forskelligt. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
+    <string name="quest_split_way_tutorial">"Tryk på linjestrengen for at dele den på det eller de punkter, hvor svaret er forskelligt. Prøv at være så præcis som muligt, du kan zoome ind som sædvanligt."</string>
     <string name="quest_split_way_too_imprecise">"Zoom venligst længere ind"</string>
-    <string name="quest_split_way_many_splits_confirmation_description">"Dette er ganske mange opdelinger. Du kan altid opdele vejen længere fremme senere."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Dette er ganske mange opdelinger. Du kan altid opdele linjestrengen længere fremme senere."</string>
     <string name="quest_footwayPartSurface_title">"Hvilken overflade er der på denne gangsti?"</string>
     <string name="quest_maxweight_title">"Hvad er vægtgrænsen her?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Den vægtangivelse ser ikke rigtig ud. Er du sikker på, at det er korrekt?"</string>
@@ -698,7 +698,7 @@ aktiv"</string>
     <string name="quest_board_type_map_title">"Er det udelukkende et kort?"</string>
     <string name="quest_board_type_map_description">"Hvis den indeholder info om et bestemt emne, så angiv det venligst, uanset om der også er et kort. F.eks. et kort over offentlig transport kan også have en busrute angivet. Hvis emnet ikke er blandt de mulige svar må du meget gerne efterlade en bemærkning i stedet."</string>
     <string name="quest_surface_detailed_answer_impossible">"Flere overflader…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på, at det er umuligt at angive en belægningstype her? Bemærk at svarmuligheden \"varierer langs med vejen\" giver dig mulighed for at klippe vejen der, hvor belægningstypen ændrer sig. Vær venlig at bruge \"Ved ikke\" hvis der kun er én belægningstype, men den ikke findes på listen."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på, at det er umuligt at angive en belægningstype her? Bemærk at svarmuligheden \"Det er forskelligt undervej\" giver dig mulighed for at klippe linjestrengen der, hvor belægningstypen ændrer sig. Vær venlig at bruge \"Ved ikke\" hvis der kun er én belægningstype, men den ikke findes på listen."</string>
     <string name="quest_surface_detailed_answer_impossible_description">"Angiv kort overfladens karakter her, for eksempel \"sand med enkelte områder af pigsten\". Tekstlængden er begrænset til 255 tegn."</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Rækkehuse"</string>
@@ -800,7 +800,6 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, f.eks. ensrettet vej 
     <string name="quest_construction_completion_date_title">"Hvornår vil det være færdigt?"</string>
     <string name="quest_surface_value_clay">"Ler"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgræs"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Skal man betale for at parkere en cykel her?"</string>
     <string name="quest_buildingType_house_description2">"Ikke-fritliggende enfamiliehus, f.eks. et rækkehus"</string>
     <string name="quest_drinking_water_potable_signed">"Drikkevand (skiltet)"</string>
@@ -825,7 +824,7 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, f.eks. ensrettet vej 
     <string name="created_note_action_title">"Oprettede bemærkning"</string>
     <string name="commented_note_action_title">"Kommenterede på bemærkning"</string>
     <string name="hid_action_description">"Du skjulte det"</string>
-    <string name="split_way_action_description">"Du delte vejen op"</string>
+    <string name="split_way_action_description">"Du delte linjestrengen op"</string>
     <string name="deleted_poi_action_description">"Du slettede det"</string>
     <string name="added_tag_action_title">"Tilføjede %s"</string>
     <string name="removed_tag_action_title">"Fjernede %s"</string>
@@ -1134,7 +1133,7 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="quest_air_pump_bicycle_shop_title">"Er der en offentligt tilgængelig cykelpumpe her (i hvert fald i åbningstiden)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Er der en funktionsdygtig cykelpumpe her?"</string>
     <string name="action_overlays">"Overlejringer"</string>
-    <string name="split_way">"Opdel vej"</string>
+    <string name="split_way">"Opdel linjestreng"</string>
     <string name="quest_memorialType_title">"Hvilken slags mindesmærke er dette?"</string>
     <string name="quest_memorialType_statue">"Statue"</string>
     <string name="quest_memorialType_bust">"Buste"</string>
@@ -1297,7 +1296,7 @@ Vil du flytte det nu?"</string>
 
 Dataene er fremhævet i forskellige farver for at give dig et godt overblik over, hvad der er blevet registreret indtil videre.
 Manglende data vises altid med rødt."</string>
-    <string name="overlays_tutorial_edit">"Tryk på de fremhævede data for at redigere dem. Du kan også opdele veje eller indrapportere bemærkninger, ligesom med opgaver.
+    <string name="overlays_tutorial_edit">"Tryk på de fremhævede data for at redigere dem. Du kan også opdele linjestrenge eller indrapportere bemærkninger, ligesom med opgaver.
 
 Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på positionen for et vist trådkors, som f.eks. adresseoverlejringen."</string>
     <string name="quest_crossing_kerb_height_title">"Hvad er højden på kantstenene ved denne overgang?"</string>
@@ -1368,15 +1367,14 @@ Du kan finde oplysninger om donationer på vores hjemmeside eller projekthjemmes
     <string name="quest_moped_access_designated">"Der er et skilt, der angiver, at denne cykelsti er for knallerter"</string>
     <string name="quest_moped_access_forbidden">"Der er et skilt, som forbyder knallerter"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Denne opgavetype er som standard deaktiveret, fordi knallertadgang kun er angivet med et bestemt skilt ved starten/slutningen af en cykelsti."</string>
-    <string name="quest_arrow_tutorial">"Pilene i illustrationen peger i de retninger, som vejen løber i på kortet, hvor den er fastgjort i midten. Prøv at rotere kortet, så forstår du det."</string>
+    <string name="quest_arrow_tutorial">"Pilene i illustrationen peger i de retninger, som linjestrengen løber i på kortet, hvor den er fastgjort i midten. Prøv at rotere kortet, så forstår du det."</string>
     <string name="info">"Mere information"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Det er forbudt."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Det er tilladt."</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Der er faktisk et fortov, men det vises separat på kortet."</string>
     <string name="quest_buildingLevels_hint">"Hvis bygningen ligger på en skråning, starter optællingen af etager fra terrænniveauet på den laveste side.
 
-En etage tæller som en tagetage, når dets vinduer er i taget. Derfor er tage med nul tagetager ikke nødvendigvis flade, de er bare ikke høje nok til en hel etage.
-␣␣␣␣"</string>
+En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage med nul tagetager ikke nødvendigvis flade, de er bare ikke høje nok til en hel etage."</string>
     <string name="quest_parcel_locker_brand">"Hvilket firma står for denne pakkeboks?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"El-ledning er forankret til bygning"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"ingen, men skilt tillader cykling på fortovet"</string>
@@ -1407,4 +1405,8 @@ En etage tæller som en tagetage, når dets vinduer er i taget. Derfor er tage m
     <string name="quest_board_name_title">"Hvad er titlen på denne informationstavle?"</string>
     <string name="quest_crossing_hint">"En trampesti, der krydser en vej:"</string>
     <string name="note_for_object">"En anden person bemærkede:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Sikre bøjler (støtter både hjul og ramme)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"ingen, men skiltet tillader cykling på fortovet i begge retninger"</string>
+    <string name="quest_surface_value_rubber">"Gummigranulat"</string>
+    <string name="quest_surface_value_acrylic">"Syntetisk harpiks"</string>
 </resources>

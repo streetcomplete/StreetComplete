@@ -795,7 +795,6 @@
     <string name="quest_construction_completion_date_title">"จะเสร็จเมื่อไหร่"</string>
     <string name="quest_surface_value_clay">"ดินเหนียว"</string>
     <string name="quest_surface_value_artificial_turf">"หญ้าเทียม"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"มีค่าบริการจอดจักรยานไหม?"</string>
     <string name="quest_buildingType_house_description2">"บ้านขนาดหนึ่งครอบครัวที่เชื่อมกัน"</string>
     <string name="quest_drinking_water_potable_signed">"ปลอดภัยที่จะดื่ม (มีป้าย)"</string>

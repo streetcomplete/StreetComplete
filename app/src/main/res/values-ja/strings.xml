@@ -805,7 +805,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_construction_completion_date_title">"いつ完成しますか?"</string>
     <string name="quest_surface_value_clay">"クレー"</string>
     <string name="quest_surface_value_artificial_turf">"人工芝"</string>
-    <string name="quest_surface_value_tartan">"全天候型"</string>
     <string name="quest_bicycle_parking_fee_title">"有料の駐輪場ですか?"</string>
     <string name="quest_buildingType_house_description2">"独立していない１世帯の住宅"</string>
     <string name="quest_drinking_water_potable_signed">"飲用 (水質検査を受けている)"</string>

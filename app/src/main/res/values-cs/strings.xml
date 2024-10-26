@@ -787,9 +787,9 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_parkingType_lane">"Parkuje se na cestě"</string>
     <string name="quest_tracktype_grade2a">"Víceméně pevný"</string>
     <string name="quest_tracktype_grade3a">"Spíše pevný"</string>
-    <string name="quest_generic_answer_does_not_exist">"Neexistuje to…"</string>
+    <string name="quest_generic_answer_does_not_exist">"Objekt neexistuje…"</string>
     <string name="osm_element_gone_description">"Jste si jistí, že to co tu bylo již neexistuje? Třeba nedaleko? Pokud jste na pochybách, je lepší zanechat k místu poznámku."</string>
-    <string name="osm_element_gone_confirmation">"Neexistuje to"</string>
+    <string name="osm_element_gone_confirmation">"Objekt neexistuje"</string>
     <string name="leave_note">"Nechat poznámku"</string>
     <string name="quest_shop_gone_title">"Co je tu místo toho?"</string>
     <string name="quest_shop_gone_vacant_answer">"Je to prázdné"</string>
@@ -806,7 +806,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="quest_construction_completion_date_title">"Kdy to bude stavba dokončena?"</string>
     <string name="quest_surface_value_clay">"Antuka"</string>
     <string name="quest_surface_value_artificial_turf">"Umělý trávník"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Je tu potřeba platit za parkování kola?"</string>
     <string name="quest_buildingType_house_description2">"řadový dům pro jednu rodinu"</string>
     <string name="quest_drinking_water_potable_signed">"Pitná voda (rozbor)"</string>
@@ -1403,4 +1402,19 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="action_manage_presets_summary">"Pod jakým názvem se níže uvedený výběr úkolů uloží."</string>
     <string name="quest_multiselect_hint">"Vyberte vše, co vyhovuje:"</string>
     <string name="quest_barrier_opening_width_gate">"Jaká je tu šířka v otevřeném stavu?"</string>
+    <string name="bridge">"na mostě"</string>
+    <string name="about_title_intro">"Zobrazit úvod"</string>
+    <string name="about_category_help">"Nápověda"</string>
+    <string name="quest_camp_power_supply_hint">"Mohou to být zásuvky přímo v prostoru kempu, zásuvky v pomocných budovách přístupných hostům, nabíječky pro telefony, laptopy atd."</string>
+    <string name="quest_barrier_opening_width_bollard">"Jaká je nejširší mezera, kterou lze projít?"</string>
+    <string name="user_profile_all_time_title">"Celkově"</string>
+    <string name="user_statistics_country_rank2">"Pořadí v %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Je to jen pařez"</string>
+    <string name="quest_board_name_title">"Jaký je název této informační tabule?"</string>
+    <string name="quest_crossing_hint">"Neformální cesta křížící silnici:"</string>
+    <string name="note_for_object">"Jiná osoba uvedla:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Zamykací smyčky (podporují kolo i rám)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"není, ale značka dovoluje jízdu po chodníku, v obou směrech"</string>
+    <string name="quest_surface_value_rubber">"Gumový granulát"</string>
+    <string name="quest_surface_value_acrylic">"Syntetická pryskyřice"</string>
 </resources>

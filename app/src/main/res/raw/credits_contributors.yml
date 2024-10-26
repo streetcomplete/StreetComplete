@@ -1,11 +1,11 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 482362
-  linesOfInterfaceMarkupChanged: 152680
-  assetFilesChanged: 2145
+  linesOfCodeChanged: 484000
+  linesOfInterfaceMarkupChanged: 152750
+  assetFilesChanged: 2157
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
-  linesOfCodeChanged: 22172
+  linesOfCodeChanged: 22190
   linesOfInterfaceMarkupChanged: 5233
   assetFilesChanged: 636
 - name: "Flo Edelmann"
@@ -84,14 +84,14 @@
 - name: "Peter Newman"
   githubUsername: "peternewman"
   linesOfCodeChanged: 903
+- name: "Wieland"
+  githubUsername: "wielandb"
+  linesOfCodeChanged: 851
+  linesOfInterfaceMarkupChanged: 241
+  assetFilesChanged: 3
 - name: "Krzysztof Krason"
   linesOfCodeChanged: 738
   assetFilesChanged: 22
-- name: "Wieland"
-  githubUsername: "wielandb"
-  linesOfCodeChanged: 678
-  linesOfInterfaceMarkupChanged: 161
-  assetFilesChanged: 2
 - name: "Enno Hermann"
   githubUsername: "eginhard"
   linesOfCodeChanged: 524
@@ -121,9 +121,9 @@
   assetFilesChanged: 44
 - name: "mcliquid"
   githubUsername: "mcliquid"
-  linesOfCodeChanged: 286
+  linesOfCodeChanged: 289
   linesOfInterfaceMarkupChanged: 442
-  assetFilesChanged: 8
+  assetFilesChanged: 12
 - name: "darken"
   githubUsername: "d4rken"
   linesOfCodeChanged: 230

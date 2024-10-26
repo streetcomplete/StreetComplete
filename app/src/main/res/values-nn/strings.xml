@@ -777,7 +777,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_construction_completion_date_title">"Når vert han ferdigstilt?"</string>
     <string name="quest_surface_value_clay">"Leire"</string>
     <string name="quest_surface_value_artificial_turf">"Kunst­gras"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Kostar det noko å parkera syklar her?"</string>
     <string name="quest_buildingType_house_description2">"Einebustad"</string>
     <string name="quest_drinking_water_potable_signed">"Trygt å drikke (signert)"</string>

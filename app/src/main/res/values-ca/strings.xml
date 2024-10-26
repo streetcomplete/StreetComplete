@@ -526,7 +526,7 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_maxweight_unsupported_sign_request_photo">"Voleu deixar una nota? Una nota amb una fotografia permetrà a altres cartògrafs de fer-se'n càrrec."</string>
     <string name="quest_handrail_title">"Aquestes escales tenen barana?"</string>
     <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"En el dibuix, la via segueix la direcció que té en el mapa en el punt marcat. Prova de girar el mapa i ho entendràs millor."</string>
+    <string name="quest_street_side_puzzle_tutorial">"En la il·lustració, la via segueix la direcció que té en el mapa en el punt marcat. Prova de girar el mapa i ho entendràs millor."</string>
     <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
     <string name="quest_recycling_materials_note">"Si hi ha res que s'hi pot reciclar, diferent del que es pot seleccionar, aleshores deixeu una nota."</string>
     <string name="quest_recycling_type_batteries">"Bateries"</string>
@@ -800,7 +800,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="quest_construction_completion_date_title">"Quan estarà enllestit?"</string>
     <string name="quest_surface_value_clay">"Argila"</string>
     <string name="quest_surface_value_artificial_turf">"Gespa artificial"</string>
-    <string name="quest_surface_value_tartan">"Tartán"</string>
     <string name="quest_bicycle_parking_fee_title">"S'ha de pagar per aparcar una bicicleta aquí?"</string>
     <string name="quest_buildingType_house_description2">"llar monofamília no desconectada"</string>
     <string name="quest_drinking_water_potable_signed">"És segur beure (senyalat)"</string>
@@ -1328,7 +1327,7 @@ A més, algunes superposicions us permeten afegir dades noves a la posició d'un
     <string name="quest_sanitary_dump_station_description">"Instal·lació per dipositar els residus humans d'un vàter d'una autocaravana, camió de llarg recorregut, etc. Normalment s'indica amb un senyal com aquest:"</string>
     <string name="quest_generalFee_title">"Cal pagar per utilitzar-lo?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"És una foguera"</string>
-    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Si no hi ha cap superfície per a cuinar (per exemple: no hi ha cap placa ni cap grill), aleshores és una foguera."</string>
+    <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Si no hi ha cap superfície per a cuinar (per exemple: no hi ha cap placa ni cap graella), aleshores és una foguera."</string>
     <string name="about_title_logs">"Registres (%1$d)"</string>
     <string name="about_summary_logs">"per utilitzar-los en informes d'errors"</string>
     <string name="action_filter">"Filtre"</string>
@@ -1378,7 +1377,7 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
     <string name="quest_moped_access_designated">"Hi ha un senyal que permet la circulació de ciclomotors per aquest carril bici"</string>
     <string name="quest_moped_access_forbidden">"Hi ha un senyal que prohibeix la circulació de ciclomotors"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Aquest grup de missions està desactivat per defecte perquè l'accés de ciclomotors sols s'especifica en senyals al principi o al final del carril bici."</string>
-    <string name="quest_arrow_tutorial">"Les fletxes estan orientades cap a les dues direccions dol via sortint des del punt central dol missió. Prova de girar el mapa i ho entendràs millor."</string>
+    <string name="quest_arrow_tutorial">"Les fletxes de la il·lustració estan orientades cap a les dues direccions de la via sortint des del punt central de la missió. Prova de girar el mapa i ho entendràs millor."</string>
     <string name="info">"Més informació"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"És prohibit."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"és permès."</string>
@@ -1387,7 +1386,7 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
 
 Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.
     "</string>
-    <string name="quest_parcel_locker_brand">"De quina marca és aquest armari de paquets?"</string>
+    <string name="quest_parcel_locker_brand">"De quina marca és aquesta bústia intel·ligent?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"La línia elèctrica està ancorada a l'edifici"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"Cap, però una senyal permet als ciclistes usar la vorera"</string>
     <string name="separate_cycleway_no_signed">"Un senyal prohibeix explícitament anar en bicicleta"</string>
@@ -1405,14 +1404,16 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="questList_disabled_by_default">"Desactivat per defecte"</string>
     <string name="action_manage_presets_summary">"El nom amb el qual vols guardar aquesta selecció de missions."</string>
     <string name="quest_multiselect_hint">"Selecciona totes les opcions correctes:"</string>
-    <string name="quest_barrier_opening_width_gate">"Quina és l'amplada de l'obertura dol barrera aquí?"</string>
-    <string name="bridge">"En un pont"</string>
+    <string name="quest_barrier_opening_width_gate">"Quina és l'amplada de l'obertura de la barrera aquí?"</string>
+    <string name="bridge">"en un pont"</string>
     <string name="about_title_intro">"Mostrar introducció"</string>
     <string name="about_category_help">"Ajuda"</string>
-    <string name="quest_camp_power_supply_hint">"Poden ser endolls disponibles en càmpings, en una zona de servei perquè els clients els usin, zones específiques per a la recàrrega d'aparells electrònics (com telèfens mòbils, ordinadors portàtils), etc."</string>
+    <string name="quest_camp_power_supply_hint">"Poden ser endolls disponibles en càmpings, en una zona de servei perquè els clients els usin, zones específiques per a la recàrrega d'aparells electrònics (com telèfons mòbils, ordinadors portàtils), etc."</string>
     <string name="quest_barrier_opening_width_bollard">"Quin és el forat més gran pel qual es pot passar per aquí?"</string>
     <string name="user_profile_all_time_title">"En general"</string>
     <string name="user_statistics_country_rank2">"Rang en %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"És només una soca d'arbre"</string>
     <string name="quest_board_name_title">"Quin és el títol d'aquest tauler informatiu?"</string>
+    <string name="quest_crossing_hint">"Una pista informal que creua una carretera:"</string>
+    <string name="note_for_object">"Una altra persona va anotar:"</string>
 </resources>

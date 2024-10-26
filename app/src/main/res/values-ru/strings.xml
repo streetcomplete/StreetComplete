@@ -803,7 +803,6 @@
     <string name="quest_construction_completion_date_title">"Когда строительство будет завершено?"</string>
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Искусственная трава"</string>
-    <string name="quest_surface_value_tartan">"Тартан"</string>
     <string name="quest_bicycle_parking_fee_title">"Это платная парковка для велосипеда?"</string>
     <string name="quest_buildingType_house_description2">"дом на одну семью, например, находящийся в ряду домов"</string>
     <string name="quest_drinking_water_potable_signed">"Питьевая вода (есть знак)"</string>

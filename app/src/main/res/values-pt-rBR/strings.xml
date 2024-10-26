@@ -803,7 +803,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="quest_construction_completion_date_title">"Quando será completo?"</string>
     <string name="quest_surface_value_clay">"Argila"</string>
     <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Precisa pagar para estacionar uma bicicleta aqui?"</string>
     <string name="quest_buildingType_house_description2">"casa unifamiliar não independente, p. ex. uma casa geminada singular"</string>
     <string name="quest_drinking_water_potable_signed">"Seguro para beber (assinado)"</string>

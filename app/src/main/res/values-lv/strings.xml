@@ -800,7 +800,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="quest_construction_completion_date_title">"Kad tas tiks pabeigts?"</string>
     <string name="quest_surface_value_clay">"Māls"</string>
     <string name="quest_surface_value_artificial_turf">"Mākslīgais zāliens"</string>
-    <string name="quest_surface_value_tartan">"Tartāns"</string>
     <string name="quest_bicycle_parking_fee_title">"Vai ir jāmaksā, lai šeit novietotu velosipēdu?"</string>
     <string name="quest_buildingType_house_description2">"Vienas ģimenes ne-savrupmājas. Piem., viena no rindu mājām."</string>
     <string name="quest_drinking_water_potable_signed">"Drošs dzeršanai (ir zīme)"</string>

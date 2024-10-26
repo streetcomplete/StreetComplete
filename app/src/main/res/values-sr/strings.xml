@@ -800,7 +800,6 @@
     <string name="quest_construction_completion_date_title">"Када ће бити завршено?"</string>
     <string name="quest_surface_value_clay">"Шљака"</string>
     <string name="quest_surface_value_artificial_turf">"Вештачка трава"</string>
-    <string name="quest_surface_value_tartan">"Тартан"</string>
     <string name="quest_bicycle_parking_fee_title">"Да ли је потребно да платите како бисте паркирали бицикл?"</string>
     <string name="quest_buildingType_house_description2">"неиздвојена породична кућа, нпр. ред кућа"</string>
     <string name="quest_drinking_water_potable_signed">"Вода је за пиће (постоји табла)"</string>

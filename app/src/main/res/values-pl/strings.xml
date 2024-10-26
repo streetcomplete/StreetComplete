@@ -40,10 +40,10 @@
     <string name="action_download">"Szukaj zadań w okolicy"</string>
     <string name="action_upload">"Prześlij odpowiedzi"</string>
     <string name="no_changes">"Nie udzielono odpowiedzi"</string>
-    <string name="download_error">"Błąd podczas szukania zadań"</string>
+    <string name="download_error">"Błąd podczas pobierania zadań"</string>
     <string name="upload_error">"Błąd podczas przesyłania odpowiedzi"</string>
     <string name="download_area_too_big">"Przybliż bardziej"</string>
-    <string name="confirmation_cancel_prev_download_title">"Chcesz zatrzymać trwające wyszukiwanie i rozpocząć w tej okolicy?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Chcesz zatrzymać trwające wyszukiwanie i pobrać w tej okolicy?"</string>
     <string name="turn_on_location_request">"Dostęp do lokalizacji jest wyłączony. Otworzyć ustawienia by to zmienić?"</string>
     <string name="no_location_permission_warning">"Aby wyświetlić swoją pozycję na mapie i zadania dostępne w okolicy, potrzebna jest zgoda na lokalizację."</string>
     <string name="about_title_authors">"Autorzy"</string>
@@ -102,13 +102,13 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_surface_value_unpaved">"Nieutwardzona (ogólnie)"</string>
     <string name="quest_surface_value_ground">"Gruntowa (ogólnie)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
-    <string name="quest_surface_value_compacted">"Tłuczeń"</string>
+    <string name="quest_surface_value_compacted">"Rolowany i mocno ubity żwir"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Ziemia / Gleba / Pył"</string>
     <string name="quest_surface_value_fine_gravel">"Drobny żwir"</string>
     <string name="quest_surface_value_grass">"Trawa"</string>
     <string name="quest_surface_value_grass_paver">"Kratka trawnikowa"</string>
-    <string name="quest_surface_value_gravel">"Żwir"</string>
+    <string name="quest_surface_value_gravel">"Gruby żwir"</string>
     <string name="quest_surface_value_paving_stones">"Kostka brukowa / Płyta chodnikowa"</string>
     <string name="quest_surface_value_pebblestone">"Otoczaki / Kamyki"</string>
     <string name="quest_surface_value_sand">"Piasek"</string>
@@ -132,7 +132,7 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="crash_compose_email">"Napisz email"</string>
     <string name="no_email_client">"Nie masz zainstalowanego żadnego klienta poczty."</string>
     <string name="pref_title_keep_screen_on">"Pozostaw ekran włączony"</string>
-    <string name="download_server_error">"Błąd połączenia podczas szukania zadań. Spróbuj później."</string>
+    <string name="download_server_error">"Błąd połączenia podczas pobierania zadań. Spróbuj później."</string>
     <string name="upload_server_error">"Błąd połączenia podczas wysyłania odpowiedzi. Spróbuj później."</string>
     <string name="quest_generic_hasFeature_yes">"Tak"</string>
     <string name="quest_generic_hasFeature_no">"Nie"</string>
@@ -174,7 +174,7 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_toiletsFee_title">"Czy te toalety są płatne?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Czy to przejście ma wypustki dotykowe dla niewidomych po obu stronach?"</string>
     <string name="quest_source_dialog_title">"Na pewno masz to sprawdzone w terenie?"</string>
-    <string name="quest_source_dialog_note">"Należy wprowadzać tylko informacje, które zostały sprawdzone w terenie."</string>
+    <string name="quest_source_dialog_note">"Należy wprowadzać tylko informacje, które zostały osobiście sprawdzone w terenie."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Czy ten parking dla rowerów jest zakryty (przed deszczem)?"</string>
     <string name="dialog_session_dont_show_again">"Nie pokazuj ponownie podczas tej sesji"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"To ograniczenie prędkości wygląda podejrzanie."</string>
@@ -803,7 +803,6 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="quest_construction_completion_date_title">"Kiedy będzie oddane do użytku?"</string>
     <string name="quest_surface_value_clay">"Glina"</string>
     <string name="quest_surface_value_artificial_turf">"Sztuczna trawa"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Czy parkując tutaj rower, musisz uiścić opłatę?"</string>
     <string name="quest_buildingType_house_description2">"inny dom jednorodzinny (niebędący wolnostojącym)"</string>
     <string name="quest_drinking_water_potable_signed">"Zdatne do picia (oznaczone)"</string>
@@ -1403,6 +1402,9 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="about_category_help">"Pomoc"</string>
     <string name="quest_camp_power_supply_hint">"Mogą to być gniazdka znajdujące się bezpośrednio na polu namiotowym, gniazdka zlokalizowane w budynkach usługowych dostępnych dla gości, lub dedykowane stacje ładowania telefonów, laptopów itp."</string>
     <string name="quest_barrier_opening_width_bollard">"Jaka jest najszersza luka, którą można się tędy przedostać?"</string>
+    <string name="user_profile_all_time_title">"Całkowicie"</string>
     <string name="user_statistics_country_rank2">"Ranga w %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"To tylko pień drzewa"</string>
+    <string name="note_for_object">"Ktoś utworzył notkę:"</string>
+    <string name="quest_surface_value_rubber">"Ziarnista guma"</string>
 </resources>

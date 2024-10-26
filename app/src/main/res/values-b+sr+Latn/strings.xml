@@ -800,7 +800,6 @@ Ako su neke trake za javni prevoz, ostavite napomenu."</string>
     <string name="quest_construction_completion_date_title">"Kada će biti završeno?"</string>
     <string name="quest_surface_value_clay">"Šljaka"</string>
     <string name="quest_surface_value_artificial_turf">"Veštačka trava"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Da li je potrebno da platite kako biste parkirali bicikl?"</string>
     <string name="quest_buildingType_house_description2">"neizdvojena porodična kuća, npr. red kuća"</string>
     <string name="quest_drinking_water_potable_signed">"Voda je za piće (postoji tabla)"</string>

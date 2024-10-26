@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ПАО Сбербанк, '"Азиатско-Тихоокеанский Банк" (АО)', ПАО "Промсвязьбанк", Банк ВТБ (ПАО), ПАО РОСБАНК]
+atmOperators: [ПАО Сбербанк, '"Азиатско-Тихоокеанский Банк" (АО)', ПАО "Промсвязьбанк", Банк ВТБ (ПАО), АО "Россельхозбанк", ПАО РОСБАНК]
+chargingStationOperators: [Россети]
 officialLanguages: [ru, bua]

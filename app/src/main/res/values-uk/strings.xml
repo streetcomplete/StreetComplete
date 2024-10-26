@@ -131,7 +131,7 @@
     <string name="crash_title">"О ні, StreetComplete «крашнувся» останнього разу!"</string>
     <string name="crash_compose_email">"Написати лист"</string>
     <string name="no_email_client">"У вас немає встановленого поштового клієнта."</string>
-    <string name="pref_title_keep_screen_on">"Не блоковувати екран"</string>
+    <string name="pref_title_keep_screen_on">"Не блокувати екран"</string>
     <string name="download_server_error">"Помилка з'єднання під час пошуку завдань. Спробуйте пізніше."</string>
     <string name="upload_server_error">"Помилка з'єднання під час завантаження відповідей. Спробуйте пізніше."</string>
     <string name="quest_generic_hasFeature_yes">"Так"</string>
@@ -594,7 +594,7 @@
     <string name="link_category_intro_title">"Вступ"</string>
     <string name="link_category_intro_description">"Дізнайтеся більше про OSM та його спільноту"</string>
     <string name="link_category_editors_title">"Внесок"</string>
-    <string name="link_category_editors_description">"Родактори та інші шляхи допомогти OpenStreetMap"</string>
+    <string name="link_category_editors_description">"Редактори та інші шляхи допомогти OpenStreetMap"</string>
     <string name="link_category_maps_title">"Мапи"</string>
     <string name="link_category_maps_description">"Мапи на основі OpenStreetMap"</string>
     <string name="link_category_showcase_title">"Вітрина"</string>
@@ -796,7 +796,6 @@
     <string name="quest_construction_completion_date_title">"Коли буде завершено?"</string>
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Штучна трава"</string>
-    <string name="quest_surface_value_tartan">"Тартан (гумове покриття)"</string>
     <string name="quest_bicycle_parking_fee_title">"Тут потрібно платити за паркування велосипеда?"</string>
     <string name="quest_buildingType_house_description2">"Не окремий односімейний будинок"</string>
     <string name="quest_drinking_water_potable_signed">"Безпечно для пиття (вказівник)"</string>
@@ -1400,4 +1399,6 @@
     <string name="user_statistics_country_rank2">"Місце в %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Це просто пень"</string>
     <string name="quest_board_name_title">"Яка назва цієї інформаційної дошки?"</string>
+    <string name="quest_crossing_hint">"Неформальна стежка, що перетинає дорогу:"</string>
+    <string name="note_for_object">"Нотатка іншої особи:"</string>
 </resources>

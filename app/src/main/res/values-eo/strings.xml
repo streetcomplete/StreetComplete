@@ -689,6 +689,7 @@ aktiva"</string>
     <string name="quest_board_type_title">"Kio estas la temo de ĉi tiu informa tabulo?"</string>
     <string name="quest_board_type_map">"Ĝi estas mapo"</string>
     <string name="quest_board_type_map_title">"Ĉu ĝi estas nur mapo?"</string>
+    <string name="quest_board_type_map_description">"Se la tabulo havus apartan temon, bonvole specifu ĝin, sendepende ĉu ĝi ankaŭ montrus mapon. Ekzemple publika transporto tabulo montrus mapon de la itineroj de la aŭtobusoj. Se la temo ne estas en la listo de la elektablajn respondojn, bonvole konsideru fari noton."</string>
     <string name="quest_surface_detailed_answer_impossible">"Pluraj surfacoj"</string>
     <string name="quest_streetName_menuItem_international">"internacia"</string>
     <string name="quest_buildingType_terrace2">"Vicdomoj"</string>
@@ -790,7 +791,6 @@ Kontrolu ĉiujn opciojn: kelkaj kazoj ne estas evidentaj, kiel unudirekta vojo k
     <string name="quest_construction_completion_date_title">"Kiam ĝi estos kompleta?"</string>
     <string name="quest_surface_value_clay">"Skorio"</string>
     <string name="quest_surface_value_artificial_turf">"Artefarita herbo"</string>
-    <string name="quest_surface_value_tartan">"Tartano"</string>
     <string name="quest_bicycle_parking_fee_title">"Ĉu oni devas pagi por parki biciklon ĉi tie?"</string>
     <string name="quest_buildingType_house_description2">"nesendependa unufamilia hejmo, ekz. unua envica domo"</string>
     <string name="quest_drinking_water_potable_signed">"Sekure trinkebla (signita)"</string>
@@ -1149,7 +1149,7 @@ Faru la samon por la alia flanko, se ĝi ĉeestas."</string>
     <string name="quest_camp_drinking_water_title">"Ĉu trinkakvo estas libere havebla al kamploĝantoj ĉi tie?"</string>
     <string name="quest_camp_shower_title">"Ĉu estas duŝoj ĉi tie?"</string>
     <string name="quest_camp_power_supply_title">"Ĉu ekzistas iu maniero por klientoj ŝarĝi sian telefonon, tekkomputilon ktp ĉi tie?"</string>
-    <string name="quest_camp_type_title">"Kiu eble tendumos ĉi tie?"</string>
+    <string name="quest_camp_type_title">"Kiu eble tendumus ĉi tie?"</string>
     <string name="quest_camp_type_tents_and_caravans">"Kaj tendoj kaj kampadveturiloj, ruldomoj, …"</string>
     <string name="quest_camp_type_caravans_only">"Nur kampadveturiloj, ruldomoj, …"</string>
     <string name="quest_camp_type_tents_only">"Nur tendoj"</string>
@@ -1347,4 +1347,17 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="pref_category_quests">"Tasko"</string>
     <string name="pref_title_language_select2">"Lingvo"</string>
     <string name="questList_disabled_by_default">"Defaŭlte malebiligita"</string>
+    <string name="quest_multiselect_hint">"Elektu ĉion kongruan:"</string>
+    <string name="quest_barrier_opening_width_gate">"Kiom larĝa estas la apertaĵo ĉi tie?"</string>
+    <string name="bridge">"sur ponto"</string>
+    <string name="about_title_intro">"Montru enkondukon"</string>
+    <string name="about_category_help">"Helpo"</string>
+    <string name="quest_camp_power_supply_hint">"Tiu estus ŝtopilingoj ĉe la tendejoj, ŝtopilingoj ĉe la servkonstruaĵo por la gastoj, destinata ŝargstacio por poŝtelefonoj, tekkomputiloj, ktp."</string>
+    <string name="quest_barrier_opening_width_bollard">"Kio estas la plej larĝa apertaĵo kiu estas trairebla ĉi tie?"</string>
+    <string name="user_profile_all_time_title">"Entute"</string>
+    <string name="user_statistics_country_rank2">"Rango en %s"</string>
+    <string name="quest_leafType_tree_is_just_a_stump">"Nur estas stumpo de trunko"</string>
+    <string name="quest_board_name_title">"Kio estas la surskribo de tiu informtabulo?"</string>
+    <string name="quest_crossing_hint">"Pado kiu kruciĝas straton:"</string>
+    <string name="note_for_object">"Iu rimarkis:"</string>
 </resources>

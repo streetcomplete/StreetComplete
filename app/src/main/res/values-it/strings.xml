@@ -800,7 +800,6 @@ Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio un
     <string name="quest_construction_completion_date_title">"Quando sarà completato?"</string>
     <string name="quest_surface_value_clay">"Argilla"</string>
     <string name="quest_surface_value_artificial_turf">"Erba sintetica"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Si paga per parcheggiare la bici qui?"</string>
     <string name="quest_buildingType_house_description2">"casa unifamiliare non indipendente"</string>
     <string name="quest_drinking_water_potable_signed">"È sicura da bere (è scritto così)"</string>
@@ -1350,7 +1349,7 @@ Inoltre, alcuni livelli permettono l'aggiunta di nuovi dati alla posizione del b
     <string name="quest_buildingType_under_construction">"In costruzione"</string>
     <string name="overlay_buildings">"Edifici"</string>
     <string name="quest_pedestrian_crossing_markings">"Questo attraversamento ha della segnaletica orizzontale?"</string>
-    <string name="overlay_places">"Luoghi"</string>
+    <string name="overlay_places">"Negozi"</string>
     <string name="overlay_things">"Oggetti"</string>
     <string name="disused">"inutilizzato"</string>
     <string name="unknown_object">"Oggetto sconosciuto"</string>

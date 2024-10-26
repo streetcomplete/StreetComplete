@@ -803,7 +803,6 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="quest_construction_completion_date_title">"Når blir det ferdig?"</string>
     <string name="quest_surface_value_clay">"Leire"</string>
     <string name="quest_surface_value_artificial_turf">"Kunstgress"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Må du betale for å parkere sykkel her?"</string>
     <string name="quest_buildingType_house_description2">"Enebolig"</string>
     <string name="quest_drinking_water_potable_signed">"Drikkevann (merket)"</string>
@@ -1363,13 +1362,14 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="about_description_donate_google_play3">"Takk for at du vurderer å støtte denne appen! Du kan finne informasjon om donasjon på våre nettsider eller \"project home\", Google Play tillater ikke at vi gir linken inne i appen."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Utendørs, men tildekket"</string>
     <string name="lit_value_unsupported">"Spesiell belysningsstatus som ikke kan velges i denne appen"</string>
-    <string name="quest_generic_otherAnswers2">"Uh…"</string>
+    <string name="quest_generic_otherAnswers2">"Eeh…"</string>
     <string name="quest_pedestrian_crossing_signals2">"Er det trafikklys som indikerer når man kan krysse her?"</string>
     <string name="quest_moped_access_title">"Er det et skilt som indikerer tilgang for mopeder på denne sykkelstien?"</string>
     <string name="quest_moped_access_allowed">"Det er ikke skilt"</string>
     <string name="quest_moped_access_designated">"Det er et skilt som betegner dette sykkelfeltet for mopeder"</string>
     <string name="quest_moped_access_forbidden">"Det er et skilt som forbyr mopeder"</string>
     <string name="default_disabled_msg_visible_sign_moped">"Denne oppgavetypen er deaktivert som standard siden mopedtilgang kun er markert ved et spesielt skilt på starten/slutten av sykkelfeltet."</string>
+    <string name="quest_arrow_tutorial">"Pilene i illustrasjonen peker i retningen veien går på kartet. Prøv å rotere kartet, og du vil skjønne det."</string>
     <string name="info">"Mer informasjon"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Det er forbudt."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Det er tillatt."</string>
@@ -1401,4 +1401,6 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="user_profile_all_time_title">"Totalt"</string>
     <string name="user_statistics_country_rank2">"Rangering i %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Kun en stubbe"</string>
+    <string name="quest_board_name_title">"Hva er overskriften på dette infomasjonsskiltet?"</string>
+    <string name="note_for_object">"En annen person bemerket:"</string>
 </resources>

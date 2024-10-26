@@ -792,7 +792,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_construction_completion_date_title">"¿Cuándo estará terminado?"</string>
     <string name="quest_surface_value_clay">"Arcillosa o con barro"</string>
     <string name="quest_surface_value_artificial_turf">"Césped artificial"</string>
-    <string name="quest_surface_value_tartan">"Tartán"</string>
     <string name="quest_bicycle_parking_fee_title">"¿Hay que pagar para estacionar una bici acá?"</string>
     <string name="quest_buildingType_house_description2">"Vivienda unifamiliar no independiente"</string>
     <string name="quest_drinking_water_potable_signed">"Potable (señalizado)"</string>

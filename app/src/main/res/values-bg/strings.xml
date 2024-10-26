@@ -787,7 +787,6 @@
     <string name="quest_construction_completion_date_title">"Кога ще бъде готово?"</string>
     <string name="quest_surface_value_clay">"Глина"</string>
     <string name="quest_surface_value_artificial_turf">"Изкуствена трева"</string>
-    <string name="quest_surface_value_tartan">"Тартан"</string>
     <string name="quest_bicycle_parking_fee_title">"Плаща ли се паркингът за велосипеди?"</string>
     <string name="quest_buildingType_house_description2">"Еднофамилна къща прилепена за друга"</string>
     <string name="quest_drinking_water_potable_signed">"Добра е за пиене (има табела)"</string>
@@ -1362,8 +1361,7 @@
     <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Има тротоар, но на картата е изобразен отделно."</string>
     <string name="quest_buildingLevels_hint">"За сгради под наклон, отчитането на нивата започва от нивото на земята на най-ниската страна.
 
-Едно ниво се счита за ниво на покрива, когато прозорците му са в покрива. Впоследствие покривите с нулеви нива на покрива не са непременно плоски, просто не са достатъчно високи за цяло ниво.
-    "</string>
+Едно ниво се счита за ниво на покрива, когато прозорците му са в покрива. Впоследствие покривите с нулеви нива на покрива не са непременно плоски, просто не са достатъчно високи за цяло ниво."</string>
     <string name="quest_parcel_locker_brand">"Коя компания поддържа това шкафче за пратки?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"Електропроводът е анкериран към сградата"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"няма, но знакът позволява карането на велосипед по тротоара"</string>
