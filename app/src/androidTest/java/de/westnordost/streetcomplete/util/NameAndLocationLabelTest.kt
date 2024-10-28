@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import java.util.Locale
-import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

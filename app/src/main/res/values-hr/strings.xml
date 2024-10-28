@@ -45,7 +45,7 @@
     <string name="download_area_too_big">"Molimo da dodatno približite kartu"</string>
     <string name="confirmation_cancel_prev_download_title">"Zaustavi trenutnu pretragu i pokreni novu ovdje?"</string>
     <string name="turn_on_location_request">"Lokacija je isključena. Želite li sada otvoriti Postavke kako biste je uključili?"</string>
-    <string name="no_location_permission_warning">"Lokacija je potrebna za pronalaženje zadataka u vašoj blizini."</string>
+    <string name="no_location_permission_warning">"Dozvola pristupa Lokaciji je potrebna za prikazivanje vaše pozicije na karti te pronalaženje zadataka u blizini."</string>
     <string name="about_title_authors">"Zasluge"</string>
     <string name="about_title_repository">"Repozitorij izvornog koda"</string>
     <string name="about_title_report_error">"Prijavi grešku"</string>
@@ -131,7 +131,7 @@ Podaci koje unesete se izravno dodaju u OpenStreetMap pod vašim korisničkim im
     <string name="crash_compose_email">"Napišite e-poštu"</string>
     <string name="no_email_client">"Nemate instaliran klijent e-pošte."</string>
     <string name="pref_title_keep_screen_on">"Drži ekran upaljenim"</string>
-    <string name="download_server_error">"Greška u povezivanju prilikom traženja zadataka. Pokušajte ponovno kasnije."</string>
+    <string name="download_server_error">"Greška u povezivanju prilikom preuzimanja podataka. Pokušajte ponovno kasnije."</string>
     <string name="upload_server_error">"Greška u povezivanju prilikom slanja odgovora. Pokušajte ponovno kasnije."</string>
     <string name="quest_generic_hasFeature_yes">"Da"</string>
     <string name="quest_generic_hasFeature_no">"Ne"</string>
@@ -192,7 +192,7 @@ Ako duž cijele ulice nema znakova koji se odnose na istaknuti odjeljak, primjen
     <string name="quest_sport_gaelic_games">"Galske igre"</string>
     <string name="quest_sport_sepak_takraw">"(Sepak takraw)"</string>
     <string name="quest_wheelchairAccess_limited">"Djelomično"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Imajte na umu da se većina standarnih postolja može koristiti s obje strane za parkiranje bicikala."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Imajte na umu da obično možete parkirati po jedan bicikl sa svake strane postolja."</string>
     <string name="quest_sport_roller_skating">"Rolanje"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"\"Djelomično\" znači da nema više od jedne stepenice visine gležnja za pristup lokaciji, i da je većina prostorija pristupačna za invalidska kolica."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Djelomično\" znači da nema više od jedne stepenice visine gležnja za pristup."</string>
@@ -356,7 +356,7 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="quest_religion_bahai">"Bahaizam"</string>
     <string name="quest_religion_caodaist">"Kaodaizam"</string>
     <string name="quest_religion_chinese_folk">"Kineska narodna religija"</string>
-    <string name="quest_religion_for_wayside_shrine_title">"Koja je religija zastupljena u ovom svetištu?"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"S kojom je religijom povezano ovo svetište?"</string>
     <string name="quest_parking_fee_title">"Naplaćuje li se parkiranje ovdje?"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Kaldrma"</string>
     <string name="quest_streetSurface_square_title">"Kakvu površinu ima ovaj trg?"</string>
@@ -803,7 +803,6 @@ Pripazite na sve dostupne opcije: neki slučajevi nisu očigledni, poput jednosm
     <string name="quest_construction_completion_date_title">"Kada će biti dovršeno?"</string>
     <string name="quest_surface_value_clay">"Mrvljena cigla"</string>
     <string name="quest_surface_value_artificial_turf">"Umjetna trava"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Naplaćuje li se parkiranje bicikla ovdje?"</string>
     <string name="quest_buildingType_house_description2">"Neodvojena obiteljska kuća, npr. jedna od kuća u nizu"</string>
     <string name="quest_drinking_water_potable_signed">"Sigurno za piće (s oznakom)"</string>
@@ -1410,4 +1409,8 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_board_name_title">"Koji je naziv ove informativne ploče?"</string>
     <string name="quest_crossing_hint">"Neformalna staza koja prelazi cestu:"</string>
     <string name="note_for_object">"Druga je osoba zabilježila:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Kombinirani stalak (pridržava i kotač i ramu)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"nema, ali znak dopušta vožnju biciklom nogostupom, u oba smjera"</string>
+    <string name="quest_surface_value_rubber">"Gumene granule"</string>
+    <string name="quest_surface_value_acrylic">"Sintetička smola / akril"</string>
 </resources>

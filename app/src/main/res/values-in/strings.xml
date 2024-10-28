@@ -805,7 +805,6 @@ Catat semua opsi yang tersedia: beberapa kasus tidak terlihat jelas, seperti jal
     <string name="quest_construction_completion_date_title">"Kapan ini akan selesai?"</string>
     <string name="quest_surface_value_clay">"Tanah liat"</string>
     <string name="quest_surface_value_artificial_turf">"Rumput palsu"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Apakah kamu harus membayar untuk memarkir sepeda di sini?"</string>
     <string name="quest_buildingType_house_description2">"rumah keluarga tunggal yang tidak terpisah, mis. rumah satu baris"</string>
     <string name="quest_drinking_water_potable_signed">"Aman untuk diminum (tertanda)"</string>

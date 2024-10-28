@@ -101,13 +101,13 @@ Antes de enviar as suas alterações, a aplicação confirma com &lt;a href=\"ht
     <string name="quest_surface_value_unpaved">"Não pavimentado (genérico)"</string>
     <string name="quest_surface_value_ground">"Terra (genérico)"</string>
     <string name="quest_surface_value_asphalt">"Asfalto"</string>
-    <string name="quest_surface_value_compacted">"Compactado"</string>
+    <string name="quest_surface_value_compacted">"Cascalho compactado"</string>
     <string name="quest_surface_value_concrete">"Cimento"</string>
     <string name="quest_surface_value_dirt">"Terra batida"</string>
     <string name="quest_surface_value_fine_gravel">"Gravilha"</string>
     <string name="quest_surface_value_grass">"Erva"</string>
     <string name="quest_surface_value_grass_paver">"Blocos cimento ou argamassa permeáveis (com buracos)"</string>
-    <string name="quest_surface_value_gravel">"Cascalho"</string>
+    <string name="quest_surface_value_gravel">"Cascalho grosso"</string>
     <string name="quest_surface_value_paving_stones">"Blocos (cimento, pedra, tijolo, argamassa…)"</string>
     <string name="quest_surface_value_pebblestone">"Seixos"</string>
     <string name="quest_surface_value_sand">"Areia"</string>
@@ -766,7 +766,8 @@ conquista"</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">"Tem 1 via de trânsito para virar à esquerda em cada sentido"</string>
     <string name="quest_address_answer_no_housenumber_message2b">"Está correto?"</string>
     <string name="quest_maxheight_below_bridge_title">"Qual é o limite de altura por baixo da ponte?"</string>
-    <string name="quest_maxheight_split_way_hint">"Esta pergunta também é feita para estradas que passam por baixo de pontes, telhados, tubos suspensos, etc./nAlém disso, se não se aplicar a toda a secção destacada, considere responder “%s”."</string>
+    <string name="quest_maxheight_split_way_hint">"Esta pergunta também é feita para estradas que passam por baixo de pontes, telhados, tubos suspensos, etc.
+Caso não se aplique a toda a secção destacada, pode responder “%s”."</string>
     <string name="quest_tactile_paving_kerb_title">"Este lancil tem pavimento tátil?"</string>
     <string name="quest_kerb_height_title">"Qual é a altura deste lancil?"</string>
     <string name="quest_kerb_height_flush">"Mesmo nível da superfície da estrada"</string>
@@ -801,7 +802,6 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="quest_construction_completion_date_title">"Quando termina a construção?"</string>
     <string name="quest_surface_value_clay">"Argila"</string>
     <string name="quest_surface_value_artificial_turf">"Relva artificial"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Este estacionamento de bicicletas é pago?"</string>
     <string name="quest_buildingType_house_description2">"casa unifamiliar com pelo menos 1 parede não independente, por ex. uma casa única numa série de casas em banda (2 ou mais casas)"</string>
     <string name="quest_drinking_water_potable_signed">"Potável (assinalado)"</string>
@@ -1273,8 +1273,8 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="overlay_surface">"Superfícies"</string>
     <string name="overlay_path_surface_segregated">"Dividir em ciclovia e passeio separados"</string>
     <string name="quest_crossing_title2">"Existe uma passadeira aqui?"</string>
-    <string name="quest_crossing_yes">"Sim (p.ex. o lancil é rebaixado ou existem marcações)"</string>
-    <string name="quest_crossing_no">"Não, mas o atravessamento é possível"</string>
+    <string name="quest_crossing_yes">"Sim, como travessia"</string>
+    <string name="quest_crossing_no">"Não se destina a ser atravessada, mas pode ser atravessada (por exemplo, trilhos informais)"</string>
     <string name="quest_crossing_prohibited">"Não, o atravessamento é proibido ou impossível"</string>
     <string name="quest_hairdresser_title">"Que clientes visitam este cabeleireiro/a?"</string>
     <string name="quest_hairdresser_male_and_female">"Qualquer pessoa"</string>
@@ -1406,4 +1406,6 @@ Um andar conta como um andar de telhado quando as suas janelas estão no telhado
     <string name="user_statistics_country_rank2">"Posição em %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"É apenas um cepo de árvore"</string>
     <string name="quest_board_name_title">"Qual é o título deste painel de informações?"</string>
+    <string name="quest_crossing_hint">"Um trilho informal que atravessa uma estrada:"</string>
+    <string name="note_for_object">"Outra pessoa deixou uma nota:"</string>
 </resources>

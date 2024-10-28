@@ -803,7 +803,6 @@ Pazi na vse razpoložljive možnosti: nekateri primeri niso očitni, kot na prim
     <string name="quest_construction_completion_date_title">"Kdaj bo končana?"</string>
     <string name="quest_surface_value_clay">"Glina"</string>
     <string name="quest_surface_value_artificial_turf">"Umetna trava"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Ali morate plačati za parkiranje?"</string>
     <string name="quest_buildingType_house_description2">"Nesamostojna enodružinska hiša - ena izmed vrstnih hiš"</string>
     <string name="quest_drinking_water_potable_signed">"Pitna (označeno)"</string>

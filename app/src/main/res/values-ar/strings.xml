@@ -802,7 +802,6 @@
     <string name="quest_construction_completion_date_title">"متى سيكتمل؟"</string>
     <string name="quest_surface_value_clay">"طين/وحل"</string>
     <string name="quest_surface_value_artificial_turf">"عشب صناعي"</string>
-    <string name="quest_surface_value_tartan">"ترتان/كروهات"</string>
     <string name="quest_bicycle_parking_fee_title">"هل عليك أن تدفع مقابل ركن دراجة هنا؟"</string>
     <string name="quest_buildingType_house_description2">"منزل أسرة واحدة غير منفصل"</string>
     <string name="quest_drinking_water_potable_signed">"آمن للشرب (توقيع)"</string>

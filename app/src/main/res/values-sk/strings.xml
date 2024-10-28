@@ -796,7 +796,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="quest_construction_completion_date_title">"Kedy to bude stavba dokončená?"</string>
     <string name="quest_surface_value_clay">"Antuka"</string>
     <string name="quest_surface_value_artificial_turf">"Umelý trávnik"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Platí sa tu za parkovanie bicykla?"</string>
     <string name="quest_buildingType_house_description2">"samostatne stojaci rodinný dom"</string>
     <string name="quest_drinking_water_potable_signed">"Pitná voda (značená)"</string>

@@ -322,7 +322,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Även cykelbana på andra sidan…"</string>
     <string name="quest_openingHours_emptyAnswer">"Beskriv vad som står på skylten. Saknas skylt, fråga om öppettiderna."</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">"inga, men cyklister får cykla i båda riktningarna"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men cyklister får cykla i båda riktningarna"</string>
     <string name="quest_streetName_answer_noName_question">"Varför har den inget namn?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"Det är en uppfart, parkeringsväg eller liknande"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Det är en traktor- eller skogsväg"</string>
@@ -803,7 +803,6 @@ Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en e
     <string name="quest_construction_completion_date_title">"När kommer det att vara klart?"</string>
     <string name="quest_surface_value_clay">"Lera"</string>
     <string name="quest_surface_value_artificial_turf">"Konstgräs"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Kostar det att parkera en cykel här?"</string>
     <string name="quest_buildingType_house_description2">"icke-friliggande enfamiljshus, t.ex. ett enskilt radhus"</string>
     <string name="quest_drinking_water_potable_signed">"Drickbart (skyltat)"</string>
@@ -1409,4 +1408,10 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="user_statistics_country_rank2">"Rang i %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Det är bara en trästubbe"</string>
     <string name="quest_board_name_title">"Vad har den här informationstavlan för rubrik?"</string>
+    <string name="quest_crossing_hint">"En informell stig som korsar en väg:"</string>
+    <string name="note_for_object">"Någon har antecknat:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Framhjulsställ med ramställ emellan"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"ingen, men en skylt tillåter cykling på trottoaren, båda riktningarna"</string>
+    <string name="quest_surface_value_rubber">"Gummigranulat"</string>
+    <string name="quest_surface_value_acrylic">"Akryl"</string>
 </resources>

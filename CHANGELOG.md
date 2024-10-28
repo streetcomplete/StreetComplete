@@ -1,11 +1,16 @@
 # Changelog
 
-## vNext
+## v59.3
 
+- Things overlay: Mailboxes and street cabinets are now selectable (#4916, #5970)
 - Bike parking type: Add "safe loops" as selectable option (#5774), by @mcliquid
 - Bike paths: Add "cycling on sidewalk is allowed in both directions" as selectable option (#5888, #5931), by @wielandb
 - Bike paths overlay: Don't show the inner side of roundabouts etc. as missing, even if there's no data (#5959)
-- Things overlay: Mailboxes and street cabinets are now selectable (#4916, #5970)
+- Bike paths: Improve some wordings (#5963, #5964)
+- Surfaces: Simplified interface for edge cases (#5984, #5330, #5980, #5951)
+- Pitch surface: Add "synthetic resin" as selectable option and improve some pictures (#5965)
+- Prohibited for pedestrians: Clear any sidewalk info when user objected that the sidewalk info is wrong (#5952)
+- Improved handling of deleting POIs that are part of relations (#5851)
 - Other small quest improvements, thanks @matkoniecz
 
 ## v59.2

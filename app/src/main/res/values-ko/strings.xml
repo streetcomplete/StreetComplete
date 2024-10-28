@@ -800,7 +800,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_construction_completion_date_title">"완공일자가 언제인가요?"</string>
     <string name="quest_surface_value_clay">"찰흙"</string>
     <string name="quest_surface_value_artificial_turf">"인조잔디"</string>
-    <string name="quest_surface_value_tartan">"타탄"</string>
     <string name="quest_bicycle_parking_fee_title">"이곳에 자전거 주차 요금이 있나요?"</string>
     <string name="quest_buildingType_house_description2">"다른 건물과 붙어있는 단독주택"</string>
     <string name="quest_drinking_water_potable_signed">"마실 수 있음(표지판 있음)"</string>

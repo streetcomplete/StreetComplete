@@ -802,7 +802,6 @@ Huomioi kaikki vaihtoehdot: jotkut tapaukset eivät ole ilmiselviä, kuten yksis
     <string name="quest_construction_completion_date_title">"Milloin se valmistuu?"</string>
     <string name="quest_surface_value_clay">"Savi"</string>
     <string name="quest_surface_value_artificial_turf">"Tekonurmi"</string>
-    <string name="quest_surface_value_tartan">"Tartan"</string>
     <string name="quest_bicycle_parking_fee_title">"Maksaako polkupyörän pysäköiminen täällä?"</string>
     <string name="quest_buildingType_house_description2">"Yhdistetty yhden perheen koti, kuten yksittäinen rivitaloasunto"</string>
     <string name="quest_drinking_water_potable_signed">"Turvallista (merkitty)"</string>
@@ -1292,8 +1291,8 @@ Haluatko siirtää nyt?"</string>
     <string name="quest_tactilePaving_steps_top">"Vain ylhäällä"</string>
     <string name="quest_tactilePaving_steps_bottom">"Vain alhaalla"</string>
     <string name="overlay_addresses_no_entrance">"Se ei ole sisäänkäynti…"</string>
-    <string name="quest_cycleway_value_sidewalk2">"Yhteiskäyttöpolku"</string>
-    <string name="quest_cycleway_value_sidewalk_dual2">"yhteiskäytön polku, molempiin suuntiin"</string>
+    <string name="quest_cycleway_value_sidewalk2">"Yhteiskäyttöinen jalkakäytävä"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"yhteiskäyttöinen jalkakäytävä, molempiin suuntiin"</string>
     <string name="overlays_tutorial_title">"Tasot"</string>
     <string name="overlays_tutorial_intro">"Löysit uuden tavan muokata tietoja!"</string>
     <string name="overlays_tutorial_display">"Jokainen taso näyttää tietynlaista tietoa, esimerkiksi paikkoja tai  kadunpintoja.
@@ -1410,4 +1409,5 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="quest_board_name_title">"Mikä on tämän infotaulun otsikko?"</string>
     <string name="quest_crossing_hint">"Tien yli kulkeva epävirallinen reitti:"</string>
     <string name="note_for_object">"Merkintä toiselta henkilöltä:"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"Ei ole, mutta kyltti sallii pyöräilyn jalkakäytävällä molempiin suuntiin"</string>
 </resources>
