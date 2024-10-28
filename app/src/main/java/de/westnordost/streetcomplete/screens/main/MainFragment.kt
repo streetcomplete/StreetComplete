@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -33,10 +34,15 @@ import androidx.fragment.app.commit
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
+import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.edithistory.icon
+import de.westnordost.streetcomplete.data.import.GpxImporter
 import de.westnordost.streetcomplete.data.messages.Message
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -77,6 +83,8 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAwar
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
+import de.westnordost.streetcomplete.screens.main.controls.GpxImportConfirmationDialog
+import de.westnordost.streetcomplete.screens.main.controls.GpxImportSettingsDialog
 import de.westnordost.streetcomplete.screens.main.controls.MainMenuDialog
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryFragment
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
@@ -116,12 +124,24 @@ import de.westnordost.streetcomplete.util.math.initialBearingTo
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.reduce
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
+import java.util.Locale
+import kotlin.coroutines.resume
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.cos
@@ -165,6 +185,8 @@ class MainFragment :
     // rest
     ShowsGeometryMarkers {
 
+    private val downloadController: DownloadController by inject()
+    private val countryInfos: CountryInfos by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
@@ -1276,6 +1298,90 @@ class MainFragment :
         mapFragment?.isNavigationMode = false
         mapFragment?.setInitialCameraPosition(CameraPosition(position, 0.0, 0.0, zoom))
         setIsFollowingPosition(false)
+    }
+
+    private data class DownloadStats (
+        val numberOfDownloads: Int,
+        val areaInSqkm: Double,
+    )
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun importTrack(uri: Uri) {
+        val ctx = context ?: return
+        val fragment = mapFragment ?: return
+        val lengthUnit = Locale.getDefault().country.takeIf { it.isNotEmpty() }
+            ?.let { countryInfos.get(listOf(it)) }?.lengthUnits?.first() ?: LengthUnit.METER
+
+        viewLifecycleScope.launch {
+            val importSettings = suspendCancellableCoroutine { cont ->
+                    val dialog = GpxImportSettingsDialog(lengthUnit) { cont.resume(it) }
+                    dialog.show(parentFragmentManager, null)
+                }
+
+            val importer = GpxImporter(importSettings.minDownloadDistance)
+
+            // read file once to find number and size of downloads, as well as original imported points
+            var downloadStatsResult: Deferred<DownloadStats>? = null
+            if(importSettings.downloadAlongTrack) {
+                downloadStatsResult = async {
+                    var numberOfDownloads = 0
+                    val areaInSqkm = importer.downloadBBoxes
+                        .map {
+                            numberOfDownloads += 1
+                            it
+                        }
+                        .flatMapConcat { it.enclosingTilesRect(ApplicationConstants.DOWNLOAD_TILE_ZOOM).asTilePosSequence().asFlow() }
+                        .distinctUntilChanged()
+                        .map { it.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM).area() }
+                        .reduce { accumulator, value -> accumulator + value } / 1000000.0
+                    DownloadStats(numberOfDownloads, areaInSqkm)
+                }
+            }
+
+            val newSegmentsResult = async {
+                val segments = arrayListOf<List<LatLon>>()
+                importer.segments.collect {segments.add(it.toList())}
+                segments
+            }
+
+            ctx.contentResolver?.openInputStream(uri)?.let { inputStream ->
+                importer.readFile(this, inputStream)
+            }
+
+            val downloadStats = downloadStatsResult?.await()
+            val newSegments = newSegmentsResult.await()
+
+            if (importSettings.displayTrack) {
+                fragment.replaceImportedTrack(newSegments)
+            }
+
+            if(importSettings.downloadAlongTrack) {
+                assert(downloadStats != null)
+                if (downloadStats!!.areaInSqkm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM * 25) {
+                    context?.toast(R.string.gpx_import_download_area_too_big, Toast.LENGTH_LONG)
+                } else {
+                    suspendCancellableCoroutine { cont ->
+                        GpxImportConfirmationDialog(
+                            ctx,
+                            downloadStats.areaInSqkm,
+                            downloadStats.numberOfDownloads,
+                            lengthUnit
+                        ) { cont.resume(it) }.show()
+                    }
+
+                    // read file a second time to actually download the boxes
+                    val downloadJob = launch {
+                        importer.downloadBBoxes
+                            .collect { downloadController.download(it)}
+                    }
+
+                    ctx.contentResolver?.openInputStream(uri)?.let { inputStream ->
+                        importer.readFile(this, inputStream)
+                    }
+                    downloadJob.join()
+                }
+            }
+        }
     }
 
     //endregion
