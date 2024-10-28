@@ -136,7 +136,7 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
     // Jetpack Compose
-    val composeBom = platform("androidx.compose:compose-bom:2024.09.02")
+    val composeBom = platform("androidx.compose:compose-bom:2024.10.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material:material")
@@ -145,7 +145,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
 
-    implementation("androidx.navigation:navigation-compose:2.8.1")
+    implementation("androidx.navigation:navigation-compose:2.8.3")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
