@@ -168,7 +168,7 @@ class MainActivity :
 
     private lateinit var locationManager: FineLocationManager
 
-    private val controlsViewModel by viewModel<MainViewModel>()
+    private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
 
     private lateinit var binding: ActivityMainBinding
@@ -226,7 +226,7 @@ class MainActivity :
 
         binding.controls.content {
             MainScreen(
-                viewModel = controlsViewModel,
+                viewModel = viewModel,
                 editHistoryViewModel = editHistoryViewModel,
                 onClickZoomIn = ::onClickZoomIn,
                 onClickZoomOut = ::onClickZoomOut,
@@ -265,7 +265,7 @@ class MainActivity :
                 mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
             }
         }
-        observe(controlsViewModel.geoUri) { geoUri ->
+        observe(viewModel.geoUri) { geoUri ->
             if (geoUri != null) {
                 mapFragment?.setInitialCameraPosition(geoUri)
             }
@@ -288,7 +288,7 @@ class MainActivity :
         super.onNewIntent(intent)
         if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data?.toString() ?: return
-        controlsViewModel.setUri(data)
+        viewModel.setUri(data)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -327,16 +327,16 @@ class MainActivity :
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
-        controlsViewModel.geoUri.value?.let { mapFragment?.setInitialCameraPosition(it) }
-        controlsViewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
-        controlsViewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
-        controlsViewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
-        controlsViewModel.mapCamera.value = mapFragment?.cameraPosition
+        viewModel.geoUri.value?.let { mapFragment?.setInitialCameraPosition(it) }
+        viewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
+        viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
+        viewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
+        viewModel.mapCamera.value = mapFragment?.cameraPosition
         updateDisplayedPosition()
     }
 
     override fun onMapIsChanging(camera: CameraPosition) {
-        controlsViewModel.mapCamera.value = camera
+        viewModel.mapCamera.value = camera
         updateDisplayedPosition()
 
         val f = bottomSheetFragment
@@ -403,7 +403,7 @@ class MainActivity :
     }
 
     private fun updateDisplayedPosition() {
-        controlsViewModel.displayedPosition.value = getDisplayedPoint()?.let { Offset(it.x, it.y) }
+        viewModel.displayedPosition.value = getDisplayedPoint()?.let { Offset(it.x, it.y) }
     }
 
     private fun getDisplayedPoint(): PointF? {
@@ -610,7 +610,7 @@ class MainActivity :
 
     @SuppressLint("MissingPermission")
     private fun onLocationIsEnabled() {
-        controlsViewModel.locationState.value = LocationState.SEARCHING
+        viewModel.locationState.value = LocationState.SEARCHING
         mapFragment?.startPositionTracking()
         questAutoSyncer.startPositionTracking()
 
@@ -619,19 +619,19 @@ class MainActivity :
     }
 
     private fun onLocationIsDisabled() {
-        controlsViewModel.locationState.value = when {
+        viewModel.locationState.value = when {
             hasLocationPermission -> LocationState.ALLOWED
             else -> LocationState.DENIED
         }
-        controlsViewModel.isNavigationMode.value = false
-        controlsViewModel.displayedPosition.value = null
+        viewModel.isNavigationMode.value = false
+        viewModel.displayedPosition.value = null
         mapFragment?.clearPositionTracking()
         questAutoSyncer.stopPositionTracking()
         locationManager.removeUpdates()
     }
 
     private fun onLocationChanged(location: Location) {
-        controlsViewModel.locationState.value = LocationState.UPDATING
+        viewModel.locationState.value = LocationState.UPDATING
     }
 
     //endregion
@@ -639,18 +639,18 @@ class MainActivity :
     //region Buttons - Functionality for the buttons in the main view
 
     private fun onClickDownload() {
-        if (controlsViewModel.isConnected) {
+        if (viewModel.isConnected) {
             val downloadBbox = getDownloadArea() ?: return
-            if (controlsViewModel.isUserInitiatedDownloadInProgress) {
+            if (viewModel.isUserInitiatedDownloadInProgress) {
                 AlertDialog.Builder(this)
                     .setMessage(R.string.confirmation_cancel_prev_download_title)
                     .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
-                        controlsViewModel.download(downloadBbox)
+                        viewModel.download(downloadBbox)
                     }
                     .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
                     .show()
             } else {
-                controlsViewModel.download(downloadBbox)
+                viewModel.download(downloadBbox)
             }
         } else {
             toast(R.string.offline)
@@ -667,7 +667,7 @@ class MainActivity :
 
     private fun onClickTracksStop() {
         // hide the track information
-        controlsViewModel.isRecordingTracks.value = false
+        viewModel.isRecordingTracks.value = false
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
@@ -695,7 +695,7 @@ class MainActivity :
         val mapFragment = mapFragment ?: return
 
         when {
-            !controlsViewModel.locationState.value.isEnabled -> {
+            !viewModel.locationState.value.isEnabled -> {
                 requestLocation()
             }
             !mapFragment.isFollowingPosition -> {
@@ -721,12 +721,12 @@ class MainActivity :
 
     private fun setIsNavigationMode(navigation: Boolean) {
         mapFragment?.isNavigationMode = navigation
-        controlsViewModel.isNavigationMode.value = navigation
+        viewModel.isNavigationMode.value = navigation
     }
 
     private fun setIsFollowingPosition(follow: Boolean) {
         mapFragment?.isFollowingPosition = follow
-        controlsViewModel.isFollowingPosition.value = follow
+        viewModel.isFollowingPosition.value = follow
         if (follow) mapFragment?.centerCurrentPositionIfFollowing()
     }
 
@@ -810,7 +810,7 @@ class MainActivity :
 
     private fun onClickCreateTrack() {
         mapFragment?.startPositionTrackRecording()
-        controlsViewModel.isRecordingTracks.value = true
+        viewModel.isRecordingTracks.value = true
     }
 
     //endregion
@@ -877,7 +877,7 @@ class MainActivity :
 
     @UiThread
     private fun showOverlayFormForNewElement() {
-        val overlay = controlsViewModel.selectedOverlay.value ?: return
+        val overlay = viewModel.selectedOverlay.value ?: return
         val mapFragment = mapFragment ?: return
 
         val f = overlay.createForm(null) ?: return
@@ -900,7 +900,7 @@ class MainActivity :
     @UiThread
     private suspend fun showElementDetails(elementKey: ElementKey) {
         if (isElementCurrentlyDisplayed(elementKey)) return
-        val overlay = controlsViewModel.selectedOverlay.value ?: return
+        val overlay = viewModel.selectedOverlay.value ?: return
         val geometry = mapDataWithEditsSource.getGeometry(elementKey.type, elementKey.id) ?: return
         val mapFragment = mapFragment ?: return
 
