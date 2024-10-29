@@ -1,32 +1,28 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Icon
+import androidx.compose.material.LocalElevationOverlay
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ui.common.Counter
+import de.westnordost.streetcomplete.ui.common.CounterWithHalo
+import de.westnordost.streetcomplete.ui.common.TextWithHalo
+import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.theme.titleSmall
 
 /** View that displays the user's quest answer counter */
 @Composable
@@ -36,47 +32,58 @@ fun StarsCounter(
     isCurrentWeek: Boolean = false,
     showProgress: Boolean = false,
 ) {
-    val textShadow = Shadow(offset = Offset(0f, 1f), blurRadius = 4f)
+    val surfaceColor = MaterialTheme.colors.surface
+    val haloColor = LocalElevationOverlay.current?.apply(surfaceColor, 4.dp) ?: surfaceColor
+
     Row(
         modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        Box(contentAlignment = Alignment.Center) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.padding(4.dp)
+        ) {
             if (showProgress) {
                 CircularProgressIndicator(
-                    modifier = Modifier.size(42.dp),
+                    modifier = Modifier.size(48.dp),
                     color = MaterialTheme.colors.secondary
                 )
             }
-            Image(
-                painter = painterResource(R.drawable.ic_star_white_shadow_32dp),
+            Icon(
+                painter = painterResource(R.drawable.ic_star_halo_32dp),
                 contentDescription = null,
-                modifier = Modifier.padding(8.dp)
+                tint = haloColor
+            )
+            Icon(
+                painter = painterResource(R.drawable.ic_star_32dp),
+                contentDescription = null,
+                tint = contentColorFor(surfaceColor)
             )
         }
 
         if (isCurrentWeek) {
             Column {
-                Text(
+                TextWithHalo(
                     text = stringResource(R.string.user_profile_current_week_title),
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
                     maxLines = 1,
-                    style = MaterialTheme.typography.body2.copy(shadow = textShadow),
+                    haloWidth = 3.dp,
+                    elevation = 4.dp,
+                    style = MaterialTheme.typography.titleSmall
                 )
-                Counter(
+                CounterWithHalo(
                     count = count,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    style = MaterialTheme.typography.body1.copy(shadow = textShadow),
+                    haloWidth = 3.dp,
+                    elevation = 4.dp,
+                    style = MaterialTheme.typography.titleLarge,
                 )
             }
         } else {
-            Counter(
+            CounterWithHalo(
                 count = count,
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                style = MaterialTheme.typography.body1.copy(shadow = textShadow),
+                haloWidth = 3.dp,
+                elevation = 4.dp,
+                style = MaterialTheme.typography.titleLarge,
             )
         }
     }
