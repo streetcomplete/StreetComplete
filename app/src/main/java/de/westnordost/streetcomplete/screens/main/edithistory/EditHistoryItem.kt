@@ -42,7 +42,7 @@ fun EditHistoryItem(
 ) {
     val backgroundColor = when {
         selected -> MaterialTheme.colors.selectionBackground
-        edit.isSynced == true -> MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled)
+        edit.isSynced == true -> MaterialTheme.colors.onSurface.copy(alpha = 0.1f)
         else -> MaterialTheme.colors.surface
     }
     Box(
