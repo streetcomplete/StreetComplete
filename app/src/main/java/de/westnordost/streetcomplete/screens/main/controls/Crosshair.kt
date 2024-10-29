@@ -25,7 +25,7 @@ fun Crosshair(modifier: Modifier = Modifier) {
     BoxWithConstraints(modifier.fillMaxSize()) {
         val isLandscape = maxWidth > maxHeight
         val crosshairOffsetX = if (isLandscape) getMaxQuestFormWidth(maxWidth) else 0.dp
-        val crosshairOffsetY = if (isLandscape) 0.dp else getQuestFormPeekHeight(maxHeight)
+        val crosshairOffsetY = if (isLandscape) 0.dp else getQuestFormPeekHeight(isLandscape)
 
         Icon(
             painter = painterResource(R.drawable.crosshair),
