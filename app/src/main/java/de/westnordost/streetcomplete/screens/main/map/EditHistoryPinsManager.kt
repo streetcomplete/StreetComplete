@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.edithistory.ElementEditKey
 import de.westnordost.streetcomplete.data.edithistory.NoteEditKey
 import de.westnordost.streetcomplete.data.edithistory.OsmNoteQuestHiddenKey
 import de.westnordost.streetcomplete.data.edithistory.OsmQuestHiddenKey
-import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
@@ -17,6 +16,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
+import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import kotlinx.coroutines.CoroutineScope
