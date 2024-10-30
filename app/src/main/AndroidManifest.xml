@@ -44,8 +44,9 @@
         android:supportsRtl="true">
         <activity
             android:windowSoftInputMode="adjustResize"
-            android:name="de.westnordost.streetcomplete.screens.MainActivity"
+            android:name="de.westnordost.streetcomplete.screens.main.MainActivity"
             android:configChanges="orientation|screenSize|screenLayout"
+            android:launchMode="singleTop"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -77,7 +78,7 @@
         <activity
             android:name="de.westnordost.streetcomplete.screens.settings.SettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName="de.westnordost.streetcomplete.screens.MainActivity"
+            android:parentActivityName="de.westnordost.streetcomplete.screens.main.MainActivity"
             android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
             android:exported="true">
             <intent-filter>

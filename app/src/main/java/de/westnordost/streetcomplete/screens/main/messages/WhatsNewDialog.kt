@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.messages
 
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
@@ -14,6 +15,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.util.html.HtmlNode
 
 /** A dialog that shows the changelog */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun WhatsNewDialog(
     changelog: Map<String, List<HtmlNode>>,

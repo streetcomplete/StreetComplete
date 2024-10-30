@@ -40,3 +40,48 @@ fun OpenInBrowserIcon() {
 fun NextScreenIcon() {
     Icon(painterResource(R.drawable.ic_chevron_next_24dp), null)
 }
+
+@Composable
+fun UndoIcon() {
+    Icon(painterResource(R.drawable.ic_undo_24dp), stringResource(R.string.action_undo))
+}
+
+@Composable
+fun OverlaysIcon() {
+    Icon(painterResource(R.drawable.ic_overlay_black_24dp), stringResource(R.string.action_overlays))
+}
+
+@Composable
+fun UploadIcon() {
+    Icon(painterResource(R.drawable.ic_file_upload_24dp), stringResource(R.string.action_upload))
+}
+
+@Composable
+fun MessagesIcon() {
+    Icon(painterResource(R.drawable.ic_email_24dp), stringResource(R.string.action_messages))
+}
+
+@Composable
+fun MenuIcon() {
+    Icon(painterResource(R.drawable.ic_menu_24dp), stringResource(R.string.map_btn_menu))
+}
+
+@Composable
+fun ZoomInIcon() {
+    Icon(painterResource(R.drawable.ic_add_24dp), stringResource(R.string.map_btn_zoom_in))
+}
+
+@Composable
+fun ZoomOutIcon() {
+    Icon(painterResource(R.drawable.ic_subtract_24dp), stringResource(R.string.map_btn_zoom_out))
+}
+
+@Composable
+fun StopRecordingIcon() {
+    Icon(painterResource(R.drawable.ic_stop_recording_24dp), stringResource(R.string.map_btn_stop_track))
+}
+
+@Composable
+fun LargeCreateIcon() {
+    Icon(painterResource(R.drawable.ic_crosshair_32dp), stringResource(R.string.action_create_new_poi))
+}

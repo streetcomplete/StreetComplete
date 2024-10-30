@@ -79,9 +79,11 @@ private fun Modifier.levelLabelBackground() =
     .padding(horizontal = 10.dp, vertical = 4.dp)
 
 object AchievementFrameShape : Shape {
+    private val path = PathParser()
+        .parsePathString("m0.55404 0.97761c-0.029848 0.029846-0.078236 0.029846-0.10808 0l-0.42357-0.42357c-0.029848-0.029848-0.029848-0.078239 0-0.10808l0.42357-0.42357c0.029846-0.029846 0.078236-0.029846 0.10808 0l0.42357 0.42357c0.029846 0.029846 0.029846 0.078236 0 0.10808z")
+        .toPath()
+
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
-        val pathStr = "m0.55404 0.97761c-0.029848 0.029846-0.078236 0.029846-0.10808 0l-0.42357-0.42357c-0.029848-0.029848-0.029848-0.078239 0-0.10808l0.42357-0.42357c0.029846-0.029846 0.078236-0.029846 0.10808 0l0.42357 0.42357c0.029846 0.029846 0.029846 0.078236 0 0.10808z"
-        val path = PathParser().parsePathString(pathStr).toPath()
         path.transform(Matrix().apply { scale(size.width, size.height, 1f) })
         return Outline.Generic(path)
     }
