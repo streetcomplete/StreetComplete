@@ -1405,6 +1405,11 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="user_profile_all_time_title">"Całkowicie"</string>
     <string name="user_statistics_country_rank2">"Ranga w %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"To tylko pień drzewa"</string>
+    <string name="quest_board_name_title">"Jaki jest tytuł tej tablicy informacyjnej?"</string>
+    <string name="quest_crossing_hint">"Nieformalny szlak przecinający drogę:"</string>
     <string name="note_for_object">"Ktoś utworzył notkę:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Bezpieczne pętle (obsługują koło i ramę)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"brak, ale znak pozwala na jazdę rowerem po chodniku w obu kierunkach"</string>
     <string name="quest_surface_value_rubber">"Ziarnista guma"</string>
+    <string name="quest_surface_value_acrylic">"Żywica syntetyczna"</string>
 </resources>

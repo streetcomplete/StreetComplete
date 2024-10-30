@@ -1,5 +1,10 @@
 # Changelog
 
+## v60.0-alpha1
+
+Redesigned the main screen a little. Here and there you'll notice small differences. The dialog to
+start the team mode from the menu is more descriptive now, for example. (#5799)
+
 ## v59.3
 
 - Things overlay: Mailboxes and street cabinets are now selectable (#4916, #5970)

@@ -1391,4 +1391,10 @@ Un nivel cuenta como altura del tejado cuando sus ventanas están en el tejado. 
     <string name="user_statistics_country_rank2">"Rango en %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Es solo un tocón de árbol"</string>
     <string name="quest_board_name_title">"¿Cuál es el título de este panel informativo?"</string>
+    <string name="quest_crossing_hint">"Un sendero informal que cruza una calle:"</string>
+    <string name="note_for_object">"Otra persona anotó:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Portabicicletas «Safe Loops» (de cuadro y rueda)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"No hay nada, pero hay señales que permiten circular por la acera en ambos sentidos"</string>
+    <string name="quest_surface_value_rubber">"Gránulos de caucho"</string>
+    <string name="quest_surface_value_acrylic">"Resina sintética"</string>
 </resources>
