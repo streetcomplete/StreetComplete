@@ -154,8 +154,8 @@ class MainActivity :
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
     // rest
-    ShowsGeometryMarkers
-{
+    ShowsGeometryMarkers {
+
     private val questAutoSyncer: QuestAutoSyncer by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val prefs: Preferences by inject()
@@ -197,7 +197,6 @@ class MainActivity :
             }
         }
     }
-
 
     //region Lifecycle - Android Lifecycle Callbacks
 
@@ -305,7 +304,6 @@ class MainActivity :
     }
 
     //endregion
-
 
     /* ------------------------------- Preferences listeners ------------------------------------ */
 

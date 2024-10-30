@@ -85,7 +85,6 @@ import kotlinx.coroutines.launch
 import kotlin.math.PI
 import kotlin.math.abs
 
-
 /** Map controls shown on top of the map. */
 @Composable
 fun MainScreen(

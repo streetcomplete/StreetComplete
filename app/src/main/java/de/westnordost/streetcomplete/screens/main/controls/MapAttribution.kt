@@ -35,7 +35,7 @@ fun MapAttribution(modifier: Modifier = Modifier) {
         ) {
             TextWithHalo(
                 text = stringResource(R.string.map_attribution_osm),
-                modifier = Modifier.clickable { shownLink ="https://www.openstreetmap.org/copyright" },
+                modifier = Modifier.clickable { shownLink = "https://www.openstreetmap.org/copyright" },
                 elevation = 4.dp
             )
             TextWithHalo(

@@ -78,9 +78,8 @@ class WheelPickerState(selectedItemIndex: Int = 0) : ScrollableState {
         lazyListState.animateScrollToItem(index)
     }
 
-    override fun dispatchRawDelta(delta: Float): Float {
-        return lazyListState.dispatchRawDelta(delta)
-    }
+    override fun dispatchRawDelta(delta: Float): Float =
+        lazyListState.dispatchRawDelta(delta)
 
     override suspend fun scroll(
         scrollPriority: MutatePriority,

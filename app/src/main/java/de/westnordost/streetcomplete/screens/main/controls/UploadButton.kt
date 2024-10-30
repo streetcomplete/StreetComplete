@@ -16,7 +16,7 @@ fun UploadButton(
 ) {
     Box(modifier) {
         MapButton(onClick = onClick, enabled = enabled) { UploadIcon() }
-        if(unsyncedEditsCount > 0) {
+        if (unsyncedEditsCount > 0) {
             MapButtonNotification {
                 Text(unsyncedEditsCount.toString(), textAlign = TextAlign.Center)
             }

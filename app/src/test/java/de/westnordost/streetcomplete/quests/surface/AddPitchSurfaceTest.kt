@@ -41,7 +41,6 @@ class AddPitchSurfaceTest {
         assertIsNotApplicable("leisure" to "pitch", "sport" to "table_soccer")
     }
 
-
     @Test fun `applicable to surface tags not providing proper info`() {
         assertIsApplicable("leisure" to "pitch", "sport" to "soccer", "surface" to "paved")
         assertIsApplicable("leisure" to "pitch", "sport" to "soccer", "surface" to "trail")

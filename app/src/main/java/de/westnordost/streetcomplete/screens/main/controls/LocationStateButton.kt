@@ -34,7 +34,6 @@ enum class LocationState {
     val isEnabled: Boolean get() = ordinal >= ENABLED.ordinal
 }
 
-
 /** Map button that shows the current state of location updates and map mode */
 @Composable
 fun LocationStateButton(

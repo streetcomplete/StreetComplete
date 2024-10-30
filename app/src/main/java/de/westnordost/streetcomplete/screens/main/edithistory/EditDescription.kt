@@ -133,9 +133,8 @@ private fun StringMapEntryChange.toHtml(): String {
     return stringResource(titleResId, "<tt>$tag</tt>")
 }
 
-private fun linkedKey(key: String): String {
-    return "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$key\">$key</a>"
-}
+private fun linkedKey(key: String): String =
+    "<a href=\"https://wiki.openstreetmap.org/wiki/Key:$key\">$key</a>"
 
 private val StringMapEntryChange.titleResId: Int get() = when (this) {
     is StringMapEntryAdd -> R.string.added_tag_action_title

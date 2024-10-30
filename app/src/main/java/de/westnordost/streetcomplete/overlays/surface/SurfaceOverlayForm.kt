@@ -103,7 +103,6 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
         originalFootwaySurface = parseSurface(tags["footway:surface"])
     }
 
-
     private fun updateSelectedCell(cellBinding: ViewImageSelectBinding, item: Surface?) {
         cellBinding.selectTextView.isGone = item != null
         cellBinding.selectedCellView.isGone = item == null

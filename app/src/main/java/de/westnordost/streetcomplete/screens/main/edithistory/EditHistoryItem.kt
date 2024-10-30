@@ -80,6 +80,6 @@ private fun PreviewEditsColumnItem() {
         onSelect = { selected = !selected },
         onUndo = {},
         modifier = Modifier.width(80.dp),
-        edit = OsmQuestHidden(ElementType.NODE, 1L, AddRecyclingType(), LatLon(0.0,0.0), 1L),
+        edit = OsmQuestHidden(ElementType.NODE, 1L, AddRecyclingType(), LatLon(0.0, 0.0), 1L),
     )
 }
