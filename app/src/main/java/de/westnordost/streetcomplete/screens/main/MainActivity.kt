@@ -176,7 +176,8 @@ class MainActivity :
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
 
-    private var mapFragment: MainMapFragment? = null
+    private val mapFragment: MainMapFragment? get() =
+        supportFragmentManager.findFragmentById(R.id.mapFragment) as MainMapFragment?
 
     private val bottomSheetFragment: Fragment? get() =
         supportFragmentManager.findFragmentByTag(BOTTOM_SHEET)
@@ -214,12 +215,6 @@ class MainActivity :
         lifecycle.addObserver(questAutoSyncer)
 
         locationManager = FineLocationManager(this, this::onLocationChanged)
-
-        supportFragmentManager.addFragmentOnAttachListener { _, fragment ->
-            when (fragment) {
-                is MainMapFragment -> mapFragment = fragment
-            }
-        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
