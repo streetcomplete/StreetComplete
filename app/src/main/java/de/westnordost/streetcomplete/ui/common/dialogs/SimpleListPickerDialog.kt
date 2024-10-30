@@ -35,7 +35,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.ui.ktx.conditional
-import de.westnordost.streetcomplete.ui.theme.AppTheme
 
 /** Similar to ListPickerDialog, but tapping on one item immediately closes the dialog
  *  (no OK button, no cancel button)

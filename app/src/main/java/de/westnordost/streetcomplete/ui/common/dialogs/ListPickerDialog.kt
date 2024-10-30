@@ -33,7 +33,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.ui.theme.AppTheme
 
 /** List picker dialog with OK and cancel button that expands to its maximum possible size in both
  *  directions, scrollable.
