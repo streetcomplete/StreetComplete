@@ -115,7 +115,7 @@ private fun BigMenuButton(
 ) {
     Column(
         modifier = modifier
-            .width(144.dp)
+            .width(160.dp)
             .clickable { onClick() }
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -123,7 +123,8 @@ private fun BigMenuButton(
         icon()
         Text(
             text = text,
-            style = MaterialTheme.typography.body1
+            style = MaterialTheme.typography.body1,
+            textAlign = TextAlign.Center
         )
     }
 }
