@@ -702,9 +702,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_board_type_map">"Je na ní mapa"</string>
     <string name="quest_board_type_map_title">"Je na ní jen a pouze mapa?"</string>
     <string name="quest_board_type_map_description">"Pokud se cedule týká konkrétního tématu, specifikujte ho, prosím, bez ohledu na to, jestli je na ní i mapa. Například na cedulích týkajících se veřejné dopravy bývá mapa s trasami autobusů. Pokud nenaleznete téma mezi odpověďmi, zvažte, prosím, jestli nezanecháte poznámku."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Více povrchů…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Jste si jisti, že nelze specifikovat povrch? Všimněte si odpovědi „V různých částech různý…“, pomocí které lze rozdělit cestu tam, kde se mění povrch. Odpověď „Nedá se to určit“ použijte tam, kde se jeden povrch, ale není mezi odpověďmi."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Prosím v krátkosti specifikujte zdejší povrch, např. „Písečný se záplatami dlažebních kostek“. Maximální délka textu je 255 znaků."</string>
     <string name="quest_streetName_menuItem_international">"mezinárodní"</string>
     <string name="quest_buildingType_terrace2">"Řadové domy"</string>
     <string name="at_housename">"Název budovy %s"</string>
@@ -754,7 +751,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"samostatná"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Není samostatná"</string>
     <string name="pref_title_sync2">"Nahrát odpověď automaticky"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Popište povrch"</string>
     <string name="open_url">"Otevřít URL adresu"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historická"</string>
@@ -821,7 +817,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky."</string>
     <string name="team_mode">"Týmový režim"</string>
     <string name="team_mode_exit">"Opustit týmový režim"</string>
     <string name="team_mode_description">"Pokud mapujete tutéž oblast společně ve skupině, můžete si zapnout týmový režim a rozdělit úkoly mezi všechny členy týmu."</string>
-    <string name="team_mode_team_size_hint">"Týmový režim funguje pro skupiny 2 až 12 lidí."</string>
     <string name="team_mode_active">"Týmový režim je aktivní"</string>
     <string name="team_mode_deactivated">"Týmový režim deaktivován"</string>
     <string name="undo_confirm_title2">"Chcete vrátit následující úpravu?"</string>
@@ -1178,7 +1173,6 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna."</string>
     <string name="quest_camp_type_tents_only">"Pouze stany"</string>
     <string name="quest_camp_type_backcountry">"Táboření v přírodě (bez zázemí)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tento průměr vypadá nepravděpodobně, obvykle se pohybuje mezi %1$d a %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Tato odpověď neodpovídá tomu, co je o této silnici již zmapováno. Jste si jisti, že odpovídáte o správné silnici? Jste si jisti, že jste osobně provedli průzkum po celé délce, jak je vždy potřeba?"</string>
     <string name="quest_recycling_type_pet">"Jen PET"</string>
     <string name="street_parking_street_width">"Šířka ulice: %s"</string>
     <string name="overlay_street_parking">"Parkování na ulici"</string>
@@ -1378,7 +1372,6 @@ Informace o dárcovství najdete na našem webu nebo na stránce projektu, Googl
     <string name="info">"Více informací"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Je zakázán."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Je povolen."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Ve skutečnosti tu je chodník, ale je na mapě zobrazen samostatně."</string>
     <string name="quest_buildingLevels_hint">"U budov na svahu začíná počítání podlaží od přízemí na nejnižší straně.
 
 Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Tedy střechy s nulovým počtem podlaží nemusejí být ploché, stačí, že nejsou dost vysoké pro celé podlaží.
@@ -1417,4 +1410,8 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_cycleway_value_sidewalk_ok_dual">"není, ale značka dovoluje jízdu po chodníku, v obou směrech"</string>
     <string name="quest_surface_value_rubber">"Gumový granulát"</string>
     <string name="quest_surface_value_acrylic">"Syntetická pryskyřice"</string>
+    <string name="action_messages">"Zobrazit zprávy"</string>
+    <string name="action_create_new_poi">"Vytvořit nový"</string>
+    <string name="auth_error">"Chyba autorizace. Zkuste se přihlásit znovu."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Aktuálně je tu chodník."</string>
 </resources>

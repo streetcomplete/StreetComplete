@@ -41,7 +41,7 @@
     <string name="action_upload">"Antworten hochladen"</string>
     <string name="no_changes">"Die Frage wurde nicht beantwortet"</string>
     <string name="download_error">"Fehler beim Herunterladen"</string>
-    <string name="upload_error">"Fehler beim Hochladen der Antworten"</string>
+    <string name="upload_error">"Fehler beim Hochladen"</string>
     <string name="download_area_too_big">"Zoome weiter hinein"</string>
     <string name="confirmation_cancel_prev_download_title">"Aktuellen Download abbrechen und stattdessen hier herunterladen?"</string>
     <string name="turn_on_location_request">"Standort ist aus. Jetzt in die Einstellungen gehen, um ihn einzuschalten?"</string>
@@ -698,9 +698,6 @@ Erfolge"</string>
     <string name="quest_board_type_map">"Es ist eine Karte"</string>
     <string name="quest_board_type_map_title">"Ist es einzig eine Karte?"</string>
     <string name="quest_board_type_map_description">"Wenn es auf der Tafel um ein bestimmtes Thema geht, bitte gib es an, egal ob da auch eine Karte mit dabei ist. Zum Beispiel mag eine Tafel zum öffentlichen Nahverkehr auch eine Verkehrsnetzkarte beinhalten. Wenn das Thema nicht bei den zur Verfügung stehenden Antworten dabei ist, hinterlasse bitte stattdessen einen Hinweis."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Mehrere Oberflächen …"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Bist du dir sicher, dass man die genaue Oberfläche nicht angeben kann? Du kannst auch „Entlang des Weges unterschiedlich …“ antworten, um den Weg dort aufzuspalten, wo sich die Oberfläche ändert. Bitte nutze „Nicht beantwortbar …“, wenn es eine Oberfläche hat, die nicht als Antwort zur Verfügung steht."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Bitte beschreibe kurz die Beschaffenheit der Oberfläche, zum Beispiel „sandig mit vereinzeltem Kopfsteinpflaster“. Der Text hat eine maximale Länge von 255 Zeichen."</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Mehrere Reihenhäuser"</string>
     <string name="at_housename">"Hausname %s"</string>
@@ -749,7 +746,6 @@ Erfolge"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Ja, separat"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Nicht separat"</string>
     <string name="pref_title_sync2">"Antworten automatisch hochladen"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Oberfläche beschreiben"</string>
     <string name="open_url">"URL öffnen"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisches Gebäude"</string>
@@ -820,7 +816,6 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="team_mode_exit">"Team-Modus beenden"</string>
     <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen.
 Jeder von euch sieht dann unterschiedliche Aufgaben."</string>
-    <string name="team_mode_team_size_hint">"Der Team-Modus ist für Gruppen zwischen 2 und 12 Personen gemacht."</string>
     <string name="team_mode_active">"Team-Modus ist aktiv"</string>
     <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
     <string name="undo_confirm_title2">"Folgende Bearbeitung rückgängig machen?"</string>
@@ -1176,7 +1171,6 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="quest_camp_type_tents_only">"Nur Zelte"</string>
     <string name="quest_camp_type_backcountry">"Wildcamping (keine Sanitäreinrichtungen)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Dieser Durchmesser sieht ungewöhnlich aus, er liegt normalerweise zwischen %1$d und %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Diese Antwort stimmt nicht mit dem überein, was bereits für diese Straße kartiert ist. Bist du sicher, dass du zur richtigen Straße antwortest? Bist du sicher, dass du die Lage über die gesamte Länge hinweg überprüft hast?"</string>
     <string name="quest_recycling_type_pet">"Nur PET"</string>
     <string name="street_parking_street_width">"Fahrbahnbreite: %s"</string>
     <string name="overlay_street_parking">"Parkstreifen"</string>
@@ -1376,7 +1370,6 @@ Du kannst Informationen zu Spenden auf unserer Website oder Projektseite finden.
     <string name="info">"Weitere Informationen"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Es ist verboten."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Es ist erlaubt."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Es gibt zwar einen Gehweg, aber er wird auf der Karte separat angezeigt."</string>
     <string name="quest_buildingLevels_hint">"Bei Gebäuden in Hanglage beginnt die Zählung der Stockwerke mit dem Bodenniveau der untersten Ebene.
 
 Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer mit null Dachebenen sind also nicht unbedingt flach, sondern nur nicht hoch genug für eine ganze Ebene."</string>
@@ -1414,4 +1407,8 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="quest_cycleway_value_sidewalk_ok_dual">"Keiner, aber ein Schild erlaubt Radfahren auf dem Bürgersteig, beide Richtungen"</string>
     <string name="quest_surface_value_rubber">"Gummigranulat"</string>
     <string name="quest_surface_value_acrylic">"Kunstharz"</string>
+    <string name="action_messages">"Nachrichten anzeigen"</string>
+    <string name="action_create_new_poi">"Neu erstellen"</string>
+    <string name="auth_error">"Autorisierungsfehler. Versuche, dich erneut anzumelden."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Es gibt einen Bürgersteig."</string>
 </resources>

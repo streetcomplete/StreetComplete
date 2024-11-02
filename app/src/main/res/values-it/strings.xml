@@ -697,9 +697,6 @@ riconoscimento"</string>
     <string name="quest_board_type_map">"È una mappa"</string>
     <string name="quest_board_type_map_title">"È solo ed esclusivamente una mappa?"</string>
     <string name="quest_board_type_map_description">"Se la bacheca è su un argomento particolare, specificalo, indipendentemente se include o meno una mappa. Per esempio una bacheca del trasporto pubblico può avere una mappa delle tratte. Se l'argomento non è tra le risposte disponibile, puoi lasciare una nota."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Superfici multiple…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Confermi che è impossibile specificare la superficie? Ricorda che c'è l'opzione \"Cambia lungo la via\" che ti permette di tagliare la via dove la superficie cambia. Usa \"Non so\" se c'è una singola superficie ma nessuna risposta adatta."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Specifica brevemente il tipo di superficie qui, per esempio \"sabbioso con zone in ciottolato\". La lunghezza del testo è limitata a 255 caratteri."</string>
     <string name="quest_streetName_menuItem_international">"Internazionale"</string>
     <string name="quest_buildingType_terrace2">"Case a schiera"</string>
     <string name="at_housename">"Nome della casa %s"</string>
@@ -748,7 +745,6 @@ riconoscimento"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separata"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"non separata"</string>
     <string name="pref_title_sync2">"Carica risposte automaticamente"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Descrivi la superficie"</string>
     <string name="open_url">"Apri URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Storico"</string>
@@ -815,7 +811,6 @@ Considera tutte le opzioni disponibili: alcuni casi non sono ovvi, ad esempio un
     <string name="team_mode">"Imposta Modalità Squadra"</string>
     <string name="team_mode_exit">"Abbandona la modalità squadra"</string>
     <string name="team_mode_description">"Quando mappi una stessa area insieme ad altre persone, puoi attivare la modalità squadra per suddividere le missioni tra tutte le persone."</string>
-    <string name="team_mode_team_size_hint">"La modalità squadra consente gruppi da 2 a 12 persone."</string>
     <string name="team_mode_active">"Modalità squadra attiva"</string>
     <string name="team_mode_deactivated">"Modalità squadra disattivata"</string>
     <string name="undo_confirm_title2">"Vuoi cancellare questa modifica?"</string>
@@ -1171,7 +1166,6 @@ Fai la stessa cosa per l'altro lato, se presente."</string>
     <string name="quest_camp_type_tents_only">"Solo tende"</string>
     <string name="quest_camp_type_backcountry">"Campeggio fuoripista (niente strutture)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Questo diametro non sembra plausibile, è solitamente tra %1$d e %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Questa risposta non concorda con ciò che è già mappato di questa strada. Sei sicuro che stai rispondendo relativamente alla strada corretta? Sei sicuro di aver controllato personalmente lungo l'intera lunghezza, come sempre necessario?"</string>
     <string name="quest_recycling_type_pet">"Solo PET"</string>
     <string name="street_parking_street_width">"Larghezza strada: %s"</string>
     <string name="overlay_street_parking">"Parcheggio in strada"</string>
@@ -1370,7 +1364,6 @@ Troverai le informazioni sulle donazioni sul nostro sito o sulla home del proget
     <string name="info">"Maggiori informazioni"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"È proibito."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"È permesso."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"In realtà, c'è un marciapiede, ma è mostrato separatamente sulla mappa."</string>
     <string name="quest_buildingLevels_hint">"Per gli edifici su una pendenza, i piani si contano dal lato più basso.
 
 Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tetto con 0 piani non è necessariamente piatto, ma non sufficientemente alto per un intero piano.

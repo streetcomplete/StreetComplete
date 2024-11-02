@@ -40,8 +40,8 @@
     <string name="action_download">"Download data here"</string>
     <string name="action_upload">"Upload answers"</string>
     <string name="no_changes">"You did not give an answer"</string>
-    <string name="download_error">"Error while downloading data"</string>
-    <string name="upload_error">"Error while uploading answers"</string>
+    <string name="download_error">"Download error"</string>
+    <string name="upload_error">"Upload error"</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
     <string name="confirmation_cancel_prev_download_title">"Stop the current download and download here instead?"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
@@ -698,9 +698,6 @@ levels"</string>
     <string name="quest_board_type_map">"It is a map"</string>
     <string name="quest_board_type_map_title">"Is it just a map and only a map?"</string>
     <string name="quest_board_type_map_description">"If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Multiple surfaces…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Are you sure that it is impossible to specify the surface? Note the “Differs along the way” answer option that allows you to cut the way where the surface changes. Please use “Can’t say” if there is a single surface but it is not available as an answer."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Please briefly specify the nature of the surface here, for example “sandy with patches of cobblestone”. The text length is limited to 255 characters."</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Terraced houses"</string>
     <string name="at_housename">"house name %s"</string>
@@ -749,7 +746,6 @@ levels"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separate"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"not separate"</string>
     <string name="pref_title_sync2">"Upload answers automatically"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Describe surface"</string>
     <string name="open_url">"Open URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historic"</string>
@@ -820,7 +816,6 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="team_mode_exit">"Exit Team Mode"</string>
     <string name="team_mode_description">"When mapping the same area together in a group, you can enter team mode to split up quests between all team members.
 Each of you will then see different quests."</string>
-    <string name="team_mode_team_size_hint">"Team mode works for groups of 2 to 12 people."</string>
     <string name="team_mode_active">"Team mode is active"</string>
     <string name="team_mode_deactivated">"Team mode deactivated"</string>
     <string name="undo_confirm_title2">"Undo the following edit?"</string>
@@ -893,7 +888,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_buildingType_grandstand">"Grandstand"</string>
     <string name="action_search">"Search"</string>
     <string name="action_manage_presets">"Manage presets"</string>
-    <string name="team_mode_team_size_label2">"How many people are mapping? Enter the same number on everyone’s phone."</string>
+    <string name="team_mode_team_size_label2">"How many people are mapping? Select the same number on everyone’s phone."</string>
     <string name="team_mode_choose_color2">"Next, each person must pick a different colour. Choose yours:"</string>
     <string name="link_organic_maps_description">"Maps app for travellers, hikers and cyclists that works offline"</string>
     <string name="quest_kerb_height_no">"No kerb at all"</string>
@@ -1176,7 +1171,6 @@ Do the same for the other side if present."</string>
     <string name="quest_camp_type_tents_only">"Only tents"</string>
     <string name="quest_camp_type_backcountry">"Backcountry camping (no facilities)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"This diameter looks implausible, it is usually between %1$d and %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"This answer does not match what is already mapped about this road. Are you sure that you are answering about the correct road? Are you sure that you personally surveyed along entire length, as always needed?"</string>
     <string name="quest_recycling_type_pet">"PET only"</string>
     <string name="street_parking_street_width">"Street width: %s"</string>
     <string name="overlay_street_parking">"Street parking"</string>
@@ -1376,7 +1370,6 @@ You can find donation information on our website or project home, Google Play do
     <string name="info">"More information"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"It is forbidden."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"It is allowed."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Actually, there is a pavement, but it is displayed separately on the map."</string>
     <string name="quest_buildingLevels_hint">"For buildings on a slope, the level count starts from the ground level of the lowest side.
 
 A level counts as a roof level when its windows are in the roof. Subsequently, roofs with zero roof levels are not necessarily flat, just not tall enough for an entire level."</string>
@@ -1414,4 +1407,8 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_cycleway_value_sidewalk_ok_dual">"none, but sign allows cycling on pavement, both directions"</string>
     <string name="quest_surface_value_rubber">"Rubber granules"</string>
     <string name="quest_surface_value_acrylic">"Synthetic resin"</string>
+    <string name="action_messages">"Show messages"</string>
+    <string name="action_create_new_poi">"Create new"</string>
+    <string name="auth_error">"Authorization error. Try logging in again."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Actually, there is a pavement."</string>
 </resources>

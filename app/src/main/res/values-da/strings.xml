@@ -697,9 +697,6 @@ aktiv"</string>
     <string name="quest_board_type_map">"Det er et kort"</string>
     <string name="quest_board_type_map_title">"Er det udelukkende et kort?"</string>
     <string name="quest_board_type_map_description">"Hvis den indeholder info om et bestemt emne, så angiv det venligst, uanset om der også er et kort. F.eks. et kort over offentlig transport kan også have en busrute angivet. Hvis emnet ikke er blandt de mulige svar må du meget gerne efterlade en bemærkning i stedet."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Flere overflader…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på, at det er umuligt at angive en belægningstype her? Bemærk at svarmuligheden \"Det er forskelligt undervej\" giver dig mulighed for at klippe linjestrengen der, hvor belægningstypen ændrer sig. Vær venlig at bruge \"Ved ikke\" hvis der kun er én belægningstype, men den ikke findes på listen."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Angiv kort overfladens karakter her, for eksempel \"sand med enkelte områder af pigsten\". Tekstlængden er begrænset til 255 tegn."</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Rækkehuse"</string>
     <string name="at_housename">"husnavn %s"</string>
@@ -748,7 +745,6 @@ aktiv"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"særskilt"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ikke særskilt"</string>
     <string name="pref_title_sync2">"Upload besvarelser automatisk"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Beskriv overfladen"</string>
     <string name="open_url">"Åbn URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisk"</string>
@@ -815,7 +811,6 @@ Bemærk at alle svarmuligheder ikke altid er helt logiske, f.eks. ensrettet vej 
     <string name="team_mode">"Holdtilstand"</string>
     <string name="team_mode_exit">"Afslut holdtilstand"</string>
     <string name="team_mode_description">"Når der kortlægges i det samme område som en gruppe, kan du skifte til holdtilstand for at opdele opgaver mellem alle holdmedlemmer."</string>
-    <string name="team_mode_team_size_hint">"Holdtilstand virker for grupper fra 2 til 12 personer."</string>
     <string name="team_mode_active">"Holdtilstand er aktiv"</string>
     <string name="team_mode_deactivated">"Holdtilstand er deaktiveret"</string>
     <string name="undo_confirm_title2">"Fortryd denne redigering?"</string>
@@ -1171,7 +1166,6 @@ Gør det samme med den anden side, hvis den findes."</string>
     <string name="quest_camp_type_tents_only">"Kun telte"</string>
     <string name="quest_camp_type_backcountry">"Primitiv lejrplads (ingen faciliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Denne diameter ser usandsynlig ud, den er normalt mellem %1$d og %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dette svar stemmer ikke overens med det, der allerede er kortlagt for denne vej. Er du sikker på, at du giver et svar om den rigtige vej? Er du sikker på, at du personligt har undersøgt vejen i hele dens længde, som det altid kræves?"</string>
     <string name="quest_recycling_type_pet">"Kun PET"</string>
     <string name="street_parking_street_width">"Vejbredde: %s"</string>
     <string name="overlay_street_parking">"Gadeparkering"</string>
@@ -1371,7 +1365,6 @@ Du kan finde oplysninger om donationer på vores hjemmeside eller projekthjemmes
     <string name="info">"Mere information"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Det er forbudt."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Det er tilladt."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Der er faktisk et fortov, men det vises separat på kortet."</string>
     <string name="quest_buildingLevels_hint">"Hvis bygningen ligger på en skråning, starter optællingen af etager fra terrænniveauet på den laveste side.
 
 En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage med nul tagetager ikke nødvendigvis flade, de er bare ikke høje nok til en hel etage."</string>
@@ -1409,4 +1402,8 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="quest_cycleway_value_sidewalk_ok_dual">"ingen, men skiltet tillader cykling på fortovet i begge retninger"</string>
     <string name="quest_surface_value_rubber">"Gummigranulat"</string>
     <string name="quest_surface_value_acrylic">"Syntetisk harpiks"</string>
+    <string name="action_messages">"Vis beskeder"</string>
+    <string name="action_create_new_poi">"Opret nyt"</string>
+    <string name="auth_error">"Autorisationsfejl. Prøv at logge ind igen."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Der er faktisk et fortov."</string>
 </resources>

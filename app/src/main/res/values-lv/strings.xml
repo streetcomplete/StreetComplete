@@ -695,9 +695,6 @@ līmeņi"</string>
     <string name="quest_board_type_map">"Tā ir karte"</string>
     <string name="quest_board_type_map_title">"Vai tā ir tikai karte?"</string>
     <string name="quest_board_type_map_description">"Ja dēlis ir par kādu specifisku tēmu, lūdzu, to norādiet, neatkarīgi no tā, vai tajā ir arī karte. Piemēram, sabiedriskā transporta dēlim varētu būt klāt maršruta karte. Ja tēma nav pieejamo atbilžu sarakstā, apsveriet iespēju pievienot piezīmi."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Vairākas virsmas…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Vai tiešām nav iespējams norādīt segumu? Ņemiet vērā, ka ir opcija “Dažādās vietās dažāds”, kas jums ļauj pārgriezt ceļu vietā, kur mainās segums. Lūdzu, izmantojiet “Nevar pateikt”, ja ir viena veida virsma, kura neparādās kā atbildes iespēja."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Lūdzu, īsi aprakstiet šo segumu, piemēram, “smilšains, vietām ir bruģis”. Teksts nevar būt garāks par 255 rakstzīmēm."</string>
     <string name="quest_streetName_menuItem_international">"starptautiski"</string>
     <string name="quest_buildingType_terrace2">"Rindu mājas"</string>
     <string name="at_housename">"mājas nosaukums %s"</string>
@@ -746,7 +743,6 @@ līmeņi"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"atsevišķs"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nav atsevišķs"</string>
     <string name="pref_title_sync2">"Atbildes augšupielādēt automātiski"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Aprakstiet virsmu"</string>
     <string name="open_url">"Atvērt URL"</string>
     <string name="quest_buildingType_silo">"Tvertne"</string>
     <string name="quest_buildingType_historic">"Vēsturiska"</string>
@@ -815,7 +811,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi."</strin
     <string name="team_mode">"Pāriet uz komandas režīmu"</string>
     <string name="team_mode_exit">"Iziet ko komandas režīma"</string>
     <string name="team_mode_description">"Kad grupa kopā kartē vienu un to pašu apgabalu, jūs varat sadalīt uzdevumus starp komandas biedriem."</string>
-    <string name="team_mode_team_size_hint">"Komandas režīms der 2 līdz 12 cilvēku grupām."</string>
     <string name="team_mode_active">"Komandas režīms ir ieslēgts"</string>
     <string name="team_mode_deactivated">"Komandas režīms ir izslēgts"</string>
     <string name="undo_confirm_title2">"Atsaukt sekojošo rediģējumu?"</string>
@@ -1171,7 +1166,6 @@ Dariet to arī otrai pusei, ja tāda ir."</string>
     <string name="quest_camp_type_tents_only">"Tikai teltis"</string>
     <string name="quest_camp_type_backcountry">"Nomaļš kempings (nav labiekārtots)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Šis diametrs izskatās neticams, tas parasti ir starp %1$d un %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Atbilde neatbilst tam, kas jau ir kartēts par šo ceļu. Vai esat pārliecināts, ka šī atbilde ir par pareizo ceļu? Vai tiešām jūs personīgi apsekojāt visā tā garumā, kā tas vienmēr jādara?"</string>
     <string name="quest_recycling_type_pet">"Tikai PET"</string>
     <string name="street_parking_street_width">"Ielas platums: %s"</string>
     <string name="overlay_street_parking">"Stāvvieta pie ielas"</string>

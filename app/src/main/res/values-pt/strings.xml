@@ -698,9 +698,6 @@ conquista"</string>
     <string name="quest_board_type_map">"É um mapa"</string>
     <string name="quest_board_type_map_title">"É um mapa e apenas um mapa?"</string>
     <string name="quest_board_type_map_description">"Se o painel for sobre um determinado tema, especifique-o, independentemente de também incluir um mapa. Por exemplo, uma placa de transporte público pode ter um mapa de percursos de autocarro. Se o tema não existir nas respostas possíveis, deixe antes uma nota a especificar."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Várias superfícies…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Tem certeza de que é impossível especificar a superfície? Considere a opção de resposta \"Difere ao longo da via\", que permite cortar a via onde a superfície muda. Use a opção \"Não sei\" se houver uma única superfície, mas não estiver disponível na lista de respostas."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Por favor, especifique com clareza o tipo de superfície aqui, por exemplo \"areia e algumas partes em pedras irregulares\". O texto é limitado a 255 caracteres."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Conjunto de casas em banda"</string>
     <string name="at_housename">"nome do edifício %s"</string>
@@ -749,7 +746,6 @@ conquista"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"não separada"</string>
     <string name="pref_title_sync2">"Enviar respostas automaticamente"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Descreva a superfície"</string>
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Histórico"</string>
@@ -818,7 +814,6 @@ Veja todas as opções disponíveis: alguns casos não são óbvios, como uma es
     <string name="team_mode_exit">"Sair do modo de equipa"</string>
     <string name="team_mode_description">"Ao mapear a mesma área em grupo, pode entrar no modo de equipa para dividir as missões entre todos os membros da equipa.
 Cada um verá missões diferentes."</string>
-    <string name="team_mode_team_size_hint">"O modo de equipa funciona para grupos de 2 a 12 pessoas."</string>
     <string name="team_mode_active">"O modo de equipa está ativo"</string>
     <string name="team_mode_deactivated">"Modo de equipa desativado"</string>
     <string name="undo_confirm_title2">"Desfazer a seguinte edição?"</string>
@@ -1175,7 +1170,6 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="quest_camp_type_tents_only">"Apenas tendas"</string>
     <string name="quest_camp_type_backcountry">"Campismo remoto (sem instalações)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diâmetro não parece plausível, normalmente é entre %1$d e %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta resposta não corresponde ao que já está mapeado sobre esta estrada. Tem a certeza que está a responder sobre a estrada correta? Como sempre necessário, tem a certeza que confirmou ao longo de toda a extensão da estrada?"</string>
     <string name="quest_recycling_type_pet">"Apenas PET"</string>
     <string name="street_parking_street_width">"Largura da estrada: %s"</string>
     <string name="overlay_street_parking">"Estacionamento na estrada"</string>
@@ -1374,7 +1368,6 @@ Pode encontrar informações sobre donativos no nosso site ou na página inicial
     <string name="info">"Mais informações"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"É proibido."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"É permitido."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Na verdade, existe um passeio, mas é apresentado em separado no mapa."</string>
     <string name="quest_buildingLevels_hint">"Para edifícios num declive, a contagem de andares começa a partir do nível do solo do lado mais baixo.
 
 Um andar conta como um andar de telhado quando as suas janelas estão no telhado. Por conseguinte, os telhados com zero andares de telhado não são necessariamente planos, apenas não têm altura suficiente para um andar inteiro."</string>

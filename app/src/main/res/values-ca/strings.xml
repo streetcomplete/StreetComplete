@@ -695,9 +695,6 @@ d'acompliment"</string>
     <string name="quest_board_type_map">"És un mapa"</string>
     <string name="quest_board_type_map_title">"És un mapa i només un mapa?"</string>
     <string name="quest_board_type_map_description">"Si el tauler tracta sobre un tema en particular, especifiqueu-ho, independentment de si també inclou un mapa. Per exemple, un consell de transport públic pot tenir un mapa de ruta d'autobús. Si el tema no està llistat entre les respostes disponibles, considereu deixar una nota en el seu lloc."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Superfícies múltiples…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Esteu segur que és impossible especificar la superfície? Tingueu en compte l'opció de resposta \"Diferències al llarg del camí\" que permet tallar el camí on canvia la superfície. Si us plau, useu \"No ho sé\" si hi ha una sola superfície però no està disponible com a resposta."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Especifiqueu breument la naturalesa de la superfície aquí, per exemple, \"sorrenca amb pedaços de còdol\". La longitud del text està limitada a 255 caràcters."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Files de cases"</string>
     <string name="at_housename">"Nom de la casa %s"</string>
@@ -746,7 +743,6 @@ d'acompliment"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"no separada"</string>
     <string name="pref_title_sync2">"Puja les respostes automàticament"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Descriviu la superfície"</string>
     <string name="open_url">"Obre l'URL"</string>
     <string name="quest_buildingType_silo">"Sitja"</string>
     <string name="quest_buildingType_historic">"Històric"</string>
@@ -815,7 +811,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="team_mode">"Mode d'equip"</string>
     <string name="team_mode_exit">"Sortir del mode d'equip"</string>
     <string name="team_mode_description">"Quan mapegeu la mateixa àrea en un grup, podeu entrar en el mode equip per dividir les cerques entre tots els membres de l'equip."</string>
-    <string name="team_mode_team_size_hint">"El mode equip funciona per a grups de 2 a 12 persones."</string>
     <string name="team_mode_active">"El mode d'equip està activat"</string>
     <string name="team_mode_deactivated">"S'ha desactivat el mode d'equip"</string>
     <string name="undo_confirm_title2">"Desfer aquesta edició?"</string>
@@ -1176,7 +1171,6 @@ Feu el mateix per a l'altre costat."</string>
     <string name="quest_camp_type_tents_only">"Només tendes"</string>
     <string name="quest_camp_type_backcountry">"Zona d'acampada lliure (sense instal·lacions)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Aquesta resposta no concorda amb el que ja està mapejat sobre aquesta carretera. Està segur que està responent sobre la via correcta? Estàs segur que has recorregut tota la via, com sempre cal?"</string>
     <string name="quest_recycling_type_pet">"Només PET"</string>
     <string name="street_parking_street_width">"Amplada del carrer: %s"</string>
     <string name="overlay_street_parking">"Aparcament al carrer
@@ -1381,7 +1375,6 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
     <string name="info">"Més informació"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"És prohibit."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"és permès."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"De fet, hi ha vorera, però es mostra separadament en el mapa."</string>
     <string name="quest_buildingLevels_hint">"Per edificis en un pendent, el recompte de pisos comença des del nivell de terra en el costat més baix.
 
 Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.

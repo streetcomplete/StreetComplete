@@ -698,9 +698,6 @@ taso"</string>
     <string name="quest_board_type_map">"Se on kartta"</string>
     <string name="quest_board_type_map_title">"Onko se vain ja ainoastaan kartta?"</string>
     <string name="quest_board_type_map_description">"Jos taulu koskee tiettyä aihetta, määrittele se huolimatta siitä, sisältääkö se myös kartan. Esimerkiksi julkisen liikenteen infotaulussa voi olla bussireittikartta. Jos taulun aihetta ei löydy tarjolla olevista vastausvaihtoehdoista, harkitse ilmoituksen jättämistä."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Useita pintoja…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Oletko varma, ettei pintaa pysty määrittelemään tarkemmin? Huomioi, että \"eroaa pitkin matkaa\" vastausvaihtoehto mahdollistaa tien katkaiseminen sieltä, missä pinta vaihtuu. Vastaa \"en osaa sanoa\", jos kyseessä on yksi pintamateriaali, mutta vaihtoehtoa ei ole valittavissa."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Määritä tässä lyhyesti pintamateriaali, esimerkiksi \"hiekkainen sisältäen mukulakiviä\".  Tekstin pituus on rajoitettu 255 merkkiin."</string>
     <string name="quest_streetName_menuItem_international">"kansainvälinen"</string>
     <string name="quest_buildingType_terrace2">"Rivitaloja"</string>
     <string name="at_housename">"Talon nimi %s"</string>
@@ -749,7 +746,6 @@ taso"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"erillinen"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ei erillisenä"</string>
     <string name="pref_title_sync2">"Lähetä vastaukset automaattisesti"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Kuvaile pintaa"</string>
     <string name="open_url">"Avaa URL"</string>
     <string name="quest_buildingType_silo">"Siilo"</string>
     <string name="quest_buildingType_historic">"Historiallinen"</string>
@@ -818,7 +814,6 @@ Huomioi kaikki vaihtoehdot: jotkut tapaukset eivät ole ilmiselviä, kuten yksis
     <string name="team_mode_exit">"Poistu työryhmätilasta"</string>
     <string name="team_mode_description">"Kun kartoitatte samaa aluetta yhtenä ryhmänä, voitte mennä työryhmätilaan ja jakaa tehtävät ryhmän jäsenten kesken.
 Jokainen teistä näkee sitten eri tehtäviä."</string>
-    <string name="team_mode_team_size_hint">"Työryhmätila toimii 2–12 ihmisen ryhmissä."</string>
     <string name="team_mode_active">"Työryhmätila päällä"</string>
     <string name="team_mode_deactivated">"Työryhmätila pois päältä"</string>
     <string name="undo_confirm_title2">"Kumotaanko seuraava muutos?"</string>
@@ -1174,7 +1169,6 @@ Tee sama toiselle puolelle mikäli tarpeellista."</string>
     <string name="quest_camp_type_tents_only">"Vain teltat"</string>
     <string name="quest_camp_type_backcountry">"Erämaatelttailu (ei palveluja)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tämä halkaisija vaikuttaa epätodennäköiseltä, se on yleensä välillä %1$d - %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Tämä vastaus ei vastaa sitä, mitä on jo kartoitettu tämän tien osalta. Vastaatko varmasti oikeaan tiehen liittyen? Kartoitiko varmasti henkilökohtaisesti koko tien osalta, kuten on tarkoitus?"</string>
     <string name="quest_recycling_type_pet">"Vain PET-muovi"</string>
     <string name="street_parking_street_width">"Kadun leveys: %s"</string>
     <string name="overlay_street_parking">"Katupysäköinti"</string>
@@ -1374,7 +1368,6 @@ Voit löytää lahjoitustiedot verkkosivuiltamme tai projektin kotisivuilta, Goo
     <string name="info">"Lisätietoja"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Se on kielletty."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Se on sallittu."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Itse asiassa, täällä on jalkakäytävä, mutta se näkyy kartalla erikseen."</string>
     <string name="quest_buildingLevels_hint">"Rakennuksille, jotka ovat rinteellä, kerrosten laskeminen alkaa maan tasosta matalimmalta sivulta.
 
 Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei ole yhtään kattokerrosta eivät ole välttämättä litteitä, vaan eivät ole riittävän korkeita kokonaiselle kerrokselle.
@@ -1410,4 +1403,8 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="quest_crossing_hint">"Tien yli kulkeva epävirallinen reitti:"</string>
     <string name="note_for_object">"Merkintä toiselta henkilöltä:"</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">"Ei ole, mutta kyltti sallii pyöräilyn jalkakäytävällä molempiin suuntiin"</string>
+    <string name="action_messages">"Näytä viestit"</string>
+    <string name="action_create_new_poi">"Luo uusi"</string>
+    <string name="auth_error">"Tunnistautumisvirhe. Yritä kirjautua sisään uudestaan."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Itse asiassa, täällä on jalkakäytävä."</string>
 </resources>

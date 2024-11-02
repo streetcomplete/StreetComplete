@@ -692,9 +692,6 @@
     <string name="quest_board_type_map">"มันคือแผนที่"</string>
     <string name="quest_board_type_map_title">"มันเป็นเพียงแผนที่และเป็นแผนที่เท่านั้น?"</string>
     <string name="quest_board_type_map_description">"หากกระดานเกี่ยวกับหัวข้อใดหัวข้อหนึ่ง โปรดระบุหัวข้อ ไม่ว่ากระดานจะมีแผนที่รวมอยู่ด้วยหรือไม่ ตัวอย่างเช่น กระดานข้อมูลขนส่งสาธารณะอาจมีแผนที่เส้นทางรถประจำทาง หากหัวข้อไม่อยู่ในรายการคำตอบที่มีอยู่ โปรดพิจารณาใส่หมายเหตุแทน"</string>
-    <string name="quest_surface_detailed_answer_impossible">"พื้นผิวหลายประเภท…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"แน่ใจหรือเปล่าว่าไม่สามารถระบุประเภทของพื้นผิวได้? จำไว้ว่าตัวเลือก \"มีความแตกต่างในทางแต่ละส่วน\" สามารถให้คุณแบ่งทางตรงที่พื้นผิวเปลี่ยน กรุณาใช้ตัวเลือก \"ระบุไม่ได้\" ถ้ามีพื้นผิวแบบเดียวแต่ไม่มีตัวเลือกให้เลือกในคำตอบ"</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"กรุณาบรรยายรูปแบบชองพื้นผิวที่นี่ เช่น \"ทรายผสมก้อนกรวด\" ความยาวทั้งหมดไม่เกิน 255 ตัวอักษร"</string>
     <string name="quest_streetName_menuItem_international">"สากล"</string>
     <string name="quest_buildingType_terrace2">"บ้านแถว"</string>
     <string name="at_housename">"ชื่อบ้าน %s"</string>
@@ -743,7 +740,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"แยกกัน"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ไม่ได้แยกกัน"</string>
     <string name="pref_title_sync2">"อัปโหลดคำตอบโดยอัตโนมัติ"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"บรรยายพื้นผิว"</string>
     <string name="open_url">"เปิด URL"</string>
     <string name="quest_buildingType_silo">"ไซโล"</string>
     <string name="quest_buildingType_historic">"เก่าแก่"</string>
@@ -810,7 +806,6 @@
     <string name="team_mode">"โหมดทีม"</string>
     <string name="team_mode_exit">"ออกจากโหมดทีม"</string>
     <string name="team_mode_description">"ถ้าตั้งกลุ่มทำแผนที่ในบริเวณเดียวกัน คุณสามารถเข้าทีมโหมดเพื่อที่จะแบ่งภารกิจให้กับสมาชิกกลุ่มทุกคนได้"</string>
-    <string name="team_mode_team_size_hint">"โหมดทีมสำหรับกลุ่ม 2 ถึง 12 คน"</string>
     <string name="team_mode_active">"โหมดทีมทำงานอยู่"</string>
     <string name="team_mode_deactivated">"โหมดทีมปิดใช้งาน"</string>
     <string name="undo_confirm_title2">"ยกเลิกการแก้ไขต่อไปนี้ไหม?"</string>
@@ -1165,7 +1160,6 @@
     <string name="quest_camp_type_tents_only">"เต็นท์เท่านั้น"</string>
     <string name="quest_camp_type_backcountry">"การตั้งแคมป์แบบไร้สิ่งอำนวยความสะดวก (ที่กันดาร)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"เส้นผ่านศูนย์กลางนี้ดูไม่น่าเชื่อ โดยปกติแล้วจะอยู่ระหว่าง %1$d ถึง %2$d"</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"คำตอบนี้ไม่ตรงกับข้อมูลที่มีการทำแผนที่สำหรับถนนสายนี้มาก่อน คุณแน่ใจหรือไม่ว่ากำลังตอบถนนเส้นที่ถูกต้อง และแน่ใจว่าคุณได้สำรวจด้วยตนเองตลอดทั้งความยาวตามที่จำเป็นเสมอหรือไม่?"</string>
     <string name="quest_recycling_type_pet">"PET เท่านั้น"</string>
     <string name="street_parking_street_width">"ความกว้างถนน: %s"</string>
     <string name="overlay_street_parking">"ที่จอดรถริมถนน"</string>

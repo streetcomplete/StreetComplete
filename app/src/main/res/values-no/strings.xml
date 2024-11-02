@@ -698,9 +698,6 @@ nivåer"</string>
     <string name="quest_board_type_map">"Et kart"</string>
     <string name="quest_board_type_map_title">"Er det bare et kart, og kun et kart?"</string>
     <string name="quest_board_type_map_description">"Oppgi om en informasjonstavle omhandler et spesifikt emne, uavhengig av om den også viser et kart. For eksempel kan en informasjonstavle for offentlig transport inneholde et kart over bussrutene. Hvis du ikke finner emnet blant alternativene kan du lage en merknad i stedet."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Flere overflater…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Er du sikker på at det er umulig å spesifisere overflaten? Husk alternativet “Varierer…” som kan dele opp veien der overflaten endres. Vennligst bruk “Vanskelig å si…” hvis strekningen har samme overflate, men den ikke finnes blant alternativene."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Vennligst gi en kort beskrivelse av overflaten her, for eksempel “sandete med områder med brostein”. Teksten er begrenset til 255 tegn."</string>
     <string name="quest_streetName_menuItem_international">"internasjonal"</string>
     <string name="quest_buildingType_terrace2">"Rekkehus"</string>
     <string name="at_housename">"Husnavn %s"</string>
@@ -749,7 +746,6 @@ nivåer"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Adskilt"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Ikke adskilt"</string>
     <string name="pref_title_sync2">"Last opp endringer automatisk"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Beskriv overflate"</string>
     <string name="open_url">"Åpne URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisk"</string>
@@ -818,7 +814,6 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="team_mode">"Gruppemodus"</string>
     <string name="team_mode_exit">"Avslutt gruppemodus"</string>
     <string name="team_mode_description">"Når du kartlegger det samme området sammen med en gruppe kan du starte gruppemodus for å dele oppgavene mellom dere."</string>
-    <string name="team_mode_team_size_hint">"Gruppemodus fungerer for grupper på 2-12 personer."</string>
     <string name="team_mode_active">"Gruppemodus er aktivt"</string>
     <string name="team_mode_deactivated">"Gruppemodus er deaktivert"</string>
     <string name="undo_confirm_title2">"Angre følgende endring?"</string>
@@ -1174,7 +1169,6 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_camp_type_tents_only">"Kun telt"</string>
     <string name="quest_camp_type_backcountry">"Friluftscamping (ingen fasiliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dette svarer passer ikke med det som allerede er registrert for denne veien. Er du sikker på at du legger inn svar for riktig vei? Har du undersøkt hele veistrekket selv, slik du alltid skal?"</string>
     <string name="quest_recycling_type_pet">"Kun PET"</string>
     <string name="street_parking_street_width">"Gatebredde: %s"</string>
     <string name="overlay_street_parking">"Gateparkering"</string>
@@ -1373,7 +1367,6 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="info">"Mer informasjon"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Det er forbudt."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Det er tillatt."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Egentlig, er det et fortau, men det er vist annerledes på kartet."</string>
     <string name="quest_buildingLevels_hint">"For byggninger i skråning, starter man tellingen fra første etasje på den laveste siden.
 
 En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med null taketasjer nødvendigvis flate, bare ikke høye nok for en hel etasje."</string>

@@ -696,9 +696,6 @@ logros"</string>
     <string name="quest_board_type_map">"É un mapa"</string>
     <string name="quest_board_type_map_title">"É soamente un mapa?"</string>
     <string name="quest_board_type_map_description">"Se o taboleiro é sobre un tema en particular, especifícao, independentemente de se tamén inclúe un mapa. Por exemplo, un taboleiro de transporte público pode ter un mapa de rutas de autobús. Se o tema non figura entre as respostas dispoñíbeis, coida deixar unha nota."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Múltiples superficies…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Estás seguro de que é imposíbel especificar a superficie? Ten en conta a opción de resposta \"Difire ó longo do camiño\" que che permite dividir a vía por onde muda a superficie. Emprega \"Non sabería dicirche\" se hai unha soa superficie pero non está dispoñíbel como resposta."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Especifica de xeito breve a natureza da superficie, por exemplo \"areoso con anacos de lastros\". A lonxitude do texto está limitada a 255 caracteres."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Liña de casas (adosados)"</string>
     <string name="at_housename">"Nome da casa %s"</string>
@@ -747,7 +744,6 @@ logros"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"non separada"</string>
     <string name="pref_title_sync2">"Subir respostas de xeito automático"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Describe a superficie"</string>
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Histórico"</string>
@@ -814,7 +810,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar."</string>
     <string name="team_mode">"Modo Equipo"</string>
     <string name="team_mode_exit">"Saír do Modo Equipo"</string>
     <string name="team_mode_description">"Se estades un grupo a mapear un área, podes entrar no modo equipo para repartir o traballo entre todos os membros do equipo."</string>
-    <string name="team_mode_team_size_hint">"O modo equipo é para grupos de 2 a 12 persoas."</string>
     <string name="team_mode_active">"O modo equipo está activado"</string>
     <string name="team_mode_deactivated">"Modo equipo desactivado"</string>
     <string name="undo_confirm_title2">"Desfacer a seguinte edición?"</string>

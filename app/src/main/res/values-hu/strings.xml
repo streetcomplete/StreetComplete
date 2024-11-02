@@ -28,9 +28,9 @@
     <string name="quest_openingHours_end_time">"zárás"</string>
     <string name="quest_openingHours_add_months">"Hónap hozzáadása"</string>
     <string name="quest_openingHours_add_hours">"Óra hozzáadása"</string>
-    <string name="quest_openingHours_add_weekdays">"Nap hozzáadása"</string>
-    <string name="quest_openingHours_chooseMonthsTitle">"Hónap kijelölése"</string>
-    <string name="quest_openingHours_chooseWeekdaysTitle">"Nap kijelölése"</string>
+    <string name="quest_openingHours_add_weekdays">"Napok hozzáadása"</string>
+    <string name="quest_openingHours_chooseMonthsTitle">"Hónapok kiválasztása"</string>
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Napok kiválasztása"</string>
     <string name="quest_openingHours_24_7_confirmation">"Vagyis minden nap minden órájában nyitva tart?"</string>
     <string name="quest_noteDiscussion_title">"Tudsz bármit segíteni a jegyzet megoldásában?"</string>
     <string name="quest_noteDiscussion_no">"Nem, elrejtés"</string>
@@ -43,9 +43,9 @@
     <string name="download_error">"Hiba a kérdések letöltése során"</string>
     <string name="upload_error">"Hiba a válaszok feltöltése során"</string>
     <string name="download_area_too_big">"Nagyíts rá jobban"</string>
-    <string name="confirmation_cancel_prev_download_title">"Törlöd a jelenlegi keresést, és inkább itt olvasol be?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Leállítod a jelenlegi letöltést, és inkább itt töltesz le?"</string>
     <string name="turn_on_location_request">"Helyzetmeghatározás kikapcsolva. Bekapcsolod most?"</string>
-    <string name="no_location_permission_warning">"Szükség van a pozíciódra a környéked kérdéseinek lekéréséhez."</string>
+    <string name="no_location_permission_warning">"Helymeghatározási engedélyre van szükség ahhoz, hogy a térképen megjelenjen a pozíciód, és letöltsd a környéked adatait."</string>
     <string name="about_title_authors">"Szerzők"</string>
     <string name="about_title_repository">"Források"</string>
     <string name="about_title_report_error">"Hiba bejelentése"</string>
@@ -66,10 +66,10 @@
     <string name="quest_openingHours_answer_247">"Éjjel-nappal nyitva"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Hónaptól függően változik…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nincs rendszeres nyitvatartás…"</string>
-    <string name="quest_openingHours_comment_title">"Nyitvatartás leírása"</string>
-    <string name="quest_openingHours_comment_description">"Légy tömör, lehetőleg a táblán lévő szavakat írd le, pl. „előzetes megbeszélés alapján”. Attól, hogy nincs is kiírva, még lehet rendszeres nyitvatartás."</string>
+    <string name="quest_openingHours_comment_title">"Írd le a nyitvatartást"</string>
+    <string name="quest_openingHours_comment_description">"Légy tömör, lehetőleg a táblán lévő szavakat írd le, pl. „előzetes megbeszélés alapján”. Attól, hogy nincs kiírva, még lehet rendszeres nyitvatartás."</string>
     <string name="quest_roofShape_title">"Milyen alapformájú ennek az épületnek a teteje?"</string>
-    <string name="quest_roofShape_select_one">"Jelölj ki egyet:"</string>
+    <string name="quest_roofShape_select_one">"Válassz ki egyet:"</string>
     <string name="quest_roofShape_show_more">"Továbbiak…"</string>
     <string name="quest_roofShape_answer_many">"Több különböző alakja van"</string>
     <string name="map_btn_zoom_out">"Kicsinyítés"</string>
@@ -96,18 +96,18 @@ A módosításaid feltöltése előtt azonban az alkalmazás először leellenő
     <string name="autosync_on">"Be"</string>
     <string name="autosync_only_on_wifi">"Csak Wi-Fi használatakor"</string>
     <string name="autosync_off">"Ki"</string>
-    <string name="quest_streetSurface_title">"Milyen a burkolata ennek az útszakasznak?"</string>
-    <string name="quest_surface_value_paved">"Burkolt"</string>
-    <string name="quest_surface_value_unpaved">"Burkolatlan"</string>
+    <string name="quest_streetSurface_title">"Milyen a felülete ennek az útszakasznak?"</string>
+    <string name="quest_surface_value_paved">"Burkolt (általános)"</string>
+    <string name="quest_surface_value_unpaved">"Burkolatlan (általános)"</string>
     <string name="quest_surface_value_ground">"Talaj (általános)"</string>
     <string name="quest_surface_value_asphalt">"Aszfalt"</string>
     <string name="quest_surface_value_compacted">"Tömörített (makadám)"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Föld"</string>
-    <string name="quest_surface_value_fine_gravel">"Murva"</string>
+    <string name="quest_surface_value_fine_gravel">"Murva (finom zúzott kő)"</string>
     <string name="quest_surface_value_grass">"Fű"</string>
     <string name="quest_surface_value_grass_paver">"Gyephézagos térkő"</string>
-    <string name="quest_surface_value_gravel">"Zúzott kő"</string>
+    <string name="quest_surface_value_gravel">"Durva zúzott kő"</string>
     <string name="quest_surface_value_paving_stones">"Térkő"</string>
     <string name="quest_surface_value_pebblestone">"Kavics"</string>
     <string name="quest_surface_value_sand">"Homok"</string>
@@ -119,7 +119,7 @@ A módosításaid feltöltése előtt azonban az alkalmazás először leellenő
     <string name="store_listing_short_description">"OpenStreetMap-felmérő alkalmazás"</string>
     <string name="store_listing_full_description">"Segítsd fejleszteni az OpenStreetMapet a StreetComplete-tel!
 
-Ez az alkalmazás hiányos és bővíthető adatokat keres a környékeden, és megjeleníti őket térképen. Egy egyszerű kérdésre válaszolva ezeket az adatokat mind meg lehet adni terepen.
+Ez az alkalmazás hiányos és bővíthető adatokat keres a környékeden, és megjeleníti őket térképen. Oldd meg a kérdéseket úgy, hogy ellátogatsz a helyszínre, és egy egyszerű kérdés megválaszolásával frissíted a térképet.
 
 A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez nincs szükség más szerkesztőprogramra."</string>
     <string name="quest_name_answer_noName">"Nincs neve…"</string>
@@ -695,9 +695,6 @@ szintek"</string>
     <string name="quest_board_type_map">"Ez egy térkép"</string>
     <string name="quest_board_type_map_title">"Csak és kizálólag egy térkép?"</string>
     <string name="quest_board_type_map_description">"Ha a tábla egy bizonyos témáról szól, akkor kérlek, azt add meg, függetlenül attól, hogy egy térkép is szerepel rajta. Például egy tömegközlekedési tábla tartalmazhat egy buszútvonalakat ábrázoló térképet. Ha a téma nem szerepel a lehetséges válaszok között, akkor kérlek inkább hagyj egy megjegyzést."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Többféle felület…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Biztos, hogy lehetetlen meghatározni a felületet? Ne feledd, az „Az út mentén változik” válasz esetén az utat elvághatod az útburkolat változásainál. Akkor válaszd a „Nem tudom” lehetőséget, ha egyetlen útburkolat jellemzi, de az nem szerepel a válaszok között."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Kérlek, röviden jellemezd az útburkolatot, például \"Homok, macskaköves részekkel\". A szöveg hossza legfeljebb 255 karakter lehet."</string>
     <string name="quest_streetName_menuItem_international">"nemzetközi"</string>
     <string name="quest_buildingType_terrace2">"Sorház"</string>
     <string name="at_housename">"Ház neve %s"</string>
@@ -746,7 +743,6 @@ szintek"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"külön"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nem külön"</string>
     <string name="pref_title_sync2">"Válaszok automatikus feltöltése"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Felület leírása"</string>
     <string name="open_url">"URL megnyitása"</string>
     <string name="quest_buildingType_silo">"Siló"</string>
     <string name="quest_buildingType_historic">"Történelmi"</string>
@@ -815,7 +811,6 @@ Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelm
     <string name="team_mode">"Csapatmód"</string>
     <string name="team_mode_exit">"Kilépés a csapatmódból"</string>
     <string name="team_mode_description">"Ha egy területen egyszerre többen szeretnétek térképezni, lehetőség van csapatmódban felosztani a feladatokat."</string>
-    <string name="team_mode_team_size_hint">"A csapatmód 2-től 12 személyig használható."</string>
     <string name="team_mode_active">"Csapatmód aktív"</string>
     <string name="team_mode_deactivated">"Csapatmód kikapcsolva"</string>
     <string name="undo_confirm_title2">"Visszavonod a következő szerkesztést?"</string>
@@ -1133,7 +1128,7 @@ Tedd meg a másiknál is, ha van olyan."</string>
     <string name="quest_air_pump_bicycle_shop_title">"Van itt nyilvános kerékpárpumpa (amikor nyitva van az üzlet)?"</string>
     <string name="quest_air_pump_bicycle_repair_station_title">"Van itt működő kerékpárpumpa?"</string>
     <string name="action_overlays">"Kiemelés"</string>
-    <string name="split_way">"Osztott út"</string>
+    <string name="split_way">"Vonal elvágása"</string>
     <string name="quest_memorialType_title">"Milyen típusú emlékmű ez?"</string>
     <string name="quest_memorialType_statue">"Szobor"</string>
     <string name="quest_memorialType_bust">"Mellszobor"</string>
@@ -1171,7 +1166,6 @@ Tedd meg a másiknál is, ha van olyan."</string>
     <string name="quest_camp_type_tents_only">"Csak sátrak"</string>
     <string name="quest_camp_type_backcountry">"Természetjárók kempingje (létesítmények nélkül)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ez az átmérő valószínűtlennek tűnik, általában %1$d és %2$d között szokott lenni."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ez a válasz nem felel meg annak, amit már feltérképeztek erről az útról. Biztos benne, hogy a helyes útról válaszol? Biztos benne, hogy személyesen felmérte a teljes hosszát, ahogyan az mindig szükséges?"</string>
     <string name="quest_recycling_type_pet">"Csak PET"</string>
     <string name="street_parking_street_width">"Az utca szélessége: %s"</string>
     <string name="overlay_street_parking">"Közúti parkolás"</string>
@@ -1371,7 +1365,6 @@ Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőol
     <string name="info">"További információ"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Tiltott."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Engedélyezve van."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Tulajdonképpen van járda, de az külön van feltüntetve a térképen."</string>
     <string name="quest_buildingLevels_hint">"Lejtőn álló épületeknél a szintszámlálás a legalacsonyabb oldal talajszintjétől kezdődik.
 
 Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla tetőszintű tetők nem feltétlenül laposak, csak nem elég magasak egy teljes szinthez."</string>
@@ -1407,4 +1400,8 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_cycleway_value_sidewalk_ok_dual">"nincs, de a tábla mindkét irányban engedélyezi a kerékpározást a járdán"</string>
     <string name="quest_surface_value_rubber">"Gumi granulátum"</string>
     <string name="quest_surface_value_acrylic">"Műgyanta"</string>
+    <string name="action_messages">"Üzenetek megjelenítése"</string>
+    <string name="action_create_new_poi">"Új létrehozása"</string>
+    <string name="auth_error">"Jogosultsági hiba. Próbálj újra bejelentkezni."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Valójában van egy járda."</string>
 </resources>

@@ -690,7 +690,6 @@ aktiva"</string>
     <string name="quest_board_type_map">"Ĝi estas mapo"</string>
     <string name="quest_board_type_map_title">"Ĉu ĝi estas nur mapo?"</string>
     <string name="quest_board_type_map_description">"Se la tabulo havus apartan temon, bonvole specifu ĝin, sendepende ĉu ĝi ankaŭ montrus mapon. Ekzemple publika transporto tabulo montrus mapon de la itineroj de la aŭtobusoj. Se la temo ne estas en la listo de la elektablajn respondojn, bonvole konsideru fari noton."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Pluraj surfacoj"</string>
     <string name="quest_streetName_menuItem_international">"internacia"</string>
     <string name="quest_buildingType_terrace2">"Vicdomoj"</string>
     <string name="at_housename">"Nomo de domo %s"</string>
@@ -739,7 +738,6 @@ aktiva"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"aparta"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ne aparta"</string>
     <string name="pref_title_sync2">"Alŝutu respondojn aŭtomate"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Priskribi surfacon"</string>
     <string name="open_url">"Malfermi URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historia"</string>
@@ -806,7 +804,6 @@ Kontrolu ĉiujn opciojn: kelkaj kazoj ne estas evidentaj, kiel unudirekta vojo k
     <string name="team_mode">"Teama Reĝimo"</string>
     <string name="team_mode_exit">"Eliri Teama Reĝimo"</string>
     <string name="team_mode_description">"Kiam vi mapas la saman areon kune en grupo, vi povas eniri teamreĝimon por dividi taskojn inter ĉiuj grupanoj."</string>
-    <string name="team_mode_team_size_hint">"Teama reĝimo funkcias por grupoj de 2 ĝis 12 homoj."</string>
     <string name="team_mode_active">"Teama Reĝimo estas aktiva"</string>
     <string name="team_mode_deactivated">"Teama reĝimo estas malaktiva"</string>
     <string name="undo_confirm_title2">"Ĉu malfari la sekvan redakton?"</string>
@@ -1332,7 +1329,6 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="info">"Pluaj informoj"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Malpermesata."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Permesata."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Estas trotuaro ĉi tie sed ĝi estas pentrita dise sur la mapo"</string>
     <string name="quest_parcel_locker_brand">"De kiu firmao estas ĉi tiu paketo-ŝranko?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"La konduktlineo estas fiksita ĉe la konstruaĵo"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"nenio, sed signo permesas bicikladon sur la trotuaro"</string>

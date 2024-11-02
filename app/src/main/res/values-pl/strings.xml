@@ -697,9 +697,6 @@ osiągnięć"</string>
     <string name="quest_board_type_map">"To jest mapa"</string>
     <string name="quest_board_type_map_title">"Czy to jest mapa i tylko mapa?"</string>
     <string name="quest_board_type_map_description">"Jeśli tablica jest o konkretnym temacie, wybierz go - niezależnie od tego czy pojawia się też mapa. Na przykład tablica o transporcie publicznym może zawierać też mapę tras autobusowych. Jeśli temat nie jest na liście możliwych odpowiedzi, wybierz raczej \"odpowiedź niemożliwa\" i zostaw notatkę."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Różne nawierzchnie…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Czy jesteś pewien że nie jest możliwe podanie nawierzchni? Zauważ że jest opcja \"Zmienia się\" która pozwala na podzielenie na odcinki z różną nawierzchnią. Wybierz \"Odpowiedź niemozliwa\" jeśli jest jedna nawierzchnia która nie jest możliwa do wybrania jako odpowiedź."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Proszę krótko opisz nawierzchnię, na przykład \"piaszczysta z fragmentami kocich łbów\" (jeśli możesz, możesz użyć angielskiego, np \"sandy with patches of cobblestone\"). Długość tekstu ograniczona jest do 255 znaków."</string>
     <string name="quest_streetName_menuItem_international">"międzynarodowa"</string>
     <string name="quest_buildingType_terrace2">"wiele domów szeregowych"</string>
     <string name="at_housename">"Nazwa budynku %s"</string>
@@ -748,7 +745,6 @@ osiągnięć"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"osobno"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nie jest pokazana osobno"</string>
     <string name="pref_title_sync2">"Automatycznie wysyłaj zmiany"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Opisz nawierzchnię"</string>
     <string name="open_url">"Otwórz link"</string>
     <string name="quest_buildingType_silo">"Silos"</string>
     <string name="quest_buildingType_historic">"Historyczny"</string>
@@ -818,7 +814,6 @@ Zwróć uwagę na wszystkie opcje: nie wszystkie przypadki są oczywiste, na prz
     <string name="team_mode">"Tryb drużynowy"</string>
     <string name="team_mode_exit">"Wyjdź z trybu drużynowego"</string>
     <string name="team_mode_description">"W trybie drużynowym możesz podzielić się zadaniami z grupą osób i wspólnie pracować na jednym obszarze."</string>
-    <string name="team_mode_team_size_hint">"Można wybrać od 2 do 12 osób."</string>
     <string name="team_mode_active">"Tryb zespołowy aktywny"</string>
     <string name="team_mode_deactivated">"Tryb zespołowy nieaktywny"</string>
     <string name="undo_confirm_title2">"Cofnąć następującą edycję?"</string>
@@ -1174,7 +1169,6 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_camp_type_tents_only">"Tylko namioty"</string>
     <string name="quest_camp_type_backcountry">"Kemping bez udogodnień"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ta średnica wygląda nieprawdopodobnie, zwykle wynosi od %1$d do %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ta odpowiedź nie pasuje do tego, jak droga została zmapowana. Czy na pewno odpowiadasz na temat właściwej drogi? Czy jesteś pewien, że osobiście sprawdziłeś na całej długości?"</string>
     <string name="quest_recycling_type_pet">"Tylko PET"</string>
     <string name="street_parking_street_width">"Szerokość ulicy: %s"</string>
     <string name="overlay_street_parking">"Parkowanie na ulicy"</string>
@@ -1374,7 +1368,6 @@ Informacje o darowiznach można znaleźć na naszej stronie internetowej lub na 
     <string name="info">"Więcej informacji"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"To jest zabronione."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"To jest dozwolone."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Tu jest chodnik, ale pokazany osobno na mapie."</string>
     <string name="quest_buildingLevels_hint">"W przypadku budynków na zboczu licznik poziomów zaczyna się od poziomu gruntu najniższej strony. 
 
 Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w związku z tym dachy o zerowych poziomach dachu niekoniecznie są płaskie, po prostu nie są wystarczająco wysokie dla całego poziomu."</string>

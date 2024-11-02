@@ -692,9 +692,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_board_type_map">"Het is een kaart"</string>
     <string name="quest_board_type_map_title">"Is het echt alleen maar een kaart?"</string>
     <string name="quest_board_type_map_description">"Als het bord over een bepaald onderwerp gaat, geef dit dan aan, ongeacht of het ook een kaart bevat. Zo kan een OV-bord een busroutekaart hebben. Als het onderwerp niet tussen de beschikbare antwoorden staat, overweeg dan om een notitie achter te laten."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Meerdere soorten oppervlak"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet je zeker dat het onmogelijk is om het wegdek te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee je de weg kunt splitsen waar het oppervlak verandert. Gebruik alstublieft \"Weet ik niet\" als er één wegdek is maar dat niet beschikbaar is als antwoord."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Geef hier in het kort de aard van het oppervlak aan, bijvoorbeeld \"zanderig met geplaveide plekken\". De tekstlengte is hoogstens 255 tekens."</string>
     <string name="quest_streetName_menuItem_international">"Internationaal"</string>
     <string name="quest_buildingType_terrace2">"Rijtjeshuizen"</string>
     <string name="at_housename">"Naam van het gebouw %s"</string>
@@ -743,7 +740,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"apart"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"niet apart"</string>
     <string name="pref_title_sync2">"Upload antwoorden automatisch"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Beschrijf het oppervlak"</string>
     <string name="open_url">"Open URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisch"</string>
@@ -810,7 +806,6 @@ Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals
     <string name="team_mode">"Team modus"</string>
     <string name="team_mode_exit">"Uit Team modus"</string>
     <string name="team_mode_description">"Als je hetzelfde gebied samen in een groep in kaart brengt, kun je de team modus activeren om vragen tussen alle teamleden te verdelen."</string>
-    <string name="team_mode_team_size_hint">"Team modus is geschikt voor groepen van 2 tot 12 mensen."</string>
     <string name="team_mode_active">"Team modus is actief"</string>
     <string name="team_mode_deactivated">"Team modus is uitgeschakeld"</string>
     <string name="undo_confirm_title2">"De volgende wijziging ongedaan maken?"</string>
@@ -1166,7 +1161,6 @@ Doe hetzelfde voor de andere zijde, als aanwezig."</string>
     <string name="quest_camp_type_tents_only">"Alleen tenten"</string>
     <string name="quest_camp_type_backcountry">"Wildkamperen (geen faciliteiten)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Deze diameter lijkt onwaarschijnlijk, deze ligt meestal tussen %1$d en %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Dit antwoord komt niet overeen met wat er al over deze weg in kaart is gebracht. Weet u zeker dat u over de juiste weg antwoordt? Weet u zeker dat u persoonlijk over de gehele lengte heeft gekeken, zoals altijd nodig is?"</string>
     <string name="quest_recycling_type_pet">"Alleen PET"</string>
     <string name="street_parking_street_width">"Straatbreedte: %s"</string>
     <string name="overlay_street_parking">"Parkeren op straat."</string>
@@ -1366,7 +1360,6 @@ Je kunt informatie over doneren terugvinden op onze website of Github. Google Pl
     <string name="info">"Meer informatie"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Het is verboden."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Het is toegestaan."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Er is een trottoir, maar het wordt apart op de kaart getoond."</string>
     <string name="quest_buildingLevels_hint">"Voor gebouwen op een helling begint het tellen bij de begane grond van de laagste kant.
 
 Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die niet als verdieping tellen zijn niet noodzakelijk plat, maar alleen maar niet hoog genoeg als verdieping.

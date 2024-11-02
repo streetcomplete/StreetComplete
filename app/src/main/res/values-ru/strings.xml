@@ -700,9 +700,6 @@
     <string name="quest_board_type_map">"Это карта"</string>
     <string name="quest_board_type_map_title">"Это только карта и ничего более?"</string>
     <string name="quest_board_type_map_description">"Если доска посвящена определённой теме, укажите её, независимо от того, есть ли на ней карта. Например, на табло общественного транспорта может быть карта автобусных маршрутов. Если тема отсутствует в списке доступных ответов, оставьте вместо этого заметку."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Различные покрытия…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Вы уверены что указать тип покрытия невозможно? Опция \"Отличается на разных участках\" позволяет разделить участок в местах смены покрытия. Используйте \"Не знаю\" если покрытие однородно, но не доступно в качестве ответа."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Пожалуйста, кратко укажите тип поверхности, например, \"песчаная с вкраплениями булыжника\". Длина текста ограничена 255 символами."</string>
     <string name="quest_streetName_menuItem_international">"международное"</string>
     <string name="quest_buildingType_terrace2">"Ряд домов"</string>
     <string name="at_housename">"Название дома %s"</string>
@@ -751,7 +748,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"отдельный"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"не отдельный"</string>
     <string name="pref_title_sync2">"Загружать ответы автоматически"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Опишите поверхность"</string>
     <string name="open_url">"Открыть URL"</string>
     <string name="quest_buildingType_silo">"Силос"</string>
     <string name="quest_buildingType_historic">"Историческое"</string>
@@ -818,7 +814,6 @@
     <string name="team_mode">"Командный режим"</string>
     <string name="team_mode_exit">"Отключить командный режим"</string>
     <string name="team_mode_description">"Если вы обследуете местность группой, вы можете включить командный режим, чтобы распределить квесты между всеми участниками."</string>
-    <string name="team_mode_team_size_hint">"Командный режим работает для групп от 2 до 12 человек."</string>
     <string name="team_mode_active">"Командный режим включён"</string>
     <string name="team_mode_deactivated">"Командный режим отключён"</string>
     <string name="undo_confirm_title2">"Отменить эту правку?"</string>
@@ -1176,7 +1171,6 @@
     <string name="quest_camp_type_tents_only">"Только палатки"</string>
     <string name="quest_camp_type_backcountry">"Кемпинг в сельской местности (без удобств)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Этот диаметр выглядит неправдоподобным, обычно он находится между %1$d и %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Этот ответ не соответствует тому, что уже нанесено на карту об этой дороге. Вы уверены, что отвечаете о правильной дороге? Вы точно обследовали лично её по всей длине, как это всегда требуется?"</string>
     <string name="quest_recycling_type_pet">"только ПЭТ"</string>
     <string name="street_parking_street_width">"Ширина улицы: %s"</string>
     <string name="overlay_street_parking">"Уличная парковка"</string>
@@ -1374,7 +1368,6 @@
     <string name="info">"Больше информации"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Это запрещено."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Это разрешено."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"На самом деле тротуар есть, но на карте он отображается отдельно."</string>
     <string name="quest_buildingLevels_hint">"Для зданий, расположенных на склоне, отсчет этажей начинается от уровня земли самой низкой стороны.
 
 Этаж в составе крыши считается этажом, если в нём находятся окна.  Следовательно, крыши с нулевым этажом крыши не обязательно плоские, просто недостаточно высокие для всего уровня.

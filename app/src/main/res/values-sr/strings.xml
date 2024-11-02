@@ -697,9 +697,6 @@
     <string name="quest_board_type_map">"То је карта"</string>
     <string name="quest_board_type_map_title">"Да ли је само и једино карта?"</string>
     <string name="quest_board_type_map_description">"Ако је табла о одређеној теми, наведите је, без обзира на то да ли укључује и карту. На пример, табла јавног превоза може имати карту аутобуских линија. Ако теме нема у наведеним одговорима, размислите да је оставите као напомену."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Различите површине…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Да ли сте сигурни да је немогуће навести површину? Узмите у обзир да одговор „Различита у деловима“ омогућава да означите место где се површина мења. Молимо да користите „Не могу да кажем…“ ако постоји јединствена површина, али није доступна као одговор."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Молимо да укратко опишете врсту површине овде, на пример „песковита са деловима калдрме“. Дужина текста је ограничена на 255 знакова."</string>
     <string name="quest_streetName_menuItem_international">"међународна"</string>
     <string name="quest_buildingType_terrace2">"Куће у низу"</string>
     <string name="at_housename">"назив куће %s"</string>
@@ -748,7 +745,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"одвојено"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"није одвојено"</string>
     <string name="pref_title_sync2">"Аутоматско слање одговора"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Опишите површину"</string>
     <string name="open_url">"Отворите везу"</string>
     <string name="quest_buildingType_silo">"Силос"</string>
     <string name="quest_buildingType_historic">"Историјска"</string>
@@ -815,7 +811,6 @@
     <string name="team_mode">"Рад у тиму"</string>
     <string name="team_mode_exit">"Излаз из рада у тиму"</string>
     <string name="team_mode_description">"Када картирате исту регију у групи, можете да уђете у Рад у тиму и да поделите задатке међусобно."</string>
-    <string name="team_mode_team_size_hint">"Рад у тиму ради са групама од 2 до 12 људи."</string>
     <string name="team_mode_active">"Укључен је рад у тиму"</string>
     <string name="team_mode_deactivated">"Искључен је рад у тиму"</string>
     <string name="undo_confirm_title2">"Опозвати следећу промену?"</string>
@@ -1171,7 +1166,6 @@
     <string name="quest_camp_type_tents_only">"Само шатори"</string>
     <string name="quest_camp_type_backcountry">"Забачено камповање (без објеката)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Овај промер изгледа нереално, обично је између %1$d и %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Овај одговор се не подудара са оним што је већ унето о овом путу. Да ли сте сигурни да решавате исправн сегмент пута? Да ли сте сигурни да сте истражили читаву дужину, као што се и ради?"</string>
     <string name="quest_recycling_type_pet">"Само PET амбалажа"</string>
     <string name="street_parking_street_width">"Ширина улице: %s"</string>
     <string name="overlay_street_parking">"Паркинг на улици"</string>
@@ -1370,7 +1364,6 @@
     <string name="info">"Још информација"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Забрањено је."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Дозвољено је."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Заправо постоји тротоар, али је приказан одвојено на карти."</string>
     <string name="quest_buildingLevels_hint">"За зграде на падини, спратови се броје од нивоа земљишта, са најниже стране.
 
 Спратом се сматра и када су прозори у крову. Стога, кровови без спрата нису нужно равни, већ једноставно нису довољно високи да би постојало поткровље.

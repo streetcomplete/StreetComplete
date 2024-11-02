@@ -698,9 +698,6 @@ postignuća"</string>
     <string name="quest_board_type_map">"To je karta"</string>
     <string name="quest_board_type_map_title">"Je li to samo karta i jedino karta?"</string>
     <string name="quest_board_type_map_description">"Ako je ploča o određenoj temi, navedite je, bez obzira na to uključuje li i kartu. Na primjer, tabla javnog prijevoza može imati kartu autobusne rute. Ako tema nije navedena među dostupnim odgovorima, razmislite o tome da umjesto nje ostavite bilješku."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Višestruke različite površine…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Jeste li sigurni da je nemoguće odrediti površinu? Obratite pažnju na odgovor “Razlikuje se putem” koji vam omogućuje da označite mjesto na kojem se površina mijenja. Molimo da koristite “Ne mogu reći” ako postoji jedna površina, ali ona nije dostupna kao odgovor."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Molimo ukratko opišite vrstu površine ovdje, na primjer “pjeskovita s kaldrmom mjestimice”. Duljina teksta ograničena je na 255 znakova."</string>
     <string name="quest_streetName_menuItem_international">"međunarodni"</string>
     <string name="quest_buildingType_terrace2">"Kuće u nizu"</string>
     <string name="at_housename">"ime kuće %s"</string>
@@ -749,7 +746,6 @@ postignuća"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"zaseban"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nije zaseban"</string>
     <string name="pref_title_sync2">"Automatsko slanje odgovora"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Opišite površinu"</string>
     <string name="open_url">"Otvori poveznicu"</string>
     <string name="quest_buildingType_silo">"Silos"</string>
     <string name="quest_buildingType_historic">"Povijesna zgrada"</string>
@@ -819,7 +815,6 @@ Pripazite na sve dostupne opcije: neki slučajevi nisu očigledni, poput jednosm
     <string name="team_mode_exit">"Ugasi timski način rada"</string>
     <string name="team_mode_description">"Kada kartirate isto područje zajedno u grupi, možete ući u timski način rada da podijelite zadatke između svih članova tima.
 Svaki od vas će vidjeti druge zadatke."</string>
-    <string name="team_mode_team_size_hint">"Timski način rada podržava grupe od 2 do 12 osoba."</string>
     <string name="team_mode_active">"Timski način rada je aktivan"</string>
     <string name="team_mode_deactivated">"Timski način rada je deaktiviran"</string>
     <string name="undo_confirm_title2">"Poništi ovo uređivanje?"</string>
@@ -1175,7 +1170,6 @@ Učinite isto za drugu stranu ako je prikazana na ekranu."</string>
     <string name="quest_camp_type_tents_only">"Samo šatori"</string>
     <string name="quest_camp_type_backcountry">"Zabačeno kampiranje (bez objekata)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Toliki promjer izgleda nerealno; obično je između %1$d i %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ovaj se odgovor ne podudara s onim što je već uneseno o ovoj cesti. Jeste li sigurni da rješavate ispravnu cestu? Jeste li sigurni da ste osobno izmjerili po cijeloj dužini, kao što je uvijek potrebno?"</string>
     <string name="quest_recycling_type_pet">"Samo PET"</string>
     <string name="street_parking_street_width">"Širina ulice: %s"</string>
     <string name="overlay_street_parking">"Ulični parking"</string>
@@ -1375,7 +1369,6 @@ Informacije o donacijama možete pronaći na našoj web stranici ili repozitorij
     <string name="info">"Više informacija"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Zabranjeno je."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Dozvoljeno je."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Zapravo, nogostup postoji, ali je na karti prikazan odvojeno."</string>
     <string name="quest_buildingLevels_hint">"Za zgrade na padini, brojanje katova počinje od razine tla na najnižoj strani.
 
 Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, krovovi s nula katova u potkrovlju nisu nužno ravni, samo nisu dovoljno visoki za cijeli kat."</string>
@@ -1413,4 +1406,8 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="quest_cycleway_value_sidewalk_ok_dual">"nema, ali znak dopušta vožnju biciklom nogostupom, u oba smjera"</string>
     <string name="quest_surface_value_rubber">"Gumene granule"</string>
     <string name="quest_surface_value_acrylic">"Sintetička smola / akril"</string>
+    <string name="action_messages">"Prikaži poruke"</string>
+    <string name="action_create_new_poi">"Kreiraj novi POI"</string>
+    <string name="auth_error">"Greška prilikom autorizacije. Pokušajte se ponovno prijaviti."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Zapravo, postoji nogostup."</string>
 </resources>

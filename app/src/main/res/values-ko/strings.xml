@@ -697,9 +697,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_board_type_map">"지도입니다"</string>
     <string name="quest_board_type_map_title">"지도 외엔 아무것도 없나요?"</string>
     <string name="quest_board_type_map_description">"만약 안내판이 특정 주제를 다루고 있다면, 지도의 유무와 관계없이 해당 주제를 적어 주세요. 예를 들어 대중교통 안내판에는 버스 노선도가 있을 수 있습니다. 만약 답변 목록에서 주제를 찾을 수 없다면, 참고를 남겨 주세요."</string>
-    <string name="quest_surface_detailed_answer_impossible">"혼합 재질임…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"정말 재질을 고를 수 없나요? 중간에 재질이 바뀐다면 \"부분별로 다름\"을 선택하여 재질이 바뀌는 곳을 기준으로 길을 분할할 수 있습니다. 선택지가 없는 단일 재질의 경우 \"답할 수 없음\"을 선택하세요."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"포장재의 특성을 간략하게 (예: \"모래 사이사이에 조약돌이 들어가 있음\") 적어 주세요. 최대 255자까지 적을 수 있습니다."</string>
     <string name="quest_streetName_menuItem_international">"국제 명칭"</string>
     <string name="quest_buildingType_terrace2">"옆으로 나란한 연립 주택"</string>
     <string name="at_housename">"건물 명칭 %s"</string>
@@ -748,7 +745,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"분리됨"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"분리되지 않음"</string>
     <string name="pref_title_sync2">"자동으로 답변 올리기"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"포장재를 설명해 주세요"</string>
     <string name="open_url">"URL 열기"</string>
     <string name="quest_buildingType_silo">"사일로"</string>
     <string name="quest_buildingType_historic">"역사적 건물"</string>
@@ -815,7 +811,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="team_mode">"팀 모드"</string>
     <string name="team_mode_exit">"팀 모드 종료"</string>
     <string name="team_mode_description">"여러 명이 그룹이 지어 동시에 한 장소를 조사하고 싶다면, 팀 모드를 활성화해 자료를 팀원들과 나눠 가지세요."</string>
-    <string name="team_mode_team_size_hint">"팀 모드를 통해 2명에서 12명까지 무리를 지어 활동할 수 있습니다."</string>
     <string name="team_mode_active">"팀 모드가 활성화되었습니다"</string>
     <string name="team_mode_deactivated">"팀 모드가 비활성화되었습니다"</string>
     <string name="undo_confirm_title2">"이 편집을 취소할까요?"</string>
@@ -1171,7 +1166,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_camp_type_tents_only">"텐트만"</string>
     <string name="quest_camp_type_backcountry">"야외 캠핑 (시설 없음)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"이 직경은 적절하지 않은 것 같습니다. 일반적으로 %1$d에서 %2$d 사이입니다."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"이 답변은 이 도로에 대해 이미 매핑된 내용과 일치하지 않습니다. 올바른 도로에 대해 답하고 있다고 확신하십니까? 항상 필요에 따라 전체 길이에 걸쳐 개인적으로 측량을 하셨습니까?"</string>
     <string name="quest_recycling_type_pet">"페트병만"</string>
     <string name="street_parking_street_width">"거리 폭: %s"</string>
     <string name="overlay_street_parking">"거리 주차"</string>
@@ -1371,7 +1365,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="info">"더 많은 정보 보기"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"보행자의 출입이 통제되어 있습니다."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"보행자의 출입이 가능합니다."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"사실 보도가 있는데 지도에 따로 표시가 되어 있어요."</string>
     <string name="quest_buildingLevels_hint">"경사면에 있는 건물의 경우 레벨 카운트는 가장 낮은 면의 지상 레벨에서 시작됩니다.
 
 층은 창문이 지붕에 있을 때 지붕 층으로 간주됩니다. 그 결과, 지붕 층이 0인 지붕은 반드시 평평하지는 않지만 전체 층에 충분히 높지는 않습니다.

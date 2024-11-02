@@ -697,9 +697,6 @@ dani"</string>
     <string name="quest_board_type_map">"To je karta"</string>
     <string name="quest_board_type_map_title">"Da li je samo i jedino karta?"</string>
     <string name="quest_board_type_map_description">"Ako je tabla o određenoj temi, navedite je, bez obzira na to da li uključuje i kartu. Na primer, tabla javnog prevoza može imati kartu autobuskih linija. Ako teme nema u navedenim odgovorima, razmislite da je ostavite kao napomenu."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Različite površine…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Da li ste sigurni da je nemoguće navesti površinu? Uzmite u obzir da odgovor „Različita u delovima“ omogućava da označite mesto gde se površina menja. Molimo da koristite „Ne mogu da kažem…“ ako postoji jedinstvena površina, ali nije dostupna kao odgovor."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Molimo da ukratko opišete vrstu površine ovde, na primer „peskovita sa delovima kaldrme“. Dužina teksta je ograničena na 255 znakova."</string>
     <string name="quest_streetName_menuItem_international">"međunarodna"</string>
     <string name="quest_buildingType_terrace2">"Kuće u nizu"</string>
     <string name="at_housename">"naziv kuće %s"</string>
@@ -748,7 +745,6 @@ dani"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"odvojeno"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"nije odvojeno"</string>
     <string name="pref_title_sync2">"Automatsko slanje odgovora"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Opišite površinu"</string>
     <string name="open_url">"Otvorite vezu"</string>
     <string name="quest_buildingType_silo">"Silos"</string>
     <string name="quest_buildingType_historic">"Istorijska"</string>
@@ -815,7 +811,6 @@ Ako su neke trake za javni prevoz, ostavite napomenu."</string>
     <string name="team_mode">"Rad u timu"</string>
     <string name="team_mode_exit">"Izlaz iz rada u timu"</string>
     <string name="team_mode_description">"Kada kartirate istu regiju u grupi, možete da uđete u Rad u timu i da podelite zadatke međusobno."</string>
-    <string name="team_mode_team_size_hint">"Rad u timu radi sa grupama od 2 do 12 ljudi."</string>
     <string name="team_mode_active">"Uključen je rad u timu"</string>
     <string name="team_mode_deactivated">"Isključen je rad u timu"</string>
     <string name="undo_confirm_title2">"Opozvati sledeću promenu?"</string>
@@ -1171,7 +1166,6 @@ Uradite isto i za suprotnu stranu ako postoji."</string>
     <string name="quest_camp_type_tents_only">"Samo šatori"</string>
     <string name="quest_camp_type_backcountry">"Zabačeno kampovanje (bez objekata)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ovaj promer izgleda nerealno, obično je između %1$d i %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ovaj odgovor se ne podudara sa onim što je već uneto o ovom putu. Da li ste sigurni da rešavate ispravn segment puta? Da li ste sigurni da ste istražili čitavu dužinu, kao što se i radi?"</string>
     <string name="quest_recycling_type_pet">"Samo PET ambalaža"</string>
     <string name="street_parking_street_width">"Širina ulice: %s"</string>
     <string name="overlay_street_parking">"Parking na ulici"</string>
@@ -1370,7 +1364,6 @@ Informacije o donaciji možete pronaći na našoj web lokaciji ili stranici proj
     <string name="info">"Još informacija"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Zabranjeno je."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Dozvoljeno je."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Zapravo postoji trotoar, ali je prikazan odvojeno na karti."</string>
     <string name="quest_buildingLevels_hint">"Za zgrade na padini, spratovi se broje od nivoa zemljišta, sa najniže strane.
 
 Spratom se smatra i kada su prozori u krovu. Stoga, krovovi bez sprata nisu nužno ravni, već jednostavno nisu dovoljno visoki da bi postojalo potkrovlje.

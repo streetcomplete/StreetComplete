@@ -690,9 +690,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_board_type_map">"Es un mapa"</string>
     <string name="quest_board_type_map_title">"¿Es solo un mapa, sin nada más?"</string>
     <string name="quest_board_type_map_description">"Si el cartel es sobre un tema en particular, dejalo claro y afiná tu selección, sin importar el mapa que pueda tener. Por ejemplo; un cartel de transporte público puede tener un mapa con una ruta de autobús. Si el tema no aparece en la lista dejá una nota."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Varios tipos de superficie…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"¿Seguro que no podés poner el tipo exacto de superficie? Tené en cuenta que responder «difiere a lo largo del camino» te permite partir el camino en dos en el punto donde cambia. Podés pulsar en «no sabría decir» si hay un solo tipo de superficie pero no aparece en la lista."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Explicá brevemente el tipo de superficie, por ejemplo; «arenoso con algún adoquín». Podés escribir hasta 255 caracteres como máximo."</string>
     <string name="quest_streetName_menuItem_international">"internacional"</string>
     <string name="quest_buildingType_terrace2">"Casas adosadas"</string>
     <string name="at_housename">"Nombre de la casa %s"</string>
@@ -741,7 +738,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separada"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"sin separar"</string>
     <string name="pref_title_sync2">"Subir respuestas automáticamente"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Describí la superficie"</string>
     <string name="open_url">"Abrir URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Histórico"</string>
@@ -807,7 +803,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="team_mode">"Modo equipo"</string>
     <string name="team_mode_exit">"Salir del modo equipo"</string>
     <string name="team_mode_description">"Cuando estén varios mejorando una zona a la vez, pueden usar el modo «en equipo» y así dividir las tareas entre los miembros."</string>
-    <string name="team_mode_team_size_hint">"El modo equipo funciona para grupos de 2 a 12 personas."</string>
     <string name="team_mode_active">"El modo equipo está activo"</string>
     <string name="team_mode_deactivated">"El modo equipo está desactivado"</string>
     <string name="undo_confirm_title2">"¿Deshacer la siguiente edición?"</string>
@@ -1162,7 +1157,6 @@ También podés dejar una nota (con foto)."</string>
     <string name="quest_camp_type_tents_only">"Solo carpas"</string>
     <string name="quest_camp_type_backcountry">"Campamento al aire libre (sin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro no parece muy realista, suele estar entre %1$d y %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Esta respuesta no coincide con lo que ya está puesto en el resto del camino. ¿Seguro que no te equivocaste de lugar? Asegurate de haberlo recorrido por varios puntos para tener una buena idea general."</string>
     <string name="quest_recycling_type_pet">"Solo polietileno"</string>
     <string name="street_parking_street_width">"Anchura de la calle: %s"</string>
     <string name="overlay_street_parking">"Estacionamiento"</string>
@@ -1359,7 +1353,6 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="info">"Más información"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Está prohibido."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Está permitido."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Realmente hay una vereda, pero está representada separadamente en el mapa."</string>
     <string name="quest_buildingLevels_hint">"Para los edificios en pendiente, la numeración de niveles comienza a partir del nivel del suelo del lado más bajo.
 
 Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Por lo que los techos con nivel cero no son necesariamente planos, sino que no son suficientemente altos para un nivel entero."</string>

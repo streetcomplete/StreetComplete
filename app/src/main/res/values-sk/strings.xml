@@ -693,9 +693,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_board_type_map">"Je na nej mapa"</string>
     <string name="quest_board_type_map_title">"Je na nej len a len mapa?"</string>
     <string name="quest_board_type_map_description">"Pokiaľ sa ceduľa týka konkrétnej témy, špecifikujte ju, prosím, bez ohľadu na to, či je na nej aj mapa. Napríklad na tabuliach týkajúcich sa verejnej dopravy býva mapa s trasami autobusov. Pokiaľ nenájdete tému medzi odpoveďami, zvážte, prosím, či nezanecháte poznámku."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Viac povrchov…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Ste si istí, že nemožno špecifikovať povrch? Všimnite si odpovede „V rôznych častiach rôzny“, pomocou ktorej je možné rozdeliť cestu tam, kde sa mení povrch. Odpoveď „Nedá sa to určiť“ použite tam, kde je jeden povrch, ale nie je medzi odpoveďami."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Prosím, v krátkosti špecifikujte tunajší povrch, napr. „Piesočný sa záplatami dlažobných kociek“. Maximálna dĺžka textu je 255 znakov."</string>
     <string name="quest_streetName_menuItem_international">"medzinárodný"</string>
     <string name="quest_buildingType_terrace2">"Radové domy"</string>
     <string name="at_housename">"Názov budovy %s"</string>
@@ -744,7 +741,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"samostatná"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Nie je samostatná"</string>
     <string name="pref_title_sync2">"Nahrať odpoveď automaticky"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Popíšte povrch"</string>
     <string name="open_url">"Otvoriť URL adresu"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historická"</string>
@@ -811,7 +807,6 @@ Všimnite si všetkých možností: v niektorých prípadoch nemusí byť zrejm�
     <string name="team_mode">"Tímový režim"</string>
     <string name="team_mode_exit">"Ukončiť tímový režim"</string>
     <string name="team_mode_description">"Keď mapujete v skupine jednu oblasť, požite tímový režim a rozdeľte si úlohy."</string>
-    <string name="team_mode_team_size_hint">"Tímový režim je pre 2 až 12 ľudí."</string>
     <string name="team_mode_active">"Tímový režim je aktívny"</string>
     <string name="team_mode_deactivated">"Tímový režim je neaktívny"</string>
     <string name="undo_confirm_title2">"Chcete vrátiť nasledujúcu úpravu?"</string>
@@ -1167,7 +1162,6 @@ To isté urobte pre druhú stranu, ak tu je."</string>
     <string name="quest_camp_type_tents_only">"Iba stany"</string>
     <string name="quest_camp_type_backcountry">"Kempovanie v prírode (bez zázemia)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tento priemer vyzerá nepravdepodobne, obvykle sa pohybuje medzi %1$d a %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Táto odpoveď nezodpovedá tomu, čo je už o tejto ceste zmapované. Ste si istí, že odpovedáte o správnej ceste? Ste si istý, že ste osobne vykonali obhliadku po celej dĺžke, ako je to vždy potrebné?"</string>
     <string name="quest_recycling_type_pet">"Len PET"</string>
     <string name="street_parking_street_width">"Šírka ulice: %s"</string>
     <string name="overlay_street_parking">"Parkovanie na ulici"</string>

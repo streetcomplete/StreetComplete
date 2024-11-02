@@ -691,9 +691,6 @@
     <string name="quest_board_type_map">"این یک نقشه است."</string>
     <string name="quest_board_type_map_title">"آیا این فقط یک نقشه است و تمام؟"</string>
     <string name="quest_board_type_map_description">"اگر تابلو در مورد یک موضوع خاص است، لطفاً آن را مشخص کنید، صرف نظر از اینکه این نقشه نیز در آن قرار دارد یا خیر. برای مثال، تابلوی حمل‌ونقل عمومی می‌تواند نقشه مسیر اتوبوس را داشته باشد. اگر موضوع در میان پاسخ‌های موجود ذکر نشده است، لطفاً به جای آن یادداشت بگذارید."</string>
-    <string name="quest_surface_detailed_answer_impossible">"چندین سطح…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"آیا مطمئن هستید که تعیین جنس سطح ناممکن است؟ در بین پاسخ‌ها به گزینهٔ «متفاوت در طول مسیر» توجه نمایید، که با آن می‌توانید در نقطه‌ای که جنس سطح عوض می‌شود، راه را ببُرید. لطفاً اگر جنس سطح یکسان است اما در بین پاسخ‌ها نیست «نمی‌توان بیان کرد» را برگزینید."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"لطفاً به طور خلاصه ماهیت جنس سطح را در اینجا مشخص کنید، به عنوان مثال «ماسه‌ای با قطعات سنگفرش». طول متن به ۲۵۵ نویسه محدود شده است."</string>
     <string name="quest_streetName_menuItem_international">"بین‌المللی"</string>
     <string name="quest_buildingType_terrace2">"خانه‌های ردیفی"</string>
     <string name="at_housename">"نام خانه %s"</string>
@@ -742,7 +739,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"تفکیک شده"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"بدون تفکیک"</string>
     <string name="pref_title_sync2">"بارگذاری خودکار پاسخ‌ها"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"توصیف سطح"</string>
     <string name="open_url">"بازگشایی نشانی"</string>
     <string name="quest_buildingType_silo">"سیلو، انبار غله"</string>
     <string name="quest_buildingType_historic">"تاریخی"</string>
@@ -812,7 +808,6 @@
     <string name="team_mode">"حالت گروهی"</string>
     <string name="team_mode_exit">"خروج از حالت گروهی"</string>
     <string name="team_mode_description">"هنگامی که یک منطقه را به‌طور گروهی نقشه‌برداری می‌کنید، برای تقسیم جُستارها بین همهٔ اعضای گروه می‌توانید وارد حالت گروهی شوید."</string>
-    <string name="team_mode_team_size_hint">"حالت گروهی برای گروه‌های ۲ تا ۱۲ نفره کار می‌کند."</string>
     <string name="team_mode_active">"حالت گروهی فعال است"</string>
     <string name="team_mode_deactivated">"حالت گروهی غیرفعال است"</string>
     <string name="undo_confirm_title2">"ویرایش زیر را واگرد می‌کنید؟"</string>
@@ -1170,7 +1165,6 @@
     <string name="quest_camp_type_tents_only">"فقط چادر"</string>
     <string name="quest_camp_type_backcountry">"چادر زنی در خارج شهر (بدون امکانات)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"به نظر می‌رسد این قطر درست نباشد، معمولاً اندازهٔ آن بین %1$d و %2$d است."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"این پاسخ با آنچه که قبلاً در مورد این جاده ترسیم شده، مطابقت ندارد. آیا مطمئن هستید که در مورد جادهٔ درست پاسخ می‌دهید؟ آیا مطمئن هستید که خودتان تمام طول مسیر را بررسی کرده‌اید، همانگونه که همیشه لازم بوده است؟"</string>
     <string name="quest_recycling_type_pet">"فقط حیوان‌خانگی"</string>
     <string name="street_parking_street_width">"پهنای‌ خیابان: %s"</string>
     <string name="overlay_street_parking">"پارکینگ خیابانی"</string>
@@ -1370,7 +1364,6 @@
     <string name="info">"اطلاعات بیشتر"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"ممنوع است."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"مجاز است."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"در واقع یک پیاده‌رو وجود دارد اما به طور جداگانه روی نقشه نمایش داده می‌شود."</string>
     <string name="quest_buildingLevels_hint">"برای ساختمان‌های شیب‌دار، شمارش سطح از سطح زمین پایین‌ترین سمت شروع می‌شود.
 
 یک سطح زمانی که پنجره‌های آن در پشت بام باشد به عنوان سطح مسقف محسوب می‌شود. پس از آن، سقف‌هایی با سطح سقف صفر لزوماً مسطح نیستند، فقط برای کل سطح به اندازه کافی بلند نیستند.

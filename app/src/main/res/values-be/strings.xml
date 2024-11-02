@@ -699,9 +699,6 @@
     <string name="quest_board_type_map">"Гэта — карта"</string>
     <string name="quest_board_type_map_title">"Гэта толькі карта і нічога больш?"</string>
     <string name="quest_board_type_map_description">"Калі дошка прысвечана пэўнай тэме, укажыце яе, незалежна ад таго, ці ёсць на ёй карта. Напрыклад, на табло грамадскага транспарта можа быць карта аўтобусных маршрутаў. Калі тэма адсутнічае ў спісе даступных адказаў, пакіньце замест гэтага нататку."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Рознае пакрыццё..."</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Вы ўпэўненыя што паказаць тып пакрыцця немагчыма? Опцыя \"Адрозніваецца на розных участках\" дазваляе падзяліць участак у месцах змены пакрыцця. Выкарыстоўвайце \"Не ведаю\" калі пакрыццё аднастайна, але не даступна ў якасці адказу."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Калі ласка, коратка пазначце тып паверхні, напрыклад, \"пяшчаная з украпінамі каменя\". Даўжыня тэксту абмежавана 255 сімваламі."</string>
     <string name="quest_streetName_menuItem_international">"мiжнароднае"</string>
     <string name="quest_buildingType_terrace2">"Шэраг дамоў"</string>
     <string name="at_housename">"Назва дома %s"</string>
@@ -750,7 +747,6 @@
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"асобны"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"не асобны"</string>
     <string name="pref_title_sync2">"Аўтаматычная адпраўка адказаў"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Апішыце паверхню"</string>
     <string name="open_url">"Адкрыць URL"</string>
     <string name="quest_buildingType_silo">"Сiлас"</string>
     <string name="quest_buildingType_historic">"Гiстарычны"</string>
@@ -819,7 +815,6 @@
     <string name="team_mode_exit">"Адключыць камандны рэжым"</string>
     <string name="team_mode_description">"Калі вы абследуеце мясцовасць групай, вы можаце ўключыць камандны рэжым, каб размеркаваць заданні паміж усімі ўдзельнікамі.
 Пасля гэтага, усе вы пабачыце розныя заданні."</string>
-    <string name="team_mode_team_size_hint">"Камандны рэжым працуе для груп ад 2 да 12 чалавек."</string>
     <string name="team_mode_active">"Камандны рэжым уключаны"</string>
     <string name="team_mode_deactivated">"Камандны рэжым адключаны"</string>
     <string name="undo_confirm_title2">"Адрабіць гэтую праўку?"</string>
@@ -1176,7 +1171,6 @@
     <string name="quest_camp_type_tents_only">"Толькi намёты"</string>
     <string name="quest_camp_type_backcountry">"Кемпінг у сельскай мясцовасці (без камфорту)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Гэты дыяметр выглядае непраўдападобным, звычайна ён знаходзіцца паміж %1$d і %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Гэты адказ не адпавядае таму, што ўжо нанесена на мапу аб гэтай дарозе. Вы ўпэўненыя, што адказваеце аб правільнай дарозе? Вы дакладна абследавалі асабіста яе па ўсёй даўжыні, як гэта заўсёды патрабуецца?"</string>
     <string name="quest_recycling_type_pet">"толькi  ПЭТ"</string>
     <string name="street_parking_street_width">"Шырыня вуліцы: %s"</string>
     <string name="overlay_street_parking">"Вулiчная стаянка"</string>
@@ -1374,7 +1368,6 @@
     <string name="info">"Больш..."</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Гэта забаронена."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Гэта дазволена."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"На самай справе тратуар ёсць, але на карце ён намаляваны асобна."</string>
     <string name="quest_buildingLevels_hint">"Для будынкаў на схіле адлік узроўняў пачынаецца ад узроўню зямлі самага ніжняга боку.
 
 Узровень лічыцца да даху, калі яго вокны знаходзяцца ў даху. У далейшым, дах з нулявым узроўнем не абавязкова плоскі, а проста недастаткова высокі для ўсяго ўзроўню."</string>

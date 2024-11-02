@@ -698,9 +698,6 @@ novoji"</string>
     <string name="quest_board_type_map">"Zemljevid"</string>
     <string name="quest_board_type_map_title">"Ali je na tabli samo zemljevid in nič drugega? "</string>
     <string name="quest_board_type_map_description">"Če ima tabla specifično tematiko, jo prosim izpolni, ne glede na to, ali ima tudi zemljevid. Na primer: tabla za javni prevoz ima lahko zemljevid avtobusnih linij. Če teme table ni na seznamu, razmislite o ustvarjanju opombe."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Več različnih površin..."</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Ali si prepričan da ke nemogoče določiti površino? Odgovor \"Razlikuje se vzdolž poti\" ti omogoča, da pot razrežeš in za vsak odsek določiš svojo površino. Prosim, klikni \"ne morem določiti\" če površina ni med naštetimi odgovori."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Prosim, na kratko opiši karakteristiko površine, naprimer \"peščeno z kamnitimi odseki\". Dolžina besedila je omejena na 255 znakov. "</string>
     <string name="quest_streetName_menuItem_international">"Mednaroden"</string>
     <string name="quest_buildingType_terrace2">"Vrstne hiše"</string>
     <string name="at_housename">"ime zgradbe %s"</string>
@@ -749,7 +746,6 @@ novoji"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"ločena"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"ni ločena"</string>
     <string name="pref_title_sync2">"Samodejno naloži odgovore"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Opiši površino"</string>
     <string name="open_url">"Odpri URL"</string>
     <string name="quest_buildingType_silo">"Silos"</string>
     <string name="quest_buildingType_historic">"Zgodovinska"</string>
@@ -818,7 +814,6 @@ Pazi na vse razpoložljive možnosti: nekateri primeri niso očitni, kot na prim
     <string name="team_mode">"Ekipni način"</string>
     <string name="team_mode_exit">"Prekini ekipni način"</string>
     <string name="team_mode_description">"Ko v skupini popisujete isto področje, lahko vklopite ekipni način in naloge bodo razdeljene med vse sodelujoče."</string>
-    <string name="team_mode_team_size_hint">"Ekipni način deluje za skupine dveh do 12 ljudi."</string>
     <string name="team_mode_active">"Ekipni način je vklopljen"</string>
     <string name="team_mode_deactivated">"Ekipni način je izklopljen"</string>
     <string name="undo_confirm_title2">"Razveljavi to spremembo?"</string>
@@ -1174,7 +1169,6 @@ Naredi enako za drugo stran, če ta obstaja."</string>
     <string name="quest_camp_type_tents_only">"Samo šotori"</string>
     <string name="quest_camp_type_backcountry">"Naturalistično kampiranje (ni objektov, elektrike, ...)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ta premer se zdi malo verjeten, ponavadi je med %1$d in %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Odgovor se ne ujema s tem kar je že znano o tej cesti. Ali si prepričan da odgovarjaš na pravo nalogo? Si osebno preveril celotno dolžino ceste, kot je to vedno potrebno?"</string>
     <string name="quest_recycling_type_pet">"Samo PET"</string>
     <string name="street_parking_street_width">"Širina ceste: %s"</string>
     <string name="overlay_street_parking">"Ulična parkirišča"</string>

@@ -698,9 +698,6 @@ nivåer"</string>
     <string name="quest_board_type_map">"Det är en karta"</string>
     <string name="quest_board_type_map_title">"Är det en karta och enbart en karta?"</string>
     <string name="quest_board_type_map_description">"Om tavlan handlar om ett visst ämne, ange det, oavsett om det också innehåller en karta. Till exempel kan en kollektivtrafikstavla ha en bussruttkarta. Om ämnet inte är listat bland de tillgängliga svaren, överväg att lämna en anteckning istället."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Flera beläggningar…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Är du säker på att det är omöjligt att ange underlaget? Notera svaralternativet \"Skiljer sig längs vägen\" som gör att du kan dela upp vägen där beläggningen skiljer sig. Använd \"Svårt att säga\" om det finns ett enda underlag men det inte är tillgängligt som svarsalternativ."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Vänligen beskriv underlaget här, till exempel \"sand med fläckvis kullersten\". Textens längd är begränsad till 255 tecken."</string>
     <string name="quest_streetName_menuItem_international">"internationell"</string>
     <string name="quest_buildingType_terrace2">"Radhus"</string>
     <string name="at_housename">"husnamn %s"</string>
@@ -749,7 +746,6 @@ nivåer"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"separat"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"inte separat"</string>
     <string name="pref_title_sync2">"Ladda upp svar automatiskt"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Beskriv underlaget"</string>
     <string name="open_url">"Öppna webbadress"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historisk"</string>
@@ -819,7 +815,6 @@ Observera alla tillgängliga alternativ: vissa fall är inte uppenbara, som en e
     <string name="team_mode_exit">"Avsluta gruppläget"</string>
     <string name="team_mode_description">"När man i en grupp tillsammans kartlägger samma område kan man använda gruppläget för att dela upp uppdrag mellan alla gruppmedlemmar.
 Var och en i gruppen kommer då att se olika uppdrag."</string>
-    <string name="team_mode_team_size_hint">"Gruppläget fungerar för grupper om 2 till 12 personer."</string>
     <string name="team_mode_active">"Gruppläget är aktivt"</string>
     <string name="team_mode_deactivated">"Gruppläget inaktiverat"</string>
     <string name="undo_confirm_title2">"Ångra följande ändring?"</string>
@@ -1175,7 +1170,6 @@ Gör detta för varje sida som finns."</string>
     <string name="quest_camp_type_tents_only">"Bara med tält"</string>
     <string name="quest_camp_type_backcountry">"Vildmarkscamping (inga faciliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diametern verkar osannolik, den brukar vanligtvis vara mellan %1$d och %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Ditt svar skiljer sig från vad som redan är kartlagt. Är du säker på att ditt svar är för just denna väg? Har du själv gått hela längs hela vägen och säkerställt att det du skriver in stämmer?"</string>
     <string name="quest_recycling_type_pet">"Endast PET"</string>
     <string name="street_parking_street_width">"Gatubredd: %s"</string>
     <string name="overlay_street_parking">"Gatuparkering"</string>
@@ -1375,7 +1369,6 @@ Du kan hitta information om donationer på vår hemsida, Google Play tillåter o
     <string name="info">"Mer information"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Det är förbjudet."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Det är tillåtet."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Faktum är att det finns en trottoar, men den visas separat på kartan."</string>
     <string name="quest_buildingLevels_hint">"För byggnader i en sluttning börjar våningsnummer räknas från markplan på den lägsta sidan.
 
 En våning räknas som en takvåning när dess fönster finns i taket. Det följer att tak med noll takvåningar inte nödvändigtvis är platt, bara inte tillräckligt högt för en hel våning.

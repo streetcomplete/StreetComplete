@@ -40,8 +40,8 @@
     <string name="action_download">"Télécharger les données ici"</string>
     <string name="action_upload">"Envoyer les réponses"</string>
     <string name="no_changes">"Vous n’avez pas donné de réponse"</string>
-    <string name="download_error">"Erreur pendant le téléchargement des données"</string>
-    <string name="upload_error">"Erreur pendant le téléversement des réponses"</string>
+    <string name="download_error">"Erreur de téléchargement"</string>
+    <string name="upload_error">"Erreur de téléversement"</string>
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
     <string name="confirmation_cancel_prev_download_title">"Annuler le téléchargement en cours et télécharger ici à la place ?"</string>
     <string name="turn_on_location_request">"La localisation est désactivée. Ouvrir les paramètres pour l’activer maintenant ?"</string>
@@ -698,9 +698,6 @@ accomplis"</string>
     <string name="quest_board_type_map">"C’est une carte"</string>
     <string name="quest_board_type_map_title">"Est-ce seulement et uniquement une carte ?"</string>
     <string name="quest_board_type_map_description">"Si le panneau ne concerne qu’un sujet particulier, merci de le spécifier, qu’une carte soit incluse ou non. Par exemple, un panneau d’information sur les transports en commun peut inclure une carte des lignes. Si le thème n’est pas listé dans la liste des réponses, pensez à laisser une note à la place."</string>
-    <string name="quest_surface_detailed_answer_impossible">"Surfaces multiples…"</string>
-    <string name="quest_surface_detailed_answer_impossible_confirmation">"Êtes-vous sûr qu’il est impossible de préciser la surface ? Notez que la réponse « Change en cours de route » vous permet de couper la voie à l’endroit où la surface change. S’il s’agit d’une surface unique non listée, veuillez utiliser « Ne peux pas répondre »."</string>
-    <string name="quest_surface_detailed_answer_impossible_description">"Décrivez brièvement la nature du revêtement ici, par exemple « sableux avec îlots pavés ». La longueur du texte est limitée à 255 caractères."</string>
     <string name="quest_streetName_menuItem_international">"international"</string>
     <string name="quest_buildingType_terrace2">"Maisons mitoyennes"</string>
     <string name="at_housename">"nom de la maison %s"</string>
@@ -749,7 +746,6 @@ accomplis"</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">"Séparée"</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">"Non séparée"</string>
     <string name="pref_title_sync2">"Envoyer les réponses automatiquement"</string>
-    <string name="quest_surface_detailed_answer_impossible_title">"Décrire la surface"</string>
     <string name="open_url">"Ouvrir l’URL"</string>
     <string name="quest_buildingType_silo">"Silo"</string>
     <string name="quest_buildingType_historic">"Historique"</string>
@@ -818,7 +814,6 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="team_mode">"Entrez le mode équipe"</string>
     <string name="team_mode_exit">"Quitter le mode par équipe"</string>
     <string name="team_mode_description">"Quand vous cartographiez la même zone avec un groupe, vous pouvez vous répartir les quêtes entre les différents membres de ce groupe."</string>
-    <string name="team_mode_team_size_hint">"Le mode par équipe fonctionne pour des groupes de 2 et 12 personnes."</string>
     <string name="team_mode_active">"Le mode par équipe est activé"</string>
     <string name="team_mode_deactivated">"Le mode par équipe est désactivé"</string>
     <string name="undo_confirm_title2">"Annuler cette contribution ?"</string>
@@ -1174,7 +1169,6 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="quest_camp_type_tents_only">"Tentes seulement"</string>
     <string name="quest_camp_type_backcountry">"Camping sauvage (sans commodités)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Ce diamètre ne paraît pas correct. En général, il est compris entre %1$d et %2$d."</string>
-    <string name="quest_surface_tractypeMismatchInput_confirmation_description">"Cette réponse ne correspond pas à ce qui est généralement renseigné sur cette route. Êtes-vous certain que vous répondez pour la bonne route ? Êtes-vous sûr d’avoir parcouru toute la longueur de la route comme il est recommandé ?"</string>
     <string name="quest_recycling_type_pet">"Seulement PET"</string>
     <string name="street_parking_street_width">"Largeur de la rue : %s"</string>
     <string name="overlay_street_parking">"Parking sur voirie"</string>
@@ -1373,11 +1367,9 @@ Vous pouvez trouver des informations sur les dons sur notre site web ou sur la p
     <string name="info">"Plus d’informations"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"C’est interdit."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"C’est autorisé."</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk">"Actuellement, il y a un trottoir, mais il est représenté séparément sur la carte."</string>
     <string name="quest_buildingLevels_hint">"Pour les bâtiments en pente, le décompte des niveaux commence à partir du niveau du sol du côté le plus bas.
 
-Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans le toit. Par conséquent, les toits dont le niveau est nul ne sont pas nécessairement plats, mais ne sont pas assez hauts pour contenir un niveau entier.
-    "</string>
+Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans le toit. Par conséquent, les toits dont le niveau est nul ne sont pas nécessairement plats, mais ne sont pas assez hauts pour contenir un niveau entier."</string>
     <string name="quest_parcel_locker_brand">"Quelle est la marque de cette consignes automatiques de colis?"</string>
     <string name="quest_powerPolesMaterial_is_terminal">"La ligne électrique est ancrée au bâtiment"</string>
     <string name="quest_cycleway_value_sidewalk_ok">"aucun, mais un panneau autorise les cyclistes à circuler sur le trottoir"</string>
@@ -1405,4 +1397,7 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="user_statistics_country_rank2">"Rang en %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"C’est une souche"</string>
     <string name="quest_board_name_title">"Quel est le titre de ce panneau d’information ?"</string>
+    <string name="note_for_object">"Quelqu'un d'autre a noté:"</string>
+    <string name="action_messages">"Afficher les messages"</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"En réalité, il y a une voie piétonne."</string>
 </resources>
