@@ -109,6 +109,7 @@ fun MainScreen(
     val isShowingStarsCurrentWeek by viewModel.isShowingStarsCurrentWeek.collectAsState()
 
     val selectedOverlay by viewModel.selectedOverlay.collectAsState()
+    val isCreateNodeEnabled by remember { derivedStateOf { selectedOverlay?.isCreateNodeEnabled == true } }
 
     val isAutoSync by viewModel.isAutoSync.collectAsState()
     val unsyncedEditsCount by viewModel.unsyncedEditsCount.collectAsState()
@@ -117,6 +118,7 @@ fun MainScreen(
     val indexInTeam by viewModel.indexInTeam.collectAsState()
 
     val messagesCount by viewModel.messagesCount.collectAsState()
+    val hasMessages by remember { derivedStateOf { messagesCount > 0 } }
 
     val isLoggedIn by viewModel.isLoggedIn.collectAsState()
     val isUploadingOrDownloading by viewModel.isUploadingOrDownloading.collectAsState()
@@ -199,7 +201,7 @@ fun MainScreen(
     }
 
     Box(modifier) {
-        if (selectedOverlay?.isCreateNodeEnabled == true) {
+        if (isCreateNodeEnabled) {
             Crosshair()
         }
 
@@ -248,7 +250,7 @@ fun MainScreen(
                         .onGloballyPositioned { pointerPinRects["top-end"] = it.boundsInRoot() },
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    if (messagesCount > 0) {
+                    AnimatedVisibility(hasMessages) {
                         MessagesButton(
                             onClick = ::onClickMessages,
                             messagesCount = messagesCount
@@ -312,7 +314,7 @@ fun MainScreen(
                     )
                 }
 
-                if (selectedOverlay?.isCreateNodeEnabled == true) {
+                if (isCreateNodeEnabled) {
                     MapButton(
                         onClick = {
                             if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
