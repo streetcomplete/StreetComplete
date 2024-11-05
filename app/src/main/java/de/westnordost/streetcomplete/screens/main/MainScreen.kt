@@ -233,10 +233,7 @@ fun MainScreen(
                         count = starsCount,
                         modifier = Modifier
                             .defaultMinSize(minWidth = 96.dp)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null
-                            ) { viewModel.toggleShowingCurrentWeek() },
+                            .clickable(null, null) { viewModel.toggleShowingCurrentWeek() },
                         isCurrentWeek = isShowingStarsCurrentWeek,
                         showProgress = isUploadingOrDownloading
                     )

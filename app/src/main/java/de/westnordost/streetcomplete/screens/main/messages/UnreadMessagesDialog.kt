@@ -67,10 +67,7 @@ fun UnreadMessagesDialog(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null
-                ) { onDismissRequest() },
+                .clickable(null, null) { onDismissRequest() },
             contentAlignment = Alignment.Center
         ) {
             Envelope(

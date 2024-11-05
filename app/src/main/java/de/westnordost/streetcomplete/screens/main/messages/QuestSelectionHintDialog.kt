@@ -58,10 +58,7 @@ fun QuestSelectionHintDialog(
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null
-                ) { onDismissRequest() }
+                .clickable(null, null) { onDismissRequest() }
         ) {
             val bubbleCount = (maxHeight.value * 0.1f).toInt()
             val bubbleSize = maxWidth * 0.25f
