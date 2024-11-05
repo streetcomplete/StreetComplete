@@ -30,7 +30,7 @@ fun DateTimeSelectField(
     modifier: Modifier = Modifier,
     label: @Composable (() -> Unit)? = null,
 ) {
-    val coroutineScope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
     val locale = Locale.getDefault()
     val context = LocalContext.current
     OutlinedTextField(
@@ -42,7 +42,7 @@ fun DateTimeSelectField(
         label = label,
         leadingIcon = {
             IconButton(onClick = {
-                coroutineScope.launch {
+                scope.launch {
                     onValueChange(context.pickDateTime(value ?: LocalDateTime.now()))
                 }
             }) {

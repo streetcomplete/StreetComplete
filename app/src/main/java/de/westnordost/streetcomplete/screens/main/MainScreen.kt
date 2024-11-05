@@ -101,7 +101,7 @@ fun MainScreen(
     onExplainedNeedForLocationPermission: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val coroutineScope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
 
     val context = LocalContext.current
 
@@ -162,7 +162,7 @@ fun MainScreen(
     }
 
     fun onClickMessages() {
-        coroutineScope.launch {
+        scope.launch {
             shownMessage = viewModel.popMessage()
         }
     }
@@ -176,7 +176,7 @@ fun MainScreen(
     }
 
     fun sendErrorReport(error: Exception) {
-        coroutineScope.launch {
+        scope.launch {
             val report = viewModel.createErrorReport(error)
             context.sendErrorReportEmail(report)
         }

@@ -64,7 +64,7 @@ fun EditHistorySidebar(
     getEditElement: suspend (Edit) -> Element?,
     modifier: Modifier = Modifier,
 ) {
-    val coroutineScope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
 
     val context = LocalContext.current
     val dir = LocalLayoutDirection.current
@@ -96,7 +96,7 @@ fun EditHistorySidebar(
 
     fun onClickUndoEdit(edit: Edit) {
         if (edit.isUndoable) {
-            coroutineScope.launch {
+            scope.launch {
                 editElement = getEditElement(edit)
                 showUndoDialog = true
             }

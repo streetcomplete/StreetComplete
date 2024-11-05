@@ -45,10 +45,10 @@ fun TutorialScreen(
     pageContent: @Composable (page: Int) -> Unit,
 ) {
     val state = rememberPagerState { pageCount }
-    val coroutineScope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
     BackHandler(state.currentPage > 0 || dismissOnBackPress) {
         if (state.currentPage > 0) {
-            coroutineScope.launch {
+            scope.launch {
                 state.animateScrollToPage(state.currentPage - 1)
             }
         } else {
