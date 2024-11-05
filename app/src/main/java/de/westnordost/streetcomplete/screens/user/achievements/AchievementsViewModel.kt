@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.user.achievements
 
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
@@ -9,11 +10,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+@Stable
 abstract class AchievementsViewModel : ViewModel() {
     abstract val isSynchronizingStatistics: StateFlow<Boolean>
     abstract val achievements: StateFlow<List<Pair<Achievement, Int>>?>
 }
 
+@Stable
 class AchievementsViewModelImpl(
     private val achievementsSource: AchievementsSource,
     private val statisticsSource: StatisticsSource,

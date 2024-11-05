@@ -368,8 +368,7 @@ fun MainScreen(
             MapAttribution(Modifier.padding(8.dp))
         }
 
-        if (intersection != null) {
-            val (offset, angle) = intersection
+        intersection?.let { (offset, angle) ->
             val rotation = angle * 180 / PI
             PointerPinButton(
                 onClick = onClickLocationPointer,

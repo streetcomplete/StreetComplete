@@ -86,6 +86,10 @@ android {
     namespace = "de.westnordost.streetcomplete"
 }
 
+composeCompiler {
+    enableStrongSkippingMode = true
+}
+
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
     val props = Properties()

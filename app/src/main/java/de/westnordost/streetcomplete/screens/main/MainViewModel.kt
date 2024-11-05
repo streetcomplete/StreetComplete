@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+// not @Stable, as not all fields are StateFlows or immutable
 abstract class MainViewModel : ViewModel() {
     /* error handling */
     abstract val lastCrashReport: StateFlow<String?>

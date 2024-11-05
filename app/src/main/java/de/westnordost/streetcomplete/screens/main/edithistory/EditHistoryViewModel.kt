@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -28,6 +29,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 
+@Stable
 abstract class EditHistoryViewModel : ViewModel() {
     abstract val editItems: StateFlow<List<EditItem>>
     abstract val selectedEdit: StateFlow<Edit?>
@@ -54,6 +56,7 @@ data class EditItem(
     val showTime: Boolean,
 )
 
+@Stable
 class EditHistoryViewModelImpl(
     private val mapDataSource: MapDataWithEditsSource,
     private val editHistoryController: EditHistoryController,

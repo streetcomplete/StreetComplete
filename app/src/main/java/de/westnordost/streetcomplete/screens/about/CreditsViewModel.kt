@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.about
 
 import android.content.res.Resources
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.ktx.getYamlObject
@@ -10,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 
+@Stable
 abstract class CreditsViewModel : ViewModel() {
     abstract val credits: StateFlow<Credits?>
 }
@@ -34,6 +37,7 @@ data class Contributor(
     val githubLink: String get() = "https://github.com/$githubUsername"
 }
 
+@Stable
 class CreditsViewModelImpl(private val resources: Resources) : CreditsViewModel() {
     override val credits = MutableStateFlow<Credits?>(null)
 
