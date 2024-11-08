@@ -53,7 +53,7 @@ class StyleableOverlayMapComponent(
 
     private val overlaySource = GeoJsonSource(
         SOURCE,
-        GeoJsonOptions().withMinZoom(16)
+        GeoJsonOptions().withMinZoom(MIN_ZOOM)
     )
 
     private val darkenedColors = HashMap<String, String>()
@@ -74,7 +74,7 @@ class StyleableOverlayMapComponent(
 
     private val sideLineFilters = arrayOf(
         isLine(),
-        gte(zoom(), 16f),
+        gte(zoom(), MIN_ZOOM),
         has("offset"),
     )
 
@@ -100,7 +100,7 @@ class StyleableOverlayMapComponent(
         LineLayer("overlay-lines-casing", SOURCE)
             .withFilter(all(
                 isLine(),
-                gte(zoom(), 16f),
+                gte(zoom(), MIN_ZOOM),
                 not(has("offset")),
                 not(has("dashed"))
             ))
@@ -115,7 +115,7 @@ class StyleableOverlayMapComponent(
         FillLayer("overlay-fills", SOURCE)
             .withFilter(all(
                 isArea(),
-                gte(zoom(), 16f)
+                gte(zoom(), MIN_ZOOM)
             ))
             .withProperties(
                 fillColor(get("color")),
@@ -124,7 +124,7 @@ class StyleableOverlayMapComponent(
         LineLayer("overlay-lines", SOURCE)
             .withFilter(all(
                 isLine(),
-                gte(zoom(), 16f),
+                gte(zoom(), MIN_ZOOM),
                 not(has("offset")),
                 not(has("dashed"))
             ))
@@ -138,7 +138,7 @@ class StyleableOverlayMapComponent(
         LineLayer("overlay-lines-dashed", SOURCE)
             .withFilter(all(
                 isLine(),
-                gte(zoom(), 16f),
+                gte(zoom(), MIN_ZOOM),
                 not(has("offset")),
                 has("dashed")
             ))
@@ -153,7 +153,7 @@ class StyleableOverlayMapComponent(
         LineLayer("overlay-fills-outline", SOURCE)
             .withFilter(all(
                 isArea(),
-                gte(zoom(), 16f)
+                gte(zoom(), MIN_ZOOM)
             ))
             .withProperties(
                 lineCap(Property.LINE_CAP_BUTT),
@@ -165,7 +165,7 @@ class StyleableOverlayMapComponent(
             .withFilter(all(
                 isArea(),
                 has("height"),
-                gte(zoom(), 16f)
+                gte(zoom(), MIN_ZOOM)
             ))
             .withProperties(
                 fillExtrusionColor(get("color")),
@@ -378,6 +378,8 @@ class StyleableOverlayMapComponent(
 
         private const val ELEMENT_TYPE = "element_type"
         private const val ELEMENT_ID = "element_id"
+
+        private const val MIN_ZOOM = 14
     }
 }
 

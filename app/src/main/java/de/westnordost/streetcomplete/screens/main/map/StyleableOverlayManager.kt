@@ -129,7 +129,7 @@ class StyleableOverlayManager(
 
     private suspend fun updateCurrentScreenArea() {
         val zoom = map.cameraPosition.zoom
-        if (zoom < TILES_ZOOM) return
+        if (zoom < MIN_ZOOM) return
         val displayedArea = withContext(Dispatchers.Main) { map.screenAreaToBoundingBox() }
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
@@ -215,5 +215,6 @@ class StyleableOverlayManager(
 
     companion object {
         private const val TILES_ZOOM = 16
+        private const val MIN_ZOOM = 14
     }
 }
