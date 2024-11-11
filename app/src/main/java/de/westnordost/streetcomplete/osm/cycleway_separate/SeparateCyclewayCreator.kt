@@ -66,7 +66,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             // if bicycle:signed is explicitly no, set it to yes
             if (tags["bicycle:signed"] == "no") tags["bicycle:signed"] = "yes"
             if (this == EXCLUSIVE) {
-                tags["foot"] = "no"
+                if (tags["foot"] == "designated") tags.remove("foot")
             } else {
                 // follow the same pattern as for roads here: It is uncommon for roads to have foot
                 // tagged at all when such roads have sidewalks
