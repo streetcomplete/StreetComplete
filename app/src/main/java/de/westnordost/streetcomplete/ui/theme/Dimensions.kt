@@ -8,6 +8,7 @@ fun getMaxQuestFormWidth(totalWidth: Dp): Dp =
     else if (totalWidth >= 600.dp) 360.dp
     else 480.dp
 
-fun getQuestFormPeekHeight(isLandscape: Boolean): Dp =
-    if (isLandscape) 442.dp
+fun getQuestFormPeekHeight(totalHeight: Dp, isLandscape: Boolean): Dp =
+    if (isLandscape) 540.dp
+    else if (totalHeight >= 720.dp) 442.dp
     else 352.dp
