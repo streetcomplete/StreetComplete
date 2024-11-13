@@ -238,15 +238,15 @@ class MainActivity :
         sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
 
         observe(editHistoryViewModel.selectedEdit) { edit ->
-            if (edit == null) {
-                mapFragment?.clearFocus()
-                mapFragment?.clearHighlighting()
-            } else {
+            if (edit != null) {
                 val geometry = editHistoryViewModel.getEditGeometry(edit)
                 mapFragment?.startFocus(geometry, Insets.NONE)
                 mapFragment?.highlightGeometry(geometry)
                 mapFragment?.highlightPins(edit.icon, listOf(edit.position))
                 mapFragment?.hideOverlay()
+            } else if (editHistoryViewModel.isShowingSidebar.value) {
+                mapFragment?.clearFocus()
+                mapFragment?.clearHighlighting()
             }
         }
         observe(editHistoryViewModel.isShowingSidebar) { isShowingSidebar ->
