@@ -161,6 +161,10 @@ power_pole_concrete.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/w
 power_pole_steel.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
 power_pole_wood.jpg            CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
 
+power_attachment_anchor.jpg    CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_anchor.jpg
+power_attachment_pin.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_pin.jpg
+power_attachment_suspension... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_suspension.jpg
+
 produce_agave.jpg              CC-BY-SA 3.0      Marc Ryckaert, under username MJJR https://commons.wikimedia.org/wiki/File:Agave_americana_R01.jpg
 produce_almond.jpg             CC-BY-SA 2.0      antcaesar https://commons.wikimedia.org/wiki/File:Madrigueras_(20578932389)_(cropped).jpg
 produce_apple.jpg              CC0               https://www.pexels.com/photo/close-up-of-fruits-hanging-on-tree-257840/ - archived at https://web.archive.org/web/20210507233404/https://www.pexels.com/photo/close-up-of-fruits-hanging-on-tree-257840/
