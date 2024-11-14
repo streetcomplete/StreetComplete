@@ -123,7 +123,7 @@ fun <T> WheelPicker(
     ) {
         items(
             count = items.size,
-            key = if (key != null) { { key(items[it]) } } else { null }
+            key = key?.let { { key(items[it]) } }
         ) { index ->
             Box(
                 contentAlignment = Alignment.Center,

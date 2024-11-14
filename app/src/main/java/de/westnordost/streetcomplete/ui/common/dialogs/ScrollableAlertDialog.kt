@@ -62,11 +62,11 @@ fun ScrollableAlertDialog(
                 .conditional(width != null) { width(width!!) }
                 .conditional(height != null) { height(height!!) },
             title = title,
-            content = if (content != null) { {
+            content = content?.let { {
                 Divider()
                 Column(Modifier.weight(1f)) { content() }
                 Divider()
-            } } else { null },
+            } },
             buttons = buttons,
             shape = shape,
             backgroundColor = backgroundColor,
