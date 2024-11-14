@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.about
 
 import android.content.res.Resources
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.R
