@@ -1,5 +1,18 @@
 # Changelog
 
+## vNext
+
+- New quest: _"How is this power line attached?"_ (#4825, #5382), by @Jean-BaptisteC
+- Fix achievements could not be opened (#5998)
+- Fix POIs were created at offset to crosshair (#6003)
+- Fix app sometimes goes back to system default locale on screen rotate (#5942)
+- Fix element highlight gone after minimizing and reopening the app (#5995)
+- Reduce minimum zoom for overlays (#5986)
+- Improve degraded performance in alpha version (#5994)
+- Cycleways: remove `cycleway:<side>:lane` when selecting "unspecified lane" (#5988)
+- Cycleways: don't set `foot=no` when selecting bike paths (#5991)
+- Ask barrier width opening quest only for paths (#6002)
+
 ## v60.0-alpha2
 
 - Added language Estonian by Priit Jõerüüt
