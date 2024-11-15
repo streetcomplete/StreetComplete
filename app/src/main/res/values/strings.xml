@@ -785,6 +785,12 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_rental_type_human">Staffed bicycle rental</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">Bicycle store that also rents bicycles</string>
 
+    <string name="quest_bicycle_repair_station_services_title">What equipment is available here?</string>
+    <string name="quest_bicycle_repair_station_pump">Pump</string>
+    <string name="quest_bicycle_repair_station_tools">Various tools</string>
+    <string name="quest_bicycle_repair_station_stand">Work stand</string>
+    <string name="quest_bicycle_repair_station_chain_tool">Chain tool</string>
+
     <string name="quest_bicycle_shop_repair_title">Are bicycle repair services offered here?</string>
 
     <string name="quest_bicycle_shop_second_hand_title">Are second-hand bicycles sold here?</string>
@@ -797,7 +803,6 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bikeParkingCapacity_hint">"Note that you can usually park one bicycle on each side of a stand."</string>
 
     <string name="quest_air_pump_bicycle_shop_title">Is there a public bicycle pump here (at least when it’s open)?</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">Is there a working bicycle pump here?</string>
     <string name="quest_air_pump_compressor_title">Is there an air compressor available here?</string>
 
     <string name="quest_board_name_title">"What’s the title of this information board?"</string>

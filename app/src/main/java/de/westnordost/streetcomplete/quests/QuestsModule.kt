@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
-import de.westnordost.streetcomplete.quests.air_pump.AddBicyclePump
+import de.westnordost.streetcomplete.quests.bike_shop.AddBicyclePump
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
 import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
+import de.westnordost.streetcomplete.quests.bicycle_repair_station.AddBicycleRepairStationServices
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
@@ -289,7 +290,7 @@ fun questTypeRegistry(
 
     26 to AddReligionToPlaceOfWorship(), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
     27 to AddReligionToWaysideShrine(),
-	
+
     172 to AddPowerAttachment(),
     28 to AddPowerPolesMaterial(),
 
@@ -382,6 +383,8 @@ fun questTypeRegistry(
     72 to AddBikeParkingFee(),
     73 to AddBikeRentalCapacity(), // less ambiguous than bike parking
     74 to AddBikeParkingCapacity(), // used by cycle map layer on osm.org, OsmAnd
+
+    173 to AddBicycleRepairStationServices(),
 
     167 to AddParcelLockerBrand(),
 
