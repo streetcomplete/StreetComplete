@@ -785,7 +785,7 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_bicycle_rental_type_human">Staffed bicycle rental</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">Bicycle store that also rents bicycles</string>
 
-    <string name="quest_bicycle_repair_station_services_title">What equipment is available here?</string>
+    <string name="quest_bicycle_repair_station_services_title">What bicycle equipment is available here?</string>
     <string name="quest_bicycle_repair_station_pump">Pump</string>
     <string name="quest_bicycle_repair_station_tools">Various tools</string>
     <string name="quest_bicycle_repair_station_stand">Work stand</string>
