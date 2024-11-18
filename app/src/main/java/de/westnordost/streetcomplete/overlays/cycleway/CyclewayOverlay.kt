@@ -92,14 +92,20 @@ private fun SeparateCycleway?.getColor() = when (this) {
 }
 
 private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): PolylineStyle {
+    val tags = element.tags
     val isLeftHandTraffic = countryInfo.isLeftHandTraffic
-    val cycleways = parseCyclewaySides(element.tags, isLeftHandTraffic)
-    val isBicycleBoulevard = parseBicycleBoulevard(element.tags) == BicycleBoulevard.YES
+    val cycleways = parseCyclewaySides(tags, isLeftHandTraffic)
+    val isBicycleBoulevard = parseBicycleBoulevard(tags) == BicycleBoulevard.YES
+    val isPedestrianWithBicycleOk = tags["highway"] == "pedestrian" && tags["bicycle"] == "yes" && tags["bicycle:signed"] == "yes"
     val isNoCyclewayExpectedLeft = { cyclewayTaggingNotExpected(element, false, isLeftHandTraffic) }
     val isNoCyclewayExpectedRight = { cyclewayTaggingNotExpected(element, true, isLeftHandTraffic) }
 
     return PolylineStyle(
-        stroke = if (isBicycleBoulevard) StrokeStyle(Color.GOLD, dashed = true) else null,
+        stroke = when {
+            isBicycleBoulevard -> StrokeStyle(Color.GOLD, dashed = true)
+            isPedestrianWithBicycleOk -> StrokeStyle(Color.AQUAMARINE, dashed = true)
+            else -> null
+        },
         strokeLeft = cycleways?.left?.cycleway.getStyle(countryInfo, isNoCyclewayExpectedLeft),
         strokeRight = cycleways?.right?.cycleway.getStyle(countryInfo, isNoCyclewayExpectedRight)
     )
