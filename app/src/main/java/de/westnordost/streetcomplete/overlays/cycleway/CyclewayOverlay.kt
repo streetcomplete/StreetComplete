@@ -177,7 +177,7 @@ private fun Cycleway?.getStyle(
         StrokeStyle(Color.INVISIBLE)
 
     SIDEWALK_OK ->
-        StrokeStyle(Color.CYAN, dashed = true)
+        StrokeStyle(Color.AQUAMARINE, dashed = true)
 
     UNKNOWN, INVALID, UNKNOWN_LANE, UNKNOWN_SHARED_LANE ->
         StrokeStyle(Color.DATA_REQUESTED)
