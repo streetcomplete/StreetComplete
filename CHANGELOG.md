@@ -3,11 +3,14 @@
 ## vNext
 
 - New quest: _"How is this power line attached?"_ (#4825, #5382), by @Jean-BaptisteC
+- New quest: _"What bicycle equipment is available here?"_, asked for bicycle repair stations (#5910, #6008)
 - Fix achievements could not be opened (#5998)
 - Fix POIs were created at offset to crosshair (#6003)
 - Fix app sometimes goes back to system default locale on screen rotate (#5942)
 - Fix element highlight gone after minimizing and reopening the app (#5995)
-- Reduce minimum zoom for overlays (#5986)
+- Fix maxheight quest not shown for buildings mapped as areas (#5915)
+- Show some map features for lower zoom values (#5986, #6010)
+- Allow deleting stile when asked for its step count (#6015)
 - Improve degraded performance in alpha version (#5994)
 - Cycleways: remove `cycleway:<side>:lane` when selecting "unspecified lane" (#5988)
 - Cycleways: don't set `foot=no` when selecting bike paths (#5991)
