@@ -106,14 +106,14 @@ private fun getStreetCyclewayStyle(element: Element, countryInfo: CountryInfo): 
 
 private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? {
     val isBicycleBoulevard = parseBicycleBoulevard(tags) == BicycleBoulevard.YES
-    val isLivingStreet = tags["highway"] == "living_street"
     val isPedestrian = tags["highway"] == "pedestrian"
+    val isBicycleDesignated = tags["bicycle"] == "designated"
     val isBicycleOk = tags["bicycle"] == "yes" && tags["bicycle:signed"] == "yes"
 
     return when {
         isBicycleBoulevard ->
             StrokeStyle(Color.GOLD, dashed = true)
-        isLivingStreet ->
+        isPedestrian && isBicycleDesignated ->
             StrokeStyle(Color.CYAN, dashed = true)
         isPedestrian && isBicycleOk ->
             StrokeStyle(Color.AQUAMARINE, dashed = true)
