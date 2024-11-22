@@ -114,9 +114,9 @@ private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? {
         isBicycleBoulevard ->
             StrokeStyle(Color.GOLD, dashed = true)
         isPedestrian && isBicycleDesignated ->
-            StrokeStyle(Color.CYAN, dashed = true)
+            StrokeStyle(Color.CYAN)
         isPedestrian && isBicycleOk ->
-            StrokeStyle(Color.AQUAMARINE, dashed = true)
+            StrokeStyle(Color.AQUAMARINE)
         isPedestrian ->
             StrokeStyle(Color.BLACK)
         else ->

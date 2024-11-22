@@ -2,10 +2,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/background_rectangular_sign_blue"
+    android:background="@drawable/background_rectangular_sign_white"
     android:showDividers="middle"
     android:divider="@drawable/space_8dp"
     android:padding="16dp"
@@ -14,13 +15,14 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/bicycle_white"/>
+        app:srcCompat="@drawable/bicycle_white"
+        app:tint="@color/traffic_black"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bicycle_boulevard"
+        android:text="OK"
+        android:textColor="@color/traffic_black"
         android:textAppearance="@style/TextAppearance.TitleLarge"
-        android:textColor="@color/traffic_white"/>
-
+        tools:ignore="HardcodedText" />
 </LinearLayout>
