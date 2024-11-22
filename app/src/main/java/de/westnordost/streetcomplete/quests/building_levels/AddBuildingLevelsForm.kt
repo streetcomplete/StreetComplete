@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.material.MaterialTheme
+import androidx.compose.ui.platform.ComposeView
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
-import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsLastPickedButtonBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.intOrNull
@@ -90,28 +90,31 @@ private class LastPickedAdapter(
 ) : RecyclerView.Adapter<LastPickedAdapter.ViewHolder>() {
 
     class ViewHolder(
-        private val binding: QuestBuildingLevelsLastPickedButtonBinding,
+        private val composeView: ComposeView,
         private val onItemClicked: (position: Int) -> Unit
-    ) : RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(composeView) {
 
-        init {
-            itemView.setOnClickListener { onItemClicked(bindingAdapterPosition) }
-        }
 
-        fun onBind(item: BuildingLevelsAnswer) {
-            binding.lastLevelsLabel.text = item.levels.toString()
-            binding.lastRoofLevelsLabel.text = item.roofLevels?.toString() ?: " "
+        fun onBind(item: BuildingLevelsAnswer, position: Int) {
+            composeView.setContent {
+                MaterialTheme {
+                    AddBuildingLevelsButton(item.levels,item.roofLevels,position,onItemClicked)
+                }
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = QuestBuildingLevelsLastPickedButtonBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding, onItemClicked)
+        val composeView = ComposeView(parent.context)
+        composeView.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        return ViewHolder(composeView, onItemClicked)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.onBind(lastPickedAnswers[position])
+        viewHolder.onBind(lastPickedAnswers[position],position)
     }
 
     override fun getItemCount() = lastPickedAnswers.size
