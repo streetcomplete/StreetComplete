@@ -116,6 +116,8 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     /* ------------------------- pedestrian zone and bicycle boulevards ------------------------- */
 
     private fun createSwitchBicycleInPedestrianZoneAnswers(): List<IAnswerItem> {
+        if (bicycleInPedestrianStreet == null) return listOf()
+
         val result = mutableListOf<IAnswerItem>()
         if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.DESIGNATED) {
             result.add(AnswerItem(R.string.pedestrian_zone_designated) {
