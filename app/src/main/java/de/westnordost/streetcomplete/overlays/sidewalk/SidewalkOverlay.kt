@@ -89,15 +89,14 @@ private fun getSidewalkStyle(element: Element): PolylineStyle {
     )
 }
 
-private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? {
-    return when {
+private fun getStreetStrokeStyle(tags: Map<String, String>): StrokeStyle? =
+    when {
         tags["highway"] == "pedestrian" ->
             StrokeStyle(Color.SKY)
         tags["highway"] == "living_street" || tags["living_street"] == "yes" ->
             StrokeStyle(Color.SKY, dashed = true)
         else -> null
     }
-}
 
 private val sidewalkTaggingNotExpectedFilter by lazy { """
     ways with
