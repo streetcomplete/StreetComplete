@@ -131,7 +131,7 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
                 updateStreetSign()
             })
         }
-        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_ALLOWED) {
+        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_SIGNED) {
             result.add(AnswerItem(R.string.pedestrian_zone_no_sign) {
                 bicycleInPedestrianStreet = BicycleInPedestrianStreet.NOT_SIGNED
                 updateStreetSign()
