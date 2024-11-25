@@ -118,26 +118,22 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     private fun createSwitchBicycleInPedestrianZoneAnswers(): List<IAnswerItem> {
         if (bicycleInPedestrianStreet == null) return listOf()
 
-        val result = mutableListOf<IAnswerItem>()
-        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.DESIGNATED) {
-            result.add(AnswerItem(R.string.pedestrian_zone_designated) {
+        return listOfNotNull(
+            AnswerItem(R.string.pedestrian_zone_designated) {
                 bicycleInPedestrianStreet = BicycleInPedestrianStreet.DESIGNATED
                 updateStreetSign()
-            })
-        }
-        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.ALLOWED) {
-            result.add(AnswerItem(R.string.pedestrian_zone_allowed_sign) {
+            }.takeIf { bicycleInPedestrianStreet != BicycleInPedestrianStreet.DESIGNATED },
+
+            AnswerItem(R.string.pedestrian_zone_allowed_sign) {
                 bicycleInPedestrianStreet = BicycleInPedestrianStreet.ALLOWED
                 updateStreetSign()
-            })
-        }
-        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_SIGNED) {
-            result.add(AnswerItem(R.string.pedestrian_zone_no_sign) {
+            }.takeIf { bicycleInPedestrianStreet != BicycleInPedestrianStreet.ALLOWED },
+
+            AnswerItem(R.string.pedestrian_zone_no_sign) {
                 bicycleInPedestrianStreet = BicycleInPedestrianStreet.NOT_SIGNED
                 updateStreetSign()
-            })
-        }
-        return result
+            }.takeIf { bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_SIGNED }
+        )
     }
 
     private fun createSwitchBicycleBoulevardAnswer(): IAnswerItem? =
@@ -148,8 +144,8 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
                     updateStreetSign()
                 }
             BicycleBoulevard.NO ->
-                // don't allow pedestrian roads to be tagged as bicycle roads
-                // (should rather be R.string.pedestrian_zone_designated
+                // don't allow pedestrian roads to be tagged as bicycle roads (should rather be
+                // highway=pedestrian + bicycle=designated rather than bicycle_road=yes)
                 if (element!!.tags["highway"] != "pedestrian") {
                     AnswerItem2(getString(R.string.bicycle_boulevard_is_a, getString(R.string.bicycle_boulevard))) {
                         bicycleBoulevard = BicycleBoulevard.YES
@@ -226,7 +222,6 @@ class StreetCyclewayOverlayForm : AStreetSideSelectOverlayForm<CyclewayAndDirect
     }
 
     override fun onClickOk() {
-        // only tag the cycleway if that is what is currently displayed
         val cycleways = LeftAndRightCycleway(streetSideSelect.left?.value, streetSideSelect.right?.value)
         if (cycleways.wasNoOnewayForCyclistsButNowItIs(element!!.tags, isLeftHandTraffic)) {
             confirmNotOnewayForCyclists { saveAndApplyCycleway(cycleways) }
