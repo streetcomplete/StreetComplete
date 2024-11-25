@@ -251,10 +251,12 @@ class MainActivity :
         }
         observe(editHistoryViewModel.isShowingSidebar) { isShowingSidebar ->
             if (!isShowingSidebar) {
-                freezeMap()
+                unfreezeMap()
+                mapFragment?.clearFocus()
+                mapFragment?.clearHighlighting()
                 mapFragment?.pinMode = MainMapFragment.PinMode.QUESTS
             } else {
-                unfreezeMap()
+                freezeMap()
                 mapFragment?.hideOverlay()
                 mapFragment?.pinMode = MainMapFragment.PinMode.EDITS
             }
