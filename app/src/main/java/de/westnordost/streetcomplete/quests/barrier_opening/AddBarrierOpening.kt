@@ -41,6 +41,7 @@ class AddBarrierOpening(
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.ic_quest_wheelchair_width
     override val achievements = listOf(BICYCLIST, WHEELCHAIR)
+    override val isDeleteElementEnabled = true
     override val defaultDisabledMessage: Int
         get() = if (!checkArSupport()) R.string.default_disabled_msg_no_ar else 0
 
