@@ -820,6 +820,21 @@ Before uploading your changes, the app checks with a &lt;a href=\"https://www.we
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
 
+    <string name="quest_boat_rental_title">Which type of boats are for rent here?</string>
+    <string name="quest_boat_rental_motorboat">Motorboat</string>
+    <string name="quest_boat_rental_jetski">Jetski</string>
+    <string name="quest_boat_rental_sailboat">Sailboat</string>
+    <string name="quest_boat_rental_pedalboat">Pedalboat</string>
+    <string name="quest_boat_rental_kayak">Kayak</string>
+    <string name="quest_boat_rental_canoe">Canoe</string>
+    <string name="quest_boat_rental_houseboat">Houseboat</string>
+    <string name="quest_boat_rental_rowboat">Rowboat</string>
+    <string name="quest_boat_rental_raft">Raft</string>
+    <string name="quest_boat_rental_surfboard">Surfboard</string>
+    <string name="quest_boat_rental_sailboard">Sailboard</string>
+    <string name="quest_boat_rental_yacht">Yacht</string>
+    <string name="quest_boat_rental_standup_paddleboard">Standup Paddleboard (SUP)</string>
+
     <string name="quest_bollard_type_title">What type of bollard is this?</string>
     <string name="quest_bollard_type_rising">Rising</string>
     <string name="quest_bollard_type_removable">Removable (with or without key)</string>
