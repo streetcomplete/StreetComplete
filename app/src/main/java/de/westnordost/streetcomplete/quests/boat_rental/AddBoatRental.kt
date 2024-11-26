@@ -11,12 +11,10 @@ class AddBoatRental : OsmFilterQuestType<List<BoatRental>>() {
 
     override val elementFilter = """
         nodes, ways with
-        (
-          amenity = boat_rental
-        )
-        and ${ALL_RENTALS.joinToString(" and ") { "!$it" }}
+        amenity = boat_rental
+        and ${BoatRental.entries.joinToString(" and ") { "!${it.osmValue}" }}
     """
-    override val changesetComment = "Specify boat types for rental"
+    override val changesetComment = "Specify boats for rental"
     override val wikiLink = "Tag:amenity=boat_rental"
     override val icon = R.drawable.ic_quest_boat
     override val achievements = listOf(OUTDOORS, RARE)
@@ -26,11 +24,6 @@ class AddBoatRental : OsmFilterQuestType<List<BoatRental>>() {
     override fun createForm() = AddBoatRentalForm()
 
     override fun applyAnswerTo(answer: List<BoatRental>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.forEach{ tags[it.osmValue] = "yes" }
+        answer.forEach { tags[it.osmValue] = "yes" }
     }
 }
-
-private val ALL_RENTALS =
-    setOf("canoe_rental", "kayak_rental", "pedalboat_rental",
-        "motorboat_rental", "standup_paddleboard_rental", "sailboat_rental",
-        "jetski_rental", "houseboat_rental", "rowboat_rental")

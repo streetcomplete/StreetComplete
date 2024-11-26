@@ -432,8 +432,6 @@ fun questTypeRegistry(
 
     /* ↓ 3.quests that may need some exploration / walking around --------------------------- */
 
-    170 to AddBoatRental(),
-
     // ferry: usually visible from looking at the boat, but not always...
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
@@ -457,6 +455,8 @@ fun questTypeRegistry(
     111 to AddSmoking(), // often marked on the entrance, if not, visible/smellable inside
 
     /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
+
+    174 to AddBoatRental(),
 
     112 to AddWheelchairAccessPublicTransport(), // need to look out for lifts etc, maybe even enter the station
 
