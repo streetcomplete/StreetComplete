@@ -1,44 +1,30 @@
 # Changelog
 
-## vNext
+## v60.0-beta1
+
+Redesigned the main screen a little. Here and there you'll notice small differences. The dialog to
+start the team mode from the menu is more descriptive now, for example. (#5799)
+
+Also, added Estonian language by Priit Jõerüüt
 
 ### New quests
 
 - _"How is this power line attached?"_ (#4825, #5382), by @Jean-BaptisteC
 - _"What bicycle equipment is available here?"_, asked for bicycle repair stations (#5910, #6008)
+- _"Which type of boats are for rent here?"_ (#5741, #5426), thanks @kmpoppe
+
+### Quest and Overlay improvements
+
+- Cycleway overlay: Can now specify signs on bicycle access for pedestrian roads (#6016, #6020)
+- Show overlays already at lower zoom levels (#5986, #6010)
+- Other small improvements (#6015, #6002, #5996, #6021 ...)
 
 ### Fixes
-
-- Fix achievements could not be opened (#5998)
-- Fix POIs were created at offset to crosshair (#6003)
-- Fix app sometimes goes back to system default locale on screen rotate (#5942)
-- Fix element highlight gone after minimizing and reopening the app (#5995)
-- Fix maxheight quest not shown for buildings mapped as areas (#5915)
-- Improve degraded performance in alpha version (#5994)
-
-### Cycleway quest and overlay improvements
-
-- Remove `cycleway:<side>:lane` when selecting "unspecified lane" (#5988)
-- Don't set `foot=no` when selecting bike paths (#5991)
-- Never ask quest again for `cycleway=separate` (#6021)
-- Cycleway overlay: Differentiate bicycle access on pedestrian roads (#6016, #6020)
-
-### Other improvements
-
-- Sidewalk overlay: show pedestrian roads in same color as sidewalks
-- Show some map features for lower zoom values (#5986, #6010)
-- Allow deleting barrier node in more quests (#6015)
-- Ask barrier width opening quest only for paths (#6002)
-
-## v60.0-alpha2
-
-- Added language Estonian by Priit Jõerüüt
-- Building levels: Don't ask if building levels and roof height are already specified (#5996)
-
-## v60.0-alpha1
-
-Redesigned the main screen a little. Here and there you'll notice small differences. The dialog to
-start the team mode from the menu is more descriptive now, for example. (#5799)
+-
+- Cycleway: Fix selecting "unspecified lane" didn't do anything in edge cases (#5988)
+- Cycleway: Don't assume a default pedestrian access on bike paths (cause that depends on legislation) (#5991)
+- Max vehicle height: Fix wasn't shown below roofs (#5912, #5915), thanks @RubenKelevra
+- Fix app sometimes went back to system default locale on screen rotate (#5942)
 
 ## v59.3
 
