@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AImageListQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
-import kotlin.math.PI
 
 class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>() {
     override val otherAnswers = listOf(
@@ -15,7 +14,7 @@ class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>
     )
 
     override val items get() =
-        Incline.entries.map { it.asItem(requireContext(), wayRotation + mapRotation) }
+        Incline.entries.map { it.asItem(requireContext(), wayRotation - mapRotation) }
 
     override val itemsPerRow = 2
 
@@ -28,8 +27,8 @@ class AddBicycleInclineForm : AImageListQuestForm<Incline, BicycleInclineAnswer>
         imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
     }
 
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
-        mapRotation = (rotation * 180 / PI).toFloat()
+    override fun onMapOrientation(rotation: Double, tilt: Double) {
+        mapRotation = rotation.toFloat()
         imageSelector.items = items
     }
 

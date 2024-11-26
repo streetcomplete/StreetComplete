@@ -28,7 +28,7 @@ class AddRoadWidth(
     private val wayFilter by lazy { """
         ways with (
           (
-            highway ~ trunk|primary|secondary|tertiary|unclassified|residential
+            highway ~ trunk|primary|secondary|tertiary|unclassified|residential|busway
             and (lane_markings = no or lanes < 2)
           ) or (
             highway = residential

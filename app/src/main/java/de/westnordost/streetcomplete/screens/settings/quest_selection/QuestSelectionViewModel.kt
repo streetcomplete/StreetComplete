@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.quest_selection
 
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -9,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
 import de.westnordost.streetcomplete.data.visiblequests.QuestPresetsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
@@ -22,9 +24,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
+@Stable
 abstract class QuestSelectionViewModel : ViewModel() {
-    abstract val selectedQuestPresetName: String?
     abstract val currentCountry: String?
+    abstract val selectedQuestPresetName: StateFlow<String?>
     abstract val quests: StateFlow<List<QuestSelection>>
 
     abstract fun selectQuest(questType: QuestType, selected: Boolean)
@@ -33,6 +36,7 @@ abstract class QuestSelectionViewModel : ViewModel() {
     abstract fun resetQuestSelectionsAndOrder()
 }
 
+@Stable
 class QuestSelectionViewModelImpl(
     private val questTypeRegistry: QuestTypeRegistry,
     private val questPresetsSource: QuestPresetsSource,
@@ -73,24 +77,38 @@ class QuestSelectionViewModelImpl(
         override fun onQuestTypeOrdersChanged() { initQuests() }
     }
 
+    private val questPresetsListener = object : QuestPresetsSource.Listener {
+        override fun onSelectedQuestPresetChanged() { updateSelectedQuestPresetName() }
+        override fun onAddedQuestPreset(preset: QuestPreset) {}
+        override fun onRenamedQuestPreset(preset: QuestPreset) {}
+        override fun onDeletedQuestPreset(presetId: Long) {}
+    }
+
     override val quests = MutableStateFlow<List<QuestSelection>>(emptyList())
 
-    private val currentCountryCodes = countryBoundaries.value
-        .getIds(prefs.mapPosition)
+    private val currentCountryCodes = countryBoundaries.value.getIds(prefs.mapPosition)
 
-    override val selectedQuestPresetName: String?
-        get() = questPresetsSource.selectedQuestPresetName
+    override val selectedQuestPresetName = MutableStateFlow<String?>(null)
 
     override val currentCountry: String?
         get() = currentCountryCodes.firstOrNull()
 
     init {
         initQuests()
+        updateSelectedQuestPresetName()
+        questPresetsSource.addListener(questPresetsListener)
         visibleQuestTypeController.addListener(visibleQuestsListener)
         questTypeOrderController.addListener(questTypeOrderListener)
     }
 
+    private fun updateSelectedQuestPresetName() {
+        launch(IO) {
+            selectedQuestPresetName.value = questPresetsSource.selectedQuestPresetName
+        }
+    }
+
     override fun onCleared() {
+        questPresetsSource.removeListener(questPresetsListener)
         visibleQuestTypeController.removeListener(visibleQuestsListener)
         questTypeOrderController.removeListener(questTypeOrderListener)
     }

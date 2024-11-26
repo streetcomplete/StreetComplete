@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.settings.quest_presets
 
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfigController
 import de.westnordost.streetcomplete.data.visiblequests.QuestPreset
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
+@Stable
 abstract class QuestPresetsViewModel : ViewModel() {
     abstract val presets: StateFlow<List<QuestPresetSelection>>
 
@@ -33,6 +35,7 @@ data class QuestPresetSelection(
     val url: String? = null
 )
 
+@Stable
 class QuestPresetsViewModelImpl(
     private val questPresetsController: QuestPresetsController,
     private val questTypeOrderController: QuestTypeOrderController,

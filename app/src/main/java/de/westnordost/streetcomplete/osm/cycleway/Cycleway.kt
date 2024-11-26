@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.osm.Direction
+import de.westnordost.streetcomplete.osm.Direction.*
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.isForwardOneway
 import de.westnordost.streetcomplete.osm.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.isNotOnewayForCyclists
@@ -64,20 +65,7 @@ data class CyclewayAndDirection(val cycleway: Cycleway, val direction: Direction
 fun CyclewayAndDirection.isSelectable(countryInfo: CountryInfo): Boolean =
     cycleway.isSelectable(countryInfo) &&
     // only allow dual track, dual lanes and "dual" sidewalk (not dual pictograms or something)
-    (direction != BOTH || cycleway in listOf(TRACK, UNSPECIFIED_LANE, EXCLUSIVE_LANE, SIDEWALK_EXPLICIT))
-
-@Serializable
-enum class Direction {
-    FORWARD,
-    BACKWARD,
-    BOTH;
-
-    fun reverse(): Direction = when (this) {
-        FORWARD -> BACKWARD
-        BACKWARD -> FORWARD
-        BOTH -> BOTH
-    }
-}
+    (direction != BOTH || cycleway in listOf(TRACK, UNSPECIFIED_LANE, EXCLUSIVE_LANE, SIDEWALK_EXPLICIT, SIDEWALK_OK))
 
 @Serializable
 enum class Cycleway {
@@ -179,23 +167,16 @@ fun getSelectableCycleways(
 ): List<CyclewayAndDirection> {
     val dir = direction?.takeUnless { it == BOTH } ?: Direction.getDefault(isRightSide, isLeftHandTraffic)
     val cycleways = mutableListOf(
-        NONE,
-        TRACK,
-        EXCLUSIVE_LANE,
-        ADVISORY_LANE,
-        UNSPECIFIED_LANE,
-        SUGGESTION_LANE,
-        SEPARATE,
-        PICTOGRAMS,
-        BUSWAY,
-        SIDEWALK_EXPLICIT,
-        SIDEWALK_OK,
-        SHOULDER
+        NONE, SEPARATE,
+        EXCLUSIVE_LANE, ADVISORY_LANE, UNSPECIFIED_LANE, SUGGESTION_LANE,
+        TRACK, SIDEWALK_EXPLICIT, SIDEWALK_OK,
+        PICTOGRAMS, BUSWAY, SHOULDER
     )
     val dualCycleways = listOf(
         CyclewayAndDirection(if (countryInfo.hasAdvisoryCycleLane) EXCLUSIVE_LANE else UNSPECIFIED_LANE, BOTH),
         CyclewayAndDirection(TRACK, BOTH),
-        CyclewayAndDirection(SIDEWALK_EXPLICIT, BOTH)
+        CyclewayAndDirection(SIDEWALK_EXPLICIT, BOTH),
+        CyclewayAndDirection(SIDEWALK_OK, BOTH)
     )
 
     // no need to distinguish between advisory and exclusive lane where the concept of exclusive
@@ -218,10 +199,6 @@ fun getSelectableCycleways(
     }
     return cycleways.map { CyclewayAndDirection(it, dir) } + dualCycleways
 }
-
-/** Return the default direction of a cycleway if nothing is specified */
-fun Direction.Companion.getDefault(isRightSide: Boolean, isLeftHandTraffic: Boolean): Direction =
-    if (isRightSide xor isLeftHandTraffic) FORWARD else BACKWARD
 
 val CyclewayAndDirection.estimatedWidth: Float get() = when (cycleway) {
     EXCLUSIVE_LANE -> 1.5f

@@ -32,12 +32,11 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
     override val itemsPerRow = 1
     override val cellLayoutId = R.layout.cell_labeled_icon_select_right
 
-    private var currentCycleway: SeparateCycleway? = null
+    private var originalCycleway: SeparateCycleway? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val cycleway = parseSeparateCycleway(element!!.tags)
+        originalCycleway = parseSeparateCycleway(element!!.tags)
 
         /*
             Not displaying bicycle=yes and bicycle=no on footways and treating it the same because
@@ -63,11 +62,13 @@ class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
             prerequisite for it being  displayed as a selectable option due to the reasons stated
             above.
          */
-        selectedItem = cycleway?.asItem(countryInfo.isLeftHandTraffic)
+        if (savedInstanceState == null) {
+            selectedItem = originalCycleway?.asItem(countryInfo.isLeftHandTraffic)
+        }
     }
 
     override fun hasChanges(): Boolean =
-        selectedItem?.value != currentCycleway
+        selectedItem?.value != originalCycleway
 
     override fun onClickOk() {
         prefs.addLastPicked(this::class.simpleName!!, selectedItem!!.value!!.name)

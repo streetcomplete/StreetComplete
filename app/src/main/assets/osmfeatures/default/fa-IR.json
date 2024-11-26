@@ -1,3 +1,32 @@
 {
-    "fa-IR": {}
+  "fa-IR": {
+    "presets": {
+      "presets": {
+        "amenity/place_of_worship/muslim": {
+          "name": "مسجد مسلمانان"
+        },
+        "building/mosque": {
+          "name": "ساختمان مسجد"
+        },
+        "man_made/fuel_pump": {
+          "name": "پمپ گاز"
+        },
+        "office/newspaper": {
+          "name": "دفتر روزنامه"
+        },
+        "shop/books": {
+          "name": "کتاب‌فروشی"
+        },
+        "shop/health_food": {
+          "name": "فروشگاه غذای سالم"
+        },
+        "shop/newsagent": {
+          "name": "روزنامه‌فروشی"
+        },
+        "shop/nuts": {
+          "name": "فروشگاه آجیل و خشکبار"
+        }
+      }
+    }
+  }
 }

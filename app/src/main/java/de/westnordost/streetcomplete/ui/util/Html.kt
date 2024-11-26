@@ -1,16 +1,15 @@
 package de.westnordost.streetcomplete.ui.util
 
-import android.annotation.SuppressLint
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.UrlAnnotation
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -27,35 +26,60 @@ import de.westnordost.streetcomplete.util.html.HtmlNode
 import de.westnordost.streetcomplete.util.html.HtmlTextNode
 
 @Composable
-fun List<HtmlNode>.toAnnotatedString(): AnnotatedString {
-    val builder = AnnotatedString.Builder()
-    builder.append(this)
-    return builder.toAnnotatedString()
+fun List<HtmlNode>.toAnnotatedString(
+    textLinkStyles: TextLinkStyles = TextLinkStyles(
+        style = SpanStyle(
+            color = MaterialTheme.colors.primary,
+            textDecoration = TextDecoration.Underline
+        ),
+        focusedStyle = SpanStyle(
+            color = MaterialTheme.colors.secondary,
+        )
+    )
+): AnnotatedString {
+    val textStyle = LocalTextStyle.current
+    val textMeasurer = rememberTextMeasurer()
+    val bulletWidthPx = remember(textStyle, textMeasurer) {
+        textMeasurer.measure(text = bullet, style = textStyle).size.width
+    }
+    val bulletWidth = bulletWidthPx.pxToSp()
+
+    val result = remember(this, bulletWidth, textLinkStyles) {
+        val builder = AnnotatedString.Builder()
+        builder.append(this, bulletWidth, textLinkStyles)
+        builder.toAnnotatedString()
+    }
+    return result
 }
 
-@SuppressLint("ComposableNaming")
-@Composable
-private fun AnnotatedString.Builder.append(nodes: List<HtmlNode>) {
+private fun AnnotatedString.Builder.append(
+    nodes: List<HtmlNode>,
+    bulletWidth: TextUnit,
+    textLinkStyles: TextLinkStyles
+) {
     nodes.forEachIndexed { i, node ->
         val nextNode = nodes.getOrNull(i + 1)
         // ignore blank elements before block elements
         if (nextNode?.isBlockElement() != true || !node.isBlankText()) {
-            append(node)
+            append(node, bulletWidth, textLinkStyles)
         }
     }
 }
 
-@SuppressLint("ComposableNaming")
-@Composable
-private fun AnnotatedString.Builder.append(node: HtmlNode) {
-    if (node is HtmlElementNode) append(node)
+private fun AnnotatedString.Builder.append(
+    node: HtmlNode,
+    bulletWidth: TextUnit,
+    textLinkStyles: TextLinkStyles,
+) {
+    if (node is HtmlElementNode) append(node, bulletWidth, textLinkStyles)
     else if (node is HtmlTextNode) append(node.text)
 }
 
-@SuppressLint("ComposableNaming")
-@OptIn(ExperimentalTextApi::class)
-@Composable
-private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
+private fun AnnotatedString.Builder.append(
+    element: HtmlElementNode,
+    bulletWidth: TextUnit,
+    textLinkStyles: TextLinkStyles,
+) {
     if (element.tag == "br") {
         append('\n')
         return
@@ -69,15 +93,9 @@ private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
             ParagraphStyle(textIndent = TextIndent(indent.sp, indent.sp))
         }
         "li" -> {
-            val textStyle = LocalTextStyle.current
-            val textMeasurer = rememberTextMeasurer()
-            val bulletWidth = remember(textStyle, textMeasurer) {
-                textMeasurer.measure(text = bullet, style = textStyle).size.width
-            }
-            val bulletWidthSp = bulletWidth.pxToSp()
             ParagraphStyle(
                 textIndent = TextIndent(
-                    firstLine = (indent - bulletWidthSp.value).sp,
+                    firstLine = (indent - bulletWidth.value).sp,
                     restLine = indent.sp
                 )
             )
@@ -119,19 +137,18 @@ private fun AnnotatedString.Builder.append(element: HtmlElementNode) {
             SpanStyle(background = Color.Yellow)
         "span" ->
             SpanStyle()
-        "a" -> {
-            val linkColor = MaterialTheme.colors.secondary
-            SpanStyle(textDecoration = TextDecoration.Underline, color = linkColor)
-        }
         else -> null
     }
     if (span != null) pushStyle(span)
-    if (element.tag == "a") pushUrlAnnotation(UrlAnnotation(element.attributes["href"].orEmpty()))
+    if (element.tag == "a") {
+        val url = element.attributes["href"].orEmpty()
+        pushLink(LinkAnnotation.Url(url, textLinkStyles))
+    }
 
     if (paragraph != null) append('\n')
     if (element.tag == "li") append(bullet)
 
-    append(element.nodes)
+    append(element.nodes, bulletWidth, textLinkStyles)
 
     if (element.tag == "a") tryPop()
     if (span != null) tryPop()

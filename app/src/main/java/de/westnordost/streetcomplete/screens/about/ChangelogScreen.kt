@@ -16,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
@@ -24,7 +23,6 @@ import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.html.HtmlNode
-import de.westnordost.streetcomplete.util.ktx.openUri
 
 /** Shows the full changelog */
 @Composable
@@ -33,7 +31,6 @@ fun ChangelogScreen(
     onClickBack: () -> Unit
 ) {
     val changelog by viewModel.changelog.collectAsState()
-    val context = LocalContext.current
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
@@ -44,7 +41,6 @@ fun ChangelogScreen(
             SelectionContainer {
                 ChangelogList(
                     changelog = changelog,
-                    onClickLink = { context.openUri(it) },
                     paddingValues = PaddingValues(16.dp)
                 )
             }
@@ -55,7 +51,6 @@ fun ChangelogScreen(
 @Composable
 fun ChangelogList(
     changelog: Map<String, List<HtmlNode>>,
-    onClickLink: (String) -> Unit,
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues = PaddingValues()
 ) {
@@ -72,7 +67,6 @@ fun ChangelogList(
             HtmlText(
                 html = html,
                 style = MaterialTheme.typography.body2,
-                onClickLink = onClickLink
             )
         }
     }

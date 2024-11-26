@@ -78,14 +78,16 @@ class MapDataWithEditsSource internal constructor(
             val modifiedDeleted = ArrayList<ElementKey>()
             synchronized(this) {
                 /* We don't want to callOnUpdated if none of the changes affects map data provided
-                 * by MapDataWithEditsSource.
+                 * by MapDataWithEditsSource
                  * This is the case if
                  *  * All keys in deleted are already in deletedElements.
                  *  * The modified versions of all elements in updated are the same before and after
                  *    rebuildLocalChanges, except for the timestamp (expected to have few ms
                  *    difference) and version (never updated locally).
+                 *   * No new elements are being added
                  */
                 val deletedIsUnchanged = deletedElements.containsAll(deleted)
+                val hasNewElements = updated.any { it.key !in updatedElements }
                 val elementsThatMightHaveChangedByKey = updated.mapNotNull { element ->
                     val key = element.key
                     if (element.isEqualExceptVersionAndTimestamp(updatedElements[key])) {
@@ -99,7 +101,7 @@ class MapDataWithEditsSource internal constructor(
 
                 /* nothingChanged can be false at this point when e.g. there are two edits on the
                    same element, and onUpdated is called after the first edit is uploaded. */
-                val nothingChanged = deletedIsUnchanged && elementsThatMightHaveChangedByKey.all {
+                val nothingChanged = deletedIsUnchanged && !hasNewElements && elementsThatMightHaveChangedByKey.all {
                     val updatedElement = get(it.first.type, it.first.id)
                     // old and new elements are equal except version and timestamp, or both are null
                     it.second?.isEqualExceptVersionAndTimestamp(updatedElement) ?: (updatedElement == null)

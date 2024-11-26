@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.R
 
 @Composable
-fun AnimatedTadaShine() {
+fun AnimatedTadaShine(modifier: Modifier = Modifier) {
     val infiniteTransition = rememberInfiniteTransition("ta-da shine rotation")
     val rotation by infiniteTransition.animateFloat(
         0f, 360f,
@@ -27,8 +27,8 @@ fun AnimatedTadaShine() {
         "ta-da shine rotation"
     )
 
-    TadaShine(Modifier.rotate(rotation * 2f))
-    TadaShine(Modifier.rotate(180f - rotation))
+    TadaShine(modifier.rotate(rotation * 2f))
+    TadaShine(modifier.rotate(180f - rotation))
 }
 
 @Composable

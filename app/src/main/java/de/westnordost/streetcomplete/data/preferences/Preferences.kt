@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.data.preferences
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SettingsListener
 import com.russhwolf.settings.boolean
-import com.russhwolf.settings.float
+import com.russhwolf.settings.double
 import com.russhwolf.settings.int
 import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
-import com.russhwolf.settings.string
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.ktx.putStringOrNull
 
 class Preferences(private val prefs: ObservableSettings) {
     // application settings
@@ -35,26 +35,6 @@ class Preferences(private val prefs: ObservableSettings) {
             ?: DEFAULT_RESURVEY_INTERVALS
 
     var showAllNotes: Boolean by prefs.boolean(SHOW_ALL_NOTES, false)
-
-    fun getLastPicked(key: String): List<String> =
-        prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
-
-    fun addLastPicked(key: String, value: String, maxValueCount: Int = 100) {
-        addLastPicked(key, listOf(value), maxValueCount)
-    }
-
-    fun addLastPicked(key: String, values: List<String>, maxValueCount: Int = 100) {
-        val lastValues = values + getLastPicked(key)
-        setLastPicked(key, lastValues.take(maxValueCount))
-    }
-
-    fun setLastPicked(key: String, values: List<String>) {
-        prefs.putString(LAST_PICKED_PREFIX + key, values.joinToString(","))
-    }
-
-    fun setLastPicked(key: String, value: String) {
-        prefs.putString(LAST_PICKED_PREFIX + key, value)
-    }
 
     fun onLanguageChanged(callback: (String?) -> Unit): SettingsListener =
         prefs.addStringOrNullListener(LANGUAGE_SELECT, callback)
@@ -110,11 +90,13 @@ class Preferences(private val prefs: ObservableSettings) {
             latitude = prefs.getDouble(MAP_LATITUDE, 0.0),
             longitude = prefs.getDouble(MAP_LONGITUDE, 0.0)
         )
-    var mapRotation: Float by prefs.float(MAP_ROTATION, 0f)
-    var mapTilt: Float by prefs.float(MAP_TILT, 0f)
-    var mapZoom: Float by prefs.float(MAP_ZOOM, 0f)
+    var mapRotation: Double by prefs.double(MAP_ROTATION, 0.0)
+    var mapTilt: Double by prefs.double(MAP_TILT, 0.0)
+    var mapZoom: Double by prefs.double(MAP_ZOOM, 0.0)
     var mapIsFollowing: Boolean by prefs.boolean(MAP_FOLLOWING, true)
     var mapIsNavigationMode: Boolean by prefs.boolean(MAP_NAVIGATION_MODE, false)
+
+    var clearedTangramCache: Boolean by prefs.boolean(CLEARED_TANGRAM_CACHE, false)
 
     // application version
     var lastChangelogVersion: String? by prefs.nullableString(LAST_VERSION)
@@ -123,13 +105,6 @@ class Preferences(private val prefs: ObservableSettings) {
     // team mode
     var teamModeSize: Int by prefs.int(TEAM_MODE_TEAM_SIZE, -1)
     var teamModeIndexInTeam: Int by prefs.int(TEAM_MODE_INDEX_IN_TEAM, -1)
-
-    // tangram
-    var pinSpritesVersion: Int by prefs.int(PIN_SPRITES_VERSION, 0)
-    var pinSprites: String by prefs.string(PIN_SPRITES, "")
-
-    var iconSpritesVersion: Int by prefs.int(ICON_SPRITES_VERSION, 0)
-    var iconSprites: String by prefs.string(ICON_SPRITES, "")
 
     // main screen UI
     var hasShownTutorial: Boolean by prefs.boolean(HAS_SHOWN_TUTORIAL, false)
@@ -156,6 +131,46 @@ class Preferences(private val prefs: ObservableSettings) {
         prefs.addLongListener(SELECTED_QUESTS_PRESET, 0L, callback)
 
     var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
+
+    fun getLastPicked(key: String): List<String> =
+        prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
+
+    fun addLastPicked(key: String, value: String, maxValueCount: Int = 100) {
+        addLastPicked(key, listOf(value), maxValueCount)
+    }
+
+    fun addLastPicked(key: String, values: List<String>, maxValueCount: Int = 100) {
+        val lastValues = values + getLastPicked(key)
+        setLastPicked(key, lastValues.take(maxValueCount))
+    }
+
+    fun setLastPicked(key: String, values: List<String>) {
+        prefs.putString(LAST_PICKED_PREFIX + key, values.joinToString(","))
+    }
+
+    fun getLastPickedLeft(key: String): String? =
+        prefs.getStringOrNull(getLastPickedSideKey(key, "left"))
+
+    fun setLastPickedLeft(key: String, value: String?) {
+        prefs.putStringOrNull(getLastPickedSideKey(key, "left"), value)
+    }
+
+    fun getLastPickedRight(key: String): String? =
+        prefs.getStringOrNull(getLastPickedSideKey(key, "right"))
+
+    fun setLastPickedRight(key: String, value: String?) {
+        prefs.putStringOrNull(getLastPickedSideKey(key, "right"), value)
+    }
+
+    fun getLastPickedOneSide(key: String): String? =
+        prefs.getStringOrNull(getLastPickedSideKey(key, "oneSide"))
+
+    fun setLastPickedOneSide(key: String, value: String?) {
+        prefs.putStringOrNull(getLastPickedSideKey(key, "oneSide"), value)
+    }
+
+    private fun getLastPickedSideKey(key: String, side: String): String =
+        "$LAST_PICKED_PREFIX$key.$side"
 
     // profile & statistics screen UI
     var userGlobalRank: Int by prefs.int(USER_GLOBAL_RANK, -1)
@@ -216,17 +231,14 @@ class Preferences(private val prefs: ObservableSettings) {
         // map state
         private const val MAP_LATITUDE = "map.latitude"
         private const val MAP_LONGITUDE = "map.longitude"
-        private const val MAP_ROTATION = "map.rotation"
-        private const val MAP_TILT = "map.tilt"
-        private const val MAP_ZOOM = "map.zoom"
+        private const val MAP_ROTATION = "map.rotation2"
+        private const val MAP_TILT = "map.tilt2"
+        private const val MAP_ZOOM = "map.zoom2"
         private const val MAP_FOLLOWING = "map.following"
         private const val MAP_NAVIGATION_MODE = "map.navigation_mode"
 
-        // tangram
-        private const val PIN_SPRITES_VERSION = "TangramPinsSpriteSheet.version"
-        private const val PIN_SPRITES = "TangramPinsSpriteSheet.sprites"
-        private const val ICON_SPRITES_VERSION = "TangramIconsSpriteSheet.version"
-        private const val ICON_SPRITES = "TangramIconsSpriteSheet.sprites"
+        // clean-up after upgrade
+        private const val CLEARED_TANGRAM_CACHE = "cleared_tangram_cache"
 
         // quest & overlays
         private const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"

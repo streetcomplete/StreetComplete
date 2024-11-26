@@ -11,7 +11,7 @@ open class WheelchairAccessForm : AbstractOsmQuestForm<WheelchairAccess>() {
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) },
         AnswerItem(R.string.quest_wheelchairAccess_limited) { applyAnswer(LIMITED) },
+        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) },
     )
 }

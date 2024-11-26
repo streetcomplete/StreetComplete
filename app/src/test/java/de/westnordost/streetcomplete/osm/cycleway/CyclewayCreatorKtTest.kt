@@ -5,8 +5,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.Direction
+import de.westnordost.streetcomplete.osm.Direction.*
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
-import de.westnordost.streetcomplete.osm.cycleway.Direction.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -63,11 +64,11 @@ class CyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply unspecified cycle lane answer does not remove previous specific lane answer`() {
+    @Test fun `apply unspecified cycle lane answer does remove previous specific lane answer`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "lane"),
-                StringMapEntryModify("cycleway:both:lane", "exclusive", "exclusive"),
+                StringMapEntryDelete("cycleway:both:lane", "exclusive"),
             ),
             cycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE).appliedTo(mapOf(
                 "cycleway:both:lane" to "exclusive"
@@ -814,6 +815,70 @@ class CyclewayCreatorKtTest {
         assertFailsWith<IllegalArgumentException> {
             cycleway(null, INVALID).applyTo(StringMapChangesBuilder(mapOf()), false)
         }
+    }
+
+    @Test fun `apply allowed on sidewalk with both directions to one side`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:right", "no"),
+                StringMapEntryAdd("sidewalk:right:bicycle", "yes"),
+                StringMapEntryAdd("sidewalk:right:bicycle:signed", "yes"),
+                StringMapEntryAdd("sidewalk:right:oneway:bicycle", "no")
+            ),
+            cycleway(
+                null,
+                SIDEWALK_OK to BOTH
+            ).appliedTo(mapOf())
+        )
+    }
+
+    @Test fun `apply allowed on sidewalk with both directions to left side`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:left", "no"),
+                StringMapEntryAdd("sidewalk:left:bicycle", "yes"),
+                StringMapEntryAdd("sidewalk:left:bicycle:signed", "yes"),
+                StringMapEntryAdd("sidewalk:left:oneway:bicycle", "no")
+            ),
+            cycleway(
+                SIDEWALK_OK to BOTH,
+                null
+            ).appliedTo(mapOf())
+        )
+    }
+
+    @Test fun `apply allowed on sidewalk with both directions to both sides`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("cycleway:both", "no"),
+                StringMapEntryAdd("sidewalk:both:bicycle", "yes"),
+                StringMapEntryAdd("sidewalk:both:bicycle:signed", "yes"),
+                StringMapEntryAdd("sidewalk:both:oneway:bicycle", "no")
+            ),
+            cycleway(
+                SIDEWALK_OK to BOTH,
+                SIDEWALK_OK to BOTH
+            ).appliedTo(mapOf())
+        )
+    }
+
+    @Test fun `apply allowed on sidewalk in both directions to existing sidewalk ok`() {
+        assertEquals(
+            setOf(
+                StringMapEntryModify("cycleway:right", "no", "no"),
+                StringMapEntryModify("sidewalk:right:bicycle", "yes", "yes"),
+                StringMapEntryModify("sidewalk:right:bicycle:signed", "yes", "yes"),
+                StringMapEntryAdd("sidewalk:right:oneway:bicycle", "no")
+            ),
+            cycleway(
+                null,
+                SIDEWALK_OK to BOTH
+            ).appliedTo(mapOf(
+                "cycleway:right" to "no",
+                "sidewalk:right:bicycle" to "yes",
+                "sidewalk:right:bicycle:signed" to "yes"
+            ))
+        )
     }
 }
 

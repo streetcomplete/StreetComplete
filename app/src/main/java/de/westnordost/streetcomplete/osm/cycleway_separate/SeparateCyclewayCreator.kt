@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun SeparateCycleway.applyTo(tags: Tags) {
     val isCycleway = tags["highway"] == "cycleway"
+    val isFootway = tags["highway"] == "footway"
 
     // tag bicycle=*, foot=* and retag highway=* if necessary
     when (this) {
@@ -54,8 +55,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             if (!isCycleway || tags.containsKey("bicycle")) {
                 tags["bicycle"] = "designated"
             }
-            // do not retag highway=cycleway + foot=yes
-            if ((isCycleway || tags.containsKey("foot")) && tags["foot"] !in yesButNotDesignated) {
+            if (!isFootway || tags.containsKey("foot")) {
                 tags["foot"] = "designated"
             }
         }
@@ -66,7 +66,7 @@ fun SeparateCycleway.applyTo(tags: Tags) {
             // if bicycle:signed is explicitly no, set it to yes
             if (tags["bicycle:signed"] == "no") tags["bicycle:signed"] = "yes"
             if (this == EXCLUSIVE) {
-                tags["foot"] = "no"
+                if (tags["foot"] == "designated") tags.remove("foot")
             } else {
                 // follow the same pattern as for roads here: It is uncommon for roads to have foot
                 // tagged at all when such roads have sidewalks

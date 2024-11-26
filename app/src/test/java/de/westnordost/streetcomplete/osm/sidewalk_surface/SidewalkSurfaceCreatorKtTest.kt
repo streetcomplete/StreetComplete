@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDe
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.surface.Surface.*
-import de.westnordost.streetcomplete.osm.surface.SurfaceAndNote
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -18,7 +17,7 @@ internal class SidewalkSurfaceCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk:both:surface", "asphalt")
             ),
-            LeftAndRightSidewalkSurface(SurfaceAndNote(ASPHALT), SurfaceAndNote(ASPHALT)).appliedTo(
+            LeftAndRightSidewalkSurface(ASPHALT, ASPHALT).appliedTo(
                 mapOf()
             ),
         )
@@ -30,22 +29,9 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryAdd("sidewalk:left:surface", "asphalt"),
                 StringMapEntryAdd("sidewalk:right:surface", "paving_stones")
             ),
-            LeftAndRightSidewalkSurface(SurfaceAndNote(ASPHALT), SurfaceAndNote(PAVING_STONES)).appliedTo(
+            LeftAndRightSidewalkSurface(ASPHALT, PAVING_STONES).appliedTo(
                 mapOf()
             ),
-        )
-    }
-
-    @Test fun `apply generic surface on both sides`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("sidewalk:both:surface", "paved"),
-                StringMapEntryAdd("sidewalk:both:surface:note", "note")
-            ),
-            LeftAndRightSidewalkSurface(
-                SurfaceAndNote(PAVED, "note"),
-                SurfaceAndNote(PAVED, "note")
-            ).appliedTo(mapOf())
         )
     }
 
@@ -55,7 +41,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "asphalt"),
                 StringMapEntryModify("check_date:sidewalk:surface", "2000-10-10", nowAsCheckDateString()),
             ),
-            LeftAndRightSidewalkSurface(SurfaceAndNote(ASPHALT), SurfaceAndNote(ASPHALT)).appliedTo(mapOf(
+            LeftAndRightSidewalkSurface(ASPHALT, ASPHALT).appliedTo(mapOf(
                 "sidewalk:both:surface" to "asphalt",
                 "check_date:sidewalk:surface" to "2000-10-10"
             ))
@@ -69,7 +55,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:right:surface", "paving_stones"),
                 StringMapEntryAdd("sidewalk:both:surface", "concrete")
             ),
-            LeftAndRightSidewalkSurface(SurfaceAndNote(CONCRETE), SurfaceAndNote(CONCRETE)).appliedTo(mapOf(
+            LeftAndRightSidewalkSurface(CONCRETE, CONCRETE).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "paving_stones"
             ))
@@ -82,7 +68,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryModify("sidewalk:left:surface", "asphalt", "concrete"),
                 StringMapEntryModify("sidewalk:right:surface", "paving_stones", "gravel"),
             ),
-            LeftAndRightSidewalkSurface(SurfaceAndNote(CONCRETE), SurfaceAndNote(GRAVEL)).appliedTo(mapOf(
+            LeftAndRightSidewalkSurface(CONCRETE, GRAVEL).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "paving_stones"
             ))
@@ -95,7 +81,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:both:smoothness", "excellent"),
                 StringMapEntryModify("sidewalk:both:surface", "asphalt", "paving_stones")
             ),
-            LeftAndRightSidewalkSurface(SurfaceAndNote(PAVING_STONES), SurfaceAndNote(PAVING_STONES)).appliedTo(mapOf(
+            LeftAndRightSidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
                 "sidewalk:both:surface" to "asphalt",
                 "sidewalk:both:smoothness" to "excellent"
             ))
@@ -111,7 +97,7 @@ internal class SidewalkSurfaceCreatorKtTest {
                 StringMapEntryDelete("sidewalk:right:smoothness", "good"),
                 StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
             ),
-            LeftAndRightSidewalkSurface(SurfaceAndNote(PAVING_STONES), SurfaceAndNote(PAVING_STONES)).appliedTo(mapOf(
+            LeftAndRightSidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
                 "sidewalk:left:surface" to "asphalt",
                 "sidewalk:right:surface" to "concrete",
                 "sidewalk:left:smoothness" to "excellent",
@@ -125,7 +111,7 @@ internal class SidewalkSurfaceCreatorKtTest {
             setOf(
                 StringMapEntryAdd("sidewalk:both:surface", "paving_stones")
             ),
-            LeftAndRightSidewalkSurface(SurfaceAndNote(PAVING_STONES), SurfaceAndNote(PAVING_STONES)).appliedTo(mapOf(
+            LeftAndRightSidewalkSurface(PAVING_STONES, PAVING_STONES).appliedTo(mapOf(
                 "sidewalk" to "both",
                 "surface" to "concrete",
                 "smoothness" to "excellent",

@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddClothingBinOperator : OsmElementQuestType<String> {
+class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
 
     /* not the complete filter, see below: we want to filter out additionally all elements that
        contain any recycling:* = yes that is not shoes or clothes but this can not be expressed
@@ -50,7 +50,14 @@ class AddClothingBinOperator : OsmElementQuestType<String> {
 
     override fun createForm() = AddClothingBinOperatorForm()
 
-    override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["operator"] = answer
+    override fun applyAnswerTo(answer: ClothingBinOperatorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is ClothingBinOperator -> {
+                tags["operator"] = answer.name
+            }
+            is NoClothingBinOperatorSigned -> {
+                tags["operator:signed"] = "no"
+            }
+        }
     }
 }

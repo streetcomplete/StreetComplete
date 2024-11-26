@@ -16,13 +16,14 @@ import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.util.getNameLabel
+import de.westnordost.streetcomplete.view.presetIconIndex
 
 class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
     override val title = R.string.overlay_places
     override val icon = R.drawable.ic_quest_shop
     override val changesetComment = "Survey shops, places etc."
-    override val wikiLink = null
+    override val wikiLink = "StreetComplete/Overlays#Places"
     override val achievements = listOf(EditTypeAchievement.CITIZEN)
     override val hidesQuestTypes = setOf(
         AddPlaceName::class.simpleName!!,
@@ -31,11 +32,6 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
     )
     override val isCreateNodeEnabled = true
 
-    override val sceneUpdates = listOf(
-        "layers.buildings.draw.buildings-style.extrude" to "false",
-        "layers.buildings.draw.buildings-outline-style.extrude" to "false"
-    )
-
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData
             .asSequence()
@@ -43,7 +39,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
             .map { element ->
                 val feature = getFeature(element)
 
-                val icon = "ic_preset_" + (feature?.icon ?: "maki-shop").replace('-', '_')
+                val icon = feature?.icon?.let { presetIconIndex[it] } ?: R.drawable.ic_preset_maki_shop
                 val label = getNameLabel(element.tags)
 
                 val style = if (element is Node) {

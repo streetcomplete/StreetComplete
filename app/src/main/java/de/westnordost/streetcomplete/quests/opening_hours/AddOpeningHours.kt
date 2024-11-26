@@ -82,12 +82,14 @@ class AddOpeningHours(
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
-                "association", "ngo", "it", "accountant"
+                "association", "ngo", "it", "accountant", "property_management",
             ),
             "craft" to arrayOf(
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-                "electronics_repair", "key_cutter", "stonemason"
+                "electronics_repair", "key_cutter", "stonemason", "bookbinder",
+                "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+                "locksmith",  "window_construction",
             ),
             "healthcare" to arrayOf(
                 // common

@@ -6,6 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
+import android.os.Build
+import android.view.Display
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
@@ -29,13 +32,22 @@ fun Context.hasPermission(permission: String): Boolean =
 val Context.isLocationEnabled: Boolean get() = LocationManagerCompat.isLocationEnabled(locationManager)
 val Context.hasLocationPermission: Boolean get() = hasPermission(ACCESS_FINE_LOCATION)
 
+val Context.isLocationAvailable: Boolean get() = hasLocationPermission && isLocationEnabled
+
 private val Context.locationManager get() = getSystemService<LocationManager>()!!
 
-fun Context.sendEmail(email: String, subject: String, text: String? = null) {
+val Context.currentDisplay: Display get() =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        display!!
+    } else {
+        getSystemService<WindowManager>()!!.defaultDisplay
+    }
+
+fun Context.sendEmail(to: String, subject: String, text: String? = null) {
     val intent = Intent(Intent.ACTION_SENDTO).apply {
         data = "mailto:".toUri()
-        putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
-        putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " " + subject)
+        putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
+        putExtra(Intent.EXTRA_SUBJECT, subject)
         if (text != null) {
             putExtra(Intent.EXTRA_TEXT, text)
         }
@@ -47,6 +59,12 @@ fun Context.sendEmail(email: String, subject: String, text: String? = null) {
         toast(R.string.no_email_client)
     }
 }
+
+fun Context.sendErrorReportEmail(errorReport: String) = sendEmail(
+    to = ApplicationConstants.ERROR_REPORTS_EMAIL,
+    subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
+    text = "Describe how to reproduce it here:\n\n\n\n$errorReport"
+)
 
 fun Context.openUri(uri: String): Boolean =
     try {

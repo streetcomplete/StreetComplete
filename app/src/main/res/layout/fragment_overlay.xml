@@ -4,29 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:background="#999">
 
-    <RelativeLayout
-        android:id="@+id/createMarker"
+    <include layout="@layout/view_pin"
+        android:id="@+id/pin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="16dp"
-            app:srcCompat="@drawable/pin"
-            tools:ignore="RtlHardcoded,RtlSymmetry"/>
-
-        <ImageView
-            android:id="@+id/createMarkerIconView"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="7dp"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/ic_quest_create_note" />
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"/>
 
     <de.westnordost.streetcomplete.view.SlidingRelativeLayout
         android:layout_alignParentLeft="true"
@@ -36,6 +20,51 @@
         android:id="@+id/bottomSheetContainer"
         tools:ignore="RtlHardcoded">
 
+        <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
+            android:id="@+id/speechbubbleNoteContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/speech_bubble_none"
+            android:layout_above="@id/speechbubbleContentContainer"
+            android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
+            android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
+            android:layout_marginBottom="4dp"
+            android:showDividers="middle"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:divider="@drawable/space_16dp"
+            android:elevation="@dimen/speech_bubble_elevation"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/noteArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:id="@+id/titleNoteLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.TitleMedium"
+                    android:text="@string/note_for_object" />
+
+                <TextView
+                    android:id="@+id/noteLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Body"
+                    android:textStyle="italic"
+                    android:textColor="@color/hint_text"
+                    android:autoLink="web"
+                    android:textIsSelectable="true" />
+
+            </LinearLayout>
+
+        </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
 
         <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
             android:id="@+id/titleHintLabelContainer"

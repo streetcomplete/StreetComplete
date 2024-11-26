@@ -46,23 +46,30 @@ data class DeletePoiNodeAction(
             throw ConflictException("Element geometry changed substantially")
         }
 
-        val isInWayOrRelation =
-            mapDataRepository.getWaysForNode(currentNode.id).isNotEmpty()
-            || mapDataRepository.getRelationsForNode(currentNode.id).isNotEmpty()
+        val isInWay = mapDataRepository.getWaysForNode(currentNode.id).isNotEmpty()
+        val isInRelation = mapDataRepository.getRelationsForNode(currentNode.id).isNotEmpty()
 
-        return if (!isInWayOrRelation) {
-            // delete free-floating node
-            MapDataChanges(deletions = listOf(currentNode))
-        } else {
-            // if it is a vertex in a way or has a role in a relation: just clear the tags then
+        // if it is a vertex in a way or has a role in a relation: clear the tags
+        return if (isInWay || isInRelation) {
+            // for relations specifically, we want to add a marker, because maybe it should be
+            // deleted fully or at least deleted from the relation if it doesn't fulfill a role
             val emptyNode = currentNode.copy(
-                tags = emptyMap(),
+                tags =
+                    if (!isInRelation) emptyMap()
+                    else mapOf("fixme" to FIXME_DELETED_NODE_IN_RELATION_TEXT),
                 timestampEdited = nowAsEpochMilliseconds()
             )
             MapDataChanges(modifications = listOf(emptyNode))
+        }
+        // otherwise, can safely delete the free-floating node
+        else {
+            MapDataChanges(deletions = listOf(currentNode))
         }
     }
 
     override fun createReverted(idProvider: ElementIdProvider) =
         RevertDeletePoiNodeAction(originalNode)
 }
+
+private const val FIXME_DELETED_NODE_IN_RELATION_TEXT =
+    "object not found on a survey, check if it should be deleted or deleted from the relation"

@@ -41,6 +41,7 @@ class AddStepCountStile : OsmElementQuestType<Int> {
     override val wikiLink = "Key:step_count"
     override val icon = R.drawable.ic_quest_steps_count_brown
     override val achievements = listOf(OUTDOORS)
+    override val isDeleteElementEnabled = true
 
     override val hint = R.string.quest_step_count_stile_hint
 

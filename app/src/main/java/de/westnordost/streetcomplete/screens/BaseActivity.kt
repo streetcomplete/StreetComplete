@@ -37,6 +37,17 @@ open class BaseActivity : AppCompatActivity {
         super.attachBaseContext(newBase)
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        // this is called for example on screen rotate. It (sometimes?) overwrites the previously
+        // set locale with the system default locale.
+        val locale = locale
+        if (locale != null) {
+            val locales = getSystemLocales().addedToFront(locale)
+            newConfig.setLocales(locales)
+        }
+        super.onConfigurationChanged(newConfig)
+    }
+
     override fun onRestart() {
         super.onRestart()
         // force restart if the locale changed while the activity was in background

@@ -13,20 +13,16 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.screens.main.map.VectorTileProvider
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.tryParseHtml
-import de.westnordost.streetcomplete.util.ktx.openUri
 
 /** Shows the privacy statement */
 @Composable
 fun PrivacyStatementScreen(
-    vectorTileProvider: VectorTileProvider,
     onClickBack: () -> Unit
 ) {
     Column(Modifier.fillMaxSize()) {
@@ -35,20 +31,17 @@ fun PrivacyStatementScreen(
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
         SelectionContainer {
-            val context = LocalContext.current
             HtmlText(
                 html =
                     tryParseHtml(stringResource(R.string.privacy_html)) +
-                    tryParseHtml(stringResource(R.string.privacy_html_tileserver2, vectorTileProvider.title, vectorTileProvider.privacyStatementLink)) +
+                    tryParseHtml(stringResource(R.string.privacy_html_tileserver2, "JawgMaps", "https://www.jawg.io/en/confidentiality/")) +
                     tryParseHtml(stringResource(R.string.privacy_html_statistics)) +
-                    tryParseHtml(stringResource(R.string.privacy_html_third_party_quest_sources)) +
                     tryParseHtml(stringResource(R.string.privacy_html_image_upload2)),
                 modifier = Modifier
                     .fillMaxWidth()
                     .verticalScroll(rememberScrollState())
                     .padding(16.dp),
                 style = MaterialTheme.typography.body2,
-                onClickLink = { context.openUri(it) }
             )
         }
     }

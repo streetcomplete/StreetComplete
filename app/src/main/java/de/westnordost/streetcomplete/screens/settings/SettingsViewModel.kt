@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings
 
 import android.content.res.Resources
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.R
@@ -26,6 +27,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+@Stable
 abstract class SettingsViewModel : ViewModel() {
     abstract val selectableLanguageCodes: StateFlow<List<String>?>
     abstract val selectedQuestPresetName: StateFlow<String?>
@@ -53,6 +55,7 @@ abstract class SettingsViewModel : ViewModel() {
 
 data class QuestTypeCount(val total: Int, val enabled: Int)
 
+@Stable
 class SettingsViewModelImpl(
     private val prefs: Preferences,
     private val resources: Resources,

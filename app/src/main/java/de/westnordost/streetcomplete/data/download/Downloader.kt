@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.download
 
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesController
 import de.westnordost.streetcomplete.data.download.tiles.TilesRect
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
@@ -8,6 +9,7 @@ import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataDownloader
 import de.westnordost.streetcomplete.data.osmnotes.NotesDownloader
+import de.westnordost.streetcomplete.data.user.UserLoginController
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -26,6 +28,7 @@ class Downloader(
     private val mapDataDownloader: MapDataDownloader,
     private val mapTilesDownloader: MapTilesDownloader,
     private val downloadedTilesController: DownloadedTilesController,
+    private val userLoginController: UserLoginController,
     private val mutex: Mutex
 ) : DownloadProgressSource {
 
@@ -80,6 +83,9 @@ class Downloader(
         } catch (e: Exception) {
             hasError = true
             Log.e(TAG, "Unable to download", e)
+            if (e is AuthorizationException) {
+                userLoginController.logOut()
+            }
             listeners.forEach { it.onError(e) }
             throw e
         } finally {

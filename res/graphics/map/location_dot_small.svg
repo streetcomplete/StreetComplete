@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ <g stroke-linejoin="round">
+  <circle cx="12" cy="12" r="8" fill="#536dfe" stroke="#fff" stroke-width="2"/>
+  <circle cx="12" cy="12" r="9.5" fill="none" stroke="#ddd"/>
+ </g>
+</svg>

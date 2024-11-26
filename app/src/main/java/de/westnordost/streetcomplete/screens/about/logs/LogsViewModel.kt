@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.about.logs
 
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.logs.LogMessage
@@ -21,6 +22,7 @@ import kotlinx.coroutines.plus
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 
+@Stable
 abstract class LogsViewModel : ViewModel() {
     abstract val filters: StateFlow<LogsFilters>
     abstract val logs: StateFlow<List<LogMessage>>
@@ -28,6 +30,7 @@ abstract class LogsViewModel : ViewModel() {
     abstract fun setFilters(filters: LogsFilters)
 }
 
+@Stable
 class LogsViewModelImpl(
     private val logsController: LogsController,
 ) : LogsViewModel() {

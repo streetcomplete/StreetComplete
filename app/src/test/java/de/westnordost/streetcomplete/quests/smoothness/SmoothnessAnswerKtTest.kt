@@ -60,7 +60,8 @@ class SmoothnessAnswerKtTest {
                 StringMapEntryDelete("smoothness:date", "2000-10-10"),
                 StringMapEntryDelete("surface", "asphalt"),
                 StringMapEntryDelete("surface:grade", "3"),
-                StringMapEntryDelete("check_date:smoothness", "2000-10-10")
+                StringMapEntryDelete("check_date:smoothness", "2000-10-10"),
+                StringMapEntryDelete("paving_stones:length", "30"),
             ),
             WrongSurfaceAnswer.appliedTo(mapOf(
                 "smoothness" to "excellent",
@@ -68,6 +69,7 @@ class SmoothnessAnswerKtTest {
                 "surface" to "asphalt",
                 "surface:grade" to "3",
                 "check_date:smoothness" to "2000-10-10",
+                "paving_stones:length" to "30"
             ))
         )
     }

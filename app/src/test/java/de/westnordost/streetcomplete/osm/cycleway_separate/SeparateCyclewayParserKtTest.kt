@@ -42,11 +42,8 @@ class SeparateCyclewayParserKtTest {
     }
 
     @Test fun `parse cyclists on non-segregated path`() {
-        assertEquals(NON_SEGREGATED, parse("highway" to "path", "bicycle" to "designated", "segregated" to "no"))
         assertEquals(NON_SEGREGATED, parse("highway" to "footway", "bicycle" to "designated", "segregated" to "no"))
-        assertEquals(NON_SEGREGATED, parse("highway" to "cycleway", "segregated" to "no", "foot" to "yes"))
         assertEquals(NON_SEGREGATED, parse("highway" to "cycleway", "segregated" to "no", "foot" to "designated"))
-        assertEquals(NON_SEGREGATED, parse("highway" to "cycleway", "bicycle" to "designated", "segregated" to "no", "foot" to "yes"))
     }
 
     @Test fun `parse cyclists on segregated path`() {
@@ -67,6 +64,11 @@ class SeparateCyclewayParserKtTest {
 
         assertEquals(EXCLUSIVE, parse("highway" to "cycleway", "sidewalk" to "separate"))
         assertEquals(EXCLUSIVE, parse("highway" to "cycleway", "sidewalk" to "no"))
+
+        // #5991
+        assertEquals(EXCLUSIVE, parse("highway" to "path", "bicycle" to "designated", "segregated" to "no"))
+        assertEquals(EXCLUSIVE, parse("highway" to "cycleway", "segregated" to "no", "foot" to "yes"))
+        assertEquals(EXCLUSIVE, parse("highway" to "cycleway", "bicycle" to "designated", "segregated" to "no", "foot" to "yes"))
     }
 
     @Test fun `parse cycleway with sidewalk`() {

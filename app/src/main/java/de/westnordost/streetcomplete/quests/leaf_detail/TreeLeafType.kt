@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
-enum class TreeLeafType(val osmValue: String) {
+sealed interface TreeLeafTypeAnswer
+
+enum class TreeLeafType(val osmValue: String) : TreeLeafTypeAnswer {
     NEEDLELEAVED("needleleaved"),
     BROADLEAVED("broadleaved"),
 }
+
+data object NotTreeButStump : TreeLeafTypeAnswer

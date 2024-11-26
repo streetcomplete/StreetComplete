@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.user.profile
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
@@ -18,6 +19,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.datetime.LocalDate
 import java.io.File
 
+@Stable
 abstract class ProfileViewModel : ViewModel() {
     abstract val userName: StateFlow<String?>
     abstract val userAvatarFile: StateFlow<File>
@@ -44,6 +46,7 @@ abstract class ProfileViewModel : ViewModel() {
 @Immutable
 data class DatesActiveInRange(val datesActive: List<LocalDate>, val range: Int)
 
+@Stable
 class ProfileViewModelImpl(
     private val userDataSource: UserDataSource,
     private val userLoginController: UserLoginController,

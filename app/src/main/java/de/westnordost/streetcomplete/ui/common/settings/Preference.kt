@@ -22,6 +22,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -82,7 +83,10 @@ fun Preference(
             )
             if (value != null) {
                 CompositionLocalProvider(
-                    LocalTextStyle provides LocalTextStyle.current.copy(textAlign = TextAlign.End),
+                    LocalTextStyle provides LocalTextStyle.current.copy(
+                        textAlign = TextAlign.End,
+                        hyphens = Hyphens.Auto
+                    ),
                     LocalContentAlpha provides ContentAlpha.medium
                 ) {
                     Row(
