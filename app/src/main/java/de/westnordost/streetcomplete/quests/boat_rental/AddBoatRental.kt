@@ -18,7 +18,7 @@ class AddBoatRental : OsmFilterQuestType<List<BoatRental>>() {
     """
     override val changesetComment = "Specify boat types for rental"
     override val wikiLink = "Tag:amenity=boat_rental"
-    override val icon = R.drawable.ic_quest_boat_rental
+    override val icon = R.drawable.ic_quest_boat
     override val achievements = listOf(OUTDOORS, RARE)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_boat_rental_title

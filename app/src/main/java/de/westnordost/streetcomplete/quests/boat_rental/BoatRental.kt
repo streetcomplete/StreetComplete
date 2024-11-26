@@ -6,7 +6,7 @@ enum class BoatRental(val osmValue: String) {
     KAYAK("kayak_rental"),
     PEDALBOAT("pedalboat_rental"),
     MOTORBOAT("motorboat_rental"),
-    PADDLEBOARD("standup_paddleboard_rental"),
+    SUP("standup_paddleboard_rental"),
     SAILBOAT("sailboat_rental"),
     JETSKI("jetski_rental"),
     HOUSEBOAT("houseboat_rental"),
