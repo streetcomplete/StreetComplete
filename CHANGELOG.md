@@ -20,9 +20,9 @@ Also, added Estonian language by Priit Jõerüüt
 - Other small improvements (#6015, #6002, #5996, #6021 ...)
 
 ### Fixes
--
+
 - Cycleway: Fix selecting "unspecified lane" didn't do anything in edge cases (#5988)
-- Cycleway: Don't assume a default pedestrian access on bike paths (cause that depends on legislation) (#5991)
+- Cycleway: Don't assume a default pedestrian access on bike paths (because that depends on legislation) (#5991)
 - Max vehicle height: Fix wasn't shown below roofs (#5912, #5915), thanks @RubenKelevra
 - Fix app sometimes went back to system default locale on screen rotate (#5942)
 
