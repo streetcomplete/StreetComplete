@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.building_levels
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -23,8 +22,8 @@ import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.R
 
 @Composable
-fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?, position: Int,onClick: (position: Int) -> Unit){
-    Row(modifier = Modifier.padding(5.dp)) {
+fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?,modifier: Modifier = Modifier){
+    Row(modifier = modifier.padding(5.dp)) {
         Row(modifier = Modifier
             .height(52.dp)
             .wrapContentWidth()
@@ -32,7 +31,7 @@ fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?, position: Int
             .clip(RoundedCornerShape(3.dp))
             .background(Color.LightGray)
             .padding(3.dp)
-            .clickable { onClick(position) }, verticalAlignment = Alignment.CenterVertically) {
+            , verticalAlignment = Alignment.CenterVertically) {
             Text(
                 text = lastLevels.toString(),
                 fontSize = 14.sp,
@@ -58,5 +57,5 @@ fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?, position: Int
     name = "Add Building Levels Button"
 )
 fun PreviewAddBuildingLevelsButton(){
-    AddBuildingLevelsButton(3,1,2) { }
+    AddBuildingLevelsButton(3,1)
 }

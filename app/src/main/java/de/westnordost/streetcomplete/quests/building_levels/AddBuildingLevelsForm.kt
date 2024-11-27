@@ -2,20 +2,166 @@ package de.westnordost.streetcomplete.quests.building_levels
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.material.MaterialTheme
-import androidx.compose.ui.platform.ComposeView
-import androidx.core.widget.doAfterTextChanged
-import androidx.recyclerview.widget.RecyclerView
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.QuestBuildingLevelsBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.ktx.intOrNull
 import de.westnordost.streetcomplete.util.takeFavourites
 import org.koin.android.ext.android.inject
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.core.text.isDigitsOnly
+import de.westnordost.streetcomplete.util.ktx.conditional
+
+@Composable
+fun AddBuildingLevelsFormControl(
+    regularLevels: MutableState<String>,
+    roofLevels: MutableState<String>,
+    modifier: Modifier = Modifier,
+    buildingLevels: List<BuildingLevelsAnswer> = listOf(),
+    onFormChanged: () -> Unit = {},
+) {
+    val focusRequester = remember { FocusRequester() }
+
+    Box(modifier = modifier) {
+        Column {
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier
+                    .padding(3.dp)
+                    .weight(1f)) {
+                    Text(
+                        stringResource(R.string.quest_buildingLevels_levelsLabel2),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Normal,
+                        modifier = Modifier.padding(0.dp, 12.dp)
+                    )
+                    TextField(
+                        regularLevels.value,
+                        onValueChange = {
+                            regularLevels.value = it
+                            onFormChanged()
+                        },
+                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                        modifier = Modifier
+                            .padding(vertical = 9.dp)
+                            .conditional(regularLevels.value == "") { focusRequester(focusRequester) }
+                            .conditional(!regularLevels.value.isDigitsOnly()) { border(2.dp, color = Color.Red)},
+                        textStyle = LocalTextStyle.current.copy(
+                            textAlign = TextAlign.Start,
+                            fontSize = 20.sp
+                        ),
+
+                        )
+                }
+                Image(
+                    painter = painterResource(R.drawable.building_levels_illustration),
+                    contentDescription = "Illustration for building Levels",
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier
+                        .defaultMinSize()
+                        .width(239.dp)
+                        .weight(2f)
+                        .padding(3.dp)
+                )
+                Column(modifier = Modifier
+                    .padding(3.dp)
+                    .weight(1f)) {
+                    TextField(
+                        roofLevels.value, onValueChange = {
+                            roofLevels.value = it
+                            onFormChanged()
+                        },
+                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                        modifier = Modifier
+                            .padding(0.dp, 12.dp)
+                            .align(Alignment.CenterHorizontally)
+                            .conditional(regularLevels.value != "") { focusRequester(focusRequester) }
+                            .conditional(!roofLevels.value.isDigitsOnly()) { border(2.dp, color = Color.Red)},
+                        textStyle = LocalTextStyle.current.copy(
+                            textAlign = TextAlign.Start,
+                            fontSize = 20.sp
+                        )
+                    )
+                    Text(
+                        text = stringResource(R.string.quest_buildingLevels_roofLevelsLabel2),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Normal,
+                        modifier = Modifier.padding(0.dp, 12.dp)
+                    )
+                }
+            }
+            LazyRow(modifier = Modifier.defaultMinSize(minHeight = 52.dp)) {
+                items(buildingLevels.size) { position ->
+                    val curLevel = buildingLevels[position]
+                    AddBuildingLevelsButton(
+                        curLevel.levels,
+                        curLevel.roofLevels,
+                        modifier = Modifier.clickable(onClick = {
+                            regularLevels.value = curLevel.levels.toString()
+                            roofLevels.value = curLevel.roofLevels.toString()
+                            onFormChanged()
+
+                        })
+                    )
+                }
+            }
+        }
+    }
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
+}
+
+@Composable
+@Preview(showBackground = true, name = "Add Building Levels Form Component")
+fun PreviewAddBuildingLevelsFormControl() {
+    var regularLevels = remember { mutableStateOf("55") }
+    var roofLevels = remember { mutableStateOf("55") }
+    AddBuildingLevelsFormControl(
+        regularLevels,
+        roofLevels,
+        buildingLevels = listOf(
+            BuildingLevelsAnswer(5, 2),
+            BuildingLevelsAnswer(4, 1),
+            BuildingLevelsAnswer(3, 0)
+        )
+    )
+}
 
 class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
 
@@ -23,18 +169,17 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     private val binding by contentViewBinding(QuestBuildingLevelsBinding::bind)
 
     private val prefs: Preferences by inject()
-
+    private lateinit var regularLevels: MutableState<String>
+    private lateinit var roofLevels: MutableState<String>
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
 
-    private val levels get() = binding.levelsInput.intOrNull?.takeIf { it >= 0 }
-    private val roofLevels get() = binding.roofLevelsInput.intOrNull?.takeIf { it >= 0 }
-
     private val lastPickedAnswers by lazy {
         prefs.getLastPicked(this::class.simpleName!!)
             .map { value ->
-                value.split("#").let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
+                value.split("#")
+                    .let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
             }
             .takeFavourites(n = 5, history = 15, first = 1)
             .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
@@ -42,80 +187,45 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (savedInstanceState == null) {
-            binding.levelsInput.setText(element.tags["building:levels"])
-            binding.roofLevelsInput.setText(element.tags["roof:levels"])
+        binding.questBuildingLevelsBase.setContent {
+            regularLevels = rememberSaveable { mutableStateOf("") }
+            roofLevels = rememberSaveable { mutableStateOf("") }
+            AddBuildingLevelsFormControl(
+                regularLevels,
+                roofLevels,
+                onFormChanged = { checkIsFormComplete() },
+                buildingLevels = lastPickedAnswers
+            )
         }
-        val focusedInput = if (levels == null) binding.levelsInput else binding.roofLevelsInput
-        focusedInput.requestFocus()
-        focusedInput.selectAll()
-
-        binding.levelsInput.doAfterTextChanged { checkIsFormComplete() }
-        binding.roofLevelsInput.doAfterTextChanged { checkIsFormComplete() }
-
-        binding.lastPickedButtons.adapter = LastPickedAdapter(lastPickedAnswers, ::onLastPickedButtonClicked)
-    }
-
-    private fun onLastPickedButtonClicked(position: Int) {
-        val buildingLevelsAnswer = lastPickedAnswers[position]
-        binding.levelsInput.setText(buildingLevelsAnswer.levels.toString())
-        binding.roofLevelsInput.setText(buildingLevelsAnswer.roofLevels?.toString() ?: "")
     }
 
     override fun onClickOk() {
-        val answer = BuildingLevelsAnswer(levels!!, roofLevels)
-        prefs.addLastPicked(this::class.simpleName!!, listOfNotNull(levels, roofLevels).joinToString("#"))
+        val answer = BuildingLevelsAnswer(
+            regularLevels.value.toInt(),
+            if (roofLevels.value != "") roofLevels.value.toInt() else null
+        )
+        prefs.addLastPicked(
+            this::class.simpleName!!,
+            listOfNotNull(answer.levels, answer.roofLevels).joinToString("#")
+        )
         applyAnswer(answer)
     }
 
     private fun showMultipleLevelsHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_buildingLevels_answer_description)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_buildingLevels_answer_description)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
     }
 
     override fun isFormComplete(): Boolean {
-        val hasNonFlatRoofShape = element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
+        val hasNonFlatRoofShape =
+            element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
         val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
-        return levels != null && (roofLevelsAreOptional || roofLevels != null)
+        val levels = regularLevels.value
+        return levels != "" && levels.isDigitsOnly() && (roofLevelsAreOptional || (roofLevels.value != "" && roofLevels.value.isDigitsOnly()))
+        return false
     }
-}
-
-private class LastPickedAdapter(
-    private val lastPickedAnswers: List<BuildingLevelsAnswer>,
-    private val onItemClicked: (position: Int) -> Unit
-) : RecyclerView.Adapter<LastPickedAdapter.ViewHolder>() {
-
-    class ViewHolder(
-        private val composeView: ComposeView,
-        private val onItemClicked: (position: Int) -> Unit
-    ) : RecyclerView.ViewHolder(composeView) {
-
-
-        fun onBind(item: BuildingLevelsAnswer, position: Int) {
-            composeView.setContent {
-                MaterialTheme {
-                    AddBuildingLevelsButton(item.levels,item.roofLevels,position,onItemClicked)
-                }
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val composeView = ComposeView(parent.context)
-        composeView.layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
-        )
-        return ViewHolder(composeView, onItemClicked)
-    }
-
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.onBind(lastPickedAnswers[position],position)
-    }
-
-    override fun getItemCount() = lastPickedAnswers.size
 }
