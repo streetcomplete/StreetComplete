@@ -46,7 +46,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.core.text.isDigitsOnly
-import de.westnordost.streetcomplete.util.ktx.conditional
+import de.westnordost.streetcomplete.ui.ktx.conditional
+import de.westnordost.streetcomplete.ui.theme.AppTheme
 
 @Composable
 fun AddBuildingLevelsFormControl(
@@ -152,15 +153,17 @@ fun AddBuildingLevelsFormControl(
 fun PreviewAddBuildingLevelsFormControl() {
     var regularLevels = remember { mutableStateOf("55") }
     var roofLevels = remember { mutableStateOf("55") }
-    AddBuildingLevelsFormControl(
-        regularLevels,
-        roofLevels,
-        buildingLevels = listOf(
-            BuildingLevelsAnswer(5, 2),
-            BuildingLevelsAnswer(4, 1),
-            BuildingLevelsAnswer(3, 0)
+    AppTheme {
+        AddBuildingLevelsFormControl(
+            regularLevels,
+            roofLevels,
+            buildingLevels = listOf(
+                BuildingLevelsAnswer(5, 2),
+                BuildingLevelsAnswer(4, 1),
+                BuildingLevelsAnswer(3, 0)
+            )
         )
-    )
+    }
 }
 
 class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
@@ -190,12 +193,14 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         binding.questBuildingLevelsBase.setContent {
             regularLevels = rememberSaveable { mutableStateOf(if(element.tags["building:levels"]!=null) element.tags["building:levels"].toString() else "") }
             roofLevels = rememberSaveable { mutableStateOf(if(element.tags["roof:levels"]!=null) element.tags["roof:levels"].toString() else "") }
-            AddBuildingLevelsFormControl(
-                regularLevels,
-                roofLevels,
-                onFormChanged = { checkIsFormComplete() },
-                buildingLevels = lastPickedAnswers
-            )
+            AppTheme {
+                AddBuildingLevelsFormControl(
+                    regularLevels,
+                    roofLevels,
+                    onFormChanged = { checkIsFormComplete() },
+                    buildingLevels = lastPickedAnswers
+                )
+            }
         }
     }
 

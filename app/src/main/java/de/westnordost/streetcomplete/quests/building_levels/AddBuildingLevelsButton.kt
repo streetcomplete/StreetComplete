@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ui.theme.AppTheme
 
 @Composable
 fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?,modifier: Modifier = Modifier){
@@ -57,5 +58,7 @@ fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?,modifier: Modi
     name = "Add Building Levels Button"
 )
 fun PreviewAddBuildingLevelsButton(){
-    AddBuildingLevelsButton(3,1)
+    AppTheme {
+        AddBuildingLevelsButton(3, 1)
+    }
 }
