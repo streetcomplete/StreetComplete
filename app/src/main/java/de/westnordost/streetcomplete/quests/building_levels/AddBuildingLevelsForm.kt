@@ -188,8 +188,8 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.questBuildingLevelsBase.setContent {
-            regularLevels = rememberSaveable { mutableStateOf("") }
-            roofLevels = rememberSaveable { mutableStateOf("") }
+            regularLevels = rememberSaveable { mutableStateOf(if(element.tags["building:levels"]!=null) element.tags["building:levels"].toString() else "") }
+            roofLevels = rememberSaveable { mutableStateOf(if(element.tags["roof:levels"]!=null) element.tags["roof:levels"].toString() else "") }
             AddBuildingLevelsFormControl(
                 regularLevels,
                 roofLevels,
@@ -224,8 +224,10 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         val hasNonFlatRoofShape =
             element.tags.containsKey("roof:shape") && element.tags["roof:shape"] != "flat"
         val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
-        val levels = regularLevels.value
-        return levels != "" && levels.isDigitsOnly() && (roofLevelsAreOptional || (roofLevels.value != "" && roofLevels.value.isDigitsOnly()))
+        return regularLevels.value != ""
+            && regularLevels.value.isDigitsOnly()
+            && regularLevels.value.toInt() >= 0
+            && (roofLevelsAreOptional || (roofLevels.value != "" && roofLevels.value.isDigitsOnly() && roofLevels.value.toInt()>=0))
         return false
     }
 }
