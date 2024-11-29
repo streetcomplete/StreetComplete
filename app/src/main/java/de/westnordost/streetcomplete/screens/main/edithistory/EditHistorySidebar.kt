@@ -125,7 +125,7 @@ fun EditHistorySidebar(
             verticalArrangement = Arrangement.Bottom,
             contentPadding = PaddingValues(
                 top = insets.calculateTopPadding(),
-                bottom = insets.calculateBottomPadding() + 32.dp // to align with undo button
+                bottom = insets.calculateBottomPadding() + 24.dp // to align with undo button
             )
         ) {
             items(

@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
@@ -27,18 +28,19 @@ fun MapAttribution(modifier: Modifier = Modifier) {
     var shownLink by remember { mutableStateOf<String?>(null) }
 
     ProvideTextStyle(MaterialTheme.typography.caption) {
-        FlowRow(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
+        FlowRow(modifier = modifier) {
             TextWithHalo(
                 text = stringResource(R.string.map_attribution_osm),
-                modifier = Modifier.clickable { shownLink = "https://www.openstreetmap.org/copyright" },
+                modifier = Modifier
+                    .clickable { shownLink = "https://osm.org/copyright" }
+                    .padding(4.dp),
                 elevation = 4.dp
             )
             TextWithHalo(
                 text = "© JawgMaps",
-                modifier = Modifier.clickable { shownLink = "https://www.jawg.io" },
+                modifier = Modifier
+                    .clickable { shownLink = "https://jawg.io" }
+                    .padding(4.dp),
                 elevation = 4.dp
             )
         }
