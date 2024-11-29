@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
+import android.os.Build
+import android.os.Build.VERSION_CODES
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -54,6 +56,8 @@ fun PointerPinButton(
     rotate: Float = 0f,
     content: @Composable (BoxScope.() -> Unit),
 ) {
+    // workaround for OpenGL issue on Android 6 (see #6001)
+    val elevation = if (Build.VERSION.SDK_INT == VERSION_CODES.M) 0.dp else 4.dp
     val pointerPinShape = remember(rotate) { PointerPinShape(rotate) }
     val a = rotate * PI / 180f
     Surface(
@@ -67,7 +71,7 @@ fun PointerPinButton(
         shape = pointerPinShape,
         color = colors.backgroundColor(enabled).value,
         contentColor = colors.contentColor(enabled).value,
-        elevation = 4.dp
+        elevation = elevation
     ) {
         Box(Modifier
             .proportionalPadding(pointySize)
