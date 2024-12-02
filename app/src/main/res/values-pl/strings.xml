@@ -788,7 +788,7 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę."</string
     <string name="quest_shop_gone_replaced_answer_hint">"Wpisz jaki rodzaj obiektu jest teraz tutaj"</string>
     <string name="quest_shop_vacant_type_title">"Ten sklep został zlikwidowany. Co tu teraz jest?"</string>
     <string name="quest_lanes_answer_lanes_odd2">"Liczba pasów nie jest ta sama po obu stronach"</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">"To zadanie jest domyślnie nieaktywne, ponieważ nie w każdym miejscu jest to  przydatna informacja a odpowiedź jest często niemożliwa bez wejścia do danego miejsca."</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">"To zadanie jest domyślnie nieaktywne, ponieważ nie w każdym miejscu jest to przydatna informacja, a odpowiedź jest często niemożliwa bez wejścia do danego miejsca."</string>
     <string name="quest_dietType_explanation_kosher">"Produkty koszerne są przygotowane według specjalnych zasad, z specjalnym proces certyfikacji potwierdzającego ich zachowanie."</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">"Brak drogi rowerowej"</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">"Jak zazwyczaj, dotknij jednej z stron drogi, wybierz odpowiednią odpowiedź i zrób to samo z drugą stronę.
@@ -998,7 +998,7 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Niektóre duże kamienie, głębokie dziury, wyboje, erozja czy inne niebezpieczne uszkodzenia"</string>
     <string name="quest_smoothness_description_horrible">"Poprawnie użytkowane tylko przez pojazdy terenowe lub na pieszo"</string>
     <string name="quest_smoothness_description_very_horrible">"Poprawnie użytkowane tylko przez specjalistyczne pojazdy terenowe lub na pieszo"</string>
-    <string name="quest_smoothness_description_impassable">"Nie przejezdne przez żaden pojazd, dostępne tylko na pieszo"</string>
+    <string name="quest_smoothness_description_impassable">"Nieprzejezdne dla żadnego pojazdu, dostępne tylko pieszo"</string>
     <string name="quest_smoothness_wrong_surface">"Nawierzchnia jest inna"</string>
     <string name="quest_smoothness_surface_value">"Nawierzchnia została oznaczona jako:"</string>
     <string name="quest_smoothness_obstacle">"Jest tu przeszkoda"</string>
@@ -1010,8 +1010,8 @@ Dane są odświeżane automatycznie po %1$s dniach a nieużyte kasowane automaty
     <string name="quest_fuelSelfService_title">"Czy możesz samodzielnie tankować na tej stacji benzynowej?"</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">"Ten typ zadania jest domyślnie wyłączony, ponieważ jest dość czasochłonny i często trudno dokonać właściwego wyboru. Powinieneś włączyć ten typ zadania tylko wtedy, gdy naprawdę zależy Ci na dodaniu tego typu danych."</string>
     <string name="quest_smoothness_description_good_compacted_gravel">"Ubita, bardzo mało luźnego żwiru lub piasku"</string>
-    <string name="quest_barrier_path_intersection">"W jaki sposób ta ścieżka przekracza barierę tutaj?"</string>
-    <string name="quest_barrier_road_intersection">"W jaki sposób droga przekracza barierę tutaj?"</string>
+    <string name="quest_barrier_path_intersection">"W jaki sposób ścieżka przekracza tutaj barierę?"</string>
+    <string name="quest_barrier_road_intersection">"W jaki sposób droga przekracza tutaj barierę?"</string>
     <string name="quest_sidewalk_value_separate">"pokazane osobno na mapie"</string>
     <string name="no_camera_permission_warning_title">"Dostęp do aparatu"</string>
     <string name="no_camera_permission_warning">"To uprawnienie jest niezbędne do mierzenia odległości aparatem."</string>
@@ -1316,7 +1316,7 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_bbq_fuel_not_a_bbq">"To jest obudowa przeciwpożarowa"</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Obudowy przeciwpożarowe nie mają powierzchni do gotowania (np. rusztu/płyty), w przeciwieństwie do grilli."</string>
     <string name="about_title_logs">"Logi (%1$d)"</string>
-    <string name="about_summary_logs">"do użycia w raportach o błędach"</string>
+    <string name="about_summary_logs">"Do użycia w raportach o błędach."</string>
     <string name="action_filter">"Filtruj"</string>
     <string name="action_share">"Udostępnij logi"</string>
     <string name="about_title_show_logs">"Pokaż logi"</string>
@@ -1405,4 +1405,8 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="quest_cycleway_value_sidewalk_ok_dual">"brak, ale znak pozwala na jazdę rowerem po chodniku w obu kierunkach"</string>
     <string name="quest_surface_value_rubber">"Ziarnista guma"</string>
     <string name="quest_surface_value_acrylic">"Żywica syntetyczna"</string>
+    <string name="action_messages">"Pokaż wiadomości"</string>
+    <string name="action_create_new_poi">"Utwórz nowy"</string>
+    <string name="auth_error">"Błąd autoryzacji. Spróbuj zalogować się ponownie."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Tak naprawdę chodnik jest."</string>
 </resources>

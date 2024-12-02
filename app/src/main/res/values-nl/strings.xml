@@ -1398,4 +1398,8 @@ Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die ni
     <string name="quest_cycleway_value_sidewalk_ok_dual">"geen, maar een bord staat fietsen op het trottoir toe, in beide richtingen"</string>
     <string name="quest_surface_value_rubber">"Rubbergranulaat"</string>
     <string name="quest_surface_value_acrylic">"Kunsthars"</string>
+    <string name="action_messages">"Toon berichten"</string>
+    <string name="action_create_new_poi">"Creër nieuw"</string>
+    <string name="auth_error">"Autorisatie fout. Probeer opnieuw in te loggen. "</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Er is eigenlijk een trotoir."</string>
 </resources>

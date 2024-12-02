@@ -888,7 +888,7 @@ Die Daten werden nach %1$s Tagen aktualisiert und ungenutzte Daten werden nach %
     <string name="quest_buildingType_grandstand">"Tribüne"</string>
     <string name="action_search">"Suche"</string>
     <string name="action_manage_presets">"Voreinstellungen verwalten"</string>
-    <string name="team_mode_team_size_label2">"Wie viele Personen seid ihr? Gebt auf jedem Gerät die gleiche Zahl ein."</string>
+    <string name="team_mode_team_size_label2">"Wie viele Personen seid ihr? Wählt auf jedem Gerät die gleiche Zahl aus."</string>
     <string name="team_mode_choose_color2">"Als nächstes wählt jede Person eine andere Farbe aus. Wähle deine:"</string>
     <string name="link_organic_maps_description">"Karten-App für Reisende, Wanderer und Radfahrer, die offline funktioniert"</string>
     <string name="quest_kerb_height_no">"Gar keine Bordsteine"</string>

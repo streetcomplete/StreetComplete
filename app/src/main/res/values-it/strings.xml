@@ -277,7 +277,7 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="produce_brazil_nuts">"Noci brasiliane"</string>
     <string name="produce_tung_nuts">"Noci tung"</string>
     <string name="quest_parkingType_title">"Che tipo di parcheggio è questo?"</string>
-    <string name="quest_parkingType_surface">"Normale"</string>
+    <string name="quest_parkingType_surface">"Superficie"</string>
     <string name="quest_parkingType_underground">"Garage sotterraneo"</string>
     <string name="quest_parkingType_multiStorage">"Multi-piano"</string>
     <string name="quest_powerPolesMaterial_title">"Di che materiale è fatto questo palo?"</string>
@@ -1359,7 +1359,7 @@ Troverai le informazioni sulle donazioni sul nostro sito o sulla home del proget
     <string name="quest_moped_access_allowed">"Non c'è alcun cartello"</string>
     <string name="quest_moped_access_designated">"C'è un cartello che indica questo percorso ciclabile per i ciclomotori"</string>
     <string name="quest_moped_access_forbidden">"C'è un cartello che vieta i ciclomotori"</string>
-    <string name="default_disabled_msg_visible_sign_moped">"Questo tipo di ricerca è disattivato per impostazione predefinita, perché l'accesso dei ciclomotori è indicato solo da una specifica segnaletica all'inizio e alla fine di una pista ciclabile."</string>
+    <string name="default_disabled_msg_visible_sign_moped">"Questa missione è disattivata per impostazione predefinita, perché l'accesso dei ciclomotori è indicato solo da una specifica segnaletica all'inizio e alla fine di una pista ciclabile."</string>
     <string name="quest_arrow_tutorial">"La freccia nell'immagine indica la direzione verso cui corre la strada sulla mappa. Prova a ruotare la mappa e capirai."</string>
     <string name="info">"Maggiori informazioni"</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"È proibito."</string>
@@ -1396,4 +1396,14 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="user_statistics_country_rank2">"Posizione in %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"È solo un ceppo d'albero"</string>
     <string name="quest_board_name_title">"Qual è il titolo di questo pannello informativo?"</string>
+    <string name="quest_crossing_hint">"Un percorso informale che attraversa la strada"</string>
+    <string name="note_for_object">"Un altra persona ha segnalato:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Anelli con supporto per ruota e telaio"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"nessuna, ma I cartelli permettono le bici sul marciapiede, entrambe le direzioni"</string>
+    <string name="quest_surface_value_rubber">"Granulato di gomma"</string>
+    <string name="quest_surface_value_acrylic">"Resina sintetica"</string>
+    <string name="action_messages">"Mostra messaggi"</string>
+    <string name="action_create_new_poi">"Crea nuovo"</string>
+    <string name="auth_error">"Errore di autorizzazione. Ritenta l'accesso."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Esiste un marciapiede."</string>
 </resources>

@@ -504,8 +504,8 @@ U suprotnom možete preuzeti drugu tipkovnicu u trgovini aplikacija. Popularne t
     <string name="label_housenumber">"kućni broj"</string>
     <string name="label_blocknumber">"broj bloka"</string>
     <string name="quest_busStopShelter_covered">"Cijela stanica je natkrivena"</string>
-    <string name="quest_ferry_pedestrian_title">"Prevozi li ova trajektna ruta pješake?"</string>
-    <string name="quest_ferry_motor_vehicle_title">"Prevozi li ova trajektna ruta motorna vozila?"</string>
+    <string name="quest_ferry_pedestrian_title">"Prevozi li ova brodska linija ruta pješake?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Prevozi li ova trajektna linija motorna vozila?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Dodavanjem fotografije bilješka će biti puno korisnija."</string>
     <string name="create_new_note_hint">"Bilješku najbolje napišite na lokalnom jeziku, ili na engleskom ako ne pričate lokalni jezik."</string>
     <string name="quest_leafType_title">"Ima li ovdje drveće iglice ili lišće?"</string>

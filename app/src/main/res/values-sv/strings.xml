@@ -1407,4 +1407,8 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_cycleway_value_sidewalk_ok_dual">"ingen, men en skylt tillåter cykling på trottoaren, båda riktningarna"</string>
     <string name="quest_surface_value_rubber">"Gummigranulat"</string>
     <string name="quest_surface_value_acrylic">"Akryl"</string>
+    <string name="action_messages">"Visa meddelanden"</string>
+    <string name="action_create_new_poi">"Skapa ny"</string>
+    <string name="auth_error">"Inloggningsfel. Försök igen."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Det finns faktiskt en trottoar."</string>
 </resources>

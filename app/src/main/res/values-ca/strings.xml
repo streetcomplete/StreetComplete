@@ -1409,4 +1409,11 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_board_name_title">"Quin és el títol d'aquest tauler informatiu?"</string>
     <string name="quest_crossing_hint">"Una pista informal que creua una carretera:"</string>
     <string name="note_for_object">"Una altra persona va anotar:"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"no n'hi ha, però els senyals permeten circular per la vorera, en ambdós sentits"</string>
+    <string name="quest_surface_value_rubber">"Pneumàtic triturat"</string>
+    <string name="quest_surface_value_acrylic">"Resina acrílica"</string>
+    <string name="action_messages">"Mostra els missatges"</string>
+    <string name="action_create_new_poi">"Crea'n un de nou"</string>
+    <string name="auth_error">"Error en l'autorització. Inicieu sessió de nou."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Realment hi ha una vorera."</string>
 </resources>

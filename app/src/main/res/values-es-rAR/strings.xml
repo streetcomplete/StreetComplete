@@ -1390,4 +1390,8 @@ Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Po
     <string name="quest_cycleway_value_sidewalk_ok_dual">"No hay nada, pero hay señales que permiten ir en bici por la vereda en ambos sentidos"</string>
     <string name="quest_surface_value_rubber">"Gránulos de goma"</string>
     <string name="quest_surface_value_acrylic">"Resina sintética"</string>
+    <string name="action_messages">"Show messages"</string>
+    <string name="action_create_new_poi">"Create new"</string>
+    <string name="auth_error">"Authorization error. Try logging in again."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Actually, there is a sidewalk."</string>
 </resources>

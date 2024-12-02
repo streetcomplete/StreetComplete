@@ -1390,4 +1390,8 @@ Un nivel cuenta como altura del tejado cuando sus ventanas están en el tejado. 
     <string name="quest_cycleway_value_sidewalk_ok_dual">"No hay nada, pero hay señales que permiten circular por la acera en ambos sentidos"</string>
     <string name="quest_surface_value_rubber">"Gránulos de caucho"</string>
     <string name="quest_surface_value_acrylic">"Resina sintética"</string>
+    <string name="action_messages">"Mostrar mensajes"</string>
+    <string name="action_create_new_poi">"Crear nuevo"</string>
+    <string name="auth_error">"Error de autorización. Intenta iniciar sesión nuevamente."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"En realidad, hay una acera."</string>
 </resources>

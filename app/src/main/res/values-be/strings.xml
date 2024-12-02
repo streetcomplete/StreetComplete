@@ -555,7 +555,7 @@
     <string name="about_description_donate">"Дзякуй, што вырашылі падтрымаць гэту праграму! Каб убачыць бягучыя ахвяраванні і ўнесці сваё, абярыце прыдатную платформу:"</string>
     <string name="confirmation_cancel_prev_download_confirmed">"Сканаваць тут"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Працягнуць бягучае сканаванне"</string>
-    <string name="quest_buildingType_garages_description">"У кожнага ўладальніка/арандатара асобнае памяшканне"</string>
+    <string name="quest_buildingType_garages_description">"у кожнага ўладальніка/арандатара асобнае памяшканне"</string>
     <string name="quest_tourism_information_title">"Якая менавіта тут турыстычная інфармацыя?"</string>
     <string name="quest_tourism_information_office">"Турыстычна-інфармацыйны цэнтр"</string>
     <string name="quest_tourism_information_board">"Інфармацыйная дошка"</string>
@@ -1289,7 +1289,7 @@
     <string name="quest_cycleway_value_sidewalk_dual2">"дарожка агульнага карыстання ў абодва бакі"</string>
     <string name="overlays_tutorial_title">"Накладкi"</string>
     <string name="overlays_tutorial_intro">"Вы знайшлі новы спосаб рэдагавання даных!"</string>
-    <string name="overlays_tutorial_display">"Кожная накладка адлюстроўвае адзін тып даных, напрыклад, крамы або вулічныя паверхні.
+    <string name="overlays_tutorial_display">"Кожная накладка адлюстроўвае адзін тып даных, напрыклад, крамы або 'вулічныя паверхні'.
 
 Даныя вылучаюцца рознымі колерамі, каб даць вам добры агляд таго, што было запісана да гэтага часу.
 Адсутныя даныя заўсёды паказваюцца чырвоным колерам."</string>
@@ -1311,7 +1311,7 @@
     <string name="quest_defibrillator_location">"Дзе знаходзіцца гэты дэфібрылятар?"</string>
     <string name="quest_defibrillator_location_description">"Калі ласка, дайце кароткае апісанне яго становішча (напрыклад, «у партэры»)."</string>
     <string name="quest_sanitary_dump_station_title">"Ці ёсць тут санстанцыя?"</string>
-    <string name="quest_sanitary_dump_station_description">"Аб’ект для захоўвання чалавечых адходаў з туалетнага бака аўтадома, далёкіх грузавікоў і г.д. Звычайна пазначаецца такім знакам:"</string>
+    <string name="quest_sanitary_dump_station_description">"Аб’ект для захоўвання чалавечых адходаў з туалетнага бака аўтадома, грузавікоў і г.д. Звычайна пазначаецца такім знакам:"</string>
     <string name="quest_generalFee_title">"Вам трэба плаціць, каб выкарыстоўваць гэта?"</string>
     <string name="quest_bbq_fuel_not_a_bbq">"Гэта супрацьпажарны корпус"</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Пажарныя агароджы не маюць паверхні для гатавання (напрыклад, рашоткі/пліты), у адрозненне ад грыляў."</string>
@@ -1368,7 +1368,7 @@
     <string name="info">"Больш..."</string>
     <string name="quest_accessible_for_pedestrians_prohibited">"Гэта забаронена."</string>
     <string name="quest_accessible_for_pedestrians_allowed">"Гэта дазволена."</string>
-    <string name="quest_buildingLevels_hint">"Для будынкаў на схіле адлік узроўняў пачынаецца ад узроўню зямлі самага ніжняга боку.
+    <string name="quest_buildingLevels_hint">"Для будынкаў на схіле адлік узроўняў пачынаецца ад узроўню зямлі самага ніжняга паверху.
 
 Узровень лічыцца да даху, калі яго вокны знаходзяцца ў даху. У далейшым, дах з нулявым узроўнем не абавязкова плоскі, а проста недастаткова высокі для ўсяго ўзроўню."</string>
     <string name="quest_parcel_locker_brand">"Якая марка гэтага паштовага аўтамата?"</string>
@@ -1401,4 +1401,12 @@
     <string name="quest_board_name_title">"Якая назва ў гэтай інфармацыйнай дошкі?"</string>
     <string name="quest_crossing_hint">"Стыхійная сцежка, якая перасякае дарогу:"</string>
     <string name="note_for_object">"Заўвага ад іншай асобы:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Кальцо (падтрымка кола альбо рамы)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"няма, але знак дазваляе рух на ровары па тратуары ў абодвух напрамках"</string>
+    <string name="quest_surface_value_rubber">"Гумовыя гранулы"</string>
+    <string name="quest_surface_value_acrylic">"Сінтэтычная смала"</string>
+    <string name="action_messages">"Паказаць паведамленні"</string>
+    <string name="action_create_new_poi">"Стварыць POI"</string>
+    <string name="auth_error">"Памылка аўтарызацыі. Паспрабуйце ўвайсці яшчэ раз."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Насамрэч, тут тратуар."</string>
 </resources>

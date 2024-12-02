@@ -370,7 +370,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_bicycle_parking_type_locker">"Casiers individuels"</string>
     <string name="quest_bicycle_parking_type_building">"Bâtiment"</string>
     <string name="quest_bicycle_parking_type_title">"De quel type de stationnement vélo s’agit-il ?"</string>
-    <string name="quest_postboxCollectionTimes_title">"Quels sont les horaires de levée du courrier pour cette boîte aux lettres ?"</string>
+    <string name="quest_postboxCollectionTimes_title">"Quels sont les horaires de levée pour cette boîte aux lettres ?"</string>
     <string name="quest_collectionTimes_add_times">"Ajouter une heure de levée"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Pas d’horaires spécifiés"</string>
     <string name="quest_construction_road_title">"Cette route est-elle achevée ?"</string>
@@ -405,7 +405,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_commercial">"Bâtiment commercial"</string>
     <string name="quest_buildingType_commercial_generic_description">"bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale"</string>
     <string name="quest_buildingType_industrial">"Industriel"</string>
-    <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garagiste…"</string>
+    <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garage de réparation automobile…"</string>
     <string name="quest_buildingType_office">"Bureaux"</string>
     <string name="quest_buildingType_retail">"Bâtiment commercial"</string>
     <string name="quest_buildingType_warehouse">"Entrepôt"</string>
@@ -475,7 +475,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_noteDiscussion_hide2">"Caché par %1$s, %2$s"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt; Les photos que vous joignez à une note sont enregistrées sur mon serveur et supprimées quelques jours après la résolution de cette note. Leurs méta-données sont effacées avant l’envoi.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Désélectionner tout"</string>
-    <string name="quest_buildingType_retail_description">"y compris les bâtiments pour restaurants, cafés…"</string>
+    <string name="quest_buildingType_retail_description">"y compris les bâtiments pour restaurants, cafés, magasins…"</string>
     <string name="quest_openingHours_timeSelect_next">"Suivant"</string>
     <string name="quest_tracktype_title">"Quelle est la fermeté du revêtement de ce tronçon ?"</string>
     <string name="quest_tracktype_grade1">"Pavé"</string>
@@ -525,7 +525,7 @@ Découper maintenant ?"</string>
     <string name="quest_maxweight_answer_other_sign">"Le panneau a l’air différent…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Souhaitez-vous laisser une note ? Une note avec une photo permettra à d’autres cartographes de s’en occuper."</string>
     <string name="quest_handrail_title">"Ces marches ont-elles une main courante ?"</string>
-    <string name="quest_ref_answer_noRef">"Aucun numéro de référence visible …"</string>
+    <string name="quest_ref_answer_noRef">"Aucun numéro ou code visible…"</string>
     <string name="quest_street_side_puzzle_tutorial">"La route de l’illustration est tournée dans le même sens que sur la carte, à l’emplacement du marqueur."</string>
     <string name="quest_recycling_materials_title">"Qu’est-ce qui peut être déposé ici pour le recyclage ?"</string>
     <string name="quest_recycling_materials_note">"S’il est possible de recycler autre chose ici que ce qui est présent sur la liste, veuillez laisser une note à la place."</string>
@@ -1031,7 +1031,7 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="ar_core_tracking_error_too_steep_angle">"Angle trop important, reculez un peu"</string>
     <string name="default_disabled_msg_no_ar">"Vous aurez besoin d’un mètre mesureur pour résoudre cette quête, la mesure via la caméra n’est pas supporté sur cet appareil."</string>
     <string name="quest_cycleway_width_title">"Quelle est la largeur de cette piste cyclable ici ?"</string>
-    <string name="quest_road_width_title">"Quelle est la largeur de cette route ici ?"</string>
+    <string name="quest_road_width_title">"Quelle est la largeur de la route ici ?"</string>
     <string name="quest_road_width_explanation">"La taille de la route de bord à bord : ceci inclut tout ce qui se trouve sur la surface de la rue comme les emplacements de stationnement et les bandes cyclables, mais exclut tout ce qui se trouve au delà, comme les pistes cyclables ou les places de parking."</string>
     <string name="quest_sidewalk_answer_none">"Pas de trottoir du tout"</string>
     <string name="link_osmand_description">"Application mobile pour la visualisation de carte et la navigation, hors ligne ou en ligne"</string>
@@ -1089,7 +1089,7 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="quest_smoothness_title">"Quelle est la qualité de la surface ?"</string>
     <string name="quest_summit_register_title2">"Y a-t-il un registre d’ascenscion de sommet de montagne ?"</string>
     <string name="quest_surface_title">"Quel est le matériau qui compose la surface ?"</string>
-    <string name="quest_toiletAvailability_title">"Y a-t-il des toilettes à cet endroit ?"</string>
+    <string name="quest_toiletAvailability_title">"Y a-t-il des toilettes ici ?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">"Les toilettes de ce lieu sont-elles accessibles aux fauteuils roulants ?"</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">"Êtes-vous certain que les cyclistes ne sont pas autorisés à utiliser cette rue à sens unique dans le deux sens ? En cas de doute, vérifiez qu’un panneau ne se trouve pas en bout de rue."</string>
     <string name="link_valhalla_description">"Moteur de routage à faible empreinte mémoire, routage multimodal, isochrones, et plus encore."</string>
@@ -1315,7 +1315,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_bbq_fuel_not_a_bbq">"C’est un foyer pour le feu"</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">"Les foyers n’ont pas de surface de cuisson (ex. grille/plaque), contrairement aux grills."</string>
     <string name="about_title_logs">"Logs (%1$d)"</string>
-    <string name="about_summary_logs">"à utiliser dans un rapport d’erreur"</string>
+    <string name="about_summary_logs">"A utiliser dans les rapports d’erreur."</string>
     <string name="action_filter">"Filtre"</string>
     <string name="action_share">"Partager les logs"</string>
     <string name="about_title_show_logs">"Afficher les logs"</string>
@@ -1378,6 +1378,7 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="quest_bicycle_parking_type_floor">"Zone désignée"</string>
     <string name="link_osmapp_description">"Une carte avec différentes couches, par exemple pour l’escalade ou le ski"</string>
     <string name="action_back">"Retour"</string>
+    <string name="action_clear">"Annuler"</string>
     <string name="action_more">"Plus"</string>
     <string name="action_open_in_browser">"Ouvrir dans le navigateur"</string>
     <string name="about_category_contribute">"Contribuer"</string>
@@ -1397,7 +1398,14 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="user_statistics_country_rank2">"Rang en %s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"C’est une souche"</string>
     <string name="quest_board_name_title">"Quel est le titre de ce panneau d’information ?"</string>
-    <string name="note_for_object">"Quelqu'un d'autre a noté:"</string>
+    <string name="quest_crossing_hint">"Un chemin non défini traversant une route :"</string>
+    <string name="note_for_object">"Quelqu’un d’autre a noté:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Râteliers sécurisés (attaches pour roue et cadre)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"aucun, mais un panneau autorise les cyclistes à circuler sur le trottoir, dans les deux sens"</string>
+    <string name="quest_surface_value_rubber">"Granulats de caoutchouc"</string>
+    <string name="quest_surface_value_acrylic">"Résine synthétique"</string>
     <string name="action_messages">"Afficher les messages"</string>
+    <string name="action_create_new_poi">"Créer un nouveau"</string>
+    <string name="auth_error">"Erreur d’authentification. Essayez de vous connecter à nouveau."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"En réalité, il y a une voie piétonne."</string>
 </resources>

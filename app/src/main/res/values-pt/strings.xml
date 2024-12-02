@@ -40,8 +40,8 @@
     <string name="action_download">"Descarregar dados aqui"</string>
     <string name="action_upload">"Enviar respostas"</string>
     <string name="no_changes">"Não deu uma resposta"</string>
-    <string name="download_error">"Surgiu um erro ao descarregar dados"</string>
-    <string name="upload_error">"Surgiu um erro ao enviar as respostas"</string>
+    <string name="download_error">"Erro de descarregamento"</string>
+    <string name="upload_error">"Erro de envio"</string>
     <string name="download_area_too_big">"Por favor aproxime mais"</string>
     <string name="confirmation_cancel_prev_download_title">"Parar o descarregamento atual e descarregar antes nesta área?"</string>
     <string name="turn_on_location_request">"A localização está desativada. Quer aceder agora às definições para a ativar?"</string>
@@ -294,7 +294,7 @@ Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns 
     <string name="about_category_feedback">"Reportar erros e comentários"</string>
     <string name="quest_leave_new_note_photo">"Anexar fotografia"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Quer eliminar esta fotografia?"</string>
-    <string name="quest_cycleway_value_track">"ciclovia separada ou corredor na estrada com separador"</string>
+    <string name="quest_cycleway_value_track">"ciclovia ou via para bicicletas protegida"</string>
     <string name="quest_cycleway_value_lane">"corredor de ciclovia na estrada"</string>
     <string name="quest_cycleway_value_none">"nenhuma"</string>
     <string name="quest_cycleway_value_shared">"corredor explicitamente partilhado com outros veículos"</string>
@@ -886,7 +886,7 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_buildingType_grandstand">"Arquibancada (local dos espectadores)"</string>
     <string name="action_search">"Pesquisar"</string>
     <string name="action_manage_presets">"Gerir conjuntos de missões"</string>
-    <string name="team_mode_team_size_label2">"Quantas pessoas estão a mapear? Introduza o mesmo número nos telemóveis de toda a gente."</string>
+    <string name="team_mode_team_size_label2">"Quantas pessoas estão a mapear? Selecione o mesmo número no telemóvel de todos."</string>
     <string name="team_mode_choose_color2">"A seguir, cada pessoa deve escolher uma cor diferente. Escolha a sua:"</string>
     <string name="link_organic_maps_description">"Aplicação de mapa para viajantes, caminhantes e ciclistas que funciona sem Internet"</string>
     <string name="quest_kerb_height_no">"Sem lancil"</string>
@@ -1285,8 +1285,8 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="quest_tactilePaving_steps_top">"Apenas no topo"</string>
     <string name="quest_tactilePaving_steps_bottom">"Apenas no fundo"</string>
     <string name="overlay_addresses_no_entrance">"Não é uma entrada…"</string>
-    <string name="quest_cycleway_value_sidewalk2">"via partilhada"</string>
-    <string name="quest_cycleway_value_sidewalk_dual2">"via partilhada em ambas as direções"</string>
+    <string name="quest_cycleway_value_sidewalk2">"passeio de utilização partilhada"</string>
+    <string name="quest_cycleway_value_sidewalk_dual2">"passeio de utilização partilhada, em ambas as direções"</string>
     <string name="overlays_tutorial_title">"Camadas"</string>
     <string name="overlays_tutorial_intro">"Encontrou uma nova forma de editar dados!"</string>
     <string name="overlays_tutorial_display">"Cada camada apresenta um tipo de dados, por exemplo, “lojas“ ou “superfícies de ruas“.
@@ -1401,4 +1401,12 @@ Um andar conta como um andar de telhado quando as suas janelas estão no telhado
     <string name="quest_board_name_title">"Qual é o título deste painel de informações?"</string>
     <string name="quest_crossing_hint">"Um trilho informal que atravessa uma estrada:"</string>
     <string name="note_for_object">"Outra pessoa deixou uma nota:"</string>
+    <string name="quest_bicycle_parking_type_safeloops">"Laços seguros (suporta a roda e o quadro)"</string>
+    <string name="quest_cycleway_value_sidewalk_ok_dual">"nenhum, mas o sinal permite andar de bicicleta no passeio, em ambas as direções"</string>
+    <string name="quest_surface_value_rubber">"Granulado de borracha"</string>
+    <string name="quest_surface_value_acrylic">"Resina sintética"</string>
+    <string name="action_messages">"Mostrar mensagens"</string>
+    <string name="action_create_new_poi">"Criar um novo"</string>
+    <string name="auth_error">"Erro de autorização. Tente iniciar sessão novamente."</string>
+    <string name="quest_accessible_for_pedestrians_sidewalk">"Na verdade, existe um passeio."</string>
 </resources>

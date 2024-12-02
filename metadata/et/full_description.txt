@@ -1,0 +1,5 @@
+Aita StreetComplete'i abil OpenStreetMapi täiendada!
+
+See rakendus leiab sinu lähikonnast puuduvad kaardiandmed ja kuvab need kaardil ülesannetena. Neid ülesandeid saad lahendada konkreetse asukoha vaatlemisel ja lihtsatele küsimustele vastates ning sellega täiendad kaartdiandmeid.
+
+Sinu sisestatud teave lisatakse sinu kasutajakonto nimel otse, ilma vahepealse toimetamiseta, OpenStreetMapi andmekogusse.
