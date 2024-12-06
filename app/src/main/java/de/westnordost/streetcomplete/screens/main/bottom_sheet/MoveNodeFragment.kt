@@ -228,15 +228,11 @@ class MoveNodeFragment :
     }
 }
 
-// Require a minimum distance because:
-// 1. The map is not perfectly precise, especially displayed road widths may be off by a few meters,
-//     so it may be hard to tell whether something really is misplaced (e.g. bench along a path)
-//     without good aerial imagery.
-// 2. The value added by moving nodes by such small distance, even if correct, is rather low.
-// 3. The position imprecision is already about 1.5 m because it is not really possible for the user
-//     to ascertain exactly what is the center of an icon (e.g. in shop overlay), which is ca 3x3 m
-//     at maximum zoom.
-private const val MIN_MOVE_DISTANCE = 2.0
+// Require a minimum distance because the map is not perfectly precise, it may be hard to tell
+// whether something really is misplaced without good aerial imagery.
+// Also, POIs are objects with a certain extent, so as long as the node is within this extent, it's
+// fine, there is little value of putting the point at exactly the center point of the POI
+private const val MIN_MOVE_DISTANCE = 1.0
 // Move node functionality is meant for fixing slightly misplaced elements. If something moved far
 // away, it is reasonable to assume there are more substantial changes required, also to nearby
 // elements. Additionally, the default radius for highlighted elements is 30 m, so moving outside
