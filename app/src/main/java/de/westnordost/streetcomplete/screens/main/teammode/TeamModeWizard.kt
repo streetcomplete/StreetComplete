@@ -123,6 +123,12 @@ private fun TeamModeDescription() {
         textAlign = TextAlign.Center,
         modifier = Modifier.padding(top = 24.dp)
     )
+    Text(
+        text = stringResource(R.string.team_mode_description_overlay_hint),
+        style = MaterialTheme.typography.body1,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.padding(top = 24.dp)
+    )
 }
 
 @Composable
