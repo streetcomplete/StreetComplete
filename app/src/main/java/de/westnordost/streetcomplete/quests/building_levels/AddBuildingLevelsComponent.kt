@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -30,11 +29,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.theme.AppTheme
+import de.westnordost.streetcomplete.ui.theme.titleLarge
 
 @Composable
 fun AddBuildingLevelsFormControl(
@@ -67,9 +66,8 @@ fun AddBuildingLevelsFormControl(
                             .padding(vertical = 9.dp)
                             .conditional(regularLevels == null) { focusRequester(focusRequester) }
                             .conditional(!(regularLevels != null && regularLevels.isDigitsOnly())) { border(2.dp, color = MaterialTheme.colors.error) },
-                        textStyle = LocalTextStyle.current.copy(
+                        textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Start,
-                            fontSize = 20.sp
                         ),
 
                         )
@@ -96,9 +94,8 @@ fun AddBuildingLevelsFormControl(
                             .align(Alignment.CenterHorizontally)
                             .conditional(regularLevels != null) { focusRequester(focusRequester) }
                             .conditional(!(roofLevels != null && roofLevels.isDigitsOnly())) { border(2.dp, color = MaterialTheme.colors.error) },
-                        textStyle = LocalTextStyle.current.copy(
-                            textAlign = TextAlign.Start,
-                            fontSize = 20.sp
+                        textStyle = MaterialTheme.typography.titleLarge.copy(
+                            textAlign = TextAlign.Start
                         )
                     )
                     Text(
