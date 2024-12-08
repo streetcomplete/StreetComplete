@@ -1,20 +1,14 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,16 +17,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 
 @Composable
-fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?,modifier: Modifier = Modifier){
-    Row(modifier = modifier.padding(5.dp)) {
+fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    Button(onClick = onClick, modifier = modifier) {
         Row(modifier = Modifier
-            .height(52.dp)
-            .wrapContentWidth()
-            .widthIn(min=42.dp)
-            .clip(RoundedCornerShape(3.dp))
-            .background(Color.LightGray)
-            .padding(3.dp)
-            , verticalAlignment = Alignment.CenterVertically) {
+            .height(52.dp), verticalAlignment = Alignment.CenterVertically) {
             Text(
                 text = lastLevels.toString(),
                 fontSize = 14.sp,
@@ -40,8 +28,7 @@ fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?,modifier: Modi
             )
             Image(
                 painterResource(R.drawable.ic_building_levels_illustration),
-                "Building Illustration",
-                modifier = Modifier.wrapContentSize()
+                "Building Illustration"
             )
             Text(
                 text = lastRoofLevels?.toString() ?: " ",
@@ -52,13 +39,13 @@ fun AddBuildingLevelsButton(lastLevels: Int, lastRoofLevels: Int?,modifier: Modi
     }
 }
 
-
 @Composable
 @Preview(showBackground = true,
-    name = "Add Building Levels Button"
+    name = "Add Building Levels Button",
+    uiMode = Configuration.UI_MODE_NIGHT_YES
 )
-fun PreviewAddBuildingLevelsButton(){
+fun PreviewAddBuildingLevelsButton() {
     AppTheme {
-        AddBuildingLevelsButton(3, 1)
+        AddBuildingLevelsButton(3, 1) {}
     }
 }
