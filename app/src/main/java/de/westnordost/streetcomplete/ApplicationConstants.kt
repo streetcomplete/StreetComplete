@@ -47,7 +47,7 @@ object ApplicationConstants {
 
     const val AVATARS_CACHE_DIRECTORY = "osm_user_avatars"
 
-    const val SC_PHOTO_SERVICE_URL = "https://westnordost.de/streetcomplete/photo-upload/" // must have trailing /
+    const val SC_PHOTO_SERVICE_URL = "https://streetcomplete.app/photo-upload/" // must have trailing /
 
     const val ATTACH_PHOTO_QUALITY = 80
     const val ATTACH_PHOTO_MAXWIDTH = 1280 // WXGA
