@@ -49,9 +49,8 @@ object ApplicationConstants {
 
     const val SC_PHOTO_SERVICE_URL = "https://streetcomplete.app/photo-upload/" // must have trailing /
 
-    const val ATTACH_PHOTO_QUALITY = 80
-    const val ATTACH_PHOTO_MAXWIDTH = 1280 // WXGA
-    const val ATTACH_PHOTO_MAXHEIGHT = 1280 // WXGA
+    const val ATTACH_PHOTO_QUALITY = 65 // doesn't need to look super pretty
+    const val ATTACH_PHOTO_MAX_SIZE = 1920 // Full HD
 
     // name is "downloading" for historic reasons, not sure if it has any side-effects if it is changed now
     const val NOTIFICATIONS_CHANNEL_SYNC = "downloading"
