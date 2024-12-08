@@ -1130,7 +1130,6 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="quest_building_entrance_dead_end">"Sem saída, não tem entrada"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Toque no ecrã para começar a medir"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Existe aqui uma bomba para encher pneus (pelo menos quando está aberto)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Existe aqui uma bomba para encher pneus a funcionar?"</string>
     <string name="action_overlays">"Camadas"</string>
     <string name="split_way">"Dividir via"</string>
     <string name="quest_memorialType_title">"Que tipo de memorial é este?"</string>
@@ -1240,7 +1239,7 @@ Faça o mesmo para o outro lado, se existir."</string>
     <string name="separate_cycleway_no_or_allowed">"Via pedonal, sem sinalização explícita sobre o uso da bicicleta (se é permitido depende da legislação)"</string>
     <string name="separate_cycleway_non_segregated">"Via para ciclistas e pedestres partilhada"</string>
     <string name="separate_cycleway_segregated">"Via pedonal e de bicicleta separadas"</string>
-    <string name="separate_cycleway_exclusive">"Via apenas para ciclistas"</string>
+    <string name="separate_cycleway_exclusive">"Via para ciclistas"</string>
     <string name="separate_cycleway_with_sidewalk">"Apenas para bicicleta com um passeio adjacente ou separado por lancil"</string>
     <string name="cycleway_reverse_direction">"Inverter direção da ciclovia"</string>
     <string name="cycleway_reverse_direction_warning">"É extremamente raro que uma ciclovia siga noutra direção."</string>

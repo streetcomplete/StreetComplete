@@ -1121,7 +1121,6 @@
     <string name="quest_building_entrance_dead_end">"Глухий кут, входу немає"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Торкніться екрану, щоб почати вимірювання"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Чи є тут загальнодоступний велонасос (принаймні коли відчинено)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Чи є тут велонасос?"</string>
     <string name="action_overlays">"Накладні шари"</string>
     <string name="split_way">"Розділити лінію"</string>
     <string name="quest_memorialType_title">"Який це памʼятник?"</string>
@@ -1232,7 +1231,7 @@
     <string name="separate_cycleway_no_or_allowed">"Не призначено для велосипедистів (їзда на велосипеді все одно може бути дозволена)"</string>
     <string name="separate_cycleway_non_segregated">"Вело- та пішохідна доріжка без роздільника"</string>
     <string name="separate_cycleway_segregated">"Окремі вело- та пішохідна доріжка"</string>
-    <string name="separate_cycleway_exclusive">"Доріжка лише для велосипедів"</string>
+    <string name="separate_cycleway_exclusive">"велосипедна доріжка"</string>
     <string name="separate_cycleway_with_sidewalk">"Велодоріжка з прилеглим тротуаром (відокремлений бордюром)"</string>
     <string name="cycleway_reverse_direction">"Зворотній напрямок велосипедної доріжки"</string>
     <string name="cycleway_reverse_direction_warning">"Велодоріжка, яка йде в інший бік, зустрічається вкрай рідко."</string>

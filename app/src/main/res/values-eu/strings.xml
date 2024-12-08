@@ -1127,7 +1127,6 @@ Egin gauza bera beste aldean egonez gero."</string>
     <string name="quest_building_entrance_dead_end">"Irteerarik gabeko kalea"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Sakatu pantaila hasteko idazten"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Badago hemen bizikleta-ponpa publikorik (irekita dagoenean behintzat)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Badago hemen funtzionatzen duen bizikleta ponparik?"</string>
     <string name="action_overlays">"Gainjartzeak"</string>
     <string name="split_way">"Bide zatitua"</string>
     <string name="quest_memorialType_title">"Nolako oroigarria da hau?"</string>
@@ -1238,7 +1237,7 @@ Orain mugitu?"</string>
     <string name="separate_cycleway_no_or_allowed">"Ez dago txirrindularientzat egokituta (baliteke bizikletaz ibiltzea baimenduta)"</string>
     <string name="separate_cycleway_non_segregated">"Erabilera partekatuko bidea"</string>
     <string name="separate_cycleway_segregated">"Bizikleta eta oinezko bidea bereizita"</string>
-    <string name="separate_cycleway_exclusive">"Bizikletentzako bide esklusiboa"</string>
+    <string name="separate_cycleway_exclusive">"Bizikletentzako bide"</string>
     <string name="separate_cycleway_with_sidewalk">"Bidegorria aldamenean espaloia duena (zintarri batek bereizita)"</string>
     <string name="cycleway_reverse_direction">"Alderantzikatu bizikleta bidearen norabidea"</string>
     <string name="cycleway_reverse_direction_warning">"Beste norabidean doan bidegorria oso arraroa da."</string>

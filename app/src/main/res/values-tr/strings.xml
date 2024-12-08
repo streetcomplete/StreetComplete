@@ -813,6 +813,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="pref_title_delete_cache">"Çerezleri Sil"</string>
     <string name="pref_title_delete_cache_summary">"Bazı verilerin güncel olmadığını düşünüyorsan"</string>
     <string name="delete_confirmation">"Sil"</string>
+    <string name="delete_cache_dialog_message">"Görevler dahil olmak üzere tü harita verisini silmek istediğine emin misin? Veriler %1$S gün sonra otomatik olarak yenilenir ve %2$s gün sonra da otomatik silinir."</string>
     <string name="pref_background_type_select">"Arka plan tipini seç"</string>
     <string name="background_type_map">"Harita"</string>
     <string name="background_type_aerial_esri">"Kuşbakışı (Esri tarafından)"</string>
@@ -820,8 +821,13 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_barrier_type_bollard">"Duba(lar)"</string>
     <string name="quest_barrier_type_chain">"Zincir"</string>
     <string name="quest_barrier_type_rope">"İp"</string>
+    <string name="quest_barrier_type_block">"Büyük taşınamaz nesne"</string>
+    <string name="quest_barrier_jersey_barrier">"Jersey Bariyeri"</string>
+    <string name="quest_barrier_type_bicycle_barrier">"Bisiklet engeli"</string>
     <string name="quest_policeType_title">"Bu ne tür bir polis karakolu?"</string>
     <string name="quest_stile_type_title">"Bu ne tür bir turnike?"</string>
+    <string name="pref_title_quests2">"Görev seçimi ve sıralama ölçütü"</string>
+    <string name="pref_subtitle_quests">"%2$d görevden %1$d kadarı aktif"</string>
     <string name="no_location_permission_warning_title">"Konum İzni"</string>
     <string name="no_camera_app">"Kamera uygulaması bulunamadı"</string>
     <string name="quest_bollard_type_title">"Bu ne tür bir duba?"</string>
@@ -833,11 +839,17 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="about_title_faq">"S.S.S."</string>
     <string name="quest_buildingLevels_title2">"Bodrum katının üstündeki kattan başlayarak bu binanın kaç katı var?"</string>
     <string name="quest_buildingLevels_title_buildingPart2">"Bodrum katının üstündeki kattan başlayarak bu bina parçasının kaç katı var?"</string>
+    <string name="default_disabled_msg_roofShape">"Bu görev tipi varsayılan olarak devre dışıdır çünkü binaların çatıları çoğunlukla yerden gözükmez. Ayrıca çok da vakit kaybettiricidir çünkü çoğu zaman çatı tiplerine uydu görüntülerinden bakmak daha avantajlıdır"</string>
+    <string name="pref_quests_deselect_all">"Tüm görevlerin seçimi iptal edilsin mi?"</string>
     <string name="action_search">"Ara"</string>
+    <string name="team_mode_team_size_label2">"Haritalamayı kaç kişi yapıyor? Herkesin telefonunda aynı sayıyı seçin."</string>
+    <string name="team_mode_choose_color2">"Şimdi, herkes farklı bir renk almalı. Kendininkini seç:"</string>
+    <string name="link_organic_maps_description">"Gezginler, yürüyüşçüler ve bisikletliler için çevrimdışı çalışan bir navigasyon uygulaması"</string>
     <string name="quest_bollard_type_removable">"Kaldırılabilir (anahtar ile veya anahtarsız)"</string>
     <string name="quest_bollard_type_foldable2">"Katlanabilir (anahtar ile veya anahtarsız)"</string>
     <string name="no_search_results">"Hiçbir şey bulunamadı"</string>
     <string name="quest_selection_hint_title">"Fazla mı geldi?"</string>
+    <string name="quest_selection_hint_message">"Katkı yapmak öncelikle eğlenceli olmalıdır! Eğer görevlerin sayısı seni bunalttıysa ayarlardan kaç tanesinin gözükeceğini ve hangi sırayla gözükeceğini belirleyebilirsin."</string>
     <string name="quest_presets_default_name">"Varsayılan"</string>
     <string name="quest_presets_selected">"Seçildi"</string>
     <string name="notification_syncing">"Veri eşleştiriliyor"</string>
@@ -845,6 +857,8 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_board_type_sport">"Spor, Egzersizler"</string>
     <string name="quest_generic_hasFeature_optional">"İsteğe bağlı"</string>
     <string name="quest_buildingType_bridge">"Binalar arasında köprü (asma yol)"</string>
+    <string name="quest_laundrySelfService_title2">"Bu çamaşırhane self servise izin veriyor mu?"</string>
+    <string name="quest_dietType_explanation_halal">"Helal ürünler sertifika veren ajanslarla uyumlu olarak özel kurallara göre hazırlanmalıdır."</string>
     <string name="quest_generic_answer_is_actually_steps">"Bunlar merdivenler"</string>
     <string name="quest_barrier_type_gate_conversion">"Kapıya dönüştürüldü"</string>
     <string name="quest_traffic_calming_type_title">"Bu ne tür hız kesici?"</string>
@@ -981,7 +995,7 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="separate_cycleway_no_or_allowed">"Bisikletçiler için belirtilmemiş (bisiklet sürmeye izin verilebilir)"</string>
     <string name="separate_cycleway_non_segregated">"Paylaşımlı yol"</string>
     <string name="separate_cycleway_segregated">"Ayrılmış bisiklet ve yaya yolu"</string>
-    <string name="separate_cycleway_exclusive">"Bisikletlere özel yol"</string>
+    <string name="separate_cycleway_exclusive">"Bisiklet yolu"</string>
     <string name="separate_cycleway_with_sidewalk">"Yanında kaldırım olan bisikletlere özel yol (kaldırım taşı tarafından ayrılmış)"</string>
     <string name="cycleway_reverse_direction">"Ters bisiklet yolu yönü"</string>
     <string name="cycleway_reverse_direction_toast">"Çevirmek istediğin yöne tıkla"</string>

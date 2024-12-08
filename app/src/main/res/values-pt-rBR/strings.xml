@@ -1129,7 +1129,6 @@ Faça o mesmo para o outro lado, se houver."</string>
     <string name="quest_building_entrance_dead_end">"Sem saída, sem entrada"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Toque na tela para começar a medir"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Há uma bomba de bicicleta pública aqui (pelo menos quando está aberta)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Há uma bomba de ar para bicicleta aqui?"</string>
     <string name="action_overlays">"Sobreposições"</string>
     <string name="split_way">"Dividir via"</string>
     <string name="quest_memorialType_title">"Que tipo de memorial é este?"</string>
@@ -1240,7 +1239,7 @@ Movê-lo agora?"</string>
     <string name="separate_cycleway_no_or_allowed">"Não designado para ciclistas (o ciclismo ainda pode ser permitido)"</string>
     <string name="separate_cycleway_non_segregated">"Caminho de uso compartilhado"</string>
     <string name="separate_cycleway_segregated">"Bicicleta e caminhos separados"</string>
-    <string name="separate_cycleway_exclusive">"Caminho somente para bicicletas"</string>
+    <string name="separate_cycleway_exclusive">"Caminho para bicicletas"</string>
     <string name="separate_cycleway_with_sidewalk">"Caminho apenas para bicicleta com calçada adjacente (separados por meio-fio)"</string>
     <string name="cycleway_reverse_direction">"Direção invertida da ciclovia"</string>
     <string name="cycleway_reverse_direction_warning">"Um caminho de bicicleta que vai na outra direção é extremamente raro."</string>

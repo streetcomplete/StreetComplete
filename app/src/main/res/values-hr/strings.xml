@@ -1130,7 +1130,6 @@ Učinite isto za drugu stranu ako je prikazana na ekranu."</string>
     <string name="quest_building_entrance_dead_end">"Slijepa ulica, nema ulaza"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Dotaknite ekran kako biste započeli mjerenje"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Postoji li ovdje javno dostupna pumpa za bicikle (barem u radno vrijeme)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Postoji li ovdje radeća pumpa za bicikle?"</string>
     <string name="action_overlays">"Nadslojevi"</string>
     <string name="split_way">"Razdvoji put"</string>
     <string name="quest_memorialType_title">"Koja je ovo vrsta spomenika?"</string>
@@ -1241,7 +1240,7 @@ Pomaknuti sada?"</string>
     <string name="separate_cycleway_no_or_allowed">"Nije predviđeno za bicikle (iako je vožnja biciklom možda dopuštena)"</string>
     <string name="separate_cycleway_non_segregated">"Staza za zajedničku upotrebu"</string>
     <string name="separate_cycleway_segregated">"Razdvojena staza za bicikle i pješake"</string>
-    <string name="separate_cycleway_exclusive">"Staza isključivo za bicikle"</string>
+    <string name="separate_cycleway_exclusive">"Biciklistička staza"</string>
     <string name="separate_cycleway_with_sidewalk">"Staza isključivo za bicikle sa susjednim nogostupom za pješake (odvojen rubnikom)"</string>
     <string name="cycleway_reverse_direction">"Obrnuti smjer biciklističke staze"</string>
     <string name="cycleway_reverse_direction_warning">"Iznimno je rijetko da biciklistička staza ide u suprotnom smjeru."</string>
@@ -1410,4 +1409,30 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="action_create_new_poi">"Kreiraj novi POI"</string>
     <string name="auth_error">"Greška prilikom autorizacije. Pokušajte se ponovno prijaviti."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"Zapravo, postoji nogostup."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Koja je oprema za bicikle dostupna ovdje?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Pumpa"</string>
+    <string name="quest_bicycle_repair_station_tools">"Razni alati"</string>
+    <string name="quest_bicycle_repair_station_stand">"Stalak za bicikl"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Rastavljač lanca"</string>
+    <string name="quest_boat_rental_title">"Koje vrste plovila se ovdje iznajmljuju?"</string>
+    <string name="quest_boat_rental_motorboat">"Motorni čamaci"</string>
+    <string name="quest_boat_rental_jetski">"Skuteri za vodu"</string>
+    <string name="quest_boat_rental_sailboat">"Jedrilice"</string>
+    <string name="quest_boat_rental_pedalboat">"Pedaline"</string>
+    <string name="quest_boat_rental_kayak">"Kajaci"</string>
+    <string name="quest_boat_rental_canoe">"Kanui"</string>
+    <string name="quest_boat_rental_houseboat">"Kućice na splavu"</string>
+    <string name="quest_boat_rental_rowboat">"Čamci na vesla"</string>
+    <string name="quest_boat_rental_raft">"Splavi"</string>
+    <string name="quest_boat_rental_surfboard">"Daske za surfanje"</string>
+    <string name="quest_boat_rental_sailboard">"Daske za jedrenje"</string>
+    <string name="quest_boat_rental_yacht">"Jahte"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Daske za veslanje (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Kako je ovaj strujni vod pričvršćen?"</string>
+    <string name="quest_powerAttachment_suspension">"Pridržan odozgo"</string>
+    <string name="quest_powerAttachment_anchor">"Učvršćen vodoravno"</string>
+    <string name="quest_powerAttachment_pin">"Poduprt odozdo"</string>
+    <string name="pedestrian_zone_designated">"Predviđeno za bicikliste ovdje"</string>
+    <string name="pedestrian_zone_allowed_sign">"Znakom dozvoljena vožnja biciklom ovdje"</string>
+    <string name="pedestrian_zone_no_sign">"Nema izričitog prometnog znaka o vožnji biciklom ovdje"</string>
 </resources>

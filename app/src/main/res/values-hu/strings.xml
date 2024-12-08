@@ -1130,7 +1130,6 @@ Tedd meg a másiknál is, ha van olyan."</string>
     <string name="quest_building_entrance_dead_end">"Zsákutca, nem bejárat"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Érintsd meg a képernyőt a mérés megkezdéséhez"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Van itt nyilvános kerékpárpumpa (amikor nyitva van az üzlet)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Van itt működő kerékpárpumpa?"</string>
     <string name="action_overlays">"Rátétek"</string>
     <string name="split_way">"Vonal elvágása"</string>
     <string name="quest_memorialType_title">"Milyen típusú emlékmű ez?"</string>
@@ -1241,7 +1240,7 @@ Elmozdítod?"</string>
     <string name="separate_cycleway_no_or_allowed">"Gyalogút, nincs kerékpározással kapcsolatos tábla  (hogy engedélyezett-e, az a jogszabályoktól függ)"</string>
     <string name="separate_cycleway_non_segregated">"Nem elválasztott gyalog- és kerékpárút"</string>
     <string name="separate_cycleway_segregated">"Elválasztott gyalog- és kerékpárút"</string>
-    <string name="separate_cycleway_exclusive">"Kizárólag kerékpárút"</string>
+    <string name="separate_cycleway_exclusive">"Kerékpárút"</string>
     <string name="separate_cycleway_with_sidewalk">"Kerékpárút, a párhuzamos járdától szegéllyel elválasztva"</string>
     <string name="cycleway_reverse_direction">"Kerékpárút irányának megfordítása"</string>
     <string name="cycleway_reverse_direction_warning">"Rendkívül ritka, hogy egy kerékpárút az ellenkező irányba menjen."</string>
@@ -1410,4 +1409,30 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="action_create_new_poi">"Új létrehozása"</string>
     <string name="auth_error">"Jogosultsági hiba. Próbálj újra bejelentkezni."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"Valójában van egy járda."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Milyen kerékpáros felszerelés érhető el itt?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Pumpa"</string>
+    <string name="quest_bicycle_repair_station_tools">"Különféle szerszámok"</string>
+    <string name="quest_bicycle_repair_station_stand">"Szerelőállvány"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Láncbontó"</string>
+    <string name="quest_boat_rental_title">"Milyen típusú csónakok bérelhetők itt?"</string>
+    <string name="quest_boat_rental_motorboat">"Motorcsónak"</string>
+    <string name="quest_boat_rental_jetski">"Jetski"</string>
+    <string name="quest_boat_rental_sailboat">"Vitorláshajó"</string>
+    <string name="quest_boat_rental_pedalboat">"Vízibicikli"</string>
+    <string name="quest_boat_rental_kayak">"Kajak"</string>
+    <string name="quest_boat_rental_canoe">"Kenu"</string>
+    <string name="quest_boat_rental_houseboat">"Lakóhajó"</string>
+    <string name="quest_boat_rental_rowboat">"Evezős csónak"</string>
+    <string name="quest_boat_rental_raft">"Raftingcsónak"</string>
+    <string name="quest_boat_rental_surfboard">"Szörfdeszka"</string>
+    <string name="quest_boat_rental_sailboard">"Windszörf"</string>
+    <string name="quest_boat_rental_yacht">"Jacht"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"SUP"</string>
+    <string name="quest_powerAttachment_title">"Hogyan van rögzítve a távvezeték?"</string>
+    <string name="quest_powerAttachment_suspension">"Függesztett"</string>
+    <string name="quest_powerAttachment_anchor">"Vízszintesen"</string>
+    <string name="quest_powerAttachment_pin">"Alátámasztott"</string>
+    <string name="pedestrian_zone_designated">"Kerékpározásra kijelölt"</string>
+    <string name="pedestrian_zone_allowed_sign">"Jelzés engedi a kerékpározást"</string>
+    <string name="pedestrian_zone_no_sign">"Nincs kifejezett jelzés kerékpározásról"</string>
 </resources>

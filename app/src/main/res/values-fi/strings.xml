@@ -1129,7 +1129,6 @@ Tee sama toiselle puolelle mikäli tarpeellista."</string>
     <string name="quest_building_entrance_dead_end">"Umpikuja, ei sisäänkäyntiä"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Täppää ruutua aloittaaksesi mittauksen"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Onko täällä julkista pyöränpumppua (ainakin kun liike avoinna)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Onko täällä toimivaa pyöränpumppua?"</string>
     <string name="action_overlays">"Tasot"</string>
     <string name="split_way">"Jaa tie osiin"</string>
     <string name="quest_memorialType_title">"Minkälainen muistomerkki tämä on?"</string>
@@ -1240,7 +1239,7 @@ Haluatko siirtää nyt?"</string>
     <string name="separate_cycleway_no_or_allowed">"Jalkakäytävä, ei erillistä liikennemerkkiä pyöräilystä (riippuu lainsäädännöstä onko pyöräily sallittua)"</string>
     <string name="separate_cycleway_non_segregated">"Yhdistetty pyörätie ja jalkakäytävä"</string>
     <string name="separate_cycleway_segregated">"Pyörätie ja jalkakäytävä rinnakkain"</string>
-    <string name="separate_cycleway_exclusive">"Polku vain pyörille"</string>
+    <string name="separate_cycleway_exclusive">"Polkupyörille"</string>
     <string name="separate_cycleway_with_sidewalk">"Pyörätie viereisellä jalkakäytävällä (reunakiveyksellä erotettu)"</string>
     <string name="cycleway_reverse_direction">"Käännä pyörätien suunta"</string>
     <string name="cycleway_reverse_direction_warning">"Pyörätie joka kulkee vastakkaiseen suuntaan on erittäin harvinainen."</string>

@@ -1129,7 +1129,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_building_entrance_dead_end">"Buntu, tak ada pintu masuk"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Ketuk layar untuk mulai mengukur"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Apakah ada pompa sepeda umum di sini (setidaknya saat buka)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Apa ada pompa sepeda yang bekerja di sini?"</string>
     <string name="action_overlays">"Hamparan"</string>
     <string name="split_way">"Jalur terpisah"</string>
     <string name="quest_memorialType_title">"Monumen apa ini?"</string>

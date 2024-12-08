@@ -1125,7 +1125,6 @@
     <string name="quest_building_entrance_dead_end">"بن‌بست، بدون ورودی"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"برای شروع اندازه‌گیری، روی صفحه ضربه بزنید"</string>
     <string name="quest_air_pump_bicycle_shop_title">"تلمبه‌باد عمومی دوچرخه در اینجا هست (حداقل وقتی باز است)؟"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"آیا تلمبه سالم برای دوچرخه در این محل هست؟"</string>
     <string name="action_overlays">"همپوشانی‌ها"</string>
     <string name="split_way">"تقاطع"</string>
     <string name="quest_memorialType_title">"این سازه چه نوع بنای یادبودی است؟"</string>
@@ -1236,7 +1235,7 @@
     <string name="separate_cycleway_no_or_allowed">"برای دوچرخه سواری مشخص نشده است (دوچرخه سواری ممکن است همچنان مجاز باشد)"</string>
     <string name="separate_cycleway_non_segregated">"مسیر با استفاده مشترک"</string>
     <string name="separate_cycleway_segregated">"مسیر دوچرخه و پیاده مجزا"</string>
-    <string name="separate_cycleway_exclusive">"مسیر فقط دوچرخه"</string>
+    <string name="separate_cycleway_exclusive">"مسیر دوچرخه"</string>
     <string name="separate_cycleway_with_sidewalk">"مسیر فقط دوچرخه‌سواری با پیاده‌روی مجاور (با یک حاشیه جدا شده است)"</string>
     <string name="cycleway_reverse_direction">"جهت دوچرخه‌سواری مخالف"</string>
     <string name="cycleway_reverse_direction_warning">"اینکه مسیر دوچرخه سواری به سمت دیگر برود بسیار نادر است."</string>
@@ -1398,4 +1397,12 @@
     <string name="quest_board_name_title">"عنوان این تابلوی اطلاعات چیست؟"</string>
     <string name="quest_crossing_hint">"یک مسیر غیررسمی که از یک جاده عبور می کند:"</string>
     <string name="note_for_object">"شخص دیگری یادداشت گذاشت:"</string>
+    <string name="action_messages">"نمایش پیام‌ها"</string>
+    <string name="quest_boat_rental_title">"کدام نوع قایق در اینجا اجاره داده می‌شود؟"</string>
+    <string name="quest_boat_rental_motorboat">"قایق موتوری"</string>
+    <string name="quest_boat_rental_jetski">"جت اسکی"</string>
+    <string name="quest_boat_rental_sailboat">"قایق بادبانی"</string>
+    <string name="quest_boat_rental_pedalboat">"قایق پدالی"</string>
+    <string name="quest_boat_rental_kayak">"قایق کایاک"</string>
+    <string name="quest_boat_rental_canoe">"قایق بلم"</string>
 </resources>

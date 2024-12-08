@@ -1120,7 +1120,6 @@
     <string name="quest_building_entrance_dead_end">"ทางตัน ไม่มีทางเข้า"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"แตะหน้าจอเพื่อเริ่มวัด"</string>
     <string name="quest_air_pump_bicycle_shop_title">"มีปั๊มลมจักรยานสาธารณะที่นี่หรือไม่ (อย่างน้อยเมื่อเปิด)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"มีปั๊มลมจักรยานที่ทำงานที่นี่หรือไม่?"</string>
     <string name="action_overlays">"ภาพซ้อนทับ"</string>
     <string name="split_way">"แยกทางเป็นสองส่วน"</string>
     <string name="quest_memorialType_title">"อนุสรณ์แห่งนี้เป็นแบบไหน?"</string>
@@ -1229,7 +1228,7 @@
     <string name="separate_cycleway_no_or_allowed">"ไม่ได้ระบุสำหรับนักปั่นจักรยาน (การปั่นจักรยานอาจยังได้รับอนุญาต)"</string>
     <string name="separate_cycleway_non_segregated">"เส้นทางใช้ร่วมกัน"</string>
     <string name="separate_cycleway_segregated">"เส้นทางแยกกันสำหรับจักรยานและเดินเท้า"</string>
-    <string name="separate_cycleway_exclusive">"เส้นทางเฉพาะสำหรับจักรยานเท่านั้น"</string>
+    <string name="separate_cycleway_exclusive">"เส้นทางจักรยาน"</string>
     <string name="separate_cycleway_with_sidewalk">"เส้นทางจักรยานเท่านั้นที่มีทางเท้าติดกัน (คั่นด้วยขอบถนน)"</string>
     <string name="cycleway_reverse_direction">"ทิศทางเส้นทางจักรยานย้อนกลับ"</string>
     <string name="cycleway_reverse_direction_warning">"เส้นทางจักรยานที่หันไปทางอื่นนั้นหายากมาก"</string>

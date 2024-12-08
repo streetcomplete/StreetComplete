@@ -257,7 +257,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="produce_peaches">"Brzoskwinie"</string>
     <string name="produce_pears">"Gruszki"</string>
     <string name="produce_chili">"Chilli"</string>
-    <string name="produce_persimmons">"Hurmy / Kaki"</string>
+    <string name="produce_persimmons">"Kaki / Hurmy"</string>
     <string name="produce_pineapples">"Ananasy"</string>
     <string name="produce_pepper">"Papryki"</string>
     <string name="produce_pistachios">"Pistacje"</string>
@@ -295,7 +295,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="about_category_feedback">"Opinia"</string>
     <string name="quest_leave_new_note_photo">"Załącz zdjęcie"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Czy chcesz usunąć ten obrazek?"</string>
-    <string name="quest_cycleway_value_track">"droga dla rowerów lub fizycznie oddzielony pas rowerowey"</string>
+    <string name="quest_cycleway_value_track">"droga dla rowerów lub fizycznie oddzielony pas rowerowy"</string>
     <string name="quest_cycleway_value_lane">"pas dla rowerów"</string>
     <string name="quest_cycleway_value_none">"brak"</string>
     <string name="quest_cycleway_value_shared">"pas dzielony z innymi uczestnikami ruchu"</string>
@@ -365,7 +365,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_fee_add_times">"Dodaj godziny"</string>
     <string name="quest_housenumber_multiple_numbers">"Ma wiele numerów domu"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Możesz wypisać wszystkie numery, oddzielając je przecinkami, lub podać ich zakres. Na przykład 1,3 lub 2–6."</string>
-    <string name="quest_bicycle_parking_type_stand">"Barierka / Stojak (przytrzymuje ramę roweru)"</string>
+    <string name="quest_bicycle_parking_type_stand">"Stojak (przytrzymuje ramę roweru)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Wyrwikółka (przytrzymuje tylko koło)"</string>
     <string name="quest_bicycle_parking_type_shed">"Wiata"</string>
     <string name="quest_bicycle_parking_type_locker">"Schowek"</string>
@@ -410,13 +410,13 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_buildingType_office">"Budynek biurowy"</string>
     <string name="quest_buildingType_retail">"Budynek sklepowy"</string>
     <string name="quest_buildingType_warehouse">"Budynek magazynu"</string>
-    <string name="quest_buildingType_kiosk">"Kiosk"</string>
+    <string name="quest_buildingType_kiosk">"Budynek typu kiosk"</string>
     <string name="quest_buildingType_storage_tank">"Zbiornik"</string>
     <string name="quest_buildingType_religious">"Budynek religijny"</string>
-    <string name="quest_buildingType_church">"Kościół"</string>
-    <string name="quest_buildingType_chapel">"Kaplica"</string>
+    <string name="quest_buildingType_church">"Budynek typu kościół"</string>
+    <string name="quest_buildingType_chapel">"Budynek typu kaplica"</string>
     <string name="quest_buildingType_cathedral">"Katedra"</string>
-    <string name="quest_buildingType_mosque">"Meczet"</string>
+    <string name="quest_buildingType_mosque">"Budynek typu meczet"</string>
     <string name="quest_buildingType_temple">"Budynek świątyni"</string>
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
     <string name="quest_buildingType_synagogue">"Budynek synagogi"</string>
@@ -424,7 +424,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_buildingType_civic_description">"zbudowany w celu pomieszczenia obiektu o przeznaczeniu wspólnym"</string>
     <string name="quest_buildingType_kindergarten">"Przedszkole"</string>
     <string name="quest_buildingType_school">"Szkoła"</string>
-    <string name="quest_buildingType_college">"Budynek Szkoły Wyższej"</string>
+    <string name="quest_buildingType_college">"Budynek szkoły wyższej"</string>
     <string name="quest_buildingType_hospital">"Budynek szpitala"</string>
     <string name="quest_buildingType_stadium">"Stadion"</string>
     <string name="quest_buildingType_train_station">"Stacja kolejowa"</string>
@@ -440,7 +440,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_buildingType_farmhouse">"Dom w gospodarstwie rolnym"</string>
     <string name="quest_buildingType_farmhouse_description">"budynek mieszkalny na gospodarstwie"</string>
     <string name="quest_buildingType_farm_auxiliary">"Budynek gospodarczy"</string>
-    <string name="quest_buildingType_farm_auxiliary_description">"niemieszkalny budynek w gospodarstwie"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"niemieszkalny budynek w gospodarstwie rolnym"</string>
     <string name="quest_buildingType_greenhouse">"Szklarnia"</string>
     <string name="quest_buildingType_other">"Inny"</string>
     <string name="quest_buildingType_shed">"Szopa/wiata/budka"</string>
@@ -1129,7 +1129,6 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="quest_building_entrance_dead_end">"Ślepa ścieżka, brak wejścia"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Dotknij ekranu, aby rozpocząć pomiar"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Czy jest tu publiczna pompka rowerowa?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Czy jest tu działająca pompka rowerowa?"</string>
     <string name="action_overlays">"Nakładki"</string>
     <string name="split_way">"Podziel linię"</string>
     <string name="quest_memorialType_title">"Co to za pomnik?"</string>
@@ -1175,7 +1174,7 @@ Zrób to samo dla drugiej strony, jeśli jest obecna."</string>
     <string name="link_ohsomehex_description">"Przeglądaj dane OSM w różnych skalach, od dużego obrazu po pojedyncze obiekty w przestrzeni i czasie"</string>
     <string name="link_opencampingmap_description">"Mapa kempingów i pól namiotowych"</string>
     <string name="quest_atm_cashin_title">"Czy możesz wpłacić gotówkę w tym bankomacie?"</string>
-    <string name="create_node_action_description">"Utworzono węzeł z …"</string>
+    <string name="create_node_action_description">"Utworzono punk z …"</string>
     <string name="quest_accessPointRef_answer_assembly_point">"To miejsce zbiórki"</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">"Miejsce zbiórki do ewakuacji - tam ludzie gromadzą się w nagłych wypadkach. Zwykle wygląda to tak:"</string>
     <string name="quest_address_answer_house_name2">"Adres zawiera nazwę budynku…"</string>
@@ -1240,7 +1239,7 @@ Przesunąć go teraz?"</string>
     <string name="separate_cycleway_no_or_allowed">"Nieprzeznaczony dla rowerzystów (jazda na rowerze może być nadal dozwolona)"</string>
     <string name="separate_cycleway_non_segregated">"Ścieżka do wspólnego użytku"</string>
     <string name="separate_cycleway_segregated">"Rozdzielona ścieżka dla rowerów i pieszych"</string>
-    <string name="separate_cycleway_exclusive">"Ścieżka tylko dla rowerów"</string>
+    <string name="separate_cycleway_exclusive">"Droga dla rowerów"</string>
     <string name="separate_cycleway_with_sidewalk">"Ścieżka tylko dla rowerów z przylegającym chodnikiem (oddzielone krawężnikiem)"</string>
     <string name="cycleway_reverse_direction">"Odwróć kierunek ścieżki rowerowej"</string>
     <string name="cycleway_reverse_direction_warning">"Bardzo rzadko zdarza się, że ścieżka rowerowa biegnie w drugą stronę."</string>
@@ -1297,7 +1296,7 @@ Brakujące dane są zawsze wyświetlane na czerwono."</string>
 
 Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczonym punkcie, na przykład warstwa sklepów."</string>
     <string name="quest_crossing_kerb_height_title">"Jaka jest wysokość krawężników na tym przejściu?"</string>
-    <string name="quest_maxheight_sign_title">"Jakie jest ograniczenie wysokości tutaj?"</string>
+    <string name="quest_maxheight_sign_title">"Jaki jest tutaj znak ograniczenie wysokości?"</string>
     <string name="quest_leave_new_note_as_answer">"W takim przypadku musisz zostawić notatkę, w której wyjaśnisz sytuację."</string>
     <string name="quest_drinking_water_type_title2">"Czy woda pitna jest tu dostępna? Jeśli tak jakie jest jej źródło?"</string>
     <string name="quest_is_amenity_inside_title">"Czy jest to w środku budynku?"</string>
@@ -1346,7 +1345,7 @@ Dodatkowo, niektóre nakładki pozwalają na dodanie nowych danych na zaznaczony
     <string name="quest_buildingType_tower_description">"dowolny rodzaj wieży"</string>
     <string name="quest_buildingType_under_construction">"W trakcie budowy"</string>
     <string name="overlay_buildings">"Budynki"</string>
-    <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na ziemi?"</string>
+    <string name="quest_pedestrian_crossing_markings">"Czy to skrzyżowanie ma oznaczenia na nawierzchni?"</string>
     <string name="overlay_places">"Miejsca"</string>
     <string name="overlay_things">"Obiekty"</string>
     <string name="disused">"już nieużywane"</string>

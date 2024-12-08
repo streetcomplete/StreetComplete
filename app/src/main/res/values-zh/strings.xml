@@ -1128,7 +1128,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_building_entrance_dead_end">"死路，没有入口"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"点击屏幕以开始测量"</string>
     <string name="quest_air_pump_bicycle_shop_title">"这里有公共自行车打气泵吗（至少在开放的时候）？"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"这里有工作的自行车打气泵吗？"</string>
     <string name="action_overlays">"覆盖层"</string>
     <string name="split_way">"分割路径"</string>
     <string name="quest_memorialType_title">"这是哪一种纪念物？"</string>
@@ -1239,7 +1238,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="separate_cycleway_no_or_allowed">"未指定给骑车人（仍可骑自行车）"</string>
     <string name="separate_cycleway_non_segregated">"共用道路"</string>
     <string name="separate_cycleway_segregated">"分隔的自行车和步行道"</string>
-    <string name="separate_cycleway_exclusive">"自行车专用道"</string>
+    <string name="separate_cycleway_exclusive">"自行车道"</string>
     <string name="separate_cycleway_with_sidewalk">"有相邻人行道的自行车专用道（由路缘石分隔）"</string>
     <string name="cycleway_reverse_direction">"反转自行车径方向"</string>
     <string name="cycleway_reverse_direction_warning">"这条自行车道进入另一条的方向是极其罕见的。"</string>
