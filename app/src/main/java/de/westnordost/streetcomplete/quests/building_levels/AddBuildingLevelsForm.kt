@@ -42,8 +42,8 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.questBuildingLevelsBase.setContent {
-            regularLevels = rememberSaveable { mutableStateOf(if (element.tags["building:levels"] != null) element.tags["building:levels"] else "") }
-            roofLevels = rememberSaveable { mutableStateOf(if (element.tags["roof:levels"] != null) element.tags["roof:levels"] else "") }
+            regularLevels = rememberSaveable { mutableStateOf(element.tags["building:levels"] ?: "") }
+            roofLevels = rememberSaveable { mutableStateOf(element.tags["roof:levels"] ?: "") }
             AppTheme {
                 AddBuildingLevelsFormControl(
                     regularLevels.value,
