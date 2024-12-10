@@ -71,7 +71,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
     override fun onClickOk() {
         val answer = BuildingLevelsAnswer(
             regularLevels.value?.toInt() ?: 0,
-            if (roofLevels.value != null) roofLevels.value?.toInt() else null
+            roofLevels.value?.toInt() ?: null
         )
         prefs.addLastPicked(
             this::class.simpleName!!,

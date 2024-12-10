@@ -65,7 +65,7 @@ fun AddBuildingLevelsFormControl(
                         modifier = Modifier
                             .padding(vertical = 9.dp)
                             .conditional(regularLevels == null) { focusRequester(focusRequester) }
-                            .conditional(!(regularLevels != null && regularLevels.isDigitsOnly())) { border(2.dp, color = MaterialTheme.colors.error) },
+                            .conditional(regularLevels == null || !regularLevels.isDigitsOnly()) { border(2.dp, color = MaterialTheme.colors.error) },
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Start,
                         ),
@@ -93,7 +93,7 @@ fun AddBuildingLevelsFormControl(
                             .padding(0.dp, 12.dp)
                             .align(Alignment.CenterHorizontally)
                             .conditional(regularLevels != null) { focusRequester(focusRequester) }
-                            .conditional(!(roofLevels != null && roofLevels.isDigitsOnly())) { border(2.dp, color = MaterialTheme.colors.error) },
+                            .conditional(roofLevels == null || !roofLevels.isDigitsOnly()) { border(2.dp, color = MaterialTheme.colors.error) },
                         textStyle = MaterialTheme.typography.titleLarge.copy(
                             textAlign = TextAlign.Start
                         )
