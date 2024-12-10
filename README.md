@@ -1,4 +1,4 @@
-![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
+![StreetComplete](.github/images/feature_graphic.png)
 
 StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.
 
