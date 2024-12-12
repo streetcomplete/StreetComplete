@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.util
 
 import android.content.res.Resources
-import android.text.Html
 import android.text.Spanned
 import androidx.core.text.parseAsHtml
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import java.util.Locale
 
@@ -201,7 +201,7 @@ fun getShortHouseNumber(map: Map<String, String>): String? {
     }
 }
 
-private fun String.inBold(): String = "<b>${Html.escapeHtml(this)}</b>"
-private fun String.inItalics(): String = "<i>${Html.escapeHtml(this)}</i>"
+private fun String.inBold(): String = "<b>${replaceHtmlEntities()}</b>"
+private fun String.inItalics(): String = "<i>${replaceHtmlEntities()}</i>"
 
 private fun String.withNonBreakingSpaces(): String = replace(' ', ' ')
