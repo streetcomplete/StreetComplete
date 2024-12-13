@@ -23,7 +23,7 @@ fun decodeScaledBitmapAndNormalize(imagePath: String, desiredMaxWidth: Int, desi
         inSampleSize *= 2
     }
 
-    val desiredScale = maxWidth.toFloat() / width
+    val desiredScale = min(maxWidth.toFloat() / width, maxHeight.toFloat() / height)
 
     // Decode with inSampleSize
     val options = BitmapFactory.Options().also {

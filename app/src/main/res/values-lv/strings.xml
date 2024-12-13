@@ -1126,7 +1126,6 @@ Dariet to arī otrai pusei, ja tāda ir."</string>
     <string name="quest_building_entrance_dead_end">"Strupceļš, nav ieejas"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Spiediet uz ekrāna, lai sāktu mērīt"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Vai šeit ir publiski pieejams velosipēda pumpis (vismaz darba laikā)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Vai šeit ir strādājošs velosipēda pumpis?"</string>
     <string name="action_overlays">"Pārklājumi"</string>
     <string name="split_way">"Sadalīt ceļu"</string>
     <string name="quest_memorialType_title">"Kāda veida piemiņas vieta tā ir?"</string>
@@ -1237,7 +1236,7 @@ Pārvietot tagad?"</string>
     <string name="separate_cycleway_no_or_allowed">"Nav paredzēts velosipēdistiem (braukšana ar velosipēdu var būt atļauta)"</string>
     <string name="separate_cycleway_non_segregated">"Koplietoti ceļi"</string>
     <string name="separate_cycleway_segregated">"Nodalīti velo un gājēju ceļi"</string>
-    <string name="separate_cycleway_exclusive">"Ceļš tikai velosipēdistiem"</string>
+    <string name="separate_cycleway_exclusive">"Veloceliņš"</string>
     <string name="separate_cycleway_with_sidewalk">"Veloceliņš ar piegulošu ietvi (atdalīta ar apmali)"</string>
     <string name="cycleway_reverse_direction">"Mainīt veloceliņa virzienu"</string>
     <string name="cycleway_reverse_direction_warning">"Pretēja virziena veloceliņi ir ārkārtīgs retums."</string>

@@ -129,7 +129,7 @@ private fun createImageFile(context: Context): File {
 }
 
 private fun rescaleImageFile(file: File) {
-    val bitmap = decodeScaledBitmapAndNormalize(file.path, ApplicationConstants.ATTACH_PHOTO_MAXWIDTH, ApplicationConstants.ATTACH_PHOTO_MAXHEIGHT) ?: throw IOException()
+    val bitmap = decodeScaledBitmapAndNormalize(file.path, ApplicationConstants.ATTACH_PHOTO_MAX_SIZE, ApplicationConstants.ATTACH_PHOTO_MAX_SIZE) ?: throw IOException()
     val out = FileOutputStream(file.path)
     bitmap.compress(Bitmap.CompressFormat.JPEG, ApplicationConstants.ATTACH_PHOTO_QUALITY, out)
 }

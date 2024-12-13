@@ -1113,7 +1113,6 @@
     <string name="quest_building_entrance_dead_end">"Не е вход"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Докоснете екрана за да започнете измерване"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Има ли достъпна помпа за велосипеди (или поне докато е отворено)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Тук има ли работеща помпа за велосипеди?"</string>
     <string name="action_overlays">"Слоеве"</string>
     <string name="split_way">"Разделяне на път"</string>
     <string name="quest_memorialType_title">"Какъв паметник е това?"</string>

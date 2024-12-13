@@ -1005,7 +1005,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_building_entrance_shop">"Kundeinngang"</string>
     <string name="quest_building_entrance_yes">"Annan type inngang"</string>
     <string name="quest_building_entrance_dead_end">"Blindgang (ingen inngang)"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Er det ei sykkelpumpe her?"</string>
     <string name="quest_memorialType_bust">"Byste"</string>
     <string name="quest_memorialType_plaque">"Plakett"</string>
     <string name="quest_memorialType_war_memorial">"Krigsminne"</string>
@@ -1027,7 +1026,7 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="user_profile_current_week_title">"Siste 7 dagar"</string>
     <string name="move_node">"På ein litt annan stad…"</string>
     <string name="node_moved_too_far">"For langt. Legg heller til ein merknad"</string>
-    <string name="separate_cycleway_exclusive">"Sykkelfelt"</string>
+    <string name="separate_cycleway_exclusive">"Sykkelsti"</string>
     <string name="quest_fireHydrant_type_pipe">"Røyr"</string>
     <string name="quest_surface_value_mud">"Gjørme"</string>
     <string name="overlay_surface">"Overflate"</string>

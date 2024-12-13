@@ -1131,7 +1131,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_building_entrance_dead_end">"行き止まり、入り口なし"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"画面をタップして測定を開始します"</string>
     <string name="quest_air_pump_bicycle_shop_title">"ここに公共の自転車用ポンプはありますか(少なくとも開いているときは)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"ここに自転車用ポンプはありますか?"</string>
     <string name="action_overlays">"オーバーレイ"</string>
     <string name="split_way">"ウェイを分割"</string>
     <string name="quest_memorialType_title">"この場所にある記念碑はどのような種類ですか？"</string>
@@ -1242,7 +1241,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="separate_cycleway_no_or_allowed">"サイクリストには指定されていません(サイクリングは引き続き許可される場合があります)"</string>
     <string name="separate_cycleway_non_segregated">"歩行者と共用自転車通路"</string>
     <string name="separate_cycleway_segregated">"分離された自転車と歩道"</string>
-    <string name="separate_cycleway_exclusive">"自転車専用道路"</string>
+    <string name="separate_cycleway_exclusive">"自転車道"</string>
     <string name="separate_cycleway_with_sidewalk">"歩道が隣接する自転車専用道路(縁石で分離)"</string>
     <string name="cycleway_reverse_direction">"自転車道の方向を逆にする"</string>
     <string name="cycleway_reverse_direction_warning">"反対方向に行く自転車道は非常にまれです。"</string>

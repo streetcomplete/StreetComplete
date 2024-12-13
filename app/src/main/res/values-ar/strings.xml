@@ -1132,7 +1132,6 @@
     <string name="quest_building_entrance_dead_end">"طريق مسدود، ليس بمدخل"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"اضغط على الشاشة لبدء القياس"</string>
     <string name="quest_air_pump_bicycle_shop_title">"هل توجد هنا مضخة هواء عامة للدراجات (على الأقل عندما يكون المكان مفتوح)؟"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"هل توجد مضخة هواء للدراجات هنا؟"</string>
     <string name="action_overlays">"الطبقات"</string>
     <string name="split_way">"تقسيم الطريق"</string>
     <string name="quest_memorialType_title">"ما نوع هذا النصب التذكاري؟"</string>

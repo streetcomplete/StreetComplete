@@ -1,11 +1,11 @@
 # Changelog
 
-## v60.0-beta1
+## v60.0
 
 Redesigned the main screen a little. Here and there you'll notice small differences. The dialog to
 start the team mode from the menu is more descriptive now, for example. (#5799)
 
-Also, added Estonian language by Priit Jõerüüt
+Also, added Estonian language by Priit Jõerüüt.
 
 ### New quests
 

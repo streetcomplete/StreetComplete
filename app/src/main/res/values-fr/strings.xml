@@ -970,7 +970,7 @@ Alternativement, vous pouvez laisser une note (avec une photo)."</string>
     <string name="quest_fireHydrant_position_parking_lot">"Sur une place de stationnement"</string>
     <string name="quest_generic_hasFeature_yes_leave_note">"Oui (laissez une note)"</string>
     <string name="quest_smoothness_square_title">"Quel est l’état de surface de cette place ?"</string>
-    <string name="quest_smoothness_road_title">"Quel est l’état de surface de cette route ?"</string>
+    <string name="quest_smoothness_road_title">"Quel est l’état du revêtement de cette route ?"</string>
     <string name="quest_smoothness_title_excellent">"Lisse et uniforme"</string>
     <string name="quest_smoothness_title_good">"Généralement uniforme"</string>
     <string name="quest_smoothness_title_intermediate">"Un peu bosselé"</string>
@@ -996,7 +996,7 @@ Alternativement, vous pouvez laisser une note (avec une photo)."</string>
     <string name="quest_smoothness_description_very_bad_sett">"Larges espaces avec pierres manquantes, usées, irrégulières ou endommagées"</string>
     <string name="quest_smoothness_description_very_bad_paving_stones">"Pavés manquants, endommagés, trous, ou dommages importants"</string>
     <string name="quest_smoothness_description_very_bad_compacted_gravel">"Pierres grossières, nids-de-poules profonds, bosses, érosion et autres dommages"</string>
-    <string name="quest_smoothness_description_horrible">"Praticable seulement avec un véhicule tout-terrain"</string>
+    <string name="quest_smoothness_description_horrible">"Praticable seulement avec un véhicule tout-terrain ou à pied"</string>
     <string name="quest_smoothness_description_very_horrible">"Praticable seulement avec un véhicule tout-terrain spécialisé"</string>
     <string name="quest_smoothness_description_impassable">"Praticable uniquement à pieds"</string>
     <string name="quest_smoothness_wrong_surface">"La surface est différente"</string>
@@ -1129,7 +1129,6 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="quest_building_entrance_dead_end">"Cul-de-sac, pas d’entrée"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Appuyez sur l’écran pour commencer la mesure"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Y a-t’il une pompe à vélo ici (au moins quand c’est ouvert) ?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Y a t’il une pompe à vélos fonctionnelle ici ?"</string>
     <string name="action_overlays">"Surcouches"</string>
     <string name="split_way">"Couper le chemin"</string>
     <string name="quest_memorialType_title">"De quel type de mémorial s’agit-il ?"</string>
@@ -1239,7 +1238,7 @@ Faites la même chose pour l’autre côté, si présent."</string>
     <string name="separate_cycleway_no_or_allowed">"Non désigné pour les cyclistes (le cyclisme peut encore être autorisé)"</string>
     <string name="separate_cycleway_non_segregated">"Chemin à usage partagé"</string>
     <string name="separate_cycleway_segregated">"Voie ségréguée piétons et cycles"</string>
-    <string name="separate_cycleway_exclusive">"Voie cyclable exclusivement"</string>
+    <string name="separate_cycleway_exclusive">"Voie cyclable"</string>
     <string name="separate_cycleway_with_sidewalk">"Chemin pour vélos uniquement avec chemin piéton mitoyen (séparé par une bordure)"</string>
     <string name="cycleway_reverse_direction">"Voie cyclable en sens inverse"</string>
     <string name="cycleway_reverse_direction_warning">"Qu’une voie cyclable aille dans le sens opposé est extrêmement rare."</string>
@@ -1408,4 +1407,30 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="action_create_new_poi">"Créer un nouveau"</string>
     <string name="auth_error">"Erreur d’authentification. Essayez de vous connecter à nouveau."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"En réalité, il y a une voie piétonne."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Quel type d’équipements pour vélo disponible ici ?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Pompe"</string>
+    <string name="quest_bicycle_repair_station_tools">"Différents outils"</string>
+    <string name="quest_bicycle_repair_station_stand">"Support de travail"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Réparation de chaines"</string>
+    <string name="quest_boat_rental_title">"Quel type de bateaux est en location ici ?"</string>
+    <string name="quest_boat_rental_motorboat">"Bateau à moteur"</string>
+    <string name="quest_boat_rental_jetski">"Jetski"</string>
+    <string name="quest_boat_rental_sailboat">"Voilier"</string>
+    <string name="quest_boat_rental_pedalboat">"Pédalo"</string>
+    <string name="quest_boat_rental_kayak">"Kayak"</string>
+    <string name="quest_boat_rental_canoe">"Canoé"</string>
+    <string name="quest_boat_rental_houseboat">"Péniche"</string>
+    <string name="quest_boat_rental_rowboat">"Chaloupe"</string>
+    <string name="quest_boat_rental_raft">"Rafting"</string>
+    <string name="quest_boat_rental_surfboard">"Surf"</string>
+    <string name="quest_boat_rental_sailboard">"Planche à voile"</string>
+    <string name="quest_boat_rental_yacht">"Yacht"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Paddle debout"</string>
+    <string name="quest_powerAttachment_title">"Comment cette ligne de courant est attachée ?"</string>
+    <string name="quest_powerAttachment_suspension">"Supporté à partir de"</string>
+    <string name="quest_powerAttachment_anchor">"Fixé horizontalement"</string>
+    <string name="quest_powerAttachment_pin">"Supporté en dessous de"</string>
+    <string name="pedestrian_zone_designated">"Conçu pour les vélos"</string>
+    <string name="pedestrian_zone_allowed_sign">"Un panneau autorise les vélos ici"</string>
+    <string name="pedestrian_zone_no_sign">"Aucune indication panticulière concernant les vélos"</string>
 </resources>

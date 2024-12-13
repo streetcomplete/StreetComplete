@@ -814,8 +814,7 @@ Beachte alle Auswahlmöglichkeiten: manche Kombinationen sind nicht offensichtli
     <string name="quest_recycling_type_plastic_bottles_and_cartons">"Nur Plastikflaschen und Getränkekartons"</string>
     <string name="team_mode">"Team-Modus starten"</string>
     <string name="team_mode_exit">"Team-Modus beenden"</string>
-    <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen.
-Jeder von euch sieht dann unterschiedliche Aufgaben."</string>
+    <string name="team_mode_description">"Wenn ihr als Gruppe zusammen in der gleichen Gegend mappen wollt, könnt ihr den Team-Modus nutzen, um die Aufgaben untereinander aufzuteilen. Jeder von euch sieht dann unterschiedliche Aufgaben."</string>
     <string name="team_mode_active">"Team-Modus ist aktiv"</string>
     <string name="team_mode_deactivated">"Team-Modus deaktiviert"</string>
     <string name="undo_confirm_title2">"Folgende Bearbeitung rückgängig machen?"</string>
@@ -1131,7 +1130,6 @@ Wiederhole dies für die andere Seite, wenn sie existiert."</string>
     <string name="quest_building_entrance_dead_end">"Sackgasse, kein Eingang"</string>
     <string name="ar_core_tracking_hint_tap_to_measure">"Beginne mit dem Messen per Tipp auf den Bildschirm"</string>
     <string name="quest_air_pump_bicycle_shop_title">"Gibt es hier eine öffentliche Fahrradpumpe (zumindest während der Öffnungszeiten)?"</string>
-    <string name="quest_air_pump_bicycle_repair_station_title">"Gibt es hier eine funktionierende Fahrradpumpe?"</string>
     <string name="action_overlays">"Overlays"</string>
     <string name="split_way">"Weg aufspalten"</string>
     <string name="quest_memorialType_title">"Was für ein Denkmal ist das?"</string>
@@ -1242,8 +1240,8 @@ Jetzt verschieben?"</string>
     <string name="separate_cycleway_no_or_allowed">"Fußweg ohne explizites Schild zum Radfahren (ob es erlaubt ist, hängt von Verkehrsvorschriften ab)"</string>
     <string name="separate_cycleway_non_segregated">"Gekennzeichnet als gemeinsamer Geh- und Radweg"</string>
     <string name="separate_cycleway_segregated">"Getrennter Geh- und Radweg"</string>
-    <string name="separate_cycleway_exclusive">"Ausschließlicher Radweg"</string>
-    <string name="separate_cycleway_with_sidewalk">"Ausschließlicher Radweg mit Bürgersteig für Fußverkehr (getrennt durch Bordstein)"</string>
+    <string name="separate_cycleway_exclusive">"Radweg"</string>
+    <string name="separate_cycleway_with_sidewalk">"Radweg mit Bürgersteig für Fußverkehr (getrennt durch Bordstein)"</string>
     <string name="cycleway_reverse_direction">"Richtung des Radweges umdrehen"</string>
     <string name="cycleway_reverse_direction_warning">"Dass ein Radweg in die andere Richtung geht, ist extrem selten."</string>
     <string name="cycleway_reverse_direction_toast">"Tippe auf die Seite, die umgedreht werden soll"</string>
@@ -1411,4 +1409,31 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="action_create_new_poi">"Neu erstellen"</string>
     <string name="auth_error">"Autorisierungsfehler. Versuche, dich erneut anzumelden."</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">"Es gibt einen Bürgersteig."</string>
+    <string name="quest_bicycle_repair_station_services_title">"Welche Fahrradausstattung gibt es hier?"</string>
+    <string name="quest_bicycle_repair_station_pump">"Pumpe"</string>
+    <string name="quest_bicycle_repair_station_tools">"Verschiedene Werkzeuge"</string>
+    <string name="quest_bicycle_repair_station_stand">"Stativ"</string>
+    <string name="quest_bicycle_repair_station_chain_tool">"Kettenwerkzeug"</string>
+    <string name="quest_boat_rental_title">"Welche Art von Booten kann man hier mieten?"</string>
+    <string name="quest_boat_rental_motorboat">"Motorboot"</string>
+    <string name="quest_boat_rental_jetski">"Jetski"</string>
+    <string name="quest_boat_rental_sailboat">"Segelboot"</string>
+    <string name="quest_boat_rental_pedalboat">"Tretboot"</string>
+    <string name="quest_boat_rental_kayak">"Kajak"</string>
+    <string name="quest_boat_rental_canoe">"Kanu"</string>
+    <string name="quest_boat_rental_houseboat">"Hausboot"</string>
+    <string name="quest_boat_rental_rowboat">"Ruderboot"</string>
+    <string name="quest_boat_rental_raft">"Floß"</string>
+    <string name="quest_boat_rental_surfboard">"Surfbrett"</string>
+    <string name="quest_boat_rental_sailboard">"Segelbrett"</string>
+    <string name="quest_boat_rental_yacht">"Yacht"</string>
+    <string name="quest_boat_rental_standup_paddleboard">"Stand-up-Paddle-Board (SUP)"</string>
+    <string name="quest_powerAttachment_title">"Wie ist diese Stromleitung befestigt?"</string>
+    <string name="quest_powerAttachment_suspension">"Von oben gehalten"</string>
+    <string name="quest_powerAttachment_anchor">"Horizontal befestigt"</string>
+    <string name="quest_powerAttachment_pin">"Von unten gehalten"</string>
+    <string name="pedestrian_zone_designated">"Hier zum Radfahren ausgewiesen"</string>
+    <string name="pedestrian_zone_allowed_sign">"Ein Schild erlaubt hier das Radfahren"</string>
+    <string name="pedestrian_zone_no_sign">"Kein ausdrückliches Schild zum Radfahren hier"</string>
+    <string name="team_mode_description_overlay_hint">"Wenn ihr Overlays nutzt, sollte jeder von euch jeweils ein anderes nutzen, da nur die Aufgaben aufgeteilt werden."</string>
 </resources>
