@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.takeFavourites
 import org.koin.android.ext.android.inject
 
-class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
+class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
 
     override val contentLayoutResId = R.layout.quest_building_levels
     private val binding by contentViewBinding(QuestBuildingLevelsBinding::bind)
@@ -33,10 +33,10 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
         prefs.getLastPicked(this::class.simpleName!!)
             .map { value ->
                 value.split("#")
-                    .let { BuildingLevelsAnswer(it[0].toInt(), it.getOrNull(1)?.toInt()) }
+                    .let { BuildingLevels(it[0].toInt(), it.getOrNull(1)?.toInt()) }
             }
             .takeFavourites(n = 5, history = 15, first = 1)
-            .sortedWith(compareBy<BuildingLevelsAnswer> { it.levels }.thenBy { it.roofLevels })
+            .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
             regularLevels = rememberSaveable { mutableStateOf(element.tags["building:levels"] ?: "") }
             roofLevels = rememberSaveable { mutableStateOf(element.tags["roof:levels"] ?: "") }
             AppTheme {
-                AddBuildingLevelsFormControl(
+                BuildingLevelsForm(
                     regularLevels.value,
                     {
                         regularLevels.value = it
@@ -62,14 +62,14 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevelsAnswer>() {
                         roofLevels.value = if (roof != null) roof.toString() else ""
                         checkIsFormComplete()
                     },
-                    buildingLevels = lastPickedAnswers
+                    previousBuildingLevels = lastPickedAnswers
                 )
             }
         }
     }
 
     override fun onClickOk() {
-        val answer = BuildingLevelsAnswer(
+        val answer = BuildingLevels(
             regularLevels.value?.toInt() ?: 0,
             roofLevels.value?.toInt() ?: null
         )
