@@ -133,7 +133,7 @@ fun AboutScreen(
 
                 Preference(
                     name = "SCEE " + stringResource(R.string.about_title_repository),
-                    onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete") },
+                    onClick = { uriHandler.openUri("https://github.com/Helium314/SCEE") },
                 ) { OpenInBrowserIcon() }
             }
 
