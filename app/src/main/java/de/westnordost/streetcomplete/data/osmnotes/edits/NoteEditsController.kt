@@ -171,7 +171,7 @@ class NoteEditsController(
                         ""
                     else {
                         "       <ele>\"${it.elevation}\"</ele>\n" +
-                            "       <hdop>\"${it.accuracy}\">\n"
+                            "       <hdop>\"${it.accuracy}\"</hdop>\n"
                     } +
                     "     </trkpt>"
             }
