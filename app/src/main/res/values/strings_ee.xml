@@ -655,6 +655,19 @@
     <string name="quest_sacScale_six">"T6 - difficult alpine hiking"</string>
     <string name="quest_sacScale_six_description">"Severe exposure. Difficult craggy terrain. Glaciers with high risk of sliding."</string>
 
+    <!-- lamp type -->
+    <string name="quest_lampType_title">What kind of lamp is this?</string>
+    <string name="quest_lampType_disabled_msg">This quest is disabled by default because it’s not easy to answer and might be spammy depending on the region.</string>
+    <string name="quest_lampType_led">LED lamp</string>
+    <string name="quest_lampType_highPressureSodium">High-pressure sodium lamp</string>
+    <string name="quest_lampType_lowPressureSodium">Low-pressure sodium lamp</string>
+    <string name="quest_lampType_gaslight">Gaslight</string>
+    <string name="quest_lampType_fluorescent">Fluorescent lamp</string>
+    <string name="quest_lampType_incandescent">Incandescent lamp</string>
+    <string name="quest_lampType_metalHalide">Metal-halide lamp</string>
+    <string name="quest_lampType_mercury">Mercury-vapor lamp</string>
+    <string name="quest_lampType_halogen">Halogen lamp</string>
+
     <!-- new overlays -->
 
     <!-- custom overlay -->
