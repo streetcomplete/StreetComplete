@@ -250,6 +250,7 @@ recycling_centre.jpg           Public Domain     https://commons.wikimedia.org/w
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 
+sac_scale_strolling.jpg         CC-BY 4.0        https://wiki.openstreetmap.org/wiki/File:AF_1_C_-_Mendon_Ponds.jpg (Adam Franco)
 sac_scale_t1.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T1.jpg (Marco Volken)
 sac_scale_t2.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T2.jpg (Marco Volken)
 sac_scale_t3.jpg                CC-BY-SA 4.0     https://wiki.openstreetmap.org/wiki/File:SAC_SCALE_T3.jpg (Marco Volken)

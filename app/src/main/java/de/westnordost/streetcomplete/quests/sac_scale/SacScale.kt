@@ -13,6 +13,12 @@ enum class SacScale(
     @StringRes val titleResId: Int,
     @StringRes val descriptionResId: Int,
 ) {
+    STROLLING(
+        osmValue = "strolling",
+        imageResId = R.drawable.sac_scale_strolling,
+        titleResId = R.string.quest_sacScale_strolling,
+        descriptionResId = R.string.quest_sacScale_strolling_description
+    ),
     HIKING(
         osmValue = "hiking",
         imageResId = R.drawable.sac_scale_t1,
